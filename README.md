@@ -1,4 +1,4 @@
-# Project
+# Azure SDK examples for azure-rest-api-specs
 
 This repository is the collection of Azure SDK examples corresponding to REST API examples from [Azure REST API Specifications](https://github.com/Azure/azure-rest-api-specs).
 

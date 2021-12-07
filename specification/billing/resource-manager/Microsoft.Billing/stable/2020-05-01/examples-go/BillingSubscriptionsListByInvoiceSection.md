@@ -1,0 +1,35 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbilling%2Farmbilling%2Fv0.1.0/sdk/resourcemanager/billing/armbilling/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armbilling_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billing/armbilling"
+)
+
+// x-ms-original-file: specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/examples/BillingSubscriptionsListByInvoiceSection.json
+func ExampleBillingSubscriptionsClient_ListByInvoiceSection() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armbilling.NewBillingSubscriptionsClient("<subscription-id>", cred, nil)
+	pager := client.ListByInvoiceSection("<billing-account-name>",
+		"<billing-profile-name>",
+		"<invoice-section-name>",
+		nil)
+	for pager.NextPage(ctx) {
+		if err := pager.Err(); err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range pager.PageResponse().Value {
+			log.Printf("BillingSubscription.ID: %s\n", *v.ID)
+		}
+	}
+}
+```

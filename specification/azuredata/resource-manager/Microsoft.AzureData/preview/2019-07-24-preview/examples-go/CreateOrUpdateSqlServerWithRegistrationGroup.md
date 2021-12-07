@@ -1,0 +1,42 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazuredata%2Farmazuredata%2Fv0.1.0/sdk/resourcemanager/azuredata/armazuredata/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armazuredata_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azuredata/armazuredata"
+)
+
+// x-ms-original-file: specification/azuredata/resource-manager/Microsoft.AzureData/preview/2019-07-24-preview/examples/CreateOrUpdateSqlServerWithRegistrationGroup.json
+func ExampleSQLServersClient_CreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armazuredata.NewSQLServersClient("<subscription-id>", cred, nil)
+	res, err := client.CreateOrUpdate(ctx,
+		"<resource-group-name>",
+		"<sql-server-registration-name>",
+		"<sql-server-name>",
+		armazuredata.SQLServer{
+			Properties: &armazuredata.SQLServerProperties{
+				Cores:          to.Int32Ptr(8),
+				Edition:        to.StringPtr("<edition>"),
+				PropertyBag:    to.StringPtr("<property-bag>"),
+				RegistrationID: to.StringPtr("<registration-id>"),
+				Version:        to.StringPtr("<version>"),
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("SQLServer.ID: %s\n", *res.ID)
+}
+```

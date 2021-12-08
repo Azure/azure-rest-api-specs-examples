@@ -1,0 +1,47 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.1.0/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armdeviceupdate_test
+
+import (
+	"context"
+	"log"
+
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceupdate/armdeviceupdate"
+)
+
+// x-ms-original-file: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/preview/2020-03-01-preview/examples/PrivateEndpointConnections/PrivateEndpointConnection_CreateOrUpdate.json
+func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armdeviceupdate.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	poller, err := client.BeginCreateOrUpdate(ctx,
+		"<resource-group-name>",
+		"<account-name>",
+		"<private-endpoint-connection-name>",
+		armdeviceupdate.PrivateEndpointConnection{
+			Properties: &armdeviceupdate.PrivateEndpointConnectionProperties{
+				PrivateLinkServiceConnectionState: &armdeviceupdate.PrivateLinkServiceConnectionState{
+					Description: to.StringPtr("<description>"),
+					Status:      armdeviceupdate.PrivateEndpointServiceConnectionStatusApproved.ToPtr(),
+				},
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("PrivateEndpointConnection.ID: %s\n", *res.ID)
+}
+```

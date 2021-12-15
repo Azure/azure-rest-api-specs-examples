@@ -1,0 +1,33 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.1.1/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armpolicy_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy"
+)
+
+// x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/preview/2020-07-01-preview/examples/listPolicyExemptionsForSubscription.json
+func ExamplePolicyExemptionsClient_List() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armpolicy.NewPolicyExemptionsClient("<subscription-id>", cred, nil)
+	pager := client.List(&armpolicy.PolicyExemptionsListOptions{Filter: to.StringPtr("<filter>")})
+	for pager.NextPage(ctx) {
+		if err := pager.Err(); err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range pager.PageResponse().Value {
+			log.Printf("PolicyExemption.ID: %s\n", *v.ID)
+		}
+	}
+}
+```

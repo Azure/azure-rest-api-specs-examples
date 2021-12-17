@@ -1,0 +1,45 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.1.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armmachinelearningservices_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearningservices/armmachinelearningservices"
+)
+
+// x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/examples/Quota/update.json
+func ExampleQuotasClient_Update() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armmachinelearningservices.NewQuotasClient("<subscription-id>", cred, nil)
+	_, err = client.Update(ctx,
+		"<location>",
+		armmachinelearningservices.QuotaUpdateParameters{
+			Value: []*armmachinelearningservices.QuotaBaseProperties{
+				{
+					Type:  to.StringPtr("<type>"),
+					ID:    to.StringPtr("<id>"),
+					Limit: to.Int64Ptr(100),
+					Unit:  armmachinelearningservices.QuotaUnitCount.ToPtr(),
+				},
+				{
+					Type:  to.StringPtr("<type>"),
+					ID:    to.StringPtr("<id>"),
+					Limit: to.Int64Ptr(200),
+					Unit:  armmachinelearningservices.QuotaUnitCount.ToPtr(),
+				}},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+```

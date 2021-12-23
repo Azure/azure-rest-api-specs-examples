@@ -1,0 +1,21 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-edgeorder_1.0.0-beta.1/sdk/edgeorder/azure-resourcemanager-edgeorder/README.md) on how to add the SDK to your project and authenticate.
+
+```java
+import com.azure.core.util.Context;
+
+/** Samples for ResourceProvider ListOrderItemsAtResourceGroupLevel. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListOrderItemsAtResourceGroupLevel.json
+     */
+    /**
+     * Sample code: ListOrderItemsAtResourceGroupLevel.
+     *
+     * @param manager Entry point to EdgeOrderManager.
+     */
+    public static void listOrderItemsAtResourceGroupLevel(
+        com.azure.resourcemanager.edgeorder.EdgeOrderManager manager) {
+        manager.resourceProviders().listOrderItemsAtResourceGroupLevel("TestRG", null, null, null, Context.NONE);
+    }
+}
+```

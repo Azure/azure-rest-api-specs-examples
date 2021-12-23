@@ -1,0 +1,50 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armsynapse_test
+
+import (
+	"context"
+	"log"
+
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
+)
+
+// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolWorkloadGroupMax.json
+func ExampleSQLPoolWorkloadGroupClient_BeginCreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armsynapse.NewSQLPoolWorkloadGroupClient("<subscription-id>", cred, nil)
+	poller, err := client.BeginCreateOrUpdate(ctx,
+		"<resource-group-name>",
+		"<workspace-name>",
+		"<sql-pool-name>",
+		"<workload-group-name>",
+		armsynapse.WorkloadGroup{
+			Properties: &armsynapse.WorkloadGroupProperties{
+				Importance:                   to.StringPtr("<importance>"),
+				MaxResourcePercent:           to.Int32Ptr(100),
+				MaxResourcePercentPerRequest: to.Float64Ptr(3),
+				MinResourcePercent:           to.Int32Ptr(0),
+				MinResourcePercentPerRequest: to.Float64Ptr(3),
+				QueryExecutionTimeout:        to.Int32Ptr(0),
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("WorkloadGroup.ID: %s\n", *res.ID)
+}
+```

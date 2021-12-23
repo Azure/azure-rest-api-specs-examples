@@ -1,0 +1,56 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.1.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armtrafficmanager_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager"
+)
+
+// x-ms-original-file: specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Endpoint-PUT-External-WithCustomHeaders.json
+func ExampleEndpointsClient_CreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armtrafficmanager.NewEndpointsClient("<subscription-id>", cred, nil)
+	res, err := client.CreateOrUpdate(ctx,
+		"<resource-group-name>",
+		"<profile-name>",
+		"<endpoint-type>",
+		"<endpoint-name>",
+		armtrafficmanager.Endpoint{
+			ProxyResource: armtrafficmanager.ProxyResource{
+				Resource: armtrafficmanager.Resource{
+					Name: to.StringPtr("<name>"),
+					Type: to.StringPtr("<type>"),
+				},
+			},
+			Properties: &armtrafficmanager.EndpointProperties{
+				CustomHeaders: []*armtrafficmanager.EndpointPropertiesCustomHeadersItem{
+					{
+						Name:  to.StringPtr("<name>"),
+						Value: to.StringPtr("<value>"),
+					},
+					{
+						Name:  to.StringPtr("<name>"),
+						Value: to.StringPtr("<value>"),
+					}},
+				EndpointLocation: to.StringPtr("<endpoint-location>"),
+				EndpointStatus:   armtrafficmanager.EndpointStatusEnabled.ToPtr(),
+				Target:           to.StringPtr("<target>"),
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("Endpoint.ID: %s\n", *res.ID)
+}
+```

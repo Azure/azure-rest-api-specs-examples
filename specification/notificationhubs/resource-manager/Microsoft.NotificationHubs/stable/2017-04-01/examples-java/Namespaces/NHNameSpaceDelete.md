@@ -3,18 +3,18 @@ Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/az
 ```java
 import com.azure.core.util.Context;
 
-/** Samples for Operations List. */
+/** Samples for Namespaces Delete. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/examples/NHOperationsList.json
+     * x-ms-original-file: specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/examples/Namespaces/NHNameSpaceDelete.json
      */
     /**
-     * Sample code: OperationsList.
+     * Sample code: NameSpaceDelete.
      *
      * @param manager Entry point to NotificationHubsManager.
      */
-    public static void operationsList(com.azure.resourcemanager.notificationhubs.NotificationHubsManager manager) {
-        manager.operations().list(Context.NONE);
+    public static void nameSpaceDelete(com.azure.resourcemanager.notificationhubs.NotificationHubsManager manager) {
+        manager.namespaces().delete("5ktrial", "nh-sdk-ns", Context.NONE);
     }
 }
 ```

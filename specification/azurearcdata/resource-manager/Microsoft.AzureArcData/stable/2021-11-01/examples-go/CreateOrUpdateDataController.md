@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.1.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.2.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazurearcdata_test
@@ -26,15 +26,13 @@ func ExampleDataControllersClient_BeginPutDataController() {
 		"<resource-group-name>",
 		"<data-controller-name>",
 		armazurearcdata.DataControllerResource{
-			TrackedResource: armazurearcdata.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"mytag": to.StringPtr("myval"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"mytag": to.StringPtr("myval"),
 			},
 			ExtendedLocation: &armazurearcdata.ExtendedLocation{
 				Name: to.StringPtr("<name>"),
-				Type: armazurearcdata.ExtendedLocationTypesCustomLocation.ToPtr(),
+				Type: armazurearcdata.ExtendedLocationTypes("CustomLocation").ToPtr(),
 			},
 			Properties: &armazurearcdata.DataControllerProperties{
 				BasicLoginInformation: &armazurearcdata.BasicLoginInformation{
@@ -81,6 +79,6 @@ func ExampleDataControllersClient_BeginPutDataController() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataControllerResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DataControllersClientPutDataControllerResult)
 }
 ```

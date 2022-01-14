@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.1.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.2.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappconfiguration_test
@@ -26,11 +26,9 @@ func ExampleConfigurationStoresClient_BeginCreate() {
 		"<resource-group-name>",
 		"<config-store-name>",
 		armappconfiguration.ConfigurationStore{
-			TrackedResource: armappconfiguration.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"myTag": to.StringPtr("myTagValue"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"myTag": to.StringPtr("myTagValue"),
 			},
 			SKU: &armappconfiguration.SKU{
 				Name: to.StringPtr("<name>"),
@@ -44,6 +42,6 @@ func ExampleConfigurationStoresClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ConfigurationStore.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ConfigurationStoresClientCreateResult)
 }
 ```

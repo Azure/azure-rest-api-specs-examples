@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.1.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.2.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappconfiguration_test
@@ -24,7 +24,7 @@ func ExampleKeyValuesClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<config-store-name>",
 		"<key-value-name>",
-		&armappconfiguration.KeyValuesCreateOrUpdateOptions{KeyValueParameters: &armappconfiguration.KeyValue{
+		&armappconfiguration.KeyValuesClientCreateOrUpdateOptions{KeyValueParameters: &armappconfiguration.KeyValue{
 			Properties: &armappconfiguration.KeyValueProperties{
 				Tags: map[string]*string{
 					"tag1": to.StringPtr("tagValue1"),
@@ -37,6 +37,6 @@ func ExampleKeyValuesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("KeyValue.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.KeyValuesClientCreateOrUpdateResult)
 }
 ```

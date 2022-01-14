@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
@@ -22,11 +23,31 @@ func ExampleWebTestsClient_CreateOrUpdate() {
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<web-test-name>",
-		armapplicationinsights.WebTest{},
+		armapplicationinsights.WebTest{
+			Location: to.StringPtr("<location>"),
+			Kind:     armapplicationinsights.WebTestKindPing.ToPtr(),
+			Properties: &armapplicationinsights.WebTestProperties{
+				Configuration: &armapplicationinsights.WebTestPropertiesConfiguration{
+					WebTest: to.StringPtr("<web-test>"),
+				},
+				Description: to.StringPtr("<description>"),
+				Enabled:     to.BoolPtr(true),
+				Frequency:   to.Int32Ptr(900),
+				WebTestKind: armapplicationinsights.WebTestKindPing.ToPtr(),
+				Locations: []*armapplicationinsights.WebTestGeolocation{
+					{
+						Location: to.StringPtr("<location>"),
+					}},
+				WebTestName:        to.StringPtr("<web-test-name>"),
+				RetryEnabled:       to.BoolPtr(true),
+				SyntheticMonitorID: to.StringPtr("<synthetic-monitor-id>"),
+				Timeout:            to.Int32Ptr(120),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("WebTest.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WebTestsClientCreateOrUpdateResult)
 }
 ```

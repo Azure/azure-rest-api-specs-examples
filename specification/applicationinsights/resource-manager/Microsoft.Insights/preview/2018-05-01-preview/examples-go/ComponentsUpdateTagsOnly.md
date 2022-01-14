@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
@@ -22,11 +23,19 @@ func ExampleComponentsClient_UpdateTags() {
 	res, err := client.UpdateTags(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armapplicationinsights.TagsResource{},
+		armapplicationinsights.TagsResource{
+			Tags: map[string]*string{
+				"ApplicationGatewayType": to.StringPtr("Internal-Only"),
+				"BillingEntity":          to.StringPtr("Self"),
+				"Color":                  to.StringPtr("AzureBlue"),
+				"CustomField_01":         to.StringPtr("Custom text in some random field named randomly"),
+				"NodeType":               to.StringPtr("Edge"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ApplicationInsightsComponent.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ComponentsClientUpdateTagsResult)
 }
 ```

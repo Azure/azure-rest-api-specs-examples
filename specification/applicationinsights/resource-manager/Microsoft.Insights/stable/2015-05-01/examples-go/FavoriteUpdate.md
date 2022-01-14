@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -20,18 +20,16 @@ func ExampleFavoritesClient_Update() {
 	}
 	ctx := context.Background()
 	client := armapplicationinsights.NewFavoritesClient("<subscription-id>", cred, nil)
-	_, err = client.Update(ctx,
+	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		"<favorite-id>",
-		armapplicationinsights.ApplicationInsightsComponentFavorite{
-			Category:                to.StringPtr("<category>"),
+		armapplicationinsights.ComponentFavorite{
 			Config:                  to.StringPtr("<config>"),
 			FavoriteID:              to.StringPtr("<favorite-id>"),
 			FavoriteType:            armapplicationinsights.FavoriteTypeShared.ToPtr(),
 			IsGeneratedFromTemplate: to.BoolPtr(false),
 			Name:                    to.StringPtr("<name>"),
-			SourceType:              to.StringPtr("<source-type>"),
 			Tags: []*string{
 				to.StringPtr("TagSample01"),
 				to.StringPtr("TagSample02"),
@@ -43,5 +41,6 @@ func ExampleFavoritesClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.FavoritesClientUpdateResult)
 }
 ```

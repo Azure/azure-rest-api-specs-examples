@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -24,16 +24,14 @@ func ExampleMyWorkbooksClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<resource-name>",
 		armapplicationinsights.MyWorkbook{
-			MyWorkbookResource: armapplicationinsights.MyWorkbookResource{
-				Name:     to.StringPtr("<name>"),
-				ID:       to.StringPtr("<id>"),
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"0": to.StringPtr("TagSample01"),
-					"1": to.StringPtr("TagSample02"),
-				},
+			Name:     to.StringPtr("<name>"),
+			ID:       to.StringPtr("<id>"),
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"0": to.StringPtr("TagSample01"),
+				"1": to.StringPtr("TagSample02"),
 			},
-			Kind: armapplicationinsights.KindUser.ToPtr(),
+			Kind: armapplicationinsights.Kind("user").ToPtr(),
 			Properties: &armapplicationinsights.MyWorkbookProperties{
 				Category:       to.StringPtr("<category>"),
 				DisplayName:    to.StringPtr("<display-name>"),
@@ -41,10 +39,10 @@ func ExampleMyWorkbooksClient_CreateOrUpdate() {
 				SourceID:       to.StringPtr("<source-id>"),
 			},
 		},
-		&armapplicationinsights.MyWorkbooksCreateOrUpdateOptions{SourceID: nil})
+		&armapplicationinsights.MyWorkbooksClientCreateOrUpdateOptions{SourceID: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("MyWorkbook.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MyWorkbooksClientCreateOrUpdateResult)
 }
 ```

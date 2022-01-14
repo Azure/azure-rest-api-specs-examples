@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
@@ -22,11 +23,19 @@ func ExampleWorkItemConfigurationsClient_Create() {
 	res, err := client.Create(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armapplicationinsights.WorkItemCreateConfiguration{},
+		armapplicationinsights.WorkItemCreateConfiguration{
+			ConnectorDataConfiguration: to.StringPtr("<connector-data-configuration>"),
+			ConnectorID:                to.StringPtr("<connector-id>"),
+			ValidateOnly:               to.BoolPtr(true),
+			WorkItemProperties: map[string]*string{
+				"0": to.StringPtr("[object Object]"),
+				"1": to.StringPtr("[object Object]"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("WorkItemConfiguration.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkItemConfigurationsClientCreateResult)
 }
 ```

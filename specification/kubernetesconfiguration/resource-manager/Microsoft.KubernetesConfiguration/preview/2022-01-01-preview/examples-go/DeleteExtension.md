@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.1.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -23,11 +23,11 @@ func ExampleExtensionsClient_BeginDelete() {
 	client := armkubernetesconfiguration.NewExtensionsClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginDelete(ctx,
 		"<resource-group-name>",
-		armkubernetesconfiguration.Enum0MicrosoftKubernetes,
-		armkubernetesconfiguration.Enum1ConnectedClusters,
+		armkubernetesconfiguration.Enum0("Microsoft.Kubernetes"),
+		armkubernetesconfiguration.Enum1("connectedClusters"),
 		"<cluster-name>",
 		"<extension-name>",
-		&armkubernetesconfiguration.ExtensionsBeginDeleteOptions{ForceDelete: nil})
+		&armkubernetesconfiguration.ExtensionsClientBeginDeleteOptions{ForceDelete: nil})
 	if err != nil {
 		log.Fatal(err)
 	}

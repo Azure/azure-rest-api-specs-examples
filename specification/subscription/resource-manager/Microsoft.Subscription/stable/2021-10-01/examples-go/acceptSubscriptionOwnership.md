@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsubscription%2Farmsubscription%2Fv0.1.0/sdk/resourcemanager/subscription/armsubscription/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsubscription%2Farmsubscription%2Fv0.2.0/sdk/resourcemanager/subscription/armsubscription/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsubscription_test
@@ -15,19 +15,18 @@ import (
 )
 
 // x-ms-original-file: specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/acceptSubscriptionOwnership.json
-func ExampleSubscriptionClient_BeginAcceptOwnership() {
+func ExampleClient_BeginAcceptOwnership() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armsubscription.NewSubscriptionClient(cred, nil)
+	client := armsubscription.NewClient(cred, nil)
 	poller, err := client.BeginAcceptOwnership(ctx,
 		"<subscription-id>",
 		armsubscription.AcceptOwnershipRequest{
 			Properties: &armsubscription.AcceptOwnershipRequestProperties{
-				DisplayName:       to.StringPtr("<display-name>"),
-				ManagementGroupID: to.StringPtr("<management-group-id>"),
+				DisplayName: to.StringPtr("<display-name>"),
 				Tags: map[string]*string{
 					"tag1": to.StringPtr("Messi"),
 					"tag2": to.StringPtr("Ronaldo"),

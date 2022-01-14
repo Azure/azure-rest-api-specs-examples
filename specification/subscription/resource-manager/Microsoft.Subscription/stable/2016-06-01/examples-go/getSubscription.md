@@ -11,20 +11,20 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription"
 )
 
-// x-ms-original-file: specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/getAlias.json
-func ExampleAliasClient_Get() {
+// x-ms-original-file: specification/subscription/resource-manager/Microsoft.Subscription/stable/2016-06-01/examples/getSubscription.json
+func ExampleSubscriptionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armsubscription.NewAliasClient(cred, nil)
+	client := armsubscription.NewSubscriptionsClient(cred, nil)
 	res, err := client.Get(ctx,
-		"<alias-name>",
+		"<subscription-id>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Response result: %#v\n", res.AliasClientGetResult)
+	log.Printf("Response result: %#v\n", res.SubscriptionsClientGetResult)
 }
 ```

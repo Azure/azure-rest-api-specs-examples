@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv0.1.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv0.2.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragecache_test
@@ -25,7 +25,7 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<cache-name>",
-		&armstoragecache.CachesBeginCreateOrUpdateOptions{Cache: &armstoragecache.Cache{
+		&armstoragecache.CachesClientBeginCreateOrUpdateOptions{Cache: &armstoragecache.Cache{
 			Identity: &armstoragecache.CacheIdentity{
 				Type: armstoragecache.CacheIdentityTypeUserAssigned.ToPtr(),
 				UserAssignedIdentities: map[string]*armstoragecache.UserAssignedIdentitiesValue{
@@ -55,7 +55,7 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 						ExtendedGroups: to.BoolPtr(true),
 						LdapBaseDN:     to.StringPtr("<ldap-base-dn>"),
 						LdapServer:     to.StringPtr("<ldap-server>"),
-						UsernameSource: armstoragecache.UsernameSourceLDAP.ToPtr(),
+						UsernameSource: armstoragecache.UsernameSource("LDAP").ToPtr(),
 					},
 				},
 				EncryptionSettings: &armstoragecache.CacheEncryptionSettings{
@@ -72,9 +72,9 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 							Name: to.StringPtr("<name>"),
 							AccessRules: []*armstoragecache.NfsAccessRule{
 								{
-									Access:         armstoragecache.NfsAccessRuleAccessRw.ToPtr(),
+									Access:         armstoragecache.NfsAccessRuleAccess("rw").ToPtr(),
 									RootSquash:     to.BoolPtr(false),
-									Scope:          armstoragecache.NfsAccessRuleScopeDefault.ToPtr(),
+									Scope:          armstoragecache.NfsAccessRuleScope("default").ToPtr(),
 									SubmountAccess: to.BoolPtr(true),
 									Suid:           to.BoolPtr(false),
 								}},
@@ -97,6 +97,6 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Cache.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.CachesClientCreateOrUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv0.1.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv0.2.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragecache_test
@@ -23,7 +23,7 @@ func ExampleCachesClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<cache-name>",
-		&armstoragecache.CachesUpdateOptions{Cache: &armstoragecache.Cache{
+		&armstoragecache.CachesClientUpdateOptions{Cache: &armstoragecache.Cache{
 			Location: to.StringPtr("<location>"),
 			Properties: &armstoragecache.CacheProperties{
 				CacheSizeGB: to.Int32Ptr(3072),
@@ -37,7 +37,7 @@ func ExampleCachesClient_Update() {
 					},
 					UsernameDownload: &armstoragecache.CacheUsernameDownloadSettings{
 						ExtendedGroups: to.BoolPtr(true),
-						UsernameSource: armstoragecache.UsernameSourceAD.ToPtr(),
+						UsernameSource: armstoragecache.UsernameSource("AD").ToPtr(),
 					},
 				},
 				NetworkSettings: &armstoragecache.CacheNetworkSettings{
@@ -54,9 +54,9 @@ func ExampleCachesClient_Update() {
 							Name: to.StringPtr("<name>"),
 							AccessRules: []*armstoragecache.NfsAccessRule{
 								{
-									Access:         armstoragecache.NfsAccessRuleAccessRw.ToPtr(),
+									Access:         armstoragecache.NfsAccessRuleAccess("rw").ToPtr(),
 									RootSquash:     to.BoolPtr(false),
-									Scope:          armstoragecache.NfsAccessRuleScopeDefault.ToPtr(),
+									Scope:          armstoragecache.NfsAccessRuleScope("default").ToPtr(),
 									SubmountAccess: to.BoolPtr(true),
 									Suid:           to.BoolPtr(false),
 								}},
@@ -65,27 +65,27 @@ func ExampleCachesClient_Update() {
 							Name: to.StringPtr("<name>"),
 							AccessRules: []*armstoragecache.NfsAccessRule{
 								{
-									Access:         armstoragecache.NfsAccessRuleAccessRw.ToPtr(),
+									Access:         armstoragecache.NfsAccessRuleAccess("rw").ToPtr(),
 									Filter:         to.StringPtr("<filter>"),
 									RootSquash:     to.BoolPtr(false),
-									Scope:          armstoragecache.NfsAccessRuleScopeHost.ToPtr(),
+									Scope:          armstoragecache.NfsAccessRuleScope("host").ToPtr(),
 									SubmountAccess: to.BoolPtr(true),
 									Suid:           to.BoolPtr(true),
 								},
 								{
-									Access:         armstoragecache.NfsAccessRuleAccessRw.ToPtr(),
+									Access:         armstoragecache.NfsAccessRuleAccess("rw").ToPtr(),
 									Filter:         to.StringPtr("<filter>"),
 									RootSquash:     to.BoolPtr(false),
-									Scope:          armstoragecache.NfsAccessRuleScopeNetwork.ToPtr(),
+									Scope:          armstoragecache.NfsAccessRuleScope("network").ToPtr(),
 									SubmountAccess: to.BoolPtr(true),
 									Suid:           to.BoolPtr(true),
 								},
 								{
-									Access:         armstoragecache.NfsAccessRuleAccessNo.ToPtr(),
+									Access:         armstoragecache.NfsAccessRuleAccess("no").ToPtr(),
 									AnonymousGID:   to.StringPtr("<anonymous-gid>"),
 									AnonymousUID:   to.StringPtr("<anonymous-uid>"),
 									RootSquash:     to.BoolPtr(true),
-									Scope:          armstoragecache.NfsAccessRuleScopeDefault.ToPtr(),
+									Scope:          armstoragecache.NfsAccessRuleScope("default").ToPtr(),
 									SubmountAccess: to.BoolPtr(true),
 									Suid:           to.BoolPtr(false),
 								}},
@@ -104,6 +104,6 @@ func ExampleCachesClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Cache.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.CachesClientUpdateResult)
 }
 ```

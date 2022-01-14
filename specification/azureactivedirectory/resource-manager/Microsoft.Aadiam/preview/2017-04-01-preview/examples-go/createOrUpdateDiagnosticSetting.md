@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Faad%2Farmaad%2Fv0.1.0/sdk/resourcemanager/aad/armaad/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Faad%2Farmaad%2Fv0.2.0/sdk/resourcemanager/aad/armaad/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armaad_test
@@ -28,7 +28,7 @@ func ExampleDiagnosticSettingsClient_CreateOrUpdate() {
 				EventHubName:                to.StringPtr("<event-hub-name>"),
 				Logs: []*armaad.LogSettings{
 					{
-						Category: armaad.CategoryAuditLogs.ToPtr(),
+						Category: armaad.Category("AuditLogs").ToPtr(),
 						Enabled:  to.BoolPtr(true),
 						RetentionPolicy: &armaad.RetentionPolicy{
 							Days:    to.Int32Ptr(0),
@@ -43,6 +43,6 @@ func ExampleDiagnosticSettingsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DiagnosticSettingsResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DiagnosticSettingsClientCreateOrUpdateResult)
 }
 ```

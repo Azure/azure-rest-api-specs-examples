@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurestackhci%2Farmazurestackhci%2Fv0.1.0/sdk/resourcemanager/azurestackhci/armazurestackhci/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurestackhci%2Farmazurestackhci%2Fv0.2.0/sdk/resourcemanager/azurestackhci/armazurestackhci/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazurestackhci_test
@@ -27,8 +27,8 @@ func ExampleClustersClient_Update() {
 			Properties: &armazurestackhci.ClusterPatchProperties{
 				CloudManagementEndpoint: to.StringPtr("<cloud-management-endpoint>"),
 				DesiredProperties: &armazurestackhci.ClusterDesiredProperties{
-					DiagnosticLevel:           armazurestackhci.DiagnosticLevelBasic.ToPtr(),
-					WindowsServerSubscription: armazurestackhci.WindowsServerSubscriptionEnabled.ToPtr(),
+					DiagnosticLevel:           armazurestackhci.DiagnosticLevel("Basic").ToPtr(),
+					WindowsServerSubscription: armazurestackhci.WindowsServerSubscription("Enabled").ToPtr(),
 				},
 			},
 			Tags: map[string]*string{
@@ -40,6 +40,6 @@ func ExampleClustersClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Cluster.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ClustersClientUpdateResult)
 }
 ```

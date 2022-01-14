@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.1.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.2.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtrafficmanager_test
@@ -24,9 +24,7 @@ func ExampleProfilesClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<profile-name>",
 		armtrafficmanager.Profile{
-			TrackedResource: armtrafficmanager.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armtrafficmanager.ProfileProperties{
 				DNSConfig: &armtrafficmanager.DNSConfig{
 					RelativeName: to.StringPtr("<relative-name>"),
@@ -36,17 +34,17 @@ func ExampleProfilesClient_CreateOrUpdate() {
 				MonitorConfig: &armtrafficmanager.MonitorConfig{
 					Path:     to.StringPtr("<path>"),
 					Port:     to.Int64Ptr(80),
-					Protocol: armtrafficmanager.MonitorProtocolHTTP.ToPtr(),
+					Protocol: armtrafficmanager.MonitorProtocol("HTTP").ToPtr(),
 				},
-				ProfileStatus:               armtrafficmanager.ProfileStatusEnabled.ToPtr(),
-				TrafficRoutingMethod:        armtrafficmanager.TrafficRoutingMethodMultiValue.ToPtr(),
-				TrafficViewEnrollmentStatus: armtrafficmanager.TrafficViewEnrollmentStatusDisabled.ToPtr(),
+				ProfileStatus:               armtrafficmanager.ProfileStatus("Enabled").ToPtr(),
+				TrafficRoutingMethod:        armtrafficmanager.TrafficRoutingMethod("MultiValue").ToPtr(),
+				TrafficViewEnrollmentStatus: armtrafficmanager.TrafficViewEnrollmentStatus("Disabled").ToPtr(),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Profile.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ProfilesClientCreateOrUpdateResult)
 }
 ```

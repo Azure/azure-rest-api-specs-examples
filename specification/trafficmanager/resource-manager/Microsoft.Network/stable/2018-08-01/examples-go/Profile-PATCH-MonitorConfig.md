@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.1.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.2.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtrafficmanager_test
@@ -40,7 +40,7 @@ func ExampleProfilesClient_Update() {
 					Port:                      to.Int64Ptr(80),
 					TimeoutInSeconds:          to.Int64Ptr(6),
 					ToleratedNumberOfFailures: to.Int64Ptr(4),
-					Protocol:                  armtrafficmanager.MonitorProtocolHTTP.ToPtr(),
+					Protocol:                  armtrafficmanager.MonitorProtocol("HTTP").ToPtr(),
 				},
 			},
 		},
@@ -48,6 +48,6 @@ func ExampleProfilesClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Profile.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ProfilesClientUpdateResult)
 }
 ```

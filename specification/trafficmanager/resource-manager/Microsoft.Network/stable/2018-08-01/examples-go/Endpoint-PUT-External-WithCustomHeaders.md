@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.1.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.2.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtrafficmanager_test
@@ -26,12 +26,8 @@ func ExampleEndpointsClient_CreateOrUpdate() {
 		"<endpoint-type>",
 		"<endpoint-name>",
 		armtrafficmanager.Endpoint{
-			ProxyResource: armtrafficmanager.ProxyResource{
-				Resource: armtrafficmanager.Resource{
-					Name: to.StringPtr("<name>"),
-					Type: to.StringPtr("<type>"),
-				},
-			},
+			Name: to.StringPtr("<name>"),
+			Type: to.StringPtr("<type>"),
 			Properties: &armtrafficmanager.EndpointProperties{
 				CustomHeaders: []*armtrafficmanager.EndpointPropertiesCustomHeadersItem{
 					{
@@ -43,7 +39,7 @@ func ExampleEndpointsClient_CreateOrUpdate() {
 						Value: to.StringPtr("<value>"),
 					}},
 				EndpointLocation: to.StringPtr("<endpoint-location>"),
-				EndpointStatus:   armtrafficmanager.EndpointStatusEnabled.ToPtr(),
+				EndpointStatus:   armtrafficmanager.EndpointStatus("Enabled").ToPtr(),
 				Target:           to.StringPtr("<target>"),
 			},
 		},
@@ -51,6 +47,6 @@ func ExampleEndpointsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Endpoint.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.EndpointsClientCreateOrUpdateResult)
 }
 ```

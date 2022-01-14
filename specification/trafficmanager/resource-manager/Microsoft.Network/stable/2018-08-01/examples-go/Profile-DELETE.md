@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.1.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.2.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtrafficmanager_test
@@ -19,12 +19,13 @@ func ExampleProfilesClient_Delete() {
 	}
 	ctx := context.Background()
 	client := armtrafficmanager.NewProfilesClient("<subscription-id>", cred, nil)
-	_, err = client.Delete(ctx,
+	res, err := client.Delete(ctx,
 		"<resource-group-name>",
 		"<profile-name>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ProfilesClientDeleteResult)
 }
 ```

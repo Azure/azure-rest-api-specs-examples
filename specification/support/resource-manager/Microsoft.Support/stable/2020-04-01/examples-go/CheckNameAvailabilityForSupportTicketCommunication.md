@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv0.1.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv0.2.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsupport_test
@@ -20,7 +20,7 @@ func ExampleCommunicationsClient_CheckNameAvailability() {
 	}
 	ctx := context.Background()
 	client := armsupport.NewCommunicationsClient("<subscription-id>", cred, nil)
-	_, err = client.CheckNameAvailability(ctx,
+	res, err := client.CheckNameAvailability(ctx,
 		"<support-ticket-name>",
 		armsupport.CheckNameAvailabilityInput{
 			Name: to.StringPtr("<name>"),
@@ -30,5 +30,6 @@ func ExampleCommunicationsClient_CheckNameAvailability() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.CommunicationsClientCheckNameAvailabilityResult)
 }
 ```

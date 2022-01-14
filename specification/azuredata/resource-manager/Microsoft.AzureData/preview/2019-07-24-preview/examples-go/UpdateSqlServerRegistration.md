@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazuredata%2Farmazuredata%2Fv0.1.0/sdk/resourcemanager/azuredata/armazuredata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazuredata%2Farmazuredata%2Fv0.2.0/sdk/resourcemanager/azuredata/armazuredata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazuredata_test
@@ -32,6 +32,6 @@ func ExampleSQLServerRegistrationsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SQLServerRegistration.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SQLServerRegistrationsClientUpdateResult)
 }
 ```

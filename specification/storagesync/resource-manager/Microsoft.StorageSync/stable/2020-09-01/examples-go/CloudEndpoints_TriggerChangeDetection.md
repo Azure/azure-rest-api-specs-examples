@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.1.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.2.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragesync_test
@@ -28,7 +28,7 @@ func ExampleCloudEndpointsClient_BeginTriggerChangeDetection() {
 		"<sync-group-name>",
 		"<cloud-endpoint-name>",
 		armstoragesync.TriggerChangeDetectionParameters{
-			ChangeDetectionMode: armstoragesync.ChangeDetectionModeRecursive.ToPtr(),
+			ChangeDetectionMode: armstoragesync.ChangeDetectionMode("Recursive").ToPtr(),
 			DirectoryPath:       to.StringPtr("<directory-path>"),
 		},
 		nil)

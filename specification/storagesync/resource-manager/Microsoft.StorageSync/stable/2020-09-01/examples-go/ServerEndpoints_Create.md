@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.1.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.2.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragesync_test
@@ -29,11 +29,11 @@ func ExampleServerEndpointsClient_BeginCreate() {
 		"<server-endpoint-name>",
 		armstoragesync.ServerEndpointCreateParameters{
 			Properties: &armstoragesync.ServerEndpointCreateParametersProperties{
-				CloudTiering:                 armstoragesync.FeatureStatusOff.ToPtr(),
-				InitialDownloadPolicy:        armstoragesync.InitialDownloadPolicyNamespaceThenModifiedFiles.ToPtr(),
-				InitialUploadPolicy:          armstoragesync.InitialUploadPolicyServerAuthoritative.ToPtr(),
-				LocalCacheMode:               armstoragesync.LocalCacheModeUpdateLocallyCachedFiles.ToPtr(),
-				OfflineDataTransfer:          armstoragesync.FeatureStatusOn.ToPtr(),
+				CloudTiering:                 armstoragesync.FeatureStatus("off").ToPtr(),
+				InitialDownloadPolicy:        armstoragesync.InitialDownloadPolicy("NamespaceThenModifiedFiles").ToPtr(),
+				InitialUploadPolicy:          armstoragesync.InitialUploadPolicy("ServerAuthoritative").ToPtr(),
+				LocalCacheMode:               armstoragesync.LocalCacheMode("UpdateLocallyCachedFiles").ToPtr(),
+				OfflineDataTransfer:          armstoragesync.FeatureStatus("on").ToPtr(),
 				OfflineDataTransferShareName: to.StringPtr("<offline-data-transfer-share-name>"),
 				ServerLocalPath:              to.StringPtr("<server-local-path>"),
 				ServerResourceID:             to.StringPtr("<server-resource-id>"),
@@ -49,6 +49,6 @@ func ExampleServerEndpointsClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ServerEndpoint.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ServerEndpointsClientCreateResult)
 }
 ```

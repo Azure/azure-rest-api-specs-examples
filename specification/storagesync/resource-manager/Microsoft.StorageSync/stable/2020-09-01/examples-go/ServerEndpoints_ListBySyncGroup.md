@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.1.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.2.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragesync_test
@@ -19,7 +19,7 @@ func ExampleServerEndpointsClient_ListBySyncGroup() {
 	}
 	ctx := context.Background()
 	client := armstoragesync.NewServerEndpointsClient("<subscription-id>", cred, nil)
-	_, err = client.ListBySyncGroup(ctx,
+	res, err := client.ListBySyncGroup(ctx,
 		"<resource-group-name>",
 		"<storage-sync-service-name>",
 		"<sync-group-name>",
@@ -27,5 +27,6 @@ func ExampleServerEndpointsClient_ListBySyncGroup() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ServerEndpointsClientListBySyncGroupResult)
 }
 ```

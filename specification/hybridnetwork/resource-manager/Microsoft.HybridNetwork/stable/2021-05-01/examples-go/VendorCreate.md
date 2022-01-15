@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.1.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.2.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridnetwork_test
@@ -23,7 +23,7 @@ func ExampleVendorsClient_BeginCreateOrUpdate() {
 	client := armhybridnetwork.NewVendorsClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<vendor-name>",
-		&armhybridnetwork.VendorsBeginCreateOrUpdateOptions{Parameters: &armhybridnetwork.Vendor{}})
+		&armhybridnetwork.VendorsClientBeginCreateOrUpdateOptions{Parameters: &armhybridnetwork.Vendor{}})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,6 +31,6 @@ func ExampleVendorsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Vendor.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.VendorsClientCreateOrUpdateResult)
 }
 ```

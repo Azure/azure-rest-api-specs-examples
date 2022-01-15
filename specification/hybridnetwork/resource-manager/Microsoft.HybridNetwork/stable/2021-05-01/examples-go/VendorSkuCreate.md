@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.1.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.2.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridnetwork_test
@@ -27,7 +27,7 @@ func ExampleVendorSKUsClient_BeginCreateOrUpdate() {
 		"<sku-name>",
 		armhybridnetwork.VendorSKU{
 			Properties: &armhybridnetwork.VendorSKUPropertiesFormat{
-				DeploymentMode:             armhybridnetwork.SKUDeploymentModePrivateEdgeZone.ToPtr(),
+				DeploymentMode:             armhybridnetwork.SKUDeploymentMode("PrivateEdgeZone").ToPtr(),
 				ManagedApplicationTemplate: map[string]interface{}{},
 				NetworkFunctionTemplate: &armhybridnetwork.NetworkFunctionTemplate{
 					NetworkFunctionRoleConfigurations: []*armhybridnetwork.NetworkFunctionRoleConfiguration{
@@ -39,30 +39,28 @@ func ExampleVendorSKUsClient_BeginCreateOrUpdate() {
 								{
 									IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 										{
-											DNSServers:         []*string{},
 											Gateway:            to.StringPtr("<gateway>"),
 											IPAddress:          to.StringPtr("<ipaddress>"),
-											IPAllocationMethod: armhybridnetwork.IPAllocationMethodDynamic.ToPtr(),
-											IPVersion:          armhybridnetwork.IPVersionIPv4.ToPtr(),
+											IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
+											IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
 											Subnet:             to.StringPtr("<subnet>"),
 										}},
 									MacAddress:           to.StringPtr("<mac-address>"),
 									NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-									VMSwitchType:         armhybridnetwork.VMSwitchTypeWan.ToPtr(),
+									VMSwitchType:         armhybridnetwork.VMSwitchType("Wan").ToPtr(),
 								},
 								{
 									IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 										{
-											DNSServers:         []*string{},
 											Gateway:            to.StringPtr("<gateway>"),
 											IPAddress:          to.StringPtr("<ipaddress>"),
-											IPAllocationMethod: armhybridnetwork.IPAllocationMethodDynamic.ToPtr(),
-											IPVersion:          armhybridnetwork.IPVersionIPv4.ToPtr(),
+											IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
+											IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
 											Subnet:             to.StringPtr("<subnet>"),
 										}},
 									MacAddress:           to.StringPtr("<mac-address>"),
 									NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-									VMSwitchType:         armhybridnetwork.VMSwitchTypeManagement.ToPtr(),
+									VMSwitchType:         armhybridnetwork.VMSwitchType("Management").ToPtr(),
 								}},
 							OSProfile: &armhybridnetwork.OsProfile{
 								AdminUsername: to.StringPtr("<admin-username>"),
@@ -78,12 +76,12 @@ func ExampleVendorSKUsClient_BeginCreateOrUpdate() {
 								},
 							},
 							RoleName: to.StringPtr("<role-name>"),
-							RoleType: armhybridnetwork.NetworkFunctionRoleConfigurationTypeVirtualMachine.ToPtr(),
+							RoleType: armhybridnetwork.NetworkFunctionRoleConfigurationType("VirtualMachine").ToPtr(),
 							StorageProfile: &armhybridnetwork.StorageProfile{
 								DataDisks: []*armhybridnetwork.DataDisk{
 									{
 										Name:         to.StringPtr("<name>"),
-										CreateOption: armhybridnetwork.DiskCreateOptionTypesEmpty.ToPtr(),
+										CreateOption: armhybridnetwork.DiskCreateOptionTypes("Empty").ToPtr(),
 										DiskSizeGB:   to.Int32Ptr(10),
 									}},
 								ImageReference: &armhybridnetwork.ImageReference{
@@ -95,13 +93,13 @@ func ExampleVendorSKUsClient_BeginCreateOrUpdate() {
 								OSDisk: &armhybridnetwork.OsDisk{
 									Name:       to.StringPtr("<name>"),
 									DiskSizeGB: to.Int32Ptr(30),
-									OSType:     armhybridnetwork.OperatingSystemTypesLinux.ToPtr(),
+									OSType:     armhybridnetwork.OperatingSystemTypes("Linux").ToPtr(),
 									Vhd: &armhybridnetwork.VirtualHardDisk{
 										URI: to.StringPtr("<uri>"),
 									},
 								},
 							},
-							VirtualMachineSize: armhybridnetwork.VirtualMachineSizeTypesStandardD3V2.ToPtr(),
+							VirtualMachineSize: armhybridnetwork.VirtualMachineSizeTypes("Standard_D3_v2").ToPtr(),
 						}},
 				},
 				Preview: to.BoolPtr(true),
@@ -115,6 +113,6 @@ func ExampleVendorSKUsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("VendorSKU.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.VendorSKUsClientCreateOrUpdateResult)
 }
 ```

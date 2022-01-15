@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.1.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.2.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmarketplace_test
@@ -23,7 +23,7 @@ func ExamplePrivateStoreCollectionClient_CreateOrUpdate() {
 	res, err := client.CreateOrUpdate(ctx,
 		"<private-store-id>",
 		"<collection-id>",
-		&armmarketplace.PrivateStoreCollectionCreateOrUpdateOptions{Payload: &armmarketplace.Collection{
+		&armmarketplace.PrivateStoreCollectionClientCreateOrUpdateOptions{Payload: &armmarketplace.Collection{
 			Properties: &armmarketplace.CollectionProperties{
 				AllSubscriptions: to.BoolPtr(false),
 				Claim:            to.StringPtr("<claim>"),
@@ -37,6 +37,6 @@ func ExamplePrivateStoreCollectionClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Collection.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PrivateStoreCollectionClientCreateOrUpdateResult)
 }
 ```

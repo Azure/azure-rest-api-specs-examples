@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.1.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.2.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmarketplace_test
@@ -23,9 +23,9 @@ func ExamplePrivateStoreClient_UpdateAdminRequestApproval() {
 	res, err := client.UpdateAdminRequestApproval(ctx,
 		"<private-store-id>",
 		"<admin-request-approval-id>",
-		&armmarketplace.PrivateStoreUpdateAdminRequestApprovalOptions{Payload: &armmarketplace.AdminRequestApprovalsResource{
+		&armmarketplace.PrivateStoreClientUpdateAdminRequestApprovalOptions{Payload: &armmarketplace.AdminRequestApprovalsResource{
 			Properties: &armmarketplace.AdminRequestApprovalProperties{
-				AdminAction: armmarketplace.AdminActionApproved.ToPtr(),
+				AdminAction: armmarketplace.AdminAction("Approved").ToPtr(),
 				ApprovedPlans: []*string{
 					to.StringPtr("testPlan")},
 				CollectionIDs: []*string{
@@ -39,6 +39,6 @@ func ExamplePrivateStoreClient_UpdateAdminRequestApproval() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("AdminRequestApprovalsResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PrivateStoreClientUpdateAdminRequestApprovalResult)
 }
 ```

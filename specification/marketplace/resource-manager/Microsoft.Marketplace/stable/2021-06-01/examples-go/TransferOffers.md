@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.1.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.2.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmarketplace_test
@@ -20,10 +20,10 @@ func ExamplePrivateStoreCollectionClient_TransferOffers() {
 	}
 	ctx := context.Background()
 	client := armmarketplace.NewPrivateStoreCollectionClient(cred, nil)
-	_, err = client.TransferOffers(ctx,
+	res, err := client.TransferOffers(ctx,
 		"<private-store-id>",
 		"<collection-id>",
-		&armmarketplace.PrivateStoreCollectionTransferOffersOptions{Payload: &armmarketplace.TransferOffersProperties{
+		&armmarketplace.PrivateStoreCollectionClientTransferOffersOptions{Payload: &armmarketplace.TransferOffersProperties{
 			Properties: &armmarketplace.TransferOffersDetails{
 				OfferIDsList: []*string{
 					to.StringPtr("marketplacetestthirdparty.md-test-third-party-2"),
@@ -38,5 +38,6 @@ func ExamplePrivateStoreCollectionClient_TransferOffers() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.PrivateStoreCollectionClientTransferOffersResult)
 }
 ```

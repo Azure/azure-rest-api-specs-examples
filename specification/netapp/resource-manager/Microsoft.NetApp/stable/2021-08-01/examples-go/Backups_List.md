@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.1.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -19,7 +19,7 @@ func ExampleBackupsClient_List() {
 	}
 	ctx := context.Background()
 	client := armnetapp.NewBackupsClient("<subscription-id>", cred, nil)
-	_, err = client.List(ctx,
+	res, err := client.List(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		"<pool-name>",
@@ -28,5 +28,6 @@ func ExampleBackupsClient_List() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.BackupsClientListResult)
 }
 ```

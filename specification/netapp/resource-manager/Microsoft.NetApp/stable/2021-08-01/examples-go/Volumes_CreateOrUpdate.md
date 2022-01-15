@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.1.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -32,7 +32,7 @@ func ExampleVolumesClient_BeginCreateOrUpdate() {
 			Properties: &armnetapp.VolumeProperties{
 				CreationToken:       to.StringPtr("<creation-token>"),
 				EncryptionKeySource: to.StringPtr("<encryption-key-source>"),
-				ServiceLevel:        armnetapp.ServiceLevelPremium.ToPtr(),
+				ServiceLevel:        armnetapp.ServiceLevel("Premium").ToPtr(),
 				SubnetID:            to.StringPtr("<subnet-id>"),
 				ThroughputMibps:     to.Float32Ptr(128),
 				UsageThreshold:      to.Int64Ptr(107374182400),
@@ -46,6 +46,6 @@ func ExampleVolumesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Volume.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.VolumesClientCreateOrUpdateResult)
 }
 ```

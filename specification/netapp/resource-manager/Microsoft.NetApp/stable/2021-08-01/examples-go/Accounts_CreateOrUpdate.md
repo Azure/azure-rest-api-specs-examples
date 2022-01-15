@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.1.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -25,7 +25,7 @@ func ExampleAccountsClient_BeginCreateOrUpdate() {
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
-		armnetapp.NetAppAccount{
+		armnetapp.Account{
 			Location: to.StringPtr("<location>"),
 			Properties: &armnetapp.AccountProperties{
 				ActiveDirectories: []*armnetapp.ActiveDirectory{
@@ -51,6 +51,6 @@ func ExampleAccountsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("NetAppAccount.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AccountsClientCreateOrUpdateResult)
 }
 ```

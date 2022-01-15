@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.1.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -31,7 +31,7 @@ func ExampleVolumeGroupsClient_BeginCreate() {
 			Properties: &armnetapp.VolumeGroupProperties{
 				GroupMetaData: &armnetapp.VolumeGroupMetaData{
 					ApplicationIdentifier: to.StringPtr("<application-identifier>"),
-					ApplicationType:       armnetapp.ApplicationTypeSAPHANA.ToPtr(),
+					ApplicationType:       armnetapp.ApplicationType("SAP-HANA").ToPtr(),
 					DeploymentSpecID:      to.StringPtr("<deployment-spec-id>"),
 					GroupDescription:      to.StringPtr("<group-description>"),
 				},
@@ -42,7 +42,7 @@ func ExampleVolumeGroupsClient_BeginCreate() {
 							CapacityPoolResourceID:  to.StringPtr("<capacity-pool-resource-id>"),
 							CreationToken:           to.StringPtr("<creation-token>"),
 							ProximityPlacementGroup: to.StringPtr("<proximity-placement-group>"),
-							ServiceLevel:            armnetapp.ServiceLevelPremium.ToPtr(),
+							ServiceLevel:            armnetapp.ServiceLevel("Premium").ToPtr(),
 							SubnetID:                to.StringPtr("<subnet-id>"),
 							ThroughputMibps:         to.Float32Ptr(10),
 							UsageThreshold:          to.Int64Ptr(107374182400),
@@ -55,7 +55,7 @@ func ExampleVolumeGroupsClient_BeginCreate() {
 							CapacityPoolResourceID:  to.StringPtr("<capacity-pool-resource-id>"),
 							CreationToken:           to.StringPtr("<creation-token>"),
 							ProximityPlacementGroup: to.StringPtr("<proximity-placement-group>"),
-							ServiceLevel:            armnetapp.ServiceLevelPremium.ToPtr(),
+							ServiceLevel:            armnetapp.ServiceLevel("Premium").ToPtr(),
 							SubnetID:                to.StringPtr("<subnet-id>"),
 							ThroughputMibps:         to.Float32Ptr(10),
 							UsageThreshold:          to.Int64Ptr(107374182400),
@@ -68,7 +68,7 @@ func ExampleVolumeGroupsClient_BeginCreate() {
 							CapacityPoolResourceID:  to.StringPtr("<capacity-pool-resource-id>"),
 							CreationToken:           to.StringPtr("<creation-token>"),
 							ProximityPlacementGroup: to.StringPtr("<proximity-placement-group>"),
-							ServiceLevel:            armnetapp.ServiceLevelPremium.ToPtr(),
+							ServiceLevel:            armnetapp.ServiceLevel("Premium").ToPtr(),
 							SubnetID:                to.StringPtr("<subnet-id>"),
 							ThroughputMibps:         to.Float32Ptr(10),
 							UsageThreshold:          to.Int64Ptr(107374182400),
@@ -81,10 +81,9 @@ func ExampleVolumeGroupsClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("VolumeGroupDetails.ID: %s\n", *res.ID)
 }
 ```

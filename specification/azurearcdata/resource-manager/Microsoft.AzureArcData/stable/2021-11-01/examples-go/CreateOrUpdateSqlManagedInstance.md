@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.1.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.2.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazurearcdata_test
@@ -26,15 +26,13 @@ func ExampleSQLManagedInstancesClient_BeginCreate() {
 		"<resource-group-name>",
 		"<sql-managed-instance-name>",
 		armazurearcdata.SQLManagedInstance{
-			TrackedResource: armazurearcdata.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"mytag": to.StringPtr("myval"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"mytag": to.StringPtr("myval"),
 			},
 			ExtendedLocation: &armazurearcdata.ExtendedLocation{
 				Name: to.StringPtr("<name>"),
-				Type: armazurearcdata.ExtendedLocationTypesCustomLocation.ToPtr(),
+				Type: armazurearcdata.ExtendedLocationTypes("CustomLocation").ToPtr(),
 			},
 			Properties: &armazurearcdata.SQLManagedInstanceProperties{
 				Admin: to.StringPtr("<admin>"),
@@ -69,11 +67,11 @@ func ExampleSQLManagedInstancesClient_BeginCreate() {
 						},
 					},
 				},
-				LicenseType: armazurearcdata.ArcSQLManagedInstanceLicenseTypeLicenseIncluded.ToPtr(),
+				LicenseType: armazurearcdata.ArcSQLManagedInstanceLicenseType("LicenseIncluded").ToPtr(),
 				StartTime:   to.StringPtr("<start-time>"),
 			},
 			SKU: &armazurearcdata.SQLManagedInstanceSKU{
-				Name: armazurearcdata.SQLManagedInstanceSKUNameVCore.ToPtr(),
+				Name: armazurearcdata.SQLManagedInstanceSKUName("vCore").ToPtr(),
 				Dev:  to.BoolPtr(true),
 				Tier: armazurearcdata.SQLManagedInstanceSKUTierGeneralPurpose.ToPtr(),
 			},
@@ -86,6 +84,6 @@ func ExampleSQLManagedInstancesClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SQLManagedInstance.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SQLManagedInstancesClientCreateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -23,13 +23,13 @@ func ExampleAnalyticsItemsClient_Get() {
 	res, err := client.Get(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armapplicationinsights.ItemScopePathAnalyticsItems,
-		&armapplicationinsights.AnalyticsItemsGetOptions{ID: to.StringPtr("<id>"),
+		armapplicationinsights.ItemScopePath("analyticsItems"),
+		&armapplicationinsights.AnalyticsItemsClientGetOptions{ID: to.StringPtr("<id>"),
 			Name: nil,
 		})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ApplicationInsightsComponentAnalyticsItem.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AnalyticsItemsClientGetResult)
 }
 ```

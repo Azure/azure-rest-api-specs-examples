@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -19,10 +19,10 @@ func ExampleFavoritesClient_List() {
 	}
 	ctx := context.Background()
 	client := armapplicationinsights.NewFavoritesClient("<subscription-id>", cred, nil)
-	_, err = client.List(ctx,
+	res, err := client.List(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		&armapplicationinsights.FavoritesListOptions{FavoriteType: nil,
+		&armapplicationinsights.FavoritesClientListOptions{FavoriteType: nil,
 			SourceType:      nil,
 			CanFetchContent: nil,
 			Tags:            []string{},
@@ -30,5 +30,6 @@ func ExampleFavoritesClient_List() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.FavoritesClientListResult)
 }
 ```

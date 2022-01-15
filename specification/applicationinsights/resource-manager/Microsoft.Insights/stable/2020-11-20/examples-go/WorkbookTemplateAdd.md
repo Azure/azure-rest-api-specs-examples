@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -24,10 +24,7 @@ func ExampleWorkbookTemplatesClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<resource-name>",
 		armapplicationinsights.WorkbookTemplate{
-			WorkbookTemplateResource: armapplicationinsights.WorkbookTemplateResource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armapplicationinsights.WorkbookTemplateProperties{
 				Author: to.StringPtr("<author>"),
 				Galleries: []*armapplicationinsights.WorkbookTemplateGallery{
@@ -44,20 +41,20 @@ func ExampleWorkbookTemplatesClient_CreateOrUpdate() {
 					"items": []interface{}{
 						map[string]interface{}{
 							"name": "text - 2",
-							"type": 1,
+							"type": float64(1),
 							"content": map[string]interface{}{
 								"json": "## New workbook\n---\n\nWelcome to your new workbook.  This area will display text formatted as markdown.\n\n\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections.",
 							},
 						},
 						map[string]interface{}{
 							"name": "query - 2",
-							"type": 3,
+							"type": float64(3),
 							"content": map[string]interface{}{
 								"exportToExcelOptions": "visible",
 								"query":                "union withsource=TableName *\n| summarize Count=count() by TableName\n| render barchart",
-								"queryType":            0,
+								"queryType":            float64(0),
 								"resourceType":         "microsoft.operationalinsights/workspaces",
-								"size":                 1,
+								"size":                 float64(1),
 								"version":              "KqlItem/1.0",
 							},
 						},
@@ -71,6 +68,6 @@ func ExampleWorkbookTemplatesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("WorkbookTemplate.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkbookTemplatesClientCreateOrUpdateResult)
 }
 ```

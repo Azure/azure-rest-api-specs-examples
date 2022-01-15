@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
@@ -19,13 +20,22 @@ func ExampleComponentCurrentBillingFeaturesClient_Update() {
 	}
 	ctx := context.Background()
 	client := armapplicationinsights.NewComponentCurrentBillingFeaturesClient("<subscription-id>", cred, nil)
-	_, err = client.Update(ctx,
+	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armapplicationinsights.ApplicationInsightsComponentBillingFeatures{},
+		armapplicationinsights.ComponentBillingFeatures{
+			CurrentBillingFeatures: []*string{
+				to.StringPtr("Basic"),
+				to.StringPtr("Application Insights Enterprise")},
+			DataVolumeCap: &armapplicationinsights.ComponentDataVolumeCap{
+				Cap:                            to.Float32Ptr(100),
+				StopSendNotificationWhenHitCap: to.BoolPtr(true),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ComponentCurrentBillingFeaturesClientUpdateResult)
 }
 ```

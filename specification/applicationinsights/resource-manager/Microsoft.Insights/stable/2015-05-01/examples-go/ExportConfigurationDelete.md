@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -19,7 +19,7 @@ func ExampleExportConfigurationsClient_Delete() {
 	}
 	ctx := context.Background()
 	client := armapplicationinsights.NewExportConfigurationsClient("<subscription-id>", cred, nil)
-	_, err = client.Delete(ctx,
+	res, err := client.Delete(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		"<export-id>",
@@ -27,5 +27,6 @@ func ExampleExportConfigurationsClient_Delete() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ExportConfigurationsClientDeleteResult)
 }
 ```

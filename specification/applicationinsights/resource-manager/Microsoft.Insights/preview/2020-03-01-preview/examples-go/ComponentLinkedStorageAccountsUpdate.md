@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
@@ -22,12 +23,16 @@ func ExampleComponentLinkedStorageAccountsClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armapplicationinsights.StorageTypeServiceProfiler,
-		armapplicationinsights.ComponentLinkedStorageAccountsPatch{},
+		armapplicationinsights.StorageType("ServiceProfiler"),
+		armapplicationinsights.ComponentLinkedStorageAccountsPatch{
+			Properties: &armapplicationinsights.LinkedStorageAccountsProperties{
+				LinkedStorageAccount: to.StringPtr("<linked-storage-account>"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ComponentLinkedStorageAccounts.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ComponentLinkedStorageAccountsClientUpdateResult)
 }
 ```

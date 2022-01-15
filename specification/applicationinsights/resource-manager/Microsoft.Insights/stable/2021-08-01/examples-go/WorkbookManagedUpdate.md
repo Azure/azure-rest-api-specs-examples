@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -20,15 +20,14 @@ func ExampleWorkbooksClient_Update() {
 	}
 	ctx := context.Background()
 	client := armapplicationinsights.NewWorkbooksClient("<subscription-id>", cred, nil)
-	res, err := client.Update(ctx,
+	_, err = client.Update(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		&armapplicationinsights.WorkbooksUpdateOptions{SourceID: to.StringPtr("<source-id>"),
+		&armapplicationinsights.WorkbooksClientUpdateOptions{SourceID: to.StringPtr("<source-id>"),
 			WorkbookUpdateParameters: nil,
 		})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Workbook.ID: %s\n", *res.ID)
 }
 ```

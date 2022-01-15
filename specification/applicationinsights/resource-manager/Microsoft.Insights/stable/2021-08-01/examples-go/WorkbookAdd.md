@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -24,16 +24,12 @@ func ExampleWorkbooksClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<resource-name>",
 		armapplicationinsights.Workbook{
-			WorkbookResource: armapplicationinsights.WorkbookResource{
-				TrackedResource: armapplicationinsights.TrackedResource{
-					Location: to.StringPtr("<location>"),
-					Tags: map[string]*string{
-						"TagSample01": to.StringPtr("sample01"),
-						"TagSample02": to.StringPtr("sample02"),
-					},
-				},
-				Kind: armapplicationinsights.KindShared.ToPtr(),
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"TagSample01": to.StringPtr("sample01"),
+				"TagSample02": to.StringPtr("sample02"),
 			},
+			Kind: armapplicationinsights.Kind("shared").ToPtr(),
 			Properties: &armapplicationinsights.WorkbookProperties{
 				Description:    to.StringPtr("<description>"),
 				Category:       to.StringPtr("<category>"),
@@ -41,10 +37,10 @@ func ExampleWorkbooksClient_CreateOrUpdate() {
 				SerializedData: to.StringPtr("<serialized-data>"),
 			},
 		},
-		&armapplicationinsights.WorkbooksCreateOrUpdateOptions{SourceID: to.StringPtr("<source-id>")})
+		&armapplicationinsights.WorkbooksClientCreateOrUpdateOptions{SourceID: to.StringPtr("<source-id>")})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Workbook.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkbooksClientCreateOrUpdateResult)
 }
 ```

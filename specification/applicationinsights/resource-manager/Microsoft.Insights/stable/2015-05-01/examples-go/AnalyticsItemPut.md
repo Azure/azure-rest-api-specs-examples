@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.1.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -23,17 +23,17 @@ func ExampleAnalyticsItemsClient_Put() {
 	res, err := client.Put(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armapplicationinsights.ItemScopePathAnalyticsItems,
-		armapplicationinsights.ApplicationInsightsComponentAnalyticsItem{
+		armapplicationinsights.ItemScopePath("analyticsItems"),
+		armapplicationinsights.ComponentAnalyticsItem{
 			Content: to.StringPtr("<content>"),
 			Name:    to.StringPtr("<name>"),
-			Scope:   armapplicationinsights.ItemScopeShared.ToPtr(),
-			Type:    armapplicationinsights.ItemTypeQuery.ToPtr(),
+			Scope:   armapplicationinsights.ItemScope("shared").ToPtr(),
+			Type:    armapplicationinsights.ItemType("query").ToPtr(),
 		},
-		&armapplicationinsights.AnalyticsItemsPutOptions{OverrideItem: nil})
+		&armapplicationinsights.AnalyticsItemsClientPutOptions{OverrideItem: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ApplicationInsightsComponentAnalyticsItem.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AnalyticsItemsClientPutResult)
 }
 ```

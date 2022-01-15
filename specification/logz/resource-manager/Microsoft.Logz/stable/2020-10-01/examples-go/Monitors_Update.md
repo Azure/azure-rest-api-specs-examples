@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.1.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.2.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogz_test
@@ -22,10 +22,10 @@ func ExampleMonitorsClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<monitor-name>",
-		&armlogz.MonitorsUpdateOptions{Body: nil})
+		&armlogz.MonitorsClientUpdateOptions{Body: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("LogzMonitorResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MonitorsClientUpdateResult)
 }
 ```

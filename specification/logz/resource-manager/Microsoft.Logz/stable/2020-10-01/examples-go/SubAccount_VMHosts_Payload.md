@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.1.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.2.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogz_test
@@ -19,7 +19,7 @@ func ExampleSubAccountClient_VMHostPayload() {
 	}
 	ctx := context.Background()
 	client := armlogz.NewSubAccountClient("<subscription-id>", cred, nil)
-	_, err = client.VMHostPayload(ctx,
+	res, err := client.VMHostPayload(ctx,
 		"<resource-group-name>",
 		"<monitor-name>",
 		"<sub-account-name>",
@@ -27,5 +27,6 @@ func ExampleSubAccountClient_VMHostPayload() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.SubAccountClientVMHostPayloadResult)
 }
 ```

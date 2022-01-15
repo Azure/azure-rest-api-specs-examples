@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.1.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.2.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogz_test
@@ -21,10 +21,17 @@ func ExampleMonitorsClient_ListUserRoles() {
 	client := armlogz.NewMonitorsClient("<subscription-id>", cred, nil)
 	pager := client.ListUserRoles("<resource-group-name>",
 		"<monitor-name>",
-		&armlogz.MonitorsListUserRolesOptions{Body: nil})
-	for pager.NextPage(ctx) {
+		&armlogz.MonitorsClientListUserRolesOptions{Body: nil})
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
+		}
+		if !nextResult {
+			break
+		}
+		for _, v := range pager.PageResponse().Value {
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

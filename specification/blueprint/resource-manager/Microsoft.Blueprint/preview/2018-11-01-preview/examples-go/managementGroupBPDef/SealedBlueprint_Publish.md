@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.1.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.2.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -19,14 +19,13 @@ func ExamplePublishedBlueprintsClient_Create() {
 	}
 	ctx := context.Background()
 	client := armblueprint.NewPublishedBlueprintsClient(cred, nil)
-	res, err := client.Create(ctx,
+	_, err = client.Create(ctx,
 		"<resource-scope>",
 		"<blueprint-name>",
 		"<version-id>",
-		&armblueprint.PublishedBlueprintsCreateOptions{PublishedBlueprint: nil})
+		&armblueprint.PublishedBlueprintsClientCreateOptions{PublishedBlueprint: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PublishedBlueprint.ID: %s\n", *res.ID)
 }
 ```

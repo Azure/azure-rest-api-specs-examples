@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.1.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.2.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -27,6 +27,6 @@ func ExampleArtifactsClient_Delete() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ArtifactClassification.GetArtifact().ID: %s\n", *res.GetArtifact().ID)
+	log.Printf("Response result: %#v\n", res.ArtifactsClientDeleteResult)
 }
 ```

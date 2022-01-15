@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -20,9 +20,9 @@ func ExampleBaselinesClient_List() {
 	}
 	ctx := context.Background()
 	client := armmonitor.NewBaselinesClient(cred, nil)
-	_, err = client.List(ctx,
+	res, err := client.List(ctx,
 		"<resource-uri>",
-		&armmonitor.BaselinesListOptions{Metricnames: nil,
+		&armmonitor.BaselinesClientListOptions{Metricnames: nil,
 			Metricnamespace: nil,
 			Timespan:        to.StringPtr("<timespan>"),
 			Interval:        to.StringPtr("<interval>"),
@@ -34,5 +34,6 @@ func ExampleBaselinesClient_List() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.BaselinesClientListResult)
 }
 ```

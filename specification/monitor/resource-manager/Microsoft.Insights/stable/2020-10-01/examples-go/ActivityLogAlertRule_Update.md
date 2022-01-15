@@ -12,19 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2021-09-01/examples/patchActionGroup.json
-func ExampleActionGroupsClient_Update() {
+// x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/examples/ActivityLogAlertRule_Update.json
+func ExampleActivityLogAlertsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armmonitor.NewActionGroupsClient("<subscription-id>", cred, nil)
+	client := armmonitor.NewActivityLogAlertsClient("<subscription-id>", cred, nil)
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
-		"<action-group-name>",
-		armmonitor.ActionGroupPatchBody{
-			Properties: &armmonitor.ActionGroupPatch{
+		"<activity-log-alert-name>",
+		armmonitor.AlertRulePatchObject{
+			Properties: &armmonitor.AlertRulePatchProperties{
 				Enabled: to.BoolPtr(false),
 			},
 			Tags: map[string]*string{
@@ -36,6 +36,6 @@ func ExampleActionGroupsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Response result: %#v\n", res.ActionGroupsClientUpdateResult)
+	log.Printf("Response result: %#v\n", res.ActivityLogAlertsClientUpdateResult)
 }
 ```

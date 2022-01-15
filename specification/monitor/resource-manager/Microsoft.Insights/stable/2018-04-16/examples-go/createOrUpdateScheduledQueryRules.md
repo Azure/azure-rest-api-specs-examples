@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -24,34 +24,30 @@ func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<rule-name>",
 		armmonitor.LogSearchRuleResource{
-			TrackedEntityResource: armmonitor.TrackedEntityResource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+			Location: to.StringPtr("<location>"),
+			Tags:     map[string]*string{},
 			Properties: &armmonitor.LogSearchRule{
 				Description: to.StringPtr("<description>"),
 				Action: &armmonitor.AlertingAction{
-					Action: armmonitor.Action{
-						ODataType: to.StringPtr("<odata-type>"),
-					},
+					ODataType: to.StringPtr("<odata-type>"),
 					AznsAction: &armmonitor.AzNsActionGroup{
 						ActionGroup:          []*string{},
 						CustomWebhookPayload: to.StringPtr("<custom-webhook-payload>"),
 						EmailSubject:         to.StringPtr("<email-subject>"),
 					},
-					Severity: armmonitor.AlertSeverityOne.ToPtr(),
+					Severity: armmonitor.AlertSeverity("1").ToPtr(),
 					Trigger: &armmonitor.TriggerCondition{
 						MetricTrigger: &armmonitor.LogMetricTrigger{
 							MetricColumn:      to.StringPtr("<metric-column>"),
-							MetricTriggerType: armmonitor.MetricTriggerTypeConsecutive.ToPtr(),
+							MetricTriggerType: armmonitor.MetricTriggerType("Consecutive").ToPtr(),
 							Threshold:         to.Float64Ptr(5),
-							ThresholdOperator: armmonitor.ConditionalOperatorGreaterThan.ToPtr(),
+							ThresholdOperator: armmonitor.ConditionalOperator("GreaterThan").ToPtr(),
 						},
 						Threshold:         to.Float64Ptr(3),
-						ThresholdOperator: armmonitor.ConditionalOperatorGreaterThan.ToPtr(),
+						ThresholdOperator: armmonitor.ConditionalOperator("GreaterThan").ToPtr(),
 					},
 				},
-				Enabled: armmonitor.EnabledTrue.ToPtr(),
+				Enabled: armmonitor.Enabled("true").ToPtr(),
 				Schedule: &armmonitor.Schedule{
 					FrequencyInMinutes:  to.Int32Ptr(15),
 					TimeWindowInMinutes: to.Int32Ptr(15),
@@ -59,7 +55,7 @@ func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 				Source: &armmonitor.Source{
 					DataSourceID: to.StringPtr("<data-source-id>"),
 					Query:        to.StringPtr("<query>"),
-					QueryType:    armmonitor.QueryTypeResultCount.ToPtr(),
+					QueryType:    armmonitor.QueryType("ResultCount").ToPtr(),
 				},
 			},
 		},
@@ -67,6 +63,6 @@ func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("LogSearchRuleResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ScheduledQueryRulesClientCreateOrUpdateResult)
 }
 ```

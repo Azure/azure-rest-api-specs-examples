@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -24,10 +24,8 @@ func ExampleMetricAlertsClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<rule-name>",
 		armmonitor.MetricAlertResource{
-			Resource: armmonitor.Resource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+			Location: to.StringPtr("<location>"),
+			Tags:     map[string]*string{},
 			Properties: &armmonitor.MetricAlertProperties{
 				Description: to.StringPtr("<description>"),
 				Actions: []*armmonitor.MetricAlertAction{
@@ -40,25 +38,21 @@ func ExampleMetricAlertsClient_CreateOrUpdate() {
 					}},
 				AutoMitigate: to.BoolPtr(true),
 				Criteria: &armmonitor.MetricAlertMultipleResourceMultipleMetricCriteria{
-					MetricAlertCriteria: armmonitor.MetricAlertCriteria{
-						ODataType: armmonitor.OdatatypeMicrosoftAzureMonitorMultipleResourceMultipleMetricCriteria.ToPtr(),
-					},
+					ODataType: armmonitor.Odatatype("Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria").ToPtr(),
 					AllOf: []armmonitor.MultiMetricCriteriaClassification{
 						&armmonitor.DynamicMetricCriteria{
-							MultiMetricCriteria: armmonitor.MultiMetricCriteria{
-								Name:            to.StringPtr("<name>"),
-								CriterionType:   armmonitor.CriterionTypeDynamicThresholdCriterion.ToPtr(),
-								Dimensions:      []*armmonitor.MetricDimension{},
-								MetricName:      to.StringPtr("<metric-name>"),
-								MetricNamespace: to.StringPtr("<metric-namespace>"),
-								TimeAggregation: armmonitor.AggregationTypeEnumAverage.ToPtr(),
-							},
-							AlertSensitivity: armmonitor.DynamicThresholdSensitivityMedium.ToPtr(),
+							Name:             to.StringPtr("<name>"),
+							CriterionType:    armmonitor.CriterionType("DynamicThresholdCriterion").ToPtr(),
+							Dimensions:       []*armmonitor.MetricDimension{},
+							MetricName:       to.StringPtr("<metric-name>"),
+							MetricNamespace:  to.StringPtr("<metric-namespace>"),
+							TimeAggregation:  armmonitor.AggregationTypeEnum("Average").ToPtr(),
+							AlertSensitivity: armmonitor.DynamicThresholdSensitivity("Medium").ToPtr(),
 							FailingPeriods: &armmonitor.DynamicThresholdFailingPeriods{
 								MinFailingPeriodsToAlert:  to.Float32Ptr(4),
 								NumberOfEvaluationPeriods: to.Float32Ptr(4),
 							},
-							Operator: armmonitor.DynamicThresholdOperatorGreaterOrLessThan.ToPtr(),
+							Operator: armmonitor.DynamicThresholdOperator("GreaterOrLessThan").ToPtr(),
 						}},
 				},
 				Enabled:             to.BoolPtr(true),
@@ -76,6 +70,6 @@ func ExampleMetricAlertsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("MetricAlertResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MetricAlertsClientCreateOrUpdateResult)
 }
 ```

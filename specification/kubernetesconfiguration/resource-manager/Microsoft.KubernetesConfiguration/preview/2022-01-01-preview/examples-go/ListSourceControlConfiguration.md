@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.1.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -20,16 +20,20 @@ func ExampleSourceControlConfigurationsClient_List() {
 	ctx := context.Background()
 	client := armkubernetesconfiguration.NewSourceControlConfigurationsClient("<subscription-id>", cred, nil)
 	pager := client.List("<resource-group-name>",
-		armkubernetesconfiguration.Enum0MicrosoftKubernetes,
-		armkubernetesconfiguration.Enum1ConnectedClusters,
+		armkubernetesconfiguration.Enum0("Microsoft.Kubernetes"),
+		armkubernetesconfiguration.Enum1("connectedClusters"),
 		"<cluster-name>",
 		nil)
-	for pager.NextPage(ctx) {
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
+		if !nextResult {
+			break
+		}
 		for _, v := range pager.PageResponse().Value {
-			log.Printf("SourceControlConfiguration.ID: %s\n", *v.ID)
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

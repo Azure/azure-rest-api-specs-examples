@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.1.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -24,8 +24,8 @@ func ExampleFluxConfigurationsClient_BeginCreateOrUpdate() {
 	client := armkubernetesconfiguration.NewFluxConfigurationsClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
-		armkubernetesconfiguration.Enum0MicrosoftKubernetes,
-		armkubernetesconfiguration.Enum1ConnectedClusters,
+		armkubernetesconfiguration.Enum0("Microsoft.Kubernetes"),
+		armkubernetesconfiguration.Enum1("connectedClusters"),
 		"<cluster-name>",
 		"<flux-configuration-name>",
 		armkubernetesconfiguration.FluxConfiguration{
@@ -59,8 +59,8 @@ func ExampleFluxConfigurationsClient_BeginCreateOrUpdate() {
 					},
 				},
 				Namespace:  to.StringPtr("<namespace>"),
-				Scope:      armkubernetesconfiguration.ScopeTypeCluster.ToPtr(),
-				SourceKind: armkubernetesconfiguration.SourceKindTypeGitRepository.ToPtr(),
+				Scope:      armkubernetesconfiguration.ScopeType("cluster").ToPtr(),
+				SourceKind: armkubernetesconfiguration.SourceKindType("GitRepository").ToPtr(),
 				Suspend:    to.BoolPtr(false),
 			},
 		},
@@ -72,6 +72,6 @@ func ExampleFluxConfigurationsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("FluxConfiguration.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.FluxConfigurationsClientCreateOrUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.1.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -24,8 +24,8 @@ func ExampleFluxConfigurationsClient_BeginUpdate() {
 	client := armkubernetesconfiguration.NewFluxConfigurationsClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
-		armkubernetesconfiguration.Enum0MicrosoftKubernetes,
-		armkubernetesconfiguration.Enum1ConnectedClusters,
+		armkubernetesconfiguration.Enum0("Microsoft.Kubernetes"),
+		armkubernetesconfiguration.Enum1("connectedClusters"),
 		"<cluster-name>",
 		"<flux-configuration-name>",
 		armkubernetesconfiguration.FluxConfigurationPatch{
@@ -34,10 +34,9 @@ func ExampleFluxConfigurationsClient_BeginUpdate() {
 					URL: to.StringPtr("<url>"),
 				},
 				Kustomizations: map[string]*armkubernetesconfiguration.KustomizationPatchDefinition{
-					"srs-kustomization1": {},
+					"srs-kustomization1": nil,
 					"srs-kustomization2": {
 						Path:                  to.StringPtr("<path>"),
-						DependsOn:             []*armkubernetesconfiguration.DependsOnDefinition{},
 						SyncIntervalInSeconds: to.Int64Ptr(300),
 					},
 					"srs-kustomization3": {
@@ -52,10 +51,9 @@ func ExampleFluxConfigurationsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("FluxConfiguration.ID: %s\n", *res.ID)
 }
 ```

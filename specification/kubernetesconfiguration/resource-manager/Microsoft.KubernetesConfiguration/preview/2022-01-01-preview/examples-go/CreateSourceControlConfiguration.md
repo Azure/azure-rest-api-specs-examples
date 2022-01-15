@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.1.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -22,8 +22,8 @@ func ExampleSourceControlConfigurationsClient_CreateOrUpdate() {
 	client := armkubernetesconfiguration.NewSourceControlConfigurationsClient("<subscription-id>", cred, nil)
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
-		armkubernetesconfiguration.Enum0MicrosoftKubernetes,
-		armkubernetesconfiguration.Enum1ConnectedClusters,
+		armkubernetesconfiguration.Enum0("Microsoft.Kubernetes"),
+		armkubernetesconfiguration.Enum1("connectedClusters"),
 		"<cluster-name>",
 		"<source-control-configuration-name>",
 		armkubernetesconfiguration.SourceControlConfiguration{
@@ -39,8 +39,8 @@ func ExampleSourceControlConfigurationsClient_CreateOrUpdate() {
 				OperatorInstanceName:  to.StringPtr("<operator-instance-name>"),
 				OperatorNamespace:     to.StringPtr("<operator-namespace>"),
 				OperatorParams:        to.StringPtr("<operator-params>"),
-				OperatorScope:         armkubernetesconfiguration.OperatorScopeTypeNamespace.ToPtr(),
-				OperatorType:          armkubernetesconfiguration.OperatorTypeFlux.ToPtr(),
+				OperatorScope:         armkubernetesconfiguration.OperatorScopeType("namespace").ToPtr(),
+				OperatorType:          armkubernetesconfiguration.OperatorType("Flux").ToPtr(),
 				RepositoryURL:         to.StringPtr("<repository-url>"),
 				SSHKnownHostsContents: to.StringPtr("<sshknown-hosts-contents>"),
 			},
@@ -49,6 +49,6 @@ func ExampleSourceControlConfigurationsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SourceControlConfiguration.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SourceControlConfigurationsClientCreateOrUpdateResult)
 }
 ```

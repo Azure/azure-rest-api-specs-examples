@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.1.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.2.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfidentialledger_test
@@ -26,27 +26,23 @@ func ExampleLedgerClient_BeginCreate() {
 		"<resource-group-name>",
 		"<ledger-name>",
 		armconfidentialledger.ConfidentialLedger{
-			Location: armconfidentialledger.Location{
-				Location: to.StringPtr("<location>"),
-			},
-			Tags: armconfidentialledger.Tags{
-				Tags: map[string]*string{
-					"additionalProps1": to.StringPtr("additional properties"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"additionalProps1": to.StringPtr("additional properties"),
 			},
 			Properties: &armconfidentialledger.LedgerProperties{
 				AADBasedSecurityPrincipals: []*armconfidentialledger.AADBasedSecurityPrincipal{
 					{
-						LedgerRoleName: armconfidentialledger.LedgerRoleNameAdministrator.ToPtr(),
+						LedgerRoleName: armconfidentialledger.LedgerRoleName("Administrator").ToPtr(),
 						PrincipalID:    to.StringPtr("<principal-id>"),
 						TenantID:       to.StringPtr("<tenant-id>"),
 					}},
 				CertBasedSecurityPrincipals: []*armconfidentialledger.CertBasedSecurityPrincipal{
 					{
 						Cert:           to.StringPtr("<cert>"),
-						LedgerRoleName: armconfidentialledger.LedgerRoleNameReader.ToPtr(),
+						LedgerRoleName: armconfidentialledger.LedgerRoleName("Reader").ToPtr(),
 					}},
-				LedgerType: armconfidentialledger.LedgerTypePublic.ToPtr(),
+				LedgerType: armconfidentialledger.LedgerType("Public").ToPtr(),
 			},
 		},
 		nil)
@@ -57,6 +53,6 @@ func ExampleLedgerClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ConfidentialLedger.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.LedgerClientCreateResult)
 }
 ```

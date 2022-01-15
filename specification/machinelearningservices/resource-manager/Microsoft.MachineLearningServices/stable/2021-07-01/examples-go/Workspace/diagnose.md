@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.1.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.2.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -24,7 +24,7 @@ func ExampleWorkspacesClient_BeginDiagnose() {
 	poller, err := client.BeginDiagnose(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
-		&armmachinelearningservices.WorkspacesBeginDiagnoseOptions{Parameters: &armmachinelearningservices.DiagnoseWorkspaceParameters{
+		&armmachinelearningservices.WorkspacesClientBeginDiagnoseOptions{Parameters: &armmachinelearningservices.DiagnoseWorkspaceParameters{
 			Value: &armmachinelearningservices.DiagnoseRequestProperties{
 				ApplicationInsights: map[string]map[string]interface{}{},
 				ContainerRegistry:   map[string]map[string]interface{}{},
@@ -41,9 +41,10 @@ func ExampleWorkspacesClient_BeginDiagnose() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.WorkspacesClientDiagnoseResult)
 }
 ```

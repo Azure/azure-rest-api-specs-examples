@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.1.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.2.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -27,36 +27,29 @@ func ExampleComputeClient_BeginCreateOrUpdate() {
 		"<workspace-name>",
 		"<compute-name>",
 		armmachinelearningservices.ComputeResource{
-			Components1D3SwueSchemasComputeresourceAllof1: armmachinelearningservices.Components1D3SwueSchemasComputeresourceAllof1{
-				Properties: &armmachinelearningservices.Kubernetes{
-					Compute: armmachinelearningservices.Compute{
-						Description: to.StringPtr("<description>"),
-						ComputeType: armmachinelearningservices.ComputeTypeKubernetes.ToPtr(),
-						ResourceID:  to.StringPtr("<resource-id>"),
-					},
-					KubernetesSchema: armmachinelearningservices.KubernetesSchema{
-						Properties: &armmachinelearningservices.KubernetesProperties{
-							DefaultInstanceType: to.StringPtr("<default-instance-type>"),
-							InstanceTypes: map[string]*armmachinelearningservices.InstanceTypeSchema{
-								"defaultInstanceType": {
-									NodeSelector: map[string]*string{},
-									Resources: &armmachinelearningservices.InstanceTypeSchemaResources{
-										Limits: map[string]*string{
-											"cpu":            to.StringPtr("1"),
-											"memory":         to.StringPtr("4Gi"),
-											"nvidia.com/gpu": nil,
-										},
-										Requests: map[string]*string{
-											"cpu":            to.StringPtr("1"),
-											"memory":         to.StringPtr("4Gi"),
-											"nvidia.com/gpu": nil,
-										},
-									},
+			Properties: &armmachinelearningservices.Kubernetes{
+				Description: to.StringPtr("<description>"),
+				ComputeType: armmachinelearningservices.ComputeType("Kubernetes").ToPtr(),
+				ResourceID:  to.StringPtr("<resource-id>"),
+				Properties: &armmachinelearningservices.KubernetesProperties{
+					DefaultInstanceType: to.StringPtr("<default-instance-type>"),
+					InstanceTypes: map[string]*armmachinelearningservices.InstanceTypeSchema{
+						"defaultInstanceType": {
+							Resources: &armmachinelearningservices.InstanceTypeSchemaResources{
+								Limits: map[string]*string{
+									"cpu":            to.StringPtr("1"),
+									"memory":         to.StringPtr("4Gi"),
+									"nvidia.com/gpu": nil,
+								},
+								Requests: map[string]*string{
+									"cpu":            to.StringPtr("1"),
+									"memory":         to.StringPtr("4Gi"),
+									"nvidia.com/gpu": nil,
 								},
 							},
-							Namespace: to.StringPtr("<namespace>"),
 						},
 					},
+					Namespace: to.StringPtr("<namespace>"),
 				},
 			},
 			Location: to.StringPtr("<location>"),
@@ -69,6 +62,6 @@ func ExampleComputeClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ComputeResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ComputeClientCreateOrUpdateResult)
 }
 ```

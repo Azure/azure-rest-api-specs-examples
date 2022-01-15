@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmtemplatespecs%2Fv0.1.1/sdk/resourcemanager/resources/armtemplatespecs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmtemplatespecs%2Fv0.2.0/sdk/resourcemanager/resources/armtemplatespecs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtemplatespecs_test
@@ -13,17 +13,17 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-05-01/examples/TemplateSpecsPatch.json
-func ExampleTemplateSpecsClient_Update() {
+func ExampleClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armtemplatespecs.NewTemplateSpecsClient("<subscription-id>", cred, nil)
+	client := armtemplatespecs.NewClient("<subscription-id>", cred, nil)
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<template-spec-name>",
-		&armtemplatespecs.TemplateSpecsUpdateOptions{TemplateSpec: &armtemplatespecs.TemplateSpecUpdateModel{
+		&armtemplatespecs.ClientUpdateOptions{TemplateSpec: &armtemplatespecs.TemplateSpecUpdateModel{
 			Tags: map[string]*string{
 				"myTag": to.StringPtr("My Value"),
 			},
@@ -32,6 +32,6 @@ func ExampleTemplateSpecsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("TemplateSpec.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ClientUpdateResult)
 }
 ```

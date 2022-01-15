@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Floadtestservice%2Farmloadtestservice%2Fv0.1.0/sdk/resourcemanager/loadtestservice/armloadtestservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Floadtestservice%2Farmloadtestservice%2Fv0.2.0/sdk/resourcemanager/loadtestservice/armloadtestservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armloadtestservice_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/loadtestservice/armloadtestservice"
 )
@@ -22,11 +23,19 @@ func ExampleLoadTestsClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<load-test-name>",
-		armloadtestservice.LoadTestResourcePatchRequestBody{},
+		armloadtestservice.LoadTestResourcePatchRequestBody{
+			Properties: &armloadtestservice.LoadTestResourcePatchRequestBodyProperties{
+				Description: to.StringPtr("<description>"),
+			},
+			Tags: map[string]interface{}{
+				"Division": "LT",
+				"Team":     "Dev Exp",
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("LoadTestResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.LoadTestsClientUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.1.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.2.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -19,15 +19,16 @@ func ExampleAccountsClient_RegenerateKeys() {
 	}
 	ctx := context.Background()
 	client := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
-	_, err = client.RegenerateKeys(ctx,
+	res, err := client.RegenerateKeys(ctx,
 		"<resource-group-name>",
 		"<account-name>",
-		armmaps.MapsKeySpecification{
-			KeyType: armmaps.KeyTypePrimary.ToPtr(),
+		armmaps.KeySpecification{
+			KeyType: armmaps.KeyType("primary").ToPtr(),
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.AccountsClientRegenerateKeysResult)
 }
 ```

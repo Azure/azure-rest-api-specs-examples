@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsaas%2Farmsaas%2Fv0.1.0/sdk/resourcemanager/saas/armsaas/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsaas%2Farmsaas%2Fv0.2.0/sdk/resourcemanager/saas/armsaas/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsaas_test
@@ -14,13 +14,13 @@ import (
 )
 
 // x-ms-original-file: specification/saas/resource-manager/Microsoft.SaaS/preview/2018-03-01-beta/examples/saasSubscriptionLevel/SaasDelete.json
-func ExampleSaasSubscriptionLevelClient_BeginDelete() {
+func ExampleSubscriptionLevelClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armsaas.NewSaasSubscriptionLevelClient("<subscription-id>", cred, nil)
+	client := armsaas.NewSubscriptionLevelClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginDelete(ctx,
 		"<resource-group-name>",
 		"<resource-name>",

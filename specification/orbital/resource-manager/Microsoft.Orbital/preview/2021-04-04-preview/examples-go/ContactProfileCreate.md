@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Forbital%2Farmorbital%2Fv0.1.0/sdk/resourcemanager/orbital/armorbital/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Forbital%2Farmorbital%2Fv0.2.0/sdk/resourcemanager/orbital/armorbital/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armorbital_test
@@ -26,11 +26,10 @@ func ExampleContactProfilesClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<contact-profile-name>",
 		armorbital.ContactProfile{
-			TrackedResource: armorbital.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armorbital.ContactProfilesProperties{
 				AutoTrackingConfiguration: armorbital.AutoTrackingConfigurationXBand.ToPtr(),
+				EventHubURI:               to.StringPtr("<event-hub-uri>"),
 				Links: []*armorbital.ContactProfileLink{
 					{
 						Channels: []*armorbital.ContactProfileLinkChannel{
@@ -44,14 +43,14 @@ func ExampleContactProfilesClient_BeginCreateOrUpdate() {
 									EndPointName: to.StringPtr("<end-point-name>"),
 									IPAddress:    to.StringPtr("<ipaddress>"),
 									Port:         to.StringPtr("<port>"),
-									Protocol:     armorbital.ProtocolTCP.ToPtr(),
+									Protocol:     armorbital.Protocol("TCP").ToPtr(),
 								},
 								ModulationConfiguration: to.StringPtr("<modulation-configuration>"),
 							}},
-						Direction:           armorbital.DirectionUplink.ToPtr(),
+						Direction:           armorbital.Direction("uplink").ToPtr(),
 						EirpdBW:             to.Float32Ptr(45),
 						GainOverTemperature: to.Float32Ptr(0),
-						Polarization:        armorbital.PolarizationRHCP.ToPtr(),
+						Polarization:        armorbital.Polarization("RHCP").ToPtr(),
 					},
 					{
 						Channels: []*armorbital.ContactProfileLinkChannel{
@@ -65,14 +64,14 @@ func ExampleContactProfilesClient_BeginCreateOrUpdate() {
 									EndPointName: to.StringPtr("<end-point-name>"),
 									IPAddress:    to.StringPtr("<ipaddress>"),
 									Port:         to.StringPtr("<port>"),
-									Protocol:     armorbital.ProtocolTCP.ToPtr(),
+									Protocol:     armorbital.Protocol("TCP").ToPtr(),
 								},
 								ModulationConfiguration: to.StringPtr("<modulation-configuration>"),
 							}},
-						Direction:           armorbital.DirectionDownlink.ToPtr(),
+						Direction:           armorbital.Direction("downlink").ToPtr(),
 						EirpdBW:             to.Float32Ptr(0),
 						GainOverTemperature: to.Float32Ptr(25),
-						Polarization:        armorbital.PolarizationRHCP.ToPtr(),
+						Polarization:        armorbital.Polarization("RHCP").ToPtr(),
 					}},
 				MinimumElevationDegrees:      to.Float32Ptr(10),
 				MinimumViableContactDuration: to.StringPtr("<minimum-viable-contact-duration>"),
@@ -86,6 +85,6 @@ func ExampleContactProfilesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ContactProfile.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ContactProfilesClientCreateOrUpdateResult)
 }
 ```

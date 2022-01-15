@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Forbital%2Farmorbital%2Fv0.1.0/sdk/resourcemanager/orbital/armorbital/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Forbital%2Farmorbital%2Fv0.2.0/sdk/resourcemanager/orbital/armorbital/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armorbital_test
@@ -26,22 +26,20 @@ func ExampleSpacecraftsClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<spacecraft-name>",
 		armorbital.Spacecraft{
-			TrackedResource: armorbital.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armorbital.SpacecraftsProperties{
 				Links: []*armorbital.SpacecraftLink{
 					{
 						BandwidthMHz:       to.Float32Ptr(0.036),
 						CenterFrequencyMHz: to.Float32Ptr(2106.4063),
-						Direction:          armorbital.DirectionUplink.ToPtr(),
-						Polarization:       armorbital.PolarizationRHCP.ToPtr(),
+						Direction:          armorbital.Direction("uplink").ToPtr(),
+						Polarization:       armorbital.Polarization("RHCP").ToPtr(),
 					},
 					{
 						BandwidthMHz:       to.Float32Ptr(150),
 						CenterFrequencyMHz: to.Float32Ptr(8125),
-						Direction:          armorbital.DirectionDownlink.ToPtr(),
-						Polarization:       armorbital.PolarizationRHCP.ToPtr(),
+						Direction:          armorbital.Direction("downlink").ToPtr(),
+						Polarization:       armorbital.Polarization("RHCP").ToPtr(),
 					}},
 				NoradID:   to.StringPtr("<norad-id>"),
 				TitleLine: to.StringPtr("<title-line>"),
@@ -57,6 +55,6 @@ func ExampleSpacecraftsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Spacecraft.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SpacecraftsClientCreateOrUpdateResult)
 }
 ```

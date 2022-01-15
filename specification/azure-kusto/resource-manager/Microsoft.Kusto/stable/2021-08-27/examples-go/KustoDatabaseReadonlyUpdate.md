@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.1.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.2.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkusto_test
@@ -27,10 +27,8 @@ func ExampleDatabasesClient_BeginCreateOrUpdate() {
 		"<cluster-name>",
 		"<database-name>",
 		&armkusto.ReadOnlyFollowingDatabase{
-			Database: armkusto.Database{
-				Kind:     armkusto.KindReadOnlyFollowing.ToPtr(),
-				Location: to.StringPtr("<location>"),
-			},
+			Kind:     armkusto.Kind("ReadOnlyFollowing").ToPtr(),
+			Location: to.StringPtr("<location>"),
 			Properties: &armkusto.ReadOnlyFollowingDatabaseProperties{
 				HotCachePeriod: to.StringPtr("<hot-cache-period>"),
 			},
@@ -43,6 +41,6 @@ func ExampleDatabasesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DatabaseClassification.GetDatabase().ID: %s\n", *res.GetDatabase().ID)
+	log.Printf("Response result: %#v\n", res.DatabasesClientCreateOrUpdateResult)
 }
 ```

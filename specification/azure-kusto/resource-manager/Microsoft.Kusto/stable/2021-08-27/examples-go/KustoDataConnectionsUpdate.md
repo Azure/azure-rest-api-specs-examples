@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.1.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.2.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkusto_test
@@ -28,10 +28,8 @@ func ExampleDataConnectionsClient_BeginUpdate() {
 		"<database-name>",
 		"<data-connection-name>",
 		&armkusto.EventHubDataConnection{
-			DataConnection: armkusto.DataConnection{
-				Kind:     armkusto.DataConnectionKindEventHub.ToPtr(),
-				Location: to.StringPtr("<location>"),
-			},
+			Kind:     armkusto.DataConnectionKind("EventHub").ToPtr(),
+			Location: to.StringPtr("<location>"),
 			Properties: &armkusto.EventHubConnectionProperties{
 				ConsumerGroup:             to.StringPtr("<consumer-group>"),
 				EventHubResourceID:        to.StringPtr("<event-hub-resource-id>"),
@@ -46,6 +44,6 @@ func ExampleDataConnectionsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataConnectionClassification.GetDataConnection().ID: %s\n", *res.GetDataConnection().ID)
+	log.Printf("Response result: %#v\n", res.DataConnectionsClientUpdateResult)
 }
 ```

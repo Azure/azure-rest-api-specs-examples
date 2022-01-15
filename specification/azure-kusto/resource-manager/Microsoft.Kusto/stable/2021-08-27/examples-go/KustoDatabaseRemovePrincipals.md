@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.1.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.2.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkusto_test
@@ -20,7 +20,7 @@ func ExampleDatabasesClient_RemovePrincipals() {
 	}
 	ctx := context.Background()
 	client := armkusto.NewDatabasesClient("<subscription-id>", cred, nil)
-	_, err = client.RemovePrincipals(ctx,
+	res, err := client.RemovePrincipals(ctx,
 		"<resource-group-name>",
 		"<cluster-name>",
 		"<database-name>",
@@ -28,32 +28,33 @@ func ExampleDatabasesClient_RemovePrincipals() {
 			Value: []*armkusto.DatabasePrincipal{
 				{
 					Name:  to.StringPtr("<name>"),
-					Type:  armkusto.DatabasePrincipalTypeUser.ToPtr(),
+					Type:  armkusto.DatabasePrincipalType("User").ToPtr(),
 					AppID: to.StringPtr("<app-id>"),
 					Email: to.StringPtr("<email>"),
 					Fqn:   to.StringPtr("<fqn>"),
-					Role:  armkusto.DatabasePrincipalRoleAdmin.ToPtr(),
+					Role:  armkusto.DatabasePrincipalRole("Admin").ToPtr(),
 				},
 				{
 					Name:  to.StringPtr("<name>"),
-					Type:  armkusto.DatabasePrincipalTypeGroup.ToPtr(),
+					Type:  armkusto.DatabasePrincipalType("Group").ToPtr(),
 					AppID: to.StringPtr("<app-id>"),
 					Email: to.StringPtr("<email>"),
 					Fqn:   to.StringPtr("<fqn>"),
-					Role:  armkusto.DatabasePrincipalRoleViewer.ToPtr(),
+					Role:  armkusto.DatabasePrincipalRole("Viewer").ToPtr(),
 				},
 				{
 					Name:  to.StringPtr("<name>"),
-					Type:  armkusto.DatabasePrincipalTypeApp.ToPtr(),
+					Type:  armkusto.DatabasePrincipalType("App").ToPtr(),
 					AppID: to.StringPtr("<app-id>"),
 					Email: to.StringPtr("<email>"),
 					Fqn:   to.StringPtr("<fqn>"),
-					Role:  armkusto.DatabasePrincipalRoleAdmin.ToPtr(),
+					Role:  armkusto.DatabasePrincipalRole("Admin").ToPtr(),
 				}},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.DatabasesClientRemovePrincipalsResult)
 }
 ```

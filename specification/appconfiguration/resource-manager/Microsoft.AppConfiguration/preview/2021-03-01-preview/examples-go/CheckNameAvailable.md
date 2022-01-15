@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.1.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.2.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappconfiguration_test
@@ -20,14 +20,15 @@ func ExampleOperationsClient_CheckNameAvailability() {
 	}
 	ctx := context.Background()
 	client := armappconfiguration.NewOperationsClient("<subscription-id>", cred, nil)
-	_, err = client.CheckNameAvailability(ctx,
+	res, err := client.CheckNameAvailability(ctx,
 		armappconfiguration.CheckNameAvailabilityParameters{
 			Name: to.StringPtr("<name>"),
-			Type: armappconfiguration.ConfigurationResourceTypeMicrosoftAppConfigurationConfigurationStores.ToPtr(),
+			Type: armappconfiguration.ConfigurationResourceType("Microsoft.AppConfiguration/configurationStores").ToPtr(),
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.OperationsClientCheckNameAvailabilityResult)
 }
 ```

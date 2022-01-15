@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresqlhsc%2Farmpostgresqlhsc%2Fv0.1.0/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresqlhsc%2Farmpostgresqlhsc%2Fv0.2.0/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresqlhsc_test
@@ -26,49 +26,43 @@ func ExampleServerGroupsClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<server-group-name>",
 		armpostgresqlhsc.ServerGroup{
-			TrackedResource: armpostgresqlhsc.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"ElasticServer": to.StringPtr("1"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"ElasticServer": to.StringPtr("1"),
 			},
 			Properties: &armpostgresqlhsc.ServerGroupProperties{
 				AdministratorLogin:         to.StringPtr("<administrator-login>"),
 				AdministratorLoginPassword: to.StringPtr("<administrator-login-password>"),
 				AvailabilityZone:           to.StringPtr("<availability-zone>"),
 				BackupRetentionDays:        to.Int32Ptr(35),
-				CitusVersion:               armpostgresqlhsc.CitusVersionNine5.ToPtr(),
+				CitusVersion:               armpostgresqlhsc.CitusVersion("9.5").ToPtr(),
 				DelegatedSubnetArguments: &armpostgresqlhsc.ServerGroupPropertiesDelegatedSubnetArguments{
 					SubnetArmResourceID: to.StringPtr("<subnet-arm-resource-id>"),
 				},
 				EnableMx:          to.BoolPtr(true),
 				EnableZfs:         to.BoolPtr(false),
-				PostgresqlVersion: armpostgresqlhsc.PostgreSQLVersionTwelve.ToPtr(),
+				PostgresqlVersion: armpostgresqlhsc.PostgreSQLVersion("12").ToPtr(),
 				PrivateDNSZoneArguments: &armpostgresqlhsc.ServerGroupPropertiesPrivateDNSZoneArguments{
 					PrivateDNSZoneArmResourceID: to.StringPtr("<private-dnszone-arm-resource-id>"),
 				},
 				ServerRoleGroups: []*armpostgresqlhsc.ServerRoleGroup{
 					{
-						ServerProperties: armpostgresqlhsc.ServerProperties{
-							EnableHa:         to.BoolPtr(true),
-							ServerEdition:    armpostgresqlhsc.ServerEditionGeneralPurpose.ToPtr(),
-							StorageQuotaInMb: to.Int64Ptr(524288),
-							VCores:           to.Int64Ptr(4),
-						},
-						Name:        to.StringPtr("<name>"),
-						Role:        armpostgresqlhsc.ServerRoleCoordinator.ToPtr(),
-						ServerCount: to.Int32Ptr(1),
+						EnableHa:         to.BoolPtr(true),
+						ServerEdition:    armpostgresqlhsc.ServerEdition("GeneralPurpose").ToPtr(),
+						StorageQuotaInMb: to.Int64Ptr(524288),
+						VCores:           to.Int64Ptr(4),
+						Name:             to.StringPtr("<name>"),
+						Role:             armpostgresqlhsc.ServerRole("Coordinator").ToPtr(),
+						ServerCount:      to.Int32Ptr(1),
 					},
 					{
-						ServerProperties: armpostgresqlhsc.ServerProperties{
-							EnableHa:         to.BoolPtr(false),
-							ServerEdition:    armpostgresqlhsc.ServerEditionMemoryOptimized.ToPtr(),
-							StorageQuotaInMb: to.Int64Ptr(524288),
-							VCores:           to.Int64Ptr(4),
-						},
-						Name:        to.StringPtr("<name>"),
-						Role:        armpostgresqlhsc.ServerRoleWorker.ToPtr(),
-						ServerCount: to.Int32Ptr(3),
+						EnableHa:         to.BoolPtr(false),
+						ServerEdition:    armpostgresqlhsc.ServerEdition("MemoryOptimized").ToPtr(),
+						StorageQuotaInMb: to.Int64Ptr(524288),
+						VCores:           to.Int64Ptr(4),
+						Name:             to.StringPtr("<name>"),
+						Role:             armpostgresqlhsc.ServerRole("Worker").ToPtr(),
+						ServerCount:      to.Int32Ptr(3),
 					}},
 				StandbyAvailabilityZone: to.StringPtr("<standby-availability-zone>"),
 			},
@@ -81,6 +75,6 @@ func ExampleServerGroupsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ServerGroup.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ServerGroupsClientCreateOrUpdateResult)
 }
 ```

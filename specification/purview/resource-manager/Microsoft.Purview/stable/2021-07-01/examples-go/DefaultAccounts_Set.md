@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.1.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.2.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -20,18 +20,19 @@ func ExampleDefaultAccountsClient_Set() {
 	}
 	ctx := context.Background()
 	client := armpurview.NewDefaultAccountsClient(cred, nil)
-	_, err = client.Set(ctx,
+	res, err := client.Set(ctx,
 		armpurview.DefaultAccountPayload{
 			AccountName:       to.StringPtr("<account-name>"),
 			ResourceGroupName: to.StringPtr("<resource-group-name>"),
 			Scope:             to.StringPtr("<scope>"),
 			ScopeTenantID:     to.StringPtr("<scope-tenant-id>"),
-			ScopeType:         armpurview.ScopeTypeTenant.ToPtr(),
+			ScopeType:         armpurview.ScopeType("Tenant").ToPtr(),
 			SubscriptionID:    to.StringPtr("<subscription-id>"),
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.DefaultAccountsClientSetResult)
 }
 ```

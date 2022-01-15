@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.1.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.2.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -20,7 +20,7 @@ func ExampleAccountsClient_CheckNameAvailability() {
 	}
 	ctx := context.Background()
 	client := armpurview.NewAccountsClient("<subscription-id>", cred, nil)
-	_, err = client.CheckNameAvailability(ctx,
+	res, err := client.CheckNameAvailability(ctx,
 		armpurview.CheckNameAvailabilityRequest{
 			Name: to.StringPtr("<name>"),
 			Type: to.StringPtr("<type>"),
@@ -29,5 +29,6 @@ func ExampleAccountsClient_CheckNameAvailability() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.AccountsClientCheckNameAvailabilityResult)
 }
 ```

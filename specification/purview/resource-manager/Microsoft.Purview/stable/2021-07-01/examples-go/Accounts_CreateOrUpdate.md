@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.1.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.2.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -26,9 +26,7 @@ func ExampleAccountsClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<account-name>",
 		armpurview.Account{
-			TrackedResource: armpurview.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armpurview.AccountProperties{
 				ManagedResourceGroupName: to.StringPtr("<managed-resource-group-name>"),
 			},
@@ -41,6 +39,6 @@ func ExampleAccountsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Account.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AccountsClientCreateOrUpdateResult)
 }
 ```

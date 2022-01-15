@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.1.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.2.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -22,8 +22,8 @@ func ExampleDefaultAccountsClient_Remove() {
 	client := armpurview.NewDefaultAccountsClient(cred, nil)
 	_, err = client.Remove(ctx,
 		"<scope-tenant-id>",
-		armpurview.ScopeTypeTenant,
-		&armpurview.DefaultAccountsRemoveOptions{Scope: to.StringPtr("<scope>")})
+		armpurview.ScopeType("Tenant"),
+		&armpurview.DefaultAccountsClientRemoveOptions{Scope: to.StringPtr("<scope>")})
 	if err != nil {
 		log.Fatal(err)
 	}

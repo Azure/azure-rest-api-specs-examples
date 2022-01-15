@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -26,34 +26,31 @@ func ExampleHostPoolsClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<host-pool-name>",
 		armdesktopvirtualization.HostPool{
-			ResourceModelWithAllowedPropertySet: armdesktopvirtualization.ResourceModelWithAllowedPropertySet{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"tag1": to.StringPtr("value1"),
-					"tag2": to.StringPtr("value2"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"tag1": to.StringPtr("value1"),
+				"tag2": to.StringPtr("value2"),
 			},
 			Properties: &armdesktopvirtualization.HostPoolProperties{
-				Description:       to.StringPtr("<description>"),
-				CustomRdpProperty: to.StringPtr("<custom-rdp-property>"),
-				FriendlyName:      to.StringPtr("<friendly-name>"),
-				HostPoolType:      armdesktopvirtualization.HostPoolTypePooled.ToPtr(),
-				LoadBalancerType:  armdesktopvirtualization.LoadBalancerTypeBreadthFirst.ToPtr(),
-				MaxSessionLimit:   to.Int32Ptr(999999),
+				Description:      to.StringPtr("<description>"),
+				FriendlyName:     to.StringPtr("<friendly-name>"),
+				HostPoolType:     armdesktopvirtualization.HostPoolType("Pooled").ToPtr(),
+				LoadBalancerType: armdesktopvirtualization.LoadBalancerType("BreadthFirst").ToPtr(),
+				MaxSessionLimit:  to.Int32Ptr(999999),
 				MigrationRequest: &armdesktopvirtualization.MigrationRequestProperties{
 					MigrationPath: to.StringPtr("<migration-path>"),
-					Operation:     armdesktopvirtualization.OperationStart.ToPtr(),
+					Operation:     armdesktopvirtualization.Operation("Start").ToPtr(),
 				},
-				PersonalDesktopAssignmentType: armdesktopvirtualization.PersonalDesktopAssignmentTypeAutomatic.ToPtr(),
-				PreferredAppGroupType:         armdesktopvirtualization.PreferredAppGroupTypeDesktop.ToPtr(),
-				PublicNetworkAccess:           armdesktopvirtualization.PublicNetworkAccessEnabled.ToPtr(),
+				PersonalDesktopAssignmentType: armdesktopvirtualization.PersonalDesktopAssignmentType("Automatic").ToPtr(),
+				PreferredAppGroupType:         armdesktopvirtualization.PreferredAppGroupType("Desktop").ToPtr(),
+				PublicNetworkAccess:           armdesktopvirtualization.PublicNetworkAccess("Enabled").ToPtr(),
 				RegistrationInfo: &armdesktopvirtualization.RegistrationInfo{
 					ExpirationTime:             to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T14:01:54.9571247Z"); return t }()),
-					RegistrationTokenOperation: armdesktopvirtualization.RegistrationTokenOperationUpdate.ToPtr(),
+					RegistrationTokenOperation: armdesktopvirtualization.RegistrationTokenOperation("Update").ToPtr(),
 				},
 				SsoClientID:                 to.StringPtr("<sso-client-id>"),
 				SsoClientSecretKeyVaultPath: to.StringPtr("<sso-client-secret-key-vault-path>"),
-				SsoSecretType:               armdesktopvirtualization.SSOSecretTypeSharedKey.ToPtr(),
+				SsoSecretType:               armdesktopvirtualization.SSOSecretType("SharedKey").ToPtr(),
 				SsoadfsAuthority:            to.StringPtr("<ssoadfs-authority>"),
 				StartVMOnConnect:            to.BoolPtr(false),
 				VMTemplate:                  to.StringPtr("<vmtemplate>"),
@@ -63,6 +60,6 @@ func ExampleHostPoolsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("HostPool.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.HostPoolsClientCreateOrUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -23,7 +23,7 @@ func ExampleApplicationGroupsClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<application-group-name>",
-		&armdesktopvirtualization.ApplicationGroupsUpdateOptions{ApplicationGroup: &armdesktopvirtualization.ApplicationGroupPatch{
+		&armdesktopvirtualization.ApplicationGroupsClientUpdateOptions{ApplicationGroup: &armdesktopvirtualization.ApplicationGroupPatch{
 			Properties: &armdesktopvirtualization.ApplicationGroupPatchProperties{
 				Description:  to.StringPtr("<description>"),
 				FriendlyName: to.StringPtr("<friendly-name>"),
@@ -37,6 +37,6 @@ func ExampleApplicationGroupsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ApplicationGroup.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ApplicationGroupsClientUpdateResult)
 }
 ```

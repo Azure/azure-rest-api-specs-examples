@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -29,7 +29,7 @@ func ExamplePrivateEndpointConnectionsClient_UpdateByHostPool() {
 				PrivateLinkServiceConnectionState: &armdesktopvirtualization.PrivateLinkServiceConnectionState{
 					Description:     to.StringPtr("<description>"),
 					ActionsRequired: to.StringPtr("<actions-required>"),
-					Status:          armdesktopvirtualization.PrivateEndpointServiceConnectionStatusApproved.ToPtr(),
+					Status:          armdesktopvirtualization.PrivateEndpointServiceConnectionStatus("Approved").ToPtr(),
 				},
 			},
 		},
@@ -37,6 +37,6 @@ func ExamplePrivateEndpointConnectionsClient_UpdateByHostPool() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PrivateEndpointConnectionWithSystemData.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PrivateEndpointConnectionsClientUpdateByHostPoolResult)
 }
 ```

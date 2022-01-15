@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.1.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.2.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaintenance_test
@@ -19,7 +19,7 @@ func ExampleUpdatesClient_List() {
 	}
 	ctx := context.Background()
 	client := armmaintenance.NewUpdatesClient("<subscription-id>", cred, nil)
-	_, err = client.List(ctx,
+	res, err := client.List(ctx,
 		"<resource-group-name>",
 		"<provider-name>",
 		"<resource-type>",
@@ -28,5 +28,6 @@ func ExampleUpdatesClient_List() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.UpdatesClientListResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.1.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.2.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaintenance_test
@@ -37,6 +37,6 @@ func ExampleConfigurationAssignmentsClient_CreateOrUpdateParent() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ConfigurationAssignment.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ConfigurationAssignmentsClientCreateOrUpdateParentResult)
 }
 ```

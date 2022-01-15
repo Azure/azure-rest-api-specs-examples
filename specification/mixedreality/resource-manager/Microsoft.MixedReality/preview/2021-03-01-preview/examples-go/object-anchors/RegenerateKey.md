@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmixedreality%2Farmmixedreality%2Fv0.1.0/sdk/resourcemanager/mixedreality/armmixedreality/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmixedreality%2Farmmixedreality%2Fv0.2.0/sdk/resourcemanager/mixedreality/armmixedreality/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmixedreality_test
@@ -19,7 +19,7 @@ func ExampleObjectAnchorsAccountsClient_RegenerateKeys() {
 	}
 	ctx := context.Background()
 	client := armmixedreality.NewObjectAnchorsAccountsClient("<subscription-id>", cred, nil)
-	_, err = client.RegenerateKeys(ctx,
+	res, err := client.RegenerateKeys(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		armmixedreality.AccountKeyRegenerateRequest{
@@ -29,5 +29,6 @@ func ExampleObjectAnchorsAccountsClient_RegenerateKeys() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ObjectAnchorsAccountsClientRegenerateKeysResult)
 }
 ```

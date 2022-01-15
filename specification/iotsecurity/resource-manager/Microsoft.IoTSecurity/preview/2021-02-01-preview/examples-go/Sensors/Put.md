@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiotsecurity%2Farmiotsecurity%2Fv0.1.0/sdk/resourcemanager/iotsecurity/armiotsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiotsecurity%2Farmiotsecurity%2Fv0.2.0/sdk/resourcemanager/iotsecurity/armiotsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armiotsecurity_test
@@ -25,7 +25,7 @@ func ExampleSensorsClient_CreateOrUpdate() {
 		"<sensor-name>",
 		armiotsecurity.SensorModel{
 			Properties: &armiotsecurity.SensorProperties{
-				SensorType:         armiotsecurity.SensorTypeOt.ToPtr(),
+				SensorType:         armiotsecurity.SensorType("Ot").ToPtr(),
 				TiAutomaticUpdates: to.BoolPtr(true),
 				Zone:               to.StringPtr("<zone>"),
 			},
@@ -34,6 +34,6 @@ func ExampleSensorsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SensorModel.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SensorsClientCreateOrUpdateResult)
 }
 ```

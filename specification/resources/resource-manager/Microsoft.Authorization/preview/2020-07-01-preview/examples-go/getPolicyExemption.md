@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.1.1/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.2.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -12,13 +12,13 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/preview/2020-07-01-preview/examples/getPolicyExemption.json
-func ExamplePolicyExemptionsClient_Get() {
+func ExampleExemptionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armpolicy.NewPolicyExemptionsClient("<subscription-id>", cred, nil)
+	client := armpolicy.NewExemptionsClient("<subscription-id>", cred, nil)
 	res, err := client.Get(ctx,
 		"<scope>",
 		"<policy-exemption-name>",
@@ -26,6 +26,6 @@ func ExamplePolicyExemptionsClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PolicyExemption.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ExemptionsClientGetResult)
 }
 ```

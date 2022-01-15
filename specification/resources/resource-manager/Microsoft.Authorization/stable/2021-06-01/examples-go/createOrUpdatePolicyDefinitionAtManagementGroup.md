@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.1.1/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.2.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -13,18 +13,18 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicyDefinitionAtManagementGroup.json
-func ExamplePolicyDefinitionsClient_CreateOrUpdateAtManagementGroup() {
+func ExampleDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armpolicy.NewPolicyDefinitionsClient("<subscription-id>", cred, nil)
-	res, err := client.CreateOrUpdateAtManagementGroup(ctx,
+	client := armpolicy.NewDefinitionsClient("<subscription-id>", cred, nil)
+	_, err = client.CreateOrUpdateAtManagementGroup(ctx,
 		"<policy-definition-name>",
 		"<management-group-id>",
-		armpolicy.PolicyDefinition{
-			Properties: &armpolicy.PolicyDefinitionProperties{
+		armpolicy.Definition{
+			Properties: &armpolicy.DefinitionProperties{
 				Description: to.StringPtr("<description>"),
 				DisplayName: to.StringPtr("<display-name>"),
 				Metadata: map[string]interface{}{
@@ -33,14 +33,14 @@ func ExamplePolicyDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 				Mode: to.StringPtr("<mode>"),
 				Parameters: map[string]*armpolicy.ParameterDefinitionsValue{
 					"prefix": {
-						Type: armpolicy.ParameterTypeString.ToPtr(),
+						Type: armpolicy.ParameterType("String").ToPtr(),
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
 							Description: to.StringPtr("<description>"),
 							DisplayName: to.StringPtr("<display-name>"),
 						},
 					},
 					"suffix": {
-						Type: armpolicy.ParameterTypeString.ToPtr(),
+						Type: armpolicy.ParameterType("String").ToPtr(),
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
 							Description: to.StringPtr("<description>"),
 							DisplayName: to.StringPtr("<display-name>"),
@@ -64,6 +64,5 @@ func ExamplePolicyDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PolicyDefinition.ID: %s\n", *res.ID)
 }
 ```

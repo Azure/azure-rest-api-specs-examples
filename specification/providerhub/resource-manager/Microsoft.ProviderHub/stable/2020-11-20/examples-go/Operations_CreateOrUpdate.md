@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv0.1.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv0.2.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armproviderhub_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub"
 )
@@ -21,11 +22,22 @@ func ExampleOperationsClient_CreateOrUpdate() {
 	client := armproviderhub.NewOperationsClient("<subscription-id>", cred, nil)
 	res, err := client.CreateOrUpdate(ctx,
 		"<provider-namespace>",
-		armproviderhub.OperationsPutContent{},
+		armproviderhub.OperationsPutContent{
+			Contents: []*armproviderhub.OperationsDefinition{
+				{
+					Name: to.StringPtr("<name>"),
+					Display: &armproviderhub.OperationsDefinitionDisplay{
+						Description: to.StringPtr("<description>"),
+						Operation:   to.StringPtr("<operation>"),
+						Provider:    to.StringPtr("<provider>"),
+						Resource:    to.StringPtr("<resource>"),
+					},
+				}},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("OperationsContent.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.OperationsClientCreateOrUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsubscription%2Farmsubscription%2Fv0.1.0/sdk/resourcemanager/subscription/armsubscription/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsubscription%2Farmsubscription%2Fv0.2.0/sdk/resourcemanager/subscription/armsubscription/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsubscription_test
@@ -27,7 +27,6 @@ func ExampleAliasClient_BeginCreate() {
 		armsubscription.PutAliasRequest{
 			Properties: &armsubscription.PutAliasRequestProperties{
 				AdditionalProperties: &armsubscription.PutAliasRequestAdditionalProperties{
-					ManagementGroupID:    to.StringPtr("<management-group-id>"),
 					SubscriptionOwnerID:  to.StringPtr("<subscription-owner-id>"),
 					SubscriptionTenantID: to.StringPtr("<subscription-tenant-id>"),
 					Tags: map[string]*string{
@@ -36,10 +35,9 @@ func ExampleAliasClient_BeginCreate() {
 						"tag3": to.StringPtr("Lebron"),
 					},
 				},
-				BillingScope:   to.StringPtr("<billing-scope>"),
-				DisplayName:    to.StringPtr("<display-name>"),
-				SubscriptionID: to.StringPtr("<subscription-id>"),
-				Workload:       armsubscription.WorkloadProduction.ToPtr(),
+				BillingScope: to.StringPtr("<billing-scope>"),
+				DisplayName:  to.StringPtr("<display-name>"),
+				Workload:     armsubscription.Workload("Production").ToPtr(),
 			},
 		},
 		nil)
@@ -50,6 +48,6 @@ func ExampleAliasClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SubscriptionAliasResponse.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AliasClientCreateResult)
 }
 ```

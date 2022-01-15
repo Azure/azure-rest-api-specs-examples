@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragepool%2Farmstoragepool%2Fv0.1.0/sdk/resourcemanager/storagepool/armstoragepool/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragepool%2Farmstoragepool%2Fv0.2.0/sdk/resourcemanager/storagepool/armstoragepool/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragepool_test
@@ -27,6 +27,6 @@ func ExampleIscsiTargetsClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("IscsiTarget.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.IscsiTargetsClientGetResult)
 }
 ```

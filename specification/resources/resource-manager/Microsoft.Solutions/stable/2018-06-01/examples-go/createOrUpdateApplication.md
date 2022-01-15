@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmmanagedapplications%2Fv0.1.1/sdk/resourcemanager/resources/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmmanagedapplications%2Fv0.2.0/sdk/resourcemanager/resources/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagedapplications_test
@@ -26,12 +26,8 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<application-name>",
 		armmanagedapplications.Application{
-			GenericResource: armmanagedapplications.GenericResource{
-				Resource: armmanagedapplications.Resource{
-					Location: to.StringPtr("<location>"),
-				},
-			},
-			Kind: to.StringPtr("<kind>"),
+			Location: to.StringPtr("<location>"),
+			Kind:     to.StringPtr("<kind>"),
 			Properties: &armmanagedapplications.ApplicationProperties{
 				ManagedResourceGroupID: to.StringPtr("<managed-resource-group-id>"),
 			},
@@ -44,6 +40,6 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Application.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ApplicationsClientCreateOrUpdateResult)
 }
 ```

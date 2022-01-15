@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.1.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.2.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcustomerlockbox_test
@@ -20,16 +20,17 @@ func ExampleRequestsClient_UpdateStatus() {
 	}
 	ctx := context.Background()
 	client := armcustomerlockbox.NewRequestsClient(cred, nil)
-	_, err = client.UpdateStatus(ctx,
+	res, err := client.UpdateStatus(ctx,
 		"<subscription-id>",
 		"<request-id>",
 		armcustomerlockbox.Approval{
 			Reason: to.StringPtr("<reason>"),
-			Status: armcustomerlockbox.StatusApprove.ToPtr(),
+			Status: armcustomerlockbox.Status("Approve").ToPtr(),
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.RequestsClientUpdateStatusResult)
 }
 ```

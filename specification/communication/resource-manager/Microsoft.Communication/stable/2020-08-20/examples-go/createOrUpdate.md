@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcommunication%2Farmcommunication%2Fv0.1.0/sdk/resourcemanager/communication/armcommunication/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcommunication%2Farmcommunication%2Fv0.2.0/sdk/resourcemanager/communication/armcommunication/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcommunication_test
@@ -15,21 +15,19 @@ import (
 )
 
 // x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/examples/createOrUpdate.json
-func ExampleCommunicationServiceClient_BeginCreateOrUpdate() {
+func ExampleServiceClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armcommunication.NewCommunicationServiceClient("<subscription-id>", cred, nil)
+	client := armcommunication.NewServiceClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<communication-service-name>",
-		&armcommunication.CommunicationServiceBeginCreateOrUpdateOptions{Parameters: &armcommunication.CommunicationServiceResource{
-			LocationResource: armcommunication.LocationResource{
-				Location: to.StringPtr("<location>"),
-			},
-			Properties: &armcommunication.CommunicationServiceProperties{
+		&armcommunication.ServiceClientBeginCreateOrUpdateOptions{Parameters: &armcommunication.ServiceResource{
+			Location: to.StringPtr("<location>"),
+			Properties: &armcommunication.ServiceProperties{
 				DataLocation: to.StringPtr("<data-location>"),
 			},
 		},
@@ -41,6 +39,6 @@ func ExampleCommunicationServiceClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("CommunicationServiceResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ServiceClientCreateOrUpdateResult)
 }
 ```

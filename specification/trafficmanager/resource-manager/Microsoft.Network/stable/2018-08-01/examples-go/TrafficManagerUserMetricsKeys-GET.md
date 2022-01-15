@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.1.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftrafficmanager%2Farmtrafficmanager%2Fv0.2.0/sdk/resourcemanager/trafficmanager/armtrafficmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtrafficmanager_test
@@ -12,18 +12,18 @@ import (
 )
 
 // x-ms-original-file: specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/TrafficManagerUserMetricsKeys-GET.json
-func ExampleTrafficManagerUserMetricsKeysClient_Get() {
+func ExampleUserMetricsKeysClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armtrafficmanager.NewTrafficManagerUserMetricsKeysClient("<subscription-id>", cred, nil)
+	client := armtrafficmanager.NewUserMetricsKeysClient("<subscription-id>", cred, nil)
 	res, err := client.Get(ctx,
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("UserMetricsModel.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.UserMetricsKeysClientGetResult)
 }
 ```

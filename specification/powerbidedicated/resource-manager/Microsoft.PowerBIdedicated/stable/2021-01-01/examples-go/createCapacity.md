@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbidedicated%2Farmpowerbidedicated%2Fv0.1.0/sdk/resourcemanager/powerbidedicated/armpowerbidedicated/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbidedicated%2Farmpowerbidedicated%2Fv0.2.0/sdk/resourcemanager/powerbidedicated/armpowerbidedicated/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpowerbidedicated_test
@@ -26,24 +26,20 @@ func ExampleCapacitiesClient_BeginCreate() {
 		"<resource-group-name>",
 		"<dedicated-capacity-name>",
 		armpowerbidedicated.DedicatedCapacity{
-			Resource: armpowerbidedicated.Resource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"testKey": to.StringPtr("testValue"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"testKey": to.StringPtr("testValue"),
 			},
 			Properties: &armpowerbidedicated.DedicatedCapacityProperties{
-				DedicatedCapacityMutableProperties: armpowerbidedicated.DedicatedCapacityMutableProperties{
-					Administration: &armpowerbidedicated.DedicatedCapacityAdministrators{
-						Members: []*string{
-							to.StringPtr("azsdktest@microsoft.com"),
-							to.StringPtr("azsdktest2@microsoft.com")},
-					},
+				Administration: &armpowerbidedicated.DedicatedCapacityAdministrators{
+					Members: []*string{
+						to.StringPtr("azsdktest@microsoft.com"),
+						to.StringPtr("azsdktest2@microsoft.com")},
 				},
 			},
 			SKU: &armpowerbidedicated.CapacitySKU{
 				Name: to.StringPtr("<name>"),
-				Tier: armpowerbidedicated.CapacitySKUTierPBIEAzure.ToPtr(),
+				Tier: armpowerbidedicated.CapacitySKUTier("PBIE_Azure").ToPtr(),
 			},
 		},
 		nil)
@@ -54,6 +50,6 @@ func ExampleCapacitiesClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DedicatedCapacity.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.CapacitiesClientCreateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.1.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.2.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybriddatamanager_test
@@ -26,9 +26,7 @@ func ExampleDataManagersClient_BeginCreate() {
 		"<resource-group-name>",
 		"<data-manager-name>",
 		armhybriddatamanager.DataManager{
-			Resource: armhybriddatamanager.Resource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 		},
 		nil)
 	if err != nil {
@@ -38,6 +36,6 @@ func ExampleDataManagersClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataManager.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DataManagersClientCreateResult)
 }
 ```

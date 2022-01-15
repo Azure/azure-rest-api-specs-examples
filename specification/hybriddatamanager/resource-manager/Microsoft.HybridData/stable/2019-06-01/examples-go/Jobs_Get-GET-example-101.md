@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.1.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.2.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybriddatamanager_test
@@ -25,10 +25,10 @@ func ExampleJobsClient_Get() {
 		"<job-id>",
 		"<resource-group-name>",
 		"<data-manager-name>",
-		&armhybriddatamanager.JobsGetOptions{Expand: nil})
+		&armhybriddatamanager.JobsClientGetOptions{Expand: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Job.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.JobsClientGetResult)
 }
 ```

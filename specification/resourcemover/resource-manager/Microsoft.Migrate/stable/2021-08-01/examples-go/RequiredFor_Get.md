@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.1.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.2.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armresourcemover_test
@@ -19,7 +19,7 @@ func ExampleMoveCollectionsClient_ListRequiredFor() {
 	}
 	ctx := context.Background()
 	client := armresourcemover.NewMoveCollectionsClient("<subscription-id>", cred, nil)
-	_, err = client.ListRequiredFor(ctx,
+	res, err := client.ListRequiredFor(ctx,
 		"<resource-group-name>",
 		"<move-collection-name>",
 		"<source-id>",
@@ -27,5 +27,6 @@ func ExampleMoveCollectionsClient_ListRequiredFor() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.MoveCollectionsClientListRequiredForResult)
 }
 ```

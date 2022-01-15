@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.1.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.2.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armresourcemover_test
@@ -33,6 +33,6 @@ func ExampleMoveResourcesClient_BeginDelete() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("OperationStatus.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MoveResourcesClientDeleteResult)
 }
 ```

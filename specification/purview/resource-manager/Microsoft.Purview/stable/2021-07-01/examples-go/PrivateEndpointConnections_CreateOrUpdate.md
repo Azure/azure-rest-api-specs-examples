@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.1.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.2.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -30,7 +30,7 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 			Properties: &armpurview.PrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armpurview.PrivateLinkServiceConnectionState{
 					Description: to.StringPtr("<description>"),
-					Status:      armpurview.StatusApproved.ToPtr(),
+					Status:      armpurview.Status("Approved").ToPtr(),
 				},
 			},
 		},
@@ -42,6 +42,6 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PrivateEndpointConnection.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PrivateEndpointConnectionsClientCreateOrUpdateResult)
 }
 ```

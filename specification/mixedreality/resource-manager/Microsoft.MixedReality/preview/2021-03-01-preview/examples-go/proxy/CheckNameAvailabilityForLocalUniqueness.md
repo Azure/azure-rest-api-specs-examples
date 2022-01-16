@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmixedreality%2Farmmixedreality%2Fv0.1.0/sdk/resourcemanager/mixedreality/armmixedreality/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmixedreality%2Farmmixedreality%2Fv0.2.0/sdk/resourcemanager/mixedreality/armmixedreality/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmixedreality_test
@@ -13,14 +13,14 @@ import (
 )
 
 // x-ms-original-file: specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/examples/proxy/CheckNameAvailabilityForLocalUniqueness.json
-func ExampleMixedRealityClient_CheckNameAvailabilityLocal() {
+func ExampleClient_CheckNameAvailabilityLocal() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armmixedreality.NewMixedRealityClient("<subscription-id>", cred, nil)
-	_, err = client.CheckNameAvailabilityLocal(ctx,
+	client := armmixedreality.NewClient("<subscription-id>", cred, nil)
+	res, err := client.CheckNameAvailabilityLocal(ctx,
 		"<location>",
 		armmixedreality.CheckNameAvailabilityRequest{
 			Name: to.StringPtr("<name>"),
@@ -30,5 +30,6 @@ func ExampleMixedRealityClient_CheckNameAvailabilityLocal() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ClientCheckNameAvailabilityLocalResult)
 }
 ```

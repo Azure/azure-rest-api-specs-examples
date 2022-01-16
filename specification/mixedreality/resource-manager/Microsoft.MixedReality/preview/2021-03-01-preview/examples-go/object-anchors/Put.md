@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmixedreality%2Farmmixedreality%2Fv0.1.0/sdk/resourcemanager/mixedreality/armmixedreality/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmixedreality%2Farmmixedreality%2Fv0.2.0/sdk/resourcemanager/mixedreality/armmixedreality/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmixedreality_test
@@ -24,19 +24,15 @@ func ExampleObjectAnchorsAccountsClient_Create() {
 		"<resource-group-name>",
 		"<account-name>",
 		armmixedreality.ObjectAnchorsAccount{
-			TrackedResource: armmixedreality.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Identity: &armmixedreality.ObjectAnchorsAccountIdentity{
-				Identity: armmixedreality.Identity{
-					Type: to.StringPtr("<type>"),
-				},
+				Type: to.StringPtr("<type>"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ObjectAnchorsAccount.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ObjectAnchorsAccountsClientCreateResult)
 }
 ```

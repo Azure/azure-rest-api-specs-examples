@@ -1,0 +1,189 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.3.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armlogic_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logic/armlogic"
+)
+
+// x-ms-original-file: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccountAgreements_CreateOrUpdate.json
+func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armlogic.NewIntegrationAccountAgreementsClient("<subscription-id>", cred, nil)
+	res, err := client.CreateOrUpdate(ctx,
+		"<resource-group-name>",
+		"<integration-account-name>",
+		"<agreement-name>",
+		armlogic.IntegrationAccountAgreement{
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"IntegrationAccountAgreement": to.StringPtr("<IntegrationAccountAgreementName>"),
+			},
+			Properties: &armlogic.IntegrationAccountAgreementProperties{
+				AgreementType: armlogic.AgreementTypeAS2.ToPtr(),
+				Content: &armlogic.AgreementContent{
+					AS2: &armlogic.AS2AgreementContent{
+						ReceiveAgreement: &armlogic.AS2OneWayAgreement{
+							ProtocolSettings: &armlogic.AS2ProtocolSettings{
+								AcknowledgementConnectionSettings: &armlogic.AS2AcknowledgementConnectionSettings{
+									IgnoreCertificateNameMismatch: to.BoolPtr(true),
+									KeepHTTPConnectionAlive:       to.BoolPtr(true),
+									SupportHTTPStatusCodeContinue: to.BoolPtr(true),
+									UnfoldHTTPHeaders:             to.BoolPtr(true),
+								},
+								EnvelopeSettings: &armlogic.AS2EnvelopeSettings{
+									AutogenerateFileName:                    to.BoolPtr(true),
+									FileNameTemplate:                        to.StringPtr("<file-name-template>"),
+									MessageContentType:                      to.StringPtr("<message-content-type>"),
+									SuspendMessageOnFileNameGenerationError: to.BoolPtr(true),
+									TransmitFileNameInMimeHeader:            to.BoolPtr(true),
+								},
+								ErrorSettings: &armlogic.AS2ErrorSettings{
+									ResendIfMDNNotReceived:  to.BoolPtr(true),
+									SuspendDuplicateMessage: to.BoolPtr(true),
+								},
+								MdnSettings: &armlogic.AS2MdnSettings{
+									DispositionNotificationTo:  to.StringPtr("<disposition-notification-to>"),
+									MdnText:                    to.StringPtr("<mdn-text>"),
+									MicHashingAlgorithm:        armlogic.HashingAlgorithm("SHA1").ToPtr(),
+									NeedMDN:                    to.BoolPtr(true),
+									ReceiptDeliveryURL:         to.StringPtr("<receipt-delivery-url>"),
+									SendInboundMDNToMessageBox: to.BoolPtr(true),
+									SendMDNAsynchronously:      to.BoolPtr(true),
+									SignMDN:                    to.BoolPtr(true),
+									SignOutboundMDNIfOptional:  to.BoolPtr(true),
+								},
+								MessageConnectionSettings: &armlogic.AS2MessageConnectionSettings{
+									IgnoreCertificateNameMismatch: to.BoolPtr(true),
+									KeepHTTPConnectionAlive:       to.BoolPtr(true),
+									SupportHTTPStatusCodeContinue: to.BoolPtr(true),
+									UnfoldHTTPHeaders:             to.BoolPtr(true),
+								},
+								SecuritySettings: &armlogic.AS2SecuritySettings{
+									EnableNRRForInboundDecodedMessages:  to.BoolPtr(true),
+									EnableNRRForInboundEncodedMessages:  to.BoolPtr(true),
+									EnableNRRForInboundMDN:              to.BoolPtr(true),
+									EnableNRRForOutboundDecodedMessages: to.BoolPtr(true),
+									EnableNRRForOutboundEncodedMessages: to.BoolPtr(true),
+									EnableNRRForOutboundMDN:             to.BoolPtr(true),
+									OverrideGroupSigningCertificate:     to.BoolPtr(false),
+								},
+								ValidationSettings: &armlogic.AS2ValidationSettings{
+									CheckCertificateRevocationListOnReceive: to.BoolPtr(true),
+									CheckCertificateRevocationListOnSend:    to.BoolPtr(true),
+									CheckDuplicateMessage:                   to.BoolPtr(true),
+									CompressMessage:                         to.BoolPtr(true),
+									EncryptMessage:                          to.BoolPtr(false),
+									EncryptionAlgorithm:                     armlogic.EncryptionAlgorithm("AES128").ToPtr(),
+									InterchangeDuplicatesValidityDays:       to.Int32Ptr(100),
+									OverrideMessageProperties:               to.BoolPtr(true),
+									SignMessage:                             to.BoolPtr(false),
+								},
+							},
+							ReceiverBusinessIdentity: &armlogic.BusinessIdentity{
+								Qualifier: to.StringPtr("<qualifier>"),
+								Value:     to.StringPtr("<value>"),
+							},
+							SenderBusinessIdentity: &armlogic.BusinessIdentity{
+								Qualifier: to.StringPtr("<qualifier>"),
+								Value:     to.StringPtr("<value>"),
+							},
+						},
+						SendAgreement: &armlogic.AS2OneWayAgreement{
+							ProtocolSettings: &armlogic.AS2ProtocolSettings{
+								AcknowledgementConnectionSettings: &armlogic.AS2AcknowledgementConnectionSettings{
+									IgnoreCertificateNameMismatch: to.BoolPtr(true),
+									KeepHTTPConnectionAlive:       to.BoolPtr(true),
+									SupportHTTPStatusCodeContinue: to.BoolPtr(true),
+									UnfoldHTTPHeaders:             to.BoolPtr(true),
+								},
+								EnvelopeSettings: &armlogic.AS2EnvelopeSettings{
+									AutogenerateFileName:                    to.BoolPtr(true),
+									FileNameTemplate:                        to.StringPtr("<file-name-template>"),
+									MessageContentType:                      to.StringPtr("<message-content-type>"),
+									SuspendMessageOnFileNameGenerationError: to.BoolPtr(true),
+									TransmitFileNameInMimeHeader:            to.BoolPtr(true),
+								},
+								ErrorSettings: &armlogic.AS2ErrorSettings{
+									ResendIfMDNNotReceived:  to.BoolPtr(true),
+									SuspendDuplicateMessage: to.BoolPtr(true),
+								},
+								MdnSettings: &armlogic.AS2MdnSettings{
+									DispositionNotificationTo:  to.StringPtr("<disposition-notification-to>"),
+									MdnText:                    to.StringPtr("<mdn-text>"),
+									MicHashingAlgorithm:        armlogic.HashingAlgorithm("SHA1").ToPtr(),
+									NeedMDN:                    to.BoolPtr(true),
+									ReceiptDeliveryURL:         to.StringPtr("<receipt-delivery-url>"),
+									SendInboundMDNToMessageBox: to.BoolPtr(true),
+									SendMDNAsynchronously:      to.BoolPtr(true),
+									SignMDN:                    to.BoolPtr(true),
+									SignOutboundMDNIfOptional:  to.BoolPtr(true),
+								},
+								MessageConnectionSettings: &armlogic.AS2MessageConnectionSettings{
+									IgnoreCertificateNameMismatch: to.BoolPtr(true),
+									KeepHTTPConnectionAlive:       to.BoolPtr(true),
+									SupportHTTPStatusCodeContinue: to.BoolPtr(true),
+									UnfoldHTTPHeaders:             to.BoolPtr(true),
+								},
+								SecuritySettings: &armlogic.AS2SecuritySettings{
+									EnableNRRForInboundDecodedMessages:  to.BoolPtr(true),
+									EnableNRRForInboundEncodedMessages:  to.BoolPtr(true),
+									EnableNRRForInboundMDN:              to.BoolPtr(true),
+									EnableNRRForOutboundDecodedMessages: to.BoolPtr(true),
+									EnableNRRForOutboundEncodedMessages: to.BoolPtr(true),
+									EnableNRRForOutboundMDN:             to.BoolPtr(true),
+									OverrideGroupSigningCertificate:     to.BoolPtr(false),
+								},
+								ValidationSettings: &armlogic.AS2ValidationSettings{
+									CheckCertificateRevocationListOnReceive: to.BoolPtr(true),
+									CheckCertificateRevocationListOnSend:    to.BoolPtr(true),
+									CheckDuplicateMessage:                   to.BoolPtr(true),
+									CompressMessage:                         to.BoolPtr(true),
+									EncryptMessage:                          to.BoolPtr(false),
+									EncryptionAlgorithm:                     armlogic.EncryptionAlgorithm("AES128").ToPtr(),
+									InterchangeDuplicatesValidityDays:       to.Int32Ptr(100),
+									OverrideMessageProperties:               to.BoolPtr(true),
+									SignMessage:                             to.BoolPtr(false),
+								},
+							},
+							ReceiverBusinessIdentity: &armlogic.BusinessIdentity{
+								Qualifier: to.StringPtr("<qualifier>"),
+								Value:     to.StringPtr("<value>"),
+							},
+							SenderBusinessIdentity: &armlogic.BusinessIdentity{
+								Qualifier: to.StringPtr("<qualifier>"),
+								Value:     to.StringPtr("<value>"),
+							},
+						},
+					},
+				},
+				GuestIdentity: &armlogic.BusinessIdentity{
+					Qualifier: to.StringPtr("<qualifier>"),
+					Value:     to.StringPtr("<value>"),
+				},
+				GuestPartner: to.StringPtr("<guest-partner>"),
+				HostIdentity: &armlogic.BusinessIdentity{
+					Qualifier: to.StringPtr("<qualifier>"),
+					Value:     to.StringPtr("<value>"),
+				},
+				HostPartner: to.StringPtr("<host-partner>"),
+				Metadata:    map[string]interface{}{},
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("Response result: %#v\n", res.IntegrationAccountAgreementsClientCreateOrUpdateResult)
+}
+```

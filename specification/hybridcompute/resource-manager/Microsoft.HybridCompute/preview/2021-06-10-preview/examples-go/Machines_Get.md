@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridcompute%2Farmhybridcompute%2Fv0.1.0/sdk/resourcemanager/hybridcompute/armhybridcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridcompute%2Farmhybridcompute%2Fv0.2.0/sdk/resourcemanager/hybridcompute/armhybridcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridcompute_test
@@ -22,10 +22,10 @@ func ExampleMachinesClient_Get() {
 	res, err := client.Get(ctx,
 		"<resource-group-name>",
 		"<machine-name>",
-		&armhybridcompute.MachinesGetOptions{Expand: nil})
+		&armhybridcompute.MachinesClientGetOptions{Expand: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Machine.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MachinesClientGetResult)
 }
 ```

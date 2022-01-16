@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfluent%2Farmconfluent%2Fv0.1.0/sdk/resourcemanager/confluent/armconfluent/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfluent%2Farmconfluent%2Fv0.2.0/sdk/resourcemanager/confluent/armconfluent/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfluent_test
@@ -20,10 +20,10 @@ func ExampleMarketplaceAgreementsClient_Create() {
 	ctx := context.Background()
 	client := armconfluent.NewMarketplaceAgreementsClient("<subscription-id>", cred, nil)
 	res, err := client.Create(ctx,
-		&armconfluent.MarketplaceAgreementsCreateOptions{Body: nil})
+		&armconfluent.MarketplaceAgreementsClientCreateOptions{Body: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ConfluentAgreementResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MarketplaceAgreementsClientCreateResult)
 }
 ```

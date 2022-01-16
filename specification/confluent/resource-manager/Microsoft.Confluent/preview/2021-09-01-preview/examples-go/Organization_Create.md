@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfluent%2Farmconfluent%2Fv0.1.0/sdk/resourcemanager/confluent/armconfluent/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfluent%2Farmconfluent%2Fv0.2.0/sdk/resourcemanager/confluent/armconfluent/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfluent_test
@@ -25,7 +25,7 @@ func ExampleOrganizationClient_BeginCreate() {
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<organization-name>",
-		&armconfluent.OrganizationBeginCreateOptions{Body: &armconfluent.OrganizationResource{
+		&armconfluent.OrganizationClientBeginCreateOptions{Body: &armconfluent.OrganizationResource{
 			Location: to.StringPtr("<location>"),
 			Properties: &armconfluent.OrganizationResourceProperties{
 				OfferDetail: &armconfluent.OfferDetail{
@@ -53,6 +53,6 @@ func ExampleOrganizationClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("OrganizationResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.OrganizationClientCreateResult)
 }
 ```

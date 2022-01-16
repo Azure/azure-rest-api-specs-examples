@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmtemplatespecs%2Fv0.1.1/sdk/resourcemanager/resources/armtemplatespecs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmtemplatespecs%2Fv0.2.0/sdk/resourcemanager/resources/armtemplatespecs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtemplatespecs_test
@@ -24,7 +24,7 @@ func ExampleTemplateSpecVersionsClient_Update() {
 		"<resource-group-name>",
 		"<template-spec-name>",
 		"<template-spec-version>",
-		&armtemplatespecs.TemplateSpecVersionsUpdateOptions{TemplateSpecVersionUpdateModel: &armtemplatespecs.TemplateSpecVersionUpdateModel{
+		&armtemplatespecs.TemplateSpecVersionsClientUpdateOptions{TemplateSpecVersionUpdateModel: &armtemplatespecs.TemplateSpecVersionUpdateModel{
 			Tags: map[string]*string{
 				"myTag": to.StringPtr("My Value"),
 			},
@@ -33,6 +33,6 @@ func ExampleTemplateSpecVersionsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("TemplateSpecVersion.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.TemplateSpecVersionsClientUpdateResult)
 }
 ```

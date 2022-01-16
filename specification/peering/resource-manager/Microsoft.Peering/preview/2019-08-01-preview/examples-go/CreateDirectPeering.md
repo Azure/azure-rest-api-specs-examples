@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv0.1.0/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv0.2.0/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpeering_test
@@ -24,10 +24,10 @@ func ExamplePeeringsClient_CreateOrUpdate() {
 		"<resource-group-name>",
 		"<peering-name>",
 		armpeering.Peering{
-			Kind:     armpeering.KindDirect.ToPtr(),
+			Kind:     armpeering.Kind("Direct").ToPtr(),
 			Location: to.StringPtr("<location>"),
-			Properties: &armpeering.PeeringProperties{
-				Direct: &armpeering.PeeringPropertiesDirect{
+			Properties: &armpeering.Properties{
+				Direct: &armpeering.PropertiesDirect{
 					Connections: []*armpeering.DirectConnection{
 						{
 							BandwidthInMbps: to.Int32Ptr(10000),
@@ -40,7 +40,7 @@ func ExamplePeeringsClient_CreateOrUpdate() {
 							},
 							ConnectionIdentifier:   to.StringPtr("<connection-identifier>"),
 							PeeringDBFacilityID:    to.Int32Ptr(99999),
-							SessionAddressProvider: armpeering.SessionAddressProviderPeer.ToPtr(),
+							SessionAddressProvider: armpeering.SessionAddressProvider("Peer").ToPtr(),
 							UseForPeeringService:   to.BoolPtr(false),
 						},
 						{
@@ -54,10 +54,10 @@ func ExamplePeeringsClient_CreateOrUpdate() {
 							},
 							ConnectionIdentifier:   to.StringPtr("<connection-identifier>"),
 							PeeringDBFacilityID:    to.Int32Ptr(99999),
-							SessionAddressProvider: armpeering.SessionAddressProviderMicrosoft.ToPtr(),
+							SessionAddressProvider: armpeering.SessionAddressProvider("Microsoft").ToPtr(),
 							UseForPeeringService:   to.BoolPtr(true),
 						}},
-					DirectPeeringType: armpeering.DirectPeeringTypeEdge.ToPtr(),
+					DirectPeeringType: armpeering.DirectPeeringType("Edge").ToPtr(),
 					PeerAsn: &armpeering.SubResource{
 						ID: to.StringPtr("<id>"),
 					},
@@ -65,14 +65,14 @@ func ExamplePeeringsClient_CreateOrUpdate() {
 				},
 				PeeringLocation: to.StringPtr("<peering-location>"),
 			},
-			SKU: &armpeering.PeeringSKU{
-				Name: armpeering.NameBasicDirectFree.ToPtr(),
+			SKU: &armpeering.SKU{
+				Name: armpeering.Name("Basic_Direct_Free").ToPtr(),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Peering.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PeeringsClientCreateOrUpdateResult)
 }
 ```

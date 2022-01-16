@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbiprivatelinks%2Farmpowerbiprivatelinks%2Fv0.1.0/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbiprivatelinks%2Farmpowerbiprivatelinks%2Fv0.2.0/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpowerbiprivatelinks_test
@@ -33,10 +33,10 @@ func ExamplePowerBIResourcesClient_Update() {
 				"tag2": to.StringPtr("value2"),
 			},
 		},
-		&armpowerbiprivatelinks.PowerBIResourcesUpdateOptions{ClientTenantID: to.StringPtr("<client-tenant-id>")})
+		&armpowerbiprivatelinks.PowerBIResourcesClientUpdateOptions{ClientTenantID: to.StringPtr("<client-tenant-id>")})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("TenantResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PowerBIResourcesClientUpdateResult)
 }
 ```

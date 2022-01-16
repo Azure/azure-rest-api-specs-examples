@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -24,7 +24,7 @@ func ExampleSessionHostsClient_Delete() {
 		"<resource-group-name>",
 		"<host-pool-name>",
 		"<session-host-name>",
-		&armdesktopvirtualization.SessionHostsDeleteOptions{Force: to.BoolPtr(true)})
+		&armdesktopvirtualization.SessionHostsClientDeleteOptions{Force: to.BoolPtr(true)})
 	if err != nil {
 		log.Fatal(err)
 	}

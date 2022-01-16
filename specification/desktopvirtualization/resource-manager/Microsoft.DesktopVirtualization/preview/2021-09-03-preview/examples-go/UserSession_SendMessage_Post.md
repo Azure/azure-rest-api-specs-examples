@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -25,7 +25,7 @@ func ExampleUserSessionsClient_SendMessage() {
 		"<host-pool-name>",
 		"<session-host-name>",
 		"<user-session-id>",
-		&armdesktopvirtualization.UserSessionsSendMessageOptions{SendMessage: &armdesktopvirtualization.SendMessage{
+		&armdesktopvirtualization.UserSessionsClientSendMessageOptions{SendMessage: &armdesktopvirtualization.SendMessage{
 			MessageBody:  to.StringPtr("<message-body>"),
 			MessageTitle: to.StringPtr("<message-title>"),
 		},

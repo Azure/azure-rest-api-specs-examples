@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -20,13 +20,17 @@ func ExampleApplicationGroupsClient_ListBySubscription() {
 	}
 	ctx := context.Background()
 	client := armdesktopvirtualization.NewApplicationGroupsClient("<subscription-id>", cred, nil)
-	pager := client.ListBySubscription(&armdesktopvirtualization.ApplicationGroupsListBySubscriptionOptions{Filter: to.StringPtr("<filter>")})
-	for pager.NextPage(ctx) {
+	pager := client.ListBySubscription(&armdesktopvirtualization.ApplicationGroupsClientListBySubscriptionOptions{Filter: to.StringPtr("<filter>")})
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
+		if !nextResult {
+			break
+		}
 		for _, v := range pager.PageResponse().Value {
-			log.Printf("ApplicationGroup.ID: %s\n", *v.ID)
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

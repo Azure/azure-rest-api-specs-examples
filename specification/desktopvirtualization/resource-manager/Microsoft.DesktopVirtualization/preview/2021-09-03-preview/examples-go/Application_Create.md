@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -28,7 +28,7 @@ func ExampleApplicationsClient_CreateOrUpdate() {
 			Properties: &armdesktopvirtualization.ApplicationProperties{
 				Description:          to.StringPtr("<description>"),
 				CommandLineArguments: to.StringPtr("<command-line-arguments>"),
-				CommandLineSetting:   armdesktopvirtualization.CommandLineSettingAllow.ToPtr(),
+				CommandLineSetting:   armdesktopvirtualization.CommandLineSetting("Allow").ToPtr(),
 				FilePath:             to.StringPtr("<file-path>"),
 				FriendlyName:         to.StringPtr("<friendly-name>"),
 				IconIndex:            to.Int32Ptr(1),
@@ -40,6 +40,6 @@ func ExampleApplicationsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Application.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ApplicationsClientCreateOrUpdateResult)
 }
 ```

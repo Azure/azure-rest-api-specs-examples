@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.1.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.2.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdesktopvirtualization_test
@@ -24,12 +24,10 @@ func ExampleScalingPlansClient_Create() {
 		"<resource-group-name>",
 		"<scaling-plan-name>",
 		armdesktopvirtualization.ScalingPlan{
-			ResourceModelWithAllowedPropertySet: armdesktopvirtualization.ResourceModelWithAllowedPropertySet{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"tag1": to.StringPtr("value1"),
-					"tag2": to.StringPtr("value2"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"tag1": to.StringPtr("value1"),
+				"tag2": to.StringPtr("value2"),
 			},
 			Properties: &armdesktopvirtualization.ScalingPlanProperties{
 				Description:  to.StringPtr("<description>"),
@@ -40,29 +38,29 @@ func ExampleScalingPlansClient_Create() {
 						HostPoolArmPath:    to.StringPtr("<host-pool-arm-path>"),
 						ScalingPlanEnabled: to.BoolPtr(true),
 					}},
-				HostPoolType: armdesktopvirtualization.ScalingHostPoolTypePooled.ToPtr(),
+				HostPoolType: armdesktopvirtualization.ScalingHostPoolType("Pooled").ToPtr(),
 				Schedules: []*armdesktopvirtualization.ScalingSchedule{
 					{
 						Name: to.StringPtr("<name>"),
 						DaysOfWeek: []*armdesktopvirtualization.ScalingScheduleDaysOfWeekItem{
-							armdesktopvirtualization.ScalingScheduleDaysOfWeekItemMonday.ToPtr(),
-							armdesktopvirtualization.ScalingScheduleDaysOfWeekItemTuesday.ToPtr(),
-							armdesktopvirtualization.ScalingScheduleDaysOfWeekItemWednesday.ToPtr(),
-							armdesktopvirtualization.ScalingScheduleDaysOfWeekItemThursday.ToPtr(),
-							armdesktopvirtualization.ScalingScheduleDaysOfWeekItemFriday.ToPtr()},
-						OffPeakLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithmDepthFirst.ToPtr(),
+							armdesktopvirtualization.ScalingScheduleDaysOfWeekItem("Monday").ToPtr(),
+							armdesktopvirtualization.ScalingScheduleDaysOfWeekItem("Tuesday").ToPtr(),
+							armdesktopvirtualization.ScalingScheduleDaysOfWeekItem("Wednesday").ToPtr(),
+							armdesktopvirtualization.ScalingScheduleDaysOfWeekItem("Thursday").ToPtr(),
+							armdesktopvirtualization.ScalingScheduleDaysOfWeekItem("Friday").ToPtr()},
+						OffPeakLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithm("DepthFirst").ToPtr(),
 						OffPeakStartTime: &armdesktopvirtualization.Time{
 							Hour:   to.Int32Ptr(20),
 							Minute: to.Int32Ptr(0),
 						},
-						PeakLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithmBreadthFirst.ToPtr(),
+						PeakLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithm("BreadthFirst").ToPtr(),
 						PeakStartTime: &armdesktopvirtualization.Time{
 							Hour:   to.Int32Ptr(8),
 							Minute: to.Int32Ptr(0),
 						},
 						RampDownCapacityThresholdPct:   to.Int32Ptr(50),
 						RampDownForceLogoffUsers:       to.BoolPtr(true),
-						RampDownLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithmDepthFirst.ToPtr(),
+						RampDownLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithm("DepthFirst").ToPtr(),
 						RampDownMinimumHostsPct:        to.Int32Ptr(20),
 						RampDownNotificationMessage:    to.StringPtr("<ramp-down-notification-message>"),
 						RampDownStartTime: &armdesktopvirtualization.Time{
@@ -71,7 +69,7 @@ func ExampleScalingPlansClient_Create() {
 						},
 						RampDownWaitTimeMinutes:      to.Int32Ptr(30),
 						RampUpCapacityThresholdPct:   to.Int32Ptr(80),
-						RampUpLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithmDepthFirst.ToPtr(),
+						RampUpLoadBalancingAlgorithm: armdesktopvirtualization.SessionHostLoadBalancingAlgorithm("DepthFirst").ToPtr(),
 						RampUpMinimumHostsPct:        to.Int32Ptr(20),
 						RampUpStartTime: &armdesktopvirtualization.Time{
 							Hour:   to.Int32Ptr(6),
@@ -85,6 +83,6 @@ func ExampleScalingPlansClient_Create() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ScalingPlan.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ScalingPlansClientCreateResult)
 }
 ```

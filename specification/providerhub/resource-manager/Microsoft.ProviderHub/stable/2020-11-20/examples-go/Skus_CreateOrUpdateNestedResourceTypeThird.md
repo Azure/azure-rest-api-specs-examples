@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv0.1.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv0.2.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armproviderhub_test
@@ -29,29 +29,27 @@ func ExampleSKUsClient_CreateOrUpdateNestedResourceTypeThird() {
 		"<sku>",
 		armproviderhub.SKUResource{
 			Properties: &armproviderhub.SKUResourceProperties{
-				ResourceTypeSKU: armproviderhub.ResourceTypeSKU{
-					SKUSettings: []*armproviderhub.SKUSetting{
-						{
-							Name: to.StringPtr("<name>"),
-							Kind: to.StringPtr("<kind>"),
-							Tier: to.StringPtr("<tier>"),
-						},
-						{
-							Name: to.StringPtr("<name>"),
-							Costs: []*armproviderhub.SKUCost{
-								{
-									MeterID: to.StringPtr("<meter-id>"),
-								}},
-							Kind: to.StringPtr("<kind>"),
-							Tier: to.StringPtr("<tier>"),
-						}},
-				},
+				SKUSettings: []*armproviderhub.SKUSetting{
+					{
+						Name: to.StringPtr("<name>"),
+						Kind: to.StringPtr("<kind>"),
+						Tier: to.StringPtr("<tier>"),
+					},
+					{
+						Name: to.StringPtr("<name>"),
+						Costs: []*armproviderhub.SKUCost{
+							{
+								MeterID: to.StringPtr("<meter-id>"),
+							}},
+						Kind: to.StringPtr("<kind>"),
+						Tier: to.StringPtr("<tier>"),
+					}},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SKUResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SKUsClientCreateOrUpdateNestedResourceTypeThirdResult)
 }
 ```

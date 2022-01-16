@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmmanagedapplications%2Fv0.1.1/sdk/resourcemanager/resources/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmmanagedapplications%2Fv0.2.0/sdk/resourcemanager/resources/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagedapplications_test
@@ -15,22 +15,18 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Solutions/stable/2018-06-01/examples/createOrUpdateApplicationDefinition.json
-func ExampleApplicationDefinitionsClient_BeginCreateOrUpdateByID() {
+func ExampleApplicationDefinitionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
 	client := armmanagedapplications.NewApplicationDefinitionsClient("<subscription-id>", cred, nil)
-	poller, err := client.BeginCreateOrUpdateByID(ctx,
+	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<application-definition-name>",
 		armmanagedapplications.ApplicationDefinition{
-			GenericResource: armmanagedapplications.GenericResource{
-				Resource: armmanagedapplications.Resource{
-					Location: to.StringPtr("<location>"),
-				},
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armmanagedapplications.ApplicationDefinitionProperties{
 				Description: to.StringPtr("<description>"),
 				Authorizations: []*armmanagedapplications.ApplicationProviderAuthorization{
@@ -51,6 +47,6 @@ func ExampleApplicationDefinitionsClient_BeginCreateOrUpdateByID() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ApplicationDefinition.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ApplicationDefinitionsClientCreateOrUpdateResult)
 }
 ```

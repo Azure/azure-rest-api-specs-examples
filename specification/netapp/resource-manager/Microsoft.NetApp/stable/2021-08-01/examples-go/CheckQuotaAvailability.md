@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.1.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -13,23 +13,24 @@ import (
 )
 
 // x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2021-08-01/examples/CheckQuotaAvailability.json
-func ExampleNetAppResourceClient_CheckQuotaAvailability() {
+func ExampleResourceClient_CheckQuotaAvailability() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armnetapp.NewNetAppResourceClient("<subscription-id>", cred, nil)
-	_, err = client.CheckQuotaAvailability(ctx,
+	client := armnetapp.NewResourceClient("<subscription-id>", cred, nil)
+	res, err := client.CheckQuotaAvailability(ctx,
 		"<location>",
 		armnetapp.QuotaAvailabilityRequest{
 			Name:          to.StringPtr("<name>"),
-			Type:          armnetapp.CheckQuotaNameResourceTypesMicrosoftNetAppNetAppAccounts.ToPtr(),
+			Type:          armnetapp.CheckQuotaNameResourceTypes("Microsoft.NetApp/netAppAccounts").ToPtr(),
 			ResourceGroup: to.StringPtr("<resource-group>"),
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ResourceClientCheckQuotaAvailabilityResult)
 }
 ```

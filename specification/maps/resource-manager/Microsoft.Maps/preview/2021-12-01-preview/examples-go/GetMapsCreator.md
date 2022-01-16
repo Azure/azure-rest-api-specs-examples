@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.1.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.2.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -27,6 +27,6 @@ func ExampleCreatorsClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Creator.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.CreatorsClientGetResult)
 }
 ```

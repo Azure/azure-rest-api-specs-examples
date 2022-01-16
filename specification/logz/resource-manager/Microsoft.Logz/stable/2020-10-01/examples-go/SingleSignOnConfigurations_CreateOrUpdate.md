@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.1.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.2.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogz_test
@@ -25,7 +25,7 @@ func ExampleSingleSignOnClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<monitor-name>",
 		"<configuration-name>",
-		&armlogz.SingleSignOnBeginCreateOrUpdateOptions{Body: nil})
+		&armlogz.SingleSignOnClientBeginCreateOrUpdateOptions{Body: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -33,6 +33,6 @@ func ExampleSingleSignOnClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("LogzSingleSignOnResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SingleSignOnClientCreateOrUpdateResult)
 }
 ```

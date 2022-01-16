@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.1.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.2.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmariadb_test
@@ -12,19 +12,20 @@ import (
 )
 
 // x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/QueryPerformanceInsightResetData.json
-func ExampleMariaDBManagementClient_ResetQueryPerformanceInsightData() {
+func ExampleManagementClient_ResetQueryPerformanceInsightData() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armmariadb.NewMariaDBManagementClient("<subscription-id>", cred, nil)
-	_, err = client.ResetQueryPerformanceInsightData(ctx,
+	client := armmariadb.NewManagementClient("<subscription-id>", cred, nil)
+	res, err := client.ResetQueryPerformanceInsightData(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ManagementClientResetQueryPerformanceInsightDataResult)
 }
 ```

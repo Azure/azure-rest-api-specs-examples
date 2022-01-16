@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.1.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.2.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmariadb_test
@@ -19,12 +19,13 @@ func ExampleDatabasesClient_ListByServer() {
 	}
 	ctx := context.Background()
 	client := armmariadb.NewDatabasesClient("<subscription-id>", cred, nil)
-	_, err = client.ListByServer(ctx,
+	res, err := client.ListByServer(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.DatabasesClientListByServerResult)
 }
 ```

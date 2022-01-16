@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.1.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.2.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmariadb_test
@@ -28,9 +28,7 @@ func ExampleServersClient_BeginCreate() {
 		armmariadb.ServerForCreate{
 			Location: to.StringPtr("<location>"),
 			Properties: &armmariadb.ServerPropertiesForRestore{
-				ServerPropertiesForCreate: armmariadb.ServerPropertiesForCreate{
-					CreateMode: armmariadb.CreateModePointInTimeRestore.ToPtr(),
-				},
+				CreateMode:         armmariadb.CreateMode("PointInTimeRestore").ToPtr(),
 				RestorePointInTime: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-14T00:00:37.467Z"); return t }()),
 				SourceServerID:     to.StringPtr("<source-server-id>"),
 			},
@@ -38,7 +36,7 @@ func ExampleServersClient_BeginCreate() {
 				Name:     to.StringPtr("<name>"),
 				Capacity: to.Int32Ptr(2),
 				Family:   to.StringPtr("<family>"),
-				Tier:     armmariadb.SKUTierGeneralPurpose.ToPtr(),
+				Tier:     armmariadb.SKUTier("GeneralPurpose").ToPtr(),
 			},
 			Tags: map[string]*string{
 				"ElasticServer": to.StringPtr("1"),
@@ -52,6 +50,6 @@ func ExampleServersClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Server.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ServersClientCreateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmdeploymentscripts%2Fv0.1.1/sdk/resourcemanager/resources/armdeploymentscripts/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmdeploymentscripts%2Fv0.2.0/sdk/resourcemanager/resources/armdeploymentscripts/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeploymentscripts_test
@@ -12,23 +12,23 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/examples/DeploymentScripts_Update.json
-func ExampleDeploymentScriptsClient_Update() {
+func ExampleClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdeploymentscripts.NewDeploymentScriptsClient("<subscription-id>", cred, nil)
+	client := armdeploymentscripts.NewClient("<subscription-id>", cred, nil)
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<script-name>",
-		&armdeploymentscripts.DeploymentScriptsUpdateOptions{DeploymentScript: &armdeploymentscripts.DeploymentScriptUpdateParameter{
+		&armdeploymentscripts.ClientUpdateOptions{DeploymentScript: &armdeploymentscripts.DeploymentScriptUpdateParameter{
 			Tags: map[string]*string{},
 		},
 		})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DeploymentScriptClassification.GetDeploymentScript().ID: %s\n", *res.GetDeploymentScript().ID)
+	log.Printf("Response result: %#v\n", res.ClientUpdateResult)
 }
 ```

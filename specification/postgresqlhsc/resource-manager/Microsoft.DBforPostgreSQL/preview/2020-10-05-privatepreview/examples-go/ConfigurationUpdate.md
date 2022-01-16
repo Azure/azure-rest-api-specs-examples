@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresqlhsc%2Farmpostgresqlhsc%2Fv0.1.0/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresqlhsc%2Farmpostgresqlhsc%2Fv0.2.0/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresqlhsc_test
@@ -30,11 +30,11 @@ func ExampleConfigurationsClient_BeginUpdate() {
 			Properties: &armpostgresqlhsc.ServerGroupConfigurationProperties{
 				ServerRoleGroupConfigurations: []*armpostgresqlhsc.ServerRoleGroupConfiguration{
 					{
-						Role:  armpostgresqlhsc.ServerRoleCoordinator.ToPtr(),
+						Role:  armpostgresqlhsc.ServerRole("Coordinator").ToPtr(),
 						Value: to.StringPtr("<value>"),
 					},
 					{
-						Role:  armpostgresqlhsc.ServerRoleWorker.ToPtr(),
+						Role:  armpostgresqlhsc.ServerRole("Worker").ToPtr(),
 						Value: to.StringPtr("<value>"),
 					}},
 			},
@@ -47,6 +47,6 @@ func ExampleConfigurationsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ServerGroupConfiguration.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ConfigurationsClientUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmlocks%2Fv0.1.1/sdk/resourcemanager/resources/armlocks/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmlocks%2Fv0.2.0/sdk/resourcemanager/resources/armlocks/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlocks_test
@@ -24,13 +24,13 @@ func ExampleManagementLocksClient_CreateOrUpdateByScope() {
 		"<lock-name>",
 		armlocks.ManagementLockObject{
 			Properties: &armlocks.ManagementLockProperties{
-				Level: armlocks.LockLevelReadOnly.ToPtr(),
+				Level: armlocks.LockLevel("ReadOnly").ToPtr(),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ManagementLockObject.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ManagementLocksClientCreateOrUpdateByScopeResult)
 }
 ```

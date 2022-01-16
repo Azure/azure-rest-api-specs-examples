@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.1.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.2.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armresourcemover_test
@@ -26,7 +26,7 @@ func ExampleMoveResourcesClient_BeginCreate() {
 		"<resource-group-name>",
 		"<move-collection-name>",
 		"<move-resource-name>",
-		&armresourcemover.MoveResourcesBeginCreateOptions{Body: &armresourcemover.MoveResource{
+		&armresourcemover.MoveResourcesClientBeginCreateOptions{Body: &armresourcemover.MoveResource{
 			Properties: &armresourcemover.MoveResourceProperties{
 				DependsOnOverrides: []*armresourcemover.MoveResourceDependencyOverride{
 					{
@@ -34,13 +34,10 @@ func ExampleMoveResourcesClient_BeginCreate() {
 						TargetID: to.StringPtr("<target-id>"),
 					}},
 				ResourceSettings: &armresourcemover.VirtualMachineResourceSettings{
-					ResourceSettings: armresourcemover.ResourceSettings{
-						ResourceType:       to.StringPtr("<resource-type>"),
-						TargetResourceName: to.StringPtr("<target-resource-name>"),
-					},
+					ResourceType:            to.StringPtr("<resource-type>"),
+					TargetResourceName:      to.StringPtr("<target-resource-name>"),
 					TargetAvailabilitySetID: to.StringPtr("<target-availability-set-id>"),
-					TargetAvailabilityZone:  armresourcemover.TargetAvailabilityZoneTwo.ToPtr(),
-					TargetVMSize:            to.StringPtr("<target-vmsize>"),
+					TargetAvailabilityZone:  armresourcemover.TargetAvailabilityZone("2").ToPtr(),
 					UserManagedIdentities: []*string{
 						to.StringPtr("/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/umi1")},
 				},
@@ -55,6 +52,6 @@ func ExampleMoveResourcesClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("MoveResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MoveResourcesClientCreateResult)
 }
 ```

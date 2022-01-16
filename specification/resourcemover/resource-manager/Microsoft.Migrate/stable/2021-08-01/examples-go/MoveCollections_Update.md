@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.1.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcemover%2Farmresourcemover%2Fv0.2.0/sdk/resourcemanager/resourcemover/armresourcemover/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armresourcemover_test
@@ -23,9 +23,9 @@ func ExampleMoveCollectionsClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<move-collection-name>",
-		&armresourcemover.MoveCollectionsUpdateOptions{Body: &armresourcemover.UpdateMoveCollectionRequest{
+		&armresourcemover.MoveCollectionsClientUpdateOptions{Body: &armresourcemover.UpdateMoveCollectionRequest{
 			Identity: &armresourcemover.Identity{
-				Type: armresourcemover.ResourceIdentityTypeSystemAssigned.ToPtr(),
+				Type: armresourcemover.ResourceIdentityType("SystemAssigned").ToPtr(),
 			},
 			Tags: map[string]*string{
 				"key1": to.StringPtr("mc1"),
@@ -35,6 +35,6 @@ func ExampleMoveCollectionsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("MoveCollection.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MoveCollectionsClientUpdateResult)
 }
 ```

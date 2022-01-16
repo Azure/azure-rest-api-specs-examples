@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiotcentral%2Farmiotcentral%2Fv0.1.0/sdk/resourcemanager/iotcentral/armiotcentral/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiotcentral%2Farmiotcentral%2Fv0.2.0/sdk/resourcemanager/iotcentral/armiotcentral/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armiotcentral_test
@@ -9,6 +9,7 @@ import (
 
 	"time"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotcentral/armiotcentral"
 )
@@ -24,7 +25,14 @@ func ExampleAppsClient_BeginUpdate() {
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armiotcentral.AppPatch{},
+		armiotcentral.AppPatch{
+			Identity: &armiotcentral.SystemAssignedServiceIdentity{
+				Type: armiotcentral.SystemAssignedServiceIdentityType("SystemAssigned").ToPtr(),
+			},
+			Properties: &armiotcentral.AppProperties{
+				DisplayName: to.StringPtr("<display-name>"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
@@ -33,6 +41,6 @@ func ExampleAppsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("App.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AppsClientUpdateResult)
 }
 ```

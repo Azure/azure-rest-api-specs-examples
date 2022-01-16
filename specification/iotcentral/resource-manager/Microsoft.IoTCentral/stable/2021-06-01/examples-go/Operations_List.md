@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiotcentral%2Farmiotcentral%2Fv0.1.0/sdk/resourcemanager/iotcentral/armiotcentral/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiotcentral%2Farmiotcentral%2Fv0.2.0/sdk/resourcemanager/iotcentral/armiotcentral/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armiotcentral_test
@@ -20,9 +20,16 @@ func ExampleOperationsClient_List() {
 	ctx := context.Background()
 	client := armiotcentral.NewOperationsClient(cred, nil)
 	pager := client.List(nil)
-	for pager.NextPage(ctx) {
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
+		}
+		if !nextResult {
+			break
+		}
+		for _, v := range pager.PageResponse().Value {
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.1.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.2.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridnetwork_test
@@ -19,12 +19,13 @@ func ExampleDevicesClient_ListRegistrationKey() {
 	}
 	ctx := context.Background()
 	client := armhybridnetwork.NewDevicesClient("<subscription-id>", cred, nil)
-	_, err = client.ListRegistrationKey(ctx,
+	res, err := client.ListRegistrationKey(ctx,
 		"<resource-group-name>",
 		"<device-name>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.DevicesClientListRegistrationKeyResult)
 }
 ```

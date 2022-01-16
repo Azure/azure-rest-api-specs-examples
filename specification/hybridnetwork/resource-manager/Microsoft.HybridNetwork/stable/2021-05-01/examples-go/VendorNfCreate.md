@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.1.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.2.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridnetwork_test
@@ -34,30 +34,28 @@ func ExampleVendorNetworkFunctionsClient_BeginCreateOrUpdate() {
 							{
 								IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 									{
-										DNSServers:         []*string{},
 										Gateway:            to.StringPtr("<gateway>"),
 										IPAddress:          to.StringPtr("<ipaddress>"),
-										IPAllocationMethod: armhybridnetwork.IPAllocationMethodDynamic.ToPtr(),
-										IPVersion:          armhybridnetwork.IPVersionIPv4.ToPtr(),
+										IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
+										IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
 										Subnet:             to.StringPtr("<subnet>"),
 									}},
 								MacAddress:           to.StringPtr("<mac-address>"),
 								NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-								VMSwitchType:         armhybridnetwork.VMSwitchTypeManagement.ToPtr(),
+								VMSwitchType:         armhybridnetwork.VMSwitchType("Management").ToPtr(),
 							},
 							{
 								IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 									{
-										DNSServers:         []*string{},
 										Gateway:            to.StringPtr("<gateway>"),
 										IPAddress:          to.StringPtr("<ipaddress>"),
-										IPAllocationMethod: armhybridnetwork.IPAllocationMethodDynamic.ToPtr(),
-										IPVersion:          armhybridnetwork.IPVersionIPv4.ToPtr(),
+										IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
+										IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
 										Subnet:             to.StringPtr("<subnet>"),
 									}},
 								MacAddress:           to.StringPtr("<mac-address>"),
 								NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-								VMSwitchType:         armhybridnetwork.VMSwitchTypeWan.ToPtr(),
+								VMSwitchType:         armhybridnetwork.VMSwitchType("Wan").ToPtr(),
 							}},
 						OSProfile: &armhybridnetwork.OsProfile{
 							AdminUsername: to.StringPtr("<admin-username>"),
@@ -75,8 +73,8 @@ func ExampleVendorNetworkFunctionsClient_BeginCreateOrUpdate() {
 						RoleName:           to.StringPtr("<role-name>"),
 						UserDataParameters: map[string]interface{}{},
 					}},
-				SKUType:                 armhybridnetwork.SKUTypeSDWAN.ToPtr(),
-				VendorProvisioningState: armhybridnetwork.VendorProvisioningStateProvisioning.ToPtr(),
+				SKUType:                 armhybridnetwork.SKUType("SDWAN").ToPtr(),
+				VendorProvisioningState: armhybridnetwork.VendorProvisioningState("Provisioning").ToPtr(),
 			},
 		},
 		nil)
@@ -87,6 +85,6 @@ func ExampleVendorNetworkFunctionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("VendorNetworkFunction.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.VendorNetworkFunctionsClientCreateOrUpdateResult)
 }
 ```

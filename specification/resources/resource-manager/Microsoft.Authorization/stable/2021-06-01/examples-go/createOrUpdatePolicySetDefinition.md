@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.1.1/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.2.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -13,17 +13,17 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicySetDefinition.json
-func ExamplePolicySetDefinitionsClient_CreateOrUpdate() {
+func ExampleSetDefinitionsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armpolicy.NewPolicySetDefinitionsClient("<subscription-id>", cred, nil)
+	client := armpolicy.NewSetDefinitionsClient("<subscription-id>", cred, nil)
 	res, err := client.CreateOrUpdate(ctx,
 		"<policy-set-definition-name>",
-		armpolicy.PolicySetDefinition{
-			Properties: &armpolicy.PolicySetDefinitionProperties{
+		armpolicy.SetDefinition{
+			Properties: &armpolicy.SetDefinitionProperties{
 				Description: to.StringPtr("<description>"),
 				DisplayName: to.StringPtr("<display-name>"),
 				Metadata: map[string]interface{}{
@@ -31,7 +31,7 @@ func ExamplePolicySetDefinitionsClient_CreateOrUpdate() {
 				},
 				Parameters: map[string]*armpolicy.ParameterDefinitionsValue{
 					"namePrefix": {
-						Type: armpolicy.ParameterTypeString.ToPtr(),
+						Type: armpolicy.ParameterType("String").ToPtr(),
 						DefaultValue: map[string]interface{}{
 							"0": "m",
 							"1": "y",
@@ -47,7 +47,7 @@ func ExamplePolicySetDefinitionsClient_CreateOrUpdate() {
 						},
 					},
 				},
-				PolicyDefinitions: []*armpolicy.PolicyDefinitionReference{
+				PolicyDefinitions: []*armpolicy.DefinitionReference{
 					{
 						Parameters: map[string]*armpolicy.ParameterValuesValue{
 							"listOfAllowedSKUs": {
@@ -109,6 +109,6 @@ func ExamplePolicySetDefinitionsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PolicySetDefinition.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SetDefinitionsClientCreateOrUpdateResult)
 }
 ```

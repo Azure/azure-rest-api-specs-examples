@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.1.1/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.2.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -13,17 +13,17 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/updatePolicyAssignmentWithIdentity.json
-func ExamplePolicyAssignmentsClient_Update() {
+func ExampleAssignmentsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armpolicy.NewPolicyAssignmentsClient("<subscription-id>", cred, nil)
+	client := armpolicy.NewAssignmentsClient("<subscription-id>", cred, nil)
 	res, err := client.Update(ctx,
 		"<scope>",
 		"<policy-assignment-name>",
-		armpolicy.PolicyAssignmentUpdate{
+		armpolicy.AssignmentUpdate{
 			Identity: &armpolicy.Identity{
 				Type: armpolicy.ResourceIdentityTypeSystemAssigned.ToPtr(),
 			},
@@ -33,6 +33,6 @@ func ExamplePolicyAssignmentsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PolicyAssignment.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AssignmentsClientUpdateResult)
 }
 ```

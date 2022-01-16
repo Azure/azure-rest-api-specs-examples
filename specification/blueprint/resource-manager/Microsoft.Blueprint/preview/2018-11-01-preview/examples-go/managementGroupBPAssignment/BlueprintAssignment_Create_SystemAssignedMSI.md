@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.1.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.2.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -20,20 +20,16 @@ func ExampleAssignmentsClient_CreateOrUpdate() {
 	}
 	ctx := context.Background()
 	client := armblueprint.NewAssignmentsClient(cred, nil)
-	res, err := client.CreateOrUpdate(ctx,
+	_, err = client.CreateOrUpdate(ctx,
 		"<resource-scope>",
 		"<assignment-name>",
 		armblueprint.Assignment{
-			TrackedResource: armblueprint.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Identity: &armblueprint.ManagedServiceIdentity{
-				Type: armblueprint.ManagedServiceIdentityTypeSystemAssigned.ToPtr(),
+				Type: armblueprint.ManagedServiceIdentityType("SystemAssigned").ToPtr(),
 			},
 			Properties: &armblueprint.AssignmentProperties{
-				BlueprintResourcePropertiesBase: armblueprint.BlueprintResourcePropertiesBase{
-					Description: to.StringPtr("<description>"),
-				},
+				Description: to.StringPtr("<description>"),
 				BlueprintID: to.StringPtr("<blueprint-id>"),
 				Parameters: map[string]*armblueprint.ParameterValue{
 					"costCenter": {
@@ -110,6 +106,5 @@ func ExampleAssignmentsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Assignment.ID: %s\n", *res.ID)
 }
 ```

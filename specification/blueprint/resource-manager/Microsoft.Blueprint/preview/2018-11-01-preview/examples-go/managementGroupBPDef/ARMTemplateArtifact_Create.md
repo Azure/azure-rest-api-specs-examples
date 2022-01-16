@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.1.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.2.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -20,14 +20,12 @@ func ExampleArtifactsClient_CreateOrUpdate() {
 	}
 	ctx := context.Background()
 	client := armblueprint.NewArtifactsClient(cred, nil)
-	res, err := client.CreateOrUpdate(ctx,
+	_, err = client.CreateOrUpdate(ctx,
 		"<resource-scope>",
 		"<blueprint-name>",
 		"<artifact-name>",
 		&armblueprint.TemplateArtifact{
-			Artifact: armblueprint.Artifact{
-				Kind: armblueprint.ArtifactKindTemplate.ToPtr(),
-			},
+			Kind: armblueprint.ArtifactKind("template").ToPtr(),
 			Properties: &armblueprint.TemplateArtifactProperties{
 				Parameters: map[string]*armblueprint.ParameterValue{
 					"storageAccountType": {
@@ -116,6 +114,5 @@ func ExampleArtifactsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ArtifactClassification.GetArtifact().ID: %s\n", *res.GetArtifact().ID)
 }
 ```

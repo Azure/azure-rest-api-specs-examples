@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.1.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.2.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -19,13 +19,12 @@ func ExampleAssignmentsClient_Delete() {
 	}
 	ctx := context.Background()
 	client := armblueprint.NewAssignmentsClient(cred, nil)
-	res, err := client.Delete(ctx,
+	_, err = client.Delete(ctx,
 		"<resource-scope>",
 		"<assignment-name>",
-		&armblueprint.AssignmentsDeleteOptions{DeleteBehavior: nil})
+		&armblueprint.AssignmentsClientDeleteOptions{DeleteBehavior: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Assignment.ID: %s\n", *res.ID)
 }
 ```

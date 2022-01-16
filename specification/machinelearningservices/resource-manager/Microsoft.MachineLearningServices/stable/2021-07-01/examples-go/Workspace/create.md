@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.1.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.2.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -46,7 +46,7 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 						KeyIdentifier:    to.StringPtr("<key-identifier>"),
 						KeyVaultArmID:    to.StringPtr("<key-vault-arm-id>"),
 					},
-					Status: armmachinelearningservices.EncryptionStatusEnabled.ToPtr(),
+					Status: armmachinelearningservices.EncryptionStatus("Enabled").ToPtr(),
 				},
 				FriendlyName: to.StringPtr("<friendly-name>"),
 				HbiWorkspace: to.BoolPtr(false),
@@ -58,7 +58,7 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 							GroupID:               to.StringPtr("<group-id>"),
 							PrivateLinkResourceID: to.StringPtr("<private-link-resource-id>"),
 							RequestMessage:        to.StringPtr("<request-message>"),
-							Status:                armmachinelearningservices.PrivateEndpointServiceConnectionStatusApproved.ToPtr(),
+							Status:                armmachinelearningservices.PrivateEndpointServiceConnectionStatus("Approved").ToPtr(),
 						},
 					}},
 				StorageAccount: to.StringPtr("<storage-account>"),
@@ -72,6 +72,6 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Workspace.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkspacesClientCreateOrUpdateResult)
 }
 ```

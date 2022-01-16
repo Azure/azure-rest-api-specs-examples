@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.1.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.2.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -27,13 +27,13 @@ func ExampleWorkspacesClient_Update() {
 			Properties: &armmachinelearningservices.WorkspacePropertiesUpdateParameters{
 				Description:         to.StringPtr("<description>"),
 				FriendlyName:        to.StringPtr("<friendly-name>"),
-				PublicNetworkAccess: armmachinelearningservices.PublicNetworkAccessDisabled.ToPtr(),
+				PublicNetworkAccess: armmachinelearningservices.PublicNetworkAccess("Disabled").ToPtr(),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Workspace.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkspacesClientUpdateResult)
 }
 ```

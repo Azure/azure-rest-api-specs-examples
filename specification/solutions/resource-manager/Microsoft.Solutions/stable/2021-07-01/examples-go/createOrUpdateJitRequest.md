@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsolutions%2Farmmanagedapplications%2Fv0.1.0/sdk/resourcemanager/solutions/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsolutions%2Farmmanagedapplications%2Fv0.2.0/sdk/resourcemanager/solutions/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagedapplications_test
@@ -34,7 +34,7 @@ func ExampleJitRequestsClient_BeginCreateOrUpdate() {
 						RoleDefinitionID: to.StringPtr("<role-definition-id>"),
 					}},
 				JitSchedulingPolicy: &armmanagedapplications.JitSchedulingPolicy{
-					Type:      armmanagedapplications.JitSchedulingTypeOnce.ToPtr(),
+					Type:      armmanagedapplications.JitSchedulingType("Once").ToPtr(),
 					Duration:  to.StringPtr("<duration>"),
 					StartTime: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-22T05:48:30.6661804Z"); return t }()),
 				},
@@ -48,6 +48,6 @@ func ExampleJitRequestsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("JitRequestDefinition.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.JitRequestsClientCreateOrUpdateResult)
 }
 ```

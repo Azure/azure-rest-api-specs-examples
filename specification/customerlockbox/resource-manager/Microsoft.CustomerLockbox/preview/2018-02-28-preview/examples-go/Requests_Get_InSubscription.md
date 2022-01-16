@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.1.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.2.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcustomerlockbox_test
@@ -26,6 +26,6 @@ func ExampleRequestsClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("LockboxRequestResponse.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.RequestsClientGetResult)
 }
 ```

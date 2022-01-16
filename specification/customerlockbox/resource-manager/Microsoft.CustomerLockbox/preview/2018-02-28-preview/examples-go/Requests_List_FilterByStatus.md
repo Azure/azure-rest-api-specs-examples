@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.1.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.2.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcustomerlockbox_test
@@ -21,13 +21,17 @@ func ExampleRequestsClient_List() {
 	ctx := context.Background()
 	client := armcustomerlockbox.NewRequestsClient(cred, nil)
 	pager := client.List("<subscription-id>",
-		&armcustomerlockbox.RequestsListOptions{Filter: to.StringPtr("<filter>")})
-	for pager.NextPage(ctx) {
+		&armcustomerlockbox.RequestsClientListOptions{Filter: to.StringPtr("<filter>")})
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
+		if !nextResult {
+			break
+		}
 		for _, v := range pager.PageResponse().Value {
-			log.Printf("LockboxRequestResponse.ID: %s\n", *v.ID)
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

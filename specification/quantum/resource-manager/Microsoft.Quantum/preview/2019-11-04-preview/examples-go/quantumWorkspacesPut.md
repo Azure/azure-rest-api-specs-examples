@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fquantum%2Farmquantum%2Fv0.1.0/sdk/resourcemanager/quantum/armquantum/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fquantum%2Farmquantum%2Fv0.2.0/sdk/resourcemanager/quantum/armquantum/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armquantum_test
@@ -9,6 +9,7 @@ import (
 
 	"time"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quantum/armquantum"
 )
@@ -24,7 +25,25 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
-		armquantum.QuantumWorkspace{},
+		armquantum.Workspace{
+			Location: to.StringPtr("<location>"),
+			Properties: &armquantum.WorkspaceResourceProperties{
+				Providers: []*armquantum.Provider{
+					{
+						ProviderID:  to.StringPtr("<provider-id>"),
+						ProviderSKU: to.StringPtr("<provider-sku>"),
+					},
+					{
+						ProviderID:  to.StringPtr("<provider-id>"),
+						ProviderSKU: to.StringPtr("<provider-sku>"),
+					},
+					{
+						ProviderID:  to.StringPtr("<provider-id>"),
+						ProviderSKU: to.StringPtr("<provider-sku>"),
+					}},
+				StorageAccount: to.StringPtr("<storage-account>"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
@@ -33,6 +52,6 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("QuantumWorkspace.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkspacesClientCreateOrUpdateResult)
 }
 ```

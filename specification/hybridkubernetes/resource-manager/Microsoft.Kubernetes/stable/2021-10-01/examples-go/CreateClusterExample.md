@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridkubernetes%2Farmhybridkubernetes%2Fv0.1.0/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridkubernetes%2Farmhybridkubernetes%2Fv0.2.0/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridkubernetes_test
@@ -9,6 +9,7 @@ import (
 
 	"time"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes"
 )
@@ -24,7 +25,16 @@ func ExampleConnectedClusterClient_BeginCreate() {
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<cluster-name>",
-		armhybridkubernetes.ConnectedCluster{},
+		armhybridkubernetes.ConnectedCluster{
+			Location: to.StringPtr("<location>"),
+			Tags:     map[string]*string{},
+			Identity: &armhybridkubernetes.ConnectedClusterIdentity{
+				Type: armhybridkubernetes.ResourceIdentityTypeSystemAssigned.ToPtr(),
+			},
+			Properties: &armhybridkubernetes.ConnectedClusterProperties{
+				AgentPublicKeyCertificate: to.StringPtr("<agent-public-key-certificate>"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
@@ -33,6 +43,6 @@ func ExampleConnectedClusterClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ConnectedCluster.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ConnectedClusterClientCreateResult)
 }
 ```

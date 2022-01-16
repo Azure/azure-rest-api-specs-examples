@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridkubernetes%2Farmhybridkubernetes%2Fv0.1.0/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridkubernetes%2Farmhybridkubernetes%2Fv0.2.0/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridkubernetes_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridkubernetes/armhybridkubernetes"
 )
@@ -22,11 +23,16 @@ func ExampleConnectedClusterClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<cluster-name>",
-		armhybridkubernetes.ConnectedClusterPatch{},
+		armhybridkubernetes.ConnectedClusterPatch{
+			Tags: map[string]*string{
+				"tag1": to.StringPtr("value1"),
+				"tag2": to.StringPtr("value2"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ConnectedCluster.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ConnectedClusterClientUpdateResult)
 }
 ```

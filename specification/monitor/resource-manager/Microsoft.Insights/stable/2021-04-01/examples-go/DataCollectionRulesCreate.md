@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -23,91 +23,85 @@ func ExampleDataCollectionRulesClient_Create() {
 	res, err := client.Create(ctx,
 		"<resource-group-name>",
 		"<data-collection-rule-name>",
-		&armmonitor.DataCollectionRulesCreateOptions{Body: &armmonitor.DataCollectionRuleResource{
+		&armmonitor.DataCollectionRulesClientCreateOptions{Body: &armmonitor.DataCollectionRuleResource{
 			Location: to.StringPtr("<location>"),
 			Properties: &armmonitor.DataCollectionRuleResourceProperties{
-				DataCollectionRule: armmonitor.DataCollectionRule{
-					DataFlows: []*armmonitor.DataFlow{
+				DataFlows: []*armmonitor.DataFlow{
+					{
+						Destinations: []*string{
+							to.StringPtr("centralWorkspace")},
+						Streams: []*armmonitor.KnownDataFlowStreams{
+							armmonitor.KnownDataFlowStreams("Microsoft-Perf").ToPtr(),
+							armmonitor.KnownDataFlowStreams("Microsoft-Syslog").ToPtr(),
+							armmonitor.KnownDataFlowStreams("Microsoft-WindowsEvent").ToPtr()},
+					}},
+				DataSources: &armmonitor.DataCollectionRuleDataSources{
+					PerformanceCounters: []*armmonitor.PerfCounterDataSource{
 						{
-							Destinations: []*string{
-								to.StringPtr("centralWorkspace")},
-							Streams: []*armmonitor.KnownDataFlowStreams{
-								armmonitor.KnownDataFlowStreamsMicrosoftPerf.ToPtr(),
-								armmonitor.KnownDataFlowStreamsMicrosoftSyslog.ToPtr(),
-								armmonitor.KnownDataFlowStreamsMicrosoftWindowsEvent.ToPtr()},
+							Name: to.StringPtr("<name>"),
+							CounterSpecifiers: []*string{
+								to.StringPtr("\\Processor(_Total)\\% Processor Time"),
+								to.StringPtr("\\Memory\\Committed Bytes"),
+								to.StringPtr("\\LogicalDisk(_Total)\\Free Megabytes"),
+								to.StringPtr("\\PhysicalDisk(_Total)\\Avg. Disk Queue Length")},
+							SamplingFrequencyInSeconds: to.Int32Ptr(15),
+							Streams: []*armmonitor.KnownPerfCounterDataSourceStreams{
+								armmonitor.KnownPerfCounterDataSourceStreams("Microsoft-Perf").ToPtr()},
+						},
+						{
+							Name: to.StringPtr("<name>"),
+							CounterSpecifiers: []*string{
+								to.StringPtr("\\Process(_Total)\\Thread Count")},
+							SamplingFrequencyInSeconds: to.Int32Ptr(30),
+							Streams: []*armmonitor.KnownPerfCounterDataSourceStreams{
+								armmonitor.KnownPerfCounterDataSourceStreams("Microsoft-Perf").ToPtr()},
 						}},
-					DataSources: &armmonitor.DataCollectionRuleDataSources{
-						DataSourcesSpec: armmonitor.DataSourcesSpec{
-							PerformanceCounters: []*armmonitor.PerfCounterDataSource{
-								{
-									Name: to.StringPtr("<name>"),
-									CounterSpecifiers: []*string{
-										to.StringPtr("\\Processor(_Total)\\% Processor Time"),
-										to.StringPtr("\\Memory\\Committed Bytes"),
-										to.StringPtr("\\LogicalDisk(_Total)\\Free Megabytes"),
-										to.StringPtr("\\PhysicalDisk(_Total)\\Avg. Disk Queue Length")},
-									SamplingFrequencyInSeconds: to.Int32Ptr(15),
-									Streams: []*armmonitor.KnownPerfCounterDataSourceStreams{
-										armmonitor.KnownPerfCounterDataSourceStreamsMicrosoftPerf.ToPtr()},
-								},
-								{
-									Name: to.StringPtr("<name>"),
-									CounterSpecifiers: []*string{
-										to.StringPtr("\\Process(_Total)\\Thread Count")},
-									SamplingFrequencyInSeconds: to.Int32Ptr(30),
-									Streams: []*armmonitor.KnownPerfCounterDataSourceStreams{
-										armmonitor.KnownPerfCounterDataSourceStreamsMicrosoftPerf.ToPtr()},
-								}},
-							Syslog: []*armmonitor.SyslogDataSource{
-								{
-									Name: to.StringPtr("<name>"),
-									FacilityNames: []*armmonitor.KnownSyslogDataSourceFacilityNames{
-										armmonitor.KnownSyslogDataSourceFacilityNamesCron.ToPtr()},
-									LogLevels: []*armmonitor.KnownSyslogDataSourceLogLevels{
-										armmonitor.KnownSyslogDataSourceLogLevelsDebug.ToPtr(),
-										armmonitor.KnownSyslogDataSourceLogLevelsCritical.ToPtr(),
-										armmonitor.KnownSyslogDataSourceLogLevelsEmergency.ToPtr()},
-									Streams: []*armmonitor.KnownSyslogDataSourceStreams{
-										armmonitor.KnownSyslogDataSourceStreamsMicrosoftSyslog.ToPtr()},
-								},
-								{
-									Name: to.StringPtr("<name>"),
-									FacilityNames: []*armmonitor.KnownSyslogDataSourceFacilityNames{
-										armmonitor.KnownSyslogDataSourceFacilityNamesSyslog.ToPtr()},
-									LogLevels: []*armmonitor.KnownSyslogDataSourceLogLevels{
-										armmonitor.KnownSyslogDataSourceLogLevelsAlert.ToPtr(),
-										armmonitor.KnownSyslogDataSourceLogLevelsCritical.ToPtr(),
-										armmonitor.KnownSyslogDataSourceLogLevelsEmergency.ToPtr()},
-									Streams: []*armmonitor.KnownSyslogDataSourceStreams{
-										armmonitor.KnownSyslogDataSourceStreamsMicrosoftSyslog.ToPtr()},
-								}},
-							WindowsEventLogs: []*armmonitor.WindowsEventLogDataSource{
-								{
-									Name: to.StringPtr("<name>"),
-									Streams: []*armmonitor.KnownWindowsEventLogDataSourceStreams{
-										armmonitor.KnownWindowsEventLogDataSourceStreamsMicrosoftWindowsEvent.ToPtr()},
-									XPathQueries: []*string{
-										to.StringPtr("Security!")},
-								},
-								{
-									Name: to.StringPtr("<name>"),
-									Streams: []*armmonitor.KnownWindowsEventLogDataSourceStreams{
-										armmonitor.KnownWindowsEventLogDataSourceStreamsMicrosoftWindowsEvent.ToPtr()},
-									XPathQueries: []*string{
-										to.StringPtr("System![System[(Level = 1 or Level = 2 or Level = 3)]]"),
-										to.StringPtr("Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]")},
-								}},
+					Syslog: []*armmonitor.SyslogDataSource{
+						{
+							Name: to.StringPtr("<name>"),
+							FacilityNames: []*armmonitor.KnownSyslogDataSourceFacilityNames{
+								armmonitor.KnownSyslogDataSourceFacilityNames("cron").ToPtr()},
+							LogLevels: []*armmonitor.KnownSyslogDataSourceLogLevels{
+								armmonitor.KnownSyslogDataSourceLogLevels("Debug").ToPtr(),
+								armmonitor.KnownSyslogDataSourceLogLevels("Critical").ToPtr(),
+								armmonitor.KnownSyslogDataSourceLogLevels("Emergency").ToPtr()},
+							Streams: []*armmonitor.KnownSyslogDataSourceStreams{
+								armmonitor.KnownSyslogDataSourceStreams("Microsoft-Syslog").ToPtr()},
 						},
-					},
-					Destinations: &armmonitor.DataCollectionRuleDestinations{
-						DestinationsSpec: armmonitor.DestinationsSpec{
-							LogAnalytics: []*armmonitor.LogAnalyticsDestination{
-								{
-									Name:                to.StringPtr("<name>"),
-									WorkspaceResourceID: to.StringPtr("<workspace-resource-id>"),
-								}},
+						{
+							Name: to.StringPtr("<name>"),
+							FacilityNames: []*armmonitor.KnownSyslogDataSourceFacilityNames{
+								armmonitor.KnownSyslogDataSourceFacilityNames("syslog").ToPtr()},
+							LogLevels: []*armmonitor.KnownSyslogDataSourceLogLevels{
+								armmonitor.KnownSyslogDataSourceLogLevels("Alert").ToPtr(),
+								armmonitor.KnownSyslogDataSourceLogLevels("Critical").ToPtr(),
+								armmonitor.KnownSyslogDataSourceLogLevels("Emergency").ToPtr()},
+							Streams: []*armmonitor.KnownSyslogDataSourceStreams{
+								armmonitor.KnownSyslogDataSourceStreams("Microsoft-Syslog").ToPtr()},
+						}},
+					WindowsEventLogs: []*armmonitor.WindowsEventLogDataSource{
+						{
+							Name: to.StringPtr("<name>"),
+							Streams: []*armmonitor.KnownWindowsEventLogDataSourceStreams{
+								armmonitor.KnownWindowsEventLogDataSourceStreams("Microsoft-WindowsEvent").ToPtr()},
+							XPathQueries: []*string{
+								to.StringPtr("Security!")},
 						},
-					},
+						{
+							Name: to.StringPtr("<name>"),
+							Streams: []*armmonitor.KnownWindowsEventLogDataSourceStreams{
+								armmonitor.KnownWindowsEventLogDataSourceStreams("Microsoft-WindowsEvent").ToPtr()},
+							XPathQueries: []*string{
+								to.StringPtr("System![System[(Level = 1 or Level = 2 or Level = 3)]]"),
+								to.StringPtr("Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]")},
+						}},
+				},
+				Destinations: &armmonitor.DataCollectionRuleDestinations{
+					LogAnalytics: []*armmonitor.LogAnalyticsDestination{
+						{
+							Name:                to.StringPtr("<name>"),
+							WorkspaceResourceID: to.StringPtr("<workspace-resource-id>"),
+						}},
 				},
 			},
 		},
@@ -115,6 +109,6 @@ func ExampleDataCollectionRulesClient_Create() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataCollectionRuleResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DataCollectionRulesClientCreateResult)
 }
 ```

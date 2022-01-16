@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -23,15 +23,11 @@ func ExampleDataCollectionEndpointsClient_Create() {
 	res, err := client.Create(ctx,
 		"<resource-group-name>",
 		"<data-collection-endpoint-name>",
-		&armmonitor.DataCollectionEndpointsCreateOptions{Body: &armmonitor.DataCollectionEndpointResource{
+		&armmonitor.DataCollectionEndpointsClientCreateOptions{Body: &armmonitor.DataCollectionEndpointResource{
 			Location: to.StringPtr("<location>"),
 			Properties: &armmonitor.DataCollectionEndpointResourceProperties{
-				DataCollectionEndpoint: armmonitor.DataCollectionEndpoint{
-					NetworkACLs: &armmonitor.DataCollectionEndpointNetworkACLs{
-						NetworkRuleSet: armmonitor.NetworkRuleSet{
-							PublicNetworkAccess: armmonitor.KnownPublicNetworkAccessOptionsEnabled.ToPtr(),
-						},
-					},
+				NetworkACLs: &armmonitor.DataCollectionEndpointNetworkACLs{
+					PublicNetworkAccess: armmonitor.KnownPublicNetworkAccessOptions("Enabled").ToPtr(),
 				},
 			},
 		},
@@ -39,6 +35,6 @@ func ExampleDataCollectionEndpointsClient_Create() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataCollectionEndpointResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DataCollectionEndpointsClientCreateResult)
 }
 ```

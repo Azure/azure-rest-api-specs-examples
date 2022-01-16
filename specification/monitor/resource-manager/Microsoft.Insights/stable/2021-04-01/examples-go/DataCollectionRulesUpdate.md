@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -23,7 +23,7 @@ func ExampleDataCollectionRulesClient_Update() {
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<data-collection-rule-name>",
-		&armmonitor.DataCollectionRulesUpdateOptions{Body: &armmonitor.ResourceForUpdate{
+		&armmonitor.DataCollectionRulesClientUpdateOptions{Body: &armmonitor.ResourceForUpdate{
 			Tags: map[string]*string{
 				"tag1": to.StringPtr("A"),
 				"tag2": to.StringPtr("B"),
@@ -34,6 +34,6 @@ func ExampleDataCollectionRulesClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataCollectionRuleResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DataCollectionRulesClientUpdateResult)
 }
 ```

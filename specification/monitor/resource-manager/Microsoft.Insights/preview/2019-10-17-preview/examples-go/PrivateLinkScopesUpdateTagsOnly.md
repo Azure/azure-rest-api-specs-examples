@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -7,6 +7,7 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
@@ -22,11 +23,16 @@ func ExamplePrivateLinkScopesClient_UpdateTags() {
 	res, err := client.UpdateTags(ctx,
 		"<resource-group-name>",
 		"<scope-name>",
-		armmonitor.TagsResource{},
+		armmonitor.TagsResource{
+			Tags: map[string]*string{
+				"Tag1": to.StringPtr("Value1"),
+				"Tag2": to.StringPtr("Value2"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("AzureMonitorPrivateLinkScope.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PrivateLinkScopesClientUpdateTagsResult)
 }
 ```

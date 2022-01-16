@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.3.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -36,20 +36,16 @@ func ExampleMetricAlertsClient_Update() {
 					}},
 				AutoMitigate: to.BoolPtr(true),
 				Criteria: &armmonitor.MetricAlertSingleResourceMultipleMetricCriteria{
-					MetricAlertCriteria: armmonitor.MetricAlertCriteria{
-						ODataType: armmonitor.OdatatypeMicrosoftAzureMonitorSingleResourceMultipleMetricCriteria.ToPtr(),
-					},
+					ODataType: armmonitor.Odatatype("Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria").ToPtr(),
 					AllOf: []*armmonitor.MetricCriteria{
 						{
-							MultiMetricCriteria: armmonitor.MultiMetricCriteria{
-								Name:            to.StringPtr("<name>"),
-								CriterionType:   armmonitor.CriterionTypeStaticThresholdCriterion.ToPtr(),
-								Dimensions:      []*armmonitor.MetricDimension{},
-								MetricName:      to.StringPtr("<metric-name>"),
-								TimeAggregation: armmonitor.AggregationTypeEnumAverage.ToPtr(),
-							},
-							Operator:  armmonitor.OperatorGreaterThan.ToPtr(),
-							Threshold: to.Float64Ptr(80.5),
+							Name:            to.StringPtr("<name>"),
+							CriterionType:   armmonitor.CriterionType("StaticThresholdCriterion").ToPtr(),
+							Dimensions:      []*armmonitor.MetricDimension{},
+							MetricName:      to.StringPtr("<metric-name>"),
+							TimeAggregation: armmonitor.AggregationTypeEnum("Average").ToPtr(),
+							Operator:        armmonitor.Operator("GreaterThan").ToPtr(),
+							Threshold:       to.Float64Ptr(80.5),
 						}},
 				},
 				Enabled:             to.BoolPtr(true),
@@ -65,6 +61,6 @@ func ExampleMetricAlertsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("MetricAlertResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MetricAlertsClientUpdateResult)
 }
 ```

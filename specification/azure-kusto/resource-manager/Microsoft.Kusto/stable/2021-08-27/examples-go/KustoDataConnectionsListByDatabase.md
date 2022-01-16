@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.1.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.2.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkusto_test
@@ -19,7 +19,7 @@ func ExampleDataConnectionsClient_ListByDatabase() {
 	}
 	ctx := context.Background()
 	client := armkusto.NewDataConnectionsClient("<subscription-id>", cred, nil)
-	_, err = client.ListByDatabase(ctx,
+	res, err := client.ListByDatabase(ctx,
 		"<resource-group-name>",
 		"<cluster-name>",
 		"<database-name>",
@@ -27,5 +27,6 @@ func ExampleDataConnectionsClient_ListByDatabase() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.DataConnectionsClientListByDatabaseResult)
 }
 ```

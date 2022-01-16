@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridconnectivity%2Farmhybridconnectivity%2Fv0.1.0/sdk/resourcemanager/hybridconnectivity/armhybridconnectivity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridconnectivity%2Farmhybridconnectivity%2Fv0.2.0/sdk/resourcemanager/hybridconnectivity/armhybridconnectivity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridconnectivity_test
@@ -20,12 +20,13 @@ func ExampleEndpointsClient_ListCredentials() {
 	}
 	ctx := context.Background()
 	client := armhybridconnectivity.NewEndpointsClient(cred, nil)
-	_, err = client.ListCredentials(ctx,
+	res, err := client.ListCredentials(ctx,
 		"<resource-uri>",
 		"<endpoint-name>",
-		&armhybridconnectivity.EndpointsListCredentialsOptions{Expiresin: to.Int64Ptr(10800)})
+		&armhybridconnectivity.EndpointsClientListCredentialsOptions{Expiresin: to.Int64Ptr(10800)})
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.EndpointsClientListCredentialsResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.1.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.2.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcostmanagement_test
@@ -27,38 +27,36 @@ func ExampleExportsClient_CreateOrUpdate() {
 		"<export-name>",
 		armcostmanagement.Export{
 			Properties: &armcostmanagement.ExportProperties{
-				CommonExportProperties: armcostmanagement.CommonExportProperties{
-					Format: armcostmanagement.FormatTypeCSV.ToPtr(),
-					Definition: &armcostmanagement.ExportDefinition{
-						Type: armcostmanagement.ExportTypeActualCost.ToPtr(),
-						DataSet: &armcostmanagement.ExportDataset{
-							Configuration: &armcostmanagement.ExportDatasetConfiguration{
-								Columns: []*string{
-									to.StringPtr("Date"),
-									to.StringPtr("MeterId"),
-									to.StringPtr("ResourceId"),
-									to.StringPtr("ResourceLocation"),
-									to.StringPtr("Quantity")},
-							},
-							Granularity: armcostmanagement.GranularityTypeDaily.ToPtr(),
+				Format: armcostmanagement.FormatType("Csv").ToPtr(),
+				Definition: &armcostmanagement.ExportDefinition{
+					Type: armcostmanagement.ExportType("ActualCost").ToPtr(),
+					DataSet: &armcostmanagement.ExportDataset{
+						Configuration: &armcostmanagement.ExportDatasetConfiguration{
+							Columns: []*string{
+								to.StringPtr("Date"),
+								to.StringPtr("MeterId"),
+								to.StringPtr("ResourceId"),
+								to.StringPtr("ResourceLocation"),
+								to.StringPtr("Quantity")},
 						},
-						Timeframe: armcostmanagement.TimeframeTypeMonthToDate.ToPtr(),
+						Granularity: armcostmanagement.GranularityType("Daily").ToPtr(),
 					},
-					DeliveryInfo: &armcostmanagement.ExportDeliveryInfo{
-						Destination: &armcostmanagement.ExportDeliveryDestination{
-							Container:      to.StringPtr("<container>"),
-							ResourceID:     to.StringPtr("<resource-id>"),
-							RootFolderPath: to.StringPtr("<root-folder-path>"),
-						},
+					Timeframe: armcostmanagement.TimeframeType("MonthToDate").ToPtr(),
+				},
+				DeliveryInfo: &armcostmanagement.ExportDeliveryInfo{
+					Destination: &armcostmanagement.ExportDeliveryDestination{
+						Container:      to.StringPtr("<container>"),
+						ResourceID:     to.StringPtr("<resource-id>"),
+						RootFolderPath: to.StringPtr("<root-folder-path>"),
 					},
 				},
 				Schedule: &armcostmanagement.ExportSchedule{
-					Recurrence: armcostmanagement.RecurrenceTypeWeekly.ToPtr(),
+					Recurrence: armcostmanagement.RecurrenceType("Weekly").ToPtr(),
 					RecurrencePeriod: &armcostmanagement.ExportRecurrencePeriod{
 						From: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-01T00:00:00Z"); return t }()),
 						To:   to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-31T00:00:00Z"); return t }()),
 					},
-					Status: armcostmanagement.StatusTypeActive.ToPtr(),
+					Status: armcostmanagement.StatusType("Active").ToPtr(),
 				},
 			},
 		},
@@ -66,6 +64,6 @@ func ExampleExportsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Export.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ExportsClientCreateOrUpdateResult)
 }
 ```

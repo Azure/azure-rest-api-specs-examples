@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.1.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.2.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcostmanagement_test
@@ -23,7 +23,7 @@ func ExampleQueryClient_Usage() {
 	res, err := client.Usage(ctx,
 		"<scope>",
 		armcostmanagement.QueryDefinition{
-			Type: armcostmanagement.ExportTypeUsage.ToPtr(),
+			Type: armcostmanagement.ExportType("Usage").ToPtr(),
 			Dataset: &armcostmanagement.QueryDataset{
 				Filter: &armcostmanagement.QueryFilter{
 					And: []*armcostmanagement.QueryFilter{
@@ -32,7 +32,7 @@ func ExampleQueryClient_Usage() {
 								{
 									Dimension: &armcostmanagement.QueryComparisonExpression{
 										Name:     to.StringPtr("<name>"),
-										Operator: armcostmanagement.QueryOperatorTypeIn.ToPtr(),
+										Operator: armcostmanagement.QueryOperatorType("In").ToPtr(),
 										Values: []*string{
 											to.StringPtr("East US"),
 											to.StringPtr("West Europe")},
@@ -41,7 +41,7 @@ func ExampleQueryClient_Usage() {
 								{
 									Tag: &armcostmanagement.QueryComparisonExpression{
 										Name:     to.StringPtr("<name>"),
-										Operator: armcostmanagement.QueryOperatorTypeIn.ToPtr(),
+										Operator: armcostmanagement.QueryOperatorType("In").ToPtr(),
 										Values: []*string{
 											to.StringPtr("UAT"),
 											to.StringPtr("Prod")},
@@ -51,20 +51,20 @@ func ExampleQueryClient_Usage() {
 						{
 							Dimension: &armcostmanagement.QueryComparisonExpression{
 								Name:     to.StringPtr("<name>"),
-								Operator: armcostmanagement.QueryOperatorTypeIn.ToPtr(),
+								Operator: armcostmanagement.QueryOperatorType("In").ToPtr(),
 								Values: []*string{
 									to.StringPtr("API")},
 							},
 						}},
 				},
-				Granularity: armcostmanagement.GranularityTypeDaily.ToPtr(),
+				Granularity: armcostmanagement.GranularityType("Daily").ToPtr(),
 			},
-			Timeframe: armcostmanagement.TimeframeTypeMonthToDate.ToPtr(),
+			Timeframe: armcostmanagement.TimeframeType("MonthToDate").ToPtr(),
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("QueryResult.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.QueryClientUsageResult)
 }
 ```

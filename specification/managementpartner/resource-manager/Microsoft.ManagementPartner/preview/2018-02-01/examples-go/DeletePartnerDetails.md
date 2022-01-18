@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmanagementpartner%2Farmmanagementpartner%2Fv0.1.0/sdk/resourcemanager/managementpartner/armmanagementpartner/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmanagementpartner%2Farmmanagementpartner%2Fv0.2.0/sdk/resourcemanager/managementpartner/armmanagementpartner/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagementpartner_test

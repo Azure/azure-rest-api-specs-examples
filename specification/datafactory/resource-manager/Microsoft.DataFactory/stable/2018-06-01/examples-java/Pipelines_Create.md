@@ -1,9 +1,14 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-datafactory_1.0.0-beta.9/sdk/datafactory/azure-resourcemanager-datafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-datafactory_1.0.0-beta.10/sdk/datafactory/azure-resourcemanager-datafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
-import com.azure.resourcemanager.datafactory.models.Activity;
+import com.azure.resourcemanager.datafactory.models.BlobSink;
+import com.azure.resourcemanager.datafactory.models.BlobSource;
+import com.azure.resourcemanager.datafactory.models.CopyActivity;
+import com.azure.resourcemanager.datafactory.models.DatasetReference;
+import com.azure.resourcemanager.datafactory.models.Expression;
+import com.azure.resourcemanager.datafactory.models.ForEachActivity;
 import com.azure.resourcemanager.datafactory.models.ParameterSpecification;
 import com.azure.resourcemanager.datafactory.models.ParameterType;
 import com.azure.resourcemanager.datafactory.models.PipelineElapsedTimeMetricPolicy;
@@ -34,19 +39,45 @@ public final class Main {
             .withActivities(
                 Arrays
                     .asList(
-                        new Activity()
+                        new ForEachActivity()
                             .withName("ExampleForeachActivity")
-                            .withAdditionalProperties(
-                                mapOf(
-                                    "typeProperties",
-                                    SerializerFactory
-                                        .createDefaultManagementSerializerAdapter()
-                                        .deserialize(
-                                            "{\"activities\":[{\"name\":\"ExampleCopyActivity\",\"type\":\"Copy\",\"inputs\":[{\"type\":\"DatasetReference\",\"parameters\":{\"MyFileName\":\"examplecontainer.csv\",\"MyFolderPath\":\"examplecontainer\"},\"referenceName\":\"exampleDataset\"}],\"outputs\":[{\"type\":\"DatasetReference\",\"parameters\":{\"MyFileName\":{\"type\":\"Expression\",\"value\":\"@item()\"},\"MyFolderPath\":\"examplecontainer\"},\"referenceName\":\"exampleDataset\"}],\"typeProperties\":{\"dataIntegrationUnits\":32,\"sink\":{\"type\":\"BlobSink\"},\"source\":{\"type\":\"BlobSource\"}}}],\"isSequential\":true,\"items\":{\"type\":\"Expression\",\"value\":\"@pipeline().parameters.OutputBlobNameList\"}}",
-                                            Object.class,
-                                            SerializerEncoding.JSON),
-                                    "type",
-                                    "ForEach"))))
+                            .withIsSequential(true)
+                            .withItems(new Expression().withValue("@pipeline().parameters.OutputBlobNameList"))
+                            .withActivities(
+                                Arrays
+                                    .asList(
+                                        new CopyActivity()
+                                            .withName("ExampleCopyActivity")
+                                            .withInputs(
+                                                Arrays
+                                                    .asList(
+                                                        new DatasetReference()
+                                                            .withReferenceName("exampleDataset")
+                                                            .withParameters(
+                                                                mapOf(
+                                                                    "MyFileName",
+                                                                    "examplecontainer.csv",
+                                                                    "MyFolderPath",
+                                                                    "examplecontainer"))))
+                                            .withOutputs(
+                                                Arrays
+                                                    .asList(
+                                                        new DatasetReference()
+                                                            .withReferenceName("exampleDataset")
+                                                            .withParameters(
+                                                                mapOf(
+                                                                    "MyFileName",
+                                                                    SerializerFactory
+                                                                        .createDefaultManagementSerializerAdapter()
+                                                                        .deserialize(
+                                                                            "{\"type\":\"Expression\",\"value\":\"@item()\"}",
+                                                                            Object.class,
+                                                                            SerializerEncoding.JSON),
+                                                                    "MyFolderPath",
+                                                                    "examplecontainer"))))
+                                            .withSource(new BlobSource())
+                                            .withSink(new BlobSink())
+                                            .withDataIntegrationUnits(32)))))
             .withParameters(
                 mapOf(
                     "JobId",

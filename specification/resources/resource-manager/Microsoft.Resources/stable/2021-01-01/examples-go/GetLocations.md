@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmsubscriptions%2Fv0.1.1/sdk/resourcemanager/resources/armsubscriptions/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmsubscriptions%2Fv0.2.0/sdk/resourcemanager/resources/armsubscriptions/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsubscriptions_test
@@ -12,18 +12,19 @@ import (
 )
 
 // x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/examples/GetLocations.json
-func ExampleSubscriptionsClient_ListLocations() {
+func ExampleClient_ListLocations() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armsubscriptions.NewSubscriptionsClient(cred, nil)
-	_, err = client.ListLocations(ctx,
+	client := armsubscriptions.NewClient(cred, nil)
+	res, err := client.ListLocations(ctx,
 		"<subscription-id>",
-		&armsubscriptions.SubscriptionsListLocationsOptions{IncludeExtendedLocations: nil})
+		&armsubscriptions.ClientListLocationsOptions{IncludeExtendedLocations: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ClientListLocationsResult)
 }
 ```

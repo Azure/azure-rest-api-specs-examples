@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmsubscriptions%2Fv0.1.1/sdk/resourcemanager/resources/armsubscriptions/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmsubscriptions%2Fv0.2.0/sdk/resourcemanager/resources/armsubscriptions/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsubscriptions_test
@@ -19,10 +19,11 @@ func ExampleSubscriptionClient_CheckResourceName() {
 	}
 	ctx := context.Background()
 	client := armsubscriptions.NewSubscriptionClient(cred, nil)
-	_, err = client.CheckResourceName(ctx,
+	res, err := client.CheckResourceName(ctx,
 		&armsubscriptions.SubscriptionClientCheckResourceNameOptions{ResourceNameDefinition: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.SubscriptionClientCheckResourceNameResult)
 }
 ```

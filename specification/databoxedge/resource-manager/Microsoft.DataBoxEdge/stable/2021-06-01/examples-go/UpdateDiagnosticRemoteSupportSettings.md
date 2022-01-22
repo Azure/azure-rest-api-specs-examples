@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -29,9 +29,9 @@ func ExampleDiagnosticSettingsClient_BeginUpdateDiagnosticRemoteSupportSettings(
 			Properties: &armdataboxedge.DiagnosticRemoteSupportSettingsProperties{
 				RemoteSupportSettingsList: []*armdataboxedge.RemoteSupportSettings{
 					{
-						AccessLevel:              armdataboxedge.AccessLevelReadWrite.ToPtr(),
+						AccessLevel:              armdataboxedge.AccessLevel("ReadWrite").ToPtr(),
 						ExpirationTimeStampInUTC: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-07T00:00:00+00:00"); return t }()),
-						RemoteApplicationType:    armdataboxedge.RemoteApplicationTypePowershell.ToPtr(),
+						RemoteApplicationType:    armdataboxedge.RemoteApplicationType("Powershell").ToPtr(),
 					}},
 			},
 		},
@@ -43,6 +43,6 @@ func ExampleDiagnosticSettingsClient_BeginUpdateDiagnosticRemoteSupportSettings(
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DiagnosticRemoteSupportSettings.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DiagnosticSettingsClientUpdateDiagnosticRemoteSupportSettingsResult)
 }
 ```

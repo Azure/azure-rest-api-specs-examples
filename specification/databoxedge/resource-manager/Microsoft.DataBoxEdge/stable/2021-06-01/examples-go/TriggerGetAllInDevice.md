@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -21,13 +21,17 @@ func ExampleTriggersClient_ListByDataBoxEdgeDevice() {
 	client := armdataboxedge.NewTriggersClient("<subscription-id>", cred, nil)
 	pager := client.ListByDataBoxEdgeDevice("<device-name>",
 		"<resource-group-name>",
-		&armdataboxedge.TriggersListByDataBoxEdgeDeviceOptions{Filter: nil})
-	for pager.NextPage(ctx) {
+		&armdataboxedge.TriggersClientListByDataBoxEdgeDeviceOptions{Filter: nil})
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
+		if !nextResult {
+			break
+		}
 		for _, v := range pager.PageResponse().Value {
-			log.Printf("TriggerClassification.GetTrigger().ID: %s\n", *v.GetTrigger().ID)
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

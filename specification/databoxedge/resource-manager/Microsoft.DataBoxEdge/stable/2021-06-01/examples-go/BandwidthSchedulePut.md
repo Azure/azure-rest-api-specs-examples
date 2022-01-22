@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -29,8 +29,8 @@ func ExampleBandwidthSchedulesClient_BeginCreateOrUpdate() {
 		armdataboxedge.BandwidthSchedule{
 			Properties: &armdataboxedge.BandwidthScheduleProperties{
 				Days: []*armdataboxedge.DayOfWeek{
-					armdataboxedge.DayOfWeekSunday.ToPtr(),
-					armdataboxedge.DayOfWeekMonday.ToPtr()},
+					armdataboxedge.DayOfWeek("Sunday").ToPtr(),
+					armdataboxedge.DayOfWeek("Monday").ToPtr()},
 				RateInMbps: to.Int32Ptr(100),
 				Start:      to.StringPtr("<start>"),
 				Stop:       to.StringPtr("<stop>"),
@@ -44,6 +44,6 @@ func ExampleBandwidthSchedulesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("BandwidthSchedule.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.BandwidthSchedulesClientCreateOrUpdateResult)
 }
 ```

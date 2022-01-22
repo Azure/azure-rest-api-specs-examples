@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsignalr%2Farmsignalr%2Fv0.1.0/sdk/resourcemanager/signalr/armsignalr/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsignalr%2Farmsignalr%2Fv0.2.0/sdk/resourcemanager/signalr/armsignalr/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsignalr_test
@@ -15,80 +15,76 @@ import (
 )
 
 // x-ms-original-file: specification/signalr/resource-manager/Microsoft.SignalRService/stable/2021-10-01/examples/SignalR_Update.json
-func ExampleSignalRClient_BeginUpdate() {
+func ExampleClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armsignalr.NewSignalRClient("<subscription-id>", cred, nil)
+	client := armsignalr.NewClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armsignalr.SignalRResource{
-			TrackedResource: armsignalr.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"key1": to.StringPtr("value1"),
-				},
+		armsignalr.ResourceInfo{
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"key1": to.StringPtr("value1"),
 			},
 			Identity: &armsignalr.ManagedIdentity{
-				Type: armsignalr.ManagedIdentityTypeSystemAssigned.ToPtr(),
+				Type: armsignalr.ManagedIdentityType("SystemAssigned").ToPtr(),
 			},
-			Kind: armsignalr.ServiceKindSignalR.ToPtr(),
-			Properties: &armsignalr.SignalRProperties{
-				Cors: &armsignalr.SignalRCorsSettings{
+			Kind: armsignalr.ServiceKind("SignalR").ToPtr(),
+			Properties: &armsignalr.Properties{
+				Cors: &armsignalr.CorsSettings{
 					AllowedOrigins: []*string{
 						to.StringPtr("https://foo.com"),
 						to.StringPtr("https://bar.com")},
 				},
 				DisableAADAuth:   to.BoolPtr(false),
 				DisableLocalAuth: to.BoolPtr(false),
-				Features: []*armsignalr.SignalRFeature{
+				Features: []*armsignalr.Feature{
 					{
-						Flag:       armsignalr.FeatureFlagsServiceMode.ToPtr(),
+						Flag:       armsignalr.FeatureFlags("ServiceMode").ToPtr(),
 						Properties: map[string]*string{},
 						Value:      to.StringPtr("<value>"),
 					},
 					{
-						Flag:       armsignalr.FeatureFlagsEnableConnectivityLogs.ToPtr(),
+						Flag:       armsignalr.FeatureFlags("EnableConnectivityLogs").ToPtr(),
 						Properties: map[string]*string{},
 						Value:      to.StringPtr("<value>"),
 					},
 					{
-						Flag:       armsignalr.FeatureFlagsEnableMessagingLogs.ToPtr(),
+						Flag:       armsignalr.FeatureFlags("EnableMessagingLogs").ToPtr(),
 						Properties: map[string]*string{},
 						Value:      to.StringPtr("<value>"),
 					},
 					{
-						Flag:       armsignalr.FeatureFlagsEnableLiveTrace.ToPtr(),
+						Flag:       armsignalr.FeatureFlags("EnableLiveTrace").ToPtr(),
 						Properties: map[string]*string{},
 						Value:      to.StringPtr("<value>"),
 					}},
-				NetworkACLs: &armsignalr.SignalRNetworkACLs{
-					DefaultAction: armsignalr.ACLActionDeny.ToPtr(),
+				NetworkACLs: &armsignalr.NetworkACLs{
+					DefaultAction: armsignalr.ACLAction("Deny").ToPtr(),
 					PrivateEndpoints: []*armsignalr.PrivateEndpointACL{
 						{
-							NetworkACL: armsignalr.NetworkACL{
-								Allow: []*armsignalr.SignalRRequestType{
-									armsignalr.SignalRRequestTypeServerConnection.ToPtr()},
-							},
+							Allow: []*armsignalr.SignalRRequestType{
+								armsignalr.SignalRRequestType("ServerConnection").ToPtr()},
 							Name: to.StringPtr("<name>"),
 						}},
 					PublicNetwork: &armsignalr.NetworkACL{
 						Allow: []*armsignalr.SignalRRequestType{
-							armsignalr.SignalRRequestTypeClientConnection.ToPtr()},
+							armsignalr.SignalRRequestType("ClientConnection").ToPtr()},
 					},
 				},
 				PublicNetworkAccess: to.StringPtr("<public-network-access>"),
-				TLS: &armsignalr.SignalRTLSSettings{
+				TLS: &armsignalr.TLSSettings{
 					ClientCertEnabled: to.BoolPtr(false),
 				},
 				Upstream: &armsignalr.ServerlessUpstreamSettings{
 					Templates: []*armsignalr.UpstreamTemplate{
 						{
 							Auth: &armsignalr.UpstreamAuthSettings{
-								Type: armsignalr.UpstreamAuthTypeManagedIdentity.ToPtr(),
+								Type: armsignalr.UpstreamAuthType("ManagedIdentity").ToPtr(),
 								ManagedIdentity: &armsignalr.ManagedIdentitySettings{
 									Resource: to.StringPtr("<resource>"),
 								},
@@ -103,7 +99,7 @@ func ExampleSignalRClient_BeginUpdate() {
 			SKU: &armsignalr.ResourceSKU{
 				Name:     to.StringPtr("<name>"),
 				Capacity: to.Int32Ptr(1),
-				Tier:     armsignalr.SignalRSKUTierStandard.ToPtr(),
+				Tier:     armsignalr.SignalRSKUTier("Standard").ToPtr(),
 			},
 		},
 		nil)
@@ -114,6 +110,6 @@ func ExampleSignalRClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SignalRResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ClientUpdateResult)
 }
 ```

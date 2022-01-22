@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatabox%2Farmdatabox%2Fv0.1.0/sdk/resourcemanager/databox/armdatabox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatabox%2Farmdatabox%2Fv0.2.0/sdk/resourcemanager/databox/armdatabox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatabox_test
@@ -22,7 +22,7 @@ func ExampleJobsClient_BookShipmentPickUp() {
 	}
 	ctx := context.Background()
 	client := armdatabox.NewJobsClient("<subscription-id>", cred, nil)
-	_, err = client.BookShipmentPickUp(ctx,
+	res, err := client.BookShipmentPickUp(ctx,
 		"<resource-group-name>",
 		"<job-name>",
 		armdatabox.ShipmentPickUpRequest{
@@ -34,5 +34,6 @@ func ExampleJobsClient_BookShipmentPickUp() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.JobsClientBookShipmentPickUpResult)
 }
 ```

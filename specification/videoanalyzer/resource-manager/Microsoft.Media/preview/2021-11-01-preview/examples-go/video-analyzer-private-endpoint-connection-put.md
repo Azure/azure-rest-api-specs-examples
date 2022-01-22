@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.1.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -20,7 +20,7 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 	}
 	ctx := context.Background()
 	client := armvideoanalyzer.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
-	res, err := client.CreateOrUpdate(ctx,
+	_, err = client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		"<name>",
@@ -28,7 +28,7 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 			Properties: &armvideoanalyzer.PrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armvideoanalyzer.PrivateLinkServiceConnectionState{
 					Description: to.StringPtr("<description>"),
-					Status:      armvideoanalyzer.PrivateEndpointServiceConnectionStatusApproved.ToPtr(),
+					Status:      armvideoanalyzer.PrivateEndpointServiceConnectionStatus("Approved").ToPtr(),
 				},
 			},
 		},
@@ -36,6 +36,5 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PrivateEndpointConnection.ID: %s\n", *res.ID)
 }
 ```

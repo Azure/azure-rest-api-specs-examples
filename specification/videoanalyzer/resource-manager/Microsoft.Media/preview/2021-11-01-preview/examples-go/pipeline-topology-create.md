@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.1.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -25,34 +25,30 @@ func ExamplePipelineTopologiesClient_CreateOrUpdate() {
 		"<account-name>",
 		"<pipeline-topology-name>",
 		armvideoanalyzer.PipelineTopology{
-			Kind: armvideoanalyzer.KindLive.ToPtr(),
+			Kind: armvideoanalyzer.Kind("Live").ToPtr(),
 			Properties: &armvideoanalyzer.PipelineTopologyProperties{
 				Description: to.StringPtr("<description>"),
 				Parameters: []*armvideoanalyzer.ParameterDeclaration{
 					{
 						Name:        to.StringPtr("<name>"),
-						Type:        armvideoanalyzer.ParameterTypeString.ToPtr(),
+						Type:        armvideoanalyzer.ParameterType("String").ToPtr(),
 						Description: to.StringPtr("<description>"),
 						Default:     to.StringPtr("<default>"),
 					},
 					{
 						Name:        to.StringPtr("<name>"),
-						Type:        armvideoanalyzer.ParameterTypeSecretString.ToPtr(),
+						Type:        armvideoanalyzer.ParameterType("SecretString").ToPtr(),
 						Description: to.StringPtr("<description>"),
 						Default:     to.StringPtr("<default>"),
 					}},
 				Sinks: []armvideoanalyzer.SinkNodeBaseClassification{
 					&armvideoanalyzer.VideoSink{
-						SinkNodeBase: armvideoanalyzer.SinkNodeBase{
-							NodeBase: armvideoanalyzer.NodeBase{
-								Name: to.StringPtr("<name>"),
-								Type: to.StringPtr("<type>"),
-							},
-							Inputs: []*armvideoanalyzer.NodeInput{
-								{
-									NodeName: to.StringPtr("<node-name>"),
-								}},
-						},
+						Name: to.StringPtr("<name>"),
+						Type: to.StringPtr("<type>"),
+						Inputs: []*armvideoanalyzer.NodeInput{
+							{
+								NodeName: to.StringPtr("<node-name>"),
+							}},
 						VideoCreationProperties: &armvideoanalyzer.VideoCreationProperties{
 							Description:   to.StringPtr("<description>"),
 							SegmentLength: to.StringPtr("<segment-length>"),
@@ -66,36 +62,28 @@ func ExamplePipelineTopologiesClient_CreateOrUpdate() {
 					}},
 				Sources: []armvideoanalyzer.SourceNodeBaseClassification{
 					&armvideoanalyzer.RtspSource{
-						SourceNodeBase: armvideoanalyzer.SourceNodeBase{
-							NodeBase: armvideoanalyzer.NodeBase{
-								Name: to.StringPtr("<name>"),
-								Type: to.StringPtr("<type>"),
-							},
-						},
+						Name: to.StringPtr("<name>"),
+						Type: to.StringPtr("<type>"),
 						Endpoint: &armvideoanalyzer.UnsecuredEndpoint{
-							EndpointBase: armvideoanalyzer.EndpointBase{
-								Type: to.StringPtr("<type>"),
-								Credentials: &armvideoanalyzer.UsernamePasswordCredentials{
-									CredentialsBase: armvideoanalyzer.CredentialsBase{
-										Type: to.StringPtr("<type>"),
-									},
-									Password: to.StringPtr("<password>"),
-									Username: to.StringPtr("<username>"),
-								},
-								URL: to.StringPtr("<url>"),
+							Type: to.StringPtr("<type>"),
+							Credentials: &armvideoanalyzer.UsernamePasswordCredentials{
+								Type:     to.StringPtr("<type>"),
+								Password: to.StringPtr("<password>"),
+								Username: to.StringPtr("<username>"),
 							},
+							URL: to.StringPtr("<url>"),
 						},
-						Transport: armvideoanalyzer.RtspTransportHTTP.ToPtr(),
+						Transport: armvideoanalyzer.RtspTransport("Http").ToPtr(),
 					}},
 			},
 			SKU: &armvideoanalyzer.SKU{
-				Name: armvideoanalyzer.SKUNameLiveS1.ToPtr(),
+				Name: armvideoanalyzer.SKUName("Live_S1").ToPtr(),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PipelineTopology.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PipelineTopologiesClientCreateOrUpdateResult)
 }
 ```

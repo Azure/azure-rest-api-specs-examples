@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.1.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -26,14 +26,12 @@ func ExampleVideoAnalyzersClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<account-name>",
 		armvideoanalyzer.VideoAnalyzer{
-			TrackedResource: armvideoanalyzer.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"tag1": to.StringPtr("value1"),
-					"tag2": to.StringPtr("value2"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"tag1": to.StringPtr("value1"),
+				"tag2": to.StringPtr("value2"),
 			},
-			Identity: &armvideoanalyzer.VideoAnalyzerIdentity{
+			Identity: &armvideoanalyzer.Identity{
 				Type: to.StringPtr("<type>"),
 				UserAssignedIdentities: map[string]*armvideoanalyzer.UserAssignedManagedIdentity{
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {},
@@ -41,9 +39,9 @@ func ExampleVideoAnalyzersClient_BeginCreateOrUpdate() {
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id3": {},
 				},
 			},
-			Properties: &armvideoanalyzer.VideoAnalyzerProperties{
+			Properties: &armvideoanalyzer.Properties{
 				Encryption: &armvideoanalyzer.AccountEncryption{
-					Type: armvideoanalyzer.AccountEncryptionKeyTypeSystemKey.ToPtr(),
+					Type: armvideoanalyzer.AccountEncryptionKeyType("SystemKey").ToPtr(),
 				},
 				IotHubs: []*armvideoanalyzer.IotHub{
 					{
@@ -75,6 +73,6 @@ func ExampleVideoAnalyzersClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("VideoAnalyzer.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.VideoAnalyzersClientCreateOrUpdateResult)
 }
 ```

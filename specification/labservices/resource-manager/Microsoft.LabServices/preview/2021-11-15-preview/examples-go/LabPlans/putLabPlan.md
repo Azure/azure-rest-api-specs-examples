@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.1.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.2.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -26,35 +26,31 @@ func ExampleLabPlansClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<lab-plan-name>",
 		armlabservices.LabPlan{
-			TrackedResource: armlabservices.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armlabservices.LabPlanProperties{
-				LabPlanUpdateProperties: armlabservices.LabPlanUpdateProperties{
-					DefaultAutoShutdownProfile: &armlabservices.AutoShutdownProfile{
-						DisconnectDelay:          to.StringPtr("<disconnect-delay>"),
-						IdleDelay:                to.StringPtr("<idle-delay>"),
-						NoConnectDelay:           to.StringPtr("<no-connect-delay>"),
-						ShutdownOnDisconnect:     armlabservices.EnableStateEnabled.ToPtr(),
-						ShutdownOnIdle:           armlabservices.ShutdownOnIdleModeUserAbsence.ToPtr(),
-						ShutdownWhenNotConnected: armlabservices.EnableStateEnabled.ToPtr(),
-					},
-					DefaultConnectionProfile: &armlabservices.ConnectionProfile{
-						ClientRdpAccess: armlabservices.ConnectionTypePublic.ToPtr(),
-						ClientSSHAccess: armlabservices.ConnectionTypePublic.ToPtr(),
-						WebRdpAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
-						WebSSHAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
-					},
-					DefaultNetworkProfile: &armlabservices.LabPlanNetworkProfile{
-						SubnetID: to.StringPtr("<subnet-id>"),
-					},
-					SharedGalleryID: to.StringPtr("<shared-gallery-id>"),
-					SupportInfo: &armlabservices.SupportInfo{
-						Email:        to.StringPtr("<email>"),
-						Instructions: to.StringPtr("<instructions>"),
-						Phone:        to.StringPtr("<phone>"),
-						URL:          to.StringPtr("<url>"),
-					},
+				DefaultAutoShutdownProfile: &armlabservices.AutoShutdownProfile{
+					DisconnectDelay:          to.StringPtr("<disconnect-delay>"),
+					IdleDelay:                to.StringPtr("<idle-delay>"),
+					NoConnectDelay:           to.StringPtr("<no-connect-delay>"),
+					ShutdownOnDisconnect:     armlabservices.EnableStateEnabled.ToPtr(),
+					ShutdownOnIdle:           armlabservices.ShutdownOnIdleModeUserAbsence.ToPtr(),
+					ShutdownWhenNotConnected: armlabservices.EnableStateEnabled.ToPtr(),
+				},
+				DefaultConnectionProfile: &armlabservices.ConnectionProfile{
+					ClientRdpAccess: armlabservices.ConnectionTypePublic.ToPtr(),
+					ClientSSHAccess: armlabservices.ConnectionTypePublic.ToPtr(),
+					WebRdpAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
+					WebSSHAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
+				},
+				DefaultNetworkProfile: &armlabservices.LabPlanNetworkProfile{
+					SubnetID: to.StringPtr("<subnet-id>"),
+				},
+				SharedGalleryID: to.StringPtr("<shared-gallery-id>"),
+				SupportInfo: &armlabservices.SupportInfo{
+					Email:        to.StringPtr("<email>"),
+					Instructions: to.StringPtr("<instructions>"),
+					Phone:        to.StringPtr("<phone>"),
+					URL:          to.StringPtr("<url>"),
 				},
 			},
 		},
@@ -66,6 +62,6 @@ func ExampleLabPlansClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("LabPlan.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.LabPlansClientCreateOrUpdateResult)
 }
 ```

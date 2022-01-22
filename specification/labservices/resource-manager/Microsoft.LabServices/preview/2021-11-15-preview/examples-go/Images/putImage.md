@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.1.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.2.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -25,15 +25,13 @@ func ExampleImagesClient_CreateOrUpdate() {
 		"<image-name>",
 		armlabservices.Image{
 			Properties: &armlabservices.ImageProperties{
-				ImageUpdateProperties: armlabservices.ImageUpdateProperties{
-					EnabledState: armlabservices.EnableStateEnabled.ToPtr(),
-				},
+				EnabledState: armlabservices.EnableStateEnabled.ToPtr(),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Image.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ImagesClientCreateOrUpdateResult)
 }
 ```

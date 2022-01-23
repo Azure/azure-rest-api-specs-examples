@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.1.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.2.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -28,23 +28,21 @@ func ExampleSchedulesClient_CreateOrUpdate() {
 		"<schedule-name>",
 		armlabservices.Schedule{
 			Properties: &armlabservices.ScheduleProperties{
-				ScheduleUpdateProperties: armlabservices.ScheduleUpdateProperties{
-					Notes: to.StringPtr("<notes>"),
-					RecurrencePattern: &armlabservices.RecurrencePattern{
-						ExpirationDate: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14"); return t }()),
-						Frequency:      armlabservices.RecurrenceFrequencyDaily.ToPtr(),
-						Interval:       to.Int32Ptr(2),
-					},
-					StartAt:    to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00Z"); return t }()),
-					StopAt:     to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00Z"); return t }()),
-					TimeZoneID: to.StringPtr("<time-zone-id>"),
+				Notes: to.StringPtr("<notes>"),
+				RecurrencePattern: &armlabservices.RecurrencePattern{
+					ExpirationDate: to.TimePtr(func() time.Time { t, _ := time.Parse("2006-01-02", "2020-08-14"); return t }()),
+					Frequency:      armlabservices.RecurrenceFrequencyDaily.ToPtr(),
+					Interval:       to.Int32Ptr(2),
 				},
+				StartAt:    to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00Z"); return t }()),
+				StopAt:     to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00Z"); return t }()),
+				TimeZoneID: to.StringPtr("<time-zone-id>"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Schedule.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SchedulesClientCreateOrUpdateResult)
 }
 ```

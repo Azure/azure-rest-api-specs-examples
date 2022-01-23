@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.1.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.2.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -29,7 +29,7 @@ func ExampleSchedulesClient_Update() {
 		armlabservices.ScheduleUpdate{
 			Properties: &armlabservices.ScheduleUpdateProperties{
 				RecurrencePattern: &armlabservices.RecurrencePattern{
-					ExpirationDate: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14"); return t }()),
+					ExpirationDate: to.TimePtr(func() time.Time { t, _ := time.Parse("2006-01-02", "2020-08-14"); return t }()),
 					Frequency:      armlabservices.RecurrenceFrequencyDaily.ToPtr(),
 					Interval:       to.Int32Ptr(2),
 				},
@@ -39,6 +39,6 @@ func ExampleSchedulesClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Schedule.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SchedulesClientUpdateResult)
 }
 ```

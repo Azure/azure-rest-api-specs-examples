@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.1.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.2.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -26,51 +26,47 @@ func ExampleLabsClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<lab-name>",
 		armlabservices.Lab{
-			TrackedResource: armlabservices.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armlabservices.LabProperties{
-				LabUpdateProperties: armlabservices.LabUpdateProperties{
-					Description: to.StringPtr("<description>"),
-					AutoShutdownProfile: &armlabservices.AutoShutdownProfile{
-						DisconnectDelay:          to.StringPtr("<disconnect-delay>"),
-						IdleDelay:                to.StringPtr("<idle-delay>"),
-						NoConnectDelay:           to.StringPtr("<no-connect-delay>"),
-						ShutdownOnDisconnect:     armlabservices.EnableStateEnabled.ToPtr(),
-						ShutdownOnIdle:           armlabservices.ShutdownOnIdleModeUserAbsence.ToPtr(),
-						ShutdownWhenNotConnected: armlabservices.EnableStateEnabled.ToPtr(),
+				Description: to.StringPtr("<description>"),
+				AutoShutdownProfile: &armlabservices.AutoShutdownProfile{
+					DisconnectDelay:          to.StringPtr("<disconnect-delay>"),
+					IdleDelay:                to.StringPtr("<idle-delay>"),
+					NoConnectDelay:           to.StringPtr("<no-connect-delay>"),
+					ShutdownOnDisconnect:     armlabservices.EnableStateEnabled.ToPtr(),
+					ShutdownOnIdle:           armlabservices.ShutdownOnIdleModeUserAbsence.ToPtr(),
+					ShutdownWhenNotConnected: armlabservices.EnableStateEnabled.ToPtr(),
+				},
+				ConnectionProfile: &armlabservices.ConnectionProfile{
+					ClientRdpAccess: armlabservices.ConnectionTypePublic.ToPtr(),
+					ClientSSHAccess: armlabservices.ConnectionTypePublic.ToPtr(),
+					WebRdpAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
+					WebSSHAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
+				},
+				LabPlanID: to.StringPtr("<lab-plan-id>"),
+				SecurityProfile: &armlabservices.SecurityProfile{
+					OpenAccess: armlabservices.EnableStateDisabled.ToPtr(),
+				},
+				Title: to.StringPtr("<title>"),
+				VirtualMachineProfile: &armlabservices.VirtualMachineProfile{
+					AdditionalCapabilities: &armlabservices.VirtualMachineAdditionalCapabilities{
+						InstallGpuDrivers: armlabservices.EnableStateDisabled.ToPtr(),
 					},
-					ConnectionProfile: &armlabservices.ConnectionProfile{
-						ClientRdpAccess: armlabservices.ConnectionTypePublic.ToPtr(),
-						ClientSSHAccess: armlabservices.ConnectionTypePublic.ToPtr(),
-						WebRdpAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
-						WebSSHAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
+					AdminUser: &armlabservices.Credentials{
+						Username: to.StringPtr("<username>"),
 					},
-					LabPlanID: to.StringPtr("<lab-plan-id>"),
-					SecurityProfile: &armlabservices.SecurityProfile{
-						OpenAccess: armlabservices.EnableStateDisabled.ToPtr(),
+					CreateOption: armlabservices.CreateOptionTemplateVM.ToPtr(),
+					ImageReference: &armlabservices.ImageReference{
+						Offer:     to.StringPtr("<offer>"),
+						Publisher: to.StringPtr("<publisher>"),
+						SKU:       to.StringPtr("<sku>"),
+						Version:   to.StringPtr("<version>"),
 					},
-					Title: to.StringPtr("<title>"),
-					VirtualMachineProfile: &armlabservices.VirtualMachineProfile{
-						AdditionalCapabilities: &armlabservices.VirtualMachineAdditionalCapabilities{
-							InstallGpuDrivers: armlabservices.EnableStateDisabled.ToPtr(),
-						},
-						AdminUser: &armlabservices.Credentials{
-							Username: to.StringPtr("<username>"),
-						},
-						CreateOption: armlabservices.CreateOptionTemplateVM.ToPtr(),
-						ImageReference: &armlabservices.ImageReference{
-							Offer:     to.StringPtr("<offer>"),
-							Publisher: to.StringPtr("<publisher>"),
-							SKU:       to.StringPtr("<sku>"),
-							Version:   to.StringPtr("<version>"),
-						},
-						SKU: &armlabservices.SKU{
-							Name: to.StringPtr("<name>"),
-						},
-						UsageQuota:        to.StringPtr("<usage-quota>"),
-						UseSharedPassword: armlabservices.EnableStateDisabled.ToPtr(),
+					SKU: &armlabservices.SKU{
+						Name: to.StringPtr("<name>"),
 					},
+					UsageQuota:        to.StringPtr("<usage-quota>"),
+					UseSharedPassword: armlabservices.EnableStateDisabled.ToPtr(),
 				},
 				NetworkProfile: &armlabservices.LabNetworkProfile{
 					SubnetID: to.StringPtr("<subnet-id>"),
@@ -86,6 +82,6 @@ func ExampleLabsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Lab.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.LabsClientCreateOrUpdateResult)
 }
 ```

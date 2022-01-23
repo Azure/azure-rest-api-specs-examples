@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -28,9 +28,7 @@ func ExampleAddonsClient_BeginCreateOrUpdate() {
 		"<addon-name>",
 		"<resource-group-name>",
 		&armdataboxedge.ArcAddon{
-			Addon: armdataboxedge.Addon{
-				Kind: armdataboxedge.AddonTypeArcForKubernetes.ToPtr(),
-			},
+			Kind: armdataboxedge.AddonType("ArcForKubernetes").ToPtr(),
 			Properties: &armdataboxedge.ArcAddonProperties{
 				ResourceGroupName: to.StringPtr("<resource-group-name>"),
 				ResourceLocation:  to.StringPtr("<resource-location>"),
@@ -46,6 +44,6 @@ func ExampleAddonsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("AddonClassification.GetAddon().ID: %s\n", *res.GetAddon().ID)
+	log.Printf("Response result: %#v\n", res.AddonsClientCreateOrUpdateResult)
 }
 ```

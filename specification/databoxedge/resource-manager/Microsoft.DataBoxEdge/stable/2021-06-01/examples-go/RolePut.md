@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -27,16 +27,14 @@ func ExampleRolesClient_BeginCreateOrUpdate() {
 		"<name>",
 		"<resource-group-name>",
 		&armdataboxedge.IoTRole{
-			Role: armdataboxedge.Role{
-				Kind: armdataboxedge.RoleTypesIOT.ToPtr(),
-			},
+			Kind: armdataboxedge.RoleTypes("IOT").ToPtr(),
 			Properties: &armdataboxedge.IoTRoleProperties{
-				HostPlatform: armdataboxedge.PlatformTypeLinux.ToPtr(),
+				HostPlatform: armdataboxedge.PlatformType("Linux").ToPtr(),
 				IoTDeviceDetails: &armdataboxedge.IoTDeviceInfo{
 					Authentication: &armdataboxedge.Authentication{
 						SymmetricKey: &armdataboxedge.SymmetricKey{
 							ConnectionString: &armdataboxedge.AsymmetricEncryptedSecret{
-								EncryptionAlgorithm:      armdataboxedge.EncryptionAlgorithmAES256.ToPtr(),
+								EncryptionAlgorithm:      armdataboxedge.EncryptionAlgorithm("AES256").ToPtr(),
 								EncryptionCertThumbprint: to.StringPtr("<encryption-cert-thumbprint>"),
 								Value:                    to.StringPtr("<value>"),
 							},
@@ -49,7 +47,7 @@ func ExampleRolesClient_BeginCreateOrUpdate() {
 					Authentication: &armdataboxedge.Authentication{
 						SymmetricKey: &armdataboxedge.SymmetricKey{
 							ConnectionString: &armdataboxedge.AsymmetricEncryptedSecret{
-								EncryptionAlgorithm:      armdataboxedge.EncryptionAlgorithmAES256.ToPtr(),
+								EncryptionAlgorithm:      armdataboxedge.EncryptionAlgorithm("AES256").ToPtr(),
 								EncryptionCertThumbprint: to.StringPtr("<encryption-cert-thumbprint>"),
 								Value:                    to.StringPtr("<value>"),
 							},
@@ -58,7 +56,7 @@ func ExampleRolesClient_BeginCreateOrUpdate() {
 					DeviceID:   to.StringPtr("<device-id>"),
 					IoTHostHub: to.StringPtr("<io-thost-hub>"),
 				},
-				RoleStatus:    armdataboxedge.RoleStatusEnabled.ToPtr(),
+				RoleStatus:    armdataboxedge.RoleStatus("Enabled").ToPtr(),
 				ShareMappings: []*armdataboxedge.MountPointMap{},
 			},
 		},
@@ -70,6 +68,6 @@ func ExampleRolesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("RoleClassification.GetRole().ID: %s\n", *res.GetRole().ID)
+	log.Printf("Response result: %#v\n", res.RolesClientCreateOrUpdateResult)
 }
 ```

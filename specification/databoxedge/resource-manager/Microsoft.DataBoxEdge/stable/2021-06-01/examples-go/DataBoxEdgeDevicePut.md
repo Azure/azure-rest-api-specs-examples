@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -23,11 +23,11 @@ func ExampleDevicesClient_CreateOrUpdate() {
 	res, err := client.CreateOrUpdate(ctx,
 		"<device-name>",
 		"<resource-group-name>",
-		armdataboxedge.DataBoxEdgeDevice{
+		armdataboxedge.Device{
 			Location: to.StringPtr("<location>"),
-			SKU: &armdataboxedge.SKU{
-				Name: armdataboxedge.SKUNameEdge.ToPtr(),
-				Tier: armdataboxedge.SKUTierStandard.ToPtr(),
+			SKU: &armdataboxedge.SKUInfo{
+				Name: armdataboxedge.SKUName("Edge").ToPtr(),
+				Tier: armdataboxedge.SKUTier("Standard").ToPtr(),
 			},
 			Tags: map[string]*string{},
 		},
@@ -35,6 +35,6 @@ func ExampleDevicesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataBoxEdgeDevice.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DevicesClientCreateOrUpdateResult)
 }
 ```

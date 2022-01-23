@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -27,6 +27,6 @@ func ExampleTriggersClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("TriggerClassification.GetTrigger().ID: %s\n", *res.GetTrigger().ID)
+	log.Printf("Response result: %#v\n", res.TriggersClientGetResult)
 }
 ```

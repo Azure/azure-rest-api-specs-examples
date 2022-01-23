@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -29,13 +29,13 @@ func ExampleStorageAccountCredentialsClient_BeginCreateOrUpdate() {
 		armdataboxedge.StorageAccountCredential{
 			Properties: &armdataboxedge.StorageAccountCredentialProperties{
 				AccountKey: &armdataboxedge.AsymmetricEncryptedSecret{
-					EncryptionAlgorithm:      armdataboxedge.EncryptionAlgorithmAES256.ToPtr(),
+					EncryptionAlgorithm:      armdataboxedge.EncryptionAlgorithm("AES256").ToPtr(),
 					EncryptionCertThumbprint: to.StringPtr("<encryption-cert-thumbprint>"),
 					Value:                    to.StringPtr("<value>"),
 				},
-				AccountType: armdataboxedge.AccountTypeBlobStorage.ToPtr(),
+				AccountType: armdataboxedge.AccountType("BlobStorage").ToPtr(),
 				Alias:       to.StringPtr("<alias>"),
-				SSLStatus:   armdataboxedge.SSLStatusDisabled.ToPtr(),
+				SSLStatus:   armdataboxedge.SSLStatus("Disabled").ToPtr(),
 				UserName:    to.StringPtr("<user-name>"),
 			},
 		},
@@ -47,6 +47,6 @@ func ExampleStorageAccountCredentialsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("StorageAccountCredential.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.StorageAccountCredentialsClientCreateOrUpdateResult)
 }
 ```

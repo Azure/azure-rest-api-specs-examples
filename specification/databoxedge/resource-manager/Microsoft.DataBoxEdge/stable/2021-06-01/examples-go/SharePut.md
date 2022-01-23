@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -29,18 +29,18 @@ func ExampleSharesClient_BeginCreateOrUpdate() {
 		armdataboxedge.Share{
 			Properties: &armdataboxedge.ShareProperties{
 				Description:    to.StringPtr("<description>"),
-				AccessProtocol: armdataboxedge.ShareAccessProtocolSMB.ToPtr(),
+				AccessProtocol: armdataboxedge.ShareAccessProtocol("SMB").ToPtr(),
 				AzureContainerInfo: &armdataboxedge.AzureContainerInfo{
 					ContainerName:              to.StringPtr("<container-name>"),
-					DataFormat:                 armdataboxedge.AzureContainerDataFormatBlockBlob.ToPtr(),
+					DataFormat:                 armdataboxedge.AzureContainerDataFormat("BlockBlob").ToPtr(),
 					StorageAccountCredentialID: to.StringPtr("<storage-account-credential-id>"),
 				},
-				DataPolicy:       armdataboxedge.DataPolicyCloud.ToPtr(),
-				MonitoringStatus: armdataboxedge.MonitoringStatusEnabled.ToPtr(),
-				ShareStatus:      armdataboxedge.ShareStatusOffline.ToPtr(),
+				DataPolicy:       armdataboxedge.DataPolicy("Cloud").ToPtr(),
+				MonitoringStatus: armdataboxedge.MonitoringStatus("Enabled").ToPtr(),
+				ShareStatus:      armdataboxedge.ShareStatus("Online").ToPtr(),
 				UserAccessRights: []*armdataboxedge.UserAccessRight{
 					{
-						AccessType: armdataboxedge.ShareAccessTypeChange.ToPtr(),
+						AccessType: armdataboxedge.ShareAccessType("Change").ToPtr(),
 						UserID:     to.StringPtr("<user-id>"),
 					}},
 			},
@@ -53,6 +53,6 @@ func ExampleSharesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Share.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SharesClientCreateOrUpdateResult)
 }
 ```

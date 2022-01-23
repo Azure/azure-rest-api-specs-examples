@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.1.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.2.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -26,7 +26,7 @@ func ExampleDiagnosticSettingsClient_BeginUpdateDiagnosticProactiveLogCollection
 		"<resource-group-name>",
 		armdataboxedge.DiagnosticProactiveLogCollectionSettings{
 			Properties: &armdataboxedge.ProactiveLogCollectionSettingsProperties{
-				UserConsent: armdataboxedge.ProactiveDiagnosticsConsentEnabled.ToPtr(),
+				UserConsent: armdataboxedge.ProactiveDiagnosticsConsent("Enabled").ToPtr(),
 			},
 		},
 		nil)
@@ -37,6 +37,6 @@ func ExampleDiagnosticSettingsClient_BeginUpdateDiagnosticProactiveLogCollection
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DiagnosticProactiveLogCollectionSettings.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.DiagnosticSettingsClientUpdateDiagnosticProactiveLogCollectionSettingsResult)
 }
 ```

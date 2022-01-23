@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatabox%2Farmdatabox%2Fv0.1.0/sdk/resourcemanager/databox/armdatabox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatabox%2Farmdatabox%2Fv0.2.0/sdk/resourcemanager/databox/armdatabox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatabox_test
@@ -20,19 +20,18 @@ func ExampleServiceClient_RegionConfiguration() {
 	}
 	ctx := context.Background()
 	client := armdatabox.NewServiceClient("<subscription-id>", cred, nil)
-	_, err = client.RegionConfiguration(ctx,
+	res, err := client.RegionConfiguration(ctx,
 		"<location>",
 		armdatabox.RegionConfigurationRequest{
-			ScheduleAvailabilityRequest: &armdatabox.DataBoxScheduleAvailabilityRequest{
-				ScheduleAvailabilityRequest: armdatabox.ScheduleAvailabilityRequest{
-					SKUName:         armdatabox.SKUNameDataBox.ToPtr(),
-					StorageLocation: to.StringPtr("<storage-location>"),
-				},
+			ScheduleAvailabilityRequest: &armdatabox.ScheduleAvailabilityRequest{
+				SKUName:         armdatabox.SKUNameDataBox.ToPtr(),
+				StorageLocation: to.StringPtr("<storage-location>"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ServiceClientRegionConfigurationResult)
 }
 ```

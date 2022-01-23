@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatabox%2Farmdatabox%2Fv0.1.0/sdk/resourcemanager/databox/armdatabox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatabox%2Farmdatabox%2Fv0.2.0/sdk/resourcemanager/databox/armdatabox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatabox_test
@@ -26,43 +26,37 @@ func ExampleJobsClient_BeginCreate() {
 		"<resource-group-name>",
 		"<job-name>",
 		armdatabox.JobResource{
-			Resource: armdatabox.Resource{
-				Location: to.StringPtr("<location>"),
-				SKU: &armdatabox.SKU{
-					Name: armdatabox.SKUNameDataBox.ToPtr(),
-				},
+			Location: to.StringPtr("<location>"),
+			SKU: &armdatabox.SKU{
+				Name: armdatabox.SKUNameDataBox.ToPtr(),
 			},
 			Properties: &armdatabox.JobProperties{
 				TransferType: armdatabox.TransferTypeImportToAzure.ToPtr(),
-				Details: &armdatabox.DataBoxJobDetails{
-					JobDetails: armdatabox.JobDetails{
-						ContactDetails: &armdatabox.ContactDetails{
-							ContactName: to.StringPtr("<contact-name>"),
-							EmailList: []*string{
-								to.StringPtr("testing@microsoft.com")},
-							Phone:          to.StringPtr("<phone>"),
-							PhoneExtension: to.StringPtr("<phone-extension>"),
-						},
-						DataImportDetails: []*armdatabox.DataImportDetails{
-							{
-								AccountDetails: &armdatabox.StorageAccountDetails{
-									DataAccountDetails: armdatabox.DataAccountDetails{
-										DataAccountType: armdatabox.DataAccountTypeStorageAccount.ToPtr(),
-									},
-									StorageAccountID: to.StringPtr("<storage-account-id>"),
-								},
-							}},
-						JobDetailsType: armdatabox.ClassDiscriminatorDataBox.ToPtr(),
-						ShippingAddress: &armdatabox.ShippingAddress{
-							AddressType:     armdatabox.AddressTypeCommercial.ToPtr(),
-							City:            to.StringPtr("<city>"),
-							CompanyName:     to.StringPtr("<company-name>"),
-							Country:         to.StringPtr("<country>"),
-							PostalCode:      to.StringPtr("<postal-code>"),
-							StateOrProvince: to.StringPtr("<state-or-province>"),
-							StreetAddress1:  to.StringPtr("<street-address1>"),
-							StreetAddress2:  to.StringPtr("<street-address2>"),
-						},
+				Details: &armdatabox.JobDetails{
+					ContactDetails: &armdatabox.ContactDetails{
+						ContactName: to.StringPtr("<contact-name>"),
+						EmailList: []*string{
+							to.StringPtr("testing@microsoft.com")},
+						Phone:          to.StringPtr("<phone>"),
+						PhoneExtension: to.StringPtr("<phone-extension>"),
+					},
+					DataImportDetails: []*armdatabox.DataImportDetails{
+						{
+							AccountDetails: &armdatabox.StorageAccountDetails{
+								DataAccountType:  armdatabox.DataAccountTypeStorageAccount.ToPtr(),
+								StorageAccountID: to.StringPtr("<storage-account-id>"),
+							},
+						}},
+					JobDetailsType: armdatabox.ClassDiscriminatorDataBox.ToPtr(),
+					ShippingAddress: &armdatabox.ShippingAddress{
+						AddressType:     armdatabox.AddressTypeCommercial.ToPtr(),
+						City:            to.StringPtr("<city>"),
+						CompanyName:     to.StringPtr("<company-name>"),
+						Country:         to.StringPtr("<country>"),
+						PostalCode:      to.StringPtr("<postal-code>"),
+						StateOrProvince: to.StringPtr("<state-or-province>"),
+						StreetAddress1:  to.StringPtr("<street-address1>"),
+						StreetAddress2:  to.StringPtr("<street-address2>"),
 					},
 				},
 			},
@@ -75,6 +69,6 @@ func ExampleJobsClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("JobResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.JobsClientCreateResult)
 }
 ```

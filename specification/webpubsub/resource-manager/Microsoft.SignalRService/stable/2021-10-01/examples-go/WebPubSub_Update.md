@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv0.1.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv0.2.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwebpubsub_test
@@ -15,27 +15,25 @@ import (
 )
 
 // x-ms-original-file: specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/examples/WebPubSub_Update.json
-func ExampleWebPubSubClient_BeginUpdate() {
+func ExampleClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armwebpubsub.NewWebPubSubClient("<subscription-id>", cred, nil)
+	client := armwebpubsub.NewClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armwebpubsub.WebPubSubResource{
-			TrackedResource: armwebpubsub.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"key1": to.StringPtr("value1"),
-				},
+		armwebpubsub.ResourceInfo{
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"key1": to.StringPtr("value1"),
 			},
 			Identity: &armwebpubsub.ManagedIdentity{
-				Type: armwebpubsub.ManagedIdentityTypeSystemAssigned.ToPtr(),
+				Type: armwebpubsub.ManagedIdentityType("SystemAssigned").ToPtr(),
 			},
-			Properties: &armwebpubsub.WebPubSubProperties{
+			Properties: &armwebpubsub.Properties{
 				DisableAADAuth:   to.BoolPtr(false),
 				DisableLocalAuth: to.BoolPtr(false),
 				LiveTraceConfiguration: &armwebpubsub.LiveTraceConfiguration{
@@ -46,30 +44,28 @@ func ExampleWebPubSubClient_BeginUpdate() {
 						}},
 					Enabled: to.StringPtr("<enabled>"),
 				},
-				NetworkACLs: &armwebpubsub.WebPubSubNetworkACLs{
-					DefaultAction: armwebpubsub.ACLActionDeny.ToPtr(),
+				NetworkACLs: &armwebpubsub.NetworkACLs{
+					DefaultAction: armwebpubsub.ACLAction("Deny").ToPtr(),
 					PrivateEndpoints: []*armwebpubsub.PrivateEndpointACL{
 						{
-							NetworkACL: armwebpubsub.NetworkACL{
-								Allow: []*armwebpubsub.WebPubSubRequestType{
-									armwebpubsub.WebPubSubRequestTypeServerConnection.ToPtr()},
-							},
+							Allow: []*armwebpubsub.WebPubSubRequestType{
+								armwebpubsub.WebPubSubRequestType("ServerConnection").ToPtr()},
 							Name: to.StringPtr("<name>"),
 						}},
 					PublicNetwork: &armwebpubsub.NetworkACL{
 						Allow: []*armwebpubsub.WebPubSubRequestType{
-							armwebpubsub.WebPubSubRequestTypeClientConnection.ToPtr()},
+							armwebpubsub.WebPubSubRequestType("ClientConnection").ToPtr()},
 					},
 				},
 				PublicNetworkAccess: to.StringPtr("<public-network-access>"),
-				TLS: &armwebpubsub.WebPubSubTLSSettings{
+				TLS: &armwebpubsub.TLSSettings{
 					ClientCertEnabled: to.BoolPtr(false),
 				},
 			},
 			SKU: &armwebpubsub.ResourceSKU{
 				Name:     to.StringPtr("<name>"),
 				Capacity: to.Int32Ptr(1),
-				Tier:     armwebpubsub.WebPubSubSKUTierStandard.ToPtr(),
+				Tier:     armwebpubsub.WebPubSubSKUTier("Standard").ToPtr(),
 			},
 		},
 		nil)
@@ -80,6 +76,6 @@ func ExampleWebPubSubClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("WebPubSubResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ClientUpdateResult)
 }
 ```

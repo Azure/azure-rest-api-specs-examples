@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.1.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -27,9 +27,7 @@ func ExampleAccessPoliciesClient_CreateOrUpdate() {
 		armvideoanalyzer.AccessPolicyEntity{
 			Properties: &armvideoanalyzer.AccessPolicyProperties{
 				Authentication: &armvideoanalyzer.JwtAuthentication{
-					AuthenticationBase: armvideoanalyzer.AuthenticationBase{
-						Type: to.StringPtr("<type>"),
-					},
+					Type: to.StringPtr("<type>"),
 					Audiences: []*string{
 						to.StringPtr("audience1")},
 					Claims: []*armvideoanalyzer.TokenClaim{
@@ -46,22 +44,18 @@ func ExampleAccessPoliciesClient_CreateOrUpdate() {
 						to.StringPtr("issuer2")},
 					Keys: []armvideoanalyzer.TokenKeyClassification{
 						&armvideoanalyzer.RsaTokenKey{
-							TokenKey: armvideoanalyzer.TokenKey{
-								Type: to.StringPtr("<type>"),
-								Kid:  to.StringPtr("<kid>"),
-							},
-							Alg: armvideoanalyzer.AccessPolicyRsaAlgoRS256.ToPtr(),
-							E:   to.StringPtr("<e>"),
-							N:   to.StringPtr("<n>"),
+							Type: to.StringPtr("<type>"),
+							Kid:  to.StringPtr("<kid>"),
+							Alg:  armvideoanalyzer.AccessPolicyRsaAlgo("RS256").ToPtr(),
+							E:    to.StringPtr("<e>"),
+							N:    to.StringPtr("<n>"),
 						},
 						&armvideoanalyzer.EccTokenKey{
-							TokenKey: armvideoanalyzer.TokenKey{
-								Type: to.StringPtr("<type>"),
-								Kid:  to.StringPtr("<kid>"),
-							},
-							Alg: armvideoanalyzer.AccessPolicyEccAlgoES256.ToPtr(),
-							X:   to.StringPtr("<x>"),
-							Y:   to.StringPtr("<y>"),
+							Type: to.StringPtr("<type>"),
+							Kid:  to.StringPtr("<kid>"),
+							Alg:  armvideoanalyzer.AccessPolicyEccAlgo("ES256").ToPtr(),
+							X:    to.StringPtr("<x>"),
+							Y:    to.StringPtr("<y>"),
 						}},
 				},
 			},
@@ -70,6 +64,6 @@ func ExampleAccessPoliciesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("AccessPolicyEntity.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AccessPoliciesClientCreateOrUpdateResult)
 }
 ```

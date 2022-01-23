@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.1.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -12,13 +12,13 @@ import (
 )
 
 // x-ms-original-file: specification/videoanalyzer/resource-manager/Microsoft.Media/preview/2021-11-01-preview/examples/video-analyzer-operation-status-by-id-non-terminal-state-failed.json
-func ExampleVideoAnalyzerOperationStatusesClient_Get() {
+func ExampleOperationStatusesClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armvideoanalyzer.NewVideoAnalyzerOperationStatusesClient("<subscription-id>", cred, nil)
+	client := armvideoanalyzer.NewOperationStatusesClient("<subscription-id>", cred, nil)
 	res, err := client.Get(ctx,
 		"<location-name>",
 		"<operation-id>",
@@ -26,6 +26,6 @@ func ExampleVideoAnalyzerOperationStatusesClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("VideoAnalyzerOperationStatus.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.OperationStatusesClientGetResult)
 }
 ```

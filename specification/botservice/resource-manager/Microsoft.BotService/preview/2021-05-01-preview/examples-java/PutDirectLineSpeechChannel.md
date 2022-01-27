@@ -1,6 +1,8 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-botservice_1.0.0-beta.2/sdk/botservice/azure-resourcemanager-botservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-botservice_1.0.0-beta.3/sdk/botservice/azure-resourcemanager-botservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
+import com.azure.core.util.Context;
+import com.azure.resourcemanager.botservice.fluent.models.BotChannelInner;
 import com.azure.resourcemanager.botservice.models.ChannelName;
 import com.azure.resourcemanager.botservice.models.DirectLineSpeechChannel;
 import com.azure.resourcemanager.botservice.models.DirectLineSpeechChannelProperties;
@@ -18,17 +20,20 @@ public final class Main {
     public static void createDirectLineSpeechBot(com.azure.resourcemanager.botservice.BotServiceManager manager) {
         manager
             .channels()
-            .define(ChannelName.DIRECT_LINE_SPEECH_CHANNEL)
-            .withRegion("global")
-            .withExistingBotService("OneResourceGroupName", "samplebotname")
-            .withProperties(
-                new DirectLineSpeechChannel()
+            .createWithResponse(
+                "OneResourceGroupName",
+                "samplebotname",
+                ChannelName.DIRECT_LINE_SPEECH_CHANNEL,
+                new BotChannelInner()
+                    .withLocation("global")
                     .withProperties(
-                        new DirectLineSpeechChannelProperties()
-                            .withCognitiveServiceRegion("XcognitiveServiceRegionX")
-                            .withCognitiveServiceSubscriptionKey("XcognitiveServiceSubscriptionKeyX")
-                            .withIsEnabled(true)))
-            .create();
+                        new DirectLineSpeechChannel()
+                            .withProperties(
+                                new DirectLineSpeechChannelProperties()
+                                    .withCognitiveServiceRegion("XcognitiveServiceRegionX")
+                                    .withCognitiveServiceSubscriptionKey("XcognitiveServiceSubscriptionKeyX")
+                                    .withIsEnabled(true))),
+                Context.NONE);
     }
 }
 ```

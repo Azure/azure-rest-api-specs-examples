@@ -1,9 +1,10 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-botservice_1.0.0-beta.2/sdk/botservice/azure-resourcemanager-botservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-botservice_1.0.0-beta.3/sdk/botservice/azure-resourcemanager-botservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.resourcemanager.botservice.models.BotProperties;
 import com.azure.resourcemanager.botservice.models.Kind;
 import com.azure.resourcemanager.botservice.models.MsaAppType;
+import com.azure.resourcemanager.botservice.models.PublicNetworkAccess;
 import com.azure.resourcemanager.botservice.models.Sku;
 import com.azure.resourcemanager.botservice.models.SkuName;
 import java.util.Arrays;
@@ -45,7 +46,7 @@ public final class Main {
                     .withLuisKey("luiskey")
                     .withIsCmekEnabled(true)
                     .withCmekKeyVaultUrl("https://myCmekKey")
-                    .withIsIsolated(false)
+                    .withPublicNetworkAccess(PublicNetworkAccess.ENABLED)
                     .withDisableLocalAuth(true)
                     .withSchemaTransformationVersion("1.0"))
             .withSku(new Sku().withName(SkuName.S1))

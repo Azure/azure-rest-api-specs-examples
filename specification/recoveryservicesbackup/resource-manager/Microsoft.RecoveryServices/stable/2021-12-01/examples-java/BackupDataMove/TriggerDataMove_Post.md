@@ -1,0 +1,34 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-recoveryservicesbackup_1.0.0-beta.3/sdk/recoveryservicesbackup/azure-resourcemanager-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+
+```java
+import com.azure.core.util.Context;
+import com.azure.resourcemanager.recoveryservicesbackup.models.DataMoveLevel;
+import com.azure.resourcemanager.recoveryservicesbackup.models.TriggerDataMoveRequest;
+
+/** Samples for ResourceProvider BmsTriggerDataMove. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/BackupDataMove/TriggerDataMove_Post.json
+     */
+    /**
+     * Sample code: Trigger Data Move.
+     *
+     * @param manager Entry point to RecoveryServicesBackupManager.
+     */
+    public static void triggerDataMove(
+        com.azure.resourcemanager.recoveryservicesbackup.RecoveryServicesBackupManager manager) {
+        manager
+            .resourceProviders()
+            .bmsTriggerDataMove(
+                "target-rsv",
+                "targetRG",
+                new TriggerDataMoveRequest()
+                    .withSourceResourceId(
+                        "/subscriptions/04cf684a-d41f-4550-9f70-7708a3a2283b/resourceGroups/sourceRG/providers/Microsoft.RecoveryServices/vaults/source-rsv")
+                    .withSourceRegion("USGov Iowa")
+                    .withDataMoveLevel(DataMoveLevel.VAULT)
+                    .withCorrelationId("MTg2OTcyMzM4NzYyMjc1NDY3Nzs1YmUzYmVmNi04YjJiLTRhOTItOTllYi01NTM0MDllYjk2NjE="),
+                Context.NONE);
+    }
+}
+```

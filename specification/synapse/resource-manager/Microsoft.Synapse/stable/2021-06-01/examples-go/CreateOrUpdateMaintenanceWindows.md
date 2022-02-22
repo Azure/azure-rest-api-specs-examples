@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -29,7 +29,7 @@ func ExampleSQLPoolMaintenanceWindowsClient_CreateOrUpdate() {
 			Properties: &armsynapse.MaintenanceWindowsProperties{
 				TimeRanges: []*armsynapse.MaintenanceWindowTimeRange{
 					{
-						DayOfWeek: armsynapse.DayOfWeekSaturday.ToPtr(),
+						DayOfWeek: armsynapse.DayOfWeek("Saturday").ToPtr(),
 						Duration:  to.StringPtr("<duration>"),
 						StartTime: to.StringPtr("<start-time>"),
 					}},

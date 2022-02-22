@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -22,11 +22,11 @@ func ExampleWorkspaceManagedSQLServerExtendedBlobAuditingPoliciesClient_Get() {
 	res, err := client.Get(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
-		armsynapse.BlobAuditingPolicyNameDefault,
+		armsynapse.BlobAuditingPolicyName("default"),
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ExtendedServerBlobAuditingPolicy.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkspaceManagedSQLServerExtendedBlobAuditingPoliciesClientGetResult)
 }
 ```

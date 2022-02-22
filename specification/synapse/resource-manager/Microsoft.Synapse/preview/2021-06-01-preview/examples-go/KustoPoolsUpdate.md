@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -33,12 +33,12 @@ func ExampleKustoPoolsClient_BeginUpdate() {
 				WorkspaceUID:          to.StringPtr("<workspace-uid>"),
 			},
 			SKU: &armsynapse.AzureSKU{
-				Name:     armsynapse.SKUNameStorageOptimized.ToPtr(),
+				Name:     armsynapse.SKUName("Storage optimized").ToPtr(),
 				Capacity: to.Int32Ptr(2),
-				Size:     armsynapse.SKUSizeMedium.ToPtr(),
+				Size:     armsynapse.SKUSize("Medium").ToPtr(),
 			},
 		},
-		&armsynapse.KustoPoolsBeginUpdateOptions{IfMatch: nil})
+		&armsynapse.KustoPoolsClientBeginUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -46,6 +46,6 @@ func ExampleKustoPoolsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("KustoPool.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.KustoPoolsClientUpdateResult)
 }
 ```

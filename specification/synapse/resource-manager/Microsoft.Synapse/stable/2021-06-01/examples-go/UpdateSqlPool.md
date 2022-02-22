@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -29,13 +29,9 @@ func ExampleSQLPoolsClient_Update() {
 		armsynapse.SQLPoolPatchInfo{
 			Location: to.StringPtr("<location>"),
 			Properties: &armsynapse.SQLPoolResourceProperties{
-				Collation:             to.StringPtr("<collation>"),
-				CreateMode:            armsynapse.CreateModeDefault.ToPtr(),
-				CreationDate:          to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1970-01-01T00:00:00.000Z"); return t }()),
-				MaxSizeBytes:          to.Int64Ptr(0),
-				RecoverableDatabaseID: to.StringPtr("<recoverable-database-id>"),
-				RestorePointInTime:    to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1970-01-01T00:00:00.000Z"); return t }()),
-				SourceDatabaseID:      to.StringPtr("<source-database-id>"),
+				Collation:          to.StringPtr("<collation>"),
+				MaxSizeBytes:       to.Int64Ptr(0),
+				RestorePointInTime: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1970-01-01T00:00:00.000Z"); return t }()),
 			},
 			SKU: &armsynapse.SKU{
 				Name: to.StringPtr("<name>"),
@@ -47,6 +43,6 @@ func ExampleSQLPoolsClient_Update() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SQLPool.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SQLPoolsClientUpdateResult)
 }
 ```

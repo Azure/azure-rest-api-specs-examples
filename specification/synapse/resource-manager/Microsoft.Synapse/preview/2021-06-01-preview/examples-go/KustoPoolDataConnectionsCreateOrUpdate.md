@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -29,10 +29,8 @@ func ExampleKustoPoolDataConnectionsClient_BeginCreateOrUpdate() {
 		"<database-name>",
 		"<data-connection-name>",
 		&armsynapse.EventHubDataConnection{
-			DataConnection: armsynapse.DataConnection{
-				Kind:     armsynapse.DataConnectionKindEventHub.ToPtr(),
-				Location: to.StringPtr("<location>"),
-			},
+			Kind:     armsynapse.DataConnectionKind("EventHub").ToPtr(),
+			Location: to.StringPtr("<location>"),
 			Properties: &armsynapse.EventHubConnectionProperties{
 				ConsumerGroup:      to.StringPtr("<consumer-group>"),
 				EventHubResourceID: to.StringPtr("<event-hub-resource-id>"),
@@ -46,6 +44,6 @@ func ExampleKustoPoolDataConnectionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DataConnectionClassification.GetDataConnection().ID: %s\n", *res.GetDataConnection().ID)
+	log.Printf("Response result: %#v\n", res.KustoPoolDataConnectionsClientCreateOrUpdateResult)
 }
 ```

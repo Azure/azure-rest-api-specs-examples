@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.1.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.2.1/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtestbase_test
@@ -19,7 +19,7 @@ func ExamplePackagesClient_GetDownloadURL() {
 	}
 	ctx := context.Background()
 	client := armtestbase.NewPackagesClient("<subscription-id>", cred, nil)
-	_, err = client.GetDownloadURL(ctx,
+	res, err := client.GetDownloadURL(ctx,
 		"<resource-group-name>",
 		"<test-base-account-name>",
 		"<package-name>",
@@ -27,5 +27,6 @@ func ExamplePackagesClient_GetDownloadURL() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.PackagesClientGetDownloadURLResult)
 }
 ```

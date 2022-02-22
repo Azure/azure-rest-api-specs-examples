@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fworkloadmonitor%2Farmworkloadmonitor%2Fv0.1.0/sdk/resourcemanager/workloadmonitor/armworkloadmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fworkloadmonitor%2Farmworkloadmonitor%2Fv0.2.1/sdk/resourcemanager/workloadmonitor/armworkloadmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armworkloadmonitor_test
@@ -27,10 +27,10 @@ func ExampleHealthMonitorsClient_GetStateChange() {
 		"<resource-name>",
 		"<monitor-id>",
 		"<timestamp-unix>",
-		&armworkloadmonitor.HealthMonitorsGetStateChangeOptions{Expand: nil})
+		&armworkloadmonitor.HealthMonitorsClientGetStateChangeOptions{Expand: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("HealthMonitorStateChange.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.HealthMonitorsClientGetStateChangeResult)
 }
 ```

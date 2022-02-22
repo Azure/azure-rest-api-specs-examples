@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvmwarecloudsimple%2Farmvmwarecloudsimple%2Fv0.1.0/sdk/resourcemanager/vmwarecloudsimple/armvmwarecloudsimple/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvmwarecloudsimple%2Farmvmwarecloudsimple%2Fv0.2.1/sdk/resourcemanager/vmwarecloudsimple/armvmwarecloudsimple/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvmwarecloudsimple_test
@@ -21,16 +21,20 @@ func ExampleDedicatedCloudNodesClient_ListByResourceGroup() {
 	client := armvmwarecloudsimple.NewDedicatedCloudNodesClient("<subscription-id>",
 		"<referer>", cred, nil)
 	pager := client.ListByResourceGroup("<resource-group-name>",
-		&armvmwarecloudsimple.DedicatedCloudNodesListByResourceGroupOptions{Filter: nil,
+		&armvmwarecloudsimple.DedicatedCloudNodesClientListByResourceGroupOptions{Filter: nil,
 			Top:       nil,
 			SkipToken: nil,
 		})
-	for pager.NextPage(ctx) {
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
+		if !nextResult {
+			break
+		}
 		for _, v := range pager.PageResponse().Value {
-			log.Printf("DedicatedCloudNode.ID: %s\n", *v.ID)
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

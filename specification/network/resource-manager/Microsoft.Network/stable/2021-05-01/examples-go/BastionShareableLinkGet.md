@@ -1,0 +1,52 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
+)
+
+// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/BastionShareableLinkGet.json
+func ExampleManagementClient_GetBastionShareableLink() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armnetwork.NewManagementClient("<subscription-id>", cred, nil)
+	pager := client.GetBastionShareableLink("<resource-group-name>",
+		"<bastion-host-name>",
+		armnetwork.BastionShareableLinkListRequest{
+			VMs: []*armnetwork.BastionShareableLink{
+				{
+					VM: &armnetwork.VM{
+						ID: to.StringPtr("<id>"),
+					},
+				},
+				{
+					VM: &armnetwork.VM{
+						ID: to.StringPtr("<id>"),
+					},
+				}},
+		},
+		nil)
+	for {
+		nextResult := pager.NextPage(ctx)
+		if err := pager.Err(); err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		if !nextResult {
+			break
+		}
+		for _, v := range pager.PageResponse().Value {
+			log.Printf("Pager result: %#v\n", v)
+		}
+	}
+}
+```

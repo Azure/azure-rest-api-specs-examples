@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -27,11 +27,9 @@ func ExampleBigDataPoolsClient_BeginCreateOrUpdate() {
 		"<workspace-name>",
 		"<big-data-pool-name>",
 		armsynapse.BigDataPoolResourceInfo{
-			TrackedResource: armsynapse.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"key": to.StringPtr("value"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"key": to.StringPtr("value"),
 			},
 			Properties: &armsynapse.BigDataPoolResourceProperties{
 				AutoPause: &armsynapse.AutoPauseProperties{
@@ -49,13 +47,13 @@ func ExampleBigDataPoolsClient_BeginCreateOrUpdate() {
 					Filename: to.StringPtr("<filename>"),
 				},
 				NodeCount:         to.Int32Ptr(4),
-				NodeSize:          armsynapse.NodeSizeMedium.ToPtr(),
-				NodeSizeFamily:    armsynapse.NodeSizeFamilyMemoryOptimized.ToPtr(),
+				NodeSize:          armsynapse.NodeSize("Medium").ToPtr(),
+				NodeSizeFamily:    armsynapse.NodeSizeFamily("MemoryOptimized").ToPtr(),
 				SparkEventsFolder: to.StringPtr("<spark-events-folder>"),
 				SparkVersion:      to.StringPtr("<spark-version>"),
 			},
 		},
-		&armsynapse.BigDataPoolsBeginCreateOrUpdateOptions{Force: nil})
+		&armsynapse.BigDataPoolsClientBeginCreateOrUpdateOptions{Force: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -63,6 +61,6 @@ func ExampleBigDataPoolsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("BigDataPoolResourceInfo.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.BigDataPoolsClientCreateOrUpdateResult)
 }
 ```

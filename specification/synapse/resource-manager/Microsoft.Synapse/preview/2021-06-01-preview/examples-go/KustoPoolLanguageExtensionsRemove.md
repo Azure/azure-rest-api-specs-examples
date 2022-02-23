@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -28,10 +28,10 @@ func ExampleKustoPoolsClient_BeginRemoveLanguageExtensions() {
 		armsynapse.LanguageExtensionsList{
 			Value: []*armsynapse.LanguageExtension{
 				{
-					LanguageExtensionName: armsynapse.LanguageExtensionNamePYTHON.ToPtr(),
+					LanguageExtensionName: armsynapse.LanguageExtensionName("PYTHON").ToPtr(),
 				},
 				{
-					LanguageExtensionName: armsynapse.LanguageExtensionNameR.ToPtr(),
+					LanguageExtensionName: armsynapse.LanguageExtensionName("R").ToPtr(),
 				}},
 		},
 		nil)

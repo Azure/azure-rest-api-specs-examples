@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.1.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -25,11 +25,11 @@ func ExampleWorkspaceManagedSQLServerEncryptionProtectorClient_BeginCreateOrUpda
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
-		armsynapse.EncryptionProtectorNameCurrent,
+		armsynapse.EncryptionProtectorName("current"),
 		armsynapse.EncryptionProtector{
 			Properties: &armsynapse.EncryptionProtectorProperties{
 				ServerKeyName: to.StringPtr("<server-key-name>"),
-				ServerKeyType: armsynapse.ServerKeyTypeAzureKeyVault.ToPtr(),
+				ServerKeyType: armsynapse.ServerKeyType("AzureKeyVault").ToPtr(),
 			},
 		},
 		nil)
@@ -40,6 +40,6 @@ func ExampleWorkspaceManagedSQLServerEncryptionProtectorClient_BeginCreateOrUpda
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("EncryptionProtector.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.WorkspaceManagedSQLServerEncryptionProtectorClientCreateOrUpdateResult)
 }
 ```

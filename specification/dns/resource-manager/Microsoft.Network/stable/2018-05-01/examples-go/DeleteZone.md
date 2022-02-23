@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdns%2Farmdns%2Fv0.1.0/sdk/resourcemanager/dns/armdns/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdns%2Farmdns%2Fv0.2.1/sdk/resourcemanager/dns/armdns/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdns_test
@@ -24,7 +24,7 @@ func ExampleZonesClient_BeginDelete() {
 	poller, err := client.BeginDelete(ctx,
 		"<resource-group-name>",
 		"<zone-name>",
-		&armdns.ZonesBeginDeleteOptions{IfMatch: nil})
+		&armdns.ZonesClientBeginDeleteOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatal(err)
 	}

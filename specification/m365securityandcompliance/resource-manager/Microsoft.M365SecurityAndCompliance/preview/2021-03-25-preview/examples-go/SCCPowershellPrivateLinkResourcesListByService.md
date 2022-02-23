@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fm365securityandcompliance%2Farmm365securityandcompliance%2Fv0.1.0/sdk/resourcemanager/m365securityandcompliance/armm365securityandcompliance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fm365securityandcompliance%2Farmm365securityandcompliance%2Fv0.2.1/sdk/resourcemanager/m365securityandcompliance/armm365securityandcompliance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armm365securityandcompliance_test
@@ -19,12 +19,13 @@ func ExamplePrivateLinkResourcesForSCCPowershellClient_ListByService() {
 	}
 	ctx := context.Background()
 	client := armm365securityandcompliance.NewPrivateLinkResourcesForSCCPowershellClient("<subscription-id>", cred, nil)
-	_, err = client.ListByService(ctx,
+	res, err := client.ListByService(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.PrivateLinkResourcesForSCCPowershellClientListByServiceResult)
 }
 ```

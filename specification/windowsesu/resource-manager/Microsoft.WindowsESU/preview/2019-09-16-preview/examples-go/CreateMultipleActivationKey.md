@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwindowsesu%2Farmwindowsesu%2Fv0.1.0/sdk/resourcemanager/windowsesu/armwindowsesu/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwindowsesu%2Farmwindowsesu%2Fv0.2.1/sdk/resourcemanager/windowsesu/armwindowsesu/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwindowsesu_test
@@ -26,15 +26,13 @@ func ExampleMultipleActivationKeysClient_BeginCreate() {
 		"<resource-group-name>",
 		"<multiple-activation-key-name>",
 		armwindowsesu.MultipleActivationKey{
-			TrackedResource: armwindowsesu.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armwindowsesu.MultipleActivationKeyProperties{
 				AgreementNumber:       to.StringPtr("<agreement-number>"),
 				InstalledServerNumber: to.Int32Ptr(100),
 				IsEligible:            to.BoolPtr(true),
-				OSType:                armwindowsesu.OsTypeWindowsServer2008.ToPtr(),
-				SupportType:           armwindowsesu.SupportTypeSupplementalServicing.ToPtr(),
+				OSType:                armwindowsesu.OsType("WindowsServer2008").ToPtr(),
+				SupportType:           armwindowsesu.SupportType("SupplementalServicing").ToPtr(),
 			},
 		},
 		nil)
@@ -45,6 +43,6 @@ func ExampleMultipleActivationKeysClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("MultipleActivationKey.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.MultipleActivationKeysClientCreateResult)
 }
 ```

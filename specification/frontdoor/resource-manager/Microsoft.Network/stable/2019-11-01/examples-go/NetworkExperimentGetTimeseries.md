@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.1.0/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.2.1/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armfrontdoor_test
@@ -27,14 +27,14 @@ func ExampleReportsClient_GetTimeseries() {
 		"<experiment-name>",
 		func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-21T17:32:28Z"); return t }(),
 		func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-21T17:32:28Z"); return t }(),
-		armfrontdoor.TimeseriesAggregationIntervalHourly,
-		armfrontdoor.TimeseriesTypeMeasurementCounts,
-		&armfrontdoor.ReportsGetTimeseriesOptions{Endpoint: nil,
+		armfrontdoor.TimeseriesAggregationInterval("Hourly"),
+		armfrontdoor.TimeseriesType("MeasurementCounts"),
+		&armfrontdoor.ReportsClientGetTimeseriesOptions{Endpoint: nil,
 			Country: nil,
 		})
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Timeseries.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ReportsClientGetTimeseriesResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.1.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.2.1/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtestbase_test
@@ -19,15 +19,16 @@ func ExampleAnalysisResultsClient_List() {
 	}
 	ctx := context.Background()
 	client := armtestbase.NewAnalysisResultsClient("<subscription-id>", cred, nil)
-	_, err = client.List(ctx,
+	res, err := client.List(ctx,
 		"<resource-group-name>",
 		"<test-base-account-name>",
 		"<package-name>",
 		"<test-result-name>",
-		armtestbase.AnalysisResultTypeCPURegression,
+		armtestbase.AnalysisResultType("CPURegression"),
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.AnalysisResultsClientListResult)
 }
 ```

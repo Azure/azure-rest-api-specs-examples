@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.1.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.2.1/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtestbase_test
@@ -15,28 +15,26 @@ import (
 )
 
 // x-ms-original-file: specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/examples/TestBaseAccountCreate.json
-func ExampleTestBaseAccountsClient_BeginCreate() {
+func ExampleAccountsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armtestbase.NewTestBaseAccountsClient("<subscription-id>", cred, nil)
+	client := armtestbase.NewAccountsClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<test-base-account-name>",
-		armtestbase.TestBaseAccountResource{
-			TrackedResource: armtestbase.TrackedResource{
-				Location: to.StringPtr("<location>"),
-			},
-			Properties: &armtestbase.TestBaseAccountResourceProperties{
-				SKU: &armtestbase.TestBaseAccountSKU{
+		armtestbase.AccountResource{
+			Location: to.StringPtr("<location>"),
+			Properties: &armtestbase.AccountResourceProperties{
+				SKU: &armtestbase.AccountSKU{
 					Name: to.StringPtr("<name>"),
-					Tier: armtestbase.TierStandard.ToPtr(),
+					Tier: armtestbase.Tier("Standard").ToPtr(),
 				},
 			},
 		},
-		&armtestbase.TestBaseAccountsBeginCreateOptions{Restore: nil})
+		&armtestbase.AccountsClientBeginCreateOptions{Restore: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -44,6 +42,6 @@ func ExampleTestBaseAccountsClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("TestBaseAccountResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.AccountsClientCreateResult)
 }
 ```

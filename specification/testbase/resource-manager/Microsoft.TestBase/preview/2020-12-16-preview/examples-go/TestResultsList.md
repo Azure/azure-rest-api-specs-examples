@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.1.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.2.1/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtestbase_test
@@ -23,14 +23,18 @@ func ExampleTestResultsClient_List() {
 	pager := client.List("<resource-group-name>",
 		"<test-base-account-name>",
 		"<package-name>",
-		armtestbase.OsUpdateTypeSecurityUpdate,
-		&armtestbase.TestResultsListOptions{Filter: to.StringPtr("<filter>")})
-	for pager.NextPage(ctx) {
+		armtestbase.OsUpdateType("SecurityUpdate"),
+		&armtestbase.TestResultsClientListOptions{Filter: to.StringPtr("<filter>")})
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
+		if !nextResult {
+			break
+		}
 		for _, v := range pager.PageResponse().Value {
-			log.Printf("TestResultResource.ID: %s\n", *v.ID)
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

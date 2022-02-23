@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.1.1/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.2.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -20,7 +20,7 @@ func ExamplePolicyTrackedResourcesClient_ListQueryResultsForResource() {
 	ctx := context.Background()
 	client := armpolicyinsights.NewPolicyTrackedResourcesClient("<subscription-id>", cred, nil)
 	pager := client.ListQueryResultsForResource("<resource-id>",
-		armpolicyinsights.Enum1("default"),
+		armpolicyinsights.PolicyTrackedResourcesResourceType("default"),
 		&armpolicyinsights.QueryOptions{Top: nil,
 			Filter:    nil,
 			OrderBy:   nil,

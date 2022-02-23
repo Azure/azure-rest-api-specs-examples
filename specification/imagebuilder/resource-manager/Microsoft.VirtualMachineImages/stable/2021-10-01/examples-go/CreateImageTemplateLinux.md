@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvirtualmachineimagebuilder%2Farmvirtualmachineimagebuilder%2Fv0.1.0/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvirtualmachineimagebuilder%2Farmvirtualmachineimagebuilder%2Fv0.2.1/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvirtualmachineimagebuilder_test
@@ -26,12 +26,10 @@ func ExampleVirtualMachineImageTemplatesClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<image-template-name>",
 		armvirtualmachineimagebuilder.ImageTemplate{
-			TrackedResource: armvirtualmachineimagebuilder.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"imagetemplate_tag1": to.StringPtr("IT_T1"),
-					"imagetemplate_tag2": to.StringPtr("IT_T2"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"imagetemplate_tag1": to.StringPtr("IT_T1"),
+				"imagetemplate_tag2": to.StringPtr("IT_T2"),
 			},
 			Identity: &armvirtualmachineimagebuilder.ImageTemplateIdentity{
 				Type: armvirtualmachineimagebuilder.ResourceIdentityTypeUserAssigned.ToPtr(),
@@ -42,28 +40,22 @@ func ExampleVirtualMachineImageTemplatesClient_BeginCreateOrUpdate() {
 			Properties: &armvirtualmachineimagebuilder.ImageTemplateProperties{
 				Customize: []armvirtualmachineimagebuilder.ImageTemplateCustomizerClassification{
 					&armvirtualmachineimagebuilder.ImageTemplateShellCustomizer{
-						ImageTemplateCustomizer: armvirtualmachineimagebuilder.ImageTemplateCustomizer{
-							Name: to.StringPtr("<name>"),
-							Type: to.StringPtr("<type>"),
-						},
+						Name:      to.StringPtr("<name>"),
+						Type:      to.StringPtr("<type>"),
 						ScriptURI: to.StringPtr("<script-uri>"),
 					}},
 				Distribute: []armvirtualmachineimagebuilder.ImageTemplateDistributorClassification{
 					&armvirtualmachineimagebuilder.ImageTemplateManagedImageDistributor{
-						ImageTemplateDistributor: armvirtualmachineimagebuilder.ImageTemplateDistributor{
-							Type: to.StringPtr("<type>"),
-							ArtifactTags: map[string]*string{
-								"tagName": to.StringPtr("value"),
-							},
-							RunOutputName: to.StringPtr("<run-output-name>"),
+						Type: to.StringPtr("<type>"),
+						ArtifactTags: map[string]*string{
+							"tagName": to.StringPtr("value"),
 						},
-						ImageID:  to.StringPtr("<image-id>"),
-						Location: to.StringPtr("<location>"),
+						RunOutputName: to.StringPtr("<run-output-name>"),
+						ImageID:       to.StringPtr("<image-id>"),
+						Location:      to.StringPtr("<location>"),
 					}},
 				Source: &armvirtualmachineimagebuilder.ImageTemplateManagedImageSource{
-					ImageTemplateSource: armvirtualmachineimagebuilder.ImageTemplateSource{
-						Type: to.StringPtr("<type>"),
-					},
+					Type:    to.StringPtr("<type>"),
 					ImageID: to.StringPtr("<image-id>"),
 				},
 				VMProfile: &armvirtualmachineimagebuilder.ImageTemplateVMProfile{
@@ -83,6 +75,6 @@ func ExampleVirtualMachineImageTemplatesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ImageTemplate.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.VirtualMachineImageTemplatesClientCreateOrUpdateResult)
 }
 ```

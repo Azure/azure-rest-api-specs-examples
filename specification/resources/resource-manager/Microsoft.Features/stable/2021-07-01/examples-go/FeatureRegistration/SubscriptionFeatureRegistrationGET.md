@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmfeatures%2Fv0.1.1/sdk/resourcemanager/resources/armfeatures/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmfeatures%2Fv0.2.1/sdk/resourcemanager/resources/armfeatures/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armfeatures_test
@@ -26,6 +26,6 @@ func ExampleSubscriptionFeatureRegistrationsClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SubscriptionFeatureRegistration.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SubscriptionFeatureRegistrationsClientGetResult)
 }
 ```

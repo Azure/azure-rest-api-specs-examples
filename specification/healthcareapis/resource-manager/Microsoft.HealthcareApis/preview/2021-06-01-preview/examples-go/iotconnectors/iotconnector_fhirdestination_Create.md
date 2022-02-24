@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.1.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.2.1/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -28,9 +28,7 @@ func ExampleIotConnectorFhirDestinationClient_BeginCreateOrUpdate() {
 		"<iot-connector-name>",
 		"<fhir-destination-name>",
 		armhealthcareapis.IotFhirDestination{
-			LocationBasedResource: armhealthcareapis.LocationBasedResource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.StringPtr("<location>"),
 			Properties: &armhealthcareapis.IotFhirDestinationProperties{
 				FhirMapping: &armhealthcareapis.IotMappingProperties{
 					Content: map[string]interface{}{
@@ -44,10 +42,10 @@ func ExampleIotConnectorFhirDestinationClient_BeginCreateOrUpdate() {
 											"system":  "http://loinc.org",
 										},
 									},
-									"periodInterval": 60,
+									"periodInterval": float64(60),
 									"typeName":       "heartrate",
 									"value": map[string]interface{}{
-										"defaultPeriod": 5000,
+										"defaultPeriod": float64(5000),
 										"unit":          "count/min",
 										"valueName":     "hr",
 										"valueType":     "SampledData",
@@ -60,7 +58,7 @@ func ExampleIotConnectorFhirDestinationClient_BeginCreateOrUpdate() {
 					},
 				},
 				FhirServiceResourceID:          to.StringPtr("<fhir-service-resource-id>"),
-				ResourceIdentityResolutionType: armhealthcareapis.IotIdentityResolutionTypeCreate.ToPtr(),
+				ResourceIdentityResolutionType: armhealthcareapis.IotIdentityResolutionType("Create").ToPtr(),
 			},
 		},
 		nil)
@@ -71,6 +69,6 @@ func ExampleIotConnectorFhirDestinationClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("IotFhirDestination.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.IotConnectorFhirDestinationClientCreateOrUpdateResult)
 }
 ```

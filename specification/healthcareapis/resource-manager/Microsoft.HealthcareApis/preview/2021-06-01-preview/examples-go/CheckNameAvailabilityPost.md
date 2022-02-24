@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.1.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.2.1/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -20,7 +20,7 @@ func ExampleServicesClient_CheckNameAvailability() {
 	}
 	ctx := context.Background()
 	client := armhealthcareapis.NewServicesClient("<subscription-id>", cred, nil)
-	_, err = client.CheckNameAvailability(ctx,
+	res, err := client.CheckNameAvailability(ctx,
 		armhealthcareapis.CheckNameAvailabilityParameters{
 			Name: to.StringPtr("<name>"),
 			Type: to.StringPtr("<type>"),
@@ -29,5 +29,6 @@ func ExampleServicesClient_CheckNameAvailability() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.ServicesClientCheckNameAvailabilityResult)
 }
 ```

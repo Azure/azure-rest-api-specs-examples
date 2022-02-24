@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.1.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.2.1/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -27,24 +27,16 @@ func ExampleFhirServicesClient_BeginCreateOrUpdate() {
 		"<workspace-name>",
 		"<fhir-service-name>",
 		armhealthcareapis.FhirService{
-			ServiceManagedIdentity: armhealthcareapis.ServiceManagedIdentity{
-				Identity: &armhealthcareapis.ServiceManagedIdentityIdentity{
-					Type: armhealthcareapis.ManagedServiceIdentityTypeSystemAssigned.ToPtr(),
-				},
+			Identity: &armhealthcareapis.ServiceManagedIdentityIdentity{
+				Type: armhealthcareapis.ManagedServiceIdentityType("SystemAssigned").ToPtr(),
 			},
-			TaggedResource: armhealthcareapis.TaggedResource{
-				LocationBasedResource: armhealthcareapis.LocationBasedResource{
-					Location: to.StringPtr("<location>"),
-				},
-				ResourceTags: armhealthcareapis.ResourceTags{
-					Tags: map[string]*string{
-						"additionalProp1": to.StringPtr("string"),
-						"additionalProp2": to.StringPtr("string"),
-						"additionalProp3": to.StringPtr("string"),
-					},
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"additionalProp1": to.StringPtr("string"),
+				"additionalProp2": to.StringPtr("string"),
+				"additionalProp3": to.StringPtr("string"),
 			},
-			Kind: armhealthcareapis.FhirServiceKindFhirR4.ToPtr(),
+			Kind: armhealthcareapis.FhirServiceKind("fhir-R4").ToPtr(),
 			Properties: &armhealthcareapis.FhirServiceProperties{
 				AccessPolicies: []*armhealthcareapis.FhirServiceAccessPolicyEntry{
 					{
@@ -90,6 +82,6 @@ func ExampleFhirServicesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("FhirService.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.FhirServicesClientCreateOrUpdateResult)
 }
 ```

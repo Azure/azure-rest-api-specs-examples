@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.1.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.2.1/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -26,14 +26,12 @@ func ExampleServicesClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<resource-name>",
 		armhealthcareapis.ServicesDescription{
-			ServicesResource: armhealthcareapis.ServicesResource{
-				Identity: &armhealthcareapis.ServicesResourceIdentity{
-					Type: armhealthcareapis.ManagedServiceIdentityTypeSystemAssigned.ToPtr(),
-				},
-				Kind:     armhealthcareapis.KindFhirR4.ToPtr(),
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
+			Identity: &armhealthcareapis.ServicesResourceIdentity{
+				Type: armhealthcareapis.ManagedServiceIdentityType("SystemAssigned").ToPtr(),
 			},
+			Kind:     armhealthcareapis.KindFhirR4.ToPtr(),
+			Location: to.StringPtr("<location>"),
+			Tags:     map[string]*string{},
 			Properties: &armhealthcareapis.ServicesProperties{
 				AccessPolicies: []*armhealthcareapis.ServiceAccessPolicyEntry{
 					{
@@ -70,7 +68,7 @@ func ExampleServicesClient_BeginCreateOrUpdate() {
 					StorageAccountName: to.StringPtr("<storage-account-name>"),
 				},
 				PrivateEndpointConnections: []*armhealthcareapis.PrivateEndpointConnection{},
-				PublicNetworkAccess:        armhealthcareapis.PublicNetworkAccessDisabled.ToPtr(),
+				PublicNetworkAccess:        armhealthcareapis.PublicNetworkAccess("Disabled").ToPtr(),
 			},
 		},
 		nil)
@@ -81,6 +79,6 @@ func ExampleServicesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ServicesDescription.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ServicesClientCreateOrUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.1.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.2.1/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -27,22 +27,14 @@ func ExampleIotConnectorsClient_BeginCreateOrUpdate() {
 		"<workspace-name>",
 		"<iot-connector-name>",
 		armhealthcareapis.IotConnector{
-			ServiceManagedIdentity: armhealthcareapis.ServiceManagedIdentity{
-				Identity: &armhealthcareapis.ServiceManagedIdentityIdentity{
-					Type: armhealthcareapis.ManagedServiceIdentityTypeSystemAssigned.ToPtr(),
-				},
+			Identity: &armhealthcareapis.ServiceManagedIdentityIdentity{
+				Type: armhealthcareapis.ManagedServiceIdentityType("SystemAssigned").ToPtr(),
 			},
-			TaggedResource: armhealthcareapis.TaggedResource{
-				LocationBasedResource: armhealthcareapis.LocationBasedResource{
-					Location: to.StringPtr("<location>"),
-				},
-				ResourceTags: armhealthcareapis.ResourceTags{
-					Tags: map[string]*string{
-						"additionalProp1": to.StringPtr("string"),
-						"additionalProp2": to.StringPtr("string"),
-						"additionalProp3": to.StringPtr("string"),
-					},
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"additionalProp1": to.StringPtr("string"),
+				"additionalProp2": to.StringPtr("string"),
+				"additionalProp3": to.StringPtr("string"),
 			},
 			Properties: &armhealthcareapis.IotConnectorProperties{
 				DeviceMapping: &armhealthcareapis.IotMappingProperties{
@@ -83,6 +75,6 @@ func ExampleIotConnectorsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("IotConnector.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.IotConnectorsClientCreateOrUpdateResult)
 }
 ```

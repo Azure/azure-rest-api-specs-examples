@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdomainservices%2Farmdomainservices%2Fv0.1.0/sdk/resourcemanager/domainservices/armdomainservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdomainservices%2Farmdomainservices%2Fv0.2.1/sdk/resourcemanager/domainservices/armdomainservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdomainservices_test
@@ -15,13 +15,13 @@ import (
 )
 
 // x-ms-original-file: specification/domainservices/resource-manager/Microsoft.AAD/stable/2021-05-01/examples/CreateDomainService.json
-func ExampleDomainServicesClient_BeginCreateOrUpdate() {
+func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdomainservices.NewDomainServicesClient("<subscription-id>", cred, nil)
+	client := armdomainservices.NewClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<domain-service-name>",
@@ -29,14 +29,14 @@ func ExampleDomainServicesClient_BeginCreateOrUpdate() {
 			Properties: &armdomainservices.DomainServiceProperties{
 				DomainName: to.StringPtr("<domain-name>"),
 				DomainSecuritySettings: &armdomainservices.DomainSecuritySettings{
-					NtlmV1:            armdomainservices.NtlmV1Enabled.ToPtr(),
-					SyncNtlmPasswords: armdomainservices.SyncNtlmPasswordsEnabled.ToPtr(),
-					TLSV1:             armdomainservices.TLSV1Disabled.ToPtr(),
+					NtlmV1:            armdomainservices.NtlmV1("Enabled").ToPtr(),
+					SyncNtlmPasswords: armdomainservices.SyncNtlmPasswords("Enabled").ToPtr(),
+					TLSV1:             armdomainservices.TLSV1("Disabled").ToPtr(),
 				},
-				FilteredSync: armdomainservices.FilteredSyncEnabled.ToPtr(),
+				FilteredSync: armdomainservices.FilteredSync("Enabled").ToPtr(),
 				LdapsSettings: &armdomainservices.LdapsSettings{
-					ExternalAccess:         armdomainservices.ExternalAccessEnabled.ToPtr(),
-					Ldaps:                  armdomainservices.LdapsEnabled.ToPtr(),
+					ExternalAccess:         armdomainservices.ExternalAccess("Enabled").ToPtr(),
+					Ldaps:                  armdomainservices.Ldaps("Enabled").ToPtr(),
 					PfxCertificate:         to.StringPtr("<pfx-certificate>"),
 					PfxCertificatePassword: to.StringPtr("<pfx-certificate-password>"),
 				},
@@ -44,8 +44,8 @@ func ExampleDomainServicesClient_BeginCreateOrUpdate() {
 					AdditionalRecipients: []*string{
 						to.StringPtr("jicha@microsoft.com"),
 						to.StringPtr("caalmont@microsoft.com")},
-					NotifyDcAdmins:     armdomainservices.NotifyDcAdminsEnabled.ToPtr(),
-					NotifyGlobalAdmins: armdomainservices.NotifyGlobalAdminsEnabled.ToPtr(),
+					NotifyDcAdmins:     armdomainservices.NotifyDcAdmins("Enabled").ToPtr(),
+					NotifyGlobalAdmins: armdomainservices.NotifyGlobalAdmins("Enabled").ToPtr(),
 				},
 				ReplicaSets: []*armdomainservices.ReplicaSet{
 					{
@@ -62,6 +62,6 @@ func ExampleDomainServicesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DomainService.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ClientCreateOrUpdateResult)
 }
 ```

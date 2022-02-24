@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.1/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.3.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -20,8 +20,8 @@ func ExampleClusterExtensionTypesClient_List() {
 	ctx := context.Background()
 	client := armkubernetesconfiguration.NewClusterExtensionTypesClient("<subscription-id>", cred, nil)
 	pager := client.List("<resource-group-name>",
-		armkubernetesconfiguration.Enum0("Microsoft.ContainerService"),
-		armkubernetesconfiguration.Enum1("managedClusters"),
+		armkubernetesconfiguration.ExtensionsClusterRp("Microsoft.ContainerService"),
+		armkubernetesconfiguration.ExtensionsClusterResourceName("managedClusters"),
 		"<cluster-name>",
 		nil)
 	for {

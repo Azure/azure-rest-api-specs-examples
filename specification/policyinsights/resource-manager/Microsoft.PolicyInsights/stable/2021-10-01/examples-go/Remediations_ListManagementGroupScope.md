@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.1.1/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.2.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -19,8 +19,7 @@ func ExampleRemediationsClient_ListForManagementGroup() {
 	}
 	ctx := context.Background()
 	client := armpolicyinsights.NewRemediationsClient("<subscription-id>", cred, nil)
-	pager := client.ListForManagementGroup(armpolicyinsights.Enum0("Microsoft.Management"),
-		"<management-group-id>",
+	pager := client.ListForManagementGroup("<management-group-id>",
 		&armpolicyinsights.QueryOptions{Top: nil,
 			Filter:    nil,
 			OrderBy:   nil,

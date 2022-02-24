@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceprovisioningservices%2Farmdeviceprovisioningservices%2Fv0.1.0/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceprovisioningservices%2Farmdeviceprovisioningservices%2Fv0.2.1/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeviceprovisioningservices_test
@@ -19,7 +19,7 @@ func ExampleIotDpsResourceClient_GetOperationResult() {
 	}
 	ctx := context.Background()
 	client := armdeviceprovisioningservices.NewIotDpsResourceClient("<subscription-id>", cred, nil)
-	_, err = client.GetOperationResult(ctx,
+	res, err := client.GetOperationResult(ctx,
 		"<operation-id>",
 		"<resource-group-name>",
 		"<provisioning-service-name>",
@@ -28,5 +28,6 @@ func ExampleIotDpsResourceClient_GetOperationResult() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.IotDpsResourceClientGetOperationResultResult)
 }
 ```

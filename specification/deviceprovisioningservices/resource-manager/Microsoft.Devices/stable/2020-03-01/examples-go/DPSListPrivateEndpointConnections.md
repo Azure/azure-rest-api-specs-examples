@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceprovisioningservices%2Farmdeviceprovisioningservices%2Fv0.1.0/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceprovisioningservices%2Farmdeviceprovisioningservices%2Fv0.2.1/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeviceprovisioningservices_test
@@ -19,12 +19,13 @@ func ExampleIotDpsResourceClient_ListPrivateEndpointConnections() {
 	}
 	ctx := context.Background()
 	client := armdeviceprovisioningservices.NewIotDpsResourceClient("<subscription-id>", cred, nil)
-	_, err = client.ListPrivateEndpointConnections(ctx,
+	res, err := client.ListPrivateEndpointConnections(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Response result: %#v\n", res.IotDpsResourceClientListPrivateEndpointConnectionsResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.1.0/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.2.1/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeviceupdate_test
@@ -30,7 +30,7 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 			Properties: &armdeviceupdate.PrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armdeviceupdate.PrivateLinkServiceConnectionState{
 					Description: to.StringPtr("<description>"),
-					Status:      armdeviceupdate.PrivateEndpointServiceConnectionStatusApproved.ToPtr(),
+					Status:      armdeviceupdate.PrivateEndpointServiceConnectionStatus("Approved").ToPtr(),
 				},
 			},
 		},
@@ -38,10 +38,9 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("PrivateEndpointConnection.ID: %s\n", *res.ID)
 }
 ```

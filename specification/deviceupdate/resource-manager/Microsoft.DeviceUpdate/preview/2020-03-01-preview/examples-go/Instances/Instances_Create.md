@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.1.0/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.2.1/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeviceupdate_test
@@ -9,6 +9,7 @@ import (
 
 	"time"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceupdate/armdeviceupdate"
 )
@@ -25,15 +26,30 @@ func ExampleInstancesClient_BeginCreate() {
 		"<resource-group-name>",
 		"<account-name>",
 		"<instance-name>",
-		armdeviceupdate.Instance{},
+		armdeviceupdate.Instance{
+			Location: to.StringPtr("<location>"),
+			Properties: &armdeviceupdate.InstanceProperties{
+				DiagnosticStorageProperties: &armdeviceupdate.DiagnosticStorageProperties{
+					AuthenticationType: armdeviceupdate.AuthenticationType("KeyBased").ToPtr(),
+					ConnectionString:   to.StringPtr("<connection-string>"),
+					ResourceID:         to.StringPtr("<resource-id>"),
+				},
+				EnableDiagnostics: to.BoolPtr(false),
+				IotHubs: []*armdeviceupdate.IotHubSettings{
+					{
+						EventHubConnectionString: to.StringPtr("<event-hub-connection-string>"),
+						IoTHubConnectionString:   to.StringPtr("<io-thub-connection-string>"),
+						ResourceID:               to.StringPtr("<resource-id>"),
+					}},
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Instance.ID: %s\n", *res.ID)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhanaonazure%2Farmhanaonazure%2Fv0.1.0/sdk/resourcemanager/hanaonazure/armhanaonazure/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhanaonazure%2Farmhanaonazure%2Fv0.2.1/sdk/resourcemanager/hanaonazure/armhanaonazure/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhanaonazure_test
@@ -26,11 +26,9 @@ func ExampleSapMonitorsClient_BeginCreate() {
 		"<resource-group-name>",
 		"<sap-monitor-name>",
 		armhanaonazure.SapMonitor{
-			TrackedResource: armhanaonazure.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"key": to.StringPtr("value"),
-				},
+			Location: to.StringPtr("<location>"),
+			Tags: map[string]*string{
+				"key": to.StringPtr("value"),
 			},
 			Properties: &armhanaonazure.SapMonitorProperties{
 				EnableCustomerAnalytics:        to.BoolPtr(true),
@@ -48,6 +46,6 @@ func ExampleSapMonitorsClient_BeginCreate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("SapMonitor.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.SapMonitorsClientCreateResult)
 }
 ```

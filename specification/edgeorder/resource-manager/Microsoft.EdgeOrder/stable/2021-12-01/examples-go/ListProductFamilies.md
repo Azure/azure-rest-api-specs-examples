@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.1.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.2.1/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorder_test
@@ -13,29 +13,36 @@ import (
 )
 
 // x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListProductFamilies.json
-func ExampleEdgeOrderManagementClient_ListProductFamilies() {
+func ExampleManagementClient_ListProductFamilies() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armedgeorder.NewEdgeOrderManagementClient("<subscription-id>", cred, nil)
+	client := armedgeorder.NewManagementClient("<subscription-id>", cred, nil)
 	pager := client.ListProductFamilies(armedgeorder.ProductFamiliesRequest{
 		FilterableProperties: map[string][]*armedgeorder.FilterableProperty{
 			"azurestackedge": {
 				{
-					Type: armedgeorder.SupportedFilterTypesShipToCountries.ToPtr(),
+					Type: armedgeorder.SupportedFilterTypes("ShipToCountries").ToPtr(),
 					SupportedValues: []*string{
 						to.StringPtr("US")},
 				}},
 		},
 	},
-		&armedgeorder.EdgeOrderManagementClientListProductFamiliesOptions{Expand: nil,
+		&armedgeorder.ManagementClientListProductFamiliesOptions{Expand: nil,
 			SkipToken: nil,
 		})
-	for pager.NextPage(ctx) {
+	for {
+		nextResult := pager.NextPage(ctx)
 		if err := pager.Err(); err != nil {
 			log.Fatalf("failed to advance page: %v", err)
+		}
+		if !nextResult {
+			break
+		}
+		for _, v := range pager.PageResponse().Value {
+			log.Printf("Pager result: %#v\n", v)
 		}
 	}
 }

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.1.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.2.1/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorder_test
@@ -15,13 +15,13 @@ import (
 )
 
 // x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/UpdateAddress.json
-func ExampleEdgeOrderManagementClient_BeginUpdateAddress() {
+func ExampleManagementClient_BeginUpdateAddress() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armedgeorder.NewEdgeOrderManagementClient("<subscription-id>", cred, nil)
+	client := armedgeorder.NewManagementClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginUpdateAddress(ctx,
 		"<address-name>",
 		"<resource-group-name>",
@@ -35,7 +35,7 @@ func ExampleEdgeOrderManagementClient_BeginUpdateAddress() {
 					PhoneExtension: to.StringPtr("<phone-extension>"),
 				},
 				ShippingAddress: &armedgeorder.ShippingAddress{
-					AddressType:     armedgeorder.AddressTypeNone.ToPtr(),
+					AddressType:     armedgeorder.AddressType("None").ToPtr(),
 					City:            to.StringPtr("<city>"),
 					CompanyName:     to.StringPtr("<company-name>"),
 					Country:         to.StringPtr("<country>"),
@@ -52,7 +52,7 @@ func ExampleEdgeOrderManagementClient_BeginUpdateAddress() {
 				"Work":     to.StringPtr("Engineering"),
 			},
 		},
-		&armedgeorder.EdgeOrderManagementClientBeginUpdateAddressOptions{IfMatch: nil})
+		&armedgeorder.ManagementClientBeginUpdateAddressOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -60,6 +60,6 @@ func ExampleEdgeOrderManagementClient_BeginUpdateAddress() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("AddressResource.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ManagementClientUpdateAddressResult)
 }
 ```

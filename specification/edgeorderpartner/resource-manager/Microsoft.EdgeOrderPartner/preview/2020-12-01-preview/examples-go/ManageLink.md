@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorderpartner%2Farmedgeorderpartner%2Fv0.1.0/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorderpartner%2Farmedgeorderpartner%2Fv0.2.1/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorderpartner_test
@@ -13,13 +13,13 @@ import (
 )
 
 // x-ms-original-file: specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/examples/ManageLink.json
-func ExampleEdgeOrderPartnerAPISClient_ManageLink() {
+func ExampleAPISClient_ManageLink() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armedgeorderpartner.NewEdgeOrderPartnerAPISClient("<subscription-id>", cred, nil)
+	client := armedgeorderpartner.NewAPISClient("<subscription-id>", cred, nil)
 	_, err = client.ManageLink(ctx,
 		"<family-identifier>",
 		"<location>",

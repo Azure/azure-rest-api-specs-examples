@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevops%2Farmdevops%2Fv0.1.0/sdk/resourcemanager/devops/armdevops/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevops%2Farmdevops%2Fv0.2.1/sdk/resourcemanager/devops/armdevops/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdevops_test
@@ -26,10 +26,8 @@ func ExamplePipelinesClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<pipeline-name>",
 		armdevops.Pipeline{
-			Resource: armdevops.Resource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+			Location: to.StringPtr("<location>"),
+			Tags:     map[string]*string{},
 			Properties: &armdevops.PipelineProperties{
 				BootstrapConfiguration: &armdevops.BootstrapConfiguration{
 					Template: &armdevops.PipelineTemplate{
@@ -61,6 +59,6 @@ func ExamplePipelinesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Pipeline.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.PipelinesClientCreateOrUpdateResult)
 }
 ```

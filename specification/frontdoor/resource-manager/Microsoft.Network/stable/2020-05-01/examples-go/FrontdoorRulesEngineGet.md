@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.1.0/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.2.1/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armfrontdoor_test
@@ -27,6 +27,6 @@ func ExampleRulesEnginesClient_Get() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("RulesEngine.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.RulesEnginesClientGetResult)
 }
 ```

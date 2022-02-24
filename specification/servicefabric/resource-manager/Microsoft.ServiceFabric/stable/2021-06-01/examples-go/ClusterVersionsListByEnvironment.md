@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv0.3.1/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv0.4.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabric_test
@@ -21,7 +21,7 @@ func ExampleClusterVersionsClient_ListByEnvironment() {
 	client := armservicefabric.NewClusterVersionsClient("<subscription-id>", cred, nil)
 	res, err := client.ListByEnvironment(ctx,
 		"<location>",
-		armservicefabric.Enum14("Windows"),
+		armservicefabric.ClusterVersionsEnvironment("Windows"),
 		nil)
 	if err != nil {
 		log.Fatal(err)

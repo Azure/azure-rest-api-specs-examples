@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.2.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.1.1/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -20,9 +20,10 @@ func ExamplePolicyStatesClient_SummarizeForResourceGroupLevelPolicyAssignment() 
 	ctx := context.Background()
 	client := armpolicyinsights.NewPolicyStatesClient(cred, nil)
 	res, err := client.SummarizeForResourceGroupLevelPolicyAssignment(ctx,
-		armpolicyinsights.PolicyStatesSummaryResourceType("latest"),
+		armpolicyinsights.Enum6("latest"),
 		"<subscription-id>",
 		"<resource-group-name>",
+		armpolicyinsights.Enum4("Microsoft.Authorization"),
 		"<policy-assignment-name>",
 		&armpolicyinsights.QueryOptions{Top: nil,
 			Filter:    nil,

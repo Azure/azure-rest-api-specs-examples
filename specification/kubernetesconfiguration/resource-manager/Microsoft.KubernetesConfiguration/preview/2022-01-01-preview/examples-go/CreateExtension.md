@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.2.1/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.3.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -24,8 +24,8 @@ func ExampleExtensionsClient_BeginCreate() {
 	client := armkubernetesconfiguration.NewExtensionsClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
-		armkubernetesconfiguration.Enum0("Microsoft.Kubernetes"),
-		armkubernetesconfiguration.Enum1("connectedClusters"),
+		armkubernetesconfiguration.ExtensionsClusterRp("Microsoft.Kubernetes"),
+		armkubernetesconfiguration.ExtensionsClusterResourceName("connectedClusters"),
 		"<cluster-name>",
 		"<extension-name>",
 		armkubernetesconfiguration.Extension{

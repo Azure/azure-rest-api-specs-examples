@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.1.0/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceupdate%2Farmdeviceupdate%2Fv0.2.1/sdk/resourcemanager/deviceupdate/armdeviceupdate/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeviceupdate_test
@@ -9,6 +9,7 @@ import (
 
 	"time"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceupdate/armdeviceupdate"
 )
@@ -24,15 +25,17 @@ func ExampleAccountsClient_BeginCreate() {
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
-		armdeviceupdate.Account{},
+		armdeviceupdate.Account{
+			Location:   to.StringPtr("<location>"),
+			Properties: &armdeviceupdate.AccountProperties{},
+		},
 		nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Account.ID: %s\n", *res.ID)
 }
 ```

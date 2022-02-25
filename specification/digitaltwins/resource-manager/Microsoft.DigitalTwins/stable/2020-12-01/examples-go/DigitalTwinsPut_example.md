@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdigitaltwins%2Farmdigitaltwins%2Fv0.1.0/sdk/resourcemanager/digitaltwins/armdigitaltwins/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdigitaltwins%2Farmdigitaltwins%2Fv0.2.1/sdk/resourcemanager/digitaltwins/armdigitaltwins/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdigitaltwins_test
@@ -15,20 +15,18 @@ import (
 )
 
 // x-ms-original-file: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2020-12-01/examples/DigitalTwinsPut_example.json
-func ExampleDigitalTwinsClient_BeginCreateOrUpdate() {
+func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdigitaltwins.NewDigitalTwinsClient("<subscription-id>", cred, nil)
+	client := armdigitaltwins.NewClient("<subscription-id>", cred, nil)
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
-		armdigitaltwins.DigitalTwinsDescription{
-			DigitalTwinsResource: armdigitaltwins.DigitalTwinsResource{
-				Location: to.StringPtr("<location>"),
-			},
+		armdigitaltwins.Description{
+			Location: to.StringPtr("<location>"),
 		},
 		nil)
 	if err != nil {
@@ -38,6 +36,6 @@ func ExampleDigitalTwinsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("DigitalTwinsDescription.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.ClientCreateOrUpdateResult)
 }
 ```

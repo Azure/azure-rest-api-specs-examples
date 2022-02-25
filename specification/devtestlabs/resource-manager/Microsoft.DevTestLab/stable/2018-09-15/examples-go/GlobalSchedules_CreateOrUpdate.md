@@ -1,0 +1,49 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.2.1/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armdevtestlabs_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devtestlabs/armdevtestlabs"
+)
+
+// x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/GlobalSchedules_CreateOrUpdate.json
+func ExampleGlobalSchedulesClient_CreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client := armdevtestlabs.NewGlobalSchedulesClient("<subscription-id>", cred, nil)
+	res, err := client.CreateOrUpdate(ctx,
+		"<resource-group-name>",
+		"<name>",
+		armdevtestlabs.Schedule{
+			Properties: &armdevtestlabs.ScheduleProperties{
+				Status:     armdevtestlabs.EnableStatus("Enabled").ToPtr(),
+				TaskType:   to.StringPtr("<task-type>"),
+				TimeZoneID: to.StringPtr("<time-zone-id>"),
+				WeeklyRecurrence: &armdevtestlabs.WeekDetails{
+					Time: to.StringPtr("<time>"),
+					Weekdays: []*string{
+						to.StringPtr("Monday"),
+						to.StringPtr("Tuesday"),
+						to.StringPtr("Wednesday"),
+						to.StringPtr("Thursday"),
+						to.StringPtr("Friday"),
+						to.StringPtr("Saturday")},
+				},
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("Response result: %#v\n", res.GlobalSchedulesClientCreateOrUpdateResult)
+}
+```

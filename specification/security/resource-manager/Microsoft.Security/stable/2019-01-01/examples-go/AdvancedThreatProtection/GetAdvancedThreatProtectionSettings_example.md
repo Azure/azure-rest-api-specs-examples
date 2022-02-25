@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.3.1/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.4.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -21,7 +21,6 @@ func ExampleAdvancedThreatProtectionClient_Get() {
 	client := armsecurity.NewAdvancedThreatProtectionClient(cred, nil)
 	res, err := client.Get(ctx,
 		"<resource-id>",
-		armsecurity.Enum5("current"),
 		nil)
 	if err != nil {
 		log.Fatal(err)

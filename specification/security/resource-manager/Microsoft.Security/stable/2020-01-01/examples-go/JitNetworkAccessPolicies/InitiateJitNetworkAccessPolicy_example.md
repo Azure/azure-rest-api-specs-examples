@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.3.1/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.4.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -24,7 +24,6 @@ func ExampleJitNetworkAccessPoliciesClient_Initiate() {
 	_, err = client.Initiate(ctx,
 		"<resource-group-name>",
 		"<jit-network-access-policy-name>",
-		armsecurity.Enum56("initiate"),
 		armsecurity.JitNetworkAccessPolicyInitiateRequest{
 			Justification: to.StringPtr("<justification>"),
 			VirtualMachines: []*armsecurity.JitNetworkAccessPolicyInitiateVirtualMachine{

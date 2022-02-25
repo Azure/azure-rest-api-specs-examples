@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceprovisioningservices%2Farmdeviceprovisioningservices%2Fv0.1.0/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeviceprovisioningservices%2Farmdeviceprovisioningservices%2Fv0.2.1/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeviceprovisioningservices_test
@@ -26,13 +26,11 @@ func ExampleIotDpsResourceClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		"<provisioning-service-name>",
 		armdeviceprovisioningservices.ProvisioningServiceDescription{
-			Resource: armdeviceprovisioningservices.Resource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+			Location:   to.StringPtr("<location>"),
+			Tags:       map[string]*string{},
 			Properties: &armdeviceprovisioningservices.IotDpsPropertiesDescription{},
 			SKU: &armdeviceprovisioningservices.IotDpsSKUInfo{
-				Name:     armdeviceprovisioningservices.IotDpsSKUS1.ToPtr(),
+				Name:     armdeviceprovisioningservices.IotDpsSKU("S1").ToPtr(),
 				Capacity: to.Int64Ptr(1),
 			},
 		},
@@ -44,6 +42,6 @@ func ExampleIotDpsResourceClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ProvisioningServiceDescription.ID: %s\n", *res.ID)
+	log.Printf("Response result: %#v\n", res.IotDpsResourceClientCreateOrUpdateResult)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.1.1/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.2.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -21,7 +21,7 @@ func ExamplePolicyStatesClient_SummarizeForResource() {
 	ctx := context.Background()
 	client := armpolicyinsights.NewPolicyStatesClient(cred, nil)
 	res, err := client.SummarizeForResource(ctx,
-		armpolicyinsights.Enum6("latest"),
+		armpolicyinsights.PolicyStatesSummaryResourceType("latest"),
 		"<resource-id>",
 		&armpolicyinsights.QueryOptions{Top: to.Int32Ptr(2),
 			Filter:    nil,

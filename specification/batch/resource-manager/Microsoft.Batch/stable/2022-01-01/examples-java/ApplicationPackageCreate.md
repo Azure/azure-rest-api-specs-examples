@@ -1,0 +1,22 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-batch_1.0.0/sdk/batch/azure-resourcemanager-batch/README.md) on how to add the SDK to your project and authenticate.
+
+```java
+/** Samples for ApplicationPackage Create. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/batch/resource-manager/Microsoft.Batch/stable/2022-01-01/examples/ApplicationPackageCreate.json
+     */
+    /**
+     * Sample code: ApplicationPackageCreate.
+     *
+     * @param manager Entry point to BatchManager.
+     */
+    public static void applicationPackageCreate(com.azure.resourcemanager.batch.BatchManager manager) {
+        manager
+            .applicationPackages()
+            .define("1")
+            .withExistingApplication("default-azurebatch-japaneast", "sampleacct", "app1")
+            .create();
+    }
+}
+```

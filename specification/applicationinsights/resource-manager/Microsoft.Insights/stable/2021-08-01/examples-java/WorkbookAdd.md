@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-applicationinsights_1.0.0-beta.3/sdk/applicationinsights/azure-resourcemanager-applicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-applicationinsights_1.0.0-beta.4/sdk/applicationinsights/azure-resourcemanager-applicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.resourcemanager.applicationinsights.models.Kind;
@@ -18,12 +18,12 @@ public final class Main {
     public static void workbookAdd(com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
         manager
             .workbooks()
-            .define("deadb33f-8bee-4d3b-a059-9be8dac93960")
-            .withRegion("west us")
+            .define("deadb33f-5e0d-4064-8ebb-1a4ed0313eb2")
+            .withRegion("westus")
             .withExistingResourceGroup("my-resource-group")
             .withTags(mapOf("TagSample01", "sample01", "TagSample02", "sample02"))
             .withKind(Kind.SHARED)
-            .withDisplayName("tttt")
+            .withDisplayName("Sample workbook")
             .withSerializedData(
                 "{\"version\":\"Notebook/1.0\",\"items\":[{\"type\":1,\"content\":\"{\"json\":\"## New workbook\\r"
                     + "\\n"
@@ -46,7 +46,8 @@ public final class Main {
                     + " barchart\",\"showQuery\":false,\"size\":1,\"aggregation\":0,\"showAnnotations\":false}\",\"halfWidth\":null,\"conditionalVisibility\":null}],\"isLocked\":false}")
             .withCategory("workbook")
             .withDescription("Sample workbook")
-            .withSourceIdParameter("/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourcegroups/MyGroup")
+            .withSourceIdParameter(
+                "/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourcegroups/my-resource-group")
             .create();
     }
 

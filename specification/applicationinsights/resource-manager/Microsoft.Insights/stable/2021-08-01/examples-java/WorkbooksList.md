@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-applicationinsights_1.0.0-beta.3/sdk/applicationinsights/azure-resourcemanager-applicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-applicationinsights_1.0.0-beta.4/sdk/applicationinsights/azure-resourcemanager-applicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.core.util.Context;
@@ -21,7 +21,7 @@ public final class Main {
                 "my-resource-group",
                 CategoryType.WORKBOOK,
                 null,
-                "/subscriptions/ad2f1a83-caac-4e21-9d2a-9ca3f87105e2/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/MyTestApp-CodeLens1",
+                "/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourceGroups/my-resource-group/providers/Microsoft.Web/sites/MyApp",
                 null,
                 Context.NONE);
     }

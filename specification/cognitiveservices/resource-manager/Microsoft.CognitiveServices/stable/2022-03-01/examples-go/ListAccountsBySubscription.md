@@ -12,13 +12,13 @@ import (
 )
 
 // x-ms-original-file: specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2022-03-01/examples/ListAccountsBySubscription.json
-func ExampleDeletedAccountsClient_List() {
+func ExampleAccountsClient_List() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armcognitiveservices.NewDeletedAccountsClient("<subscription-id>", cred, nil)
+	client := armcognitiveservices.NewAccountsClient("<subscription-id>", cred, nil)
 	pager := client.List(nil)
 	for {
 		nextResult := pager.NextPage(ctx)

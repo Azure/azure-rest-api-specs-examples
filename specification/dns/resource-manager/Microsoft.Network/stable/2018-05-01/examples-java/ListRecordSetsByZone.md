@@ -1,9 +1,9 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.13.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.14.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.core.util.Context;
 
-/** Samples for RecordSets ListAllByDnsZone. */
+/** Samples for RecordSets ListByDnsZone. */
 public final class Main {
     /*
      * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/ListRecordSetsByZone.json
@@ -19,7 +19,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .listAllByDnsZone("rg1", "zone1", null, null, Context.NONE);
+            .listByDnsZone("rg1", "zone1", null, null, Context.NONE);
     }
 }
 ```

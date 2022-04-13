@@ -1,9 +1,9 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.13.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.14.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.core.util.Context;
 
-/** Samples for ResourceHealthMetadata ListBySite. */
+/** Samples for ResourceHealthMetadata ListBySiteSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/ListResourceHealthMetadataBySite.json
@@ -19,7 +19,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getResourceHealthMetadatas()
-            .listBySite("Default-Web-NorthCentralUS", "newsiteinnewASE-NCUS", Context.NONE);
+            .listBySiteSlot("Default-Web-NorthCentralUS", "newsiteinnewASE-NCUS", "Production", Context.NONE);
     }
 }
 ```

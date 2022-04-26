@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,50 +14,55 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/P2SVpnGatewayPut.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/P2SVpnGatewayPut.json
 func ExampleP2SVPNGatewaysClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewP2SVPNGatewaysClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewP2SVPNGatewaysClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<gateway-name>",
 		armnetwork.P2SVPNGateway{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"key1": to.StringPtr("value1"),
+				"key1": to.Ptr("value1"),
 			},
 			Properties: &armnetwork.P2SVPNGatewayProperties{
 				CustomDNSServers: []*string{
-					to.StringPtr("1.1.1.1"),
-					to.StringPtr("2.2.2.2")},
-				IsRoutingPreferenceInternet: to.BoolPtr(false),
+					to.Ptr("1.1.1.1"),
+					to.Ptr("2.2.2.2")},
+				IsRoutingPreferenceInternet: to.Ptr(false),
 				P2SConnectionConfigurations: []*armnetwork.P2SConnectionConfiguration{
 					{
-						ID:   to.StringPtr("<id>"),
-						Name: to.StringPtr("<name>"),
+						ID:   to.Ptr("<id>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.P2SConnectionConfigurationProperties{
 							RoutingConfiguration: &armnetwork.RoutingConfiguration{
 								AssociatedRouteTable: &armnetwork.SubResource{
-									ID: to.StringPtr("<id>"),
+									ID: to.Ptr("<id>"),
 								},
 								PropagatedRouteTables: &armnetwork.PropagatedRouteTable{
 									IDs: []*armnetwork.SubResource{
 										{
-											ID: to.StringPtr("<id>"),
+											ID: to.Ptr("<id>"),
 										},
 										{
-											ID: to.StringPtr("<id>"),
+											ID: to.Ptr("<id>"),
 										},
 										{
-											ID: to.StringPtr("<id>"),
+											ID: to.Ptr("<id>"),
 										}},
 									Labels: []*string{
-										to.StringPtr("label1"),
-										to.StringPtr("label2")},
+										to.Ptr("label1"),
+										to.Ptr("label2")},
 								},
 								VnetRoutes: &armnetwork.VnetRoute{
 									StaticRoutes: []*armnetwork.StaticRoute{},
@@ -65,27 +70,30 @@ func ExampleP2SVPNGatewaysClient_BeginCreateOrUpdate() {
 							},
 							VPNClientAddressPool: &armnetwork.AddressSpace{
 								AddressPrefixes: []*string{
-									to.StringPtr("101.3.0.0/16")},
+									to.Ptr("101.3.0.0/16")},
 							},
 						},
 					}},
 				VirtualHub: &armnetwork.SubResource{
-					ID: to.StringPtr("<id>"),
+					ID: to.Ptr("<id>"),
 				},
-				VPNGatewayScaleUnit: to.Int32Ptr(1),
+				VPNGatewayScaleUnit: to.Ptr[int32](1),
 				VPNServerConfiguration: &armnetwork.SubResource{
-					ID: to.StringPtr("<id>"),
+					ID: to.Ptr("<id>"),
 				},
 			},
 		},
-		nil)
+		&armnetwork.P2SVPNGatewaysClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.P2SVPNGatewaysClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

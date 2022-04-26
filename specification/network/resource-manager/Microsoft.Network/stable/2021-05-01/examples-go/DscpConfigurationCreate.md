@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,85 +14,93 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/DscpConfigurationCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/DscpConfigurationCreate.json
 func ExampleDscpConfigurationClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewDscpConfigurationClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewDscpConfigurationClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<dscp-configuration-name>",
 		armnetwork.DscpConfiguration{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armnetwork.DscpConfigurationPropertiesFormat{
 				QosDefinitionCollection: []*armnetwork.QosDefinition{
 					{
 						DestinationIPRanges: []*armnetwork.QosIPRange{
 							{
-								EndIP:   to.StringPtr("<end-ip>"),
-								StartIP: to.StringPtr("<start-ip>"),
+								EndIP:   to.Ptr("<end-ip>"),
+								StartIP: to.Ptr("<start-ip>"),
 							}},
 						DestinationPortRanges: []*armnetwork.QosPortRange{
 							{
-								End:   to.Int32Ptr(15),
-								Start: to.Int32Ptr(15),
+								End:   to.Ptr[int32](15),
+								Start: to.Ptr[int32](15),
 							}},
 						Markings: []*int32{
-							to.Int32Ptr(1)},
+							to.Ptr[int32](1)},
 						SourceIPRanges: []*armnetwork.QosIPRange{
 							{
-								EndIP:   to.StringPtr("<end-ip>"),
-								StartIP: to.StringPtr("<start-ip>"),
+								EndIP:   to.Ptr("<end-ip>"),
+								StartIP: to.Ptr("<start-ip>"),
 							}},
 						SourcePortRanges: []*armnetwork.QosPortRange{
 							{
-								End:   to.Int32Ptr(11),
-								Start: to.Int32Ptr(10),
+								End:   to.Ptr[int32](11),
+								Start: to.Ptr[int32](10),
 							},
 							{
-								End:   to.Int32Ptr(21),
-								Start: to.Int32Ptr(20),
+								End:   to.Ptr[int32](21),
+								Start: to.Ptr[int32](20),
 							}},
-						Protocol: armnetwork.ProtocolType("Tcp").ToPtr(),
+						Protocol: to.Ptr(armnetwork.ProtocolTypeTCP),
 					},
 					{
 						DestinationIPRanges: []*armnetwork.QosIPRange{
 							{
-								EndIP:   to.StringPtr("<end-ip>"),
-								StartIP: to.StringPtr("<start-ip>"),
+								EndIP:   to.Ptr("<end-ip>"),
+								StartIP: to.Ptr("<start-ip>"),
 							}},
 						DestinationPortRanges: []*armnetwork.QosPortRange{
 							{
-								End:   to.Int32Ptr(52),
-								Start: to.Int32Ptr(51),
+								End:   to.Ptr[int32](52),
+								Start: to.Ptr[int32](51),
 							}},
 						Markings: []*int32{
-							to.Int32Ptr(2)},
+							to.Ptr[int32](2)},
 						SourceIPRanges: []*armnetwork.QosIPRange{
 							{
-								EndIP:   to.StringPtr("<end-ip>"),
-								StartIP: to.StringPtr("<start-ip>"),
+								EndIP:   to.Ptr("<end-ip>"),
+								StartIP: to.Ptr("<start-ip>"),
 							}},
 						SourcePortRanges: []*armnetwork.QosPortRange{
 							{
-								End:   to.Int32Ptr(12),
-								Start: to.Int32Ptr(11),
+								End:   to.Ptr[int32](12),
+								Start: to.Ptr[int32](11),
 							}},
-						Protocol: armnetwork.ProtocolType("Udp").ToPtr(),
+						Protocol: to.Ptr(armnetwork.ProtocolTypeUDP),
 					}},
 			},
 		},
-		nil)
+		&armnetwork.DscpConfigurationClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.DscpConfigurationClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

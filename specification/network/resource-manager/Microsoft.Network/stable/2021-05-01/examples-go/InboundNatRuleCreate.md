@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,39 +14,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/InboundNatRuleCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/InboundNatRuleCreate.json
 func ExampleInboundNatRulesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewInboundNatRulesClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewInboundNatRulesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<load-balancer-name>",
 		"<inbound-nat-rule-name>",
 		armnetwork.InboundNatRule{
 			Properties: &armnetwork.InboundNatRulePropertiesFormat{
-				BackendPort:      to.Int32Ptr(3389),
-				EnableFloatingIP: to.BoolPtr(false),
-				EnableTCPReset:   to.BoolPtr(false),
+				BackendPort:      to.Ptr[int32](3389),
+				EnableFloatingIP: to.Ptr(false),
+				EnableTCPReset:   to.Ptr(false),
 				FrontendIPConfiguration: &armnetwork.SubResource{
-					ID: to.StringPtr("<id>"),
+					ID: to.Ptr("<id>"),
 				},
-				FrontendPort:         to.Int32Ptr(3390),
-				IdleTimeoutInMinutes: to.Int32Ptr(4),
-				Protocol:             armnetwork.TransportProtocol("Tcp").ToPtr(),
+				FrontendPort:         to.Ptr[int32](3390),
+				IdleTimeoutInMinutes: to.Ptr[int32](4),
+				Protocol:             to.Ptr(armnetwork.TransportProtocolTCP),
 			},
 		},
-		nil)
+		&armnetwork.InboundNatRulesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.InboundNatRulesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

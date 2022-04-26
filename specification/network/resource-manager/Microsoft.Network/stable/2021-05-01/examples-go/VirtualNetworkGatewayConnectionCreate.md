@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,94 +14,102 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/VirtualNetworkGatewayConnectionCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/VirtualNetworkGatewayConnectionCreate.json
 func ExampleVirtualNetworkGatewayConnectionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewVirtualNetworkGatewayConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewVirtualNetworkGatewayConnectionsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<virtual-network-gateway-connection-name>",
 		armnetwork.VirtualNetworkGatewayConnection{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armnetwork.VirtualNetworkGatewayConnectionPropertiesFormat{
-				ConnectionMode:     armnetwork.VirtualNetworkGatewayConnectionMode("Default").ToPtr(),
-				ConnectionProtocol: armnetwork.VirtualNetworkGatewayConnectionProtocol("IKEv2").ToPtr(),
-				ConnectionType:     armnetwork.VirtualNetworkGatewayConnectionType("IPsec").ToPtr(),
-				DpdTimeoutSeconds:  to.Int32Ptr(30),
+				ConnectionMode:     to.Ptr(armnetwork.VirtualNetworkGatewayConnectionModeDefault),
+				ConnectionProtocol: to.Ptr(armnetwork.VirtualNetworkGatewayConnectionProtocolIKEv2),
+				ConnectionType:     to.Ptr(armnetwork.VirtualNetworkGatewayConnectionTypeIPsec),
+				DpdTimeoutSeconds:  to.Ptr[int32](30),
 				EgressNatRules: []*armnetwork.SubResource{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 					}},
-				EnableBgp: to.BoolPtr(false),
+				EnableBgp: to.Ptr(false),
 				IngressNatRules: []*armnetwork.SubResource{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 					}},
 				IPSecPolicies: []*armnetwork.IPSecPolicy{},
 				LocalNetworkGateway2: &armnetwork.LocalNetworkGateway{
-					ID:       to.StringPtr("<id>"),
-					Location: to.StringPtr("<location>"),
+					ID:       to.Ptr("<id>"),
+					Location: to.Ptr("<location>"),
 					Tags:     map[string]*string{},
 					Properties: &armnetwork.LocalNetworkGatewayPropertiesFormat{
-						GatewayIPAddress: to.StringPtr("<gateway-ipaddress>"),
+						GatewayIPAddress: to.Ptr("<gateway-ipaddress>"),
 						LocalNetworkAddressSpace: &armnetwork.AddressSpace{
 							AddressPrefixes: []*string{
-								to.StringPtr("10.1.0.0/16")},
+								to.Ptr("10.1.0.0/16")},
 						},
 					},
 				},
-				RoutingWeight:                  to.Int32Ptr(0),
-				SharedKey:                      to.StringPtr("<shared-key>"),
+				RoutingWeight:                  to.Ptr[int32](0),
+				SharedKey:                      to.Ptr("<shared-key>"),
 				TrafficSelectorPolicies:        []*armnetwork.TrafficSelectorPolicy{},
-				UsePolicyBasedTrafficSelectors: to.BoolPtr(false),
+				UsePolicyBasedTrafficSelectors: to.Ptr(false),
 				VirtualNetworkGateway1: &armnetwork.VirtualNetworkGateway{
-					ID:       to.StringPtr("<id>"),
-					Location: to.StringPtr("<location>"),
+					ID:       to.Ptr("<id>"),
+					Location: to.Ptr("<location>"),
 					Tags:     map[string]*string{},
 					Properties: &armnetwork.VirtualNetworkGatewayPropertiesFormat{
-						Active: to.BoolPtr(false),
+						Active: to.Ptr(false),
 						BgpSettings: &armnetwork.BgpSettings{
-							Asn:               to.Int64Ptr(65514),
-							BgpPeeringAddress: to.StringPtr("<bgp-peering-address>"),
-							PeerWeight:        to.Int32Ptr(0),
+							Asn:               to.Ptr[int64](65514),
+							BgpPeeringAddress: to.Ptr("<bgp-peering-address>"),
+							PeerWeight:        to.Ptr[int32](0),
 						},
-						EnableBgp:   to.BoolPtr(false),
-						GatewayType: armnetwork.VirtualNetworkGatewayType("Vpn").ToPtr(),
+						EnableBgp:   to.Ptr(false),
+						GatewayType: to.Ptr(armnetwork.VirtualNetworkGatewayTypeVPN),
 						IPConfigurations: []*armnetwork.VirtualNetworkGatewayIPConfiguration{
 							{
-								ID:   to.StringPtr("<id>"),
-								Name: to.StringPtr("<name>"),
+								ID:   to.Ptr("<id>"),
+								Name: to.Ptr("<name>"),
 								Properties: &armnetwork.VirtualNetworkGatewayIPConfigurationPropertiesFormat{
-									PrivateIPAllocationMethod: armnetwork.IPAllocationMethod("Dynamic").ToPtr(),
+									PrivateIPAllocationMethod: to.Ptr(armnetwork.IPAllocationMethodDynamic),
 									PublicIPAddress: &armnetwork.SubResource{
-										ID: to.StringPtr("<id>"),
+										ID: to.Ptr("<id>"),
 									},
 									Subnet: &armnetwork.SubResource{
-										ID: to.StringPtr("<id>"),
+										ID: to.Ptr("<id>"),
 									},
 								},
 							}},
 						SKU: &armnetwork.VirtualNetworkGatewaySKU{
-							Name: armnetwork.VirtualNetworkGatewaySKUName("VpnGw1").ToPtr(),
-							Tier: armnetwork.VirtualNetworkGatewaySKUTier("VpnGw1").ToPtr(),
+							Name: to.Ptr(armnetwork.VirtualNetworkGatewaySKUNameVPNGw1),
+							Tier: to.Ptr(armnetwork.VirtualNetworkGatewaySKUTierVPNGw1),
 						},
-						VPNType: armnetwork.VPNType("RouteBased").ToPtr(),
+						VPNType: to.Ptr(armnetwork.VPNTypeRouteBased),
 					},
 				},
 			},
 		},
-		nil)
+		&armnetwork.VirtualNetworkGatewayConnectionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VirtualNetworkGatewayConnectionsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

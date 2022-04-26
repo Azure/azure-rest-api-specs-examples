@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,93 +14,101 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/LoadBalancerCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/LoadBalancerCreate.json
 func ExampleLoadBalancersClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewLoadBalancersClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewLoadBalancersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<load-balancer-name>",
 		armnetwork.LoadBalancer{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armnetwork.LoadBalancerPropertiesFormat{
 				BackendAddressPools: []*armnetwork.BackendAddressPool{
 					{
-						Name:       to.StringPtr("<name>"),
+						Name:       to.Ptr("<name>"),
 						Properties: &armnetwork.BackendAddressPoolPropertiesFormat{},
 					}},
 				FrontendIPConfigurations: []*armnetwork.FrontendIPConfiguration{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.FrontendIPConfigurationPropertiesFormat{
 							Subnet: &armnetwork.Subnet{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
 						},
 					}},
 				InboundNatPools: []*armnetwork.InboundNatPool{},
 				InboundNatRules: []*armnetwork.InboundNatRule{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.InboundNatRulePropertiesFormat{
-							BackendPort:      to.Int32Ptr(3389),
-							EnableFloatingIP: to.BoolPtr(true),
-							EnableTCPReset:   to.BoolPtr(false),
+							BackendPort:      to.Ptr[int32](3389),
+							EnableFloatingIP: to.Ptr(true),
+							EnableTCPReset:   to.Ptr(false),
 							FrontendIPConfiguration: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
-							FrontendPort:         to.Int32Ptr(3389),
-							IdleTimeoutInMinutes: to.Int32Ptr(15),
-							Protocol:             armnetwork.TransportProtocol("Tcp").ToPtr(),
+							FrontendPort:         to.Ptr[int32](3389),
+							IdleTimeoutInMinutes: to.Ptr[int32](15),
+							Protocol:             to.Ptr(armnetwork.TransportProtocolTCP),
 						},
 					}},
 				LoadBalancingRules: []*armnetwork.LoadBalancingRule{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.LoadBalancingRulePropertiesFormat{
 							BackendAddressPool: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
-							BackendPort:      to.Int32Ptr(80),
-							EnableFloatingIP: to.BoolPtr(true),
-							EnableTCPReset:   to.BoolPtr(false),
+							BackendPort:      to.Ptr[int32](80),
+							EnableFloatingIP: to.Ptr(true),
+							EnableTCPReset:   to.Ptr(false),
 							FrontendIPConfiguration: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
-							FrontendPort:         to.Int32Ptr(80),
-							IdleTimeoutInMinutes: to.Int32Ptr(15),
-							LoadDistribution:     armnetwork.LoadDistribution("Default").ToPtr(),
+							FrontendPort:         to.Ptr[int32](80),
+							IdleTimeoutInMinutes: to.Ptr[int32](15),
+							LoadDistribution:     to.Ptr(armnetwork.LoadDistributionDefault),
 							Probe: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
-							Protocol: armnetwork.TransportProtocol("Tcp").ToPtr(),
+							Protocol: to.Ptr(armnetwork.TransportProtocolTCP),
 						},
 					}},
 				Probes: []*armnetwork.Probe{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.ProbePropertiesFormat{
-							IntervalInSeconds: to.Int32Ptr(15),
-							NumberOfProbes:    to.Int32Ptr(2),
-							Port:              to.Int32Ptr(80),
-							RequestPath:       to.StringPtr("<request-path>"),
-							Protocol:          armnetwork.ProbeProtocol("Http").ToPtr(),
+							IntervalInSeconds: to.Ptr[int32](15),
+							NumberOfProbes:    to.Ptr[int32](2),
+							Port:              to.Ptr[int32](80),
+							RequestPath:       to.Ptr("<request-path>"),
+							Protocol:          to.Ptr(armnetwork.ProbeProtocolHTTP),
 						},
 					}},
 			},
 		},
-		nil)
+		&armnetwork.LoadBalancersClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.LoadBalancersClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

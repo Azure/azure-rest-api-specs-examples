@@ -14,34 +14,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putComputeOneSkuQuotaRequest.json
-func ExampleQuotaClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/SplitReservation.json
+func ExampleReservationClient_BeginSplit() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewQuotaClient(cred, nil)
+	client, err := armreservations.NewReservationClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<subscription-id>",
-		"<provider-id>",
-		"<location>",
-		"<resource-name>",
-		armreservations.CurrentQuotaLimitBase{
-			Properties: &armreservations.QuotaProperties{
-				Name: &armreservations.ResourceName{
-					Value: to.Ptr("<value>"),
-				},
-				Limit: to.Ptr[int32](200),
-				Unit:  to.Ptr("<unit>"),
+	poller, err := client.BeginSplit(ctx,
+		"<reservation-order-id>",
+		armreservations.SplitRequest{
+			Properties: &armreservations.SplitProperties{
+				Quantities: []*int32{
+					to.Ptr[int32](1),
+					to.Ptr[int32](2)},
+				ReservationID: to.Ptr("<reservation-id>"),
 			},
 		},
-		&armreservations.QuotaClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		&armreservations.ReservationClientBeginSplitOptions{ResumeToken: ""})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

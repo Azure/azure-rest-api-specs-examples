@@ -7,27 +7,31 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getComputeUsages.json
-func ExampleQuotaClient_NewListPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/GetReservations.json
+func ExampleReservationClient_NewListAllPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewQuotaClient(cred, nil)
+	client, err := armreservations.NewReservationClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	pager := client.NewListPager("<subscription-id>",
-		"<provider-id>",
-		"<location>",
-		nil)
+	pager := client.NewListAllPager(&armreservations.ReservationClientListAllOptions{Filter: to.Ptr("<filter>"),
+		Orderby:        to.Ptr("<orderby>"),
+		RefreshSummary: nil,
+		Skiptoken:      to.Ptr[float32](50),
+		SelectedState:  nil,
+		Take:           to.Ptr[float32](1),
+	})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.4.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -12,45 +12,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/Automations/ValidateAutomation_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/Automations/ValidateAutomation_example.json
 func ExampleAutomationsClient_Validate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsecurity.NewAutomationsClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewAutomationsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Validate(ctx,
 		"<resource-group-name>",
 		"<automation-name>",
 		armsecurity.Automation{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags:     map[string]*string{},
 			Properties: &armsecurity.AutomationProperties{
-				Description: to.StringPtr("<description>"),
+				Description: to.Ptr("<description>"),
 				Actions: []armsecurity.AutomationActionClassification{
 					&armsecurity.AutomationActionLogicApp{
-						ActionType:         armsecurity.ActionType("LogicApp").ToPtr(),
-						LogicAppResourceID: to.StringPtr("<logic-app-resource-id>"),
-						URI:                to.StringPtr("<uri>"),
+						ActionType:         to.Ptr(armsecurity.ActionTypeLogicApp),
+						LogicAppResourceID: to.Ptr("<logic-app-resource-id>"),
+						URI:                to.Ptr("<uri>"),
 					}},
-				IsEnabled: to.BoolPtr(true),
+				IsEnabled: to.Ptr(true),
 				Scopes: []*armsecurity.AutomationScope{
 					{
-						Description: to.StringPtr("<description>"),
-						ScopePath:   to.StringPtr("<scope-path>"),
+						Description: to.Ptr("<description>"),
+						ScopePath:   to.Ptr("<scope-path>"),
 					}},
 				Sources: []*armsecurity.AutomationSource{
 					{
-						EventSource: armsecurity.EventSource("Assessments").ToPtr(),
+						EventSource: to.Ptr(armsecurity.EventSourceAssessments),
 						RuleSets: []*armsecurity.AutomationRuleSet{
 							{
 								Rules: []*armsecurity.AutomationTriggeringRule{
 									{
-										ExpectedValue: to.StringPtr("<expected-value>"),
-										Operator:      armsecurity.Operator("Equals").ToPtr(),
-										PropertyJPath: to.StringPtr("<property-jpath>"),
-										PropertyType:  armsecurity.PropertyType("String").ToPtr(),
+										ExpectedValue: to.Ptr("<expected-value>"),
+										Operator:      to.Ptr(armsecurity.OperatorEquals),
+										PropertyJPath: to.Ptr("<property-jpath>"),
+										PropertyType:  to.Ptr(armsecurity.PropertyTypeString),
 									}},
 							}},
 					}},
@@ -58,8 +63,10 @@ func ExampleAutomationsClient_Validate() {
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AutomationsClientValidateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

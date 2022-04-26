@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv0.2.1/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv0.4.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwebpubsub_test
@@ -14,68 +14,76 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/webpubsub/armwebpubsub"
 )
 
-// x-ms-original-file: specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/examples/WebPubSub_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/examples/WebPubSub_Update.json
 func ExampleClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armwebpubsub.NewClient("<subscription-id>", cred, nil)
+	client, err := armwebpubsub.NewClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		armwebpubsub.ResourceInfo{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"key1": to.StringPtr("value1"),
+				"key1": to.Ptr("value1"),
 			},
 			Identity: &armwebpubsub.ManagedIdentity{
-				Type: armwebpubsub.ManagedIdentityType("SystemAssigned").ToPtr(),
+				Type: to.Ptr(armwebpubsub.ManagedIdentityTypeSystemAssigned),
 			},
 			Properties: &armwebpubsub.Properties{
-				DisableAADAuth:   to.BoolPtr(false),
-				DisableLocalAuth: to.BoolPtr(false),
+				DisableAADAuth:   to.Ptr(false),
+				DisableLocalAuth: to.Ptr(false),
 				LiveTraceConfiguration: &armwebpubsub.LiveTraceConfiguration{
 					Categories: []*armwebpubsub.LiveTraceCategory{
 						{
-							Name:    to.StringPtr("<name>"),
-							Enabled: to.StringPtr("<enabled>"),
+							Name:    to.Ptr("<name>"),
+							Enabled: to.Ptr("<enabled>"),
 						}},
-					Enabled: to.StringPtr("<enabled>"),
+					Enabled: to.Ptr("<enabled>"),
 				},
 				NetworkACLs: &armwebpubsub.NetworkACLs{
-					DefaultAction: armwebpubsub.ACLAction("Deny").ToPtr(),
+					DefaultAction: to.Ptr(armwebpubsub.ACLActionDeny),
 					PrivateEndpoints: []*armwebpubsub.PrivateEndpointACL{
 						{
 							Allow: []*armwebpubsub.WebPubSubRequestType{
-								armwebpubsub.WebPubSubRequestType("ServerConnection").ToPtr()},
-							Name: to.StringPtr("<name>"),
+								to.Ptr(armwebpubsub.WebPubSubRequestTypeServerConnection)},
+							Name: to.Ptr("<name>"),
 						}},
 					PublicNetwork: &armwebpubsub.NetworkACL{
 						Allow: []*armwebpubsub.WebPubSubRequestType{
-							armwebpubsub.WebPubSubRequestType("ClientConnection").ToPtr()},
+							to.Ptr(armwebpubsub.WebPubSubRequestTypeClientConnection)},
 					},
 				},
-				PublicNetworkAccess: to.StringPtr("<public-network-access>"),
+				PublicNetworkAccess: to.Ptr("<public-network-access>"),
 				TLS: &armwebpubsub.TLSSettings{
-					ClientCertEnabled: to.BoolPtr(false),
+					ClientCertEnabled: to.Ptr(false),
 				},
 			},
 			SKU: &armwebpubsub.ResourceSKU{
-				Name:     to.StringPtr("<name>"),
-				Capacity: to.Int32Ptr(1),
-				Tier:     armwebpubsub.WebPubSubSKUTier("Standard").ToPtr(),
+				Name:     to.Ptr("<name>"),
+				Capacity: to.Ptr[int32](1),
+				Tier:     to.Ptr(armwebpubsub.WebPubSubSKUTierStandard),
 			},
 		},
-		nil)
+		&armwebpubsub.ClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

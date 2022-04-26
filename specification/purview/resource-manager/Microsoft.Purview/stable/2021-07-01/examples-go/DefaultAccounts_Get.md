@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.2.1/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.4.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -12,21 +12,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purview/armpurview"
 )
 
-// x-ms-original-file: specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/DefaultAccounts_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/DefaultAccounts_Get.json
 func ExampleDefaultAccountsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpurview.NewDefaultAccountsClient(cred, nil)
+	client, err := armpurview.NewDefaultAccountsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Get(ctx,
 		"<scope-tenant-id>",
-		armpurview.ScopeType("Tenant"),
-		&armpurview.DefaultAccountsClientGetOptions{Scope: to.StringPtr("<scope>")})
+		armpurview.ScopeTypeTenant,
+		&armpurview.DefaultAccountsClientGetOptions{Scope: to.Ptr("<scope>")})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.DefaultAccountsClientGetResult)
+	// TODO: use response item
+	_ = res
 }
 ```

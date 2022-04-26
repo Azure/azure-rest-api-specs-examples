@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.2.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.4.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -14,40 +14,48 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/policyinsights/armpolicyinsights"
 )
 
-// x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/examples/Attestations_CreateResourceGroupScope.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-01-01/examples/Attestations_CreateResourceGroupScope.json
 func ExampleAttestationsClient_BeginCreateOrUpdateAtResourceGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpolicyinsights.NewAttestationsClient("<subscription-id>", cred, nil)
+	client, err := armpolicyinsights.NewAttestationsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdateAtResourceGroup(ctx,
 		"<resource-group-name>",
 		"<attestation-name>",
 		armpolicyinsights.Attestation{
 			Properties: &armpolicyinsights.AttestationProperties{
-				Comments:        to.StringPtr("<comments>"),
-				ComplianceState: armpolicyinsights.ComplianceState("Compliant").ToPtr(),
+				Comments:        to.Ptr("<comments>"),
+				ComplianceState: to.Ptr(armpolicyinsights.ComplianceStateCompliant),
 				Evidence: []*armpolicyinsights.AttestationEvidence{
 					{
-						Description: to.StringPtr("<description>"),
-						SourceURI:   to.StringPtr("<source-uri>"),
+						Description: to.Ptr("<description>"),
+						SourceURI:   to.Ptr("<source-uri>"),
 					}},
-				ExpiresOn:                   to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-15T00:00:00Z"); return t }()),
-				Owner:                       to.StringPtr("<owner>"),
-				PolicyAssignmentID:          to.StringPtr("<policy-assignment-id>"),
-				PolicyDefinitionReferenceID: to.StringPtr("<policy-definition-reference-id>"),
+				ExpiresOn:                   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-15T00:00:00Z"); return t }()),
+				Owner:                       to.Ptr("<owner>"),
+				PolicyAssignmentID:          to.Ptr("<policy-assignment-id>"),
+				PolicyDefinitionReferenceID: to.Ptr("<policy-definition-reference-id>"),
 			},
 		},
-		nil)
+		&armpolicyinsights.AttestationsClientBeginCreateOrUpdateAtResourceGroupOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AttestationsClientCreateOrUpdateAtResourceGroupResult)
+	// TODO: use response item
+	_ = res
 }
 ```

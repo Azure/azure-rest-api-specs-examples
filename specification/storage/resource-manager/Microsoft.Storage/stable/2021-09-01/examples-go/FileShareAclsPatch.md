@@ -1,0 +1,55 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv0.6.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armstorage_test
+
+import (
+	"context"
+	"log"
+
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storage/resource-manager/Microsoft.Storage/stable/2021-09-01/examples/FileShareAclsPatch.json
+func ExampleFileSharesClient_Update() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+		return
+	}
+	ctx := context.Background()
+	client, err := armstorage.NewFileSharesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
+	res, err := client.Update(ctx,
+		"<resource-group-name>",
+		"<account-name>",
+		"<share-name>",
+		armstorage.FileShare{
+			FileShareProperties: &armstorage.FileShareProperties{
+				SignedIdentifiers: []*armstorage.SignedIdentifier{
+					{
+						AccessPolicy: &armstorage.AccessPolicy{
+							ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T08:49:37.0000000Z"); return t }()),
+							Permission: to.Ptr("<permission>"),
+							StartTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T08:49:37.0000000Z"); return t }()),
+						},
+						ID: to.Ptr("<id>"),
+					}},
+			},
+		},
+		nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+		return
+	}
+	// TODO: use response item
+	_ = res
+}
+```

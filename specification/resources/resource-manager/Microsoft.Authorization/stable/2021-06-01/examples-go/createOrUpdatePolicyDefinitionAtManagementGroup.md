@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.3.1/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.5.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -12,38 +12,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy"
 )
 
-// x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicyDefinitionAtManagementGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicyDefinitionAtManagementGroup.json
 func ExampleDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpolicy.NewDefinitionsClient("<subscription-id>", cred, nil)
+	client, err := armpolicy.NewDefinitionsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	_, err = client.CreateOrUpdateAtManagementGroup(ctx,
 		"<policy-definition-name>",
 		"<management-group-id>",
 		armpolicy.Definition{
 			Properties: &armpolicy.DefinitionProperties{
-				Description: to.StringPtr("<description>"),
-				DisplayName: to.StringPtr("<display-name>"),
+				Description: to.Ptr("<description>"),
+				DisplayName: to.Ptr("<display-name>"),
 				Metadata: map[string]interface{}{
 					"category": "Naming",
 				},
-				Mode: to.StringPtr("<mode>"),
+				Mode: to.Ptr("<mode>"),
 				Parameters: map[string]*armpolicy.ParameterDefinitionsValue{
 					"prefix": {
-						Type: armpolicy.ParameterType("String").ToPtr(),
+						Type: to.Ptr(armpolicy.ParameterTypeString),
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
-							Description: to.StringPtr("<description>"),
-							DisplayName: to.StringPtr("<display-name>"),
+							Description: to.Ptr("<description>"),
+							DisplayName: to.Ptr("<display-name>"),
 						},
 					},
 					"suffix": {
-						Type: armpolicy.ParameterType("String").ToPtr(),
+						Type: to.Ptr(armpolicy.ParameterTypeString),
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
-							Description: to.StringPtr("<description>"),
-							DisplayName: to.StringPtr("<display-name>"),
+							Description: to.Ptr("<description>"),
+							DisplayName: to.Ptr("<display-name>"),
 						},
 					},
 				},
@@ -62,7 +67,8 @@ func ExampleDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 }
 ```

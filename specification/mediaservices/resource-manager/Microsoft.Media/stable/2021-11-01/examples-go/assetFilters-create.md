@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.4.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mediaservices/armmediaservices"
 )
 
-// x-ms-original-file: specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/assetFilters-create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/assetFilters-create.json
 func ExampleAssetFiltersClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmediaservices.NewAssetFiltersClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewAssetFiltersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
@@ -28,54 +33,56 @@ func ExampleAssetFiltersClient_CreateOrUpdate() {
 		armmediaservices.AssetFilter{
 			Properties: &armmediaservices.MediaFilterProperties{
 				FirstQuality: &armmediaservices.FirstQuality{
-					Bitrate: to.Int32Ptr(128000),
+					Bitrate: to.Ptr[int32](128000),
 				},
 				PresentationTimeRange: &armmediaservices.PresentationTimeRange{
-					EndTimestamp:               to.Int64Ptr(170000000),
-					ForceEndTimestamp:          to.BoolPtr(false),
-					LiveBackoffDuration:        to.Int64Ptr(0),
-					PresentationWindowDuration: to.Int64Ptr(9223372036854775000),
-					StartTimestamp:             to.Int64Ptr(0),
-					Timescale:                  to.Int64Ptr(10000000),
+					EndTimestamp:               to.Ptr[int64](170000000),
+					ForceEndTimestamp:          to.Ptr(false),
+					LiveBackoffDuration:        to.Ptr[int64](0),
+					PresentationWindowDuration: to.Ptr[int64](9223372036854775000),
+					StartTimestamp:             to.Ptr[int64](0),
+					Timescale:                  to.Ptr[int64](10000000),
 				},
 				Tracks: []*armmediaservices.FilterTrackSelection{
 					{
 						TrackSelections: []*armmediaservices.FilterTrackPropertyCondition{
 							{
-								Operation: armmediaservices.FilterTrackPropertyCompareOperation("Equal").ToPtr(),
-								Property:  armmediaservices.FilterTrackPropertyType("Type").ToPtr(),
-								Value:     to.StringPtr("<value>"),
+								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationEqual),
+								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeType),
+								Value:     to.Ptr("<value>"),
 							},
 							{
-								Operation: armmediaservices.FilterTrackPropertyCompareOperation("NotEqual").ToPtr(),
-								Property:  armmediaservices.FilterTrackPropertyType("Language").ToPtr(),
-								Value:     to.StringPtr("<value>"),
+								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationNotEqual),
+								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeLanguage),
+								Value:     to.Ptr("<value>"),
 							},
 							{
-								Operation: armmediaservices.FilterTrackPropertyCompareOperation("NotEqual").ToPtr(),
-								Property:  armmediaservices.FilterTrackPropertyType("FourCC").ToPtr(),
-								Value:     to.StringPtr("<value>"),
+								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationNotEqual),
+								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeFourCC),
+								Value:     to.Ptr("<value>"),
 							}},
 					},
 					{
 						TrackSelections: []*armmediaservices.FilterTrackPropertyCondition{
 							{
-								Operation: armmediaservices.FilterTrackPropertyCompareOperation("Equal").ToPtr(),
-								Property:  armmediaservices.FilterTrackPropertyType("Type").ToPtr(),
-								Value:     to.StringPtr("<value>"),
+								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationEqual),
+								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeType),
+								Value:     to.Ptr("<value>"),
 							},
 							{
-								Operation: armmediaservices.FilterTrackPropertyCompareOperation("Equal").ToPtr(),
-								Property:  armmediaservices.FilterTrackPropertyType("Bitrate").ToPtr(),
-								Value:     to.StringPtr("<value>"),
+								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationEqual),
+								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeBitrate),
+								Value:     to.Ptr("<value>"),
 							}},
 					}},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AssetFiltersClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

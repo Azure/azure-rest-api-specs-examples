@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.4.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -12,35 +12,42 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mediaservices/armmediaservices"
 )
 
-// x-ms-original-file: specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/transforms-update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/transforms-update.json
 func ExampleTransformsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmediaservices.NewTransformsClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewTransformsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		"<transform-name>",
 		armmediaservices.Transform{
 			Properties: &armmediaservices.TransformProperties{
-				Description: to.StringPtr("<description>"),
+				Description: to.Ptr("<description>"),
 				Outputs: []*armmediaservices.TransformOutput{
 					{
 						Preset: &armmediaservices.BuiltInStandardEncoderPreset{
-							ODataType:  to.StringPtr("<odata-type>"),
-							PresetName: armmediaservices.EncoderNamedPreset("H264MultipleBitrate720p").ToPtr(),
+							ODataType:  to.Ptr("<odata-type>"),
+							PresetName: to.Ptr(armmediaservices.EncoderNamedPresetH264MultipleBitrate720P),
 						},
-						RelativePriority: armmediaservices.Priority("High").ToPtr(),
+						RelativePriority: to.Ptr(armmediaservices.PriorityHigh),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.TransformsClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

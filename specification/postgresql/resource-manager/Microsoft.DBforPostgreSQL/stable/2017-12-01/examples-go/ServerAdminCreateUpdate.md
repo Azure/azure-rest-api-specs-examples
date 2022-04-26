@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresql%2Fv0.3.1/sdk/resourcemanager/postgresql/armpostgresql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresql%2Fv0.5.0/sdk/resourcemanager/postgresql/armpostgresql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresql_test
@@ -14,33 +14,41 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresql"
 )
 
-// x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerAdminCreateUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerAdminCreateUpdate.json
 func ExampleServerAdministratorsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpostgresql.NewServerAdministratorsClient("<subscription-id>", cred, nil)
+	client, err := armpostgresql.NewServerAdministratorsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		armpostgresql.ServerAdministratorResource{
 			Properties: &armpostgresql.ServerAdministratorProperties{
-				AdministratorType: to.StringPtr("<administrator-type>"),
-				Login:             to.StringPtr("<login>"),
-				Sid:               to.StringPtr("<sid>"),
-				TenantID:          to.StringPtr("<tenant-id>"),
+				AdministratorType: to.Ptr("<administrator-type>"),
+				Login:             to.Ptr("<login>"),
+				Sid:               to.Ptr("<sid>"),
+				TenantID:          to.Ptr("<tenant-id>"),
 			},
 		},
-		nil)
+		&armpostgresql.ServerAdministratorsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ServerAdministratorsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

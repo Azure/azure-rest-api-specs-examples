@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmmanagedapplications%2Fv0.2.1/sdk/resourcemanager/resources/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmmanagedapplications%2Fv0.4.0/sdk/resourcemanager/resources/armmanagedapplications/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagedapplications_test
@@ -14,39 +14,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armmanagedapplications"
 )
 
-// x-ms-original-file: specification/resources/resource-manager/Microsoft.Solutions/stable/2018-06-01/examples/createOrUpdateApplicationDefinition.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Solutions/stable/2018-06-01/examples/createOrUpdateApplicationDefinition.json
 func ExampleApplicationDefinitionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmanagedapplications.NewApplicationDefinitionsClient("<subscription-id>", cred, nil)
+	client, err := armmanagedapplications.NewApplicationDefinitionsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<application-definition-name>",
 		armmanagedapplications.ApplicationDefinition{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armmanagedapplications.ApplicationDefinitionProperties{
-				Description: to.StringPtr("<description>"),
+				Description: to.Ptr("<description>"),
 				Authorizations: []*armmanagedapplications.ApplicationProviderAuthorization{
 					{
-						PrincipalID:      to.StringPtr("<principal-id>"),
-						RoleDefinitionID: to.StringPtr("<role-definition-id>"),
+						PrincipalID:      to.Ptr("<principal-id>"),
+						RoleDefinitionID: to.Ptr("<role-definition-id>"),
 					}},
-				DisplayName:    to.StringPtr("<display-name>"),
-				LockLevel:      armmanagedapplications.ApplicationLockLevelNone.ToPtr(),
-				PackageFileURI: to.StringPtr("<package-file-uri>"),
+				DisplayName:    to.Ptr("<display-name>"),
+				LockLevel:      to.Ptr(armmanagedapplications.ApplicationLockLevelNone),
+				PackageFileURI: to.Ptr("<package-file-uri>"),
 			},
 		},
-		nil)
+		&armmanagedapplications.ApplicationDefinitionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ApplicationDefinitionsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -14,34 +14,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putComputeOneSkuQuotaRequest.json
-func ExampleQuotaClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/MergeReservations.json
+func ExampleReservationClient_BeginMerge() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewQuotaClient(cred, nil)
+	client, err := armreservations.NewReservationClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<subscription-id>",
-		"<provider-id>",
-		"<location>",
-		"<resource-name>",
-		armreservations.CurrentQuotaLimitBase{
-			Properties: &armreservations.QuotaProperties{
-				Name: &armreservations.ResourceName{
-					Value: to.Ptr("<value>"),
-				},
-				Limit: to.Ptr[int32](200),
-				Unit:  to.Ptr("<unit>"),
+	poller, err := client.BeginMerge(ctx,
+		"<reservation-order-id>",
+		armreservations.MergeRequest{
+			Properties: &armreservations.MergeProperties{
+				Sources: []*string{
+					to.Ptr("/providers/Microsoft.Capacity/reservationOrders/c0565a8a-4491-4e77-b07b-5e6d66718e1c/reservations/cea04232-932e-47db-acb5-e29a945ecc73"),
+					to.Ptr("/providers/Microsoft.Capacity/reservationOrders/c0565a8a-4491-4e77-b07b-5e6d66718e1c/reservations/5bf54dc7-dacd-4f46-a16b-7b78f4a59799")},
 			},
 		},
-		&armreservations.QuotaClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		&armreservations.ReservationClientBeginMergeOptions{ResumeToken: ""})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

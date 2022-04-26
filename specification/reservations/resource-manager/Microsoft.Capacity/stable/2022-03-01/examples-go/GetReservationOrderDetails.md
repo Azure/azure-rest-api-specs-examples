@@ -11,25 +11,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getComputeOneSkuUsages.json
-func ExampleQuotaClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/GetReservationOrderDetails.json
+func ExampleReservationOrderClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewQuotaClient(cred, nil)
+	client, err := armreservations.NewReservationOrderClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
 	res, err := client.Get(ctx,
-		"<subscription-id>",
-		"<provider-id>",
-		"<location>",
-		"<resource-name>",
-		nil)
+		"<reservation-order-id>",
+		&armreservations.ReservationOrderClientGetOptions{Expand: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

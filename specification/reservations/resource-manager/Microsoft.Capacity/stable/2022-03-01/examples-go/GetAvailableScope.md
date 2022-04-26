@@ -14,34 +14,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putComputeOneSkuQuotaRequest.json
-func ExampleQuotaClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/GetAvailableScope.json
+func ExampleReservationClient_BeginAvailableScopes() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewQuotaClient(cred, nil)
+	client, err := armreservations.NewReservationClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<subscription-id>",
-		"<provider-id>",
-		"<location>",
-		"<resource-name>",
-		armreservations.CurrentQuotaLimitBase{
-			Properties: &armreservations.QuotaProperties{
-				Name: &armreservations.ResourceName{
-					Value: to.Ptr("<value>"),
-				},
-				Limit: to.Ptr[int32](200),
-				Unit:  to.Ptr("<unit>"),
+	poller, err := client.BeginAvailableScopes(ctx,
+		"<reservation-order-id>",
+		"<reservation-id>",
+		armreservations.AvailableScopeRequest{
+			Properties: &armreservations.AvailableScopeRequestProperties{
+				Scopes: []*string{
+					to.Ptr("/subscriptions/efc7c997-7700-4a74-b731-55aec16c15e9")},
 			},
 		},
-		&armreservations.QuotaClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		&armreservations.ReservationClientBeginAvailableScopesOptions{ResumeToken: ""})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

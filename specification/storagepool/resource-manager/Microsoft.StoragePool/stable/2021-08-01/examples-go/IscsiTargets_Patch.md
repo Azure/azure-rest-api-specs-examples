@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragepool%2Farmstoragepool%2Fv0.2.1/sdk/resourcemanager/storagepool/armstoragepool/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragepool%2Farmstoragepool%2Fv0.4.0/sdk/resourcemanager/storagepool/armstoragepool/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragepool_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagepool/armstoragepool"
 )
 
-// x-ms-original-file: specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/IscsiTargets_Patch.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/IscsiTargets_Patch.json
 func ExampleIscsiTargetsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armstoragepool.NewIscsiTargetsClient("<subscription-id>", cred, nil)
+	client, err := armstoragepool.NewIscsiTargetsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<disk-pool-name>",
@@ -30,25 +35,28 @@ func ExampleIscsiTargetsClient_BeginUpdate() {
 			Properties: &armstoragepool.IscsiTargetUpdateProperties{
 				Luns: []*armstoragepool.IscsiLun{
 					{
-						Name:                       to.StringPtr("<name>"),
-						ManagedDiskAzureResourceID: to.StringPtr("<managed-disk-azure-resource-id>"),
+						Name:                       to.Ptr("<name>"),
+						ManagedDiskAzureResourceID: to.Ptr("<managed-disk-azure-resource-id>"),
 					}},
 				StaticACLs: []*armstoragepool.ACL{
 					{
-						InitiatorIqn: to.StringPtr("<initiator-iqn>"),
+						InitiatorIqn: to.Ptr("<initiator-iqn>"),
 						MappedLuns: []*string{
-							to.StringPtr("lun0")},
+							to.Ptr("lun0")},
 					}},
 			},
 		},
-		nil)
+		&armstoragepool.IscsiTargetsClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.IscsiTargetsClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

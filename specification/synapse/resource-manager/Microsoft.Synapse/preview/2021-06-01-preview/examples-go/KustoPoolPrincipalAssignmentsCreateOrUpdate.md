@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolPrincipalAssignmentsCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolPrincipalAssignmentsCreateOrUpdate.json
 func ExampleKustoPoolPrincipalAssignmentsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsynapse.NewKustoPoolPrincipalAssignmentsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewKustoPoolPrincipalAssignmentsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<workspace-name>",
 		"<kusto-pool-name>",
@@ -29,20 +34,23 @@ func ExampleKustoPoolPrincipalAssignmentsClient_BeginCreateOrUpdate() {
 		"<resource-group-name>",
 		armsynapse.ClusterPrincipalAssignment{
 			Properties: &armsynapse.ClusterPrincipalProperties{
-				PrincipalID:   to.StringPtr("<principal-id>"),
-				PrincipalType: armsynapse.PrincipalType("App").ToPtr(),
-				Role:          armsynapse.ClusterPrincipalRole("AllDatabasesAdmin").ToPtr(),
-				TenantID:      to.StringPtr("<tenant-id>"),
+				PrincipalID:   to.Ptr("<principal-id>"),
+				PrincipalType: to.Ptr(armsynapse.PrincipalTypeApp),
+				Role:          to.Ptr(armsynapse.ClusterPrincipalRoleAllDatabasesAdmin),
+				TenantID:      to.Ptr("<tenant-id>"),
 			},
 		},
-		nil)
+		&armsynapse.KustoPoolPrincipalAssignmentsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.KustoPoolPrincipalAssignmentsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -12,38 +12,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolBlobAuditingWithAllParameters.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolBlobAuditingWithAllParameters.json
 func ExampleSQLPoolBlobAuditingPoliciesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsynapse.NewSQLPoolBlobAuditingPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewSQLPoolBlobAuditingPoliciesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
 		"<sql-pool-name>",
-		armsynapse.Enum11("default"),
 		armsynapse.SQLPoolBlobAuditingPolicy{
 			Properties: &armsynapse.SQLPoolBlobAuditingPolicyProperties{
 				AuditActionsAndGroups: []*string{
-					to.StringPtr("DATABASE_LOGOUT_GROUP"),
-					to.StringPtr("DATABASE_ROLE_MEMBER_CHANGE_GROUP"),
-					to.StringPtr("UPDATE on database::TestDatabaseName by public")},
-				IsAzureMonitorTargetEnabled:  to.BoolPtr(true),
-				IsStorageSecondaryKeyInUse:   to.BoolPtr(false),
-				RetentionDays:                to.Int32Ptr(6),
-				State:                        armsynapse.BlobAuditingPolicyStateEnabled.ToPtr(),
-				StorageAccountAccessKey:      to.StringPtr("<storage-account-access-key>"),
-				StorageAccountSubscriptionID: to.StringPtr("<storage-account-subscription-id>"),
-				StorageEndpoint:              to.StringPtr("<storage-endpoint>"),
+					to.Ptr("DATABASE_LOGOUT_GROUP"),
+					to.Ptr("DATABASE_ROLE_MEMBER_CHANGE_GROUP"),
+					to.Ptr("UPDATE on database::TestDatabaseName by public")},
+				IsAzureMonitorTargetEnabled:  to.Ptr(true),
+				IsStorageSecondaryKeyInUse:   to.Ptr(false),
+				RetentionDays:                to.Ptr[int32](6),
+				State:                        to.Ptr(armsynapse.BlobAuditingPolicyStateEnabled),
+				StorageAccountAccessKey:      to.Ptr("<storage-account-access-key>"),
+				StorageAccountSubscriptionID: to.Ptr("<storage-account-subscription-id>"),
+				StorageEndpoint:              to.Ptr("<storage-endpoint>"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.SQLPoolBlobAuditingPoliciesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

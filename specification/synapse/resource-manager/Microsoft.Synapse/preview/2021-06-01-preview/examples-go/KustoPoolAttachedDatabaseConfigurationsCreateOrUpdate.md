@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -14,49 +14,57 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolAttachedDatabaseConfigurationsCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolAttachedDatabaseConfigurationsCreateOrUpdate.json
 func ExampleKustoPoolAttachedDatabaseConfigurationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsynapse.NewKustoPoolAttachedDatabaseConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewKustoPoolAttachedDatabaseConfigurationsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<workspace-name>",
 		"<kusto-pool-name>",
 		"<attached-database-configuration-name>",
 		"<resource-group-name>",
 		armsynapse.AttachedDatabaseConfiguration{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armsynapse.AttachedDatabaseConfigurationProperties{
-				KustoPoolResourceID:               to.StringPtr("<kusto-pool-resource-id>"),
-				DatabaseName:                      to.StringPtr("<database-name>"),
-				DefaultPrincipalsModificationKind: armsynapse.DefaultPrincipalsModificationKind("Union").ToPtr(),
+				KustoPoolResourceID:               to.Ptr("<kusto-pool-resource-id>"),
+				DatabaseName:                      to.Ptr("<database-name>"),
+				DefaultPrincipalsModificationKind: to.Ptr(armsynapse.DefaultPrincipalsModificationKindUnion),
 				TableLevelSharingProperties: &armsynapse.TableLevelSharingProperties{
 					ExternalTablesToExclude: []*string{
-						to.StringPtr("ExternalTable2")},
+						to.Ptr("ExternalTable2")},
 					ExternalTablesToInclude: []*string{
-						to.StringPtr("ExternalTable1")},
+						to.Ptr("ExternalTable1")},
 					MaterializedViewsToExclude: []*string{
-						to.StringPtr("MaterializedViewTable2")},
+						to.Ptr("MaterializedViewTable2")},
 					MaterializedViewsToInclude: []*string{
-						to.StringPtr("MaterializedViewTable1")},
+						to.Ptr("MaterializedViewTable1")},
 					TablesToExclude: []*string{
-						to.StringPtr("Table2")},
+						to.Ptr("Table2")},
 					TablesToInclude: []*string{
-						to.StringPtr("Table1")},
+						to.Ptr("Table1")},
 				},
 			},
 		},
-		nil)
+		&armsynapse.KustoPoolAttachedDatabaseConfigurationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.KustoPoolAttachedDatabaseConfigurationsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

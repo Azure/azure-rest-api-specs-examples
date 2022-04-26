@@ -11,22 +11,21 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoDatabasesListByKustoPool.json
-func ExampleKustoPoolDatabasesClient_NewListByKustoPoolPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/ListWorkspaceManagedSqlServerDedicatedSQLminimalTlsSettings.json
+func ExampleWorkspaceManagedSQLServerDedicatedSQLMinimalTLSSettingsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolDatabasesClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewWorkspaceManagedSQLServerDedicatedSQLMinimalTLSSettingsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	pager := client.NewListByKustoPoolPager("<resource-group-name>",
+	pager := client.NewListPager("<resource-group-name>",
 		"<workspace-name>",
-		"<kusto-pool-name>",
 		nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)

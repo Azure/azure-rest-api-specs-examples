@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv0.2.1/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv0.4.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsupport_test
@@ -14,42 +14,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBillingSupportTicketForSubscription.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBillingSupportTicketForSubscription.json
 func ExampleTicketsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsupport.NewTicketsClient("<subscription-id>", cred, nil)
+	client, err := armsupport.NewTicketsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreate(ctx,
 		"<support-ticket-name>",
 		armsupport.TicketDetails{
 			Properties: &armsupport.TicketDetailsProperties{
-				Description: to.StringPtr("<description>"),
+				Description: to.Ptr("<description>"),
 				ContactDetails: &armsupport.ContactProfile{
-					Country:                  to.StringPtr("<country>"),
-					FirstName:                to.StringPtr("<first-name>"),
-					LastName:                 to.StringPtr("<last-name>"),
-					PreferredContactMethod:   armsupport.PreferredContactMethod("email").ToPtr(),
-					PreferredSupportLanguage: to.StringPtr("<preferred-support-language>"),
-					PreferredTimeZone:        to.StringPtr("<preferred-time-zone>"),
-					PrimaryEmailAddress:      to.StringPtr("<primary-email-address>"),
+					Country:                  to.Ptr("<country>"),
+					FirstName:                to.Ptr("<first-name>"),
+					LastName:                 to.Ptr("<last-name>"),
+					PreferredContactMethod:   to.Ptr(armsupport.PreferredContactMethodEmail),
+					PreferredSupportLanguage: to.Ptr("<preferred-support-language>"),
+					PreferredTimeZone:        to.Ptr("<preferred-time-zone>"),
+					PrimaryEmailAddress:      to.Ptr("<primary-email-address>"),
 				},
-				ProblemClassificationID: to.StringPtr("<problem-classification-id>"),
-				ServiceID:               to.StringPtr("<service-id>"),
-				Severity:                armsupport.SeverityLevel("moderate").ToPtr(),
-				Title:                   to.StringPtr("<title>"),
+				ProblemClassificationID: to.Ptr("<problem-classification-id>"),
+				ServiceID:               to.Ptr("<service-id>"),
+				Severity:                to.Ptr(armsupport.SeverityLevelModerate),
+				Title:                   to.Ptr("<title>"),
 			},
 		},
-		nil)
+		&armsupport.TicketsClientBeginCreateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.TicketsClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

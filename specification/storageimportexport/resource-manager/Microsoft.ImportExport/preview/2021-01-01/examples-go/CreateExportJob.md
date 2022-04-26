@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorageimportexport%2Farmstorageimportexport%2Fv0.2.1/sdk/resourcemanager/storageimportexport/armstorageimportexport/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorageimportexport%2Farmstorageimportexport%2Fv0.4.0/sdk/resourcemanager/storageimportexport/armstorageimportexport/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorageimportexport_test
@@ -12,53 +12,60 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageimportexport/armstorageimportexport"
 )
 
-// x-ms-original-file: specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/examples/CreateExportJob.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/examples/CreateExportJob.json
 func ExampleJobsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armstorageimportexport.NewJobsClient("<subscription-id>",
+	client, err := armstorageimportexport.NewJobsClient("<subscription-id>",
 		nil, cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Create(ctx,
 		"<job-name>",
 		"<resource-group-name>",
 		armstorageimportexport.PutJobParameters{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armstorageimportexport.JobDetails{
-				BackupDriveManifest: to.BoolPtr(true),
-				DiagnosticsPath:     to.StringPtr("<diagnostics-path>"),
+				BackupDriveManifest: to.Ptr(true),
+				DiagnosticsPath:     to.Ptr("<diagnostics-path>"),
 				Export: &armstorageimportexport.Export{
 					BlobList: &armstorageimportexport.ExportBlobList{
 						BlobPathPrefix: []*string{
-							to.StringPtr("/")},
+							to.Ptr("/")},
 					},
 				},
-				JobType:  to.StringPtr("<job-type>"),
-				LogLevel: to.StringPtr("<log-level>"),
+				JobType:  to.Ptr("<job-type>"),
+				LogLevel: to.Ptr("<log-level>"),
 				ReturnAddress: &armstorageimportexport.ReturnAddress{
-					City:            to.StringPtr("<city>"),
-					CountryOrRegion: to.StringPtr("<country-or-region>"),
-					Email:           to.StringPtr("<email>"),
-					Phone:           to.StringPtr("<phone>"),
-					PostalCode:      to.StringPtr("<postal-code>"),
-					RecipientName:   to.StringPtr("<recipient-name>"),
-					StateOrProvince: to.StringPtr("<state-or-province>"),
-					StreetAddress1:  to.StringPtr("<street-address1>"),
-					StreetAddress2:  to.StringPtr("<street-address2>"),
+					City:            to.Ptr("<city>"),
+					CountryOrRegion: to.Ptr("<country-or-region>"),
+					Email:           to.Ptr("<email>"),
+					Phone:           to.Ptr("<phone>"),
+					PostalCode:      to.Ptr("<postal-code>"),
+					RecipientName:   to.Ptr("<recipient-name>"),
+					StateOrProvince: to.Ptr("<state-or-province>"),
+					StreetAddress1:  to.Ptr("<street-address1>"),
+					StreetAddress2:  to.Ptr("<street-address2>"),
 				},
 				ReturnShipping: &armstorageimportexport.ReturnShipping{
-					CarrierAccountNumber: to.StringPtr("<carrier-account-number>"),
-					CarrierName:          to.StringPtr("<carrier-name>"),
+					CarrierAccountNumber: to.Ptr("<carrier-account-number>"),
+					CarrierName:          to.Ptr("<carrier-name>"),
 				},
-				StorageAccountID: to.StringPtr("<storage-account-id>"),
+				StorageAccountID: to.Ptr("<storage-account-id>"),
 			},
 		},
 		&armstorageimportexport.JobsClientCreateOptions{ClientTenantID: nil})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.JobsClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

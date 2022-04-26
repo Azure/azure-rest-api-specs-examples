@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsignalr%2Farmsignalr%2Fv0.3.0/sdk/resourcemanager/signalr/armsignalr/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsignalr%2Farmsignalr%2Fv0.5.0/sdk/resourcemanager/signalr/armsignalr/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsignalr_test
@@ -14,110 +14,118 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/signalr/armsignalr"
 )
 
-// x-ms-original-file: specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/examples/SignalR_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/signalr/resource-manager/Microsoft.SignalRService/stable/2022-02-01/examples/SignalR_CreateOrUpdate.json
 func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsignalr.NewClient("<subscription-id>", cred, nil)
+	client, err := armsignalr.NewClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		armsignalr.ResourceInfo{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"key1": to.StringPtr("value1"),
+				"key1": to.Ptr("value1"),
 			},
 			Identity: &armsignalr.ManagedIdentity{
-				Type: armsignalr.ManagedIdentityType("SystemAssigned").ToPtr(),
+				Type: to.Ptr(armsignalr.ManagedIdentityTypeSystemAssigned),
 			},
-			Kind: armsignalr.ServiceKind("SignalR").ToPtr(),
+			Kind: to.Ptr(armsignalr.ServiceKindSignalR),
 			Properties: &armsignalr.Properties{
 				Cors: &armsignalr.CorsSettings{
 					AllowedOrigins: []*string{
-						to.StringPtr("https://foo.com"),
-						to.StringPtr("https://bar.com")},
+						to.Ptr("https://foo.com"),
+						to.Ptr("https://bar.com")},
 				},
-				DisableAADAuth:   to.BoolPtr(false),
-				DisableLocalAuth: to.BoolPtr(false),
+				DisableAADAuth:   to.Ptr(false),
+				DisableLocalAuth: to.Ptr(false),
 				Features: []*armsignalr.Feature{
 					{
-						Flag:       armsignalr.FeatureFlags("ServiceMode").ToPtr(),
+						Flag:       to.Ptr(armsignalr.FeatureFlagsServiceMode),
 						Properties: map[string]*string{},
-						Value:      to.StringPtr("<value>"),
+						Value:      to.Ptr("<value>"),
 					},
 					{
-						Flag:       armsignalr.FeatureFlags("EnableConnectivityLogs").ToPtr(),
+						Flag:       to.Ptr(armsignalr.FeatureFlagsEnableConnectivityLogs),
 						Properties: map[string]*string{},
-						Value:      to.StringPtr("<value>"),
+						Value:      to.Ptr("<value>"),
 					},
 					{
-						Flag:       armsignalr.FeatureFlags("EnableMessagingLogs").ToPtr(),
+						Flag:       to.Ptr(armsignalr.FeatureFlagsEnableMessagingLogs),
 						Properties: map[string]*string{},
-						Value:      to.StringPtr("<value>"),
+						Value:      to.Ptr("<value>"),
 					},
 					{
-						Flag:       armsignalr.FeatureFlags("EnableLiveTrace").ToPtr(),
+						Flag:       to.Ptr(armsignalr.FeatureFlagsEnableLiveTrace),
 						Properties: map[string]*string{},
-						Value:      to.StringPtr("<value>"),
+						Value:      to.Ptr("<value>"),
 					}},
 				LiveTraceConfiguration: &armsignalr.LiveTraceConfiguration{
 					Categories: []*armsignalr.LiveTraceCategory{
 						{
-							Name:    to.StringPtr("<name>"),
-							Enabled: to.StringPtr("<enabled>"),
+							Name:    to.Ptr("<name>"),
+							Enabled: to.Ptr("<enabled>"),
 						}},
-					Enabled: to.StringPtr("<enabled>"),
+					Enabled: to.Ptr("<enabled>"),
 				},
 				NetworkACLs: &armsignalr.NetworkACLs{
-					DefaultAction: armsignalr.ACLAction("Deny").ToPtr(),
+					DefaultAction: to.Ptr(armsignalr.ACLActionDeny),
 					PrivateEndpoints: []*armsignalr.PrivateEndpointACL{
 						{
 							Allow: []*armsignalr.SignalRRequestType{
-								armsignalr.SignalRRequestType("ServerConnection").ToPtr()},
-							Name: to.StringPtr("<name>"),
+								to.Ptr(armsignalr.SignalRRequestTypeServerConnection)},
+							Name: to.Ptr("<name>"),
 						}},
 					PublicNetwork: &armsignalr.NetworkACL{
 						Allow: []*armsignalr.SignalRRequestType{
-							armsignalr.SignalRRequestType("ClientConnection").ToPtr()},
+							to.Ptr(armsignalr.SignalRRequestTypeClientConnection)},
 					},
 				},
-				PublicNetworkAccess: to.StringPtr("<public-network-access>"),
+				PublicNetworkAccess: to.Ptr("<public-network-access>"),
 				TLS: &armsignalr.TLSSettings{
-					ClientCertEnabled: to.BoolPtr(false),
+					ClientCertEnabled: to.Ptr(false),
 				},
 				Upstream: &armsignalr.ServerlessUpstreamSettings{
 					Templates: []*armsignalr.UpstreamTemplate{
 						{
 							Auth: &armsignalr.UpstreamAuthSettings{
-								Type: armsignalr.UpstreamAuthType("ManagedIdentity").ToPtr(),
+								Type: to.Ptr(armsignalr.UpstreamAuthTypeManagedIdentity),
 								ManagedIdentity: &armsignalr.ManagedIdentitySettings{
-									Resource: to.StringPtr("<resource>"),
+									Resource: to.Ptr("<resource>"),
 								},
 							},
-							CategoryPattern: to.StringPtr("<category-pattern>"),
-							EventPattern:    to.StringPtr("<event-pattern>"),
-							HubPattern:      to.StringPtr("<hub-pattern>"),
-							URLTemplate:     to.StringPtr("<urltemplate>"),
+							CategoryPattern: to.Ptr("<category-pattern>"),
+							EventPattern:    to.Ptr("<event-pattern>"),
+							HubPattern:      to.Ptr("<hub-pattern>"),
+							URLTemplate:     to.Ptr("<urltemplate>"),
 						}},
 				},
 			},
 			SKU: &armsignalr.ResourceSKU{
-				Name:     to.StringPtr("<name>"),
-				Capacity: to.Int32Ptr(1),
-				Tier:     armsignalr.SignalRSKUTier("Standard").ToPtr(),
+				Name:     to.Ptr("<name>"),
+				Capacity: to.Ptr[int32](1),
+				Tier:     to.Ptr(armsignalr.SignalRSKUTierStandard),
 			},
 		},
-		nil)
+		&armsignalr.ClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

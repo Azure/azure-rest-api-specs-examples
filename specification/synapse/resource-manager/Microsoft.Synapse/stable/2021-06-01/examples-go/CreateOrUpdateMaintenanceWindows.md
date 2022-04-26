@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateMaintenanceWindows.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateMaintenanceWindows.json
 func ExampleSQLPoolMaintenanceWindowsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsynapse.NewSQLPoolMaintenanceWindowsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewSQLPoolMaintenanceWindowsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	_, err = client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
@@ -29,15 +34,16 @@ func ExampleSQLPoolMaintenanceWindowsClient_CreateOrUpdate() {
 			Properties: &armsynapse.MaintenanceWindowsProperties{
 				TimeRanges: []*armsynapse.MaintenanceWindowTimeRange{
 					{
-						DayOfWeek: armsynapse.DayOfWeek("Saturday").ToPtr(),
-						Duration:  to.StringPtr("<duration>"),
-						StartTime: to.StringPtr("<start-time>"),
+						DayOfWeek: to.Ptr(armsynapse.DayOfWeekSaturday),
+						Duration:  to.Ptr("<duration>"),
+						StartTime: to.Ptr("<start-time>"),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 }
 ```

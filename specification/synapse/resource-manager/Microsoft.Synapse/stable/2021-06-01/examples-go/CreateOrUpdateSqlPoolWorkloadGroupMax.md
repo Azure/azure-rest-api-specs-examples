@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolWorkloadGroupMax.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolWorkloadGroupMax.json
 func ExampleSQLPoolWorkloadGroupClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsynapse.NewSQLPoolWorkloadGroupClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewSQLPoolWorkloadGroupClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
@@ -29,22 +34,25 @@ func ExampleSQLPoolWorkloadGroupClient_BeginCreateOrUpdate() {
 		"<workload-group-name>",
 		armsynapse.WorkloadGroup{
 			Properties: &armsynapse.WorkloadGroupProperties{
-				Importance:                   to.StringPtr("<importance>"),
-				MaxResourcePercent:           to.Int32Ptr(100),
-				MaxResourcePercentPerRequest: to.Float64Ptr(3),
-				MinResourcePercent:           to.Int32Ptr(0),
-				MinResourcePercentPerRequest: to.Float64Ptr(3),
-				QueryExecutionTimeout:        to.Int32Ptr(0),
+				Importance:                   to.Ptr("<importance>"),
+				MaxResourcePercent:           to.Ptr[int32](100),
+				MaxResourcePercentPerRequest: to.Ptr[float64](3),
+				MinResourcePercent:           to.Ptr[int32](0),
+				MinResourcePercentPerRequest: to.Ptr[float64](3),
+				QueryExecutionTimeout:        to.Ptr[int32](0),
 			},
 		},
-		nil)
+		&armsynapse.SQLPoolWorkloadGroupClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.SQLPoolWorkloadGroupClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

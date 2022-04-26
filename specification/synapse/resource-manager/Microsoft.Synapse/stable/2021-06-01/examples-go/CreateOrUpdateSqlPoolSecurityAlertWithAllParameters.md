@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.2.1/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -12,38 +12,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolSecurityAlertWithAllParameters.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateSqlPoolSecurityAlertWithAllParameters.json
 func ExampleSQLPoolSecurityAlertPoliciesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsynapse.NewSQLPoolSecurityAlertPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewSQLPoolSecurityAlertPoliciesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
 		"<sql-pool-name>",
-		armsynapse.SecurityAlertPolicyName("default"),
+		armsynapse.SecurityAlertPolicyNameDefault,
 		armsynapse.SQLPoolSecurityAlertPolicy{
 			Properties: &armsynapse.SecurityAlertPolicyProperties{
 				DisabledAlerts: []*string{
-					to.StringPtr("Sql_Injection"),
-					to.StringPtr("Usage_Anomaly")},
-				EmailAccountAdmins: to.BoolPtr(true),
+					to.Ptr("Sql_Injection"),
+					to.Ptr("Usage_Anomaly")},
+				EmailAccountAdmins: to.Ptr(true),
 				EmailAddresses: []*string{
-					to.StringPtr("test@microsoft.com"),
-					to.StringPtr("user@microsoft.com")},
-				RetentionDays:           to.Int32Ptr(6),
-				State:                   armsynapse.SecurityAlertPolicyStateEnabled.ToPtr(),
-				StorageAccountAccessKey: to.StringPtr("<storage-account-access-key>"),
-				StorageEndpoint:         to.StringPtr("<storage-endpoint>"),
+					to.Ptr("test@microsoft.com"),
+					to.Ptr("user@microsoft.com")},
+				RetentionDays:           to.Ptr[int32](6),
+				State:                   to.Ptr(armsynapse.SecurityAlertPolicyStateEnabled),
+				StorageAccountAccessKey: to.Ptr("<storage-account-access-key>"),
+				StorageEndpoint:         to.Ptr("<storage-endpoint>"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.SQLPoolSecurityAlertPoliciesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

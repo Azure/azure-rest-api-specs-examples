@@ -9,27 +9,34 @@ import (
 
 	"time"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteWorkspace.json
-func ExampleWorkspacesClient_BeginDelete() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/UpdateWorkspaceManagedSqlServerDedicatedSQLminimalTlsSettings.json
+func ExampleWorkspaceManagedSQLServerDedicatedSQLMinimalTLSSettingsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewWorkspacesClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewWorkspaceManagedSQLServerDedicatedSQLMinimalTLSSettingsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	poller, err := client.BeginDelete(ctx,
+	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
-		&armsynapse.WorkspacesClientBeginDeleteOptions{ResumeToken: ""})
+		armsynapse.DedicatedSQLMinimalTLSSettingsNameDefault,
+		armsynapse.DedicatedSQLminimalTLSSettings{
+			Properties: &armsynapse.DedicatedSQLminimalTLSSettingsProperties{
+				MinimalTLSVersion: to.Ptr("<minimal-tlsversion>"),
+			},
+		},
+		&armsynapse.WorkspaceManagedSQLServerDedicatedSQLMinimalTLSSettingsClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

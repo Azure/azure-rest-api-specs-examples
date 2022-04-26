@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.3.1/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.5.0/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstreamanalytics_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/streamanalytics/armstreamanalytics"
 )
 
-// x-ms-original-file: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/Output_Create_DocumentDB.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/Output_Create_DocumentDB.json
 func ExampleOutputsClient_CreateOrReplace() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armstreamanalytics.NewOutputsClient("<subscription-id>", cred, nil)
+	client, err := armstreamanalytics.NewOutputsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrReplace(ctx,
 		"<resource-group-name>",
 		"<job-name>",
@@ -27,14 +32,14 @@ func ExampleOutputsClient_CreateOrReplace() {
 		armstreamanalytics.Output{
 			Properties: &armstreamanalytics.OutputProperties{
 				Datasource: &armstreamanalytics.DocumentDbOutputDataSource{
-					Type: to.StringPtr("<type>"),
+					Type: to.Ptr("<type>"),
 					Properties: &armstreamanalytics.DocumentDbOutputDataSourceProperties{
-						AccountID:             to.StringPtr("<account-id>"),
-						AccountKey:            to.StringPtr("<account-key>"),
-						CollectionNamePattern: to.StringPtr("<collection-name-pattern>"),
-						Database:              to.StringPtr("<database>"),
-						DocumentID:            to.StringPtr("<document-id>"),
-						PartitionKey:          to.StringPtr("<partition-key>"),
+						AccountID:             to.Ptr("<account-id>"),
+						AccountKey:            to.Ptr("<account-key>"),
+						CollectionNamePattern: to.Ptr("<collection-name-pattern>"),
+						Database:              to.Ptr("<database>"),
+						DocumentID:            to.Ptr("<document-id>"),
+						PartitionKey:          to.Ptr("<partition-key>"),
 					},
 				},
 			},
@@ -43,8 +48,10 @@ func ExampleOutputsClient_CreateOrReplace() {
 			IfNoneMatch: nil,
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.OutputsClientCreateOrReplaceResult)
+	// TODO: use response item
+	_ = res
 }
 ```

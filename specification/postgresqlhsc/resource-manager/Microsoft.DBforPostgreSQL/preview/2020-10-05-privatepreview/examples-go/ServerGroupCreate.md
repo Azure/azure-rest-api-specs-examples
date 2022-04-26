@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresqlhsc%2Farmpostgresqlhsc%2Fv0.2.1/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresqlhsc%2Farmpostgresqlhsc%2Fv0.4.0/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresqlhsc_test
@@ -14,67 +14,75 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
 )
 
-// x-ms-original-file: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupCreate.json
 func ExampleServerGroupsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpostgresqlhsc.NewServerGroupsClient("<subscription-id>", cred, nil)
+	client, err := armpostgresqlhsc.NewServerGroupsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<server-group-name>",
 		armpostgresqlhsc.ServerGroup{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"ElasticServer": to.StringPtr("1"),
+				"ElasticServer": to.Ptr("1"),
 			},
 			Properties: &armpostgresqlhsc.ServerGroupProperties{
-				AdministratorLogin:         to.StringPtr("<administrator-login>"),
-				AdministratorLoginPassword: to.StringPtr("<administrator-login-password>"),
-				AvailabilityZone:           to.StringPtr("<availability-zone>"),
-				BackupRetentionDays:        to.Int32Ptr(35),
-				CitusVersion:               armpostgresqlhsc.CitusVersion("9.5").ToPtr(),
+				AdministratorLogin:         to.Ptr("<administrator-login>"),
+				AdministratorLoginPassword: to.Ptr("<administrator-login-password>"),
+				AvailabilityZone:           to.Ptr("<availability-zone>"),
+				BackupRetentionDays:        to.Ptr[int32](35),
+				CitusVersion:               to.Ptr(armpostgresqlhsc.CitusVersionNine5),
 				DelegatedSubnetArguments: &armpostgresqlhsc.ServerGroupPropertiesDelegatedSubnetArguments{
-					SubnetArmResourceID: to.StringPtr("<subnet-arm-resource-id>"),
+					SubnetArmResourceID: to.Ptr("<subnet-arm-resource-id>"),
 				},
-				EnableMx:          to.BoolPtr(true),
-				EnableZfs:         to.BoolPtr(false),
-				PostgresqlVersion: armpostgresqlhsc.PostgreSQLVersion("12").ToPtr(),
+				EnableMx:          to.Ptr(true),
+				EnableZfs:         to.Ptr(false),
+				PostgresqlVersion: to.Ptr(armpostgresqlhsc.PostgreSQLVersionTwelve),
 				PrivateDNSZoneArguments: &armpostgresqlhsc.ServerGroupPropertiesPrivateDNSZoneArguments{
-					PrivateDNSZoneArmResourceID: to.StringPtr("<private-dnszone-arm-resource-id>"),
+					PrivateDNSZoneArmResourceID: to.Ptr("<private-dnszone-arm-resource-id>"),
 				},
 				ServerRoleGroups: []*armpostgresqlhsc.ServerRoleGroup{
 					{
-						EnableHa:         to.BoolPtr(true),
-						ServerEdition:    armpostgresqlhsc.ServerEdition("GeneralPurpose").ToPtr(),
-						StorageQuotaInMb: to.Int64Ptr(524288),
-						VCores:           to.Int64Ptr(4),
-						Name:             to.StringPtr("<name>"),
-						Role:             armpostgresqlhsc.ServerRole("Coordinator").ToPtr(),
-						ServerCount:      to.Int32Ptr(1),
+						EnableHa:         to.Ptr(true),
+						ServerEdition:    to.Ptr(armpostgresqlhsc.ServerEditionGeneralPurpose),
+						StorageQuotaInMb: to.Ptr[int64](524288),
+						VCores:           to.Ptr[int64](4),
+						Name:             to.Ptr("<name>"),
+						Role:             to.Ptr(armpostgresqlhsc.ServerRoleCoordinator),
+						ServerCount:      to.Ptr[int32](1),
 					},
 					{
-						EnableHa:         to.BoolPtr(false),
-						ServerEdition:    armpostgresqlhsc.ServerEdition("MemoryOptimized").ToPtr(),
-						StorageQuotaInMb: to.Int64Ptr(524288),
-						VCores:           to.Int64Ptr(4),
-						Name:             to.StringPtr("<name>"),
-						Role:             armpostgresqlhsc.ServerRole("Worker").ToPtr(),
-						ServerCount:      to.Int32Ptr(3),
+						EnableHa:         to.Ptr(false),
+						ServerEdition:    to.Ptr(armpostgresqlhsc.ServerEditionMemoryOptimized),
+						StorageQuotaInMb: to.Ptr[int64](524288),
+						VCores:           to.Ptr[int64](4),
+						Name:             to.Ptr("<name>"),
+						Role:             to.Ptr(armpostgresqlhsc.ServerRoleWorker),
+						ServerCount:      to.Ptr[int32](3),
 					}},
-				StandbyAvailabilityZone: to.StringPtr("<standby-availability-zone>"),
+				StandbyAvailabilityZone: to.Ptr("<standby-availability-zone>"),
 			},
 		},
-		nil)
+		&armpostgresqlhsc.ServerGroupsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ServerGroupsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvirtualmachineimagebuilder%2Farmvirtualmachineimagebuilder%2Fv0.2.1/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvirtualmachineimagebuilder%2Farmvirtualmachineimagebuilder%2Fv0.4.0/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvirtualmachineimagebuilder_test
@@ -14,25 +14,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder"
 )
 
-// x-ms-original-file: specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2021-10-01/examples/CreateImageTemplateLinux.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2021-10-01/examples/CreateImageTemplateLinux.json
 func ExampleVirtualMachineImageTemplatesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armvirtualmachineimagebuilder.NewVirtualMachineImageTemplatesClient("<subscription-id>", cred, nil)
+	client, err := armvirtualmachineimagebuilder.NewVirtualMachineImageTemplatesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<image-template-name>",
 		armvirtualmachineimagebuilder.ImageTemplate{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"imagetemplate_tag1": to.StringPtr("IT_T1"),
-				"imagetemplate_tag2": to.StringPtr("IT_T2"),
+				"imagetemplate_tag1": to.Ptr("IT_T1"),
+				"imagetemplate_tag2": to.Ptr("IT_T2"),
 			},
 			Identity: &armvirtualmachineimagebuilder.ImageTemplateIdentity{
-				Type: armvirtualmachineimagebuilder.ResourceIdentityTypeUserAssigned.ToPtr(),
+				Type: to.Ptr(armvirtualmachineimagebuilder.ResourceIdentityTypeUserAssigned),
 				UserAssignedIdentities: map[string]*armvirtualmachineimagebuilder.ComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties{
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity_1": {},
 				},
@@ -40,41 +45,44 @@ func ExampleVirtualMachineImageTemplatesClient_BeginCreateOrUpdate() {
 			Properties: &armvirtualmachineimagebuilder.ImageTemplateProperties{
 				Customize: []armvirtualmachineimagebuilder.ImageTemplateCustomizerClassification{
 					&armvirtualmachineimagebuilder.ImageTemplateShellCustomizer{
-						Name:      to.StringPtr("<name>"),
-						Type:      to.StringPtr("<type>"),
-						ScriptURI: to.StringPtr("<script-uri>"),
+						Name:      to.Ptr("<name>"),
+						Type:      to.Ptr("<type>"),
+						ScriptURI: to.Ptr("<script-uri>"),
 					}},
 				Distribute: []armvirtualmachineimagebuilder.ImageTemplateDistributorClassification{
 					&armvirtualmachineimagebuilder.ImageTemplateManagedImageDistributor{
-						Type: to.StringPtr("<type>"),
+						Type: to.Ptr("<type>"),
 						ArtifactTags: map[string]*string{
-							"tagName": to.StringPtr("value"),
+							"tagName": to.Ptr("value"),
 						},
-						RunOutputName: to.StringPtr("<run-output-name>"),
-						ImageID:       to.StringPtr("<image-id>"),
-						Location:      to.StringPtr("<location>"),
+						RunOutputName: to.Ptr("<run-output-name>"),
+						ImageID:       to.Ptr("<image-id>"),
+						Location:      to.Ptr("<location>"),
 					}},
 				Source: &armvirtualmachineimagebuilder.ImageTemplateManagedImageSource{
-					Type:    to.StringPtr("<type>"),
-					ImageID: to.StringPtr("<image-id>"),
+					Type:    to.Ptr("<type>"),
+					ImageID: to.Ptr("<image-id>"),
 				},
 				VMProfile: &armvirtualmachineimagebuilder.ImageTemplateVMProfile{
-					OSDiskSizeGB: to.Int32Ptr(64),
-					VMSize:       to.StringPtr("<vmsize>"),
+					OSDiskSizeGB: to.Ptr[int32](64),
+					VMSize:       to.Ptr("<vmsize>"),
 					VnetConfig: &armvirtualmachineimagebuilder.VirtualNetworkConfig{
-						SubnetID: to.StringPtr("<subnet-id>"),
+						SubnetID: to.Ptr("<subnet-id>"),
 					},
 				},
 			},
 		},
-		nil)
+		&armvirtualmachineimagebuilder.VirtualMachineImageTemplatesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VirtualMachineImageTemplatesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

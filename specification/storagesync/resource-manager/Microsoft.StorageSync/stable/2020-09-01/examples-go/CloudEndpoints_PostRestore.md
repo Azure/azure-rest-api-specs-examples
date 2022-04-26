@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.2.1/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.4.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragesync_test
@@ -14,48 +14,55 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync"
 )
 
-// x-ms-original-file: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/CloudEndpoints_PostRestore.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/CloudEndpoints_PostRestore.json
 func ExampleCloudEndpointsClient_BeginPostRestore() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armstoragesync.NewCloudEndpointsClient("<subscription-id>", cred, nil)
+	client, err := armstoragesync.NewCloudEndpointsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginPostRestore(ctx,
 		"<resource-group-name>",
 		"<storage-sync-service-name>",
 		"<sync-group-name>",
 		"<cloud-endpoint-name>",
 		armstoragesync.PostRestoreRequest{
-			AzureFileShareURI: to.StringPtr("<azure-file-share-uri>"),
+			AzureFileShareURI: to.Ptr("<azure-file-share-uri>"),
 			RestoreFileSpec: []*armstoragesync.RestoreFileSpec{
 				{
-					Path:  to.StringPtr("<path>"),
-					Isdir: to.BoolPtr(false),
+					Path:  to.Ptr("<path>"),
+					Isdir: to.Ptr(false),
 				},
 				{
-					Path:  to.StringPtr("<path>"),
-					Isdir: to.BoolPtr(true),
+					Path:  to.Ptr("<path>"),
+					Isdir: to.Ptr(true),
 				},
 				{
-					Path:  to.StringPtr("<path>"),
-					Isdir: to.BoolPtr(false),
+					Path:  to.Ptr("<path>"),
+					Isdir: to.Ptr(false),
 				},
 				{
-					Path:  to.StringPtr("<path>"),
-					Isdir: to.BoolPtr(false),
+					Path:  to.Ptr("<path>"),
+					Isdir: to.Ptr(false),
 				}},
-			SourceAzureFileShareURI: to.StringPtr("<source-azure-file-share-uri>"),
-			Status:                  to.StringPtr("<status>"),
+			SourceAzureFileShareURI: to.Ptr("<source-azure-file-share-uri>"),
+			Status:                  to.Ptr("<status>"),
 		},
-		nil)
+		&armstoragesync.CloudEndpointsClientBeginPostRestoreOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foep%2Farmoep%2Fv0.1.1/sdk/resourcemanager/oep/armoep/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foep%2Farmoep%2Fv0.3.0/sdk/resourcemanager/oep/armoep/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armoep_test
@@ -11,26 +11,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oep/armoep"
 )
 
-// x-ms-original-file: specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/examples/OepResource_ListByResourceGroup.json
-func ExampleEnergyServicesClient_ListByResourceGroup() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/examples/OepResource_ListByResourceGroup.json
+func ExampleEnergyServicesClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armoep.NewEnergyServicesClient("<subscription-id>", cred, nil)
-	pager := client.ListByResourceGroup("<resource-group-name>",
+	client, err := armoep.NewEnergyServicesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
+	pager := client.NewListByResourceGroupPager("<resource-group-name>",
 		nil)
-	for {
-		nextResult := pager.NextPage(ctx)
-		if err := pager.Err(); err != nil {
+	for pager.More() {
+		nextResult, err := pager.NextPage(ctx)
+		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
+			return
 		}
-		if !nextResult {
-			break
-		}
-		for _, v := range pager.PageResponse().Value {
-			log.Printf("Pager result: %#v\n", v)
+		for _, v := range nextResult.Value {
+			// TODO: use page item
+			_ = v
 		}
 	}
 }

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbidedicated%2Farmpowerbidedicated%2Fv0.2.1/sdk/resourcemanager/powerbidedicated/armpowerbidedicated/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbidedicated%2Farmpowerbidedicated%2Fv0.4.0/sdk/resourcemanager/powerbidedicated/armpowerbidedicated/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpowerbidedicated_test
@@ -14,42 +14,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerbidedicated/armpowerbidedicated"
 )
 
-// x-ms-original-file: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/createCapacity.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/createCapacity.json
 func ExampleCapacitiesClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpowerbidedicated.NewCapacitiesClient("<subscription-id>", cred, nil)
+	client, err := armpowerbidedicated.NewCapacitiesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<dedicated-capacity-name>",
 		armpowerbidedicated.DedicatedCapacity{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"testKey": to.StringPtr("testValue"),
+				"testKey": to.Ptr("testValue"),
 			},
 			Properties: &armpowerbidedicated.DedicatedCapacityProperties{
 				Administration: &armpowerbidedicated.DedicatedCapacityAdministrators{
 					Members: []*string{
-						to.StringPtr("azsdktest@microsoft.com"),
-						to.StringPtr("azsdktest2@microsoft.com")},
+						to.Ptr("azsdktest@microsoft.com"),
+						to.Ptr("azsdktest2@microsoft.com")},
 				},
 			},
 			SKU: &armpowerbidedicated.CapacitySKU{
-				Name: to.StringPtr("<name>"),
-				Tier: armpowerbidedicated.CapacitySKUTier("PBIE_Azure").ToPtr(),
+				Name: to.Ptr("<name>"),
+				Tier: to.Ptr(armpowerbidedicated.CapacitySKUTierPBIEAzure),
 			},
 		},
-		nil)
+		&armpowerbidedicated.CapacitiesClientBeginCreateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.CapacitiesClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

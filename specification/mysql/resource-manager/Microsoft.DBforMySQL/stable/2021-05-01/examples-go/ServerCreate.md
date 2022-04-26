@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysqlflexibleservers%2Fv0.4.0/sdk/resourcemanager/mysql/armmysqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysqlflexibleservers%2Fv0.6.0/sdk/resourcemanager/mysql/armmysqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmysqlflexibleservers_test
@@ -14,55 +14,63 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers"
 )
 
-// x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreate.json
 func ExampleServersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmysqlflexibleservers.NewServersClient("<subscription-id>", cred, nil)
+	client, err := armmysqlflexibleservers.NewServersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		armmysqlflexibleservers.Server{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"num": to.StringPtr("1"),
+				"num": to.Ptr("1"),
 			},
 			Properties: &armmysqlflexibleservers.ServerProperties{
-				AdministratorLogin:         to.StringPtr("<administrator-login>"),
-				AdministratorLoginPassword: to.StringPtr("<administrator-login-password>"),
-				AvailabilityZone:           to.StringPtr("<availability-zone>"),
+				AdministratorLogin:         to.Ptr("<administrator-login>"),
+				AdministratorLoginPassword: to.Ptr("<administrator-login-password>"),
+				AvailabilityZone:           to.Ptr("<availability-zone>"),
 				Backup: &armmysqlflexibleservers.Backup{
-					BackupRetentionDays: to.Int32Ptr(7),
-					GeoRedundantBackup:  armmysqlflexibleservers.EnableStatusEnum("Disabled").ToPtr(),
+					BackupRetentionDays: to.Ptr[int32](7),
+					GeoRedundantBackup:  to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 				},
-				CreateMode: armmysqlflexibleservers.CreateMode("Default").ToPtr(),
+				CreateMode: to.Ptr(armmysqlflexibleservers.CreateModeDefault),
 				HighAvailability: &armmysqlflexibleservers.HighAvailability{
-					Mode:                    armmysqlflexibleservers.HighAvailabilityMode("ZoneRedundant").ToPtr(),
-					StandbyAvailabilityZone: to.StringPtr("<standby-availability-zone>"),
+					Mode:                    to.Ptr(armmysqlflexibleservers.HighAvailabilityModeZoneRedundant),
+					StandbyAvailabilityZone: to.Ptr("<standby-availability-zone>"),
 				},
 				Storage: &armmysqlflexibleservers.Storage{
-					AutoGrow:      armmysqlflexibleservers.EnableStatusEnum("Disabled").ToPtr(),
-					Iops:          to.Int32Ptr(600),
-					StorageSizeGB: to.Int32Ptr(100),
+					AutoGrow:      to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
+					Iops:          to.Ptr[int32](600),
+					StorageSizeGB: to.Ptr[int32](100),
 				},
-				Version: armmysqlflexibleservers.ServerVersion("5.7").ToPtr(),
+				Version: to.Ptr(armmysqlflexibleservers.ServerVersionFive7),
 			},
 			SKU: &armmysqlflexibleservers.SKU{
-				Name: to.StringPtr("<name>"),
-				Tier: armmysqlflexibleservers.SKUTier("GeneralPurpose").ToPtr(),
+				Name: to.Ptr("<name>"),
+				Tier: to.Ptr(armmysqlflexibleservers.SKUTierGeneralPurpose),
 			},
 		},
-		nil)
+		&armmysqlflexibleservers.ServersClientBeginCreateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ServersClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

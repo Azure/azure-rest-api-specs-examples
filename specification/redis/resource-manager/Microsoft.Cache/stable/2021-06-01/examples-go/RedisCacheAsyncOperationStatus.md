@@ -11,22 +11,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/examples/RedisCacheListKeys.json
-func ExampleClient_ListKeys() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/redis/resource-manager/Microsoft.Cache/stable/2021-06-01/examples/RedisCacheAsyncOperationStatus.json
+func ExampleAsyncOperationStatusClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armredis.NewClient("<subscription-id>", cred, nil)
+	client, err := armredis.NewAsyncOperationStatusClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	res, err := client.ListKeys(ctx,
-		"<resource-group-name>",
-		"<name>",
+	res, err := client.Get(ctx,
+		"<location>",
+		"<operation-id>",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

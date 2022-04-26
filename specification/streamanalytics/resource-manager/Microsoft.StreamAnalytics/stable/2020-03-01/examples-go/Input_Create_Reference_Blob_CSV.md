@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.3.1/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.5.0/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstreamanalytics_test
@@ -12,40 +12,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/streamanalytics/armstreamanalytics"
 )
 
-// x-ms-original-file: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/Input_Create_Reference_Blob_CSV.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/Input_Create_Reference_Blob_CSV.json
 func ExampleInputsClient_CreateOrReplace() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armstreamanalytics.NewInputsClient("<subscription-id>", cred, nil)
+	client, err := armstreamanalytics.NewInputsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrReplace(ctx,
 		"<resource-group-name>",
 		"<job-name>",
 		"<input-name>",
 		armstreamanalytics.Input{
 			Properties: &armstreamanalytics.ReferenceInputProperties{
-				Type: to.StringPtr("<type>"),
+				Type: to.Ptr("<type>"),
 				Serialization: &armstreamanalytics.CSVSerialization{
-					Type: armstreamanalytics.EventSerializationType("Csv").ToPtr(),
+					Type: to.Ptr(armstreamanalytics.EventSerializationTypeCSV),
 					Properties: &armstreamanalytics.CSVSerializationProperties{
-						Encoding:       armstreamanalytics.Encoding("UTF8").ToPtr(),
-						FieldDelimiter: to.StringPtr("<field-delimiter>"),
+						Encoding:       to.Ptr(armstreamanalytics.EncodingUTF8),
+						FieldDelimiter: to.Ptr("<field-delimiter>"),
 					},
 				},
 				Datasource: &armstreamanalytics.BlobReferenceInputDataSource{
-					Type: to.StringPtr("<type>"),
+					Type: to.Ptr("<type>"),
 					Properties: &armstreamanalytics.BlobReferenceInputDataSourceProperties{
-						Container:   to.StringPtr("<container>"),
-						DateFormat:  to.StringPtr("<date-format>"),
-						PathPattern: to.StringPtr("<path-pattern>"),
+						Container:   to.Ptr("<container>"),
+						DateFormat:  to.Ptr("<date-format>"),
+						PathPattern: to.Ptr("<path-pattern>"),
 						StorageAccounts: []*armstreamanalytics.StorageAccount{
 							{
-								AccountKey:  to.StringPtr("<account-key>"),
-								AccountName: to.StringPtr("<account-name>"),
+								AccountKey:  to.Ptr("<account-key>"),
+								AccountName: to.Ptr("<account-name>"),
 							}},
-						TimeFormat: to.StringPtr("<time-format>"),
+						TimeFormat: to.Ptr("<time-format>"),
 					},
 				},
 			},
@@ -54,8 +59,10 @@ func ExampleInputsClient_CreateOrReplace() {
 			IfNoneMatch: nil,
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.InputsClientCreateOrReplaceResult)
+	// TODO: use response item
+	_ = res
 }
 ```

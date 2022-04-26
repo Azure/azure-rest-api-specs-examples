@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.3.1/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.5.0/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstreamanalytics_test
@@ -14,95 +14,104 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/streamanalytics/armstreamanalytics"
 )
 
-// x-ms-original-file: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/StreamingJob_Create_CompleteJob.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/StreamingJob_Create_CompleteJob.json
 func ExampleStreamingJobsClient_BeginCreateOrReplace() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armstreamanalytics.NewStreamingJobsClient("<subscription-id>", cred, nil)
+	client, err := armstreamanalytics.NewStreamingJobsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrReplace(ctx,
 		"<resource-group-name>",
 		"<job-name>",
 		armstreamanalytics.StreamingJob{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"key1":      to.StringPtr("value1"),
-				"key3":      to.StringPtr("value3"),
-				"randomKey": to.StringPtr("randomValue"),
+				"key1":      to.Ptr("value1"),
+				"key3":      to.Ptr("value3"),
+				"randomKey": to.Ptr("randomValue"),
 			},
 			Properties: &armstreamanalytics.StreamingJobProperties{
-				CompatibilityLevel:                 armstreamanalytics.CompatibilityLevel("1.0").ToPtr(),
-				DataLocale:                         to.StringPtr("<data-locale>"),
-				EventsLateArrivalMaxDelayInSeconds: to.Int32Ptr(5),
-				EventsOutOfOrderMaxDelayInSeconds:  to.Int32Ptr(0),
-				EventsOutOfOrderPolicy:             armstreamanalytics.EventsOutOfOrderPolicy("Drop").ToPtr(),
+				CompatibilityLevel:                 to.Ptr(armstreamanalytics.CompatibilityLevelOne0),
+				DataLocale:                         to.Ptr("<data-locale>"),
+				EventsLateArrivalMaxDelayInSeconds: to.Ptr[int32](5),
+				EventsOutOfOrderMaxDelayInSeconds:  to.Ptr[int32](0),
+				EventsOutOfOrderPolicy:             to.Ptr(armstreamanalytics.EventsOutOfOrderPolicyDrop),
 				Functions:                          []*armstreamanalytics.Function{},
 				Inputs: []*armstreamanalytics.Input{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armstreamanalytics.StreamInputProperties{
-							Type: to.StringPtr("<type>"),
+							Type: to.Ptr("<type>"),
 							Serialization: &armstreamanalytics.JSONSerialization{
-								Type: armstreamanalytics.EventSerializationType("Json").ToPtr(),
+								Type: to.Ptr(armstreamanalytics.EventSerializationTypeJSON),
 								Properties: &armstreamanalytics.JSONSerializationProperties{
-									Encoding: armstreamanalytics.Encoding("UTF8").ToPtr(),
+									Encoding: to.Ptr(armstreamanalytics.EncodingUTF8),
 								},
 							},
 							Datasource: &armstreamanalytics.BlobStreamInputDataSource{
-								Type: to.StringPtr("<type>"),
+								Type: to.Ptr("<type>"),
 								Properties: &armstreamanalytics.BlobStreamInputDataSourceProperties{
-									Container:   to.StringPtr("<container>"),
-									PathPattern: to.StringPtr("<path-pattern>"),
+									Container:   to.Ptr("<container>"),
+									PathPattern: to.Ptr("<path-pattern>"),
 									StorageAccounts: []*armstreamanalytics.StorageAccount{
 										{
-											AccountKey:  to.StringPtr("<account-key>"),
-											AccountName: to.StringPtr("<account-name>"),
+											AccountKey:  to.Ptr("<account-key>"),
+											AccountName: to.Ptr("<account-name>"),
 										}},
 								},
 							},
 						},
 					}},
-				OutputErrorPolicy: armstreamanalytics.OutputErrorPolicy("Drop").ToPtr(),
+				OutputErrorPolicy: to.Ptr(armstreamanalytics.OutputErrorPolicyDrop),
 				Outputs: []*armstreamanalytics.Output{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armstreamanalytics.OutputProperties{
 							Datasource: &armstreamanalytics.AzureSQLDatabaseOutputDataSource{
-								Type: to.StringPtr("<type>"),
+								Type: to.Ptr("<type>"),
 								Properties: &armstreamanalytics.AzureSQLDatabaseOutputDataSourceProperties{
-									Database: to.StringPtr("<database>"),
-									Password: to.StringPtr("<password>"),
-									Server:   to.StringPtr("<server>"),
-									Table:    to.StringPtr("<table>"),
-									User:     to.StringPtr("<user>"),
+									Database: to.Ptr("<database>"),
+									Password: to.Ptr("<password>"),
+									Server:   to.Ptr("<server>"),
+									Table:    to.Ptr("<table>"),
+									User:     to.Ptr("<user>"),
 								},
 							},
 						},
 					}},
 				SKU: &armstreamanalytics.SKU{
-					Name: armstreamanalytics.SKUName("Standard").ToPtr(),
+					Name: to.Ptr(armstreamanalytics.SKUNameStandard),
 				},
 				Transformation: &armstreamanalytics.Transformation{
-					Name: to.StringPtr("<name>"),
+					Name: to.Ptr("<name>"),
 					Properties: &armstreamanalytics.TransformationProperties{
-						Query:          to.StringPtr("<query>"),
-						StreamingUnits: to.Int32Ptr(1),
+						Query:          to.Ptr("<query>"),
+						StreamingUnits: to.Ptr[int32](1),
 					},
 				},
 			},
 		},
 		&armstreamanalytics.StreamingJobsClientBeginCreateOrReplaceOptions{IfMatch: nil,
 			IfNoneMatch: nil,
+			ResumeToken: "",
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.StreamingJobsClientCreateOrReplaceResult)
+	// TODO: use response item
+	_ = res
 }
 ```

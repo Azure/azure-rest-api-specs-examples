@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbiprivatelinks%2Farmpowerbiprivatelinks%2Fv0.2.1/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbiprivatelinks%2Farmpowerbiprivatelinks%2Fv0.4.0/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpowerbiprivatelinks_test
@@ -12,31 +12,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks"
 )
 
-// x-ms-original-file: specification/powerbiprivatelinks/resource-manager/Microsoft.PowerBI/stable/2020-06-01/examples/PowerBIResources_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/powerbiprivatelinks/resource-manager/Microsoft.PowerBI/stable/2020-06-01/examples/PowerBIResources_Create.json
 func ExamplePowerBIResourcesClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpowerbiprivatelinks.NewPowerBIResourcesClient("<subscription-id>",
+	client, err := armpowerbiprivatelinks.NewPowerBIResourcesClient("<subscription-id>",
 		"<resource-group-name>",
 		"<azure-resource-name>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Create(ctx,
 		armpowerbiprivatelinks.TenantResource{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armpowerbiprivatelinks.TenantProperties{
-				TenantID: to.StringPtr("<tenant-id>"),
+				TenantID: to.Ptr("<tenant-id>"),
 			},
 			Tags: map[string]*string{
-				"tag1": to.StringPtr("value1"),
-				"tag2": to.StringPtr("value2"),
+				"tag1": to.Ptr("value1"),
+				"tag2": to.Ptr("value2"),
 			},
 		},
-		&armpowerbiprivatelinks.PowerBIResourcesClientCreateOptions{ClientTenantID: to.StringPtr("<client-tenant-id>")})
+		&armpowerbiprivatelinks.PowerBIResourcesClientCreateOptions{ClientTenantID: to.Ptr("<client-tenant-id>")})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.PowerBIResourcesClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

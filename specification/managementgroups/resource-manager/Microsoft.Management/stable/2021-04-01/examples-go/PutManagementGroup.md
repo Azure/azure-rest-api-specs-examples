@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmanagementgroups%2Farmmanagementgroups%2Fv0.4.0/sdk/resourcemanager/managementgroups/armmanagementgroups/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmanagementgroups%2Farmmanagementgroups%2Fv0.6.0/sdk/resourcemanager/managementgroups/armmanagementgroups/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagementgroups_test
@@ -14,34 +14,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managementgroups/armmanagementgroups"
 )
 
-// x-ms-original-file: specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/examples/PutManagementGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/examples/PutManagementGroup.json
 func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmanagementgroups.NewClient(cred, nil)
+	client, err := armmanagementgroups.NewClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<group-id>",
 		armmanagementgroups.CreateManagementGroupRequest{
 			Properties: &armmanagementgroups.CreateManagementGroupProperties{
-				DisplayName: to.StringPtr("<display-name>"),
+				DisplayName: to.Ptr("<display-name>"),
 				Details: &armmanagementgroups.CreateManagementGroupDetails{
 					Parent: &armmanagementgroups.CreateParentGroupInfo{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 					},
 				},
 			},
 		},
-		&armmanagementgroups.ClientBeginCreateOrUpdateOptions{CacheControl: to.StringPtr("<cache-control>")})
+		&armmanagementgroups.ClientBeginCreateOrUpdateOptions{CacheControl: to.Ptr("<cache-control>"),
+			ResumeToken: "",
+		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

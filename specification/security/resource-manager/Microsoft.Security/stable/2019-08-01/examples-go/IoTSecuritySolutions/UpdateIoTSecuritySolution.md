@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.4.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -12,42 +12,49 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/UpdateIoTSecuritySolution.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/UpdateIoTSecuritySolution.json
 func ExampleIotSecuritySolutionClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsecurity.NewIotSecuritySolutionClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewIotSecuritySolutionClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<solution-name>",
 		armsecurity.UpdateIotSecuritySolutionData{
 			Tags: map[string]*string{
-				"foo": to.StringPtr("bar"),
+				"foo": to.Ptr("bar"),
 			},
 			Properties: &armsecurity.UpdateIoTSecuritySolutionProperties{
 				RecommendationsConfiguration: []*armsecurity.RecommendationConfigurationProperties{
 					{
-						RecommendationType: armsecurity.RecommendationType("IoT_OpenPorts").ToPtr(),
-						Status:             armsecurity.RecommendationConfigStatus("Disabled").ToPtr(),
+						RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTOpenPorts),
+						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
 					},
 					{
-						RecommendationType: armsecurity.RecommendationType("IoT_SharedCredentials").ToPtr(),
-						Status:             armsecurity.RecommendationConfigStatus("Disabled").ToPtr(),
+						RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTSharedCredentials),
+						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
 					}},
 				UserDefinedResources: &armsecurity.UserDefinedResourcesProperties{
-					Query: to.StringPtr("<query>"),
+					Query: to.Ptr("<query>"),
 					QuerySubscriptions: []*string{
-						to.StringPtr("075423e9-7d33-4166-8bdf-3920b04e3735")},
+						to.Ptr("075423e9-7d33-4166-8bdf-3920b04e3735")},
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.IotSecuritySolutionClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

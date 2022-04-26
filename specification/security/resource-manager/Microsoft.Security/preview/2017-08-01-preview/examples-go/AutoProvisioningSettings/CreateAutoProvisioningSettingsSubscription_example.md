@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.4.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -12,28 +12,35 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/AutoProvisioningSettings/CreateAutoProvisioningSettingsSubscription_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/AutoProvisioningSettings/CreateAutoProvisioningSettingsSubscription_example.json
 func ExampleAutoProvisioningSettingsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsecurity.NewAutoProvisioningSettingsClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewAutoProvisioningSettingsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Create(ctx,
 		"<setting-name>",
 		armsecurity.AutoProvisioningSetting{
-			Name: to.StringPtr("<name>"),
-			Type: to.StringPtr("<type>"),
-			ID:   to.StringPtr("<id>"),
+			Name: to.Ptr("<name>"),
+			Type: to.Ptr("<type>"),
+			ID:   to.Ptr("<id>"),
 			Properties: &armsecurity.AutoProvisioningSettingProperties{
-				AutoProvision: armsecurity.AutoProvision("On").ToPtr(),
+				AutoProvision: to.Ptr(armsecurity.AutoProvisionOn),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AutoProvisioningSettingsClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

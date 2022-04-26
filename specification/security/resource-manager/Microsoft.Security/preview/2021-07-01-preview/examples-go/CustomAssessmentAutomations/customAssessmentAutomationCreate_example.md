@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.4.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -12,31 +12,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/examples/CustomAssessmentAutomations/customAssessmentAutomationCreate_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/examples/CustomAssessmentAutomations/customAssessmentAutomationCreate_example.json
 func ExampleCustomAssessmentAutomationsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsecurity.NewCustomAssessmentAutomationsClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewCustomAssessmentAutomationsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Create(ctx,
 		"<resource-group-name>",
 		"<custom-assessment-automation-name>",
 		armsecurity.CustomAssessmentAutomationRequest{
 			Properties: &armsecurity.CustomAssessmentAutomationRequestProperties{
-				Description:            to.StringPtr("<description>"),
-				CompressedQuery:        to.StringPtr("<compressed-query>"),
-				DisplayName:            to.StringPtr("<display-name>"),
-				RemediationDescription: to.StringPtr("<remediation-description>"),
-				Severity:               armsecurity.SeverityEnum("Medium").ToPtr(),
-				SupportedCloud:         armsecurity.SupportedCloudEnum("AWS").ToPtr(),
+				Description:            to.Ptr("<description>"),
+				CompressedQuery:        to.Ptr("<compressed-query>"),
+				DisplayName:            to.Ptr("<display-name>"),
+				RemediationDescription: to.Ptr("<remediation-description>"),
+				Severity:               to.Ptr(armsecurity.SeverityEnumMedium),
+				SupportedCloud:         to.Ptr(armsecurity.SupportedCloudEnumAWS),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.CustomAssessmentAutomationsClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

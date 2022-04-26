@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicesbackup%2Fv0.3.1/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicesbackup%2Fv0.5.0/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicesbackup_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup"
 )
 
-// x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/AzureStorage/ProtectionContainers_Register.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/AzureStorage/ProtectionContainers_Register.json
 func ExampleProtectionContainersClient_Register() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armrecoveryservicesbackup.NewProtectionContainersClient("<subscription-id>", cred, nil)
+	client, err := armrecoveryservicesbackup.NewProtectionContainersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Register(ctx,
 		"<vault-name>",
 		"<resource-group-name>",
@@ -27,17 +32,19 @@ func ExampleProtectionContainersClient_Register() {
 		"<container-name>",
 		armrecoveryservicesbackup.ProtectionContainerResource{
 			Properties: &armrecoveryservicesbackup.AzureStorageContainer{
-				BackupManagementType:      armrecoveryservicesbackup.BackupManagementType("AzureStorage").ToPtr(),
-				ContainerType:             armrecoveryservicesbackup.ContainerType("StorageContainer").ToPtr(),
-				FriendlyName:              to.StringPtr("<friendly-name>"),
-				AcquireStorageAccountLock: armrecoveryservicesbackup.AcquireStorageAccountLock("Acquire").ToPtr(),
-				SourceResourceID:          to.StringPtr("<source-resource-id>"),
+				BackupManagementType:      to.Ptr(armrecoveryservicesbackup.BackupManagementTypeAzureStorage),
+				ContainerType:             to.Ptr(armrecoveryservicesbackup.ContainerTypeStorageContainer),
+				FriendlyName:              to.Ptr("<friendly-name>"),
+				AcquireStorageAccountLock: to.Ptr(armrecoveryservicesbackup.AcquireStorageAccountLockAcquire),
+				SourceResourceID:          to.Ptr("<source-resource-id>"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ProtectionContainersClientRegisterResult)
+	// TODO: use response item
+	_ = res
 }
 ```

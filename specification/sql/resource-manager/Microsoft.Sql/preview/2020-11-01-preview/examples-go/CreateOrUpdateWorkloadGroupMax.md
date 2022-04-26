@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.3.1/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CreateOrUpdateWorkloadGroupMax.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CreateOrUpdateWorkloadGroupMax.json
 func ExampleWorkloadGroupsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsql.NewWorkloadGroupsClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewWorkloadGroupsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
@@ -29,22 +34,25 @@ func ExampleWorkloadGroupsClient_BeginCreateOrUpdate() {
 		"<workload-group-name>",
 		armsql.WorkloadGroup{
 			Properties: &armsql.WorkloadGroupProperties{
-				Importance:                   to.StringPtr("<importance>"),
-				MaxResourcePercent:           to.Int32Ptr(100),
-				MaxResourcePercentPerRequest: to.Float64Ptr(3),
-				MinResourcePercent:           to.Int32Ptr(0),
-				MinResourcePercentPerRequest: to.Float64Ptr(3),
-				QueryExecutionTimeout:        to.Int32Ptr(0),
+				Importance:                   to.Ptr("<importance>"),
+				MaxResourcePercent:           to.Ptr[int32](100),
+				MaxResourcePercentPerRequest: to.Ptr[float64](3),
+				MinResourcePercent:           to.Ptr[int32](0),
+				MinResourcePercentPerRequest: to.Ptr[float64](3),
+				QueryExecutionTimeout:        to.Ptr[int32](0),
 			},
 		},
-		nil)
+		&armsql.WorkloadGroupsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.WorkloadGroupsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

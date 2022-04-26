@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.3.1/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -14,38 +14,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ImportDatabaseWithNetworkIsolation.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ImportDatabaseWithNetworkIsolation.json
 func ExampleDatabasesClient_BeginImport() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsql.NewDatabasesClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewDatabasesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginImport(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		"<database-name>",
 		armsql.ImportExistingDatabaseDefinition{
-			AdministratorLogin:         to.StringPtr("<administrator-login>"),
-			AdministratorLoginPassword: to.StringPtr("<administrator-login-password>"),
-			AuthenticationType:         to.StringPtr("<authentication-type>"),
+			AdministratorLogin:         to.Ptr("<administrator-login>"),
+			AdministratorLoginPassword: to.Ptr("<administrator-login-password>"),
+			AuthenticationType:         to.Ptr("<authentication-type>"),
 			NetworkIsolation: &armsql.NetworkIsolationSettings{
-				SQLServerResourceID:      to.StringPtr("<sqlserver-resource-id>"),
-				StorageAccountResourceID: to.StringPtr("<storage-account-resource-id>"),
+				SQLServerResourceID:      to.Ptr("<sqlserver-resource-id>"),
+				StorageAccountResourceID: to.Ptr("<storage-account-resource-id>"),
 			},
-			StorageKey:     to.StringPtr("<storage-key>"),
-			StorageKeyType: armsql.StorageKeyType("StorageAccessKey").ToPtr(),
-			StorageURI:     to.StringPtr("<storage-uri>"),
+			StorageKey:     to.Ptr("<storage-key>"),
+			StorageKeyType: to.Ptr(armsql.StorageKeyTypeStorageAccessKey),
+			StorageURI:     to.Ptr("<storage-uri>"),
 		},
-		nil)
+		&armsql.DatabasesClientBeginImportOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.DatabasesClientImportResult)
+	// TODO: use response item
+	_ = res
 }
 ```

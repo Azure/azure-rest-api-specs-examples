@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.3.1/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -14,41 +14,49 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerBlobAuditingCreateMax.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerBlobAuditingCreateMax.json
 func ExampleServerBlobAuditingPoliciesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsql.NewServerBlobAuditingPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewServerBlobAuditingPoliciesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		armsql.ServerBlobAuditingPolicy{
 			Properties: &armsql.ServerBlobAuditingPolicyProperties{
 				AuditActionsAndGroups: []*string{
-					to.StringPtr("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP"),
-					to.StringPtr("FAILED_DATABASE_AUTHENTICATION_GROUP"),
-					to.StringPtr("BATCH_COMPLETED_GROUP")},
-				IsAzureMonitorTargetEnabled:  to.BoolPtr(true),
-				IsStorageSecondaryKeyInUse:   to.BoolPtr(false),
-				QueueDelayMs:                 to.Int32Ptr(4000),
-				RetentionDays:                to.Int32Ptr(6),
-				State:                        armsql.BlobAuditingPolicyStateEnabled.ToPtr(),
-				StorageAccountAccessKey:      to.StringPtr("<storage-account-access-key>"),
-				StorageAccountSubscriptionID: to.StringPtr("<storage-account-subscription-id>"),
-				StorageEndpoint:              to.StringPtr("<storage-endpoint>"),
+					to.Ptr("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP"),
+					to.Ptr("FAILED_DATABASE_AUTHENTICATION_GROUP"),
+					to.Ptr("BATCH_COMPLETED_GROUP")},
+				IsAzureMonitorTargetEnabled:  to.Ptr(true),
+				IsStorageSecondaryKeyInUse:   to.Ptr(false),
+				QueueDelayMs:                 to.Ptr[int32](4000),
+				RetentionDays:                to.Ptr[int32](6),
+				State:                        to.Ptr(armsql.BlobAuditingPolicyStateEnabled),
+				StorageAccountAccessKey:      to.Ptr("<storage-account-access-key>"),
+				StorageAccountSubscriptionID: to.Ptr("<storage-account-subscription-id>"),
+				StorageEndpoint:              to.Ptr("<storage-endpoint>"),
 			},
 		},
-		nil)
+		&armsql.ServerBlobAuditingPoliciesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ServerBlobAuditingPoliciesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

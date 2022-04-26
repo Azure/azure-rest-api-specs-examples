@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmresources%2Fv0.3.1/sdk/resourcemanager/resources/armresources/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmresources%2Fv0.5.0/sdk/resourcemanager/resources/armresources/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armresources_test
@@ -11,14 +11,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources"
 )
 
-// x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/CalculateTemplateHash.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/CalculateTemplateHash.json
 func ExampleDeploymentsClient_CalculateTemplateHash() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armresources.NewDeploymentsClient("<subscription-id>", cred, nil)
+	client, err := armresources.NewDeploymentsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CalculateTemplateHash(ctx,
 		map[string]interface{}{
 			"$schema":        "http://schemas.management.azure.com/deploymentTemplate?api-version=2014-04-01-preview",
@@ -55,8 +60,10 @@ func ExampleDeploymentsClient_CalculateTemplateHash() {
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.DeploymentsClientCalculateTemplateHashResult)
+	// TODO: use response item
+	_ = res
 }
 ```

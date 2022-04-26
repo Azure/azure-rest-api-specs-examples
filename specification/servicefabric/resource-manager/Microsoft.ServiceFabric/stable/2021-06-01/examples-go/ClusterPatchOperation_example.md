@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv0.4.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv0.6.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabric_test
@@ -14,71 +14,79 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabric/armservicefabric"
 )
 
-// x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ClusterPatchOperation_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ClusterPatchOperation_example.json
 func ExampleClustersClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armservicefabric.NewClustersClient("<subscription-id>", cred, nil)
+	client, err := armservicefabric.NewClustersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<cluster-name>",
 		armservicefabric.ClusterUpdateParameters{
 			Properties: &armservicefabric.ClusterPropertiesUpdateParameters{
-				EventStoreServiceEnabled: to.BoolPtr(true),
+				EventStoreServiceEnabled: to.Ptr(true),
 				NodeTypes: []*armservicefabric.NodeTypeDescription{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						ApplicationPorts: &armservicefabric.EndpointRangeDescription{
-							EndPort:   to.Int32Ptr(30000),
-							StartPort: to.Int32Ptr(20000),
+							EndPort:   to.Ptr[int32](30000),
+							StartPort: to.Ptr[int32](20000),
 						},
-						ClientConnectionEndpointPort: to.Int32Ptr(19000),
-						DurabilityLevel:              armservicefabric.DurabilityLevel("Bronze").ToPtr(),
+						ClientConnectionEndpointPort: to.Ptr[int32](19000),
+						DurabilityLevel:              to.Ptr(armservicefabric.DurabilityLevelBronze),
 						EphemeralPorts: &armservicefabric.EndpointRangeDescription{
-							EndPort:   to.Int32Ptr(64000),
-							StartPort: to.Int32Ptr(49000),
+							EndPort:   to.Ptr[int32](64000),
+							StartPort: to.Ptr[int32](49000),
 						},
-						HTTPGatewayEndpointPort: to.Int32Ptr(19007),
-						IsPrimary:               to.BoolPtr(true),
-						VMInstanceCount:         to.Int32Ptr(5),
+						HTTPGatewayEndpointPort: to.Ptr[int32](19007),
+						IsPrimary:               to.Ptr(true),
+						VMInstanceCount:         to.Ptr[int32](5),
 					},
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						ApplicationPorts: &armservicefabric.EndpointRangeDescription{
-							EndPort:   to.Int32Ptr(2000),
-							StartPort: to.Int32Ptr(1000),
+							EndPort:   to.Ptr[int32](2000),
+							StartPort: to.Ptr[int32](1000),
 						},
-						ClientConnectionEndpointPort: to.Int32Ptr(0),
-						DurabilityLevel:              armservicefabric.DurabilityLevel("Bronze").ToPtr(),
+						ClientConnectionEndpointPort: to.Ptr[int32](0),
+						DurabilityLevel:              to.Ptr(armservicefabric.DurabilityLevelBronze),
 						EphemeralPorts: &armservicefabric.EndpointRangeDescription{
-							EndPort:   to.Int32Ptr(4000),
-							StartPort: to.Int32Ptr(3000),
+							EndPort:   to.Ptr[int32](4000),
+							StartPort: to.Ptr[int32](3000),
 						},
-						HTTPGatewayEndpointPort: to.Int32Ptr(0),
-						IsPrimary:               to.BoolPtr(false),
-						VMInstanceCount:         to.Int32Ptr(3),
+						HTTPGatewayEndpointPort: to.Ptr[int32](0),
+						IsPrimary:               to.Ptr(false),
+						VMInstanceCount:         to.Ptr[int32](3),
 					}},
-				ReliabilityLevel:              armservicefabric.ReliabilityLevel("Bronze").ToPtr(),
-				UpgradeMode:                   armservicefabric.UpgradeMode("Automatic").ToPtr(),
-				UpgradePauseEndTimestampUTC:   to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-25T22:00:00Z"); return t }()),
-				UpgradePauseStartTimestampUTC: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T22:00:00Z"); return t }()),
-				UpgradeWave:                   armservicefabric.ClusterUpgradeCadence("Wave").ToPtr(),
+				ReliabilityLevel:              to.Ptr(armservicefabric.ReliabilityLevelBronze),
+				UpgradeMode:                   to.Ptr(armservicefabric.UpgradeModeAutomatic),
+				UpgradePauseEndTimestampUTC:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-25T22:00:00Z"); return t }()),
+				UpgradePauseStartTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T22:00:00Z"); return t }()),
+				UpgradeWave:                   to.Ptr(armservicefabric.ClusterUpgradeCadence("Wave")),
 			},
 			Tags: map[string]*string{
-				"a": to.StringPtr("b"),
+				"a": to.Ptr("b"),
 			},
 		},
-		nil)
+		&armservicefabric.ClustersClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ClustersClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.2.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.4.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -14,30 +14,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/policyinsights/armpolicyinsights"
 )
 
-// x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_SummarizeManagementGroupScope.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_SummarizeManagementGroupScope.json
 func ExamplePolicyStatesClient_SummarizeForManagementGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpolicyinsights.NewPolicyStatesClient(cred, nil)
+	client, err := armpolicyinsights.NewPolicyStatesClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.SummarizeForManagementGroup(ctx,
-		armpolicyinsights.PolicyStatesSummaryResourceType("latest"),
+		armpolicyinsights.PolicyStatesSummaryResourceTypeLatest,
 		"<management-group-name>",
-		&armpolicyinsights.QueryOptions{Top: to.Int32Ptr(0),
-			Filter:    to.StringPtr("<filter>"),
+		&armpolicyinsights.QueryOptions{Top: to.Ptr[int32](0),
+			Filter:    to.Ptr("<filter>"),
 			OrderBy:   nil,
 			Select:    nil,
-			From:      to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00Z"); return t }()),
-			To:        to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T18:00:00Z"); return t }()),
+			From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00Z"); return t }()),
+			To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T18:00:00Z"); return t }()),
 			Apply:     nil,
 			SkipToken: nil,
 			Expand:    nil,
-		})
+		},
+		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.PolicyStatesClientSummarizeForManagementGroupResult)
+	// TODO: use response item
+	_ = res
 }
 ```

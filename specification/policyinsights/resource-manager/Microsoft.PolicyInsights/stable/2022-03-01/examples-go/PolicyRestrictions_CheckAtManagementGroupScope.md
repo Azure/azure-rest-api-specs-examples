@@ -7,26 +7,32 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/policyinsights/armpolicyinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/examples/Remediations_CancelManagementGroupScope.json
-func ExampleRemediationsClient_CancelAtManagementGroup() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/examples/PolicyRestrictions_CheckAtManagementGroupScope.json
+func ExamplePolicyRestrictionsClient_CheckAtManagementGroupScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armpolicyinsights.NewRemediationsClient("<subscription-id>", cred, nil)
+	client, err := armpolicyinsights.NewPolicyRestrictionsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	res, err := client.CancelAtManagementGroup(ctx,
+	res, err := client.CheckAtManagementGroupScope(ctx,
 		"<management-group-id>",
-		"<remediation-name>",
+		armpolicyinsights.CheckManagementGroupRestrictionsRequest{
+			PendingFields: []*armpolicyinsights.PendingField{
+				{
+					Field: to.Ptr("<field>"),
+				}},
+		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

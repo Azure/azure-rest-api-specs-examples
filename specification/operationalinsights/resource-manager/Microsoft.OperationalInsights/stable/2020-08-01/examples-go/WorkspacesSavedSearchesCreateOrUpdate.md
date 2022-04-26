@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationalinsights%2Farmoperationalinsights%2Fv0.3.1/sdk/resourcemanager/operationalinsights/armoperationalinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationalinsights%2Farmoperationalinsights%2Fv0.5.0/sdk/resourcemanager/operationalinsights/armoperationalinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armoperationalinsights_test
@@ -12,37 +12,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights"
 )
 
-// x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesSavedSearchesCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesSavedSearchesCreateOrUpdate.json
 func ExampleSavedSearchesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armoperationalinsights.NewSavedSearchesClient("<subscription-id>", cred, nil)
+	client, err := armoperationalinsights.NewSavedSearchesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
 		"<saved-search-id>",
 		armoperationalinsights.SavedSearch{
 			Properties: &armoperationalinsights.SavedSearchProperties{
-				Category:           to.StringPtr("<category>"),
-				DisplayName:        to.StringPtr("<display-name>"),
-				FunctionAlias:      to.StringPtr("<function-alias>"),
-				FunctionParameters: to.StringPtr("<function-parameters>"),
-				Query:              to.StringPtr("<query>"),
+				Category:           to.Ptr("<category>"),
+				DisplayName:        to.Ptr("<display-name>"),
+				FunctionAlias:      to.Ptr("<function-alias>"),
+				FunctionParameters: to.Ptr("<function-parameters>"),
+				Query:              to.Ptr("<query>"),
 				Tags: []*armoperationalinsights.Tag{
 					{
-						Name:  to.StringPtr("<name>"),
-						Value: to.StringPtr("<value>"),
+						Name:  to.Ptr("<name>"),
+						Value: to.Ptr("<value>"),
 					}},
-				Version: to.Int64Ptr(2),
+				Version: to.Ptr[int64](2),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.SavedSearchesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

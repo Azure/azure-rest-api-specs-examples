@@ -12,27 +12,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/DataSourcesCreate.json
-func ExampleDataSourcesClient_CreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPackQueriesPut.json
+func ExampleQueriesClient_Put() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armoperationalinsights.NewDataSourcesClient("<subscription-id>", cred, nil)
+	client, err := armoperationalinsights.NewQueriesClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	res, err := client.CreateOrUpdate(ctx,
+	res, err := client.Put(ctx,
 		"<resource-group-name>",
-		"<workspace-name>",
-		"<data-source-name>",
-		armoperationalinsights.DataSource{
-			Kind: to.Ptr(armoperationalinsights.DataSourceKindAzureActivityLog),
-			Properties: map[string]interface{}{
-				"LinkedResourceId": "/subscriptions/00000000-0000-0000-0000-00000000000/providers/microsoft.insights/eventtypes/management",
+		"<query-pack-name>",
+		"<id>",
+		armoperationalinsights.LogAnalyticsQueryPackQuery{
+			Properties: &armoperationalinsights.LogAnalyticsQueryPackQueryProperties{
+				Description: to.Ptr("<description>"),
+				Body:        to.Ptr("<body>"),
+				DisplayName: to.Ptr("<display-name>"),
+				Related: &armoperationalinsights.LogAnalyticsQueryPackQueryPropertiesRelated{
+					Categories: []*string{
+						to.Ptr("analytics")},
+				},
+				Tags: map[string][]*string{
+					"my-label": {
+						to.Ptr("label1")},
+					"my-other-label": {
+						to.Ptr("label2")},
+				},
 			},
 		},
 		nil)

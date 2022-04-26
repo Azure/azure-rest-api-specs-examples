@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.1/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.4.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/videoanalyzer/armvideoanalyzer"
 )
 
-// x-ms-original-file: specification/videoanalyzer/resource-manager/Microsoft.Media/preview/2021-11-01-preview/examples/access-policy-patch.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/videoanalyzer/resource-manager/Microsoft.Media/preview/2021-11-01-preview/examples/access-policy-patch.json
 func ExampleAccessPoliciesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armvideoanalyzer.NewAccessPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armvideoanalyzer.NewAccessPoliciesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<account-name>",
@@ -27,43 +32,45 @@ func ExampleAccessPoliciesClient_Update() {
 		armvideoanalyzer.AccessPolicyEntity{
 			Properties: &armvideoanalyzer.AccessPolicyProperties{
 				Authentication: &armvideoanalyzer.JwtAuthentication{
-					Type: to.StringPtr("<type>"),
+					Type: to.Ptr("<type>"),
 					Audiences: []*string{
-						to.StringPtr("audience1")},
+						to.Ptr("audience1")},
 					Claims: []*armvideoanalyzer.TokenClaim{
 						{
-							Name:  to.StringPtr("<name>"),
-							Value: to.StringPtr("<value>"),
+							Name:  to.Ptr("<name>"),
+							Value: to.Ptr("<value>"),
 						},
 						{
-							Name:  to.StringPtr("<name>"),
-							Value: to.StringPtr("<value>"),
+							Name:  to.Ptr("<name>"),
+							Value: to.Ptr("<value>"),
 						}},
 					Issuers: []*string{
-						to.StringPtr("issuer1"),
-						to.StringPtr("issuer2")},
+						to.Ptr("issuer1"),
+						to.Ptr("issuer2")},
 					Keys: []armvideoanalyzer.TokenKeyClassification{
 						&armvideoanalyzer.RsaTokenKey{
-							Type: to.StringPtr("<type>"),
-							Kid:  to.StringPtr("<kid>"),
-							Alg:  armvideoanalyzer.AccessPolicyRsaAlgo("RS256").ToPtr(),
-							E:    to.StringPtr("<e>"),
-							N:    to.StringPtr("<n>"),
+							Type: to.Ptr("<type>"),
+							Kid:  to.Ptr("<kid>"),
+							Alg:  to.Ptr(armvideoanalyzer.AccessPolicyRsaAlgoRS256),
+							E:    to.Ptr("<e>"),
+							N:    to.Ptr("<n>"),
 						},
 						&armvideoanalyzer.EccTokenKey{
-							Type: to.StringPtr("<type>"),
-							Kid:  to.StringPtr("<kid>"),
-							Alg:  armvideoanalyzer.AccessPolicyEccAlgo("ES256").ToPtr(),
-							X:    to.StringPtr("<x>"),
-							Y:    to.StringPtr("<y>"),
+							Type: to.Ptr("<type>"),
+							Kid:  to.Ptr("<kid>"),
+							Alg:  to.Ptr(armvideoanalyzer.AccessPolicyEccAlgoES256),
+							X:    to.Ptr("<x>"),
+							Y:    to.Ptr("<y>"),
 						}},
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AccessPoliciesClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.2.1/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvideoanalyzer%2Farmvideoanalyzer%2Fv0.4.0/sdk/resourcemanager/videoanalyzer/armvideoanalyzer/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvideoanalyzer_test
@@ -14,25 +14,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/videoanalyzer/armvideoanalyzer"
 )
 
-// x-ms-original-file: specification/videoanalyzer/resource-manager/Microsoft.Media/preview/2021-11-01-preview/examples/video-analyzer-accounts-create-or-update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/videoanalyzer/resource-manager/Microsoft.Media/preview/2021-11-01-preview/examples/video-analyzer-accounts-create-or-update.json
 func ExampleVideoAnalyzersClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armvideoanalyzer.NewVideoAnalyzersClient("<subscription-id>", cred, nil)
+	client, err := armvideoanalyzer.NewVideoAnalyzersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		armvideoanalyzer.VideoAnalyzer{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"tag1": to.StringPtr("value1"),
-				"tag2": to.StringPtr("value2"),
+				"tag1": to.Ptr("value1"),
+				"tag2": to.Ptr("value2"),
 			},
 			Identity: &armvideoanalyzer.Identity{
-				Type: to.StringPtr("<type>"),
+				Type: to.Ptr("<type>"),
 				UserAssignedIdentities: map[string]*armvideoanalyzer.UserAssignedManagedIdentity{
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {},
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2": {},
@@ -41,38 +46,41 @@ func ExampleVideoAnalyzersClient_BeginCreateOrUpdate() {
 			},
 			Properties: &armvideoanalyzer.Properties{
 				Encryption: &armvideoanalyzer.AccountEncryption{
-					Type: armvideoanalyzer.AccountEncryptionKeyType("SystemKey").ToPtr(),
+					Type: to.Ptr(armvideoanalyzer.AccountEncryptionKeyTypeSystemKey),
 				},
 				IotHubs: []*armvideoanalyzer.IotHub{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 						Identity: &armvideoanalyzer.ResourceIdentity{
-							UserAssignedIdentity: to.StringPtr("<user-assigned-identity>"),
+							UserAssignedIdentity: to.Ptr("<user-assigned-identity>"),
 						},
 					},
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 						Identity: &armvideoanalyzer.ResourceIdentity{
-							UserAssignedIdentity: to.StringPtr("<user-assigned-identity>"),
+							UserAssignedIdentity: to.Ptr("<user-assigned-identity>"),
 						},
 					}},
 				StorageAccounts: []*armvideoanalyzer.StorageAccount{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 						Identity: &armvideoanalyzer.ResourceIdentity{
-							UserAssignedIdentity: to.StringPtr("<user-assigned-identity>"),
+							UserAssignedIdentity: to.Ptr("<user-assigned-identity>"),
 						},
 					}},
 			},
 		},
-		nil)
+		&armvideoanalyzer.VideoAnalyzersClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VideoAnalyzersClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

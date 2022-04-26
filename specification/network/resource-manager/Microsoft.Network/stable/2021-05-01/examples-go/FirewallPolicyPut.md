@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,113 +14,121 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/FirewallPolicyPut.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/FirewallPolicyPut.json
 func ExampleFirewallPoliciesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewFirewallPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewFirewallPoliciesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<firewall-policy-name>",
 		armnetwork.FirewallPolicy{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"key1": to.StringPtr("value1"),
+				"key1": to.Ptr("value1"),
 			},
 			Properties: &armnetwork.FirewallPolicyPropertiesFormat{
 				DNSSettings: &armnetwork.DNSSettings{
-					EnableProxy:                 to.BoolPtr(true),
-					RequireProxyForNetworkRules: to.BoolPtr(false),
+					EnableProxy:                 to.Ptr(true),
+					RequireProxyForNetworkRules: to.Ptr(false),
 					Servers: []*string{
-						to.StringPtr("30.3.4.5")},
+						to.Ptr("30.3.4.5")},
 				},
 				ExplicitProxySettings: &armnetwork.ExplicitProxySettings{
-					EnableExplicitProxy: to.BoolPtr(true),
-					HTTPPort:            to.Int32Ptr(8087),
-					HTTPSPort:           to.Int32Ptr(8087),
-					PacFile:             to.StringPtr("<pac-file>"),
-					PacFilePort:         to.Int32Ptr(8087),
+					EnableExplicitProxy: to.Ptr(true),
+					HTTPPort:            to.Ptr[int32](8087),
+					HTTPSPort:           to.Ptr[int32](8087),
+					PacFile:             to.Ptr("<pac-file>"),
+					PacFilePort:         to.Ptr[int32](8087),
 				},
 				Insights: &armnetwork.FirewallPolicyInsights{
-					IsEnabled: to.BoolPtr(true),
+					IsEnabled: to.Ptr(true),
 					LogAnalyticsResources: &armnetwork.FirewallPolicyLogAnalyticsResources{
 						DefaultWorkspaceID: &armnetwork.SubResource{
-							ID: to.StringPtr("<id>"),
+							ID: to.Ptr("<id>"),
 						},
 						Workspaces: []*armnetwork.FirewallPolicyLogAnalyticsWorkspace{
 							{
-								Region: to.StringPtr("<region>"),
+								Region: to.Ptr("<region>"),
 								WorkspaceID: &armnetwork.SubResource{
-									ID: to.StringPtr("<id>"),
+									ID: to.Ptr("<id>"),
 								},
 							},
 							{
-								Region: to.StringPtr("<region>"),
+								Region: to.Ptr("<region>"),
 								WorkspaceID: &armnetwork.SubResource{
-									ID: to.StringPtr("<id>"),
+									ID: to.Ptr("<id>"),
 								},
 							}},
 					},
-					RetentionDays: to.Int32Ptr(100),
+					RetentionDays: to.Ptr[int32](100),
 				},
 				IntrusionDetection: &armnetwork.FirewallPolicyIntrusionDetection{
 					Configuration: &armnetwork.FirewallPolicyIntrusionDetectionConfiguration{
 						BypassTrafficSettings: []*armnetwork.FirewallPolicyIntrusionDetectionBypassTrafficSpecifications{
 							{
-								Name:        to.StringPtr("<name>"),
-								Description: to.StringPtr("<description>"),
+								Name:        to.Ptr("<name>"),
+								Description: to.Ptr("<description>"),
 								DestinationAddresses: []*string{
-									to.StringPtr("5.6.7.8")},
+									to.Ptr("5.6.7.8")},
 								DestinationPorts: []*string{
-									to.StringPtr("*")},
+									to.Ptr("*")},
 								SourceAddresses: []*string{
-									to.StringPtr("1.2.3.4")},
-								Protocol: armnetwork.FirewallPolicyIntrusionDetectionProtocol("TCP").ToPtr(),
+									to.Ptr("1.2.3.4")},
+								Protocol: to.Ptr(armnetwork.FirewallPolicyIntrusionDetectionProtocolTCP),
 							}},
 						SignatureOverrides: []*armnetwork.FirewallPolicyIntrusionDetectionSignatureSpecification{
 							{
-								ID:   to.StringPtr("<id>"),
-								Mode: armnetwork.FirewallPolicyIntrusionDetectionStateType("Deny").ToPtr(),
+								ID:   to.Ptr("<id>"),
+								Mode: to.Ptr(armnetwork.FirewallPolicyIntrusionDetectionStateTypeDeny),
 							}},
 					},
-					Mode: armnetwork.FirewallPolicyIntrusionDetectionStateType("Alert").ToPtr(),
+					Mode: to.Ptr(armnetwork.FirewallPolicyIntrusionDetectionStateTypeAlert),
 				},
 				SKU: &armnetwork.FirewallPolicySKU{
-					Tier: armnetwork.FirewallPolicySKUTier("Premium").ToPtr(),
+					Tier: to.Ptr(armnetwork.FirewallPolicySKUTierPremium),
 				},
 				Snat: &armnetwork.FirewallPolicySNAT{
 					PrivateRanges: []*string{
-						to.StringPtr("IANAPrivateRanges")},
+						to.Ptr("IANAPrivateRanges")},
 				},
 				SQL: &armnetwork.FirewallPolicySQL{
-					AllowSQLRedirect: to.BoolPtr(true),
+					AllowSQLRedirect: to.Ptr(true),
 				},
-				ThreatIntelMode: armnetwork.AzureFirewallThreatIntelMode("Alert").ToPtr(),
+				ThreatIntelMode: to.Ptr(armnetwork.AzureFirewallThreatIntelModeAlert),
 				ThreatIntelWhitelist: &armnetwork.FirewallPolicyThreatIntelWhitelist{
 					Fqdns: []*string{
-						to.StringPtr("*.microsoft.com")},
+						to.Ptr("*.microsoft.com")},
 					IPAddresses: []*string{
-						to.StringPtr("20.3.4.5")},
+						to.Ptr("20.3.4.5")},
 				},
 				TransportSecurity: &armnetwork.FirewallPolicyTransportSecurity{
 					CertificateAuthority: &armnetwork.FirewallPolicyCertificateAuthority{
-						Name:             to.StringPtr("<name>"),
-						KeyVaultSecretID: to.StringPtr("<key-vault-secret-id>"),
+						Name:             to.Ptr("<name>"),
+						KeyVaultSecretID: to.Ptr("<key-vault-secret-id>"),
 					},
 				},
 			},
 		},
-		nil)
+		&armnetwork.FirewallPoliciesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.FirewallPoliciesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

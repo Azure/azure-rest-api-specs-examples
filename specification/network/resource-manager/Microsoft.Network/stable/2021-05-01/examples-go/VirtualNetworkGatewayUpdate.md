@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,110 +14,118 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/VirtualNetworkGatewayUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/VirtualNetworkGatewayUpdate.json
 func ExampleVirtualNetworkGatewaysClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewVirtualNetworkGatewaysClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewVirtualNetworkGatewaysClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<virtual-network-gateway-name>",
 		armnetwork.VirtualNetworkGateway{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armnetwork.VirtualNetworkGatewayPropertiesFormat{
-				Active: to.BoolPtr(false),
+				Active: to.Ptr(false),
 				BgpSettings: &armnetwork.BgpSettings{
-					Asn:               to.Int64Ptr(65515),
-					BgpPeeringAddress: to.StringPtr("<bgp-peering-address>"),
-					PeerWeight:        to.Int32Ptr(0),
+					Asn:               to.Ptr[int64](65515),
+					BgpPeeringAddress: to.Ptr("<bgp-peering-address>"),
+					PeerWeight:        to.Ptr[int32](0),
 				},
 				CustomRoutes: &armnetwork.AddressSpace{
 					AddressPrefixes: []*string{
-						to.StringPtr("101.168.0.6/32")},
+						to.Ptr("101.168.0.6/32")},
 				},
-				DisableIPSecReplayProtection:    to.BoolPtr(false),
-				EnableBgp:                       to.BoolPtr(false),
-				EnableBgpRouteTranslationForNat: to.BoolPtr(false),
-				EnableDNSForwarding:             to.BoolPtr(true),
-				GatewayType:                     armnetwork.VirtualNetworkGatewayType("Vpn").ToPtr(),
+				DisableIPSecReplayProtection:    to.Ptr(false),
+				EnableBgp:                       to.Ptr(false),
+				EnableBgpRouteTranslationForNat: to.Ptr(false),
+				EnableDNSForwarding:             to.Ptr(true),
+				GatewayType:                     to.Ptr(armnetwork.VirtualNetworkGatewayTypeVPN),
 				IPConfigurations: []*armnetwork.VirtualNetworkGatewayIPConfiguration{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.VirtualNetworkGatewayIPConfigurationPropertiesFormat{
-							PrivateIPAllocationMethod: armnetwork.IPAllocationMethod("Dynamic").ToPtr(),
+							PrivateIPAllocationMethod: to.Ptr(armnetwork.IPAllocationMethodDynamic),
 							PublicIPAddress: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
 							Subnet: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
 						},
 					}},
 				NatRules: []*armnetwork.VirtualNetworkGatewayNatRule{
 					{
-						ID:   to.StringPtr("<id>"),
-						Name: to.StringPtr("<name>"),
+						ID:   to.Ptr("<id>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.VirtualNetworkGatewayNatRuleProperties{
-							Type: armnetwork.VPNNatRuleType("Static").ToPtr(),
+							Type: to.Ptr(armnetwork.VPNNatRuleTypeStatic),
 							ExternalMappings: []*armnetwork.VPNNatRuleMapping{
 								{
-									AddressSpace: to.StringPtr("<address-space>"),
+									AddressSpace: to.Ptr("<address-space>"),
 								}},
 							InternalMappings: []*armnetwork.VPNNatRuleMapping{
 								{
-									AddressSpace: to.StringPtr("<address-space>"),
+									AddressSpace: to.Ptr("<address-space>"),
 								}},
-							IPConfigurationID: to.StringPtr("<ipconfiguration-id>"),
-							Mode:              armnetwork.VPNNatRuleMode("EgressSnat").ToPtr(),
+							IPConfigurationID: to.Ptr("<ipconfiguration-id>"),
+							Mode:              to.Ptr(armnetwork.VPNNatRuleModeEgressSnat),
 						},
 					},
 					{
-						ID:   to.StringPtr("<id>"),
-						Name: to.StringPtr("<name>"),
+						ID:   to.Ptr("<id>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.VirtualNetworkGatewayNatRuleProperties{
-							Type: armnetwork.VPNNatRuleType("Static").ToPtr(),
+							Type: to.Ptr(armnetwork.VPNNatRuleTypeStatic),
 							ExternalMappings: []*armnetwork.VPNNatRuleMapping{
 								{
-									AddressSpace: to.StringPtr("<address-space>"),
+									AddressSpace: to.Ptr("<address-space>"),
 								}},
 							InternalMappings: []*armnetwork.VPNNatRuleMapping{
 								{
-									AddressSpace: to.StringPtr("<address-space>"),
+									AddressSpace: to.Ptr("<address-space>"),
 								}},
-							IPConfigurationID: to.StringPtr("<ipconfiguration-id>"),
-							Mode:              armnetwork.VPNNatRuleMode("IngressSnat").ToPtr(),
+							IPConfigurationID: to.Ptr("<ipconfiguration-id>"),
+							Mode:              to.Ptr(armnetwork.VPNNatRuleModeIngressSnat),
 						},
 					}},
 				SKU: &armnetwork.VirtualNetworkGatewaySKU{
-					Name: armnetwork.VirtualNetworkGatewaySKUName("VpnGw1").ToPtr(),
-					Tier: armnetwork.VirtualNetworkGatewaySKUTier("VpnGw1").ToPtr(),
+					Name: to.Ptr(armnetwork.VirtualNetworkGatewaySKUNameVPNGw1),
+					Tier: to.Ptr(armnetwork.VirtualNetworkGatewaySKUTierVPNGw1),
 				},
 				VPNClientConfiguration: &armnetwork.VPNClientConfiguration{
 					RadiusServers: []*armnetwork.RadiusServer{
 						{
-							RadiusServerAddress: to.StringPtr("<radius-server-address>"),
-							RadiusServerScore:   to.Int64Ptr(20),
-							RadiusServerSecret:  to.StringPtr("<radius-server-secret>"),
+							RadiusServerAddress: to.Ptr("<radius-server-address>"),
+							RadiusServerScore:   to.Ptr[int64](20),
+							RadiusServerSecret:  to.Ptr("<radius-server-secret>"),
 						}},
 					VPNClientProtocols: []*armnetwork.VPNClientProtocol{
-						armnetwork.VPNClientProtocol("OpenVPN").ToPtr()},
+						to.Ptr(armnetwork.VPNClientProtocolOpenVPN)},
 					VPNClientRevokedCertificates: []*armnetwork.VPNClientRevokedCertificate{},
 					VPNClientRootCertificates:    []*armnetwork.VPNClientRootCertificate{},
 				},
-				VPNType: armnetwork.VPNType("RouteBased").ToPtr(),
+				VPNType: to.Ptr(armnetwork.VPNTypeRouteBased),
 			},
 		},
-		nil)
+		&armnetwork.VirtualNetworkGatewaysClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VirtualNetworkGatewaysClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

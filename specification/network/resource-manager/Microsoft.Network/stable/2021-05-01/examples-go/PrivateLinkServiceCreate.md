@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,61 +14,69 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/PrivateLinkServiceCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/PrivateLinkServiceCreate.json
 func ExamplePrivateLinkServicesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewPrivateLinkServicesClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewPrivateLinkServicesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<service-name>",
 		armnetwork.PrivateLinkService{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armnetwork.PrivateLinkServiceProperties{
 				AutoApproval: &armnetwork.PrivateLinkServicePropertiesAutoApproval{
 					Subscriptions: []*string{
-						to.StringPtr("subscription1"),
-						to.StringPtr("subscription2")},
+						to.Ptr("subscription1"),
+						to.Ptr("subscription2")},
 				},
 				Fqdns: []*string{
-					to.StringPtr("fqdn1"),
-					to.StringPtr("fqdn2"),
-					to.StringPtr("fqdn3")},
+					to.Ptr("fqdn1"),
+					to.Ptr("fqdn2"),
+					to.Ptr("fqdn3")},
 				IPConfigurations: []*armnetwork.PrivateLinkServiceIPConfiguration{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.PrivateLinkServiceIPConfigurationProperties{
-							PrivateIPAddress:          to.StringPtr("<private-ipaddress>"),
-							PrivateIPAddressVersion:   armnetwork.IPVersion("IPv4").ToPtr(),
-							PrivateIPAllocationMethod: armnetwork.IPAllocationMethod("Static").ToPtr(),
+							PrivateIPAddress:          to.Ptr("<private-ipaddress>"),
+							PrivateIPAddressVersion:   to.Ptr(armnetwork.IPVersionIPv4),
+							PrivateIPAllocationMethod: to.Ptr(armnetwork.IPAllocationMethodStatic),
 							Subnet: &armnetwork.Subnet{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
 						},
 					}},
 				LoadBalancerFrontendIPConfigurations: []*armnetwork.FrontendIPConfiguration{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 					}},
 				Visibility: &armnetwork.PrivateLinkServicePropertiesVisibility{
 					Subscriptions: []*string{
-						to.StringPtr("subscription1"),
-						to.StringPtr("subscription2"),
-						to.StringPtr("subscription3")},
+						to.Ptr("subscription1"),
+						to.Ptr("subscription2"),
+						to.Ptr("subscription3")},
 				},
 			},
 		},
-		nil)
+		&armnetwork.PrivateLinkServicesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.PrivateLinkServicesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.3.1/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetwork%2Farmnetwork%2Fv0.5.0/sdk/resourcemanager/network/armnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetwork_test
@@ -14,95 +14,103 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork"
 )
 
-// x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/VpnGatewayPut.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/network/resource-manager/Microsoft.Network/stable/2021-05-01/examples/VpnGatewayPut.json
 func ExampleVPNGatewaysClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnetwork.NewVPNGatewaysClient("<subscription-id>", cred, nil)
+	client, err := armnetwork.NewVPNGatewaysClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<gateway-name>",
 		armnetwork.VPNGateway{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"key1": to.StringPtr("value1"),
+				"key1": to.Ptr("value1"),
 			},
 			Properties: &armnetwork.VPNGatewayProperties{
 				BgpSettings: &armnetwork.BgpSettings{
-					Asn: to.Int64Ptr(65515),
+					Asn: to.Ptr[int64](65515),
 					BgpPeeringAddresses: []*armnetwork.IPConfigurationBgpPeeringAddress{
 						{
 							CustomBgpIPAddresses: []*string{
-								to.StringPtr("169.254.21.5")},
-							IPConfigurationID: to.StringPtr("<ipconfiguration-id>"),
+								to.Ptr("169.254.21.5")},
+							IPConfigurationID: to.Ptr("<ipconfiguration-id>"),
 						},
 						{
 							CustomBgpIPAddresses: []*string{
-								to.StringPtr("169.254.21.10")},
-							IPConfigurationID: to.StringPtr("<ipconfiguration-id>"),
+								to.Ptr("169.254.21.10")},
+							IPConfigurationID: to.Ptr("<ipconfiguration-id>"),
 						}},
-					PeerWeight: to.Int32Ptr(0),
+					PeerWeight: to.Ptr[int32](0),
 				},
 				Connections: []*armnetwork.VPNConnection{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.VPNConnectionProperties{
 							RemoteVPNSite: &armnetwork.SubResource{
-								ID: to.StringPtr("<id>"),
+								ID: to.Ptr("<id>"),
 							},
 							VPNLinkConnections: []*armnetwork.VPNSiteLinkConnection{
 								{
-									Name: to.StringPtr("<name>"),
+									Name: to.Ptr("<name>"),
 									Properties: &armnetwork.VPNSiteLinkConnectionProperties{
-										ConnectionBandwidth: to.Int32Ptr(200),
+										ConnectionBandwidth: to.Ptr[int32](200),
 										EgressNatRules: []*armnetwork.SubResource{
 											{
-												ID: to.StringPtr("<id>"),
+												ID: to.Ptr("<id>"),
 											}},
-										SharedKey:                 to.StringPtr("<shared-key>"),
-										VPNConnectionProtocolType: armnetwork.VirtualNetworkGatewayConnectionProtocol("IKEv2").ToPtr(),
+										SharedKey:                 to.Ptr("<shared-key>"),
+										VPNConnectionProtocolType: to.Ptr(armnetwork.VirtualNetworkGatewayConnectionProtocolIKEv2),
 										VPNSiteLink: &armnetwork.SubResource{
-											ID: to.StringPtr("<id>"),
+											ID: to.Ptr("<id>"),
 										},
 									},
 								}},
 						},
 					}},
-				EnableBgpRouteTranslationForNat: to.BoolPtr(false),
-				IsRoutingPreferenceInternet:     to.BoolPtr(false),
+				EnableBgpRouteTranslationForNat: to.Ptr(false),
+				IsRoutingPreferenceInternet:     to.Ptr(false),
 				NatRules: []*armnetwork.VPNGatewayNatRule{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armnetwork.VPNGatewayNatRuleProperties{
-							Type: armnetwork.VPNNatRuleType("Static").ToPtr(),
+							Type: to.Ptr(armnetwork.VPNNatRuleTypeStatic),
 							ExternalMappings: []*armnetwork.VPNNatRuleMapping{
 								{
-									AddressSpace: to.StringPtr("<address-space>"),
+									AddressSpace: to.Ptr("<address-space>"),
 								}},
 							InternalMappings: []*armnetwork.VPNNatRuleMapping{
 								{
-									AddressSpace: to.StringPtr("<address-space>"),
+									AddressSpace: to.Ptr("<address-space>"),
 								}},
-							IPConfigurationID: to.StringPtr("<ipconfiguration-id>"),
-							Mode:              armnetwork.VPNNatRuleMode("EgressSnat").ToPtr(),
+							IPConfigurationID: to.Ptr("<ipconfiguration-id>"),
+							Mode:              to.Ptr(armnetwork.VPNNatRuleModeEgressSnat),
 						},
 					}},
 				VirtualHub: &armnetwork.SubResource{
-					ID: to.StringPtr("<id>"),
+					ID: to.Ptr("<id>"),
 				},
 			},
 		},
-		nil)
+		&armnetwork.VPNGatewaysClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VPNGatewaysClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

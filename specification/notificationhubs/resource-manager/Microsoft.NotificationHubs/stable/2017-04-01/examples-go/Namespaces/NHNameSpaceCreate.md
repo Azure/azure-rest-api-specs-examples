@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnotificationhubs%2Farmnotificationhubs%2Fv0.3.1/sdk/resourcemanager/notificationhubs/armnotificationhubs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnotificationhubs%2Farmnotificationhubs%2Fv0.5.0/sdk/resourcemanager/notificationhubs/armnotificationhubs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnotificationhubs_test
@@ -12,32 +12,39 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/notificationhubs/armnotificationhubs"
 )
 
-// x-ms-original-file: specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/examples/Namespaces/NHNameSpaceCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/notificationhubs/resource-manager/Microsoft.NotificationHubs/stable/2017-04-01/examples/Namespaces/NHNameSpaceCreate.json
 func ExampleNamespacesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armnotificationhubs.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armnotificationhubs.NewNamespacesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<namespace-name>",
 		armnotificationhubs.NamespaceCreateOrUpdateParameters{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			SKU: &armnotificationhubs.SKU{
-				Name: armnotificationhubs.SKUName("Standard").ToPtr(),
-				Tier: to.StringPtr("<tier>"),
+				Name: to.Ptr(armnotificationhubs.SKUNameStandard),
+				Tier: to.Ptr("<tier>"),
 			},
 			Tags: map[string]*string{
-				"tag1": to.StringPtr("value1"),
-				"tag2": to.StringPtr("value2"),
+				"tag1": to.Ptr("value1"),
+				"tag2": to.Ptr("value2"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.NamespacesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

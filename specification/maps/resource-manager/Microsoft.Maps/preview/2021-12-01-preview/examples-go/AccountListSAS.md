@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.2.1/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.4.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -12,30 +12,37 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps"
 )
 
-// x-ms-original-file: specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/AccountListSAS.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/AccountListSAS.json
 func ExampleAccountsClient_ListSas() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.ListSas(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		armmaps.AccountSasParameters{
-			Expiry:           to.StringPtr("<expiry>"),
-			MaxRatePerSecond: to.Int32Ptr(500),
-			PrincipalID:      to.StringPtr("<principal-id>"),
+			Expiry:           to.Ptr("<expiry>"),
+			MaxRatePerSecond: to.Ptr[int32](500),
+			PrincipalID:      to.Ptr("<principal-id>"),
 			Regions: []*string{
-				to.StringPtr("eastus")},
-			SigningKey: armmaps.SigningKey("primaryKey").ToPtr(),
-			Start:      to.StringPtr("<start>"),
+				to.Ptr("eastus")},
+			SigningKey: to.Ptr(armmaps.SigningKeyPrimaryKey),
+			Start:      to.Ptr("<start>"),
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AccountsClientListSasResult)
+	// TODO: use response item
+	_ = res
 }
 ```

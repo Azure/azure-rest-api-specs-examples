@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.2.1/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.4.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -12,31 +12,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps"
 )
 
-// x-ms-original-file: specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/CreateMapsCreator.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/CreateMapsCreator.json
 func ExampleCreatorsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmaps.NewCreatorsClient("<subscription-id>", cred, nil)
+	client, err := armmaps.NewCreatorsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		"<creator-name>",
 		armmaps.Creator{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"test": to.StringPtr("true"),
+				"test": to.Ptr("true"),
 			},
 			Properties: &armmaps.CreatorProperties{
-				StorageUnits: to.Int32Ptr(5),
+				StorageUnits: to.Ptr[int32](5),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.CreatorsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

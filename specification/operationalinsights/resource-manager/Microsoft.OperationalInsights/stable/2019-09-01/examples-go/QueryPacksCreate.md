@@ -12,28 +12,25 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/DataSourcesCreate.json
-func ExampleDataSourcesClient_CreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPacksCreate.json
+func ExampleQueryPacksClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armoperationalinsights.NewDataSourcesClient("<subscription-id>", cred, nil)
+	client, err := armoperationalinsights.NewQueryPacksClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
-		"<workspace-name>",
-		"<data-source-name>",
-		armoperationalinsights.DataSource{
-			Kind: to.Ptr(armoperationalinsights.DataSourceKindAzureActivityLog),
-			Properties: map[string]interface{}{
-				"LinkedResourceId": "/subscriptions/00000000-0000-0000-0000-00000000000/providers/microsoft.insights/eventtypes/management",
-			},
+		"<query-pack-name>",
+		armoperationalinsights.LogAnalyticsQueryPack{
+			Location:   to.Ptr("<location>"),
+			Properties: &armoperationalinsights.LogAnalyticsQueryPackProperties{},
 		},
 		nil)
 	if err != nil {

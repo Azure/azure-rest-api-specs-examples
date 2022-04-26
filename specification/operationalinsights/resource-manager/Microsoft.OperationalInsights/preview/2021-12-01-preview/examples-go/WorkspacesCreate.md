@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationalinsights%2Farmoperationalinsights%2Fv0.3.1/sdk/resourcemanager/operationalinsights/armoperationalinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationalinsights%2Farmoperationalinsights%2Fv0.5.0/sdk/resourcemanager/operationalinsights/armoperationalinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armoperationalinsights_test
@@ -14,37 +14,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights"
 )
 
-// x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/examples/WorkspacesCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/examples/WorkspacesCreate.json
 func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armoperationalinsights.NewWorkspacesClient("<subscription-id>", cred, nil)
+	client, err := armoperationalinsights.NewWorkspacesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
 		armoperationalinsights.Workspace{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"tag1": to.StringPtr("val1"),
+				"tag1": to.Ptr("val1"),
 			},
 			Properties: &armoperationalinsights.WorkspaceProperties{
-				RetentionInDays: to.Int32Ptr(30),
+				RetentionInDays: to.Ptr[int32](30),
 				SKU: &armoperationalinsights.WorkspaceSKU{
-					Name: armoperationalinsights.WorkspaceSKUNameEnum("PerGB2018").ToPtr(),
+					Name: to.Ptr(armoperationalinsights.WorkspaceSKUNameEnumPerGB2018),
 				},
 			},
 		},
-		nil)
+		&armoperationalinsights.WorkspacesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.WorkspacesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

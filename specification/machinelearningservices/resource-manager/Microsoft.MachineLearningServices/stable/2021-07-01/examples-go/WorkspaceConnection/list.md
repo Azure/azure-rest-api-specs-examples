@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.2.1/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.4.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -12,23 +12,34 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearningservices/armmachinelearningservices"
 )
 
-// x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/examples/WorkspaceConnection/list.json
-func ExampleWorkspaceConnectionsClient_List() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/examples/WorkspaceConnection/list.json
+func ExampleWorkspaceConnectionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmachinelearningservices.NewWorkspaceConnectionsClient("<subscription-id>", cred, nil)
-	res, err := client.List(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
-		&armmachinelearningservices.WorkspaceConnectionsClientListOptions{Target: to.StringPtr("<target>"),
-			Category: to.StringPtr("<category>"),
-		})
+	client, err := armmachinelearningservices.NewWorkspaceConnectionsClient("<subscription-id>", cred, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to create client: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.WorkspaceConnectionsClientListResult)
+	pager := client.NewListPager("<resource-group-name>",
+		"<workspace-name>",
+		&armmachinelearningservices.WorkspaceConnectionsClientListOptions{Target: to.Ptr("<target>"),
+			Category: to.Ptr("<category>"),
+		})
+	for pager.More() {
+		nextResult, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+			return
+		}
+		for _, v := range nextResult.Value {
+			// TODO: use page item
+			_ = v
+		}
+	}
 }
 ```

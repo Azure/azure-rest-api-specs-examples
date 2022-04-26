@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fredhatopenshift%2Farmredhatopenshift%2Fv0.2.1/sdk/resourcemanager/redhatopenshift/armredhatopenshift/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fredhatopenshift%2Farmredhatopenshift%2Fv0.4.0/sdk/resourcemanager/redhatopenshift/armredhatopenshift/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armredhatopenshift_test
@@ -14,66 +14,74 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redhatopenshift/armredhatopenshift"
 )
 
-// x-ms-original-file: specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/stable/2020-04-30/examples/OpenShiftClusters_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/redhatopenshift/resource-manager/Microsoft.RedHatOpenShift/stable/2020-04-30/examples/OpenShiftClusters_Update.json
 func ExampleOpenShiftClustersClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armredhatopenshift.NewOpenShiftClustersClient("<subscription-id>", cred, nil)
+	client, err := armredhatopenshift.NewOpenShiftClustersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		armredhatopenshift.OpenShiftClusterUpdate{
 			Properties: &armredhatopenshift.OpenShiftClusterProperties{
 				ApiserverProfile: &armredhatopenshift.APIServerProfile{
-					Visibility: armredhatopenshift.Visibility("Public").ToPtr(),
+					Visibility: to.Ptr(armredhatopenshift.VisibilityPublic),
 				},
 				ClusterProfile: &armredhatopenshift.ClusterProfile{
-					Domain:          to.StringPtr("<domain>"),
-					PullSecret:      to.StringPtr("<pull-secret>"),
-					ResourceGroupID: to.StringPtr("<resource-group-id>"),
+					Domain:          to.Ptr("<domain>"),
+					PullSecret:      to.Ptr("<pull-secret>"),
+					ResourceGroupID: to.Ptr("<resource-group-id>"),
 				},
 				ConsoleProfile: &armredhatopenshift.ConsoleProfile{},
 				IngressProfiles: []*armredhatopenshift.IngressProfile{
 					{
-						Name:       to.StringPtr("<name>"),
-						Visibility: armredhatopenshift.Visibility("Public").ToPtr(),
+						Name:       to.Ptr("<name>"),
+						Visibility: to.Ptr(armredhatopenshift.VisibilityPublic),
 					}},
 				MasterProfile: &armredhatopenshift.MasterProfile{
-					SubnetID: to.StringPtr("<subnet-id>"),
-					VMSize:   armredhatopenshift.VMSize("Standard_D8s_v3").ToPtr(),
+					SubnetID: to.Ptr("<subnet-id>"),
+					VMSize:   to.Ptr(armredhatopenshift.VMSizeStandardD8SV3),
 				},
 				NetworkProfile: &armredhatopenshift.NetworkProfile{
-					PodCidr:     to.StringPtr("<pod-cidr>"),
-					ServiceCidr: to.StringPtr("<service-cidr>"),
+					PodCidr:     to.Ptr("<pod-cidr>"),
+					ServiceCidr: to.Ptr("<service-cidr>"),
 				},
 				ServicePrincipalProfile: &armredhatopenshift.ServicePrincipalProfile{
-					ClientID:     to.StringPtr("<client-id>"),
-					ClientSecret: to.StringPtr("<client-secret>"),
+					ClientID:     to.Ptr("<client-id>"),
+					ClientSecret: to.Ptr("<client-secret>"),
 				},
 				WorkerProfiles: []*armredhatopenshift.WorkerProfile{
 					{
-						Name:       to.StringPtr("<name>"),
-						Count:      to.Int32Ptr(3),
-						DiskSizeGB: to.Int32Ptr(128),
-						SubnetID:   to.StringPtr("<subnet-id>"),
-						VMSize:     armredhatopenshift.VMSize("Standard_D2s_v3").ToPtr(),
+						Name:       to.Ptr("<name>"),
+						Count:      to.Ptr[int32](3),
+						DiskSizeGB: to.Ptr[int32](128),
+						SubnetID:   to.Ptr("<subnet-id>"),
+						VMSize:     to.Ptr(armredhatopenshift.VMSizeStandardD2SV3),
 					}},
 			},
 			Tags: map[string]*string{
-				"key": to.StringPtr("value"),
+				"key": to.Ptr("value"),
 			},
 		},
-		nil)
+		&armredhatopenshift.OpenShiftClustersClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.OpenShiftClustersClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

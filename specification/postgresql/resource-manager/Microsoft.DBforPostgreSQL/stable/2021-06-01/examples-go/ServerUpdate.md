@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresqlflexibleservers%2Fv0.3.1/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresqlflexibleservers%2Fv0.5.0/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresqlflexibleservers_test
@@ -14,42 +14,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers"
 )
 
-// x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/examples/ServerUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/examples/ServerUpdate.json
 func ExampleServersClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armpostgresqlflexibleservers.NewServersClient("<subscription-id>", cred, nil)
+	client, err := armpostgresqlflexibleservers.NewServersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		armpostgresqlflexibleservers.ServerForUpdate{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armpostgresqlflexibleservers.ServerPropertiesForUpdate{
-				AdministratorLoginPassword: to.StringPtr("<administrator-login-password>"),
+				AdministratorLoginPassword: to.Ptr("<administrator-login-password>"),
 				Backup: &armpostgresqlflexibleservers.Backup{
-					BackupRetentionDays: to.Int32Ptr(20),
+					BackupRetentionDays: to.Ptr[int32](20),
 				},
-				CreateMode: armpostgresqlflexibleservers.CreateModeForUpdate("Update").ToPtr(),
+				CreateMode: to.Ptr(armpostgresqlflexibleservers.CreateModeForUpdateUpdate),
 				Storage: &armpostgresqlflexibleservers.Storage{
-					StorageSizeGB: to.Int32Ptr(1024),
+					StorageSizeGB: to.Ptr[int32](1024),
 				},
 			},
 			SKU: &armpostgresqlflexibleservers.SKU{
-				Name: to.StringPtr("<name>"),
-				Tier: armpostgresqlflexibleservers.SKUTier("GeneralPurpose").ToPtr(),
+				Name: to.Ptr("<name>"),
+				Tier: to.Ptr(armpostgresqlflexibleservers.SKUTierGeneralPurpose),
 			},
 		},
-		nil)
+		&armpostgresqlflexibleservers.ServersClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ServersClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicesbackup%2Fv0.3.1/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicesbackup%2Fv0.5.0/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicesbackup_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup"
 )
 
-// x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/AzureIaasVm/TriggerRestore_RestoreDisks_IaasVMRestoreRequest.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/AzureIaasVm/TriggerRestore_RestoreDisks_IaasVMRestoreRequest.json
 func ExampleRestoresClient_BeginTrigger() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armrecoveryservicesbackup.NewRestoresClient("<subscription-id>", cred, nil)
+	client, err := armrecoveryservicesbackup.NewRestoresClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginTrigger(ctx,
 		"<vault-name>",
 		"<resource-group-name>",
@@ -31,30 +36,32 @@ func ExampleRestoresClient_BeginTrigger() {
 		"<recovery-point-id>",
 		armrecoveryservicesbackup.RestoreRequestResource{
 			Properties: &armrecoveryservicesbackup.IaasVMRestoreRequest{
-				ObjectType:            to.StringPtr("<object-type>"),
-				CreateNewCloudService: to.BoolPtr(true),
+				ObjectType:            to.Ptr("<object-type>"),
+				CreateNewCloudService: to.Ptr(true),
 				EncryptionDetails: &armrecoveryservicesbackup.EncryptionDetails{
-					EncryptionEnabled: to.BoolPtr(false),
+					EncryptionEnabled: to.Ptr(false),
 				},
 				IdentityInfo: &armrecoveryservicesbackup.IdentityInfo{
-					IsSystemAssignedIdentity:  to.BoolPtr(false),
-					ManagedIdentityResourceID: to.StringPtr("<managed-identity-resource-id>"),
+					IsSystemAssignedIdentity:  to.Ptr(false),
+					ManagedIdentityResourceID: to.Ptr("<managed-identity-resource-id>"),
 				},
-				OriginalStorageAccountOption: to.BoolPtr(false),
-				RecoveryPointID:              to.StringPtr("<recovery-point-id>"),
-				RecoveryType:                 armrecoveryservicesbackup.RecoveryType("RestoreDisks").ToPtr(),
-				Region:                       to.StringPtr("<region>"),
-				SourceResourceID:             to.StringPtr("<source-resource-id>"),
-				StorageAccountID:             to.StringPtr("<storage-account-id>"),
+				OriginalStorageAccountOption: to.Ptr(false),
+				RecoveryPointID:              to.Ptr("<recovery-point-id>"),
+				RecoveryType:                 to.Ptr(armrecoveryservicesbackup.RecoveryTypeRestoreDisks),
+				Region:                       to.Ptr("<region>"),
+				SourceResourceID:             to.Ptr("<source-resource-id>"),
+				StorageAccountID:             to.Ptr("<storage-account-id>"),
 			},
 		},
-		nil)
+		&armrecoveryservicesbackup.RestoresClientBeginTriggerOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	_, err = poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
 }
 ```

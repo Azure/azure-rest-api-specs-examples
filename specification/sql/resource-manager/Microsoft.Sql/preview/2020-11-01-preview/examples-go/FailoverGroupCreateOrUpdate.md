@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.3.1/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/FailoverGroupCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/FailoverGroupCreateOrUpdate.json
 func ExampleFailoverGroupsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armsql.NewFailoverGroupsClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewFailoverGroupsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
@@ -29,29 +34,32 @@ func ExampleFailoverGroupsClient_BeginCreateOrUpdate() {
 		armsql.FailoverGroup{
 			Properties: &armsql.FailoverGroupProperties{
 				Databases: []*string{
-					to.StringPtr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1"),
-					to.StringPtr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2")},
+					to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1"),
+					to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2")},
 				PartnerServers: []*armsql.PartnerInfo{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 					}},
 				ReadOnlyEndpoint: &armsql.FailoverGroupReadOnlyEndpoint{
-					FailoverPolicy: armsql.ReadOnlyEndpointFailoverPolicy("Disabled").ToPtr(),
+					FailoverPolicy: to.Ptr(armsql.ReadOnlyEndpointFailoverPolicyDisabled),
 				},
 				ReadWriteEndpoint: &armsql.FailoverGroupReadWriteEndpoint{
-					FailoverPolicy:                         armsql.ReadWriteEndpointFailoverPolicy("Automatic").ToPtr(),
-					FailoverWithDataLossGracePeriodMinutes: to.Int32Ptr(480),
+					FailoverPolicy:                         to.Ptr(armsql.ReadWriteEndpointFailoverPolicyAutomatic),
+					FailoverWithDataLossGracePeriodMinutes: to.Ptr[int32](480),
 				},
 			},
 		},
-		nil)
+		&armsql.FailoverGroupsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.FailoverGroupsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.1/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -12,44 +12,51 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/patchAlertRule.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/patchAlertRule.json
 func ExampleAlertRulesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmonitor.NewAlertRulesClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewAlertRulesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<rule-name>",
 		armmonitor.AlertRuleResourcePatch{
 			Properties: &armmonitor.AlertRule{
-				Name:        to.StringPtr("<name>"),
-				Description: to.StringPtr("<description>"),
+				Name:        to.Ptr("<name>"),
+				Description: to.Ptr("<description>"),
 				Actions:     []armmonitor.RuleActionClassification{},
 				Condition: &armmonitor.ThresholdRuleCondition{
 					DataSource: &armmonitor.RuleMetricDataSource{
-						ODataType:   to.StringPtr("<odata-type>"),
-						ResourceURI: to.StringPtr("<resource-uri>"),
-						MetricName:  to.StringPtr("<metric-name>"),
+						ODataType:   to.Ptr("<odata-type>"),
+						ResourceURI: to.Ptr("<resource-uri>"),
+						MetricName:  to.Ptr("<metric-name>"),
 					},
-					ODataType:       to.StringPtr("<odata-type>"),
-					Operator:        armmonitor.ConditionOperatorGreaterThan.ToPtr(),
-					Threshold:       to.Float64Ptr(3),
-					TimeAggregation: armmonitor.TimeAggregationOperatorTotal.ToPtr(),
-					WindowSize:      to.StringPtr("<window-size>"),
+					ODataType:       to.Ptr("<odata-type>"),
+					Operator:        to.Ptr(armmonitor.ConditionOperatorGreaterThan),
+					Threshold:       to.Ptr[float64](3),
+					TimeAggregation: to.Ptr(armmonitor.TimeAggregationOperatorTotal),
+					WindowSize:      to.Ptr("<window-size>"),
 				},
-				IsEnabled: to.BoolPtr(true),
+				IsEnabled: to.Ptr(true),
 			},
 			Tags: map[string]*string{
-				"$type": to.StringPtr("Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary"),
+				"$type": to.Ptr("Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AlertRulesClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

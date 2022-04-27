@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.1/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -12,29 +12,36 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/examples/GetMetric.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/examples/GetMetric.json
 func ExampleMetricsClient_List() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmonitor.NewMetricsClient(cred, nil)
+	client, err := armmonitor.NewMetricsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.List(ctx,
 		"<resource-uri>",
-		&armmonitor.MetricsClientListOptions{Timespan: to.StringPtr("<timespan>"),
-			Interval:        to.StringPtr("<interval>"),
+		&armmonitor.MetricsClientListOptions{Timespan: to.Ptr("<timespan>"),
+			Interval:        to.Ptr("<interval>"),
 			Metricnames:     nil,
-			Aggregation:     to.StringPtr("<aggregation>"),
-			Top:             to.Int32Ptr(3),
-			Orderby:         to.StringPtr("<orderby>"),
-			Filter:          to.StringPtr("<filter>"),
+			Aggregation:     to.Ptr("<aggregation>"),
+			Top:             to.Ptr[int32](3),
+			Orderby:         to.Ptr("<orderby>"),
+			Filter:          to.Ptr("<filter>"),
 			ResultType:      nil,
-			Metricnamespace: to.StringPtr("<metricnamespace>"),
+			Metricnamespace: to.Ptr("<metricnamespace>"),
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.MetricsClientListResult)
+	// TODO: use response item
+	_ = res
 }
 ```

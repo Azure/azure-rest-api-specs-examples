@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.4.1/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -12,57 +12,64 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/examples/createOrUpdateScheduledQueryRules.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/examples/createOrUpdateScheduledQueryRules.json
 func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmonitor.NewScheduledQueryRulesClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewScheduledQueryRulesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<rule-name>",
 		armmonitor.LogSearchRuleResource{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags:     map[string]*string{},
 			Properties: &armmonitor.LogSearchRule{
-				Description: to.StringPtr("<description>"),
+				Description: to.Ptr("<description>"),
 				Action: &armmonitor.AlertingAction{
-					ODataType: to.StringPtr("<odata-type>"),
+					ODataType: to.Ptr("<odata-type>"),
 					AznsAction: &armmonitor.AzNsActionGroup{
 						ActionGroup:          []*string{},
-						CustomWebhookPayload: to.StringPtr("<custom-webhook-payload>"),
-						EmailSubject:         to.StringPtr("<email-subject>"),
+						CustomWebhookPayload: to.Ptr("<custom-webhook-payload>"),
+						EmailSubject:         to.Ptr("<email-subject>"),
 					},
-					Severity: armmonitor.AlertSeverity("1").ToPtr(),
+					Severity: to.Ptr(armmonitor.AlertSeverityOne),
 					Trigger: &armmonitor.TriggerCondition{
 						MetricTrigger: &armmonitor.LogMetricTrigger{
-							MetricColumn:      to.StringPtr("<metric-column>"),
-							MetricTriggerType: armmonitor.MetricTriggerType("Consecutive").ToPtr(),
-							Threshold:         to.Float64Ptr(5),
-							ThresholdOperator: armmonitor.ConditionalOperator("GreaterThan").ToPtr(),
+							MetricColumn:      to.Ptr("<metric-column>"),
+							MetricTriggerType: to.Ptr(armmonitor.MetricTriggerTypeConsecutive),
+							Threshold:         to.Ptr[float64](5),
+							ThresholdOperator: to.Ptr(armmonitor.ConditionalOperatorGreaterThan),
 						},
-						Threshold:         to.Float64Ptr(3),
-						ThresholdOperator: armmonitor.ConditionalOperator("GreaterThan").ToPtr(),
+						Threshold:         to.Ptr[float64](3),
+						ThresholdOperator: to.Ptr(armmonitor.ConditionalOperatorGreaterThan),
 					},
 				},
-				Enabled: armmonitor.Enabled("true").ToPtr(),
+				Enabled: to.Ptr(armmonitor.EnabledTrue),
 				Schedule: &armmonitor.Schedule{
-					FrequencyInMinutes:  to.Int32Ptr(15),
-					TimeWindowInMinutes: to.Int32Ptr(15),
+					FrequencyInMinutes:  to.Ptr[int32](15),
+					TimeWindowInMinutes: to.Ptr[int32](15),
 				},
 				Source: &armmonitor.Source{
-					DataSourceID: to.StringPtr("<data-source-id>"),
-					Query:        to.StringPtr("<query>"),
-					QueryType:    armmonitor.QueryType("ResultCount").ToPtr(),
+					DataSourceID: to.Ptr("<data-source-id>"),
+					Query:        to.Ptr("<query>"),
+					QueryType:    to.Ptr(armmonitor.QueryTypeResultCount),
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ScheduledQueryRulesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

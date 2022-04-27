@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.2.1/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.4.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmariadb_test
@@ -14,32 +14,40 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mariadb/armmariadb"
 )
 
-// x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/VirtualNetworkRulesCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/VirtualNetworkRulesCreateOrUpdate.json
 func ExampleVirtualNetworkRulesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmariadb.NewVirtualNetworkRulesClient("<subscription-id>", cred, nil)
+	client, err := armmariadb.NewVirtualNetworkRulesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<server-name>",
 		"<virtual-network-rule-name>",
 		armmariadb.VirtualNetworkRule{
 			Properties: &armmariadb.VirtualNetworkRuleProperties{
-				IgnoreMissingVnetServiceEndpoint: to.BoolPtr(false),
-				VirtualNetworkSubnetID:           to.StringPtr("<virtual-network-subnet-id>"),
+				IgnoreMissingVnetServiceEndpoint: to.Ptr(false),
+				VirtualNetworkSubnetID:           to.Ptr("<virtual-network-subnet-id>"),
 			},
 		},
-		nil)
+		&armmariadb.VirtualNetworkRulesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VirtualNetworkRulesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

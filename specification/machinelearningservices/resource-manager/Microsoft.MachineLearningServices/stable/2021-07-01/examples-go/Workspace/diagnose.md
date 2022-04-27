@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.2.1/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.4.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -13,38 +13,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearningservices/armmachinelearningservices"
 )
 
-// x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/examples/Workspace/diagnose.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/examples/Workspace/diagnose.json
 func ExampleWorkspacesClient_BeginDiagnose() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmachinelearningservices.NewWorkspacesClient("<subscription-id>", cred, nil)
+	client, err := armmachinelearningservices.NewWorkspacesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginDiagnose(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
 		&armmachinelearningservices.WorkspacesClientBeginDiagnoseOptions{Parameters: &armmachinelearningservices.DiagnoseWorkspaceParameters{
 			Value: &armmachinelearningservices.DiagnoseRequestProperties{
-				ApplicationInsights: map[string]map[string]interface{}{},
-				ContainerRegistry:   map[string]map[string]interface{}{},
-				DNSResolution:       map[string]map[string]interface{}{},
-				KeyVault:            map[string]map[string]interface{}{},
-				Nsg:                 map[string]map[string]interface{}{},
-				Others:              map[string]map[string]interface{}{},
-				ResourceLock:        map[string]map[string]interface{}{},
-				StorageAccount:      map[string]map[string]interface{}{},
-				Udr:                 map[string]map[string]interface{}{},
+				ApplicationInsights: map[string]interface{}{},
+				ContainerRegistry:   map[string]interface{}{},
+				DNSResolution:       map[string]interface{}{},
+				KeyVault:            map[string]interface{}{},
+				Nsg:                 map[string]interface{}{},
+				Others:              map[string]interface{}{},
+				ResourceLock:        map[string]interface{}{},
+				StorageAccount:      map[string]interface{}{},
+				Udr:                 map[string]interface{}{},
 			},
 		},
+			ResumeToken: "",
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.WorkspacesClientDiagnoseResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.2.1/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.4.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaintenance_test
@@ -12,36 +12,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maintenance/armmaintenance"
 )
 
-// x-ms-original-file: specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/examples/MaintenanceConfigurations_UpdateForResource.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/maintenance/resource-manager/Microsoft.Maintenance/preview/2021-09-01-preview/examples/MaintenanceConfigurations_UpdateForResource.json
 func ExampleConfigurationsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmaintenance.NewConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armmaintenance.NewConfigurationsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		armmaintenance.Configuration{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armmaintenance.ConfigurationProperties{
-				MaintenanceScope: armmaintenance.MaintenanceScope("OSImage").ToPtr(),
+				MaintenanceScope: to.Ptr(armmaintenance.MaintenanceScopeOSImage),
 				MaintenanceWindow: &armmaintenance.Window{
-					Duration:           to.StringPtr("<duration>"),
-					ExpirationDateTime: to.StringPtr("<expiration-date-time>"),
-					RecurEvery:         to.StringPtr("<recur-every>"),
-					StartDateTime:      to.StringPtr("<start-date-time>"),
-					TimeZone:           to.StringPtr("<time-zone>"),
+					Duration:           to.Ptr("<duration>"),
+					ExpirationDateTime: to.Ptr("<expiration-date-time>"),
+					RecurEvery:         to.Ptr("<recur-every>"),
+					StartDateTime:      to.Ptr("<start-date-time>"),
+					TimeZone:           to.Ptr("<time-zone>"),
 				},
-				Namespace:  to.StringPtr("<namespace>"),
-				Visibility: armmaintenance.Visibility("Custom").ToPtr(),
+				Namespace:  to.Ptr("<namespace>"),
+				Visibility: to.Ptr(armmaintenance.VisibilityCustom),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ConfigurationsClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

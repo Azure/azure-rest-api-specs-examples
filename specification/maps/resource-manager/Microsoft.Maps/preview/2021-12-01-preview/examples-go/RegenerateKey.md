@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.2.1/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.4.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -7,28 +7,36 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps"
 )
 
-// x-ms-original-file: specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/RegenerateKey.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/RegenerateKey.json
 func ExampleAccountsClient_RegenerateKeys() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.RegenerateKeys(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		armmaps.KeySpecification{
-			KeyType: armmaps.KeyType("primary").ToPtr(),
+			KeyType: to.Ptr(armmaps.KeyTypePrimary),
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AccountsClientRegenerateKeysResult)
+	// TODO: use response item
+	_ = res
 }
 ```

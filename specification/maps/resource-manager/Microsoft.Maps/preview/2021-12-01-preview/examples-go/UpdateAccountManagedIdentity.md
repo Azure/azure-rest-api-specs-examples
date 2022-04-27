@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.2.1/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.4.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -12,40 +12,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps"
 )
 
-// x-ms-original-file: specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/UpdateAccountManagedIdentity.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/UpdateAccountManagedIdentity.json
 func ExampleAccountsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Update(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		armmaps.AccountUpdateParameters{
 			Identity: &armmaps.ManagedServiceIdentity{
-				Type: armmaps.ResourceIdentityTypeSystemAssignedUserAssigned.ToPtr(),
+				Type: to.Ptr(armmaps.ResourceIdentityTypeSystemAssignedUserAssigned),
 				UserAssignedIdentities: map[string]*armmaps.Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties{
 					"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName": {},
 				},
 			},
-			Kind: armmaps.Kind("Gen2").ToPtr(),
+			Kind: to.Ptr(armmaps.KindGen2),
 			Properties: &armmaps.AccountProperties{
 				LinkedResources: []*armmaps.LinkedResource{
 					{
-						ID:         to.StringPtr("<id>"),
-						UniqueName: to.StringPtr("<unique-name>"),
+						ID:         to.Ptr("<id>"),
+						UniqueName: to.Ptr("<unique-name>"),
 					}},
 			},
 			SKU: &armmaps.SKU{
-				Name: armmaps.Name("G2").ToPtr(),
+				Name: to.Ptr(armmaps.NameG2),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.AccountsClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

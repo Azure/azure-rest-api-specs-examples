@@ -4,7 +4,7 @@ Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/az
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.WorkspaceAadAdminInfoInner;
 
-/** Samples for WorkspaceAadAdmins CreateOrUpdate. */
+/** Samples for WorkspaceSqlAadAdmins CreateOrUpdate. */
 public final class Main {
     /*
      * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateWorkspaceAadAdmin.json
@@ -17,7 +17,7 @@ public final class Main {
     public static void createOrUpdateWorkspaceActiveDirectoryAdmin(
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
-            .workspaceAadAdmins()
+            .workspaceSqlAadAdmins()
             .createOrUpdate(
                 "resourceGroup1",
                 "workspace1",

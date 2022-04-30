@@ -3,7 +3,7 @@ Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/az
 ```java
 import com.azure.core.util.Context;
 
-/** Samples for WorkspaceSqlAadAdmins Delete. */
+/** Samples for WorkspaceAadAdmins Delete. */
 public final class Main {
     /*
      * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteWorkspaceAadAdmin.json
@@ -14,7 +14,7 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void deleteWorkspaceActiveDirectoryAdmin(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.workspaceSqlAadAdmins().delete("resourceGroup1", "workspace1", Context.NONE);
+        manager.workspaceAadAdmins().delete("resourceGroup1", "workspace1", Context.NONE);
     }
 }
 ```

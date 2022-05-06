@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.5.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.7.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcompute_test
@@ -14,37 +14,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute"
 )
 
-// x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/examples/UpdateADiskEncryptionSetWithRotationToLatestKeyVersionEnabled.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-12-01/examples/UpdateADiskEncryptionSetWithRotationToLatestKeyVersionEnabled.json
 func ExampleDiskEncryptionSetsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcompute.NewDiskEncryptionSetsClient("<subscription-id>", cred, nil)
+	client, err := armcompute.NewDiskEncryptionSetsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<disk-encryption-set-name>",
 		armcompute.DiskEncryptionSetUpdate{
 			Identity: &armcompute.EncryptionSetIdentity{
-				Type: armcompute.DiskEncryptionSetIdentityType("SystemAssigned").ToPtr(),
+				Type: to.Ptr(armcompute.DiskEncryptionSetIdentityTypeSystemAssigned),
 			},
 			Properties: &armcompute.DiskEncryptionSetUpdateProperties{
 				ActiveKey: &armcompute.KeyForDiskEncryptionSet{
-					KeyURL: to.StringPtr("<key-url>"),
+					KeyURL: to.Ptr("<key-url>"),
 				},
-				EncryptionType:                    armcompute.DiskEncryptionSetType("EncryptionAtRestWithCustomerKey").ToPtr(),
-				RotationToLatestKeyVersionEnabled: to.BoolPtr(true),
+				EncryptionType:                    to.Ptr(armcompute.DiskEncryptionSetTypeEncryptionAtRestWithCustomerKey),
+				RotationToLatestKeyVersionEnabled: to.Ptr(true),
 			},
 		},
-		nil)
+		&armcompute.DiskEncryptionSetsClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.DiskEncryptionSetsClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

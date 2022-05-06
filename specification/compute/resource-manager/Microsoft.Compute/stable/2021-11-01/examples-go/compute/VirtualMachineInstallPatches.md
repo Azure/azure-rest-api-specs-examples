@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.5.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.7.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcompute_test
@@ -14,35 +14,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute"
 )
 
-// x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/examples/compute/VirtualMachineInstallPatches.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-11-01/examples/compute/VirtualMachineInstallPatches.json
 func ExampleVirtualMachinesClient_BeginInstallPatches() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcompute.NewVirtualMachinesClient("<subscription-id>", cred, nil)
+	client, err := armcompute.NewVirtualMachinesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginInstallPatches(ctx,
 		"<resource-group-name>",
 		"<vm-name>",
 		armcompute.VirtualMachineInstallPatchesParameters{
-			MaximumDuration: to.StringPtr("<maximum-duration>"),
-			RebootSetting:   armcompute.VMGuestPatchRebootSetting("IfRequired").ToPtr(),
+			MaximumDuration: to.Ptr("<maximum-duration>"),
+			RebootSetting:   to.Ptr(armcompute.VMGuestPatchRebootSettingIfRequired),
 			WindowsParameters: &armcompute.WindowsParameters{
 				ClassificationsToInclude: []*armcompute.VMGuestPatchClassificationWindows{
-					armcompute.VMGuestPatchClassificationWindows("Critical").ToPtr(),
-					armcompute.VMGuestPatchClassificationWindows("Security").ToPtr()},
-				MaxPatchPublishDate: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T02:36:43.0539904+00:00"); return t }()),
+					to.Ptr(armcompute.VMGuestPatchClassificationWindowsCritical),
+					to.Ptr(armcompute.VMGuestPatchClassificationWindowsSecurity)},
+				MaxPatchPublishDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T02:36:43.0539904+00:00"); return t }()),
 			},
 		},
-		nil)
+		&armcompute.VirtualMachinesClientBeginInstallPatchesOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VirtualMachinesClientInstallPatchesResult)
+	// TODO: use response item
+	_ = res
 }
 ```

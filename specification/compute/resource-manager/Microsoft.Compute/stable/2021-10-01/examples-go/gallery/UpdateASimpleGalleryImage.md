@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.5.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.7.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcompute_test
@@ -14,38 +14,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute"
 )
 
-// x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/examples/gallery/UpdateASimpleGalleryImage.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/stable/2021-10-01/examples/gallery/UpdateASimpleGalleryImage.json
 func ExampleGalleryImagesClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcompute.NewGalleryImagesClient("<subscription-id>", cred, nil)
+	client, err := armcompute.NewGalleryImagesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<gallery-name>",
 		"<gallery-image-name>",
 		armcompute.GalleryImageUpdate{
 			Properties: &armcompute.GalleryImageProperties{
-				HyperVGeneration: armcompute.HyperVGeneration("V1").ToPtr(),
+				HyperVGeneration: to.Ptr(armcompute.HyperVGenerationV1),
 				Identifier: &armcompute.GalleryImageIdentifier{
-					Offer:     to.StringPtr("<offer>"),
-					Publisher: to.StringPtr("<publisher>"),
-					SKU:       to.StringPtr("<sku>"),
+					Offer:     to.Ptr("<offer>"),
+					Publisher: to.Ptr("<publisher>"),
+					SKU:       to.Ptr("<sku>"),
 				},
-				OSState: armcompute.OperatingSystemStateTypesGeneralized.ToPtr(),
-				OSType:  armcompute.OperatingSystemTypesWindows.ToPtr(),
+				OSState: to.Ptr(armcompute.OperatingSystemStateTypesGeneralized),
+				OSType:  to.Ptr(armcompute.OperatingSystemTypesWindows),
 			},
 		},
-		nil)
+		&armcompute.GalleryImagesClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.GalleryImagesClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

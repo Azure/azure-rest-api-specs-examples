@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbilling%2Farmbilling%2Fv0.1.0/sdk/resourcemanager/billing/armbilling/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbilling%2Farmbilling%2Fv0.4.0/sdk/resourcemanager/billing/armbilling/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armbilling_test
@@ -14,35 +14,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billing/armbilling"
 )
 
-// x-ms-original-file: specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/examples/PutInvoiceSection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/examples/PutInvoiceSection.json
 func ExampleInvoiceSectionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armbilling.NewInvoiceSectionsClient(cred, nil)
+	client, err := armbilling.NewInvoiceSectionsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<billing-account-name>",
 		"<billing-profile-name>",
 		"<invoice-section-name>",
 		armbilling.InvoiceSection{
 			Properties: &armbilling.InvoiceSectionProperties{
-				DisplayName: to.StringPtr("<display-name>"),
+				DisplayName: to.Ptr("<display-name>"),
 				Labels: map[string]*string{
-					"costCategory": to.StringPtr("Support"),
-					"pcCode":       to.StringPtr("A123456"),
+					"costCategory": to.Ptr("Support"),
+					"pcCode":       to.Ptr("A123456"),
 				},
 			},
 		},
-		nil)
+		&armbilling.InvoiceSectionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("InvoiceSection.ID: %s\n", *res.ID)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -7,27 +7,26 @@ import (
 	"context"
 	"log"
 
-	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ReservationTransactionsListByBillingProfileId.json
-func ExampleReservationTransactionsClient_NewListByBillingProfilePager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/LotsListByCustomer.json
+func ExampleLotsClient_NewListByCustomerPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armconsumption.NewReservationTransactionsClient(cred, nil)
+	client, err := armconsumption.NewLotsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	pager := client.NewListByBillingProfilePager("<billing-account-id>",
-		"<billing-profile-id>",
-		&armconsumption.ReservationTransactionsClientListByBillingProfileOptions{Filter: to.Ptr("<filter>")})
+	pager := client.NewListByCustomerPager("<billing-account-id>",
+		"<customer-id>",
+		&armconsumption.LotsClientListByCustomerOptions{Filter: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

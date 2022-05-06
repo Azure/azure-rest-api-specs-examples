@@ -12,14 +12,14 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/GetWorkspaceAadAdmin.json
-func ExampleWorkspaceAADAdminsClient_Get() {
+func ExampleWorkspaceSQLAADAdminsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewWorkspaceAADAdminsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewWorkspaceSQLAADAdminsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return

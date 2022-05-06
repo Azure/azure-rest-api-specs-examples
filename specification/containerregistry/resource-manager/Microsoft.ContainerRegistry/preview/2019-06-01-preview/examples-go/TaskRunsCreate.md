@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.3.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.5.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcontainerregistry_test
@@ -14,42 +14,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry"
 )
 
-// x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TaskRunsCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TaskRunsCreate.json
 func ExampleTaskRunsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcontainerregistry.NewTaskRunsClient("<subscription-id>", cred, nil)
+	client, err := armcontainerregistry.NewTaskRunsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<registry-name>",
 		"<task-run-name>",
 		armcontainerregistry.TaskRun{
 			Properties: &armcontainerregistry.TaskRunProperties{
-				ForceUpdateTag: to.StringPtr("<force-update-tag>"),
+				ForceUpdateTag: to.Ptr("<force-update-tag>"),
 				RunRequest: &armcontainerregistry.EncodedTaskRunRequest{
-					Type:                 to.StringPtr("<type>"),
+					Type:                 to.Ptr("<type>"),
 					Credentials:          &armcontainerregistry.Credentials{},
-					EncodedTaskContent:   to.StringPtr("<encoded-task-content>"),
-					EncodedValuesContent: to.StringPtr("<encoded-values-content>"),
+					EncodedTaskContent:   to.Ptr("<encoded-task-content>"),
+					EncodedValuesContent: to.Ptr("<encoded-values-content>"),
 					Platform: &armcontainerregistry.PlatformProperties{
-						Architecture: armcontainerregistry.Architecture("amd64").ToPtr(),
-						OS:           armcontainerregistry.OS("Linux").ToPtr(),
+						Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
+						OS:           to.Ptr(armcontainerregistry.OSLinux),
 					},
 					Values: []*armcontainerregistry.SetValue{},
 				},
 			},
 		},
-		nil)
+		&armcontainerregistry.TaskRunsClientBeginCreateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.TaskRunsClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

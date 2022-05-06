@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.2.1/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.4.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdevtestlabs_test
@@ -12,54 +12,61 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devtestlabs/armdevtestlabs"
 )
 
-// x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Schedules_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Schedules_CreateOrUpdate.json
 func ExampleSchedulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdevtestlabs.NewSchedulesClient("<subscription-id>", cred, nil)
+	client, err := armdevtestlabs.NewSchedulesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<lab-name>",
 		"<name>",
 		armdevtestlabs.Schedule{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"tagName1": to.StringPtr("tagValue1"),
+				"tagName1": to.Ptr("tagValue1"),
 			},
 			Properties: &armdevtestlabs.ScheduleProperties{
 				DailyRecurrence: &armdevtestlabs.DayDetails{
-					Time: to.StringPtr("<time>"),
+					Time: to.Ptr("<time>"),
 				},
 				HourlyRecurrence: &armdevtestlabs.HourDetails{
-					Minute: to.Int32Ptr(30),
+					Minute: to.Ptr[int32](30),
 				},
 				NotificationSettings: &armdevtestlabs.NotificationSettings{
-					EmailRecipient:     to.StringPtr("<email-recipient>"),
-					NotificationLocale: to.StringPtr("<notification-locale>"),
-					Status:             armdevtestlabs.EnableStatus("{Enabled|Disabled}").ToPtr(),
-					TimeInMinutes:      to.Int32Ptr(15),
-					WebhookURL:         to.StringPtr("<webhook-url>"),
+					EmailRecipient:     to.Ptr("<email-recipient>"),
+					NotificationLocale: to.Ptr("<notification-locale>"),
+					Status:             to.Ptr(armdevtestlabs.EnableStatus("{Enabled|Disabled}")),
+					TimeInMinutes:      to.Ptr[int32](15),
+					WebhookURL:         to.Ptr("<webhook-url>"),
 				},
-				Status:           armdevtestlabs.EnableStatus("{Enabled|Disabled}").ToPtr(),
-				TargetResourceID: to.StringPtr("<target-resource-id>"),
-				TaskType:         to.StringPtr("<task-type>"),
-				TimeZoneID:       to.StringPtr("<time-zone-id>"),
+				Status:           to.Ptr(armdevtestlabs.EnableStatus("{Enabled|Disabled}")),
+				TargetResourceID: to.Ptr("<target-resource-id>"),
+				TaskType:         to.Ptr("<task-type>"),
+				TimeZoneID:       to.Ptr("<time-zone-id>"),
 				WeeklyRecurrence: &armdevtestlabs.WeekDetails{
-					Time: to.StringPtr("<time>"),
+					Time: to.Ptr("<time>"),
 					Weekdays: []*string{
-						to.StringPtr("Monday"),
-						to.StringPtr("Wednesday"),
-						to.StringPtr("Friday")},
+						to.Ptr("Monday"),
+						to.Ptr("Wednesday"),
+						to.Ptr("Friday")},
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.SchedulesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

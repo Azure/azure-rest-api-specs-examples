@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkeyvault%2Farmkeyvault%2Fv0.3.1/sdk/resourcemanager/keyvault/armkeyvault/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkeyvault%2Farmkeyvault%2Fv0.5.0/sdk/resourcemanager/keyvault/armkeyvault/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkeyvault_test
@@ -14,44 +14,52 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault"
 )
 
-// x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/examples/ManagedHsm_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/examples/ManagedHsm_CreateOrUpdate.json
 func ExampleManagedHsmsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armkeyvault.NewManagedHsmsClient("<subscription-id>", cred, nil)
+	client, err := armkeyvault.NewManagedHsmsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<name>",
 		armkeyvault.ManagedHsm{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			SKU: &armkeyvault.ManagedHsmSKU{
-				Name:   armkeyvault.ManagedHsmSKUNameStandardB1.ToPtr(),
-				Family: armkeyvault.ManagedHsmSKUFamily("B").ToPtr(),
+				Name:   to.Ptr(armkeyvault.ManagedHsmSKUNameStandardB1),
+				Family: to.Ptr(armkeyvault.ManagedHsmSKUFamilyB),
 			},
 			Tags: map[string]*string{
-				"Dept":        to.StringPtr("hsm"),
-				"Environment": to.StringPtr("dogfood"),
+				"Dept":        to.Ptr("hsm"),
+				"Environment": to.Ptr("dogfood"),
 			},
 			Properties: &armkeyvault.ManagedHsmProperties{
-				EnablePurgeProtection: to.BoolPtr(true),
-				EnableSoftDelete:      to.BoolPtr(true),
+				EnablePurgeProtection: to.Ptr(true),
+				EnableSoftDelete:      to.Ptr(true),
 				InitialAdminObjectIDs: []*string{
-					to.StringPtr("00000000-0000-0000-0000-000000000000")},
-				SoftDeleteRetentionInDays: to.Int32Ptr(90),
-				TenantID:                  to.StringPtr("<tenant-id>"),
+					to.Ptr("00000000-0000-0000-0000-000000000000")},
+				SoftDeleteRetentionInDays: to.Ptr[int32](90),
+				TenantID:                  to.Ptr("<tenant-id>"),
 			},
 		},
-		nil)
+		&armkeyvault.ManagedHsmsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ManagedHsmsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

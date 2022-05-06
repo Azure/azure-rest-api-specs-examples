@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkeyvault%2Farmkeyvault%2Fv0.3.1/sdk/resourcemanager/keyvault/armkeyvault/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkeyvault%2Farmkeyvault%2Fv0.5.0/sdk/resourcemanager/keyvault/armkeyvault/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkeyvault_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault"
 )
 
-// x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/examples/updateAccessPoliciesAdd.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/examples/updateAccessPoliciesAdd.json
 func ExampleVaultsClient_UpdateAccessPolicy() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armkeyvault.NewVaultsClient("<subscription-id>", cred, nil)
+	client, err := armkeyvault.NewVaultsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.UpdateAccessPolicy(ctx,
 		"<resource-group-name>",
 		"<vault-name>",
@@ -28,23 +33,25 @@ func ExampleVaultsClient_UpdateAccessPolicy() {
 			Properties: &armkeyvault.VaultAccessPolicyProperties{
 				AccessPolicies: []*armkeyvault.AccessPolicyEntry{
 					{
-						ObjectID: to.StringPtr("<object-id>"),
+						ObjectID: to.Ptr("<object-id>"),
 						Permissions: &armkeyvault.Permissions{
 							Certificates: []*armkeyvault.CertificatePermissions{
-								armkeyvault.CertificatePermissions("get").ToPtr()},
+								to.Ptr(armkeyvault.CertificatePermissionsGet)},
 							Keys: []*armkeyvault.KeyPermissions{
-								armkeyvault.KeyPermissions("encrypt").ToPtr()},
+								to.Ptr(armkeyvault.KeyPermissionsEncrypt)},
 							Secrets: []*armkeyvault.SecretPermissions{
-								armkeyvault.SecretPermissions("get").ToPtr()},
+								to.Ptr(armkeyvault.SecretPermissionsGet)},
 						},
-						TenantID: to.StringPtr("<tenant-id>"),
+						TenantID: to.Ptr("<tenant-id>"),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.VaultsClientUpdateAccessPolicyResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.2.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.4.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcostmanagement_test
@@ -12,71 +12,78 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement"
 )
 
-// x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/examples/PrivateViewCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/examples/PrivateViewCreateOrUpdate.json
 func ExampleViewsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcostmanagement.NewViewsClient(cred, nil)
+	client, err := armcostmanagement.NewViewsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<view-name>",
 		armcostmanagement.View{
-			ETag: to.StringPtr("<etag>"),
+			ETag: to.Ptr("<etag>"),
 			Properties: &armcostmanagement.ViewProperties{
-				Accumulated: armcostmanagement.AccumulatedType("true").ToPtr(),
-				Chart:       armcostmanagement.ChartType("Table").ToPtr(),
-				DisplayName: to.StringPtr("<display-name>"),
+				Accumulated: to.Ptr(armcostmanagement.AccumulatedTypeTrue),
+				Chart:       to.Ptr(armcostmanagement.ChartTypeTable),
+				DisplayName: to.Ptr("<display-name>"),
 				Kpis: []*armcostmanagement.KpiProperties{
 					{
-						Type:    armcostmanagement.KpiType("Forecast").ToPtr(),
-						Enabled: to.BoolPtr(true),
+						Type:    to.Ptr(armcostmanagement.KpiTypeForecast),
+						Enabled: to.Ptr(true),
 					},
 					{
-						Type:    armcostmanagement.KpiType("Budget").ToPtr(),
-						Enabled: to.BoolPtr(true),
-						ID:      to.StringPtr("<id>"),
+						Type:    to.Ptr(armcostmanagement.KpiTypeBudget),
+						Enabled: to.Ptr(true),
+						ID:      to.Ptr("<id>"),
 					}},
-				Metric: armcostmanagement.MetricType("ActualCost").ToPtr(),
+				Metric: to.Ptr(armcostmanagement.MetricTypeActualCost),
 				Pivots: []*armcostmanagement.PivotProperties{
 					{
-						Name: to.StringPtr("<name>"),
-						Type: armcostmanagement.PivotType("Dimension").ToPtr(),
+						Name: to.Ptr("<name>"),
+						Type: to.Ptr(armcostmanagement.PivotTypeDimension),
 					},
 					{
-						Name: to.StringPtr("<name>"),
-						Type: armcostmanagement.PivotType("Dimension").ToPtr(),
+						Name: to.Ptr("<name>"),
+						Type: to.Ptr(armcostmanagement.PivotTypeDimension),
 					},
 					{
-						Name: to.StringPtr("<name>"),
-						Type: armcostmanagement.PivotType("TagKey").ToPtr(),
+						Name: to.Ptr("<name>"),
+						Type: to.Ptr(armcostmanagement.PivotTypeTagKey),
 					}},
 				Query: &armcostmanagement.ReportConfigDefinition{
-					Type: armcostmanagement.ReportType("Usage").ToPtr(),
+					Type: to.Ptr(armcostmanagement.ReportTypeUsage),
 					DataSet: &armcostmanagement.ReportConfigDataset{
 						Aggregation: map[string]*armcostmanagement.ReportConfigAggregation{
 							"totalCost": {
-								Name:     to.StringPtr("<name>"),
-								Function: armcostmanagement.FunctionType("Sum").ToPtr(),
+								Name:     to.Ptr("<name>"),
+								Function: to.Ptr(armcostmanagement.FunctionTypeSum),
 							},
 						},
-						Granularity: armcostmanagement.ReportGranularityType("Daily").ToPtr(),
+						Granularity: to.Ptr(armcostmanagement.ReportGranularityTypeDaily),
 						Grouping:    []*armcostmanagement.ReportConfigGrouping{},
 						Sorting: []*armcostmanagement.ReportConfigSorting{
 							{
-								Name:      to.StringPtr("<name>"),
-								Direction: armcostmanagement.ReportConfigSortingDirection("Ascending").ToPtr(),
+								Name:      to.Ptr("<name>"),
+								Direction: to.Ptr(armcostmanagement.ReportConfigSortingTypeAscending),
 							}},
 					},
-					Timeframe: armcostmanagement.ReportTimeframeType("MonthToDate").ToPtr(),
+					Timeframe: to.Ptr(armcostmanagement.ReportTimeframeTypeMonthToDate),
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ViewsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

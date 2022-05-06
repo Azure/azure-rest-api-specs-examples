@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.3.1/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logic/armlogic"
 )
 
-// x-ms-original-file: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_LogTrackingEvents.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_LogTrackingEvents.json
 func ExampleIntegrationAccountsClient_LogTrackingEvents() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armlogic.NewIntegrationAccountsClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewIntegrationAccountsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	_, err = client.LogTrackingEvents(ctx,
 		"<resource-group-name>",
 		"<integration-account-name>",
@@ -29,11 +34,11 @@ func ExampleIntegrationAccountsClient_LogTrackingEvents() {
 			Events: []*armlogic.TrackingEvent{
 				{
 					Error: &armlogic.TrackingEventErrorInfo{
-						Code:    to.StringPtr("<code>"),
-						Message: to.StringPtr("<message>"),
+						Code:    to.Ptr("<code>"),
+						Message: to.Ptr("<message>"),
 					},
-					EventLevel: armlogic.EventLevelInformational.ToPtr(),
-					EventTime:  to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-08-05T01:54:49.505567Z"); return t }()),
+					EventLevel: to.Ptr(armlogic.EventLevelInformational),
+					EventTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-08-05T01:54:49.505567Z"); return t }()),
 					Record: map[string]interface{}{
 						"agreementProperties": map[string]interface{}{
 							"agreementName":       "testAgreement",
@@ -57,13 +62,14 @@ func ExampleIntegrationAccountsClient_LogTrackingEvents() {
 							"messageId":            "12345",
 						},
 					},
-					RecordType: armlogic.TrackingRecordType("AS2Message").ToPtr(),
+					RecordType: to.Ptr(armlogic.TrackingRecordTypeAS2Message),
 				}},
-			SourceType: to.StringPtr("<source-type>"),
+			SourceType: to.Ptr("<source-type>"),
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 }
 ```

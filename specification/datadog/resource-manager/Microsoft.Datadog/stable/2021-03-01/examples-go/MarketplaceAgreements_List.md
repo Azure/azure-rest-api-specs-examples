@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatadog%2Farmdatadog%2Fv0.1.0/sdk/resourcemanager/datadog/armdatadog/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatadog%2Farmdatadog%2Fv0.4.0/sdk/resourcemanager/datadog/armdatadog/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatadog_test
@@ -11,21 +11,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datadog/armdatadog"
 )
 
-// x-ms-original-file: specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/examples/MarketplaceAgreements_List.json
-func ExampleMarketplaceAgreementsClient_List() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datadog/resource-manager/Microsoft.Datadog/stable/2021-03-01/examples/MarketplaceAgreements_List.json
+func ExampleMarketplaceAgreementsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdatadog.NewMarketplaceAgreementsClient("<subscription-id>", cred, nil)
-	pager := client.List(nil)
-	for pager.NextPage(ctx) {
-		if err := pager.Err(); err != nil {
+	client, err := armdatadog.NewMarketplaceAgreementsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
+	pager := client.NewListPager(nil)
+	for pager.More() {
+		nextResult, err := pager.NextPage(ctx)
+		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
+			return
 		}
-		for _, v := range pager.PageResponse().Value {
-			log.Printf("DatadogAgreementResource.ID: %s\n", *v.ID)
+		for _, v := range nextResult.Value {
+			// TODO: use page item
+			_ = v
 		}
 	}
 }

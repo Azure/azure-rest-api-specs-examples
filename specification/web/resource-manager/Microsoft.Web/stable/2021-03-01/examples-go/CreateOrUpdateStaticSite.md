@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.2.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.4.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappservice_test
@@ -14,42 +14,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice"
 )
 
-// x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/CreateOrUpdateStaticSite.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/CreateOrUpdateStaticSite.json
 func ExampleStaticSitesClient_BeginCreateOrUpdateStaticSite() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armappservice.NewStaticSitesClient("<subscription-id>", cred, nil)
+	client, err := armappservice.NewStaticSitesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdateStaticSite(ctx,
 		"<resource-group-name>",
 		"<name>",
 		armappservice.StaticSiteARMResource{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armappservice.StaticSite{
-				Branch: to.StringPtr("<branch>"),
+				Branch: to.Ptr("<branch>"),
 				BuildProperties: &armappservice.StaticSiteBuildProperties{
-					APILocation:         to.StringPtr("<apilocation>"),
-					AppArtifactLocation: to.StringPtr("<app-artifact-location>"),
-					AppLocation:         to.StringPtr("<app-location>"),
+					APILocation:         to.Ptr("<apilocation>"),
+					AppArtifactLocation: to.Ptr("<app-artifact-location>"),
+					AppLocation:         to.Ptr("<app-location>"),
 				},
-				RepositoryToken: to.StringPtr("<repository-token>"),
-				RepositoryURL:   to.StringPtr("<repository-url>"),
+				RepositoryToken: to.Ptr("<repository-token>"),
+				RepositoryURL:   to.Ptr("<repository-url>"),
 			},
 			SKU: &armappservice.SKUDescription{
-				Name: to.StringPtr("<name>"),
-				Tier: to.StringPtr("<tier>"),
+				Name: to.Ptr("<name>"),
+				Tier: to.Ptr("<tier>"),
 			},
 		},
-		nil)
+		&armappservice.StaticSitesClientBeginCreateOrUpdateStaticSiteOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.StaticSitesClientCreateOrUpdateStaticSiteResult)
+	// TODO: use response item
+	_ = res
 }
 ```

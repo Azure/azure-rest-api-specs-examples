@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.2.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.4.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappservice_test
@@ -12,31 +12,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice"
 )
 
-// x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/GenerateStaticSiteWorkflowPreview.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/GenerateStaticSiteWorkflowPreview.json
 func ExampleStaticSitesClient_PreviewWorkflow() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armappservice.NewStaticSitesClient("<subscription-id>", cred, nil)
+	client, err := armappservice.NewStaticSitesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.PreviewWorkflow(ctx,
 		"<location>",
 		armappservice.StaticSitesWorkflowPreviewRequest{
 			Properties: &armappservice.StaticSitesWorkflowPreviewRequestProperties{
-				Branch: to.StringPtr("<branch>"),
+				Branch: to.Ptr("<branch>"),
 				BuildProperties: &armappservice.StaticSiteBuildProperties{
-					APILocation:         to.StringPtr("<apilocation>"),
-					AppArtifactLocation: to.StringPtr("<app-artifact-location>"),
-					AppLocation:         to.StringPtr("<app-location>"),
+					APILocation:         to.Ptr("<apilocation>"),
+					AppArtifactLocation: to.Ptr("<app-artifact-location>"),
+					AppLocation:         to.Ptr("<app-location>"),
 				},
-				RepositoryURL: to.StringPtr("<repository-url>"),
+				RepositoryURL: to.Ptr("<repository-url>"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.StaticSitesClientPreviewWorkflowResult)
+	// TODO: use response item
+	_ = res
 }
 ```

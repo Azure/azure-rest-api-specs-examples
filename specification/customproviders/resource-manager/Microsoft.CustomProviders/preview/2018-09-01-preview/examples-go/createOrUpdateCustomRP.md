@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomproviders%2Farmcustomproviders%2Fv0.1.0/sdk/resourcemanager/customproviders/armcustomproviders/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomproviders%2Farmcustomproviders%2Fv0.4.0/sdk/resourcemanager/customproviders/armcustomproviders/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcustomproviders_test
@@ -14,48 +14,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/customproviders/armcustomproviders"
 )
 
-// x-ms-original-file: specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/examples/createOrUpdateCustomRP.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/examples/createOrUpdateCustomRP.json
 func ExampleCustomResourceProviderClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcustomproviders.NewCustomResourceProviderClient("<subscription-id>", cred, nil)
+	client, err := armcustomproviders.NewCustomResourceProviderClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-provider-name>",
 		armcustomproviders.CustomRPManifest{
-			Resource: armcustomproviders.Resource{
-				Location: to.StringPtr("<location>"),
-			},
+			Location: to.Ptr("<location>"),
 			Properties: &armcustomproviders.CustomRPManifestProperties{
 				Actions: []*armcustomproviders.CustomRPActionRouteDefinition{
 					{
-						CustomRPRouteDefinition: armcustomproviders.CustomRPRouteDefinition{
-							Name:     to.StringPtr("<name>"),
-							Endpoint: to.StringPtr("<endpoint>"),
-						},
-						RoutingType: armcustomproviders.ActionRoutingProxy.ToPtr(),
+						Name:        to.Ptr("<name>"),
+						Endpoint:    to.Ptr("<endpoint>"),
+						RoutingType: to.Ptr(armcustomproviders.ActionRoutingProxy),
 					}},
 				ResourceTypes: []*armcustomproviders.CustomRPResourceTypeRouteDefinition{
 					{
-						CustomRPRouteDefinition: armcustomproviders.CustomRPRouteDefinition{
-							Name:     to.StringPtr("<name>"),
-							Endpoint: to.StringPtr("<endpoint>"),
-						},
-						RoutingType: armcustomproviders.ResourceTypeRoutingProxyCache.ToPtr(),
+						Name:        to.Ptr("<name>"),
+						Endpoint:    to.Ptr("<endpoint>"),
+						RoutingType: to.Ptr(armcustomproviders.ResourceTypeRoutingProxyCache),
 					}},
 			},
 		},
-		nil)
+		&armcustomproviders.CustomResourceProviderClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("CustomRPManifest.ID: %s\n", *res.ID)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcommunication%2Farmcommunication%2Fv0.2.0/sdk/resourcemanager/communication/armcommunication/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcommunication%2Farmcommunication%2Fv0.4.0/sdk/resourcemanager/communication/armcommunication/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcommunication_test
@@ -12,25 +12,32 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication"
 )
 
-// x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/examples/linkNotificationHub.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/communication/resource-manager/Microsoft.Communication/stable/2020-08-20/examples/linkNotificationHub.json
 func ExampleServiceClient_LinkNotificationHub() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcommunication.NewServiceClient("<subscription-id>", cred, nil)
+	client, err := armcommunication.NewServiceClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.LinkNotificationHub(ctx,
 		"<resource-group-name>",
 		"<communication-service-name>",
 		&armcommunication.ServiceClientLinkNotificationHubOptions{LinkNotificationHubParameters: &armcommunication.LinkNotificationHubParameters{
-			ConnectionString: to.StringPtr("<connection-string>"),
-			ResourceID:       to.StringPtr("<resource-id>"),
+			ConnectionString: to.Ptr("<connection-string>"),
+			ResourceID:       to.Ptr("<resource-id>"),
 		},
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ServiceClientLinkNotificationHubResult)
+	// TODO: use response item
+	_ = res
 }
 ```

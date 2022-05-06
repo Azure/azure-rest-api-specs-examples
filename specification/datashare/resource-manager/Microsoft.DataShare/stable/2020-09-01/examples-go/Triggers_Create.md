@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv0.1.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv0.4.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatashare_test
@@ -14,37 +14,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datashare/armdatashare"
 )
 
-// x-ms-original-file: specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/examples/Triggers_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/examples/Triggers_Create.json
 func ExampleTriggersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdatashare.NewTriggersClient("<subscription-id>", cred, nil)
+	client, err := armdatashare.NewTriggersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<account-name>",
 		"<share-subscription-name>",
 		"<trigger-name>",
 		&armdatashare.ScheduledTrigger{
-			Trigger: armdatashare.Trigger{
-				Kind: armdatashare.TriggerKindScheduleBased.ToPtr(),
-			},
+			Kind: to.Ptr(armdatashare.TriggerKindScheduleBased),
 			Properties: &armdatashare.ScheduledTriggerProperties{
-				RecurrenceInterval:  armdatashare.RecurrenceIntervalDay.ToPtr(),
-				SynchronizationMode: armdatashare.SynchronizationModeIncremental.ToPtr(),
-				SynchronizationTime: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t }()),
+				RecurrenceInterval:  to.Ptr(armdatashare.RecurrenceIntervalDay),
+				SynchronizationMode: to.Ptr(armdatashare.SynchronizationModeIncremental),
+				SynchronizationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t }()),
 			},
 		},
-		nil)
+		&armdatashare.TriggersClientBeginCreateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("TriggerClassification.GetTrigger().ID: %s\n", *res.GetTrigger().ID)
+	// TODO: use response item
+	_ = res
 }
 ```

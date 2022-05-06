@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.2.1/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.4.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdevtestlabs_test
@@ -14,67 +14,75 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devtestlabs/armdevtestlabs"
 )
 
-// x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Formulas_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Formulas_CreateOrUpdate.json
 func ExampleFormulasClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdevtestlabs.NewFormulasClient("<subscription-id>", cred, nil)
+	client, err := armdevtestlabs.NewFormulasClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<lab-name>",
 		"<name>",
 		armdevtestlabs.Formula{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armdevtestlabs.FormulaProperties{
-				Description: to.StringPtr("<description>"),
+				Description: to.Ptr("<description>"),
 				FormulaContent: &armdevtestlabs.LabVirtualMachineCreationParameter{
-					Location: to.StringPtr("<location>"),
+					Location: to.Ptr("<location>"),
 					Properties: &armdevtestlabs.LabVirtualMachineCreationParameterProperties{
-						AllowClaim: to.BoolPtr(false),
+						AllowClaim: to.Ptr(false),
 						Artifacts: []*armdevtestlabs.ArtifactInstallProperties{
 							{
-								ArtifactID: to.StringPtr("<artifact-id>"),
+								ArtifactID: to.Ptr("<artifact-id>"),
 								Parameters: []*armdevtestlabs.ArtifactParameterProperties{},
 							}},
-						DisallowPublicIPAddress: to.BoolPtr(true),
+						DisallowPublicIPAddress: to.Ptr(true),
 						GalleryImageReference: &armdevtestlabs.GalleryImageReference{
-							Offer:     to.StringPtr("<offer>"),
-							OSType:    to.StringPtr("<ostype>"),
-							Publisher: to.StringPtr("<publisher>"),
-							SKU:       to.StringPtr("<sku>"),
-							Version:   to.StringPtr("<version>"),
+							Offer:     to.Ptr("<offer>"),
+							OSType:    to.Ptr("<ostype>"),
+							Publisher: to.Ptr("<publisher>"),
+							SKU:       to.Ptr("<sku>"),
+							Version:   to.Ptr("<version>"),
 						},
-						IsAuthenticationWithSSHKey: to.BoolPtr(false),
-						LabSubnetName:              to.StringPtr("<lab-subnet-name>"),
-						LabVirtualNetworkID:        to.StringPtr("<lab-virtual-network-id>"),
+						IsAuthenticationWithSSHKey: to.Ptr(false),
+						LabSubnetName:              to.Ptr("<lab-subnet-name>"),
+						LabVirtualNetworkID:        to.Ptr("<lab-virtual-network-id>"),
 						NetworkInterface: &armdevtestlabs.NetworkInterfaceProperties{
 							SharedPublicIPAddressConfiguration: &armdevtestlabs.SharedPublicIPAddressConfiguration{
 								InboundNatRules: []*armdevtestlabs.InboundNatRule{
 									{
-										BackendPort:       to.Int32Ptr(22),
-										TransportProtocol: armdevtestlabs.TransportProtocol("Tcp").ToPtr(),
+										BackendPort:       to.Ptr[int32](22),
+										TransportProtocol: to.Ptr(armdevtestlabs.TransportProtocolTCP),
 									}},
 							},
 						},
-						Notes:       to.StringPtr("<notes>"),
-						Size:        to.StringPtr("<size>"),
-						StorageType: to.StringPtr("<storage-type>"),
-						UserName:    to.StringPtr("<user-name>"),
+						Notes:       to.Ptr("<notes>"),
+						Size:        to.Ptr("<size>"),
+						StorageType: to.Ptr("<storage-type>"),
+						UserName:    to.Ptr("<user-name>"),
 					},
 				},
 			},
 		},
-		nil)
+		&armdevtestlabs.FormulasClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.FormulasClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

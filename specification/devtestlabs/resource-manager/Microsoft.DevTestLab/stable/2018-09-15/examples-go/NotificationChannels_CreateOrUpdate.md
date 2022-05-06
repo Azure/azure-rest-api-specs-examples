@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.2.1/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.4.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdevtestlabs_test
@@ -12,34 +12,41 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devtestlabs/armdevtestlabs"
 )
 
-// x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/NotificationChannels_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/NotificationChannels_CreateOrUpdate.json
 func ExampleNotificationChannelsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdevtestlabs.NewNotificationChannelsClient("<subscription-id>", cred, nil)
+	client, err := armdevtestlabs.NewNotificationChannelsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<lab-name>",
 		"<name>",
 		armdevtestlabs.NotificationChannel{
 			Properties: &armdevtestlabs.NotificationChannelProperties{
-				Description:    to.StringPtr("<description>"),
-				EmailRecipient: to.StringPtr("<email-recipient>"),
+				Description:    to.Ptr("<description>"),
+				EmailRecipient: to.Ptr("<email-recipient>"),
 				Events: []*armdevtestlabs.Event{
 					{
-						EventName: armdevtestlabs.NotificationChannelEventType("AutoShutdown").ToPtr(),
+						EventName: to.Ptr(armdevtestlabs.NotificationChannelEventTypeAutoShutdown),
 					}},
-				NotificationLocale: to.StringPtr("<notification-locale>"),
-				WebHookURL:         to.StringPtr("<web-hook-url>"),
+				NotificationLocale: to.Ptr("<notification-locale>"),
+				WebHookURL:         to.Ptr("<web-hook-url>"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.NotificationChannelsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

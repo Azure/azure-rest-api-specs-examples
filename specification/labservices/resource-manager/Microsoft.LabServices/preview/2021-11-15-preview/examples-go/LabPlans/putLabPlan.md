@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.2.1/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.4.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -14,54 +14,62 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/labservices/armlabservices"
 )
 
-// x-ms-original-file: specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-11-15-preview/examples/LabPlans/putLabPlan.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/labservices/resource-manager/Microsoft.LabServices/preview/2021-11-15-preview/examples/LabPlans/putLabPlan.json
 func ExampleLabPlansClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armlabservices.NewLabPlansClient("<subscription-id>", cred, nil)
+	client, err := armlabservices.NewLabPlansClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<lab-plan-name>",
 		armlabservices.LabPlan{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armlabservices.LabPlanProperties{
 				DefaultAutoShutdownProfile: &armlabservices.AutoShutdownProfile{
-					DisconnectDelay:          to.StringPtr("<disconnect-delay>"),
-					IdleDelay:                to.StringPtr("<idle-delay>"),
-					NoConnectDelay:           to.StringPtr("<no-connect-delay>"),
-					ShutdownOnDisconnect:     armlabservices.EnableStateEnabled.ToPtr(),
-					ShutdownOnIdle:           armlabservices.ShutdownOnIdleModeUserAbsence.ToPtr(),
-					ShutdownWhenNotConnected: armlabservices.EnableStateEnabled.ToPtr(),
+					DisconnectDelay:          to.Ptr("<disconnect-delay>"),
+					IdleDelay:                to.Ptr("<idle-delay>"),
+					NoConnectDelay:           to.Ptr("<no-connect-delay>"),
+					ShutdownOnDisconnect:     to.Ptr(armlabservices.EnableStateEnabled),
+					ShutdownOnIdle:           to.Ptr(armlabservices.ShutdownOnIdleModeUserAbsence),
+					ShutdownWhenNotConnected: to.Ptr(armlabservices.EnableStateEnabled),
 				},
 				DefaultConnectionProfile: &armlabservices.ConnectionProfile{
-					ClientRdpAccess: armlabservices.ConnectionTypePublic.ToPtr(),
-					ClientSSHAccess: armlabservices.ConnectionTypePublic.ToPtr(),
-					WebRdpAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
-					WebSSHAccess:    armlabservices.ConnectionTypeNone.ToPtr(),
+					ClientRdpAccess: to.Ptr(armlabservices.ConnectionTypePublic),
+					ClientSSHAccess: to.Ptr(armlabservices.ConnectionTypePublic),
+					WebRdpAccess:    to.Ptr(armlabservices.ConnectionTypeNone),
+					WebSSHAccess:    to.Ptr(armlabservices.ConnectionTypeNone),
 				},
 				DefaultNetworkProfile: &armlabservices.LabPlanNetworkProfile{
-					SubnetID: to.StringPtr("<subnet-id>"),
+					SubnetID: to.Ptr("<subnet-id>"),
 				},
-				SharedGalleryID: to.StringPtr("<shared-gallery-id>"),
+				SharedGalleryID: to.Ptr("<shared-gallery-id>"),
 				SupportInfo: &armlabservices.SupportInfo{
-					Email:        to.StringPtr("<email>"),
-					Instructions: to.StringPtr("<instructions>"),
-					Phone:        to.StringPtr("<phone>"),
-					URL:          to.StringPtr("<url>"),
+					Email:        to.Ptr("<email>"),
+					Instructions: to.Ptr("<instructions>"),
+					Phone:        to.Ptr("<phone>"),
+					URL:          to.Ptr("<url>"),
 				},
 			},
 		},
-		nil)
+		&armlabservices.LabPlansClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.LabPlansClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

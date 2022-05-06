@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.3.1/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.5.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventhub_test
@@ -14,49 +14,57 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub"
 )
 
-// x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/NameSpaces/EHNameSpaceCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/NameSpaces/EHNameSpaceCreate.json
 func ExampleNamespacesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armeventhub.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armeventhub.NewNamespacesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<namespace-name>",
 		armeventhub.EHNamespace{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Identity: &armeventhub.Identity{
-				Type: armeventhub.ManagedServiceIdentityTypeSystemAssignedUserAssigned.ToPtr(),
+				Type: to.Ptr(armeventhub.ManagedServiceIdentityTypeSystemAssignedUserAssigned),
 				UserAssignedIdentities: map[string]*armeventhub.UserAssignedIdentity{
 					"/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud1": {},
 					"/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud2": {},
 				},
 			},
 			Properties: &armeventhub.EHNamespaceProperties{
-				ClusterArmID: to.StringPtr("<cluster-arm-id>"),
+				ClusterArmID: to.Ptr("<cluster-arm-id>"),
 				Encryption: &armeventhub.Encryption{
-					KeySource: to.StringPtr("<key-source>"),
+					KeySource: to.Ptr("<key-source>"),
 					KeyVaultProperties: []*armeventhub.KeyVaultProperties{
 						{
 							Identity: &armeventhub.UserAssignedIdentityProperties{
-								UserAssignedIdentity: to.StringPtr("<user-assigned-identity>"),
+								UserAssignedIdentity: to.Ptr("<user-assigned-identity>"),
 							},
-							KeyName:     to.StringPtr("<key-name>"),
-							KeyVaultURI: to.StringPtr("<key-vault-uri>"),
+							KeyName:     to.Ptr("<key-name>"),
+							KeyVaultURI: to.Ptr("<key-vault-uri>"),
 						}},
 				},
 			},
 		},
-		nil)
+		&armeventhub.NamespacesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.NamespacesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.2.1/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.4.0/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armfrontdoor_test
@@ -14,34 +14,42 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/frontdoor/armfrontdoor"
 )
 
-// x-ms-original-file: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentUpdateProfile.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentUpdateProfile.json
 func ExampleNetworkExperimentProfilesClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armfrontdoor.NewNetworkExperimentProfilesClient("<subscription-id>", cred, nil)
+	client, err := armfrontdoor.NewNetworkExperimentProfilesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<profile-name>",
 		armfrontdoor.ProfileUpdateModel{
 			Properties: &armfrontdoor.ProfileUpdateProperties{
-				EnabledState: armfrontdoor.State("Enabled").ToPtr(),
+				EnabledState: to.Ptr(armfrontdoor.StateEnabled),
 			},
 			Tags: map[string]*string{
-				"key1": to.StringPtr("value1"),
-				"key2": to.StringPtr("value2"),
+				"key1": to.Ptr("value1"),
+				"key2": to.Ptr("value2"),
 			},
 		},
-		nil)
+		&armfrontdoor.NetworkExperimentProfilesClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.NetworkExperimentProfilesClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

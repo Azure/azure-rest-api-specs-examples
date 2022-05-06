@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Favs%2Farmavs%2Fv0.1.0/sdk/resourcemanager/avs/armavs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Favs%2Farmavs%2Fv0.4.0/sdk/resourcemanager/avs/armavs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armavs_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs"
 )
 
-// x-ms-original-file: specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/examples/ScriptExecutions_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/vmware/resource-manager/Microsoft.AVS/stable/2021-12-01/examples/ScriptExecutions_CreateOrUpdate.json
 func ExampleScriptExecutionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armavs.NewScriptExecutionsClient("<subscription-id>", cred, nil)
+	client, err := armavs.NewScriptExecutionsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<private-cloud-name>",
@@ -30,40 +35,37 @@ func ExampleScriptExecutionsClient_BeginCreateOrUpdate() {
 			Properties: &armavs.ScriptExecutionProperties{
 				HiddenParameters: []armavs.ScriptExecutionParameterClassification{
 					&armavs.ScriptSecureStringExecutionParameter{
-						ScriptExecutionParameter: armavs.ScriptExecutionParameter{
-							Name: to.StringPtr("<name>"),
-							Type: armavs.ScriptExecutionParameterTypeSecureValue.ToPtr(),
-						},
-						SecureValue: to.StringPtr("<secure-value>"),
+						Name:        to.Ptr("<name>"),
+						Type:        to.Ptr(armavs.ScriptExecutionParameterTypeSecureValue),
+						SecureValue: to.Ptr("<secure-value>"),
 					}},
 				Parameters: []armavs.ScriptExecutionParameterClassification{
 					&armavs.ScriptStringExecutionParameter{
-						ScriptExecutionParameter: armavs.ScriptExecutionParameter{
-							Name: to.StringPtr("<name>"),
-							Type: armavs.ScriptExecutionParameterTypeValue.ToPtr(),
-						},
-						Value: to.StringPtr("<value>"),
+						Name:  to.Ptr("<name>"),
+						Type:  to.Ptr(armavs.ScriptExecutionParameterTypeValue),
+						Value: to.Ptr("<value>"),
 					},
 					&armavs.ScriptStringExecutionParameter{
-						ScriptExecutionParameter: armavs.ScriptExecutionParameter{
-							Name: to.StringPtr("<name>"),
-							Type: armavs.ScriptExecutionParameterTypeValue.ToPtr(),
-						},
-						Value: to.StringPtr("<value>"),
+						Name:  to.Ptr("<name>"),
+						Type:  to.Ptr(armavs.ScriptExecutionParameterTypeValue),
+						Value: to.Ptr("<value>"),
 					}},
-				Retention:      to.StringPtr("<retention>"),
-				ScriptCmdletID: to.StringPtr("<script-cmdlet-id>"),
-				Timeout:        to.StringPtr("<timeout>"),
+				Retention:      to.Ptr("<retention>"),
+				ScriptCmdletID: to.Ptr("<script-cmdlet-id>"),
+				Timeout:        to.Ptr("<timeout>"),
 			},
 		},
-		nil)
+		&armavs.ScriptExecutionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("ScriptExecution.ID: %s\n", *res.ID)
+	// TODO: use response item
+	_ = res
 }
 ```

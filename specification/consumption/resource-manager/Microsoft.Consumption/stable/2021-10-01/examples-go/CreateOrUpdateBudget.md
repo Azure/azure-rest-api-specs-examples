@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconsumption%2Farmconsumption%2Fv0.3.0/sdk/resourcemanager/consumption/armconsumption/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconsumption%2Farmconsumption%2Fv0.5.0/sdk/resourcemanager/consumption/armconsumption/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconsumption_test
@@ -14,80 +14,87 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/consumption/armconsumption"
 )
 
-// x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/CreateOrUpdateBudget.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/CreateOrUpdateBudget.json
 func ExampleBudgetsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armconsumption.NewBudgetsClient(cred, nil)
+	client, err := armconsumption.NewBudgetsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<scope>",
 		"<budget-name>",
 		armconsumption.Budget{
-			ETag: to.StringPtr("<etag>"),
+			ETag: to.Ptr("<etag>"),
 			Properties: &armconsumption.BudgetProperties{
-				Amount:   to.Float64Ptr(100.65),
-				Category: armconsumption.CategoryType("Cost").ToPtr(),
+				Amount:   to.Ptr[float64](100.65),
+				Category: to.Ptr(armconsumption.CategoryTypeCost),
 				Filter: &armconsumption.BudgetFilter{
 					And: []*armconsumption.BudgetFilterProperties{
 						{
 							Dimensions: &armconsumption.BudgetComparisonExpression{
-								Name:     to.StringPtr("<name>"),
-								Operator: armconsumption.BudgetOperatorType("In").ToPtr(),
+								Name:     to.Ptr("<name>"),
+								Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
 								Values: []*string{
-									to.StringPtr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2"),
-									to.StringPtr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1")},
+									to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2"),
+									to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/platformcloudplatformGeneric1")},
 							},
 						},
 						{
 							Tags: &armconsumption.BudgetComparisonExpression{
-								Name:     to.StringPtr("<name>"),
-								Operator: armconsumption.BudgetOperatorType("In").ToPtr(),
+								Name:     to.Ptr("<name>"),
+								Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
 								Values: []*string{
-									to.StringPtr("Dev"),
-									to.StringPtr("Prod")},
+									to.Ptr("Dev"),
+									to.Ptr("Prod")},
 							},
 						},
 						{
 							Tags: &armconsumption.BudgetComparisonExpression{
-								Name:     to.StringPtr("<name>"),
-								Operator: armconsumption.BudgetOperatorType("In").ToPtr(),
+								Name:     to.Ptr("<name>"),
+								Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
 								Values: []*string{
-									to.StringPtr("engineering"),
-									to.StringPtr("sales")},
+									to.Ptr("engineering"),
+									to.Ptr("sales")},
 							},
 						}},
 				},
 				Notifications: map[string]*armconsumption.Notification{
 					"Actual_GreaterThan_80_Percent": {
 						ContactEmails: []*string{
-							to.StringPtr("johndoe@contoso.com"),
-							to.StringPtr("janesmith@contoso.com")},
+							to.Ptr("johndoe@contoso.com"),
+							to.Ptr("janesmith@contoso.com")},
 						ContactGroups: []*string{
-							to.StringPtr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/microsoft.insights/actionGroups/SampleActionGroup")},
+							to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/microsoft.insights/actionGroups/SampleActionGroup")},
 						ContactRoles: []*string{
-							to.StringPtr("Contributor"),
-							to.StringPtr("Reader")},
-						Enabled:       to.BoolPtr(true),
-						Locale:        armconsumption.CultureCode("en-us").ToPtr(),
-						Operator:      armconsumption.OperatorType("GreaterThan").ToPtr(),
-						Threshold:     to.Float64Ptr(80),
-						ThresholdType: armconsumption.ThresholdType("Actual").ToPtr(),
+							to.Ptr("Contributor"),
+							to.Ptr("Reader")},
+						Enabled:       to.Ptr(true),
+						Locale:        to.Ptr(armconsumption.CultureCodeEnUs),
+						Operator:      to.Ptr(armconsumption.OperatorTypeGreaterThan),
+						Threshold:     to.Ptr[float64](80),
+						ThresholdType: to.Ptr(armconsumption.ThresholdTypeActual),
 					},
 				},
-				TimeGrain: armconsumption.TimeGrainType("Monthly").ToPtr(),
+				TimeGrain: to.Ptr(armconsumption.TimeGrainTypeMonthly),
 				TimePeriod: &armconsumption.BudgetTimePeriod{
-					EndDate:   to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-31T00:00:00Z"); return t }()),
-					StartDate: to.TimePtr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00Z"); return t }()),
+					EndDate:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-31T00:00:00Z"); return t }()),
+					StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00Z"); return t }()),
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.BudgetsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

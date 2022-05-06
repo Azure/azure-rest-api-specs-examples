@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerinstance%2Farmcontainerinstance%2Fv0.2.0/sdk/resourcemanager/containerinstance/armcontainerinstance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerinstance%2Farmcontainerinstance%2Fv0.4.0/sdk/resourcemanager/containerinstance/armcontainerinstance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcontainerinstance_test
@@ -14,21 +14,26 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerinstance/armcontainerinstance"
 )
 
-// x-ms-original-file: specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-10-01/examples/ContainerGroupsCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-10-01/examples/ContainerGroupsCreateOrUpdate.json
 func ExampleContainerGroupsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcontainerinstance.NewContainerGroupsClient("<subscription-id>", cred, nil)
+	client, err := armcontainerinstance.NewContainerGroupsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<container-group-name>",
 		armcontainerinstance.ContainerGroup{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Identity: &armcontainerinstance.ContainerGroupIdentity{
-				Type: armcontainerinstance.ResourceIdentityTypeSystemAssignedUserAssigned.ToPtr(),
+				Type: to.Ptr(armcontainerinstance.ResourceIdentityTypeSystemAssignedUserAssigned),
 				UserAssignedIdentities: map[string]*armcontainerinstance.Components10Wh5UdSchemasContainergroupidentityPropertiesUserassignedidentitiesAdditionalproperties{
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name": {},
 				},
@@ -36,106 +41,109 @@ func ExampleContainerGroupsClient_BeginCreateOrUpdate() {
 			Properties: &armcontainerinstance.ContainerGroupProperties{
 				Containers: []*armcontainerinstance.Container{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Properties: &armcontainerinstance.ContainerProperties{
 							Command:              []*string{},
 							EnvironmentVariables: []*armcontainerinstance.EnvironmentVariable{},
-							Image:                to.StringPtr("<image>"),
+							Image:                to.Ptr("<image>"),
 							Ports: []*armcontainerinstance.ContainerPort{
 								{
-									Port: to.Int32Ptr(80),
+									Port: to.Ptr[int32](80),
 								}},
 							Resources: &armcontainerinstance.ResourceRequirements{
 								Requests: &armcontainerinstance.ResourceRequests{
-									CPU: to.Float64Ptr(1),
+									CPU: to.Ptr[float64](1),
 									Gpu: &armcontainerinstance.GpuResource{
-										Count: to.Int32Ptr(1),
-										SKU:   armcontainerinstance.GpuSKU("K80").ToPtr(),
+										Count: to.Ptr[int32](1),
+										SKU:   to.Ptr(armcontainerinstance.GpuSKUK80),
 									},
-									MemoryInGB: to.Float64Ptr(1.5),
+									MemoryInGB: to.Ptr[float64](1.5),
 								},
 							},
 							VolumeMounts: []*armcontainerinstance.VolumeMount{
 								{
-									Name:      to.StringPtr("<name>"),
-									MountPath: to.StringPtr("<mount-path>"),
-									ReadOnly:  to.BoolPtr(false),
+									Name:      to.Ptr("<name>"),
+									MountPath: to.Ptr("<mount-path>"),
+									ReadOnly:  to.Ptr(false),
 								},
 								{
-									Name:      to.StringPtr("<name>"),
-									MountPath: to.StringPtr("<mount-path>"),
-									ReadOnly:  to.BoolPtr(false),
+									Name:      to.Ptr("<name>"),
+									MountPath: to.Ptr("<mount-path>"),
+									ReadOnly:  to.Ptr(false),
 								},
 								{
-									Name:      to.StringPtr("<name>"),
-									MountPath: to.StringPtr("<mount-path>"),
-									ReadOnly:  to.BoolPtr(true),
+									Name:      to.Ptr("<name>"),
+									MountPath: to.Ptr("<mount-path>"),
+									ReadOnly:  to.Ptr(true),
 								}},
 						},
 					}},
 				Diagnostics: &armcontainerinstance.ContainerGroupDiagnostics{
 					LogAnalytics: &armcontainerinstance.LogAnalytics{
-						LogType: armcontainerinstance.LogAnalyticsLogType("ContainerInsights").ToPtr(),
+						LogType: to.Ptr(armcontainerinstance.LogAnalyticsLogTypeContainerInsights),
 						Metadata: map[string]*string{
-							"test-key": to.StringPtr("test-metadata-value"),
+							"test-key": to.Ptr("test-metadata-value"),
 						},
-						WorkspaceID:         to.StringPtr("<workspace-id>"),
-						WorkspaceKey:        to.StringPtr("<workspace-key>"),
-						WorkspaceResourceID: to.StringPtr("<workspace-resource-id>"),
+						WorkspaceID:         to.Ptr("<workspace-id>"),
+						WorkspaceKey:        to.Ptr("<workspace-key>"),
+						WorkspaceResourceID: to.Ptr("<workspace-resource-id>"),
 					},
 				},
 				DNSConfig: &armcontainerinstance.DNSConfiguration{
 					NameServers: []*string{
-						to.StringPtr("1.1.1.1")},
-					Options:       to.StringPtr("<options>"),
-					SearchDomains: to.StringPtr("<search-domains>"),
+						to.Ptr("1.1.1.1")},
+					Options:       to.Ptr("<options>"),
+					SearchDomains: to.Ptr("<search-domains>"),
 				},
 				ImageRegistryCredentials: []*armcontainerinstance.ImageRegistryCredential{},
 				IPAddress: &armcontainerinstance.IPAddress{
-					Type:                    armcontainerinstance.ContainerGroupIPAddressType("Public").ToPtr(),
-					DNSNameLabel:            to.StringPtr("<dnsname-label>"),
-					DNSNameLabelReusePolicy: armcontainerinstance.DNSNameLabelReusePolicy("Unsecure").ToPtr(),
+					Type:                    to.Ptr(armcontainerinstance.ContainerGroupIPAddressTypePublic),
+					DNSNameLabel:            to.Ptr("<dnsname-label>"),
+					DNSNameLabelReusePolicy: to.Ptr(armcontainerinstance.AutoGeneratedDomainNameLabelScopeUnsecure),
 					Ports: []*armcontainerinstance.Port{
 						{
-							Port:     to.Int32Ptr(80),
-							Protocol: armcontainerinstance.ContainerGroupNetworkProtocol("TCP").ToPtr(),
+							Port:     to.Ptr[int32](80),
+							Protocol: to.Ptr(armcontainerinstance.ContainerGroupNetworkProtocolTCP),
 						}},
 				},
-				OSType: armcontainerinstance.OperatingSystemTypes("Linux").ToPtr(),
+				OSType: to.Ptr(armcontainerinstance.OperatingSystemTypesLinux),
 				SubnetIDs: []*armcontainerinstance.ContainerGroupSubnetID{
 					{
-						ID: to.StringPtr("<id>"),
+						ID: to.Ptr("<id>"),
 					}},
 				Volumes: []*armcontainerinstance.Volume{
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						AzureFile: &armcontainerinstance.AzureFileVolume{
-							ShareName:          to.StringPtr("<share-name>"),
-							StorageAccountKey:  to.StringPtr("<storage-account-key>"),
-							StorageAccountName: to.StringPtr("<storage-account-name>"),
+							ShareName:          to.Ptr("<share-name>"),
+							StorageAccountKey:  to.Ptr("<storage-account-key>"),
+							StorageAccountName: to.Ptr("<storage-account-name>"),
 						},
 					},
 					{
-						Name:     to.StringPtr("<name>"),
+						Name:     to.Ptr("<name>"),
 						EmptyDir: map[string]interface{}{},
 					},
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("<name>"),
 						Secret: map[string]*string{
-							"secretKey1": to.StringPtr("SecretValue1InBase64"),
-							"secretKey2": to.StringPtr("SecretValue2InBase64"),
+							"secretKey1": to.Ptr("SecretValue1InBase64"),
+							"secretKey2": to.Ptr("SecretValue2InBase64"),
 						},
 					}},
 			},
 		},
-		nil)
+		&armcontainerinstance.ContainerGroupsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ContainerGroupsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

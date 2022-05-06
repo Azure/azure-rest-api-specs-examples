@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdns%2Farmdns%2Fv0.2.1/sdk/resourcemanager/dns/armdns/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdns%2Farmdns%2Fv0.4.0/sdk/resourcemanager/dns/armdns/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdns_test
@@ -12,14 +12,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dns/armdns"
 )
 
-// x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateARecordset.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateARecordset.json
 func ExampleRecordSetsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdns.NewRecordSetsClient("<subscription-id>", cred, nil)
+	client, err := armdns.NewRecordSetsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<zone-name>",
@@ -29,11 +34,11 @@ func ExampleRecordSetsClient_CreateOrUpdate() {
 			Properties: &armdns.RecordSetProperties{
 				ARecords: []*armdns.ARecord{
 					{
-						IPv4Address: to.StringPtr("<ipv4address>"),
+						IPv4Address: to.Ptr("<ipv4address>"),
 					}},
-				TTL: to.Int64Ptr(3600),
+				TTL: to.Ptr[int64](3600),
 				Metadata: map[string]*string{
-					"key1": to.StringPtr("value1"),
+					"key1": to.Ptr("value1"),
 				},
 			},
 		},
@@ -41,8 +46,10 @@ func ExampleRecordSetsClient_CreateOrUpdate() {
 			IfNoneMatch: nil,
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.RecordSetsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

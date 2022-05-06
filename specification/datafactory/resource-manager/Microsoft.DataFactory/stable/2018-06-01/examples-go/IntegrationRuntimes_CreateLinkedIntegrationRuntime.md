@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.3.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -12,28 +12,35 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory"
 )
 
-// x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_CreateLinkedIntegrationRuntime.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_CreateLinkedIntegrationRuntime.json
 func ExampleIntegrationRuntimesClient_CreateLinkedIntegrationRuntime() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdatafactory.NewIntegrationRuntimesClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewIntegrationRuntimesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateLinkedIntegrationRuntime(ctx,
 		"<resource-group-name>",
 		"<factory-name>",
 		"<integration-runtime-name>",
 		armdatafactory.CreateLinkedIntegrationRuntimeRequest{
-			Name:                to.StringPtr("<name>"),
-			DataFactoryLocation: to.StringPtr("<data-factory-location>"),
-			DataFactoryName:     to.StringPtr("<data-factory-name>"),
-			SubscriptionID:      to.StringPtr("<subscription-id>"),
+			Name:                to.Ptr("<name>"),
+			DataFactoryLocation: to.Ptr("<data-factory-location>"),
+			DataFactoryName:     to.Ptr("<data-factory-name>"),
+			SubscriptionID:      to.Ptr("<subscription-id>"),
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.IntegrationRuntimesClientCreateLinkedIntegrationRuntimeResult)
+	// TODO: use response item
+	_ = res
 }
 ```

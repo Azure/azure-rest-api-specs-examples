@@ -1,0 +1,61 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+
+```go
+package armcosmos_test
+
+import (
+	"context"
+	"log"
+
+	"time"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-02-15-preview/examples/CosmosDBMongoDBUserDefinitionCreateUpdate.json
+func ExampleMongoDBResourcesClient_BeginCreateUpdateMongoUserDefinition() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+		return
+	}
+	ctx := context.Background()
+	client, err := armcosmos.NewMongoDBResourcesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
+	poller, err := client.BeginCreateUpdateMongoUserDefinition(ctx,
+		"<mongo-user-definition-id>",
+		"<resource-group-name>",
+		"<account-name>",
+		armcosmos.MongoUserDefinitionCreateUpdateParameters{
+			Properties: &armcosmos.MongoUserDefinitionResource{
+				CustomData:   to.Ptr("<custom-data>"),
+				DatabaseName: to.Ptr("<database-name>"),
+				Mechanisms:   to.Ptr("<mechanisms>"),
+				Password:     to.Ptr("<password>"),
+				Roles: []*armcosmos.Role{
+					{
+						Db:   to.Ptr("<db>"),
+						Role: to.Ptr("<role>"),
+					}},
+				UserName: to.Ptr("<user-name>"),
+			},
+		},
+		&armcosmos.MongoDBResourcesClientBeginCreateUpdateMongoUserDefinitionOptions{ResumeToken: ""})
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+		return
+	}
+	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+		return
+	}
+	// TODO: use response item
+	_ = res
+}
+```

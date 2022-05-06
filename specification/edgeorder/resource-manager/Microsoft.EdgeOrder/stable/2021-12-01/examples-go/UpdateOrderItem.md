@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.2.1/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.4.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorder_test
@@ -14,47 +14,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeorder/armedgeorder"
 )
 
-// x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/UpdateOrderItem.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/UpdateOrderItem.json
 func ExampleManagementClient_BeginUpdateOrderItem() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armedgeorder.NewManagementClient("<subscription-id>", cred, nil)
+	client, err := armedgeorder.NewManagementClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdateOrderItem(ctx,
 		"<order-item-name>",
 		"<resource-group-name>",
 		armedgeorder.OrderItemUpdateParameter{
 			Properties: &armedgeorder.OrderItemUpdateProperties{
-				ForwardAddress: &armedgeorder.AddressProperties{
-					ContactDetails: &armedgeorder.ContactDetails{
-						ContactName: to.StringPtr("<contact-name>"),
-						EmailList: []*string{
-							to.StringPtr("testemail@microsoft.com")},
-						Phone: to.StringPtr("<phone>"),
-					},
-				},
 				Preferences: &armedgeorder.Preferences{
 					TransportPreferences: &armedgeorder.TransportPreferences{
-						PreferredShipmentType: armedgeorder.TransportShipmentTypes("CustomerManaged").ToPtr(),
+						PreferredShipmentType: to.Ptr(armedgeorder.TransportShipmentTypesCustomerManaged),
 					},
 				},
 			},
-			Tags: map[string]*string{
-				"ant":    to.StringPtr("insect"),
-				"pigeon": to.StringPtr("bird"),
-				"tiger":  to.StringPtr("animal"),
-			},
 		},
-		&armedgeorder.ManagementClientBeginUpdateOrderItemOptions{IfMatch: nil})
+		&armedgeorder.ManagementClientBeginUpdateOrderItemOptions{IfMatch: nil,
+			ResumeToken: "",
+		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ManagementClientUpdateOrderItemResult)
+	// TODO: use response item
+	_ = res
 }
 ```

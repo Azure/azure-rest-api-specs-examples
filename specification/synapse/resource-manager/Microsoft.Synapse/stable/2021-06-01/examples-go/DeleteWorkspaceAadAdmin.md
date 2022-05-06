@@ -14,14 +14,14 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteWorkspaceAadAdmin.json
-func ExampleWorkspaceAADAdminsClient_BeginDelete() {
+func ExampleWorkspaceSQLAADAdminsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewWorkspaceAADAdminsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewWorkspaceSQLAADAdminsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
@@ -29,7 +29,7 @@ func ExampleWorkspaceAADAdminsClient_BeginDelete() {
 	poller, err := client.BeginDelete(ctx,
 		"<resource-group-name>",
 		"<workspace-name>",
-		&armsynapse.WorkspaceAADAdminsClientBeginDeleteOptions{ResumeToken: ""})
+		&armsynapse.WorkspaceSQLAADAdminsClientBeginDeleteOptions{ResumeToken: ""})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

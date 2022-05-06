@@ -15,14 +15,14 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateOrUpdateWorkspaceAadAdmin.json
-func ExampleWorkspaceAADAdminsClient_BeginCreateOrUpdate() {
+func ExampleWorkspaceSQLAADAdminsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewWorkspaceAADAdminsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewWorkspaceSQLAADAdminsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
@@ -38,7 +38,7 @@ func ExampleWorkspaceAADAdminsClient_BeginCreateOrUpdate() {
 				TenantID:          to.Ptr("<tenant-id>"),
 			},
 		},
-		&armsynapse.WorkspaceAADAdminsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		&armsynapse.WorkspaceSQLAADAdminsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 		return

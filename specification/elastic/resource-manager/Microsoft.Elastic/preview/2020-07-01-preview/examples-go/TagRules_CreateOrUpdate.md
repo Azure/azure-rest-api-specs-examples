@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Felastic%2Farmelastic%2Fv0.2.1/sdk/resourcemanager/elastic/armelastic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Felastic%2Farmelastic%2Fv0.4.0/sdk/resourcemanager/elastic/armelastic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armelastic_test
@@ -11,22 +11,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic"
 )
 
-// x-ms-original-file: specification/elastic/resource-manager/Microsoft.Elastic/preview/2020-07-01-preview/examples/TagRules_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elastic/resource-manager/Microsoft.Elastic/preview/2020-07-01-preview/examples/TagRules_CreateOrUpdate.json
 func ExampleTagRulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armelastic.NewTagRulesClient("<subscription-id>", cred, nil)
+	client, err := armelastic.NewTagRulesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<monitor-name>",
 		"<rule-set-name>",
 		&armelastic.TagRulesClientCreateOrUpdateOptions{Body: nil})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.TagRulesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

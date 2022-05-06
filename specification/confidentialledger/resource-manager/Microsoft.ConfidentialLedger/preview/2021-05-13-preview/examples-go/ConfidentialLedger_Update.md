@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.2.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.4.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfidentialledger_test
@@ -14,33 +14,54 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/confidentialledger/armconfidentialledger"
 )
 
-// x-ms-original-file: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/examples/ConfidentialLedger_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2021-05-13-preview/examples/ConfidentialLedger_Update.json
 func ExampleLedgerClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armconfidentialledger.NewLedgerClient("<subscription-id>", cred, nil)
+	client, err := armconfidentialledger.NewLedgerClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginUpdate(ctx,
 		"<resource-group-name>",
 		"<ledger-name>",
 		armconfidentialledger.ConfidentialLedger{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"additionProps2":   to.StringPtr("additional property value"),
-				"additionalProps1": to.StringPtr("additional properties"),
+				"additionProps2":   to.Ptr("additional property value"),
+				"additionalProps1": to.Ptr("additional properties"),
 			},
-			Properties: &armconfidentialledger.LedgerProperties{},
+			Properties: &armconfidentialledger.LedgerProperties{
+				AADBasedSecurityPrincipals: []*armconfidentialledger.AADBasedSecurityPrincipal{
+					{
+						LedgerRoleName: to.Ptr(armconfidentialledger.LedgerRoleNameAdministrator),
+						PrincipalID:    to.Ptr("<principal-id>"),
+						TenantID:       to.Ptr("<tenant-id>"),
+					}},
+				CertBasedSecurityPrincipals: []*armconfidentialledger.CertBasedSecurityPrincipal{
+					{
+						Cert:           to.Ptr("<cert>"),
+						LedgerRoleName: to.Ptr(armconfidentialledger.LedgerRoleNameReader),
+					}},
+				LedgerType: to.Ptr(armconfidentialledger.LedgerTypePublic),
+			},
 		},
-		nil)
+		&armconfidentialledger.LedgerClientBeginUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.LedgerClientUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

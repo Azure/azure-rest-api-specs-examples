@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.2.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.4.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappservice_test
@@ -14,14 +14,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice"
 )
 
-// x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/ApproveRejectSitePrivateEndpointConnection.json
-func ExampleWebAppsClient_BeginApproveOrRejectPrivateEndpointConnection() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/ApproveRejectSitePrivateEndpointConnection.json
+func ExampleStaticSitesClient_BeginApproveOrRejectPrivateEndpointConnection() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armappservice.NewWebAppsClient("<subscription-id>", cred, nil)
+	client, err := armappservice.NewStaticSitesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginApproveOrRejectPrivateEndpointConnection(ctx,
 		"<resource-group-name>",
 		"<name>",
@@ -29,20 +34,23 @@ func ExampleWebAppsClient_BeginApproveOrRejectPrivateEndpointConnection() {
 		armappservice.PrivateLinkConnectionApprovalRequestResource{
 			Properties: &armappservice.PrivateLinkConnectionApprovalRequest{
 				PrivateLinkServiceConnectionState: &armappservice.PrivateLinkConnectionState{
-					Description:     to.StringPtr("<description>"),
-					ActionsRequired: to.StringPtr("<actions-required>"),
-					Status:          to.StringPtr("<status>"),
+					Description:     to.Ptr("<description>"),
+					ActionsRequired: to.Ptr("<actions-required>"),
+					Status:          to.Ptr("<status>"),
 				},
 			},
 		},
-		nil)
+		&armappservice.StaticSitesClientBeginApproveOrRejectPrivateEndpointConnectionOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.WebAppsClientApproveOrRejectPrivateEndpointConnectionResult)
+	// TODO: use response item
+	_ = res
 }
 ```

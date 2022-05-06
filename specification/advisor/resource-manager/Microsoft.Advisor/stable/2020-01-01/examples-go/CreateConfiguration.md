@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fadvisor%2Farmadvisor%2Fv0.2.0/sdk/resourcemanager/advisor/armadvisor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fadvisor%2Farmadvisor%2Fv0.4.0/sdk/resourcemanager/advisor/armadvisor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armadvisor_test
@@ -12,41 +12,48 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/advisor/armadvisor"
 )
 
-// x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/CreateConfiguration.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/CreateConfiguration.json
 func ExampleConfigurationsClient_CreateInResourceGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armadvisor.NewConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armadvisor.NewConfigurationsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateInResourceGroup(ctx,
-		armadvisor.ConfigurationName("default"),
+		armadvisor.ConfigurationNameDefault,
 		"<resource-group>",
 		armadvisor.ConfigData{
 			Properties: &armadvisor.ConfigDataProperties{
 				Digests: []*armadvisor.DigestConfig{
 					{
-						Name:                  to.StringPtr("<name>"),
-						ActionGroupResourceID: to.StringPtr("<action-group-resource-id>"),
+						Name:                  to.Ptr("<name>"),
+						ActionGroupResourceID: to.Ptr("<action-group-resource-id>"),
 						Categories: []*armadvisor.Category{
-							armadvisor.Category("HighAvailability").ToPtr(),
-							armadvisor.Category("Security").ToPtr(),
-							armadvisor.Category("Performance").ToPtr(),
-							armadvisor.Category("Cost").ToPtr(),
-							armadvisor.Category("OperationalExcellence").ToPtr()},
-						Frequency: to.Int32Ptr(30),
-						State:     armadvisor.DigestConfigState("Active").ToPtr(),
-						Language:  to.StringPtr("<language>"),
+							to.Ptr(armadvisor.CategoryHighAvailability),
+							to.Ptr(armadvisor.CategorySecurity),
+							to.Ptr(armadvisor.CategoryPerformance),
+							to.Ptr(armadvisor.CategoryCost),
+							to.Ptr(armadvisor.CategoryOperationalExcellence)},
+						Frequency: to.Ptr[int32](30),
+						State:     to.Ptr(armadvisor.DigestConfigStateActive),
+						Language:  to.Ptr("<language>"),
 					}},
-				Exclude:         to.BoolPtr(true),
-				LowCPUThreshold: armadvisor.CPUThreshold("5").ToPtr(),
+				Exclude:         to.Ptr(true),
+				LowCPUThreshold: to.Ptr(armadvisor.CPUThresholdFive),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.ConfigurationsClientCreateInResourceGroupResult)
+	// TODO: use response item
+	_ = res
 }
 ```

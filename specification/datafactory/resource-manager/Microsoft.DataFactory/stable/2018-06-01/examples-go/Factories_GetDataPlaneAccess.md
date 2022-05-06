@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.3.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -12,28 +12,35 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory"
 )
 
-// x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_GetDataPlaneAccess.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_GetDataPlaneAccess.json
 func ExampleFactoriesClient_GetDataPlaneAccess() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdatafactory.NewFactoriesClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewFactoriesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.GetDataPlaneAccess(ctx,
 		"<resource-group-name>",
 		"<factory-name>",
 		armdatafactory.UserAccessPolicy{
-			AccessResourcePath: to.StringPtr("<access-resource-path>"),
-			ExpireTime:         to.StringPtr("<expire-time>"),
-			Permissions:        to.StringPtr("<permissions>"),
-			ProfileName:        to.StringPtr("<profile-name>"),
-			StartTime:          to.StringPtr("<start-time>"),
+			AccessResourcePath: to.Ptr("<access-resource-path>"),
+			ExpireTime:         to.Ptr("<expire-time>"),
+			Permissions:        to.Ptr("<permissions>"),
+			ProfileName:        to.Ptr("<profile-name>"),
+			StartTime:          to.Ptr("<start-time>"),
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.FactoriesClientGetDataPlaneAccessResult)
+	// TODO: use response item
+	_ = res
 }
 ```

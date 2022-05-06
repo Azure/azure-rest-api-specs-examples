@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.3.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -12,26 +12,33 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory"
 )
 
-// x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_GetGitHubAccessToken.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_GetGitHubAccessToken.json
 func ExampleFactoriesClient_GetGitHubAccessToken() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdatafactory.NewFactoriesClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewFactoriesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.GetGitHubAccessToken(ctx,
 		"<resource-group-name>",
 		"<factory-name>",
 		armdatafactory.GitHubAccessTokenRequest{
-			GitHubAccessCode:         to.StringPtr("<git-hub-access-code>"),
-			GitHubAccessTokenBaseURL: to.StringPtr("<git-hub-access-token-base-url>"),
-			GitHubClientID:           to.StringPtr("<git-hub-client-id>"),
+			GitHubAccessCode:         to.Ptr("<git-hub-access-code>"),
+			GitHubAccessTokenBaseURL: to.Ptr("<git-hub-access-token-base-url>"),
+			GitHubClientID:           to.Ptr("<git-hub-client-id>"),
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.FactoriesClientGetGitHubAccessTokenResult)
+	// TODO: use response item
+	_ = res
 }
 ```

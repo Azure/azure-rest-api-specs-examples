@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.3.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -14,44 +14,52 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory"
 )
 
-// x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_Create.json
 func ExampleDataFlowDebugSessionClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdatafactory.NewDataFlowDebugSessionClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewDataFlowDebugSessionClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreate(ctx,
 		"<resource-group-name>",
 		"<factory-name>",
 		armdatafactory.CreateDataFlowDebugSessionRequest{
 			IntegrationRuntime: &armdatafactory.IntegrationRuntimeDebugResource{
-				Name: to.StringPtr("<name>"),
+				Name: to.Ptr("<name>"),
 				Properties: &armdatafactory.ManagedIntegrationRuntime{
-					Type: armdatafactory.IntegrationRuntimeType("Managed").ToPtr(),
+					Type: to.Ptr(armdatafactory.IntegrationRuntimeTypeManaged),
 					TypeProperties: &armdatafactory.ManagedIntegrationRuntimeTypeProperties{
 						ComputeProperties: &armdatafactory.IntegrationRuntimeComputeProperties{
 							DataFlowProperties: &armdatafactory.IntegrationRuntimeDataFlowProperties{
-								ComputeType: armdatafactory.DataFlowComputeType("General").ToPtr(),
-								CoreCount:   to.Int32Ptr(48),
-								TimeToLive:  to.Int32Ptr(10),
+								ComputeType: to.Ptr(armdatafactory.DataFlowComputeTypeGeneral),
+								CoreCount:   to.Ptr[int32](48),
+								TimeToLive:  to.Ptr[int32](10),
 							},
-							Location: to.StringPtr("<location>"),
+							Location: to.Ptr("<location>"),
 						},
 					},
 				},
 			},
-			TimeToLive: to.Int32Ptr(60),
+			TimeToLive: to.Ptr[int32](60),
 		},
-		nil)
+		&armdatafactory.DataFlowDebugSessionClientBeginCreateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.DataFlowDebugSessionClientCreateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

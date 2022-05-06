@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdns%2Farmdns%2Fv0.2.1/sdk/resourcemanager/dns/armdns/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdns%2Farmdns%2Fv0.4.0/sdk/resourcemanager/dns/armdns/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdns_test
@@ -11,14 +11,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dns/armdns"
 )
 
-// x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/DeleteARecordset.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/DeleteARecordset.json
 func ExampleRecordSetsClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armdns.NewRecordSetsClient("<subscription-id>", cred, nil)
+	client, err := armdns.NewRecordSetsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	_, err = client.Delete(ctx,
 		"<resource-group-name>",
 		"<zone-name>",
@@ -26,7 +31,8 @@ func ExampleRecordSetsClient_Delete() {
 		armdns.RecordTypeA,
 		&armdns.RecordSetsClientDeleteOptions{IfMatch: nil})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 }
 ```

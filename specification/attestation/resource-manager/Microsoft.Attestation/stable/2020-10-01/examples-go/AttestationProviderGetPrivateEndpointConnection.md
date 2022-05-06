@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fattestation%2Farmattestation%2Fv0.1.0/sdk/resourcemanager/attestation/armattestation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fattestation%2Farmattestation%2Fv0.4.0/sdk/resourcemanager/attestation/armattestation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armattestation_test
@@ -11,22 +11,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation"
 )
 
-// x-ms-original-file: specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/examples/AttestationProviderGetPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/examples/AttestationProviderGetPrivateEndpointConnection.json
 func ExamplePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armattestation.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armattestation.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.Get(ctx,
 		"<resource-group-name>",
 		"<provider-name>",
 		"<private-endpoint-connection-name>",
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("PrivateEndpointConnection.ID: %s\n", *res.ID)
+	// TODO: use response item
+	_ = res
 }
 ```

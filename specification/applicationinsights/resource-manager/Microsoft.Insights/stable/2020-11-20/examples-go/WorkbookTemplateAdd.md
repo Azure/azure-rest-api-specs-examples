@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.4.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -12,30 +12,35 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
 
-// x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-11-20/examples/WorkbookTemplateAdd.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-11-20/examples/WorkbookTemplateAdd.json
 func ExampleWorkbookTemplatesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armapplicationinsights.NewWorkbookTemplatesClient("<subscription-id>", cred, nil)
+	client, err := armapplicationinsights.NewWorkbookTemplatesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		armapplicationinsights.WorkbookTemplate{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armapplicationinsights.WorkbookTemplateProperties{
-				Author: to.StringPtr("<author>"),
+				Author: to.Ptr("<author>"),
 				Galleries: []*armapplicationinsights.WorkbookTemplateGallery{
 					{
-						Name:         to.StringPtr("<name>"),
-						Type:         to.StringPtr("<type>"),
-						Category:     to.StringPtr("<category>"),
-						Order:        to.Int32Ptr(100),
-						ResourceType: to.StringPtr("<resource-type>"),
+						Name:         to.Ptr("<name>"),
+						Type:         to.Ptr("<type>"),
+						Category:     to.Ptr("<category>"),
+						Order:        to.Ptr[int32](100),
+						ResourceType: to.Ptr("<resource-type>"),
 					}},
-				Priority: to.Int32Ptr(1),
+				Priority: to.Ptr[int32](1),
 				TemplateData: map[string]interface{}{
 					"$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
 					"items": []interface{}{
@@ -66,8 +71,10 @@ func ExampleWorkbookTemplatesClient_CreateOrUpdate() {
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.WorkbookTemplatesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

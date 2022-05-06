@@ -7,26 +7,36 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ExportConfigurationsList.json
-func ExampleExportConfigurationsClient_List() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsUpdateTagsOnly.json
+func ExampleComponentsClient_UpdateTags() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 		return
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewExportConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armapplicationinsights.NewComponentsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 		return
 	}
-	res, err := client.List(ctx,
+	res, err := client.UpdateTags(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
+		armapplicationinsights.TagsResource{
+			Tags: map[string]*string{
+				"ApplicationGatewayType": to.Ptr("Internal-Only"),
+				"BillingEntity":          to.Ptr("Self"),
+				"Color":                  to.Ptr("AzureBlue"),
+				"CustomField_01":         to.Ptr("Custom text in some random field named randomly"),
+				"NodeType":               to.Ptr("Edge"),
+			},
+		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

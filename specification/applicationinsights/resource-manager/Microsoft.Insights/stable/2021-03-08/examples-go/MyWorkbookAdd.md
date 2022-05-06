@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.2.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.4.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -12,37 +12,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
 
-// x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2021-03-08/examples/MyWorkbookAdd.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2021-03-08/examples/MyWorkbookAdd.json
 func ExampleMyWorkbooksClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armapplicationinsights.NewMyWorkbooksClient("<subscription-id>", cred, nil)
+	client, err := armapplicationinsights.NewMyWorkbooksClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<resource-name>",
 		armapplicationinsights.MyWorkbook{
-			Name:     to.StringPtr("<name>"),
-			ID:       to.StringPtr("<id>"),
-			Location: to.StringPtr("<location>"),
+			Name:     to.Ptr("<name>"),
+			ID:       to.Ptr("<id>"),
+			Location: to.Ptr("<location>"),
 			Tags: map[string]*string{
-				"0": to.StringPtr("TagSample01"),
-				"1": to.StringPtr("TagSample02"),
+				"0": to.Ptr("TagSample01"),
+				"1": to.Ptr("TagSample02"),
 			},
-			Kind: armapplicationinsights.Kind("user").ToPtr(),
+			Kind: to.Ptr(armapplicationinsights.KindUser),
 			Properties: &armapplicationinsights.MyWorkbookProperties{
-				Category:       to.StringPtr("<category>"),
-				DisplayName:    to.StringPtr("<display-name>"),
-				SerializedData: to.StringPtr("<serialized-data>"),
-				SourceID:       to.StringPtr("<source-id>"),
+				Category:       to.Ptr("<category>"),
+				DisplayName:    to.Ptr("<display-name>"),
+				SerializedData: to.Ptr("<serialized-data>"),
+				SourceID:       to.Ptr("<source-id>"),
 			},
 		},
 		&armapplicationinsights.MyWorkbooksClientCreateOrUpdateOptions{SourceID: nil})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.MyWorkbooksClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

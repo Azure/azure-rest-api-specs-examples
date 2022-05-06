@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv0.3.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv0.5.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcdn_test
@@ -14,57 +14,62 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn"
 )
 
-// x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/WafPolicyCreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/WafPolicyCreateOrUpdate.json
 func ExamplePoliciesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armcdn.NewPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armcdn.NewPoliciesClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<policy-name>",
 		armcdn.WebApplicationFirewallPolicy{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("<location>"),
 			Properties: &armcdn.WebApplicationFirewallPolicyProperties{
 				CustomRules: &armcdn.CustomRuleList{
 					Rules: []*armcdn.CustomRule{
 						{
-							Name:         to.StringPtr("<name>"),
-							Action:       armcdn.ActionType("Block").ToPtr(),
-							EnabledState: armcdn.CustomRuleEnabledState("Enabled").ToPtr(),
+							Name:         to.Ptr("<name>"),
+							Action:       to.Ptr(armcdn.ActionTypeBlock),
+							EnabledState: to.Ptr(armcdn.CustomRuleEnabledStateEnabled),
 							MatchConditions: []*armcdn.MatchCondition{
 								{
 									MatchValue: []*string{
-										to.StringPtr("CH")},
-									MatchVariable:   armcdn.WafMatchVariable("RemoteAddr").ToPtr(),
-									NegateCondition: to.BoolPtr(false),
-									Operator:        armcdn.Operator("GeoMatch").ToPtr(),
+										to.Ptr("CH")},
+									MatchVariable:   to.Ptr(armcdn.WafMatchVariableRemoteAddr),
+									NegateCondition: to.Ptr(false),
+									Operator:        to.Ptr(armcdn.OperatorGeoMatch),
 									Transforms:      []*armcdn.TransformType{},
 								},
 								{
 									MatchValue: []*string{
-										to.StringPtr("windows")},
-									MatchVariable:   armcdn.WafMatchVariable("RequestHeader").ToPtr(),
-									NegateCondition: to.BoolPtr(false),
-									Operator:        armcdn.Operator("Contains").ToPtr(),
-									Selector:        to.StringPtr("<selector>"),
+										to.Ptr("windows")},
+									MatchVariable:   to.Ptr(armcdn.WafMatchVariableRequestHeader),
+									NegateCondition: to.Ptr(false),
+									Operator:        to.Ptr(armcdn.OperatorContains),
+									Selector:        to.Ptr("<selector>"),
 									Transforms:      []*armcdn.TransformType{},
 								},
 								{
 									MatchValue: []*string{
-										to.StringPtr("<?php"),
-										to.StringPtr("?>")},
-									MatchVariable:   armcdn.WafMatchVariable("QueryString").ToPtr(),
-									NegateCondition: to.BoolPtr(false),
-									Operator:        armcdn.Operator("Contains").ToPtr(),
-									Selector:        to.StringPtr("<selector>"),
+										to.Ptr("<?php"),
+										to.Ptr("?>")},
+									MatchVariable:   to.Ptr(armcdn.WafMatchVariableQueryString),
+									NegateCondition: to.Ptr(false),
+									Operator:        to.Ptr(armcdn.OperatorContains),
+									Selector:        to.Ptr("<selector>"),
 									Transforms: []*armcdn.TransformType{
-										armcdn.TransformType("UrlDecode").ToPtr(),
-										armcdn.TransformType("Lowercase").ToPtr()},
+										to.Ptr(armcdn.TransformTypeURLDecode),
+										to.Ptr(armcdn.TransformTypeLowercase)},
 								}},
-							Priority: to.Int32Ptr(2),
+							Priority: to.Ptr[int32](2),
 						}},
 				},
 				ManagedRules: &armcdn.ManagedRuleSetList{
@@ -72,61 +77,64 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 						{
 							RuleGroupOverrides: []*armcdn.ManagedRuleGroupOverride{
 								{
-									RuleGroupName: to.StringPtr("<rule-group-name>"),
+									RuleGroupName: to.Ptr("<rule-group-name>"),
 									Rules: []*armcdn.ManagedRuleOverride{
 										{
-											Action:       armcdn.ActionType("Redirect").ToPtr(),
-											EnabledState: armcdn.ManagedRuleEnabledState("Enabled").ToPtr(),
-											RuleID:       to.StringPtr("<rule-id>"),
+											Action:       to.Ptr(armcdn.ActionTypeRedirect),
+											EnabledState: to.Ptr(armcdn.ManagedRuleEnabledStateEnabled),
+											RuleID:       to.Ptr("<rule-id>"),
 										},
 										{
-											EnabledState: armcdn.ManagedRuleEnabledState("Disabled").ToPtr(),
-											RuleID:       to.StringPtr("<rule-id>"),
+											EnabledState: to.Ptr(armcdn.ManagedRuleEnabledStateDisabled),
+											RuleID:       to.Ptr("<rule-id>"),
 										}},
 								}},
-							RuleSetType:    to.StringPtr("<rule-set-type>"),
-							RuleSetVersion: to.StringPtr("<rule-set-version>"),
+							RuleSetType:    to.Ptr("<rule-set-type>"),
+							RuleSetVersion: to.Ptr("<rule-set-version>"),
 						}},
 				},
 				PolicySettings: &armcdn.PolicySettings{
-					DefaultCustomBlockResponseBody:       to.StringPtr("<default-custom-block-response-body>"),
-					DefaultCustomBlockResponseStatusCode: armcdn.PolicySettingsDefaultCustomBlockResponseStatusCode(200).ToPtr(),
-					DefaultRedirectURL:                   to.StringPtr("<default-redirect-url>"),
+					DefaultCustomBlockResponseBody:       to.Ptr("<default-custom-block-response-body>"),
+					DefaultCustomBlockResponseStatusCode: to.Ptr(armcdn.PolicySettingsDefaultCustomBlockResponseStatusCode(200)),
+					DefaultRedirectURL:                   to.Ptr("<default-redirect-url>"),
 				},
 				RateLimitRules: &armcdn.RateLimitRuleList{
 					Rules: []*armcdn.RateLimitRule{
 						{
-							Name:         to.StringPtr("<name>"),
-							Action:       armcdn.ActionType("Block").ToPtr(),
-							EnabledState: armcdn.CustomRuleEnabledState("Enabled").ToPtr(),
+							Name:         to.Ptr("<name>"),
+							Action:       to.Ptr(armcdn.ActionTypeBlock),
+							EnabledState: to.Ptr(armcdn.CustomRuleEnabledStateEnabled),
 							MatchConditions: []*armcdn.MatchCondition{
 								{
 									MatchValue: []*string{
-										to.StringPtr("192.168.1.0/24"),
-										to.StringPtr("10.0.0.0/24")},
-									MatchVariable:   armcdn.WafMatchVariable("RemoteAddr").ToPtr(),
-									NegateCondition: to.BoolPtr(false),
-									Operator:        armcdn.Operator("IPMatch").ToPtr(),
+										to.Ptr("192.168.1.0/24"),
+										to.Ptr("10.0.0.0/24")},
+									MatchVariable:   to.Ptr(armcdn.WafMatchVariableRemoteAddr),
+									NegateCondition: to.Ptr(false),
+									Operator:        to.Ptr(armcdn.OperatorIPMatch),
 									Transforms:      []*armcdn.TransformType{},
 								}},
-							Priority:                   to.Int32Ptr(1),
-							RateLimitDurationInMinutes: to.Int32Ptr(0),
-							RateLimitThreshold:         to.Int32Ptr(1000),
+							Priority:                   to.Ptr[int32](1),
+							RateLimitDurationInMinutes: to.Ptr[int32](0),
+							RateLimitThreshold:         to.Ptr[int32](1000),
 						}},
 				},
 			},
 			SKU: &armcdn.SKU{
-				Name: armcdn.SKUName("Standard_Microsoft").ToPtr(),
+				Name: to.Ptr(armcdn.SKUNameStandardMicrosoft),
 			},
 		},
-		nil)
+		&armcdn.PoliciesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
 	res, err := poller.PollUntilDone(ctx, 30*time.Second)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.PoliciesClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

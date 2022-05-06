@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazuredata%2Farmazuredata%2Fv0.2.0/sdk/resourcemanager/azuredata/armazuredata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazuredata%2Farmazuredata%2Fv0.4.0/sdk/resourcemanager/azuredata/armazuredata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazuredata_test
@@ -12,31 +12,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azuredata/armazuredata"
 )
 
-// x-ms-original-file: specification/azuredata/resource-manager/Microsoft.AzureData/preview/2019-07-24-preview/examples/CreateOrUpdateSqlServerWithRegistrationGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/azuredata/resource-manager/Microsoft.AzureData/preview/2019-07-24-preview/examples/CreateOrUpdateSqlServerWithRegistrationGroup.json
 func ExampleSQLServersClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armazuredata.NewSQLServersClient("<subscription-id>", cred, nil)
+	client, err := armazuredata.NewSQLServersClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
 	res, err := client.CreateOrUpdate(ctx,
 		"<resource-group-name>",
 		"<sql-server-registration-name>",
 		"<sql-server-name>",
 		armazuredata.SQLServer{
 			Properties: &armazuredata.SQLServerProperties{
-				Cores:          to.Int32Ptr(8),
-				Edition:        to.StringPtr("<edition>"),
-				PropertyBag:    to.StringPtr("<property-bag>"),
-				RegistrationID: to.StringPtr("<registration-id>"),
-				Version:        to.StringPtr("<version>"),
+				Cores:          to.Ptr[int32](8),
+				Edition:        to.Ptr("<edition>"),
+				PropertyBag:    to.Ptr("<property-bag>"),
+				RegistrationID: to.Ptr("<registration-id>"),
+				Version:        to.Ptr("<version>"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
+		return
 	}
-	log.Printf("Response result: %#v\n", res.SQLServersClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

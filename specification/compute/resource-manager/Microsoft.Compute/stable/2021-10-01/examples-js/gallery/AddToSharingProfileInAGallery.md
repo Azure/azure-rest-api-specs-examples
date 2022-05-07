@@ -1,0 +1,32 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-compute_17.3.1/sdk/compute/arm-compute/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+async function addSharingIdToTheSharingProfileOfAGallery() {
+  const subscriptionId = "{subscription-id}";
+  const resourceGroupName = "myResourceGroup";
+  const galleryName = "myGalleryName";
+  const sharingUpdate = {
+    groups: [
+      {
+        type: "Subscriptions",
+        ids: ["34a4ab42-0d72-47d9-bd1a-aed207386dac", "380fd389-260b-41aa-bad9-0a83108c370b"],
+      },
+      { type: "AADTenants", ids: ["c24c76aa-8897-4027-9b03-8f7928b54ff6"] },
+    ],
+    operationType: "Add",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.gallerySharingProfile.beginUpdateAndWait(
+    resourceGroupName,
+    galleryName,
+    sharingUpdate
+  );
+  console.log(result);
+}
+
+addSharingIdToTheSharingProfileOfAGallery().catch(console.error);
+```

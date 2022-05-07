@@ -1,0 +1,32 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-kusto_7.1.1/sdk/kusto/arm-kusto/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { KustoManagementClient } = require("@azure/arm-kusto");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Checks that the attached database configuration resource name is valid and is not already in use.
+ *
+ * @summary Checks that the attached database configuration resource name is valid and is not already in use.
+ * x-ms-original-file: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-02-01/examples/KustoAttachedDatabaseConfigurationCheckNameAvailability.json
+ */
+async function kustoAttachedDatabaseConfigurationCheckNameAvailability() {
+  const subscriptionId = "12345678-1234-1234-1234-123456789098";
+  const resourceGroupName = "kustorptest";
+  const clusterName = "kustoCluster";
+  const resourceName = {
+    name: "adc1",
+    type: "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new KustoManagementClient(credential, subscriptionId);
+  const result = await client.attachedDatabaseConfigurations.checkNameAvailability(
+    resourceGroupName,
+    clusterName,
+    resourceName
+  );
+  console.log(result);
+}
+
+kustoAttachedDatabaseConfigurationCheckNameAvailability().catch(console.error);
+```

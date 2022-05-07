@@ -1,0 +1,36 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-storage_17.2.0/sdk/storage/arm-storage/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { StorageManagementClient } = require("@azure/arm-storage");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+async function updateShareAcls() {
+  const subscriptionId = "{subscription-id}";
+  const resourceGroupName = "res3376";
+  const accountName = "sto328";
+  const shareName = "share6185";
+  const fileShare = {
+    signedIdentifiers: [
+      {
+        accessPolicy: {
+          expiryTime: new Date("2021-05-01T08:49:37.0000000Z"),
+          permission: "rwd",
+          startTime: new Date("2021-04-01T08:49:37.0000000Z"),
+        },
+        id: "MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTI",
+      },
+    ],
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new StorageManagementClient(credential, subscriptionId);
+  const result = await client.fileShares.update(
+    resourceGroupName,
+    accountName,
+    shareName,
+    fileShare
+  );
+  console.log(result);
+}
+
+updateShareAcls().catch(console.error);
+```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fagrifood%2Farmagrifood%2Fv0.3.0/sdk/resourcemanager/agrifood/armagrifood/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fagrifood%2Farmagrifood%2Fv0.5.0/sdk/resourcemanager/agrifood/armagrifood/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armagrifood_test
@@ -11,30 +11,34 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/agrifood/armagrifood"
 )
 
-// x-ms-original-file: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2020-05-12-preview/examples/FarmBeatsExtensions_List.json
-func ExampleFarmBeatsExtensionsClient_List() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2020-05-12-preview/examples/FarmBeatsExtensions_List.json
+func ExampleFarmBeatsExtensionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
+		return
 	}
 	ctx := context.Background()
-	client := armagrifood.NewFarmBeatsExtensionsClient(cred, nil)
-	pager := client.List(&armagrifood.FarmBeatsExtensionsClientListOptions{FarmBeatsExtensionIDs: []string{},
+	client, err := armagrifood.NewFarmBeatsExtensionsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+		return
+	}
+	pager := client.NewListPager(&armagrifood.FarmBeatsExtensionsClientListOptions{FarmBeatsExtensionIDs: []string{},
 		FarmBeatsExtensionNames: []string{},
 		ExtensionCategories:     []string{},
 		PublisherIDs:            []string{},
 		MaxPageSize:             nil,
 	})
-	for {
-		nextResult := pager.NextPage(ctx)
-		if err := pager.Err(); err != nil {
+	for pager.More() {
+		nextResult, err := pager.NextPage(ctx)
+		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
+			return
 		}
-		if !nextResult {
-			break
-		}
-		for _, v := range pager.PageResponse().Value {
-			log.Printf("Pager result: %#v\n", v)
+		for _, v := range nextResult.Value {
+			// TODO: use page item
+			_ = v
 		}
 	}
 }

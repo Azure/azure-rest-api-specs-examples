@@ -1,0 +1,24 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-cdn_7.0.0/sdk/cdn/arm-cdn/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { CdnManagementClient } = require("@azure/arm-cdn");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Retrieve protection policy with specified name within a resource group.
+ *
+ * @summary Retrieve protection policy with specified name within a resource group.
+ * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/WafPolicyGet.json
+ */
+async function getPolicy() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "rg1";
+  const policyName = "MicrosoftCdnWafPolicy";
+  const credential = new DefaultAzureCredential();
+  const client = new CdnManagementClient(credential, subscriptionId);
+  const result = await client.policies.get(resourceGroupName, policyName);
+  console.log(result);
+}
+
+getPolicy().catch(console.error);
+```

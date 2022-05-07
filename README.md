@@ -5,6 +5,7 @@ This repository is the collection of Azure SDK examples corresponding to REST AP
 Involved SDK resositories:
 - [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go)
 - [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
+- [Azure SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js)
 
 The repository is maintained by automated pipeline.
 

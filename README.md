@@ -9,6 +9,52 @@ Involved SDK resositories:
 
 The repository is maintained by automated pipeline.
 
+## Specification on filename
+
+Mapping rule of filename from examples from azure-rest-api-specs to azure-rest-api-specs-examples.
+1. Replace `.json` with `.md` in file extension.
+2. Replace `/examples/` with language specific of `/examples-<language>/`.
+
+Currently supported `language` includes:
+* `go` for Go
+* `java` for Java
+* `js` for JavaScript
+
+Pending:
+* `python` for Python
+* `dotnet` for .NET
+
+For example, filename
+```
+specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlows_Create.json
+```
+in azure-rest-api-specs would map to filename (language=java) 
+```
+specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples-java/DataFlows_Create.md
+```
+in azure-rest-api-specs-examples.
+
+It is possible that for some api-version in some resource provider, there is no corresponding SDK example file, for some language.
+Typical reason is that either the SDK of that language is not released, or the released SDK does not generate examples.
+
+There is also possibility of missing a few SDK examples in a release.
+Typical reason could be that SDK specifically removed a portion of the APIs, or the JSON example is considered not correct (e.g. some required parameter/property is not provided in JSON).
+
+## Specification on file content
+
+The file is markdown, for flexibility.
+
+The typical content of the file includes 2 sections.
+
+First section is the reference to SDK readme, for example
+```
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.7.0/sdk/resourcemanager/README.md) on how to add the SDK to your project and authenticate.
+```
+
+Generally SDK readme contains guide on how to get it from package manager, how to configure it in project, and how to authenticate with Azure.
+
+Second section is a code block with syntax highlighting. This is the code of the SDK example.
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

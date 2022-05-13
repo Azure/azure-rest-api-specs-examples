@@ -1,0 +1,32 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-vmwarecloudsimple_3.0.0/sdk/vmwarecloudsimple/arm-vmwarecloudsimple/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { VMwareCloudSimple } = require("@azure/arm-vmwarecloudsimple");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Power off virtual machine, options: shutdown, poweroff, and suspend
+ *
+ * @summary Power off virtual machine, options: shutdown, poweroff, and suspend
+ * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/StopInBodyVirtualMachine.json
+ */
+async function stopInBodyVirtualMachine() {
+  const subscriptionId = "{subscription-id}";
+  const resourceGroupName = "myResourceGroup";
+  const referer = "https://management.azure.com/";
+  const virtualMachineName = "myVirtualMachine";
+  const m = {};
+  const options = { m };
+  const credential = new DefaultAzureCredential();
+  const client = new VMwareCloudSimple(credential, subscriptionId);
+  const result = await client.virtualMachines.beginStopAndWait(
+    resourceGroupName,
+    referer,
+    virtualMachineName,
+    options
+  );
+  console.log(result);
+}
+
+stopInBodyVirtualMachine().catch(console.error);
+```

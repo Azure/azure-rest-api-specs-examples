@@ -13,7 +13,7 @@ The repository is maintained by automated pipeline.
 
 Mapping rule of filename from examples from azure-rest-api-specs to azure-rest-api-specs-examples.
 1. Replace `.json` with `.md` in file extension.
-2. Replace `/examples/` with language specific of `/examples-<language>/`.
+2. Replace `/examples/` with language specific folder of `/examples-<language>/`.
 
 Currently supported `language` includes:
 * `go` for Go

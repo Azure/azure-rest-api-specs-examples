@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.5.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv1.0.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventhub_test
@@ -17,25 +17,23 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armeventhub.NewPrivateEndpointConnectionsClient("subID", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
-		"<private-endpoint-connection-name>",
+		"ArunMonocle",
+		"sdk-Namespace-2924",
+		"privateEndpointConnectionName",
 		armeventhub.PrivateEndpointConnection{
 			Properties: &armeventhub.PrivateEndpointConnectionProperties{
 				PrivateEndpoint: &armeventhub.PrivateEndpoint{
-					ID: to.Ptr("<id>"),
+					ID: to.Ptr("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-EventHub-8396/providers/Microsoft.Network/privateEndpoints/sdk-Namespace-2847"),
 				},
 				PrivateLinkServiceConnectionState: &armeventhub.ConnectionState{
-					Description: to.Ptr("<description>"),
+					Description: to.Ptr("testing"),
 					Status:      to.Ptr(armeventhub.PrivateLinkConnectionStatusRejected),
 				},
 				ProvisioningState: to.Ptr(armeventhub.EndPointProvisioningStateSucceeded),
@@ -44,7 +42,6 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

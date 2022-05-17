@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.5.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv1.0.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventhub_test
@@ -17,27 +17,25 @@ func ExampleEventHubsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewEventHubsClient("<subscription-id>", cred, nil)
+	client, err := armeventhub.NewEventHubsClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
-		"<event-hub-name>",
+		"Default-NotificationHubs-AustraliaEast",
+		"sdk-Namespace-5357",
+		"sdk-EventHub-6547",
 		armeventhub.Eventhub{
 			Properties: &armeventhub.Properties{
 				CaptureDescription: &armeventhub.CaptureDescription{
 					Destination: &armeventhub.Destination{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("EventHubArchive.AzureBlockBlob"),
 						Properties: &armeventhub.DestinationProperties{
-							ArchiveNameFormat:        to.Ptr("<archive-name-format>"),
-							BlobContainer:            to.Ptr("<blob-container>"),
-							StorageAccountResourceID: to.Ptr("<storage-account-resource-id>"),
+							ArchiveNameFormat:        to.Ptr("{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"),
+							BlobContainer:            to.Ptr("container"),
+							StorageAccountResourceID: to.Ptr("/subscriptions/e2f361f0-3b27-4503-a9cc-21cfba380093/resourceGroups/Default-Storage-SouthCentralUS/providers/Microsoft.ClassicStorage/storageAccounts/arjunteststorage"),
 						},
 					},
 					Enabled:           to.Ptr(true),
@@ -53,7 +51,6 @@ func ExampleEventHubsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

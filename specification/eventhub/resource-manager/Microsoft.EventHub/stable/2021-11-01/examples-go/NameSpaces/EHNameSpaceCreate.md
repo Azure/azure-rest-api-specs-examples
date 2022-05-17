@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.5.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv1.0.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventhub_test
@@ -6,8 +6,6 @@ package armeventhub_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleNamespacesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armeventhub.NewNamespacesClient("SampleSubscription", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
+		"ResurceGroupSample",
+		"NamespaceSample",
 		armeventhub.EHNamespace{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("East US"),
 			Identity: &armeventhub.Identity{
 				Type: to.Ptr(armeventhub.ManagedServiceIdentityTypeSystemAssignedUserAssigned),
 				UserAssignedIdentities: map[string]*armeventhub.UserAssignedIdentity{
@@ -40,29 +36,27 @@ func ExampleNamespacesClient_BeginCreateOrUpdate() {
 				},
 			},
 			Properties: &armeventhub.EHNamespaceProperties{
-				ClusterArmID: to.Ptr("<cluster-arm-id>"),
+				ClusterArmID: to.Ptr("/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.EventHub/clusters/enc-test"),
 				Encryption: &armeventhub.Encryption{
-					KeySource: to.Ptr("<key-source>"),
+					KeySource: to.Ptr("Microsoft.KeyVault"),
 					KeyVaultProperties: []*armeventhub.KeyVaultProperties{
 						{
 							Identity: &armeventhub.UserAssignedIdentityProperties{
-								UserAssignedIdentity: to.Ptr("<user-assigned-identity>"),
+								UserAssignedIdentity: to.Ptr("/subscriptions/SampleSubscription/resourceGroups/ResurceGroupSample/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ud1"),
 							},
-							KeyName:     to.Ptr("<key-name>"),
-							KeyVaultURI: to.Ptr("<key-vault-uri>"),
+							KeyName:     to.Ptr("Samplekey"),
+							KeyVaultURI: to.Ptr("https://aprao-keyvault-user.vault-int.azure-int.net/"),
 						}},
 				},
 			},
 		},
-		&armeventhub.NamespacesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

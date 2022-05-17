@@ -1,15 +1,9 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-recoveryservicesbackup_8.1.1/sdk/recoveryservicesbackup/arm-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-recoveryservicesbackup_8.2.0/sdk/recoveryservicesbackup/arm-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
 
 ```javascript
 const { RecoveryServicesBackupClient } = require("@azure/arm-recoveryservicesbackup");
 const { DefaultAzureCredential } = require("@azure/identity");
 
-/**
- * This sample demonstrates how to Delete ResourceGuardProxy under vault
- *
- * @summary Delete ResourceGuardProxy under vault
- * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/ResourceGuardProxyCRUD/DeleteResourceGuardProxy.json
- */
 async function deleteResourceGuardProxy() {
   const subscriptionId = "0b352192-dcac-4cc7-992e-a96190ccc68c";
   const vaultName = "sampleVault";

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv0.6.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv1.0.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorage_test
@@ -17,38 +17,35 @@ func ExampleObjectReplicationPoliciesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewObjectReplicationPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armstorage.NewObjectReplicationPoliciesClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<object-replication-policy-id>",
+		"res7687",
+		"dst112",
+		"default",
 		armstorage.ObjectReplicationPolicy{
 			Properties: &armstorage.ObjectReplicationPolicyProperties{
-				DestinationAccount: to.Ptr("<destination-account>"),
+				DestinationAccount: to.Ptr("dst112"),
 				Rules: []*armstorage.ObjectReplicationPolicyRule{
 					{
-						DestinationContainer: to.Ptr("<destination-container>"),
+						DestinationContainer: to.Ptr("dcont139"),
 						Filters: &armstorage.ObjectReplicationPolicyFilter{
 							PrefixMatch: []*string{
 								to.Ptr("blobA"),
 								to.Ptr("blobB")},
 						},
-						SourceContainer: to.Ptr("<source-container>"),
+						SourceContainer: to.Ptr("scont139"),
 					}},
-				SourceAccount: to.Ptr("<source-account>"),
+				SourceAccount: to.Ptr("src1122"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

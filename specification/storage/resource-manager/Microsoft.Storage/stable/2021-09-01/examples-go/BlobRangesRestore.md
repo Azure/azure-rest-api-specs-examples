@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv0.6.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv1.0.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorage_test
@@ -19,38 +19,34 @@ func ExampleAccountsClient_BeginRestoreBlobRanges() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armstorage.NewAccountsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginRestoreBlobRanges(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"res9101",
+		"sto4445",
 		armstorage.BlobRestoreParameters{
 			BlobRanges: []*armstorage.BlobRestoreRange{
 				{
-					EndRange:   to.Ptr("<end-range>"),
-					StartRange: to.Ptr("<start-range>"),
+					EndRange:   to.Ptr("container/blobpath2"),
+					StartRange: to.Ptr("container/blobpath1"),
 				},
 				{
-					EndRange:   to.Ptr("<end-range>"),
-					StartRange: to.Ptr("<start-range>"),
+					EndRange:   to.Ptr(""),
+					StartRange: to.Ptr("container2/blobpath3"),
 				}},
 			TimeToRestore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-20T15:30:00.0000000Z"); return t }()),
 		},
-		&armstorage.AccountsClientBeginRestoreBlobRangesOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

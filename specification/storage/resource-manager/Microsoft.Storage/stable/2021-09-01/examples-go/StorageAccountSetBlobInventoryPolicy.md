@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv0.6.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv1.0.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorage_test
@@ -17,17 +17,15 @@ func ExampleBlobInventoryPoliciesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewBlobInventoryPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armstorage.NewBlobInventoryPoliciesClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"res7687",
+		"sto9699",
 		armstorage.BlobInventoryPolicyNameDefault,
 		armstorage.BlobInventoryPolicy{
 			Properties: &armstorage.BlobInventoryPolicyProperties{
@@ -36,7 +34,7 @@ func ExampleBlobInventoryPoliciesClient_CreateOrUpdate() {
 					Enabled: to.Ptr(true),
 					Rules: []*armstorage.BlobInventoryPolicyRule{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("inventoryPolicyRule1"),
 							Definition: &armstorage.BlobInventoryPolicyDefinition{
 								Format: to.Ptr(armstorage.FormatCSV),
 								Filters: &armstorage.BlobInventoryPolicyFilter{
@@ -69,11 +67,11 @@ func ExampleBlobInventoryPoliciesClient_CreateOrUpdate() {
 									to.Ptr("IsCurrentVersion"),
 									to.Ptr("Metadata")},
 							},
-							Destination: to.Ptr("<destination>"),
+							Destination: to.Ptr("container1"),
 							Enabled:     to.Ptr(true),
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("inventoryPolicyRule2"),
 							Definition: &armstorage.BlobInventoryPolicyDefinition{
 								Format:     to.Ptr(armstorage.FormatParquet),
 								ObjectType: to.Ptr(armstorage.ObjectTypeContainer),
@@ -89,7 +87,7 @@ func ExampleBlobInventoryPoliciesClient_CreateOrUpdate() {
 									to.Ptr("HasImmutabilityPolicy"),
 									to.Ptr("HasLegalHold")},
 							},
-							Destination: to.Ptr("<destination>"),
+							Destination: to.Ptr("container2"),
 							Enabled:     to.Ptr(true),
 						}},
 				},
@@ -98,7 +96,6 @@ func ExampleBlobInventoryPoliciesClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

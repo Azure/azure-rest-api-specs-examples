@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.4.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv1.0.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappservice_test
@@ -16,23 +16,20 @@ func ExampleWebAppsClient_GetNetworkTraceOperationSlotV2() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armappservice.NewWebAppsClient("<subscription-id>", cred, nil)
+	client, err := armappservice.NewWebAppsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetNetworkTraceOperationSlotV2(ctx,
-		"<resource-group-name>",
-		"<name>",
-		"<operation-id>",
-		"<slot>",
+		"testrg123",
+		"SampleApp",
+		"c291433b-53ad-4c49-8cae-0a293eae1c6d",
+		"Production",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

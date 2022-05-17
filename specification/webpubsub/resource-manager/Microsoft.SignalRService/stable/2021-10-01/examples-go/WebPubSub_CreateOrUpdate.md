@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv0.4.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv1.0.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwebpubsub_test
@@ -6,8 +6,6 @@ package armwebpubsub_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armwebpubsub.NewClient("<subscription-id>", cred, nil)
+	client, err := armwebpubsub.NewClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
+		"myResourceGroup",
+		"myWebPubSubService",
 		armwebpubsub.ResourceInfo{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Tags: map[string]*string{
 				"key1": to.Ptr("value1"),
 			},
@@ -44,10 +40,10 @@ func ExampleClient_BeginCreateOrUpdate() {
 				LiveTraceConfiguration: &armwebpubsub.LiveTraceConfiguration{
 					Categories: []*armwebpubsub.LiveTraceCategory{
 						{
-							Name:    to.Ptr("<name>"),
-							Enabled: to.Ptr("<enabled>"),
+							Name:    to.Ptr("ConnectivityLogs"),
+							Enabled: to.Ptr("true"),
 						}},
-					Enabled: to.Ptr("<enabled>"),
+					Enabled: to.Ptr("false"),
 				},
 				NetworkACLs: &armwebpubsub.NetworkACLs{
 					DefaultAction: to.Ptr(armwebpubsub.ACLActionDeny),
@@ -55,33 +51,31 @@ func ExampleClient_BeginCreateOrUpdate() {
 						{
 							Allow: []*armwebpubsub.WebPubSubRequestType{
 								to.Ptr(armwebpubsub.WebPubSubRequestTypeServerConnection)},
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e"),
 						}},
 					PublicNetwork: &armwebpubsub.NetworkACL{
 						Allow: []*armwebpubsub.WebPubSubRequestType{
 							to.Ptr(armwebpubsub.WebPubSubRequestTypeClientConnection)},
 					},
 				},
-				PublicNetworkAccess: to.Ptr("<public-network-access>"),
+				PublicNetworkAccess: to.Ptr("Enabled"),
 				TLS: &armwebpubsub.TLSSettings{
 					ClientCertEnabled: to.Ptr(false),
 				},
 			},
 			SKU: &armwebpubsub.ResourceSKU{
-				Name:     to.Ptr("<name>"),
+				Name:     to.Ptr("Standard_S1"),
 				Capacity: to.Ptr[int32](1),
 				Tier:     to.Ptr(armwebpubsub.WebPubSubSKUTierStandard),
 			},
 		},
-		&armwebpubsub.ClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

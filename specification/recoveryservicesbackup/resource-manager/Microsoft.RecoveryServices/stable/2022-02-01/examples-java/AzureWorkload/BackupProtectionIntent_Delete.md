@@ -1,0 +1,23 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-recoveryservicesbackup_1.0.0-beta.5/sdk/recoveryservicesbackup/azure-resourcemanager-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+
+```java
+import com.azure.core.util.Context;
+
+/** Samples for ProtectionIntent Delete. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2022-02-01/examples/AzureWorkload/BackupProtectionIntent_Delete.json
+     */
+    /**
+     * Sample code: Delete Protection intent from item.
+     *
+     * @param manager Entry point to RecoveryServicesBackupManager.
+     */
+    public static void deleteProtectionIntentFromItem(
+        com.azure.resourcemanager.recoveryservicesbackup.RecoveryServicesBackupManager manager) {
+        manager
+            .protectionIntents()
+            .deleteWithResponse("myVault", "myRG", "Azure", "249D9B07-D2EF-4202-AA64-65F35418564E", Context.NONE);
+    }
+}
+```

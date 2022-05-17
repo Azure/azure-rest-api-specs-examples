@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.7.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv1.0.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcompute_test
@@ -6,8 +6,6 @@ package armcompute_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,56 +17,54 @@ func ExampleGalleryImageVersionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewGalleryImageVersionsClient("<subscription-id>", cred, nil)
+	client, err := armcompute.NewGalleryImageVersionsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<gallery-name>",
-		"<gallery-image-name>",
-		"<gallery-image-version-name>",
+		"myResourceGroup",
+		"myGalleryName",
+		"myGalleryImageName",
+		"1.0.0",
 		armcompute.GalleryImageVersion{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Properties: &armcompute.GalleryImageVersionProperties{
 				PublishingProfile: &armcompute.GalleryImageVersionPublishingProfile{
 					TargetRegions: []*armcompute.TargetRegion{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("West US"),
 							Encryption: &armcompute.EncryptionImages{
 								DataDiskImages: []*armcompute.DataDiskImageEncryption{
 									{
-										DiskEncryptionSetID: to.Ptr("<disk-encryption-set-id>"),
+										DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"),
 										Lun:                 to.Ptr[int32](0),
 									},
 									{
-										DiskEncryptionSetID: to.Ptr("<disk-encryption-set-id>"),
+										DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"),
 										Lun:                 to.Ptr[int32](1),
 									}},
 								OSDiskImage: &armcompute.OSDiskImageEncryption{
-									DiskEncryptionSetID: to.Ptr("<disk-encryption-set-id>"),
+									DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"),
 								},
 							},
 							RegionalReplicaCount: to.Ptr[int32](1),
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("East US"),
 							Encryption: &armcompute.EncryptionImages{
 								DataDiskImages: []*armcompute.DataDiskImageEncryption{
 									{
-										DiskEncryptionSetID: to.Ptr("<disk-encryption-set-id>"),
+										DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"),
 										Lun:                 to.Ptr[int32](0),
 									},
 									{
-										DiskEncryptionSetID: to.Ptr("<disk-encryption-set-id>"),
+										DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"),
 										Lun:                 to.Ptr[int32](1),
 									}},
 								OSDiskImage: &armcompute.OSDiskImageEncryption{
-									DiskEncryptionSetID: to.Ptr("<disk-encryption-set-id>"),
+									DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"),
 								},
 							},
 							RegionalReplicaCount: to.Ptr[int32](2),
@@ -77,20 +73,18 @@ func ExampleGalleryImageVersionsClient_BeginCreateOrUpdate() {
 				},
 				StorageProfile: &armcompute.GalleryImageVersionStorageProfile{
 					Source: &armcompute.GalleryArtifactVersionSource{
-						ID: to.Ptr("<id>"),
+						ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/virtualMachines/{vmName}"),
 					},
 				},
 			},
 		},
-		&armcompute.GalleryImageVersionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

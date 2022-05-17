@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.7.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv1.0.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcompute_test
@@ -6,8 +6,6 @@ package armcompute_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,38 +17,34 @@ func ExampleDiskEncryptionSetsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewDiskEncryptionSetsClient("<subscription-id>", cred, nil)
+	client, err := armcompute.NewDiskEncryptionSetsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<disk-encryption-set-name>",
+		"myResourceGroup",
+		"myDiskEncryptionSet",
 		armcompute.DiskEncryptionSet{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Identity: &armcompute.EncryptionSetIdentity{
 				Type: to.Ptr(armcompute.DiskEncryptionSetIdentityTypeSystemAssigned),
 			},
 			Properties: &armcompute.EncryptionSetProperties{
 				ActiveKey: &armcompute.KeyForDiskEncryptionSet{
-					KeyURL: to.Ptr("<key-url>"),
+					KeyURL: to.Ptr("https://myvaultdifferentsub.vault-int.azure-int.net/keys/{key}"),
 				},
 				EncryptionType: to.Ptr(armcompute.DiskEncryptionSetTypeEncryptionAtRestWithCustomerKey),
 			},
 		},
-		&armcompute.DiskEncryptionSetsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

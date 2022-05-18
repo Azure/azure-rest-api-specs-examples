@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv0.4.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwebpubsub%2Farmwebpubsub%2Fv1.0.0/sdk/resourcemanager/webpubsub/armwebpubsub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwebpubsub_test
@@ -17,25 +17,23 @@ func ExamplePrivateEndpointConnectionsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armwebpubsub.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armwebpubsub.NewPrivateEndpointConnectionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<private-endpoint-connection-name>",
-		"<resource-group-name>",
-		"<resource-name>",
+		"mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e",
+		"myResourceGroup",
+		"myWebPubSubService",
 		armwebpubsub.PrivateEndpointConnection{
 			Properties: &armwebpubsub.PrivateEndpointConnectionProperties{
 				PrivateEndpoint: &armwebpubsub.PrivateEndpoint{
-					ID: to.Ptr("<id>"),
+					ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint"),
 				},
 				PrivateLinkServiceConnectionState: &armwebpubsub.PrivateLinkServiceConnectionState{
-					ActionsRequired: to.Ptr("<actions-required>"),
+					ActionsRequired: to.Ptr("None"),
 					Status:          to.Ptr(armwebpubsub.PrivateLinkServiceConnectionStatusApproved),
 				},
 			},
@@ -43,7 +41,6 @@ func ExamplePrivateEndpointConnectionsClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

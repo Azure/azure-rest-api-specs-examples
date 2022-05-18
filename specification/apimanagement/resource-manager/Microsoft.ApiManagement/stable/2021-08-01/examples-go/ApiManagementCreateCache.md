@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,30 +17,27 @@ func ExampleCacheClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewCacheClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewCacheClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<cache-id>",
+		"rg1",
+		"apimService1",
+		"c1",
 		armapimanagement.CacheContract{
 			Properties: &armapimanagement.CacheContractProperties{
-				Description:      to.Ptr("<description>"),
-				ConnectionString: to.Ptr("<connection-string>"),
-				ResourceID:       to.Ptr("<resource-id>"),
-				UseFromLocation:  to.Ptr("<use-from-location>"),
+				Description:      to.Ptr("Redis cache instances in West India"),
+				ConnectionString: to.Ptr("apim.redis.cache.windows.net:6380,password=xc,ssl=True,abortConnect=False"),
+				ResourceID:       to.Ptr("https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Cache/redis/apimservice1"),
+				UseFromLocation:  to.Ptr("default"),
 			},
 		},
 		&armapimanagement.CacheClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

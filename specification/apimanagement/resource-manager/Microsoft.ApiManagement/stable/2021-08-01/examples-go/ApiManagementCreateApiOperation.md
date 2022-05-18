@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,56 +17,53 @@ func ExampleAPIOperationClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPIOperationClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewAPIOperationClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<api-id>",
-		"<operation-id>",
+		"rg1",
+		"apimService1",
+		"PetStoreTemplate2",
+		"newoperations",
 		armapimanagement.OperationContract{
 			Properties: &armapimanagement.OperationContractProperties{
-				Description:        to.Ptr("<description>"),
+				Description:        to.Ptr("This can only be done by the logged in user."),
 				TemplateParameters: []*armapimanagement.ParameterContract{},
 				Request: &armapimanagement.RequestContract{
-					Description:     to.Ptr("<description>"),
+					Description:     to.Ptr("Created user object"),
 					Headers:         []*armapimanagement.ParameterContract{},
 					QueryParameters: []*armapimanagement.ParameterContract{},
 					Representations: []*armapimanagement.RepresentationContract{
 						{
-							ContentType: to.Ptr("<content-type>"),
-							SchemaID:    to.Ptr("<schema-id>"),
-							TypeName:    to.Ptr("<type-name>"),
+							ContentType: to.Ptr("application/json"),
+							SchemaID:    to.Ptr("592f6c1d0af5840ca8897f0c"),
+							TypeName:    to.Ptr("User"),
 						}},
 				},
 				Responses: []*armapimanagement.ResponseContract{
 					{
-						Description: to.Ptr("<description>"),
+						Description: to.Ptr("successful operation"),
 						Headers:     []*armapimanagement.ParameterContract{},
 						Representations: []*armapimanagement.RepresentationContract{
 							{
-								ContentType: to.Ptr("<content-type>"),
+								ContentType: to.Ptr("application/xml"),
 							},
 							{
-								ContentType: to.Ptr("<content-type>"),
+								ContentType: to.Ptr("application/json"),
 							}},
 						StatusCode: to.Ptr[int32](200),
 					}},
-				Method:      to.Ptr("<method>"),
-				DisplayName: to.Ptr("<display-name>"),
-				URLTemplate: to.Ptr("<urltemplate>"),
+				Method:      to.Ptr("POST"),
+				DisplayName: to.Ptr("createUser2"),
+				URLTemplate: to.Ptr("/user1"),
 			},
 		},
 		&armapimanagement.APIOperationClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

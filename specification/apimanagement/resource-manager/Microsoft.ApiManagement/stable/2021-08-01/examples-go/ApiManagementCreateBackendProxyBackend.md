@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,25 +17,23 @@ func ExampleBackendClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewBackendClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewBackendClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<backend-id>",
+		"rg1",
+		"apimService1",
+		"proxybackend",
 		armapimanagement.BackendContract{
 			Properties: &armapimanagement.BackendContractProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("description5308"),
 				Credentials: &armapimanagement.BackendCredentialsContract{
 					Authorization: &armapimanagement.BackendAuthorizationHeaderCredentials{
-						Parameter: to.Ptr("<parameter>"),
-						Scheme:    to.Ptr("<scheme>"),
+						Parameter: to.Ptr("opensesma"),
+						Scheme:    to.Ptr("Basic"),
 					},
 					Header: map[string][]*string{
 						"x-my-1": {
@@ -51,21 +49,20 @@ func ExampleBackendClient_CreateOrUpdate() {
 				},
 				Proxy: &armapimanagement.BackendProxyContract{
 					Password: to.Ptr("<password>"),
-					URL:      to.Ptr("<url>"),
-					Username: to.Ptr("<username>"),
+					URL:      to.Ptr("http://192.168.1.1:8080"),
+					Username: to.Ptr("Contoso\\admin"),
 				},
 				TLS: &armapimanagement.BackendTLSProperties{
 					ValidateCertificateChain: to.Ptr(true),
 					ValidateCertificateName:  to.Ptr(true),
 				},
-				URL:      to.Ptr("<url>"),
+				URL:      to.Ptr("https://backendname2644/"),
 				Protocol: to.Ptr(armapimanagement.BackendProtocolHTTP),
 			},
 		},
 		&armapimanagement.BackendClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

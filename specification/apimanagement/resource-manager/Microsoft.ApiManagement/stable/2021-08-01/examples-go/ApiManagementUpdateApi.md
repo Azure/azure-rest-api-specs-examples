@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,30 +17,27 @@ func ExampleAPIClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPIClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewAPIClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<api-id>",
-		"<if-match>",
+		"rg1",
+		"apimService1",
+		"echo-api",
+		"*",
 		armapimanagement.APIUpdateContract{
 			Properties: &armapimanagement.APIContractUpdateProperties{
-				Path:        to.Ptr("<path>"),
-				DisplayName: to.Ptr("<display-name>"),
-				ServiceURL:  to.Ptr("<service-url>"),
+				Path:        to.Ptr("newecho"),
+				DisplayName: to.Ptr("Echo API New"),
+				ServiceURL:  to.Ptr("http://echoapi.cloudapp.net/api2"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

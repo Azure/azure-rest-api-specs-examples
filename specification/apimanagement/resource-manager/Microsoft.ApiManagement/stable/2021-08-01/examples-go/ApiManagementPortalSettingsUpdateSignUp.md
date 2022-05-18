@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,32 +17,29 @@ func ExampleSignUpSettingsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewSignUpSettingsClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewSignUpSettingsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Update(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<if-match>",
+		"rg1",
+		"apimService1",
+		"*",
 		armapimanagement.PortalSignupSettings{
 			Properties: &armapimanagement.PortalSignupSettingsProperties{
 				Enabled: to.Ptr(true),
 				TermsOfService: &armapimanagement.TermsOfServiceProperties{
 					ConsentRequired: to.Ptr(true),
 					Enabled:         to.Ptr(true),
-					Text:            to.Ptr("<text>"),
+					Text:            to.Ptr("Terms of service text."),
 				},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

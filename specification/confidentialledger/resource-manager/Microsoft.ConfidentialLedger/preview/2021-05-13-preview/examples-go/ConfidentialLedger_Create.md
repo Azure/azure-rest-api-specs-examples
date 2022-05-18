@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.4.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.5.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfidentialledger_test
@@ -6,8 +6,6 @@ package armconfidentialledger_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleLedgerClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armconfidentialledger.NewLedgerClient("<subscription-id>", cred, nil)
+	client, err := armconfidentialledger.NewLedgerClient("0000000-0000-0000-0000-000000000001", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<ledger-name>",
+		"DummyResourceGroupName",
+		"DummyLedgerName",
 		armconfidentialledger.ConfidentialLedger{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("EastUS"),
 			Tags: map[string]*string{
 				"additionalProps1": to.Ptr("additional properties"),
 			},
@@ -39,26 +35,24 @@ func ExampleLedgerClient_BeginCreate() {
 				AADBasedSecurityPrincipals: []*armconfidentialledger.AADBasedSecurityPrincipal{
 					{
 						LedgerRoleName: to.Ptr(armconfidentialledger.LedgerRoleNameAdministrator),
-						PrincipalID:    to.Ptr("<principal-id>"),
-						TenantID:       to.Ptr("<tenant-id>"),
+						PrincipalID:    to.Ptr("34621747-6fc8-4771-a2eb-72f31c461f2e"),
+						TenantID:       to.Ptr("bce123b9-2b7b-4975-8360-5ca0b9b1cd08"),
 					}},
 				CertBasedSecurityPrincipals: []*armconfidentialledger.CertBasedSecurityPrincipal{
 					{
-						Cert:           to.Ptr("<cert>"),
+						Cert:           to.Ptr("-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----"),
 						LedgerRoleName: to.Ptr(armconfidentialledger.LedgerRoleNameReader),
 					}},
 				LedgerType: to.Ptr(armconfidentialledger.LedgerTypePublic),
 			},
 		},
-		&armconfidentialledger.LedgerClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

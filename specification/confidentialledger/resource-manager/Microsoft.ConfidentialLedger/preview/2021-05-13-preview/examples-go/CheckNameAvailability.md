@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.4.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfidentialledger%2Farmconfidentialledger%2Fv0.5.0/sdk/resourcemanager/confidentialledger/armconfidentialledger/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfidentialledger_test
@@ -17,23 +17,20 @@ func ExampleClient_CheckNameAvailability() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armconfidentialledger.NewClient("<subscription-id>", cred, nil)
+	client, err := armconfidentialledger.NewClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CheckNameAvailability(ctx,
 		armconfidentialledger.CheckNameAvailabilityRequest{
-			Name: to.Ptr("<name>"),
-			Type: to.Ptr("<type>"),
+			Name: to.Ptr("sample-name"),
+			Type: to.Ptr("Microsoft.ConfidentialLedger/ledgers"),
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

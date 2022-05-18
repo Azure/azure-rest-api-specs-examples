@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv0.5.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv1.0.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmysql_test
@@ -19,43 +19,39 @@ func ExampleServersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmysql.NewServersClient("<subscription-id>", cred, nil)
+	client, err := armmysql.NewServersClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<server-name>",
+		"TargetResourceGroup",
+		"targetserver",
 		armmysql.ServerForCreate{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("brazilsouth"),
 			Properties: &armmysql.ServerPropertiesForRestore{
 				CreateMode:         to.Ptr(armmysql.CreateModePointInTimeRestore),
 				RestorePointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-14T00:00:37.467Z"); return t }()),
-				SourceServerID:     to.Ptr("<source-server-id>"),
+				SourceServerID:     to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforMySQL/servers/sourceserver"),
 			},
 			SKU: &armmysql.SKU{
-				Name:     to.Ptr("<name>"),
+				Name:     to.Ptr("GP_Gen5_2"),
 				Capacity: to.Ptr[int32](2),
-				Family:   to.Ptr("<family>"),
+				Family:   to.Ptr("Gen5"),
 				Tier:     to.Ptr(armmysql.SKUTierGeneralPurpose),
 			},
 			Tags: map[string]*string{
 				"ElasticServer": to.Ptr("1"),
 			},
 		},
-		&armmysql.ServersClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

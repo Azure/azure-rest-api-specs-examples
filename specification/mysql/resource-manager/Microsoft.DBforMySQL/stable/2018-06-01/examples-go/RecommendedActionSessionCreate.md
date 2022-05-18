@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv0.5.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv1.0.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmysql_test
@@ -6,8 +6,6 @@ package armmysql_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysql"
@@ -18,28 +16,24 @@ func ExampleManagementClient_BeginCreateRecommendedActionSession() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmysql.NewManagementClient("<subscription-id>", cred, nil)
+	client, err := armmysql.NewManagementClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateRecommendedActionSession(ctx,
-		"<resource-group-name>",
-		"<server-name>",
-		"<advisor-name>",
-		"<database-name>",
-		&armmysql.ManagementClientBeginCreateRecommendedActionSessionOptions{ResumeToken: ""})
+		"testResourceGroupName",
+		"testServerName",
+		"Index",
+		"someDatabaseName",
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -17,21 +17,19 @@ func ExampleLinkedServicesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewLinkedServicesClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewLinkedServicesClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
-		"<linked-service-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
+		"exampleLinkedService",
 		armdatafactory.LinkedServiceResource{
 			Properties: &armdatafactory.AzureStorageLinkedService{
-				Type: to.Ptr("<type>"),
+				Type: to.Ptr("AzureStorage"),
 				TypeProperties: &armdatafactory.AzureStorageLinkedServiceTypeProperties{
 					ConnectionString: map[string]interface{}{
 						"type":  "SecureString",
@@ -43,7 +41,6 @@ func ExampleLinkedServicesClient_CreateOrUpdate() {
 		&armdatafactory.LinkedServicesClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

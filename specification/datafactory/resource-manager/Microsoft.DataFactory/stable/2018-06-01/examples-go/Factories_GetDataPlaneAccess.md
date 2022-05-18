@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -17,28 +17,25 @@ func ExampleFactoriesClient_GetDataPlaneAccess() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewFactoriesClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewFactoriesClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetDataPlaneAccess(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
 		armdatafactory.UserAccessPolicy{
-			AccessResourcePath: to.Ptr("<access-resource-path>"),
-			ExpireTime:         to.Ptr("<expire-time>"),
-			Permissions:        to.Ptr("<permissions>"),
-			ProfileName:        to.Ptr("<profile-name>"),
-			StartTime:          to.Ptr("<start-time>"),
+			AccessResourcePath: to.Ptr(""),
+			ExpireTime:         to.Ptr("2018-11-10T09:46:20.2659347Z"),
+			Permissions:        to.Ptr("r"),
+			ProfileName:        to.Ptr("DefaultProfile"),
+			StartTime:          to.Ptr("2018-11-10T02:46:20.2659347Z"),
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv0.5.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv1.0.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcdn_test
@@ -6,8 +6,6 @@ package armcdn_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleRoutesClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcdn.NewRoutesClient("<subscription-id>", cred, nil)
+	client, err := armcdn.NewRoutesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<profile-name>",
-		"<endpoint-name>",
-		"<route-name>",
+		"RG",
+		"profile1",
+		"endpoint1",
+		"route1",
 		armcdn.RouteUpdateParameters{
 			Properties: &armcdn.RouteUpdatePropertiesParameters{
 				CacheConfiguration: &armcdn.AfdRouteCacheConfiguration{
@@ -45,35 +41,33 @@ func ExampleRoutesClient_BeginUpdate() {
 				},
 				CustomDomains: []*armcdn.ActivatedResourceReference{
 					{
-						ID: to.Ptr("<id>"),
+						ID: to.Ptr("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/customDomains/domain1"),
 					}},
 				EnabledState:        to.Ptr(armcdn.EnabledStateEnabled),
 				ForwardingProtocol:  to.Ptr(armcdn.ForwardingProtocolMatchRequest),
 				HTTPSRedirect:       to.Ptr(armcdn.HTTPSRedirectEnabled),
 				LinkToDefaultDomain: to.Ptr(armcdn.LinkToDefaultDomainEnabled),
 				OriginGroup: &armcdn.ResourceReference{
-					ID: to.Ptr("<id>"),
+					ID: to.Ptr("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/originGroups/originGroup1"),
 				},
 				PatternsToMatch: []*string{
 					to.Ptr("/*")},
 				RuleSets: []*armcdn.ResourceReference{
 					{
-						ID: to.Ptr("<id>"),
+						ID: to.Ptr("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/ruleSets/ruleSet1"),
 					}},
 				SupportedProtocols: []*armcdn.AFDEndpointProtocols{
 					to.Ptr(armcdn.AFDEndpointProtocolsHTTPS),
 					to.Ptr(armcdn.AFDEndpointProtocolsHTTP)},
 			},
 		},
-		&armcdn.RoutesClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

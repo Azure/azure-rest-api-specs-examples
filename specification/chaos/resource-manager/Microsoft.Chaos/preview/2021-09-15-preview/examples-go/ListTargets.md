@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchaos%2Farmchaos%2Fv0.4.0/sdk/resourcemanager/chaos/armchaos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchaos%2Farmchaos%2Fv0.5.0/sdk/resourcemanager/chaos/armchaos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armchaos_test
@@ -7,7 +7,6 @@ import (
 	"context"
 	"log"
 
-	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos"
 )
@@ -17,24 +16,21 @@ func ExampleTargetsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armchaos.NewTargetsClient("<subscription-id>", cred, nil)
+	client, err := armchaos.NewTargetsClient("6b052e15-03d3-4f17-b2e1-be7f07588291", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<resource-group-name>",
-		"<parent-provider-namespace>",
-		"<parent-resource-type>",
-		"<parent-resource-name>",
-		&armchaos.TargetsClientListOptions{ContinuationToken: to.Ptr("<continuation-token>")})
+	pager := client.NewListPager("exampleRG",
+		"Microsoft.Compute",
+		"virtualMachines",
+		"exampleVM",
+		&armchaos.TargetsClientListOptions{ContinuationToken: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

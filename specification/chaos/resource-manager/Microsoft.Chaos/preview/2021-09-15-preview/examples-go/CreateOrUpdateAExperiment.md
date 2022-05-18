@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchaos%2Farmchaos%2Fv0.4.0/sdk/resourcemanager/chaos/armchaos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchaos%2Farmchaos%2Fv0.5.0/sdk/resourcemanager/chaos/armchaos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armchaos_test
@@ -6,8 +6,6 @@ package armchaos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleExperimentsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armchaos.NewExperimentsClient("<subscription-id>", cred, nil)
+	client, err := armchaos.NewExperimentsClient("6b052e15-03d3-4f17-b2e1-be7f07588291", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<experiment-name>",
+		"exampleRG",
+		"exampleExperiment",
 		armchaos.Experiment{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("centraluseuap"),
 			Identity: &armchaos.ResourceIdentity{
 				Type: to.Ptr(armchaos.ResourceIdentityTypeSystemAssigned),
 			},
@@ -39,37 +35,35 @@ func ExampleExperimentsClient_BeginCreateOrUpdate() {
 				Selectors: []*armchaos.Selector{
 					{
 						Type: to.Ptr(armchaos.SelectorTypeList),
-						ID:   to.Ptr("<id>"),
+						ID:   to.Ptr("selector1"),
 						Targets: []*armchaos.TargetReference{
 							{
-								Type: to.Ptr("<type>"),
-								ID:   to.Ptr("<id>"),
+								Type: to.Ptr("ChaosTarget"),
+								ID:   to.Ptr("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine"),
 							}},
 					}},
 				Steps: []*armchaos.Step{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("step1"),
 						Branches: []*armchaos.Branch{
 							{
-								Name: to.Ptr("<name>"),
+								Name: to.Ptr("branch1"),
 								Actions: []armchaos.ActionClassification{
 									&armchaos.Action{
-										Name: to.Ptr("<name>"),
-										Type: to.Ptr("<type>"),
+										Name: to.Ptr("urn:csci:provider:providername:Shutdown/1.0"),
+										Type: to.Ptr("Continuous"),
 									}},
 							}},
 					}},
 			},
 		},
-		&armchaos.ExperimentsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

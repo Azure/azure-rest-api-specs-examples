@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.4.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv1.0.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkusto_test
@@ -6,8 +6,6 @@ package armkusto_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,23 +17,21 @@ func ExampleAttachedDatabaseConfigurationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewAttachedDatabaseConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armkusto.NewAttachedDatabaseConfigurationsClient("12345678-1234-1234-1234-123456789098", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
-		"<attached-database-configuration-name>",
+		"kustorptest",
+		"kustoCluster2",
+		"attachedDatabaseConfigurationsTest",
 		armkusto.AttachedDatabaseConfiguration{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armkusto.AttachedDatabaseConfigurationProperties{
-				ClusterResourceID:                 to.Ptr("<cluster-resource-id>"),
-				DatabaseName:                      to.Ptr("<database-name>"),
+				ClusterResourceID:                 to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Kusto/Clusters/kustoCluster2"),
+				DatabaseName:                      to.Ptr("kustodatabase"),
 				DefaultPrincipalsModificationKind: to.Ptr(armkusto.DefaultPrincipalsModificationKindUnion),
 				TableLevelSharingProperties: &armkusto.TableLevelSharingProperties{
 					ExternalTablesToExclude: []*string{
@@ -53,15 +49,13 @@ func ExampleAttachedDatabaseConfigurationsClient_BeginCreateOrUpdate() {
 				},
 			},
 		},
-		&armkusto.AttachedDatabaseConfigurationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv0.4.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkusto%2Farmkusto%2Fv1.0.0/sdk/resourcemanager/kusto/armkusto/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkusto_test
@@ -6,8 +6,6 @@ package armkusto_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,36 +17,32 @@ func ExampleScriptsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewScriptsClient("<subscription-id>", cred, nil)
+	client, err := armkusto.NewScriptsClient("12345678-1234-1234-1234-123456789098", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
-		"<database-name>",
-		"<script-name>",
+		"kustorptest",
+		"kustoCluster",
+		"KustoDatabase8",
+		"kustoScript",
 		armkusto.Script{
 			Properties: &armkusto.ScriptProperties{
 				ContinueOnErrors:  to.Ptr(true),
-				ForceUpdateTag:    to.Ptr("<force-update-tag>"),
-				ScriptURL:         to.Ptr("<script-url>"),
-				ScriptURLSasToken: to.Ptr("<script-urlsas-token>"),
+				ForceUpdateTag:    to.Ptr("2bcf3c21-ffd1-4444-b9dd-e52e00ee53fe"),
+				ScriptURL:         to.Ptr("https://mysa.blob.core.windows.net/container/script.txt"),
+				ScriptURLSasToken: to.Ptr("?sv=2019-02-02&st=2019-04-29T22%3A18%3A26Z&se=2019-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=********************************"),
 			},
 		},
-		&armkusto.ScriptsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

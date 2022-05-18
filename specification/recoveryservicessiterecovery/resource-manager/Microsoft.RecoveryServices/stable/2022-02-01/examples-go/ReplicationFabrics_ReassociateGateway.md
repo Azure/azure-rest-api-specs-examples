@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -6,8 +6,6 @@ package armrecoveryservicessiterecovery_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,38 +17,34 @@ func ExampleReplicationFabricsClient_BeginReassociateGateway() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationFabricsClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationFabricsClient("MadhaviVault",
+		"MadhaviVRG",
+		"7c943c1b-5122-4097-90c8-861411bdd574", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginReassociateGateway(ctx,
-		"<fabric-name>",
+		"GRACE-V2A-1",
 		armrecoveryservicessiterecovery.FailoverProcessServerRequest{
 			Properties: &armrecoveryservicessiterecovery.FailoverProcessServerRequestProperties{
-				ContainerName:         to.Ptr("<container-name>"),
-				SourceProcessServerID: to.Ptr("<source-process-server-id>"),
-				TargetProcessServerID: to.Ptr("<target-process-server-id>"),
-				UpdateType:            to.Ptr("<update-type>"),
+				ContainerName:         to.Ptr("cloud_1f3c15af-2256-4568-9e06-e1ef4f728f75"),
+				SourceProcessServerID: to.Ptr("AFA0EC54-1894-4E44-9CAB02DB8854B117"),
+				TargetProcessServerID: to.Ptr("5D3ED340-85AE-C646-B338641E015DA405"),
+				UpdateType:            to.Ptr("ServerLevel"),
 				VMsToMigrate: []*string{
 					to.Ptr("Vm1"),
 					to.Ptr("Vm2")},
 			},
 		},
-		&armrecoveryservicessiterecovery.ReplicationFabricsClientBeginReassociateGatewayOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

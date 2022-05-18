@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -6,8 +6,6 @@ package armrecoveryservicessiterecovery_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,47 +17,43 @@ func ExampleReplicationRecoveryServicesProvidersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationRecoveryServicesProvidersClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationRecoveryServicesProvidersClient("migrationvault",
+		"resourcegroup1",
+		"cb53d0c3-bd59-4721-89bc-06916a9147ef", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<fabric-name>",
-		"<provider-name>",
+		"vmwarefabric1",
+		"vmwareprovider1",
 		armrecoveryservicessiterecovery.AddRecoveryServicesProviderInput{
 			Properties: &armrecoveryservicessiterecovery.AddRecoveryServicesProviderInputProperties{
 				AuthenticationIdentityInput: &armrecoveryservicessiterecovery.IdentityProviderInput{
-					AADAuthority:  to.Ptr("<aadauthority>"),
-					ApplicationID: to.Ptr("<application-id>"),
-					Audience:      to.Ptr("<audience>"),
-					ObjectID:      to.Ptr("<object-id>"),
-					TenantID:      to.Ptr("<tenant-id>"),
+					AADAuthority:  to.Ptr("https://login.microsoftonline.com"),
+					ApplicationID: to.Ptr("f66fce08-c0c6-47a1-beeb-0ede5ea94f90"),
+					Audience:      to.Ptr("https://microsoft.onmicrosoft.com/cf19e349-644c-4c6a-bcae-9c8f35357874"),
+					ObjectID:      to.Ptr("141360b8-5686-4240-a027-5e24e6affeba"),
+					TenantID:      to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
 				},
-				MachineName: to.Ptr("<machine-name>"),
+				MachineName: to.Ptr("vmwareprovider1"),
 				ResourceAccessIdentityInput: &armrecoveryservicessiterecovery.IdentityProviderInput{
-					AADAuthority:  to.Ptr("<aadauthority>"),
-					ApplicationID: to.Ptr("<application-id>"),
-					Audience:      to.Ptr("<audience>"),
-					ObjectID:      to.Ptr("<object-id>"),
-					TenantID:      to.Ptr("<tenant-id>"),
+					AADAuthority:  to.Ptr("https://login.microsoftonline.com"),
+					ApplicationID: to.Ptr("f66fce08-c0c6-47a1-beeb-0ede5ea94f90"),
+					Audience:      to.Ptr("https://microsoft.onmicrosoft.com/cf19e349-644c-4c6a-bcae-9c8f35357874"),
+					ObjectID:      to.Ptr("141360b8-5686-4240-a027-5e24e6affeba"),
+					TenantID:      to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
 				},
 			},
 		},
-		&armrecoveryservicessiterecovery.ReplicationRecoveryServicesProvidersClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

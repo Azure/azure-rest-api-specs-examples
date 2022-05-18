@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.7.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -17,33 +17,30 @@ func ExampleDeviceSecurityGroupsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armsecurity.NewDeviceSecurityGroupsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-id>",
-		"<device-security-group-name>",
+		"subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub",
+		"samplesecuritygroup",
 		armsecurity.DeviceSecurityGroup{
 			Properties: &armsecurity.DeviceSecurityGroupProperties{
 				TimeWindowRules: []armsecurity.TimeWindowCustomAlertRuleClassification{
 					&armsecurity.ActiveConnectionsNotInAllowedRange{
 						IsEnabled:      to.Ptr(true),
-						RuleType:       to.Ptr("<rule-type>"),
+						RuleType:       to.Ptr("ActiveConnectionsNotInAllowedRange"),
 						MaxThreshold:   to.Ptr[int32](30),
 						MinThreshold:   to.Ptr[int32](0),
-						TimeWindowSize: to.Ptr("<time-window-size>"),
+						TimeWindowSize: to.Ptr("PT05M"),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

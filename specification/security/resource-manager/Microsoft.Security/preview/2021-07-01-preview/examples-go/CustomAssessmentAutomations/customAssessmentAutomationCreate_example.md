@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.7.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -17,23 +17,21 @@ func ExampleCustomAssessmentAutomationsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewCustomAssessmentAutomationsClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewCustomAssessmentAutomationsClient("e5d1b86c-3051-44d5-8802-aa65d45a279b", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<custom-assessment-automation-name>",
+		"TestResourceGroup",
+		"MyCustomAssessmentAutomation",
 		armsecurity.CustomAssessmentAutomationRequest{
 			Properties: &armsecurity.CustomAssessmentAutomationRequestProperties{
-				Description:            to.Ptr("<description>"),
-				CompressedQuery:        to.Ptr("<compressed-query>"),
-				DisplayName:            to.Ptr("<display-name>"),
-				RemediationDescription: to.Ptr("<remediation-description>"),
+				Description:            to.Ptr("Data should be encrypted"),
+				CompressedQuery:        to.Ptr("DQAKAEkAYQBtAF8ARwByAG8AdQBwAA0ACgB8ACAAZQB4AHQAZQBuAGQAIABIAGUAYQBsAHQAaABTAHQAYQB0AHUAcwAgAD0AIABpAGYAZgAoAHQAbwBzAHQAcgBpAG4AZwAoAFIAZQBjAG8AcgBkAC4AVQBzAGUAcgBOAGEAbQBlACkAIABjAG8AbgB0AGEAaQBuAHMAIAAnAHUAcwBlAHIAJwAsACAAJwBVAE4ASABFAEEATABUAEgAWQAnACwAIAAnAEgARQBBAEwAVABIAFkAJwApAA0ACgA="),
+				DisplayName:            to.Ptr("Password Policy"),
+				RemediationDescription: to.Ptr("Encrypt store by..."),
 				Severity:               to.Ptr(armsecurity.SeverityEnumMedium),
 				SupportedCloud:         to.Ptr(armsecurity.SupportedCloudEnumAWS),
 			},
@@ -41,7 +39,6 @@ func ExampleCustomAssessmentAutomationsClient_Create() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

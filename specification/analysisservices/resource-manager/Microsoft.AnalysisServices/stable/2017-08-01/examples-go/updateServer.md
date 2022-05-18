@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fanalysisservices%2Farmanalysisservices%2Fv0.4.0/sdk/resourcemanager/analysisservices/armanalysisservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fanalysisservices%2Farmanalysisservices%2Fv1.0.0/sdk/resourcemanager/analysisservices/armanalysisservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armanalysisservices_test
@@ -6,8 +6,6 @@ package armanalysisservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleServersClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armanalysisservices.NewServersClient("<subscription-id>", cred, nil)
+	client, err := armanalysisservices.NewServersClient("613192d7-503f-477a-9cfe-4efc3ee2bd60", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<server-name>",
+		"TestRG",
+		"azsdktest",
 		armanalysisservices.ServerUpdateParameters{
 			Properties: &armanalysisservices.ServerMutableProperties{
 				AsAdministrators: &armanalysisservices.ServerAdministrators{
@@ -39,7 +35,7 @@ func ExampleServersClient_BeginUpdate() {
 				},
 			},
 			SKU: &armanalysisservices.ResourceSKU{
-				Name:     to.Ptr("<name>"),
+				Name:     to.Ptr("S1"),
 				Capacity: to.Ptr[int32](1),
 				Tier:     to.Ptr(armanalysisservices.SKUTierStandard),
 			},
@@ -47,15 +43,13 @@ func ExampleServersClient_BeginUpdate() {
 				"testKey": to.Ptr("testValue"),
 			},
 		},
-		&armanalysisservices.ServersClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

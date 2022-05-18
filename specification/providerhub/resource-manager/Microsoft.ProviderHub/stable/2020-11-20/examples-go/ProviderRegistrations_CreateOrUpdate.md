@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv0.4.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv1.0.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armproviderhub_test
@@ -6,8 +6,6 @@ package armproviderhub_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,45 +17,41 @@ func ExampleProviderRegistrationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armproviderhub.NewProviderRegistrationsClient("<subscription-id>", cred, nil)
+	client, err := armproviderhub.NewProviderRegistrationsClient("ab7a8701-f7ef-471a-a2f4-d0ebbf494f77", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<provider-namespace>",
+		"Microsoft.Contoso",
 		armproviderhub.ProviderRegistration{
 			Properties: &armproviderhub.ProviderRegistrationProperties{
 				Capabilities: []*armproviderhub.ResourceProviderCapabilities{
 					{
 						Effect:  to.Ptr(armproviderhub.ResourceProviderCapabilitiesEffectAllow),
-						QuotaID: to.Ptr("<quota-id>"),
+						QuotaID: to.Ptr("CSP_2015-05-01"),
 					},
 					{
 						Effect:  to.Ptr(armproviderhub.ResourceProviderCapabilitiesEffectAllow),
-						QuotaID: to.Ptr("<quota-id>"),
+						QuotaID: to.Ptr("CSP_MG_2017-12-01"),
 					}},
 				Management: &armproviderhub.ResourceProviderManifestPropertiesManagement{
-					IncidentContactEmail:   to.Ptr("<incident-contact-email>"),
-					IncidentRoutingService: to.Ptr("<incident-routing-service>"),
-					IncidentRoutingTeam:    to.Ptr("<incident-routing-team>"),
+					IncidentContactEmail:   to.Ptr("helpme@contoso.com"),
+					IncidentRoutingService: to.Ptr("Contoso Resource Provider"),
+					IncidentRoutingTeam:    to.Ptr("Contoso Triage"),
 				},
 				ProviderType:    to.Ptr(armproviderhub.ResourceProviderTypeInternal),
-				ProviderVersion: to.Ptr("<provider-version>"),
+				ProviderVersion: to.Ptr("2.0"),
 			},
 		},
-		&armproviderhub.ProviderRegistrationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsearch%2Farmsearch%2Fv0.5.0/sdk/resourcemanager/search/armsearch/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsearch%2Farmsearch%2Fv1.0.0/sdk/resourcemanager/search/armsearch/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsearch_test
@@ -6,8 +6,6 @@ package armsearch_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,35 +17,31 @@ func ExampleSharedPrivateLinkResourcesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsearch.NewSharedPrivateLinkResourcesClient("<subscription-id>", cred, nil)
+	client, err := armsearch.NewSharedPrivateLinkResourcesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<search-service-name>",
-		"<shared-private-link-resource-name>",
+		"rg1",
+		"mysearchservice",
+		"testResource",
 		armsearch.SharedPrivateLinkResource{
 			Properties: &armsearch.SharedPrivateLinkResourceProperties{
-				GroupID:               to.Ptr("<group-id>"),
-				PrivateLinkResourceID: to.Ptr("<private-link-resource-id>"),
-				RequestMessage:        to.Ptr("<request-message>"),
+				GroupID:               to.Ptr("blob"),
+				PrivateLinkResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/storageAccountName"),
+				RequestMessage:        to.Ptr("please approve"),
 			},
 		},
 		&armsearch.SearchManagementRequestOptions{ClientRequestID: nil},
-		&armsearch.SharedPrivateLinkResourcesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.4.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.5.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazurearcdata_test
@@ -6,8 +6,6 @@ package armazurearcdata_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,35 +17,33 @@ func ExampleActiveDirectoryConnectorsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armazurearcdata.NewActiveDirectoryConnectorsClient("<subscription-id>", cred, nil)
+	client, err := armazurearcdata.NewActiveDirectoryConnectorsClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<data-controller-name>",
-		"<active-directory-connector-name>",
+		"testrg",
+		"testdataController",
+		"testADConnector",
 		armazurearcdata.ActiveDirectoryConnectorResource{
 			Properties: &armazurearcdata.ActiveDirectoryConnectorProperties{
 				Spec: &armazurearcdata.ActiveDirectoryConnectorSpec{
 					ActiveDirectory: &armazurearcdata.ActiveDirectoryConnectorDomainDetails{
 						DomainControllers: &armazurearcdata.ActiveDirectoryDomainControllers{
 							PrimaryDomainController: &armazurearcdata.ActiveDirectoryDomainController{
-								Hostname: to.Ptr("<hostname>"),
+								Hostname: to.Ptr("dc1.contoso.local"),
 							},
 							SecondaryDomainControllers: []*armazurearcdata.ActiveDirectoryDomainController{
 								{
-									Hostname: to.Ptr("<hostname>"),
+									Hostname: to.Ptr("dc2.contoso.local"),
 								},
 								{
-									Hostname: to.Ptr("<hostname>"),
+									Hostname: to.Ptr("dc3.contoso.local"),
 								}},
 						},
-						Realm:                      to.Ptr("<realm>"),
+						Realm:                      to.Ptr("CONTOSO.LOCAL"),
 						ServiceAccountProvisioning: to.Ptr(armazurearcdata.AccountProvisioningModeManual),
 					},
 					DNS: &armazurearcdata.ActiveDirectoryConnectorDNSDetails{
@@ -60,15 +56,13 @@ func ExampleActiveDirectoryConnectorsClient_BeginCreate() {
 				},
 			},
 		},
-		&armazurearcdata.ActiveDirectoryConnectorsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

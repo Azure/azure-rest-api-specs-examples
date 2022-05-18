@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.4.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.5.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazurearcdata_test
@@ -6,8 +6,6 @@ package armazurearcdata_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,40 +17,38 @@ func ExampleSQLManagedInstancesClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armazurearcdata.NewSQLManagedInstancesClient("<subscription-id>", cred, nil)
+	client, err := armazurearcdata.NewSQLManagedInstancesClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<sql-managed-instance-name>",
+		"testrg",
+		"testsqlManagedInstance",
 		armazurearcdata.SQLManagedInstance{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("northeurope"),
 			Tags: map[string]*string{
 				"mytag": to.Ptr("myval"),
 			},
 			ExtendedLocation: &armazurearcdata.ExtendedLocation{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"),
 				Type: to.Ptr(armazurearcdata.ExtendedLocationTypesCustomLocation),
 			},
 			Properties: &armazurearcdata.SQLManagedInstanceProperties{
 				ActiveDirectoryInformation: &armazurearcdata.ActiveDirectoryInformation{
 					KeytabInformation: &armazurearcdata.KeytabInformation{
-						Keytab: to.Ptr("<keytab>"),
+						Keytab: to.Ptr("********"),
 					},
 				},
-				Admin: to.Ptr("<admin>"),
+				Admin: to.Ptr("Admin user"),
 				BasicLoginInformation: &armazurearcdata.BasicLoginInformation{
-					Password: to.Ptr("<password>"),
-					Username: to.Ptr("<username>"),
+					Password: to.Ptr("********"),
+					Username: to.Ptr("username"),
 				},
-				ClusterID:   to.Ptr("<cluster-id>"),
-				EndTime:     to.Ptr("<end-time>"),
-				ExtensionID: to.Ptr("<extension-id>"),
+				ClusterID:   to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/connectedk8s"),
+				EndTime:     to.Ptr("Instance end time"),
+				ExtensionID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Kubernetes/connectedClusters/connectedk8s/providers/Microsoft.KubernetesConfiguration/extensions/extension"),
 				K8SRaw: &armazurearcdata.SQLManagedInstanceK8SRaw{
 					AdditionalProperties: map[string]interface{}{
 						"additionalProperty": float64(1234),
@@ -78,23 +74,21 @@ func ExampleSQLManagedInstancesClient_BeginCreate() {
 					},
 				},
 				LicenseType: to.Ptr(armazurearcdata.ArcSQLManagedInstanceLicenseTypeLicenseIncluded),
-				StartTime:   to.Ptr("<start-time>"),
+				StartTime:   to.Ptr("Instance start time"),
 			},
 			SKU: &armazurearcdata.SQLManagedInstanceSKU{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("vCore"),
 				Dev:  to.Ptr(true),
 				Tier: to.Ptr(armazurearcdata.SQLManagedInstanceSKUTierGeneralPurpose),
 			},
 		},
-		&armazurearcdata.SQLManagedInstancesClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

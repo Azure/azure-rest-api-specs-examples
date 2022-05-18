@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhdinsight%2Farmhdinsight%2Fv0.4.0/sdk/resourcemanager/hdinsight/armhdinsight/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhdinsight%2Farmhdinsight%2Fv1.0.0/sdk/resourcemanager/hdinsight/armhdinsight/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhdinsight_test
@@ -6,8 +6,6 @@ package armhdinsight_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,27 +17,25 @@ func ExampleApplicationsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhdinsight.NewApplicationsClient("<subscription-id>", cred, nil)
+	client, err := armhdinsight.NewApplicationsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
-		"<application-name>",
+		"rg1",
+		"cluster1",
+		"hue",
 		armhdinsight.Application{
 			Properties: &armhdinsight.ApplicationProperties{
-				ApplicationType: to.Ptr("<application-type>"),
+				ApplicationType: to.Ptr("CustomApplication"),
 				ComputeProfile: &armhdinsight.ComputeProfile{
 					Roles: []*armhdinsight.Role{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("edgenode"),
 							HardwareProfile: &armhdinsight.HardwareProfile{
-								VMSize: to.Ptr("<vmsize>"),
+								VMSize: to.Ptr("Standard_D12_v2"),
 							},
 							TargetInstanceCount: to.Ptr[int32](1),
 						}},
@@ -50,28 +46,26 @@ func ExampleApplicationsClient_BeginCreate() {
 						AccessModes: []*string{
 							to.Ptr("WebPage")},
 						DestinationPort: to.Ptr[int32](20000),
-						SubDomainSuffix: to.Ptr("<sub-domain-suffix>"),
+						SubDomainSuffix: to.Ptr("dss"),
 					}},
 				InstallScriptActions: []*armhdinsight.RuntimeScriptAction{
 					{
-						Name:       to.Ptr("<name>"),
-						Parameters: to.Ptr("<parameters>"),
+						Name:       to.Ptr("app-install-app1"),
+						Parameters: to.Ptr("-version latest -port 20000"),
 						Roles: []*string{
 							to.Ptr("edgenode")},
-						URI: to.Ptr("<uri>"),
+						URI: to.Ptr("https://.../install.sh"),
 					}},
 				UninstallScriptActions: []*armhdinsight.RuntimeScriptAction{},
 			},
 		},
-		&armhdinsight.ApplicationsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

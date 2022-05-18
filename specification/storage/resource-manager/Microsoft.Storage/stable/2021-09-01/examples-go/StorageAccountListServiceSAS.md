@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv0.6.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv1.0.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorage_test
@@ -19,19 +19,17 @@ func ExampleAccountsClient_ListServiceSAS() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armstorage.NewAccountsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.ListServiceSAS(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"res7439",
+		"sto1299",
 		armstorage.ServiceSasParameters{
-			CanonicalizedResource:  to.Ptr("<canonicalized-resource>"),
+			CanonicalizedResource:  to.Ptr("/blob/sto1299/music"),
 			SharedAccessExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T11:32:48.8457197Z"); return t }()),
 			Permissions:            to.Ptr(armstorage.PermissionsL),
 			Resource:               to.Ptr(armstorage.SignedResourceC),
@@ -39,7 +37,6 @@ func ExampleAccountsClient_ListServiceSAS() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

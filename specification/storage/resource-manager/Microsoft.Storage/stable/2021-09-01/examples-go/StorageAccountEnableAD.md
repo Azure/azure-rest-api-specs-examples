@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv0.6.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorage%2Farmstorage%2Fv1.0.0/sdk/resourcemanager/storage/armstorage/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorage_test
@@ -17,29 +17,27 @@ func ExampleAccountsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armstorage.NewAccountsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"res9407",
+		"sto8596",
 		armstorage.AccountUpdateParameters{
 			Properties: &armstorage.AccountPropertiesUpdateParameters{
 				AzureFilesIdentityBasedAuthentication: &armstorage.AzureFilesIdentityBasedAuthentication{
 					ActiveDirectoryProperties: &armstorage.ActiveDirectoryProperties{
 						AccountType:       to.Ptr(armstorage.ActiveDirectoryPropertiesAccountTypeUser),
-						AzureStorageSid:   to.Ptr("<azure-storage-sid>"),
-						DomainGUID:        to.Ptr("<domain-guid>"),
-						DomainName:        to.Ptr("<domain-name>"),
-						DomainSid:         to.Ptr("<domain-sid>"),
-						ForestName:        to.Ptr("<forest-name>"),
-						NetBiosDomainName: to.Ptr("<net-bios-domain-name>"),
-						SamAccountName:    to.Ptr("<sam-account-name>"),
+						AzureStorageSid:   to.Ptr("S-1-5-21-2400535526-2334094090-2402026252-0012"),
+						DomainGUID:        to.Ptr("aebfc118-9fa9-4732-a21f-d98e41a77ae1"),
+						DomainName:        to.Ptr("adtest.com"),
+						DomainSid:         to.Ptr("S-1-5-21-2400535526-2334094090-2402026252"),
+						ForestName:        to.Ptr("adtest.com"),
+						NetBiosDomainName: to.Ptr("adtest.com"),
+						SamAccountName:    to.Ptr("sam12498"),
 					},
 					DirectoryServiceOptions: to.Ptr(armstorage.DirectoryServiceOptionsAD),
 				},
@@ -48,7 +46,6 @@ func ExampleAccountsClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

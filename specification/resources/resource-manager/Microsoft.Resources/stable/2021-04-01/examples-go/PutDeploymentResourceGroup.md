@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmresources%2Fv0.5.0/sdk/resourcemanager/resources/armresources/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmresources%2Fv1.0.0/sdk/resourcemanager/resources/armresources/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armresources_test
@@ -6,8 +6,6 @@ package armresources_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,36 +17,32 @@ func ExampleDeploymentsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armresources.NewDeploymentsClient("<subscription-id>", cred, nil)
+	client, err := armresources.NewDeploymentsClient("00000000-0000-0000-0000-000000000001", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<deployment-name>",
+		"my-resource-group",
+		"my-deployment",
 		armresources.Deployment{
 			Properties: &armresources.DeploymentProperties{
 				Mode:       to.Ptr(armresources.DeploymentModeIncremental),
 				Parameters: map[string]interface{}{},
 				TemplateLink: &armresources.TemplateLink{
-					QueryString: to.Ptr("<query-string>"),
-					URI:         to.Ptr("<uri>"),
+					QueryString: to.Ptr("sv=2019-02-02&st=2019-04-29T22%3A18%3A26Z&se=2019-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=xxxxxxxx0xxxxxxxxxxxxx%2bxxxxxxxxxxxxxxxxxxxx%3d"),
+					URI:         to.Ptr("https://example.com/exampleTemplate.json"),
 				},
 			},
 		},
-		&armresources.DeploymentsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

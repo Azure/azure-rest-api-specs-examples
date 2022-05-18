@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,16 +17,14 @@ func ExampleLogProfilesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewLogProfilesClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewLogProfilesClient("df602c9c-7aa0-407d-a6fb-eb20c8bd1192", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<log-profile-name>",
+		"Rac46PostSwapRG",
 		armmonitor.LogProfileResourcePatch{
 			Properties: &armmonitor.LogProfileProperties{
 				Categories: []*string{
@@ -39,8 +37,8 @@ func ExampleLogProfilesClient_Update() {
 					Days:    to.Ptr[int32](3),
 					Enabled: to.Ptr(true),
 				},
-				ServiceBusRuleID: to.Ptr("<service-bus-rule-id>"),
-				StorageAccountID: to.Ptr("<storage-account-id>"),
+				ServiceBusRuleID: to.Ptr(""),
+				StorageAccountID: to.Ptr("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8162"),
 			},
 			Tags: map[string]*string{
 				"key1": to.Ptr("value1"),
@@ -49,7 +47,6 @@ func ExampleLogProfilesClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

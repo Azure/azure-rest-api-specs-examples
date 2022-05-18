@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,21 +17,19 @@ func ExampleBaselinesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armmonitor.NewBaselinesClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<resource-uri>",
+	pager := client.NewListPager("subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1",
 		&armmonitor.BaselinesClientListOptions{Metricnames: nil,
 			Metricnamespace: nil,
-			Timespan:        to.Ptr("<timespan>"),
-			Interval:        to.Ptr("<interval>"),
-			Aggregation:     to.Ptr("<aggregation>"),
-			Sensitivities:   to.Ptr("<sensitivities>"),
+			Timespan:        to.Ptr("2019-03-12T11:00:00.000Z/2019-03-12T12:00:00.000Z"),
+			Interval:        to.Ptr("PT1H"),
+			Aggregation:     to.Ptr("average"),
+			Sensitivities:   to.Ptr("Low,Medium"),
 			Filter:          nil,
 			ResultType:      nil,
 		})
@@ -39,7 +37,6 @@ func ExampleBaselinesClient_NewListPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

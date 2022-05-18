@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,29 +17,26 @@ func ExampleMetricsClient_List() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armmonitor.NewMetricsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.List(ctx,
-		"<resource-uri>",
-		&armmonitor.MetricsClientListOptions{Timespan: to.Ptr("<timespan>"),
-			Interval:        to.Ptr("<interval>"),
+		"subscriptions/b324c52b-4073-4807-93af-e07d289c093e/resourceGroups/test/providers/Microsoft.Storage/storageAccounts/larryshoebox/blobServices/default",
+		&armmonitor.MetricsClientListOptions{Timespan: to.Ptr("2017-04-14T02:20:00Z/2017-04-14T04:20:00Z"),
+			Interval:        to.Ptr("PT1M"),
 			Metricnames:     nil,
-			Aggregation:     to.Ptr("<aggregation>"),
+			Aggregation:     to.Ptr("Average,count"),
 			Top:             to.Ptr[int32](3),
-			Orderby:         to.Ptr("<orderby>"),
-			Filter:          to.Ptr("<filter>"),
+			Orderby:         to.Ptr("Average asc"),
+			Filter:          to.Ptr("BlobType eq '*'"),
 			ResultType:      nil,
-			Metricnamespace: to.Ptr("<metricnamespace>"),
+			Metricnamespace: to.Ptr("Microsoft.Storage/storageAccounts/blobServices"),
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

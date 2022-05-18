@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,25 +17,23 @@ func ExampleDiagnosticSettingsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armmonitor.NewDiagnosticSettingsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-uri>",
-		"<name>",
+		"subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6",
+		"mysetting",
 		armmonitor.DiagnosticSettingsResource{
 			Properties: &armmonitor.DiagnosticSettings{
-				EventHubAuthorizationRuleID: to.Ptr("<event-hub-authorization-rule-id>"),
-				EventHubName:                to.Ptr("<event-hub-name>"),
-				LogAnalyticsDestinationType: to.Ptr("<log-analytics-destination-type>"),
+				EventHubAuthorizationRuleID: to.Ptr("/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/eventhubs/myeventhub/authorizationrules/myrule"),
+				EventHubName:                to.Ptr("myeventhub"),
+				LogAnalyticsDestinationType: to.Ptr("Dedicated"),
 				Logs: []*armmonitor.LogSettings{
 					{
-						Category: to.Ptr("<category>"),
+						Category: to.Ptr("WorkflowRuntime"),
 						Enabled:  to.Ptr(true),
 						RetentionPolicy: &armmonitor.RetentionPolicy{
 							Days:    to.Ptr[int32](0),
@@ -44,21 +42,20 @@ func ExampleDiagnosticSettingsClient_CreateOrUpdate() {
 					}},
 				Metrics: []*armmonitor.MetricSettings{
 					{
-						Category: to.Ptr("<category>"),
+						Category: to.Ptr("WorkflowMetrics"),
 						Enabled:  to.Ptr(true),
 						RetentionPolicy: &armmonitor.RetentionPolicy{
 							Days:    to.Ptr[int32](0),
 							Enabled: to.Ptr(false),
 						},
 					}},
-				StorageAccountID: to.Ptr("<storage-account-id>"),
-				WorkspaceID:      to.Ptr("<workspace-id>"),
+				StorageAccountID: to.Ptr("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"),
+				WorkspaceID:      to.Ptr(""),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

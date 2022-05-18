@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.4.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.5.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -17,25 +17,23 @@ func ExampleAssignmentsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armblueprint.NewAssignmentsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.CreateOrUpdate(ctx,
-		"<resource-scope>",
-		"<assignment-name>",
+		"managementGroups/ContosoOnlineGroup",
+		"assignSimpleBlueprint",
 		armblueprint.Assignment{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Identity: &armblueprint.ManagedServiceIdentity{
 				Type: to.Ptr(armblueprint.ManagedServiceIdentityTypeSystemAssigned),
 			},
 			Properties: &armblueprint.AssignmentProperties{
-				Description: to.Ptr("<description>"),
-				BlueprintID: to.Ptr("<blueprint-id>"),
+				Description: to.Ptr("enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."),
+				BlueprintID: to.Ptr("/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"),
 				Parameters: map[string]*armblueprint.ParameterValue{
 					"costCenter": {
 						Value: "Contoso/Online/Shopping/Production",
@@ -52,17 +50,16 @@ func ExampleAssignmentsClient_CreateOrUpdate() {
 				},
 				ResourceGroups: map[string]*armblueprint.ResourceGroupValue{
 					"storageRG": {
-						Name:     to.Ptr("<name>"),
-						Location: to.Ptr("<location>"),
+						Name:     to.Ptr("defaultRG"),
+						Location: to.Ptr("eastus"),
 					},
 				},
-				Scope: to.Ptr("<scope>"),
+				Scope: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

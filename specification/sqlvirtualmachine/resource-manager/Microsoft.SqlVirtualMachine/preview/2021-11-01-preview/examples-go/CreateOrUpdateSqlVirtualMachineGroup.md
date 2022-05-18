@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsqlvirtualmachine%2Farmsqlvirtualmachine%2Fv0.4.0/sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsqlvirtualmachine%2Farmsqlvirtualmachine%2Fv0.5.0/sdk/resourcemanager/sqlvirtualmachine/armsqlvirtualmachine/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsqlvirtualmachine_test
@@ -6,8 +6,6 @@ package armsqlvirtualmachine_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,45 +17,41 @@ func ExampleGroupsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsqlvirtualmachine.NewGroupsClient("<subscription-id>", cred, nil)
+	client, err := armsqlvirtualmachine.NewGroupsClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<sql-virtual-machine-group-name>",
+		"testrg",
+		"testvmgroup",
 		armsqlvirtualmachine.Group{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("northeurope"),
 			Tags: map[string]*string{
 				"mytag": to.Ptr("myval"),
 			},
 			Properties: &armsqlvirtualmachine.GroupProperties{
-				SQLImageOffer: to.Ptr("<sqlimage-offer>"),
+				SQLImageOffer: to.Ptr("SQL2016-WS2016"),
 				SQLImageSKU:   to.Ptr(armsqlvirtualmachine.SQLVMGroupImageSKUEnterprise),
 				WsfcDomainProfile: &armsqlvirtualmachine.WsfcDomainProfile{
-					ClusterBootstrapAccount:  to.Ptr("<cluster-bootstrap-account>"),
-					ClusterOperatorAccount:   to.Ptr("<cluster-operator-account>"),
-					DomainFqdn:               to.Ptr("<domain-fqdn>"),
-					OuPath:                   to.Ptr("<ou-path>"),
-					SQLServiceAccount:        to.Ptr("<sqlservice-account>"),
-					StorageAccountPrimaryKey: to.Ptr("<storage-account-primary-key>"),
-					StorageAccountURL:        to.Ptr("<storage-account-url>"),
+					ClusterBootstrapAccount:  to.Ptr("testrpadmin"),
+					ClusterOperatorAccount:   to.Ptr("testrp@testdomain.com"),
+					DomainFqdn:               to.Ptr("testdomain.com"),
+					OuPath:                   to.Ptr("OU=WSCluster,DC=testdomain,DC=com"),
+					SQLServiceAccount:        to.Ptr("sqlservice@testdomain.com"),
+					StorageAccountPrimaryKey: to.Ptr("<primary storage access key>"),
+					StorageAccountURL:        to.Ptr("https://storgact.blob.core.windows.net/"),
 				},
 			},
 		},
-		&armsqlvirtualmachine.GroupsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

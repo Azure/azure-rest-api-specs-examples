@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv0.4.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv1.0.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragecache_test
@@ -17,28 +17,26 @@ func ExampleCachesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewCachesClient("<subscription-id>", cred, nil)
+	client, err := armstoragecache.NewCachesClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<cache-name>",
+		"scgroup",
+		"sc1",
 		&armstoragecache.CachesClientUpdateOptions{Cache: &armstoragecache.Cache{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armstoragecache.CacheProperties{
 				CacheSizeGB: to.Ptr[int32](3072),
 				DirectoryServicesSettings: &armstoragecache.CacheDirectorySettings{
 					ActiveDirectory: &armstoragecache.CacheActiveDirectorySettings{
-						CacheNetBiosName:      to.Ptr("<cache-net-bios-name>"),
-						DomainName:            to.Ptr("<domain-name>"),
-						DomainNetBiosName:     to.Ptr("<domain-net-bios-name>"),
-						PrimaryDNSIPAddress:   to.Ptr("<primary-dnsipaddress>"),
-						SecondaryDNSIPAddress: to.Ptr("<secondary-dnsipaddress>"),
+						CacheNetBiosName:      to.Ptr("contosoSmb"),
+						DomainName:            to.Ptr("contosoAd.contoso.local"),
+						DomainNetBiosName:     to.Ptr("contosoAd"),
+						PrimaryDNSIPAddress:   to.Ptr("192.0.2.10"),
+						SecondaryDNSIPAddress: to.Ptr("192.0.2.11"),
 					},
 					UsernameDownload: &armstoragecache.CacheUsernameDownloadSettings{
 						ExtendedGroups: to.Ptr(true),
@@ -46,17 +44,17 @@ func ExampleCachesClient_Update() {
 					},
 				},
 				NetworkSettings: &armstoragecache.CacheNetworkSettings{
-					DNSSearchDomain: to.Ptr("<dnssearch-domain>"),
+					DNSSearchDomain: to.Ptr("contoso.com"),
 					DNSServers: []*string{
 						to.Ptr("10.1.22.33"),
 						to.Ptr("10.1.12.33")},
 					Mtu:       to.Ptr[int32](1500),
-					NtpServer: to.Ptr("<ntp-server>"),
+					NtpServer: to.Ptr("time.contoso.com"),
 				},
 				SecuritySettings: &armstoragecache.CacheSecuritySettings{
 					AccessPolicies: []*armstoragecache.NfsAccessPolicy{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("default"),
 							AccessRules: []*armstoragecache.NfsAccessRule{
 								{
 									Access:         to.Ptr(armstoragecache.NfsAccessRuleAccessRw),
@@ -67,11 +65,11 @@ func ExampleCachesClient_Update() {
 								}},
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("restrictive"),
 							AccessRules: []*armstoragecache.NfsAccessRule{
 								{
 									Access:         to.Ptr(armstoragecache.NfsAccessRuleAccessRw),
-									Filter:         to.Ptr("<filter>"),
+									Filter:         to.Ptr("10.99.3.145"),
 									RootSquash:     to.Ptr(false),
 									Scope:          to.Ptr(armstoragecache.NfsAccessRuleScopeHost),
 									SubmountAccess: to.Ptr(true),
@@ -79,7 +77,7 @@ func ExampleCachesClient_Update() {
 								},
 								{
 									Access:         to.Ptr(armstoragecache.NfsAccessRuleAccessRw),
-									Filter:         to.Ptr("<filter>"),
+									Filter:         to.Ptr("10.99.1.0/24"),
 									RootSquash:     to.Ptr(false),
 									Scope:          to.Ptr(armstoragecache.NfsAccessRuleScopeNetwork),
 									SubmountAccess: to.Ptr(true),
@@ -87,8 +85,8 @@ func ExampleCachesClient_Update() {
 								},
 								{
 									Access:         to.Ptr(armstoragecache.NfsAccessRuleAccessNo),
-									AnonymousGID:   to.Ptr("<anonymous-gid>"),
-									AnonymousUID:   to.Ptr("<anonymous-uid>"),
+									AnonymousGID:   to.Ptr("65534"),
+									AnonymousUID:   to.Ptr("65534"),
 									RootSquash:     to.Ptr(true),
 									Scope:          to.Ptr(armstoragecache.NfsAccessRuleScopeDefault),
 									SubmountAccess: to.Ptr(true),
@@ -96,10 +94,10 @@ func ExampleCachesClient_Update() {
 								}},
 						}},
 				},
-				Subnet: to.Ptr("<subnet>"),
+				Subnet: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1"),
 			},
 			SKU: &armstoragecache.CacheSKU{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("Standard_2G"),
 			},
 			Tags: map[string]*string{
 				"Dept": to.Ptr("Contoso"),
@@ -108,7 +106,6 @@ func ExampleCachesClient_Update() {
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

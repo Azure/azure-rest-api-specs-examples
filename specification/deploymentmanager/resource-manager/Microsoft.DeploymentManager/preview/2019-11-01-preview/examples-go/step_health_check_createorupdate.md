@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.1.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.4.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeploymentmanager_test
@@ -12,84 +12,77 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deploymentmanager/armdeploymentmanager"
 )
 
-// x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/step_health_check_createorupdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/step_health_check_createorupdate.json
 func ExampleStepsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdeploymentmanager.NewStepsClient("<subscription-id>", cred, nil)
-	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<step-name>",
-		&armdeploymentmanager.StepsCreateOrUpdateOptions{StepInfo: &armdeploymentmanager.StepResource{
-			TrackedResource: armdeploymentmanager.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+	client, err := armdeploymentmanager.NewStepsClient("caac1590-e859-444f-a9e0-62091c0f5929", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	_, err = client.CreateOrUpdate(ctx,
+		"myResourceGroup",
+		"healthCheckStep",
+		&armdeploymentmanager.StepsClientCreateOrUpdateOptions{StepInfo: &armdeploymentmanager.StepResource{
+			Location: to.Ptr("centralus"),
+			Tags:     map[string]*string{},
 			Properties: &armdeploymentmanager.HealthCheckStepProperties{
-				StepProperties: armdeploymentmanager.StepProperties{
-					StepType: armdeploymentmanager.StepTypeHealthCheck.ToPtr(),
-				},
+				StepType: to.Ptr(armdeploymentmanager.StepTypeHealthCheck),
 				Attributes: &armdeploymentmanager.RestHealthCheckStepAttributes{
-					HealthCheckStepAttributes: armdeploymentmanager.HealthCheckStepAttributes{
-						Type:                 to.StringPtr("<type>"),
-						HealthyStateDuration: to.StringPtr("<healthy-state-duration>"),
-						MaxElasticDuration:   to.StringPtr("<max-elastic-duration>"),
-						WaitDuration:         to.StringPtr("<wait-duration>"),
-					},
+					Type:                 to.Ptr("REST"),
+					HealthyStateDuration: to.Ptr("PT2H"),
+					MaxElasticDuration:   to.Ptr("PT30M"),
+					WaitDuration:         to.Ptr("PT15M"),
 					Properties: &armdeploymentmanager.RestParameters{
 						HealthChecks: []*armdeploymentmanager.RestHealthCheck{
 							{
-								Name: to.StringPtr("<name>"),
+								Name: to.Ptr("appHealth"),
 								Response: &armdeploymentmanager.RestResponse{
 									Regex: &armdeploymentmanager.RestResponseRegex{
-										MatchQuantifier: armdeploymentmanager.RestMatchQuantifierAll.ToPtr(),
+										MatchQuantifier: to.Ptr(armdeploymentmanager.RestMatchQuantifierAll),
 										Matches: []*string{
-											to.StringPtr("(?i)Contoso-App"),
-											to.StringPtr("(?i)\"health_status\":((.|\n)*)\"(green|yellow)\""),
-											to.StringPtr("(?mi)^(\"application_host\": 94781052)$")},
+											to.Ptr("(?i)Contoso-App"),
+											to.Ptr("(?i)\"health_status\":((.|\n)*)\"(green|yellow)\""),
+											to.Ptr("(?mi)^(\"application_host\": 94781052)$")},
 									},
 									SuccessStatusCodes: []*string{
-										to.StringPtr("OK")},
+										to.Ptr("OK")},
 								},
 								Request: &armdeploymentmanager.RestRequest{
-									Method: armdeploymentmanager.RestRequestMethodGET.ToPtr(),
+									Method: to.Ptr(armdeploymentmanager.RestRequestMethodGET),
 									Authentication: &armdeploymentmanager.APIKeyAuthentication{
-										RestRequestAuthentication: armdeploymentmanager.RestRequestAuthentication{
-											Type: armdeploymentmanager.RestAuthTypeAPIKey.ToPtr(),
-										},
-										Name:  to.StringPtr("<name>"),
-										In:    armdeploymentmanager.RestAuthLocationQuery.ToPtr(),
-										Value: to.StringPtr("<value>"),
+										Type:  to.Ptr(armdeploymentmanager.RestAuthTypeAPIKey),
+										Name:  to.Ptr("Code"),
+										In:    to.Ptr(armdeploymentmanager.RestAuthLocationQuery),
+										Value: to.Ptr("NBCapiMOBQyAAbCkeytoPadnvO0eGHmidwFz5rXpappznKp3Jt7LLg=="),
 									},
-									URI: to.StringPtr("<uri>"),
+									URI: to.Ptr("https://resthealth.healthservice.com/api/applications/contosoApp/healthStatus"),
 								},
 							},
 							{
-								Name: to.StringPtr("<name>"),
+								Name: to.Ptr("serviceHealth"),
 								Response: &armdeploymentmanager.RestResponse{
 									Regex: &armdeploymentmanager.RestResponseRegex{
-										MatchQuantifier: armdeploymentmanager.RestMatchQuantifierAll.ToPtr(),
+										MatchQuantifier: to.Ptr(armdeploymentmanager.RestMatchQuantifierAll),
 										Matches: []*string{
-											to.StringPtr("(?i)Contoso-Service-EndToEnd"),
-											to.StringPtr("(?i)\"health_status\":((.|\n)*)\"(green)\"")},
+											to.Ptr("(?i)Contoso-Service-EndToEnd"),
+											to.Ptr("(?i)\"health_status\":((.|\n)*)\"(green)\"")},
 									},
 									SuccessStatusCodes: []*string{
-										to.StringPtr("OK")},
+										to.Ptr("OK")},
 								},
 								Request: &armdeploymentmanager.RestRequest{
-									Method: armdeploymentmanager.RestRequestMethodGET.ToPtr(),
+									Method: to.Ptr(armdeploymentmanager.RestRequestMethodGET),
 									Authentication: &armdeploymentmanager.APIKeyAuthentication{
-										RestRequestAuthentication: armdeploymentmanager.RestRequestAuthentication{
-											Type: armdeploymentmanager.RestAuthTypeAPIKey.ToPtr(),
-										},
-										Name:  to.StringPtr("<name>"),
-										In:    armdeploymentmanager.RestAuthLocationHeader.ToPtr(),
-										Value: to.StringPtr("<value>"),
+										Type:  to.Ptr(armdeploymentmanager.RestAuthTypeAPIKey),
+										Name:  to.Ptr("code"),
+										In:    to.Ptr(armdeploymentmanager.RestAuthLocationHeader),
+										Value: to.Ptr("NBCapiMOBQyAAbCkeytoPadnvO0eGHmidwFz5rXpappznKp3Jt7LLg=="),
 									},
-									URI: to.StringPtr("<uri>"),
+									URI: to.Ptr("https://resthealth.healthservice.com/api/services/contosoService/healthStatus"),
 								},
 							}},
 					},
@@ -98,8 +91,7 @@ func ExampleStepsClient_CreateOrUpdate() {
 		},
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	log.Printf("StepResource.ID: %s\n", *res.ID)
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.1.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.4.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeploymentmanager_test
@@ -7,50 +7,46 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deploymentmanager/armdeploymentmanager"
 )
 
-// x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/serviceunit_createorupdate_noartifactsource.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/serviceunit_createorupdate_noartifactsource.json
 func ExampleServiceUnitsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdeploymentmanager.NewServiceUnitsClient("<subscription-id>", cred, nil)
+	client, err := armdeploymentmanager.NewServiceUnitsClient("caac1590-e859-444f-a9e0-62091c0f5929", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-topology-name>",
-		"<service-name>",
-		"<service-unit-name>",
+		"myResourceGroup",
+		"myTopology",
+		"myService",
+		"myServiceUnit",
 		armdeploymentmanager.ServiceUnitResource{
-			TrackedResource: armdeploymentmanager.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+			Location: to.Ptr("centralus"),
+			Tags:     map[string]*string{},
 			Properties: &armdeploymentmanager.ServiceUnitResourceProperties{
-				ServiceUnitProperties: armdeploymentmanager.ServiceUnitProperties{
-					Artifacts: &armdeploymentmanager.ServiceUnitArtifacts{
-						ParametersURI: to.StringPtr("<parameters-uri>"),
-						TemplateURI:   to.StringPtr("<template-uri>"),
-					},
-					DeploymentMode:      armdeploymentmanager.DeploymentModeIncremental.ToPtr(),
-					TargetResourceGroup: to.StringPtr("<target-resource-group>"),
+				Artifacts: &armdeploymentmanager.ServiceUnitArtifacts{
+					ParametersURI: to.Ptr("https://mystorageaccount.blob.core.windows.net/myartifactsource/parameter/myTopologyUnit.parameters.json?st=2018-07-07T14%3A10%3A00Z&se=2019-12-31T15%3A10%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=Yh2SoJ1NhhLRwCLln7de%2Fkabcdefghijklmno5sWEIk%3D"),
+					TemplateURI:   to.Ptr("https://mystorageaccount.blob.core.windows.net/myartifactsource/templates/myTopologyUnit.template.json?st=2018-07-07T14%3A10%3A00Z&se=2019-12-31T15%3A10%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=Yh2SoJ1NhhLRwCLln7de%2Fkabcdefghijklmno5sWEIk%3D"),
 				},
+				DeploymentMode:      to.Ptr(armdeploymentmanager.DeploymentModeIncremental),
+				TargetResourceGroup: to.Ptr("myDeploymentResourceGroup"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
 	}
-	log.Printf("ServiceUnitResource.ID: %s\n", *res.ID)
 }
 ```

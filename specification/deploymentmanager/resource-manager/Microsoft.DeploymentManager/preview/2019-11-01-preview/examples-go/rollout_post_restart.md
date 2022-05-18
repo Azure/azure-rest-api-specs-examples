@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.1.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.4.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeploymentmanager_test
@@ -12,21 +12,25 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deploymentmanager/armdeploymentmanager"
 )
 
-// x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollout_post_restart.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollout_post_restart.json
 func ExampleRolloutsClient_Restart() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdeploymentmanager.NewRolloutsClient("<subscription-id>", cred, nil)
-	res, err := client.Restart(ctx,
-		"<resource-group-name>",
-		"<rollout-name>",
-		&armdeploymentmanager.RolloutsRestartOptions{SkipSucceeded: to.BoolPtr(true)})
+	client, err := armdeploymentmanager.NewRolloutsClient("caac1590-e859-444f-a9e0-62091c0f5929", cred, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to create client: %v", err)
 	}
-	log.Printf("Rollout.ID: %s\n", *res.ID)
+	res, err := client.Restart(ctx,
+		"myResourceGroup",
+		"myRollout",
+		&armdeploymentmanager.RolloutsClientRestartOptions{SkipSucceeded: to.Ptr(true)})
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// TODO: use response item
+	_ = res
 }
 ```

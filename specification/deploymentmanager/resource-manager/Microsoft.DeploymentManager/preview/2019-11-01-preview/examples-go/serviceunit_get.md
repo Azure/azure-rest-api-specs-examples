@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.1.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.4.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeploymentmanager_test
@@ -11,23 +11,27 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deploymentmanager/armdeploymentmanager"
 )
 
-// x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/serviceunit_get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/serviceunit_get.json
 func ExampleServiceUnitsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdeploymentmanager.NewServiceUnitsClient("<subscription-id>", cred, nil)
+	client, err := armdeploymentmanager.NewServiceUnitsClient("caac1590-e859-444f-a9e0-62091c0f5929", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	res, err := client.Get(ctx,
-		"<resource-group-name>",
-		"<service-topology-name>",
-		"<service-name>",
-		"<service-unit-name>",
+		"myResourceGroup",
+		"myTopology",
+		"myService",
+		"myServiceUnit",
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	log.Printf("ServiceUnitResource.ID: %s\n", *res.ID)
+	// TODO: use response item
+	_ = res
 }
 ```

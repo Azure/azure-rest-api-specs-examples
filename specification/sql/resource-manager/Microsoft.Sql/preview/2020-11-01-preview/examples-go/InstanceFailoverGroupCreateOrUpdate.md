@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.6.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -6,8 +6,6 @@ package armsql_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,28 +17,26 @@ func ExampleInstanceFailoverGroupsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsql.NewInstanceFailoverGroupsClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewInstanceFailoverGroupsClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<location-name>",
-		"<failover-group-name>",
+		"Default",
+		"Japan East",
+		"failover-group-test-3",
 		armsql.InstanceFailoverGroup{
 			Properties: &armsql.InstanceFailoverGroupProperties{
 				ManagedInstancePairs: []*armsql.ManagedInstancePairInfo{
 					{
-						PartnerManagedInstanceID: to.Ptr("<partner-managed-instance-id>"),
-						PrimaryManagedInstanceID: to.Ptr("<primary-managed-instance-id>"),
+						PartnerManagedInstanceID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/managedInstances/failover-group-secondary-mngdInstance"),
+						PrimaryManagedInstanceID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/managedInstances/failover-group-primary-mngdInstance"),
 					}},
 				PartnerRegions: []*armsql.PartnerRegionInfo{
 					{
-						Location: to.Ptr("<location>"),
+						Location: to.Ptr("Japan West"),
 					}},
 				ReadOnlyEndpoint: &armsql.InstanceFailoverGroupReadOnlyEndpoint{
 					FailoverPolicy: to.Ptr(armsql.ReadOnlyEndpointFailoverPolicyDisabled),
@@ -51,15 +47,13 @@ func ExampleInstanceFailoverGroupsClient_BeginCreateOrUpdate() {
 				},
 			},
 		},
-		&armsql.InstanceFailoverGroupsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

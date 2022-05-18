@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -16,24 +16,21 @@ func ExampleSourceControlSyncJobStreamsClient_NewListBySyncJobPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewSourceControlSyncJobStreamsClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewSourceControlSyncJobStreamsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListBySyncJobPager("<resource-group-name>",
-		"<automation-account-name>",
-		"<source-control-name>",
-		"<source-control-sync-job-id>",
+	pager := client.NewListBySyncJobPager("rg",
+		"myAutomationAccount33",
+		"MySourceControl",
+		"ce6fe3e3-9db3-4096-a6b4-82bfb4c10a2b",
 		&armautomation.SourceControlSyncJobStreamsClientListBySyncJobOptions{Filter: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

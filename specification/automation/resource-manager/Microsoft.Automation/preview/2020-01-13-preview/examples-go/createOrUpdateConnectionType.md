@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,34 +17,32 @@ func ExampleConnectionTypeClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewConnectionTypeClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewConnectionTypeClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<connection-type-name>",
+		"rg",
+		"myAutomationAccount22",
+		"myCT",
 		armautomation.ConnectionTypeCreateOrUpdateParameters{
-			Name: to.Ptr("<name>"),
+			Name: to.Ptr("myCT"),
 			Properties: &armautomation.ConnectionTypeCreateOrUpdateProperties{
 				FieldDefinitions: map[string]*armautomation.FieldDefinition{
 					"myBoolField": {
-						Type:        to.Ptr("<type>"),
+						Type:        to.Ptr("bool"),
 						IsEncrypted: to.Ptr(false),
 						IsOptional:  to.Ptr(false),
 					},
 					"myStringField": {
-						Type:        to.Ptr("<type>"),
+						Type:        to.Ptr("string"),
 						IsEncrypted: to.Ptr(false),
 						IsOptional:  to.Ptr(false),
 					},
 					"myStringFieldEncrypted": {
-						Type:        to.Ptr("<type>"),
+						Type:        to.Ptr("string"),
 						IsEncrypted: to.Ptr(true),
 						IsOptional:  to.Ptr(false),
 					},
@@ -55,7 +53,6 @@ func ExampleConnectionTypeClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

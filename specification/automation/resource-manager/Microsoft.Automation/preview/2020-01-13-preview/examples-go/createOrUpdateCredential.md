@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,30 +17,27 @@ func ExampleCredentialClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewCredentialClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewCredentialClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<credential-name>",
+		"rg",
+		"myAutomationAccount18",
+		"myCredential",
 		armautomation.CredentialCreateOrUpdateParameters{
-			Name: to.Ptr("<name>"),
+			Name: to.Ptr("myCredential"),
 			Properties: &armautomation.CredentialCreateOrUpdateProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("my description goes here"),
 				Password:    to.Ptr("<password>"),
-				UserName:    to.Ptr("<user-name>"),
+				UserName:    to.Ptr("mylingaiah"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

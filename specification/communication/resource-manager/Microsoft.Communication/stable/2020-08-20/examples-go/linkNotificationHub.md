@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcommunication%2Farmcommunication%2Fv0.4.0/sdk/resourcemanager/communication/armcommunication/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcommunication%2Farmcommunication%2Fv1.0.0/sdk/resourcemanager/communication/armcommunication/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcommunication_test
@@ -17,25 +17,22 @@ func ExampleServiceClient_LinkNotificationHub() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcommunication.NewServiceClient("<subscription-id>", cred, nil)
+	client, err := armcommunication.NewServiceClient("12345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.LinkNotificationHub(ctx,
-		"<resource-group-name>",
-		"<communication-service-name>",
+		"MyResourceGroup",
+		"MyCommunicationResource",
 		&armcommunication.ServiceClientLinkNotificationHubOptions{LinkNotificationHubParameters: &armcommunication.LinkNotificationHubParameters{
-			ConnectionString: to.Ptr("<connection-string>"),
-			ResourceID:       to.Ptr("<resource-id>"),
+			ConnectionString: to.Ptr("Endpoint=sb://MyNamespace.servicebus.windows.net/;SharedAccessKey=abcd1234"),
+			ResourceID:       to.Ptr("/subscriptions/12345/resourceGroups/MyOtherResourceGroup/providers/Microsoft.NotificationHubs/namespaces/MyNamespace/notificationHubs/MyHub"),
 		},
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

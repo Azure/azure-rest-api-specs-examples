@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.5.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv1.0.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventhub_test
@@ -17,18 +17,16 @@ func ExampleSchemaRegistryClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewSchemaRegistryClient("<subscription-id>", cred, nil)
+	client, err := armeventhub.NewSchemaRegistryClient("e8baea74-64ce-459b-bee3-5aa4c47b3ae3", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
-		"<schema-group-name>",
+		"alitest",
+		"ali-ua-test-eh-system-1",
+		"testSchemaGroup1",
 		armeventhub.SchemaGroup{
 			Properties: &armeventhub.SchemaGroupProperties{
 				GroupProperties:     map[string]*string{},
@@ -39,7 +37,6 @@ func ExampleSchemaRegistryClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv0.5.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventhub%2Farmeventhub%2Fv1.0.0/sdk/resourcemanager/eventhub/armeventhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventhub_test
@@ -17,58 +17,56 @@ func ExampleNamespacesClient_CreateOrUpdateNetworkRuleSet() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armeventhub.NewNamespacesClient("Subscription", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdateNetworkRuleSet(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
+		"ResourceGroup",
+		"sdk-Namespace-6019",
 		armeventhub.NetworkRuleSet{
 			Properties: &armeventhub.NetworkRuleSetProperties{
 				DefaultAction: to.Ptr(armeventhub.DefaultActionDeny),
 				IPRules: []*armeventhub.NWRuleSetIPRules{
 					{
 						Action: to.Ptr(armeventhub.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.1"),
 					},
 					{
 						Action: to.Ptr(armeventhub.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.2"),
 					},
 					{
 						Action: to.Ptr(armeventhub.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.3"),
 					},
 					{
 						Action: to.Ptr(armeventhub.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.4"),
 					},
 					{
 						Action: to.Ptr(armeventhub.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.5"),
 					}},
 				VirtualNetworkRules: []*armeventhub.NWRuleSetVirtualNetworkRules{
 					{
 						IgnoreMissingVnetServiceEndpoint: to.Ptr(true),
 						Subnet: &armeventhub.Subnet{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/subscriptionid/resourcegroups/resourcegroupid/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet2"),
 						},
 					},
 					{
 						IgnoreMissingVnetServiceEndpoint: to.Ptr(false),
 						Subnet: &armeventhub.Subnet{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/subscriptionid/resourcegroups/resourcegroupid/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet3"),
 						},
 					},
 					{
 						IgnoreMissingVnetServiceEndpoint: to.Ptr(false),
 						Subnet: &armeventhub.Subnet{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/subscriptionid/resourcegroups/resourcegroupid/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet6"),
 						},
 					}},
 			},
@@ -76,7 +74,6 @@ func ExampleNamespacesClient_CreateOrUpdateNetworkRuleSet() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

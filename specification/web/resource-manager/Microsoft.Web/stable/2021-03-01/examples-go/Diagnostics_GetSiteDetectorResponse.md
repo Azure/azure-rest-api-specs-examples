@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv0.4.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappservice%2Farmappservice%2Fv1.0.0/sdk/resourcemanager/appservice/armappservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armappservice_test
@@ -16,26 +16,23 @@ func ExampleDiagnosticsClient_GetSiteDetectorResponseSlot() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armappservice.NewDiagnosticsClient("<subscription-id>", cred, nil)
+	client, err := armappservice.NewDiagnosticsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetSiteDetectorResponseSlot(ctx,
-		"<resource-group-name>",
-		"<site-name>",
-		"<detector-name>",
-		"<slot>",
+		"Sample-WestUSResourceGroup",
+		"SampleApp",
+		"runtimeavailability",
+		"staging",
 		&armappservice.DiagnosticsClientGetSiteDetectorResponseSlotOptions{StartTime: nil,
 			EndTime:   nil,
 			TimeGrain: nil,
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

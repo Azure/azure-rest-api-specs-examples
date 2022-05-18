@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fauthorization%2Farmauthorization%2Fv0.5.0/sdk/resourcemanager/authorization/armauthorization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fauthorization%2Farmauthorization%2Fv0.6.0/sdk/resourcemanager/authorization/armauthorization/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armauthorization_test
@@ -16,21 +16,18 @@ func ExampleAccessReviewHistoryDefinitionClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armauthorization.NewAccessReviewHistoryDefinitionClient("<subscription-id>", cred, nil)
+	client, err := armauthorization.NewAccessReviewHistoryDefinitionClient("129a304b-4aea-4b86-a9f7-ba7e2b23737a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<history-definition-id>",
+		"44724910-d7a5-4c29-b28f-db73e717165a",
 		armauthorization.AccessReviewHistoryDefinitionProperties{},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

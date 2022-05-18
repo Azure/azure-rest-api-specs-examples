@@ -1,17 +1,9 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-recoveryservicesbackup_8.1.1/sdk/recoveryservicesbackup/arm-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-recoveryservicesbackup_8.2.0/sdk/recoveryservicesbackup/arm-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
 
 ```javascript
 const { RecoveryServicesBackupClient } = require("@azure/arm-recoveryservicesbackup");
 const { DefaultAzureCredential } = require("@azure/identity");
 
-/**
- * This sample demonstrates how to Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
- *
- * @summary Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
- * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-12-01/examples/AzureIaasVm/StopProtection.json
- */
 async function stopProtectionWithRetainDataOnAzureIaasVM() {
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const vaultName = "NetSDKTestRsVault";

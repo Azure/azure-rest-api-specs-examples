@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv0.7.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcompute%2Farmcompute%2Fv1.0.0/sdk/resourcemanager/compute/armcompute/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcompute_test
@@ -19,21 +19,19 @@ func ExampleGalleryApplicationVersionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewGalleryApplicationVersionsClient("<subscription-id>", cred, nil)
+	client, err := armcompute.NewGalleryApplicationVersionsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<gallery-name>",
-		"<gallery-application-name>",
-		"<gallery-application-version-name>",
+		"myResourceGroup",
+		"myGalleryName",
+		"myGalleryApplicationName",
+		"1.0.0",
 		armcompute.GalleryApplicationVersion{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Properties: &armcompute.GalleryApplicationVersionProperties{
 				PublishingProfile: &armcompute.GalleryApplicationVersionPublishingProfile{
 					EndOfLifeDate:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T07:00:00Z"); return t }()),
@@ -41,29 +39,27 @@ func ExampleGalleryApplicationVersionsClient_BeginCreateOrUpdate() {
 					StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
 					TargetRegions: []*armcompute.TargetRegion{
 						{
-							Name:                 to.Ptr("<name>"),
+							Name:                 to.Ptr("West US"),
 							RegionalReplicaCount: to.Ptr[int32](1),
 							StorageAccountType:   to.Ptr(armcompute.StorageAccountTypeStandardLRS),
 						}},
 					ManageActions: &armcompute.UserArtifactManage{
-						Install: to.Ptr("<install>"),
-						Remove:  to.Ptr("<remove>"),
+						Install: to.Ptr("powershell -command \"Expand-Archive -Path package.zip -DestinationPath C:\\package\""),
+						Remove:  to.Ptr("del C:\\package "),
 					},
 					Source: &armcompute.UserArtifactSource{
-						MediaLink: to.Ptr("<media-link>"),
+						MediaLink: to.Ptr("https://mystorageaccount.blob.core.windows.net/mycontainer/package.zip?{sasKey}"),
 					},
 				},
 			},
 		},
-		&armcompute.GalleryApplicationVersionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

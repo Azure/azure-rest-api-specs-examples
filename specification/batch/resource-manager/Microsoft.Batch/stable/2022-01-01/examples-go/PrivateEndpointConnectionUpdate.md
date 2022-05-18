@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbatch%2Farmbatch%2Fv0.4.0/sdk/resourcemanager/batch/armbatch/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbatch%2Farmbatch%2Fv1.0.0/sdk/resourcemanager/batch/armbatch/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armbatch_test
@@ -6,8 +6,6 @@ package armbatch_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,37 +17,31 @@ func ExamplePrivateEndpointConnectionClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armbatch.NewPrivateEndpointConnectionClient("<subscription-id>", cred, nil)
+	client, err := armbatch.NewPrivateEndpointConnectionClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<private-endpoint-connection-name>",
+		"default-azurebatch-japaneast",
+		"sampleacct",
+		"testprivateEndpointConnection5.24d6b4b5-e65c-4330-bbe9-3a290d62f8e0",
 		armbatch.PrivateEndpointConnection{
 			Properties: &armbatch.PrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armbatch.PrivateLinkServiceConnectionState{
-					Description: to.Ptr("<description>"),
+					Description: to.Ptr("Approved by xyz.abc@company.com"),
 					Status:      to.Ptr(armbatch.PrivateLinkServiceConnectionStatusApproved),
 				},
 			},
 		},
-		&armbatch.PrivateEndpointConnectionClientBeginUpdateOptions{IfMatch: nil,
-			ResumeToken: "",
-		})
+		&armbatch.PrivateEndpointConnectionClientBeginUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

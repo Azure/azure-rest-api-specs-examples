@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv0.4.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv1.0.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsupport_test
@@ -17,35 +17,32 @@ func ExampleTicketsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsupport.NewTicketsClient("<subscription-id>", cred, nil)
+	client, err := armsupport.NewTicketsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<support-ticket-name>",
+		"testticket",
 		armsupport.UpdateSupportTicket{
 			ContactDetails: &armsupport.UpdateContactProfile{
 				AdditionalEmailAddresses: []*string{
 					to.Ptr("tname@contoso.com"),
 					to.Ptr("teamtest@contoso.com")},
-				Country:                  to.Ptr("<country>"),
-				FirstName:                to.Ptr("<first-name>"),
-				LastName:                 to.Ptr("<last-name>"),
-				PhoneNumber:              to.Ptr("<phone-number>"),
+				Country:                  to.Ptr("USA"),
+				FirstName:                to.Ptr("first name"),
+				LastName:                 to.Ptr("last name"),
+				PhoneNumber:              to.Ptr("123-456-7890"),
 				PreferredContactMethod:   to.Ptr(armsupport.PreferredContactMethodEmail),
-				PreferredSupportLanguage: to.Ptr("<preferred-support-language>"),
-				PreferredTimeZone:        to.Ptr("<preferred-time-zone>"),
-				PrimaryEmailAddress:      to.Ptr("<primary-email-address>"),
+				PreferredSupportLanguage: to.Ptr("en-US"),
+				PreferredTimeZone:        to.Ptr("Pacific Standard Time"),
+				PrimaryEmailAddress:      to.Ptr("test.name@contoso.com"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv0.4.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv1.0.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsupport_test
@@ -6,8 +6,6 @@ package armsupport_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,43 +17,39 @@ func ExampleTicketsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsupport.NewTicketsClient("<subscription-id>", cred, nil)
+	client, err := armsupport.NewTicketsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<support-ticket-name>",
+		"testticket",
 		armsupport.TicketDetails{
 			Properties: &armsupport.TicketDetailsProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("my description"),
 				ContactDetails: &armsupport.ContactProfile{
-					Country:                  to.Ptr("<country>"),
-					FirstName:                to.Ptr("<first-name>"),
-					LastName:                 to.Ptr("<last-name>"),
+					Country:                  to.Ptr("usa"),
+					FirstName:                to.Ptr("abc"),
+					LastName:                 to.Ptr("xyz"),
 					PreferredContactMethod:   to.Ptr(armsupport.PreferredContactMethodEmail),
-					PreferredSupportLanguage: to.Ptr("<preferred-support-language>"),
-					PreferredTimeZone:        to.Ptr("<preferred-time-zone>"),
-					PrimaryEmailAddress:      to.Ptr("<primary-email-address>"),
+					PreferredSupportLanguage: to.Ptr("en-US"),
+					PreferredTimeZone:        to.Ptr("Pacific Standard Time"),
+					PrimaryEmailAddress:      to.Ptr("abc@contoso.com"),
 				},
-				ProblemClassificationID: to.Ptr("<problem-classification-id>"),
-				ServiceID:               to.Ptr("<service-id>"),
+				ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid/problemClassifications/billing_problemClassification_guid"),
+				ServiceID:               to.Ptr("/providers/Microsoft.Support/services/billing_service_guid"),
 				Severity:                to.Ptr(armsupport.SeverityLevelModerate),
-				Title:                   to.Ptr("<title>"),
+				Title:                   to.Ptr("my title"),
 			},
 		},
-		&armsupport.TicketsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

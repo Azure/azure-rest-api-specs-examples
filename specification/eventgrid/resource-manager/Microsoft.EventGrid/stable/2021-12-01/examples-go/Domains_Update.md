@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventgrid%2Farmeventgrid%2Fv0.3.1/sdk/resourcemanager/eventgrid/armeventgrid/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventgrid%2Farmeventgrid%2Fv1.0.0/sdk/resourcemanager/eventgrid/armeventgrid/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventgrid_test
@@ -7,49 +7,50 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid"
 )
 
-// x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/examples/Domains_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/examples/Domains_Update.json
 func ExampleDomainsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armeventgrid.NewDomainsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewDomainsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<domain-name>",
+		"examplerg",
+		"exampledomain1",
 		armeventgrid.DomainUpdateParameters{
 			Properties: &armeventgrid.DomainUpdateParameterProperties{
 				InboundIPRules: []*armeventgrid.InboundIPRule{
 					{
-						Action: armeventgrid.IPActionType("Allow").ToPtr(),
-						IPMask: to.StringPtr("<ipmask>"),
+						Action: to.Ptr(armeventgrid.IPActionTypeAllow),
+						IPMask: to.Ptr("12.18.30.15"),
 					},
 					{
-						Action: armeventgrid.IPActionType("Allow").ToPtr(),
-						IPMask: to.StringPtr("<ipmask>"),
+						Action: to.Ptr(armeventgrid.IPActionTypeAllow),
+						IPMask: to.Ptr("12.18.176.1"),
 					}},
-				PublicNetworkAccess: armeventgrid.PublicNetworkAccess("Enabled").ToPtr(),
+				PublicNetworkAccess: to.Ptr(armeventgrid.PublicNetworkAccessEnabled),
 			},
 			Tags: map[string]*string{
-				"tag1": to.StringPtr("value1"),
-				"tag2": to.StringPtr("value2"),
+				"tag1": to.Ptr("value1"),
+				"tag2": to.Ptr("value2"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 }
 ```

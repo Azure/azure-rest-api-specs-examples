@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventgrid%2Farmeventgrid%2Fv0.3.1/sdk/resourcemanager/eventgrid/armeventgrid/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventgrid%2Farmeventgrid%2Fv1.0.0/sdk/resourcemanager/eventgrid/armeventgrid/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventgrid_test
@@ -7,53 +7,54 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid"
 )
 
-// x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/examples/EventSubscriptions_CreateOrUpdateForCustomTopic_EventHubDestination.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/examples/EventSubscriptions_CreateOrUpdateForCustomTopic_EventHubDestination.json
 func ExampleEventSubscriptionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armeventgrid.NewEventSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewEventSubscriptionsClient("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<scope>",
-		"<event-subscription-name>",
+		"subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1",
+		"examplesubscription1",
 		armeventgrid.EventSubscription{
 			Properties: &armeventgrid.EventSubscriptionProperties{
 				DeadLetterDestination: &armeventgrid.StorageBlobDeadLetterDestination{
-					EndpointType: armeventgrid.DeadLetterEndPointType("StorageBlob").ToPtr(),
+					EndpointType: to.Ptr(armeventgrid.DeadLetterEndPointTypeStorageBlob),
 					Properties: &armeventgrid.StorageBlobDeadLetterDestinationProperties{
-						BlobContainerName: to.StringPtr("<blob-container-name>"),
-						ResourceID:        to.StringPtr("<resource-id>"),
+						BlobContainerName: to.Ptr("contosocontainer"),
+						ResourceID:        to.Ptr("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"),
 					},
 				},
 				Destination: &armeventgrid.EventHubEventSubscriptionDestination{
-					EndpointType: armeventgrid.EndpointType("EventHub").ToPtr(),
+					EndpointType: to.Ptr(armeventgrid.EndpointTypeEventHub),
 					Properties: &armeventgrid.EventHubEventSubscriptionDestinationProperties{
-						ResourceID: to.StringPtr("<resource-id>"),
+						ResourceID: to.Ptr("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"),
 					},
 				},
 				Filter: &armeventgrid.EventSubscriptionFilter{
-					IsSubjectCaseSensitive: to.BoolPtr(false),
-					SubjectBeginsWith:      to.StringPtr("<subject-begins-with>"),
-					SubjectEndsWith:        to.StringPtr("<subject-ends-with>"),
+					IsSubjectCaseSensitive: to.Ptr(false),
+					SubjectBeginsWith:      to.Ptr("ExamplePrefix"),
+					SubjectEndsWith:        to.Ptr("ExampleSuffix"),
 				},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 }
 ```

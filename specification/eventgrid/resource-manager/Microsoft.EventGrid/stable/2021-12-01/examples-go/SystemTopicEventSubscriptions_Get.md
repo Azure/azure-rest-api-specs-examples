@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventgrid%2Farmeventgrid%2Fv0.3.1/sdk/resourcemanager/eventgrid/armeventgrid/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feventgrid%2Farmeventgrid%2Fv1.0.0/sdk/resourcemanager/eventgrid/armeventgrid/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armeventgrid_test
@@ -11,22 +11,26 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid"
 )
 
-// x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/examples/SystemTopicEventSubscriptions_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2021-12-01/examples/SystemTopicEventSubscriptions_Get.json
 func ExampleSystemTopicEventSubscriptionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armeventgrid.NewSystemTopicEventSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewSystemTopicEventSubscriptionsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	res, err := client.Get(ctx,
-		"<resource-group-name>",
-		"<system-topic-name>",
-		"<event-subscription-name>",
+		"examplerg",
+		"exampleSystemTopic1",
+		"examplesubscription1",
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	log.Printf("Response result: %#v\n", res.SystemTopicEventSubscriptionsClientGetResult)
+	// TODO: use response item
+	_ = res
 }
 ```

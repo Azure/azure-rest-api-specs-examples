@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.4.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.5.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtestbase_test
@@ -6,8 +6,6 @@ package armtestbase_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,26 +17,24 @@ func ExamplePackagesClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armtestbase.NewPackagesClient("<subscription-id>", cred, nil)
+	client, err := armtestbase.NewPackagesClient("476f61a4-952c-422a-b4db-568a828f35df", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<test-base-account-name>",
-		"<package-name>",
+		"contoso-rg1",
+		"contoso-testBaseAccount1",
+		"contoso-package2",
 		armtestbase.PackageUpdateParameters{
 			Properties: &armtestbase.PackageUpdateParameterProperties{
-				BlobPath:      to.Ptr("<blob-path>"),
-				FlightingRing: to.Ptr("<flighting-ring>"),
+				BlobPath:      to.Ptr("storageAccountPath/package.zip"),
+				FlightingRing: to.Ptr("Insider Beta Channel"),
 				IsEnabled:     to.Ptr(false),
 				TargetOSList: []*armtestbase.TargetOSInfo{
 					{
-						OSUpdateType: to.Ptr("<osupdate-type>"),
+						OSUpdateType: to.Ptr("Security updates"),
 						TargetOSs: []*string{
 							to.Ptr("Windows 10 2004"),
 							to.Ptr("Windows 10 1903")},
@@ -49,11 +45,11 @@ func ExamplePackagesClient_BeginUpdate() {
 						TestType: to.Ptr(armtestbase.TestTypeOutOfBoxTest),
 						Commands: []*armtestbase.Command{
 							{
-								Name:              to.Ptr("<name>"),
+								Name:              to.Ptr("Install"),
 								Action:            to.Ptr(armtestbase.ActionInstall),
 								AlwaysRun:         to.Ptr(true),
 								ApplyUpdateBefore: to.Ptr(false),
-								Content:           to.Ptr("<content>"),
+								Content:           to.Ptr("app/scripts/install/job.ps1"),
 								ContentType:       to.Ptr(armtestbase.ContentTypePath),
 								MaxRunTime:        to.Ptr[int32](1800),
 								RestartAfter:      to.Ptr(true),
@@ -61,11 +57,11 @@ func ExamplePackagesClient_BeginUpdate() {
 								RunElevated:       to.Ptr(true),
 							},
 							{
-								Name:              to.Ptr("<name>"),
+								Name:              to.Ptr("Launch"),
 								Action:            to.Ptr(armtestbase.ActionLaunch),
 								AlwaysRun:         to.Ptr(false),
 								ApplyUpdateBefore: to.Ptr(true),
-								Content:           to.Ptr("<content>"),
+								Content:           to.Ptr("app/scripts/launch/job.ps1"),
 								ContentType:       to.Ptr(armtestbase.ContentTypePath),
 								MaxRunTime:        to.Ptr[int32](1800),
 								RestartAfter:      to.Ptr(false),
@@ -73,11 +69,11 @@ func ExamplePackagesClient_BeginUpdate() {
 								RunElevated:       to.Ptr(true),
 							},
 							{
-								Name:              to.Ptr("<name>"),
+								Name:              to.Ptr("Close"),
 								Action:            to.Ptr(armtestbase.ActionClose),
 								AlwaysRun:         to.Ptr(false),
 								ApplyUpdateBefore: to.Ptr(false),
-								Content:           to.Ptr("<content>"),
+								Content:           to.Ptr("app/scripts/close/job.ps1"),
 								ContentType:       to.Ptr(armtestbase.ContentTypePath),
 								MaxRunTime:        to.Ptr[int32](1800),
 								RestartAfter:      to.Ptr(false),
@@ -85,11 +81,11 @@ func ExamplePackagesClient_BeginUpdate() {
 								RunElevated:       to.Ptr(true),
 							},
 							{
-								Name:              to.Ptr("<name>"),
+								Name:              to.Ptr("Uninstall"),
 								Action:            to.Ptr(armtestbase.ActionUninstall),
 								AlwaysRun:         to.Ptr(true),
 								ApplyUpdateBefore: to.Ptr(false),
-								Content:           to.Ptr("<content>"),
+								Content:           to.Ptr("app/scripts/uninstall/job.ps1"),
 								ContentType:       to.Ptr(armtestbase.ContentTypePath),
 								MaxRunTime:        to.Ptr[int32](1800),
 								RestartAfter:      to.Ptr(false),
@@ -100,15 +96,13 @@ func ExamplePackagesClient_BeginUpdate() {
 			},
 			Tags: map[string]*string{},
 		},
-		&armtestbase.PackagesClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

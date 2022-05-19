@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fextendedlocation%2Farmextendedlocation%2Fv0.4.0/sdk/resourcemanager/extendedlocation/armextendedlocation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fextendedlocation%2Farmextendedlocation%2Fv1.0.0/sdk/resourcemanager/extendedlocation/armextendedlocation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armextendedlocation_test
@@ -6,8 +6,6 @@ package armextendedlocation_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,43 +17,39 @@ func ExampleCustomLocationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armextendedlocation.NewCustomLocationsClient("<subscription-id>", cred, nil)
+	client, err := armextendedlocation.NewCustomLocationsClient("11111111-2222-3333-4444-555555555555", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
+		"testresourcegroup",
+		"customLocation01",
 		armextendedlocation.CustomLocation{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Identity: &armextendedlocation.Identity{
 				Type: to.Ptr(armextendedlocation.ResourceIdentityTypeSystemAssigned),
 			},
 			Properties: &armextendedlocation.CustomLocationProperties{
 				Authentication: &armextendedlocation.CustomLocationPropertiesAuthentication{
-					Type:  to.Ptr("<type>"),
-					Value: to.Ptr("<value>"),
+					Type:  to.Ptr("KubeConfig"),
+					Value: to.Ptr("<base64 KubeConfig>"),
 				},
 				ClusterExtensionIDs: []*string{
 					to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension")},
-				DisplayName:    to.Ptr("<display-name>"),
-				HostResourceID: to.Ptr("<host-resource-id>"),
-				Namespace:      to.Ptr("<namespace>"),
+				DisplayName:    to.Ptr("customLocationLocation01"),
+				HostResourceID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01"),
+				Namespace:      to.Ptr("namespace01"),
 			},
 		},
-		&armextendedlocation.CustomLocationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

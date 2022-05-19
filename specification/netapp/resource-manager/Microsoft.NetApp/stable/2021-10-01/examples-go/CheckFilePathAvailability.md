@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.4.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv1.0.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -17,24 +17,21 @@ func ExampleResourceClient_CheckFilePathAvailability() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armnetapp.NewResourceClient("<subscription-id>", cred, nil)
+	client, err := armnetapp.NewResourceClient("D633CC2E-722B-4AE1-B636-BBD9E4C60ED9", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CheckFilePathAvailability(ctx,
-		"<location>",
+		"eastus",
 		armnetapp.FilePathAvailabilityRequest{
-			Name:     to.Ptr("<name>"),
-			SubnetID: to.Ptr("<subnet-id>"),
+			Name:     to.Ptr("my-exact-filepth"),
+			SubnetID: to.Ptr("/subscriptions/9760acf5-4638-11e7-9bdb-020073ca7778/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"),
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

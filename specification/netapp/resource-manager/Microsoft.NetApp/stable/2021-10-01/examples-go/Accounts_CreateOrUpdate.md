@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.4.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv1.0.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -6,8 +6,6 @@ package armnetapp_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,44 +17,40 @@ func ExampleAccountsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armnetapp.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armnetapp.NewAccountsClient("D633CC2E-722B-4AE1-B636-BBD9E4C60ED9", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"myRG",
+		"account1",
 		armnetapp.Account{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Properties: &armnetapp.AccountProperties{
 				ActiveDirectories: []*armnetapp.ActiveDirectory{
 					{
 						AesEncryption:      to.Ptr(true),
-						DNS:                to.Ptr("<dns>"),
-						Domain:             to.Ptr("<domain>"),
+						DNS:                to.Ptr("10.10.10.3, 10.10.10.4"),
+						Domain:             to.Ptr("10.10.10.3"),
 						LdapOverTLS:        to.Ptr(false),
 						LdapSigning:        to.Ptr(false),
-						OrganizationalUnit: to.Ptr("<organizational-unit>"),
-						Password:           to.Ptr("<password>"),
-						Site:               to.Ptr("<site>"),
-						SmbServerName:      to.Ptr("<smb-server-name>"),
-						Username:           to.Ptr("<username>"),
+						OrganizationalUnit: to.Ptr("OU=Engineering"),
+						Password:           to.Ptr("ad_password"),
+						Site:               to.Ptr("SiteName"),
+						SmbServerName:      to.Ptr("SMBServer"),
+						Username:           to.Ptr("ad_user_name"),
 					}},
 			},
 		},
-		&armnetapp.AccountsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

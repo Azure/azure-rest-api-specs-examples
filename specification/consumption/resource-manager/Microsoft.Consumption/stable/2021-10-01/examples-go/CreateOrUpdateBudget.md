@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconsumption%2Farmconsumption%2Fv0.5.0/sdk/resourcemanager/consumption/armconsumption/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconsumption%2Farmconsumption%2Fv1.0.0/sdk/resourcemanager/consumption/armconsumption/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconsumption_test
@@ -19,19 +19,17 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armconsumption.NewBudgetsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<scope>",
-		"<budget-name>",
+		"subscriptions/00000000-0000-0000-0000-000000000000",
+		"TestBudget",
 		armconsumption.Budget{
-			ETag: to.Ptr("<etag>"),
+			ETag: to.Ptr("\"1d34d016a593709\""),
 			Properties: &armconsumption.BudgetProperties{
 				Amount:   to.Ptr[float64](100.65),
 				Category: to.Ptr(armconsumption.CategoryTypeCost),
@@ -39,7 +37,7 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 					And: []*armconsumption.BudgetFilterProperties{
 						{
 							Dimensions: &armconsumption.BudgetComparisonExpression{
-								Name:     to.Ptr("<name>"),
+								Name:     to.Ptr("ResourceId"),
 								Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
 								Values: []*string{
 									to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Compute/virtualMachines/MSVM2"),
@@ -48,7 +46,7 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 						},
 						{
 							Tags: &armconsumption.BudgetComparisonExpression{
-								Name:     to.Ptr("<name>"),
+								Name:     to.Ptr("category"),
 								Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
 								Values: []*string{
 									to.Ptr("Dev"),
@@ -57,7 +55,7 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 						},
 						{
 							Tags: &armconsumption.BudgetComparisonExpression{
-								Name:     to.Ptr("<name>"),
+								Name:     to.Ptr("department"),
 								Operator: to.Ptr(armconsumption.BudgetOperatorTypeIn),
 								Values: []*string{
 									to.Ptr("engineering"),
@@ -92,7 +90,6 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

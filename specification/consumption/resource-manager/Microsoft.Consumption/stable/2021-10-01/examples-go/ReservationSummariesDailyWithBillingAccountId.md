@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconsumption%2Farmconsumption%2Fv0.5.0/sdk/resourcemanager/consumption/armconsumption/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconsumption%2Farmconsumption%2Fv1.0.0/sdk/resourcemanager/consumption/armconsumption/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconsumption_test
@@ -17,19 +17,17 @@ func ExampleReservationsSummariesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armconsumption.NewReservationsSummariesClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<scope>",
+	pager := client.NewListPager("providers/Microsoft.Billing/billingAccounts/12345",
 		armconsumption.DatagrainDailyGrain,
 		&armconsumption.ReservationsSummariesClientListOptions{StartDate: nil,
 			EndDate:            nil,
-			Filter:             to.Ptr("<filter>"),
+			Filter:             to.Ptr("properties/usageDate ge 2017-10-01 AND properties/usageDate le 2017-11-20"),
 			ReservationID:      nil,
 			ReservationOrderID: nil,
 		})
@@ -37,7 +35,6 @@ func ExampleReservationsSummariesClient_NewListPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

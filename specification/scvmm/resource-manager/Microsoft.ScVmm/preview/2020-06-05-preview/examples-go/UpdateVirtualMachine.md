@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fscvmm%2Farmscvmm%2Fv0.1.0/sdk/resourcemanager/scvmm/armscvmm/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fscvmm%2Farmscvmm%2Fv0.2.0/sdk/resourcemanager/scvmm/armscvmm/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armscvmm_test
@@ -6,8 +6,6 @@ package armscvmm_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -21,13 +19,13 @@ func ExampleVirtualMachinesClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armscvmm.NewVirtualMachinesClient("<subscription-id>", cred, nil)
+	client, err := armscvmm.NewVirtualMachinesClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<virtual-machine-name>",
+		"testrg",
+		"DemoVM",
 		armscvmm.VirtualMachineUpdate{
 			Properties: &armscvmm.VirtualMachineUpdateProperties{
 				HardwareProfile: &armscvmm.HardwareProfileUpdate{
@@ -37,7 +35,7 @@ func ExampleVirtualMachinesClient_BeginUpdate() {
 				NetworkProfile: &armscvmm.NetworkProfileUpdate{
 					NetworkInterfaces: []*armscvmm.NetworkInterfacesUpdate{
 						{
-							Name:            to.Ptr("<name>"),
+							Name:            to.Ptr("test"),
 							IPv4AddressType: to.Ptr(armscvmm.AllocationMethodDynamic),
 							IPv6AddressType: to.Ptr(armscvmm.AllocationMethodDynamic),
 							MacAddressType:  to.Ptr(armscvmm.AllocationMethodStatic),
@@ -46,7 +44,7 @@ func ExampleVirtualMachinesClient_BeginUpdate() {
 				StorageProfile: &armscvmm.StorageProfileUpdate{
 					Disks: []*armscvmm.VirtualDiskUpdate{
 						{
-							Name:       to.Ptr("<name>"),
+							Name:       to.Ptr("test"),
 							DiskSizeGB: to.Ptr[int32](10),
 						}},
 				},
@@ -56,11 +54,11 @@ func ExampleVirtualMachinesClient_BeginUpdate() {
 				"tag2": to.Ptr("value2"),
 			},
 		},
-		&armscvmm.VirtualMachinesClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}

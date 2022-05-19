@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.2.1/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv1.0.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridnetwork_test
@@ -7,112 +7,114 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridnetwork/armhybridnetwork"
 )
 
-// x-ms-original-file: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/examples/VendorSkuCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/examples/VendorSkuCreate.json
 func ExampleVendorSKUsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armhybridnetwork.NewVendorSKUsClient("<subscription-id>", cred, nil)
+	client, err := armhybridnetwork.NewVendorSKUsClient("subid", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<vendor-name>",
-		"<sku-name>",
+		"TestVendor",
+		"TestSku",
 		armhybridnetwork.VendorSKU{
 			Properties: &armhybridnetwork.VendorSKUPropertiesFormat{
-				DeploymentMode:             armhybridnetwork.SKUDeploymentMode("PrivateEdgeZone").ToPtr(),
+				DeploymentMode:             to.Ptr(armhybridnetwork.SKUDeploymentModePrivateEdgeZone),
 				ManagedApplicationTemplate: map[string]interface{}{},
 				NetworkFunctionTemplate: &armhybridnetwork.NetworkFunctionTemplate{
 					NetworkFunctionRoleConfigurations: []*armhybridnetwork.NetworkFunctionRoleConfiguration{
 						{
 							CustomProfile: &armhybridnetwork.CustomProfile{
-								MetadataConfigurationPath: to.StringPtr("<metadata-configuration-path>"),
+								MetadataConfigurationPath: to.Ptr("/var/logs/network.cfg"),
 							},
 							NetworkInterfaces: []*armhybridnetwork.NetworkInterface{
 								{
 									IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 										{
-											Gateway:            to.StringPtr("<gateway>"),
-											IPAddress:          to.StringPtr("<ipaddress>"),
-											IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
-											IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
-											Subnet:             to.StringPtr("<subnet>"),
+											Gateway:            to.Ptr(""),
+											IPAddress:          to.Ptr(""),
+											IPAllocationMethod: to.Ptr(armhybridnetwork.IPAllocationMethodDynamic),
+											IPVersion:          to.Ptr(armhybridnetwork.IPVersionIPv4),
+											Subnet:             to.Ptr(""),
 										}},
-									MacAddress:           to.StringPtr("<mac-address>"),
-									NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-									VMSwitchType:         armhybridnetwork.VMSwitchType("Wan").ToPtr(),
+									MacAddress:           to.Ptr(""),
+									NetworkInterfaceName: to.Ptr("nic1"),
+									VMSwitchType:         to.Ptr(armhybridnetwork.VMSwitchTypeWan),
 								},
 								{
 									IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 										{
-											Gateway:            to.StringPtr("<gateway>"),
-											IPAddress:          to.StringPtr("<ipaddress>"),
-											IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
-											IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
-											Subnet:             to.StringPtr("<subnet>"),
+											Gateway:            to.Ptr(""),
+											IPAddress:          to.Ptr(""),
+											IPAllocationMethod: to.Ptr(armhybridnetwork.IPAllocationMethodDynamic),
+											IPVersion:          to.Ptr(armhybridnetwork.IPVersionIPv4),
+											Subnet:             to.Ptr(""),
 										}},
-									MacAddress:           to.StringPtr("<mac-address>"),
-									NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-									VMSwitchType:         armhybridnetwork.VMSwitchType("Management").ToPtr(),
+									MacAddress:           to.Ptr(""),
+									NetworkInterfaceName: to.Ptr("nic2"),
+									VMSwitchType:         to.Ptr(armhybridnetwork.VMSwitchTypeManagement),
 								}},
 							OSProfile: &armhybridnetwork.OsProfile{
-								AdminUsername: to.StringPtr("<admin-username>"),
-								CustomData:    to.StringPtr("<custom-data>"),
+								AdminUsername: to.Ptr("dummyuser"),
+								CustomData:    to.Ptr("base-64 encoded string of custom data"),
 								LinuxConfiguration: &armhybridnetwork.LinuxConfiguration{
 									SSH: &armhybridnetwork.SSHConfiguration{
 										PublicKeys: []*armhybridnetwork.SSHPublicKey{
 											{
-												Path:    to.StringPtr("<path>"),
-												KeyData: to.StringPtr("<key-data>"),
+												Path:    to.Ptr("home/user/.ssh/authorized_keys"),
+												KeyData: to.Ptr("ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAwrr66r8n6B8Y0zMF3dOpXEapIQD9DiYQ6D6/zwor9o39jSkHNiMMER/GETBbzP83LOcekm02aRjo55ArO7gPPVvCXbrirJu9pkm4AC4BBre5xSLS= user@constoso-DSH"),
 											}},
 									},
 								},
 							},
-							RoleName: to.StringPtr("<role-name>"),
-							RoleType: armhybridnetwork.NetworkFunctionRoleConfigurationType("VirtualMachine").ToPtr(),
+							RoleName: to.Ptr("test"),
+							RoleType: to.Ptr(armhybridnetwork.NetworkFunctionRoleConfigurationTypeVirtualMachine),
 							StorageProfile: &armhybridnetwork.StorageProfile{
 								DataDisks: []*armhybridnetwork.DataDisk{
 									{
-										Name:         to.StringPtr("<name>"),
-										CreateOption: armhybridnetwork.DiskCreateOptionTypes("Empty").ToPtr(),
-										DiskSizeGB:   to.Int32Ptr(10),
+										Name:         to.Ptr("DataDisk1"),
+										CreateOption: to.Ptr(armhybridnetwork.DiskCreateOptionTypesEmpty),
+										DiskSizeGB:   to.Ptr[int32](10),
 									}},
 								ImageReference: &armhybridnetwork.ImageReference{
-									Offer:     to.StringPtr("<offer>"),
-									Publisher: to.StringPtr("<publisher>"),
-									SKU:       to.StringPtr("<sku>"),
-									Version:   to.StringPtr("<version>"),
+									Offer:     to.Ptr("UbuntuServer"),
+									Publisher: to.Ptr("Canonical"),
+									SKU:       to.Ptr("18.04-LTS"),
+									Version:   to.Ptr("18.04.201804262"),
 								},
 								OSDisk: &armhybridnetwork.OsDisk{
-									Name:       to.StringPtr("<name>"),
-									DiskSizeGB: to.Int32Ptr(30),
-									OSType:     armhybridnetwork.OperatingSystemTypes("Linux").ToPtr(),
+									Name:       to.Ptr("vhdName"),
+									DiskSizeGB: to.Ptr[int32](30),
+									OSType:     to.Ptr(armhybridnetwork.OperatingSystemTypesLinux),
 									Vhd: &armhybridnetwork.VirtualHardDisk{
-										URI: to.StringPtr("<uri>"),
+										URI: to.Ptr("https://contoso.net/link/vnd.vhd?sp=rl&st=2020-10-08T20:38:19Z&se=2020-12-09T19:38:00Z&sv=2019-12-12&sr=b&sig=7BM2f4yOw%3D"),
 									},
 								},
 							},
-							VirtualMachineSize: armhybridnetwork.VirtualMachineSizeTypes("Standard_D3_v2").ToPtr(),
+							VirtualMachineSize: to.Ptr(armhybridnetwork.VirtualMachineSizeTypesStandardD3V2),
 						}},
 				},
-				Preview: to.BoolPtr(true),
+				Preview: to.Ptr(true),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
 	}
-	log.Printf("Response result: %#v\n", res.VendorSKUsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.5.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.6.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -17,38 +17,36 @@ func ExampleDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armpolicy.NewDefinitionsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.CreateOrUpdateAtManagementGroup(ctx,
-		"<policy-definition-name>",
-		"<management-group-id>",
+		"ResourceNaming",
+		"MyManagementGroup",
 		armpolicy.Definition{
 			Properties: &armpolicy.DefinitionProperties{
-				Description: to.Ptr("<description>"),
-				DisplayName: to.Ptr("<display-name>"),
+				Description: to.Ptr("Force resource names to begin with given 'prefix' and/or end with given 'suffix'"),
+				DisplayName: to.Ptr("Enforce resource naming convention"),
 				Metadata: map[string]interface{}{
 					"category": "Naming",
 				},
-				Mode: to.Ptr("<mode>"),
+				Mode: to.Ptr("All"),
 				Parameters: map[string]*armpolicy.ParameterDefinitionsValue{
 					"prefix": {
 						Type: to.Ptr(armpolicy.ParameterTypeString),
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
-							Description: to.Ptr("<description>"),
-							DisplayName: to.Ptr("<display-name>"),
+							Description: to.Ptr("Resource name prefix"),
+							DisplayName: to.Ptr("Prefix"),
 						},
 					},
 					"suffix": {
 						Type: to.Ptr(armpolicy.ParameterTypeString),
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
-							Description: to.Ptr("<description>"),
-							DisplayName: to.Ptr("<display-name>"),
+							Description: to.Ptr("Resource name suffix"),
+							DisplayName: to.Ptr("Suffix"),
 						},
 					},
 				},
@@ -68,7 +66,6 @@ func ExampleDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

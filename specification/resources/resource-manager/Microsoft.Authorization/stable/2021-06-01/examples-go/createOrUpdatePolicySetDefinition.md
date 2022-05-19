@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.5.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.6.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -17,20 +17,18 @@ func ExampleSetDefinitionsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpolicy.NewSetDefinitionsClient("<subscription-id>", cred, nil)
+	client, err := armpolicy.NewSetDefinitionsClient("ae640e6b-ba3e-4256-9d62-2993eecfa6f2", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<policy-set-definition-name>",
+		"CostManagement",
 		armpolicy.SetDefinition{
 			Properties: &armpolicy.SetDefinitionProperties{
-				Description: to.Ptr("<description>"),
-				DisplayName: to.Ptr("<display-name>"),
+				Description: to.Ptr("Policies to enforce low cost storage SKUs"),
+				DisplayName: to.Ptr("Cost Management"),
 				Metadata: map[string]interface{}{
 					"category": "Cost Management",
 				},
@@ -39,7 +37,7 @@ func ExampleSetDefinitionsClient_CreateOrUpdate() {
 						Type:         to.Ptr(armpolicy.ParameterTypeString),
 						DefaultValue: "myPrefix",
 						Metadata: &armpolicy.ParameterDefinitionsValueMetadata{
-							DisplayName: to.Ptr("<display-name>"),
+							DisplayName: to.Ptr("Prefix to enforce on resource names"),
 						},
 					},
 				},
@@ -53,8 +51,8 @@ func ExampleSetDefinitionsClient_CreateOrUpdate() {
 								},
 							},
 						},
-						PolicyDefinitionID:          to.Ptr("<policy-definition-id>"),
-						PolicyDefinitionReferenceID: to.Ptr("<policy-definition-reference-id>"),
+						PolicyDefinitionID:          to.Ptr("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1"),
+						PolicyDefinitionReferenceID: to.Ptr("Limit_Skus"),
 					},
 					{
 						Parameters: map[string]*armpolicy.ParameterValuesValue{
@@ -65,15 +63,14 @@ func ExampleSetDefinitionsClient_CreateOrUpdate() {
 								Value: "-LC",
 							},
 						},
-						PolicyDefinitionID:          to.Ptr("<policy-definition-id>"),
-						PolicyDefinitionReferenceID: to.Ptr("<policy-definition-reference-id>"),
+						PolicyDefinitionID:          to.Ptr("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"),
+						PolicyDefinitionReferenceID: to.Ptr("Resource_Naming"),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

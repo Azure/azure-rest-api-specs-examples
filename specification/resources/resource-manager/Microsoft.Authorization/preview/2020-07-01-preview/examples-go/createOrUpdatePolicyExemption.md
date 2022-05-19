@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.5.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.6.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -17,26 +17,24 @@ func ExampleExemptionsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armpolicy.NewExemptionsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<scope>",
-		"<policy-exemption-name>",
+		"subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/demoCluster",
+		"DemoExpensiveVM",
 		armpolicy.Exemption{
 			Properties: &armpolicy.ExemptionProperties{
-				Description:       to.Ptr("<description>"),
-				DisplayName:       to.Ptr("<display-name>"),
+				Description:       to.Ptr("Exempt demo cluster from limit sku"),
+				DisplayName:       to.Ptr("Exempt demo cluster"),
 				ExemptionCategory: to.Ptr(armpolicy.ExemptionCategoryWaiver),
 				Metadata: map[string]interface{}{
 					"reason": "Temporary exemption for a expensive VM demo",
 				},
-				PolicyAssignmentID: to.Ptr("<policy-assignment-id>"),
+				PolicyAssignmentID: to.Ptr("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyAssignments/CostManagement"),
 				PolicyDefinitionReferenceIDs: []*string{
 					to.Ptr("Limit_Skus")},
 			},
@@ -44,7 +42,6 @@ func ExampleExemptionsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.4.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fazurearcdata%2Farmazurearcdata%2Fv0.5.0/sdk/resourcemanager/azurearcdata/armazurearcdata/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armazurearcdata_test
@@ -6,8 +6,6 @@ package armazurearcdata_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,30 +17,28 @@ func ExamplePostgresInstancesClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armazurearcdata.NewPostgresInstancesClient("<subscription-id>", cred, nil)
+	client, err := armazurearcdata.NewPostgresInstancesClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<postgres-instance-name>",
+		"testrg",
+		"testpostgresInstance",
 		armazurearcdata.PostgresInstance{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			ExtendedLocation: &armazurearcdata.ExtendedLocation{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/arclocation"),
 				Type: to.Ptr(armazurearcdata.ExtendedLocationTypesCustomLocation),
 			},
 			Properties: &armazurearcdata.PostgresInstanceProperties{
-				Admin: to.Ptr("<admin>"),
+				Admin: to.Ptr("admin"),
 				BasicLoginInformation: &armazurearcdata.BasicLoginInformation{
-					Password: to.Ptr("<password>"),
-					Username: to.Ptr("<username>"),
+					Password: to.Ptr("********"),
+					Username: to.Ptr("username"),
 				},
-				DataControllerID: to.Ptr("<data-controller-id>"),
+				DataControllerID: to.Ptr("dataControllerId"),
 				K8SRaw: map[string]interface{}{
 					"apiVersion": "apiVersion",
 					"kind":       "postgresql-12",
@@ -117,20 +113,18 @@ func ExamplePostgresInstancesClient_BeginCreate() {
 				},
 			},
 			SKU: &armazurearcdata.PostgresInstanceSKU{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("default"),
 				Dev:  to.Ptr(true),
-				Tier: to.Ptr("<tier>"),
+				Tier: to.Ptr("Hyperscale"),
 			},
 		},
-		&armazurearcdata.PostgresInstancesClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv1.0.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -17,25 +17,23 @@ func ExampleTransformsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewTransformsClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewTransformsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<transform-name>",
+		"contosoresources",
+		"contosomedia",
+		"transformToUpdate",
 		armmediaservices.Transform{
 			Properties: &armmediaservices.TransformProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("Example transform to illustrate update."),
 				Outputs: []*armmediaservices.TransformOutput{
 					{
 						Preset: &armmediaservices.BuiltInStandardEncoderPreset{
-							ODataType:  to.Ptr("<odata-type>"),
+							ODataType:  to.Ptr("#Microsoft.Media.BuiltInStandardEncoderPreset"),
 							PresetName: to.Ptr(armmediaservices.EncoderNamedPresetH264MultipleBitrate720P),
 						},
 						RelativePriority: to.Ptr(armmediaservices.PriorityHigh),
@@ -45,7 +43,6 @@ func ExampleTransformsClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

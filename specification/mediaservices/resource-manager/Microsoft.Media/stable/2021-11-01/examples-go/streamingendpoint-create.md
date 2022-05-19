@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv1.0.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -19,64 +19,58 @@ func ExampleStreamingEndpointsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewStreamingEndpointsClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewStreamingEndpointsClient("0a6ec948-5a62-437d-b9df-934dc7c1b722", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<streaming-endpoint-name>",
+		"mediaresources",
+		"slitestmedia10",
+		"myStreamingEndpoint1",
 		armmediaservices.StreamingEndpoint{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 			},
 			Properties: &armmediaservices.StreamingEndpointProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("test event 1"),
 				AccessControl: &armmediaservices.StreamingEndpointAccessControl{
 					Akamai: &armmediaservices.AkamaiAccessControl{
 						AkamaiSignatureHeaderAuthenticationKeyList: []*armmediaservices.AkamaiSignatureHeaderAuthenticationKey{
 							{
-								Base64Key:  to.Ptr("<base64key>"),
+								Base64Key:  to.Ptr("dGVzdGlkMQ=="),
 								Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2029-12-31T16:00:00-08:00"); return t }()),
-								Identifier: to.Ptr("<identifier>"),
+								Identifier: to.Ptr("id1"),
 							},
 							{
-								Base64Key:  to.Ptr("<base64key>"),
+								Base64Key:  to.Ptr("dGVzdGlkMQ=="),
 								Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2030-12-31T16:00:00-08:00"); return t }()),
-								Identifier: to.Ptr("<identifier>"),
+								Identifier: to.Ptr("id2"),
 							}},
 					},
 					IP: &armmediaservices.IPAccessControl{
 						Allow: []*armmediaservices.IPRange{
 							{
-								Name:    to.Ptr("<name>"),
-								Address: to.Ptr("<address>"),
+								Name:    to.Ptr("AllowedIp"),
+								Address: to.Ptr("192.168.1.1"),
 							}},
 					},
 				},
-				AvailabilitySetName: to.Ptr("<availability-set-name>"),
+				AvailabilitySetName: to.Ptr("availableset"),
 				CdnEnabled:          to.Ptr(false),
 				ScaleUnits:          to.Ptr[int32](1),
 			},
 		},
-		&armmediaservices.StreamingEndpointsClientBeginCreateOptions{AutoStart: nil,
-			ResumeToken: "",
-		})
+		&armmediaservices.StreamingEndpointsClientBeginCreateOptions{AutoStart: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

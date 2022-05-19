@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv1.0.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -6,8 +6,6 @@ package armmediaservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,38 +17,36 @@ func ExampleLiveEventsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewLiveEventsClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewLiveEventsClient("0a6ec948-5a62-437d-b9df-934dc7c1b722", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<live-event-name>",
+		"mediaresources",
+		"slitestmedia10",
+		"myLiveEvent1",
 		armmediaservices.LiveEvent{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 				"tag3": to.Ptr("value3"),
 			},
 			Properties: &armmediaservices.LiveEventProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("test event updated"),
 				Input: &armmediaservices.LiveEventInput{
 					AccessControl: &armmediaservices.LiveEventInputAccessControl{
 						IP: &armmediaservices.IPAccessControl{
 							Allow: []*armmediaservices.IPRange{
 								{
-									Name:    to.Ptr("<name>"),
-									Address: to.Ptr("<address>"),
+									Name:    to.Ptr("AllowOne"),
+									Address: to.Ptr("192.1.1.0"),
 								}},
 						},
 					},
-					KeyFrameIntervalDuration: to.Ptr("<key-frame-interval-duration>"),
+					KeyFrameIntervalDuration: to.Ptr("PT6S"),
 					StreamingProtocol:        to.Ptr(armmediaservices.LiveEventInputProtocolFragmentedMP4),
 				},
 				Preview: &armmediaservices.LiveEventPreview{
@@ -58,23 +54,21 @@ func ExampleLiveEventsClient_BeginUpdate() {
 						IP: &armmediaservices.IPAccessControl{
 							Allow: []*armmediaservices.IPRange{
 								{
-									Name:    to.Ptr("<name>"),
-									Address: to.Ptr("<address>"),
+									Name:    to.Ptr("AllowOne"),
+									Address: to.Ptr("192.1.1.0"),
 								}},
 						},
 					},
 				},
 			},
 		},
-		&armmediaservices.LiveEventsClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

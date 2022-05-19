@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv1.0.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -17,18 +17,16 @@ func ExampleAccountFiltersClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewAccountFiltersClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewAccountFiltersClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<filter-name>",
+		"contoso",
+		"contosomedia",
+		"newAccountFilter",
 		armmediaservices.AccountFilter{
 			Properties: &armmediaservices.MediaFilterProperties{
 				FirstQuality: &armmediaservices.FirstQuality{
@@ -48,17 +46,17 @@ func ExampleAccountFiltersClient_CreateOrUpdate() {
 							{
 								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationEqual),
 								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeType),
-								Value:     to.Ptr("<value>"),
+								Value:     to.Ptr("Audio"),
 							},
 							{
 								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationNotEqual),
 								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeLanguage),
-								Value:     to.Ptr("<value>"),
+								Value:     to.Ptr("en"),
 							},
 							{
 								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationNotEqual),
 								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeFourCC),
-								Value:     to.Ptr("<value>"),
+								Value:     to.Ptr("EC-3"),
 							}},
 					},
 					{
@@ -66,12 +64,12 @@ func ExampleAccountFiltersClient_CreateOrUpdate() {
 							{
 								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationEqual),
 								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeType),
-								Value:     to.Ptr("<value>"),
+								Value:     to.Ptr("Video"),
 							},
 							{
 								Operation: to.Ptr(armmediaservices.FilterTrackPropertyCompareOperationEqual),
 								Property:  to.Ptr(armmediaservices.FilterTrackPropertyTypeBitrate),
-								Value:     to.Ptr("<value>"),
+								Value:     to.Ptr("3000000-5000000"),
 							}},
 					}},
 			},
@@ -79,7 +77,6 @@ func ExampleAccountFiltersClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

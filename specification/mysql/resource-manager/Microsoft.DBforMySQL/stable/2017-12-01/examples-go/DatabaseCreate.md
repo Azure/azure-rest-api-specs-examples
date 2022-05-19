@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv0.5.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv1.0.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmysql_test
@@ -6,8 +6,6 @@ package armmysql_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,33 +17,29 @@ func ExampleDatabasesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmysql.NewDatabasesClient("<subscription-id>", cred, nil)
+	client, err := armmysql.NewDatabasesClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<server-name>",
-		"<database-name>",
+		"TestGroup",
+		"testserver",
+		"db1",
 		armmysql.Database{
 			Properties: &armmysql.DatabaseProperties{
-				Charset:   to.Ptr("<charset>"),
-				Collation: to.Ptr("<collation>"),
+				Charset:   to.Ptr("utf8"),
+				Collation: to.Ptr("utf8_general_ci"),
 			},
 		},
-		&armmysql.DatabasesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

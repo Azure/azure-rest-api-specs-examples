@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv0.5.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmysql%2Farmmysql%2Fv1.0.0/sdk/resourcemanager/mysql/armmysql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmysql_test
@@ -19,24 +19,22 @@ func ExampleTopQueryStatisticsClient_NewListByServerPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmysql.NewTopQueryStatisticsClient("<subscription-id>", cred, nil)
+	client, err := armmysql.NewTopQueryStatisticsClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListByServerPager("<resource-group-name>",
-		"<server-name>",
+	pager := client.NewListByServerPager("testResourceGroupName",
+		"testServerName",
 		armmysql.TopQueryStatisticsInput{
 			Properties: &armmysql.TopQueryStatisticsInputProperties{
-				AggregationFunction:  to.Ptr("<aggregation-function>"),
-				AggregationWindow:    to.Ptr("<aggregation-window>"),
+				AggregationFunction:  to.Ptr("avg"),
+				AggregationWindow:    to.Ptr("PT15M"),
 				NumberOfTopQueries:   to.Ptr[int32](5),
 				ObservationEndTime:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T20:00:00.000Z"); return t }()),
 				ObservationStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T20:00:00.000Z"); return t }()),
-				ObservedMetric:       to.Ptr("<observed-metric>"),
+				ObservedMetric:       to.Ptr("duration"),
 			},
 		},
 		nil)
@@ -44,7 +42,6 @@ func ExampleTopQueryStatisticsClient_NewListByServerPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

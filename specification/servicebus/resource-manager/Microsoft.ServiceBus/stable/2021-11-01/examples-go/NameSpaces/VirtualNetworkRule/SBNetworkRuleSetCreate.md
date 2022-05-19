@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicebus%2Farmservicebus%2Fv0.5.0/sdk/resourcemanager/servicebus/armservicebus/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicebus%2Farmservicebus%2Fv1.0.0/sdk/resourcemanager/servicebus/armservicebus/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicebus_test
@@ -17,58 +17,56 @@ func ExampleNamespacesClient_CreateOrUpdateNetworkRuleSet() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armservicebus.NewNamespacesClient("Subscription", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdateNetworkRuleSet(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
+		"ResourceGroup",
+		"sdk-Namespace-6019",
 		armservicebus.NetworkRuleSet{
 			Properties: &armservicebus.NetworkRuleSetProperties{
 				DefaultAction: to.Ptr(armservicebus.DefaultActionDeny),
 				IPRules: []*armservicebus.NWRuleSetIPRules{
 					{
 						Action: to.Ptr(armservicebus.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.1"),
 					},
 					{
 						Action: to.Ptr(armservicebus.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.2"),
 					},
 					{
 						Action: to.Ptr(armservicebus.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.3"),
 					},
 					{
 						Action: to.Ptr(armservicebus.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.4"),
 					},
 					{
 						Action: to.Ptr(armservicebus.NetworkRuleIPActionAllow),
-						IPMask: to.Ptr("<ipmask>"),
+						IPMask: to.Ptr("1.1.1.5"),
 					}},
 				VirtualNetworkRules: []*armservicebus.NWRuleSetVirtualNetworkRules{
 					{
 						IgnoreMissingVnetServiceEndpoint: to.Ptr(true),
 						Subnet: &armservicebus.Subnet{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/alitest/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet2"),
 						},
 					},
 					{
 						IgnoreMissingVnetServiceEndpoint: to.Ptr(false),
 						Subnet: &armservicebus.Subnet{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/alitest/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet3"),
 						},
 					},
 					{
 						IgnoreMissingVnetServiceEndpoint: to.Ptr(false),
 						Subnet: &armservicebus.Subnet{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourcegroups/alitest/providers/Microsoft.Network/virtualNetworks/myvn/subnets/subnet6"),
 						},
 					}},
 			},
@@ -76,7 +74,6 @@ func ExampleNamespacesClient_CreateOrUpdateNetworkRuleSet() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

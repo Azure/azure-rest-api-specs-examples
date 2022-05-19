@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicebus%2Farmservicebus%2Fv0.5.0/sdk/resourcemanager/servicebus/armservicebus/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicebus%2Farmservicebus%2Fv1.0.0/sdk/resourcemanager/servicebus/armservicebus/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicebus_test
@@ -17,25 +17,22 @@ func ExampleNamespacesClient_RegenerateKeys() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armservicebus.NewNamespacesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.RegenerateKeys(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
-		"<authorization-rule-name>",
+		"ArunMonocle",
+		"sdk-namespace-6914",
+		"sdk-AuthRules-1788",
 		armservicebus.RegenerateAccessKeyParameters{
 			KeyType: to.Ptr(armservicebus.KeyTypePrimaryKey),
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorderpartner%2Farmedgeorderpartner%2Fv0.4.0/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorderpartner%2Farmedgeorderpartner%2Fv0.5.0/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorderpartner_test
@@ -17,27 +17,24 @@ func ExampleAPISClient_ManageLink() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armedgeorderpartner.NewAPISClient("<subscription-id>", cred, nil)
+	client, err := armedgeorderpartner.NewAPISClient("b783ea86-c85c-4175-b76d-3992656af50d", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.ManageLink(ctx,
-		"<family-identifier>",
-		"<location>",
-		"<serial-number>",
+		"AzureStackEdge",
+		"westus",
+		"SerialNumber1",
 		armedgeorderpartner.ManageLinkRequest{
-			ManagementResourceArmID: to.Ptr("<management-resource-arm-id>"),
+			ManagementResourceArmID: to.Ptr("/subscriptions/c783ea86-c85c-4175-b76d-3992656af50d/resourceGroups/EdgeTestRG/providers/Microsoft.DataBoxEdge/DataBoxEdgeDevices/TestEdgeDeviceName1"),
 			Operation:               to.Ptr(armedgeorderpartner.ManageLinkOperationLink),
-			TenantID:                to.Ptr("<tenant-id>"),
+			TenantID:                to.Ptr("a783ea86-c85c-4175-b76d-3992656af50d"),
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

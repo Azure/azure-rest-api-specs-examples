@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.1.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdeploymentmanager%2Farmdeploymentmanager%2Fv0.4.0/sdk/resourcemanager/deploymentmanager/armdeploymentmanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdeploymentmanager_test
@@ -7,81 +7,79 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deploymentmanager/armdeploymentmanager"
 )
 
-// x-ms-original-file: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollout_createorupdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollout_createorupdate.json
 func ExampleRolloutsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdeploymentmanager.NewRolloutsClient("<subscription-id>", cred, nil)
+	client, err := armdeploymentmanager.NewRolloutsClient("caac1590-e859-444f-a9e0-62091c0f5929", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<rollout-name>",
-		&armdeploymentmanager.RolloutsBeginCreateOrUpdateOptions{RolloutRequest: &armdeploymentmanager.RolloutRequest{
-			TrackedResource: armdeploymentmanager.TrackedResource{
-				Location: to.StringPtr("<location>"),
-				Tags:     map[string]*string{},
-			},
+		"myResourceGroup",
+		"myRollout",
+		&armdeploymentmanager.RolloutsClientBeginCreateOrUpdateOptions{RolloutRequest: &armdeploymentmanager.RolloutRequest{
+			Location: to.Ptr("centralus"),
+			Tags:     map[string]*string{},
 			Identity: &armdeploymentmanager.Identity{
-				Type: to.StringPtr("<type>"),
+				Type: to.Ptr("userAssigned"),
 				IdentityIDs: []*string{
-					to.StringPtr("/subscriptions/caac1590-e859-444f-a9e0-62091c0f5929/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userassignedidentities/myuseridentity")},
+					to.Ptr("/subscriptions/caac1590-e859-444f-a9e0-62091c0f5929/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userassignedidentities/myuseridentity")},
 			},
 			Properties: &armdeploymentmanager.RolloutRequestProperties{
-				ArtifactSourceID: to.StringPtr("<artifact-source-id>"),
-				BuildVersion:     to.StringPtr("<build-version>"),
+				ArtifactSourceID: to.Ptr("/subscriptions/caac1590-e859-444f-a9e0-62091c0f5929/resourceGroups/myResourceGroup/Microsoft.DeploymentManager/artifactSources/myArtifactSource"),
+				BuildVersion:     to.Ptr("1.0.0.1"),
 				StepGroups: []*armdeploymentmanager.StepGroup{
 					{
-						Name:               to.StringPtr("<name>"),
-						DeploymentTargetID: to.StringPtr("<deployment-target-id>"),
+						Name:               to.Ptr("FirstRegion"),
+						DeploymentTargetID: to.Ptr("Microsoft.DeploymentManager/serviceTopologies/myTopology/services/myService/serviceUnits/myServiceUnit1'"),
 						PostDeploymentSteps: []*armdeploymentmanager.PrePostStep{
 							{
-								StepID: to.StringPtr("<step-id>"),
+								StepID: to.Ptr("Microsoft.DeploymentManager/steps/postDeployStep1"),
 							}},
 						PreDeploymentSteps: []*armdeploymentmanager.PrePostStep{
 							{
-								StepID: to.StringPtr("<step-id>"),
+								StepID: to.Ptr("Microsoft.DeploymentManager/steps/preDeployStep1"),
 							},
 							{
-								StepID: to.StringPtr("<step-id>"),
+								StepID: to.Ptr("Microsoft.DeploymentManager/steps/preDeployStep2"),
 							}},
 					},
 					{
-						Name: to.StringPtr("<name>"),
+						Name: to.Ptr("SecondRegion"),
 						DependsOnStepGroups: []*string{
-							to.StringPtr("FirstRegion")},
-						DeploymentTargetID: to.StringPtr("<deployment-target-id>"),
+							to.Ptr("FirstRegion")},
+						DeploymentTargetID: to.Ptr("Microsoft.DeploymentManager/serviceTopologies/myTopology/services/myService/serviceUnits/myServiceUnit2'"),
 						PostDeploymentSteps: []*armdeploymentmanager.PrePostStep{
 							{
-								StepID: to.StringPtr("<step-id>"),
+								StepID: to.Ptr("Microsoft.DeploymentManager/steps/postDeployStep5"),
 							}},
 						PreDeploymentSteps: []*armdeploymentmanager.PrePostStep{
 							{
-								StepID: to.StringPtr("<step-id>"),
+								StepID: to.Ptr("Microsoft.DeploymentManager/steps/preDeployStep3"),
 							},
 							{
-								StepID: to.StringPtr("<step-id>"),
+								StepID: to.Ptr("Microsoft.DeploymentManager/steps/preDeployStep4"),
 							}},
 					}},
-				TargetServiceTopologyID: to.StringPtr("<target-service-topology-id>"),
+				TargetServiceTopologyID: to.Ptr("/subscriptions/caac1590-e859-444f-a9e0-62091c0f5929/resourceGroups/myResourceGroup/Microsoft.DeploymentManager/serviceTopologies/myTopology"),
 			},
 		},
 		})
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
 	}
-	log.Printf("RolloutRequest.ID: %s\n", *res.ID)
 }
 ```

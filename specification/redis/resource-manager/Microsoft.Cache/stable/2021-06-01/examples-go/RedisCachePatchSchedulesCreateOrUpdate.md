@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fredis%2Farmredis%2Fv0.5.0/sdk/resourcemanager/redis/armredis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fredis%2Farmredis%2Fv1.0.0/sdk/resourcemanager/redis/armredis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armredis_test
@@ -17,24 +17,22 @@ func ExamplePatchSchedulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armredis.NewPatchSchedulesClient("<subscription-id>", cred, nil)
+	client, err := armredis.NewPatchSchedulesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<name>",
+		"rg1",
+		"cache1",
 		armredis.DefaultNameDefault,
 		armredis.PatchSchedule{
 			Properties: &armredis.ScheduleEntries{
 				ScheduleEntries: []*armredis.ScheduleEntry{
 					{
 						DayOfWeek:         to.Ptr(armredis.DayOfWeekMonday),
-						MaintenanceWindow: to.Ptr("<maintenance-window>"),
+						MaintenanceWindow: to.Ptr("PT5H"),
 						StartHourUTC:      to.Ptr[int32](12),
 					},
 					{
@@ -46,7 +44,6 @@ func ExamplePatchSchedulesClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.4.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv1.0.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -6,8 +6,6 @@ package armhealthcareapis_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,23 +17,21 @@ func ExampleFhirServicesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhealthcareapis.NewFhirServicesClient("<subscription-id>", cred, nil)
+	client, err := armhealthcareapis.NewFhirServicesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
-		"<fhir-service-name>",
+		"testRG",
+		"workspace1",
+		"fhirservice1",
 		armhealthcareapis.FhirService{
 			Identity: &armhealthcareapis.ServiceManagedIdentityIdentity{
 				Type: to.Ptr(armhealthcareapis.ServiceManagedIdentityTypeSystemAssigned),
 			},
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Tags: map[string]*string{
 				"additionalProp1": to.Ptr("string"),
 				"additionalProp2": to.Ptr("string"),
@@ -45,18 +41,18 @@ func ExampleFhirServicesClient_BeginCreateOrUpdate() {
 			Properties: &armhealthcareapis.FhirServiceProperties{
 				AccessPolicies: []*armhealthcareapis.FhirServiceAccessPolicyEntry{
 					{
-						ObjectID: to.Ptr("<object-id>"),
+						ObjectID: to.Ptr("c487e7d1-3210-41a3-8ccc-e9372b78da47"),
 					},
 					{
-						ObjectID: to.Ptr("<object-id>"),
+						ObjectID: to.Ptr("5b307da8-43d4-492b-8b66-b0294ade872f"),
 					}},
 				AcrConfiguration: &armhealthcareapis.FhirServiceAcrConfiguration{
 					LoginServers: []*string{
 						to.Ptr("test1.azurecr.io")},
 				},
 				AuthenticationConfiguration: &armhealthcareapis.FhirServiceAuthenticationConfiguration{
-					Audience:          to.Ptr("<audience>"),
-					Authority:         to.Ptr("<authority>"),
+					Audience:          to.Ptr("https://azurehealthcareapis.com"),
+					Authority:         to.Ptr("https://login.microsoftonline.com/abfde7b2-df0f-47e6-aabf-2462b07508dc"),
 					SmartProxyEnabled: to.Ptr(true),
 				},
 				CorsConfiguration: &armhealthcareapis.FhirServiceCorsConfiguration{
@@ -75,19 +71,17 @@ func ExampleFhirServicesClient_BeginCreateOrUpdate() {
 						to.Ptr("*")},
 				},
 				ExportConfiguration: &armhealthcareapis.FhirServiceExportConfiguration{
-					StorageAccountName: to.Ptr("<storage-account-name>"),
+					StorageAccountName: to.Ptr("existingStorageAccount"),
 				},
 			},
 		},
-		&armhealthcareapis.FhirServicesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

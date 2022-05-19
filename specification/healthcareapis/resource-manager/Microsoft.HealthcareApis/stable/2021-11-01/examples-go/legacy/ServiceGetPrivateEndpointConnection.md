@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv0.4.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhealthcareapis%2Farmhealthcareapis%2Fv1.0.0/sdk/resourcemanager/healthcareapis/armhealthcareapis/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhealthcareapis_test
@@ -16,22 +16,19 @@ func ExamplePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhealthcareapis.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armhealthcareapis.NewPrivateEndpointConnectionsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Get(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<private-endpoint-connection-name>",
+		"rgname",
+		"service1",
+		"myConnection",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

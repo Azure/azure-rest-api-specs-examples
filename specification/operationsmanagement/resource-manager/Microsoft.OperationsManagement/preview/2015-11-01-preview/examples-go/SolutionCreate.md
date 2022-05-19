@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationsmanagement%2Farmoperationsmanagement%2Fv0.5.0/sdk/resourcemanager/operationsmanagement/armoperationsmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationsmanagement%2Farmoperationsmanagement%2Fv0.6.0/sdk/resourcemanager/operationsmanagement/armoperationsmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armoperationsmanagement_test
@@ -6,8 +6,6 @@ package armoperationsmanagement_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,24 +17,22 @@ func ExampleSolutionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armoperationsmanagement.NewSolutionsClient("<subscription-id>", cred, nil)
+	client, err := armoperationsmanagement.NewSolutionsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<solution-name>",
+		"rg1",
+		"solution1",
 		armoperationsmanagement.Solution{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("East US"),
 			Plan: &armoperationsmanagement.SolutionPlan{
-				Name:          to.Ptr("<name>"),
-				Product:       to.Ptr("<product>"),
-				PromotionCode: to.Ptr("<promotion-code>"),
-				Publisher:     to.Ptr("<publisher>"),
+				Name:          to.Ptr("name1"),
+				Product:       to.Ptr("product1"),
+				PromotionCode: to.Ptr("promocode1"),
+				Publisher:     to.Ptr("publisher1"),
 			},
 			Properties: &armoperationsmanagement.SolutionProperties{
 				ContainedResources: []*string{
@@ -45,18 +41,16 @@ func ExampleSolutionsClient_BeginCreateOrUpdate() {
 				ReferencedResources: []*string{
 					to.Ptr("/subscriptions/sub2/resourceGroups/rg2/providers/provider1/resources/resource2"),
 					to.Ptr("/subscriptions/sub2/resourceGroups/rg2/providers/provider2/resources/resource3")},
-				WorkspaceResourceID: to.Ptr("<workspace-resource-id>"),
+				WorkspaceResourceID: to.Ptr("/subscriptions/sub2/resourceGroups/rg2/providers/Microsoft.OperationalInsights/workspaces/ws1"),
 			},
 		},
-		&armoperationsmanagement.SolutionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

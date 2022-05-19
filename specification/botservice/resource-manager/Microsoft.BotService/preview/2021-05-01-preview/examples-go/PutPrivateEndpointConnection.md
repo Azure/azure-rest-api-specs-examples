@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbotservice%2Farmbotservice%2Fv0.4.0/sdk/resourcemanager/botservice/armbotservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbotservice%2Farmbotservice%2Fv0.5.0/sdk/resourcemanager/botservice/armbotservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armbotservice_test
@@ -17,22 +17,20 @@ func ExamplePrivateEndpointConnectionsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armbotservice.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armbotservice.NewPrivateEndpointConnectionsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<private-endpoint-connection-name>",
+		"res7687",
+		"sto9699",
+		"{privateEndpointConnectionName}",
 		armbotservice.PrivateEndpointConnection{
 			Properties: &armbotservice.PrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armbotservice.PrivateLinkServiceConnectionState{
-					Description: to.Ptr("<description>"),
+					Description: to.Ptr("Auto-Approved"),
 					Status:      to.Ptr(armbotservice.PrivateEndpointServiceConnectionStatusApproved),
 				},
 			},
@@ -40,7 +38,6 @@ func ExamplePrivateEndpointConnectionsClient_Create() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbotservice%2Farmbotservice%2Fv0.4.0/sdk/resourcemanager/botservice/armbotservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbotservice%2Farmbotservice%2Fv0.5.0/sdk/resourcemanager/botservice/armbotservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armbotservice_test
@@ -17,41 +17,38 @@ func ExampleBotConnectionClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armbotservice.NewBotConnectionClient("<subscription-id>", cred, nil)
+	client, err := armbotservice.NewBotConnectionClient("subscription-id", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<connection-name>",
+		"OneResourceGroupName",
+		"samplebotname",
+		"sampleConnection",
 		armbotservice.ConnectionSetting{
-			Etag:     to.Ptr("<etag>"),
-			Location: to.Ptr("<location>"),
+			Etag:     to.Ptr("etag1"),
+			Location: to.Ptr("West US"),
 			Properties: &armbotservice.ConnectionSettingProperties{
-				ClientID:     to.Ptr("<client-id>"),
-				ClientSecret: to.Ptr("<client-secret>"),
+				ClientID:     to.Ptr("sampleclientid"),
+				ClientSecret: to.Ptr("samplesecret"),
 				Parameters: []*armbotservice.ConnectionSettingParameter{
 					{
-						Key:   to.Ptr("<key>"),
-						Value: to.Ptr("<value>"),
+						Key:   to.Ptr("key1"),
+						Value: to.Ptr("value1"),
 					},
 					{
-						Key:   to.Ptr("<key>"),
-						Value: to.Ptr("<value>"),
+						Key:   to.Ptr("key2"),
+						Value: to.Ptr("value2"),
 					}},
-				Scopes:            to.Ptr("<scopes>"),
-				ServiceProviderID: to.Ptr("<service-provider-id>"),
+				Scopes:            to.Ptr("samplescope"),
+				ServiceProviderID: to.Ptr("serviceproviderid"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbotservice%2Farmbotservice%2Fv0.4.0/sdk/resourcemanager/botservice/armbotservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fbotservice%2Farmbotservice%2Fv0.5.0/sdk/resourcemanager/botservice/armbotservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armbotservice_test
@@ -17,21 +17,19 @@ func ExampleBotsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armbotservice.NewBotsClient("<subscription-id>", cred, nil)
+	client, err := armbotservice.NewBotsClient("subscription-id", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
+		"OneResourceGroupName",
+		"samplebotname",
 		armbotservice.Bot{
-			Etag:     to.Ptr("<etag>"),
+			Etag:     to.Ptr("etag1"),
 			Kind:     to.Ptr(armbotservice.KindSdk),
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			SKU: &armbotservice.SKU{
 				Name: to.Ptr(armbotservice.SKUNameS1),
 			},
@@ -40,32 +38,31 @@ func ExampleBotsClient_Update() {
 				"tag2": to.Ptr("value2"),
 			},
 			Properties: &armbotservice.BotProperties{
-				Description:                       to.Ptr("<description>"),
-				CmekKeyVaultURL:                   to.Ptr("<cmek-key-vault-url>"),
-				DeveloperAppInsightKey:            to.Ptr("<developer-app-insight-key>"),
-				DeveloperAppInsightsAPIKey:        to.Ptr("<developer-app-insights-apikey>"),
-				DeveloperAppInsightsApplicationID: to.Ptr("<developer-app-insights-application-id>"),
+				Description:                       to.Ptr("The description of the bot"),
+				CmekKeyVaultURL:                   to.Ptr("https://myCmekKey"),
+				DeveloperAppInsightKey:            to.Ptr("appinsightskey"),
+				DeveloperAppInsightsAPIKey:        to.Ptr("appinsightsapikey"),
+				DeveloperAppInsightsApplicationID: to.Ptr("appinsightsappid"),
 				DisableLocalAuth:                  to.Ptr(true),
-				DisplayName:                       to.Ptr("<display-name>"),
-				Endpoint:                          to.Ptr("<endpoint>"),
-				IconURL:                           to.Ptr("<icon-url>"),
+				DisplayName:                       to.Ptr("The Name of the bot"),
+				Endpoint:                          to.Ptr("http://mybot.coffee"),
+				IconURL:                           to.Ptr("http://myicon"),
 				IsCmekEnabled:                     to.Ptr(true),
 				LuisAppIDs: []*string{
 					to.Ptr("luisappid1"),
 					to.Ptr("luisappid2")},
-				LuisKey:                     to.Ptr("<luis-key>"),
-				MsaAppID:                    to.Ptr("<msa-app-id>"),
-				MsaAppMSIResourceID:         to.Ptr("<msa-app-msiresource-id>"),
-				MsaAppTenantID:              to.Ptr("<msa-app-tenant-id>"),
+				LuisKey:                     to.Ptr("luiskey"),
+				MsaAppID:                    to.Ptr("msaappid"),
+				MsaAppMSIResourceID:         to.Ptr("/subscriptions/foo/resourcegroups/bar/providers/microsoft.managedidentity/userassignedidentities/sampleId"),
+				MsaAppTenantID:              to.Ptr("msaapptenantid"),
 				MsaAppType:                  to.Ptr(armbotservice.MsaAppTypeUserAssignedMSI),
 				PublicNetworkAccess:         to.Ptr(armbotservice.PublicNetworkAccessEnabled),
-				SchemaTransformationVersion: to.Ptr("<schema-transformation-version>"),
+				SchemaTransformationVersion: to.Ptr("1.0"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

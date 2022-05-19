@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv0.5.0/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv1.0.0/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpeering_test
@@ -17,42 +17,39 @@ func ExamplePeerAsnsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpeering.NewPeerAsnsClient("<subscription-id>", cred, nil)
+	client, err := armpeering.NewPeerAsnsClient("subId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<peer-asn-name>",
+		"peerAsnName",
 		armpeering.PeerAsn{
 			Properties: &armpeering.PeerAsnProperties{
 				PeerAsn: to.Ptr[int32](65000),
 				PeerContactDetail: []*armpeering.ContactDetail{
 					{
-						Email: to.Ptr("<email>"),
-						Phone: to.Ptr("<phone>"),
+						Email: to.Ptr("noc@contoso.com"),
+						Phone: to.Ptr("+1 (234) 567-8999"),
 						Role:  to.Ptr(armpeering.RoleNoc),
 					},
 					{
-						Email: to.Ptr("<email>"),
-						Phone: to.Ptr("<phone>"),
+						Email: to.Ptr("abc@contoso.com"),
+						Phone: to.Ptr("+1 (234) 567-8900"),
 						Role:  to.Ptr(armpeering.RolePolicy),
 					},
 					{
-						Email: to.Ptr("<email>"),
-						Phone: to.Ptr("<phone>"),
+						Email: to.Ptr("xyz@contoso.com"),
+						Phone: to.Ptr("+1 (234) 567-8900"),
 						Role:  to.Ptr(armpeering.RoleTechnical),
 					}},
-				PeerName: to.Ptr("<peer-name>"),
+				PeerName: to.Ptr("Contoso"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.4.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv1.0.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcostmanagement_test
@@ -17,17 +17,15 @@ func ExampleForecastClient_ExternalCloudProviderUsage() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armcostmanagement.NewForecastClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.ExternalCloudProviderUsage(ctx,
 		armcostmanagement.ExternalCloudProviderTypeExternalBillingAccounts,
-		"<external-cloud-provider-id>",
+		"100",
 		armcostmanagement.ForecastDefinition{
 			Type: to.Ptr(armcostmanagement.ForecastTypeUsage),
 			Dataset: &armcostmanagement.ForecastDataset{
@@ -37,7 +35,7 @@ func ExampleForecastClient_ExternalCloudProviderUsage() {
 							Or: []*armcostmanagement.QueryFilter{
 								{
 									Dimensions: &armcostmanagement.QueryComparisonExpression{
-										Name:     to.Ptr("<name>"),
+										Name:     to.Ptr("ResourceLocation"),
 										Operator: to.Ptr(armcostmanagement.QueryOperatorTypeIn),
 										Values: []*string{
 											to.Ptr("East US"),
@@ -46,7 +44,7 @@ func ExampleForecastClient_ExternalCloudProviderUsage() {
 								},
 								{
 									Tags: &armcostmanagement.QueryComparisonExpression{
-										Name:     to.Ptr("<name>"),
+										Name:     to.Ptr("Environment"),
 										Operator: to.Ptr(armcostmanagement.QueryOperatorTypeIn),
 										Values: []*string{
 											to.Ptr("UAT"),
@@ -56,7 +54,7 @@ func ExampleForecastClient_ExternalCloudProviderUsage() {
 						},
 						{
 							Dimensions: &armcostmanagement.QueryComparisonExpression{
-								Name:     to.Ptr("<name>"),
+								Name:     to.Ptr("ResourceGroup"),
 								Operator: to.Ptr(armcostmanagement.QueryOperatorTypeIn),
 								Values: []*string{
 									to.Ptr("API")},
@@ -70,7 +68,6 @@ func ExampleForecastClient_ExternalCloudProviderUsage() {
 		&armcostmanagement.ForecastClientExternalCloudProviderUsageOptions{Filter: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

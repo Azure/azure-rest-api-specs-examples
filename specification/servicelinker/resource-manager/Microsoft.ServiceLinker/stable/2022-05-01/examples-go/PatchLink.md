@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicelinker%2Farmservicelinker%2Fv0.4.0/sdk/resourcemanager/servicelinker/armservicelinker/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicelinker%2Farmservicelinker%2Fv1.0.0/sdk/resourcemanager/servicelinker/armservicelinker/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicelinker_test
@@ -6,8 +6,6 @@ package armservicelinker_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,40 +17,36 @@ func ExampleLinkerClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armservicelinker.NewLinkerClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-uri>",
-		"<linker-name>",
+		"subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app",
+		"linkName",
 		armservicelinker.LinkerPatch{
 			Properties: &armservicelinker.LinkerProperties{
 				AuthInfo: &armservicelinker.ServicePrincipalSecretAuthInfo{
 					AuthType:    to.Ptr(armservicelinker.AuthTypeServicePrincipalSecret),
-					ClientID:    to.Ptr("<client-id>"),
-					PrincipalID: to.Ptr("<principal-id>"),
-					Secret:      to.Ptr("<secret>"),
+					ClientID:    to.Ptr("name"),
+					PrincipalID: to.Ptr("id"),
+					Secret:      to.Ptr("secret"),
 				},
 				TargetService: &armservicelinker.AzureResource{
-					Type: to.Ptr(armservicelinker.TypeAzureResource),
-					ID:   to.Ptr("<id>"),
+					Type: to.Ptr(armservicelinker.TargetServiceTypeAzureResource),
+					ID:   to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
 				},
 			},
 		},
-		&armservicelinker.LinkerClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

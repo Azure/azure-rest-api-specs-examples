@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorageimportexport%2Farmstorageimportexport%2Fv0.4.0/sdk/resourcemanager/storageimportexport/armstorageimportexport/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstorageimportexport%2Farmstorageimportexport%2Fv0.5.0/sdk/resourcemanager/storageimportexport/armstorageimportexport/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstorageimportexport_test
@@ -17,29 +17,26 @@ func ExampleJobsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstorageimportexport.NewJobsClient("<subscription-id>",
+	client, err := armstorageimportexport.NewJobsClient("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 		nil, cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<job-name>",
-		"<resource-group-name>",
+		"myExportJob",
+		"myResourceGroup",
 		armstorageimportexport.UpdateJobParameters{
 			Properties: &armstorageimportexport.UpdateJobParametersProperties{
 				BackupDriveManifest: to.Ptr(true),
-				LogLevel:            to.Ptr("<log-level>"),
-				State:               to.Ptr("<state>"),
+				LogLevel:            to.Ptr("Verbose"),
+				State:               to.Ptr(""),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

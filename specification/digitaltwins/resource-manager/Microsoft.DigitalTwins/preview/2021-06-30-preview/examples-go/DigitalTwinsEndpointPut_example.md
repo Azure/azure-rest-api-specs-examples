@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdigitaltwins%2Farmdigitaltwins%2Fv0.4.0/sdk/resourcemanager/digitaltwins/armdigitaltwins/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdigitaltwins%2Farmdigitaltwins%2Fv0.5.0/sdk/resourcemanager/digitaltwins/armdigitaltwins/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdigitaltwins_test
@@ -6,8 +6,6 @@ package armdigitaltwins_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,35 +17,31 @@ func ExampleEndpointClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdigitaltwins.NewEndpointClient("<subscription-id>", cred, nil)
+	client, err := armdigitaltwins.NewEndpointClient("50016170-c839-41ba-a724-51e9df440b9e", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<endpoint-name>",
+		"resRg",
+		"myDigitalTwinsService",
+		"myServiceBus",
 		armdigitaltwins.EndpointResource{
 			Properties: &armdigitaltwins.ServiceBus{
 				AuthenticationType:        to.Ptr(armdigitaltwins.AuthenticationTypeKeyBased),
 				EndpointType:              to.Ptr(armdigitaltwins.EndpointTypeServiceBus),
-				PrimaryConnectionString:   to.Ptr("<primary-connection-string>"),
-				SecondaryConnectionString: to.Ptr("<secondary-connection-string>"),
+				PrimaryConnectionString:   to.Ptr("Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"),
+				SecondaryConnectionString: to.Ptr("Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc"),
 			},
 		},
-		&armdigitaltwins.EndpointClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

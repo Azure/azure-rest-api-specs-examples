@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.4.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv1.0.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -6,8 +6,6 @@ package armmachinelearningservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmachinelearningservices.NewWorkspacesClient("<subscription-id>", cred, nil)
+	client, err := armmachinelearningservices.NewWorkspacesClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
+		"workspace-1234",
+		"testworkspace",
 		armmachinelearningservices.Workspace{
 			Identity: &armmachinelearningservices.Identity{
 				Type: to.Ptr(armmachinelearningservices.ResourceIdentityTypeSystemAssignedUserAssigned),
@@ -37,47 +33,45 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate() {
 					"/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai": {},
 				},
 			},
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus2euap"),
 			Properties: &armmachinelearningservices.WorkspaceProperties{
-				Description:         to.Ptr("<description>"),
-				ApplicationInsights: to.Ptr("<application-insights>"),
-				ContainerRegistry:   to.Ptr("<container-registry>"),
+				Description:         to.Ptr("test description"),
+				ApplicationInsights: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/microsoft.insights/components/testinsights"),
+				ContainerRegistry:   to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ContainerRegistry/registries/testRegistry"),
 				Encryption: &armmachinelearningservices.EncryptionProperty{
 					Identity: &armmachinelearningservices.IdentityForCmk{
-						UserAssignedIdentity: to.Ptr("<user-assigned-identity>"),
+						UserAssignedIdentity: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai"),
 					},
 					KeyVaultProperties: &armmachinelearningservices.KeyVaultProperties{
-						IdentityClientID: to.Ptr("<identity-client-id>"),
-						KeyIdentifier:    to.Ptr("<key-identifier>"),
-						KeyVaultArmID:    to.Ptr("<key-vault-arm-id>"),
+						IdentityClientID: to.Ptr(""),
+						KeyIdentifier:    to.Ptr("https://testkv.vault.azure.net/keys/testkey/aabbccddee112233445566778899aabb"),
+						KeyVaultArmID:    to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.KeyVault/vaults/testkv"),
 					},
 					Status: to.Ptr(armmachinelearningservices.EncryptionStatusEnabled),
 				},
-				FriendlyName: to.Ptr("<friendly-name>"),
+				FriendlyName: to.Ptr("HelloName"),
 				HbiWorkspace: to.Ptr(false),
-				KeyVault:     to.Ptr("<key-vault>"),
+				KeyVault:     to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.KeyVault/vaults/testkv"),
 				SharedPrivateLinkResources: []*armmachinelearningservices.SharedPrivateLinkResource{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("testdbresource"),
 						Properties: &armmachinelearningservices.SharedPrivateLinkResourceProperty{
-							GroupID:               to.Ptr("<group-id>"),
-							PrivateLinkResourceID: to.Ptr("<private-link-resource-id>"),
-							RequestMessage:        to.Ptr("<request-message>"),
+							GroupID:               to.Ptr("Sql"),
+							PrivateLinkResourceID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.DocumentDB/databaseAccounts/testdbresource/privateLinkResources/Sql"),
+							RequestMessage:        to.Ptr("Please approve"),
 							Status:                to.Ptr(armmachinelearningservices.PrivateEndpointServiceConnectionStatusApproved),
 						},
 					}},
-				StorageAccount: to.Ptr("<storage-account>"),
+				StorageAccount: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/accountcrud-1234/providers/Microsoft.Storage/storageAccounts/testStorageAccount"),
 			},
 		},
-		&armmachinelearningservices.WorkspacesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

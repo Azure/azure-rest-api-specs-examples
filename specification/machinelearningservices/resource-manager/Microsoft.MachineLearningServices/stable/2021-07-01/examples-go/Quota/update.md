@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.4.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv1.0.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -17,27 +17,25 @@ func ExampleQuotasClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmachinelearningservices.NewQuotasClient("<subscription-id>", cred, nil)
+	client, err := armmachinelearningservices.NewQuotasClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<location>",
+		"eastus",
 		armmachinelearningservices.QuotaUpdateParameters{
 			Value: []*armmachinelearningservices.QuotaBaseProperties{
 				{
-					Type:  to.Ptr("<type>"),
-					ID:    to.Ptr("<id>"),
+					Type:  to.Ptr("Microsoft.MachineLearningServices/workspaces/quotas"),
+					ID:    to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.MachineLearningServices/workspaces/demo_workspace1/quotas/Standard_DSv2_Family_Cluster_Dedicated_vCPUs"),
 					Limit: to.Ptr[int64](100),
 					Unit:  to.Ptr(armmachinelearningservices.QuotaUnitCount),
 				},
 				{
-					Type:  to.Ptr("<type>"),
-					ID:    to.Ptr("<id>"),
+					Type:  to.Ptr("Microsoft.MachineLearningServices/workspaces/quotas"),
+					ID:    to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.MachineLearningServices/workspaces/demo_workspace2/quotas/Standard_DSv2_Family_Cluster_Dedicated_vCPUs"),
 					Limit: to.Ptr[int64](200),
 					Unit:  to.Ptr(armmachinelearningservices.QuotaUnitCount),
 				}},
@@ -45,7 +43,6 @@ func ExampleQuotasClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

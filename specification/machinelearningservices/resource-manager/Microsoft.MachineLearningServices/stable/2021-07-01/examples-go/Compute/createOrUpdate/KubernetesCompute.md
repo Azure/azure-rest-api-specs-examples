@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv0.4.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv1.0.0/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmachinelearningservices_test
@@ -6,8 +6,6 @@ package armmachinelearningservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,25 +17,23 @@ func ExampleComputeClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmachinelearningservices.NewComputeClient("<subscription-id>", cred, nil)
+	client, err := armmachinelearningservices.NewComputeClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
-		"<compute-name>",
+		"testrg123",
+		"workspaces123",
+		"compute123",
 		armmachinelearningservices.ComputeResource{
 			Properties: &armmachinelearningservices.Kubernetes{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("some compute"),
 				ComputeType: to.Ptr(armmachinelearningservices.ComputeTypeKubernetes),
-				ResourceID:  to.Ptr("<resource-id>"),
+				ResourceID:  to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute123-56826-c9b00420020b2"),
 				Properties: &armmachinelearningservices.KubernetesProperties{
-					DefaultInstanceType: to.Ptr("<default-instance-type>"),
+					DefaultInstanceType: to.Ptr("defaultInstanceType"),
 					InstanceTypes: map[string]*armmachinelearningservices.InstanceTypeSchema{
 						"defaultInstanceType": {
 							Resources: &armmachinelearningservices.InstanceTypeSchemaResources{
@@ -54,20 +50,18 @@ func ExampleComputeClient_BeginCreateOrUpdate() {
 							},
 						},
 					},
-					Namespace: to.Ptr("<namespace>"),
+					Namespace: to.Ptr("default"),
 				},
 			},
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 		},
-		&armmachinelearningservices.ComputeClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

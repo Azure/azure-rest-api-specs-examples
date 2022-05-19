@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fm365securityandcompliance%2Farmm365securityandcompliance%2Fv0.4.0/sdk/resourcemanager/m365securityandcompliance/armm365securityandcompliance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fm365securityandcompliance%2Farmm365securityandcompliance%2Fv0.5.0/sdk/resourcemanager/m365securityandcompliance/armm365securityandcompliance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armm365securityandcompliance_test
@@ -6,8 +6,6 @@ package armm365securityandcompliance_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,32 +17,28 @@ func ExamplePrivateLinkServicesForMIPPolicySyncClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armm365securityandcompliance.NewPrivateLinkServicesForMIPPolicySyncClient("<subscription-id>", cred, nil)
+	client, err := armm365securityandcompliance.NewPrivateLinkServicesForMIPPolicySyncClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
+		"rg1",
+		"service1",
 		armm365securityandcompliance.ServicesPatchDescription{
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 			},
 		},
-		&armm365securityandcompliance.PrivateLinkServicesForMIPPolicySyncClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

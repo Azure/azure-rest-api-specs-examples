@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -6,8 +6,6 @@ package armapimanagement_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,75 +17,71 @@ func ExampleServiceClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewServiceClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewServiceClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
+		"rg1",
+		"apimService1",
 		armapimanagement.ServiceResource{
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 				"tag3": to.Ptr("value3"),
 			},
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Properties: &armapimanagement.ServiceProperties{
 				AdditionalLocations: []*armapimanagement.AdditionalLocation{
 					{
 						DisableGateway: to.Ptr(true),
-						Location:       to.Ptr("<location>"),
+						Location:       to.Ptr("East US"),
 						SKU: &armapimanagement.ServiceSKUProperties{
 							Name:     to.Ptr(armapimanagement.SKUTypePremium),
 							Capacity: to.Ptr[int32](1),
 						},
 					}},
 				APIVersionConstraint: &armapimanagement.APIVersionConstraint{
-					MinAPIVersion: to.Ptr("<min-apiversion>"),
+					MinAPIVersion: to.Ptr("2019-01-01"),
 				},
 				HostnameConfigurations: []*armapimanagement.HostnameConfiguration{
 					{
 						Type:                to.Ptr(armapimanagement.HostnameTypeProxy),
-						CertificatePassword: to.Ptr("<certificate-password>"),
+						CertificatePassword: to.Ptr("Password"),
 						DefaultSSLBinding:   to.Ptr(true),
-						EncodedCertificate:  to.Ptr("<encoded-certificate>"),
-						HostName:            to.Ptr("<host-name>"),
+						EncodedCertificate:  to.Ptr("****** Base 64 Encoded Certificate ************"),
+						HostName:            to.Ptr("gateway1.msitesting.net"),
 					},
 					{
 						Type:                to.Ptr(armapimanagement.HostnameTypeManagement),
-						CertificatePassword: to.Ptr("<certificate-password>"),
-						EncodedCertificate:  to.Ptr("<encoded-certificate>"),
-						HostName:            to.Ptr("<host-name>"),
+						CertificatePassword: to.Ptr("Password"),
+						EncodedCertificate:  to.Ptr("****** Base 64 Encoded Certificate ************"),
+						HostName:            to.Ptr("mgmt.msitesting.net"),
 					},
 					{
 						Type:                to.Ptr(armapimanagement.HostnameTypePortal),
-						CertificatePassword: to.Ptr("<certificate-password>"),
-						EncodedCertificate:  to.Ptr("<encoded-certificate>"),
-						HostName:            to.Ptr("<host-name>"),
+						CertificatePassword: to.Ptr("Password"),
+						EncodedCertificate:  to.Ptr("****** Base 64 Encoded Certificate ************"),
+						HostName:            to.Ptr("portal1.msitesting.net"),
 					}},
 				VirtualNetworkType: to.Ptr(armapimanagement.VirtualNetworkTypeNone),
-				PublisherEmail:     to.Ptr("<publisher-email>"),
-				PublisherName:      to.Ptr("<publisher-name>"),
+				PublisherEmail:     to.Ptr("apim@autorestsdk.com"),
+				PublisherName:      to.Ptr("autorestsdk"),
 			},
 			SKU: &armapimanagement.ServiceSKUProperties{
 				Name:     to.Ptr(armapimanagement.SKUTypePremium),
 				Capacity: to.Ptr[int32](1),
 			},
 		},
-		&armapimanagement.ServiceClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

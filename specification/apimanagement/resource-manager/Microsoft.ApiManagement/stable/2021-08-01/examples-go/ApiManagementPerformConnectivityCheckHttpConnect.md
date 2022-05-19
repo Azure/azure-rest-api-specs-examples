@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -6,8 +6,6 @@ package armapimanagement_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,20 +17,18 @@ func ExampleClient_BeginPerformConnectivityCheckAsync() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginPerformConnectivityCheckAsync(ctx,
-		"<resource-group-name>",
-		"<service-name>",
+		"rg1",
+		"apimService1",
 		armapimanagement.ConnectivityCheckRequest{
 			Destination: &armapimanagement.ConnectivityCheckRequestDestination{
-				Address: to.Ptr("<address>"),
+				Address: to.Ptr("https://microsoft.com"),
 				Port:    to.Ptr[int64](3306),
 			},
 			ProtocolConfiguration: &armapimanagement.ConnectivityCheckRequestProtocolConfiguration{
@@ -40,8 +36,8 @@ func ExampleClient_BeginPerformConnectivityCheckAsync() {
 					Method: to.Ptr(armapimanagement.MethodGET),
 					Headers: []*armapimanagement.HTTPHeader{
 						{
-							Name:  to.Ptr("<name>"),
-							Value: to.Ptr("<value>"),
+							Name:  to.Ptr("Authorization"),
+							Value: to.Ptr("Bearer myPreciousToken"),
 						}},
 					ValidStatusCodes: []*int64{
 						to.Ptr[int64](200),
@@ -49,19 +45,17 @@ func ExampleClient_BeginPerformConnectivityCheckAsync() {
 				},
 			},
 			Source: &armapimanagement.ConnectivityCheckRequestSource{
-				Region: to.Ptr("<region>"),
+				Region: to.Ptr("northeurope"),
 			},
 			Protocol: to.Ptr(armapimanagement.ConnectivityCheckProtocolHTTPS),
 		},
-		&armapimanagement.ClientBeginPerformConnectivityCheckAsyncOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

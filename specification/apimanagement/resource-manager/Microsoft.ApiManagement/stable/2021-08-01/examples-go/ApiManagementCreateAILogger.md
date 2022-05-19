@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,21 +17,19 @@ func ExampleLoggerClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewLoggerClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewLoggerClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<logger-id>",
+		"rg1",
+		"apimService1",
+		"loggerId",
 		armapimanagement.LoggerContract{
 			Properties: &armapimanagement.LoggerContractProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("adding a new logger"),
 				Credentials: map[string]*string{
 					"instrumentationKey": to.Ptr("11................a1"),
 				},
@@ -41,7 +39,6 @@ func ExampleLoggerClient_CreateOrUpdate() {
 		&armapimanagement.LoggerClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

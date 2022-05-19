@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -17,19 +17,17 @@ func ExampleGatewayCertificateAuthorityClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewGatewayCertificateAuthorityClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewGatewayCertificateAuthorityClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<gateway-id>",
-		"<certificate-id>",
+		"rg1",
+		"apimService1",
+		"gw1",
+		"cert1",
 		armapimanagement.GatewayCertificateAuthorityContract{
 			Properties: &armapimanagement.GatewayCertificateAuthorityContractProperties{
 				IsTrusted: to.Ptr(false),
@@ -38,7 +36,6 @@ func ExampleGatewayCertificateAuthorityClient_CreateOrUpdate() {
 		&armapimanagement.GatewayCertificateAuthorityClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

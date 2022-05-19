@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv0.5.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapimanagement%2Farmapimanagement%2Fv1.0.0/sdk/resourcemanager/apimanagement/armapimanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapimanagement_test
@@ -19,32 +19,29 @@ func ExampleAPIIssueClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPIIssueClient("<subscription-id>", cred, nil)
+	client, err := armapimanagement.NewAPIIssueClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<service-name>",
-		"<api-id>",
-		"<issue-id>",
+		"rg1",
+		"apimService1",
+		"57d1f7558aa04f15146d9d8a",
+		"57d2ef278aa04f0ad01d6cdc",
 		armapimanagement.IssueContract{
 			Properties: &armapimanagement.IssueContractProperties{
 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-01T22:21:20.467Z"); return t }()),
 				State:       to.Ptr(armapimanagement.StateOpen),
-				Description: to.Ptr("<description>"),
-				Title:       to.Ptr("<title>"),
-				UserID:      to.Ptr("<user-id>"),
+				Description: to.Ptr("New API issue description"),
+				Title:       to.Ptr("New API issue"),
+				UserID:      to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
 			},
 		},
 		&armapimanagement.APIIssueClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

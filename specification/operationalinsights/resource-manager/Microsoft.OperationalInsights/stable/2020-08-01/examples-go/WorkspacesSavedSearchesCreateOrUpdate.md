@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationalinsights%2Farmoperationalinsights%2Fv0.5.0/sdk/resourcemanager/operationalinsights/armoperationalinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foperationalinsights%2Farmoperationalinsights%2Fv1.0.0/sdk/resourcemanager/operationalinsights/armoperationalinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armoperationalinsights_test
@@ -17,29 +17,27 @@ func ExampleSavedSearchesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armoperationalinsights.NewSavedSearchesClient("<subscription-id>", cred, nil)
+	client, err := armoperationalinsights.NewSavedSearchesClient("00000000-0000-0000-0000-00000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
-		"<saved-search-id>",
+		"TestRG",
+		"TestWS",
+		"00000000-0000-0000-0000-00000000000",
 		armoperationalinsights.SavedSearch{
 			Properties: &armoperationalinsights.SavedSearchProperties{
-				Category:           to.Ptr("<category>"),
-				DisplayName:        to.Ptr("<display-name>"),
-				FunctionAlias:      to.Ptr("<function-alias>"),
-				FunctionParameters: to.Ptr("<function-parameters>"),
-				Query:              to.Ptr("<query>"),
+				Category:           to.Ptr("Saved Search Test Category"),
+				DisplayName:        to.Ptr("Create or Update Saved Search Test"),
+				FunctionAlias:      to.Ptr("heartbeat_func"),
+				FunctionParameters: to.Ptr("a:int=1"),
+				Query:              to.Ptr("Heartbeat | summarize Count() by Computer | take a"),
 				Tags: []*armoperationalinsights.Tag{
 					{
-						Name:  to.Ptr("<name>"),
-						Value: to.Ptr("<value>"),
+						Name:  to.Ptr("Group"),
+						Value: to.Ptr("Computer"),
 					}},
 				Version: to.Ptr[int64](2),
 			},
@@ -47,7 +45,6 @@ func ExampleSavedSearchesClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

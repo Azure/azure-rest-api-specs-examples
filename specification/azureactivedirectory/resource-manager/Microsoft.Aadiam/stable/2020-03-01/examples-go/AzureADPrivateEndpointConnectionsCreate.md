@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Faad%2Farmaad%2Fv0.4.0/sdk/resourcemanager/aad/armaad/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Faad%2Farmaad%2Fv1.0.0/sdk/resourcemanager/aad/armaad/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armaad_test
@@ -6,8 +6,6 @@ package armaad_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,39 +17,35 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armaad.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armaad.NewPrivateEndpointConnectionsClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<policy-name>",
-		"<private-endpoint-connection-name>",
+		"resourcegroup",
+		"example-policy-5849",
+		"{privateEndpointConnection name}",
 		armaad.PrivateEndpointConnection{
 			Properties: &armaad.PrivateEndpointConnectionProperties{
 				PrivateEndpoint: &armaad.PrivateEndpoint{
-					ID: to.Ptr("<id>"),
+					ID: to.Ptr("subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/microsoft.aadiam/privateLinkForAzureAD/ddb1/privateLinkConnections/{privateEndpointConnection name}"),
 				},
 				PrivateLinkServiceConnectionState: &armaad.PrivateLinkServiceConnectionState{
-					Description:     to.Ptr("<description>"),
-					ActionsRequired: to.Ptr("<actions-required>"),
+					Description:     to.Ptr("You may pass"),
+					ActionsRequired: to.Ptr("None"),
 					Status:          to.Ptr(armaad.PrivateEndpointServiceConnectionStatusApproved),
 				},
 			},
 		},
-		&armaad.PrivateEndpointConnectionsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

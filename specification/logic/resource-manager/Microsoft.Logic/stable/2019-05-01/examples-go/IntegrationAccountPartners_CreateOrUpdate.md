@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv1.0.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -17,28 +17,26 @@ func ExampleIntegrationAccountPartnersClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountPartnersClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewIntegrationAccountPartnersClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<integration-account-name>",
-		"<partner-name>",
+		"testResourceGroup",
+		"testIntegrationAccount",
+		"testPartner",
 		armlogic.IntegrationAccountPartner{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Tags:     map[string]*string{},
 			Properties: &armlogic.IntegrationAccountPartnerProperties{
 				Content: &armlogic.PartnerContent{
 					B2B: &armlogic.B2BPartnerContent{
 						BusinessIdentities: []*armlogic.BusinessIdentity{
 							{
-								Qualifier: to.Ptr("<qualifier>"),
-								Value:     to.Ptr("<value>"),
+								Qualifier: to.Ptr("AA"),
+								Value:     to.Ptr("ZZ"),
 							}},
 					},
 				},
@@ -49,7 +47,6 @@ func ExampleIntegrationAccountPartnersClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

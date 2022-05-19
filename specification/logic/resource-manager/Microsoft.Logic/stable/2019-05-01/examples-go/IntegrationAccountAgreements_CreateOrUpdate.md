@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv1.0.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -17,20 +17,18 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountAgreementsClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewIntegrationAccountAgreementsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<integration-account-name>",
-		"<agreement-name>",
+		"testResourceGroup",
+		"testIntegrationAccount",
+		"testAgreement",
 		armlogic.IntegrationAccountAgreement{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Tags: map[string]*string{
 				"IntegrationAccountAgreement": to.Ptr("<IntegrationAccountAgreementName>"),
 			},
@@ -48,8 +46,8 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 								},
 								EnvelopeSettings: &armlogic.AS2EnvelopeSettings{
 									AutogenerateFileName:                    to.Ptr(true),
-									FileNameTemplate:                        to.Ptr("<file-name-template>"),
-									MessageContentType:                      to.Ptr("<message-content-type>"),
+									FileNameTemplate:                        to.Ptr("Test"),
+									MessageContentType:                      to.Ptr("text/plain"),
 									SuspendMessageOnFileNameGenerationError: to.Ptr(true),
 									TransmitFileNameInMimeHeader:            to.Ptr(true),
 								},
@@ -58,11 +56,11 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 									SuspendDuplicateMessage: to.Ptr(true),
 								},
 								MdnSettings: &armlogic.AS2MdnSettings{
-									DispositionNotificationTo:  to.Ptr("<disposition-notification-to>"),
-									MdnText:                    to.Ptr("<mdn-text>"),
+									DispositionNotificationTo:  to.Ptr("http://tempuri.org"),
+									MdnText:                    to.Ptr("Sample"),
 									MicHashingAlgorithm:        to.Ptr(armlogic.HashingAlgorithmSHA1),
 									NeedMDN:                    to.Ptr(true),
-									ReceiptDeliveryURL:         to.Ptr("<receipt-delivery-url>"),
+									ReceiptDeliveryURL:         to.Ptr("http://tempuri.org"),
 									SendInboundMDNToMessageBox: to.Ptr(true),
 									SendMDNAsynchronously:      to.Ptr(true),
 									SignMDN:                    to.Ptr(true),
@@ -96,12 +94,12 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 								},
 							},
 							ReceiverBusinessIdentity: &armlogic.BusinessIdentity{
-								Qualifier: to.Ptr("<qualifier>"),
-								Value:     to.Ptr("<value>"),
+								Qualifier: to.Ptr("ZZ"),
+								Value:     to.Ptr("ZZ"),
 							},
 							SenderBusinessIdentity: &armlogic.BusinessIdentity{
-								Qualifier: to.Ptr("<qualifier>"),
-								Value:     to.Ptr("<value>"),
+								Qualifier: to.Ptr("AA"),
+								Value:     to.Ptr("AA"),
 							},
 						},
 						SendAgreement: &armlogic.AS2OneWayAgreement{
@@ -114,8 +112,8 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 								},
 								EnvelopeSettings: &armlogic.AS2EnvelopeSettings{
 									AutogenerateFileName:                    to.Ptr(true),
-									FileNameTemplate:                        to.Ptr("<file-name-template>"),
-									MessageContentType:                      to.Ptr("<message-content-type>"),
+									FileNameTemplate:                        to.Ptr("Test"),
+									MessageContentType:                      to.Ptr("text/plain"),
 									SuspendMessageOnFileNameGenerationError: to.Ptr(true),
 									TransmitFileNameInMimeHeader:            to.Ptr(true),
 								},
@@ -124,11 +122,11 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 									SuspendDuplicateMessage: to.Ptr(true),
 								},
 								MdnSettings: &armlogic.AS2MdnSettings{
-									DispositionNotificationTo:  to.Ptr("<disposition-notification-to>"),
-									MdnText:                    to.Ptr("<mdn-text>"),
+									DispositionNotificationTo:  to.Ptr("http://tempuri.org"),
+									MdnText:                    to.Ptr("Sample"),
 									MicHashingAlgorithm:        to.Ptr(armlogic.HashingAlgorithmSHA1),
 									NeedMDN:                    to.Ptr(true),
-									ReceiptDeliveryURL:         to.Ptr("<receipt-delivery-url>"),
+									ReceiptDeliveryURL:         to.Ptr("http://tempuri.org"),
 									SendInboundMDNToMessageBox: to.Ptr(true),
 									SendMDNAsynchronously:      to.Ptr(true),
 									SignMDN:                    to.Ptr(true),
@@ -162,33 +160,32 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 								},
 							},
 							ReceiverBusinessIdentity: &armlogic.BusinessIdentity{
-								Qualifier: to.Ptr("<qualifier>"),
-								Value:     to.Ptr("<value>"),
+								Qualifier: to.Ptr("AA"),
+								Value:     to.Ptr("AA"),
 							},
 							SenderBusinessIdentity: &armlogic.BusinessIdentity{
-								Qualifier: to.Ptr("<qualifier>"),
-								Value:     to.Ptr("<value>"),
+								Qualifier: to.Ptr("ZZ"),
+								Value:     to.Ptr("ZZ"),
 							},
 						},
 					},
 				},
 				GuestIdentity: &armlogic.BusinessIdentity{
-					Qualifier: to.Ptr("<qualifier>"),
-					Value:     to.Ptr("<value>"),
+					Qualifier: to.Ptr("AA"),
+					Value:     to.Ptr("AA"),
 				},
-				GuestPartner: to.Ptr("<guest-partner>"),
+				GuestPartner: to.Ptr("GuestPartner"),
 				HostIdentity: &armlogic.BusinessIdentity{
-					Qualifier: to.Ptr("<qualifier>"),
-					Value:     to.Ptr("<value>"),
+					Qualifier: to.Ptr("ZZ"),
+					Value:     to.Ptr("ZZ"),
 				},
-				HostPartner: to.Ptr("<host-partner>"),
+				HostPartner: to.Ptr("HostPartner"),
 				Metadata:    map[string]interface{}{},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

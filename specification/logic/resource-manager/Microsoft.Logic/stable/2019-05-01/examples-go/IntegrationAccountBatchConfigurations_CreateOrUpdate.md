@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv1.0.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -17,30 +17,28 @@ func ExampleIntegrationAccountBatchConfigurationsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountBatchConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewIntegrationAccountBatchConfigurationsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<integration-account-name>",
-		"<batch-configuration-name>",
+		"testResourceGroup",
+		"testIntegrationAccount",
+		"testBatchConfiguration",
 		armlogic.BatchConfiguration{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armlogic.BatchConfigurationProperties{
-				BatchGroupName: to.Ptr("<batch-group-name>"),
+				BatchGroupName: to.Ptr("DEFAULT"),
 				ReleaseCriteria: &armlogic.BatchReleaseCriteria{
 					BatchSize:    to.Ptr[int32](234567),
 					MessageCount: to.Ptr[int32](10),
 					Recurrence: &armlogic.WorkflowTriggerRecurrence{
 						Frequency: to.Ptr(armlogic.RecurrenceFrequencyMinute),
 						Interval:  to.Ptr[int32](1),
-						StartTime: to.Ptr("<start-time>"),
-						TimeZone:  to.Ptr("<time-zone>"),
+						StartTime: to.Ptr("2017-03-24T11:43:00"),
+						TimeZone:  to.Ptr("India Standard Time"),
 					},
 				},
 			},
@@ -48,7 +46,6 @@ func ExampleIntegrationAccountBatchConfigurationsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

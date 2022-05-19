@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv0.4.0/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ffrontdoor%2Farmfrontdoor%2Fv1.0.0/sdk/resourcemanager/frontdoor/armfrontdoor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armfrontdoor_test
@@ -6,8 +6,6 @@ package armfrontdoor_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,23 +17,21 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armfrontdoor.NewPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armfrontdoor.NewPoliciesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<policy-name>",
+		"rg1",
+		"Policy1",
 		armfrontdoor.WebApplicationFirewallPolicy{
 			Properties: &armfrontdoor.WebApplicationFirewallPolicyProperties{
 				CustomRules: &armfrontdoor.CustomRuleList{
 					Rules: []*armfrontdoor.CustomRule{
 						{
-							Name:   to.Ptr("<name>"),
+							Name:   to.Ptr("Rule1"),
 							Action: to.Ptr(armfrontdoor.ActionTypeBlock),
 							MatchConditions: []*armfrontdoor.MatchCondition{
 								{
@@ -50,7 +46,7 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 							RuleType:           to.Ptr(armfrontdoor.RuleTypeRateLimitRule),
 						},
 						{
-							Name:   to.Ptr("<name>"),
+							Name:   to.Ptr("Rule2"),
 							Action: to.Ptr(armfrontdoor.ActionTypeBlock),
 							MatchConditions: []*armfrontdoor.MatchCondition{
 								{
@@ -64,7 +60,7 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 										to.Ptr("windows")},
 									MatchVariable: to.Ptr(armfrontdoor.MatchVariableRequestHeader),
 									Operator:      to.Ptr(armfrontdoor.OperatorContains),
-									Selector:      to.Ptr("<selector>"),
+									Selector:      to.Ptr("UserAgent"),
 									Transforms: []*armfrontdoor.TransformType{
 										to.Ptr(armfrontdoor.TransformTypeLowercase)},
 								}},
@@ -78,7 +74,7 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 							Exclusions: []*armfrontdoor.ManagedRuleExclusion{
 								{
 									MatchVariable:         to.Ptr(armfrontdoor.ManagedRuleExclusionMatchVariableRequestHeaderNames),
-									Selector:              to.Ptr("<selector>"),
+									Selector:              to.Ptr("User-Agent"),
 									SelectorMatchOperator: to.Ptr(armfrontdoor.ManagedRuleExclusionSelectorMatchOperatorEquals),
 								}},
 							RuleGroupOverrides: []*armfrontdoor.ManagedRuleGroupOverride{
@@ -86,10 +82,10 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 									Exclusions: []*armfrontdoor.ManagedRuleExclusion{
 										{
 											MatchVariable:         to.Ptr(armfrontdoor.ManagedRuleExclusionMatchVariableRequestCookieNames),
-											Selector:              to.Ptr("<selector>"),
+											Selector:              to.Ptr("token"),
 											SelectorMatchOperator: to.Ptr(armfrontdoor.ManagedRuleExclusionSelectorMatchOperatorStartsWith),
 										}},
-									RuleGroupName: to.Ptr("<rule-group-name>"),
+									RuleGroupName: to.Ptr("SQLI"),
 									Rules: []*armfrontdoor.ManagedRuleOverride{
 										{
 											Action:       to.Ptr(armfrontdoor.ActionTypeRedirect),
@@ -97,27 +93,27 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 											Exclusions: []*armfrontdoor.ManagedRuleExclusion{
 												{
 													MatchVariable:         to.Ptr(armfrontdoor.ManagedRuleExclusionMatchVariableQueryStringArgNames),
-													Selector:              to.Ptr("<selector>"),
+													Selector:              to.Ptr("query"),
 													SelectorMatchOperator: to.Ptr(armfrontdoor.ManagedRuleExclusionSelectorMatchOperatorEquals),
 												}},
-											RuleID: to.Ptr("<rule-id>"),
+											RuleID: to.Ptr("942100"),
 										},
 										{
 											EnabledState: to.Ptr(armfrontdoor.ManagedRuleEnabledStateDisabled),
-											RuleID:       to.Ptr("<rule-id>"),
+											RuleID:       to.Ptr("942110"),
 										}},
 								}},
 							RuleSetAction:  to.Ptr(armfrontdoor.ManagedRuleSetActionTypeBlock),
-							RuleSetType:    to.Ptr("<rule-set-type>"),
-							RuleSetVersion: to.Ptr("<rule-set-version>"),
+							RuleSetType:    to.Ptr("DefaultRuleSet"),
+							RuleSetVersion: to.Ptr("1.0"),
 						}},
 				},
 				PolicySettings: &armfrontdoor.PolicySettings{
-					CustomBlockResponseBody:       to.Ptr("<custom-block-response-body>"),
+					CustomBlockResponseBody:       to.Ptr("PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="),
 					CustomBlockResponseStatusCode: to.Ptr[int32](499),
 					EnabledState:                  to.Ptr(armfrontdoor.PolicyEnabledStateEnabled),
 					Mode:                          to.Ptr(armfrontdoor.PolicyModePrevention),
-					RedirectURL:                   to.Ptr("<redirect-url>"),
+					RedirectURL:                   to.Ptr("http://www.bing.com"),
 					RequestBodyCheck:              to.Ptr(armfrontdoor.PolicyRequestBodyCheckDisabled),
 				},
 			},
@@ -125,15 +121,13 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 				Name: to.Ptr(armfrontdoor.SKUNameClassicAzureFrontDoor),
 			},
 		},
-		&armfrontdoor.PoliciesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

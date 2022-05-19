@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.4.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv1.0.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcostmanagement_test
@@ -19,17 +19,15 @@ func ExampleExportsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armcostmanagement.NewExportsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<scope>",
-		"<export-name>",
+		"providers/Microsoft.Billing/billingAccounts/123456",
+		"TestExport",
 		armcostmanagement.Export{
 			Properties: &armcostmanagement.ExportProperties{
 				Format: to.Ptr(armcostmanagement.FormatTypeCSV),
@@ -50,9 +48,9 @@ func ExampleExportsClient_CreateOrUpdate() {
 				},
 				DeliveryInfo: &armcostmanagement.ExportDeliveryInfo{
 					Destination: &armcostmanagement.ExportDeliveryDestination{
-						Container:      to.Ptr("<container>"),
-						ResourceID:     to.Ptr("<resource-id>"),
-						RootFolderPath: to.Ptr("<root-folder-path>"),
+						Container:      to.Ptr("exports"),
+						ResourceID:     to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Storage/storageAccounts/ccmeastusdiag182"),
+						RootFolderPath: to.Ptr("ad-hoc"),
 					},
 				},
 				Schedule: &armcostmanagement.ExportSchedule{
@@ -68,7 +66,6 @@ func ExampleExportsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

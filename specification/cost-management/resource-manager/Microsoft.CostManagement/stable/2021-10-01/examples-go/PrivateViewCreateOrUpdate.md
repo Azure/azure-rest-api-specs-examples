@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv0.4.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcostmanagement%2Farmcostmanagement%2Fv1.0.0/sdk/resourcemanager/costmanagement/armcostmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcostmanagement_test
@@ -17,22 +17,20 @@ func ExampleViewsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armcostmanagement.NewViewsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<view-name>",
+		"swaggerExample",
 		armcostmanagement.View{
-			ETag: to.Ptr("<etag>"),
+			ETag: to.Ptr("\"1d4ff9fe66f1d10\""),
 			Properties: &armcostmanagement.ViewProperties{
 				Accumulated: to.Ptr(armcostmanagement.AccumulatedTypeTrue),
 				Chart:       to.Ptr(armcostmanagement.ChartTypeTable),
-				DisplayName: to.Ptr("<display-name>"),
+				DisplayName: to.Ptr("swagger Example"),
 				Kpis: []*armcostmanagement.KpiProperties{
 					{
 						Type:    to.Ptr(armcostmanagement.KpiTypeForecast),
@@ -41,20 +39,20 @@ func ExampleViewsClient_CreateOrUpdate() {
 					{
 						Type:    to.Ptr(armcostmanagement.KpiTypeBudget),
 						Enabled: to.Ptr(true),
-						ID:      to.Ptr("<id>"),
+						ID:      to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"),
 					}},
 				Metric: to.Ptr(armcostmanagement.MetricTypeActualCost),
 				Pivots: []*armcostmanagement.PivotProperties{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("ServiceName"),
 						Type: to.Ptr(armcostmanagement.PivotTypeDimension),
 					},
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("MeterCategory"),
 						Type: to.Ptr(armcostmanagement.PivotTypeDimension),
 					},
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("swaggerTagKey"),
 						Type: to.Ptr(armcostmanagement.PivotTypeTagKey),
 					}},
 				Query: &armcostmanagement.ReportConfigDefinition{
@@ -62,7 +60,7 @@ func ExampleViewsClient_CreateOrUpdate() {
 					DataSet: &armcostmanagement.ReportConfigDataset{
 						Aggregation: map[string]*armcostmanagement.ReportConfigAggregation{
 							"totalCost": {
-								Name:     to.Ptr("<name>"),
+								Name:     to.Ptr("PreTaxCost"),
 								Function: to.Ptr(armcostmanagement.FunctionTypeSum),
 							},
 						},
@@ -70,7 +68,7 @@ func ExampleViewsClient_CreateOrUpdate() {
 						Grouping:    []*armcostmanagement.ReportConfigGrouping{},
 						Sorting: []*armcostmanagement.ReportConfigSorting{
 							{
-								Name:      to.Ptr("<name>"),
+								Name:      to.Ptr("UsageDate"),
 								Direction: to.Ptr(armcostmanagement.ReportConfigSortingTypeAscending),
 							}},
 					},
@@ -81,7 +79,6 @@ func ExampleViewsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

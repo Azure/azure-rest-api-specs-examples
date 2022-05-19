@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.6.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -6,8 +6,6 @@ package armsql_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,30 +17,26 @@ func ExampleManagedDatabasesClient_BeginCompleteRestore() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsql.NewManagedDatabasesClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewManagedDatabasesClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCompleteRestore(ctx,
-		"<resource-group-name>",
-		"<managed-instance-name>",
-		"<database-name>",
+		"myRG",
+		"myManagedInstanceName",
+		"myDatabase",
 		armsql.CompleteDatabaseRestoreDefinition{
-			LastBackupName: to.Ptr("<last-backup-name>"),
+			LastBackupName: to.Ptr("testdb1_log4"),
 		},
-		&armsql.ManagedDatabasesClientBeginCompleteRestoreOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

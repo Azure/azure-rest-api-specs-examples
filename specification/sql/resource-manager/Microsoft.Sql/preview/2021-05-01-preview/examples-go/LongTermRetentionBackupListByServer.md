@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.5.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsql%2Farmsql%2Fv0.6.0/sdk/resourcemanager/sql/armsql/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsql_test
@@ -16,16 +16,14 @@ func ExampleLongTermRetentionBackupsClient_NewListByServerPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsql.NewLongTermRetentionBackupsClient("<subscription-id>", cred, nil)
+	client, err := armsql.NewLongTermRetentionBackupsClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListByServerPager("<location-name>",
-		"<long-term-retention-server-name>",
+	pager := client.NewListByServerPager("japaneast",
+		"testserver",
 		&armsql.LongTermRetentionBackupsClientListByServerOptions{OnlyLatestPerDatabase: nil,
 			DatabaseState: nil,
 		})
@@ -33,7 +31,6 @@ func ExampleLongTermRetentionBackupsClient_NewListByServerPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

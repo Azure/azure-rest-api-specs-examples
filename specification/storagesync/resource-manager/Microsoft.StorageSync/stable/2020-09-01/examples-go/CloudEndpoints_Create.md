@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.4.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv1.0.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragesync_test
@@ -6,8 +6,6 @@ package armstoragesync_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,36 +17,32 @@ func ExampleCloudEndpointsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstoragesync.NewCloudEndpointsClient("<subscription-id>", cred, nil)
+	client, err := armstoragesync.NewCloudEndpointsClient("52b8da2f-61e0-4a1f-8dde-336911f367fb", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<storage-sync-service-name>",
-		"<sync-group-name>",
-		"<cloud-endpoint-name>",
+		"SampleResourceGroup_1",
+		"SampleStorageSyncService_1",
+		"SampleSyncGroup_1",
+		"SampleCloudEndpoint_1",
 		armstoragesync.CloudEndpointCreateParameters{
 			Properties: &armstoragesync.CloudEndpointCreateParametersProperties{
-				AzureFileShareName:       to.Ptr("<azure-file-share-name>"),
-				FriendlyName:             to.Ptr("<friendly-name>"),
-				StorageAccountResourceID: to.Ptr("<storage-account-resource-id>"),
-				StorageAccountTenantID:   to.Ptr("<storage-account-tenant-id>"),
+				AzureFileShareName:       to.Ptr("cvcloud-afscv-0719-058-a94a1354-a1fd-4e9a-9a50-919fad8c4ba4"),
+				FriendlyName:             to.Ptr("ankushbsubscriptionmgmtmab"),
+				StorageAccountResourceID: to.Ptr("/subscriptions/744f4d70-6d17-4921-8970-a765d14f763f/resourceGroups/tminienv59svc/providers/Microsoft.Storage/storageAccounts/tminienv59storage"),
+				StorageAccountTenantID:   to.Ptr("\"72f988bf-86f1-41af-91ab-2d7cd011db47\""),
 			},
 		},
-		&armstoragesync.CloudEndpointsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

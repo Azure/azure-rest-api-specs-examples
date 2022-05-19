@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvmwarecloudsimple%2Farmvmwarecloudsimple%2Fv0.4.0/sdk/resourcemanager/vmwarecloudsimple/armvmwarecloudsimple/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fvmwarecloudsimple%2Farmvmwarecloudsimple%2Fv1.0.0/sdk/resourcemanager/vmwarecloudsimple/armvmwarecloudsimple/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armvmwarecloudsimple_test
@@ -6,8 +6,6 @@ package armvmwarecloudsimple_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,55 +17,51 @@ func ExampleVirtualMachinesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armvmwarecloudsimple.NewVirtualMachinesClient("<subscription-id>", cred, nil)
+	client, err := armvmwarecloudsimple.NewVirtualMachinesClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<referer>",
-		"<virtual-machine-name>",
+		"myResourceGroup",
+		"https://management.azure.com/",
+		"myVirtualMachine",
 		armvmwarecloudsimple.VirtualMachine{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus2"),
 			Properties: &armvmwarecloudsimple.VirtualMachineProperties{
 				AmountOfRAM: to.Ptr[int32](4096),
 				Disks: []*armvmwarecloudsimple.VirtualDisk{
 					{
-						ControllerID:     to.Ptr("<controller-id>"),
+						ControllerID:     to.Ptr("1000"),
 						IndependenceMode: to.Ptr(armvmwarecloudsimple.DiskIndependenceModePersistent),
 						TotalSize:        to.Ptr[int32](10485760),
-						VirtualDiskID:    to.Ptr("<virtual-disk-id>"),
+						VirtualDiskID:    to.Ptr("2000"),
 					}},
 				Nics: []*armvmwarecloudsimple.VirtualNic{
 					{
 						Network: &armvmwarecloudsimple.VirtualNetwork{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud/virtualNetworks/dvportgroup-19"),
 						},
 						NicType:      to.Ptr(armvmwarecloudsimple.NICTypeE1000),
 						PowerOnBoot:  to.Ptr(true),
-						VirtualNicID: to.Ptr("<virtual-nic-id>"),
+						VirtualNicID: to.Ptr("4000"),
 					}},
 				NumberOfCores:  to.Ptr[int32](2),
-				PrivateCloudID: to.Ptr("<private-cloud-id>"),
+				PrivateCloudID: to.Ptr("/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud"),
 				ResourcePool: &armvmwarecloudsimple.ResourcePool{
-					ID: to.Ptr("<id>"),
+					ID: to.Ptr("/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud/resourcePools/resgroup-26"),
 				},
-				TemplateID: to.Ptr("<template-id>"),
+				TemplateID: to.Ptr("/subscriptions/{subscription-id}/providers/Microsoft.VMwareCloudSimple/locations/westus2/privateClouds/myPrivateCloud/virtualMachineTemplates/vm-34"),
 			},
 		},
-		&armvmwarecloudsimple.VirtualMachinesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhdinsight%2Farmhdinsight%2Fv0.4.0/sdk/resourcemanager/hdinsight/armhdinsight/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhdinsight%2Farmhdinsight%2Fv1.0.0/sdk/resourcemanager/hdinsight/armhdinsight/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhdinsight_test
@@ -6,8 +6,6 @@ package armhdinsight_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleClustersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhdinsight.NewClustersClient("<subscription-id>", cred, nil)
+	client, err := armhdinsight.NewClustersClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
+		"rg1",
+		"cluster1",
 		armhdinsight.ClusterCreateParametersExtended{
 			Properties: &armhdinsight.ClusterCreateProperties{
 				ClusterDefinition: &armhdinsight.ClusterDefinition{
@@ -43,13 +39,13 @@ func ExampleClustersClient_BeginCreate() {
 							"restAuthCredential.username":  "admin",
 						},
 					},
-					Kind: to.Ptr("<kind>"),
+					Kind: to.Ptr("hadoop"),
 				},
-				ClusterVersion: to.Ptr("<cluster-version>"),
+				ClusterVersion: to.Ptr("3.6"),
 				ComputeProfile: &armhdinsight.ComputeProfile{
 					Roles: []*armhdinsight.Role{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("workernode"),
 							AutoscaleConfiguration: &armhdinsight.Autoscale{
 								Recurrence: &armhdinsight.AutoscaleRecurrence{
 									Schedule: []*armhdinsight.AutoscaleSchedule{
@@ -63,7 +59,7 @@ func ExampleClustersClient_BeginCreate() {
 											TimeAndCapacity: &armhdinsight.AutoscaleTimeAndCapacity{
 												MaxInstanceCount: to.Ptr[int32](3),
 												MinInstanceCount: to.Ptr[int32](3),
-												Time:             to.Ptr("<time>"),
+												Time:             to.Ptr("09:00"),
 											},
 										},
 										{
@@ -76,7 +72,7 @@ func ExampleClustersClient_BeginCreate() {
 											TimeAndCapacity: &armhdinsight.AutoscaleTimeAndCapacity{
 												MaxInstanceCount: to.Ptr[int32](6),
 												MinInstanceCount: to.Ptr[int32](6),
-												Time:             to.Ptr("<time>"),
+												Time:             to.Ptr("18:00"),
 											},
 										},
 										{
@@ -86,7 +82,7 @@ func ExampleClustersClient_BeginCreate() {
 											TimeAndCapacity: &armhdinsight.AutoscaleTimeAndCapacity{
 												MaxInstanceCount: to.Ptr[int32](2),
 												MinInstanceCount: to.Ptr[int32](2),
-												Time:             to.Ptr("<time>"),
+												Time:             to.Ptr("09:00"),
 											},
 										},
 										{
@@ -96,19 +92,19 @@ func ExampleClustersClient_BeginCreate() {
 											TimeAndCapacity: &armhdinsight.AutoscaleTimeAndCapacity{
 												MaxInstanceCount: to.Ptr[int32](4),
 												MinInstanceCount: to.Ptr[int32](4),
-												Time:             to.Ptr("<time>"),
+												Time:             to.Ptr("18:00"),
 											},
 										}},
-									TimeZone: to.Ptr("<time-zone>"),
+									TimeZone: to.Ptr("China Standard Time"),
 								},
 							},
 							HardwareProfile: &armhdinsight.HardwareProfile{
-								VMSize: to.Ptr("<vmsize>"),
+								VMSize: to.Ptr("Standard_D4_V2"),
 							},
 							OSProfile: &armhdinsight.OsProfile{
 								LinuxOperatingSystemProfile: &armhdinsight.LinuxOperatingSystemProfile{
-									Password: to.Ptr("<password>"),
-									Username: to.Ptr("<username>"),
+									Password: to.Ptr("**********"),
+									Username: to.Ptr("sshuser"),
 								},
 							},
 							ScriptActions:       []*armhdinsight.ScriptAction{},
@@ -119,24 +115,22 @@ func ExampleClustersClient_BeginCreate() {
 				StorageProfile: &armhdinsight.StorageProfile{
 					Storageaccounts: []*armhdinsight.StorageAccount{
 						{
-							Name:      to.Ptr("<name>"),
-							Container: to.Ptr("<container>"),
+							Name:      to.Ptr("mystorage.blob.core.windows.net"),
+							Container: to.Ptr("hdinsight-autoscale-tes-2019-06-18t05-49-16-591z"),
 							IsDefault: to.Ptr(true),
-							Key:       to.Ptr("<key>"),
+							Key:       to.Ptr("storagekey"),
 						}},
 				},
 				Tier: to.Ptr(armhdinsight.TierStandard),
 			},
 		},
-		&armhdinsight.ClustersClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

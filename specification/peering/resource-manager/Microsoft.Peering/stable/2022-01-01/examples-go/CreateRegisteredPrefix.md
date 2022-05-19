@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv0.5.0/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv1.0.0/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpeering_test
@@ -17,27 +17,24 @@ func ExampleRegisteredPrefixesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpeering.NewRegisteredPrefixesClient("<subscription-id>", cred, nil)
+	client, err := armpeering.NewRegisteredPrefixesClient("subId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<peering-name>",
-		"<registered-prefix-name>",
+		"rgName",
+		"peeringName",
+		"registeredPrefixName",
 		armpeering.RegisteredPrefix{
 			Properties: &armpeering.RegisteredPrefixProperties{
-				Prefix: to.Ptr("<prefix>"),
+				Prefix: to.Ptr("10.22.20.0/24"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

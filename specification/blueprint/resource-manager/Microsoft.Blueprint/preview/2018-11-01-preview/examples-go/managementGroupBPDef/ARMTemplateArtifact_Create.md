@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.4.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.5.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -17,18 +17,16 @@ func ExampleArtifactsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armblueprint.NewArtifactsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.CreateOrUpdate(ctx,
-		"<resource-scope>",
-		"<blueprint-name>",
-		"<artifact-name>",
+		"providers/Microsoft.Management/managementGroups/ContosoOnlineGroup",
+		"simpleBlueprint",
+		"storageTemplate",
 		&armblueprint.TemplateArtifact{
 			Kind: to.Ptr(armblueprint.ArtifactKindTemplate),
 			Properties: &armblueprint.TemplateArtifactProperties{
@@ -37,7 +35,7 @@ func ExampleArtifactsClient_CreateOrUpdate() {
 						Value: "[parameters('storageAccountType')]",
 					},
 				},
-				ResourceGroup: to.Ptr("<resource-group>"),
+				ResourceGroup: to.Ptr("storageRG"),
 				Template: map[string]interface{}{
 					"contentVersion": "1.0.0.0",
 					"outputs": map[string]interface{}{
@@ -83,7 +81,6 @@ func ExampleArtifactsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

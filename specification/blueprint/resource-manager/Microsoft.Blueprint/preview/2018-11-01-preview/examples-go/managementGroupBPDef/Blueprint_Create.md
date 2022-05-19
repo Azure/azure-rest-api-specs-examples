@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.4.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fblueprint%2Farmblueprint%2Fv0.5.0/sdk/resourcemanager/blueprint/armblueprint/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armblueprint_test
@@ -17,45 +17,43 @@ func ExampleBlueprintsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armblueprint.NewBlueprintsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.CreateOrUpdate(ctx,
-		"<resource-scope>",
-		"<blueprint-name>",
+		"providers/Microsoft.Management/managementGroups/ContosoOnlineGroup",
+		"simpleBlueprint",
 		armblueprint.Blueprint{
 			Properties: &armblueprint.Properties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"),
 				Parameters: map[string]*armblueprint.ParameterDefinition{
 					"costCenter": {
 						Type: to.Ptr(armblueprint.TemplateParameterTypeString),
 						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							DisplayName: to.Ptr("<display-name>"),
+							DisplayName: to.Ptr("force cost center tag for all resources under given subscription."),
 						},
 					},
 					"owners": {
 						Type: to.Ptr(armblueprint.TemplateParameterTypeArray),
 						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							DisplayName: to.Ptr("<display-name>"),
+							DisplayName: to.Ptr("assign owners to subscription along with blueprint assignment."),
 						},
 					},
 					"storageAccountType": {
 						Type: to.Ptr(armblueprint.TemplateParameterTypeString),
 						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							DisplayName: to.Ptr("<display-name>"),
+							DisplayName: to.Ptr("storage account type."),
 						},
 					},
 				},
 				ResourceGroups: map[string]*armblueprint.ResourceGroupDefinition{
 					"storageRG": {
 						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							Description: to.Ptr("<description>"),
-							DisplayName: to.Ptr("<display-name>"),
+							Description: to.Ptr("Contains storageAccounts that collect all shoebox logs."),
+							DisplayName: to.Ptr("storage resource group"),
 						},
 					},
 				},
@@ -65,7 +63,6 @@ func ExampleBlueprintsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

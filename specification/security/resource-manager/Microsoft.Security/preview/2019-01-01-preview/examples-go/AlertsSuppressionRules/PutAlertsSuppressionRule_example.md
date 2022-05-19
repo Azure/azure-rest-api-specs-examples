@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.7.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -19,22 +19,20 @@ func ExampleAlertsSuppressionRulesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewAlertsSuppressionRulesClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewAlertsSuppressionRulesClient("20ff7fc3-e762-44dd-bd96-b71116dcdc23", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<alerts-suppression-rule-name>",
+		"dismissIpAnomalyAlerts",
 		armsecurity.AlertsSuppressionRule{
 			Properties: &armsecurity.AlertsSuppressionRuleProperties{
-				AlertType:         to.Ptr("<alert-type>"),
-				Comment:           to.Ptr("<comment>"),
+				AlertType:         to.Ptr("IpAnomaly"),
+				Comment:           to.Ptr("Test VM"),
 				ExpirationDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T19:50:47.083633Z"); return t }()),
-				Reason:            to.Ptr("<reason>"),
+				Reason:            to.Ptr("FalsePositive"),
 				State:             to.Ptr(armsecurity.RuleStateEnabled),
 				SuppressionAlertsScope: &armsecurity.SuppressionAlertsScope{
 					AllOf: []*armsecurity.ScopeElement{
@@ -45,13 +43,13 @@ func ExampleAlertsSuppressionRulesClient_Update() {
 									"52.164.206.56",
 								},
 							},
-							Field: to.Ptr("<field>"),
+							Field: to.Ptr("entities.ip.address"),
 						},
 						{
 							AdditionalProperties: map[string]interface{}{
 								"contains": "POWERSHELL.EXE",
 							},
-							Field: to.Ptr("<field>"),
+							Field: to.Ptr("entities.process.commandline"),
 						}},
 				},
 			},
@@ -59,7 +57,6 @@ func ExampleAlertsSuppressionRulesClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

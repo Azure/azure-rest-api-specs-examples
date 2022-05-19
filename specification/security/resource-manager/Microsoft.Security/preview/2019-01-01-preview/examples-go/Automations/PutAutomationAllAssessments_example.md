@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.7.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -17,34 +17,32 @@ func ExampleAutomationsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewAutomationsClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewAutomationsClient("a5caac9c-5c04-49af-b3d0-e204f40345d5", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<automation-name>",
+		"exampleResourceGroup",
+		"exampleAutomation",
 		armsecurity.Automation{
-			Location: to.Ptr("<location>"),
-			Etag:     to.Ptr("<etag>"),
+			Location: to.Ptr("Central US"),
+			Etag:     to.Ptr("etag value (must be supplied for update)"),
 			Tags:     map[string]*string{},
 			Properties: &armsecurity.AutomationProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("An example of a security automation that triggers one LogicApp resource (myTest1) on any security assessment"),
 				Actions: []armsecurity.AutomationActionClassification{
 					&armsecurity.AutomationActionLogicApp{
 						ActionType:         to.Ptr(armsecurity.ActionTypeLogicApp),
-						LogicAppResourceID: to.Ptr("<logic-app-resource-id>"),
-						URI:                to.Ptr("<uri>"),
+						LogicAppResourceID: to.Ptr("/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1"),
+						URI:                to.Ptr("https://exampleTriggerUri1.com"),
 					}},
 				IsEnabled: to.Ptr(true),
 				Scopes: []*armsecurity.AutomationScope{
 					{
-						Description: to.Ptr("<description>"),
-						ScopePath:   to.Ptr("<scope-path>"),
+						Description: to.Ptr("A description that helps to identify this scope - for example: security assessments that relate to the resource group myResourceGroup within the subscription a5caac9c-5c04-49af-b3d0-e204f40345d5"),
+						ScopePath:   to.Ptr("/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/myResourceGroup"),
 					}},
 				Sources: []*armsecurity.AutomationSource{
 					{
@@ -55,7 +53,6 @@ func ExampleAutomationsClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

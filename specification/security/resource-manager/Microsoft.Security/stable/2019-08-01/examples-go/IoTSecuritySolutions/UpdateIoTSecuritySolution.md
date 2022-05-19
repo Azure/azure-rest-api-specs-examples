@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.6.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsecurity%2Farmsecurity%2Fv0.7.0/sdk/resourcemanager/security/armsecurity/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsecurity_test
@@ -17,17 +17,15 @@ func ExampleIotSecuritySolutionClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewIotSecuritySolutionClient("<subscription-id>", cred, nil)
+	client, err := armsecurity.NewIotSecuritySolutionClient("20ff7fc3-e762-44dd-bd96-b71116dcdc23", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<solution-name>",
+		"myRg",
+		"default",
 		armsecurity.UpdateIotSecuritySolutionData{
 			Tags: map[string]*string{
 				"foo": to.Ptr("bar"),
@@ -43,7 +41,7 @@ func ExampleIotSecuritySolutionClient_Update() {
 						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
 					}},
 				UserDefinedResources: &armsecurity.UserDefinedResourcesProperties{
-					Query: to.Ptr("<query>"),
+					Query: to.Ptr("where type != \"microsoft.devices/iothubs\" | where name contains \"v2\""),
 					QuerySubscriptions: []*string{
 						to.Ptr("075423e9-7d33-4166-8bdf-3920b04e3735")},
 				},
@@ -52,7 +50,6 @@ func ExampleIotSecuritySolutionClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

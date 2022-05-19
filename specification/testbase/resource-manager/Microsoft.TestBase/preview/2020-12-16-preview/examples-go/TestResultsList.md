@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.4.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Ftestbase%2Farmtestbase%2Fv0.5.0/sdk/resourcemanager/testbase/armtestbase/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armtestbase_test
@@ -17,24 +17,21 @@ func ExampleTestResultsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armtestbase.NewTestResultsClient("<subscription-id>", cred, nil)
+	client, err := armtestbase.NewTestResultsClient("476f61a4-952c-422a-b4db-568a828f35df", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<resource-group-name>",
-		"<test-base-account-name>",
-		"<package-name>",
+	pager := client.NewListPager("contoso-rg1",
+		"contoso-testBaseAccount1",
+		"contoso-package2",
 		armtestbase.OsUpdateTypeSecurityUpdate,
-		&armtestbase.TestResultsClientListOptions{Filter: to.Ptr("<filter>")})
+		&armtestbase.TestResultsClientListOptions{Filter: to.Ptr("osName eq 'Windows 10 2004' and releaseName eq '2020.11B'")})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

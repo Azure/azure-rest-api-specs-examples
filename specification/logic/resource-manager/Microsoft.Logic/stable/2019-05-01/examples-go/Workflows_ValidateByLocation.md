@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv1.0.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -17,20 +17,18 @@ func ExampleWorkflowsClient_ValidateByLocation() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewWorkflowsClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewWorkflowsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.ValidateByLocation(ctx,
-		"<resource-group-name>",
-		"<location>",
-		"<workflow-name>",
+		"test-resource-group",
+		"brazilsouth",
+		"test-workflow",
 		armlogic.Workflow{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("brazilsouth"),
 			Tags:     map[string]*string{},
 			Properties: &armlogic.WorkflowProperties{
 				Definition: map[string]interface{}{
@@ -42,14 +40,13 @@ func ExampleWorkflowsClient_ValidateByLocation() {
 					"triggers":       map[string]interface{}{},
 				},
 				IntegrationAccount: &armlogic.ResourceReference{
-					ID: to.Ptr("<id>"),
+					ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Logic/integrationAccounts/test-integration-account"),
 				},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

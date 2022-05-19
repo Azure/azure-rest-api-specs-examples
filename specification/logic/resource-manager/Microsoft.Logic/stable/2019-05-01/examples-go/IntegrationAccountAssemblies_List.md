@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv1.0.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -16,22 +16,19 @@ func ExampleIntegrationAccountAssembliesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountAssembliesClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewIntegrationAccountAssembliesClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<resource-group-name>",
-		"<integration-account-name>",
+	pager := client.NewListPager("testResourceGroup",
+		"testIntegrationAccount",
 		nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

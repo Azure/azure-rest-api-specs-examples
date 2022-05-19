@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv0.5.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogic%2Farmlogic%2Fv1.0.0/sdk/resourcemanager/logic/armlogic/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogic_test
@@ -17,35 +17,32 @@ func ExampleIntegrationAccountCertificatesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountCertificatesClient("<subscription-id>", cred, nil)
+	client, err := armlogic.NewIntegrationAccountCertificatesClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<integration-account-name>",
-		"<certificate-name>",
+		"testResourceGroup",
+		"testIntegrationAccount",
+		"testCertificate",
 		armlogic.IntegrationAccountCertificate{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("brazilsouth"),
 			Properties: &armlogic.IntegrationAccountCertificateProperties{
 				Key: &armlogic.KeyVaultKeyReference{
-					KeyName: to.Ptr("<key-name>"),
+					KeyName: to.Ptr("<keyName>"),
 					KeyVault: &armlogic.KeyVaultKeyReferenceKeyVault{
-						ID: to.Ptr("<id>"),
+						ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testResourceGroup/providers/microsoft.keyvault/vaults/<keyVaultName>"),
 					},
-					KeyVersion: to.Ptr("<key-version>"),
+					KeyVersion: to.Ptr("87d9764197604449b9b8eb7bd8710868"),
 				},
-				PublicCertificate: to.Ptr("<public-certificate>"),
+				PublicCertificate: to.Ptr("<publicCertificateValue>"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

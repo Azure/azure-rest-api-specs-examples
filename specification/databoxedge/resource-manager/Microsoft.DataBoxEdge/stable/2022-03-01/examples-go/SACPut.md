@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.4.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv1.0.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -6,8 +6,6 @@ package armdataboxedge_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,40 +17,36 @@ func ExampleStorageAccountCredentialsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdataboxedge.NewStorageAccountCredentialsClient("<subscription-id>", cred, nil)
+	client, err := armdataboxedge.NewStorageAccountCredentialsClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<device-name>",
-		"<name>",
-		"<resource-group-name>",
+		"testedgedevice",
+		"sac1",
+		"GroupForEdgeAutomation",
 		armdataboxedge.StorageAccountCredential{
 			Properties: &armdataboxedge.StorageAccountCredentialProperties{
 				AccountKey: &armdataboxedge.AsymmetricEncryptedSecret{
 					EncryptionAlgorithm:      to.Ptr(armdataboxedge.EncryptionAlgorithmAES256),
-					EncryptionCertThumbprint: to.Ptr("<encryption-cert-thumbprint>"),
-					Value:                    to.Ptr("<value>"),
+					EncryptionCertThumbprint: to.Ptr("2A9D8D6BE51574B5461230AEF02F162C5F01AD31"),
+					Value:                    to.Ptr("lAeZEYi6rNP1/EyNaVUYmTSZEYyaIaWmwUsGwek0+xiZj54GM9Ue9/UA2ed/ClC03wuSit2XzM/cLRU5eYiFBwks23rGwiQOr3sruEL2a74EjPD050xYjA6M1I2hu/w2yjVHhn5j+DbXS4Xzi+rHHNZK3DgfDO3PkbECjPck+PbpSBjy9+6Mrjcld5DIZhUAeMlMHrFlg+WKRKB14o/og56u5/xX6WKlrMLEQ+y6E18dUwvWs2elTNoVO8PBE8SM/CfooX4AMNvaNdSObNBPdP+F6Lzc556nFNWXrBLRt0vC7s9qTiVRO4x/qCNaK/B4y7IqXMllwQFf4Np9UQ2ECA=="),
 				},
 				AccountType: to.Ptr(armdataboxedge.AccountTypeBlobStorage),
-				Alias:       to.Ptr("<alias>"),
+				Alias:       to.Ptr("sac1"),
 				SSLStatus:   to.Ptr(armdataboxedge.SSLStatusDisabled),
-				UserName:    to.Ptr("<user-name>"),
+				UserName:    to.Ptr("cisbvt"),
 			},
 		},
-		&armdataboxedge.StorageAccountCredentialsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

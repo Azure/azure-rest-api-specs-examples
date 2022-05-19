@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabricmesh%2Farmservicefabricmesh%2Fv0.4.0/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabricmesh%2Farmservicefabricmesh%2Fv0.5.0/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabricmesh_test
@@ -17,30 +17,27 @@ func ExampleNetworkClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicefabricmesh.NewNetworkClient("<subscription-id>", cred, nil)
+	client, err := armservicefabricmesh.NewNetworkClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<network-resource-name>",
+		"sbz_demo",
+		"sampleNetwork",
 		armservicefabricmesh.NetworkResourceDescription{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("EastUS"),
 			Tags:     map[string]*string{},
 			Properties: &armservicefabricmesh.LocalNetworkResourceProperties{
 				Kind:                 to.Ptr(armservicefabricmesh.NetworkKindLocal),
-				Description:          to.Ptr("<description>"),
-				NetworkAddressPrefix: to.Ptr("<network-address-prefix>"),
+				Description:          to.Ptr("Service Fabric Mesh sample network."),
+				NetworkAddressPrefix: to.Ptr("2.0.0.0/16"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabricmesh%2Farmservicefabricmesh%2Fv0.4.0/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabricmesh%2Farmservicefabricmesh%2Fv0.5.0/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabricmesh_test
@@ -17,30 +17,27 @@ func ExampleSecretClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicefabricmesh.NewSecretClient("<subscription-id>", cred, nil)
+	client, err := armservicefabricmesh.NewSecretClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<secret-resource-name>",
+		"sbz_demo",
+		"dbConnectionString",
 		armservicefabricmesh.SecretResourceDescription{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("EastUS"),
 			Tags:     map[string]*string{},
 			Properties: &armservicefabricmesh.InlinedValueSecretResourceProperties{
 				Kind:        to.Ptr(armservicefabricmesh.SecretKindInlinedValue),
-				Description: to.Ptr("<description>"),
-				ContentType: to.Ptr("<content-type>"),
+				Description: to.Ptr("Mongo DB connection string for backend database!"),
+				ContentType: to.Ptr("text/plain"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

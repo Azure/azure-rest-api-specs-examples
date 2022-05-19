@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchaos%2Farmchaos%2Fv0.4.0/sdk/resourcemanager/chaos/armchaos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchaos%2Farmchaos%2Fv0.5.0/sdk/resourcemanager/chaos/armchaos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armchaos_test
@@ -16,22 +16,19 @@ func ExampleCapabilityTypesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armchaos.NewCapabilityTypesClient("<subscription-id>", cred, nil)
+	client, err := armchaos.NewCapabilityTypesClient("6b052e15-03d3-4f17-b2e1-be7f07588291", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<location-name>",
-		"<target-type-name>",
+	pager := client.NewListPager("westus2",
+		"Microsoft-VirtualMachine",
 		&armchaos.CapabilityTypesClientListOptions{ContinuationToken: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

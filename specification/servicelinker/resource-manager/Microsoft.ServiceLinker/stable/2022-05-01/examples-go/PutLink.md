@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicelinker%2Farmservicelinker%2Fv0.4.0/sdk/resourcemanager/servicelinker/armservicelinker/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicelinker%2Farmservicelinker%2Fv1.0.0/sdk/resourcemanager/servicelinker/armservicelinker/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicelinker_test
@@ -6,8 +6,6 @@ package armservicelinker_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,42 +17,38 @@ func ExampleLinkerClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armservicelinker.NewLinkerClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-uri>",
-		"<linker-name>",
+		"subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app",
+		"linkName",
 		armservicelinker.LinkerResource{
 			Properties: &armservicelinker.LinkerProperties{
 				AuthInfo: &armservicelinker.SecretAuthInfo{
 					AuthType: to.Ptr(armservicelinker.AuthTypeSecret),
-					Name:     to.Ptr("<name>"),
+					Name:     to.Ptr("name"),
 					SecretInfo: &armservicelinker.ValueSecretInfo{
 						SecretType: to.Ptr(armservicelinker.SecretTypeRawValue),
-						Value:      to.Ptr("<value>"),
+						Value:      to.Ptr("secret"),
 					},
 				},
 				TargetService: &armservicelinker.AzureResource{
-					Type: to.Ptr(armservicelinker.TypeAzureResource),
-					ID:   to.Ptr("<id>"),
+					Type: to.Ptr(armservicelinker.TargetServiceTypeAzureResource),
+					ID:   to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/test-pg/databases/test-db"),
 				},
 			},
 		},
-		&armservicelinker.LinkerClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

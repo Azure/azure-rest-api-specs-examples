@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragepool%2Farmstoragepool%2Fv0.4.0/sdk/resourcemanager/storagepool/armstoragepool/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragepool%2Farmstoragepool%2Fv1.0.0/sdk/resourcemanager/storagepool/armstoragepool/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragepool_test
@@ -6,8 +6,6 @@ package armstoragepool_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,38 +17,34 @@ func ExampleIscsiTargetsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstoragepool.NewIscsiTargetsClient("<subscription-id>", cred, nil)
+	client, err := armstoragepool.NewIscsiTargetsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<disk-pool-name>",
-		"<iscsi-target-name>",
+		"myResourceGroup",
+		"myDiskPool",
+		"myIscsiTarget",
 		armstoragepool.IscsiTargetCreate{
 			Properties: &armstoragepool.IscsiTargetCreateProperties{
 				ACLMode: to.Ptr(armstoragepool.IscsiTargetACLModeDynamic),
 				Luns: []*armstoragepool.IscsiLun{
 					{
-						Name:                       to.Ptr("<name>"),
-						ManagedDiskAzureResourceID: to.Ptr("<managed-disk-azure-resource-id>"),
+						Name:                       to.Ptr("lun0"),
+						ManagedDiskAzureResourceID: to.Ptr("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vm-name_DataDisk_1"),
 					}},
-				TargetIqn: to.Ptr("<target-iqn>"),
+				TargetIqn: to.Ptr("iqn.2005-03.org.iscsi:server1"),
 			},
 		},
-		&armstoragepool.IscsiTargetsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

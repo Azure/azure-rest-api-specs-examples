@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Freservations%2Farmreservations%2Fv0.4.0/sdk/resourcemanager/reservations/armreservations/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Freservations%2Farmreservations%2Fv1.0.0/sdk/resourcemanager/reservations/armreservations/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armreservations_test
@@ -6,8 +6,6 @@ package armreservations_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,13 +17,11 @@ func ExampleCalculateExchangeClient_BeginPost() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armreservations.NewCalculateExchangeClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginPost(ctx,
 		armreservations.CalculateExchangeRequest{
@@ -33,16 +29,16 @@ func ExampleCalculateExchangeClient_BeginPost() {
 				ReservationsToExchange: []*armreservations.ReservationToReturn{
 					{
 						Quantity:      to.Ptr[int32](1),
-						ReservationID: to.Ptr("<reservation-id>"),
+						ReservationID: to.Ptr("/providers/microsoft.capacity/reservationOrders/1f14354c-dc12-4c8d-8090-6f295a3a34aa/reservations/c8c926bd-fc5d-4e29-9d43-b68340ac23a6"),
 					}},
 				ReservationsToPurchase: []*armreservations.PurchaseRequest{
 					{
-						Location: to.Ptr("<location>"),
+						Location: to.Ptr("westus"),
 						Properties: &armreservations.PurchaseRequestProperties{
 							AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
 							BillingPlan:      to.Ptr(armreservations.ReservationBillingPlanUpfront),
-							BillingScopeID:   to.Ptr("<billing-scope-id>"),
-							DisplayName:      to.Ptr("<display-name>"),
+							BillingScopeID:   to.Ptr("/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83"),
+							DisplayName:      to.Ptr("testDisplayName"),
 							Quantity:         to.Ptr[int32](1),
 							Renew:            to.Ptr(false),
 							ReservedResourceProperties: &armreservations.PurchaseRequestPropertiesReservedResourceProperties{
@@ -52,20 +48,18 @@ func ExampleCalculateExchangeClient_BeginPost() {
 							Term:                 to.Ptr(armreservations.ReservationTermP1Y),
 						},
 						SKU: &armreservations.SKUName{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("Standard_B1ls"),
 						},
 					}},
 			},
 		},
-		&armreservations.CalculateExchangeClientBeginPostOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

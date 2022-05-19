@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Freservations%2Farmreservations%2Fv0.4.0/sdk/resourcemanager/reservations/armreservations/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Freservations%2Farmreservations%2Fv1.0.0/sdk/resourcemanager/reservations/armreservations/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armreservations_test
@@ -17,22 +17,20 @@ func ExampleReservationOrderClient_Calculate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armreservations.NewReservationOrderClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Calculate(ctx,
 		armreservations.PurchaseRequest{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armreservations.PurchaseRequestProperties{
 				AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
 				BillingPlan:      to.Ptr(armreservations.ReservationBillingPlanMonthly),
-				BillingScopeID:   to.Ptr("<billing-scope-id>"),
-				DisplayName:      to.Ptr("<display-name>"),
+				BillingScopeID:   to.Ptr("/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83"),
+				DisplayName:      to.Ptr("TestReservationOrder"),
 				Quantity:         to.Ptr[int32](1),
 				ReservedResourceProperties: &armreservations.PurchaseRequestPropertiesReservedResourceProperties{
 					InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
@@ -41,13 +39,12 @@ func ExampleReservationOrderClient_Calculate() {
 				Term:                 to.Ptr(armreservations.ReservationTermP1Y),
 			},
 			SKU: &armreservations.SKUName{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("standard_D1"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

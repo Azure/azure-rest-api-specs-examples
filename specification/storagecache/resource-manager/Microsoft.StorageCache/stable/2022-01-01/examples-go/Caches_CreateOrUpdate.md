@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv0.4.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragecache%2Farmstoragecache%2Fv1.0.0/sdk/resourcemanager/storagecache/armstoragecache/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragecache_test
@@ -6,8 +6,6 @@ package armstoragecache_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewCachesClient("<subscription-id>", cred, nil)
+	client, err := armstoragecache.NewCachesClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<cache-name>",
+		"scgroup",
+		"sc1",
 		&armstoragecache.CachesClientBeginCreateOrUpdateOptions{Cache: &armstoragecache.Cache{
 			Identity: &armstoragecache.CacheIdentity{
 				Type: to.Ptr(armstoragecache.CacheIdentityTypeUserAssigned),
@@ -37,44 +33,44 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1": {},
 				},
 			},
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armstoragecache.CacheProperties{
 				CacheSizeGB: to.Ptr[int32](3072),
 				DirectoryServicesSettings: &armstoragecache.CacheDirectorySettings{
 					ActiveDirectory: &armstoragecache.CacheActiveDirectorySettings{
-						CacheNetBiosName: to.Ptr("<cache-net-bios-name>"),
+						CacheNetBiosName: to.Ptr("contosoSmb"),
 						Credentials: &armstoragecache.CacheActiveDirectorySettingsCredentials{
 							Password: to.Ptr("<password>"),
-							Username: to.Ptr("<username>"),
+							Username: to.Ptr("consotoAdmin"),
 						},
-						DomainName:            to.Ptr("<domain-name>"),
-						DomainNetBiosName:     to.Ptr("<domain-net-bios-name>"),
-						PrimaryDNSIPAddress:   to.Ptr("<primary-dnsipaddress>"),
-						SecondaryDNSIPAddress: to.Ptr("<secondary-dnsipaddress>"),
+						DomainName:            to.Ptr("contosoAd.contoso.local"),
+						DomainNetBiosName:     to.Ptr("contosoAd"),
+						PrimaryDNSIPAddress:   to.Ptr("192.0.2.10"),
+						SecondaryDNSIPAddress: to.Ptr("192.0.2.11"),
 					},
 					UsernameDownload: &armstoragecache.CacheUsernameDownloadSettings{
 						Credentials: &armstoragecache.CacheUsernameDownloadSettingsCredentials{
-							BindDn:       to.Ptr("<bind-dn>"),
-							BindPassword: to.Ptr("<bind-password>"),
+							BindDn:       to.Ptr("cn=ldapadmin,dc=contosoad,dc=contoso,dc=local"),
+							BindPassword: to.Ptr("<bindPassword>"),
 						},
 						ExtendedGroups: to.Ptr(true),
-						LdapBaseDN:     to.Ptr("<ldap-base-dn>"),
-						LdapServer:     to.Ptr("<ldap-server>"),
+						LdapBaseDN:     to.Ptr("dc=contosoad,dc=contoso,dc=local"),
+						LdapServer:     to.Ptr("192.0.2.12"),
 						UsernameSource: to.Ptr(armstoragecache.UsernameSourceLDAP),
 					},
 				},
 				EncryptionSettings: &armstoragecache.CacheEncryptionSettings{
 					KeyEncryptionKey: &armstoragecache.KeyVaultKeyReference{
-						KeyURL: to.Ptr("<key-url>"),
+						KeyURL: to.Ptr("https://keyvault-cmk.vault.azure.net/keys/key2047/test"),
 						SourceVault: &armstoragecache.KeyVaultKeyReferenceSourceVault{
-							ID: to.Ptr("<id>"),
+							ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.KeyVault/vaults/keyvault-cmk"),
 						},
 					},
 				},
 				SecuritySettings: &armstoragecache.CacheSecuritySettings{
 					AccessPolicies: []*armstoragecache.NfsAccessPolicy{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("default"),
 							AccessRules: []*armstoragecache.NfsAccessRule{
 								{
 									Access:         to.Ptr(armstoragecache.NfsAccessRuleAccessRw),
@@ -85,25 +81,22 @@ func ExampleCachesClient_BeginCreateOrUpdate() {
 								}},
 						}},
 				},
-				Subnet: to.Ptr("<subnet>"),
+				Subnet: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1"),
 			},
 			SKU: &armstoragecache.CacheSKU{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("Standard_2G"),
 			},
 			Tags: map[string]*string{
 				"Dept": to.Ptr("Contoso"),
 			},
 		},
-			ResumeToken: "",
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

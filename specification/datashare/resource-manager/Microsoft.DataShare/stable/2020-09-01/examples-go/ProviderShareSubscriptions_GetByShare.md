@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv0.4.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv1.0.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatashare_test
@@ -16,23 +16,20 @@ func ExampleProviderShareSubscriptionsClient_GetByShare() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatashare.NewProviderShareSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armdatashare.NewProviderShareSubscriptionsClient("12345678-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetByShare(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<share-name>",
-		"<provider-share-subscription-id>",
+		"SampleResourceGroup",
+		"Account1",
+		"Share1",
+		"4256e2cf-0f82-4865-961b-12f83333f487",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

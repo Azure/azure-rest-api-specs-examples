@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv0.4.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv1.0.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatashare_test
@@ -17,33 +17,30 @@ func ExampleDataSetsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatashare.NewDataSetsClient("<subscription-id>", cred, nil)
+	client, err := armdatashare.NewDataSetsClient("433a8dfd-e5d5-4e77-ad86-90acdc75eb1a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<share-name>",
-		"<data-set-name>",
+		"SampleResourceGroup",
+		"Account1",
+		"Share1",
+		"Dataset1",
 		&armdatashare.BlobDataSet{
 			Kind: to.Ptr(armdatashare.DataSetKindBlob),
 			Properties: &armdatashare.BlobProperties{
-				ContainerName:      to.Ptr("<container-name>"),
-				FilePath:           to.Ptr("<file-path>"),
-				ResourceGroup:      to.Ptr("<resource-group>"),
-				StorageAccountName: to.Ptr("<storage-account-name>"),
-				SubscriptionID:     to.Ptr("<subscription-id>"),
+				ContainerName:      to.Ptr("C1"),
+				FilePath:           to.Ptr("file21"),
+				ResourceGroup:      to.Ptr("SampleResourceGroup"),
+				StorageAccountName: to.Ptr("storage2"),
+				SubscriptionID:     to.Ptr("433a8dfd-e5d5-4e77-ad86-90acdc75eb1a"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

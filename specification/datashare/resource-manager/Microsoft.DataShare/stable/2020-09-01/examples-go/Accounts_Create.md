@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv0.4.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatashare%2Farmdatashare%2Fv1.0.0/sdk/resourcemanager/datashare/armdatashare/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatashare_test
@@ -6,8 +6,6 @@ package armdatashare_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleAccountsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatashare.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armdatashare.NewAccountsClient("433a8dfd-e5d5-4e77-ad86-90acdc75eb1a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"SampleResourceGroup",
+		"Account1",
 		armdatashare.Account{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US 2"),
 			Tags: map[string]*string{
 				"tag1": to.Ptr("Red"),
 				"tag2": to.Ptr("White"),
@@ -40,15 +36,13 @@ func ExampleAccountsClient_BeginCreate() {
 				Type: to.Ptr(armdatashare.TypeSystemAssigned),
 			},
 		},
-		&armdatashare.AccountsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresqlflexibleservers%2Fv0.5.0/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresqlflexibleservers%2Fv1.0.0/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresqlflexibleservers_test
@@ -6,8 +6,6 @@ package armpostgresqlflexibleservers_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,33 +17,29 @@ func ExampleDatabasesClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpostgresqlflexibleservers.NewDatabasesClient("<subscription-id>", cred, nil)
+	client, err := armpostgresqlflexibleservers.NewDatabasesClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<server-name>",
-		"<database-name>",
+		"TestGroup",
+		"testserver",
+		"db1",
 		armpostgresqlflexibleservers.Database{
 			Properties: &armpostgresqlflexibleservers.DatabaseProperties{
-				Charset:   to.Ptr("<charset>"),
-				Collation: to.Ptr("<collation>"),
+				Charset:   to.Ptr("utf8"),
+				Collation: to.Ptr("en_US.utf8"),
 			},
 		},
-		&armpostgresqlflexibleservers.DatabasesClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

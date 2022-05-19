@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresqlflexibleservers%2Fv0.5.0/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpostgresql%2Farmpostgresqlflexibleservers%2Fv1.0.0/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpostgresqlflexibleservers_test
@@ -19,34 +19,30 @@ func ExampleServersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpostgresqlflexibleservers.NewServersClient("<subscription-id>", cred, nil)
+	client, err := armpostgresqlflexibleservers.NewServersClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<server-name>",
+		"testrg",
+		"pgtestsvc5",
 		armpostgresqlflexibleservers.Server{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armpostgresqlflexibleservers.ServerProperties{
 				CreateMode:             to.Ptr(armpostgresqlflexibleservers.CreateModePointInTimeRestore),
 				PointInTimeUTC:         to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T00:04:59.4078005+00:00"); return t }()),
-				SourceServerResourceID: to.Ptr("<source-server-resource-id>"),
+				SourceServerResourceID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.DBforPostgreSQL/flexibleServers/sourcepgservername"),
 			},
 		},
-		&armpostgresqlflexibleservers.ServersClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

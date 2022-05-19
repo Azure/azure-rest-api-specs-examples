@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnotificationhubs%2Farmnotificationhubs%2Fv0.5.0/sdk/resourcemanager/notificationhubs/armnotificationhubs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnotificationhubs%2Farmnotificationhubs%2Fv1.0.0/sdk/resourcemanager/notificationhubs/armnotificationhubs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnotificationhubs_test
@@ -17,21 +17,19 @@ func ExampleNamespacesClient_Patch() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armnotificationhubs.NewNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armnotificationhubs.NewNamespacesClient("29cfa613-cbbc-4512-b1d6-1b3a92c7fa40", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Patch(ctx,
-		"<resource-group-name>",
-		"<namespace-name>",
+		"5ktrial",
+		"nh-sdk-ns",
 		armnotificationhubs.NamespacePatchParameters{
 			SKU: &armnotificationhubs.SKU{
 				Name: to.Ptr(armnotificationhubs.SKUNameStandard),
-				Tier: to.Ptr("<tier>"),
+				Tier: to.Ptr("Standard"),
 			},
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
@@ -41,7 +39,6 @@ func ExampleNamespacesClient_Patch() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

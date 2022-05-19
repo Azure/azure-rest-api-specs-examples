@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -16,18 +16,16 @@ func ExampleReplicationProtectableItemsClient_NewListByReplicationProtectionCont
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationProtectableItemsClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationProtectableItemsClient("vault1",
+		"resourceGroupPS1",
+		"c183865e-6077-46f2-a3b1-deb0f4f4650a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListByReplicationProtectionContainersPager("<fabric-name>",
-		"<protection-container-name>",
+	pager := client.NewListByReplicationProtectionContainersPager("cloud1",
+		"cloud_6d224fc6-f326-5d35-96de-fbf51efb3179",
 		&armrecoveryservicessiterecovery.ReplicationProtectableItemsClientListByReplicationProtectionContainersOptions{Filter: nil,
 			Take:      nil,
 			SkipToken: nil,
@@ -36,7 +34,6 @@ func ExampleReplicationProtectableItemsClient_NewListByReplicationProtectionCont
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

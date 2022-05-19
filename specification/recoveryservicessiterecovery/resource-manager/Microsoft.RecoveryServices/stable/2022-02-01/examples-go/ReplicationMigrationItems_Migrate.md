@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -6,8 +6,6 @@ package armrecoveryservicessiterecovery_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,37 +17,33 @@ func ExampleReplicationMigrationItemsClient_BeginMigrate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationMigrationItemsClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationMigrationItemsClient("migrationvault",
+		"resourcegroup1",
+		"cb53d0c3-bd59-4721-89bc-06916a9147ef", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginMigrate(ctx,
-		"<fabric-name>",
-		"<protection-container-name>",
-		"<migration-item-name>",
+		"vmwarefabric1",
+		"vmwareContainer1",
+		"virtualmachine1",
 		armrecoveryservicessiterecovery.MigrateInput{
 			Properties: &armrecoveryservicessiterecovery.MigrateInputProperties{
 				ProviderSpecificDetails: &armrecoveryservicessiterecovery.VMwareCbtMigrateInput{
-					InstanceType:    to.Ptr("<instance-type>"),
-					PerformShutdown: to.Ptr("<perform-shutdown>"),
+					InstanceType:    to.Ptr("VMwareCbt"),
+					PerformShutdown: to.Ptr("true"),
 				},
 			},
 		},
-		&armrecoveryservicessiterecovery.ReplicationMigrationItemsClientBeginMigrateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

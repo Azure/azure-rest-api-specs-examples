@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -6,8 +6,6 @@ package armrecoveryservicessiterecovery_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,40 +17,36 @@ func ExampleReplicationProtectedItemsClient_BeginSwitchProvider() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationProtectedItemsClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationProtectedItemsClient("vault1",
+		"resourceGroupPS1",
+		"c183865e-6077-46f2-a3b1-deb0f4f4650a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginSwitchProvider(ctx,
-		"<fabric-name>",
-		"<protection-container-name>",
-		"<replicated-protected-item-name>",
+		"cloud1",
+		"cloud_6d224fc6-f326-5d35-96de-fbf51efb3179",
+		"f8491e4f-817a-40dd-a90c-af773978c75b",
 		armrecoveryservicessiterecovery.SwitchProviderInput{
 			Properties: &armrecoveryservicessiterecovery.SwitchProviderInputProperties{
 				ProviderSpecificDetails: &armrecoveryservicessiterecovery.InMageAzureV2SwitchProviderInput{
-					InstanceType:      to.Ptr("<instance-type>"),
-					TargetApplianceID: to.Ptr("<target-appliance-id>"),
-					TargetFabricID:    to.Ptr("<target-fabric-id>"),
-					TargetVaultID:     to.Ptr("<target-vault-id>"),
+					InstanceType:      to.Ptr("InMageAzureV2"),
+					TargetApplianceID: to.Ptr("5efaa202-e958-435e-8171-706bf735fcc4"),
+					TargetFabricID:    to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud2"),
+					TargetVaultID:     to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault2"),
 				},
-				TargetInstanceType: to.Ptr("<target-instance-type>"),
+				TargetInstanceType: to.Ptr("InMageRcm"),
 			},
 		},
-		&armrecoveryservicessiterecovery.ReplicationProtectedItemsClientBeginSwitchProviderOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

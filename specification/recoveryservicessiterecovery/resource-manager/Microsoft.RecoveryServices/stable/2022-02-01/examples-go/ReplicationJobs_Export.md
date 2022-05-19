@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -6,8 +6,6 @@ package armrecoveryservicessiterecovery_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,32 +17,28 @@ func ExampleReplicationJobsClient_BeginExport() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationJobsClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationJobsClient("vault1",
+		"resourceGroupPS1",
+		"c183865e-6077-46f2-a3b1-deb0f4f4650a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginExport(ctx,
 		armrecoveryservicessiterecovery.JobQueryParameter{
-			AffectedObjectTypes: to.Ptr("<affected-object-types>"),
-			EndTime:             to.Ptr("<end-time>"),
-			JobStatus:           to.Ptr("<job-status>"),
-			StartTime:           to.Ptr("<start-time>"),
+			AffectedObjectTypes: to.Ptr(""),
+			EndTime:             to.Ptr("2017-05-04T14:26:51.9161395Z"),
+			JobStatus:           to.Ptr(""),
+			StartTime:           to.Ptr("2017-04-27T14:26:51.9161395Z"),
 		},
-		&armrecoveryservicessiterecovery.ReplicationJobsClientBeginExportOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

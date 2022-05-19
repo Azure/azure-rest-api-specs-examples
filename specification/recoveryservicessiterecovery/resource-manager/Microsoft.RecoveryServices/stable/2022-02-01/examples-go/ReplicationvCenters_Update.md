@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv0.4.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frecoveryservices%2Farmrecoveryservicessiterecovery%2Fv1.0.0/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armrecoveryservicessiterecovery_test
@@ -6,8 +6,6 @@ package armrecoveryservicessiterecovery_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,33 +17,29 @@ func ExampleReplicationvCentersClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationvCentersClient("<resource-name>",
-		"<resource-group-name>",
-		"<subscription-id>", cred, nil)
+	client, err := armrecoveryservicessiterecovery.NewReplicationvCentersClient("MadhaviVault",
+		"MadhaviVRG",
+		"7c943c1b-5122-4097-90c8-861411bdd574", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<fabric-name>",
-		"<vcenter-name>",
+		"MadhaviFabric",
+		"esx-78",
 		armrecoveryservicessiterecovery.UpdateVCenterRequest{
 			Properties: &armrecoveryservicessiterecovery.UpdateVCenterRequestProperties{
-				IPAddress: to.Ptr("<ipaddress>"),
+				IPAddress: to.Ptr("10.150.109.25"),
 			},
 		},
-		&armrecoveryservicessiterecovery.ReplicationvCentersClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.5.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -16,23 +16,20 @@ func ExampleSQLPoolReplicationLinksClient_GetByName() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolReplicationLinksClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewSQLPoolReplicationLinksClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetByName(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
-		"<sql-pool-name>",
-		"<link-id>",
+		"sqlcrudtest-4799",
+		"sqlcrudtest-6440",
+		"testdb",
+		"5b301b68-03f6-4b26-b0f4-73ebb8634238",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

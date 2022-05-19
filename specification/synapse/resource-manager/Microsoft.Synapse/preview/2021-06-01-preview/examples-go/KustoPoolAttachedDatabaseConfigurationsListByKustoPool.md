@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.5.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -16,23 +16,20 @@ func ExampleKustoPoolAttachedDatabaseConfigurationsClient_NewListByKustoPoolPage
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolAttachedDatabaseConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewKustoPoolAttachedDatabaseConfigurationsClient("12345678-1234-1234-1234-123456789098", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListByKustoPoolPager("<workspace-name>",
-		"<kusto-pool-name>",
-		"<resource-group-name>",
+	pager := client.NewListByKustoPoolPager("kustorptest",
+		"kustoclusterrptest4",
+		"kustorptest",
 		nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

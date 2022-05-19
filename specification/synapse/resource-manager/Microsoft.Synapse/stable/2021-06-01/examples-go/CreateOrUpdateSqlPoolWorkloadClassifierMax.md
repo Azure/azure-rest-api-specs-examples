@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.4.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsynapse%2Farmsynapse%2Fv0.5.0/sdk/resourcemanager/synapse/armsynapse/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsynapse_test
@@ -6,8 +6,6 @@ package armsynapse_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,39 +17,35 @@ func ExampleSQLPoolWorkloadClassifierClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolWorkloadClassifierClient("<subscription-id>", cred, nil)
+	client, err := armsynapse.NewSQLPoolWorkloadClassifierClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
-		"<sql-pool-name>",
-		"<workload-group-name>",
-		"<workload-classifier-name>",
+		"sqlcrudtest-6852",
+		"sqlcrudtest-2080",
+		"sqlcrudtest-9187",
+		"wlm_workloadgroup",
+		"wlm_workloadclassifier",
 		armsynapse.WorkloadClassifier{
 			Properties: &armsynapse.WorkloadClassifierProperties{
-				Context:    to.Ptr("<context>"),
-				EndTime:    to.Ptr("<end-time>"),
-				Importance: to.Ptr("<importance>"),
-				Label:      to.Ptr("<label>"),
-				MemberName: to.Ptr("<member-name>"),
-				StartTime:  to.Ptr("<start-time>"),
+				Context:    to.Ptr("test_context"),
+				EndTime:    to.Ptr("14:00"),
+				Importance: to.Ptr("high"),
+				Label:      to.Ptr("test_label"),
+				MemberName: to.Ptr("dbo"),
+				StartTime:  to.Ptr("12:00"),
 			},
 		},
-		&armsynapse.SQLPoolWorkloadClassifierClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

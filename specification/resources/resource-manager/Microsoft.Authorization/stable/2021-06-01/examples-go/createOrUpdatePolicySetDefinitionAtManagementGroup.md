@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.5.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.6.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -17,21 +17,19 @@ func ExampleSetDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armpolicy.NewSetDefinitionsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdateAtManagementGroup(ctx,
-		"<policy-set-definition-name>",
-		"<management-group-id>",
+		"CostManagement",
+		"MyManagementGroup",
 		armpolicy.SetDefinition{
 			Properties: &armpolicy.SetDefinitionProperties{
-				Description: to.Ptr("<description>"),
-				DisplayName: to.Ptr("<display-name>"),
+				Description: to.Ptr("Policies to enforce low cost storage SKUs"),
+				DisplayName: to.Ptr("Cost Management"),
 				Metadata: map[string]interface{}{
 					"category": "Cost Management",
 				},
@@ -45,8 +43,8 @@ func ExampleSetDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 								},
 							},
 						},
-						PolicyDefinitionID:          to.Ptr("<policy-definition-id>"),
-						PolicyDefinitionReferenceID: to.Ptr("<policy-definition-reference-id>"),
+						PolicyDefinitionID:          to.Ptr("/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1"),
+						PolicyDefinitionReferenceID: to.Ptr("Limit_Skus"),
 					},
 					{
 						Parameters: map[string]*armpolicy.ParameterValuesValue{
@@ -57,15 +55,14 @@ func ExampleSetDefinitionsClient_CreateOrUpdateAtManagementGroup() {
 								Value: "-LC",
 							},
 						},
-						PolicyDefinitionID:          to.Ptr("<policy-definition-id>"),
-						PolicyDefinitionReferenceID: to.Ptr("<policy-definition-reference-id>"),
+						PolicyDefinitionID:          to.Ptr("/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"),
+						PolicyDefinitionReferenceID: to.Ptr("Resource_Naming"),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.5.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmpolicy%2Fv0.6.0/sdk/resourcemanager/resources/armpolicy/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicy_test
@@ -17,27 +17,25 @@ func ExampleAssignmentsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armpolicy.NewAssignmentsClient("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Create(ctx,
-		"<scope>",
-		"<policy-assignment-name>",
+		"subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2",
+		"EnforceNaming",
 		armpolicy.Assignment{
 			Properties: &armpolicy.AssignmentProperties{
-				Description: to.Ptr("<description>"),
-				DisplayName: to.Ptr("<display-name>"),
+				Description: to.Ptr("Force resource names to begin with given DeptA and end with -LC"),
+				DisplayName: to.Ptr("Enforce resource naming rules"),
 				Metadata: map[string]interface{}{
 					"assignedBy": "Special Someone",
 				},
 				NonComplianceMessages: []*armpolicy.NonComplianceMessage{
 					{
-						Message: to.Ptr("<message>"),
+						Message: to.Ptr("Resource names must start with 'DeptA' and end with '-LC'."),
 					}},
 				Parameters: map[string]*armpolicy.ParameterValuesValue{
 					"prefix": {
@@ -47,13 +45,12 @@ func ExampleAssignmentsClient_Create() {
 						Value: "-LC",
 					},
 				},
-				PolicyDefinitionID: to.Ptr("<policy-definition-id>"),
+				PolicyDefinitionID: to.Ptr("/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmobilenetwork%2Farmmobilenetwork%2Fv0.4.0/sdk/resourcemanager/mobilenetwork/armmobilenetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmobilenetwork%2Farmmobilenetwork%2Fv0.5.0/sdk/resourcemanager/mobilenetwork/armmobilenetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmobilenetwork_test
@@ -6,8 +6,6 @@ package armmobilenetwork_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,31 +17,29 @@ func ExampleServicesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmobilenetwork.NewServicesClient("<subscription-id>", cred, nil)
+	client, err := armmobilenetwork.NewServicesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<mobile-network-name>",
-		"<service-name>",
+		"rg1",
+		"testMobileNetwork",
+		"TestService",
 		armmobilenetwork.Service{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Properties: &armmobilenetwork.ServicePropertiesFormat{
 				PccRules: []*armmobilenetwork.PccRuleConfiguration{
 					{
-						RuleName:       to.Ptr("<rule-name>"),
+						RuleName:       to.Ptr("default-rule"),
 						RulePrecedence: to.Ptr[int32](255),
 						RuleQosPolicy: &armmobilenetwork.PccRuleQosPolicy{
 							FiveQi:                              to.Ptr[int32](9),
 							AllocationAndRetentionPriorityLevel: to.Ptr[int32](9),
 							MaximumBitRate: &armmobilenetwork.Ambr{
-								Downlink: to.Ptr("<downlink>"),
-								Uplink:   to.Ptr("<uplink>"),
+								Downlink: to.Ptr("1 Gbps"),
+								Uplink:   to.Ptr("500 Mbps"),
 							},
 							PreemptionCapability:    to.Ptr(armmobilenetwork.PreemptionCapabilityNotPreempt),
 							PreemptionVulnerability: to.Ptr(armmobilenetwork.PreemptionVulnerabilityPreemptable),
@@ -54,7 +50,7 @@ func ExampleServicesClient_BeginCreateOrUpdate() {
 								Ports:     []*string{},
 								RemoteIPList: []*string{
 									to.Ptr("10.3.4.0/24")},
-								TemplateName: to.Ptr("<template-name>"),
+								TemplateName: to.Ptr("IP-to-server"),
 								Protocol: []*string{
 									to.Ptr("ip")},
 							}},
@@ -65,23 +61,21 @@ func ExampleServicesClient_BeginCreateOrUpdate() {
 					FiveQi:                              to.Ptr[int32](9),
 					AllocationAndRetentionPriorityLevel: to.Ptr[int32](9),
 					MaximumBitRate: &armmobilenetwork.Ambr{
-						Downlink: to.Ptr("<downlink>"),
-						Uplink:   to.Ptr("<uplink>"),
+						Downlink: to.Ptr("1 Gbps"),
+						Uplink:   to.Ptr("500 Mbps"),
 					},
 					PreemptionCapability:    to.Ptr(armmobilenetwork.PreemptionCapabilityNotPreempt),
 					PreemptionVulnerability: to.Ptr(armmobilenetwork.PreemptionVulnerabilityPreemptable),
 				},
 			},
 		},
-		&armmobilenetwork.ServicesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

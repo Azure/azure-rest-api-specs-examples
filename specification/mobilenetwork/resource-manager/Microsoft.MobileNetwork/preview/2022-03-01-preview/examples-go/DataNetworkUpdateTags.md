@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmobilenetwork%2Farmmobilenetwork%2Fv0.4.0/sdk/resourcemanager/mobilenetwork/armmobilenetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmobilenetwork%2Farmmobilenetwork%2Fv0.5.0/sdk/resourcemanager/mobilenetwork/armmobilenetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmobilenetwork_test
@@ -17,18 +17,16 @@ func ExampleDataNetworksClient_UpdateTags() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmobilenetwork.NewDataNetworksClient("<subscription-id>", cred, nil)
+	client, err := armmobilenetwork.NewDataNetworksClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.UpdateTags(ctx,
-		"<resource-group-name>",
-		"<mobile-network-name>",
-		"<data-network-name>",
+		"rg1",
+		"testMobileNetwork",
+		"testDataNetwork",
 		armmobilenetwork.TagsObject{
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
@@ -38,7 +36,6 @@ func ExampleDataNetworksClient_UpdateTags() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

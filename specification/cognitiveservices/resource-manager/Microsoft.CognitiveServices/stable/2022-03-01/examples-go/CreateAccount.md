@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcognitiveservices%2Farmcognitiveservices%2Fv0.6.0/sdk/resourcemanager/cognitiveservices/armcognitiveservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcognitiveservices%2Farmcognitiveservices%2Fv1.0.0/sdk/resourcemanager/cognitiveservices/armcognitiveservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcognitiveservices_test
@@ -6,8 +6,6 @@ package armcognitiveservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,50 +17,46 @@ func ExampleAccountsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armcognitiveservices.NewAccountsClient("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"myResourceGroup",
+		"testCreate1",
 		armcognitiveservices.Account{
 			Identity: &armcognitiveservices.Identity{
 				Type: to.Ptr(armcognitiveservices.ResourceIdentityTypeSystemAssigned),
 			},
-			Kind:     to.Ptr("<kind>"),
-			Location: to.Ptr("<location>"),
+			Kind:     to.Ptr("Emotion"),
+			Location: to.Ptr("West US"),
 			Properties: &armcognitiveservices.AccountProperties{
 				Encryption: &armcognitiveservices.Encryption{
 					KeySource: to.Ptr(armcognitiveservices.KeySourceMicrosoftKeyVault),
 					KeyVaultProperties: &armcognitiveservices.KeyVaultProperties{
-						KeyName:     to.Ptr("<key-name>"),
-						KeyVaultURI: to.Ptr("<key-vault-uri>"),
-						KeyVersion:  to.Ptr("<key-version>"),
+						KeyName:     to.Ptr("KeyName"),
+						KeyVaultURI: to.Ptr("https://pltfrmscrts-use-pc-dev.vault.azure.net/"),
+						KeyVersion:  to.Ptr("891CF236-D241-4738-9462-D506AF493DFA"),
 					},
 				},
 				UserOwnedStorage: []*armcognitiveservices.UserOwnedStorage{
 					{
-						ResourceID: to.Ptr("<resource-id>"),
+						ResourceID: to.Ptr("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"),
 					}},
 			},
 			SKU: &armcognitiveservices.SKU{
-				Name: to.Ptr("<name>"),
+				Name: to.Ptr("S0"),
 			},
 		},
-		&armcognitiveservices.AccountsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

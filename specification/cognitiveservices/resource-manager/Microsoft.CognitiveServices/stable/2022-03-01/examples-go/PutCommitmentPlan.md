@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcognitiveservices%2Farmcognitiveservices%2Fv0.6.0/sdk/resourcemanager/cognitiveservices/armcognitiveservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcognitiveservices%2Farmcognitiveservices%2Fv1.0.0/sdk/resourcemanager/cognitiveservices/armcognitiveservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcognitiveservices_test
@@ -17,32 +17,29 @@ func ExampleCommitmentPlansClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewCommitmentPlansClient("<subscription-id>", cred, nil)
+	client, err := armcognitiveservices.NewCommitmentPlansClient("subscriptionId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<commitment-plan-name>",
+		"resourceGroupName",
+		"accountName",
+		"commitmentPlanName",
 		armcognitiveservices.CommitmentPlan{
 			Properties: &armcognitiveservices.CommitmentPlanProperties{
 				AutoRenew: to.Ptr(true),
 				Current: &armcognitiveservices.CommitmentPeriod{
-					Tier: to.Ptr("<tier>"),
+					Tier: to.Ptr("T1"),
 				},
 				HostingModel: to.Ptr(armcognitiveservices.HostingModelWeb),
-				PlanType:     to.Ptr("<plan-type>"),
+				PlanType:     to.Ptr("Speech2Text"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv0.5.0/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstreamanalytics%2Farmstreamanalytics%2Fv1.0.0/sdk/resourcemanager/streamanalytics/armstreamanalytics/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstreamanalytics_test
@@ -17,26 +17,24 @@ func ExampleFunctionsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstreamanalytics.NewFunctionsClient("<subscription-id>", cred, nil)
+	client, err := armstreamanalytics.NewFunctionsClient("56b5e0a9-b645-407d-99b0-c64f86013e3d", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<job-name>",
-		"<function-name>",
+		"sjrg1637",
+		"sj8653",
+		"function8197",
 		armstreamanalytics.Function{
 			Properties: &armstreamanalytics.ScalarFunctionProperties{
-				Type: to.Ptr("<type>"),
+				Type: to.Ptr("Scalar"),
 				Properties: &armstreamanalytics.FunctionConfiguration{
 					Binding: &armstreamanalytics.JavaScriptFunctionBinding{
-						Type: to.Ptr("<type>"),
+						Type: to.Ptr("Microsoft.StreamAnalytics/JavascriptUdf"),
 						Properties: &armstreamanalytics.JavaScriptFunctionBindingProperties{
-							Script: to.Ptr("<script>"),
+							Script: to.Ptr("function (a, b) { return a * b; }"),
 						},
 					},
 				},
@@ -45,7 +43,6 @@ func ExampleFunctionsClient_Update() {
 		&armstreamanalytics.FunctionsClientUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

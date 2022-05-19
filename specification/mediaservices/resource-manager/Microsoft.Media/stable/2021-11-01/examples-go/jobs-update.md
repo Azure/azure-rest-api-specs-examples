@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv1.0.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -17,30 +17,28 @@ func ExampleJobsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewJobsClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewJobsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<transform-name>",
-		"<job-name>",
+		"contosoresources",
+		"contosomedia",
+		"exampleTransform",
+		"job1",
 		armmediaservices.Job{
 			Properties: &armmediaservices.JobProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("Example job to illustrate update."),
 				Input: &armmediaservices.JobInputAsset{
-					ODataType: to.Ptr("<odata-type>"),
-					AssetName: to.Ptr("<asset-name>"),
+					ODataType: to.Ptr("#Microsoft.Media.JobInputAsset"),
+					AssetName: to.Ptr("job1-InputAsset"),
 				},
 				Outputs: []armmediaservices.JobOutputClassification{
 					&armmediaservices.JobOutputAsset{
-						ODataType: to.Ptr("<odata-type>"),
-						AssetName: to.Ptr("<asset-name>"),
+						ODataType: to.Ptr("#Microsoft.Media.JobOutputAsset"),
+						AssetName: to.Ptr("job1-OutputAsset"),
 					}},
 				Priority: to.Ptr(armmediaservices.PriorityHigh),
 			},
@@ -48,7 +46,6 @@ func ExampleJobsClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

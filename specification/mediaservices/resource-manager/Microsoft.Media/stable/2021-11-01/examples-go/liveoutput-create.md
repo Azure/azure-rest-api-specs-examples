@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv0.6.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmediaservices%2Farmmediaservices%2Fv1.0.0/sdk/resourcemanager/mediaservices/armmediaservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmediaservices_test
@@ -6,8 +6,6 @@ package armmediaservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,39 +17,35 @@ func ExampleLiveOutputsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewLiveOutputsClient("<subscription-id>", cred, nil)
+	client, err := armmediaservices.NewLiveOutputsClient("0a6ec948-5a62-437d-b9df-934dc7c1b722", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<live-event-name>",
-		"<live-output-name>",
+		"mediaresources",
+		"slitestmedia10",
+		"myLiveEvent1",
+		"myLiveOutput1",
 		armmediaservices.LiveOutput{
 			Properties: &armmediaservices.LiveOutputProperties{
-				Description:         to.Ptr("<description>"),
-				ArchiveWindowLength: to.Ptr("<archive-window-length>"),
-				AssetName:           to.Ptr("<asset-name>"),
+				Description:         to.Ptr("test live output 1"),
+				ArchiveWindowLength: to.Ptr("PT5M"),
+				AssetName:           to.Ptr("6f3264f5-a189-48b4-a29a-a40f22575212"),
 				Hls: &armmediaservices.Hls{
 					FragmentsPerTsSegment: to.Ptr[int32](5),
 				},
-				ManifestName: to.Ptr("<manifest-name>"),
+				ManifestName: to.Ptr("testmanifest"),
 			},
 		},
-		&armmediaservices.LiveOutputsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

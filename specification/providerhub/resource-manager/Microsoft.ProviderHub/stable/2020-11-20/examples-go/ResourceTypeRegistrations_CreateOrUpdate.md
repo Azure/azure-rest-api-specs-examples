@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv0.4.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fproviderhub%2Farmproviderhub%2Fv1.0.0/sdk/resourcemanager/providerhub/armproviderhub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armproviderhub_test
@@ -6,8 +6,6 @@ package armproviderhub_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armproviderhub.NewResourceTypeRegistrationsClient("<subscription-id>", cred, nil)
+	client, err := armproviderhub.NewResourceTypeRegistrationsClient("ab7a8701-f7ef-471a-a2f4-d0ebbf494f77", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<provider-namespace>",
-		"<resource-type>",
+		"Microsoft.Contoso",
+		"employees",
 		armproviderhub.ResourceTypeRegistration{
 			Properties: &armproviderhub.ResourceTypeRegistrationProperties{
 				Endpoints: []*armproviderhub.ResourceTypeEndpoint{
@@ -49,19 +45,17 @@ func ExampleResourceTypeRegistrationsClient_BeginCreateOrUpdate() {
 					{
 						APIVersions: []*string{
 							to.Ptr("2020-06-01-preview")},
-						SwaggerSpecFolderURI: to.Ptr("<swagger-spec-folder-uri>"),
+						SwaggerSpecFolderURI: to.Ptr("https://github.com/Azure/azure-rest-api-specs/blob/feature/azure/contoso/specification/contoso/resource-manager/Microsoft.SampleRP/"),
 					}},
 			},
 		},
-		&armproviderhub.ResourceTypeRegistrationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

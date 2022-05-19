@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Freservations%2Farmreservations%2Fv0.4.0/sdk/resourcemanager/reservations/armreservations/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Freservations%2Farmreservations%2Fv1.0.0/sdk/resourcemanager/reservations/armreservations/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armreservations_test
@@ -17,25 +17,22 @@ func ExampleAzureReservationAPIClient_GetCatalog() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armreservations.NewAzureReservationAPIClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetCatalog(ctx,
-		"<subscription-id>",
-		&armreservations.AzureReservationAPIClientGetCatalogOptions{ReservedResourceType: to.Ptr("<reserved-resource-type>"),
-			Location:    to.Ptr("<location>"),
+		"23bc208b-083f-4901-ae85-4f98c0c3b4b6",
+		&armreservations.AzureReservationAPIClientGetCatalogOptions{ReservedResourceType: to.Ptr("VirtualMachines"),
+			Location:    to.Ptr("eastus"),
 			PublisherID: nil,
 			OfferID:     nil,
 			PlanID:      nil,
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

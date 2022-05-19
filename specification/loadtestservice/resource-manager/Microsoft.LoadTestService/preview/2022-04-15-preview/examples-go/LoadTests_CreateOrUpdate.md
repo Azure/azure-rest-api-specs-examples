@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Floadtestservice%2Farmloadtestservice%2Fv0.4.0/sdk/resourcemanager/loadtestservice/armloadtestservice/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Floadtestservice%2Farmloadtestservice%2Fv0.5.0/sdk/resourcemanager/loadtestservice/armloadtestservice/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armloadtestservice_test
@@ -6,8 +6,6 @@ package armloadtestservice_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,42 +17,44 @@ func ExampleLoadTestsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armloadtestservice.NewLoadTestsClient("<subscription-id>", cred, nil)
+	client, err := armloadtestservice.NewLoadTestsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<load-test-name>",
+		"dummyrg",
+		"myLoadTest",
 		armloadtestservice.LoadTestResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Tags: map[string]*string{
 				"Team": to.Ptr("Dev Exp"),
 			},
+			Identity: &armloadtestservice.ManagedServiceIdentity{
+				Type: to.Ptr(armloadtestservice.ManagedServiceIdentityTypeSystemAssignedUserAssigned),
+				UserAssignedIdentities: map[string]*armloadtestservice.UserAssignedIdentity{
+					"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {},
+				},
+			},
 			Properties: &armloadtestservice.LoadTestProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("This is new load test resource"),
 				Encryption: &armloadtestservice.EncryptionProperties{
 					Identity: &armloadtestservice.EncryptionPropertiesIdentity{
 						Type:       to.Ptr(armloadtestservice.TypeUserAssigned),
-						ResourceID: to.Ptr("<resource-id>"),
+						ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1"),
 					},
-					KeyURL: to.Ptr("<key-url>"),
+					KeyURL: to.Ptr("https://dummy.vault.azure.net/keys/dummykey1"),
 				},
 			},
 		},
-		&armloadtestservice.LoadTestsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv0.5.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkubernetesconfiguration%2Farmkubernetesconfiguration%2Fv1.0.0/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkubernetesconfiguration_test
@@ -17,20 +17,18 @@ func ExampleSourceControlConfigurationsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armkubernetesconfiguration.NewSourceControlConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armkubernetesconfiguration.NewSourceControlConfigurationsClient("subId1", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<cluster-rp>",
-		"<cluster-resource-name>",
-		"<cluster-name>",
-		"<source-control-configuration-name>",
+		"rg1",
+		"Microsoft.Kubernetes",
+		"connectedClusters",
+		"clusterName1",
+		"SRS_GitHubConfig",
 		armkubernetesconfiguration.SourceControlConfiguration{
 			Properties: &armkubernetesconfiguration.SourceControlConfigurationProperties{
 				ConfigurationProtectedSettings: map[string]*string{
@@ -38,22 +36,21 @@ func ExampleSourceControlConfigurationsClient_CreateOrUpdate() {
 				},
 				EnableHelmOperator: to.Ptr(true),
 				HelmOperatorProperties: &armkubernetesconfiguration.HelmOperatorProperties{
-					ChartValues:  to.Ptr("<chart-values>"),
-					ChartVersion: to.Ptr("<chart-version>"),
+					ChartValues:  to.Ptr("--set git.ssh.secretName=flux-git-deploy --set tillerNamespace=kube-system"),
+					ChartVersion: to.Ptr("0.3.0"),
 				},
-				OperatorInstanceName:  to.Ptr("<operator-instance-name>"),
-				OperatorNamespace:     to.Ptr("<operator-namespace>"),
-				OperatorParams:        to.Ptr("<operator-params>"),
+				OperatorInstanceName:  to.Ptr("SRSGitHubFluxOp-01"),
+				OperatorNamespace:     to.Ptr("SRS_Namespace"),
+				OperatorParams:        to.Ptr("--git-email=xyzgituser@users.srs.github.com"),
 				OperatorScope:         to.Ptr(armkubernetesconfiguration.OperatorScopeTypeNamespace),
 				OperatorType:          to.Ptr(armkubernetesconfiguration.OperatorTypeFlux),
-				RepositoryURL:         to.Ptr("<repository-url>"),
-				SSHKnownHostsContents: to.Ptr("<sshknown-hosts-contents>"),
+				RepositoryURL:         to.Ptr("git@github.com:k8sdeveloper425/flux-get-started"),
+				SSHKnownHostsContents: to.Ptr("c3NoLmRldi5henVyZS5jb20gc3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDN0hyMW9UV3FOcU9sekdKT2ZHSjROYWtWeUl6ZjFyWFlkNGQ3d282akJsa0x2Q0E0b2RCbEwwbURVeVowL1FVZlRUcWV1K3RtMjJnT3N2K1ZyVlRNazZ2d1JVNzVnWS95OXV0NU1iM2JSNUJWNThkS1h5cTlBOVVlQjVDYWtlaG41WmdtNngxbUtvVnlmK0ZGbjI2aVlxWEpSZ3pJWlpjWjVWNmhyRTBRZzM5a1ptNGF6NDhvMEFVYmY2U3A0U0xkdm51TWEyc1ZOd0hCYm9TN0VKa201N1hRUFZVMy9RcHlOTEhiV0Rkend0cmxTK2V6MzBTM0FkWWhMS0VPeEFHOHdlT255cnRMSkFVZW45bVRrb2w4b0lJMWVkZjdtV1diV1ZmMG5CbWx5MjErblpjbUNUSVNRQnRkY3lQYUVubzdmRlFNREQyNi9zMGxmS29iNEt3OEg="),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Favs%2Farmavs%2Fv0.4.0/sdk/resourcemanager/avs/armavs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Favs%2Farmavs%2Fv1.0.0/sdk/resourcemanager/avs/armavs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armavs_test
@@ -6,8 +6,6 @@ package armavs_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,51 +17,47 @@ func ExampleScriptExecutionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armavs.NewScriptExecutionsClient("<subscription-id>", cred, nil)
+	client, err := armavs.NewScriptExecutionsClient("{subscription-id}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<private-cloud-name>",
-		"<script-execution-name>",
+		"group1",
+		"cloud1",
+		"addSsoServer",
 		armavs.ScriptExecution{
 			Properties: &armavs.ScriptExecutionProperties{
 				HiddenParameters: []armavs.ScriptExecutionParameterClassification{
 					&armavs.ScriptSecureStringExecutionParameter{
-						Name:        to.Ptr("<name>"),
+						Name:        to.Ptr("Password"),
 						Type:        to.Ptr(armavs.ScriptExecutionParameterTypeSecureValue),
-						SecureValue: to.Ptr("<secure-value>"),
+						SecureValue: to.Ptr("PlaceholderPassword"),
 					}},
 				Parameters: []armavs.ScriptExecutionParameterClassification{
 					&armavs.ScriptStringExecutionParameter{
-						Name:  to.Ptr("<name>"),
+						Name:  to.Ptr("DomainName"),
 						Type:  to.Ptr(armavs.ScriptExecutionParameterTypeValue),
-						Value: to.Ptr("<value>"),
+						Value: to.Ptr("placeholderDomain.local"),
 					},
 					&armavs.ScriptStringExecutionParameter{
-						Name:  to.Ptr("<name>"),
+						Name:  to.Ptr("BaseUserDN"),
 						Type:  to.Ptr(armavs.ScriptExecutionParameterTypeValue),
-						Value: to.Ptr("<value>"),
+						Value: to.Ptr("DC=placeholder, DC=placeholder"),
 					}},
-				Retention:      to.Ptr("<retention>"),
-				ScriptCmdletID: to.Ptr("<script-cmdlet-id>"),
-				Timeout:        to.Ptr("<timeout>"),
+				Retention:      to.Ptr("P0Y0M60DT0H60M60S"),
+				ScriptCmdletID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/scriptPackages/AVS.PowerCommands@1.0.0/scriptCmdlets/New-SsoExternalIdentitySource"),
+				Timeout:        to.Ptr("P0Y0M0DT0H60M60S"),
 			},
 		},
-		&armavs.ScriptExecutionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

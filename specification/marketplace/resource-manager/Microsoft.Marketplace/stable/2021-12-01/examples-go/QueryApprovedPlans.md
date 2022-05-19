@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv0.4.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmarketplace%2Farmmarketplace%2Fv1.0.0/sdk/resourcemanager/marketplace/armmarketplace/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmarketplace_test
@@ -17,19 +17,17 @@ func ExamplePrivateStoreClient_QueryApprovedPlans() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armmarketplace.NewPrivateStoreClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.QueryApprovedPlans(ctx,
-		"<private-store-id>",
+		"a0e28e55-90c4-41d8-8e34-bb7ef7775406",
 		&armmarketplace.PrivateStoreClientQueryApprovedPlansOptions{Payload: &armmarketplace.QueryApprovedPlansPayload{
 			Properties: &armmarketplace.QueryApprovedPlans{
-				OfferID: to.Ptr("<offer-id>"),
+				OfferID: to.Ptr("marketplacetestthirdparty.md-test-third-party-2"),
 				PlanIDs: []*string{
 					to.Ptr("testPlanA"),
 					to.Ptr("testPlanB"),
@@ -39,7 +37,6 @@ func ExamplePrivateStoreClient_QueryApprovedPlans() {
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

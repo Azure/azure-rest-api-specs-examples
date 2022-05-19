@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv0.4.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdataboxedge%2Farmdataboxedge%2Fv1.0.0/sdk/resourcemanager/databoxedge/armdataboxedge/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdataboxedge_test
@@ -6,8 +6,6 @@ package armdataboxedge_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,46 +17,42 @@ func ExampleOrdersClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdataboxedge.NewOrdersClient("<subscription-id>", cred, nil)
+	client, err := armdataboxedge.NewOrdersClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<device-name>",
-		"<resource-group-name>",
+		"testedgedevice",
+		"GroupForEdgeAutomation",
 		armdataboxedge.Order{
 			Properties: &armdataboxedge.OrderProperties{
 				ContactInformation: &armdataboxedge.ContactDetails{
-					CompanyName:   to.Ptr("<company-name>"),
-					ContactPerson: to.Ptr("<contact-person>"),
+					CompanyName:   to.Ptr("Microsoft"),
+					ContactPerson: to.Ptr("John Mcclane"),
 					EmailList: []*string{
 						to.Ptr("john@microsoft.com")},
-					Phone: to.Ptr("<phone>"),
+					Phone: to.Ptr("(800) 426-9400"),
 				},
 				ShippingAddress: &armdataboxedge.Address{
-					AddressLine1: to.Ptr("<address-line1>"),
-					AddressLine2: to.Ptr("<address-line2>"),
-					AddressLine3: to.Ptr("<address-line3>"),
-					City:         to.Ptr("<city>"),
-					Country:      to.Ptr("<country>"),
-					PostalCode:   to.Ptr("<postal-code>"),
-					State:        to.Ptr("<state>"),
+					AddressLine1: to.Ptr("Microsoft Corporation"),
+					AddressLine2: to.Ptr("One Microsoft Way"),
+					AddressLine3: to.Ptr("Redmond"),
+					City:         to.Ptr("WA"),
+					Country:      to.Ptr("USA"),
+					PostalCode:   to.Ptr("98052"),
+					State:        to.Ptr("WA"),
 				},
 			},
 		},
-		&armdataboxedge.OrdersClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

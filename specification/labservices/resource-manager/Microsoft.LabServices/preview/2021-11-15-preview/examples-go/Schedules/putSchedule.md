@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.4.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flabservices%2Farmlabservices%2Fv0.5.0/sdk/resourcemanager/labservices/armlabservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlabservices_test
@@ -19,21 +19,19 @@ func ExampleSchedulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlabservices.NewSchedulesClient("<subscription-id>", cred, nil)
+	client, err := armlabservices.NewSchedulesClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<lab-name>",
-		"<schedule-name>",
+		"testrg123",
+		"testlab",
+		"schedule1",
 		armlabservices.Schedule{
 			Properties: &armlabservices.ScheduleProperties{
-				Notes: to.Ptr("<notes>"),
+				Notes: to.Ptr("Schedule 1 for students"),
 				RecurrencePattern: &armlabservices.RecurrencePattern{
 					ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2020-08-14"); return t }()),
 					Frequency:      to.Ptr(armlabservices.RecurrenceFrequencyDaily),
@@ -41,13 +39,12 @@ func ExampleSchedulesClient_CreateOrUpdate() {
 				},
 				StartAt:    to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00Z"); return t }()),
 				StopAt:     to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00Z"); return t }()),
-				TimeZoneID: to.Ptr("<time-zone-id>"),
+				TimeZoneID: to.Ptr("America/Los_Angeles"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

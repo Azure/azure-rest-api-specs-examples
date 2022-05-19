@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.5.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.6.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcontainerregistry_test
@@ -6,8 +6,6 @@ package armcontainerregistry_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,20 +17,18 @@ func ExampleTasksClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcontainerregistry.NewTasksClient("<subscription-id>", cred, nil)
+	client, err := armcontainerregistry.NewTasksClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<registry-name>",
-		"<task-name>",
+		"myResourceGroup",
+		"myRegistry",
+		"mytTask",
 		armcontainerregistry.Task{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Tags: map[string]*string{
 				"testkey": to.Ptr("value"),
 			},
@@ -44,7 +40,7 @@ func ExampleTasksClient_BeginCreate() {
 					CPU: to.Ptr[int32](2),
 				},
 				IsSystemTask: to.Ptr(false),
-				LogTemplate:  to.Ptr("<log-template>"),
+				LogTemplate:  to.Ptr("acr/tasks:{{.Run.OS}}"),
 				Platform: &armcontainerregistry.PlatformProperties{
 					Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
 					OS:           to.Ptr(armcontainerregistry.OSLinux),
@@ -52,19 +48,19 @@ func ExampleTasksClient_BeginCreate() {
 				Status: to.Ptr(armcontainerregistry.TaskStatusEnabled),
 				Step: &armcontainerregistry.DockerBuildStep{
 					Type:        to.Ptr(armcontainerregistry.StepTypeDocker),
-					ContextPath: to.Ptr("<context-path>"),
+					ContextPath: to.Ptr("src"),
 					Arguments: []*armcontainerregistry.Argument{
 						{
-							Name:     to.Ptr("<name>"),
+							Name:     to.Ptr("mytestargument"),
 							IsSecret: to.Ptr(false),
-							Value:    to.Ptr("<value>"),
+							Value:    to.Ptr("mytestvalue"),
 						},
 						{
-							Name:     to.Ptr("<name>"),
+							Name:     to.Ptr("mysecrettestargument"),
 							IsSecret: to.Ptr(true),
-							Value:    to.Ptr("<value>"),
+							Value:    to.Ptr("mysecrettestvalue"),
 						}},
-					DockerFilePath: to.Ptr("<docker-file-path>"),
+					DockerFilePath: to.Ptr("src/DockerFile"),
 					ImageNames: []*string{
 						to.Ptr("azurerest:testtag")},
 					IsPushEnabled: to.Ptr(true),
@@ -72,19 +68,19 @@ func ExampleTasksClient_BeginCreate() {
 				},
 				Trigger: &armcontainerregistry.TriggerProperties{
 					BaseImageTrigger: &armcontainerregistry.BaseImageTrigger{
-						Name:                     to.Ptr("<name>"),
+						Name:                     to.Ptr("myBaseImageTrigger"),
 						BaseImageTriggerType:     to.Ptr(armcontainerregistry.BaseImageTriggerTypeRuntime),
-						UpdateTriggerEndpoint:    to.Ptr("<update-trigger-endpoint>"),
+						UpdateTriggerEndpoint:    to.Ptr("https://user:pass@mycicd.webhook.com?token=foo"),
 						UpdateTriggerPayloadType: to.Ptr(armcontainerregistry.UpdateTriggerPayloadTypeToken),
 					},
 					SourceTriggers: []*armcontainerregistry.SourceTrigger{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("mySourceTrigger"),
 							SourceRepository: &armcontainerregistry.SourceProperties{
-								Branch:        to.Ptr("<branch>"),
-								RepositoryURL: to.Ptr("<repository-url>"),
+								Branch:        to.Ptr("master"),
+								RepositoryURL: to.Ptr("https://github.com/Azure/azure-rest-api-specs"),
 								SourceControlAuthProperties: &armcontainerregistry.AuthInfo{
-									Token:     to.Ptr("<token>"),
+									Token:     to.Ptr("xxxxx"),
 									TokenType: to.Ptr(armcontainerregistry.TokenTypePAT),
 								},
 								SourceControlType: to.Ptr(armcontainerregistry.SourceControlTypeGithub),
@@ -94,21 +90,19 @@ func ExampleTasksClient_BeginCreate() {
 						}},
 					TimerTriggers: []*armcontainerregistry.TimerTrigger{
 						{
-							Name:     to.Ptr("<name>"),
-							Schedule: to.Ptr("<schedule>"),
+							Name:     to.Ptr("myTimerTrigger"),
+							Schedule: to.Ptr("30 9 * * 1-5"),
 						}},
 				},
 			},
 		},
-		&armcontainerregistry.TasksClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

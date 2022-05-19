@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.5.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.6.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcontainerregistry_test
@@ -6,8 +6,6 @@ package armcontainerregistry_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,18 +17,16 @@ func ExampleTasksClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcontainerregistry.NewTasksClient("<subscription-id>", cred, nil)
+	client, err := armcontainerregistry.NewTasksClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<registry-name>",
-		"<task-name>",
+		"myResourceGroup",
+		"myRegistry",
+		"myTask",
 		armcontainerregistry.TaskUpdateParameters{
 			Properties: &armcontainerregistry.TaskPropertiesUpdateParameters{
 				AgentConfiguration: &armcontainerregistry.AgentProperties{
@@ -39,33 +35,33 @@ func ExampleTasksClient_BeginUpdate() {
 				Credentials: &armcontainerregistry.Credentials{
 					CustomRegistries: map[string]*armcontainerregistry.CustomRegistryCredentials{
 						"myregistry.azurecr.io": {
-							Identity: to.Ptr("<identity>"),
+							Identity: to.Ptr("[system]"),
 							Password: &armcontainerregistry.SecretObject{
 								Type:  to.Ptr(armcontainerregistry.SecretObjectTypeVaultsecret),
-								Value: to.Ptr("<value>"),
+								Value: to.Ptr("https://myacbvault.vault.azure.net/secrets/password"),
 							},
 							UserName: &armcontainerregistry.SecretObject{
 								Type:  to.Ptr(armcontainerregistry.SecretObjectTypeOpaque),
-								Value: to.Ptr("<value>"),
+								Value: to.Ptr("username"),
 							},
 						},
 					},
 				},
-				LogTemplate: to.Ptr("<log-template>"),
+				LogTemplate: to.Ptr("acr/tasks:{{.Run.OS}}"),
 				Status:      to.Ptr(armcontainerregistry.TaskStatusEnabled),
 				Step: &armcontainerregistry.DockerBuildStepUpdateParameters{
 					Type:           to.Ptr(armcontainerregistry.StepTypeDocker),
-					DockerFilePath: to.Ptr("<docker-file-path>"),
+					DockerFilePath: to.Ptr("src/DockerFile"),
 					ImageNames: []*string{
 						to.Ptr("azurerest:testtag1")},
 				},
 				Trigger: &armcontainerregistry.TriggerUpdateParameters{
 					SourceTriggers: []*armcontainerregistry.SourceTriggerUpdateParameters{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("mySourceTrigger"),
 							SourceRepository: &armcontainerregistry.SourceUpdateParameters{
 								SourceControlAuthProperties: &armcontainerregistry.AuthInfoUpdateParameters{
-									Token:     to.Ptr("<token>"),
+									Token:     to.Ptr("xxxxx"),
 									TokenType: to.Ptr(armcontainerregistry.TokenTypePAT),
 								},
 							},
@@ -78,15 +74,13 @@ func ExampleTasksClient_BeginUpdate() {
 				"testkey": to.Ptr("value"),
 			},
 		},
-		&armcontainerregistry.TasksClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

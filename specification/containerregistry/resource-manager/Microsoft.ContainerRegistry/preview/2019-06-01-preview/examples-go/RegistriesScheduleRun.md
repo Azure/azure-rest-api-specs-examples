@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.5.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcontainerregistry%2Farmcontainerregistry%2Fv0.6.0/sdk/resourcemanager/containerregistry/armcontainerregistry/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcontainerregistry_test
@@ -6,8 +6,6 @@ package armcontainerregistry_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,35 +17,33 @@ func ExampleRegistriesClient_BeginScheduleRun() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcontainerregistry.NewRegistriesClient("<subscription-id>", cred, nil)
+	client, err := armcontainerregistry.NewRegistriesClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginScheduleRun(ctx,
-		"<resource-group-name>",
-		"<registry-name>",
+		"myResourceGroup",
+		"myRegistry",
 		&armcontainerregistry.DockerBuildRequest{
-			Type:             to.Ptr("<type>"),
+			Type:             to.Ptr("DockerBuildRequest"),
 			IsArchiveEnabled: to.Ptr(true),
 			AgentConfiguration: &armcontainerregistry.AgentProperties{
 				CPU: to.Ptr[int32](2),
 			},
 			Arguments: []*armcontainerregistry.Argument{
 				{
-					Name:     to.Ptr("<name>"),
+					Name:     to.Ptr("mytestargument"),
 					IsSecret: to.Ptr(false),
-					Value:    to.Ptr("<value>"),
+					Value:    to.Ptr("mytestvalue"),
 				},
 				{
-					Name:     to.Ptr("<name>"),
+					Name:     to.Ptr("mysecrettestargument"),
 					IsSecret: to.Ptr(true),
-					Value:    to.Ptr("<value>"),
+					Value:    to.Ptr("mysecrettestvalue"),
 				}},
-			DockerFilePath: to.Ptr("<docker-file-path>"),
+			DockerFilePath: to.Ptr("DockerFile"),
 			ImageNames: []*string{
 				to.Ptr("azurerest:testtag")},
 			IsPushEnabled: to.Ptr(true),
@@ -56,17 +52,15 @@ func ExampleRegistriesClient_BeginScheduleRun() {
 				Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
 				OS:           to.Ptr(armcontainerregistry.OSLinux),
 			},
-			SourceLocation: to.Ptr("<source-location>"),
+			SourceLocation: to.Ptr("https://myaccount.blob.core.windows.net/sascontainer/source.zip?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D"),
 		},
-		&armcontainerregistry.RegistriesClientBeginScheduleRunOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

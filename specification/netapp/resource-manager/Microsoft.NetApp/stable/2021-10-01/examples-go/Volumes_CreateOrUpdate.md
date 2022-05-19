@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.4.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv1.0.0/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armnetapp_test
@@ -6,8 +6,6 @@ package armnetapp_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,39 +17,35 @@ func ExampleVolumesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armnetapp.NewVolumesClient("<subscription-id>", cred, nil)
+	client, err := armnetapp.NewVolumesClient("D633CC2E-722B-4AE1-B636-BBD9E4C60ED9", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<pool-name>",
-		"<volume-name>",
+		"myRG",
+		"account1",
+		"pool1",
+		"volume1",
 		armnetapp.Volume{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Properties: &armnetapp.VolumeProperties{
-				CreationToken:       to.Ptr("<creation-token>"),
-				EncryptionKeySource: to.Ptr("<encryption-key-source>"),
+				CreationToken:       to.Ptr("my-unique-file-path"),
+				EncryptionKeySource: to.Ptr("Microsoft.KeyVault"),
 				ServiceLevel:        to.Ptr(armnetapp.ServiceLevelPremium),
-				SubnetID:            to.Ptr("<subnet-id>"),
+				SubnetID:            to.Ptr("/subscriptions/9760acf5-4638-11e7-9bdb-020073ca7778/resourceGroups/myRP/providers/Microsoft.Network/virtualNetworks/testvnet3/subnets/testsubnet3"),
 				ThroughputMibps:     to.Ptr[float32](128),
 				UsageThreshold:      to.Ptr[int64](107374182400),
 			},
 		},
-		&armnetapp.VolumesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

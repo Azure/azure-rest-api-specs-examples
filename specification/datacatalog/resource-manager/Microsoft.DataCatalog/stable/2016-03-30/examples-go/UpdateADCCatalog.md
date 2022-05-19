@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatacatalog%2Farmdatacatalog%2Fv0.1.0/sdk/resourcemanager/datacatalog/armdatacatalog/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatacatalog%2Farmdatacatalog%2Fv1.0.0/sdk/resourcemanager/datacatalog/armdatacatalog/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatacatalog_test
@@ -12,45 +12,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datacatalog/armdatacatalog"
 )
 
-// x-ms-original-file: specification/datacatalog/resource-manager/Microsoft.DataCatalog/stable/2016-03-30/examples/UpdateADCCatalog.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datacatalog/resource-manager/Microsoft.DataCatalog/stable/2016-03-30/examples/UpdateADCCatalog.json
 func ExampleADCCatalogsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armdatacatalog.NewADCCatalogsClient("<subscription-id>",
-		"<catalog-name>", cred, nil)
+	client, err := armdatacatalog.NewADCCatalogsClient("12345678-1234-1234-12345678abc", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
+		"exampleResourceGroup",
+		"exampleCatalog",
 		armdatacatalog.ADCCatalog{
-			Resource: armdatacatalog.Resource{
-				Location: to.StringPtr("<location>"),
-				Tags: map[string]*string{
-					"mykey":  to.StringPtr("myvalue"),
-					"mykey2": to.StringPtr("myvalue2"),
-				},
+			Location: to.Ptr("North US"),
+			Tags: map[string]*string{
+				"mykey":  to.Ptr("myvalue"),
+				"mykey2": to.Ptr("myvalue2"),
 			},
 			Properties: &armdatacatalog.ADCCatalogProperties{
 				Admins: []*armdatacatalog.Principals{
 					{
-						ObjectID: to.StringPtr("<object-id>"),
-						Upn:      to.StringPtr("<upn>"),
+						ObjectID: to.Ptr("99999999-9999-9999-999999999999"),
+						Upn:      to.Ptr("myupn@microsoft.com"),
 					}},
-				EnableAutomaticUnitAdjustment: to.BoolPtr(false),
-				SKU:                           armdatacatalog.SKUTypeStandard.ToPtr(),
-				Units:                         to.Int32Ptr(1),
+				EnableAutomaticUnitAdjustment: to.Ptr(false),
+				SKU:                           to.Ptr(armdatacatalog.SKUTypeStandard),
+				Units:                         to.Ptr[int32](1),
 				Users: []*armdatacatalog.Principals{
 					{
-						ObjectID: to.StringPtr("<object-id>"),
-						Upn:      to.StringPtr("<upn>"),
+						ObjectID: to.Ptr("99999999-9999-9999-999999999999"),
+						Upn:      to.Ptr("myupn@microsoft.com"),
 					}},
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	log.Printf("ADCCatalog.ID: %s\n", *res.ID)
+	// TODO: use response item
+	_ = res
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsubscription%2Farmsubscription%2Fv0.4.0/sdk/resourcemanager/subscription/armsubscription/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsubscription%2Farmsubscription%2Fv1.0.0/sdk/resourcemanager/subscription/armsubscription/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armsubscription_test
@@ -6,8 +6,6 @@ package armsubscription_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleClient_BeginAcceptOwnership() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armsubscription.NewClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginAcceptOwnership(ctx,
-		"<subscription-id>",
+		"291bba3f-e0a5-47bc-a099-3bdcb2a50a05",
 		armsubscription.AcceptOwnershipRequest{
 			Properties: &armsubscription.AcceptOwnershipRequestProperties{
-				DisplayName: to.Ptr("<display-name>"),
+				DisplayName: to.Ptr("Test Subscription"),
 				Tags: map[string]*string{
 					"tag1": to.Ptr("Messi"),
 					"tag2": to.Ptr("Ronaldo"),
@@ -39,15 +35,13 @@ func ExampleClient_BeginAcceptOwnership() {
 				},
 			},
 		},
-		&armsubscription.ClientBeginAcceptOwnershipOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

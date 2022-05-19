@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv0.4.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fstoragesync%2Farmstoragesync%2Fv1.0.0/sdk/resourcemanager/storagesync/armstoragesync/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armstoragesync_test
@@ -16,22 +16,19 @@ func ExampleWorkflowsClient_Abort() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armstoragesync.NewWorkflowsClient("<subscription-id>", cred, nil)
+	client, err := armstoragesync.NewWorkflowsClient("52b8da2f-61e0-4a1f-8dde-336911f367fb", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Abort(ctx,
-		"<resource-group-name>",
-		"<storage-sync-service-name>",
-		"<workflow-id>",
+		"SampleResourceGroup_1",
+		"SampleStorageSyncService_1",
+		"7ffd50b3-5574-478d-9ff2-9371bc42ce68",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -17,30 +17,27 @@ func ExampleManagedPrivateEndpointsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewManagedPrivateEndpointsClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewManagedPrivateEndpointsClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
-		"<managed-virtual-network-name>",
-		"<managed-private-endpoint-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
+		"exampleManagedVirtualNetworkName",
+		"exampleManagedPrivateEndpointName",
 		armdatafactory.ManagedPrivateEndpointResource{
 			Properties: &armdatafactory.ManagedPrivateEndpoint{
 				Fqdns:                 []*string{},
-				GroupID:               to.Ptr("<group-id>"),
-				PrivateLinkResourceID: to.Ptr("<private-link-resource-id>"),
+				GroupID:               to.Ptr("blob"),
+				PrivateLinkResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage"),
 			},
 		},
 		&armdatafactory.ManagedPrivateEndpointsClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

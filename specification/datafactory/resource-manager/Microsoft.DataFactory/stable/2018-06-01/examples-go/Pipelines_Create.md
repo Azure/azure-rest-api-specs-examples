@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -17,29 +17,27 @@ func ExamplePipelinesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewPipelinesClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewPipelinesClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
-		"<pipeline-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
+		"examplePipeline",
 		armdatafactory.PipelineResource{
 			Properties: &armdatafactory.Pipeline{
 				Activities: []armdatafactory.ActivityClassification{
 					&armdatafactory.ForEachActivity{
-						Name: to.Ptr("<name>"),
-						Type: to.Ptr("<type>"),
+						Name: to.Ptr("ExampleForeachActivity"),
+						Type: to.Ptr("ForEach"),
 						TypeProperties: &armdatafactory.ForEachActivityTypeProperties{
 							Activities: []armdatafactory.ActivityClassification{
 								&armdatafactory.CopyActivity{
-									Name: to.Ptr("<name>"),
-									Type: to.Ptr("<type>"),
+									Name: to.Ptr("ExampleCopyActivity"),
+									Type: to.Ptr("Copy"),
 									Inputs: []*armdatafactory.DatasetReference{
 										{
 											Type: to.Ptr(armdatafactory.DatasetReferenceTypeDatasetReference),
@@ -47,7 +45,7 @@ func ExamplePipelinesClient_CreateOrUpdate() {
 												"MyFileName":   "examplecontainer.csv",
 												"MyFolderPath": "examplecontainer",
 											},
-											ReferenceName: to.Ptr("<reference-name>"),
+											ReferenceName: to.Ptr("exampleDataset"),
 										}},
 									Outputs: []*armdatafactory.DatasetReference{
 										{
@@ -59,22 +57,22 @@ func ExamplePipelinesClient_CreateOrUpdate() {
 												},
 												"MyFolderPath": "examplecontainer",
 											},
-											ReferenceName: to.Ptr("<reference-name>"),
+											ReferenceName: to.Ptr("exampleDataset"),
 										}},
 									TypeProperties: &armdatafactory.CopyActivityTypeProperties{
 										DataIntegrationUnits: float64(32),
 										Sink: &armdatafactory.BlobSink{
-											Type: to.Ptr("<type>"),
+											Type: to.Ptr("BlobSink"),
 										},
 										Source: &armdatafactory.BlobSource{
-											Type: to.Ptr("<type>"),
+											Type: to.Ptr("BlobSource"),
 										},
 									},
 								}},
 							IsSequential: to.Ptr(true),
 							Items: &armdatafactory.Expression{
 								Type:  to.Ptr(armdatafactory.ExpressionTypeExpression),
-								Value: to.Ptr("<value>"),
+								Value: to.Ptr("@pipeline().parameters.OutputBlobNameList"),
 							},
 						},
 					}},
@@ -107,7 +105,6 @@ func ExamplePipelinesClient_CreateOrUpdate() {
 		&armdatafactory.PipelinesClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -17,24 +17,22 @@ func ExampleDatasetsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewDatasetsClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewDatasetsClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
-		"<dataset-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
+		"exampleDataset",
 		armdatafactory.DatasetResource{
 			Properties: &armdatafactory.AzureBlobDataset{
-				Type: to.Ptr("<type>"),
+				Type: to.Ptr("AzureBlob"),
 				LinkedServiceName: &armdatafactory.LinkedServiceReference{
 					Type:          to.Ptr(armdatafactory.LinkedServiceReferenceTypeLinkedServiceReference),
-					ReferenceName: to.Ptr("<reference-name>"),
+					ReferenceName: to.Ptr("exampleLinkedService"),
 				},
 				Parameters: map[string]*armdatafactory.ParameterSpecification{
 					"MyFileName": {
@@ -46,7 +44,7 @@ func ExampleDatasetsClient_CreateOrUpdate() {
 				},
 				TypeProperties: &armdatafactory.AzureBlobDatasetTypeProperties{
 					Format: &armdatafactory.TextFormat{
-						Type: to.Ptr("<type>"),
+						Type: to.Ptr("TextFormat"),
 					},
 					FileName: map[string]interface{}{
 						"type":  "Expression",
@@ -62,7 +60,6 @@ func ExampleDatasetsClient_CreateOrUpdate() {
 		&armdatafactory.DatasetsClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

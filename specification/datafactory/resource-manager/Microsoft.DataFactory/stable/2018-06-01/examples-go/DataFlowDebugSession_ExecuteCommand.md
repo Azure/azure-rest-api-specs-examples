@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -6,8 +6,6 @@ package armdatafactory_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,34 +17,30 @@ func ExampleDataFlowDebugSessionClient_BeginExecuteCommand() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewDataFlowDebugSessionClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewDataFlowDebugSessionClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginExecuteCommand(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
 		armdatafactory.DataFlowDebugCommandRequest{
 			Command: to.Ptr(armdatafactory.DataFlowDebugCommandTypeExecutePreviewQuery),
 			CommandPayload: &armdatafactory.DataFlowDebugCommandPayload{
 				RowLimits:  to.Ptr[int32](100),
-				StreamName: to.Ptr("<stream-name>"),
+				StreamName: to.Ptr("source1"),
 			},
-			SessionID: to.Ptr("<session-id>"),
+			SessionID: to.Ptr("f06ed247-9d07-49b2-b05e-2cb4a2fc871e"),
 		},
-		&armdatafactory.DataFlowDebugSessionClientBeginExecuteCommandOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

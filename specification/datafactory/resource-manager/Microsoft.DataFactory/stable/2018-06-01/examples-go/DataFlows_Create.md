@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv0.5.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatafactory%2Farmdatafactory%2Fv1.0.0/sdk/resourcemanager/datafactory/armdatafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatafactory_test
@@ -17,52 +17,50 @@ func ExampleDataFlowsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewDataFlowsClient("<subscription-id>", cred, nil)
+	client, err := armdatafactory.NewDataFlowsClient("12345678-1234-1234-1234-12345678abc", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<factory-name>",
-		"<data-flow-name>",
+		"exampleResourceGroup",
+		"exampleFactoryName",
+		"exampleDataFlow",
 		armdatafactory.DataFlowResource{
 			Properties: &armdatafactory.MappingDataFlow{
-				Type:        to.Ptr("<type>"),
-				Description: to.Ptr("<description>"),
+				Type:        to.Ptr("MappingDataFlow"),
+				Description: to.Ptr("Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation."),
 				TypeProperties: &armdatafactory.MappingDataFlowTypeProperties{
-					Script: to.Ptr("<script>"),
+					Script: to.Ptr("source(output(PreviousConversionRate as double,Country as string,DateTime1 as string,CurrentConversionRate as double),allowSchemaDrift: false,validateSchema: false) ~> USDCurrency\nsource(output(PreviousConversionRate as double,Country as string,DateTime1 as string,CurrentConversionRate as double),allowSchemaDrift: true,validateSchema: false) ~> CADSource\nUSDCurrency, CADSource union(byName: true)~> Union\nUnion derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn\nNewCurrencyColumn split(Country == 'USD',Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)\nConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink\nConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"),
 					Sinks: []*armdatafactory.DataFlowSink{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("USDSink"),
 							Dataset: &armdatafactory.DatasetReference{
 								Type:          to.Ptr(armdatafactory.DatasetReferenceTypeDatasetReference),
-								ReferenceName: to.Ptr("<reference-name>"),
+								ReferenceName: to.Ptr("USDOutput"),
 							},
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("CADSink"),
 							Dataset: &armdatafactory.DatasetReference{
 								Type:          to.Ptr(armdatafactory.DatasetReferenceTypeDatasetReference),
-								ReferenceName: to.Ptr("<reference-name>"),
+								ReferenceName: to.Ptr("CADOutput"),
 							},
 						}},
 					Sources: []*armdatafactory.DataFlowSource{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("USDCurrency"),
 							Dataset: &armdatafactory.DatasetReference{
 								Type:          to.Ptr(armdatafactory.DatasetReferenceTypeDatasetReference),
-								ReferenceName: to.Ptr("<reference-name>"),
+								ReferenceName: to.Ptr("CurrencyDatasetUSD"),
 							},
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("CADSource"),
 							Dataset: &armdatafactory.DatasetReference{
 								Type:          to.Ptr(armdatafactory.DatasetReferenceTypeDatasetReference),
-								ReferenceName: to.Ptr("<reference-name>"),
+								ReferenceName: to.Ptr("CurrencyDatasetCAD"),
 							},
 						}},
 				},
@@ -71,7 +69,6 @@ func ExampleDataFlowsClient_CreateOrUpdate() {
 		&armdatafactory.DataFlowsClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

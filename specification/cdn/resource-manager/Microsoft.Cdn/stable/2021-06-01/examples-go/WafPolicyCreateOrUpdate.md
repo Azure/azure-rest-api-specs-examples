@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv0.5.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv1.0.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcdn_test
@@ -6,8 +6,6 @@ package armcdn_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,24 +17,22 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcdn.NewPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armcdn.NewPoliciesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<policy-name>",
+		"rg1",
+		"MicrosoftCdnWafPolicy",
 		armcdn.WebApplicationFirewallPolicy{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("WestUs"),
 			Properties: &armcdn.WebApplicationFirewallPolicyProperties{
 				CustomRules: &armcdn.CustomRuleList{
 					Rules: []*armcdn.CustomRule{
 						{
-							Name:         to.Ptr("<name>"),
+							Name:         to.Ptr("CustomRule1"),
 							Action:       to.Ptr(armcdn.ActionTypeBlock),
 							EnabledState: to.Ptr(armcdn.CustomRuleEnabledStateEnabled),
 							MatchConditions: []*armcdn.MatchCondition{
@@ -54,7 +50,7 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 									MatchVariable:   to.Ptr(armcdn.WafMatchVariableRequestHeader),
 									NegateCondition: to.Ptr(false),
 									Operator:        to.Ptr(armcdn.OperatorContains),
-									Selector:        to.Ptr("<selector>"),
+									Selector:        to.Ptr("UserAgent"),
 									Transforms:      []*armcdn.TransformType{},
 								},
 								{
@@ -64,7 +60,7 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 									MatchVariable:   to.Ptr(armcdn.WafMatchVariableQueryString),
 									NegateCondition: to.Ptr(false),
 									Operator:        to.Ptr(armcdn.OperatorContains),
-									Selector:        to.Ptr("<selector>"),
+									Selector:        to.Ptr("search"),
 									Transforms: []*armcdn.TransformType{
 										to.Ptr(armcdn.TransformTypeURLDecode),
 										to.Ptr(armcdn.TransformTypeLowercase)},
@@ -77,31 +73,31 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 						{
 							RuleGroupOverrides: []*armcdn.ManagedRuleGroupOverride{
 								{
-									RuleGroupName: to.Ptr("<rule-group-name>"),
+									RuleGroupName: to.Ptr("Group1"),
 									Rules: []*armcdn.ManagedRuleOverride{
 										{
 											Action:       to.Ptr(armcdn.ActionTypeRedirect),
 											EnabledState: to.Ptr(armcdn.ManagedRuleEnabledStateEnabled),
-											RuleID:       to.Ptr("<rule-id>"),
+											RuleID:       to.Ptr("GROUP1-0001"),
 										},
 										{
 											EnabledState: to.Ptr(armcdn.ManagedRuleEnabledStateDisabled),
-											RuleID:       to.Ptr("<rule-id>"),
+											RuleID:       to.Ptr("GROUP1-0002"),
 										}},
 								}},
-							RuleSetType:    to.Ptr("<rule-set-type>"),
-							RuleSetVersion: to.Ptr("<rule-set-version>"),
+							RuleSetType:    to.Ptr("DefaultRuleSet"),
+							RuleSetVersion: to.Ptr("preview-1.0"),
 						}},
 				},
 				PolicySettings: &armcdn.PolicySettings{
-					DefaultCustomBlockResponseBody:       to.Ptr("<default-custom-block-response-body>"),
+					DefaultCustomBlockResponseBody:       to.Ptr("PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="),
 					DefaultCustomBlockResponseStatusCode: to.Ptr(armcdn.PolicySettingsDefaultCustomBlockResponseStatusCode(200)),
-					DefaultRedirectURL:                   to.Ptr("<default-redirect-url>"),
+					DefaultRedirectURL:                   to.Ptr("http://www.bing.com"),
 				},
 				RateLimitRules: &armcdn.RateLimitRuleList{
 					Rules: []*armcdn.RateLimitRule{
 						{
-							Name:         to.Ptr("<name>"),
+							Name:         to.Ptr("RateLimitRule1"),
 							Action:       to.Ptr(armcdn.ActionTypeBlock),
 							EnabledState: to.Ptr(armcdn.CustomRuleEnabledStateEnabled),
 							MatchConditions: []*armcdn.MatchCondition{
@@ -124,15 +120,13 @@ func ExamplePoliciesClient_BeginCreateOrUpdate() {
 				Name: to.Ptr(armcdn.SKUNameStandardMicrosoft),
 			},
 		},
-		&armcdn.PoliciesClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

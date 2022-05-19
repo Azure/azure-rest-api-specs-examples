@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv0.5.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcdn%2Farmcdn%2Fv1.0.0/sdk/resourcemanager/cdn/armcdn/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcdn_test
@@ -18,17 +18,15 @@ func ExampleLogAnalyticsClient_GetLogAnalyticsMetrics() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcdn.NewLogAnalyticsClient("<subscription-id>", cred, nil)
+	client, err := armcdn.NewLogAnalyticsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetLogAnalyticsMetrics(ctx,
-		"<resource-group-name>",
-		"<profile-name>",
+		"RG",
+		"profile1",
 		[]armcdn.LogMetric{
 			armcdn.LogMetricClientRequestCount},
 		func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:30:00.000Z"); return t }(),
@@ -46,7 +44,6 @@ func ExampleLogAnalyticsClient_GetLogAnalyticsMetrics() {
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

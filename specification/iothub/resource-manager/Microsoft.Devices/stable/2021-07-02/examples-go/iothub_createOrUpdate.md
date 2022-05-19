@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiothub%2Farmiothub%2Fv0.5.0/sdk/resourcemanager/iothub/armiothub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiothub%2Farmiothub%2Fv1.0.0/sdk/resourcemanager/iothub/armiothub/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armiothub_test
@@ -6,8 +6,6 @@ package armiothub_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,28 +17,26 @@ func ExampleResourceClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armiothub.NewResourceClient("<subscription-id>", cred, nil)
+	client, err := armiothub.NewResourceClient("91d12660-3dec-467a-be2a-213b5544ddc0", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
+		"myResourceGroup",
+		"testHub",
 		armiothub.Description{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("centraluseuap"),
 			Tags:     map[string]*string{},
-			Etag:     to.Ptr("<etag>"),
+			Etag:     to.Ptr("AAAAAAFD6M4="),
 			Properties: &armiothub.Properties{
 				CloudToDevice: &armiothub.CloudToDeviceProperties{
-					DefaultTTLAsIso8601: to.Ptr("<default-ttlas-iso8601>"),
+					DefaultTTLAsIso8601: to.Ptr("PT1H"),
 					Feedback: &armiothub.FeedbackProperties{
-						LockDurationAsIso8601: to.Ptr("<lock-duration-as-iso8601>"),
+						LockDurationAsIso8601: to.Ptr("PT1M"),
 						MaxDeliveryCount:      to.Ptr[int32](10),
-						TTLAsIso8601:          to.Ptr("<ttlas-iso8601>"),
+						TTLAsIso8601:          to.Ptr("PT1H"),
 					},
 					MaxDeliveryCount: to.Ptr[int32](10),
 				},
@@ -56,25 +52,25 @@ func ExampleResourceClient_BeginCreateOrUpdate() {
 				IPFilterRules: []*armiothub.IPFilterRule{},
 				MessagingEndpoints: map[string]*armiothub.MessagingEndpointProperties{
 					"fileNotifications": {
-						LockDurationAsIso8601: to.Ptr("<lock-duration-as-iso8601>"),
+						LockDurationAsIso8601: to.Ptr("PT1M"),
 						MaxDeliveryCount:      to.Ptr[int32](10),
-						TTLAsIso8601:          to.Ptr("<ttlas-iso8601>"),
+						TTLAsIso8601:          to.Ptr("PT1H"),
 					},
 				},
-				MinTLSVersion: to.Ptr("<min-tlsversion>"),
+				MinTLSVersion: to.Ptr("1.2"),
 				NetworkRuleSets: &armiothub.NetworkRuleSetProperties{
 					ApplyToBuiltInEventHubEndpoint: to.Ptr(true),
 					DefaultAction:                  to.Ptr(armiothub.DefaultActionDeny),
 					IPRules: []*armiothub.NetworkRuleSetIPRule{
 						{
 							Action:     to.Ptr(armiothub.NetworkRuleIPActionAllow),
-							FilterName: to.Ptr("<filter-name>"),
-							IPMask:     to.Ptr("<ipmask>"),
+							FilterName: to.Ptr("rule1"),
+							IPMask:     to.Ptr("131.117.159.53"),
 						},
 						{
 							Action:     to.Ptr(armiothub.NetworkRuleIPActionAllow),
-							FilterName: to.Ptr("<filter-name>"),
-							IPMask:     to.Ptr("<ipmask>"),
+							FilterName: to.Ptr("rule2"),
+							IPMask:     to.Ptr("157.55.59.128/25"),
 						}},
 				},
 				Routing: &armiothub.RoutingProperties{
@@ -85,8 +81,8 @@ func ExampleResourceClient_BeginCreateOrUpdate() {
 						StorageContainers: []*armiothub.RoutingStorageContainerProperties{},
 					},
 					FallbackRoute: &armiothub.FallbackRouteProperties{
-						Name:      to.Ptr("<name>"),
-						Condition: to.Ptr("<condition>"),
+						Name:      to.Ptr("$fallback"),
+						Condition: to.Ptr("true"),
 						EndpointNames: []*string{
 							to.Ptr("events")},
 						IsEnabled: to.Ptr(true),
@@ -96,9 +92,9 @@ func ExampleResourceClient_BeginCreateOrUpdate() {
 				},
 				StorageEndpoints: map[string]*armiothub.StorageEndpointProperties{
 					"$default": {
-						ConnectionString: to.Ptr("<connection-string>"),
-						ContainerName:    to.Ptr("<container-name>"),
-						SasTTLAsIso8601:  to.Ptr("<sas-ttlas-iso8601>"),
+						ConnectionString: to.Ptr(""),
+						ContainerName:    to.Ptr(""),
+						SasTTLAsIso8601:  to.Ptr("PT1H"),
 					},
 				},
 			},
@@ -107,17 +103,13 @@ func ExampleResourceClient_BeginCreateOrUpdate() {
 				Capacity: to.Ptr[int64](1),
 			},
 		},
-		&armiothub.ResourceClientBeginCreateOrUpdateOptions{IfMatch: nil,
-			ResumeToken: "",
-		})
+		&armiothub.ResourceClientBeginCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

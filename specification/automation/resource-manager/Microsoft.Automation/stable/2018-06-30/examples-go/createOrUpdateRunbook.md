@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,32 +17,30 @@ func ExampleRunbookClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewRunbookClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewRunbookClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<runbook-name>",
+		"rg",
+		"ContoseAutomationAccount",
+		"Get-AzureVMTutorial",
 		armautomation.RunbookCreateOrUpdateParameters{
-			Name:     to.Ptr("<name>"),
-			Location: to.Ptr("<location>"),
+			Name:     to.Ptr("Get-AzureVMTutorial"),
+			Location: to.Ptr("East US 2"),
 			Properties: &armautomation.RunbookCreateOrUpdateProperties{
-				Description:      to.Ptr("<description>"),
+				Description:      to.Ptr("Description of the Runbook"),
 				LogActivityTrace: to.Ptr[int32](1),
 				LogProgress:      to.Ptr(true),
 				LogVerbose:       to.Ptr(false),
 				PublishContentLink: &armautomation.ContentLink{
 					ContentHash: &armautomation.ContentHash{
-						Algorithm: to.Ptr("<algorithm>"),
-						Value:     to.Ptr("<value>"),
+						Algorithm: to.Ptr("SHA256"),
+						Value:     to.Ptr("115775B8FF2BE672D8A946BD0B489918C724DDE15A440373CA54461D53010A80"),
 					},
-					URI: to.Ptr("<uri>"),
+					URI: to.Ptr("https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1"),
 				},
 				RunbookType: to.Ptr(armautomation.RunbookTypeEnumPowerShellWorkflow),
 			},
@@ -54,7 +52,6 @@ func ExampleRunbookClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

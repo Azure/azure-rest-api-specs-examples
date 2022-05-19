@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -16,17 +16,15 @@ func ExampleSoftwareUpdateConfigurationMachineRunsClient_List() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewSoftwareUpdateConfigurationMachineRunsClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewSoftwareUpdateConfigurationMachineRunsClient("51766542-3ed7-4a72-a187-0c8ab644ddab", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.List(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
+		"mygroup",
+		"myaccount",
 		&armautomation.SoftwareUpdateConfigurationMachineRunsClientListOptions{ClientRequestID: nil,
 			Filter: nil,
 			Skip:   nil,
@@ -34,7 +32,6 @@ func ExampleSoftwareUpdateConfigurationMachineRunsClient_List() {
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

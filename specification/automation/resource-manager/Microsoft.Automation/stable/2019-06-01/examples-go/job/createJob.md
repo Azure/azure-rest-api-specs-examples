@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,34 +17,31 @@ func ExampleJobClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewJobClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewJobClient("51766542-3ed7-4a72-a187-0c8ab644ddab", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Create(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<job-name>",
+		"mygroup",
+		"ContoseAutomationAccount",
+		"foo",
 		armautomation.JobCreateParameters{
 			Properties: &armautomation.JobCreateProperties{
 				Parameters: map[string]*string{
 					"key01": to.Ptr("value01"),
 					"key02": to.Ptr("value02"),
 				},
-				RunOn: to.Ptr("<run-on>"),
+				RunOn: to.Ptr(""),
 				Runbook: &armautomation.RunbookAssociationProperty{
-					Name: to.Ptr("<name>"),
+					Name: to.Ptr("TestRunbook"),
 				},
 			},
 		},
 		&armautomation.JobClientCreateOptions{ClientRequestID: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

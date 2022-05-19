@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -19,18 +19,16 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewSoftwareUpdateConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewSoftwareUpdateConfigurationsClient("51766542-3ed7-4a72-a187-0c8ab644ddab", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<software-update-configuration-name>",
+		"mygroup",
+		"myaccount",
+		"testpatch",
 		armautomation.SoftwareUpdateConfiguration{
 			Properties: &armautomation.SoftwareUpdateConfigurationProperties{
 				ScheduleInfo: &armautomation.SUCScheduleProperties{
@@ -43,17 +41,17 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 					Frequency:  to.Ptr(armautomation.ScheduleFrequencyHour),
 					Interval:   to.Ptr[int64](1),
 					StartTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T12:22:57+00:00"); return t }()),
-					TimeZone:   to.Ptr("<time-zone>"),
+					TimeZone:   to.Ptr("America/Los_Angeles"),
 				},
 				Tasks: &armautomation.SoftwareUpdateConfigurationTasks{
 					PostTask: &armautomation.TaskProperties{
-						Source: to.Ptr("<source>"),
+						Source: to.Ptr("GetCache"),
 					},
 					PreTask: &armautomation.TaskProperties{
 						Parameters: map[string]*string{
 							"COMPUTERNAME": to.Ptr("Computer1"),
 						},
-						Source: to.Ptr("<source>"),
+						Source: to.Ptr("HelloWorld"),
 					},
 				},
 				UpdateConfiguration: &armautomation.UpdateConfiguration{
@@ -61,7 +59,7 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 						to.Ptr("/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-01"),
 						to.Ptr("/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-02"),
 						to.Ptr("/subscriptions/5ae68d89-69a4-454f-b5ce-e443cc4e0067/resourceGroups/myresources/providers/Microsoft.Compute/virtualMachines/vm-03")},
-					Duration: to.Ptr("<duration>"),
+					Duration: to.Ptr("PT2H0M"),
 					NonAzureComputerNames: []*string{
 						to.Ptr("box1.contoso.com"),
 						to.Ptr("box2.contoso.com")},
@@ -91,12 +89,12 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 							}},
 						NonAzureQueries: []*armautomation.NonAzureQueryProperties{
 							{
-								FunctionAlias: to.Ptr("<function-alias>"),
-								WorkspaceID:   to.Ptr("<workspace-id>"),
+								FunctionAlias: to.Ptr("SavedSearch1"),
+								WorkspaceID:   to.Ptr("WorkspaceId1"),
 							},
 							{
-								FunctionAlias: to.Ptr("<function-alias>"),
-								WorkspaceID:   to.Ptr("<workspace-id>"),
+								FunctionAlias: to.Ptr("SavedSearch2"),
+								WorkspaceID:   to.Ptr("WorkspaceId2"),
 							}},
 					},
 					Windows: &armautomation.WindowsProperties{
@@ -104,7 +102,7 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 							to.Ptr("168934"),
 							to.Ptr("168973")},
 						IncludedUpdateClassifications: to.Ptr(armautomation.WindowsUpdateClassesCritical),
-						RebootSetting:                 to.Ptr("<reboot-setting>"),
+						RebootSetting:                 to.Ptr("IfRequired"),
 					},
 				},
 			},
@@ -112,7 +110,6 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 		&armautomation.SoftwareUpdateConfigurationsClientCreateOptions{ClientRequestID: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

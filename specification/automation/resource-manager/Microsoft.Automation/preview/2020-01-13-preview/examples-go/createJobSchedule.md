@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,18 +17,16 @@ func ExampleJobScheduleClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewJobScheduleClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewJobScheduleClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Create(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<job-schedule-id>",
+		"rg",
+		"ContoseAutomationAccount",
+		"0fa462ba-3aa2-4138-83ca-9ebc3bc55cdc",
 		armautomation.JobScheduleCreateParameters{
 			Properties: &armautomation.JobScheduleCreateProperties{
 				Parameters: map[string]*string{
@@ -36,17 +34,16 @@ func ExampleJobScheduleClient_Create() {
 					"jobscheduletag02": to.Ptr("jobschedulevalue02"),
 				},
 				Runbook: &armautomation.RunbookAssociationProperty{
-					Name: to.Ptr("<name>"),
+					Name: to.Ptr("TestRunbook"),
 				},
 				Schedule: &armautomation.ScheduleAssociationProperty{
-					Name: to.Ptr("<name>"),
+					Name: to.Ptr("ScheduleNameGoesHere332204b5-debe-4348-a5c7-6357457189f2"),
 				},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

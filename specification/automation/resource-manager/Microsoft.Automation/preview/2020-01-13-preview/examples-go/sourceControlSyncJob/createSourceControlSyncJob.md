@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,28 +17,25 @@ func ExampleSourceControlSyncJobClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewSourceControlSyncJobClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewSourceControlSyncJobClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Create(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<source-control-name>",
-		"<source-control-sync-job-id>",
+		"rg",
+		"myAutomationAccount33",
+		"MySourceControl",
+		"ce6fe3e3-9db3-4096-a6b4-82bfb4c10a9a",
 		armautomation.SourceControlSyncJobCreateParameters{
 			Properties: &armautomation.SourceControlSyncJobCreateProperties{
-				CommitID: to.Ptr("<commit-id>"),
+				CommitID: to.Ptr("9de0980bfb45026a3d97a1b0522d98a9f604226e"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

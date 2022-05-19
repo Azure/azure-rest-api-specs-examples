@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,34 +17,31 @@ func ExampleModuleClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewModuleClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewModuleClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<module-name>",
+		"rg",
+		"MyAutomationAccount",
+		"MyModule",
 		armautomation.ModuleUpdateParameters{
 			Properties: &armautomation.ModuleUpdateProperties{
 				ContentLink: &armautomation.ContentLink{
 					ContentHash: &armautomation.ContentHash{
-						Algorithm: to.Ptr("<algorithm>"),
-						Value:     to.Ptr("<value>"),
+						Algorithm: to.Ptr("sha265"),
+						Value:     to.Ptr("07E108A962B81DD9C9BAA89BB47C0F6EE52B29E83758B07795E408D258B2B87A"),
 					},
-					URI:     to.Ptr("<uri>"),
-					Version: to.Ptr("<version>"),
+					URI:     to.Ptr("https://teststorage.blob.core.windows.net/mycontainer/MyModule.zip"),
+					Version: to.Ptr("1.0.0.0"),
 				},
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

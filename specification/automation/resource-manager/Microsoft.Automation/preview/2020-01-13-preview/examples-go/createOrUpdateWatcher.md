@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,31 +17,28 @@ func ExampleWatcherClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewWatcherClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewWatcherClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<watcher-name>",
+		"rg",
+		"MyTestAutomationAccount",
+		"MyTestWatcher",
 		armautomation.Watcher{
 			Properties: &armautomation.WatcherProperties{
-				Description:                 to.Ptr("<description>"),
+				Description:                 to.Ptr("This is a test watcher."),
 				ExecutionFrequencyInSeconds: to.Ptr[int64](60),
-				ScriptName:                  to.Ptr("<script-name>"),
-				ScriptRunOn:                 to.Ptr("<script-run-on>"),
+				ScriptName:                  to.Ptr("MyTestWatcherRunbook"),
+				ScriptRunOn:                 to.Ptr("MyTestHybridWorkerGroup"),
 			},
 			Tags: map[string]*string{},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

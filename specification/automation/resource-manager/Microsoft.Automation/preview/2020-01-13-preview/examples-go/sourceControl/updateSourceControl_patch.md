@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.5.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fautomation%2Farmautomation%2Fv0.6.0/sdk/resourcemanager/automation/armautomation/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armautomation_test
@@ -17,27 +17,25 @@ func ExampleSourceControlClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewSourceControlClient("<subscription-id>", cred, nil)
+	client, err := armautomation.NewSourceControlClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<automation-account-name>",
-		"<source-control-name>",
+		"rg",
+		"sampleAccount9",
+		"sampleSourceControl",
 		armautomation.SourceControlUpdateParameters{
 			Properties: &armautomation.SourceControlUpdateProperties{
-				Description:    to.Ptr("<description>"),
+				Description:    to.Ptr("my description"),
 				AutoSync:       to.Ptr(true),
-				Branch:         to.Ptr("<branch>"),
-				FolderPath:     to.Ptr("<folder-path>"),
+				Branch:         to.Ptr("master"),
+				FolderPath:     to.Ptr("/folderOne/folderTwo"),
 				PublishRunbook: to.Ptr(true),
 				SecurityToken: &armautomation.SourceControlSecurityTokenProperties{
-					AccessToken: to.Ptr("<access-token>"),
+					AccessToken: to.Ptr("3a326f7a0dcd343ea58fee21f2fd5fb4c1234567"),
 					TokenType:   to.Ptr(armautomation.TokenTypePersonalAccessToken),
 				},
 			},
@@ -45,7 +43,6 @@ func ExampleSourceControlClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwindowsesu%2Farmwindowsesu%2Fv0.4.0/sdk/resourcemanager/windowsesu/armwindowsesu/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwindowsesu%2Farmwindowsesu%2Fv0.5.0/sdk/resourcemanager/windowsesu/armwindowsesu/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwindowsesu_test
@@ -16,20 +16,17 @@ func ExampleMultipleActivationKeysClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armwindowsesu.NewMultipleActivationKeysClient("<subscription-id>", cred, nil)
+	client, err := armwindowsesu.NewMultipleActivationKeysClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	pager := client.NewListPager(nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.4.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv1.0.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdevtestlabs_test
@@ -6,8 +6,6 @@ package armdevtestlabs_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,42 +17,40 @@ func ExampleFormulasClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdevtestlabs.NewFormulasClient("<subscription-id>", cred, nil)
+	client, err := armdevtestlabs.NewFormulasClient("{subscriptionId}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<lab-name>",
-		"<name>",
+		"resourceGroupName",
+		"{labName}",
+		"{formulaName}",
 		armdevtestlabs.Formula{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("{location}"),
 			Properties: &armdevtestlabs.FormulaProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("Formula using a Linux base"),
 				FormulaContent: &armdevtestlabs.LabVirtualMachineCreationParameter{
-					Location: to.Ptr("<location>"),
+					Location: to.Ptr("{location}"),
 					Properties: &armdevtestlabs.LabVirtualMachineCreationParameterProperties{
 						AllowClaim: to.Ptr(false),
 						Artifacts: []*armdevtestlabs.ArtifactInstallProperties{
 							{
-								ArtifactID: to.Ptr("<artifact-id>"),
+								ArtifactID: to.Ptr("/artifactsources/{artifactSourceName}/artifacts/linux-install-nodejs"),
 								Parameters: []*armdevtestlabs.ArtifactParameterProperties{},
 							}},
 						DisallowPublicIPAddress: to.Ptr(true),
 						GalleryImageReference: &armdevtestlabs.GalleryImageReference{
-							Offer:     to.Ptr("<offer>"),
-							OSType:    to.Ptr("<ostype>"),
-							Publisher: to.Ptr("<publisher>"),
-							SKU:       to.Ptr("<sku>"),
-							Version:   to.Ptr("<version>"),
+							Offer:     to.Ptr("0001-com-ubuntu-server-groovy"),
+							OSType:    to.Ptr("Linux"),
+							Publisher: to.Ptr("canonical"),
+							SKU:       to.Ptr("20_10"),
+							Version:   to.Ptr("latest"),
 						},
 						IsAuthenticationWithSSHKey: to.Ptr(false),
-						LabSubnetName:              to.Ptr("<lab-subnet-name>"),
-						LabVirtualNetworkID:        to.Ptr("<lab-virtual-network-id>"),
+						LabSubnetName:              to.Ptr("Dtl{labName}Subnet"),
+						LabVirtualNetworkID:        to.Ptr("/virtualnetworks/dtl{labName}"),
 						NetworkInterface: &armdevtestlabs.NetworkInterfaceProperties{
 							SharedPublicIPAddressConfiguration: &armdevtestlabs.SharedPublicIPAddressConfiguration{
 								InboundNatRules: []*armdevtestlabs.InboundNatRule{
@@ -64,23 +60,21 @@ func ExampleFormulasClient_BeginCreateOrUpdate() {
 									}},
 							},
 						},
-						Notes:       to.Ptr("<notes>"),
-						Size:        to.Ptr("<size>"),
-						StorageType: to.Ptr("<storage-type>"),
-						UserName:    to.Ptr("<user-name>"),
+						Notes:       to.Ptr("Ubuntu Server 20.10"),
+						Size:        to.Ptr("Standard_B1ms"),
+						StorageType: to.Ptr("Standard"),
+						UserName:    to.Ptr("user"),
 					},
 				},
 			},
 		},
-		&armdevtestlabs.FormulasClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfluent%2Farmconfluent%2Fv0.4.0/sdk/resourcemanager/confluent/armconfluent/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fconfluent%2Farmconfluent%2Fv1.0.0/sdk/resourcemanager/confluent/armconfluent/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armconfluent_test
@@ -6,8 +6,6 @@ package armconfluent_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,47 +17,42 @@ func ExampleOrganizationClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armconfluent.NewOrganizationClient("<subscription-id>", cred, nil)
+	client, err := armconfluent.NewOrganizationClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<organization-name>",
+		"myResourceGroup",
+		"myOrganization",
 		&armconfluent.OrganizationClientBeginCreateOptions{Body: &armconfluent.OrganizationResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Properties: &armconfluent.OrganizationResourceProperties{
 				OfferDetail: &armconfluent.OfferDetail{
-					ID:          to.Ptr("<id>"),
-					PlanID:      to.Ptr("<plan-id>"),
-					PlanName:    to.Ptr("<plan-name>"),
-					PublisherID: to.Ptr("<publisher-id>"),
-					TermUnit:    to.Ptr("<term-unit>"),
+					ID:          to.Ptr("string"),
+					PlanID:      to.Ptr("string"),
+					PlanName:    to.Ptr("string"),
+					PublisherID: to.Ptr("string"),
+					TermUnit:    to.Ptr("string"),
 				},
 				UserDetail: &armconfluent.UserDetail{
-					EmailAddress: to.Ptr("<email-address>"),
-					FirstName:    to.Ptr("<first-name>"),
-					LastName:     to.Ptr("<last-name>"),
+					EmailAddress: to.Ptr("contoso@microsoft.com"),
+					FirstName:    to.Ptr("string"),
+					LastName:     to.Ptr("string"),
 				},
 			},
 			Tags: map[string]*string{
 				"Environment": to.Ptr("Dev"),
 			},
 		},
-			ResumeToken: "",
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

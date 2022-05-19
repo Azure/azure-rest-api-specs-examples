@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fquantum%2Farmquantum%2Fv0.4.0/sdk/resourcemanager/quantum/armquantum/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fquantum%2Farmquantum%2Fv0.5.0/sdk/resourcemanager/quantum/armquantum/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armquantum_test
@@ -17,17 +17,15 @@ func ExampleWorkspacesClient_UpdateTags() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armquantum.NewWorkspacesClient("<subscription-id>", cred, nil)
+	client, err := armquantum.NewWorkspacesClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.UpdateTags(ctx,
-		"<resource-group-name>",
-		"<workspace-name>",
+		"quantumResourcegroup",
+		"quantumworkspace1",
 		armquantum.TagsObject{
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
@@ -37,7 +35,6 @@ func ExampleWorkspacesClient_UpdateTags() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

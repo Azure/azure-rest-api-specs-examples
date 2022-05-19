@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv0.4.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpurview%2Farmpurview%2Fv1.0.0/sdk/resourcemanager/purview/armpurview/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpurview_test
@@ -17,21 +17,18 @@ func ExampleDefaultAccountsClient_Remove() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armpurview.NewDefaultAccountsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	_, err = client.Remove(ctx,
-		"<scope-tenant-id>",
+		"11733A4E-BA84-46FF-91D1-AFF1A3215A90",
 		armpurview.ScopeTypeTenant,
-		&armpurview.DefaultAccountsClientRemoveOptions{Scope: to.Ptr("<scope>")})
+		&armpurview.DefaultAccountsClientRemoveOptions{Scope: to.Ptr("11733A4E-BA84-46FF-91D1-AFF1A3215A90")})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }
 ```

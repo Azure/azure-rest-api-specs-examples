@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv0.4.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmariadb%2Farmmariadb%2Fv1.0.0/sdk/resourcemanager/mariadb/armmariadb/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmariadb_test
@@ -16,22 +16,19 @@ func ExampleTopQueryStatisticsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmariadb.NewTopQueryStatisticsClient("<subscription-id>", cred, nil)
+	client, err := armmariadb.NewTopQueryStatisticsClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Get(ctx,
-		"<resource-group-name>",
-		"<server-name>",
-		"<query-statistic-id>",
+		"testResourceGroupName",
+		"testServerName",
+		"66-636923268000000000-636923277000000000-avg-duration",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

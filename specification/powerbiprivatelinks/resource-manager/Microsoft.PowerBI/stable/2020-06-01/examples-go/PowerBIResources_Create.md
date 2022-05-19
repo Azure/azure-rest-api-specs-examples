@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbiprivatelinks%2Farmpowerbiprivatelinks%2Fv0.4.0/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpowerbiprivatelinks%2Farmpowerbiprivatelinks%2Fv1.0.0/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpowerbiprivatelinks_test
@@ -17,31 +17,28 @@ func ExamplePowerBIResourcesClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpowerbiprivatelinks.NewPowerBIResourcesClient("<subscription-id>",
-		"<resource-group-name>",
-		"<azure-resource-name>", cred, nil)
+	client, err := armpowerbiprivatelinks.NewPowerBIResourcesClient("a0020869-4d28-422a-89f4-c2413130d73c",
+		"resourceGroup",
+		"azureResourceName", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
 		armpowerbiprivatelinks.TenantResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("global"),
 			Properties: &armpowerbiprivatelinks.TenantProperties{
-				TenantID: to.Ptr("<tenant-id>"),
+				TenantID: to.Ptr("ac2bc297-8a3e-46f3-972d-87c2b4ae6e2f"),
 			},
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 			},
 		},
-		&armpowerbiprivatelinks.PowerBIResourcesClientCreateOptions{ClientTenantID: to.Ptr("<client-tenant-id>")})
+		&armpowerbiprivatelinks.PowerBIResourcesClientCreateOptions{ClientTenantID: to.Ptr("ac2bc297-8a3e-46f3-972d-87c2b4ae6e2f")})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

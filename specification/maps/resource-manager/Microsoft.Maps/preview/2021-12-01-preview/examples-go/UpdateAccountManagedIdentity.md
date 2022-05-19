@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.4.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.5.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaps_test
@@ -17,17 +17,15 @@ func ExampleAccountsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmaps.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armmaps.NewAccountsClient("21a9967a-e8a9-4656-a70b-96ff1c4d05a0", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"myResourceGroup",
+		"myMapsAccount",
 		armmaps.AccountUpdateParameters{
 			Identity: &armmaps.ManagedServiceIdentity{
 				Type: to.Ptr(armmaps.ResourceIdentityTypeSystemAssignedUserAssigned),
@@ -39,8 +37,8 @@ func ExampleAccountsClient_Update() {
 			Properties: &armmaps.AccountProperties{
 				LinkedResources: []*armmaps.LinkedResource{
 					{
-						ID:         to.Ptr("<id>"),
-						UniqueName: to.Ptr("<unique-name>"),
+						ID:         to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}"),
+						UniqueName: to.Ptr("myBatchStorageAccount"),
 					}},
 			},
 			SKU: &armmaps.SKU{
@@ -50,7 +48,6 @@ func ExampleAccountsClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

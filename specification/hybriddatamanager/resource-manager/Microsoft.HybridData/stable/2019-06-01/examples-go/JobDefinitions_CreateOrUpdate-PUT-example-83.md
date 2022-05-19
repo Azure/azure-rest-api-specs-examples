@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.4.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv1.0.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybriddatamanager_test
@@ -6,8 +6,6 @@ package armhybriddatamanager_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleJobDefinitionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhybriddatamanager.NewJobDefinitionsClient("<subscription-id>", cred, nil)
+	client, err := armhybriddatamanager.NewJobDefinitionsClient("6e0219f5-327a-4365-904f-05eed4227ad7", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<data-service-name>",
-		"<job-definition-name>",
-		"<resource-group-name>",
-		"<data-manager-name>",
+		"DataTransformation",
+		"jobdeffromtestcode1",
+		"ResourceGroupForSDKTest",
+		"TestAzureSDKOperations",
 		armhybriddatamanager.JobDefinition{
 			Properties: &armhybriddatamanager.JobDefinitionProperties{
 				DataServiceInput: map[string]interface{}{
@@ -48,22 +44,20 @@ func ExampleJobDefinitionsClient_BeginCreateOrUpdate() {
 						"TestAutomation",
 					},
 				},
-				DataSinkID:       to.Ptr("<data-sink-id>"),
-				DataSourceID:     to.Ptr("<data-source-id>"),
+				DataSinkID:       to.Ptr("/subscriptions/6e0219f5-327a-4365-904f-05eed4227ad7/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.HybridData/dataManagers/TestAzureSDKOperations/dataStores/TestAzureStorage1"),
+				DataSourceID:     to.Ptr("/subscriptions/6e0219f5-327a-4365-904f-05eed4227ad7/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.HybridData/dataManagers/TestAzureSDKOperations/dataStores/TestStorSimpleSource1"),
 				RunLocation:      to.Ptr(armhybriddatamanager.RunLocationWestus),
 				State:            to.Ptr(armhybriddatamanager.StateEnabled),
 				UserConfirmation: to.Ptr(armhybriddatamanager.UserConfirmationRequired),
 			},
 		},
-		&armhybriddatamanager.JobDefinitionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

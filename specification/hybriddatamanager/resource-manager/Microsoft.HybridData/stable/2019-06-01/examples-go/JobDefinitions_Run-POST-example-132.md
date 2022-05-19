@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.4.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv1.0.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybriddatamanager_test
@@ -6,8 +6,6 @@ package armhybriddatamanager_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,19 +17,17 @@ func ExampleJobDefinitionsClient_BeginRun() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhybriddatamanager.NewJobDefinitionsClient("<subscription-id>", cred, nil)
+	client, err := armhybriddatamanager.NewJobDefinitionsClient("6e0219f5-327a-4365-904f-05eed4227ad7", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginRun(ctx,
-		"<data-service-name>",
-		"<job-definition-name>",
-		"<resource-group-name>",
-		"<data-manager-name>",
+		"DataTransformation",
+		"jobdeffromtestcode1",
+		"ResourceGroupForSDKTest",
+		"TestAzureSDKOperations",
 		armhybriddatamanager.RunParameters{
 			CustomerSecrets: []*armhybriddatamanager.CustomerSecret{},
 			DataServiceInput: map[string]interface{}{
@@ -50,15 +46,13 @@ func ExampleJobDefinitionsClient_BeginRun() {
 			},
 			UserConfirmation: to.Ptr(armhybriddatamanager.UserConfirmationNotRequired),
 		},
-		&armhybriddatamanager.JobDefinitionsClientBeginRunOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

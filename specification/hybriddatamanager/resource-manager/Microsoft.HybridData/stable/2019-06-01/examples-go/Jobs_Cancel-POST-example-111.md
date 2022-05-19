@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv0.4.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybriddatamanager%2Farmhybriddatamanager%2Fv1.0.0/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybriddatamanager_test
@@ -6,8 +6,6 @@ package armhybriddatamanager_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager"
@@ -18,29 +16,25 @@ func ExampleJobsClient_BeginCancel() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armhybriddatamanager.NewJobsClient("<subscription-id>", cred, nil)
+	client, err := armhybriddatamanager.NewJobsClient("6e0219f5-327a-4365-904f-05eed4227ad7", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCancel(ctx,
-		"<data-service-name>",
-		"<job-definition-name>",
-		"<job-id>",
-		"<resource-group-name>",
-		"<data-manager-name>",
-		&armhybriddatamanager.JobsClientBeginCancelOptions{ResumeToken: ""})
+		"DataTransformation",
+		"jobdeffromtestcode1",
+		"6eca9b3d-5ffe-4b44-9607-1ba838371ff7",
+		"ResourceGroupForSDKTest",
+		"TestAzureSDKOperations",
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

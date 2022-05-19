@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.4.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv1.0.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorder_test
@@ -6,8 +6,6 @@ package armedgeorder_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleManagementClient_BeginUpdateOrderItem() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armedgeorder.NewManagementClient("<subscription-id>", cred, nil)
+	client, err := armedgeorder.NewManagementClient("YourSubscriptionId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdateOrderItem(ctx,
-		"<order-item-name>",
-		"<resource-group-name>",
+		"TestOrderItemName3",
+		"YourResourceGroupName",
 		armedgeorder.OrderItemUpdateParameter{
 			Properties: &armedgeorder.OrderItemUpdateProperties{
 				Preferences: &armedgeorder.Preferences{
@@ -39,17 +35,13 @@ func ExampleManagementClient_BeginUpdateOrderItem() {
 				},
 			},
 		},
-		&armedgeorder.ManagementClientBeginUpdateOrderItemOptions{IfMatch: nil,
-			ResumeToken: "",
-		})
+		&armedgeorder.ManagementClientBeginUpdateOrderItemOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

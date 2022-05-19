@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwindowsiot%2Farmwindowsiot%2Fv0.4.0/sdk/resourcemanager/windowsiot/armwindowsiot/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fwindowsiot%2Farmwindowsiot%2Fv1.0.0/sdk/resourcemanager/windowsiot/armwindowsiot/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armwindowsiot_test
@@ -17,30 +17,27 @@ func ExampleServicesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armwindowsiot.NewServicesClient("<subscription-id>", cred, nil)
+	client, err := armwindowsiot.NewServicesClient("27de630f-e1ee-42de-8849-90def4986454", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<device-name>",
+		"res9101",
+		"service4445",
 		armwindowsiot.DeviceService{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("East US"),
 			Properties: &armwindowsiot.DeviceServiceProperties{
-				AdminDomainName:   to.Ptr("<admin-domain-name>"),
-				BillingDomainName: to.Ptr("<billing-domain-name>"),
-				Notes:             to.Ptr("<notes>"),
+				AdminDomainName:   to.Ptr("d.e.f"),
+				BillingDomainName: to.Ptr("a.b.c"),
+				Notes:             to.Ptr("blah"),
 				Quantity:          to.Ptr[int64](1000000),
 			},
 		},
 		&armwindowsiot.ServicesClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

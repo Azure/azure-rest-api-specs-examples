@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.4.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpolicyinsights%2Farmpolicyinsights%2Fv0.5.0/sdk/resourcemanager/policyinsights/armpolicyinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armpolicyinsights_test
@@ -17,25 +17,23 @@ func ExamplePolicyRestrictionsClient_CheckAtResourceGroupScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armpolicyinsights.NewPolicyRestrictionsClient("<subscription-id>", cred, nil)
+	client, err := armpolicyinsights.NewPolicyRestrictionsClient("35ee058e-5fa0-414c-8145-3ebb8d09b6e2", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CheckAtResourceGroupScope(ctx,
-		"<resource-group-name>",
+		"vmRg",
 		armpolicyinsights.CheckRestrictionsRequest{
 			PendingFields: []*armpolicyinsights.PendingField{
 				{
-					Field: to.Ptr("<field>"),
+					Field: to.Ptr("name"),
 					Values: []*string{
 						to.Ptr("myVMName")},
 				},
 				{
-					Field: to.Ptr("<field>"),
+					Field: to.Ptr("location"),
 					Values: []*string{
 						to.Ptr("eastus"),
 						to.Ptr("westus"),
@@ -43,10 +41,10 @@ func ExamplePolicyRestrictionsClient_CheckAtResourceGroupScope() {
 						to.Ptr("westeurope")},
 				},
 				{
-					Field: to.Ptr("<field>"),
+					Field: to.Ptr("tags"),
 				}},
 			ResourceDetails: &armpolicyinsights.CheckRestrictionsResourceDetails{
-				APIVersion: to.Ptr("<apiversion>"),
+				APIVersion: to.Ptr("2019-12-01"),
 				ResourceContent: map[string]interface{}{
 					"type": "Microsoft.Compute/virtualMachines",
 					"properties": map[string]interface{}{
@@ -58,7 +56,6 @@ func ExamplePolicyRestrictionsClient_CheckAtResourceGroupScope() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

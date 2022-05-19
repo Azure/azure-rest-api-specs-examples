@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv0.4.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv1.0.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armlogz_test
@@ -6,8 +6,6 @@ package armlogz_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logz/armlogz"
@@ -18,29 +16,23 @@ func ExampleSubAccountClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armlogz.NewSubAccountClient("<subscription-id>", cred, nil)
+	client, err := armlogz.NewSubAccountClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<monitor-name>",
-		"<sub-account-name>",
-		&armlogz.SubAccountClientBeginCreateOptions{Body: nil,
-			ResumeToken: "",
-		})
+		"myResourceGroup",
+		"myMonitor",
+		"SubAccount1",
+		&armlogz.SubAccountClientBeginCreateOptions{Body: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

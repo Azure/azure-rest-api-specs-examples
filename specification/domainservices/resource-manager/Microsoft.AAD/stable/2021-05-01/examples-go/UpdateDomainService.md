@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdomainservices%2Farmdomainservices%2Fv0.4.0/sdk/resourcemanager/domainservices/armdomainservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdomainservices%2Farmdomainservices%2Fv1.0.0/sdk/resourcemanager/domainservices/armdomainservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdomainservices_test
@@ -19,17 +19,15 @@ func ExampleClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdomainservices.NewClient("<subscription-id>", cred, nil)
+	client, err := armdomainservices.NewClient("1639790a-76a2-4ac4-98d9-8562f5dfcb4d", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<domain-service-name>",
+		"TestResourceGroup",
+		"TestDomainService.com",
 		armdomainservices.DomainService{
 			Properties: &armdomainservices.DomainServiceProperties{
 				ConfigDiagnostics: &armdomainservices.ConfigDiagnostics{
@@ -39,11 +37,11 @@ func ExampleClient_BeginUpdate() {
 							Issues: []*armdomainservices.ConfigDiagnosticsValidatorResultIssue{
 								{
 									DescriptionParams: []*string{},
-									ID:                to.Ptr("<id>"),
+									ID:                to.Ptr("AADDS-CFG-DIAG-I20"),
 								}},
-							ReplicaSetSubnetDisplayName: to.Ptr("<replica-set-subnet-display-name>"),
+							ReplicaSetSubnetDisplayName: to.Ptr("West US/aadds-subnet"),
 							Status:                      to.Ptr(armdomainservices.StatusWarning),
-							ValidatorID:                 to.Ptr("<validator-id>"),
+							ValidatorID:                 to.Ptr("AADDS-CFG-DIAG-V06"),
 						}},
 				},
 				DomainSecuritySettings: &armdomainservices.DomainSecuritySettings{
@@ -55,8 +53,8 @@ func ExampleClient_BeginUpdate() {
 				LdapsSettings: &armdomainservices.LdapsSettings{
 					ExternalAccess:         to.Ptr(armdomainservices.ExternalAccessEnabled),
 					Ldaps:                  to.Ptr(armdomainservices.LdapsEnabled),
-					PfxCertificate:         to.Ptr("<pfx-certificate>"),
-					PfxCertificatePassword: to.Ptr("<pfx-certificate-password>"),
+					PfxCertificate:         to.Ptr("MIIDPDCCAiSgAwIBAgIQQUI9P6tq2p9OFIJa7DLNvTANBgkqhkiG9w0BAQsFADAgMR4w..."),
+					PfxCertificatePassword: to.Ptr("<pfxCertificatePassword>"),
 				},
 				NotificationSettings: &armdomainservices.NotificationSettings{
 					AdditionalRecipients: []*string{
@@ -67,24 +65,22 @@ func ExampleClient_BeginUpdate() {
 				},
 				ReplicaSets: []*armdomainservices.ReplicaSet{
 					{
-						Location: to.Ptr("<location>"),
-						SubnetID: to.Ptr("<subnet-id>"),
+						Location: to.Ptr("West US"),
+						SubnetID: to.Ptr("/subscriptions/1639790a-76a2-4ac4-98d9-8562f5dfcb4d/resourceGroups/TestNetworkResourceGroup/providers/Microsoft.Network/virtualNetworks/TestVnetWUS/subnets/TestSubnetWUS"),
 					},
 					{
-						Location: to.Ptr("<location>"),
-						SubnetID: to.Ptr("<subnet-id>"),
+						Location: to.Ptr("East US"),
+						SubnetID: to.Ptr("/subscriptions/1639790a-76a2-4ac4-98d9-8562f5dfcb4d/resourceGroups/TestNetworkResourceGroup/providers/Microsoft.Network/virtualNetworks/TestVnetEUS/subnets/TestSubnetEUS"),
 					}},
 			},
 		},
-		&armdomainservices.ClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

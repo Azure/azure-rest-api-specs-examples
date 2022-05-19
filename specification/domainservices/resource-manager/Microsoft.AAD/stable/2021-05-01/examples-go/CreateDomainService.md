@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdomainservices%2Farmdomainservices%2Fv0.4.0/sdk/resourcemanager/domainservices/armdomainservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdomainservices%2Farmdomainservices%2Fv1.0.0/sdk/resourcemanager/domainservices/armdomainservices/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdomainservices_test
@@ -6,8 +6,6 @@ package armdomainservices_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,20 +17,18 @@ func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdomainservices.NewClient("<subscription-id>", cred, nil)
+	client, err := armdomainservices.NewClient("1639790a-76a2-4ac4-98d9-8562f5dfcb4d", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<domain-service-name>",
+		"TestResourceGroup",
+		"TestDomainService.com",
 		armdomainservices.DomainService{
 			Properties: &armdomainservices.DomainServiceProperties{
-				DomainName: to.Ptr("<domain-name>"),
+				DomainName: to.Ptr("TestDomainService.com"),
 				DomainSecuritySettings: &armdomainservices.DomainSecuritySettings{
 					NtlmV1:            to.Ptr(armdomainservices.NtlmV1Enabled),
 					SyncNtlmPasswords: to.Ptr(armdomainservices.SyncNtlmPasswordsEnabled),
@@ -42,8 +38,8 @@ func ExampleClient_BeginCreateOrUpdate() {
 				LdapsSettings: &armdomainservices.LdapsSettings{
 					ExternalAccess:         to.Ptr(armdomainservices.ExternalAccessEnabled),
 					Ldaps:                  to.Ptr(armdomainservices.LdapsEnabled),
-					PfxCertificate:         to.Ptr("<pfx-certificate>"),
-					PfxCertificatePassword: to.Ptr("<pfx-certificate-password>"),
+					PfxCertificate:         to.Ptr("MIIDPDCCAiSgAwIBAgIQQUI9P6tq2p9OFIJa7DLNvTANBgkqhkiG9w0BAQsFADAgMR4w..."),
+					PfxCertificatePassword: to.Ptr("<pfxCertificatePassword>"),
 				},
 				NotificationSettings: &armdomainservices.NotificationSettings{
 					AdditionalRecipients: []*string{
@@ -54,20 +50,18 @@ func ExampleClient_BeginCreateOrUpdate() {
 				},
 				ReplicaSets: []*armdomainservices.ReplicaSet{
 					{
-						Location: to.Ptr("<location>"),
-						SubnetID: to.Ptr("<subnet-id>"),
+						Location: to.Ptr("West US"),
+						SubnetID: to.Ptr("/subscriptions/1639790a-76a2-4ac4-98d9-8562f5dfcb4d/resourceGroups/TestNetworkResourceGroup/providers/Microsoft.Network/virtualNetworks/TestVnetWUS/subnets/TestSubnetWUS"),
 					}},
 			},
 		},
-		&armdomainservices.ClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv0.6.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv1.0.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabric_test
@@ -19,23 +19,21 @@ func ExampleClustersClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicefabric.NewClustersClient("<subscription-id>", cred, nil)
+	client, err := armservicefabric.NewClustersClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
+		"resRg",
+		"myCluster",
 		armservicefabric.ClusterUpdateParameters{
 			Properties: &armservicefabric.ClusterPropertiesUpdateParameters{
 				EventStoreServiceEnabled: to.Ptr(true),
 				NodeTypes: []*armservicefabric.NodeTypeDescription{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("nt1vm"),
 						ApplicationPorts: &armservicefabric.EndpointRangeDescription{
 							EndPort:   to.Ptr[int32](30000),
 							StartPort: to.Ptr[int32](20000),
@@ -51,7 +49,7 @@ func ExampleClustersClient_BeginUpdate() {
 						VMInstanceCount:         to.Ptr[int32](5),
 					},
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("testnt1"),
 						ApplicationPorts: &armservicefabric.EndpointRangeDescription{
 							EndPort:   to.Ptr[int32](2000),
 							StartPort: to.Ptr[int32](1000),
@@ -76,15 +74,13 @@ func ExampleClustersClient_BeginUpdate() {
 				"a": to.Ptr("b"),
 			},
 		},
-		&armservicefabric.ClustersClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

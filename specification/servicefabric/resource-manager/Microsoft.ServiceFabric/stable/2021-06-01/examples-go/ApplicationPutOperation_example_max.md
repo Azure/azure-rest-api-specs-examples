@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv0.6.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabric%2Farmservicefabric%2Fv1.0.0/sdk/resourcemanager/servicefabric/armservicefabric/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabric_test
@@ -6,8 +6,6 @@ package armservicefabric_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,25 +17,23 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicefabric.NewApplicationsClient("<subscription-id>", cred, nil)
+	client, err := armservicefabric.NewApplicationsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
-		"<application-name>",
+		"resRg",
+		"myCluster",
+		"myApp",
 		armservicefabric.ApplicationResource{
 			Tags: map[string]*string{},
 			Properties: &armservicefabric.ApplicationResourceProperties{
 				MaximumNodes: to.Ptr[int64](3),
 				Metrics: []*armservicefabric.ApplicationMetricDescription{
 					{
-						Name:                     to.Ptr("<name>"),
+						Name:                     to.Ptr("metric1"),
 						MaximumCapacity:          to.Ptr[int64](3),
 						ReservationCapacity:      to.Ptr[int64](1),
 						TotalApplicationCapacity: to.Ptr[int64](5),
@@ -47,7 +43,7 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 					"param1": to.Ptr("value1"),
 				},
 				RemoveApplicationCapacity: to.Ptr(false),
-				TypeVersion:               to.Ptr("<type-version>"),
+				TypeVersion:               to.Ptr("1.0"),
 				UpgradePolicy: &armservicefabric.ApplicationUpgradePolicy{
 					ApplicationHealthPolicy: &armservicefabric.ArmApplicationHealthPolicy{
 						ConsiderWarningAsError: to.Ptr(true),
@@ -61,27 +57,25 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 					ForceRestart: to.Ptr(false),
 					RollingUpgradeMonitoringPolicy: &armservicefabric.ArmRollingUpgradeMonitoringPolicy{
 						FailureAction:             to.Ptr(armservicefabric.ArmUpgradeFailureActionRollback),
-						HealthCheckRetryTimeout:   to.Ptr("<health-check-retry-timeout>"),
-						HealthCheckStableDuration: to.Ptr("<health-check-stable-duration>"),
-						HealthCheckWaitDuration:   to.Ptr("<health-check-wait-duration>"),
-						UpgradeDomainTimeout:      to.Ptr("<upgrade-domain-timeout>"),
-						UpgradeTimeout:            to.Ptr("<upgrade-timeout>"),
+						HealthCheckRetryTimeout:   to.Ptr("00:10:00"),
+						HealthCheckStableDuration: to.Ptr("00:05:00"),
+						HealthCheckWaitDuration:   to.Ptr("00:02:00"),
+						UpgradeDomainTimeout:      to.Ptr("1.06:00:00"),
+						UpgradeTimeout:            to.Ptr("01:00:00"),
 					},
 					UpgradeMode:                   to.Ptr(armservicefabric.RollingUpgradeModeMonitored),
-					UpgradeReplicaSetCheckTimeout: to.Ptr("<upgrade-replica-set-check-timeout>"),
+					UpgradeReplicaSetCheckTimeout: to.Ptr("01:00:00"),
 				},
-				TypeName: to.Ptr("<type-name>"),
+				TypeName: to.Ptr("myAppType"),
 			},
 		},
-		&armservicefabric.ApplicationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }
 ```

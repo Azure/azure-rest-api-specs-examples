@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmanagementgroups%2Farmmanagementgroups%2Fv0.6.0/sdk/resourcemanager/managementgroups/armmanagementgroups/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmanagementgroups%2Farmmanagementgroups%2Fv1.0.0/sdk/resourcemanager/managementgroups/armmanagementgroups/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmanagementgroups_test
@@ -6,8 +6,6 @@ package armmanagementgroups_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,37 +17,31 @@ func ExampleClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armmanagementgroups.NewClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<group-id>",
+		"ChildGroup",
 		armmanagementgroups.CreateManagementGroupRequest{
 			Properties: &armmanagementgroups.CreateManagementGroupProperties{
-				DisplayName: to.Ptr("<display-name>"),
+				DisplayName: to.Ptr("ChildGroup"),
 				Details: &armmanagementgroups.CreateManagementGroupDetails{
 					Parent: &armmanagementgroups.CreateParentGroupInfo{
-						ID: to.Ptr("<id>"),
+						ID: to.Ptr("/providers/Microsoft.Management/managementGroups/RootGroup"),
 					},
 				},
 			},
 		},
-		&armmanagementgroups.ClientBeginCreateOrUpdateOptions{CacheControl: to.Ptr("<cache-control>"),
-			ResumeToken: "",
-		})
+		&armmanagementgroups.ClientBeginCreateOrUpdateOptions{CacheControl: to.Ptr("no-cache")})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

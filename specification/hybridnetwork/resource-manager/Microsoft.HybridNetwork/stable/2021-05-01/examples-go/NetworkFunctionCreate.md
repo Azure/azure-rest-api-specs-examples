@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv0.2.1/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridnetwork%2Farmhybridnetwork%2Fv1.0.0/sdk/resourcemanager/hybridnetwork/armhybridnetwork/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armhybridnetwork_test
@@ -7,29 +7,30 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridnetwork/armhybridnetwork"
 )
 
-// x-ms-original-file: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/examples/NetworkFunctionCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/examples/NetworkFunctionCreate.json
 func ExampleNetworkFunctionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armhybridnetwork.NewNetworkFunctionsClient("<subscription-id>", cred, nil)
+	client, err := armhybridnetwork.NewNetworkFunctionsClient("subid", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<network-function-name>",
+		"rg",
+		"testNf",
 		armhybridnetwork.NetworkFunction{
-			Location: to.StringPtr("<location>"),
+			Location: to.Ptr("eastus"),
 			Properties: &armhybridnetwork.NetworkFunctionPropertiesFormat{
 				Device: &armhybridnetwork.SubResource{
-					ID: to.StringPtr("<id>"),
+					ID: to.Ptr("/subscriptions/subid/resourcegroups/rg/providers/Microsoft.HybridNetwork/devices/testDevice"),
 				},
 				ManagedApplicationParameters: map[string]interface{}{},
 				NetworkFunctionUserConfigurations: []*armhybridnetwork.NetworkFunctionUserConfiguration{
@@ -38,45 +39,46 @@ func ExampleNetworkFunctionsClient_BeginCreateOrUpdate() {
 							{
 								IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 									{
-										Gateway:            to.StringPtr("<gateway>"),
-										IPAddress:          to.StringPtr("<ipaddress>"),
-										IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
-										IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
-										Subnet:             to.StringPtr("<subnet>"),
+										Gateway:            to.Ptr(""),
+										IPAddress:          to.Ptr(""),
+										IPAllocationMethod: to.Ptr(armhybridnetwork.IPAllocationMethodDynamic),
+										IPVersion:          to.Ptr(armhybridnetwork.IPVersionIPv4),
+										Subnet:             to.Ptr(""),
 									}},
-								MacAddress:           to.StringPtr("<mac-address>"),
-								NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-								VMSwitchType:         armhybridnetwork.VMSwitchType("Management").ToPtr(),
+								MacAddress:           to.Ptr(""),
+								NetworkInterfaceName: to.Ptr("nic1"),
+								VMSwitchType:         to.Ptr(armhybridnetwork.VMSwitchTypeManagement),
 							},
 							{
 								IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
 									{
-										Gateway:            to.StringPtr("<gateway>"),
-										IPAddress:          to.StringPtr("<ipaddress>"),
-										IPAllocationMethod: armhybridnetwork.IPAllocationMethod("Dynamic").ToPtr(),
-										IPVersion:          armhybridnetwork.IPVersion("IPv4").ToPtr(),
-										Subnet:             to.StringPtr("<subnet>"),
+										Gateway:            to.Ptr(""),
+										IPAddress:          to.Ptr(""),
+										IPAllocationMethod: to.Ptr(armhybridnetwork.IPAllocationMethodDynamic),
+										IPVersion:          to.Ptr(armhybridnetwork.IPVersionIPv4),
+										Subnet:             to.Ptr(""),
 									}},
-								MacAddress:           to.StringPtr("<mac-address>"),
-								NetworkInterfaceName: to.StringPtr("<network-interface-name>"),
-								VMSwitchType:         armhybridnetwork.VMSwitchType("Wan").ToPtr(),
+								MacAddress:           to.Ptr("DC-97-F8-79-16-7D"),
+								NetworkInterfaceName: to.Ptr("nic2"),
+								VMSwitchType:         to.Ptr(armhybridnetwork.VMSwitchTypeWan),
 							}},
-						RoleName:           to.StringPtr("<role-name>"),
+						RoleName:           to.Ptr("testRole"),
 						UserDataParameters: map[string]interface{}{},
 					}},
-				SKUName:    to.StringPtr("<skuname>"),
-				SKUType:    armhybridnetwork.SKUType("SDWAN").ToPtr(),
-				VendorName: to.StringPtr("<vendor-name>"),
+				SKUName:    to.Ptr("testSku"),
+				SKUType:    to.Ptr(armhybridnetwork.SKUTypeSDWAN),
+				VendorName: to.Ptr("testVendor"),
 			},
 		},
 		nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to finish the request: %v", err)
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to pull the result: %v", err)
 	}
-	log.Printf("Response result: %#v\n", res.NetworkFunctionsClientCreateOrUpdateResult)
+	// TODO: use response item
+	_ = res
 }
 ```

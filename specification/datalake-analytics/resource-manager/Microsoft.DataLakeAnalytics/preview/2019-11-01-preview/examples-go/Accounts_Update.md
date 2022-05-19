@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatalake-analytics%2Farmdatalakeanalytics%2Fv0.5.0/sdk/resourcemanager/datalake-analytics/armdatalakeanalytics/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatalake-analytics%2Farmdatalakeanalytics%2Fv0.6.0/sdk/resourcemanager/datalake-analytics/armdatalakeanalytics/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdatalakeanalytics_test
@@ -6,8 +6,6 @@ package armdatalakeanalytics_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,36 +17,34 @@ func ExampleAccountsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdatalakeanalytics.NewAccountsClient("<subscription-id>", cred, nil)
+	client, err := armdatalakeanalytics.NewAccountsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"contosorg",
+		"contosoadla",
 		&armdatalakeanalytics.AccountsClientBeginUpdateOptions{Parameters: &armdatalakeanalytics.UpdateDataLakeAnalyticsAccountParameters{
 			Properties: &armdatalakeanalytics.UpdateDataLakeAnalyticsAccountProperties{
 				ComputePolicies: []*armdatalakeanalytics.UpdateComputePolicyWithAccountParameters{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("test_policy"),
 						Properties: &armdatalakeanalytics.UpdateComputePolicyProperties{
 							MaxDegreeOfParallelismPerJob: to.Ptr[int32](1),
 							MinPriorityPerJob:            to.Ptr[int32](1),
-							ObjectID:                     to.Ptr("<object-id>"),
+							ObjectID:                     to.Ptr("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"),
 							ObjectType:                   to.Ptr(armdatalakeanalytics.AADObjectTypeUser),
 						},
 					}},
 				FirewallAllowAzureIPs: to.Ptr(armdatalakeanalytics.FirewallAllowAzureIPsStateEnabled),
 				FirewallRules: []*armdatalakeanalytics.UpdateFirewallRuleWithAccountParameters{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("test_rule"),
 						Properties: &armdatalakeanalytics.UpdateFirewallRuleProperties{
-							EndIPAddress:   to.Ptr("<end-ipaddress>"),
-							StartIPAddress: to.Ptr("<start-ipaddress>"),
+							EndIPAddress:   to.Ptr("2.2.2.2"),
+							StartIPAddress: to.Ptr("1.1.1.1"),
 						},
 					}},
 				FirewallState:                to.Ptr(armdatalakeanalytics.FirewallStateEnabled),
@@ -63,16 +59,13 @@ func ExampleAccountsClient_BeginUpdate() {
 				"test_key": to.Ptr("test_value"),
 			},
 		},
-			ResumeToken: "",
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

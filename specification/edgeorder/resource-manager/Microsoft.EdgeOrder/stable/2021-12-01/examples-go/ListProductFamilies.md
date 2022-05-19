@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv0.4.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorder%2Farmedgeorder%2Fv1.0.0/sdk/resourcemanager/edgeorder/armedgeorder/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorder_test
@@ -17,13 +17,11 @@ func ExampleManagementClient_NewListProductFamiliesPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armedgeorder.NewManagementClient("<subscription-id>", cred, nil)
+	client, err := armedgeorder.NewManagementClient("YourSubscriptionId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	pager := client.NewListProductFamiliesPager(armedgeorder.ProductFamiliesRequest{
 		FilterableProperties: map[string][]*armedgeorder.FilterableProperty{
@@ -35,14 +33,13 @@ func ExampleManagementClient_NewListProductFamiliesPager() {
 				}},
 		},
 	},
-		&armedgeorder.ManagementClientListProductFamiliesOptions{Expand: to.Ptr("<expand>"),
+		&armedgeorder.ManagementClientListProductFamiliesOptions{Expand: to.Ptr("configurations"),
 			SkipToken: nil,
 		})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv0.4.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdevtestlabs%2Farmdevtestlabs%2Fv1.0.0/sdk/resourcemanager/devtestlabs/armdevtestlabs/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdevtestlabs_test
@@ -17,37 +17,34 @@ func ExamplePoliciesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdevtestlabs.NewPoliciesClient("<subscription-id>", cred, nil)
+	client, err := armdevtestlabs.NewPoliciesClient("{subscriptionId}", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<lab-name>",
-		"<policy-set-name>",
-		"<name>",
+		"resourceGroupName",
+		"{labName}",
+		"{policySetName}",
+		"{policyName}",
 		armdevtestlabs.Policy{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("{location}"),
 			Tags: map[string]*string{
 				"tagName1": to.Ptr("tagValue1"),
 			},
 			Properties: &armdevtestlabs.PolicyProperties{
-				Description:   to.Ptr("<description>"),
+				Description:   to.Ptr("{policyDescription}"),
 				EvaluatorType: to.Ptr(armdevtestlabs.PolicyEvaluatorType("{policyEvaluatorType}")),
-				FactData:      to.Ptr("<fact-data>"),
+				FactData:      to.Ptr("{policyFactData}"),
 				FactName:      to.Ptr(armdevtestlabs.PolicyFactName("{policyFactName}")),
 				Status:        to.Ptr(armdevtestlabs.PolicyStatus("{policyStatus}")),
-				Threshold:     to.Ptr("<threshold>"),
+				Threshold:     to.Ptr("{policyThreshold}"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

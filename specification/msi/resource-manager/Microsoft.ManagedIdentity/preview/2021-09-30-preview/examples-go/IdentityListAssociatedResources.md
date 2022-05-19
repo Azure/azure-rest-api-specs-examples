@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmsi%2Farmmsi%2Fv0.5.0/sdk/resourcemanager/msi/armmsi/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmsi%2Farmmsi%2Fv0.6.0/sdk/resourcemanager/msi/armmsi/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmsi_test
@@ -17,18 +17,16 @@ func ExampleUserAssignedIdentitiesClient_NewListAssociatedResourcesPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmsi.NewUserAssignedIdentitiesClient("<subscription-id>", cred, nil)
+	client, err := armmsi.NewUserAssignedIdentitiesClient("1cscb752-d7c9-463f-9731-fd31edada74a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListAssociatedResourcesPager("<resource-group-name>",
-		"<resource-name>",
-		&armmsi.UserAssignedIdentitiesClientListAssociatedResourcesOptions{Filter: to.Ptr("<filter>"),
-			Orderby:   to.Ptr("<orderby>"),
+	pager := client.NewListAssociatedResourcesPager("testrg",
+		"testid",
+		&armmsi.UserAssignedIdentitiesClientListAssociatedResourcesOptions{Filter: to.Ptr("contains(name, 'test')"),
+			Orderby:   to.Ptr("name asc"),
 			Top:       to.Ptr[int32](10),
 			Skip:      to.Ptr[int32](1),
 			Skiptoken: nil,
@@ -37,7 +35,6 @@ func ExampleUserAssignedIdentitiesClient_NewListAssociatedResourcesPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

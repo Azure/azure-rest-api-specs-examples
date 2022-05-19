@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,19 +17,17 @@ func ExampleDataCollectionRulesClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewDataCollectionRulesClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewDataCollectionRulesClient("703362b3-f278-4e4b-9179-c76eaf41ffc2", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<data-collection-rule-name>",
+		"myResourceGroup",
+		"myCollectionRule",
 		&armmonitor.DataCollectionRulesClientCreateOptions{Body: &armmonitor.DataCollectionRuleResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Properties: &armmonitor.DataCollectionRuleResourceProperties{
 				DataFlows: []*armmonitor.DataFlow{
 					{
@@ -43,7 +41,7 @@ func ExampleDataCollectionRulesClient_Create() {
 				DataSources: &armmonitor.DataCollectionRuleDataSources{
 					PerformanceCounters: []*armmonitor.PerfCounterDataSource{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("cloudTeamCoreCounters"),
 							CounterSpecifiers: []*string{
 								to.Ptr("\\Processor(_Total)\\% Processor Time"),
 								to.Ptr("\\Memory\\Committed Bytes"),
@@ -54,7 +52,7 @@ func ExampleDataCollectionRulesClient_Create() {
 								to.Ptr(armmonitor.KnownPerfCounterDataSourceStreamsMicrosoftPerf)},
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("appTeamExtraCounters"),
 							CounterSpecifiers: []*string{
 								to.Ptr("\\Process(_Total)\\Thread Count")},
 							SamplingFrequencyInSeconds: to.Ptr[int32](30),
@@ -63,7 +61,7 @@ func ExampleDataCollectionRulesClient_Create() {
 						}},
 					Syslog: []*armmonitor.SyslogDataSource{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("cronSyslog"),
 							FacilityNames: []*armmonitor.KnownSyslogDataSourceFacilityNames{
 								to.Ptr(armmonitor.KnownSyslogDataSourceFacilityNamesCron)},
 							LogLevels: []*armmonitor.KnownSyslogDataSourceLogLevels{
@@ -74,7 +72,7 @@ func ExampleDataCollectionRulesClient_Create() {
 								to.Ptr(armmonitor.KnownSyslogDataSourceStreamsMicrosoftSyslog)},
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("syslogBase"),
 							FacilityNames: []*armmonitor.KnownSyslogDataSourceFacilityNames{
 								to.Ptr(armmonitor.KnownSyslogDataSourceFacilityNamesSyslog)},
 							LogLevels: []*armmonitor.KnownSyslogDataSourceLogLevels{
@@ -86,14 +84,14 @@ func ExampleDataCollectionRulesClient_Create() {
 						}},
 					WindowsEventLogs: []*armmonitor.WindowsEventLogDataSource{
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("cloudSecurityTeamEvents"),
 							Streams: []*armmonitor.KnownWindowsEventLogDataSourceStreams{
 								to.Ptr(armmonitor.KnownWindowsEventLogDataSourceStreamsMicrosoftWindowsEvent)},
 							XPathQueries: []*string{
 								to.Ptr("Security!")},
 						},
 						{
-							Name: to.Ptr("<name>"),
+							Name: to.Ptr("appTeam1AppEvents"),
 							Streams: []*armmonitor.KnownWindowsEventLogDataSourceStreams{
 								to.Ptr(armmonitor.KnownWindowsEventLogDataSourceStreamsMicrosoftWindowsEvent)},
 							XPathQueries: []*string{
@@ -104,8 +102,8 @@ func ExampleDataCollectionRulesClient_Create() {
 				Destinations: &armmonitor.DataCollectionRuleDestinations{
 					LogAnalytics: []*armmonitor.LogAnalyticsDestination{
 						{
-							Name:                to.Ptr("<name>"),
-							WorkspaceResourceID: to.Ptr("<workspace-resource-id>"),
+							Name:                to.Ptr("centralWorkspace"),
+							WorkspaceResourceID: to.Ptr("/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/centralTeamWorkspace"),
 						}},
 				},
 			},
@@ -113,7 +111,6 @@ func ExampleDataCollectionRulesClient_Create() {
 		})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

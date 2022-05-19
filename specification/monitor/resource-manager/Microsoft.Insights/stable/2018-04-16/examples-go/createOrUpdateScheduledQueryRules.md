@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,33 +17,31 @@ func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewScheduledQueryRulesClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewScheduledQueryRulesClient("b67f7fec-69fc-4974-9099-a26bd6ffeda3", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<rule-name>",
+		"Rac46PostSwapRG",
+		"logalertfoo",
 		armmonitor.LogSearchRuleResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("eastus"),
 			Tags:     map[string]*string{},
 			Properties: &armmonitor.LogSearchRule{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("log alert description"),
 				Action: &armmonitor.AlertingAction{
-					ODataType: to.Ptr("<odata-type>"),
+					ODataType: to.Ptr("Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction"),
 					AznsAction: &armmonitor.AzNsActionGroup{
 						ActionGroup:          []*string{},
-						CustomWebhookPayload: to.Ptr("<custom-webhook-payload>"),
-						EmailSubject:         to.Ptr("<email-subject>"),
+						CustomWebhookPayload: to.Ptr("{}"),
+						EmailSubject:         to.Ptr("Email Header"),
 					},
 					Severity: to.Ptr(armmonitor.AlertSeverityOne),
 					Trigger: &armmonitor.TriggerCondition{
 						MetricTrigger: &armmonitor.LogMetricTrigger{
-							MetricColumn:      to.Ptr("<metric-column>"),
+							MetricColumn:      to.Ptr("Computer"),
 							MetricTriggerType: to.Ptr(armmonitor.MetricTriggerTypeConsecutive),
 							Threshold:         to.Ptr[float64](5),
 							ThresholdOperator: to.Ptr(armmonitor.ConditionalOperatorGreaterThan),
@@ -58,8 +56,8 @@ func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 					TimeWindowInMinutes: to.Ptr[int32](15),
 				},
 				Source: &armmonitor.Source{
-					DataSourceID: to.Ptr("<data-source-id>"),
-					Query:        to.Ptr("<query>"),
+					DataSourceID: to.Ptr("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace"),
+					Query:        to.Ptr("Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m)"),
 					QueryType:    to.Ptr(armmonitor.QueryTypeResultCount),
 				},
 			},
@@ -67,7 +65,6 @@ func ExampleScheduledQueryRulesClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

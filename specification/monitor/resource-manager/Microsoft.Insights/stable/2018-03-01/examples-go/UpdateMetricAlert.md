@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,23 +17,21 @@ func ExampleMetricAlertsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewMetricAlertsClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewMetricAlertsClient("14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<rule-name>",
+		"gigtest",
+		"chiricutin",
 		armmonitor.MetricAlertResourcePatch{
 			Properties: &armmonitor.MetricAlertPropertiesPatch{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("This is the description of the rule1"),
 				Actions: []*armmonitor.MetricAlertAction{
 					{
-						ActionGroupID: to.Ptr("<action-group-id>"),
+						ActionGroupID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
 						WebHookProperties: map[string]*string{
 							"key11": to.Ptr("value11"),
 							"key12": to.Ptr("value12"),
@@ -44,28 +42,27 @@ func ExampleMetricAlertsClient_Update() {
 					ODataType: to.Ptr(armmonitor.OdatatypeMicrosoftAzureMonitorSingleResourceMultipleMetricCriteria),
 					AllOf: []*armmonitor.MetricCriteria{
 						{
-							Name:            to.Ptr("<name>"),
+							Name:            to.Ptr("High_CPU_80"),
 							CriterionType:   to.Ptr(armmonitor.CriterionTypeStaticThresholdCriterion),
 							Dimensions:      []*armmonitor.MetricDimension{},
-							MetricName:      to.Ptr("<metric-name>"),
+							MetricName:      to.Ptr("\\Processor(_Total)\\% Processor Time"),
 							TimeAggregation: to.Ptr(armmonitor.AggregationTypeEnumAverage),
 							Operator:        to.Ptr(armmonitor.OperatorGreaterThan),
 							Threshold:       to.Ptr[float64](80.5),
 						}},
 				},
 				Enabled:             to.Ptr(true),
-				EvaluationFrequency: to.Ptr("<evaluation-frequency>"),
+				EvaluationFrequency: to.Ptr("Pt1m"),
 				Scopes: []*string{
 					to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme")},
 				Severity:   to.Ptr[int32](3),
-				WindowSize: to.Ptr("<window-size>"),
+				WindowSize: to.Ptr("Pt15m"),
 			},
 			Tags: map[string]*string{},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

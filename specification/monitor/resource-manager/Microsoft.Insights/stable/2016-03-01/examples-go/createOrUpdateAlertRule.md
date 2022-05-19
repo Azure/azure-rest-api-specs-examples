@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,35 +17,33 @@ func ExampleAlertRulesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewAlertRulesClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewAlertRulesClient("b67f7fec-69fc-4974-9099-a26bd6ffeda3", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<rule-name>",
+		"Rac46PostSwapRG",
+		"chiricutin",
 		armmonitor.AlertRuleResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Tags:     map[string]*string{},
 			Properties: &armmonitor.AlertRule{
-				Name:        to.Ptr("<name>"),
-				Description: to.Ptr("<description>"),
+				Name:        to.Ptr("chiricutin"),
+				Description: to.Ptr("Pura Vida"),
 				Actions:     []armmonitor.RuleActionClassification{},
 				Condition: &armmonitor.ThresholdRuleCondition{
 					DataSource: &armmonitor.RuleMetricDataSource{
-						ODataType:   to.Ptr("<odata-type>"),
-						ResourceURI: to.Ptr("<resource-uri>"),
-						MetricName:  to.Ptr("<metric-name>"),
+						ODataType:   to.Ptr("Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"),
+						ResourceURI: to.Ptr("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"),
+						MetricName:  to.Ptr("Requests"),
 					},
-					ODataType:       to.Ptr("<odata-type>"),
+					ODataType:       to.Ptr("Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"),
 					Operator:        to.Ptr(armmonitor.ConditionOperatorGreaterThan),
 					Threshold:       to.Ptr[float64](3),
 					TimeAggregation: to.Ptr(armmonitor.TimeAggregationOperatorTotal),
-					WindowSize:      to.Ptr("<window-size>"),
+					WindowSize:      to.Ptr("PT5M"),
 				},
 				IsEnabled: to.Ptr(true),
 			},
@@ -53,7 +51,6 @@ func ExampleAlertRulesClient_CreateOrUpdate() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

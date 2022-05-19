@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.6.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmonitor%2Farmmonitor%2Fv0.7.0/sdk/resourcemanager/monitor/armmonitor/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmonitor_test
@@ -17,25 +17,23 @@ func ExampleMetricAlertsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewMetricAlertsClient("<subscription-id>", cred, nil)
+	client, err := armmonitor.NewMetricAlertsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<rule-name>",
+		"gigtest",
+		"MetricAlertOnMultipleResources",
 		armmonitor.MetricAlertResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("global"),
 			Tags:     map[string]*string{},
 			Properties: &armmonitor.MetricAlertProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("This is the description of the rule1"),
 				Actions: []*armmonitor.MetricAlertAction{
 					{
-						ActionGroupID: to.Ptr("<action-group-id>"),
+						ActionGroupID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
 						WebHookProperties: map[string]*string{
 							"key11": to.Ptr("value11"),
 							"key12": to.Ptr("value12"),
@@ -46,11 +44,11 @@ func ExampleMetricAlertsClient_CreateOrUpdate() {
 					ODataType: to.Ptr(armmonitor.OdatatypeMicrosoftAzureMonitorMultipleResourceMultipleMetricCriteria),
 					AllOf: []armmonitor.MultiMetricCriteriaClassification{
 						&armmonitor.DynamicMetricCriteria{
-							Name:             to.Ptr("<name>"),
+							Name:             to.Ptr("High_CPU_80"),
 							CriterionType:    to.Ptr(armmonitor.CriterionTypeDynamicThresholdCriterion),
 							Dimensions:       []*armmonitor.MetricDimension{},
-							MetricName:       to.Ptr("<metric-name>"),
-							MetricNamespace:  to.Ptr("<metric-namespace>"),
+							MetricName:       to.Ptr("Percentage CPU"),
+							MetricNamespace:  to.Ptr("microsoft.compute/virtualmachines"),
 							TimeAggregation:  to.Ptr(armmonitor.AggregationTypeEnumAverage),
 							AlertSensitivity: to.Ptr(armmonitor.DynamicThresholdSensitivityMedium),
 							FailingPeriods: &armmonitor.DynamicThresholdFailingPeriods{
@@ -61,20 +59,19 @@ func ExampleMetricAlertsClient_CreateOrUpdate() {
 						}},
 				},
 				Enabled:             to.Ptr(true),
-				EvaluationFrequency: to.Ptr("<evaluation-frequency>"),
+				EvaluationFrequency: to.Ptr("PT1M"),
 				Scopes: []*string{
 					to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme1"),
 					to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme2")},
 				Severity:             to.Ptr[int32](3),
-				TargetResourceRegion: to.Ptr("<target-resource-region>"),
-				TargetResourceType:   to.Ptr("<target-resource-type>"),
-				WindowSize:           to.Ptr("<window-size>"),
+				TargetResourceRegion: to.Ptr("southcentralus"),
+				TargetResourceType:   to.Ptr("Microsoft.Compute/virtualMachines"),
+				WindowSize:           to.Ptr("PT15M"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

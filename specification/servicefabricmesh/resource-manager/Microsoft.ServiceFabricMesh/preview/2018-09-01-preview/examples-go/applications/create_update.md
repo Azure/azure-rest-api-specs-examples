@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabricmesh%2Farmservicefabricmesh%2Fv0.4.0/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fservicefabricmesh%2Farmservicefabricmesh%2Fv0.5.0/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armservicefabricmesh_test
@@ -17,37 +17,35 @@ func ExampleApplicationClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armservicefabricmesh.NewApplicationClient("<subscription-id>", cred, nil)
+	client, err := armservicefabricmesh.NewApplicationClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<application-resource-name>",
+		"sbz_demo",
+		"sampleApplication",
 		armservicefabricmesh.ApplicationResourceDescription{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("EastUS"),
 			Tags:     map[string]*string{},
 			Properties: &armservicefabricmesh.ApplicationResourceProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("Service Fabric Mesh sample application."),
 				Services: []*armservicefabricmesh.ServiceResourceDescription{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("helloWorldService"),
 						Properties: &armservicefabricmesh.ServiceResourceProperties{
-							Description:  to.Ptr("<description>"),
+							Description:  to.Ptr("SeaBreeze Hello World Service."),
 							ReplicaCount: to.Ptr[int32](1),
 							CodePackages: []*armservicefabricmesh.ContainerCodePackageProperties{
 								{
-									Name: to.Ptr("<name>"),
+									Name: to.Ptr("helloWorldCode"),
 									Endpoints: []*armservicefabricmesh.EndpointProperties{
 										{
-											Name: to.Ptr("<name>"),
+											Name: to.Ptr("helloWorldListener"),
 											Port: to.Ptr[int32](80),
 										}},
-									Image: to.Ptr("<image>"),
+									Image: to.Ptr("seabreeze/sbz-helloworld:1.0-alpine"),
 									Resources: &armservicefabricmesh.ResourceRequirements{
 										Requests: &armservicefabricmesh.ResourceRequests{
 											CPU:        to.Ptr[float64](1),
@@ -57,10 +55,10 @@ func ExampleApplicationClient_Create() {
 								}},
 							NetworkRefs: []*armservicefabricmesh.NetworkRef{
 								{
-									Name: to.Ptr("<name>"),
+									Name: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/sbz_demo/providers/Microsoft.ServiceFabricMesh/networks/sampleNetwork"),
 									EndpointRefs: []*armservicefabricmesh.EndpointRef{
 										{
-											Name: to.Ptr("<name>"),
+											Name: to.Ptr("helloWorldListener"),
 										}},
 								}},
 							OSType: to.Ptr(armservicefabricmesh.OperatingSystemTypeLinux),
@@ -71,7 +69,6 @@ func ExampleApplicationClient_Create() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

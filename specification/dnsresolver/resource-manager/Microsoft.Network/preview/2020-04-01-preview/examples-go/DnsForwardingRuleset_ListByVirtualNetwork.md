@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdnsresolver%2Farmdnsresolver%2Fv0.3.0/sdk/resourcemanager/dnsresolver/armdnsresolver/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdnsresolver%2Farmdnsresolver%2Fv0.4.0/sdk/resourcemanager/dnsresolver/armdnsresolver/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdnsresolver_test
@@ -16,22 +16,19 @@ func ExampleDNSForwardingRulesetsClient_NewListByVirtualNetworkPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdnsresolver.NewDNSForwardingRulesetsClient("<subscription-id>", cred, nil)
+	client, err := armdnsresolver.NewDNSForwardingRulesetsClient("abdd4249-9f34-4cc6-8e42-c2e32110603e", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListByVirtualNetworkPager("<resource-group-name>",
-		"<virtual-network-name>",
+	pager := client.NewListByVirtualNetworkPager("sampleResourceGroup",
+		"sampleVirtualNetwork",
 		&armdnsresolver.DNSForwardingRulesetsClientListByVirtualNetworkOptions{Top: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

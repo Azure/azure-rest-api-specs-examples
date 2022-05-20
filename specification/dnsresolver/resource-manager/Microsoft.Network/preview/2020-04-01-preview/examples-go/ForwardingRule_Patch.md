@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdnsresolver%2Farmdnsresolver%2Fv0.3.0/sdk/resourcemanager/dnsresolver/armdnsresolver/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdnsresolver%2Farmdnsresolver%2Fv0.4.0/sdk/resourcemanager/dnsresolver/armdnsresolver/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdnsresolver_test
@@ -17,18 +17,16 @@ func ExampleForwardingRulesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdnsresolver.NewForwardingRulesClient("<subscription-id>", cred, nil)
+	client, err := armdnsresolver.NewForwardingRulesClient("abdd4249-9f34-4cc6-8e42-c2e32110603e", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<dns-forwarding-ruleset-name>",
-		"<forwarding-rule-name>",
+		"sampleResourceGroup",
+		"sampleDnsForwardingRuleset",
+		"sampleForwardingRule",
 		armdnsresolver.ForwardingRulePatch{
 			Properties: &armdnsresolver.ForwardingRulePatchProperties{
 				ForwardingRuleState: to.Ptr(armdnsresolver.ForwardingRuleStateDisabled),
@@ -40,7 +38,6 @@ func ExampleForwardingRulesClient_Update() {
 		&armdnsresolver.ForwardingRulesClientUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

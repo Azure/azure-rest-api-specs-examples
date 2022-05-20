@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkeyvault%2Farmkeyvault%2Fv0.5.0/sdk/resourcemanager/keyvault/armkeyvault/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fkeyvault%2Farmkeyvault%2Fv1.1.0-beta.1/sdk/resourcemanager/keyvault/armkeyvault/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armkeyvault_test
@@ -17,22 +17,20 @@ func ExampleMHSMPrivateEndpointConnectionsClient_Put() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armkeyvault.NewMHSMPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armkeyvault.NewMHSMPrivateEndpointConnectionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Put(ctx,
-		"<resource-group-name>",
-		"<name>",
-		"<private-endpoint-connection-name>",
+		"sample-group",
+		"sample-mhsm",
+		"sample-pec",
 		armkeyvault.MHSMPrivateEndpointConnection{
 			Properties: &armkeyvault.MHSMPrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armkeyvault.MHSMPrivateLinkServiceConnectionState{
-					Description: to.Ptr("<description>"),
+					Description: to.Ptr("My name is Joe and I'm approving this."),
 					Status:      to.Ptr(armkeyvault.PrivateEndpointServiceConnectionStatusApproved),
 				},
 			},
@@ -40,7 +38,6 @@ func ExampleMHSMPrivateEndpointConnectionsClient_Put() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

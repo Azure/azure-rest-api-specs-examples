@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorderpartner%2Farmedgeorderpartner%2Fv0.4.0/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fedgeorderpartner%2Farmedgeorderpartner%2Fv0.5.0/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armedgeorderpartner_test
@@ -17,24 +17,21 @@ func ExampleAPISClient_NewSearchInventoriesPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armedgeorderpartner.NewAPISClient("<subscription-id>", cred, nil)
+	client, err := armedgeorderpartner.NewAPISClient("b783ea86-c85c-4175-b76d-3992656af50d", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	pager := client.NewSearchInventoriesPager(armedgeorderpartner.SearchInventoriesRequest{
-		FamilyIdentifier: to.Ptr("<family-identifier>"),
-		SerialNumber:     to.Ptr("<serial-number>"),
+		FamilyIdentifier: to.Ptr("AzureStackEdge"),
+		SerialNumber:     to.Ptr("SerialNumber1"),
 	},
 		nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

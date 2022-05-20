@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.4.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcustomerlockbox%2Farmcustomerlockbox%2Fv0.5.0/sdk/resourcemanager/customerlockbox/armcustomerlockbox/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcustomerlockbox_test
@@ -17,25 +17,22 @@ func ExampleRequestsClient_UpdateStatus() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armcustomerlockbox.NewRequestsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.UpdateStatus(ctx,
-		"<subscription-id>",
-		"<request-id>",
+		"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+		"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 		armcustomerlockbox.Approval{
-			Reason: to.Ptr("<reason>"),
+			Reason: to.Ptr("Customer approve"),
 			Status: to.Ptr(armcustomerlockbox.StatusApprove),
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

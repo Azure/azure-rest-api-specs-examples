@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.4.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv1.1.0-beta.1/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaintenance_test
@@ -17,36 +17,33 @@ func ExampleConfigurationsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmaintenance.NewConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armmaintenance.NewConfigurationsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
+		"examplerg",
+		"configuration1",
 		armmaintenance.Configuration{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus2"),
 			Properties: &armmaintenance.ConfigurationProperties{
 				MaintenanceScope: to.Ptr(armmaintenance.MaintenanceScopeOSImage),
 				MaintenanceWindow: &armmaintenance.Window{
-					Duration:           to.Ptr("<duration>"),
-					ExpirationDateTime: to.Ptr("<expiration-date-time>"),
-					RecurEvery:         to.Ptr("<recur-every>"),
-					StartDateTime:      to.Ptr("<start-date-time>"),
-					TimeZone:           to.Ptr("<time-zone>"),
+					Duration:           to.Ptr("05:00"),
+					ExpirationDateTime: to.Ptr("9999-12-31 00:00"),
+					RecurEvery:         to.Ptr("Day"),
+					StartDateTime:      to.Ptr("2020-04-30 08:00"),
+					TimeZone:           to.Ptr("Pacific Standard Time"),
 				},
-				Namespace:  to.Ptr("<namespace>"),
+				Namespace:  to.Ptr("Microsoft.Maintenance"),
 				Visibility: to.Ptr(armmaintenance.VisibilityCustom),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

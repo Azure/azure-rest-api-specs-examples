@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -6,8 +6,6 @@ package armcosmos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,21 +17,19 @@ func ExampleCassandraResourcesClient_BeginCreateUpdateCassandraTable() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCassandraResourcesClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewCassandraResourcesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateUpdateCassandraTable(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<keyspace-name>",
-		"<table-name>",
+		"rg1",
+		"ddb1",
+		"keyspaceName",
+		"tableName",
 		armcosmos.CassandraTableCreateUpdateParameters{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Tags:     map[string]*string{},
 			Properties: &armcosmos.CassandraTableCreateUpdateProperties{
 				Options: &armcosmos.CreateUpdateOptions{},
@@ -41,34 +37,32 @@ func ExampleCassandraResourcesClient_BeginCreateUpdateCassandraTable() {
 					Schema: &armcosmos.CassandraSchema{
 						ClusterKeys: []*armcosmos.ClusterKey{
 							{
-								Name:    to.Ptr("<name>"),
-								OrderBy: to.Ptr("<order-by>"),
+								Name:    to.Ptr("columnA"),
+								OrderBy: to.Ptr("Asc"),
 							}},
 						Columns: []*armcosmos.Column{
 							{
-								Name: to.Ptr("<name>"),
-								Type: to.Ptr("<type>"),
+								Name: to.Ptr("columnA"),
+								Type: to.Ptr("Ascii"),
 							}},
 						PartitionKeys: []*armcosmos.CassandraPartitionKey{
 							{
-								Name: to.Ptr("<name>"),
+								Name: to.Ptr("columnA"),
 							}},
 					},
 					AnalyticalStorageTTL: to.Ptr[int32](500),
 					DefaultTTL:           to.Ptr[int32](100),
-					ID:                   to.Ptr("<id>"),
+					ID:                   to.Ptr("tableName"),
 				},
 			},
 		},
-		&armcosmos.CassandraResourcesClientBeginCreateUpdateCassandraTableOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

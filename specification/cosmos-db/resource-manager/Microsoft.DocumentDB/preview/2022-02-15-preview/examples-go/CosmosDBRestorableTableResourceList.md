@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -17,24 +17,21 @@ func ExampleRestorableTableResourcesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewRestorableTableResourcesClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewRestorableTableResourcesClient("2296c272-5d55-40d9-bc05-4d56dc2d7588", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListPager("<location>",
-		"<instance-id>",
-		&armcosmos.RestorableTableResourcesClientListOptions{RestoreLocation: to.Ptr("<restore-location>"),
-			RestoreTimestampInUTC: to.Ptr("<restore-timestamp-in-utc>"),
+	pager := client.NewListPager("WestUS",
+		"d9b26648-2f53-4541-b3d8-3044f4f9810d",
+		&armcosmos.RestorableTableResourcesClientListOptions{RestoreLocation: to.Ptr("WestUS"),
+			RestoreTimestampInUTC: to.Ptr("10/13/2020 4:56"),
 		})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

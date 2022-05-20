@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -6,8 +6,6 @@ package armcosmos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,37 +17,35 @@ func ExampleGremlinResourcesClient_BeginCreateUpdateGremlinGraph() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewGremlinResourcesClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewGremlinResourcesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateUpdateGremlinGraph(ctx,
-		"<resource-group-name>",
-		"<account-name>",
-		"<database-name>",
-		"<graph-name>",
+		"rg1",
+		"ddb1",
+		"databaseName",
+		"graphName",
 		armcosmos.GremlinGraphCreateUpdateParameters{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Tags:     map[string]*string{},
 			Properties: &armcosmos.GremlinGraphCreateUpdateProperties{
 				Options: &armcosmos.CreateUpdateOptions{},
 				Resource: &armcosmos.GremlinGraphResource{
 					ConflictResolutionPolicy: &armcosmos.ConflictResolutionPolicy{
-						ConflictResolutionPath: to.Ptr("<conflict-resolution-path>"),
+						ConflictResolutionPath: to.Ptr("/path"),
 						Mode:                   to.Ptr(armcosmos.ConflictResolutionModeLastWriterWins),
 					},
 					DefaultTTL: to.Ptr[int32](100),
-					ID:         to.Ptr("<id>"),
+					ID:         to.Ptr("graphName"),
 					IndexingPolicy: &armcosmos.IndexingPolicy{
 						Automatic:     to.Ptr(true),
 						ExcludedPaths: []*armcosmos.ExcludedPath{},
 						IncludedPaths: []*armcosmos.IncludedPath{
 							{
-								Path: to.Ptr("<path>"),
+								Path: to.Ptr("/*"),
 								Indexes: []*armcosmos.Indexes{
 									{
 										DataType:  to.Ptr(armcosmos.DataTypeString),
@@ -79,15 +75,13 @@ func ExampleGremlinResourcesClient_BeginCreateUpdateGremlinGraph() {
 				},
 			},
 		},
-		&armcosmos.GremlinResourcesClientBeginCreateUpdateGremlinGraphOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

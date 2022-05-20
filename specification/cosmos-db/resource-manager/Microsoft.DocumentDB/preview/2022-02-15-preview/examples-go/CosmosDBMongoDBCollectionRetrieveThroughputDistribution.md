@@ -12,28 +12,32 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-02-15-preview/examples/CosmosDBGremlinGraphThroughputUpdate.json
-func ExampleGremlinResourcesClient_BeginUpdateGremlinGraphThroughput() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-02-15-preview/examples/CosmosDBMongoDBCollectionRetrieveThroughputDistribution.json
+func ExampleMongoDBResourcesClient_BeginMongoDBContainerRetrieveThroughputDistribution() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewGremlinResourcesClient("subid", cred, nil)
+	client, err := armcosmos.NewMongoDBResourcesClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdateGremlinGraphThroughput(ctx,
+	poller, err := client.BeginMongoDBContainerRetrieveThroughputDistribution(ctx,
 		"rg1",
 		"ddb1",
 		"databaseName",
-		"graphName",
-		armcosmos.ThroughputSettingsUpdateParameters{
-			Location: to.Ptr("West US"),
-			Tags:     map[string]*string{},
-			Properties: &armcosmos.ThroughputSettingsUpdateProperties{
-				Resource: &armcosmos.ThroughputSettingsResource{
-					Throughput: to.Ptr[int32](400),
+		"collectionName",
+		armcosmos.RetrieveThroughputParameters{
+			Properties: &armcosmos.RetrieveThroughputProperties{
+				Resource: &armcosmos.RetrieveThroughputPropertiesResource{
+					PhysicalPartitionIDs: []*armcosmos.PhysicalPartitionID{
+						{
+							ID: to.Ptr("0"),
+						},
+						{
+							ID: to.Ptr("1"),
+						}},
 				},
 			},
 		},

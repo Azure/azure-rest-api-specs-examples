@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -6,8 +6,6 @@ package armcosmos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,17 +17,15 @@ func ExampleDatabaseAccountsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewDatabaseAccountsClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewDatabaseAccountsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<account-name>",
+		"rg1",
+		"ddb1",
 		armcosmos.DatabaseAccountUpdateParameters{
 			Identity: &armcosmos.ManagedServiceIdentity{
 				Type: to.Ptr(armcosmos.ResourceIdentityTypeSystemAssignedUserAssigned),
@@ -37,7 +33,7 @@ func ExampleDatabaseAccountsClient_BeginUpdate() {
 					"/subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/eu2cgroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {},
 				},
 			},
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("westus"),
 			Properties: &armcosmos.DatabaseAccountUpdateProperties{
 				AnalyticalStorageConfiguration: &armcosmos.AnalyticalStorageConfiguration{
 					SchemaType: to.Ptr(armcosmos.AnalyticalStorageSchemaTypeWellDefined),
@@ -58,7 +54,7 @@ func ExampleDatabaseAccountsClient_BeginUpdate() {
 					MaxIntervalInSeconds:    to.Ptr[int32](10),
 					MaxStalenessPrefix:      to.Ptr[int64](200),
 				},
-				DefaultIdentity: to.Ptr("<default-identity>"),
+				DefaultIdentity: to.Ptr("FirstPartyIdentity"),
 				DiagnosticLogSettings: &armcosmos.DiagnosticLogSettings{
 					EnableFullTextQuery: to.Ptr(armcosmos.EnableFullTextQueryTrue),
 				},
@@ -66,10 +62,10 @@ func ExampleDatabaseAccountsClient_BeginUpdate() {
 				EnableFreeTier:          to.Ptr(false),
 				IPRules: []*armcosmos.IPAddressOrRange{
 					{
-						IPAddressOrRange: to.Ptr("<ipaddress-or-range>"),
+						IPAddressOrRange: to.Ptr("23.43.230.120"),
 					},
 					{
-						IPAddressOrRange: to.Ptr("<ipaddress-or-range>"),
+						IPAddressOrRange: to.Ptr("110.12.240.0/12"),
 					}},
 				IsVirtualNetworkFilterEnabled: to.Ptr(true),
 				NetworkACLBypass:              to.Ptr(armcosmos.NetworkACLBypassAzureServices),
@@ -77,7 +73,7 @@ func ExampleDatabaseAccountsClient_BeginUpdate() {
 					to.Ptr("/subscriptions/subId/resourcegroups/rgName/providers/Microsoft.Synapse/workspaces/workspaceName")},
 				VirtualNetworkRules: []*armcosmos.VirtualNetworkRule{
 					{
-						ID:                               to.Ptr("<id>"),
+						ID:                               to.Ptr("/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"),
 						IgnoreMissingVNetServiceEndpoint: to.Ptr(false),
 					}},
 			},
@@ -85,15 +81,13 @@ func ExampleDatabaseAccountsClient_BeginUpdate() {
 				"dept": to.Ptr("finance"),
 			},
 		},
-		&armcosmos.DatabaseAccountsClientBeginUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

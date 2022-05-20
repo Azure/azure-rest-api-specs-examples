@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -6,8 +6,6 @@ package armcosmos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,56 +17,52 @@ func ExampleCassandraClustersClient_BeginCreateUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCassandraClustersClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewCassandraClustersClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateUpdate(ctx,
-		"<resource-group-name>",
-		"<cluster-name>",
+		"cassandra-prod-rg",
+		"cassandra-prod",
 		armcosmos.ClusterResource{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("West US"),
 			Tags:     map[string]*string{},
 			Properties: &armcosmos.ClusterResourceProperties{
 				AuthenticationMethod: to.Ptr(armcosmos.AuthenticationMethodCassandra),
-				CassandraVersion:     to.Ptr("<cassandra-version>"),
+				CassandraVersion:     to.Ptr("3.11"),
 				ClientCertificates: []*armcosmos.Certificate{
 					{
-						Pem: to.Ptr("<pem>"),
+						Pem: to.Ptr("-----BEGIN CERTIFICATE-----\n...Base64 encoded certificate...\n-----END CERTIFICATE-----"),
 					}},
-				ClusterNameOverride:         to.Ptr("<cluster-name-override>"),
-				DelegatedManagementSubnetID: to.Ptr("<delegated-management-subnet-id>"),
+				ClusterNameOverride:         to.Ptr("ClusterNameIllegalForAzureResource"),
+				DelegatedManagementSubnetID: to.Ptr("/subscriptions/536e130b-d7d6-4ac7-98a5-de20d69588d2/resourceGroups/customer-vnet-rg/providers/Microsoft.Network/virtualNetworks/customer-vnet/subnets/management"),
 				ExternalGossipCertificates: []*armcosmos.Certificate{
 					{
-						Pem: to.Ptr("<pem>"),
+						Pem: to.Ptr("-----BEGIN CERTIFICATE-----\n...Base64 encoded certificate...\n-----END CERTIFICATE-----"),
 					}},
 				ExternalSeedNodes: []*armcosmos.SeedNode{
 					{
-						IPAddress: to.Ptr("<ipaddress>"),
+						IPAddress: to.Ptr("10.52.221.2"),
 					},
 					{
-						IPAddress: to.Ptr("<ipaddress>"),
+						IPAddress: to.Ptr("10.52.221.3"),
 					},
 					{
-						IPAddress: to.Ptr("<ipaddress>"),
+						IPAddress: to.Ptr("10.52.221.4"),
 					}},
 				HoursBetweenBackups:           to.Ptr[int32](24),
-				InitialCassandraAdminPassword: to.Ptr("<initial-cassandra-admin-password>"),
+				InitialCassandraAdminPassword: to.Ptr("mypassword"),
 			},
 		},
-		&armcosmos.CassandraClustersClientBeginCreateUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

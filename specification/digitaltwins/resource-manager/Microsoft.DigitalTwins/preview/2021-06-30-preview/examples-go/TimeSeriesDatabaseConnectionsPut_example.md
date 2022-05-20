@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdigitaltwins%2Farmdigitaltwins%2Fv0.4.0/sdk/resourcemanager/digitaltwins/armdigitaltwins/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdigitaltwins%2Farmdigitaltwins%2Fv0.5.0/sdk/resourcemanager/digitaltwins/armdigitaltwins/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armdigitaltwins_test
@@ -6,8 +6,6 @@ package armdigitaltwins_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,39 +17,35 @@ func ExampleTimeSeriesDatabaseConnectionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdigitaltwins.NewTimeSeriesDatabaseConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armdigitaltwins.NewTimeSeriesDatabaseConnectionsClient("50016170-c839-41ba-a724-51e9df440b9e", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<time-series-database-connection-name>",
+		"resRg",
+		"myDigitalTwinsService",
+		"myConnection",
 		armdigitaltwins.TimeSeriesDatabaseConnection{
 			Properties: &armdigitaltwins.AzureDataExplorerConnectionProperties{
 				ConnectionType:              to.Ptr(armdigitaltwins.ConnectionTypeAzureDataExplorer),
-				AdxDatabaseName:             to.Ptr("<adx-database-name>"),
-				AdxEndpointURI:              to.Ptr("<adx-endpoint-uri>"),
-				AdxResourceID:               to.Ptr("<adx-resource-id>"),
-				AdxTableName:                to.Ptr("<adx-table-name>"),
-				EventHubEndpointURI:         to.Ptr("<event-hub-endpoint-uri>"),
-				EventHubEntityPath:          to.Ptr("<event-hub-entity-path>"),
-				EventHubNamespaceResourceID: to.Ptr("<event-hub-namespace-resource-id>"),
+				AdxDatabaseName:             to.Ptr("myDatabase"),
+				AdxEndpointURI:              to.Ptr("https://mycluster.kusto.windows.net"),
+				AdxResourceID:               to.Ptr("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster"),
+				AdxTableName:                to.Ptr("myTable"),
+				EventHubEndpointURI:         to.Ptr("sb://myeh.servicebus.windows.net/"),
+				EventHubEntityPath:          to.Ptr("myeh"),
+				EventHubNamespaceResourceID: to.Ptr("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh"),
 			},
 		},
-		&armdigitaltwins.TimeSeriesDatabaseConnectionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

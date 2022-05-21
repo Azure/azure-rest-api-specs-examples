@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -6,8 +6,6 @@ package armcosmos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,48 +17,44 @@ func ExampleMongoDBResourcesClient_BeginCreateUpdateMongoRoleDefinition() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewMongoDBResourcesClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewMongoDBResourcesClient("mySubscriptionId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateUpdateMongoRoleDefinition(ctx,
-		"<mongo-role-definition-id>",
-		"<resource-group-name>",
-		"<account-name>",
+		"myMongoRoleDefinitionId",
+		"myResourceGroupName",
+		"myAccountName",
 		armcosmos.MongoRoleDefinitionCreateUpdateParameters{
 			Properties: &armcosmos.MongoRoleDefinitionResource{
-				DatabaseName: to.Ptr("<database-name>"),
+				DatabaseName: to.Ptr("sales"),
 				Privileges: []*armcosmos.Privilege{
 					{
 						Actions: []*string{
 							to.Ptr("insert"),
 							to.Ptr("find")},
 						Resource: &armcosmos.PrivilegeResource{
-							Collection: to.Ptr("<collection>"),
-							Db:         to.Ptr("<db>"),
+							Collection: to.Ptr("sales"),
+							Db:         to.Ptr("sales"),
 						},
 					}},
-				RoleName: to.Ptr("<role-name>"),
+				RoleName: to.Ptr("myRoleName"),
 				Roles: []*armcosmos.Role{
 					{
-						Db:   to.Ptr("<db>"),
-						Role: to.Ptr("<role>"),
+						Db:   to.Ptr("sales"),
+						Role: to.Ptr("myInheritedRole"),
 					}},
 			},
 		},
-		&armcosmos.MongoDBResourcesClientBeginCreateUpdateMongoRoleDefinitionOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

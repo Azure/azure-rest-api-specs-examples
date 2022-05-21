@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv0.5.0/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fcosmos%2Farmcosmos%2Fv1.1.0-beta.1/sdk/resourcemanager/cosmos/armcosmos/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armcosmos_test
@@ -6,8 +6,6 @@ package armcosmos_test
 import (
 	"context"
 	"log"
-
-	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -19,41 +17,37 @@ func ExampleMongoDBResourcesClient_BeginCreateUpdateMongoUserDefinition() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewMongoDBResourcesClient("<subscription-id>", cred, nil)
+	client, err := armcosmos.NewMongoDBResourcesClient("mySubscriptionId", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreateUpdateMongoUserDefinition(ctx,
-		"<mongo-user-definition-id>",
-		"<resource-group-name>",
-		"<account-name>",
+		"myMongoUserDefinitionId",
+		"myResourceGroupName",
+		"myAccountName",
 		armcosmos.MongoUserDefinitionCreateUpdateParameters{
 			Properties: &armcosmos.MongoUserDefinitionResource{
-				CustomData:   to.Ptr("<custom-data>"),
-				DatabaseName: to.Ptr("<database-name>"),
-				Mechanisms:   to.Ptr("<mechanisms>"),
-				Password:     to.Ptr("<password>"),
+				CustomData:   to.Ptr("My custom data"),
+				DatabaseName: to.Ptr("sales"),
+				Mechanisms:   to.Ptr("SCRAM-SHA-256"),
+				Password:     to.Ptr("myPassword"),
 				Roles: []*armcosmos.Role{
 					{
-						Db:   to.Ptr("<db>"),
-						Role: to.Ptr("<role>"),
+						Db:   to.Ptr("sales"),
+						Role: to.Ptr("myReadRole"),
 					}},
-				UserName: to.Ptr("<user-name>"),
+				UserName: to.Ptr("myUserName"),
 			},
 		},
-		&armcosmos.MongoDBResourcesClientBeginCreateUpdateMongoUserDefinitionOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,0 +1,64 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-network_28.0.0/sdk/network/arm-network/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { NetworkManagementClient } = require("@azure/arm-network");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Creates or updates a load balancer.
+ *
+ * @summary Creates or updates a load balancer.
+ * x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2021-08-01/examples/LoadBalancerCreateWithInboundNatPool.json
+ */
+async function createLoadBalancerWithInboundNatPool() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "rg1";
+  const loadBalancerName = "lb";
+  const parameters = {
+    backendAddressPools: [],
+    frontendIPConfigurations: [
+      {
+        name: "test",
+        id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test",
+        privateIPAllocationMethod: "Dynamic",
+        subnet: {
+          id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/lbvnet/subnets/lbsubnet",
+        },
+        zones: [],
+      },
+    ],
+    inboundNatPools: [
+      {
+        name: "test",
+        backendPort: 8888,
+        enableFloatingIP: true,
+        enableTcpReset: true,
+        frontendIPConfiguration: {
+          id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test",
+        },
+        frontendPortRangeEnd: 8085,
+        frontendPortRangeStart: 8080,
+        id: "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/inboundNatPools/test",
+        idleTimeoutInMinutes: 10,
+        protocol: "Tcp",
+      },
+    ],
+    inboundNatRules: [],
+    loadBalancingRules: [],
+    location: "eastus",
+    outboundRules: [],
+    probes: [],
+    sku: { name: "Standard" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new NetworkManagementClient(credential, subscriptionId);
+  const result = await client.loadBalancers.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    loadBalancerName,
+    parameters
+  );
+  console.log(result);
+}
+
+createLoadBalancerWithInboundNatPool().catch(console.error);
+```

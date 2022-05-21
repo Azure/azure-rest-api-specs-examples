@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv0.4.0/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaintenance%2Farmmaintenance%2Fv1.1.0-beta.1/sdk/resourcemanager/maintenance/armmaintenance/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armmaintenance_test
@@ -16,26 +16,23 @@ func ExampleApplyUpdatesClient_GetParent() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armmaintenance.NewApplyUpdatesClient("<subscription-id>", cred, nil)
+	client, err := armmaintenance.NewApplyUpdatesClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.GetParent(ctx,
-		"<resource-group-name>",
-		"<resource-parent-type>",
-		"<resource-parent-name>",
-		"<provider-name>",
-		"<resource-type>",
-		"<resource-name>",
-		"<apply-update-name>",
+		"examplerg",
+		"virtualMachineScaleSets",
+		"smdtest1",
+		"Microsoft.Compute",
+		"virtualMachines",
+		"smdvm1",
+		"e9b9685d-78e4-44c4-a81c-64a14f9b87b6",
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

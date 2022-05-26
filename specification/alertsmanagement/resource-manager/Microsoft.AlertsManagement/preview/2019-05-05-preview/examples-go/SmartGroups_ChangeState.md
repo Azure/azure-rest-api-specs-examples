@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Falertsmanagement%2Farmalertsmanagement%2Fv0.5.0/sdk/resourcemanager/alertsmanagement/armalertsmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Falertsmanagement%2Farmalertsmanagement%2Fv0.6.0/sdk/resourcemanager/alertsmanagement/armalertsmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armalertsmanagement_test
@@ -16,21 +16,18 @@ func ExampleSmartGroupsClient_ChangeState() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armalertsmanagement.NewSmartGroupsClient("<subscription-id>", cred, nil)
+	client, err := armalertsmanagement.NewSmartGroupsClient("dd91de05-d791-4ceb-b6dc-988682dc7d72", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.ChangeState(ctx,
-		"<smart-group-id>",
+		"a808445e-bb38-4751-85c2-1b109ccc1059",
 		armalertsmanagement.AlertStateAcknowledged,
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -1,0 +1,41 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-recoveryservicesbackup_9.0.0/sdk/recoveryservicesbackup/arm-recoveryservicesbackup/README.md) on how to add the SDK to your project and authenticate.
+
+```javascript
+const { RecoveryServicesBackupClient } = require("@azure/arm-recoveryservicesbackup");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Move recovery point from one datastore to another store.
+ *
+ * @summary Move recovery point from one datastore to another store.
+ * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2022-03-01/examples/TriggerRecoveryPointMove_Post.json
+ */
+async function triggerRpMoveOperation() {
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const vaultName = "testVault";
+  const resourceGroupName = "netsdktestrg";
+  const fabricName = "Azure";
+  const containerName = "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1";
+  const protectedItemName = "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1";
+  const recoveryPointId = "348916168024334";
+  const parameters = {
+    objectType: "MoveRPAcrossTiersRequest",
+    sourceTierType: "HardenedRP",
+    targetTierType: "ArchivedRP",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new RecoveryServicesBackupClient(credential, subscriptionId);
+  const result = await client.beginMoveRecoveryPointAndWait(
+    vaultName,
+    resourceGroupName,
+    fabricName,
+    containerName,
+    protectedItemName,
+    recoveryPointId,
+    parameters
+  );
+  console.log(result);
+}
+
+triggerRpMoveOperation().catch(console.error);
+```

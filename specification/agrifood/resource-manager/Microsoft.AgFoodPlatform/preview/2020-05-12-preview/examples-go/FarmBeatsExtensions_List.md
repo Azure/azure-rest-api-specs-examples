@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fagrifood%2Farmagrifood%2Fv0.5.0/sdk/resourcemanager/agrifood/armagrifood/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fagrifood%2Farmagrifood%2Fv0.6.0/sdk/resourcemanager/agrifood/armagrifood/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armagrifood_test
@@ -16,13 +16,11 @@ func ExampleFarmBeatsExtensionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armagrifood.NewFarmBeatsExtensionsClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	pager := client.NewListPager(&armagrifood.FarmBeatsExtensionsClientListOptions{FarmBeatsExtensionIDs: []string{},
 		FarmBeatsExtensionNames: []string{},
@@ -34,7 +32,6 @@ func ExampleFarmBeatsExtensionsClient_NewListPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.4.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fapplicationinsights%2Farmapplicationinsights%2Fv0.5.0/sdk/resourcemanager/applicationinsights/armapplicationinsights/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armapplicationinsights_test
@@ -17,21 +17,19 @@ func ExampleWorkItemConfigurationsClient_UpdateItem() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewWorkItemConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armapplicationinsights.NewWorkItemConfigurationsClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.UpdateItem(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<work-item-config-id>",
+		"my-resource-group",
+		"my-component",
+		"Visual Studio Team Services",
 		armapplicationinsights.WorkItemCreateConfiguration{
-			ConnectorDataConfiguration: to.Ptr("<connector-data-configuration>"),
-			ConnectorID:                to.Ptr("<connector-id>"),
+			ConnectorDataConfiguration: to.Ptr("{\"VSOAccountBaseUrl\":\"https://testtodelete.visualstudio.com\",\"ProjectCollection\":\"DefaultCollection\",\"Project\":\"todeletefirst\",\"ResourceId\":\"d0662b05-439a-4a1b-840b-33a7f8b42ebf\",\"Custom\":\"{\\\"/fields/System.WorkItemType\\\":\\\"Bug\\\",\\\"/fields/System.AreaPath\\\":\\\"todeletefirst\\\",\\\"/fields/System.AssignedTo\\\":\\\"\\\"}\"}"),
+			ConnectorID:                to.Ptr("d334e2a4-6733-488e-8645-a9fdc1694f41"),
 			ValidateOnly:               to.Ptr(true),
 			WorkItemProperties: map[string]*string{
 				"0": to.Ptr("[object Object]"),
@@ -41,7 +39,6 @@ func ExampleWorkItemConfigurationsClient_UpdateItem() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

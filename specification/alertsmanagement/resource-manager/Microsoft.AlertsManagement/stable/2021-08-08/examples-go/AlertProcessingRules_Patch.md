@@ -1,4 +1,4 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Falertsmanagement%2Farmalertsmanagement%2Fv0.5.0/sdk/resourcemanager/alertsmanagement/armalertsmanagement/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Falertsmanagement%2Farmalertsmanagement%2Fv0.6.0/sdk/resourcemanager/alertsmanagement/armalertsmanagement/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
 package armalertsmanagement_test
@@ -17,17 +17,15 @@ func ExampleAlertProcessingRulesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armalertsmanagement.NewAlertProcessingRulesClient("<subscription-id>", cred, nil)
+	client, err := armalertsmanagement.NewAlertProcessingRulesClient("1e3ff1c0-771a-4119-a03b-be82a51e232d", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Update(ctx,
-		"<resource-group-name>",
-		"<alert-processing-rule-name>",
+		"alertscorrelationrg",
+		"WeeklySuppression",
 		armalertsmanagement.PatchObject{
 			Properties: &armalertsmanagement.PatchProperties{
 				Enabled: to.Ptr(false),
@@ -40,7 +38,6 @@ func ExampleAlertProcessingRulesClient_Update() {
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

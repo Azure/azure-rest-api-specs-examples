@@ -1,9 +1,9 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.14.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.15.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.core.util.Context;
 
-/** Samples for WebApps GetInstanceInfo. */
+/** Samples for WebApps GetInstanceInfoSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/GetSiteInstanceInfo.json
@@ -19,7 +19,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .getInstanceInfoWithResponse("testrg123", "tests346", "134987120", Context.NONE);
+            .getInstanceInfoSlotWithResponse("testrg123", "tests346", "134987120", "staging", Context.NONE);
     }
 }
 ```

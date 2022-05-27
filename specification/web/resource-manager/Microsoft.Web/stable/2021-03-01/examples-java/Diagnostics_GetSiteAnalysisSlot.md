@@ -1,9 +1,9 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.14.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.15.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
 
 ```java
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics GetSiteAnalysisSlot. */
+/** Samples for Diagnostics GetSiteAnalysis. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/Diagnostics_GetSiteAnalysisSlot.json
@@ -19,8 +19,8 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteAnalysisSlotWithResponse(
-                "Sample-WestUSResourceGroup", "SampleApp", "availability", "appanalysis", "staging", Context.NONE);
+            .getSiteAnalysisWithResponse(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "appanalysis", Context.NONE);
     }
 }
 ```

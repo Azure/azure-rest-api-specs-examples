@@ -1,0 +1,61 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-machinelearning_1.0.0-beta.2/sdk/machinelearning/azure-resourcemanager-machinelearning/README.md) on how to add the SDK to your project and authenticate.
+
+```java
+import com.azure.resourcemanager.machinelearning.models.InstanceTypeSchema;
+import com.azure.resourcemanager.machinelearning.models.InstanceTypeSchemaResources;
+import com.azure.resourcemanager.machinelearning.models.Kubernetes;
+import com.azure.resourcemanager.machinelearning.models.KubernetesProperties;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for Compute CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2022-02-01-preview/examples/Compute/createOrUpdate/KubernetesCompute.json
+     */
+    /**
+     * Sample code: Attach a Kubernetes Compute.
+     *
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void attachAKubernetesCompute(
+        com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager
+            .computes()
+            .define("compute123")
+            .withExistingWorkspace("testrg123", "workspaces123")
+            .withRegion("eastus")
+            .withProperties(
+                new Kubernetes()
+                    .withDescription("some compute")
+                    .withResourceId(
+                        "/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute123-56826-c9b00420020b2")
+                    .withProperties(
+                        new KubernetesProperties()
+                            .withNamespace("default")
+                            .withDefaultInstanceType("defaultInstanceType")
+                            .withInstanceTypes(
+                                mapOf(
+                                    "defaultInstanceType",
+                                    new InstanceTypeSchema()
+                                        .withResources(
+                                            new InstanceTypeSchemaResources()
+                                                .withRequests(
+                                                    mapOf("cpu", "1", "memory", "4Gi", "nvidia.com/gpu", null))
+                                                .withLimits(
+                                                    mapOf("cpu", "1", "memory", "4Gi", "nvidia.com/gpu", null)))))))
+            .create();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}
+```

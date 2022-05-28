@@ -1,0 +1,29 @@
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.15.0/sdk/resourcemanager/azure-resourcemanager/README.md) on how to add the SDK to your project and authenticate.
+
+```java
+import com.azure.core.util.Context;
+
+/** Samples for RoleAssignmentScheduleRequests ListForScope. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/stable/2020-10-01/examples/GetRoleAssignmentScheduleRequestByScope.json
+     */
+    /**
+     * Sample code: GetRoleAssignmentScheduleRequestByScope.
+     *
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void getRoleAssignmentScheduleRequestByScope(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure
+            .accessManagement()
+            .roleAssignments()
+            .manager()
+            .roleServiceClient()
+            .getRoleAssignmentScheduleRequests()
+            .listForScope(
+                "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
+                "assignedTo('A3BB8764-CB92-4276-9D2A-CA1E895E55EA')",
+                Context.NONE);
+    }
+}
+```

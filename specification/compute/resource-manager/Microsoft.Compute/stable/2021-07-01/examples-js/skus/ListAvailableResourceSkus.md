@@ -1,9 +1,15 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-compute_17.3.1/sdk/compute/arm-compute/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-compute_18.0.0/sdk/compute/arm-compute/README.md) on how to add the SDK to your project and authenticate.
 
 ```javascript
 const { ComputeManagementClient } = require("@azure/arm-compute");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Gets the list of Microsoft.Compute SKUs available for your Subscription.
+ *
+ * @summary Gets the list of Microsoft.Compute SKUs available for your Subscription.
+ * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2021-07-01/examples/skus/ListAvailableResourceSkus.json
+ */
 async function listsAllAvailableResourceSkUs() {
   const subscriptionId = "{subscription-id}";
   const credential = new DefaultAzureCredential();

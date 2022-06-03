@@ -1,7 +1,7 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearningservices%2Farmmachinelearningservices%2Fv1.0.1/sdk/resourcemanager/machinelearningservices/armmachinelearningservices/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmachinelearning%2Farmmachinelearning%2Fv1.0.0/sdk/resourcemanager/machinelearning/armmachinelearning/README.md) on how to add the SDK to your project and authenticate.
 
 ```go
-package armmachinelearningservices_test
+package armmachinelearning_test
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearningservices/armmachinelearningservices"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearning/armmachinelearning"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2021-07-01/examples/WorkspaceConnection/create.json
@@ -19,7 +19,7 @@ func ExampleWorkspaceConnectionsClient_Create() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmachinelearningservices.NewWorkspaceConnectionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	client, err := armmachinelearning.NewWorkspaceConnectionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
@@ -27,8 +27,8 @@ func ExampleWorkspaceConnectionsClient_Create() {
 		"resourceGroup-1",
 		"workspace-1",
 		"connection-1",
-		armmachinelearningservices.WorkspaceConnection{
-			Properties: &armmachinelearningservices.WorkspaceConnectionProps{
+		armmachinelearning.WorkspaceConnection{
+			Properties: &armmachinelearning.WorkspaceConnectionProps{
 				AuthType: to.Ptr("PAT"),
 				Category: to.Ptr("ACR"),
 				Target:   to.Ptr("www.facebook.com"),

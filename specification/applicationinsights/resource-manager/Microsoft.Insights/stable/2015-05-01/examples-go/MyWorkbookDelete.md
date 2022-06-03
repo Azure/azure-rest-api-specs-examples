@@ -11,29 +11,23 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/FavoritesList.json
-func ExampleFavoritesClient_List() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/MyWorkbookDelete.json
+func ExampleMyWorkbooksClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewFavoritesClient("subid", cred, nil)
+	client, err := armapplicationinsights.NewMyWorkbooksClient("subid", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.List(ctx,
+	_, err = client.Delete(ctx,
 		"my-resource-group",
-		"my-ai-component",
-		&armapplicationinsights.FavoritesClientListOptions{FavoriteType: nil,
-			SourceType:      nil,
-			CanFetchContent: nil,
-			Tags:            []string{},
-		})
+		"deadb33f-5e0d-4064-8ebb-1a4ed0313eb2",
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
-	_ = res
 }
 ```

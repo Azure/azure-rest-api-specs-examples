@@ -9,7 +9,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/v2"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2022-02-10-preview/examples/HostPool_Create.json
@@ -17,28 +17,26 @@ func ExampleHostPoolsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdesktopvirtualization.NewHostPoolsClient("<subscription-id>", cred, nil)
+	client, err := armdesktopvirtualization.NewHostPoolsClient("daefabc0-95b4-48b3-b645-8a753a63c4fa", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<host-pool-name>",
+		"resourceGroup1",
+		"hostPool1",
 		armdesktopvirtualization.HostPool{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("centralus"),
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 			},
 			Properties: &armdesktopvirtualization.HostPoolProperties{
-				Description: to.Ptr("<description>"),
+				Description: to.Ptr("des1"),
 				AgentUpdate: &armdesktopvirtualization.AgentUpdateProperties{
 					Type:                      to.Ptr(armdesktopvirtualization.SessionHostComponentUpdateTypeScheduled),
-					MaintenanceWindowTimeZone: to.Ptr("<maintenance-window-time-zone>"),
+					MaintenanceWindowTimeZone: to.Ptr("Alaskan Standard Time"),
 					MaintenanceWindows: []*armdesktopvirtualization.MaintenanceWindowProperties{
 						{
 							DayOfWeek: to.Ptr(armdesktopvirtualization.DayOfWeekFriday),
@@ -50,12 +48,12 @@ func ExampleHostPoolsClient_CreateOrUpdate() {
 						}},
 					UseSessionHostLocalTime: to.Ptr(false),
 				},
-				FriendlyName:     to.Ptr("<friendly-name>"),
+				FriendlyName:     to.Ptr("friendly"),
 				HostPoolType:     to.Ptr(armdesktopvirtualization.HostPoolTypePooled),
 				LoadBalancerType: to.Ptr(armdesktopvirtualization.LoadBalancerTypeBreadthFirst),
 				MaxSessionLimit:  to.Ptr[int32](999999),
 				MigrationRequest: &armdesktopvirtualization.MigrationRequestProperties{
-					MigrationPath: to.Ptr("<migration-path>"),
+					MigrationPath: to.Ptr("TenantGroups/{defaultV1TenantGroup.Name}/Tenants/{defaultV1Tenant.Name}/HostPools/{sessionHostPool.Name}"),
 					Operation:     to.Ptr(armdesktopvirtualization.OperationStart),
 				},
 				PersonalDesktopAssignmentType: to.Ptr(armdesktopvirtualization.PersonalDesktopAssignmentTypeAutomatic),
@@ -65,22 +63,21 @@ func ExampleHostPoolsClient_CreateOrUpdate() {
 					ExpirationTime:             to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T14:01:54.9571247Z"); return t }()),
 					RegistrationTokenOperation: to.Ptr(armdesktopvirtualization.RegistrationTokenOperationUpdate),
 				},
-				SsoClientID:                 to.Ptr("<sso-client-id>"),
-				SsoClientSecretKeyVaultPath: to.Ptr("<sso-client-secret-key-vault-path>"),
+				SsoClientID:                 to.Ptr("client"),
+				SsoClientSecretKeyVaultPath: to.Ptr("https://keyvault/secret"),
 				SsoSecretType:               to.Ptr(armdesktopvirtualization.SSOSecretTypeSharedKey),
-				SsoadfsAuthority:            to.Ptr("<ssoadfs-authority>"),
+				SsoadfsAuthority:            to.Ptr("https://adfs"),
 				StartVMOnConnect:            to.Ptr(false),
-				VMTemplate:                  to.Ptr("<vmtemplate>"),
+				VMTemplate:                  to.Ptr("{json:json}"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res
 }
 ```
 
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.4.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv2.0.0-beta.1/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.

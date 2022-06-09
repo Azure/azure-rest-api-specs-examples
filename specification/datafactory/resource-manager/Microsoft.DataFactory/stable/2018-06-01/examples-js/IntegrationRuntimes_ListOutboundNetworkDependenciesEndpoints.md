@@ -1,9 +1,15 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-datafactory_10.5.0/sdk/datafactory/arm-datafactory/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-datafactory_10.6.0/sdk/datafactory/arm-datafactory/README.md) on how to add the SDK to your project and authenticate.
 
 ```javascript
 const { DataFactoryManagementClient } = require("@azure/arm-datafactory");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Gets the list of outbound network dependencies for a given Azure-SSIS integration runtime.
+ *
+ * @summary Gets the list of outbound network dependencies for a given Azure-SSIS integration runtime.
+ * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
+ */
 async function integrationRuntimesOutboundNetworkDependenciesEndpoints() {
   const subscriptionId = "7ad7c73b-38b8-4df3-84ee-52ff91092f61";
   const resourceGroupName = "exampleResourceGroup";

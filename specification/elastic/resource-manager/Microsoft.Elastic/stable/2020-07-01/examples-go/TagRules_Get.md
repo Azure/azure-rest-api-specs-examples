@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Felastic%2Farmelastic%2Fv0.1.0/sdk/resourcemanager/elastic/armelastic/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armelastic_test
 
@@ -30,3 +28,5 @@ func ExampleTagRulesClient_Get() {
 	log.Printf("MonitoringTagRules.ID: %s\n", *res.ID)
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Felastic%2Farmelastic%2Fv0.1.0/sdk/resourcemanager/elastic/armelastic/README.md) on how to add the SDK to your project and authenticate.

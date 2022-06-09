@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmfeatures%2Fv1.0.0/sdk/resourcemanager/resources/armfeatures/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armfeatures_test
 
@@ -35,3 +33,5 @@ func ExampleFeatureClient_NewListOperationsPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmfeatures%2Fv1.0.0/sdk/resourcemanager/resources/armfeatures/README.md) on how to add the SDK to your project and authenticate.

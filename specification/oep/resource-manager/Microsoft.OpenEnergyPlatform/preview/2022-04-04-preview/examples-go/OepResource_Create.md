@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foep%2Farmoep%2Fv0.4.0/sdk/resourcemanager/oep/armoep/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armoep_test
 
@@ -37,3 +35,5 @@ func ExampleEnergyServicesClient_BeginCreate() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Foep%2Farmoep%2Fv0.4.0/sdk/resourcemanager/oep/armoep/README.md) on how to add the SDK to your project and authenticate.

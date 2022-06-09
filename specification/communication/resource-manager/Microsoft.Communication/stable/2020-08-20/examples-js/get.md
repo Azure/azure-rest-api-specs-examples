@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-communication_3.0.1/sdk/communication/arm-communication/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { CommunicationServiceManagementClient } = require("@azure/arm-communication");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -22,3 +20,5 @@ async function getResource() {
 
 getResource().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-communication_3.0.1/sdk/communication/arm-communication/README.md) on how to add the SDK to your project and authenticate.

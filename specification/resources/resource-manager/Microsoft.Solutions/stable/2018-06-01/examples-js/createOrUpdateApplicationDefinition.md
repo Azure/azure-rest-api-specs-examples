@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-managedapplications_2.0.1/sdk/managedapplications/arm-managedapplications/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ApplicationClient } = require("@azure/arm-managedapplications");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -34,3 +32,5 @@ async function createOrUpdateManagedApplicationDefinition() {
 
 createOrUpdateManagedApplicationDefinition().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-managedapplications_2.0.1/sdk/managedapplications/arm-managedapplications/README.md) on how to add the SDK to your project and authenticate.

@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatacatalog%2Farmdatacatalog%2Fv1.0.0/sdk/resourcemanager/datacatalog/armdatacatalog/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armdatacatalog_test
 
@@ -56,3 +54,5 @@ func ExampleADCCatalogsClient_CreateOrUpdate() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdatacatalog%2Farmdatacatalog%2Fv1.0.0/sdk/resourcemanager/datacatalog/armdatacatalog/README.md) on how to add the SDK to your project and authenticate.

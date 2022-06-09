@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-consumption_9.0.1/sdk/consumption/arm-consumption/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ConsumptionManagementClient } = require("@azure/arm-consumption");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -28,3 +26,5 @@ async function reservationDetails() {
 
 reservationDetails().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-consumption_9.0.1/sdk/consumption/arm-consumption/README.md) on how to add the SDK to your project and authenticate.

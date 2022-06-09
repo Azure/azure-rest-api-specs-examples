@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-confidentialledger_1.0.0/sdk/confidentialledger/arm-confidentialledger/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ConfidentialLedgerClient } = require("@azure/arm-confidentialledger");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -49,3 +47,5 @@ async function confidentialLedgerUpdate() {
 
 confidentialLedgerUpdate().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-confidentialledger_1.0.0/sdk/confidentialledger/arm-confidentialledger/README.md) on how to add the SDK to your project and authenticate.

@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-resources_5.0.1/sdk/resources/arm-resources/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ResourceManagementClient } = require("@azure/arm-resources");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -30,3 +28,5 @@ async function exportAResourceGroupWithFiltering() {
 
 exportAResourceGroupWithFiltering().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-resources_5.0.1/sdk/resources/arm-resources/README.md) on how to add the SDK to your project and authenticate.

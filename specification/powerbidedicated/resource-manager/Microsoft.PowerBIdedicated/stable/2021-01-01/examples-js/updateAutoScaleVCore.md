@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-powerbidedicated_3.0.1/sdk/powerbidedicated/arm-powerbidedicated/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { PowerBIDedicated } = require("@azure/arm-powerbidedicated");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -31,3 +29,5 @@ async function updateAutoScaleVCoreParameters() {
 
 updateAutoScaleVCoreParameters().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-powerbidedicated_3.0.1/sdk/powerbidedicated/arm-powerbidedicated/README.md) on how to add the SDK to your project and authenticate.

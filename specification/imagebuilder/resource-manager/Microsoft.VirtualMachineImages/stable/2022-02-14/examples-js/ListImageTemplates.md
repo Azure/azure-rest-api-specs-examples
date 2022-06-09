@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-imagebuilder_2.0.0/sdk/imagebuilder/arm-imagebuilder/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ImageBuilderClient } = require("@azure/arm-imagebuilder");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -23,3 +21,5 @@ async function listImagesBySubscription() {
 
 listImagesBySubscription().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-imagebuilder_2.0.0/sdk/imagebuilder/arm-imagebuilder/README.md) on how to add the SDK to your project and authenticate.

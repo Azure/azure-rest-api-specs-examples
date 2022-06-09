@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv0.2.1/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armpeering_test
 
@@ -76,3 +74,5 @@ func ExamplePeeringsClient_CreateOrUpdate() {
 	log.Printf("Response result: %#v\n", res.PeeringsClientCreateOrUpdateResult)
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fpeering%2Farmpeering%2Fv0.2.1/sdk/resourcemanager/peering/armpeering/README.md) on how to add the SDK to your project and authenticate.

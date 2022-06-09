@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-datacatalog_4.0.0/sdk/datacatalog/arm-datacatalog/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { DataCatalogRestClient } = require("@azure/arm-datacatalog");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -22,3 +20,5 @@ async function getAzureDataCatalogService() {
 
 getAzureDataCatalogService().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-datacatalog_4.0.0/sdk/datacatalog/arm-datacatalog/README.md) on how to add the SDK to your project and authenticate.

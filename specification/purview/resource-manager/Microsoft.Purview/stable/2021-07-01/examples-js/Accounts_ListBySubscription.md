@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-purview_1.0.1/sdk/purview/arm-purview/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { PurviewManagementClient } = require("@azure/arm-purview");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -23,3 +21,5 @@ async function accountsListBySubscription() {
 
 accountsListBySubscription().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-purview_1.0.1/sdk/purview/arm-purview/README.md) on how to add the SDK to your project and authenticate.

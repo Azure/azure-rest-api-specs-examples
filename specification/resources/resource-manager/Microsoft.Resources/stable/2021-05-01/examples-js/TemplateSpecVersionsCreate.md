@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-templatespecs_2.0.1/sdk/templatespecs/arm-templatespecs/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { TemplateSpecsClient } = require("@azure/arm-templatespecs");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -38,3 +36,5 @@ async function templateSpecVersionsCreateUpdate() {
 
 templateSpecVersionsCreateUpdate().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-templatespecs_2.0.1/sdk/templatespecs/arm-templatespecs/README.md) on how to add the SDK to your project and authenticate.

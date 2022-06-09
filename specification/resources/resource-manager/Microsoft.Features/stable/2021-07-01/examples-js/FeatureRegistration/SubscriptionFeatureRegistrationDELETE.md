@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-features_3.0.1/sdk/features/arm-features/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { FeatureClient } = require("@azure/arm-features");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -25,3 +23,5 @@ async function deletesAFeatureRegistration() {
 
 deletesAFeatureRegistration().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-features_3.0.1/sdk/features/arm-features/README.md) on how to add the SDK to your project and authenticate.

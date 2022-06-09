@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-streamanalytics_4.0.1/sdk/streamanalytics/arm-streamanalytics/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { StreamAnalyticsManagementClient } = require("@azure/arm-streamanalytics");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -25,3 +23,5 @@ async function listAllStreamingJobsInCluster() {
 
 listAllStreamingJobsInCluster().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-streamanalytics_4.0.1/sdk/streamanalytics/arm-streamanalytics/README.md) on how to add the SDK to your project and authenticate.

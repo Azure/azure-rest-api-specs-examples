@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmsi%2Farmmsi%2Fv0.6.0/sdk/resourcemanager/msi/armmsi/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armmsi_test
 
@@ -35,3 +33,5 @@ func ExampleOperationsClient_NewListPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmsi%2Farmmsi%2Fv0.6.0/sdk/resourcemanager/msi/armmsi/README.md) on how to add the SDK to your project and authenticate.

@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.5.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armmaps_test
 
@@ -62,3 +60,5 @@ func ExampleAccountsClient_CreateOrUpdate() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmaps%2Farmmaps%2Fv0.5.0/sdk/resourcemanager/maps/armmaps/README.md) on how to add the SDK to your project and authenticate.

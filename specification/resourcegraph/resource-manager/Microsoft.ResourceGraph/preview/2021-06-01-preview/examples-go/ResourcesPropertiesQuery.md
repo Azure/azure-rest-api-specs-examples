@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcegraph%2Farmresourcegraph%2Fv0.6.0/sdk/resourcemanager/resourcegraph/armresourcegraph/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armresourcegraph_test
 
@@ -37,3 +35,5 @@ func ExampleClient_Resources() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresourcegraph%2Farmresourcegraph%2Fv0.6.0/sdk/resourcemanager/resourcegraph/armresourcegraph/README.md) on how to add the SDK to your project and authenticate.

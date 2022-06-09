@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-datadog_3.0.1/sdk/datadog/arm-datadog/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { MicrosoftDatadogClient } = require("@azure/arm-datadog");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -27,3 +25,5 @@ async function singleSignOnConfigurationsGet() {
 
 singleSignOnConfigurationsGet().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-datadog_3.0.1/sdk/datadog/arm-datadog/README.md) on how to add the SDK to your project and authenticate.

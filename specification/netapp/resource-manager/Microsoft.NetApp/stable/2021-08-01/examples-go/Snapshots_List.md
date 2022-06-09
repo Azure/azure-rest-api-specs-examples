@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.1/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armnetapp_test
 
@@ -31,3 +29,5 @@ func ExampleSnapshotsClient_List() {
 	log.Printf("Response result: %#v\n", res.SnapshotsClientListResult)
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fnetapp%2Farmnetapp%2Fv0.2.1/sdk/resourcemanager/netapp/armnetapp/README.md) on how to add the SDK to your project and authenticate.

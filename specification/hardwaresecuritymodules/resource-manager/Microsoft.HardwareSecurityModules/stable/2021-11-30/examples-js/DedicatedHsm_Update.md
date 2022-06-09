@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-hardwaresecuritymodules_1.0.0/sdk/hardwaresecuritymodules/arm-hardwaresecuritymodules/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { AzureDedicatedHSMResourceProvider } = require("@azure/arm-hardwaresecuritymodules");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -28,3 +26,5 @@ async function updateAnExistingDedicatedHsm() {
 
 updateAnExistingDedicatedHsm().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-hardwaresecuritymodules_1.0.0/sdk/hardwaresecuritymodules/arm-hardwaresecuritymodules/README.md) on how to add the SDK to your project and authenticate.

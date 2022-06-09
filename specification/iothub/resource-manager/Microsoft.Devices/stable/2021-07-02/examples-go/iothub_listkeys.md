@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiothub%2Farmiothub%2Fv1.0.0/sdk/resourcemanager/iothub/armiothub/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armiothub_test
 
@@ -37,3 +35,5 @@ func ExampleResourceClient_NewListKeysPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fiothub%2Farmiothub%2Fv1.0.0/sdk/resourcemanager/iothub/armiothub/README.md) on how to add the SDK to your project and authenticate.

@@ -5,21 +5,25 @@ const { DataFactoryManagementClient } = require("@azure/arm-datafactory");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Gets a dataset.
+ * This sample demonstrates how to Gets a Global parameter
  *
- * @summary Gets a dataset.
- * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Datasets_Get.json
+ * @summary Gets a Global parameter
+ * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/GlobalParameters_Get.json
  */
-async function datasetsGet() {
+async function globalParametersGet() {
   const subscriptionId = "12345678-1234-1234-1234-12345678abc";
   const resourceGroupName = "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
-  const datasetName = "exampleDataset";
+  const globalParameterName = "default";
   const credential = new DefaultAzureCredential();
   const client = new DataFactoryManagementClient(credential, subscriptionId);
-  const result = await client.datasets.get(resourceGroupName, factoryName, datasetName);
+  const result = await client.globalParameters.get(
+    resourceGroupName,
+    factoryName,
+    globalParameterName
+  );
   console.log(result);
 }
 
-datasetsGet().catch(console.error);
+globalParametersGet().catch(console.error);
 ```

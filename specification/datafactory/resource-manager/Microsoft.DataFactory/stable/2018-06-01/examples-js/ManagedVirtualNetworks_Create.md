@@ -5,21 +5,29 @@ const { DataFactoryManagementClient } = require("@azure/arm-datafactory");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Gets a dataset.
+ * This sample demonstrates how to Creates or updates a managed Virtual Network.
  *
- * @summary Gets a dataset.
- * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Datasets_Get.json
+ * @summary Creates or updates a managed Virtual Network.
+ * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/ManagedVirtualNetworks_Create.json
  */
-async function datasetsGet() {
+async function managedVirtualNetworksCreate() {
   const subscriptionId = "12345678-1234-1234-1234-12345678abc";
   const resourceGroupName = "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
-  const datasetName = "exampleDataset";
+  const managedVirtualNetworkName = "exampleManagedVirtualNetworkName";
+  const managedVirtualNetwork = {
+    properties: {},
+  };
   const credential = new DefaultAzureCredential();
   const client = new DataFactoryManagementClient(credential, subscriptionId);
-  const result = await client.datasets.get(resourceGroupName, factoryName, datasetName);
+  const result = await client.managedVirtualNetworks.createOrUpdate(
+    resourceGroupName,
+    factoryName,
+    managedVirtualNetworkName,
+    managedVirtualNetwork
+  );
   console.log(result);
 }
 
-datasetsGet().catch(console.error);
+managedVirtualNetworksCreate().catch(console.error);
 ```

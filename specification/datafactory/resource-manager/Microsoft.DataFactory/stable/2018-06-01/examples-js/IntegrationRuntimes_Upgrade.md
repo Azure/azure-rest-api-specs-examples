@@ -5,21 +5,25 @@ const { DataFactoryManagementClient } = require("@azure/arm-datafactory");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Gets a dataset.
+ * This sample demonstrates how to Upgrade self-hosted integration runtime to latest version if availability.
  *
- * @summary Gets a dataset.
- * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Datasets_Get.json
+ * @summary Upgrade self-hosted integration runtime to latest version if availability.
+ * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_Upgrade.json
  */
-async function datasetsGet() {
+async function integrationRuntimesUpgrade() {
   const subscriptionId = "12345678-1234-1234-1234-12345678abc";
   const resourceGroupName = "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
-  const datasetName = "exampleDataset";
+  const integrationRuntimeName = "exampleIntegrationRuntime";
   const credential = new DefaultAzureCredential();
   const client = new DataFactoryManagementClient(credential, subscriptionId);
-  const result = await client.datasets.get(resourceGroupName, factoryName, datasetName);
+  const result = await client.integrationRuntimes.upgrade(
+    resourceGroupName,
+    factoryName,
+    integrationRuntimeName
+  );
   console.log(result);
 }
 
-datasetsGet().catch(console.error);
+integrationRuntimesUpgrade().catch(console.error);
 ```

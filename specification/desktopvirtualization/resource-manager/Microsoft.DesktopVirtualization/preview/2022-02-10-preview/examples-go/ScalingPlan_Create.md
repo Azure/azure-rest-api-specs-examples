@@ -7,7 +7,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/v2"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2022-02-10-preview/examples/ScalingPlan_Create.json
@@ -15,36 +15,34 @@ func ExampleScalingPlansClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armdesktopvirtualization.NewScalingPlansClient("<subscription-id>", cred, nil)
+	client, err := armdesktopvirtualization.NewScalingPlansClient("daefabc0-95b4-48b3-b645-8a753a63c4fa", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	res, err := client.Create(ctx,
-		"<resource-group-name>",
-		"<scaling-plan-name>",
+		"resourceGroup1",
+		"scalingPlan1",
 		armdesktopvirtualization.ScalingPlan{
-			Location: to.Ptr("<location>"),
+			Location: to.Ptr("centralus"),
 			Tags: map[string]*string{
 				"tag1": to.Ptr("value1"),
 				"tag2": to.Ptr("value2"),
 			},
 			Properties: &armdesktopvirtualization.ScalingPlanProperties{
-				Description:  to.Ptr("<description>"),
-				ExclusionTag: to.Ptr("<exclusion-tag>"),
-				FriendlyName: to.Ptr("<friendly-name>"),
+				Description:  to.Ptr("Description of Scaling Plan"),
+				ExclusionTag: to.Ptr("value"),
+				FriendlyName: to.Ptr("Scaling Plan 1"),
 				HostPoolReferences: []*armdesktopvirtualization.ScalingHostPoolReference{
 					{
-						HostPoolArmPath:    to.Ptr("<host-pool-arm-path>"),
+						HostPoolArmPath:    to.Ptr("/subscriptions/daefabc0-95b4-48b3-b645-8a753a63c4fa/resourceGroups/resourceGroup1/providers/Microsoft.DesktopVirtualization/hostPools/hostPool1"),
 						ScalingPlanEnabled: to.Ptr(true),
 					}},
 				HostPoolType: to.Ptr(armdesktopvirtualization.ScalingHostPoolTypePooled),
 				Schedules: []*armdesktopvirtualization.ScalingSchedule{
 					{
-						Name: to.Ptr("<name>"),
+						Name: to.Ptr("schedule1"),
 						DaysOfWeek: []*armdesktopvirtualization.ScalingScheduleDaysOfWeekItem{
 							to.Ptr(armdesktopvirtualization.ScalingScheduleDaysOfWeekItemMonday),
 							to.Ptr(armdesktopvirtualization.ScalingScheduleDaysOfWeekItemTuesday),
@@ -65,7 +63,7 @@ func ExampleScalingPlansClient_Create() {
 						RampDownForceLogoffUsers:       to.Ptr(true),
 						RampDownLoadBalancingAlgorithm: to.Ptr(armdesktopvirtualization.SessionHostLoadBalancingAlgorithmDepthFirst),
 						RampDownMinimumHostsPct:        to.Ptr[int32](20),
-						RampDownNotificationMessage:    to.Ptr("<ramp-down-notification-message>"),
+						RampDownNotificationMessage:    to.Ptr("message"),
 						RampDownStartTime: &armdesktopvirtualization.Time{
 							Hour:   to.Ptr[int32](18),
 							Minute: to.Ptr[int32](0),
@@ -79,17 +77,16 @@ func ExampleScalingPlansClient_Create() {
 							Minute: to.Ptr[int32](0),
 						},
 					}},
-				TimeZone: to.Ptr("<time-zone>"),
+				TimeZone: to.Ptr("Central Standard Time"),
 			},
 		},
 		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res
 }
 ```
 
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv0.4.0/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fdesktopvirtualization%2Farmdesktopvirtualization%2Fv2.0.0-beta.1/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/README.md) on how to add the SDK to your project and authenticate.

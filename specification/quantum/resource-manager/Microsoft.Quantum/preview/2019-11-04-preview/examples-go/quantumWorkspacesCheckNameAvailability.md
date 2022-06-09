@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fquantum%2Farmquantum%2Fv0.2.1/sdk/resourcemanager/quantum/armquantum/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armquantum_test
 
@@ -33,3 +31,5 @@ func ExampleWorkspaceClient_CheckNameAvailability() {
 	log.Printf("Response result: %#v\n", res.WorkspaceClientCheckNameAvailabilityResult)
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fquantum%2Farmquantum%2Fv0.2.1/sdk/resourcemanager/quantum/armquantum/README.md) on how to add the SDK to your project and authenticate.

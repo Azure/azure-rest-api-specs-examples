@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-notificationhubs_1.0.0-beta.3/sdk/notificationhubs/azure-resourcemanager-notificationhubs/README.md) on how to add the SDK to your project and authenticate.
-
 ```java
 import com.azure.resourcemanager.notificationhubs.models.Sku;
 import com.azure.resourcemanager.notificationhubs.models.SkuName;
@@ -39,3 +37,5 @@ public final class Main {
     }
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-notificationhubs_1.0.0-beta.3/sdk/notificationhubs/azure-resourcemanager-notificationhubs/README.md) on how to add the SDK to your project and authenticate.

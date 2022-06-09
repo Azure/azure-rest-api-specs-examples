@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-managementpartner_2.0.1/sdk/managementpartner/arm-managementpartner/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ACEProvisioningManagementPartnerAPI } = require("@azure/arm-managementpartner");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -20,3 +18,5 @@ async function getPartnerDetails() {
 
 getPartnerDetails().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-managementpartner_2.0.1/sdk/managementpartner/arm-managementpartner/README.md) on how to add the SDK to your project and authenticate.

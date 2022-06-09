@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-batch_7.1.0/sdk/batch/arm-batch/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { BatchManagementClient } = require("@azure/arm-batch");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -21,3 +19,5 @@ async function locationGetQuotas() {
 
 locationGetQuotas().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-batch_7.1.0/sdk/batch/arm-batch/README.md) on how to add the SDK to your project and authenticate.

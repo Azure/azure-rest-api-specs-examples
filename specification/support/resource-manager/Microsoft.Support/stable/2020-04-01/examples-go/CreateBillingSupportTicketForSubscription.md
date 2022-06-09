@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv1.0.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armsupport_test
 
@@ -55,3 +53,5 @@ func ExampleTicketsClient_BeginCreate() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsupport%2Farmsupport%2Fv1.0.0/sdk/resourcemanager/support/armsupport/README.md) on how to add the SDK to your project and authenticate.

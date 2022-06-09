@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-databoxedge_2.0.1/sdk/databoxedge/arm-databoxedge/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { DataBoxEdgeManagementClient } = require("@azure/arm-databoxedge");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -31,3 +29,5 @@ async function dataBoxEdgeDevicePut() {
 
 dataBoxEdgeDevicePut().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-databoxedge_2.0.1/sdk/databoxedge/arm-databoxedge/README.md) on how to add the SDK to your project and authenticate.

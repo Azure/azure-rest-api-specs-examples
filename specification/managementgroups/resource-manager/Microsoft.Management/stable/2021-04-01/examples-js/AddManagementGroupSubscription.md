@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-managementgroups_2.0.1/sdk/managementgroups/arm-managementgroups/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ManagementGroupsAPI } = require("@azure/arm-managementgroups");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -27,3 +25,5 @@ async function addSubscriptionToManagementGroup() {
 
 addSubscriptionToManagementGroup().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-managementgroups_2.0.1/sdk/managementgroups/arm-managementgroups/README.md) on how to add the SDK to your project and authenticate.

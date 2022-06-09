@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-cdn_7.0.0/sdk/cdn/arm-cdn/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { CdnManagementClient } = require("@azure/arm-cdn");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -29,3 +27,5 @@ async function customDomainsDelete() {
 
 customDomainsDelete().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-cdn_7.0.0/sdk/cdn/arm-cdn/README.md) on how to add the SDK to your project and authenticate.

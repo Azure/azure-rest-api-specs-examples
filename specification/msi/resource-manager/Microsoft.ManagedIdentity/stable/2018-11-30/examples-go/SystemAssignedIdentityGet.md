@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmsi%2Farmmsi%2Fv0.3.1/sdk/resourcemanager/msi/armmsi/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armmsi_test
 
@@ -28,3 +26,5 @@ func ExampleSystemAssignedIdentitiesClient_GetByScope() {
 	log.Printf("Response result: %#v\n", res.SystemAssignedIdentitiesClientGetByScopeResult)
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fmsi%2Farmmsi%2Fv0.3.1/sdk/resourcemanager/msi/armmsi/README.md) on how to add the SDK to your project and authenticate.

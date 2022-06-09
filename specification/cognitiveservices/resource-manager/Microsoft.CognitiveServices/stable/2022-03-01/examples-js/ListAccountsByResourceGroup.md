@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-cognitiveservices_7.1.0/sdk/cognitiveservices/arm-cognitiveservices/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { CognitiveServicesManagementClient } = require("@azure/arm-cognitiveservices");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -24,3 +22,5 @@ async function listAccountsByResourceGroup() {
 
 listAccountsByResourceGroup().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-cognitiveservices_7.1.0/sdk/cognitiveservices/arm-cognitiveservices/README.md) on how to add the SDK to your project and authenticate.

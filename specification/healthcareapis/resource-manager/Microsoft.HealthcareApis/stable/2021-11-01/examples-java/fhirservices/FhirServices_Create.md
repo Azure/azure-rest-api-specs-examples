@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-healthcareapis_1.0.0-beta.2/sdk/healthcareapis/azure-resourcemanager-healthcareapis/README.md) on how to add the SDK to your project and authenticate.
-
 ```java
 import com.azure.resourcemanager.healthcareapis.models.FhirServiceAccessPolicyEntry;
 import com.azure.resourcemanager.healthcareapis.models.FhirServiceAcrConfiguration;
@@ -68,3 +66,5 @@ public final class Main {
     }
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-healthcareapis_1.0.0-beta.2/sdk/healthcareapis/azure-resourcemanager-healthcareapis/README.md) on how to add the SDK to your project and authenticate.

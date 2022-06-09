@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-serialconsole_2.0.1/sdk/serialconsole/arm-serialconsole/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { MicrosoftSerialConsoleClient } = require("@azure/arm-serialconsole");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -20,3 +18,5 @@ async function listAllSerialConsoleManagementOperationsSupportedBySerialConsoleR
 
 listAllSerialConsoleManagementOperationsSupportedBySerialConsoleRp().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-serialconsole_2.0.1/sdk/serialconsole/arm-serialconsole/README.md) on how to add the SDK to your project and authenticate.

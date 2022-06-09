@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-notificationhubs_2.0.1/sdk/notificationhubs/arm-notificationhubs/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { NotificationHubsManagementClient } = require("@azure/arm-notificationhubs");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -27,3 +25,5 @@ async function notificationHubGet() {
 
 notificationHubGet().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-notificationhubs_2.0.1/sdk/notificationhubs/arm-notificationhubs/README.md) on how to add the SDK to your project and authenticate.

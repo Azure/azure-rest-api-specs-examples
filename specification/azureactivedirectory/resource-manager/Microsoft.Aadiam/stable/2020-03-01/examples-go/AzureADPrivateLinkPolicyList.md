@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Faad%2Farmaad%2Fv1.0.0/sdk/resourcemanager/aad/armaad/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armaad_test
 
@@ -36,3 +34,5 @@ func ExamplePrivateLinkForAzureAdClient_NewListPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Faad%2Farmaad%2Fv1.0.0/sdk/resourcemanager/aad/armaad/README.md) on how to add the SDK to your project and authenticate.

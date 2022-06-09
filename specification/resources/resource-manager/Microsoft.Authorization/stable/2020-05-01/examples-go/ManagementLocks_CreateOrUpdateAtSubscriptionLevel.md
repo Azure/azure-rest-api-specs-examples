@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmlocks%2Fv1.0.0/sdk/resourcemanager/resources/armlocks/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armlocks_test
 
@@ -38,3 +36,5 @@ func ExampleManagementLocksClient_CreateOrUpdateAtSubscriptionLevel() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fresources%2Farmlocks%2Fv1.0.0/sdk/resourcemanager/resources/armlocks/README.md) on how to add the SDK to your project and authenticate.

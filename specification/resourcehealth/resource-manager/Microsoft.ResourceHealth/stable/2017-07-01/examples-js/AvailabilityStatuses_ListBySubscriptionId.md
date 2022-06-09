@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-resourcehealth_3.0.1/sdk/resourcehealth/arm-resourcehealth/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { MicrosoftResourceHealth } = require("@azure/arm-resourcehealth");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -27,3 +25,5 @@ async function listHealthBySubscriptionId() {
 
 listHealthBySubscriptionId().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-resourcehealth_3.0.1/sdk/resourcehealth/arm-resourcehealth/README.md) on how to add the SDK to your project and authenticate.

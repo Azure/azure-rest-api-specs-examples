@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feducation%2Farmeducation%2Fv0.1.0/sdk/resourcemanager/education/armeducation/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armeducation_test
 
@@ -38,3 +36,5 @@ func ExampleGrantsClient_NewListPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Feducation%2Farmeducation%2Fv0.1.0/sdk/resourcemanager/education/armeducation/README.md) on how to add the SDK to your project and authenticate.

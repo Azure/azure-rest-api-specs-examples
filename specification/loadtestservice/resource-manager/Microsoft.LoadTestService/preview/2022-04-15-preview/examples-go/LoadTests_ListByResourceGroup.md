@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Floadtestservice%2Farmloadtestservice%2Fv0.5.0/sdk/resourcemanager/loadtestservice/armloadtestservice/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armloadtestservice_test
 
@@ -36,3 +34,5 @@ func ExampleLoadTestsClient_NewListByResourceGroupPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Floadtestservice%2Farmloadtestservice%2Fv0.5.0/sdk/resourcemanager/loadtestservice/armloadtestservice/README.md) on how to add the SDK to your project and authenticate.

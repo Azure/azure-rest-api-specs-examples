@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-eventhub_5.0.1/sdk/eventhub/arm-eventhub/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { EventHubManagementClient } = require("@azure/arm-eventhub");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -53,3 +51,5 @@ async function namespaceCreate() {
 
 namespaceCreate().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-eventhub_5.0.1/sdk/eventhub/arm-eventhub/README.md) on how to add the SDK to your project and authenticate.

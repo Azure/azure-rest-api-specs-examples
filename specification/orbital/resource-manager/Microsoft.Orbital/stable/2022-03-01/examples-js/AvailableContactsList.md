@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-orbital_1.0.0/sdk/orbital/arm-orbital/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { AzureOrbital } = require("@azure/arm-orbital");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -38,3 +36,5 @@ async function listOfContact() {
 
 listOfContact().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-orbital_1.0.0/sdk/orbital/arm-orbital/README.md) on how to add the SDK to your project and authenticate.

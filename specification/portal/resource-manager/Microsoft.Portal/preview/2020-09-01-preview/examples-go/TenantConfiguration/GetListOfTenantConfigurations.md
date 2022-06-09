@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fportal%2Farmportal%2Fv0.5.0/sdk/resourcemanager/portal/armportal/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armportal_test
 
@@ -35,3 +33,5 @@ func ExampleTenantConfigurationsClient_NewListPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fportal%2Farmportal%2Fv0.5.0/sdk/resourcemanager/portal/armportal/README.md) on how to add the SDK to your project and authenticate.

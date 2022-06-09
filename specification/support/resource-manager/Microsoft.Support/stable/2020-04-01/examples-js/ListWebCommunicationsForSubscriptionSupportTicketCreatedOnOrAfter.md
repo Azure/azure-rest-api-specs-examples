@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-support_2.0.1/sdk/support/arm-support/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { MicrosoftSupport } = require("@azure/arm-support");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -28,3 +26,5 @@ listWebCommunicationCreatedOnOrAfterASpecificDateForASubscriptionSupportTicket()
   console.error
 );
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-support_2.0.1/sdk/support/arm-support/README.md) on how to add the SDK to your project and authenticate.

@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-servicefabric_2.0.1/sdk/servicefabric/arm-servicefabric/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ServiceFabricManagementClient } = require("@azure/arm-servicefabric");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -67,3 +65,5 @@ async function putAnApplicationWithMaximumParameters() {
 
 putAnApplicationWithMaximumParameters().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-servicefabric_2.0.1/sdk/servicefabric/arm-servicefabric/README.md) on how to add the SDK to your project and authenticate.

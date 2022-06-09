@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-postgresql_1.0.2/sdk/postgresql/azure-resourcemanager-postgresql/README.md) on how to add the SDK to your project and authenticate.
-
 ```java
 import com.azure.resourcemanager.postgresql.models.ServerPropertiesForRestore;
 import com.azure.resourcemanager.postgresql.models.Sku;
@@ -47,3 +45,5 @@ public final class Main {
     }
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-postgresql_1.0.2/sdk/postgresql/azure-resourcemanager-postgresql/README.md) on how to add the SDK to your project and authenticate.

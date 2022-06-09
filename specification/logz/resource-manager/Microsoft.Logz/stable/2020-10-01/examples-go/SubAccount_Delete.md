@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv1.0.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armlogz_test
 
@@ -36,3 +34,5 @@ func ExampleSubAccountClient_BeginDelete() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Flogz%2Farmlogz%2Fv1.0.0/sdk/resourcemanager/logz/armlogz/README.md) on how to add the SDK to your project and authenticate.

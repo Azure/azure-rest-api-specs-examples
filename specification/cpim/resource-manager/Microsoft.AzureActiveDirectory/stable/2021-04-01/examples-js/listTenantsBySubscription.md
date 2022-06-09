@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-azureadexternalidentities_1.0.0/sdk/azureadexternalidentities/arm-azureadexternalidentities/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ExternalIdentitiesConfigurationClient } = require("@azure/arm-azureadexternalidentities");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -23,3 +21,5 @@ async function b2CTenantsListBySubscription() {
 
 b2CTenantsListBySubscription().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-azureadexternalidentities_1.0.0/sdk/azureadexternalidentities/arm-azureadexternalidentities/README.md) on how to add the SDK to your project and authenticate.

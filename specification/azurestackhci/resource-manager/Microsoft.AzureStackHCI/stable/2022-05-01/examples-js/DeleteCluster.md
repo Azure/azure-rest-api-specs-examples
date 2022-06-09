@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-azurestackhci_3.0.0/sdk/azurestackhci/arm-azurestackhci/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { AzureStackHCIClient } = require("@azure/arm-azurestackhci");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -22,3 +20,5 @@ async function deleteCluster() {
 
 deleteCluster().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-azurestackhci_3.0.0/sdk/azurestackhci/arm-azurestackhci/README.md) on how to add the SDK to your project and authenticate.

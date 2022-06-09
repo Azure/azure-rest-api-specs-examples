@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-policy_5.0.1/sdk/policy/arm-policy/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { PolicyClient } = require("@azure/arm-policy");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -62,3 +60,5 @@ async function createOrUpdateAPolicySetDefinitionWithGroupsAtManagementGroupLeve
 
 createOrUpdateAPolicySetDefinitionWithGroupsAtManagementGroupLevel().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-policy_5.0.1/sdk/policy/arm-policy/README.md) on how to add the SDK to your project and authenticate.

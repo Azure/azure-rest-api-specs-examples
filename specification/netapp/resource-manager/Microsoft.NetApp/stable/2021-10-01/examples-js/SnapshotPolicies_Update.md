@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-netapp_15.1.1/sdk/netapp/arm-netapp/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { NetAppManagementClient } = require("@azure/arm-netapp");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -46,3 +44,5 @@ async function snapshotPoliciesUpdate() {
 
 snapshotPoliciesUpdate().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-netapp_15.1.1/sdk/netapp/arm-netapp/README.md) on how to add the SDK to your project and authenticate.

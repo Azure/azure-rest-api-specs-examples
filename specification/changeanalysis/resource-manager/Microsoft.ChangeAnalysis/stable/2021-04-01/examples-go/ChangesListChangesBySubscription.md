@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchangeanalysis%2Farmchangeanalysis%2Fv1.0.0/sdk/resourcemanager/changeanalysis/armchangeanalysis/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armchangeanalysis_test
 
@@ -39,3 +37,5 @@ func ExampleChangesClient_NewListChangesBySubscriptionPager() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fchangeanalysis%2Farmchangeanalysis%2Fv1.0.0/sdk/resourcemanager/changeanalysis/armchangeanalysis/README.md) on how to add the SDK to your project and authenticate.

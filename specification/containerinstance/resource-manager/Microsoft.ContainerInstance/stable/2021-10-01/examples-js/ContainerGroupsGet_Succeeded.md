@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-containerinstance_8.1.0/sdk/containerinstance/arm-containerinstance/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ContainerInstanceManagementClient } = require("@azure/arm-containerinstance");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -22,3 +20,5 @@ async function containerGroupsGetSucceeded() {
 
 containerGroupsGetSucceeded().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-containerinstance_8.1.0/sdk/containerinstance/arm-containerinstance/README.md) on how to add the SDK to your project and authenticate.

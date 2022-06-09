@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-marketplaceordering_1.0.0-beta.2/sdk/marketplaceordering/azure-resourcemanager-marketplaceordering/README.md) on how to add the SDK to your project and authenticate.
-
 ```java
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.marketplaceordering.fluent.models.AgreementTermsInner;
@@ -39,3 +37,5 @@ public final class Main {
     }
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager-marketplaceordering_1.0.0-beta.2/sdk/marketplaceordering/azure-resourcemanager-marketplaceordering/README.md) on how to add the SDK to your project and authenticate.

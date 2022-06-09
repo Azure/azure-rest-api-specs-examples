@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-kubernetesconfiguration_5.0.0/sdk/kubernetesconfiguration/arm-kubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { SourceControlConfigurationClient } = require("@azure/arm-kubernetesconfiguration");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -32,3 +30,5 @@ async function listSourceControlConfiguration() {
 
 listSourceControlConfiguration().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-kubernetesconfiguration_5.0.0/sdk/kubernetesconfiguration/arm-kubernetesconfiguration/README.md) on how to add the SDK to your project and authenticate.

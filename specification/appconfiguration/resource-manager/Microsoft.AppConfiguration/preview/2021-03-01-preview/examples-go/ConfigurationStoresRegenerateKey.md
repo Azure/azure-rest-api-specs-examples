@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.2.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armappconfiguration_test
 
@@ -33,3 +31,5 @@ func ExampleConfigurationStoresClient_RegenerateKey() {
 	log.Printf("Response result: %#v\n", res.ConfigurationStoresClientRegenerateKeyResult)
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fappconfiguration%2Farmappconfiguration%2Fv0.2.0/sdk/resourcemanager/appconfiguration/armappconfiguration/README.md) on how to add the SDK to your project and authenticate.

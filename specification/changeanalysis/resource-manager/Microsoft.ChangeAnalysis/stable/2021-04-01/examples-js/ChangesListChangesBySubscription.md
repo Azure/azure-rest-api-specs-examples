@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-changeanalysis_2.0.1/sdk/changeanalysis/arm-changeanalysis/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { AzureChangeAnalysisManagementClient } = require("@azure/arm-changeanalysis");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -25,3 +23,5 @@ async function changesListChangesBySubscription() {
 
 changesListChangesBySubscription().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-changeanalysis_2.0.1/sdk/changeanalysis/arm-changeanalysis/README.md) on how to add the SDK to your project and authenticate.

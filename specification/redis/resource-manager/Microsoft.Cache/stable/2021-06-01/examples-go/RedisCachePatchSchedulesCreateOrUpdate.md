@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fredis%2Farmredis%2Fv1.0.0/sdk/resourcemanager/redis/armredis/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armredis_test
 
@@ -49,3 +47,5 @@ func ExamplePatchSchedulesClient_CreateOrUpdate() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fredis%2Farmredis%2Fv1.0.0/sdk/resourcemanager/redis/armredis/README.md) on how to add the SDK to your project and authenticate.

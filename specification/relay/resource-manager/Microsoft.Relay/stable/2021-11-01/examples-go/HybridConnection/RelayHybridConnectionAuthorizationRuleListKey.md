@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frelay%2Farmrelay%2Fv1.0.0/sdk/resourcemanager/relay/armrelay/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armrelay_test
 
@@ -35,3 +33,5 @@ func ExampleHybridConnectionsClient_ListKeys() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Frelay%2Farmrelay%2Fv1.0.0/sdk/resourcemanager/relay/armrelay/README.md) on how to add the SDK to your project and authenticate.

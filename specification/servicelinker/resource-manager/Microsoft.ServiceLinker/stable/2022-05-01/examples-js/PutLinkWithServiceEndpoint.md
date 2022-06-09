@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-servicelinker_2.0.0/sdk/servicelinker/arm-servicelinker/README.md) on how to add the SDK to your project and authenticate.
-
 ```javascript
 const { ServiceLinkerManagementClient } = require("@azure/arm-servicelinker");
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -42,3 +40,5 @@ async function putLinkWithServiceEndpoint() {
 
 putLinkWithServiceEndpoint().catch(console.error);
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-servicelinker_2.0.0/sdk/servicelinker/arm-servicelinker/README.md) on how to add the SDK to your project and authenticate.

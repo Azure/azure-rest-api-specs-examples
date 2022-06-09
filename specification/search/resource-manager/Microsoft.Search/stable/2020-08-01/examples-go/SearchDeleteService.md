@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsearch%2Farmsearch%2Fv1.0.0/sdk/resourcemanager/search/armsearch/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armsearch_test
 
@@ -32,3 +30,5 @@ func ExampleServicesClient_Delete() {
 	}
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fsearch%2Farmsearch%2Fv1.0.0/sdk/resourcemanager/search/armsearch/README.md) on how to add the SDK to your project and authenticate.

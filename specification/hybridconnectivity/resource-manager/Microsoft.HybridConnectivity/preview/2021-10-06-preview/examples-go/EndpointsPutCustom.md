@@ -1,5 +1,3 @@
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridconnectivity%2Farmhybridconnectivity%2Fv0.4.0/sdk/resourcemanager/hybridconnectivity/armhybridconnectivity/README.md) on how to add the SDK to your project and authenticate.
-
 ```go
 package armhybridconnectivity_test
 
@@ -43,3 +41,5 @@ func ExampleEndpointsClient_CreateOrUpdate() {
 	_ = res
 }
 ```
+
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-go/blob/sdk%2Fresourcemanager%2Fhybridconnectivity%2Farmhybridconnectivity%2Fv0.4.0/sdk/resourcemanager/hybridconnectivity/armhybridconnectivity/README.md) on how to add the SDK to your project and authenticate.

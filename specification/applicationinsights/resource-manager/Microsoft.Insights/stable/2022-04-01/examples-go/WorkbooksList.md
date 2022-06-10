@@ -5,22 +5,28 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsList.json
-func ExampleComponentsClient_NewListPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-04-01/examples/WorkbooksList.json
+func ExampleWorkbooksClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewComponentsClient("subid", cred, nil)
+	client, err := armapplicationinsights.NewWorkbooksClient("6b643656-33eb-422f-aee8-3ac145d124af", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager(nil)
+	pager := client.NewListByResourceGroupPager("my-resource-group",
+		armapplicationinsights.CategoryTypeWorkbook,
+		&armapplicationinsights.WorkbooksClientListByResourceGroupOptions{Tags: []string{},
+			SourceID:        to.Ptr("/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourceGroups/my-resource-group/providers/Microsoft.Web/sites/MyApp"),
+			CanFetchContent: nil,
+		})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

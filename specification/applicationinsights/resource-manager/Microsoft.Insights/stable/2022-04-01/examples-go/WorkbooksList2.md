@@ -9,18 +9,21 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsList.json
-func ExampleComponentsClient_NewListPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-04-01/examples/WorkbooksList2.json
+func ExampleWorkbooksClient_NewListBySubscriptionPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewComponentsClient("subid", cred, nil)
+	client, err := armapplicationinsights.NewWorkbooksClient("6b643656-33eb-422f-aee8-3ac145d124af", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager(nil)
+	pager := client.NewListBySubscriptionPager(armapplicationinsights.CategoryTypeWorkbook,
+		&armapplicationinsights.WorkbooksClientListBySubscriptionOptions{Tags: []string{},
+			CanFetchContent: nil,
+		})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

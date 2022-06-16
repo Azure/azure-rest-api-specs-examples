@@ -2,6 +2,12 @@
 const { IotHubClient } = require("@azure/arm-iothub");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Create or update the metadata of an Iot hub. The usual pattern to modify a property is to retrieve the IoT hub metadata and security metadata, and then combine them with the modified values in a new body to update the IoT hub. If certain properties are missing in the JSON, updating IoT Hub may cause these values to fallback to default, which may lead to unexpected behavior.
+ *
+ * @summary Create or update the metadata of an Iot hub. The usual pattern to modify a property is to retrieve the IoT hub metadata and security metadata, and then combine them with the modified values in a new body to update the IoT hub. If certain properties are missing in the JSON, updating IoT Hub may cause these values to fallback to default, which may lead to unexpected behavior.
+ * x-ms-original-file: specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/examples/iothub_createOrUpdate.json
+ */
 async function iotHubResourceCreateOrUpdate() {
   const subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
   const resourceGroupName = "myResourceGroup";
@@ -19,7 +25,7 @@ async function iotHubResourceCreateOrUpdate() {
         },
         maxDeliveryCount: 10,
       },
-      enableDataResidency: true,
+      enableDataResidency: false,
       enableFileUploadNotifications: false,
       eventHubEndpoints: {
         events: { partitionCount: 2, retentionTimeInDays: 1 },
@@ -82,4 +88,4 @@ async function iotHubResourceCreateOrUpdate() {
 iotHubResourceCreateOrUpdate().catch(console.error);
 ```
 
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-iothub_6.1.1/sdk/iothub/arm-iothub/README.md) on how to add the SDK to your project and authenticate.
+Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-js/blob/%40azure%2Farm-iothub_6.1.2/sdk/iothub/arm-iothub/README.md) on how to add the SDK to your project and authenticate.

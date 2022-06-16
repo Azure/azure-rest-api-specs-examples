@@ -1,0 +1,78 @@
+const { ComputeManagementClient } = require("@azure/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+async function createAVMWithDiskEncryptionSetResourceIdInTheOSDiskAndDataDisk() {
+  const subscriptionId = "{subscription-id}";
+  const resourceGroupName = "myResourceGroup";
+  const vmName = "myVM";
+  const parameters = {
+    hardwareProfile: { vmSize: "Standard_D1_v2" },
+    location: "westus",
+    networkProfile: {
+      networkInterfaces: [
+        {
+          id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}",
+          primary: true,
+        },
+      ],
+    },
+    osProfile: {
+      adminPassword: "{your-password}",
+      adminUsername: "{your-username}",
+      computerName: "myVM",
+    },
+    storageProfile: {
+      dataDisks: [
+        {
+          caching: "ReadWrite",
+          createOption: "Empty",
+          diskSizeGB: 1023,
+          lun: 0,
+          managedDisk: {
+            diskEncryptionSet: {
+              id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}",
+            },
+            storageAccountType: "Standard_LRS",
+          },
+        },
+        {
+          caching: "ReadWrite",
+          createOption: "Attach",
+          diskSizeGB: 1023,
+          lun: 1,
+          managedDisk: {
+            diskEncryptionSet: {
+              id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}",
+            },
+            id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-managed-disk-name}",
+            storageAccountType: "Standard_LRS",
+          },
+        },
+      ],
+      imageReference: {
+        id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}",
+      },
+      osDisk: {
+        name: "myVMosdisk",
+        caching: "ReadWrite",
+        createOption: "FromImage",
+        managedDisk: {
+          diskEncryptionSet: {
+            id: "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}",
+          },
+          storageAccountType: "Standard_LRS",
+        },
+      },
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ComputeManagementClient(credential, subscriptionId);
+  const result = await client.virtualMachines.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    vmName,
+    parameters
+  );
+  console.log(result);
+}
+
+createAVMWithDiskEncryptionSetResourceIdInTheOSDiskAndDataDisk().catch(console.error);

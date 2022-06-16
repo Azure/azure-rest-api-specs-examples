@@ -1,0 +1,36 @@
+import com.azure.resourcemanager.synapse.models.DefaultPrincipalsModificationKind;
+import com.azure.resourcemanager.synapse.models.TableLevelSharingProperties;
+import java.util.Arrays;
+
+/** Samples for KustoPoolAttachedDatabaseConfigurations CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolAttachedDatabaseConfigurationsCreateOrUpdate.json
+     */
+    /**
+     * Sample code: KustoPoolAttachedDatabaseConfigurationsCreateOrUpdate.
+     *
+     * @param manager Entry point to SynapseManager.
+     */
+    public static void kustoPoolAttachedDatabaseConfigurationsCreateOrUpdate(
+        com.azure.resourcemanager.synapse.SynapseManager manager) {
+        manager
+            .kustoPoolAttachedDatabaseConfigurations()
+            .define("attachedDatabaseConfigurations1")
+            .withExistingKustoPool("kustorptest", "kustoclusterrptest4", "kustorptest")
+            .withRegion("westus")
+            .withDatabaseName("kustodatabase")
+            .withKustoPoolResourceId(
+                "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Synapse/Workspaces/kustorptest/KustoPools/kustoclusterrptest4")
+            .withDefaultPrincipalsModificationKind(DefaultPrincipalsModificationKind.UNION)
+            .withTableLevelSharingProperties(
+                new TableLevelSharingProperties()
+                    .withTablesToInclude(Arrays.asList("Table1"))
+                    .withTablesToExclude(Arrays.asList("Table2"))
+                    .withExternalTablesToInclude(Arrays.asList("ExternalTable1"))
+                    .withExternalTablesToExclude(Arrays.asList("ExternalTable2"))
+                    .withMaterializedViewsToInclude(Arrays.asList("MaterializedViewTable1"))
+                    .withMaterializedViewsToExclude(Arrays.asList("MaterializedViewTable2")))
+            .create();
+    }
+}

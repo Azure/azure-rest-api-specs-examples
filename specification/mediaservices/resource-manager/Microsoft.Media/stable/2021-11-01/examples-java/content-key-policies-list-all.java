@@ -1,0 +1,17 @@
+import com.azure.core.util.Context;
+
+/** Samples for ContentKeyPolicies List. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/content-key-policies-list-all.json
+     */
+    /**
+     * Sample code: Lists all Content Key Policies.
+     *
+     * @param manager Entry point to MediaServicesManager.
+     */
+    public static void listsAllContentKeyPolicies(
+        com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
+        manager.contentKeyPolicies().list("contoso", "contosomedia", null, null, null, Context.NONE);
+    }
+}

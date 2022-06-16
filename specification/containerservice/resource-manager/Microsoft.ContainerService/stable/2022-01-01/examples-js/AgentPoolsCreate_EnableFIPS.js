@@ -1,0 +1,27 @@
+const { ContainerServiceClient } = require("@azure/arm-containerservice");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+async function createAgentPoolWithFipsEnabledOS() {
+  const subscriptionId = "subid1";
+  const resourceGroupName = "rg1";
+  const resourceName = "clustername1";
+  const agentPoolName = "agentpool1";
+  const parameters = {
+    count: 3,
+    enableFips: true,
+    orchestratorVersion: "",
+    osType: "Linux",
+    vmSize: "Standard_DS2_v2",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ContainerServiceClient(credential, subscriptionId);
+  const result = await client.agentPools.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    resourceName,
+    agentPoolName,
+    parameters
+  );
+  console.log(result);
+}
+
+createAgentPoolWithFipsEnabledOS().catch(console.error);

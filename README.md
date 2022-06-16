@@ -2,7 +2,7 @@
 
 This repository is the collection of Azure SDK examples corresponding to REST API examples from [Azure REST API Specifications](https://github.com/Azure/azure-rest-api-specs).
 
-Involved SDK resositories:
+Involved SDK repositories:
 - [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go)
 - [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
 - [Azure SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js)
@@ -12,48 +12,67 @@ The repository is maintained by automated pipeline.
 ## Specification on filename
 
 Mapping rule of filename from examples from azure-rest-api-specs to azure-rest-api-specs-examples.
-1. Replace `.json` with `.md` in file extension.
-2. Replace `/examples/` with language specific folder of `/examples-<language>/`.
+1. Replace `/examples/` with language specific folder of `/examples-<language>/`.
+2. - [Metadata](#metadata): The JSON file as metadata.
+   - [Code snippet](#code-snippet): Replace `.json` with `.<language-ext>` in file extension.
 
 Currently supported `language` includes:
-* `go` for Go
-* `java` for Java
-* `js` for JavaScript
+- `go` for Go
+- `java` for Java
+- `js` for JavaScript
 
 Pending:
-* `python` for Python
-* `dotnet` for .NET
+- `python` for Python
+- `dotnet` for .NET
 
-For example, filename
+### An instance of the mapping
+
+For instance, JSON example in azure-rest-api-specs with filename
 ```
 specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlows_Create.json
 ```
-in azure-rest-api-specs would map to filename (language=java) 
+would map to code snippet (language=java) with filename
 ```
-specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples-java/DataFlows_Create.md
+specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples-java/DataFlows_Create.java
+```
+and metadata with filename
+```
+specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples-java/DataFlows_Create.json
 ```
 in azure-rest-api-specs-examples.
+
+## File content
+
+### Code snippet
+
+Code snippet is runnable code in SDK language, as the SDK example.
+
+Currently supported `language-ext` includes:
+- `go` for Go
+- `java` for Java
+- `js` for JavaScript
+
+Pending:
+- `py` for Python
+- `cs` for .NET
+
+### Metadata
+
+Metadata is a JSON that contains information related to the code snippet.
+
+----
+| Property | Type | Required | Description
+-|-|-|-
+| sdkUrl | string | yes | The URL to SDK documentation. It usually provides information on package and authentication.
+----
+
+### Cause of missing SDK examples
 
 It is possible that for some api-version in some resource provider, there is no corresponding SDK example file, for some language.
 Typical reason is that either the SDK of that language is not released, or the released SDK does not generate examples.
 
 There is also possibility of missing a few SDK examples in a release.
 Typical reason could be that SDK specifically removed a portion of the APIs, or the JSON example is considered not correct (e.g. some required parameter/property is not provided in JSON).
-
-## Specification on file content
-
-The file is markdown, for flexibility.
-
-The typical content of the file includes 2 sections.
-
-First section is the reference to SDK readme, for example
-```
-Read the [SDK documentation](https://github.com/Azure/azure-sdk-for-java/blob/azure-resourcemanager_2.7.0/sdk/resourcemanager/README.md) on how to add the SDK to your project and authenticate.
-```
-
-Generally SDK readme contains guide on how to get it from package manager, how to configure it in project, and how to authenticate with Azure.
-
-Second section is a code block with syntax highlighting. This is the code of the SDK example.
 
 ## Contributing
 

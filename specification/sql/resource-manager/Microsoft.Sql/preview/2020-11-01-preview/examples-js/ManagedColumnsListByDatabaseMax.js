@@ -1,0 +1,39 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to List managed database columns
+ *
+ * @summary List managed database columns
+ * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedColumnsListByDatabaseMax.json
+ */
+async function filterManagedDatabaseColumns() {
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = "myRG";
+  const managedInstanceName = "serverName";
+  const databaseName = "myDatabase";
+  const schema = ["dbo"];
+  const table = ["customer", "address"];
+  const column = ["username"];
+  const orderBy = ["schema asc", "table", "column desc"];
+  const options = {
+    schema,
+    table,
+    column,
+    orderBy,
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new SqlManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.managedDatabaseColumns.listByDatabase(
+    resourceGroupName,
+    managedInstanceName,
+    databaseName,
+    options
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}
+
+filterManagedDatabaseColumns().catch(console.error);

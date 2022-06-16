@@ -1,0 +1,27 @@
+const { RecoveryServicesBackupClient } = require("@azure/arm-recoveryservicesbackup");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Add or Update ResourceGuardProxy under vault
+Secures vault critical operations
+ *
+ * @summary Add or Update ResourceGuardProxy under vault
+Secures vault critical operations
+ * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2022-03-01/examples/ResourceGuardProxyCRUD/PutResourceGuardProxy.json
+ */
+async function createResourceGuardProxy() {
+  const subscriptionId = "0b352192-dcac-4cc7-992e-a96190ccc68c";
+  const vaultName = "sampleVault";
+  const resourceGroupName = "SampleResourceGroup";
+  const resourceGuardProxyName = "swaggerExample";
+  const credential = new DefaultAzureCredential();
+  const client = new RecoveryServicesBackupClient(credential, subscriptionId);
+  const result = await client.resourceGuardProxy.put(
+    vaultName,
+    resourceGroupName,
+    resourceGuardProxyName
+  );
+  console.log(result);
+}
+
+createResourceGuardProxy().catch(console.error);

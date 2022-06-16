@@ -35,7 +35,7 @@ async function tableOperationPutOrPatchAcls() {
   const options = { parameters };
   const credential = new DefaultAzureCredential();
   const client = new StorageManagementClient(credential, subscriptionId);
-  const result = await client.tableOperations.update(
+  const result = await client.tableOperations.create(
     resourceGroupName,
     accountName,
     tableName,

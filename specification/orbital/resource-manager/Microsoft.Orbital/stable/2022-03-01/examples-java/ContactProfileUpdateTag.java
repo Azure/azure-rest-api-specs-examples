@@ -1,0 +1,35 @@
+import com.azure.core.util.Context;
+import com.azure.resourcemanager.orbital.models.ContactProfile;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for ContactProfiles UpdateTags. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/ContactProfileUpdateTag.json
+     */
+    /**
+     * Sample code: Update Contact Profile tags.
+     *
+     * @param manager Entry point to OrbitalManager.
+     */
+    public static void updateContactProfileTags(com.azure.resourcemanager.orbital.OrbitalManager manager) {
+        ContactProfile resource =
+            manager
+                .contactProfiles()
+                .getByResourceGroupWithResponse("contoso-Rgp", "CONTOSO-CP", Context.NONE)
+                .getValue();
+        resource.update().withTags(mapOf("tag1", "value1", "tag2", "value2")).apply();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for ManagedClusters ListClusterAdminCredentials. */
+/** Samples for ManagedClusters ListClusterMonitoringUserCredentials. */
 public final class Main {
     /*
      * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-04-01/examples/ManagedClustersListClusterCredentialResult.json
@@ -16,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getManagedClusters()
-            .listClusterAdminCredentialsWithResponse("rg1", "clustername1", null, Context.NONE);
+            .listClusterMonitoringUserCredentialsWithResponse("rg1", "clustername1", null, Context.NONE);
     }
 }

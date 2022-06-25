@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for WebApps StartWebSiteNetworkTraceOperationSlot. */
+/** Samples for WebApps StartNetworkTraceSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/StartWebSiteNetworkTraceOperation.json
@@ -16,7 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .startWebSiteNetworkTraceOperationSlot(
-                "testrg123", "SampleApp", "Production", 60, null, null, Context.NONE);
+            .startNetworkTraceSlot("testrg123", "SampleApp", "Production", 60, null, null, Context.NONE);
     }
 }

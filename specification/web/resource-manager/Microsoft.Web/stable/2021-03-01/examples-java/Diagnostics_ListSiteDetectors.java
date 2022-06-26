@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics ListSiteDetectors. */
+/** Samples for Diagnostics ListSiteDetectorsSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/Diagnostics_ListSiteDetectors.json
@@ -16,6 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .listSiteDetectors("Sample-WestUSResourceGroup", "SampleApp", "availability", Context.NONE);
+            .listSiteDetectorsSlot(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "Production", Context.NONE);
     }
 }

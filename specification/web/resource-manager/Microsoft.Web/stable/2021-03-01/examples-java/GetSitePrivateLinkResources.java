@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for StaticSites GetPrivateLinkResources. */
+/** Samples for WebApps GetPrivateLinkResources. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/GetSitePrivateLinkResources.json
@@ -15,7 +15,7 @@ public final class Main {
             .webApps()
             .manager()
             .serviceClient()
-            .getStaticSites()
+            .getWebApps()
             .getPrivateLinkResourcesWithResponse("rg", "testSite", Context.NONE);
     }
 }

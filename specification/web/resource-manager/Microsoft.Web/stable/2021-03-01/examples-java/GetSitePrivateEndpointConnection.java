@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for StaticSites GetPrivateEndpointConnection. */
+/** Samples for WebApps GetPrivateEndpointConnection. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/GetSitePrivateEndpointConnection.json
@@ -15,7 +15,7 @@ public final class Main {
             .webApps()
             .manager()
             .serviceClient()
-            .getStaticSites()
+            .getWebApps()
             .getPrivateEndpointConnectionWithResponse("rg", "testSite", "connection", Context.NONE);
     }
 }

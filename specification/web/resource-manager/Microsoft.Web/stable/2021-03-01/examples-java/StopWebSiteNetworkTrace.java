@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for WebApps StopNetworkTrace. */
+/** Samples for WebApps StopNetworkTraceSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/StopWebSiteNetworkTrace.json
@@ -17,6 +17,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .stopNetworkTraceWithResponse("testrg123", "SampleApp", Context.NONE);
+            .stopNetworkTraceSlotWithResponse("testrg123", "SampleApp", "Production", Context.NONE);
     }
 }

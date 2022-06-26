@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics GetSiteDiagnosticCategory. */
+/** Samples for Diagnostics GetSiteDiagnosticCategorySlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2021-03-01/examples/Diagnostics_GetSiteDiagnosticCategorySlot.json
@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteDiagnosticCategoryWithResponse(
-                "Sample-WestUSResourceGroup", "SampleApp", "availability", Context.NONE);
+            .getSiteDiagnosticCategorySlotWithResponse(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "staging", Context.NONE);
     }
 }

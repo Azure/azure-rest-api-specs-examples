@@ -4,11 +4,9 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotcentral/armiotcentral"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotcentral/armiotcentral/v2"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/iotcentral/resource-manager/Microsoft.IoTCentral/preview/2021-11-01-preview/examples/PrivateEndpointConnections_Update.json
@@ -16,36 +14,32 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armiotcentral.NewPrivateEndpointConnectionsClient("<subscription-id>", cred, nil)
+	client, err := armiotcentral.NewPrivateEndpointConnectionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	poller, err := client.BeginCreate(ctx,
-		"<resource-group-name>",
-		"<resource-name>",
-		"<private-endpoint-connection-name>",
+		"resRg",
+		"myIoTCentralApp",
+		"myIoTCentralAppEndpoint",
 		armiotcentral.PrivateEndpointConnection{
 			Properties: &armiotcentral.PrivateEndpointConnectionProperties{
 				PrivateLinkServiceConnectionState: &armiotcentral.PrivateLinkServiceConnectionState{
-					Description:     to.Ptr("<description>"),
-					ActionsRequired: to.Ptr("<actions-required>"),
+					Description:     to.Ptr("Auto-approved"),
+					ActionsRequired: to.Ptr("None"),
 					Status:          to.Ptr(armiotcentral.PrivateEndpointServiceConnectionStatusApproved),
 				},
 			},
 		},
-		&armiotcentral.PrivateEndpointConnectionsClientBeginCreateOptions{ResumeToken: ""})
+		nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

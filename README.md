@@ -22,6 +22,7 @@ Currently supported `language` includes:
 - `js` for JavaScript
 
 Pending:
+- `ts` for typescript
 - `python` for Python
 - `dotnet` for .NET
 
@@ -53,6 +54,7 @@ Currently supported `language-ext` includes:
 - `js` for JavaScript
 
 Pending:
+- `ts` for typescript
 - `py` for Python
 - `cs` for .NET
 

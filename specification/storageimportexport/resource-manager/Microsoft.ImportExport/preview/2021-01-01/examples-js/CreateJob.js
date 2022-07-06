@@ -1,6 +1,12 @@
 const { StorageImportExport } = require("@azure/arm-storageimportexport");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Creates a new job or updates an existing job in the specified subscription.
+ *
+ * @summary Creates a new job or updates an existing job in the specified subscription.
+ * x-ms-original-file: specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/examples/CreateJob.json
+ */
 async function createImportJob() {
   const subscriptionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
   const jobName = "myJob";

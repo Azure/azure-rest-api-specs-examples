@@ -1,0 +1,16 @@
+import com.azure.core.util.Context;
+
+/** Samples for AvailableServiceTiers ListByWorkspace. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesAvailableServiceTiers.json
+     */
+    /**
+     * Sample code: AvailableServiceTiers.
+     *
+     * @param manager Entry point to LogAnalyticsManager.
+     */
+    public static void availableServiceTiers(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
+        manager.availableServiceTiers().listByWorkspaceWithResponse("rg1", "workspace1", Context.NONE);
+    }
+}

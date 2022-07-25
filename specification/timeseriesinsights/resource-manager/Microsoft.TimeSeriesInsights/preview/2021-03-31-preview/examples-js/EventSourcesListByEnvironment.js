@@ -1,0 +1,20 @@
+const { TimeSeriesInsightsClient } = require("@azure/arm-timeseriesinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Lists all the available event sources associated with the subscription and within the specified resource group and environment.
+ *
+ * @summary Lists all the available event sources associated with the subscription and within the specified resource group and environment.
+ * x-ms-original-file: specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/examples/EventSourcesListByEnvironment.json
+ */
+async function listEventSourcesByEnvironment() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "rg1";
+  const environmentName = "env1";
+  const credential = new DefaultAzureCredential();
+  const client = new TimeSeriesInsightsClient(credential, subscriptionId);
+  const result = await client.eventSources.listByEnvironment(resourceGroupName, environmentName);
+  console.log(result);
+}
+
+listEventSourcesByEnvironment().catch(console.error);

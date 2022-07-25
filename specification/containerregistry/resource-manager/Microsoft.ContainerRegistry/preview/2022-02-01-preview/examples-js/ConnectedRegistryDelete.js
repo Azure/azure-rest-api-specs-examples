@@ -1,0 +1,25 @@
+const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Deletes a connected registry from a container registry.
+ *
+ * @summary Deletes a connected registry from a container registry.
+ * x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2022-02-01-preview/examples/ConnectedRegistryDelete.json
+ */
+async function connectedRegistryDelete() {
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = "myResourceGroup";
+  const registryName = "myRegistry";
+  const connectedRegistryName = "myConnectedRegistry";
+  const credential = new DefaultAzureCredential();
+  const client = new ContainerRegistryManagementClient(credential, subscriptionId);
+  const result = await client.connectedRegistries.beginDeleteAndWait(
+    resourceGroupName,
+    registryName,
+    connectedRegistryName
+  );
+  console.log(result);
+}
+
+connectedRegistryDelete().catch(console.error);

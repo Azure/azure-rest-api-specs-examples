@@ -1,6 +1,12 @@
 const { PrivateDnsManagementClient } = require("@azure/arm-privatedns");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Updates a virtual network link to the specified Private DNS zone.
+ *
+ * @summary Updates a virtual network link to the specified Private DNS zone.
+ * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/VirtualNetworkLinkPatch.json
+ */
 async function patchPrivateDnsZoneVirtualNetworkLink() {
   const subscriptionId = "subscriptionId";
   const resourceGroupName = "resourceGroup1";

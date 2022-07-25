@@ -1,0 +1,22 @@
+const { OpenEnergyPlatformManagementServiceAPIs } = require("@azure/arm-oep");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Checks the name availability of the resource with requested resource name.
+ *
+ * @summary Checks the name availability of the resource with requested resource name.
+ * x-ms-original-file: specification/oep/resource-manager/Microsoft.OpenEnergyPlatform/preview/2021-06-01-preview/examples/Locations_CheckNameAvailability.json
+ */
+async function locationsCheckNameAvailability() {
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const body = {
+    name: "sample-name",
+    type: "Microsoft.OEP/oepResource",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new OpenEnergyPlatformManagementServiceAPIs(credential, subscriptionId);
+  const result = await client.locations.checkNameAvailability(body);
+  console.log(result);
+}
+
+locationsCheckNameAvailability().catch(console.error);

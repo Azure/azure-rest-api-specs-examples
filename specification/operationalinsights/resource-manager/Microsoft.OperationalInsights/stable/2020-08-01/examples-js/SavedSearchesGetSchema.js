@@ -13,7 +13,7 @@ async function workspacesGetSchema() {
   const workspaceName = "atlantisdemo";
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
-  const result = await client.schema.get(resourceGroupName, workspaceName);
+  const result = await client.schemaOperations.get(resourceGroupName, workspaceName);
   console.log(result);
 }
 

@@ -1,6 +1,12 @@
 const { PrivateDnsManagementClient } = require("@azure/arm-privatedns");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Lists the Private DNS zones in all resource groups in a subscription.
+ *
+ * @summary Lists the Private DNS zones in all resource groups in a subscription.
+ * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/PrivateZoneListInSubscription.json
+ */
 async function getPrivateDnsZoneBySubscription() {
   const subscriptionId = "subscriptionId";
   const credential = new DefaultAzureCredential();

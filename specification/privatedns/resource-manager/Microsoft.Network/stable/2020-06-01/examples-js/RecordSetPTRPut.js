@@ -1,6 +1,12 @@
 const { PrivateDnsManagementClient } = require("@azure/arm-privatedns");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Creates or updates a record set within a Private DNS zone.
+ *
+ * @summary Creates or updates a record set within a Private DNS zone.
+ * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetPTRPut.json
+ */
 async function putPrivateDnsZonePtrRecordSet() {
   const subscriptionId = "subscriptionId";
   const resourceGroupName = "resourceGroup1";

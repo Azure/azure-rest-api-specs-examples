@@ -1,10 +1,8 @@
-import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.Context;
-import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.compute.fluent.models.GalleryInner;
+import com.azure.resourcemanager.compute.models.CommunityGalleryInfo;
 import com.azure.resourcemanager.compute.models.GallerySharingPermissionTypes;
 import com.azure.resourcemanager.compute.models.SharingProfile;
-import java.io.IOException;
 
 /** Samples for Galleries CreateOrUpdate. */
 public final class Main {
@@ -16,8 +14,7 @@ public final class Main {
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void createACommunityGallery(com.azure.resourcemanager.AzureResourceManager azure)
-        throws IOException {
+    public static void createACommunityGallery(com.azure.resourcemanager.AzureResourceManager azure) {
         azure
             .virtualMachines()
             .manager()
@@ -33,12 +30,11 @@ public final class Main {
                         new SharingProfile()
                             .withPermissions(GallerySharingPermissionTypes.COMMUNITY)
                             .withCommunityGalleryInfo(
-                                SerializerFactory
-                                    .createDefaultManagementSerializerAdapter()
-                                    .deserialize(
-                                        "{\"eula\":\"eula\",\"publicNamePrefix\":\"PirPublic\",\"publisherContact\":\"pir@microsoft.com\",\"publisherUri\":\"uri\"}",
-                                        Object.class,
-                                        SerializerEncoding.JSON))),
+                                new CommunityGalleryInfo()
+                                    .withPublisherUri("uri")
+                                    .withPublisherContact("pir@microsoft.com")
+                                    .withEula("eula")
+                                    .withPublicNamePrefix("PirPublic"))),
                 Context.NONE);
     }
 }

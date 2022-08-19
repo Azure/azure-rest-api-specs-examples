@@ -1,0 +1,25 @@
+const { DashboardManagementClient } = require("@azure/arm-dashboard");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Get private endpoint connections.
+ *
+ * @summary Get private endpoint connections.
+ * x-ms-original-file: specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/examples/PrivateEndpointConnections_Get.json
+ */
+async function privateEndpointConnectionsGet() {
+  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = "myResourceGroup";
+  const workspaceName = "myWorkspace";
+  const privateEndpointConnectionName = "myConnection";
+  const credential = new DefaultAzureCredential();
+  const client = new DashboardManagementClient(credential, subscriptionId);
+  const result = await client.privateEndpointConnections.get(
+    resourceGroupName,
+    workspaceName,
+    privateEndpointConnectionName
+  );
+  console.log(result);
+}
+
+privateEndpointConnectionsGet().catch(console.error);

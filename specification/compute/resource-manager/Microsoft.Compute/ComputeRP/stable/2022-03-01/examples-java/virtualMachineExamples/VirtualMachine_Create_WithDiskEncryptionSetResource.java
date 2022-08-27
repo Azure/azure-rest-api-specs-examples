@@ -19,7 +19,7 @@ import java.util.Arrays;
 /** Samples for VirtualMachines CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineExamples/VirtualMachine_Create_WithDiskEncryptionSetResource.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineExamples/VirtualMachine_Create_WithDiskEncryptionSetResource.json
      */
     /**
      * Sample code: Create a vm with DiskEncryptionSet resource id in the os disk and data disk.

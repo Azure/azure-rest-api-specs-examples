@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for RestorePoints Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/restorePointExamples/RestorePoint_Get_WithInstanceView.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/restorePointExamples/RestorePoint_Get_WithInstanceView.json
      */
     /**
      * Sample code: Get restore point with instance view.

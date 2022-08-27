@@ -4,7 +4,7 @@ import com.azure.resourcemanager.compute.models.VirtualMachineScaleSetExtensionU
 /** Samples for VirtualMachineScaleSetExtensions Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Update_MinimumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Update_MinimumSet_Gen.json
      */
     /**
      * Sample code: VirtualMachineScaleSetExtensions_Update_MinimumSet_Gen.

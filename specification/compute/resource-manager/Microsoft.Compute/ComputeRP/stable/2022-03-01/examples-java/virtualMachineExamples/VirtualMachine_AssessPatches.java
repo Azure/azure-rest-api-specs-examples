@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for VirtualMachines AssessPatches. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineExamples/VirtualMachine_AssessPatches.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineExamples/VirtualMachine_AssessPatches.json
      */
     /**
      * Sample code: Assess patch state of a virtual machine.

@@ -6,7 +6,7 @@ import com.azure.resourcemanager.compute.models.DiskCreateOption;
 /** Samples for Disks CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskExamples/Disk_Create_ByCopyingASnapshot.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskExamples/Disk_Create_ByCopyingASnapshot.json
      */
     /**
      * Sample code: Create a managed disk by copying a snapshot.

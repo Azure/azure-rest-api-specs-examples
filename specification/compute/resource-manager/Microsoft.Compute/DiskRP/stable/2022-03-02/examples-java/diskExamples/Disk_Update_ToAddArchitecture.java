@@ -6,7 +6,7 @@ import com.azure.resourcemanager.compute.models.SupportedCapabilities;
 /** Samples for Disks Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskExamples/Disk_Update_ToAddArchitecture.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskExamples/Disk_Update_ToAddArchitecture.json
      */
     /**
      * Sample code: Update a managed disk to add architecture.

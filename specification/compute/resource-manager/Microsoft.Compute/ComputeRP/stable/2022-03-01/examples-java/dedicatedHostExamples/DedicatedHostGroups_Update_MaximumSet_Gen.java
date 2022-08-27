@@ -7,7 +7,7 @@ import java.util.Map;
 /** Samples for DedicatedHostGroups Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/dedicatedHostExamples/DedicatedHostGroups_Update_MaximumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/dedicatedHostExamples/DedicatedHostGroups_Update_MaximumSet_Gen.json
      */
     /**
      * Sample code: DedicatedHostGroups_Update_MaximumSet_Gen.

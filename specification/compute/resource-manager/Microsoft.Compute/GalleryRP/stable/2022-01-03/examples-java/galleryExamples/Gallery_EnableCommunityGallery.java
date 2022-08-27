@@ -5,7 +5,7 @@ import com.azure.resourcemanager.compute.models.SharingUpdateOperationTypes;
 /** Samples for GallerySharingProfile Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/examples/galleryExamples/Gallery_EnableCommunityGallery.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/examples/galleryExamples/Gallery_EnableCommunityGallery.json
      */
     /**
      * Sample code: share a gallery to community.

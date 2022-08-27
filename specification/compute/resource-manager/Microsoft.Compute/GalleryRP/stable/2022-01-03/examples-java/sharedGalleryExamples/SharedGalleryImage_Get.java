@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for SharedGalleryImages Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/examples/sharedGalleryExamples/SharedGalleryImage_Get.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/examples/sharedGalleryExamples/SharedGalleryImage_Get.json
      */
     /**
      * Sample code: Get a shared gallery image.

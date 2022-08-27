@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for Disks RevokeAccess. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskExamples/Disk_EndGetAccess.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskExamples/Disk_EndGetAccess.json
      */
     /**
      * Sample code: Revoke access to a managed disk.

@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for VirtualMachineImages Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineImageExamples/VirtualMachineImages_Get_MaximumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineImageExamples/VirtualMachineImages_Get_MaximumSet_Gen.json
      */
     /**
      * Sample code: VirtualMachineImages_Get_MaximumSet_Gen.

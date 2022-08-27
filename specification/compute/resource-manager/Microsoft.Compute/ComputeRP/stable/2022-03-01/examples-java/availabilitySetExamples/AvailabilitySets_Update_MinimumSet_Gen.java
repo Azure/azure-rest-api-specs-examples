@@ -6,7 +6,7 @@ import java.util.Map;
 /** Samples for AvailabilitySets Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/availabilitySetExamples/AvailabilitySets_Update_MinimumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/availabilitySetExamples/AvailabilitySets_Update_MinimumSet_Gen.json
      */
     /**
      * Sample code: AvailabilitySets_Update_MinimumSet_Gen.

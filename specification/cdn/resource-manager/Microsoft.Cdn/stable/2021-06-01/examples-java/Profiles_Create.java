@@ -22,9 +22,7 @@ public final class Main {
             .create(
                 "RG",
                 "profile1",
-                new ProfileInner()
-                    .withLocation("WestCentralUs")
-                    .withSku(new Sku().withName(SkuName.PREMIUM_AZURE_FRONT_DOOR)),
+                new ProfileInner().withLocation("global").withSku(new Sku().withName(SkuName.PREMIUM_AZURE_FRONT_DOOR)),
                 Context.NONE);
     }
 }

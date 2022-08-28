@@ -16,7 +16,7 @@ import java.util.Arrays;
 /** Samples for VirtualMachines CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineExamples/VirtualMachine_Create_FromASpecializedSharedImage.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineExamples/VirtualMachine_Create_FromASpecializedSharedImage.json
      */
     /**
      * Sample code: Create a vm from a specialized shared image.

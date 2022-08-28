@@ -5,7 +5,7 @@ import com.azure.resourcemanager.compute.models.ApiEntityReference;
 /** Samples for RestorePoints Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/restorePointExamples/RestorePoint_Copy_BetweenRegions.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/restorePointExamples/RestorePoint_Copy_BetweenRegions.json
      */
     /**
      * Sample code: Copy a restore point to a different region.

@@ -5,7 +5,7 @@ import com.azure.resourcemanager.compute.models.GrantAccessData;
 /** Samples for Disks GrantAccess. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskExamples/Disk_BeginGetAccess.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskExamples/Disk_BeginGetAccess.json
      */
     /**
      * Sample code: Get a sas on a managed disk.

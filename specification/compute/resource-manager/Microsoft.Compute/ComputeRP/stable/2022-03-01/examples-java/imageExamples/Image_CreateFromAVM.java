@@ -5,7 +5,7 @@ import com.azure.resourcemanager.compute.fluent.models.ImageInner;
 /** Samples for Images CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/imageExamples/Image_CreateFromAVM.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/imageExamples/Image_CreateFromAVM.json
      */
     /**
      * Sample code: Create a virtual machine image from an existing virtual machine.

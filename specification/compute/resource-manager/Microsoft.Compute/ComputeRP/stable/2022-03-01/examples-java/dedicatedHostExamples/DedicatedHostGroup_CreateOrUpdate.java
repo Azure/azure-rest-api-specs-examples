@@ -7,7 +7,7 @@ import java.util.Map;
 /** Samples for DedicatedHostGroups CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/dedicatedHostExamples/DedicatedHostGroup_CreateOrUpdate.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/dedicatedHostExamples/DedicatedHostGroup_CreateOrUpdate.json
      */
     /**
      * Sample code: Create or update a dedicated host group.

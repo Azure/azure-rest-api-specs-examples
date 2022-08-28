@@ -6,7 +6,7 @@ import java.util.Arrays;
 /** Samples for RestorePoints Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/restorePointExamples/RestorePoint_Create.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/restorePointExamples/RestorePoint_Create.json
      */
     /**
      * Sample code: Create a restore point.

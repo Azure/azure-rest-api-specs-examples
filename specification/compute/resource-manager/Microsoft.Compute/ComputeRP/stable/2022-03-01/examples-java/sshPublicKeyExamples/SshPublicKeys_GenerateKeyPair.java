@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for SshPublicKeys GenerateKeyPair. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/sshPublicKeyExamples/SshPublicKeys_GenerateKeyPair.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/sshPublicKeyExamples/SshPublicKeys_GenerateKeyPair.json
      */
     /**
      * Sample code: Generate an SSH key pair.

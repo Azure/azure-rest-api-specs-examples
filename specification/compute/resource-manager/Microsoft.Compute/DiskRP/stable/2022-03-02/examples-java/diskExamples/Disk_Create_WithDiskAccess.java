@@ -7,7 +7,7 @@ import com.azure.resourcemanager.compute.models.NetworkAccessPolicy;
 /** Samples for Disks CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskExamples/Disk_Create_WithDiskAccess.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskExamples/Disk_Create_WithDiskAccess.json
      */
     /**
      * Sample code: Create a managed disk and associate with disk access resource.

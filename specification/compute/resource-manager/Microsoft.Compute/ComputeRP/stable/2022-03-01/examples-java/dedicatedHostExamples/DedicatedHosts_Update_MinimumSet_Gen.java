@@ -6,7 +6,7 @@ import java.util.Map;
 /** Samples for DedicatedHosts Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/dedicatedHostExamples/DedicatedHosts_Update_MinimumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/dedicatedHostExamples/DedicatedHosts_Update_MinimumSet_Gen.json
      */
     /**
      * Sample code: DedicatedHosts_Update_MinimumSet_Gen.

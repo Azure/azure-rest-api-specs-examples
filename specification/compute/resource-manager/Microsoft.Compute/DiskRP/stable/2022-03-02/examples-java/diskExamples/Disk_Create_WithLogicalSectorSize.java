@@ -8,7 +8,7 @@ import com.azure.resourcemanager.compute.models.DiskStorageAccountTypes;
 /** Samples for Disks CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskExamples/Disk_Create_WithLogicalSectorSize.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskExamples/Disk_Create_WithLogicalSectorSize.json
      */
     /**
      * Sample code: Create an ultra managed disk with logicalSectorSize 512E.

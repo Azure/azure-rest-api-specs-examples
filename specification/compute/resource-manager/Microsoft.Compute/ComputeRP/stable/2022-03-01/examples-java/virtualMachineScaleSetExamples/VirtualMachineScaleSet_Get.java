@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for VirtualMachineScaleSets GetByResourceGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Get.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Get.json
      */
     /**
      * Sample code: Get a virtual machine scale set.

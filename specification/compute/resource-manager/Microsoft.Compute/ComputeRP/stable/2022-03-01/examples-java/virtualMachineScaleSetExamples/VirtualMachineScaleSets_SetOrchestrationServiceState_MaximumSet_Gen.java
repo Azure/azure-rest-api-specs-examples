@@ -6,7 +6,7 @@ import com.azure.resourcemanager.compute.models.OrchestrationServiceStateInput;
 /** Samples for VirtualMachineScaleSets SetOrchestrationServiceState. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_SetOrchestrationServiceState_MaximumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSets_SetOrchestrationServiceState_MaximumSet_Gen.json
      */
     /**
      * Sample code: VirtualMachineScaleSets_SetOrchestrationServiceState_MaximumSet_Gen.

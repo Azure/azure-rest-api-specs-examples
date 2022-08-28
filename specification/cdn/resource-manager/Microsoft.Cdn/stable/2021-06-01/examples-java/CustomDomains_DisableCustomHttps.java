@@ -16,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getCustomDomains()
-            .disableCustomHttpsWithResponse("RG", "profile1", "endpoint1", "www-someDomain-net", Context.NONE);
+            .disableCustomHttps("RG", "profile1", "endpoint1", "www-someDomain-net", Context.NONE);
     }
 }

@@ -8,7 +8,7 @@ import com.azure.resourcemanager.compute.models.OperatingSystemTypes;
 /** Samples for GalleryImages Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/examples/galleryExamples/GalleryImage_Update.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/examples/galleryExamples/GalleryImage_Update.json
      */
     /**
      * Sample code: Update a simple gallery image.

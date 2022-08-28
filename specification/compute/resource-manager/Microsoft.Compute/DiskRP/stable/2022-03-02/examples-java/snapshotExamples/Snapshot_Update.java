@@ -6,7 +6,7 @@ import java.util.Map;
 /** Samples for Snapshots Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/snapshotExamples/Snapshot_Update.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/snapshotExamples/Snapshot_Update.json
      */
     /**
      * Sample code: Update a snapshot.

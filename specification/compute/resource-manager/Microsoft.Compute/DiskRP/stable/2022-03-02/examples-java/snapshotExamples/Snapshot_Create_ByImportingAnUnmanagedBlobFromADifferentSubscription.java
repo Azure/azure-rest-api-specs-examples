@@ -6,7 +6,7 @@ import com.azure.resourcemanager.compute.models.DiskCreateOption;
 /** Samples for Snapshots CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/snapshotExamples/Snapshot_Create_ByImportingAnUnmanagedBlobFromADifferentSubscription.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/snapshotExamples/Snapshot_Create_ByImportingAnUnmanagedBlobFromADifferentSubscription.json
      */
     /**
      * Sample code: Create a snapshot by importing an unmanaged blob from a different subscription.

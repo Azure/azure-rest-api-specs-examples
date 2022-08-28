@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for DiskEncryptionSets GetByResourceGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-02/DiskRP/examples/diskEncryptionSetExamples/DiskEncryptionSet_Get.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-03-02/examples/diskEncryptionSetExamples/DiskEncryptionSet_Get.json
      */
     /**
      * Sample code: Get information about a disk encryption set.

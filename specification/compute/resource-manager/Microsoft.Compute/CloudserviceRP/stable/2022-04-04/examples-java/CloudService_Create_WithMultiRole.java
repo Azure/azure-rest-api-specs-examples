@@ -16,7 +16,7 @@ import java.util.Arrays;
 /** Samples for CloudServices CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-04-04/CloudServiceRP/examples/CloudService_Create_WithMultiRole.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-04-04/examples/CloudService_Create_WithMultiRole.json
      */
     /**
      * Sample code: Create New Cloud Service with Multiple Roles.

@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for VirtualMachineExtensions Delete. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-03-01/ComputeRP/examples/virtualMachineExamples/VirtualMachineExtensions_Delete_MaximumSet_Gen.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-03-01/examples/virtualMachineExamples/VirtualMachineExtensions_Delete_MaximumSet_Gen.json
      */
     /**
      * Sample code: VirtualMachineExtensions_Delete_MaximumSet_Gen.

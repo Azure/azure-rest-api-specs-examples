@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for ReplicationLinks Failover. */
+/** Samples for ReplicationLinks FailoverAllowDataLoss. */
 public final class Main {
     /*
      * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/examples/ReplicationLinkFailover.json
@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getReplicationLinks()
-            .failover(
+            .failoverAllowDataLoss(
                 "sqlcrudtest-8931", "sqlcrudtest-2137", "testdb", "f0550bf5-07ce-4270-8e4b-71737975973a", Context.NONE);
     }
 }

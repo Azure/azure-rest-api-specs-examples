@@ -3,7 +3,7 @@ import com.azure.core.util.Context;
 /** Samples for GalleryApplications ListByGallery. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/stable/2022-01-03/GalleryRP/examples/galleryExamples/GalleryApplication_ListByGallery.json
+     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-01-03/examples/galleryExamples/GalleryApplication_ListByGallery.json
      */
     /**
      * Sample code: List gallery Applications in a gallery.

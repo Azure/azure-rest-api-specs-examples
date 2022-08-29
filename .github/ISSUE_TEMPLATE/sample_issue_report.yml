@@ -27,7 +27,7 @@ body:
       options:
         - label: Sample not working
         - label: Sample missing
-        - label: Do not understand samle
+        - label: Do not understand sample
     validations:
       required: true
   - type: textarea

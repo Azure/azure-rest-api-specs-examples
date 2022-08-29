@@ -1,0 +1,72 @@
+name: Azure SDK Sample Issue
+description: Let us know if you have any issue with our SDK sample
+title: "[Sample Issue]"
+
+body:
+  - type: input
+    id: link
+    attributes:
+      label: Link to sample
+      description: Link to sample
+      placeholder: ex. https://docs.microsoft.com/en-us/rest/api/compute/virtual-machines/create-or-update?tabs=Java#examples
+    validations:
+      required: true
+  - type: input
+    id: library
+    attributes:
+      label: Library name and version
+      description: Name and version of the Library package used
+      placeholder: ex. Azure.Storage.Blobs 12.2.0
+    validations:
+      required: true
+  - type: checkboxes
+    id: issuetype
+    attributes:
+      label: Sample Issue Type
+      description: Sample Issue Type
+      options:
+        - label: Sample not working
+        - label: Sample missing
+        - label: Do not understand samle
+    validations:
+      required: true
+  - type: textarea
+    id: background
+    attributes:
+      label: Tell us more about the issue you are having with the sample
+      description: Tell us more about the issue you are having with the sample
+      placeholder: Description
+    validations:
+      required: true 
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: |
+        Provide a description of the expected behavior.
+      placeholder: Expected behavior
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: |
+        Provide a description of the actual behavior observed. If applicable please include any error messages, exception stacktraces or memory dumps.
+      placeholder: Actual behavior
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: Reproduction Steps
+      description: |
+        Please include minimal steps to reproduce the problem if possible. E.g.: the smallest possible code snippet; or a small project, with steps to run it. If possible include text as text rather than screenshots (so it shows up in searches).
+      placeholder: Minimal Reproduction
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Please provide more information on your environment:
+          * Hosting platform or OS and runtime version (e.g. `dotnet --info` output for .NET Core projects): [e.g. Azure AppService or Windows 10 .NET Framework 4.8]
+          * IDE and version : [e.g. Visual Studio 16.3]
+      placeholder: Environment
+    validations:
+      required: false

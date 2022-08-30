@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/alertsmanagement/armalertsmanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/SmartGroups_History.json
-func ExampleSmartGroupsClient_GetHistory() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/Alerts_GetById.json
+func ExampleAlertsClient_GetByID() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armalertsmanagement.NewSmartGroupsClient("9e261de7-c804-4b9d-9ebf-6f50fe350a9a", cred, nil)
+	client, err := armalertsmanagement.NewAlertsClient("9e261de7-c804-4b9d-9ebf-6f50fe350a9a", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetHistory(ctx, "a808445e-bb38-4751-85c2-1b109ccc1059", nil)
+	res, err := client.GetByID(ctx, "66114d64-d9d9-478b-95c9-b789d6502100", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

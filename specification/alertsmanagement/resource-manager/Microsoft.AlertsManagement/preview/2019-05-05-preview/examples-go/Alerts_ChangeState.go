@@ -19,10 +19,7 @@ func ExampleAlertsClient_ChangeState() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ChangeState(ctx,
-		"66114d64-d9d9-478b-95c9-b789d6502100",
-		armalertsmanagement.AlertStateAcknowledged,
-		nil)
+	res, err := client.ChangeState(ctx, "66114d64-d9d9-478b-95c9-b789d6502100", armalertsmanagement.AlertStateAcknowledged, &armalertsmanagement.AlertsClientChangeStateOptions{Comment: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

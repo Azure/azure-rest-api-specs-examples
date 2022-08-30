@@ -19,10 +19,7 @@ func ExampleSmartGroupsClient_ChangeState() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ChangeState(ctx,
-		"a808445e-bb38-4751-85c2-1b109ccc1059",
-		armalertsmanagement.AlertStateAcknowledged,
-		nil)
+	res, err := client.ChangeState(ctx, "a808445e-bb38-4751-85c2-1b109ccc1059", armalertsmanagement.AlertStateAcknowledged, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

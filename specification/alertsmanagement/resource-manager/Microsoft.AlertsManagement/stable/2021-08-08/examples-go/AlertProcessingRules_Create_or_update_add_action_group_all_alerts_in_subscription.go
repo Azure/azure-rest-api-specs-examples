@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2021-08-08/examples/AlertProcessingRules_Create_or_update_add_action_group_all_alerts_in_subscription.json
-func ExampleAlertProcessingRulesClient_CreateOrUpdate() {
+func ExampleAlertProcessingRulesClient_CreateOrUpdate_createOrUpdateARuleThatAddsAnActionGroupToAllAlertsInASubscription() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,26 +20,22 @@ func ExampleAlertProcessingRulesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"alertscorrelationrg",
-		"AddActionGroupToSubscription",
-		armalertsmanagement.AlertProcessingRule{
-			Location: to.Ptr("Global"),
-			Tags:     map[string]*string{},
-			Properties: &armalertsmanagement.AlertProcessingRuleProperties{
-				Description: to.Ptr("Add ActionGroup1 to all alerts in the subscription"),
-				Actions: []armalertsmanagement.ActionClassification{
-					&armalertsmanagement.AddActionGroups{
-						ActionType: to.Ptr(armalertsmanagement.ActionTypeAddActionGroups),
-						ActionGroupIDs: []*string{
-							to.Ptr("/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1")},
-					}},
-				Enabled: to.Ptr(true),
-				Scopes: []*string{
-					to.Ptr("/subscriptions/subId1")},
-			},
+	res, err := client.CreateOrUpdate(ctx, "alertscorrelationrg", "AddActionGroupToSubscription", armalertsmanagement.AlertProcessingRule{
+		Location: to.Ptr("Global"),
+		Tags:     map[string]*string{},
+		Properties: &armalertsmanagement.AlertProcessingRuleProperties{
+			Description: to.Ptr("Add ActionGroup1 to all alerts in the subscription"),
+			Actions: []armalertsmanagement.ActionClassification{
+				&armalertsmanagement.AddActionGroups{
+					ActionType: to.Ptr(armalertsmanagement.ActionTypeAddActionGroups),
+					ActionGroupIDs: []*string{
+						to.Ptr("/subscriptions/subId1/resourcegroups/RGId1/providers/microsoft.insights/actiongroups/ActionGroup1")},
+				}},
+			Enabled: to.Ptr(true),
+			Scopes: []*string{
+				to.Ptr("/subscriptions/subId1")},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

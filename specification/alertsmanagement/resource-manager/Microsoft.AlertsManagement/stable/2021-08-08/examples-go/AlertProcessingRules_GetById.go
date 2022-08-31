@@ -19,10 +19,7 @@ func ExampleAlertProcessingRulesClient_GetByName() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetByName(ctx,
-		"alertscorrelationrg",
-		"DailySuppression",
-		nil)
+	res, err := client.GetByName(ctx, "alertscorrelationrg", "DailySuppression", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

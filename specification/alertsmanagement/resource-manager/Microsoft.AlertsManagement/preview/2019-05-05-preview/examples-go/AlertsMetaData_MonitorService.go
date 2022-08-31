@@ -19,9 +19,7 @@ func ExampleAlertsClient_MetaData() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.MetaData(ctx,
-		armalertsmanagement.IdentifierMonitorServiceList,
-		nil)
+	res, err := client.MetaData(ctx, armalertsmanagement.IdentifierMonitorServiceList, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

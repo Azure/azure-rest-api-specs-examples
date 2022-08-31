@@ -19,20 +19,18 @@ func ExampleAlertsClient_GetSummary() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetSummary(ctx,
-		armalertsmanagement.AlertsSummaryGroupByFields("severity,alertState"),
-		&armalertsmanagement.AlertsClientGetSummaryOptions{IncludeSmartGroupsCount: nil,
-			TargetResource:      nil,
-			TargetResourceType:  nil,
-			TargetResourceGroup: nil,
-			MonitorService:      nil,
-			MonitorCondition:    nil,
-			Severity:            nil,
-			AlertState:          nil,
-			AlertRule:           nil,
-			TimeRange:           nil,
-			CustomTimeRange:     nil,
-		})
+	res, err := client.GetSummary(ctx, armalertsmanagement.AlertsSummaryGroupByFields("severity,alertState"), &armalertsmanagement.AlertsClientGetSummaryOptions{IncludeSmartGroupsCount: nil,
+		TargetResource:      nil,
+		TargetResourceType:  nil,
+		TargetResourceGroup: nil,
+		MonitorService:      nil,
+		MonitorCondition:    nil,
+		Severity:            nil,
+		AlertState:          nil,
+		AlertRule:           nil,
+		TimeRange:           nil,
+		CustomTimeRange:     nil,
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

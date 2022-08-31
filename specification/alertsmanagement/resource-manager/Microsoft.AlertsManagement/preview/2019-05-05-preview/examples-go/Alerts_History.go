@@ -19,9 +19,7 @@ func ExampleAlertsClient_GetHistory() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetHistory(ctx,
-		"66114d64-d9d9-478b-95c9-b789d6502100",
-		nil)
+	res, err := client.GetHistory(ctx, "66114d64-d9d9-478b-95c9-b789d6502100", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

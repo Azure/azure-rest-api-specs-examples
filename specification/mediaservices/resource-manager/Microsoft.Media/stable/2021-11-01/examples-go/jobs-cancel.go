@@ -19,12 +19,7 @@ func ExampleJobsClient_CancelJob() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.CancelJob(ctx,
-		"contosoresources",
-		"contosomedia",
-		"exampleTransform",
-		"job1",
-		nil)
+	_, err = client.CancelJob(ctx, "contosoresources", "contosomedia", "exampleTransform", "job1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

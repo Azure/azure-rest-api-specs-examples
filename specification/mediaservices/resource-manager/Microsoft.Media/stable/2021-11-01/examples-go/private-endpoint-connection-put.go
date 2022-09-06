@@ -20,19 +20,14 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"contoso",
-		"contososports",
-		"connectionName1",
-		armmediaservices.PrivateEndpointConnection{
-			Properties: &armmediaservices.PrivateEndpointConnectionProperties{
-				PrivateLinkServiceConnectionState: &armmediaservices.PrivateLinkServiceConnectionState{
-					Description: to.Ptr("Test description."),
-					Status:      to.Ptr(armmediaservices.PrivateEndpointServiceConnectionStatusApproved),
-				},
+	res, err := client.CreateOrUpdate(ctx, "contoso", "contososports", "connectionName1", armmediaservices.PrivateEndpointConnection{
+		Properties: &armmediaservices.PrivateEndpointConnectionProperties{
+			PrivateLinkServiceConnectionState: &armmediaservices.PrivateLinkServiceConnectionState{
+				Description: to.Ptr("Test description."),
+				Status:      to.Ptr(armmediaservices.PrivateEndpointServiceConnectionStatusApproved),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

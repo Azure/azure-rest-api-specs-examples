@@ -19,10 +19,7 @@ func ExampleClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"contoso",
-		"contosotv",
-		nil)
+	res, err := client.Get(ctx, "contoso", "contosotv", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

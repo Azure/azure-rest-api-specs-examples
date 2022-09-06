@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/jobs-list-all-filter-by-created.json
-func ExampleJobsClient_NewListPager() {
+func ExampleJobsClient_NewListPager_listsJobsForTheTransformFilterByCreated() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,12 +20,9 @@ func ExampleJobsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("contosoresources",
-		"contosomedia",
-		"exampleTransform",
-		&armmediaservices.JobsClientListOptions{Filter: to.Ptr("properties/created ge 2021-11-01T00:00:10.0000000Z and properties/created le 2021-11-01T00:00:20.0000000Z"),
-			Orderby: to.Ptr("properties/created"),
-		})
+	pager := client.NewListPager("contosoresources", "contosomedia", "exampleTransform", &armmediaservices.JobsClientListOptions{Filter: to.Ptr("properties/created ge 2021-11-01T00:00:10.0000000Z and properties/created le 2021-11-01T00:00:20.0000000Z"),
+		Orderby: to.Ptr("properties/created"),
+	})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

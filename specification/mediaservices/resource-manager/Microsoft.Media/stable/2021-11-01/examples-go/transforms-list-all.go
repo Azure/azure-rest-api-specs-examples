@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/transforms-list-all.json
-func ExampleTransformsClient_NewListPager() {
+func ExampleTransformsClient_NewListPager_listsTheTransforms() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,11 +19,9 @@ func ExampleTransformsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("contosoresources",
-		"contosomedia",
-		&armmediaservices.TransformsClientListOptions{Filter: nil,
-			Orderby: nil,
-		})
+	pager := client.NewListPager("contosoresources", "contosomedia", &armmediaservices.TransformsClientListOptions{Filter: nil,
+		Orderby: nil,
+	})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -20,27 +20,21 @@ func ExampleJobsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"contosoresources",
-		"contosomedia",
-		"exampleTransform",
-		"job1",
-		armmediaservices.Job{
-			Properties: &armmediaservices.JobProperties{
-				Description: to.Ptr("Example job to illustrate update."),
-				Input: &armmediaservices.JobInputAsset{
-					ODataType: to.Ptr("#Microsoft.Media.JobInputAsset"),
-					AssetName: to.Ptr("job1-InputAsset"),
-				},
-				Outputs: []armmediaservices.JobOutputClassification{
-					&armmediaservices.JobOutputAsset{
-						ODataType: to.Ptr("#Microsoft.Media.JobOutputAsset"),
-						AssetName: to.Ptr("job1-OutputAsset"),
-					}},
-				Priority: to.Ptr(armmediaservices.PriorityHigh),
+	res, err := client.Update(ctx, "contosoresources", "contosomedia", "exampleTransform", "job1", armmediaservices.Job{
+		Properties: &armmediaservices.JobProperties{
+			Description: to.Ptr("Example job to illustrate update."),
+			Input: &armmediaservices.JobInputAsset{
+				ODataType: to.Ptr("#Microsoft.Media.JobInputAsset"),
+				AssetName: to.Ptr("job1-InputAsset"),
 			},
+			Outputs: []armmediaservices.JobOutputClassification{
+				&armmediaservices.JobOutputAsset{
+					ODataType: to.Ptr("#Microsoft.Media.JobOutputAsset"),
+					AssetName: to.Ptr("job1-OutputAsset"),
+				}},
+			Priority: to.Ptr(armmediaservices.PriorityHigh),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

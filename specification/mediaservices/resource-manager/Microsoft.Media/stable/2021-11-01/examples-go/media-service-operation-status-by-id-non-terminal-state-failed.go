@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-11-01/examples/media-service-operation-status-by-id-non-terminal-state-failed.json
-func ExampleOperationStatusesClient_Get() {
+func ExampleOperationStatusesClient_Get_getStatusOfAsynchronousOperationWhenItIsCompletedWithError() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,10 +19,7 @@ func ExampleOperationStatusesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"westus",
-		"D612C429-2526-49D5-961B-885AE11406FD",
-		nil)
+	res, err := client.Get(ctx, "westus", "D612C429-2526-49D5-961B-885AE11406FD", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -20,13 +20,9 @@ func ExampleClient_ListEdgePolicies() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListEdgePolicies(ctx,
-		"contoso",
-		"contososports",
-		armmediaservices.ListEdgePoliciesInput{
-			DeviceID: to.Ptr("contosiothubhost_contosoiotdevice"),
-		},
-		nil)
+	res, err := client.ListEdgePolicies(ctx, "contoso", "contososports", armmediaservices.ListEdgePoliciesInput{
+		DeviceID: to.Ptr("contosiothubhost_contosoiotdevice"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,8 +19,7 @@ func ExampleClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("contoso",
-		nil)
+	pager := client.NewListPager("contoso", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

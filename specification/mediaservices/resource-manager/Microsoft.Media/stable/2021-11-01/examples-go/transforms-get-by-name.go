@@ -19,11 +19,7 @@ func ExampleTransformsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"contosoresources",
-		"contosomedia",
-		"sampleTransform",
-		nil)
+	res, err := client.Get(ctx, "contosoresources", "contosomedia", "sampleTransform", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

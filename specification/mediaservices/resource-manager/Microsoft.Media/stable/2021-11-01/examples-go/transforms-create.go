@@ -20,23 +20,18 @@ func ExampleTransformsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"contosoresources",
-		"contosomedia",
-		"createdTransform",
-		armmediaservices.Transform{
-			Properties: &armmediaservices.TransformProperties{
-				Description: to.Ptr("Example Transform to illustrate create and update."),
-				Outputs: []*armmediaservices.TransformOutput{
-					{
-						Preset: &armmediaservices.BuiltInStandardEncoderPreset{
-							ODataType:  to.Ptr("#Microsoft.Media.BuiltInStandardEncoderPreset"),
-							PresetName: to.Ptr(armmediaservices.EncoderNamedPresetAdaptiveStreaming),
-						},
-					}},
-			},
+	res, err := client.CreateOrUpdate(ctx, "contosoresources", "contosomedia", "createdTransform", armmediaservices.Transform{
+		Properties: &armmediaservices.TransformProperties{
+			Description: to.Ptr("Example Transform to illustrate create and update."),
+			Outputs: []*armmediaservices.TransformOutput{
+				{
+					Preset: &armmediaservices.BuiltInStandardEncoderPreset{
+						ODataType:  to.Ptr("#Microsoft.Media.BuiltInStandardEncoderPreset"),
+						PresetName: to.Ptr(armmediaservices.EncoderNamedPresetAdaptiveStreaming),
+					},
+				}},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

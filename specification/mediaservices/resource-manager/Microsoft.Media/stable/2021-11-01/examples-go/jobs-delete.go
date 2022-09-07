@@ -19,12 +19,7 @@ func ExampleJobsClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"contosoresources",
-		"contosomedia",
-		"exampleTransform",
-		"jobToDelete",
-		nil)
+	_, err = client.Delete(ctx, "contosoresources", "contosomedia", "exampleTransform", "jobToDelete", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

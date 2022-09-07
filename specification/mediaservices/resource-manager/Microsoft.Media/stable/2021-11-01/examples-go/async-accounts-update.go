@@ -20,15 +20,11 @@ func ExampleClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"contoso",
-		"contososports",
-		armmediaservices.MediaServiceUpdate{
-			Tags: map[string]*string{
-				"key1": to.Ptr("value3"),
-			},
+	poller, err := client.BeginUpdate(ctx, "contoso", "contososports", armmediaservices.MediaServiceUpdate{
+		Tags: map[string]*string{
+			"key1": to.Ptr("value3"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

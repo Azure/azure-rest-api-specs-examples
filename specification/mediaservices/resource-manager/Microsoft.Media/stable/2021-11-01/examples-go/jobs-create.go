@@ -20,29 +20,23 @@ func ExampleJobsClient_Create() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Create(ctx,
-		"contosoresources",
-		"contosomedia",
-		"exampleTransform",
-		"job1",
-		armmediaservices.Job{
-			Properties: &armmediaservices.JobProperties{
-				CorrelationData: map[string]*string{
-					"Key 2": to.Ptr("Value 2"),
-					"key1":  to.Ptr("value1"),
-				},
-				Input: &armmediaservices.JobInputAsset{
-					ODataType: to.Ptr("#Microsoft.Media.JobInputAsset"),
-					AssetName: to.Ptr("job1-InputAsset"),
-				},
-				Outputs: []armmediaservices.JobOutputClassification{
-					&armmediaservices.JobOutputAsset{
-						ODataType: to.Ptr("#Microsoft.Media.JobOutputAsset"),
-						AssetName: to.Ptr("job1-OutputAsset"),
-					}},
+	_, err = client.Create(ctx, "contosoresources", "contosomedia", "exampleTransform", "job1", armmediaservices.Job{
+		Properties: &armmediaservices.JobProperties{
+			CorrelationData: map[string]*string{
+				"Key 2": to.Ptr("Value 2"),
+				"key1":  to.Ptr("value1"),
 			},
+			Input: &armmediaservices.JobInputAsset{
+				ODataType: to.Ptr("#Microsoft.Media.JobInputAsset"),
+				AssetName: to.Ptr("job1-InputAsset"),
+			},
+			Outputs: []armmediaservices.JobOutputClassification{
+				&armmediaservices.JobOutputAsset{
+					ODataType: to.Ptr("#Microsoft.Media.JobOutputAsset"),
+					AssetName: to.Ptr("job1-OutputAsset"),
+				}},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

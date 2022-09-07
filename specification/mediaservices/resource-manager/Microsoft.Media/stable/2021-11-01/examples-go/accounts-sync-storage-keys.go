@@ -20,13 +20,9 @@ func ExampleClient_SyncStorageKeys() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.SyncStorageKeys(ctx,
-		"contoso",
-		"contososports",
-		armmediaservices.SyncStorageKeysInput{
-			ID: to.Ptr("contososportsstore"),
-		},
-		nil)
+	_, err = client.SyncStorageKeys(ctx, "contoso", "contososports", armmediaservices.SyncStorageKeysInput{
+		ID: to.Ptr("contososportsstore"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

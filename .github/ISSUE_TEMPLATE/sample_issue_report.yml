@@ -20,6 +20,20 @@ body:
     validations:
       required: true
   - type: checkboxes
+    id: samplelanguage
+    attributes:
+      label: Language of the Sample
+      description: Language of the Sample
+      options:
+        - label: C#/.NET
+        - label: Java
+        - label: JavaScript/TypedScript
+        - label: Python
+        - label: Golang
+        - label: Other - Please specify in Issue details field
+    validations:
+      required: true
+  - type: checkboxes
     id: issuetype
     attributes:
       label: Sample Issue Type
@@ -33,7 +47,7 @@ body:
   - type: textarea
     id: background
     attributes:
-      label: Tell us more about the issue you are having with the sample
+      label: Issue details
       description: Tell us more about the issue you are having with the sample
       placeholder: Description
     validations:

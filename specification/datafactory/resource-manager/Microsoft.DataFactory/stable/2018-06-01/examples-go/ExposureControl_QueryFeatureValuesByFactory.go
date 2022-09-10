@@ -20,21 +20,17 @@ func ExampleExposureControlClient_QueryFeatureValuesByFactory() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.QueryFeatureValuesByFactory(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.ExposureControlBatchRequest{
-			ExposureControlRequests: []*armdatafactory.ExposureControlRequest{
-				{
-					FeatureName: to.Ptr("ADFIntegrationRuntimeSharingRbac"),
-					FeatureType: to.Ptr("Feature"),
-				},
-				{
-					FeatureName: to.Ptr("ADFSampleFeature"),
-					FeatureType: to.Ptr("Feature"),
-				}},
-		},
-		nil)
+	res, err := client.QueryFeatureValuesByFactory(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.ExposureControlBatchRequest{
+		ExposureControlRequests: []*armdatafactory.ExposureControlRequest{
+			{
+				FeatureName: to.Ptr("ADFIntegrationRuntimeSharingRbac"),
+				FeatureType: to.Ptr("Feature"),
+			},
+			{
+				FeatureName: to.Ptr("ADFSampleFeature"),
+				FeatureType: to.Ptr("Feature"),
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

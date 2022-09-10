@@ -19,11 +19,7 @@ func ExampleIntegrationRuntimesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		&armdatafactory.IntegrationRuntimesClientGetOptions{IfNoneMatch: nil})
+	res, err := client.Get(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", &armdatafactory.IntegrationRuntimesClientGetOptions{IfNoneMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

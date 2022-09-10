@@ -20,17 +20,12 @@ func ExampleIntegrationRuntimesClient_CreateLinkedIntegrationRuntime() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateLinkedIntegrationRuntime(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		armdatafactory.CreateLinkedIntegrationRuntimeRequest{
-			Name:                to.Ptr("bfa92911-9fb6-4fbe-8f23-beae87bc1c83"),
-			DataFactoryLocation: to.Ptr("West US"),
-			DataFactoryName:     to.Ptr("e9955d6d-56ea-4be3-841c-52a12c1a9981"),
-			SubscriptionID:      to.Ptr("061774c7-4b5a-4159-a55b-365581830283"),
-		},
-		nil)
+	res, err := client.CreateLinkedIntegrationRuntime(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", armdatafactory.CreateLinkedIntegrationRuntimeRequest{
+		Name:                to.Ptr("bfa92911-9fb6-4fbe-8f23-beae87bc1c83"),
+		DataFactoryLocation: to.Ptr("West US"),
+		DataFactoryName:     to.Ptr("e9955d6d-56ea-4be3-841c-52a12c1a9981"),
+		SubscriptionID:      to.Ptr("061774c7-4b5a-4159-a55b-365581830283"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

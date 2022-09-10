@@ -20,19 +20,13 @@ func ExampleManagedPrivateEndpointsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleManagedVirtualNetworkName",
-		"exampleManagedPrivateEndpointName",
-		armdatafactory.ManagedPrivateEndpointResource{
-			Properties: &armdatafactory.ManagedPrivateEndpoint{
-				Fqdns:                 []*string{},
-				GroupID:               to.Ptr("blob"),
-				PrivateLinkResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage"),
-			},
+	res, err := client.CreateOrUpdate(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleManagedVirtualNetworkName", "exampleManagedPrivateEndpointName", armdatafactory.ManagedPrivateEndpointResource{
+		Properties: &armdatafactory.ManagedPrivateEndpoint{
+			Fqdns:                 []*string{},
+			GroupID:               to.Ptr("blob"),
+			PrivateLinkResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Storage/storageAccounts/exampleBlobStorage"),
 		},
-		&armdatafactory.ManagedPrivateEndpointsClientCreateOrUpdateOptions{IfMatch: nil})
+	}, &armdatafactory.ManagedPrivateEndpointsClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

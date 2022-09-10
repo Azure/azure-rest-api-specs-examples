@@ -20,14 +20,9 @@ func ExampleIntegrationRuntimesClient_RemoveLinks() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.RemoveLinks(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		armdatafactory.LinkedIntegrationRuntimeRequest{
-			LinkedFactoryName: to.Ptr("exampleFactoryName-linked"),
-		},
-		nil)
+	_, err = client.RemoveLinks(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", armdatafactory.LinkedIntegrationRuntimeRequest{
+		LinkedFactoryName: to.Ptr("exampleFactoryName-linked"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

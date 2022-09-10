@@ -20,22 +20,19 @@ func ExampleFactoriesClient_ConfigureFactoryRepo() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ConfigureFactoryRepo(ctx,
-		"East US",
-		armdatafactory.FactoryRepoUpdate{
-			FactoryResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
-			RepoConfiguration: &armdatafactory.FactoryVSTSConfiguration{
-				Type:                to.Ptr("FactoryVSTSConfiguration"),
-				AccountName:         to.Ptr("ADF"),
-				CollaborationBranch: to.Ptr("master"),
-				LastCommitID:        to.Ptr(""),
-				RepositoryName:      to.Ptr("repo"),
-				RootFolder:          to.Ptr("/"),
-				ProjectName:         to.Ptr("project"),
-				TenantID:            to.Ptr(""),
-			},
+	res, err := client.ConfigureFactoryRepo(ctx, "East US", armdatafactory.FactoryRepoUpdate{
+		FactoryResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
+		RepoConfiguration: &armdatafactory.FactoryVSTSConfiguration{
+			Type:                to.Ptr("FactoryVSTSConfiguration"),
+			AccountName:         to.Ptr("ADF"),
+			CollaborationBranch: to.Ptr("master"),
+			LastCommitID:        to.Ptr(""),
+			RepositoryName:      to.Ptr("repo"),
+			RootFolder:          to.Ptr("/"),
+			ProjectName:         to.Ptr("project"),
+			TenantID:            to.Ptr(""),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

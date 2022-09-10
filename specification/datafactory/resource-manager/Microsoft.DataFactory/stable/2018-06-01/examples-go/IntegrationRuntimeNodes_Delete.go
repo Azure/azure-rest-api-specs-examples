@@ -19,12 +19,7 @@ func ExampleIntegrationRuntimeNodesClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		"Node_1",
-		nil)
+	_, err = client.Delete(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", "Node_1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

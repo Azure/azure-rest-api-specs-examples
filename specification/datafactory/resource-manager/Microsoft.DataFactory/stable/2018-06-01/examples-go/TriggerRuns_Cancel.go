@@ -19,12 +19,7 @@ func ExampleTriggerRunsClient_Cancel() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Cancel(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleTrigger",
-		"2f7fdb90-5df1-4b8e-ac2f-064cfa58202b",
-		nil)
+	_, err = client.Cancel(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

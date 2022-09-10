@@ -19,14 +19,9 @@ func ExampleManagedVirtualNetworksClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleManagedVirtualNetworkName",
-		armdatafactory.ManagedVirtualNetworkResource{
-			Properties: &armdatafactory.ManagedVirtualNetwork{},
-		},
-		&armdatafactory.ManagedVirtualNetworksClientCreateOrUpdateOptions{IfMatch: nil})
+	res, err := client.CreateOrUpdate(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleManagedVirtualNetworkName", armdatafactory.ManagedVirtualNetworkResource{
+		Properties: &armdatafactory.ManagedVirtualNetwork{},
+	}, &armdatafactory.ManagedVirtualNetworksClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -20,15 +20,9 @@ func ExampleIntegrationRuntimeNodesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		"Node_1",
-		armdatafactory.UpdateIntegrationRuntimeNodeRequest{
-			ConcurrentJobsLimit: to.Ptr[int32](2),
-		},
-		nil)
+	res, err := client.Update(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", "Node_1", armdatafactory.UpdateIntegrationRuntimeNodeRequest{
+		ConcurrentJobsLimit: to.Ptr[int32](2),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

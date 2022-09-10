@@ -20,15 +20,10 @@ func ExampleIntegrationRuntimesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		armdatafactory.UpdateIntegrationRuntimeRequest{
-			AutoUpdate:        to.Ptr(armdatafactory.IntegrationRuntimeAutoUpdateOff),
-			UpdateDelayOffset: to.Ptr("\"PT3H\""),
-		},
-		nil)
+	res, err := client.Update(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", armdatafactory.UpdateIntegrationRuntimeRequest{
+		AutoUpdate:        to.Ptr(armdatafactory.IntegrationRuntimeAutoUpdateOff),
+		UpdateDelayOffset: to.Ptr("\"PT3H\""),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

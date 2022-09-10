@@ -20,15 +20,11 @@ func ExampleFactoriesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.FactoryUpdateParameters{
-			Tags: map[string]*string{
-				"exampleTag": to.Ptr("exampleValue"),
-			},
+	res, err := client.Update(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.FactoryUpdateParameters{
+		Tags: map[string]*string{
+			"exampleTag": to.Ptr("exampleValue"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

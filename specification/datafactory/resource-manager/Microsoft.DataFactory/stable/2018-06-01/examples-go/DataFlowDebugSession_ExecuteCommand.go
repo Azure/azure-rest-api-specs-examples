@@ -20,18 +20,14 @@ func ExampleDataFlowDebugSessionClient_BeginExecuteCommand() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginExecuteCommand(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.DataFlowDebugCommandRequest{
-			Command: to.Ptr(armdatafactory.DataFlowDebugCommandTypeExecutePreviewQuery),
-			CommandPayload: &armdatafactory.DataFlowDebugCommandPayload{
-				RowLimits:  to.Ptr[int32](100),
-				StreamName: to.Ptr("source1"),
-			},
-			SessionID: to.Ptr("f06ed247-9d07-49b2-b05e-2cb4a2fc871e"),
+	poller, err := client.BeginExecuteCommand(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.DataFlowDebugCommandRequest{
+		Command: to.Ptr(armdatafactory.DataFlowDebugCommandTypeExecutePreviewQuery),
+		CommandPayload: &armdatafactory.DataFlowDebugCommandPayload{
+			RowLimits:  to.Ptr[int32](100),
+			StreamName: to.Ptr("source1"),
 		},
-		nil)
+		SessionID: to.Ptr("f06ed247-9d07-49b2-b05e-2cb4a2fc871e"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

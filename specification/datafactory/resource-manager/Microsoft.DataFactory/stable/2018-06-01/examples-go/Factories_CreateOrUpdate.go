@@ -20,13 +20,9 @@ func ExampleFactoriesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.Factory{
-			Location: to.Ptr("East US"),
-		},
-		&armdatafactory.FactoriesClientCreateOrUpdateOptions{IfMatch: nil})
+	res, err := client.CreateOrUpdate(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.Factory{
+		Location: to.Ptr("East US"),
+	}, &armdatafactory.FactoriesClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

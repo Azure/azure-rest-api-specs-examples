@@ -19,11 +19,7 @@ func ExampleDataFlowsClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleDataFlow",
-		nil)
+	_, err = client.Delete(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleDataFlow", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

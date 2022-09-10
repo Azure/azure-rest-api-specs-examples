@@ -20,29 +20,25 @@ func ExampleDataFlowDebugSessionClient_BeginCreate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.CreateDataFlowDebugSessionRequest{
-			IntegrationRuntime: &armdatafactory.IntegrationRuntimeDebugResource{
-				Name: to.Ptr("ir1"),
-				Properties: &armdatafactory.ManagedIntegrationRuntime{
-					Type: to.Ptr(armdatafactory.IntegrationRuntimeTypeManaged),
-					TypeProperties: &armdatafactory.ManagedIntegrationRuntimeTypeProperties{
-						ComputeProperties: &armdatafactory.IntegrationRuntimeComputeProperties{
-							DataFlowProperties: &armdatafactory.IntegrationRuntimeDataFlowProperties{
-								ComputeType: to.Ptr(armdatafactory.DataFlowComputeTypeGeneral),
-								CoreCount:   to.Ptr[int32](48),
-								TimeToLive:  to.Ptr[int32](10),
-							},
-							Location: to.Ptr("AutoResolve"),
+	poller, err := client.BeginCreate(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.CreateDataFlowDebugSessionRequest{
+		IntegrationRuntime: &armdatafactory.IntegrationRuntimeDebugResource{
+			Name: to.Ptr("ir1"),
+			Properties: &armdatafactory.ManagedIntegrationRuntime{
+				Type: to.Ptr(armdatafactory.IntegrationRuntimeTypeManaged),
+				TypeProperties: &armdatafactory.ManagedIntegrationRuntimeTypeProperties{
+					ComputeProperties: &armdatafactory.IntegrationRuntimeComputeProperties{
+						DataFlowProperties: &armdatafactory.IntegrationRuntimeDataFlowProperties{
+							ComputeType: to.Ptr(armdatafactory.DataFlowComputeTypeGeneral),
+							CoreCount:   to.Ptr[int32](48),
+							TimeToLive:  to.Ptr[int32](10),
 						},
+						Location: to.Ptr("AutoResolve"),
 					},
 				},
 			},
-			TimeToLive: to.Ptr[int32](60),
 		},
-		nil)
+		TimeToLive: to.Ptr[int32](60),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

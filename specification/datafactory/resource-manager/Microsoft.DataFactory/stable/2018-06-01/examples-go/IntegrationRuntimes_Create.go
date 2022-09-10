@@ -20,17 +20,12 @@ func ExampleIntegrationRuntimesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		armdatafactory.IntegrationRuntimeResource{
-			Properties: &armdatafactory.SelfHostedIntegrationRuntime{
-				Type:        to.Ptr(armdatafactory.IntegrationRuntimeTypeSelfHosted),
-				Description: to.Ptr("A selfhosted integration runtime"),
-			},
+	res, err := client.CreateOrUpdate(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", armdatafactory.IntegrationRuntimeResource{
+		Properties: &armdatafactory.SelfHostedIntegrationRuntime{
+			Type:        to.Ptr(armdatafactory.IntegrationRuntimeTypeSelfHosted),
+			Description: to.Ptr("A selfhosted integration runtime"),
 		},
-		&armdatafactory.IntegrationRuntimesClientCreateOrUpdateOptions{IfMatch: nil})
+	}, &armdatafactory.IntegrationRuntimesClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

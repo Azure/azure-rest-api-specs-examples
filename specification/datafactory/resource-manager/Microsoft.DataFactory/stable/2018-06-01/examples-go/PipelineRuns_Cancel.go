@@ -19,11 +19,7 @@ func ExamplePipelineRunsClient_Cancel() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Cancel(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"16ac5348-ff82-4f95-a80d-638c1d47b721",
-		&armdatafactory.PipelineRunsClientCancelOptions{IsRecursive: nil})
+	_, err = client.Cancel(ctx, "exampleResourceGroup", "exampleFactoryName", "16ac5348-ff82-4f95-a80d-638c1d47b721", &armdatafactory.PipelineRunsClientCancelOptions{IsRecursive: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

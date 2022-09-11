@@ -19,11 +19,7 @@ func ExamplePrivateEndpointConnectionClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"connection",
-		&armdatafactory.PrivateEndpointConnectionClientGetOptions{IfNoneMatch: nil})
+	res, err := client.Get(ctx, "exampleResourceGroup", "exampleFactoryName", "connection", &armdatafactory.PrivateEndpointConnectionClientGetOptions{IfNoneMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

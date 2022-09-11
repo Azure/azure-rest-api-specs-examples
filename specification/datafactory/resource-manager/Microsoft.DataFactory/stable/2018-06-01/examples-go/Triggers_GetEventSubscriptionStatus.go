@@ -19,11 +19,7 @@ func ExampleTriggersClient_GetEventSubscriptionStatus() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetEventSubscriptionStatus(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleTrigger",
-		nil)
+	res, err := client.GetEventSubscriptionStatus(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

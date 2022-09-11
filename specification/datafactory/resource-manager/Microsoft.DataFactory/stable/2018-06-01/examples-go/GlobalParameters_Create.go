@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/GlobalParameters_Create.json
-func ExampleGlobalParametersClient_CreateOrUpdate() {
+func ExampleGlobalParametersClient_CreateOrUpdate_globalParametersCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,19 +20,14 @@ func ExampleGlobalParametersClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"default",
-		armdatafactory.GlobalParameterResource{
-			Properties: map[string]*armdatafactory.GlobalParameterSpecification{
-				"waitTime": {
-					Type:  to.Ptr(armdatafactory.GlobalParameterTypeInt),
-					Value: float64(5),
-				},
+	res, err := client.CreateOrUpdate(ctx, "exampleResourceGroup", "exampleFactoryName", "default", armdatafactory.GlobalParameterResource{
+		Properties: map[string]*armdatafactory.GlobalParameterSpecification{
+			"waitTime": {
+				Type:  to.Ptr(armdatafactory.GlobalParameterTypeInt),
+				Value: float64(5),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

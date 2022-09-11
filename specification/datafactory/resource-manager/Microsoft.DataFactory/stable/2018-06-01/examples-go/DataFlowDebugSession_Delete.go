@@ -20,13 +20,9 @@ func ExampleDataFlowDebugSessionClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.DeleteDataFlowDebugSessionRequest{
-			SessionID: to.Ptr("91fb57e0-8292-47be-89ff-c8f2d2bb2a7e"),
-		},
-		nil)
+	_, err = client.Delete(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.DeleteDataFlowDebugSessionRequest{
+		SessionID: to.Ptr("91fb57e0-8292-47be-89ff-c8f2d2bb2a7e"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

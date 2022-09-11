@@ -20,15 +20,11 @@ func ExampleFactoriesClient_GetGitHubAccessToken() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetGitHubAccessToken(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.GitHubAccessTokenRequest{
-			GitHubAccessCode:         to.Ptr("some"),
-			GitHubAccessTokenBaseURL: to.Ptr("some"),
-			GitHubClientID:           to.Ptr("some"),
-		},
-		nil)
+	res, err := client.GetGitHubAccessToken(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.GitHubAccessTokenRequest{
+		GitHubAccessCode:         to.Ptr("some"),
+		GitHubAccessTokenBaseURL: to.Ptr("some"),
+		GitHubClientID:           to.Ptr("some"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,20 +19,16 @@ func ExamplePipelinesClient_CreateRun() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateRun(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"examplePipeline",
-		&armdatafactory.PipelinesClientCreateRunOptions{ReferencePipelineRunID: nil,
-			IsRecovery:        nil,
-			StartActivityName: nil,
-			StartFromFailure:  nil,
-			Parameters: map[string]interface{}{
-				"OutputBlobNameList": []interface{}{
-					"exampleoutput.csv",
-				},
+	res, err := client.CreateRun(ctx, "exampleResourceGroup", "exampleFactoryName", "examplePipeline", &armdatafactory.PipelinesClientCreateRunOptions{ReferencePipelineRunID: nil,
+		IsRecovery:        nil,
+		StartActivityName: nil,
+		StartFromFailure:  nil,
+		Parameters: map[string]interface{}{
+			"OutputBlobNameList": []interface{}{
+				"exampleoutput.csv",
 			},
-		})
+		},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

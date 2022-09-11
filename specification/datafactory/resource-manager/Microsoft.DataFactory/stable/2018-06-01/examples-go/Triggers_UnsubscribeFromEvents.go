@@ -19,11 +19,7 @@ func ExampleTriggersClient_BeginUnsubscribeFromEvents() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUnsubscribeFromEvents(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleTrigger",
-		nil)
+	poller, err := client.BeginUnsubscribeFromEvents(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

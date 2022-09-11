@@ -20,13 +20,9 @@ func ExampleTriggersClient_QueryByFactory() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.QueryByFactory(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.TriggerFilterParameters{
-			ParentTriggerName: to.Ptr("exampleTrigger"),
-		},
-		nil)
+	res, err := client.QueryByFactory(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.TriggerFilterParameters{
+		ParentTriggerName: to.Ptr("exampleTrigger"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

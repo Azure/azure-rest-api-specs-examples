@@ -20,17 +20,13 @@ func ExampleFactoriesClient_GetDataPlaneAccess() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetDataPlaneAccess(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		armdatafactory.UserAccessPolicy{
-			AccessResourcePath: to.Ptr(""),
-			ExpireTime:         to.Ptr("2018-11-10T09:46:20.2659347Z"),
-			Permissions:        to.Ptr("r"),
-			ProfileName:        to.Ptr("DefaultProfile"),
-			StartTime:          to.Ptr("2018-11-10T02:46:20.2659347Z"),
-		},
-		nil)
+	res, err := client.GetDataPlaneAccess(ctx, "exampleResourceGroup", "exampleFactoryName", armdatafactory.UserAccessPolicy{
+		AccessResourcePath: to.Ptr(""),
+		ExpireTime:         to.Ptr("2018-11-10T09:46:20.2659347Z"),
+		Permissions:        to.Ptr("r"),
+		ProfileName:        to.Ptr("DefaultProfile"),
+		StartTime:          to.Ptr("2018-11-10T02:46:20.2659347Z"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

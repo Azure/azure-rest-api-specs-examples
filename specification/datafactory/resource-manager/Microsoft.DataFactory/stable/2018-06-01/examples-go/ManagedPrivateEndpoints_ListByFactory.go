@@ -19,10 +19,7 @@ func ExampleManagedPrivateEndpointsClient_NewListByFactoryPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByFactoryPager("exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleManagedVirtualNetworkName",
-		nil)
+	pager := client.NewListByFactoryPager("exampleResourceGroup", "exampleFactoryName", "exampleManagedVirtualNetworkName", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -20,14 +20,9 @@ func ExampleIntegrationRuntimesClient_RegenerateAuthKey() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.RegenerateAuthKey(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"exampleIntegrationRuntime",
-		armdatafactory.IntegrationRuntimeRegenerateKeyParameters{
-			KeyName: to.Ptr(armdatafactory.IntegrationRuntimeAuthKeyNameAuthKey2),
-		},
-		nil)
+	res, err := client.RegenerateAuthKey(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", armdatafactory.IntegrationRuntimeRegenerateKeyParameters{
+		KeyName: to.Ptr(armdatafactory.IntegrationRuntimeAuthKeyNameAuthKey2),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

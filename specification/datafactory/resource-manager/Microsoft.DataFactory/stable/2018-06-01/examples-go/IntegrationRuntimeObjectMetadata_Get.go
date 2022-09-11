@@ -20,14 +20,10 @@ func ExampleIntegrationRuntimeObjectMetadataClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"exampleResourceGroup",
-		"exampleFactoryName",
-		"testactivityv2",
-		&armdatafactory.IntegrationRuntimeObjectMetadataClientGetOptions{GetMetadataRequest: &armdatafactory.GetSsisObjectMetadataRequest{
-			MetadataPath: to.Ptr("ssisFolders"),
-		},
-		})
+	res, err := client.Get(ctx, "exampleResourceGroup", "exampleFactoryName", "testactivityv2", &armdatafactory.IntegrationRuntimeObjectMetadataClientGetOptions{GetMetadataRequest: &armdatafactory.GetSsisObjectMetadataRequest{
+		MetadataPath: to.Ptr("ssisFolders"),
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

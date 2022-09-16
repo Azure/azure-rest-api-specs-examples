@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerinstance/armcontainerinstance"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerinstance/armcontainerinstance/v2"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2021-10-01/examples/ContainerExec.json
@@ -20,18 +20,13 @@ func ExampleContainersClient_ExecuteCommand() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ExecuteCommand(ctx,
-		"demo",
-		"demo1",
-		"container1",
-		armcontainerinstance.ContainerExecRequest{
-			Command: to.Ptr("/bin/bash"),
-			TerminalSize: &armcontainerinstance.ContainerExecRequestTerminalSize{
-				Cols: to.Ptr[int32](12),
-				Rows: to.Ptr[int32](12),
-			},
+	res, err := client.ExecuteCommand(ctx, "demo", "demo1", "container1", armcontainerinstance.ContainerExecRequest{
+		Command: to.Ptr("/bin/bash"),
+		TerminalSize: &armcontainerinstance.ContainerExecRequestTerminalSize{
+			Cols: to.Ptr[int32](12),
+			Rows: to.Ptr[int32](12),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

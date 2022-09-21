@@ -20,13 +20,11 @@ func ExampleExchangeClient_BeginPost() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginPost(ctx,
-		armreservations.ExchangeRequest{
-			Properties: &armreservations.ExchangeRequestProperties{
-				SessionID: to.Ptr("66e2ac8f-439e-4345-8235-6fef07608081"),
-			},
+	poller, err := client.BeginPost(ctx, armreservations.ExchangeRequest{
+		Properties: &armreservations.ExchangeRequestProperties{
+			SessionID: to.Ptr("66e2ac8f-439e-4345-8235-6fef07608081"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

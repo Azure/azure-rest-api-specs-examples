@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/patchComputeQuotaRequest.json
-func ExampleQuotaClient_BeginUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putMachineLearningServicesQuotaRequestLowPriority.json
+func ExampleQuotaClient_BeginCreateOrUpdate_quotasRequestPutForMachineLearningServicesLowPriorityResource() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,13 +20,14 @@ func ExampleQuotaClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "D7EC67B3-7657-4966-BFFC-41EFD36BAAB3", "Microsoft.Compute", "eastus", "standardFSv2Family", armreservations.CurrentQuotaLimitBase{
+	poller, err := client.BeginCreateOrUpdate(ctx, "D7EC67B3-7657-4966-BFFC-41EFD36BAAB3", "Microsoft.MachineLearningServices", "eastus", "TotalLowPriorityCores", armreservations.CurrentQuotaLimitBase{
 		Properties: &armreservations.QuotaProperties{
 			Name: &armreservations.ResourceName{
-				Value: to.Ptr("standardFSv2Family"),
+				Value: to.Ptr("TotalLowPriorityCores"),
 			},
-			Limit: to.Ptr[int32](200),
-			Unit:  to.Ptr("Count"),
+			Limit:        to.Ptr[int32](200),
+			ResourceType: to.Ptr(armreservations.ResourceTypeLowPriority),
+			Unit:         to.Ptr("Count"),
 		},
 	}, nil)
 	if err != nil {

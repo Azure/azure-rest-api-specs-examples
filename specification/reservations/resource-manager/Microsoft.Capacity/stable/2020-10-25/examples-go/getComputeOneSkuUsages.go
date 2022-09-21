@@ -19,12 +19,7 @@ func ExampleQuotaClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"00000000-0000-0000-0000-000000000000",
-		"Microsoft.Compute",
-		"eastus",
-		"standardNDSFamily",
-		nil)
+	res, err := client.Get(ctx, "00000000-0000-0000-0000-000000000000", "Microsoft.Compute", "eastus", "standardNDSFamily", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

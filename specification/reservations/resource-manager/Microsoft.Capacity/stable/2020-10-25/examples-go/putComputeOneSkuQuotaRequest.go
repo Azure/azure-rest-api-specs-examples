@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putComputeOneSkuQuotaRequest.json
-func ExampleQuotaClient_BeginCreateOrUpdate() {
+func ExampleQuotaClient_BeginCreateOrUpdate_quotasRequestPutForCompute() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,21 +20,15 @@ func ExampleQuotaClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"D7EC67B3-7657-4966-BFFC-41EFD36BAAB3",
-		"Microsoft.Compute",
-		"eastus",
-		"standardFSv2Family",
-		armreservations.CurrentQuotaLimitBase{
-			Properties: &armreservations.QuotaProperties{
-				Name: &armreservations.ResourceName{
-					Value: to.Ptr("standardFSv2Family"),
-				},
-				Limit: to.Ptr[int32](200),
-				Unit:  to.Ptr("Count"),
+	poller, err := client.BeginCreateOrUpdate(ctx, "D7EC67B3-7657-4966-BFFC-41EFD36BAAB3", "Microsoft.Compute", "eastus", "standardFSv2Family", armreservations.CurrentQuotaLimitBase{
+		Properties: &armreservations.QuotaProperties{
+			Name: &armreservations.ResourceName{
+				Value: to.Ptr("standardFSv2Family"),
 			},
+			Limit: to.Ptr[int32](200),
+			Unit:  to.Ptr("Count"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

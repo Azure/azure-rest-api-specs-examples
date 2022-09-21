@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/GetAppliedReservations.json
-func ExampleAzureReservationAPIClient_GetAppliedReservationList() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getQuotaRequestStatusInProgress.json
+func ExampleQuotaRequestStatusClient_Get_quotaRequestInProgress() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewAzureReservationAPIClient(cred, nil)
+	client, err := armreservations.NewQuotaRequestStatusClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetAppliedReservationList(ctx, "23bc208b-083f-4901-ae85-4f98c0c3b4b6", nil)
+	res, err := client.Get(ctx, "00000000-0000-0000-0000-000000000000", "Microsoft.Compute", "eastus", "2B5C8515-37D8-4B6A-879B-CD641A2CF605", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

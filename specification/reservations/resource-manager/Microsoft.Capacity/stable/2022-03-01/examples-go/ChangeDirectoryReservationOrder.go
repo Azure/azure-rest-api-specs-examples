@@ -20,12 +20,9 @@ func ExampleReservationOrderClient_ChangeDirectory() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ChangeDirectory(ctx,
-		"a075419f-44cc-497f-b68a-14ee811d48b9",
-		armreservations.ChangeDirectoryRequest{
-			DestinationTenantID: to.Ptr("906655ea-30be-4587-9d12-b50e077b0f32"),
-		},
-		nil)
+	res, err := client.ChangeDirectory(ctx, "a075419f-44cc-497f-b68a-14ee811d48b9", armreservations.ChangeDirectoryRequest{
+		DestinationTenantID: to.Ptr("906655ea-30be-4587-9d12-b50e077b0f32"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

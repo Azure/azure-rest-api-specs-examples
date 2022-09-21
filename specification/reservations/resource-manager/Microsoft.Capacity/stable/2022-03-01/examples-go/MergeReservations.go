@@ -20,16 +20,13 @@ func ExampleReservationClient_BeginMerge() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginMerge(ctx,
-		"276e7ae4-84d0-4da6-ab4b-d6b94f3557da",
-		armreservations.MergeRequest{
-			Properties: &armreservations.MergeProperties{
-				Sources: []*string{
-					to.Ptr("/providers/Microsoft.Capacity/reservationOrders/c0565a8a-4491-4e77-b07b-5e6d66718e1c/reservations/cea04232-932e-47db-acb5-e29a945ecc73"),
-					to.Ptr("/providers/Microsoft.Capacity/reservationOrders/c0565a8a-4491-4e77-b07b-5e6d66718e1c/reservations/5bf54dc7-dacd-4f46-a16b-7b78f4a59799")},
-			},
+	poller, err := client.BeginMerge(ctx, "276e7ae4-84d0-4da6-ab4b-d6b94f3557da", armreservations.MergeRequest{
+		Properties: &armreservations.MergeProperties{
+			Sources: []*string{
+				to.Ptr("/providers/Microsoft.Capacity/reservationOrders/c0565a8a-4491-4e77-b07b-5e6d66718e1c/reservations/cea04232-932e-47db-acb5-e29a945ecc73"),
+				to.Ptr("/providers/Microsoft.Capacity/reservationOrders/c0565a8a-4491-4e77-b07b-5e6d66718e1c/reservations/5bf54dc7-dacd-4f46-a16b-7b78f4a59799")},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

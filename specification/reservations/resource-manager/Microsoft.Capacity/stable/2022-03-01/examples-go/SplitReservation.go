@@ -20,17 +20,14 @@ func ExampleReservationClient_BeginSplit() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginSplit(ctx,
-		"276e7ae4-84d0-4da6-ab4b-d6b94f3557da",
-		armreservations.SplitRequest{
-			Properties: &armreservations.SplitProperties{
-				Quantities: []*int32{
-					to.Ptr[int32](1),
-					to.Ptr[int32](2)},
-				ReservationID: to.Ptr("/providers/Microsoft.Capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/bcae77cd-3119-4766-919f-b50d36c75c7a"),
-			},
+	poller, err := client.BeginSplit(ctx, "276e7ae4-84d0-4da6-ab4b-d6b94f3557da", armreservations.SplitRequest{
+		Properties: &armreservations.SplitProperties{
+			Quantities: []*int32{
+				to.Ptr[int32](1),
+				to.Ptr[int32](2)},
+			ReservationID: to.Ptr("/providers/Microsoft.Capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/bcae77cd-3119-4766-919f-b50d36c75c7a"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

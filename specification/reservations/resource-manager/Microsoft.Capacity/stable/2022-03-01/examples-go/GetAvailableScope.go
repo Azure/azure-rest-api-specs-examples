@@ -20,16 +20,12 @@ func ExampleReservationClient_BeginAvailableScopes() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginAvailableScopes(ctx,
-		"276e7ae4-84d0-4da6-ab4b-d6b94f3557da",
-		"356e7ae4-84d0-4da6-ab4b-d6b94f3557da",
-		armreservations.AvailableScopeRequest{
-			Properties: &armreservations.AvailableScopeRequestProperties{
-				Scopes: []*string{
-					to.Ptr("/subscriptions/efc7c997-7700-4a74-b731-55aec16c15e9")},
-			},
+	poller, err := client.BeginAvailableScopes(ctx, "276e7ae4-84d0-4da6-ab4b-d6b94f3557da", "356e7ae4-84d0-4da6-ab4b-d6b94f3557da", armreservations.AvailableScopeRequest{
+		Properties: &armreservations.AvailableScopeRequestProperties{
+			Scopes: []*string{
+				to.Ptr("/subscriptions/efc7c997-7700-4a74-b731-55aec16c15e9")},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

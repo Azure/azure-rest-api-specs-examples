@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/examples/GetReservationOrderDetails.json
-func ExampleReservationOrderClient_Get() {
+func ExampleReservationOrderClient_Get_getReservation() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +19,7 @@ func ExampleReservationOrderClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"a075419f-44cc-497f-b68a-14ee811d48b9",
-		&armreservations.ReservationOrderClientGetOptions{Expand: nil})
+	res, err := client.Get(ctx, "a075419f-44cc-497f-b68a-14ee811d48b9", &armreservations.ReservationOrderClientGetOptions{Expand: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

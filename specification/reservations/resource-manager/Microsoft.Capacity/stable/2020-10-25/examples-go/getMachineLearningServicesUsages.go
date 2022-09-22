@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getQuotaRequestsHistory.json
-func ExampleQuotaRequestStatusClient_NewListPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getMachineLearningServicesUsages.json
+func ExampleQuotaClient_NewListPager_quotasListUsagesMachineLearningServices() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armreservations.NewQuotaRequestStatusClient(cred, nil)
+	client, err := armreservations.NewQuotaClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("3f75fdf7-977e-44ad-990d-99f14f0f299f", "Microsoft.Compute", "eastus", &armreservations.QuotaRequestStatusClientListOptions{Filter: nil,
-		Top:       nil,
-		Skiptoken: nil,
-	})
+	pager := client.NewListPager("00000000-0000-0000-0000-000000000000", "Microsoft.MachineLearningServices", "eastus", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

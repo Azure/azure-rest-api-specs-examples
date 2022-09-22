@@ -19,8 +19,7 @@ func ExampleReservationClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("276e7ae4-84d0-4da6-ab4b-d6b94f3557da",
-		nil)
+	pager := client.NewListPager("276e7ae4-84d0-4da6-ab4b-d6b94f3557da", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -20,16 +20,12 @@ func ExampleReservationClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"276e7ae4-84d0-4da6-ab4b-d6b94f3557da",
-		"6ef59113-3482-40da-8d79-787f823e34bc",
-		armreservations.Patch{
-			Properties: &armreservations.PatchProperties{
-				AppliedScopeType:    to.Ptr(armreservations.AppliedScopeTypeShared),
-				InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOff),
-			},
+	poller, err := client.BeginUpdate(ctx, "276e7ae4-84d0-4da6-ab4b-d6b94f3557da", "6ef59113-3482-40da-8d79-787f823e34bc", armreservations.Patch{
+		Properties: &armreservations.PatchProperties{
+			AppliedScopeType:    to.Ptr(armreservations.AppliedScopeTypeShared),
+			InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOff),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

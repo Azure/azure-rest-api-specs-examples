@@ -20,26 +20,24 @@ func ExampleReservationOrderClient_Calculate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Calculate(ctx,
-		armreservations.PurchaseRequest{
-			Location: to.Ptr("westus"),
-			Properties: &armreservations.PurchaseRequestProperties{
-				AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
-				BillingPlan:      to.Ptr(armreservations.ReservationBillingPlanMonthly),
-				BillingScopeID:   to.Ptr("/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83"),
-				DisplayName:      to.Ptr("TestReservationOrder"),
-				Quantity:         to.Ptr[int32](1),
-				ReservedResourceProperties: &armreservations.PurchaseRequestPropertiesReservedResourceProperties{
-					InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
-				},
-				ReservedResourceType: to.Ptr(armreservations.ReservedResourceTypeVirtualMachines),
-				Term:                 to.Ptr(armreservations.ReservationTermP1Y),
+	res, err := client.Calculate(ctx, armreservations.PurchaseRequest{
+		Location: to.Ptr("westus"),
+		Properties: &armreservations.PurchaseRequestProperties{
+			AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
+			BillingPlan:      to.Ptr(armreservations.ReservationBillingPlanMonthly),
+			BillingScopeID:   to.Ptr("/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83"),
+			DisplayName:      to.Ptr("TestReservationOrder"),
+			Quantity:         to.Ptr[int32](1),
+			ReservedResourceProperties: &armreservations.PurchaseRequestPropertiesReservedResourceProperties{
+				InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
 			},
-			SKU: &armreservations.SKUName{
-				Name: to.Ptr("standard_D1"),
-			},
+			ReservedResourceType: to.Ptr(armreservations.ReservedResourceTypeVirtualMachines),
+			Term:                 to.Ptr(armreservations.ReservationTermP1Y),
 		},
-		nil)
+		SKU: &armreservations.SKUName{
+			Name: to.Ptr("standard_D1"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

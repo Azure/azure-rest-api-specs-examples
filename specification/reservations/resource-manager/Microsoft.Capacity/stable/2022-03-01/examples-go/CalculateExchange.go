@@ -20,37 +20,35 @@ func ExampleCalculateExchangeClient_BeginPost() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginPost(ctx,
-		armreservations.CalculateExchangeRequest{
-			Properties: &armreservations.CalculateExchangeRequestProperties{
-				ReservationsToExchange: []*armreservations.ReservationToReturn{
-					{
-						Quantity:      to.Ptr[int32](1),
-						ReservationID: to.Ptr("/providers/microsoft.capacity/reservationOrders/1f14354c-dc12-4c8d-8090-6f295a3a34aa/reservations/c8c926bd-fc5d-4e29-9d43-b68340ac23a6"),
-					}},
-				ReservationsToPurchase: []*armreservations.PurchaseRequest{
-					{
-						Location: to.Ptr("westus"),
-						Properties: &armreservations.PurchaseRequestProperties{
-							AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
-							BillingPlan:      to.Ptr(armreservations.ReservationBillingPlanUpfront),
-							BillingScopeID:   to.Ptr("/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83"),
-							DisplayName:      to.Ptr("testDisplayName"),
-							Quantity:         to.Ptr[int32](1),
-							Renew:            to.Ptr(false),
-							ReservedResourceProperties: &armreservations.PurchaseRequestPropertiesReservedResourceProperties{
-								InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
-							},
-							ReservedResourceType: to.Ptr(armreservations.ReservedResourceTypeVirtualMachines),
-							Term:                 to.Ptr(armreservations.ReservationTermP1Y),
+	poller, err := client.BeginPost(ctx, armreservations.CalculateExchangeRequest{
+		Properties: &armreservations.CalculateExchangeRequestProperties{
+			ReservationsToExchange: []*armreservations.ReservationToReturn{
+				{
+					Quantity:      to.Ptr[int32](1),
+					ReservationID: to.Ptr("/providers/microsoft.capacity/reservationOrders/1f14354c-dc12-4c8d-8090-6f295a3a34aa/reservations/c8c926bd-fc5d-4e29-9d43-b68340ac23a6"),
+				}},
+			ReservationsToPurchase: []*armreservations.PurchaseRequest{
+				{
+					Location: to.Ptr("westus"),
+					Properties: &armreservations.PurchaseRequestProperties{
+						AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
+						BillingPlan:      to.Ptr(armreservations.ReservationBillingPlanUpfront),
+						BillingScopeID:   to.Ptr("/subscriptions/ed3a1871-612d-abcd-a849-c2542a68be83"),
+						DisplayName:      to.Ptr("testDisplayName"),
+						Quantity:         to.Ptr[int32](1),
+						Renew:            to.Ptr(false),
+						ReservedResourceProperties: &armreservations.PurchaseRequestPropertiesReservedResourceProperties{
+							InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
 						},
-						SKU: &armreservations.SKUName{
-							Name: to.Ptr("Standard_B1ls"),
-						},
-					}},
-			},
+						ReservedResourceType: to.Ptr(armreservations.ReservedResourceTypeVirtualMachines),
+						Term:                 to.Ptr(armreservations.ReservationTermP1Y),
+					},
+					SKU: &armreservations.SKUName{
+						Name: to.Ptr("Standard_B1ls"),
+					},
+				}},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

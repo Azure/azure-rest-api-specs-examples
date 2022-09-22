@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getComputeUsages.json
-func ExampleQuotaClient_NewListPager() {
+func ExampleQuotaClient_NewListPager_quotasListUsagesForCompute() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,10 +19,7 @@ func ExampleQuotaClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("00000000-0000-0000-0000-000000000000",
-		"Microsoft.Compute",
-		"eastus",
-		nil)
+	pager := client.NewListPager("00000000-0000-0000-0000-000000000000", "Microsoft.Compute", "eastus", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

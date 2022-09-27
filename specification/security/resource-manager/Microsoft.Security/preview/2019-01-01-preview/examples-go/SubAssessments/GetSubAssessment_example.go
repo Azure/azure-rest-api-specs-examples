@@ -19,11 +19,7 @@ func ExampleSubAssessmentsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"subscriptions/212f9889-769e-45ae-ab43-6da33674bd26/resourceGroups/DEMORG/providers/Microsoft.Compute/virtualMachines/vm2",
-		"1195afff-c881-495e-9bc5-1486211ae03f",
-		"95f7da9c-a2a4-1322-0758-fcd24ef09b85",
-		nil)
+	res, err := client.Get(ctx, "subscriptions/212f9889-769e-45ae-ab43-6da33674bd26/resourceGroups/DEMORG/providers/Microsoft.Compute/virtualMachines/vm2", "1195afff-c881-495e-9bc5-1486211ae03f", "95f7da9c-a2a4-1322-0758-fcd24ef09b85", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

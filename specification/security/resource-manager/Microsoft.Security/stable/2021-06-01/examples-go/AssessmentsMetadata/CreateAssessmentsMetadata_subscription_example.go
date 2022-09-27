@@ -20,26 +20,23 @@ func ExampleAssessmentsMetadataClient_CreateInSubscription() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateInSubscription(ctx,
-		"ca039e75-a276-4175-aebc-bcd41e4b14b7",
-		armsecurity.AssessmentMetadataResponse{
-			Properties: &armsecurity.AssessmentMetadataPropertiesResponse{
-				Description:    to.Ptr("Install an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities."),
-				AssessmentType: to.Ptr(armsecurity.AssessmentTypeCustomerManaged),
-				Categories: []*armsecurity.Categories{
-					to.Ptr(armsecurity.CategoriesCompute)},
-				DisplayName:            to.Ptr("Install endpoint protection solution on virtual machine scale sets"),
-				ImplementationEffort:   to.Ptr(armsecurity.ImplementationEffortLow),
-				RemediationDescription: to.Ptr("To install an endpoint protection solution: 1.  <a href=\"https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-turn-on-antimalware-in-my-virtual-machine-scale-set\">Follow the instructions in How do I turn on antimalware in my virtual machine scale set</a>"),
-				Severity:               to.Ptr(armsecurity.SeverityMedium),
-				Threats: []*armsecurity.Threats{
-					to.Ptr(armsecurity.ThreatsDataExfiltration),
-					to.Ptr(armsecurity.ThreatsDataSpillage),
-					to.Ptr(armsecurity.ThreatsMaliciousInsider)},
-				UserImpact: to.Ptr(armsecurity.UserImpactLow),
-			},
+	res, err := client.CreateInSubscription(ctx, "ca039e75-a276-4175-aebc-bcd41e4b14b7", armsecurity.AssessmentMetadataResponse{
+		Properties: &armsecurity.AssessmentMetadataPropertiesResponse{
+			Description:    to.Ptr("Install an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities."),
+			AssessmentType: to.Ptr(armsecurity.AssessmentTypeCustomerManaged),
+			Categories: []*armsecurity.Categories{
+				to.Ptr(armsecurity.CategoriesCompute)},
+			DisplayName:            to.Ptr("Install endpoint protection solution on virtual machine scale sets"),
+			ImplementationEffort:   to.Ptr(armsecurity.ImplementationEffortLow),
+			RemediationDescription: to.Ptr("To install an endpoint protection solution: 1.  <a href=\"https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-turn-on-antimalware-in-my-virtual-machine-scale-set\">Follow the instructions in How do I turn on antimalware in my virtual machine scale set</a>"),
+			Severity:               to.Ptr(armsecurity.SeverityMedium),
+			Threats: []*armsecurity.Threats{
+				to.Ptr(armsecurity.ThreatsDataExfiltration),
+				to.Ptr(armsecurity.ThreatsDataSpillage),
+				to.Ptr(armsecurity.ThreatsMaliciousInsider)},
+			UserImpact: to.Ptr(armsecurity.UserImpactLow),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

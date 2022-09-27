@@ -20,31 +20,27 @@ func ExampleIotSecuritySolutionClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"myRg",
-		"default",
-		armsecurity.UpdateIotSecuritySolutionData{
-			Tags: map[string]*string{
-				"foo": to.Ptr("bar"),
-			},
-			Properties: &armsecurity.UpdateIoTSecuritySolutionProperties{
-				RecommendationsConfiguration: []*armsecurity.RecommendationConfigurationProperties{
-					{
-						RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTOpenPorts),
-						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
-					},
-					{
-						RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTSharedCredentials),
-						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
-					}},
-				UserDefinedResources: &armsecurity.UserDefinedResourcesProperties{
-					Query: to.Ptr("where type != \"microsoft.devices/iothubs\" | where name contains \"v2\""),
-					QuerySubscriptions: []*string{
-						to.Ptr("075423e9-7d33-4166-8bdf-3920b04e3735")},
+	res, err := client.Update(ctx, "myRg", "default", armsecurity.UpdateIotSecuritySolutionData{
+		Tags: map[string]*string{
+			"foo": to.Ptr("bar"),
+		},
+		Properties: &armsecurity.UpdateIoTSecuritySolutionProperties{
+			RecommendationsConfiguration: []*armsecurity.RecommendationConfigurationProperties{
+				{
+					RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTOpenPorts),
+					Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
 				},
+				{
+					RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTSharedCredentials),
+					Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
+				}},
+			UserDefinedResources: &armsecurity.UserDefinedResourcesProperties{
+				Query: to.Ptr("where type != \"microsoft.devices/iothubs\" | where name contains \"v2\""),
+				QuerySubscriptions: []*string{
+					to.Ptr("075423e9-7d33-4166-8bdf-3920b04e3735")},
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

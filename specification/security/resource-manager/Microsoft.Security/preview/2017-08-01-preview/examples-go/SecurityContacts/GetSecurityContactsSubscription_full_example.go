@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/SecurityContacts/GetSecurityContactsSubscription_full_example.json
-func ExampleContactsClient_NewListPager() {
+func ExampleContactsClient_NewListPager_updateSecurityContactDataFull() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

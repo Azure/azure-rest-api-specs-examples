@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/GetIoTSecuritySolutionsListByIotHub.json
-func ExampleIotSecuritySolutionClient_NewListBySubscriptionPager() {
+func ExampleIotSecuritySolutionClient_NewListBySubscriptionPager_listIoTSecuritySolutionsByIoTHub() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)

@@ -19,10 +19,7 @@ func ExampleCustomEntityStoreAssignmentsClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"TestResourceGroup",
-		"33e7cc6e-a139-4723-a0e5-76993aee0771",
-		nil)
+	_, err = client.Delete(ctx, "TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,11 +19,7 @@ func ExampleIotSecuritySolutionsAnalyticsRecommendationClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"IoTEdgeResources",
-		"default",
-		"OpenPortsOnDevice",
-		nil)
+	res, err := client.Get(ctx, "IoTEdgeResources", "default", "OpenPortsOnDevice", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

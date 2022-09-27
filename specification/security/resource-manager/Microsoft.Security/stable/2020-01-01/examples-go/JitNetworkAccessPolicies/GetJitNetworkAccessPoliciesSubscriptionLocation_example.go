@@ -19,8 +19,7 @@ func ExampleJitNetworkAccessPoliciesClient_NewListByRegionPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByRegionPager("westeurope",
-		nil)
+	pager := client.NewListByRegionPager("westeurope", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

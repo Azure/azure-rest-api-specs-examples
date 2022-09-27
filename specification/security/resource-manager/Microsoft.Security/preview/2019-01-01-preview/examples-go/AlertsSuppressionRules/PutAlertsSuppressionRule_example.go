@@ -22,36 +22,33 @@ func ExampleAlertsSuppressionRulesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"dismissIpAnomalyAlerts",
-		armsecurity.AlertsSuppressionRule{
-			Properties: &armsecurity.AlertsSuppressionRuleProperties{
-				AlertType:         to.Ptr("IpAnomaly"),
-				Comment:           to.Ptr("Test VM"),
-				ExpirationDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T19:50:47.083633Z"); return t }()),
-				Reason:            to.Ptr("FalsePositive"),
-				State:             to.Ptr(armsecurity.RuleStateEnabled),
-				SuppressionAlertsScope: &armsecurity.SuppressionAlertsScope{
-					AllOf: []*armsecurity.ScopeElement{
-						{
-							AdditionalProperties: map[string]interface{}{
-								"in": []interface{}{
-									"104.215.95.187",
-									"52.164.206.56",
-								},
+	res, err := client.Update(ctx, "dismissIpAnomalyAlerts", armsecurity.AlertsSuppressionRule{
+		Properties: &armsecurity.AlertsSuppressionRuleProperties{
+			AlertType:         to.Ptr("IpAnomaly"),
+			Comment:           to.Ptr("Test VM"),
+			ExpirationDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T19:50:47.083633Z"); return t }()),
+			Reason:            to.Ptr("FalsePositive"),
+			State:             to.Ptr(armsecurity.RuleStateEnabled),
+			SuppressionAlertsScope: &armsecurity.SuppressionAlertsScope{
+				AllOf: []*armsecurity.ScopeElement{
+					{
+						AdditionalProperties: map[string]interface{}{
+							"in": []interface{}{
+								"104.215.95.187",
+								"52.164.206.56",
 							},
-							Field: to.Ptr("entities.ip.address"),
 						},
-						{
-							AdditionalProperties: map[string]interface{}{
-								"contains": "POWERSHELL.EXE",
-							},
-							Field: to.Ptr("entities.process.commandline"),
-						}},
-				},
+						Field: to.Ptr("entities.ip.address"),
+					},
+					{
+						AdditionalProperties: map[string]interface{}{
+							"contains": "POWERSHELL.EXE",
+						},
+						Field: to.Ptr("entities.process.commandline"),
+					}},
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

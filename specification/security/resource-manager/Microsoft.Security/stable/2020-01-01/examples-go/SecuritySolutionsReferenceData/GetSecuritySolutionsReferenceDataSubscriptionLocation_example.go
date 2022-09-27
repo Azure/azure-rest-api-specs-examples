@@ -19,9 +19,7 @@ func ExampleSolutionsReferenceDataClient_ListByHomeRegion() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListByHomeRegion(ctx,
-		"westcentralus",
-		nil)
+	res, err := client.ListByHomeRegion(ctx, "westcentralus", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

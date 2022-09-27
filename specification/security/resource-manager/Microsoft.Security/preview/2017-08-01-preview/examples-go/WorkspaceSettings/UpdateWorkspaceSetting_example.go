@@ -20,17 +20,14 @@ func ExampleWorkspaceSettingsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"default",
-		armsecurity.WorkspaceSetting{
-			Name: to.Ptr("default"),
-			Type: to.Ptr("Microsoft.Security/workspaceSettings"),
-			ID:   to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/workspaceSettings/default"),
-			Properties: &armsecurity.WorkspaceSettingProperties{
-				WorkspaceID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"),
-			},
+	res, err := client.Update(ctx, "default", armsecurity.WorkspaceSetting{
+		Name: to.Ptr("default"),
+		Type: to.Ptr("Microsoft.Security/workspaceSettings"),
+		ID:   to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/workspaceSettings/default"),
+		Properties: &armsecurity.WorkspaceSettingProperties{
+			WorkspaceID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

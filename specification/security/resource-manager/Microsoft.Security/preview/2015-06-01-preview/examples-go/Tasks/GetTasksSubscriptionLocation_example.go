@@ -19,8 +19,7 @@ func ExampleTasksClient_NewListByHomeRegionPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByHomeRegionPager("westeurope",
-		&armsecurity.TasksClientListByHomeRegionOptions{Filter: nil})
+	pager := client.NewListByHomeRegionPager("westeurope", &armsecurity.TasksClientListByHomeRegionOptions{Filter: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -20,10 +20,9 @@ func ExampleAdaptiveApplicationControlsClient_List() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.List(ctx,
-		&armsecurity.AdaptiveApplicationControlsClientListOptions{IncludePathRecommendations: to.Ptr(true),
-			Summary: to.Ptr(false),
-		})
+	res, err := client.List(ctx, &armsecurity.AdaptiveApplicationControlsClientListOptions{IncludePathRecommendations: to.Ptr(true),
+		Summary: to.Ptr(false),
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

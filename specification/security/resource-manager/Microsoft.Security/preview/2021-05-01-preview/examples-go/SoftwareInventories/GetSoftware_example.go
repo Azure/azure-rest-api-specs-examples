@@ -19,13 +19,7 @@ func ExampleSoftwareInventoriesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"EITAN-TESTS",
-		"Microsoft.Compute",
-		"virtualMachines",
-		"Eitan-Test1",
-		"outlook_16.0.10371.20060",
-		nil)
+	res, err := client.Get(ctx, "EITAN-TESTS", "Microsoft.Compute", "virtualMachines", "Eitan-Test1", "outlook_16.0.10371.20060", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

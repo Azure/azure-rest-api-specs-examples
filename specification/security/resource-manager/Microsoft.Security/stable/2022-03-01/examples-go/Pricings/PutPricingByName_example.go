@@ -20,15 +20,12 @@ func ExamplePricingsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"VirtualMachines",
-		armsecurity.Pricing{
-			Properties: &armsecurity.PricingProperties{
-				PricingTier: to.Ptr(armsecurity.PricingTierStandard),
-				SubPlan:     to.Ptr("P2"),
-			},
+	res, err := client.Update(ctx, "VirtualMachines", armsecurity.Pricing{
+		Properties: &armsecurity.PricingProperties{
+			PricingTier: to.Ptr(armsecurity.PricingTierStandard),
+			SubPlan:     to.Ptr("P2"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

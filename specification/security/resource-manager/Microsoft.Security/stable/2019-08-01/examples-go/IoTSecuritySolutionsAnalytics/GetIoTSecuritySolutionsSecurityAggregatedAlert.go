@@ -19,11 +19,7 @@ func ExampleIotSecuritySolutionsAnalyticsAggregatedAlertClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"MyGroup",
-		"default",
-		"IoT_Bruteforce_Fail/2019-02-02",
-		nil)
+	res, err := client.Get(ctx, "MyGroup", "default", "IoT_Bruteforce_Fail/2019-02-02", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

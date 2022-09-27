@@ -19,9 +19,7 @@ func ExampleAssessmentsMetadataClient_GetInSubscription() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetInSubscription(ctx,
-		"21300918-b2e3-0346-785f-c77ff57d243b",
-		nil)
+	res, err := client.GetInSubscription(ctx, "21300918-b2e3-0346-785f-c77ff57d243b", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

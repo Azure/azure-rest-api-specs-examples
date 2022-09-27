@@ -20,17 +20,14 @@ func ExampleAutoProvisioningSettingsClient_Create() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Create(ctx,
-		"default",
-		armsecurity.AutoProvisioningSetting{
-			Name: to.Ptr("default"),
-			Type: to.Ptr("Microsoft.Security/autoProvisioningSettings"),
-			ID:   to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/autoProvisioningSettings/default"),
-			Properties: &armsecurity.AutoProvisioningSettingProperties{
-				AutoProvision: to.Ptr(armsecurity.AutoProvisionOn),
-			},
+	res, err := client.Create(ctx, "default", armsecurity.AutoProvisioningSetting{
+		Name: to.Ptr("default"),
+		Type: to.Ptr("Microsoft.Security/autoProvisioningSettings"),
+		ID:   to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/autoProvisioningSettings/default"),
+		Properties: &armsecurity.AutoProvisioningSettingProperties{
+			AutoProvision: to.Ptr(armsecurity.AutoProvisionOn),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -20,20 +20,16 @@ func ExampleCustomAssessmentAutomationsClient_Create() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Create(ctx,
-		"TestResourceGroup",
-		"MyCustomAssessmentAutomation",
-		armsecurity.CustomAssessmentAutomationRequest{
-			Properties: &armsecurity.CustomAssessmentAutomationRequestProperties{
-				Description:            to.Ptr("Data should be encrypted"),
-				CompressedQuery:        to.Ptr("DQAKAEkAYQBtAF8ARwByAG8AdQBwAA0ACgB8ACAAZQB4AHQAZQBuAGQAIABIAGUAYQBsAHQAaABTAHQAYQB0AHUAcwAgAD0AIABpAGYAZgAoAHQAbwBzAHQAcgBpAG4AZwAoAFIAZQBjAG8AcgBkAC4AVQBzAGUAcgBOAGEAbQBlACkAIABjAG8AbgB0AGEAaQBuAHMAIAAnAHUAcwBlAHIAJwAsACAAJwBVAE4ASABFAEEATABUAEgAWQAnACwAIAAnAEgARQBBAEwAVABIAFkAJwApAA0ACgA="),
-				DisplayName:            to.Ptr("Password Policy"),
-				RemediationDescription: to.Ptr("Encrypt store by..."),
-				Severity:               to.Ptr(armsecurity.SeverityEnumMedium),
-				SupportedCloud:         to.Ptr(armsecurity.SupportedCloudEnumAWS),
-			},
+	res, err := client.Create(ctx, "TestResourceGroup", "MyCustomAssessmentAutomation", armsecurity.CustomAssessmentAutomationRequest{
+		Properties: &armsecurity.CustomAssessmentAutomationRequestProperties{
+			Description:            to.Ptr("Data should be encrypted"),
+			CompressedQuery:        to.Ptr("DQAKAEkAYQBtAF8ARwByAG8AdQBwAA0ACgB8ACAAZQB4AHQAZQBuAGQAIABIAGUAYQBsAHQAaABTAHQAYQB0AHUAcwAgAD0AIABpAGYAZgAoAHQAbwBzAHQAcgBpAG4AZwAoAFIAZQBjAG8AcgBkAC4AVQBzAGUAcgBOAGEAbQBlACkAIABjAG8AbgB0AGEAaQBuAHMAIAAnAHUAcwBlAHIAJwAsACAAJwBVAE4ASABFAEEATABUAEgAWQAnACwAIAAnAEgARQBBAEwAVABIAFkAJwApAA0ACgA="),
+			DisplayName:            to.Ptr("Password Policy"),
+			RemediationDescription: to.Ptr("Encrypt store by..."),
+			Severity:               to.Ptr(armsecurity.SeverityEnumMedium),
+			SupportedCloud:         to.Ptr(armsecurity.SupportedCloudEnumAWS),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

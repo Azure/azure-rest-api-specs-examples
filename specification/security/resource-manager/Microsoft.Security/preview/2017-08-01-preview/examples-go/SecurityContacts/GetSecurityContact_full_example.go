@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/SecurityContacts/GetSecurityContact_full_example.json
-func ExampleContactsClient_Get() {
+func ExampleContactsClient_Get_getSecurityContactDataFull() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +19,7 @@ func ExampleContactsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"default1",
-		nil)
+	res, err := client.Get(ctx, "default1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

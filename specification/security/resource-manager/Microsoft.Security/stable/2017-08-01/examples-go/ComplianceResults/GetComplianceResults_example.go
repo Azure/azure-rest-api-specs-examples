@@ -19,10 +19,7 @@ func ExampleComplianceResultsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23",
-		"DesignateMoreThanOneOwner",
-		nil)
+	res, err := client.Get(ctx, "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", "DesignateMoreThanOneOwner", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

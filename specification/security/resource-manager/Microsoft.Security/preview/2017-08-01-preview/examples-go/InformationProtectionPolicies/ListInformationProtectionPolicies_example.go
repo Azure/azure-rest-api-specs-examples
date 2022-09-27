@@ -19,8 +19,7 @@ func ExampleInformationProtectionPoliciesClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("providers/Microsoft.Management/managementGroups/148059f7-faf3-49a6-ba35-85122112291e",
-		nil)
+	pager := client.NewListPager("providers/Microsoft.Management/managementGroups/148059f7-faf3-49a6-ba35-85122112291e", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -19,11 +19,7 @@ func ExampleIotSecuritySolutionsAnalyticsAggregatedAlertClient_Dismiss() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Dismiss(ctx,
-		"IoTEdgeResources",
-		"default",
-		"IoT_Bruteforce_Fail/2019-02-02/dismiss",
-		nil)
+	_, err = client.Dismiss(ctx, "IoTEdgeResources", "default", "IoT_Bruteforce_Fail/2019-02-02/dismiss", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

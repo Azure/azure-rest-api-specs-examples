@@ -19,11 +19,7 @@ func ExampleJitNetworkAccessPoliciesClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"myRg1",
-		"westeurope",
-		"default",
-		nil)
+	_, err = client.Delete(ctx, "myRg1", "westeurope", "default", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

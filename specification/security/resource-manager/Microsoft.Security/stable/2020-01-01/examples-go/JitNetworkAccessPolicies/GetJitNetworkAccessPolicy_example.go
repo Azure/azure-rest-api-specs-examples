@@ -19,11 +19,7 @@ func ExampleJitNetworkAccessPoliciesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"myRg1",
-		"westeurope",
-		"default",
-		nil)
+	res, err := client.Get(ctx, "myRg1", "westeurope", "default", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

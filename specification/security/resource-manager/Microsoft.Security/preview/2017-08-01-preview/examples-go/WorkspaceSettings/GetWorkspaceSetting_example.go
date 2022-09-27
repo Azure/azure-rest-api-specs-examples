@@ -19,9 +19,7 @@ func ExampleWorkspaceSettingsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"default",
-		nil)
+	res, err := client.Get(ctx, "default", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

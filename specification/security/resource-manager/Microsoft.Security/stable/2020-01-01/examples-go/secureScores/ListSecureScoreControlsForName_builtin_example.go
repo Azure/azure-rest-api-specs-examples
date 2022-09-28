@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/secureScores/ListSecureScoreControlsForName_builtin_example.json
-func ExampleSecureScoreControlsClient_NewListBySecureScorePager() {
+func ExampleSecureScoreControlsClient_NewListBySecureScorePager_getSecurityControlsAndTheirCurrentScoreForTheSpecifiedInitiative() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,8 +19,7 @@ func ExampleSecureScoreControlsClient_NewListBySecureScorePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBySecureScorePager("ascScore",
-		&armsecurity.SecureScoreControlsClientListBySecureScoreOptions{Expand: nil})
+	pager := client.NewListBySecureScorePager("ascScore", &armsecurity.SecureScoreControlsClientListBySecureScoreOptions{Expand: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

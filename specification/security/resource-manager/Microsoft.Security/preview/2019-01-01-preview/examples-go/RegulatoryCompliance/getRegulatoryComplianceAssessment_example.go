@@ -19,11 +19,7 @@ func ExampleRegulatoryComplianceAssessmentsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"PCI-DSS-3.2",
-		"1.1",
-		"968548cb-02b3-8cd2-11f8-0cf64ab1a347",
-		nil)
+	res, err := client.Get(ctx, "PCI-DSS-3.2", "1.1", "968548cb-02b3-8cd2-11f8-0cf64ab1a347", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

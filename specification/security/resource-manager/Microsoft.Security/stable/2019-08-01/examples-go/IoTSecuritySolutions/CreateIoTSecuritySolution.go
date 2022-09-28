@@ -20,38 +20,34 @@ func ExampleIotSecuritySolutionClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"MyGroup",
-		"default",
-		armsecurity.IoTSecuritySolutionModel{
-			Tags:     map[string]*string{},
-			Location: to.Ptr("East Us"),
-			Properties: &armsecurity.IoTSecuritySolutionProperties{
-				DisabledDataSources: []*armsecurity.DataSource{},
-				DisplayName:         to.Ptr("Solution Default"),
-				Export:              []*armsecurity.ExportData{},
-				IotHubs: []*string{
-					to.Ptr("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub")},
-				RecommendationsConfiguration: []*armsecurity.RecommendationConfigurationProperties{
-					{
-						RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTOpenPorts),
-						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
-					},
-					{
-						RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTSharedCredentials),
-						Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
-					}},
-				Status:                  to.Ptr(armsecurity.SecuritySolutionStatusEnabled),
-				UnmaskedIPLoggingStatus: to.Ptr(armsecurity.UnmaskedIPLoggingStatusEnabled),
-				UserDefinedResources: &armsecurity.UserDefinedResourcesProperties{
-					Query: to.Ptr("where type != \"microsoft.devices/iothubs\" | where name contains \"iot\""),
-					QuerySubscriptions: []*string{
-						to.Ptr("075423e9-7d33-4166-8bdf-3920b04e3735")},
+	res, err := client.CreateOrUpdate(ctx, "MyGroup", "default", armsecurity.IoTSecuritySolutionModel{
+		Tags:     map[string]*string{},
+		Location: to.Ptr("East Us"),
+		Properties: &armsecurity.IoTSecuritySolutionProperties{
+			DisabledDataSources: []*armsecurity.DataSource{},
+			DisplayName:         to.Ptr("Solution Default"),
+			Export:              []*armsecurity.ExportData{},
+			IotHubs: []*string{
+				to.Ptr("/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub")},
+			RecommendationsConfiguration: []*armsecurity.RecommendationConfigurationProperties{
+				{
+					RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTOpenPorts),
+					Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
 				},
-				Workspace: to.Ptr("/subscriptions/c4930e90-cd72-4aa5-93e9-2d081d129569/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace1"),
+				{
+					RecommendationType: to.Ptr(armsecurity.RecommendationTypeIoTSharedCredentials),
+					Status:             to.Ptr(armsecurity.RecommendationConfigStatusDisabled),
+				}},
+			Status:                  to.Ptr(armsecurity.SecuritySolutionStatusEnabled),
+			UnmaskedIPLoggingStatus: to.Ptr(armsecurity.UnmaskedIPLoggingStatusEnabled),
+			UserDefinedResources: &armsecurity.UserDefinedResourcesProperties{
+				Query: to.Ptr("where type != \"microsoft.devices/iothubs\" | where name contains \"iot\""),
+				QuerySubscriptions: []*string{
+					to.Ptr("075423e9-7d33-4166-8bdf-3920b04e3735")},
 			},
+			Workspace: to.Ptr("/subscriptions/c4930e90-cd72-4aa5-93e9-2d081d129569/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace1"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,9 +19,7 @@ func ExampleAccountConnectorsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"aws_dev1",
-		nil)
+	res, err := client.Get(ctx, "aws_dev1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

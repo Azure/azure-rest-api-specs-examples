@@ -19,11 +19,7 @@ func ExampleTasksClient_GetResourceGroupLevelTask() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetResourceGroupLevelTask(ctx,
-		"myRg",
-		"westeurope",
-		"d55b4dc0-779c-c66c-33e5-d7bce24c4222",
-		nil)
+	res, err := client.GetResourceGroupLevelTask(ctx, "myRg", "westeurope", "d55b4dc0-779c-c66c-33e5-d7bce24c4222", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

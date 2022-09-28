@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/SecurityContacts/UpdateSecurityContact_full_example.json
-func ExampleContactsClient_Update() {
+func ExampleContactsClient_Update_updateSecurityContactDataFull() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,18 +20,15 @@ func ExampleContactsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"john",
-		armsecurity.Contact{
-			Name: to.Ptr("default1"),
-			Type: to.Ptr("Microsoft.Security/securityContacts"),
-			ID:   to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/securityContacts/default1"),
-			Properties: &armsecurity.ContactProperties{
-				AlertNotifications: to.Ptr(armsecurity.AlertNotificationsOn),
-				Phone:              to.Ptr("(214)275-4038"),
-			},
+	res, err := client.Update(ctx, "john", armsecurity.Contact{
+		Name: to.Ptr("default1"),
+		Type: to.Ptr("Microsoft.Security/securityContacts"),
+		ID:   to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/securityContacts/default1"),
+		Properties: &armsecurity.ContactProperties{
+			AlertNotifications: to.Ptr(armsecurity.AlertNotificationsOn),
+			Phone:              to.Ptr("(214)275-4038"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

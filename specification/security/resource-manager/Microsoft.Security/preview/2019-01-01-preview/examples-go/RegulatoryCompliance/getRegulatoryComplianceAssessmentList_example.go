@@ -19,9 +19,7 @@ func ExampleRegulatoryComplianceAssessmentsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("PCI-DSS-3.2",
-		"1.1",
-		&armsecurity.RegulatoryComplianceAssessmentsClientListOptions{Filter: nil})
+	pager := client.NewListPager("PCI-DSS-3.2", "1.1", &armsecurity.RegulatoryComplianceAssessmentsClientListOptions{Filter: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

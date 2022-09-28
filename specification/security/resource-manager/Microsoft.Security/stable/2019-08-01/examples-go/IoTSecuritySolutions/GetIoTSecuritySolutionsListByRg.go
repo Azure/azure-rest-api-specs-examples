@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/GetIoTSecuritySolutionsListByRg.json
-func ExampleIotSecuritySolutionClient_NewListByResourceGroupPager() {
+func ExampleIotSecuritySolutionClient_NewListByResourceGroupPager_listIoTSecuritySolutionsByResourceGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,8 +19,7 @@ func ExampleIotSecuritySolutionClient_NewListByResourceGroupPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("MyGroup",
-		&armsecurity.IotSecuritySolutionClientListByResourceGroupOptions{Filter: nil})
+	pager := client.NewListByResourceGroupPager("MyGroup", &armsecurity.IotSecuritySolutionClientListByResourceGroupOptions{Filter: nil})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -19,11 +19,7 @@ func ExampleTasksClient_UpdateSubscriptionLevelTaskState() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.UpdateSubscriptionLevelTaskState(ctx,
-		"westeurope",
-		"62609ee7-d0a5-8616-9fe4-1df5cca7758d",
-		armsecurity.TaskUpdateActionTypeDismiss,
-		nil)
+	_, err = client.UpdateSubscriptionLevelTaskState(ctx, "westeurope", "62609ee7-d0a5-8616-9fe4-1df5cca7758d", armsecurity.TaskUpdateActionTypeDismiss, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

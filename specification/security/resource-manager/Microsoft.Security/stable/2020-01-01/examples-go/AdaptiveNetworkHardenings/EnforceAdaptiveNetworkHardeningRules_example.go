@@ -20,38 +20,31 @@ func ExampleAdaptiveNetworkHardeningsClient_BeginEnforce() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginEnforce(ctx,
-		"rg1",
-		"Microsoft.Compute",
-		"virtualMachines",
-		"vm1",
-		"default",
-		armsecurity.AdaptiveNetworkHardeningEnforceRequest{
-			NetworkSecurityGroups: []*string{
-				to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/nsg1"),
-				to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2")},
-			Rules: []*armsecurity.Rule{
-				{
-					Name:            to.Ptr("rule1"),
-					DestinationPort: to.Ptr[int32](3389),
-					Direction:       to.Ptr(armsecurity.DirectionInbound),
-					IPAddresses: []*string{
-						to.Ptr("100.10.1.1"),
-						to.Ptr("200.20.2.2"),
-						to.Ptr("81.199.3.0/24")},
-					Protocols: []*armsecurity.TransportProtocol{
-						to.Ptr(armsecurity.TransportProtocolTCP)},
-				},
-				{
-					Name:            to.Ptr("rule2"),
-					DestinationPort: to.Ptr[int32](22),
-					Direction:       to.Ptr(armsecurity.DirectionInbound),
-					IPAddresses:     []*string{},
-					Protocols: []*armsecurity.TransportProtocol{
-						to.Ptr(armsecurity.TransportProtocolTCP)},
-				}},
-		},
-		nil)
+	poller, err := client.BeginEnforce(ctx, "rg1", "Microsoft.Compute", "virtualMachines", "vm1", "default", armsecurity.AdaptiveNetworkHardeningEnforceRequest{
+		NetworkSecurityGroups: []*string{
+			to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/nsg1"),
+			to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2")},
+		Rules: []*armsecurity.Rule{
+			{
+				Name:            to.Ptr("rule1"),
+				DestinationPort: to.Ptr[int32](3389),
+				Direction:       to.Ptr(armsecurity.DirectionInbound),
+				IPAddresses: []*string{
+					to.Ptr("100.10.1.1"),
+					to.Ptr("200.20.2.2"),
+					to.Ptr("81.199.3.0/24")},
+				Protocols: []*armsecurity.TransportProtocol{
+					to.Ptr(armsecurity.TransportProtocolTCP)},
+			},
+			{
+				Name:            to.Ptr("rule2"),
+				DestinationPort: to.Ptr[int32](22),
+				Direction:       to.Ptr(armsecurity.DirectionInbound),
+				IPAddresses:     []*string{},
+				Protocols: []*armsecurity.TransportProtocol{
+					to.Ptr(armsecurity.TransportProtocolTCP)},
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

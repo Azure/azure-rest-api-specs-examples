@@ -19,10 +19,7 @@ func ExampleDeviceSecurityGroupsClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub",
-		"samplesecuritygroup",
-		nil)
+	_, err = client.Delete(ctx, "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub", "samplesecuritygroup", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,9 +19,7 @@ func ExampleAssessmentsMetadataClient_DeleteInSubscription() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.DeleteInSubscription(ctx,
-		"ca039e75-a276-4175-aebc-bcd41e4b14b7",
-		nil)
+	_, err = client.DeleteInSubscription(ctx, "ca039e75-a276-4175-aebc-bcd41e4b14b7", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

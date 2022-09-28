@@ -19,8 +19,7 @@ func ExampleCompliancesClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23",
-		nil)
+	pager := client.NewListPager("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

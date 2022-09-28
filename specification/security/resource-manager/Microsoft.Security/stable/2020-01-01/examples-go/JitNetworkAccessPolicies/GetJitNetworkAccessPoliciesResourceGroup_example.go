@@ -19,8 +19,7 @@ func ExampleJitNetworkAccessPoliciesClient_NewListByResourceGroupPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("myRg1",
-		nil)
+	pager := client.NewListByResourceGroupPager("myRg1", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

@@ -20,20 +20,16 @@ func ExampleAssessmentsClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2",
-		"8bb8be0a-6010-4789-812f-e4d661c4ed0e",
-		armsecurity.Assessment{
-			Properties: &armsecurity.AssessmentProperties{
-				ResourceDetails: &armsecurity.AzureResourceDetails{
-					Source: to.Ptr(armsecurity.SourceAzure),
-				},
-				Status: &armsecurity.AssessmentStatus{
-					Code: to.Ptr(armsecurity.AssessmentStatusCodeHealthy),
-				},
+	res, err := client.CreateOrUpdate(ctx, "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2", "8bb8be0a-6010-4789-812f-e4d661c4ed0e", armsecurity.Assessment{
+		Properties: &armsecurity.AssessmentProperties{
+			ResourceDetails: &armsecurity.AzureResourceDetails{
+				Source: to.Ptr(armsecurity.SourceAzure),
+			},
+			Status: &armsecurity.AssessmentStatus{
+				Code: to.Ptr(armsecurity.AssessmentStatusCodeHealthy),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

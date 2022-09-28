@@ -19,9 +19,7 @@ func ExampleIngestionSettingsClient_ListTokens() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListTokens(ctx,
-		"default",
-		nil)
+	res, err := client.ListTokens(ctx, "default", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

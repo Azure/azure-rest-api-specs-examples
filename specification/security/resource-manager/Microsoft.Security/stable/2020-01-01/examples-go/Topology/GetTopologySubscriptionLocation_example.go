@@ -19,8 +19,7 @@ func ExampleTopologyClient_NewListByHomeRegionPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByHomeRegionPager("centralus",
-		nil)
+	pager := client.NewListByHomeRegionPager("centralus", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

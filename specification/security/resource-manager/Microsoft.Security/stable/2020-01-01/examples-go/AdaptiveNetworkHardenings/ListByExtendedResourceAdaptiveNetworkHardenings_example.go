@@ -19,11 +19,7 @@ func ExampleAdaptiveNetworkHardeningsClient_NewListByExtendedResourcePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByExtendedResourcePager("rg1",
-		"Microsoft.Compute",
-		"virtualMachines",
-		"vm1",
-		nil)
+	pager := client.NewListByExtendedResourcePager("rg1", "Microsoft.Compute", "virtualMachines", "vm1", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

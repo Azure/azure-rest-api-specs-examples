@@ -19,13 +19,7 @@ func ExampleAdaptiveNetworkHardeningsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"rg1",
-		"Microsoft.Compute",
-		"virtualMachines",
-		"vm1",
-		"default",
-		nil)
+	res, err := client.Get(ctx, "rg1", "Microsoft.Compute", "virtualMachines", "vm1", "default", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

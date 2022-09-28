@@ -19,9 +19,7 @@ func ExampleIngestionSettingsClient_ListConnectionStrings() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListConnectionStrings(ctx,
-		"default",
-		nil)
+	res, err := client.ListConnectionStrings(ctx, "default", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

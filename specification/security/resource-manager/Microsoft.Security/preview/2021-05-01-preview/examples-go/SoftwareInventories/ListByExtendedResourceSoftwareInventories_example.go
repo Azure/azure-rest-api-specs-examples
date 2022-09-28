@@ -19,11 +19,7 @@ func ExampleSoftwareInventoriesClient_NewListByExtendedResourcePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByExtendedResourcePager("EITAN-TESTS",
-		"Microsoft.Compute",
-		"virtualMachines",
-		"Eitan-Test1",
-		nil)
+	pager := client.NewListByExtendedResourcePager("EITAN-TESTS", "Microsoft.Compute", "virtualMachines", "Eitan-Test1", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

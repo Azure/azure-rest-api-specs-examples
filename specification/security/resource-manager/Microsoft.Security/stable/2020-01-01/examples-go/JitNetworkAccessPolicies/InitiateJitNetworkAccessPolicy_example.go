@@ -20,23 +20,18 @@ func ExampleJitNetworkAccessPoliciesClient_Initiate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Initiate(ctx,
-		"myRg1",
-		"westeurope",
-		"default",
-		armsecurity.JitNetworkAccessPolicyInitiateRequest{
-			Justification: to.Ptr("testing a new version of the product"),
-			VirtualMachines: []*armsecurity.JitNetworkAccessPolicyInitiateVirtualMachine{
-				{
-					ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"),
-					Ports: []*armsecurity.JitNetworkAccessPolicyInitiatePort{
-						{
-							AllowedSourceAddressPrefix: to.Ptr("192.127.0.2"),
-							Number:                     to.Ptr[int32](3389),
-						}},
-				}},
-		},
-		nil)
+	_, err = client.Initiate(ctx, "myRg1", "westeurope", "default", armsecurity.JitNetworkAccessPolicyInitiateRequest{
+		Justification: to.Ptr("testing a new version of the product"),
+		VirtualMachines: []*armsecurity.JitNetworkAccessPolicyInitiateVirtualMachine{
+			{
+				ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"),
+				Ports: []*armsecurity.JitNetworkAccessPolicyInitiatePort{
+					{
+						AllowedSourceAddressPrefix: to.Ptr("192.127.0.2"),
+						Number:                     to.Ptr[int32](3389),
+					}},
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

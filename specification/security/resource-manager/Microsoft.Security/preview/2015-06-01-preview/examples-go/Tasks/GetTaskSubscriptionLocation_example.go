@@ -19,10 +19,7 @@ func ExampleTasksClient_GetSubscriptionLevelTask() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetSubscriptionLevelTask(ctx,
-		"westeurope",
-		"62609ee7-d0a5-8616-9fe4-1df5cca7758d",
-		nil)
+	res, err := client.GetSubscriptionLevelTask(ctx, "westeurope", "62609ee7-d0a5-8616-9fe4-1df5cca7758d", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

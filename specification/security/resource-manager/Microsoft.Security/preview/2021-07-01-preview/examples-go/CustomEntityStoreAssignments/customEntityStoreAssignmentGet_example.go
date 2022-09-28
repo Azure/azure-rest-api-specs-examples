@@ -19,10 +19,7 @@ func ExampleCustomEntityStoreAssignmentsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"TestResourceGroup",
-		"33e7cc6e-a139-4723-a0e5-76993aee0771",
-		nil)
+	res, err := client.Get(ctx, "TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

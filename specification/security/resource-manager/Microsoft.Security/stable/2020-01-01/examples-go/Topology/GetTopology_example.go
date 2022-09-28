@@ -19,11 +19,7 @@ func ExampleTopologyClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"myservers",
-		"centralus",
-		"vnets",
-		nil)
+	res, err := client.Get(ctx, "myservers", "centralus", "vnets", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,11 +19,7 @@ func ExampleExternalSecuritySolutionsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"defaultresourcegroup-eus",
-		"centralus",
-		"aad_defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus",
-		nil)
+	res, err := client.Get(ctx, "defaultresourcegroup-eus", "centralus", "aad_defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

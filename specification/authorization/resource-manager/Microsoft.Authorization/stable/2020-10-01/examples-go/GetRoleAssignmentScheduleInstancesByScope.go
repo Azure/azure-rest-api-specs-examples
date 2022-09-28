@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/authorization/armauthorization"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/authorization/armauthorization/v2"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/authorization/resource-manager/Microsoft.Authorization/stable/2020-10-01/examples/GetRoleAssignmentScheduleInstancesByScope.json
@@ -20,8 +20,7 @@ func ExampleRoleAssignmentScheduleInstancesClient_NewListForScopePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListForScopePager("providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
-		&armauthorization.RoleAssignmentScheduleInstancesClientListForScopeOptions{Filter: to.Ptr("assignedTo('a3bb8764-cb92-4276-9d2a-ca1e895e55ea')")})
+	pager := client.NewListForScopePager("providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f", &armauthorization.RoleAssignmentScheduleInstancesClientListForScopeOptions{Filter: to.Ptr("assignedTo('a3bb8764-cb92-4276-9d2a-ca1e895e55ea')")})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

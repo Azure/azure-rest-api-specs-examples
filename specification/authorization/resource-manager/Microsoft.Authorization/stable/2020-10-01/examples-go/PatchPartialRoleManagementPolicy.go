@@ -6,11 +6,11 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/authorization/armauthorization"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/authorization/armauthorization/v2"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/authorization/resource-manager/Microsoft.Authorization/stable/2020-10-01/examples/PatchPartialRoleManagementPolicy.json
-func ExampleRoleManagementPoliciesClient_Update() {
+func ExampleRoleManagementPoliciesClient_Update_patchPartialRoleManagementPolicy() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,43 +20,39 @@ func ExampleRoleManagementPoliciesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368",
-		"570c3619-7688-4b34-b290-2b8bb3ccab2a",
-		armauthorization.RoleManagementPolicy{
-			Properties: &armauthorization.RoleManagementPolicyProperties{
-				Rules: []armauthorization.RoleManagementPolicyRuleClassification{
-					&armauthorization.RoleManagementPolicyExpirationRule{
-						ID:       to.Ptr("Expiration_Admin_Eligibility"),
-						RuleType: to.Ptr(armauthorization.RoleManagementPolicyRuleTypeRoleManagementPolicyExpirationRule),
-						Target: &armauthorization.RoleManagementPolicyRuleTarget{
-							Caller: to.Ptr("Admin"),
-							Level:  to.Ptr("Eligibility"),
-							Operations: []*string{
-								to.Ptr("All")},
-						},
-						IsExpirationRequired: to.Ptr(false),
-						MaximumDuration:      to.Ptr("P180D"),
+	res, err := client.Update(ctx, "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368", "570c3619-7688-4b34-b290-2b8bb3ccab2a", armauthorization.RoleManagementPolicy{
+		Properties: &armauthorization.RoleManagementPolicyProperties{
+			Rules: []armauthorization.RoleManagementPolicyRuleClassification{
+				&armauthorization.RoleManagementPolicyExpirationRule{
+					ID:       to.Ptr("Expiration_Admin_Eligibility"),
+					RuleType: to.Ptr(armauthorization.RoleManagementPolicyRuleTypeRoleManagementPolicyExpirationRule),
+					Target: &armauthorization.RoleManagementPolicyRuleTarget{
+						Caller: to.Ptr("Admin"),
+						Level:  to.Ptr("Eligibility"),
+						Operations: []*string{
+							to.Ptr("All")},
 					},
-					&armauthorization.RoleManagementPolicyNotificationRule{
-						ID:       to.Ptr("Notification_Admin_Admin_Eligibility"),
-						RuleType: to.Ptr(armauthorization.RoleManagementPolicyRuleTypeRoleManagementPolicyNotificationRule),
-						Target: &armauthorization.RoleManagementPolicyRuleTarget{
-							Caller: to.Ptr("Admin"),
-							Level:  to.Ptr("Eligibility"),
-							Operations: []*string{
-								to.Ptr("All")},
-						},
-						IsDefaultRecipientsEnabled: to.Ptr(false),
-						NotificationLevel:          to.Ptr(armauthorization.NotificationLevelCritical),
-						NotificationRecipients: []*string{
-							to.Ptr("admin_admin_eligible@test.com")},
-						NotificationType: to.Ptr(armauthorization.NotificationDeliveryMechanismEmail),
-						RecipientType:    to.Ptr(armauthorization.RecipientTypeAdmin),
-					}},
-			},
+					IsExpirationRequired: to.Ptr(false),
+					MaximumDuration:      to.Ptr("P180D"),
+				},
+				&armauthorization.RoleManagementPolicyNotificationRule{
+					ID:       to.Ptr("Notification_Admin_Admin_Eligibility"),
+					RuleType: to.Ptr(armauthorization.RoleManagementPolicyRuleTypeRoleManagementPolicyNotificationRule),
+					Target: &armauthorization.RoleManagementPolicyRuleTarget{
+						Caller: to.Ptr("Admin"),
+						Level:  to.Ptr("Eligibility"),
+						Operations: []*string{
+							to.Ptr("All")},
+					},
+					IsDefaultRecipientsEnabled: to.Ptr(false),
+					NotificationLevel:          to.Ptr(armauthorization.NotificationLevelCritical),
+					NotificationRecipients: []*string{
+						to.Ptr("admin_admin_eligible@test.com")},
+					NotificationType: to.Ptr(armauthorization.NotificationDeliveryMechanismEmail),
+					RecipientType:    to.Ptr(armauthorization.RecipientTypeAdmin),
+				}},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

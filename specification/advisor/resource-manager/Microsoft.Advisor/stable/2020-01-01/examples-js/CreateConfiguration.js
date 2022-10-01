@@ -2,14 +2,15 @@ const { AdvisorManagementClient } = require("@azure/arm-advisor");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Create/Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
+ * This sample demonstrates how to Create/Overwrite Azure Advisor configuration.
  *
- * @summary Create/Overwrite Azure Advisor configuration and also delete all configurations of contained resource groups.
+ * @summary Create/Overwrite Azure Advisor configuration.
  * x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/CreateConfiguration.json
  */
 async function putConfigurations() {
   const subscriptionId = "subscriptionId";
   const configurationName = "default";
+  const resourceGroup = "resourceGroup";
   const configContract = {
     digests: [
       {
@@ -33,8 +34,9 @@ async function putConfigurations() {
   };
   const credential = new DefaultAzureCredential();
   const client = new AdvisorManagementClient(credential, subscriptionId);
-  const result = await client.configurations.createInSubscription(
+  const result = await client.configurations.createInResourceGroup(
     configurationName,
+    resourceGroup,
     configContract
   );
   console.log(result);

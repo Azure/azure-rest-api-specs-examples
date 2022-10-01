@@ -17,7 +17,7 @@ async function createOrUpdateAMultiRolePool() {
   };
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.appServiceEnvironments.updateMultiRolePool(
+  const result = await client.appServiceEnvironments.beginCreateOrUpdateMultiRolePoolAndWait(
     resourceGroupName,
     name,
     multiRolePoolEnvelope

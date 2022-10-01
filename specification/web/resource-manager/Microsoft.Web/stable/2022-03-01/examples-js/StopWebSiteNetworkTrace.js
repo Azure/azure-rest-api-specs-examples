@@ -11,10 +11,9 @@ async function stopACurrentlyRunningNetworkTraceOperationForASite() {
   const subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
   const resourceGroupName = "testrg123";
   const name = "SampleApp";
-  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.webApps.stopNetworkTraceSlot(resourceGroupName, name, slot);
+  const result = await client.webApps.stopNetworkTrace(resourceGroupName, name);
   console.log(result);
 }
 

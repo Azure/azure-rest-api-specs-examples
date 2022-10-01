@@ -11,14 +11,9 @@ async function getResourceHealthMetadata() {
   const subscriptionId = "4adb32ad-8327-4cbb-b775-b84b4465bb38";
   const resourceGroupName = "Default-Web-NorthCentralUS";
   const name = "newsiteinnewASE-NCUS";
-  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.resourceHealthMetadataOperations.getBySiteSlot(
-    resourceGroupName,
-    name,
-    slot
-  );
+  const result = await client.resourceHealthMetadataOperations.getBySite(resourceGroupName, name);
   console.log(result);
 }
 

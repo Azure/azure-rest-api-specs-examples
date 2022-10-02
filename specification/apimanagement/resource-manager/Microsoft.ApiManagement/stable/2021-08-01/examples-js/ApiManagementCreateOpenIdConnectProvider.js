@@ -1,0 +1,32 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Creates or updates the OpenID Connect Provider.
+ *
+ * @summary Creates or updates the OpenID Connect Provider.
+ * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateOpenIdConnectProvider.json
+ */
+async function apiManagementCreateOpenIdConnectProvider() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "rg1";
+  const serviceName = "apimService1";
+  const opid = "templateOpenIdConnect3";
+  const parameters = {
+    clientId: "oidprovidertemplate3",
+    clientSecret: "x",
+    displayName: "templateoidprovider3",
+    metadataEndpoint: "https://oidprovider-template3.net",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.openIdConnectProvider.createOrUpdate(
+    resourceGroupName,
+    serviceName,
+    opid,
+    parameters
+  );
+  console.log(result);
+}
+
+apiManagementCreateOpenIdConnectProvider().catch(console.error);

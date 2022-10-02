@@ -1,0 +1,22 @@
+const { ApiManagementClient } = require("@azure/arm-apimanagement");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Deletes specific Cache.
+ *
+ * @summary Deletes specific Cache.
+ * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementDeleteCache.json
+ */
+async function apiManagementDeleteCache() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "rg1";
+  const serviceName = "apimService1";
+  const cacheId = "southindia";
+  const ifMatch = "*";
+  const credential = new DefaultAzureCredential();
+  const client = new ApiManagementClient(credential, subscriptionId);
+  const result = await client.cache.delete(resourceGroupName, serviceName, cacheId, ifMatch);
+  console.log(result);
+}
+
+apiManagementDeleteCache().catch(console.error);

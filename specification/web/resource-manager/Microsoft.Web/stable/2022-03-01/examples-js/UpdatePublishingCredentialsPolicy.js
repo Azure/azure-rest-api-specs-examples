@@ -2,12 +2,12 @@ const { WebSiteManagementClient } = require("@azure/arm-appservice");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Description for Updates whether user publishing credentials are allowed on the site or not.
+ * This sample demonstrates how to Description for Updates whether FTP is allowed on the site or not.
  *
- * @summary Description for Updates whether user publishing credentials are allowed on the site or not.
+ * @summary Description for Updates whether FTP is allowed on the site or not.
  * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/UpdatePublishingCredentialsPolicy.json
  */
-async function updateScmAllowed() {
+async function updateFtpAllowed() {
   const subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
   const resourceGroupName = "rg";
   const name = "testSite";
@@ -16,7 +16,7 @@ async function updateScmAllowed() {
   };
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.webApps.updateScmAllowed(
+  const result = await client.webApps.updateFtpAllowed(
     resourceGroupName,
     name,
     csmPublishingAccessPoliciesEntity
@@ -24,4 +24,4 @@ async function updateScmAllowed() {
   console.log(result);
 }
 
-updateScmAllowed().catch(console.error);
+updateFtpAllowed().catch(console.error);

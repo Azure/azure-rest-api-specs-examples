@@ -12,9 +12,15 @@ async function getNetworkTracesForASite() {
   const resourceGroupName = "testrg123";
   const name = "SampleApp";
   const operationId = "c291433b-53ad-4c49-8cae-0a293eae1c6d";
+  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.webApps.getNetworkTracesV2(resourceGroupName, name, operationId);
+  const result = await client.webApps.getNetworkTracesSlot(
+    resourceGroupName,
+    name,
+    operationId,
+    slot
+  );
   console.log(result);
 }
 

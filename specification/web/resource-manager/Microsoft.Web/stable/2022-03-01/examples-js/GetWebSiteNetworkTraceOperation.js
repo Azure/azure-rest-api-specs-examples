@@ -12,12 +12,14 @@ async function getTheCurrentStatusOfANetworkTraceOperationForASite() {
   const resourceGroupName = "testrg123";
   const name = "SampleApp";
   const operationId = "c291433b-53ad-4c49-8cae-0a293eae1c6d";
+  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.webApps.getNetworkTraceOperationV2(
+  const result = await client.webApps.getNetworkTraceOperationSlotV2(
     resourceGroupName,
     name,
-    operationId
+    operationId,
+    slot
   );
   console.log(result);
 }

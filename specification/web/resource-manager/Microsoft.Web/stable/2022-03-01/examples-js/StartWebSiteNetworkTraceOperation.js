@@ -18,7 +18,7 @@ async function startANewNetworkTraceOperationForASite() {
   };
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.webApps.beginStartWebSiteNetworkTraceOperationSlotAndWait(
+  const result = await client.webApps.beginStartNetworkTraceSlotAndWait(
     resourceGroupName,
     name,
     slot,

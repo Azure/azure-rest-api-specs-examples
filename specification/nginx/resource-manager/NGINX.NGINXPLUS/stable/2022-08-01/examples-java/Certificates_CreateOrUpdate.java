@@ -1,4 +1,4 @@
-/** Samples for Certificates Create. */
+/** Samples for Certificates CreateOrUpdate. */
 public final class Main {
     /*
      * x-ms-original-file: specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/examples/Certificates_CreateOrUpdate.json

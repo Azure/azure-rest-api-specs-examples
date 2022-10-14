@@ -16,7 +16,7 @@ func ExampleDeveloperHubServiceClient_GitHubOAuth() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevhub.NewDeveloperHubServiceClient("subscriptionId1", "<code>", "<state>", cred, nil)
+	client, err := armdevhub.NewDeveloperHubServiceClient("subscriptionId1", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}

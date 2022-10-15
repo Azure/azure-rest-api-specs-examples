@@ -1,4 +1,4 @@
-/** Samples for Deployments Create. */
+/** Samples for Deployments CreateOrUpdate. */
 public final class Main {
     /*
      * x-ms-original-file: specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/examples/Deployments_Create.json

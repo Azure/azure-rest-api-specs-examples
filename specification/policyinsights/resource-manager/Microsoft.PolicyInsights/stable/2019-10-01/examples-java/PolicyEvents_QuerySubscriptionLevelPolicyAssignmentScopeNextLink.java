@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyEventsResourceType;
 
 /** Samples for PolicyEvents ListQueryResultsForSubscriptionLevelPolicyAssignment. */
 public final class Main {
@@ -15,6 +16,7 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForSubscriptionLevelPolicyAssignment(
+                PolicyEventsResourceType.DEFAULT,
                 "fffedd8f-ffff-fffd-fffd-fffed2f84852",
                 "ec8f9645-8ecb-4abb-9c0b-5292f19d4003",
                 null,

@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyStatesSummaryResourceType;
 
 /** Samples for PolicyStates SummarizeForResourceGroup. */
 public final class Main {
@@ -15,6 +16,13 @@ public final class Main {
         manager
             .policyStates()
             .summarizeForResourceGroupWithResponse(
-                "fffedd8f-ffff-fffd-fffd-fffed2f84852", "myResourceGroup", null, null, null, null, Context.NONE);
+                PolicyStatesSummaryResourceType.LATEST,
+                "fffedd8f-ffff-fffd-fffd-fffed2f84852",
+                "myResourceGroup",
+                null,
+                null,
+                null,
+                null,
+                Context.NONE);
     }
 }

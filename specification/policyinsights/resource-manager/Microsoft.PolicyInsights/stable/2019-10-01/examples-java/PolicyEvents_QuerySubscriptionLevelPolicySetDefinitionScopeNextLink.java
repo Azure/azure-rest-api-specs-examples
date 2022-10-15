@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyEventsResourceType;
 
 /** Samples for PolicyEvents ListQueryResultsForPolicySetDefinition. */
 public final class Main {
@@ -15,6 +16,7 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForPolicySetDefinition(
+                PolicyEventsResourceType.DEFAULT,
                 "fffedd8f-ffff-fffd-fffd-fffed2f84852",
                 "3e3807c1-65c9-49e0-a406-82d8ae3e338c",
                 null,

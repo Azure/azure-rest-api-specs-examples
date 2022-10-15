@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyEventsResourceType;
 import java.time.OffsetDateTime;
 
 /** Samples for PolicyEvents ListQueryResultsForSubscription. */
@@ -16,6 +17,7 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForSubscription(
+                PolicyEventsResourceType.DEFAULT,
                 "fffedd8f-ffff-fffd-fffd-fffed2f84852",
                 2,
                 "Timestamp desc, PolicyAssignmentId asc, SubscriptionId asc, ResourceGroup asc, ResourceId",

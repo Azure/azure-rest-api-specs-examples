@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyTrackedResourcesResourceType;
 
 /** Samples for PolicyTrackedResources ListQueryResultsForSubscription. */
 public final class Main {
@@ -12,6 +13,8 @@ public final class Main {
      */
     public static void queryAtSubscriptionScope(
         com.azure.resourcemanager.policyinsights.PolicyInsightsManager manager) {
-        manager.policyTrackedResources().listQueryResultsForSubscription(null, null, Context.NONE);
+        manager
+            .policyTrackedResources()
+            .listQueryResultsForSubscription(PolicyTrackedResourcesResourceType.DEFAULT, null, null, Context.NONE);
     }
 }

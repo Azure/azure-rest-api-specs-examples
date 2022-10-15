@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyStatesSummaryResourceType;
 import java.time.OffsetDateTime;
 
 /** Samples for PolicyStates SummarizeForManagementGroup. */
@@ -16,6 +17,7 @@ public final class Main {
         manager
             .policyStates()
             .summarizeForManagementGroupWithResponse(
+                PolicyStatesSummaryResourceType.LATEST,
                 "myManagementGroup",
                 0,
                 OffsetDateTime.parse("2019-10-05T18:00:00Z"),

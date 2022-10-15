@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyEventsResourceType;
 
 /** Samples for PolicyEvents ListQueryResultsForResource. */
 public final class Main {
@@ -15,6 +16,7 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForResource(
+                PolicyEventsResourceType.DEFAULT,
                 "subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/Vaults/myKVName",
                 null,
                 null,
@@ -44,6 +46,7 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForResource(
+                PolicyEventsResourceType.DEFAULT,
                 "subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/Vaults/myKVName",
                 null,
                 null,
@@ -72,6 +75,7 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForResource(
+                PolicyEventsResourceType.DEFAULT,
                 "subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myDomainName",
                 null,
                 null,

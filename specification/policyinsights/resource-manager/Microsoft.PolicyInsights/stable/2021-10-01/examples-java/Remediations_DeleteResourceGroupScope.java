@@ -12,6 +12,6 @@ public final class Main {
      */
     public static void deleteRemediationAtResourceGroupScope(
         com.azure.resourcemanager.policyinsights.PolicyInsightsManager manager) {
-        manager.remediations().deleteWithResponse("myResourceGroup", "storageRemediation", Context.NONE);
+        manager.remediations().deleteByResourceGroupWithResponse("myResourceGroup", "storageRemediation", Context.NONE);
     }
 }

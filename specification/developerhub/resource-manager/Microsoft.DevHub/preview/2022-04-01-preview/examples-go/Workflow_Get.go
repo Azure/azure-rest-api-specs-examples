@@ -15,7 +15,7 @@ func ExampleWorkflowClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevhub.NewWorkflowClient("subscriptionId1", nil, cred, nil)
+	client, err := armdevhub.NewWorkflowClient("subscriptionId1", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}

@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyTrackedResourcesResourceType;
 
 /** Samples for PolicyTrackedResources ListQueryResultsForResourceGroup. */
 public final class Main {
@@ -12,6 +13,9 @@ public final class Main {
      */
     public static void queryAtResourceGroupScope(
         com.azure.resourcemanager.policyinsights.PolicyInsightsManager manager) {
-        manager.policyTrackedResources().listQueryResultsForResourceGroup("myResourceGroup", null, null, Context.NONE);
+        manager
+            .policyTrackedResources()
+            .listQueryResultsForResourceGroup(
+                "myResourceGroup", PolicyTrackedResourcesResourceType.DEFAULT, null, null, Context.NONE);
     }
 }

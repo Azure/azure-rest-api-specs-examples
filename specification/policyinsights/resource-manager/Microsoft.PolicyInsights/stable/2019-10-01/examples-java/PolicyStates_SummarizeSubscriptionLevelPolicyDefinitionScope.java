@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyStatesSummaryResourceType;
 
 /** Samples for PolicyStates SummarizeForPolicyDefinition. */
 public final class Main {
@@ -15,6 +16,7 @@ public final class Main {
         manager
             .policyStates()
             .summarizeForPolicyDefinitionWithResponse(
+                PolicyStatesSummaryResourceType.LATEST,
                 "fffedd8f-ffff-fffd-fffd-fffed2f84852",
                 "24813039-7534-408a-9842-eb99f45721b1",
                 null,

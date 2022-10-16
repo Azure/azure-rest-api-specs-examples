@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyEventsResourceType;
 
 /** Samples for PolicyEvents ListQueryResultsForManagementGroup. */
 public final class Main {
@@ -15,6 +16,16 @@ public final class Main {
         manager
             .policyEvents()
             .listQueryResultsForManagementGroup(
-                "myManagementGroup", null, null, null, null, null, null, null, "WpmWfBSvPhkAK6QD", Context.NONE);
+                PolicyEventsResourceType.DEFAULT,
+                "myManagementGroup",
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "WpmWfBSvPhkAK6QD",
+                Context.NONE);
     }
 }

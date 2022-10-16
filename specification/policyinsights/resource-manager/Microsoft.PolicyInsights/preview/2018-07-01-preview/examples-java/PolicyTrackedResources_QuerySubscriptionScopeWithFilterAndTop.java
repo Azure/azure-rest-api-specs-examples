@@ -1,4 +1,5 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.policyinsights.models.PolicyTrackedResourcesResourceType;
 
 /** Samples for PolicyTrackedResources ListQueryResultsForSubscription. */
 public final class Main {
@@ -15,6 +16,7 @@ public final class Main {
         manager
             .policyTrackedResources()
             .listQueryResultsForSubscription(
+                PolicyTrackedResourcesResourceType.DEFAULT,
                 1,
                 "PolicyAssignmentId eq"
                     + " '/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Authorization/policyAssignments/myPolicyAssignment'"

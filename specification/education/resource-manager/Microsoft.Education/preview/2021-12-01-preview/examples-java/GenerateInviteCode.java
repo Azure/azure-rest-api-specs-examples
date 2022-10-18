@@ -18,7 +18,7 @@ public final class Main {
                 "{billingAccountName}",
                 "{billingProfileName}",
                 "{invoiceSectionName}",
-                new InviteCodeGenerateRequest().withMaxStudentCount(10.0f),
+                new InviteCodeGenerateRequest().withMaxStudentCount(10.0F),
                 null,
                 Context.NONE);
     }

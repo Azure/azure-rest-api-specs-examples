@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/examples/getDynamicMetricAlertMultipleResource.json
-func ExampleMetricAlertsClient_Get() {
+func ExampleMetricAlertsClient_Get_getADynamicAlertRuleForMultipleResources() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,10 +19,7 @@ func ExampleMetricAlertsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"gigtest",
-		"MetricAlertOnMultipleResources",
-		nil)
+	res, err := client.Get(ctx, "gigtest", "MetricAlertOnMultipleResources", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

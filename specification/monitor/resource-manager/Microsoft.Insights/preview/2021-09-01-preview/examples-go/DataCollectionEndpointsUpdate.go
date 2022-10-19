@@ -20,17 +20,14 @@ func ExampleDataCollectionEndpointsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"myResourceGroup",
-		"myCollectionEndpoint",
-		&armmonitor.DataCollectionEndpointsClientUpdateOptions{Body: &armmonitor.ResourceForUpdate{
-			Tags: map[string]*string{
-				"tag1": to.Ptr("A"),
-				"tag2": to.Ptr("B"),
-				"tag3": to.Ptr("C"),
-			},
+	res, err := client.Update(ctx, "myResourceGroup", "myCollectionEndpoint", &armmonitor.DataCollectionEndpointsClientUpdateOptions{Body: &armmonitor.ResourceForUpdate{
+		Tags: map[string]*string{
+			"tag1": to.Ptr("A"),
+			"tag2": to.Ptr("B"),
+			"tag3": to.Ptr("C"),
 		},
-		})
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

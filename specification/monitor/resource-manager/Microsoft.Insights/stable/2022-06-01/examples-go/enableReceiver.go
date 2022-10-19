@@ -20,13 +20,9 @@ func ExampleActionGroupsClient_EnableReceiver() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.EnableReceiver(ctx,
-		"Default-NotificationRules",
-		"SampleActionGroup",
-		armmonitor.EnableRequest{
-			ReceiverName: to.Ptr("John Doe's mobile"),
-		},
-		nil)
+	_, err = client.EnableReceiver(ctx, "Default-NotificationRules", "SampleActionGroup", armmonitor.EnableRequest{
+		ReceiverName: to.Ptr("John Doe's mobile"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

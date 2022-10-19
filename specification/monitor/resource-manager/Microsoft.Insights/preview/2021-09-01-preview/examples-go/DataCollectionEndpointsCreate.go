@@ -20,18 +20,15 @@ func ExampleDataCollectionEndpointsClient_Create() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Create(ctx,
-		"myResourceGroup",
-		"myCollectionEndpoint",
-		&armmonitor.DataCollectionEndpointsClientCreateOptions{Body: &armmonitor.DataCollectionEndpointResource{
-			Location: to.Ptr("eastus"),
-			Properties: &armmonitor.DataCollectionEndpointResourceProperties{
-				NetworkACLs: &armmonitor.DataCollectionEndpointNetworkACLs{
-					PublicNetworkAccess: to.Ptr(armmonitor.KnownPublicNetworkAccessOptionsEnabled),
-				},
+	res, err := client.Create(ctx, "myResourceGroup", "myCollectionEndpoint", &armmonitor.DataCollectionEndpointsClientCreateOptions{Body: &armmonitor.DataCollectionEndpointResource{
+		Location: to.Ptr("eastus"),
+		Properties: &armmonitor.DataCollectionEndpointResourceProperties{
+			NetworkACLs: &armmonitor.DataCollectionEndpointNetworkACLs{
+				PublicNetworkAccess: to.Ptr(armmonitor.KnownPublicNetworkAccessOptionsEnabled),
 			},
 		},
-		})
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

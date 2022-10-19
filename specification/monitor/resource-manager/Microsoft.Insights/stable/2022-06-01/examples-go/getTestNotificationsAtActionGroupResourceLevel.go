@@ -19,11 +19,7 @@ func ExampleActionGroupsClient_GetTestNotificationsAtActionGroupResourceLevel() 
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetTestNotificationsAtActionGroupResourceLevel(ctx,
-		"TestRgName",
-		"TestAgName",
-		"11000222191287",
-		nil)
+	res, err := client.GetTestNotificationsAtActionGroupResourceLevel(ctx, "TestRgName", "TestAgName", "11000222191287", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

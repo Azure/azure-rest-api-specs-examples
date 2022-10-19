@@ -20,32 +20,28 @@ func ExampleAlertRulesClient_CreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"Rac46PostSwapRG",
-		"chiricutin",
-		armmonitor.AlertRuleResource{
-			Location: to.Ptr("West US"),
-			Tags:     map[string]*string{},
-			Properties: &armmonitor.AlertRule{
-				Name:        to.Ptr("chiricutin"),
-				Description: to.Ptr("Pura Vida"),
-				Actions:     []armmonitor.RuleActionClassification{},
-				Condition: &armmonitor.ThresholdRuleCondition{
-					DataSource: &armmonitor.RuleMetricDataSource{
-						ODataType:   to.Ptr("Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"),
-						ResourceURI: to.Ptr("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"),
-						MetricName:  to.Ptr("Requests"),
-					},
-					ODataType:       to.Ptr("Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"),
-					Operator:        to.Ptr(armmonitor.ConditionOperatorGreaterThan),
-					Threshold:       to.Ptr[float64](3),
-					TimeAggregation: to.Ptr(armmonitor.TimeAggregationOperatorTotal),
-					WindowSize:      to.Ptr("PT5M"),
+	res, err := client.CreateOrUpdate(ctx, "Rac46PostSwapRG", "chiricutin", armmonitor.AlertRuleResource{
+		Location: to.Ptr("West US"),
+		Tags:     map[string]*string{},
+		Properties: &armmonitor.AlertRule{
+			Name:        to.Ptr("chiricutin"),
+			Description: to.Ptr("Pura Vida"),
+			Actions:     []armmonitor.RuleActionClassification{},
+			Condition: &armmonitor.ThresholdRuleCondition{
+				DataSource: &armmonitor.RuleMetricDataSource{
+					ODataType:   to.Ptr("Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource"),
+					ResourceURI: to.Ptr("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"),
+					MetricName:  to.Ptr("Requests"),
 				},
-				IsEnabled: to.Ptr(true),
+				ODataType:       to.Ptr("Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition"),
+				Operator:        to.Ptr(armmonitor.ConditionOperatorGreaterThan),
+				Threshold:       to.Ptr[float64](3),
+				TimeAggregation: to.Ptr(armmonitor.TimeAggregationOperatorTotal),
+				WindowSize:      to.Ptr("PT5M"),
 			},
+			IsEnabled: to.Ptr(true),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

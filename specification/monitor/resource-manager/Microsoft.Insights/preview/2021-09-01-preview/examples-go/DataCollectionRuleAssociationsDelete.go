@@ -19,10 +19,7 @@ func ExampleDataCollectionRuleAssociationsClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm",
-		"myAssociation",
-		nil)
+	_, err = client.Delete(ctx, "subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm", "myAssociation", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

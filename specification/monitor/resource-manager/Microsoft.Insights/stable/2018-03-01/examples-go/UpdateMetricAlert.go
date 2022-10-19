@@ -20,44 +20,40 @@ func ExampleMetricAlertsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"gigtest",
-		"chiricutin",
-		armmonitor.MetricAlertResourcePatch{
-			Properties: &armmonitor.MetricAlertPropertiesPatch{
-				Description: to.Ptr("This is the description of the rule1"),
-				Actions: []*armmonitor.MetricAlertAction{
+	res, err := client.Update(ctx, "gigtest", "chiricutin", armmonitor.MetricAlertResourcePatch{
+		Properties: &armmonitor.MetricAlertPropertiesPatch{
+			Description: to.Ptr("This is the description of the rule1"),
+			Actions: []*armmonitor.MetricAlertAction{
+				{
+					ActionGroupID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
+					WebHookProperties: map[string]*string{
+						"key11": to.Ptr("value11"),
+						"key12": to.Ptr("value12"),
+					},
+				}},
+			AutoMitigate: to.Ptr(true),
+			Criteria: &armmonitor.MetricAlertSingleResourceMultipleMetricCriteria{
+				ODataType: to.Ptr(armmonitor.OdatatypeMicrosoftAzureMonitorSingleResourceMultipleMetricCriteria),
+				AllOf: []*armmonitor.MetricCriteria{
 					{
-						ActionGroupID: to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
-						WebHookProperties: map[string]*string{
-							"key11": to.Ptr("value11"),
-							"key12": to.Ptr("value12"),
-						},
+						Name:            to.Ptr("High_CPU_80"),
+						CriterionType:   to.Ptr(armmonitor.CriterionTypeStaticThresholdCriterion),
+						Dimensions:      []*armmonitor.MetricDimension{},
+						MetricName:      to.Ptr("\\Processor(_Total)\\% Processor Time"),
+						TimeAggregation: to.Ptr(armmonitor.AggregationTypeEnumAverage),
+						Operator:        to.Ptr(armmonitor.OperatorGreaterThan),
+						Threshold:       to.Ptr[float64](80.5),
 					}},
-				AutoMitigate: to.Ptr(true),
-				Criteria: &armmonitor.MetricAlertSingleResourceMultipleMetricCriteria{
-					ODataType: to.Ptr(armmonitor.OdatatypeMicrosoftAzureMonitorSingleResourceMultipleMetricCriteria),
-					AllOf: []*armmonitor.MetricCriteria{
-						{
-							Name:            to.Ptr("High_CPU_80"),
-							CriterionType:   to.Ptr(armmonitor.CriterionTypeStaticThresholdCriterion),
-							Dimensions:      []*armmonitor.MetricDimension{},
-							MetricName:      to.Ptr("\\Processor(_Total)\\% Processor Time"),
-							TimeAggregation: to.Ptr(armmonitor.AggregationTypeEnumAverage),
-							Operator:        to.Ptr(armmonitor.OperatorGreaterThan),
-							Threshold:       to.Ptr[float64](80.5),
-						}},
-				},
-				Enabled:             to.Ptr(true),
-				EvaluationFrequency: to.Ptr("Pt1m"),
-				Scopes: []*string{
-					to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme")},
-				Severity:   to.Ptr[int32](3),
-				WindowSize: to.Ptr("Pt15m"),
 			},
-			Tags: map[string]*string{},
+			Enabled:             to.Ptr(true),
+			EvaluationFrequency: to.Ptr("Pt1m"),
+			Scopes: []*string{
+				to.Ptr("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme")},
+			Severity:   to.Ptr[int32](3),
+			WindowSize: to.Ptr("Pt15m"),
 		},
-		nil)
+		Tags: map[string]*string{},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

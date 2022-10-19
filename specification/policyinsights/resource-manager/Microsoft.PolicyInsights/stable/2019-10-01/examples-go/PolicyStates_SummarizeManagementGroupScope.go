@@ -22,20 +22,16 @@ func ExamplePolicyStatesClient_SummarizeForManagementGroup() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.SummarizeForManagementGroup(ctx,
-		armpolicyinsights.PolicyStatesSummaryResourceTypeLatest,
-		"myManagementGroup",
-		&armpolicyinsights.QueryOptions{Top: to.Ptr[int32](0),
-			Filter:    to.Ptr("PolicyDefinitionAction eq 'deny' or PolicyDefinitionAction eq 'audit'"),
-			OrderBy:   nil,
-			Select:    nil,
-			From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00Z"); return t }()),
-			To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T18:00:00Z"); return t }()),
-			Apply:     nil,
-			SkipToken: nil,
-			Expand:    nil,
-		},
-		nil)
+	res, err := client.SummarizeForManagementGroup(ctx, armpolicyinsights.PolicyStatesSummaryResourceTypeLatest, "myManagementGroup", &armpolicyinsights.QueryOptions{Top: to.Ptr[int32](0),
+		Filter:    to.Ptr("PolicyDefinitionAction eq 'deny' or PolicyDefinitionAction eq 'audit'"),
+		OrderBy:   nil,
+		Select:    nil,
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00Z"); return t }()),
+		To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T18:00:00Z"); return t }()),
+		Apply:     nil,
+		SkipToken: nil,
+		Expand:    nil,
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

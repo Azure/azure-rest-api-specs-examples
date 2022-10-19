@@ -19,10 +19,7 @@ func ExampleRemediationsClient_CancelAtResource() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CancelAtResource(ctx,
-		"subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1",
-		"myRemediation",
-		nil)
+	res, err := client.CancelAtResource(ctx, "subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1", "myRemediation", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

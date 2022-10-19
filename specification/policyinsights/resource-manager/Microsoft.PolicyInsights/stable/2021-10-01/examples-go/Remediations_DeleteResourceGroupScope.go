@@ -19,10 +19,7 @@ func ExampleRemediationsClient_DeleteAtResourceGroup() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.DeleteAtResourceGroup(ctx,
-		"myResourceGroup",
-		"storageRemediation",
-		nil)
+	res, err := client.DeleteAtResourceGroup(ctx, "myResourceGroup", "storageRemediation", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -12,7 +12,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyEvents_FilterAndAggregateOnly.json
-func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager() {
+func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager_filterAndAggregateOnly() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,19 +22,16 @@ func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListQueryResultsForSubscriptionPager(armpolicyinsights.PolicyEventsResourceTypeDefault,
-		"fffedd8f-ffff-fffd-fffd-fffed2f84852",
-		&armpolicyinsights.QueryOptions{Top: nil,
-			Filter:    to.Ptr("PolicyDefinitionAction eq 'deny'"),
-			OrderBy:   nil,
-			Select:    nil,
-			From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T18:00:00Z"); return t }()),
-			To:        nil,
-			Apply:     to.Ptr("aggregate($count as NumDenyEvents)"),
-			SkipToken: nil,
-			Expand:    nil,
-		},
-		nil)
+	pager := client.NewListQueryResultsForSubscriptionPager(armpolicyinsights.PolicyEventsResourceTypeDefault, "fffedd8f-ffff-fffd-fffd-fffed2f84852", &armpolicyinsights.QueryOptions{Top: nil,
+		Filter:    to.Ptr("PolicyDefinitionAction eq 'deny'"),
+		OrderBy:   nil,
+		Select:    nil,
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T18:00:00Z"); return t }()),
+		To:        nil,
+		Apply:     to.Ptr("aggregate($count as NumDenyEvents)"),
+		SkipToken: nil,
+		Expand:    nil,
+	}, nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

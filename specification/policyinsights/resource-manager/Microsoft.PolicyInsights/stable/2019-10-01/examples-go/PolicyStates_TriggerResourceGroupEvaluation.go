@@ -19,10 +19,7 @@ func ExamplePolicyStatesClient_BeginTriggerResourceGroupEvaluation() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginTriggerResourceGroupEvaluation(ctx,
-		"fffedd8f-ffff-fffd-fffd-fffed2f84852",
-		"myResourceGroup",
-		nil)
+	poller, err := client.BeginTriggerResourceGroupEvaluation(ctx, "fffedd8f-ffff-fffd-fffd-fffed2f84852", "myResourceGroup", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

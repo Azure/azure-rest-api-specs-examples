@@ -27,7 +27,7 @@ public final class Main {
                     .withLastName("user")
                     .withEmail("test@contoso.com")
                     .withRole(StudentRole.STUDENT)
-                    .withBudget(new Amount().withCurrency("USD").withValue(100.0f))
+                    .withBudget(new Amount().withCurrency("USD").withValue(100.0F))
                     .withExpirationDate(OffsetDateTime.parse("2021-11-09T22:13:21.795Z")),
                 Context.NONE);
     }

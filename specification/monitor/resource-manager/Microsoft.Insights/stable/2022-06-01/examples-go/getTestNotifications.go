@@ -19,9 +19,7 @@ func ExampleActionGroupsClient_GetTestNotifications() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetTestNotifications(ctx,
-		"11000222191287",
-		nil)
+	res, err := client.GetTestNotifications(ctx, "11000222191287", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,8 +19,7 @@ func ExampleAlertRulesClient_NewListByResourceGroupPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("Rac46PostSwapRG",
-		nil)
+	pager := client.NewListByResourceGroupPager("Rac46PostSwapRG", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

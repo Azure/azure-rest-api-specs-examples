@@ -19,11 +19,7 @@ func ExampleAlertRuleIncidentsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"Rac46PostSwapRG",
-		"myRuleName",
-		"Website_started",
-		nil)
+	res, err := client.Get(ctx, "Rac46PostSwapRG", "myRuleName", "Website_started", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,10 +19,7 @@ func ExampleAlertRulesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"Rac46PostSwapRG",
-		"chiricutin",
-		nil)
+	res, err := client.Get(ctx, "Rac46PostSwapRG", "chiricutin", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -19,9 +19,7 @@ func ExampleDataCollectionRuleAssociationsClient_NewListByRulePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByRulePager("myResourceGroup",
-		"myCollectionRule",
-		nil)
+	pager := client.NewListByRulePager("myResourceGroup", "myCollectionRule", nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

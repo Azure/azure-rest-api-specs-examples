@@ -20,19 +20,15 @@ func ExampleActionGroupsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"Default-NotificationRules",
-		"SampleActionGroup",
-		armmonitor.ActionGroupPatchBody{
-			Properties: &armmonitor.ActionGroupPatch{
-				Enabled: to.Ptr(false),
-			},
-			Tags: map[string]*string{
-				"key1": to.Ptr("value1"),
-				"key2": to.Ptr("value2"),
-			},
+	res, err := client.Update(ctx, "Default-NotificationRules", "SampleActionGroup", armmonitor.ActionGroupPatchBody{
+		Properties: &armmonitor.ActionGroupPatch{
+			Enabled: to.Ptr(false),
 		},
-		nil)
+		Tags: map[string]*string{
+			"key1": to.Ptr("value1"),
+			"key2": to.Ptr("value2"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

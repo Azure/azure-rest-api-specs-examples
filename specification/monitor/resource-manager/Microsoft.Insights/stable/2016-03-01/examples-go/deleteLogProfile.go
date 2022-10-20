@@ -19,9 +19,7 @@ func ExampleLogProfilesClient_Delete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"Rac46PostSwapRG",
-		nil)
+	_, err = client.Delete(ctx, "Rac46PostSwapRG", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

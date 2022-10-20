@@ -10,7 +10,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/examples/GetMetricDefinitionsApplicationInsights.json
-func ExampleMetricDefinitionsClient_NewListPager() {
+func ExampleMetricDefinitionsClient_NewListPager_getApplicationInsightsMetricDefinitionsWithoutFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,8 +20,7 @@ func ExampleMetricDefinitionsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("subscriptions/182c901a-129a-4f5d-86e4-cc6b294590a2/resourceGroups/hyr-log/providers/microsoft.insights/components/f1-bill/providers/microsoft.insights/metricdefinitions",
-		&armmonitor.MetricDefinitionsClientListOptions{Metricnamespace: to.Ptr("microsoft.insights/components")})
+	pager := client.NewListPager("subscriptions/182c901a-129a-4f5d-86e4-cc6b294590a2/resourceGroups/hyr-log/providers/microsoft.insights/components/f1-bill/providers/microsoft.insights/metricdefinitions", &armmonitor.MetricDefinitionsClientListOptions{Metricnamespace: to.Ptr("microsoft.insights/components")})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

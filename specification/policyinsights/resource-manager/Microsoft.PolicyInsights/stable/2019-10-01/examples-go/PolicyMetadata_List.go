@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyMetadata_List.json
-func ExamplePolicyMetadataClient_NewListPager() {
+func ExamplePolicyMetadataClient_NewListPager_getCollectionOfPolicyMetadataResources() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -28,8 +28,7 @@ func ExamplePolicyMetadataClient_NewListPager() {
 		Apply:     nil,
 		SkipToken: nil,
 		Expand:    nil,
-	},
-		nil)
+	}, nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

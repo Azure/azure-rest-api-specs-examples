@@ -19,21 +19,16 @@ func ExamplePolicyStatesClient_SummarizeForSubscriptionLevelPolicyAssignment() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.SummarizeForSubscriptionLevelPolicyAssignment(ctx,
-		armpolicyinsights.PolicyStatesSummaryResourceTypeLatest,
-		"fffedd8f-ffff-fffd-fffd-fffed2f84852",
-		"ec8f9645-8ecb-4abb-9c0b-5292f19d4003",
-		&armpolicyinsights.QueryOptions{Top: nil,
-			Filter:    nil,
-			OrderBy:   nil,
-			Select:    nil,
-			From:      nil,
-			To:        nil,
-			Apply:     nil,
-			SkipToken: nil,
-			Expand:    nil,
-		},
-		nil)
+	res, err := client.SummarizeForSubscriptionLevelPolicyAssignment(ctx, armpolicyinsights.PolicyStatesSummaryResourceTypeLatest, "fffedd8f-ffff-fffd-fffd-fffed2f84852", "ec8f9645-8ecb-4abb-9c0b-5292f19d4003", &armpolicyinsights.QueryOptions{Top: nil,
+		Filter:    nil,
+		OrderBy:   nil,
+		Select:    nil,
+		From:      nil,
+		To:        nil,
+		Apply:     nil,
+		SkipToken: nil,
+		Expand:    nil,
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

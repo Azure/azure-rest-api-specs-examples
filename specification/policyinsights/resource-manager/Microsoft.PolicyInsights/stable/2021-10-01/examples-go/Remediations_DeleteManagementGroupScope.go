@@ -19,10 +19,7 @@ func ExampleRemediationsClient_DeleteAtManagementGroup() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.DeleteAtManagementGroup(ctx,
-		"financeMg",
-		"storageRemediation",
-		nil)
+	res, err := client.DeleteAtManagementGroup(ctx, "financeMg", "storageRemediation", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

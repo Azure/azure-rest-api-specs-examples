@@ -20,15 +20,12 @@ func ExamplePolicyRestrictionsClient_CheckAtManagementGroupScope() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckAtManagementGroupScope(ctx,
-		"financeMg",
-		armpolicyinsights.CheckManagementGroupRestrictionsRequest{
-			PendingFields: []*armpolicyinsights.PendingField{
-				{
-					Field: to.Ptr("type"),
-				}},
-		},
-		nil)
+	res, err := client.CheckAtManagementGroupScope(ctx, "financeMg", armpolicyinsights.CheckManagementGroupRestrictionsRequest{
+		PendingFields: []*armpolicyinsights.PendingField{
+			{
+				Field: to.Ptr("type"),
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

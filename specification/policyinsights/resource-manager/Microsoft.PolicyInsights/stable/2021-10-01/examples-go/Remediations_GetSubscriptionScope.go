@@ -19,9 +19,7 @@ func ExampleRemediationsClient_GetAtSubscription() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetAtSubscription(ctx,
-		"storageRemediation",
-		nil)
+	res, err := client.GetAtSubscription(ctx, "storageRemediation", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -20,20 +20,16 @@ func ExamplePolicyStatesClient_SummarizeForResource() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.SummarizeForResource(ctx,
-		armpolicyinsights.PolicyStatesSummaryResourceTypeLatest,
-		"subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/my-vault",
-		&armpolicyinsights.QueryOptions{Top: to.Ptr[int32](2),
-			Filter:    nil,
-			OrderBy:   nil,
-			Select:    nil,
-			From:      nil,
-			To:        nil,
-			Apply:     nil,
-			SkipToken: nil,
-			Expand:    nil,
-		},
-		nil)
+	res, err := client.SummarizeForResource(ctx, armpolicyinsights.PolicyStatesSummaryResourceTypeLatest, "subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86a5/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/my-vault", &armpolicyinsights.QueryOptions{Top: to.Ptr[int32](2),
+		Filter:    nil,
+		OrderBy:   nil,
+		Select:    nil,
+		From:      nil,
+		To:        nil,
+		Apply:     nil,
+		SkipToken: nil,
+		Expand:    nil,
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

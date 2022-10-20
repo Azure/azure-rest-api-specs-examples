@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_QueryManagementGroupScope.json
-func ExamplePolicyStatesClient_NewListQueryResultsForManagementGroupPager() {
+func ExamplePolicyStatesClient_NewListQueryResultsForManagementGroupPager_queryLatestAtManagementGroupScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,19 +19,16 @@ func ExamplePolicyStatesClient_NewListQueryResultsForManagementGroupPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListQueryResultsForManagementGroupPager(armpolicyinsights.PolicyStatesResourceLatest,
-		"myManagementGroup",
-		&armpolicyinsights.QueryOptions{Top: nil,
-			Filter:    nil,
-			OrderBy:   nil,
-			Select:    nil,
-			From:      nil,
-			To:        nil,
-			Apply:     nil,
-			SkipToken: nil,
-			Expand:    nil,
-		},
-		nil)
+	pager := client.NewListQueryResultsForManagementGroupPager(armpolicyinsights.PolicyStatesResourceLatest, "myManagementGroup", &armpolicyinsights.QueryOptions{Top: nil,
+		Filter:    nil,
+		OrderBy:   nil,
+		Select:    nil,
+		From:      nil,
+		To:        nil,
+		Apply:     nil,
+		SkipToken: nil,
+		Expand:    nil,
+	}, nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

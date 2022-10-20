@@ -19,9 +19,7 @@ func ExamplePolicyMetadataClient_GetResource() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetResource(ctx,
-		"NIST_SP_800-53_R4_AC-2",
-		nil)
+	res, err := client.GetResource(ctx, "NIST_SP_800-53_R4_AC-2", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

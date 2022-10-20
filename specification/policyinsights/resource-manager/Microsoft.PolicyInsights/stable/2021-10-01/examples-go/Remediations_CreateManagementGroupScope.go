@@ -20,15 +20,11 @@ func ExampleRemediationsClient_CreateOrUpdateAtManagementGroup() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdateAtManagementGroup(ctx,
-		"financeMg",
-		"storageRemediation",
-		armpolicyinsights.Remediation{
-			Properties: &armpolicyinsights.RemediationProperties{
-				PolicyAssignmentID: to.Ptr("/providers/microsoft.management/managementGroups/financeMg/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"),
-			},
+	res, err := client.CreateOrUpdateAtManagementGroup(ctx, "financeMg", "storageRemediation", armpolicyinsights.Remediation{
+		Properties: &armpolicyinsights.RemediationProperties{
+			PolicyAssignmentID: to.Ptr("/providers/microsoft.management/managementGroups/financeMg/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

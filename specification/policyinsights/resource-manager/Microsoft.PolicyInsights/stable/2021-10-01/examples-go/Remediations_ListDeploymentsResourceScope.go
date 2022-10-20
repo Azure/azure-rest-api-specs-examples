@@ -19,19 +19,16 @@ func ExampleRemediationsClient_NewListDeploymentsAtResourcePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListDeploymentsAtResourcePager("subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1",
-		"myRemediation",
-		&armpolicyinsights.QueryOptions{Top: nil,
-			Filter:    nil,
-			OrderBy:   nil,
-			Select:    nil,
-			From:      nil,
-			To:        nil,
-			Apply:     nil,
-			SkipToken: nil,
-			Expand:    nil,
-		},
-		nil)
+	pager := client.NewListDeploymentsAtResourcePager("subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1", "myRemediation", &armpolicyinsights.QueryOptions{Top: nil,
+		Filter:    nil,
+		OrderBy:   nil,
+		Select:    nil,
+		From:      nil,
+		To:        nil,
+		Apply:     nil,
+		SkipToken: nil,
+		Expand:    nil,
+	}, nil)
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {

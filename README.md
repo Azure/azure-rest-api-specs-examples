@@ -6,6 +6,8 @@ Involved SDK repositories:
 - [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go)
 - [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)
 - [Azure SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js)
+- [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python)
+- [Azure SDK for .Net](https://github.com/Azure/azure-sdk-for-net)
 
 The repository is maintained by automated pipeline.
 
@@ -20,11 +22,11 @@ Currently supported `language` includes:
 - `go` for Go
 - `java` for Java
 - `js` for JavaScript
+- `python` for Python
+- `dotnet` for .NET
 
 Pending:
 - `ts` for typescript
-- `python` for Python
-- `dotnet` for .NET
 
 ### An instance of the mapping
 
@@ -52,11 +54,11 @@ Currently supported `language-ext` includes:
 - `go` for Go
 - `java` for Java
 - `js` for JavaScript
+- `py` for Python
+- `cs` for .NET
 
 Pending:
 - `ts` for typescript
-- `py` for Python
-- `cs` for .NET
 
 ### Metadata
 

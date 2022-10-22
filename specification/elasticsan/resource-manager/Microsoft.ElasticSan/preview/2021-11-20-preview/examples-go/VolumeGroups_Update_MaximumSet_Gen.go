@@ -1,4 +1,4 @@
-package armelasticsans_test
+package armelasticsan_test
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsans/armelasticsans"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/examples/VolumeGroups_Update_MaximumSet_Gen.json
@@ -16,21 +16,21 @@ func ExampleVolumeGroupsClient_BeginUpdate_volumeGroupsUpdateMaximumSetGen() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armelasticsans.NewVolumeGroupsClient("aaaaaaaaaaaaaaaaaa", cred, nil)
+	client, err := armelasticsan.NewVolumeGroupsClient("aaaaaaaaaaaaaaaaaa", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "rgelasticsan", "ti7q-k952-1qB3J_5", "u_5I_1j4t3", armelasticsans.VolumeGroupUpdate{
-		Properties: &armelasticsans.VolumeGroupUpdateProperties{
-			Encryption: to.Ptr(armelasticsans.EncryptionTypeEncryptionAtRestWithPlatformKey),
-			NetworkACLs: &armelasticsans.NetworkRuleSet{
-				VirtualNetworkRules: []*armelasticsans.VirtualNetworkRule{
+	poller, err := client.BeginUpdate(ctx, "rgelasticsan", "ti7q-k952-1qB3J_5", "u_5I_1j4t3", armelasticsan.VolumeGroupUpdate{
+		Properties: &armelasticsan.VolumeGroupUpdateProperties{
+			Encryption: to.Ptr(armelasticsan.EncryptionTypeEncryptionAtRestWithPlatformKey),
+			NetworkACLs: &armelasticsan.NetworkRuleSet{
+				VirtualNetworkRules: []*armelasticsan.VirtualNetworkRule{
 					{
 						Action:                   to.Ptr("Allow"),
 						VirtualNetworkResourceID: to.Ptr("aaaaaaaaaaaaaaaa"),
 					}},
 			},
-			ProtocolType: to.Ptr(armelasticsans.StorageTargetTypeIscsi),
+			ProtocolType: to.Ptr(armelasticsan.StorageTargetTypeIscsi),
 		},
 		Tags: map[string]*string{
 			"key7542": to.Ptr("aaaaaaaaaaaaaaaaaaaa"),

@@ -1,11 +1,11 @@
-package armelasticsans_test
+package armelasticsan_test
 
 import (
 	"context"
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsans/armelasticsans"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/examples/VolumeGroups_Get_MaximumSet_Gen.json
@@ -15,7 +15,7 @@ func ExampleVolumeGroupsClient_Get_volumeGroupsGetMaximumSetGen() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armelasticsans.NewVolumeGroupsClient("aaaaaaaaaaaaaaaaaa", cred, nil)
+	client, err := armelasticsan.NewVolumeGroupsClient("aaaaaaaaaaaaaaaaaa", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}

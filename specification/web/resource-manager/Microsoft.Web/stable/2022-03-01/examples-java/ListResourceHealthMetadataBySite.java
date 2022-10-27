@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for ResourceHealthMetadata ListBySiteSlot. */
+/** Samples for ResourceHealthMetadata ListBySite. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/ListResourceHealthMetadataBySite.json
@@ -16,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getResourceHealthMetadatas()
-            .listBySiteSlot("Default-Web-NorthCentralUS", "newsiteinnewASE-NCUS", "Production", Context.NONE);
+            .listBySite("Default-Web-NorthCentralUS", "newsiteinnewASE-NCUS", Context.NONE);
     }
 }

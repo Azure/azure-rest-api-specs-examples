@@ -1,0 +1,51 @@
+const createComputeManagementClient = require("@azure-rest/arm-compute").default,
+  { getLongRunningPoller } = require("@azure-rest/arm-compute");
+const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv").config();
+
+/**
+ * This sample demonstrates how to Creates or updates a disk.
+ *
+ * @summary Creates or updates a disk.
+ * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskExamples/Disk_Create_ConfidentialVMSupportedDiskEncryptedWithCMK.json
+ */
+async function createAConfidentialVMSupportedDiskEncryptedWithCustomerManagedKey() {
+  const credential = new DefaultAzureCredential();
+  const client = createComputeManagementClient(credential);
+  const subscriptionId = "";
+  const resourceGroupName = "myResourceGroup";
+  const diskName = "myDisk";
+  const options = {
+    body: {
+      location: "West US",
+      properties: {
+        creationData: {
+          createOption: "FromImage",
+          imageReference: {
+            id: "/Subscriptions/{subscriptionId}/Providers/Microsoft.Compute/Locations/westus/Publishers/{publisher}/ArtifactTypes/VMImage/Offers/{offer}/Skus/{sku}/Versions/1.0.0",
+          },
+        },
+        osType: "Windows",
+        securityProfile: {
+          secureVMDiskEncryptionSetId:
+            "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
+          securityType: "ConfidentialVM_DiskEncryptedWithCustomerKey",
+        },
+      },
+    },
+    queryParameters: { "api-version": "2022-07-02" },
+  };
+  const initialResponse = await client
+    .path(
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}",
+      subscriptionId,
+      resourceGroupName,
+      diskName
+    )
+    .put(options);
+  const poller = getLongRunningPoller(client, initialResponse);
+  const result = await poller.pollUntilDone();
+  console.log(result);
+}
+
+createAConfidentialVMSupportedDiskEncryptedWithCustomerManagedKey().catch(console.error);

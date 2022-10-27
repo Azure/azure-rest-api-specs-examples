@@ -14,7 +14,7 @@ async function certificatesCreateOrUpdate() {
   const certificateName = "default";
   const credential = new DefaultAzureCredential();
   const client = new NginxManagementClient(credential, subscriptionId);
-  const result = await client.certificates.beginCreateAndWait(
+  const result = await client.certificates.beginCreateOrUpdateAndWait(
     resourceGroupName,
     deploymentName,
     certificateName

@@ -13,7 +13,10 @@ async function deploymentsCreate() {
   const deploymentName = "myDeployment";
   const credential = new DefaultAzureCredential();
   const client = new NginxManagementClient(credential, subscriptionId);
-  const result = await client.deployments.beginCreateAndWait(resourceGroupName, deploymentName);
+  const result = await client.deployments.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    deploymentName
+  );
   console.log(result);
 }
 

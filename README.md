@@ -22,6 +22,7 @@ Currently supported `language` includes:
 - `go` for Go
 - `java` for Java
 - `js` for JavaScript
+- `js-rlc` for JavaScript RLC
 - `python` for Python
 - `dotnet` for .NET
 
@@ -53,7 +54,7 @@ Code snippet is runnable code in SDK language, as the SDK example.
 Currently supported `language-ext` includes:
 - `go` for Go
 - `java` for Java
-- `js` for JavaScript
+- `js` for JavaScript (includes RLC)
 - `py` for Python
 - `cs` for .NET
 

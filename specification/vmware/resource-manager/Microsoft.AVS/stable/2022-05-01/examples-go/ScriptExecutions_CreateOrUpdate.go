@@ -1,0 +1,56 @@
+package armavs_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/ScriptExecutions_CreateOrUpdate.json
+func ExampleScriptExecutionsClient_BeginCreateOrUpdate() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client, err := armavs.NewScriptExecutionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := client.BeginCreateOrUpdate(ctx, "group1", "cloud1", "addSsoServer", armavs.ScriptExecution{
+		Properties: &armavs.ScriptExecutionProperties{
+			HiddenParameters: []armavs.ScriptExecutionParameterClassification{
+				&armavs.ScriptSecureStringExecutionParameter{
+					Name:        to.Ptr("Password"),
+					Type:        to.Ptr(armavs.ScriptExecutionParameterTypeSecureValue),
+					SecureValue: to.Ptr("PlaceholderPassword"),
+				}},
+			Parameters: []armavs.ScriptExecutionParameterClassification{
+				&armavs.ScriptStringExecutionParameter{
+					Name:  to.Ptr("DomainName"),
+					Type:  to.Ptr(armavs.ScriptExecutionParameterTypeValue),
+					Value: to.Ptr("placeholderDomain.local"),
+				},
+				&armavs.ScriptStringExecutionParameter{
+					Name:  to.Ptr("BaseUserDN"),
+					Type:  to.Ptr(armavs.ScriptExecutionParameterTypeValue),
+					Value: to.Ptr("DC=placeholder, DC=placeholder"),
+				}},
+			Retention:      to.Ptr("P0Y0M60DT0H60M60S"),
+			ScriptCmdletID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/scriptPackages/AVS.PowerCommands@1.0.0/scriptCmdlets/New-SsoExternalIdentitySource"),
+			Timeout:        to.Ptr("P0Y0M0DT0H60M60S"),
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// TODO: use response item
+	_ = res
+}

@@ -1,0 +1,35 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.sql import SqlManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-sql
+# USAGE
+    python create_or_update_an_extended_database's_azure_monitor_auditing_policy_with_minimal_parameters.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = SqlManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="00000000-1111-2222-3333-444444444444",
+    )
+
+    response = client.extended_database_blob_auditing_policies.create_or_update(
+        resource_group_name="blobauditingtest-4799",
+        server_name="blobauditingtest-6440",
+        database_name="testdb",
+        parameters={"properties": {"isAzureMonitorTargetEnabled": True, "state": "Enabled"}},
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-11-01-preview/examples/ExtendedDatabaseAzureMonitorAuditingCreateMin.json
+if __name__ == "__main__":
+    main()

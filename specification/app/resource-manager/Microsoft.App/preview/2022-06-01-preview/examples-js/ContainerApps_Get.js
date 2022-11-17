@@ -13,7 +13,7 @@ async function getContainerApp() {
   const containerAppName = "testcontainerApp0";
   const credential = new DefaultAzureCredential();
   const client = new ContainerAppsAPIClient(credential, subscriptionId);
-  const result = await client.containerApps.get(resourceGroupName, containerAppName);
+  const result = await client.containerAppsDiagnostics.getRoot(resourceGroupName, containerAppName);
   console.log(result);
 }
 

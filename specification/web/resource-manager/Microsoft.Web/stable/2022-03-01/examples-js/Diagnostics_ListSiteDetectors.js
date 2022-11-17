@@ -12,13 +12,15 @@ async function listAppDetectors() {
   const resourceGroupName = "Sample-WestUSResourceGroup";
   const siteName = "SampleApp";
   const diagnosticCategory = "availability";
+  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.diagnostics.listSiteDetectors(
+  for await (let item of client.diagnostics.listSiteDetectorsSlot(
     resourceGroupName,
     siteName,
-    diagnosticCategory
+    diagnosticCategory,
+    slot
   )) {
     resArray.push(item);
   }

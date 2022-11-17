@@ -21,7 +21,7 @@ async function approvesOrRejectsAPrivateEndpointConnectionForASite() {
   };
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.staticSites.beginApproveOrRejectPrivateEndpointConnectionAndWait(
+  const result = await client.webApps.beginApproveOrRejectPrivateEndpointConnectionAndWait(
     resourceGroupName,
     name,
     privateEndpointConnectionName,

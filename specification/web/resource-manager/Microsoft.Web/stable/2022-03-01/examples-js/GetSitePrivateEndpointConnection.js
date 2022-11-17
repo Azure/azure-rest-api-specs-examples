@@ -14,7 +14,7 @@ async function getAPrivateEndpointConnectionForASite() {
   const privateEndpointConnectionName = "connection";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.staticSites.getPrivateEndpointConnection(
+  const result = await client.webApps.getPrivateEndpointConnection(
     resourceGroupName,
     name,
     privateEndpointConnectionName

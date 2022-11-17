@@ -12,15 +12,9 @@ async function getSiteInstanceInfo() {
   const resourceGroupName = "testrg123";
   const name = "tests346";
   const instanceId = "134987120";
-  const slot = "staging";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.webApps.getInstanceInfoSlot(
-    resourceGroupName,
-    name,
-    instanceId,
-    slot
-  );
+  const result = await client.webApps.getInstanceInfo(resourceGroupName, name, instanceId);
   console.log(result);
 }
 

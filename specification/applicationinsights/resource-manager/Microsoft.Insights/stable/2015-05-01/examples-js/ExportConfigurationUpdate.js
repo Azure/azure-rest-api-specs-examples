@@ -1,0 +1,40 @@
+const { ApplicationInsightsManagementClient } = require("@azure/arm-appinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Update the Continuous Export configuration for this export id.
+ *
+ * @summary Update the Continuous Export configuration for this export id.
+ * x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ExportConfigurationUpdate.json
+ */
+async function exportConfigurationUpdate() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "my-resource-group";
+  const resourceName = "my-component";
+  const exportId = "uGOoki0jQsyEs3IdQ83Q4QsNr4=";
+  const exportProperties = {
+    destinationAccountId:
+      "/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.ClassicStorage/storageAccounts/mystorageblob",
+    destinationAddress:
+      "https://mystorageblob.blob.core.windows.net/fchentest?sv=2015-04-05&sr=c&sig=token",
+    destinationStorageLocationId: "eastus",
+    destinationStorageSubscriptionId: "subid",
+    destinationType: "Blob",
+    isEnabled: "true",
+    notificationQueueEnabled: "false",
+    notificationQueueUri: "",
+    recordTypes:
+      "Requests, Event, Exceptions, Metrics, PageViews, PageViewPerformance, Rdd, PerformanceCounters, Availability",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ApplicationInsightsManagementClient(credential, subscriptionId);
+  const result = await client.exportConfigurations.update(
+    resourceGroupName,
+    resourceName,
+    exportId,
+    exportProperties
+  );
+  console.log(result);
+}
+
+exportConfigurationUpdate().catch(console.error);

@@ -13,7 +13,7 @@ async function getPrivateLinkResourcesOfASite() {
   const name = "testSite";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.staticSites.getPrivateLinkResources(resourceGroupName, name);
+  const result = await client.webApps.getPrivateLinkResources(resourceGroupName, name);
   console.log(result);
 }
 

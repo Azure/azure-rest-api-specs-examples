@@ -13,13 +13,15 @@ async function getAppSlotDetector() {
   const siteName = "SampleApp";
   const diagnosticCategory = "availability";
   const detectorName = "sitecrashes";
+  const slot = "staging";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.diagnostics.getSiteDetector(
+  const result = await client.diagnostics.getSiteDetectorSlot(
     resourceGroupName,
     siteName,
     diagnosticCategory,
-    detectorName
+    detectorName,
+    slot
   );
   console.log(result);
 }

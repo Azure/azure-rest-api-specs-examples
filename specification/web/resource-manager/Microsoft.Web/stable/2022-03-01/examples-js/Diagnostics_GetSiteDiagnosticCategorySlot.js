@@ -12,14 +12,12 @@ async function getAppSlotDiagnosticCategory() {
   const resourceGroupName = "Sample-WestUSResourceGroup";
   const siteName = "SampleApp";
   const diagnosticCategory = "availability";
-  const slot = "staging";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.diagnostics.getSiteDiagnosticCategorySlot(
+  const result = await client.diagnostics.getSiteDiagnosticCategory(
     resourceGroupName,
     siteName,
-    diagnosticCategory,
-    slot
+    diagnosticCategory
   );
   console.log(result);
 }

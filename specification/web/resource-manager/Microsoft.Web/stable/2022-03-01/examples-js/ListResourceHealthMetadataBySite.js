@@ -11,14 +11,12 @@ async function listResourceHealthMetadataForASite() {
   const subscriptionId = "4adb32ad-8327-4cbb-b775-b84b4465bb38";
   const resourceGroupName = "Default-Web-NorthCentralUS";
   const name = "newsiteinnewASE-NCUS";
-  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.resourceHealthMetadataOperations.listBySiteSlot(
+  for await (let item of client.resourceHealthMetadataOperations.listBySite(
     resourceGroupName,
-    name,
-    slot
+    name
   )) {
     resArray.push(item);
   }

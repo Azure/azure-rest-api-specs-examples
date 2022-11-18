@@ -13,13 +13,15 @@ async function executeSiteAnalysis() {
   const siteName = "SampleApp";
   const diagnosticCategory = "availability";
   const analysisName = "apprestartanalyses";
+  const slot = "Production";
   const credential = new DefaultAzureCredential();
   const client = new WebSiteManagementClient(credential, subscriptionId);
-  const result = await client.diagnostics.executeSiteAnalysis(
+  const result = await client.diagnostics.executeSiteAnalysisSlot(
     resourceGroupName,
     siteName,
     diagnosticCategory,
-    analysisName
+    analysisName,
+    slot
   );
   console.log(result);
 }

@@ -19,7 +19,7 @@ public final class Main {
                 "cluster1",
                 new AzureMonitorRequest()
                     .withWorkspaceId("a2090ead-8c9f-4fba-b70e-533e3e003163")
-                    .withPrimaryKey("**********"),
+                    .withPrimaryKey("fakeTokenPlaceholder"),
                 Context.NONE);
     }
 }

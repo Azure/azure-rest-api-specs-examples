@@ -60,7 +60,7 @@ public final class Main {
                             .withOrganizationalUnitDN("OU=Hadoop,DC=hdinsight,DC=test")
                             .withLdapsUrls(Arrays.asList("ldaps://10.10.0.4:636"))
                             .withDomainUsername("DomainUsername")
-                            .withDomainUserPassword("**********")
+                            .withDomainUserPassword("fakeTokenPlaceholder")
                             .withClusterUsersGroupDNs(Arrays.asList("hdiusers")))
                     .withComputeProfile(
                         new ComputeProfile()
@@ -77,7 +77,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********")
+                                                            .withPassword("fakeTokenPlaceholder")
                                                             .withSshProfile(
                                                                 new SshProfile()
                                                                     .withPublicKeys(
@@ -103,7 +103,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********")
+                                                            .withPassword("fakeTokenPlaceholder")
                                                             .withSshProfile(
                                                                 new SshProfile()
                                                                     .withPublicKeys(
@@ -129,7 +129,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********")
+                                                            .withPassword("fakeTokenPlaceholder")
                                                             .withSshProfile(
                                                                 new SshProfile()
                                                                     .withPublicKeys(
@@ -154,7 +154,7 @@ public final class Main {
                                             .withName("mystorage.blob.core.windows.net")
                                             .withIsDefault(true)
                                             .withContainer("containername")
-                                            .withKey("storage account key")))))
+                                            .withKey("fakeTokenPlaceholder")))))
             .create();
     }
 

@@ -83,7 +83,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********"))),
+                                                            .withPassword("fakeTokenPlaceholder"))),
                                         new Role()
                                             .withName("zookeepernode")
                                             .withMinInstanceCount(1)
@@ -94,7 +94,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********"))))))
+                                                            .withPassword("fakeTokenPlaceholder"))))))
                     .withStorageProfile(
                         new StorageProfile()
                             .withStorageaccounts(
@@ -104,7 +104,7 @@ public final class Main {
                                             .withName("mystorage.blob.core.windows.net")
                                             .withIsDefault(true)
                                             .withContainer("containername")
-                                            .withKey("storagekey")))))
+                                            .withKey("fakeTokenPlaceholder")))))
             .create();
     }
 

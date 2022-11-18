@@ -13,7 +13,10 @@ async function getEnvironmentsByName() {
   const environmentName = "jlaw-demo1";
   const credential = new DefaultAzureCredential();
   const client = new ContainerAppsAPIClient(credential, subscriptionId);
-  const result = await client.managedEnvironments.get(resourceGroupName, environmentName);
+  const result = await client.managedEnvironmentsDiagnostics.getRoot(
+    resourceGroupName,
+    environmentName
+  );
   console.log(result);
 }
 

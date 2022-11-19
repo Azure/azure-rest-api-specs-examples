@@ -125,7 +125,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********")))
+                                                            .withPassword("fakeTokenPlaceholder")))
                                             .withScriptActions(Arrays.asList()))))
                     .withStorageProfile(
                         new StorageProfile()
@@ -136,7 +136,7 @@ public final class Main {
                                             .withName("mystorage.blob.core.windows.net")
                                             .withIsDefault(true)
                                             .withContainer("hdinsight-autoscale-tes-2019-06-18t05-49-16-591z")
-                                            .withKey("storagekey")))))
+                                            .withKey("fakeTokenPlaceholder")))))
             .create();
     }
 

@@ -62,7 +62,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********")
+                                                            .withPassword("fakeTokenPlaceholder")
                                                             .withSshProfile(
                                                                 new SshProfile()
                                                                     .withPublicKeys(
@@ -80,7 +80,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********")
+                                                            .withPassword("fakeTokenPlaceholder")
                                                             .withSshProfile(
                                                                 new SshProfile()
                                                                     .withPublicKeys(
@@ -98,7 +98,7 @@ public final class Main {
                                             .withName("mystorage")
                                             .withIsDefault(true)
                                             .withContainer("containername")
-                                            .withKey("storage account key"))))
+                                            .withKey("fakeTokenPlaceholder"))))
                     .withComputeIsolationProperties(new ComputeIsolationProperties().withEnableComputeIsolation(true)))
             .create();
     }

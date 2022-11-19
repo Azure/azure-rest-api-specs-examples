@@ -62,7 +62,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********"))),
+                                                            .withPassword("fakeTokenPlaceholder"))),
                                         new Role()
                                             .withName("workernode")
                                             .withTargetInstanceCount(3)
@@ -72,7 +72,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********"))),
+                                                            .withPassword("fakeTokenPlaceholder"))),
                                         new Role()
                                             .withName("zookeepernode")
                                             .withTargetInstanceCount(3)
@@ -82,7 +82,7 @@ public final class Main {
                                                     .withLinuxOperatingSystemProfile(
                                                         new LinuxOperatingSystemProfile()
                                                             .withUsername("sshuser")
-                                                            .withPassword("**********"))))))
+                                                            .withPassword("fakeTokenPlaceholder"))))))
                     .withStorageProfile(
                         new StorageProfile()
                             .withStorageaccounts(
@@ -92,7 +92,7 @@ public final class Main {
                                             .withName("mystorage.blob.core.windows.net")
                                             .withIsDefault(true)
                                             .withContainer("default8525")
-                                            .withKey("storagekey"))))
+                                            .withKey("fakeTokenPlaceholder"))))
                     .withDiskEncryptionProperties(new DiskEncryptionProperties().withEncryptionAtHost(true)))
             .create();
     }

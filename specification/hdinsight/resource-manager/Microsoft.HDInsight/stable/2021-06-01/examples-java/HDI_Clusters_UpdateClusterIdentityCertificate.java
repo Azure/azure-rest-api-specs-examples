@@ -20,7 +20,7 @@ public final class Main {
                 new UpdateClusterIdentityCertificateParameters()
                     .withApplicationId("applicationId")
                     .withCertificate("base64encodedcertificate")
-                    .withCertificatePassword("**********"),
+                    .withCertificatePassword("fakeTokenPlaceholder"),
                 Context.NONE);
     }
 }

@@ -20,8 +20,8 @@ public final class Main {
                 "cluster1",
                 new ClusterDiskEncryptionParameters()
                     .withVaultUri("https://newkeyvault.vault.azure.net/")
-                    .withKeyName("newkeyname")
-                    .withKeyVersion("newkeyversion"),
+                    .withKeyName("fakeTokenPlaceholder")
+                    .withKeyVersion("fakeTokenPlaceholder"),
                 Context.NONE);
     }
 }

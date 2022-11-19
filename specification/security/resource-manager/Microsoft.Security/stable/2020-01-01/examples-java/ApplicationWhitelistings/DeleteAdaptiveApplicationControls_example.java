@@ -12,6 +12,6 @@ public final class Main {
      */
     public static void deleteAnApplicationControlMachineGroup(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.adaptiveApplicationControls().deleteWithResponse("centralus", "GROUP1", Context.NONE);
+        manager.adaptiveApplicationControls().deleteByResourceGroupWithResponse("centralus", "GROUP1", Context.NONE);
     }
 }

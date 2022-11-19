@@ -28,7 +28,7 @@ public final class Main {
                     .withServicePrincipal(
                         new ServicePrincipalProperties()
                             .withApplicationId("ad9bcd79-be9c-45ab-abd8-80ca1654a7d1")
-                            .withSecret("<secret>")))
+                            .withSecret("fakeTokenPlaceholder")))
             .withAuthenticationDetails(
                 new AwAssumeRoleAuthenticationDetailsProperties()
                     .withAwsAssumeRoleArn("arn:aws:iam::81231569658:role/AscConnector")

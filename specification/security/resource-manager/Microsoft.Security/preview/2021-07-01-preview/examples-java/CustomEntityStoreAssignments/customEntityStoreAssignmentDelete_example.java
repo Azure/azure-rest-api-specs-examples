@@ -13,6 +13,7 @@ public final class Main {
     public static void deleteACustomEntityStoreAssignment(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .customEntityStoreAssignments()
-            .deleteWithResponse("TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", Context.NONE);
+            .deleteByResourceGroupWithResponse(
+                "TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", Context.NONE);
     }
 }

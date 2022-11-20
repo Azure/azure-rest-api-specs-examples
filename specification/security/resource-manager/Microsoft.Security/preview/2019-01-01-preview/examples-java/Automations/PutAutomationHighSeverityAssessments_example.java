@@ -6,6 +6,8 @@ import com.azure.resourcemanager.security.models.AutomationTriggeringRule;
 import com.azure.resourcemanager.security.models.EventSource;
 import com.azure.resourcemanager.security.models.Operator;
 import com.azure.resourcemanager.security.models.PropertyType;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +23,7 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void createOrUpdateASecurityAutomationForAllHighSeverityAssessments(
-        com.azure.resourcemanager.security.SecurityManager manager) {
+        com.azure.resourcemanager.security.SecurityManager manager) throws IOException {
         manager
             .automations()
             .define("exampleAutomation")
@@ -65,7 +67,7 @@ public final class Main {
                         new AutomationActionLogicApp()
                             .withLogicAppResourceId(
                                 "/subscriptions/e54a4a18-5b94-4f90-9471-bd3decad8a2e/resourceGroups/sample/providers/Microsoft.Logic/workflows/MyTest1")
-                            .withUri("https://exampleTriggerUri1.com")))
+                            .withUri(new URL("https://exampleTriggerUri1.com"))))
             .create();
     }
 

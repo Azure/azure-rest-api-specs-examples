@@ -11,6 +11,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void deleteASecurityConnector(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securityConnectors().deleteWithResponse("myRg", "mySecurityConnectorName", Context.NONE);
+        manager.securityConnectors().deleteByResourceGroupWithResponse("myRg", "mySecurityConnectorName", Context.NONE);
     }
 }

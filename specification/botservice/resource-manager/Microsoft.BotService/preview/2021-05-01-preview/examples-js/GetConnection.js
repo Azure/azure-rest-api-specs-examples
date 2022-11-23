@@ -14,7 +14,11 @@ async function updateConnectionSetting() {
   const connectionName = "sampleConnection";
   const credential = new DefaultAzureCredential();
   const client = new AzureBotService(credential, subscriptionId);
-  const result = await client.botConnection.get(resourceGroupName, resourceName, connectionName);
+  const result = await client.botConnection.listWithSecrets(
+    resourceGroupName,
+    resourceName,
+    connectionName
+  );
   console.log(result);
 }
 

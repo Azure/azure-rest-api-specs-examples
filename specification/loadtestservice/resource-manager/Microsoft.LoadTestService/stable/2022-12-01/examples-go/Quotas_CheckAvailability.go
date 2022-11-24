@@ -1,4 +1,4 @@
-package armloadtestservice_test
+package armloadtesting_test
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/loadtestservice/armloadtestservice"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/loadtesting/armloadtesting"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/Quotas_CheckAvailability.json
@@ -16,15 +16,15 @@ func ExampleQuotasClient_CheckAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armloadtestservice.NewQuotasClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	client, err := armloadtesting.NewQuotasClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckAvailability(ctx, "westus", "testQuotaBucket", armloadtestservice.QuotaBucketRequest{
-		Properties: &armloadtestservice.QuotaBucketRequestProperties{
+	res, err := client.CheckAvailability(ctx, "westus", "testQuotaBucket", armloadtesting.QuotaBucketRequest{
+		Properties: &armloadtesting.QuotaBucketRequestProperties{
 			CurrentQuota: to.Ptr[int32](40),
 			CurrentUsage: to.Ptr[int32](20),
-			Dimensions: &armloadtestservice.QuotaBucketRequestPropertiesDimensions{
+			Dimensions: &armloadtesting.QuotaBucketRequestPropertiesDimensions{
 				Location:       to.Ptr("westus"),
 				SubscriptionID: to.Ptr("testsubscriptionId"),
 			},

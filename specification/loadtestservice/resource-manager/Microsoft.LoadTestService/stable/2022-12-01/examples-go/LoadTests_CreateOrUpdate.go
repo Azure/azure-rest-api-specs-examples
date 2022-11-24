@@ -1,4 +1,4 @@
-package armloadtesting_test
+package armloadtestservice_test
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/loadtesting/armloadtesting"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/loadtestservice/armloadtestservice"
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/LoadTests_CreateOrUpdate.json
@@ -16,26 +16,26 @@ func ExampleLoadTestsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armloadtesting.NewLoadTestsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	client, err := armloadtestservice.NewLoadTestsClient("00000000-0000-0000-0000-000000000000", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "dummyrg", "myLoadTest", armloadtesting.LoadTestResource{
+	poller, err := client.BeginCreateOrUpdate(ctx, "dummyrg", "myLoadTest", armloadtestservice.LoadTestResource{
 		Location: to.Ptr("westus"),
 		Tags: map[string]*string{
 			"Team": to.Ptr("Dev Exp"),
 		},
-		Identity: &armloadtesting.ManagedServiceIdentity{
-			Type: to.Ptr(armloadtesting.ManagedServiceIdentityTypeSystemAssignedUserAssigned),
-			UserAssignedIdentities: map[string]*armloadtesting.UserAssignedIdentity{
+		Identity: &armloadtestservice.ManagedServiceIdentity{
+			Type: to.Ptr(armloadtestservice.ManagedServiceIdentityTypeSystemAssignedUserAssigned),
+			UserAssignedIdentities: map[string]*armloadtestservice.UserAssignedIdentity{
 				"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {},
 			},
 		},
-		Properties: &armloadtesting.LoadTestProperties{
+		Properties: &armloadtestservice.LoadTestProperties{
 			Description: to.Ptr("This is new load test resource"),
-			Encryption: &armloadtesting.EncryptionProperties{
-				Identity: &armloadtesting.EncryptionPropertiesIdentity{
-					Type:       to.Ptr(armloadtesting.TypeUserAssigned),
+			Encryption: &armloadtestservice.EncryptionProperties{
+				Identity: &armloadtestservice.EncryptionPropertiesIdentity{
+					Type:       to.Ptr(armloadtestservice.TypeUserAssigned),
 					ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1"),
 				},
 				KeyURL: to.Ptr("https://dummy.vault.azure.net/keys/dummykey1"),

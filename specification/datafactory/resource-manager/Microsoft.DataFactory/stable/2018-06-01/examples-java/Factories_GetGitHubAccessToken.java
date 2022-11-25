@@ -18,9 +18,9 @@ public final class Main {
                 "exampleResourceGroup",
                 "exampleFactoryName",
                 new GitHubAccessTokenRequest()
-                    .withGitHubAccessCode("some")
+                    .withGitHubAccessCode("fakeTokenPlaceholder")
                     .withGitHubClientId("some")
-                    .withGitHubAccessTokenBaseUrl("some"),
+                    .withGitHubAccessTokenBaseUrl("fakeTokenPlaceholder"),
                 Context.NONE);
     }
 }

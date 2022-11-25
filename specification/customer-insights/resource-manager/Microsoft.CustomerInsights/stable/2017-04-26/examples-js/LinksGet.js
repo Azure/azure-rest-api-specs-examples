@@ -1,0 +1,21 @@
+const { CustomerInsightsManagementClient } = require("@azure/arm-customerinsights");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets a link in the hub.
+ *
+ * @summary Gets a link in the hub.
+ * x-ms-original-file: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/LinksGet.json
+ */
+async function linksGet() {
+  const subscriptionId = "subid";
+  const resourceGroupName = "TestHubRG";
+  const hubName = "sdkTestHub";
+  const linkName = "linkTest4806";
+  const credential = new DefaultAzureCredential();
+  const client = new CustomerInsightsManagementClient(credential, subscriptionId);
+  const result = await client.links.get(resourceGroupName, hubName, linkName);
+  console.log(result);
+}
+
+linksGet().catch(console.error);

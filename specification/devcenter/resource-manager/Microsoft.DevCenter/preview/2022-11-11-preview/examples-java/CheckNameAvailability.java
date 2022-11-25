@@ -1,0 +1,21 @@
+import com.azure.core.util.Context;
+import com.azure.resourcemanager.devcenter.models.CheckNameAvailabilityRequest;
+
+/** Samples for CheckNameAvailability Execute. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/CheckNameAvailability.json
+     */
+    /**
+     * Sample code: NameAvailability.
+     *
+     * @param manager Entry point to DevCenterManager.
+     */
+    public static void nameAvailability(com.azure.resourcemanager.devcenter.DevCenterManager manager) {
+        manager
+            .checkNameAvailabilities()
+            .executeWithResponse(
+                new CheckNameAvailabilityRequest().withName("name1").withType("Microsoft.DevCenter/devcenters"),
+                Context.NONE);
+    }
+}

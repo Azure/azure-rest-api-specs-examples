@@ -13,7 +13,7 @@ async function getManagedApplicationDefinition() {
   const applicationDefinitionName = "myManagedApplicationDef";
   const credential = new DefaultAzureCredential();
   const client = new ApplicationClient(credential, subscriptionId);
-  const result = await client.applicationDefinitions.get(
+  const result = await client.applicationDefinitions.getById(
     resourceGroupName,
     applicationDefinitionName
   );

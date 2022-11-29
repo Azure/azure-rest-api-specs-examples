@@ -57,7 +57,7 @@ public final class Main {
                                 new VirtualMachineScaleSetOSProfile()
                                     .withComputerNamePrefix("{vmss-name}")
                                     .withAdminUsername("{your-username}")
-                                    .withAdminPassword("{your-password}"))
+                                    .withAdminPassword("fakeTokenPlaceholder"))
                             .withStorageProfile(
                                 new VirtualMachineScaleSetStorageProfile()
                                     .withImageReference(
@@ -115,8 +115,7 @@ public final class Main {
                                                             .deserialize("{}", Object.class, SerializerEncoding.JSON))
                                                     .withProtectedSettingsFromKeyVault(
                                                         new KeyVaultSecretReference()
-                                                            .withSecretUrl(
-                                                                "https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e")
+                                                            .withSecretUrl("fakeTokenPlaceholder")
                                                             .withSourceVault(
                                                                 new SubResource()
                                                                     .withId(

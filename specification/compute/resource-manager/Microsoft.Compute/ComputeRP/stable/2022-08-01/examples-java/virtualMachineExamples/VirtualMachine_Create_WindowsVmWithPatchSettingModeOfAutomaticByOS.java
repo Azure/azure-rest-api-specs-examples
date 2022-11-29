@@ -60,7 +60,7 @@ public final class Main {
                         new OSProfile()
                             .withComputerName("myVM")
                             .withAdminUsername("{your-username}")
-                            .withAdminPassword("{your-password}")
+                            .withAdminPassword("fakeTokenPlaceholder")
                             .withWindowsConfiguration(
                                 new WindowsConfiguration()
                                     .withProvisionVMAgent(true)

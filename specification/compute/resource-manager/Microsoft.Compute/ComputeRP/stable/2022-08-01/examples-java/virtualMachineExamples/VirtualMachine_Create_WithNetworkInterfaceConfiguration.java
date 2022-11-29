@@ -65,7 +65,7 @@ public final class Main {
                         new OSProfile()
                             .withComputerName("myVM")
                             .withAdminUsername("{your-username}")
-                            .withAdminPassword("{your-password}"))
+                            .withAdminPassword("fakeTokenPlaceholder"))
                     .withNetworkProfile(
                         new NetworkProfile()
                             .withNetworkApiVersion(NetworkApiVersion.TWO_ZERO_TWO_ZERO_ONE_ONE_ZERO_ONE)

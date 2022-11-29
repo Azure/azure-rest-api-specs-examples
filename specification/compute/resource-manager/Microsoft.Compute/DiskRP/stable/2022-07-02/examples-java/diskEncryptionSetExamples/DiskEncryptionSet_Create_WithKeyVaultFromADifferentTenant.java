@@ -38,9 +38,7 @@ public final class Main {
                                     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}",
                                     new VirtualMachineIdentityUserAssignedIdentities())))
                     .withEncryptionType(DiskEncryptionSetType.ENCRYPTION_AT_REST_WITH_CUSTOMER_KEY)
-                    .withActiveKey(
-                        new KeyForDiskEncryptionSet()
-                            .withKeyUrl("https://myvaultdifferenttenant.vault-int.azure-int.net/keys/{key}"))
+                    .withActiveKey(new KeyForDiskEncryptionSet().withKeyUrl("fakeTokenPlaceholder"))
                     .withFederatedClientId("00000000-0000-0000-0000-000000000000"),
                 Context.NONE);
     }

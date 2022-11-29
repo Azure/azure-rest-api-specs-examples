@@ -61,7 +61,7 @@ public final class Main {
                         new OSProfile()
                             .withComputerName("myVM")
                             .withAdminUsername("{your-username}")
-                            .withAdminPassword("{your-password}")
+                            .withAdminPassword("fakeTokenPlaceholder")
                             .withLinuxConfiguration(
                                 new LinuxConfiguration()
                                     .withProvisionVMAgent(true)

@@ -31,9 +31,7 @@ public final class Main {
                     .withLocation("West US")
                     .withIdentity(new EncryptionSetIdentity().withType(DiskEncryptionSetIdentityType.SYSTEM_ASSIGNED))
                     .withEncryptionType(DiskEncryptionSetType.ENCRYPTION_AT_REST_WITH_CUSTOMER_KEY)
-                    .withActiveKey(
-                        new KeyForDiskEncryptionSet()
-                            .withKeyUrl("https://myvaultdifferentsub.vault-int.azure-int.net/keys/{key}")),
+                    .withActiveKey(new KeyForDiskEncryptionSet().withKeyUrl("fakeTokenPlaceholder")),
                 Context.NONE);
     }
 

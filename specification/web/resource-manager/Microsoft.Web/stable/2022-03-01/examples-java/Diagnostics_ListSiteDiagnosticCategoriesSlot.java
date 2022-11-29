@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics ListSiteDiagnosticCategories. */
+/** Samples for Diagnostics ListSiteDiagnosticCategoriesSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/Diagnostics_ListSiteDiagnosticCategoriesSlot.json
@@ -16,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .listSiteDiagnosticCategories("Sample-WestUSResourceGroup", "SampleApp", Context.NONE);
+            .listSiteDiagnosticCategoriesSlot("Sample-WestUSResourceGroup", "SampleApp", "staging", Context.NONE);
     }
 }

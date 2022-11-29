@@ -49,7 +49,7 @@ public final class Main {
                                 new SmsReceiver()
                                     .withName("John Doe's mobile")
                                     .withCountryCode("1")
-                                    .withPhoneNumber("1234567890"),
+                                    .withPhoneNumber("fakePhoneNumberPlaceholder"),
                                 new SmsReceiver()
                                     .withName("Jane Smith's mobile")
                                     .withCountryCode("1")
@@ -105,7 +105,7 @@ public final class Main {
                                 new VoiceReceiver()
                                     .withName("Sample voice")
                                     .withCountryCode("1")
-                                    .withPhoneNumber("1234567890")))
+                                    .withPhoneNumber("fakePhoneNumberPlaceholder")))
                     .withLogicAppReceivers(
                         Arrays
                             .asList(

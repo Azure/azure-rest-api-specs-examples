@@ -23,7 +23,7 @@ public final class Main {
                 new ManagedClusterAadProfile()
                     .withClientAppId("clientappid")
                     .withServerAppId("serverappid")
-                    .withServerAppSecret("serverappsecret")
+                    .withServerAppSecret("fakeServerAppSecretPlaceholder")
                     .withTenantId("tenantid"),
                 Context.NONE);
     }

@@ -37,7 +37,7 @@ public final class Main {
                                 new SourceVault()
                                     .withId(
                                         "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myVMVault"))
-                            .withKeyUrl("https://myvmvault.vault-int.azure-int.net/keys/{key}")),
+                            .withKeyUrl("fakeTokenPlaceholder")),
                 Context.NONE);
     }
 

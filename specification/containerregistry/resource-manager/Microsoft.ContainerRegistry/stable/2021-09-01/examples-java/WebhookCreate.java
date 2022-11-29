@@ -30,8 +30,7 @@ public final class Main {
                     .withTags(mapOf("key", "value"))
                     .withLocation("westus")
                     .withServiceUri("http://myservice.com")
-                    .withCustomHeaders(
-                        mapOf("Authorization", "Basic 000000000000000000000000000000000000000000000000000"))
+                    .withCustomHeaders(mapOf("Authorization", "Basic FakeCredentialPlaceholder"))
                     .withStatus(WebhookStatus.ENABLED)
                     .withScope("myRepository")
                     .withActions(Arrays.asList(WebhookAction.PUSH)),

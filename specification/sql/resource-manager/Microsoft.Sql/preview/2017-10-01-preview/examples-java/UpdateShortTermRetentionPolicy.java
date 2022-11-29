@@ -2,7 +2,7 @@ import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.BackupShortTermRetentionPolicyInner;
 import com.azure.resourcemanager.sql.models.ShortTermRetentionPolicyName;
 
-/** Samples for BackupShortTermRetentionPolicies Update. */
+/** Samples for BackupShortTermRetentionPolicies CreateOrUpdate. */
 public final class Main {
     /*
      * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2017-10-01-preview/examples/UpdateShortTermRetentionPolicy.json
@@ -19,7 +19,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getBackupShortTermRetentionPolicies()
-            .update(
+            .createOrUpdate(
                 "resourceGroup",
                 "testsvr",
                 "testdb",

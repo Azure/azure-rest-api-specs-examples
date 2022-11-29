@@ -17,7 +17,7 @@ async function createOrUpdateDatabaseMigrationResourceWithMinimumParameters() {
       backupConfiguration: {
         sourceLocation: {
           fileShare: {
-            path: "C:aaa\bbbccc",
+            path: "C:\\aaa\\bbb\\ccc",
             password: "placeholder",
             username: "name",
           },

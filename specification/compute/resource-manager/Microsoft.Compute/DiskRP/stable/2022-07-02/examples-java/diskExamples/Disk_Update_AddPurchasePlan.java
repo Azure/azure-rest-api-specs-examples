@@ -27,7 +27,7 @@ public final class Main {
                             .withName("myPurchasePlanName")
                             .withPublisher("myPurchasePlanPublisher")
                             .withProduct("myPurchasePlanProduct")
-                            .withPromotionCode("myPurchasePlanPromotionCode")),
+                            .withPromotionCode("fakeTokenPlaceholder")),
                 Context.NONE);
     }
 }

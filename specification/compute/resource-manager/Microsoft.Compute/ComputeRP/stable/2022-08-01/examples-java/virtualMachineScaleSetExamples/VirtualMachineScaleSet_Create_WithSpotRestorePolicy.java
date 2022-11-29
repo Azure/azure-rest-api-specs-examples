@@ -51,7 +51,7 @@ public final class Main {
                                 new VirtualMachineScaleSetOSProfile()
                                     .withComputerNamePrefix("{vmss-name}")
                                     .withAdminUsername("{your-username}")
-                                    .withAdminPassword("{your-password}"))
+                                    .withAdminPassword("fakeTokenPlaceholder"))
                             .withStorageProfile(
                                 new VirtualMachineScaleSetStorageProfile()
                                     .withImageReference(

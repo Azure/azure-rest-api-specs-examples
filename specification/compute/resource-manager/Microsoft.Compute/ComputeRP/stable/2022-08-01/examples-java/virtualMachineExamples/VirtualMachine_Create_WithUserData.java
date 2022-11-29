@@ -58,7 +58,7 @@ public final class Main {
                         new OSProfile()
                             .withComputerName("{vm-name}")
                             .withAdminUsername("{your-username}")
-                            .withAdminPassword("{your-password}"))
+                            .withAdminPassword("fakeTokenPlaceholder"))
                     .withNetworkProfile(
                         new NetworkProfile()
                             .withNetworkInterfaces(

@@ -58,7 +58,7 @@ public final class Main {
                                 Arrays
                                     .asList(
                                         new InstanceViewStatus()
-                                            .withCode("aaaaaaaaaaaaaaaaaaaaaaa")
+                                            .withCode("fakeTokenPlaceholder")
                                             .withLevel(StatusLevelTypes.INFO)
                                             .withDisplayStatus("aaaaaa")
                                             .withMessage("a")
@@ -67,7 +67,7 @@ public final class Main {
                                 Arrays
                                     .asList(
                                         new InstanceViewStatus()
-                                            .withCode("aaaaaaaaaaaaaaaaaaaaaaa")
+                                            .withCode("fakeTokenPlaceholder")
                                             .withLevel(StatusLevelTypes.INFO)
                                             .withDisplayStatus("aaaaaa")
                                             .withMessage("a")

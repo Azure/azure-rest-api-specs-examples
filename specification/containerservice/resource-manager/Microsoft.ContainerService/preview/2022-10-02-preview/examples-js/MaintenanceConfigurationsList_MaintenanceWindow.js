@@ -1,0 +1,26 @@
+const { ContainerServiceClient } = require("@azure/arm-containerservice");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets a list of maintenance configurations in the specified managed cluster.
+ *
+ * @summary Gets a list of maintenance configurations in the specified managed cluster.
+ * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2022-10-02-preview/examples/MaintenanceConfigurationsList_MaintenanceWindow.json
+ */
+async function listMaintenanceConfigurationsConfiguredWithMaintenanceWindowByManagedCluster() {
+  const subscriptionId = "subid1";
+  const resourceGroupName = "rg1";
+  const resourceName = "clustername1";
+  const credential = new DefaultAzureCredential();
+  const client = new ContainerServiceClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.maintenanceConfigurations.listByManagedCluster(
+    resourceGroupName,
+    resourceName
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}
+
+listMaintenanceConfigurationsConfiguredWithMaintenanceWindowByManagedCluster().catch(console.error);

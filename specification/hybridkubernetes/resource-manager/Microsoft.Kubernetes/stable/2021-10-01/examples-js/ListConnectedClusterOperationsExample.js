@@ -1,6 +1,12 @@
 const { ConnectedKubernetesClient } = require("@azure/arm-hybridkubernetes");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Lists all of the available API operations for Connected Cluster resource.
+ *
+ * @summary Lists all of the available API operations for Connected Cluster resource.
+ * x-ms-original-file: specification/hybridkubernetes/resource-manager/Microsoft.Kubernetes/stable/2021-10-01/examples/ListConnectedClusterOperationsExample.json
+ */
 async function listConnectedClusterOperationsExample() {
   const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();

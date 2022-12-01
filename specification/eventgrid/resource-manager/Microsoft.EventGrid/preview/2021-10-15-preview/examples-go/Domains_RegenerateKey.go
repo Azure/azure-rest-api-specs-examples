@@ -14,24 +14,17 @@ func ExampleDomainsClient_RegenerateKey() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewDomainsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewDomainsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	res, err := client.RegenerateKey(ctx,
-		"<resource-group-name>",
-		"<domain-name>",
-		armeventgrid.DomainRegenerateKeyRequest{
-			KeyName: to.Ptr("<key-name>"),
-		},
-		nil)
+	res, err := client.RegenerateKey(ctx, "examplerg", "exampledomain2", armeventgrid.DomainRegenerateKeyRequest{
+		KeyName: to.Ptr("key1"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

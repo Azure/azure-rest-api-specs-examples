@@ -14,34 +14,26 @@ func ExampleEventChannelsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewEventChannelsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewEventChannelsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<partner-namespace-name>",
-		"<event-channel-name>",
-		armeventgrid.EventChannel{
-			Properties: &armeventgrid.EventChannelProperties{
-				Destination: &armeventgrid.EventChannelDestination{
-					AzureSubscriptionID: to.Ptr("<azure-subscription-id>"),
-					PartnerTopicName:    to.Ptr("<partner-topic-name>"),
-					ResourceGroup:       to.Ptr("<resource-group>"),
-				},
-				Source: &armeventgrid.EventChannelSource{
-					Source: to.Ptr("<source>"),
-				},
+	res, err := client.CreateOrUpdate(ctx, "examplerg", "examplePartnerNamespaceName1", "exampleEventChannelName1", armeventgrid.EventChannel{
+		Properties: &armeventgrid.EventChannelProperties{
+			Destination: &armeventgrid.EventChannelDestination{
+				AzureSubscriptionID: to.Ptr("5b4b650e-28b9-4790-b3ab-ddbd88d727c4"),
+				PartnerTopicName:    to.Ptr("examplePartnerTopic1"),
+				ResourceGroup:       to.Ptr("examplerg2"),
+			},
+			Source: &armeventgrid.EventChannelSource{
+				Source: to.Ptr("ContosoCorp.Accounts.User1"),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

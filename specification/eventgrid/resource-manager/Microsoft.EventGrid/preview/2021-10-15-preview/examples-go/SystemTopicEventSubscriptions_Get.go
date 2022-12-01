@@ -13,22 +13,15 @@ func ExampleSystemTopicEventSubscriptionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewSystemTopicEventSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewSystemTopicEventSubscriptionsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	res, err := client.Get(ctx,
-		"<resource-group-name>",
-		"<system-topic-name>",
-		"<event-subscription-name>",
-		nil)
+	res, err := client.Get(ctx, "examplerg", "exampleSystemTopic1", "examplesubscription1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

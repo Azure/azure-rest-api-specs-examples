@@ -3,7 +3,6 @@ package armeventgrid_test
 import (
 	"context"
 	"log"
-
 	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
@@ -16,35 +15,27 @@ func ExampleChannelsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewChannelsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewChannelsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<partner-namespace-name>",
-		"<channel-name>",
-		armeventgrid.Channel{
-			Properties: &armeventgrid.ChannelProperties{
-				ChannelType:                     to.Ptr(armeventgrid.ChannelTypePartnerTopic),
-				ExpirationTimeIfNotActivatedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-21T22:50:25.410433Z"); return t }()),
-				MessageForActivation:            to.Ptr("<message-for-activation>"),
-				PartnerTopicInfo: &armeventgrid.PartnerTopicInfo{
-					Name:                to.Ptr("<name>"),
-					AzureSubscriptionID: to.Ptr("<azure-subscription-id>"),
-					ResourceGroupName:   to.Ptr("<resource-group-name>"),
-					Source:              to.Ptr("<source>"),
-				},
+	res, err := client.CreateOrUpdate(ctx, "examplerg", "examplePartnerNamespaceName1", "exampleChannelName1", armeventgrid.Channel{
+		Properties: &armeventgrid.ChannelProperties{
+			ChannelType:                     to.Ptr(armeventgrid.ChannelTypePartnerTopic),
+			ExpirationTimeIfNotActivatedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-21T22:50:25.410433Z"); return t }()),
+			MessageForActivation:            to.Ptr("Example message to approver"),
+			PartnerTopicInfo: &armeventgrid.PartnerTopicInfo{
+				Name:                to.Ptr("examplePartnerTopic1"),
+				AzureSubscriptionID: to.Ptr("5b4b650e-28b9-4790-b3ab-ddbd88d727c4"),
+				ResourceGroupName:   to.Ptr("examplerg2"),
+				Source:              to.Ptr("ContosoCorp.Accounts.User1"),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

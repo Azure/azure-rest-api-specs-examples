@@ -13,13 +13,11 @@ func ExampleVerifiedPartnersClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
 	client, err := armeventgrid.NewVerifiedPartnersClient(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
 	pager := client.NewListPager(&armeventgrid.VerifiedPartnersClientListOptions{Filter: nil,
 		Top: nil,
@@ -28,7 +26,6 @@ func ExampleVerifiedPartnersClient_NewListPager() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

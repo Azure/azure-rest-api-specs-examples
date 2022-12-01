@@ -14,24 +14,17 @@ func ExamplePartnerNamespacesClient_RegenerateKey() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewPartnerNamespacesClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewPartnerNamespacesClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	res, err := client.RegenerateKey(ctx,
-		"<resource-group-name>",
-		"<partner-namespace-name>",
-		armeventgrid.PartnerNamespaceRegenerateKeyRequest{
-			KeyName: to.Ptr("<key-name>"),
-		},
-		nil)
+	res, err := client.RegenerateKey(ctx, "examplerg", "examplePartnerNamespaceName1", armeventgrid.PartnerNamespaceRegenerateKeyRequest{
+		KeyName: to.Ptr("key1"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

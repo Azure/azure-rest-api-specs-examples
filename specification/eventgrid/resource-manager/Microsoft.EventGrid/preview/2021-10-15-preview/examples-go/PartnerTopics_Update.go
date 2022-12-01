@@ -14,26 +14,19 @@ func ExamplePartnerTopicsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewPartnerTopicsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewPartnerTopicsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	_, err = client.Update(ctx,
-		"<resource-group-name>",
-		"<partner-topic-name>",
-		armeventgrid.PartnerTopicUpdateParameters{
-			Tags: map[string]*string{
-				"tag1": to.Ptr("value1"),
-				"tag2": to.Ptr("value2"),
-			},
+	_, err = client.Update(ctx, "examplerg", "examplePartnerTopicName1", armeventgrid.PartnerTopicUpdateParameters{
+		Tags: map[string]*string{
+			"tag1": to.Ptr("value1"),
+			"tag2": to.Ptr("value2"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 }

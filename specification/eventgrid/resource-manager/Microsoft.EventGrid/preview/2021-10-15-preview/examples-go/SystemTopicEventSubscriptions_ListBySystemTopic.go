@@ -13,24 +13,19 @@ func ExampleSystemTopicEventSubscriptionsClient_NewListBySystemTopicPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewSystemTopicEventSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewSystemTopicEventSubscriptionsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	pager := client.NewListBySystemTopicPager("<resource-group-name>",
-		"<system-topic-name>",
-		&armeventgrid.SystemTopicEventSubscriptionsClientListBySystemTopicOptions{Filter: nil,
-			Top: nil,
-		})
+	pager := client.NewListBySystemTopicPager("examplerg", "exampleSystemTopic1", &armeventgrid.SystemTopicEventSubscriptionsClientListBySystemTopicOptions{Filter: nil,
+		Top: nil,
+	})
 	for pager.More() {
 		nextResult, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
-			return
 		}
 		for _, v := range nextResult.Value {
 			// TODO: use page item

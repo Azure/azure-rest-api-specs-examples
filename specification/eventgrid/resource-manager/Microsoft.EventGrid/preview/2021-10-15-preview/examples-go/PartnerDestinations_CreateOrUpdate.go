@@ -16,31 +16,24 @@ func ExamplePartnerDestinationsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewPartnerDestinationsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewPartnerDestinationsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<partner-destination-name>",
-		armeventgrid.PartnerDestination{
-			Location: to.Ptr("<location>"),
-			Properties: &armeventgrid.PartnerDestinationProperties{
-				EndpointBaseURL:                 to.Ptr("<endpoint-base-url>"),
-				EndpointServiceContext:          to.Ptr("<endpoint-service-context>"),
-				ExpirationTimeIfNotActivatedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-14T19:33:43.430Z"); return t }()),
-				MessageForActivation:            to.Ptr("<message-for-activation>"),
-				PartnerRegistrationImmutableID:  to.Ptr("<partner-registration-immutable-id>"),
-			},
+	res, err := client.CreateOrUpdate(ctx, "examplerg", "examplePartnerDestinationName1", armeventgrid.PartnerDestination{
+		Location: to.Ptr("westus2"),
+		Properties: &armeventgrid.PartnerDestinationProperties{
+			EndpointBaseURL:                 to.Ptr("https://www.example/endpoint"),
+			EndpointServiceContext:          to.Ptr("This is an example"),
+			ExpirationTimeIfNotActivatedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-14T19:33:43.430Z"); return t }()),
+			MessageForActivation:            to.Ptr("Sample Activation message"),
+			PartnerRegistrationImmutableID:  to.Ptr("0bd70ee2-7d95-447e-ab1f-c4f320019404"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

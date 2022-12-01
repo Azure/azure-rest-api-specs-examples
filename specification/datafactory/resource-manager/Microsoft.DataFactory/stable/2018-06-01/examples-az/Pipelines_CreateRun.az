@@ -1,0 +1,1 @@
+az datafactory pipeline create-run --factory-name "exampleFactoryName" --parameters "{\"OutputBlobNameList\":[\"exampleoutput.csv\"]}" --name "examplePipeline" --resource-group "exampleResourceGroup"

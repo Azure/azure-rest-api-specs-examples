@@ -1,0 +1,1 @@
+az vm create -g MyResourceGroup -n MyVm --image /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Compute/galleries/myGallery/images/myImage/versions/1.0.0 --specialized

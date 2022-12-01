@@ -1,0 +1,1 @@
+az monitor metrics list --resource {ResourceName} --metric "Percentage CPU"

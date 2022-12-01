@@ -1,0 +1,2 @@
+az monitor metrics list --resource {ResourceName} --metric SuccessE2ELatency \
+                        --dimension ApiName

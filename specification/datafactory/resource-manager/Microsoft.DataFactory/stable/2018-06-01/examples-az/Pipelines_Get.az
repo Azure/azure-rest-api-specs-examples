@@ -1,0 +1,1 @@
+az datafactory pipeline show --factory-name "exampleFactoryName" --name "examplePipeline" --resource-group "exampleResourceGroup"

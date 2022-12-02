@@ -1,0 +1,23 @@
+const { AzureMachineLearningWorkspaces } = require("@azure/arm-machinelearning");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to List schedules in specified workspace.
+ *
+ * @summary List schedules in specified workspace.
+ * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Schedule/list.json
+ */
+async function listSchedules() {
+  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = "test-rg";
+  const workspaceName = "my-aml-workspace";
+  const credential = new DefaultAzureCredential();
+  const client = new AzureMachineLearningWorkspaces(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.schedules.list(resourceGroupName, workspaceName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}
+
+listSchedules().catch(console.error);

@@ -4,8 +4,6 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid"
@@ -16,42 +14,33 @@ func ExampleDomainEventSubscriptionsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewDomainEventSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewDomainEventSubscriptionsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"<resource-group-name>",
-		"<domain-name>",
-		"<event-subscription-name>",
-		armeventgrid.EventSubscriptionUpdateParameters{
-			Destination: &armeventgrid.WebHookEventSubscriptionDestination{
-				EndpointType: to.Ptr(armeventgrid.EndpointTypeWebHook),
-				Properties: &armeventgrid.WebHookEventSubscriptionDestinationProperties{
-					EndpointURL: to.Ptr("<endpoint-url>"),
-				},
+	poller, err := client.BeginUpdate(ctx, "examplerg", "exampleDomain1", "exampleEventSubscriptionName1", armeventgrid.EventSubscriptionUpdateParameters{
+		Destination: &armeventgrid.WebHookEventSubscriptionDestination{
+			EndpointType: to.Ptr(armeventgrid.EndpointTypeWebHook),
+			Properties: &armeventgrid.WebHookEventSubscriptionDestinationProperties{
+				EndpointURL: to.Ptr("https://requestb.in/15ksip71"),
 			},
-			Filter: &armeventgrid.EventSubscriptionFilter{
-				IsSubjectCaseSensitive: to.Ptr(true),
-				SubjectBeginsWith:      to.Ptr("<subject-begins-with>"),
-				SubjectEndsWith:        to.Ptr("<subject-ends-with>"),
-			},
-			Labels: []*string{
-				to.Ptr("label1"),
-				to.Ptr("label2")},
 		},
-		&armeventgrid.DomainEventSubscriptionsClientBeginUpdateOptions{ResumeToken: ""})
+		Filter: &armeventgrid.EventSubscriptionFilter{
+			IsSubjectCaseSensitive: to.Ptr(true),
+			SubjectBeginsWith:      to.Ptr("existingPrefix"),
+			SubjectEndsWith:        to.Ptr("newSuffix"),
+		},
+		Labels: []*string{
+			to.Ptr("label1"),
+			to.Ptr("label2")},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	_, err = poller.PollUntilDone(ctx, 30*time.Second)
+	_, err = poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 }

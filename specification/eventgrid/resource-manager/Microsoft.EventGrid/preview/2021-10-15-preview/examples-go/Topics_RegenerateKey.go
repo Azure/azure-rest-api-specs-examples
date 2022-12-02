@@ -4,8 +4,6 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid"
@@ -16,29 +14,21 @@ func ExampleTopicsClient_BeginRegenerateKey() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewTopicsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewTopicsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	poller, err := client.BeginRegenerateKey(ctx,
-		"<resource-group-name>",
-		"<topic-name>",
-		armeventgrid.TopicRegenerateKeyRequest{
-			KeyName: to.Ptr("<key-name>"),
-		},
-		&armeventgrid.TopicsClientBeginRegenerateKeyOptions{ResumeToken: ""})
+	poller, err := client.BeginRegenerateKey(ctx, "examplerg", "exampletopic2", armeventgrid.TopicRegenerateKeyRequest{
+		KeyName: to.Ptr("key1"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

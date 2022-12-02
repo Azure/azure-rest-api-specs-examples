@@ -16,43 +16,36 @@ func ExamplePartnerConfigurationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewPartnerConfigurationsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewPartnerConfigurationsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		armeventgrid.PartnerConfiguration{
-			Properties: &armeventgrid.PartnerConfigurationProperties{
-				PartnerAuthorization: &armeventgrid.PartnerAuthorization{
-					AuthorizedPartnersList: []*armeventgrid.Partner{
-						{
-							AuthorizationExpirationTimeInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-28T01:20:55.142Z"); return t }()),
-							PartnerName:                      to.Ptr("<partner-name>"),
-							PartnerRegistrationImmutableID:   to.Ptr("<partner-registration-immutable-id>"),
-						},
-						{
-							AuthorizationExpirationTimeInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-20T01:00:00.142Z"); return t }()),
-							PartnerName:                      to.Ptr("<partner-name>"),
-							PartnerRegistrationImmutableID:   to.Ptr("<partner-registration-immutable-id>"),
-						}},
-					DefaultMaximumExpirationTimeInDays: to.Ptr[int32](10),
-				},
+	poller, err := client.BeginCreateOrUpdate(ctx, "examplerg", armeventgrid.PartnerConfiguration{
+		Properties: &armeventgrid.PartnerConfigurationProperties{
+			PartnerAuthorization: &armeventgrid.PartnerAuthorization{
+				AuthorizedPartnersList: []*armeventgrid.Partner{
+					{
+						AuthorizationExpirationTimeInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-28T01:20:55.142Z"); return t }()),
+						PartnerName:                      to.Ptr("Contoso.Finance"),
+						PartnerRegistrationImmutableID:   to.Ptr("941892bc-f5d0-4d1c-8fb5-477570fc2b71"),
+					},
+					{
+						AuthorizationExpirationTimeInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-20T01:00:00.142Z"); return t }()),
+						PartnerName:                      to.Ptr("fabrikam.HR"),
+						PartnerRegistrationImmutableID:   to.Ptr("5362bdb6-ce3e-4d0d-9a5b-3eb92c8aab38"),
+					}},
+				DefaultMaximumExpirationTimeInDays: to.Ptr[int32](10),
 			},
 		},
-		&armeventgrid.PartnerConfigurationsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

@@ -4,8 +4,6 @@ import (
 	"context"
 	"log"
 
-	"time"
-
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid"
@@ -16,42 +14,33 @@ func ExampleDomainEventSubscriptionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
-		return
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewDomainEventSubscriptionsClient("<subscription-id>", cred, nil)
+	client, err := armeventgrid.NewDomainEventSubscriptionsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
-		return
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"<resource-group-name>",
-		"<domain-name>",
-		"<event-subscription-name>",
-		armeventgrid.EventSubscription{
-			Properties: &armeventgrid.EventSubscriptionProperties{
-				Destination: &armeventgrid.WebHookEventSubscriptionDestination{
-					EndpointType: to.Ptr(armeventgrid.EndpointTypeWebHook),
-					Properties: &armeventgrid.WebHookEventSubscriptionDestinationProperties{
-						EndpointURL: to.Ptr("<endpoint-url>"),
-					},
-				},
-				Filter: &armeventgrid.EventSubscriptionFilter{
-					IsSubjectCaseSensitive: to.Ptr(false),
-					SubjectBeginsWith:      to.Ptr("<subject-begins-with>"),
-					SubjectEndsWith:        to.Ptr("<subject-ends-with>"),
+	poller, err := client.BeginCreateOrUpdate(ctx, "examplerg", "exampleDomain1", "exampleEventSubscriptionName1", armeventgrid.EventSubscription{
+		Properties: &armeventgrid.EventSubscriptionProperties{
+			Destination: &armeventgrid.WebHookEventSubscriptionDestination{
+				EndpointType: to.Ptr(armeventgrid.EndpointTypeWebHook),
+				Properties: &armeventgrid.WebHookEventSubscriptionDestinationProperties{
+					EndpointURL: to.Ptr("https://requestb.in/15ksip71"),
 				},
 			},
+			Filter: &armeventgrid.EventSubscriptionFilter{
+				IsSubjectCaseSensitive: to.Ptr(false),
+				SubjectBeginsWith:      to.Ptr("ExamplePrefix"),
+				SubjectEndsWith:        to.Ptr("ExampleSuffix"),
+			},
 		},
-		&armeventgrid.DomainEventSubscriptionsClientBeginCreateOrUpdateOptions{ResumeToken: ""})
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-		return
 	}
-	res, err := poller.PollUntilDone(ctx, 30*time.Second)
+	res, err := poller.PollUntilDone(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
-		return
 	}
 	// TODO: use response item
 	_ = res

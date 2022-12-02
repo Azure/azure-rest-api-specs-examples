@@ -9,8 +9,6 @@ body:
       label: Link to sample
       description: Link to sample
       placeholder: ex. https://docs.microsoft.com/en-us/rest/api/compute/virtual-machines/create-or-update?tabs=Java#examples
-    validations:
-      required: true
   - type: input
     id: library
     attributes:

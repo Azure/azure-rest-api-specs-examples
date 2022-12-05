@@ -1,6 +1,12 @@
 const { MariaDBManagementClient } = require("@azure/arm-mariadb");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Updates a configuration of a server.
+ *
+ * @summary Updates a configuration of a server.
+ * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/ConfigurationCreateOrUpdate.json
+ */
 async function configurationCreateOrUpdate() {
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const resourceGroupName = "TestGroup";

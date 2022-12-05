@@ -1,6 +1,12 @@
 const { MariaDBManagementClient } = require("@azure/arm-mariadb");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Recommendation action session operation result.
+ *
+ * @summary Recommendation action session operation result.
+ * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/RecommendedActionSessionResult.json
+ */
 async function recommendedActionSessionResult() {
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const locationName = "WestUS";

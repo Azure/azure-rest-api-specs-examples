@@ -1,6 +1,12 @@
 const { MariaDBManagementClient } = require("@azure/arm-mariadb");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Creates a new firewall rule or updates an existing firewall rule.
+ *
+ * @summary Creates a new firewall rule or updates an existing firewall rule.
+ * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/FirewallRuleCreate.json
+ */
 async function firewallRuleCreate() {
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const resourceGroupName = "TestGroup";

@@ -1,6 +1,12 @@
 const { MariaDBManagementClient } = require("@azure/arm-mariadb");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Deletes a server firewall rule.
+ *
+ * @summary Deletes a server firewall rule.
+ * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/FirewallRuleDelete.json
+ */
 async function firewallRuleDelete() {
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const resourceGroupName = "TestGroup";

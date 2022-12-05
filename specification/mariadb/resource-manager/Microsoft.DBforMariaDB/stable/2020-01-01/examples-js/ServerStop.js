@@ -1,6 +1,12 @@
 const { MariaDBManagementClient } = require("@azure/arm-mariadb");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Stops a running server.
+ *
+ * @summary Stops a running server.
+ * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2020-01-01/examples/ServerStop.json
+ */
 async function serverStop() {
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const resourceGroupName = "TestGroup";

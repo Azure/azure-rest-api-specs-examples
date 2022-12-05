@@ -1,6 +1,12 @@
 const { PeeringManagementClient } = require("@azure/arm-peering");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+ *
+ * @summary Creates a new prefix with the specified name under the given subscription, resource group and peering service.
+ * x-ms-original-file: specification/peering/resource-manager/Microsoft.Peering/stable/2021-06-01/examples/CreatePeeringServicePrefix.json
+ */
 async function createOrUpdateAPrefixForThePeeringService() {
   const subscriptionId = "subId";
   const resourceGroupName = "rgName";

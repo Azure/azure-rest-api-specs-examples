@@ -1,6 +1,12 @@
 const { PeeringManagementClient } = require("@azure/arm-peering");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Lists all of the legacy peerings under the given subscription matching the specified kind and location.
+ *
+ * @summary Lists all of the legacy peerings under the given subscription matching the specified kind and location.
+ * x-ms-original-file: specification/peering/resource-manager/Microsoft.Peering/stable/2021-06-01/examples/ListLegacyPeerings.json
+ */
 async function listLegacyPeerings() {
   const subscriptionId = "subId";
   const peeringLocation = "peeringLocation0";

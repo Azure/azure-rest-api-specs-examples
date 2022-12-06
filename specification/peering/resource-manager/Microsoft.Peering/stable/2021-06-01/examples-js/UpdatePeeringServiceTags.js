@@ -1,6 +1,12 @@
 const { PeeringManagementClient } = require("@azure/arm-peering");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Updates tags for a peering service with the specified name under the given subscription and resource group.
+ *
+ * @summary Updates tags for a peering service with the specified name under the given subscription and resource group.
+ * x-ms-original-file: specification/peering/resource-manager/Microsoft.Peering/stable/2021-06-01/examples/UpdatePeeringServiceTags.json
+ */
 async function updatePeeringServiceTags() {
   const subscriptionId = "subId";
   const resourceGroupName = "rgName";

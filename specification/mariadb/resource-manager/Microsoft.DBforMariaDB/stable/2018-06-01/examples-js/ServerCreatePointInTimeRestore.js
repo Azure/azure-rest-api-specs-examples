@@ -1,6 +1,12 @@
 const { MariaDBManagementClient } = require("@azure/arm-mariadb");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Creates a new server or updates an existing server. The update action will overwrite the existing server.
+ *
+ * @summary Creates a new server or updates an existing server. The update action will overwrite the existing server.
+ * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/ServerCreatePointInTimeRestore.json
+ */
 async function createADatabaseAsAPointInTimeRestore() {
   const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const resourceGroupName = "TargetResourceGroup";

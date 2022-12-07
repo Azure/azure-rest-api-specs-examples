@@ -1,0 +1,1 @@
+az vm reapply -g MyResourceGroup -n MyVm

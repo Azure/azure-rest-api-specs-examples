@@ -1,0 +1,1 @@
+az monitor activity-log list --start-time 2018-07-01 --offset 7d

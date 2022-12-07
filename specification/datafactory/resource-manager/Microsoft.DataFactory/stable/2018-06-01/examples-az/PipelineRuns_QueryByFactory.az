@@ -1,0 +1,1 @@
+az datafactory pipeline-run query-by-factory --factory-name "exampleFactoryName" --filters operand="PipelineName" operator="Equals" values="examplePipeline" --last-updated-after "2018-06-16T00:36:44.3345758Z" --last-updated-before "2018-06-16T00:49:48.3686473Z" --resource-group "exampleResourceGroup"

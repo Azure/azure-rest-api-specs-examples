@@ -1,0 +1,1 @@
+az vm create -g MyResourceGroup -n MyVm --image MyImage

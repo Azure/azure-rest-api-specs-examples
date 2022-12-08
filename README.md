@@ -25,6 +25,7 @@ Currently supported `language` includes:
 - `js-rlc` for JavaScript RLC
 - `python` for Python
 - `dotnet` for .NET
+- `az` for Azure CLI
 
 Pending:
 - `ts` for typescript
@@ -57,6 +58,7 @@ Currently supported `language-ext` includes:
 - `js` for JavaScript (includes RLC)
 - `py` for Python
 - `cs` for .NET
+- `az` for Azure CLI
 
 Pending:
 - `ts` for typescript
@@ -68,7 +70,8 @@ Metadata is a JSON that contains information related to the code snippet.
 ----
 | Property | Type | Required | Description
 -|-|-|-
-| sdkUrl | string | yes | The URL to SDK documentation. It usually provides information on package and authentication.
+| sdkUrl | string | no | The URL to SDK documentation. It usually provides information on package and authentication.
+| description | string | no | The description of the example.
 ----
 
 ### Cause of missing SDK examples

@@ -1,6 +1,12 @@
 const { ResourceMoverServiceAPI } = require("@azure/arm-resourcemover");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ *
+ * @summary Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true.
+ * x-ms-original-file: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/examples/MoveCollections_Discard.json
+ */
 async function moveCollectionsDiscard() {
   const subscriptionId = "subid";
   const resourceGroupName = "rg1";
@@ -11,7 +17,7 @@ async function moveCollectionsDiscard() {
     ],
     validateOnly: false,
   };
-  const options = { body: body };
+  const options = { body };
   const credential = new DefaultAzureCredential();
   const client = new ResourceMoverServiceAPI(credential, subscriptionId);
   const result = await client.moveCollections.beginDiscardAndWait(

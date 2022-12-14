@@ -1,6 +1,12 @@
 const { ResourceMoverServiceAPI } = require("@azure/arm-resourcemover");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Computes, resolves and validate the dependencies of the moveResources in the move collection.
+ *
+ * @summary Computes, resolves and validate the dependencies of the moveResources in the move collection.
+ * x-ms-original-file: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/examples/MoveCollections_ResolveDependencies.json
+ */
 async function moveCollectionsResolveDependencies() {
   const subscriptionId = "subid";
   const resourceGroupName = "rg1";

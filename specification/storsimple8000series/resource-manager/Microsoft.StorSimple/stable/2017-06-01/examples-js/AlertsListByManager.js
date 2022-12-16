@@ -1,13 +1,19 @@
 const { StorSimple8000SeriesManagementClient } = require("@azure/arm-storsimple8000series");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Retrieves all the alerts in a manager.
+ *
+ * @summary Retrieves all the alerts in a manager.
+ * x-ms-original-file: specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/AlertsListByManager.json
+ */
 async function alertsListByManager() {
   const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
   const resourceGroupName = "ResourceGroupForSDKTest";
   const managerName = "ManagerForSDKTest1";
   const filter =
-    "status eq 'Active' and appearedOnTime ge '2017-06-09T18:30:00Z' and appearedOnTime le '2017-06-19T18:30:00Z' and sourceType eq 'Device' and sourceName eq 'Device05ForSDKTest'";
-  const options = { filter: filter };
+    "status%20eq%20'Active'%20and%20appearedOnTime%20ge%20'2017-06-09T18:30:00Z'%20and%20appearedOnTime%20le%20'2017-06-19T18:30:00Z'%20and%20sourceType%20eq%20'Device'%20and%20sourceName%20eq%20'Device05ForSDKTest'";
+  const options = { filter };
   const credential = new DefaultAzureCredential();
   const client = new StorSimple8000SeriesManagementClient(credential, subscriptionId);
   const resArray = new Array();

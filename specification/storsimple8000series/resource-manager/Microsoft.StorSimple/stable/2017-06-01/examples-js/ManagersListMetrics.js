@@ -1,12 +1,18 @@
 const { StorSimple8000SeriesManagementClient } = require("@azure/arm-storsimple8000series");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Gets the metrics for the specified manager.
+ *
+ * @summary Gets the metrics for the specified manager.
+ * x-ms-original-file: specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/ManagersListMetrics.json
+ */
 async function managersListMetrics() {
   const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
   const resourceGroupName = "ResourceGroupForSDKTest";
   const managerName = "ManagerForSDKTest1";
   const filter =
-    "name/value eq 'PrimaryStorageTieredUsed' and timeGrain eq 'PT1H' and startTime ge '2017-06-17T18:30:00Z' and endTime le '2017-06-21T18:30:00Z' and category eq 'CapacityUtilization'";
+    "name/value%20eq%20'PrimaryStorageTieredUsed'%20and%20timeGrain%20eq%20'PT1H'%20and%20startTime%20ge%20'2017-06-17T18:30:00Z'%20and%20endTime%20le%20'2017-06-21T18:30:00Z'%20and%20category%20eq%20'CapacityUtilization'";
   const credential = new DefaultAzureCredential();
   const client = new StorSimple8000SeriesManagementClient(credential, subscriptionId);
   const resArray = new Array();

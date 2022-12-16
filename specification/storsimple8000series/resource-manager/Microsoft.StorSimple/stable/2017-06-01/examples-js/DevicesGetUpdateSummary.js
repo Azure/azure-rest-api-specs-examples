@@ -1,6 +1,12 @@
 const { StorSimple8000SeriesManagementClient } = require("@azure/arm-storsimple8000series");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Returns the update summary of the specified device name.
+ *
+ * @summary Returns the update summary of the specified device name.
+ * x-ms-original-file: specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/DevicesGetUpdateSummary.json
+ */
 async function devicesGetUpdateSummary() {
   const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
   const deviceName = "sugattdeviceforSDK";

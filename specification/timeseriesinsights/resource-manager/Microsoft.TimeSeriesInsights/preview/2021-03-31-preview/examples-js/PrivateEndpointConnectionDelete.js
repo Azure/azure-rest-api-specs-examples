@@ -1,5 +1,6 @@
 const { TimeSeriesInsightsClient } = require("@azure/arm-timeseriesinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv").config();
 
 /**
  * This sample demonstrates how to Disconnects the private endpoint connection and deletes it from the environment.
@@ -8,8 +9,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/examples/PrivateEndpointConnectionDelete.json
  */
 async function privateEndpointConnectionDelete() {
-  const subscriptionId = "mySubscriptionId";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["TIMESERIESINSIGHTS_SUBSCRIPTION_ID"] || "mySubscriptionId";
+  const resourceGroupName = process.env["TIMESERIESINSIGHTS_RESOURCE_GROUP"] || "myResourceGroup";
   const environmentName = "myEnvironment";
   const privateEndpointConnectionName = "myPrivateEndpointConnectionName";
   const credential = new DefaultAzureCredential();
@@ -22,4 +23,8 @@ async function privateEndpointConnectionDelete() {
   console.log(result);
 }
 
-privateEndpointConnectionDelete().catch(console.error);
+async function main() {
+  privateEndpointConnectionDelete();
+}
+
+main().catch(console.error);

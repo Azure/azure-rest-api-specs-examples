@@ -1,6 +1,12 @@
 const { MicrosoftStorageSync } = require("@azure/arm-storagesync");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Create a new ServerEndpoint.
+ *
+ * @summary Create a new ServerEndpoint.
+ * x-ms-original-file: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/ServerEndpoints_Create.json
+ */
 async function serverEndpointsCreate() {
   const subscriptionId = "52b8da2f-61e0-4a1f-8dde-336911f367fb";
   const resourceGroupName = "SampleResourceGroup_1";
@@ -14,7 +20,7 @@ async function serverEndpointsCreate() {
     localCacheMode: "UpdateLocallyCachedFiles",
     offlineDataTransfer: "on",
     offlineDataTransferShareName: "myfileshare",
-    serverLocalPath: "D:SampleServerEndpoint_1",
+    serverLocalPath: "D:\\SampleServerEndpoint_1",
     serverResourceId:
       "/subscriptions/52b8da2f-61e0-4a1f-8dde-336911f367fb/resourceGroups/SampleResourceGroup_1/providers/Microsoft.StorageSync/storageSyncServices/SampleStorageSyncService_1/registeredServers/080d4133-bdb5-40a0-96a0-71a6057bfe9a",
     tierFilesOlderThanDays: 0,

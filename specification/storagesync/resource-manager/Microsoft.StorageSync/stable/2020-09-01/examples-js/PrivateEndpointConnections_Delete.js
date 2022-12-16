@@ -1,6 +1,12 @@
 const { MicrosoftStorageSync } = require("@azure/arm-storagesync");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Deletes the specified private endpoint connection associated with the storage sync service.
+ *
+ * @summary Deletes the specified private endpoint connection associated with the storage sync service.
+ * x-ms-original-file: specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/PrivateEndpointConnections_Delete.json
+ */
 async function privateEndpointConnectionsDelete() {
   const subscriptionId = "{subscription-id}";
   const resourceGroupName = "res6977";

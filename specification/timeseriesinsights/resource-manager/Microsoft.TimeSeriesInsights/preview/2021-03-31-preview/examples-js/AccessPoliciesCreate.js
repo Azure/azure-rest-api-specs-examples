@@ -1,5 +1,6 @@
 const { TimeSeriesInsightsClient } = require("@azure/arm-timeseriesinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv").config();
 
 /**
  * This sample demonstrates how to Create or update an access policy in the specified environment.
@@ -8,8 +9,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/preview/2021-03-31-preview/examples/AccessPoliciesCreate.json
  */
 async function accessPoliciesCreate() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["TIMESERIESINSIGHTS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["TIMESERIESINSIGHTS_RESOURCE_GROUP"] || "rg1";
   const environmentName = "env1";
   const accessPolicyName = "ap1";
   const parameters = {
@@ -28,4 +29,8 @@ async function accessPoliciesCreate() {
   console.log(result);
 }
 
-accessPoliciesCreate().catch(console.error);
+async function main() {
+  accessPoliciesCreate();
+}
+
+main().catch(console.error);

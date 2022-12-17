@@ -1,6 +1,12 @@
 const { StorSimple8000SeriesManagementClient } = require("@azure/arm-storsimple8000series");
 const { DefaultAzureCredential } = require("@azure/identity");
 
+/**
+ * This sample demonstrates how to Complete minimal setup before using the device.
+ *
+ * @summary Complete minimal setup before using the device.
+ * x-ms-original-file: specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/DevicesConfigure.json
+ */
 async function devicesConfigure() {
   const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
   const resourceGroupName = "ResourceGroupForSDKTest";

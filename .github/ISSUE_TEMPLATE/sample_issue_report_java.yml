@@ -65,7 +65,7 @@ body:
         Please provide more information on your environment:
           * JAVA Version
           * OS Version
-          * IDE and version : [e.g. Visual Studio 16.3]
+          * IDE and version
       placeholder: Environment
     validations:
       required: false

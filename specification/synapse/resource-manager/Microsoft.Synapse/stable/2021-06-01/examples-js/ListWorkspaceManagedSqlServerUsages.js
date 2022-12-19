@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/ListWorkspaceManagedSqlServerUsages.json
  */
 async function listUsagesMetricForTheWorkspaceManagedSqlServer() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "wsg-7398";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "wsg-7398";
   const workspaceName = "testWorkspace";
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);
@@ -22,5 +23,3 @@ async function listUsagesMetricForTheWorkspaceManagedSqlServer() {
   }
   console.log(resArray);
 }
-
-listUsagesMetricForTheWorkspaceManagedSqlServer().catch(console.error);

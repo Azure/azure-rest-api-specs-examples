@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/UpdatePrivateLinkHub.json
  */
 async function updateAPrivateLinkHub() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "resourceGroup1";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "resourceGroup1";
   const privateLinkHubName = "privateLinkHub1";
   const privateLinkHubPatchInfo = {
     tags: { key: "value" },
@@ -23,5 +24,3 @@ async function updateAPrivateLinkHub() {
   );
   console.log(result);
 }
-
-updateAPrivateLinkHub().catch(console.error);

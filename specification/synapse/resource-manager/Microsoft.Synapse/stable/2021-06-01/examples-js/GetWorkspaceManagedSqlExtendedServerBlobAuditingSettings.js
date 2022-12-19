@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/GetWorkspaceManagedSqlExtendedServerBlobAuditingSettings.json
  */
 async function getWorkspaceManagedSqlServersExtendedBlobAuditingSettings() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "wsg-7398";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "wsg-7398";
   const workspaceName = "testWorkspace";
   const blobAuditingPolicyName = "default";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getWorkspaceManagedSqlServersExtendedBlobAuditingSettings() {
   );
   console.log(result);
 }
-
-getWorkspaceManagedSqlServersExtendedBlobAuditingSettings().catch(console.error);

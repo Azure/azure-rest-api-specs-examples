@@ -1,0 +1,21 @@
+const { MobileNetworkManagementClient } = require("@azure/arm-mobilenetwork");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Reinstall the specified packet core control plane. This action will remove any transaction state from the packet core to return it to a known state. This action will cause a service outage.
+ *
+ * @summary Reinstall the specified packet core control plane. This action will remove any transaction state from the packet core to return it to a known state. This action will cause a service outage.
+ * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/examples/PacketCoreControlPlaneReinstall.json
+ */
+async function reinstallPacketCoreControlPlane() {
+  const subscriptionId = process.env["MOBILENETWORK_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["MOBILENETWORK_RESOURCE_GROUP"] || "rg1";
+  const packetCoreControlPlaneName = "TestPacketCoreCP";
+  const credential = new DefaultAzureCredential();
+  const client = new MobileNetworkManagementClient(credential, subscriptionId);
+  const result = await client.packetCoreControlPlaneOperations.beginReinstallAndWait(
+    resourceGroupName,
+    packetCoreControlPlaneName
+  );
+  console.log(result);
+}

@@ -12,7 +12,7 @@ async function profilesCreate() {
   const resourceGroupName = "RG";
   const profileName = "profile1";
   const profile = {
-    location: "WestCentralUs",
+    location: "global",
     sku: { name: "Premium_AzureFrontDoor" },
   };
   const credential = new DefaultAzureCredential();

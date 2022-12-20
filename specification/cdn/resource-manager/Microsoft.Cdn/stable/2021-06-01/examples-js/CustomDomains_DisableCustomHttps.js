@@ -15,7 +15,7 @@ async function customDomainsDisableCustomHttps() {
   const customDomainName = "www-someDomain-net";
   const credential = new DefaultAzureCredential();
   const client = new CdnManagementClient(credential, subscriptionId);
-  const result = await client.customDomains.disableCustomHttps(
+  const result = await client.customDomains.beginDisableCustomHttpsAndWait(
     resourceGroupName,
     profileName,
     endpointName,

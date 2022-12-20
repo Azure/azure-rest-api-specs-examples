@@ -2,9 +2,9 @@ const { CdnManagementClient } = require("@azure/arm-cdn");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+ * This sample demonstrates how to Check the name availability of a host name.
  *
- * @summary Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
+ * @summary Check the name availability of a host name.
  * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/AFDProfiles_CheckHostNameAvailability.json
  */
 async function afdProfilesCheckHostNameAvailability() {

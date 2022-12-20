@@ -14,7 +14,7 @@ async function afdEndpointsPurgeContent() {
   const endpointName = "endpoint1";
   const contents = {
     contentPaths: ["/folder1"],
-    domains: ["endpoint1.azureedge.net"],
+    domains: ["endpoint1-abcdefghijklmnop.z01.azurefd.net"],
   };
   const credential = new DefaultAzureCredential();
   const client = new CdnManagementClient(credential, subscriptionId);

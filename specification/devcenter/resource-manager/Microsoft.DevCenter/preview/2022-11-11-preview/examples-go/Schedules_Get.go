@@ -1,0 +1,28 @@
+package armdevcenter_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/Schedules_Get.json
+func ExampleSchedulesClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client, err := armdevcenter.NewSchedulesClient("0ac520ee-14c0-480f-b6c9-0a90c58ffff", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := client.Get(ctx, "rg1", "TestProject", "DevPool", "autoShutdown", &armdevcenter.SchedulesClientGetOptions{Top: nil})
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// TODO: use response item
+	_ = res
+}

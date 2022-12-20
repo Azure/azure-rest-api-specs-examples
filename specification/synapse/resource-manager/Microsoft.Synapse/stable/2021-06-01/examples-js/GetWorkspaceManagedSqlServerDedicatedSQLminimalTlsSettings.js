@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/GetWorkspaceManagedSqlServerDedicatedSQLminimalTlsSettings.json
  */
 async function getWorkspaceManagedSqlServerDedicatedSqlMinimalTlsSettings() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "workspace-6852";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "workspace-6852";
   const workspaceName = "workspace-2080";
   const dedicatedSQLminimalTlsSettingsName = "default";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getWorkspaceManagedSqlServerDedicatedSqlMinimalTlsSettings() {
   );
   console.log(result);
 }
-
-getWorkspaceManagedSqlServerDedicatedSqlMinimalTlsSettings().catch(console.error);

@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolsDelete.json
  */
 async function kustoPoolsDelete() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
   const workspaceName = "kustorptest";
-  const resourceGroupName = "kustorptest";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "kustorptest";
   const kustoPoolName = "kustoclusterrptest4";
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);
@@ -21,5 +22,3 @@ async function kustoPoolsDelete() {
   );
   console.log(result);
 }
-
-kustoPoolsDelete().catch(console.error);

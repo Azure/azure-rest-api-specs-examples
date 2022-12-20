@@ -8,11 +8,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/KustoPoolAttachedDatabaseConfigurationsGet.json
  */
 async function kustoPoolAttachedDatabaseConfigurationsGet() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
   const workspaceName = "kustorptest";
   const kustoPoolName = "kustoclusterrptest4";
   const attachedDatabaseConfigurationName = "attachedDatabaseConfigurations1";
-  const resourceGroupName = "kustorptest";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "kustorptest";
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);
   const result = await client.kustoPoolAttachedDatabaseConfigurations.get(
@@ -23,5 +24,3 @@ async function kustoPoolAttachedDatabaseConfigurationsGet() {
   );
   console.log(result);
 }
-
-kustoPoolAttachedDatabaseConfigurationsGet().catch(console.error);

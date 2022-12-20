@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/GetBigDataPool.json
  */
 async function getABigDataPool() {
-  const subscriptionId = "01234567-89ab-4def-0123-456789abcdef";
-  const resourceGroupName = "ExampleResourceGroup";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "01234567-89ab-4def-0123-456789abcdef";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "ExampleResourceGroup";
   const workspaceName = "ExampleWorkspace";
   const bigDataPoolName = "ExamplePool";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getABigDataPool() {
   const result = await client.bigDataPools.get(resourceGroupName, workspaceName, bigDataPoolName);
   console.log(result);
 }
-
-getABigDataPool().catch(console.error);

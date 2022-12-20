@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/GetKey.json
  */
 async function getAWorkspaceKey() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "ExampleResourceGroup";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "ExampleResourceGroup";
   const workspaceName = "ExampleWorkspace";
   const keyName = "somekey";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getAWorkspaceKey() {
   const result = await client.keys.get(resourceGroupName, workspaceName, keyName);
   console.log(result);
 }
-
-getAWorkspaceKey().catch(console.error);

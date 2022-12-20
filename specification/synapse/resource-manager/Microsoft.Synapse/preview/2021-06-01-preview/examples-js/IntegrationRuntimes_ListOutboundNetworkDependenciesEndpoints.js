@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
  */
 async function getOutboundNetworkDependencyEndpoints() {
-  const subscriptionId = "ade9c2b6-c160-4305-9bb9-80342f6c1ae2";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "ade9c2b6-c160-4305-9bb9-80342f6c1ae2";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "exampleResourceGroup";
   const workspaceName = "exampleWorkspace";
   const integrationRuntimeName = "exampleIntegrationRuntime";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getOutboundNetworkDependencyEndpoints() {
   );
   console.log(result);
 }
-
-getOutboundNetworkDependencyEndpoints().catch(console.error);

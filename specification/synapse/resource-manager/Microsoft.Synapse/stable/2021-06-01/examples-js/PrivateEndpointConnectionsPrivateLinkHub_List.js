@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/PrivateEndpointConnectionsPrivateLinkHub_List.json
  */
 async function getAPrivateLinkHub() {
-  const subscriptionId = "48b08652-d7a1-4d52-b13f-5a2471dce57b";
-  const resourceGroupName = "gh-res-grp";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "48b08652-d7a1-4d52-b13f-5a2471dce57b";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "gh-res-grp";
   const privateLinkHubName = "pe0";
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);
@@ -22,5 +23,3 @@ async function getAPrivateLinkHub() {
   }
   console.log(resArray);
 }
-
-getAPrivateLinkHub().catch(console.error);

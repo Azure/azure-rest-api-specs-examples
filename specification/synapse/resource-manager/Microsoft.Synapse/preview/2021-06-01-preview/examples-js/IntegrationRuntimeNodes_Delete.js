@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/IntegrationRuntimeNodes_Delete.json
  */
 async function deleteIntegrationRuntimeNode() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["SYNAPSE_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["SYNAPSE_RESOURCE_GROUP"] || "exampleResourceGroup";
   const workspaceName = "exampleWorkspace";
   const integrationRuntimeName = "exampleIntegrationRuntime";
   const nodeName = "Node_1";
@@ -23,5 +24,3 @@ async function deleteIntegrationRuntimeNode() {
   );
   console.log(result);
 }
-
-deleteIntegrationRuntimeNode().catch(console.error);

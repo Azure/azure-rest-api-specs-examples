@@ -15,7 +15,7 @@ async function customDomainsEnableCustomHttpsUsingYourOwnCertificate() {
   const customDomainName = "www-someDomain-net";
   const credential = new DefaultAzureCredential();
   const client = new CdnManagementClient(credential, subscriptionId);
-  const result = await client.customDomains.enableCustomHttps(
+  const result = await client.customDomains.beginEnableCustomHttpsAndWait(
     resourceGroupName,
     profileName,
     endpointName,

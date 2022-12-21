@@ -1,0 +1,66 @@
+import com.azure.resourcemanager.mobilenetwork.models.AuthenticationType;
+import com.azure.resourcemanager.mobilenetwork.models.AzureStackEdgeDeviceResourceId;
+import com.azure.resourcemanager.mobilenetwork.models.BillingSku;
+import com.azure.resourcemanager.mobilenetwork.models.ConnectedClusterResourceId;
+import com.azure.resourcemanager.mobilenetwork.models.CoreNetworkType;
+import com.azure.resourcemanager.mobilenetwork.models.CustomLocationResourceId;
+import com.azure.resourcemanager.mobilenetwork.models.HttpsServerCertificate;
+import com.azure.resourcemanager.mobilenetwork.models.InterfaceProperties;
+import com.azure.resourcemanager.mobilenetwork.models.LocalDiagnosticsAccessConfiguration;
+import com.azure.resourcemanager.mobilenetwork.models.PlatformConfiguration;
+import com.azure.resourcemanager.mobilenetwork.models.PlatformType;
+import com.azure.resourcemanager.mobilenetwork.models.SiteResourceId;
+import java.util.Arrays;
+
+/** Samples for PacketCoreControlPlanes CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/examples/PacketCoreControlPlaneCreate.json
+     */
+    /**
+     * Sample code: Create packet core control plane.
+     *
+     * @param manager Entry point to MobileNetworkManager.
+     */
+    public static void createPacketCoreControlPlane(
+        com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
+        manager
+            .packetCoreControlPlanes()
+            .define("TestPacketCoreCP")
+            .withRegion("eastus")
+            .withExistingResourceGroup("rg1")
+            .withSites(
+                Arrays
+                    .asList(
+                        new SiteResourceId()
+                            .withId(
+                                "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.MobileNetwork/mobileNetworks/testMobileNetwork/sites/testSite")))
+            .withPlatform(
+                new PlatformConfiguration()
+                    .withType(PlatformType.AKS_HCI)
+                    .withAzureStackEdgeDevice(
+                        new AzureStackEdgeDeviceResourceId()
+                            .withId(
+                                "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/TestAzureStackEdgeDevice"))
+                    .withConnectedCluster(
+                        new ConnectedClusterResourceId()
+                            .withId(
+                                "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Kubernetes/connectedClusters/TestConnectedCluster"))
+                    .withCustomLocation(
+                        new CustomLocationResourceId()
+                            .withId(
+                                "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/TestCustomLocation")))
+            .withControlPlaneAccessInterface(new InterfaceProperties().withName("N2"))
+            .withSku(BillingSku.G0)
+            .withLocalDiagnosticsAccess(
+                new LocalDiagnosticsAccessConfiguration()
+                    .withAuthenticationType(AuthenticationType.AAD)
+                    .withHttpsServerCertificate(
+                        new HttpsServerCertificate()
+                            .withCertificateUrl("https://contosovault.vault.azure.net/certificates/ingress")))
+            .withCoreNetworkTechnology(CoreNetworkType.FIVE_GC)
+            .withVersion("0.2.0")
+            .withUeMtu(1600)
+            .create();
+    }
+}

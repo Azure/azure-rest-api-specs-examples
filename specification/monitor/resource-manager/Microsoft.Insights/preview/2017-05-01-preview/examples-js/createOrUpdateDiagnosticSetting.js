@@ -1,4 +1,4 @@
-const { MonitorClient } = require("@azure/arm-monitor");
+const { MonitorClient } = require("@azure/arm-monitor-profile-2020-09-01-hybrid");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,7 +8,6 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2017-05-01-preview/examples/createOrUpdateDiagnosticSetting.json
  */
 async function createsOrUpdatesTheDiagnosticSetting() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6";
   const name = "mysetting";
@@ -36,9 +35,7 @@ async function createsOrUpdatesTheDiagnosticSetting() {
     workspaceId: "",
   };
   const credential = new DefaultAzureCredential();
-  const client = new MonitorClient(credential, subscriptionId);
+  const client = new MonitorClient(credential);
   const result = await client.diagnosticSettings.createOrUpdate(resourceUri, name, parameters);
   console.log(result);
 }
-
-createsOrUpdatesTheDiagnosticSetting().catch(console.error);

@@ -1,4 +1,4 @@
-const { MonitorClient } = require("@azure/arm-monitor");
+const { MonitorClient } = require("@azure/arm-monitor-profile-2020-09-01-hybrid");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,7 +8,6 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/examples/GetMetricMetadata.json
  */
 async function getMetricForMetadata() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/b324c52b-4073-4807-93af-e07d289c093e/resourceGroups/test/providers/Microsoft.Storage/storageAccounts/larryshoebox/blobServices/default";
   const timespan = "2017-04-14T02:20:00Z/2017-04-14T04:20:00Z";
@@ -28,9 +27,7 @@ async function getMetricForMetadata() {
     metricnamespace,
   };
   const credential = new DefaultAzureCredential();
-  const client = new MonitorClient(credential, subscriptionId);
+  const client = new MonitorClient(credential);
   const result = await client.metrics.list(resourceUri, options);
   console.log(result);
 }
-
-getMetricForMetadata().catch(console.error);

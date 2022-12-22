@@ -1,0 +1,17 @@
+import com.azure.core.util.Context;
+
+/** Samples for PacketCoreControlPlaneOperation Reinstall. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/examples/PacketCoreControlPlaneReinstall.json
+     */
+    /**
+     * Sample code: Reinstall packet core control plane.
+     *
+     * @param manager Entry point to MobileNetworkManager.
+     */
+    public static void reinstallPacketCoreControlPlane(
+        com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
+        manager.packetCoreControlPlaneOperations().reinstall("rg1", "TestPacketCoreCP", Context.NONE);
+    }
+}

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/BackupGet.json
  */
 async function getABackupForAServer() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "TestGroup";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "TestGroup";
   const serverName = "mysqltestserver";
   const backupName = "daily_20210615T160516";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getABackupForAServer() {
   const result = await client.backups.get(resourceGroupName, serverName, backupName);
   console.log(result);
 }
-
-getABackupForAServer().catch(console.error);

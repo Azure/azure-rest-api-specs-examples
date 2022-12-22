@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServersList.json
  */
 async function listServersInASubscription() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const credential = new DefaultAzureCredential();
   const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listServersInASubscription() {
   }
   console.log(resArray);
 }
-
-listServersInASubscription().catch(console.error);

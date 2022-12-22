@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerUpdateWithCustomerMaintenanceWindow.json
  */
 async function updateServerCustomerMaintenanceWindow() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "testrg";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "testrg";
   const serverName = "mysqltestserver";
   const parameters = {
     maintenanceWindow: {
@@ -24,5 +25,3 @@ async function updateServerCustomerMaintenanceWindow() {
   const result = await client.servers.beginUpdateAndWait(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-updateServerCustomerMaintenanceWindow().catch(console.error);

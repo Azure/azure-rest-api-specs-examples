@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/DatabaseCreate.json
  */
 async function createADatabase() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "TestGroup";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "TestGroup";
   const serverName = "testserver";
   const databaseName = "db1";
   const parameters = {
@@ -26,5 +27,3 @@ async function createADatabase() {
   );
   console.log(result);
 }
-
-createADatabase().catch(console.error);

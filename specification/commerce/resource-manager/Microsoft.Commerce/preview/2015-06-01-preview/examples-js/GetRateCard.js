@@ -1,4 +1,4 @@
-const { UsageManagementClient } = require("@azure/arm-commerce");
+const { UsageManagementClient } = require("@azure/arm-commerce-profile-2020-09-01-hybrid");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/commerce/resource-manager/Microsoft.Commerce/preview/2015-06-01-preview/examples/GetRateCard.json
  */
 async function getRateCard() {
-  const subscriptionId = "6d61cc05-8f8f-4916-b1b9-f1d9c25aae27";
+  const subscriptionId =
+    process.env["COMMERCE_SUBSCRIPTION_ID"] || "6d61cc05-8f8f-4916-b1b9-f1d9c25aae27";
   const filter =
     "OfferDurableId eq 'MS-AZR-0003P' and Currency eq 'USD' and Locale eq 'en-US' and RegionInfo eq 'US'";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function getRateCard() {
   const result = await client.rateCard.get(filter);
   console.log(result);
 }
-
-getRateCard().catch(console.error);

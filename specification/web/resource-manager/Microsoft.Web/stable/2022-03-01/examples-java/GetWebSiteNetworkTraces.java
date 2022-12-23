@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for WebApps GetNetworkTracesV2. */
+/** Samples for WebApps GetNetworkTracesSlotV2. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/GetWebSiteNetworkTraces.json
@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .getNetworkTracesV2WithResponse(
-                "testrg123", "SampleApp", "c291433b-53ad-4c49-8cae-0a293eae1c6d", Context.NONE);
+            .getNetworkTracesSlotV2WithResponse(
+                "testrg123", "SampleApp", "c291433b-53ad-4c49-8cae-0a293eae1c6d", "Production", Context.NONE);
     }
 }

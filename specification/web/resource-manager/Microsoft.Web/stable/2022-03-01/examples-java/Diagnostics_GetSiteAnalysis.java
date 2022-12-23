@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics GetSiteAnalysis. */
+/** Samples for Diagnostics GetSiteAnalysisSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/Diagnostics_GetSiteAnalysis.json
@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteAnalysisWithResponse(
-                "Sample-WestUSResourceGroup", "SampleApp", "availability", "appanalysis", Context.NONE);
+            .getSiteAnalysisSlotWithResponse(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "appanalysis", "Production", Context.NONE);
     }
 }

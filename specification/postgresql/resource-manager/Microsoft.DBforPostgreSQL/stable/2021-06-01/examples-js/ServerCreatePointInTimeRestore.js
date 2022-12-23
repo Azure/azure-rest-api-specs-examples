@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/examples/ServerCreatePointInTimeRestore.json
  */
 async function createADatabaseAsAPointInTimeRestore() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "testrg";
+  const subscriptionId =
+    process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "testrg";
   const serverName = "pgtestsvc5";
   const parameters = {
     createMode: "PointInTimeRestore",
@@ -23,5 +24,3 @@ async function createADatabaseAsAPointInTimeRestore() {
   const result = await client.servers.beginCreateAndWait(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-createADatabaseAsAPointInTimeRestore().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/examples/ServerUpdateWithCustomerMaintenanceWindow.json
  */
 async function serverUpdateWithCustomerMaintenanceWindow() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "testrg";
+  const subscriptionId =
+    process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "testrg";
   const serverName = "pgtestsvc4";
   const parameters = {
     createMode: "Update",
@@ -26,5 +27,3 @@ async function serverUpdateWithCustomerMaintenanceWindow() {
   const result = await client.servers.beginUpdateAndWait(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-serverUpdateWithCustomerMaintenanceWindow().catch(console.error);

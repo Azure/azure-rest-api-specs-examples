@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/examples/VirtualNetworkSubnetUsage.json
  */
 async function virtualNetworkSubnetUsageList() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const subscriptionId =
+    process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const locationName = "westus";
   const parameters = {
     virtualNetworkArmResourceId:
@@ -19,5 +20,3 @@ async function virtualNetworkSubnetUsageList() {
   const result = await client.virtualNetworkSubnetUsage.execute(locationName, parameters);
   console.log(result);
 }
-
-virtualNetworkSubnetUsageList().catch(console.error);

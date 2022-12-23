@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2021-06-01/examples/ServerUpdate.json
  */
 async function serverUpdate() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "TestGroup";
+  const subscriptionId =
+    process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "TestGroup";
   const serverName = "pgtestsvc4";
   const parameters = {
     administratorLoginPassword: "newpassword",
@@ -24,5 +25,3 @@ async function serverUpdate() {
   const result = await client.servers.beginUpdateAndWait(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-serverUpdate().catch(console.error);

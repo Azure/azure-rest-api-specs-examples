@@ -1,4 +1,4 @@
-const { MonitorClient } = require("@azure/arm-monitor");
+const { MonitorClient } = require("@azure/arm-monitor-profile-2020-09-01-hybrid");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,14 +8,11 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/examples/GetEventCategories.json
  */
 async function getEventCategories() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
-  const client = new MonitorClient(credential, subscriptionId);
+  const client = new MonitorClient(credential);
   const resArray = new Array();
   for await (let item of client.eventCategories.list()) {
     resArray.push(item);
   }
   console.log(resArray);
 }
-
-getEventCategories().catch(console.error);

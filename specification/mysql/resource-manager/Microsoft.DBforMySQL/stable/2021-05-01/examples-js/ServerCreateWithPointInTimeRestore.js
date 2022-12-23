@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreateWithPointInTimeRestore.json
  */
 async function createAServerAsAPointInTimeRestore() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "TargetResourceGroup";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "TargetResourceGroup";
   const serverName = "targetserver";
   const parameters = {
     createMode: "PointInTimeRestore",
@@ -25,5 +26,3 @@ async function createAServerAsAPointInTimeRestore() {
   const result = await client.servers.beginCreateAndWait(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-createAServerAsAPointInTimeRestore().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/BackupsListByServer.json
  */
 async function listBackupsForAServer() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "TestGroup";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "TestGroup";
   const serverName = "mysqltestserver";
   const credential = new DefaultAzureCredential();
   const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
@@ -19,5 +20,3 @@ async function listBackupsForAServer() {
   }
   console.log(resArray);
 }
-
-listBackupsForAServer().catch(console.error);

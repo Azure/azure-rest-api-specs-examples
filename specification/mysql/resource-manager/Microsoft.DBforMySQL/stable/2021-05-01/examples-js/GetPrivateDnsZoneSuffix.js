@@ -8,11 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/GetPrivateDnsZoneSuffix.json
  */
 async function getPrivateDnsZoneSuffix() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
   const result = await client.getPrivateDnsZoneSuffix.execute();
   console.log(result);
 }
-
-getPrivateDnsZoneSuffix().catch(console.error);

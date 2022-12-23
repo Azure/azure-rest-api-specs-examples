@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/FirewallRuleGet.json
  */
 async function getAFirewallRule() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "TestGroup";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "TestGroup";
   const serverName = "testserver";
   const firewallRuleName = "rule1";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getAFirewallRule() {
   const result = await client.firewallRules.get(resourceGroupName, serverName, firewallRuleName);
   console.log(result);
 }
-
-getAFirewallRule().catch(console.error);

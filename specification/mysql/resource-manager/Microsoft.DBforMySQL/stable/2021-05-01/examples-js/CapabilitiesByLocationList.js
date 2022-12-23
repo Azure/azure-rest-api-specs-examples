@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/CapabilitiesByLocationList.json
  */
 async function capabilitiesList() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const locationName = "WestUS";
   const credential = new DefaultAzureCredential();
   const client = new MySQLManagementFlexibleServerClient(credential, subscriptionId);
@@ -18,5 +19,3 @@ async function capabilitiesList() {
   }
   console.log(resArray);
 }
-
-capabilitiesList().catch(console.error);

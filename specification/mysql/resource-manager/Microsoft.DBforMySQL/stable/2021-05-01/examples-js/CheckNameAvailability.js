@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/CheckNameAvailability.json
  */
 async function checkNameAvailability() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
   const locationName = "SouthEastAsia";
   const nameAvailabilityRequest = {
     name: "name1",
@@ -19,5 +20,3 @@ async function checkNameAvailability() {
   const result = await client.checkNameAvailability.execute(locationName, nameAvailabilityRequest);
   console.log(result);
 }
-
-checkNameAvailability().catch(console.error);

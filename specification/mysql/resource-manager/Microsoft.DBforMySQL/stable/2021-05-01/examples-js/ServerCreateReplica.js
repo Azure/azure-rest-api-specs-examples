@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreateReplica.json
  */
 async function createAReplicaServer() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "testgr";
+  const subscriptionId =
+    process.env["MYSQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["MYSQL_RESOURCE_GROUP"] || "testgr";
   const serverName = "replica-server";
   const parameters = {
     createMode: "Replica",
@@ -22,5 +23,3 @@ async function createAReplicaServer() {
   const result = await client.servers.beginCreateAndWait(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-createAReplicaServer().catch(console.error);

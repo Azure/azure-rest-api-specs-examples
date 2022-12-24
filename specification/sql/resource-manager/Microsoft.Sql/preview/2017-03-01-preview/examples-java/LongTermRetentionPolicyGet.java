@@ -1,6 +1,7 @@
 import com.azure.core.util.Context;
+import com.azure.resourcemanager.sql.models.LongTermRetentionPolicyName;
 
-/** Samples for BackupLongTermRetentionPolicies ListByDatabase. */
+/** Samples for BackupLongTermRetentionPolicies Get. */
 public final class Main {
     /*
      * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2017-03-01-preview/examples/LongTermRetentionPolicyGet.json
@@ -17,6 +18,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getBackupLongTermRetentionPolicies()
-            .listByDatabaseWithResponse("resourceGroup", "testserver", "testDatabase", Context.NONE);
+            .getWithResponse(
+                "resourceGroup", "testserver", "testDatabase", LongTermRetentionPolicyName.DEFAULT, Context.NONE);
     }
 }

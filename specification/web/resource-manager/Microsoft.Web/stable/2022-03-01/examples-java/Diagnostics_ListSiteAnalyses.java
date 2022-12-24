@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics ListSiteAnalyses. */
+/** Samples for Diagnostics ListSiteAnalysesSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/Diagnostics_ListSiteAnalyses.json
@@ -16,6 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .listSiteAnalyses("Sample-WestUSResourceGroup", "SampleApp", "availability", Context.NONE);
+            .listSiteAnalysesSlot(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "Production", Context.NONE);
     }
 }

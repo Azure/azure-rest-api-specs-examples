@@ -6,7 +6,7 @@ from azure.mgmt.sql import SqlManagementClient
     pip install azure-identity
     pip install azure-mgmt-sql
 # USAGE
-    python resets_maintenance_configuration_of_an_elastic_pool_to_default..py
+    python elastic_pool_update_reset_maintenance_configuration.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

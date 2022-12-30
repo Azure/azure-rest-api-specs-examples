@@ -6,7 +6,7 @@ from azure.mgmt.sql import SqlManagementClient
     pip install azure-identity
     pip install azure-mgmt-sql
 # USAGE
-    python performs_update_of_dns_servers_on_managed_instance..py
+    python update_virtual_cluster_dns_servers.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

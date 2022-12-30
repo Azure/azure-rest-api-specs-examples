@@ -6,7 +6,7 @@ from azure.mgmt.sql import SqlManagementClient
     pip install azure-identity
     pip install azure-mgmt-sql
 # USAGE
-    python gets_list_of_private_endpoint_connections_on_a_server..py
+    python managed_instance_private_endpoint_connection_list.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

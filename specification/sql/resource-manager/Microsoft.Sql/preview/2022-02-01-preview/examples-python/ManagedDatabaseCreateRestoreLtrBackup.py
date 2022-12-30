@@ -6,7 +6,7 @@ from azure.mgmt.sql import SqlManagementClient
     pip install azure-identity
     pip install azure-mgmt-sql
 # USAGE
-    python creates_a_new_managed_database_from_restoring_a_long_term_retention_backup.py
+    python managed_database_create_restore_ltr_backup.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

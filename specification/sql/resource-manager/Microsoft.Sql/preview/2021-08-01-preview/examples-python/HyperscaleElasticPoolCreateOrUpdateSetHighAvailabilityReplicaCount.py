@@ -6,7 +6,7 @@ from azure.mgmt.sql import SqlManagementClient
     pip install azure-identity
     pip install azure-mgmt-sql
 # USAGE
-    python create_or_update_hyperscale_elastic_pool_with_high_availability_replica_count_parameter.py
+    python hyperscale_elastic_pool_create_or_update_set_high_availability_replica_count.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

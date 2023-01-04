@@ -6,7 +6,7 @@ from azure.mgmt.rdbms import PostgreSQLManagementClient
     pip install azure-identity
     pip install azure-mgmt-rdbms
 # USAGE
-    python list_the_keys_for_a_postgre_sql_server..py
+    python server_key_list.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

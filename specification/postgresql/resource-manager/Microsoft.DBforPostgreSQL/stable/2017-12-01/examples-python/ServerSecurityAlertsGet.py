@@ -6,7 +6,7 @@ from azure.mgmt.rdbms import PostgreSQLManagementClient
     pip install azure-identity
     pip install azure-mgmt-rdbms
 # USAGE
-    python get_a_server's_threat_detection_policy.py
+    python server_security_alerts_get.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/examples/ListVirtualMachines.json
  */
 async function listVirtualMachines() {
-  const subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
+  const subscriptionId =
+    process.env["CONNECTEDVMWARE_SUBSCRIPTION_ID"] || "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
   const credential = new DefaultAzureCredential();
   const client = new AzureArcVMwareManagementServiceAPI(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listVirtualMachines() {
   }
   console.log(resArray);
 }
-
-listVirtualMachines().catch(console.error);

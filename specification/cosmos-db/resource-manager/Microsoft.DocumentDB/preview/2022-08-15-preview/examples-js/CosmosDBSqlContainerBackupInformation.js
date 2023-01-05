@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBSqlContainerBackupInformation.json
  */
 async function cosmosDbSqlContainerBackupInformation() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rgName";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
   const accountName = "ddb1";
   const databaseName = "databaseName";
   const containerName = "containerName";
@@ -27,5 +27,3 @@ async function cosmosDbSqlContainerBackupInformation() {
   );
   console.log(result);
 }
-
-cosmosDbSqlContainerBackupInformation().catch(console.error);

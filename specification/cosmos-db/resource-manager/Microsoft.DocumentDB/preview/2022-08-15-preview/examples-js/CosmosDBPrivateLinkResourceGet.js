@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBPrivateLinkResourceGet.json
  */
 async function getsPrivateEndpointConnection() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "rg1";
+  const subscriptionId =
+    process.env["COSMOSDB_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const groupName = "sql";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getsPrivateEndpointConnection() {
   const result = await client.privateLinkResources.get(resourceGroupName, accountName, groupName);
   console.log(result);
 }
-
-getsPrivateEndpointConnection().catch(console.error);

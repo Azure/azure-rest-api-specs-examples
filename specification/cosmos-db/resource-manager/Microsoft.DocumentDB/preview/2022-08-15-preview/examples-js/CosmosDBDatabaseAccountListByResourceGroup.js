@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBDatabaseAccountListByResourceGroup.json
  */
 async function cosmosDbDatabaseAccountListByResourceGroup() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const credential = new DefaultAzureCredential();
   const client = new CosmosDBManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -18,5 +18,3 @@ async function cosmosDbDatabaseAccountListByResourceGroup() {
   }
   console.log(resArray);
 }
-
-cosmosDbDatabaseAccountListByResourceGroup().catch(console.error);

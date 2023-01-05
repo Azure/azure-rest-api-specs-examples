@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBMongoDBCollectionThroughputGet.json
  */
 async function cosmosDbMongoDbcollectionThroughputGet() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const databaseName = "databaseName";
   const collectionName = "collectionName";
@@ -23,5 +23,3 @@ async function cosmosDbMongoDbcollectionThroughputGet() {
   );
   console.log(result);
 }
-
-cosmosDbMongoDbcollectionThroughputGet().catch(console.error);

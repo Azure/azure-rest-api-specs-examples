@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBMaterializedViewsBuilderServiceCreate.json
  */
 async function materializedViewsBuilderServiceCreate() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const serviceName = "MaterializedViewsBuilder";
   const createUpdateParameters = {
@@ -27,5 +27,3 @@ async function materializedViewsBuilderServiceCreate() {
   );
   console.log(result);
 }
-
-materializedViewsBuilderServiceCreate().catch(console.error);

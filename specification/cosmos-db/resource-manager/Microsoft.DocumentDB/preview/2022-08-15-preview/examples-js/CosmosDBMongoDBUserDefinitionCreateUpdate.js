@@ -8,9 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBMongoDBUserDefinitionCreateUpdate.json
  */
 async function cosmosDbMongoDbuserDefinitionCreateUpdate() {
-  const subscriptionId = "mySubscriptionId";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "mySubscriptionId";
   const mongoUserDefinitionId = "myMongoUserDefinitionId";
-  const resourceGroupName = "myResourceGroupName";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "myResourceGroupName";
   const accountName = "myAccountName";
   const createUpdateMongoUserDefinitionParameters = {
     customData: "My custom data",
@@ -30,5 +30,3 @@ async function cosmosDbMongoDbuserDefinitionCreateUpdate() {
   );
   console.log(result);
 }
-
-cosmosDbMongoDbuserDefinitionCreateUpdate().catch(console.error);

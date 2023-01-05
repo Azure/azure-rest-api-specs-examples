@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBRestorableDatabaseAccountGet.json
  */
 async function cosmosDbRestorableDatabaseAccountGet() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
   const location = "West US";
   const instanceId = "d9b26648-2f53-4541-b3d8-3044f4f9810d";
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function cosmosDbRestorableDatabaseAccountGet() {
   const result = await client.restorableDatabaseAccounts.getByLocation(location, instanceId);
   console.log(result);
 }
-
-cosmosDbRestorableDatabaseAccountGet().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBSqlClientEncryptionKeyGet.json
  */
 async function cosmosDbClientEncryptionKeyGet() {
-  const subscriptionId = "subId";
-  const resourceGroupName = "rgName";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subId";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
   const accountName = "accountName";
   const databaseName = "databaseName";
   const clientEncryptionKeyName = "cekName";
@@ -23,5 +23,3 @@ async function cosmosDbClientEncryptionKeyGet() {
   );
   console.log(result);
 }
-
-cosmosDbClientEncryptionKeyGet().catch(console.error);

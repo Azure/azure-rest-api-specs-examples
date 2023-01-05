@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ReservationTransactionsListByEnrollmentNumber.json
  */
 async function reservationTransactionsByEnrollmentNumber() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const filter = "properties/eventDate+ge+2020-05-20+AND+properties/eventDate+le+2020-05-30";
   const billingAccountId = "123456";
   const options = { filter };
@@ -20,5 +21,3 @@ async function reservationTransactionsByEnrollmentNumber() {
   }
   console.log(resArray);
 }
-
-reservationTransactionsByEnrollmentNumber().catch(console.error);

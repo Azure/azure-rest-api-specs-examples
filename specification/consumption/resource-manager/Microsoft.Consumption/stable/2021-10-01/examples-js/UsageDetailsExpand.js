@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/UsageDetailsExpand.json
  */
 async function usageDetailsExpandLegacy() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/00000000-0000-0000-0000-000000000000";
   const expand = "meterDetails,additionalInfo";
   const filter = "tags eq 'dev:tools'";
@@ -22,5 +23,3 @@ async function usageDetailsExpandLegacy() {
   }
   console.log(resArray);
 }
-
-usageDetailsExpandLegacy().catch(console.error);

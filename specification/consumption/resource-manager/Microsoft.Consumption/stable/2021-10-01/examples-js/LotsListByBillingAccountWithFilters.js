@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/LotsListByBillingAccountWithFilters.json
  */
 async function lotsListByBillingAccountWithStatusFilter() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const billingAccountId = "1234:5678";
   const filter = "status eq 'active' AND source eq 'consumptioncommitment'";
   const options = { filter };
@@ -20,5 +21,3 @@ async function lotsListByBillingAccountWithStatusFilter() {
   }
   console.log(resArray);
 }
-
-lotsListByBillingAccountWithStatusFilter().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ReservationDetailsByBillingAccountId.json
  */
 async function reservationDetailsByBillingAccountId() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "providers/Microsoft.Billing/billingAccounts/12345";
   const filter = "properties/usageDate ge 2017-10-01 AND properties/usageDate le 2017-12-05";
   const options = { filter };
@@ -20,5 +21,3 @@ async function reservationDetailsByBillingAccountId() {
   }
   console.log(resArray);
 }
-
-reservationDetailsByBillingAccountId().catch(console.error);

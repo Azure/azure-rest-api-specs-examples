@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/EventsListByBillingProfile.json
  */
 async function eventsListByBillingProfile() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const billingAccountId = "1234:5678";
   const billingProfileId = "4268";
   const startDate = "2019-09-01";
@@ -26,5 +27,3 @@ async function eventsListByBillingProfile() {
   }
   console.log(resArray);
 }
-
-eventsListByBillingProfile().catch(console.error);

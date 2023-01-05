@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/EventsGetByBillingAccountWithFilters.json
  */
 async function eventsGetByBillingAccountWithFilters() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const billingAccountId = "1234:5678";
   const filter = "lotid eq 'G202001083926600XXXXX' AND lotsource eq 'consumptioncommitment'";
   const options = { filter };
@@ -20,5 +21,3 @@ async function eventsGetByBillingAccountWithFilters() {
   }
   console.log(resArray);
 }
-
-eventsGetByBillingAccountWithFilters().catch(console.error);

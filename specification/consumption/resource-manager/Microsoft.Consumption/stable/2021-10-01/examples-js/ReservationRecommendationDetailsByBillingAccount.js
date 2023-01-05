@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ReservationRecommendationDetailsByBillingAccount.json
  */
 async function reservationRecommendationsByBillingAccountLegacy() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "Shared";
   const region = "eastus";
   const term = "P1Y";
@@ -25,5 +26,3 @@ async function reservationRecommendationsByBillingAccountLegacy() {
   );
   console.log(result);
 }
-
-reservationRecommendationsByBillingAccountLegacy().catch(console.error);

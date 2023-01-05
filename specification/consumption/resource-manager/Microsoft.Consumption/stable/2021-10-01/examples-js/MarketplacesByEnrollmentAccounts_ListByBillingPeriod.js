@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/MarketplacesByEnrollmentAccounts_ListByBillingPeriod.json
  */
 async function enrollmentAccountMarketplacesListForBillingPeriod() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "providers/Microsoft.Billing/enrollmentAccounts/123456";
   const credential = new DefaultAzureCredential();
   const client = new ConsumptionManagementClient(credential, subscriptionId);
@@ -18,5 +19,3 @@ async function enrollmentAccountMarketplacesListForBillingPeriod() {
   }
   console.log(resArray);
 }
-
-enrollmentAccountMarketplacesListForBillingPeriod().catch(console.error);

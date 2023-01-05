@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/DeleteBudget.json
  */
 async function deleteBudget() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/00000000-0000-0000-0000-000000000000";
   const budgetName = "TestBudget";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function deleteBudget() {
   const result = await client.budgets.delete(scope, budgetName);
   console.log(result);
 }
-
-deleteBudget().catch(console.error);

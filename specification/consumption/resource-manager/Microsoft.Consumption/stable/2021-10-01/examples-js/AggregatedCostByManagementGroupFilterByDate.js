@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/AggregatedCostByManagementGroupFilterByDate.json
  */
 async function aggregatedCostByManagementGroupFilterByDate() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupId = "managementGroupForTest";
   const filter = "usageStart ge '2018-08-15' and properties/usageStart le '2018-08-31'";
   const options = { filter };
@@ -17,5 +18,3 @@ async function aggregatedCostByManagementGroupFilterByDate() {
   const result = await client.aggregatedCost.getByManagementGroup(managementGroupId, options);
   console.log(result);
 }
-
-aggregatedCostByManagementGroupFilterByDate().catch(console.error);

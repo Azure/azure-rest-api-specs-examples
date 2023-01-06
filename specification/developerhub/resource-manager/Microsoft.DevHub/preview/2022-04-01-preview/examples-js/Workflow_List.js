@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/developerhub/resource-manager/Microsoft.DevHub/preview/2022-04-01-preview/examples/Workflow_List.json
  */
 async function listWorkflows() {
-  const subscriptionId = "subscriptionId1";
+  const subscriptionId = process.env["DEVHUB_SUBSCRIPTION_ID"] || "subscriptionId1";
   const credential = new DefaultAzureCredential();
   const client = new DeveloperHubServiceClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function listWorkflows() {
   }
   console.log(resArray);
 }
-
-listWorkflows().catch(console.error);

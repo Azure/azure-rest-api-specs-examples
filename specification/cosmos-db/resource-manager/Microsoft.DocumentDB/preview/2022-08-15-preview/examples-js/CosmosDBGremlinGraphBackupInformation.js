@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBGremlinGraphBackupInformation.json
  */
 async function cosmosDbGremlinGraphBackupInformation() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rgName";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
   const accountName = "ddb1";
   const databaseName = "databaseName";
   const graphName = "graphName";
@@ -27,5 +27,3 @@ async function cosmosDbGremlinGraphBackupInformation() {
   );
   console.log(result);
 }
-
-cosmosDbGremlinGraphBackupInformation().catch(console.error);

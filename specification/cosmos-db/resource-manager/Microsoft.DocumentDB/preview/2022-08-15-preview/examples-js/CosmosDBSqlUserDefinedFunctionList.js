@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBSqlUserDefinedFunctionList.json
  */
 async function cosmosDbSqlUserDefinedFunctionList() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rgName";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rgName";
   const accountName = "ddb1";
   const databaseName = "databaseName";
   const containerName = "containerName";
@@ -26,5 +26,3 @@ async function cosmosDbSqlUserDefinedFunctionList() {
   }
   console.log(resArray);
 }
-
-cosmosDbSqlUserDefinedFunctionList().catch(console.error);

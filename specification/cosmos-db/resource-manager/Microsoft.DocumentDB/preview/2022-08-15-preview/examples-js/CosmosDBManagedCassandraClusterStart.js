@@ -8,13 +8,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBManagedCassandraClusterStart.json
  */
 async function cosmosDbManagedCassandraClusterStart() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "cassandra-prod-rg";
+  const subscriptionId =
+    process.env["COSMOSDB_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "cassandra-prod-rg";
   const clusterName = "cassandra-prod";
   const credential = new DefaultAzureCredential();
   const client = new CosmosDBManagementClient(credential, subscriptionId);
   const result = await client.cassandraClusters.beginStartAndWait(resourceGroupName, clusterName);
   console.log(result);
 }
-
-cosmosDbManagedCassandraClusterStart().catch(console.error);

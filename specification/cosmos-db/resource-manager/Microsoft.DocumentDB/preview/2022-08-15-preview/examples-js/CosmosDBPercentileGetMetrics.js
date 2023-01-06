@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBPercentileGetMetrics.json
  */
 async function cosmosDbDatabaseAccountRegionGetMetrics() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const filter =
     "$filter=(name.value eq 'Probabilistic Bounded Staleness') and timeGrain eq duration'PT5M' and startTime eq '2017-11-19T23:53:55.2780000Z' and endTime eq '2017-11-20T00:13:55.2780000Z";
@@ -21,5 +21,3 @@ async function cosmosDbDatabaseAccountRegionGetMetrics() {
   }
   console.log(resArray);
 }
-
-cosmosDbDatabaseAccountRegionGetMetrics().catch(console.error);

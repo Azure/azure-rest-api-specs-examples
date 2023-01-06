@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBDatabaseAccountListConnectionStringsMongo.json
  */
 async function cosmosDbDatabaseAccountListConnectionStringsMongo() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "mongo-ddb1";
   const credential = new DefaultAzureCredential();
   const client = new CosmosDBManagementClient(credential, subscriptionId);
@@ -19,5 +19,3 @@ async function cosmosDbDatabaseAccountListConnectionStringsMongo() {
   );
   console.log(result);
 }
-
-cosmosDbDatabaseAccountListConnectionStringsMongo().catch(console.error);

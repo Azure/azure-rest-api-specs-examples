@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBGraphAPIComputeServiceGet.json
  */
 async function graphApiComputeServiceGet() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const serviceName = "GraphAPICompute";
   const credential = new DefaultAzureCredential();
@@ -17,5 +17,3 @@ async function graphApiComputeServiceGet() {
   const result = await client.service.get(resourceGroupName, accountName, serviceName);
   console.log(result);
 }
-
-graphApiComputeServiceGet().catch(console.error);

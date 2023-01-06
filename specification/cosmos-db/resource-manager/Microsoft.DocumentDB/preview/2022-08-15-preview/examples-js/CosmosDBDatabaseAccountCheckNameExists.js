@@ -8,12 +8,11 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBDatabaseAccountCheckNameExists.json
  */
 async function cosmosDbDatabaseAccountCheckNameExists() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["COSMOSDB_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const accountName = "ddb1";
   const credential = new DefaultAzureCredential();
   const client = new CosmosDBManagementClient(credential, subscriptionId);
   const result = await client.databaseAccounts.checkNameExists(accountName);
   console.log(result);
 }
-
-cosmosDbDatabaseAccountCheckNameExists().catch(console.error);

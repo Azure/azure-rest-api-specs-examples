@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBDatabaseAccountList.json
  */
 async function cosmosDbDatabaseAccountList() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
   const credential = new DefaultAzureCredential();
   const client = new CosmosDBManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function cosmosDbDatabaseAccountList() {
   }
   console.log(resArray);
 }
-
-cosmosDbDatabaseAccountList().catch(console.error);

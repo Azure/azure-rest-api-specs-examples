@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBCassandraTableCreateUpdate.json
  */
 async function cosmosDbCassandraTableCreateUpdate() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const keyspaceName = "keyspaceName";
   const tableName = "tableName";
@@ -39,5 +39,3 @@ async function cosmosDbCassandraTableCreateUpdate() {
   );
   console.log(result);
 }
-
-cosmosDbCassandraTableCreateUpdate().catch(console.error);

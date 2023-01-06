@@ -8,9 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBSqlRoleDefinitionCreateUpdate.json
  */
 async function cosmosDbSqlRoleDefinitionCreateUpdate() {
-  const subscriptionId = "mySubscriptionId";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "mySubscriptionId";
   const roleDefinitionId = "myRoleDefinitionId";
-  const resourceGroupName = "myResourceGroupName";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "myResourceGroupName";
   const accountName = "myAccountName";
   const createUpdateSqlRoleDefinitionParameters = {
     type: "CustomRole",
@@ -39,5 +39,3 @@ async function cosmosDbSqlRoleDefinitionCreateUpdate() {
   );
   console.log(result);
 }
-
-cosmosDbSqlRoleDefinitionCreateUpdate().catch(console.error);

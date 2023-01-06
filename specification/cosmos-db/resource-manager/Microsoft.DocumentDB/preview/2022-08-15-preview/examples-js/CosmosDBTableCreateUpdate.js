@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/examples/CosmosDBTableCreateUpdate.json
  */
 async function cosmosDbTableReplace() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["COSMOSDB_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["COSMOSDB_RESOURCE_GROUP"] || "rg1";
   const accountName = "ddb1";
   const tableName = "tableName";
   const createUpdateTableParameters = {
@@ -28,5 +28,3 @@ async function cosmosDbTableReplace() {
   );
   console.log(result);
 }
-
-cosmosDbTableReplace().catch(console.error);

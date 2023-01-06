@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/examples/VirtualMachineInstallPatches.json
  */
 async function installPatchStateOfAMachine() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroupName";
+  const subscriptionId = process.env["CONNECTEDVMWARE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["CONNECTEDVMWARE_RESOURCE_GROUP"] || "myResourceGroupName";
   const name = "myMachineName";
   const installPatchesInput = {
     maximumDuration: "PT3H",
@@ -28,5 +28,3 @@ async function installPatchStateOfAMachine() {
   );
   console.log(result);
 }
-
-installPatchStateOfAMachine().catch(console.error);

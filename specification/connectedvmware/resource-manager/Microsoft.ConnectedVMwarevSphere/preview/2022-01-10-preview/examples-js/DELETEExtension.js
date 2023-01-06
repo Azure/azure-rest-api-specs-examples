@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/preview/2022-01-10-preview/examples/DELETEExtension.json
  */
 async function deleteAMachineExtension() {
-  const subscriptionId = "{subscriptionId}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["CONNECTEDVMWARE_SUBSCRIPTION_ID"] || "{subscriptionId}";
+  const resourceGroupName = process.env["CONNECTEDVMWARE_RESOURCE_GROUP"] || "myResourceGroup";
   const name = "myMachine";
   const extensionName = "MMA";
   const credential = new DefaultAzureCredential();
@@ -21,5 +21,3 @@ async function deleteAMachineExtension() {
   );
   console.log(result);
 }
-
-deleteAMachineExtension().catch(console.error);

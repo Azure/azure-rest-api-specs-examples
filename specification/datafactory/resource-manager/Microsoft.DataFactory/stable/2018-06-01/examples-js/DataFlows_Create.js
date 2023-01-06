@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlows_Create.json
  */
 async function dataFlowsCreate() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const dataFlowName = "exampleDataFlow";
   const dataFlow = {
@@ -79,5 +80,3 @@ async function dataFlowsCreate() {
   );
   console.log(result);
 }
-
-dataFlowsCreate().catch(console.error);

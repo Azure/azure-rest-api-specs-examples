@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimeNodes_Delete.json
  */
 async function integrationRuntimesNodesDelete() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const integrationRuntimeName = "exampleIntegrationRuntime";
   const nodeName = "Node_1";
@@ -23,5 +24,3 @@ async function integrationRuntimesNodesDelete() {
   );
   console.log(result);
 }
-
-integrationRuntimesNodesDelete().catch(console.error);

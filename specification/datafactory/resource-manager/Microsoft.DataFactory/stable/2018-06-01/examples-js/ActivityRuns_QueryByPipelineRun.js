@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/ActivityRuns_QueryByPipelineRun.json
  */
 async function activityRunsQueryByPipelineRun() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const runId = "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b";
   const filterParameters = {
@@ -26,5 +27,3 @@ async function activityRunsQueryByPipelineRun() {
   );
   console.log(result);
 }
-
-activityRunsQueryByPipelineRun().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_ConfigureFactoryRepo.json
  */
 async function factoriesConfigureFactoryRepo() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
   const locationId = "East US";
   const factoryRepoUpdate = {
     factoryResourceId:
@@ -29,5 +30,3 @@ async function factoriesConfigureFactoryRepo() {
   const result = await client.factories.configureFactoryRepo(locationId, factoryRepoUpdate);
   console.log(result);
 }
-
-factoriesConfigureFactoryRepo().catch(console.error);

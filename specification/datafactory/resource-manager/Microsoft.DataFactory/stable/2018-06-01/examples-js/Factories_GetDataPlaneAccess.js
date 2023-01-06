@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_GetDataPlaneAccess.json
  */
 async function factoriesGetDataPlaneAccess() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const policy = {
     accessResourcePath: "",
@@ -23,5 +24,3 @@ async function factoriesGetDataPlaneAccess() {
   const result = await client.factories.getDataPlaneAccess(resourceGroupName, factoryName, policy);
   console.log(result);
 }
-
-factoriesGetDataPlaneAccess().catch(console.error);

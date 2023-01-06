@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Operations_List.json
  */
 async function operationsList() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new DataFactoryManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function operationsList() {
   }
   console.log(resArray);
 }
-
-operationsList().catch(console.error);

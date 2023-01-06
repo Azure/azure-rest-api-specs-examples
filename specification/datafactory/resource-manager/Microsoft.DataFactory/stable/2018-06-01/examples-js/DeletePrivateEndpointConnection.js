@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DeletePrivateEndpointConnection.json
  */
 async function deleteAPrivateEndpointConnectionForADatafactory() {
-  const subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const privateEndpointConnectionName = "connection";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function deleteAPrivateEndpointConnectionForADatafactory() {
   );
   console.log(result);
 }
-
-deleteAPrivateEndpointConnectionForADatafactory().catch(console.error);

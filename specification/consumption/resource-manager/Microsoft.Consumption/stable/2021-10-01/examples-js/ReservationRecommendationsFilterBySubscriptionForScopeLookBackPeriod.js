@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ReservationRecommendationsFilterBySubscriptionForScopeLookBackPeriod.json
  */
 async function reservationRecommendationsFilterBySubscriptionForScopeLookBackPeriodLegacy() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const filter = "properties/scope eq 'Single' AND properties/lookBackPeriod eq 'Last7Days'";
   const scope = "subscriptions/00000000-0000-0000-0000-000000000000";
   const options = { filter };
@@ -20,5 +21,3 @@ async function reservationRecommendationsFilterBySubscriptionForScopeLookBackPer
   }
   console.log(resArray);
 }
-
-reservationRecommendationsFilterBySubscriptionForScopeLookBackPeriodLegacy().catch(console.error);

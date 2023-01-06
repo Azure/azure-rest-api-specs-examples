@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ChargesListForDepartmentFilterByStartEndDate.json
  */
 async function chargesListByDepartmentLegacy() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "providers/Microsoft.Billing/BillingAccounts/1234/departments/42425";
   const filter = "usageStart eq '2018-04-01' AND usageEnd eq '2018-05-30'";
   const options = { filter };
@@ -17,5 +18,3 @@ async function chargesListByDepartmentLegacy() {
   const result = await client.charges.list(scope, options);
   console.log(result);
 }
-
-chargesListByDepartmentLegacy().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/CreateOrUpdateBudget.json
  */
 async function createOrUpdateBudget() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/00000000-0000-0000-0000-000000000000";
   const budgetName = "TestBudget";
   const parameters = {
@@ -62,5 +63,3 @@ async function createOrUpdateBudget() {
   const result = await client.budgets.createOrUpdate(scope, budgetName, parameters);
   console.log(result);
 }
-
-createOrUpdateBudget().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ChargesListByModernBillingProfileInvoiceSection.json
  */
 async function chargesListByBillingProfileInvoiceSectionModern() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope =
     "providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425/invoiceSections/67890";
   const startDate = "2019-09-01";
@@ -19,5 +20,3 @@ async function chargesListByBillingProfileInvoiceSectionModern() {
   const result = await client.charges.list(scope, options);
   console.log(result);
 }
-
-chargesListByBillingProfileInvoiceSectionModern().catch(console.error);

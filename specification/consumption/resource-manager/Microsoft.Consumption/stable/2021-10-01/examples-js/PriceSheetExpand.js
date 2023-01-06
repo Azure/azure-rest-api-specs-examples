@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/PriceSheetExpand.json
  */
 async function priceSheetExpand() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const expand = "meterDetails";
   const billingPeriodName = "201801";
   const options = { expand };
@@ -17,5 +18,3 @@ async function priceSheetExpand() {
   const result = await client.priceSheet.getByBillingPeriod(billingPeriodName, options);
   console.log(result);
 }
-
-priceSheetExpand().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/AggregatedCostForBillingPeriodByManagementGroup.json
  */
 async function aggregatedCostListForBillingPeriodByManagementGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupId = "managementGroupForTest";
   const billingPeriodName = "201807";
   const credential = new DefaultAzureCredential();
@@ -19,5 +20,3 @@ async function aggregatedCostListForBillingPeriodByManagementGroup() {
   );
   console.log(result);
 }
-
-aggregatedCostListForBillingPeriodByManagementGroup().catch(console.error);

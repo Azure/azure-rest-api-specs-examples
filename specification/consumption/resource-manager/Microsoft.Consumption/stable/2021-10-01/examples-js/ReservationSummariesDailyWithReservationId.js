@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ReservationSummariesDailyWithReservationId.json
  */
 async function reservationSummariesDailyWithReservationId() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const reservationOrderId = "00000000-0000-0000-0000-000000000000";
   const reservationId = "00000000-0000-0000-0000-000000000000";
   const grain = "daily";
@@ -29,5 +30,3 @@ async function reservationSummariesDailyWithReservationId() {
   }
   console.log(resArray);
 }
-
-reservationSummariesDailyWithReservationId().catch(console.error);

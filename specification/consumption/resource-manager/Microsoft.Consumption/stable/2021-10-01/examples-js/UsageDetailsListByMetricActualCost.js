@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/UsageDetailsListByMetricActualCost.json
  */
 async function usageDetailsListByMetricActualCostLegacy() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["CONSUMPTION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/00000000-0000-0000-0000-000000000000";
   const metric = "actualcost";
   const options = { metric };
@@ -20,5 +21,3 @@ async function usageDetailsListByMetricActualCostLegacy() {
   }
   console.log(resArray);
 }
-
-usageDetailsListByMetricActualCostLegacy().catch(console.error);

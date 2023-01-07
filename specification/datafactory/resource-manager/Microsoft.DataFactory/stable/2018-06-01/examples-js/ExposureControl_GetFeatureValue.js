@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/ExposureControl_GetFeatureValue.json
  */
 async function exposureControlGetFeatureValue() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
   const locationId = "WestEurope";
   const exposureControlRequest = {
     featureName: "ADFIntegrationRuntimeSharingRbac",
@@ -19,5 +20,3 @@ async function exposureControlGetFeatureValue() {
   const result = await client.exposureControl.getFeatureValue(locationId, exposureControlRequest);
   console.log(result);
 }
-
-exposureControlGetFeatureValue().catch(console.error);

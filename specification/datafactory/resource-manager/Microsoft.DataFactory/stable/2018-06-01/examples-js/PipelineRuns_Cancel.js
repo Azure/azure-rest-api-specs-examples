@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/PipelineRuns_Cancel.json
  */
 async function pipelineRunsCancel() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const runId = "16ac5348-ff82-4f95-a80d-638c1d47b721";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function pipelineRunsCancel() {
   const result = await client.pipelineRuns.cancel(resourceGroupName, factoryName, runId);
   console.log(result);
 }
-
-pipelineRunsCancel().catch(console.error);

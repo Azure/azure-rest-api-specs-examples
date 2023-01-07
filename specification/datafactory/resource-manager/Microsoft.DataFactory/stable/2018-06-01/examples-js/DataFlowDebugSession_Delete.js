@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_Delete.json
  */
 async function dataFlowDebugSessionDelete() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const request = {
     sessionId: "91fb57e0-8292-47be-89ff-c8f2d2bb2a7e",
@@ -19,5 +20,3 @@ async function dataFlowDebugSessionDelete() {
   const result = await client.dataFlowDebugSession.delete(resourceGroupName, factoryName, request);
   console.log(result);
 }
-
-dataFlowDebugSessionDelete().catch(console.error);

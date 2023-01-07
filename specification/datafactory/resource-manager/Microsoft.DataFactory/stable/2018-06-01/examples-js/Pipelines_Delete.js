@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Pipelines_Delete.json
  */
 async function pipelinesDelete() {
-  const subscriptionId = "12345678-1234-1234-1234-12345678abc";
-  const resourceGroupName = "exampleResourceGroup";
+  const subscriptionId =
+    process.env["DATAFACTORY_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-12345678abc";
+  const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const pipelineName = "examplePipeline";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function pipelinesDelete() {
   const result = await client.pipelines.delete(resourceGroupName, factoryName, pipelineName);
   console.log(result);
 }
-
-pipelinesDelete().catch(console.error);

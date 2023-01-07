@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/developerhub/resource-manager/Microsoft.DevHub/preview/2022-04-01-preview/examples/GitHubOAuthCallback.json
  */
 async function gitHubOAuthCallback() {
-  const subscriptionId = "subscriptionId1";
+  const subscriptionId = process.env["DEVHUB_SUBSCRIPTION_ID"] || "subscriptionId1";
   const location = "eastus2euap";
   const code = "3584d83530557fdd1f46af8289938c8ef79f9dc5";
   const state = "12345678-3456-7890-5678-012345678901";
@@ -17,5 +17,3 @@ async function gitHubOAuthCallback() {
   const result = await client.gitHubOAuthCallback(location, code, state);
   console.log(result);
 }
-
-gitHubOAuthCallback().catch(console.error);

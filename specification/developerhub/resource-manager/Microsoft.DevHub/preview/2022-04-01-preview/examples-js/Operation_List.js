@@ -8,11 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/developerhub/resource-manager/Microsoft.DevHub/preview/2022-04-01-preview/examples/Operation_List.json
  */
 async function listAvailableOperationsForTheContainerServiceResourceProvider() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["DEVHUB_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new DeveloperHubServiceClient(credential, subscriptionId);
   const result = await client.operations.list();
   console.log(result);
 }
-
-listAvailableOperationsForTheContainerServiceResourceProvider().catch(console.error);

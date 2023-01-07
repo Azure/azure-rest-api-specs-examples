@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/developerhub/resource-manager/Microsoft.DevHub/preview/2022-04-01-preview/examples/Workflow_CreateOrUpdate.json
  */
 async function createWorkflow() {
-  const subscriptionId = "subscriptionId1";
-  const resourceGroupName = "resourceGroup1";
+  const subscriptionId = process.env["DEVHUB_SUBSCRIPTION_ID"] || "subscriptionId1";
+  const resourceGroupName = process.env["DEVHUB_RESOURCE_GROUP"] || "resourceGroup1";
   const workflowName = "workflow1";
   const parameters = {
     acr: {
@@ -46,5 +46,3 @@ async function createWorkflow() {
   );
   console.log(result);
 }
-
-createWorkflow().catch(console.error);

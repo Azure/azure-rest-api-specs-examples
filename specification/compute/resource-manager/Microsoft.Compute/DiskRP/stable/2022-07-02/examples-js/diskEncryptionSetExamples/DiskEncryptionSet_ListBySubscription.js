@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskEncryptionSetExamples/DiskEncryptionSet_ListBySubscription.json
  */
 async function listAllDiskEncryptionSetsInASubscription() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const credential = new DefaultAzureCredential();
   const client = new ComputeManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function listAllDiskEncryptionSetsInASubscription() {
   }
   console.log(resArray);
 }
-
-listAllDiskEncryptionSetsInASubscription().catch(console.error);

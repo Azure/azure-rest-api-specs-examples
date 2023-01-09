@@ -1,0 +1,30 @@
+const { ServiceNetworkingManagementClient } = require("@azure/arm-servicenetworking");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Create a Traffic Controller Frontend
+ *
+ * @summary Create a Traffic Controller Frontend
+ * x-ms-original-file: specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/FrontendPut.json
+ */
+async function putFrontend() {
+  const subscriptionId = process.env["SERVICENETWORKING_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["SERVICENETWORKING_RESOURCE_GROUP"] || "rg1";
+  const trafficControllerName = "TC1";
+  const frontendName = "publicIp1";
+  const resource = {
+    ipAddressVersion: "IPv4",
+    location: "West US",
+    mode: "public",
+    publicIPAddress: { id: "resourceUriAsString" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ServiceNetworkingManagementClient(credential, subscriptionId);
+  const result = await client.frontendsInterface.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    trafficControllerName,
+    frontendName,
+    resource
+  );
+  console.log(result);
+}

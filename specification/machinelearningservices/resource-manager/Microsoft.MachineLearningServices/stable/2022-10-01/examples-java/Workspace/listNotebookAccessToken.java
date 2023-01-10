@@ -1,0 +1,16 @@
+import com.azure.core.util.Context;
+
+/** Samples for Workspaces ListNotebookAccessToken. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Workspace/listNotebookAccessToken.json
+     */
+    /**
+     * Sample code: List Workspace Keys.
+     *
+     * @param manager Entry point to MachineLearningManager.
+     */
+    public static void listWorkspaceKeys(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
+        manager.workspaces().listNotebookAccessTokenWithResponse("workspace-1234", "testworkspace", Context.NONE);
+    }
+}

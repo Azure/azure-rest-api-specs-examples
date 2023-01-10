@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/examples/skus/ListAvailableResourceSkusForARegion.json
  */
 async function listsAllAvailableResourceSkUsForTheSpecifiedRegion() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const filter = "location eq 'westus'";
   const options = { filter };
   const credential = new DefaultAzureCredential();
@@ -19,5 +19,3 @@ async function listsAllAvailableResourceSkUsForTheSpecifiedRegion() {
   }
   console.log(resArray);
 }
-
-listsAllAvailableResourceSkUsForTheSpecifiedRegion().catch(console.error);

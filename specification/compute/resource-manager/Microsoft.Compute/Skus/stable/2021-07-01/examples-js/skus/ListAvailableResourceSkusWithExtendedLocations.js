@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/Skus/stable/2021-07-01/examples/skus/ListAvailableResourceSkusWithExtendedLocations.json
  */
 async function listsAllAvailableResourceSkUsWithExtendedLocationInformation() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const includeExtendedLocations = "true";
   const options = { includeExtendedLocations };
   const credential = new DefaultAzureCredential();
@@ -19,5 +19,3 @@ async function listsAllAvailableResourceSkUsWithExtendedLocationInformation() {
   }
   console.log(resArray);
 }
-
-listsAllAvailableResourceSkUsWithExtendedLocationInformation().catch(console.error);

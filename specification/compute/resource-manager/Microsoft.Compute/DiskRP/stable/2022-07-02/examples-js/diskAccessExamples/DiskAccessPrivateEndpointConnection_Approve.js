@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskAccessExamples/DiskAccessPrivateEndpointConnection_Approve.json
  */
 async function approveAPrivateEndpointConnectionUnderADiskAccessResource() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "myResourceGroup";
   const diskAccessName = "myDiskAccess";
   const privateEndpointConnectionName = "myPrivateEndpointConnection";
   const privateEndpointConnection = {
@@ -28,5 +28,3 @@ async function approveAPrivateEndpointConnectionUnderADiskAccessResource() {
   );
   console.log(result);
 }
-
-approveAPrivateEndpointConnectionUnderADiskAccessResource().catch(console.error);

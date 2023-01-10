@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskExamples/Disk_Create_FromAnAzureComputeGalleryCommunityImage.json
  */
 async function createAManagedDiskFromAnAzureComputeGalleryCommunityImage() {
-  const subscriptionId = "{subscriptionId}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscriptionId}";
+  const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "myResourceGroup";
   const diskName = "myDisk";
   const disk = {
     creationData: {
@@ -27,5 +27,3 @@ async function createAManagedDiskFromAnAzureComputeGalleryCommunityImage() {
   const result = await client.disks.beginCreateOrUpdateAndWait(resourceGroupName, diskName, disk);
   console.log(result);
 }
-
-createAManagedDiskFromAnAzureComputeGalleryCommunityImage().catch(console.error);

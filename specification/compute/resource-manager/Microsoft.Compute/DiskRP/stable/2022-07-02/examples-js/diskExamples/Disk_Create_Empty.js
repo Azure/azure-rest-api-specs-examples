@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskExamples/Disk_Create_Empty.json
  */
 async function createAnEmptyManagedDisk() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "myResourceGroup";
   const diskName = "myDisk";
   const disk = {
     creationData: { createOption: "Empty" },
@@ -21,5 +21,3 @@ async function createAnEmptyManagedDisk() {
   const result = await client.disks.beginCreateOrUpdateAndWait(resourceGroupName, diskName, disk);
   console.log(result);
 }
-
-createAnEmptyManagedDisk().catch(console.error);

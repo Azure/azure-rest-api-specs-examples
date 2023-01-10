@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/snapshotExamples/Snapshot_Create_FromAnExistingSnapshot.json
  */
 async function createASnapshotFromAnExistingSnapshotInTheSameOrADifferentSubscription() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "myResourceGroup";
   const snapshotName = "mySnapshot2";
   const snapshot = {
     creationData: {
@@ -28,5 +28,3 @@ async function createASnapshotFromAnExistingSnapshotInTheSameOrADifferentSubscri
   );
   console.log(result);
 }
-
-createASnapshotFromAnExistingSnapshotInTheSameOrADifferentSubscription().catch(console.error);

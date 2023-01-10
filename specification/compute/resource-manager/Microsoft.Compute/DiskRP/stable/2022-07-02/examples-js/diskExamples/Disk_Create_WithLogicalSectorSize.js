@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskExamples/Disk_Create_WithLogicalSectorSize.json
  */
 async function createAnUltraManagedDiskWithLogicalSectorSize512E() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["COMPUTE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["COMPUTE_RESOURCE_GROUP"] || "myResourceGroup";
   const diskName = "myDisk";
   const disk = {
     creationData: { createOption: "Empty", logicalSectorSize: 512 },
@@ -22,5 +22,3 @@ async function createAnUltraManagedDiskWithLogicalSectorSize512E() {
   const result = await client.disks.beginCreateOrUpdateAndWait(resourceGroupName, diskName, disk);
   console.log(result);
 }
-
-createAnUltraManagedDiskWithLogicalSectorSize512E().catch(console.error);

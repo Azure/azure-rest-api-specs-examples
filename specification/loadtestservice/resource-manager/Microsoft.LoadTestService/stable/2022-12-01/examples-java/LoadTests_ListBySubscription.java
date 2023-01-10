@@ -10,7 +10,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void loadTestsListBySubscription(com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void loadTestsListBySubscription(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager.loadTests().list(Context.NONE);
     }
 }

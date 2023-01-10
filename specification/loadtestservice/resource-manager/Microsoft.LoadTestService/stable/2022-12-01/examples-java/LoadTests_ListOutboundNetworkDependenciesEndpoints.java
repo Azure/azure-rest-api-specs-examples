@@ -10,8 +10,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void listOutboundNetworkDependencies(
-        com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void listOutboundNetworkDependencies(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager
             .loadTests()
             .listOutboundNetworkDependenciesEndpoints(

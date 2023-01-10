@@ -10,7 +10,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void quotasGet(com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void quotasGet(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager.quotas().getWithResponse("westus", "testQuotaBucket", Context.NONE);
     }
 }

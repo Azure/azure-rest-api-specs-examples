@@ -17,11 +17,10 @@ async function collectDiagnosticsPackageFromPacketCoreControlPlane() {
   };
   const credential = new DefaultAzureCredential();
   const client = new MobileNetworkManagementClient(credential, subscriptionId);
-  const result =
-    await client.packetCoreControlPlaneOperations.beginCollectDiagnosticsPackageAndWait(
-      resourceGroupName,
-      packetCoreControlPlaneName,
-      parameters
-    );
+  const result = await client.packetCoreControlPlanes.beginCollectDiagnosticsPackageAndWait(
+    resourceGroupName,
+    packetCoreControlPlaneName,
+    parameters
+  );
   console.log(result);
 }

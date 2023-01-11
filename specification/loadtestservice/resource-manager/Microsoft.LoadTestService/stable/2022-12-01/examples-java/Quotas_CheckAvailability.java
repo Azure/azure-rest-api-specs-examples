@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
-import com.azure.resourcemanager.loadtestservice.models.QuotaBucketRequest;
-import com.azure.resourcemanager.loadtestservice.models.QuotaBucketRequestPropertiesDimensions;
+import com.azure.resourcemanager.loadtesting.models.QuotaBucketRequest;
+import com.azure.resourcemanager.loadtesting.models.QuotaBucketRequestPropertiesDimensions;
 
 /** Samples for Quotas CheckAvailability. */
 public final class Main {
@@ -12,7 +12,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void quotasCheckAvailability(com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void quotasCheckAvailability(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager
             .quotas()
             .checkAvailabilityWithResponse(

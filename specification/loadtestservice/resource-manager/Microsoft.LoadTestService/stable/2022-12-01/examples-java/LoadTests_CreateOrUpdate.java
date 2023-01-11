@@ -1,9 +1,9 @@
-import com.azure.resourcemanager.loadtestservice.models.EncryptionProperties;
-import com.azure.resourcemanager.loadtestservice.models.EncryptionPropertiesIdentity;
-import com.azure.resourcemanager.loadtestservice.models.ManagedServiceIdentity;
-import com.azure.resourcemanager.loadtestservice.models.ManagedServiceIdentityType;
-import com.azure.resourcemanager.loadtestservice.models.Type;
-import com.azure.resourcemanager.loadtestservice.models.UserAssignedIdentity;
+import com.azure.resourcemanager.loadtesting.models.EncryptionProperties;
+import com.azure.resourcemanager.loadtesting.models.EncryptionPropertiesIdentity;
+import com.azure.resourcemanager.loadtesting.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.loadtesting.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.loadtesting.models.Type;
+import com.azure.resourcemanager.loadtesting.models.UserAssignedIdentity;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void loadTestsCreateOrUpdate(com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void loadTestsCreateOrUpdate(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager
             .loadTests()
             .define("myLoadTest")
@@ -39,7 +39,7 @@ public final class Main {
                             .withType(Type.USER_ASSIGNED)
                             .withResourceId(
                                 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1"))
-                    .withKeyUrl("https://dummy.vault.azure.net/keys/dummykey1"))
+                    .withKeyUrl("fakeTokenPlaceholder"))
             .create();
     }
 

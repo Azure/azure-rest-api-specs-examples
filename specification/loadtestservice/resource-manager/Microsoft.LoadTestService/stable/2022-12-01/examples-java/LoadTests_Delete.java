@@ -10,7 +10,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void loadTestsDelete(com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void loadTestsDelete(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager.loadTests().delete("dummyrg", "myLoadTest", Context.NONE);
     }
 }

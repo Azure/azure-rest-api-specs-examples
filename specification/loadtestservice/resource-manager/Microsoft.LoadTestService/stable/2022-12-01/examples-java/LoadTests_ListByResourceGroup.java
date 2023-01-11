@@ -10,7 +10,7 @@ public final class Main {
      *
      * @param manager Entry point to LoadTestManager.
      */
-    public static void loadTestsListByResourceGroup(com.azure.resourcemanager.loadtestservice.LoadTestManager manager) {
+    public static void loadTestsListByResourceGroup(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         manager.loadTests().listByResourceGroup("dummyrg", Context.NONE);
     }
 }

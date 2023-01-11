@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlServerInstances List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsAllSQLServerInstanceInASubscription(
         com.azure.resourcemanager.azurearcdata.AzureArcDataManager manager) {
-        manager.sqlServerInstances().list(Context.NONE);
+        manager.sqlServerInstances().list(com.azure.core.util.Context.NONE);
     }
 }

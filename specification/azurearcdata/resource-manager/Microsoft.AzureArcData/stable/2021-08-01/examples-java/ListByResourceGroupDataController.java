@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataControllers ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsAllDataControllersInAResourceGroup(
         com.azure.resourcemanager.azurearcdata.AzureArcDataManager manager) {
-        manager.dataControllers().listByResourceGroup("testrg", Context.NONE);
+        manager.dataControllers().listByResourceGroup("testrg", com.azure.core.util.Context.NONE);
     }
 }

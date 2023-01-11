@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlManagedInstances Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AzureArcDataManager.
      */
     public static void deleteASQLInstance(com.azure.resourcemanager.azurearcdata.AzureArcDataManager manager) {
-        manager.sqlManagedInstances().delete("testrg", "testsqlManagedInstance", Context.NONE);
+        manager.sqlManagedInstances().delete("testrg", "testsqlManagedInstance", com.azure.core.util.Context.NONE);
     }
 }

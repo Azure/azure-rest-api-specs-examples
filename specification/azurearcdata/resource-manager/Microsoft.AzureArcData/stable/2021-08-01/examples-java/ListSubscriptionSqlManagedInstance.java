@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlManagedInstances List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsAllSQLInstanceInASubscription(
         com.azure.resourcemanager.azurearcdata.AzureArcDataManager manager) {
-        manager.sqlManagedInstances().list(Context.NONE);
+        manager.sqlManagedInstances().list(com.azure.core.util.Context.NONE);
     }
 }

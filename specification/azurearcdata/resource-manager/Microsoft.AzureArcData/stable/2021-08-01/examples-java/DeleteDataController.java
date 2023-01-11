@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataControllers Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AzureArcDataManager.
      */
     public static void deleteADataController(com.azure.resourcemanager.azurearcdata.AzureArcDataManager manager) {
-        manager.dataControllers().delete("testrg", "testdataController", Context.NONE);
+        manager.dataControllers().delete("testrg", "testdataController", com.azure.core.util.Context.NONE);
     }
 }

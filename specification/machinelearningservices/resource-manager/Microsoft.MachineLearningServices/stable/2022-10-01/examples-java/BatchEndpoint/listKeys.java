@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BatchEndpoints ListKeys. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void listKeysBatchEndpoint(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.batchEndpoints().listKeysWithResponse("test-rg", "my-aml-workspace", "testEndpointName", Context.NONE);
+        manager
+            .batchEndpoints()
+            .listKeysWithResponse("test-rg", "my-aml-workspace", "testEndpointName", com.azure.core.util.Context.NONE);
     }
 }

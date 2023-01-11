@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.ContainerType;
 import com.azure.resourcemanager.machinelearning.models.DeploymentLogsRequest;
 
@@ -22,6 +21,6 @@ public final class Main {
                 "testEndpoint",
                 "testDeployment",
                 new DeploymentLogsRequest().withContainerType(ContainerType.STORAGE_INITIALIZER).withTail(0),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

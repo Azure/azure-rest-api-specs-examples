@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.machinelearning.models.ManagedServiceIdentityType;
 import com.azure.resourcemanager.machinelearning.models.OnlineEndpoint;
@@ -23,7 +22,7 @@ public final class Main {
         OnlineEndpoint resource =
             manager
                 .onlineEndpoints()
-                .getWithResponse("test-rg", "my-aml-workspace", "testEndpointName", Context.NONE)
+                .getWithResponse("test-rg", "my-aml-workspace", "testEndpointName", com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

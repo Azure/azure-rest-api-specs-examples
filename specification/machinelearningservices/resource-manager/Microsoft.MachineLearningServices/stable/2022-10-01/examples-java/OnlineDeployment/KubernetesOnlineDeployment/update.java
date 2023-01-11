@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.OnlineDeployment;
 import com.azure.resourcemanager.machinelearning.models.PartialSku;
 import com.azure.resourcemanager.machinelearning.models.SkuTier;
@@ -20,7 +19,12 @@ public final class Main {
         OnlineDeployment resource =
             manager
                 .onlineDeployments()
-                .getWithResponse("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", Context.NONE)
+                .getWithResponse(
+                    "test-rg",
+                    "my-aml-workspace",
+                    "testEndpointName",
+                    "testDeploymentName",
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

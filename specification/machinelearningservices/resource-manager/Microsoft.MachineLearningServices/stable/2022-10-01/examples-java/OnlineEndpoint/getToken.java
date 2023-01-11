@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for OnlineEndpoints GetToken. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getTokenOnlineEndpoint(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.onlineEndpoints().getTokenWithResponse("test-rg", "my-aml-workspace", "testEndpointName", Context.NONE);
+        manager
+            .onlineEndpoints()
+            .getTokenWithResponse("test-rg", "my-aml-workspace", "testEndpointName", com.azure.core.util.Context.NONE);
     }
 }

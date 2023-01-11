@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Quotas List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listWorkspaceQuotasByVMFamily(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.quotas().list("eastus", Context.NONE);
+        manager.quotas().list("eastus", com.azure.core.util.Context.NONE);
     }
 }

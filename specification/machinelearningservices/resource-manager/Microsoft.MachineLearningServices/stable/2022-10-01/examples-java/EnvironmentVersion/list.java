@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for EnvironmentVersions List. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .environmentVersions()
-            .list("test-rg", "my-aml-workspace", "string", "string", 1, null, null, Context.NONE);
+            .list("test-rg", "my-aml-workspace", "string", "string", 1, null, null, com.azure.core.util.Context.NONE);
     }
 }

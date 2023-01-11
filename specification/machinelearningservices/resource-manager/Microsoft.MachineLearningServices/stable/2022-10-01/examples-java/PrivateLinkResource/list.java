@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateLinkResources List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void workspaceListPrivateLinkResources(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.privateLinkResources().listWithResponse("rg-1234", "testworkspace", Context.NONE);
+        manager.privateLinkResources().listWithResponse("rg-1234", "testworkspace", com.azure.core.util.Context.NONE);
     }
 }

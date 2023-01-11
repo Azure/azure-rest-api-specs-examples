@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BatchDeployments Get. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void getBatchDeployment(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .batchDeployments()
-            .getWithResponse("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", Context.NONE);
+            .getWithResponse(
+                "test-rg",
+                "my-aml-workspace",
+                "testEndpointName",
+                "testDeploymentName",
+                com.azure.core.util.Context.NONE);
     }
 }

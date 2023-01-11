@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Jobs List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void listAutoMLJob(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.jobs().list("test-rg", "my-aml-workspace", null, null, null, null, Context.NONE);
+        manager.jobs().list("test-rg", "my-aml-workspace", null, null, null, null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceConnections Delete. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .workspaceConnections()
-            .deleteWithResponse("resourceGroup-1", "workspace-1", "connection-1", Context.NONE);
+            .deleteWithResponse("resourceGroup-1", "workspace-1", "connection-1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnections List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void storageAccountListPrivateEndpointConnections(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.privateEndpointConnections().list("rg-1234", "testworkspace", Context.NONE);
+        manager.privateEndpointConnections().list("rg-1234", "testworkspace", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CodeContainers Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void getCodeContainer(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.codeContainers().getWithResponse("testrg123", "testworkspace", "testContainer", Context.NONE);
+        manager
+            .codeContainers()
+            .getWithResponse("testrg123", "testworkspace", "testContainer", com.azure.core.util.Context.NONE);
     }
 }

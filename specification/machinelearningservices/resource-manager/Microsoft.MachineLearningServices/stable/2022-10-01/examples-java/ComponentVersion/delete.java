@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ComponentVersions Delete. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void deleteComponentVersion(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.componentVersions().deleteWithResponse("test-rg", "my-aml-workspace", "string", "string", Context.NONE);
+        manager
+            .componentVersions()
+            .deleteWithResponse("test-rg", "my-aml-workspace", "string", "string", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for EnvironmentContainers List. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void listEnvironmentContainer(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.environmentContainers().list("testrg123", "testworkspace", null, null, Context.NONE);
+        manager
+            .environmentContainers()
+            .list("testrg123", "testworkspace", null, null, com.azure.core.util.Context.NONE);
     }
 }

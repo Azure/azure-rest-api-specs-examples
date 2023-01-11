@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces ListNotebookKeys. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void listWorkspaceKeys(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.workspaces().listNotebookKeysWithResponse("testrg123", "workspaces123", Context.NONE);
+        manager
+            .workspaces()
+            .listNotebookKeysWithResponse("testrg123", "workspaces123", com.azure.core.util.Context.NONE);
     }
 }

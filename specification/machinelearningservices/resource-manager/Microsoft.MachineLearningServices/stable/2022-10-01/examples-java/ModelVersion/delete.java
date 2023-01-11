@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ModelVersions Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void deleteModelVersion(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.modelVersions().deleteWithResponse("test-rg", "my-aml-workspace", "string", "string", Context.NONE);
+        manager
+            .modelVersions()
+            .deleteWithResponse("test-rg", "my-aml-workspace", "string", "string", com.azure.core.util.Context.NONE);
     }
 }

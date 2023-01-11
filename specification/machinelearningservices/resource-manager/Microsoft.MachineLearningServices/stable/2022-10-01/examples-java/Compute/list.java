@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Compute List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void getComputes(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.computes().list("testrg123", "workspaces123", null, Context.NONE);
+        manager.computes().list("testrg123", "workspaces123", null, com.azure.core.util.Context.NONE);
     }
 }

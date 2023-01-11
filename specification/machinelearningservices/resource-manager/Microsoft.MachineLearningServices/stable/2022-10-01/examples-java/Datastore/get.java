@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Datastores Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void getDatastore(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.datastores().getWithResponse("test-rg", "my-aml-workspace", "string", Context.NONE);
+        manager.datastores().getWithResponse("test-rg", "my-aml-workspace", "string", com.azure.core.util.Context.NONE);
     }
 }

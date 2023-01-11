@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Datastores Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void deleteDatastore(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.datastores().deleteWithResponse("test-rg", "my-aml-workspace", "string", Context.NONE);
+        manager
+            .datastores()
+            .deleteWithResponse("test-rg", "my-aml-workspace", "string", com.azure.core.util.Context.NONE);
     }
 }

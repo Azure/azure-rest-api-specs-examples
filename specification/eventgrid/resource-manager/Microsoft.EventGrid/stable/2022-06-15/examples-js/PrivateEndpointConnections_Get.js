@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/PrivateEndpointConnections_Get.json
  */
 async function privateEndpointConnectionsGet() {
-  const subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
-  const resourceGroupName = "examplerg";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
+  const resourceGroupName = process.env["EVENTGRID_RESOURCE_GROUP"] || "examplerg";
   const parentType = "topics";
   const parentName = "exampletopic1";
   const privateEndpointConnectionName = "BMTPE5.8A30D251-4C61-489D-A1AA-B37C4A329B8B";
@@ -23,5 +24,3 @@ async function privateEndpointConnectionsGet() {
   );
   console.log(result);
 }
-
-privateEndpointConnectionsGet().catch(console.error);

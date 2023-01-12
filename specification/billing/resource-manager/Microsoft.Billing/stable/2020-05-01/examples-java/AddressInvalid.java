@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.models.AddressDetails;
 
 /** Samples for Address Validate. */
@@ -20,7 +19,7 @@ public final class Main {
                     .withCity("bellevue")
                     .withRegion("wa")
                     .withCountry("us")
-                    .withPostalCode("12345"),
-                Context.NONE);
+                    .withPostalCode("fakeTokenPlaceholder"),
+                com.azure.core.util.Context.NONE);
     }
 }

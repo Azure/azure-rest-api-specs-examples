@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingProperty Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void billingProperty(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.billingProperties().getWithResponse(Context.NONE);
+        manager.billingProperties().getWithResponse(com.azure.core.util.Context.NONE);
     }
 }

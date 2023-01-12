@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Customers Get. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void customerWithExpand(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .customers()
-            .getWithResponse("{billingAccountName}", "{customerName}", "enabledAzurePlans,resellers", Context.NONE);
+            .getWithResponse(
+                "{billingAccountName}",
+                "{customerName}",
+                "enabledAzurePlans,resellers",
+                com.azure.core.util.Context.NONE);
     }
 }

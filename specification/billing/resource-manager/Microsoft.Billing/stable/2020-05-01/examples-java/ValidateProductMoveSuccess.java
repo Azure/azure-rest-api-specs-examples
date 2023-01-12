@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.models.TransferProductRequestProperties;
 
 /** Samples for Products ValidateMove. */
@@ -20,6 +19,6 @@ public final class Main {
                 new TransferProductRequestProperties()
                     .withDestinationInvoiceSectionId(
                         "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{newInvoiceSectionName}"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

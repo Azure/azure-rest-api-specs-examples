@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Policies GetByBillingProfile. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void policyByBillingProfile(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .policies()
-            .getByBillingProfileWithResponse("{billingAccountName}", "{billingProfileName}", Context.NONE);
+            .getByBillingProfileWithResponse(
+                "{billingAccountName}", "{billingProfileName}", com.azure.core.util.Context.NONE);
     }
 }

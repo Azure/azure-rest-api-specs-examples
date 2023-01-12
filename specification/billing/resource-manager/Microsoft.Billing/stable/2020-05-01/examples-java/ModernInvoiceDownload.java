@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Invoices DownloadInvoice. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void invoiceDownload(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.invoices().downloadInvoice("{billingAccountName}", "{invoiceName}", "DRS_12345", Context.NONE);
+        manager
+            .invoices()
+            .downloadInvoice("{billingAccountName}", "{invoiceName}", "DRS_12345", com.azure.core.util.Context.NONE);
     }
 }

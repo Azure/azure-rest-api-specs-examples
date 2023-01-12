@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingAccounts List. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void billingAccountsListWithExpandForEnrollmentDetails(
         com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.billingAccounts().list("enrollmentDetails,departments,enrollmentAccounts", Context.NONE);
+        manager
+            .billingAccounts()
+            .list("enrollmentDetails,departments,enrollmentAccounts", com.azure.core.util.Context.NONE);
     }
 }

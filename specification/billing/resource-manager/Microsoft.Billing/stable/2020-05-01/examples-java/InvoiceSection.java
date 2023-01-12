@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for InvoiceSections Get. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void invoiceSection(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .invoiceSections()
-            .getWithResponse("{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", Context.NONE);
+            .getWithResponse(
+                "{billingAccountName}",
+                "{billingProfileName}",
+                "{invoiceSectionName}",
+                com.azure.core.util.Context.NONE);
     }
 }

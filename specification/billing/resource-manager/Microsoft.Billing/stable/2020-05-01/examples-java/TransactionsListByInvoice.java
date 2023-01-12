@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Transactions ListByInvoice. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void transactionsListByInvoice(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.transactions().listByInvoice("{billingAccountName}", "{invoiceName}", Context.NONE);
+        manager.transactions().listByInvoice("{billingAccountName}", "{invoiceName}", com.azure.core.util.Context.NONE);
     }
 }

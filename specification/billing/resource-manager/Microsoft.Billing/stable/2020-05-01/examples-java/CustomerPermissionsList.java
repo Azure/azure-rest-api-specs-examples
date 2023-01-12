@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingPermissions ListByCustomer. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void billingProfilePermissionsList(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.billingPermissions().listByCustomer("{billingAccountName}", "{customerName}", Context.NONE);
+        manager
+            .billingPermissions()
+            .listByCustomer("{billingAccountName}", "{customerName}", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingAccounts List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void billingAccountsList(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.billingAccounts().list(null, Context.NONE);
+        manager.billingAccounts().list(null, com.azure.core.util.Context.NONE);
     }
 }

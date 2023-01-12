@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.fluent.models.CustomerPolicyInner;
 import com.azure.resourcemanager.billing.models.ViewCharges;
 
@@ -19,6 +18,6 @@ public final class Main {
                 "{billingAccountName}",
                 "{customerName}",
                 new CustomerPolicyInner().withViewCharges(ViewCharges.NOT_ALLOWED),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

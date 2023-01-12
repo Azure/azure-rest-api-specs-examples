@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingRoleDefinitions GetByInvoiceSection. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
                 "{billingProfileName}",
                 "{invoiceSectionName}",
                 "{billingRoleDefinitionName}",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

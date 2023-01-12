@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingSubscriptions ListByCustomer. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void billingSubscriptionsListByCustomer(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.billingSubscriptions().listByCustomer("{billingAccountName}", "{customerName}", Context.NONE);
+        manager
+            .billingSubscriptions()
+            .listByCustomer("{billingAccountName}", "{customerName}", com.azure.core.util.Context.NONE);
     }
 }

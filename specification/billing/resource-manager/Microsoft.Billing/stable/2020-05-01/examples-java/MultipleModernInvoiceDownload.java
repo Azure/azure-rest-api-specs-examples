@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import java.util.Arrays;
 
 /** Samples for Invoices DownloadMultipleBillingProfileInvoices. */
@@ -21,6 +20,6 @@ public final class Main {
                         "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/download?downloadToken={downloadToken}&useCache=True&api-version=2020-05-01",
                         "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/download?downloadToken={downloadToken}&useCache=True&api-version=2020-05-01",
                         "https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoices/{invoiceName}/download?downloadToken={downloadToken}&useCache=True&api-version=2020-05-01"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

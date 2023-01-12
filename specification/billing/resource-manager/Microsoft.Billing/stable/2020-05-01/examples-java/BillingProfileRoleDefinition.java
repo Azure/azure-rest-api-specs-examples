@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingRoleDefinitions GetByBillingProfile. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .billingRoleDefinitions()
             .getByBillingProfileWithResponse(
-                "{billingAccountName}", "{billingProfileName}", "{billingRoleDefinitionName}", Context.NONE);
+                "{billingAccountName}",
+                "{billingProfileName}",
+                "{billingRoleDefinitionName}",
+                com.azure.core.util.Context.NONE);
     }
 }

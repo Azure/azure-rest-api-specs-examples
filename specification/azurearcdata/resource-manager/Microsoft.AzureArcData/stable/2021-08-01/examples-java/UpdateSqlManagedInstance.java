@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.azurearcdata.models.SqlManagedInstance;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,7 @@ public final class Main {
         SqlManagedInstance resource =
             manager
                 .sqlManagedInstances()
-                .getByResourceGroupWithResponse("testrg", "testsqlManagedInstance", Context.NONE)
+                .getByResourceGroupWithResponse("testrg", "testsqlManagedInstance", com.azure.core.util.Context.NONE)
                 .getValue();
         resource.update().withTags(mapOf("mytag", "myval")).apply();
     }

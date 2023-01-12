@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlServerInstances ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsAllSQLServerInstanceInAResourceGroup(
         com.azure.resourcemanager.azurearcdata.AzureArcDataManager manager) {
-        manager.sqlServerInstances().listByResourceGroup("testrg", Context.NONE);
+        manager.sqlServerInstances().listByResourceGroup("testrg", com.azure.core.util.Context.NONE);
     }
 }

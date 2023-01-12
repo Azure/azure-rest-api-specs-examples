@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ComponentContainers Delete. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void deleteComponentContainer(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.componentContainers().deleteWithResponse("test-rg", "my-aml-workspace", "string", Context.NONE);
+        manager
+            .componentContainers()
+            .deleteWithResponse("test-rg", "my-aml-workspace", "string", com.azure.core.util.Context.NONE);
     }
 }

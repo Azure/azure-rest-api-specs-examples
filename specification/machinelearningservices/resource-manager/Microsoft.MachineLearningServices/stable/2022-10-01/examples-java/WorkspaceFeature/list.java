@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceFeatures List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void listWorkspaceFeatures(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.workspaceFeatures().list("myResourceGroup", "testworkspace", Context.NONE);
+        manager.workspaceFeatures().list("myResourceGroup", "testworkspace", com.azure.core.util.Context.NONE);
     }
 }

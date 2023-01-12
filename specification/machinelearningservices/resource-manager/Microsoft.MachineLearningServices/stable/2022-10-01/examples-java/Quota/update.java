@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.QuotaBaseProperties;
 import com.azure.resourcemanager.machinelearning.models.QuotaUnit;
 import com.azure.resourcemanager.machinelearning.models.QuotaUpdateParameters;
@@ -35,6 +34,6 @@ public final class Main {
                                     .withType("Microsoft.MachineLearningServices/workspaces/quotas")
                                     .withLimit(200L)
                                     .withUnit(QuotaUnit.COUNT))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

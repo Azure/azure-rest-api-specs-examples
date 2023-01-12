@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces GetByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void getWorkspace(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.workspaces().getByResourceGroupWithResponse("workspace-1234", "testworkspace", Context.NONE);
+        manager
+            .workspaces()
+            .getByResourceGroupWithResponse("workspace-1234", "testworkspace", com.azure.core.util.Context.NONE);
     }
 }

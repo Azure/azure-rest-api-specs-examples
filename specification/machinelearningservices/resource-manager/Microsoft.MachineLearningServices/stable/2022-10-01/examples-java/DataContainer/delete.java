@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataContainers Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void deleteDataContainer(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.dataContainers().deleteWithResponse("testrg123", "workspace123", "datacontainer123", Context.NONE);
+        manager
+            .dataContainers()
+            .deleteWithResponse("testrg123", "workspace123", "datacontainer123", com.azure.core.util.Context.NONE);
     }
 }

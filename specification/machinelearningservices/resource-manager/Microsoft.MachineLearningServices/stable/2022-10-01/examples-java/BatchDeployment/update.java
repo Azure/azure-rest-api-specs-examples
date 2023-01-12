@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.BatchDeployment;
 import com.azure.resourcemanager.machinelearning.models.PartialBatchDeployment;
 import java.util.HashMap;
@@ -18,7 +17,12 @@ public final class Main {
         BatchDeployment resource =
             manager
                 .batchDeployments()
-                .getWithResponse("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", Context.NONE)
+                .getWithResponse(
+                    "test-rg",
+                    "my-aml-workspace",
+                    "testEndpointName",
+                    "testDeploymentName",
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for OnlineDeployments ListSkus. */
 public final class Main {
     /*
@@ -14,6 +12,13 @@ public final class Main {
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .onlineDeployments()
-            .listSkus("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", 1, null, Context.NONE);
+            .listSkus(
+                "test-rg",
+                "my-aml-workspace",
+                "testEndpointName",
+                "testDeploymentName",
+                1,
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

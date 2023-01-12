@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceConnections Get. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getWorkspaceConnection(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.workspaceConnections().getWithResponse("resourceGroup-1", "workspace-1", "connection-1", Context.NONE);
+        manager
+            .workspaceConnections()
+            .getWithResponse("resourceGroup-1", "workspace-1", "connection-1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.DiagnoseRequestProperties;
 import com.azure.resourcemanager.machinelearning.models.DiagnoseWorkspaceParameters;
 import java.util.HashMap;
@@ -32,7 +31,7 @@ public final class Main {
                             .withContainerRegistry(mapOf())
                             .withApplicationInsights(mapOf())
                             .withOthers(mapOf())),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

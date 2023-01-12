@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces ListOutboundNetworkDependenciesEndpoints. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .workspaces()
-            .listOutboundNetworkDependenciesEndpointsWithResponse("workspace-1234", "testworkspace", Context.NONE);
+            .listOutboundNetworkDependenciesEndpointsWithResponse(
+                "workspace-1234", "testworkspace", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getWorkspacesBySubscription(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.workspaces().list(null, Context.NONE);
+        manager.workspaces().list(null, com.azure.core.util.Context.NONE);
     }
 }

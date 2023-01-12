@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import java.util.Arrays;
 
 /** Samples for Datastores List. */
@@ -24,6 +23,6 @@ public final class Main {
                 "string",
                 "string",
                 false,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

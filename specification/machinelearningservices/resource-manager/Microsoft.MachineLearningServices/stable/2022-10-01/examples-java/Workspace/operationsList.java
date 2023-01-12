@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Operations List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void operationsList(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.operations().list(Context.NONE);
+        manager.operations().list(com.azure.core.util.Context.NONE);
     }
 }

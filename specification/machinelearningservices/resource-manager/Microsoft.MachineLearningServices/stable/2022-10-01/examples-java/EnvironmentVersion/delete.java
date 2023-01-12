@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for EnvironmentVersions Delete. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .environmentVersions()
-            .deleteWithResponse("test-rg", "my-aml-workspace", "string", "string", Context.NONE);
+            .deleteWithResponse("test-rg", "my-aml-workspace", "string", "string", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.PublicNetworkAccess;
 import com.azure.resourcemanager.machinelearning.models.Workspace;
 
@@ -16,7 +15,7 @@ public final class Main {
         Workspace resource =
             manager
                 .workspaces()
-                .getByResourceGroupWithResponse("workspace-1234", "testworkspace", Context.NONE)
+                .getByResourceGroupWithResponse("workspace-1234", "testworkspace", com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

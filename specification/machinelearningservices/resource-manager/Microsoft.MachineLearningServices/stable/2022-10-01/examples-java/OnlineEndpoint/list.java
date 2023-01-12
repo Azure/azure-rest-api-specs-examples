@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.machinelearning.models.EndpointComputeType;
 import com.azure.resourcemanager.machinelearning.models.OrderString;
 
@@ -25,6 +24,6 @@ public final class Main {
                 "string",
                 "string",
                 OrderString.CREATED_AT_DESC,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

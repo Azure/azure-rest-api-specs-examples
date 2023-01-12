@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for VirtualMachineSizes List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void listVMSizes(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.virtualMachineSizes().listWithResponse("eastus", Context.NONE);
+        manager.virtualMachineSizes().listWithResponse("eastus", com.azure.core.util.Context.NONE);
     }
 }

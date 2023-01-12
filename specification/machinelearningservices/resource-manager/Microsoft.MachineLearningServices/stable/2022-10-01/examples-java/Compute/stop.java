@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Compute Stop. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void stopComputeInstanceCompute(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.computes().stop("testrg123", "workspaces123", "compute123", Context.NONE);
+        manager.computes().stop("testrg123", "workspaces123", "compute123", com.azure.core.util.Context.NONE);
     }
 }

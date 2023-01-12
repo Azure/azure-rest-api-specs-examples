@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for OnlineDeployments Get. */
 public final class Main {
     /*
@@ -14,6 +12,11 @@ public final class Main {
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
         manager
             .onlineDeployments()
-            .getWithResponse("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", Context.NONE);
+            .getWithResponse(
+                "test-rg",
+                "my-aml-workspace",
+                "testEndpointName",
+                "testDeploymentName",
+                com.azure.core.util.Context.NONE);
     }
 }

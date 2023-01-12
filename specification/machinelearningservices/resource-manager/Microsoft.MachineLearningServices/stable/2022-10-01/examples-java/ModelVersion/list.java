@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ModelVersions List. */
 public final class Main {
     /*
@@ -27,6 +25,6 @@ public final class Main {
                 "string",
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getWorkspacesByResourceGroup(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.workspaces().listByResourceGroup("workspace-1234", null, Context.NONE);
+        manager.workspaces().listByResourceGroup("workspace-1234", null, com.azure.core.util.Context.NONE);
     }
 }

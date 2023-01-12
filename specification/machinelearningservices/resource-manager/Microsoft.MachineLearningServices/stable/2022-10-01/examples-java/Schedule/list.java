@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Schedules List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MachineLearningManager.
      */
     public static void listSchedules(com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.schedules().list("test-rg", "my-aml-workspace", null, null, Context.NONE);
+        manager.schedules().list("test-rg", "my-aml-workspace", null, null, com.azure.core.util.Context.NONE);
     }
 }

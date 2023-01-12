@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ComponentContainers List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listComponentContainer(
         com.azure.resourcemanager.machinelearning.MachineLearningManager manager) {
-        manager.componentContainers().list("test-rg", "my-aml-workspace", null, null, Context.NONE);
+        manager.componentContainers().list("test-rg", "my-aml-workspace", null, null, com.azure.core.util.Context.NONE);
     }
 }

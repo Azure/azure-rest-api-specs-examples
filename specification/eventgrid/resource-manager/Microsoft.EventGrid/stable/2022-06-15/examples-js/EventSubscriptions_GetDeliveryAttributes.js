@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/EventSubscriptions_GetDeliveryAttributes.json
  */
 async function eventSubscriptionsGetDeliveryAttributes() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "aaaaaaaaaaaaaaaaaaaaaaaaa";
   const eventSubscriptionName = "aaaaaaaaaaaaaaaaaa";
   const credential = new DefaultAzureCredential();
@@ -19,5 +20,3 @@ async function eventSubscriptionsGetDeliveryAttributes() {
   );
   console.log(result);
 }
-
-eventSubscriptionsGetDeliveryAttributes().catch(console.error);

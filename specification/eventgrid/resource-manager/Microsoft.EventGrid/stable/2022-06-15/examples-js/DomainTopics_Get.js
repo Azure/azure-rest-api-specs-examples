@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/DomainTopics_Get.json
  */
 async function domainTopicsGet() {
-  const subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
-  const resourceGroupName = "examplerg";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
+  const resourceGroupName = process.env["EVENTGRID_RESOURCE_GROUP"] || "examplerg";
   const domainName = "exampledomain2";
   const domainTopicName = "topic1";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function domainTopicsGet() {
   const result = await client.domainTopics.get(resourceGroupName, domainName, domainTopicName);
   console.log(result);
 }
-
-domainTopicsGet().catch(console.error);

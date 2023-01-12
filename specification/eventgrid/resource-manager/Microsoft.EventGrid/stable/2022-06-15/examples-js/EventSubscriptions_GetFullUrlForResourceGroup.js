@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/EventSubscriptions_GetFullUrlForResourceGroup.json
  */
 async function eventSubscriptionsGetFullUrlForResourceGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg";
   const eventSubscriptionName = "examplesubscription2";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function eventSubscriptionsGetFullUrlForResourceGroup() {
   const result = await client.eventSubscriptions.getFullUrl(scope, eventSubscriptionName);
   console.log(result);
 }
-
-eventSubscriptionsGetFullUrlForResourceGroup().catch(console.error);

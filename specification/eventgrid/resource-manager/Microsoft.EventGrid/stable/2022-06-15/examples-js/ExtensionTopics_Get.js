@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/ExtensionTopics_Get.json
  */
 async function extensionTopicsGet() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope =
     "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/microsoft.storage/storageaccounts/exampleResourceName/providers/Microsoft.eventgrid/extensionTopics/default";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function extensionTopicsGet() {
   const result = await client.extensionTopics.get(scope);
   console.log(result);
 }
-
-extensionTopicsGet().catch(console.error);

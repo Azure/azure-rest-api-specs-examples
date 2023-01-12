@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/EventSubscriptions_CreateOrUpdateForResourceGroup.json
  */
 async function eventSubscriptionsCreateOrUpdateForResourceGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg";
   const eventSubscriptionName = "examplesubscription2";
   const eventSubscriptionInfo = {
@@ -31,5 +32,3 @@ async function eventSubscriptionsCreateOrUpdateForResourceGroup() {
   );
   console.log(result);
 }
-
-eventSubscriptionsCreateOrUpdateForResourceGroup().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/PartnerTopicEventSubscriptions_ListByPartnerTopic.json
  */
 async function partnerTopicEventSubscriptionsListByPartnerTopic() {
-  const subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
-  const resourceGroupName = "examplerg";
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
+  const resourceGroupName = process.env["EVENTGRID_RESOURCE_GROUP"] || "examplerg";
   const partnerTopicName = "examplePartnerTopic1";
   const credential = new DefaultAzureCredential();
   const client = new EventGridManagementClient(credential, subscriptionId);
@@ -22,5 +23,3 @@ async function partnerTopicEventSubscriptionsListByPartnerTopic() {
   }
   console.log(resArray);
 }
-
-partnerTopicEventSubscriptionsListByPartnerTopic().catch(console.error);

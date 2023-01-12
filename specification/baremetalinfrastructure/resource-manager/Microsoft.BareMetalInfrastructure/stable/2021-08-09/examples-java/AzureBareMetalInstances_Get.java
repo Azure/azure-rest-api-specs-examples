@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AzureBareMetalInstances GetByResourceGroup. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.baremetalinfrastructure.BareMetalInfrastructureManager manager) {
         manager
             .azureBareMetalInstances()
-            .getByResourceGroupWithResponse("myResourceGroup", "myAzureBareMetalInstance", Context.NONE);
+            .getByResourceGroupWithResponse(
+                "myResourceGroup", "myAzureBareMetalInstance", com.azure.core.util.Context.NONE);
     }
 }

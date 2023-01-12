@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Operations Get. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listConnectedClusterOperationsExample(
         com.azure.resourcemanager.hybridkubernetes.HybridKubernetesManager manager) {
-        manager.operations().get(Context.NONE);
+        manager.operations().get(com.azure.core.util.Context.NONE);
     }
 }

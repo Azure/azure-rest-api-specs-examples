@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.hybridkubernetes.models.AuthenticationMethod;
 import com.azure.resourcemanager.hybridkubernetes.models.ListClusterUserCredentialProperties;
 
@@ -22,6 +21,6 @@ public final class Main {
                 new ListClusterUserCredentialProperties()
                     .withAuthenticationMethod(AuthenticationMethod.AAD)
                     .withClientProxy(true),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ConnectedCluster ListByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to HybridKubernetesManager.
      */
     public static void getClustersExample(com.azure.resourcemanager.hybridkubernetes.HybridKubernetesManager manager) {
-        manager.connectedClusters().listByResourceGroup("k8sc-rg", Context.NONE);
+        manager.connectedClusters().listByResourceGroup("k8sc-rg", com.azure.core.util.Context.NONE);
     }
 }

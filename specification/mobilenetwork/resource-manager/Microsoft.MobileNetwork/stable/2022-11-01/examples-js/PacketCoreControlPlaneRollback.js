@@ -13,7 +13,7 @@ async function rollbackPacketCoreControlPlane() {
   const packetCoreControlPlaneName = "TestPacketCoreCP";
   const credential = new DefaultAzureCredential();
   const client = new MobileNetworkManagementClient(credential, subscriptionId);
-  const result = await client.packetCoreControlPlaneOperations.beginRollbackAndWait(
+  const result = await client.packetCoreControlPlanes.beginRollbackAndWait(
     resourceGroupName,
     packetCoreControlPlaneName
   );

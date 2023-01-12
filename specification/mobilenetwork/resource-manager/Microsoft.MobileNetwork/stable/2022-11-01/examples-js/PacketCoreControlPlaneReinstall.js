@@ -13,7 +13,7 @@ async function reinstallPacketCoreControlPlane() {
   const packetCoreControlPlaneName = "TestPacketCoreCP";
   const credential = new DefaultAzureCredential();
   const client = new MobileNetworkManagementClient(credential, subscriptionId);
-  const result = await client.packetCoreControlPlaneOperations.beginReinstallAndWait(
+  const result = await client.packetCoreControlPlanes.beginReinstallAndWait(
     resourceGroupName,
     packetCoreControlPlaneName
   );

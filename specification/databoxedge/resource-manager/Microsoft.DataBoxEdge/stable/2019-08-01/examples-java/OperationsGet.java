@@ -1,0 +1,14 @@
+/** Samples for Operations List. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2019-08-01/examples/OperationsGet.json
+     */
+    /**
+     * Sample code: OperationsGet.
+     *
+     * @param manager Entry point to DataBoxEdgeManager.
+     */
+    public static void operationsGet(com.azure.resourcemanager.databoxedge.DataBoxEdgeManager manager) {
+        manager.operations().list(com.azure.core.util.Context.NONE);
+    }
+}

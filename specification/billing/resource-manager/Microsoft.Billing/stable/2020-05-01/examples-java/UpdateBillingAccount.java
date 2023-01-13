@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.models.AddressDetails;
 import com.azure.resourcemanager.billing.models.BillingAccountUpdateRequest;
 
@@ -28,7 +27,7 @@ public final class Main {
                             .withCity("Redmond")
                             .withRegion("WA")
                             .withCountry("US")
-                            .withPostalCode("12345")),
-                Context.NONE);
+                            .withPostalCode("fakeTokenPlaceholder")),
+                com.azure.core.util.Context.NONE);
     }
 }

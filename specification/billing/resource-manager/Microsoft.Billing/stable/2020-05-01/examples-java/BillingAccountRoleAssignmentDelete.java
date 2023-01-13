@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingRoleAssignments DeleteByBillingAccount. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void billingAccountRoleAssignmentDelete(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .billingRoleAssignments()
-            .deleteByBillingAccountWithResponse("{billingAccountName}", "{billingRoleAssignmentName}", Context.NONE);
+            .deleteByBillingAccountWithResponse(
+                "{billingAccountName}", "{billingRoleAssignmentName}", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Products ListByInvoiceSection. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         manager
             .products()
             .listByInvoiceSection(
-                "{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", null, Context.NONE);
+                "{billingAccountName}",
+                "{billingProfileName}",
+                "{invoiceSectionName}",
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

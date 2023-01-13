@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.fluent.models.BillingProfileInner;
 import com.azure.resourcemanager.billing.models.AddressDetails;
 import com.azure.resourcemanager.billing.models.AzurePlan;
@@ -31,10 +30,10 @@ public final class Main {
                             .withCity("Redmond")
                             .withRegion("WA")
                             .withCountry("US")
-                            .withPostalCode("12345"))
+                            .withPostalCode("fakeTokenPlaceholder"))
                     .withInvoiceEmailOptIn(true)
                     .withEnabledAzurePlans(
                         Arrays.asList(new AzurePlan().withSkuId("0001"), new AzurePlan().withSkuId("0002"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

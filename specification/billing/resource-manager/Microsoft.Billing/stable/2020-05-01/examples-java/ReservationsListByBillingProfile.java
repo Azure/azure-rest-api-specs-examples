@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Reservations ListByBillingProfile. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
                 "properties/userFriendlyAppliedScopeType asc",
                 "true",
                 "Succeeded",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

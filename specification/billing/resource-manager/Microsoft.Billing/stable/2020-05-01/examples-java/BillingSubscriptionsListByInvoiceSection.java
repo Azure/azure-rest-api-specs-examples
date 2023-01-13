@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingSubscriptions ListByInvoiceSection. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .billingSubscriptions()
-            .listByInvoiceSection("{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", Context.NONE);
+            .listByInvoiceSection(
+                "{billingAccountName}",
+                "{billingProfileName}",
+                "{invoiceSectionName}",
+                com.azure.core.util.Context.NONE);
     }
 }

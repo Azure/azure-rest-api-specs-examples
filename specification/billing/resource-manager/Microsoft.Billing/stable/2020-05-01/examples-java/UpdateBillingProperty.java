@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.fluent.models.BillingPropertyInner;
 
 /** Samples for BillingProperty Update. */
@@ -12,6 +11,8 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void updateBillingProperty(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.billingProperties().updateWithResponse(new BillingPropertyInner().withCostCenter("1010"), Context.NONE);
+        manager
+            .billingProperties()
+            .updateWithResponse(new BillingPropertyInner().withCostCenter("1010"), com.azure.core.util.Context.NONE);
     }
 }

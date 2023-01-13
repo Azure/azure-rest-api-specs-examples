@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Invoices ListByBillingAccount. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void billingAccountInvoicesList(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.invoices().listByBillingAccount("{billingAccountName}", "2018-01-01", "2018-06-30", Context.NONE);
+        manager
+            .invoices()
+            .listByBillingAccount("{billingAccountName}", "2018-01-01", "2018-06-30", com.azure.core.util.Context.NONE);
     }
 }

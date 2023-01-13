@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Products Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void product(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.products().getWithResponse("{billingAccountName}", "{productName}", Context.NONE);
+        manager.products().getWithResponse("{billingAccountName}", "{productName}", com.azure.core.util.Context.NONE);
     }
 }

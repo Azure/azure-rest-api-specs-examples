@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Instructions Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void instruction(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .instructions()
-            .getWithResponse("{billingAccountName}", "{billingProfileName}", "{instructionName}", Context.NONE);
+            .getWithResponse(
+                "{billingAccountName}", "{billingProfileName}", "{instructionName}", com.azure.core.util.Context.NONE);
     }
 }

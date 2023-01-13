@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for EnrollmentAccounts List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void enrollmentAccountsList(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.enrollmentAccounts().list(Context.NONE);
+        manager.enrollmentAccounts().list(com.azure.core.util.Context.NONE);
     }
 }

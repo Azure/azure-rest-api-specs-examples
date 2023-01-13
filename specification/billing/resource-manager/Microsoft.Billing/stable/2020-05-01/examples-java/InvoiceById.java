@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Invoices GetById. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void invoice(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.invoices().getByIdWithResponse("{invoiceName}", Context.NONE);
+        manager.invoices().getByIdWithResponse("{invoiceName}", com.azure.core.util.Context.NONE);
     }
 }

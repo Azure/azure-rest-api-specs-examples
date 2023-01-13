@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingAccounts ListInvoiceSectionsByCreateSubscriptionPermission. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .billingAccounts()
-            .listInvoiceSectionsByCreateSubscriptionPermission("{billingAccountName}", Context.NONE);
+            .listInvoiceSectionsByCreateSubscriptionPermission(
+                "{billingAccountName}", com.azure.core.util.Context.NONE);
     }
 }

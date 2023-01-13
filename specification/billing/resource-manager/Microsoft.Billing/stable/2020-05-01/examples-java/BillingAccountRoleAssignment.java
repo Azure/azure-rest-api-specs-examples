@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingRoleAssignments GetByBillingAccount. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void billingAccountRoleAssignment(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .billingRoleAssignments()
-            .getByBillingAccountWithResponse("{billingAccountName}", "{billingRoleAssignmentId}", Context.NONE);
+            .getByBillingAccountWithResponse(
+                "{billingAccountName}", "{billingRoleAssignmentId}", com.azure.core.util.Context.NONE);
     }
 }

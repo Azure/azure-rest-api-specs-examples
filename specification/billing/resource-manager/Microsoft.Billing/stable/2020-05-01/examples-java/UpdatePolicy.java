@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.billing.fluent.models.PolicyInner;
 import com.azure.resourcemanager.billing.models.MarketplacePurchasesPolicy;
 import com.azure.resourcemanager.billing.models.ReservationPurchasesPolicy;
@@ -24,6 +23,6 @@ public final class Main {
                     .withMarketplacePurchases(MarketplacePurchasesPolicy.ONLY_FREE_ALLOWED)
                     .withReservationPurchases(ReservationPurchasesPolicy.NOT_ALLOWED)
                     .withViewCharges(ViewChargesPolicy.ALLOWED),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

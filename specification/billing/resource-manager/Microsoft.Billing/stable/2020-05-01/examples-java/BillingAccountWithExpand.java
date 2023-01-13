@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingAccounts Get. */
 public final class Main {
     /*
@@ -14,6 +12,8 @@ public final class Main {
         manager
             .billingAccounts()
             .getWithResponse(
-                "{billingAccountName}", "soldTo,billingProfiles,billingProfiles/invoiceSections", Context.NONE);
+                "{billingAccountName}",
+                "soldTo,billingProfiles,billingProfiles/invoiceSections",
+                com.azure.core.util.Context.NONE);
     }
 }

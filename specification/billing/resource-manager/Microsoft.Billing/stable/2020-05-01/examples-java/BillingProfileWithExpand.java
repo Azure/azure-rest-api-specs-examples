@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingProfiles Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void billingProfileWithExpand(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .billingProfiles()
-            .getWithResponse("{billingAccountName}", "{billingProfileName}", "invoiceSections", Context.NONE);
+            .getWithResponse(
+                "{billingAccountName}", "{billingProfileName}", "invoiceSections", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AvailableBalances Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to BillingManager.
      */
     public static void availableBalanceByBillingProfile(com.azure.resourcemanager.billing.BillingManager manager) {
-        manager.availableBalances().getWithResponse("{billingAccountName}", "{billingProfileName}", Context.NONE);
+        manager
+            .availableBalances()
+            .getWithResponse("{billingAccountName}", "{billingProfileName}", com.azure.core.util.Context.NONE);
     }
 }

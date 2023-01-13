@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BillingRoleAssignments ListByInvoiceSection. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void invoiceSectionRoleAssignmentList(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .billingRoleAssignments()
-            .listByInvoiceSection("{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", Context.NONE);
+            .listByInvoiceSection(
+                "{billingAccountName}",
+                "{billingProfileName}",
+                "{invoiceSectionName}",
+                com.azure.core.util.Context.NONE);
     }
 }

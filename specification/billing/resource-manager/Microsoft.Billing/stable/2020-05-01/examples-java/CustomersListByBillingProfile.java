@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Customers ListByBillingProfile. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void customersListByBillingProfile(com.azure.resourcemanager.billing.BillingManager manager) {
         manager
             .customers()
-            .listByBillingProfile("{billingAccountName}", "{billingProfileName}", null, null, Context.NONE);
+            .listByBillingProfile(
+                "{billingAccountName}", "{billingProfileName}", null, null, com.azure.core.util.Context.NONE);
     }
 }

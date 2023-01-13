@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.baremetalinfrastructure.models.Tags;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +17,10 @@ public final class Main {
         manager
             .azureBareMetalInstances()
             .updateWithResponse(
-                "myResourceGroup", "myABMInstance", new Tags().withTags(mapOf("testkey", "testvalue")), Context.NONE);
+                "myResourceGroup",
+                "myABMInstance",
+                new Tags().withTags(mapOf("testkey", "testvalue")),
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AzureBareMetalInstances List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listAllAzureBareMetalInstancesInASubscription(
         com.azure.resourcemanager.baremetalinfrastructure.BareMetalInfrastructureManager manager) {
-        manager.azureBareMetalInstances().list(Context.NONE);
+        manager.azureBareMetalInstances().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Operations List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listAllManagementOperationsSupportedByTheAzureBareMetalRP(
         com.azure.resourcemanager.baremetalinfrastructure.BareMetalInfrastructureManager manager) {
-        manager.operations().list(Context.NONE);
+        manager.operations().list(com.azure.core.util.Context.NONE);
     }
 }

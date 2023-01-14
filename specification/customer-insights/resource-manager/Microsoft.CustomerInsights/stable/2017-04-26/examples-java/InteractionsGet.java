@@ -1,0 +1,17 @@
+/** Samples for Interactions Get. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/InteractionsGet.json
+     */
+    /**
+     * Sample code: Interactions_Get.
+     *
+     * @param manager Entry point to CustomerInsightsManager.
+     */
+    public static void interactionsGet(com.azure.resourcemanager.customerinsights.CustomerInsightsManager manager) {
+        manager
+            .interactions()
+            .getWithResponse(
+                "TestHubRG", "sdkTestHub", "TestInteractionType6358", null, com.azure.core.util.Context.NONE);
+    }
+}

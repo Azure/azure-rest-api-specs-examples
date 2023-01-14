@@ -1,0 +1,17 @@
+/** Samples for Predictions GetModelStatus. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/PredictionsGetModelStatus.json
+     */
+    /**
+     * Sample code: Predictions_GetModelStatus.
+     *
+     * @param manager Entry point to CustomerInsightsManager.
+     */
+    public static void predictionsGetModelStatus(
+        com.azure.resourcemanager.customerinsights.CustomerInsightsManager manager) {
+        manager
+            .predictions()
+            .getModelStatusWithResponse("TestHubRG", "sdkTestHub", "sdktest", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,14 @@
+/** Samples for Roles ListByHub. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/RolesListByHub.json
+     */
+    /**
+     * Sample code: Roles_ListByHub.
+     *
+     * @param manager Entry point to CustomerInsightsManager.
+     */
+    public static void rolesListByHub(com.azure.resourcemanager.customerinsights.CustomerInsightsManager manager) {
+        manager.roles().listByHub("TestHubRG", "sdkTestHub", com.azure.core.util.Context.NONE);
+    }
+}

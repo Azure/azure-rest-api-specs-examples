@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Sites ListByMobileNetwork. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listMobileNetworkSitesInAMobileNetwork(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.sites().listByMobileNetwork("rg1", "testMobileNetwork", Context.NONE);
+        manager.sites().listByMobileNetwork("rg1", "testMobileNetwork", com.azure.core.util.Context.NONE);
     }
 }

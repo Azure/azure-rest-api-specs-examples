@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PacketCoreControlPlaneVersions List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSupportedPacketCoreControlPlaneVersions(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.packetCoreControlPlaneVersions().list(Context.NONE);
+        manager.packetCoreControlPlaneVersions().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Sims Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void getSIM(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.sims().getWithResponse("testResourceGroupName", "testSimGroup", "testSimName", Context.NONE);
+        manager
+            .sims()
+            .getWithResponse("testResourceGroupName", "testSimGroup", "testSimName", com.azure.core.util.Context.NONE);
     }
 }

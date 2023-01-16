@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SimGroups ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listSIMGroupsInAResourceGroup(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.simGroups().listByResourceGroup("rg1", Context.NONE);
+        manager.simGroups().listByResourceGroup("rg1", com.azure.core.util.Context.NONE);
     }
 }

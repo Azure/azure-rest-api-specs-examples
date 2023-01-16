@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.mobilenetwork.models.SimGroup;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +14,10 @@ public final class Main {
      */
     public static void updateSIMGroupTags(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
         SimGroup resource =
-            manager.simGroups().getByResourceGroupWithResponse("rg1", "testSimGroup", Context.NONE).getValue();
+            manager
+                .simGroups()
+                .getByResourceGroupWithResponse("rg1", "testSimGroup", com.azure.core.util.Context.NONE)
+                .getValue();
         resource.update().withTags(mapOf("tag1", "value1", "tag2", "value2")).apply();
     }
 

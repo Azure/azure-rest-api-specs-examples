@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Sims Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void deleteSIM(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.sims().delete("testResourceGroupName", "testSimGroup", "testSim", Context.NONE);
+        manager.sims().delete("testResourceGroupName", "testSimGroup", "testSim", com.azure.core.util.Context.NONE);
     }
 }

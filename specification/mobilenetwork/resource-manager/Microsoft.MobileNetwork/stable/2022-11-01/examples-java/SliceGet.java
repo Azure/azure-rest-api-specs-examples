@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Slices Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void getNetworkSlice(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.slices().getWithResponse("rg1", "testMobileNetwork", "testSlice", Context.NONE);
+        manager.slices().getWithResponse("rg1", "testMobileNetwork", "testSlice", com.azure.core.util.Context.NONE);
     }
 }

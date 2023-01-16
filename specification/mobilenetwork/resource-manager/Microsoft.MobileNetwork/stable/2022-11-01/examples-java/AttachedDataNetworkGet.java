@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AttachedDataNetworks Get. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void getAttachedDataNetwork(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
         manager
             .attachedDataNetworks()
-            .getWithResponse("rg1", "TestPacketCoreCP", "TestPacketCoreDP", "TestAttachedDataNetwork", Context.NONE);
+            .getWithResponse(
+                "rg1",
+                "TestPacketCoreCP",
+                "TestPacketCoreDP",
+                "TestAttachedDataNetwork",
+                com.azure.core.util.Context.NONE);
     }
 }

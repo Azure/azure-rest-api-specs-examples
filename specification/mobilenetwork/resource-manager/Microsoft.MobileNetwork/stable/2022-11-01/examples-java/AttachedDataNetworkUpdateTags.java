@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.mobilenetwork.models.AttachedDataNetwork;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +17,12 @@ public final class Main {
         AttachedDataNetwork resource =
             manager
                 .attachedDataNetworks()
-                .getWithResponse("rg1", "TestPacketCoreCP", "TestPacketCoreDP", "TestAttachedDataNetwork", Context.NONE)
+                .getWithResponse(
+                    "rg1",
+                    "TestPacketCoreCP",
+                    "TestPacketCoreDP",
+                    "TestAttachedDataNetwork",
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource.update().withTags(mapOf("tag1", "value1", "tag2", "value2")).apply();
     }

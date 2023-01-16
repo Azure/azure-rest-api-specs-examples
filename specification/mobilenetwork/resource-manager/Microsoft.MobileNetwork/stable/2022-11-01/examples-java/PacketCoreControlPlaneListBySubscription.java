@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PacketCoreControlPlanes List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listPacketCoreControlPlanesInASubscription(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.packetCoreControlPlanes().list(Context.NONE);
+        manager.packetCoreControlPlanes().list(com.azure.core.util.Context.NONE);
     }
 }

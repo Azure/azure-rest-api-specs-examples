@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AttachedDataNetworks ListByPacketCoreDataPlane. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
         manager
             .attachedDataNetworks()
-            .listByPacketCoreDataPlane("rg1", "TestPacketCoreCP", "TestPacketCoreDP", Context.NONE);
+            .listByPacketCoreDataPlane("rg1", "TestPacketCoreCP", "TestPacketCoreDP", com.azure.core.util.Context.NONE);
     }
 }

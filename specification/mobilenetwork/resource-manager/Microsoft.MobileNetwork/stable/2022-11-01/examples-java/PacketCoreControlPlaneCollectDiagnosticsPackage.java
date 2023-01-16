@@ -1,7 +1,6 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.mobilenetwork.models.PacketCoreControlPlaneCollectDiagnosticsPackage;
 
-/** Samples for PacketCoreControlPlaneOperation CollectDiagnosticsPackage. */
+/** Samples for PacketCoreControlPlanes CollectDiagnosticsPackage. */
 public final class Main {
     /*
      * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/examples/PacketCoreControlPlaneCollectDiagnosticsPackage.json
@@ -14,13 +13,13 @@ public final class Main {
     public static void collectDiagnosticsPackageFromPacketCoreControlPlane(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
         manager
-            .packetCoreControlPlaneOperations()
+            .packetCoreControlPlanes()
             .collectDiagnosticsPackage(
                 "rg1",
                 "TestPacketCoreCP",
                 new PacketCoreControlPlaneCollectDiagnosticsPackage()
                     .withStorageAccountBlobUrl(
                         "https://contosoaccount.blob.core.windows.net/container/diagnosticsPackage.zip"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/examples/ResourceSyncRulesCreate_Update.json
  */
 async function createOrUpdateResourceSyncRule() {
-  const subscriptionId = "11111111-2222-3333-4444-555555555555";
-  const resourceGroupName = "testresourcegroup";
+  const subscriptionId =
+    process.env["EXTENDEDLOCATION_SUBSCRIPTION_ID"] || "11111111-2222-3333-4444-555555555555";
+  const resourceGroupName = process.env["EXTENDEDLOCATION_RESOURCE_GROUP"] || "testresourcegroup";
   const resourceName = "customLocation01";
   const childResourceName = "resourceSyncRule01";
   const parameters = {
@@ -32,5 +33,3 @@ async function createOrUpdateResourceSyncRule() {
   );
   console.log(result);
 }
-
-createOrUpdateResourceSyncRule().catch(console.error);

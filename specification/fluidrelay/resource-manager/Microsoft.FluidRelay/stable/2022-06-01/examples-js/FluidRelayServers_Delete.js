@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_Delete.json
  */
 async function deleteAFluidRelayServer() {
-  const subscriptionId = "xxxx-xxxx-xxxx-xxxx";
+  const subscriptionId = process.env["FLUIDRELAY_SUBSCRIPTION_ID"] || "xxxx-xxxx-xxxx-xxxx";
   const resourceGroup = "myResourceGroup";
   const fluidRelayServerName = "myFluidRelayServer";
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function deleteAFluidRelayServer() {
   const result = await client.fluidRelayServers.delete(resourceGroup, fluidRelayServerName);
   console.log(result);
 }
-
-deleteAFluidRelayServer().catch(console.error);

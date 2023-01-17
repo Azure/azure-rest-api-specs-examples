@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataNetworks ListByMobileNetwork. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listDataNetworksInAMobileNetwork(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.dataNetworks().listByMobileNetwork("rg1", "testMobileNetwork", Context.NONE);
+        manager.dataNetworks().listByMobileNetwork("rg1", "testMobileNetwork", com.azure.core.util.Context.NONE);
     }
 }

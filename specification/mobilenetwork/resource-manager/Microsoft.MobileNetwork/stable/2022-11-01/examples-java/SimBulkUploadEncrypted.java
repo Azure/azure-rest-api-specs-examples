@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.mobilenetwork.models.AttachedDataNetworkResourceId;
 import com.azure.resourcemanager.mobilenetwork.models.EncryptedSimUploadList;
 import com.azure.resourcemanager.mobilenetwork.models.SimNameAndEncryptedProperties;
@@ -8,7 +7,7 @@ import com.azure.resourcemanager.mobilenetwork.models.SimStaticIpPropertiesStati
 import com.azure.resourcemanager.mobilenetwork.models.SliceResourceId;
 import java.util.Arrays;
 
-/** Samples for SimOperation BulkUploadEncrypted. */
+/** Samples for Sims BulkUploadEncrypted. */
 public final class Main {
     /*
      * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/examples/SimBulkUploadEncrypted.json
@@ -21,7 +20,7 @@ public final class Main {
     public static void bulkUploadEncryptedSIMsToASIMGroup(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
         manager
-            .simOperations()
+            .sims()
             .bulkUploadEncrypted(
                 "rg1",
                 "testSimGroup",
@@ -84,6 +83,6 @@ public final class Main {
                                                     .withStaticIp(
                                                         new SimStaticIpPropertiesStaticIp()
                                                             .withIpv4Address("2.4.0.2")))))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

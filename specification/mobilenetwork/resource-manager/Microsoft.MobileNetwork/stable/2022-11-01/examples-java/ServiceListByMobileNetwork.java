@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Services ListByMobileNetwork. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void listServicesInAMobileNetwork(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.services().listByMobileNetwork("testResourceGroupName", "testMobileNetwork", Context.NONE);
+        manager
+            .services()
+            .listByMobileNetwork("testResourceGroupName", "testMobileNetwork", com.azure.core.util.Context.NONE);
     }
 }

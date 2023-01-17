@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataNetworks Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void getDataNetwork(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.dataNetworks().getWithResponse("rg1", "testMobileNetwork", "testDataNetwork", Context.NONE);
+        manager
+            .dataNetworks()
+            .getWithResponse("rg1", "testMobileNetwork", "testDataNetwork", com.azure.core.util.Context.NONE);
     }
 }

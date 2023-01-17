@@ -1,6 +1,4 @@
-import com.azure.core.util.Context;
-
-/** Samples for PacketCoreControlPlaneOperation Rollback. */
+/** Samples for PacketCoreControlPlanes Rollback. */
 public final class Main {
     /*
      * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/examples/PacketCoreControlPlaneRollback.json
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void rollbackPacketCoreControlPlane(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.packetCoreControlPlaneOperations().rollback("rg1", "TestPacketCoreCP", Context.NONE);
+        manager.packetCoreControlPlanes().rollback("rg1", "TestPacketCoreCP", com.azure.core.util.Context.NONE);
     }
 }

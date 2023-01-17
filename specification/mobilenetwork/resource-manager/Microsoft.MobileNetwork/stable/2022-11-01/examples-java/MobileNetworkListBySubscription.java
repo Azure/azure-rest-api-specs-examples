@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for MobileNetworks List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listMobileNetworksInASubscription(
         com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.mobileNetworks().list(Context.NONE);
+        manager.mobileNetworks().list(com.azure.core.util.Context.NONE);
     }
 }

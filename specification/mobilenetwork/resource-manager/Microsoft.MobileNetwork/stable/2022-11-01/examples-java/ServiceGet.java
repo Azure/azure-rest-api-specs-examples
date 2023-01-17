@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Services Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void getService(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.services().getWithResponse("rg1", "testMobileNetwork", "TestService", Context.NONE);
+        manager.services().getWithResponse("rg1", "testMobileNetwork", "TestService", com.azure.core.util.Context.NONE);
     }
 }

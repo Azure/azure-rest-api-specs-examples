@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Sims ListByGroup. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void listSIMsInASIMGroup(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.sims().listByGroup("rg1", "testSimGroup", Context.NONE);
+        manager.sims().listByGroup("rg1", "testSimGroup", com.azure.core.util.Context.NONE);
     }
 }

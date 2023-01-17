@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for MobileNetworks GetByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void getMobileNetwork(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.mobileNetworks().getByResourceGroupWithResponse("rg1", "testMobileNetwork", Context.NONE);
+        manager
+            .mobileNetworks()
+            .getByResourceGroupWithResponse("rg1", "testMobileNetwork", com.azure.core.util.Context.NONE);
     }
 }

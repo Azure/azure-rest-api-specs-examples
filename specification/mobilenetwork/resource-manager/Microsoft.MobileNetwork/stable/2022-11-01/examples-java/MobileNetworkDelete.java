@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for MobileNetworks Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MobileNetworkManager.
      */
     public static void deleteMobileNetwork(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
-        manager.mobileNetworks().delete("rg1", "testMobileNetwork", Context.NONE);
+        manager.mobileNetworks().delete("rg1", "testMobileNetwork", com.azure.core.util.Context.NONE);
     }
 }

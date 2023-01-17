@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TagRules Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void tagRulesDelete(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.tagRules().deleteWithResponse("myResourceGroup", "myMonitor", "default", Context.NONE);
+        manager
+            .tagRules()
+            .deleteWithResponse("myResourceGroup", "myMonitor", "default", com.azure.core.util.Context.NONE);
     }
 }

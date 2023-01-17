@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubAccountTagRules Delete. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void tagRulesDelete(com.azure.resourcemanager.logz.LogzManager manager) {
         manager
             .subAccountTagRules()
-            .deleteWithResponse("myResourceGroup", "myMonitor", "SubAccount1", "default", Context.NONE);
+            .deleteWithResponse(
+                "myResourceGroup", "myMonitor", "SubAccount1", "default", com.azure.core.util.Context.NONE);
     }
 }

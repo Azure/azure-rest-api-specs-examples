@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubAccountTagRules CreateOrUpdate. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void subAccountTagRulesCreateOrUpdate(com.azure.resourcemanager.logz.LogzManager manager) {
         manager
             .subAccountTagRules()
-            .createOrUpdateWithResponse("myResourceGroup", "myMonitor", "SubAccount1", "default", null, Context.NONE);
+            .createOrUpdateWithResponse(
+                "myResourceGroup", "myMonitor", "SubAccount1", "default", null, com.azure.core.util.Context.NONE);
     }
 }

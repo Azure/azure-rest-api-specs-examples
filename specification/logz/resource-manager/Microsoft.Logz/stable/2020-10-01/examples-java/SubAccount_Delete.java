@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubAccount Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void subAccountDelete(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.subAccounts().delete("myResourceGroup", "myMonitor", "someName", Context.NONE);
+        manager.subAccounts().delete("myResourceGroup", "myMonitor", "someName", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Monitors GetByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void monitorsGet(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.monitors().getByResourceGroupWithResponse("myResourceGroup", "myMonitor", Context.NONE);
+        manager
+            .monitors()
+            .getByResourceGroupWithResponse("myResourceGroup", "myMonitor", com.azure.core.util.Context.NONE);
     }
 }

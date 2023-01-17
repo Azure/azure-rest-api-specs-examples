@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/examples/CustomLocationsListBySubscription.json
  */
 async function listCustomLocationsBySubscription() {
-  const subscriptionId = "11111111-2222-3333-4444-555555555555";
+  const subscriptionId =
+    process.env["EXTENDEDLOCATION_SUBSCRIPTION_ID"] || "11111111-2222-3333-4444-555555555555";
   const credential = new DefaultAzureCredential();
   const client = new CustomLocationsManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listCustomLocationsBySubscription() {
   }
   console.log(resArray);
 }
-
-listCustomLocationsBySubscription().catch(console.error);

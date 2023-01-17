@@ -1,0 +1,38 @@
+import com.azure.core.management.serializer.SerializerFactory;
+import com.azure.core.util.serializer.SerializerEncoding;
+import com.azure.resourcemanager.hybridcompute.models.MachineExtensionProperties;
+import java.io.IOException;
+
+/** Samples for MachineExtensions CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2021-03-25-preview/examples/PUTExtension.json
+     */
+    /**
+     * Sample code: Create or Update a Machine Extension.
+     *
+     * @param manager Entry point to HybridComputeManager.
+     */
+    public static void createOrUpdateAMachineExtension(
+        com.azure.resourcemanager.hybridcompute.HybridComputeManager manager) throws IOException {
+        manager
+            .machineExtensions()
+            .define("CustomScriptExtension")
+            .withRegion("eastus2euap")
+            .withExistingMachine("myResourceGroup", "myMachine")
+            .withProperties(
+                new MachineExtensionProperties()
+                    .withPublisher("Microsoft.Compute")
+                    .withType("CustomScriptExtension")
+                    .withTypeHandlerVersion("1.10")
+                    .withSettings(
+                        SerializerFactory
+                            .createDefaultManagementSerializerAdapter()
+                            .deserialize(
+                                "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt"
+                                    + " 10000 }\\\"\"}",
+                                Object.class,
+                                SerializerEncoding.JSON)))
+            .create();
+    }
+}

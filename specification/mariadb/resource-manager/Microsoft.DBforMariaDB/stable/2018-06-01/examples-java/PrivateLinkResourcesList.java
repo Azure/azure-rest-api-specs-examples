@@ -1,0 +1,14 @@
+/** Samples for PrivateLinkResources ListByServer. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/PrivateLinkResourcesList.json
+     */
+    /**
+     * Sample code: Gets private link resources for MariaDB.
+     *
+     * @param manager Entry point to MariaDBManager.
+     */
+    public static void getsPrivateLinkResourcesForMariaDB(com.azure.resourcemanager.mariadb.MariaDBManager manager) {
+        manager.privateLinkResources().listByServer("Default", "test-svr", com.azure.core.util.Context.NONE);
+    }
+}

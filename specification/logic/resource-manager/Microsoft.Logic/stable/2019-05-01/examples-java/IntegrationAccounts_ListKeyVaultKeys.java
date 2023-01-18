@@ -1,0 +1,28 @@
+import com.azure.resourcemanager.logic.models.KeyVaultReference;
+import com.azure.resourcemanager.logic.models.ListKeyVaultKeysDefinition;
+
+/** Samples for IntegrationAccounts ListKeyVaultKeys. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_ListKeyVaultKeys.json
+     */
+    /**
+     * Sample code: Get Integration Account callback URL.
+     *
+     * @param manager Entry point to LogicManager.
+     */
+    public static void getIntegrationAccountCallbackURL(com.azure.resourcemanager.logic.LogicManager manager) {
+        manager
+            .integrationAccounts()
+            .listKeyVaultKeys(
+                "testResourceGroup",
+                "testIntegrationAccount",
+                new ListKeyVaultKeysDefinition()
+                    .withKeyVault(
+                        new KeyVaultReference()
+                            .withId(
+                                "subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.KeyVault/vaults/testKeyVault"))
+                    .withSkipToken("fakeTokenPlaceholder"),
+                com.azure.core.util.Context.NONE);
+    }
+}

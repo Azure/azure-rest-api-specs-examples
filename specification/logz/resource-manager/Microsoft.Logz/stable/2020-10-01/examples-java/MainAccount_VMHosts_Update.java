@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for MonitorOperation ListVmHostUpdate. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void mainAccountVMHostsUpdate(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.monitorOperations().listVmHostUpdate("myResourceGroup", "myMonitor", null, Context.NONE);
+        manager
+            .monitorOperations()
+            .listVmHostUpdate("myResourceGroup", "myMonitor", null, com.azure.core.util.Context.NONE);
     }
 }

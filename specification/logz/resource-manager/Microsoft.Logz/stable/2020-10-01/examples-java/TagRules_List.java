@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TagRules List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void tagRulesList(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.tagRules().list("myResourceGroup", "myMonitor", Context.NONE);
+        manager.tagRules().list("myResourceGroup", "myMonitor", com.azure.core.util.Context.NONE);
     }
 }

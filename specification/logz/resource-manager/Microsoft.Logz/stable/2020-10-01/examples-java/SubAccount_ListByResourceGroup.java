@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubAccount List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void subAccountList(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.subAccounts().list("myResourceGroup", "myMonitor", Context.NONE);
+        manager.subAccounts().list("myResourceGroup", "myMonitor", com.azure.core.util.Context.NONE);
     }
 }

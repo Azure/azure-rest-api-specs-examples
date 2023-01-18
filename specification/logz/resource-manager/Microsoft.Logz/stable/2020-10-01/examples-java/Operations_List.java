@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Operations List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void operationsList(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.operations().list(Context.NONE);
+        manager.operations().list(com.azure.core.util.Context.NONE);
     }
 }

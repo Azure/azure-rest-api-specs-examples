@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.logz.models.LogzMonitorResource;
 
 /** Samples for Monitors Update. */
@@ -13,7 +12,10 @@ public final class Main {
      */
     public static void monitorsUpdate(com.azure.resourcemanager.logz.LogzManager manager) {
         LogzMonitorResource resource =
-            manager.monitors().getByResourceGroupWithResponse("myResourceGroup", "myMonitor", Context.NONE).getValue();
+            manager
+                .monitors()
+                .getByResourceGroupWithResponse("myResourceGroup", "myMonitor", com.azure.core.util.Context.NONE)
+                .getValue();
         resource.update().apply();
     }
 }

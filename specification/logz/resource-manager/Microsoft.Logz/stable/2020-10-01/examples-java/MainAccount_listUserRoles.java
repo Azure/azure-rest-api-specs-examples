@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Monitors ListUserRoles. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogzManager.
      */
     public static void mainAccountVMHostsUpdate(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager.monitors().listUserRoles("myResourceGroup", "myMonitor", null, Context.NONE);
+        manager.monitors().listUserRoles("myResourceGroup", "myMonitor", null, com.azure.core.util.Context.NONE);
     }
 }

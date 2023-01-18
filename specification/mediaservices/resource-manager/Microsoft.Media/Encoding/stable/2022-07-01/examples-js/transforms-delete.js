@@ -1,0 +1,20 @@
+const { AzureMediaServices } = require("@azure/arm-mediaservices");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Deletes a Transform.
+ *
+ * @summary Deletes a Transform.
+ * x-ms-original-file: specification/mediaservices/resource-manager/Microsoft.Media/Encoding/stable/2022-07-01/examples/transforms-delete.json
+ */
+async function deleteATransform() {
+  const subscriptionId =
+    process.env["MEDIASERVICES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["MEDIASERVICES_RESOURCE_GROUP"] || "contosoresources";
+  const accountName = "contosomedia";
+  const transformName = "sampleTransform";
+  const credential = new DefaultAzureCredential();
+  const client = new AzureMediaServices(credential, subscriptionId);
+  const result = await client.transforms.delete(resourceGroupName, accountName, transformName);
+  console.log(result);
+}

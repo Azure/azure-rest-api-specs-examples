@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeAuthKeyName;
 import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeRegenerateKeyParameters;
 
@@ -21,6 +20,6 @@ public final class Main {
                 "exampleFactoryName",
                 "exampleIntegrationRuntime",
                 new IntegrationRuntimeRegenerateKeyParameters().withKeyName(IntegrationRuntimeAuthKeyName.AUTH_KEY2),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

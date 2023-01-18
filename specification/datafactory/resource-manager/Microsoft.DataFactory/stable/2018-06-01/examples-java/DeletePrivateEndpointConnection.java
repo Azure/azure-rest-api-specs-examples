@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnectionOperation Delete. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .privateEndpointConnectionOperations()
-            .deleteWithResponse("exampleResourceGroup", "exampleFactoryName", "connection", Context.NONE);
+            .deleteWithResponse(
+                "exampleResourceGroup", "exampleFactoryName", "connection", com.azure.core.util.Context.NONE);
     }
 }

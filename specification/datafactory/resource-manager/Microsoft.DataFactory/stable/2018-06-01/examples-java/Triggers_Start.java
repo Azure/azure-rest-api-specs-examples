@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Triggers Start. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to DataFactoryManager.
      */
     public static void triggersStart(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
-        manager.triggers().start("exampleResourceGroup", "exampleFactoryName", "exampleTrigger", Context.NONE);
+        manager
+            .triggers()
+            .start("exampleResourceGroup", "exampleFactoryName", "exampleTrigger", com.azure.core.util.Context.NONE);
     }
 }

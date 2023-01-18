@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.RunFilterParameters;
 import java.time.OffsetDateTime;
 
@@ -23,6 +22,6 @@ public final class Main {
                 new RunFilterParameters()
                     .withLastUpdatedAfter(OffsetDateTime.parse("2018-06-16T00:36:44.3345758Z"))
                     .withLastUpdatedBefore(OffsetDateTime.parse("2018-06-16T00:49:48.3686473Z")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

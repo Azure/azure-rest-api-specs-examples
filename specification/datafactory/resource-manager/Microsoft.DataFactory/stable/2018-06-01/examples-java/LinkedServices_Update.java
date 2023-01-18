@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.datafactory.models.AzureStorageLinkedService;
 import com.azure.resourcemanager.datafactory.models.LinkedServiceResource;
@@ -21,7 +20,11 @@ public final class Main {
             manager
                 .linkedServices()
                 .getWithResponse(
-                    "exampleResourceGroup", "exampleFactoryName", "exampleLinkedService", null, Context.NONE)
+                    "exampleResourceGroup",
+                    "exampleFactoryName",
+                    "exampleLinkedService",
+                    null,
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

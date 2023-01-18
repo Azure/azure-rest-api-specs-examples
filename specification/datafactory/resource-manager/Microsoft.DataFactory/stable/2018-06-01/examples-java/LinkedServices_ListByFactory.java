@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LinkedServices ListByFactory. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to DataFactoryManager.
      */
     public static void linkedServicesListByFactory(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
-        manager.linkedServices().listByFactory("exampleResourceGroup", "exampleFactoryName", Context.NONE);
+        manager
+            .linkedServices()
+            .listByFactory("exampleResourceGroup", "exampleFactoryName", com.azure.core.util.Context.NONE);
     }
 }

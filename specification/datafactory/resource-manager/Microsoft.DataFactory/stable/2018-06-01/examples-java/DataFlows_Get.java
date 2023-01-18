@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataFlows Get. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void dataFlowsGet(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .dataFlows()
-            .getWithResponse("exampleResourceGroup", "exampleFactoryName", "exampleDataFlow", null, Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleDataFlow",
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

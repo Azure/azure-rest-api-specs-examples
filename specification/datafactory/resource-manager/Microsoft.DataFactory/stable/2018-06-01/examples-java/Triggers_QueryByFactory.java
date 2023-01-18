@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.TriggerFilterParameters;
 
 /** Samples for Triggers QueryByFactory. */
@@ -18,6 +17,6 @@ public final class Main {
                 "exampleResourceGroup",
                 "exampleFactoryName",
                 new TriggerFilterParameters().withParentTriggerName("exampleTrigger"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes GetConnectionInfo. */
 public final class Main {
     /*
@@ -15,6 +13,9 @@ public final class Main {
         manager
             .integrationRuntimes()
             .getConnectionInfoWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

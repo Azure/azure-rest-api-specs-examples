@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,7 +31,7 @@ public final class Main {
                     SerializerFactory
                         .createDefaultManagementSerializerAdapter()
                         .deserialize("[\"exampleoutput.csv\"]", Object.class, SerializerEncoding.JSON)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeObjectMetadata Refresh. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .integrationRuntimeObjectMetadatas()
-            .refresh("exampleResourceGroup", "exampleFactoryName", "testactivityv2", Context.NONE);
+            .refresh("exampleResourceGroup", "exampleFactoryName", "testactivityv2", com.azure.core.util.Context.NONE);
     }
 }

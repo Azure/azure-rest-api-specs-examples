@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.datafactory.models.PipelineReference;
 import com.azure.resourcemanager.datafactory.models.RecurrenceFrequency;
@@ -28,7 +27,12 @@ public final class Main {
         TriggerResource resource =
             manager
                 .triggers()
-                .getWithResponse("exampleResourceGroup", "exampleFactoryName", "exampleTrigger", null, Context.NONE)
+                .getWithResponse(
+                    "exampleResourceGroup",
+                    "exampleFactoryName",
+                    "exampleTrigger",
+                    null,
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

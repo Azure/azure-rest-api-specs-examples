@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagedPrivateEndpoints Get. */
 public final class Main {
     /*
@@ -19,6 +17,6 @@ public final class Main {
                 "exampleManagedVirtualNetworkName",
                 "exampleManagedPrivateEndpointName",
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

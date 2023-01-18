@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.GitHubAccessTokenRequest;
 
 /** Samples for Factories GetGitHubAccessToken. */
@@ -21,6 +20,6 @@ public final class Main {
                     .withGitHubAccessCode("fakeTokenPlaceholder")
                     .withGitHubClientId("some")
                     .withGitHubAccessTokenBaseUrl("fakeTokenPlaceholder"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

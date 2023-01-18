@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Factories Delete. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void factoriesDelete(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .factories()
-            .deleteByResourceGroupWithResponse("exampleResourceGroup", "exampleFactoryName", Context.NONE);
+            .deleteByResourceGroupWithResponse(
+                "exampleResourceGroup", "exampleFactoryName", com.azure.core.util.Context.NONE);
     }
 }

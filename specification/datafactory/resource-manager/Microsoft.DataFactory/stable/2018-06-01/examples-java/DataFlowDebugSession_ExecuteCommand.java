@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.DataFlowDebugCommandPayload;
 import com.azure.resourcemanager.datafactory.models.DataFlowDebugCommandRequest;
 import com.azure.resourcemanager.datafactory.models.DataFlowDebugCommandType;
@@ -24,6 +23,6 @@ public final class Main {
                     .withSessionId("f06ed247-9d07-49b2-b05e-2cb4a2fc871e")
                     .withCommand(DataFlowDebugCommandType.EXECUTE_PREVIEW_QUERY)
                     .withCommandPayload(new DataFlowDebugCommandPayload().withStreamName("source1").withRowLimits(100)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Triggers Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void triggersGet(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .triggers()
-            .getWithResponse("exampleResourceGroup", "exampleFactoryName", "exampleTrigger", null, Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", null, com.azure.core.util.Context.NONE);
     }
 }

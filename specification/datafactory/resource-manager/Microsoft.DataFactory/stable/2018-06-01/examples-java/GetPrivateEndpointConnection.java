@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnectionOperation Get. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .privateEndpointConnectionOperations()
-            .getWithResponse("exampleResourceGroup", "exampleFactoryName", "connection", null, Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup", "exampleFactoryName", "connection", null, com.azure.core.util.Context.NONE);
     }
 }

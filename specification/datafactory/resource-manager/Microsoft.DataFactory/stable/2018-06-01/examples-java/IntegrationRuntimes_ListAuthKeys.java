@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes ListAuthKeys. */
 public final class Main {
     /*
@@ -15,6 +13,9 @@ public final class Main {
         manager
             .integrationRuntimes()
             .listAuthKeysWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeAutoUpdate;
 import com.azure.resourcemanager.datafactory.models.IntegrationRuntimeResource;
 
@@ -17,7 +16,11 @@ public final class Main {
             manager
                 .integrationRuntimes()
                 .getWithResponse(
-                    "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", null, Context.NONE)
+                    "exampleResourceGroup",
+                    "exampleFactoryName",
+                    "exampleIntegrationRuntime",
+                    null,
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource.update().withAutoUpdate(IntegrationRuntimeAutoUpdate.OFF).withUpdateDelayOffset("\"PT3H\"").apply();
     }

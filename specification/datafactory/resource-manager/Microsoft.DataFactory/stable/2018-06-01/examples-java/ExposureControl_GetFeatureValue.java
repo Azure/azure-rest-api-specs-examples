@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.ExposureControlRequest;
 
 /** Samples for ExposureControl GetFeatureValue. */
@@ -20,6 +19,6 @@ public final class Main {
                 new ExposureControlRequest()
                     .withFeatureName("ADFIntegrationRuntimeSharingRbac")
                     .withFeatureType("Feature"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagedVirtualNetworks Get. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         manager
             .managedVirtualNetworks()
             .getWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "exampleManagedVirtualNetworkName", null, Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleManagedVirtualNetworkName",
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

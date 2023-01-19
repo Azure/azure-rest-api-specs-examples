@@ -1,0 +1,21 @@
+/** Samples for Prefixes CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/peering/resource-manager/Microsoft.Peering/stable/2021-01-01/examples/CreatePeeringServicePrefix.json
+     */
+    /**
+     * Sample code: Create or update a prefix for the peering service.
+     *
+     * @param manager Entry point to PeeringManager.
+     */
+    public static void createOrUpdateAPrefixForThePeeringService(
+        com.azure.resourcemanager.peering.PeeringManager manager) {
+        manager
+            .prefixes()
+            .define("peeringServicePrefixName")
+            .withExistingPeeringService("rgName", "peeringServiceName")
+            .withPrefix("192.168.1.0/24")
+            .withPeeringServicePrefixKey("00000000-0000-0000-0000-000000000000")
+            .create();
+    }
+}

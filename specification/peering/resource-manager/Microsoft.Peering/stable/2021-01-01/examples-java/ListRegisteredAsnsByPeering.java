@@ -1,0 +1,15 @@
+/** Samples for RegisteredAsns ListByPeering. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/peering/resource-manager/Microsoft.Peering/stable/2021-01-01/examples/ListRegisteredAsnsByPeering.json
+     */
+    /**
+     * Sample code: List all the registered ASNs associated with the peering.
+     *
+     * @param manager Entry point to PeeringManager.
+     */
+    public static void listAllTheRegisteredASNsAssociatedWithThePeering(
+        com.azure.resourcemanager.peering.PeeringManager manager) {
+        manager.registeredAsns().listByPeering("rgName", "peeringName", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,57 @@
+import com.azure.resourcemanager.dataprotection.models.AlertsState;
+import com.azure.resourcemanager.dataprotection.models.AzureMonitorAlertSettings;
+import com.azure.resourcemanager.dataprotection.models.BackupVault;
+import com.azure.resourcemanager.dataprotection.models.DppIdentityDetails;
+import com.azure.resourcemanager.dataprotection.models.MonitoringSettings;
+import com.azure.resourcemanager.dataprotection.models.StorageSetting;
+import com.azure.resourcemanager.dataprotection.models.StorageSettingStoreTypes;
+import com.azure.resourcemanager.dataprotection.models.StorageSettingTypes;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for BackupVaults CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/dataprotection/resource-manager/Microsoft.DataProtection/preview/2022-11-01-preview/examples/VaultCRUD/PutBackupVaultWithMSI.json
+     */
+    /**
+     * Sample code: Create BackupVault With MSI.
+     *
+     * @param manager Entry point to DataProtectionManager.
+     */
+    public static void createBackupVaultWithMSI(
+        com.azure.resourcemanager.dataprotection.DataProtectionManager manager) {
+        manager
+            .backupVaults()
+            .define("swaggerExample")
+            .withRegion("WestUS")
+            .withExistingResourceGroup("SampleResourceGroup")
+            .withProperties(
+                new BackupVault()
+                    .withMonitoringSettings(
+                        new MonitoringSettings()
+                            .withAzureMonitorAlertSettings(
+                                new AzureMonitorAlertSettings().withAlertsForAllJobFailures(AlertsState.ENABLED)))
+                    .withStorageSettings(
+                        Arrays
+                            .asList(
+                                new StorageSetting()
+                                    .withDatastoreType(StorageSettingStoreTypes.VAULT_STORE)
+                                    .withType(StorageSettingTypes.LOCALLY_REDUNDANT))))
+            .withTags(mapOf("key1", "val1"))
+            .withIdentity(new DppIdentityDetails().withType("systemAssigned"))
+            .create();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

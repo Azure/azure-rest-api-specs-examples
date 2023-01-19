@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskPools Start. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to StoragePoolManager.
      */
     public static void startDiskPool(com.azure.resourcemanager.storagepool.StoragePoolManager manager) {
-        manager.diskPools().start("myResourceGroup", "myDiskPool", Context.NONE);
+        manager.diskPools().start("myResourceGroup", "myDiskPool", com.azure.core.util.Context.NONE);
     }
 }

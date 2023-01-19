@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskPools ListOutboundNetworkDependenciesEndpoints. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.storagepool.StoragePoolManager manager) {
         manager
             .diskPools()
-            .listOutboundNetworkDependenciesEndpoints("Sample-WestUSResourceGroup", "SampleAse", Context.NONE);
+            .listOutboundNetworkDependenciesEndpoints(
+                "Sample-WestUSResourceGroup", "SampleAse", com.azure.core.util.Context.NONE);
     }
 }

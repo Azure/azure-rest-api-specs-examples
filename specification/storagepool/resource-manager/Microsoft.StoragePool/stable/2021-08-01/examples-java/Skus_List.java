@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ResourceSkus List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to StoragePoolManager.
      */
     public static void listDiskPoolSkus(com.azure.resourcemanager.storagepool.StoragePoolManager manager) {
-        manager.resourceSkus().list("eastus", Context.NONE);
+        manager.resourceSkus().list("eastus", com.azure.core.util.Context.NONE);
     }
 }

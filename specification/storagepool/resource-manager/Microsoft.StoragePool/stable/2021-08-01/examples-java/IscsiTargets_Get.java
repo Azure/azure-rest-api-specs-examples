@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IscsiTargets Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to StoragePoolManager.
      */
     public static void getISCSITarget(com.azure.resourcemanager.storagepool.StoragePoolManager manager) {
-        manager.iscsiTargets().getWithResponse("myResourceGroup", "myDiskPool", "myIscsiTarget", Context.NONE);
+        manager
+            .iscsiTargets()
+            .getWithResponse("myResourceGroup", "myDiskPool", "myIscsiTarget", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskPoolZones List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to StoragePoolManager.
      */
     public static void listDiskPoolZones(com.azure.resourcemanager.storagepool.StoragePoolManager manager) {
-        manager.diskPoolZones().list("eastus", Context.NONE);
+        manager.diskPoolZones().list("eastus", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.UserAccessPolicy;
 
 /** Samples for Factories GetDataPlaneAccess. */
@@ -23,6 +22,6 @@ public final class Main {
                     .withProfileName("DefaultProfile")
                     .withStartTime("2018-11-10T02:46:20.2659347Z")
                     .withExpireTime("2018-11-10T09:46:20.2659347Z"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

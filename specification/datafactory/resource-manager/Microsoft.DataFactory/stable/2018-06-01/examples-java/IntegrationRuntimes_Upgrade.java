@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes Upgrade. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .integrationRuntimes()
             .upgradeWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

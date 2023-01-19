@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.RunFilterParameters;
 import com.azure.resourcemanager.datafactory.models.RunQueryFilter;
 import com.azure.resourcemanager.datafactory.models.RunQueryFilterOperand;
@@ -32,6 +31,6 @@ public final class Main {
                                     .withOperand(RunQueryFilterOperand.TRIGGER_NAME)
                                     .withOperator(RunQueryFilterOperator.EQUALS)
                                     .withValues(Arrays.asList("exampleTrigger")))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

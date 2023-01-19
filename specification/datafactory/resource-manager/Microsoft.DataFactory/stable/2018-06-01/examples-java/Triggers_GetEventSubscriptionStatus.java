@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Triggers GetEventSubscriptionStatus. */
 public final class Main {
     /*
@@ -15,6 +13,6 @@ public final class Main {
         manager
             .triggers()
             .getEventSubscriptionStatusWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", Context.NONE);
+                "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", com.azure.core.util.Context.NONE);
     }
 }

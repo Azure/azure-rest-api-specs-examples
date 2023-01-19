@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PipelineRuns Cancel. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
                 "exampleFactoryName",
                 "16ac5348-ff82-4f95-a80d-638c1d47b721",
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

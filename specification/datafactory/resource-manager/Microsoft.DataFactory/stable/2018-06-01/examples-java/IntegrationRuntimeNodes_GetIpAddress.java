@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeNodes GetIpAddress. */
 public final class Main {
     /*
@@ -15,6 +13,10 @@ public final class Main {
         manager
             .integrationRuntimeNodes()
             .getIpAddressWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", "Node_1", Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleIntegrationRuntime",
+                "Node_1",
+                com.azure.core.util.Context.NONE);
     }
 }

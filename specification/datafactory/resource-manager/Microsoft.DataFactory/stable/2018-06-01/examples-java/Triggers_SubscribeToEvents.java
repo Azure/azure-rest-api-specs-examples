@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Triggers SubscribeToEvents. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void triggersSubscribeToEvents(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .triggers()
-            .subscribeToEvents("exampleResourceGroup", "exampleFactoryName", "exampleTrigger", Context.NONE);
+            .subscribeToEvents(
+                "exampleResourceGroup", "exampleFactoryName", "exampleTrigger", com.azure.core.util.Context.NONE);
     }
 }

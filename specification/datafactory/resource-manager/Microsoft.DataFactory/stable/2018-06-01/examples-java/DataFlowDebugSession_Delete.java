@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.DeleteDataFlowDebugSessionRequest;
 
 /** Samples for DataFlowDebugSession Delete. */
@@ -18,6 +17,6 @@ public final class Main {
                 "exampleResourceGroup",
                 "exampleFactoryName",
                 new DeleteDataFlowDebugSessionRequest().withSessionId("91fb57e0-8292-47be-89ff-c8f2d2bb2a7e"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

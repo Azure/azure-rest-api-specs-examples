@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagedVirtualNetworks ListByFactory. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void managedVirtualNetworksListByFactory(
         com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
-        manager.managedVirtualNetworks().listByFactory("exampleResourceGroup", "exampleFactoryName", Context.NONE);
+        manager
+            .managedVirtualNetworks()
+            .listByFactory("exampleResourceGroup", "exampleFactoryName", com.azure.core.util.Context.NONE);
     }
 }

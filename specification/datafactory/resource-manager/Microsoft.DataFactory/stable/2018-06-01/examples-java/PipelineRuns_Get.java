@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PipelineRuns Get. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .pipelineRuns()
             .getWithResponse(
-                "exampleResourceGroup", "exampleFactoryName", "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b", Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b",
+                com.azure.core.util.Context.NONE);
     }
 }

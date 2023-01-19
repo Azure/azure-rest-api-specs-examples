@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.UpdateIntegrationRuntimeNodeRequest;
 
 /** Samples for IntegrationRuntimeNodes Update. */
@@ -20,6 +19,6 @@ public final class Main {
                 "exampleIntegrationRuntime",
                 "Node_1",
                 new UpdateIntegrationRuntimeNodeRequest().withConcurrentJobsLimit(2),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

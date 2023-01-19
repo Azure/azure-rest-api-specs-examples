@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataFlows Delete. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void dataFlowsDelete(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .dataFlows()
-            .deleteWithResponse("exampleResourceGroup", "exampleFactoryName", "exampleDataFlow", Context.NONE);
+            .deleteWithResponse(
+                "exampleResourceGroup", "exampleFactoryName", "exampleDataFlow", com.azure.core.util.Context.NONE);
     }
 }

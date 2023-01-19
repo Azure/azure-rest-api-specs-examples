@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LinkedServices Get. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void linkedServicesGet(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .linkedServices()
-            .getWithResponse("exampleResourceGroup", "exampleFactoryName", "exampleLinkedService", null, Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleLinkedService",
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

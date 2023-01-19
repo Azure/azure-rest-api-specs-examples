@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.LinkedIntegrationRuntimeRequest;
 
 /** Samples for IntegrationRuntimes RemoveLinks. */
@@ -19,6 +18,6 @@ public final class Main {
                 "exampleFactoryName",
                 "exampleIntegrationRuntime",
                 new LinkedIntegrationRuntimeRequest().withLinkedFactoryName("exampleFactoryName-linked"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagedPrivateEndpoints ListByFactory. */
 public final class Main {
     /*
@@ -15,6 +13,9 @@ public final class Main {
         manager
             .managedPrivateEndpoints()
             .listByFactory(
-                "exampleResourceGroup", "exampleFactoryName", "exampleManagedVirtualNetworkName", Context.NONE);
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleManagedVirtualNetworkName",
+                com.azure.core.util.Context.NONE);
     }
 }

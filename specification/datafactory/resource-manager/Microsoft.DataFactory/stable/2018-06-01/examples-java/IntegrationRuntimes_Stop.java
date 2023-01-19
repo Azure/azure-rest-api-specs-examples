@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes Stop. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void integrationRuntimesStop(com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
         manager
             .integrationRuntimes()
-            .stop("exampleResourceGroup", "exampleFactoryName", "exampleManagedIntegrationRuntime", Context.NONE);
+            .stop(
+                "exampleResourceGroup",
+                "exampleFactoryName",
+                "exampleManagedIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

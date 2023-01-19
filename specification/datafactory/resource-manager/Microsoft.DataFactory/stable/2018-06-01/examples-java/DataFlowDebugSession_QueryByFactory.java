@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataFlowDebugSession QueryByFactory. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void dataFlowDebugSessionQueryByFactory(
         com.azure.resourcemanager.datafactory.DataFactoryManager manager) {
-        manager.dataFlowDebugSessions().queryByFactory("exampleResourceGroup", "exampleFactoryName", Context.NONE);
+        manager
+            .dataFlowDebugSessions()
+            .queryByFactory("exampleResourceGroup", "exampleFactoryName", com.azure.core.util.Context.NONE);
     }
 }

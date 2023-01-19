@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.datafactory.models.BlobSink;
 import com.azure.resourcemanager.datafactory.models.BlobSource;
@@ -32,7 +31,12 @@ public final class Main {
         PipelineResource resource =
             manager
                 .pipelines()
-                .getWithResponse("exampleResourceGroup", "exampleFactoryName", "examplePipeline", null, Context.NONE)
+                .getWithResponse(
+                    "exampleResourceGroup",
+                    "exampleFactoryName",
+                    "examplePipeline",
+                    null,
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

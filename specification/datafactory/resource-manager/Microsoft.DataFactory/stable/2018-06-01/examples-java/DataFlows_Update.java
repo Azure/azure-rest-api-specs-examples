@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.datafactory.models.DataFlowResource;
 import com.azure.resourcemanager.datafactory.models.DataFlowSink;
 import com.azure.resourcemanager.datafactory.models.DataFlowSource;
@@ -20,7 +19,12 @@ public final class Main {
         DataFlowResource resource =
             manager
                 .dataFlows()
-                .getWithResponse("exampleResourceGroup", "exampleFactoryName", "exampleDataFlow", null, Context.NONE)
+                .getWithResponse(
+                    "exampleResourceGroup",
+                    "exampleFactoryName",
+                    "exampleDataFlow",
+                    null,
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

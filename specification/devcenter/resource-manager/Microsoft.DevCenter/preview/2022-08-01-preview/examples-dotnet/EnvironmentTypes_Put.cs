@@ -1,0 +1,44 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.DevCenter;
+
+// Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-08-01-preview/examples/EnvironmentTypes_Put.json
+// this example is just showing the usage of "EnvironmentTypes_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this DevCenterResource created on azure
+// for more information of creating DevCenterResource, please refer to the document of DevCenterResource
+string subscriptionId = "{subscriptionId}";
+string resourceGroupName = "rg1";
+string devCenterName = "Contoso";
+ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName);
+DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
+
+// get the collection of this EnvironmentTypeResource
+EnvironmentTypeCollection collection = devCenter.GetEnvironmentTypes();
+
+// invoke the operation
+string environmentTypeName = "{environmentTypeName}";
+EnvironmentTypeData data = new EnvironmentTypeData()
+{
+    Tags =
+    {
+    ["Owner"] = "superuser",
+    },
+};
+ArmOperation<EnvironmentTypeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, environmentTypeName, data);
+EnvironmentTypeResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EnvironmentTypeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

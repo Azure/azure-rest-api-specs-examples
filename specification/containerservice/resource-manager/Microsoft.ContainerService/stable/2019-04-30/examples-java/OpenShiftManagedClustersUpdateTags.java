@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerservice.models.TagsObject;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,10 @@ public final class Main {
             .serviceClient()
             .getOpenShiftManagedClusters()
             .updateTags(
-                "rg1", "clustername1", new TagsObject().withTags(mapOf("archv3", "", "tier", "testing")), Context.NONE);
+                "rg1",
+                "clustername1",
+                new TagsObject().withTags(mapOf("archv3", "", "tier", "testing")),
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

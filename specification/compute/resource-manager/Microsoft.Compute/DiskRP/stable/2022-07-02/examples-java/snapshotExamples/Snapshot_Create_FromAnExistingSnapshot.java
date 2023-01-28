@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.SnapshotInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -30,6 +29,6 @@ public final class Main {
                             .withCreateOption(DiskCreateOption.COPY)
                             .withSourceResourceId(
                                 "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/mySnapshot1")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

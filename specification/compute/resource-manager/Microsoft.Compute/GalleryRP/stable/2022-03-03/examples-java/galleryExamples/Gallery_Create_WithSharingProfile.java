@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryInner;
 import com.azure.resourcemanager.compute.models.GallerySharingPermissionTypes;
 import com.azure.resourcemanager.compute.models.SharingProfile;
@@ -27,6 +26,6 @@ public final class Main {
                     .withLocation("West US")
                     .withDescription("This is the gallery description.")
                     .withSharingProfile(new SharingProfile().withPermissions(GallerySharingPermissionTypes.GROUPS)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

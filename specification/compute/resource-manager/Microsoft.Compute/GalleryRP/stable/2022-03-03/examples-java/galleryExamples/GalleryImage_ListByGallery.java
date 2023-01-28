@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for GalleryImages ListByGallery. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getGalleryImages()
-            .listByGallery("myResourceGroup", "myGalleryName", Context.NONE);
+            .listByGallery("myResourceGroup", "myGalleryName", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskEncryptionSetInner;
 import com.azure.resourcemanager.compute.models.DiskEncryptionSetIdentityType;
 import com.azure.resourcemanager.compute.models.DiskEncryptionSetType;
@@ -40,7 +39,7 @@ public final class Main {
                     .withEncryptionType(DiskEncryptionSetType.ENCRYPTION_AT_REST_WITH_CUSTOMER_KEY)
                     .withActiveKey(new KeyForDiskEncryptionSet().withKeyUrl("fakeTokenPlaceholder"))
                     .withFederatedClientId("00000000-0000-0000-0000-000000000000"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Galleries Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getGalleries()
-            .delete("myResourceGroup", "myGalleryName", Context.NONE);
+            .delete("myResourceGroup", "myGalleryName", com.azure.core.util.Context.NONE);
     }
 }

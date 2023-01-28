@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Disks ListByResourceGroup. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDisks()
-            .listByResourceGroup("myResourceGroup", Context.NONE);
+            .listByResourceGroup("myResourceGroup", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryApplicationInner;
 import com.azure.resourcemanager.compute.models.GalleryApplicationCustomAction;
 import com.azure.resourcemanager.compute.models.GalleryApplicationCustomActionParameter;
@@ -49,6 +48,6 @@ public final class Main {
                                                     .withType(GalleryApplicationCustomActionParameterType.STRING)
                                                     .withDefaultValue("default value of parameter.")
                                                     .withDescription("This is the description of the parameter"))))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

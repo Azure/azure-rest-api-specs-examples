@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for GalleryImageVersions Delete. */
 public final class Main {
     /*
@@ -16,6 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getGalleryImageVersions()
-            .delete("myResourceGroup", "myGalleryName", "myGalleryImageName", "1.0.0", Context.NONE);
+            .delete(
+                "myResourceGroup", "myGalleryName", "myGalleryImageName", "1.0.0", com.azure.core.util.Context.NONE);
     }
 }

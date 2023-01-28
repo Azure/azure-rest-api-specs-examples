@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -31,6 +30,6 @@ public final class Main {
                     .withNetworkAccessPolicy(NetworkAccessPolicy.ALLOW_PRIVATE)
                     .withDiskAccessId(
                         "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskAccesses/{existing-diskAccess-name}"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.ReplicationStatusTypes;
 
 /** Samples for GalleryImageVersions Get. */
@@ -24,6 +23,6 @@ public final class Main {
                 "myGalleryImageName",
                 "1.0.0",
                 ReplicationStatusTypes.REPLICATION_STATUS,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

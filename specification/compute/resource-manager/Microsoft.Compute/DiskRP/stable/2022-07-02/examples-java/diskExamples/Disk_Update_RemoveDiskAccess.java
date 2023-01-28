@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.DiskUpdate;
 import com.azure.resourcemanager.compute.models.NetworkAccessPolicy;
 
@@ -23,6 +22,6 @@ public final class Main {
                 "myResourceGroup",
                 "myDisk",
                 new DiskUpdate().withNetworkAccessPolicy(NetworkAccessPolicy.ALLOW_ALL),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

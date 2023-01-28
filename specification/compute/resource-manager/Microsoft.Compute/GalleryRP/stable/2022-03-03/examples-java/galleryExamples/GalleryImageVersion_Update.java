@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.GalleryArtifactVersionFullSource;
 import com.azure.resourcemanager.compute.models.GalleryImageVersionPublishingProfile;
 import com.azure.resourcemanager.compute.models.GalleryImageVersionStorageProfile;
@@ -46,6 +45,6 @@ public final class Main {
                                 new GalleryArtifactVersionFullSource()
                                     .withId(
                                         "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Snapshots Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getSnapshots()
-            .delete("myResourceGroup", "mySnapshot", Context.NONE);
+            .delete("myResourceGroup", "mySnapshot", com.azure.core.util.Context.NONE);
     }
 }

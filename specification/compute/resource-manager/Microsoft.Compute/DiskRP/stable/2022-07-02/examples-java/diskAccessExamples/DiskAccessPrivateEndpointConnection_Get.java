@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskAccesses GetAPrivateEndpointConnection. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
             .serviceClient()
             .getDiskAccesses()
             .getAPrivateEndpointConnectionWithResponse(
-                "myResourceGroup", "myDiskAccess", "myPrivateEndpointConnection", Context.NONE);
+                "myResourceGroup", "myDiskAccess", "myPrivateEndpointConnection", com.azure.core.util.Context.NONE);
     }
 }

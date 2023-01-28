@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryInner;
 
 /** Samples for Galleries CreateOrUpdate. */
@@ -21,6 +20,6 @@ public final class Main {
                 "myResourceGroup",
                 "myGalleryName",
                 new GalleryInner().withLocation("West US").withDescription("This is the gallery description."),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

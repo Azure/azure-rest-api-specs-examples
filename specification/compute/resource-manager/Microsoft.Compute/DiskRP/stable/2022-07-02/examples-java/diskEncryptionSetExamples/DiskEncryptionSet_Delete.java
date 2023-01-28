@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskEncryptionSets Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskEncryptionSets()
-            .delete("myResourceGroup", "myDiskEncryptionSet", Context.NONE);
+            .delete("myResourceGroup", "myDiskEncryptionSet", com.azure.core.util.Context.NONE);
     }
 }

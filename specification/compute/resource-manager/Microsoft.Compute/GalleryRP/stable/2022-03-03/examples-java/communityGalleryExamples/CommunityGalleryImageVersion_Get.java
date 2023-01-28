@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CommunityGalleryImageVersions Get. */
 public final class Main {
     /*
@@ -17,6 +15,10 @@ public final class Main {
             .serviceClient()
             .getCommunityGalleryImageVersions()
             .getWithResponse(
-                "myLocation", "publicGalleryName", "myGalleryImageName", "myGalleryImageVersionName", Context.NONE);
+                "myLocation",
+                "publicGalleryName",
+                "myGalleryImageName",
+                "myGalleryImageVersionName",
+                com.azure.core.util.Context.NONE);
     }
 }

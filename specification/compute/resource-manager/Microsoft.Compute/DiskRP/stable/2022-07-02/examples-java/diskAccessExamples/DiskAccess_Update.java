@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.DiskAccessUpdate;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +22,7 @@ public final class Main {
                 "myResourceGroup",
                 "myDiskAccess",
                 new DiskAccessUpdate().withTags(mapOf("department", "Development", "project", "PrivateEndpoints")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

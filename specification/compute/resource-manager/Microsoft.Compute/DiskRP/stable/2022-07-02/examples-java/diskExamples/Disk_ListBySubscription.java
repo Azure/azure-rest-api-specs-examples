@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Disks List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listAllManagedDisksInASubscription(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.virtualMachines().manager().serviceClient().getDisks().list(Context.NONE);
+        azure.virtualMachines().manager().serviceClient().getDisks().list(com.azure.core.util.Context.NONE);
     }
 }

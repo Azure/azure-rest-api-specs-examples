@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.AccessLevel;
 import com.azure.resourcemanager.compute.models.GrantAccessData;
 
@@ -22,6 +21,6 @@ public final class Main {
                 "myResourceGroup",
                 "myDisk",
                 new GrantAccessData().withAccess(AccessLevel.READ).withDurationInSeconds(300),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -2,7 +2,7 @@ import com.azure.core.util.Context;
 import com.azure.resourcemanager.appservice.models.PrivateLinkConnectionApprovalRequestResource;
 import com.azure.resourcemanager.appservice.models.PrivateLinkConnectionState;
 
-/** Samples for StaticSites ApproveOrRejectPrivateEndpointConnection. */
+/** Samples for WebApps ApproveOrRejectPrivateEndpointConnection. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/ApproveRejectSitePrivateEndpointConnection.json
@@ -18,7 +18,7 @@ public final class Main {
             .webApps()
             .manager()
             .serviceClient()
-            .getStaticSites()
+            .getWebApps()
             .approveOrRejectPrivateEndpointConnection(
                 "rg",
                 "testSite",

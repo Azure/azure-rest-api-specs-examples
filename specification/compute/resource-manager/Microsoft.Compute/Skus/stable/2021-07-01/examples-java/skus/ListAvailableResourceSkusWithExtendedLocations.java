@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ResourceSkus List. */
 public final class Main {
     /*
@@ -12,6 +10,11 @@ public final class Main {
      */
     public static void listsAllAvailableResourceSKUsWithExtendedLocationInformation(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.virtualMachines().manager().serviceClient().getResourceSkus().list(null, "true", Context.NONE);
+        azure
+            .virtualMachines()
+            .manager()
+            .serviceClient()
+            .getResourceSkus()
+            .list(null, "true", com.azure.core.util.Context.NONE);
     }
 }

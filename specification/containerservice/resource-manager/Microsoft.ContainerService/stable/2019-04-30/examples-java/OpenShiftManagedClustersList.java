@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for OpenShiftManagedClusters List. */
 public final class Main {
     /*
@@ -11,6 +9,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listManagedClusters(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.kubernetesClusters().manager().serviceClient().getOpenShiftManagedClusters().list(Context.NONE);
+        azure
+            .kubernetesClusters()
+            .manager()
+            .serviceClient()
+            .getOpenShiftManagedClusters()
+            .list(com.azure.core.util.Context.NONE);
     }
 }

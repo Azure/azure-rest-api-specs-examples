@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Snapshots List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listAllSnapshotsInASubscription(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.virtualMachines().manager().serviceClient().getSnapshots().list(Context.NONE);
+        azure.virtualMachines().manager().serviceClient().getSnapshots().list(com.azure.core.util.Context.NONE);
     }
 }

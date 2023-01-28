@@ -1,5 +1,7 @@
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.DataCollectionEndpointResourceInner;
+import com.azure.resourcemanager.monitor.models.DataCollectionEndpointNetworkAcls;
+import com.azure.resourcemanager.monitor.models.KnownPublicNetworkAccessOptions;
 
 /** Samples for DataCollectionEndpoints Create. */
 public final class Main {
@@ -20,7 +22,11 @@ public final class Main {
             .createWithResponse(
                 "myResourceGroup",
                 "myCollectionEndpoint",
-                new DataCollectionEndpointResourceInner().withLocation("eastus"),
+                new DataCollectionEndpointResourceInner()
+                    .withLocation("eastus")
+                    .withNetworkAcls(
+                        new DataCollectionEndpointNetworkAcls()
+                            .withPublicNetworkAccess(KnownPublicNetworkAccessOptions.ENABLED)),
                 Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for OpenShiftManagedClusters Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getOpenShiftManagedClusters()
-            .delete("rg1", "clustername1", Context.NONE);
+            .delete("rg1", "clustername1", com.azure.core.util.Context.NONE);
     }
 }

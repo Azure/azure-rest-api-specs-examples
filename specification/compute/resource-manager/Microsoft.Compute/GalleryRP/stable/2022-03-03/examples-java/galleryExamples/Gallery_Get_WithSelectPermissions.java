@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.SelectPermissions;
 
 /** Samples for Galleries GetByResourceGroup. */
@@ -18,6 +17,10 @@ public final class Main {
             .serviceClient()
             .getGalleries()
             .getByResourceGroupWithResponse(
-                "myResourceGroup", "myGalleryName", SelectPermissions.PERMISSIONS, null, Context.NONE);
+                "myResourceGroup",
+                "myGalleryName",
+                SelectPermissions.PERMISSIONS,
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

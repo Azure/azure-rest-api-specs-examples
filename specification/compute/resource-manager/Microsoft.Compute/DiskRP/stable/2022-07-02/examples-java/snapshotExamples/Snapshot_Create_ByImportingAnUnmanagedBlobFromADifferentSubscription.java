@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.SnapshotInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -31,6 +30,6 @@ public final class Main {
                             .withStorageAccountId(
                                 "subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount")
                             .withSourceUri("https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskRestorePoint RevokeAccess. */
 public final class Main {
     /*
@@ -21,6 +19,6 @@ public final class Main {
                 "rpc",
                 "vmrp",
                 "TestDisk45ceb03433006d1baee0_b70cd924-3362-4a80-93c2-9415eaa12745",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

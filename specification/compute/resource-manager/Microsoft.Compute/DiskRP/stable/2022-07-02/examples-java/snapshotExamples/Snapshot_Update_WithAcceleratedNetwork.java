@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.SnapshotUpdate;
 import com.azure.resourcemanager.compute.models.SupportedCapabilities;
 import java.util.HashMap;
@@ -27,7 +26,7 @@ public final class Main {
                     .withTags(mapOf("department", "Development", "project", "UpdateSnapshots"))
                     .withDiskSizeGB(20)
                     .withSupportedCapabilities(new SupportedCapabilities().withAcceleratedNetwork(false)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

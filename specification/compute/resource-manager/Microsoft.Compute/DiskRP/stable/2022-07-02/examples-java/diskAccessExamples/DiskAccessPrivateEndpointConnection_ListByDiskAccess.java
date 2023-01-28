@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskAccesses ListPrivateEndpointConnections. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskAccesses()
-            .listPrivateEndpointConnections("myResourceGroup", "myDiskAccess", Context.NONE);
+            .listPrivateEndpointConnections("myResourceGroup", "myDiskAccess", com.azure.core.util.Context.NONE);
     }
 }

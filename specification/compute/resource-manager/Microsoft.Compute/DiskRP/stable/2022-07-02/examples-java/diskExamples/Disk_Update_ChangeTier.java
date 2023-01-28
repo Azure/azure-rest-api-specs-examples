@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.DiskUpdate;
 
 /** Samples for Disks Update. */
@@ -17,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDisks()
-            .update("myResourceGroup", "myDisk", new DiskUpdate().withTier("P30"), Context.NONE);
+            .update("myResourceGroup", "myDisk", new DiskUpdate().withTier("P30"), com.azure.core.util.Context.NONE);
     }
 }

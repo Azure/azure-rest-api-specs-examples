@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskEncryptionSets ListAssociatedResources. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskEncryptionSets()
-            .listAssociatedResources("myResourceGroup", "myDiskEncryptionSet", Context.NONE);
+            .listAssociatedResources("myResourceGroup", "myDiskEncryptionSet", com.azure.core.util.Context.NONE);
     }
 }

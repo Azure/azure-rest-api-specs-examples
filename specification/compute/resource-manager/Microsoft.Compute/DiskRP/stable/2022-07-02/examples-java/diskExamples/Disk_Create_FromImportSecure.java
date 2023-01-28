@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -40,6 +39,6 @@ public final class Main {
                         new DiskSecurityProfile()
                             .withSecurityType(
                                 DiskSecurityTypes.CONFIDENTIAL_VM_VMGUEST_STATE_ONLY_ENCRYPTED_WITH_PLATFORM_KEY)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

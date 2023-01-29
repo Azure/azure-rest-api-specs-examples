@@ -1,0 +1,31 @@
+const { LogicManagementClient } = require("@azure/arm-logic");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Creates or updates an integration account session.
+ *
+ * @summary Creates or updates an integration account session.
+ * x-ms-original-file: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccountSessions_CreateOrUpdate.json
+ */
+async function createOrUpdateAnIntegrationAccountSession() {
+  const subscriptionId =
+    process.env["LOGIC_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const resourceGroupName = process.env["LOGIC_RESOURCE_GROUP"] || "testrg123";
+  const integrationAccountName = "testia123";
+  const sessionName = "testsession123-ICN";
+  const session = {
+    content: {
+      controlNumber: "1234",
+      controlNumberChangedTime: "2017-02-21T22:30:11.9923759Z",
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new LogicManagementClient(credential, subscriptionId);
+  const result = await client.integrationAccountSessions.createOrUpdate(
+    resourceGroupName,
+    integrationAccountName,
+    sessionName,
+    session
+  );
+  console.log(result);
+}

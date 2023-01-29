@@ -13,5 +13,3 @@ async function getPartnerDetails() {
   const result = await client.partners.get();
   console.log(result);
 }
-
-getPartnerDetails().catch(console.error);

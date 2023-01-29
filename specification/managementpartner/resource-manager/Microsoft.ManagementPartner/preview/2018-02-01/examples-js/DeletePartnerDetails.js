@@ -14,5 +14,3 @@ async function deletePartnerDetails() {
   const result = await client.partner.delete(partnerId);
   console.log(result);
 }
-
-deletePartnerDetails().catch(console.error);

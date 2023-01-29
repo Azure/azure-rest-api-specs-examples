@@ -16,5 +16,3 @@ async function getOperations() {
   }
   console.log(resArray);
 }
-
-getOperations().catch(console.error);

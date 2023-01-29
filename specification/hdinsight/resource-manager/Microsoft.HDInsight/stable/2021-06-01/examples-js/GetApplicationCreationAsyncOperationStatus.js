@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/GetApplicationCreationAsyncOperationStatus.json
  */
 async function getTheAzureAsyncOperationStatus() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["HDINSIGHT_RESOURCE_GROUP"] || "rg1";
   const clusterName = "cluster1";
   const applicationName = "app";
   const operationId = "CF938302-6B4D-44A0-A6D2-C0D67E847AEC";
@@ -23,5 +23,3 @@ async function getTheAzureAsyncOperationStatus() {
   );
   console.log(result);
 }
-
-getTheAzureAsyncOperationStatus().catch(console.error);

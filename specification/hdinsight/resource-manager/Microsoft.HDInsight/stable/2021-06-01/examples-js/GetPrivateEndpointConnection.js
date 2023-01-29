@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/GetPrivateEndpointConnection.json
  */
 async function getSpecificPrivateEndpointConnectionForASpecificHdInsightCluster() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["HDINSIGHT_RESOURCE_GROUP"] || "rg1";
   const clusterName = "cluster1";
   const privateEndpointConnectionName = "testprivateep.b3bf5fed-9b12-4560-b7d0-2abe1bba07e2";
   const credential = new DefaultAzureCredential();
@@ -21,5 +21,3 @@ async function getSpecificPrivateEndpointConnectionForASpecificHdInsightCluster(
   );
   console.log(result);
 }
-
-getSpecificPrivateEndpointConnectionForASpecificHdInsightCluster().catch(console.error);

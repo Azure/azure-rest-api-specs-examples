@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/GetLinuxHadoopAllClustersInResourceGroup.json
  */
 async function getAllHadoopOnLinuxClustersInAResourceGroup() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["HDINSIGHT_RESOURCE_GROUP"] || "rg1";
   const credential = new DefaultAzureCredential();
   const client = new HDInsightManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -18,5 +18,3 @@ async function getAllHadoopOnLinuxClustersInAResourceGroup() {
   }
   console.log(resArray);
 }
-
-getAllHadoopOnLinuxClustersInAResourceGroup().catch(console.error);

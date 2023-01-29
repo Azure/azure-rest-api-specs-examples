@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-07-07/examples/KustoClustersCheckNameAvailability.json
  */
 async function kustoClustersCheckNameAvailability() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
+  const subscriptionId =
+    process.env["KUSTO_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
   const location = "westus";
   const clusterName = {
     name: "kustoCluster",
@@ -19,5 +20,3 @@ async function kustoClustersCheckNameAvailability() {
   const result = await client.clusters.checkNameAvailability(location, clusterName);
   console.log(result);
 }
-
-kustoClustersCheckNameAvailability().catch(console.error);

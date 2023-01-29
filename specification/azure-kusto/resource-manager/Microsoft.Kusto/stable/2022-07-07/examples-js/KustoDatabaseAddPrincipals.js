@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-07-07/examples/KustoDatabaseAddPrincipals.json
  */
 async function kustoDatabaseAddPrincipals() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
-  const resourceGroupName = "kustorptest";
+  const subscriptionId =
+    process.env["KUSTO_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
+  const resourceGroupName = process.env["KUSTO_RESOURCE_GROUP"] || "kustorptest";
   const clusterName = "kustoCluster";
   const databaseName = "KustoDatabase8";
   const databasePrincipalsToAdd = {
@@ -50,5 +51,3 @@ async function kustoDatabaseAddPrincipals() {
   );
   console.log(result);
 }
-
-kustoDatabaseAddPrincipals().catch(console.error);

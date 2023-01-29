@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-07-07/examples/KustoClustersCreateOrUpdate.json
  */
 async function kustoClustersCreateOrUpdate() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
-  const resourceGroupName = "kustorptest";
+  const subscriptionId =
+    process.env["KUSTO_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
+  const resourceGroupName = process.env["KUSTO_RESOURCE_GROUP"] || "kustorptest";
   const clusterName = "kustoCluster";
   const parameters = {
     allowedIpRangeList: ["0.0.0.0/0"],
@@ -32,5 +33,3 @@ async function kustoClustersCreateOrUpdate() {
   );
   console.log(result);
 }
-
-kustoClustersCreateOrUpdate().catch(console.error);

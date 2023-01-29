@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/examples/UpdateImageTemplateTags.json
  */
 async function updateTheTagsForAnImageTemplate() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["IMAGEBUILDER_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["IMAGEBUILDER_RESOURCE_GROUP"] || "myResourceGroup";
   const imageTemplateName = "myImageTemplate";
   const parameters = {
     tags: { newTag: "new-value" },
@@ -23,5 +23,3 @@ async function updateTheTagsForAnImageTemplate() {
   );
   console.log(result);
 }
-
-updateTheTagsForAnImageTemplate().catch(console.error);

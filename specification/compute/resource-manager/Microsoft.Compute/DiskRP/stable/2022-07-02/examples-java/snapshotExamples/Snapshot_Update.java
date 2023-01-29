@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.SnapshotUpdate;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +24,7 @@ public final class Main {
                 new SnapshotUpdate()
                     .withTags(mapOf("department", "Development", "project", "UpdateSnapshots"))
                     .withDiskSizeGB(20),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryImageVersionInner;
 import com.azure.resourcemanager.compute.models.DataDiskImageEncryption;
 import com.azure.resourcemanager.compute.models.EncryptionImages;
@@ -91,6 +90,6 @@ public final class Main {
                                         "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionName}")))
                     .withSafetyProfile(
                         new GalleryImageVersionSafetyProfile().withAllowDeletionOfReplicatedLocations(false)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

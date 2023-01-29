@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -32,6 +31,6 @@ public final class Main {
                     .withDiskSizeGB(200)
                     .withDiskIopsReadWrite(125L)
                     .withDiskMBpsReadWrite(3000L),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

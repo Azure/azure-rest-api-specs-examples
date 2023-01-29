@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.DiskUpdate;
 import com.azure.resourcemanager.compute.models.SupportedCapabilities;
 
@@ -22,6 +21,6 @@ public final class Main {
                 "myResourceGroup",
                 "myDisk",
                 new DiskUpdate().withSupportedCapabilities(new SupportedCapabilities().withDiskControllerTypes("SCSI")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.Architecture;
 import com.azure.resourcemanager.compute.models.DiskUpdate;
 import com.azure.resourcemanager.compute.models.SupportedCapabilities;
@@ -24,6 +23,6 @@ public final class Main {
                 "myDisk",
                 new DiskUpdate()
                     .withSupportedCapabilities(new SupportedCapabilities().withArchitecture(Architecture.ARM64)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

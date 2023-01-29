@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SharedGalleries Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getSharedGalleries()
-            .getWithResponse("myLocation", "galleryUniqueName", Context.NONE);
+            .getWithResponse("myLocation", "galleryUniqueName", com.azure.core.util.Context.NONE);
     }
 }

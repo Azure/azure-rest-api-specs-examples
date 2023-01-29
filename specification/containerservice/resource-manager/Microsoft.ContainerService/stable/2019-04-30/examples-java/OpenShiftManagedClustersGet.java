@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for OpenShiftManagedClusters GetByResourceGroup. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getOpenShiftManagedClusters()
-            .getByResourceGroupWithResponse("rg1", "clustername1", Context.NONE);
+            .getByResourceGroupWithResponse("rg1", "clustername1", com.azure.core.util.Context.NONE);
     }
 }

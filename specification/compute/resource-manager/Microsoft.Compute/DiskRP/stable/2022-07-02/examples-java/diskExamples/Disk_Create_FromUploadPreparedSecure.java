@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -34,6 +33,6 @@ public final class Main {
                             .withCreateOption(DiskCreateOption.UPLOAD_PREPARED_SECURE)
                             .withUploadSizeBytes(10737418752L))
                     .withSecurityProfile(new DiskSecurityProfile().withSecurityType(DiskSecurityTypes.TRUSTED_LAUNCH)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

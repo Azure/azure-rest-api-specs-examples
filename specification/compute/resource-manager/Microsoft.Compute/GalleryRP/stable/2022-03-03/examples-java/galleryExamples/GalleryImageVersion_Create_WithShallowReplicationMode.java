@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryImageVersionInner;
 import com.azure.resourcemanager.compute.models.GalleryArtifactVersionFullSource;
 import com.azure.resourcemanager.compute.models.GalleryImageVersionPublishingProfile;
@@ -50,6 +49,6 @@ public final class Main {
                                         "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}")))
                     .withSafetyProfile(
                         new GalleryImageVersionSafetyProfile().withAllowDeletionOfReplicatedLocations(false)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

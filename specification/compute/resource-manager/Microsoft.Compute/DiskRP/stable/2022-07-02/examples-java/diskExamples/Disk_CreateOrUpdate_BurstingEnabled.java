@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.DiskUpdate;
 
 /** Samples for Disks Update. */
@@ -21,6 +20,6 @@ public final class Main {
                 "myResourceGroup",
                 "myDisk",
                 new DiskUpdate().withDiskSizeGB(1024).withBurstingEnabled(true),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

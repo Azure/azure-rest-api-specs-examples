@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Snapshots GetByResourceGroup. */
 public final class Main {
     /*
@@ -16,6 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getSnapshots()
-            .getByResourceGroupWithResponse("myResourceGroup", "myIncrementalSnapshot", Context.NONE);
+            .getByResourceGroupWithResponse(
+                "myResourceGroup", "myIncrementalSnapshot", com.azure.core.util.Context.NONE);
     }
 }

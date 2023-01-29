@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.GalleryExpandParams;
 
 /** Samples for Galleries GetByResourceGroup. */
@@ -18,6 +17,10 @@ public final class Main {
             .serviceClient()
             .getGalleries()
             .getByResourceGroupWithResponse(
-                "myResourceGroup", "myGalleryName", null, GalleryExpandParams.SHARING_PROFILE_GROUPS, Context.NONE);
+                "myResourceGroup",
+                "myGalleryName",
+                null,
+                GalleryExpandParams.SHARING_PROFILE_GROUPS,
+                com.azure.core.util.Context.NONE);
     }
 }

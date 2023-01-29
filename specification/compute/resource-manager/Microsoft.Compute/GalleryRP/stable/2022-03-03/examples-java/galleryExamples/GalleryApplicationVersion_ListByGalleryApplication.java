@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for GalleryApplicationVersions ListByGalleryApplication. */
 public final class Main {
     /*
@@ -17,6 +15,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getGalleryApplicationVersions()
-            .listByGalleryApplication("myResourceGroup", "myGalleryName", "myGalleryApplicationName", Context.NONE);
+            .listByGalleryApplication(
+                "myResourceGroup", "myGalleryName", "myGalleryApplicationName", com.azure.core.util.Context.NONE);
     }
 }

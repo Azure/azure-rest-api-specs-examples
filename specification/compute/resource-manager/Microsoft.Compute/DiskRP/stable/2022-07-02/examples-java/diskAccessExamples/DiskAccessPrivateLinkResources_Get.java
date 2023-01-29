@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskAccesses GetPrivateLinkResources. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskAccesses()
-            .getPrivateLinkResourcesWithResponse("myResourceGroup", "myDiskAccess", Context.NONE);
+            .getPrivateLinkResourcesWithResponse("myResourceGroup", "myDiskAccess", com.azure.core.util.Context.NONE);
     }
 }

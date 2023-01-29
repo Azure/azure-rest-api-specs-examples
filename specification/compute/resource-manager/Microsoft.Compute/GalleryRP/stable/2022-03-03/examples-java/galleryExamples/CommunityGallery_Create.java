@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryInner;
 import com.azure.resourcemanager.compute.models.CommunityGalleryInfo;
 import com.azure.resourcemanager.compute.models.GallerySharingPermissionTypes;
@@ -35,6 +34,6 @@ public final class Main {
                                     .withPublisherContact("pir@microsoft.com")
                                     .withEula("eula")
                                     .withPublicNamePrefix("PirPublic"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

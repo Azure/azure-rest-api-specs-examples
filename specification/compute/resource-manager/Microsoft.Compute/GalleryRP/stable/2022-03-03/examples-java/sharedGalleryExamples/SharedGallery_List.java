@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SharedGalleries List. */
 public final class Main {
     /*
@@ -11,6 +9,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listSharedGalleries(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.virtualMachines().manager().serviceClient().getSharedGalleries().list("myLocation", null, Context.NONE);
+        azure
+            .virtualMachines()
+            .manager()
+            .serviceClient()
+            .getSharedGalleries()
+            .list("myLocation", null, com.azure.core.util.Context.NONE);
     }
 }

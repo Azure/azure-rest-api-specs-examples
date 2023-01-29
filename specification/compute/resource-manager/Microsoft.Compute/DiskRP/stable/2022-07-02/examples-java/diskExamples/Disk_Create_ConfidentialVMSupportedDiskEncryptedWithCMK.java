@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -42,6 +41,6 @@ public final class Main {
                             .withSecurityType(DiskSecurityTypes.CONFIDENTIAL_VM_DISK_ENCRYPTED_WITH_CUSTOMER_KEY)
                             .withSecureVMDiskEncryptionSetId(
                                 "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

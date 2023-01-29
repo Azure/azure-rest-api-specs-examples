@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DiskCreateOption;
@@ -32,6 +31,6 @@ public final class Main {
                         new Encryption()
                             .withDiskEncryptionSetId(
                                 "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

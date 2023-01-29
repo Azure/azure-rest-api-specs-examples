@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.SharingUpdateInner;
 import com.azure.resourcemanager.compute.models.SharingProfileGroup;
 import com.azure.resourcemanager.compute.models.SharingProfileGroupTypes;
@@ -39,6 +38,6 @@ public final class Main {
                                 new SharingProfileGroup()
                                     .withType(SharingProfileGroupTypes.AADTENANTS)
                                     .withIds(Arrays.asList("c24c76aa-8897-4027-9b03-8f7928b54ff6")))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

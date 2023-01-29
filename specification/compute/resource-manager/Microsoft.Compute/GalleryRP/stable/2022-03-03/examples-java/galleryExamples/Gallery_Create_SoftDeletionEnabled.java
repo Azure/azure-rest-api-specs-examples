@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.GalleryInner;
 import com.azure.resourcemanager.compute.models.SoftDeletePolicy;
 
@@ -26,6 +25,6 @@ public final class Main {
                     .withLocation("West US")
                     .withDescription("This is the gallery description.")
                     .withSoftDeletePolicy(new SoftDeletePolicy().withIsSoftDeleteEnabled(true)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

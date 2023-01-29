@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskEncryptionSetInner;
 import com.azure.resourcemanager.compute.models.DiskEncryptionSetIdentityType;
 import com.azure.resourcemanager.compute.models.DiskEncryptionSetType;
@@ -38,7 +37,7 @@ public final class Main {
                                     .withId(
                                         "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myVMVault"))
                             .withKeyUrl("fakeTokenPlaceholder")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

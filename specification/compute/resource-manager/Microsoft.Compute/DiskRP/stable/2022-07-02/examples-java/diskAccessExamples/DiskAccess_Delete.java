@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskAccesses Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskAccesses()
-            .delete("myResourceGroup", "myDiskAccess", Context.NONE);
+            .delete("myResourceGroup", "myDiskAccess", com.azure.core.util.Context.NONE);
     }
 }

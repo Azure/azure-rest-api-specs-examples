@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.DiskInner;
 import com.azure.resourcemanager.compute.models.CreationData;
 import com.azure.resourcemanager.compute.models.DataAccessAuthMode;
@@ -28,6 +27,6 @@ public final class Main {
                     .withCreationData(new CreationData().withCreateOption(DiskCreateOption.EMPTY))
                     .withDiskSizeGB(200)
                     .withDataAccessAuthMode(DataAccessAuthMode.AZURE_ACTIVE_DIRECTORY),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

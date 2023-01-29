@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskRestorePoint ListByRestorePoint. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskRestorePoints()
-            .listByRestorePoint("myResourceGroup", "rpc", "vmrp", Context.NONE);
+            .listByRestorePoint("myResourceGroup", "rpc", "vmrp", com.azure.core.util.Context.NONE);
     }
 }

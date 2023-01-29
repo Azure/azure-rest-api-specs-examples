@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Disks RevokeAccess. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDisks()
-            .revokeAccess("myResourceGroup", "myDisk", Context.NONE);
+            .revokeAccess("myResourceGroup", "myDisk", com.azure.core.util.Context.NONE);
     }
 }

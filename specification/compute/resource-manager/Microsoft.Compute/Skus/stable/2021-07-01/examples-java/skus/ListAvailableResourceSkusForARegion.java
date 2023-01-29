@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ResourceSkus List. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getResourceSkus()
-            .list("location eq 'westus'", null, Context.NONE);
+            .list("location eq 'westus'", null, com.azure.core.util.Context.NONE);
     }
 }

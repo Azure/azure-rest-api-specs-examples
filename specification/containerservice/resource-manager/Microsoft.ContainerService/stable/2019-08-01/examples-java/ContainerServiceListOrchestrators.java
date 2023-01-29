@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ContainerServices ListOrchestrators. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getContainerServices()
-            .listOrchestratorsWithResponse("location1", null, Context.NONE);
+            .listOrchestratorsWithResponse("location1", null, com.azure.core.util.Context.NONE);
     }
 }

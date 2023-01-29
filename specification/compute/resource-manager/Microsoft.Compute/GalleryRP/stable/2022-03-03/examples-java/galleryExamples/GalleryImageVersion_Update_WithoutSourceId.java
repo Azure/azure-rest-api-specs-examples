@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.models.GalleryImageVersionPublishingProfile;
 import com.azure.resourcemanager.compute.models.GalleryImageVersionStorageProfile;
 import com.azure.resourcemanager.compute.models.GalleryImageVersionUpdate;
@@ -40,6 +39,6 @@ public final class Main {
                                             .withRegionalReplicaCount(2)
                                             .withStorageAccountType(StorageAccountType.STANDARD_ZRS))))
                     .withStorageProfile(new GalleryImageVersionStorageProfile()),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

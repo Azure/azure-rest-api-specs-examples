@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiskEncryptionSets GetByResourceGroup. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiskEncryptionSets()
-            .getByResourceGroupWithResponse("myResourceGroup", "myDiskEncryptionSet", Context.NONE);
+            .getByResourceGroupWithResponse("myResourceGroup", "myDiskEncryptionSet", com.azure.core.util.Context.NONE);
     }
 }

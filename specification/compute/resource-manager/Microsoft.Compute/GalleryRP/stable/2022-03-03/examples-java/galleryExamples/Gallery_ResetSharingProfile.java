@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.compute.fluent.models.SharingUpdateInner;
 import com.azure.resourcemanager.compute.models.SharingUpdateOperationTypes;
 
@@ -22,6 +21,6 @@ public final class Main {
                 "myResourceGroup",
                 "myGalleryName",
                 new SharingUpdateInner().withOperationType(SharingUpdateOperationTypes.RESET),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

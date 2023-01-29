@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Labs/putLab.json
  */
 async function putLab() {
-  const subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
-  const resourceGroupName = "testrg123";
+  const subscriptionId =
+    process.env["LABSERVICES_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const resourceGroupName = process.env["LABSERVICES_RESOURCE_GROUP"] || "testrg123";
   const labName = "testlab";
   const body = {
     description: "This is a test lab.",
@@ -57,5 +58,3 @@ async function putLab() {
   const result = await client.labs.beginCreateOrUpdateAndWait(resourceGroupName, labName, body);
   console.log(result);
 }
-
-putLab().catch(console.error);

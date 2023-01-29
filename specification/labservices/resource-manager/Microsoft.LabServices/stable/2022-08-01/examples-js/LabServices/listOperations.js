@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/LabServices/listOperations.json
  */
 async function listOperations() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["LABSERVICES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new LabServicesClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listOperations() {
   }
   console.log(resArray);
 }
-
-listOperations().catch(console.error);

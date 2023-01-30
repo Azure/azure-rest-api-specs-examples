@@ -8,8 +8,11 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningexperimentation/resource-manager/Microsoft.MachineLearningExperimentation/preview/2017-05-01-preview/examples/WorkspaceDelete.json
  */
 async function workspaceDelete() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId =
+    process.env["MACHINELEARNINGEXPERIMENTATION_SUBSCRIPTION_ID"] ||
+    "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName =
+    process.env["MACHINELEARNINGEXPERIMENTATION_RESOURCE_GROUP"] || "myResourceGroup";
   const accountName = "myAccount";
   const workspaceName = "testworkspace";
   const credential = new DefaultAzureCredential();
@@ -17,5 +20,3 @@ async function workspaceDelete() {
   const result = await client.workspaces.delete(resourceGroupName, accountName, workspaceName);
   console.log(result);
 }
-
-workspaceDelete().catch(console.error);

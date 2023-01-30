@@ -14,5 +14,3 @@ async function putPartnerDetails() {
   const result = await client.partner.create(partnerId);
   console.log(result);
 }
-
-putPartnerDetails().catch(console.error);

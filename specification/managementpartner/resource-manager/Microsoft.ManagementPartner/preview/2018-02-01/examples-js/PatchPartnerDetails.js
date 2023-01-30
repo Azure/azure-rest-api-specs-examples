@@ -14,5 +14,3 @@ async function patchPartnerDetails() {
   const result = await client.partner.update(partnerId);
   console.log(result);
 }
-
-patchPartnerDetails().catch(console.error);

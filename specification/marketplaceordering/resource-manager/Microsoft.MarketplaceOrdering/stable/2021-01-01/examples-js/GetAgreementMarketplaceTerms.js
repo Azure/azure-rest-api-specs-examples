@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/examples/GetAgreementMarketplaceTerms.json
  */
 async function setMarketplaceTerms() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["MARKETPLACEORDERING_SUBSCRIPTION_ID"] || "subid";
   const publisherId = "pubid";
   const offerId = "offid";
   const planId = "planid";
@@ -17,5 +17,3 @@ async function setMarketplaceTerms() {
   const result = await client.marketplaceAgreements.getAgreement(publisherId, offerId, planId);
   console.log(result);
 }
-
-setMarketplaceTerms().catch(console.error);

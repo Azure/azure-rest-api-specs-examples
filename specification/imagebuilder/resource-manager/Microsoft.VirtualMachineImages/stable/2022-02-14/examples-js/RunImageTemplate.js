@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/examples/RunImageTemplate.json
  */
 async function createImageSFromExistingImageTemplate() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["IMAGEBUILDER_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["IMAGEBUILDER_RESOURCE_GROUP"] || "myResourceGroup";
   const imageTemplateName = "myImageTemplate";
   const credential = new DefaultAzureCredential();
   const client = new ImageBuilderClient(credential, subscriptionId);
@@ -19,5 +19,3 @@ async function createImageSFromExistingImageTemplate() {
   );
   console.log(result);
 }
-
-createImageSFromExistingImageTemplate().catch(console.error);

@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/examples/ListImageTemplates.json
  */
 async function listImagesBySubscription() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["IMAGEBUILDER_SUBSCRIPTION_ID"] || "{subscription-id}";
   const credential = new DefaultAzureCredential();
   const client = new ImageBuilderClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function listImagesBySubscription() {
   }
   console.log(resArray);
 }
-
-listImagesBySubscription().catch(console.error);

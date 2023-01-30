@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Configurations_Get.json
  */
 async function getCoreSiteSettings() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["HDINSIGHT_RESOURCE_GROUP"] || "rg1";
   const clusterName = "cluster1";
   const configurationName = "core-site";
   const credential = new DefaultAzureCredential();
@@ -17,5 +17,3 @@ async function getCoreSiteSettings() {
   const result = await client.configurations.get(resourceGroupName, clusterName, configurationName);
   console.log(result);
 }
-
-getCoreSiteSettings().catch(console.error);

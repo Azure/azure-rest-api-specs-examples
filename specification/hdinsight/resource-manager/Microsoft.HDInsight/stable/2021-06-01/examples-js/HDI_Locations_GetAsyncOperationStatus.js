@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Locations_GetAsyncOperationStatus.json
  */
 async function getsTheAzureAsyncOperationStatus() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
   const location = "East US 2";
   const operationId = "8a0348f4-8a85-4ec2-abe0-03b26104a9a0-0";
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function getsTheAzureAsyncOperationStatus() {
   const result = await client.locations.getAzureAsyncOperationStatus(location, operationId);
   console.log(result);
 }
-
-getsTheAzureAsyncOperationStatus().catch(console.error);

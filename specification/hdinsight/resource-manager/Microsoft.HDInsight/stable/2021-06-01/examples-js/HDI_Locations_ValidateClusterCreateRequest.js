@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Locations_ValidateClusterCreateRequest.json
  */
 async function getTheSubscriptionUsagesForSpecificLocation() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
   const location = "southcentralus";
   const parameters = {
     name: "testclustername",
@@ -103,5 +103,3 @@ async function getTheSubscriptionUsagesForSpecificLocation() {
   const result = await client.locations.validateClusterCreateRequest(location, parameters);
   console.log(result);
 }
-
-getTheSubscriptionUsagesForSpecificLocation().catch(console.error);

@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Locations_CheckClusterNameAvailability.json
  */
 async function getTheSubscriptionUsagesForSpecificLocation() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "subid";
   const location = "westus";
   const parameters = {
     name: "test123",
@@ -19,5 +19,3 @@ async function getTheSubscriptionUsagesForSpecificLocation() {
   const result = await client.locations.checkNameAvailability(location, parameters);
   console.log(result);
 }
-
-getTheSubscriptionUsagesForSpecificLocation().catch(console.error);

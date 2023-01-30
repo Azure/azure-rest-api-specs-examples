@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2022-07-07/examples/KustoOperationResultsGet.json
  */
 async function kustoOperationResultsGet() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
+  const subscriptionId =
+    process.env["KUSTO_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
   const location = "westus";
   const operationId = "30972f1b-b61d-4fd8-bd34-3dcfa24670f3";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function kustoOperationResultsGet() {
   const result = await client.operationsResults.get(location, operationId);
   console.log(result);
 }
-
-kustoOperationResultsGet().catch(console.error);

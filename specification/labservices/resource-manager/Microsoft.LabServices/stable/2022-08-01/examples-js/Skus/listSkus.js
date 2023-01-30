@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Skus/listSkus.json
  */
 async function listSkus() {
-  const subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const subscriptionId =
+    process.env["LABSERVICES_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
   const credential = new DefaultAzureCredential();
   const client = new LabServicesClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listSkus() {
   }
   console.log(resArray);
 }
-
-listSkus().catch(console.error);

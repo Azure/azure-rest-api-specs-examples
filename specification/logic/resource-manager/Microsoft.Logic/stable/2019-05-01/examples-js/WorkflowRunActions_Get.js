@@ -1,0 +1,26 @@
+const { LogicManagementClient } = require("@azure/arm-logic");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets a workflow run action.
+ *
+ * @summary Gets a workflow run action.
+ * x-ms-original-file: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowRunActions_Get.json
+ */
+async function getAWorkflowRunAction() {
+  const subscriptionId =
+    process.env["LOGIC_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const resourceGroupName = process.env["LOGIC_RESOURCE_GROUP"] || "test-resource-group";
+  const workflowName = "test-workflow";
+  const runName = "08586676746934337772206998657CU22";
+  const actionName = "HTTP";
+  const credential = new DefaultAzureCredential();
+  const client = new LogicManagementClient(credential, subscriptionId);
+  const result = await client.workflowRunActions.get(
+    resourceGroupName,
+    workflowName,
+    runName,
+    actionName
+  );
+  console.log(result);
+}

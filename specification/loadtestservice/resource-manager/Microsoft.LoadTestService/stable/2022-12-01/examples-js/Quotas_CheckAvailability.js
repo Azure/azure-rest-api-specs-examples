@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/Quotas_CheckAvailability.json
  */
 async function quotasCheckAvailability() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["LOADTESTSERVICE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const location = "westus";
   const quotaBucketName = "testQuotaBucket";
   const quotaBucketRequest = {
@@ -26,5 +27,3 @@ async function quotasCheckAvailability() {
   );
   console.log(result);
 }
-
-quotasCheckAvailability().catch(console.error);

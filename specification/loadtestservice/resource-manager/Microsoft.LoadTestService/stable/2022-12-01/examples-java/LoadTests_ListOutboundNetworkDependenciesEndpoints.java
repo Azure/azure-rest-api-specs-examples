@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LoadTests ListOutboundNetworkDependenciesEndpoints. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         manager
             .loadTests()
             .listOutboundNetworkDependenciesEndpoints(
-                "default-azureloadtest-japaneast", "sampleloadtest", Context.NONE);
+                "default-azureloadtest-japaneast", "sampleloadtest", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.loadtesting.models.EncryptionProperties;
 import com.azure.resourcemanager.loadtesting.models.EncryptionPropertiesIdentity;
 import com.azure.resourcemanager.loadtesting.models.LoadTestResource;
@@ -21,7 +20,10 @@ public final class Main {
      */
     public static void loadTestsUpdate(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
         LoadTestResource resource =
-            manager.loadTests().getByResourceGroupWithResponse("dummyrg", "myLoadTest", Context.NONE).getValue();
+            manager
+                .loadTests()
+                .getByResourceGroupWithResponse("dummyrg", "myLoadTest", com.azure.core.util.Context.NONE)
+                .getValue();
         resource
             .update()
             .withTags(mapOf("Division", "LT", "Team", "Dev Exp"))

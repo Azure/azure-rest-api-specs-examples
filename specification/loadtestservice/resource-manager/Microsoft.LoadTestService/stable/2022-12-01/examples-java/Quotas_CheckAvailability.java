@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.loadtesting.models.QuotaBucketRequest;
 import com.azure.resourcemanager.loadtesting.models.QuotaBucketRequestPropertiesDimensions;
 
@@ -26,6 +25,6 @@ public final class Main {
                         new QuotaBucketRequestPropertiesDimensions()
                             .withSubscriptionId("testsubscriptionId")
                             .withLocation("westus")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

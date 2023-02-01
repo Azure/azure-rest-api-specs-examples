@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Quotas Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LoadTestManager.
      */
     public static void quotasGet(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
-        manager.quotas().getWithResponse("westus", "testQuotaBucket", Context.NONE);
+        manager.quotas().getWithResponse("westus", "testQuotaBucket", com.azure.core.util.Context.NONE);
     }
 }

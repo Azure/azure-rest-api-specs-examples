@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LoadTests List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LoadTestManager.
      */
     public static void loadTestsListBySubscription(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
-        manager.loadTests().list(Context.NONE);
+        manager.loadTests().list(com.azure.core.util.Context.NONE);
     }
 }

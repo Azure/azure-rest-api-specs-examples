@@ -26,7 +26,7 @@ ResourceIdentifier loadTestingResourceId = LoadTestingResource.CreateResourceIde
 LoadTestingResource loadTestingResource = client.GetLoadTestingResource(loadTestingResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (OutboundEnvironmentEndpoint item in loadTestingResource.GetOutboundNetworkDependenciesEndpointsAsync())
+await foreach (LoadTestingOutboundEnvironmentEndpoint item in loadTestingResource.GetOutboundNetworkDependenciesEndpointsAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

@@ -23,5 +23,3 @@ async function lab() {
   );
   console.log(result);
 }
-
-lab().catch(console.error);

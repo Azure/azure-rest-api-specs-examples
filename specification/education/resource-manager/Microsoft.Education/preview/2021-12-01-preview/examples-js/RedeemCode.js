@@ -18,5 +18,3 @@ async function redeemCode() {
   const result = await client.redeemInvitationCode(parameters);
   console.log(result);
 }
-
-redeemCode().catch(console.error);

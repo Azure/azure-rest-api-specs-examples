@@ -20,5 +20,3 @@ async function grantListIncludeAllocatedBudget() {
   }
   console.log(resArray);
 }
-
-grantListIncludeAllocatedBudget().catch(console.error);

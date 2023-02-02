@@ -16,5 +16,3 @@ async function studentLabList() {
   }
   console.log(resArray);
 }
-
-studentLabList().catch(console.error);

@@ -20,5 +20,3 @@ async function deleteLab() {
   );
   console.log(result);
 }
-
-deleteLab().catch(console.error);

@@ -14,5 +14,3 @@ async function studentLab() {
   const result = await client.studentLabs.get(studentLabName);
   console.log(result);
 }
-
-studentLab().catch(console.error);

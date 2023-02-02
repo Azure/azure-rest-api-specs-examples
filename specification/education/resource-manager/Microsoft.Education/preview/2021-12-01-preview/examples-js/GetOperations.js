@@ -13,5 +13,3 @@ async function getOperations() {
   const result = await client.operations.list();
   console.log(result);
 }
-
-getOperations().catch(console.error);

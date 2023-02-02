@@ -22,5 +22,3 @@ async function student() {
   );
   console.log(result);
 }
-
-student().catch(console.error);

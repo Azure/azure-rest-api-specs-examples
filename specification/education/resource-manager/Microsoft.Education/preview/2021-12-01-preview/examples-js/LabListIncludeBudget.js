@@ -20,5 +20,3 @@ async function labListIncludeBudget() {
   }
   console.log(resArray);
 }
-
-labListIncludeBudget().catch(console.error);

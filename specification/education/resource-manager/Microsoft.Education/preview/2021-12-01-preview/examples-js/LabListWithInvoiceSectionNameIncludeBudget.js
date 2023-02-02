@@ -26,5 +26,3 @@ async function labListWithInvoiceSectionNameIncludeBudget() {
   }
   console.log(resArray);
 }
-
-labListWithInvoiceSectionNameIncludeBudget().catch(console.error);

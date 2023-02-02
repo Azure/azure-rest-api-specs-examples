@@ -26,5 +26,3 @@ async function labListWithInvoiceSectionName() {
   }
   console.log(resArray);
 }
-
-labListWithInvoiceSectionName().catch(console.error);

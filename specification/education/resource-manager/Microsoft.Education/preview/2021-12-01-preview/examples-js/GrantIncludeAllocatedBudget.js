@@ -17,5 +17,3 @@ async function grantIncludeAllocatedBudget() {
   const result = await client.grants.get(billingAccountName, billingProfileName, options);
   console.log(result);
 }
-
-grantIncludeAllocatedBudget().catch(console.error);

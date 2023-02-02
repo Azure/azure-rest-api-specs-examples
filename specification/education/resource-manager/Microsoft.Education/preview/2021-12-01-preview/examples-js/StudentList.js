@@ -23,5 +23,3 @@ async function studentList() {
   }
   console.log(resArray);
 }
-
-studentList().catch(console.error);

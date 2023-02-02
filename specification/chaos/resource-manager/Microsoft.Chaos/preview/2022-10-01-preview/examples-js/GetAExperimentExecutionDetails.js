@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/chaos/resource-manager/Microsoft.Chaos/preview/2022-10-01-preview/examples/GetAExperimentExecutionDetails.json
  */
 async function getExperimentExecutionDetails() {
-  const subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
-  const resourceGroupName = "exampleRG";
+  const subscriptionId =
+    process.env["CHAOS_SUBSCRIPTION_ID"] || "6b052e15-03d3-4f17-b2e1-be7f07588291";
+  const resourceGroupName = process.env["CHAOS_RESOURCE_GROUP"] || "exampleRG";
   const experimentName = "exampleExperiment";
   const executionDetailsId = "f24500ad-744e-4a26-864b-b76199eac333";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getExperimentExecutionDetails() {
   );
   console.log(result);
 }
-
-getExperimentExecutionDetails().catch(console.error);

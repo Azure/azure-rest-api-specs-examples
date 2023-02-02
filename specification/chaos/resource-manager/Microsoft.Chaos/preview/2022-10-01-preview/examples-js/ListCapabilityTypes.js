@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/chaos/resource-manager/Microsoft.Chaos/preview/2022-10-01-preview/examples/ListCapabilityTypes.json
  */
 async function listAllCapabilityTypesForAVirtualMachineTargetResourceOnWestus2Location() {
-  const subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
+  const subscriptionId =
+    process.env["CHAOS_SUBSCRIPTION_ID"] || "6b052e15-03d3-4f17-b2e1-be7f07588291";
   const locationName = "westus2";
   const targetTypeName = "Microsoft-VirtualMachine";
   const credential = new DefaultAzureCredential();
@@ -19,5 +20,3 @@ async function listAllCapabilityTypesForAVirtualMachineTargetResourceOnWestus2Lo
   }
   console.log(resArray);
 }
-
-listAllCapabilityTypesForAVirtualMachineTargetResourceOnWestus2Location().catch(console.error);

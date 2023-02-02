@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/stable/2022-05-13/examples/ConfidentialLedger_ListBySub.json
  */
 async function confidentialLedgerListBySub() {
-  const subscriptionId = "0000000-0000-0000-0000-000000000001";
+  const subscriptionId =
+    process.env["CONFIDENTIALLEDGER_SUBSCRIPTION_ID"] || "0000000-0000-0000-0000-000000000001";
   const credential = new DefaultAzureCredential();
   const client = new ConfidentialLedgerClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function confidentialLedgerListBySub() {
   }
   console.log(resArray);
 }
-
-confidentialLedgerListBySub().catch(console.error);

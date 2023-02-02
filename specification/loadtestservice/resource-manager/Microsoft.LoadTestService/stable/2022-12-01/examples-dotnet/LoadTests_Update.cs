@@ -41,11 +41,11 @@ LoadTestingResourcePatch patch = new LoadTestingResourcePatch()
         },
     },
     Description = "This is new load test resource",
-    Encryption = new CustomerManagedKeyEncryptionProperties()
+    Encryption = new LoadTestingCmkEncryptionProperties()
     {
-        Identity = new CustomerManagedKeyIdentity()
+        Identity = new LoadTestingCmkIdentity()
         {
-            IdentityType = CustomerManagedKeyIdentityType.SystemAssigned,
+            IdentityType = LoadTestingCmkIdentityType.SystemAssigned,
             ResourceId = null,
         },
         KeyUri = new Uri("https://dummy.vault.azure.net/keys/dummykey1"),

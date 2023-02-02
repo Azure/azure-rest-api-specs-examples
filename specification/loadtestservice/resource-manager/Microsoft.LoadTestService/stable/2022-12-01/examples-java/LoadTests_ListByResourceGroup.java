@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LoadTests ListByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LoadTestManager.
      */
     public static void loadTestsListByResourceGroup(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
-        manager.loadTests().listByResourceGroup("dummyrg", Context.NONE);
+        manager.loadTests().listByResourceGroup("dummyrg", com.azure.core.util.Context.NONE);
     }
 }

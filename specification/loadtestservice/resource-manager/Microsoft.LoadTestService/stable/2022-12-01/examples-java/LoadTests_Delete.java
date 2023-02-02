@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LoadTests Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LoadTestManager.
      */
     public static void loadTestsDelete(com.azure.resourcemanager.loadtesting.LoadTestManager manager) {
-        manager.loadTests().delete("dummyrg", "myLoadTest", Context.NONE);
+        manager.loadTests().delete("dummyrg", "myLoadTest", com.azure.core.util.Context.NONE);
     }
 }

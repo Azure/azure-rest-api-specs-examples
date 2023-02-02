@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/LoadTests_CreateOrUpdate.json
  */
 async function loadTestsCreateOrUpdate() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "dummyrg";
+  const subscriptionId =
+    process.env["LOADTESTSERVICE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["LOADTESTSERVICE_RESOURCE_GROUP"] || "dummyrg";
   const loadTestName = "myLoadTest";
   const loadTestResource = {
     description: "This is new load test resource",
@@ -40,5 +41,3 @@ async function loadTestsCreateOrUpdate() {
   );
   console.log(result);
 }
-
-loadTestsCreateOrUpdate().catch(console.error);

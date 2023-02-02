@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/PrivateEndpointConnectionProxies/PrivateEndpointConnectionProxy_PrivateEndpointUpdate.json
  */
 async function privateEndpointConnectionProxyPrivateEndpointUpdate() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["DEVICEUPDATE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["DEVICEUPDATE_RESOURCE_GROUP"] || "test-rg";
   const accountName = "contoso";
   const privateEndpointConnectionProxyId = "peexample01";
   const privateEndpointUpdate = {
@@ -30,5 +31,3 @@ async function privateEndpointConnectionProxyPrivateEndpointUpdate() {
   );
   console.log(result);
 }
-
-privateEndpointConnectionProxyPrivateEndpointUpdate().catch(console.error);

@@ -7,15 +7,15 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * @summary Returns list of Accounts.
  * x-ms-original-file: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/Accounts/Accounts_List.json
  */
-async function getListOfAccounts() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+async function getsListOfAccounts() {
+  const subscriptionId =
+    process.env["DEVICEUPDATE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["DEVICEUPDATE_RESOURCE_GROUP"] || "test-rg";
   const credential = new DefaultAzureCredential();
   const client = new DeviceUpdate(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.accounts.listBySubscription()) {
+  for await (let item of client.accounts.listByResourceGroup(resourceGroupName)) {
     resArray.push(item);
   }
   console.log(resArray);
 }
-
-getListOfAccounts().catch(console.error);

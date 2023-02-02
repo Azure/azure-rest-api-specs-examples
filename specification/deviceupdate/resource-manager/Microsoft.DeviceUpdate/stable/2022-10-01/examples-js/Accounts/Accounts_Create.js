@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/Accounts/Accounts_Create.json
  */
 async function createsOrUpdatesAccount() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["DEVICEUPDATE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["DEVICEUPDATE_RESOURCE_GROUP"] || "test-rg";
   const accountName = "contoso";
   const account = { location: "westus2" };
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function createsOrUpdatesAccount() {
   const result = await client.accounts.beginCreateAndWait(resourceGroupName, accountName, account);
   console.log(result);
 }
-
-createsOrUpdatesAccount().catch(console.error);

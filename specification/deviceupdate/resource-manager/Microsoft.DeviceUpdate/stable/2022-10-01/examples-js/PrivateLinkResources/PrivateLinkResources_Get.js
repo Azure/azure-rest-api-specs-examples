@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/PrivateLinkResources/PrivateLinkResources_Get.json
  */
 async function privateLinkResourcesGet() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["DEVICEUPDATE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["DEVICEUPDATE_RESOURCE_GROUP"] || "test-rg";
   const accountName = "contoso";
   const groupId = "adu";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function privateLinkResourcesGet() {
   const result = await client.privateLinkResources.get(resourceGroupName, accountName, groupId);
   console.log(result);
 }
-
-privateLinkResourcesGet().catch(console.error);

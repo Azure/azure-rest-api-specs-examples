@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/CheckNameAvailability_Available.json
  */
 async function checkNameAvailabilityAvailable() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["DEVICEUPDATE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const request = {
     name: "contoso",
     type: "Microsoft.DeviceUpdate/accounts",
@@ -18,5 +19,3 @@ async function checkNameAvailabilityAvailable() {
   const result = await client.checkNameAvailability(request);
   console.log(result);
 }
-
-checkNameAvailabilityAvailable().catch(console.error);

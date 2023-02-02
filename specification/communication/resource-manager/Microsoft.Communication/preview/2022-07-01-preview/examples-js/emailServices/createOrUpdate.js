@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/preview/2022-07-01-preview/examples/emailServices/createOrUpdate.json
  */
 async function createOrUpdateEmailServiceResource() {
-  const subscriptionId = "12345";
-  const resourceGroupName = "MyResourceGroup";
+  const subscriptionId = process.env["COMMUNICATION_SUBSCRIPTION_ID"] || "12345";
+  const resourceGroupName = process.env["COMMUNICATION_RESOURCE_GROUP"] || "MyResourceGroup";
   const emailServiceName = "MyEmailServiceResource";
   const parameters = {
     dataLocation: "United States",
@@ -24,5 +24,3 @@ async function createOrUpdateEmailServiceResource() {
   );
   console.log(result);
 }
-
-createOrUpdateEmailServiceResource().catch(console.error);

@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/preview/2022-07-01-preview/examples/communicationServices/checkNameAvailabilityAvailable.json
  */
 async function checkNameAvailabilityAvailable() {
-  const subscriptionId = "12345";
+  const subscriptionId = process.env["COMMUNICATION_SUBSCRIPTION_ID"] || "12345";
   const nameAvailabilityParameters = {
     name: "MyCommunicationService",
     type: "Microsoft.Communication/CommunicationServices",
@@ -20,5 +20,3 @@ async function checkNameAvailabilityAvailable() {
   );
   console.log(result);
 }
-
-checkNameAvailabilityAvailable().catch(console.error);

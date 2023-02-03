@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_SummarizeResourceGroupScope.json
  */
 async function summarizeAtResourceGroupScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyStatesSummaryResource = "latest";
-  const resourceGroupName = "myResourceGroup";
+  const resourceGroupName = process.env["POLICYINSIGHTS_RESOURCE_GROUP"] || "myResourceGroup";
   const credential = new DefaultAzureCredential();
   const client = new PolicyInsightsClient(credential, subscriptionId);
   const result = await client.policyStates.summarizeForResourceGroup(
@@ -20,5 +21,3 @@ async function summarizeAtResourceGroupScope() {
   );
   console.log(result);
 }
-
-summarizeAtResourceGroupScope().catch(console.error);

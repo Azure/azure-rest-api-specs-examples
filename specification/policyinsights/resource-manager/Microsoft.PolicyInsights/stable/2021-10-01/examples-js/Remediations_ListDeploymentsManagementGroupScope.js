@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/examples/Remediations_ListDeploymentsManagementGroupScope.json
  */
 async function listDeploymentsForARemediationAtManagementGroupScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupId = "financeMg";
   const remediationName = "myRemediation";
   const credential = new DefaultAzureCredential();
@@ -22,5 +23,3 @@ async function listDeploymentsForARemediationAtManagementGroupScope() {
   }
   console.log(resArray);
 }
-
-listDeploymentsForARemediationAtManagementGroupScope().catch(console.error);

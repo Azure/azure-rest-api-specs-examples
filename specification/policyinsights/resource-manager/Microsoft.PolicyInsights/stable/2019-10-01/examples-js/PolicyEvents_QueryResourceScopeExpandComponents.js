@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyEvents_QueryResourceScopeExpandComponents.json
  */
 async function queryComponentsPolicyEventsForResourceScopeFilteredByGivenAssignment() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyEventsResource = "default";
   const resourceId =
     "subscriptions/e78961ba-36fe-4739-9212-e3031b4c8db7/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/Vaults/myKVName";
@@ -30,5 +31,3 @@ async function queryComponentsPolicyEventsForResourceScopeFilteredByGivenAssignm
   }
   console.log(resArray);
 }
-
-queryComponentsPolicyEventsForResourceScopeFilteredByGivenAssignment().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_QuerySubscriptionLevelPolicyAssignmentScope.json
  */
 async function queryLatestAtSubscriptionLevelPolicyAssignmentScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyStatesResource = "latest";
   const policyAssignmentName = "ec8f9645-8ecb-4abb-9c0b-5292f19d4003";
   const credential = new DefaultAzureCredential();
@@ -23,5 +24,3 @@ async function queryLatestAtSubscriptionLevelPolicyAssignmentScope() {
   }
   console.log(resArray);
 }
-
-queryLatestAtSubscriptionLevelPolicyAssignmentScope().catch(console.error);

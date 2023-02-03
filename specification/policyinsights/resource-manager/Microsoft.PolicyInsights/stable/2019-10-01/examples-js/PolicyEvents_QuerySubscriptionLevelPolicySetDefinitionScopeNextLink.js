@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyEvents_QuerySubscriptionLevelPolicySetDefinitionScopeNextLink.json
  */
 async function queryAtSubscriptionLevelPolicySetDefinitionScopeWithNextLink() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyEventsResource = "default";
   const policySetDefinitionName = "3e3807c1-65c9-49e0-a406-82d8ae3e338c";
   const skipToken = "WpmWfBSvPhkAK6QD";
@@ -28,5 +29,3 @@ async function queryAtSubscriptionLevelPolicySetDefinitionScopeWithNextLink() {
   }
   console.log(resArray);
 }
-
-queryAtSubscriptionLevelPolicySetDefinitionScopeWithNextLink().catch(console.error);

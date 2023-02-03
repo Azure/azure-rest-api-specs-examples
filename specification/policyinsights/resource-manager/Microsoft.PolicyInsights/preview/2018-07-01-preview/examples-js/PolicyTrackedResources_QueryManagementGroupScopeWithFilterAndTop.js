@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/preview/2018-07-01-preview/examples/PolicyTrackedResources_QueryManagementGroupScopeWithFilterAndTop.json
  */
 async function queryAtManagementGroupScopeUsingQueryParameters() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupName = "myManagementGroup";
   const policyTrackedResourcesResource = "default";
   const top = 1;
@@ -29,5 +30,3 @@ async function queryAtManagementGroupScopeUsingQueryParameters() {
   }
   console.log(resArray);
 }
-
-queryAtManagementGroupScopeUsingQueryParameters().catch(console.error);

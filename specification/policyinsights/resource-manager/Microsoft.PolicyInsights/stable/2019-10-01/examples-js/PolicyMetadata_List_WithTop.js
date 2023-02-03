@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyMetadata_List_WithTop.json
  */
 async function getCollectionOfPolicyMetadataResourcesUsingTopQueryParameter() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const top = 1;
   const options = { queryOptions: { top: top } };
   const credential = new DefaultAzureCredential();
@@ -19,5 +20,3 @@ async function getCollectionOfPolicyMetadataResourcesUsingTopQueryParameter() {
   }
   console.log(resArray);
 }
-
-getCollectionOfPolicyMetadataResourcesUsingTopQueryParameter().catch(console.error);

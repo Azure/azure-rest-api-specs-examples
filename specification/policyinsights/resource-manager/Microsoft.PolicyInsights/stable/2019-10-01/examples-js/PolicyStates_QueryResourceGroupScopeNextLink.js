@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_QueryResourceGroupScopeNextLink.json
  */
 async function queryLatestAtResourceGroupScopeWithNextLink() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyStatesResource = "latest";
-  const resourceGroupName = "myResourceGroup";
+  const resourceGroupName = process.env["POLICYINSIGHTS_RESOURCE_GROUP"] || "myResourceGroup";
   const skipToken = "WpmWfBSvPhkAK6QD";
   const options = {
     queryOptions: { skipToken: skipToken },
@@ -28,5 +29,3 @@ async function queryLatestAtResourceGroupScopeWithNextLink() {
   }
   console.log(resArray);
 }
-
-queryLatestAtResourceGroupScopeWithNextLink().catch(console.error);

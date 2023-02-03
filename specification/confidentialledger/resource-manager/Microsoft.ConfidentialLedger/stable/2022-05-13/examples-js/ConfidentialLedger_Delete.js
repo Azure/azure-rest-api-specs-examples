@@ -8,13 +8,13 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/stable/2022-05-13/examples/ConfidentialLedger_Delete.json
  */
 async function confidentialLedgerDelete() {
-  const subscriptionId = "0000000-0000-0000-0000-000000000001";
-  const resourceGroupName = "DummyResourceGroupName";
+  const subscriptionId =
+    process.env["CONFIDENTIALLEDGER_SUBSCRIPTION_ID"] || "0000000-0000-0000-0000-000000000001";
+  const resourceGroupName =
+    process.env["CONFIDENTIALLEDGER_RESOURCE_GROUP"] || "DummyResourceGroupName";
   const ledgerName = "DummyLedgerName";
   const credential = new DefaultAzureCredential();
   const client = new ConfidentialLedgerClient(credential, subscriptionId);
   const result = await client.ledger.beginDeleteAndWait(resourceGroupName, ledgerName);
   console.log(result);
 }
-
-confidentialLedgerDelete().catch(console.error);

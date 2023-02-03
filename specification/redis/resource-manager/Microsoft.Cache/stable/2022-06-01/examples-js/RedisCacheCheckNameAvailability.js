@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheCheckNameAvailability.json
  */
 async function redisCacheCheckNameAvailability() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
   const parameters = {
     name: "cacheName",
     type: "Microsoft.Cache/Redis",
@@ -18,5 +18,3 @@ async function redisCacheCheckNameAvailability() {
   const result = await client.redis.checkNameAvailability(parameters);
   console.log(result);
 }
-
-redisCacheCheckNameAvailability().catch(console.error);

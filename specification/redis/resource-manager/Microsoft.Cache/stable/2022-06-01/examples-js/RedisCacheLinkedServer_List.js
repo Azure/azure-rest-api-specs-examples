@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheLinkedServer_List.json
  */
 async function linkedServerList() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["REDIS_RESOURCE_GROUP"] || "rg1";
   const name = "cache1";
   const credential = new DefaultAzureCredential();
   const client = new RedisManagementClient(credential, subscriptionId);
@@ -19,5 +19,3 @@ async function linkedServerList() {
   }
   console.log(resArray);
 }
-
-linkedServerList().catch(console.error);

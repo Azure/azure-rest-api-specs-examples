@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheForceReboot.json
  */
 async function redisCacheForceReboot() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["REDIS_RESOURCE_GROUP"] || "rg1";
   const name = "cache1";
   const parameters = {
     ports: [13000, 15001],
@@ -21,5 +21,3 @@ async function redisCacheForceReboot() {
   const result = await client.redis.forceReboot(resourceGroupName, name, parameters);
   console.log(result);
 }
-
-redisCacheForceReboot().catch(console.error);

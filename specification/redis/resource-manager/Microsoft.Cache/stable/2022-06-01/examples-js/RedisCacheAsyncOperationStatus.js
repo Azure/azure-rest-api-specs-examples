@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheAsyncOperationStatus.json
  */
 async function redisCacheAsyncOperationStatus() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
   const location = "East US";
   const operationId = "c7ba2bf5-5939-4d79-b037-2964ccf097da";
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function redisCacheAsyncOperationStatus() {
   const result = await client.asyncOperationStatus.get(location, operationId);
   console.log(result);
 }
-
-redisCacheAsyncOperationStatus().catch(console.error);

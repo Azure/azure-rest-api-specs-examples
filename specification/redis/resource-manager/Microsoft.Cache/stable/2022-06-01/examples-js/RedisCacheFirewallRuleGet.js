@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheFirewallRuleGet.json
  */
 async function redisCacheFirewallRuleGet() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["REDIS_RESOURCE_GROUP"] || "rg1";
   const cacheName = "cache1";
   const ruleName = "rule1";
   const credential = new DefaultAzureCredential();
@@ -17,5 +17,3 @@ async function redisCacheFirewallRuleGet() {
   const result = await client.firewallRules.get(resourceGroupName, cacheName, ruleName);
   console.log(result);
 }
-
-redisCacheFirewallRuleGet().catch(console.error);

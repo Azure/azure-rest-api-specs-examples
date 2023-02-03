@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/AvailableContactsList.json
  */
 async function listOfContact() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rgName";
+  const subscriptionId = process.env["ORBITAL_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["ORBITAL_RESOURCE_GROUP"] || "rgName";
   const spacecraftName = "AQUA";
   const contactProfile = {
     id: "/subscriptions/subId/resourceGroups/rg/Microsoft.Orbital/contactProfiles/AQUA_DIRECTPLAYBACK_WITH_UPLINK",
@@ -32,5 +32,3 @@ async function listOfContact() {
   }
   console.log(resArray);
 }
-
-listOfContact().catch(console.error);

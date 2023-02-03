@@ -14,8 +14,9 @@ Returns a json array of objects of type 'assessment' as specified in Models sect
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/Assessments_ListByGroup.json
  */
 async function assessmentsListByGroup() {
-  const subscriptionId = "6393a73f-8d55-47ef-b6dd-179b3e0c7910";
-  const resourceGroupName = "abgoyal-westEurope";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "6393a73f-8d55-47ef-b6dd-179b3e0c7910";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "abgoyal-westEurope";
   const projectName = "abgoyalWEselfhostb72bproject";
   const groupName = "Test1";
   const credential = new DefaultAzureCredential();
@@ -30,5 +31,3 @@ async function assessmentsListByGroup() {
   }
   console.log(resArray);
 }
-
-assessmentsListByGroup().catch(console.error);

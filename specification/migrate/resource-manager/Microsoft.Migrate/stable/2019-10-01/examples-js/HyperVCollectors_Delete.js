@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/HyperVCollectors_Delete.json
  */
 async function hyperVCollectorsDelete() {
-  const subscriptionId = "8c3c936a-c09b-4de3-830b-3f5f244d72e9";
-  const resourceGroupName = "contosoithyperv";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "8c3c936a-c09b-4de3-830b-3f5f244d72e9";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "contosoithyperv";
   const projectName = "migrateprojectce73project";
   const hyperVCollectorName = "migrateprojectce73collector";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function hyperVCollectorsDelete() {
   );
   console.log(result);
 }
-
-hyperVCollectorsDelete().catch(console.error);

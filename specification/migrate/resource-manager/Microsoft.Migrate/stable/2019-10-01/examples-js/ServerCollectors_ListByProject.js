@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/ServerCollectors_ListByProject.json
  */
 async function serverCollectorsListByProject() {
-  const subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
-  const resourceGroupName = "pajindtest";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "pajindtest";
   const projectName = "app11141project";
   const credential = new DefaultAzureCredential();
   const client = new AzureMigrateV2(credential, subscriptionId);
@@ -19,5 +20,3 @@ async function serverCollectorsListByProject() {
   }
   console.log(resArray);
 }
-
-serverCollectorsListByProject().catch(console.error);

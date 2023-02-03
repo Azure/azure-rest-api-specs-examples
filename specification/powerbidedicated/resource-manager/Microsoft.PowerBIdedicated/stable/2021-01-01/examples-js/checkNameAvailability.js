@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/checkNameAvailability.json
  */
 async function checkNameAvailabilityOfACapacity() {
-  const subscriptionId = "613192d7-503f-477a-9cfe-4efc3ee2bd60";
+  const subscriptionId =
+    process.env["POWERBIDEDICATED_SUBSCRIPTION_ID"] || "613192d7-503f-477a-9cfe-4efc3ee2bd60";
   const location = "West US";
   const capacityParameters = {
     name: "azsdktest",
@@ -19,5 +20,3 @@ async function checkNameAvailabilityOfACapacity() {
   const result = await client.capacities.checkNameAvailability(location, capacityParameters);
   console.log(result);
 }
-
-checkNameAvailabilityOfACapacity().catch(console.error);

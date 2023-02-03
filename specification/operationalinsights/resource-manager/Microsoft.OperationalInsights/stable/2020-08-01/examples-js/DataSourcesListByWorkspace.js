@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/DataSourcesListByWorkspace.json
  */
 async function dataSourcesListByWorkspace() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "OIAutoRest5123";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "OIAutoRest5123";
   const workspaceName = "AzTest9724";
   const filter = "kind='WindowsEvent'";
   const credential = new DefaultAzureCredential();
@@ -24,5 +25,3 @@ async function dataSourcesListByWorkspace() {
   }
   console.log(resArray);
 }
-
-dataSourcesListByWorkspace().catch(console.error);

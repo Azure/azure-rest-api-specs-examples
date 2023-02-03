@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/LinkedServicesListByWorkspace.json
  */
 async function linkedServicesListByWorkspace() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "mms-eus";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "mms-eus";
   const workspaceName = "TestLinkWS";
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
@@ -19,5 +20,3 @@ async function linkedServicesListByWorkspace() {
   }
   console.log(resArray);
 }
-
-linkedServicesListByWorkspace().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/examples/WorkspacesSubscriptionList.json
  */
 async function workspacesSubscriptionList() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function workspacesSubscriptionList() {
   }
   console.log(resArray);
 }
-
-workspacesSubscriptionList().catch(console.error);

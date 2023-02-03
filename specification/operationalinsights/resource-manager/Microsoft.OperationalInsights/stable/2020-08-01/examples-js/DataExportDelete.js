@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/DataExportDelete.json
  */
 async function dataExportDelete() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "RgTest1";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "RgTest1";
   const workspaceName = "DeWnTest1234";
   const dataExportName = "export1";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function dataExportDelete() {
   const result = await client.dataExports.delete(resourceGroupName, workspaceName, dataExportName);
   console.log(result);
 }
-
-dataExportDelete().catch(console.error);

@@ -8,13 +8,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2021-06-01/examples/ClustersGet.json
  */
 async function clustersGet() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "oiautorest6685";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "oiautorest6685";
   const clusterName = "oiautorest6685";
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const result = await client.clusters.get(resourceGroupName, clusterName);
   console.log(result);
 }
-
-clustersGet().catch(console.error);

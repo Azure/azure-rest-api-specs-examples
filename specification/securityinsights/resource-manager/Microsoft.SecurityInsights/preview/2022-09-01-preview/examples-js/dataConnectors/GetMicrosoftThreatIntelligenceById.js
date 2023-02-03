@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/dataConnectors/GetMicrosoftThreatIntelligenceById.json
  */
 async function getAMicrosoftThreatIntelligenceDataConnector() {
-  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const workspaceName = "myWorkspace";
   const dataConnectorId = "c345bf40-8509-4ed2-b947-50cb773aaf04";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getAMicrosoftThreatIntelligenceDataConnector() {
   const result = await client.dataConnectors.get(resourceGroupName, workspaceName, dataConnectorId);
   console.log(result);
 }
-
-getAMicrosoftThreatIntelligenceDataConnector().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/metadata/DeleteMetadata.json
  */
 async function deleteMetadata() {
-  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const workspaceName = "myWorkspace";
   const metadataName = "metadataName";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function deleteMetadata() {
   const result = await client.metadata.delete(resourceGroupName, workspaceName, metadataName);
   console.log(result);
 }
-
-deleteMetadata().catch(console.error);

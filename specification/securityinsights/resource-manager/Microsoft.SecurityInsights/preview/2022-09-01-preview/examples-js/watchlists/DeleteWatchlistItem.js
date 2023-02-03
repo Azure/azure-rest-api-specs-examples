@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/watchlists/DeleteWatchlistItem.json
  */
 async function deleteAWatchlistItem() {
-  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const workspaceName = "myWorkspace";
   const watchlistAlias = "highValueAsset";
   const watchlistItemId = "4008512e-1d30-48b2-9ee2-d3612ed9d3ea";
@@ -23,5 +24,3 @@ async function deleteAWatchlistItem() {
   );
   console.log(result);
 }
-
-deleteAWatchlistItem().catch(console.error);

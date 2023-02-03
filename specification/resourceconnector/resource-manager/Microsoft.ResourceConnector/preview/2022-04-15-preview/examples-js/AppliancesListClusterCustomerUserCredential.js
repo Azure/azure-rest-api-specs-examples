@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2022-04-15-preview/examples/AppliancesListClusterCustomerUserCredential.json
  */
 async function listClusterCustomerUserCredentialAppliance() {
-  const subscriptionId = "11111111-2222-3333-4444-555555555555";
-  const resourceGroupName = "testresourcegroup";
+  const subscriptionId =
+    process.env["RESOURCECONNECTOR_SUBSCRIPTION_ID"] || "11111111-2222-3333-4444-555555555555";
+  const resourceGroupName = process.env["RESOURCECONNECTOR_RESOURCE_GROUP"] || "testresourcegroup";
   const resourceName = "appliance01";
   const credential = new DefaultAzureCredential();
   const client = new ResourceConnectorManagementClient(credential, subscriptionId);
@@ -19,5 +20,3 @@ async function listClusterCustomerUserCredentialAppliance() {
   );
   console.log(result);
 }
-
-listClusterCustomerUserCredentialAppliance().catch(console.error);

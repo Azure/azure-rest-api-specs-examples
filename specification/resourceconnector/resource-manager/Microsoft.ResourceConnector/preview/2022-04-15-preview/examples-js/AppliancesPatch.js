@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2022-04-15-preview/examples/AppliancesPatch.json
  */
 async function updateAppliance() {
-  const subscriptionId = "11111111-2222-3333-4444-555555555555";
-  const resourceGroupName = "testresourcegroup";
+  const subscriptionId =
+    process.env["RESOURCECONNECTOR_SUBSCRIPTION_ID"] || "11111111-2222-3333-4444-555555555555";
+  const resourceGroupName = process.env["RESOURCECONNECTOR_RESOURCE_GROUP"] || "testresourcegroup";
   const resourceName = "appliance01";
   const tags = { key: "value" };
   const options = { tags };
@@ -18,5 +19,3 @@ async function updateAppliance() {
   const result = await client.appliances.update(resourceGroupName, resourceName, options);
   console.log(result);
 }
-
-updateAppliance().catch(console.error);

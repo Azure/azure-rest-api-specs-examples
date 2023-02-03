@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/preview/2022-04-15-preview/examples/AppliancesListBySubscription.json
  */
 async function listAppliancesBySubscription() {
-  const subscriptionId = "11111111-2222-3333-4444-555555555555";
+  const subscriptionId =
+    process.env["RESOURCECONNECTOR_SUBSCRIPTION_ID"] || "11111111-2222-3333-4444-555555555555";
   const credential = new DefaultAzureCredential();
   const client = new ResourceConnectorManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listAppliancesBySubscription() {
   }
   console.log(resArray);
 }
-
-listAppliancesBySubscription().catch(console.error);

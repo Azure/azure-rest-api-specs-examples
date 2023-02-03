@@ -1,0 +1,41 @@
+const { AutomationClient } = require("@azure/arm-automation");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Create the runbook identified by runbook name.
+ *
+ * @summary Create the runbook identified by runbook name.
+ * x-ms-original-file: specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/examples/createOrUpdateRunbook.json
+ */
+async function createOrUpdateRunbookAndPublishIt() {
+  const subscriptionId = process.env["AUTOMATION_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["AUTOMATION_RESOURCE_GROUP"] || "rg";
+  const automationAccountName = "ContoseAutomationAccount";
+  const runbookName = "Get-AzureVMTutorial";
+  const parameters = {
+    name: "Get-AzureVMTutorial",
+    description: "Description of the Runbook",
+    location: "East US 2",
+    logActivityTrace: 1,
+    logProgress: true,
+    logVerbose: false,
+    publishContentLink: {
+      contentHash: {
+        algorithm: "SHA256",
+        value: "115775B8FF2BE672D8A946BD0B489918C724DDE15A440373CA54461D53010A80",
+      },
+      uri: "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation-runbook-getvms/Runbooks/Get-AzureVMTutorial.ps1",
+    },
+    runbookType: "PowerShellWorkflow",
+    tags: { tag01: "value01", tag02: "value02" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new AutomationClient(credential, subscriptionId);
+  const result = await client.runbookOperations.createOrUpdate(
+    resourceGroupName,
+    automationAccountName,
+    runbookName,
+    parameters
+  );
+  console.log(result);
+}

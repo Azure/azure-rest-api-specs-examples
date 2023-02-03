@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-05-01/examples/AscOperations_Get.json
  */
 async function ascOperationsGet() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const location = "westus";
   const operationId = "testoperationid";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function ascOperationsGet() {
   const result = await client.ascOperations.get(location, operationId);
   console.log(result);
 }
-
-ascOperationsGet().catch(console.error);

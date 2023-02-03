@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-05-01/examples/StorageTargets_CreateOrUpdate_NoJunctions.json
  */
 async function storageTargetsCreateOrUpdateNoJunctions() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "scgroup";
+  const subscriptionId =
+    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["STORAGECACHE_RESOURCE_GROUP"] || "scgroup";
   const cacheName = "sc1";
   const storageTargetName = "st1";
   const storagetarget = {
@@ -27,5 +28,3 @@ async function storageTargetsCreateOrUpdateNoJunctions() {
   );
   console.log(result);
 }
-
-storageTargetsCreateOrUpdateNoJunctions().catch(console.error);

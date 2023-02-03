@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-05-01/examples/StorageTargets_Get.json
  */
 async function storageTargetsGet() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "scgroup";
+  const subscriptionId =
+    process.env["STORAGECACHE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["STORAGECACHE_RESOURCE_GROUP"] || "scgroup";
   const cacheName = "sc1";
   const storageTargetName = "st1";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function storageTargetsGet() {
   const result = await client.storageTargets.get(resourceGroupName, cacheName, storageTargetName);
   console.log(result);
 }
-
-storageTargetsGet().catch(console.error);

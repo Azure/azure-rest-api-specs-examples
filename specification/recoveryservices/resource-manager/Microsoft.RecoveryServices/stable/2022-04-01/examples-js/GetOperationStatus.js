@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-04-01/examples/GetOperationStatus.json
  */
 async function getOperationStatus() {
-  const subscriptionId = "77777777-b0c6-47a2-b37c-d8e65a629c18";
-  const resourceGroupName = "HelloWorld";
+  const subscriptionId =
+    process.env["RECOVERYSERVICES_SUBSCRIPTION_ID"] || "77777777-b0c6-47a2-b37c-d8e65a629c18";
+  const resourceGroupName = process.env["RECOVERYSERVICES_RESOURCE_GROUP"] || "HelloWorld";
   const vaultName = "swaggerExample";
   const operationId =
     "YWUzNDFkMzQtZmM5OS00MmUyLWEzNDMtZGJkMDIxZjlmZjgzOzdmYzBiMzhmLTc2NmItNDM5NS05OWQ1LTVmOGEzNzg4MWQzNA==";
@@ -18,5 +19,3 @@ async function getOperationStatus() {
   const result = await client.getOperationStatus(resourceGroupName, vaultName, operationId);
   console.log(result);
 }
-
-getOperationStatus().catch(console.error);

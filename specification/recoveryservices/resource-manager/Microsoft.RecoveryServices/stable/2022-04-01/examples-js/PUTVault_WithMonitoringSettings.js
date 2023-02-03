@@ -8,8 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-04-01/examples/PUTVault_WithMonitoringSettings.json
  */
 async function createOrUpdateVaultWithMonitoringSetting() {
-  const subscriptionId = "77777777-b0c6-47a2-b37c-d8e65a629c18";
-  const resourceGroupName = "Default-RecoveryServices-ResourceGroup";
+  const subscriptionId =
+    process.env["RECOVERYSERVICES_SUBSCRIPTION_ID"] || "77777777-b0c6-47a2-b37c-d8e65a629c18";
+  const resourceGroupName =
+    process.env["RECOVERYSERVICES_RESOURCE_GROUP"] || "Default-RecoveryServices-ResourceGroup";
   const vaultName = "swaggerExample";
   const vault = {
     identity: { type: "SystemAssigned" },
@@ -31,5 +33,3 @@ async function createOrUpdateVaultWithMonitoringSetting() {
   );
   console.log(result);
 }
-
-createOrUpdateVaultWithMonitoringSetting().catch(console.error);

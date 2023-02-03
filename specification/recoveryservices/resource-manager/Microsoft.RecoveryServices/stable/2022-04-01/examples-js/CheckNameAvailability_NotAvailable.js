@@ -12,8 +12,9 @@ or if one or more such resources exist, each of these must be GC'd and their tim
  * x-ms-original-file: specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-04-01/examples/CheckNameAvailability_NotAvailable.json
  */
 async function availabilityStatusOfResourceNameWhenResourceWithSameNameTypeAndSubscriptionExists() {
-  const subscriptionId = "77777777-b0c6-47a2-b37c-d8e65a629c18";
-  const resourceGroupName = "resGroupBar";
+  const subscriptionId =
+    process.env["RECOVERYSERVICES_SUBSCRIPTION_ID"] || "77777777-b0c6-47a2-b37c-d8e65a629c18";
+  const resourceGroupName = process.env["RECOVERYSERVICES_RESOURCE_GROUP"] || "resGroupBar";
   const location = "westus";
   const input = {
     name: "swaggerExample2",
@@ -28,7 +29,3 @@ async function availabilityStatusOfResourceNameWhenResourceWithSameNameTypeAndSu
   );
   console.log(result);
 }
-
-availabilityStatusOfResourceNameWhenResourceWithSameNameTypeAndSubscriptionExists().catch(
-  console.error
-);

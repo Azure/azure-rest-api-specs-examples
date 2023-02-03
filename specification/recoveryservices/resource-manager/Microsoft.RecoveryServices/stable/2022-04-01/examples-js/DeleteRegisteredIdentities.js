@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/recoveryservices/resource-manager/Microsoft.RecoveryServices/stable/2022-04-01/examples/DeleteRegisteredIdentities.json
  */
 async function deleteRegisteredIdentity() {
-  const subscriptionId = "77777777-d41f-4550-9f70-7708a3a2283b";
-  const resourceGroupName = "BCDRIbzRG";
+  const subscriptionId =
+    process.env["RECOVERYSERVICES_SUBSCRIPTION_ID"] || "77777777-d41f-4550-9f70-7708a3a2283b";
+  const resourceGroupName = process.env["RECOVERYSERVICES_RESOURCE_GROUP"] || "BCDRIbzRG";
   const vaultName = "BCDRIbzVault";
   const identityName = "dpmcontainer01";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function deleteRegisteredIdentity() {
   );
   console.log(result);
 }
-
-deleteRegisteredIdentity().catch(console.error);

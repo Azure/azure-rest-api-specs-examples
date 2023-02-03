@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/scvmm/resource-manager/Microsoft.ScVmm/preview/2020-06-05-preview/examples/ListCloudsBySubscription.json
  */
 async function listCloudsBySubscription() {
-  const subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
+  const subscriptionId =
+    process.env["SCVMM_SUBSCRIPTION_ID"] || "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
   const credential = new DefaultAzureCredential();
   const client = new Scvmm(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listCloudsBySubscription() {
   }
   console.log(resArray);
 }
-
-listCloudsBySubscription().catch(console.error);

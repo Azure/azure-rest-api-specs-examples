@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/examples/createOrUpdateDynamicMetricAlertSingleResource.json
  */
 async function createOrUpdateADynamicAlertRuleForSingleResource() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "gigtest";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "gigtest";
   const ruleName = "chiricutin";
   const parameters = {
     description: "This is the description of the rule1",
@@ -56,5 +57,3 @@ async function createOrUpdateADynamicAlertRuleForSingleResource() {
   const result = await client.metricAlerts.createOrUpdate(resourceGroupName, ruleName, parameters);
   console.log(result);
 }
-
-createOrUpdateADynamicAlertRuleForSingleResource().catch(console.error);

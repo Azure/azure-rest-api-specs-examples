@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/getAlertRuleIncident.json
  */
 async function getASingleAlertRuleIncident() {
-  const subscriptionId = "b67f7fec-69fc-4974-9099-a26bd6ffeda3";
-  const resourceGroupName = "Rac46PostSwapRG";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "b67f7fec-69fc-4974-9099-a26bd6ffeda3";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "Rac46PostSwapRG";
   const ruleName = "myRuleName";
   const incidentName = "Website_started";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getASingleAlertRuleIncident() {
   const result = await client.alertRuleIncidents.get(resourceGroupName, ruleName, incidentName);
   console.log(result);
 }
-
-getASingleAlertRuleIncident().catch(console.error);

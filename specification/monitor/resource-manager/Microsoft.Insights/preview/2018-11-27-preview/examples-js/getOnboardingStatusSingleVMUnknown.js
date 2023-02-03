@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/examples/getOnboardingStatusSingleVMUnknown.json
  */
 async function getStatusForAVMThatHasNotYetReportedData() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87/resourceGroups/vm-resource-group/providers/Microsoft.Compute/virtualMachines/ubuntu-vm";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function getStatusForAVMThatHasNotYetReportedData() {
   const result = await client.vMInsights.getOnboardingStatus(resourceUri);
   console.log(result);
 }
-
-getStatusForAVMThatHasNotYetReportedData().catch(console.error);

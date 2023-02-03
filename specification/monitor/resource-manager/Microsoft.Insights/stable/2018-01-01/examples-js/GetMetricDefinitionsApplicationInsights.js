@@ -1,4 +1,4 @@
-const { MonitorClient } = require("@azure/arm-monitor-profile-2020-09-01-hybrid");
+const { MonitorClient } = require("@azure/arm-monitor");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,12 +8,14 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-01-01/examples/GetMetricDefinitionsApplicationInsights.json
  */
 async function getApplicationInsightsMetricDefinitionsWithoutFilter() {
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/182c901a-129a-4f5d-86e4-cc6b294590a2/resourceGroups/hyr-log/providers/microsoft.insights/components/f1-bill/providers/microsoft.insights/metricdefinitions";
   const metricnamespace = "microsoft.insights/components";
   const options = { metricnamespace };
   const credential = new DefaultAzureCredential();
-  const client = new MonitorClient(credential);
+  const client = new MonitorClient(credential, subscriptionId);
   const resArray = new Array();
   for await (let item of client.metricDefinitions.list(resourceUri, options)) {
     resArray.push(item);

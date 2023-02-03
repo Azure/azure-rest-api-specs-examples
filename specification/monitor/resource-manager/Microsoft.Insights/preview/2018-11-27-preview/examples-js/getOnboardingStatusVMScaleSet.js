@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/examples/getOnboardingStatusVMScaleSet.json
  */
 async function getStatusForAVMScaleSetThatIsActivelyReportingData() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87/resourceGroups/my-service-cluster/providers/Microsoft.Compute/virtualMachineScaleSets/scale-set-01";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function getStatusForAVMScaleSetThatIsActivelyReportingData() {
   const result = await client.vMInsights.getOnboardingStatus(resourceUri);
   console.log(result);
 }
-
-getStatusForAVMScaleSetThatIsActivelyReportingData().catch(console.error);

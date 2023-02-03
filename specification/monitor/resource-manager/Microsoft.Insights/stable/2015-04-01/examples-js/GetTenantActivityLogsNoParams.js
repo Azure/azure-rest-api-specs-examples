@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/examples/GetTenantActivityLogsNoParams.json
  */
 async function getTenantActivityLogsWithoutFilterOrSelect() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new MonitorClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function getTenantActivityLogsWithoutFilterOrSelect() {
   }
   console.log(resArray);
 }
-
-getTenantActivityLogsWithoutFilterOrSelect().catch(console.error);

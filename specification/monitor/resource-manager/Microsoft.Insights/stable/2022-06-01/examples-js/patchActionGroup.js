@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/patchActionGroup.json
  */
 async function patchAnActionGroup() {
-  const subscriptionId = "187f412d-1758-44d9-b052-169e2564721d";
-  const resourceGroupName = "Default-NotificationRules";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "187f412d-1758-44d9-b052-169e2564721d";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "Default-NotificationRules";
   const actionGroupName = "SampleActionGroup";
   const actionGroupPatch = {
     enabled: false,
@@ -24,5 +25,3 @@ async function patchAnActionGroup() {
   );
   console.log(result);
 }
-
-patchAnActionGroup().catch(console.error);

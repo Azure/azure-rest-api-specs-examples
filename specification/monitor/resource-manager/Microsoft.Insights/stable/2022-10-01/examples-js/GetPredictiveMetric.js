@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/GetPredictiveMetric.json
  */
 async function getMetricForData() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "myRG";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "myRG";
   const autoscaleSettingName = "vmss1-Autoscale-775";
   const timespan = "2021-10-14T22:00:00.000Z/2021-10-16T22:00:00.000Z";
   const interval = "PT1H";
@@ -29,5 +30,3 @@ async function getMetricForData() {
   );
   console.log(result);
 }
-
-getMetricForData().catch(console.error);

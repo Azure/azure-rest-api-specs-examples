@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2017-12-01-preview/examples/GetMetricNamespaces.json
  */
 async function getMetricNamespacesWithoutFilter() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/182c901a-129a-4f5d-86e4-cc6b294590a2/resourceGroups/hyr-log/providers/microsoft.insights/components/f1-bill";
   const startTime = "2020-08-31T15:53:00Z";
@@ -21,5 +22,3 @@ async function getMetricNamespacesWithoutFilter() {
   }
   console.log(resArray);
 }
-
-getMetricNamespacesWithoutFilter().catch(console.error);

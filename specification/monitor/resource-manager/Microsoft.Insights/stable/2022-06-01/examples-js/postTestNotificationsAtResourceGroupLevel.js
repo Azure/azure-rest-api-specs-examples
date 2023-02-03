@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/postTestNotificationsAtResourceGroupLevel.json
  */
 async function createNotificationsAtResourceGroupLevel() {
-  const subscriptionId = "187f412d-1758-44d9-b052-169e2564721d";
-  const resourceGroupName = "Default-TestNotifications";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "187f412d-1758-44d9-b052-169e2564721d";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "Default-TestNotifications";
   const notificationRequest = {
     alertType: "budget",
     armRoleReceivers: [
@@ -127,5 +128,3 @@ async function createNotificationsAtResourceGroupLevel() {
   );
   console.log(result);
 }
-
-createNotificationsAtResourceGroupLevel().catch(console.error);

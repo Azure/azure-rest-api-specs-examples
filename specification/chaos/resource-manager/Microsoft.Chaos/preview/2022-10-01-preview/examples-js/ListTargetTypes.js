@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/chaos/resource-manager/Microsoft.Chaos/preview/2022-10-01-preview/examples/ListTargetTypes.json
  */
 async function listAllTargetTypesForWestus2Location() {
-  const subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
+  const subscriptionId =
+    process.env["CHAOS_SUBSCRIPTION_ID"] || "6b052e15-03d3-4f17-b2e1-be7f07588291";
   const locationName = "westus2";
   const continuationToken = undefined;
   const options = { continuationToken };
@@ -20,5 +21,3 @@ async function listAllTargetTypesForWestus2Location() {
   }
   console.log(resArray);
 }
-
-listAllTargetTypesForWestus2Location().catch(console.error);

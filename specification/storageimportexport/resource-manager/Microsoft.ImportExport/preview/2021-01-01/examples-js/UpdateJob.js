@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/examples/UpdateJob.json
  */
 async function updateImportJob() {
-  const subscriptionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+  const subscriptionId =
+    process.env["STORAGEIMPORTEXPORT_SUBSCRIPTION_ID"] || "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
   const jobName = "myJob";
-  const resourceGroupName = "myResourceGroup";
+  const resourceGroupName = process.env["STORAGEIMPORTEXPORT_RESOURCE_GROUP"] || "myResourceGroup";
   const body = {
     backupDriveManifest: true,
     logLevel: "Verbose",
@@ -21,5 +22,3 @@ async function updateImportJob() {
   const result = await client.jobs.update(jobName, resourceGroupName, body);
   console.log(result);
 }
-
-updateImportJob().catch(console.error);

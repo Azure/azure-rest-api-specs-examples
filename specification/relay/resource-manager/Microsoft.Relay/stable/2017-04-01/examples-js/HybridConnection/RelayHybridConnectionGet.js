@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/relay/resource-manager/Microsoft.Relay/stable/2017-04-01/examples/HybridConnection/RelayHybridConnectionGet.json
  */
 async function relayHybridConnectionGet() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "resourcegroup";
+  const subscriptionId =
+    process.env["RELAY_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["RELAY_RESOURCE_GROUP"] || "resourcegroup";
   const namespaceName = "example-RelayNamespace-01";
   const hybridConnectionName = "example-Relay-Hybrid-01";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function relayHybridConnectionGet() {
   );
   console.log(result);
 }
-
-relayHybridConnectionGet().catch(console.error);

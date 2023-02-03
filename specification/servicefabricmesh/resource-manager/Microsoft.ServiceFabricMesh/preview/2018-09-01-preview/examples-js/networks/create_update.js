@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/networks/create_update.json
  */
 async function createOrUpdateNetwork() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "sbz_demo";
+  const subscriptionId =
+    process.env["SERVICEFABRICMESH_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRICMESH_RESOURCE_GROUP"] || "sbz_demo";
   const networkResourceName = "sampleNetwork";
   const networkResourceDescription = {
     location: "EastUS",
@@ -29,5 +30,3 @@ async function createOrUpdateNetwork() {
   );
   console.log(result);
 }
-
-createOrUpdateNetwork().catch(console.error);

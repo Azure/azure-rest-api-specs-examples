@@ -26,5 +26,3 @@ async function joinRequestList() {
   }
   console.log(resArray);
 }
-
-joinRequestList().catch(console.error);

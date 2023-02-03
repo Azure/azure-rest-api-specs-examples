@@ -18,5 +18,3 @@ async function grantList() {
   }
   console.log(resArray);
 }
-
-grantList().catch(console.error);

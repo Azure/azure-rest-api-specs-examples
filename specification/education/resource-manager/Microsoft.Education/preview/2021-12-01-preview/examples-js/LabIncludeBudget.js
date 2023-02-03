@@ -23,5 +23,3 @@ async function labIncludeBudget() {
   );
   console.log(result);
 }
-
-labIncludeBudget().catch(console.error);

@@ -22,5 +22,3 @@ async function joinRequest() {
   );
   console.log(result);
 }
-
-joinRequest().catch(console.error);

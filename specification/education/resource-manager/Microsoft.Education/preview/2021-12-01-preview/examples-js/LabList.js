@@ -20,5 +20,3 @@ async function labList() {
   }
   console.log(resArray);
 }
-
-labList().catch(console.error);

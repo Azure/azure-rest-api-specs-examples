@@ -27,5 +27,3 @@ async function createLab() {
   );
   console.log(result);
 }
-
-createLab().catch(console.error);

@@ -17,5 +17,3 @@ async function grant() {
   const result = await client.grants.get(billingAccountName, billingProfileName, options);
   console.log(result);
 }
-
-grant().catch(console.error);

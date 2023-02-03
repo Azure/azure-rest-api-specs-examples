@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2017-07-01/examples/ChildResources_List.json
  */
 async function getHealthHistoryByResource() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["RESOURCEHEALTH_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri = "resourceUri";
   const credential = new DefaultAzureCredential();
   const client = new MicrosoftResourceHealth(credential, subscriptionId);
@@ -18,5 +19,3 @@ async function getHealthHistoryByResource() {
   }
   console.log(resArray);
 }
-
-getHealthHistoryByResource().catch(console.error);

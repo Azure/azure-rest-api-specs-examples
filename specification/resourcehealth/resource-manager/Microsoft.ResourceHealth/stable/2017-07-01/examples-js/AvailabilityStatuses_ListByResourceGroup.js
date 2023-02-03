@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2017-07-01/examples/AvailabilityStatuses_ListByResourceGroup.json
  */
 async function listByResourceGroup() {
-  const subscriptionId = "subscriptionId";
-  const resourceGroupName = "resourceGroupName";
+  const subscriptionId = process.env["RESOURCEHEALTH_SUBSCRIPTION_ID"] || "subscriptionId";
+  const resourceGroupName = process.env["RESOURCEHEALTH_RESOURCE_GROUP"] || "resourceGroupName";
   const expand = "recommendedactions";
   const options = {
     expand,
@@ -25,5 +25,3 @@ async function listByResourceGroup() {
   }
   console.log(resArray);
 }
-
-listByResourceGroup().catch(console.error);

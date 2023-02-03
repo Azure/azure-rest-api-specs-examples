@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBatchQuotaTicketForSpecificBatchAccountForPools.json
  */
 async function createATicketToRequestQuotaIncreaseForPoolsForABatchAccount() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const createSupportTicketParameters = {
     description: "my description",
@@ -45,5 +45,3 @@ async function createATicketToRequestQuotaIncreaseForPoolsForABatchAccount() {
   );
   console.log(result);
 }
-
-createATicketToRequestQuotaIncreaseForPoolsForABatchAccount().catch(console.error);

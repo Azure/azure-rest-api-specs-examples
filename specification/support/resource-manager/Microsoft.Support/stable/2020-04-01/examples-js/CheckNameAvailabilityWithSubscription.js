@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CheckNameAvailabilityWithSubscription.json
  */
 async function checksWhetherNameIsAvailableForSupportTicketResource() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const checkNameAvailabilityInput = {
     name: "sampleName",
     type: "Microsoft.Support/supportTickets",
@@ -18,5 +18,3 @@ async function checksWhetherNameIsAvailableForSupportTicketResource() {
   const result = await client.supportTickets.checkNameAvailability(checkNameAvailabilityInput);
   console.log(result);
 }
-
-checksWhetherNameIsAvailableForSupportTicketResource().catch(console.error);

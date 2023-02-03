@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateSupportTicketCommunication.json
  */
 async function addCommunicationToSubscriptionTicket() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const communicationName = "testcommunication";
   const createCommunicationParameters = {
@@ -25,5 +25,3 @@ async function addCommunicationToSubscriptionTicket() {
   );
   console.log(result);
 }
-
-addCommunicationToSubscriptionTicket().catch(console.error);

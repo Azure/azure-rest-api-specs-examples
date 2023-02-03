@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBillingSupportTicketForSubscription.json
  */
 async function createATicketForBillingRelatedIssues() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const createSupportTicketParameters = {
     description: "my description",
@@ -35,5 +35,3 @@ async function createATicketForBillingRelatedIssues() {
   );
   console.log(result);
 }
-
-createATicketForBillingRelatedIssues().catch(console.error);

@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/UpdateStatusOfSupportTicketForSubscription.json
  */
 async function updateStatusOfASupportTicket() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const updateSupportTicket = { status: "closed" };
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function updateStatusOfASupportTicket() {
   const result = await client.supportTickets.update(supportTicketName, updateSupportTicket);
   console.log(result);
 }
-
-updateStatusOfASupportTicket().catch(console.error);

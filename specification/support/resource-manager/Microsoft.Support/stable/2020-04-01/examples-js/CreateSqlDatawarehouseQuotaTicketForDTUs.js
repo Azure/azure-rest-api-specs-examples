@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateSqlDatawarehouseQuotaTicketForDTUs.json
  */
 async function createATicketToRequestQuotaIncreaseForDtUsForAzureSynapseAnalytics() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const createSupportTicketParameters = {
     description: "my description",
@@ -45,5 +45,3 @@ async function createATicketToRequestQuotaIncreaseForDtUsForAzureSynapseAnalytic
   );
   console.log(result);
 }
-
-createATicketToRequestQuotaIncreaseForDtUsForAzureSynapseAnalytics().catch(console.error);

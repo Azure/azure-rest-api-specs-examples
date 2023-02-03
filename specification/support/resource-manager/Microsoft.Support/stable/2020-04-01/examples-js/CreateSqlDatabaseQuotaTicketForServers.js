@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateSqlDatabaseQuotaTicketForServers.json
  */
 async function createATicketToRequestQuotaIncreaseForServersForSqlDatabase() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const createSupportTicketParameters = {
     description: "my description",
@@ -40,5 +40,3 @@ async function createATicketToRequestQuotaIncreaseForServersForSqlDatabase() {
   );
   console.log(result);
 }
-
-createATicketToRequestQuotaIncreaseForServersForSqlDatabase().catch(console.error);

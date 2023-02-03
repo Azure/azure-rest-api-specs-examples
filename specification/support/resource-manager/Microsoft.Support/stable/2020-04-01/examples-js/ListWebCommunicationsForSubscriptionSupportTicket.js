@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListWebCommunicationsForSubscriptionSupportTicket.json
  */
 async function listWebCommunicationsForASubscriptionSupportTicket() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const filter = "communicationType eq 'web'";
   const options = { filter };
@@ -20,5 +20,3 @@ async function listWebCommunicationsForASubscriptionSupportTicket() {
   }
   console.log(resArray);
 }
-
-listWebCommunicationsForASubscriptionSupportTicket().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/StopInQueryVirtualMachine.json
  */
 async function stopInQueryVirtualMachine() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["VMWARECLOUDSIMPLE_RESOURCE_GROUP"] || "myResourceGroup";
   const referer = "https://management.azure.com/";
   const virtualMachineName = "myVirtualMachine";
   const mode = "suspend";
@@ -24,5 +24,3 @@ async function stopInQueryVirtualMachine() {
   );
   console.log(result);
 }
-
-stopInQueryVirtualMachine().catch(console.error);

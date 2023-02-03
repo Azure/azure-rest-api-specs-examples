@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/GetPrivateCloud.json
  */
 async function getPrivateCloud() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const pcName = "myPrivateCloud";
   const regionId = "westus2";
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function getPrivateCloud() {
   const result = await client.privateClouds.get(pcName, regionId);
   console.log(result);
 }
-
-getPrivateCloud().catch(console.error);

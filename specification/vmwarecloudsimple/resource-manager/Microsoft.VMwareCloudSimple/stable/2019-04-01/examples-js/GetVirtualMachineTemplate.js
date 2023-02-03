@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/GetVirtualMachineTemplate.json
  */
 async function getVirtualMachineTemplate() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const regionId = "westus2";
   const pcName = "myPrivateCloud";
   const virtualMachineTemplateName = "vm-34";
@@ -21,5 +21,3 @@ async function getVirtualMachineTemplate() {
   );
   console.log(result);
 }
-
-getVirtualMachineTemplate().catch(console.error);

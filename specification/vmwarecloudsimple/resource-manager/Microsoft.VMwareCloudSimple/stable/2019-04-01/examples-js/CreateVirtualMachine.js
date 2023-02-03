@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/CreateVirtualMachine.json
  */
 async function createVirtualMachine() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["VMWARECLOUDSIMPLE_RESOURCE_GROUP"] || "myResourceGroup";
   const referer = "https://management.azure.com/";
   const virtualMachineName = "myVirtualMachine";
   const virtualMachineRequest = {
@@ -52,5 +52,3 @@ async function createVirtualMachine() {
   );
   console.log(result);
 }
-
-createVirtualMachine().catch(console.error);

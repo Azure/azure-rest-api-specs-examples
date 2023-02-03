@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/PatchDedicatedCloudNode.json
  */
 async function patchDedicatedCloudNode() {
-  const subscriptionId = "{subscription-id}";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
+  const resourceGroupName = process.env["VMWARECLOUDSIMPLE_RESOURCE_GROUP"] || "myResourceGroup";
   const dedicatedCloudNodeName = "myNode";
   const dedicatedCloudNodeRequest = {
     tags: { myTag: "tagValue" },
@@ -23,5 +23,3 @@ async function patchDedicatedCloudNode() {
   );
   console.log(result);
 }
-
-patchDedicatedCloudNode().catch(console.error);

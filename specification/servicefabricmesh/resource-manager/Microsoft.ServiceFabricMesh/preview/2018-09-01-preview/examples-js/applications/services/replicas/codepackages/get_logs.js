@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/applications/services/replicas/codepackages/get_logs.json
  */
 async function getContainerLogs() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "sbz_demo";
+  const subscriptionId =
+    process.env["SERVICEFABRICMESH_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRICMESH_RESOURCE_GROUP"] || "sbz_demo";
   const applicationResourceName = "sbzDocApp";
   const serviceResourceName = "sbzDocService";
   const replicaName = "0";
@@ -25,5 +26,3 @@ async function getContainerLogs() {
   );
   console.log(result);
 }
-
-getContainerLogs().catch(console.error);

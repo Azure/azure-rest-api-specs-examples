@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/secrets/values/delete.json
  */
 async function deleteSecretValue() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "sbz_demo";
+  const subscriptionId =
+    process.env["SERVICEFABRICMESH_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRICMESH_RESOURCE_GROUP"] || "sbz_demo";
   const secretResourceName = "dbConnectionString";
   const secretValueResourceName = "v1";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function deleteSecretValue() {
   );
   console.log(result);
 }
-
-deleteSecretValue().catch(console.error);

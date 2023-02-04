@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/relay/resource-manager/Microsoft.Relay/stable/2017-04-01/examples/Relay/RelayAutorizationRuleDelete.json
  */
 async function relayAutorizationRuleDelete() {
-  const subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const resourceGroupName = "resourcegroup";
+  const subscriptionId =
+    process.env["RELAY_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["RELAY_RESOURCE_GROUP"] || "resourcegroup";
   const namespaceName = "example-RelayNamespace-01";
   const relayName = "example-Relay-wcf-01";
   const authorizationRuleName = "example-RelayAuthRules-01";
@@ -23,5 +24,3 @@ async function relayAutorizationRuleDelete() {
   );
   console.log(result);
 }
-
-relayAutorizationRuleDelete().catch(console.error);

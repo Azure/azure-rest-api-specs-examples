@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/AvailableGroundStationsByCapabilityList.json
  */
 async function listOfGroundStationsByCapability() {
-  const subscriptionId = "subId";
+  const subscriptionId = process.env["ORBITAL_SUBSCRIPTION_ID"] || "subId";
   const capability = "EarthObservation";
   const credential = new DefaultAzureCredential();
   const client = new AzureOrbital(credential, subscriptionId);
@@ -18,5 +18,3 @@ async function listOfGroundStationsByCapability() {
   }
   console.log(resArray);
 }
-
-listOfGroundStationsByCapability().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/OperationResultsGet.json
  */
 async function kustoOperationResultsGet() {
-  const subscriptionId = "12345678-1234-1234-1234-123456789098";
+  const subscriptionId =
+    process.env["ORBITAL_SUBSCRIPTION_ID"] || "12345678-1234-1234-1234-123456789098";
   const location = "westus";
   const operationId = "30972f1b-b61d-4fd8-bd34-3dcfa24670f3";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function kustoOperationResultsGet() {
   const result = await client.operationsResults.beginGetAndWait(location, operationId);
   console.log(result);
 }
-
-kustoOperationResultsGet().catch(console.error);

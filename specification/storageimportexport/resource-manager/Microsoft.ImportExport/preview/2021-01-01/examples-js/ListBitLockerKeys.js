@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/examples/ListBitLockerKeys.json
  */
 async function listBitLockerKeysForDrivesInAJob() {
-  const subscriptionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+  const subscriptionId =
+    process.env["STORAGEIMPORTEXPORT_SUBSCRIPTION_ID"] || "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
   const jobName = "myJob";
-  const resourceGroupName = "myResourceGroup";
+  const resourceGroupName = process.env["STORAGEIMPORTEXPORT_RESOURCE_GROUP"] || "myResourceGroup";
   const credential = new DefaultAzureCredential();
   const client = new StorageImportExport(credential, subscriptionId);
   const resArray = new Array();
@@ -19,5 +20,3 @@ async function listBitLockerKeysForDrivesInAJob() {
   }
   console.log(resArray);
 }
-
-listBitLockerKeysForDrivesInAJob().catch(console.error);

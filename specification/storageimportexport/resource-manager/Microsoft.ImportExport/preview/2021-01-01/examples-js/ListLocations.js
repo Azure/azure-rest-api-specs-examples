@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/storageimportexport/resource-manager/Microsoft.ImportExport/preview/2021-01-01/examples/ListLocations.json
  */
 async function listLocations() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["STORAGEIMPORTEXPORT_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new StorageImportExport(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listLocations() {
   }
   console.log(resArray);
 }
-
-listLocations().catch(console.error);

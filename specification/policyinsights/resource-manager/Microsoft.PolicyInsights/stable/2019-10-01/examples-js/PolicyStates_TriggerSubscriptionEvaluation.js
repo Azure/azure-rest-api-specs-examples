@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_TriggerSubscriptionEvaluation.json
  */
 async function triggerEvaluationsForAllResourcesInASubscription() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new PolicyInsightsClient(credential, subscriptionId);
   const result = await client.policyStates.beginTriggerSubscriptionEvaluationAndWait(
@@ -16,5 +17,3 @@ async function triggerEvaluationsForAllResourcesInASubscription() {
   );
   console.log(result);
 }
-
-triggerEvaluationsForAllResourcesInASubscription().catch(console.error);

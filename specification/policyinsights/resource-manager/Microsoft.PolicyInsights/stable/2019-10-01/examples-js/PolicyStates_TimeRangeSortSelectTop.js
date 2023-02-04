@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_TimeRangeSortSelectTop.json
  */
 async function timeRangeSortSelectAndLimit() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyStatesResource = "latest";
   const top = 2;
   const orderBy =
@@ -32,5 +33,3 @@ async function timeRangeSortSelectAndLimit() {
   }
   console.log(resArray);
 }
-
-timeRangeSortSelectAndLimit().catch(console.error);

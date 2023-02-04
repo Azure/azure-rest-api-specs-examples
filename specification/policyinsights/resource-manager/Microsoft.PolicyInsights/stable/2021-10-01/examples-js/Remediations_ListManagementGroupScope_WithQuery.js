@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2021-10-01/examples/Remediations_ListManagementGroupScope_WithQuery.json
  */
 async function listRemediationsAtManagementGroupScopeWithQueryParameters() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupId = "financeMg";
   const top = 1;
   const filter =
@@ -24,5 +25,3 @@ async function listRemediationsAtManagementGroupScopeWithQueryParameters() {
   }
   console.log(resArray);
 }
-
-listRemediationsAtManagementGroupScopeWithQueryParameters().catch(console.error);

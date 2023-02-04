@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyEvents_QueryResourceGroupLevelPolicyAssignmentScopeNextLink.json
  */
 async function queryAtResourceGroupLevelPolicyAssignmentScopeWithNextLink() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyEventsResource = "default";
-  const resourceGroupName = "myResourceGroup";
+  const resourceGroupName = process.env["POLICYINSIGHTS_RESOURCE_GROUP"] || "myResourceGroup";
   const policyAssignmentName = "myPolicyAssignment";
   const skipToken = "WpmWfBSvPhkAK6QD";
   const options = {
@@ -30,5 +31,3 @@ async function queryAtResourceGroupLevelPolicyAssignmentScopeWithNextLink() {
   }
   console.log(resArray);
 }
-
-queryAtResourceGroupLevelPolicyAssignmentScopeWithNextLink().catch(console.error);

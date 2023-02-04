@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyEvents_FilterAndGroupByWithoutAggregate.json
  */
 async function filterAndGroupWithoutAggregate() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyEventsResource = "default";
   const top = 2;
   const fromParam = new Date("2018-01-05T18:00:00Z");
@@ -30,5 +31,3 @@ async function filterAndGroupWithoutAggregate() {
   }
   console.log(resArray);
 }
-
-filterAndGroupWithoutAggregate().catch(console.error);

@@ -8,8 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_SummarizeSubscriptionLevelPolicySetDefinitionScope.json
  */
 async function summarizeAtPolicySetDefinitionScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyStatesSummaryResource = "latest";
+
   const policySetDefinitionName = "3e3807c1-65c9-49e0-a406-82d8ae3e338c";
   const top = 1;
   const fromParam = new Date("2019-10-05T18:00:00Z");
@@ -28,5 +30,3 @@ async function summarizeAtPolicySetDefinitionScope() {
   );
   console.log(result);
 }
-
-summarizeAtPolicySetDefinitionScope().catch(console.error);

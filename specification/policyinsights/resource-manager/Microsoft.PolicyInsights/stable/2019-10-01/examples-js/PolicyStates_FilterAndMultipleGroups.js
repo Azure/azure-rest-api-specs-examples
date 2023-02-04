@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyStates_FilterAndMultipleGroups.json
  */
 async function filterAndMultipleGroups() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyStatesResource = "latest";
   const top = 10;
   const orderBy = "NumNonCompliantResources desc";
@@ -30,5 +31,3 @@ async function filterAndMultipleGroups() {
   }
   console.log(resArray);
 }
-
-filterAndMultipleGroups().catch(console.error);

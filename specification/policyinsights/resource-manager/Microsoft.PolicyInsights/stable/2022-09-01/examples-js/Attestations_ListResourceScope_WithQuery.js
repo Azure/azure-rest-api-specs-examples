@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-09-01/examples/Attestations_ListResourceScope_WithQuery.json
  */
 async function listAttestationsAtIndividualResourceScopeWithQueryParameters() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceId =
     "subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myrg/providers/microsoft.compute/virtualMachines/devVM";
   const top = 1;
@@ -23,5 +24,3 @@ async function listAttestationsAtIndividualResourceScopeWithQueryParameters() {
   }
   console.log(resArray);
 }
-
-listAttestationsAtIndividualResourceScopeWithQueryParameters().catch(console.error);

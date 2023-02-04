@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2022-03-01/examples/PolicyRestrictions_CheckAtSubscriptionScope.json
  */
 async function checkPolicyRestrictionsAtSubscriptionScope() {
-  const subscriptionId = "35ee058e-5fa0-414c-8145-3ebb8d09b6e2";
+  const subscriptionId =
+    process.env["POLICYINSIGHTS_SUBSCRIPTION_ID"] || "35ee058e-5fa0-414c-8145-3ebb8d09b6e2";
   const parameters = {
     pendingFields: [
       { field: "name", values: ["myVMName"] },
@@ -31,5 +32,3 @@ async function checkPolicyRestrictionsAtSubscriptionScope() {
   const result = await client.policyRestrictions.checkAtSubscriptionScope(parameters);
   console.log(result);
 }
-
-checkPolicyRestrictionsAtSubscriptionScope().catch(console.error);

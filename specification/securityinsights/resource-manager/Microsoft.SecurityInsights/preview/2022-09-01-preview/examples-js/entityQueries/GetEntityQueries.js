@@ -8,9 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entityQueries/GetEntityQueries.json
  */
 async function getAllEntityQueries() {
-  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
   const kind = "Expansion";
-  const resourceGroupName = "myRg";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const workspaceName = "myWorkspace";
   const options = { kind };
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getAllEntityQueries() {
   }
   console.log(resArray);
 }
-
-getAllEntityQueries().catch(console.error);

@@ -8,13 +8,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/enrichment/GetGeodataByIp.json
  */
 async function getGeodataForASingleIPAddress() {
-  const subscriptionId = "bd794837-4d29-4647-9105-6339bfdb4e6a";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "bd794837-4d29-4647-9105-6339bfdb4e6a";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const ipAddress = "1.2.3.4";
   const credential = new DefaultAzureCredential();
   const client = new SecurityInsights(credential, subscriptionId);
   const result = await client.iPGeodata.get(resourceGroupName, ipAddress);
   console.log(result);
 }
-
-getGeodataForASingleIPAddress().catch(console.error);

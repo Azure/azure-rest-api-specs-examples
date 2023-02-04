@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/dataConnectors/GetDynamics365DataConnectorById.json
  */
 async function getADynamics365DataConnector() {
-  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const workspaceName = "myWorkspace";
   const dataConnectorId = "c2541efb-c9a6-47fe-9501-87d1017d1512";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getADynamics365DataConnector() {
   const result = await client.dataConnectors.get(resourceGroupName, workspaceName, dataConnectorId);
   console.log(result);
 }
-
-getADynamics365DataConnector().catch(console.error);

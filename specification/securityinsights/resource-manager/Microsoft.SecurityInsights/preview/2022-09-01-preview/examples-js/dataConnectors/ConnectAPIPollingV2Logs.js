@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/dataConnectors/ConnectAPIPollingV2Logs.json
  */
 async function connectAnApiPollingV2LogsDataConnector() {
-  const subscriptionId = "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITYINSIGHT_SUBSCRIPTION_ID"] || "d0cfe6b2-9ac0-4464-9919-dccaee2e48c0";
+  const resourceGroupName = process.env["SECURITYINSIGHT_RESOURCE_GROUP"] || "myRg";
   const workspaceName = "myWorkspace";
   const dataConnectorId = "316ec55e-7138-4d63-ab18-90c8a60fd1c8";
   const connectBody = {
@@ -37,5 +38,3 @@ async function connectAnApiPollingV2LogsDataConnector() {
   );
   console.log(result);
 }
-
-connectAnApiPollingV2LogsDataConnector().catch(console.error);

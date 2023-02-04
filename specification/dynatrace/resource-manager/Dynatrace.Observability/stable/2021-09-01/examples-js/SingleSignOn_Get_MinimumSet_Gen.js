@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/examples/SingleSignOn_Get_MinimumSet_Gen.json
  */
 async function singleSignOnGetMinimumSetGen() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId =
+    process.env["DYNATRACE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["DYNATRACE_RESOURCE_GROUP"] || "myResourceGroup";
   const monitorName = "myMonitor";
   const configurationName = "default";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function singleSignOnGetMinimumSetGen() {
   const result = await client.singleSignOn.get(resourceGroupName, monitorName, configurationName);
   console.log(result);
 }
-
-singleSignOnGetMinimumSetGen().catch(console.error);

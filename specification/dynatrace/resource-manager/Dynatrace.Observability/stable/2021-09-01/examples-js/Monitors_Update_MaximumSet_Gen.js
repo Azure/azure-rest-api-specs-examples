@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/examples/Monitors_Update_MaximumSet_Gen.json
  */
 async function monitorsUpdateMaximumSetGen() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId =
+    process.env["DYNATRACE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["DYNATRACE_RESOURCE_GROUP"] || "myResourceGroup";
   const monitorName = "myMonitor";
   const resource = {
     dynatraceEnvironmentProperties: {
@@ -39,5 +40,3 @@ async function monitorsUpdateMaximumSetGen() {
   const result = await client.monitors.update(resourceGroupName, monitorName, resource);
   console.log(result);
 }
-
-monitorsUpdateMaximumSetGen().catch(console.error);

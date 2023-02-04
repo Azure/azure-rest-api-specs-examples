@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/examples/Monitors_ListBySubscriptionId_MaximumSet_Gen.json
  */
 async function monitorsListBySubscriptionIdMaximumSetGen() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["DYNATRACE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new DynatraceObservability(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function monitorsListBySubscriptionIdMaximumSetGen() {
   }
   console.log(resArray);
 }
-
-monitorsListBySubscriptionIdMaximumSetGen().catch(console.error);

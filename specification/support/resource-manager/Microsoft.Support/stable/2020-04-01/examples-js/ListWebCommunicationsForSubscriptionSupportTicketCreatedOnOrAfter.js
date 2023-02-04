@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListWebCommunicationsForSubscriptionSupportTicketCreatedOnOrAfter.json
  */
 async function listWebCommunicationCreatedOnOrAfterASpecificDateForASubscriptionSupportTicket() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const filter = "communicationType eq 'web' and createdDate ge 2020-03-10T22:08:51Z";
   const options = { filter };
@@ -20,7 +20,3 @@ async function listWebCommunicationCreatedOnOrAfterASpecificDateForASubscription
   }
   console.log(resArray);
 }
-
-listWebCommunicationCreatedOnOrAfterASpecificDateForASubscriptionSupportTicket().catch(
-  console.error
-);

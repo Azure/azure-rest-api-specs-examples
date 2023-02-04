@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListProblemClassifications.json
  */
 async function getsListOfProblemClassificationsForAServiceForWhichASupportTicketCanBeCreated() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["SUPPORT_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const serviceName = "service_guid";
   const credential = new DefaultAzureCredential();
   const client = new MicrosoftSupport(credential, subscriptionId);
@@ -18,7 +19,3 @@ async function getsListOfProblemClassificationsForAServiceForWhichASupportTicket
   }
   console.log(resArray);
 }
-
-getsListOfProblemClassificationsForAServiceForWhichASupportTicketCanBeCreated().catch(
-  console.error
-);

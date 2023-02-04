@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateMachineLearningQuotaTicketForLowPriorityCores.json
  */
 async function createATicketToRequestQuotaIncreaseForLowPriorityCoresForMachineLearningService() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const supportTicketName = "testticket";
   const createSupportTicketParameters = {
     description: "my description",
@@ -40,7 +40,3 @@ async function createATicketToRequestQuotaIncreaseForLowPriorityCoresForMachineL
   );
   console.log(result);
 }
-
-createATicketToRequestQuotaIncreaseForLowPriorityCoresForMachineLearningService().catch(
-  console.error
-);

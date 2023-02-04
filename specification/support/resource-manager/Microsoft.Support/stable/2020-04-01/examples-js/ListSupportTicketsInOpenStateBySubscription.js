@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListSupportTicketsInOpenStateBySubscription.json
  */
 async function listSupportTicketsInOpenStateForASubscription() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["SUPPORT_SUBSCRIPTION_ID"] || "subid";
   const filter = "status eq 'Open'";
   const options = { filter };
   const credential = new DefaultAzureCredential();
@@ -19,5 +19,3 @@ async function listSupportTicketsInOpenStateForASubscription() {
   }
   console.log(resArray);
 }
-
-listSupportTicketsInOpenStateForASubscription().catch(console.error);

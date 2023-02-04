@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/examples/TenantConfiguration/GetListOfTenantConfigurations.json
  */
 async function getListOfTenantConfigurations() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["PORTAL_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new Portal(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function getListOfTenantConfigurations() {
   }
   console.log(resArray);
 }
-
-getListOfTenantConfigurations().catch(console.error);

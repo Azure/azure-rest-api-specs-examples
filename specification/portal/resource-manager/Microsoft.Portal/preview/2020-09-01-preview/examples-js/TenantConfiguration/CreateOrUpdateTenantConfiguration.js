@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/portal/resource-manager/Microsoft.Portal/preview/2020-09-01-preview/examples/TenantConfiguration/CreateOrUpdateTenantConfiguration.json
  */
 async function createOrUpdateTenantConfiguration() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["PORTAL_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const configurationName = "default";
   const tenantConfiguration = {
     enforcePrivateMarkdownStorage: true,
@@ -18,5 +19,3 @@ async function createOrUpdateTenantConfiguration() {
   const result = await client.tenantConfigurations.create(configurationName, tenantConfiguration);
   console.log(result);
 }
-
-createOrUpdateTenantConfiguration().catch(console.error);

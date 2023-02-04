@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/ListPrivateCloudInLocation.json
  */
 async function listPrivateCloudInLocation() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const regionId = "eastus";
   const credential = new DefaultAzureCredential();
   const client = new VMwareCloudSimple(credential, subscriptionId);
@@ -18,5 +18,3 @@ async function listPrivateCloudInLocation() {
   }
   console.log(resArray);
 }
-
-listPrivateCloudInLocation().catch(console.error);

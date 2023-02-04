@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/GetResourcePool.json
  */
 async function getResourcePool() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const regionId = "westus2";
   const pcName = "myPrivateCloud";
   const resourcePoolName = "resgroup-26";
@@ -17,5 +17,3 @@ async function getResourcePool() {
   const result = await client.resourcePools.get(regionId, pcName, resourcePoolName);
   console.log(result);
 }
-
-getResourcePool().catch(console.error);

@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/GetCustomizationPolicy.json
  */
 async function getCustomizationPolicy() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const regionId = "myResourceGroup";
   const pcName = "myPrivateCloud";
   const customizationPolicyName = "Linux1";
@@ -17,5 +17,3 @@ async function getCustomizationPolicy() {
   const result = await client.customizationPolicies.get(regionId, pcName, customizationPolicyName);
   console.log(result);
 }
-
-getCustomizationPolicy().catch(console.error);

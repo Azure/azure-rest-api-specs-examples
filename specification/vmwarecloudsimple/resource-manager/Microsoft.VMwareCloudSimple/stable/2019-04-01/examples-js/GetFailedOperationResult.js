@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/GetFailedOperationResult.json
  */
 async function getFailedOperationResult() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const regionId = "westus2";
   const referer = "https://management.azure.com/";
   const operationId = "d030bb3f-7d53-11e9-8e09-9a86872085ff";
@@ -17,5 +17,3 @@ async function getFailedOperationResult() {
   const result = await client.operations.get(regionId, referer, operationId);
   console.log(result);
 }
-
-getFailedOperationResult().catch(console.error);

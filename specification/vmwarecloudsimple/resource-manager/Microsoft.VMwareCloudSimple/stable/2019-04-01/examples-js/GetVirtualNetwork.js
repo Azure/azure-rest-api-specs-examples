@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/GetVirtualNetwork.json
  */
 async function getVirtualNetwork() {
-  const subscriptionId = "{subscription-id}";
+  const subscriptionId = process.env["VMWARECLOUDSIMPLE_SUBSCRIPTION_ID"] || "{subscription-id}";
   const regionId = "westus2";
   const pcName = "myPrivateCloud";
   const virtualNetworkName = "dvportgroup-19";
@@ -17,5 +17,3 @@ async function getVirtualNetwork() {
   const result = await client.virtualNetworks.get(regionId, pcName, virtualNetworkName);
   console.log(result);
 }
-
-getVirtualNetwork().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/ImportCollectors_Create.json
  */
 async function importCollectorsCreate() {
-  const subscriptionId = "31be0ff4-c932-4cb3-8efc-efa411d79280";
-  const resourceGroupName = "markusavstestrg";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "31be0ff4-c932-4cb3-8efc-efa411d79280";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "markusavstestrg";
   const projectName = "rajoshCCY9671project";
   const importCollectorName = "importCollector2952";
   const collectorBody = {
@@ -33,5 +34,3 @@ async function importCollectorsCreate() {
   );
   console.log(result);
 }
-
-importCollectorsCreate().catch(console.error);

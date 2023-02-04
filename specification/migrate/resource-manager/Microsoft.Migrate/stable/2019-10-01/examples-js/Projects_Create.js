@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/Projects_Create.json
  */
 async function projectsCreate() {
-  const subscriptionId = "6393a73f-8d55-47ef-b6dd-179b3e0c7910";
-  const resourceGroupName = "abgoyal-westEurope";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "6393a73f-8d55-47ef-b6dd-179b3e0c7910";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "abgoyal-westEurope";
   const projectName = "abGoyalProject2";
   const project = {
     eTag: "",
@@ -29,5 +30,3 @@ async function projectsCreate() {
   const result = await client.projects.create(resourceGroupName, projectName, options);
   console.log(result);
 }
-
-projectsCreate().catch(console.error);

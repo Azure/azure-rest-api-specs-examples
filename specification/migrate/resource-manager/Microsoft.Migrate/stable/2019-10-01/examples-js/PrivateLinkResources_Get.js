@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/PrivateLinkResources_Get.json
  */
 async function privateLinkResourcesGet() {
-  const subscriptionId = "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
-  const resourceGroupName = "madhavicus";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "4bd2aa0f-2bd2-4d67-91a8-5a4533d58600";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "madhavicus";
   const projectName = "custestpece80project";
   const privateLinkResourceName = "Default";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function privateLinkResourcesGet() {
   );
   console.log(result);
 }
-
-privateLinkResourcesGet().catch(console.error);

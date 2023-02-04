@@ -14,8 +14,9 @@ A group is an aggregation mechanism for machines in a project. Therefore, deleti
  * x-ms-original-file: specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/Groups_Delete.json
  */
 async function groupsDelete() {
-  const subscriptionId = "6393a73f-8d55-47ef-b6dd-179b3e0c7910";
-  const resourceGroupName = "abgoyal-westEurope";
+  const subscriptionId =
+    process.env["MIGRATE_SUBSCRIPTION_ID"] || "6393a73f-8d55-47ef-b6dd-179b3e0c7910";
+  const resourceGroupName = process.env["MIGRATE_RESOURCE_GROUP"] || "abgoyal-westEurope";
   const projectName = "abgoyalWEselfhostb72bproject";
   const groupName = "Test1";
   const credential = new DefaultAzureCredential();
@@ -23,5 +24,3 @@ async function groupsDelete() {
   const result = await client.groups.delete(resourceGroupName, projectName, groupName);
   console.log(result);
 }
-
-groupsDelete().catch(console.error);

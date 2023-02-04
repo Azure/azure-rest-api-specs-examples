@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/DataSourcesCreate.json
  */
 async function dataSourcesCreate() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "OIAutoRest5123";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "OIAutoRest5123";
   const workspaceName = "AzTest9724";
   const dataSourceName = "AzTestDS774";
   const parameters = {
@@ -29,5 +30,3 @@ async function dataSourcesCreate() {
   );
   console.log(result);
 }
-
-dataSourcesCreate().catch(console.error);

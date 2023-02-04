@@ -2,21 +2,20 @@ const { OperationalInsightsManagementClient } = require("@azure/arm-operationali
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Gets workspaces in a resource group.
+ * This sample demonstrates how to Gets recently deleted workspaces in a resource group, available for recovery.
  *
- * @summary Gets workspaces in a resource group.
+ * @summary Gets recently deleted workspaces in a resource group, available for recovery.
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/examples/WorkspacesListByResourceGroup.json
  */
 async function workspacesGet() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "oiautorest6685";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "oiautorest6685";
   const credential = new DefaultAzureCredential();
   const client = new OperationalInsightsManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.workspaces.listByResourceGroup(resourceGroupName)) {
+  for await (let item of client.deletedWorkspaces.listByResourceGroup(resourceGroupName)) {
     resArray.push(item);
   }
   console.log(resArray);
 }
-
-workspacesGet().catch(console.error);

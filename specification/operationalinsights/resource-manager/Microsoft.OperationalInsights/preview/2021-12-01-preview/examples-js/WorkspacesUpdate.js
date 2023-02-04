@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/examples/WorkspacesUpdate.json
  */
 async function workspacesPatch() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "oiautorest6685";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "oiautorest6685";
   const workspaceName = "oiautorest6685";
   const parameters = {
     retentionInDays: 30,
@@ -21,5 +22,3 @@ async function workspacesPatch() {
   const result = await client.workspaces.update(resourceGroupName, workspaceName, parameters);
   console.log(result);
 }
-
-workspacesPatch().catch(console.error);

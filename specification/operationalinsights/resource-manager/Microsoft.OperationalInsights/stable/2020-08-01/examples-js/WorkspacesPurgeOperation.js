@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurgeOperation.json
  */
 async function workspacePurgeOperation() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "OIAutoRest5123";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "OIAutoRest5123";
   const workspaceName = "aztest5048";
   const purgeId = "purge-970318e7-b859-4edb-8903-83b1b54d0b74";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function workspacePurgeOperation() {
   );
   console.log(result);
 }
-
-workspacePurgeOperation().catch(console.error);

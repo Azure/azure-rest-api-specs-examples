@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/preview/2021-12-01-preview/examples/TablesDelete.json
  */
 async function tablesGet() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "oiautorest6685";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "oiautorest6685";
   const workspaceName = "oiautorest6685";
   const tableName = "table1_CL";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function tablesGet() {
   );
   console.log(result);
 }
-
-tablesGet().catch(console.error);

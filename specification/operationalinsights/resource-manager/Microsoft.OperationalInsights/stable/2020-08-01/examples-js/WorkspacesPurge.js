@@ -12,8 +12,9 @@ In order to manage system resources, purge requests are throttled at 50 requests
  * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurge.json
  */
 async function workspacePurge() {
-  const subscriptionId = "00000000-0000-0000-0000-00000000000";
-  const resourceGroupName = "OIAutoRest5123";
+  const subscriptionId =
+    process.env["OPERATIONALINSIGHTS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName = process.env["OPERATIONALINSIGHTS_RESOURCE_GROUP"] || "OIAutoRest5123";
   const workspaceName = "aztest5048";
   const body = {
     filters: [{ column: "TimeGenerated", operator: ">", value: "2017-09-01T00:00:00" }],
@@ -24,5 +25,3 @@ async function workspacePurge() {
   const result = await client.workspacePurge.purge(resourceGroupName, workspaceName, body);
   console.log(result);
 }
-
-workspacePurge().catch(console.error);

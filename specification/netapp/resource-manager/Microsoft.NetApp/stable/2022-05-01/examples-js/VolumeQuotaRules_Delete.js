@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2022-05-01/examples/VolumeQuotaRules_Delete.json
  */
 async function volumeQuotaRulesDelete() {
-  const subscriptionId = "5275316f-a498-48d6-b324-2cbfdc4311b9";
-  const resourceGroupName = "myRG";
+  const subscriptionId =
+    process.env["NETAPP_SUBSCRIPTION_ID"] || "5275316f-a498-48d6-b324-2cbfdc4311b9";
+  const resourceGroupName = process.env["NETAPP_RESOURCE_GROUP"] || "myRG";
   const accountName = "account-9957";
   const poolName = "pool-5210";
   const volumeName = "volume-6387";
@@ -25,5 +26,3 @@ async function volumeQuotaRulesDelete() {
   );
   console.log(result);
 }
-
-volumeQuotaRulesDelete().catch(console.error);

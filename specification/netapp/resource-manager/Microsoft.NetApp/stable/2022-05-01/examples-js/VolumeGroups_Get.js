@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2022-05-01/examples/VolumeGroups_Get.json
  */
 async function volumeGroupsGet() {
-  const subscriptionId = "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
-  const resourceGroupName = "myRG";
+  const subscriptionId =
+    process.env["NETAPP_SUBSCRIPTION_ID"] || "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
+  const resourceGroupName = process.env["NETAPP_RESOURCE_GROUP"] || "myRG";
   const accountName = "account1";
   const volumeGroupName = "group1";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function volumeGroupsGet() {
   const result = await client.volumeGroups.get(resourceGroupName, accountName, volumeGroupName);
   console.log(result);
 }
-
-volumeGroupsGet().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2015-04-01/examples/GetTenantActivityLogsSelected.json
  */
 async function getTenantActivityLogsWithSelect() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const select =
     "eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level";
   const options = { select };
@@ -20,5 +21,3 @@ async function getTenantActivityLogsWithSelect() {
   }
   console.log(resArray);
 }
-
-getTenantActivityLogsWithSelect().catch(console.error);

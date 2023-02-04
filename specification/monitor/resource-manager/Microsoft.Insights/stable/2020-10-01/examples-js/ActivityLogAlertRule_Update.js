@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/examples/ActivityLogAlertRule_Update.json
  */
 async function patchAnActivityLogAlertRule() {
-  const subscriptionId = "187f412d-1758-44d9-b052-169e2564721d";
-  const resourceGroupName = "MyResourceGroup";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "187f412d-1758-44d9-b052-169e2564721d";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "MyResourceGroup";
   const activityLogAlertName = "SampleActivityLogAlertRule";
   const activityLogAlertRulePatch = {
     enabled: false,
@@ -24,5 +25,3 @@ async function patchAnActivityLogAlertRule() {
   );
   console.log(result);
 }
-
-patchAnActivityLogAlertRule().catch(console.error);

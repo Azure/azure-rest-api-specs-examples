@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/PrivateLinkScopesList.json
  */
 async function privateLinkScopesListJson() {
-  const subscriptionId = "86dc51d3-92ed-4d7e-947a-775ea79b4919";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "86dc51d3-92ed-4d7e-947a-775ea79b4919";
   const credential = new DefaultAzureCredential();
   const client = new MonitorClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function privateLinkScopesListJson() {
   }
   console.log(resArray);
 }
-
-privateLinkScopesListJson().catch(console.error);

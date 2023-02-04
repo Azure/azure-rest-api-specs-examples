@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/examples/createOrUpdateScheduledQueryRule-LogToMetricAction.json
  */
 async function createOrUpdateRuleLogToMetricAction() {
-  const subscriptionId = "af52d502-a447-4bc6-8cb7-4780fbb00490";
-  const resourceGroupName = "alertsweu";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "af52d502-a447-4bc6-8cb7-4780fbb00490";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "alertsweu";
   const ruleName = "logtometricfoo";
   const parameters = {
     description: "log to metric description",
@@ -35,5 +36,3 @@ async function createOrUpdateRuleLogToMetricAction() {
   );
   console.log(result);
 }
-
-createOrUpdateRuleLogToMetricAction().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/patchAlertRule.json
  */
 async function patchAnAlertRule() {
-  const subscriptionId = "b67f7fec-69fc-4974-9099-a26bd6ffeda3";
-  const resourceGroupName = "Rac46PostSwapRG";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "b67f7fec-69fc-4974-9099-a26bd6ffeda3";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "Rac46PostSwapRG";
   const ruleName = "chiricutin";
   const alertRulesResource = {
     name: "chiricutin",
@@ -38,5 +39,3 @@ async function patchAnAlertRule() {
   const result = await client.alertRules.update(resourceGroupName, ruleName, alertRulesResource);
   console.log(result);
 }
-
-patchAnAlertRule().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2019-03-01/examples/metricBaselines.json
  */
 async function getMetricBaselines() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["MONITOR_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri =
     "subscriptions/b368ca2f-e298-46b7-b0ab-012281956afa/resourceGroups/vms/providers/Microsoft.Compute/virtualMachines/vm1";
   const timespan = "2019-03-12T11:00:00.000Z/2019-03-12T12:00:00.000Z";
@@ -29,5 +30,3 @@ async function getMetricBaselines() {
   }
   console.log(resArray);
 }
-
-getMetricBaselines().catch(console.error);

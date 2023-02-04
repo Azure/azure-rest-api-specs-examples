@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-04-16/examples/patchScheduledQueryRules.json
  */
 async function patchLogSearchRule() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId = process.env["MONITOR_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["MONITOR_RESOURCE_GROUP"] || "my-resource-group";
   const ruleName = "logalertfoo";
   const parameters = { enabled: "true" };
   const credential = new DefaultAzureCredential();
@@ -17,5 +17,3 @@ async function patchLogSearchRule() {
   const result = await client.scheduledQueryRules.update(resourceGroupName, ruleName, parameters);
   console.log(result);
 }
-
-patchLogSearchRule().catch(console.error);

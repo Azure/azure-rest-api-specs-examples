@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2017-07-01/examples/ChildAvailabilityStatus_GetByResource.json
  */
 async function getCurrentHealthByResource() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["RESOURCEHEALTH_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const resourceUri = "resourceUri";
   const expand = "recommendedactions";
   const options = {
@@ -19,5 +20,3 @@ async function getCurrentHealthByResource() {
   const result = await client.childAvailabilityStatuses.getByResource(resourceUri, options);
   console.log(result);
 }
-
-getCurrentHealthByResource().catch(console.error);

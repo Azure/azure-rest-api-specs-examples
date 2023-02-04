@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2017-07-01/examples/AvailabilityStatuses_ListBySubscriptionId.json
  */
 async function listHealthBySubscriptionId() {
-  const subscriptionId = "subscriptionId";
+  const subscriptionId = process.env["RESOURCEHEALTH_SUBSCRIPTION_ID"] || "subscriptionId";
   const expand = "recommendedactions";
   const options = {
     expand,
@@ -21,5 +21,3 @@ async function listHealthBySubscriptionId() {
   }
   console.log(resArray);
 }
-
-listHealthBySubscriptionId().catch(console.error);

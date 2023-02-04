@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheCreate.json
  */
 async function redisCacheCreate() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["REDIS_RESOURCE_GROUP"] || "rg1";
   const name = "cache1";
   const parameters = {
     enableNonSslPort: true,
@@ -30,5 +30,3 @@ async function redisCacheCreate() {
   const result = await client.redis.beginCreateAndWait(resourceGroupName, name, parameters);
   console.log(result);
 }
-
-redisCacheCreate().catch(console.error);

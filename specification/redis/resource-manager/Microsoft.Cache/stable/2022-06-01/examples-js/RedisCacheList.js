@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheList.json
  */
 async function redisCacheList() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "subid";
   const credential = new DefaultAzureCredential();
   const client = new RedisManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function redisCacheList() {
   }
   console.log(resArray);
 }
-
-redisCacheList().catch(console.error);

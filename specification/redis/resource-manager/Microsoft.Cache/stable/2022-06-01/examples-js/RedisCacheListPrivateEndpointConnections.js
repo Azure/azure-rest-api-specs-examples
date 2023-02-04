@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheListPrivateEndpointConnections.json
  */
 async function redisCacheListPrivateEndpointConnection() {
-  const subscriptionId = "{subscriptionId}";
-  const resourceGroupName = "rgtest01";
+  const subscriptionId = process.env["REDIS_SUBSCRIPTION_ID"] || "{subscriptionId}";
+  const resourceGroupName = process.env["REDIS_RESOURCE_GROUP"] || "rgtest01";
   const cacheName = "cachetest01";
   const credential = new DefaultAzureCredential();
   const client = new RedisManagementClient(credential, subscriptionId);
@@ -19,5 +19,3 @@ async function redisCacheListPrivateEndpointConnection() {
   }
   console.log(resArray);
 }
-
-redisCacheListPrivateEndpointConnection().catch(console.error);

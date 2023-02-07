@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateGatewayApi.json
  */
 async function apiManagementCreateGatewayApi() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const gatewayId = "gw1";
   const apiId = "echo-api";
@@ -26,5 +26,3 @@ async function apiManagementCreateGatewayApi() {
   );
   console.log(result);
 }
-
-apiManagementCreateGatewayApi().catch(console.error);

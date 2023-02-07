@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementDeleteApiIssue.json
  */
 async function apiManagementDeleteApiIssue() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "57d1f7558aa04f15146d9d8a";
   const issueId = "57d2ef278aa04f0ad01d6cdc";
@@ -25,5 +25,3 @@ async function apiManagementDeleteApiIssue() {
   );
   console.log(result);
 }
-
-apiManagementDeleteApiIssue().catch(console.error);

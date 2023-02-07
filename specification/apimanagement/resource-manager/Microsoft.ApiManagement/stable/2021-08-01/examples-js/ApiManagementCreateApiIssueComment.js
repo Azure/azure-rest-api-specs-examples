@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateApiIssueComment.json
  */
 async function apiManagementCreateApiIssueComment() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "57d1f7558aa04f15146d9d8a";
   const issueId = "57d2ef278aa04f0ad01d6cdc";
@@ -32,5 +32,3 @@ async function apiManagementCreateApiIssueComment() {
   );
   console.log(result);
 }
-
-apiManagementCreateApiIssueComment().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateApiOperation.json
  */
 async function apiManagementCreateApiOperation() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "PetStoreTemplate2";
   const operationId = "newoperations";
@@ -51,5 +51,3 @@ async function apiManagementCreateApiOperation() {
   );
   console.log(result);
 }
-
-apiManagementCreateApiOperation().catch(console.error);

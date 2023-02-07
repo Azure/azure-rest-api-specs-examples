@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateServiceWithCustomHostnameKeyVault.json
  */
 async function apiManagementCreateServiceWithCustomHostnameKeyVault() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const parameters = {
     apiVersionConstraint: { minApiVersion: "2019-01-01" },
@@ -57,5 +57,3 @@ async function apiManagementCreateServiceWithCustomHostnameKeyVault() {
   );
   console.log(result);
 }
-
-apiManagementCreateServiceWithCustomHostnameKeyVault().catch(console.error);

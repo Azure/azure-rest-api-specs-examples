@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListGroupUsers.json
  */
 async function apiManagementListGroupUsers() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const groupId = "57d2ef278aa04f0888cba3f3";
   const credential = new DefaultAzureCredential();
@@ -20,5 +20,3 @@ async function apiManagementListGroupUsers() {
   }
   console.log(resArray);
 }
-
-apiManagementListGroupUsers().catch(console.error);

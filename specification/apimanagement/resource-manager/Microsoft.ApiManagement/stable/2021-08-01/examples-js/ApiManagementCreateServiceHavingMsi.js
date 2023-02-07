@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateServiceHavingMsi.json
  */
 async function apiManagementCreateServiceHavingMsi() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const parameters = {
     identity: { type: "SystemAssigned" },
@@ -28,5 +28,3 @@ async function apiManagementCreateServiceHavingMsi() {
   );
   console.log(result);
 }
-
-apiManagementCreateServiceHavingMsi().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementApproveOrRejectPrivateEndpointConnection.json
  */
 async function apiManagementApproveOrRejectPrivateEndpointConnection() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const privateEndpointConnectionName = "privateEndpointConnectionName";
   const privateEndpointConnectionRequest = {
@@ -31,5 +31,3 @@ async function apiManagementApproveOrRejectPrivateEndpointConnection() {
   );
   console.log(result);
 }
-
-apiManagementApproveOrRejectPrivateEndpointConnection().catch(console.error);

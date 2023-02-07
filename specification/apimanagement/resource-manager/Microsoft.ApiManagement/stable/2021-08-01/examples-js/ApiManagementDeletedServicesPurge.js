@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementDeletedServicesPurge.json
  */
 async function apiManagementDeletedServicesPurge() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
   const serviceName = "apimService3";
   const location = "westus";
   const credential = new DefaultAzureCredential();
@@ -16,5 +16,3 @@ async function apiManagementDeletedServicesPurge() {
   const result = await client.deletedServices.beginPurgeAndWait(serviceName, location);
   console.log(result);
 }
-
-apiManagementDeletedServicesPurge().catch(console.error);

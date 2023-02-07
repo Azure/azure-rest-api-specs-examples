@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateCertificateWithKeyVault.json
  */
 async function apiManagementCreateCertificateWithKeyVault() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const certificateId = "templateCertkv";
   const parameters = {
@@ -29,5 +29,3 @@ async function apiManagementCreateCertificateWithKeyVault() {
   );
   console.log(result);
 }
-
-apiManagementCreateCertificateWithKeyVault().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementNamedValueListValue.json
  */
 async function apiManagementNamedValueListValue() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const namedValueId = "testarmTemplateproperties2";
   const credential = new DefaultAzureCredential();
@@ -17,5 +17,3 @@ async function apiManagementNamedValueListValue() {
   const result = await client.namedValue.listValue(resourceGroupName, serviceName, namedValueId);
   console.log(result);
 }
-
-apiManagementNamedValueListValue().catch(console.error);

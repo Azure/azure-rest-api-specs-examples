@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementHeadApiIssue.json
  */
 async function apiManagementHeadApiIssue() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "57d2ef278aa04f0888cba3f3";
   const issueId = "57d2ef278aa04f0ad01d6cdc";
@@ -18,5 +18,3 @@ async function apiManagementHeadApiIssue() {
   const result = await client.apiIssue.getEntityTag(resourceGroupName, serviceName, apiId, issueId);
   console.log(result);
 }
-
-apiManagementHeadApiIssue().catch(console.error);

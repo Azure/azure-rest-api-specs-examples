@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementDeleteApiTag.json
  */
 async function apiManagementDeleteApiTag() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "59d5b28d1f7fab116c282650";
   const tagId = "59d5b28e1f7fab116402044e";
@@ -18,5 +18,3 @@ async function apiManagementDeleteApiTag() {
   const result = await client.tag.detachFromApi(resourceGroupName, serviceName, apiId, tagId);
   console.log(result);
 }
-
-apiManagementDeleteApiTag().catch(console.error);

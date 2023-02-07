@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetApiExportInOpenApi3dot0.json
  */
 async function apiManagementGetApiExportInOpenApi3Dot0() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "aid9676";
   const format = "openapi-link";
@@ -25,5 +25,3 @@ async function apiManagementGetApiExportInOpenApi3Dot0() {
   );
   console.log(result);
 }
-
-apiManagementGetApiExportInOpenApi3Dot0().catch(console.error);

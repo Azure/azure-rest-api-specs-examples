@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListServiceBySubscription.json
  */
 async function apiManagementListServiceBySubscription() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
   const credential = new DefaultAzureCredential();
   const client = new ApiManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function apiManagementListServiceBySubscription() {
   }
   console.log(resArray);
 }
-
-apiManagementListServiceBySubscription().catch(console.error);

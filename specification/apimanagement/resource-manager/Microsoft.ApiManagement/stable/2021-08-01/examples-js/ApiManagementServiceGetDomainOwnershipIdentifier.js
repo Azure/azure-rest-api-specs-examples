@@ -8,11 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementServiceGetDomainOwnershipIdentifier.json
  */
 async function apiManagementServiceGetDomainOwnershipIdentifier() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
   const credential = new DefaultAzureCredential();
   const client = new ApiManagementClient(credential, subscriptionId);
   const result = await client.apiManagementService.getDomainOwnershipIdentifier();
   console.log(result);
 }
-
-apiManagementServiceGetDomainOwnershipIdentifier().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateApiPolicyNonXmlEncoded.json
  */
 async function apiManagementCreateApiPolicyNonXmlEncoded() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "5600b57e7e8880006a040001";
   const policyId = "policy";
@@ -17,7 +17,7 @@ async function apiManagementCreateApiPolicyNonXmlEncoded() {
   const parameters = {
     format: "rawxml",
     value:
-      '<policies>     <inbound>     <base />  <set-header name="newvalue" exists-action="override">   <value>"@(context.Request.Headers.FirstOrDefault(h => h.Ke=="Via"))" </value>    </set-header>  </inbound>      </policies>',
+      '<policies>\r\n     <inbound>\r\n     <base />\r\n  <set-header name="newvalue" exists-action="override">\r\n   <value>"@(context.Request.Headers.FirstOrDefault(h => h.Ke=="Via"))" </value>\r\n    </set-header>\r\n  </inbound>\r\n      </policies>',
   };
   const options = { ifMatch };
   const credential = new DefaultAzureCredential();
@@ -32,5 +32,3 @@ async function apiManagementCreateApiPolicyNonXmlEncoded() {
   );
   console.log(result);
 }
-
-apiManagementCreateApiPolicyNonXmlEncoded().catch(console.error);

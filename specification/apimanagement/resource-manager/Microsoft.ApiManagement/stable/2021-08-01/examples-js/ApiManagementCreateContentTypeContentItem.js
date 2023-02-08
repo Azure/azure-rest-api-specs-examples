@@ -8,20 +8,30 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateContentTypeContentItem.json
  */
 async function apiManagementCreateContentTypeContentItem() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const contentTypeId = "page";
   const contentItemId = "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8";
+  const parameters = {
+    properties: {
+      enUs: {
+        description: "Short story about the company.",
+        documentId: "contentTypes/document/contentItems/4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8",
+        keywords: "company, about",
+        permalink: "/about",
+        title: "About",
+      },
+    },
+  };
   const credential = new DefaultAzureCredential();
   const client = new ApiManagementClient(credential, subscriptionId);
   const result = await client.contentItem.createOrUpdate(
     resourceGroupName,
     serviceName,
     contentTypeId,
-    contentItemId
+    contentItemId,
+    parameters
   );
   console.log(result);
 }
-
-apiManagementCreateContentTypeContentItem().catch(console.error);

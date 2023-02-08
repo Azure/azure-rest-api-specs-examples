@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementHeadPortalRevision.json
  */
 async function apiManagementHeadPortalRevision() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const portalRevisionId = "20201112101010";
   const credential = new DefaultAzureCredential();
@@ -21,5 +21,3 @@ async function apiManagementHeadPortalRevision() {
   );
   console.log(result);
 }
-
-apiManagementHeadPortalRevision().catch(console.error);

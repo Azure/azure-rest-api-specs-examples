@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListNotifications.json
  */
 async function apiManagementListNotifications() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const credential = new DefaultAzureCredential();
   const client = new ApiManagementClient(credential, subscriptionId);
@@ -19,5 +19,3 @@ async function apiManagementListNotifications() {
   }
   console.log(resArray);
 }
-
-apiManagementListNotifications().catch(console.error);

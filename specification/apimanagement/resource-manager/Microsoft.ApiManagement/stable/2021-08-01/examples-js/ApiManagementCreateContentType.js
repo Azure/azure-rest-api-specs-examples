@@ -8,18 +8,63 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateContentType.json
  */
 async function apiManagementCreateContentType() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const contentTypeId = "page";
+  const parameters = {
+    namePropertiesName: "Page",
+    schema: {
+      additionalProperties: false,
+      properties: {
+        en_us: {
+          type: "object",
+          additionalProperties: false,
+          properties: {
+            description: {
+              type: "string",
+              description: "Page description. This property gets included in SEO attributes.",
+              indexed: true,
+              title: "Description",
+            },
+            documentId: {
+              type: "string",
+              description: "Reference to page content document.",
+              title: "Document ID",
+            },
+            keywords: {
+              type: "string",
+              description: "Page keywords. This property gets included in SEO attributes.",
+              indexed: true,
+              title: "Keywords",
+            },
+            permalink: {
+              type: "string",
+              description: "Page permalink, e.g. '/about'.",
+              indexed: true,
+              title: "Permalink",
+            },
+            title: {
+              type: "string",
+              description: "Page title. This property gets included in SEO attributes.",
+              indexed: true,
+              title: "Title",
+            },
+          },
+          required: ["title", "permalink", "documentId"],
+        },
+      },
+    },
+    description: "A regular page",
+    version: "1.0.0",
+  };
   const credential = new DefaultAzureCredential();
   const client = new ApiManagementClient(credential, subscriptionId);
   const result = await client.contentType.createOrUpdate(
     resourceGroupName,
     serviceName,
-    contentTypeId
+    contentTypeId,
+    parameters
   );
   console.log(result);
 }
-
-apiManagementCreateContentType().catch(console.error);

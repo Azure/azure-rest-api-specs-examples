@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetApiRelease.json
  */
 async function apiManagementGetApiRelease() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "a1";
   const releaseId = "5a7cb545298324c53224a799";
@@ -18,5 +18,3 @@ async function apiManagementGetApiRelease() {
   const result = await client.apiRelease.get(resourceGroupName, serviceName, apiId, releaseId);
   console.log(result);
 }
-
-apiManagementGetApiRelease().catch(console.error);

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementHeadIdentityProvider.json
  */
 async function apiManagementHeadIdentityProvider() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const identityProviderName = "aadB2C";
   const credential = new DefaultAzureCredential();
@@ -21,5 +21,3 @@ async function apiManagementHeadIdentityProvider() {
   );
   console.log(result);
 }
-
-apiManagementHeadIdentityProvider().catch(console.error);

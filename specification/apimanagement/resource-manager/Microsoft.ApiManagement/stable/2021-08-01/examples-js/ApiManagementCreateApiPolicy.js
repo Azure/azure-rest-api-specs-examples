@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateApiPolicy.json
  */
 async function apiManagementCreateApiPolicy() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiId = "5600b57e7e8880006a040001";
   const policyId = "policy";
@@ -32,5 +32,3 @@ async function apiManagementCreateApiPolicy() {
   );
   console.log(result);
 }
-
-apiManagementCreateApiPolicy().catch(console.error);

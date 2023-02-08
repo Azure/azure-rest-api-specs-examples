@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateBackendProxyBackend.json
  */
 async function apiManagementCreateBackendProxyBackend() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const backendId = "proxybackend";
   const parameters = {
@@ -22,7 +22,7 @@ async function apiManagementCreateBackendProxyBackend() {
     proxy: {
       password: "<password>",
       url: "http://192.168.1.1:8080",
-      username: "Contosoadmin",
+      username: "Contoso\\admin",
     },
     tls: { validateCertificateChain: true, validateCertificateName: true },
     url: "https://backendname2644/",
@@ -38,5 +38,3 @@ async function apiManagementCreateBackendProxyBackend() {
   );
   console.log(result);
 }
-
-apiManagementCreateBackendProxyBackend().catch(console.error);

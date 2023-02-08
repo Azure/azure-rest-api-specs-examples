@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementDeleteGroup.json
  */
 async function apiManagementDeleteGroup() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "rg1";
+  const subscriptionId = process.env["APIMANAGEMENT_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["APIMANAGEMENT_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const groupId = "aadGroup";
   const ifMatch = "*";
@@ -18,5 +18,3 @@ async function apiManagementDeleteGroup() {
   const result = await client.group.delete(resourceGroupName, serviceName, groupId, ifMatch);
   console.log(result);
 }
-
-apiManagementDeleteGroup().catch(console.error);

@@ -1,0 +1,23 @@
+/** Samples for QuotaRequestStatus List. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/getQuotaRequestsHistory.json
+     */
+    /**
+     * Sample code: QuotaRequestHistory.
+     *
+     * @param manager Entry point to ReservationsManager.
+     */
+    public static void quotaRequestHistory(com.azure.resourcemanager.reservations.ReservationsManager manager) {
+        manager
+            .quotaRequestStatus()
+            .list(
+                "3f75fdf7-977e-44ad-990d-99f14f0f299f",
+                "Microsoft.Compute",
+                "eastus",
+                null,
+                null,
+                null,
+                com.azure.core.util.Context.NONE);
+    }
+}

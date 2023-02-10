@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for BigDataPools ListByWorkspace. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listBigDataPoolsInAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.bigDataPools().listByWorkspace("ExampleResourceGroup", "ExampleWorkspace", Context.NONE);
+        manager
+            .bigDataPools()
+            .listByWorkspace("ExampleResourceGroup", "ExampleWorkspace", com.azure.core.util.Context.NONE);
     }
 }

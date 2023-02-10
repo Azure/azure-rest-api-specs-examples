@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolColumns Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void getDatabaseColumn(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolColumns()
-            .getWithResponse("myRG", "serverName", "myDatabase", "dbo", "table1", "column1", Context.NONE);
+            .getWithResponse(
+                "myRG", "serverName", "myDatabase", "dbo", "table1", "column1", com.azure.core.util.Context.NONE);
     }
 }

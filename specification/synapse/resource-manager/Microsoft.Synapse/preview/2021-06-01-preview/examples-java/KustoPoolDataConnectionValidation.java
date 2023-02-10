@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.DataConnectionValidationInner;
 import com.azure.resourcemanager.synapse.models.EventHubDataConnection;
 
@@ -23,6 +22,6 @@ public final class Main {
                 new DataConnectionValidationInner()
                     .withDataConnectionName("DataConnections8")
                     .withProperties(new EventHubDataConnection()),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

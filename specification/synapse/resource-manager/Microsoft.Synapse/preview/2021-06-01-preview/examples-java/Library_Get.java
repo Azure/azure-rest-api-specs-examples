@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Library Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void getLibraryByName(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .libraries()
-            .getWithResponse("exampleResourceGroup", "exampleLibraryName.jar", "exampleWorkspace", Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup", "exampleLibraryName.jar", "exampleWorkspace", com.azure.core.util.Context.NONE);
     }
 }

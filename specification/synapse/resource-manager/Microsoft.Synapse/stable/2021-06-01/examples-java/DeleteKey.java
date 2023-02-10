@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Keys Delete. */
 public final class Main {
     /*
@@ -11,6 +9,9 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void deleteAWorkspaceKey(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.keys().deleteWithResponse("ExampleResourceGroup", "ExampleWorkspace", "somekey", Context.NONE);
+        manager
+            .keys()
+            .deleteWithResponse(
+                "ExampleResourceGroup", "ExampleWorkspace", "somekey", com.azure.core.util.Context.NONE);
     }
 }

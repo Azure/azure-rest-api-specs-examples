@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeAuthKeysOperation List. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void listAuthKeys(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimeAuthKeysOperations()
-            .listWithResponse("exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", Context.NONE);
+            .listWithResponse(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

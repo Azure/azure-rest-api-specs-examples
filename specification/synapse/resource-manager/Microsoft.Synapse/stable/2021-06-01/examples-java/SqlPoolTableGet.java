@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolTables Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getDatabaseTable(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolTables().getWithResponse("myRG", "serverName", "myDatabase", "dbo", "table1", Context.NONE);
+        manager
+            .sqlPoolTables()
+            .getWithResponse("myRG", "serverName", "myDatabase", "dbo", "table1", com.azure.core.util.Context.NONE);
     }
 }

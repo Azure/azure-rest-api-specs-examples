@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnections Delete. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void deletePrivateEndpointConnection(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .privateEndpointConnections()
-            .delete("ExampleResourceGroup", "ExampleWorkspace", "ExamplePrivateEndpointConnection", Context.NONE);
+            .delete(
+                "ExampleResourceGroup",
+                "ExampleWorkspace",
+                "ExamplePrivateEndpointConnection",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.FollowerDatabaseDefinitionInner;
 
 /** Samples for KustoPools DetachFollowerDatabases. */
@@ -22,6 +21,6 @@ public final class Main {
                     .withKustoPoolResourceId(
                         "/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Synapse/workspaces/kustorptest/kustoPools/leader4")
                     .withAttachedDatabaseConfigurationName("myAttachedDatabaseConfiguration"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

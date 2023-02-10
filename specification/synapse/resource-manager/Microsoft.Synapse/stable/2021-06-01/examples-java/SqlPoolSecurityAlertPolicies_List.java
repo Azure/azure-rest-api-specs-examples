@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolSecurityAlertPolicies List. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getASecurityAlertOfASQLAnalyticsPool(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolSecurityAlertPolicies().list("securityalert-6852", "securityalert-2080", "testdb", Context.NONE);
+        manager
+            .sqlPoolSecurityAlertPolicies()
+            .list("securityalert-6852", "securityalert-2080", "testdb", com.azure.core.util.Context.NONE);
     }
 }

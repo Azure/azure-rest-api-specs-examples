@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolSensitivityLabels ListRecommended. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolSensitivityLabels()
-            .listRecommended("myRG", "myServer", "myDatabase", null, null, null, Context.NONE);
+            .listRecommended("myRG", "myServer", "myDatabase", null, null, null, com.azure.core.util.Context.NONE);
     }
 }

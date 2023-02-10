@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.AzureADOnlyAuthenticationName;
 
 /** Samples for AzureADOnlyAuthentications Get. */
@@ -15,6 +14,10 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .azureADOnlyAuthentications()
-            .getWithResponse("workspace-6852", "workspace-2080", AzureADOnlyAuthenticationName.DEFAULT, Context.NONE);
+            .getWithResponse(
+                "workspace-6852",
+                "workspace-2080",
+                AzureADOnlyAuthenticationName.DEFAULT,
+                com.azure.core.util.Context.NONE);
     }
 }

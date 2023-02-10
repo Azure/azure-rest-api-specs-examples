@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes Delete. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void deleteIntegrationRuntime(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimes()
-            .delete("exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", Context.NONE);
+            .delete(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

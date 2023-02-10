@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.DataConnectionCheckNameRequest;
 
 /** Samples for KustoPoolDataConnections CheckNameAvailability. */
@@ -21,6 +20,6 @@ public final class Main {
                 "kustoclusterrptest4",
                 "Kustodatabase8",
                 new DataConnectionCheckNameRequest().withName("DataConnections8"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

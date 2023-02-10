@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RestorableDroppedSqlPools Get. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
                 "restorabledroppeddatabasetest-1257",
                 "restorabledroppeddatabasetest-2389",
                 "restorabledroppeddatabasetest-7654,131403269876900000",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

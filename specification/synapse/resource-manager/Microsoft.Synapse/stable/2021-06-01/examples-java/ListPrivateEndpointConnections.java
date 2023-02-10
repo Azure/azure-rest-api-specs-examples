@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnections List. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void listPrivateEndpointConnectionsInWorkspace(
         com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.privateEndpointConnections().list("ExampleResourceGroup", "ExampleWorkspace", Context.NONE);
+        manager
+            .privateEndpointConnections()
+            .list("ExampleResourceGroup", "ExampleWorkspace", com.azure.core.util.Context.NONE);
     }
 }

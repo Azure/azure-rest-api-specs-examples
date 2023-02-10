@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPoolDataConnections Get. */
 public final class Main {
     /*
@@ -19,6 +17,6 @@ public final class Main {
                 "kustoclusterrptest4",
                 "KustoDatabase8",
                 "DataConnections8",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

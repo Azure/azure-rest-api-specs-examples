@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listWorkspacesInSubscription(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.workspaces().list(Context.NONE);
+        manager.workspaces().list(com.azure.core.util.Context.NONE);
     }
 }

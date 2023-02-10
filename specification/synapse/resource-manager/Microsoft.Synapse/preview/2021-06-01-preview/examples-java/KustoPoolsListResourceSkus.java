@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPools ListSkusByResource. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void kustoPoolsListResourceSkus(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .kustoPools()
-            .listSkusByResource("synapseWorkspaceName", "kustoclusterrptest4", "kustorptest", Context.NONE);
+            .listSkusByResource(
+                "synapseWorkspaceName", "kustoclusterrptest4", "kustorptest", com.azure.core.util.Context.NONE);
     }
 }

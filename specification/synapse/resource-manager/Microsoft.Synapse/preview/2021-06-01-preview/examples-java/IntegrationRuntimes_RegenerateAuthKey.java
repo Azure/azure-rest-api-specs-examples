@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.IntegrationRuntimeAuthKeyName;
 import com.azure.resourcemanager.synapse.models.IntegrationRuntimeRegenerateKeyParameters;
 
@@ -20,6 +19,6 @@ public final class Main {
                 "exampleWorkspace",
                 "exampleIntegrationRuntime",
                 new IntegrationRuntimeRegenerateKeyParameters().withKeyName(IntegrationRuntimeAuthKeyName.AUTH_KEY2),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

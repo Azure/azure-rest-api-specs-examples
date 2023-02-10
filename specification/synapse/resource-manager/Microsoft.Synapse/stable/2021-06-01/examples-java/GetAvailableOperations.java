@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Operations List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getAvailableOperations(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.operations().listWithResponse(Context.NONE);
+        manager.operations().listWithResponse(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataMaskingRules ListBySqlPool. */
 public final class Main {
     /*
@@ -13,6 +11,6 @@ public final class Main {
     public static void listDataMaskingRules(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .dataMaskingRules()
-            .listBySqlPool("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", Context.NONE);
+            .listBySqlPool("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", com.azure.core.util.Context.NONE);
     }
 }

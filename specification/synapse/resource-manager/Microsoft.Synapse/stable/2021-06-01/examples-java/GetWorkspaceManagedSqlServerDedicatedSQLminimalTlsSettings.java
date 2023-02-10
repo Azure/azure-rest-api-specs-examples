@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceManagedSqlServerDedicatedSqlMinimalTlsSettings Get. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .workspaceManagedSqlServerDedicatedSqlMinimalTlsSettings()
-            .getWithResponse("workspace-6852", "workspace-2080", "default", Context.NONE);
+            .getWithResponse("workspace-6852", "workspace-2080", "default", com.azure.core.util.Context.NONE);
     }
 }

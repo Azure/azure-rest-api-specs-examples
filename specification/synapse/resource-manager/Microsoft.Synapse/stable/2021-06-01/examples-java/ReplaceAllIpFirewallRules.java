@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.IpFirewallRuleProperties;
 import com.azure.resourcemanager.synapse.models.ReplaceAllIpFirewallRulesRequest;
 import java.util.HashMap;
@@ -31,7 +30,7 @@ public final class Main {
                             new IpFirewallRuleProperties()
                                 .withEndIpAddress("10.0.0.254")
                                 .withStartIpAddress("10.0.0.0"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPools ListFollowerDatabases. */
 public final class Main {
     /*
@@ -11,6 +9,9 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void kustoPoolListFollowerDatabases(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.kustoPools().listFollowerDatabases("kustorptest", "kustoclusterrptest4", "kustorptest", Context.NONE);
+        manager
+            .kustoPools()
+            .listFollowerDatabases(
+                "kustorptest", "kustoclusterrptest4", "kustorptest", com.azure.core.util.Context.NONE);
     }
 }

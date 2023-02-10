@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceSqlAadAdmins Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getWorkspaceActiveDirectoryAdmin(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.workspaceSqlAadAdmins().getWithResponse("resourceGroup1", "workspace1", Context.NONE);
+        manager
+            .workspaceSqlAadAdmins()
+            .getWithResponse("resourceGroup1", "workspace1", com.azure.core.util.Context.NONE);
     }
 }

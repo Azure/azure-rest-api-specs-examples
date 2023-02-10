@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.CheckNameAvailabilityRequest;
 
 /** Samples for Operations CheckNameAvailability. */
@@ -17,6 +16,6 @@ public final class Main {
             .operations()
             .checkNameAvailabilityWithResponse(
                 new CheckNameAvailabilityRequest().withName("workspace1").withType("Microsoft.Synapse/workspaces"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

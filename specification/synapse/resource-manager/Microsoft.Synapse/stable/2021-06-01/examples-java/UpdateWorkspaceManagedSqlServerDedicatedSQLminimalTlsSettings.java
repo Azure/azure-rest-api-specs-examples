@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.DedicatedSQLminimalTlsSettingsInner;
 import com.azure.resourcemanager.synapse.models.DedicatedSqlMinimalTlsSettingsName;
 
@@ -21,6 +20,6 @@ public final class Main {
                 "workspace-2080",
                 DedicatedSqlMinimalTlsSettingsName.DEFAULT,
                 new DedicatedSQLminimalTlsSettingsInner().withMinimalTlsVersion("1.1"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolSensitivityLabels ListCurrent. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getsTheCurrentSensitivityLabelsOfAGivenSQLAnalyticsPool(
         com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolSensitivityLabels().listCurrent("myRG", "myServer", "myDatabase", null, Context.NONE);
+        manager
+            .sqlPoolSensitivityLabels()
+            .listCurrent("myRG", "myServer", "myDatabase", null, com.azure.core.util.Context.NONE);
     }
 }

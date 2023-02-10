@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeMonitoringData List. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void getMonitoringData(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimeMonitoringDatas()
-            .listWithResponse("exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", Context.NONE);
+            .listWithResponse(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

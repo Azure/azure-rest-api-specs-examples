@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeCredentials Sync. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void syncCredentials(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimeCredentials()
-            .syncWithResponse("exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", Context.NONE);
+            .syncWithResponse(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnectionsPrivateLinkHub List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getAPrivateLinkHub(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.privateEndpointConnectionsPrivateLinkHubs().list("gh-res-grp", "pe0", Context.NONE);
+        manager.privateEndpointConnectionsPrivateLinkHubs().list("gh-res-grp", "pe0", com.azure.core.util.Context.NONE);
     }
 }

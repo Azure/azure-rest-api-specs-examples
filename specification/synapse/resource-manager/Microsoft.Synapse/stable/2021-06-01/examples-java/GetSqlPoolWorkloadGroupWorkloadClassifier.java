@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolWorkloadClassifier Get. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
                 "sqlcrudtest-9187",
                 "wlm_workloadgroup",
                 "wlm_classifier",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolSchemas List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listTheSchemaInASQLAnalyticsPool(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolSchemas().list("myRG", "serverName", "myDatabase", null, Context.NONE);
+        manager.sqlPoolSchemas().list("myRG", "serverName", "myDatabase", null, com.azure.core.util.Context.NONE);
     }
 }

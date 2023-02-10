@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.ConnectionPolicyName;
 
 /** Samples for SqlPoolConnectionPolicies Get. */
@@ -16,6 +15,10 @@ public final class Main {
         manager
             .sqlPoolConnectionPolicies()
             .getWithResponse(
-                "blobauditingtest-6852", "blobauditingtest-2080", "testdb", ConnectionPolicyName.DEFAULT, Context.NONE);
+                "blobauditingtest-6852",
+                "blobauditingtest-2080",
+                "testdb",
+                ConnectionPolicyName.DEFAULT,
+                com.azure.core.util.Context.NONE);
     }
 }

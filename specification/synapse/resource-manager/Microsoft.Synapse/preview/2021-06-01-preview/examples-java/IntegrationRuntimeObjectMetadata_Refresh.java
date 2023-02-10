@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeObjectMetadata Refresh. */
 public final class Main {
     /*
@@ -13,6 +11,6 @@ public final class Main {
     public static void refreshObjectMetadata(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimeObjectMetadatas()
-            .refresh("exampleResourceGroup", "exampleWorkspace", "testactivityv2", Context.NONE);
+            .refresh("exampleResourceGroup", "exampleWorkspace", "testactivityv2", com.azure.core.util.Context.NONE);
     }
 }

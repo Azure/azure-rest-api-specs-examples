@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolTransparentDataEncryptions List. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolTransparentDataEncryptions()
-            .list("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", Context.NONE);
+            .list("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPools Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void kustoPoolsDelete(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.kustoPools().delete("kustorptest", "kustorptest", "kustoclusterrptest4", Context.NONE);
+        manager
+            .kustoPools()
+            .delete("kustorptest", "kustorptest", "kustoclusterrptest4", com.azure.core.util.Context.NONE);
     }
 }

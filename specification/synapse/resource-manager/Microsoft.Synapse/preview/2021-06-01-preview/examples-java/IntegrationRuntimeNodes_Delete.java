@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeNodes Delete. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         manager
             .integrationRuntimeNodes()
             .deleteWithResponse(
-                "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", "Node_1", Context.NONE);
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                "Node_1",
+                com.azure.core.util.Context.NONE);
     }
 }

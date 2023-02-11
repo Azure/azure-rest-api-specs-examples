@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes ListOutboundNetworkDependenciesEndpoints. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .integrationRuntimes()
             .listOutboundNetworkDependenciesEndpointsWithResponse(
-                "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", Context.NONE);
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

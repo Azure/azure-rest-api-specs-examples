@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateEndpointConnections Get. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .privateEndpointConnections()
             .getWithResponse(
-                "ExampleResourceGroup", "ExampleWorkspace", "ExamplePrivateEndpointConnection", Context.NONE);
+                "ExampleResourceGroup",
+                "ExampleWorkspace",
+                "ExamplePrivateEndpointConnection",
+                com.azure.core.util.Context.NONE);
     }
 }

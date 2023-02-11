@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPoolDatabases Get. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         manager
             .kustoPoolDatabases()
             .getWithResponse(
-                "kustorptest", "synapseWorkspaceName", "kustoclusterrptest4", "KustoDatabase8", Context.NONE);
+                "kustorptest",
+                "synapseWorkspaceName",
+                "kustoclusterrptest4",
+                "KustoDatabase8",
+                com.azure.core.util.Context.NONE);
     }
 }

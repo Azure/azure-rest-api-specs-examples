@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.EncryptionProtector;
 import com.azure.resourcemanager.synapse.models.EncryptionProtectorName;
 import com.azure.resourcemanager.synapse.models.ServerKeyType;
@@ -18,7 +17,8 @@ public final class Main {
         EncryptionProtector resource =
             manager
                 .workspaceManagedSqlServerEncryptionProtectors()
-                .getWithResponse("wsg-7398", "testWorkspace", EncryptionProtectorName.CURRENT, Context.NONE)
+                .getWithResponse(
+                    "wsg-7398", "testWorkspace", EncryptionProtectorName.CURRENT, com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

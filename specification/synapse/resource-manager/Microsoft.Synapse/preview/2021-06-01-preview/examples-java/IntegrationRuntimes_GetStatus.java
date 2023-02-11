@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimeStatusOperation Get. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void getStatus(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimeStatusOperations()
-            .getWithResponse("exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

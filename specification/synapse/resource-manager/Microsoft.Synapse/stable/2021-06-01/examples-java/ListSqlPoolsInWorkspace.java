@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPools ListByWorkspace. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listSQLAnalyticsPoolsInAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPools().listByWorkspace("sqlcrudtest-6845", "sqlcrudtest-7177", Context.NONE);
+        manager.sqlPools().listByWorkspace("sqlcrudtest-6845", "sqlcrudtest-7177", com.azure.core.util.Context.NONE);
     }
 }

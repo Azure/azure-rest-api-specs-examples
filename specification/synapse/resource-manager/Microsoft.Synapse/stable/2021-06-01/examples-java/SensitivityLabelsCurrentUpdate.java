@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.SensitivityLabelInner;
 import com.azure.resourcemanager.synapse.fluent.models.SensitivityLabelUpdateInner;
 import com.azure.resourcemanager.synapse.models.SensitivityLabelRank;
@@ -57,6 +56,6 @@ public final class Main {
                                     .withSchema("dbo")
                                     .withTable("Table1")
                                     .withColumn("Column3"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

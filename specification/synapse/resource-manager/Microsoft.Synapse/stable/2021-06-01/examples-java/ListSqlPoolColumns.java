@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolTableColumns ListByTableName. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolTableColumns()
-            .listByTableName("myRG", "serverName", "myDatabase", "dbo", "table1", null, Context.NONE);
+            .listByTableName(
+                "myRG", "serverName", "myDatabase", "dbo", "table1", null, com.azure.core.util.Context.NONE);
     }
 }

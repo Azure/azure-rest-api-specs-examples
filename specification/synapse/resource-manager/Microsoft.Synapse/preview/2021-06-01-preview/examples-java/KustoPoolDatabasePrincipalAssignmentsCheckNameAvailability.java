@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.DatabasePrincipalAssignmentCheckNameRequest;
 
 /** Samples for KustoPoolDatabasePrincipalAssignments CheckNameAvailability. */
@@ -21,6 +20,6 @@ public final class Main {
                 "Kustodatabase8",
                 "kustorptest",
                 new DatabasePrincipalAssignmentCheckNameRequest().withName("kustoprincipal1"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

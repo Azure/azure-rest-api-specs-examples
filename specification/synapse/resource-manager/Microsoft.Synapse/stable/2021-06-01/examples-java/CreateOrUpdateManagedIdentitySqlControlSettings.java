@@ -1,7 +1,6 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.ManagedIdentitySqlControlSettingsModelInner;
+import com.azure.resourcemanager.synapse.models.DesiredState;
 import com.azure.resourcemanager.synapse.models.ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity;
-import com.azure.resourcemanager.synapse.models.ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentityDesiredState;
 
 /** Samples for WorkspaceManagedIdentitySqlControlSettings CreateOrUpdate. */
 public final class Main {
@@ -23,9 +22,7 @@ public final class Main {
                 new ManagedIdentitySqlControlSettingsModelInner()
                     .withGrantSqlControlToManagedIdentity(
                         new ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentity()
-                            .withDesiredState(
-                                ManagedIdentitySqlControlSettingsModelPropertiesGrantSqlControlToManagedIdentityDesiredState
-                                    .ENABLED)),
-                Context.NONE);
+                            .withDesiredState(DesiredState.ENABLED)),
+                com.azure.core.util.Context.NONE);
     }
 }

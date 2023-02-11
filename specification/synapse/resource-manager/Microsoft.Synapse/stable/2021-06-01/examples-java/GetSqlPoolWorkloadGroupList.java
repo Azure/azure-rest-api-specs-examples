@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolWorkloadGroup List. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getTheListOfWorkloadGroupsOfASQLAnalyticsPool(
         com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolWorkloadGroups().list("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", Context.NONE);
+        manager
+            .sqlPoolWorkloadGroups()
+            .list("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IpFirewallRules Delete. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void deleteAnIPFirewallRuleFromAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .ipFirewallRules()
-            .delete("ExampleResourceGroup", "ExampleWorkspace", "ExampleIpFirewallRule", Context.NONE);
+            .delete(
+                "ExampleResourceGroup", "ExampleWorkspace", "ExampleIpFirewallRule", com.azure.core.util.Context.NONE);
     }
 }

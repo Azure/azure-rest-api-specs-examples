@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceManagedSqlServerBlobAuditingPolicies ListByWorkspace. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .workspaceManagedSqlServerBlobAuditingPolicies()
-            .listByWorkspace("wsg-7398", "testWorkspace", Context.NONE);
+            .listByWorkspace("wsg-7398", "testWorkspace", com.azure.core.util.Context.NONE);
     }
 }

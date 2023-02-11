@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.KustoPoolCheckNameRequest;
 
 /** Samples for KustoPools CheckNameAvailability. */
@@ -15,6 +14,8 @@ public final class Main {
         manager
             .kustoPools()
             .checkNameAvailabilityWithResponse(
-                "westus", new KustoPoolCheckNameRequest().withName("kustoclusterrptest4"), Context.NONE);
+                "westus",
+                new KustoPoolCheckNameRequest().withName("kustoclusterrptest4"),
+                com.azure.core.util.Context.NONE);
     }
 }

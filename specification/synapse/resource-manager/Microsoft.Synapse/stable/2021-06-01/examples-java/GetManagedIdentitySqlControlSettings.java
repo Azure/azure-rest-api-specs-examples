@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceManagedIdentitySqlControlSettings Get. */
 public final class Main {
     /*
@@ -13,6 +11,6 @@ public final class Main {
     public static void getManagedIdentitySqlControlSettings(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .workspaceManagedIdentitySqlControlSettings()
-            .getWithResponse("resourceGroup1", "workspace1", Context.NONE);
+            .getWithResponse("resourceGroup1", "workspace1", com.azure.core.util.Context.NONE);
     }
 }

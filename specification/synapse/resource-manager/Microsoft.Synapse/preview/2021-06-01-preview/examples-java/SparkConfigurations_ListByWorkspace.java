@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SparkConfigurationsOperation ListByWorkspace. */
 public final class Main {
     /*
@@ -13,6 +11,6 @@ public final class Main {
     public static void listSparkConfigurationsInAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sparkConfigurationsOperations()
-            .listByWorkspace("exampleResourceGroup", "exampleWorkspace", Context.NONE);
+            .listByWorkspace("exampleResourceGroup", "exampleWorkspace", com.azure.core.util.Context.NONE);
     }
 }

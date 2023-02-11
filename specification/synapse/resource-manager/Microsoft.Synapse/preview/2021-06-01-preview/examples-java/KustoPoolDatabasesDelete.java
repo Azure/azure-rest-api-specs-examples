@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPoolDatabases Delete. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void kustoPoolDatabasesDelete(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .kustoPoolDatabases()
-            .delete("kustorptest", "synapseWorkspaceName", "kustoclusterrptest4", "KustoDatabase8", Context.NONE);
+            .delete(
+                "kustorptest",
+                "synapseWorkspaceName",
+                "kustoclusterrptest4",
+                "KustoDatabase8",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPools Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void deleteASQLAnalyticsPool(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPools().delete("ExampleResourceGroup", "ExampleWorkspace", "ExampleSqlPool", Context.NONE);
+        manager
+            .sqlPools()
+            .delete("ExampleResourceGroup", "ExampleWorkspace", "ExampleSqlPool", com.azure.core.util.Context.NONE);
     }
 }

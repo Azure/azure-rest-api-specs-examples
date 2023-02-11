@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RestorableDroppedSqlPools ListByWorkspace. */
 public final class Main {
     /*
@@ -13,6 +11,9 @@ public final class Main {
     public static void getListOfRestorableDroppedSqlPools(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .restorableDroppedSqlPools()
-            .listByWorkspace("restorabledroppeddatabasetest-1349", "restorabledroppeddatabasetest-1840", Context.NONE);
+            .listByWorkspace(
+                "restorabledroppeddatabasetest-1349",
+                "restorabledroppeddatabasetest-1840",
+                com.azure.core.util.Context.NONE);
     }
 }

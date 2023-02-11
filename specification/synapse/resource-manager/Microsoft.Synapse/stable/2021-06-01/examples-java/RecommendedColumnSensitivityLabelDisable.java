@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolSensitivityLabels DisableRecommendation. */
 public final class Main {
     /*
@@ -15,6 +13,6 @@ public final class Main {
         manager
             .sqlPoolSensitivityLabels()
             .disableRecommendationWithResponse(
-                "myRG", "myServer", "myDatabase", "dbo", "myTable", "myColumn", Context.NONE);
+                "myRG", "myServer", "myDatabase", "dbo", "myTable", "myColumn", com.azure.core.util.Context.NONE);
     }
 }

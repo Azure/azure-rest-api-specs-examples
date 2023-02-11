@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.DatabaseCheckNameRequest;
 import com.azure.resourcemanager.synapse.models.Type;
 
@@ -23,6 +22,6 @@ public final class Main {
                 new DatabaseCheckNameRequest()
                     .withName("adc1")
                     .withType(Type.MICROSOFT_SYNAPSE_WORKSPACES_KUSTO_POOLS_ATTACHED_DATABASE_CONFIGURATIONS),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

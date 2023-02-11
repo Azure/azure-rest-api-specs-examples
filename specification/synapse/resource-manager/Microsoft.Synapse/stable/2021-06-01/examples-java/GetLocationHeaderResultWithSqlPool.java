@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolOperationResults GetLocationHeaderResult. */
 public final class Main {
     /*
@@ -14,11 +12,11 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolOperationResults()
-            .getLocationHeaderResultWithResponse(
+            .getLocationHeaderResult(
                 "ExampleResourceGroup",
                 "ExampleWorkspace",
                 "ExampleSqlPool",
                 "fedcba98-7654-4210-fedc-ba9876543210",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

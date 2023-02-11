@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.CreateSqlPoolRestorePointDefinition;
 
 /** Samples for SqlPoolRestorePoints Create. */
@@ -19,6 +18,6 @@ public final class Main {
                 "testserver",
                 "testDatabase",
                 new CreateSqlPoolRestorePointDefinition().withRestorePointLabel("mylabel"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

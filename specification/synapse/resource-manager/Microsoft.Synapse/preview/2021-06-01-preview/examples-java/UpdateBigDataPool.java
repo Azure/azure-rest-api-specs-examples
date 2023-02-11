@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.BigDataPoolResourceInfo;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +16,8 @@ public final class Main {
         BigDataPoolResourceInfo resource =
             manager
                 .bigDataPools()
-                .getWithResponse("ExampleResourceGroup", "ExampleWorkspace", "ExamplePool", Context.NONE)
+                .getWithResponse(
+                    "ExampleResourceGroup", "ExampleWorkspace", "ExamplePool", com.azure.core.util.Context.NONE)
                 .getValue();
         resource.update().withTags(mapOf("key", "value")).apply();
     }

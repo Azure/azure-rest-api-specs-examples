@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SparkConfiguration Get. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void getSparkConfigurationByName(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sparkConfigurations()
-            .getWithResponse("exampleResourceGroup", "exampleSparkConfigurationName", "exampleWorkspace", Context.NONE);
+            .getWithResponse(
+                "exampleResourceGroup",
+                "exampleSparkConfigurationName",
+                "exampleWorkspace",
+                com.azure.core.util.Context.NONE);
     }
 }

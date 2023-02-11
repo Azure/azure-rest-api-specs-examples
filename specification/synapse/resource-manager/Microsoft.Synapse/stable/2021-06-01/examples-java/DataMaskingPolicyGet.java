@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataMaskingPolicies Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void getDataMaskingPolicy(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .dataMaskingPolicies()
-            .getWithResponse("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", Context.NONE);
+            .getWithResponse(
+                "sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", com.azure.core.util.Context.NONE);
     }
 }

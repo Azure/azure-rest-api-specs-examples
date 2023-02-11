@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPoolDatabasePrincipalAssignments Get. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
                 "Kustodatabase8",
                 "kustoprincipal1",
                 "kustorptest",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

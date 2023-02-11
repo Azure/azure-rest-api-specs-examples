@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.ReadWriteDatabase;
 import java.time.Duration;
 
@@ -21,6 +20,6 @@ public final class Main {
                 "kustoclusterrptest4",
                 "KustoDatabase8",
                 new ReadWriteDatabase().withSoftDeletePeriod(Duration.parse("P1D")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

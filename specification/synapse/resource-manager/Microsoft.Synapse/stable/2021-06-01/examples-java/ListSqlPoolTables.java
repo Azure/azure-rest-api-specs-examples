@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolTables ListBySchema. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void listTheTablesOfAGivenSchemaInASQLAnalyticsPool(
         com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolTables().listBySchema("myRG", "serverName", "myDatabase", "dbo", null, Context.NONE);
+        manager
+            .sqlPoolTables()
+            .listBySchema("myRG", "serverName", "myDatabase", "dbo", null, com.azure.core.util.Context.NONE);
     }
 }

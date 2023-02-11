@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes Stop. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void stopIntegrationRuntime(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimes()
-            .stop("exampleResourceGroup", "exampleWorkspace", "exampleManagedIntegrationRuntime", Context.NONE);
+            .stop(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleManagedIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

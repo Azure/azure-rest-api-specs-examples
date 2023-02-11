@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IpFirewallRules ListByWorkspace. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listIPFirewallRulesInAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.ipFirewallRules().listByWorkspace("ExampleResourceGroup", "ExampleWorkspace", Context.NONE);
+        manager
+            .ipFirewallRules()
+            .listByWorkspace("ExampleResourceGroup", "ExampleWorkspace", com.azure.core.util.Context.NONE);
     }
 }

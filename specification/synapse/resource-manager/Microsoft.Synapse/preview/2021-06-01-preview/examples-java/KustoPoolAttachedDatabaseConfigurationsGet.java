@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPoolAttachedDatabaseConfigurations Get. */
 public final class Main {
     /*
@@ -15,6 +13,10 @@ public final class Main {
         manager
             .kustoPoolAttachedDatabaseConfigurations()
             .getWithResponse(
-                "kustorptest", "kustoclusterrptest4", "attachedDatabaseConfigurations1", "kustorptest", Context.NONE);
+                "kustorptest",
+                "kustoclusterrptest4",
+                "attachedDatabaseConfigurations1",
+                "kustorptest",
+                com.azure.core.util.Context.NONE);
     }
 }

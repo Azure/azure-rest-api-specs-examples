@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateLinkHubs GetByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getAPrivateLinkHub(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.privateLinkHubs().getByResourceGroupWithResponse("resourceGroup1", "privateLinkHub1", Context.NONE);
+        manager
+            .privateLinkHubs()
+            .getByResourceGroupWithResponse("resourceGroup1", "privateLinkHub1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolGeoBackupPolicies List. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getSqlPoolGeoBackupPolicy(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.sqlPoolGeoBackupPolicies().list("sqlcrudtest-4799", "sqlcrudtest-5961", "testdw", Context.NONE);
+        manager
+            .sqlPoolGeoBackupPolicies()
+            .list("sqlcrudtest-4799", "sqlcrudtest-5961", "testdw", com.azure.core.util.Context.NONE);
     }
 }

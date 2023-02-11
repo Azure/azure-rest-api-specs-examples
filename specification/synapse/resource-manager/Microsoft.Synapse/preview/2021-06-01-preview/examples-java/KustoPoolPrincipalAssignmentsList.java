@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for KustoPoolPrincipalAssignments List. */
 public final class Main {
     /*
@@ -13,6 +11,6 @@ public final class Main {
     public static void kustoPoolPrincipalAssignmentsList(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .kustoPoolPrincipalAssignments()
-            .list("synapseWorkspaceName", "kustoclusterrptest4", "kustorptest", Context.NONE);
+            .list("synapseWorkspaceName", "kustoclusterrptest4", "kustorptest", com.azure.core.util.Context.NONE);
     }
 }

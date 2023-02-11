@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workspaces GetByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void getAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.workspaces().getByResourceGroupWithResponse("resourceGroup1", "workspace1", Context.NONE);
+        manager
+            .workspaces()
+            .getByResourceGroupWithResponse("resourceGroup1", "workspace1", com.azure.core.util.Context.NONE);
     }
 }

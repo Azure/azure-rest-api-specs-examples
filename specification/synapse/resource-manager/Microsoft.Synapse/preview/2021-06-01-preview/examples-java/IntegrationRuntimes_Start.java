@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes Start. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void startIntegrationRuntime(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .integrationRuntimes()
-            .start("exampleResourceGroup", "exampleWorkspace", "exampleManagedIntegrationRuntime", Context.NONE);
+            .start(
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleManagedIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

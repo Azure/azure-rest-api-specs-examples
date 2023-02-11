@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.models.SecurityAlertPolicyName;
 import com.azure.resourcemanager.synapse.models.SecurityAlertPolicyState;
 import com.azure.resourcemanager.synapse.models.SqlPoolSecurityAlertPolicy;
@@ -19,7 +18,11 @@ public final class Main {
             manager
                 .sqlPoolSecurityAlertPolicies()
                 .getWithResponse(
-                    "securityalert-4799", "securityalert-6440", "testdb", SecurityAlertPolicyName.DEFAULT, Context.NONE)
+                    "securityalert-4799",
+                    "securityalert-6440",
+                    "testdb",
+                    SecurityAlertPolicyName.DEFAULT,
+                    com.azure.core.util.Context.NONE)
                 .getValue();
         resource.update().withState(SecurityAlertPolicyState.ENABLED).apply();
     }

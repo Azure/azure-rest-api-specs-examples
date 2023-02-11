@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AzureADOnlyAuthentications List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getAListOfAzureActiveDirectoryOnlyAuthenticationProperty(
         com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.azureADOnlyAuthentications().list("workspace-6852", "workspace-2080", Context.NONE);
+        manager.azureADOnlyAuthentications().list("workspace-6852", "workspace-2080", com.azure.core.util.Context.NONE);
     }
 }

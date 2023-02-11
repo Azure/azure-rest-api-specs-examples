@@ -1,6 +1,4 @@
-import com.azure.core.util.Context;
-
-/** Samples for WorkspaceAadAdmins Delete. */
+/** Samples for WorkspaceSqlAadAdmins Delete. */
 public final class Main {
     /*
      * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteWorkspaceAadAdmin.json
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void deleteWorkspaceActiveDirectoryAdmin(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.workspaceAadAdmins().delete("resourceGroup1", "workspace1", Context.NONE);
+        manager.workspaceSqlAadAdmins().delete("resourceGroup1", "workspace1", com.azure.core.util.Context.NONE);
     }
 }

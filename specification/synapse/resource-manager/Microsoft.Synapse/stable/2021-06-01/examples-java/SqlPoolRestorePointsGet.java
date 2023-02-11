@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolRestorePoints Get. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void getsASqlPoolRestorePoint(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolRestorePoints()
-            .getWithResponse("Default-SQL-SouthEastAsia", "testws", "testpool", "131546477590000000", Context.NONE);
+            .getWithResponse(
+                "Default-SQL-SouthEastAsia",
+                "testws",
+                "testpool",
+                "131546477590000000",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateLinkHubs List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listPrivateLinkHubsInSubscription(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.privateLinkHubs().list(Context.NONE);
+        manager.privateLinkHubs().list(com.azure.core.util.Context.NONE);
     }
 }

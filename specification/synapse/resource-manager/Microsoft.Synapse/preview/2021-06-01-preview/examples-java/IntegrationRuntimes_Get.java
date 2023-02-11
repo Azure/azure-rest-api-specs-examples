@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes Get. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         manager
             .integrationRuntimes()
             .getWithResponse(
-                "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", null, Context.NONE);
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleIntegrationRuntime",
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.synapse.fluent.models.WorkspaceAadAdminInfoInner;
 
 /** Samples for WorkspaceSqlAadAdmins CreateOrUpdate. */
@@ -23,6 +22,6 @@ public final class Main {
                     .withLogin("bob@contoso.com")
                     .withAdministratorType("ActiveDirectory")
                     .withSid("c6b82b90-a647-49cb-8a62-0d2d3cb7ac7c"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

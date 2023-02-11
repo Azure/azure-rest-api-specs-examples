@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LibrariesOperation ListByWorkspace. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SynapseManager.
      */
     public static void listLibrariesInAWorkspace(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager.librariesOperations().listByWorkspace("exampleResourceGroup", "exampleWorkspace", Context.NONE);
+        manager
+            .librariesOperations()
+            .listByWorkspace("exampleResourceGroup", "exampleWorkspace", com.azure.core.util.Context.NONE);
     }
 }

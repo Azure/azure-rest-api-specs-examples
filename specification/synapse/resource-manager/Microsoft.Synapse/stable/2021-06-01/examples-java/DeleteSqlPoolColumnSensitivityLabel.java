@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolSensitivityLabels Delete. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolSensitivityLabels()
-            .deleteWithResponse("myRG", "myServer", "myDatabase", "dbo", "myTable", "myColumn", Context.NONE);
+            .deleteWithResponse(
+                "myRG", "myServer", "myDatabase", "dbo", "myTable", "myColumn", com.azure.core.util.Context.NONE);
     }
 }

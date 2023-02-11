@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntegrationRuntimes EnableInteractiveQuery. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .integrationRuntimes()
             .enableInteractiveQuery(
-                "exampleResourceGroup", "exampleWorkspace", "exampleManagedIntegrationRuntime", Context.NONE);
+                "exampleResourceGroup",
+                "exampleWorkspace",
+                "exampleManagedIntegrationRuntime",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolMaintenanceWindows Get. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolMaintenanceWindows()
-            .getWithResponse("samplerg", "testworkspace", "testsp", "current", Context.NONE);
+            .getWithResponse("samplerg", "testworkspace", "testsp", "current", com.azure.core.util.Context.NONE);
     }
 }

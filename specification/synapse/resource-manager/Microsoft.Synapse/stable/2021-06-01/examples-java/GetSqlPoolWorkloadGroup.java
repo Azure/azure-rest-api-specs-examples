@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SqlPoolWorkloadGroup Get. */
 public final class Main {
     /*
@@ -13,6 +11,11 @@ public final class Main {
     public static void getAAWorkloadGroupOfASQLAnalyticsPool(com.azure.resourcemanager.synapse.SynapseManager manager) {
         manager
             .sqlPoolWorkloadGroups()
-            .getWithResponse("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", "smallrc", Context.NONE);
+            .getWithResponse(
+                "sqlcrudtest-6852",
+                "sqlcrudtest-2080",
+                "sqlcrudtest-9187",
+                "smallrc",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,19 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmApplicationResource created on azure
-// for more information of creating ArmApplicationResource, please refer to the document of ArmApplicationResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
-string applicationName = "myManagedApplication";
-ResourceIdentifier armApplicationResourceId = ArmApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, applicationName);
-ArmApplicationResource armApplication = client.GetArmApplicationResource(armApplicationResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ArmApplicationResource
+ArmApplicationCollection collection = resourceGroupResource.GetArmApplications();
 
 // invoke the operation
-ArmApplicationResource result = await armApplication.GetAsync();
+string applicationName = "myManagedApplication";
+bool result = await collection.ExistsAsync(applicationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ArmApplicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -1,0 +1,1 @@
+az vm show -g MyResourceGroup -n MyVm -d

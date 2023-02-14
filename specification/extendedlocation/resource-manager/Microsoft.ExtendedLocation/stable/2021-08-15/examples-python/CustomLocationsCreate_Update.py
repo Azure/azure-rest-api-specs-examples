@@ -1,0 +1,46 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.extendedlocation import CustomLocations
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-extendedlocation
+# USAGE
+    python custom_locations_create_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = CustomLocations(
+        credential=DefaultAzureCredential(),
+        subscription_id="11111111-2222-3333-4444-555555555555",
+    )
+
+    response = client.custom_locations.begin_create_or_update(
+        resource_group_name="testresourcegroup",
+        resource_name="customLocation01",
+        parameters={
+            "identity": {"type": "SystemAssigned"},
+            "location": "West US",
+            "properties": {
+                "authentication": {"type": "KubeConfig", "value": "<base64 KubeConfig>"},
+                "clusterExtensionIds": [
+                    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension"
+                ],
+                "displayName": "customLocationLocation01",
+                "hostResourceId": "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01",
+                "namespace": "namespace01",
+            },
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/examples/CustomLocationsCreate_Update.json
+if __name__ == "__main__":
+    main()

@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BlobContainerResource created on azure
-// for more information of creating BlobContainerResource, please refer to the document of BlobContainerResource
+// this example assumes you already have this BlobServiceResource created on azure
+// for more information of creating BlobServiceResource, please refer to the document of BlobServiceResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res9871";
 string accountName = "sto6217";
-string containerName = "container1634";
-ResourceIdentifier blobContainerResourceId = BlobContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, containerName);
-BlobContainerResource blobContainer = client.GetBlobContainerResource(blobContainerResourceId);
+ResourceIdentifier blobServiceResourceId = BlobServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+BlobServiceResource blobService = client.GetBlobServiceResource(blobServiceResourceId);
+
+// get the collection of this BlobContainerResource
+BlobContainerCollection collection = blobService.GetBlobContainers();
 
 // invoke the operation
-BlobContainerResource result = await blobContainer.GetAsync();
+string containerName = "container1634";
+bool result = await collection.ExistsAsync(containerName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BlobContainerData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

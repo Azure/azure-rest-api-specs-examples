@@ -16,24 +16,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
-// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
+// this example assumes you already have this OperationalInsightsDataSourceResource created on azure
+// for more information of creating OperationalInsightsDataSourceResource, please refer to the document of OperationalInsightsDataSourceResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "OIAutoRest5123";
 string workspaceName = "AzTest9724";
-ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
-
-// get the collection of this OperationalInsightsDataSourceResource
-OperationalInsightsDataSourceCollection collection = operationalInsightsWorkspace.GetOperationalInsightsDataSources();
+string dataSourceName = "AzTestDS774";
+ResourceIdentifier operationalInsightsDataSourceResourceId = OperationalInsightsDataSourceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, dataSourceName);
+OperationalInsightsDataSourceResource operationalInsightsDataSource = client.GetOperationalInsightsDataSourceResource(operationalInsightsDataSourceResourceId);
 
 // invoke the operation
-string dataSourceName = "AzTestDS774";
 OperationalInsightsDataSourceData data = new OperationalInsightsDataSourceData(BinaryData.FromObjectAsJson(new Dictionary<string, object>()
 {
     ["LinkedResourceId"] = "/subscriptions/00000000-0000-0000-0000-00000000000/providers/microsoft.insights/eventtypes/management"
 }), OperationalInsightsDataSourceKind.AzureActivityLog);
-ArmOperation<OperationalInsightsDataSourceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataSourceName, data);
+ArmOperation<OperationalInsightsDataSourceResource> lro = await operationalInsightsDataSource.UpdateAsync(WaitUntil.Completed, data);
 OperationalInsightsDataSourceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

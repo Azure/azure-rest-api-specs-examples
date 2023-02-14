@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this AutomationPrivateEndpointConnectionResource created on azure
+// for more information of creating AutomationPrivateEndpointConnectionResource, please refer to the document of AutomationPrivateEndpointConnectionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "rg1";
 string automationAccountName = "ddb1";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this AutomationPrivateEndpointConnectionResource
-AutomationPrivateEndpointConnectionCollection collection = automationAccount.GetAutomationPrivateEndpointConnections();
+string privateEndpointConnectionName = "privateEndpointConnectionName";
+ResourceIdentifier automationPrivateEndpointConnectionResourceId = AutomationPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, privateEndpointConnectionName);
+AutomationPrivateEndpointConnectionResource automationPrivateEndpointConnection = client.GetAutomationPrivateEndpointConnectionResource(automationPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "privateEndpointConnectionName";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+AutomationPrivateEndpointConnectionResource result = await automationPrivateEndpointConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomationPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

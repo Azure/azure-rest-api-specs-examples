@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityPartnerProviderResource created on azure
-// for more information of creating SecurityPartnerProviderResource, please refer to the document of SecurityPartnerProviderResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string securityPartnerProviderName = "securityPartnerProvider";
-ResourceIdentifier securityPartnerProviderResourceId = SecurityPartnerProviderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityPartnerProviderName);
-SecurityPartnerProviderResource securityPartnerProvider = client.GetSecurityPartnerProviderResource(securityPartnerProviderResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this SecurityPartnerProviderResource
+SecurityPartnerProviderCollection collection = resourceGroupResource.GetSecurityPartnerProviders();
 
 // invoke the operation
-SecurityPartnerProviderResource result = await securityPartnerProvider.GetAsync();
+string securityPartnerProviderName = "securityPartnerProvider";
+bool result = await collection.ExistsAsync(securityPartnerProviderName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SecurityPartnerProviderData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

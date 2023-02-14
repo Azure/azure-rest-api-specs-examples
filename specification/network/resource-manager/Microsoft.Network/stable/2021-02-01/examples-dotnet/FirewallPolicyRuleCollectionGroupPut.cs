@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FirewallPolicyResource created on azure
-// for more information of creating FirewallPolicyResource, please refer to the document of FirewallPolicyResource
+// this example assumes you already have this FirewallPolicyRuleCollectionGroupResource created on azure
+// for more information of creating FirewallPolicyRuleCollectionGroupResource, please refer to the document of FirewallPolicyRuleCollectionGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string firewallPolicyName = "firewallPolicy";
-ResourceIdentifier firewallPolicyResourceId = FirewallPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, firewallPolicyName);
-FirewallPolicyResource firewallPolicy = client.GetFirewallPolicyResource(firewallPolicyResourceId);
-
-// get the collection of this FirewallPolicyRuleCollectionGroupResource
-FirewallPolicyRuleCollectionGroupCollection collection = firewallPolicy.GetFirewallPolicyRuleCollectionGroups();
+string ruleCollectionGroupName = "ruleCollectionGroup1";
+ResourceIdentifier firewallPolicyRuleCollectionGroupResourceId = FirewallPolicyRuleCollectionGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, firewallPolicyName, ruleCollectionGroupName);
+FirewallPolicyRuleCollectionGroupResource firewallPolicyRuleCollectionGroup = client.GetFirewallPolicyRuleCollectionGroupResource(firewallPolicyRuleCollectionGroupResourceId);
 
 // invoke the operation
-string ruleCollectionGroupName = "ruleCollectionGroup1";
 FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData()
 {
     Priority = 100,
@@ -64,7 +61,7 @@ FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGro
     }
     },
 };
-ArmOperation<FirewallPolicyRuleCollectionGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleCollectionGroupName, data);
+ArmOperation<FirewallPolicyRuleCollectionGroupResource> lro = await firewallPolicyRuleCollectionGroup.UpdateAsync(WaitUntil.Completed, data);
 FirewallPolicyRuleCollectionGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

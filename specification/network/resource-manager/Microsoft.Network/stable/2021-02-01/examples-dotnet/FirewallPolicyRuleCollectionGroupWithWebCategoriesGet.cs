@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FirewallPolicyResource created on azure
-// for more information of creating FirewallPolicyResource, please refer to the document of FirewallPolicyResource
+// this example assumes you already have this FirewallPolicyRuleCollectionGroupResource created on azure
+// for more information of creating FirewallPolicyRuleCollectionGroupResource, please refer to the document of FirewallPolicyRuleCollectionGroupResource
 string subscriptionId = "e747cc13-97d4-4a79-b463-42d7f4e558f2";
 string resourceGroupName = "rg1";
 string firewallPolicyName = "firewallPolicy";
-ResourceIdentifier firewallPolicyResourceId = FirewallPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, firewallPolicyName);
-FirewallPolicyResource firewallPolicy = client.GetFirewallPolicyResource(firewallPolicyResourceId);
-
-// get the collection of this FirewallPolicyRuleCollectionGroupResource
-FirewallPolicyRuleCollectionGroupCollection collection = firewallPolicy.GetFirewallPolicyRuleCollectionGroups();
+string ruleCollectionGroupName = "ruleCollectionGroup1";
+ResourceIdentifier firewallPolicyRuleCollectionGroupResourceId = FirewallPolicyRuleCollectionGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, firewallPolicyName, ruleCollectionGroupName);
+FirewallPolicyRuleCollectionGroupResource firewallPolicyRuleCollectionGroup = client.GetFirewallPolicyRuleCollectionGroupResource(firewallPolicyRuleCollectionGroupResourceId);
 
 // invoke the operation
-string ruleCollectionGroupName = "ruleCollectionGroup1";
-bool result = await collection.ExistsAsync(ruleCollectionGroupName);
+FirewallPolicyRuleCollectionGroupResource result = await firewallPolicyRuleCollectionGroup.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FirewallPolicyRuleCollectionGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LoadBalancerResource created on azure
-// for more information of creating LoadBalancerResource, please refer to the document of LoadBalancerResource
+// this example assumes you already have this BackendAddressPoolResource created on azure
+// for more information of creating BackendAddressPoolResource, please refer to the document of BackendAddressPoolResource
 string subscriptionId = "subid";
 string resourceGroupName = "testrg";
 string loadBalancerName = "lb";
-ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName);
-LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
-
-// get the collection of this BackendAddressPoolResource
-BackendAddressPoolCollection collection = loadBalancer.GetBackendAddressPools();
+string backendAddressPoolName = "backend";
+ResourceIdentifier backendAddressPoolResourceId = BackendAddressPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName, backendAddressPoolName);
+BackendAddressPoolResource backendAddressPool = client.GetBackendAddressPoolResource(backendAddressPoolResourceId);
 
 // invoke the operation
-string backendAddressPoolName = "backend";
 BackendAddressPoolData data = new BackendAddressPoolData()
 {
     LoadBalancerBackendAddresses =
@@ -45,7 +42,7 @@ BackendAddressPoolData data = new BackendAddressPoolData()
     }
     },
 };
-ArmOperation<BackendAddressPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backendAddressPoolName, data);
+ArmOperation<BackendAddressPoolResource> lro = await backendAddressPool.UpdateAsync(WaitUntil.Completed, data);
 BackendAddressPoolResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

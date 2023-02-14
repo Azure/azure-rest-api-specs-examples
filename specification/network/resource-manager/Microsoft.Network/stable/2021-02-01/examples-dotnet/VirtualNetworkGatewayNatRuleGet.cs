@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkGatewayNatRuleResource created on azure
-// for more information of creating VirtualNetworkGatewayNatRuleResource, please refer to the document of VirtualNetworkGatewayNatRuleResource
+// this example assumes you already have this VirtualNetworkGatewayResource created on azure
+// for more information of creating VirtualNetworkGatewayResource, please refer to the document of VirtualNetworkGatewayResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualNetworkGatewayName = "gateway1";
-string natRuleName = "natRule1";
-ResourceIdentifier virtualNetworkGatewayNatRuleResourceId = VirtualNetworkGatewayNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkGatewayName, natRuleName);
-VirtualNetworkGatewayNatRuleResource virtualNetworkGatewayNatRule = client.GetVirtualNetworkGatewayNatRuleResource(virtualNetworkGatewayNatRuleResourceId);
+ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkGatewayName);
+VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
+
+// get the collection of this VirtualNetworkGatewayNatRuleResource
+VirtualNetworkGatewayNatRuleCollection collection = virtualNetworkGateway.GetVirtualNetworkGatewayNatRules();
 
 // invoke the operation
-VirtualNetworkGatewayNatRuleResource result = await virtualNetworkGatewayNatRule.GetAsync();
+string natRuleName = "natRule1";
+bool result = await collection.ExistsAsync(natRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VirtualNetworkGatewayNatRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

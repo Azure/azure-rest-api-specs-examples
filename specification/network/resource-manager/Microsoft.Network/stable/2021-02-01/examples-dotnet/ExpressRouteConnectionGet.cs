@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteGatewayResource created on azure
-// for more information of creating ExpressRouteGatewayResource, please refer to the document of ExpressRouteGatewayResource
+// this example assumes you already have this ExpressRouteConnectionResource created on azure
+// for more information of creating ExpressRouteConnectionResource, please refer to the document of ExpressRouteConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "resourceGroupName";
 string expressRouteGatewayName = "expressRouteGatewayName";
-ResourceIdentifier expressRouteGatewayResourceId = ExpressRouteGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRouteGatewayName);
-ExpressRouteGatewayResource expressRouteGateway = client.GetExpressRouteGatewayResource(expressRouteGatewayResourceId);
-
-// get the collection of this ExpressRouteConnectionResource
-ExpressRouteConnectionCollection collection = expressRouteGateway.GetExpressRouteConnections();
+string connectionName = "connectionName";
+ResourceIdentifier expressRouteConnectionResourceId = ExpressRouteConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRouteGatewayName, connectionName);
+ExpressRouteConnectionResource expressRouteConnection = client.GetExpressRouteConnectionResource(expressRouteConnectionResourceId);
 
 // invoke the operation
-string connectionName = "connectionName";
-bool result = await collection.ExistsAsync(connectionName);
+ExpressRouteConnectionResource result = await expressRouteConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ExpressRouteConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

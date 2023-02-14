@@ -13,20 +13,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteCircuitPeeringResource created on azure
-// for more information of creating ExpressRouteCircuitPeeringResource, please refer to the document of ExpressRouteCircuitPeeringResource
+// this example assumes you already have this PeerExpressRouteCircuitConnectionResource created on azure
+// for more information of creating PeerExpressRouteCircuitConnectionResource, please refer to the document of PeerExpressRouteCircuitConnectionResource
 string subscriptionId = "subid1";
 string resourceGroupName = "rg1";
 string circuitName = "ExpressRouteARMCircuitA";
 string peeringName = "AzurePrivatePeering";
-ResourceIdentifier expressRouteCircuitPeeringResourceId = ExpressRouteCircuitPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName, peeringName);
-ExpressRouteCircuitPeeringResource expressRouteCircuitPeering = client.GetExpressRouteCircuitPeeringResource(expressRouteCircuitPeeringResourceId);
-
-// get the collection of this PeerExpressRouteCircuitConnectionResource
-PeerExpressRouteCircuitConnectionCollection collection = expressRouteCircuitPeering.GetPeerExpressRouteCircuitConnections();
+string connectionName = "60aee347-e889-4a42-8c1b-0aae8b1e4013";
+ResourceIdentifier peerExpressRouteCircuitConnectionResourceId = PeerExpressRouteCircuitConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName, peeringName, connectionName);
+PeerExpressRouteCircuitConnectionResource peerExpressRouteCircuitConnection = client.GetPeerExpressRouteCircuitConnectionResource(peerExpressRouteCircuitConnectionResourceId);
 
 // invoke the operation
-string connectionName = "60aee347-e889-4a42-8c1b-0aae8b1e4013";
-bool result = await collection.ExistsAsync(connectionName);
+PeerExpressRouteCircuitConnectionResource result = await peerExpressRouteCircuitConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PeerExpressRouteCircuitConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

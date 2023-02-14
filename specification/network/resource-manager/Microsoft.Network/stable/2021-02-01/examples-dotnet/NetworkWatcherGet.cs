@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Network;
-using Azure.ResourceManager.Network.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2021-02-01/examples/NetworkWatcherGet.json
@@ -16,19 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkWatcherResource created on azure
-// for more information of creating NetworkWatcherResource, please refer to the document of NetworkWatcherResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string networkWatcherName = "nw1";
-ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName);
-NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkWatcherResource
+NetworkWatcherCollection collection = resourceGroupResource.GetNetworkWatchers();
 
 // invoke the operation
-NetworkWatcherResource result = await networkWatcher.GetAsync();
+string networkWatcherName = "nw1";
+bool result = await collection.ExistsAsync(networkWatcherName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkWatcherData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

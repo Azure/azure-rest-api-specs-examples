@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ConnectionMonitorResource created on azure
-// for more information of creating ConnectionMonitorResource, please refer to the document of ConnectionMonitorResource
+// this example assumes you already have this NetworkWatcherResource created on azure
+// for more information of creating NetworkWatcherResource, please refer to the document of NetworkWatcherResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkWatcherName = "nw1";
-string connectionMonitorName = "cm1";
-ResourceIdentifier connectionMonitorResourceId = ConnectionMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName, connectionMonitorName);
-ConnectionMonitorResource connectionMonitor = client.GetConnectionMonitorResource(connectionMonitorResourceId);
+ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName);
+NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
+
+// get the collection of this ConnectionMonitorResource
+ConnectionMonitorCollection collection = networkWatcher.GetConnectionMonitors();
 
 // invoke the operation
-ConnectionMonitorResource result = await connectionMonitor.GetAsync();
+string connectionMonitorName = "cm1";
+bool result = await collection.ExistsAsync(connectionMonitorName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ConnectionMonitorData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkProfileResource created on azure
-// for more information of creating NetworkProfileResource, please refer to the document of NetworkProfileResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string networkProfileName = "networkProfile1";
-ResourceIdentifier networkProfileResourceId = NetworkProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkProfileName);
-NetworkProfileResource networkProfile = client.GetNetworkProfileResource(networkProfileResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkProfileResource
+NetworkProfileCollection collection = resourceGroupResource.GetNetworkProfiles();
 
 // invoke the operation
-NetworkProfileResource result = await networkProfile.GetAsync();
+string networkProfileName = "networkProfile1";
+bool result = await collection.ExistsAsync(networkProfileName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkProfileData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

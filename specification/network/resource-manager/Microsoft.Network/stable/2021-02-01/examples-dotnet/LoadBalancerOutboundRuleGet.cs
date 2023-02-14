@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OutboundRuleResource created on azure
-// for more information of creating OutboundRuleResource, please refer to the document of OutboundRuleResource
+// this example assumes you already have this LoadBalancerResource created on azure
+// for more information of creating LoadBalancerResource, please refer to the document of LoadBalancerResource
 string subscriptionId = "subid";
 string resourceGroupName = "testrg";
 string loadBalancerName = "lb1";
-string outboundRuleName = "rule1";
-ResourceIdentifier outboundRuleResourceId = OutboundRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName, outboundRuleName);
-OutboundRuleResource outboundRule = client.GetOutboundRuleResource(outboundRuleResourceId);
+ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName);
+LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
+
+// get the collection of this OutboundRuleResource
+OutboundRuleCollection collection = loadBalancer.GetOutboundRules();
 
 // invoke the operation
-OutboundRuleResource result = await outboundRule.GetAsync();
+string outboundRuleName = "rule1";
+bool result = await collection.ExistsAsync(outboundRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-OutboundRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

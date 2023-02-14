@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -26,25 +25,22 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-IEnumerable<LogMetric> metrics = new LogMetric[]
+ProfileResourceGetLogAnalyticsMetricsOptions options = new ProfileResourceGetLogAnalyticsMetricsOptions(metrics: new LogMetric[]
 {
 LogMetric.ClientRequestCount
-};
-DateTimeOffset dateTimeBegin = DateTimeOffset.Parse("2020-11-04T04:30:00.000Z");
-DateTimeOffset dateTimeEnd = DateTimeOffset.Parse("2020-11-04T05:00:00.000Z");
-LogMetricsGranularity granularity = LogMetricsGranularity.PT5M;
-IEnumerable<string> customDomains = new string[]
+}, dateTimeBegin: DateTimeOffset.Parse("2020-11-04T04:30:00.000Z"), dateTimeEnd: DateTimeOffset.Parse("2020-11-04T05:00:00.000Z"), granularity: LogMetricsGranularity.PT5M, customDomains: new string[]
 {
 "customdomain1.azurecdn.net","customdomain2.azurecdn.net"
-};
-IEnumerable<string> protocols = new string[]
+}, protocols: new string[]
 {
 "https"
-};
-IEnumerable<LogMetricsGroupBy> groupBy = new LogMetricsGroupBy[]
+})
+{
+    GroupBy = new LogMetricsGroupBy[]
 {
 LogMetricsGroupBy.Protocol
+}
 };
-MetricsResponse result = await profile.GetLogAnalyticsMetricsAsync(metrics, dateTimeBegin, dateTimeEnd, granularity, customDomains, protocols, groupBy: groupBy);
+MetricsResponse result = await profile.GetLogAnalyticsMetricsAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

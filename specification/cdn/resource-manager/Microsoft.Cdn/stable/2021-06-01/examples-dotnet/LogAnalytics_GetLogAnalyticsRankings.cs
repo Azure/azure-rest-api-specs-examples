@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -26,17 +25,14 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-IEnumerable<LogRanking> rankings = new LogRanking[]
+ProfileResourceGetLogAnalyticsRankingsOptions options = new ProfileResourceGetLogAnalyticsRankingsOptions(rankings: new LogRanking[]
 {
 LogRanking.Uri
-};
-IEnumerable<LogRankingMetric> metrics = new LogRankingMetric[]
+}, metrics: new LogRankingMetric[]
 {
 LogRankingMetric.ClientRequestCount
-};
-int maxRanking = 5;
-DateTimeOffset dateTimeBegin = DateTimeOffset.Parse("2020-11-04T06:49:27.554Z");
-DateTimeOffset dateTimeEnd = DateTimeOffset.Parse("2020-11-04T09:49:27.554Z");
-RankingsResponse result = await profile.GetLogAnalyticsRankingsAsync(rankings, metrics, maxRanking, dateTimeBegin, dateTimeEnd);
+}, maxRanking: 5, dateTimeBegin: DateTimeOffset.Parse("2020-11-04T06:49:27.554Z"), dateTimeEnd: DateTimeOffset.Parse("2020-11-04T09:49:27.554Z"))
+{ };
+RankingsResponse result = await profile.GetLogAnalyticsRankingsAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

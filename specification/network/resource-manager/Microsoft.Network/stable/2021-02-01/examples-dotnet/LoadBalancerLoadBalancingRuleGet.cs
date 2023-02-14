@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LoadBalancingRuleResource created on azure
-// for more information of creating LoadBalancingRuleResource, please refer to the document of LoadBalancingRuleResource
+// this example assumes you already have this LoadBalancerResource created on azure
+// for more information of creating LoadBalancerResource, please refer to the document of LoadBalancerResource
 string subscriptionId = "subid";
 string resourceGroupName = "testrg";
 string loadBalancerName = "lb1";
-string loadBalancingRuleName = "rule1";
-ResourceIdentifier loadBalancingRuleResourceId = LoadBalancingRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName, loadBalancingRuleName);
-LoadBalancingRuleResource loadBalancingRule = client.GetLoadBalancingRuleResource(loadBalancingRuleResourceId);
+ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName);
+LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
+
+// get the collection of this LoadBalancingRuleResource
+LoadBalancingRuleCollection collection = loadBalancer.GetLoadBalancingRules();
 
 // invoke the operation
-LoadBalancingRuleResource result = await loadBalancingRule.GetAsync();
+string loadBalancingRuleName = "rule1";
+bool result = await collection.ExistsAsync(loadBalancingRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LoadBalancingRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

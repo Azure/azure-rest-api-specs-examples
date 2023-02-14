@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnGatewayResource created on azure
-// for more information of creating VpnGatewayResource, please refer to the document of VpnGatewayResource
+// this example assumes you already have this VpnConnectionResource created on azure
+// for more information of creating VpnConnectionResource, please refer to the document of VpnConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string gatewayName = "gateway1";
-ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
-VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
-
-// get the collection of this VpnConnectionResource
-VpnConnectionCollection collection = vpnGateway.GetVpnConnections();
+string connectionName = "vpnConnection1";
+ResourceIdentifier vpnConnectionResourceId = VpnConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, connectionName);
+VpnConnectionResource vpnConnection = client.GetVpnConnectionResource(vpnConnectionResourceId);
 
 // invoke the operation
-string connectionName = "vpnConnection1";
-bool result = await collection.ExistsAsync(connectionName);
+VpnConnectionResource result = await vpnConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VpnConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

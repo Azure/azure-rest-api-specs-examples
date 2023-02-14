@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualRouterResource created on azure
-// for more information of creating VirtualRouterResource, please refer to the document of VirtualRouterResource
+// this example assumes you already have this VirtualRouterPeeringResource created on azure
+// for more information of creating VirtualRouterPeeringResource, please refer to the document of VirtualRouterPeeringResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualRouterName = "virtualRouter";
-ResourceIdentifier virtualRouterResourceId = VirtualRouterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualRouterName);
-VirtualRouterResource virtualRouter = client.GetVirtualRouterResource(virtualRouterResourceId);
-
-// get the collection of this VirtualRouterPeeringResource
-VirtualRouterPeeringCollection collection = virtualRouter.GetVirtualRouterPeerings();
+string peeringName = "peering1";
+ResourceIdentifier virtualRouterPeeringResourceId = VirtualRouterPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualRouterName, peeringName);
+VirtualRouterPeeringResource virtualRouterPeering = client.GetVirtualRouterPeeringResource(virtualRouterPeeringResourceId);
 
 // invoke the operation
-string peeringName = "peering1";
-bool result = await collection.ExistsAsync(peeringName);
+VirtualRouterPeeringResource result = await virtualRouterPeering.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VirtualRouterPeeringData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

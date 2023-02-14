@@ -1,0 +1,40 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.dns import DnsManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-dns
+# USAGE
+    python get_dns_resource_reference.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DnsManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="subid",
+    )
+
+    response = client.dns_resource_reference.get_by_target_resources(
+        parameters={
+            "properties": {
+                "targetResources": [
+                    {
+                        "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/trafficManagerProfiles/testpp2"
+                    }
+                ]
+            }
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/GetDnsResourceReference.json
+if __name__ == "__main__":
+    main()

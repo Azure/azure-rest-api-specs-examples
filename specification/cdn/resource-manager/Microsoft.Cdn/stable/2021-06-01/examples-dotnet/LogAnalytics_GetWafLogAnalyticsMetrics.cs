@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -26,17 +25,16 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-IEnumerable<WafMetric> metrics = new WafMetric[]
+ProfileResourceGetWafLogAnalyticsMetricsOptions options = new ProfileResourceGetWafLogAnalyticsMetricsOptions(metrics: new WafMetric[]
 {
 WafMetric.ClientRequestCount
-};
-DateTimeOffset dateTimeBegin = DateTimeOffset.Parse("2020-11-04T06:49:27.554Z");
-DateTimeOffset dateTimeEnd = DateTimeOffset.Parse("2020-11-04T09:49:27.554Z");
-WafGranularity granularity = WafGranularity.PT5M;
-IEnumerable<WafAction> actions = new WafAction[]
+}, dateTimeBegin: DateTimeOffset.Parse("2020-11-04T06:49:27.554Z"), dateTimeEnd: DateTimeOffset.Parse("2020-11-04T09:49:27.554Z"), granularity: WafGranularity.PT5M)
+{
+    Actions = new WafAction[]
 {
 WafAction.Block,WafAction.Log
+}
 };
-WafMetricsResponse result = await profile.GetWafLogAnalyticsMetricsAsync(metrics, dateTimeBegin, dateTimeEnd, granularity, actions: actions);
+WafMetricsResponse result = await profile.GetWafLogAnalyticsMetricsAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

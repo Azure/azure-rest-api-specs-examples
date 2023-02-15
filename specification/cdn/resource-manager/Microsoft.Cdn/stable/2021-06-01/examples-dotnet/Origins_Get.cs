@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Cdn;
+using Azure.ResourceManager.Cdn.Models;
 
 // Generated from example definition: specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/Origins_Get.json
 // this example is just showing the usage of "CdnOrigins_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CdnEndpointResource created on azure
-// for more information of creating CdnEndpointResource, please refer to the document of CdnEndpointResource
+// this example assumes you already have this CdnOriginResource created on azure
+// for more information of creating CdnOriginResource, please refer to the document of CdnOriginResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
 string endpointName = "endpoint1";
-ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName);
-CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
-
-// get the collection of this CdnOriginResource
-CdnOriginCollection collection = cdnEndpoint.GetCdnOrigins();
+string originName = "www-someDomain-net";
+ResourceIdentifier cdnOriginResourceId = CdnOriginResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName, originName);
+CdnOriginResource cdnOrigin = client.GetCdnOriginResource(cdnOriginResourceId);
 
 // invoke the operation
-string originName = "www-someDomain-net";
-bool result = await collection.ExistsAsync(originName);
+CdnOriginResource result = await cdnOrigin.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CdnOriginData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

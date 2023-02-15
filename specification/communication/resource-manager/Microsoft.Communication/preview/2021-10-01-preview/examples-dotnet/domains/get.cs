@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EmailServiceResource created on azure
-// for more information of creating EmailServiceResource, please refer to the document of EmailServiceResource
+// this example assumes you already have this CommunicationDomainResource created on azure
+// for more information of creating CommunicationDomainResource, please refer to the document of CommunicationDomainResource
 string subscriptionId = "12345";
 string resourceGroupName = "MyResourceGroup";
 string emailServiceName = "MyEmailServiceResource";
-ResourceIdentifier emailServiceResourceId = EmailServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, emailServiceName);
-EmailServiceResource emailServiceResource = client.GetEmailServiceResource(emailServiceResourceId);
-
-// get the collection of this CommunicationDomainResource
-CommunicationDomainResourceCollection collection = emailServiceResource.GetCommunicationDomainResources();
+string domainName = "mydomain.com";
+ResourceIdentifier communicationDomainResourceId = CommunicationDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, emailServiceName, domainName);
+CommunicationDomainResource communicationDomainResource = client.GetCommunicationDomainResource(communicationDomainResourceId);
 
 // invoke the operation
-string domainName = "mydomain.com";
-bool result = await collection.ExistsAsync(domainName);
+CommunicationDomainResource result = await communicationDomainResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CommunicationDomainResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

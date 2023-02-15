@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Storage;
 using Azure.ResourceManager.Storage.Models;
 
 // Generated from example definition: specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/examples/SKUList.json

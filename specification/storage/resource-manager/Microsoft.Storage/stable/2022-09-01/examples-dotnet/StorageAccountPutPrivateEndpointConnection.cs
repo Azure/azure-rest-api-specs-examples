@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageAccountResource created on azure
-// for more information of creating StorageAccountResource, please refer to the document of StorageAccountResource
+// this example assumes you already have this StoragePrivateEndpointConnectionResource created on azure
+// for more information of creating StoragePrivateEndpointConnectionResource, please refer to the document of StoragePrivateEndpointConnectionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res7687";
 string accountName = "sto9699";
-ResourceIdentifier storageAccountResourceId = StorageAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-StorageAccountResource storageAccount = client.GetStorageAccountResource(storageAccountResourceId);
-
-// get the collection of this StoragePrivateEndpointConnectionResource
-StoragePrivateEndpointConnectionCollection collection = storageAccount.GetStoragePrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+ResourceIdentifier storagePrivateEndpointConnectionResourceId = StoragePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionName);
+StoragePrivateEndpointConnectionResource storagePrivateEndpointConnection = client.GetStoragePrivateEndpointConnectionResource(storagePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
 StoragePrivateEndpointConnectionData data = new StoragePrivateEndpointConnectionData()
 {
     ConnectionState = new StoragePrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ StoragePrivateEndpointConnectionData data = new StoragePrivateEndpointConnection
         Description = "Auto-Approved",
     },
 };
-ArmOperation<StoragePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<StoragePrivateEndpointConnectionResource> lro = await storagePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 StoragePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

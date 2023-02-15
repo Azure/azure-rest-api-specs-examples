@@ -14,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusTopicResource created on azure
-// for more information of creating ServiceBusTopicResource, please refer to the document of ServiceBusTopicResource
+// this example assumes you already have this ServiceBusNamespaceResource created on azure
+// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-1617";
-string topicName = "sdk-Topics-5488";
-ResourceIdentifier serviceBusTopicResourceId = ServiceBusTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName);
-ServiceBusTopicResource serviceBusTopic = client.GetServiceBusTopicResource(serviceBusTopicResourceId);
+ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
+
+// get the collection of this ServiceBusTopicResource
+ServiceBusTopicCollection collection = serviceBusNamespace.GetServiceBusTopics();
 
 // invoke the operation
-ServiceBusTopicResource result = await serviceBusTopic.GetAsync();
+string topicName = "sdk-Topics-5488";
+bool result = await collection.ExistsAsync(topicName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ServiceBusTopicData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

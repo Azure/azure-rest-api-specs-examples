@@ -15,21 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusSubscriptionResource created on azure
-// for more information of creating ServiceBusSubscriptionResource, please refer to the document of ServiceBusSubscriptionResource
+// this example assumes you already have this ServiceBusRuleResource created on azure
+// for more information of creating ServiceBusRuleResource, please refer to the document of ServiceBusRuleResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-1319";
 string topicName = "sdk-Topics-2081";
 string subscriptionName = "sdk-Subscriptions-8691";
-ResourceIdentifier serviceBusSubscriptionResourceId = ServiceBusSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, subscriptionName);
-ServiceBusSubscriptionResource serviceBusSubscription = client.GetServiceBusSubscriptionResource(serviceBusSubscriptionResourceId);
-
-// get the collection of this ServiceBusRuleResource
-ServiceBusRuleCollection collection = serviceBusSubscription.GetServiceBusRules();
+string ruleName = "sdk-Rules-6571";
+ResourceIdentifier serviceBusRuleResourceId = ServiceBusRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, subscriptionName, ruleName);
+ServiceBusRuleResource serviceBusRule = client.GetServiceBusRuleResource(serviceBusRuleResourceId);
 
 // invoke the operation
-string ruleName = "sdk-Rules-6571";
-bool result = await collection.ExistsAsync(ruleName);
+ServiceBusRuleResource result = await serviceBusRule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ServiceBusRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

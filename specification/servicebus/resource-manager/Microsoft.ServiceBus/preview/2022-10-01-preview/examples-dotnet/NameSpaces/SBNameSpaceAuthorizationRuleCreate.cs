@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceAuthorizationRuleResource created on azure
-// for more information of creating ServiceBusNamespaceAuthorizationRuleResource, please refer to the document of ServiceBusNamespaceAuthorizationRuleResource
+// this example assumes you already have this ServiceBusNamespaceResource created on azure
+// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-6914";
-string authorizationRuleName = "sdk-AuthRules-1788";
-ResourceIdentifier serviceBusNamespaceAuthorizationRuleResourceId = ServiceBusNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
-ServiceBusNamespaceAuthorizationRuleResource serviceBusNamespaceAuthorizationRule = client.GetServiceBusNamespaceAuthorizationRuleResource(serviceBusNamespaceAuthorizationRuleResourceId);
+ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
+
+// get the collection of this ServiceBusNamespaceAuthorizationRuleResource
+ServiceBusNamespaceAuthorizationRuleCollection collection = serviceBusNamespace.GetServiceBusNamespaceAuthorizationRules();
 
 // invoke the operation
+string authorizationRuleName = "sdk-AuthRules-1788";
 ServiceBusAuthorizationRuleData data = new ServiceBusAuthorizationRuleData()
 {
     Rights =
@@ -32,7 +35,7 @@ ServiceBusAuthorizationRuleData data = new ServiceBusAuthorizationRuleData()
     ServiceBusAccessRight.Listen,ServiceBusAccessRight.Send
     },
 };
-ArmOperation<ServiceBusNamespaceAuthorizationRuleResource> lro = await serviceBusNamespaceAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceBusNamespaceAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
 ServiceBusNamespaceAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

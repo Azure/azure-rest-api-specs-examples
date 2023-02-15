@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceAuthorizationRuleResource created on azure
-// for more information of creating ServiceBusNamespaceAuthorizationRuleResource, please refer to the document of ServiceBusNamespaceAuthorizationRuleResource
+// this example assumes you already have this ServiceBusNamespaceResource created on azure
+// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-6914";
-string authorizationRuleName = "sdk-AuthRules-1788";
-ResourceIdentifier serviceBusNamespaceAuthorizationRuleResourceId = ServiceBusNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
-ServiceBusNamespaceAuthorizationRuleResource serviceBusNamespaceAuthorizationRule = client.GetServiceBusNamespaceAuthorizationRuleResource(serviceBusNamespaceAuthorizationRuleResourceId);
+ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
+
+// get the collection of this ServiceBusNamespaceAuthorizationRuleResource
+ServiceBusNamespaceAuthorizationRuleCollection collection = serviceBusNamespace.GetServiceBusNamespaceAuthorizationRules();
 
 // invoke the operation
-ServiceBusNamespaceAuthorizationRuleResource result = await serviceBusNamespaceAuthorizationRule.GetAsync();
+string authorizationRuleName = "sdk-AuthRules-1788";
+bool result = await collection.ExistsAsync(authorizationRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ServiceBusAuthorizationRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebPubSubPrivateEndpointConnectionResource created on azure
-// for more information of creating WebPubSubPrivateEndpointConnectionResource, please refer to the document of WebPubSubPrivateEndpointConnectionResource
+// this example assumes you already have this WebPubSubResource created on azure
+// for more information of creating WebPubSubResource, please refer to the document of WebPubSubResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "myWebPubSubService";
-string privateEndpointConnectionName = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e";
-ResourceIdentifier webPubSubPrivateEndpointConnectionResourceId = WebPubSubPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
-WebPubSubPrivateEndpointConnectionResource webPubSubPrivateEndpointConnection = client.GetWebPubSubPrivateEndpointConnectionResource(webPubSubPrivateEndpointConnectionResourceId);
+ResourceIdentifier webPubSubResourceId = WebPubSubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+WebPubSubResource webPubSub = client.GetWebPubSubResource(webPubSubResourceId);
+
+// get the collection of this WebPubSubPrivateEndpointConnectionResource
+WebPubSubPrivateEndpointConnectionCollection collection = webPubSub.GetWebPubSubPrivateEndpointConnections();
 
 // invoke the operation
-WebPubSubPrivateEndpointConnectionResource result = await webPubSubPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WebPubSubPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

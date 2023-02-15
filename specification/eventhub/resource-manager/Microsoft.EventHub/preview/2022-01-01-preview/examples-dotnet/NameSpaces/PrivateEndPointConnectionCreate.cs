@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceResource created on azure
-// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
+// this example assumes you already have this EventHubsPrivateEndpointConnectionResource created on azure
+// for more information of creating EventHubsPrivateEndpointConnectionResource, please refer to the document of EventHubsPrivateEndpointConnectionResource
 string subscriptionId = "subID";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-2924";
-ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
-
-// get the collection of this EventHubsPrivateEndpointConnectionResource
-EventHubsPrivateEndpointConnectionCollection collection = eventHubsNamespace.GetEventHubsPrivateEndpointConnections();
+string privateEndpointConnectionName = "privateEndpointConnectionName";
+ResourceIdentifier eventHubsPrivateEndpointConnectionResourceId = EventHubsPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, privateEndpointConnectionName);
+EventHubsPrivateEndpointConnectionResource eventHubsPrivateEndpointConnection = client.GetEventHubsPrivateEndpointConnectionResource(eventHubsPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "privateEndpointConnectionName";
 EventHubsPrivateEndpointConnectionData data = new EventHubsPrivateEndpointConnectionData()
 {
     PrivateEndpointId = new ResourceIdentifier("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-EventHub-8396/providers/Microsoft.Network/privateEndpoints/sdk-Namespace-2847"),
@@ -38,7 +35,7 @@ EventHubsPrivateEndpointConnectionData data = new EventHubsPrivateEndpointConnec
     },
     ProvisioningState = EventHubsPrivateEndpointConnectionProvisioningState.Succeeded,
 };
-ArmOperation<EventHubsPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<EventHubsPrivateEndpointConnectionResource> lro = await eventHubsPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 EventHubsPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

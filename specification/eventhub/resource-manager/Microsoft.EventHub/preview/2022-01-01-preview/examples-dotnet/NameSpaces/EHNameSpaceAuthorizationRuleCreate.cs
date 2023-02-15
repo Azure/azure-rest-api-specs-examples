@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceAuthorizationRuleResource created on azure
-// for more information of creating EventHubsNamespaceAuthorizationRuleResource, please refer to the document of EventHubsNamespaceAuthorizationRuleResource
+// this example assumes you already have this EventHubsNamespaceResource created on azure
+// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-2702";
-string authorizationRuleName = "sdk-Authrules-1746";
-ResourceIdentifier eventHubsNamespaceAuthorizationRuleResourceId = EventHubsNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
-EventHubsNamespaceAuthorizationRuleResource eventHubsNamespaceAuthorizationRule = client.GetEventHubsNamespaceAuthorizationRuleResource(eventHubsNamespaceAuthorizationRuleResourceId);
+ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
+
+// get the collection of this EventHubsNamespaceAuthorizationRuleResource
+EventHubsNamespaceAuthorizationRuleCollection collection = eventHubsNamespace.GetEventHubsNamespaceAuthorizationRules();
 
 // invoke the operation
+string authorizationRuleName = "sdk-Authrules-1746";
 EventHubsAuthorizationRuleData data = new EventHubsAuthorizationRuleData()
 {
     Rights =
@@ -32,7 +35,7 @@ EventHubsAuthorizationRuleData data = new EventHubsAuthorizationRuleData()
     EventHubsAccessRight.Listen,EventHubsAccessRight.Send
     },
 };
-ArmOperation<EventHubsNamespaceAuthorizationRuleResource> lro = await eventHubsNamespaceAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<EventHubsNamespaceAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
 EventHubsNamespaceAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiResource created on azure
-// for more information of creating ApiResource, please refer to the document of ApiResource
+// this example assumes you already have this ApiIssueResource created on azure
+// for more information of creating ApiIssueResource, please refer to the document of ApiIssueResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "57d2ef278aa04f0888cba3f3";
-ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
-ApiResource api = client.GetApiResource(apiResourceId);
-
-// get the collection of this ApiIssueResource
-ApiIssueCollection collection = api.GetApiIssues();
+string issueId = "57d2ef278aa04f0ad01d6cdc";
+ResourceIdentifier apiIssueResourceId = ApiIssueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId);
+ApiIssueResource apiIssue = client.GetApiIssueResource(apiIssueResourceId);
 
 // invoke the operation
-string issueId = "57d2ef278aa04f0ad01d6cdc";
-bool result = await collection.ExistsAsync(issueId);
+ApiIssueResource result = await apiIssue.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+IssueContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

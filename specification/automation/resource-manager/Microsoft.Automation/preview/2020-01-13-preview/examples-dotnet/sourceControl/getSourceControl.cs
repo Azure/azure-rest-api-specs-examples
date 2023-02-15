@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this AutomationSourceControlResource created on azure
+// for more information of creating AutomationSourceControlResource, please refer to the document of AutomationSourceControlResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "sampleAccount9";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this AutomationSourceControlResource
-AutomationSourceControlCollection collection = automationAccount.GetAutomationSourceControls();
+string sourceControlName = "sampleSourceControl";
+ResourceIdentifier automationSourceControlResourceId = AutomationSourceControlResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, sourceControlName);
+AutomationSourceControlResource automationSourceControl = client.GetAutomationSourceControlResource(automationSourceControlResourceId);
 
 // invoke the operation
-string sourceControlName = "sampleSourceControl";
-bool result = await collection.ExistsAsync(sourceControlName);
+AutomationSourceControlResource result = await automationSourceControl.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomationSourceControlData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

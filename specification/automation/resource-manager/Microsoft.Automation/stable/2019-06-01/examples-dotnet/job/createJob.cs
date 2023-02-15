@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this AutomationJobResource created on azure
+// for more information of creating AutomationJobResource, please refer to the document of AutomationJobResource
 string subscriptionId = "51766542-3ed7-4a72-a187-0c8ab644ddab";
 string resourceGroupName = "mygroup";
 string automationAccountName = "ContoseAutomationAccount";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this AutomationJobResource
-AutomationJobCollection collection = automationAccount.GetAutomationJobs();
+string jobName = "foo";
+ResourceIdentifier automationJobResourceId = AutomationJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, jobName);
+AutomationJobResource automationJob = client.GetAutomationJobResource(automationJobResourceId);
 
 // invoke the operation
-string jobName = "foo";
 AutomationJobCreateOrUpdateContent content = new AutomationJobCreateOrUpdateContent()
 {
     RunbookName = "TestRunbook",
@@ -38,7 +35,7 @@ AutomationJobCreateOrUpdateContent content = new AutomationJobCreateOrUpdateCont
     },
     RunOn = "",
 };
-ArmOperation<AutomationJobResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, jobName, content);
+ArmOperation<AutomationJobResource> lro = await automationJob.UpdateAsync(WaitUntil.Completed, content);
 AutomationJobResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DscNodeConfigurationResource created on azure
-// for more information of creating DscNodeConfigurationResource, please refer to the document of DscNodeConfigurationResource
+// this example assumes you already have this AutomationAccountResource created on azure
+// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "myAutomationAccount33";
-string nodeConfigurationName = "SetupServer.localhost";
-ResourceIdentifier dscNodeConfigurationResourceId = DscNodeConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, nodeConfigurationName);
-DscNodeConfigurationResource dscNodeConfiguration = client.GetDscNodeConfigurationResource(dscNodeConfigurationResourceId);
+ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
+AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
+
+// get the collection of this DscNodeConfigurationResource
+DscNodeConfigurationCollection collection = automationAccount.GetDscNodeConfigurations();
 
 // invoke the operation
-DscNodeConfigurationResource result = await dscNodeConfiguration.GetAsync();
+string nodeConfigurationName = "SetupServer.localhost";
+bool result = await collection.ExistsAsync(nodeConfigurationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DscNodeConfigurationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

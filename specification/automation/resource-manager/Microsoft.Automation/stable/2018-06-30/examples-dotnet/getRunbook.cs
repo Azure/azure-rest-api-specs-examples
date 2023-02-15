@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this AutomationRunbookResource created on azure
+// for more information of creating AutomationRunbookResource, please refer to the document of AutomationRunbookResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "ContoseAutomationAccount";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this AutomationRunbookResource
-AutomationRunbookCollection collection = automationAccount.GetAutomationRunbooks();
+string runbookName = "Get-AzureVMTutorial";
+ResourceIdentifier automationRunbookResourceId = AutomationRunbookResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, runbookName);
+AutomationRunbookResource automationRunbook = client.GetAutomationRunbookResource(automationRunbookResourceId);
 
 // invoke the operation
-string runbookName = "Get-AzureVMTutorial";
-bool result = await collection.ExistsAsync(runbookName);
+AutomationRunbookResource result = await automationRunbook.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomationRunbookData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

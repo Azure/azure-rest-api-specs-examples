@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AttestationProviderResource created on azure
-// for more information of creating AttestationProviderResource, please refer to the document of AttestationProviderResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "MyResourceGroup";
-string providerName = "myattestationprovider";
-ResourceIdentifier attestationProviderResourceId = AttestationProviderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, providerName);
-AttestationProviderResource attestationProvider = client.GetAttestationProviderResource(attestationProviderResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this AttestationProviderResource
+AttestationProviderCollection collection = resourceGroupResource.GetAttestationProviders();
 
 // invoke the operation
-AttestationProviderResource result = await attestationProvider.GetAsync();
+string providerName = "myattestationprovider";
+bool result = await collection.ExistsAsync(providerName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AttestationProviderData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

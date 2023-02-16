@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateEndpointConnectionProxyResource created on azure
-// for more information of creating PrivateEndpointConnectionProxyResource, please refer to the document of PrivateEndpointConnectionProxyResource
+// this example assumes you already have this DeviceUpdateAccountResource created on azure
+// for more information of creating DeviceUpdateAccountResource, please refer to the document of DeviceUpdateAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
 string accountName = "contoso";
-string privateEndpointConnectionProxyId = "peexample01";
-ResourceIdentifier privateEndpointConnectionProxyResourceId = PrivateEndpointConnectionProxyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionProxyId);
-PrivateEndpointConnectionProxyResource privateEndpointConnectionProxy = client.GetPrivateEndpointConnectionProxyResource(privateEndpointConnectionProxyResourceId);
+ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
+
+// get the collection of this PrivateEndpointConnectionProxyResource
+PrivateEndpointConnectionProxyCollection collection = deviceUpdateAccount.GetPrivateEndpointConnectionProxies();
 
 // invoke the operation
-PrivateEndpointConnectionProxyResource result = await privateEndpointConnectionProxy.GetAsync();
+string privateEndpointConnectionProxyId = "peexample01";
+bool result = await collection.ExistsAsync(privateEndpointConnectionProxyId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PrivateEndpointConnectionProxyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

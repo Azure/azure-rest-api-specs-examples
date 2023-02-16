@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateEndpointConnectionProxyResource created on azure
-// for more information of creating PrivateEndpointConnectionProxyResource, please refer to the document of PrivateEndpointConnectionProxyResource
+// this example assumes you already have this DeviceUpdateAccountResource created on azure
+// for more information of creating DeviceUpdateAccountResource, please refer to the document of DeviceUpdateAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
 string accountName = "contoso";
-string privateEndpointConnectionProxyId = "peexample01";
-ResourceIdentifier privateEndpointConnectionProxyResourceId = PrivateEndpointConnectionProxyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateEndpointConnectionProxyId);
-PrivateEndpointConnectionProxyResource privateEndpointConnectionProxy = client.GetPrivateEndpointConnectionProxyResource(privateEndpointConnectionProxyResourceId);
+ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
+
+// get the collection of this PrivateEndpointConnectionProxyResource
+PrivateEndpointConnectionProxyCollection collection = deviceUpdateAccount.GetPrivateEndpointConnectionProxies();
 
 // invoke the operation
+string privateEndpointConnectionProxyId = "peexample01";
 PrivateEndpointConnectionProxyData data = new PrivateEndpointConnectionProxyData()
 {
     RemotePrivateEndpoint = new RemotePrivateEndpoint()
@@ -57,7 +60,7 @@ PrivateEndpointConnectionProxyData data = new PrivateEndpointConnectionProxyData
         },
     },
 };
-ArmOperation<PrivateEndpointConnectionProxyResource> lro = await privateEndpointConnectionProxy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PrivateEndpointConnectionProxyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionProxyId, data);
 PrivateEndpointConnectionProxyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

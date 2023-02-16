@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceUpdateInstanceResource created on azure
-// for more information of creating DeviceUpdateInstanceResource, please refer to the document of DeviceUpdateInstanceResource
+// this example assumes you already have this DeviceUpdateAccountResource created on azure
+// for more information of creating DeviceUpdateAccountResource, please refer to the document of DeviceUpdateAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
 string accountName = "contoso";
-string instanceName = "blue";
-ResourceIdentifier deviceUpdateInstanceResourceId = DeviceUpdateInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, instanceName);
-DeviceUpdateInstanceResource deviceUpdateInstance = client.GetDeviceUpdateInstanceResource(deviceUpdateInstanceResourceId);
+ResourceIdentifier deviceUpdateAccountResourceId = DeviceUpdateAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+DeviceUpdateAccountResource deviceUpdateAccount = client.GetDeviceUpdateAccountResource(deviceUpdateAccountResourceId);
+
+// get the collection of this DeviceUpdateInstanceResource
+DeviceUpdateInstanceCollection collection = deviceUpdateAccount.GetDeviceUpdateInstances();
 
 // invoke the operation
-DeviceUpdateInstanceResource result = await deviceUpdateInstance.GetAsync();
+string instanceName = "blue";
+bool result = await collection.ExistsAsync(instanceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DeviceUpdateInstanceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

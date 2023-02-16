@@ -14,22 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiOperationResource created on azure
-// for more information of creating ApiOperationResource, please refer to the document of ApiOperationResource
+// this example assumes you already have this ApiOperationTagResource created on azure
+// for more information of creating ApiOperationTagResource, please refer to the document of ApiOperationTagResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5931a75ae4bbd512a88c680b";
 string operationId = "5931a75ae4bbd512a88c680a";
-ResourceIdentifier apiOperationResourceId = ApiOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId);
-ApiOperationResource apiOperation = client.GetApiOperationResource(apiOperationResourceId);
-
-// get the collection of this ApiOperationTagResource
-ApiOperationTagCollection collection = apiOperation.GetApiOperationTags();
+string tagId = "tagId1";
+ResourceIdentifier apiOperationTagResourceId = ApiOperationTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId, tagId);
+ApiOperationTagResource apiOperationTag = client.GetApiOperationTagResource(apiOperationTagResourceId);
 
 // invoke the operation
-string tagId = "tagId1";
-ArmOperation<ApiOperationTagResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tagId);
+ArmOperation<ApiOperationTagResource> lro = await apiOperationTag.UpdateAsync(WaitUntil.Completed);
 ApiOperationTagResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

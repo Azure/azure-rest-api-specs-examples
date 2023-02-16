@@ -14,22 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiIssueCommentResource created on azure
-// for more information of creating ApiIssueCommentResource, please refer to the document of ApiIssueCommentResource
+// this example assumes you already have this ApiIssueResource created on azure
+// for more information of creating ApiIssueResource, please refer to the document of ApiIssueResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "57d2ef278aa04f0888cba3f3";
 string issueId = "57d2ef278aa04f0ad01d6cdc";
-string commentId = "599e29ab193c3c0bd0b3e2fb";
-ResourceIdentifier apiIssueCommentResourceId = ApiIssueCommentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId, commentId);
-ApiIssueCommentResource apiIssueComment = client.GetApiIssueCommentResource(apiIssueCommentResourceId);
+ResourceIdentifier apiIssueResourceId = ApiIssueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId);
+ApiIssueResource apiIssue = client.GetApiIssueResource(apiIssueResourceId);
+
+// get the collection of this ApiIssueCommentResource
+ApiIssueCommentCollection collection = apiIssue.GetApiIssueComments();
 
 // invoke the operation
-ApiIssueCommentResource result = await apiIssueComment.GetAsync();
+string commentId = "599e29ab193c3c0bd0b3e2fb";
+bool result = await collection.ExistsAsync(commentId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiIssueCommentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

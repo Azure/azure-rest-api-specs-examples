@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiPolicyResource created on azure
-// for more information of creating ApiPolicyResource, please refer to the document of ApiPolicyResource
+// this example assumes you already have this ApiResource created on azure
+// for more information of creating ApiResource, please refer to the document of ApiResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5600b59475ff190048040001";
-PolicyName policyId = PolicyName.Policy;
-ResourceIdentifier apiPolicyResourceId = ApiPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, policyId);
-ApiPolicyResource apiPolicy = client.GetApiPolicyResource(apiPolicyResourceId);
+ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
+ApiResource api = client.GetApiResource(apiResourceId);
+
+// get the collection of this ApiPolicyResource
+ApiPolicyCollection collection = api.GetApiPolicies();
 
 // invoke the operation
-ApiPolicyResource result = await apiPolicy.GetAsync();
+PolicyName policyId = PolicyName.Policy;
+bool result = await collection.ExistsAsync(policyId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PolicyContractData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

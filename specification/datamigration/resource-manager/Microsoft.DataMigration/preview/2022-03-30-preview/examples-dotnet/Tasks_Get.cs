@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceProjectTaskResource created on azure
-// for more information of creating ServiceProjectTaskResource, please refer to the document of ServiceProjectTaskResource
+// this example assumes you already have this ProjectResource created on azure
+// for more information of creating ProjectResource, please refer to the document of ProjectResource
 string subscriptionId = "fc04246f-04c5-437e-ac5e-206a19e7193f";
 string groupName = "DmsSdkRg";
 string serviceName = "DmsSdkService";
 string projectName = "DmsSdkProject";
-string taskName = "DmsSdkTask";
-ResourceIdentifier serviceProjectTaskResourceId = ServiceProjectTaskResource.CreateResourceIdentifier(subscriptionId, groupName, serviceName, projectName, taskName);
-ServiceProjectTaskResource serviceProjectTask = client.GetServiceProjectTaskResource(serviceProjectTaskResourceId);
+ResourceIdentifier projectResourceId = ProjectResource.CreateResourceIdentifier(subscriptionId, groupName, serviceName, projectName);
+ProjectResource project = client.GetProjectResource(projectResourceId);
+
+// get the collection of this ServiceProjectTaskResource
+ServiceProjectTaskCollection collection = project.GetServiceProjectTasks();
 
 // invoke the operation
-ServiceProjectTaskResource result = await serviceProjectTask.GetAsync();
+string taskName = "DmsSdkTask";
+bool result = await collection.ExistsAsync(taskName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ProjectTaskData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

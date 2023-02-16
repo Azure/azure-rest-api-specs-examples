@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineResource created on azure
-// for more information of creating VirtualMachineResource, please refer to the document of VirtualMachineResource
+// this example assumes you already have this GuestAgentResource created on azure
+// for more information of creating GuestAgentResource, please refer to the document of GuestAgentResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string virtualMachineName = "ContosoVm";
-ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName);
-VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
-
-// get the collection of this GuestAgentResource
-GuestAgentCollection collection = virtualMachine.GetGuestAgents();
+string name = "default";
+ResourceIdentifier guestAgentResourceId = GuestAgentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName, name);
+GuestAgentResource guestAgent = client.GetGuestAgentResource(guestAgentResourceId);
 
 // invoke the operation
-string name = "default";
 GuestAgentData data = new GuestAgentData()
 {
     Credentials = new GuestCredential()
@@ -38,7 +35,7 @@ GuestAgentData data = new GuestAgentData()
     HttpsProxy = "http://192.1.2.3:8080",
     ProvisioningAction = ProvisioningAction.Install,
 };
-ArmOperation<GuestAgentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<GuestAgentResource> lro = await guestAgent.UpdateAsync(WaitUntil.Completed, data);
 GuestAgentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

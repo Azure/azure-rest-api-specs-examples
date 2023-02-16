@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineResource created on azure
-// for more information of creating VirtualMachineResource, please refer to the document of VirtualMachineResource
+// this example assumes you already have this GuestAgentResource created on azure
+// for more information of creating GuestAgentResource, please refer to the document of GuestAgentResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string virtualMachineName = "ContosoVm";
-ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName);
-VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
-
-// get the collection of this GuestAgentResource
-GuestAgentCollection collection = virtualMachine.GetGuestAgents();
+string name = "default";
+ResourceIdentifier guestAgentResourceId = GuestAgentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName, name);
+GuestAgentResource guestAgent = client.GetGuestAgentResource(guestAgentResourceId);
 
 // invoke the operation
-string name = "default";
-bool result = await collection.ExistsAsync(name);
+GuestAgentResource result = await guestAgent.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GuestAgentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

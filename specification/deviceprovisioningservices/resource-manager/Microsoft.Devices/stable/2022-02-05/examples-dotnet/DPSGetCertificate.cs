@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceProvisioningServicesCertificateResource created on azure
-// for more information of creating DeviceProvisioningServicesCertificateResource, please refer to the document of DeviceProvisioningServicesCertificateResource
+// this example assumes you already have this DeviceProvisioningServiceResource created on azure
+// for more information of creating DeviceProvisioningServiceResource, please refer to the document of DeviceProvisioningServiceResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string provisioningServiceName = "myFirstProvisioningService";
-string certificateName = "cert";
-ResourceIdentifier deviceProvisioningServicesCertificateResourceId = DeviceProvisioningServicesCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, provisioningServiceName, certificateName);
-DeviceProvisioningServicesCertificateResource deviceProvisioningServicesCertificate = client.GetDeviceProvisioningServicesCertificateResource(deviceProvisioningServicesCertificateResourceId);
+ResourceIdentifier deviceProvisioningServiceResourceId = DeviceProvisioningServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, provisioningServiceName);
+DeviceProvisioningServiceResource deviceProvisioningService = client.GetDeviceProvisioningServiceResource(deviceProvisioningServiceResourceId);
+
+// get the collection of this DeviceProvisioningServicesCertificateResource
+DeviceProvisioningServicesCertificateCollection collection = deviceProvisioningService.GetDeviceProvisioningServicesCertificates();
 
 // invoke the operation
-DeviceProvisioningServicesCertificateResource result = await deviceProvisioningServicesCertificate.GetAsync();
+string certificateName = "cert";
+bool result = await collection.ExistsAsync(certificateName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DeviceProvisioningServicesCertificateData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

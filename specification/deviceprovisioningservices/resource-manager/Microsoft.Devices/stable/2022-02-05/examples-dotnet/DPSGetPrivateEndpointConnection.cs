@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceProvisioningServicesPrivateEndpointConnectionResource created on azure
-// for more information of creating DeviceProvisioningServicesPrivateEndpointConnectionResource, please refer to the document of DeviceProvisioningServicesPrivateEndpointConnectionResource
+// this example assumes you already have this DeviceProvisioningServiceResource created on azure
+// for more information of creating DeviceProvisioningServiceResource, please refer to the document of DeviceProvisioningServiceResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "myFirstProvisioningService";
-string privateEndpointConnectionName = "myPrivateEndpointConnection";
-ResourceIdentifier deviceProvisioningServicesPrivateEndpointConnectionResourceId = DeviceProvisioningServicesPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
-DeviceProvisioningServicesPrivateEndpointConnectionResource deviceProvisioningServicesPrivateEndpointConnection = client.GetDeviceProvisioningServicesPrivateEndpointConnectionResource(deviceProvisioningServicesPrivateEndpointConnectionResourceId);
+ResourceIdentifier deviceProvisioningServiceResourceId = DeviceProvisioningServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+DeviceProvisioningServiceResource deviceProvisioningService = client.GetDeviceProvisioningServiceResource(deviceProvisioningServiceResourceId);
+
+// get the collection of this DeviceProvisioningServicesPrivateEndpointConnectionResource
+DeviceProvisioningServicesPrivateEndpointConnectionCollection collection = deviceProvisioningService.GetDeviceProvisioningServicesPrivateEndpointConnections();
 
 // invoke the operation
-DeviceProvisioningServicesPrivateEndpointConnectionResource result = await deviceProvisioningServicesPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "myPrivateEndpointConnection";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DeviceProvisioningServicesPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

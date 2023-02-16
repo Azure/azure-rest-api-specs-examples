@@ -25,7 +25,7 @@ ResourceIdentifier deviceProvisioningServicesCertificateResourceId = DeviceProvi
 DeviceProvisioningServicesCertificateResource deviceProvisioningServicesCertificate = client.GetDeviceProvisioningServicesCertificateResource(deviceProvisioningServicesCertificateResourceId);
 
 // invoke the operation
-string ifMatch = "AAAAAAAADGk=";
-await deviceProvisioningServicesCertificate.DeleteAsync(WaitUntil.Completed, ifMatch);
+DeviceProvisioningServicesCertificateResourceDeleteOptions options = new DeviceProvisioningServicesCertificateResourceDeleteOptions(ifMatch: "AAAAAAAADGk=") { };
+await deviceProvisioningServicesCertificate.DeleteAsync(WaitUntil.Completed, options);
 
 Console.WriteLine($"Succeeded");

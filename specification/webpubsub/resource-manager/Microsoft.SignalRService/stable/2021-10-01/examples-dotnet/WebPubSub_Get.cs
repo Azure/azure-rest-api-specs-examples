@@ -17,18 +17,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this WebPubSubResource created on azure
+// for more information of creating WebPubSubResource, please refer to the document of WebPubSubResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this WebPubSubResource
-WebPubSubCollection collection = resourceGroupResource.GetWebPubSubs();
+string resourceName = "myWebPubSubService";
+ResourceIdentifier webPubSubResourceId = WebPubSubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+WebPubSubResource webPubSub = client.GetWebPubSubResource(webPubSubResourceId);
 
 // invoke the operation
-string resourceName = "myWebPubSubService";
-bool result = await collection.ExistsAsync(resourceName);
+WebPubSubResource result = await webPubSub.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WebPubSubData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

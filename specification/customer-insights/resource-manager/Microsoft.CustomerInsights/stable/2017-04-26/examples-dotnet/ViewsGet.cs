@@ -14,20 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HubResource created on azure
-// for more information of creating HubResource, please refer to the document of HubResource
+// this example assumes you already have this ViewResourceFormatResource created on azure
+// for more information of creating ViewResourceFormatResource, please refer to the document of ViewResourceFormatResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
-HubResource hub = client.GetHubResource(hubResourceId);
-
-// get the collection of this ViewResourceFormatResource
-ViewResourceFormatCollection collection = hub.GetViewResourceFormats();
+string viewName = "testView";
+ResourceIdentifier viewResourceFormatResourceId = ViewResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, viewName);
+ViewResourceFormatResource viewResourceFormat = client.GetViewResourceFormatResource(viewResourceFormatResourceId);
 
 // invoke the operation
-string viewName = "testView";
 string userId = "*";
-bool result = await collection.ExistsAsync(viewName, userId);
+ViewResourceFormatResource result = await viewResourceFormat.GetAsync(userId);
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ViewResourceFormatData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

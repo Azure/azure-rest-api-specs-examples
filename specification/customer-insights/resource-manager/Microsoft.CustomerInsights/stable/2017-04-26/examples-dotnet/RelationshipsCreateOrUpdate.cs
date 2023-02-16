@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelationshipResourceFormatResource created on azure
-// for more information of creating RelationshipResourceFormatResource, please refer to the document of RelationshipResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string relationshipName = "SomeRelationship";
-ResourceIdentifier relationshipResourceFormatResourceId = RelationshipResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, relationshipName);
-RelationshipResourceFormatResource relationshipResourceFormat = client.GetRelationshipResourceFormatResource(relationshipResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this RelationshipResourceFormatResource
+RelationshipResourceFormatCollection collection = hub.GetRelationshipResourceFormats();
 
 // invoke the operation
+string relationshipName = "SomeRelationship";
 RelationshipResourceFormatData data = new RelationshipResourceFormatData()
 {
     Cardinality = CardinalityType.OneToOne,
@@ -42,7 +45,7 @@ RelationshipResourceFormatData data = new RelationshipResourceFormatData()
     ProfileType = "testProfile2326994",
     RelatedProfileType = "testProfile2326994",
 };
-ArmOperation<RelationshipResourceFormatResource> lro = await relationshipResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RelationshipResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, relationshipName, data);
 RelationshipResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

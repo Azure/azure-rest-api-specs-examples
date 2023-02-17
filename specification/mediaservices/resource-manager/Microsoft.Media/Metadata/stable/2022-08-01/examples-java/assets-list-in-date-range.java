@@ -13,7 +13,7 @@ public final class Main {
         manager
             .assets()
             .list(
-                "contoso",
+                "contosorg",
                 "contosomedia",
                 "properties/created gt 2012-06-01 and properties/created lt 2013-07-01",
                 null,

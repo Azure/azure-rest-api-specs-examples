@@ -20,7 +20,7 @@ public final class Main {
         manager
             .streamingPolicies()
             .define("UserCreatedSecureStreamingPolicyWithCommonEncryptionCbcsOnly")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withDefaultContentKeyPolicyName("PolicyWithMultipleOptions")
             .withCommonEncryptionCbcs(
                 new CommonEncryptionCbcs()

@@ -9,6 +9,6 @@ public final class Main {
      * @param manager Entry point to MediaServicesManager.
      */
     public static void listAllAssets(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
-        manager.assets().list("contoso", "contosomedia", null, null, null, com.azure.core.util.Context.NONE);
+        manager.assets().list("contosorg", "contosomedia", null, null, null, com.azure.core.util.Context.NONE);
     }
 }

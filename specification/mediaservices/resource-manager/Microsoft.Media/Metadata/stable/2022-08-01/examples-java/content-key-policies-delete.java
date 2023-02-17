@@ -12,7 +12,7 @@ public final class Main {
         manager
             .contentKeyPolicies()
             .deleteWithResponse(
-                "contoso",
+                "contosorg",
                 "contosomedia",
                 "PolicyWithPlayReadyOptionAndOpenRestriction",
                 com.azure.core.util.Context.NONE);

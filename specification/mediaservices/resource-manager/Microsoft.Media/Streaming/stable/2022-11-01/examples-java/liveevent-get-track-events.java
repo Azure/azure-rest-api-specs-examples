@@ -1,0 +1,18 @@
+/** Samples for LiveEvents ListGetTrackIngestHeartbeats. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-11-01/examples/liveevent-get-track-events.json
+     */
+    /**
+     * Sample code: Get track ingest heart beats of a LiveEvent.
+     *
+     * @param manager Entry point to MediaServicesManager.
+     */
+    public static void getTrackIngestHeartBeatsOfALiveEvent(
+        com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
+        manager
+            .liveEvents()
+            .listGetTrackIngestHeartbeats(
+                "mediaresources", "slitestmedia10", "myLiveEvent1", com.azure.core.util.Context.NONE);
+    }
+}

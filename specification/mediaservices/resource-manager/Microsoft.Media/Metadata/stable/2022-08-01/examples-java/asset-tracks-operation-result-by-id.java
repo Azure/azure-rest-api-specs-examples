@@ -13,7 +13,7 @@ public final class Main {
         manager
             .operationResults()
             .getWithResponse(
-                "contoso",
+                "contosorg",
                 "contosomedia",
                 "ClimbingMountRainer",
                 "text1",

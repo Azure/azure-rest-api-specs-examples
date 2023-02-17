@@ -17,7 +17,7 @@ public final class Main {
             manager
                 .assetFilters()
                 .getWithResponse(
-                    "contoso",
+                    "contosorg",
                     "contosomedia",
                     "ClimbingMountRainer",
                     "assetFilterWithTimeWindowAndTrack",

@@ -21,7 +21,7 @@ public final class Main {
         manager
             .contentKeyPolicies()
             .define("PolicyWithWidevineOptionAndJwtTokenRestriction")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withDescription("ArmPolicyDescription")
             .withOptions(
                 Arrays

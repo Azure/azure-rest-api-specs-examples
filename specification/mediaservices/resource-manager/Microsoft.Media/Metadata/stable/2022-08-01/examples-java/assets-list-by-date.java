@@ -11,6 +11,6 @@ public final class Main {
     public static void listAssetOrderedByDate(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
         manager
             .assets()
-            .list("contoso", "contosomedia", null, null, "properties/created", com.azure.core.util.Context.NONE);
+            .list("contosorg", "contosomedia", null, null, "properties/created", com.azure.core.util.Context.NONE);
     }
 }

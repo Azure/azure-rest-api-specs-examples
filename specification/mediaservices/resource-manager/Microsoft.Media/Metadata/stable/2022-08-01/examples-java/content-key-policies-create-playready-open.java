@@ -26,7 +26,7 @@ public final class Main {
         manager
             .contentKeyPolicies()
             .define("PolicyWithPlayReadyOptionAndOpenRestriction")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withDescription("ArmPolicyDescription")
             .withOptions(
                 Arrays

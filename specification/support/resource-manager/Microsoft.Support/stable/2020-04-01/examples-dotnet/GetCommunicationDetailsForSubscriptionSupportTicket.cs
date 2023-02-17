@@ -14,18 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SupportTicketResource created on azure
-// for more information of creating SupportTicketResource, please refer to the document of SupportTicketResource
+// this example assumes you already have this SupportTicketCommunicationResource created on azure
+// for more information of creating SupportTicketCommunicationResource, please refer to the document of SupportTicketCommunicationResource
 string subscriptionId = "subid";
 string supportTicketName = "testticket";
-ResourceIdentifier supportTicketResourceId = SupportTicketResource.CreateResourceIdentifier(subscriptionId, supportTicketName);
-SupportTicketResource supportTicket = client.GetSupportTicketResource(supportTicketResourceId);
-
-// get the collection of this SupportTicketCommunicationResource
-SupportTicketCommunicationCollection collection = supportTicket.GetSupportTicketCommunications();
+string communicationName = "testmessage";
+ResourceIdentifier supportTicketCommunicationResourceId = SupportTicketCommunicationResource.CreateResourceIdentifier(subscriptionId, supportTicketName, communicationName);
+SupportTicketCommunicationResource supportTicketCommunication = client.GetSupportTicketCommunicationResource(supportTicketCommunicationResourceId);
 
 // invoke the operation
-string communicationName = "testmessage";
-bool result = await collection.ExistsAsync(communicationName);
+SupportTicketCommunicationResource result = await supportTicketCommunication.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SupportTicketCommunicationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

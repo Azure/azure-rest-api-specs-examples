@@ -25,7 +25,7 @@ ResourceIdentifier deviceProvisioningServicesCertificateResourceId = DeviceProvi
 DeviceProvisioningServicesCertificateResource deviceProvisioningServicesCertificate = client.GetDeviceProvisioningServicesCertificateResource(deviceProvisioningServicesCertificateResourceId);
 
 // invoke the operation
-string ifMatch = "AAAAAAAADGk=";
-CertificateVerificationCodeResult result = await deviceProvisioningServicesCertificate.GenerateVerificationCodeAsync(ifMatch);
+DeviceProvisioningServicesCertificateResourceGenerateVerificationCodeOptions options = new DeviceProvisioningServicesCertificateResourceGenerateVerificationCodeOptions(ifMatch: "AAAAAAAADGk=") { };
+CertificateVerificationCodeResult result = await deviceProvisioningServicesCertificate.GenerateVerificationCodeAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

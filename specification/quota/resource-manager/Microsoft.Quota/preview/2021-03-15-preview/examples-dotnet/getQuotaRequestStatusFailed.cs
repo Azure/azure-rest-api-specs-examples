@@ -13,16 +13,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this QuotaRequestDetailResource
+// this example assumes you already have this QuotaRequestDetailResource created on azure
+// for more information of creating QuotaRequestDetailResource, please refer to the document of QuotaRequestDetailResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Compute/locations/eastus";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-QuotaRequestDetailCollection collection = client.GetQuotaRequestDetails(scopeId);
+string id = "2B5C8515-37D8-4B6A-879B-CD641A2CF605";
+ResourceIdentifier quotaRequestDetailResourceId = QuotaRequestDetailResource.CreateResourceIdentifier(scope, id);
+QuotaRequestDetailResource quotaRequestDetail = client.GetQuotaRequestDetailResource(quotaRequestDetailResourceId);
 
 // invoke the operation
-string id = "2B5C8515-37D8-4B6A-879B-CD641A2CF605";
-bool result = await collection.ExistsAsync(id);
+QuotaRequestDetailResource result = await quotaRequestDetail.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+QuotaRequestDetailData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

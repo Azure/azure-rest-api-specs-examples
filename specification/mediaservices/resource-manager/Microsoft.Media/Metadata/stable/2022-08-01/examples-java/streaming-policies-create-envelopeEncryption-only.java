@@ -18,7 +18,7 @@ public final class Main {
         manager
             .streamingPolicies()
             .define("UserCreatedSecureStreamingPolicyWithEnvelopeEncryptionOnly")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withDefaultContentKeyPolicyName("PolicyWithClearKeyOptionAndTokenRestriction")
             .withEnvelopeEncryption(
                 new EnvelopeEncryption()

@@ -12,6 +12,6 @@ public final class Main {
         manager
             .streamingLocators()
             .listContentKeysWithResponse(
-                "contoso", "contosomedia", "secureStreamingLocator", com.azure.core.util.Context.NONE);
+                "contosorg", "contosomedia", "secureStreamingLocator", com.azure.core.util.Context.NONE);
     }
 }

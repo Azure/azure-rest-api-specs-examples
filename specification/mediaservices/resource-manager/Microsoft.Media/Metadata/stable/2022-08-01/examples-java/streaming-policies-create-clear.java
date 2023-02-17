@@ -15,8 +15,8 @@ public final class Main {
         com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
         manager
             .streamingPolicies()
-            .define("UserCreatedClearStreamingPolicy")
-            .withExistingMediaService("contoso", "contosomedia")
+            .define("clearStreamingPolicy")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withNoEncryption(
                 new NoEncryption()
                     .withEnabledProtocols(

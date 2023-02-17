@@ -9,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MediaServicesManager.
      */
     public static void listsStreamingPolicies(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
-        manager.streamingPolicies().list("contoso", "contosomedia", null, null, null, com.azure.core.util.Context.NONE);
+        manager
+            .streamingPolicies()
+            .list("contosorg", "contosomedia", null, null, null, com.azure.core.util.Context.NONE);
     }
 }

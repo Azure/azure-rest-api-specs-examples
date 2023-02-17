@@ -12,6 +12,6 @@ public final class Main {
         manager
             .tracks()
             .updateTrackData(
-                "contoso", "contosomedia", "ClimbingMountRainer", "text2", com.azure.core.util.Context.NONE);
+                "contosorg", "contosomedia", "ClimbingMountRainer", "text2", com.azure.core.util.Context.NONE);
     }
 }

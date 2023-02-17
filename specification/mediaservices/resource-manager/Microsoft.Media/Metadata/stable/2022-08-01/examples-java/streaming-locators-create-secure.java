@@ -15,11 +15,11 @@ public final class Main {
         manager
             .streamingLocators()
             .define("UserCreatedSecureStreamingLocator")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withAssetName("ClimbingMountRainier")
             .withStartTime(OffsetDateTime.parse("2018-03-01T00:00:00Z"))
             .withEndTime(OffsetDateTime.parse("2028-12-31T23:59:59.9999999Z"))
-            .withStreamingPolicyName("secureStreamingPolicy")
+            .withStreamingPolicyName("UserCreatedSecureStreamingPolicy")
             .create();
     }
 }

@@ -13,6 +13,6 @@ public final class Main {
         manager
             .streamingLocators()
             .listPathsWithResponse(
-                "contoso", "contosomedia", "secureStreamingLocator", com.azure.core.util.Context.NONE);
+                "contosorg", "contosomedia", "secureStreamingLocator", com.azure.core.util.Context.NONE);
     }
 }

@@ -12,6 +12,6 @@ public final class Main {
         manager
             .accountFilters()
             .deleteWithResponse(
-                "contoso", "contosomedia", "accountFilterWithTimeWindowAndTrack", com.azure.core.util.Context.NONE);
+                "contosorg", "contosomedia", "accountFilterWithTimeWindowAndTrack", com.azure.core.util.Context.NONE);
     }
 }

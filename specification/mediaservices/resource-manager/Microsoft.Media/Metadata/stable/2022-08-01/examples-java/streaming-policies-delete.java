@@ -12,7 +12,7 @@ public final class Main {
         manager
             .streamingPolicies()
             .deleteWithResponse(
-                "contoso",
+                "contosorg",
                 "contosomedia",
                 "secureStreamingPolicyWithCommonEncryptionCbcsOnly",
                 com.azure.core.util.Context.NONE);

@@ -12,6 +12,6 @@ public final class Main {
         manager
             .tracks()
             .getWithResponse(
-                "contoso", "contosomedia", "ClimbingMountRainer", "text1", com.azure.core.util.Context.NONE);
+                "contosorg", "contosomedia", "ClimbingMountRainer", "text1", com.azure.core.util.Context.NONE);
     }
 }

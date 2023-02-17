@@ -16,7 +16,7 @@ public final class Main {
         manager
             .assets()
             .listContainerSasWithResponse(
-                "contoso",
+                "contosorg",
                 "contosomedia",
                 "ClimbingMountBaker",
                 new ListContainerSasInput()

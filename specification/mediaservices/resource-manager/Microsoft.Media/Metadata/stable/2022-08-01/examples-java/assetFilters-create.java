@@ -20,7 +20,7 @@ public final class Main {
         manager
             .assetFilters()
             .define("newAssetFilter")
-            .withExistingAsset("contoso", "contosomedia", "ClimbingMountRainer")
+            .withExistingAsset("contosorg", "contosomedia", "ClimbingMountRainer")
             .withPresentationTimeRange(
                 new PresentationTimeRange()
                     .withStartTimestamp(0L)

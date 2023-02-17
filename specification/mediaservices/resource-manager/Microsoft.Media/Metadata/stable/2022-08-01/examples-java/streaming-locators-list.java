@@ -9,6 +9,8 @@ public final class Main {
      * @param manager Entry point to MediaServicesManager.
      */
     public static void listsStreamingLocators(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
-        manager.streamingLocators().list("contoso", "contosomedia", null, null, null, com.azure.core.util.Context.NONE);
+        manager
+            .streamingLocators()
+            .list("contosorg", "contosomedia", null, null, null, com.azure.core.util.Context.NONE);
     }
 }

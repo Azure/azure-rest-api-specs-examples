@@ -30,7 +30,7 @@ public final class Main {
         manager
             .streamingPolicies()
             .define("UserCreatedSecureStreamingPolicy")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withDefaultContentKeyPolicyName("PolicyWithMultipleOptions")
             .withEnvelopeEncryption(
                 new EnvelopeEncryption()

@@ -12,7 +12,7 @@ public final class Main {
         manager
             .assetFilters()
             .deleteWithResponse(
-                "contoso",
+                "contosorg",
                 "contosomedia",
                 "ClimbingMountRainer",
                 "assetFilterWithTimeWindowAndTrack",

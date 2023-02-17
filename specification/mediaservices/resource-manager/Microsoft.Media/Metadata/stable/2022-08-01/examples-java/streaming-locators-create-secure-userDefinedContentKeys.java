@@ -17,7 +17,7 @@ public final class Main {
         manager
             .streamingLocators()
             .define("UserCreatedSecureStreamingLocatorWithUserDefinedContentKeys")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withAssetName("ClimbingMountRainier")
             .withStreamingLocatorId(UUID.fromString("90000000-0000-0000-0000-00000000000A"))
             .withStreamingPolicyName("secureStreamingPolicy")

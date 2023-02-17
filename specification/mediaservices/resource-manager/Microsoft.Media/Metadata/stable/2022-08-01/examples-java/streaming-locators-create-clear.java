@@ -13,7 +13,7 @@ public final class Main {
         manager
             .streamingLocators()
             .define("UserCreatedClearStreamingLocator")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withAssetName("ClimbingMountRainier")
             .withStreamingPolicyName("clearStreamingPolicy")
             .create();

@@ -11,6 +11,6 @@ public final class Main {
     public static void getAStreamingPolicyByName(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
         manager
             .streamingPolicies()
-            .getWithResponse("contoso", "contosomedia", "clearStreamingPolicy", com.azure.core.util.Context.NONE);
+            .getWithResponse("contosorg", "contosomedia", "clearStreamingPolicy", com.azure.core.util.Context.NONE);
     }
 }

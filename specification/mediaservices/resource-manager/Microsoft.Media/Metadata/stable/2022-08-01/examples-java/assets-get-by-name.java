@@ -11,6 +11,6 @@ public final class Main {
     public static void getAnAssetByName(com.azure.resourcemanager.mediaservices.MediaServicesManager manager) {
         manager
             .assets()
-            .getWithResponse("contoso", "contosomedia", "ClimbingMountAdams", com.azure.core.util.Context.NONE);
+            .getWithResponse("contosorg", "contosomedia", "ClimbingMountAdams", com.azure.core.util.Context.NONE);
     }
 }

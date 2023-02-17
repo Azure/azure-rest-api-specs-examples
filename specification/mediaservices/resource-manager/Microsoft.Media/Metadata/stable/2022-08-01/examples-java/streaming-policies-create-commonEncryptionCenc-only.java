@@ -26,7 +26,7 @@ public final class Main {
         manager
             .streamingPolicies()
             .define("UserCreatedSecureStreamingPolicyWithCommonEncryptionCencOnly")
-            .withExistingMediaService("contoso", "contosomedia")
+            .withExistingMediaService("contosorg", "contosomedia")
             .withDefaultContentKeyPolicyName("PolicyWithPlayReadyOptionAndOpenRestriction")
             .withCommonEncryptionCenc(
                 new CommonEncryptionCenc()

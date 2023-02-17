@@ -19,7 +19,7 @@ public final class Main {
             manager
                 .contentKeyPolicies()
                 .getWithResponse(
-                    "contoso",
+                    "contosorg",
                     "contosomedia",
                     "PolicyWithClearKeyOptionAndTokenRestriction",
                     com.azure.core.util.Context.NONE)

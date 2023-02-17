@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.AgentProperties;
 import com.azure.resourcemanager.containerregistry.models.AuthInfoUpdateParameters;
 import com.azure.resourcemanager.containerregistry.models.Credentials;
@@ -56,7 +55,7 @@ public final class Main {
                                                     .withSourceControlAuthProperties(
                                                         new AuthInfoUpdateParameters()
                                                             .withTokenType(TokenType.PAT)
-                                                            .withToken("xxxxx")))
+                                                            .withToken("fakeTokenPlaceholder")))
                                             .withSourceTriggerEvents(Arrays.asList(SourceTriggerEvent.COMMIT))
                                             .withName("mySourceTrigger"))))
                     .withCredentials(
@@ -74,7 +73,7 @@ public final class Main {
                                                 .withValue("https://myacbvault.vault.azure.net/secrets/password")
                                                 .withType(SecretObjectType.VAULTSECRET))
                                         .withIdentity("[system]")))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

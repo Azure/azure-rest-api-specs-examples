@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.Credentials;
 import com.azure.resourcemanager.containerregistry.models.CustomRegistryCredentials;
 import com.azure.resourcemanager.containerregistry.models.FileTaskRunRequest;
@@ -56,7 +55,7 @@ public final class Main {
                                             new SecretObject().withValue("reg1").withType(SecretObjectType.OPAQUE))
                                         .withPassword(
                                             new SecretObject().withValue("***").withType(SecretObjectType.OPAQUE))))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

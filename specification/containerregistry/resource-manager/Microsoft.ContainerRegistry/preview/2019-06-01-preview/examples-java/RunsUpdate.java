@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.RunUpdateParameters;
 
 /** Samples for Runs Update. */
@@ -22,6 +21,6 @@ public final class Main {
                 "myRegistry",
                 "0accec26-d6de-4757-8e74-d080f38eaaab",
                 new RunUpdateParameters().withIsArchiveEnabled(true),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

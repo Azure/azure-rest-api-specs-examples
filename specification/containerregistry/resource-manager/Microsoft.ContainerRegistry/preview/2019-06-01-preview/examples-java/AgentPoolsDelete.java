@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AgentPools Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getAgentPools()
-            .delete("myResourceGroup", "myRegistry", "myAgentPool", Context.NONE);
+            .delete("myResourceGroup", "myRegistry", "myAgentPool", com.azure.core.util.Context.NONE);
     }
 }

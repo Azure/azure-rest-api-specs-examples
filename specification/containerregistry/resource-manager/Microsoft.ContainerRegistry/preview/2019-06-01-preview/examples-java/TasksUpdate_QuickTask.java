@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.TaskStatus;
 import com.azure.resourcemanager.containerregistry.models.TaskUpdateParameters;
 import java.util.HashMap;
@@ -28,7 +27,7 @@ public final class Main {
                     .withTags(mapOf("testkey", "value"))
                     .withStatus(TaskStatus.ENABLED)
                     .withLogTemplate("acr/tasks:{{.Run.OS}}"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

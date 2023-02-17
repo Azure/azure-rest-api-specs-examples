@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.AgentProperties;
 import com.azure.resourcemanager.containerregistry.models.EncodedTaskRunRequest;
 import com.azure.resourcemanager.containerregistry.models.OS;
@@ -28,9 +27,8 @@ public final class Main {
                 "myResourceGroup",
                 "myRegistry",
                 new EncodedTaskRunRequest()
-                    .withEncodedTaskContent(
-                        "c3RlcHM6Cnt7IGlmIFZhbHVlcy5lbnZpcm9ubWVudCA9PSAncHJvZCcgfX0KICAtIHJ1bjogcHJvZCBzZXR1cAp7eyBlbHNlIGlmIFZhbHVlcy5lbnZpcm9ubWVudCA9PSAnc3RhZ2luZycgfX0KICAtIHJ1bjogc3RhZ2luZyBzZXR1cAp7eyBlbHNlIH19CiAgLSBydW46IGRlZmF1bHQgc2V0dXAKe3sgZW5kIH19CgogIC0gcnVuOiBidWlsZCAtdCBGYW5jeVRoaW5nOnt7LlZhbHVlcy5lbnZpcm9ubWVudH19LXt7LlZhbHVlcy52ZXJzaW9ufX0gLgoKcHVzaDogWydGYW5jeVRoaW5nOnt7LlZhbHVlcy5lbnZpcm9ubWVudH19LXt7LlZhbHVlcy52ZXJzaW9ufX0nXQ==")
-                    .withEncodedValuesContent("ZW52aXJvbm1lbnQ6IHByb2QKdmVyc2lvbjogMQ==")
+                    .withEncodedTaskContent("fakeTokenPlaceholder")
+                    .withEncodedValuesContent("fakeTokenPlaceholder")
                     .withValues(
                         Arrays
                             .asList(
@@ -41,7 +39,7 @@ public final class Main {
                                     .withIsSecret(true)))
                     .withPlatform(new PlatformProperties().withOs(OS.LINUX))
                     .withAgentConfiguration(new AgentProperties().withCpu(2)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.Argument;
 import com.azure.resourcemanager.containerregistry.models.OverrideTaskStepProperties;
 import com.azure.resourcemanager.containerregistry.models.SetValue;
@@ -54,8 +53,8 @@ public final class Main {
                                             .withName("mysecrettestname")
                                             .withValue("mysecrettestvalue")
                                             .withIsSecret(true)))
-                            .withUpdateTriggerToken("aGVsbG8gd29ybGQ=")),
-                Context.NONE);
+                            .withUpdateTriggerToken("fakeTokenPlaceholder")),
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

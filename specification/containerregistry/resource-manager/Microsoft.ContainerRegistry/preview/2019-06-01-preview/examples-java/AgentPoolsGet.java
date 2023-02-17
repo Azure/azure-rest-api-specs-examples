@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AgentPools Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getAgentPools()
-            .getWithResponse("myResourceGroup", "myRegistry", "myAgentPool", Context.NONE);
+            .getWithResponse("myResourceGroup", "myRegistry", "myAgentPool", com.azure.core.util.Context.NONE);
     }
 }

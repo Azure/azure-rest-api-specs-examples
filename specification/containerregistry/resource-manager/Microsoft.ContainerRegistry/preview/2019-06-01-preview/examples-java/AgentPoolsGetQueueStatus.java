@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AgentPools GetQueueStatus. */
 public final class Main {
     /*
@@ -16,6 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getAgentPools()
-            .getQueueStatusWithResponse("myResourceGroup", "myRegistry", "myAgentPool", Context.NONE);
+            .getQueueStatusWithResponse(
+                "myResourceGroup", "myRegistry", "myAgentPool", com.azure.core.util.Context.NONE);
     }
 }

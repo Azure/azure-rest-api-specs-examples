@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.fluent.models.TaskInner;
 import com.azure.resourcemanager.containerregistry.models.AgentProperties;
 import com.azure.resourcemanager.containerregistry.models.Architecture;
@@ -84,7 +83,9 @@ public final class Main {
                                                     .withRepositoryUrl("https://github.com/Azure/azure-rest-api-specs")
                                                     .withBranch("master")
                                                     .withSourceControlAuthProperties(
-                                                        new AuthInfo().withTokenType(TokenType.PAT).withToken("xxxxx")))
+                                                        new AuthInfo()
+                                                            .withTokenType(TokenType.PAT)
+                                                            .withToken("fakeTokenPlaceholder")))
                                             .withSourceTriggerEvents(Arrays.asList(SourceTriggerEvent.COMMIT))
                                             .withName("mySourceTrigger")))
                             .withBaseImageTrigger(
@@ -92,7 +93,7 @@ public final class Main {
                                     .withBaseImageTriggerType(BaseImageTriggerType.RUNTIME)
                                     .withName("myBaseImageTrigger")))
                     .withIsSystemTask(false),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

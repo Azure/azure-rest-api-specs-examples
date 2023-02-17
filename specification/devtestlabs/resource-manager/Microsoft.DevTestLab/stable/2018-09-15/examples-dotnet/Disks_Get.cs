@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabUserResource created on azure
-// for more information of creating DevTestLabUserResource, please refer to the document of DevTestLabUserResource
+// this example assumes you already have this DevTestLabDiskResource created on azure
+// for more information of creating DevTestLabDiskResource, please refer to the document of DevTestLabDiskResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string userName = "@me";
-ResourceIdentifier devTestLabUserResourceId = DevTestLabUserResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName);
-DevTestLabUserResource devTestLabUser = client.GetDevTestLabUserResource(devTestLabUserResourceId);
-
-// get the collection of this DevTestLabDiskResource
-DevTestLabDiskCollection collection = devTestLabUser.GetDevTestLabDisks();
+string name = "{diskName}";
+ResourceIdentifier devTestLabDiskResourceId = DevTestLabDiskResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName, name);
+DevTestLabDiskResource devTestLabDisk = client.GetDevTestLabDiskResource(devTestLabDiskResourceId);
 
 // invoke the operation
-string name = "{diskName}";
-bool result = await collection.ExistsAsync(name);
+DevTestLabDiskResource result = await devTestLabDisk.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevTestLabDiskData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScheduleResource created on azure
-// for more information of creating ScheduleResource, please refer to the document of ScheduleResource
+// this example assumes you already have this PoolResource created on azure
+// for more information of creating PoolResource, please refer to the document of PoolResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
 string projectName = "TestProject";
 string poolName = "DevPool";
-string scheduleName = "autoShutdown";
-ResourceIdentifier scheduleResourceId = ScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, poolName, scheduleName);
-ScheduleResource schedule = client.GetScheduleResource(scheduleResourceId);
+ResourceIdentifier poolResourceId = PoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, poolName);
+PoolResource pool = client.GetPoolResource(poolResourceId);
+
+// get the collection of this ScheduleResource
+ScheduleCollection collection = pool.GetSchedules();
 
 // invoke the operation
-ScheduleResource result = await schedule.GetAsync();
+string scheduleName = "autoShutdown";
+bool result = await collection.ExistsAsync(scheduleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ScheduleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

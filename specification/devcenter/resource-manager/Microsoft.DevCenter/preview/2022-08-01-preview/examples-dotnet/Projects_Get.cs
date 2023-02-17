@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DevCenter;
+using Azure.ResourceManager.DevCenter.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-08-01-preview/examples/Projects_Get.json
@@ -15,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ProjectResource created on azure
+// for more information of creating ProjectResource, please refer to the document of ProjectResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ProjectResource
-ProjectCollection collection = resourceGroupResource.GetProjects();
+string projectName = "{projectName}";
+ResourceIdentifier projectResourceId = ProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
+ProjectResource project = client.GetProjectResource(projectResourceId);
 
 // invoke the operation
-string projectName = "{projectName}";
-bool result = await collection.ExistsAsync(projectName);
+ProjectResource result = await project.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ProjectData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

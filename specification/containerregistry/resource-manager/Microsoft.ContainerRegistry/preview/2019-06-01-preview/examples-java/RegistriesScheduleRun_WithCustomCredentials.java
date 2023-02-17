@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.AgentProperties;
 import com.azure.resourcemanager.containerregistry.models.Architecture;
 import com.azure.resourcemanager.containerregistry.models.Argument;
@@ -72,7 +71,7 @@ public final class Main {
                                             new SecretObject().withValue("reg2").withType(SecretObjectType.OPAQUE))
                                         .withPassword(
                                             new SecretObject().withValue("***").withType(SecretObjectType.OPAQUE))))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

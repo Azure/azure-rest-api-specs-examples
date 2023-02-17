@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Runs List. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRuns()
-            .list("myResourceGroup", "myRegistry", "", 10, Context.NONE);
+            .list("myResourceGroup", "myRegistry", "", 10, com.azure.core.util.Context.NONE);
     }
 }

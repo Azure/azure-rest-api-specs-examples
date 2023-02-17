@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.containerregistry.models.AgentProperties;
 import com.azure.resourcemanager.containerregistry.models.AuthInfoUpdateParameters;
 import com.azure.resourcemanager.containerregistry.models.Credentials;
@@ -56,7 +55,7 @@ public final class Main {
                                                     .withSourceControlAuthProperties(
                                                         new AuthInfoUpdateParameters()
                                                             .withTokenType(TokenType.PAT)
-                                                            .withToken("xxxxx")))
+                                                            .withToken("fakeTokenPlaceholder")))
                                             .withSourceTriggerEvents(Arrays.asList(SourceTriggerEvent.COMMIT))
                                             .withName("mySourceTrigger"))))
                     .withCredentials(
@@ -69,7 +68,7 @@ public final class Main {
                                             new SecretObject().withValue("username").withType(SecretObjectType.OPAQUE))
                                         .withPassword(
                                             new SecretObject().withValue("***").withType(SecretObjectType.OPAQUE))))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

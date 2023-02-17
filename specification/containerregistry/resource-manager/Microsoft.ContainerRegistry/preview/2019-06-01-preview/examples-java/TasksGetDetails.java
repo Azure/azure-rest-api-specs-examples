@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks GetDetails. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getTasks()
-            .getDetailsWithResponse("myResourceGroup", "myRegistry", "myTask", Context.NONE);
+            .getDetailsWithResponse("myResourceGroup", "myRegistry", "myTask", com.azure.core.util.Context.NONE);
     }
 }

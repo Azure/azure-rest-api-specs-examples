@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Runs Cancel. */
 public final class Main {
     /*
@@ -16,6 +14,10 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRuns()
-            .cancel("myResourceGroup", "myRegistry", "0accec26-d6de-4757-8e74-d080f38eaaab", Context.NONE);
+            .cancel(
+                "myResourceGroup",
+                "myRegistry",
+                "0accec26-d6de-4757-8e74-d080f38eaaab",
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Runs GetLogSasUrl. */
 public final class Main {
     /*
@@ -17,6 +15,9 @@ public final class Main {
             .serviceClient()
             .getRuns()
             .getLogSasUrlWithResponse(
-                "myResourceGroup", "myRegistry", "0accec26-d6de-4757-8e74-d080f38eaaab", Context.NONE);
+                "myResourceGroup",
+                "myRegistry",
+                "0accec26-d6de-4757-8e74-d080f38eaaab",
+                com.azure.core.util.Context.NONE);
     }
 }

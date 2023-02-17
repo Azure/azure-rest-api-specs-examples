@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getTasks()
-            .delete("myResourceGroup", "myRegistry", "myTask", Context.NONE);
+            .delete("myResourceGroup", "myRegistry", "myTask", com.azure.core.util.Context.NONE);
     }
 }

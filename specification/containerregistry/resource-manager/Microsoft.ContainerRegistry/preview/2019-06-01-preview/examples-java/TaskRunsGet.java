@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TaskRuns Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getTaskRuns()
-            .getWithResponse("myResourceGroup", "myRegistry", "myRun", Context.NONE);
+            .getWithResponse("myResourceGroup", "myRegistry", "myRun", com.azure.core.util.Context.NONE);
     }
 }

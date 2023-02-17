@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TaskRuns Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getTaskRuns()
-            .delete("myResourceGroup", "myRegistry", "myRun", Context.NONE);
+            .delete("myResourceGroup", "myRegistry", "myRun", com.azure.core.util.Context.NONE);
     }
 }

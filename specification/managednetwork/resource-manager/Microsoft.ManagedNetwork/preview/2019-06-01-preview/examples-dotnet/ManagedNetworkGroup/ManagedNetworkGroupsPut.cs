@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedNetworkResource created on azure
-// for more information of creating ManagedNetworkResource, please refer to the document of ManagedNetworkResource
+// this example assumes you already have this ManagedNetworkGroupResource created on azure
+// for more information of creating ManagedNetworkGroupResource, please refer to the document of ManagedNetworkGroupResource
 string subscriptionId = "subscriptionA";
 string resourceGroupName = "myResourceGroup";
 string managedNetworkName = "myManagedNetwork";
-ResourceIdentifier managedNetworkResourceId = ManagedNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedNetworkName);
-ManagedNetworkResource managedNetwork = client.GetManagedNetworkResource(managedNetworkResourceId);
-
-// get the collection of this ManagedNetworkGroupResource
-ManagedNetworkGroupCollection collection = managedNetwork.GetManagedNetworkGroups();
+string managedNetworkGroupName = "myManagedNetworkGroup1";
+ResourceIdentifier managedNetworkGroupResourceId = ManagedNetworkGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedNetworkName, managedNetworkGroupName);
+ManagedNetworkGroupResource managedNetworkGroup = client.GetManagedNetworkGroupResource(managedNetworkGroupResourceId);
 
 // invoke the operation
-string managedNetworkGroupName = "myManagedNetworkGroup1";
 ManagedNetworkGroupData data = new ManagedNetworkGroupData()
 {
     ManagementGroups =
@@ -54,7 +51,7 @@ ManagedNetworkGroupData data = new ManagedNetworkGroupData()
     }
     },
 };
-ArmOperation<ManagedNetworkGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedNetworkGroupName, data);
+ArmOperation<ManagedNetworkGroupResource> lro = await managedNetworkGroup.UpdateAsync(WaitUntil.Completed, data);
 ManagedNetworkGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

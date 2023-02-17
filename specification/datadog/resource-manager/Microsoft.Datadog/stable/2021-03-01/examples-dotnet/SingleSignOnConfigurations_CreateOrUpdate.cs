@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatadogSingleSignOnResource created on azure
-// for more information of creating DatadogSingleSignOnResource, please refer to the document of DatadogSingleSignOnResource
+// this example assumes you already have this DatadogMonitorResource created on azure
+// for more information of creating DatadogMonitorResource, please refer to the document of DatadogMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-string configurationName = "default";
-ResourceIdentifier datadogSingleSignOnResourceId = DatadogSingleSignOnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, configurationName);
-DatadogSingleSignOnResource datadogSingleSignOnResource = client.GetDatadogSingleSignOnResource(datadogSingleSignOnResourceId);
+ResourceIdentifier datadogMonitorResourceId = DatadogMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+DatadogMonitorResource datadogMonitorResource = client.GetDatadogMonitorResource(datadogMonitorResourceId);
+
+// get the collection of this DatadogSingleSignOnResource
+DatadogSingleSignOnResourceCollection collection = datadogMonitorResource.GetDatadogSingleSignOnResources();
 
 // invoke the operation
+string configurationName = "default";
 DatadogSingleSignOnResourceData data = new DatadogSingleSignOnResourceData();
-ArmOperation<DatadogSingleSignOnResource> lro = await datadogSingleSignOnResource.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DatadogSingleSignOnResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
 DatadogSingleSignOnResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

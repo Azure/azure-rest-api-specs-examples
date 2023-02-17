@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudAddonResource created on azure
-// for more information of creating AvsPrivateCloudAddonResource, please refer to the document of AvsPrivateCloudAddonResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string addonName = "vr";
-ResourceIdentifier avsPrivateCloudAddonResourceId = AvsPrivateCloudAddonResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, addonName);
-AvsPrivateCloudAddonResource avsPrivateCloudAddon = client.GetAvsPrivateCloudAddonResource(avsPrivateCloudAddonResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this AvsPrivateCloudAddonResource
+AvsPrivateCloudAddonCollection collection = avsPrivateCloud.GetAvsPrivateCloudAddons();
 
 // invoke the operation
+string addonName = "vr";
 AvsPrivateCloudAddonData data = new AvsPrivateCloudAddonData()
 {
     Properties = new AddonVrProperties(1),
 };
-ArmOperation<AvsPrivateCloudAddonResource> lro = await avsPrivateCloudAddon.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AvsPrivateCloudAddonResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, addonName, data);
 AvsPrivateCloudAddonResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

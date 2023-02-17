@@ -13,20 +13,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScriptPackageResource created on azure
-// for more information of creating ScriptPackageResource, please refer to the document of ScriptPackageResource
+// this example assumes you already have this ScriptCmdletResource created on azure
+// for more information of creating ScriptCmdletResource, please refer to the document of ScriptCmdletResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "{privateCloudName}";
 string scriptPackageName = "{scriptPackageName}";
-ResourceIdentifier scriptPackageResourceId = ScriptPackageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, scriptPackageName);
-ScriptPackageResource scriptPackage = client.GetScriptPackageResource(scriptPackageResourceId);
-
-// get the collection of this ScriptCmdletResource
-ScriptCmdletCollection collection = scriptPackage.GetScriptCmdlets();
+string scriptCmdletName = "New-ExternalSsoDomain";
+ResourceIdentifier scriptCmdletResourceId = ScriptCmdletResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, scriptPackageName, scriptCmdletName);
+ScriptCmdletResource scriptCmdlet = client.GetScriptCmdletResource(scriptCmdletResourceId);
 
 // invoke the operation
-string scriptCmdletName = "New-ExternalSsoDomain";
-bool result = await collection.ExistsAsync(scriptCmdletName);
+ScriptCmdletResource result = await scriptCmdlet.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ScriptCmdletData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

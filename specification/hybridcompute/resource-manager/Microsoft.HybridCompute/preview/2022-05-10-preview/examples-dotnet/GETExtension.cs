@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridComputeMachineExtensionResource created on azure
-// for more information of creating HybridComputeMachineExtensionResource, please refer to the document of HybridComputeMachineExtensionResource
+// this example assumes you already have this HybridComputeMachineResource created on azure
+// for more information of creating HybridComputeMachineResource, please refer to the document of HybridComputeMachineResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
 string machineName = "myMachine";
-string extensionName = "CustomScriptExtension";
-ResourceIdentifier hybridComputeMachineExtensionResourceId = HybridComputeMachineExtensionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, extensionName);
-HybridComputeMachineExtensionResource hybridComputeMachineExtension = client.GetHybridComputeMachineExtensionResource(hybridComputeMachineExtensionResourceId);
+ResourceIdentifier hybridComputeMachineResourceId = HybridComputeMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName);
+HybridComputeMachineResource hybridComputeMachine = client.GetHybridComputeMachineResource(hybridComputeMachineResourceId);
+
+// get the collection of this HybridComputeMachineExtensionResource
+HybridComputeMachineExtensionCollection collection = hybridComputeMachine.GetHybridComputeMachineExtensions();
 
 // invoke the operation
-HybridComputeMachineExtensionResource result = await hybridComputeMachineExtension.GetAsync();
+string extensionName = "CustomScriptExtension";
+bool result = await collection.ExistsAsync(extensionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HybridComputeMachineExtensionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

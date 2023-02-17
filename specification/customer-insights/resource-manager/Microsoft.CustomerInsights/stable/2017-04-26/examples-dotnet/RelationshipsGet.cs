@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelationshipResourceFormatResource created on azure
-// for more information of creating RelationshipResourceFormatResource, please refer to the document of RelationshipResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string relationshipName = "SomeRelationship";
-ResourceIdentifier relationshipResourceFormatResourceId = RelationshipResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, relationshipName);
-RelationshipResourceFormatResource relationshipResourceFormat = client.GetRelationshipResourceFormatResource(relationshipResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this RelationshipResourceFormatResource
+RelationshipResourceFormatCollection collection = hub.GetRelationshipResourceFormats();
 
 // invoke the operation
-RelationshipResourceFormatResource result = await relationshipResourceFormat.GetAsync();
+string relationshipName = "SomeRelationship";
+bool result = await collection.ExistsAsync(relationshipName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RelationshipResourceFormatData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HubResource created on azure
-// for more information of creating HubResource, please refer to the document of HubResource
+// this example assumes you already have this RoleAssignmentResourceFormatResource created on azure
+// for more information of creating RoleAssignmentResourceFormatResource, please refer to the document of RoleAssignmentResourceFormatResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
-HubResource hub = client.GetHubResource(hubResourceId);
-
-// get the collection of this RoleAssignmentResourceFormatResource
-RoleAssignmentResourceFormatCollection collection = hub.GetRoleAssignmentResourceFormats();
+string assignmentName = "assignmentName8976";
+ResourceIdentifier roleAssignmentResourceFormatResourceId = RoleAssignmentResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, assignmentName);
+RoleAssignmentResourceFormatResource roleAssignmentResourceFormat = client.GetRoleAssignmentResourceFormatResource(roleAssignmentResourceFormatResourceId);
 
 // invoke the operation
-string assignmentName = "assignmentName8976";
-bool result = await collection.ExistsAsync(assignmentName);
+RoleAssignmentResourceFormatResource result = await roleAssignmentResourceFormat.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RoleAssignmentResourceFormatData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

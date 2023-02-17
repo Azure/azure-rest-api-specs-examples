@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LinkResourceFormatResource created on azure
-// for more information of creating LinkResourceFormatResource, please refer to the document of LinkResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string linkName = "linkTest4806";
-ResourceIdentifier linkResourceFormatResourceId = LinkResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, linkName);
-LinkResourceFormatResource linkResourceFormat = client.GetLinkResourceFormatResource(linkResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this LinkResourceFormatResource
+LinkResourceFormatCollection collection = hub.GetLinkResourceFormats();
 
 // invoke the operation
-LinkResourceFormatResource result = await linkResourceFormat.GetAsync();
+string linkName = "linkTest4806";
+bool result = await collection.ExistsAsync(linkName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LinkResourceFormatData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

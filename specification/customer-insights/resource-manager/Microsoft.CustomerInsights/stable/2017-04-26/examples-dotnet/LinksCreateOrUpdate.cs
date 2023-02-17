@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LinkResourceFormatResource created on azure
-// for more information of creating LinkResourceFormatResource, please refer to the document of LinkResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string linkName = "linkTest4806";
-ResourceIdentifier linkResourceFormatResourceId = LinkResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, linkName);
-LinkResourceFormatResource linkResourceFormat = client.GetLinkResourceFormatResource(linkResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this LinkResourceFormatResource
+LinkResourceFormatCollection collection = hub.GetLinkResourceFormats();
 
 // invoke the operation
+string linkName = "linkTest4806";
 LinkResourceFormatData data = new LinkResourceFormatData()
 {
     SourceEntityType = EntityType.Interaction,
@@ -51,7 +54,7 @@ LinkResourceFormatData data = new LinkResourceFormatData()
     new ParticipantPropertyReference("testInteraction1949","ProfileId")
     },
 };
-ArmOperation<LinkResourceFormatResource> lro = await linkResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<LinkResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkName, data);
 LinkResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

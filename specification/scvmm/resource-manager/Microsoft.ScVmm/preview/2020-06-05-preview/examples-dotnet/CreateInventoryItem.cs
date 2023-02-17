@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScVmmServerResource created on azure
-// for more information of creating ScVmmServerResource, please refer to the document of ScVmmServerResource
+// this example assumes you already have this InventoryItemResource created on azure
+// for more information of creating InventoryItemResource, please refer to the document of InventoryItemResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string vmmServerName = "ContosoVMMServer";
-ResourceIdentifier scVmmServerResourceId = ScVmmServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmmServerName);
-ScVmmServerResource scVmmServer = client.GetScVmmServerResource(scVmmServerResourceId);
-
-// get the collection of this InventoryItemResource
-InventoryItemCollection collection = scVmmServer.GetInventoryItems();
+string inventoryItemName = "12345678-1234-1234-1234-123456789abc";
+ResourceIdentifier inventoryItemResourceId = InventoryItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmmServerName, inventoryItemName);
+InventoryItemResource inventoryItem = client.GetInventoryItemResource(inventoryItemResourceId);
 
 // invoke the operation
-string inventoryItemName = "12345678-1234-1234-1234-123456789abc";
 InventoryItemData data = new InventoryItemData(InventoryType.Cloud);
-ArmOperation<InventoryItemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, inventoryItemName, data);
+ArmOperation<InventoryItemResource> lro = await inventoryItem.UpdateAsync(WaitUntil.Completed, data);
 InventoryItemResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

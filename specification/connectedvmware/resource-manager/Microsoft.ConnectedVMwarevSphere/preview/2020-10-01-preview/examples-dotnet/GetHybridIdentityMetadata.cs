@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineResource created on azure
-// for more information of creating VirtualMachineResource, please refer to the document of VirtualMachineResource
+// this example assumes you already have this HybridIdentityMetadataResource created on azure
+// for more information of creating HybridIdentityMetadataResource, please refer to the document of HybridIdentityMetadataResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string virtualMachineName = "ContosoVm";
-ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName);
-VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
-
-// get the collection of this HybridIdentityMetadataResource
-HybridIdentityMetadataCollection collection = virtualMachine.GetAllHybridIdentityMetadata();
+string metadataName = "default";
+ResourceIdentifier hybridIdentityMetadataResourceId = HybridIdentityMetadataResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName, metadataName);
+HybridIdentityMetadataResource hybridIdentityMetadata = client.GetHybridIdentityMetadataResource(hybridIdentityMetadataResourceId);
 
 // invoke the operation
-string metadataName = "default";
-bool result = await collection.ExistsAsync(metadataName);
+HybridIdentityMetadataResource result = await hybridIdentityMetadata.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HybridIdentityMetadataData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

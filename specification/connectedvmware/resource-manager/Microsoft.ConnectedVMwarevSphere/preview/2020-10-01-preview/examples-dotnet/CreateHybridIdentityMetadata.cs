@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineResource created on azure
-// for more information of creating VirtualMachineResource, please refer to the document of VirtualMachineResource
+// this example assumes you already have this HybridIdentityMetadataResource created on azure
+// for more information of creating HybridIdentityMetadataResource, please refer to the document of HybridIdentityMetadataResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string virtualMachineName = "ContosoVm";
-ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName);
-VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
-
-// get the collection of this HybridIdentityMetadataResource
-HybridIdentityMetadataCollection collection = virtualMachine.GetAllHybridIdentityMetadata();
+string metadataName = "default";
+ResourceIdentifier hybridIdentityMetadataResourceId = HybridIdentityMetadataResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineName, metadataName);
+HybridIdentityMetadataResource hybridIdentityMetadata = client.GetHybridIdentityMetadataResource(hybridIdentityMetadataResourceId);
 
 // invoke the operation
-string metadataName = "default";
 HybridIdentityMetadataData data = new HybridIdentityMetadataData()
 {
     VmId = "f8b82dff-38ef-4220-99ef-d3a3f86ddc6c",
     PublicKey = "8ec7d60c-9700-40b1-8e6e-e5b2f6f477f2",
 };
-ArmOperation<HybridIdentityMetadataResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, metadataName, data);
+ArmOperation<HybridIdentityMetadataResource> lro = await hybridIdentityMetadata.UpdateAsync(WaitUntil.Completed, data);
 HybridIdentityMetadataResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

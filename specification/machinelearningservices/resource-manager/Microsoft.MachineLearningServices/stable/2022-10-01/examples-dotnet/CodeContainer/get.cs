@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningCodeContainerResource created on azure
+// for more information of creating MachineLearningCodeContainerResource, please refer to the document of MachineLearningCodeContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg123";
 string workspaceName = "testworkspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningCodeContainerResource
-MachineLearningCodeContainerCollection collection = machineLearningWorkspace.GetMachineLearningCodeContainers();
+string name = "testContainer";
+ResourceIdentifier machineLearningCodeContainerResourceId = MachineLearningCodeContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningCodeContainerResource machineLearningCodeContainer = client.GetMachineLearningCodeContainerResource(machineLearningCodeContainerResourceId);
 
 // invoke the operation
-string name = "testContainer";
-bool result = await collection.ExistsAsync(name);
+MachineLearningCodeContainerResource result = await machineLearningCodeContainer.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MachineLearningCodeContainerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

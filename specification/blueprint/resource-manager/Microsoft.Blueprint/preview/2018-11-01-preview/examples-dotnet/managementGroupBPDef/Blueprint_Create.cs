@@ -1,0 +1,61 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.Blueprint;
+using Azure.ResourceManager.Blueprint.Models;
+
+// Generated from example definition: specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/Blueprint_Create.json
+// this example is just showing the usage of "Blueprints_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this BlueprintResource created on azure
+// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
+string resourceScope = "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup";
+string blueprintName = "simpleBlueprint";
+ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
+BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
+
+// invoke the operation
+BlueprintData data = new BlueprintData()
+{
+    Description = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}",
+    TargetScope = BlueprintTargetScope.Subscription,
+    Parameters =
+    {
+    ["costCenter"] = new ParameterDefinition(TemplateParameterType.String)
+    {
+    DisplayName = "force cost center tag for all resources under given subscription.",
+    },
+    ["owners"] = new ParameterDefinition(TemplateParameterType.Array)
+    {
+    DisplayName = "assign owners to subscription along with blueprint assignment.",
+    },
+    ["storageAccountType"] = new ParameterDefinition(TemplateParameterType.String)
+    {
+    DisplayName = "storage account type.",
+    },
+    },
+    ResourceGroups =
+    {
+    ["storageRG"] = new ResourceGroupDefinition()
+    {
+    DisplayName = "storage resource group",
+    Description = "Contains storageAccounts that collect all shoebox logs.",
+    },
+    },
+};
+ArmOperation<BlueprintResource> lro = await blueprint.UpdateAsync(WaitUntil.Completed, data);
+BlueprintResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BlueprintData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningCodeVersionResource created on azure
-// for more information of creating MachineLearningCodeVersionResource, please refer to the document of MachineLearningCodeVersionResource
+// this example assumes you already have this MachineLearningCodeContainerResource created on azure
+// for more information of creating MachineLearningCodeContainerResource, please refer to the document of MachineLearningCodeContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string name = "string";
-string version = "string";
-ResourceIdentifier machineLearningCodeVersionResourceId = MachineLearningCodeVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name, version);
-MachineLearningCodeVersionResource machineLearningCodeVersion = client.GetMachineLearningCodeVersionResource(machineLearningCodeVersionResourceId);
+ResourceIdentifier machineLearningCodeContainerResourceId = MachineLearningCodeContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningCodeContainerResource machineLearningCodeContainer = client.GetMachineLearningCodeContainerResource(machineLearningCodeContainerResourceId);
+
+// get the collection of this MachineLearningCodeVersionResource
+MachineLearningCodeVersionCollection collection = machineLearningCodeContainer.GetMachineLearningCodeVersions();
 
 // invoke the operation
-MachineLearningCodeVersionResource result = await machineLearningCodeVersion.GetAsync();
+string version = "string";
+bool result = await collection.ExistsAsync(version);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MachineLearningCodeVersionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

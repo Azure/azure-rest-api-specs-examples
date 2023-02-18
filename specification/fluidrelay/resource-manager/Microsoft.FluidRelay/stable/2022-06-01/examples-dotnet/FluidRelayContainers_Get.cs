@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FluidRelayServerResource created on azure
-// for more information of creating FluidRelayServerResource, please refer to the document of FluidRelayServerResource
+// this example assumes you already have this FluidRelayContainerResource created on azure
+// for more information of creating FluidRelayContainerResource, please refer to the document of FluidRelayContainerResource
 string subscriptionId = "xxxx-xxxx-xxxx-xxxx";
 string resourceGroup = "myResourceGroup";
 string fluidRelayServerName = "myFluidRelayServer";
-ResourceIdentifier fluidRelayServerResourceId = FluidRelayServerResource.CreateResourceIdentifier(subscriptionId, resourceGroup, fluidRelayServerName);
-FluidRelayServerResource fluidRelayServer = client.GetFluidRelayServerResource(fluidRelayServerResourceId);
-
-// get the collection of this FluidRelayContainerResource
-FluidRelayContainerCollection collection = fluidRelayServer.GetFluidRelayContainers();
+string fluidRelayContainerName = "myFluidRelayContainer";
+ResourceIdentifier fluidRelayContainerResourceId = FluidRelayContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroup, fluidRelayServerName, fluidRelayContainerName);
+FluidRelayContainerResource fluidRelayContainer = client.GetFluidRelayContainerResource(fluidRelayContainerResourceId);
 
 // invoke the operation
-string fluidRelayContainerName = "myFluidRelayContainer";
-bool result = await collection.ExistsAsync(fluidRelayContainerName);
+FluidRelayContainerResource result = await fluidRelayContainer.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FluidRelayContainerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

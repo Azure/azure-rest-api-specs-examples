@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ShareDataSetMappingResource created on azure
-// for more information of creating ShareDataSetMappingResource, please refer to the document of ShareDataSetMappingResource
+// this example assumes you already have this ShareSubscriptionResource created on azure
+// for more information of creating ShareSubscriptionResource, please refer to the document of ShareSubscriptionResource
 string subscriptionId = "433a8dfd-e5d5-4e77-ad86-90acdc75eb1a";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "Account1";
 string shareSubscriptionName = "ShareSubscription1";
-string dataSetMappingName = "DatasetMapping1";
-ResourceIdentifier shareDataSetMappingResourceId = ShareDataSetMappingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareSubscriptionName, dataSetMappingName);
-ShareDataSetMappingResource shareDataSetMapping = client.GetShareDataSetMappingResource(shareDataSetMappingResourceId);
+ResourceIdentifier shareSubscriptionResourceId = ShareSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareSubscriptionName);
+ShareSubscriptionResource shareSubscription = client.GetShareSubscriptionResource(shareSubscriptionResourceId);
+
+// get the collection of this ShareDataSetMappingResource
+ShareDataSetMappingCollection collection = shareSubscription.GetShareDataSetMappings();
 
 // invoke the operation
-ShareDataSetMappingResource result = await shareDataSetMapping.GetAsync();
+string dataSetMappingName = "DatasetMapping1";
+bool result = await collection.ExistsAsync(dataSetMappingName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ShareDataSetMappingData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

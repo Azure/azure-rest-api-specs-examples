@@ -15,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ShareDataSetResource created on azure
-// for more information of creating ShareDataSetResource, please refer to the document of ShareDataSetResource
+// this example assumes you already have this DataShareResource created on azure
+// for more information of creating DataShareResource, please refer to the document of DataShareResource
 string subscriptionId = "0f3dcfc3-18f8-4099-b381-8353e19d43a7";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "sourceAccount";
 string shareName = "share1";
-string dataSetName = "dataset1";
-ResourceIdentifier shareDataSetResourceId = ShareDataSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName, dataSetName);
-ShareDataSetResource shareDataSet = client.GetShareDataSetResource(shareDataSetResourceId);
+ResourceIdentifier dataShareResourceId = DataShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName);
+DataShareResource dataShare = client.GetDataShareResource(dataShareResourceId);
+
+// get the collection of this ShareDataSetResource
+ShareDataSetCollection collection = dataShare.GetShareDataSets();
 
 // invoke the operation
+string dataSetName = "dataset1";
 ShareDataSetData data = new SynapseWorkspaceSqlPoolTableDataSet(new ResourceIdentifier("/subscriptions/0f3dcfc3-18f8-4099-b381-8353e19d43a7/resourceGroups/SampleResourceGroup/providers/Microsoft.Synapse/workspaces/ExampleWorkspace/sqlPools/ExampleSqlPool/schemas/dbo/tables/table1"));
-ArmOperation<ShareDataSetResource> lro = await shareDataSet.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ShareDataSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataSetName, data);
 ShareDataSetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4,7 +4,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DevTestLabs;
-using Azure.ResourceManager.DevTestLabs.Models;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Artifacts_Get.json
 // this example is just showing the usage of "Artifacts_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabArtifactResource created on azure
-// for more information of creating DevTestLabArtifactResource, please refer to the document of DevTestLabArtifactResource
+// this example assumes you already have this DevTestLabArtifactSourceResource created on azure
+// for more information of creating DevTestLabArtifactSourceResource, please refer to the document of DevTestLabArtifactSourceResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string artifactSourceName = "{artifactSourceName}";
-string name = "{artifactName}";
-ResourceIdentifier devTestLabArtifactResourceId = DevTestLabArtifactResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, artifactSourceName, name);
-DevTestLabArtifactResource devTestLabArtifact = client.GetDevTestLabArtifactResource(devTestLabArtifactResourceId);
+ResourceIdentifier devTestLabArtifactSourceResourceId = DevTestLabArtifactSourceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, artifactSourceName);
+DevTestLabArtifactSourceResource devTestLabArtifactSource = client.GetDevTestLabArtifactSourceResource(devTestLabArtifactSourceResourceId);
+
+// get the collection of this DevTestLabArtifactResource
+DevTestLabArtifactCollection collection = devTestLabArtifactSource.GetDevTestLabArtifacts();
 
 // invoke the operation
-DevTestLabArtifactResource result = await devTestLabArtifact.GetAsync();
+string name = "{artifactName}";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DevTestLabArtifactData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

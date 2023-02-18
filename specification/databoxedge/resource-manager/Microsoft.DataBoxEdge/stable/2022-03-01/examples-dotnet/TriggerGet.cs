@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
-// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
+// this example assumes you already have this DataBoxEdgeTriggerResource created on azure
+// for more information of creating DataBoxEdgeTriggerResource, please refer to the document of DataBoxEdgeTriggerResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
-DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
-
-// get the collection of this DataBoxEdgeTriggerResource
-DataBoxEdgeTriggerCollection collection = dataBoxEdgeDevice.GetDataBoxEdgeTriggers();
+string name = "trigger1";
+ResourceIdentifier dataBoxEdgeTriggerResourceId = DataBoxEdgeTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
+DataBoxEdgeTriggerResource dataBoxEdgeTrigger = client.GetDataBoxEdgeTriggerResource(dataBoxEdgeTriggerResourceId);
 
 // invoke the operation
-string name = "trigger1";
-bool result = await collection.ExistsAsync(name);
+DataBoxEdgeTriggerResource result = await dataBoxEdgeTrigger.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataBoxEdgeTriggerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

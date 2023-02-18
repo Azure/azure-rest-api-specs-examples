@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
-// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
+// this example assumes you already have this DataBoxEdgeAlertResource created on azure
+// for more information of creating DataBoxEdgeAlertResource, please refer to the document of DataBoxEdgeAlertResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
-DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
-
-// get the collection of this DataBoxEdgeAlertResource
-DataBoxEdgeAlertCollection collection = dataBoxEdgeDevice.GetDataBoxEdgeAlerts();
+string name = "159a00c7-8543-4343-9435-263ac87df3bb";
+ResourceIdentifier dataBoxEdgeAlertResourceId = DataBoxEdgeAlertResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
+DataBoxEdgeAlertResource dataBoxEdgeAlert = client.GetDataBoxEdgeAlertResource(dataBoxEdgeAlertResourceId);
 
 // invoke the operation
-string name = "159a00c7-8543-4343-9435-263ac87df3bb";
-bool result = await collection.ExistsAsync(name);
+DataBoxEdgeAlertResource result = await dataBoxEdgeAlert.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataBoxEdgeAlertData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

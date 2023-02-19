@@ -14,21 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GalleryResource created on azure
-// for more information of creating GalleryResource, please refer to the document of GalleryResource
+// this example assumes you already have this DevCenterResource created on azure
+// for more information of creating DevCenterResource, please refer to the document of DevCenterResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
-string galleryName = "{galleryName}";
-ResourceIdentifier galleryResourceId = GalleryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName);
-GalleryResource gallery = client.GetGalleryResource(galleryResourceId);
+ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName);
+DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
+
+// get the collection of this GalleryResource
+GalleryCollection collection = devCenter.GetGalleries();
 
 // invoke the operation
+string galleryName = "{galleryName}";
 GalleryData data = new GalleryData()
 {
     GalleryResourceId = "/subscriptions/{subscriptionId}/resourceGroups/rg1/providers/Microsoft.Compute/galleries/{galleryName}",
 };
-ArmOperation<GalleryResource> lro = await gallery.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<GalleryResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, galleryName, data);
 GalleryResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

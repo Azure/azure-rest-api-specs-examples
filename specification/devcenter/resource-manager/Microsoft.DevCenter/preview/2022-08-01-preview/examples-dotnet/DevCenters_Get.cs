@@ -5,7 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DevCenter;
-using Azure.ResourceManager.Models;
+using Azure.ResourceManager.DevCenter.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-08-01-preview/examples/DevCenters_Get.json
@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this DevCenterResource created on azure
+// for more information of creating DevCenterResource, please refer to the document of DevCenterResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this DevCenterResource
-DevCenterCollection collection = resourceGroupResource.GetDevCenters();
+string devCenterName = "Contoso";
+ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName);
+DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
 
 // invoke the operation
-string devCenterName = "Contoso";
-bool result = await collection.ExistsAsync(devCenterName);
+DevCenterResource result = await devCenter.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevCenterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProjectResource created on azure
-// for more information of creating ProjectResource, please refer to the document of ProjectResource
+// this example assumes you already have this ProjectDevBoxDefinitionResource created on azure
+// for more information of creating ProjectDevBoxDefinitionResource, please refer to the document of ProjectDevBoxDefinitionResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
 string projectName = "ContosoProject";
-ResourceIdentifier projectResourceId = ProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-ProjectResource project = client.GetProjectResource(projectResourceId);
-
-// get the collection of this ProjectDevBoxDefinitionResource
-ProjectDevBoxDefinitionCollection collection = project.GetProjectDevBoxDefinitions();
+string devBoxDefinitionName = "WebDevBox";
+ResourceIdentifier projectDevBoxDefinitionResourceId = ProjectDevBoxDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, devBoxDefinitionName);
+ProjectDevBoxDefinitionResource projectDevBoxDefinition = client.GetProjectDevBoxDefinitionResource(projectDevBoxDefinitionResourceId);
 
 // invoke the operation
-string devBoxDefinitionName = "WebDevBox";
-bool result = await collection.ExistsAsync(devBoxDefinitionName);
+ProjectDevBoxDefinitionResource result = await projectDevBoxDefinition.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevBoxDefinitionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

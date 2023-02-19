@@ -13,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ImageResource created on azure
-// for more information of creating ImageResource, please refer to the document of ImageResource
+// this example assumes you already have this GalleryResource created on azure
+// for more information of creating GalleryResource, please refer to the document of GalleryResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
 string galleryName = "DefaultDevGallery";
-string imageName = "{imageName}";
-ResourceIdentifier imageResourceId = ImageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName, imageName);
-ImageResource image = client.GetImageResource(imageResourceId);
+ResourceIdentifier galleryResourceId = GalleryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName);
+GalleryResource gallery = client.GetGalleryResource(galleryResourceId);
+
+// get the collection of this ImageResource
+ImageCollection collection = gallery.GetImages();
 
 // invoke the operation
-ImageResource result = await image.GetAsync();
+string imageName = "{imageName}";
+bool result = await collection.ExistsAsync(imageName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ImageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

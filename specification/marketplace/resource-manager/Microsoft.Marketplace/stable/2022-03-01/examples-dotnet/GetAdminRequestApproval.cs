@@ -15,18 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateStoreResource created on azure
-// for more information of creating PrivateStoreResource, please refer to the document of PrivateStoreResource
+// this example assumes you already have this MarketplaceAdminApprovalRequestResource created on azure
+// for more information of creating MarketplaceAdminApprovalRequestResource, please refer to the document of MarketplaceAdminApprovalRequestResource
 Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
-ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceIdentifier(privateStoreId);
-PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
-
-// get the collection of this MarketplaceAdminApprovalRequestResource
-MarketplaceAdminApprovalRequestCollection collection = privateStore.GetMarketplaceAdminApprovalRequests();
+string adminRequestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
+ResourceIdentifier marketplaceAdminApprovalRequestResourceId = MarketplaceAdminApprovalRequestResource.CreateResourceIdentifier(privateStoreId, adminRequestApprovalId);
+MarketplaceAdminApprovalRequestResource marketplaceAdminApprovalRequest = client.GetMarketplaceAdminApprovalRequestResource(marketplaceAdminApprovalRequestResourceId);
 
 // invoke the operation
-string adminRequestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
 string publisherId = "marketplacetestthirdparty";
-bool result = await collection.ExistsAsync(adminRequestApprovalId, publisherId);
+MarketplaceAdminApprovalRequestResource result = await marketplaceAdminApprovalRequest.GetAsync(publisherId);
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MarketplaceAdminApprovalRequestData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

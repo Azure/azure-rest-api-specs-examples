@@ -15,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ShareDataSetMappingResource created on azure
-// for more information of creating ShareDataSetMappingResource, please refer to the document of ShareDataSetMappingResource
+// this example assumes you already have this ShareSubscriptionResource created on azure
+// for more information of creating ShareSubscriptionResource, please refer to the document of ShareSubscriptionResource
 string subscriptionId = "0f3dcfc3-18f8-4099-b381-8353e19d43a7";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "consumerAccount";
 string shareSubscriptionName = "ShareSubscription1";
-string dataSetMappingName = "datasetMappingName1";
-ResourceIdentifier shareDataSetMappingResourceId = ShareDataSetMappingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareSubscriptionName, dataSetMappingName);
-ShareDataSetMappingResource shareDataSetMapping = client.GetShareDataSetMappingResource(shareDataSetMappingResourceId);
+ResourceIdentifier shareSubscriptionResourceId = ShareSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareSubscriptionName);
+ShareSubscriptionResource shareSubscription = client.GetShareSubscriptionResource(shareSubscriptionResourceId);
+
+// get the collection of this ShareDataSetMappingResource
+ShareDataSetMappingCollection collection = shareSubscription.GetShareDataSetMappings();
 
 // invoke the operation
+string dataSetMappingName = "datasetMappingName1";
 ShareDataSetMappingData data = new SynapseWorkspaceSqlPoolTableDataSetMapping(Guid.Parse("3dc64e49-1fc3-4186-b3dc-d388c4d3076a"), new ResourceIdentifier("/subscriptions/0f3dcfc3-18f8-4099-b381-8353e19d43a7/resourceGroups/SampleResourceGroup/providers/Microsoft.Synapse/workspaces/ExampleWorkspace/sqlPools/ExampleSqlPool/schemas/dbo/tables/table1"));
-ArmOperation<ShareDataSetMappingResource> lro = await shareDataSetMapping.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ShareDataSetMappingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataSetMappingName, data);
 ShareDataSetMappingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

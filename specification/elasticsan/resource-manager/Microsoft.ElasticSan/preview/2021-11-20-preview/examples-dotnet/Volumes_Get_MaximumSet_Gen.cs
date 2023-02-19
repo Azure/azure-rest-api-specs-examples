@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSanVolumeResource created on azure
-// for more information of creating ElasticSanVolumeResource, please refer to the document of ElasticSanVolumeResource
+// this example assumes you already have this ElasticSanVolumeGroupResource created on azure
+// for more information of creating ElasticSanVolumeGroupResource, please refer to the document of ElasticSanVolumeGroupResource
 string subscriptionId = "aaaaaaaaaaaaaaaaaa";
 string resourceGroupName = "rgelasticsan";
 string elasticSanName = "ti7q-k952-1qB3J_5";
 string volumeGroupName = "u_5I_1j4t3";
-string volumeName = "9132y";
-ResourceIdentifier elasticSanVolumeResourceId = ElasticSanVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName, volumeGroupName, volumeName);
-ElasticSanVolumeResource elasticSanVolume = client.GetElasticSanVolumeResource(elasticSanVolumeResourceId);
+ResourceIdentifier elasticSanVolumeGroupResourceId = ElasticSanVolumeGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName, volumeGroupName);
+ElasticSanVolumeGroupResource elasticSanVolumeGroup = client.GetElasticSanVolumeGroupResource(elasticSanVolumeGroupResourceId);
+
+// get the collection of this ElasticSanVolumeResource
+ElasticSanVolumeCollection collection = elasticSanVolumeGroup.GetElasticSanVolumes();
 
 // invoke the operation
-ElasticSanVolumeResource result = await elasticSanVolume.GetAsync();
+string volumeName = "9132y";
+bool result = await collection.ExistsAsync(volumeName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ElasticSanVolumeData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

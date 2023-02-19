@@ -1,6 +1,6 @@
 import com.azure.core.util.Context;
 
-/** Samples for Diagnostics GetSiteDetector. */
+/** Samples for Diagnostics GetSiteDetectorSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-03-01/examples/Diagnostics_GetSiteDetectorSlot.json
@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteDetectorWithResponse(
-                "Sample-WestUSResourceGroup", "SampleApp", "availability", "sitecrashes", Context.NONE);
+            .getSiteDetectorSlotWithResponse(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "sitecrashes", "staging", Context.NONE);
     }
 }

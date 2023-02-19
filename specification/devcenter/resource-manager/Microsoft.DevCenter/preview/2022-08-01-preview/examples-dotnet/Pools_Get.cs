@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProjectResource created on azure
-// for more information of creating ProjectResource, please refer to the document of ProjectResource
+// this example assumes you already have this PoolResource created on azure
+// for more information of creating PoolResource, please refer to the document of PoolResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rg1";
 string projectName = "{projectName}";
-ResourceIdentifier projectResourceId = ProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-ProjectResource project = client.GetProjectResource(projectResourceId);
-
-// get the collection of this PoolResource
-PoolCollection collection = project.GetPools();
+string poolName = "{poolName}";
+ResourceIdentifier poolResourceId = PoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, poolName);
+PoolResource pool = client.GetPoolResource(poolResourceId);
 
 // invoke the operation
-string poolName = "{poolName}";
-bool result = await collection.ExistsAsync(poolName);
+PoolResource result = await pool.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PoolData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

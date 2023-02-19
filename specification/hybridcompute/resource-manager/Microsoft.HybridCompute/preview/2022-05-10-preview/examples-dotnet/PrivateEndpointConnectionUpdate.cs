@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridComputePrivateEndpointConnectionResource created on azure
-// for more information of creating HybridComputePrivateEndpointConnectionResource, please refer to the document of HybridComputePrivateEndpointConnectionResource
+// this example assumes you already have this HybridComputePrivateLinkScopeResource created on azure
+// for more information of creating HybridComputePrivateLinkScopeResource, please refer to the document of HybridComputePrivateLinkScopeResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myResourceGroup";
 string scopeName = "myPrivateLinkScope";
-string privateEndpointConnectionName = "private-endpoint-connection-name";
-ResourceIdentifier hybridComputePrivateEndpointConnectionResourceId = HybridComputePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName, privateEndpointConnectionName);
-HybridComputePrivateEndpointConnectionResource hybridComputePrivateEndpointConnection = client.GetHybridComputePrivateEndpointConnectionResource(hybridComputePrivateEndpointConnectionResourceId);
+ResourceIdentifier hybridComputePrivateLinkScopeResourceId = HybridComputePrivateLinkScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName);
+HybridComputePrivateLinkScopeResource hybridComputePrivateLinkScope = client.GetHybridComputePrivateLinkScopeResource(hybridComputePrivateLinkScopeResourceId);
+
+// get the collection of this HybridComputePrivateEndpointConnectionResource
+HybridComputePrivateEndpointConnectionCollection collection = hybridComputePrivateLinkScope.GetHybridComputePrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "private-endpoint-connection-name";
 HybridComputePrivateEndpointConnectionData data = new HybridComputePrivateEndpointConnectionData()
 {
     Properties = new PrivateEndpointConnectionProperties()
@@ -32,7 +35,7 @@ HybridComputePrivateEndpointConnectionData data = new HybridComputePrivateEndpoi
         ConnectionState = new HybridComputePrivateLinkServiceConnectionStateProperty("Approved", "Approved by johndoe@contoso.com"),
     },
 };
-ArmOperation<HybridComputePrivateEndpointConnectionResource> lro = await hybridComputePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HybridComputePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 HybridComputePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

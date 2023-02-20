@@ -14,27 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteBuildResource created on azure
-// for more information of creating StaticSiteBuildResource, please refer to the document of StaticSiteBuildResource
+// this example assumes you already have this StaticSiteBuildUserProvidedFunctionAppResource created on azure
+// for more information of creating StaticSiteBuildUserProvidedFunctionAppResource, please refer to the document of StaticSiteBuildUserProvidedFunctionAppResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
 string environmentName = "default";
-ResourceIdentifier staticSiteBuildResourceId = StaticSiteBuildResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, environmentName);
-StaticSiteBuildResource staticSiteBuild = client.GetStaticSiteBuildResource(staticSiteBuildResourceId);
-
-// get the collection of this StaticSiteBuildUserProvidedFunctionAppResource
-StaticSiteBuildUserProvidedFunctionAppCollection collection = staticSiteBuild.GetStaticSiteBuildUserProvidedFunctionApps();
+string functionAppName = "testFunctionApp";
+ResourceIdentifier staticSiteBuildUserProvidedFunctionAppResourceId = StaticSiteBuildUserProvidedFunctionAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, environmentName, functionAppName);
+StaticSiteBuildUserProvidedFunctionAppResource staticSiteBuildUserProvidedFunctionApp = client.GetStaticSiteBuildUserProvidedFunctionAppResource(staticSiteBuildUserProvidedFunctionAppResourceId);
 
 // invoke the operation
-string functionAppName = "testFunctionApp";
 StaticSiteUserProvidedFunctionAppData data = new StaticSiteUserProvidedFunctionAppData()
 {
     FunctionAppResourceId = new ResourceIdentifier("/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/functionRG/providers/Microsoft.Web/sites/testFunctionApp"),
     FunctionAppRegion = "West US 2",
 };
 bool? isForced = true;
-ArmOperation<StaticSiteBuildUserProvidedFunctionAppResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, functionAppName, data, isForced: isForced);
+ArmOperation<StaticSiteBuildUserProvidedFunctionAppResource> lro = await staticSiteBuildUserProvidedFunctionApp.UpdateAsync(WaitUntil.Completed, data, isForced: isForced);
 StaticSiteBuildUserProvidedFunctionAppResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

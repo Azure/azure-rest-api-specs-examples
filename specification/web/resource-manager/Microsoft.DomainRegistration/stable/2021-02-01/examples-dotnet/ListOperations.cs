@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.AppService;
 using Azure.ResourceManager.AppService.Models;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.DomainRegistration/stable/2021-02-01/examples/ListOperations.json

@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.AlertsManagement;
+using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/SmartGroups_GetById.json

@@ -1,0 +1,37 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.Synapse;
+using Azure.ResourceManager.Synapse.Models;
+
+// Generated from example definition: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/GetSqlPoolColumnSensitivityLabelGet.json
+// this example is just showing the usage of "SqlPoolSensitivityLabels_Get" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this SynapseSqlPoolColumnResource created on azure
+// for more information of creating SynapseSqlPoolColumnResource, please refer to the document of SynapseSqlPoolColumnResource
+string subscriptionId = "00000000-1111-2222-3333-444444444444";
+string resourceGroupName = "myRG";
+string workspaceName = "myServer";
+string sqlPoolName = "myDatabase";
+string schemaName = "dbo";
+string tableName = "myTable";
+string columnName = "myColumn";
+ResourceIdentifier synapseSqlPoolColumnResourceId = SynapseSqlPoolColumnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, schemaName, tableName, columnName);
+SynapseSqlPoolColumnResource synapseSqlPoolColumn = client.GetSynapseSqlPoolColumnResource(synapseSqlPoolColumnResourceId);
+
+// get the collection of this SynapseSensitivityLabelResource
+SynapseSensitivityLabelCollection collection = synapseSqlPoolColumn.GetSynapseSensitivityLabels();
+
+// invoke the operation
+SynapseSensitivityLabelSource sensitivityLabelSource = SynapseSensitivityLabelSource.Current;
+bool result = await collection.ExistsAsync(sensitivityLabelSource);
+
+Console.WriteLine($"Succeeded: {result}");

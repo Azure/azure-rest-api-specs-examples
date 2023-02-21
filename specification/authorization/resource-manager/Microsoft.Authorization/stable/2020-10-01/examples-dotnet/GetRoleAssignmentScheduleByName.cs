@@ -13,18 +13,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RoleAssignmentScheduleResource created on azure
-// for more information of creating RoleAssignmentScheduleResource, please refer to the document of RoleAssignmentScheduleResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this RoleAssignmentScheduleResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-string roleAssignmentScheduleName = "c9e264ff-3133-4776-a81a-ebc7c33c8ec6";
-ResourceIdentifier roleAssignmentScheduleResourceId = RoleAssignmentScheduleResource.CreateResourceIdentifier(scope, roleAssignmentScheduleName);
-RoleAssignmentScheduleResource roleAssignmentSchedule = client.GetRoleAssignmentScheduleResource(roleAssignmentScheduleResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+RoleAssignmentScheduleCollection collection = client.GetRoleAssignmentSchedules(scopeId);
 
 // invoke the operation
-RoleAssignmentScheduleResource result = await roleAssignmentSchedule.GetAsync();
+string roleAssignmentScheduleName = "c9e264ff-3133-4776-a81a-ebc7c33c8ec6";
+bool result = await collection.ExistsAsync(roleAssignmentScheduleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RoleAssignmentScheduleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

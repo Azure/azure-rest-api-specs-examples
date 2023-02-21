@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.AlertsManagement;
+using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/preview/2019-05-05-preview/examples/SmartGroups_List.json
@@ -24,7 +25,8 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 SmartGroupCollection collection = subscriptionResource.GetSmartGroups();
 
 // invoke the operation and iterate over the result
-await foreach (SmartGroupResource item in collection.GetAllAsync())
+SmartGroupCollectionGetAllOptions options = new SmartGroupCollectionGetAllOptions() { };
+await foreach (SmartGroupResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance

@@ -22,7 +22,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-AlertsSummaryGroupByField groupby = new AlertsSummaryGroupByField("severity,alertState");
-ServiceAlertSummary result = await subscriptionResource.GetServiceAlertSummaryAsync(groupby);
+SubscriptionResourceGetServiceAlertSummaryOptions options = new SubscriptionResourceGetServiceAlertSummaryOptions(groupby: new AlertsSummaryGroupByField("severity,alertState")) { };
+ServiceAlertSummary result = await subscriptionResource.GetServiceAlertSummaryAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

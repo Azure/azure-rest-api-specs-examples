@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotHubDescriptionResource created on azure
-// for more information of creating IotHubDescriptionResource, please refer to the document of IotHubDescriptionResource
+// this example assumes you already have this IotHubPrivateEndpointGroupInformationResource created on azure
+// for more information of creating IotHubPrivateEndpointGroupInformationResource, please refer to the document of IotHubPrivateEndpointGroupInformationResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "testHub";
-ResourceIdentifier iotHubDescriptionResourceId = IotHubDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-IotHubDescriptionResource iotHubDescription = client.GetIotHubDescriptionResource(iotHubDescriptionResourceId);
-
-// get the collection of this IotHubPrivateEndpointGroupInformationResource
-IotHubPrivateEndpointGroupInformationCollection collection = iotHubDescription.GetAllIotHubPrivateEndpointGroupInformation();
+string groupId = "iotHub";
+ResourceIdentifier iotHubPrivateEndpointGroupInformationResourceId = IotHubPrivateEndpointGroupInformationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, groupId);
+IotHubPrivateEndpointGroupInformationResource iotHubPrivateEndpointGroupInformation = client.GetIotHubPrivateEndpointGroupInformationResource(iotHubPrivateEndpointGroupInformationResourceId);
 
 // invoke the operation
-string groupId = "iotHub";
-bool result = await collection.ExistsAsync(groupId);
+IotHubPrivateEndpointGroupInformationResource result = await iotHubPrivateEndpointGroupInformation.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+IotHubPrivateEndpointGroupInformationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

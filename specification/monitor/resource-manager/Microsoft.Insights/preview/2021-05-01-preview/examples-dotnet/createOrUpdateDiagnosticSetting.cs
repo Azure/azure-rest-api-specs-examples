@@ -15,16 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this DiagnosticSettingResource
+// this example assumes you already have this DiagnosticSettingResource created on azure
+// for more information of creating DiagnosticSettingResource, please refer to the document of DiagnosticSettingResource
 string resourceUri = "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-DiagnosticSettingCollection collection = client.GetDiagnosticSettings(scopeId);
+string name = "mysetting";
+ResourceIdentifier diagnosticSettingResourceId = DiagnosticSettingResource.CreateResourceIdentifier(resourceUri, name);
+DiagnosticSettingResource diagnosticSetting = client.GetDiagnosticSettingResource(diagnosticSettingResourceId);
 
 // invoke the operation
-string name = "mysetting";
 DiagnosticSettingData data = new DiagnosticSettingData()
 {
     StorageAccountId = new ResourceIdentifier("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1"),
@@ -50,7 +48,7 @@ DiagnosticSettingData data = new DiagnosticSettingData()
     MarketplacePartnerId = new ResourceIdentifier("/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1"),
     LogAnalyticsDestinationType = "Dedicated",
 };
-ArmOperation<DiagnosticSettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<DiagnosticSettingResource> lro = await diagnosticSetting.UpdateAsync(WaitUntil.Completed, data);
 DiagnosticSettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

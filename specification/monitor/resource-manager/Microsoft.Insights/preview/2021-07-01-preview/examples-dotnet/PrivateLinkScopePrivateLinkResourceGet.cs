@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MonitorPrivateLinkResource created on azure
-// for more information of creating MonitorPrivateLinkResource, please refer to the document of MonitorPrivateLinkResource
+// this example assumes you already have this MonitorPrivateLinkScopeResource created on azure
+// for more information of creating MonitorPrivateLinkScopeResource, please refer to the document of MonitorPrivateLinkScopeResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "MyResourceGroup";
 string scopeName = "MyPrivateLinkScope";
-string groupName = "azuremonitor";
-ResourceIdentifier monitorPrivateLinkResourceId = MonitorPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName, groupName);
-MonitorPrivateLinkResource monitorPrivateLinkResource = client.GetMonitorPrivateLinkResource(monitorPrivateLinkResourceId);
+ResourceIdentifier monitorPrivateLinkScopeResourceId = MonitorPrivateLinkScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName);
+MonitorPrivateLinkScopeResource monitorPrivateLinkScope = client.GetMonitorPrivateLinkScopeResource(monitorPrivateLinkScopeResourceId);
+
+// get the collection of this MonitorPrivateLinkResource
+MonitorPrivateLinkResourceCollection collection = monitorPrivateLinkScope.GetMonitorPrivateLinkResources();
 
 // invoke the operation
-MonitorPrivateLinkResource result = await monitorPrivateLinkResource.GetAsync();
+string groupName = "azuremonitor";
+bool result = await collection.ExistsAsync(groupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MonitorPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -14,10 +14,8 @@ async function createIntegrationRuntime() {
   const workspaceName = "exampleWorkspace";
   const integrationRuntimeName = "exampleIntegrationRuntime";
   const integrationRuntime = {
-    properties: {
-      type: "SelfHosted",
-      description: "A selfhosted integration runtime",
-    },
+    typePropertiesType: "SelfHosted",
+    description: "A selfhosted integration runtime",
   };
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);

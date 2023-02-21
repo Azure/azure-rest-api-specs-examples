@@ -15,7 +15,10 @@ async function getPrivateLinkResourcesForWorkspace() {
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.privateLinkResources.list(resourceGroupName, workspaceName)) {
+  for await (let item of client.privateLinkResourcesOperations.list(
+    resourceGroupName,
+    workspaceName
+  )) {
     resArray.push(item);
   }
   console.log(resArray);

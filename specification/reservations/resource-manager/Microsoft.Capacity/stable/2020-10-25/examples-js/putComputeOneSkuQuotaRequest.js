@@ -40,5 +40,3 @@ async function quotasRequestPutForCompute() {
   );
   console.log(result);
 }
-
-quotasRequestPutForCompute().catch(console.error);

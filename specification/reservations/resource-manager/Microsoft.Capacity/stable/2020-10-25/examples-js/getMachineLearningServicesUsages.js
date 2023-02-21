@@ -19,5 +19,3 @@ async function quotasListUsagesMachineLearningServices() {
   }
   console.log(resArray);
 }
-
-quotasListUsagesMachineLearningServices().catch(console.error);

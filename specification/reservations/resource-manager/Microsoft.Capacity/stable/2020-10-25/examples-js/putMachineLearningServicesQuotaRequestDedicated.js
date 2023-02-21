@@ -41,5 +41,3 @@ async function quotasRequestPutForMachineLearningServicesDedicatedResource() {
   );
   console.log(result);
 }
-
-quotasRequestPutForMachineLearningServicesDedicatedResource().catch(console.error);

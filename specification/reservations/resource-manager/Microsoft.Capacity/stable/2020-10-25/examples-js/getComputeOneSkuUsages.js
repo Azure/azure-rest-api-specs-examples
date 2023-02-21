@@ -17,5 +17,3 @@ async function quotasRequestForCompute() {
   const result = await client.quota.get(subscriptionId, providerId, location, resourceName);
   console.log(result);
 }
-
-quotasRequestForCompute().catch(console.error);

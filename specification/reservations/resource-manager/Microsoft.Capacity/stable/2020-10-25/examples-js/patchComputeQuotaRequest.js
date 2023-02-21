@@ -38,5 +38,3 @@ async function quotasRequestPatchForCompute() {
   );
   console.log(result);
 }
-
-quotasRequestPatchForCompute().catch(console.error);

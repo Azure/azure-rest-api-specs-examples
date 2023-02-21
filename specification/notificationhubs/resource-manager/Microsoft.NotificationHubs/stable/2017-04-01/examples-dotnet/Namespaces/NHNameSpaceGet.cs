@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NotificationHubNamespaceResource created on azure
-// for more information of creating NotificationHubNamespaceResource, please refer to the document of NotificationHubNamespaceResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "29cfa613-cbbc-4512-b1d6-1b3a92c7fa40";
 string resourceGroupName = "5ktrial";
-string namespaceName = "nh-sdk-ns";
-ResourceIdentifier notificationHubNamespaceResourceId = NotificationHubNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-NotificationHubNamespaceResource notificationHubNamespace = client.GetNotificationHubNamespaceResource(notificationHubNamespaceResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NotificationHubNamespaceResource
+NotificationHubNamespaceCollection collection = resourceGroupResource.GetNotificationHubNamespaces();
 
 // invoke the operation
-NotificationHubNamespaceResource result = await notificationHubNamespace.GetAsync();
+string namespaceName = "nh-sdk-ns";
+bool result = await collection.ExistsAsync(namespaceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NotificationHubNamespaceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

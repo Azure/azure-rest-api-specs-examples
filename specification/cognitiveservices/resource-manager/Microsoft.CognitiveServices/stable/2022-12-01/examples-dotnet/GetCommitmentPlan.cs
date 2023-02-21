@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CommitmentPlanResource created on azure
-// for more information of creating CommitmentPlanResource, please refer to the document of CommitmentPlanResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "subscriptionId";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-string commitmentPlanName = "commitmentPlanName";
-ResourceIdentifier commitmentPlanResourceId = CommitmentPlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, commitmentPlanName);
-CommitmentPlanResource commitmentPlan = client.GetCommitmentPlanResource(commitmentPlanResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this CommitmentPlanResource
+CommitmentPlanCollection collection = cognitiveServicesAccount.GetCommitmentPlans();
 
 // invoke the operation
-CommitmentPlanResource result = await commitmentPlan.GetAsync();
+string commitmentPlanName = "commitmentPlanName";
+bool result = await collection.ExistsAsync(commitmentPlanName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CommitmentPlanData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesAccountDeploymentResource created on azure
-// for more information of creating CognitiveServicesAccountDeploymentResource, please refer to the document of CognitiveServicesAccountDeploymentResource
+// this example assumes you already have this CognitiveServicesAccountResource created on azure
+// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
 string subscriptionId = "subscriptionId";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-string deploymentName = "deploymentName";
-ResourceIdentifier cognitiveServicesAccountDeploymentResourceId = CognitiveServicesAccountDeploymentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, deploymentName);
-CognitiveServicesAccountDeploymentResource cognitiveServicesAccountDeployment = client.GetCognitiveServicesAccountDeploymentResource(cognitiveServicesAccountDeploymentResourceId);
+ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
+
+// get the collection of this CognitiveServicesAccountDeploymentResource
+CognitiveServicesAccountDeploymentCollection collection = cognitiveServicesAccount.GetCognitiveServicesAccountDeployments();
 
 // invoke the operation
-CognitiveServicesAccountDeploymentResource result = await cognitiveServicesAccountDeployment.GetAsync();
+string deploymentName = "deploymentName";
+bool result = await collection.ExistsAsync(deploymentName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CognitiveServicesAccountDeploymentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

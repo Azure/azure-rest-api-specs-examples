@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceFabricApplicationTypeResource created on azure
-// for more information of creating ServiceFabricApplicationTypeResource, please refer to the document of ServiceFabricApplicationTypeResource
+// this example assumes you already have this ServiceFabricClusterResource created on azure
+// for more information of creating ServiceFabricClusterResource, please refer to the document of ServiceFabricClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resRg";
 string clusterName = "myCluster";
-string applicationTypeName = "myAppType";
-ResourceIdentifier serviceFabricApplicationTypeResourceId = ServiceFabricApplicationTypeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationTypeName);
-ServiceFabricApplicationTypeResource serviceFabricApplicationType = client.GetServiceFabricApplicationTypeResource(serviceFabricApplicationTypeResourceId);
+ResourceIdentifier serviceFabricClusterResourceId = ServiceFabricClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+ServiceFabricClusterResource serviceFabricCluster = client.GetServiceFabricClusterResource(serviceFabricClusterResourceId);
+
+// get the collection of this ServiceFabricApplicationTypeResource
+ServiceFabricApplicationTypeCollection collection = serviceFabricCluster.GetServiceFabricApplicationTypes();
 
 // invoke the operation
+string applicationTypeName = "myAppType";
 ServiceFabricApplicationTypeData data = new ServiceFabricApplicationTypeData(new AzureLocation("placeholder"))
 {
     Tags =
     {
     },
 };
-ArmOperation<ServiceFabricApplicationTypeResource> lro = await serviceFabricApplicationType.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceFabricApplicationTypeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationTypeName, data);
 ServiceFabricApplicationTypeResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

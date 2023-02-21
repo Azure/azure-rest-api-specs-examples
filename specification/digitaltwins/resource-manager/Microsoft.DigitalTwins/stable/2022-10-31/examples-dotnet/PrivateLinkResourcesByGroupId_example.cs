@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DigitalTwinsDescriptionResource created on azure
-// for more information of creating DigitalTwinsDescriptionResource, please refer to the document of DigitalTwinsDescriptionResource
+// this example assumes you already have this DigitalTwinsPrivateLinkResource created on azure
+// for more information of creating DigitalTwinsPrivateLinkResource, please refer to the document of DigitalTwinsPrivateLinkResource
 string subscriptionId = "50016170-c839-41ba-a724-51e9df440b9e";
 string resourceGroupName = "resRg";
 string resourceName = "myDigitalTwinsService";
-ResourceIdentifier digitalTwinsDescriptionResourceId = DigitalTwinsDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-DigitalTwinsDescriptionResource digitalTwinsDescription = client.GetDigitalTwinsDescriptionResource(digitalTwinsDescriptionResourceId);
-
-// get the collection of this DigitalTwinsPrivateLinkResource
-DigitalTwinsPrivateLinkResourceCollection collection = digitalTwinsDescription.GetDigitalTwinsPrivateLinkResources();
+string resourceId = "subResource";
+ResourceIdentifier digitalTwinsPrivateLinkResourceId = DigitalTwinsPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, resourceId);
+DigitalTwinsPrivateLinkResource digitalTwinsPrivateLinkResource = client.GetDigitalTwinsPrivateLinkResource(digitalTwinsPrivateLinkResourceId);
 
 // invoke the operation
-string resourceId = "subResource";
-bool result = await collection.ExistsAsync(resourceId);
+DigitalTwinsPrivateLinkResource result = await digitalTwinsPrivateLinkResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DigitalTwinsPrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

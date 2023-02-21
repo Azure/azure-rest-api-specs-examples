@@ -15,23 +15,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DigitalTwinsEndpointResource created on azure
-// for more information of creating DigitalTwinsEndpointResource, please refer to the document of DigitalTwinsEndpointResource
+// this example assumes you already have this DigitalTwinsDescriptionResource created on azure
+// for more information of creating DigitalTwinsDescriptionResource, please refer to the document of DigitalTwinsDescriptionResource
 string subscriptionId = "50016170-c839-41ba-a724-51e9df440b9e";
 string resourceGroupName = "resRg";
 string resourceName = "myDigitalTwinsService";
-string endpointName = "myServiceBus";
-ResourceIdentifier digitalTwinsEndpointResourceId = DigitalTwinsEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, endpointName);
-DigitalTwinsEndpointResource digitalTwinsEndpointResource = client.GetDigitalTwinsEndpointResource(digitalTwinsEndpointResourceId);
+ResourceIdentifier digitalTwinsDescriptionResourceId = DigitalTwinsDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+DigitalTwinsDescriptionResource digitalTwinsDescription = client.GetDigitalTwinsDescriptionResource(digitalTwinsDescriptionResourceId);
+
+// get the collection of this DigitalTwinsEndpointResource
+DigitalTwinsEndpointResourceCollection collection = digitalTwinsDescription.GetDigitalTwinsEndpointResources();
 
 // invoke the operation
+string endpointName = "myServiceBus";
 DigitalTwinsEndpointResourceData data = new DigitalTwinsEndpointResourceData(new DigitalTwinsServiceBusProperties()
 {
     PrimaryConnectionString = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc",
     SecondaryConnectionString = "Endpoint=sb://mysb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=xyzxyzoX4=;EntityPath=abcabc",
     AuthenticationType = DigitalTwinsAuthenticationType.KeyBased,
 });
-ArmOperation<DigitalTwinsEndpointResource> lro = await digitalTwinsEndpointResource.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DigitalTwinsEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 DigitalTwinsEndpointResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

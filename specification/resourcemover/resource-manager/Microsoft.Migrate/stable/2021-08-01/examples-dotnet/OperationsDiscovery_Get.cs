@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.ResourceMover;
 using Azure.ResourceManager.ResourceMover.Models;
 
 // Generated from example definition: specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/examples/OperationsDiscovery_Get.json

@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.StorageCache;
 using Azure.ResourceManager.StorageCache.Models;
 
 // Generated from example definition: specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2022-05-01/examples/Skus_List.json

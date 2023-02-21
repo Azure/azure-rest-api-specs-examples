@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SharedSearchServicePrivateLinkResource created on azure
-// for more information of creating SharedSearchServicePrivateLinkResource, please refer to the document of SharedSearchServicePrivateLinkResource
+// this example assumes you already have this SearchServiceResource created on azure
+// for more information of creating SearchServiceResource, please refer to the document of SearchServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string searchServiceName = "mysearchservice";
-string sharedPrivateLinkResourceName = "testResource";
-ResourceIdentifier sharedSearchServicePrivateLinkResourceId = SharedSearchServicePrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, searchServiceName, sharedPrivateLinkResourceName);
-SharedSearchServicePrivateLinkResource sharedSearchServicePrivateLinkResource = client.GetSharedSearchServicePrivateLinkResource(sharedSearchServicePrivateLinkResourceId);
+ResourceIdentifier searchServiceResourceId = SearchServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, searchServiceName);
+SearchServiceResource searchService = client.GetSearchServiceResource(searchServiceResourceId);
+
+// get the collection of this SharedSearchServicePrivateLinkResource
+SharedSearchServicePrivateLinkResourceCollection collection = searchService.GetSharedSearchServicePrivateLinkResources();
 
 // invoke the operation
-SharedSearchServicePrivateLinkResource result = await sharedSearchServicePrivateLinkResource.GetAsync();
+string sharedPrivateLinkResourceName = "testResource";
+bool result = await collection.ExistsAsync(sharedPrivateLinkResourceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SharedSearchServicePrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

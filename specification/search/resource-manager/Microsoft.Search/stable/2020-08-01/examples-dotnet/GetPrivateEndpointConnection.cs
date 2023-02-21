@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SearchPrivateEndpointConnectionResource created on azure
-// for more information of creating SearchPrivateEndpointConnectionResource, please refer to the document of SearchPrivateEndpointConnectionResource
+// this example assumes you already have this SearchServiceResource created on azure
+// for more information of creating SearchServiceResource, please refer to the document of SearchServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string searchServiceName = "mysearchservice";
-string privateEndpointConnectionName = "testEndpoint.50bf4fbe-d7c1-4b48-a642-4f5892642546";
-ResourceIdentifier searchPrivateEndpointConnectionResourceId = SearchPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, searchServiceName, privateEndpointConnectionName);
-SearchPrivateEndpointConnectionResource searchPrivateEndpointConnection = client.GetSearchPrivateEndpointConnectionResource(searchPrivateEndpointConnectionResourceId);
+ResourceIdentifier searchServiceResourceId = SearchServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, searchServiceName);
+SearchServiceResource searchService = client.GetSearchServiceResource(searchServiceResourceId);
+
+// get the collection of this SearchPrivateEndpointConnectionResource
+SearchPrivateEndpointConnectionCollection collection = searchService.GetSearchPrivateEndpointConnections();
 
 // invoke the operation
-SearchPrivateEndpointConnectionResource result = await searchPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "testEndpoint.50bf4fbe-d7c1-4b48-a642-4f5892642546";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SearchPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

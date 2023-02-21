@@ -5,25 +5,25 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.ManagedServices.Models;
 using Azure.ResourceManager.ManagedServices;
+using Azure.ResourceManager.ManagedServices.Models;
 
 // Generated from example definition: specification/managedservices/resource-manager/Microsoft.ManagedServices/stable/2022-10-01/examples/PutRegistrationDefinition.json
 // this example is just showing the usage of "RegistrationDefinitions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
 
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
-ArmClient client = new ArmClient(new DefaultAzureCredential());
+ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this ManagedServicesRegistrationResource
+// this example assumes you already have this ManagedServicesRegistrationResource created on azure
+// for more information of creating ManagedServicesRegistrationResource, please refer to the document of ManagedServicesRegistrationResource
 string scope = "subscription/0afefe50-734e-4610-8a82-a144ahf49dea";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-ManagedServicesRegistrationCollection collection = client.GetManagedServicesRegistrations(scopeId);
+string registrationId = "26c128c2-fefa-4340-9bb1-6e081c90ada2";
+ResourceIdentifier managedServicesRegistrationResourceId = ManagedServicesRegistrationResource.CreateResourceIdentifier(scope, registrationId);
+ManagedServicesRegistrationResource managedServicesRegistration = client.GetManagedServicesRegistrationResource(managedServicesRegistrationResourceId);
 
 // invoke the operation
-string registrationId = "26c128c2-fefa-4340-9bb1-6e081c90ada2";
 ManagedServicesRegistrationData data = new ManagedServicesRegistrationData()
 {
     Properties = new ManagedServicesRegistrationProperties(new ManagedServicesAuthorization[]
@@ -64,7 +64,7 @@ Guid.Parse("b24988ac-6180-42a0-ab88-20f7382dd24c")
     },
     Plan = new ManagedServicesPlan("addesai-plan", "marketplace-test", "test", "1.0.0"),
 };
-ArmOperation<ManagedServicesRegistrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, registrationId, data);
+ArmOperation<ManagedServicesRegistrationResource> lro = await managedServicesRegistration.UpdateAsync(WaitUntil.Completed, data);
 ManagedServicesRegistrationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

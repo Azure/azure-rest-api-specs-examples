@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.HealthBot;
 using Azure.ResourceManager.HealthBot.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/healthbot/resource-manager/Microsoft.HealthBot/stable/2021-08-24/examples/ResourceInfoGet.json
@@ -16,19 +17,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthBotResource created on azure
-// for more information of creating HealthBotResource, please refer to the document of HealthBotResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "healthbotClient";
-string botName = "samplebotname";
-ResourceIdentifier healthBotResourceId = HealthBotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, botName);
-HealthBotResource healthBot = client.GetHealthBotResource(healthBotResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this HealthBotResource
+HealthBotCollection collection = resourceGroupResource.GetHealthBots();
 
 // invoke the operation
-HealthBotResource result = await healthBot.GetAsync();
+string botName = "samplebotname";
+bool result = await collection.ExistsAsync(botName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HealthBotData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

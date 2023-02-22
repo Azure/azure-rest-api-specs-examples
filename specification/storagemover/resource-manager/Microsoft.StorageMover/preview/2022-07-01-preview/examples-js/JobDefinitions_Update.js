@@ -1,0 +1,31 @@
+const { StorageMoverClient } = require("@azure/arm-storagemover");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Updates properties for a Job Definition resource. Properties not specified in the request body will be unchanged.
+ *
+ * @summary Updates properties for a Job Definition resource. Properties not specified in the request body will be unchanged.
+ * x-ms-original-file: specification/storagemover/resource-manager/Microsoft.StorageMover/preview/2022-07-01-preview/examples/JobDefinitions_Update.json
+ */
+async function jobDefinitionsUpdate() {
+  const subscriptionId =
+    process.env["STORAGEMOVER_SUBSCRIPTION_ID"] || "11111111-2222-3333-4444-555555555555";
+  const resourceGroupName = process.env["STORAGEMOVER_RESOURCE_GROUP"] || "examples-rg";
+  const storageMoverName = "examples-storageMoverName";
+  const projectName = "examples-projectName";
+  const jobDefinitionName = "examples-jobDefinitionName";
+  const jobDefinition = {
+    description: "Updated Job Definition Description",
+    agentName: "updatedAgentName",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new StorageMoverClient(credential, subscriptionId);
+  const result = await client.jobDefinitions.update(
+    resourceGroupName,
+    storageMoverName,
+    projectName,
+    jobDefinitionName,
+    jobDefinition
+  );
+  console.log(result);
+}

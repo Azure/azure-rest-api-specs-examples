@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Authorization;
 
 // Generated from example definition: specification/authorization/resource-manager/Microsoft.Authorization/stable/2015-07-01/examples/ElevateAccess.json
 // this example is just showing the usage of "GlobalAdministrator_ElevateAccess" operation, for the dependent resources, they will have to be created separately.

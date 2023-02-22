@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppConnectedEnvironmentResource created on azure
-// for more information of creating ContainerAppConnectedEnvironmentResource, please refer to the document of ContainerAppConnectedEnvironmentResource
+// this example assumes you already have this ContainerAppConnectedEnvironmentDaprComponentResource created on azure
+// for more information of creating ContainerAppConnectedEnvironmentDaprComponentResource, please refer to the document of ContainerAppConnectedEnvironmentDaprComponentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string connectedEnvironmentName = "myenvironment";
-ResourceIdentifier containerAppConnectedEnvironmentResourceId = ContainerAppConnectedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, connectedEnvironmentName);
-ContainerAppConnectedEnvironmentResource containerAppConnectedEnvironment = client.GetContainerAppConnectedEnvironmentResource(containerAppConnectedEnvironmentResourceId);
-
-// get the collection of this ContainerAppConnectedEnvironmentDaprComponentResource
-ContainerAppConnectedEnvironmentDaprComponentCollection collection = containerAppConnectedEnvironment.GetContainerAppConnectedEnvironmentDaprComponents();
+string componentName = "reddog";
+ResourceIdentifier containerAppConnectedEnvironmentDaprComponentResourceId = ContainerAppConnectedEnvironmentDaprComponentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, connectedEnvironmentName, componentName);
+ContainerAppConnectedEnvironmentDaprComponentResource containerAppConnectedEnvironmentDaprComponent = client.GetContainerAppConnectedEnvironmentDaprComponentResource(containerAppConnectedEnvironmentDaprComponentResourceId);
 
 // invoke the operation
-string componentName = "reddog";
-bool result = await collection.ExistsAsync(componentName);
+ContainerAppConnectedEnvironmentDaprComponentResource result = await containerAppConnectedEnvironmentDaprComponent.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppDaprComponentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

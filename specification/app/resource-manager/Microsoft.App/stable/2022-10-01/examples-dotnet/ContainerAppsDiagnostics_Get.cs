@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppDetectorResource created on azure
-// for more information of creating ContainerAppDetectorResource, please refer to the document of ContainerAppDetectorResource
+// this example assumes you already have this ContainerAppResource created on azure
+// for more information of creating ContainerAppResource, please refer to the document of ContainerAppResource
 string subscriptionId = "f07f3711-b45e-40fe-a941-4e6d93f851e6";
 string resourceGroupName = "mikono-workerapp-test-rg";
 string containerAppName = "mikono-capp-stage1";
-string detectorName = "cappcontainerappnetworkIO";
-ResourceIdentifier containerAppDetectorResourceId = ContainerAppDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName, detectorName);
-ContainerAppDetectorResource containerAppDetector = client.GetContainerAppDetectorResource(containerAppDetectorResourceId);
+ResourceIdentifier containerAppResourceId = ContainerAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName);
+ContainerAppResource containerApp = client.GetContainerAppResource(containerAppResourceId);
+
+// get the collection of this ContainerAppDetectorResource
+ContainerAppDetectorCollection collection = containerApp.GetContainerAppDetectors();
 
 // invoke the operation
-ContainerAppDetectorResource result = await containerAppDetector.GetAsync();
+string detectorName = "cappcontainerappnetworkIO";
+bool result = await collection.ExistsAsync(detectorName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerAppDiagnosticData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

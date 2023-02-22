@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteSqlPoolWorkloadGroupWorkloadClassifer.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/630ec444f8dd7c09b9cdd5fa99951f8a0d1ad41f/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteSqlPoolWorkloadGroupWorkloadClassifer.json
 func ExampleSQLPoolWorkloadClassifierClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,13 +19,7 @@ func ExampleSQLPoolWorkloadClassifierClient_BeginDelete() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"sqlcrudtest-6852",
-		"sqlcrudtest-2080",
-		"sqlcrudtest-9187",
-		"wlm_workloadgroup",
-		"wlm_workloadclassifier",
-		nil)
+	poller, err := client.BeginDelete(ctx, "sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", "wlm_workloadgroup", "wlm_workloadclassifier", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

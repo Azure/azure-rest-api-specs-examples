@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RunsGet.json
  */
 async function runsGet() {
-  const subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId =
+    process.env["CONTAINERREGISTRY_SUBSCRIPTION_ID"] || "4385cf00-2d3a-425a-832f-f4285b1c9dce";
+  const resourceGroupName = process.env["CONTAINERREGISTRY_RESOURCE_GROUP"] || "myResourceGroup";
   const registryName = "myRegistry";
   const runId = "0accec26-d6de-4757-8e74-d080f38eaaab";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function runsGet() {
   const result = await client.runs.get(resourceGroupName, registryName, runId);
   console.log(result);
 }
-
-runsGet().catch(console.error);

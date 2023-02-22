@@ -2,9 +2,9 @@ const { SynapseManagementClient } = require("@azure/arm-synapse");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Gets a workspace SQL active directory admin
+ * This sample demonstrates how to Gets a workspace active directory admin
  *
- * @summary Gets a workspace SQL active directory admin
+ * @summary Gets a workspace active directory admin
  * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/GetWorkspaceAadAdmin.json
  */
 async function getWorkspaceActiveDirectoryAdmin() {
@@ -14,6 +14,6 @@ async function getWorkspaceActiveDirectoryAdmin() {
   const workspaceName = "workspace1";
   const credential = new DefaultAzureCredential();
   const client = new SynapseManagementClient(credential, subscriptionId);
-  const result = await client.workspaceSqlAadAdmins.get(resourceGroupName, workspaceName);
+  const result = await client.workspaceAadAdmins.get(resourceGroupName, workspaceName);
   console.log(result);
 }

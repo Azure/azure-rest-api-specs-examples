@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisFirewallRuleResource created on azure
-// for more information of creating RedisFirewallRuleResource, please refer to the document of RedisFirewallRuleResource
+// this example assumes you already have this RedisResource created on azure
+// for more information of creating RedisResource, please refer to the document of RedisResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string cacheName = "cache1";
-string ruleName = "rule1";
-ResourceIdentifier redisFirewallRuleResourceId = RedisFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName, ruleName);
-RedisFirewallRuleResource redisFirewallRule = client.GetRedisFirewallRuleResource(redisFirewallRuleResourceId);
+ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName);
+RedisResource redis = client.GetRedisResource(redisResourceId);
+
+// get the collection of this RedisFirewallRuleResource
+RedisFirewallRuleCollection collection = redis.GetRedisFirewallRules();
 
 // invoke the operation
+string ruleName = "rule1";
 RedisFirewallRuleData data = new RedisFirewallRuleData(IPAddress.Parse("192.168.1.1"), IPAddress.Parse("192.168.1.4"));
-ArmOperation<RedisFirewallRuleResource> lro = await redisFirewallRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RedisFirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 RedisFirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

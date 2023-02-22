@@ -6,7 +6,7 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
     pip install azure-identity
     pip install azure-mgmt-datafactory
 # USAGE
-    python get_private_endpoint_connection.py
+    python credentials_get.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -18,17 +18,17 @@ from azure.mgmt.datafactory import DataFactoryManagementClient
 def main():
     client = DataFactoryManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="34adfa4f-cedf-4dc0-ba29-b6d1a69ab345",
+        subscription_id="12345678-1234-1234-1234-12345678abc",
     )
 
-    response = client.private_endpoint_connection.get(
+    response = client.credential_operations.get(
         resource_group_name="exampleResourceGroup",
         factory_name="exampleFactoryName",
-        private_endpoint_connection_name="connection",
+        credential_name="exampleCredential",
     )
     print(response)
 
 
-# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/GetPrivateEndpointConnection.json
+# x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Credentials_Get.json
 if __name__ == "__main__":
     main()

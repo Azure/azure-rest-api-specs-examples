@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StreamAnalyticsPrivateEndpointResource created on azure
-// for more information of creating StreamAnalyticsPrivateEndpointResource, please refer to the document of StreamAnalyticsPrivateEndpointResource
+// this example assumes you already have this StreamAnalyticsClusterResource created on azure
+// for more information of creating StreamAnalyticsClusterResource, please refer to the document of StreamAnalyticsClusterResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "sjrg";
 string clusterName = "testcluster";
-string privateEndpointName = "testpe";
-ResourceIdentifier streamAnalyticsPrivateEndpointResourceId = StreamAnalyticsPrivateEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, privateEndpointName);
-StreamAnalyticsPrivateEndpointResource streamAnalyticsPrivateEndpoint = client.GetStreamAnalyticsPrivateEndpointResource(streamAnalyticsPrivateEndpointResourceId);
+ResourceIdentifier streamAnalyticsClusterResourceId = StreamAnalyticsClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+StreamAnalyticsClusterResource streamAnalyticsCluster = client.GetStreamAnalyticsClusterResource(streamAnalyticsClusterResourceId);
+
+// get the collection of this StreamAnalyticsPrivateEndpointResource
+StreamAnalyticsPrivateEndpointCollection collection = streamAnalyticsCluster.GetStreamAnalyticsPrivateEndpoints();
 
 // invoke the operation
+string privateEndpointName = "testpe";
 StreamAnalyticsPrivateEndpointData data = new StreamAnalyticsPrivateEndpointData()
 {
     Properties = new StreamAnalyticsPrivateEndpointProperties()
@@ -42,7 +45,7 @@ StreamAnalyticsPrivateEndpointData data = new StreamAnalyticsPrivateEndpointData
         },
     },
 };
-ArmOperation<StreamAnalyticsPrivateEndpointResource> lro = await streamAnalyticsPrivateEndpoint.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StreamAnalyticsPrivateEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointName, data);
 StreamAnalyticsPrivateEndpointResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

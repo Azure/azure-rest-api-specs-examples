@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StreamingJobTransformationResource created on azure
-// for more information of creating StreamingJobTransformationResource, please refer to the document of StreamingJobTransformationResource
+// this example assumes you already have this StreamingJobResource created on azure
+// for more information of creating StreamingJobResource, please refer to the document of StreamingJobResource
 string subscriptionId = "56b5e0a9-b645-407d-99b0-c64f86013e3d";
 string resourceGroupName = "sjrg4423";
 string jobName = "sj8374";
-string transformationName = "transformation952";
-ResourceIdentifier streamingJobTransformationResourceId = StreamingJobTransformationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, jobName, transformationName);
-StreamingJobTransformationResource streamingJobTransformation = client.GetStreamingJobTransformationResource(streamingJobTransformationResourceId);
+ResourceIdentifier streamingJobResourceId = StreamingJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, jobName);
+StreamingJobResource streamingJob = client.GetStreamingJobResource(streamingJobResourceId);
+
+// get the collection of this StreamingJobTransformationResource
+StreamingJobTransformationCollection collection = streamingJob.GetStreamingJobTransformations();
 
 // invoke the operation
-StreamingJobTransformationResource result = await streamingJobTransformation.GetAsync();
+string transformationName = "transformation952";
+bool result = await collection.ExistsAsync(transformationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StreamingJobTransformationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

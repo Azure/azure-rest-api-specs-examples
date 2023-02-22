@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+// this example assumes you already have this ContainerAppManagedEnvironmentDaprComponentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentDaprComponentResource, please refer to the document of ContainerAppManagedEnvironmentDaprComponentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string environmentName = "myenvironment";
-ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
-ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
-
-// get the collection of this ContainerAppManagedEnvironmentDaprComponentResource
-ContainerAppManagedEnvironmentDaprComponentCollection collection = containerAppManagedEnvironment.GetContainerAppManagedEnvironmentDaprComponents();
+string componentName = "reddog";
+ResourceIdentifier containerAppManagedEnvironmentDaprComponentResourceId = ContainerAppManagedEnvironmentDaprComponentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, componentName);
+ContainerAppManagedEnvironmentDaprComponentResource containerAppManagedEnvironmentDaprComponent = client.GetContainerAppManagedEnvironmentDaprComponentResource(containerAppManagedEnvironmentDaprComponentResourceId);
 
 // invoke the operation
-string componentName = "reddog";
 ContainerAppDaprComponentData data = new ContainerAppDaprComponentData()
 {
     ComponentType = "state.azure.cosmosdb",
@@ -67,7 +64,7 @@ ContainerAppDaprComponentData data = new ContainerAppDaprComponentData()
     "container-app-1","container-app-2"
     },
 };
-ArmOperation<ContainerAppManagedEnvironmentDaprComponentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, componentName, data);
+ArmOperation<ContainerAppManagedEnvironmentDaprComponentResource> lro = await containerAppManagedEnvironmentDaprComponent.UpdateAsync(WaitUntil.Completed, data);
 ContainerAppManagedEnvironmentDaprComponentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

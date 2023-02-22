@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentCertificateResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentCertificateResource, please refer to the document of ContainerAppManagedEnvironmentCertificateResource
+// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "examplerg";
 string environmentName = "testcontainerenv";
-string certificateName = "certificate-firendly-name";
-ResourceIdentifier containerAppManagedEnvironmentCertificateResourceId = ContainerAppManagedEnvironmentCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, certificateName);
-ContainerAppManagedEnvironmentCertificateResource containerAppManagedEnvironmentCertificate = client.GetContainerAppManagedEnvironmentCertificateResource(containerAppManagedEnvironmentCertificateResourceId);
+ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
+ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
+
+// get the collection of this ContainerAppManagedEnvironmentCertificateResource
+ContainerAppManagedEnvironmentCertificateCollection collection = containerAppManagedEnvironment.GetContainerAppManagedEnvironmentCertificates();
 
 // invoke the operation
-ContainerAppManagedEnvironmentCertificateResource result = await containerAppManagedEnvironmentCertificate.GetAsync();
+string certificateName = "certificate-firendly-name";
+bool result = await collection.ExistsAsync(certificateName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerAppCertificateData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

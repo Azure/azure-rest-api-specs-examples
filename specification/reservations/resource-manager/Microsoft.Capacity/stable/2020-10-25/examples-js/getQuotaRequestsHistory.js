@@ -19,5 +19,3 @@ async function quotaRequestHistory() {
   }
   console.log(resArray);
 }
-
-quotaRequestHistory().catch(console.error);

@@ -17,5 +17,3 @@ async function quotaRequestFailed() {
   const result = await client.quotaRequestStatus.get(subscriptionId, providerId, location, id);
   console.log(result);
 }
-
-quotaRequestFailed().catch(console.error);

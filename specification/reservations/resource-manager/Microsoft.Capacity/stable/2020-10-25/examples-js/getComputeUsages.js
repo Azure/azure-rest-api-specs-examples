@@ -19,5 +19,3 @@ async function quotasListUsagesForCompute() {
   }
   console.log(resArray);
 }
-
-quotasListUsagesForCompute().catch(console.error);

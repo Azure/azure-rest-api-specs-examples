@@ -41,5 +41,3 @@ async function quotasRequestPutForMachineLearningServicesLowPriorityResource() {
   );
   console.log(result);
 }
-
-quotasRequestPutForMachineLearningServicesLowPriorityResource().catch(console.error);

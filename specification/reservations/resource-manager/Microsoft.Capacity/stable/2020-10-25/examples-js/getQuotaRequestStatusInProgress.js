@@ -17,5 +17,3 @@ async function quotaRequestInProgress() {
   const result = await client.quotaRequestStatus.get(subscriptionId, providerId, location, id);
   console.log(result);
 }
-
-quotaRequestInProgress().catch(console.error);

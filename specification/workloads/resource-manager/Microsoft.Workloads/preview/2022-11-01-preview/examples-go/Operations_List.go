@@ -1,0 +1,115 @@
+package armworkloads_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloads/armworkloads"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/630ec444f8dd7c09b9cdd5fa99951f8a0d1ad41f/specification/workloads/resource-manager/Microsoft.Workloads/preview/2022-11-01-preview/examples/Operations_List.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client, err := armworkloads.NewOperationsClient(cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := client.NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.OperationListResult = armworkloads.OperationListResult{
+		// 	Value: []*armworkloads.Operation{
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/phpWorkloads/Write"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Set phpWorkloads"),
+		// 				Operation: to.Ptr("Creates or updates the phpWorkloads"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("phpWorkloads"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/phpWorkloads/Delete"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Delete phpWorkloads"),
+		// 				Operation: to.Ptr("Deletes the phpWorkloads"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("phpWorkloads"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/phpWorkloads/Read"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Read phpWorkloads"),
+		// 				Operation: to.Ptr("Reads the phpWorkloads"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("phpWorkloads"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/phpWorkloads/wordpressInstances/Write"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Set wordpressInstances"),
+		// 				Operation: to.Ptr("Creates or updates the wordpressInstances"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("wordpressInstances"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/phpWorkloads/wordpressInstances/Delete"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Delete wordpressInstances"),
+		// 				Operation: to.Ptr("Deletes the wordpressInstances"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("wordpressInstances"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/phpWorkloads/wordpressInstances/Read"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Read wordpressInstances"),
+		// 				Operation: to.Ptr("Reads the wordpressInstances"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("wordpressInstances"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/monitors/Read"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Reads the Monitor workload."),
+		// 				Operation: to.Ptr("Read"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("Microsoft.Workloads/monitors"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.Workloads/monitors/Write"),
+		// 			Display: &armworkloads.OperationDisplay{
+		// 				Description: to.Ptr("Creates or updates a Monitor workload."),
+		// 				Operation: to.Ptr("Read"),
+		// 				Provider: to.Ptr("Microsoft.Workloads"),
+		// 				Resource: to.Ptr("Microsoft.Workloads/monitors"),
+		// 			},
+		// 	}},
+		// }
+	}
+}

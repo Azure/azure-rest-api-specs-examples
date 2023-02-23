@@ -6,10 +6,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/reservations/armreservations/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putMachineLearningServicesQuotaRequestLowPriority.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/630ec444f8dd7c09b9cdd5fa99951f8a0d1ad41f/specification/reservations/resource-manager/Microsoft.Capacity/stable/2020-10-25/examples/putMachineLearningServicesQuotaRequestLowPriority.json
 func ExampleQuotaClient_BeginCreateOrUpdate_quotasRequestPutForMachineLearningServicesLowPriorityResource() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -37,6 +37,25 @@ func ExampleQuotaClient_BeginCreateOrUpdate_quotasRequestPutForMachineLearningSe
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CurrentQuotaLimitBase = armreservations.CurrentQuotaLimitBase{
+	// 	Name: to.Ptr("2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
+	// 	Type: to.Ptr("Microsoft.Capacity/serviceLimits"),
+	// 	ID: to.Ptr("/subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Capacity/resourceProviders/Microsoft.MachineLearningServices/locations/eastus/serviceLimitsRequests/2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
+	// 	Properties: &armreservations.QuotaProperties{
+	// 		Name: &armreservations.ResourceName{
+	// 			LocalizedValue: to.Ptr("Total Cluster Low Priority Regional vCPUs"),
+	// 			Value: to.Ptr("TotalLowPriorityCores"),
+	// 		},
+	// 		CurrentValue: to.Ptr[int32](160),
+	// 		Limit: to.Ptr[int32](200),
+	// 		Properties: map[string]any{
+	// 		},
+	// 		QuotaPeriod: to.Ptr(""),
+	// 		ResourceType: to.Ptr(armreservations.ResourceTypeLowPriority),
+	// 		Unit: to.Ptr("Count"),
+	// 	},
+	// }
 }

@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateWorkspaceManagedSqlServerExtendedBlobAuditingSettingsWithAllParameters.json
-func ExampleWorkspaceManagedSQLServerExtendedBlobAuditingPoliciesClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/630ec444f8dd7c09b9cdd5fa99951f8a0d1ad41f/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CreateWorkspaceManagedSqlServerExtendedBlobAuditingSettingsWithAllParameters.json
+func ExampleWorkspaceManagedSQLServerExtendedBlobAuditingPoliciesClient_BeginCreateOrUpdate_createOrUpdateWorkspaceManagedSqlServersExtendedBlobAuditingPolicyOfWithAllParameters() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,27 +20,22 @@ func ExampleWorkspaceManagedSQLServerExtendedBlobAuditingPoliciesClient_BeginCre
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"wsg-7398",
-		"testWorkspace",
-		armsynapse.BlobAuditingPolicyNameDefault,
-		armsynapse.ExtendedServerBlobAuditingPolicy{
-			Properties: &armsynapse.ExtendedServerBlobAuditingPolicyProperties{
-				AuditActionsAndGroups: []*string{
-					to.Ptr("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP"),
-					to.Ptr("FAILED_DATABASE_AUTHENTICATION_GROUP"),
-					to.Ptr("BATCH_COMPLETED_GROUP")},
-				IsAzureMonitorTargetEnabled:  to.Ptr(true),
-				IsStorageSecondaryKeyInUse:   to.Ptr(false),
-				PredicateExpression:          to.Ptr("object_name = 'SensitiveData'"),
-				RetentionDays:                to.Ptr[int32](6),
-				State:                        to.Ptr(armsynapse.BlobAuditingPolicyStateEnabled),
-				StorageAccountAccessKey:      to.Ptr("sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="),
-				StorageAccountSubscriptionID: to.Ptr("00000000-1234-0000-5678-000000000000"),
-				StorageEndpoint:              to.Ptr("https://mystorage.blob.core.windows.net"),
-			},
+	poller, err := client.BeginCreateOrUpdate(ctx, "wsg-7398", "testWorkspace", armsynapse.BlobAuditingPolicyNameDefault, armsynapse.ExtendedServerBlobAuditingPolicy{
+		Properties: &armsynapse.ExtendedServerBlobAuditingPolicyProperties{
+			AuditActionsAndGroups: []*string{
+				to.Ptr("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP"),
+				to.Ptr("FAILED_DATABASE_AUTHENTICATION_GROUP"),
+				to.Ptr("BATCH_COMPLETED_GROUP")},
+			IsAzureMonitorTargetEnabled:  to.Ptr(true),
+			IsStorageSecondaryKeyInUse:   to.Ptr(false),
+			PredicateExpression:          to.Ptr("object_name = 'SensitiveData'"),
+			RetentionDays:                to.Ptr[int32](6),
+			State:                        to.Ptr(armsynapse.BlobAuditingPolicyStateEnabled),
+			StorageAccountAccessKey:      to.Ptr("sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="),
+			StorageAccountSubscriptionID: to.Ptr("00000000-1234-0000-5678-000000000000"),
+			StorageEndpoint:              to.Ptr("https://mystorage.blob.core.windows.net"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -48,6 +43,25 @@ func ExampleWorkspaceManagedSQLServerExtendedBlobAuditingPoliciesClient_BeginCre
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ExtendedServerBlobAuditingPolicy = armsynapse.ExtendedServerBlobAuditingPolicy{
+	// 	Name: to.Ptr("default"),
+	// 	Type: to.Ptr("Microsoft.Synapse/workspaces/extendedAuditingSettings"),
+	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/wsg-7398/providers/Microsoft.Synapse/workspaces/testWorkspace/extendedAuditingSettings/default"),
+	// 	Properties: &armsynapse.ExtendedServerBlobAuditingPolicyProperties{
+	// 		AuditActionsAndGroups: []*string{
+	// 			to.Ptr("SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP"),
+	// 			to.Ptr("FAILED_DATABASE_AUTHENTICATION_GROUP"),
+	// 			to.Ptr("BATCH_COMPLETED_GROUP")},
+	// 			IsAzureMonitorTargetEnabled: to.Ptr(true),
+	// 			IsStorageSecondaryKeyInUse: to.Ptr(false),
+	// 			PredicateExpression: to.Ptr("object_name = 'SensitiveData'"),
+	// 			RetentionDays: to.Ptr[int32](6),
+	// 			State: to.Ptr(armsynapse.BlobAuditingPolicyStateEnabled),
+	// 			StorageAccountSubscriptionID: to.Ptr("00000000-1234-0000-5678-000000000000"),
+	// 			StorageEndpoint: to.Ptr("https://mystorage.blob.core.windows.net"),
+	// 		},
+	// 	}
 }

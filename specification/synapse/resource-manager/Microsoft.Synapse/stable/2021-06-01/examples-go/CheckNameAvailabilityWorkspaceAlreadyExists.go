@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/synapse/armsynapse"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CheckNameAvailabilityWorkspaceAlreadyExists.json
-func ExampleOperationsClient_CheckNameAvailability() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/630ec444f8dd7c09b9cdd5fa99951f8a0d1ad41f/specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/CheckNameAvailabilityWorkspaceAlreadyExists.json
+func ExampleOperationsClient_CheckNameAvailability_checkForAWorkspaceNameThatAlreadyExists() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,15 +20,20 @@ func ExampleOperationsClient_CheckNameAvailability() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx,
-		armsynapse.CheckNameAvailabilityRequest{
-			Name: to.Ptr("workspace1"),
-			Type: to.Ptr("Microsoft.Synapse/workspaces"),
-		},
-		nil)
+	res, err := client.CheckNameAvailability(ctx, armsynapse.CheckNameAvailabilityRequest{
+		Name: to.Ptr("workspace1"),
+		Type: to.Ptr("Microsoft.Synapse/workspaces"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CheckNameAvailabilityResponse = armsynapse.CheckNameAvailabilityResponse{
+	// 	Name: to.Ptr("workspace1"),
+	// 	Available: to.Ptr(false),
+	// 	Message: to.Ptr("Specified workspace name is already used"),
+	// 	Reason: to.Ptr("AlreadyExists"),
+	// }
 }

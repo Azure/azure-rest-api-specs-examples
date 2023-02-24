@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for VirtualMachines Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void getVirtualMachine(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.virtualMachines().getWithResponse("group1", "cloud1", "cluster1", "vm-209", Context.NONE);
+        manager
+            .virtualMachines()
+            .getWithResponse("group1", "cloud1", "cluster1", "vm-209", com.azure.core.util.Context.NONE);
     }
 }

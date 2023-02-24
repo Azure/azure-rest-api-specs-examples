@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Datastores List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void datastoresList(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.datastores().list("group1", "cloud1", "cluster1", Context.NONE);
+        manager.datastores().list("group1", "cloud1", "cluster1", com.azure.core.util.Context.NONE);
     }
 }

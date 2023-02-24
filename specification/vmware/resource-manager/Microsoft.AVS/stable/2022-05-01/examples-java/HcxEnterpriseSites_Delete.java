@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for HcxEnterpriseSites Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void hcxEnterpriseSitesDelete(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.hcxEnterpriseSites().deleteWithResponse("group1", "cloud1", "site1", Context.NONE);
+        manager.hcxEnterpriseSites().deleteWithResponse("group1", "cloud1", "site1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ScriptExecutions List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void scriptExecutionsList(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.scriptExecutions().list("group1", "{privateCloudName}", Context.NONE);
+        manager.scriptExecutions().list("group1", "{privateCloudName}", com.azure.core.util.Context.NONE);
     }
 }

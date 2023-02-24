@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.avs.models.Cluster;
 
 /** Samples for Clusters Update. */
@@ -12,7 +11,11 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void clustersUpdate(com.azure.resourcemanager.avs.AvsManager manager) {
-        Cluster resource = manager.clusters().getWithResponse("group1", "cloud1", "cluster1", Context.NONE).getValue();
+        Cluster resource =
+            manager
+                .clusters()
+                .getWithResponse("group1", "cloud1", "cluster1", com.azure.core.util.Context.NONE)
+                .getValue();
         resource.update().withClusterSize(4).apply();
     }
 }

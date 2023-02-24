@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Locations CheckTrialAvailability. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void locationsCheckTrialAvailability(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.locations().checkTrialAvailabilityWithResponse("eastus", null, Context.NONE);
+        manager.locations().checkTrialAvailabilityWithResponse("eastus", null, com.azure.core.util.Context.NONE);
     }
 }

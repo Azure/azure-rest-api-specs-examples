@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ScriptCmdlets List. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void scriptCmdletsList(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.scriptCmdlets().list("group1", "{privateCloudName}", "{scriptPackageName}", Context.NONE);
+        manager
+            .scriptCmdlets()
+            .list("group1", "{privateCloudName}", "{scriptPackageName}", com.azure.core.util.Context.NONE);
     }
 }

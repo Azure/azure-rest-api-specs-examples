@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PlacementPolicies Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void placementPoliciesGet(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.placementPolicies().getWithResponse("group1", "cloud1", "cluster1", "policy1", Context.NONE);
+        manager
+            .placementPolicies()
+            .getWithResponse("group1", "cloud1", "cluster1", "policy1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ScriptExecutions Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void scriptExecutionsDelete(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.scriptExecutions().delete("group1", "cloud1", "{scriptExecutionName}", Context.NONE);
+        manager
+            .scriptExecutions()
+            .delete("group1", "cloud1", "{scriptExecutionName}", com.azure.core.util.Context.NONE);
     }
 }

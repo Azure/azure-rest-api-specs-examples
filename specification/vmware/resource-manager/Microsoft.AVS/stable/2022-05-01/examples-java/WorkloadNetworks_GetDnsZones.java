@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkloadNetworks GetDnsZone. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void workloadNetworksGetDnsZone(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.workloadNetworks().getDnsZoneWithResponse("group1", "cloud1", "dnsZone1", Context.NONE);
+        manager
+            .workloadNetworks()
+            .getDnsZoneWithResponse("group1", "cloud1", "dnsZone1", com.azure.core.util.Context.NONE);
     }
 }

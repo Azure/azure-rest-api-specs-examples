@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Datastores Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void datastoresDelete(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.datastores().delete("group1", "cloud1", "cluster1", "datastore1", Context.NONE);
+        manager.datastores().delete("group1", "cloud1", "cluster1", "datastore1", com.azure.core.util.Context.NONE);
     }
 }

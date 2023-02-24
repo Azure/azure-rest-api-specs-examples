@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ScriptCmdlets Get. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         manager
             .scriptCmdlets()
             .getWithResponse(
-                "group1", "{privateCloudName}", "{scriptPackageName}", "New-ExternalSsoDomain", Context.NONE);
+                "group1",
+                "{privateCloudName}",
+                "{scriptPackageName}",
+                "New-ExternalSsoDomain",
+                com.azure.core.util.Context.NONE);
     }
 }

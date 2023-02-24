@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.avs.models.VirtualMachineRestrictMovement;
 import com.azure.resourcemanager.avs.models.VirtualMachineRestrictMovementState;
 
@@ -21,6 +20,6 @@ public final class Main {
                 "cluster1",
                 "vm-209",
                 new VirtualMachineRestrictMovement().withRestrictMovement(VirtualMachineRestrictMovementState.ENABLED),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

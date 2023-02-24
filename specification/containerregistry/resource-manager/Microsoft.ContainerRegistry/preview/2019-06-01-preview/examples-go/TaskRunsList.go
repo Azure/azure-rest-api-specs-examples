@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TaskRunsList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/270d3cd664cca3ddc8511f92d3851a715e2c61db/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TaskRunsList.json
 func ExampleTaskRunsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,17 +19,64 @@ func ExampleTaskRunsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("myResourceGroup",
-		"myRegistry",
-		nil)
+	pager := client.NewListPager("myResourceGroup", "myRegistry", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.TaskRunListResult = armcontainerregistry.TaskRunListResult{
+		// 	Value: []*armcontainerregistry.TaskRun{
+		// 		{
+		// 			Name: to.Ptr("mytestrun"),
+		// 			Type: to.Ptr("Microsoft.ContainerRegistry/registries/TaskRuns"),
+		// 			ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/taskRuns/myRun"),
+		// 			Properties: &armcontainerregistry.TaskRunProperties{
+		// 				ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
+		// 				RunRequest: &armcontainerregistry.EncodedTaskRunRequest{
+		// 					Type: to.Ptr("EncodedTaskRunRequest"),
+		// 					IsArchiveEnabled: to.Ptr(true),
+		// 					Credentials: &armcontainerregistry.Credentials{
+		// 					},
+		// 					EncodedTaskContent: to.Ptr("c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K"),
+		// 					EncodedValuesContent: to.Ptr("Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg=="),
+		// 					Platform: &armcontainerregistry.PlatformProperties{
+		// 						Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
+		// 						OS: to.Ptr(armcontainerregistry.OSLinux),
+		// 					},
+		// 					Values: []*armcontainerregistry.SetValue{
+		// 					},
+		// 				},
+		// 				RunResult: &armcontainerregistry.Run{
+		// 					Name: to.Ptr("yd4"),
+		// 					Type: to.Ptr("Microsoft.ContainerRegistry/registries/runs"),
+		// 					ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/runs/yd4"),
+		// 					Properties: &armcontainerregistry.RunProperties{
+		// 						AgentConfiguration: &armcontainerregistry.AgentProperties{
+		// 							CPU: to.Ptr[int32](2),
+		// 						},
+		// 						CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:29.2278794+00:00"); return t}()),
+		// 						FinishTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:37.0349516+00:00"); return t}()),
+		// 						IsArchiveEnabled: to.Ptr(true),
+		// 						LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:37+00:00"); return t}()),
+		// 						Platform: &armcontainerregistry.PlatformProperties{
+		// 							Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
+		// 							OS: to.Ptr(armcontainerregistry.OSLinux),
+		// 						},
+		// 						ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
+		// 						RunID: to.Ptr("yd4"),
+		// 						RunType: to.Ptr(armcontainerregistry.RunTypeQuickRun),
+		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:29.4589616+00:00"); return t}()),
+		// 						Status: to.Ptr(armcontainerregistry.RunStatusSucceeded),
+		// 					},
+		// 				},
+		// 			},
+		// 	}},
+		// }
 	}
 }

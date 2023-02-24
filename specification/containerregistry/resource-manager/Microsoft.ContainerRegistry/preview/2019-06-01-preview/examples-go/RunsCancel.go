@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RunsCancel.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/270d3cd664cca3ddc8511f92d3851a715e2c61db/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RunsCancel.json
 func ExampleRunsClient_BeginCancel() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,11 +19,7 @@ func ExampleRunsClient_BeginCancel() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCancel(ctx,
-		"myResourceGroup",
-		"myRegistry",
-		"0accec26-d6de-4757-8e74-d080f38eaaab",
-		nil)
+	poller, err := client.BeginCancel(ctx, "myResourceGroup", "myRegistry", "0accec26-d6de-4757-8e74-d080f38eaaab", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

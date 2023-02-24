@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Datasets_ListByFactory.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Datasets_ListByFactory.json
 func ExampleDatasetsClient_NewListByFactoryPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -21,13 +21,52 @@ func ExampleDatasetsClient_NewListByFactoryPager() {
 	}
 	pager := client.NewListByFactoryPager("exampleResourceGroup", "exampleFactoryName", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.DatasetListResponse = armdatafactory.DatasetListResponse{
+		// 	Value: []*armdatafactory.DatasetResource{
+		// 		{
+		// 			Name: to.Ptr("exampleDataset"),
+		// 			Type: to.Ptr("Microsoft.DataFactory/factories/datasets"),
+		// 			Etag: to.Ptr("0a0068d4-0000-0000-0000-5b245bd30000"),
+		// 			ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/datasets/exampleDataset"),
+		// 			Properties: &armdatafactory.AzureBlobDataset{
+		// 				Type: to.Ptr("AzureBlob"),
+		// 				Description: to.Ptr("Example description"),
+		// 				LinkedServiceName: &armdatafactory.LinkedServiceReference{
+		// 					Type: to.Ptr(armdatafactory.LinkedServiceReferenceTypeLinkedServiceReference),
+		// 					ReferenceName: to.Ptr("exampleLinkedService"),
+		// 				},
+		// 				Parameters: map[string]*armdatafactory.ParameterSpecification{
+		// 					"MyFileName": &armdatafactory.ParameterSpecification{
+		// 						Type: to.Ptr(armdatafactory.ParameterTypeString),
+		// 					},
+		// 					"MyFolderPath": &armdatafactory.ParameterSpecification{
+		// 						Type: to.Ptr(armdatafactory.ParameterTypeString),
+		// 					},
+		// 				},
+		// 				TypeProperties: &armdatafactory.AzureBlobDatasetTypeProperties{
+		// 					Format: &armdatafactory.TextFormat{
+		// 						Type: to.Ptr("TextFormat"),
+		// 					},
+		// 					FileName: map[string]any{
+		// 						"type": "Expression",
+		// 						"value": "@dataset().MyFileName",
+		// 					},
+		// 					FolderPath: map[string]any{
+		// 						"type": "Expression",
+		// 						"value": "@dataset().MyFolderPath",
+		// 					},
+		// 				},
+		// 			},
+		// 	}},
+		// }
 	}
 }

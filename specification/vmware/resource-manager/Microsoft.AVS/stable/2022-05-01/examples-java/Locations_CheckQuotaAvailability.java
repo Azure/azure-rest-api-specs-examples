@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Locations CheckQuotaAvailability. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void locationsCheckQuotaAvailability(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.locations().checkQuotaAvailabilityWithResponse("eastus", Context.NONE);
+        manager.locations().checkQuotaAvailabilityWithResponse("eastus", com.azure.core.util.Context.NONE);
     }
 }

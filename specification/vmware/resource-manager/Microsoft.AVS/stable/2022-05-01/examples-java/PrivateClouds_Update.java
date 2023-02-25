@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.avs.models.Encryption;
 import com.azure.resourcemanager.avs.models.EncryptionKeyVaultProperties;
 import com.azure.resourcemanager.avs.models.EncryptionState;
@@ -19,7 +18,10 @@ public final class Main {
      */
     public static void privateCloudsUpdate(com.azure.resourcemanager.avs.AvsManager manager) {
         PrivateCloud resource =
-            manager.privateClouds().getByResourceGroupWithResponse("group1", "cloud1", Context.NONE).getValue();
+            manager
+                .privateClouds()
+                .getByResourceGroupWithResponse("group1", "cloud1", com.azure.core.util.Context.NONE)
+                .getValue();
         resource
             .update()
             .withIdentity(new PrivateCloudIdentity().withType(ResourceIdentityType.NONE))
@@ -29,9 +31,9 @@ public final class Main {
                     .withStatus(EncryptionState.ENABLED)
                     .withKeyVaultProperties(
                         new EncryptionKeyVaultProperties()
-                            .withKeyName("keyname1")
-                            .withKeyVersion("ver1.0")
-                            .withKeyVaultUrl("https://keyvault1-kmip-kvault.vault.azure.net/")))
+                            .withKeyName("fakeTokenPlaceholder")
+                            .withKeyVersion("fakeTokenPlaceholder")
+                            .withKeyVaultUrl("fakeTokenPlaceholder")))
             .apply();
     }
 }

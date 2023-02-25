@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkloadNetworks ListGateways. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void workloadNetworksListGateways(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.workloadNetworks().listGateways("group1", "cloud1", Context.NONE);
+        manager.workloadNetworks().listGateways("group1", "cloud1", com.azure.core.util.Context.NONE);
     }
 }

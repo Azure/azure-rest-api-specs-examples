@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.avs.models.DnsServiceLogLevelEnum;
 import com.azure.resourcemanager.avs.models.WorkloadNetworkDnsService;
 import java.util.Arrays;
@@ -17,7 +16,7 @@ public final class Main {
         WorkloadNetworkDnsService resource =
             manager
                 .workloadNetworks()
-                .getDnsServiceWithResponse("group1", "cloud1", "dnsService1", Context.NONE)
+                .getDnsServiceWithResponse("group1", "cloud1", "dnsService1", com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ScriptPackages List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void scriptPackagesList(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.scriptPackages().list("group1", "{privateCloudName}", Context.NONE);
+        manager.scriptPackages().list("group1", "{privateCloudName}", com.azure.core.util.Context.NONE);
     }
 }

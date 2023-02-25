@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Authorizations Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void authorizationsDelete(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.authorizations().delete("group1", "cloud1", "authorization1", Context.NONE);
+        manager.authorizations().delete("group1", "cloud1", "authorization1", com.azure.core.util.Context.NONE);
     }
 }

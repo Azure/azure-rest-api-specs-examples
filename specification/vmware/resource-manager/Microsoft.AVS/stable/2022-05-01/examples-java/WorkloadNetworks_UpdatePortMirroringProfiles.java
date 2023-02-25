@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.avs.models.PortMirroringDirectionEnum;
 import com.azure.resourcemanager.avs.models.WorkloadNetworkPortMirroring;
 
@@ -16,7 +15,7 @@ public final class Main {
         WorkloadNetworkPortMirroring resource =
             manager
                 .workloadNetworks()
-                .getPortMirroringWithResponse("group1", "cloud1", "portMirroring1", Context.NONE)
+                .getPortMirroringWithResponse("group1", "cloud1", "portMirroring1", com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

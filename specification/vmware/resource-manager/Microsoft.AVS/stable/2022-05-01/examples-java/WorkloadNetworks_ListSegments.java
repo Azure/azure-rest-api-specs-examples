@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkloadNetworks ListSegments. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void workloadNetworksListSegments(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.workloadNetworks().listSegments("group1", "cloud1", Context.NONE);
+        manager.workloadNetworks().listSegments("group1", "cloud1", com.azure.core.util.Context.NONE);
     }
 }

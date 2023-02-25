@@ -16,6 +16,7 @@ public final class Main {
             .define("cluster1")
             .withExistingPrivateCloud("group1", "cloud1")
             .withSku(new Sku().withName("AV20"))
+            .withClusterSize(3)
             .create();
     }
 }

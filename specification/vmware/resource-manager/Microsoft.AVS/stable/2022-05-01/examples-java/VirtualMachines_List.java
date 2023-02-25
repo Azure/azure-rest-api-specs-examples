@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for VirtualMachines List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void listClusterVirtualMachines(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.virtualMachines().list("group1", "cloud1", "cluster1", Context.NONE);
+        manager.virtualMachines().list("group1", "cloud1", "cluster1", com.azure.core.util.Context.NONE);
     }
 }

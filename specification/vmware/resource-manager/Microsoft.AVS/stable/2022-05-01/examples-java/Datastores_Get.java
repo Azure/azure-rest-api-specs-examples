@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Datastores Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void datastoresGet(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.datastores().getWithResponse("group1", "cloud1", "cluster1", "datastore1", Context.NONE);
+        manager
+            .datastores()
+            .getWithResponse("group1", "cloud1", "cluster1", "datastore1", com.azure.core.util.Context.NONE);
     }
 }

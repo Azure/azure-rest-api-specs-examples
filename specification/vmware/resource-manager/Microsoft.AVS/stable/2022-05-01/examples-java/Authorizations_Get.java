@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Authorizations Get. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void authorizationsGet(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.authorizations().getWithResponse("group1", "cloud1", "authorization1", Context.NONE);
+        manager
+            .authorizations()
+            .getWithResponse("group1", "cloud1", "authorization1", com.azure.core.util.Context.NONE);
     }
 }

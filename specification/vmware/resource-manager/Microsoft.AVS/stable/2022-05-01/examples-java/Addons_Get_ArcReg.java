@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Addons Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to AvsManager.
      */
     public static void addonsGetArcReg(com.azure.resourcemanager.avs.AvsManager manager) {
-        manager.addons().getWithResponse("group1", "cloud1", "arc", Context.NONE);
+        manager.addons().getWithResponse("group1", "cloud1", "arc", com.azure.core.util.Context.NONE);
     }
 }

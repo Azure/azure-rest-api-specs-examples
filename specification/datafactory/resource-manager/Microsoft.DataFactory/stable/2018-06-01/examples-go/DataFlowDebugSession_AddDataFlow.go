@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_AddDataFlow.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlowDebugSession_AddDataFlow.json
 func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -45,12 +45,12 @@ func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 				Name: to.Ptr("dataset1"),
 				Properties: &armdatafactory.DelimitedTextDataset{
 					Type: to.Ptr("DelimitedText"),
-					Schema: []interface{}{
-						map[string]interface{}{
+					Schema: []any{
+						map[string]any{
 							"type": "String",
 						},
 					},
-					Annotations: []interface{}{},
+					Annotations: []any{},
 					LinkedServiceName: &armdatafactory.LinkedServiceReference{
 						Type:          to.Ptr(armdatafactory.LinkedServiceReferenceTypeLinkedServiceReference),
 						ReferenceName: to.Ptr("linkedService5"),
@@ -69,15 +69,15 @@ func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 				},
 			}},
 		DebugSettings: &armdatafactory.DataFlowDebugPackageDebugSettings{
-			DatasetParameters: map[string]interface{}{
-				"Movies": map[string]interface{}{
+			DatasetParameters: map[string]any{
+				"Movies": map[string]any{
 					"path": "abc",
 				},
-				"Output": map[string]interface{}{
+				"Output": map[string]any{
 					"time": "def",
 				},
 			},
-			Parameters: map[string]interface{}{
+			Parameters: map[string]any{
 				"sourcePath": "Toy",
 			},
 			SourceSettings: []*armdatafactory.DataFlowSourceSetting{
@@ -95,7 +95,7 @@ func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 				Name: to.Ptr("linkedService1"),
 				Properties: &armdatafactory.AzureBlobStorageLinkedService{
 					Type:        to.Ptr("AzureBlobStorage"),
-					Annotations: []interface{}{},
+					Annotations: []any{},
 					TypeProperties: &armdatafactory.AzureBlobStorageLinkedServiceTypeProperties{
 						ConnectionString:    "DefaultEndpointsProtocol=https;AccountName=<storageName>;EndpointSuffix=core.windows.net;",
 						EncryptedCredential: to.Ptr("<credential>"),
@@ -107,6 +107,10 @@ func ExampleDataFlowDebugSessionClient_AddDataFlow() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AddDataFlowToDebugSessionResponse = armdatafactory.AddDataFlowToDebugSessionResponse{
+	// 	JobVersion: to.Ptr("e5328ee7-c524-4207-8ba4-b709010db33d"),
+	// }
 }

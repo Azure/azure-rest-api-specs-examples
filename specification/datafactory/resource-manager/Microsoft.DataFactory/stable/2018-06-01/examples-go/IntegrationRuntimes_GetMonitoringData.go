@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_GetMonitoringData.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_GetMonitoringData.json
 func ExampleIntegrationRuntimesClient_GetMonitoringData() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -23,6 +23,20 @@ func ExampleIntegrationRuntimesClient_GetMonitoringData() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.IntegrationRuntimeMonitoringData = armdatafactory.IntegrationRuntimeMonitoringData{
+	// 	Name: to.Ptr("exampleIntegrationRuntime"),
+	// 	Nodes: []*armdatafactory.IntegrationRuntimeNodeMonitoringData{
+	// 		{
+	// 			AvailableMemoryInMB: to.Ptr[int32](16740),
+	// 			ConcurrentJobsLimit: to.Ptr[int32](28),
+	// 			ConcurrentJobsRunning: to.Ptr[int32](0),
+	// 			CPUUtilization: to.Ptr[int32](15),
+	// 			NodeName: to.Ptr("Node_1"),
+	// 			ReceivedBytes: to.Ptr[float32](6.731423377990723),
+	// 			SentBytes: to.Ptr[float32](2.647491693496704),
+	// 	}},
+	// }
 }

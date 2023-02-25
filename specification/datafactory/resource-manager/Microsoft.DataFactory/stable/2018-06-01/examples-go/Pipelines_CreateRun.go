@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Pipelines_CreateRun.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Pipelines_CreateRun.json
 func ExamplePipelinesClient_CreateRun() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -23,8 +23,8 @@ func ExamplePipelinesClient_CreateRun() {
 		IsRecovery:        nil,
 		StartActivityName: nil,
 		StartFromFailure:  nil,
-		Parameters: map[string]interface{}{
-			"OutputBlobNameList": []interface{}{
+		Parameters: map[string]any{
+			"OutputBlobNameList": []any{
 				"exampleoutput.csv",
 			},
 		},
@@ -32,6 +32,10 @@ func ExamplePipelinesClient_CreateRun() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CreateRunResponse = armdatafactory.CreateRunResponse{
+	// 	RunID: to.Ptr("2f7fdb90-5df1-4b8e-ac2f-064cfa58202b"),
+	// }
 }

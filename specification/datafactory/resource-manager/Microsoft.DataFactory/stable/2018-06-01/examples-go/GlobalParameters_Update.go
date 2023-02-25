@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/GlobalParameters_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/GlobalParameters_Update.json
 func ExampleGlobalParametersClient_CreateOrUpdate_globalParametersUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -31,6 +31,19 @@ func ExampleGlobalParametersClient_CreateOrUpdate_globalParametersUpdate() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.GlobalParameterResource = armdatafactory.GlobalParameterResource{
+	// 	Name: to.Ptr("default"),
+	// 	Type: to.Ptr("Microsoft.DataFactory/factories/globalParameters"),
+	// 	Etag: to.Ptr("0a008ad4-0000-0000-0000-5b245c6e0000"),
+	// 	ID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/globalParameters/default"),
+	// 	Properties: map[string]*armdatafactory.GlobalParameterSpecification{
+	// 		"waitTime": &armdatafactory.GlobalParameterSpecification{
+	// 			Type: to.Ptr(armdatafactory.GlobalParameterTypeInt),
+	// 			Value: float64(5),
+	// 		},
+	// 	},
+	// }
 }

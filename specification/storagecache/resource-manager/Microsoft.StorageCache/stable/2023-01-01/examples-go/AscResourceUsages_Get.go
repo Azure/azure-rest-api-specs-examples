@@ -1,0 +1,55 @@
+package armstoragecache_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagecache/armstoragecache/v3"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/402006d2796cdd3894d013d83e77b46a5c844005/specification/storagecache/resource-manager/Microsoft.StorageCache/stable/2023-01-01/examples/AscResourceUsages_Get.json
+func ExampleAscUsagesClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	client, err := armstoragecache.NewAscUsagesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := client.NewListPager("eastus", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ResourceUsagesListResult = armstoragecache.ResourceUsagesListResult{
+		// 	Value: []*armstoragecache.ResourceUsage{
+		// 		{
+		// 			Name: &armstoragecache.ResourceUsageName{
+		// 				LocalizedValue: to.Ptr("Cache"),
+		// 				Value: to.Ptr("Cache"),
+		// 			},
+		// 			CurrentValue: to.Ptr[int32](1),
+		// 			Limit: to.Ptr[int32](4),
+		// 			Unit: to.Ptr("Count"),
+		// 		},
+		// 		{
+		// 			Name: &armstoragecache.ResourceUsageName{
+		// 				LocalizedValue: to.Ptr("AmlFilesystem"),
+		// 				Value: to.Ptr("AmlFilesystem"),
+		// 			},
+		// 			CurrentValue: to.Ptr[int32](0),
+		// 			Limit: to.Ptr[int32](4),
+		// 			Unit: to.Ptr("Count"),
+		// 	}},
+		// }
+	}
+}

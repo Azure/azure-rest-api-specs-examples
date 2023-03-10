@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BotResource created on azure
-// for more information of creating BotResource, please refer to the document of BotResource
+// this example assumes you already have this BotServicePrivateEndpointConnectionResource created on azure
+// for more information of creating BotServicePrivateEndpointConnectionResource, please refer to the document of BotServicePrivateEndpointConnectionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res7687";
 string resourceName = "sto9699";
-ResourceIdentifier botResourceId = BotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-BotResource bot = client.GetBotResource(botResourceId);
-
-// get the collection of this BotServicePrivateEndpointConnectionResource
-BotServicePrivateEndpointConnectionCollection collection = bot.GetBotServicePrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+ResourceIdentifier botServicePrivateEndpointConnectionResourceId = BotServicePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
+BotServicePrivateEndpointConnectionResource botServicePrivateEndpointConnection = client.GetBotServicePrivateEndpointConnectionResource(botServicePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
 BotServicePrivateEndpointConnectionData data = new BotServicePrivateEndpointConnectionData()
 {
     ConnectionState = new BotServicePrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ BotServicePrivateEndpointConnectionData data = new BotServicePrivateEndpointConn
         Description = "Auto-Approved",
     },
 };
-ArmOperation<BotServicePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<BotServicePrivateEndpointConnectionResource> lro = await botServicePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 BotServicePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

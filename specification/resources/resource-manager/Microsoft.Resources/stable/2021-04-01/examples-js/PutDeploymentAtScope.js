@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/PutDeploymentAtScope.json
  */
 async function createDeploymentAtAGivenScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["RESOURCES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "providers/Microsoft.Management/managementGroups/my-management-group-id";
   const deploymentName = "my-deployment";
   const parameters = {
@@ -29,5 +30,3 @@ async function createDeploymentAtAGivenScope() {
   );
   console.log(result);
 }
-
-createDeploymentAtAGivenScope().catch(console.error);

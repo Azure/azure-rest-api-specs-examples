@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/GetNamedProviderAtTenant.json
  */
 async function getAResourceProviderAtTenantScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["RESOURCES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const expand = "resourceTypes/aliases";
   const resourceProviderNamespace = "Microsoft.Storage";
   const options = { expand };
@@ -17,5 +18,3 @@ async function getAResourceProviderAtTenantScope() {
   const result = await client.providers.getAtTenantScope(resourceProviderNamespace, options);
   console.log(result);
 }
-
-getAResourceProviderAtTenantScope().catch(console.error);

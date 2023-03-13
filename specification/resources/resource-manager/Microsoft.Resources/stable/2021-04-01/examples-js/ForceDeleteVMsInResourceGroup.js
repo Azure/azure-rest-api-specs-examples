@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/ForceDeleteVMsInResourceGroup.json
  */
 async function forceDeleteAllTheVirtualMachinesInAResourceGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId =
+    process.env["RESOURCES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["RESOURCES_RESOURCE_GROUP"] || "my-resource-group";
   const forceDeletionTypes = "Microsoft.Compute/virtualMachines";
   const options = { forceDeletionTypes };
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function forceDeleteAllTheVirtualMachinesInAResourceGroup() {
   const result = await client.resourceGroups.beginDeleteAndWait(resourceGroupName, options);
   console.log(result);
 }
-
-forceDeleteAllTheVirtualMachinesInAResourceGroup().catch(console.error);

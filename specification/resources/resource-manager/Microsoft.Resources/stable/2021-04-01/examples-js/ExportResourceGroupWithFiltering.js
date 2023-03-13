@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/ExportResourceGroupWithFiltering.json
  */
 async function exportAResourceGroupWithFiltering() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId =
+    process.env["RESOURCES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["RESOURCES_RESOURCE_GROUP"] || "my-resource-group";
   const parameters = {
     options: "SkipResourceNameParameterization",
     resources: [
@@ -24,5 +25,3 @@ async function exportAResourceGroupWithFiltering() {
   );
   console.log(result);
 }
-
-exportAResourceGroupWithFiltering().catch(console.error);

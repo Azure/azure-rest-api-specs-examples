@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/PutDeploymentWithOnErrorDeploymentSpecificDeployment.json
  */
 async function createADeploymentThatWillRedeployAnotherDeploymentOnFailure() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "my-resource-group";
+  const subscriptionId =
+    process.env["RESOURCES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["RESOURCES_RESOURCE_GROUP"] || "my-resource-group";
   const deploymentName = "my-deployment";
   const parameters = {
     properties: {
@@ -31,5 +32,3 @@ async function createADeploymentThatWillRedeployAnotherDeploymentOnFailure() {
   );
   console.log(result);
 }
-
-createADeploymentThatWillRedeployAnotherDeploymentOnFailure().catch(console.error);

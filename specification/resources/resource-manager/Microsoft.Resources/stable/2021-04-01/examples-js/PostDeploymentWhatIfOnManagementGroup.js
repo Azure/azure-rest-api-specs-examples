@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/PostDeploymentWhatIfOnManagementGroup.json
  */
 async function predictTemplateChangesAtManagementGroupScope() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["RESOURCES_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const groupId = "myManagementGruop";
   const deploymentName = "exampleDeploymentName";
   const parameters = {
@@ -24,5 +25,3 @@ async function predictTemplateChangesAtManagementGroupScope() {
   );
   console.log(result);
 }
-
-predictTemplateChangesAtManagementGroupScope().catch(console.error);

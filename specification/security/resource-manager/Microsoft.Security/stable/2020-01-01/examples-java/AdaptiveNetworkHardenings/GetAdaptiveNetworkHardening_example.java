@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AdaptiveNetworkHardenings Get. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .adaptiveNetworkHardenings()
-            .getWithResponse("rg1", "Microsoft.Compute", "virtualMachines", "vm1", "default", Context.NONE);
+            .getWithResponse(
+                "rg1", "Microsoft.Compute", "virtualMachines", "vm1", "default", com.azure.core.util.Context.NONE);
     }
 }

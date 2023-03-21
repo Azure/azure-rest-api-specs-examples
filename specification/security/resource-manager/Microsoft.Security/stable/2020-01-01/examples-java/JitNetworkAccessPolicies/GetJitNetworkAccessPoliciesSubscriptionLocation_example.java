@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for JitNetworkAccessPolicies ListByRegion. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getJITNetworkAccessPoliciesOnASubscriptionFromASecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.jitNetworkAccessPolicies().listByRegion("westeurope", Context.NONE);
+        manager.jitNetworkAccessPolicies().listByRegion("westeurope", com.azure.core.util.Context.NONE);
     }
 }

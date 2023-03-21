@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.AdaptiveApplicationControlGroup;
 import com.azure.resourcemanager.security.models.ConfigurationStatus;
 import com.azure.resourcemanager.security.models.EnforcementMode;
@@ -26,7 +25,10 @@ public final class Main {
     public static void updateAnApplicationControlMachineGroupByAddingANewApplication(
         com.azure.resourcemanager.security.SecurityManager manager) {
         AdaptiveApplicationControlGroup resource =
-            manager.adaptiveApplicationControls().getWithResponse("centralus", "ERELGROUP1", Context.NONE).getValue();
+            manager
+                .adaptiveApplicationControls()
+                .getWithResponse("centralus", "ERELGROUP1", com.azure.core.util.Context.NONE)
+                .getValue();
         resource
             .update()
             .withEnforcementMode(EnforcementMode.AUDIT)

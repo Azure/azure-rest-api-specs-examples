@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for JitNetworkAccessPolicies ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getJITNetworkAccessPoliciesOnAResourceGroup(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.jitNetworkAccessPolicies().listByResourceGroup("myRg1", Context.NONE);
+        manager.jitNetworkAccessPolicies().listByResourceGroup("myRg1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.TaskUpdateActionType;
 
 /** Samples for Tasks UpdateSubscriptionLevelTaskState. */
@@ -16,6 +15,9 @@ public final class Main {
         manager
             .tasks()
             .updateSubscriptionLevelTaskStateWithResponse(
-                "westeurope", "62609ee7-d0a5-8616-9fe4-1df5cca7758d", TaskUpdateActionType.DISMISS, Context.NONE);
+                "westeurope",
+                "62609ee7-d0a5-8616-9fe4-1df5cca7758d",
+                TaskUpdateActionType.DISMISS,
+                com.azure.core.util.Context.NONE);
     }
 }

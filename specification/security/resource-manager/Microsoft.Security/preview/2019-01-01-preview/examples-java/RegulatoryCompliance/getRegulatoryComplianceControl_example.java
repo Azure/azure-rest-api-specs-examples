@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RegulatoryComplianceControls Get. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSelectedRegulatoryComplianceControlDetailsAndState(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.regulatoryComplianceControls().getWithResponse("PCI-DSS-3.2", "1.1", Context.NONE);
+        manager.regulatoryComplianceControls().getWithResponse("PCI-DSS-3.2", "1.1", com.azure.core.util.Context.NONE);
     }
 }

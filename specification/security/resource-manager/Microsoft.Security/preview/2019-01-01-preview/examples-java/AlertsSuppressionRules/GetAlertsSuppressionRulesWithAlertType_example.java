@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AlertsSuppressionRules List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSuppressionAlertRuleForSubscriptionFilteredByAlertType(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alertsSuppressionRules().list("IpAnomaly", Context.NONE);
+        manager.alertsSuppressionRules().list("IpAnomaly", com.azure.core.util.Context.NONE);
     }
 }

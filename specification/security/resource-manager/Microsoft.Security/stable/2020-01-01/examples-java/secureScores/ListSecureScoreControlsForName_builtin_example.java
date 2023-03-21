@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecureScoreControls ListBySecureScore. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSecurityControlsAndTheirCurrentScoreForTheSpecifiedInitiative(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.secureScoreControls().listBySecureScore("ascScore", null, Context.NONE);
+        manager.secureScoreControls().listBySecureScore("ascScore", null, com.azure.core.util.Context.NONE);
     }
 }

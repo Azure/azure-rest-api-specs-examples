@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Applications List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listApplicationsSecurityBySubscriptionLevelScope(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.applications().list(Context.NONE);
+        manager.applications().list(com.azure.core.util.Context.NONE);
     }
 }

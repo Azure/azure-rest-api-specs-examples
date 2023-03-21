@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubAssessments Get. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
                 "subscriptions/212f9889-769e-45ae-ab43-6da33674bd26/resourceGroups/DEMORG/providers/Microsoft.Compute/virtualMachines/vm2",
                 "1195afff-c881-495e-9bc5-1486211ae03f",
                 "95f7da9c-a2a4-1322-0758-fcd24ef09b85",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

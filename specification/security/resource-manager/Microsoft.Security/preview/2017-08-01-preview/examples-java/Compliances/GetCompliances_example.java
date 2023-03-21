@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Compliances List. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSecurityComplianceDataOverTime(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.compliances().list("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", Context.NONE);
+        manager
+            .compliances()
+            .list("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", com.azure.core.util.Context.NONE);
     }
 }

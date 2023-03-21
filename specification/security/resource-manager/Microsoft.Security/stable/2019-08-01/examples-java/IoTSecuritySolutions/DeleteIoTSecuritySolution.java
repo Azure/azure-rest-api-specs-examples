@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IotSecuritySolution Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void deleteAnIoTSecuritySolution(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.iotSecuritySolutions().deleteByResourceGroupWithResponse("MyGroup", "default", Context.NONE);
+        manager
+            .iotSecuritySolutions()
+            .deleteByResourceGroupWithResponse("MyGroup", "default", com.azure.core.util.Context.NONE);
     }
 }

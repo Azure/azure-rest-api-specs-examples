@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AssessmentsMetadata DeleteInSubscription. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .assessmentsMetadatas()
-            .deleteInSubscriptionWithResponse("ca039e75-a276-4175-aebc-bcd41e4b14b7", Context.NONE);
+            .deleteInSubscriptionWithResponse("ca039e75-a276-4175-aebc-bcd41e4b14b7", com.azure.core.util.Context.NONE);
     }
 }

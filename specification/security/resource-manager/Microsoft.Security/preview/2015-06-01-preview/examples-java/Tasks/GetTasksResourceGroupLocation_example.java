@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSecurityRecommendationTasksInAResourceGroup(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.tasks().listByResourceGroup("myRg", "westeurope", null, Context.NONE);
+        manager.tasks().listByResourceGroup("myRg", "westeurope", null, com.azure.core.util.Context.NONE);
     }
 }

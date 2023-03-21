@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Alerts List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSecurityAlertsOnASubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alerts().list(Context.NONE);
+        manager.alerts().list(com.azure.core.util.Context.NONE);
     }
 }

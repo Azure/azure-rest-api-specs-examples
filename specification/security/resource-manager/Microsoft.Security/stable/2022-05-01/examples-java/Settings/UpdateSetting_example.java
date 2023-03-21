@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.DataExportSettings;
 import com.azure.resourcemanager.security.models.SettingName;
 
@@ -15,6 +14,7 @@ public final class Main {
     public static void updateASettingForSubscription(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .settings()
-            .updateWithResponse(SettingName.MCAS, new DataExportSettings().withEnabled(true), Context.NONE);
+            .updateWithResponse(
+                SettingName.WDATP, new DataExportSettings().withEnabled(true), com.azure.core.util.Context.NONE);
     }
 }

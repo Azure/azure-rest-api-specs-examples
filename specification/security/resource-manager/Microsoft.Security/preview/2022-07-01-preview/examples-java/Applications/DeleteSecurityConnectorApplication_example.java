@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecurityConnectorApplicationOperation Delete. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .securityConnectorApplicationOperations()
             .deleteWithResponse(
-                "gcpResourceGroup", "gcpconnector", "ad9a8e26-29d9-4829-bb30-e597a58cdbb8", Context.NONE);
+                "gcpResourceGroup",
+                "gcpconnector",
+                "ad9a8e26-29d9-4829-bb30-e597a58cdbb8",
+                com.azure.core.util.Context.NONE);
     }
 }

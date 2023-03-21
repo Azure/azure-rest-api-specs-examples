@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecuritySolutions List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSecuritySolutions(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securitySolutions().list(Context.NONE);
+        manager.securitySolutions().list(com.azure.core.util.Context.NONE);
     }
 }

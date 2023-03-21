@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks GetSubscriptionLevelTask. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .tasks()
-            .getSubscriptionLevelTaskWithResponse("westeurope", "62609ee7-d0a5-8616-9fe4-1df5cca7758d", Context.NONE);
+            .getSubscriptionLevelTaskWithResponse(
+                "westeurope", "62609ee7-d0a5-8616-9fe4-1df5cca7758d", com.azure.core.util.Context.NONE);
     }
 }

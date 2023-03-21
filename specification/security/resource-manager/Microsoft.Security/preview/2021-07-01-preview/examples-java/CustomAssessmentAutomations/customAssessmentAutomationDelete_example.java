@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CustomAssessmentAutomations Delete. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void deleteACustomAssessmentAutomation(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .customAssessmentAutomations()
-            .deleteByResourceGroupWithResponse("TestResourceGroup", "MyCustomAssessmentAutomation", Context.NONE);
+            .deleteByResourceGroupWithResponse(
+                "TestResourceGroup", "MyCustomAssessmentAutomation", com.azure.core.util.Context.NONE);
     }
 }

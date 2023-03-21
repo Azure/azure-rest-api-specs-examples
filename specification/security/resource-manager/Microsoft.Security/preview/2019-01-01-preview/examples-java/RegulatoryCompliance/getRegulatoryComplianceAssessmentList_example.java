@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RegulatoryComplianceAssessments List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getAllAssessmentsMappedToSelectedRegulatoryComplianceControl(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.regulatoryComplianceAssessments().list("PCI-DSS-3.2", "1.1", null, Context.NONE);
+        manager.regulatoryComplianceAssessments().list("PCI-DSS-3.2", "1.1", null, com.azure.core.util.Context.NONE);
     }
 }

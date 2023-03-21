@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Pricings Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getPricingsOnSubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.pricings().getWithResponse("VirtualMachines", Context.NONE);
+        manager.pricings().getWithResponse("VirtualMachines", com.azure.core.util.Context.NONE);
     }
 }

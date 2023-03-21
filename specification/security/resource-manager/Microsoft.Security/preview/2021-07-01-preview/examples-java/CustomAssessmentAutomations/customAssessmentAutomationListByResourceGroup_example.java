@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CustomAssessmentAutomations ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void listCustomAssessmentAutomationsInASubscriptionAndAResourceGroup(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.customAssessmentAutomations().listByResourceGroup("TestResourceGroup", Context.NONE);
+        manager
+            .customAssessmentAutomations()
+            .listByResourceGroup("TestResourceGroup", com.azure.core.util.Context.NONE);
     }
 }

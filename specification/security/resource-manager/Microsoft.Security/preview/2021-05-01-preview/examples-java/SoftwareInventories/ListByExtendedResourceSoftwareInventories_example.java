@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SoftwareInventories ListByExtendedResource. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .softwareInventories()
-            .listByExtendedResource("EITAN-TESTS", "Microsoft.Compute", "virtualMachines", "Eitan-Test1", Context.NONE);
+            .listByExtendedResource(
+                "EITAN-TESTS", "Microsoft.Compute", "virtualMachines", "Eitan-Test1", com.azure.core.util.Context.NONE);
     }
 }

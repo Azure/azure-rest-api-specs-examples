@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecuritySolutionsReferenceData ListByHomeRegion. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getSecuritySolutionsFromASecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securitySolutionsReferenceDatas().listByHomeRegionWithResponse("westcentralus", Context.NONE);
+        manager
+            .securitySolutionsReferenceDatas()
+            .listByHomeRegionWithResponse("westcentralus", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Alerts GetResourceGroupLevel. */
 public final class Main {
     /*
@@ -15,6 +13,9 @@ public final class Main {
         manager
             .alerts()
             .getResourceGroupLevelWithResponse(
-                "myRg1", "westeurope", "2518298467986649999_4d25bfef-2d77-4a08-adc0-3e35715cc92a", Context.NONE);
+                "myRg1",
+                "westeurope",
+                "2518298467986649999_4d25bfef-2d77-4a08-adc0-3e35715cc92a",
+                com.azure.core.util.Context.NONE);
     }
 }

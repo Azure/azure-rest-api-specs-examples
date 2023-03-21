@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecurityContacts Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void deletesASecurityContactData(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securityContacts().deleteWithResponse("default", Context.NONE);
+        manager.securityContacts().deleteWithResponse("default", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Automations ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listAllSecurityAutomationsOfASpecifiedResourceGroup(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.automations().listByResourceGroup("exampleResourceGroup", Context.NONE);
+        manager.automations().listByResourceGroup("exampleResourceGroup", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Connectors Get. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void detailsOfASpecificCloudAccountConnector(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.connectors().getWithResponse("aws_dev1", Context.NONE);
+        manager.connectors().getWithResponse("aws_dev1", com.azure.core.util.Context.NONE);
     }
 }

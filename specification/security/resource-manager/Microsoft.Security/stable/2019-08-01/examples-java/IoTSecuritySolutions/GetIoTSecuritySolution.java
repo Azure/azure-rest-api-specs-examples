@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IotSecuritySolution GetByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getAIoTSecuritySolution(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.iotSecuritySolutions().getByResourceGroupWithResponse("MyGroup", "default", Context.NONE);
+        manager
+            .iotSecuritySolutions()
+            .getByResourceGroupWithResponse("MyGroup", "default", com.azure.core.util.Context.NONE);
     }
 }

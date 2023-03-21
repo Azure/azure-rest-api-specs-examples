@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecurityConnectors Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void deleteASecurityConnector(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securityConnectors().deleteByResourceGroupWithResponse("myRg", "mySecurityConnectorName", Context.NONE);
+        manager
+            .securityConnectors()
+            .deleteByResourceGroupWithResponse("myRg", "mySecurityConnectorName", com.azure.core.util.Context.NONE);
     }
 }

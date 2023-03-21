@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AlertsSuppressionRules Delete. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void deleteSuppressionRuleDataForASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alertsSuppressionRules().deleteWithResponse("dismissIpAnomalyAlerts", Context.NONE);
+        manager.alertsSuppressionRules().deleteWithResponse("dismissIpAnomalyAlerts", com.azure.core.util.Context.NONE);
     }
 }

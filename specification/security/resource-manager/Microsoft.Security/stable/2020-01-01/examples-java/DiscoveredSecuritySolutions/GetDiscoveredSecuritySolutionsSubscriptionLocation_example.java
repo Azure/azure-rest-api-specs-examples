@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DiscoveredSecuritySolutions ListByHomeRegion. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getDiscoveredSecuritySolutionsFromASecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.discoveredSecuritySolutions().listByHomeRegion("centralus", Context.NONE);
+        manager.discoveredSecuritySolutions().listByHomeRegion("centralus", com.azure.core.util.Context.NONE);
     }
 }

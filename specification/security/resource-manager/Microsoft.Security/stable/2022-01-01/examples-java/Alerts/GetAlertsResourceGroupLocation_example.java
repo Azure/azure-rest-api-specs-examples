@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Alerts ListResourceGroupLevelByRegion. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSecurityAlertsOnAResourceGroupFromASecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alerts().listResourceGroupLevelByRegion("westeurope", "myRg1", Context.NONE);
+        manager.alerts().listResourceGroupLevelByRegion("westeurope", "myRg1", com.azure.core.util.Context.NONE);
     }
 }

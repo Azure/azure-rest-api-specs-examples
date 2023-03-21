@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Automations Delete. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void deleteASecurityAutomation(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.automations().deleteByResourceGroupWithResponse("myRg", "myAutomationName", Context.NONE);
+        manager
+            .automations()
+            .deleteByResourceGroupWithResponse("myRg", "myAutomationName", com.azure.core.util.Context.NONE);
     }
 }

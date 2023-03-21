@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AssessmentsMetadata GetInSubscription. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .assessmentsMetadatas()
-            .getInSubscriptionWithResponse("21300918-b2e3-0346-785f-c77ff57d243b", Context.NONE);
+            .getInSubscriptionWithResponse("21300918-b2e3-0346-785f-c77ff57d243b", com.azure.core.util.Context.NONE);
     }
 }

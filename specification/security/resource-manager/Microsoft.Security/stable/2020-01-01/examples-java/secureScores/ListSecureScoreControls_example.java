@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecureScoreControls List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void listAllSecureScoresControls(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.secureScoreControls().list(null, Context.NONE);
+        manager.secureScoreControls().list(null, com.azure.core.util.Context.NONE);
     }
 }

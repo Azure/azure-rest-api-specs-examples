@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for JitNetworkAccessPolicies List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getJITNetworkAccessPoliciesOnASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.jitNetworkAccessPolicies().list(Context.NONE);
+        manager.jitNetworkAccessPolicies().list(com.azure.core.util.Context.NONE);
     }
 }

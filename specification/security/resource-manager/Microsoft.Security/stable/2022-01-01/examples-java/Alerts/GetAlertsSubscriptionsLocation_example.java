@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Alerts ListSubscriptionLevelByRegion. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSecurityAlertsOnASubscriptionFromASecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alerts().listSubscriptionLevelByRegion("westeurope", Context.NONE);
+        manager.alerts().listSubscriptionLevelByRegion("westeurope", com.azure.core.util.Context.NONE);
     }
 }

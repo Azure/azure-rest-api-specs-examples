@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecurityConnectorApplicationOperation Get. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .securityConnectorApplicationOperations()
-            .getWithResponse("gcpResourceGroup", "gcpconnector", "ad9a8e26-29d9-4829-bb30-e597a58cdbb8", Context.NONE);
+            .getWithResponse(
+                "gcpResourceGroup",
+                "gcpconnector",
+                "ad9a8e26-29d9-4829-bb30-e597a58cdbb8",
+                com.azure.core.util.Context.NONE);
     }
 }

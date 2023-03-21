@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks ListByHomeRegion. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getSecurityRecommendationsTasksFromSecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.tasks().listByHomeRegion("westeurope", null, Context.NONE);
+        manager.tasks().listByHomeRegion("westeurope", null, com.azure.core.util.Context.NONE);
     }
 }

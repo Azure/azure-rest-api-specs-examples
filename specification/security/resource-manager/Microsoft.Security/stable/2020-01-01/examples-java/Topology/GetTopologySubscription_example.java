@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Topology List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getTopologyOnASubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.topologies().list(Context.NONE);
+        manager.topologies().list(com.azure.core.util.Context.NONE);
     }
 }

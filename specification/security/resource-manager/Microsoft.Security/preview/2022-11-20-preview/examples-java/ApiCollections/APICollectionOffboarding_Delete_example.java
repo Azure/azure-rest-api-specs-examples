@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ApiCollectionOffboarding Delete. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void deleteASecurityRecommendationTaskOnAResource(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.apiCollectionOffboardings().deleteWithResponse("rg1", "apimService1", "echo-api", Context.NONE);
+        manager
+            .apiCollectionOffboardings()
+            .deleteWithResponse("rg1", "apimService1", "echo-api", com.azure.core.util.Context.NONE);
     }
 }

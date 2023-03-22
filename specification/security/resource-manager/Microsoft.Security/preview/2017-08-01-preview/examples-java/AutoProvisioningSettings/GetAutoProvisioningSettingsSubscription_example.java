@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AutoProvisioningSettings List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getAutoProvisioningSettingsForSubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.autoProvisioningSettings().list(Context.NONE);
+        manager.autoProvisioningSettings().list(com.azure.core.util.Context.NONE);
     }
 }

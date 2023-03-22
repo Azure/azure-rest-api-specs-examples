@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IngestionSettings Delete. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void deleteAnIngestionSettingForTheSubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.ingestionSettings().deleteWithResponse("default", Context.NONE);
+        manager.ingestionSettings().deleteWithResponse("default", com.azure.core.util.Context.NONE);
     }
 }

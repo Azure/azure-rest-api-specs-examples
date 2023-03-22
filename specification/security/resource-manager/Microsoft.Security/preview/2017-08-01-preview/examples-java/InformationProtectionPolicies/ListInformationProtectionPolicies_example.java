@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for InformationProtectionPolicies List. */
 public final class Main {
     /*
@@ -13,6 +11,8 @@ public final class Main {
     public static void getInformationProtectionPolicies(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .informationProtectionPolicies()
-            .list("providers/Microsoft.Management/managementGroups/148059f7-faf3-49a6-ba35-85122112291e", Context.NONE);
+            .list(
+                "providers/Microsoft.Management/managementGroups/148059f7-faf3-49a6-ba35-85122112291e",
+                com.azure.core.util.Context.NONE);
     }
 }

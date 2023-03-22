@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IotSecuritySolutionsAnalyticsRecommendation List. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getTheListOfAggregatedSecurityAnalyticsRecommendationsOfYoursIoTSecuritySolution(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.iotSecuritySolutionsAnalyticsRecommendations().list("IoTEdgeResources", "default", null, Context.NONE);
+        manager
+            .iotSecuritySolutionsAnalyticsRecommendations()
+            .list("IoTEdgeResources", "default", null, com.azure.core.util.Context.NONE);
     }
 }

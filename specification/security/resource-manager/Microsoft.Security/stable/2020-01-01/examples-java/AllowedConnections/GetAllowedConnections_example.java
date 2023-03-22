@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.ConnectionType;
 
 /** Samples for AllowedConnections Get. */
@@ -14,6 +13,6 @@ public final class Main {
     public static void getAllowedConnections(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .allowedConnections()
-            .getWithResponse("myResourceGroup", "centralus", ConnectionType.INTERNAL, Context.NONE);
+            .getWithResponse("myResourceGroup", "centralus", ConnectionType.INTERNAL, com.azure.core.util.Context.NONE);
     }
 }

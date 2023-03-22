@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CustomEntityStoreAssignments GetByResourceGroup. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void getACustomEntityStoreAssignment(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .customEntityStoreAssignments()
-            .getByResourceGroupWithResponse("TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", Context.NONE);
+            .getByResourceGroupWithResponse(
+                "TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Locations List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSecurityDataLocations(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.locations().list(Context.NONE);
+        manager.locations().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AllowedConnections List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getAllowedConnectionsOnASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.allowedConnections().list(Context.NONE);
+        manager.allowedConnections().list(com.azure.core.util.Context.NONE);
     }
 }

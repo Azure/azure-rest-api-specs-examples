@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CustomAssessmentAutomations List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listCustomAssessmentAutomationsInASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.customAssessmentAutomations().list(Context.NONE);
+        manager.customAssessmentAutomations().list(com.azure.core.util.Context.NONE);
     }
 }

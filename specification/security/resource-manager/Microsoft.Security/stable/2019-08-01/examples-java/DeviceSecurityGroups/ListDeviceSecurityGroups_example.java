@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DeviceSecurityGroups List. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .deviceSecurityGroups()
             .list(
                 "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

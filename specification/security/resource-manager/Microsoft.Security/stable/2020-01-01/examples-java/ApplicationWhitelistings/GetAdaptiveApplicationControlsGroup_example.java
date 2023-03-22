@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AdaptiveApplicationControls Get. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getsAConfiguredApplicationControlVMServerGroup(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.adaptiveApplicationControls().getWithResponse("centralus", "ERELGROUP1", Context.NONE);
+        manager
+            .adaptiveApplicationControls()
+            .getWithResponse("centralus", "ERELGROUP1", com.azure.core.util.Context.NONE);
     }
 }

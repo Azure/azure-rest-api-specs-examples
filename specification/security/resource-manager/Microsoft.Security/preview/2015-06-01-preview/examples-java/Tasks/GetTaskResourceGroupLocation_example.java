@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks GetResourceGroupLevelTask. */
 public final class Main {
     /*
@@ -15,6 +13,6 @@ public final class Main {
         manager
             .tasks()
             .getResourceGroupLevelTaskWithResponse(
-                "myRg", "westeurope", "d55b4dc0-779c-c66c-33e5-d7bce24c4222", Context.NONE);
+                "myRg", "westeurope", "d55b4dc0-779c-c66c-33e5-d7bce24c4222", com.azure.core.util.Context.NONE);
     }
 }

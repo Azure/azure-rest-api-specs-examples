@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Topology Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getTopology(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.topologies().getWithResponse("myservers", "centralus", "vnets", Context.NONE);
+        manager.topologies().getWithResponse("myservers", "centralus", "vnets", com.azure.core.util.Context.NONE);
     }
 }

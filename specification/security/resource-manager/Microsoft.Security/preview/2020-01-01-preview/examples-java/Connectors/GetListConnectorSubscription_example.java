@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Connectors List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getAllCloudAccountsConnectorsOfASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.connectors().list(Context.NONE);
+        manager.connectors().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AdaptiveNetworkHardenings ListByExtendedResource. */
 public final class Main {
     /*
@@ -14,6 +12,7 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .adaptiveNetworkHardenings()
-            .listByExtendedResource("rg1", "Microsoft.Compute", "virtualMachines", "vm1", Context.NONE);
+            .listByExtendedResource(
+                "rg1", "Microsoft.Compute", "virtualMachines", "vm1", com.azure.core.util.Context.NONE);
     }
 }

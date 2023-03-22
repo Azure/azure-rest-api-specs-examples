@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.AdaptiveNetworkHardeningEnforceRequest;
 import com.azure.resourcemanager.security.models.Direction;
 import com.azure.resourcemanager.security.models.Rule;
@@ -46,6 +45,6 @@ public final class Main {
                             .asList(
                                 "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/nsg1",
                                 "/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/rg2/providers/Microsoft.Network/networkSecurityGroups/nsg2")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

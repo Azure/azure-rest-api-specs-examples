@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CustomEntityStoreAssignments List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listCustomEntityStoreAssignmentsInASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.customEntityStoreAssignments().list(Context.NONE);
+        manager.customEntityStoreAssignments().list(com.azure.core.util.Context.NONE);
     }
 }

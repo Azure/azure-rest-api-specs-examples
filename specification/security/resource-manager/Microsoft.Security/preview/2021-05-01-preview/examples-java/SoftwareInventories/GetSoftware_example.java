@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SoftwareInventories Get. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
                 "virtualMachines",
                 "Eitan-Test1",
                 "outlook_16.0.10371.20060",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

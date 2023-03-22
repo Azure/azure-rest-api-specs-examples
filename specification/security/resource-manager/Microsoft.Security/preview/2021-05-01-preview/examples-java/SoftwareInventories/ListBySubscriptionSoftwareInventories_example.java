@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SoftwareInventories List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsTheSoftwareInventoryOfAllVirtualMachinesInTheSubscriptions(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.softwareInventories().list(Context.NONE);
+        manager.softwareInventories().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for CustomEntityStoreAssignments Delete. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         manager
             .customEntityStoreAssignments()
             .deleteByResourceGroupWithResponse(
-                "TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", Context.NONE);
+                "TestResourceGroup", "33e7cc6e-a139-4723-a0e5-76993aee0771", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecureScores Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSingleSecureScore(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.secureScores().getWithResponse("ascScore", Context.NONE);
+        manager.secureScores().getWithResponse("ascScore", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.IoTSecuritySolutionModel;
 import com.azure.resourcemanager.security.models.RecommendationConfigStatus;
 import com.azure.resourcemanager.security.models.RecommendationConfigurationProperties;
@@ -21,7 +20,10 @@ public final class Main {
     public static void useThisMethodToUpdateExistingIoTSecuritySolution(
         com.azure.resourcemanager.security.SecurityManager manager) {
         IoTSecuritySolutionModel resource =
-            manager.iotSecuritySolutions().getByResourceGroupWithResponse("myRg", "default", Context.NONE).getValue();
+            manager
+                .iotSecuritySolutions()
+                .getByResourceGroupWithResponse("myRg", "default", com.azure.core.util.Context.NONE)
+                .getValue();
         resource
             .update()
             .withTags(mapOf("foo", "bar"))

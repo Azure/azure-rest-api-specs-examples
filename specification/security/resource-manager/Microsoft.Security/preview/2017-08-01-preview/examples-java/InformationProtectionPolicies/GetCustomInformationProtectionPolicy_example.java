@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.InformationProtectionPolicyName;
 
 /** Samples for InformationProtectionPolicies Get. */
@@ -18,6 +17,6 @@ public final class Main {
             .getWithResponse(
                 "providers/Microsoft.Management/managementGroups/148059f7-faf3-49a6-ba35-85122112291e",
                 InformationProtectionPolicyName.CUSTOM,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

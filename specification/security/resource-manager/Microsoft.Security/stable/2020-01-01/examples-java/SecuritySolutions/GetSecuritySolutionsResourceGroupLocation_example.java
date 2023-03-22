@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecuritySolutions Get. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getASecuritySolutionFromASecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securitySolutions().getWithResponse("myRg2", "centralus", "paloalto7", Context.NONE);
+        manager
+            .securitySolutions()
+            .getWithResponse("myRg2", "centralus", "paloalto7", com.azure.core.util.Context.NONE);
     }
 }

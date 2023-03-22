@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkspaceSettings Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getAWorkspaceSettingOnSubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.workspaceSettings().getWithResponse("default", Context.NONE);
+        manager.workspaceSettings().getWithResponse("default", com.azure.core.util.Context.NONE);
     }
 }

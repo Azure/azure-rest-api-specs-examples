@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for MdeOnboardings Get. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void theDefaultConfigurationOrDataNeededToOnboardTheMachineToMDE(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.mdeOnboardings().getWithResponse(Context.NONE);
+        manager.mdeOnboardings().getWithResponse(com.azure.core.util.Context.NONE);
     }
 }

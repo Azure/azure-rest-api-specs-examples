@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ApiCollection Get. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsAnAzureAPIManagementAPIIfItHasBeenOnboardedToDefenderForAPIs(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.apiCollections().getWithResponse("rg1", "apimService1", "echo-api", Context.NONE);
+        manager.apiCollections().getWithResponse("rg1", "apimService1", "echo-api", com.azure.core.util.Context.NONE);
     }
 }

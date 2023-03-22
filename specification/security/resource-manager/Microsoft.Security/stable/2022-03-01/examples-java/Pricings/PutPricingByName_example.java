@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.fluent.models.PricingInner;
 import com.azure.resourcemanager.security.models.PricingTier;
 
@@ -18,6 +17,6 @@ public final class Main {
             .updateWithResponse(
                 "VirtualMachines",
                 new PricingInner().withPricingTier(PricingTier.STANDARD).withSubPlan("P2"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

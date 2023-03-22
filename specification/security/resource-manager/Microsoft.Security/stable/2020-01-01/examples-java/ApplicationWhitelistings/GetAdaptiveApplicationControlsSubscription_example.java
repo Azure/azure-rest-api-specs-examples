@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AdaptiveApplicationControls List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getsAListOfApplicationControlGroupsOfMachinesForTheSubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.adaptiveApplicationControls().listWithResponse(true, false, Context.NONE);
+        manager.adaptiveApplicationControls().listWithResponse(true, false, com.azure.core.util.Context.NONE);
     }
 }

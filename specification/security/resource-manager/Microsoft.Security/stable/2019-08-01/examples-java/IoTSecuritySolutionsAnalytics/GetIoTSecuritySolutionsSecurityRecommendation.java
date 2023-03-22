@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IotSecuritySolutionsAnalyticsRecommendation Get. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .iotSecuritySolutionsAnalyticsRecommendations()
-            .getWithResponse("IoTEdgeResources", "default", "OpenPortsOnDevice", Context.NONE);
+            .getWithResponse("IoTEdgeResources", "default", "OpenPortsOnDevice", com.azure.core.util.Context.NONE);
     }
 }

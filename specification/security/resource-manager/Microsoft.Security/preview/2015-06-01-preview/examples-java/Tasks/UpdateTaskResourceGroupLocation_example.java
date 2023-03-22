@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.TaskUpdateActionType;
 
 /** Samples for Tasks UpdateResourceGroupLevelTaskState. */
@@ -20,6 +19,6 @@ public final class Main {
                 "westeurope",
                 "d55b4dc0-779c-c66c-33e5-d7bce24c4222",
                 TaskUpdateActionType.DISMISS,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

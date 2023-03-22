@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ComplianceResults Get. */
 public final class Main {
     /*
@@ -14,6 +12,8 @@ public final class Main {
         manager
             .complianceResults()
             .getWithResponse(
-                "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", "DesignateMoreThanOneOwner", Context.NONE);
+                "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+                "DesignateMoreThanOneOwner",
+                com.azure.core.util.Context.NONE);
     }
 }

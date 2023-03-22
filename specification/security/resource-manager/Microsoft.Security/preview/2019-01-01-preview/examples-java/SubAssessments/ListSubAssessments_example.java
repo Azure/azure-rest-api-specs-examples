@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubAssessments List. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .list(
                 "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23",
                 "82e20e14-edc5-4373-bfc4-f13121257c37",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

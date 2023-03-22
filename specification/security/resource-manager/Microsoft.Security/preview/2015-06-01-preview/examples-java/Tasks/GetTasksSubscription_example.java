@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tasks List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSecurityRecommendationsTasks(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.tasks().list(null, Context.NONE);
+        manager.tasks().list(null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IngestionSettings ListConnectionStrings. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listConnectionStringsForIngestingSecurityDataAndLogs(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.ingestionSettings().listConnectionStringsWithResponse("default", Context.NONE);
+        manager.ingestionSettings().listConnectionStringsWithResponse("default", com.azure.core.util.Context.NONE);
     }
 }

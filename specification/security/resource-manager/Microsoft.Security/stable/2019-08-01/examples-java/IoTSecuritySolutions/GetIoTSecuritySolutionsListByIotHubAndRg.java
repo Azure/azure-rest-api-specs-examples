@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IotSecuritySolution ListByResourceGroup. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
                 "MyRg",
                 "properties.iotHubs/any(i eq"
                     + " \"/subscriptions/075423e9-7d33-4166-8bdf-3920b04e3735/resourceGroups/myRg/providers/Microsoft.Devices/IotHubs/FirstIotHub\")",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

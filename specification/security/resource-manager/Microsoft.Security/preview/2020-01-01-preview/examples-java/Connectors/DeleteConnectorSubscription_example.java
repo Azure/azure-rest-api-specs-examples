@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Connectors Delete. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void deleteACloudAccountConnectorFromASubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.connectors().deleteWithResponse("aws_dev1", Context.NONE);
+        manager.connectors().deleteWithResponse("aws_dev1", com.azure.core.util.Context.NONE);
     }
 }

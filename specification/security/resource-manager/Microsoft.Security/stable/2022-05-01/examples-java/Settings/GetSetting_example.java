@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.security.models.SettingName;
 
 /** Samples for Settings Get. */
@@ -12,6 +11,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getASettingOnSubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.settings().getWithResponse(SettingName.MCAS, Context.NONE);
+        manager.settings().getWithResponse(SettingName.WDATP, com.azure.core.util.Context.NONE);
     }
 }

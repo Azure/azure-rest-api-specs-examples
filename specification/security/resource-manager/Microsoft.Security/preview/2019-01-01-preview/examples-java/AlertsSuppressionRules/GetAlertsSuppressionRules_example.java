@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AlertsSuppressionRules List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSuppressionRulesForSubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alertsSuppressionRules().list(null, Context.NONE);
+        manager.alertsSuppressionRules().list(null, com.azure.core.util.Context.NONE);
     }
 }

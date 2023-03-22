@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Settings List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSettingsOfSubscription(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.settings().list(Context.NONE);
+        manager.settings().list(com.azure.core.util.Context.NONE);
     }
 }

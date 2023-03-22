@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Alerts ListByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSecurityAlertsOnAResourceGroup(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.alerts().listByResourceGroup("myRg1", Context.NONE);
+        manager.alerts().listByResourceGroup("myRg1", com.azure.core.util.Context.NONE);
     }
 }

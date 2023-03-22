@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AssessmentsMetadata List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void listSecurityAssessmentMetadata(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.assessmentsMetadatas().list(Context.NONE);
+        manager.assessmentsMetadatas().list(com.azure.core.util.Context.NONE);
     }
 }

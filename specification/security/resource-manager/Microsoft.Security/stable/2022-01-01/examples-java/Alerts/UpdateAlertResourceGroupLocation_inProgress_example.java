@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Alerts UpdateResourceGroupLevelStateToInProgress. */
 public final class Main {
     /*
@@ -15,6 +13,9 @@ public final class Main {
         manager
             .alerts()
             .updateResourceGroupLevelStateToInProgressWithResponse(
-                "myRg2", "westeurope", "2518765996949954086_2325cf9e-42a2-4f72-ae7f-9b863cba2d22", Context.NONE);
+                "myRg2",
+                "westeurope",
+                "2518765996949954086_2325cf9e-42a2-4f72-ae7f-9b863cba2d22",
+                com.azure.core.util.Context.NONE);
     }
 }

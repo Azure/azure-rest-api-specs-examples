@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecurityConnectors GetByResourceGroup. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void retrieveASecurityConnector(com.azure.resourcemanager.security.SecurityManager manager) {
         manager
             .securityConnectors()
-            .getByResourceGroupWithResponse("exampleResourceGroup", "exampleSecurityConnectorName", Context.NONE);
+            .getByResourceGroupWithResponse(
+                "exampleResourceGroup", "exampleSecurityConnectorName", com.azure.core.util.Context.NONE);
     }
 }

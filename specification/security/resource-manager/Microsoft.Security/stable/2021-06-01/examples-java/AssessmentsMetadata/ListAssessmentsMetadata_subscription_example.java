@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AssessmentsMetadata ListBySubscription. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listSecurityAssessmentMetadataForSubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.assessmentsMetadatas().listBySubscription(Context.NONE);
+        manager.assessmentsMetadatas().listBySubscription(com.azure.core.util.Context.NONE);
     }
 }

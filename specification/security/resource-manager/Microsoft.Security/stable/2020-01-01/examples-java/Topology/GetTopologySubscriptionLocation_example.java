@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Topology ListByHomeRegion. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getTopologyOnASubscriptionFromSecurityDataLocation(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.topologies().listByHomeRegion("centralus", Context.NONE);
+        manager.topologies().listByHomeRegion("centralus", com.azure.core.util.Context.NONE);
     }
 }

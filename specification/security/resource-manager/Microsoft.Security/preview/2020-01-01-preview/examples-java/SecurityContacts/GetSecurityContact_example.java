@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SecurityContacts Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getASecurityContact(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.securityContacts().getWithResponse("default", Context.NONE);
+        manager.securityContacts().getWithResponse("default", com.azure.core.util.Context.NONE);
     }
 }

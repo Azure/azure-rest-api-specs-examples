@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Automations List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listAllSecurityAutomationsOfASpecifiedSubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.automations().list(Context.NONE);
+        manager.automations().list(com.azure.core.util.Context.NONE);
     }
 }

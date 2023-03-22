@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IotSecuritySolution List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void listIoTSecuritySolutionsBySubscription(
         com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.iotSecuritySolutions().list(null, Context.NONE);
+        manager.iotSecuritySolutions().list(null, com.azure.core.util.Context.NONE);
     }
 }

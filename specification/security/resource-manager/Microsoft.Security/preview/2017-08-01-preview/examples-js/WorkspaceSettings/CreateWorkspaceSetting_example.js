@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/WorkspaceSettings/CreateWorkspaceSetting_example.json
  */
 async function createAWorkspaceSettingDataForSubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const workspaceSettingName = "default";
   const workspaceSetting = {
     name: "default",
@@ -23,5 +24,3 @@ async function createAWorkspaceSettingDataForSubscription() {
   const result = await client.workspaceSettings.create(workspaceSettingName, workspaceSetting);
   console.log(result);
 }
-
-createAWorkspaceSettingDataForSubscription().catch(console.error);

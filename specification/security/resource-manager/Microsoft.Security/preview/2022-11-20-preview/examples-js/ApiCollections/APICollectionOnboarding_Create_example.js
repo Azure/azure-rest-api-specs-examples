@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2022-11-20-preview/examples/ApiCollections/APICollectionOnboarding_Create_example.json
  */
 async function onboardAnAzureApiManagementApiToDefenderForApIs() {
-  const subscriptionId = "3fa85f64-5717-4562-b3fc-2c963f66afa6";
-  const resourceGroupName = "rg1";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "3fa85f64-5717-4562-b3fc-2c963f66afa6";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "rg1";
   const serviceName = "apimService1";
   const apiCollectionId = "echo-api";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function onboardAnAzureApiManagementApiToDefenderForApIs() {
   );
   console.log(result);
 }
-
-onboardAnAzureApiManagementApiToDefenderForApIs().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2021-05-01-preview/examples/SoftwareInventories/ListByExtendedResourceSoftwareInventories_example.json
  */
 async function getsTheSoftwareInventoryOfTheVirtualMachine() {
-  const subscriptionId = "e5d1b86c-3051-44d5-8802-aa65d45a279b";
-  const resourceGroupName = "EITAN-TESTS";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "e5d1b86c-3051-44d5-8802-aa65d45a279b";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "EITAN-TESTS";
   const resourceNamespace = "Microsoft.Compute";
   const resourceType = "virtualMachines";
   const resourceName = "Eitan-Test1";
@@ -26,5 +27,3 @@ async function getsTheSoftwareInventoryOfTheVirtualMachine() {
   }
   console.log(resArray);
 }
-
-getsTheSoftwareInventoryOfTheVirtualMachine().catch(console.error);

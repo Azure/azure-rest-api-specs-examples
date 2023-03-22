@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutionsAnalytics/GetIoTSecuritySolutionsSecurityAggregatedAlertList.json
  */
 async function getTheAggregatedAlertListOfYoursIoTSecuritySolution() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-  const resourceGroupName = "MyGroup";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "MyGroup";
   const solutionName = "default";
   const credential = new DefaultAzureCredential();
   const client = new SecurityCenter(credential, subscriptionId);
@@ -22,5 +23,3 @@ async function getTheAggregatedAlertListOfYoursIoTSecuritySolution() {
   }
   console.log(resArray);
 }
-
-getTheAggregatedAlertListOfYoursIoTSecuritySolution().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2022-01-01/examples/Alerts/SimulateAlerts_example.json
  */
 async function simulateSecurityAlertsOnASubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const ascLocation = "centralus";
   const alertSimulatorRequestBody = {
     properties: {
@@ -31,5 +32,3 @@ async function simulateSecurityAlertsOnASubscription() {
   const result = await client.alerts.beginSimulateAndWait(ascLocation, alertSimulatorRequestBody);
   console.log(result);
 }
-
-simulateSecurityAlertsOnASubscription().catch(console.error);

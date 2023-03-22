@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/AdaptiveNetworkHardenings/GetAdaptiveNetworkHardening_example.json
  */
 async function getASingleAdaptiveNetworkHardeningResource() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-  const resourceGroupName = "rg1";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "rg1";
   const resourceNamespace = "Microsoft.Compute";
   const resourceType = "virtualMachines";
   const resourceName = "vm1";
@@ -25,5 +26,3 @@ async function getASingleAdaptiveNetworkHardeningResource() {
   );
   console.log(result);
 }
-
-getASingleAdaptiveNetworkHardeningResource().catch(console.error);

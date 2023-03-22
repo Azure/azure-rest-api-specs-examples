@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2021-07-01-preview/examples/CustomAssessmentAutomations/customAssessmentAutomationListByResourceGroup_example.json
  */
 async function listCustomAssessmentAutomationsInASubscriptionAndAResourceGroup() {
-  const subscriptionId = "e5d1b86c-3051-44d5-8802-aa65d45a279b";
-  const resourceGroupName = "TestResourceGroup";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "e5d1b86c-3051-44d5-8802-aa65d45a279b";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "TestResourceGroup";
   const credential = new DefaultAzureCredential();
   const client = new SecurityCenter(credential, subscriptionId);
   const resArray = new Array();
@@ -20,5 +21,3 @@ async function listCustomAssessmentAutomationsInASubscriptionAndAResourceGroup()
   }
   console.log(resArray);
 }
-
-listCustomAssessmentAutomationsInASubscriptionAndAResourceGroup().catch(console.error);

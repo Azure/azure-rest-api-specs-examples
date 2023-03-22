@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/JitNetworkAccessPolicies/CreateJitNetworkAccessPolicy_example.json
  */
 async function createJitNetworkAccessPolicy() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-  const resourceGroupName = "myRg1";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "myRg1";
   const ascLocation = "westeurope";
   const jitNetworkAccessPolicyName = "default";
   const body = {
@@ -69,5 +70,3 @@ async function createJitNetworkAccessPolicy() {
   );
   console.log(result);
 }
-
-createJitNetworkAccessPolicy().catch(console.error);

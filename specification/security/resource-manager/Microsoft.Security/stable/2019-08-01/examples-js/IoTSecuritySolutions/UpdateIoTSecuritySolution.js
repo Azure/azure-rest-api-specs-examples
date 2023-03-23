@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2019-08-01/examples/IoTSecuritySolutions/UpdateIoTSecuritySolution.json
  */
 async function useThisMethodToUpdateExistingIoTSecuritySolution() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "myRg";
   const solutionName = "default";
   const updateIotSecuritySolutionData = {
     recommendationsConfiguration: [
@@ -31,5 +32,3 @@ async function useThisMethodToUpdateExistingIoTSecuritySolution() {
   );
   console.log(result);
 }
-
-useThisMethodToUpdateExistingIoTSecuritySolution().catch(console.error);

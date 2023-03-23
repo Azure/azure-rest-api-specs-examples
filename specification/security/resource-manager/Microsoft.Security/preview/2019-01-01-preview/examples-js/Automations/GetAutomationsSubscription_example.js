@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/Automations/GetAutomationsSubscription_example.json
  */
 async function listAllSecurityAutomationsOfASpecifiedSubscription() {
-  const subscriptionId = "a5caac9c-5c04-49af-b3d0-e204f40345d5";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "a5caac9c-5c04-49af-b3d0-e204f40345d5";
   const credential = new DefaultAzureCredential();
   const client = new SecurityCenter(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listAllSecurityAutomationsOfASpecifiedSubscription() {
   }
   console.log(resArray);
 }
-
-listAllSecurityAutomationsOfASpecifiedSubscription().catch(console.error);

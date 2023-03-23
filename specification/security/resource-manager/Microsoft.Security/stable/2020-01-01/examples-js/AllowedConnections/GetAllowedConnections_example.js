@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/AllowedConnections/GetAllowedConnections_example.json
  */
 async function getAllowedConnections() {
-  const subscriptionId = "3eeab341-f466-499c-a8be-85427e154bad";
-  const resourceGroupName = "myResourceGroup";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "3eeab341-f466-499c-a8be-85427e154bad";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "myResourceGroup";
   const ascLocation = "centralus";
   const connectionType = "Internal";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getAllowedConnections() {
   );
   console.log(result);
 }
-
-getAllowedConnections().catch(console.error);

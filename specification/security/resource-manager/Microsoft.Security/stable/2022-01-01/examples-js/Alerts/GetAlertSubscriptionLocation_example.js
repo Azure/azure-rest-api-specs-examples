@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2022-01-01/examples/Alerts/GetAlertSubscriptionLocation_example.json
  */
 async function getSecurityAlertOnASubscriptionFromASecurityDataLocation() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const ascLocation = "westeurope";
   const alertName = "2518770965529163669_F144EE95-A3E5-42DA-A279-967D115809AA";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function getSecurityAlertOnASubscriptionFromASecurityDataLocation() {
   const result = await client.alerts.getSubscriptionLevel(ascLocation, alertName);
   console.log(result);
 }
-
-getSecurityAlertOnASubscriptionFromASecurityDataLocation().catch(console.error);

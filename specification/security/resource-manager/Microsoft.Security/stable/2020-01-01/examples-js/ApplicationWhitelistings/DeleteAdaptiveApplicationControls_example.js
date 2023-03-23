@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/ApplicationWhitelistings/DeleteAdaptiveApplicationControls_example.json
  */
 async function deleteAnApplicationControlMachineGroup() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const ascLocation = "centralus";
   const groupName = "GROUP1";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function deleteAnApplicationControlMachineGroup() {
   const result = await client.adaptiveApplicationControls.delete(ascLocation, groupName);
   console.log(result);
 }
-
-deleteAnApplicationControlMachineGroup().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2021-01-15-preview/examples/IngestionSettings/CreateIngestionSetting_example.json
  */
 async function createAnIngestionSettingForSubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const ingestionSettingName = "default";
   const ingestionSetting = {};
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function createAnIngestionSettingForSubscription() {
   const result = await client.ingestionSettings.create(ingestionSettingName, ingestionSetting);
   console.log(result);
 }
-
-createAnIngestionSettingForSubscription().catch(console.error);

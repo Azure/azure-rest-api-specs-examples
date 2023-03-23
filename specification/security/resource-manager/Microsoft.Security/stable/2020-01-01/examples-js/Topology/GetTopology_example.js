@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/Topology/GetTopology_example.json
  */
 async function getTopology() {
-  const subscriptionId = "3eeab341-f466-499c-a8be-85427e154bad";
-  const resourceGroupName = "myservers";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "3eeab341-f466-499c-a8be-85427e154bad";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "myservers";
   const ascLocation = "centralus";
   const topologyResourceName = "vnets";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getTopology() {
   const result = await client.topology.get(resourceGroupName, ascLocation, topologyResourceName);
   console.log(result);
 }
-
-getTopology().catch(console.error);

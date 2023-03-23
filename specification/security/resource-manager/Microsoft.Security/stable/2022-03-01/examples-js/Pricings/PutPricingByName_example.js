@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2022-03-01/examples/Pricings/PutPricingByName_example.json
  */
 async function updatePricingOnSubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const pricingName = "VirtualMachines";
   const pricing = { pricingTier: "Standard", subPlan: "P2" };
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function updatePricingOnSubscription() {
   const result = await client.pricings.update(pricingName, pricing);
   console.log(result);
 }
-
-updatePricingOnSubscription().catch(console.error);

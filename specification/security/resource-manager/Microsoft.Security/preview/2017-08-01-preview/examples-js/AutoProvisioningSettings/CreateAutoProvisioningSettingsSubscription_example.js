@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2017-08-01-preview/examples/AutoProvisioningSettings/CreateAutoProvisioningSettingsSubscription_example.json
  */
 async function createAutoProvisioningSettingsForSubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const settingName = "default";
   const setting = {
     name: "default",
@@ -21,5 +22,3 @@ async function createAutoProvisioningSettingsForSubscription() {
   const result = await client.autoProvisioningSettings.create(settingName, setting);
   console.log(result);
 }
-
-createAutoProvisioningSettingsForSubscription().catch(console.error);

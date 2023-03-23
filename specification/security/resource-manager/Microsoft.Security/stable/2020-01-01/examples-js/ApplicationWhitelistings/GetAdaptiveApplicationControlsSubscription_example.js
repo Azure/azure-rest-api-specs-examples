@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/ApplicationWhitelistings/GetAdaptiveApplicationControlsSubscription_example.json
  */
 async function getsAListOfApplicationControlGroupsOfMachinesForTheSubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const includePathRecommendations = true;
   const summary = false;
   const options = {
@@ -20,5 +21,3 @@ async function getsAListOfApplicationControlGroupsOfMachinesForTheSubscription()
   const result = await client.adaptiveApplicationControls.list(options);
   console.log(result);
 }
-
-getsAListOfApplicationControlGroupsOfMachinesForTheSubscription().catch(console.error);

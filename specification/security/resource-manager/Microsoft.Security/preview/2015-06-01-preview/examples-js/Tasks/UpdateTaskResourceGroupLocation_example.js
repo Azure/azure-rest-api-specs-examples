@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/examples/Tasks/UpdateTaskResourceGroupLocation_example.json
  */
 async function changeSecurityRecommendationTaskState() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-  const resourceGroupName = "myRg";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const resourceGroupName = process.env["SECURITY_RESOURCE_GROUP"] || "myRg";
   const ascLocation = "westeurope";
   const taskName = "d55b4dc0-779c-c66c-33e5-d7bce24c4222";
   const taskUpdateActionType = "Dismiss";
@@ -23,5 +24,3 @@ async function changeSecurityRecommendationTaskState() {
   );
   console.log(result);
 }
-
-changeSecurityRecommendationTaskState().catch(console.error);

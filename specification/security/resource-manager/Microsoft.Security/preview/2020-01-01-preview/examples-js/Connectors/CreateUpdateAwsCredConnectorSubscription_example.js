@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/examples/Connectors/CreateUpdateAwsCredConnectorSubscription_example.json
  */
 async function awsCredCreateACloudAccountConnectorForASubscription() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const connectorName = "aws_dev1";
   const connectorSetting = {
     authenticationDetails: {
@@ -32,5 +33,3 @@ async function awsCredCreateACloudAccountConnectorForASubscription() {
   const result = await client.connectors.createOrUpdate(connectorName, connectorSetting);
   console.log(result);
 }
-
-awsCredCreateACloudAccountConnectorForASubscription().catch(console.error);

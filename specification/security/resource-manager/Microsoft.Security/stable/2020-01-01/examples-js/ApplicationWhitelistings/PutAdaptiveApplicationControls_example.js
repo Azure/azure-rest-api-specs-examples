@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/ApplicationWhitelistings/PutAdaptiveApplicationControls_example.json
  */
 async function updateAnApplicationControlMachineGroupByAddingANewApplication() {
-  const subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+  const subscriptionId =
+    process.env["SECURITY_SUBSCRIPTION_ID"] || "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
   const ascLocation = "centralus";
   const groupName = "ERELGROUP1";
   const body = {
@@ -102,5 +103,3 @@ async function updateAnApplicationControlMachineGroupByAddingANewApplication() {
   const result = await client.adaptiveApplicationControls.put(ascLocation, groupName, body);
   console.log(result);
 }
-
-updateAnApplicationControlMachineGroupByAddingANewApplication().catch(console.error);

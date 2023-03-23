@@ -1,0 +1,35 @@
+import com.azure.resourcemanager.webpubsub.fluent.models.PrivateEndpointConnectionInner;
+import com.azure.resourcemanager.webpubsub.models.PrivateEndpoint;
+import com.azure.resourcemanager.webpubsub.models.PrivateLinkServiceConnectionState;
+import com.azure.resourcemanager.webpubsub.models.PrivateLinkServiceConnectionStatus;
+
+/** Samples for WebPubSubPrivateEndpointConnections Update. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2023-02-01/examples/WebPubSubPrivateEndpointConnections_Update.json
+     */
+    /**
+     * Sample code: WebPubSubPrivateEndpointConnections_Update.
+     *
+     * @param manager Entry point to WebPubSubManager.
+     */
+    public static void webPubSubPrivateEndpointConnectionsUpdate(
+        com.azure.resourcemanager.webpubsub.WebPubSubManager manager) {
+        manager
+            .webPubSubPrivateEndpointConnections()
+            .updateWithResponse(
+                "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e",
+                "myResourceGroup",
+                "myWebPubSubService",
+                new PrivateEndpointConnectionInner()
+                    .withPrivateEndpoint(
+                        new PrivateEndpoint()
+                            .withId(
+                                "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint"))
+                    .withPrivateLinkServiceConnectionState(
+                        new PrivateLinkServiceConnectionState()
+                            .withStatus(PrivateLinkServiceConnectionStatus.APPROVED)
+                            .withActionsRequired("None")),
+                com.azure.core.util.Context.NONE);
+    }
+}

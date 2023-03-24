@@ -8,26 +8,70 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/listLogProfile.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/969fd0c2634fbcc1975d7abe3749330a5145a97c/specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/listLogProfile.json
 func ExampleLogProfilesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewLogProfilesClient("df602c9c-7aa0-407d-a6fb-eb20c8bd1192", cred, nil)
+	clientFactory, err := armmonitor.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager(nil)
+	pager := clientFactory.NewLogProfilesClient().NewListPager(nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.LogProfileCollection = armmonitor.LogProfileCollection{
+		// 	Value: []*armmonitor.LogProfileResource{
+		// 		{
+		// 			Name: to.Ptr("default"),
+		// 			Type: to.Ptr(""),
+		// 			ID: to.Ptr("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/providers/microsoft.insights/logprofiles/default"),
+		// 			Location: to.Ptr(""),
+		// 			Properties: &armmonitor.LogProfileProperties{
+		// 				Categories: []*string{
+		// 					to.Ptr("Delete"),
+		// 					to.Ptr("Write"),
+		// 					to.Ptr("Action")},
+		// 					Locations: []*string{
+		// 						to.Ptr("global")},
+		// 						RetentionPolicy: &armmonitor.RetentionPolicy{
+		// 							Days: to.Ptr[int32](3),
+		// 							Enabled: to.Ptr(true),
+		// 						},
+		// 						ServiceBusRuleID: to.Ptr(""),
+		// 						StorageAccountID: to.Ptr("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8162"),
+		// 					},
+		// 				},
+		// 				{
+		// 					Name: to.Ptr("default2"),
+		// 					Type: to.Ptr(""),
+		// 					ID: to.Ptr("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/providers/microsoft.insights/logprofiles/default2"),
+		// 					Location: to.Ptr(""),
+		// 					Properties: &armmonitor.LogProfileProperties{
+		// 						Categories: []*string{
+		// 							to.Ptr("Delete"),
+		// 							to.Ptr("Write"),
+		// 							to.Ptr("Action")},
+		// 							Locations: []*string{
+		// 								to.Ptr("global")},
+		// 								RetentionPolicy: &armmonitor.RetentionPolicy{
+		// 									Days: to.Ptr[int32](15),
+		// 									Enabled: to.Ptr(true),
+		// 								},
+		// 								ServiceBusRuleID: to.Ptr(""),
+		// 								StorageAccountID: to.Ptr("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8165"),
+		// 							},
+		// 					}},
+		// 				}
 	}
 }

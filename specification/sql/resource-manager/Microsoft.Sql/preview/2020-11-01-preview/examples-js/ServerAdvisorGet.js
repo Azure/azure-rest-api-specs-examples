@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerAdvisorGet.json
  */
 async function getServerAdvisor() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "workloadinsight-demos";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "workloadinsight-demos";
   const serverName = "misosisvr";
   const advisorName = "CreateIndex";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getServerAdvisor() {
   const result = await client.serverAdvisors.get(resourceGroupName, serverName, advisorName);
   console.log(result);
 }
-
-getServerAdvisor().catch(console.error);

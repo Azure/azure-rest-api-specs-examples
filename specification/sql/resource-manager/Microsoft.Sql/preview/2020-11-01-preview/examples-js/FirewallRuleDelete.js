@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/FirewallRuleDelete.json
  */
 async function deleteAFirewallRule() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "firewallrulecrudtest-9886";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "firewallrulecrudtest-9886";
   const serverName = "firewallrulecrudtest-2368";
   const firewallRuleName = "firewallrulecrudtest-7011";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function deleteAFirewallRule() {
   const result = await client.firewallRules.delete(resourceGroupName, serverName, firewallRuleName);
   console.log(result);
 }
-
-deleteAFirewallRule().catch(console.error);

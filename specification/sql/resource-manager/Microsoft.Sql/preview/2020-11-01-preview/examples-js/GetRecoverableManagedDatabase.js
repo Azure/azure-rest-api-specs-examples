@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/GetRecoverableManagedDatabase.json
  */
 async function getsARecoverableDatabasesByManagedInstances() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "Test1";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "Test1";
   const managedInstanceName = "managedInstance";
   const recoverableDatabaseName = "testdb";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getsARecoverableDatabasesByManagedInstances() {
   );
   console.log(result);
 }
-
-getsARecoverableDatabasesByManagedInstances().catch(console.error);

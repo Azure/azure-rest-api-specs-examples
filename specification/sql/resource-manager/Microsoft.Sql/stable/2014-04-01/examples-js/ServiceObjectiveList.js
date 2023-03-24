@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/examples/ServiceObjectiveList.json
  */
 async function listServiceObjectives() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "group1";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "group1";
   const serverName = "sqlcrudtest";
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
@@ -19,5 +20,3 @@ async function listServiceObjectives() {
   }
   console.log(resArray);
 }
-
-listServiceObjectives().catch(console.error);

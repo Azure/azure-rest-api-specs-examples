@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/DatabaseAutomaticTuningGet.json
  */
 async function getADatabaseAutomaticTuningSettings() {
-  const subscriptionId = "c3aa9078-0000-0000-0000-e36f151182d7";
-  const resourceGroupName = "default-sql-onebox";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "c3aa9078-0000-0000-0000-e36f151182d7";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "default-sql-onebox";
   const serverName = "testsvr11";
   const databaseName = "db1";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getADatabaseAutomaticTuningSettings() {
   );
   console.log(result);
 }
-
-getADatabaseAutomaticTuningSettings().catch(console.error);

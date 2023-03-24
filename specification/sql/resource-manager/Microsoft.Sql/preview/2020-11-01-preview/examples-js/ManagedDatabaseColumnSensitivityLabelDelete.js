@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedDatabaseColumnSensitivityLabelDelete.json
  */
 async function deletesTheSensitivityLabelOfAGivenColumnInAManagedDatabase() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "myRG";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "myRG";
   const managedInstanceName = "myManagedInstanceName";
   const databaseName = "myDatabase";
   const schemaName = "dbo";
@@ -27,5 +28,3 @@ async function deletesTheSensitivityLabelOfAGivenColumnInAManagedDatabase() {
   );
   console.log(result);
 }
-
-deletesTheSensitivityLabelOfAGivenColumnInAManagedDatabase().catch(console.error);

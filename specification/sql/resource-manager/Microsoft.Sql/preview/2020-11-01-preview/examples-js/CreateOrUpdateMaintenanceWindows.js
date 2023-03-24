@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CreateOrUpdateMaintenanceWindows.json
  */
 async function setsMaintenanceWindowSettingsForASelectedDatabase() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "Default-SQL-SouthEastAsia";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "Default-SQL-SouthEastAsia";
   const serverName = "testsvr";
   const databaseName = "testdwdb";
   const maintenanceWindowName = "current";
@@ -27,5 +28,3 @@ async function setsMaintenanceWindowSettingsForASelectedDatabase() {
   );
   console.log(result);
 }
-
-setsMaintenanceWindowSettingsForASelectedDatabase().catch(console.error);

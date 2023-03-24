@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedInstanceTdeCertificate.json
  */
 async function uploadATdeCertificate() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000001";
-  const resourceGroupName = "testtdecert";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000001";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "testtdecert";
   const managedInstanceName = "testtdecert";
   const parameters = { privateBlob: "MIIXXXXXXXX" };
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function uploadATdeCertificate() {
   );
   console.log(result);
 }
-
-uploadATdeCertificate().catch(console.error);

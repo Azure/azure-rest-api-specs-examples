@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/examples/ListInstancePoolUsageExpanded.json
  */
 async function listInstancePoolUsagesExpandedWithChildren() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "group1";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "group1";
   const instancePoolName = "testIP";
   const expandChildren = true;
   const options = { expandChildren };
@@ -25,5 +26,3 @@ async function listInstancePoolUsagesExpandedWithChildren() {
   }
   console.log(resArray);
 }
-
-listInstancePoolUsagesExpandedWithChildren().catch(console.error);

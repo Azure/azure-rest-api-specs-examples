@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/DatabaseAutomaticTuningUpdateMin.json
  */
 async function updatesDatabaseAutomaticTuningSettingsWithMinimalProperties() {
-  const subscriptionId = "c3aa9078-0000-0000-0000-e36f151182d7";
-  const resourceGroupName = "default-sql-onebox";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "c3aa9078-0000-0000-0000-e36f151182d7";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "default-sql-onebox";
   const serverName = "testsvr11";
   const databaseName = "db1";
   const parameters = { desiredState: "Auto" };
@@ -23,5 +24,3 @@ async function updatesDatabaseAutomaticTuningSettingsWithMinimalProperties() {
   );
   console.log(result);
 }
-
-updatesDatabaseAutomaticTuningSettingsWithMinimalProperties().catch(console.error);

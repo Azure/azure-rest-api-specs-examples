@@ -8,12 +8,13 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CancelJobExecution.json
  */
 async function cancelAJobExecution() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "group1";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "group1";
   const serverName = "server1";
   const jobAgentName = "agent1";
   const jobName = "job1";
-  const jobExecutionId = "5555-6666-7777-8888-999999999999";
+  const jobExecutionId = "5A86BF65-43AC-F258-2524-9E92992F97CA";
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const result = await client.jobExecutions.cancel(
@@ -25,5 +26,3 @@ async function cancelAJobExecution() {
   );
   console.log(result);
 }
-
-cancelAJobExecution().catch(console.error);

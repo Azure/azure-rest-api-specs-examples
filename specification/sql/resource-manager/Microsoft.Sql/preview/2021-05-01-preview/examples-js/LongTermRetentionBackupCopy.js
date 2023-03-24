@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/LongTermRetentionBackupCopy.json
  */
 async function copyTheLongTermRetentionBackup() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
   const locationName = "japaneast";
   const longTermRetentionServerName = "testserver";
   const longTermRetentionDatabaseName = "testDatabase";
@@ -30,5 +31,3 @@ async function copyTheLongTermRetentionBackup() {
   );
   console.log(result);
 }
-
-copyTheLongTermRetentionBackup().catch(console.error);

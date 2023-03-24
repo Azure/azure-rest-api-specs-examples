@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ServerConnectionPoliciesUpdate.json
  */
 async function updatesAServerConnectionPolicy() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "testrg";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "testrg";
   const serverName = "testserver";
   const connectionPolicyName = "default";
   const parameters = { connectionType: "Redirect" };
@@ -23,5 +24,3 @@ async function updatesAServerConnectionPolicy() {
   );
   console.log(result);
 }
-
-updatesAServerConnectionPolicy().catch(console.error);

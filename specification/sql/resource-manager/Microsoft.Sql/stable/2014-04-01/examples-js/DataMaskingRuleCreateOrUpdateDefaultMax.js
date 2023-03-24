@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/examples/DataMaskingRuleCreateOrUpdateDefaultMax.json
  */
 async function createOrUpdateDataMaskingRuleForDefaultMax() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "sqlcrudtest-6852";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-6852";
   const serverName = "sqlcrudtest-2080";
   const databaseName = "sqlcrudtest-331";
   const dataMaskingRuleName = "rule1";
@@ -32,5 +33,3 @@ async function createOrUpdateDataMaskingRuleForDefaultMax() {
   );
   console.log(result);
 }
-
-createOrUpdateDataMaskingRuleForDefaultMax().catch(console.error);

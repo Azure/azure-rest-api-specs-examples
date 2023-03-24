@@ -8,12 +8,11 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/LocationCapabilityListByLocation.json
  */
 async function listSubscriptionCapabilitiesInTheGivenLocation() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
   const locationName = "eastus";
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const result = await client.capabilities.listByLocation(locationName);
   console.log(result);
 }
-
-listSubscriptionCapabilitiesInTheGivenLocation().catch(console.error);

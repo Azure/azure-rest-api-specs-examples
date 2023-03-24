@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/FirewallRuleReplace.json
  */
 async function replaceFirewallRules() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "firewallrulecrudtest-12";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "firewallrulecrudtest-12";
   const serverName = "firewallrulecrudtest-6285";
   const parameters = {
     values: [
@@ -25,5 +26,3 @@ async function replaceFirewallRules() {
   const result = await client.firewallRules.replace(resourceGroupName, serverName, parameters);
   console.log(result);
 }
-
-replaceFirewallRules().catch(console.error);

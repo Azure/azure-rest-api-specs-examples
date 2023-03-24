@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TagOperations GetAtScope. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
             .getTagOperations()
             .getAtScopeWithResponse(
                 "subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/myPRNameSpace/VM/myVm",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

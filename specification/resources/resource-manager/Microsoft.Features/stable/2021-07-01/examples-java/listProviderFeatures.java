@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Features List. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .featureClient()
             .getFeatures()
-            .list("Resource Provider Namespace", Context.NONE);
+            .list("Resource Provider Namespace", com.azure.core.util.Context.NONE);
     }
 }

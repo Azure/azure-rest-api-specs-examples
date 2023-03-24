@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicySetDefinitions ListBuiltIn. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicySetDefinitions()
-            .listBuiltIn(null, null, Context.NONE);
+            .listBuiltIn(null, null, com.azure.core.util.Context.NONE);
     }
 }

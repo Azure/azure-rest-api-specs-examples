@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Subscriptions ListLocations. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .subscriptionClient()
             .getSubscriptions()
-            .listLocations("291bba3f-e0a5-47bc-a099-3bdcb2a50a05", null, Context.NONE);
+            .listLocations("291bba3f-e0a5-47bc-a099-3bdcb2a50a05", null, com.azure.core.util.Context.NONE);
     }
 }

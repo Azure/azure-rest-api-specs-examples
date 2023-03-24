@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks DeleteByScope. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .managementLockClient()
             .getManagementLocks()
-            .deleteByScopeWithResponse("subscriptions/subscriptionId", "testlock", Context.NONE);
+            .deleteByScopeWithResponse("subscriptions/subscriptionId", "testlock", com.azure.core.util.Context.NONE);
     }
 }

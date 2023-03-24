@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks ListByResourceGroup. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .managementLockClient()
             .getManagementLocks()
-            .listByResourceGroup("resourcegroupname", null, Context.NONE);
+            .listByResourceGroup("resourcegroupname", null, com.azure.core.util.Context.NONE);
     }
 }

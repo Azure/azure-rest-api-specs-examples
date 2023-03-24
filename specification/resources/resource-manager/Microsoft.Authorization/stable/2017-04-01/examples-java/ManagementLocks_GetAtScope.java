@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks GetByScope. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .managementLockClient()
             .getManagementLocks()
-            .getByScopeWithResponse("subscriptions/subscriptionId", "testlock", Context.NONE);
+            .getByScopeWithResponse("subscriptions/subscriptionId", "testlock", com.azure.core.util.Context.NONE);
     }
 }

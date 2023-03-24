@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Subscriptions Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .subscriptionClient()
             .getSubscriptions()
-            .getWithResponse("291bba3f-e0a5-47bc-a099-3bdcb2a50a05", Context.NONE);
+            .getWithResponse("291bba3f-e0a5-47bc-a099-3bdcb2a50a05", com.azure.core.util.Context.NONE);
     }
 }

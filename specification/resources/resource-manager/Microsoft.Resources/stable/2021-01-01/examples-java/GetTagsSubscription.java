@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TagOperations GetAtScope. */
 public final class Main {
     /*
@@ -16,6 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getTagOperations()
-            .getAtScopeWithResponse("subscriptions/00000000-0000-0000-0000-000000000000", Context.NONE);
+            .getAtScopeWithResponse(
+                "subscriptions/00000000-0000-0000-0000-000000000000", com.azure.core.util.Context.NONE);
     }
 }

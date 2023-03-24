@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks DeleteAtSubscriptionLevel. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .managementLockClient()
             .getManagementLocks()
-            .deleteAtSubscriptionLevelWithResponse("testlock", Context.NONE);
+            .deleteAtSubscriptionLevelWithResponse("testlock", com.azure.core.util.Context.NONE);
     }
 }

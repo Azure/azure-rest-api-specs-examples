@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicySetDefinitions Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicySetDefinitions()
-            .getWithResponse("CostManagement", Context.NONE);
+            .getWithResponse("CostManagement", com.azure.core.util.Context.NONE);
     }
 }

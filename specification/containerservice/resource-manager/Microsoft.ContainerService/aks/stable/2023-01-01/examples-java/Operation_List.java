@@ -1,7 +1,7 @@
 /** Samples for Operations List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2023-01-01/examples/Operation_List.json
+     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-01-01/examples/Operation_List.json
      */
     /**
      * Sample code: List available operations for the container service resource provider.

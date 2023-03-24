@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataPolicyManifests List. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getDataPolicyManifests()
-            .list("namespace eq 'Microsoft.KeyVault'", Context.NONE);
+            .list("namespace eq 'Microsoft.KeyVault'", com.azure.core.util.Context.NONE);
     }
 }

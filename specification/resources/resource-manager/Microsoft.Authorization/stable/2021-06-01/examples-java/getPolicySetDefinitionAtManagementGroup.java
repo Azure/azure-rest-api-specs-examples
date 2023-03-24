@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicySetDefinitions GetAtManagementGroup. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicySetDefinitions()
-            .getAtManagementGroupWithResponse("CostManagement", "MyManagementGroup", Context.NONE);
+            .getAtManagementGroupWithResponse("CostManagement", "MyManagementGroup", com.azure.core.util.Context.NONE);
     }
 }

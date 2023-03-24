@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SubscriptionFeatureRegistrations ListBySubscription. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .featureClient()
             .getSubscriptionFeatureRegistrations()
-            .listBySubscription("subscriptionFeatureRegistrationGroupTestRG", Context.NONE);
+            .listBySubscription("subscriptionFeatureRegistrationGroupTestRG", com.azure.core.util.Context.NONE);
     }
 }

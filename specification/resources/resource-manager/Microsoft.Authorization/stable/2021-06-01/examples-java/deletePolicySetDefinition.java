@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicySetDefinitions Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicySetDefinitions()
-            .deleteWithResponse("CostManagement", Context.NONE);
+            .deleteWithResponse("CostManagement", com.azure.core.util.Context.NONE);
     }
 }

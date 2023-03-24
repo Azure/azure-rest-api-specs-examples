@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Features ListAll. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listSubscriptionFeatures(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.genericResources().manager().featureClient().getFeatures().listAll(Context.NONE);
+        azure.genericResources().manager().featureClient().getFeatures().listAll(com.azure.core.util.Context.NONE);
     }
 }

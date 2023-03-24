@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ProviderResourceTypes List. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getProviderResourceTypes()
-            .listWithResponse("Microsoft.TestRP", null, Context.NONE);
+            .listWithResponse("Microsoft.TestRP", null, com.azure.core.util.Context.NONE);
     }
 }

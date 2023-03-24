@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Features Unregister. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .featureClient()
             .getFeatures()
-            .unregisterWithResponse("Resource Provider Namespace", "feature", Context.NONE);
+            .unregisterWithResponse("Resource Provider Namespace", "feature", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks GetAtSubscriptionLevel. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .managementLockClient()
             .getManagementLocks()
-            .getAtSubscriptionLevelWithResponse("testlock", Context.NONE);
+            .getAtSubscriptionLevelWithResponse("testlock", com.azure.core.util.Context.NONE);
     }
 }

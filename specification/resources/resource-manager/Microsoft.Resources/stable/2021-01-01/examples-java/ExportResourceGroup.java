@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.resources.models.ExportTemplateRequest;
 import java.util.Arrays;
 
@@ -23,6 +22,6 @@ public final class Main {
                 new ExportTemplateRequest()
                     .withResources(Arrays.asList("*"))
                     .withOptions("IncludeParameterDefaultValue,IncludeComments"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

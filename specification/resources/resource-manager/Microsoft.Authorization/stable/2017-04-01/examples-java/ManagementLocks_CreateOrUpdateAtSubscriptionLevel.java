@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.resources.fluent.models.ManagementLockObjectInner;
 import com.azure.resourcemanager.resources.models.LockLevel;
 
@@ -19,6 +18,8 @@ public final class Main {
             .managementLockClient()
             .getManagementLocks()
             .createOrUpdateAtSubscriptionLevelWithResponse(
-                "testlock", new ManagementLockObjectInner().withLevel(LockLevel.READ_ONLY), Context.NONE);
+                "testlock",
+                new ManagementLockObjectInner().withLevel(LockLevel.READ_ONLY),
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks ListAtResourceLevel. */
 public final class Main {
     /*
@@ -23,6 +21,6 @@ public final class Main {
                 "storageAccounts",
                 "teststorageaccount",
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

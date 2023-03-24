@@ -1,0 +1,145 @@
+package armstoragecache_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagecache/armstoragecache/v3"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e2749bb2cbee0b4c447a9d6c1d7cbce3d415abd4/specification/storagecache/resource-manager/Microsoft.StorageCache/preview/2023-03-01-preview/examples/Skus_List.json
+func ExampleSKUsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armstoragecache.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewSKUsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ResourceSKUsResult = armstoragecache.ResourceSKUsResult{
+		// 	Value: []*armstoragecache.ResourceSKU{
+		// 		{
+		// 			Name: to.Ptr("Standard_2G"),
+		// 			Capabilities: []*armstoragecache.ResourceSKUCapabilities{
+		// 				{
+		// 					Name: to.Ptr("throughput GB/s"),
+		// 					Value: to.Ptr("2"),
+		// 				},
+		// 				{
+		// 					Name: to.Ptr("cache sizes(GB)"),
+		// 					Value: to.Ptr("3072,6144,12288"),
+		// 				},
+		// 				{
+		// 					Name: to.Ptr("scalingFactor"),
+		// 					Value: to.Ptr("1.0"),
+		// 			}},
+		// 			LocationInfo: []*armstoragecache.ResourceSKULocationInfo{
+		// 				{
+		// 					Location: to.Ptr("eastus"),
+		// 					Zones: []*string{
+		// 					},
+		// 			}},
+		// 			Locations: []*string{
+		// 				to.Ptr("eastus")},
+		// 				ResourceType: to.Ptr("caches"),
+		// 				Restrictions: []*armstoragecache.Restriction{
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("Standard_4G"),
+		// 				Capabilities: []*armstoragecache.ResourceSKUCapabilities{
+		// 					{
+		// 						Name: to.Ptr("throughput GB/s"),
+		// 						Value: to.Ptr("4"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("cache sizes(GB)"),
+		// 						Value: to.Ptr("6144,12288,24576"),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("scalingFactor"),
+		// 						Value: to.Ptr("1.0"),
+		// 				}},
+		// 				LocationInfo: []*armstoragecache.ResourceSKULocationInfo{
+		// 					{
+		// 						Location: to.Ptr("eastus"),
+		// 						Zones: []*string{
+		// 						},
+		// 				}},
+		// 				Locations: []*string{
+		// 					to.Ptr("eastus")},
+		// 					ResourceType: to.Ptr("caches"),
+		// 					Restrictions: []*armstoragecache.Restriction{
+		// 					},
+		// 				},
+		// 				{
+		// 					Name: to.Ptr("Standard_8G"),
+		// 					Capabilities: []*armstoragecache.ResourceSKUCapabilities{
+		// 						{
+		// 							Name: to.Ptr("throughput GB/s"),
+		// 							Value: to.Ptr("8"),
+		// 						},
+		// 						{
+		// 							Name: to.Ptr("cache sizes(GB)"),
+		// 							Value: to.Ptr("12288,24576,49152"),
+		// 						},
+		// 						{
+		// 							Name: to.Ptr("scalingFactor"),
+		// 							Value: to.Ptr("1.0"),
+		// 					}},
+		// 					LocationInfo: []*armstoragecache.ResourceSKULocationInfo{
+		// 						{
+		// 							Location: to.Ptr("eastus"),
+		// 							Zones: []*string{
+		// 							},
+		// 					}},
+		// 					Locations: []*string{
+		// 						to.Ptr("eastus")},
+		// 						ResourceType: to.Ptr("caches"),
+		// 						Restrictions: []*armstoragecache.Restriction{
+		// 						},
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("Standard_Scalable"),
+		// 						Capabilities: []*armstoragecache.ResourceSKUCapabilities{
+		// 							{
+		// 								Name: to.Ptr("throughput GB/s"),
+		// 								Value: to.Ptr("2"),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("cache sizes(GB)"),
+		// 								Value: to.Ptr("3072,6144,12288"),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("scalingFactor"),
+		// 								Value: to.Ptr("1.0,1.33,2.0,4.0"),
+		// 						}},
+		// 						LocationInfo: []*armstoragecache.ResourceSKULocationInfo{
+		// 							{
+		// 								Location: to.Ptr("eastus"),
+		// 								Zones: []*string{
+		// 								},
+		// 						}},
+		// 						Locations: []*string{
+		// 							to.Ptr("eastus")},
+		// 							ResourceType: to.Ptr("caches"),
+		// 							Restrictions: []*armstoragecache.Restriction{
+		// 							},
+		// 					}},
+		// 				}
+	}
+}

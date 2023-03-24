@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/270d3cd664cca3ddc8511f92d3851a715e2c61db/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_FileTask_WithCustomCredentials.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/969fd0c2634fbcc1975d7abe3749330a5145a97c/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_FileTask_WithCustomCredentials.json
 func ExampleRegistriesClient_BeginScheduleRun_registriesScheduleRunTaskWithCustomCredentials() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcontainerregistry.NewRegistriesClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
+	clientFactory, err := armcontainerregistry.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginScheduleRun(ctx, "myResourceGroup", "myRegistry", &armcontainerregistry.FileTaskRunRequest{
+	poller, err := clientFactory.NewRegistriesClient().BeginScheduleRun(ctx, "myResourceGroup", "myRegistry", &armcontainerregistry.FileTaskRunRequest{
 		Type: to.Ptr("FileTaskRunRequest"),
 		Credentials: &armcontainerregistry.Credentials{
 			CustomRegistries: map[string]*armcontainerregistry.CustomRegistryCredentials{

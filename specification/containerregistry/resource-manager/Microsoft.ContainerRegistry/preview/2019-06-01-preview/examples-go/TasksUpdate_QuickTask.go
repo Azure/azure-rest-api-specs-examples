@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/270d3cd664cca3ddc8511f92d3851a715e2c61db/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TasksUpdate_QuickTask.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/969fd0c2634fbcc1975d7abe3749330a5145a97c/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TasksUpdate_QuickTask.json
 func ExampleTasksClient_BeginUpdate_tasksUpdateQuickTask() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcontainerregistry.NewTasksClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
+	clientFactory, err := armcontainerregistry.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "myResourceGroup", "myRegistry", "quicktask", armcontainerregistry.TaskUpdateParameters{
+	poller, err := clientFactory.NewTasksClient().BeginUpdate(ctx, "myResourceGroup", "myRegistry", "quicktask", armcontainerregistry.TaskUpdateParameters{
 		Properties: &armcontainerregistry.TaskPropertiesUpdateParameters{
 			LogTemplate: to.Ptr("acr/tasks:{{.Run.OS}}"),
 			Status:      to.Ptr(armcontainerregistry.TaskStatusEnabled),

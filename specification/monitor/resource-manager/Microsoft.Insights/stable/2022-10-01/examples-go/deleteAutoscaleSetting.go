@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/deleteAutoscaleSetting.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/969fd0c2634fbcc1975d7abe3749330a5145a97c/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/deleteAutoscaleSetting.json
 func ExampleAutoscaleSettingsClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewAutoscaleSettingsClient("b67f7fec-69fc-4974-9099-a26bd6ffeda3", cred, nil)
+	clientFactory, err := armmonitor.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx, "TestingMetricsScaleSet", "MySetting", nil)
+	_, err = clientFactory.NewAutoscaleSettingsClient().Delete(ctx, "TestingMetricsScaleSet", "MySetting", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

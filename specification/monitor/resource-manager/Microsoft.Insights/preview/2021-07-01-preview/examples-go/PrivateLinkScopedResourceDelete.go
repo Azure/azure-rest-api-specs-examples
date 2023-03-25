@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/PrivateLinkScopedResourceDelete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/969fd0c2634fbcc1975d7abe3749330a5145a97c/specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/PrivateLinkScopedResourceDelete.json
 func ExamplePrivateLinkScopedResourcesClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmonitor.NewPrivateLinkScopedResourcesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armmonitor.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "MyResourceGroup", "MyPrivateLinkScope", "scoped-resource-name", nil)
+	poller, err := clientFactory.NewPrivateLinkScopedResourcesClient().BeginDelete(ctx, "MyResourceGroup", "MyPrivateLinkScope", "scoped-resource-name", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

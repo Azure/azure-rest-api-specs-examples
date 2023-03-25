@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Tenants List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAllTenants(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.genericResources().manager().subscriptionClient().getTenants().list(Context.NONE);
+        azure.genericResources().manager().subscriptionClient().getTenants().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 /** Samples for ManagedClusters Start. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2023-01-01/examples/ManagedClustersStart.json
+     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-01-01/examples/ManagedClustersStart.json
      */
     /**
      * Sample code: Start Managed Cluster.

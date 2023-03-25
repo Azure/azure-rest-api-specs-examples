@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicyDefinitions DeleteAtManagementGroup. */
 public final class Main {
     /*
@@ -17,6 +15,7 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicyDefinitions()
-            .deleteAtManagementGroupWithResponse("ResourceNaming", "MyManagementGroup", Context.NONE);
+            .deleteAtManagementGroupWithResponse(
+                "ResourceNaming", "MyManagementGroup", com.azure.core.util.Context.NONE);
     }
 }

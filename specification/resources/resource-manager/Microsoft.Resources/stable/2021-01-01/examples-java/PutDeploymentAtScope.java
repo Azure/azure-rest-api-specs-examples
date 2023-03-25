@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.DeploymentInner;
 import com.azure.resourcemanager.resources.models.DeploymentMode;
@@ -40,7 +39,7 @@ public final class Main {
                                     .deserialize("{}", Object.class, SerializerEncoding.JSON))
                             .withMode(DeploymentMode.INCREMENTAL))
                     .withTags(mapOf("tagKey1", "tag-value-1", "tagKey2", "tag-value-2")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataPolicyManifests GetByPolicyMode. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getDataPolicyManifests()
-            .getByPolicyModeWithResponse("Microsoft.KeyVault.Data", Context.NONE);
+            .getByPolicyModeWithResponse("Microsoft.KeyVault.Data", com.azure.core.util.Context.NONE);
     }
 }

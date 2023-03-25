@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementLocks List. */
 public final class Main {
     /*
@@ -11,6 +9,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listManagementLocksAtSubscriptionLevel(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.genericResources().manager().managementLockClient().getManagementLocks().list(null, Context.NONE);
+        azure
+            .genericResources()
+            .manager()
+            .managementLockClient()
+            .getManagementLocks()
+            .list(null, com.azure.core.util.Context.NONE);
     }
 }

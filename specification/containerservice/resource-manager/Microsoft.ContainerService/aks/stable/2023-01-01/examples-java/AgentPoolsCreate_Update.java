@@ -10,7 +10,7 @@ import java.util.Map;
 /** Samples for AgentPools CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2023-01-01/examples/AgentPoolsCreate_Update.json
+     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-01-01/examples/AgentPoolsCreate_Update.json
      */
     /**
      * Sample code: Create/Update Agent Pool.

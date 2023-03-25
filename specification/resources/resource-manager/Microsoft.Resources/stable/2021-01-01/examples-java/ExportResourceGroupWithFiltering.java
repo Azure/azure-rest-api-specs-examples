@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.resources.models.ExportTemplateRequest;
 import java.util.Arrays;
 
@@ -26,6 +25,6 @@ public final class Main {
                             .asList(
                                 "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/My.RP/myResourceType/myFirstResource"))
                     .withOptions("SkipResourceNameParameterization"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

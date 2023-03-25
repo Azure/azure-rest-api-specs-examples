@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicyDefinitions GetBuiltIn. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicyDefinitions()
-            .getBuiltInWithResponse("7433c107-6db4-4ad1-b57a-a76dce0154a1", Context.NONE);
+            .getBuiltInWithResponse("7433c107-6db4-4ad1-b57a-a76dce0154a1", com.azure.core.util.Context.NONE);
     }
 }

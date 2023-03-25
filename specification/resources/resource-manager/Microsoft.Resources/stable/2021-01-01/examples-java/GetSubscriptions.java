@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Subscriptions List. */
 public final class Main {
     /*
@@ -11,6 +9,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAllSubscriptions(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.genericResources().manager().subscriptionClient().getSubscriptions().list(Context.NONE);
+        azure
+            .genericResources()
+            .manager()
+            .subscriptionClient()
+            .getSubscriptions()
+            .list(com.azure.core.util.Context.NONE);
     }
 }

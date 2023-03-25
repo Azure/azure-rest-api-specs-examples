@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.DeploymentInner;
 import com.azure.resourcemanager.resources.models.DeploymentMode;
@@ -39,6 +38,6 @@ public final class Main {
                                     .createDefaultManagementSerializerAdapter()
                                     .deserialize("{}", Object.class, SerializerEncoding.JSON))
                             .withMode(DeploymentMode.INCREMENTAL)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

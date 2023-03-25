@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.DeploymentInner;
 import com.azure.resourcemanager.resources.models.DeploymentMode;
@@ -42,6 +41,6 @@ public final class Main {
                                 new OnErrorDeployment()
                                     .withType(OnErrorDeploymentType.SPECIFIC_DEPLOYMENT)
                                     .withDeploymentName("name-of-deployment-to-use"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

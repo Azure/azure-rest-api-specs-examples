@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Changes List. */
 public final class Main {
     /*
@@ -16,6 +14,13 @@ public final class Main {
             .manager()
             .resourceChangeClient()
             .getChanges()
-            .list("resourceGroup1", "resourceProvider1", "resourceType1", "resourceName1", null, null, Context.NONE);
+            .list(
+                "resourceGroup1",
+                "resourceProvider1",
+                "resourceType1",
+                "resourceName1",
+                null,
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

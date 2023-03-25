@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicySetDefinitions ListByManagementGroup. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicySetDefinitions()
-            .listByManagementGroup("MyManagementGroup", null, null, Context.NONE);
+            .listByManagementGroup("MyManagementGroup", null, null, com.azure.core.util.Context.NONE);
     }
 }

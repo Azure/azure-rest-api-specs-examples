@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Providers Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getProviders()
-            .getWithResponse("Microsoft.TestRP1", null, Context.NONE);
+            .getWithResponse("Microsoft.TestRP1", null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 /** Samples for AgentPools List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2023-01-01/examples/AgentPoolsList.json
+     * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-01-01/examples/AgentPoolsList.json
      */
     /**
      * Sample code: List Agent Pools by Managed Cluster.

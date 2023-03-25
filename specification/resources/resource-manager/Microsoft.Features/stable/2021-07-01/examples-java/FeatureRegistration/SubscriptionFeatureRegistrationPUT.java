@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.resources.fluent.models.SubscriptionFeatureRegistrationInner;
 import com.azure.resourcemanager.resources.models.SubscriptionFeatureRegistrationProperties;
 
@@ -23,6 +22,6 @@ public final class Main {
                 "testFeature",
                 new SubscriptionFeatureRegistrationInner()
                     .withProperties(new SubscriptionFeatureRegistrationProperties()),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PolicyDefinitions Delete. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .policyClient()
             .getPolicyDefinitions()
-            .deleteWithResponse("ResourceNaming", Context.NONE);
+            .deleteWithResponse("ResourceNaming", com.azure.core.util.Context.NONE);
     }
 }

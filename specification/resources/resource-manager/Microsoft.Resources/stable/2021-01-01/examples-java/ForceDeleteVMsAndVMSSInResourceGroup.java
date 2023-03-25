@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ResourceGroups Delete. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
             .delete(
                 "my-resource-group",
                 "Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

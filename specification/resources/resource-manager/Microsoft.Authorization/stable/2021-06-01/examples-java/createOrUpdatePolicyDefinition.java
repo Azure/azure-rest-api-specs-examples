@@ -1,5 +1,4 @@
 import com.azure.core.management.serializer.SerializerFactory;
-import com.azure.core.util.Context;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicyDefinitionInner;
 import com.azure.resourcemanager.resources.models.ParameterDefinitionsValue;
@@ -62,7 +61,7 @@ public final class Main {
                                         .withDisplayName("Suffix")
                                         .withDescription("Resource name suffix")
                                         .withAdditionalProperties(mapOf())))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

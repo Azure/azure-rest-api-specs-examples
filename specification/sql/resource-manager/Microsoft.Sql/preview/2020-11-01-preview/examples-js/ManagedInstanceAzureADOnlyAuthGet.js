@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedInstanceAzureADOnlyAuthGet.json
  */
 async function getsAAzureActiveDirectoryOnlyAuthenticationProperty() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "Default-SQL-SouthEastAsia";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "Default-SQL-SouthEastAsia";
   const managedInstanceName = "managedInstance";
   const authenticationName = "Default";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getsAAzureActiveDirectoryOnlyAuthenticationProperty() {
   );
   console.log(result);
 }
-
-getsAAzureActiveDirectoryOnlyAuthenticationProperty().catch(console.error);

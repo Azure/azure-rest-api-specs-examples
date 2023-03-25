@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerTrustGroupCreate.json
  */
 async function createServerTrustGroup() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "Default";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "Default";
   const locationName = "Japan East";
   const serverTrustGroupName = "server-trust-group-test";
   const parameters = {
@@ -35,5 +36,3 @@ async function createServerTrustGroup() {
   );
   console.log(result);
 }
-
-createServerTrustGroup().catch(console.error);

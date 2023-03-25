@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/examples/LedgerDigestUploadsEnable.json
  */
 async function enablesLedgerDigestUploadConfigurationForADatabase() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "ledgertestrg";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "ledgertestrg";
   const serverName = "ledgertestserver";
   const databaseName = "testdb";
   const ledgerDigestUploads = "current";
@@ -27,5 +28,3 @@ async function enablesLedgerDigestUploadConfigurationForADatabase() {
   );
   console.log(result);
 }
-
-enablesLedgerDigestUploadConfigurationForADatabase().catch(console.error);

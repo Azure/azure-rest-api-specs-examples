@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/LongTermRetentionPolicyCreateOrUpdate.json
  */
 async function createOrUpdateTheLongTermRetentionPolicyForTheDatabase() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "resourceGroup";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "resourceGroup";
   const serverName = "testserver";
   const databaseName = "testDatabase";
   const policyName = "default";
@@ -30,5 +31,3 @@ async function createOrUpdateTheLongTermRetentionPolicyForTheDatabase() {
   );
   console.log(result);
 }
-
-createOrUpdateTheLongTermRetentionPolicyForTheDatabase().catch(console.error);

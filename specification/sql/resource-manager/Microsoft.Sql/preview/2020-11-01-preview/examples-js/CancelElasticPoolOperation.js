@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CancelElasticPoolOperation.json
  */
 async function cancelTheElasticPoolManagementOperation() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "sqlcrudtest-7398";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-7398";
   const serverName = "sqlcrudtest-6661";
   const elasticPoolName = "testpool";
   const operationId = "f779414b-e748-4925-8cfe-c8598f7660ae";
@@ -23,5 +24,3 @@ async function cancelTheElasticPoolManagementOperation() {
   );
   console.log(result);
 }
-
-cancelTheElasticPoolManagementOperation().catch(console.error);

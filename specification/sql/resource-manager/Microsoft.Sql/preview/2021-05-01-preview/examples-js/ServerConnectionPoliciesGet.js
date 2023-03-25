@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ServerConnectionPoliciesGet.json
  */
 async function getsAServerConnectionPolicy() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "rgtest-12";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "rgtest-12";
   const serverName = "servertest-6285";
   const connectionPolicyName = "default";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function getsAServerConnectionPolicy() {
   );
   console.log(result);
 }
-
-getsAServerConnectionPolicy().catch(console.error);

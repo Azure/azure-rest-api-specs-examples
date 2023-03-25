@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/examples/UpdateShortTermRetentionPolicy.json
  */
 async function updateTheShortTermRetentionPolicyForTheDatabase() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "resourceGroup";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "resourceGroup";
   const serverName = "testsvr";
   const databaseName = "testdb";
   const policyName = "default";
@@ -28,5 +29,3 @@ async function updateTheShortTermRetentionPolicyForTheDatabase() {
   );
   console.log(result);
 }
-
-updateTheShortTermRetentionPolicyForTheDatabase().catch(console.error);

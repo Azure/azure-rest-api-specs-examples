@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/examples/ElasticPoolDatabaseActivityList.json
  */
 async function listElasticPoolDatabaseActivity() {
-  const subscriptionId = "9d4e2ad0-e20b-4464-9219-353bded52513";
-  const resourceGroupName = "sqlcrudtest-4673";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "9d4e2ad0-e20b-4464-9219-353bded52513";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-4673";
   const serverName = "sqlcrudtest-603";
   const elasticPoolName = "7537";
   const credential = new DefaultAzureCredential();
@@ -24,5 +25,3 @@ async function listElasticPoolDatabaseActivity() {
   }
   console.log(resArray);
 }
-
-listElasticPoolDatabaseActivity().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/examples/OutboundFirewallRuleCreate.json
  */
 async function approveOrRejectAOutboundFirewallRuleWithAGivenName() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "sqlcrudtest-7398";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-7398";
   const serverName = "sqlcrudtest-4645";
   const outboundRuleFqdn = "server.database.windows.net";
   const parameters = {};
@@ -23,5 +24,3 @@ async function approveOrRejectAOutboundFirewallRuleWithAGivenName() {
   );
   console.log(result);
 }
-
-approveOrRejectAOutboundFirewallRuleWithAGivenName().catch(console.error);

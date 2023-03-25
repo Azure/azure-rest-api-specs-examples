@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerKeyCreateOrUpdate.json
  */
 async function createsOrUpdatesAServerKey() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "sqlcrudtest-7398";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-7398";
   const serverName = "sqlcrudtest-4645";
   const keyName = "someVault_someKey_01234567890123456789012345678901";
   const parameters = {
@@ -26,5 +27,3 @@ async function createsOrUpdatesAServerKey() {
   );
   console.log(result);
 }
-
-createsOrUpdatesAServerKey().catch(console.error);

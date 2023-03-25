@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/DatabaseRecommendedActionList.json
  */
 async function listOfDatabaseRecommendedActions() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "workloadinsight-demos";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "workloadinsight-demos";
   const serverName = "misosisvr";
   const databaseName = "IndexAdvisor_test_3";
   const advisorName = "CreateIndex";
@@ -23,5 +24,3 @@ async function listOfDatabaseRecommendedActions() {
   );
   console.log(result);
 }
-
-listOfDatabaseRecommendedActions().catch(console.error);

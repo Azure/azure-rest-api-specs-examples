@@ -1,0 +1,26 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets a managed database's Advanced Threat Protection state.
+ *
+ * @summary Gets a managed database's Advanced Threat Protection state.
+ * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2022-02-01-preview/examples/ManagedDatabaseAdvancedThreatProtectionSettingsGet.json
+ */
+async function getAManagedDatabaseAdvancedThreatProtectionSettings() {
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "threatprotection-6852";
+  const managedInstanceName = "threatprotection-2080";
+  const databaseName = "testdb";
+  const advancedThreatProtectionName = "Default";
+  const credential = new DefaultAzureCredential();
+  const client = new SqlManagementClient(credential, subscriptionId);
+  const result = await client.managedDatabaseAdvancedThreatProtectionSettings.get(
+    resourceGroupName,
+    managedInstanceName,
+    databaseName,
+    advancedThreatProtectionName
+  );
+  console.log(result);
+}

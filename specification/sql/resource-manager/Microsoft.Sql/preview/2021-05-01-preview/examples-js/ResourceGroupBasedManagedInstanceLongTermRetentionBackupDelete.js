@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ResourceGroupBasedManagedInstanceLongTermRetentionBackupDelete.json
  */
 async function deleteTheLongTermRetentionBackup() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "testResourceGroup";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "testResourceGroup";
   const locationName = "japaneast";
   const managedInstanceName = "testInstance";
   const databaseName = "testDatabase";
@@ -26,5 +27,3 @@ async function deleteTheLongTermRetentionBackup() {
     );
   console.log(result);
 }
-
-deleteTheLongTermRetentionBackup().catch(console.error);

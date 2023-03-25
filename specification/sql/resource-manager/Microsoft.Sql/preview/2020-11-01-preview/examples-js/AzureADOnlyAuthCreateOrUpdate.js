@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/AzureADOnlyAuthCreateOrUpdate.json
  */
 async function createsOrUpdatesAzureActiveDirectoryOnlyAuthenticationObject() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "sqlcrudtest-4799";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-4799";
   const serverName = "sqlcrudtest-6440";
   const authenticationName = "Default";
   const parameters = {
@@ -25,5 +26,3 @@ async function createsOrUpdatesAzureActiveDirectoryOnlyAuthenticationObject() {
   );
   console.log(result);
 }
-
-createsOrUpdatesAzureActiveDirectoryOnlyAuthenticationObject().catch(console.error);

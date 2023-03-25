@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerDnsAliasCreateOrUpdate.json
  */
 async function createServerDnsAlias() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "Default";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "Default";
   const serverName = "dns-alias-server";
   const dnsAliasName = "dns-alias-name-1";
   const credential = new DefaultAzureCredential();
@@ -21,5 +22,3 @@ async function createServerDnsAlias() {
   );
   console.log(result);
 }
-
-createServerDnsAlias().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/examples/GeoBackupPoliciesList.json
  */
 async function listGeoBackupPolicies() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "sqlcrudtest-4799";
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "sqlcrudtest-4799";
   const serverName = "sqlcrudtest-5961";
   const databaseName = "testdw";
   const credential = new DefaultAzureCredential();
@@ -24,5 +25,3 @@ async function listGeoBackupPolicies() {
   }
   console.log(resArray);
 }
-
-listGeoBackupPolicies().catch(console.error);

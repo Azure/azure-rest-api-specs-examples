@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_ConfigureFactoryRepo.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5c9459305484e0456b4a922e3d31a61e2ddd3c99/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_ConfigureFactoryRepo.json
 func ExampleFactoriesClient_ConfigureFactoryRepo() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewFactoriesClient("12345678-1234-1234-1234-12345678abc", cred, nil)
+	clientFactory, err := armdatafactory.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ConfigureFactoryRepo(ctx, "East US", armdatafactory.FactoryRepoUpdate{
+	res, err := clientFactory.NewFactoriesClient().ConfigureFactoryRepo(ctx, "East US", armdatafactory.FactoryRepoUpdate{
 		FactoryResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
 		RepoConfiguration: &armdatafactory.FactoryVSTSConfiguration{
 			Type:                to.Ptr("FactoryVSTSConfiguration"),

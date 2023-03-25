@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4afa6837cfb404d8e5ffa8a604a5e09996d6f79e/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5c9459305484e0456b4a922e3d31a61e2ddd3c99/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimes_ListOutboundNetworkDependenciesEndpoints.json
 func ExampleIntegrationRuntimesClient_ListOutboundNetworkDependenciesEndpoints() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdatafactory.NewIntegrationRuntimesClient("7ad7c73b-38b8-4df3-84ee-52ff91092f61", cred, nil)
+	clientFactory, err := armdatafactory.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListOutboundNetworkDependenciesEndpoints(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", nil)
+	res, err := clientFactory.NewIntegrationRuntimesClient().ListOutboundNetworkDependenciesEndpoints(ctx, "exampleResourceGroup", "exampleFactoryName", "exampleIntegrationRuntime", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

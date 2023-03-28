@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeploymentscripts/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/examples/DeploymentScripts_Get.json
-func ExampleClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resources/resource-manager/Microsoft.Resources/stable/2020-10-01/examples/DeploymentScripts_Create_Using_Existing_StorageAccount.json
+func ExampleClient_BeginCreate_deploymentScriptsCreateUsingExistingStorageAccount() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,14 +20,42 @@ func ExampleClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewClient().Get(ctx, "script-rg", "MyDeploymentScript", nil)
+	poller, err := clientFactory.NewClient().BeginCreate(ctx, "script-rg", "MyDeploymentScript", &armdeploymentscripts.AzurePowerShellScript{
+		Identity: &armdeploymentscripts.ManagedServiceIdentity{
+			Type: to.Ptr(armdeploymentscripts.ManagedServiceIdentityTypeUserAssigned),
+			UserAssignedIdentities: map[string]*armdeploymentscripts.UserAssignedIdentity{
+				"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uai": {},
+			},
+		},
+		Kind:     to.Ptr(armdeploymentscripts.ScriptTypeAzurePowerShell),
+		Location: to.Ptr("westus"),
+		Properties: &armdeploymentscripts.AzurePowerShellScriptProperties{
+			CleanupPreference: to.Ptr(armdeploymentscripts.CleanupOptionsAlways),
+			StorageAccountSettings: &armdeploymentscripts.StorageAccountConfiguration{
+				StorageAccountKey:  to.Ptr("contosostoragekey"),
+				StorageAccountName: to.Ptr("contosostorage"),
+			},
+			Arguments:         to.Ptr("-Location 'westus' -Name \"*rg2\""),
+			RetentionInterval: to.Ptr("PT7D"),
+			ScriptContent:     to.Ptr("Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name"),
+			SupportingScriptUris: []*string{
+				to.Ptr("https://uri1.to.supporting.script"),
+				to.Ptr("https://uri2.to.supporting.script")},
+			Timeout:             to.Ptr("PT1H"),
+			AzPowerShellVersion: to.Ptr("1.7.0"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res = armdeploymentscripts.ClientGetResponse{
+	// res = armdeploymentscripts.ClientCreateResponse{
 	// 	                            DeploymentScriptClassification: &armdeploymentscripts.AzurePowerShellScript{
 	// 		Identity: &armdeploymentscripts.ManagedServiceIdentity{
 	// 			Type: to.Ptr(armdeploymentscripts.ManagedServiceIdentityTypeUserAssigned),
@@ -37,14 +66,6 @@ func ExampleClient_Get() {
 	// 		},
 	// 		Kind: to.Ptr(armdeploymentscripts.ScriptTypeAzurePowerShell),
 	// 		Location: to.Ptr("westus"),
-	// 		SystemData: &armdeploymentscripts.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
-	// 			CreatedBy: to.Ptr("string"),
-	// 			CreatedByType: to.Ptr(armdeploymentscripts.CreatedByTypeApplication),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
-	// 			LastModifiedBy: to.Ptr("string"),
-	// 			LastModifiedByType: to.Ptr(armdeploymentscripts.CreatedByTypeApplication),
-	// 		},
 	// 		Properties: &armdeploymentscripts.AzurePowerShellScriptProperties{
 	// 			CleanupPreference: to.Ptr(armdeploymentscripts.CleanupOptionsAlways),
 	// 			Outputs: map[string]any{
@@ -58,12 +79,18 @@ func ExampleClient_Get() {
 	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T15:19:45-08:00"); return t}()),
 	// 				StorageAccountID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage"),
 	// 			},
+	// 			StorageAccountSettings: &armdeploymentscripts.StorageAccountConfiguration{
+	// 				StorageAccountName: to.Ptr("contosostorage"),
+	// 			},
 	// 			Arguments: to.Ptr("-Location 'westus' -Name \"*rg2\""),
-	// 			RetentionInterval: to.Ptr("PT7D"),
+	// 			RetentionInterval: to.Ptr("P7D"),
 	// 			ScriptContent: to.Ptr("Param([string]$Location,[string]$Name) $deploymentScriptOutputs['test'] = 'value' Get-AzResourceGroup -Location $Location -Name $Name"),
-	// 			Timeout: to.Ptr("PT1H"),
-	// 			AzPowerShellVersion: to.Ptr("1.7.0"),
+	// 			SupportingScriptUris: []*string{
+	// 				to.Ptr("https://uri1.to.supporting.script"),
+	// 				to.Ptr("https://uri2.to.supporting.script")},
+	// 				Timeout: to.Ptr("PT1H"),
+	// 				AzPowerShellVersion: to.Ptr("1.7.0"),
+	// 			},
 	// 		},
-	// 	},
-	// 	                        }
+	// 		                        }
 }

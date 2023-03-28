@@ -8,22 +8,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/attestation/armattestation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/examples/Get_DefaultProviders.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/examples/Get_DefaultProviders.json
 func ExampleProvidersClient_ListDefault() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armattestation.NewProvidersClient("6c96b33e-f5b8-40a6-9011-5cb1c58b0915", cred, nil)
+	clientFactory, err := armattestation.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListDefault(ctx,
-		nil)
+	res, err := clientFactory.NewProvidersClient().ListDefault(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ProviderListResult = armattestation.ProviderListResult{
+	// 	Value: []*armattestation.Provider{
+	// 		{
+	// 			Name: to.Ptr("sharedcus"),
+	// 			Type: to.Ptr("Microsoft.Attestation/attestationProviders"),
+	// 			ID: to.Ptr("providers/Microsoft.Attestation/attestationProviders/sharedcus"),
+	// 			Location: to.Ptr("Central US"),
+	// 			Properties: &armattestation.StatusResult{
+	// 				AttestURI: to.Ptr("https://sharedcus.cus.attest.azure.net"),
+	// 				Status: to.Ptr(armattestation.AttestationServiceStatusReady),
+	// 				TrustModel: to.Ptr("AAD"),
+	// 			},
+	// 		},
+	// 		{
+	// 			Name: to.Ptr("shareduks"),
+	// 			Type: to.Ptr("Microsoft.Attestation/attestationProviders"),
+	// 			ID: to.Ptr("providers/Microsoft.Attestation/attestationProviders/shareduks"),
+	// 			Location: to.Ptr("UK South"),
+	// 			Properties: &armattestation.StatusResult{
+	// 				AttestURI: to.Ptr("https://shareduks.uks.attest.azure.net"),
+	// 				Status: to.Ptr(armattestation.AttestationServiceStatusReady),
+	// 				TrustModel: to.Ptr("AAD"),
+	// 			},
+	// 	}},
+	// }
 }

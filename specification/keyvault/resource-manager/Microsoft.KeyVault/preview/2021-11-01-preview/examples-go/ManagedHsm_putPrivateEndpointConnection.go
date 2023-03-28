@@ -9,33 +9,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/examples/ManagedHsm_putPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/2f2b633d940230cbbd5bcf1339a2e1c48674e4a2/specification/keyvault/resource-manager/Microsoft.KeyVault/preview/2021-11-01-preview/examples/ManagedHsm_putPrivateEndpointConnection.json
 func ExampleMHSMPrivateEndpointConnectionsClient_Put() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkeyvault.NewMHSMPrivateEndpointConnectionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armkeyvault.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Put(ctx,
-		"sample-group",
-		"sample-mhsm",
-		"sample-pec",
-		armkeyvault.MHSMPrivateEndpointConnection{
-			Properties: &armkeyvault.MHSMPrivateEndpointConnectionProperties{
-				PrivateLinkServiceConnectionState: &armkeyvault.MHSMPrivateLinkServiceConnectionState{
-					Description: to.Ptr("My name is Joe and I'm approving this."),
-					Status:      to.Ptr(armkeyvault.PrivateEndpointServiceConnectionStatusApproved),
-				},
+	res, err := clientFactory.NewMHSMPrivateEndpointConnectionsClient().Put(ctx, "sample-group", "sample-mhsm", "sample-pec", armkeyvault.MHSMPrivateEndpointConnection{
+		Properties: &armkeyvault.MHSMPrivateEndpointConnectionProperties{
+			PrivateLinkServiceConnectionState: &armkeyvault.MHSMPrivateLinkServiceConnectionState{
+				Description: to.Ptr("My name is Joe and I'm approving this."),
+				Status:      to.Ptr(armkeyvault.PrivateEndpointServiceConnectionStatusApproved),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.MHSMPrivateEndpointConnection = armkeyvault.MHSMPrivateEndpointConnection{
+	// 	Name: to.Ptr("sample-pec"),
+	// 	Type: to.Ptr("Microsoft.KeyVault/managedhsms/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/managedhsms/sample-mhsm/privateEndpointConnections/sample-pec"),
+	// 	Properties: &armkeyvault.MHSMPrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armkeyvault.MHSMPrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-1234-000000000000/resourceGroups/sample-group/providers/Microsoft.Network/privateEndpoints/sample-pe"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armkeyvault.MHSMPrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("My name is Joe and I'm approving this."),
+	// 			ActionsRequired: to.Ptr(armkeyvault.ActionsRequiredNone),
+	// 			Status: to.Ptr(armkeyvault.PrivateEndpointServiceConnectionStatusApproved),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armkeyvault.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 	},
+	// }
 }

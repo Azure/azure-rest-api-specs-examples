@@ -8,21 +8,32 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/Addons_Get_ArcReg.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c71a66dab813061f1d09982c2748a09317fe0860/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/Addons_Get_ArcReg.json
 func ExampleAddonsClient_Get_addonsGetArcReg() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armavs.NewAddonsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armavs.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "group1", "cloud1", "arc", nil)
+	res, err := clientFactory.NewAddonsClient().Get(ctx, "group1", "cloud1", "arc", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Addon = armavs.Addon{
+	// 	Name: to.Ptr("arc"),
+	// 	Type: to.Ptr("Microsoft.AVS/privateClouds/addons"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/addons/arc"),
+	// 	Properties: &armavs.AddonArcProperties{
+	// 		AddonType: to.Ptr(armavs.AddonTypeArc),
+	// 		ProvisioningState: to.Ptr(armavs.AddonProvisioningStateSucceeded),
+	// 		VCenter: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg_test/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vcenter"),
+	// 	},
+	// }
 }

@@ -8,26 +8,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/GlobalReachConnections_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c71a66dab813061f1d09982c2748a09317fe0860/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/GlobalReachConnections_List.json
 func ExampleGlobalReachConnectionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armavs.NewGlobalReachConnectionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armavs.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("group1", "cloud1", nil)
+	pager := clientFactory.NewGlobalReachConnectionsClient().NewListPager("group1", "cloud1", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.GlobalReachConnectionList = armavs.GlobalReachConnectionList{
+		// 	Value: []*armavs.GlobalReachConnection{
+		// 		{
+		// 			Name: to.Ptr("connection1"),
+		// 			Type: to.Ptr("Microsoft.AVS/privateClouds/globalReachConnections"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/globalReachConnections/connection1"),
+		// 			Properties: &armavs.GlobalReachConnectionProperties{
+		// 				AddressPrefix: to.Ptr("10.2.3.16/29"),
+		// 				AuthorizationKey: to.Ptr("01010101-0101-0101-0101-010101010101"),
+		// 				CircuitConnectionStatus: to.Ptr(armavs.GlobalReachConnectionStatusConnected),
+		// 				ExpressRouteID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2/providers/Microsoft.Network/expressroutecircuits/tnt13-41a90db2-9d5e-4bd5-a77a-5ce7b58213d6-eastus2-xconnect"),
+		// 				PeerExpressRouteCircuit: to.Ptr("/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.Network/expressRouteCircuits/mypeer"),
+		// 				ProvisioningState: to.Ptr(armavs.GlobalReachConnectionProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

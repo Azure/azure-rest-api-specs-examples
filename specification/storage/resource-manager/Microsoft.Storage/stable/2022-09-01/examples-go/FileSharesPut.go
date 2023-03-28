@@ -8,21 +8,27 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/examples/FileSharesPut.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b32e1896f30e6ea155449cb49719a6286e32b961/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/examples/FileSharesPut.json
 func ExampleFileSharesClient_Create_putShares() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewFileSharesClient("{subscription-id}", cred, nil)
+	clientFactory, err := armstorage.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Create(ctx, "res3376", "sto328", "share6185", armstorage.FileShare{}, &armstorage.FileSharesClientCreateOptions{Expand: nil})
+	res, err := clientFactory.NewFileSharesClient().Create(ctx, "res3376", "sto328", "share6185", armstorage.FileShare{}, &armstorage.FileSharesClientCreateOptions{Expand: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.FileShare = armstorage.FileShare{
+	// 	Name: to.Ptr("share6185"),
+	// 	Type: to.Ptr("Microsoft.Storage/storageAccounts/fileServices/shares"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res3376/providers/Microsoft.Storage/storageAccounts/sto328/fileServices/default/shares/share6185"),
+	// }
 }

@@ -9,25 +9,57 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armpolicy"
 )
 
-// x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/updatePolicyAssignmentWithIdentityById.json
-func ExamplePolicyAssignmentsClient_UpdateByID() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/updatePolicyAssignmentWithIdentityById.json
+func ExampleAssignmentsClient_UpdateByID() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armpolicy.NewPolicyAssignmentsClient("<subscription-id>", cred, nil)
-	res, err := client.UpdateByID(ctx,
-		"<policy-assignment-id>",
-		armpolicy.PolicyAssignmentUpdate{
-			Identity: &armpolicy.Identity{
-				Type: armpolicy.ResourceIdentityTypeSystemAssigned.ToPtr(),
-			},
-			Location: to.StringPtr("<location>"),
-		},
-		nil)
+	clientFactory, err := armpolicy.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to create client: %v", err)
 	}
-	log.Printf("PolicyAssignment.ID: %s\n", *res.ID)
+	res, err := clientFactory.NewAssignmentsClient().UpdateByID(ctx, "providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Authorization/policyAssignments/LowCostStorage", armpolicy.AssignmentUpdate{
+		Identity: &armpolicy.Identity{
+			Type: to.Ptr(armpolicy.ResourceIdentityTypeSystemAssigned),
+		},
+		Location: to.Ptr("eastus"),
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Assignment = armpolicy.Assignment{
+	// 	Name: to.Ptr("LowCostStorage"),
+	// 	Type: to.Ptr("Microsoft.Authorization/policyAssignments"),
+	// 	ID: to.Ptr("/providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Authorization/policyAssignments/LowCostStorage"),
+	// 	Identity: &armpolicy.Identity{
+	// 		Type: to.Ptr(armpolicy.ResourceIdentityTypeSystemAssigned),
+	// 		PrincipalID: to.Ptr("e6d23f8d-af97-4fbc-bda6-00604e4e3d0a"),
+	// 		TenantID: to.Ptr("4bee2b8a-1bee-47c2-90e9-404241551135"),
+	// 	},
+	// 	Location: to.Ptr("eastus"),
+	// 	Properties: &armpolicy.AssignmentProperties{
+	// 		Description: to.Ptr("Allow only storage accounts of SKU Standard_GRS or Standard_LRS to be created"),
+	// 		DisplayName: to.Ptr("Enforce storage account SKU"),
+	// 		EnforcementMode: to.Ptr(armpolicy.EnforcementModeDefault),
+	// 		Metadata: map[string]any{
+	// 			"assignedBy": "Cheapskate Boss",
+	// 		},
+	// 		NotScopes: []*string{
+	// 		},
+	// 		Parameters: map[string]*armpolicy.ParameterValuesValue{
+	// 			"listOfAllowedSKUs": &armpolicy.ParameterValuesValue{
+	// 				Value: []any{
+	// 					"Standard_GRS",
+	// 					"Standard_LRS",
+	// 				},
+	// 			},
+	// 		},
+	// 		PolicyDefinitionID: to.Ptr("/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1"),
+	// 	},
+	// }
 }

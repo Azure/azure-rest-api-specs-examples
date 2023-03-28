@@ -8,27 +8,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armfeatures"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/examples/listProviderFeatures.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/resources/resource-manager/Microsoft.Features/stable/2021-07-01/examples/listProviderFeatures.json
 func ExampleClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armfeatures.NewClient("subid", cred, nil)
+	clientFactory, err := armfeatures.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("Resource Provider Namespace",
-		nil)
+	pager := clientFactory.NewClient().NewListPager("Resource Provider Namespace", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.FeatureOperationsListResult = armfeatures.FeatureOperationsListResult{
+		// 	Value: []*armfeatures.FeatureResult{
+		// 		{
+		// 			Name: to.Ptr("Feature1"),
+		// 			Type: to.Ptr("type1"),
+		// 			ID: to.Ptr("feature_id1"),
+		// 			Properties: &armfeatures.FeatureProperties{
+		// 				State: to.Ptr("registered"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Feature2"),
+		// 			Type: to.Ptr("type2"),
+		// 			ID: to.Ptr("feature_id2"),
+		// 			Properties: &armfeatures.FeatureProperties{
+		// 				State: to.Ptr("unregistered"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -16,21 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformBuilderResource created on azure
-// for more information of creating AppPlatformBuilderResource, please refer to the document of AppPlatformBuilderResource
+// this example assumes you already have this AppPlatformBuildServiceResource created on azure
+// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
-string builderName = "mybuilder";
-ResourceIdentifier appPlatformBuilderResourceId = AppPlatformBuilderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, builderName);
-AppPlatformBuilderResource appPlatformBuilder = client.GetAppPlatformBuilderResource(appPlatformBuilderResourceId);
+ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
+AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
+
+// get the collection of this AppPlatformBuilderResource
+AppPlatformBuilderCollection collection = appPlatformBuildService.GetAppPlatformBuilders();
 
 // invoke the operation
-AppPlatformBuilderResource result = await appPlatformBuilder.GetAsync();
+string builderName = "mybuilder";
+bool result = await collection.ExistsAsync(builderName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppPlatformBuilderData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

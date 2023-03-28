@@ -8,28 +8,62 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/ConfigurationStoresListKeys.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/ConfigurationStoresListKeys.json
 func ExampleConfigurationStoresClient_NewListKeysPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappconfiguration.NewConfigurationStoresClient("c80fb759-c965-4c6a-9110-9b2b2d038882", cred, nil)
+	clientFactory, err := armappconfiguration.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListKeysPager("myResourceGroup",
-		"contoso",
-		&armappconfiguration.ConfigurationStoresClientListKeysOptions{SkipToken: nil})
+	pager := clientFactory.NewConfigurationStoresClient().NewListKeysPager("myResourceGroup", "contoso", &armappconfiguration.ConfigurationStoresClientListKeysOptions{SkipToken: nil})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.APIKeyListResult = armappconfiguration.APIKeyListResult{
+		// 	Value: []*armappconfiguration.APIKey{
+		// 		{
+		// 			Name: to.Ptr("Primary"),
+		// 			ConnectionString: to.Ptr("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+		// 			ID: to.Ptr("439AD01B4BE67DB1"),
+		// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:54+00:00"); return t}()),
+		// 			ReadOnly: to.Ptr(false),
+		// 			Value: to.Ptr("000000000000000000000000000000000000000000000000000000"),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Secondary"),
+		// 			ConnectionString: to.Ptr("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+		// 			ID: to.Ptr("CB45E100456857B9"),
+		// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:54+00:00"); return t}()),
+		// 			ReadOnly: to.Ptr(false),
+		// 			Value: to.Ptr("000000000000000000000000000000000000000000000000000000"),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Primary Read Only"),
+		// 			ConnectionString: to.Ptr("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+		// 			ID: to.Ptr("B3AC55B7E71431A9"),
+		// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:54+00:00"); return t}()),
+		// 			ReadOnly: to.Ptr(true),
+		// 			Value: to.Ptr("000000000000000000000000000000000000000000000000000000"),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Secondary Read Only"),
+		// 			ConnectionString: to.Ptr("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+		// 			ID: to.Ptr("E2AF6A9A89DCC177"),
+		// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:54+00:00"); return t}()),
+		// 			ReadOnly: to.Ptr(true),
+		// 			Value: to.Ptr("000000000000000000000000000000000000000000000000000000"),
+		// 	}},
+		// }
 	}
 }

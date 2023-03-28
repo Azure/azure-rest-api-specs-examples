@@ -8,26 +8,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/DeletedConfigurationStoresList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/DeletedConfigurationStoresList.json
 func ExampleConfigurationStoresClient_NewListDeletedPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappconfiguration.NewConfigurationStoresClient("c80fb759-c965-4c6a-9110-9b2b2d038882", cred, nil)
+	clientFactory, err := armappconfiguration.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListDeletedPager(nil)
+	pager := clientFactory.NewConfigurationStoresClient().NewListDeletedPager(nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.DeletedConfigurationStoreListResult = armappconfiguration.DeletedConfigurationStoreListResult{
+		// 	Value: []*armappconfiguration.DeletedConfigurationStore{
+		// 		{
+		// 			Name: to.Ptr("contoso"),
+		// 			Type: to.Ptr("Microsoft.AppConfiguration/deletedConfigurationStores"),
+		// 			ID: to.Ptr("/subscriptions/c80fb759-c965-4c6a-9110-9b2b2d038882/providers/Microsoft.AppConfiguration/locations/westus/deletedConfigurationStores/contoso"),
+		// 			Properties: &armappconfiguration.DeletedConfigurationStoreProperties{
+		// 				ConfigurationStoreID: to.Ptr("/subscriptions/c80fb759-c965-4c6a-9110-9b2b2d038882/resourceGroups/myResourceGroup/providers/Microsoft.AppConfiguration/configurationStores/contoso"),
+		// 				DeletionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-01T00:00:59Z"); return t}()),
+		// 				Location: to.Ptr("westus"),
+		// 				PurgeProtectionEnabled: to.Ptr(true),
+		// 				ScheduledPurgeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-01T00:00:59Z"); return t}()),
+		// 				Tags: map[string]*string{
+		// 				},
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -8,27 +8,94 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/ConfigurationStoresListByResourceGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/ConfigurationStoresListByResourceGroup.json
 func ExampleConfigurationStoresClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappconfiguration.NewConfigurationStoresClient("c80fb759-c965-4c6a-9110-9b2b2d038882", cred, nil)
+	clientFactory, err := armappconfiguration.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("myResourceGroup",
-		&armappconfiguration.ConfigurationStoresClientListByResourceGroupOptions{SkipToken: nil})
+	pager := clientFactory.NewConfigurationStoresClient().NewListByResourceGroupPager("myResourceGroup", &armappconfiguration.ConfigurationStoresClientListByResourceGroupOptions{SkipToken: nil})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ConfigurationStoreListResult = armappconfiguration.ConfigurationStoreListResult{
+		// 	Value: []*armappconfiguration.ConfigurationStore{
+		// 		{
+		// 			Name: to.Ptr("contoso"),
+		// 			Type: to.Ptr("Microsoft.AppConfiguration/configurationStores"),
+		// 			ID: to.Ptr("/subscriptions/c80fb759-c965-4c6a-9110-9b2b2d038882/resourceGroups/myResourceGroup/providers/Microsoft.AppConfiguration/configurationStores/contoso"),
+		// 			Location: to.Ptr("westus"),
+		// 			Tags: map[string]*string{
+		// 			},
+		// 			Properties: &armappconfiguration.ConfigurationStoreProperties{
+		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				DisableLocalAuth: to.Ptr(false),
+		// 				Encryption: &armappconfiguration.EncryptionProperties{
+		// 					KeyVaultProperties: &armappconfiguration.KeyVaultProperties{
+		// 					},
+		// 				},
+		// 				Endpoint: to.Ptr("https://contoso.azconfig.io"),
+		// 				PrivateEndpointConnections: []*armappconfiguration.PrivateEndpointConnectionReference{
+		// 				},
+		// 				ProvisioningState: to.Ptr(armappconfiguration.ProvisioningStateSucceeded),
+		// 				PublicNetworkAccess: to.Ptr(armappconfiguration.PublicNetworkAccessDisabled),
+		// 			},
+		// 			SKU: &armappconfiguration.SKU{
+		// 				Name: to.Ptr("Standard"),
+		// 			},
+		// 			SystemData: &armappconfiguration.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				CreatedBy: to.Ptr("foo@contoso.com"),
+		// 				CreatedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				LastModifiedBy: to.Ptr("foo@contoso.com"),
+		// 				LastModifiedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("contoso2"),
+		// 			Type: to.Ptr("Microsoft.AppConfiguration/configurationStores"),
+		// 			ID: to.Ptr("/subscriptions/c80fb759-c965-4c6a-9110-9b2b2d038882/resourceGroups/myResourceGroup/providers/Microsoft.AppConfiguration/configurationStores/contoso2"),
+		// 			Location: to.Ptr("westus"),
+		// 			Tags: map[string]*string{
+		// 			},
+		// 			Properties: &armappconfiguration.ConfigurationStoreProperties{
+		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T23:06:59+00:00"); return t}()),
+		// 				DisableLocalAuth: to.Ptr(false),
+		// 				Encryption: &armappconfiguration.EncryptionProperties{
+		// 					KeyVaultProperties: &armappconfiguration.KeyVaultProperties{
+		// 					},
+		// 				},
+		// 				Endpoint: to.Ptr("https://contoso2.azconfig.io"),
+		// 				PrivateEndpointConnections: []*armappconfiguration.PrivateEndpointConnectionReference{
+		// 				},
+		// 				ProvisioningState: to.Ptr(armappconfiguration.ProvisioningStateSucceeded),
+		// 				PublicNetworkAccess: to.Ptr(armappconfiguration.PublicNetworkAccessDisabled),
+		// 			},
+		// 			SKU: &armappconfiguration.SKU{
+		// 				Name: to.Ptr("Standard"),
+		// 			},
+		// 			SystemData: &armappconfiguration.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				CreatedBy: to.Ptr("foo@contoso.com"),
+		// 				CreatedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				LastModifiedBy: to.Ptr("foo@contoso.com"),
+		// 				LastModifiedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
+		// 			},
+		// 	}},
+		// }
 	}
 }

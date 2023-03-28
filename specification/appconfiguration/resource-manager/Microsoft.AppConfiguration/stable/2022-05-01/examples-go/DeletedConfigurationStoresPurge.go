@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/DeletedConfigurationStoresPurge.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/DeletedConfigurationStoresPurge.json
 func ExampleConfigurationStoresClient_BeginPurgeDeleted() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappconfiguration.NewConfigurationStoresClient("c80fb759-c965-4c6a-9110-9b2b2d038882", cred, nil)
+	clientFactory, err := armappconfiguration.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginPurgeDeleted(ctx,
-		"westus",
-		"contoso",
-		nil)
+	poller, err := clientFactory.NewConfigurationStoresClient().BeginPurgeDeleted(ctx, "westus", "contoso", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

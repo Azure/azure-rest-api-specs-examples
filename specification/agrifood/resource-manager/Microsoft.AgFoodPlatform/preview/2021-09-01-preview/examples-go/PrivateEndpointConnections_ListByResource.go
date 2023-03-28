@@ -8,26 +8,62 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/agrifood/armagrifood"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/PrivateEndpointConnections_ListByResource.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/a7af6049f4b4743ef3b649f3852bcc7bd9a43ee0/specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/PrivateEndpointConnections_ListByResource.json
 func ExamplePrivateEndpointConnectionsClient_NewListByResourcePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armagrifood.NewPrivateEndpointConnectionsClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armagrifood.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourcePager("examples-rg", "examples-farmbeatsResourceName", nil)
+	pager := clientFactory.NewPrivateEndpointConnectionsClient().NewListByResourcePager("examples-rg", "examples-farmbeatsResourceName", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.PrivateEndpointConnectionListResult = armagrifood.PrivateEndpointConnectionListResult{
+		// 	Value: []*armagrifood.PrivateEndpointConnection{
+		// 		{
+		// 			Name: to.Ptr("privateEndpointConnectionName"),
+		// 			Type: to.Ptr("Microsoft.AgFoodPlatform/farmBeats/privateEndpointConnections"),
+		// 			ID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.AgFoodPlatform/farmBeats/examples-farmbeatsResourceName/privateEndpointConnections/privateEndpointConnectionName"),
+		// 			Properties: &armagrifood.PrivateEndpointConnectionProperties{
+		// 				PrivateEndpoint: &armagrifood.PrivateEndpoint{
+		// 					ID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/rg1Network/providers/Microsoft.Network/privateEndpoints/privateEndpointName"),
+		// 				},
+		// 				PrivateLinkServiceConnectionState: &armagrifood.PrivateLinkServiceConnectionState{
+		// 					Description: to.Ptr("Approved by johndoe@contoso.com"),
+		// 					ActionsRequired: to.Ptr("None"),
+		// 					Status: to.Ptr(armagrifood.PrivateEndpointServiceConnectionStatusApproved),
+		// 				},
+		// 				ProvisioningState: to.Ptr(armagrifood.PrivateEndpointConnectionProvisioningStateSucceeded),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("privateEndpointConnectionName2"),
+		// 			Type: to.Ptr("Microsoft.AgFoodPlatform/farmBeats/privateEndpointConnections"),
+		// 			ID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/examples-rg/providers/Microsoft.AgFoodPlatform/farmBeats/examples-farmbeatsResourceName/privateEndpointConnections/privateEndpointConnectionName2"),
+		// 			Properties: &armagrifood.PrivateEndpointConnectionProperties{
+		// 				PrivateEndpoint: &armagrifood.PrivateEndpoint{
+		// 					ID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/rg1Network/providers/Microsoft.Network/privateEndpoints/privateEndpointName2"),
+		// 				},
+		// 				PrivateLinkServiceConnectionState: &armagrifood.PrivateLinkServiceConnectionState{
+		// 					Description: to.Ptr("Approved by johndoe@contoso.com"),
+		// 					ActionsRequired: to.Ptr("None"),
+		// 					Status: to.Ptr(armagrifood.PrivateEndpointServiceConnectionStatusApproved),
+		// 				},
+		// 				ProvisioningState: to.Ptr(armagrifood.PrivateEndpointConnectionProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

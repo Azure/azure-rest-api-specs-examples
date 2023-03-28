@@ -9,28 +9,24 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/examples/UploadCertificate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/examples/UploadCertificate.json
 func ExampleClustersClient_BeginUploadCertificate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armazurestackhci.NewClustersClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
+	clientFactory, err := armazurestackhci.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUploadCertificate(ctx,
-		"test-rg",
-		"myCluster",
-		armazurestackhci.UploadCertificateRequest{
-			Properties: &armazurestackhci.RawCertificateData{
-				Certificates: []*string{
-					to.Ptr("base64cert"),
-					to.Ptr("base64cert")},
-			},
+	poller, err := clientFactory.NewClustersClient().BeginUploadCertificate(ctx, "test-rg", "myCluster", armazurestackhci.UploadCertificateRequest{
+		Properties: &armazurestackhci.RawCertificateData{
+			Certificates: []*string{
+				to.Ptr("base64cert"),
+				to.Ptr("base64cert")},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

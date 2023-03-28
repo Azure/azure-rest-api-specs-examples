@@ -8,24 +8,100 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/examples/GetCluster.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/examples/GetCluster.json
 func ExampleClustersClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armazurestackhci.NewClustersClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
+	clientFactory, err := armazurestackhci.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"test-rg",
-		"myCluster",
-		nil)
+	res, err := clientFactory.NewClustersClient().Get(ctx, "test-rg", "myCluster", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Cluster = armazurestackhci.Cluster{
+	// 	Name: to.Ptr("myCluster"),
+	// 	Type: to.Ptr("Microsoft.AzureStackHCI/clusters"),
+	// 	ID: to.Ptr("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/test-rg/providers/Microsoft.AzureStackHCI/clusters/myCluster"),
+	// 	Location: to.Ptr("East US"),
+	// 	Tags: map[string]*string{
+	// 	},
+	// 	Properties: &armazurestackhci.ClusterProperties{
+	// 		AADClientID: to.Ptr("24a6e53d-04e5-44d2-b7cc-1b732a847dfc"),
+	// 		AADTenantID: to.Ptr("7e589cc1-a8b6-4dff-91bd-5ec0fa18db94"),
+	// 		BillingModel: to.Ptr("Trial"),
+	// 		CloudID: to.Ptr("a3c0468f-e38e-4dda-ac48-817f620536f0"),
+	// 		CloudManagementEndpoint: to.Ptr("https://98294836-31be-4668-aeae-698667faf99b.waconazure.com"),
+	// 		DesiredProperties: &armazurestackhci.ClusterDesiredProperties{
+	// 			DiagnosticLevel: to.Ptr(armazurestackhci.DiagnosticLevelBasic),
+	// 			WindowsServerSubscription: to.Ptr(armazurestackhci.WindowsServerSubscriptionEnabled),
+	// 		},
+	// 		LastBillingTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-12T08:12:55.2312022Z"); return t}()),
+	// 		LastSyncTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T20:44:32.5625121Z"); return t}()),
+	// 		ProvisioningState: to.Ptr(armazurestackhci.ProvisioningStateSucceeded),
+	// 		RegistrationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T20:44:32.5625121Z"); return t}()),
+	// 		ReportedProperties: &armazurestackhci.ClusterReportedProperties{
+	// 			ClusterID: to.Ptr("a76ac23a-1819-4e82-9410-e3e4ec3d1425"),
+	// 			ClusterName: to.Ptr("cluster1"),
+	// 			ClusterVersion: to.Ptr("10.0.17777"),
+	// 			DiagnosticLevel: to.Ptr(armazurestackhci.DiagnosticLevelBasic),
+	// 			ImdsAttestation: to.Ptr(armazurestackhci.ImdsAttestationDisabled),
+	// 			LastUpdated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T19:24:42.1946017Z"); return t}()),
+	// 			Nodes: []*armazurestackhci.ClusterNode{
+	// 				{
+	// 					Name: to.Ptr("Node1"),
+	// 					CoreCount: to.Ptr[float32](8),
+	// 					ID: to.Ptr[float32](1),
+	// 					Manufacturer: to.Ptr("Dell Inc."),
+	// 					MemoryInGiB: to.Ptr[float32](128),
+	// 					Model: to.Ptr("EMC AX740"),
+	// 					OSName: to.Ptr("Azure Stack HCI"),
+	// 					OSVersion: to.Ptr("10.0.17777.1061"),
+	// 					SerialNumber: to.Ptr("Q45CZC3"),
+	// 					WindowsServerSubscription: to.Ptr(armazurestackhci.WindowsServerSubscriptionEnabled),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("Node2"),
+	// 					CoreCount: to.Ptr[float32](8),
+	// 					ID: to.Ptr[float32](2),
+	// 					Manufacturer: to.Ptr("Dell Inc."),
+	// 					MemoryInGiB: to.Ptr[float32](128),
+	// 					Model: to.Ptr("EMC AX740"),
+	// 					OSName: to.Ptr("Azure Stack HCI"),
+	// 					OSVersion: to.Ptr("10.0.17777.1061"),
+	// 					SerialNumber: to.Ptr("Q44BSC3"),
+	// 					WindowsServerSubscription: to.Ptr(armazurestackhci.WindowsServerSubscriptionEnabled),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("Node3"),
+	// 					CoreCount: to.Ptr[float32](16),
+	// 					ID: to.Ptr[float32](3),
+	// 					Manufacturer: to.Ptr("Dell Inc."),
+	// 					MemoryInGiB: to.Ptr[float32](256),
+	// 					Model: to.Ptr("EMC AX740"),
+	// 					OSName: to.Ptr("Azure Stack HCI"),
+	// 					OSVersion: to.Ptr("10.0.17777.1061"),
+	// 					SerialNumber: to.Ptr("Q44RFC3"),
+	// 					WindowsServerSubscription: to.Ptr(armazurestackhci.WindowsServerSubscriptionEnabled),
+	// 			}},
+	// 		},
+	// 		Status: to.Ptr(armazurestackhci.StatusConnectedRecently),
+	// 		TrialDaysRemaining: to.Ptr[float32](30),
+	// 	},
+	// 	SystemData: &armazurestackhci.SystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+	// 		CreatedBy: to.Ptr("user1"),
+	// 		CreatedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("user2"),
+	// 		LastModifiedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
+	// 	},
+	// }
 }

@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/baremetalinfrastructure/armbaremetalinfrastructure"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/baremetalinfrastructure/resource-manager/Microsoft.BareMetalInfrastructure/stable/2021-08-09/examples/AzureBareMetalInstances_PatchTags_Delete.json
-func ExampleAzureBareMetalInstancesClient_Update_deleteTagsFieldOfAnAzureBareMetalInstance() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/baremetalinfrastructure/resource-manager/Microsoft.BareMetalInfrastructure/stable/2021-08-09/examples/AzureBareMetalInstances_PatchTags.json
+func ExampleAzureBareMetalInstancesClient_Update_updateTagsFieldOfAnAzureBareMetalInstance() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +21,9 @@ func ExampleAzureBareMetalInstancesClient_Update_deleteTagsFieldOfAnAzureBareMet
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewAzureBareMetalInstancesClient().Update(ctx, "myResourceGroup", "myABMInstance", armbaremetalinfrastructure.Tags{
-		Tags: map[string]*string{},
+		Tags: map[string]*string{
+			"testkey": to.Ptr("testvalue"),
+		},
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -34,6 +37,7 @@ func ExampleAzureBareMetalInstancesClient_Update_deleteTagsFieldOfAnAzureBareMet
 	// 	ID: to.Ptr("/subscriptions/f0f4887f-d13c-4943-a8ba-d7da28d2a3fd/resourceGroups/myResourceGroup/providers/Microsoft.BareMetalInfrastructure/bareMetalInstances/myABMInstance"),
 	// 	Location: to.Ptr("westus"),
 	// 	Tags: map[string]*string{
+	// 		"testkey": to.Ptr("testvalue"),
 	// 	},
 	// 	Properties: &armbaremetalinfrastructure.AzureBareMetalInstanceProperties{
 	// 		AzureBareMetalInstanceID: to.Ptr("23415635-4d7e-41dc-9598-8194f22c24e1"),

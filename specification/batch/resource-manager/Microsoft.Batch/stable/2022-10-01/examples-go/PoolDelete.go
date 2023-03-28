@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/PoolDelete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ef6f2f06858cdbec7684968e1a54c7610da97dbb/specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/PoolDelete.json
 func ExamplePoolClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armbatch.NewPoolClient("subid", cred, nil)
+	clientFactory, err := armbatch.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "default-azurebatch-japaneast", "sampleacct", "testpool", nil)
+	poller, err := clientFactory.NewPoolClient().BeginDelete(ctx, "default-azurebatch-japaneast", "sampleacct", "testpool", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

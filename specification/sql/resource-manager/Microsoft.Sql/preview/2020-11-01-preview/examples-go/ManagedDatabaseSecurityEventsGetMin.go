@@ -1,0 +1,113 @@
+package armsql_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedDatabaseSecurityEventsGetMin.json
+func ExampleManagedDatabaseSecurityEventsClient_NewListByDatabasePager_getTheManagedDatabasesSecurityEventsWithMinimalParameters() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewManagedDatabaseSecurityEventsClient().NewListByDatabasePager("testrg", "testcl", "database1", &armsql.ManagedDatabaseSecurityEventsClientListByDatabaseOptions{Filter: nil,
+		Skip:      nil,
+		Top:       nil,
+		Skiptoken: nil,
+	})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.SecurityEventCollection = armsql.SecurityEventCollection{
+		// 	Value: []*armsql.SecurityEvent{
+		// 		{
+		// 			Name: to.Ptr("06364798761800000000000000001"),
+		// 			Type: to.Ptr("Microsoft.Sql/servers/databases/securityEvents"),
+		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/testcl/databases/database1/securityEvents/06364798761800000000000000001"),
+		// 			Properties: &armsql.SecurityEventProperties{
+		// 				ApplicationName: to.Ptr("myApp"),
+		// 				ClientIP: to.Ptr("10.166.113.220"),
+		// 				Database: to.Ptr("database1"),
+		// 				EventTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-24T10:13:24.729Z"); return t}()),
+		// 				PrincipalName: to.Ptr("maliciousUser"),
+		// 				SecurityEventSQLInjectionAdditionalProperties: &armsql.SecurityEventSQLInjectionAdditionalProperties{
+		// 					ErrorCode: to.Ptr[int32](0),
+		// 					ErrorMessage: to.Ptr(""),
+		// 					ErrorSeverity: to.Ptr[int32](0),
+		// 					Statement: to.Ptr("select * from sys.databases where database_id like '' or 1 = 1 --' and family = 'test11'"),
+		// 					StatementHighlightLength: to.Ptr[int32](13),
+		// 					StatementHighlightOffset: to.Ptr[int32](52),
+		// 					ThreatID: to.Ptr("1"),
+		// 				},
+		// 				SecurityEventType: to.Ptr(armsql.SecurityEventTypeSQLInjectionExploit),
+		// 				Server: to.Ptr("testcl"),
+		// 				Subscription: to.Ptr("00000000-1111-2222-3333-444444444444"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("06364798761800000000000000002"),
+		// 			Type: to.Ptr("Microsoft.Sql/servers/databases/securityEvents"),
+		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/testcl/databases/database1/securityEvents/06364798761800000000000000002"),
+		// 			Properties: &armsql.SecurityEventProperties{
+		// 				ApplicationName: to.Ptr("myApp"),
+		// 				ClientIP: to.Ptr("10.166.113.220"),
+		// 				Database: to.Ptr("database1"),
+		// 				EventTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-24T10:11:14.121Z"); return t}()),
+		// 				PrincipalName: to.Ptr("maliciousUser"),
+		// 				SecurityEventSQLInjectionAdditionalProperties: &armsql.SecurityEventSQLInjectionAdditionalProperties{
+		// 					ErrorCode: to.Ptr[int32](0),
+		// 					ErrorMessage: to.Ptr(""),
+		// 					ErrorSeverity: to.Ptr[int32](0),
+		// 					Statement: to.Ptr("select * from sys.databases where database_id like '' or 1 = 1 --' and family = 'test10'"),
+		// 					StatementHighlightLength: to.Ptr[int32](13),
+		// 					StatementHighlightOffset: to.Ptr[int32](52),
+		// 					ThreatID: to.Ptr("1"),
+		// 				},
+		// 				SecurityEventType: to.Ptr(armsql.SecurityEventTypeSQLInjectionExploit),
+		// 				Server: to.Ptr("testcl"),
+		// 				Subscription: to.Ptr("00000000-1111-2222-3333-444444444444"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("06364798761800000000000000003"),
+		// 			Type: to.Ptr("Microsoft.Sql/servers/databases/securityEvents"),
+		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.Sql/managedInstances/testcl/databases/database1/securityEvents/06364798761800000000000000003"),
+		// 			Properties: &armsql.SecurityEventProperties{
+		// 				ApplicationName: to.Ptr("myApp"),
+		// 				ClientIP: to.Ptr("10.166.113.220"),
+		// 				Database: to.Ptr("database1"),
+		// 				EventTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-24T10:03:17.066Z"); return t}()),
+		// 				PrincipalName: to.Ptr("maliciousUser"),
+		// 				SecurityEventSQLInjectionAdditionalProperties: &armsql.SecurityEventSQLInjectionAdditionalProperties{
+		// 					ErrorCode: to.Ptr[int32](0),
+		// 					ErrorMessage: to.Ptr(""),
+		// 					ErrorSeverity: to.Ptr[int32](0),
+		// 					Statement: to.Ptr("select * from sys.databases where database_id like '' or 1 = 1 --' and family = 'test9'"),
+		// 					StatementHighlightLength: to.Ptr[int32](13),
+		// 					StatementHighlightOffset: to.Ptr[int32](52),
+		// 					ThreatID: to.Ptr("1"),
+		// 				},
+		// 				SecurityEventType: to.Ptr(armsql.SecurityEventTypeSQLInjectionExploit),
+		// 				Server: to.Ptr("testcl"),
+		// 				Subscription: to.Ptr("00000000-1111-2222-3333-444444444444"),
+		// 			},
+		// 	}},
+		// }
+	}
+}

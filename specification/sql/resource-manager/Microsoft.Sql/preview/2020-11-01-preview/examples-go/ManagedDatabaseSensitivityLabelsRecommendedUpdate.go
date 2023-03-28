@@ -9,49 +9,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedDatabaseSensitivityLabelsRecommendedUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedDatabaseSensitivityLabelsRecommendedUpdate.json
 func ExampleManagedDatabaseRecommendedSensitivityLabelsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewManagedDatabaseRecommendedSensitivityLabelsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Update(ctx,
-		"myRG",
-		"myManagedInstanceName",
-		"myDatabase",
-		armsql.RecommendedSensitivityLabelUpdateList{
-			Operations: []*armsql.RecommendedSensitivityLabelUpdate{
-				{
-					Properties: &armsql.RecommendedSensitivityLabelUpdateProperties{
-						Schema: to.Ptr("dbo"),
-						Column: to.Ptr("column1"),
-						Op:     to.Ptr(armsql.RecommendedSensitivityLabelUpdateKindEnable),
-						Table:  to.Ptr("table1"),
-					},
+	_, err = clientFactory.NewManagedDatabaseRecommendedSensitivityLabelsClient().Update(ctx, "myRG", "myManagedInstanceName", "myDatabase", armsql.RecommendedSensitivityLabelUpdateList{
+		Operations: []*armsql.RecommendedSensitivityLabelUpdate{
+			{
+				Properties: &armsql.RecommendedSensitivityLabelUpdateProperties{
+					Schema: to.Ptr("dbo"),
+					Column: to.Ptr("column1"),
+					Op:     to.Ptr(armsql.RecommendedSensitivityLabelUpdateKindEnable),
+					Table:  to.Ptr("table1"),
 				},
-				{
-					Properties: &armsql.RecommendedSensitivityLabelUpdateProperties{
-						Schema: to.Ptr("dbo"),
-						Column: to.Ptr("column2"),
-						Op:     to.Ptr(armsql.RecommendedSensitivityLabelUpdateKindDisable),
-						Table:  to.Ptr("table2"),
-					},
+			},
+			{
+				Properties: &armsql.RecommendedSensitivityLabelUpdateProperties{
+					Schema: to.Ptr("dbo"),
+					Column: to.Ptr("column2"),
+					Op:     to.Ptr(armsql.RecommendedSensitivityLabelUpdateKindDisable),
+					Table:  to.Ptr("table2"),
 				},
-				{
-					Properties: &armsql.RecommendedSensitivityLabelUpdateProperties{
-						Schema: to.Ptr("dbo"),
-						Column: to.Ptr("Column3"),
-						Op:     to.Ptr(armsql.RecommendedSensitivityLabelUpdateKindDisable),
-						Table:  to.Ptr("Table1"),
-					},
-				}},
-		},
-		nil)
+			},
+			{
+				Properties: &armsql.RecommendedSensitivityLabelUpdateProperties{
+					Schema: to.Ptr("dbo"),
+					Column: to.Ptr("Column3"),
+					Op:     to.Ptr(armsql.RecommendedSensitivityLabelUpdateKindDisable),
+					Table:  to.Ptr("Table1"),
+				},
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

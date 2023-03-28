@@ -8,29 +8,41 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/LongTermRetentionPolicyListByDatabase.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/LongTermRetentionPolicyListByDatabase.json
 func ExampleLongTermRetentionPoliciesClient_NewListByDatabasePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewLongTermRetentionPoliciesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByDatabasePager("resourceGroup",
-		"testserver",
-		"testDatabase",
-		nil)
+	pager := clientFactory.NewLongTermRetentionPoliciesClient().NewListByDatabasePager("resourceGroup", "testserver", "testDatabase", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.LongTermRetentionPolicyListResult = armsql.LongTermRetentionPolicyListResult{
+		// 	Value: []*armsql.LongTermRetentionPolicy{
+		// 		{
+		// 			Name: to.Ptr("default"),
+		// 			Type: to.Ptr("Microsoft.Sql/resourceGroups/servers/databases/backupLongTermRetentionPolicies"),
+		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupLongTermRetentionPolicies/default"),
+		// 			Properties: &armsql.BaseLongTermRetentionPolicyProperties{
+		// 				MonthlyRetention: to.Ptr("P1Y"),
+		// 				WeekOfYear: to.Ptr[int32](5),
+		// 				WeeklyRetention: to.Ptr("P1M"),
+		// 				YearlyRetention: to.Ptr("P5Y"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

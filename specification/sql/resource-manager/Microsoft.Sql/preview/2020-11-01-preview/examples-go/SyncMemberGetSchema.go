@@ -8,31 +8,57 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/SyncMemberGetSchema.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/SyncMemberGetSchema.json
 func ExampleSyncMembersClient_NewListMemberSchemasPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewSyncMembersClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListMemberSchemasPager("syncgroupcrud-65440",
-		"syncgroupcrud-8475",
-		"syncgroupcrud-4328",
-		"syncgroupcrud-3187",
-		"syncgroupcrud-4879",
-		nil)
+	pager := clientFactory.NewSyncMembersClient().NewListMemberSchemasPager("syncgroupcrud-65440", "syncgroupcrud-8475", "syncgroupcrud-4328", "syncgroupcrud-3187", "syncgroupcrud-4879", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.SyncFullSchemaPropertiesListResult = armsql.SyncFullSchemaPropertiesListResult{
+		// 	Value: []*armsql.SyncFullSchemaProperties{
+		// 		{
+		// 			LastUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-30T07:16:08.21Z"); return t}()),
+		// 			Tables: []*armsql.SyncFullSchemaTable{
+		// 				{
+		// 					Name: to.Ptr("dbo.myTable"),
+		// 					Columns: []*armsql.SyncFullSchemaTableColumn{
+		// 						{
+		// 							Name: to.Ptr("intField"),
+		// 							DataSize: to.Ptr("4"),
+		// 							DataType: to.Ptr("int"),
+		// 							HasError: to.Ptr(false),
+		// 							IsPrimaryKey: to.Ptr(false),
+		// 							QuotedName: to.Ptr("[intField]"),
+		// 						},
+		// 						{
+		// 							Name: to.Ptr("charField"),
+		// 							DataSize: to.Ptr("100"),
+		// 							DataType: to.Ptr("nvarchar"),
+		// 							HasError: to.Ptr(false),
+		// 							IsPrimaryKey: to.Ptr(false),
+		// 							QuotedName: to.Ptr("[charField]"),
+		// 					}},
+		// 					ErrorID: to.Ptr("Schema_TableHasNoPrimaryKey"),
+		// 					HasError: to.Ptr(true),
+		// 					QuotedName: to.Ptr("[dbo].[myTable]"),
+		// 			}},
+		// 	}},
+		// }
 	}
 }

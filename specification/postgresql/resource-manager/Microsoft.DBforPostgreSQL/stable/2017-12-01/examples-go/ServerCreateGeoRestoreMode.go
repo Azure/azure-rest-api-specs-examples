@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerUpdate.json
-func ExampleServersClient_BeginUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerCreateGeoRestoreMode.json
+func ExampleServersClient_BeginCreate_createAServerAsAGeoRestore() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,11 +20,20 @@ func ExampleServersClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewServersClient().BeginUpdate(ctx, "testrg", "pgtestsvc4", armpostgresql.ServerUpdateParameters{
-		Properties: &armpostgresql.ServerUpdateParametersProperties{
-			AdministratorLoginPassword: to.Ptr("<administratorLoginPassword>"),
-			MinimalTLSVersion:          to.Ptr(armpostgresql.MinimalTLSVersionEnumTLS12),
-			SSLEnforcement:             to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),
+	poller, err := clientFactory.NewServersClient().BeginCreate(ctx, "TargetResourceGroup", "targetserver", armpostgresql.ServerForCreate{
+		Location: to.Ptr("westus"),
+		Properties: &armpostgresql.ServerPropertiesForGeoRestore{
+			CreateMode:     to.Ptr(armpostgresql.CreateModeGeoRestore),
+			SourceServerID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/SourceResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/sourceserver"),
+		},
+		SKU: &armpostgresql.SKU{
+			Name:     to.Ptr("GP_Gen5_2"),
+			Capacity: to.Ptr[int32](2),
+			Family:   to.Ptr("Gen5"),
+			Tier:     to.Ptr(armpostgresql.SKUTierGeneralPurpose),
+		},
+		Tags: map[string]*string{
+			"ElasticServer": to.Ptr("1"),
 		},
 	}, nil)
 	if err != nil {
@@ -38,9 +47,9 @@ func ExampleServersClient_BeginUpdate() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.Server = armpostgresql.Server{
-	// 	Name: to.Ptr("pgtestsvc4"),
+	// 	Name: to.Ptr("targetserver"),
 	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/servers"),
-	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.DBforPostgreSQL/servers/pgtestsvc4"),
+	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.DBforPostgreSQL/servers/targetserver"),
 	// 	Location: to.Ptr("westus"),
 	// 	Tags: map[string]*string{
 	// 		"ElasticServer": to.Ptr("1"),
@@ -48,8 +57,7 @@ func ExampleServersClient_BeginUpdate() {
 	// 	Properties: &armpostgresql.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
 	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T21:08:24.637+00:00"); return t}()),
-	// 		FullyQualifiedDomainName: to.Ptr("pgtestsvc4.postgres.database.azure.com"),
-	// 		MinimalTLSVersion: to.Ptr(armpostgresql.MinimalTLSVersionEnumTLS12),
+	// 		FullyQualifiedDomainName: to.Ptr("targetserver.postgres.database.azure.com"),
 	// 		SSLEnforcement: to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),
 	// 		StorageProfile: &armpostgresql.StorageProfile{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
@@ -60,10 +68,10 @@ func ExampleServersClient_BeginUpdate() {
 	// 		Version: to.Ptr(armpostgresql.ServerVersionNine6),
 	// 	},
 	// 	SKU: &armpostgresql.SKU{
-	// 		Name: to.Ptr("B_Gen4_2"),
+	// 		Name: to.Ptr("GP_Gen5_2"),
 	// 		Capacity: to.Ptr[int32](2),
-	// 		Family: to.Ptr("Gen4"),
-	// 		Tier: to.Ptr(armpostgresql.SKUTierBasic),
+	// 		Family: to.Ptr("Gen5"),
+	// 		Tier: to.Ptr(armpostgresql.SKUTierGeneralPurpose),
 	// 	},
 	// }
 }

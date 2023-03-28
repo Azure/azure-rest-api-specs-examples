@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerUpdate.json
-func ExampleServersClient_BeginUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerCreate.json
+func ExampleServersClient_BeginCreate_createANewServer() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,11 +20,28 @@ func ExampleServersClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewServersClient().BeginUpdate(ctx, "testrg", "pgtestsvc4", armpostgresql.ServerUpdateParameters{
-		Properties: &armpostgresql.ServerUpdateParametersProperties{
+	poller, err := clientFactory.NewServersClient().BeginCreate(ctx, "TestGroup", "pgtestsvc4", armpostgresql.ServerForCreate{
+		Location: to.Ptr("westus"),
+		Properties: &armpostgresql.ServerPropertiesForDefaultCreate{
+			CreateMode:        to.Ptr(armpostgresql.CreateModeDefault),
+			MinimalTLSVersion: to.Ptr(armpostgresql.MinimalTLSVersionEnumTLS12),
+			SSLEnforcement:    to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),
+			StorageProfile: &armpostgresql.StorageProfile{
+				BackupRetentionDays: to.Ptr[int32](7),
+				GeoRedundantBackup:  to.Ptr(armpostgresql.GeoRedundantBackupDisabled),
+				StorageMB:           to.Ptr[int32](128000),
+			},
+			AdministratorLogin:         to.Ptr("cloudsa"),
 			AdministratorLoginPassword: to.Ptr("<administratorLoginPassword>"),
-			MinimalTLSVersion:          to.Ptr(armpostgresql.MinimalTLSVersionEnumTLS12),
-			SSLEnforcement:             to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),
+		},
+		SKU: &armpostgresql.SKU{
+			Name:     to.Ptr("B_Gen5_2"),
+			Capacity: to.Ptr[int32](2),
+			Family:   to.Ptr("Gen5"),
+			Tier:     to.Ptr(armpostgresql.SKUTierBasic),
+		},
+		Tags: map[string]*string{
+			"ElasticServer": to.Ptr("1"),
 		},
 	}, nil)
 	if err != nil {
@@ -49,7 +66,6 @@ func ExampleServersClient_BeginUpdate() {
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
 	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T21:08:24.637+00:00"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("pgtestsvc4.postgres.database.azure.com"),
-	// 		MinimalTLSVersion: to.Ptr(armpostgresql.MinimalTLSVersionEnumTLS12),
 	// 		SSLEnforcement: to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),
 	// 		StorageProfile: &armpostgresql.StorageProfile{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
@@ -60,9 +76,9 @@ func ExampleServersClient_BeginUpdate() {
 	// 		Version: to.Ptr(armpostgresql.ServerVersionNine6),
 	// 	},
 	// 	SKU: &armpostgresql.SKU{
-	// 		Name: to.Ptr("B_Gen4_2"),
+	// 		Name: to.Ptr("B_Gen5_2"),
 	// 		Capacity: to.Ptr[int32](2),
-	// 		Family: to.Ptr("Gen4"),
+	// 		Family: to.Ptr("Gen5"),
 	// 		Tier: to.Ptr(armpostgresql.SKUTierBasic),
 	// 	},
 	// }

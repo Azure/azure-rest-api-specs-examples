@@ -15,11 +15,11 @@ func ExamplePrivateEndpointConnectionsClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewPrivateEndpointConnectionsClient("subID", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("SDK-ServiceBus-4794", "sdk-Namespace-5828", nil)
+	pager := clientFactory.NewPrivateEndpointConnectionsClient().NewListPager("SDK-ServiceBus-4794", "sdk-Namespace-5828", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

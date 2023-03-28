@@ -15,11 +15,11 @@ func ExampleNamespacesClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "ArunMonocle", "sdk-Namespace-2924", nil)
+	res, err := clientFactory.NewNamespacesClient().Get(ctx, "ArunMonocle", "sdk-Namespace-2924", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

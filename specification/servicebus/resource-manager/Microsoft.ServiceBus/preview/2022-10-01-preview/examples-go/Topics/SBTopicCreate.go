@@ -16,11 +16,11 @@ func ExampleTopicsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewTopicsClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "ArunMonocle", "sdk-Namespace-1617", "sdk-Topics-5488", armservicebus.SBTopic{
+	res, err := clientFactory.NewTopicsClient().CreateOrUpdate(ctx, "ArunMonocle", "sdk-Namespace-1617", "sdk-Topics-5488", armservicebus.SBTopic{
 		Properties: &armservicebus.SBTopicProperties{
 			EnableExpress: to.Ptr(true),
 		},

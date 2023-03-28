@@ -16,11 +16,11 @@ func ExampleMigrationConfigsClient_BeginCreateAndStartMigration() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewMigrationConfigsClient("SubscriptionId", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateAndStartMigration(ctx, "ResourceGroup", "sdk-Namespace-41", armservicebus.MigrationConfigurationNameDefault, armservicebus.MigrationConfigProperties{
+	poller, err := clientFactory.NewMigrationConfigsClient().BeginCreateAndStartMigration(ctx, "ResourceGroup", "sdk-Namespace-41", armservicebus.MigrationConfigurationNameDefault, armservicebus.MigrationConfigProperties{
 		Properties: &armservicebus.MigrationConfigPropertiesProperties{
 			PostMigrationName: to.Ptr("sdk-PostMigration-5919"),
 			TargetNamespace:   to.Ptr("/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028"),

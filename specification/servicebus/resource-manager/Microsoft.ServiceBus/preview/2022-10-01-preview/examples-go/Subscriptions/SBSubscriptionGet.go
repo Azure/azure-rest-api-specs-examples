@@ -15,11 +15,11 @@ func ExampleSubscriptionsClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewSubscriptionsClient("Subscriptionid", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "ResourceGroup", "sdk-Namespace-1349", "sdk-Topics-8740", "sdk-Subscriptions-2178", nil)
+	res, err := clientFactory.NewSubscriptionsClient().Get(ctx, "ResourceGroup", "sdk-Namespace-1349", "sdk-Topics-8740", "sdk-Subscriptions-2178", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

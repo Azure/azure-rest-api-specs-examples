@@ -16,11 +16,11 @@ func ExampleNamespacesClient_CreateOrUpdateAuthorizationRule() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdateAuthorizationRule(ctx, "ArunMonocle", "sdk-Namespace-6914", "sdk-AuthRules-1788", armservicebus.SBAuthorizationRule{
+	res, err := clientFactory.NewNamespacesClient().CreateOrUpdateAuthorizationRule(ctx, "ArunMonocle", "sdk-Namespace-6914", "sdk-AuthRules-1788", armservicebus.SBAuthorizationRule{
 		Properties: &armservicebus.SBAuthorizationRuleProperties{
 			Rights: []*armservicebus.AccessRights{
 				to.Ptr(armservicebus.AccessRightsListen),

@@ -16,11 +16,11 @@ func ExampleNamespacesClient_CreateOrUpdateNetworkRuleSet() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("Subscription", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdateNetworkRuleSet(ctx, "ResourceGroup", "sdk-Namespace-6019", armservicebus.NetworkRuleSet{
+	res, err := clientFactory.NewNamespacesClient().CreateOrUpdateNetworkRuleSet(ctx, "ResourceGroup", "sdk-Namespace-6019", armservicebus.NetworkRuleSet{
 		Properties: &armservicebus.NetworkRuleSetProperties{
 			DefaultAction: to.Ptr(armservicebus.DefaultActionDeny),
 			IPRules: []*armservicebus.NWRuleSetIPRules{

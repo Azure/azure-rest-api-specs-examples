@@ -15,11 +15,11 @@ func ExampleRulesClient_CreateOrUpdate_rulesCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewRulesClient("subscriptionId", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "resourceGroupName", "sdk-Namespace-1319", "sdk-Topics-2081", "sdk-Subscriptions-8691", "sdk-Rules-6571", armservicebus.Rule{}, nil)
+	res, err := clientFactory.NewRulesClient().CreateOrUpdate(ctx, "resourceGroupName", "sdk-Namespace-1319", "sdk-Topics-2081", "sdk-Subscriptions-8691", "sdk-Rules-6571", armservicebus.Rule{}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

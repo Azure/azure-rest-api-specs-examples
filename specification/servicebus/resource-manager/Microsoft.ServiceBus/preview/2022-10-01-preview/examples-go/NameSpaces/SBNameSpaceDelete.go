@@ -15,11 +15,11 @@ func ExampleNamespacesClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "ArunMonocle", "sdk-Namespace-3285", nil)
+	poller, err := clientFactory.NewNamespacesClient().BeginDelete(ctx, "ArunMonocle", "sdk-Namespace-3285", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

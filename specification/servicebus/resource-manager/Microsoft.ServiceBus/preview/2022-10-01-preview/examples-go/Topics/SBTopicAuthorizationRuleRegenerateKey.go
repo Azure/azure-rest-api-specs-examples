@@ -16,11 +16,11 @@ func ExampleTopicsClient_RegenerateKeys() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewTopicsClient("e2f361f0-3b27-4503-a9cc-21cfba380093", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.RegenerateKeys(ctx, "Default-ServiceBus-WestUS", "sdk-Namespace8408", "sdk-Topics2075", "sdk-Authrules5067", armservicebus.RegenerateAccessKeyParameters{
+	res, err := clientFactory.NewTopicsClient().RegenerateKeys(ctx, "Default-ServiceBus-WestUS", "sdk-Namespace8408", "sdk-Topics2075", "sdk-Authrules5067", armservicebus.RegenerateAccessKeyParameters{
 		KeyType: to.Ptr(armservicebus.KeyTypePrimaryKey),
 	}, nil)
 	if err != nil {

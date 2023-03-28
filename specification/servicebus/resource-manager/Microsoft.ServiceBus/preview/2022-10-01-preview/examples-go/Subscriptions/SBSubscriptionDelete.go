@@ -15,11 +15,11 @@ func ExampleSubscriptionsClient_Delete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewSubscriptionsClient("subscriptionId", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx, "ResourceGroup", "sdk-Namespace-5882", "sdk-Topics-1804", "sdk-Subscriptions-3670", nil)
+	_, err = clientFactory.NewSubscriptionsClient().Delete(ctx, "ResourceGroup", "sdk-Namespace-5882", "sdk-Topics-1804", "sdk-Subscriptions-3670", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -15,11 +15,11 @@ func ExampleDisasterRecoveryConfigsClient_GetAuthorizationRule() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewDisasterRecoveryConfigsClient("exampleSubscriptionId", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetAuthorizationRule(ctx, "exampleResourceGroup", "sdk-Namespace-9080", "sdk-DisasterRecovery-4879", "sdk-Authrules-4879", nil)
+	res, err := clientFactory.NewDisasterRecoveryConfigsClient().GetAuthorizationRule(ctx, "exampleResourceGroup", "sdk-Namespace-9080", "sdk-DisasterRecovery-4879", "sdk-Authrules-4879", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

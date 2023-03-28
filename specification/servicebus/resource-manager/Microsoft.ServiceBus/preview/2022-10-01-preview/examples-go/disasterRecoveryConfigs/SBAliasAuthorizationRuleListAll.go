@@ -15,11 +15,11 @@ func ExampleDisasterRecoveryConfigsClient_NewListAuthorizationRulesPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewDisasterRecoveryConfigsClient("exampleSubscriptionId", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListAuthorizationRulesPager("exampleResourceGroup", "sdk-Namespace-9080", "sdk-DisasterRecovery-4047", nil)
+	pager := clientFactory.NewDisasterRecoveryConfigsClient().NewListAuthorizationRulesPager("exampleResourceGroup", "sdk-Namespace-9080", "sdk-DisasterRecovery-4047", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

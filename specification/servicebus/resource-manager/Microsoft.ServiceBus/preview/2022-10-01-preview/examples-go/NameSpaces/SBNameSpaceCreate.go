@@ -16,11 +16,11 @@ func ExampleNamespacesClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewNamespacesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "ArunMonocle", "sdk-Namespace2924", armservicebus.SBNamespace{
+	poller, err := clientFactory.NewNamespacesClient().BeginCreateOrUpdate(ctx, "ArunMonocle", "sdk-Namespace2924", armservicebus.SBNamespace{
 		Location: to.Ptr("South Central US"),
 		Tags: map[string]*string{
 			"tag1": to.Ptr("value1"),

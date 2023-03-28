@@ -15,11 +15,11 @@ func ExampleQueuesClient_NewListByNamespacePager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewQueuesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByNamespacePager("ArunMonocle", "sdk-Namespace-3174", &armservicebus.QueuesClientListByNamespaceOptions{Skip: nil,
+	pager := clientFactory.NewQueuesClient().NewListByNamespacePager("ArunMonocle", "sdk-Namespace-3174", &armservicebus.QueuesClientListByNamespaceOptions{Skip: nil,
 		Top: nil,
 	})
 	for pager.More() {

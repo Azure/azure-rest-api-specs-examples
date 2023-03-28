@@ -15,11 +15,11 @@ func ExampleRulesClient_NewListBySubscriptionsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewRulesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBySubscriptionsPager("ArunMonocle", "sdk-Namespace-1319", "sdk-Topics-2081", "sdk-Subscriptions-8691", &armservicebus.RulesClientListBySubscriptionsOptions{Skip: nil,
+	pager := clientFactory.NewRulesClient().NewListBySubscriptionsPager("ArunMonocle", "sdk-Namespace-1319", "sdk-Topics-2081", "sdk-Subscriptions-8691", &armservicebus.RulesClientListBySubscriptionsOptions{Skip: nil,
 		Top: nil,
 	})
 	for pager.More() {

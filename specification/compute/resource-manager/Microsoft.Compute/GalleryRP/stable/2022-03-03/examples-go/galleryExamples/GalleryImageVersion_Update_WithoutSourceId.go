@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-03-03/examples/galleryExamples/GalleryImageVersion_Update_WithoutSourceId.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-03-03/examples/galleryExamples/GalleryImageVersion_Update_WithoutSourceId.json
 func ExampleGalleryImageVersionsClient_BeginUpdate_updateASimpleGalleryImageVersionWithoutSourceId() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewGalleryImageVersionsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "myResourceGroup", "myGalleryName", "myGalleryImageName", "1.0.0", armcompute.GalleryImageVersionUpdate{
+	poller, err := clientFactory.NewGalleryImageVersionsClient().BeginUpdate(ctx, "myResourceGroup", "myGalleryName", "myGalleryImageName", "1.0.0", armcompute.GalleryImageVersionUpdate{
 		Properties: &armcompute.GalleryImageVersionProperties{
 			PublishingProfile: &armcompute.GalleryImageVersionPublishingProfile{
 				TargetRegions: []*armcompute.TargetRegion{
@@ -44,6 +44,57 @@ func ExampleGalleryImageVersionsClient_BeginUpdate_updateASimpleGalleryImageVers
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.GalleryImageVersion = armcompute.GalleryImageVersion{
+	// 	Name: to.Ptr("1.0.0"),
+	// 	Location: to.Ptr("West US"),
+	// 	Properties: &armcompute.GalleryImageVersionProperties{
+	// 		ProvisioningState: to.Ptr(armcompute.GalleryProvisioningStateSucceeded),
+	// 		PublishingProfile: &armcompute.GalleryImageVersionPublishingProfile{
+	// 			PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t}()),
+	// 			ReplicaCount: to.Ptr[int32](1),
+	// 			StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
+	// 			TargetRegions: []*armcompute.TargetRegion{
+	// 				{
+	// 					Name: to.Ptr("West US"),
+	// 					Encryption: &armcompute.EncryptionImages{
+	// 						DataDiskImages: []*armcompute.DataDiskImageEncryption{
+	// 							{
+	// 								DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myDiskEncryptionSet"),
+	// 								Lun: to.Ptr[int32](1),
+	// 						}},
+	// 						OSDiskImage: &armcompute.OSDiskImageEncryption{
+	// 							DiskEncryptionSetID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myDiskEncryptionSet"),
+	// 						},
+	// 					},
+	// 					ExcludeFromLatest: to.Ptr(false),
+	// 					RegionalReplicaCount: to.Ptr[int32](1),
+	// 					StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("East US"),
+	// 					ExcludeFromLatest: to.Ptr(false),
+	// 					RegionalReplicaCount: to.Ptr[int32](2),
+	// 					StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardZRS),
+	// 			}},
+	// 		},
+	// 		StorageProfile: &armcompute.GalleryImageVersionStorageProfile{
+	// 			DataDiskImages: []*armcompute.GalleryDataDiskImage{
+	// 				{
+	// 					HostCaching: to.Ptr(armcompute.HostCachingNone),
+	// 					SizeInGB: to.Ptr[int32](10),
+	// 					Lun: to.Ptr[int32](1),
+	// 			}},
+	// 			OSDiskImage: &armcompute.GalleryOSDiskImage{
+	// 				HostCaching: to.Ptr(armcompute.HostCachingReadOnly),
+	// 				SizeInGB: to.Ptr[int32](10),
+	// 			},
+	// 			Source: &armcompute.GalleryArtifactVersionFullSource{
+	// 				ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"),
+	// 			},
+	// 		},
+	// 	},
+	// }
 }

@@ -8,21 +8,39 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/CloudServiceOSFamily_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/CloudServiceOSFamily_Get.json
 func ExampleCloudServiceOperatingSystemsClient_GetOSFamily() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewCloudServiceOperatingSystemsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetOSFamily(ctx, "westus2", "3", nil)
+	res, err := clientFactory.NewCloudServiceOperatingSystemsClient().GetOSFamily(ctx, "westus2", "3", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.OSFamily = armcompute.OSFamily{
+	// 	Name: to.Ptr("3"),
+	// 	Type: to.Ptr("Microsoft.Compute/locations/cloudServiceOsFamilies"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/westus2/cloudServiceOSFamilies/3"),
+	// 	Location: to.Ptr("westus2"),
+	// 	Properties: &armcompute.OSFamilyProperties{
+	// 		Name: to.Ptr("3"),
+	// 		Label: to.Ptr("Windows Server 2012"),
+	// 		Versions: []*armcompute.OSVersionPropertiesBase{
+	// 			{
+	// 				IsActive: to.Ptr(true),
+	// 				IsDefault: to.Ptr(true),
+	// 				Label: to.Ptr("Windows Azure Guest OS 3.90 (Release 202010-02)"),
+	// 				Version: to.Ptr("WA-GUEST-OS-3.90_202010-02"),
+	// 		}},
+	// 	},
+	// }
 }

@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineExamples/VirtualMachine_Create_FromASpecializedSharedImage.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineExamples/VirtualMachine_Create_FromASpecializedSharedImage.json
 func ExampleVirtualMachinesClient_BeginCreateOrUpdate_createAVmFromASpecializedSharedImage() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewVirtualMachinesClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "myResourceGroup", "myVM", armcompute.VirtualMachine{
+	poller, err := clientFactory.NewVirtualMachinesClient().BeginCreateOrUpdate(ctx, "myResourceGroup", "myVM", armcompute.VirtualMachine{
 		Location: to.Ptr("westus"),
 		Properties: &armcompute.VirtualMachineProperties{
 			HardwareProfile: &armcompute.HardwareProfile{
@@ -57,6 +57,46 @@ func ExampleVirtualMachinesClient_BeginCreateOrUpdate_createAVmFromASpecializedS
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.VirtualMachine = armcompute.VirtualMachine{
+	// 	Name: to.Ptr("myVM"),
+	// 	Type: to.Ptr("Microsoft.Compute/virtualMachines"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
+	// 	Location: to.Ptr("westus"),
+	// 	Properties: &armcompute.VirtualMachineProperties{
+	// 		HardwareProfile: &armcompute.HardwareProfile{
+	// 			VMSize: to.Ptr(armcompute.VirtualMachineSizeTypesStandardD1V2),
+	// 		},
+	// 		NetworkProfile: &armcompute.NetworkProfile{
+	// 			NetworkInterfaces: []*armcompute.NetworkInterfaceReference{
+	// 				{
+	// 					ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/nsgExistingNic"),
+	// 					Properties: &armcompute.NetworkInterfaceReferenceProperties{
+	// 						Primary: to.Ptr(true),
+	// 					},
+	// 			}},
+	// 		},
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 		StorageProfile: &armcompute.StorageProfile{
+	// 			DataDisks: []*armcompute.DataDisk{
+	// 			},
+	// 			ImageReference: &armcompute.ImageReference{
+	// 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/galleries/mySharedGallery/images/mySharedImage"),
+	// 			},
+	// 			OSDisk: &armcompute.OSDisk{
+	// 				Name: to.Ptr("myVMosdisk"),
+	// 				Caching: to.Ptr(armcompute.CachingTypesReadWrite),
+	// 				CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesFromImage),
+	// 				DiskSizeGB: to.Ptr[int32](30),
+	// 				ManagedDisk: &armcompute.ManagedDiskParameters{
+	// 					StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+	// 				},
+	// 				OSType: to.Ptr(armcompute.OperatingSystemTypesLinux),
+	// 			},
+	// 		},
+	// 		VMID: to.Ptr("71aa3d5a-d73d-4970-9182-8580433b2865"),
+	// 	},
+	// }
 }

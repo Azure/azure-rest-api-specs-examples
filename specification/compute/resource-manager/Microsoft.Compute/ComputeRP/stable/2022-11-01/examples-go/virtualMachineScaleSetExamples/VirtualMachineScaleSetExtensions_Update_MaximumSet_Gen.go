@@ -9,28 +9,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Update_MaximumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtensions_Update_MaximumSet_Gen.json
 func ExampleVirtualMachineScaleSetExtensionsClient_BeginUpdate_virtualMachineScaleSetExtensionsUpdateMaximumSetGen() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewVirtualMachineScaleSetExtensionsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "rgcompute", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "aaaa", armcompute.VirtualMachineScaleSetExtensionUpdate{
+	poller, err := clientFactory.NewVirtualMachineScaleSetExtensionsClient().BeginUpdate(ctx, "rgcompute", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "aaaa", armcompute.VirtualMachineScaleSetExtensionUpdate{
 		Properties: &armcompute.VirtualMachineScaleSetExtensionProperties{
 			Type:                    to.Ptr("{extension-Type}"),
 			AutoUpgradeMinorVersion: to.Ptr(true),
 			EnableAutomaticUpgrade:  to.Ptr(true),
 			ForceUpdateTag:          to.Ptr("aaaaaaaaa"),
-			ProtectedSettings:       map[string]interface{}{},
+			ProtectedSettings:       map[string]any{},
 			ProvisionAfterExtensions: []*string{
 				to.Ptr("aa")},
 			Publisher:          to.Ptr("{extension-Publisher}"),
-			Settings:           map[string]interface{}{},
+			Settings:           map[string]any{},
 			SuppressFailures:   to.Ptr(true),
 			TypeHandlerVersion: to.Ptr("{handler-version}"),
 		},
@@ -42,6 +42,28 @@ func ExampleVirtualMachineScaleSetExtensionsClient_BeginUpdate_virtualMachineSca
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.VirtualMachineScaleSetExtension = armcompute.VirtualMachineScaleSetExtension{
+	// 	ID: to.Ptr("aaaaaaaa"),
+	// 	Name: to.Ptr("{extension-name}"),
+	// 	Type: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaa"),
+	// 	Properties: &armcompute.VirtualMachineScaleSetExtensionProperties{
+	// 		Type: to.Ptr("{extension-Type}"),
+	// 		AutoUpgradeMinorVersion: to.Ptr(true),
+	// 		EnableAutomaticUpgrade: to.Ptr(true),
+	// 		ForceUpdateTag: to.Ptr("aaaaaaaaa"),
+	// 		ProtectedSettings: map[string]any{
+	// 		},
+	// 		ProvisionAfterExtensions: []*string{
+	// 			to.Ptr("aa")},
+	// 			ProvisioningState: to.Ptr("Succeeded"),
+	// 			Publisher: to.Ptr("{extension-Publisher}"),
+	// 			Settings: map[string]any{
+	// 			},
+	// 			SuppressFailures: to.Ptr(true),
+	// 			TypeHandlerVersion: to.Ptr("{handler-version}"),
+	// 		},
+	// 	}
 }

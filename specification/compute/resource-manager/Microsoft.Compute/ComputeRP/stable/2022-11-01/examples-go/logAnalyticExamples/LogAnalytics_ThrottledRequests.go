@@ -11,18 +11,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/logAnalyticExamples/LogAnalytics_ThrottledRequests.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/logAnalyticExamples/LogAnalytics_ThrottledRequests.json
 func ExampleLogAnalyticsClient_BeginExportThrottledRequests() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewLogAnalyticsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginExportThrottledRequests(ctx, "westus", armcompute.ThrottledRequestsInput{
+	poller, err := clientFactory.NewLogAnalyticsClient().BeginExportThrottledRequests(ctx, "westus", armcompute.ThrottledRequestsInput{
 		BlobContainerSasURI:        to.Ptr("https://somesasuri"),
 		FromTime:                   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-21T01:54:06.862601Z"); return t }()),
 		GroupByClientApplicationID: to.Ptr(false),
@@ -38,6 +38,12 @@ func ExampleLogAnalyticsClient_BeginExportThrottledRequests() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.LogAnalyticsOperationResult = armcompute.LogAnalyticsOperationResult{
+	// 	Properties: &armcompute.LogAnalyticsOutput{
+	// 		Output: to.Ptr("https://crptestar4227.blob.core.windows.net:443/sascontainer/ThrottledRequests_20180121-0154_20180123-0154.csv"),
+	// 	},
+	// }
 }

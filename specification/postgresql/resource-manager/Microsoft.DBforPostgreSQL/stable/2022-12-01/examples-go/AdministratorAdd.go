@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-12-01/examples/AdministratorAdd.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/fce0b25dda01303f2c70de34031169b5d326998b/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-12-01/examples/AdministratorAdd.json
 func ExampleAdministratorsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpostgresqlflexibleservers.NewAdministratorsClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	clientFactory, err := armpostgresqlflexibleservers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx, "testrg", "testserver", "oooooooo-oooo-oooo-oooo-oooooooooooo", armpostgresqlflexibleservers.ActiveDirectoryAdministratorAdd{
+	poller, err := clientFactory.NewAdministratorsClient().BeginCreate(ctx, "testrg", "testserver", "oooooooo-oooo-oooo-oooo-oooooooooooo", armpostgresqlflexibleservers.ActiveDirectoryAdministratorAdd{
 		Properties: &armpostgresqlflexibleservers.AdministratorPropertiesForAdd{
 			PrincipalName: to.Ptr("testuser1@microsoft.com"),
 			PrincipalType: to.Ptr(armpostgresqlflexibleservers.PrincipalTypeUser),
@@ -34,6 +34,17 @@ func ExampleAdministratorsClient_BeginCreate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ActiveDirectoryAdministrator = armpostgresqlflexibleservers.ActiveDirectoryAdministrator{
+	// 	Name: to.Ptr("testuser1@microsoft.com"),
+	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/flexibleServers/administrators"),
+	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.DBforPostgreSQL/flexibleServers/testserver/administrators/oooooooo-oooo-oooo-oooo-oooooooooooo"),
+	// 	Properties: &armpostgresqlflexibleservers.AdministratorProperties{
+	// 		ObjectID: to.Ptr("oooooooo-oooo-oooo-oooo-oooooooooooo"),
+	// 		PrincipalName: to.Ptr("testuser1@microsoft.com"),
+	// 		PrincipalType: to.Ptr(armpostgresqlflexibleservers.PrincipalTypeUser),
+	// 	},
+	// }
 }

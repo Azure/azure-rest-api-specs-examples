@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-12-01/examples/ServerRestartWithFailover.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/fce0b25dda01303f2c70de34031169b5d326998b/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-12-01/examples/ServerRestartWithFailover.json
 func ExampleServersClient_BeginRestart_serverRestartWithFailover() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpostgresqlflexibleservers.NewServersClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	clientFactory, err := armpostgresqlflexibleservers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginRestart(ctx, "testrg", "testserver", &armpostgresqlflexibleservers.ServersClientBeginRestartOptions{Parameters: &armpostgresqlflexibleservers.RestartParameter{
+	poller, err := clientFactory.NewServersClient().BeginRestart(ctx, "testrg", "testserver", &armpostgresqlflexibleservers.ServersClientBeginRestartOptions{Parameters: &armpostgresqlflexibleservers.RestartParameter{
 		FailoverMode:        to.Ptr(armpostgresqlflexibleservers.FailoverModeForcedFailover),
 		RestartWithFailover: to.Ptr(true),
 	},

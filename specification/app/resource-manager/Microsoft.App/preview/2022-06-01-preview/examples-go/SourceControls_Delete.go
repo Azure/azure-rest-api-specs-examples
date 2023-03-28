@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/app/resource-manager/Microsoft.App/preview/2022-06-01-preview/examples/SourceControls_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/212686c8383679e034b19143e13cbeb5a40ab454/specification/app/resource-manager/Microsoft.App/preview/2022-06-01-preview/examples/SourceControls_Delete.json
 func ExampleContainerAppsSourceControlsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappcontainers.NewContainerAppsSourceControlsClient("651f8027-33e8-4ec4-97b4-f6e9f3dc8744", cred, nil)
+	clientFactory, err := armappcontainers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "workerapps-rg-xj", "testcanadacentral", "current", nil)
+	poller, err := clientFactory.NewContainerAppsSourceControlsClient().BeginDelete(ctx, "workerapps-rg-xj", "testcanadacentral", "current", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

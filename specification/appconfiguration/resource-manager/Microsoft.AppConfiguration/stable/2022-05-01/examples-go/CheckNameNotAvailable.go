@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/RegionalCheckNameAvailable.json
-func ExampleOperationsClient_RegionalCheckNameAvailability_configurationStoresCheckNameAvailable() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2022-05-01/examples/CheckNameNotAvailable.json
+func ExampleOperationsClient_CheckNameAvailability_configurationStoresCheckNameNotAvailable() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleOperationsClient_RegionalCheckNameAvailability_configurationStoresCh
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewOperationsClient().RegionalCheckNameAvailability(ctx, "westus", armappconfiguration.CheckNameAvailabilityParameters{
+	res, err := clientFactory.NewOperationsClient().CheckNameAvailability(ctx, armappconfiguration.CheckNameAvailabilityParameters{
 		Name: to.Ptr("contoso"),
 		Type: to.Ptr(armappconfiguration.ConfigurationResourceTypeMicrosoftAppConfigurationConfigurationStores),
 	}, nil)
@@ -31,7 +31,8 @@ func ExampleOperationsClient_RegionalCheckNameAvailability_configurationStoresCh
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.NameAvailabilityStatus = armappconfiguration.NameAvailabilityStatus{
-	// 	Message: to.Ptr("The specified name is available."),
-	// 	NameAvailable: to.Ptr(true),
+	// 	Message: to.Ptr("The specified name is already in use."),
+	// 	NameAvailable: to.Ptr(false),
+	// 	Reason: to.Ptr("AlreadyExists"),
 	// }
 }

@@ -8,28 +8,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/examples/ServerUsageMetricsList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/examples/ServerUsageMetricsList.json
 func ExampleServerUsagesClient_NewListByServerPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewServerUsagesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByServerPager("sqlcrudtest-6730",
-		"sqlcrudtest-9007",
-		nil)
+	pager := clientFactory.NewServerUsagesClient().NewListByServerPager("sqlcrudtest-6730", "sqlcrudtest-9007", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ServerUsageListResult = armsql.ServerUsageListResult{
+		// 	Value: []*armsql.ServerUsage{
+		// 		{
+		// 			Name: to.Ptr("server_dtu_quota"),
+		// 			CurrentValue: to.Ptr[float64](0),
+		// 			DisplayName: to.Ptr("Database Throughput Unit Quota"),
+		// 			Limit: to.Ptr[float64](45000),
+		// 			ResourceName: to.Ptr("sqlcrudtest-9007"),
+		// 			Unit: to.Ptr("DTUs"),
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("server_dtu_quota_current"),
+		// 			CurrentValue: to.Ptr[float64](0),
+		// 			DisplayName: to.Ptr("Database Throughput Unit Quota"),
+		// 			Limit: to.Ptr[float64](45000),
+		// 			ResourceName: to.Ptr("sqlcrudtest-9007"),
+		// 			Unit: to.Ptr("DTUs"),
+		// 	}},
+		// }
 	}
 }

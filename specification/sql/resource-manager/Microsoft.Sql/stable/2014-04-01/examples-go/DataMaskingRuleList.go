@@ -8,29 +8,61 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/examples/DataMaskingRuleList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/examples/DataMaskingRuleList.json
 func ExampleDataMaskingRulesClient_NewListByDatabasePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewDataMaskingRulesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByDatabasePager("sqlcrudtest-6852",
-		"sqlcrudtest-2080",
-		"sqlcrudtest-331",
-		nil)
+	pager := clientFactory.NewDataMaskingRulesClient().NewListByDatabasePager("sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.DataMaskingRuleListResult = armsql.DataMaskingRuleListResult{
+		// 	Value: []*armsql.DataMaskingRule{
+		// 		{
+		// 			Type: to.Ptr("Microsoft.Sql/servers/databases/dataMaskingPolicies/rules"),
+		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/sqlcrudtest-6852/providers/Microsoft.Sql/servers/sqlcrudtest-6852/databases/sqlcrudtest-331/dataMaskingPolicies/Default/rules/"),
+		// 			Location: to.Ptr("Central US"),
+		// 			Properties: &armsql.DataMaskingRuleProperties{
+		// 				ColumnName: to.Ptr("test1"),
+		// 				ID: to.Ptr("dbo_Table_1_test1"),
+		// 				MaskingFunction: to.Ptr(armsql.DataMaskingFunctionText),
+		// 				PrefixSize: to.Ptr("1"),
+		// 				ReplacementString: to.Ptr("asdf"),
+		// 				RuleState: to.Ptr(armsql.DataMaskingRuleStateEnabled),
+		// 				SchemaName: to.Ptr("dbo"),
+		// 				SuffixSize: to.Ptr("0"),
+		// 				TableName: to.Ptr("Table_1"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Type: to.Ptr("Microsoft.Sql/servers/databases/dataMaskingPolicies/rules"),
+		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/sqlcrudtest-6852/providers/Microsoft.Sql/servers/sqlcrudtest-6852/databases/sqlcrudtest-331/dataMaskingPolicies/Default/rules/"),
+		// 			Location: to.Ptr("Central US"),
+		// 			Properties: &armsql.DataMaskingRuleProperties{
+		// 				ColumnName: to.Ptr("test1"),
+		// 				ID: to.Ptr("dbo_Table_1_test1"),
+		// 				MaskingFunction: to.Ptr(armsql.DataMaskingFunctionNumber),
+		// 				NumberFrom: to.Ptr("0"),
+		// 				NumberTo: to.Ptr("2"),
+		// 				RuleState: to.Ptr(armsql.DataMaskingRuleStateEnabled),
+		// 				SchemaName: to.Ptr("dbo"),
+		// 				TableName: to.Ptr("Table_1"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -8,24 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CancelJobExecution.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CancelJobExecution.json
 func ExampleJobExecutionsClient_Cancel() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewJobExecutionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Cancel(ctx,
-		"group1",
-		"server1",
-		"agent1",
-		"job1",
-		"5A86BF65-43AC-F258-2524-9E92992F97CA",
-		nil)
+	_, err = clientFactory.NewJobExecutionsClient().Cancel(ctx, "group1", "server1", "agent1", "job1", "5A86BF65-43AC-F258-2524-9E92992F97CA", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

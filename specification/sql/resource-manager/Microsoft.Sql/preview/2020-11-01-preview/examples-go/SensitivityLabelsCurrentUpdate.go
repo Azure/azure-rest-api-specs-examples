@@ -9,67 +9,62 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/SensitivityLabelsCurrentUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/SensitivityLabelsCurrentUpdate.json
 func ExampleSensitivityLabelsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewSensitivityLabelsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Update(ctx,
-		"myRG",
-		"myServer",
-		"myDatabase",
-		armsql.SensitivityLabelUpdateList{
-			Operations: []*armsql.SensitivityLabelUpdate{
-				{
-					Properties: &armsql.SensitivityLabelUpdateProperties{
-						Schema: to.Ptr("dbo"),
-						Column: to.Ptr("column1"),
-						Op:     to.Ptr(armsql.SensitivityLabelUpdateKindSet),
-						SensitivityLabel: &armsql.SensitivityLabel{
-							Properties: &armsql.SensitivityLabelProperties{
-								InformationType:   to.Ptr("Financial"),
-								InformationTypeID: to.Ptr("1D3652D6-422C-4115-82F1-65DAEBC665C8"),
-								LabelID:           to.Ptr("3A477B16-9423-432B-AA97-6069B481CEC3"),
-								LabelName:         to.Ptr("Highly Confidential"),
-								Rank:              to.Ptr(armsql.SensitivityLabelRankLow),
-							},
+	_, err = clientFactory.NewSensitivityLabelsClient().Update(ctx, "myRG", "myServer", "myDatabase", armsql.SensitivityLabelUpdateList{
+		Operations: []*armsql.SensitivityLabelUpdate{
+			{
+				Properties: &armsql.SensitivityLabelUpdateProperties{
+					Schema: to.Ptr("dbo"),
+					Column: to.Ptr("column1"),
+					Op:     to.Ptr(armsql.SensitivityLabelUpdateKindSet),
+					SensitivityLabel: &armsql.SensitivityLabel{
+						Properties: &armsql.SensitivityLabelProperties{
+							InformationType:   to.Ptr("Financial"),
+							InformationTypeID: to.Ptr("1D3652D6-422C-4115-82F1-65DAEBC665C8"),
+							LabelID:           to.Ptr("3A477B16-9423-432B-AA97-6069B481CEC3"),
+							LabelName:         to.Ptr("Highly Confidential"),
+							Rank:              to.Ptr(armsql.SensitivityLabelRankLow),
 						},
-						Table: to.Ptr("table1"),
 					},
+					Table: to.Ptr("table1"),
 				},
-				{
-					Properties: &armsql.SensitivityLabelUpdateProperties{
-						Schema: to.Ptr("dbo"),
-						Column: to.Ptr("column2"),
-						Op:     to.Ptr(armsql.SensitivityLabelUpdateKindSet),
-						SensitivityLabel: &armsql.SensitivityLabel{
-							Properties: &armsql.SensitivityLabelProperties{
-								InformationType:   to.Ptr("PhoneNumber"),
-								InformationTypeID: to.Ptr("d22fa6e9-5ee4-3bde-4c2b-a409604c4646"),
-								LabelID:           to.Ptr("bf91e08c-f4f0-478a-b016-25164b2a65ff"),
-								LabelName:         to.Ptr("PII"),
-								Rank:              to.Ptr(armsql.SensitivityLabelRankCritical),
-							},
+			},
+			{
+				Properties: &armsql.SensitivityLabelUpdateProperties{
+					Schema: to.Ptr("dbo"),
+					Column: to.Ptr("column2"),
+					Op:     to.Ptr(armsql.SensitivityLabelUpdateKindSet),
+					SensitivityLabel: &armsql.SensitivityLabel{
+						Properties: &armsql.SensitivityLabelProperties{
+							InformationType:   to.Ptr("PhoneNumber"),
+							InformationTypeID: to.Ptr("d22fa6e9-5ee4-3bde-4c2b-a409604c4646"),
+							LabelID:           to.Ptr("bf91e08c-f4f0-478a-b016-25164b2a65ff"),
+							LabelName:         to.Ptr("PII"),
+							Rank:              to.Ptr(armsql.SensitivityLabelRankCritical),
 						},
-						Table: to.Ptr("table2"),
 					},
+					Table: to.Ptr("table2"),
 				},
-				{
-					Properties: &armsql.SensitivityLabelUpdateProperties{
-						Schema: to.Ptr("dbo"),
-						Column: to.Ptr("Column3"),
-						Op:     to.Ptr(armsql.SensitivityLabelUpdateKindRemove),
-						Table:  to.Ptr("Table1"),
-					},
-				}},
-		},
-		nil)
+			},
+			{
+				Properties: &armsql.SensitivityLabelUpdateProperties{
+					Schema: to.Ptr("dbo"),
+					Column: to.Ptr("Column3"),
+					Op:     to.Ptr(armsql.SensitivityLabelUpdateKindRemove),
+					Table:  to.Ptr("Table1"),
+				},
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -9,33 +9,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sql/armsql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedDatabaseCreateRestoreExternalBackup.json
-func ExampleManagedDatabasesClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedDatabaseCreateRestoreExternalBackup.json
+func ExampleManagedDatabasesClient_BeginCreateOrUpdate_createsANewManagedDatabaseByRestoringFromAnExternalBackup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsql.NewManagedDatabasesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"Default-SQL-SouthEastAsia",
-		"managedInstance",
-		"managedDatabase",
-		armsql.ManagedDatabase{
-			Location: to.Ptr("southeastasia"),
-			Properties: &armsql.ManagedDatabaseProperties{
-				AutoCompleteRestore:      to.Ptr(true),
-				Collation:                to.Ptr("SQL_Latin1_General_CP1_CI_AS"),
-				CreateMode:               to.Ptr(armsql.ManagedDatabaseCreateModeRestoreExternalBackup),
-				LastBackupName:           to.Ptr("last_backup_name"),
-				StorageContainerSasToken: to.Ptr("sv=2015-12-11&sr=c&sp=rl&sig=1234"),
-				StorageContainerURI:      to.Ptr("https://myaccountname.blob.core.windows.net/backups"),
-			},
+	poller, err := clientFactory.NewManagedDatabasesClient().BeginCreateOrUpdate(ctx, "Default-SQL-SouthEastAsia", "managedInstance", "managedDatabase", armsql.ManagedDatabase{
+		Location: to.Ptr("southeastasia"),
+		Properties: &armsql.ManagedDatabaseProperties{
+			AutoCompleteRestore:      to.Ptr(true),
+			Collation:                to.Ptr("SQL_Latin1_General_CP1_CI_AS"),
+			CreateMode:               to.Ptr(armsql.ManagedDatabaseCreateModeRestoreExternalBackup),
+			LastBackupName:           to.Ptr("last_backup_name"),
+			StorageContainerSasToken: to.Ptr("sv=2015-12-11&sr=c&sp=rl&sig=1234"),
+			StorageContainerURI:      to.Ptr("https://myaccountname.blob.core.windows.net/backups"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -43,6 +38,22 @@ func ExampleManagedDatabasesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ManagedDatabase = armsql.ManagedDatabase{
+	// 	Name: to.Ptr("testdb1"),
+	// 	Type: to.Ptr("Microsoft.Sql/managedInstances/databases"),
+	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/managedInstances/testsvr/databases/testdb1"),
+	// 	Location: to.Ptr("southeastasia"),
+	// 	Tags: map[string]*string{
+	// 		"tagKey1": to.Ptr("TagValue1"),
+	// 	},
+	// 	Properties: &armsql.ManagedDatabaseProperties{
+	// 		Collation: to.Ptr("SQL_Latin1_General_CP1_CI_AS"),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-07T04:41:33.937Z"); return t}()),
+	// 		DefaultSecondaryLocation: to.Ptr("North Europe"),
+	// 		Status: to.Ptr(armsql.ManagedDatabaseStatusOnline),
+	// 	},
+	// }
 }

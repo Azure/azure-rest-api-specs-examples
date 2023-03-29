@@ -16,11 +16,11 @@ func ExampleDisasterRecoveryConfigsClient_CheckNameAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewDisasterRecoveryConfigsClient("exampleSubscriptionId", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "exampleResourceGroup", "sdk-Namespace-9080", armservicebus.CheckNameAvailability{
+	res, err := clientFactory.NewDisasterRecoveryConfigsClient().CheckNameAvailability(ctx, "exampleResourceGroup", "sdk-Namespace-9080", armservicebus.CheckNameAvailability{
 		Name: to.Ptr("sdk-DisasterRecovery-9474"),
 	}, nil)
 	if err != nil {

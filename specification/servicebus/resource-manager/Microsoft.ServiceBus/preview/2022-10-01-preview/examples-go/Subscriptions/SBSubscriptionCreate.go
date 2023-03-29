@@ -16,11 +16,11 @@ func ExampleSubscriptionsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewSubscriptionsClient("Subscriptionid", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "ResourceGroup", "sdk-Namespace-1349", "sdk-Topics-8740", "sdk-Subscriptions-2178", armservicebus.SBSubscription{
+	res, err := clientFactory.NewSubscriptionsClient().CreateOrUpdate(ctx, "ResourceGroup", "sdk-Namespace-1349", "sdk-Topics-8740", "sdk-Subscriptions-2178", armservicebus.SBSubscription{
 		Properties: &armservicebus.SBSubscriptionProperties{
 			EnableBatchedOperations: to.Ptr(true),
 		},

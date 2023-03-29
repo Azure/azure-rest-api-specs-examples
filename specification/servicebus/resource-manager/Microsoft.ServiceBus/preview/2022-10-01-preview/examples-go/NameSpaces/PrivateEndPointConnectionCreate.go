@@ -16,11 +16,11 @@ func ExamplePrivateEndpointConnectionsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewPrivateEndpointConnectionsClient("subID", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "ArunMonocle", "sdk-Namespace-2924", "privateEndpointConnectionName", armservicebus.PrivateEndpointConnection{
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().CreateOrUpdate(ctx, "ArunMonocle", "sdk-Namespace-2924", "privateEndpointConnectionName", armservicebus.PrivateEndpointConnection{
 		Properties: &armservicebus.PrivateEndpointConnectionProperties{
 			PrivateEndpoint: &armservicebus.PrivateEndpoint{
 				ID: to.Ptr("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-ServiceBus-8396/providers/Microsoft.Network/privateEndpoints/sdk-Namespace-2847"),

@@ -15,11 +15,11 @@ func ExampleQueuesClient_GetAuthorizationRule() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewQueuesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetAuthorizationRule(ctx, "ArunMonocle", "sdk-Namespace-7982", "sdk-Queues-2317", "sdk-AuthRules-5800", nil)
+	res, err := clientFactory.NewQueuesClient().GetAuthorizationRule(ctx, "ArunMonocle", "sdk-Namespace-7982", "sdk-Queues-2317", "sdk-AuthRules-5800", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

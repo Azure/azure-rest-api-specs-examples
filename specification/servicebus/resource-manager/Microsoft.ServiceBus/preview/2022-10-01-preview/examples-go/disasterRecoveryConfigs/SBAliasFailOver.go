@@ -15,11 +15,11 @@ func ExampleDisasterRecoveryConfigsClient_FailOver() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewDisasterRecoveryConfigsClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.FailOver(ctx, "ardsouzatestRG", "sdk-Namespace-8860", "sdk-DisasterRecovery-3814", &armservicebus.DisasterRecoveryConfigsClientFailOverOptions{Parameters: nil})
+	_, err = clientFactory.NewDisasterRecoveryConfigsClient().FailOver(ctx, "ardsouzatestRG", "sdk-Namespace-8860", "sdk-DisasterRecovery-3814", &armservicebus.DisasterRecoveryConfigsClientFailOverOptions{Parameters: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

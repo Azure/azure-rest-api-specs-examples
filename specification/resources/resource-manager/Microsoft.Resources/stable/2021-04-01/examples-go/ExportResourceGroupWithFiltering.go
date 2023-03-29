@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4fd842fb73656039ec94ce367bcedee25a57bd18/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/ExportResourceGroup.json
-func ExampleResourceGroupsClient_BeginExportTemplate_exportAResourceGroup() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4fd842fb73656039ec94ce367bcedee25a57bd18/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/ExportResourceGroupWithFiltering.json
+func ExampleResourceGroupsClient_BeginExportTemplate_exportAResourceGroupWithFiltering() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -21,9 +21,9 @@ func ExampleResourceGroupsClient_BeginExportTemplate_exportAResourceGroup() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	poller, err := clientFactory.NewResourceGroupsClient().BeginExportTemplate(ctx, "my-resource-group", armresources.ExportTemplateRequest{
-		Options: to.Ptr("IncludeParameterDefaultValue,IncludeComments"),
+		Options: to.Ptr("SkipResourceNameParameterization"),
 		Resources: []*string{
-			to.Ptr("*")},
+			to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/My.RP/myResourceType/myFirstResource")},
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -36,46 +36,23 @@ func ExampleResourceGroupsClient_BeginExportTemplate_exportAResourceGroup() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.ResourceGroupExportResult = armresources.ResourceGroupExportResult{
-	// 	Error: &armresources.ErrorResponse{
-	// 		Code: to.Ptr("ExportTemplateCompletedWithErrors"),
-	// 		Message: to.Ptr("Export template operation completed with errors. Some resources were not exported. Please see details for more information."),
-	// 		Details: []*armresources.ErrorResponse{
-	// 		},
-	// 	},
 	// 	Template: map[string]any{
 	// 		"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
 	// 		"contentVersion": "1.0.0.0",
 	// 		"parameters":map[string]any{
-	// 			"myResourceType_myFirstResource_name":map[string]any{
-	// 				"type": "String",
-	// 				"defaultValue": "myFirstResource",
-	// 			},
 	// 			"myResourceType_myFirstResource_secret":map[string]any{
 	// 				"type": "SecureString",
 	// 				"defaultValue": nil,
 	// 			},
-	// 			"myResourceType_mySecondResource_name":map[string]any{
-	// 				"type": "String",
-	// 				"defaultValue": "mySecondResource",
-	// 			},
 	// 		},
 	// 		"resources":[]any{
 	// 			map[string]any{
-	// 				"name": "[parameters('myResourceType_myFirstResource_name')]",
+	// 				"name": "myFirstResource",
 	// 				"type": "My.RP/myResourceType",
 	// 				"apiVersion": "2019-01-01",
 	// 				"location": "West US",
 	// 				"properties":map[string]any{
 	// 					"secret": "[parameters('myResourceType_myFirstResource_secret')]",
-	// 				},
-	// 			},
-	// 			map[string]any{
-	// 				"name": "[parameters('myResourceType_mySecondResource_name')]",
-	// 				"type": "My.RP/myResourceType",
-	// 				"apiVersion": "2019-01-01",
-	// 				"location": "West US",
-	// 				"properties":map[string]any{
-	// 					"customProperty": "hello!",
 	// 				},
 	// 			},
 	// 		},

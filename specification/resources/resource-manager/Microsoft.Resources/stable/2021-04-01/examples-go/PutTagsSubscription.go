@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4fd842fb73656039ec94ce367bcedee25a57bd18/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/PutTagsResource.json
-func ExampleTagsClient_CreateOrUpdateAtScope_updateTagsOnAResource() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4fd842fb73656039ec94ce367bcedee25a57bd18/specification/resources/resource-manager/Microsoft.Resources/stable/2021-04-01/examples/PutTagsSubscription.json
+func ExampleTagsClient_CreateOrUpdateAtScope_updateTagsOnASubscription() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleTagsClient_CreateOrUpdateAtScope_updateTagsOnAResource() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewTagsClient().CreateOrUpdateAtScope(ctx, "subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/myPRNameSpace/VM/myVm", armresources.TagsResource{
+	res, err := clientFactory.NewTagsClient().CreateOrUpdateAtScope(ctx, "subscriptions/00000000-0000-0000-0000-000000000000", armresources.TagsResource{
 		Properties: &armresources.Tags{
 			Tags: map[string]*string{
 				"tagKey1": to.Ptr("tag-value-1"),

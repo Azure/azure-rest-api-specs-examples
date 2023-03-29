@@ -16,11 +16,11 @@ func ExampleBackupInstancesClient_BeginValidateForBackup() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewBackupInstancesClient("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginValidateForBackup(ctx, "000pikumar", "PratikPrivatePreviewVault1", armdataprotection.ValidateForBackupRequest{
+	poller, err := clientFactory.NewBackupInstancesClient().BeginValidateForBackup(ctx, "000pikumar", "PratikPrivatePreviewVault1", armdataprotection.ValidateForBackupRequest{
 		BackupInstance: &armdataprotection.BackupInstance{
 			DataSourceInfo: &armdataprotection.Datasource{
 				DatasourceType:   to.Ptr("OssDB"),

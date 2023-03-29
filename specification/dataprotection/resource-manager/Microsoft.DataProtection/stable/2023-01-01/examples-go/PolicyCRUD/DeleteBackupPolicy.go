@@ -15,11 +15,11 @@ func ExampleBackupPoliciesClient_Delete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewBackupPoliciesClient("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx, "000pikumar", "PrivatePreviewVault", "OSSDBPolicy", nil)
+	_, err = clientFactory.NewBackupPoliciesClient().Delete(ctx, "000pikumar", "PrivatePreviewVault", "OSSDBPolicy", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

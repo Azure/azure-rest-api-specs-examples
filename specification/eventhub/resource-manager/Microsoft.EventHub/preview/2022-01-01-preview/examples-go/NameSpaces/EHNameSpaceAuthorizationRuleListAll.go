@@ -8,28 +8,51 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/examples/NameSpaces/EHNameSpaceAuthorizationRuleListAll.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/2f2b633d940230cbbd5bcf1339a2e1c48674e4a2/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/examples/NameSpaces/EHNameSpaceAuthorizationRuleListAll.json
 func ExampleNamespacesClient_NewListAuthorizationRulesPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewNamespacesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armeventhub.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListAuthorizationRulesPager("ArunMonocle",
-		"sdk-Namespace-2702",
-		nil)
+	pager := clientFactory.NewNamespacesClient().NewListAuthorizationRulesPager("ArunMonocle", "sdk-Namespace-2702", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.AuthorizationRuleListResult = armeventhub.AuthorizationRuleListResult{
+		// 	Value: []*armeventhub.AuthorizationRule{
+		// 		{
+		// 			Name: to.Ptr("RootManageSharedAccessKey"),
+		// 			Type: to.Ptr("Microsoft.EventHub/Namespaces/AuthorizationRules"),
+		// 			ID: to.Ptr("/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.EventHub/namespaces/sdk-Namespace-2702/AuthorizationRules?api-version=2017-04-01/RootManageSharedAccessKey"),
+		// 			Properties: &armeventhub.AuthorizationRuleProperties{
+		// 				Rights: []*armeventhub.AccessRights{
+		// 					to.Ptr(armeventhub.AccessRightsListen),
+		// 					to.Ptr(armeventhub.AccessRightsManage),
+		// 					to.Ptr(armeventhub.AccessRightsSend)},
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("sdk-Authrules-1746"),
+		// 				Type: to.Ptr("Microsoft.EventHub/Namespaces/AuthorizationRules"),
+		// 				ID: to.Ptr("/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.EventHub/namespaces/sdk-Namespace-2702/AuthorizationRules?api-version=2017-04-01/sdk-Authrules-1746"),
+		// 				Properties: &armeventhub.AuthorizationRuleProperties{
+		// 					Rights: []*armeventhub.AccessRights{
+		// 						to.Ptr(armeventhub.AccessRightsListen),
+		// 						to.Ptr(armeventhub.AccessRightsSend)},
+		// 					},
+		// 			}},
+		// 		}
 	}
 }

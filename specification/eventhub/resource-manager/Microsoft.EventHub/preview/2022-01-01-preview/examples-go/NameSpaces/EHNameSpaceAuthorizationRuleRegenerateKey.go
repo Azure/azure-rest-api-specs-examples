@@ -9,28 +9,31 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/examples/NameSpaces/EHNameSpaceAuthorizationRuleRegenerateKey.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/2f2b633d940230cbbd5bcf1339a2e1c48674e4a2/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/examples/NameSpaces/EHNameSpaceAuthorizationRuleRegenerateKey.json
 func ExampleNamespacesClient_RegenerateKeys() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewNamespacesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armeventhub.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.RegenerateKeys(ctx,
-		"ArunMonocle",
-		"sdk-Namespace-8980",
-		"sdk-Authrules-8929",
-		armeventhub.RegenerateAccessKeyParameters{
-			KeyType: to.Ptr(armeventhub.KeyTypePrimaryKey),
-		},
-		nil)
+	res, err := clientFactory.NewNamespacesClient().RegenerateKeys(ctx, "ArunMonocle", "sdk-Namespace-8980", "sdk-Authrules-8929", armeventhub.RegenerateAccessKeyParameters{
+		KeyType: to.Ptr(armeventhub.KeyTypePrimaryKey),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AccessKeys = armeventhub.AccessKeys{
+	// 	KeyName: to.Ptr("sdk-Authrules-8929"),
+	// 	PrimaryConnectionString: to.Ptr("Endpoint=sb://sdk-namespace-8980.servicebus.windows-int.net/;SharedAccessKeyName=sdk-Authrules-8929;SharedAccessKey=############################################"),
+	// 	PrimaryKey: to.Ptr("############################################"),
+	// 	SecondaryConnectionString: to.Ptr("Endpoint=sb://sdk-namespace-8980.servicebus.windows-int.net/;SharedAccessKeyName=sdk-Authrules-8929;SharedAccessKey=############################################"),
+	// 	SecondaryKey: to.Ptr("############################################"),
+	// }
 }

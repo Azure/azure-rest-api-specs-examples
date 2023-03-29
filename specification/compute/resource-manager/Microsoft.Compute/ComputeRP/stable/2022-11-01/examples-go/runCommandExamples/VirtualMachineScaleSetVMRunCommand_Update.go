@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/runCommandExamples/VirtualMachineScaleSetVMRunCommand_Update.json
 func ExampleVirtualMachineScaleSetVMRunCommandsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewVirtualMachineScaleSetVMRunCommandsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "myResourceGroup", "myvmScaleSet", "0", "myRunCommand", armcompute.VirtualMachineRunCommandUpdate{
+	poller, err := clientFactory.NewVirtualMachineScaleSetVMRunCommandsClient().BeginUpdate(ctx, "myResourceGroup", "myvmScaleSet", "0", "myRunCommand", armcompute.VirtualMachineRunCommandUpdate{
 		Properties: &armcompute.VirtualMachineRunCommandProperties{
 			Source: &armcompute.VirtualMachineRunCommandScriptSource{
 				Script: to.Ptr("Write-Host Script Source Updated!"),
@@ -34,6 +34,35 @@ func ExampleVirtualMachineScaleSetVMRunCommandsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.VirtualMachineRunCommand = armcompute.VirtualMachineRunCommand{
+	// 	Name: to.Ptr("myRunCommand"),
+	// 	Type: to.Ptr("Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myvmScaleSet/virtualMachines/0/runCommands/myRunCommand"),
+	// 	Location: to.Ptr("westus"),
+	// 	Tags: map[string]*string{
+	// 		"tag1": to.Ptr("value1"),
+	// 		"tag2": to.Ptr("value2"),
+	// 	},
+	// 	Properties: &armcompute.VirtualMachineRunCommandProperties{
+	// 		AsyncExecution: to.Ptr(false),
+	// 		Parameters: []*armcompute.RunCommandInputParameter{
+	// 			{
+	// 				Name: to.Ptr("param1"),
+	// 				Value: to.Ptr("value1"),
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("param2"),
+	// 				Value: to.Ptr("value2"),
+	// 		}},
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 		RunAsUser: to.Ptr("user1"),
+	// 		Source: &armcompute.VirtualMachineRunCommandScriptSource{
+	// 			Script: to.Ptr("Write-Host Script Source Updated!"),
+	// 		},
+	// 		TimeoutInSeconds: to.Ptr[int32](3600),
+	// 	},
+	// }
 }

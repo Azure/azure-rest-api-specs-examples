@@ -8,23 +8,55 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-03-03/examples/galleryExamples/CommunityGallery_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2022-03-03/examples/galleryExamples/CommunityGallery_Get.json
 func ExampleGalleriesClient_Get_getACommunityGallery() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewGalleriesClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "myResourceGroup", "myGalleryName", &armcompute.GalleriesClientGetOptions{Select: nil,
+	res, err := clientFactory.NewGalleriesClient().Get(ctx, "myResourceGroup", "myGalleryName", &armcompute.GalleriesClientGetOptions{Select: nil,
 		Expand: nil,
 	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Gallery = armcompute.Gallery{
+	// 	Name: to.Ptr("myGalleryName"),
+	// 	Location: to.Ptr("West US"),
+	// 	Properties: &armcompute.GalleryProperties{
+	// 		Description: to.Ptr("This is the gallery description."),
+	// 		Identifier: &armcompute.GalleryIdentifier{
+	// 			UniqueName: to.Ptr("{subscription-id}-MYGALLERYNAME"),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armcompute.GalleryProvisioningStateSucceeded),
+	// 		SharingProfile: &armcompute.SharingProfile{
+	// 			CommunityGalleryInfo: &armcompute.CommunityGalleryInfo{
+	// 				CommunityGalleryEnabled: to.Ptr(true),
+	// 				Eula: to.Ptr("eula"),
+	// 				PublicNames: []*string{
+	// 					to.Ptr("GalelryPublicName")},
+	// 					PublisherContact: to.Ptr("pir@microsoft.com"),
+	// 					PublisherURI: to.Ptr("uri"),
+	// 				},
+	// 				Permissions: to.Ptr(armcompute.GallerySharingPermissionTypesCommunity),
+	// 			},
+	// 			SharingStatus: &armcompute.SharingStatus{
+	// 				AggregatedState: to.Ptr(armcompute.SharingStateSucceeded),
+	// 				Summary: []*armcompute.RegionalSharingStatus{
+	// 					{
+	// 						Region: to.Ptr("westus"),
+	// 						State: to.Ptr(armcompute.SharingStateSucceeded),
+	// 						Details: to.Ptr(""),
+	// 				}},
+	// 			},
+	// 		},
+	// 	}
 }

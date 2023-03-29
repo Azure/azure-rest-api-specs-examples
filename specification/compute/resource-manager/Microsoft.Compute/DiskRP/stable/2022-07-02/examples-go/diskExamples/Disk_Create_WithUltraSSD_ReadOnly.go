@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskExamples/Disk_Create_WithUltraSSD_ReadOnly.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/examples/diskExamples/Disk_Create_WithUltraSSD_ReadOnly.json
 func ExampleDisksClient_BeginCreateOrUpdate_createAManagedDiskWithUltraAccountTypeWithReadOnlyPropertySet() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewDisksClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "myResourceGroup", "myUltraReadOnlyDisk", armcompute.Disk{
+	poller, err := clientFactory.NewDisksClient().BeginCreateOrUpdate(ctx, "myResourceGroup", "myUltraReadOnlyDisk", armcompute.Disk{
 		Location: to.Ptr("West US"),
 		Properties: &armcompute.DiskProperties{
 			CreationData: &armcompute.CreationData{
@@ -45,6 +45,25 @@ func ExampleDisksClient_BeginCreateOrUpdate_createAManagedDiskWithUltraAccountTy
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Disk = armcompute.Disk{
+	// 	Name: to.Ptr("myUltraReadOnlyDisk"),
+	// 	Location: to.Ptr("West US"),
+	// 	Properties: &armcompute.DiskProperties{
+	// 		CreationData: &armcompute.CreationData{
+	// 			CreateOption: to.Ptr(armcompute.DiskCreateOptionEmpty),
+	// 		},
+	// 		DiskSizeGB: to.Ptr[int32](200),
+	// 		Encryption: &armcompute.Encryption{
+	// 			Type: to.Ptr(armcompute.EncryptionTypeEncryptionAtRestWithPlatformKey),
+	// 		},
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 	},
+	// 	SKU: &armcompute.DiskSKU{
+	// 		Name: to.Ptr(armcompute.DiskStorageAccountTypesUltraSSDLRS),
+	// 		Tier: to.Ptr("Ultra"),
+	// 	},
+	// }
 }

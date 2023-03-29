@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_SimulateEviction.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_SimulateEviction.json
 func ExampleVirtualMachineScaleSetVMsClient_SimulateEviction() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewVirtualMachineScaleSetVMsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.SimulateEviction(ctx, "ResourceGroup", "VmScaleSetName", "InstanceId", nil)
+	_, err = clientFactory.NewVirtualMachineScaleSetVMsClient().SimulateEviction(ctx, "ResourceGroup", "VmScaleSetName", "InstanceId", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

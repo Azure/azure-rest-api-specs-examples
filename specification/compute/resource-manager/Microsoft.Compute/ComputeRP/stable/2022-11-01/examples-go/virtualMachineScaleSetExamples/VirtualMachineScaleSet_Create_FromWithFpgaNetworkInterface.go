@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_FromWithFpgaNetworkInterface.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_FromWithFpgaNetworkInterface.json
 func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWithFpgaNetworkInterfaces() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewVirtualMachineScaleSetsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "myResourceGroup", "{vmss-name}", armcompute.VirtualMachineScaleSet{
+	poller, err := clientFactory.NewVirtualMachineScaleSetsClient().BeginCreateOrUpdate(ctx, "myResourceGroup", "{vmss-name}", armcompute.VirtualMachineScaleSet{
 		Location: to.Ptr("westus"),
 		Properties: &armcompute.VirtualMachineScaleSetProperties{
 			Overprovision: to.Ptr(true),
@@ -99,6 +99,98 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.VirtualMachineScaleSet = armcompute.VirtualMachineScaleSet{
+	// 	Name: to.Ptr("{vmss-name}"),
+	// 	Type: to.Ptr("Microsoft.Compute/virtualMachineScaleSets"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/{vmss-name}"),
+	// 	Location: to.Ptr("westus"),
+	// 	Properties: &armcompute.VirtualMachineScaleSetProperties{
+	// 		Overprovision: to.Ptr(true),
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 		SinglePlacementGroup: to.Ptr(true),
+	// 		UniqueID: to.Ptr("afa2afa8-9e49-48fb-9d18-c86323b5d064"),
+	// 		UpgradePolicy: &armcompute.UpgradePolicy{
+	// 			Mode: to.Ptr(armcompute.UpgradeModeManual),
+	// 		},
+	// 		VirtualMachineProfile: &armcompute.VirtualMachineScaleSetVMProfile{
+	// 			NetworkProfile: &armcompute.VirtualMachineScaleSetNetworkProfile{
+	// 				NetworkInterfaceConfigurations: []*armcompute.VirtualMachineScaleSetNetworkConfiguration{
+	// 					{
+	// 						Name: to.Ptr("{vmss-name}"),
+	// 						Properties: &armcompute.VirtualMachineScaleSetNetworkConfigurationProperties{
+	// 							DNSSettings: &armcompute.VirtualMachineScaleSetNetworkConfigurationDNSSettings{
+	// 								DNSServers: []*string{
+	// 								},
+	// 							},
+	// 							EnableAcceleratedNetworking: to.Ptr(false),
+	// 							EnableIPForwarding: to.Ptr(true),
+	// 							IPConfigurations: []*armcompute.VirtualMachineScaleSetIPConfiguration{
+	// 								{
+	// 									Name: to.Ptr("{vmss-name}"),
+	// 									Properties: &armcompute.VirtualMachineScaleSetIPConfigurationProperties{
+	// 										PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+	// 										Subnet: &armcompute.APIEntityReference{
+	// 											ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/nsgExistingVnet/subnets/nsgExistingSubnet"),
+	// 										},
+	// 									},
+	// 							}},
+	// 							Primary: to.Ptr(true),
+	// 						},
+	// 					},
+	// 					{
+	// 						Name: to.Ptr("{fpgaNic-Name}"),
+	// 						Properties: &armcompute.VirtualMachineScaleSetNetworkConfigurationProperties{
+	// 							DNSSettings: &armcompute.VirtualMachineScaleSetNetworkConfigurationDNSSettings{
+	// 								DNSServers: []*string{
+	// 								},
+	// 							},
+	// 							EnableAcceleratedNetworking: to.Ptr(false),
+	// 							EnableFpga: to.Ptr(true),
+	// 							IPConfigurations: []*armcompute.VirtualMachineScaleSetIPConfiguration{
+	// 								{
+	// 									Name: to.Ptr("{fpgaNic-Name}"),
+	// 									Properties: &armcompute.VirtualMachineScaleSetIPConfigurationProperties{
+	// 										Primary: to.Ptr(true),
+	// 										PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+	// 										Subnet: &armcompute.APIEntityReference{
+	// 											ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name}"),
+	// 										},
+	// 									},
+	// 							}},
+	// 							Primary: to.Ptr(false),
+	// 						},
+	// 				}},
+	// 			},
+	// 			OSProfile: &armcompute.VirtualMachineScaleSetOSProfile{
+	// 				AdminUsername: to.Ptr("{your-username}"),
+	// 				ComputerNamePrefix: to.Ptr("{vmss-name}"),
+	// 				LinuxConfiguration: &armcompute.LinuxConfiguration{
+	// 					DisablePasswordAuthentication: to.Ptr(false),
+	// 				},
+	// 				Secrets: []*armcompute.VaultSecretGroup{
+	// 				},
+	// 			},
+	// 			StorageProfile: &armcompute.VirtualMachineScaleSetStorageProfile{
+	// 				ImageReference: &armcompute.ImageReference{
+	// 					ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/nsgcustom"),
+	// 				},
+	// 				OSDisk: &armcompute.VirtualMachineScaleSetOSDisk{
+	// 					Caching: to.Ptr(armcompute.CachingTypesReadWrite),
+	// 					CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesFromImage),
+	// 					ManagedDisk: &armcompute.VirtualMachineScaleSetManagedDiskParameters{
+	// 						StorageAccountType: to.Ptr(armcompute.StorageAccountTypesStandardLRS),
+	// 					},
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// 	SKU: &armcompute.SKU{
+	// 		Name: to.Ptr("Standard_D1_v2"),
+	// 		Capacity: to.Ptr[int64](3),
+	// 		Tier: to.Ptr("Standard"),
+	// 	},
+	// }
 }

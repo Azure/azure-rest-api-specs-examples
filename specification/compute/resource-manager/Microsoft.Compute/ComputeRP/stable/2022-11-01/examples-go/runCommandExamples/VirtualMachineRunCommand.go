@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/runCommandExamples/VirtualMachineRunCommand.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/runCommandExamples/VirtualMachineRunCommand.json
 func ExampleVirtualMachinesClient_BeginRunCommand() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewVirtualMachinesClient("24fb23e3-6ba3-41f0-9b6e-e41131d5d61e", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginRunCommand(ctx, "crptestar98131", "vm3036", armcompute.RunCommandInput{
+	poller, err := clientFactory.NewVirtualMachinesClient().BeginRunCommand(ctx, "crptestar98131", "vm3036", armcompute.RunCommandInput{
 		CommandID: to.Ptr("RunPowerShellScript"),
 	}, nil)
 	if err != nil {
@@ -30,6 +30,22 @@ func ExampleVirtualMachinesClient_BeginRunCommand() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.RunCommandResult = armcompute.RunCommandResult{
+	// 	Value: []*armcompute.InstanceViewStatus{
+	// 		{
+	// 			Code: to.Ptr("ComponentStatus/StdOut/succeeded"),
+	// 			DisplayStatus: to.Ptr("Provisioning succeeded"),
+	// 			Level: to.Ptr(armcompute.StatusLevelTypesInfo),
+	// 			Message: to.Ptr("This is a sample script with parameters value1 value2"),
+	// 		},
+	// 		{
+	// 			Code: to.Ptr("ComponentStatus/StdErr/succeeded"),
+	// 			DisplayStatus: to.Ptr("Provisioning succeeded"),
+	// 			Level: to.Ptr(armcompute.StatusLevelTypesInfo),
+	// 			Message: to.Ptr(""),
+	// 	}},
+	// }
 }

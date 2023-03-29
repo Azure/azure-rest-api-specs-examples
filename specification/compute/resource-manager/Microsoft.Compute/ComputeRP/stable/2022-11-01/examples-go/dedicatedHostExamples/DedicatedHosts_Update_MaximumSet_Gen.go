@@ -11,18 +11,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/dedicatedHostExamples/DedicatedHosts_Update_MaximumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/19f98c9f526f8db961f172276dd6d6882a86ed86/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2022-11-01/examples/dedicatedHostExamples/DedicatedHosts_Update_MaximumSet_Gen.json
 func ExampleDedicatedHostsClient_BeginUpdate_dedicatedHostsUpdateMaximumSetGen() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcompute.NewDedicatedHostsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcompute.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "rgcompute", "aaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaa", armcompute.DedicatedHostUpdate{
+	poller, err := clientFactory.NewDedicatedHostsClient().BeginUpdate(ctx, "rgcompute", "aaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaa", armcompute.DedicatedHostUpdate{
 		Tags: map[string]*string{
 			"key8813": to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaaaaa"),
 		},
@@ -56,6 +56,50 @@ func ExampleDedicatedHostsClient_BeginUpdate_dedicatedHostsUpdateMaximumSetGen()
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DedicatedHost = armcompute.DedicatedHost{
+	// 	Name: to.Ptr("myDedicatedHost"),
+	// 	Type: to.Ptr("aaaaaaaaaaaaaaaaaaa"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/HostGroups/myDedicatedHostGroup/hosts/myDedicatedHost"),
+	// 	Location: to.Ptr("westus"),
+	// 	Tags: map[string]*string{
+	// 	},
+	// 	Properties: &armcompute.DedicatedHostProperties{
+	// 		AutoReplaceOnFailure: to.Ptr(true),
+	// 		HostID: to.Ptr("{GUID}"),
+	// 		InstanceView: &armcompute.DedicatedHostInstanceView{
+	// 			AssetID: to.Ptr("aaaaaaaaaaaaaaaa"),
+	// 			AvailableCapacity: &armcompute.DedicatedHostAvailableCapacity{
+	// 				AllocatableVMs: []*armcompute.DedicatedHostAllocatableVM{
+	// 					{
+	// 						Count: to.Ptr[float64](26),
+	// 						VMSize: to.Ptr("aaaaaaaaaaaaaaaaaaaa"),
+	// 				}},
+	// 			},
+	// 			Statuses: []*armcompute.InstanceViewStatus{
+	// 				{
+	// 					Code: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaa"),
+	// 					DisplayStatus: to.Ptr("aaaaaa"),
+	// 					Level: to.Ptr(armcompute.StatusLevelTypesInfo),
+	// 					Message: to.Ptr("a"),
+	// 					Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T12:58:26.522Z"); return t}()),
+	// 			}},
+	// 		},
+	// 		LicenseType: to.Ptr(armcompute.DedicatedHostLicenseTypesWindowsServerHybrid),
+	// 		PlatformFaultDomain: to.Ptr[int32](1),
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 		ProvisioningTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-30T12:58:26.526Z"); return t}()),
+	// 		VirtualMachines: []*armcompute.SubResourceReadOnly{
+	// 			{
+	// 				ID: to.Ptr("aaaa"),
+	// 		}},
+	// 	},
+	// 	SKU: &armcompute.SKU{
+	// 		Name: to.Ptr("DSv3-Type1"),
+	// 		Capacity: to.Ptr[int64](7),
+	// 		Tier: to.Ptr("aaa"),
+	// 	},
+	// }
 }

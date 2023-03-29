@@ -8,24 +8,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/billing/armbilling"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/examples/CustomerPolicy.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/billing/resource-manager/Microsoft.Billing/stable/2020-05-01/examples/CustomerPolicy.json
 func ExamplePoliciesClient_GetByCustomer() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armbilling.NewPoliciesClient(cred, nil)
+	clientFactory, err := armbilling.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetByCustomer(ctx,
-		"{billingAccountName}",
-		"{customerName}",
-		nil)
+	res, err := clientFactory.NewPoliciesClient().GetByCustomer(ctx, "{billingAccountName}", "{customerName}", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CustomerPolicy = armbilling.CustomerPolicy{
+	// 	Name: to.Ptr("default"),
+	// 	Type: to.Ptr("Microsoft.Billing/billingAccounts/customers/policies"),
+	// 	ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerName}/policies/default"),
+	// 	Properties: &armbilling.CustomerPolicyProperties{
+	// 		ViewCharges: to.Ptr(armbilling.ViewChargesAllowed),
+	// 	},
+	// }
 }

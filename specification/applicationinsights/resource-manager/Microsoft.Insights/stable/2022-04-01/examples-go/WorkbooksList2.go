@@ -8,29 +8,33 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-04-01/examples/WorkbooksList2.json
-func ExampleWorkbooksClient_NewListBySubscriptionPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7932c2df6c8435d6c0e5cbebbca79bce627d5f06/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-04-01/examples/WorkbooksList2.json
+func ExampleWorkbooksClient_NewListBySubscriptionPager_workbooksList2() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewWorkbooksClient("6b643656-33eb-422f-aee8-3ac145d124af", cred, nil)
+	clientFactory, err := armapplicationinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBySubscriptionPager(armapplicationinsights.CategoryTypeWorkbook,
-		&armapplicationinsights.WorkbooksClientListBySubscriptionOptions{Tags: []string{},
-			CanFetchContent: nil,
-		})
+	pager := clientFactory.NewWorkbooksClient().NewListBySubscriptionPager(armapplicationinsights.CategoryTypeWorkbook, &armapplicationinsights.WorkbooksClientListBySubscriptionOptions{Tags: []string{},
+		CanFetchContent: nil,
+	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.WorkbooksListResult = armapplicationinsights.WorkbooksListResult{
+		// 	Value: []*armapplicationinsights.Workbook{
+		// 	},
+		// }
 	}
 }

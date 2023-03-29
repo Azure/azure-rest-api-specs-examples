@@ -8,25 +8,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/examples/ComponentLinkedStorageAccountsGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7932c2df6c8435d6c0e5cbebbca79bce627d5f06/specification/applicationinsights/resource-manager/Microsoft.Insights/preview/2020-03-01-preview/examples/ComponentLinkedStorageAccountsGet.json
 func ExampleComponentLinkedStorageAccountsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapplicationinsights.NewComponentLinkedStorageAccountsClient("86dc51d3-92ed-4d7e-947a-775ea79b4918", cred, nil)
+	clientFactory, err := armapplicationinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"someResourceGroupName",
-		"myComponent",
-		armapplicationinsights.StorageTypeServiceProfiler,
-		nil)
+	res, err := clientFactory.NewComponentLinkedStorageAccountsClient().Get(ctx, "someResourceGroupName", "myComponent", armapplicationinsights.StorageTypeServiceProfiler, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ComponentLinkedStorageAccounts = armapplicationinsights.ComponentLinkedStorageAccounts{
+	// 	Name: to.Ptr("serviceprofile"),
+	// 	Type: to.Ptr("microsoft.insights/components/linkedStorageAccounts"),
+	// 	ID: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4918/resourceGroups/someResourceGroupName/providers/microsoft.insights/components/myComponent/linkedStorageAccounts/serviceprofiler"),
+	// 	Properties: &armapplicationinsights.LinkedStorageAccountsProperties{
+	// 		LinkedStorageAccount: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4918/resourceGroups/someResourceGroupName/providers/Microsoft.Storage/storageAccounts/storageaccountname"),
+	// 	},
+	// }
 }

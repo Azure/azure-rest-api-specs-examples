@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deploymentmanager/armdeploymentmanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/artifactsource_createorupdate.json
-func ExampleArtifactSourcesClient_CreateOrUpdate_createArtifactSource() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/artifactsource_createorupdate_artifactroot.json
+func ExampleArtifactSourcesClient_CreateOrUpdate_createArtifactSourceWithArtifactRootAnOffsetIntoTheStorageContainer() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -24,6 +24,7 @@ func ExampleArtifactSourcesClient_CreateOrUpdate_createArtifactSource() {
 		Location: to.Ptr("centralus"),
 		Tags:     map[string]*string{},
 		Properties: &armdeploymentmanager.ArtifactSourceProperties{
+			ArtifactRoot: to.Ptr("1.0.0.0"),
 			Authentication: &armdeploymentmanager.SasAuthentication{
 				Type: to.Ptr("Sas"),
 				Properties: &armdeploymentmanager.SasProperties{

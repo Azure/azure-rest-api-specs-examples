@@ -15,11 +15,11 @@ func ExampleAccountsClient_ListUsages() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewAccountsClient("5a4f5c2e-6983-4ccb-bd34-2196d5b5bbd3", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListUsages(ctx, "myResourceGroup", "TestUsage02", &armcognitiveservices.AccountsClientListUsagesOptions{Filter: nil})
+	res, err := clientFactory.NewAccountsClient().ListUsages(ctx, "myResourceGroup", "TestUsage02", &armcognitiveservices.AccountsClientListUsagesOptions{Filter: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

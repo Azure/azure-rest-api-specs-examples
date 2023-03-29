@@ -15,11 +15,11 @@ func ExamplePrivateEndpointConnectionsClient_List() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewPrivateEndpointConnectionsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.List(ctx, "res6977", "sto2527", nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().List(ctx, "res6977", "sto2527", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

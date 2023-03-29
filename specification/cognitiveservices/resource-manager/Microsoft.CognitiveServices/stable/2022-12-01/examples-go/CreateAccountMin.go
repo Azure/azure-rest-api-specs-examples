@@ -16,11 +16,11 @@ func ExampleAccountsClient_BeginCreate_createAccountMin() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewAccountsClient("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx, "myResourceGroup", "testCreate1", armcognitiveservices.Account{
+	poller, err := clientFactory.NewAccountsClient().BeginCreate(ctx, "myResourceGroup", "testCreate1", armcognitiveservices.Account{
 		Identity: &armcognitiveservices.Identity{
 			Type: to.Ptr(armcognitiveservices.ResourceIdentityTypeSystemAssigned),
 		},

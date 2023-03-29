@@ -15,11 +15,11 @@ func ExampleCommitmentPlansClient_GetPlan() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewCommitmentPlansClient("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetPlan(ctx, "resourceGroupName", "commitmentPlanName", nil)
+	res, err := clientFactory.NewCommitmentPlansClient().GetPlan(ctx, "resourceGroupName", "commitmentPlanName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

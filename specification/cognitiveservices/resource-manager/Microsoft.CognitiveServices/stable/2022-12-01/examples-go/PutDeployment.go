@@ -16,11 +16,11 @@ func ExampleDeploymentsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewDeploymentsClient("subscriptionId", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "resourceGroupName", "accountName", "deploymentName", armcognitiveservices.Deployment{
+	poller, err := clientFactory.NewDeploymentsClient().BeginCreateOrUpdate(ctx, "resourceGroupName", "accountName", "deploymentName", armcognitiveservices.Deployment{
 		Properties: &armcognitiveservices.DeploymentProperties{
 			Model: &armcognitiveservices.DeploymentModel{
 				Name:    to.Ptr("ada"),

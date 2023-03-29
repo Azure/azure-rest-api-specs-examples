@@ -16,11 +16,11 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewPrivateEndpointConnectionsClient("{subscription-id}", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "res7687", "sto9699", "{privateEndpointConnectionName}", armcognitiveservices.PrivateEndpointConnection{
+	poller, err := clientFactory.NewPrivateEndpointConnectionsClient().BeginCreateOrUpdate(ctx, "res7687", "sto9699", "{privateEndpointConnectionName}", armcognitiveservices.PrivateEndpointConnection{
 		Properties: &armcognitiveservices.PrivateEndpointConnectionProperties{
 			PrivateLinkServiceConnectionState: &armcognitiveservices.PrivateLinkServiceConnectionState{
 				Description: to.Ptr("Auto-Approved"),

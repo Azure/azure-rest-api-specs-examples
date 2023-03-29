@@ -16,11 +16,11 @@ func ExampleAccountsClient_RegenerateKey() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewAccountsClient("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.RegenerateKey(ctx, "myResourceGroup", "myAccount", armcognitiveservices.RegenerateKeyParameters{
+	res, err := clientFactory.NewAccountsClient().RegenerateKey(ctx, "myResourceGroup", "myAccount", armcognitiveservices.RegenerateKeyParameters{
 		KeyName: to.Ptr(armcognitiveservices.KeyNameKey2),
 	}, nil)
 	if err != nil {

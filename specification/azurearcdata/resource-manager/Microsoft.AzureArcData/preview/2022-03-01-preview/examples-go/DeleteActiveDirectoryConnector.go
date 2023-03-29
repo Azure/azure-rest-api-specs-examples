@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurearcdata/armazurearcdata"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/examples/DeleteActiveDirectoryConnector.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/examples/DeleteActiveDirectoryConnector.json
 func ExampleActiveDirectoryConnectorsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armazurearcdata.NewActiveDirectoryConnectorsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armazurearcdata.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"testrg",
-		"testdataController",
-		"testADConnector",
-		nil)
+	poller, err := clientFactory.NewActiveDirectoryConnectorsClient().BeginDelete(ctx, "testrg", "testdataController", "testADConnector", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurearcdata/armazurearcdata"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/examples/DeleteSqlManagedInstance.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/azurearcdata/resource-manager/Microsoft.AzureArcData/preview/2022-03-01-preview/examples/DeleteSqlManagedInstance.json
 func ExampleSQLManagedInstancesClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armazurearcdata.NewSQLManagedInstancesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armazurearcdata.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"testrg",
-		"testsqlManagedInstance",
-		nil)
+	poller, err := clientFactory.NewSQLManagedInstancesClient().BeginDelete(ctx, "testrg", "testsqlManagedInstance", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

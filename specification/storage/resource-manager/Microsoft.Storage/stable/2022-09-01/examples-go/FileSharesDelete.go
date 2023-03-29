@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/examples/FileSharesDelete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b32e1896f30e6ea155449cb49719a6286e32b961/specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/examples/FileSharesDelete.json
 func ExampleFileSharesClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstorage.NewFileSharesClient("{subscription-id}", cred, nil)
+	clientFactory, err := armstorage.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx, "res4079", "sto4506", "share9689", &armstorage.FileSharesClientDeleteOptions{XMSSnapshot: nil,
+	_, err = clientFactory.NewFileSharesClient().Delete(ctx, "res4079", "sto4506", "share9689", &armstorage.FileSharesClientDeleteOptions{XMSSnapshot: nil,
 		Include: nil,
 	})
 	if err != nil {

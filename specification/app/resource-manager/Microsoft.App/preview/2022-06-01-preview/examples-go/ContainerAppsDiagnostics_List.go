@@ -8,26 +8,52 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/app/resource-manager/Microsoft.App/preview/2022-06-01-preview/examples/ContainerAppsDiagnostics_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/212686c8383679e034b19143e13cbeb5a40ab454/specification/app/resource-manager/Microsoft.App/preview/2022-06-01-preview/examples/ContainerAppsDiagnostics_List.json
 func ExampleContainerAppsDiagnosticsClient_NewListDetectorsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappcontainers.NewContainerAppsDiagnosticsClient("f07f3711-b45e-40fe-a941-4e6d93f851e6", cred, nil)
+	clientFactory, err := armappcontainers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListDetectorsPager("mikono-workerapp-test-rg", "mikono-capp-stage1", nil)
+	pager := clientFactory.NewContainerAppsDiagnosticsClient().NewListDetectorsPager("mikono-workerapp-test-rg", "mikono-capp-stage1", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.DiagnosticsCollection = armappcontainers.DiagnosticsCollection{
+		// 	Value: []*armappcontainers.Diagnostics{
+		// 		{
+		// 			Name: to.Ptr("cappContainerAppAvailabilityMetrics"),
+		// 			Type: to.Ptr("Microsoft.App/containerapps/detectors"),
+		// 			ID: to.Ptr("/subscriptions/f07f3711-b45e-40fe-a941-4e6d93f851e6/resourceGroups/mikono-workerapp-test-rg/providers/Microsoft.App/containerApps/mikono-capp-stage1/detectors/cappContainerAppAvailabilityMetrics"),
+		// 			Properties: &armappcontainers.DiagnosticsProperties{
+		// 				Dataset: []*armappcontainers.DiagnosticsDataAPIResponse{
+		// 				},
+		// 				Metadata: &armappcontainers.DiagnosticsDefinition{
+		// 					Name: to.Ptr("Availability Metrics for Container Apps"),
+		// 					Type: to.Ptr("Analysis"),
+		// 					Author: to.Ptr(""),
+		// 					Category: to.Ptr("Availability and Performance"),
+		// 					ID: to.Ptr("cappContainerAppAvailabilityMetrics"),
+		// 					Score: to.Ptr[float32](0),
+		// 					SupportTopicList: []*armappcontainers.DiagnosticSupportTopic{
+		// 					},
+		// 				},
+		// 				Status: &armappcontainers.DiagnosticsStatus{
+		// 					StatusID: to.Ptr[int32](4),
+		// 				},
+		// 			},
+		// 	}},
+		// }
 	}
 }

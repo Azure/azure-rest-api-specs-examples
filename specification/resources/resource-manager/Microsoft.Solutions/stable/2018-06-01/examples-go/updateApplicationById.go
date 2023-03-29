@@ -9,26 +9,40 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armmanagedapplications"
 )
 
-// x-ms-original-file: specification/resources/resource-manager/Microsoft.Solutions/stable/2018-06-01/examples/updateApplicationById.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/resources/resource-manager/Microsoft.Solutions/stable/2018-06-01/examples/updateApplicationById.json
 func ExampleApplicationsClient_UpdateByID() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client := armmanagedapplications.NewApplicationsClient("<subscription-id>", cred, nil)
-	res, err := client.UpdateByID(ctx,
-		"<application-id>",
-		&armmanagedapplications.ApplicationsUpdateByIDOptions{Parameters: &armmanagedapplications.Application{
-			Kind: to.StringPtr("<kind>"),
-			Properties: &armmanagedapplications.ApplicationProperties{
-				ApplicationDefinitionID: to.StringPtr("<application-definition-id>"),
-				ManagedResourceGroupID:  to.StringPtr("<managed-resource-group-id>"),
-			},
-		},
-		})
+	clientFactory, err := armmanagedapplications.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("failed to create client: %v", err)
 	}
-	log.Printf("Application.ID: %s\n", *res.ID)
+	res, err := clientFactory.NewApplicationsClient().UpdateByID(ctx, "myApplicationId", &armmanagedapplications.ApplicationsClientUpdateByIDOptions{Parameters: &armmanagedapplications.Application{
+		Kind: to.Ptr("ServiceCatalog"),
+		Properties: &armmanagedapplications.ApplicationProperties{
+			ApplicationDefinitionID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applicationDefinitions/myAppDef"),
+			ManagedResourceGroupID:  to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
+		},
+	},
+	})
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Application = armmanagedapplications.Application{
+	// 	Name: to.Ptr("myManagedApplication"),
+	// 	Type: to.Ptr("Microsoft.Solutions/applications"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applications/myManagedApplication"),
+	// 	Kind: to.Ptr("ServiceCatalog"),
+	// 	Properties: &armmanagedapplications.ApplicationProperties{
+	// 		ApplicationDefinitionID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applicationDefinitions/myAppDef"),
+	// 		ManagedResourceGroupID: to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
+	// 		ProvisioningState: to.Ptr(armmanagedapplications.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

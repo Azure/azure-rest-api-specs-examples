@@ -8,26 +8,42 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/WorkloadNetworks_ListVMGroups.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c71a66dab813061f1d09982c2748a09317fe0860/specification/vmware/resource-manager/Microsoft.AVS/stable/2022-05-01/examples/WorkloadNetworks_ListVMGroups.json
 func ExampleWorkloadNetworksClient_NewListVMGroupsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armavs.NewWorkloadNetworksClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armavs.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListVMGroupsPager("group1", "cloud1", nil)
+	pager := clientFactory.NewWorkloadNetworksClient().NewListVMGroupsPager("group1", "cloud1", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.WorkloadNetworkVMGroupsList = armavs.WorkloadNetworkVMGroupsList{
+		// 	Value: []*armavs.WorkloadNetworkVMGroup{
+		// 		{
+		// 			Name: to.Ptr("cloud1"),
+		// 			Type: to.Ptr("Microsoft.AVS/privateClouds/workloadNetworks/vmGroups"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/workloadNetworks/default/vmGroups/vmGroup1"),
+		// 			Properties: &armavs.WorkloadNetworkVMGroupProperties{
+		// 				DisplayName: to.Ptr("vmGroup1"),
+		// 				Members: []*string{
+		// 					to.Ptr("564d43da-fefc-2a3b-1d92-42855622fa50")},
+		// 					Revision: to.Ptr[int64](1),
+		// 					Status: to.Ptr(armavs.VMGroupStatusEnumSUCCESS),
+		// 				},
+		// 		}},
+		// 	}
 	}
 }

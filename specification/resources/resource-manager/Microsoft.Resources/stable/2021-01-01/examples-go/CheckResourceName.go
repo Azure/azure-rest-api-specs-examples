@@ -8,22 +8,27 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armsubscriptions"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/examples/CheckResourceName.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/examples/CheckResourceName.json
 func ExampleSubscriptionClient_CheckResourceName() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsubscriptions.NewSubscriptionClient(cred, nil)
+	clientFactory, err := armsubscriptions.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckResourceName(ctx,
-		&armsubscriptions.SubscriptionClientCheckResourceNameOptions{ResourceNameDefinition: nil})
+	res, err := clientFactory.NewSubscriptionClient().CheckResourceName(ctx, &armsubscriptions.SubscriptionClientCheckResourceNameOptions{ResourceNameDefinition: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CheckResourceNameResult = armsubscriptions.CheckResourceNameResult{
+	// 	Name: to.Ptr("isxbox"),
+	// 	Type: to.Ptr("ResourceProviderTestHost/TestResourceType"),
+	// 	Status: to.Ptr(armsubscriptions.ResourceNameStatusAllowed),
+	// }
 }

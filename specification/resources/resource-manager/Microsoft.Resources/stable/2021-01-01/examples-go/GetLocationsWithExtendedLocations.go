@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armsubscriptions"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/examples/GetLocations.json
-func ExampleClient_NewListLocationsPager_getLocationsWithASubscriptionId() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/resources/resource-manager/Microsoft.Resources/stable/2021-01-01/examples/GetLocationsWithExtendedLocations.json
+func ExampleClient_NewListLocationsPager_getLocationsWithExtendedLocations() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +20,7 @@ func ExampleClient_NewListLocationsPager_getLocationsWithASubscriptionId() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewClient().NewListLocationsPager("291bba3f-e0a5-47bc-a099-3bdcb2a50a05", &armsubscriptions.ClientListLocationsOptions{IncludeExtendedLocations: nil})
+	pager := clientFactory.NewClient().NewListLocationsPager("291bba3f-e0a5-47bc-a099-3bdcb2a50a05", &armsubscriptions.ClientListLocationsOptions{IncludeExtendedLocations: to.Ptr(true)})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

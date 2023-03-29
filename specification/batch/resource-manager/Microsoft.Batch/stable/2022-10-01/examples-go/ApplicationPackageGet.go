@@ -8,21 +8,33 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/ApplicationPackageGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ef6f2f06858cdbec7684968e1a54c7610da97dbb/specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/ApplicationPackageGet.json
 func ExampleApplicationPackageClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armbatch.NewApplicationPackageClient("subid", cred, nil)
+	clientFactory, err := armbatch.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "default-azurebatch-japaneast", "sampleacct", "app1", "1", nil)
+	res, err := clientFactory.NewApplicationPackageClient().Get(ctx, "default-azurebatch-japaneast", "sampleacct", "app1", "1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ApplicationPackage = armbatch.ApplicationPackage{
+	// 	Name: to.Ptr("1"),
+	// 	Type: to.Ptr("Microsoft.Batch/batchAccounts/applications/versions"),
+	// 	Etag: to.Ptr("W/\"0x8D64FEC83A3B436\""),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/sampleacct/applications/app1/versions/1"),
+	// 	Properties: &armbatch.ApplicationPackageProperties{
+	// 		Format: to.Ptr("zip"),
+	// 		LastActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-27T18:48:09.9330991Z"); return t}()),
+	// 		State: to.Ptr(armbatch.PackageStateActive),
+	// 	},
+	// }
 }

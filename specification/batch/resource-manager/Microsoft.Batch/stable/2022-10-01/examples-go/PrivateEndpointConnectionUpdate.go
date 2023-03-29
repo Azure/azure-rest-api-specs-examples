@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/PrivateEndpointConnectionUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/ef6f2f06858cdbec7684968e1a54c7610da97dbb/specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/PrivateEndpointConnectionUpdate.json
 func ExamplePrivateEndpointConnectionClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armbatch.NewPrivateEndpointConnectionClient("subid", cred, nil)
+	clientFactory, err := armbatch.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "default-azurebatch-japaneast", "sampleacct", "testprivateEndpointConnection5.24d6b4b5-e65c-4330-bbe9-3a290d62f8e0", armbatch.PrivateEndpointConnection{
+	poller, err := clientFactory.NewPrivateEndpointConnectionClient().BeginUpdate(ctx, "default-azurebatch-japaneast", "sampleacct", "testprivateEndpointConnection5.24d6b4b5-e65c-4330-bbe9-3a290d62f8e0", armbatch.PrivateEndpointConnection{
 		Properties: &armbatch.PrivateEndpointConnectionProperties{
 			PrivateLinkServiceConnectionState: &armbatch.PrivateLinkServiceConnectionState{
 				Description: to.Ptr("Approved by xyz.abc@company.com"),
@@ -35,6 +35,25 @@ func ExamplePrivateEndpointConnectionClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armbatch.PrivateEndpointConnection{
+	// 	Name: to.Ptr("testprivateEndpointConnection5.24d6b4b5-e65c-4330-bbe9-3a290d62f8e0"),
+	// 	Type: to.Ptr("Microsoft.Batch/batchAccounts/privateEndpointConnections"),
+	// 	Etag: to.Ptr("W/\"0x8D4EDFEBFADF4AB\""),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/sampleacct/privateEndpointConnections/testprivateEndpointConnection5.24d6b4b5-e65c-4330-bbe9-3a290d62f8e0"),
+	// 	Properties: &armbatch.PrivateEndpointConnectionProperties{
+	// 		GroupIDs: []*string{
+	// 			to.Ptr("batchAccount")},
+	// 			PrivateEndpoint: &armbatch.PrivateEndpoint{
+	// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Network/privateEndpoints/testprivateEndpoint"),
+	// 			},
+	// 			PrivateLinkServiceConnectionState: &armbatch.PrivateLinkServiceConnectionState{
+	// 				Description: to.Ptr("Approved by xyz.abc@company.com"),
+	// 				Status: to.Ptr(armbatch.PrivateLinkServiceConnectionStatusApproved),
+	// 			},
+	// 			ProvisioningState: to.Ptr(armbatch.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 		},
+	// 	}
 }

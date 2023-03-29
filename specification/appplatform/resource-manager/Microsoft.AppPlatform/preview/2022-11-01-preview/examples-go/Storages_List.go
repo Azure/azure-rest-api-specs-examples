@@ -8,26 +8,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-11-01-preview/examples/Storages_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/86ead567acadc5a059949bca607a5e702610551f/specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-11-01-preview/examples/Storages_List.json
 func ExampleStoragesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappplatform.NewStoragesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armappplatform.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("myResourceGroup", "myService", nil)
+	pager := clientFactory.NewStoragesClient().NewListPager("myResourceGroup", "myService", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.StorageResourceCollection = armappplatform.StorageResourceCollection{
+		// 	Value: []*armappplatform.StorageResource{
+		// 		{
+		// 			Name: to.Ptr("mystorage"),
+		// 			Type: to.Ptr("Microsoft.AppPlatform/Spring/storages"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/storages/mystorage"),
+		// 			SystemData: &armappplatform.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-11T03:16:03.944Z"); return t}()),
+		// 				CreatedBy: to.Ptr("sample-user"),
+		// 				CreatedByType: to.Ptr(armappplatform.CreatedByTypeUser),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-11T03:17:03.944Z"); return t}()),
+		// 				LastModifiedBy: to.Ptr("sample-user"),
+		// 				LastModifiedByType: to.Ptr(armappplatform.LastModifiedByTypeUser),
+		// 			},
+		// 			Properties: &armappplatform.StorageAccount{
+		// 				StorageType: to.Ptr(armappplatform.StorageTypeStorageAccount),
+		// 				AccountName: to.Ptr("storage-account-name"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

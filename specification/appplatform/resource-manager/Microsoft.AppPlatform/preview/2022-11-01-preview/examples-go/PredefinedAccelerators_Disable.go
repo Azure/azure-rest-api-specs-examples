@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-11-01-preview/examples/PredefinedAccelerators_Disable.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/86ead567acadc5a059949bca607a5e702610551f/specification/appplatform/resource-manager/Microsoft.AppPlatform/preview/2022-11-01-preview/examples/PredefinedAccelerators_Disable.json
 func ExamplePredefinedAcceleratorsClient_BeginDisable() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappplatform.NewPredefinedAcceleratorsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armappplatform.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDisable(ctx, "myResourceGroup", "myservice", "default", "acc-name", nil)
+	poller, err := clientFactory.NewPredefinedAcceleratorsClient().BeginDisable(ctx, "myResourceGroup", "myservice", "default", "acc-name", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

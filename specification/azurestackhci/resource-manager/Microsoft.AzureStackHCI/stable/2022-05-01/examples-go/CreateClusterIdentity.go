@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/azurestackhci/armazurestackhci"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/examples/CreateClusterIdentity.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/stable/2022-05-01/examples/CreateClusterIdentity.json
 func ExampleClustersClient_BeginCreateIdentity() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armazurestackhci.NewClustersClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
+	clientFactory, err := armazurestackhci.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateIdentity(ctx,
-		"test-rg",
-		"myCluster",
-		nil)
+	poller, err := clientFactory.NewClustersClient().BeginCreateIdentity(ctx, "test-rg", "myCluster", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -30,6 +27,15 @@ func ExampleClustersClient_BeginCreateIdentity() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ClusterIdentityResponse = armazurestackhci.ClusterIdentityResponse{
+	// 	Properties: &armazurestackhci.ClusterIdentityResponseProperties{
+	// 		AADApplicationObjectID: to.Ptr("00cc4014-482e-4de9-9932-83415cc75f45"),
+	// 		AADClientID: to.Ptr("7b93bf67-60ac-4909-a987-ac438e69f9ba"),
+	// 		AADServicePrincipalObjectID: to.Ptr("400bd05f-395f-45a6-ba75-72601df80107"),
+	// 		AADTenantID: to.Ptr("bdb2c88c-9cfd-4e19-927d-51e875f6912b"),
+	// 	},
+	// }
 }

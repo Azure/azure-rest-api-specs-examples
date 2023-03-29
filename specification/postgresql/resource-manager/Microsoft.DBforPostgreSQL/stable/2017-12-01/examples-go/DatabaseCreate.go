@@ -9,28 +9,23 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/DatabaseCreate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/DatabaseCreate.json
 func ExampleDatabasesClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpostgresql.NewDatabasesClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	clientFactory, err := armpostgresql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"TestGroup",
-		"testserver",
-		"db1",
-		armpostgresql.Database{
-			Properties: &armpostgresql.DatabaseProperties{
-				Charset:   to.Ptr("UTF8"),
-				Collation: to.Ptr("English_United States.1252"),
-			},
+	poller, err := clientFactory.NewDatabasesClient().BeginCreateOrUpdate(ctx, "TestGroup", "testserver", "db1", armpostgresql.Database{
+		Properties: &armpostgresql.DatabaseProperties{
+			Charset:   to.Ptr("UTF8"),
+			Collation: to.Ptr("English_United States.1252"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -38,6 +33,16 @@ func ExampleDatabasesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Database = armpostgresql.Database{
+	// 	Name: to.Ptr("db1"),
+	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/servers/databases"),
+	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/servers/testserver/databases/db1"),
+	// 	Properties: &armpostgresql.DatabaseProperties{
+	// 		Charset: to.Ptr("UTF8"),
+	// 		Collation: to.Ptr("English_United States.1252"),
+	// 	},
+	// }
 }

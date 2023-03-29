@@ -9,36 +9,31 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerSecurityAlertsCreateMax.json
-func ExampleServerSecurityAlertPoliciesClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/ServerSecurityAlertsCreateMax.json
+func ExampleServerSecurityAlertPoliciesClient_BeginCreateOrUpdate_updateAServersThreatDetectionPolicyWithAllParameters() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpostgresql.NewServerSecurityAlertPoliciesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armpostgresql.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"securityalert-4799",
-		"securityalert-6440",
-		armpostgresql.SecurityAlertPolicyNameDefault,
-		armpostgresql.ServerSecurityAlertPolicy{
-			Properties: &armpostgresql.SecurityAlertPolicyProperties{
-				DisabledAlerts: []*string{
-					to.Ptr("Access_Anomaly"),
-					to.Ptr("Usage_Anomaly")},
-				EmailAccountAdmins: to.Ptr(true),
-				EmailAddresses: []*string{
-					to.Ptr("testSecurityAlert@microsoft.com")},
-				RetentionDays:           to.Ptr[int32](5),
-				State:                   to.Ptr(armpostgresql.ServerSecurityAlertPolicyStateEnabled),
-				StorageAccountAccessKey: to.Ptr("sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="),
-				StorageEndpoint:         to.Ptr("https://mystorage.blob.core.windows.net"),
-			},
+	poller, err := clientFactory.NewServerSecurityAlertPoliciesClient().BeginCreateOrUpdate(ctx, "securityalert-4799", "securityalert-6440", armpostgresql.SecurityAlertPolicyNameDefault, armpostgresql.ServerSecurityAlertPolicy{
+		Properties: &armpostgresql.SecurityAlertPolicyProperties{
+			DisabledAlerts: []*string{
+				to.Ptr("Access_Anomaly"),
+				to.Ptr("Usage_Anomaly")},
+			EmailAccountAdmins: to.Ptr(true),
+			EmailAddresses: []*string{
+				to.Ptr("testSecurityAlert@microsoft.com")},
+			RetentionDays:           to.Ptr[int32](5),
+			State:                   to.Ptr(armpostgresql.ServerSecurityAlertPolicyStateEnabled),
+			StorageAccountAccessKey: to.Ptr("sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD=="),
+			StorageEndpoint:         to.Ptr("https://mystorage.blob.core.windows.net"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -46,6 +41,23 @@ func ExampleServerSecurityAlertPoliciesClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ServerSecurityAlertPolicy = armpostgresql.ServerSecurityAlertPolicy{
+	// 	Name: to.Ptr("Default"),
+	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/servers/securityAlertPolicies"),
+	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/securityalert-4799/providers/Microsoft.DBforPostgreSQL/servers/securityalert-6440/securityAlertPolicies/default"),
+	// 	Properties: &armpostgresql.SecurityAlertPolicyProperties{
+	// 		DisabledAlerts: []*string{
+	// 			to.Ptr("Access_Anomaly"),
+	// 			to.Ptr("Usage_Anomaly")},
+	// 			EmailAccountAdmins: to.Ptr(true),
+	// 			EmailAddresses: []*string{
+	// 				to.Ptr("testSecurityAlert@microsoft.com")},
+	// 				RetentionDays: to.Ptr[int32](5),
+	// 				State: to.Ptr(armpostgresql.ServerSecurityAlertPolicyStateEnabled),
+	// 				StorageEndpoint: to.Ptr("https://mystorage.blob.core.windows.net"),
+	// 			},
+	// 		}
 }

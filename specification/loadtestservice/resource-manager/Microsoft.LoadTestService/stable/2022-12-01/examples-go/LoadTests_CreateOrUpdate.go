@@ -16,11 +16,11 @@ func ExampleLoadTestsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armloadtesting.NewLoadTestsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armloadtesting.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "dummyrg", "myLoadTest", armloadtesting.LoadTestResource{
+	poller, err := clientFactory.NewLoadTestsClient().BeginCreateOrUpdate(ctx, "dummyrg", "myLoadTest", armloadtesting.LoadTestResource{
 		Location: to.Ptr("westus"),
 		Tags: map[string]*string{
 			"Team": to.Ptr("Dev Exp"),

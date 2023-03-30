@@ -16,11 +16,11 @@ func ExampleAccountsClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewAccountsClient("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "bvttest", "bingSearch", armcognitiveservices.Account{
+	poller, err := clientFactory.NewAccountsClient().BeginUpdate(ctx, "bvttest", "bingSearch", armcognitiveservices.Account{
 		Location: to.Ptr("global"),
 		SKU: &armcognitiveservices.SKU{
 			Name: to.Ptr("S2"),

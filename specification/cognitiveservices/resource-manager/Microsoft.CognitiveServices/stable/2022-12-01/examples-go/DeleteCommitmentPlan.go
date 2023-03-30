@@ -15,11 +15,11 @@ func ExampleCommitmentPlansClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewCommitmentPlansClient("subscriptionId", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "resourceGroupName", "accountName", "commitmentPlanName", nil)
+	poller, err := clientFactory.NewCommitmentPlansClient().BeginDelete(ctx, "resourceGroupName", "accountName", "commitmentPlanName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

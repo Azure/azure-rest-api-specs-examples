@@ -15,11 +15,11 @@ func ExampleCommitmentPlansClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcognitiveservices.NewCommitmentPlansClient("subscriptionId", cred, nil)
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("resourceGroupName", "accountName", nil)
+	pager := clientFactory.NewCommitmentPlansClient().NewListPager("resourceGroupName", "accountName", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

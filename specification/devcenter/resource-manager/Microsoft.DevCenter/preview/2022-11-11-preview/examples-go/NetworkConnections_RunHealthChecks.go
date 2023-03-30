@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/NetworkConnections_RunHealthChecks.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c583b05741fadfdca116be3b9ccb1c4be8a73258/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/NetworkConnections_RunHealthChecks.json
 func ExampleNetworkConnectionsClient_BeginRunHealthChecks() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevcenter.NewNetworkConnectionsClient("0ac520ee-14c0-480f-b6c9-0a90c58ffff", cred, nil)
+	clientFactory, err := armdevcenter.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginRunHealthChecks(ctx, "rg1", "uswest3network", nil)
+	poller, err := clientFactory.NewNetworkConnectionsClient().BeginRunHealthChecks(ctx, "rg1", "uswest3network", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

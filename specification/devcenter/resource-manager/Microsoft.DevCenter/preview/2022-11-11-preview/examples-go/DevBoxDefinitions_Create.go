@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/DevBoxDefinitions_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c583b05741fadfdca116be3b9ccb1c4be8a73258/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/DevBoxDefinitions_Create.json
 func ExampleDevBoxDefinitionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevcenter.NewDevBoxDefinitionsClient("0ac520ee-14c0-480f-b6c9-0a90c58ffff", cred, nil)
+	clientFactory, err := armdevcenter.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "rg1", "Contoso", "WebDevBox", armdevcenter.DevBoxDefinition{
+	poller, err := clientFactory.NewDevBoxDefinitionsClient().BeginCreateOrUpdate(ctx, "rg1", "Contoso", "WebDevBox", armdevcenter.DevBoxDefinition{
 		Location: to.Ptr("centralus"),
 		Properties: &armdevcenter.DevBoxDefinitionProperties{
 			HibernateSupport: to.Ptr(armdevcenter.HibernateSupportEnabled),
@@ -40,6 +40,32 @@ func ExampleDevBoxDefinitionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DevBoxDefinition = armdevcenter.DevBoxDefinition{
+	// 	Name: to.Ptr("WebDevBox"),
+	// 	Type: to.Ptr("Microsoft.DevCenter/devcenters/devboxdefinitions"),
+	// 	ID: to.Ptr("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/devcenters/Contoso/devboxdefinitions/devBoxDefinitionName"),
+	// 	SystemData: &armdevcenter.SystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T18:00:36.993Z"); return t}()),
+	// 		CreatedBy: to.Ptr("user1"),
+	// 		CreatedByType: to.Ptr(armdevcenter.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T18:30:36.993Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("user1"),
+	// 		LastModifiedByType: to.Ptr(armdevcenter.CreatedByTypeUser),
+	// 	},
+	// 	Location: to.Ptr("centralus"),
+	// 	Properties: &armdevcenter.DevBoxDefinitionProperties{
+	// 		HibernateSupport: to.Ptr(armdevcenter.HibernateSupportEnabled),
+	// 		ImageReference: &armdevcenter.ImageReference{
+	// 			ID: to.Ptr("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/Example/providers/Microsoft.DevCenter/devcenters/Contoso/galleries/contosogallery/images/exampleImage/version/1.0.0"),
+	// 		},
+	// 		OSStorageType: to.Ptr("SSD_1024"),
+	// 		SKU: &armdevcenter.SKU{
+	// 			Name: to.Ptr("Preview"),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armdevcenter.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

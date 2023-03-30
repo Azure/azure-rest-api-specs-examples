@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/NetworkConnections_Put.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c583b05741fadfdca116be3b9ccb1c4be8a73258/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/NetworkConnections_Put.json
 func ExampleNetworkConnectionsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevcenter.NewNetworkConnectionsClient("0ac520ee-14c0-480f-b6c9-0a90c58ffff", cred, nil)
+	clientFactory, err := armdevcenter.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "rg1", "uswest3network", armdevcenter.NetworkConnection{
+	poller, err := clientFactory.NewNetworkConnectionsClient().BeginCreateOrUpdate(ctx, "rg1", "uswest3network", armdevcenter.NetworkConnection{
 		Location: to.Ptr("centralus"),
 		Properties: &armdevcenter.NetworkProperties{
 			DomainName:                  to.Ptr("mydomaincontroller.local"),
@@ -38,6 +38,29 @@ func ExampleNetworkConnectionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.NetworkConnection = armdevcenter.NetworkConnection{
+	// 	Name: to.Ptr("uswest3network"),
+	// 	Type: to.Ptr("Microsoft.DevCenter/networkconnections"),
+	// 	ID: to.Ptr("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.DevCenter/networkconnections/uswest3network"),
+	// 	SystemData: &armdevcenter.SystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T18:00:36.993Z"); return t}()),
+	// 		CreatedBy: to.Ptr("user1"),
+	// 		CreatedByType: to.Ptr(armdevcenter.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T18:30:36.993Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("user1"),
+	// 		LastModifiedByType: to.Ptr(armdevcenter.CreatedByTypeUser),
+	// 	},
+	// 	Location: to.Ptr("centralus"),
+	// 	Properties: &armdevcenter.NetworkProperties{
+	// 		DomainName: to.Ptr("mydomaincontroller.local"),
+	// 		DomainUsername: to.Ptr("testuser@mydomaincontroller.local"),
+	// 		SubnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ExampleRG/providers/Microsoft.Network/virtualNetworks/ExampleVNet/subnets/default"),
+	// 		DomainJoinType: to.Ptr(armdevcenter.DomainJoinTypeHybridAzureADJoin),
+	// 		NetworkingResourceGroupName: to.Ptr("NetworkInterfaces"),
+	// 		ProvisioningState: to.Ptr(armdevcenter.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/Catalogs_CreateAdo.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c583b05741fadfdca116be3b9ccb1c4be8a73258/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2022-11-11-preview/examples/Catalogs_CreateAdo.json
 func ExampleCatalogsClient_BeginCreateOrUpdate_catalogsCreateOrUpdateAdo() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevcenter.NewCatalogsClient("0ac520ee-14c0-480f-b6c9-0a90c58ffff", cred, nil)
+	clientFactory, err := armdevcenter.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "rg1", "Contoso", "CentralCatalog", armdevcenter.Catalog{
+	poller, err := clientFactory.NewCatalogsClient().BeginCreateOrUpdate(ctx, "rg1", "Contoso", "CentralCatalog", armdevcenter.Catalog{
 		Properties: &armdevcenter.CatalogProperties{
 			AdoGit: &armdevcenter.GitCatalog{
 				Path:             to.Ptr("/templates"),

@@ -16,11 +16,11 @@ func ExampleFileSystemsClient_BeginCreateOrUpdate_fileSystemsCreateOrUpdateMinim
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armqumulo.NewFileSystemsClient("aaaaaaaaaaaaaaaaaaaaaaaa", cred, nil)
+	clientFactory, err := armqumulo.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "rgopenapi", "aaaaaaaa", armqumulo.FileSystemResource{
+	poller, err := clientFactory.NewFileSystemsClient().BeginCreateOrUpdate(ctx, "rgopenapi", "aaaaaaaa", armqumulo.FileSystemResource{
 		Location: to.Ptr("aaaaaaaaaaaaaaaaaaaaaaaaa"),
 		Properties: &armqumulo.FileSystemResourceProperties{
 			AdminPassword:     to.Ptr("ekceujoecaashtjlsgcymnrdozk"),

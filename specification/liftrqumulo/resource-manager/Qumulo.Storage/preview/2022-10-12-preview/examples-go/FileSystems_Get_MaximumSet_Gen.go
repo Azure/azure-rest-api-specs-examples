@@ -15,11 +15,11 @@ func ExampleFileSystemsClient_Get_fileSystemsGetMaximumSetGen() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armqumulo.NewFileSystemsClient("ulseeqylxb", cred, nil)
+	clientFactory, err := armqumulo.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "rgQumulo", "nauwwbfoqehgbhdsmkewoboyxeqg", nil)
+	res, err := clientFactory.NewFileSystemsClient().Get(ctx, "rgQumulo", "nauwwbfoqehgbhdsmkewoboyxeqg", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

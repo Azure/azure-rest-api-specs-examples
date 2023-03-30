@@ -9,38 +9,34 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/extendedlocation/armextendedlocation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/examples/CustomLocationsCreate_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b8fc2b4ff626aab886f929e49926c6e836548e01/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/examples/CustomLocationsCreate_Update.json
 func ExampleCustomLocationsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armextendedlocation.NewCustomLocationsClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armextendedlocation.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"testresourcegroup",
-		"customLocation01",
-		armextendedlocation.CustomLocation{
-			Location: to.Ptr("West US"),
-			Identity: &armextendedlocation.Identity{
-				Type: to.Ptr(armextendedlocation.ResourceIdentityTypeSystemAssigned),
-			},
-			Properties: &armextendedlocation.CustomLocationProperties{
-				Authentication: &armextendedlocation.CustomLocationPropertiesAuthentication{
-					Type:  to.Ptr("KubeConfig"),
-					Value: to.Ptr("<base64 KubeConfig>"),
-				},
-				ClusterExtensionIDs: []*string{
-					to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension")},
-				DisplayName:    to.Ptr("customLocationLocation01"),
-				HostResourceID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01"),
-				Namespace:      to.Ptr("namespace01"),
-			},
+	poller, err := clientFactory.NewCustomLocationsClient().BeginCreateOrUpdate(ctx, "testresourcegroup", "customLocation01", armextendedlocation.CustomLocation{
+		Location: to.Ptr("West US"),
+		Identity: &armextendedlocation.Identity{
+			Type: to.Ptr(armextendedlocation.ResourceIdentityTypeSystemAssigned),
 		},
-		nil)
+		Properties: &armextendedlocation.CustomLocationProperties{
+			Authentication: &armextendedlocation.CustomLocationPropertiesAuthentication{
+				Type:  to.Ptr("KubeConfig"),
+				Value: to.Ptr("<base64 KubeConfig>"),
+			},
+			ClusterExtensionIDs: []*string{
+				to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kubernetes/connectedCluster/someCluster/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension")},
+			DisplayName:    to.Ptr("customLocationLocation01"),
+			HostResourceID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01"),
+			Namespace:      to.Ptr("namespace01"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -48,6 +44,37 @@ func ExampleCustomLocationsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CustomLocation = armextendedlocation.CustomLocation{
+	// 	Name: to.Ptr("customLocation01"),
+	// 	Type: to.Ptr("Microsoft.ExtendedLocation/customLocations"),
+	// 	ID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testrg/providers/Microsoft.ExtendedLocation/customLocations/customLocation01"),
+	// 	Location: to.Ptr("West US"),
+	// 	Identity: &armextendedlocation.Identity{
+	// 		Type: to.Ptr(armextendedlocation.ResourceIdentityTypeSystemAssigned),
+	// 		PrincipalID: to.Ptr("11111111-1111-1111-1111-111111111111"),
+	// 		TenantID: to.Ptr("111111-1111-1111-1111-111111111111"),
+	// 	},
+	// 	Properties: &armextendedlocation.CustomLocationProperties{
+	// 		Authentication: &armextendedlocation.CustomLocationPropertiesAuthentication{
+	// 			Type: to.Ptr("KubeConfig"),
+	// 		},
+	// 		ClusterExtensionIDs: []*string{
+	// 			to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01/Microsoft.KubernetesConfiguration/clusterExtensions/fooExtension")},
+	// 			DisplayName: to.Ptr("customLocationLocation01"),
+	// 			HostResourceID: to.Ptr("/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/testresourcegroup/providers/Microsoft.ContainerService/managedClusters/cluster01"),
+	// 			Namespace: to.Ptr("namespace01"),
+	// 			ProvisioningState: to.Ptr("Succeeded"),
+	// 		},
+	// 		SystemData: &armextendedlocation.SystemData{
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T18:53:29.0928001Z"); return t}()),
+	// 			CreatedBy: to.Ptr("string"),
+	// 			CreatedByType: to.Ptr(armextendedlocation.CreatedByTypeApplication),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T18:53:29.0928001Z"); return t}()),
+	// 			LastModifiedBy: to.Ptr("string"),
+	// 			LastModifiedByType: to.Ptr(armextendedlocation.CreatedByTypeApplication),
+	// 		},
+	// 	}
 }

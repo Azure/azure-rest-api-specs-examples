@@ -9,31 +9,44 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devtestlabs/armdevtestlabs"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Disks_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Disks_Update.json
 func ExampleDisksClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevtestlabs.NewDisksClient("{subscriptionId}", cred, nil)
+	clientFactory, err := armdevtestlabs.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"resourceGroupName",
-		"{labName}",
-		"@me",
-		"diskName",
-		armdevtestlabs.DiskFragment{
-			Tags: map[string]*string{
-				"tagName1": to.Ptr("tagValue1"),
-			},
+	res, err := clientFactory.NewDisksClient().Update(ctx, "resourceGroupName", "{labName}", "@me", "diskName", armdevtestlabs.DiskFragment{
+		Tags: map[string]*string{
+			"tagName1": to.Ptr("tagValue1"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Disk = armdevtestlabs.Disk{
+	// 	Name: to.Ptr("{disk-name}"),
+	// 	Type: to.Ptr("Microsoft.DevTestLab/labs/users/disks"),
+	// 	ID: to.Ptr("/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/users/{user-id}/disks/{diskName}"),
+	// 	Tags: map[string]*string{
+	// 		"tagName1": to.Ptr("tagValue1"),
+	// 	},
+	// 	Properties: &armdevtestlabs.DiskProperties{
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-04T20:21:02.0182357+00:00"); return t}()),
+	// 		DiskSizeGiB: to.Ptr[int32](1023),
+	// 		DiskType: to.Ptr(armdevtestlabs.StorageTypeStandard),
+	// 		DiskURI: to.Ptr(""),
+	// 		HostCaching: to.Ptr("None"),
+	// 		LeasedByLabVMID: to.Ptr("/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualmachines/vmName"),
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 		UniqueIdentifier: to.Ptr("b7183ac5-1097-4513-b597-4d9d23e0a820"),
+	// 	},
+	// }
 }

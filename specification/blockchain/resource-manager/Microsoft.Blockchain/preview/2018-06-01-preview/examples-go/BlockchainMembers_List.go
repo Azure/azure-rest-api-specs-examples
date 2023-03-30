@@ -8,27 +8,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/blockchain/armblockchain"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/blockchain/resource-manager/Microsoft.Blockchain/preview/2018-06-01-preview/examples/BlockchainMembers_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/blockchain/resource-manager/Microsoft.Blockchain/preview/2018-06-01-preview/examples/BlockchainMembers_List.json
 func ExampleMembersClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armblockchain.NewMembersClient("51766542-3ed7-4a72-a187-0c8ab644ddab", cred, nil)
+	clientFactory, err := armblockchain.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("mygroup",
-		nil)
+	pager := clientFactory.NewMembersClient().NewListPager("mygroup", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.MemberCollection = armblockchain.MemberCollection{
+		// 	Value: []*armblockchain.Member{
+		// 		{
+		// 			Name: to.Ptr("contosemember1"),
+		// 			Type: to.Ptr("Microsoft.Blockchain/blockchainMembers"),
+		// 			ID: to.Ptr("/subscriptions/51766542-3ed7-4a72-a187-0c8ab644ddab/resourceGroups/mygroup/providers/Microsoft.Blockchain/blockchainMembers/contosemember1"),
+		// 			Location: to.Ptr("southeastasia"),
+		// 			Properties: &armblockchain.MemberProperties{
+		// 				Consortium: to.Ptr("ContoseConsortium"),
+		// 				ConsortiumMemberDisplayName: to.Ptr("contosemember1"),
+		// 				ConsortiumRole: to.Ptr("ADMIN"),
+		// 				DNS: to.Ptr("contosemember1.blockchain.azure.com"),
+		// 				ProvisioningState: to.Ptr(armblockchain.BlockchainMemberProvisioningStateSucceeded),
+		// 				PublicKey: to.Ptr("1VhPX4PbNGnE9dOEjgTrw92dltBpKxFQjXWNugcwvl0="),
+		// 				RootContractAddress: to.Ptr("0x7407947df2f67142340ca7d1a2c120f0dbfd30e1"),
+		// 				UserName: to.Ptr("contosemember1"),
+		// 				ValidatorNodesSKU: &armblockchain.MemberNodesSKU{
+		// 					Capacity: to.Ptr[int32](2),
+		// 				},
+		// 				Protocol: to.Ptr(armblockchain.BlockchainProtocolQuorum),
+		// 			},
+		// 	}},
+		// }
 	}
 }

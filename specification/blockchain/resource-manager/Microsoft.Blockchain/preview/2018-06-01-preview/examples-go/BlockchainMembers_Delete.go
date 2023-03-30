@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/blockchain/armblockchain"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/blockchain/resource-manager/Microsoft.Blockchain/preview/2018-06-01-preview/examples/BlockchainMembers_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/blockchain/resource-manager/Microsoft.Blockchain/preview/2018-06-01-preview/examples/BlockchainMembers_Delete.json
 func ExampleMembersClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armblockchain.NewMembersClient("51766542-3ed7-4a72-a187-0c8ab644ddab", cred, nil)
+	clientFactory, err := armblockchain.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"contosemember1",
-		"mygroup",
-		nil)
+	poller, err := clientFactory.NewMembersClient().BeginDelete(ctx, "contosemember1", "mygroup", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

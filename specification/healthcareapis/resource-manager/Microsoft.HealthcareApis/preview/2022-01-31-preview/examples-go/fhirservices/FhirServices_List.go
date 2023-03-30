@@ -8,28 +8,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/healthcareapis/armhealthcareapis"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2022-01-31-preview/examples/fhirservices/FhirServices_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/2f2b633d940230cbbd5bcf1339a2e1c48674e4a2/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2022-01-31-preview/examples/fhirservices/FhirServices_List.json
 func ExampleFhirServicesClient_NewListByWorkspacePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhealthcareapis.NewFhirServicesClient("subid", cred, nil)
+	clientFactory, err := armhealthcareapis.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByWorkspacePager("testRG",
-		"workspace1",
-		nil)
+	pager := clientFactory.NewFhirServicesClient().NewListByWorkspacePager("testRG", "workspace1", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.FhirServiceCollection = armhealthcareapis.FhirServiceCollection{
+		// 	Value: []*armhealthcareapis.FhirService{
+		// 		{
+		// 			Name: to.Ptr("fhirservice1"),
+		// 			Type: to.Ptr("Microsoft.HealthcareApis/workspaces/fhirservices"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/testRG/providers/Microsoft.HealthcareApis/workspaces/workspace1/fhirservices/fhirservice1"),
+		// 			Properties: &armhealthcareapis.FhirServiceProperties{
+		// 				ProvisioningState: to.Ptr(armhealthcareapis.ProvisioningStateSucceeded),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("fhirservice2"),
+		// 			Type: to.Ptr("Microsoft.HealthcareApis/workspaces/fhirservices"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/testRG/providers/Microsoft.HealthcareApis/workspaces/workspace1/fhirservices/fhirservice2"),
+		// 			Properties: &armhealthcareapis.FhirServiceProperties{
+		// 				ProvisioningState: to.Ptr(armhealthcareapis.ProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -9,27 +9,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fluidrelay/armfluidrelay"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_RegenerateKeys.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_RegenerateKeys.json
 func ExampleServersClient_RegenerateKey() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armfluidrelay.NewServersClient("xxxx-xxxx-xxxx-xxxx", cred, nil)
+	clientFactory, err := armfluidrelay.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.RegenerateKey(ctx,
-		"myResourceGroup",
-		"myFluidRelayServer",
-		armfluidrelay.RegenerateKeyRequest{
-			KeyName: to.Ptr(armfluidrelay.KeyNameKey1),
-		},
-		nil)
+	res, err := clientFactory.NewServersClient().RegenerateKey(ctx, "myResourceGroup", "myFluidRelayServer", armfluidrelay.RegenerateKeyRequest{
+		KeyName: to.Ptr(armfluidrelay.KeyNameKey1),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ServerKeys = armfluidrelay.ServerKeys{
+	// 	Key1: to.Ptr("xxx-xxxx-xxxxx-xxxx"),
+	// 	Key2: to.Ptr("yyy-yyyy-yyyyy-yyyy"),
+	// }
 }

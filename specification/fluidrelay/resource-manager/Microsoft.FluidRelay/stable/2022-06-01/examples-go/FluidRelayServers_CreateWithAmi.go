@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fluidrelay/armfluidrelay"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_CreateOrUpdate.json
-func ExampleServersClient_CreateOrUpdate_createAFluidRelayServer() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_CreateWithAmi.json
+func ExampleServersClient_CreateOrUpdate_createAFluidRelayServerWithAmi() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -26,7 +26,11 @@ func ExampleServersClient_CreateOrUpdate_createAFluidRelayServer() {
 			"Category": to.Ptr("sales"),
 		},
 		Identity: &armfluidrelay.Identity{
-			Type: to.Ptr(armfluidrelay.ResourceIdentityTypeSystemAssigned),
+			Type: to.Ptr(armfluidrelay.ResourceIdentityTypeSystemAssignedUserAssigned),
+			UserAssignedIdentities: map[string]*armfluidrelay.UserAssignedIdentitiesValue{
+				"/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": {},
+				"/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2": {},
+			},
 		},
 		Properties: &armfluidrelay.ServerProperties{
 			Storagesku: to.Ptr(armfluidrelay.StorageSKUBasic),
@@ -47,6 +51,16 @@ func ExampleServersClient_CreateOrUpdate_createAFluidRelayServer() {
 	// 		Type: to.Ptr(armfluidrelay.ResourceIdentityTypeSystemAssigned),
 	// 		PrincipalID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 	// 		TenantID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 		UserAssignedIdentities: map[string]*armfluidrelay.UserAssignedIdentitiesValue{
+	// 			"/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1": &armfluidrelay.UserAssignedIdentitiesValue{
+	// 				ClientID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 				PrincipalID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			},
+	// 			"/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2": &armfluidrelay.UserAssignedIdentitiesValue{
+	// 				ClientID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 				PrincipalID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 			},
+	// 		},
 	// 	},
 	// 	Properties: &armfluidrelay.ServerProperties{
 	// 		FluidRelayEndpoints: &armfluidrelay.Endpoints{

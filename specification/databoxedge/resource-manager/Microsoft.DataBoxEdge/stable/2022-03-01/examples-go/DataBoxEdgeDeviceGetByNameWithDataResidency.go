@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoxedge/armdataboxedge"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DataBoxEdgeDeviceGetByName.json
-func ExampleDevicesClient_Get_dataBoxEdgeDeviceGetByName() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DataBoxEdgeDeviceGetByNameWithDataResidency.json
+func ExampleDevicesClient_Get_dataBoxEdgeDeviceGetByNameWithDataResidency() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -42,6 +42,9 @@ func ExampleDevicesClient_Get_dataBoxEdgeDeviceGetByName() {
 	// 		ConfiguredRoleTypes: []*armdataboxedge.RoleTypes{
 	// 			to.Ptr(armdataboxedge.RoleTypesCloudEdgeManagement)},
 	// 			DataBoxEdgeDeviceStatus: to.Ptr(armdataboxedge.DataBoxEdgeDeviceStatusOffline),
+	// 			DataResidency: &armdataboxedge.DataResidency{
+	// 				Type: to.Ptr(armdataboxedge.DataResidencyTypeZoneReplication),
+	// 			},
 	// 			DeviceHcsVersion: to.Ptr("2.1.1361.23408"),
 	// 			DeviceLocalCapacity: to.Ptr[int64](8042259),
 	// 			DeviceModel: to.Ptr("Physical"),

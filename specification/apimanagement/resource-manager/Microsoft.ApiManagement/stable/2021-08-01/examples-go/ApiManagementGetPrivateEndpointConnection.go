@@ -8,25 +8,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetPrivateEndpointConnection.json
 func ExamplePrivateEndpointConnectionClient_GetByName() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewPrivateEndpointConnectionClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetByName(ctx,
-		"rg1",
-		"apimService1",
-		"privateEndpointConnectionName",
-		nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionClient().GetByName(ctx, "rg1", "apimService1", "privateEndpointConnectionName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armapimanagement.PrivateEndpointConnection{
+	// 	Name: to.Ptr("privateEndpointProxyName"),
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/privateEndpointConnectionName"),
+	// 	Properties: &armapimanagement.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armapimanagement.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/privateEndpointName"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armapimanagement.PrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("Please approve my request, thanks"),
+	// 			ActionsRequired: to.Ptr("None"),
+	// 			Status: to.Ptr(armapimanagement.PrivateEndpointServiceConnectionStatusPending),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armapimanagement.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 	},
+	// }
 }

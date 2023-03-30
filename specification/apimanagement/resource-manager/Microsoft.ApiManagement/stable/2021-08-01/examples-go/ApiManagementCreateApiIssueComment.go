@@ -11,34 +11,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateApiIssueComment.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementCreateApiIssueComment.json
 func ExampleAPIIssueCommentClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPIIssueCommentClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"rg1",
-		"apimService1",
-		"57d1f7558aa04f15146d9d8a",
-		"57d2ef278aa04f0ad01d6cdc",
-		"599e29ab193c3c0bd0b3e2fb",
-		armapimanagement.IssueCommentContract{
-			Properties: &armapimanagement.IssueCommentContractProperties{
-				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-01T22:21:20.467Z"); return t }()),
-				Text:        to.Ptr("Issue comment."),
-				UserID:      to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
-			},
+	res, err := clientFactory.NewAPIIssueCommentClient().CreateOrUpdate(ctx, "rg1", "apimService1", "57d1f7558aa04f15146d9d8a", "57d2ef278aa04f0ad01d6cdc", "599e29ab193c3c0bd0b3e2fb", armapimanagement.IssueCommentContract{
+		Properties: &armapimanagement.IssueCommentContractProperties{
+			CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-01T22:21:20.467Z"); return t }()),
+			Text:        to.Ptr("Issue comment."),
+			UserID:      to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
 		},
-		&armapimanagement.APIIssueCommentClientCreateOrUpdateOptions{IfMatch: nil})
+	}, &armapimanagement.APIIssueCommentClientCreateOrUpdateOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.IssueCommentContract = armapimanagement.IssueCommentContract{
+	// 	Name: to.Ptr("599e29ab193c3c0bd0b3e2fb"),
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/apis/issues/comments"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/57d1f7558aa04f15146d9d8a/issues/57d2ef278aa04f0ad01d6cdc/comments/599e29ab193c3c0bd0b3e2fb"),
+	// 	Properties: &armapimanagement.IssueCommentContractProperties{
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-01T22:21:20.467Z"); return t}()),
+	// 		Text: to.Ptr("Issue comment."),
+	// 		UserID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
+	// 	},
+	// }
 }

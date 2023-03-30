@@ -8,23 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementHeadApiSchema.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementHeadApiSchema.json
 func ExampleAPISchemaClient_GetEntityTag() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPISchemaClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.GetEntityTag(ctx,
-		"rg1",
-		"apimService1",
-		"57d1f7558aa04f15146d9d8a",
-		"ec12520d-9d48-4e7b-8f39-698ca2ac63f1",
-		nil)
+	_, err = clientFactory.NewAPISchemaClient().GetEntityTag(ctx, "rg1", "apimService1", "57d1f7558aa04f15146d9d8a", "ec12520d-9d48-4e7b-8f39-698ca2ac63f1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

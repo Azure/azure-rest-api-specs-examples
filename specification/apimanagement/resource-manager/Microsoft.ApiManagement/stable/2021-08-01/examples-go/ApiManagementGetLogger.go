@@ -8,25 +8,37 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetLogger.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetLogger.json
 func ExampleLoggerClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewLoggerClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"rg1",
-		"apimService1",
-		"templateLogger",
-		nil)
+	res, err := clientFactory.NewLoggerClient().Get(ctx, "rg1", "apimService1", "templateLogger", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.LoggerContract = armapimanagement.LoggerContract{
+	// 	Name: to.Ptr("kloudapilogger1"),
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/loggers"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/loggers/kloudapilogger1"),
+	// 	Properties: &armapimanagement.LoggerContractProperties{
+	// 		Description: to.Ptr("testeventhub3again"),
+	// 		Credentials: map[string]*string{
+	// 			"name": to.Ptr("testeventhub4"),
+	// 			"connectionString": to.Ptr("Endpoint=sb://eventhubapim.servicebus.windows.net/;SharedAccessKeyName=Sender;SharedAccessKey=************"),
+	// 		},
+	// 		IsBuffered: to.Ptr(true),
+	// 		LoggerType: to.Ptr(armapimanagement.LoggerTypeAzureEventHub),
+	// 		ResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.EventHub/namespaces/eventhubapim"),
+	// 	},
+	// }
 }

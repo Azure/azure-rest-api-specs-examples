@@ -8,31 +8,54 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListApiVersionSets.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListApiVersionSets.json
 func ExampleAPIVersionSetClient_NewListByServicePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPIVersionSetClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByServicePager("rg1",
-		"apimService1",
-		&armapimanagement.APIVersionSetClientListByServiceOptions{Filter: nil,
-			Top:  nil,
-			Skip: nil,
-		})
+	pager := clientFactory.NewAPIVersionSetClient().NewListByServicePager("rg1", "apimService1", &armapimanagement.APIVersionSetClientListByServiceOptions{Filter: nil,
+		Top:  nil,
+		Skip: nil,
+	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.APIVersionSetCollection = armapimanagement.APIVersionSetCollection{
+		// 	Count: to.Ptr[int64](2),
+		// 	Value: []*armapimanagement.APIVersionSetContract{
+		// 		{
+		// 			Name: to.Ptr("vs1"),
+		// 			Type: to.Ptr("Microsoft.ApiManagement/service/api-version-sets"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/vs1"),
+		// 			Properties: &armapimanagement.APIVersionSetContractProperties{
+		// 				Description: to.Ptr("Version configuration"),
+		// 				DisplayName: to.Ptr("api set 1"),
+		// 				VersioningScheme: to.Ptr(armapimanagement.VersioningSchemeSegment),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("vs2"),
+		// 			Type: to.Ptr("Microsoft.ApiManagement/service/api-version-sets"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apiVersionSets/vs2"),
+		// 			Properties: &armapimanagement.APIVersionSetContractProperties{
+		// 				Description: to.Ptr("Version configuration 2"),
+		// 				DisplayName: to.Ptr("api set 2"),
+		// 				VersioningScheme: to.Ptr(armapimanagement.VersioningSchemeQuery),
+		// 			},
+		// 	}},
+		// }
 	}
 }

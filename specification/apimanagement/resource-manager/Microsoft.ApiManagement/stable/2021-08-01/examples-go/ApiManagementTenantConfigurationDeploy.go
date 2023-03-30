@@ -9,27 +9,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementTenantConfigurationDeploy.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementTenantConfigurationDeploy.json
 func ExampleTenantConfigurationClient_BeginDeploy() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewTenantConfigurationClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDeploy(ctx,
-		"rg1",
-		"apimService1",
-		armapimanagement.ConfigurationIDNameConfiguration,
-		armapimanagement.DeployConfigurationParameters{
-			Properties: &armapimanagement.DeployConfigurationParameterProperties{
-				Branch: to.Ptr("master"),
-			},
+	poller, err := clientFactory.NewTenantConfigurationClient().BeginDeploy(ctx, "rg1", "apimService1", armapimanagement.ConfigurationIDNameConfiguration, armapimanagement.DeployConfigurationParameters{
+		Properties: &armapimanagement.DeployConfigurationParameterProperties{
+			Branch: to.Ptr("master"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -37,6 +32,21 @@ func ExampleTenantConfigurationClient_BeginDeploy() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.OperationResultContract = armapimanagement.OperationResultContract{
+	// 	Name: to.Ptr("6074e652093a9d0dac3d733c"),
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/tenant/operationResults"),
+	// 	ID: to.Ptr("6074e652093a9d0dac3d733c"),
+	// 	Properties: &armapimanagement.OperationResultContractProperties{
+	// 		Error: &armapimanagement.ErrorResponseBody{
+	// 			Code: to.Ptr("ValidationError"),
+	// 			Message: to.Ptr("File not found: 'api-management/configuration.json'"),
+	// 		},
+	// 		Started: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-26T17:06:54.303Z"); return t}()),
+	// 		Status: to.Ptr(armapimanagement.AsyncOperationStatusFailed),
+	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-26T17:07:21.777Z"); return t}()),
+	// 	},
+	// }
 }

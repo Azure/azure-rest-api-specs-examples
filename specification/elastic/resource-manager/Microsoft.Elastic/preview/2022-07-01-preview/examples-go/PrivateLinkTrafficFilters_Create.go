@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elastic/resource-manager/Microsoft.Elastic/preview/2022-07-01-preview/examples/PrivateLinkTrafficFilters_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/232b858812a4f946a82bc11a81241826f5554fbd/specification/elastic/resource-manager/Microsoft.Elastic/preview/2022-07-01-preview/examples/PrivateLinkTrafficFilters_Create.json
 func ExampleCreateAndAssociatePLFilterClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armelastic.NewCreateAndAssociatePLFilterClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armelastic.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx, "myResourceGroup", "myMonitor", &armelastic.CreateAndAssociatePLFilterClientBeginCreateOptions{Name: nil,
+	poller, err := clientFactory.NewCreateAndAssociatePLFilterClient().BeginCreate(ctx, "myResourceGroup", "myMonitor", &armelastic.CreateAndAssociatePLFilterClientBeginCreateOptions{Name: nil,
 		PrivateEndpointGUID: to.Ptr("fdb54d3b-e85e-4d08-8958-0d2f7g523df9"),
 		PrivateEndpointName: to.Ptr("myPrivateEndpoint"),
 	})

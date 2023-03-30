@@ -8,21 +8,50 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/nginx/armnginx/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/examples/Deployments_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c71a66dab813061f1d09982c2748a09317fe0860/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/examples/Deployments_Get.json
 func ExampleDeploymentsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armnginx.NewDeploymentsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armnginx.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "myResourceGroup", "myDeployment", nil)
+	res, err := clientFactory.NewDeploymentsClient().Get(ctx, "myResourceGroup", "myDeployment", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Deployment = armnginx.Deployment{
+	// 	Name: to.Ptr("myDeployment"),
+	// 	Type: to.Ptr("nginx.nginxplus/deployments"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Nginx.NginxPlus/nginxDeployments/myDeployment"),
+	// 	Location: to.Ptr("westus"),
+	// 	Properties: &armnginx.DeploymentProperties{
+	// 		ManagedResourceGroup: to.Ptr("myManagedResourceGroup"),
+	// 		NetworkProfile: &armnginx.NetworkProfile{
+	// 			FrontEndIPConfiguration: &armnginx.FrontendIPConfiguration{
+	// 				PrivateIPAddresses: []*armnginx.PrivateIPAddress{
+	// 					{
+	// 						PrivateIPAddress: to.Ptr("1.1.1.1"),
+	// 						PrivateIPAllocationMethod: to.Ptr(armnginx.NginxPrivateIPAllocationMethodStatic),
+	// 						SubnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"),
+	// 				}},
+	// 				PublicIPAddresses: []*armnginx.PublicIPAddress{
+	// 					{
+	// 						ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIPAddress"),
+	// 				}},
+	// 			},
+	// 			NetworkInterfaceConfiguration: &armnginx.NetworkInterfaceConfiguration{
+	// 				SubnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"),
+	// 			},
+	// 		},
+	// 		NginxVersion: to.Ptr("nginx-1.19.6"),
+	// 		ProvisioningState: to.Ptr(armnginx.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

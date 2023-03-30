@@ -8,25 +8,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mariadb/armmariadb"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/PrivateEndpointConnectionGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mariadb/resource-manager/Microsoft.DBforMariaDB/stable/2018-06-01/examples/PrivateEndpointConnectionGet.json
 func ExamplePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmariadb.NewPrivateEndpointConnectionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armmariadb.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"Default",
-		"test-svr",
-		"private-endpoint-connection-name",
-		nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().Get(ctx, "Default", "test-svr", "private-endpoint-connection-name", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armmariadb.PrivateEndpointConnection{
+	// 	Name: to.Ptr("private-endpoint-connection-name"),
+	// 	Type: to.Ptr("Microsoft.DBforMariaDB/servers/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.DBforMariaDB/servers/test-svr/privateEndpointConnections/private-endpoint-connection-name"),
+	// 	Properties: &armmariadb.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armmariadb.PrivateEndpointProperty{
+	// 			ID: to.Ptr("/subscriptions/55555555-6666-7777-8888-999999999999/resourceGroups/Default-Network/providers/Microsoft.Network/privateEndpoints/private-endpoint-name"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armmariadb.PrivateLinkServiceConnectionStateProperty{
+	// 			Description: to.Ptr("Auto-approved"),
+	// 			ActionsRequired: to.Ptr("None"),
+	// 			Status: to.Ptr("Approved"),
+	// 		},
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 	},
+	// }
 }

@@ -11,18 +11,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/labservices/armlabservices"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Schedules/patchSchedule.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4c2cdccf6ca3281dd50ed8788ce1de2e0d480973/specification/labservices/resource-manager/Microsoft.LabServices/stable/2022-08-01/examples/Schedules/patchSchedule.json
 func ExampleSchedulesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armlabservices.NewSchedulesClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armlabservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx, "testrg123", "testlab", "schedule1", armlabservices.ScheduleUpdate{
+	res, err := clientFactory.NewSchedulesClient().Update(ctx, "testrg123", "testlab", "schedule1", armlabservices.ScheduleUpdate{
 		Properties: &armlabservices.ScheduleUpdateProperties{
 			RecurrencePattern: &armlabservices.RecurrencePattern{
 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14T23:59:59Z"); return t }()),
@@ -34,6 +34,32 @@ func ExampleSchedulesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Schedule = armlabservices.Schedule{
+	// 	Name: to.Ptr("schedule1"),
+	// 	Type: to.Ptr("Microsoft.LabServices/Schedule"),
+	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.LabServices/labs/testlab/schedules/schedule1"),
+	// 	Properties: &armlabservices.ScheduleProperties{
+	// 		Notes: to.Ptr("Schedule 1 for students"),
+	// 		RecurrencePattern: &armlabservices.RecurrencePattern{
+	// 			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14T23:59:59Z"); return t}()),
+	// 			Frequency: to.Ptr(armlabservices.RecurrenceFrequencyDaily),
+	// 			Interval: to.Ptr[int32](2),
+	// 		},
+	// 		StartAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00Z"); return t}()),
+	// 		StopAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00Z"); return t}()),
+	// 		TimeZoneID: to.Ptr("America/Los_Angeles"),
+	// 		ProvisioningState: to.Ptr(armlabservices.ProvisioningStateSucceeded),
+	// 	},
+	// 	SystemData: &armlabservices.SystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T10:00:00Z"); return t}()),
+	// 		CreatedBy: to.Ptr("identity123"),
+	// 		CreatedByType: to.Ptr(armlabservices.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-01T09:12:28Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("identity123"),
+	// 		LastModifiedByType: to.Ptr(armlabservices.CreatedByTypeUser),
+	// 	},
+	// }
 }

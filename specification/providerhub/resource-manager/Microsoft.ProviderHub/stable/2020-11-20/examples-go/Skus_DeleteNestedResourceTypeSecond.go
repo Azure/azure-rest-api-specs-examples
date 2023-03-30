@@ -8,24 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/Skus_DeleteNestedResourceTypeSecond.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/Skus_DeleteNestedResourceTypeSecond.json
 func ExampleSKUsClient_DeleteNestedResourceTypeSecond() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armproviderhub.NewSKUsClient("ab7a8701-f7ef-471a-a2f4-d0ebbf494f77", cred, nil)
+	clientFactory, err := armproviderhub.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.DeleteNestedResourceTypeSecond(ctx,
-		"Microsoft.Contoso",
-		"testResourceType",
-		"nestedResourceTypeFirst",
-		"nestedResourceTypeSecond",
-		"testSku",
-		nil)
+	_, err = clientFactory.NewSKUsClient().DeleteNestedResourceTypeSecond(ctx, "Microsoft.Contoso", "testResourceType", "nestedResourceTypeFirst", "nestedResourceTypeSecond", "testSku", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

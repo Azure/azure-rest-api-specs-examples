@@ -8,28 +8,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/m365securityandcompliance/armm365securityandcompliance"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/examples/ComplianceCenterServiceListPrivateEndpointConnections.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/examples/ComplianceCenterServiceListPrivateEndpointConnections.json
 func ExamplePrivateEndpointConnectionsCompClient_NewListByServicePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armm365securityandcompliance.NewPrivateEndpointConnectionsCompClient("subid", cred, nil)
+	clientFactory, err := armm365securityandcompliance.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByServicePager("rgname",
-		"service1",
-		nil)
+	pager := clientFactory.NewPrivateEndpointConnectionsCompClient().NewListByServicePager("rgname", "service1", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.PrivateEndpointConnectionListResult = armm365securityandcompliance.PrivateEndpointConnectionListResult{
+		// 	Value: []*armm365securityandcompliance.PrivateEndpointConnection{
+		// 		{
+		// 			Name: to.Ptr("myConnection"),
+		// 			Type: to.Ptr("Microsoft.M365SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/privateEndpointConnections"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.M365SecurityAndCompliance/privateLinkServicesForM365ComplianceCenter/service1/privateEndpointConnections/myConnection"),
+		// 			Properties: &armm365securityandcompliance.PrivateEndpointConnectionProperties{
+		// 				PrivateEndpoint: &armm365securityandcompliance.PrivateEndpoint{
+		// 					ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/peexample01"),
+		// 				},
+		// 				PrivateLinkServiceConnectionState: &armm365securityandcompliance.PrivateLinkServiceConnectionState{
+		// 					Description: to.Ptr("Auto-Approved"),
+		// 					ActionsRequired: to.Ptr("None"),
+		// 					Status: to.Ptr(armm365securityandcompliance.PrivateEndpointServiceConnectionStatusApproved),
+		// 				},
+		// 			},
+		// 	}},
+		// }
 	}
 }

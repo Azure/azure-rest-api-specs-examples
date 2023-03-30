@@ -8,24 +8,35 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/delegatednetwork/armdelegatednetwork"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/dnc/resource-manager/Microsoft.DelegatedNetwork/stable/2021-03-15/examples/getController.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/dnc/resource-manager/Microsoft.DelegatedNetwork/stable/2021-03-15/examples/getController.json
 func ExampleControllerClient_GetDetails() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdelegatednetwork.NewControllerClient("613192d7-503f-477a-9cfe-4efc3ee2bd60", cred, nil)
+	clientFactory, err := armdelegatednetwork.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetDetails(ctx,
-		"TestRG",
-		"testcontroller",
-		nil)
+	res, err := clientFactory.NewControllerClient().GetDetails(ctx, "TestRG", "testcontroller", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DelegatedController = armdelegatednetwork.DelegatedController{
+	// 	Name: to.Ptr("testcontroller"),
+	// 	Type: to.Ptr("Microsoft.DelegatedNetwork/controller"),
+	// 	ID: to.Ptr("/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.DelegatedNetwork/controller/testcontroller"),
+	// 	Location: to.Ptr("West US"),
+	// 	Properties: &armdelegatednetwork.DelegatedControllerProperties{
+	// 		DncAppID: to.Ptr("ac1192d7-503f-477a-9cfe-4efc3ee2bd60"),
+	// 		DncEndpoint: to.Ptr("https://orch.useast.dnc.azure.com"),
+	// 		DncTenantID: to.Ptr("66192d7-503f-477a-9cfe-4efc3ee2bd60"),
+	// 		ProvisioningState: to.Ptr(armdelegatednetwork.ControllerStateSucceeded),
+	// 		ResourceGUID: to.Ptr("5a82cbcf-e8ea-4175-ac2b-ad36a73f9801"),
+	// 	},
+	// }
 }

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppConnectedEnvironmentResource created on azure
-// for more information of creating ContainerAppConnectedEnvironmentResource, please refer to the document of ContainerAppConnectedEnvironmentResource
+// this example assumes you already have this ContainerAppConnectedEnvironmentStorageResource created on azure
+// for more information of creating ContainerAppConnectedEnvironmentStorageResource, please refer to the document of ContainerAppConnectedEnvironmentStorageResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string connectedEnvironmentName = "env";
-ResourceIdentifier containerAppConnectedEnvironmentResourceId = ContainerAppConnectedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, connectedEnvironmentName);
-ContainerAppConnectedEnvironmentResource containerAppConnectedEnvironment = client.GetContainerAppConnectedEnvironmentResource(containerAppConnectedEnvironmentResourceId);
-
-// get the collection of this ContainerAppConnectedEnvironmentStorageResource
-ContainerAppConnectedEnvironmentStorageCollection collection = containerAppConnectedEnvironment.GetContainerAppConnectedEnvironmentStorages();
+string storageName = "jlaw-demo1";
+ResourceIdentifier containerAppConnectedEnvironmentStorageResourceId = ContainerAppConnectedEnvironmentStorageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, connectedEnvironmentName, storageName);
+ContainerAppConnectedEnvironmentStorageResource containerAppConnectedEnvironmentStorage = client.GetContainerAppConnectedEnvironmentStorageResource(containerAppConnectedEnvironmentStorageResourceId);
 
 // invoke the operation
-string storageName = "jlaw-demo1";
-bool result = await collection.ExistsAsync(storageName);
+ContainerAppConnectedEnvironmentStorageResource result = await containerAppConnectedEnvironmentStorage.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppConnectedEnvironmentStorageData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

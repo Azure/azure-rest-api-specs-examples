@@ -16,11 +16,11 @@ func ExampleBackupVaultsClient_CheckNameAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewBackupVaultsClient("0b352192-dcac-4cc7-992e-a96190ccc68c", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "SampleResourceGroup", "westus", armdataprotection.CheckNameAvailabilityRequest{
+	res, err := clientFactory.NewBackupVaultsClient().CheckNameAvailability(ctx, "SampleResourceGroup", "westus", armdataprotection.CheckNameAvailabilityRequest{
 		Name: to.Ptr("swaggerExample"),
 		Type: to.Ptr("Microsoft.DataProtection/BackupVaults"),
 	}, nil)

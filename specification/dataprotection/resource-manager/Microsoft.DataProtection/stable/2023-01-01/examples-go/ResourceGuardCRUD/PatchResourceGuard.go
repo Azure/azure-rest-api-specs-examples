@@ -16,11 +16,11 @@ func ExampleResourceGuardsClient_Patch() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewResourceGuardsClient("0b352192-dcac-4cc7-992e-a96190ccc68c", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Patch(ctx, "SampleResourceGroup", "swaggerExample", armdataprotection.PatchResourceGuardInput{
+	res, err := clientFactory.NewResourceGuardsClient().Patch(ctx, "SampleResourceGroup", "swaggerExample", armdataprotection.PatchResourceGuardInput{
 		Tags: map[string]*string{
 			"newKey": to.Ptr("newVal"),
 		},

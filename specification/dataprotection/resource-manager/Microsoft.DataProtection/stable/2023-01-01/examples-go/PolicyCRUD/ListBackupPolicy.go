@@ -15,11 +15,11 @@ func ExampleBackupPoliciesClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewBackupPoliciesClient("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("000pikumar", "PrivatePreviewVault", nil)
+	pager := clientFactory.NewBackupPoliciesClient().NewListPager("000pikumar", "PrivatePreviewVault", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

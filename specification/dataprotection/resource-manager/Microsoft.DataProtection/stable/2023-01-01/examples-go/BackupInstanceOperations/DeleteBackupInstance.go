@@ -15,11 +15,11 @@ func ExampleBackupInstancesClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewBackupInstancesClient("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "000pikumar", "PratikPrivatePreviewVault1", "testInstance1", nil)
+	poller, err := clientFactory.NewBackupInstancesClient().BeginDelete(ctx, "000pikumar", "PratikPrivatePreviewVault1", "testInstance1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -15,11 +15,11 @@ func ExampleBackupInstancesClient_BeginResumeBackups() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewBackupInstancesClient("04cf684a-d41f-4550-9f70-7708a3a2283b", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginResumeBackups(ctx, "testrg", "testvault", "testbi", nil)
+	poller, err := clientFactory.NewBackupInstancesClient().BeginResumeBackups(ctx, "testrg", "testvault", "testbi", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -15,11 +15,11 @@ func ExampleResourceGuardsClient_NewGetResourcesInResourceGroupPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdataprotection.NewResourceGuardsClient("0b352192-dcac-4cc7-992e-a96190ccc68c", cred, nil)
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewGetResourcesInResourceGroupPager("SampleResourceGroup", nil)
+	pager := clientFactory.NewResourceGuardsClient().NewGetResourcesInResourceGroupPager("SampleResourceGroup", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheImport.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/065033d1c4087a2b009e71c0b3f0666718354ebd/specification/redis/resource-manager/Microsoft.Cache/stable/2022-06-01/examples/RedisCacheImport.json
 func ExampleClient_BeginImportData() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armredis.NewClient("subid", cred, nil)
+	clientFactory, err := armredis.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginImportData(ctx, "rg1", "cache1", armredis.ImportRDBParameters{
+	poller, err := clientFactory.NewClient().BeginImportData(ctx, "rg1", "cache1", armredis.ImportRDBParameters{
 		Format: to.Ptr("RDB"),
 		Files: []*string{
 			to.Ptr("http://fileuris.contoso.com/pathtofile1")},

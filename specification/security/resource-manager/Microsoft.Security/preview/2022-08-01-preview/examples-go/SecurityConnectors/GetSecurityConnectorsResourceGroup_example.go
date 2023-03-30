@@ -8,26 +8,138 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2022-08-01-preview/examples/SecurityConnectors/GetSecurityConnectorsResourceGroup_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/preview/2022-08-01-preview/examples/SecurityConnectors/GetSecurityConnectorsResourceGroup_example.json
 func ExampleConnectorsClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewConnectorsClient("a5caac9c-5c04-49af-b3d0-e204f40345d5", cred, nil)
+	clientFactory, err := armsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("exampleResourceGroup", nil)
+	pager := clientFactory.NewConnectorsClient().NewListByResourceGroupPager("exampleResourceGroup", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ConnectorsList = armsecurity.ConnectorsList{
+		// 	Value: []*armsecurity.Connector{
+		// 		{
+		// 			Location: to.Ptr("Central US"),
+		// 			Etag: to.Ptr("etag value"),
+		// 			Kind: to.Ptr(""),
+		// 			Name: to.Ptr("exampleSecurityConnectorAws"),
+		// 			Type: to.Ptr("Microsoft.Security/securityConnectors"),
+		// 			ID: to.Ptr("/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/exampleResourceGroup/providers/Microsoft.Security/securityConnectors/exampleSecurityConnectorAws"),
+		// 			Tags: map[string]*string{
+		// 			},
+		// 			Properties: &armsecurity.ConnectorProperties{
+		// 				EnvironmentData: &armsecurity.AwsEnvironmentData{
+		// 					EnvironmentType: to.Ptr(armsecurity.EnvironmentTypeAwsAccount),
+		// 				},
+		// 				EnvironmentName: to.Ptr(armsecurity.CloudNameAWS),
+		// 				HierarchyIdentifier: to.Ptr("exampleHierarchyId"),
+		// 				Offerings: []armsecurity.CloudOfferingClassification{
+		// 					&armsecurity.CspmMonitorAwsOffering{
+		// 						OfferingType: to.Ptr(armsecurity.OfferingTypeCspmMonitorAws),
+		// 						NativeCloudConnection: &armsecurity.CspmMonitorAwsOfferingNativeCloudConnection{
+		// 							CloudRoleArn: to.Ptr("arn:aws:iam::00000000:role/ASCMonitor"),
+		// 						},
+		// 				}},
+		// 			},
+		// 			SystemData: &armsecurity.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-31T13:47:50.328Z"); return t}()),
+		// 				CreatedBy: to.Ptr("user@contoso.com"),
+		// 				CreatedByType: to.Ptr(armsecurity.CreatedByTypeUser),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-31T13:47:50.328Z"); return t}()),
+		// 				LastModifiedBy: to.Ptr("user@contoso.com"),
+		// 				LastModifiedByType: to.Ptr(armsecurity.CreatedByTypeUser),
+		// 			},
+		// 		},
+		// 		{
+		// 			Location: to.Ptr("Central US"),
+		// 			Etag: to.Ptr("etag value"),
+		// 			Kind: to.Ptr(""),
+		// 			Name: to.Ptr("exampleSecurityConnectorAwsOrganization"),
+		// 			Type: to.Ptr("Microsoft.Security/securityConnectors"),
+		// 			ID: to.Ptr("/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/exampleResourceGroup/providers/Microsoft.Security/securityConnectors/exampleSecurityConnectorAwsOrganization"),
+		// 			Tags: map[string]*string{
+		// 			},
+		// 			Properties: &armsecurity.ConnectorProperties{
+		// 				EnvironmentData: &armsecurity.AwsEnvironmentData{
+		// 					EnvironmentType: to.Ptr(armsecurity.EnvironmentTypeAwsAccount),
+		// 					OrganizationalData: &armsecurity.AwsOrganizationalDataMaster{
+		// 						OrganizationMembershipType: to.Ptr(armsecurity.OrganizationMembershipTypeOrganization),
+		// 						ExcludedAccountIDs: []*string{
+		// 							to.Ptr("excludedAccountIdExample")},
+		// 							StacksetName: to.Ptr("myStackSetName"),
+		// 						},
+		// 					},
+		// 					EnvironmentName: to.Ptr(armsecurity.CloudNameAWS),
+		// 					HierarchyIdentifier: to.Ptr("exampleHierarchyId"),
+		// 					Offerings: []armsecurity.CloudOfferingClassification{
+		// 						&armsecurity.CspmMonitorAwsOffering{
+		// 							OfferingType: to.Ptr(armsecurity.OfferingTypeCspmMonitorAws),
+		// 							NativeCloudConnection: &armsecurity.CspmMonitorAwsOfferingNativeCloudConnection{
+		// 								CloudRoleArn: to.Ptr("arn:aws:iam::00000000:role/ASCMonitor"),
+		// 							},
+		// 					}},
+		// 				},
+		// 				SystemData: &armsecurity.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-12-15T13:47:50.328Z"); return t}()),
+		// 					CreatedBy: to.Ptr("user@contoso.com"),
+		// 					CreatedByType: to.Ptr(armsecurity.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-12-15T13:47:50.328Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("user@contoso.com"),
+		// 					LastModifiedByType: to.Ptr(armsecurity.CreatedByTypeUser),
+		// 				},
+		// 			},
+		// 			{
+		// 				Location: to.Ptr("Central US"),
+		// 				Etag: to.Ptr("etag value"),
+		// 				Kind: to.Ptr(""),
+		// 				Name: to.Ptr("exampleSecurityConnectorGcp"),
+		// 				Type: to.Ptr("Microsoft.Security/securityConnectors"),
+		// 				ID: to.Ptr("/subscriptions/a5caac9c-5c04-49af-b3d0-e204f40345d5/resourceGroups/exampleResourceGroup/providers/Microsoft.Security/securityConnectors/exampleSecurityConnectorGcp"),
+		// 				Tags: map[string]*string{
+		// 				},
+		// 				Properties: &armsecurity.ConnectorProperties{
+		// 					EnvironmentData: &armsecurity.GcpProjectEnvironmentData{
+		// 						EnvironmentType: to.Ptr(armsecurity.EnvironmentTypeGcpProject),
+		// 						ProjectDetails: &armsecurity.GcpProjectDetails{
+		// 							ProjectID: to.Ptr("My-0GCP-Project"),
+		// 							ProjectNumber: to.Ptr("exampleHierarchyId"),
+		// 							WorkloadIdentityPoolID: to.Ptr("My-workload-identity-federation-pool-id"),
+		// 						},
+		// 					},
+		// 					EnvironmentName: to.Ptr(armsecurity.CloudNameGCP),
+		// 					HierarchyIdentifier: to.Ptr("exampleHierarchyId"),
+		// 					Offerings: []armsecurity.CloudOfferingClassification{
+		// 						&armsecurity.CspmMonitorGcpOffering{
+		// 							OfferingType: to.Ptr(armsecurity.OfferingTypeCspmMonitorGcp),
+		// 							NativeCloudConnection: &armsecurity.CspmMonitorGcpOfferingNativeCloudConnection{
+		// 								ServiceAccountEmailAddress: to.Ptr("capm@projectName.com"),
+		// 								WorkloadIdentityProviderID: to.Ptr("My workload identity provider Id"),
+		// 							},
+		// 					}},
+		// 				},
+		// 				SystemData: &armsecurity.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-12-15T13:47:50.328Z"); return t}()),
+		// 					CreatedBy: to.Ptr("user@contoso.com"),
+		// 					CreatedByType: to.Ptr(armsecurity.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-12-15T13:47:50.328Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("user@contoso.com"),
+		// 					LastModifiedByType: to.Ptr(armsecurity.CreatedByTypeUser),
+		// 				},
+		// 		}},
+		// 	}
 	}
 }

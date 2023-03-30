@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/Automations/ValidateAutomation_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/preview/2019-01-01-preview/examples/Automations/ValidateAutomation_example.json
 func ExampleAutomationsClient_Validate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewAutomationsClient("a5caac9c-5c04-49af-b3d0-e204f40345d5", cred, nil)
+	clientFactory, err := armsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Validate(ctx, "exampleResourceGroup", "exampleAutomation", armsecurity.Automation{
+	res, err := clientFactory.NewAutomationsClient().Validate(ctx, "exampleResourceGroup", "exampleAutomation", armsecurity.Automation{
 		Location: to.Ptr("Central US"),
 		Tags:     map[string]*string{},
 		Properties: &armsecurity.AutomationProperties{
@@ -56,6 +56,11 @@ func ExampleAutomationsClient_Validate() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AutomationValidationStatus = armsecurity.AutomationValidationStatus{
+	// 	IsValid: to.Ptr(true),
+	// 	Message: to.Ptr("Validation Successful"),
+	// }
 }

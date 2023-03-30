@@ -9,36 +9,32 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/EventSubscriptions_CreateOrUpdateForCustomTopic.json
-func ExampleEventSubscriptionsClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f88928d723133dc392e3297e6d61b7f6d10501fd/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/EventSubscriptions_CreateOrUpdateForCustomTopic.json
+func ExampleEventSubscriptionsClient_BeginCreateOrUpdate_eventSubscriptionsCreateOrUpdateForCustomTopic() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewEventSubscriptionsClient("<subscription-id>", cred, nil)
+	clientFactory, err := armeventgrid.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1",
-		"examplesubscription1",
-		armeventgrid.EventSubscription{
-			Properties: &armeventgrid.EventSubscriptionProperties{
-				Destination: &armeventgrid.EventHubEventSubscriptionDestination{
-					EndpointType: to.Ptr(armeventgrid.EndpointTypeEventHub),
-					Properties: &armeventgrid.EventHubEventSubscriptionDestinationProperties{
-						ResourceID: to.Ptr("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"),
-					},
-				},
-				Filter: &armeventgrid.EventSubscriptionFilter{
-					IsSubjectCaseSensitive: to.Ptr(false),
-					SubjectBeginsWith:      to.Ptr("ExamplePrefix"),
-					SubjectEndsWith:        to.Ptr("ExampleSuffix"),
+	poller, err := clientFactory.NewEventSubscriptionsClient().BeginCreateOrUpdate(ctx, "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1", "examplesubscription1", armeventgrid.EventSubscription{
+		Properties: &armeventgrid.EventSubscriptionProperties{
+			Destination: &armeventgrid.EventHubEventSubscriptionDestination{
+				EndpointType: to.Ptr(armeventgrid.EndpointTypeEventHub),
+				Properties: &armeventgrid.EventHubEventSubscriptionDestinationProperties{
+					ResourceID: to.Ptr("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"),
 				},
 			},
+			Filter: &armeventgrid.EventSubscriptionFilter{
+				IsSubjectCaseSensitive: to.Ptr(false),
+				SubjectBeginsWith:      to.Ptr("ExamplePrefix"),
+				SubjectEndsWith:        to.Ptr("ExampleSuffix"),
+			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

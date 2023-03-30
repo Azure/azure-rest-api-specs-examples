@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/Channels_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f88928d723133dc392e3297e6d61b7f6d10501fd/specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/Channels_Delete.json
 func ExampleChannelsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armeventgrid.NewChannelsClient("5b4b650e-28b9-4790-b3ab-ddbd88d727c4", cred, nil)
+	clientFactory, err := armeventgrid.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"examplerg",
-		"examplePartnerNamespaceName1",
-		"exampleEventChannelName1",
-		nil)
+	poller, err := clientFactory.NewChannelsClient().BeginDelete(ctx, "examplerg", "examplePartnerNamespaceName1", "exampleEventChannelName1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

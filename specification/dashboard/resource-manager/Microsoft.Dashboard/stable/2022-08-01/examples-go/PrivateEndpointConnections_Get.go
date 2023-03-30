@@ -8,21 +8,40 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dashboard/armdashboard"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/examples/PrivateEndpointConnections_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7473936304533e6716fc4563401bf265dda4cb64/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/examples/PrivateEndpointConnections_Get.json
 func ExamplePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdashboard.NewPrivateEndpointConnectionsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armdashboard.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "myResourceGroup", "myWorkspace", "myConnection", nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().Get(ctx, "myResourceGroup", "myWorkspace", "myConnection", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armdashboard.PrivateEndpointConnection{
+	// 	Name: to.Ptr("myConnection"),
+	// 	Type: to.Ptr("Microsoft.Dashboard/grafana/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/Microsoft.Dashboard/grafana/myWorkspace/privateEndpointConnections/myConnection"),
+	// 	Properties: &armdashboard.PrivateEndpointConnectionProperties{
+	// 		GroupIDs: []*string{
+	// 			to.Ptr("grafana")},
+	// 			PrivateEndpoint: &armdashboard.PrivateEndpoint{
+	// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/Microsoft.Network/privateEndpoint/myEndpoint"),
+	// 			},
+	// 			PrivateLinkServiceConnectionState: &armdashboard.PrivateLinkServiceConnectionState{
+	// 				Description: to.Ptr("string"),
+	// 				ActionsRequired: to.Ptr("None"),
+	// 				Status: to.Ptr(armdashboard.PrivateEndpointServiceConnectionStatusPending),
+	// 			},
+	// 			ProvisioningState: to.Ptr(armdashboard.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 		},
+	// 	}
 }

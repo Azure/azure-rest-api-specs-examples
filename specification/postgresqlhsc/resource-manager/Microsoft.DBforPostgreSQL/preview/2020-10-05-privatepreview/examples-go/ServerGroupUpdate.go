@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupCreate.json
-func ExampleServerGroupsClient_BeginCreateOrUpdate_createANewServerGroup() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupUpdate.json
+func ExampleServerGroupsClient_BeginUpdate_updateTheServerGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,46 +20,33 @@ func ExampleServerGroupsClient_BeginCreateOrUpdate_createANewServerGroup() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewServerGroupsClient().BeginCreateOrUpdate(ctx, "TestGroup", "hsctestsg", armpostgresqlhsc.ServerGroup{
-		Location: to.Ptr("westus"),
-		Tags: map[string]*string{
-			"ElasticServer": to.Ptr("1"),
-		},
-		Properties: &armpostgresqlhsc.ServerGroupProperties{
-			AdministratorLogin:         to.Ptr("citus"),
-			AdministratorLoginPassword: to.Ptr("password"),
-			AvailabilityZone:           to.Ptr("1"),
-			BackupRetentionDays:        to.Ptr[int32](35),
-			CitusVersion:               to.Ptr(armpostgresqlhsc.CitusVersionNine5),
-			DelegatedSubnetArguments: &armpostgresqlhsc.ServerGroupPropertiesDelegatedSubnetArguments{
-				SubnetArmResourceID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-vnet-subnet"),
-			},
-			EnableMx:          to.Ptr(true),
-			EnableZfs:         to.Ptr(false),
-			PostgresqlVersion: to.Ptr(armpostgresqlhsc.PostgreSQLVersionTwelve),
-			PrivateDNSZoneArguments: &armpostgresqlhsc.ServerGroupPropertiesPrivateDNSZoneArguments{
-				PrivateDNSZoneArmResourceID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.Network/privateDnsZones/test-private-dns-zone"),
-			},
+	poller, err := clientFactory.NewServerGroupsClient().BeginUpdate(ctx, "TestGroup", "hsctestsg", armpostgresqlhsc.ServerGroupForUpdate{
+		Properties: &armpostgresqlhsc.ServerGroupPropertiesForUpdate{
+			AdministratorLoginPassword: to.Ptr("secret"),
+			BackupRetentionDays:        to.Ptr[int32](30),
+			PostgresqlVersion:          to.Ptr(armpostgresqlhsc.PostgreSQLVersionTwelve),
 			ServerRoleGroups: []*armpostgresqlhsc.ServerRoleGroup{
 				{
-					EnableHa:         to.Ptr(true),
+					EnableHa:         to.Ptr(false),
 					ServerEdition:    to.Ptr(armpostgresqlhsc.ServerEditionGeneralPurpose),
-					StorageQuotaInMb: to.Ptr[int64](524288),
-					VCores:           to.Ptr[int64](4),
+					StorageQuotaInMb: to.Ptr[int64](1048576),
+					VCores:           to.Ptr[int64](8),
 					Name:             to.Ptr(""),
 					Role:             to.Ptr(armpostgresqlhsc.ServerRoleCoordinator),
 					ServerCount:      to.Ptr[int32](1),
 				},
 				{
-					EnableHa:         to.Ptr(false),
+					EnableHa:         to.Ptr(true),
 					ServerEdition:    to.Ptr(armpostgresqlhsc.ServerEditionMemoryOptimized),
 					StorageQuotaInMb: to.Ptr[int64](524288),
 					VCores:           to.Ptr[int64](4),
 					Name:             to.Ptr(""),
 					Role:             to.Ptr(armpostgresqlhsc.ServerRoleWorker),
-					ServerCount:      to.Ptr[int32](3),
+					ServerCount:      to.Ptr[int32](4),
 				}},
-			StandbyAvailabilityZone: to.Ptr("2"),
+		},
+		Tags: map[string]*string{
+			"ElasticServer": to.Ptr("2"),
 		},
 	}, nil)
 	if err != nil {

@@ -8,26 +8,68 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceupdate/armdeviceupdate"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/Instances/Instances_ListByAccount.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/80065490402157d0df0dd37ab347c651b22eb576/specification/deviceupdate/resource-manager/Microsoft.DeviceUpdate/stable/2022-10-01/examples/Instances/Instances_ListByAccount.json
 func ExampleInstancesClient_NewListByAccountPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdeviceupdate.NewInstancesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armdeviceupdate.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByAccountPager("test-rg", "contoso", nil)
+	pager := clientFactory.NewInstancesClient().NewListByAccountPager("test-rg", "contoso", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.InstanceList = armdeviceupdate.InstanceList{
+		// 	Value: []*armdeviceupdate.Instance{
+		// 		{
+		// 			Name: to.Ptr("blue"),
+		// 			Type: to.Ptr("Microsoft.DeviceUpdate/accounts/instances"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DeviceUpdate/accounts/contoso/instances/blue"),
+		// 			Location: to.Ptr("westus2"),
+		// 			Properties: &armdeviceupdate.InstanceProperties{
+		// 				AccountName: to.Ptr("contoso"),
+		// 				DiagnosticStorageProperties: &armdeviceupdate.DiagnosticStorageProperties{
+		// 					AuthenticationType: to.Ptr(armdeviceupdate.AuthenticationTypeKeyBased),
+		// 					ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/adu-resource-group/providers/Microsoft.Storage/storageAccounts/testAccount"),
+		// 				},
+		// 				EnableDiagnostics: to.Ptr(false),
+		// 				IotHubs: []*armdeviceupdate.IotHubSettings{
+		// 					{
+		// 						ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/blue-contoso-hub"),
+		// 				}},
+		// 				ProvisioningState: to.Ptr(armdeviceupdate.ProvisioningStateSucceeded),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("red"),
+		// 			Type: to.Ptr("Microsoft.DeviceUpdate/accounts/instances"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DeviceUpdate/accounts/contoso/instances/red"),
+		// 			Location: to.Ptr("westus2"),
+		// 			Properties: &armdeviceupdate.InstanceProperties{
+		// 				AccountName: to.Ptr("contoso"),
+		// 				DiagnosticStorageProperties: &armdeviceupdate.DiagnosticStorageProperties{
+		// 					AuthenticationType: to.Ptr(armdeviceupdate.AuthenticationTypeKeyBased),
+		// 					ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/adu-resource-group/providers/Microsoft.Storage/storageAccounts/testAccount"),
+		// 				},
+		// 				EnableDiagnostics: to.Ptr(false),
+		// 				IotHubs: []*armdeviceupdate.IotHubSettings{
+		// 					{
+		// 						ResourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/red-contoso-hub"),
+		// 				}},
+		// 				ProvisioningState: to.Ptr(armdeviceupdate.ProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -9,30 +9,49 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridnetwork/armhybridnetwork/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/preview/2022-01-01-preview/examples/DeviceUpdateTags.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/792db17291c758b2bfdbbc0d35d0e2f5b5a1bd05/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/preview/2022-01-01-preview/examples/DeviceUpdateTags.json
 func ExampleDevicesClient_UpdateTags() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhybridnetwork.NewDevicesClient("subid", cred, nil)
+	clientFactory, err := armhybridnetwork.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.UpdateTags(ctx,
-		"rg1",
-		"TestDevice",
-		armhybridnetwork.TagsObject{
-			Tags: map[string]*string{
-				"tag1": to.Ptr("value1"),
-				"tag2": to.Ptr("value2"),
-			},
+	res, err := clientFactory.NewDevicesClient().UpdateTags(ctx, "rg1", "TestDevice", armhybridnetwork.TagsObject{
+		Tags: map[string]*string{
+			"tag1": to.Ptr("value1"),
+			"tag2": to.Ptr("value2"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Device = armhybridnetwork.Device{
+	// 	Name: to.Ptr("TestDevice"),
+	// 	Type: to.Ptr("Microsoft.HybridNetwork/devices"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.HybridNetwork/devices/TestDevice"),
+	// 	Location: to.Ptr("eastus"),
+	// 	Tags: map[string]*string{
+	// 		"tag1": to.Ptr("value1"),
+	// 		"tag2": to.Ptr("value2"),
+	// 	},
+	// 	Properties: &armhybridnetwork.AzureStackEdgeFormat{
+	// 		DeviceType: to.Ptr(armhybridnetwork.DeviceTypeAzureStackEdge),
+	// 		NetworkFunctions: []*armhybridnetwork.SubResource{
+	// 			{
+	// 				ID: to.Ptr("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.HybridNetwork/networkFunctions/TestNetworkFunction"),
+	// 		}},
+	// 		ProvisioningState: to.Ptr(armhybridnetwork.ProvisioningStateSucceeded),
+	// 		Status: to.Ptr(armhybridnetwork.StatusNotRegistered),
+	// 		AzureStackEdge: &armhybridnetwork.SubResource{
+	// 			ID: to.Ptr("/subscriptions/subid1/resourcegroups/rg2/providers/Microsoft.DataboxEdge/DataboxEdgeDevices/TestDataboxEdgeDeviceName"),
+	// 		},
+	// 	},
+	// }
 }

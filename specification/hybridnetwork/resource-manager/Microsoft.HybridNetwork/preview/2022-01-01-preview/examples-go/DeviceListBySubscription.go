@@ -8,26 +8,48 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridnetwork/armhybridnetwork/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/preview/2022-01-01-preview/examples/DeviceListBySubscription.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/792db17291c758b2bfdbbc0d35d0e2f5b5a1bd05/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/preview/2022-01-01-preview/examples/DeviceListBySubscription.json
 func ExampleDevicesClient_NewListBySubscriptionPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhybridnetwork.NewDevicesClient("subid", cred, nil)
+	clientFactory, err := armhybridnetwork.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBySubscriptionPager(nil)
+	pager := clientFactory.NewDevicesClient().NewListBySubscriptionPager(nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.DeviceListResult = armhybridnetwork.DeviceListResult{
+		// 	Value: []*armhybridnetwork.Device{
+		// 		{
+		// 			Name: to.Ptr("TestDevice"),
+		// 			Type: to.Ptr("Microsoft.HybridNetwork/devices"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.HybridNetwork/devices/TestDevice"),
+		// 			Location: to.Ptr("eastus"),
+		// 			Properties: &armhybridnetwork.AzureStackEdgeFormat{
+		// 				DeviceType: to.Ptr(armhybridnetwork.DeviceTypeAzureStackEdge),
+		// 				NetworkFunctions: []*armhybridnetwork.SubResource{
+		// 					{
+		// 						ID: to.Ptr("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.HybridNetwork/networkFunctions/TestNetworkFunction"),
+		// 				}},
+		// 				ProvisioningState: to.Ptr(armhybridnetwork.ProvisioningStateSucceeded),
+		// 				Status: to.Ptr(armhybridnetwork.StatusNotRegistered),
+		// 				AzureStackEdge: &armhybridnetwork.SubResource{
+		// 					ID: to.Ptr("/subscriptions/subid1/resourcegroups/rg2/providers/Microsoft.DataboxEdge/DataboxEdgeDevices/TestDataboxEdgeDeviceName"),
+		// 				},
+		// 			},
+		// 	}},
+		// }
 	}
 }

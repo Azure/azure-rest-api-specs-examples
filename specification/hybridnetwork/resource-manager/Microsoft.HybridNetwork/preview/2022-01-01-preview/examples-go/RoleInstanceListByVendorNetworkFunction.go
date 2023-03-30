@@ -8,29 +8,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridnetwork/armhybridnetwork/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/preview/2022-01-01-preview/examples/RoleInstanceListByVendorNetworkFunction.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/792db17291c758b2bfdbbc0d35d0e2f5b5a1bd05/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/preview/2022-01-01-preview/examples/RoleInstanceListByVendorNetworkFunction.json
 func ExampleRoleInstancesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhybridnetwork.NewRoleInstancesClient("subid", cred, nil)
+	clientFactory, err := armhybridnetwork.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("eastus",
-		"testVendor",
-		"testServiceKey",
-		nil)
+	pager := clientFactory.NewRoleInstancesClient().NewListPager("eastus", "testVendor", "testServiceKey", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.NetworkFunctionRoleInstanceListResult = armhybridnetwork.NetworkFunctionRoleInstanceListResult{
+		// 	Value: []*armhybridnetwork.RoleInstance{
+		// 		{
+		// 			Name: to.Ptr("mrm"),
+		// 			Type: to.Ptr("Microsoft.HybridNetwork/locations/vendors/networkFunctions/roleInstances"),
+		// 			ID: to.Ptr("/subscriptions/subid/providers/Microsoft.HybridNetwork/locations/eastus/vendors/testVendor/networkFunctions/testServiceKey/roleInstances/mrm"),
+		// 			Properties: &armhybridnetwork.RoleInstanceProperties{
+		// 				OperationalState: to.Ptr(armhybridnetwork.OperationalStateRunning),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("msm"),
+		// 			Type: to.Ptr("Microsoft.HybridNetwork/locations/vendors/networkFunctions/roleInstances"),
+		// 			ID: to.Ptr("/subscriptions/subid/providers/Microsoft.HybridNetwork/locations/eastus/vendors/testVendor/networkFunctions/testServiceKey/roleInstances/msm"),
+		// 			Properties: &armhybridnetwork.RoleInstanceProperties{
+		// 				OperationalState: to.Ptr(armhybridnetwork.OperationalStateStopped),
+		// 			},
+		// 	}},
+		// }
 	}
 }

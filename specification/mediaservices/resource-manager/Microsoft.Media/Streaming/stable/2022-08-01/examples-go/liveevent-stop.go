@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mediaservices/armmediaservices/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/liveevent-stop.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e7bf3adfa2d5e5cdbb804eec35279501794f461c/specification/mediaservices/resource-manager/Microsoft.Media/Streaming/stable/2022-08-01/examples/liveevent-stop.json
 func ExampleLiveEventsClient_BeginStop() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmediaservices.NewLiveEventsClient("0a6ec948-5a62-437d-b9df-934dc7c1b722", cred, nil)
+	clientFactory, err := armmediaservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginStop(ctx, "mediaresources", "slitestmedia10", "myLiveEvent1", armmediaservices.LiveEventActionInput{
+	poller, err := clientFactory.NewLiveEventsClient().BeginStop(ctx, "mediaresources", "slitestmedia10", "myLiveEvent1", armmediaservices.LiveEventActionInput{
 		RemoveOutputsOnStop: to.Ptr(false),
 	}, nil)
 	if err != nil {

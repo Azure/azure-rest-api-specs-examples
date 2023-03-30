@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databox/armdatabox"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-02-01/examples/JobsCreate.json
-func ExampleJobsClient_BeginCreate_jobsCreate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-02-01/examples/JobsCreateExport.json
+func ExampleJobsClient_BeginCreate_jobsCreateExport() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,13 +20,13 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewJobsClient().BeginCreate(ctx, "SdkRg5154", "SdkJob952", armdatabox.JobResource{
+	poller, err := clientFactory.NewJobsClient().BeginCreate(ctx, "SdkRg8091", "SdkJob6429", armdatabox.JobResource{
 		Location: to.Ptr("westus"),
 		SKU: &armdatabox.SKU{
 			Name: to.Ptr(armdatabox.SKUNameDataBox),
 		},
 		Properties: &armdatabox.JobProperties{
-			TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
+			TransferType: to.Ptr(armdatabox.TransferTypeExportFromAzure),
 			Details: &armdatabox.JobDetails{
 				ContactDetails: &armdatabox.ContactDetails{
 					ContactName: to.Ptr("Public SDK Test"),
@@ -35,11 +35,21 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 					Phone:          to.Ptr("1234567890"),
 					PhoneExtension: to.Ptr("1234"),
 				},
-				DataImportDetails: []*armdatabox.DataImportDetails{
+				DataExportDetails: []*armdatabox.DataExportDetails{
 					{
 						AccountDetails: &armdatabox.StorageAccountDetails{
 							DataAccountType:  to.Ptr(armdatabox.DataAccountTypeStorageAccount),
-							StorageAccountID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/databoxbvt/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount"),
+							StorageAccountID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/akvenkat/providers/Microsoft.Storage/storageAccounts/aaaaaa2"),
+						},
+						TransferConfiguration: &armdatabox.TransferConfiguration{
+							TransferAllDetails: &armdatabox.TransferConfigurationTransferAllDetails{
+								Include: &armdatabox.TransferAllDetails{
+									DataAccountType:  to.Ptr(armdatabox.DataAccountTypeStorageAccount),
+									TransferAllBlobs: to.Ptr(true),
+									TransferAllFiles: to.Ptr(true),
+								},
+							},
+							TransferConfigurationType: to.Ptr(armdatabox.TransferConfigurationTypeTransferAll),
 						},
 					}},
 				JobDetailsType: to.Ptr(armdatabox.ClassDiscriminatorDataBox),
@@ -73,9 +83,9 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 	},
 	// 	Tags: map[string]*string{
 	// 	},
-	// 	Name: to.Ptr("SdkJob952"),
+	// 	Name: to.Ptr("SdkJob6429"),
 	// 	Type: to.Ptr("Microsoft.DataBox/jobs"),
-	// 	ID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/SdkRg5154/providers/Microsoft.DataBox/jobs/SdkJob952"),
+	// 	ID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/SdkRg8091/providers/Microsoft.DataBox/jobs/SdkJob6429"),
 	// 	Properties: &armdatabox.JobProperties{
 	// 		DeliveryInfo: &armdatabox.JobDeliveryInfo{
 	// 			ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
@@ -87,7 +97,7 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 		IsShippingAddressEditable: to.Ptr(true),
 	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-21T14:49:49.0027611+05:30"); return t}()),
 	// 		Status: to.Ptr(armdatabox.StageNameDeviceOrdered),
-	// 		TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
+	// 		TransferType: to.Ptr(armdatabox.TransferTypeExportFromAzure),
 	// 		Details: &armdatabox.JobDetails{
 	// 			ContactDetails: &armdatabox.ContactDetails{
 	// 				ContactName: to.Ptr("Public SDK Test"),
@@ -97,6 +107,10 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 						{
 	// 							SendNotification: to.Ptr(true),
 	// 							StageName: to.Ptr(armdatabox.NotificationStageNameDevicePrepared),
+	// 						},
+	// 						{
+	// 							SendNotification: to.Ptr(true),
+	// 							StageName: to.Ptr(armdatabox.NotificationStageNameDataCopy),
 	// 						},
 	// 						{
 	// 							SendNotification: to.Ptr(true),
@@ -113,10 +127,6 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 						{
 	// 							SendNotification: to.Ptr(true),
 	// 							StageName: to.Ptr(armdatabox.NotificationStageNameAtAzureDC),
-	// 						},
-	// 						{
-	// 							SendNotification: to.Ptr(true),
-	// 							StageName: to.Ptr(armdatabox.NotificationStageNameDataCopy),
 	// 					}},
 	// 					Phone: to.Ptr("1234567890"),
 	// 					PhoneExtension: to.Ptr("1234"),
@@ -137,6 +147,11 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 						StageStatus: to.Ptr(armdatabox.StageStatusNone),
 	// 					},
 	// 					{
+	// 						DisplayName: to.Ptr("Data copy in progress"),
+	// 						StageName: to.Ptr(armdatabox.StageNameDataCopy),
+	// 						StageStatus: to.Ptr(armdatabox.StageStatusNone),
+	// 					},
+	// 					{
 	// 						DisplayName: to.Ptr("Dispatched"),
 	// 						StageName: to.Ptr(armdatabox.StageNameDispatched),
 	// 						StageStatus: to.Ptr(armdatabox.StageStatusNone),
@@ -154,11 +169,6 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 					{
 	// 						DisplayName: to.Ptr("Received"),
 	// 						StageName: to.Ptr(armdatabox.StageNameAtAzureDC),
-	// 						StageStatus: to.Ptr(armdatabox.StageStatusNone),
-	// 					},
-	// 					{
-	// 						DisplayName: to.Ptr("Data copy in progress"),
-	// 						StageName: to.Ptr(armdatabox.StageNameDataCopy),
 	// 						StageStatus: to.Ptr(armdatabox.StageStatusNone),
 	// 					},
 	// 					{

@@ -11,31 +11,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datashare/armdatashare"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/examples/ProviderShareSubscriptions_Adjust.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/datashare/resource-manager/Microsoft.DataShare/stable/2020-09-01/examples/ProviderShareSubscriptions_Adjust.json
 func ExampleProviderShareSubscriptionsClient_Adjust() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdatashare.NewProviderShareSubscriptionsClient("12345678-1234-1234-12345678abc", cred, nil)
+	clientFactory, err := armdatashare.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Adjust(ctx,
-		"SampleResourceGroup",
-		"Account1",
-		"Share1",
-		"4256e2cf-0f82-4865-961b-12f83333f487",
-		armdatashare.ProviderShareSubscription{
-			Properties: &armdatashare.ProviderShareSubscriptionProperties{
-				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-26T22:33:24.5785265Z"); return t }()),
-			},
+	res, err := clientFactory.NewProviderShareSubscriptionsClient().Adjust(ctx, "SampleResourceGroup", "Account1", "Share1", "4256e2cf-0f82-4865-961b-12f83333f487", armdatashare.ProviderShareSubscription{
+		Properties: &armdatashare.ProviderShareSubscriptionProperties{
+			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-26T22:33:24.5785265Z"); return t }()),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ProviderShareSubscription = armdatashare.ProviderShareSubscription{
+	// 	Name: to.Ptr("4256e2cf-0f82-4865-961b-12f83333f487"),
+	// 	Type: to.Ptr("Microsoft.DataShare/accounts/shares/providerShareSubscriptions"),
+	// 	ID: to.Ptr("/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.DataShare/accounts/Account1/shares/Share1/providerShareSubscripitons/4256e2cf-0f82-4865-961b-12f83333f487"),
+	// 	Properties: &armdatashare.ProviderShareSubscriptionProperties{
+	// 		ConsumerEmail: to.Ptr("john.smith@microsoft.com"),
+	// 		ConsumerName: to.Ptr("John Smith"),
+	// 		ConsumerTenantName: to.Ptr("Microsoft"),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-18T08:45:40.9005877Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-26T22:33:24.5785265Z"); return t}()),
+	// 		ProviderEmail: to.Ptr("john.smith@microsoft.com"),
+	// 		ProviderName: to.Ptr("John Smith"),
+	// 		ShareSubscriptionObjectID: to.Ptr("1ce51340-19be-4ef2-9450-0ea0b1324cbb"),
+	// 		ShareSubscriptionStatus: to.Ptr(armdatashare.ShareSubscriptionStatusActive),
+	// 		SharedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T08:45:40.9005877Z"); return t}()),
+	// 	},
+	// }
 }

@@ -8,28 +8,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearning/armmachinelearning/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Workspace/diagnose.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/aafb0944f7ab936e8cfbad8969bd5eb32263fb4f/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Workspace/diagnose.json
 func ExampleWorkspacesClient_BeginDiagnose() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmachinelearning.NewWorkspacesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armmachinelearning.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDiagnose(ctx, "workspace-1234", "testworkspace", &armmachinelearning.WorkspacesClientBeginDiagnoseOptions{Parameters: &armmachinelearning.DiagnoseWorkspaceParameters{
+	poller, err := clientFactory.NewWorkspacesClient().BeginDiagnose(ctx, "workspace-1234", "testworkspace", &armmachinelearning.WorkspacesClientBeginDiagnoseOptions{Parameters: &armmachinelearning.DiagnoseWorkspaceParameters{
 		Value: &armmachinelearning.DiagnoseRequestProperties{
-			ApplicationInsights: map[string]interface{}{},
-			ContainerRegistry:   map[string]interface{}{},
-			DNSResolution:       map[string]interface{}{},
-			KeyVault:            map[string]interface{}{},
-			Nsg:                 map[string]interface{}{},
-			Others:              map[string]interface{}{},
-			ResourceLock:        map[string]interface{}{},
-			StorageAccount:      map[string]interface{}{},
-			Udr:                 map[string]interface{}{},
+			ApplicationInsights: map[string]any{},
+			ContainerRegistry:   map[string]any{},
+			DNSResolution:       map[string]any{},
+			KeyVault:            map[string]any{},
+			Nsg:                 map[string]any{},
+			Others:              map[string]any{},
+			ResourceLock:        map[string]any{},
+			StorageAccount:      map[string]any{},
+			Udr:                 map[string]any{},
 		},
 	},
 	})
@@ -40,6 +40,33 @@ func ExampleWorkspacesClient_BeginDiagnose() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DiagnoseResponseResult = armmachinelearning.DiagnoseResponseResult{
+	// 	Value: &armmachinelearning.DiagnoseResponseResultValue{
+	// 		ApplicationInsightsResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		ContainerRegistryResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		DNSResolutionResults: []*armmachinelearning.DiagnoseResult{
+	// 			{
+	// 				Code: to.Ptr("CustomDNSInUse"),
+	// 				Level: to.Ptr(armmachinelearning.DiagnoseResultLevelWarning),
+	// 				Message: to.Ptr("We have detected an on-premise dns server is configured. Please make sure conditional forwarding is configured correctly according to doc https://foo"),
+	// 		}},
+	// 		KeyVaultResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		NetworkSecurityRuleResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		OtherResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		ResourceLockResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		StorageAccountResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 		UserDefinedRouteResults: []*armmachinelearning.DiagnoseResult{
+	// 		},
+	// 	},
+	// }
 }

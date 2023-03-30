@@ -9,28 +9,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearning/armmachinelearning/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/OnlineDeployment/ManagedOnlineDeployment/listSkus.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/aafb0944f7ab936e8cfbad8969bd5eb32263fb4f/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/OnlineDeployment/ManagedOnlineDeployment/listSkus.json
 func ExampleOnlineDeploymentsClient_NewListSKUsPager_listManagedOnlineDeploymentSkus() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmachinelearning.NewOnlineDeploymentsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armmachinelearning.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListSKUsPager("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", &armmachinelearning.OnlineDeploymentsClientListSKUsOptions{Count: to.Ptr[int32](1),
+	pager := clientFactory.NewOnlineDeploymentsClient().NewListSKUsPager("test-rg", "my-aml-workspace", "testEndpointName", "testDeploymentName", &armmachinelearning.OnlineDeploymentsClientListSKUsOptions{Count: to.Ptr[int32](1),
 		Skip: nil,
 	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.SKUResourceArmPaginatedResult = armmachinelearning.SKUResourceArmPaginatedResult{
+		// 	Value: []*armmachinelearning.SKUResource{
+		// 		{
+		// 			Capacity: &armmachinelearning.SKUCapacity{
+		// 				Default: to.Ptr[int32](1),
+		// 				Maximum: to.Ptr[int32](1),
+		// 				Minimum: to.Ptr[int32](1),
+		// 				ScaleType: to.Ptr(armmachinelearning.SKUScaleTypeAutomatic),
+		// 			},
+		// 			ResourceType: to.Ptr("Microsoft.MachineLearning.Services/endpoints/deployments"),
+		// 			SKU: &armmachinelearning.SKUSetting{
+		// 				Name: to.Ptr("string"),
+		// 				Tier: to.Ptr(armmachinelearning.SKUTierFree),
+		// 			},
+		// 	}},
+		// }
 	}
 }

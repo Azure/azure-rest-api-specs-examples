@@ -8,24 +8,27 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsight/armhdinsight"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Clusters_GetGatewaySettings.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Clusters_GetGatewaySettings.json
 func ExampleClustersClient_GetGatewaySettings() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhdinsight.NewClustersClient("subid", cred, nil)
+	clientFactory, err := armhdinsight.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetGatewaySettings(ctx,
-		"rg1",
-		"cluster1",
-		nil)
+	res, err := clientFactory.NewClustersClient().GetGatewaySettings(ctx, "rg1", "cluster1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.GatewaySettings = armhdinsight.GatewaySettings{
+	// 	IsCredentialEnabled: to.Ptr("true"),
+	// 	Password: to.Ptr("**********"),
+	// 	UserName: to.Ptr("hadoop"),
+	// }
 }

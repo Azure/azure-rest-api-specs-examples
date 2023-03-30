@@ -9,27 +9,30 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsight/armhdinsight"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Locations_CheckClusterNameAvailability.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/HDI_Locations_CheckClusterNameAvailability.json
 func ExampleLocationsClient_CheckNameAvailability() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhdinsight.NewLocationsClient("subid", cred, nil)
+	clientFactory, err := armhdinsight.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx,
-		"westus",
-		armhdinsight.NameAvailabilityCheckRequestParameters{
-			Name: to.Ptr("test123"),
-			Type: to.Ptr("clusters"),
-		},
-		nil)
+	res, err := clientFactory.NewLocationsClient().CheckNameAvailability(ctx, "westus", armhdinsight.NameAvailabilityCheckRequestParameters{
+		Name: to.Ptr("test123"),
+		Type: to.Ptr("clusters"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.NameAvailabilityCheckResult = armhdinsight.NameAvailabilityCheckResult{
+	// 	Message: to.Ptr("Cluster name 'test123' is unavailable"),
+	// 	NameAvailable: to.Ptr(false),
+	// 	Reason: to.Ptr("AlreadyExists"),
+	// }
 }

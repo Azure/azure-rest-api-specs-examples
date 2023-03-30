@@ -8,28 +8,37 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsight/armhdinsight"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/GetLinuxHadoopScriptAction.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/hdinsight/resource-manager/Microsoft.HDInsight/stable/2021-06-01/examples/GetLinuxHadoopScriptAction.json
 func ExampleScriptActionsClient_NewListByClusterPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhdinsight.NewScriptActionsClient("subid", cred, nil)
+	clientFactory, err := armhdinsight.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByClusterPager("rg1",
-		"cluster1",
-		nil)
+	pager := clientFactory.NewScriptActionsClient().NewListByClusterPager("rg1", "cluster1", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ScriptActionsList = armhdinsight.ScriptActionsList{
+		// 	Value: []*armhdinsight.RuntimeScriptActionDetail{
+		// 		{
+		// 			Name: to.Ptr("app-Install"),
+		// 			ApplicationName: to.Ptr("app"),
+		// 			Roles: []*string{
+		// 				to.Ptr("edgenode")},
+		// 				URI: to.Ptr("https://app.com/azure/app_install.sh"),
+		// 		}},
+		// 	}
 	}
 }

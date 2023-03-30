@@ -15,11 +15,11 @@ func ExampleUserAssignedIdentitiesClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmsi.NewUserAssignedIdentitiesClient("subid", cred, nil)
+	clientFactory, err := armmsi.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "rgName", "resourceName", nil)
+	res, err := clientFactory.NewUserAssignedIdentitiesClient().Get(ctx, "rgName", "resourceName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

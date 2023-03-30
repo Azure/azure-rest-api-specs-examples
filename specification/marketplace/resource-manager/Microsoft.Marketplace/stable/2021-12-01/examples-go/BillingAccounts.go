@@ -8,23 +8,27 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/marketplace/armmarketplace"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/examples/BillingAccounts.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2021-12-01/examples/BillingAccounts.json
 func ExamplePrivateStoreClient_BillingAccounts() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmarketplace.NewPrivateStoreClient(cred, nil)
+	clientFactory, err := armmarketplace.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.BillingAccounts(ctx,
-		"a0e28e55-90c4-41d8-8e34-bb7ef7775406",
-		nil)
+	res, err := clientFactory.NewPrivateStoreClient().BillingAccounts(ctx, "a0e28e55-90c4-41d8-8e34-bb7ef7775406", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.BillingAccountsResponse = armmarketplace.BillingAccountsResponse{
+	// 	BillingAccounts: []*string{
+	// 		to.Ptr("Billing Account 1"),
+	// 		to.Ptr("Billing Account 2")},
+	// 	}
 }

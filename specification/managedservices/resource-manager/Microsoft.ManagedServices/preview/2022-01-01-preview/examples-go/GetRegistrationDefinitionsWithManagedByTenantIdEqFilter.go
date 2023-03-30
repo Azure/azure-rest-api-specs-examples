@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managedservices/armmanagedservices"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationDefinitions.json
-func ExampleRegistrationDefinitionsClient_NewListPager_getRegistrationDefinitions() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationDefinitionsWithManagedByTenantIdEqFilter.json
+func ExampleRegistrationDefinitionsClient_NewListPager_getRegistrationDefinitionsWithManagedByTenantIdEqFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +20,7 @@ func ExampleRegistrationDefinitionsClient_NewListPager_getRegistrationDefinition
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewRegistrationDefinitionsClient().NewListPager("subscription/0afefe50-734e-4610-8a82-a144ahf49dea", &armmanagedservices.RegistrationDefinitionsClientListOptions{Filter: nil})
+	pager := clientFactory.NewRegistrationDefinitionsClient().NewListPager("subscription/0afefe50-734e-4610-8a82-a144ahf49dea", &armmanagedservices.RegistrationDefinitionsClientListOptions{Filter: to.Ptr("$filter=managedByTenantId eq '83ace5cd-bcc3-441a-hd86-e6a75360cecc'")})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -73,11 +74,19 @@ func ExampleRegistrationDefinitionsClient_NewListPager_getRegistrationDefinition
 		// 							RoleDefinitionID: to.Ptr("ae349356-3a1b-4a5e-921d-050484c6347e"),
 		// 					}},
 		// 					ManagedByTenantID: to.Ptr("83ace5cd-bcc3-441a-hd86-e6a75360cecc"),
-		// 					ManagedByTenantName: to.Ptr("Test Tenant"),
-		// 					ManageeTenantID: to.Ptr("0e06d6a3-55ae-40a3-ac29-350808980808"),
-		// 					ManageeTenantName: to.Ptr("Test customer"),
+		// 					ManagedByTenantName: to.Ptr("Contoso Corp."),
+		// 					ManageeTenantID: to.Ptr("01c0bcd5-4f47-4e4b-b492-418b7e2a8854"),
+		// 					ManageeTenantName: to.Ptr("test_test_aad_SbtFhyGiLHPFm"),
 		// 					ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
 		// 					RegistrationDefinitionName: to.Ptr("DefinitionName"),
+		// 				},
+		// 				SystemData: &armmanagedservices.SystemData{
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 					CreatedBy: to.Ptr("testuser@outlook.com"),
+		// 					CreatedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 					LastModifiedBy: to.Ptr("testuser@outlook.com"),
+		// 					LastModifiedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
 		// 				},
 		// 		}},
 		// 	}

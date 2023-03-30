@@ -8,24 +8,74 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managedservices/armmanagedservices"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationAssignment.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationAssignment.json
 func ExampleRegistrationAssignmentsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmanagedservices.NewRegistrationAssignmentsClient(cred, nil)
+	clientFactory, err := armmanagedservices.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"subscription/0afefe50-734e-4610-8a82-a144ahf49dea",
-		"26c128c2-fefa-4340-9bb1-6e081c90ada2",
-		&armmanagedservices.RegistrationAssignmentsClientGetOptions{ExpandRegistrationDefinition: nil})
+	res, err := clientFactory.NewRegistrationAssignmentsClient().Get(ctx, "subscription/0afefe50-734e-4610-8a82-a144ahf49dea", "26c128c2-fefa-4340-9bb1-6e081c90ada2", &armmanagedservices.RegistrationAssignmentsClientGetOptions{ExpandRegistrationDefinition: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.RegistrationAssignment = armmanagedservices.RegistrationAssignment{
+	// 	Name: to.Ptr("484a7d5f-9729-4b87-bc9b-26610985a013"),
+	// 	Type: to.Ptr("Microsoft.ManagedServices/registrationAssignments"),
+	// 	ID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationAssignments/484a7d5f-9729-4b87-bc9b-26610985a013"),
+	// 	Properties: &armmanagedservices.RegistrationAssignmentProperties{
+	// 		ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
+	// 		RegistrationDefinition: &armmanagedservices.RegistrationAssignmentPropertiesRegistrationDefinition{
+	// 			Name: to.Ptr("26c128c2-fefa-4340-9bb1-8e081c90ada2"),
+	// 			Type: to.Ptr("Microsoft.ManagedServices/registrationDefinitions"),
+	// 			ID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationDefinitions/26c128c2-fefa-4340-9bb1-8e081c90ada2"),
+	// 			Plan: &armmanagedservices.Plan{
+	// 				Name: to.Ptr("addesai-plan"),
+	// 				Product: to.Ptr("test"),
+	// 				Publisher: to.Ptr("marketplace-test"),
+	// 				Version: to.Ptr("1.0.0"),
+	// 			},
+	// 			Properties: &armmanagedservices.RegistrationAssignmentPropertiesRegistrationDefinitionProperties{
+	// 				Description: to.Ptr("Test"),
+	// 				Authorizations: []*armmanagedservices.Authorization{
+	// 					{
+	// 						PrincipalID: to.Ptr("f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"),
+	// 						PrincipalIDDisplayName: to.Ptr("Support User"),
+	// 						RoleDefinitionID: to.Ptr("acdd72a7-3385-48ef-bd42-f606fba81ae7"),
+	// 					},
+	// 					{
+	// 						DelegatedRoleDefinitionIDs: []*string{
+	// 							to.Ptr("b24988ac-6180-42a0-ab88-20f7382dd24c")},
+	// 							PrincipalID: to.Ptr("f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"),
+	// 							PrincipalIDDisplayName: to.Ptr("User Access Administrator"),
+	// 							RoleDefinitionID: to.Ptr("18d7d88d-d35e-4fb5-a5c3-7773c20a72d9"),
+	// 					}},
+	// 					EligibleAuthorizations: []*armmanagedservices.EligibleAuthorization{
+	// 						{
+	// 							JustInTimeAccessPolicy: &armmanagedservices.JustInTimeAccessPolicy{
+	// 								MaximumActivationDuration: to.Ptr("PT8H"),
+	// 								MultiFactorAuthProvider: to.Ptr(armmanagedservices.MultiFactorAuthProviderAzure),
+	// 							},
+	// 							PrincipalID: to.Ptr("3e0ed8c6-e902-4fc5-863c-e3ddbb2ae2a2"),
+	// 							PrincipalIDDisplayName: to.Ptr("Support User"),
+	// 							RoleDefinitionID: to.Ptr("ae349356-3a1b-4a5e-921d-050484c6347e"),
+	// 					}},
+	// 					ManagedByTenantID: to.Ptr("83abe5cd-bcc3-441a-bd86-e6a75360cecc"),
+	// 					ManagedByTenantName: to.Ptr("Contoso Corp."),
+	// 					ManageeTenantID: to.Ptr("01c0bcd5-4f47-4e4b-b492-418b7e2a8854"),
+	// 					ManageeTenantName: to.Ptr("test_test_aad_SbtFhyGiLHPFm"),
+	// 					ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
+	// 					RegistrationDefinitionName: to.Ptr("DefinitionName"),
+	// 				},
+	// 			},
+	// 			RegistrationDefinitionID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationDefinitions/26c128c2-fefa-4340-9bb1-8e081c90ada2"),
+	// 		},
+	// 	}
 }

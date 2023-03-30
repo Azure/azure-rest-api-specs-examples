@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/education/armeducation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b9b91929c304f8fb44002267b6c98d9fb9dde014/specification/education/resource-manager/Microsoft.Education/preview/2021-12-01-preview/examples/Lab.json
-func ExampleLabsClient_Get_lab() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b9b91929c304f8fb44002267b6c98d9fb9dde014/specification/education/resource-manager/Microsoft.Education/preview/2021-12-01-preview/examples/LabIncludeBudget.json
+func ExampleLabsClient_Get_labIncludeBudget() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleLabsClient_Get_lab() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewLabsClient().Get(ctx, "{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", &armeducation.LabsClientGetOptions{IncludeBudget: to.Ptr(false)})
+	res, err := clientFactory.NewLabsClient().Get(ctx, "{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", &armeducation.LabsClientGetOptions{IncludeBudget: to.Ptr(true)})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -43,6 +43,14 @@ func ExampleLabsClient_Get_lab() {
 	// 		InvitationCode: to.Ptr(""),
 	// 		MaxStudentCount: to.Ptr[float32](0),
 	// 		Status: to.Ptr(armeducation.LabStatusActive),
+	// 		TotalAllocatedBudget: &armeducation.Amount{
+	// 			Currency: to.Ptr("USD"),
+	// 			Value: to.Ptr[float32](500),
+	// 		},
+	// 		TotalBudget: &armeducation.Amount{
+	// 			Currency: to.Ptr("USD"),
+	// 			Value: to.Ptr[float32](500),
+	// 		},
 	// 	},
 	// }
 }

@@ -11,39 +11,53 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/education/armeducation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/education/resource-manager/Microsoft.Education/preview/2021-12-01-preview/examples/CreateStudent.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b9b91929c304f8fb44002267b6c98d9fb9dde014/specification/education/resource-manager/Microsoft.Education/preview/2021-12-01-preview/examples/CreateStudent.json
 func ExampleStudentsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armeducation.NewStudentsClient(cred, nil)
+	clientFactory, err := armeducation.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"{billingAccountName}",
-		"{billingProfileName}",
-		"{invoiceSectionName}",
-		"{studentAlias}",
-		armeducation.StudentDetails{
-			Properties: &armeducation.StudentProperties{
-				Budget: &armeducation.Amount{
-					Currency: to.Ptr("USD"),
-					Value:    to.Ptr[float32](100),
-				},
-				Email:          to.Ptr("test@contoso.com"),
-				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T22:13:21.795Z"); return t }()),
-				FirstName:      to.Ptr("test"),
-				LastName:       to.Ptr("user"),
-				Role:           to.Ptr(armeducation.StudentRoleStudent),
+	res, err := clientFactory.NewStudentsClient().CreateOrUpdate(ctx, "{billingAccountName}", "{billingProfileName}", "{invoiceSectionName}", "{studentAlias}", armeducation.StudentDetails{
+		Properties: &armeducation.StudentProperties{
+			Budget: &armeducation.Amount{
+				Currency: to.Ptr("USD"),
+				Value:    to.Ptr[float32](100),
 			},
+			Email:          to.Ptr("test@contoso.com"),
+			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T22:13:21.795Z"); return t }()),
+			FirstName:      to.Ptr("test"),
+			LastName:       to.Ptr("user"),
+			Role:           to.Ptr(armeducation.StudentRoleStudent),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.StudentDetails = armeducation.StudentDetails{
+	// 	Name: to.Ptr("{studentAlias}"),
+	// 	Type: to.Ptr("Microsoft.Education/Students"),
+	// 	ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}/providers/Microsoft.Education/labs/default/students/{studentAlias}"),
+	// 	Properties: &armeducation.StudentProperties{
+	// 		Budget: &armeducation.Amount{
+	// 			Currency: to.Ptr("USD"),
+	// 			Value: to.Ptr[float32](100),
+	// 		},
+	// 		EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T21:43:54.161Z"); return t}()),
+	// 		Email: to.Ptr("test@contoso.com"),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-09T21:43:54.161Z"); return t}()),
+	// 		FirstName: to.Ptr("test"),
+	// 		LastName: to.Ptr("user"),
+	// 		Role: to.Ptr(armeducation.StudentRoleStudent),
+	// 		Status: to.Ptr(armeducation.StudentLabStatusActive),
+	// 		SubscriptionID: to.Ptr("000000000-0000-0000-0000-00000000000000"),
+	// 	},
+	// }
 }

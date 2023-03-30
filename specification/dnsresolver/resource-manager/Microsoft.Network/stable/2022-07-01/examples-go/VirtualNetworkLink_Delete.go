@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dnsresolver/armdnsresolver"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2022-07-01/examples/VirtualNetworkLink_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b749953e21e5c3f275d839862323920ef7bf716e/specification/dnsresolver/resource-manager/Microsoft.Network/stable/2022-07-01/examples/VirtualNetworkLink_Delete.json
 func ExampleVirtualNetworkLinksClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdnsresolver.NewVirtualNetworkLinksClient("abdd4249-9f34-4cc6-8e42-c2e32110603e", cred, nil)
+	clientFactory, err := armdnsresolver.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "sampleResourceGroup", "sampleDnsForwardingRuleset", "sampleVirtualNetworkLink", &armdnsresolver.VirtualNetworkLinksClientBeginDeleteOptions{IfMatch: nil})
+	poller, err := clientFactory.NewVirtualNetworkLinksClient().BeginDelete(ctx, "sampleResourceGroup", "sampleDnsForwardingRuleset", "sampleVirtualNetworkLink", &armdnsresolver.VirtualNetworkLinksClientBeginDeleteOptions{IfMatch: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -9,31 +9,39 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logic/armlogic"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccounts_Update.json
 func ExampleIntegrationAccountsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armlogic.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"testResourceGroup",
-		"testIntegrationAccount",
-		armlogic.IntegrationAccount{
-			Location:   to.Ptr("westus"),
-			Properties: &armlogic.IntegrationAccountProperties{},
-			SKU: &armlogic.IntegrationAccountSKU{
-				Name: to.Ptr(armlogic.IntegrationAccountSKUNameStandard),
-			},
+	res, err := clientFactory.NewIntegrationAccountsClient().Update(ctx, "testResourceGroup", "testIntegrationAccount", armlogic.IntegrationAccount{
+		Location:   to.Ptr("westus"),
+		Properties: &armlogic.IntegrationAccountProperties{},
+		SKU: &armlogic.IntegrationAccountSKU{
+			Name: to.Ptr(armlogic.IntegrationAccountSKUNameStandard),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.IntegrationAccount = armlogic.IntegrationAccount{
+	// 	Name: to.Ptr("testIntegrationAccount"),
+	// 	Type: to.Ptr("Microsoft.Logic/integrationAccounts"),
+	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/testIntegrationAccount"),
+	// 	Location: to.Ptr("westus"),
+	// 	Properties: &armlogic.IntegrationAccountProperties{
+	// 	},
+	// 	SKU: &armlogic.IntegrationAccountSKU{
+	// 		Name: to.Ptr(armlogic.IntegrationAccountSKUNameStandard),
+	// 	},
+	// }
 }

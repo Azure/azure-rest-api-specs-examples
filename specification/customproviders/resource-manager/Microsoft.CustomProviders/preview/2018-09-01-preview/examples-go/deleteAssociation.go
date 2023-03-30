@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/customproviders/armcustomproviders"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/examples/deleteAssociation.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/examples/deleteAssociation.json
 func ExampleAssociationsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcustomproviders.NewAssociationsClient(cred, nil)
+	clientFactory, err := armcustomproviders.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"scope",
-		"associationName",
-		nil)
+	poller, err := clientFactory.NewAssociationsClient().BeginDelete(ctx, "scope", "associationName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

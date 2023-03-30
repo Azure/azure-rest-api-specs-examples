@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/GetAccount.json
-func ExampleAccountsClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/UpdateAccountGen1.json
+func ExampleAccountsClient_Update_updateToGen1Account() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +20,12 @@ func ExampleAccountsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewAccountsClient().Get(ctx, "myResourceGroup", "myMapsAccount", nil)
+	res, err := clientFactory.NewAccountsClient().Update(ctx, "myResourceGroup", "myMapsAccount", armmaps.AccountUpdateParameters{
+		Kind: to.Ptr(armmaps.KindGen1),
+		SKU: &armmaps.SKU{
+			Name: to.Ptr(armmaps.NameS1),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -31,19 +37,16 @@ func ExampleAccountsClient_Get() {
 	// 	Type: to.Ptr("Microsoft.Maps/accounts"),
 	// 	ID: to.Ptr("/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/myResourceGroup/providers/Microsoft.Maps/accounts/myMapsAccount"),
 	// 	Location: to.Ptr("global"),
-	// 	Tags: map[string]*string{
-	// 		"test": to.Ptr("true"),
-	// 	},
 	// 	Kind: to.Ptr(armmaps.KindGen1),
 	// 	Properties: &armmaps.AccountProperties{
 	// 		DisableLocalAuth: to.Ptr(false),
 	// 		LinkedResources: []*armmaps.LinkedResource{
 	// 		},
 	// 		ProvisioningState: to.Ptr("Succeeded"),
-	// 		UniqueID: to.Ptr("string"),
+	// 		UniqueID: to.Ptr("b2e763e6-d6f3-4858-9e2b-7cf8df85c593"),
 	// 	},
 	// 	SKU: &armmaps.SKU{
-	// 		Name: to.Ptr(armmaps.NameS0),
+	// 		Name: to.Ptr(armmaps.NameS1),
 	// 		Tier: to.Ptr("Standard"),
 	// 	},
 	// 	SystemData: &armmaps.SystemData{

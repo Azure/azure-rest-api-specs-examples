@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maps/armmaps"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/UpdateAccountManagedIdentity.json
-func ExampleAccountsClient_Update_updateAccountManagedIdentities() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/maps/resource-manager/Microsoft.Maps/preview/2021-12-01-preview/examples/UpdateAccountGen2.json
+func ExampleAccountsClient_Update_updateToGen2Account() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -21,20 +21,7 @@ func ExampleAccountsClient_Update_updateAccountManagedIdentities() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewAccountsClient().Update(ctx, "myResourceGroup", "myMapsAccount", armmaps.AccountUpdateParameters{
-		Identity: &armmaps.ManagedServiceIdentity{
-			Type: to.Ptr(armmaps.ResourceIdentityTypeSystemAssignedUserAssigned),
-			UserAssignedIdentities: map[string]*armmaps.Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties{
-				"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName": {},
-			},
-		},
 		Kind: to.Ptr(armmaps.KindGen2),
-		Properties: &armmaps.AccountProperties{
-			LinkedResources: []*armmaps.LinkedResource{
-				{
-					ID:         to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}"),
-					UniqueName: to.Ptr("myBatchStorageAccount"),
-				}},
-		},
 		SKU: &armmaps.SKU{
 			Name: to.Ptr(armmaps.NameG2),
 		},
@@ -49,26 +36,12 @@ func ExampleAccountsClient_Update_updateAccountManagedIdentities() {
 	// 	Name: to.Ptr("myMapsAccount"),
 	// 	Type: to.Ptr("Microsoft.Maps/accounts"),
 	// 	ID: to.Ptr("/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/myResourceGroup/providers/Microsoft.Maps/accounts/myMapsAccount"),
-	// 	Location: to.Ptr("eastus"),
-	// 	Identity: &armmaps.ManagedServiceIdentity{
-	// 		Type: to.Ptr(armmaps.ResourceIdentityTypeSystemAssignedUserAssigned),
-	// 		PrincipalID: to.Ptr("77f72dac-e0aa-484e-9acd-e5e7075310ef"),
-	// 		TenantID: to.Ptr("06006684-60c1-4954-a20c-ffd8fbea7276"),
-	// 		UserAssignedIdentities: map[string]*armmaps.Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties{
-	// 			"/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName": &armmaps.Components1Jq1T4ISchemasManagedserviceidentityPropertiesUserassignedidentitiesAdditionalproperties{
-	// 				ClientID: to.Ptr("b602d315-01b5-4265-af23-859edc4f2431"),
-	// 				PrincipalID: to.Ptr("ac287332-364a-41d9-a567-9ad86b9fc299"),
-	// 			},
-	// 		},
-	// 	},
+	// 	Location: to.Ptr("global"),
 	// 	Kind: to.Ptr(armmaps.KindGen2),
 	// 	Properties: &armmaps.AccountProperties{
 	// 		DisableLocalAuth: to.Ptr(false),
 	// 		LinkedResources: []*armmaps.LinkedResource{
-	// 			{
-	// 				ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}"),
-	// 				UniqueName: to.Ptr("myBatchStorageAccount"),
-	// 		}},
+	// 		},
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		UniqueID: to.Ptr("b2e763e6-d6f3-4858-9e2b-7cf8df85c593"),
 	// 	},

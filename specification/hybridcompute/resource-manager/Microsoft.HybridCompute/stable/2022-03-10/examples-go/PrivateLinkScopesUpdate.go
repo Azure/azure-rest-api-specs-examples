@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/examples/PrivateLinkScopesCreate.json
-func ExamplePrivateLinkScopesClient_CreateOrUpdate_privateLinkScopeCreate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-03-10/examples/PrivateLinkScopesUpdate.json
+func ExamplePrivateLinkScopesClient_CreateOrUpdate_privateLinkScopeUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,6 +22,9 @@ func ExamplePrivateLinkScopesClient_CreateOrUpdate_privateLinkScopeCreate() {
 	}
 	res, err := clientFactory.NewPrivateLinkScopesClient().CreateOrUpdate(ctx, "my-resource-group", "my-privatelinkscope", armhybridcompute.PrivateLinkScope{
 		Location: to.Ptr("westus"),
+		Tags: map[string]*string{
+			"Tag1": to.Ptr("Value1"),
+		},
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -32,9 +35,10 @@ func ExamplePrivateLinkScopesClient_CreateOrUpdate_privateLinkScopeCreate() {
 	// res.PrivateLinkScope = armhybridcompute.PrivateLinkScope{
 	// 	Name: to.Ptr("my-privatelinkscope"),
 	// 	Type: to.Ptr("Microsoft.HybridCompute/privateLinkScopes"),
-	// 	ID: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4919/resourceGroups/my-resource-group/providers/microsoft.hybridcompute/privateLinkScopes/my-privatelinkscope"),
+	// 	ID: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4919/resourceGroups/my-resource-group/providers/microsoft.hybridCompute/privateLinkScopes/my-privatelinkscope"),
 	// 	Location: to.Ptr("westus"),
 	// 	Tags: map[string]*string{
+	// 		"Tag1": to.Ptr("Value1"),
 	// 	},
 	// 	Properties: &armhybridcompute.PrivateLinkScopeProperties{
 	// 		PrivateEndpointConnections: []*armhybridcompute.PrivateEndpointConnectionDataModel{

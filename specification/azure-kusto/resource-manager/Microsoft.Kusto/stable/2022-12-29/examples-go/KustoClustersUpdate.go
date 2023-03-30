@@ -16,11 +16,11 @@ func ExampleClustersClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewClustersClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "kustorptest", "kustoCluster2", armkusto.ClusterUpdate{
+	poller, err := clientFactory.NewClustersClient().BeginUpdate(ctx, "kustorptest", "kustoCluster2", armkusto.ClusterUpdate{
 		Location: to.Ptr("westus"),
 	}, &armkusto.ClustersClientBeginUpdateOptions{IfMatch: to.Ptr("*")})
 	if err != nil {

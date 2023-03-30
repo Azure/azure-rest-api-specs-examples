@@ -15,11 +15,11 @@ func ExampleDatabasesClient_NewListPrincipalsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDatabasesClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPrincipalsPager("kustorptest", "kustoCluster", "KustoDatabase8", nil)
+	pager := clientFactory.NewDatabasesClient().NewListPrincipalsPager("kustorptest", "kustoCluster", "KustoDatabase8", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

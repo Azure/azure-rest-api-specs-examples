@@ -16,11 +16,11 @@ func ExampleClustersClient_BeginAddLanguageExtensions() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewClustersClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginAddLanguageExtensions(ctx, "kustorptest", "kustoCluster", armkusto.LanguageExtensionsList{
+	poller, err := clientFactory.NewClustersClient().BeginAddLanguageExtensions(ctx, "kustorptest", "kustoCluster", armkusto.LanguageExtensionsList{
 		Value: []*armkusto.LanguageExtension{
 			{
 				LanguageExtensionName: to.Ptr(armkusto.LanguageExtensionNamePYTHON),

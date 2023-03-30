@@ -15,11 +15,11 @@ func ExampleAttachedDatabaseConfigurationsClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewAttachedDatabaseConfigurationsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "kustorptest", "kustoCluster2", "attachedDatabaseConfigurationsTest", nil)
+	res, err := clientFactory.NewAttachedDatabaseConfigurationsClient().Get(ctx, "kustorptest", "kustoCluster2", "attachedDatabaseConfigurationsTest", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

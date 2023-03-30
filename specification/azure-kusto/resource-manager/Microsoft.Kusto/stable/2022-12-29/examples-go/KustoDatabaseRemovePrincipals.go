@@ -16,11 +16,11 @@ func ExampleDatabasesClient_RemovePrincipals() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDatabasesClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.RemovePrincipals(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", armkusto.DatabasePrincipalListRequest{
+	res, err := clientFactory.NewDatabasesClient().RemovePrincipals(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", armkusto.DatabasePrincipalListRequest{
 		Value: []*armkusto.DatabasePrincipal{
 			{
 				Name:  to.Ptr("Some User"),

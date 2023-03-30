@@ -16,11 +16,11 @@ func ExampleManagedPrivateEndpointsClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewManagedPrivateEndpointsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "kustorptest", "kustoCluster", "managedPrivateEndpointTest", armkusto.ManagedPrivateEndpoint{
+	poller, err := clientFactory.NewManagedPrivateEndpointsClient().BeginUpdate(ctx, "kustorptest", "kustoCluster", "managedPrivateEndpointTest", armkusto.ManagedPrivateEndpoint{
 		Properties: &armkusto.ManagedPrivateEndpointProperties{
 			GroupID:               to.Ptr("blob"),
 			PrivateLinkResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Storage/storageAccounts/storageAccountTest"),

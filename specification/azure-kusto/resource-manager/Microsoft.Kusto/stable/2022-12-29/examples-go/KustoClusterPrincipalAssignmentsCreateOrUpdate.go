@@ -16,11 +16,11 @@ func ExampleClusterPrincipalAssignmentsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewClusterPrincipalAssignmentsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "kustorptest", "kustoCluster", "kustoprincipal1", armkusto.ClusterPrincipalAssignment{
+	poller, err := clientFactory.NewClusterPrincipalAssignmentsClient().BeginCreateOrUpdate(ctx, "kustorptest", "kustoCluster", "kustoprincipal1", armkusto.ClusterPrincipalAssignment{
 		Properties: &armkusto.ClusterPrincipalProperties{
 			PrincipalID:   to.Ptr("87654321-1234-1234-1234-123456789123"),
 			PrincipalType: to.Ptr(armkusto.PrincipalTypeApp),

@@ -15,11 +15,11 @@ func ExampleAttachedDatabaseConfigurationsClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewAttachedDatabaseConfigurationsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "kustorptest", "kustoCluster", "attachedDatabaseConfigurationsTest", nil)
+	poller, err := clientFactory.NewAttachedDatabaseConfigurationsClient().BeginDelete(ctx, "kustorptest", "kustoCluster", "attachedDatabaseConfigurationsTest", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

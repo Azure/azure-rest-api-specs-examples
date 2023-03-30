@@ -16,11 +16,11 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewPrivateEndpointConnectionsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "kustorptest", "kustoclusterrptest4", "privateEndpointTest", armkusto.PrivateEndpointConnection{
+	poller, err := clientFactory.NewPrivateEndpointConnectionsClient().BeginCreateOrUpdate(ctx, "kustorptest", "kustoclusterrptest4", "privateEndpointTest", armkusto.PrivateEndpointConnection{
 		Properties: &armkusto.PrivateEndpointConnectionProperties{
 			PrivateLinkServiceConnectionState: &armkusto.PrivateLinkServiceConnectionStateProperty{
 				Description: to.Ptr("Approved by johndoe@contoso.com"),

@@ -16,11 +16,11 @@ func ExampleDataConnectionsClient_BeginDataConnectionValidation_kustoDataConnect
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDataConnectionsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDataConnectionValidation(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", armkusto.DataConnectionValidation{
+	poller, err := clientFactory.NewDataConnectionsClient().BeginDataConnectionValidation(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", armkusto.DataConnectionValidation{
 		DataConnectionName: to.Ptr("dataConnectionTest"),
 		Properties: &armkusto.EventHubDataConnection{
 			Kind: to.Ptr(armkusto.DataConnectionKindEventHub),

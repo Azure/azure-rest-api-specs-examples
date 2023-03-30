@@ -4,13 +4,12 @@ import (
 	"context"
 	"log"
 
-	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/ValidateProbe.json
-func ExampleManagementClient_ValidateProbe() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/Profiles_GenerateSsoUri.json
+func ExampleProfilesClient_GenerateSsoURI() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,17 +19,14 @@ func ExampleManagementClient_ValidateProbe() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewManagementClient().ValidateProbe(ctx, armcdn.ValidateProbeInput{
-		ProbeURL: to.Ptr("https://www.bing.com/image"),
-	}, nil)
+	res, err := clientFactory.NewProfilesClient().GenerateSsoURI(ctx, "RG", "profile1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.ValidateProbeOutput = armcdn.ValidateProbeOutput{
-	// 	ErrorCode: to.Ptr("None"),
-	// 	IsValid: to.Ptr(true),
+	// res.SsoURI = armcdn.SsoURI{
+	// 	SsoURIValue: to.Ptr("https://someuri.com"),
 	// }
 }

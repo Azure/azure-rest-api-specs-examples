@@ -9,37 +9,31 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/OriginGroups_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/OriginGroups_Update.json
 func ExampleOriginGroupsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcdn.NewOriginGroupsClient("subid", cred, nil)
+	clientFactory, err := armcdn.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"RG",
-		"profile1",
-		"endpoint1",
-		"originGroup1",
-		armcdn.OriginGroupUpdateParameters{
-			Properties: &armcdn.OriginGroupUpdatePropertiesParameters{
-				HealthProbeSettings: &armcdn.HealthProbeParameters{
-					ProbeIntervalInSeconds: to.Ptr[int32](120),
-					ProbePath:              to.Ptr("/health.aspx"),
-					ProbeProtocol:          to.Ptr(armcdn.ProbeProtocolHTTP),
-					ProbeRequestType:       to.Ptr(armcdn.HealthProbeRequestTypeGET),
-				},
-				Origins: []*armcdn.ResourceReference{
-					{
-						ID: to.Ptr("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin2"),
-					}},
+	poller, err := clientFactory.NewOriginGroupsClient().BeginUpdate(ctx, "RG", "profile1", "endpoint1", "originGroup1", armcdn.OriginGroupUpdateParameters{
+		Properties: &armcdn.OriginGroupUpdatePropertiesParameters{
+			HealthProbeSettings: &armcdn.HealthProbeParameters{
+				ProbeIntervalInSeconds: to.Ptr[int32](120),
+				ProbePath:              to.Ptr("/health.aspx"),
+				ProbeProtocol:          to.Ptr(armcdn.ProbeProtocolHTTP),
+				ProbeRequestType:       to.Ptr(armcdn.HealthProbeRequestTypeGET),
 			},
+			Origins: []*armcdn.ResourceReference{
+				{
+					ID: to.Ptr("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin2"),
+				}},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -47,6 +41,26 @@ func ExampleOriginGroupsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.OriginGroup = armcdn.OriginGroup{
+	// 	Name: to.Ptr("www-someDomain-net"),
+	// 	Type: to.Ptr("Microsoft.Cdn/profiles/endpoints/origins"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/www-someDomain-net"),
+	// 	Properties: &armcdn.OriginGroupProperties{
+	// 		HealthProbeSettings: &armcdn.HealthProbeParameters{
+	// 			ProbeIntervalInSeconds: to.Ptr[int32](120),
+	// 			ProbePath: to.Ptr("/health.aspx"),
+	// 			ProbeProtocol: to.Ptr(armcdn.ProbeProtocolHTTP),
+	// 			ProbeRequestType: to.Ptr(armcdn.HealthProbeRequestTypeGET),
+	// 		},
+	// 		Origins: []*armcdn.ResourceReference{
+	// 			{
+	// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin2"),
+	// 		}},
+	// 		ProvisioningState: to.Ptr(armcdn.OriginGroupProvisioningStateSucceeded),
+	// 		ResourceState: to.Ptr(armcdn.OriginGroupResourceStateActive),
+	// 	},
+	// }
 }

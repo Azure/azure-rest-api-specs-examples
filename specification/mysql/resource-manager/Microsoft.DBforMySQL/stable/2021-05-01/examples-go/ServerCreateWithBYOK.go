@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreate.json
-func ExampleServersClient_BeginCreate_createANewServer() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreateWithBYOK.json
+func ExampleServersClient_BeginCreate_createAServerWithByok() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -25,6 +25,12 @@ func ExampleServersClient_BeginCreate_createANewServer() {
 		Tags: map[string]*string{
 			"num": to.Ptr("1"),
 		},
+		Identity: &armmysqlflexibleservers.Identity{
+			Type: to.Ptr("UserAssigned"),
+			UserAssignedIdentities: map[string]any{
+				"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity": map[string]any{},
+			},
+		},
 		Properties: &armmysqlflexibleservers.ServerProperties{
 			AdministratorLogin:         to.Ptr("cloudsa"),
 			AdministratorLoginPassword: to.Ptr("your_password"),
@@ -34,6 +40,13 @@ func ExampleServersClient_BeginCreate_createANewServer() {
 				GeoRedundantBackup:  to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 			},
 			CreateMode: to.Ptr(armmysqlflexibleservers.CreateModeDefault),
+			DataEncryption: &armmysqlflexibleservers.DataEncryption{
+				Type:                            to.Ptr(armmysqlflexibleservers.DataEncryptionTypeAzureKeyVault),
+				GeoBackupKeyURI:                 to.Ptr("https://test-geo.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),
+				GeoBackupUserAssignedIdentityID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-geo-identity"),
+				PrimaryKeyURI:                   to.Ptr("https://test.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),
+				PrimaryUserAssignedIdentityID:   to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity"),
+			},
 			HighAvailability: &armmysqlflexibleservers.HighAvailability{
 				Mode:                    to.Ptr(armmysqlflexibleservers.HighAvailabilityModeZoneRedundant),
 				StandbyAvailabilityZone: to.Ptr("3"),

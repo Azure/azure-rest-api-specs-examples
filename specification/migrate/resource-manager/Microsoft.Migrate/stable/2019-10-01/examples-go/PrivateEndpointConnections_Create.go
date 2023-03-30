@@ -9,34 +9,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/migrate/armmigrate"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/PrivateEndpointConnections_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/migrate/resource-manager/Microsoft.Migrate/stable/2019-10-01/examples/PrivateEndpointConnections_Create.json
 func ExamplePrivateEndpointConnectionClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmigrate.NewPrivateEndpointConnectionClient("6393a73f-8d55-47ef-b6dd-179b3e0c7910", cred, nil)
+	clientFactory, err := armmigrate.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"abgoyal-westEurope",
-		"abgoyalWEselfhostb72bproject",
-		"custestpece80project3980pe.7e35576b-3df4-478e-9759-f64351cf4f43",
-		&armmigrate.PrivateEndpointConnectionClientUpdateOptions{PrivateEndpointConnectionBody: &armmigrate.PrivateEndpointConnection{
-			ETag: to.Ptr("\"00009300-0000-0300-0000-602b967b0000\""),
-			Properties: &armmigrate.PrivateEndpointConnectionProperties{
-				PrivateLinkServiceConnectionState: &armmigrate.PrivateLinkServiceConnectionState{
-					ActionsRequired: to.Ptr(""),
-					Status:          to.Ptr(armmigrate.PrivateLinkServiceConnectionStateStatusApproved),
-				},
+	res, err := clientFactory.NewPrivateEndpointConnectionClient().Update(ctx, "abgoyal-westEurope", "abgoyalWEselfhostb72bproject", "custestpece80project3980pe.7e35576b-3df4-478e-9759-f64351cf4f43", &armmigrate.PrivateEndpointConnectionClientUpdateOptions{PrivateEndpointConnectionBody: &armmigrate.PrivateEndpointConnection{
+		ETag: to.Ptr("\"00009300-0000-0300-0000-602b967b0000\""),
+		Properties: &armmigrate.PrivateEndpointConnectionProperties{
+			PrivateLinkServiceConnectionState: &armmigrate.PrivateLinkServiceConnectionState{
+				ActionsRequired: to.Ptr(""),
+				Status:          to.Ptr(armmigrate.PrivateLinkServiceConnectionStateStatusApproved),
 			},
 		},
-		})
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armmigrate.PrivateEndpointConnection{
+	// 	Name: to.Ptr("custestpece80project3980pe.7e35576b-3df4-478e-9759-f64351cf4f43"),
+	// 	Type: to.Ptr("Microsoft.Migrate/assessmentprojects/privateEndpointConnections"),
+	// 	ETag: to.Ptr("\"00009300-0000-0300-0000-602b967b0000\""),
+	// 	ID: to.Ptr("/subscriptions/4bd2aa0f-2bd2-4d67-91a8-5a4533d58600/resourceGroups/madhavicus/providers/Microsoft.Migrate/assessmentprojects/custestpece80project/privateEndpointConnections/custestpece80project3980pe.7e35576b-3df4-478e-9759-f64351cf4f43"),
+	// 	Properties: &armmigrate.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armmigrate.ResourceID{
+	// 			ID: to.Ptr("/subscriptions/31be0ff4-c932-4cb3-8efc-efa411d79280/resourceGroups/PrivLink-SelfHost/providers/Microsoft.Network/privateEndpoints/custestpece80project3980pe"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armmigrate.PrivateLinkServiceConnectionState{
+	// 			ActionsRequired: to.Ptr(""),
+	// 			Status: to.Ptr(armmigrate.PrivateLinkServiceConnectionStateStatusPending),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armmigrate.PrivateEndpointConnectionPropertiesProvisioningStateSucceeded),
+	// 	},
+	// }
 }

@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databox/armdatabox"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-02-01/examples/JobsDelete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-02-01/examples/JobsDelete.json
 func ExampleJobsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdatabox.NewJobsClient("fa68082f-8ff7-4a25-95c7-ce9da541242f", cred, nil)
+	clientFactory, err := armdatabox.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"SdkRg5154",
-		"SdkJob952",
-		nil)
+	poller, err := clientFactory.NewJobsClient().BeginDelete(ctx, "SdkRg5154", "SdkJob952", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

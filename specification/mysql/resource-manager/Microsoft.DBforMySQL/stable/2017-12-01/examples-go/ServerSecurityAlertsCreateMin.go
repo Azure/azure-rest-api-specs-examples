@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysql"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/examples/ServerSecurityAlertsGet.json
-func ExampleServerSecurityAlertPoliciesClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/examples/ServerSecurityAlertsCreateMin.json
+func ExampleServerSecurityAlertPoliciesClient_BeginCreateOrUpdate_updateAServersThreatDetectionPolicyWithMinimalParameters() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +20,18 @@ func ExampleServerSecurityAlertPoliciesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewServerSecurityAlertPoliciesClient().Get(ctx, "securityalert-4799", "securityalert-6440", armmysql.SecurityAlertPolicyNameDefault, nil)
+	poller, err := clientFactory.NewServerSecurityAlertPoliciesClient().BeginCreateOrUpdate(ctx, "securityalert-4799", "securityalert-6440", armmysql.SecurityAlertPolicyNameDefault, armmysql.ServerSecurityAlertPolicy{
+		Properties: &armmysql.SecurityAlertPolicyProperties{
+			EmailAccountAdmins: to.Ptr(true),
+			State:              to.Ptr(armmysql.ServerSecurityAlertPolicyStateDisabled),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
@@ -32,13 +42,13 @@ func ExampleServerSecurityAlertPoliciesClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/securityalert-4799/providers/Microsoft.DBforMySQL/servers/securityalert-6440/securityAlertPolicies/default"),
 	// 	Properties: &armmysql.SecurityAlertPolicyProperties{
 	// 		DisabledAlerts: []*string{
-	// 			to.Ptr("Access_Anomaly")},
-	// 			EmailAccountAdmins: to.Ptr(true),
-	// 			EmailAddresses: []*string{
-	// 				to.Ptr("test@microsoft.com;user@microsoft.com")},
-	// 				RetentionDays: to.Ptr[int32](0),
-	// 				State: to.Ptr(armmysql.ServerSecurityAlertPolicyStateDisabled),
-	// 				StorageEndpoint: to.Ptr("https://mystorage.blob.core.windows.net"),
-	// 			},
-	// 		}
+	// 		},
+	// 		EmailAccountAdmins: to.Ptr(true),
+	// 		EmailAddresses: []*string{
+	// 		},
+	// 		RetentionDays: to.Ptr[int32](0),
+	// 		State: to.Ptr(armmysql.ServerSecurityAlertPolicyStateEnabled),
+	// 		StorageEndpoint: to.Ptr(""),
+	// 	},
+	// }
 }

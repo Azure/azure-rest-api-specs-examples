@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearning/armmachinelearning/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/ModelVersion/list.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/aafb0944f7ab936e8cfbad8969bd5eb32263fb4f/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/ModelVersion/list.json
 func ExampleModelVersionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmachinelearning.NewModelVersionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armmachinelearning.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("test-rg", "my-aml-workspace", "string", &armmachinelearning.ModelVersionsClientListOptions{Skip: nil,
+	pager := clientFactory.NewModelVersionsClient().NewListPager("test-rg", "my-aml-workspace", "string", &armmachinelearning.ModelVersionsClientListOptions{Skip: nil,
 		OrderBy:      to.Ptr("string"),
 		Top:          to.Ptr[int32](1),
 		Version:      to.Ptr("string"),
@@ -32,13 +32,49 @@ func ExampleModelVersionsClient_NewListPager() {
 		ListViewType: nil,
 	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ModelVersionResourceArmPaginatedResult = armmachinelearning.ModelVersionResourceArmPaginatedResult{
+		// 	Value: []*armmachinelearning.ModelVersion{
+		// 		{
+		// 			Name: to.Ptr("string"),
+		// 			Type: to.Ptr("string"),
+		// 			ID: to.Ptr("string"),
+		// 			SystemData: &armmachinelearning.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:34:56.999Z"); return t}()),
+		// 				CreatedBy: to.Ptr("string"),
+		// 				CreatedByType: to.Ptr(armmachinelearning.CreatedByTypeUser),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:34:56.999Z"); return t}()),
+		// 				LastModifiedBy: to.Ptr("string"),
+		// 				LastModifiedByType: to.Ptr(armmachinelearning.CreatedByTypeUser),
+		// 			},
+		// 			Properties: &armmachinelearning.ModelVersionProperties{
+		// 				Description: to.Ptr("string"),
+		// 				Properties: map[string]*string{
+		// 					"string": to.Ptr("string"),
+		// 				},
+		// 				Tags: map[string]*string{
+		// 					"string": to.Ptr("string"),
+		// 				},
+		// 				IsAnonymous: to.Ptr(false),
+		// 				Flavors: map[string]*armmachinelearning.FlavorData{
+		// 					"string": &armmachinelearning.FlavorData{
+		// 						Data: map[string]*string{
+		// 							"string": to.Ptr("string"),
+		// 						},
+		// 					},
+		// 				},
+		// 				ModelType: to.Ptr("CustomModel"),
+		// 				ModelURI: to.Ptr("string"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

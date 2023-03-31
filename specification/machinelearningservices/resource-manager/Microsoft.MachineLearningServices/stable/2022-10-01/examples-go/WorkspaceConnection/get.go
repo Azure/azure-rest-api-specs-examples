@@ -8,21 +8,32 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/machinelearning/armmachinelearning/v3"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/WorkspaceConnection/get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/aafb0944f7ab936e8cfbad8969bd5eb32263fb4f/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/WorkspaceConnection/get.json
 func ExampleWorkspaceConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmachinelearning.NewWorkspaceConnectionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armmachinelearning.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "resourceGroup-1", "workspace-1", "connection-1", nil)
+	res, err := clientFactory.NewWorkspaceConnectionsClient().Get(ctx, "resourceGroup-1", "workspace-1", "connection-1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.WorkspaceConnectionPropertiesV2BasicResource = armmachinelearning.WorkspaceConnectionPropertiesV2BasicResource{
+	// 	Name: to.Ptr("connection-1"),
+	// 	Type: to.Ptr("Microsoft.MachineLearningServices/workspaces/connections"),
+	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup-1/providers/Microsoft.MachineLearningServices/workspaces/workspace-1/connections/connection-1"),
+	// 	Properties: &armmachinelearning.NoneAuthTypeWorkspaceConnectionProperties{
+	// 		AuthType: to.Ptr(armmachinelearning.ConnectionAuthTypeNone),
+	// 		Category: to.Ptr(armmachinelearning.ConnectionCategoryContainerRegistry),
+	// 		Target: to.Ptr("www.facebook.com"),
+	// 	},
+	// }
 }

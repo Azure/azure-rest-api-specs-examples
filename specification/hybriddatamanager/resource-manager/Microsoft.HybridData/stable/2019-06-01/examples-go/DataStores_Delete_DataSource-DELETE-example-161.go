@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybriddatamanager/armhybriddatamanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hybriddatamanager/resource-manager/Microsoft.HybridData/stable/2019-06-01/examples/DataStores_Delete_DataSink-DELETE-example-161.json
-func ExampleDataStoresClient_BeginDelete_dataStoresDeleteDataSinkDelete161() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hybriddatamanager/resource-manager/Microsoft.HybridData/stable/2019-06-01/examples/DataStores_Delete_DataSource-DELETE-example-161.json
+func ExampleDataStoresClient_BeginDelete_dataStoresDeleteDataSourceDelete161() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleDataStoresClient_BeginDelete_dataStoresDeleteDataSinkDelete161() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewDataStoresClient().BeginDelete(ctx, "TestAzureStorage1", "ResourceGroupForSDKTest", "TestAzureSDKOperations", nil)
+	poller, err := clientFactory.NewDataStoresClient().BeginDelete(ctx, "TestStorSimpleSource1", "ResourceGroupForSDKTest", "TestAzureSDKOperations", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -16,11 +16,11 @@ func ExampleDatabasesClient_BeginCreateOrUpdate_kustoReadOnlyDatabaseUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDatabasesClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "kustorptest", "kustoCluster", "kustoReadOnlyDatabase", &armkusto.ReadOnlyFollowingDatabase{
+	poller, err := clientFactory.NewDatabasesClient().BeginCreateOrUpdate(ctx, "kustorptest", "kustoCluster", "kustoReadOnlyDatabase", &armkusto.ReadOnlyFollowingDatabase{
 		Kind:     to.Ptr(armkusto.KindReadOnlyFollowing),
 		Location: to.Ptr("westus"),
 		Properties: &armkusto.ReadOnlyFollowingDatabaseProperties{

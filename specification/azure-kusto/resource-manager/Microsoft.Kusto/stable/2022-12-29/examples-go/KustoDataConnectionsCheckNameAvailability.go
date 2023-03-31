@@ -16,11 +16,11 @@ func ExampleDataConnectionsClient_CheckNameAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDataConnectionsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", armkusto.DataConnectionCheckNameRequest{
+	res, err := clientFactory.NewDataConnectionsClient().CheckNameAvailability(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", armkusto.DataConnectionCheckNameRequest{
 		Name: to.Ptr("DataConnections8"),
 		Type: to.Ptr("Microsoft.Kusto/clusters/databases/dataConnections"),
 	}, nil)

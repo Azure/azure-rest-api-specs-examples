@@ -15,11 +15,11 @@ func ExampleClustersClient_NewListOutboundNetworkDependenciesEndpointsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewClustersClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListOutboundNetworkDependenciesEndpointsPager("kustorptest", "kustoCluster", nil)
+	pager := clientFactory.NewClustersClient().NewListOutboundNetworkDependenciesEndpointsPager("kustorptest", "kustoCluster", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

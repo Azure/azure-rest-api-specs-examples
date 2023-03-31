@@ -16,11 +16,11 @@ func ExampleDatabasesClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDatabasesClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", &armkusto.ReadWriteDatabase{
+	poller, err := clientFactory.NewDatabasesClient().BeginUpdate(ctx, "kustorptest", "kustoCluster", "KustoDatabase8", &armkusto.ReadWriteDatabase{
 		Kind: to.Ptr(armkusto.KindReadWrite),
 		Properties: &armkusto.ReadWriteDatabaseProperties{
 			HotCachePeriod: to.Ptr("P1D"),

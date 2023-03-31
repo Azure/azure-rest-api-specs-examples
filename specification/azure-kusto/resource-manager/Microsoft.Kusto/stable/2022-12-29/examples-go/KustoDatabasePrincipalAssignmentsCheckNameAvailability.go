@@ -16,11 +16,11 @@ func ExampleDatabasePrincipalAssignmentsClient_CheckNameAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewDatabasePrincipalAssignmentsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "kustorptest", "kustoCluster", "Kustodatabase8", armkusto.DatabasePrincipalAssignmentCheckNameRequest{
+	res, err := clientFactory.NewDatabasePrincipalAssignmentsClient().CheckNameAvailability(ctx, "kustorptest", "kustoCluster", "Kustodatabase8", armkusto.DatabasePrincipalAssignmentCheckNameRequest{
 		Name: to.Ptr("kustoprincipal1"),
 		Type: to.Ptr("Microsoft.Kusto/clusters/databases/principalAssignments"),
 	}, nil)

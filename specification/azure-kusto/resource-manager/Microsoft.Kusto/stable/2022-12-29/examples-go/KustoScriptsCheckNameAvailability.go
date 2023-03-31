@@ -16,11 +16,11 @@ func ExampleScriptsClient_CheckNameAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkusto.NewScriptsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armkusto.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "kustorptest", "kustoCluster", "db", armkusto.ScriptCheckNameRequest{
+	res, err := clientFactory.NewScriptsClient().CheckNameAvailability(ctx, "kustorptest", "kustoCluster", "db", armkusto.ScriptCheckNameRequest{
 		Name: to.Ptr("kustoScriptName1"),
 		Type: to.Ptr("Microsoft.Kusto/clusters/databases/scripts"),
 	}, nil)

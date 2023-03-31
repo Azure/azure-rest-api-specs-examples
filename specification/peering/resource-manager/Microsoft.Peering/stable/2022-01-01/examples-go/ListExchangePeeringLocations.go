@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/peering/armpeering"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/examples/ListDirectPeeringLocations.json
-func ExampleLocationsClient_NewListPager_listDirectPeeringLocations() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/examples/ListExchangePeeringLocations.json
+func ExampleLocationsClient_NewListPager_listExchangePeeringLocations() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleLocationsClient_NewListPager_listDirectPeeringLocations() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewLocationsClient().NewListPager(armpeering.PeeringLocationsKindDirect, &armpeering.LocationsClientListOptions{DirectPeeringType: nil})
+	pager := clientFactory.NewLocationsClient().NewListPager(armpeering.PeeringLocationsKindExchange, &armpeering.LocationsClientListOptions{DirectPeeringType: nil})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -36,31 +36,30 @@ func ExampleLocationsClient_NewListPager_listDirectPeeringLocations() {
 		// 			Name: to.Ptr("peeringLocation1"),
 		// 			Type: to.Ptr("Microsoft.Peering/peeringLocations"),
 		// 			ID: to.Ptr("/subscriptions/subId/providers/Microsoft.Peering/peeringLocations/peeringLocation1"),
-		// 			Kind: to.Ptr(armpeering.KindDirect),
+		// 			Kind: to.Ptr(armpeering.KindExchange),
 		// 			Properties: &armpeering.LocationProperties{
 		// 				Country: to.Ptr("country1"),
-		// 				Direct: &armpeering.LocationPropertiesDirect{
-		// 					BandwidthOffers: []*armpeering.BandwidthOffer{
+		// 				Exchange: &armpeering.LocationPropertiesExchange{
+		// 					PeeringFacilities: []*armpeering.ExchangePeeringFacility{
 		// 						{
-		// 							OfferName: to.Ptr("10Gbps"),
-		// 							ValueInMbps: to.Ptr[int32](10000),
+		// 							BandwidthInMbps: to.Ptr[int32](10000),
+		// 							ExchangeName: to.Ptr("name1"),
+		// 							FacilityIPv4Prefix: to.Ptr("192.168.128.0/17"),
+		// 							FacilityIPv6Prefix: to.Ptr("fd00::1000:0/98"),
+		// 							MicrosoftIPv4Address: to.Ptr("192.168.131.1"),
+		// 							MicrosoftIPv6Address: to.Ptr("fd00::1:1"),
+		// 							PeeringDBFacilityID: to.Ptr[int32](99999),
+		// 							PeeringDBFacilityLink: to.Ptr("https://www.peeringdb.com/ix/99999"),
 		// 						},
 		// 						{
-		// 							OfferName: to.Ptr("100Gbps"),
-		// 							ValueInMbps: to.Ptr[int32](100000),
-		// 					}},
-		// 					PeeringFacilities: []*armpeering.DirectPeeringFacility{
-		// 						{
-		// 							Address: to.Ptr("address1"),
-		// 							DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeEdge),
+		// 							BandwidthInMbps: to.Ptr[int32](10000),
+		// 							ExchangeName: to.Ptr("name3"),
+		// 							FacilityIPv4Prefix: to.Ptr("192.168.0.0/17"),
+		// 							FacilityIPv6Prefix: to.Ptr("fd00::0/98"),
+		// 							MicrosoftIPv4Address: to.Ptr("192.168.2.2"),
+		// 							MicrosoftIPv6Address: to.Ptr("fd00::2"),
 		// 							PeeringDBFacilityID: to.Ptr[int32](99999),
-		// 							PeeringDBFacilityLink: to.Ptr("https://www.peeringdb.com/fac/99999"),
-		// 						},
-		// 						{
-		// 							Address: to.Ptr("address3"),
-		// 							DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeCdn),
-		// 							PeeringDBFacilityID: to.Ptr[int32](99999),
-		// 							PeeringDBFacilityLink: to.Ptr("https://www.peeringdb.com/fac/99999"),
+		// 							PeeringDBFacilityLink: to.Ptr("https://www.peeringdb.com/ix/99999"),
 		// 					}},
 		// 				},
 		// 				PeeringLocation: to.Ptr("peeringLocation1"),
@@ -70,25 +69,20 @@ func ExampleLocationsClient_NewListPager_listDirectPeeringLocations() {
 		// 			Name: to.Ptr("peeringLocation2"),
 		// 			Type: to.Ptr("Microsoft.Peering/peeringLocations"),
 		// 			ID: to.Ptr("/subscriptions/subId/providers/Microsoft.Peering/peeringLocations/peeringLocation2"),
-		// 			Kind: to.Ptr(armpeering.KindDirect),
+		// 			Kind: to.Ptr(armpeering.KindExchange),
 		// 			Properties: &armpeering.LocationProperties{
 		// 				Country: to.Ptr("country2"),
-		// 				Direct: &armpeering.LocationPropertiesDirect{
-		// 					BandwidthOffers: []*armpeering.BandwidthOffer{
+		// 				Exchange: &armpeering.LocationPropertiesExchange{
+		// 					PeeringFacilities: []*armpeering.ExchangePeeringFacility{
 		// 						{
-		// 							OfferName: to.Ptr("10Gbps"),
-		// 							ValueInMbps: to.Ptr[int32](10000),
-		// 						},
-		// 						{
-		// 							OfferName: to.Ptr("100Gbps"),
-		// 							ValueInMbps: to.Ptr[int32](100000),
-		// 					}},
-		// 					PeeringFacilities: []*armpeering.DirectPeeringFacility{
-		// 						{
-		// 							Address: to.Ptr("address2"),
-		// 							DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeEdge),
+		// 							BandwidthInMbps: to.Ptr[int32](10000),
+		// 							ExchangeName: to.Ptr("name2"),
+		// 							FacilityIPv4Prefix: to.Ptr("192.168.0.0/16"),
+		// 							FacilityIPv6Prefix: to.Ptr("fd00::0/98"),
+		// 							MicrosoftIPv4Address: to.Ptr("192.168.2.1"),
+		// 							MicrosoftIPv6Address: to.Ptr("fd00::2"),
 		// 							PeeringDBFacilityID: to.Ptr[int32](99999),
-		// 							PeeringDBFacilityLink: to.Ptr("https://www.peeringdb.com/fac/99999"),
+		// 							PeeringDBFacilityLink: to.Ptr("https://www.peeringdb.com/ix/99999"),
 		// 					}},
 		// 				},
 		// 				PeeringLocation: to.Ptr("peeringLocation2"),

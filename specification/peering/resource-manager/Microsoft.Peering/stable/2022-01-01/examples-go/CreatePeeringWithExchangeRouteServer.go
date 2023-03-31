@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/peering/armpeering"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/examples/CreateDirectPeering.json
-func ExamplePeeringsClient_CreateOrUpdate_createADirectPeering() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/peering/resource-manager/Microsoft.Peering/stable/2022-01-01/examples/CreatePeeringWithExchangeRouteServer.json
+func ExamplePeeringsClient_CreateOrUpdate_createAPeeringWithExchangeRouteServer() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -29,25 +29,18 @@ func ExamplePeeringsClient_CreateOrUpdate_createADirectPeering() {
 					{
 						BandwidthInMbps: to.Ptr[int32](10000),
 						BgpSession: &armpeering.BgpSession{
-							MaxPrefixesAdvertisedV4: to.Ptr[int32](1000),
-							MaxPrefixesAdvertisedV6: to.Ptr[int32](100),
-							MD5AuthenticationKey:    to.Ptr("test-md5-auth-key"),
-							SessionPrefixV4:         to.Ptr("192.168.0.0/31"),
-							SessionPrefixV6:         to.Ptr("fd00::0/127"),
+							MaxPrefixesAdvertisedV4:     to.Ptr[int32](1000),
+							MaxPrefixesAdvertisedV6:     to.Ptr[int32](100),
+							MicrosoftSessionIPv4Address: to.Ptr("192.168.0.123"),
+							PeerSessionIPv4Address:      to.Ptr("192.168.0.234"),
+							SessionPrefixV4:             to.Ptr("192.168.0.0/24"),
 						},
 						ConnectionIdentifier:   to.Ptr("5F4CB5C7-6B43-4444-9338-9ABC72606C16"),
 						PeeringDBFacilityID:    to.Ptr[int32](99999),
 						SessionAddressProvider: to.Ptr(armpeering.SessionAddressProviderPeer),
-						UseForPeeringService:   to.Ptr(false),
-					},
-					{
-						BandwidthInMbps:        to.Ptr[int32](10000),
-						ConnectionIdentifier:   to.Ptr("8AB00818-D533-4504-A25A-03A17F61201C"),
-						PeeringDBFacilityID:    to.Ptr[int32](99999),
-						SessionAddressProvider: to.Ptr(armpeering.SessionAddressProviderMicrosoft),
 						UseForPeeringService:   to.Ptr(true),
 					}},
-				DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeEdge),
+				DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeIxRs),
 				PeerAsn: &armpeering.SubResource{
 					ID: to.Ptr("/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"),
 				},
@@ -55,7 +48,7 @@ func ExamplePeeringsClient_CreateOrUpdate_createADirectPeering() {
 			PeeringLocation: to.Ptr("peeringLocation0"),
 		},
 		SKU: &armpeering.SKU{
-			Name: to.Ptr("Basic_Direct_Free"),
+			Name: to.Ptr("Premium_Direct_Free"),
 		},
 	}, nil)
 	if err != nil {
@@ -78,41 +71,20 @@ func ExamplePeeringsClient_CreateOrUpdate_createADirectPeering() {
 	// 					BgpSession: &armpeering.BgpSession{
 	// 						MaxPrefixesAdvertisedV4: to.Ptr[int32](1000),
 	// 						MaxPrefixesAdvertisedV6: to.Ptr[int32](100),
-	// 						MD5AuthenticationKey: to.Ptr("test-md5-auth-key"),
-	// 						SessionPrefixV4: to.Ptr("192.168.0.0/31"),
-	// 						SessionPrefixV6: to.Ptr("fd00::0/127"),
+	// 						MicrosoftSessionIPv4Address: to.Ptr("192.168.0.123"),
+	// 						PeerSessionIPv4Address: to.Ptr("192.168.0.234"),
+	// 						SessionPrefixV4: to.Ptr("192.168.0.0/24"),
 	// 						SessionStateV4: to.Ptr(armpeering.SessionStateV4Established),
 	// 						SessionStateV6: to.Ptr(armpeering.SessionStateV6Established),
 	// 					},
 	// 					ConnectionIdentifier: to.Ptr("5F4CB5C7-6B43-4444-9338-9ABC72606C16"),
-	// 					ConnectionState: to.Ptr(armpeering.ConnectionStateProvisioningFailed),
-	// 					ErrorMessage: to.Ptr("IPv4 address is already configured with a different ASN"),
-	// 					MicrosoftTrackingID: to.Ptr("test-microsoft-reference-id-1"),
+	// 					ConnectionState: to.Ptr(armpeering.ConnectionStateActive),
 	// 					PeeringDBFacilityID: to.Ptr[int32](99999),
 	// 					ProvisionedBandwidthInMbps: to.Ptr[int32](10000),
 	// 					SessionAddressProvider: to.Ptr(armpeering.SessionAddressProviderPeer),
-	// 					UseForPeeringService: to.Ptr(false),
-	// 				},
-	// 				{
-	// 					BandwidthInMbps: to.Ptr[int32](10000),
-	// 					BgpSession: &armpeering.BgpSession{
-	// 						MaxPrefixesAdvertisedV4: to.Ptr[int32](1000),
-	// 						MaxPrefixesAdvertisedV6: to.Ptr[int32](100),
-	// 						MD5AuthenticationKey: to.Ptr("test-md5-auth-key"),
-	// 						SessionPrefixV4: to.Ptr("192.168.1.0/31"),
-	// 						SessionPrefixV6: to.Ptr("fd00::2/127"),
-	// 						SessionStateV4: to.Ptr(armpeering.SessionStateV4Established),
-	// 						SessionStateV6: to.Ptr(armpeering.SessionStateV6Established),
-	// 					},
-	// 					ConnectionIdentifier: to.Ptr("8AB00818-D533-4504-A25A-03A17F61201C"),
-	// 					ConnectionState: to.Ptr(armpeering.ConnectionStateActive),
-	// 					MicrosoftTrackingID: to.Ptr("test-microsoft-reference-id-2"),
-	// 					PeeringDBFacilityID: to.Ptr[int32](99999),
-	// 					ProvisionedBandwidthInMbps: to.Ptr[int32](10000),
-	// 					SessionAddressProvider: to.Ptr(armpeering.SessionAddressProviderMicrosoft),
 	// 					UseForPeeringService: to.Ptr(true),
 	// 			}},
-	// 			DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeEdge),
+	// 			DirectPeeringType: to.Ptr(armpeering.DirectPeeringTypeIxRs),
 	// 			PeerAsn: &armpeering.SubResource{
 	// 				ID: to.Ptr("/subscriptions/subId/providers/Microsoft.Peering/peerAsns/myAsn1"),
 	// 			},
@@ -122,10 +94,10 @@ func ExamplePeeringsClient_CreateOrUpdate_createADirectPeering() {
 	// 		ProvisioningState: to.Ptr(armpeering.ProvisioningStateSucceeded),
 	// 	},
 	// 	SKU: &armpeering.SKU{
-	// 		Name: to.Ptr("Basic_Direct_Free"),
+	// 		Name: to.Ptr("Premium_Direct_Free"),
 	// 		Family: to.Ptr(armpeering.FamilyDirect),
 	// 		Size: to.Ptr(armpeering.SizeFree),
-	// 		Tier: to.Ptr(armpeering.TierBasic),
+	// 		Tier: to.Ptr(armpeering.TierPremium),
 	// 	},
 	// }
 }

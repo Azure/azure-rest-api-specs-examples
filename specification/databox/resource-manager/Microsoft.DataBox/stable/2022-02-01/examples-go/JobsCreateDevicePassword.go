@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databox/armdatabox"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-02-01/examples/JobsCreate.json
-func ExampleJobsClient_BeginCreate_jobsCreate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-02-01/examples/JobsCreateDevicePassword.json
+func ExampleJobsClient_BeginCreate_jobsCreateDevicePassword() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewJobsClient().BeginCreate(ctx, "SdkRg5154", "SdkJob952", armdatabox.JobResource{
+	poller, err := clientFactory.NewJobsClient().BeginCreate(ctx, "SdkRg7478", "SdkJob9640", armdatabox.JobResource{
 		Location: to.Ptr("westus"),
 		SKU: &armdatabox.SKU{
 			Name: to.Ptr(armdatabox.SKUNameDataBox),
@@ -39,7 +39,8 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 					{
 						AccountDetails: &armdatabox.StorageAccountDetails{
 							DataAccountType:  to.Ptr(armdatabox.DataAccountTypeStorageAccount),
-							StorageAccountID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourcegroups/databoxbvt/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount"),
+							SharePassword:    to.Ptr("<sharePassword>"),
+							StorageAccountID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databoxbvt1/providers/Microsoft.Storage/storageAccounts/databoxbvttestaccount2"),
 						},
 					}},
 				JobDetailsType: to.Ptr(armdatabox.ClassDiscriminatorDataBox),
@@ -53,6 +54,7 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 					StreetAddress1:  to.Ptr("16 TOWNSEND ST"),
 					StreetAddress2:  to.Ptr("Unit 1"),
 				},
+				DevicePassword: to.Ptr("<devicePassword>"),
 			},
 		},
 	}, nil)
@@ -73,9 +75,9 @@ func ExampleJobsClient_BeginCreate_jobsCreate() {
 	// 	},
 	// 	Tags: map[string]*string{
 	// 	},
-	// 	Name: to.Ptr("SdkJob952"),
+	// 	Name: to.Ptr("SdkJob9640"),
 	// 	Type: to.Ptr("Microsoft.DataBox/jobs"),
-	// 	ID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/SdkRg5154/providers/Microsoft.DataBox/jobs/SdkJob952"),
+	// 	ID: to.Ptr("/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/SdkRg7478/providers/Microsoft.DataBox/jobs/SdkJob9640"),
 	// 	Properties: &armdatabox.JobProperties{
 	// 		DeliveryInfo: &armdatabox.JobDeliveryInfo{
 	// 			ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),

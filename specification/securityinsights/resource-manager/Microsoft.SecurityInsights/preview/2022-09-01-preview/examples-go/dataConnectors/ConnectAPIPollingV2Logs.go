@@ -9,25 +9,25 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/dataConnectors/ConnectAPIPollingV2Logs.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/dataConnectors/ConnectAPIPollingV2Logs.json
 func ExampleDataConnectorsClient_Connect_connectAnApiPollingV2LogsDataConnector() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurityinsights.NewDataConnectorsClient("d0cfe6b2-9ac0-4464-9919-dccaee2e48c0", cred, nil)
+	clientFactory, err := armsecurityinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Connect(ctx, "myRg", "myWorkspace", "316ec55e-7138-4d63-ab18-90c8a60fd1c8", armsecurityinsights.DataConnectorConnectBody{
+	_, err = clientFactory.NewDataConnectorsClient().Connect(ctx, "myRg", "myWorkspace", "316ec55e-7138-4d63-ab18-90c8a60fd1c8", armsecurityinsights.DataConnectorConnectBody{
 		APIKey:                        to.Ptr("123456789"),
 		DataCollectionEndpoint:        to.Ptr("https://test.eastus.ingest.monitor.azure.com"),
 		DataCollectionRuleImmutableID: to.Ptr("dcr-34adsj9o7d6f9de204478b9cgb43b631"),
 		Kind:                          to.Ptr(armsecurityinsights.ConnectAuthKindAPIKey),
 		OutputStream:                  to.Ptr("Custom-MyTableRawData"),
-		RequestConfigUserInputValues: []interface{}{
-			map[string]interface{}{
+		RequestConfigUserInputValues: []any{
+			map[string]any{
 				"displayText":      "Organization Name",
 				"placeHolderName":  "{{placeHolder1}}",
 				"placeHolderValue": "somePlaceHolderValue",

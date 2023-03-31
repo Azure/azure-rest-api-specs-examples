@@ -8,23 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/healthcareapis/armhealthcareapis"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2022-01-31-preview/examples/iotconnectors/iotconnector_fhirdestination_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/2f2b633d940230cbbd5bcf1339a2e1c48674e4a2/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/preview/2022-01-31-preview/examples/iotconnectors/iotconnector_fhirdestination_Delete.json
 func ExampleIotConnectorFhirDestinationClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhealthcareapis.NewIotConnectorFhirDestinationClient("subid", cred, nil)
+	clientFactory, err := armhealthcareapis.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"testRG",
-		"workspace1",
-		"blue",
-		"dest1",
-		nil)
+	poller, err := clientFactory.NewIotConnectorFhirDestinationClient().BeginDelete(ctx, "testRG", "workspace1", "blue", "dest1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

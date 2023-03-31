@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/DedicatedHsm_Get.json
-func ExampleDedicatedHsmClient_Get_getADedicatedHsm() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/PaymentHsm_Get_With_2018-10-31Preview_Version.json
+func ExampleDedicatedHsmClient_Get_getAPaymentHsmWith20181031PreviewApiVersion() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -32,7 +32,7 @@ func ExampleDedicatedHsmClient_Get_getADedicatedHsm() {
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/hsm1"),
 	// 	Location: to.Ptr("westus"),
 	// 	SKU: &armhardwaresecuritymodules.SKU{
-	// 		Name: to.Ptr(armhardwaresecuritymodules.SKUNameSafeNetLunaNetworkHSMA790),
+	// 		Name: to.Ptr(armhardwaresecuritymodules.SKUNamePayShield10KLMK1CPS60),
 	// 	},
 	// 	Tags: map[string]*string{
 	// 		"Dept": to.Ptr("hsm"),
@@ -43,7 +43,7 @@ func ExampleDedicatedHsmClient_Get_getADedicatedHsm() {
 	// 		NetworkProfile: &armhardwaresecuritymodules.NetworkProfile{
 	// 			NetworkInterfaces: []*armhardwaresecuritymodules.NetworkInterface{
 	// 				{
-	// 					ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/networkInterfaces/hsm_vnic"),
+	// 					ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/hsm-group/providers/Microsoft.Network/networkInterfaces/hsm1_HSMHost1Nic"),
 	// 					PrivateIPAddress: to.Ptr("1.0.0.1"),
 	// 			}},
 	// 			Subnet: &armhardwaresecuritymodules.APIEntityReference{

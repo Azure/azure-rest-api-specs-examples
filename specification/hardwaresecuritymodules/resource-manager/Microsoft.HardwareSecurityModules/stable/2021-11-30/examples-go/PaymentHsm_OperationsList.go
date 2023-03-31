@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/GetOutboundNetworkDependenciesEndpointsList.json
-func ExampleDedicatedHsmClient_NewListOutboundNetworkDependenciesEndpointsPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/PaymentHsm_OperationsList.json
+func ExampleOperationsClient_NewListPager_getAListOfPaymentHsmOperations() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleDedicatedHsmClient_NewListOutboundNetworkDependenciesEndpointsPager(
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewDedicatedHsmClient().NewListOutboundNetworkDependenciesEndpointsPager("hsm-group", "hsm1", nil)
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -30,9 +30,18 @@ func ExampleDedicatedHsmClient_NewListOutboundNetworkDependenciesEndpointsPager(
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.OutboundEnvironmentEndpointCollection = armhardwaresecuritymodules.OutboundEnvironmentEndpointCollection{
-		// 	Value: []*armhardwaresecuritymodules.OutboundEnvironmentEndpoint{
-		// 	},
+		// page.DedicatedHsmOperationListResult = armhardwaresecuritymodules.DedicatedHsmOperationListResult{
+		// 	Value: []*armhardwaresecuritymodules.DedicatedHsmOperation{
+		// 		{
+		// 			Name: to.Ptr("hsm1"),
+		// 			Display: &armhardwaresecuritymodules.DedicatedHsmOperationDisplay{
+		// 				Description: to.Ptr("Update a dedicated HSM in the specified subscription"),
+		// 				Operation: to.Ptr("DedicatedHsm_Update"),
+		// 				Provider: to.Ptr("Microsoft HardwareSecurityModules"),
+		// 				Resource: to.Ptr("Dedicated HSM"),
+		// 			},
+		// 			IsDataAction: to.Ptr("false"),
+		// 	}},
 		// }
 	}
 }

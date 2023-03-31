@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeorder/armedgeorder"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/DeleteOrderItemByName.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/DeleteOrderItemByName.json
 func ExampleManagementClient_BeginDeleteOrderItemByName() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armedgeorder.NewManagementClient("YourSubscriptionId", cred, nil)
+	clientFactory, err := armedgeorder.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDeleteOrderItemByName(ctx,
-		"TestOrderItemName3",
-		"YourResourceGroupName",
-		nil)
+	poller, err := clientFactory.NewManagementClient().BeginDeleteOrderItemByName(ctx, "TestOrderItemName3", "YourResourceGroupName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

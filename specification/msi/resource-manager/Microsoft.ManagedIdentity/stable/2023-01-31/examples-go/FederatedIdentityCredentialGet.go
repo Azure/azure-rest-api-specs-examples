@@ -15,11 +15,11 @@ func ExampleFederatedIdentityCredentialsClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmsi.NewFederatedIdentityCredentialsClient("c267c0e7-0a73-4789-9e17-d26aeb0904e5", cred, nil)
+	clientFactory, err := armmsi.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "rgName", "resourceName", "ficResourceName", nil)
+	res, err := clientFactory.NewFederatedIdentityCredentialsClient().Get(ctx, "rgName", "resourceName", "ficResourceName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

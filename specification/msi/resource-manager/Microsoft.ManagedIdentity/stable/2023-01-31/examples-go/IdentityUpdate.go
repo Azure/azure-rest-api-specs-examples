@@ -16,11 +16,11 @@ func ExampleUserAssignedIdentitiesClient_Update() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmsi.NewUserAssignedIdentitiesClient("subid", cred, nil)
+	clientFactory, err := armmsi.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx, "rgName", "resourceName", armmsi.IdentityUpdate{
+	res, err := clientFactory.NewUserAssignedIdentitiesClient().Update(ctx, "rgName", "resourceName", armmsi.IdentityUpdate{
 		Location: to.Ptr("eastus"),
 		Tags: map[string]*string{
 			"key1": to.Ptr("value1"),

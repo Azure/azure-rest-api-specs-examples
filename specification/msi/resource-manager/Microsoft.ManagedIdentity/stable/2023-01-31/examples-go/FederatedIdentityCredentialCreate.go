@@ -16,11 +16,11 @@ func ExampleFederatedIdentityCredentialsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmsi.NewFederatedIdentityCredentialsClient("c267c0e7-0a73-4789-9e17-d26aeb0904e5", cred, nil)
+	clientFactory, err := armmsi.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "rgName", "resourceName", "ficResourceName", armmsi.FederatedIdentityCredential{
+	res, err := clientFactory.NewFederatedIdentityCredentialsClient().CreateOrUpdate(ctx, "rgName", "resourceName", "ficResourceName", armmsi.FederatedIdentityCredential{
 		Properties: &armmsi.FederatedIdentityCredentialProperties{
 			Audiences: []*string{
 				to.Ptr("api://AzureADTokenExchange")},

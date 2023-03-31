@@ -15,11 +15,11 @@ func ExampleFederatedIdentityCredentialsClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armmsi.NewFederatedIdentityCredentialsClient("c267c0e7-0a73-4789-9e17-d26aeb0904e5", cred, nil)
+	clientFactory, err := armmsi.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("rgName", "resourceName", &armmsi.FederatedIdentityCredentialsClientListOptions{Top: nil,
+	pager := clientFactory.NewFederatedIdentityCredentialsClient().NewListPager("rgName", "resourceName", &armmsi.FederatedIdentityCredentialsClientListOptions{Top: nil,
 		Skiptoken: nil,
 	})
 	for pager.More() {

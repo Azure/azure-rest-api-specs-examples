@@ -9,28 +9,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/customerlockbox/armcustomerlockbox"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/customerlockbox/resource-manager/Microsoft.CustomerLockbox/preview/2018-02-28-preview/examples/Requests_UpdateStatus.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/customerlockbox/resource-manager/Microsoft.CustomerLockbox/preview/2018-02-28-preview/examples/Requests_UpdateStatus.json
 func ExampleRequestsClient_UpdateStatus() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcustomerlockbox.NewRequestsClient(cred, nil)
+	clientFactory, err := armcustomerlockbox.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.UpdateStatus(ctx,
-		"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-		"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-		armcustomerlockbox.Approval{
-			Reason: to.Ptr("Customer approve"),
-			Status: to.Ptr(armcustomerlockbox.StatusApprove),
-		},
-		nil)
+	res, err := clientFactory.NewRequestsClient().UpdateStatus(ctx, "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", armcustomerlockbox.Approval{
+		Reason: to.Ptr("Customer approve"),
+		Status: to.Ptr(armcustomerlockbox.StatusApprove),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Approval = armcustomerlockbox.Approval{
+	// 	Reason: to.Ptr("Customer approve"),
+	// 	Status: to.Ptr(armcustomerlockbox.StatusApprove),
+	// }
 }

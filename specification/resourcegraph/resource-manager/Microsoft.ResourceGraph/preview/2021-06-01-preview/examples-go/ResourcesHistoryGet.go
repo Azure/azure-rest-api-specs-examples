@@ -11,8 +11,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourcegraph/armresourcegraph"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/examples/ResourcesHistoryMgsGet.json
-func ExampleClient_ResourcesHistory_resourceHistoryManagementGroupScopeQuery() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2021-06-01-preview/examples/ResourcesHistoryGet.json
+func ExampleClient_ResourcesHistory_resourceHistoryQuery() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -23,9 +23,6 @@ func ExampleClient_ResourcesHistory_resourceHistoryManagementGroupScopeQuery() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewClient().ResourcesHistory(ctx, armresourcegraph.ResourcesHistoryRequest{
-		ManagementGroups: []*string{
-			to.Ptr("e927f598-c1d4-4f72-8541-95d83a6a4ac8"),
-			to.Ptr("ProductionMG")},
 		Options: &armresourcegraph.ResourcesHistoryRequestOptions{
 			Interval: &armresourcegraph.DateTimeInterval{
 				End:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-12T01:25:00.0000000Z"); return t }()),
@@ -33,6 +30,8 @@ func ExampleClient_ResourcesHistory_resourceHistoryManagementGroupScopeQuery() {
 			},
 		},
 		Query: to.Ptr("where name =~ 'cpu-utilization' | project id, name, properties"),
+		Subscriptions: []*string{
+			to.Ptr("a7f33fdb-e646-4f15-89aa-3a360210861e")},
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

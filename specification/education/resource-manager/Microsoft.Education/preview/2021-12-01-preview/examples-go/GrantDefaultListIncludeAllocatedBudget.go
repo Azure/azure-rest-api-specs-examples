@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/education/armeducation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b9b91929c304f8fb44002267b6c98d9fb9dde014/specification/education/resource-manager/Microsoft.Education/preview/2021-12-01-preview/examples/GrantList.json
-func ExampleGrantsClient_NewListAllPager_grantList() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b9b91929c304f8fb44002267b6c98d9fb9dde014/specification/education/resource-manager/Microsoft.Education/preview/2021-12-01-preview/examples/GrantDefaultListIncludeAllocatedBudget.json
+func ExampleGrantsClient_NewListPager_grantListIncludeAllocatedBudget() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleGrantsClient_NewListAllPager_grantList() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewGrantsClient().NewListAllPager(&armeducation.GrantsClientListAllOptions{IncludeAllocatedBudget: to.Ptr(false)})
+	pager := clientFactory.NewGrantsClient().NewListPager("{billingAccountName}", "{billingProfileName}", &armeducation.GrantsClientListOptions{IncludeAllocatedBudget: to.Ptr(false)})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -38,6 +38,10 @@ func ExampleGrantsClient_NewListAllPager_grantList() {
 		// 			Type: to.Ptr("Microsoft.Education/Grants"),
 		// 			ID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/providers/Microsoft.Education/grants/default"),
 		// 			Properties: &armeducation.GrantDetailProperties{
+		// 				AllocatedBudget: &armeducation.Amount{
+		// 					Currency: to.Ptr("USD"),
+		// 					Value: to.Ptr[float32](0),
+		// 				},
 		// 				EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T09:08:05.505Z"); return t}()),
 		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-09T09:08:05.505Z"); return t}()),
 		// 				OfferCap: &armeducation.Amount{

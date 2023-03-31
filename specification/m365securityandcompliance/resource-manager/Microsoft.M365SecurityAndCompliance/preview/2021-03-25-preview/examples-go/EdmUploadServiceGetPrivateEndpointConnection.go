@@ -8,25 +8,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/m365securityandcompliance/armm365securityandcompliance"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/examples/EdmUploadServiceGetPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/m365securityandcompliance/resource-manager/Microsoft.M365SecurityAndCompliance/preview/2021-03-25-preview/examples/EdmUploadServiceGetPrivateEndpointConnection.json
 func ExamplePrivateEndpointConnectionsForEDMClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armm365securityandcompliance.NewPrivateEndpointConnectionsForEDMClient("subid", cred, nil)
+	clientFactory, err := armm365securityandcompliance.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"rgname",
-		"service1",
-		"myConnection",
-		nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsForEDMClient().Get(ctx, "rgname", "service1", "myConnection", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armm365securityandcompliance.PrivateEndpointConnection{
+	// 	Name: to.Ptr("myConnection"),
+	// 	Type: to.Ptr("Microsoft.M365SecurityAndCompliance/privateLinkServicesForEDMUpload/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.M365SecurityAndCompliance/privateLinkServicesForEDMUpload/service1/privateEndpointConnections/myConnection"),
+	// 	Properties: &armm365securityandcompliance.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armm365securityandcompliance.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/peexample01"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armm365securityandcompliance.PrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("Auto-Approved"),
+	// 			ActionsRequired: to.Ptr("None"),
+	// 			Status: to.Ptr(armm365securityandcompliance.PrivateEndpointServiceConnectionStatusApproved),
+	// 		},
+	// 	},
+	// 	SystemData: &armm365securityandcompliance.SystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-24T13:30:28.958Z"); return t}()),
+	// 		CreatedBy: to.Ptr("sove"),
+	// 		CreatedByType: to.Ptr(armm365securityandcompliance.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-24T13:30:28.958Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("sove"),
+	// 		LastModifiedByType: to.Ptr(armm365securityandcompliance.CreatedByTypeUser),
+	// 	},
+	// }
 }

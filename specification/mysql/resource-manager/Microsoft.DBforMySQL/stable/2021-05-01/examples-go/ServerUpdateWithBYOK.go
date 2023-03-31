@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerGet.json
-func ExampleServersClient_Get_getAServer() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerUpdateWithBYOK.json
+func ExampleServersClient_BeginUpdate_updateServerWithByok() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +20,29 @@ func ExampleServersClient_Get_getAServer() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewServersClient().Get(ctx, "testrg", "mysqltestserver", nil)
+	poller, err := clientFactory.NewServersClient().BeginUpdate(ctx, "testrg", "mysqltestserver", armmysqlflexibleservers.ServerForUpdate{
+		Identity: &armmysqlflexibleservers.Identity{
+			Type: to.Ptr("UserAssigned"),
+			UserAssignedIdentities: map[string]any{
+				"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity": map[string]any{},
+			},
+		},
+		Properties: &armmysqlflexibleservers.ServerPropertiesForUpdate{
+			DataEncryption: &armmysqlflexibleservers.DataEncryption{
+				Type:                            to.Ptr(armmysqlflexibleservers.DataEncryptionTypeAzureKeyVault),
+				GeoBackupKeyURI:                 to.Ptr("https://test-geo.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),
+				GeoBackupUserAssignedIdentityID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-geo-identity"),
+				PrimaryKeyURI:                   to.Ptr("https://test.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),
+				PrimaryUserAssignedIdentityID:   to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity"),
+			},
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
@@ -36,7 +57,7 @@ func ExampleServersClient_Get_getAServer() {
 	// 	},
 	// 	Properties: &armmysqlflexibleservers.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
-	// 		AvailabilityZone: to.Ptr("3"),
+	// 		AvailabilityZone: to.Ptr("1"),
 	// 		Backup: &armmysqlflexibleservers.Backup{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
 	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T06:11:38.4150019+00:00"); return t}()),
@@ -44,13 +65,14 @@ func ExampleServersClient_Get_getAServer() {
 	// 		},
 	// 		FullyQualifiedDomainName: to.Ptr("mysqltestserver.database.mysql.azure.com"),
 	// 		HighAvailability: &armmysqlflexibleservers.HighAvailability{
-	// 			Mode: to.Ptr(armmysqlflexibleservers.HighAvailabilityModeDisabled),
-	// 			State: to.Ptr(armmysqlflexibleservers.HighAvailabilityStateNotEnabled),
+	// 			Mode: to.Ptr(armmysqlflexibleservers.HighAvailabilityModeZoneRedundant),
+	// 			StandbyAvailabilityZone: to.Ptr("3"),
+	// 			State: to.Ptr(armmysqlflexibleservers.HighAvailabilityStateHealthy),
 	// 		},
 	// 		MaintenanceWindow: &armmysqlflexibleservers.MaintenanceWindow{
-	// 			CustomWindow: to.Ptr("Enabled"),
-	// 			DayOfWeek: to.Ptr[int32](1),
-	// 			StartHour: to.Ptr[int32](1),
+	// 			CustomWindow: to.Ptr("Disabled"),
+	// 			DayOfWeek: to.Ptr[int32](0),
+	// 			StartHour: to.Ptr[int32](0),
 	// 			StartMinute: to.Ptr[int32](0),
 	// 		},
 	// 		Network: &armmysqlflexibleservers.Network{

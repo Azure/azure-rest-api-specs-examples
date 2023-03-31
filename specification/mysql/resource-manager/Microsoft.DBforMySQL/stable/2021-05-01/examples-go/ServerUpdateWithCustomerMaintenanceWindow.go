@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerGet.json
-func ExampleServersClient_Get_getAServer() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerUpdateWithCustomerMaintenanceWindow.json
+func ExampleServersClient_BeginUpdate_updateServerCustomerMaintenanceWindow() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +20,22 @@ func ExampleServersClient_Get_getAServer() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewServersClient().Get(ctx, "testrg", "mysqltestserver", nil)
+	poller, err := clientFactory.NewServersClient().BeginUpdate(ctx, "testrg", "mysqltestserver", armmysqlflexibleservers.ServerForUpdate{
+		Properties: &armmysqlflexibleservers.ServerPropertiesForUpdate{
+			MaintenanceWindow: &armmysqlflexibleservers.MaintenanceWindow{
+				CustomWindow: to.Ptr("Enabled"),
+				DayOfWeek:    to.Ptr[int32](1),
+				StartHour:    to.Ptr[int32](8),
+				StartMinute:  to.Ptr[int32](0),
+			},
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
@@ -50,7 +64,7 @@ func ExampleServersClient_Get_getAServer() {
 	// 		MaintenanceWindow: &armmysqlflexibleservers.MaintenanceWindow{
 	// 			CustomWindow: to.Ptr("Enabled"),
 	// 			DayOfWeek: to.Ptr[int32](1),
-	// 			StartHour: to.Ptr[int32](1),
+	// 			StartHour: to.Ptr[int32](8),
 	// 			StartMinute: to.Ptr[int32](0),
 	// 		},
 	// 		Network: &armmysqlflexibleservers.Network{

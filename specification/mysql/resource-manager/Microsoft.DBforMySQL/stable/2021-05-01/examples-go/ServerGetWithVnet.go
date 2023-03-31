@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerGet.json
-func ExampleServersClient_Get_getAServer() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerGetWithVnet.json
+func ExampleServersClient_Get_getAServerWithVnet() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -48,13 +48,14 @@ func ExampleServersClient_Get_getAServer() {
 	// 			State: to.Ptr(armmysqlflexibleservers.HighAvailabilityStateNotEnabled),
 	// 		},
 	// 		MaintenanceWindow: &armmysqlflexibleservers.MaintenanceWindow{
-	// 			CustomWindow: to.Ptr("Enabled"),
-	// 			DayOfWeek: to.Ptr[int32](1),
-	// 			StartHour: to.Ptr[int32](1),
+	// 			CustomWindow: to.Ptr("Disabled"),
+	// 			DayOfWeek: to.Ptr[int32](0),
+	// 			StartHour: to.Ptr[int32](0),
 	// 			StartMinute: to.Ptr[int32](0),
 	// 		},
 	// 		Network: &armmysqlflexibleservers.Network{
-	// 			PublicNetworkAccess: to.Ptr(armmysqlflexibleservers.EnableStatusEnumEnabled),
+	// 			DelegatedSubnetResourceID: to.Ptr("/subscriptions/2941a09d-7bcf-42fe-91ca-1765f521c829/resourceGroups/OrcabrCI-Vnet-Resource-Group/providers/Microsoft.Network/virtualNetworks/OrcabrCI-Vnet/subnets/mysql-subnet"),
+	// 			PublicNetworkAccess: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 	// 		},
 	// 		ReplicaCapacity: to.Ptr[int32](10),
 	// 		ReplicationRole: to.Ptr(armmysqlflexibleservers.ReplicationRoleNone),

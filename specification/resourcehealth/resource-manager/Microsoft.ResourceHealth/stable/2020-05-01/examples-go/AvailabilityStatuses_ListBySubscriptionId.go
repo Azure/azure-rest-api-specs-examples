@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourcehealth/armresourcehealth"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/examples/AvailabilityStatuses_ListByResourceGroup.json
-func ExampleAvailabilityStatusesClient_NewListByResourceGroupPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resourcehealth/resource-manager/Microsoft.ResourceHealth/stable/2020-05-01/examples/AvailabilityStatuses_ListBySubscriptionId.json
+func ExampleAvailabilityStatusesClient_NewListBySubscriptionIDPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleAvailabilityStatusesClient_NewListByResourceGroupPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewAvailabilityStatusesClient().NewListByResourceGroupPager("resourceGroupName", &armresourcehealth.AvailabilityStatusesClientListByResourceGroupOptions{Filter: nil,
+	pager := clientFactory.NewAvailabilityStatusesClient().NewListBySubscriptionIDPager(&armresourcehealth.AvailabilityStatusesClientListBySubscriptionIDOptions{Filter: nil,
 		Expand: to.Ptr("recommendedactions"),
 	})
 	for pager.More() {

@@ -8,24 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/kubernetesconfiguration/armkubernetesconfiguration"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/examples/DeleteExtension.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-03-01/examples/DeleteExtension.json
 func ExampleExtensionsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkubernetesconfiguration.NewExtensionsClient("subId1", cred, nil)
+	clientFactory, err := armkubernetesconfiguration.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"rg1",
-		"Microsoft.Kubernetes",
-		"connectedClusters",
-		"clusterName1",
-		"ClusterMonitor",
-		&armkubernetesconfiguration.ExtensionsClientBeginDeleteOptions{ForceDelete: nil})
+	poller, err := clientFactory.NewExtensionsClient().BeginDelete(ctx, "rg1", "Microsoft.Kubernetes", "connectedClusters", "clusterName1", "ClusterMonitor", &armkubernetesconfiguration.ExtensionsClientBeginDeleteOptions{ForceDelete: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

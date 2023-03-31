@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerinstance/armcontainerinstance/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/examples/ContainerGroupCreateConfidential.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/71121282e39bccae590462648e77bca283df6d2b/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/examples/ContainerGroupCreateConfidential.json
 func ExampleContainerGroupsClient_BeginCreateOrUpdate_confidentialContainerGroup() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcontainerinstance.NewContainerGroupsClient("subid", cred, nil)
+	clientFactory, err := armcontainerinstance.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "demo", "demo1", armcontainerinstance.ContainerGroup{
+	poller, err := clientFactory.NewContainerGroupsClient().BeginCreateOrUpdate(ctx, "demo", "demo1", armcontainerinstance.ContainerGroup{
 		Properties: &armcontainerinstance.ContainerGroupPropertiesProperties{
 			ConfidentialComputeProperties: &armcontainerinstance.ConfidentialComputeProperties{
 				CcePolicy: to.Ptr("eyJhbGxvd19hbGwiOiB0cnVlLCAiY29udGFpbmVycyI6IHsibGVuZ3RoIjogMCwgImVsZW1lbnRzIjogbnVsbH19"),
@@ -65,6 +65,59 @@ func ExampleContainerGroupsClient_BeginCreateOrUpdate_confidentialContainerGroup
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ContainerGroup = armcontainerinstance.ContainerGroup{
+	// 	Properties: &armcontainerinstance.ContainerGroupPropertiesProperties{
+	// 		ConfidentialComputeProperties: &armcontainerinstance.ConfidentialComputeProperties{
+	// 			CcePolicy: to.Ptr("eyJhbGxvd19hbGwiOiB0cnVlLCAiY29udGFpbmVycyI6IHsibGVuZ3RoIjogMCwgImVsZW1lbnRzIjogbnVsbH19"),
+	// 		},
+	// 		Containers: []*armcontainerinstance.Container{
+	// 			{
+	// 				Name: to.Ptr("accdemo"),
+	// 				Properties: &armcontainerinstance.ContainerProperties{
+	// 					Command: []*string{
+	// 					},
+	// 					EnvironmentVariables: []*armcontainerinstance.EnvironmentVariable{
+	// 					},
+	// 					Image: to.Ptr("confiimage"),
+	// 					Ports: []*armcontainerinstance.ContainerPort{
+	// 						{
+	// 							Port: to.Ptr[int32](8000),
+	// 					}},
+	// 					Resources: &armcontainerinstance.ResourceRequirements{
+	// 						Requests: &armcontainerinstance.ResourceRequests{
+	// 							CPU: to.Ptr[float64](1),
+	// 							MemoryInGB: to.Ptr[float64](1.5),
+	// 						},
+	// 					},
+	// 				},
+	// 		}},
+	// 		ImageRegistryCredentials: []*armcontainerinstance.ImageRegistryCredential{
+	// 		},
+	// 		InitContainers: []*armcontainerinstance.InitContainerDefinition{
+	// 		},
+	// 		InstanceView: &armcontainerinstance.ContainerGroupPropertiesInstanceView{
+	// 			Events: []*armcontainerinstance.Event{
+	// 			},
+	// 			State: to.Ptr("Running"),
+	// 		},
+	// 		IPAddress: &armcontainerinstance.IPAddress{
+	// 			Type: to.Ptr(armcontainerinstance.ContainerGroupIPAddressTypePublic),
+	// 			Ports: []*armcontainerinstance.Port{
+	// 				{
+	// 					Port: to.Ptr[int32](8000),
+	// 					Protocol: to.Ptr(armcontainerinstance.ContainerGroupNetworkProtocolTCP),
+	// 			}},
+	// 		},
+	// 		OSType: to.Ptr(armcontainerinstance.OperatingSystemTypesLinux),
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 		SKU: to.Ptr(armcontainerinstance.ContainerGroupSKUConfidential),
+	// 	},
+	// 	Name: to.Ptr("demo1"),
+	// 	Type: to.Ptr("Microsoft.ContainerInstance/containerGroups"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/test-rg/providers/Microsoft.ContainerInstance/containerGroups/demo1"),
+	// 	Location: to.Ptr("westeurope"),
+	// }
 }

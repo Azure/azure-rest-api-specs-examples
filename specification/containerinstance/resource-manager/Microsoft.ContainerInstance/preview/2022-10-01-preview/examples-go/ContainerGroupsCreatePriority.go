@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerinstance/armcontainerinstance/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/examples/ContainerGroupsCreatePriority.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/71121282e39bccae590462648e77bca283df6d2b/specification/containerinstance/resource-manager/Microsoft.ContainerInstance/preview/2022-10-01-preview/examples/ContainerGroupsCreatePriority.json
 func ExampleContainerGroupsClient_BeginCreateOrUpdate_containerGroupsCreateWithPriority() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcontainerinstance.NewContainerGroupsClient("subid", cred, nil)
+	clientFactory, err := armcontainerinstance.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "demo", "demo1", armcontainerinstance.ContainerGroup{
+	poller, err := clientFactory.NewContainerGroupsClient().BeginCreateOrUpdate(ctx, "demo", "demo1", armcontainerinstance.ContainerGroup{
 		Properties: &armcontainerinstance.ContainerGroupPropertiesProperties{
 			Containers: []*armcontainerinstance.Container{
 				{
@@ -53,6 +53,48 @@ func ExampleContainerGroupsClient_BeginCreateOrUpdate_containerGroupsCreateWithP
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ContainerGroup = armcontainerinstance.ContainerGroup{
+	// 	Properties: &armcontainerinstance.ContainerGroupPropertiesProperties{
+	// 		Containers: []*armcontainerinstance.Container{
+	// 			{
+	// 				Name: to.Ptr("test-container-001"),
+	// 				Properties: &armcontainerinstance.ContainerProperties{
+	// 					Command: []*string{
+	// 						to.Ptr("/bin/sh"),
+	// 						to.Ptr("-c"),
+	// 						to.Ptr("sleep 10")},
+	// 						EnvironmentVariables: []*armcontainerinstance.EnvironmentVariable{
+	// 						},
+	// 						Image: to.Ptr("alpine:latest"),
+	// 						Ports: []*armcontainerinstance.ContainerPort{
+	// 						},
+	// 						Resources: &armcontainerinstance.ResourceRequirements{
+	// 							Requests: &armcontainerinstance.ResourceRequests{
+	// 								CPU: to.Ptr[float64](1),
+	// 								MemoryInGB: to.Ptr[float64](1),
+	// 							},
+	// 						},
+	// 					},
+	// 			}},
+	// 			InitContainers: []*armcontainerinstance.InitContainerDefinition{
+	// 			},
+	// 			InstanceView: &armcontainerinstance.ContainerGroupPropertiesInstanceView{
+	// 				Events: []*armcontainerinstance.Event{
+	// 				},
+	// 				State: to.Ptr("Succeeded"),
+	// 			},
+	// 			OSType: to.Ptr(armcontainerinstance.OperatingSystemTypesLinux),
+	// 			Priority: to.Ptr(armcontainerinstance.ContainerGroupPrioritySpot),
+	// 			ProvisioningState: to.Ptr("Succeeded"),
+	// 			RestartPolicy: to.Ptr(armcontainerinstance.ContainerGroupRestartPolicyNever),
+	// 			SKU: to.Ptr(armcontainerinstance.ContainerGroupSKUStandard),
+	// 		},
+	// 		Name: to.Ptr("demo1"),
+	// 		Type: to.Ptr("Microsoft.ContainerInstance/containerGroups"),
+	// 		ID: to.Ptr("/subscriptions/subId/resourceGroups/demo/providers/Microsoft.ContainerInstance/containerGroups/demo1"),
+	// 		Location: to.Ptr("eastus"),
+	// 	}
 }

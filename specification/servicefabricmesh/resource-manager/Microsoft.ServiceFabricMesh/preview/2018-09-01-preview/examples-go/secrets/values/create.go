@@ -9,31 +9,36 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/secrets/values/create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/secrets/values/create.json
 func ExampleSecretValueClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicefabricmesh.NewSecretValueClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armservicefabricmesh.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Create(ctx,
-		"sbz_demo",
-		"dbConnectionString",
-		"v1",
-		armservicefabricmesh.SecretValueResourceDescription{
-			Name: to.Ptr("v1"),
-			Properties: &armservicefabricmesh.SecretValueResourceProperties{
-				Value: to.Ptr("mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true"),
-			},
+	res, err := clientFactory.NewSecretValueClient().Create(ctx, "sbz_demo", "dbConnectionString", "v1", armservicefabricmesh.SecretValueResourceDescription{
+		Name: to.Ptr("v1"),
+		Properties: &armservicefabricmesh.SecretValueResourceProperties{
+			Value: to.Ptr("mongodb://contoso123:0Fc3IolnL12312asdfawejunASDF@asdfYXX2t8a97kghVcUzcDv98hawelufhawefafnoQRGwNj2nMPL1Y9qsIr9Srdw==@contoso123.documents.azure.com:10255/mydatabase?ssl=true"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.SecretValueResourceDescription = armservicefabricmesh.SecretValueResourceDescription{
+	// 	Name: to.Ptr("v1"),
+	// 	Type: to.Ptr("secrets/values"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/sbz_demo/providers/Microsoft.ServiceFabricMesh/secrets/dbConnectionString/values/v1"),
+	// 	Location: to.Ptr("EastUS"),
+	// 	Properties: &armservicefabricmesh.SecretValueResourceProperties{
+	// 		ProvisioningState: to.Ptr("Succeeded"),
+	// 	},
+	// }
 }

@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/customproviders/armcustomproviders"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/examples/deleteCustomRP.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/customproviders/resource-manager/Microsoft.CustomProviders/preview/2018-09-01-preview/examples/deleteCustomRP.json
 func ExampleCustomResourceProviderClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcustomproviders.NewCustomResourceProviderClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armcustomproviders.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"testRG",
-		"newrp",
-		nil)
+	poller, err := clientFactory.NewCustomResourceProviderClient().BeginDelete(ctx, "testRG", "newrp", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

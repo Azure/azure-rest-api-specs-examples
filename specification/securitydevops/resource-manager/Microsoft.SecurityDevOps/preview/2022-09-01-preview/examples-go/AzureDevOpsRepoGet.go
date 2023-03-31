@@ -8,21 +8,29 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securitydevops/armsecuritydevops"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsRepoGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c71a66dab813061f1d09982c2748a09317fe0860/specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsRepoGet.json
 func ExampleAzureDevOpsRepoClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecuritydevops.NewAzureDevOpsRepoClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armsecuritydevops.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "westusrg", "testconnector", "myOrg", "myProject", "myRepo", nil)
+	res, err := clientFactory.NewAzureDevOpsRepoClient().Get(ctx, "westusrg", "testconnector", "myOrg", "myProject", "myRepo", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AzureDevOpsRepo = armsecuritydevops.AzureDevOpsRepo{
+	// 	Type: to.Ptr("Microsoft.SecurityDevOps/azureDevOpsConnectos/orgs/projects/repos"),
+	// 	ID: to.Ptr("/subscriptions/e7032cc6-7422-4ddd-9022-bfbf23b05332/resourceGroups/westusrg/providers/Microsoft.SecurityDevOps/azureDevOpsConnectors/testconnector/orgs/myOrg/projects/myProject/repos/myRepo"),
+	// 	Properties: &armsecuritydevops.AzureDevOpsRepoProperties{
+	// 		RepoURL: to.Ptr("https://dev.azure.com/myOrg/myProject/myRepo"),
+	// 	},
+	// }
 }

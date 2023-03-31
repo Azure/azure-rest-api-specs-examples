@@ -15,11 +15,11 @@ func ExampleFileSystemsClient_Get_fileSystemsGetMinimumSetGen() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armqumulo.NewFileSystemsClient("aaaaaaa", cred, nil)
+	clientFactory, err := armqumulo.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "rgQumulo", "aaaaaaaaaaaaaaaaa", nil)
+	res, err := clientFactory.NewFileSystemsClient().Get(ctx, "rgQumulo", "aaaaaaaaaaaaaaaaa", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

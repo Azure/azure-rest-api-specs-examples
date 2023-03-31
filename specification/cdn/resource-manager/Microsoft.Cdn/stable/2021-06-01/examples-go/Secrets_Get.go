@@ -8,25 +8,46 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/Secrets_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/Secrets_Get.json
 func ExampleSecretsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcdn.NewSecretsClient("subid", cred, nil)
+	clientFactory, err := armcdn.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"RG",
-		"profile1",
-		"secret1",
-		nil)
+	res, err := clientFactory.NewSecretsClient().Get(ctx, "RG", "profile1", "secret1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Secret = armcdn.Secret{
+	// 	Name: to.Ptr("secret1"),
+	// 	Type: to.Ptr("Microsoft.Cdn/profiles/secrets"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/secrets/secret1"),
+	// 	Properties: &armcdn.SecretProperties{
+	// 		DeploymentStatus: to.Ptr(armcdn.DeploymentStatusNotStarted),
+	// 		ProvisioningState: to.Ptr(armcdn.AfdProvisioningStateSucceeded),
+	// 		Parameters: &armcdn.CustomerCertificateParameters{
+	// 			Type: to.Ptr(armcdn.SecretTypeCustomerCertificate),
+	// 			CertificateAuthority: to.Ptr("Symantec"),
+	// 			ExpirationDate: to.Ptr("2025-01-01T00:00:00-00:00"),
+	// 			SecretSource: &armcdn.ResourceReference{
+	// 				ID: to.Ptr("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vaults/keyvaultname/secrets/certificatename"),
+	// 			},
+	// 			SecretVersion: to.Ptr("abcdef1234578900abcdef1234567890"),
+	// 			Subject: to.Ptr("*.contoso.com"),
+	// 			SubjectAlternativeNames: []*string{
+	// 				to.Ptr("foo.contoso.com"),
+	// 				to.Ptr("www3.foo.contoso.com")},
+	// 				Thumbprint: to.Ptr("ABCDEF1234567890ABCDEF1234567890ABCDEF12"),
+	// 				UseLatestVersion: to.Ptr(true),
+	// 			},
+	// 		},
+	// 	}
 }

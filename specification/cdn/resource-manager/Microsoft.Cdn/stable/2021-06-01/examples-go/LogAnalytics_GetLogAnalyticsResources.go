@@ -8,24 +8,58 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/LogAnalytics_GetLogAnalyticsResources.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/LogAnalytics_GetLogAnalyticsResources.json
 func ExampleLogAnalyticsClient_GetLogAnalyticsResources() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcdn.NewLogAnalyticsClient("subid", cred, nil)
+	clientFactory, err := armcdn.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetLogAnalyticsResources(ctx,
-		"RG",
-		"profile1",
-		nil)
+	res, err := clientFactory.NewLogAnalyticsClient().GetLogAnalyticsResources(ctx, "RG", "profile1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ResourcesResponse = armcdn.ResourcesResponse{
+	// 	CustomDomains: []*armcdn.ResourcesResponseCustomDomainsItem{
+	// 		{
+	// 			Name: to.Ptr("customdomain1.azurecdn.net"),
+	// 			History: to.Ptr(true),
+	// 			ID: to.Ptr("customdomain1.azurecdn.net"),
+	// 		},
+	// 		{
+	// 			Name: to.Ptr("customdomain2.azurecdn.net"),
+	// 			History: to.Ptr(true),
+	// 			ID: to.Ptr("customdomain2.azurecdn.net"),
+	// 		},
+	// 		{
+	// 			Name: to.Ptr("customdomain3.azurecdn.net"),
+	// 			History: to.Ptr(true),
+	// 			ID: to.Ptr("customdomain3.azurecdn.net"),
+	// 	}},
+	// 	Endpoints: []*armcdn.ResourcesResponseEndpointsItem{
+	// 		{
+	// 			Name: to.Ptr("endpoint1.azureedge.net"),
+	// 			CustomDomains: []*armcdn.ResourcesResponseEndpointsPropertiesItemsItem{
+	// 				{
+	// 					Name: to.Ptr("customdomain1.azurecdn.net"),
+	// 					EndpointID: to.Ptr("enbdpiont1"),
+	// 					History: to.Ptr(true),
+	// 					ID: to.Ptr("customdomain1.azurecdn.net"),
+	// 				},
+	// 				{
+	// 					Name: to.Ptr("customdomain2.azurecdn.net"),
+	// 					History: to.Ptr(true),
+	// 					ID: to.Ptr("customdomain2.azurecdn.net"),
+	// 			}},
+	// 			History: to.Ptr(false),
+	// 			ID: to.Ptr("endpoint1"),
+	// 	}},
+	// }
 }

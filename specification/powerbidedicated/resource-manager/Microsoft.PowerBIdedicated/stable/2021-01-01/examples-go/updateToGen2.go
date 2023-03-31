@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerbidedicated/armpowerbidedicated"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/createCapacity.json
-func ExampleCapacitiesClient_BeginCreate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/updateToGen2.json
+func ExampleCapacitiesClient_BeginUpdate_updateCapacityToGeneration2() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,21 +20,16 @@ func ExampleCapacitiesClient_BeginCreate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewCapacitiesClient().BeginCreate(ctx, "TestRG", "azsdktest", armpowerbidedicated.DedicatedCapacity{
-		Location: to.Ptr("West US"),
-		Tags: map[string]*string{
-			"testKey": to.Ptr("testValue"),
-		},
-		Properties: &armpowerbidedicated.DedicatedCapacityProperties{
-			Administration: &armpowerbidedicated.DedicatedCapacityAdministrators{
-				Members: []*string{
-					to.Ptr("azsdktest@microsoft.com"),
-					to.Ptr("azsdktest2@microsoft.com")},
-			},
+	poller, err := clientFactory.NewCapacitiesClient().BeginUpdate(ctx, "TestRG", "azsdktest", armpowerbidedicated.DedicatedCapacityUpdateParameters{
+		Properties: &armpowerbidedicated.DedicatedCapacityMutableProperties{
+			Mode: to.Ptr(armpowerbidedicated.ModeGen2),
 		},
 		SKU: &armpowerbidedicated.CapacitySKU{
 			Name: to.Ptr("A1"),
 			Tier: to.Ptr(armpowerbidedicated.CapacitySKUTierPBIEAzure),
+		},
+		Tags: map[string]*string{
+			"testKey": to.Ptr("testValue"),
 		},
 	}, nil)
 	if err != nil {
@@ -68,6 +63,7 @@ func ExampleCapacitiesClient_BeginCreate() {
 	// 				to.Ptr("azsdktest@microsoft.com"),
 	// 				to.Ptr("azsdktest2@microsoft.com")},
 	// 			},
+	// 			Mode: to.Ptr(armpowerbidedicated.ModeGen2),
 	// 			ProvisioningState: to.Ptr(armpowerbidedicated.CapacityProvisioningStateSucceeded),
 	// 			State: to.Ptr(armpowerbidedicated.StateProvisioning),
 	// 		},

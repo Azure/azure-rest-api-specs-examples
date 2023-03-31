@@ -9,29 +9,57 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devops/armdevops"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devops/resource-manager/Microsoft.DevOps/preview/2019-07-01-preview/examples/UpdateAzurePipeline.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/devops/resource-manager/Microsoft.DevOps/preview/2019-07-01-preview/examples/UpdateAzurePipeline.json
 func ExamplePipelinesClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevops.NewPipelinesClient("{subscriptionId}", cred, nil)
+	clientFactory, err := armdevops.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"myAspNetWebAppPipeline-rg",
-		"myAspNetWebAppPipeline",
-		armdevops.PipelineUpdateParameters{
-			Tags: map[string]*string{
-				"tagKey": to.Ptr("tagvalue"),
-			},
+	res, err := clientFactory.NewPipelinesClient().Update(ctx, "myAspNetWebAppPipeline-rg", "myAspNetWebAppPipeline", armdevops.PipelineUpdateParameters{
+		Tags: map[string]*string{
+			"tagKey": to.Ptr("tagvalue"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Pipeline = armdevops.Pipeline{
+	// 	Name: to.Ptr("myAspNetWebAppPipeline"),
+	// 	Type: to.Ptr("Microsoft.DevOps/pipelines"),
+	// 	ID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/myAspNetWebAppPipeline-rg/providers/Microsoft.DevOps/pipelines/myAspNetWebAppPipeline"),
+	// 	Location: to.Ptr("South India"),
+	// 	Tags: map[string]*string{
+	// 		"tagKey": to.Ptr("tagvalue"),
+	// 	},
+	// 	Properties: &armdevops.PipelineProperties{
+	// 		BootstrapConfiguration: &armdevops.BootstrapConfiguration{
+	// 			Template: &armdevops.PipelineTemplate{
+	// 				ID: to.Ptr("ms.vss-continuous-delivery-pipeline-templates.aspnet-windowswebapp"),
+	// 				Parameters: map[string]*string{
+	// 					"appInsightLocation": to.Ptr("South India"),
+	// 					"appServicePlan": to.Ptr("S1 Standard"),
+	// 					"azureAuth": nil,
+	// 					"location": to.Ptr("South India"),
+	// 					"resourceGroup": to.Ptr("myAspNetWebAppPipeline-rg"),
+	// 					"subscriptionId": to.Ptr("{subscriptionId}"),
+	// 					"webAppName": to.Ptr("myAspNetWebApp"),
+	// 				},
+	// 			},
+	// 		},
+	// 		Organization: &armdevops.OrganizationReference{
+	// 			Name: to.Ptr("myAspNetWebAppPipeline-org"),
+	// 		},
+	// 		Project: &armdevops.ProjectReference{
+	// 			Name: to.Ptr("myAspNetWebAppPipeline-project"),
+	// 		},
+	// 	},
+	// }
 }

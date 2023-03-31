@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupStop.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupStop.json
 func ExampleServerGroupsClient_BeginStop() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpostgresqlhsc.NewServerGroupsClient("ffffffff-ffff-ffff-ffff-ffffffffffff", cred, nil)
+	clientFactory, err := armpostgresqlhsc.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginStop(ctx,
-		"TestGroup",
-		"hsctestsg1",
-		nil)
+	poller, err := clientFactory.NewServerGroupsClient().BeginStop(ctx, "TestGroup", "hsctestsg1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

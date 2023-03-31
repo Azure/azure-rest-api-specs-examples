@@ -4,13 +4,15 @@ import (
 	"context"
 	"log"
 
+	"time"
+
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresqlhsc/armpostgresqlhsc"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ConfigurationUpdate.json
-func ExampleConfigurationsClient_BeginUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/preview/2020-10-05-privatepreview/examples/ServerGroupCreatePITR.json
+func ExampleServerGroupsClient_BeginCreateOrUpdate_createANewServerGroupAsAPointInTimeRestore() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,17 +22,17 @@ func ExampleConfigurationsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewConfigurationsClient().BeginUpdate(ctx, "TestResourceGroup", "hsctestsg", "array_nulls", armpostgresqlhsc.ServerGroupConfiguration{
-		Properties: &armpostgresqlhsc.ServerGroupConfigurationProperties{
-			ServerRoleGroupConfigurations: []*armpostgresqlhsc.ServerRoleGroupConfiguration{
-				{
-					Role:  to.Ptr(armpostgresqlhsc.ServerRoleCoordinator),
-					Value: to.Ptr("on"),
-				},
-				{
-					Role:  to.Ptr(armpostgresqlhsc.ServerRoleWorker),
-					Value: to.Ptr("off"),
-				}},
+	poller, err := clientFactory.NewServerGroupsClient().BeginCreateOrUpdate(ctx, "TestGroup", "hsctestsg", armpostgresqlhsc.ServerGroup{
+		Location: to.Ptr("westus"),
+		Properties: &armpostgresqlhsc.ServerGroupProperties{
+			CreateMode:              to.Ptr(armpostgresqlhsc.CreateModePointInTimeRestore),
+			EnableMx:                to.Ptr(true),
+			EnableZfs:               to.Ptr(false),
+			PointInTimeUTC:          to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-14T00:00:37.467Z"); return t }()),
+			SourceLocation:          to.Ptr("eastus"),
+			SourceResourceGroupName: to.Ptr("SourceGroup"),
+			SourceServerGroupName:   to.Ptr("pgtests-source-server-group"),
+			SourceSubscriptionID:    to.Ptr("dddddddd-dddd-dddd-dddd-dddddddddddd"),
 		},
 	}, nil)
 	if err != nil {
@@ -43,20 +45,12 @@ func ExampleConfigurationsClient_BeginUpdate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.ServerGroupConfiguration = armpostgresqlhsc.ServerGroupConfiguration{
-	// 	Name: to.Ptr("array_nulls"),
-	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/serverGroupsv2/configurations"),
-	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/hsctestsg/configurations/array_nulls"),
-	// 	Properties: &armpostgresqlhsc.ServerGroupConfigurationProperties{
-	// 		ServerRoleGroupConfigurations: []*armpostgresqlhsc.ServerRoleGroupConfiguration{
-	// 			{
-	// 				Role: to.Ptr(armpostgresqlhsc.ServerRoleCoordinator),
-	// 				Value: to.Ptr("on"),
-	// 			},
-	// 			{
-	// 				Role: to.Ptr(armpostgresqlhsc.ServerRoleWorker),
-	// 				Value: to.Ptr("off"),
-	// 		}},
+	// res.ServerGroup = armpostgresqlhsc.ServerGroup{
+	// 	Name: to.Ptr("hsctestsg"),
+	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/serverGroupsv2"),
+	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/hsctestsg"),
+	// 	Location: to.Ptr("westus2"),
+	// 	Properties: &armpostgresqlhsc.ServerGroupProperties{
 	// 	},
 	// 	SystemData: &armpostgresqlhsc.SystemData{
 	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),

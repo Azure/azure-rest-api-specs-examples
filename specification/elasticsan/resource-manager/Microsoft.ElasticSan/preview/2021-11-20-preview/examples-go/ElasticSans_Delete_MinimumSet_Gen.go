@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/examples/ElasticSans_Delete_MinimumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e1da7cbab8d4f554484dedb676ba7bdbdf6cdf78/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/examples/ElasticSans_Delete_MinimumSet_Gen.json
 func ExampleElasticSansClient_BeginDelete_elasticSansDeleteMinimumSetGen() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armelasticsan.NewElasticSansClient("aaaaaaaaaaaaaaaaaa", cred, nil)
+	clientFactory, err := armelasticsan.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "rgelasticsan", "ti7q-k952-1qB3J_5", nil)
+	poller, err := clientFactory.NewElasticSansClient().BeginDelete(ctx, "rgelasticsan", "ti7q-k952-1qB3J_5", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -9,26 +9,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storsimple8000series/armstorsimple8000series"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/CloudAppliancesProvision.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/CloudAppliancesProvision.json
 func ExampleCloudAppliancesClient_BeginProvision() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstorsimple8000series.NewCloudAppliancesClient("d3ebfe71-b7a9-4c57-92b9-68a2afde4de5", cred, nil)
+	clientFactory, err := armstorsimple8000series.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginProvision(ctx,
-		"ResourceGroupForSDKTest",
-		"ManagerForSDKTest1",
-		armstorsimple8000series.CloudAppliance{
-			Name:        to.Ptr("sca07forsdktest"),
-			ModelNumber: to.Ptr("8020"),
-			VnetRegion:  to.Ptr("West US"),
-		},
-		nil)
+	poller, err := clientFactory.NewCloudAppliancesClient().BeginProvision(ctx, "ResourceGroupForSDKTest", "ManagerForSDKTest1", armstorsimple8000series.CloudAppliance{
+		Name:        to.Ptr("sca07forsdktest"),
+		ModelNumber: to.Ptr("8020"),
+		VnetRegion:  to.Ptr("West US"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

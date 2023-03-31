@@ -9,25 +9,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/scvmm/armscvmm"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/scvmm/resource-manager/Microsoft.ScVmm/preview/2020-06-05-preview/examples/CreateCheckpointVirtualMachine.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/scvmm/resource-manager/Microsoft.ScVmm/preview/2020-06-05-preview/examples/CreateCheckpointVirtualMachine.json
 func ExampleVirtualMachinesClient_BeginCreateCheckpoint() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armscvmm.NewVirtualMachinesClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
+	clientFactory, err := armscvmm.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateCheckpoint(ctx,
-		"testrg",
-		"DemoVM",
-		&armscvmm.VirtualMachinesClientBeginCreateCheckpointOptions{Body: &armscvmm.VirtualMachineCreateCheckpoint{
-			Name:        to.Ptr("Demo Checkpoint name"),
-			Description: to.Ptr("Demo Checkpoint description"),
-		},
-		})
+	poller, err := clientFactory.NewVirtualMachinesClient().BeginCreateCheckpoint(ctx, "testrg", "DemoVM", &armscvmm.VirtualMachinesClientBeginCreateCheckpointOptions{Body: &armscvmm.VirtualMachineCreateCheckpoint{
+		Name:        to.Ptr("Demo Checkpoint name"),
+		Description: to.Ptr("Demo Checkpoint description"),
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

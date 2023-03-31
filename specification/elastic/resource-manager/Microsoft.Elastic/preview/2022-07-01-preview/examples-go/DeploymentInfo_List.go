@@ -8,21 +8,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elastic/resource-manager/Microsoft.Elastic/preview/2022-07-01-preview/examples/DeploymentInfo_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/232b858812a4f946a82bc11a81241826f5554fbd/specification/elastic/resource-manager/Microsoft.Elastic/preview/2022-07-01-preview/examples/DeploymentInfo_List.json
 func ExampleDeploymentInfoClient_List() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armelastic.NewDeploymentInfoClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armelastic.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.List(ctx, "myResourceGroup", "myMonitor", nil)
+	res, err := clientFactory.NewDeploymentInfoClient().List(ctx, "myResourceGroup", "myMonitor", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DeploymentInfoResponse = armelastic.DeploymentInfoResponse{
+	// 	DiskCapacity: to.Ptr("245760"),
+	// 	MemoryCapacity: to.Ptr("1024"),
+	// 	Status: to.Ptr(armelastic.ElasticDeploymentStatusHealthy),
+	// 	Version: to.Ptr("7.9.3"),
+	// }
 }

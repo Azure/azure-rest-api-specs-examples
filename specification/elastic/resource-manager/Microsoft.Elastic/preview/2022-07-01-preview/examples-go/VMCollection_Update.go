@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elastic/armelastic"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/elastic/resource-manager/Microsoft.Elastic/preview/2022-07-01-preview/examples/VMCollection_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/232b858812a4f946a82bc11a81241826f5554fbd/specification/elastic/resource-manager/Microsoft.Elastic/preview/2022-07-01-preview/examples/VMCollection_Update.json
 func ExampleVMCollectionClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armelastic.NewVMCollectionClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armelastic.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Update(ctx, "myResourceGroup", "myMonitor", &armelastic.VMCollectionClientUpdateOptions{Body: nil})
+	_, err = clientFactory.NewVMCollectionClient().Update(ctx, "myResourceGroup", "myMonitor", &armelastic.VMCollectionClientUpdateOptions{Body: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

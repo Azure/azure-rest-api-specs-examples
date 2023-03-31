@@ -9,33 +9,47 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementUpdateApi.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementUpdateApi.json
 func ExampleAPIClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewAPIClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"rg1",
-		"apimService1",
-		"echo-api",
-		"*",
-		armapimanagement.APIUpdateContract{
-			Properties: &armapimanagement.APIContractUpdateProperties{
-				Path:        to.Ptr("newecho"),
-				DisplayName: to.Ptr("Echo API New"),
-				ServiceURL:  to.Ptr("http://echoapi.cloudapp.net/api2"),
-			},
+	res, err := clientFactory.NewAPIClient().Update(ctx, "rg1", "apimService1", "echo-api", "*", armapimanagement.APIUpdateContract{
+		Properties: &armapimanagement.APIContractUpdateProperties{
+			Path:        to.Ptr("newecho"),
+			DisplayName: to.Ptr("Echo API New"),
+			ServiceURL:  to.Ptr("http://echoapi.cloudapp.net/api2"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.APIContract = armapimanagement.APIContract{
+	// 	Name: to.Ptr("echo-api"),
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/apis"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"),
+	// 	Properties: &armapimanagement.APIContractProperties{
+	// 		APIRevision: to.Ptr("1"),
+	// 		IsCurrent: to.Ptr(true),
+	// 		IsOnline: to.Ptr(true),
+	// 		SubscriptionKeyParameterNames: &armapimanagement.SubscriptionKeyParameterNamesContract{
+	// 			Header: to.Ptr("Ocp-Apim-Subscription-Key"),
+	// 			Query: to.Ptr("subscription-key"),
+	// 		},
+	// 		Path: to.Ptr("newecho"),
+	// 		DisplayName: to.Ptr("Echo API New"),
+	// 		Protocols: []*armapimanagement.Protocol{
+	// 			to.Ptr(armapimanagement.ProtocolHTTPS)},
+	// 			ServiceURL: to.Ptr("http://echoapi.cloudapp.net/api2"),
+	// 		},
+	// 	}
 }

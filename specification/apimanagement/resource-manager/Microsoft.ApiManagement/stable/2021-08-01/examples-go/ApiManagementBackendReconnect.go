@@ -9,27 +9,23 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementBackendReconnect.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementBackendReconnect.json
 func ExampleBackendClient_Reconnect() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewBackendClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Reconnect(ctx,
-		"rg1",
-		"apimService1",
-		"proxybackend",
-		&armapimanagement.BackendClientReconnectOptions{Parameters: &armapimanagement.BackendReconnectContract{
-			Properties: &armapimanagement.BackendReconnectProperties{
-				After: to.Ptr("PT3S"),
-			},
+	_, err = clientFactory.NewBackendClient().Reconnect(ctx, "rg1", "apimService1", "proxybackend", &armapimanagement.BackendClientReconnectOptions{Parameters: &armapimanagement.BackendReconnectContract{
+		Properties: &armapimanagement.BackendReconnectProperties{
+			After: to.Ptr("PT3S"),
 		},
-		})
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

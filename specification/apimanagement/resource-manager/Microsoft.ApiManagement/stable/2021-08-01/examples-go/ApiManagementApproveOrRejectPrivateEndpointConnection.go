@@ -9,31 +9,26 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementApproveOrRejectPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementApproveOrRejectPrivateEndpointConnection.json
 func ExamplePrivateEndpointConnectionClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewPrivateEndpointConnectionClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"rg1",
-		"apimService1",
-		"privateEndpointConnectionName",
-		armapimanagement.PrivateEndpointConnectionRequest{
-			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"),
-			Properties: &armapimanagement.PrivateEndpointConnectionRequestProperties{
-				PrivateLinkServiceConnectionState: &armapimanagement.PrivateLinkServiceConnectionState{
-					Description: to.Ptr("The Private Endpoint Connection is approved."),
-					Status:      to.Ptr(armapimanagement.PrivateEndpointServiceConnectionStatusApproved),
-				},
+	poller, err := clientFactory.NewPrivateEndpointConnectionClient().BeginCreateOrUpdate(ctx, "rg1", "apimService1", "privateEndpointConnectionName", armapimanagement.PrivateEndpointConnectionRequest{
+		ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"),
+		Properties: &armapimanagement.PrivateEndpointConnectionRequestProperties{
+			PrivateLinkServiceConnectionState: &armapimanagement.PrivateLinkServiceConnectionState{
+				Description: to.Ptr("The Private Endpoint Connection is approved."),
+				Status:      to.Ptr(armapimanagement.PrivateEndpointServiceConnectionStatusApproved),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -41,6 +36,22 @@ func ExamplePrivateEndpointConnectionClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armapimanagement.PrivateEndpointConnection{
+	// 	Name: to.Ptr("privateEndpointConnectionName"),
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/privateEndpointConnectionName"),
+	// 	Properties: &armapimanagement.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armapimanagement.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/privateEndpointName"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armapimanagement.PrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("The request has been approved."),
+	// 			Status: to.Ptr(armapimanagement.PrivateEndpointServiceConnectionStatus("Succeeded")),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armapimanagement.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 	},
+	// }
 }

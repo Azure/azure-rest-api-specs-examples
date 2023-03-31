@@ -8,32 +8,51 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListProductsByTags.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListProductsByTags.json
 func ExampleProductClient_NewListByTagsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewProductClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByTagsPager("rg1",
-		"apimService1",
-		&armapimanagement.ProductClientListByTagsOptions{Filter: nil,
-			Top:                      nil,
-			Skip:                     nil,
-			IncludeNotTaggedProducts: nil,
-		})
+	pager := clientFactory.NewProductClient().NewListByTagsPager("rg1", "apimService1", &armapimanagement.ProductClientListByTagsOptions{Filter: nil,
+		Top:                      nil,
+		Skip:                     nil,
+		IncludeNotTaggedProducts: nil,
+	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.TagResourceCollection = armapimanagement.TagResourceCollection{
+		// 	Count: to.Ptr[int64](1),
+		// 	Value: []*armapimanagement.TagResourceContract{
+		// 		{
+		// 			Product: &armapimanagement.ProductTagResourceContractProperties{
+		// 				Description: to.Ptr("Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week."),
+		// 				ApprovalRequired: to.Ptr(false),
+		// 				State: to.Ptr(armapimanagement.ProductStatePublished),
+		// 				SubscriptionRequired: to.Ptr(true),
+		// 				SubscriptionsLimit: to.Ptr[int32](1),
+		// 				Terms: to.Ptr(""),
+		// 				Name: to.Ptr("Starter"),
+		// 				ID: to.Ptr("/products/starter"),
+		// 			},
+		// 			Tag: &armapimanagement.TagResourceContractProperties{
+		// 				Name: to.Ptr("awesomeTag"),
+		// 				ID: to.Ptr("/tags/apitag123"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

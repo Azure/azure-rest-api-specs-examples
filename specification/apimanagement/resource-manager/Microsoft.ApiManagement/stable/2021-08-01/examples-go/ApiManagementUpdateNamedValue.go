@@ -9,33 +9,27 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementUpdateNamedValue.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementUpdateNamedValue.json
 func ExampleNamedValueClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewNamedValueClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"rg1",
-		"apimService1",
-		"testprop2",
-		"*",
-		armapimanagement.NamedValueUpdateParameters{
-			Properties: &armapimanagement.NamedValueUpdateParameterProperties{
-				Secret: to.Ptr(false),
-				Tags: []*string{
-					to.Ptr("foo"),
-					to.Ptr("bar2")},
-				DisplayName: to.Ptr("prop3name"),
-				Value:       to.Ptr("propValue"),
-			},
+	poller, err := clientFactory.NewNamedValueClient().BeginUpdate(ctx, "rg1", "apimService1", "testprop2", "*", armapimanagement.NamedValueUpdateParameters{
+		Properties: &armapimanagement.NamedValueUpdateParameterProperties{
+			Secret: to.Ptr(false),
+			Tags: []*string{
+				to.Ptr("foo"),
+				to.Ptr("bar2")},
+			DisplayName: to.Ptr("prop3name"),
+			Value:       to.Ptr("propValue"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -43,6 +37,19 @@ func ExampleNamedValueClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.NamedValueContract = armapimanagement.NamedValueContract{
+	// 	Type: to.Ptr("Microsoft.ApiManagement/service/namedValues"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/namedValues/testprop2"),
+	// 	Properties: &armapimanagement.NamedValueContractProperties{
+	// 		Secret: to.Ptr(false),
+	// 		Tags: []*string{
+	// 			to.Ptr("foo"),
+	// 			to.Ptr("bar2")},
+	// 			DisplayName: to.Ptr("prop3name"),
+	// 			Value: to.Ptr("propValue"),
+	// 		},
+	// 	}
 }

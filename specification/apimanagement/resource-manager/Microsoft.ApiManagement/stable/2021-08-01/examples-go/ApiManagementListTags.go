@@ -8,32 +8,51 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/apimanagement/armapimanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListTags.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementListTags.json
 func ExampleTagClient_NewListByServicePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armapimanagement.NewTagClient("subid", cred, nil)
+	clientFactory, err := armapimanagement.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByServicePager("rg1",
-		"apimService1",
-		&armapimanagement.TagClientListByServiceOptions{Filter: nil,
-			Top:   nil,
-			Skip:  nil,
-			Scope: nil,
-		})
+	pager := clientFactory.NewTagClient().NewListByServicePager("rg1", "apimService1", &armapimanagement.TagClientListByServiceOptions{Filter: nil,
+		Top:   nil,
+		Skip:  nil,
+		Scope: nil,
+	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.TagCollection = armapimanagement.TagCollection{
+		// 	Count: to.Ptr[int64](2),
+		// 	Value: []*armapimanagement.TagContract{
+		// 		{
+		// 			Name: to.Ptr("5600b59375ff190048020001"),
+		// 			Type: to.Ptr("Microsoft.ApiManagement/service/tags"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/tags/5600b59375ff190048020001"),
+		// 			Properties: &armapimanagement.TagContractProperties{
+		// 				DisplayName: to.Ptr("tag1"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("5600b59375ff190048020002"),
+		// 			Type: to.Ptr("Microsoft.ApiManagement/service/tags"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/tags/5600b59375ff190048020002"),
+		// 			Properties: &armapimanagement.TagContractProperties{
+		// 				DisplayName: to.Ptr("tag2"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

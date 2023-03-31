@@ -9,29 +9,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/serialconsole/armserialconsole"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/examples/CreateSerialPort.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/serialconsole/resource-manager/Microsoft.SerialConsole/stable/2018-05-01/examples/CreateSerialPort.json
 func ExampleSerialPortsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armserialconsole.NewSerialPortsClient("00000000-00000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armserialconsole.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Create(ctx,
-		"myResourceGroup",
-		"Microsoft.Compute",
-		"virtualMachines",
-		"myVM",
-		"0",
-		armserialconsole.SerialPort{
-			Properties: &armserialconsole.SerialPortProperties{
-				State: to.Ptr(armserialconsole.SerialPortStateEnabled),
-			},
+	_, err = clientFactory.NewSerialPortsClient().Create(ctx, "myResourceGroup", "Microsoft.Compute", "virtualMachines", "myVM", "0", armserialconsole.SerialPort{
+		Properties: &armserialconsole.SerialPortProperties{
+			State: to.Ptr(armserialconsole.SerialPortStateEnabled),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

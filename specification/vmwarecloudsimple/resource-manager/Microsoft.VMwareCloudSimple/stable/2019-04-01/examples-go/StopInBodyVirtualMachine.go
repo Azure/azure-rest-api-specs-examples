@@ -8,24 +8,20 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/vmwarecloudsimple/armvmwarecloudsimple"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/StopInBodyVirtualMachine.json
-func ExampleVirtualMachinesClient_BeginStop() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/vmwarecloudsimple/resource-manager/Microsoft.VMwareCloudSimple/stable/2019-04-01/examples/StopInBodyVirtualMachine.json
+func ExampleVirtualMachinesClient_BeginStop_stopInBodyVirtualMachine() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armvmwarecloudsimple.NewVirtualMachinesClient("{subscription-id}", cred, nil)
+	clientFactory, err := armvmwarecloudsimple.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginStop(ctx,
-		"myResourceGroup",
-		"https://management.azure.com/",
-		"myVirtualMachine",
-		&armvmwarecloudsimple.VirtualMachinesClientBeginStopOptions{Mode: nil,
-			M: &armvmwarecloudsimple.VirtualMachineStopMode{},
-		})
+	poller, err := clientFactory.NewVirtualMachinesClient().BeginStop(ctx, "myResourceGroup", "https://management.azure.com/", "myVirtualMachine", &armvmwarecloudsimple.VirtualMachinesClientBeginStopOptions{Mode: nil,
+		M: &armvmwarecloudsimple.VirtualMachineStopMode{},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

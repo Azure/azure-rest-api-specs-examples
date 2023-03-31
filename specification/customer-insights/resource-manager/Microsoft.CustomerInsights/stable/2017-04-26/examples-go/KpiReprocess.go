@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/customerinsights/armcustomerinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/KpiReprocess.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/KpiReprocess.json
 func ExampleKpiClient_Reprocess() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcustomerinsights.NewKpiClient("subid", cred, nil)
+	clientFactory, err := armcustomerinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Reprocess(ctx,
-		"TestHubRG",
-		"sdkTestHub",
-		"kpiTest45453647",
-		nil)
+	_, err = clientFactory.NewKpiClient().Reprocess(ctx, "TestHubRG", "sdkTestHub", "kpiTest45453647", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

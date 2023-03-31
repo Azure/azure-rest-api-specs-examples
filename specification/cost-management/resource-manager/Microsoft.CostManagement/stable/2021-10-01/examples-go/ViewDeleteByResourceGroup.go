@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/costmanagement/armcostmanagement"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/examples/ViewDeleteByResourceGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2021-10-01/examples/ViewDeleteByResourceGroup.json
 func ExampleViewsClient_DeleteByScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcostmanagement.NewViewsClient(cred, nil)
+	clientFactory, err := armcostmanagement.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.DeleteByScope(ctx,
-		"subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG",
-		"TestView",
-		nil)
+	_, err = clientFactory.NewViewsClient().DeleteByScope(ctx, "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG", "TestView", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

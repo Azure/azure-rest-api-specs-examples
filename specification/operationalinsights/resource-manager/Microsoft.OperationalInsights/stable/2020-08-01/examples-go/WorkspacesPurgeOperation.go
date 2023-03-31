@@ -8,25 +8,25 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurgeOperation.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/cf3574813e15bb33b3cb610f44edfcbebd8b1b23/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurgeOperation.json
 func ExampleWorkspacePurgeClient_GetPurgeStatus() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armoperationalinsights.NewWorkspacePurgeClient("00000000-0000-0000-0000-00000000000", cred, nil)
+	clientFactory, err := armoperationalinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetPurgeStatus(ctx,
-		"OIAutoRest5123",
-		"aztest5048",
-		"purge-970318e7-b859-4edb-8903-83b1b54d0b74",
-		nil)
+	res, err := clientFactory.NewWorkspacePurgeClient().GetPurgeStatus(ctx, "OIAutoRest5123", "aztest5048", "purge-970318e7-b859-4edb-8903-83b1b54d0b74", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.WorkspacePurgeStatusResponse = armoperationalinsights.WorkspacePurgeStatusResponse{
+	// 	Status: to.Ptr(armoperationalinsights.PurgeStateCompleted),
+	// }
 }

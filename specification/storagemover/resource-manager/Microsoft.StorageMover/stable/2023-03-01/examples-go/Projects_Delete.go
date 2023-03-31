@@ -15,11 +15,11 @@ func ExampleProjectsClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragemover.NewProjectsClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armstoragemover.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "examples-rg", "examples-storageMoverName", "examples-projectName", nil)
+	poller, err := clientFactory.NewProjectsClient().BeginDelete(ctx, "examples-rg", "examples-storageMoverName", "examples-projectName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

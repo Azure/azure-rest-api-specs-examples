@@ -16,11 +16,11 @@ func ExampleEndpointsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragemover.NewEndpointsClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armstoragemover.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "examples-rg", "examples-storageMoverName", "examples-endpointName", armstoragemover.Endpoint{
+	res, err := clientFactory.NewEndpointsClient().CreateOrUpdate(ctx, "examples-rg", "examples-storageMoverName", "examples-endpointName", armstoragemover.Endpoint{
 		Properties: &armstoragemover.AzureStorageBlobContainerEndpointProperties{
 			Description:              to.Ptr("Example Storage Container Endpoint Description"),
 			EndpointType:             to.Ptr(armstoragemover.EndpointTypeAzureStorageBlobContainer),

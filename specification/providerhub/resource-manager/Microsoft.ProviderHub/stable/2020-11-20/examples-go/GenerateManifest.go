@@ -8,23 +8,96 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/providerhub/armproviderhub"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/GenerateManifest.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/providerhub/resource-manager/Microsoft.ProviderHub/stable/2020-11-20/examples/GenerateManifest.json
 func ExampleClient_GenerateManifest() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armproviderhub.NewClient("ab7a8701-f7ef-471a-a2f4-d0ebbf494f77", cred, nil)
+	clientFactory, err := armproviderhub.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GenerateManifest(ctx,
-		"Microsoft.Contoso",
-		nil)
+	res, err := clientFactory.NewClient().GenerateManifest(ctx, "Microsoft.Contoso", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ResourceProviderManifest = armproviderhub.ResourceProviderManifest{
+	// 	Capabilities: []*armproviderhub.ResourceProviderCapabilities{
+	// 		{
+	// 			Effect: to.Ptr(armproviderhub.ResourceProviderCapabilitiesEffectAllow),
+	// 			QuotaID: to.Ptr("CSP_2015-05-01"),
+	// 		},
+	// 		{
+	// 			Effect: to.Ptr(armproviderhub.ResourceProviderCapabilitiesEffectAllow),
+	// 			QuotaID: to.Ptr("CSP_MG_2017-12-01"),
+	// 	}},
+	// 	GlobalNotificationEndpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 		{
+	// 			Enabled: to.Ptr(true),
+	// 			EndpointURI: to.Ptr("https://notificationendpoint.com"),
+	// 	}},
+	// 	Management: &armproviderhub.ResourceProviderManifestManagement{
+	// 		IncidentContactEmail: to.Ptr("helpme@contoso.com"),
+	// 		IncidentRoutingService: to.Ptr(""),
+	// 		IncidentRoutingTeam: to.Ptr(""),
+	// 		ManifestOwners: []*string{
+	// 			to.Ptr("manifestOwners-group")},
+	// 			ResourceAccessPolicy: to.Ptr(armproviderhub.ResourceProviderManagementResourceAccessPolicyNotSpecified),
+	// 		},
+	// 		Metadata: map[string]any{
+	// 			"onboardedVia": "ProviderHub",
+	// 		},
+	// 		Namespace: to.Ptr("microsoft.contoso"),
+	// 		ProviderAuthorizations: []*armproviderhub.ResourceProviderAuthorization{
+	// 			{
+	// 				ApplicationID: to.Ptr("1a3b5c7d-8e9f-10g1-1h12-i13j14k1"),
+	// 				RoleDefinitionID: to.Ptr("123456bf-gkur-2098-b890-98da392a00b2"),
+	// 		}},
+	// 		ProviderType: to.Ptr(armproviderhub.ResourceProviderType("Internal, Hidden")),
+	// 		ProviderVersion: to.Ptr("2.0"),
+	// 		ReRegisterSubscriptionMetadata: &armproviderhub.ResourceProviderManifestReRegisterSubscriptionMetadata{
+	// 			ConcurrencyLimit: to.Ptr[int32](100),
+	// 			Enabled: to.Ptr(true),
+	// 		},
+	// 		ResourceTypes: []*armproviderhub.ResourceType{
+	// 			{
+	// 				Name: to.Ptr("Operations"),
+	// 				AllowedUnauthorizedActions: []*string{
+	// 					to.Ptr("microsoft.contoso/operations/read")},
+	// 					Endpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 						{
+	// 							APIVersions: []*string{
+	// 								to.Ptr("2020-01-01-preview")},
+	// 								EndpointURI: to.Ptr("https://resource-endpoint.com/"),
+	// 								Locations: []*string{
+	// 									to.Ptr("")},
+	// 									Timeout: to.Ptr("PT20S"),
+	// 							}},
+	// 							LinkedOperationRules: []*armproviderhub.LinkedOperationRule{
+	// 							},
+	// 							ResourceValidation: to.Ptr(armproviderhub.ResourceValidation("ReservedWords, ProfaneWords")),
+	// 							RoutingType: to.Ptr(armproviderhub.RoutingType("ProxyOnly, Tenant")),
+	// 						},
+	// 						{
+	// 							Name: to.Ptr("Locations"),
+	// 							Endpoints: []*armproviderhub.ResourceProviderEndpoint{
+	// 								{
+	// 									APIVersions: []*string{
+	// 										to.Ptr("2020-01-01-preview")},
+	// 										EndpointURI: to.Ptr("https://resource-endpoint.com/"),
+	// 										Locations: []*string{
+	// 											to.Ptr("")},
+	// 											Timeout: to.Ptr("PT20S"),
+	// 									}},
+	// 									LinkedOperationRules: []*armproviderhub.LinkedOperationRule{
+	// 									},
+	// 									ResourceValidation: to.Ptr(armproviderhub.ResourceValidation("ReservedWords, ProfaneWords")),
+	// 									RoutingType: to.Ptr(armproviderhub.RoutingTypeProxyOnly),
+	// 							}},
+	// 						}
 }

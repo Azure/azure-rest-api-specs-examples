@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/edgeorderpartner/armedgeorderpartner"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/examples/SearchInventories.json
-func ExampleAPISClient_NewSearchInventoriesPager_searchInventories() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/edgeorderpartner/resource-manager/Microsoft.EdgeOrderPartner/preview/2020-12-01-preview/examples/SearchInventoriesDetails.json
+func ExampleAPISClient_NewSearchInventoriesPager_searchInventoriesDetails() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -60,6 +60,50 @@ func ExampleAPISClient_NewSearchInventoriesPager_searchInventories() {
 		// 					OrderItemType: to.Ptr(armedgeorderpartner.OrderItemTypeRental),
 		// 				},
 		// 				SerialNumber: to.Ptr("SerialNumber1"),
+		// 				Details: &armedgeorderpartner.InventoryAdditionalDetails{
+		// 					Billing: &armedgeorderpartner.BillingDetails{
+		// 						BillingType: to.Ptr("Pav2"),
+		// 						Status: to.Ptr("InProgress"),
+		// 					},
+		// 					Configuration: &armedgeorderpartner.ConfigurationDetails{
+		// 						Specifications: []*armedgeorderpartner.SpecificationDetails{
+		// 							{
+		// 								Name: to.Ptr("Cores"),
+		// 								Value: to.Ptr("24"),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("Memory"),
+		// 								Value: to.Ptr("128 GB"),
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("Storage"),
+		// 								Value: to.Ptr("~8 TB"),
+		// 						}},
+		// 					},
+		// 					Inventory: &armedgeorderpartner.AdditionalInventoryDetails{
+		// 						AdditionalData: map[string]*string{
+		// 							"ManuacturingYear": to.Ptr("2020"),
+		// 							"SourceCountry": to.Ptr("USA"),
+		// 						},
+		// 					},
+		// 					InventoryMetadata: to.Ptr("This is currently in Japan"),
+		// 					InventorySecrets: map[string]*string{
+		// 						"PublicCert": to.Ptr("<PublicCert>"),
+		// 					},
+		// 					OrderItem: &armedgeorderpartner.AdditionalOrderItemDetails{
+		// 						Status: &armedgeorderpartner.StageDetails{
+		// 							DisplayName: to.Ptr("Delivered - Succeeded"),
+		// 							StageName: to.Ptr(armedgeorderpartner.StageNameDelivered),
+		// 							StageStatus: to.Ptr(armedgeorderpartner.StageStatusSucceeded),
+		// 							StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T10:50:36.3341513+05:30"); return t}()),
+		// 						},
+		// 						Subscription: &armedgeorderpartner.SubscriptionDetails{
+		// 							ID: to.Ptr("b783ea86-c85c-4175-b76d-3992656af50d"),
+		// 							QuotaID: to.Ptr("Internal_2014-09-01"),
+		// 							State: to.Ptr("Registered"),
+		// 						},
+		// 					},
+		// 				},
 		// 			},
 		// 	}},
 		// }

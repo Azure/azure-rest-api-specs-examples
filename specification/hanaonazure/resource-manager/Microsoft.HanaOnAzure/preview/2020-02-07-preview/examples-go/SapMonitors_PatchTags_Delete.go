@@ -8,27 +8,42 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hanaonazure/armhanaonazure"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/examples/SapMonitors_PatchTags_Delete.json
-func ExampleSapMonitorsClient_Update() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/examples/SapMonitors_PatchTags_Delete.json
+func ExampleSapMonitorsClient_Update_deleteTagsFieldOfASapMonitor() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhanaonazure.NewSapMonitorsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armhanaonazure.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx,
-		"myResourceGroup",
-		"mySapMonitor",
-		armhanaonazure.Tags{
-			Tags: map[string]*string{},
-		},
-		nil)
+	res, err := clientFactory.NewSapMonitorsClient().Update(ctx, "myResourceGroup", "mySapMonitor", armhanaonazure.Tags{
+		Tags: map[string]*string{},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.SapMonitor = armhanaonazure.SapMonitor{
+	// 	Name: to.Ptr("mySapMonitor"),
+	// 	Type: to.Ptr("Microsoft.HanaOnAzure/sapMonitors"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.HanaOnAzure/sapMonitors/mySapMonitor"),
+	// 	Location: to.Ptr("westus"),
+	// 	Tags: map[string]*string{
+	// 	},
+	// 	Properties: &armhanaonazure.SapMonitorProperties{
+	// 		EnableCustomerAnalytics: to.Ptr(true),
+	// 		LogAnalyticsWorkspaceArmID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/microsoft.operationalinsights/workspaces/myWorkspace"),
+	// 		LogAnalyticsWorkspaceID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 		LogAnalyticsWorkspaceSharedKey: to.Ptr("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000=="),
+	// 		ManagedResourceGroupName: to.Ptr("myManagedResourceGroup"),
+	// 		MonitorSubnet: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"),
+	// 		ProvisioningState: to.Ptr(armhanaonazure.HanaProvisioningStatesEnumSucceeded),
+	// 		SapMonitorCollectorVersion: to.Ptr("v1.0"),
+	// 	},
+	// }
 }

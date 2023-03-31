@@ -8,26 +8,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/getTenantPolicyList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/examples/getTenantPolicyList.json
 func ExamplePolicyClient_NewListPolicyForTenantPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsubscription.NewPolicyClient(cred, nil)
+	clientFactory, err := armsubscription.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPolicyForTenantPager(nil)
+	pager := clientFactory.NewPolicyClient().NewListPolicyForTenantPager(nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.GetTenantPolicyListResponse = armsubscription.GetTenantPolicyListResponse{
+		// 	Value: []*armsubscription.GetTenantPolicyResponse{
+		// 		{
+		// 			Name: to.Ptr("default"),
+		// 			Type: to.Ptr("providers/Microsoft.Subscription/policies"),
+		// 			ID: to.Ptr("providers/Microsoft.Subscription/policies/default"),
+		// 			Properties: &armsubscription.TenantPolicy{
+		// 				BlockSubscriptionsIntoTenant: to.Ptr(true),
+		// 				BlockSubscriptionsLeavingTenant: to.Ptr(true),
+		// 				ExemptedPrincipals: []*string{
+		// 					to.Ptr("e879cf0f-2b4d-5431-109a-f72fc9868693"),
+		// 					to.Ptr("9792da87-c97b-410d-a97d-27021ba09ce6")},
+		// 					PolicyID: to.Ptr("291bba3f-e0a5-47bc-a099-3bdcb2a50a05"),
+		// 				},
+		// 		}},
+		// 	}
 	}
 }

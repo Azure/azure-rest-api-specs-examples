@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicelinker/armservicelinker"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/ValidateLinkSuccess.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/ValidateLinkSuccess.json
 func ExampleLinkerClient_BeginValidate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicelinker.NewLinkerClient(cred, nil)
+	clientFactory, err := armservicelinker.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginValidate(ctx,
-		"subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app",
-		"linkName",
-		nil)
+	poller, err := clientFactory.NewLinkerClient().BeginValidate(ctx, "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app", "linkName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -30,6 +27,29 @@ func ExampleLinkerClient_BeginValidate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ValidateOperationResult = armservicelinker.ValidateOperationResult{
+	// 	Properties: &armservicelinker.ValidateResult{
+	// 		AuthType: to.Ptr(armservicelinker.AuthTypeSecret),
+	// 		IsConnectionAvailable: to.Ptr(true),
+	// 		LinkerName: to.Ptr("linkName"),
+	// 		ReportEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:06:09Z"); return t}()),
+	// 		ReportStartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:05:09Z"); return t}()),
+	// 		SourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
+	// 		TargetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
+	// 		ValidationDetail: []*armservicelinker.ValidationResultItem{
+	// 			{
+	// 				Name: to.Ptr("TargetExistence"),
+	// 				Description: to.Ptr("The target existence is validated"),
+	// 				Result: to.Ptr(armservicelinker.ValidationResultStatusSuccess),
+	// 			},
+	// 			{
+	// 				Name: to.Ptr("TargetNetworkAccess"),
+	// 				Description: to.Ptr("Deny public network access is set to yes. Please confirm you are using private endpoint connection to access target resource."),
+	// 				Result: to.Ptr(armservicelinker.ValidationResultStatusWarning),
+	// 		}},
+	// 	},
+	// }
 }

@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/frontdoor/armfrontdoor"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/examples/WafPolicyDelete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/frontdoor/resource-manager/Microsoft.Network/stable/2020-11-01/examples/WafPolicyDelete.json
 func ExamplePoliciesClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armfrontdoor.NewPoliciesClient("subid", cred, nil)
+	clientFactory, err := armfrontdoor.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"rg1",
-		"Policy1",
-		nil)
+	poller, err := clientFactory.NewPoliciesClient().BeginDelete(ctx, "rg1", "Policy1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -9,30 +9,25 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iothub/armiothub"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/examples/iothub_updateprivateendpointconnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/iothub/resource-manager/Microsoft.Devices/stable/2021-07-02/examples/iothub_updateprivateendpointconnection.json
 func ExamplePrivateEndpointConnectionsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armiothub.NewPrivateEndpointConnectionsClient("91d12660-3dec-467a-be2a-213b5544ddc0", cred, nil)
+	clientFactory, err := armiothub.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"myResourceGroup",
-		"testHub",
-		"myPrivateEndpointConnection",
-		armiothub.PrivateEndpointConnection{
-			Properties: &armiothub.PrivateEndpointConnectionProperties{
-				PrivateLinkServiceConnectionState: &armiothub.PrivateLinkServiceConnectionState{
-					Description: to.Ptr("Approved by johndoe@contoso.com"),
-					Status:      to.Ptr(armiothub.PrivateLinkServiceConnectionStatusApproved),
-				},
+	poller, err := clientFactory.NewPrivateEndpointConnectionsClient().BeginUpdate(ctx, "myResourceGroup", "testHub", "myPrivateEndpointConnection", armiothub.PrivateEndpointConnection{
+		Properties: &armiothub.PrivateEndpointConnectionProperties{
+			PrivateLinkServiceConnectionState: &armiothub.PrivateLinkServiceConnectionState{
+				Description: to.Ptr("Approved by johndoe@contoso.com"),
+				Status:      to.Ptr(armiothub.PrivateLinkServiceConnectionStatusApproved),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -40,6 +35,22 @@ func ExamplePrivateEndpointConnectionsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armiothub.PrivateEndpointConnection{
+	// 	Name: to.Ptr("myPrivateEndpointConnection"),
+	// 	Type: to.Ptr("Microsoft.Devices/IotHubs/PrivateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/myResourceGroup/providers/Microsoft.Devices/IotHubs/testHub/PrivateEndpointConnections/myPrivateEndpointConnection"),
+	// 	Properties: &armiothub.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armiothub.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/a9eba280-4734-4d49-878f-b5549d1d0453/resourceGroups/networkResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armiothub.PrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("Approved by johndoe@contoso.com"),
+	// 			ActionsRequired: to.Ptr("None"),
+	// 			Status: to.Ptr(armiothub.PrivateLinkServiceConnectionStatusApproved),
+	// 		},
+	// 	},
+	// }
 }

@@ -15,11 +15,11 @@ func ExampleLoadTestsClient_NewListOutboundNetworkDependenciesEndpointsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armloadtesting.NewLoadTestsClient("subid", cred, nil)
+	clientFactory, err := armloadtesting.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListOutboundNetworkDependenciesEndpointsPager("default-azureloadtest-japaneast", "sampleloadtest", nil)
+	pager := clientFactory.NewLoadTestsClient().NewListOutboundNetworkDependenciesEndpointsPager("default-azureloadtest-japaneast", "sampleloadtest", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

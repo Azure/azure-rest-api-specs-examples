@@ -8,21 +8,34 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/DiscoveredSecuritySolutions/GetDiscoveredSecuritySolutionResourceGroupLocation_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/DiscoveredSecuritySolutions/GetDiscoveredSecuritySolutionResourceGroupLocation_example.json
 func ExampleDiscoveredSecuritySolutionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewDiscoveredSecuritySolutionsClient("20ff7fc3-e762-44dd-bd96-b71116dcdc23", cred, nil)
+	clientFactory, err := armsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "myRg2", "centralus", "paloalto7", nil)
+	res, err := clientFactory.NewDiscoveredSecuritySolutionsClient().Get(ctx, "myRg2", "centralus", "paloalto7", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DiscoveredSecuritySolution = armsecurity.DiscoveredSecuritySolution{
+	// 	Location: to.Ptr("eastus2"),
+	// 	Name: to.Ptr("paloalto7"),
+	// 	Type: to.Ptr("Microsoft.Security/locations/discoveredSecuritySolutions"),
+	// 	ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg2/providers/Microsoft.Security/locations/centralus/discoveredSecuritySolutions/paloalto7"),
+	// 	Properties: &armsecurity.DiscoveredSecuritySolutionProperties{
+	// 		Offer: to.Ptr("vmseries1"),
+	// 		Publisher: to.Ptr("paloaltonetworks"),
+	// 		SecurityFamily: to.Ptr(armsecurity.SecurityFamilyNgfw),
+	// 		SKU: to.Ptr("byol"),
+	// 	},
+	// }
 }

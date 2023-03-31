@@ -8,21 +8,33 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2022-05-01/examples/Settings/GetSetting_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/stable/2022-05-01/examples/Settings/GetSetting_example.json
 func ExampleSettingsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewSettingsClient("20ff7fc3-e762-44dd-bd96-b71116dcdc23", cred, nil)
+	clientFactory, err := armsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, armsecurity.SettingNameMCAS, nil)
+	res, err := clientFactory.NewSettingsClient().Get(ctx, armsecurity.SettingNameMCAS, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res = armsecurity.SettingsClientGetResponse{
+	// 	                            SettingClassification: &armsecurity.DataExportSettings{
+	// 		Name: to.Ptr("MCAS"),
+	// 		Type: to.Ptr("Microsoft.Security/settings"),
+	// 		ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/settings/MCAS"),
+	// 		Kind: to.Ptr(armsecurity.SettingKindDataExportSettings),
+	// 		Properties: &armsecurity.DataExportSettingProperties{
+	// 			Enabled: to.Ptr(true),
+	// 		},
+	// 	},
+	// 	                        }
 }

@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2021-06-01/examples/AssessmentsMetadata/CreateAssessmentsMetadata_subscription_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/stable/2021-06-01/examples/AssessmentsMetadata/CreateAssessmentsMetadata_subscription_example.json
 func ExampleAssessmentsMetadataClient_CreateInSubscription() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewAssessmentsMetadataClient("0980887d-03d6-408c-9566-532f3456804e", cred, nil)
+	clientFactory, err := armsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateInSubscription(ctx, "ca039e75-a276-4175-aebc-bcd41e4b14b7", armsecurity.AssessmentMetadataResponse{
+	res, err := clientFactory.NewAssessmentsMetadataClient().CreateInSubscription(ctx, "ca039e75-a276-4175-aebc-bcd41e4b14b7", armsecurity.AssessmentMetadataResponse{
 		Properties: &armsecurity.AssessmentMetadataPropertiesResponse{
 			Description:    to.Ptr("Install an endpoint protection solution on your virtual machines scale sets, to protect them from threats and vulnerabilities."),
 			AssessmentType: to.Ptr(armsecurity.AssessmentTypeCustomerManaged),
@@ -40,6 +40,27 @@ func ExampleAssessmentsMetadataClient_CreateInSubscription() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AssessmentMetadataResponse = armsecurity.AssessmentMetadataResponse{
+	// 	Name: to.Ptr("ca039e75-a276-4175-aebc-bcd41e4b14b7"),
+	// 	Type: to.Ptr("Microsoft.Security/assessmentMetadata"),
+	// 	ID: to.Ptr("/providers/Microsoft.Security/assessmentMetadata/ca039e75-a276-4175-aebc-bcd41e4b14b7"),
+	// 	Properties: &armsecurity.AssessmentMetadataPropertiesResponse{
+	// 		Description: to.Ptr("Assessment that my organization created to view our security assessment in Azure Security Center"),
+	// 		AssessmentType: to.Ptr(armsecurity.AssessmentTypeCustomerManaged),
+	// 		Categories: []*armsecurity.Categories{
+	// 			to.Ptr(armsecurity.CategoriesCompute)},
+	// 			DisplayName: to.Ptr("My organization security assessment"),
+	// 			ImplementationEffort: to.Ptr(armsecurity.ImplementationEffortLow),
+	// 			RemediationDescription: to.Ptr("Fix it with these remediation instructions"),
+	// 			Severity: to.Ptr(armsecurity.SeverityMedium),
+	// 			Threats: []*armsecurity.Threats{
+	// 				to.Ptr(armsecurity.ThreatsDataExfiltration),
+	// 				to.Ptr(armsecurity.ThreatsDataSpillage),
+	// 				to.Ptr(armsecurity.ThreatsMaliciousInsider)},
+	// 				UserImpact: to.Ptr(armsecurity.UserImpactLow),
+	// 			},
+	// 		}
 }

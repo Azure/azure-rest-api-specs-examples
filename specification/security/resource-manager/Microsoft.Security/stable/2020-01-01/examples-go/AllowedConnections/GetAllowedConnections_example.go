@@ -8,21 +8,69 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/AllowedConnections/GetAllowedConnections_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/stable/2020-01-01/examples/AllowedConnections/GetAllowedConnections_example.json
 func ExampleAllowedConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurity.NewAllowedConnectionsClient("3eeab341-f466-499c-a8be-85427e154bad", cred, nil)
+	clientFactory, err := armsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "myResourceGroup", "centralus", armsecurity.ConnectionTypeInternal, nil)
+	res, err := clientFactory.NewAllowedConnectionsClient().Get(ctx, "myResourceGroup", "centralus", armsecurity.ConnectionTypeInternal, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AllowedConnectionsResource = armsecurity.AllowedConnectionsResource{
+	// 	Location: to.Ptr("centralus"),
+	// 	Name: to.Ptr("Internal"),
+	// 	Type: to.Ptr("Microsoft.Security/locations/allowedConnections"),
+	// 	ID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Security/locations/centralus/allowedConnections/Internal"),
+	// 	Properties: &armsecurity.AllowedConnectionsResourceProperties{
+	// 		CalculatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-06T14:55:32.3518545Z"); return t}()),
+	// 		ConnectableResources: []*armsecurity.ConnectableResource{
+	// 			{
+	// 				ID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine1"),
+	// 				InboundConnectedResources: []*armsecurity.ConnectedResource{
+	// 					{
+	// 						ConnectedResourceID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine2"),
+	// 						TCPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 						UDPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 				}},
+	// 				OutboundConnectedResources: []*armsecurity.ConnectedResource{
+	// 					{
+	// 						ConnectedResourceID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine2"),
+	// 						TCPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 						UDPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 				}},
+	// 			},
+	// 			{
+	// 				ID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine2"),
+	// 				InboundConnectedResources: []*armsecurity.ConnectedResource{
+	// 					{
+	// 						ConnectedResourceID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine1"),
+	// 						TCPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 						UDPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 				}},
+	// 				OutboundConnectedResources: []*armsecurity.ConnectedResource{
+	// 					{
+	// 						ConnectedResourceID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine1"),
+	// 						TCPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 						UDPPorts: to.Ptr("[0-21,23-3388,3390-5984,5987-65535]"),
+	// 				}},
+	// 			},
+	// 			{
+	// 				ID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154baf/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/virtaulMachine3"),
+	// 				InboundConnectedResources: []*armsecurity.ConnectedResource{
+	// 				},
+	// 				OutboundConnectedResources: []*armsecurity.ConnectedResource{
+	// 				},
+	// 		}},
+	// 	},
+	// }
 }

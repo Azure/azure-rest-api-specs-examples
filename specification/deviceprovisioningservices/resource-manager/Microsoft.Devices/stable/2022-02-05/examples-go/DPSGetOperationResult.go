@@ -8,26 +8,25 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceprovisioningservices/armdeviceprovisioningservices"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/examples/DPSGetOperationResult.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/examples/DPSGetOperationResult.json
 func ExampleIotDpsResourceClient_GetOperationResult() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdeviceprovisioningservices.NewIotDpsResourceClient("91d12660-3dec-467a-be2a-213b5544ddc0", cred, nil)
+	clientFactory, err := armdeviceprovisioningservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetOperationResult(ctx,
-		"MTY5OTNmZDctODI5Yy00N2E2LTkxNDQtMDU1NGIyYzY1ZjRl",
-		"myResourceGroup",
-		"myFirstProvisioningService",
-		"1508265712453",
-		nil)
+	res, err := clientFactory.NewIotDpsResourceClient().GetOperationResult(ctx, "MTY5OTNmZDctODI5Yy00N2E2LTkxNDQtMDU1NGIyYzY1ZjRl", "myResourceGroup", "myFirstProvisioningService", "1508265712453", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AsyncOperationResult = armdeviceprovisioningservices.AsyncOperationResult{
+	// 	Status: to.Ptr("Succeeded"),
+	// }
 }

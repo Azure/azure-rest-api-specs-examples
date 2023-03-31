@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databricks/armdatabricks"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/examples/WorkspaceGet.json
-func ExampleWorkspacesClient_Get_getAWorkspace() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/examples/WorkspaceGetParameters.json
+func ExampleWorkspacesClient_Get_getAWorkspaceWithCustomParameters() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -44,7 +44,40 @@ func ExampleWorkspacesClient_Get_getAWorkspace() {
 	// 		},
 	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-20T00:10:29.2858439Z"); return t}()),
 	// 		ManagedResourceGroupID: to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
+	// 		Parameters: &armdatabricks.WorkspaceCustomParameters{
+	// 			CustomPrivateSubnetName: &armdatabricks.WorkspaceCustomStringParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeString),
+	// 				Value: to.Ptr("PrivateBob"),
+	// 			},
+	// 			CustomPublicSubnetName: &armdatabricks.WorkspaceCustomStringParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeString),
+	// 				Value: to.Ptr("PublicSarah"),
+	// 			},
+	// 			CustomVirtualNetworkID: &armdatabricks.WorkspaceCustomStringParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeString),
+	// 				Value: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/myNetwork"),
+	// 			},
+	// 		},
+	// 		PrivateEndpointConnections: []*armdatabricks.PrivateEndpointConnection{
+	// 			{
+	// 				Name: to.Ptr("myWorkspace.23456789-1111-1111-1111-111111111111"),
+	// 				Type: to.Ptr("Microsoft.Databricks/workspaces/privateEndpointConnections"),
+	// 				ID: to.Ptr("/subscriptions/subscriptionId/resourceGroups/rg/providers/Microsoft.Databricks/workspaces/myWorkspace/privateEndpointConnections/myWorkspace.23456789-1111-1111-1111-111111111111"),
+	// 				Properties: &armdatabricks.PrivateEndpointConnectionProperties{
+	// 					PrivateEndpoint: &armdatabricks.PrivateEndpoint{
+	// 						ID: to.Ptr("/subscriptions/subscriptionId/resourceGroups/networkResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint"),
+	// 					},
+	// 					PrivateLinkServiceConnectionState: &armdatabricks.PrivateLinkServiceConnectionState{
+	// 						Description: to.Ptr("Auto-Approved"),
+	// 						ActionRequired: to.Ptr("None"),
+	// 						Status: to.Ptr(armdatabricks.PrivateLinkServiceConnectionStatusApproved),
+	// 					},
+	// 					ProvisioningState: to.Ptr(armdatabricks.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 				},
+	// 		}},
 	// 		ProvisioningState: to.Ptr(armdatabricks.ProvisioningStateSucceeded),
+	// 		PublicNetworkAccess: to.Ptr(armdatabricks.PublicNetworkAccessDisabled),
+	// 		RequiredNsgRules: to.Ptr(armdatabricks.RequiredNsgRulesNoAzureDatabricksRules),
 	// 		UIDefinitionURI: to.Ptr("https://path/to/workspaceCreateUiDefinition.json"),
 	// 		UpdatedBy: &armdatabricks.CreatedBy{
 	// 			ApplicationID: to.Ptr("44444444-4444-4444-4444-444444444444"),

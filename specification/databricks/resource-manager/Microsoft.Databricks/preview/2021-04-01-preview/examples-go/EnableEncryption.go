@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databricks/armdatabricks"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/examples/PrepareEncryption.json
-func ExampleWorkspacesClient_BeginCreateOrUpdate_createAWorkspaceWhichIsReadyForCustomerManagedKeyCmkEncryption() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databricks/resource-manager/Microsoft.Databricks/preview/2021-04-01-preview/examples/EnableEncryption.json
+func ExampleWorkspacesClient_BeginCreateOrUpdate_enableCustomerManagedKeyCmkEncryptionOnAWorkspaceWhichIsPreparedForEncryption() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -25,6 +25,14 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate_createAWorkspaceWhichIsReadyFor
 		Properties: &armdatabricks.WorkspaceProperties{
 			ManagedResourceGroupID: to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
 			Parameters: &armdatabricks.WorkspaceCustomParameters{
+				Encryption: &armdatabricks.WorkspaceEncryptionParameter{
+					Value: &armdatabricks.Encryption{
+						KeyName:     to.Ptr("myKeyName"),
+						KeySource:   to.Ptr(armdatabricks.KeySourceMicrosoftKeyvault),
+						KeyVaultURI: to.Ptr("https://myKeyVault.vault.azure.net/"),
+						KeyVersion:  to.Ptr("00000000000000000000000000000000"),
+					},
+				},
 				PrepareEncryption: &armdatabricks.WorkspaceCustomBooleanParameter{
 					Value: to.Ptr(true),
 				},
@@ -59,6 +67,33 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate_createAWorkspaceWhichIsReadyFor
 	// 		},
 	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-20T00:10:29.2858439Z"); return t}()),
 	// 		ManagedResourceGroupID: to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
+	// 		Parameters: &armdatabricks.WorkspaceCustomParameters{
+	// 			CustomPrivateSubnetName: &armdatabricks.WorkspaceCustomStringParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeString),
+	// 				Value: to.Ptr("PrivateBob"),
+	// 			},
+	// 			CustomPublicSubnetName: &armdatabricks.WorkspaceCustomStringParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeString),
+	// 				Value: to.Ptr("PublicSarah"),
+	// 			},
+	// 			CustomVirtualNetworkID: &armdatabricks.WorkspaceCustomStringParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeString),
+	// 				Value: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/myNetwork"),
+	// 			},
+	// 			Encryption: &armdatabricks.WorkspaceEncryptionParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeObject),
+	// 				Value: &armdatabricks.Encryption{
+	// 					KeyName: to.Ptr("myKeyName"),
+	// 					KeySource: to.Ptr(armdatabricks.KeySourceMicrosoftKeyvault),
+	// 					KeyVaultURI: to.Ptr("https://myKeyVault.vault.azure.net/"),
+	// 					KeyVersion: to.Ptr("00000000000000000000000000000000"),
+	// 				},
+	// 			},
+	// 			PrepareEncryption: &armdatabricks.WorkspaceCustomBooleanParameter{
+	// 				Type: to.Ptr(armdatabricks.CustomParameterTypeBool),
+	// 				Value: to.Ptr(true),
+	// 			},
+	// 		},
 	// 		ProvisioningState: to.Ptr(armdatabricks.ProvisioningStateSucceeded),
 	// 		StorageAccountIdentity: &armdatabricks.ManagedIdentityConfiguration{
 	// 			Type: to.Ptr("SystemAssigned"),

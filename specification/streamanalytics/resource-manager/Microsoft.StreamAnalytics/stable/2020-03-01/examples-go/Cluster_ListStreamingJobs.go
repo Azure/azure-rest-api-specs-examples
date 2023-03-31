@@ -8,28 +8,40 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/streamanalytics/armstreamanalytics"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/Cluster_ListStreamingJobs.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/stable/2020-03-01/examples/Cluster_ListStreamingJobs.json
 func ExampleClustersClient_NewListStreamingJobsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstreamanalytics.NewClustersClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armstreamanalytics.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListStreamingJobsPager("sjrg",
-		"testcluster",
-		nil)
+	pager := clientFactory.NewClustersClient().NewListStreamingJobsPager("sjrg", "testcluster", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ClusterJobListResult = armstreamanalytics.ClusterJobListResult{
+		// 	Value: []*armstreamanalytics.ClusterJob{
+		// 		{
+		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/sjrg/providers/microsoft.streamAnalytics/streamingjobs/AFilterSample"),
+		// 			JobState: to.Ptr(armstreamanalytics.JobStateRunning),
+		// 			StreamingUnits: to.Ptr[int32](6),
+		// 		},
+		// 		{
+		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/sjrg/providers/microsoft.streamAnalytics/streamingjobs/AnotherFilterSample"),
+		// 			JobState: to.Ptr(armstreamanalytics.JobStateStopped),
+		// 			StreamingUnits: to.Ptr[int32](1),
+		// 	}},
+		// }
 	}
 }

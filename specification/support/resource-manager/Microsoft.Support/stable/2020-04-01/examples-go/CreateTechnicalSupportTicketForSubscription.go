@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBillingSupportTicketForSubscription.json
-func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateTechnicalSupportTicketForSubscription.json
+func ExampleTicketsClient_BeginCreate_createATicketForTechnicalIssueRelatedToASpecificResource() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -32,10 +32,13 @@ func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
 				PreferredTimeZone:        to.Ptr("Pacific Standard Time"),
 				PrimaryEmailAddress:      to.Ptr("abc@contoso.com"),
 			},
-			ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid/problemClassifications/billing_problemClassification_guid"),
-			ServiceID:               to.Ptr("/providers/Microsoft.Support/services/billing_service_guid"),
+			ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/virtual_machine_running_linux_service_guid/problemClassifications/problemClassification_guid"),
+			ServiceID:               to.Ptr("/providers/Microsoft.Support/services/cddd3eb5-1830-b494-44fd-782f691479dc"),
 			Severity:                to.Ptr(armsupport.SeverityLevelModerate),
-			Title:                   to.Ptr("my title"),
+			TechnicalTicketDetails: &armsupport.TechnicalTicketDetails{
+				ResourceID: to.Ptr("/subscriptions/subid/resourceGroups/test/providers/Microsoft.Compute/virtualMachines/testserver"),
+			},
+			Title: to.Ptr("my title"),
 		},
 	}, nil)
 	if err != nil {
@@ -65,11 +68,11 @@ func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
 	// 		},
 	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
 	// 		ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23Z"); return t}()),
-	// 		ProblemClassificationDisplayName: to.Ptr("Refund request"),
-	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid/problemClassifications/billing_problemClassification_guid"),
+	// 		ProblemClassificationDisplayName: to.Ptr("Connectivity / Cannot connect to virtual machine by using RDP or SSH"),
+	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/virtual_machine_running_linux_service_guid/problemClassifications/problemClassification_guid"),
 	// 		Require24X7Response: to.Ptr(false),
-	// 		ServiceDisplayName: to.Ptr("Billing"),
-	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid"),
+	// 		ServiceDisplayName: to.Ptr("Virtual Machine running Linux"),
+	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/virtual_machine_running_linux_service_guid"),
 	// 		ServiceLevelAgreement: &armsupport.ServiceLevelAgreement{
 	// 			ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18Z"); return t}()),
 	// 			SLAMinutes: to.Ptr[int32](240),
@@ -81,6 +84,9 @@ func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
 	// 		},
 	// 		SupportPlanType: to.Ptr("Premier"),
 	// 		SupportTicketID: to.Ptr("119120321001170"),
+	// 		TechnicalTicketDetails: &armsupport.TechnicalTicketDetails{
+	// 			ResourceID: to.Ptr("/subscriptions/subid/resourceGroups/test/providers/Microsoft.Compute/virtualMachines/testserver"),
+	// 		},
 	// 		Title: to.Ptr("my title"),
 	// 	},
 	// }

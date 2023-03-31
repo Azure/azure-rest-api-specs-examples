@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListCommunicationsForSubscriptionSupportTicket.json
-func ExampleCommunicationsClient_NewListPager_listCommunicationsForASubscriptionSupportTicket() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListWebCommunicationsForSubscriptionSupportTicketCreatedOnOrAfter.json
+func ExampleCommunicationsClient_NewListPager_listWebCommunicationCreatedOnOrAfterASpecificDateForASubscriptionSupportTicket() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +21,7 @@ func ExampleCommunicationsClient_NewListPager_listCommunicationsForASubscription
 		log.Fatalf("failed to create client: %v", err)
 	}
 	pager := clientFactory.NewCommunicationsClient().NewListPager("testticket", &armsupport.CommunicationsClientListOptions{Top: nil,
-		Filter: nil,
+		Filter: to.Ptr("communicationType eq 'web' and createdDate ge 2020-03-10T22:08:51Z"),
 	})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
@@ -42,7 +43,7 @@ func ExampleCommunicationsClient_NewListPager_listCommunicationsForASubscription
 		// 				Body: to.Ptr("this is a test message"),
 		// 				CommunicationDirection: to.Ptr(armsupport.CommunicationDirectionOutbound),
 		// 				CommunicationType: to.Ptr(armsupport.CommunicationTypeWeb),
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-24T20:18:19Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T20:18:19Z"); return t}()),
 		// 				Sender: to.Ptr("user@contoso.com"),
 		// 				Subject: to.Ptr("this is a test message"),
 		// 			},
@@ -55,7 +56,7 @@ func ExampleCommunicationsClient_NewListPager_listCommunicationsForASubscription
 		// 				Body: to.Ptr("test"),
 		// 				CommunicationDirection: to.Ptr(armsupport.CommunicationDirectionOutbound),
 		// 				CommunicationType: to.Ptr(armsupport.CommunicationTypeWeb),
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-29T10:53:19Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-12T10:53:19Z"); return t}()),
 		// 				Sender: to.Ptr("user@contoso.com"),
 		// 				Subject: to.Ptr("test"),
 		// 			},

@@ -15,11 +15,11 @@ func ExampleVaultsClient_NewListBySubscriptionIDPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservices.NewVaultsClient("77777777-b0c6-47a2-b37c-d8e65a629c18", cred, nil)
+	clientFactory, err := armrecoveryservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBySubscriptionIDPager(nil)
+	pager := clientFactory.NewVaultsClient().NewListBySubscriptionIDPager(nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

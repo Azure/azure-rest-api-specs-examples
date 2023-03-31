@@ -15,11 +15,11 @@ func ExamplePrivateLinkResourcesClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservices.NewPrivateLinkResourcesClient("6c48fa17-39c7-45f1-90ac-47a587128ace", cred, nil)
+	clientFactory, err := armrecoveryservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("petesting", "pemsi-ecy-rsv2", nil)
+	pager := clientFactory.NewPrivateLinkResourcesClient().NewListPager("petesting", "pemsi-ecy-rsv2", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

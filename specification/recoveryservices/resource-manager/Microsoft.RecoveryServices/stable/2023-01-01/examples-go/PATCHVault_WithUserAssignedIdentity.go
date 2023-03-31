@@ -16,11 +16,11 @@ func ExampleVaultsClient_BeginUpdate_updateResourceWithUserAssignedIdentity() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservices.NewVaultsClient("77777777-b0c6-47a2-b37c-d8e65a629c18", cred, nil)
+	clientFactory, err := armrecoveryservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "HelloWorld", "swaggerExample", armrecoveryservices.PatchVault{
+	poller, err := clientFactory.NewVaultsClient().BeginUpdate(ctx, "HelloWorld", "swaggerExample", armrecoveryservices.PatchVault{
 		Tags: map[string]*string{
 			"PatchKey": to.Ptr("PatchKeyUpdated"),
 		},

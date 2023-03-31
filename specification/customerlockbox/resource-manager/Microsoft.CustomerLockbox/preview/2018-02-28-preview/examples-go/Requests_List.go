@@ -4,13 +4,12 @@ import (
 	"context"
 	"log"
 
-	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/customerlockbox/armcustomerlockbox"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/customerlockbox/resource-manager/Microsoft.CustomerLockbox/preview/2018-02-28-preview/examples/Requests_List_FilterByStatus.json
-func ExampleRequestsClient_NewListPager_listLockboxRequestsInASubscriptionWithFilterByRequestStatusEgFilterPropertiesStatusEqPending() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/customerlockbox/resource-manager/Microsoft.CustomerLockbox/preview/2018-02-28-preview/examples/Requests_List.json
+func ExampleRequestsClient_NewListPager_listLockboxRequestsWithNoFilters() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +19,7 @@ func ExampleRequestsClient_NewListPager_listLockboxRequestsInASubscriptionWithFi
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewRequestsClient().NewListPager("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", &armcustomerlockbox.RequestsClientListOptions{Filter: to.Ptr("properties/status eq 'Expired'")})
+	pager := clientFactory.NewRequestsClient().NewListPager("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", &armcustomerlockbox.RequestsClientListOptions{Filter: nil})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -65,6 +64,25 @@ func ExampleRequestsClient_NewListPager_listLockboxRequestsInASubscriptionWithFi
 		// 				ResourceIDs: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		// 				ResourceType: to.Ptr("Subscription"),
 		// 				Status: to.Ptr(armcustomerlockbox.StatusExpired),
+		// 				SubscriptionID: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+		// 				SupportCaseURL: to.Ptr("https://portal.azure.com/#resource/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.support/supporttickets/120101324000234"),
+		// 				SupportRequest: to.Ptr("120101324000234"),
+		// 				Workitemsource: to.Ptr("SupportRequest"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("LockboxRequest_xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+		// 			Type: to.Ptr("requests"),
+		// 			ID: to.Ptr("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CustomerLockbox/requests/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+		// 			Properties: &armcustomerlockbox.LockboxRequestResponseProperties{
+		// 				CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-24T15:08:17.590109Z"); return t}()),
+		// 				Duration: to.Ptr("Support request lifetime"),
+		// 				ExpirationDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-28T15:08:17.590109Z"); return t}()),
+		// 				Justification: to.Ptr("Microsoft Support Team is requesting access to your resource temporarily for troubleshooting."),
+		// 				RequestID: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+		// 				ResourceIDs: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+		// 				ResourceType: to.Ptr("Subscription"),
+		// 				Status: to.Ptr(armcustomerlockbox.StatusDenied),
 		// 				SubscriptionID: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		// 				SupportCaseURL: to.Ptr("https://portal.azure.com/#resource/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/microsoft.support/supporttickets/120101324000234"),
 		// 				SupportRequest: to.Ptr("120101324000234"),

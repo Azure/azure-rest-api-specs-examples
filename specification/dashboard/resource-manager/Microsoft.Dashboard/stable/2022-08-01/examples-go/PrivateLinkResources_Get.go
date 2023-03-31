@@ -8,21 +8,34 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dashboard/armdashboard"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/examples/PrivateLinkResources_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7473936304533e6716fc4563401bf265dda4cb64/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/examples/PrivateLinkResources_Get.json
 func ExamplePrivateLinkResourcesClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdashboard.NewPrivateLinkResourcesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armdashboard.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "myResourceGroup", "myWorkspace", "grafana", nil)
+	res, err := clientFactory.NewPrivateLinkResourcesClient().Get(ctx, "myResourceGroup", "myWorkspace", "grafana", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateLinkResource = armdashboard.PrivateLinkResource{
+	// 	Name: to.Ptr("grafana"),
+	// 	Type: to.Ptr("Microsoft.Dashboard/grafana/PrivateLinkResources"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/Microsoft.Dashboard/grafana/myWorkspace/privateLinkResources/grafana"),
+	// 	Properties: &armdashboard.PrivateLinkResourceProperties{
+	// 		GroupID: to.Ptr("grafana"),
+	// 		RequiredMembers: []*string{
+	// 			to.Ptr("grafana")},
+	// 			RequiredZoneNames: []*string{
+	// 				to.Ptr("grafana.azure.com")},
+	// 			},
+	// 		}
 }

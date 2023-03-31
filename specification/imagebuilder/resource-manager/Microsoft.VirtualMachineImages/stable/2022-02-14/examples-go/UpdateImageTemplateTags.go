@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/078b90617e5e08137d0395963bd4119f4561a910/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/examples/GetImageTemplate.json
-func ExampleVirtualMachineImageTemplatesClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/078b90617e5e08137d0395963bd4119f4561a910/specification/imagebuilder/resource-manager/Microsoft.VirtualMachineImages/stable/2022-02-14/examples/UpdateImageTemplateTags.json
+func ExampleVirtualMachineImageTemplatesClient_BeginUpdate_updateTheTagsForAnImageTemplate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +20,17 @@ func ExampleVirtualMachineImageTemplatesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewVirtualMachineImageTemplatesClient().Get(ctx, "myResourceGroup", "myImageTemplate", nil)
+	poller, err := clientFactory.NewVirtualMachineImageTemplatesClient().BeginUpdate(ctx, "myResourceGroup", "myImageTemplate", armvirtualmachineimagebuilder.ImageTemplateUpdateParameters{
+		Tags: map[string]*string{
+			"new-tag": to.Ptr("new-value"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
@@ -31,6 +40,9 @@ func ExampleVirtualMachineImageTemplatesClient_Get() {
 	// 	Type: to.Ptr("Microsoft.VirtualMachineImages/imageTemplate"),
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/myImageTemplate"),
 	// 	Location: to.Ptr("westus"),
+	// 	Tags: map[string]*string{
+	// 		"new-tag": to.Ptr("new-value"),
+	// 	},
 	// 	Identity: &armvirtualmachineimagebuilder.ImageTemplateIdentity{
 	// 		Type: to.Ptr(armvirtualmachineimagebuilder.ResourceIdentityTypeUserAssigned),
 	// 		UserAssignedIdentities: map[string]*armvirtualmachineimagebuilder.ComponentsVrq145SchemasImagetemplateidentityPropertiesUserassignedidentitiesAdditionalproperties{
@@ -43,7 +55,7 @@ func ExampleVirtualMachineImageTemplatesClient_Get() {
 	// 	Properties: &armvirtualmachineimagebuilder.ImageTemplateProperties{
 	// 		Customize: []armvirtualmachineimagebuilder.ImageTemplateCustomizerClassification{
 	// 			&armvirtualmachineimagebuilder.ImageTemplateShellCustomizer{
-	// 				Name: to.Ptr("Shell Customizer Example"),
+	// 				Name: to.Ptr("Shell customization example"),
 	// 				Type: to.Ptr("Shell"),
 	// 				ScriptURI: to.Ptr("https://example.com/path/to/script.sh"),
 	// 		}},

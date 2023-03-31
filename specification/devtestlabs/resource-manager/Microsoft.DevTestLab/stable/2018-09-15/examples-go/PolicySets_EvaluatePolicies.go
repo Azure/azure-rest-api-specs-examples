@@ -9,32 +9,39 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devtestlabs/armdevtestlabs"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/PolicySets_EvaluatePolicies.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/PolicySets_EvaluatePolicies.json
 func ExamplePolicySetsClient_EvaluatePolicies() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armdevtestlabs.NewPolicySetsClient("{subscriptionId}", cred, nil)
+	clientFactory, err := armdevtestlabs.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.EvaluatePolicies(ctx,
-		"resourceGroupName",
-		"{labName}",
-		"{policySetName}",
-		armdevtestlabs.EvaluatePoliciesRequest{
-			Policies: []*armdevtestlabs.EvaluatePoliciesProperties{
-				{
-					FactName:    to.Ptr("LabVmCount"),
-					ValueOffset: to.Ptr("1"),
-				}},
-		},
-		nil)
+	res, err := clientFactory.NewPolicySetsClient().EvaluatePolicies(ctx, "resourceGroupName", "{labName}", "{policySetName}", armdevtestlabs.EvaluatePoliciesRequest{
+		Policies: []*armdevtestlabs.EvaluatePoliciesProperties{
+			{
+				FactName:    to.Ptr("LabVmCount"),
+				ValueOffset: to.Ptr("1"),
+			}},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.EvaluatePoliciesResponse = armdevtestlabs.EvaluatePoliciesResponse{
+	// 	Results: []*armdevtestlabs.PolicySetResult{
+	// 		{
+	// 			HasError: to.Ptr(true),
+	// 			PolicyViolations: []*armdevtestlabs.PolicyViolation{
+	// 				{
+	// 					Code: to.Ptr("MaxValuePolicy"),
+	// 					Message: to.Ptr("You cannot exceed the limit (1) of virtual machines that can be created in this lab."),
+	// 			}},
+	// 	}},
+	// }
 }

@@ -8,30 +8,55 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logic/armlogic"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccountSchemas_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationAccountSchemas_List.json
 func ExampleIntegrationAccountSchemasClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewIntegrationAccountSchemasClient("<subscriptionId>", cred, nil)
+	clientFactory, err := armlogic.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("testResourceGroup",
-		"<integrationAccountName>",
-		&armlogic.IntegrationAccountSchemasClientListOptions{Top: nil,
-			Filter: nil,
-		})
+	pager := clientFactory.NewIntegrationAccountSchemasClient().NewListPager("testResourceGroup", "<integrationAccountName>", &armlogic.IntegrationAccountSchemasClientListOptions{Top: nil,
+		Filter: nil,
+	})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.IntegrationAccountSchemaListResult = armlogic.IntegrationAccountSchemaListResult{
+		// 	Value: []*armlogic.IntegrationAccountSchema{
+		// 		{
+		// 			Name: to.Ptr("IntegrationAccountSchema3944"),
+		// 			Type: to.Ptr("Microsoft.Logic/integrationAccounts/schemas"),
+		// 			ID: to.Ptr("/subscriptions/<subscriptionId>/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/<integrationAccountName>/schemas/IntegrationAccountSchema3944"),
+		// 			Properties: &armlogic.IntegrationAccountSchemaProperties{
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T01:34:16.7098626Z"); return t}()),
+		// 				ContentLink: &armlogic.ContentLink{
+		// 					ContentHash: &armlogic.ContentHash{
+		// 						Algorithm: to.Ptr("md5"),
+		// 						Value: to.Ptr("<Value>"),
+		// 					},
+		// 					ContentSize: to.Ptr[int64](7901),
+		// 					ContentVersion: to.Ptr("\"0x8D45C553EECEB76\""),
+		// 					URI: to.Ptr("<contentLinkUri>"),
+		// 				},
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T01:34:16.7088958Z"); return t}()),
+		// 				DocumentName: to.Ptr("OrderFile"),
+		// 				Metadata: map[string]any{
+		// 				},
+		// 				SchemaType: to.Ptr(armlogic.SchemaTypeXML),
+		// 				TargetNamespace: to.Ptr("http://Inbound_EDI.OrderFile"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

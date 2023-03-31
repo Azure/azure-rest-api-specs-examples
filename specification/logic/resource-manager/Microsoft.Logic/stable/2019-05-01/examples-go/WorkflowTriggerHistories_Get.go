@@ -8,26 +8,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/logic/armlogic"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowTriggerHistories_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowTriggerHistories_Get.json
 func ExampleWorkflowTriggerHistoriesClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armlogic.NewWorkflowTriggerHistoriesClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armlogic.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"testResourceGroup",
-		"testWorkflowName",
-		"testTriggerName",
-		"08586676746934337772206998657CU22",
-		nil)
+	res, err := clientFactory.NewWorkflowTriggerHistoriesClient().Get(ctx, "testResourceGroup", "testWorkflowName", "testTriggerName", "08586676746934337772206998657CU22", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.WorkflowTriggerHistory = armlogic.WorkflowTriggerHistory{
+	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/workflows/testWorkflowName/triggers/testTriggerName/histories/08586676746934337772206998657CU22"),
+	// 	Name: to.Ptr("08586676746934337772206998657CU22"),
+	// 	Type: to.Ptr("Microsoft.Logic/workflows/triggers/histories"),
+	// 	Properties: &armlogic.WorkflowTriggerHistoryProperties{
+	// 		Code: to.Ptr("OK"),
+	// 		Correlation: &armlogic.Correlation{
+	// 			ClientTrackingID: to.Ptr("08586676746934337772206998657CU22"),
+	// 		},
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T20:16:32.2987996Z"); return t}()),
+	// 		Fired: to.Ptr(true),
+	// 		Run: &armlogic.ResourceReference{
+	// 			Name: to.Ptr("08586676746934337772206998657CU22"),
+	// 			Type: to.Ptr("Microsoft.Logic/workflows/runs"),
+	// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/workflows/testWorkflowName/runs/08586676746934337772206998657CU22"),
+	// 		},
+	// 		ScheduledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T20:16:31.6344174Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T20:16:32.0387927Z"); return t}()),
+	// 		Status: to.Ptr(armlogic.WorkflowStatusSucceeded),
+	// 	},
+	// }
 }

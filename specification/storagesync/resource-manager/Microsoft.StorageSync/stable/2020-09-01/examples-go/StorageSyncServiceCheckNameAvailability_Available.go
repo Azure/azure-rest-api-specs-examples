@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/StorageSyncServiceCheckNameAvailability_AlreadyExists.json
-func ExampleServicesClient_CheckNameAvailability_storageSyncServiceCheckNameAvailabilityAlreadyExists() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/StorageSyncServiceCheckNameAvailability_Available.json
+func ExampleServicesClient_CheckNameAvailability_storageSyncServiceCheckNameAvailabilityAvailable() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -31,8 +31,6 @@ func ExampleServicesClient_CheckNameAvailability_storageSyncServiceCheckNameAvai
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.CheckNameAvailabilityResult = armstoragesync.CheckNameAvailabilityResult{
-	// 	Message: to.Ptr("An account named 'newstoragesyncservicename' is already in use."),
-	// 	NameAvailable: to.Ptr(false),
-	// 	Reason: to.Ptr(armstoragesync.NameAvailabilityReasonAlreadyExists),
+	// 	NameAvailable: to.Ptr(true),
 	// }
 }

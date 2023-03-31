@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoxedge/armdataboxedge"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DataBoxEdgeDevicePut.json
-func ExampleDevicesClient_CreateOrUpdate_dataBoxEdgeDevicePut() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2022-03-01/examples/DataBoxEdgeDevicePutWithDataResidency.json
+func ExampleDevicesClient_CreateOrUpdate_dataBoxEdgeDevicePutWithDataResidency() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,6 +22,11 @@ func ExampleDevicesClient_CreateOrUpdate_dataBoxEdgeDevicePut() {
 	}
 	res, err := clientFactory.NewDevicesClient().CreateOrUpdate(ctx, "testedgedevice", "GroupForEdgeAutomation", armdataboxedge.Device{
 		Location: to.Ptr("WUS"),
+		Properties: &armdataboxedge.DeviceProperties{
+			DataResidency: &armdataboxedge.DataResidency{
+				Type: to.Ptr(armdataboxedge.DataResidencyTypeZoneReplication),
+			},
+		},
 		SKU: &armdataboxedge.SKUInfo{
 			Name: to.Ptr(armdataboxedge.SKUNameEdge),
 			Tier: to.Ptr(armdataboxedge.SKUTierStandard),
@@ -37,6 +42,11 @@ func ExampleDevicesClient_CreateOrUpdate_dataBoxEdgeDevicePut() {
 	// res.Device = armdataboxedge.Device{
 	// 	Name: to.Ptr("testedgedevice"),
 	// 	Location: to.Ptr("WUS"),
+	// 	Properties: &armdataboxedge.DeviceProperties{
+	// 		DataResidency: &armdataboxedge.DataResidency{
+	// 			Type: to.Ptr(armdataboxedge.DataResidencyTypeZoneReplication),
+	// 		},
+	// 	},
 	// 	SKU: &armdataboxedge.SKUInfo{
 	// 		Name: to.Ptr(armdataboxedge.SKUNameEdge),
 	// 		Tier: to.Ptr(armdataboxedge.SKUTierStandard),

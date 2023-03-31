@@ -16,11 +16,11 @@ func ExampleBigDataPoolsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewBigDataPoolsClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExamplePool", armsynapse.BigDataPoolResourceInfo{
+	poller, err := clientFactory.NewBigDataPoolsClient().BeginCreateOrUpdate(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExamplePool", armsynapse.BigDataPoolResourceInfo{
 		Location: to.Ptr("West US 2"),
 		Tags: map[string]*string{
 			"key": to.Ptr("value"),

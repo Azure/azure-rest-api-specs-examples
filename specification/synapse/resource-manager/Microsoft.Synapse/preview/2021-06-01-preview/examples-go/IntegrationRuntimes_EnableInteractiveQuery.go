@@ -15,11 +15,11 @@ func ExampleIntegrationRuntimesClient_BeginEnableInteractiveQuery() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewIntegrationRuntimesClient("12345678-1234-1234-1234-12345678abc", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginEnableInteractiveQuery(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleManagedIntegrationRuntime", nil)
+	poller, err := clientFactory.NewIntegrationRuntimesClient().BeginEnableInteractiveQuery(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleManagedIntegrationRuntime", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

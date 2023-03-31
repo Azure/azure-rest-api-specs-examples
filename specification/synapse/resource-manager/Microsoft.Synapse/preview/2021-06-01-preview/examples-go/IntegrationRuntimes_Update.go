@@ -16,11 +16,11 @@ func ExampleIntegrationRuntimesClient_Update() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewIntegrationRuntimesClient("12345678-1234-1234-1234-12345678abc", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", armsynapse.UpdateIntegrationRuntimeRequest{
+	res, err := clientFactory.NewIntegrationRuntimesClient().Update(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", armsynapse.UpdateIntegrationRuntimeRequest{
 		AutoUpdate:        to.Ptr(armsynapse.IntegrationRuntimeAutoUpdateOff),
 		UpdateDelayOffset: to.Ptr("\"PT3H\""),
 	}, nil)

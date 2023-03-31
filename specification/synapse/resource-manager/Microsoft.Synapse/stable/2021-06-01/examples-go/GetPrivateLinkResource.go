@@ -15,11 +15,11 @@ func ExamplePrivateLinkResourcesClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewPrivateLinkResourcesClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "ExampleResourceGroup", "ExampleWorkspace", "sql", nil)
+	res, err := clientFactory.NewPrivateLinkResourcesClient().Get(ctx, "ExampleResourceGroup", "ExampleWorkspace", "sql", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

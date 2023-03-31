@@ -16,11 +16,11 @@ func ExampleIntegrationRuntimeAuthKeysClient_Regenerate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewIntegrationRuntimeAuthKeysClient("12345678-1234-1234-1234-12345678abc", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Regenerate(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", armsynapse.IntegrationRuntimeRegenerateKeyParameters{
+	res, err := clientFactory.NewIntegrationRuntimeAuthKeysClient().Regenerate(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", armsynapse.IntegrationRuntimeRegenerateKeyParameters{
 		KeyName: to.Ptr(armsynapse.IntegrationRuntimeAuthKeyNameAuthKey2),
 	}, nil)
 	if err != nil {

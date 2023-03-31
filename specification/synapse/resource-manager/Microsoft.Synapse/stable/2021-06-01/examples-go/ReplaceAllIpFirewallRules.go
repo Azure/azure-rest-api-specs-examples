@@ -16,11 +16,11 @@ func ExampleIPFirewallRulesClient_BeginReplaceAll() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewIPFirewallRulesClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginReplaceAll(ctx, "ExampleResourceGroup", "ExampleWorkspace", armsynapse.ReplaceAllIPFirewallRulesRequest{
+	poller, err := clientFactory.NewIPFirewallRulesClient().BeginReplaceAll(ctx, "ExampleResourceGroup", "ExampleWorkspace", armsynapse.ReplaceAllIPFirewallRulesRequest{
 		IPFirewallRules: map[string]*armsynapse.IPFirewallRuleProperties{
 			"AnotherExampleFirewallRule": {
 				EndIPAddress:   to.Ptr("10.0.1.254"),

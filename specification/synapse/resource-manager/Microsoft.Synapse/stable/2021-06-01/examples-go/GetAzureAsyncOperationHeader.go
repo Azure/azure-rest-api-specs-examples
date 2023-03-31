@@ -15,11 +15,11 @@ func ExampleOperationsClient_GetAzureAsyncHeaderResult() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewOperationsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetAzureAsyncHeaderResult(ctx, "resourceGroup1", "workspace1", "01234567-89ab-4def-0123-456789abcdef", nil)
+	res, err := clientFactory.NewOperationsClient().GetAzureAsyncHeaderResult(ctx, "resourceGroup1", "workspace1", "01234567-89ab-4def-0123-456789abcdef", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

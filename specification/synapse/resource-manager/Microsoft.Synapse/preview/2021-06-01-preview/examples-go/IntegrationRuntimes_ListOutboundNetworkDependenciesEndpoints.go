@@ -15,11 +15,11 @@ func ExampleIntegrationRuntimesClient_ListOutboundNetworkDependenciesEndpoints()
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewIntegrationRuntimesClient("ade9c2b6-c160-4305-9bb9-80342f6c1ae2", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListOutboundNetworkDependenciesEndpoints(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", nil)
+	res, err := clientFactory.NewIntegrationRuntimesClient().ListOutboundNetworkDependenciesEndpoints(ctx, "exampleResourceGroup", "exampleWorkspace", "exampleIntegrationRuntime", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

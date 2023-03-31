@@ -15,11 +15,11 @@ func ExampleSQLPoolsClient_BeginPause() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolsClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginPause(ctx, "Default-SQL-SouthEastAsia", "testsvr", "testdwdb", nil)
+	poller, err := clientFactory.NewSQLPoolsClient().BeginPause(ctx, "Default-SQL-SouthEastAsia", "testsvr", "testdwdb", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -16,11 +16,11 @@ func ExampleDataMaskingPoliciesClient_CreateOrUpdate_createOrUpdateDataMaskingPo
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewDataMaskingPoliciesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", armsynapse.DataMaskingPolicy{
+	res, err := clientFactory.NewDataMaskingPoliciesClient().CreateOrUpdate(ctx, "sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-331", armsynapse.DataMaskingPolicy{
 		Properties: &armsynapse.DataMaskingPolicyProperties{
 			DataMaskingState: to.Ptr(armsynapse.DataMaskingStateEnabled),
 			ExemptPrincipals: to.Ptr("testuser;"),

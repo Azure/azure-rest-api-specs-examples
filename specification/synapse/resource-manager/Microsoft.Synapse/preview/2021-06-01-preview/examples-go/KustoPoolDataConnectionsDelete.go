@@ -15,11 +15,11 @@ func ExampleKustoPoolDataConnectionsClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolDataConnectionsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "kustorptest", "synapseWorkspaceName", "kustoclusterrptest4", "KustoDatabase8", "kustoeventhubconnection1", nil)
+	poller, err := clientFactory.NewKustoPoolDataConnectionsClient().BeginDelete(ctx, "kustorptest", "synapseWorkspaceName", "kustoclusterrptest4", "KustoDatabase8", "kustoeventhubconnection1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -16,11 +16,11 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewPrivateEndpointConnectionsClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExamplePrivateEndpointConnection", armsynapse.PrivateEndpointConnection{
+	poller, err := clientFactory.NewPrivateEndpointConnectionsClient().BeginCreate(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExamplePrivateEndpointConnection", armsynapse.PrivateEndpointConnection{
 		Properties: &armsynapse.PrivateEndpointConnectionProperties{
 			PrivateLinkServiceConnectionState: &armsynapse.PrivateLinkServiceConnectionState{
 				Description: to.Ptr("Approved by abc@example.com"),

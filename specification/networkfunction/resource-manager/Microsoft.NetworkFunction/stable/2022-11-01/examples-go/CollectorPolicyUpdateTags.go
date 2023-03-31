@@ -9,18 +9,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkfunction/armnetworkfunction/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/examples/CollectorPolicyUpdateTags.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/527f6d35fb0d85c48210ca0f6f6f42814d63bd33/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/examples/CollectorPolicyUpdateTags.json
 func ExampleCollectorPoliciesClient_UpdateTags() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armnetworkfunction.NewCollectorPoliciesClient("subid", cred, nil)
+	clientFactory, err := armnetworkfunction.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.UpdateTags(ctx, "rg1", "atc", "cp1", armnetworkfunction.TagsObject{
+	res, err := clientFactory.NewCollectorPoliciesClient().UpdateTags(ctx, "rg1", "atc", "cp1", armnetworkfunction.TagsObject{
 		Tags: map[string]*string{
 			"key1": to.Ptr("value1"),
 			"key2": to.Ptr("value2"),
@@ -29,6 +29,37 @@ func ExampleCollectorPoliciesClient_UpdateTags() {
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CollectorPolicy = armnetworkfunction.CollectorPolicy{
+	// 	Name: to.Ptr("atc"),
+	// 	Type: to.Ptr("Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc/collectorPolicies/cp1"),
+	// 	Location: to.Ptr("westus"),
+	// 	Tags: map[string]*string{
+	// 		"key1": to.Ptr("value1"),
+	// 		"key2": to.Ptr("value2"),
+	// 	},
+	// 	Etag: to.Ptr("w/\\72090554-7e3b-43f2-80ad-99a9020dcb11\\"),
+	// 	Properties: &armnetworkfunction.CollectorPolicyPropertiesFormat{
+	// 		EmissionPolicies: []*armnetworkfunction.EmissionPoliciesPropertiesFormat{
+	// 			{
+	// 				EmissionDestinations: []*armnetworkfunction.EmissionPolicyDestination{
+	// 					{
+	// 						DestinationType: to.Ptr(armnetworkfunction.DestinationTypeAzureMonitor),
+	// 				}},
+	// 				EmissionType: to.Ptr(armnetworkfunction.EmissionTypeIPFIX),
+	// 		}},
+	// 		IngestionPolicy: &armnetworkfunction.IngestionPolicyPropertiesFormat{
+	// 			IngestionSources: []*armnetworkfunction.IngestionSourcesPropertiesFormat{
+	// 				{
+	// 					ResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName"),
+	// 					SourceType: to.Ptr(armnetworkfunction.SourceTypeResource),
+	// 			}},
+	// 			IngestionType: to.Ptr(armnetworkfunction.IngestionTypeIPFIX),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armnetworkfunction.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

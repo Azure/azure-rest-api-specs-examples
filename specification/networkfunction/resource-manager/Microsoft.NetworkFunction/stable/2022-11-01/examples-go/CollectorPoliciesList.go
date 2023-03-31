@@ -8,26 +8,56 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkfunction/armnetworkfunction/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/examples/CollectorPoliciesList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/527f6d35fb0d85c48210ca0f6f6f42814d63bd33/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/examples/CollectorPoliciesList.json
 func ExampleCollectorPoliciesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armnetworkfunction.NewCollectorPoliciesClient("subid", cred, nil)
+	clientFactory, err := armnetworkfunction.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("rg1", "atc", nil)
+	pager := clientFactory.NewCollectorPoliciesClient().NewListPager("rg1", "atc", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.CollectorPolicyListResult = armnetworkfunction.CollectorPolicyListResult{
+		// 	Value: []*armnetworkfunction.CollectorPolicy{
+		// 		{
+		// 			Name: to.Ptr("atc"),
+		// 			Type: to.Ptr("Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc/collectorPolicies/cp1"),
+		// 			Location: to.Ptr("westus"),
+		// 			Etag: to.Ptr("w/\\72090554-7e3b-43f2-80ad-99a9020dcb11\\"),
+		// 			Properties: &armnetworkfunction.CollectorPolicyPropertiesFormat{
+		// 				EmissionPolicies: []*armnetworkfunction.EmissionPoliciesPropertiesFormat{
+		// 					{
+		// 						EmissionDestinations: []*armnetworkfunction.EmissionPolicyDestination{
+		// 							{
+		// 								DestinationType: to.Ptr(armnetworkfunction.DestinationTypeAzureMonitor),
+		// 						}},
+		// 						EmissionType: to.Ptr(armnetworkfunction.EmissionTypeIPFIX),
+		// 				}},
+		// 				IngestionPolicy: &armnetworkfunction.IngestionPolicyPropertiesFormat{
+		// 					IngestionSources: []*armnetworkfunction.IngestionSourcesPropertiesFormat{
+		// 						{
+		// 							ResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName"),
+		// 							SourceType: to.Ptr(armnetworkfunction.SourceTypeResource),
+		// 					}},
+		// 					IngestionType: to.Ptr(armnetworkfunction.IngestionTypeIPFIX),
+		// 				},
+		// 				ProvisioningState: to.Ptr(armnetworkfunction.ProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

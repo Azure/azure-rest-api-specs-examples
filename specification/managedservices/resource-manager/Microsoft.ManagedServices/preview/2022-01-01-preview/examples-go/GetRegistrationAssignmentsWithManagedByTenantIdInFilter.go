@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managedservices/armmanagedservices"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationAssignments.json
-func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignments() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationAssignmentsWithManagedByTenantIdInFilter.json
+func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignmentsWithManagedByTenantIdInFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +21,7 @@ func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignment
 		log.Fatalf("failed to create client: %v", err)
 	}
 	pager := clientFactory.NewRegistrationAssignmentsClient().NewListPager("subscription/0afefe50-734e-4610-8a82-a144ahf49dea", &armmanagedservices.RegistrationAssignmentsClientListOptions{ExpandRegistrationDefinition: nil,
-		Filter: nil,
+		Filter: to.Ptr("$filter=managedByTenantId in (83abe5cd-bcc3-441a-bd86-e6a75360cec, de83f4a9-a76a-4025-a91a-91171923eac7)"),
 	})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
@@ -74,15 +75,60 @@ func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignment
 		// 									PrincipalID: to.Ptr("700bddf4-2c3b-4cd1-bb02-6a2c622524f4"),
 		// 									RoleDefinitionID: to.Ptr("8e3af657-a8ff-443c-a75c-2fe8c4bcb635"),
 		// 							}},
-		// 							ManagedByTenantID: to.Ptr("83abe5cd-bcc3-441a-bd86-e6a75360cecc"),
+		// 							ManagedByTenantID: to.Ptr("83abe5cd-bcc3-441a-bd86-e6a75360cec"),
 		// 							ManagedByTenantName: to.Ptr("Contoso Corp."),
 		// 							ManageeTenantID: to.Ptr("01c0bcd5-4f47-4e4b-b492-418b7e2a8854"),
 		// 							ManageeTenantName: to.Ptr("test_test_aad_SbtFhyGiLHPFm"),
 		// 							ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
 		// 							RegistrationDefinitionName: to.Ptr("DefinitionName"),
 		// 						},
+		// 						SystemData: &armmanagedservices.SystemData{
+		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 							CreatedBy: to.Ptr("testuser@outlook.com"),
+		// 							CreatedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
+		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 							LastModifiedBy: to.Ptr("testuser@outlook.com"),
+		// 							LastModifiedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
+		// 						},
 		// 					},
 		// 					RegistrationDefinitionID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationDefinitions/26c128c2-fefa-4340-9bb1-8e081c90ada2"),
+		// 				},
+		// 			},
+		// 			{
+		// 				Name: to.Ptr("f6e721b2-7576-44d3-9182-03143fce94c0"),
+		// 				Type: to.Ptr("Microsoft.ManagedServices/registrationAssignments"),
+		// 				ID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationAssignments/f6e721b2-7576-44d3-9182-03143fce94c0"),
+		// 				Properties: &armmanagedservices.RegistrationAssignmentProperties{
+		// 					ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
+		// 					RegistrationDefinition: &armmanagedservices.RegistrationAssignmentPropertiesRegistrationDefinition{
+		// 						Name: to.Ptr("67aa1d7b-30ac-4ec2-be0b-ce30751468f2"),
+		// 						Type: to.Ptr("Microsoft.ManagedServices/registrationDefinitions"),
+		// 						ID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationDefinitions/67aa1d7b-30ac-4ec2-be0b-ce30751468f2"),
+		// 						Properties: &armmanagedservices.RegistrationAssignmentPropertiesRegistrationDefinitionProperties{
+		// 							Description: to.Ptr("Test"),
+		// 							Authorizations: []*armmanagedservices.Authorization{
+		// 								{
+		// 									PrincipalID: to.Ptr("f98d86a2-4cc4-4e9d-ad47-b3e80a1bcdfc"),
+		// 									PrincipalIDDisplayName: to.Ptr("Support User"),
+		// 									RoleDefinitionID: to.Ptr("acdd72a7-3385-48ef-bd42-f606fba81ae7"),
+		// 							}},
+		// 							ManagedByTenantID: to.Ptr("de83f4a9-a76a-4025-a91a-91171923eac7"),
+		// 							ManagedByTenantName: to.Ptr("Test Corp."),
+		// 							ManageeTenantID: to.Ptr("01c0bcd5-4f47-4e4b-b492-418b7e2a8854"),
+		// 							ManageeTenantName: to.Ptr("test_test_aad_SbtFhyGiLHPFm"),
+		// 							ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
+		// 							RegistrationDefinitionName: to.Ptr("DefinitionName"),
+		// 						},
+		// 						SystemData: &armmanagedservices.SystemData{
+		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 							CreatedBy: to.Ptr("testuser@outlook.com"),
+		// 							CreatedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
+		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 							LastModifiedBy: to.Ptr("testuser@outlook.com"),
+		// 							LastModifiedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
+		// 						},
+		// 					},
+		// 					RegistrationDefinitionID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationDefinitions/67aa1d7b-30ac-4ec2-be0b-ce30751468f2"),
 		// 				},
 		// 		}},
 		// 	}

@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/managedservices/armmanagedservices"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationAssignments.json
-func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignments() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2022-01-01-preview/examples/GetRegistrationAssignmentsWithManagedByTenantIdEqFilter.json
+func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignmentsWithManagedByTenantIdEqFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +21,7 @@ func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignment
 		log.Fatalf("failed to create client: %v", err)
 	}
 	pager := clientFactory.NewRegistrationAssignmentsClient().NewListPager("subscription/0afefe50-734e-4610-8a82-a144ahf49dea", &armmanagedservices.RegistrationAssignmentsClientListOptions{ExpandRegistrationDefinition: nil,
-		Filter: nil,
+		Filter: to.Ptr("$filter=managedByTenantId eq '83abe5cd-bcc3-441a-bd86-e6a75360cecc'"),
 	})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
@@ -80,6 +81,14 @@ func ExampleRegistrationAssignmentsClient_NewListPager_getRegistrationAssignment
 		// 							ManageeTenantName: to.Ptr("test_test_aad_SbtFhyGiLHPFm"),
 		// 							ProvisioningState: to.Ptr(armmanagedservices.ProvisioningStateSucceeded),
 		// 							RegistrationDefinitionName: to.Ptr("DefinitionName"),
+		// 						},
+		// 						SystemData: &armmanagedservices.SystemData{
+		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 							CreatedBy: to.Ptr("testuser@outlook.com"),
+		// 							CreatedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
+		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-22T19:56:05.0703382Z"); return t}()),
+		// 							LastModifiedBy: to.Ptr("testuser@outlook.com"),
+		// 							LastModifiedByType: to.Ptr(armmanagedservices.CreatedByTypeUser),
 		// 						},
 		// 					},
 		// 					RegistrationDefinitionID: to.Ptr("/subscriptions/0afefe50-734e-4610-8c82-a144aff49dea/providers/Microsoft.ManagedServices/registrationDefinitions/26c128c2-fefa-4340-9bb1-8e081c90ada2"),

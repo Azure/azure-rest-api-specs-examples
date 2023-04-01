@@ -8,18 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/sourcecontrols/DeleteSourceControl.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/sourcecontrols/DeleteSourceControl.json
 func ExampleSourceControlsClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurityinsights.NewSourceControlsClient("d0cfe6b2-9ac0-4464-9919-dccaee2e48c0", cred, nil)
+	clientFactory, err := armsecurityinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx, "myRg", "myWorkspace", "789e0c1f-4a3d-43ad-809c-e713b677b04a", nil)
+	_, err = clientFactory.NewSourceControlsClient().Delete(ctx, "myRg", "myWorkspace", "789e0c1f-4a3d-43ad-809c-e713b677b04a", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/timeseriesinsights/armtimeseriesinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/stable/2020-05-15/examples/EventSourcesCreateEventHub.json
-func ExampleEventSourcesClient_CreateOrUpdate_createEventHubEventSource() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/timeseriesinsights/resource-manager/Microsoft.TimeSeriesInsights/stable/2020-05-15/examples/EventSourcesCreateEventHubWithCustomEnquedTime.json
+func ExampleEventSourcesClient_CreateOrUpdate_eventSourcesCreateEventHubWithCustomEnquedTime() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -25,13 +25,8 @@ func ExampleEventSourcesClient_CreateOrUpdate_createEventHubEventSource() {
 		Kind:     to.Ptr(armtimeseriesinsights.EventSourceKindMicrosoftEventHub),
 		Properties: &armtimeseriesinsights.EventHubEventSourceCreationProperties{
 			IngressStartAt: &armtimeseriesinsights.IngressStartAtProperties{
-				Type: to.Ptr(armtimeseriesinsights.IngressStartAtTypeEarliestAvailable),
-			},
-			LocalTimestamp: &armtimeseriesinsights.LocalTimestamp{
-				Format: to.Ptr(armtimeseriesinsights.LocalTimestampFormat("TimeSpan")),
-				TimeZoneOffset: &armtimeseriesinsights.LocalTimestampTimeZoneOffset{
-					PropertyName: to.Ptr("someEventPropertyName"),
-				},
+				Type: to.Ptr(armtimeseriesinsights.IngressStartAtTypeCustomEnqueuedTime),
+				Time: to.Ptr("2017-04-01T19:20:33.2288820Z"),
 			},
 			TimestampPropertyName: to.Ptr("someTimestampProperty"),
 			EventSourceResourceID: to.Ptr("somePathInArm"),
@@ -61,13 +56,8 @@ func ExampleEventSourcesClient_CreateOrUpdate_createEventHubEventSource() {
 	// 			CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-18T19:20:33.2288820Z"); return t}()),
 	// 			ProvisioningState: to.Ptr(armtimeseriesinsights.ProvisioningStateSucceeded),
 	// 			IngressStartAt: &armtimeseriesinsights.IngressStartAtProperties{
-	// 				Type: to.Ptr(armtimeseriesinsights.IngressStartAtTypeEarliestAvailable),
-	// 			},
-	// 			LocalTimestamp: &armtimeseriesinsights.LocalTimestamp{
-	// 				Format: to.Ptr(armtimeseriesinsights.LocalTimestampFormat("TimeSpan")),
-	// 				TimeZoneOffset: &armtimeseriesinsights.LocalTimestampTimeZoneOffset{
-	// 					PropertyName: to.Ptr("someEventPropertyName"),
-	// 				},
+	// 				Type: to.Ptr(armtimeseriesinsights.IngressStartAtTypeCustomEnqueuedTime),
+	// 				Time: to.Ptr("2017-04-01T19:20:33.2288820Z"),
 	// 			},
 	// 			EventSourceResourceID: to.Ptr("somePathInArm"),
 	// 			ConsumerGroupName: to.Ptr("cgn"),

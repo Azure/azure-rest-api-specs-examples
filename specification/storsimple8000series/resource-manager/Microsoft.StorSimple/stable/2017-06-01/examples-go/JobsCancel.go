@@ -8,23 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storsimple8000series/armstorsimple8000series"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/JobsCancel.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/163e27c0ca7570bc39e00a46f255740d9b3ba3cb/specification/storsimple8000series/resource-manager/Microsoft.StorSimple/stable/2017-06-01/examples/JobsCancel.json
 func ExampleJobsClient_BeginCancel() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstorsimple8000series.NewJobsClient("4385cf00-2d3a-425a-832f-f4285b1c9dce", cred, nil)
+	clientFactory, err := armstorsimple8000series.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCancel(ctx,
-		"Device05ForSDKTest",
-		"993db21d-101b-41af-9e12-f593d78b99e9",
-		"ResourceGroupForSDKTest",
-		"ManagerForSDKTest1",
-		nil)
+	poller, err := clientFactory.NewJobsClient().BeginCancel(ctx, "Device05ForSDKTest", "993db21d-101b-41af-9e12-f593d78b99e9", "ResourceGroupForSDKTest", "ManagerForSDKTest1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

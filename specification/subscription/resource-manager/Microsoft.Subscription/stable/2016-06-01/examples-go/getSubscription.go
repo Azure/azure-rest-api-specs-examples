@@ -8,23 +8,34 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/subscription/armsubscription"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/subscription/resource-manager/Microsoft.Subscription/stable/2016-06-01/examples/getSubscription.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/subscription/resource-manager/Microsoft.Subscription/stable/2016-06-01/examples/getSubscription.json
 func ExampleSubscriptionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsubscription.NewSubscriptionsClient(cred, nil)
+	clientFactory, err := armsubscription.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"83aa47df-e3e9-49ff-877b-94304bf3d3ad",
-		nil)
+	res, err := clientFactory.NewSubscriptionsClient().Get(ctx, "83aa47df-e3e9-49ff-877b-94304bf3d3ad", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Subscription = armsubscription.Subscription{
+	// 	AuthorizationSource: to.Ptr("Legacy"),
+	// 	DisplayName: to.Ptr("Subscription2"),
+	// 	ID: to.Ptr("/subscriptions/83aa47df-e3e9-49ff-877b-94304bf3d3ad"),
+	// 	State: to.Ptr(armsubscription.SubscriptionStateEnabled),
+	// 	SubscriptionID: to.Ptr("83aa47df-e3e9-49ff-877b-94304bf3d3ad"),
+	// 	SubscriptionPolicies: &armsubscription.Policies{
+	// 		LocationPlacementID: to.Ptr("Internal_2014-09-01"),
+	// 		QuotaID: to.Ptr("Internal_2014-09-01"),
+	// 		SpendingLimit: to.Ptr(armsubscription.SpendingLimitOff),
+	// 	},
+	// }
 }

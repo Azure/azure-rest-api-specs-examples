@@ -8,21 +8,33 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securitydevops/armsecuritydevops"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsConnectorGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c71a66dab813061f1d09982c2748a09317fe0860/specification/securitydevops/resource-manager/Microsoft.SecurityDevOps/preview/2022-09-01-preview/examples/AzureDevOpsConnectorGet.json
 func ExampleAzureDevOpsConnectorClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecuritydevops.NewAzureDevOpsConnectorClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armsecuritydevops.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "westusrg", "testconnector", nil)
+	res, err := clientFactory.NewAzureDevOpsConnectorClient().Get(ctx, "westusrg", "testconnector", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AzureDevOpsConnector = armsecuritydevops.AzureDevOpsConnector{
+	// 	Name: to.Ptr("testconnector"),
+	// 	Type: to.Ptr("microsoft.securitydevops/azureDevOpsConnectors"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/westusrg/providers/Microsoft.SecurityDevOps/azureDevOpsConnectors/testconnector"),
+	// 	Location: to.Ptr("West US"),
+	// 	Tags: map[string]*string{
+	// 	},
+	// 	Properties: &armsecuritydevops.AzureDevOpsConnectorProperties{
+	// 		ProvisioningState: to.Ptr(armsecuritydevops.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

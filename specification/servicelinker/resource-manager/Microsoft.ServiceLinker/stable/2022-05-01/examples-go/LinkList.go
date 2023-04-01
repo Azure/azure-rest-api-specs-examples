@@ -8,27 +8,48 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicelinker/armservicelinker"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/LinkList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/servicelinker/resource-manager/Microsoft.ServiceLinker/stable/2022-05-01/examples/LinkList.json
 func ExampleLinkerClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicelinker.NewLinkerClient(cred, nil)
+	clientFactory, err := armservicelinker.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app",
-		nil)
+	pager := clientFactory.NewLinkerClient().NewListPager("subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/sites/test-app", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.LinkerList = armservicelinker.LinkerList{
+		// 	Value: []*armservicelinker.LinkerResource{
+		// 		{
+		// 			Name: to.Ptr("linkName"),
+		// 			Type: to.Ptr("Microsoft.ServiceLinker/links"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceLinker/links/linkName"),
+		// 			Properties: &armservicelinker.LinkerProperties{
+		// 				AuthInfo: &armservicelinker.SecretAuthInfo{
+		// 					AuthType: to.Ptr(armservicelinker.AuthTypeSecret),
+		// 					Name: to.Ptr("username"),
+		// 				},
+		// 				TargetService: &armservicelinker.AzureResource{
+		// 					Type: to.Ptr(armservicelinker.TargetServiceTypeAzureResource),
+		// 					ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
+		// 				},
+		// 			},
+		// 			SystemData: &armservicelinker.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:05:09Z"); return t}()),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListSupportTicketsCreatedOnOrAfterAndInOpenStateBySubscription.json
-func ExampleTicketsClient_NewListPager_listSupportTicketsCreatedOnOrAfterACertainDateAndInOpenStateForASubscription() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/ListSupportTicketsInOpenStateBySubscription.json
+func ExampleTicketsClient_NewListPager_listSupportTicketsInOpenStateForASubscription() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -21,7 +21,7 @@ func ExampleTicketsClient_NewListPager_listSupportTicketsCreatedOnOrAfterACertai
 		log.Fatalf("failed to create client: %v", err)
 	}
 	pager := clientFactory.NewTicketsClient().NewListPager(&armsupport.TicketsClientListOptions{Top: nil,
-		Filter: to.Ptr("createdDate ge 2020-03-10T22:08:51Z and status eq 'Open'"),
+		Filter: to.Ptr("status eq 'Open'"),
 	})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
@@ -50,17 +50,17 @@ func ExampleTicketsClient_NewListPager_listSupportTicketsCreatedOnOrAfterACertai
 		// 					PreferredTimeZone: to.Ptr("Pacific Standard Time"),
 		// 					PrimaryEmailAddress: to.Ptr("abc@contoso.com"),
 		// 				},
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T21:36:18Z"); return t}()),
-		// 				ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-12T21:36:23Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
+		// 				ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23Z"); return t}()),
 		// 				ProblemClassificationDisplayName: to.Ptr("Connectivity / Cannot connect to virtual machine by using RDP or SSH"),
 		// 				ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/virtual_machine_service_guid/problemClassifications/problemClassification_guid"),
 		// 				Require24X7Response: to.Ptr(false),
 		// 				ServiceDisplayName: to.Ptr("Virtual Machine running Linux"),
 		// 				ServiceID: to.Ptr("/providers/Microsoft.Support/services/virtual_machine_service_guid"),
 		// 				ServiceLevelAgreement: &armsupport.ServiceLevelAgreement{
-		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-12T17:36:18Z"); return t}()),
+		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18Z"); return t}()),
 		// 					SLAMinutes: to.Ptr[int32](240),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T21:36:18Z"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
 		// 				},
 		// 				Severity: to.Ptr(armsupport.SeverityLevelModerate),
 		// 				Status: to.Ptr("Open"),
@@ -90,17 +90,17 @@ func ExampleTicketsClient_NewListPager_listSupportTicketsCreatedOnOrAfterACertai
 		// 					PreferredTimeZone: to.Ptr("Pacific Standard Time"),
 		// 					PrimaryEmailAddress: to.Ptr("abc@contoso.com"),
 		// 				},
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T21:36:18Z"); return t}()),
-		// 				ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-12T21:36:18Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
+		// 				ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23Z"); return t}()),
 		// 				ProblemClassificationDisplayName: to.Ptr("Add or Edit VAT, TAX ID, or PO Number"),
 		// 				ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/subscription_management_service_guid/problemClassifications/problemClassification_guid"),
 		// 				Require24X7Response: to.Ptr(false),
 		// 				ServiceDisplayName: to.Ptr("Subscription management"),
 		// 				ServiceID: to.Ptr("/providers/Microsoft.Support/services/subscription_management_service_guid"),
 		// 				ServiceLevelAgreement: &armsupport.ServiceLevelAgreement{
-		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-12T17:36:18Z"); return t}()),
+		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18Z"); return t}()),
 		// 					SLAMinutes: to.Ptr[int32](240),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-11T21:36:18Z"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
 		// 				},
 		// 				Severity: to.Ptr(armsupport.SeverityLevelMinimal),
 		// 				Status: to.Ptr("Open"),

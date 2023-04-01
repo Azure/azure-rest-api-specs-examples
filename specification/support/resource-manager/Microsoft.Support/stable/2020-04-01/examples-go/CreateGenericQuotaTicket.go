@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/GetSubscriptionSupportTicketDetails.json
-func ExampleTicketsClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateGenericQuotaTicket.json
+func ExampleTicketsClient_BeginCreate_createATicketToRequestQuotaIncreaseForServicesThatDoNotRequireAdditionalDetailsInTheQuotaTicketDetailsObject() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,9 +20,30 @@ func ExampleTicketsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewTicketsClient().Get(ctx, "testticket", nil)
+	poller, err := clientFactory.NewTicketsClient().BeginCreate(ctx, "testticket", armsupport.TicketDetails{
+		Properties: &armsupport.TicketDetailsProperties{
+			Description: to.Ptr("Increase the maximum throughput per container limit to 10000 for account foo bar"),
+			ContactDetails: &armsupport.ContactProfile{
+				Country:                  to.Ptr("usa"),
+				FirstName:                to.Ptr("abc"),
+				LastName:                 to.Ptr("xyz"),
+				PreferredContactMethod:   to.Ptr(armsupport.PreferredContactMethodEmail),
+				PreferredSupportLanguage: to.Ptr("en-US"),
+				PreferredTimeZone:        to.Ptr("Pacific Standard Time"),
+				PrimaryEmailAddress:      to.Ptr("abc@contoso.com"),
+			},
+			ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/cosmosdb_problemClassification_guid"),
+			ServiceID:               to.Ptr("/providers/Microsoft.Support/services/quota_service_guid"),
+			Severity:                to.Ptr(armsupport.SeverityLevelModerate),
+			Title:                   to.Ptr("my title"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
@@ -31,9 +53,9 @@ func ExampleTicketsClient_Get() {
 	// 	Type: to.Ptr("Microsoft.Support/supportTickets"),
 	// 	ID: to.Ptr("/subscriptions/subid/providers/Microsoft.Support/supportTickets/testticket"),
 	// 	Properties: &armsupport.TicketDetailsProperties{
-	// 		Description: to.Ptr("This is a test - please ignore"),
+	// 		Description: to.Ptr("Increase the maximum throughput per container limit to 10000 for account foo bar"),
 	// 		ContactDetails: &armsupport.ContactProfile{
-	// 			Country: to.Ptr("USA"),
+	// 			Country: to.Ptr("usa"),
 	// 			FirstName: to.Ptr("abc"),
 	// 			LastName: to.Ptr("xyz"),
 	// 			PreferredContactMethod: to.Ptr(armsupport.PreferredContactMethodEmail),
@@ -43,24 +65,23 @@ func ExampleTicketsClient_Get() {
 	// 		},
 	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
 	// 		ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23Z"); return t}()),
-	// 		ProblemClassificationDisplayName: to.Ptr("Add or Edit VAT, TAX ID, or PO Number"),
-	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/subscription_management_service_guid/problemClassifications/problemClassification_guid"),
+	// 		ProblemClassificationDisplayName: to.Ptr("Cosmos DB"),
+	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/cosmosdb_problemClassification_guid"),
 	// 		Require24X7Response: to.Ptr(false),
-	// 		ServiceDisplayName: to.Ptr("Subscription management"),
-	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/subscription_management_service_guid"),
+	// 		ServiceDisplayName: to.Ptr("Service and subscription limits (quotas)"),
+	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid"),
 	// 		ServiceLevelAgreement: &armsupport.ServiceLevelAgreement{
 	// 			ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18Z"); return t}()),
 	// 			SLAMinutes: to.Ptr[int32](240),
 	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
 	// 		},
-	// 		Severity: to.Ptr(armsupport.SeverityLevelMinimal),
+	// 		Severity: to.Ptr(armsupport.SeverityLevelModerate),
 	// 		Status: to.Ptr("Open"),
 	// 		SupportEngineer: &armsupport.Engineer{
-	// 			EmailAddress: to.Ptr("xyz@contoso.com"),
 	// 		},
 	// 		SupportPlanType: to.Ptr("Premier"),
-	// 		SupportTicketID: to.Ptr("118032014183770"),
-	// 		Title: to.Ptr("Test - please ignore"),
+	// 		SupportTicketID: to.Ptr("119120321001170"),
+	// 		Title: to.Ptr("my title"),
 	// 	},
 	// }
 }

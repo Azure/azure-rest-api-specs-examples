@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBillingSupportTicketForSubscription.json
-func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/CreateBatchQuotaTicketForSpecificBatchAccountForActiveJobs.json
+func ExampleTicketsClient_BeginCreate_createATicketToRequestQuotaIncreaseForActiveJobsAndJobSchedulesForABatchAccount() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -32,10 +32,19 @@ func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
 				PreferredTimeZone:        to.Ptr("Pacific Standard Time"),
 				PrimaryEmailAddress:      to.Ptr("abc@contoso.com"),
 			},
-			ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid/problemClassifications/billing_problemClassification_guid"),
-			ServiceID:               to.Ptr("/providers/Microsoft.Support/services/billing_service_guid"),
-			Severity:                to.Ptr(armsupport.SeverityLevelModerate),
-			Title:                   to.Ptr("my title"),
+			ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/batch_problemClassification_guid"),
+			QuotaTicketDetails: &armsupport.QuotaTicketDetails{
+				QuotaChangeRequestSubType: to.Ptr("Account"),
+				QuotaChangeRequestVersion: to.Ptr("1.0"),
+				QuotaChangeRequests: []*armsupport.QuotaChangeRequest{
+					{
+						Payload: to.Ptr("{\"AccountName\":\"test\",\"NewLimit\":200,\"Type\":\"Jobs\"}"),
+						Region:  to.Ptr("EastUS"),
+					}},
+			},
+			ServiceID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid"),
+			Severity:  to.Ptr(armsupport.SeverityLevelModerate),
+			Title:     to.Ptr("my title"),
 		},
 	}, nil)
 	if err != nil {
@@ -65,11 +74,20 @@ func ExampleTicketsClient_BeginCreate_createATicketForBillingRelatedIssues() {
 	// 		},
 	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
 	// 		ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23Z"); return t}()),
-	// 		ProblemClassificationDisplayName: to.Ptr("Refund request"),
-	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid/problemClassifications/billing_problemClassification_guid"),
+	// 		ProblemClassificationDisplayName: to.Ptr("Batch"),
+	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/batch_problemClassification_guid"),
+	// 		QuotaTicketDetails: &armsupport.QuotaTicketDetails{
+	// 			QuotaChangeRequestSubType: to.Ptr("Account"),
+	// 			QuotaChangeRequestVersion: to.Ptr("1.0"),
+	// 			QuotaChangeRequests: []*armsupport.QuotaChangeRequest{
+	// 				{
+	// 					Payload: to.Ptr("{\"AccountName\":\"test\",\"NewLimit\":200,\"Type\":\"Jobs\"}"),
+	// 					Region: to.Ptr("EastUS"),
+	// 			}},
+	// 		},
 	// 		Require24X7Response: to.Ptr(false),
-	// 		ServiceDisplayName: to.Ptr("Billing"),
-	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/billing_service_guid"),
+	// 		ServiceDisplayName: to.Ptr("Service and subscription limits (quotas)"),
+	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid"),
 	// 		ServiceLevelAgreement: &armsupport.ServiceLevelAgreement{
 	// 			ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18Z"); return t}()),
 	// 			SLAMinutes: to.Ptr[int32](240),

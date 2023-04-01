@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/UpdateContactDetailsOfSupportTicketForSubscription.json
-func ExampleTicketsClient_Update_updateContactDetailsOfASupportTicket() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/support/resource-manager/Microsoft.Support/stable/2020-04-01/examples/UpdateSeverityOfSupportTicketForSubscription.json
+func ExampleTicketsClient_Update_updateSeverityOfASupportTicket() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -21,19 +21,7 @@ func ExampleTicketsClient_Update_updateContactDetailsOfASupportTicket() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewTicketsClient().Update(ctx, "testticket", armsupport.UpdateSupportTicket{
-		ContactDetails: &armsupport.UpdateContactProfile{
-			AdditionalEmailAddresses: []*string{
-				to.Ptr("tname@contoso.com"),
-				to.Ptr("teamtest@contoso.com")},
-			Country:                  to.Ptr("USA"),
-			FirstName:                to.Ptr("first name"),
-			LastName:                 to.Ptr("last name"),
-			PhoneNumber:              to.Ptr("123-456-7890"),
-			PreferredContactMethod:   to.Ptr(armsupport.PreferredContactMethodEmail),
-			PreferredSupportLanguage: to.Ptr("en-US"),
-			PreferredTimeZone:        to.Ptr("Pacific Standard Time"),
-			PrimaryEmailAddress:      to.Ptr("test.name@contoso.com"),
-		},
+		Severity: to.Ptr(armsupport.SeverityLevelCritical),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -52,9 +40,8 @@ func ExampleTicketsClient_Update_updateContactDetailsOfASupportTicket() {
 	// 				to.Ptr("tname@contoso.com"),
 	// 				to.Ptr("teamtest@contoso.com")},
 	// 				Country: to.Ptr("USA"),
-	// 				FirstName: to.Ptr("first name"),
-	// 				LastName: to.Ptr("last name"),
-	// 				PhoneNumber: to.Ptr("123-456-7890"),
+	// 				FirstName: to.Ptr("abc"),
+	// 				LastName: to.Ptr("xyz"),
 	// 				PreferredContactMethod: to.Ptr(armsupport.PreferredContactMethodEmail),
 	// 				PreferredSupportLanguage: to.Ptr("en-US"),
 	// 				PreferredTimeZone: to.Ptr("Pacific Standard Time"),

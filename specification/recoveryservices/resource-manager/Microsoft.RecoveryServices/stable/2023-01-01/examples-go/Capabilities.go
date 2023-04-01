@@ -16,11 +16,11 @@ func ExampleClient_Capabilities() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservices.NewClient("77777777-b0c6-47a2-b37c-d8e65a629c18", cred, nil)
+	clientFactory, err := armrecoveryservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Capabilities(ctx, "westus", armrecoveryservices.ResourceCapabilities{
+	res, err := clientFactory.NewClient().Capabilities(ctx, "westus", armrecoveryservices.ResourceCapabilities{
 		Type: to.Ptr("Microsoft.RecoveryServices/Vaults"),
 		Properties: &armrecoveryservices.CapabilitiesProperties{
 			DNSZones: []*armrecoveryservices.DNSZone{

@@ -16,11 +16,11 @@ func ExampleClient_CheckNameAvailability_availabilityStatusOfResourceNameWhenNoR
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservices.NewClient("77777777-b0c6-47a2-b37c-d8e65a629c18", cred, nil)
+	clientFactory, err := armrecoveryservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "resGroupFoo", "westus", armrecoveryservices.CheckNameAvailabilityParameters{
+	res, err := clientFactory.NewClient().CheckNameAvailability(ctx, "resGroupFoo", "westus", armrecoveryservices.CheckNameAvailabilityParameters{
 		Name: to.Ptr("swaggerExample"),
 		Type: to.Ptr("Microsoft.RecoveryServices/Vaults"),
 	}, nil)

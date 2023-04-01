@@ -16,11 +16,11 @@ func ExampleVaultsClient_BeginCreateOrUpdate_createOrUpdateVaultWithUserAssigned
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservices.NewVaultsClient("77777777-b0c6-47a2-b37c-d8e65a629c18", cred, nil)
+	clientFactory, err := armrecoveryservices.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "Default-RecoveryServices-ResourceGroup", "swaggerExample", armrecoveryservices.Vault{
+	poller, err := clientFactory.NewVaultsClient().BeginCreateOrUpdate(ctx, "Default-RecoveryServices-ResourceGroup", "swaggerExample", armrecoveryservices.Vault{
 		Location: to.Ptr("West US"),
 		Identity: &armrecoveryservices.IdentityData{
 			Type: to.Ptr(armrecoveryservices.ResourceIdentityTypeUserAssigned),

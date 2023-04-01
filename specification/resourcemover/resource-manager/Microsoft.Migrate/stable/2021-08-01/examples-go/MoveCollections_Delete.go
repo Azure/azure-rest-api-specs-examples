@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourcemover/armresourcemover"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/examples/MoveCollections_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/resourcemover/resource-manager/Microsoft.Migrate/stable/2021-08-01/examples/MoveCollections_Delete.json
 func ExampleMoveCollectionsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armresourcemover.NewMoveCollectionsClient("subid", cred, nil)
+	clientFactory, err := armresourcemover.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"rg1",
-		"movecollection1",
-		nil)
+	poller, err := clientFactory.NewMoveCollectionsClient().BeginDelete(ctx, "rg1", "movecollection1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -30,6 +27,16 @@ func ExampleMoveCollectionsClient_BeginDelete() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.OperationStatus = armresourcemover.OperationStatus{
+	// 	Name: to.Ptr("1e4193c3-206e-4916-b124-1da16175eb0e"),
+	// 	EndTime: to.Ptr("6/17/2020 6:45:56 AM"),
+	// 	ID: to.Ptr("/subscriptions/e80eb9fa-c996-4435-aa32-5af6f3d3077c/resourceGroups/RegionMoveRG-southcentralus-southeastasia/providers/Microsoft.Migrate/MoveCollections/MoveCollection-southcentralus-southeastasia/operations/1e4193c3-206e-4916-b124-1da16175eb0e"),
+	// 	Properties: map[string]any{
+	// 	},
+	// 	StartTime: to.Ptr("6/17/2020 6:45:55 AM"),
+	// 	Status: to.Ptr("Succeeded"),
+	// }
 }

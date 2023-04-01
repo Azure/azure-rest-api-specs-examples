@@ -8,27 +8,48 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/scvmm/armscvmm"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/scvmm/resource-manager/Microsoft.ScVmm/preview/2020-06-05-preview/examples/ListVMMServersByResourceGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/scvmm/resource-manager/Microsoft.ScVmm/preview/2020-06-05-preview/examples/ListVMMServersByResourceGroup.json
 func ExampleVmmServersClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armscvmm.NewVmmServersClient("fd3c3665-1729-4b7b-9a38-238e83b0f98b", cred, nil)
+	clientFactory, err := armscvmm.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("testrg",
-		nil)
+	pager := clientFactory.NewVmmServersClient().NewListByResourceGroupPager("testrg", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.VMMServerListResult = armscvmm.VMMServerListResult{
+		// 	Value: []*armscvmm.VMMServer{
+		// 		{
+		// 			Name: to.Ptr("ContosoVMMServer"),
+		// 			Type: to.Ptr("Microsoft.SCVMM/VMMServers"),
+		// 			ExtendedLocation: &armscvmm.ExtendedLocation{
+		// 				Name: to.Ptr("/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso"),
+		// 				Type: to.Ptr("customLocation"),
+		// 			},
+		// 			ID: to.Ptr("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/VMMServers/ContosoVMMServer"),
+		// 			Location: to.Ptr("East US"),
+		// 			Properties: &armscvmm.VMMServerProperties{
+		// 				ConnectionStatus: to.Ptr("Connected"),
+		// 				Fqdn: to.Ptr("VMM.contoso.com"),
+		// 				Port: to.Ptr[int32](1234),
+		// 				ProvisioningState: to.Ptr("Succeeded"),
+		// 				UUID: to.Ptr("fd3c3665-1729-4b7b-9a38-238e83b0f98b"),
+		// 				Version: to.Ptr("2.0"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

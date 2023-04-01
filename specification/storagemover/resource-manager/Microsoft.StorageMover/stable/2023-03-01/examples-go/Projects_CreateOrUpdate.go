@@ -16,11 +16,11 @@ func ExampleProjectsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragemover.NewProjectsClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armstoragemover.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "examples-rg", "examples-storageMoverName", "examples-projectName", armstoragemover.Project{
+	res, err := clientFactory.NewProjectsClient().CreateOrUpdate(ctx, "examples-rg", "examples-storageMoverName", "examples-projectName", armstoragemover.Project{
 		Properties: &armstoragemover.ProjectProperties{
 			Description: to.Ptr("Example Project Description"),
 		},

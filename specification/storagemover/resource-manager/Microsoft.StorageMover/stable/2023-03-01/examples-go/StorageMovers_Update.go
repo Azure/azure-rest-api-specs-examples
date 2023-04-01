@@ -16,11 +16,11 @@ func ExampleStorageMoversClient_Update() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragemover.NewStorageMoversClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armstoragemover.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx, "examples-rg", "examples-storageMoverName", armstoragemover.UpdateParameters{
+	res, err := clientFactory.NewStorageMoversClient().Update(ctx, "examples-rg", "examples-storageMoverName", armstoragemover.UpdateParameters{
 		Properties: &armstoragemover.UpdateProperties{
 			Description: to.Ptr("Updated Storage Mover Description"),
 		},

@@ -16,11 +16,11 @@ func ExampleJobDefinitionsClient_Update() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragemover.NewJobDefinitionsClient("11111111-2222-3333-4444-555555555555", cred, nil)
+	clientFactory, err := armstoragemover.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Update(ctx, "examples-rg", "examples-storageMoverName", "examples-projectName", "examples-jobDefinitionName", armstoragemover.JobDefinitionUpdateParameters{
+	res, err := clientFactory.NewJobDefinitionsClient().Update(ctx, "examples-rg", "examples-storageMoverName", "examples-projectName", "examples-jobDefinitionName", armstoragemover.JobDefinitionUpdateParameters{
 		Properties: &armstoragemover.JobDefinitionUpdateProperties{
 			Description: to.Ptr("Updated Job Definition Description"),
 			AgentName:   to.Ptr("updatedAgentName"),

@@ -9,26 +9,28 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purview/armpurview"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/Accounts_CheckNameAvailability.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/Accounts_CheckNameAvailability.json
 func ExampleAccountsClient_CheckNameAvailability() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpurview.NewAccountsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armpurview.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx,
-		armpurview.CheckNameAvailabilityRequest{
-			Name: to.Ptr("account1"),
-			Type: to.Ptr("Microsoft.Purview/accounts"),
-		},
-		nil)
+	res, err := clientFactory.NewAccountsClient().CheckNameAvailability(ctx, armpurview.CheckNameAvailabilityRequest{
+		Name: to.Ptr("account1"),
+		Type: to.Ptr("Microsoft.Purview/accounts"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.CheckNameAvailabilityResult = armpurview.CheckNameAvailabilityResult{
+	// 	NameAvailable: to.Ptr(true),
+	// }
 }

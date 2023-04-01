@@ -9,26 +9,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purview/armpurview"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/Accounts_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/Accounts_Update.json
 func ExampleAccountsClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpurview.NewAccountsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armpurview.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"SampleResourceGroup",
-		"account1",
-		armpurview.AccountUpdateParameters{
-			Tags: map[string]*string{
-				"newTag": to.Ptr("New tag value."),
-			},
+	poller, err := clientFactory.NewAccountsClient().BeginUpdate(ctx, "SampleResourceGroup", "account1", armpurview.AccountUpdateParameters{
+		Tags: map[string]*string{
+			"newTag": to.Ptr("New tag value."),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -36,6 +32,46 @@ func ExampleAccountsClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Account = armpurview.Account{
+	// 	Name: to.Ptr("account1"),
+	// 	Type: to.Ptr("Microsoft.Purview/accounts"),
+	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/SampleResourceGroup/providers/Microsoft.Purview/accounts/account1"),
+	// 	Location: to.Ptr("West US 2"),
+	// 	SystemData: &armpurview.TrackedResourceSystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-11-22T18:39:58.6929344Z"); return t}()),
+	// 		CreatedBy: to.Ptr("client-name"),
+	// 		CreatedByType: to.Ptr(armpurview.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-16T23:24:34.3430059Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("client-name"),
+	// 		LastModifiedByType: to.Ptr(armpurview.LastModifiedByTypeUser),
+	// 	},
+	// 	Tags: map[string]*string{
+	// 		"newTag": to.Ptr("New tag value."),
+	// 	},
+	// 	Properties: &armpurview.AccountProperties{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-11-22T18:39:58.6929344Z"); return t}()),
+	// 		CreatedBy: to.Ptr("client-name"),
+	// 		CreatedByObjectID: to.Ptr("client-objectId"),
+	// 		Endpoints: &armpurview.AccountPropertiesEndpoints{
+	// 			Catalog: to.Ptr("https://account2.catalog.purview.azure-test.com"),
+	// 			Guardian: to.Ptr("https://account1.guardian.purview.azure-test.com"),
+	// 			Scan: to.Ptr("https://account2.scan.purview.azure-test.com"),
+	// 		},
+	// 		FriendlyName: to.Ptr("friendly-account1"),
+	// 		ManagedResources: &armpurview.AccountPropertiesManagedResources{
+	// 			EventHubNamespace: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/managed-rg-mwjotkl/providers/Microsoft.EventHub/namespaces/atlas-westusdddnbtp"),
+	// 			ResourceGroup: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/managed-rg-mwjotkl"),
+	// 			StorageAccount: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/managed-rg-mwjotkl/providers/Microsoft.Storage/storageAccounts/scanwestustzaagzr"),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armpurview.ProvisioningStateSucceeded),
+	// 		PublicNetworkAccess: to.Ptr(armpurview.PublicNetworkAccessEnabled),
+	// 	},
+	// 	SKU: &armpurview.AccountSKU{
+	// 		Name: to.Ptr(armpurview.NameStandard),
+	// 		Capacity: to.Ptr[int32](1),
+	// 	},
+	// }
 }

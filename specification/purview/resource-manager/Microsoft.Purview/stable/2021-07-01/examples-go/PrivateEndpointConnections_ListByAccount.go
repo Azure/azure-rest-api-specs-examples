@@ -8,28 +8,60 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/purview/armpurview"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/PrivateEndpointConnections_ListByAccount.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/purview/resource-manager/Microsoft.Purview/stable/2021-07-01/examples/PrivateEndpointConnections_ListByAccount.json
 func ExamplePrivateEndpointConnectionsClient_NewListByAccountPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpurview.NewPrivateEndpointConnectionsClient("12345678-1234-1234-12345678abc", cred, nil)
+	clientFactory, err := armpurview.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByAccountPager("SampleResourceGroup",
-		"account1",
-		&armpurview.PrivateEndpointConnectionsClientListByAccountOptions{SkipToken: nil})
+	pager := clientFactory.NewPrivateEndpointConnectionsClient().NewListByAccountPager("SampleResourceGroup", "account1", &armpurview.PrivateEndpointConnectionsClientListByAccountOptions{SkipToken: nil})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.PrivateEndpointConnectionList = armpurview.PrivateEndpointConnectionList{
+		// 	Value: []*armpurview.PrivateEndpointConnection{
+		// 		{
+		// 			Name: to.Ptr("privateEndpointConnection1"),
+		// 			Type: to.Ptr("Microsoft.Purview/accounts/privateEndpointConnections"),
+		// 			ID: to.Ptr("/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.Purview/accounts/account1/privateEndpointConnections/privateEndpointConnection1"),
+		// 			Properties: &armpurview.PrivateEndpointConnectionProperties{
+		// 				PrivateEndpoint: &armpurview.PrivateEndpoint{
+		// 					ID: to.Ptr("/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint1"),
+		// 				},
+		// 				PrivateLinkServiceConnectionState: &armpurview.PrivateLinkServiceConnectionState{
+		// 					Description: to.Ptr("Approved by johndoe@company.com"),
+		// 					Status: to.Ptr(armpurview.StatusApproved),
+		// 				},
+		// 				ProvisioningState: to.Ptr("Succeeded"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("privateEndpointConnection2"),
+		// 			Type: to.Ptr("Microsoft.Purview/accounts/privateEndpointConnections"),
+		// 			ID: to.Ptr("/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.Purview/accounts/account1/privateEndpointConnections/privateEndpointConnection2"),
+		// 			Properties: &armpurview.PrivateEndpointConnectionProperties{
+		// 				PrivateEndpoint: &armpurview.PrivateEndpoint{
+		// 					ID: to.Ptr("/subscriptions/12345678-1234-1234-12345678abc/resourceGroups/SampleResourceGroup/providers/Microsoft.Network/privateEndpoints/myPrivateEndpoint"),
+		// 				},
+		// 				PrivateLinkServiceConnectionState: &armpurview.PrivateLinkServiceConnectionState{
+		// 					Description: to.Ptr("Rejected by johndoe@company.com"),
+		// 					Status: to.Ptr(armpurview.StatusRejected),
+		// 				},
+		// 				ProvisioningState: to.Ptr("Succeeded"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -8,26 +8,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicefabricmesh/armservicefabricmesh"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/secrets/list_bySubscriptionId.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/servicefabricmesh/resource-manager/Microsoft.ServiceFabricMesh/preview/2018-09-01-preview/examples/secrets/list_bySubscriptionId.json
 func ExampleSecretClient_NewListBySubscriptionPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicefabricmesh.NewSecretClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armservicefabricmesh.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBySubscriptionPager(nil)
+	pager := clientFactory.NewSecretClient().NewListBySubscriptionPager(nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.SecretResourceDescriptionList = armservicefabricmesh.SecretResourceDescriptionList{
+		// 	Value: []*armservicefabricmesh.SecretResourceDescription{
+		// 		{
+		// 			Name: to.Ptr("dbConnectionString"),
+		// 			Type: to.Ptr("Microsoft.ServiceFabricMesh/secrets"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/sbz_demo/providers/Microsoft.ServiceFabricMesh/secrets/dbConnectionString"),
+		// 			Location: to.Ptr("EastUS"),
+		// 			Tags: map[string]*string{
+		// 			},
+		// 			Properties: &armservicefabricmesh.InlinedValueSecretResourceProperties{
+		// 				ProvisioningState: to.Ptr("Succeeded"),
+		// 				Kind: to.Ptr(armservicefabricmesh.SecretKindInlinedValue),
+		// 				Description: to.Ptr("Mongo DB connection string for backend database!"),
+		// 				ContentType: to.Ptr("text/plain"),
+		// 				Status: to.Ptr(armservicefabricmesh.ResourceStatusReady),
+		// 			},
+		// 	}},
+		// }
 	}
 }

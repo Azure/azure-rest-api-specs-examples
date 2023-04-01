@@ -8,24 +8,39 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/PrivateLinkResources_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/PrivateLinkResources_List.json
 func ExamplePrivateLinkResourcesClient_ListByStorageSyncService() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragesync.NewPrivateLinkResourcesClient("{subscription-id}", cred, nil)
+	clientFactory, err := armstoragesync.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListByStorageSyncService(ctx,
-		"res6977",
-		"sss2527",
-		nil)
+	res, err := clientFactory.NewPrivateLinkResourcesClient().ListByStorageSyncService(ctx, "res6977", "sss2527", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateLinkResourceListResult = armstoragesync.PrivateLinkResourceListResult{
+	// 	Value: []*armstoragesync.PrivateLinkResource{
+	// 		{
+	// 			Name: to.Ptr("afs"),
+	// 			Type: to.Ptr("Microsoft.StorageSync/storageSyncServices/privateLinkResources"),
+	// 			ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.StorageSync/storageSyncServices/sss2527/privateLinkResources/afs"),
+	// 			Properties: &armstoragesync.PrivateLinkResourceProperties{
+	// 				GroupID: to.Ptr("afs"),
+	// 				RequiredMembers: []*string{
+	// 					to.Ptr("management"),
+	// 					to.Ptr("sync.primary"),
+	// 					to.Ptr("sync.secondary")},
+	// 					RequiredZoneNames: []*string{
+	// 						to.Ptr("privatelink.afs.azure.net")},
+	// 					},
+	// 			}},
+	// 		}
 }

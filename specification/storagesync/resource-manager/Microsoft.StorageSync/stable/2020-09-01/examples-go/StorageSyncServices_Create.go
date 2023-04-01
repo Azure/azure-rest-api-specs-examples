@@ -9,28 +9,24 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagesync/armstoragesync"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/StorageSyncServices_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/storagesync/resource-manager/Microsoft.StorageSync/stable/2020-09-01/examples/StorageSyncServices_Create.json
 func ExampleServicesClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragesync.NewServicesClient("52b8da2f-61e0-4a1f-8dde-336911f367fb", cred, nil)
+	clientFactory, err := armstoragesync.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx,
-		"SampleResourceGroup_1",
-		"SampleStorageSyncService_1",
-		armstoragesync.ServiceCreateParameters{
-			Location: to.Ptr("WestUS"),
-			Properties: &armstoragesync.ServiceCreateParametersProperties{
-				IncomingTrafficPolicy: to.Ptr(armstoragesync.IncomingTrafficPolicyAllowAllTraffic),
-			},
-			Tags: map[string]*string{},
+	poller, err := clientFactory.NewServicesClient().BeginCreate(ctx, "SampleResourceGroup_1", "SampleStorageSyncService_1", armstoragesync.ServiceCreateParameters{
+		Location: to.Ptr("WestUS"),
+		Properties: &armstoragesync.ServiceCreateParametersProperties{
+			IncomingTrafficPolicy: to.Ptr(armstoragesync.IncomingTrafficPolicyAllowAllTraffic),
 		},
-		nil)
+		Tags: map[string]*string{},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -38,6 +34,18 @@ func ExampleServicesClient_BeginCreate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Service = armstoragesync.Service{
+	// 	Name: to.Ptr("SampleStorageSyncService_1"),
+	// 	Type: to.Ptr("Microsoft.StorageSync/storageSyncServices"),
+	// 	ID: to.Ptr("/subscriptions/3a048283-338f-4002-a9dd-a50fdadcb392/resourceGroups/SampleResourceGroup_1/providers/Microsoft.StorageSync/storageSyncServices/SampleStorageSyncService_1"),
+	// 	Location: to.Ptr("WestUS"),
+	// 	Tags: map[string]*string{
+	// 	},
+	// 	Properties: &armstoragesync.ServiceProperties{
+	// 		IncomingTrafficPolicy: to.Ptr(armstoragesync.IncomingTrafficPolicyAllowAllTraffic),
+	// 	},
+	// }
 }

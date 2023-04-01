@@ -16,11 +16,11 @@ func ExampleSQLPoolSensitivityLabelsClient_CreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolSensitivityLabelsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx, "myRG", "myServer", "myDatabase", "dbo", "myTable", "myColumn", armsynapse.SensitivityLabel{
+	res, err := clientFactory.NewSQLPoolSensitivityLabelsClient().CreateOrUpdate(ctx, "myRG", "myServer", "myDatabase", "dbo", "myTable", "myColumn", armsynapse.SensitivityLabel{
 		Properties: &armsynapse.SensitivityLabelProperties{
 			InformationType:   to.Ptr("PhoneNumber"),
 			InformationTypeID: to.Ptr("d22fa6e9-5ee4-3bde-4c2b-a409604c4646"),

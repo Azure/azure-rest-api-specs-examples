@@ -15,11 +15,11 @@ func ExampleSQLPoolGeoBackupPoliciesClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolGeoBackupPoliciesClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("sqlcrudtest-4799", "sqlcrudtest-5961", "testdw", nil)
+	pager := clientFactory.NewSQLPoolGeoBackupPoliciesClient().NewListPager("sqlcrudtest-4799", "sqlcrudtest-5961", "testdw", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

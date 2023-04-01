@@ -16,11 +16,11 @@ func ExampleKustoPoolPrincipalAssignmentsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolPrincipalAssignmentsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "synapseWorkspaceName", "kustoclusterrptest4", "kustoprincipal1", "kustorptest", armsynapse.ClusterPrincipalAssignment{
+	poller, err := clientFactory.NewKustoPoolPrincipalAssignmentsClient().BeginCreateOrUpdate(ctx, "synapseWorkspaceName", "kustoclusterrptest4", "kustoprincipal1", "kustorptest", armsynapse.ClusterPrincipalAssignment{
 		Properties: &armsynapse.ClusterPrincipalProperties{
 			PrincipalID:   to.Ptr("87654321-1234-1234-1234-123456789123"),
 			PrincipalType: to.Ptr(armsynapse.PrincipalTypeApp),

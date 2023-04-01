@@ -15,11 +15,11 @@ func ExamplePrivateEndpointConnectionsPrivateLinkHubClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewPrivateEndpointConnectionsPrivateLinkHubClient("48b08652-d7a1-4d52-b13f-5a2471dce57b", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("gh-res-grp", "pe0", nil)
+	pager := clientFactory.NewPrivateEndpointConnectionsPrivateLinkHubClient().NewListPager("gh-res-grp", "pe0", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

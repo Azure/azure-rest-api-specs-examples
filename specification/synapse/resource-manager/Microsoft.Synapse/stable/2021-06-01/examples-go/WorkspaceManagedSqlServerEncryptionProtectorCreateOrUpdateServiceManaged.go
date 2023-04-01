@@ -16,11 +16,11 @@ func ExampleWorkspaceManagedSQLServerEncryptionProtectorClient_BeginCreateOrUpda
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewWorkspaceManagedSQLServerEncryptionProtectorClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "wsg-7398", "testWorkspace", armsynapse.EncryptionProtectorNameCurrent, armsynapse.EncryptionProtector{
+	poller, err := clientFactory.NewWorkspaceManagedSQLServerEncryptionProtectorClient().BeginCreateOrUpdate(ctx, "wsg-7398", "testWorkspace", armsynapse.EncryptionProtectorNameCurrent, armsynapse.EncryptionProtector{
 		Properties: &armsynapse.EncryptionProtectorProperties{
 			ServerKeyName: to.Ptr("ServiceManaged"),
 			ServerKeyType: to.Ptr(armsynapse.ServerKeyTypeServiceManaged),

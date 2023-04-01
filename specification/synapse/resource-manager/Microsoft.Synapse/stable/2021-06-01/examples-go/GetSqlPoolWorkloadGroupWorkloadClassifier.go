@@ -15,11 +15,11 @@ func ExampleSQLPoolWorkloadClassifierClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolWorkloadClassifierClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", "wlm_workloadgroup", "wlm_classifier", nil)
+	res, err := clientFactory.NewSQLPoolWorkloadClassifierClient().Get(ctx, "sqlcrudtest-6852", "sqlcrudtest-2080", "sqlcrudtest-9187", "wlm_workloadgroup", "wlm_classifier", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

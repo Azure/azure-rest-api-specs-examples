@@ -15,11 +15,11 @@ func ExampleIPFirewallRulesClient_NewListByWorkspacePager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewIPFirewallRulesClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByWorkspacePager("ExampleResourceGroup", "ExampleWorkspace", nil)
+	pager := clientFactory.NewIPFirewallRulesClient().NewListByWorkspacePager("ExampleResourceGroup", "ExampleWorkspace", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

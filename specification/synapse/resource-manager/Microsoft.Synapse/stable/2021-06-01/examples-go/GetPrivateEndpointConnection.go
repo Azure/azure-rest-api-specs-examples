@@ -15,11 +15,11 @@ func ExamplePrivateEndpointConnectionsClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewPrivateEndpointConnectionsClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExamplePrivateEndpointConnection", nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().Get(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExamplePrivateEndpointConnection", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

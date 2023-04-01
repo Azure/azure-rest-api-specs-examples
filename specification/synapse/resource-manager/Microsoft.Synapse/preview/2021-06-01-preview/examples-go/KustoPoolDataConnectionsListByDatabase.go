@@ -15,11 +15,11 @@ func ExampleKustoPoolDataConnectionsClient_NewListByDatabasePager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolDataConnectionsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByDatabasePager("kustorptest", "synapseWorkspaceName", "kustoclusterrptest4", "KustoDatabase8", nil)
+	pager := clientFactory.NewKustoPoolDataConnectionsClient().NewListByDatabasePager("kustorptest", "synapseWorkspaceName", "kustoclusterrptest4", "KustoDatabase8", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

@@ -16,11 +16,11 @@ func ExampleKustoPoolsClient_BeginDetachFollowerDatabases() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDetachFollowerDatabases(ctx, "kustorptest", "kustoclusterrptest4", "kustorptest", armsynapse.FollowerDatabaseDefinition{
+	poller, err := clientFactory.NewKustoPoolsClient().BeginDetachFollowerDatabases(ctx, "kustorptest", "kustoclusterrptest4", "kustorptest", armsynapse.FollowerDatabaseDefinition{
 		AttachedDatabaseConfigurationName: to.Ptr("myAttachedDatabaseConfiguration"),
 		KustoPoolResourceID:               to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.Synapse/workspaces/kustorptest/kustoPools/leader4"),
 	}, nil)

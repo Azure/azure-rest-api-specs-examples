@@ -16,11 +16,11 @@ func ExampleSQLPoolsClient_Rename() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Rename(ctx, "Default-SQL-SouthEastAsia", "testsvr", "testdb", armsynapse.ResourceMoveDefinition{
+	_, err = clientFactory.NewSQLPoolsClient().Rename(ctx, "Default-SQL-SouthEastAsia", "testsvr", "testdb", armsynapse.ResourceMoveDefinition{
 		ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Synapse/workspaces/testsvr/sqlPools/newtestdb"),
 	}, nil)
 	if err != nil {

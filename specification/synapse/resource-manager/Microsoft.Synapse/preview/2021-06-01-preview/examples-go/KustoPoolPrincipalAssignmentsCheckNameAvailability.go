@@ -16,11 +16,11 @@ func ExampleKustoPoolPrincipalAssignmentsClient_CheckNameAvailability() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolPrincipalAssignmentsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CheckNameAvailability(ctx, "synapseWorkspaceName", "kustoclusterrptest4", "kustorptest", armsynapse.ClusterPrincipalAssignmentCheckNameRequest{
+	res, err := clientFactory.NewKustoPoolPrincipalAssignmentsClient().CheckNameAvailability(ctx, "synapseWorkspaceName", "kustoclusterrptest4", "kustorptest", armsynapse.ClusterPrincipalAssignmentCheckNameRequest{
 		Name: to.Ptr("kustoprincipal1"),
 		Type: to.Ptr("Microsoft.Synapse/workspaces/kustoPools/principalAssignments"),
 	}, nil)

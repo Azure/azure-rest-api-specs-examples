@@ -16,11 +16,11 @@ func ExampleKustoPoolsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewKustoPoolsClient("12345678-1234-1234-1234-123456789098", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "synapseWorkspaceName", "kustorptest", "kustoclusterrptest4", armsynapse.KustoPool{
+	poller, err := clientFactory.NewKustoPoolsClient().BeginCreateOrUpdate(ctx, "synapseWorkspaceName", "kustorptest", "kustoclusterrptest4", armsynapse.KustoPool{
 		Location: to.Ptr("westus"),
 		Properties: &armsynapse.KustoPoolProperties{
 			EnablePurge:           to.Ptr(true),

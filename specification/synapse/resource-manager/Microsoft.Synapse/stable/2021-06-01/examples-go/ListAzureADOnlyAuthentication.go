@@ -15,11 +15,11 @@ func ExampleAzureADOnlyAuthenticationsClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewAzureADOnlyAuthenticationsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("workspace-6852", "workspace-2080", nil)
+	pager := clientFactory.NewAzureADOnlyAuthenticationsClient().NewListPager("workspace-6852", "workspace-2080", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

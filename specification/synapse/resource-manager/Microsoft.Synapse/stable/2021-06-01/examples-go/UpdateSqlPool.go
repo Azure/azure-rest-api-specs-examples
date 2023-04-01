@@ -18,11 +18,11 @@ func ExampleSQLPoolsClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsynapse.NewSQLPoolsClient("01234567-89ab-4def-0123-456789abcdef", cred, nil)
+	clientFactory, err := armsynapse.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExampleSqlPool", armsynapse.SQLPoolPatchInfo{
+	poller, err := clientFactory.NewSQLPoolsClient().BeginUpdate(ctx, "ExampleResourceGroup", "ExampleWorkspace", "ExampleSqlPool", armsynapse.SQLPoolPatchInfo{
 		Location: to.Ptr("West US 2"),
 		Properties: &armsynapse.SQLPoolResourceProperties{
 			Collation:          to.Ptr(""),

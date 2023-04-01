@@ -8,21 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/testbase/armtestbase"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/examples/TestBaseAccountDelete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/testbase/resource-manager/Microsoft.TestBase/preview/2020-12-16-preview/examples/TestBaseAccountDelete.json
 func ExampleAccountsClient_BeginDelete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armtestbase.NewAccountsClient("476f61a4-952c-422a-b4db-568a828f35df", cred, nil)
+	clientFactory, err := armtestbase.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx,
-		"contoso-rg1",
-		"contoso-testBaseAccount1",
-		nil)
+	poller, err := clientFactory.NewAccountsClient().BeginDelete(ctx, "contoso-rg1", "contoso-testBaseAccount1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

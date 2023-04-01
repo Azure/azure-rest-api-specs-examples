@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/getQuotaRequestStatusFailed.json
-func ExampleRequestStatusClient_Get_quotaRequestFailed() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/getQuotaRequestStatusById.json
+func ExampleRequestStatusClient_Get_quotaRequestStatus() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleRequestStatusClient_Get_quotaRequestFailed() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewRequestStatusClient().Get(ctx, "2B5C8515-37D8-4B6A-879B-CD641A2CF605", "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Compute/locations/eastus", nil)
+	res, err := clientFactory.NewRequestStatusClient().Get(ctx, "2B5C8515-37D8-4B6A-879B-CD641A2CF605", "subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -29,13 +29,9 @@ func ExampleRequestStatusClient_Get_quotaRequestFailed() {
 	// res.RequestDetails = armquota.RequestDetails{
 	// 	Name: to.Ptr("2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
 	// 	Type: to.Ptr("Microsoft.Quota/quotaRequests"),
-	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
+	// 	ID: to.Ptr("/subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus/providers/Microsoft.Quota/quotaRequests/2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
 	// 	Properties: &armquota.RequestProperties{
-	// 		Error: &armquota.ServiceErrorDetail{
-	// 			Code: to.Ptr("ContactSupport"),
-	// 			Message: to.Ptr("Request failed, please contact support."),
-	// 		},
-	// 		Message: to.Ptr("Request failed, please contact support."),
+	// 		Message: to.Ptr("Request completed"),
 	// 		ProvisioningState: to.Ptr(armquota.QuotaRequestStateSucceeded),
 	// 		RequestSubmitTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-19T19:23:17.904Z"); return t}()),
 	// 		Value: []*armquota.SubRequest{
@@ -48,9 +44,9 @@ func ExampleRequestStatusClient_Get_quotaRequestFailed() {
 	// 					LimitObjectType: to.Ptr(armquota.LimitTypeLimitValue),
 	// 					Value: to.Ptr[int32](50),
 	// 				},
-	// 				Message: to.Ptr("Request failed, please contact support."),
+	// 				Message: to.Ptr("Request completed"),
 	// 				ProvisioningState: to.Ptr(armquota.QuotaRequestStateSucceeded),
-	// 				SubRequestID: to.Ptr("AD07450A-DE86-4FD3-859B-107BEF218C4C"),
+	// 				Unit: to.Ptr("Count"),
 	// 		}},
 	// 	},
 	// }

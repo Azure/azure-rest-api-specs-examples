@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/patchComputeQuotaRequest.json
-func ExampleClient_BeginUpdate_quotasRequestPatchForCompute() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/putComputeOneSkuQuotaRequest.json
+func ExampleClient_BeginCreateOrUpdate_quotasPutRequestForCompute() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleClient_BeginUpdate_quotasRequestPatchForCompute() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewClient().BeginUpdate(ctx, "standardFSv2Family", "subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus", armquota.CurrentQuotaLimitBase{
+	poller, err := clientFactory.NewClient().BeginCreateOrUpdate(ctx, "standardFSv2Family", "subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus", armquota.CurrentQuotaLimitBase{
 		Properties: &armquota.Properties{
 			Name: &armquota.ResourceName{
 				Value: to.Ptr("standardFSv2Family"),
@@ -47,7 +47,6 @@ func ExampleClient_BeginUpdate_quotasRequestPatchForCompute() {
 	// 	ID: to.Ptr("/subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus/providers/Microsoft.Quota/quotas/standardFSv2Family"),
 	// 	Properties: &armquota.Properties{
 	// 		Name: &armquota.ResourceName{
-	// 			LocalizedValue: to.Ptr("Standard FSv2 Family vCPUs"),
 	// 			Value: to.Ptr("standardFSv2Family"),
 	// 		},
 	// 		Limit: &armquota.LimitObject{

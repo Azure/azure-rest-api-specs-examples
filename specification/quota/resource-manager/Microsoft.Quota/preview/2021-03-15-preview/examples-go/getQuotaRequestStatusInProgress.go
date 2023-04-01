@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/getQuotaRequestStatusFailed.json
-func ExampleRequestStatusClient_Get_quotaRequestFailed() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/getQuotaRequestStatusInProgress.json
+func ExampleRequestStatusClient_Get_quotaRequestInProgress() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -31,14 +31,23 @@ func ExampleRequestStatusClient_Get_quotaRequestFailed() {
 	// 	Type: to.Ptr("Microsoft.Quota/quotaRequests"),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
 	// 	Properties: &armquota.RequestProperties{
-	// 		Error: &armquota.ServiceErrorDetail{
-	// 			Code: to.Ptr("ContactSupport"),
-	// 			Message: to.Ptr("Request failed, please contact support."),
-	// 		},
-	// 		Message: to.Ptr("Request failed, please contact support."),
+	// 		Message: to.Ptr("Request processing"),
 	// 		ProvisioningState: to.Ptr(armquota.QuotaRequestStateSucceeded),
 	// 		RequestSubmitTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-19T19:23:17.904Z"); return t}()),
 	// 		Value: []*armquota.SubRequest{
+	// 			{
+	// 				Name: &armquota.ResourceName{
+	// 					LocalizedValue: to.Ptr("Standard HCS Family vCPUs"),
+	// 					Value: to.Ptr("standardHCSFamily"),
+	// 				},
+	// 				Limit: &armquota.LimitObject{
+	// 					LimitObjectType: to.Ptr(armquota.LimitTypeLimitValue),
+	// 					Value: to.Ptr[int32](50),
+	// 				},
+	// 				Message: to.Ptr("Request completed"),
+	// 				ProvisioningState: to.Ptr(armquota.QuotaRequestStateSucceeded),
+	// 				SubRequestID: to.Ptr("AD07450A-DE86-4FD3-859B-107BEF218C4C"),
+	// 			},
 	// 			{
 	// 				Name: &armquota.ResourceName{
 	// 					LocalizedValue: to.Ptr("Standard NC Promo Family vCPUs"),
@@ -48,7 +57,7 @@ func ExampleRequestStatusClient_Get_quotaRequestFailed() {
 	// 					LimitObjectType: to.Ptr(armquota.LimitTypeLimitValue),
 	// 					Value: to.Ptr[int32](50),
 	// 				},
-	// 				Message: to.Ptr("Request failed, please contact support."),
+	// 				Message: to.Ptr("Request processing"),
 	// 				ProvisioningState: to.Ptr(armquota.QuotaRequestStateSucceeded),
 	// 				SubRequestID: to.Ptr("AD07450A-DE86-4FD3-859B-107BEF218C4C"),
 	// 		}},

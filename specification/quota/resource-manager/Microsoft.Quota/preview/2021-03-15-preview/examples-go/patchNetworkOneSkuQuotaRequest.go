@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/patchComputeQuotaRequest.json
-func ExampleClient_BeginUpdate_quotasRequestPatchForCompute() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/quota/resource-manager/Microsoft.Quota/preview/2021-03-15-preview/examples/patchNetworkOneSkuQuotaRequest.json
+func ExampleClient_BeginUpdate_quotasRequestPatchForNetwork() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,15 +20,16 @@ func ExampleClient_BeginUpdate_quotasRequestPatchForCompute() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewClient().BeginUpdate(ctx, "standardFSv2Family", "subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus", armquota.CurrentQuotaLimitBase{
+	poller, err := clientFactory.NewClient().BeginUpdate(ctx, "MinPublicIpInterNetworkPrefixLength", "subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Network/locations/eastus", armquota.CurrentQuotaLimitBase{
 		Properties: &armquota.Properties{
 			Name: &armquota.ResourceName{
-				Value: to.Ptr("standardFSv2Family"),
+				Value: to.Ptr("MinPublicIpInterNetworkPrefixLength"),
 			},
 			Limit: &armquota.LimitObject{
 				LimitObjectType: to.Ptr(armquota.LimitTypeLimitValue),
 				Value:           to.Ptr[int32](10),
 			},
+			ResourceType: to.Ptr("MinPublicIpInterNetworkPrefixLength"),
 		},
 	}, nil)
 	if err != nil {
@@ -42,18 +43,18 @@ func ExampleClient_BeginUpdate_quotasRequestPatchForCompute() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.CurrentQuotaLimitBase = armquota.CurrentQuotaLimitBase{
-	// 	Name: to.Ptr("standardFSv2Family"),
+	// 	Name: to.Ptr("2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
 	// 	Type: to.Ptr("Microsoft.Quota/quotas"),
-	// 	ID: to.Ptr("/subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Compute/locations/eastus/providers/Microsoft.Quota/quotas/standardFSv2Family"),
+	// 	ID: to.Ptr("/subscriptions/D7EC67B3-7657-4966-BFFC-41EFD36BAAB3/providers/Microsoft.Network/locations/eastus/providers/Microsoft.Quota/quotaRequests/2B5C8515-37D8-4B6A-879B-CD641A2CF605"),
 	// 	Properties: &armquota.Properties{
 	// 		Name: &armquota.ResourceName{
-	// 			LocalizedValue: to.Ptr("Standard FSv2 Family vCPUs"),
-	// 			Value: to.Ptr("standardFSv2Family"),
+	// 			Value: to.Ptr("MinPublicIpInterNetworkPrefixLength"),
 	// 		},
 	// 		Limit: &armquota.LimitObject{
 	// 			LimitObjectType: to.Ptr(armquota.LimitTypeLimitValue),
 	// 			Value: to.Ptr[int32](10),
 	// 		},
+	// 		ResourceType: to.Ptr("MinPublicIpInterNetworkPrefixLength"),
 	// 	},
 	// }
 }

@@ -6,21 +6,21 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-10-01/examples/ReplicationRecoveryServicesProviders_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-10-01/examples/ReplicationRecoveryServicesProviders_Create.json
 func ExampleReplicationRecoveryServicesProvidersClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationRecoveryServicesProvidersClient("migrationvault", "resourcegroup1", "cb53d0c3-bd59-4721-89bc-06916a9147ef", cred, nil)
+	clientFactory, err := armrecoveryservicessiterecovery.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreate(ctx, "vmwarefabric1", "vmwareprovider1", armrecoveryservicessiterecovery.AddRecoveryServicesProviderInput{
+	poller, err := clientFactory.NewReplicationRecoveryServicesProvidersClient().BeginCreate(ctx, "migrationvault", "resourcegroup1", "vmwarefabric1", "vmwareprovider1", armrecoveryservicessiterecovery.AddRecoveryServicesProviderInput{
 		Properties: &armrecoveryservicessiterecovery.AddRecoveryServicesProviderInputProperties{
 			AuthenticationIdentityInput: &armrecoveryservicessiterecovery.IdentityProviderInput{
 				AADAuthority:  to.Ptr("https://login.microsoftonline.com"),
@@ -46,6 +46,25 @@ func ExampleReplicationRecoveryServicesProvidersClient_BeginCreate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.RecoveryServicesProvider = armrecoveryservicessiterecovery.RecoveryServicesProvider{
+	// 	Name: to.Ptr("vmwareprovider1"),
+	// 	Type: to.Ptr("Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders"),
+	// 	ID: to.Ptr("/Subscriptions/cb53d0c3-bd59-4721-89bc-06916a9147ef/resourceGroups/resourcegroup1/providers/Microsoft.RecoveryServices/vaults/migrationvault/replicationFabrics/vmwarefabric1/replicationRecoveryServicesProviders/vmwareprovider1"),
+	// 	Properties: &armrecoveryservicessiterecovery.RecoveryServicesProviderProperties{
+	// 		AllowedScenarios: []*string{
+	// 			to.Ptr("Refresh")},
+	// 			ConnectionStatus: to.Ptr("Connected"),
+	// 			FabricFriendlyName: to.Ptr("vmwarefabric1"),
+	// 			FabricType: to.Ptr("VMwareV2"),
+	// 			FriendlyName: to.Ptr("vmwareprovider1"),
+	// 			LastHeartBeat: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T09:16:04.9405768Z"); return t}()),
+	// 			ProtectedItemCount: to.Ptr[int32](2),
+	// 			ProviderVersion: to.Ptr("5.1.3688.0"),
+	// 			ProviderVersionState: to.Ptr("Latest"),
+	// 			ServerVersion: to.Ptr("3.2.7510.0"),
+	// 		},
+	// 	}
 }

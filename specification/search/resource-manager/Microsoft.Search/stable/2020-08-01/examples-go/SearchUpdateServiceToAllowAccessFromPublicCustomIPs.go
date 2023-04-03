@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateService.json
-func ExampleServicesClient_Update_searchUpdateService() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateServiceToAllowAccessFromPublicCustomIPs.json
+func ExampleServicesClient_Update_searchUpdateServiceToAllowAccessFromPublicCustomIPs() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,11 +22,18 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	}
 	res, err := clientFactory.NewServicesClient().Update(ctx, "rg1", "mysearchservice", armsearch.ServiceUpdate{
 		Properties: &armsearch.ServiceProperties{
-			ReplicaCount: to.Ptr[int32](2),
-		},
-		Tags: map[string]*string{
-			"app-name": to.Ptr("My e-commerce app"),
-			"new-tag":  to.Ptr("Adding a new tag"),
+			NetworkRuleSet: &armsearch.NetworkRuleSet{
+				IPRules: []*armsearch.IPRule{
+					{
+						Value: to.Ptr("123.4.5.6"),
+					},
+					{
+						Value: to.Ptr("123.4.6.0/18"),
+					}},
+			},
+			PartitionCount:      to.Ptr[int32](1),
+			PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessEnabled),
+			ReplicaCount:        to.Ptr[int32](3),
 		},
 	}, &armsearch.SearchManagementRequestOptions{ClientRequestID: nil}, nil)
 	if err != nil {
@@ -48,15 +55,17 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	// 		HostingMode: to.Ptr(armsearch.HostingModeDefault),
 	// 		NetworkRuleSet: &armsearch.NetworkRuleSet{
 	// 			IPRules: []*armsearch.IPRule{
-	// 			},
+	// 				{
+	// 					Value: to.Ptr("10.2.3.4"),
+	// 			}},
 	// 		},
 	// 		PartitionCount: to.Ptr[int32](1),
 	// 		PrivateEndpointConnections: []*armsearch.PrivateEndpointConnection{
 	// 		},
 	// 		ProvisioningState: to.Ptr(armsearch.ProvisioningStateSucceeded),
 	// 		PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessEnabled),
-	// 		ReplicaCount: to.Ptr[int32](2),
-	// 		Status: to.Ptr(armsearch.SearchServiceStatusProvisioning),
+	// 		ReplicaCount: to.Ptr[int32](3),
+	// 		Status: to.Ptr(armsearch.SearchServiceStatusRunning),
 	// 		StatusDetails: to.Ptr(""),
 	// 	},
 	// 	SKU: &armsearch.SKU{

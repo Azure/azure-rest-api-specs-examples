@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateService.json
-func ExampleServicesClient_Update_searchUpdateService() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchCreateOrUpdateServiceToAllowAccessFromPublicCustomIPs.json
+func ExampleServicesClient_BeginCreateOrUpdate_searchCreateOrUpdateServiceToAllowAccessFromPublicCustomIPs() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,17 +20,35 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewServicesClient().Update(ctx, "rg1", "mysearchservice", armsearch.ServiceUpdate{
-		Properties: &armsearch.ServiceProperties{
-			ReplicaCount: to.Ptr[int32](2),
-		},
+	poller, err := clientFactory.NewServicesClient().BeginCreateOrUpdate(ctx, "rg1", "mysearchservice", armsearch.Service{
+		Location: to.Ptr("westus"),
 		Tags: map[string]*string{
 			"app-name": to.Ptr("My e-commerce app"),
-			"new-tag":  to.Ptr("Adding a new tag"),
+		},
+		Properties: &armsearch.ServiceProperties{
+			HostingMode: to.Ptr(armsearch.HostingModeDefault),
+			NetworkRuleSet: &armsearch.NetworkRuleSet{
+				IPRules: []*armsearch.IPRule{
+					{
+						Value: to.Ptr("123.4.5.6"),
+					},
+					{
+						Value: to.Ptr("123.4.6.0/18"),
+					}},
+			},
+			PartitionCount: to.Ptr[int32](1),
+			ReplicaCount:   to.Ptr[int32](1),
+		},
+		SKU: &armsearch.SKU{
+			Name: to.Ptr(armsearch.SKUNameStandard),
 		},
 	}, &armsearch.SearchManagementRequestOptions{ClientRequestID: nil}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
@@ -42,20 +60,24 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	// 	Location: to.Ptr("westus"),
 	// 	Tags: map[string]*string{
 	// 		"app-name": to.Ptr("My e-commerce app"),
-	// 		"new-tag": to.Ptr("Adding a new tag"),
 	// 	},
 	// 	Properties: &armsearch.ServiceProperties{
 	// 		HostingMode: to.Ptr(armsearch.HostingModeDefault),
 	// 		NetworkRuleSet: &armsearch.NetworkRuleSet{
 	// 			IPRules: []*armsearch.IPRule{
-	// 			},
+	// 				{
+	// 					Value: to.Ptr("123.4.5.6"),
+	// 				},
+	// 				{
+	// 					Value: to.Ptr("123.4.6.0/18"),
+	// 			}},
 	// 		},
 	// 		PartitionCount: to.Ptr[int32](1),
 	// 		PrivateEndpointConnections: []*armsearch.PrivateEndpointConnection{
 	// 		},
 	// 		ProvisioningState: to.Ptr(armsearch.ProvisioningStateSucceeded),
 	// 		PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessEnabled),
-	// 		ReplicaCount: to.Ptr[int32](2),
+	// 		ReplicaCount: to.Ptr[int32](1),
 	// 		Status: to.Ptr(armsearch.SearchServiceStatusProvisioning),
 	// 		StatusDetails: to.Ptr(""),
 	// 	},

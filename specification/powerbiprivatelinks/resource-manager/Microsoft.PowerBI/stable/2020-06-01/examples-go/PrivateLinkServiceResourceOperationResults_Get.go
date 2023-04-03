@@ -5,23 +5,21 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/powerbiprivatelinks/armpowerbiprivatelinks/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/powerbiprivatelinks/resource-manager/Microsoft.PowerBI/stable/2020-06-01/examples/PrivateLinkServiceResourceOperationResults_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/powerbiprivatelinks/resource-manager/Microsoft.PowerBI/stable/2020-06-01/examples/PrivateLinkServiceResourceOperationResults_Get.json
 func ExamplePrivateLinkServiceResourceOperationResultsClient_BeginGet() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armpowerbiprivatelinks.NewPrivateLinkServiceResourceOperationResultsClient("a0020869-4d28-422a-89f4-c2413130d73c",
-		"9a062a88-e463-4697-bef2-fe039df73a02", cred, nil)
+	clientFactory, err := armpowerbiprivatelinks.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginGet(ctx,
-		nil)
+	poller, err := clientFactory.NewPrivateLinkServiceResourceOperationResultsClient().BeginGet(ctx, "9a062a88-e463-4697-bef2-fe039df73a02", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -29,6 +27,12 @@ func ExamplePrivateLinkServiceResourceOperationResultsClient_BeginGet() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AsyncOperationDetail = armpowerbiprivatelinks.AsyncOperationDetail{
+	// 	Name: to.Ptr("9a062a88-e463-4697-bef2-fe039df73a02"),
+	// 	StartTime: to.Ptr("2017-01-06T18:58:24.7596323+00:00"),
+	// 	Status: to.Ptr("InProgress"),
+	// }
 }

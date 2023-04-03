@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/deleteModule.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/deleteModule.json
 func ExampleModuleClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewModuleClient("subid", cred, nil)
+	clientFactory, err := armautomation.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"rg",
-		"myAutomationAccount33",
-		"OmsCompositeResources",
-		nil)
+	_, err = clientFactory.NewModuleClient().Delete(ctx, "rg", "myAutomationAccount33", "OmsCompositeResources", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

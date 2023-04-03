@@ -8,23 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/deleteHybridRunbookWorker.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2021-06-22/examples/deleteHybridRunbookWorker.json
 func ExampleHybridRunbookWorkersClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewHybridRunbookWorkersClient("subid", cred, nil)
+	clientFactory, err := armautomation.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"rg",
-		"myAutomationAccount20",
-		"myGroup",
-		"c010ad12-ef14-4a2a-aa9e-ef22c4745ddd",
-		nil)
+	_, err = clientFactory.NewHybridRunbookWorkersClient().Delete(ctx, "rg", "myAutomationAccount20", "myGroup", "c010ad12-ef14-4a2a-aa9e-ef22c4745ddd", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

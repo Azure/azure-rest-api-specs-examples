@@ -9,55 +9,51 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/blueprint/armblueprint"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/Blueprint_Create.json
-func ExampleBlueprintsClient_CreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/Blueprint_Create.json
+func ExampleBlueprintsClient_CreateOrUpdate_managementGroupBlueprint() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armblueprint.NewBlueprintsClient(cred, nil)
+	clientFactory, err := armblueprint.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.CreateOrUpdate(ctx,
-		"providers/Microsoft.Management/managementGroups/ContosoOnlineGroup",
-		"simpleBlueprint",
-		armblueprint.Blueprint{
-			Properties: &armblueprint.Properties{
-				Description: to.Ptr("blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"),
-				Parameters: map[string]*armblueprint.ParameterDefinition{
-					"costCenter": {
-						Type: to.Ptr(armblueprint.TemplateParameterTypeString),
-						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							DisplayName: to.Ptr("force cost center tag for all resources under given subscription."),
-						},
-					},
-					"owners": {
-						Type: to.Ptr(armblueprint.TemplateParameterTypeArray),
-						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							DisplayName: to.Ptr("assign owners to subscription along with blueprint assignment."),
-						},
-					},
-					"storageAccountType": {
-						Type: to.Ptr(armblueprint.TemplateParameterTypeString),
-						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							DisplayName: to.Ptr("storage account type."),
-						},
+	_, err = clientFactory.NewBlueprintsClient().CreateOrUpdate(ctx, "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup", "simpleBlueprint", armblueprint.Blueprint{
+		Properties: &armblueprint.Properties{
+			Description: to.Ptr("blueprint contains all artifact kinds {'template', 'rbac', 'policy'}"),
+			Parameters: map[string]*armblueprint.ParameterDefinition{
+				"costCenter": {
+					Type: to.Ptr(armblueprint.TemplateParameterTypeString),
+					Metadata: &armblueprint.ParameterDefinitionMetadata{
+						DisplayName: to.Ptr("force cost center tag for all resources under given subscription."),
 					},
 				},
-				ResourceGroups: map[string]*armblueprint.ResourceGroupDefinition{
-					"storageRG": {
-						Metadata: &armblueprint.ParameterDefinitionMetadata{
-							Description: to.Ptr("Contains storageAccounts that collect all shoebox logs."),
-							DisplayName: to.Ptr("storage resource group"),
-						},
+				"owners": {
+					Type: to.Ptr(armblueprint.TemplateParameterTypeArray),
+					Metadata: &armblueprint.ParameterDefinitionMetadata{
+						DisplayName: to.Ptr("assign owners to subscription along with blueprint assignment."),
 					},
 				},
-				TargetScope: to.Ptr(armblueprint.BlueprintTargetScopeSubscription),
+				"storageAccountType": {
+					Type: to.Ptr(armblueprint.TemplateParameterTypeString),
+					Metadata: &armblueprint.ParameterDefinitionMetadata{
+						DisplayName: to.Ptr("storage account type."),
+					},
+				},
 			},
+			ResourceGroups: map[string]*armblueprint.ResourceGroupDefinition{
+				"storageRG": {
+					Metadata: &armblueprint.ParameterDefinitionMetadata{
+						Description: to.Ptr("Contains storageAccounts that collect all shoebox logs."),
+						DisplayName: to.Ptr("storage resource group"),
+					},
+				},
+			},
+			TargetScope: to.Ptr(armblueprint.BlueprintTargetScopeSubscription),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

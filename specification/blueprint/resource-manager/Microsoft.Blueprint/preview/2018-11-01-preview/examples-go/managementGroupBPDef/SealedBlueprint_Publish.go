@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/blueprint/armblueprint"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/SealedBlueprint_Publish.json
-func ExamplePublishedBlueprintsClient_Create() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPDef/SealedBlueprint_Publish.json
+func ExamplePublishedBlueprintsClient_Create_publishedManagementGroupBlueprintPublish() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armblueprint.NewPublishedBlueprintsClient(cred, nil)
+	clientFactory, err := armblueprint.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Create(ctx,
-		"providers/Microsoft.Management/managementGroups/ContosoOnlineGroup",
-		"simpleBlueprint",
-		"v2",
-		&armblueprint.PublishedBlueprintsClientCreateOptions{PublishedBlueprint: nil})
+	_, err = clientFactory.NewPublishedBlueprintsClient().Create(ctx, "providers/Microsoft.Management/managementGroups/ContosoOnlineGroup", "simpleBlueprint", "v2", &armblueprint.PublishedBlueprintsClientCreateOptions{PublishedBlueprint: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

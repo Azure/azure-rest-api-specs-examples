@@ -5,21 +5,21 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicessiterecovery/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-10-01/examples/ReplicationProtectionContainerMappings_Purge.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2022-10-01/examples/ReplicationProtectionContainerMappings_Purge.json
 func ExampleReplicationProtectionContainerMappingsClient_BeginPurge() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armrecoveryservicessiterecovery.NewReplicationProtectionContainerMappingsClient("vault1", "resourceGroupPS1", "c183865e-6077-46f2-a3b1-deb0f4f4650a", cred, nil)
+	clientFactory, err := armrecoveryservicessiterecovery.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginPurge(ctx, "cloud1", "cloud_6d224fc6-f326-5d35-96de-fbf51efb3179", "cloud1protectionprofile1", nil)
+	poller, err := clientFactory.NewReplicationProtectionContainerMappingsClient().BeginPurge(ctx, "vault1", "resourceGroupPS1", "cloud1", "cloud_6d224fc6-f326-5d35-96de-fbf51efb3179", "cloud1protectionprofile1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

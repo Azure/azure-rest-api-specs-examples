@@ -9,52 +9,48 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/blueprint/armblueprint"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPAssignment/BlueprintAssignment_Create_SystemAssignedMSI.json
-func ExampleAssignmentsClient_CreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/blueprint/resource-manager/Microsoft.Blueprint/preview/2018-11-01-preview/examples/managementGroupBPAssignment/BlueprintAssignment_Create_SystemAssignedMSI.json
+func ExampleAssignmentsClient_CreateOrUpdate_assignmentWithSystemAssignedManagedIdentityAtManagementGroupScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armblueprint.NewAssignmentsClient(cred, nil)
+	clientFactory, err := armblueprint.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.CreateOrUpdate(ctx,
-		"managementGroups/ContosoOnlineGroup",
-		"assignSimpleBlueprint",
-		armblueprint.Assignment{
-			Location: to.Ptr("eastus"),
-			Identity: &armblueprint.ManagedServiceIdentity{
-				Type: to.Ptr(armblueprint.ManagedServiceIdentityTypeSystemAssigned),
-			},
-			Properties: &armblueprint.AssignmentProperties{
-				Description: to.Ptr("enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."),
-				BlueprintID: to.Ptr("/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"),
-				Parameters: map[string]*armblueprint.ParameterValue{
-					"costCenter": {
-						Value: "Contoso/Online/Shopping/Production",
-					},
-					"owners": {
-						Value: []interface{}{
-							"johnDoe@contoso.com",
-							"johnsteam@contoso.com",
-						},
-					},
-					"storageAccountType": {
-						Value: "Standard_LRS",
-					},
-				},
-				ResourceGroups: map[string]*armblueprint.ResourceGroupValue{
-					"storageRG": {
-						Name:     to.Ptr("defaultRG"),
-						Location: to.Ptr("eastus"),
-					},
-				},
-				Scope: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000"),
-			},
+	_, err = clientFactory.NewAssignmentsClient().CreateOrUpdate(ctx, "managementGroups/ContosoOnlineGroup", "assignSimpleBlueprint", armblueprint.Assignment{
+		Location: to.Ptr("eastus"),
+		Identity: &armblueprint.ManagedServiceIdentity{
+			Type: to.Ptr(armblueprint.ManagedServiceIdentityTypeSystemAssigned),
 		},
-		nil)
+		Properties: &armblueprint.AssignmentProperties{
+			Description: to.Ptr("enforce pre-defined simpleBlueprint to this XXXXXXXX subscription."),
+			BlueprintID: to.Ptr("/providers/Microsoft.Management/managementGroups/ContosoOnlineGroup/providers/Microsoft.Blueprint/blueprints/simpleBlueprint"),
+			Parameters: map[string]*armblueprint.ParameterValue{
+				"costCenter": {
+					Value: "Contoso/Online/Shopping/Production",
+				},
+				"owners": {
+					Value: []any{
+						"johnDoe@contoso.com",
+						"johnsteam@contoso.com",
+					},
+				},
+				"storageAccountType": {
+					Value: "Standard_LRS",
+				},
+			},
+			ResourceGroups: map[string]*armblueprint.ResourceGroupValue{
+				"storageRG": {
+					Name:     to.Ptr("defaultRG"),
+					Location: to.Ptr("eastus"),
+				},
+			},
+			Scope: to.Ptr("subscriptions/00000000-0000-0000-0000-000000000000"),
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

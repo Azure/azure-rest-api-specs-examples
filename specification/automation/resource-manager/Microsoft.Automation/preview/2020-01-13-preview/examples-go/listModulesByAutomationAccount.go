@@ -8,28 +8,222 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listModulesByAutomationAccount.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listModulesByAutomationAccount.json
 func ExampleModuleClient_NewListByAutomationAccountPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armautomation.NewModuleClient("subid", cred, nil)
+	clientFactory, err := armautomation.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByAutomationAccountPager("rg",
-		"myAutomationAccount33",
-		nil)
+	pager := clientFactory.NewModuleClient().NewListByAutomationAccountPager("rg", "myAutomationAccount33", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ModuleListResult = armautomation.ModuleListResult{
+		// 	Value: []*armautomation.Module{
+		// 		{
+		// 			Name: to.Ptr("Azure"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Azure"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2014-03-18T23:02:40.323+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T16:57:48.343+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Azure.Storage"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Azure.Storage"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-01-30T01:21:44.68+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:04:27.833+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("AzureRM.Automation"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/AzureRM.Automation"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-01-30T01:19:39.427+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:02:24.42+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("AzureRM.Compute"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/AzureRM.Compute"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-11-24T20:24:06.1+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:01:53.81+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("AzureRM.Profile"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/AzureRM.Profile"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-11-24T20:23:34.723+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:01:22.993+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("AzureRM.Resources"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/AzureRM.Resources"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-01-30T01:20:10.367+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:02:55.25+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("AzureRM.Sql"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/AzureRM.Sql"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-01-30T01:20:42.177+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:03:26.08+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("AzureRM.Storage"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/AzureRM.Storage"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-01-30T01:21:13.237+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:03:56.99+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.PowerShell.Core"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Microsoft.PowerShell.Core"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-03-17T00:12:20.897+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T16:58:19.017+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.PowerShell.Diagnostics"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Microsoft.PowerShell.Diagnostics"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-03-17T00:12:22.817+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T16:58:49.737+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.PowerShell.Management"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Microsoft.PowerShell.Management"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-03-17T00:12:24.967+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T16:59:20.38+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.PowerShell.Security"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Microsoft.PowerShell.Security"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-03-17T00:12:26.753+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T16:59:51.007+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.PowerShell.Utility"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Microsoft.PowerShell.Utility"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-03-17T00:12:28.643+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:00:21.647+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Microsoft.WSMan.Management"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Microsoft.WSMan.Management"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-03-17T00:17:15.003+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:00:52.197+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("OmsCompositeResources"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/OmsCompositeResources"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-29T15:41:47.003+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(false),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-29T15:42:10.567+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("Orchestrator.AssetManagement.Cmdlets"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/modules/Orchestrator.AssetManagement.Cmdlets"),
+		// 			Properties: &armautomation.ModuleProperties{
+		// 				ActivityCount: to.Ptr[int32](0),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-12T00:45:12.897+00:00"); return t}()),
+		// 				IsGlobal: to.Ptr(true),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-17T17:05:01.57+00:00"); return t}()),
+		// 				ProvisioningState: to.Ptr(armautomation.ModuleProvisioningStateSucceeded),
+		// 				SizeInBytes: to.Ptr[int64](0),
+		// 			},
+		// 	}},
+		// }
 	}
 }

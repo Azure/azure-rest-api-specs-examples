@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateService.json
-func ExampleServicesClient_Update_searchUpdateService() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateServiceToRemoveIdentity.json
+func ExampleServicesClient_Update_searchUpdateServiceToRemoveIdentity() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -21,12 +21,11 @@ func ExampleServicesClient_Update_searchUpdateService() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewServicesClient().Update(ctx, "rg1", "mysearchservice", armsearch.ServiceUpdate{
-		Properties: &armsearch.ServiceProperties{
-			ReplicaCount: to.Ptr[int32](2),
+		Identity: &armsearch.Identity{
+			Type: to.Ptr(armsearch.IdentityTypeNone),
 		},
-		Tags: map[string]*string{
-			"app-name": to.Ptr("My e-commerce app"),
-			"new-tag":  to.Ptr("Adding a new tag"),
+		SKU: &armsearch.SKU{
+			Name: to.Ptr(armsearch.SKUNameStandard),
 		},
 	}, &armsearch.SearchManagementRequestOptions{ClientRequestID: nil}, nil)
 	if err != nil {
@@ -41,8 +40,9 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Search/searchServices/mysearchservice"),
 	// 	Location: to.Ptr("westus"),
 	// 	Tags: map[string]*string{
-	// 		"app-name": to.Ptr("My e-commerce app"),
-	// 		"new-tag": to.Ptr("Adding a new tag"),
+	// 	},
+	// 	Identity: &armsearch.Identity{
+	// 		Type: to.Ptr(armsearch.IdentityTypeNone),
 	// 	},
 	// 	Properties: &armsearch.ServiceProperties{
 	// 		HostingMode: to.Ptr(armsearch.HostingModeDefault),
@@ -55,8 +55,8 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	// 		},
 	// 		ProvisioningState: to.Ptr(armsearch.ProvisioningStateSucceeded),
 	// 		PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessEnabled),
-	// 		ReplicaCount: to.Ptr[int32](2),
-	// 		Status: to.Ptr(armsearch.SearchServiceStatusProvisioning),
+	// 		ReplicaCount: to.Ptr[int32](3),
+	// 		Status: to.Ptr(armsearch.SearchServiceStatusRunning),
 	// 		StatusDetails: to.Ptr(""),
 	// 	},
 	// 	SKU: &armsearch.SKU{

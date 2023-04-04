@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateService.json
-func ExampleServicesClient_Update_searchUpdateService() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01/examples/SearchUpdateServiceToAllowAccessFromPrivateEndpoints.json
+func ExampleServicesClient_Update_searchUpdateServiceToAllowAccessFromPrivateEndpoints() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -22,11 +22,9 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	}
 	res, err := clientFactory.NewServicesClient().Update(ctx, "rg1", "mysearchservice", armsearch.ServiceUpdate{
 		Properties: &armsearch.ServiceProperties{
-			ReplicaCount: to.Ptr[int32](2),
-		},
-		Tags: map[string]*string{
-			"app-name": to.Ptr("My e-commerce app"),
-			"new-tag":  to.Ptr("Adding a new tag"),
+			PartitionCount:      to.Ptr[int32](1),
+			PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessDisabled),
+			ReplicaCount:        to.Ptr[int32](1),
 		},
 	}, &armsearch.SearchManagementRequestOptions{ClientRequestID: nil}, nil)
 	if err != nil {
@@ -54,13 +52,13 @@ func ExampleServicesClient_Update_searchUpdateService() {
 	// 		PrivateEndpointConnections: []*armsearch.PrivateEndpointConnection{
 	// 		},
 	// 		ProvisioningState: to.Ptr(armsearch.ProvisioningStateSucceeded),
-	// 		PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessEnabled),
-	// 		ReplicaCount: to.Ptr[int32](2),
-	// 		Status: to.Ptr(armsearch.SearchServiceStatusProvisioning),
+	// 		PublicNetworkAccess: to.Ptr(armsearch.PublicNetworkAccessDisabled),
+	// 		ReplicaCount: to.Ptr[int32](1),
+	// 		Status: to.Ptr(armsearch.SearchServiceStatusRunning),
 	// 		StatusDetails: to.Ptr(""),
 	// 	},
 	// 	SKU: &armsearch.SKU{
-	// 		Name: to.Ptr(armsearch.SKUNameStandard),
+	// 		Name: to.Ptr(armsearch.SKUNameBasic),
 	// 	},
 	// }
 }

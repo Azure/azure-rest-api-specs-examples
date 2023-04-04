@@ -9,23 +9,20 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotsecurity/armiotsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/examples/OnPremiseSensors/DownloadResetPassword.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f790e624d0d080b89d962a3bd19c65bc6a6b2f5e/specification/iotsecurity/resource-manager/Microsoft.IoTSecurity/preview/2021-02-01-preview/examples/OnPremiseSensors/DownloadResetPassword.json
 func ExampleOnPremiseSensorsClient_DownloadResetPassword() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armiotsecurity.NewOnPremiseSensorsClient("20ff7fc3-e762-44dd-bd96-b71116dcdc23", cred, nil)
+	clientFactory, err := armiotsecurity.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.DownloadResetPassword(ctx,
-		"mySensor",
-		armiotsecurity.ResetPasswordInput{
-			ApplianceID: to.Ptr("3214-528AV23-D121-D3-E1"),
-		},
-		nil)
+	_, err = clientFactory.NewOnPremiseSensorsClient().DownloadResetPassword(ctx, "mySensor", armiotsecurity.ResetPasswordInput{
+		ApplianceID: to.Ptr("3214-528AV23-D121-D3-E1"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

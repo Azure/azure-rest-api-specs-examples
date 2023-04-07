@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ActionGroupResource created on azure
-// for more information of creating ActionGroupResource, please refer to the document of ActionGroupResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "187f412d-1758-44d9-b052-169e2564721d";
 string resourceGroupName = "Default-NotificationRules";
-string actionGroupName = "SampleActionGroup";
-ResourceIdentifier actionGroupResourceId = ActionGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, actionGroupName);
-ActionGroupResource actionGroup = client.GetActionGroupResource(actionGroupResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ActionGroupResource
+ActionGroupCollection collection = resourceGroupResource.GetActionGroups();
 
 // invoke the operation
-ActionGroupResource result = await actionGroup.GetAsync();
+string actionGroupName = "SampleActionGroup";
+bool result = await collection.ExistsAsync(actionGroupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ActionGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -2393,3 +2393,6 @@ id,name,language,tag,package,version,date_epoch,date
 2392,azure-mgmt-communication@2.0.0,python,azure-mgmt-communication_2.0.0,azure-mgmt-communication,2.0.0,1680587760,04/04/2023
 2393,azure-mgmt-keyvault@10.2.1,python,azure-mgmt-keyvault_10.2.1,azure-mgmt-keyvault,10.2.1,1680573498,04/04/2023
 2394,"Azure.ResourceManager.Qumulo,1.0.0-beta.1",dotnet,Azure.ResourceManager.Qumulo_1.0.0-beta.1,Azure.ResourceManager.Qumulo,1.0.0-beta.1,1680762997,04/06/2023
+2395,"Azure.ResourceManager.ProviderHub,1.0.0",dotnet,Azure.ResourceManager.ProviderHub_1.0.0,Azure.ResourceManager.ProviderHub,1.0.0,1680854165,04/07/2023
+2396,"Azure.ResourceManager.GraphServices,1.0.0-beta.1",dotnet,Azure.ResourceManager.GraphServices_1.0.0-beta.1,Azure.ResourceManager.GraphServices,1.0.0-beta.1,1680884247,04/07/2023
+2397,"Azure.ResourceManager.HybridContainerService,1.0.0-beta.1",dotnet,Azure.ResourceManager.HybridContainerService_1.0.0-beta.1,Azure.ResourceManager.HybridContainerService,1.0.0-beta.1,1680884191,04/07/2023

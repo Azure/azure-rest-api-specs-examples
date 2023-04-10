@@ -8,25 +8,37 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/NameSpaces/PrivateEndPointConnectionGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/NameSpaces/PrivateEndPointConnectionGet.json
 func ExamplePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armeventhub.NewPrivateEndpointConnectionsClient("subID", cred, nil)
+	clientFactory, err := armeventhub.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"SDK-EventHub-4794",
-		"sdk-Namespace-5828",
-		"privateEndpointConnectionName",
-		nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().Get(ctx, "SDK-EventHub-4794", "sdk-Namespace-5828", "privateEndpointConnectionName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armeventhub.PrivateEndpointConnection{
+	// 	Name: to.Ptr("privateEndpointConnectionName"),
+	// 	Type: to.Ptr("Microsoft.EventHub/Namespaces/PrivateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-EventHub-4794/providers/Microsoft.EventHub/namespaces/sdk-Namespace-5828/privateEndpointConnections/privateEndpointConnectionName"),
+	// 	Properties: &armeventhub.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armeventhub.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-EventHub-4794/providers/Microsoft.Network/privateEndpoints/sdk-Namespace-5828"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armeventhub.ConnectionState{
+	// 			Description: to.Ptr("Auto-Approved"),
+	// 			Status: to.Ptr(armeventhub.PrivateLinkConnectionStatusApproved),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armeventhub.EndPointProvisioningStateSucceeded),
+	// 	},
+	// }
 }

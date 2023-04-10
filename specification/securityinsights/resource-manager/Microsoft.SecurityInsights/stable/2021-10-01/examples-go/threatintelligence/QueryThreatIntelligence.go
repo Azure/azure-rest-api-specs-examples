@@ -9,42 +9,118 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2021-10-01/examples/threatintelligence/QueryThreatIntelligence.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2021-10-01/examples/threatintelligence/QueryThreatIntelligence.json
 func ExampleThreatIntelligenceIndicatorClient_NewQueryIndicatorsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurityinsights.NewThreatIntelligenceIndicatorClient("bd794837-4d29-4647-9105-6339bfdb4e6a", cred, nil)
+	clientFactory, err := armsecurityinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewQueryIndicatorsPager("myRg",
-		"myWorkspace",
-		armsecurityinsights.ThreatIntelligenceFilteringCriteria{
-			MaxConfidence: to.Ptr[int32](80),
-			MaxValidUntil: to.Ptr("2020-04-25T17:44:00.114052Z"),
-			MinConfidence: to.Ptr[int32](25),
-			MinValidUntil: to.Ptr("2020-04-05T17:44:00.114052Z"),
-			PageSize:      to.Ptr[int32](100),
-			SortBy: []*armsecurityinsights.ThreatIntelligenceSortingCriteria{
-				{
-					ItemKey:   to.Ptr("lastUpdatedTimeUtc"),
-					SortOrder: to.Ptr(armsecurityinsights.ThreatIntelligenceSortingOrderDescending),
-				}},
-			Sources: []*string{
-				to.Ptr("Azure Sentinel")},
-		},
-		nil)
+	pager := clientFactory.NewThreatIntelligenceIndicatorClient().NewQueryIndicatorsPager("myRg", "myWorkspace", armsecurityinsights.ThreatIntelligenceFilteringCriteria{
+		MaxConfidence: to.Ptr[int32](80),
+		MaxValidUntil: to.Ptr("2020-04-25T17:44:00.114052Z"),
+		MinConfidence: to.Ptr[int32](25),
+		MinValidUntil: to.Ptr("2020-04-05T17:44:00.114052Z"),
+		PageSize:      to.Ptr[int32](100),
+		SortBy: []*armsecurityinsights.ThreatIntelligenceSortingCriteria{
+			{
+				ItemKey:   to.Ptr("lastUpdatedTimeUtc"),
+				SortOrder: to.Ptr(armsecurityinsights.ThreatIntelligenceSortingOrderDescending),
+			}},
+		Sources: []*string{
+			to.Ptr("Azure Sentinel")},
+	}, nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ThreatIntelligenceInformationList = armsecurityinsights.ThreatIntelligenceInformationList{
+		// 	Value: []armsecurityinsights.ThreatIntelligenceInformationClassification{
+		// 		&armsecurityinsights.ThreatIntelligenceIndicatorModel{
+		// 			Name: to.Ptr("27d963e6-e6e4-e0f9-e9d7-c53985b3bbe8"),
+		// 			Type: to.Ptr("Microsoft.SecurityInsights/ThreatIntelligence"),
+		// 			ID: to.Ptr("/subscriptions/bd794837-4d29-4647-9105-6339bfdb4e6a/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/ThreatIntelligence/27d963e6-e6e4-e0f9-e9d7-c53985b3bbe8"),
+		// 			Etag: to.Ptr("\"00002f2c-0000-0800-0000-5e976a8e0000\""),
+		// 			Kind: to.Ptr(armsecurityinsights.ThreatIntelligenceResourceInnerKindIndicator),
+		// 			Properties: &armsecurityinsights.ThreatIntelligenceIndicatorProperties{
+		// 				Description: to.Ptr("debugging indicators 2"),
+		// 				Confidence: to.Ptr[int32](90),
+		// 				Created: to.Ptr("2020-04-15T20:11:57.9666134Z"),
+		// 				CreatedByRef: to.Ptr("contoso@contoso.com"),
+		// 				DisplayName: to.Ptr("new schema 2"),
+		// 				ExternalID: to.Ptr("indicator--8516d567-0daa-4614-8745-e3591e1b48cf"),
+		// 				ExternalReferences: []*armsecurityinsights.ThreatIntelligenceExternalReference{
+		// 				},
+		// 				GranularMarkings: []*armsecurityinsights.ThreatIntelligenceGranularMarkingModel{
+		// 				},
+		// 				KillChainPhases: []*armsecurityinsights.ThreatIntelligenceKillChainPhase{
+		// 				},
+		// 				LastUpdatedTimeUTC: to.Ptr("2020-04-15T20:15:11.0746926Z"),
+		// 				ParsedPattern: []*armsecurityinsights.ThreatIntelligenceParsedPattern{
+		// 					{
+		// 						PatternTypeKey: to.Ptr("network-traffic"),
+		// 						PatternTypeValues: []*armsecurityinsights.ThreatIntelligenceParsedPatternTypeValue{
+		// 							{
+		// 								Value: to.Ptr("SSH-2.0-PuTTY_Release_0.64"),
+		// 								ValueType: to.Ptr("0"),
+		// 							},
+		// 							{
+		// 								Value: to.Ptr("194.88.106.146"),
+		// 								ValueType: to.Ptr("1"),
+		// 						}},
+		// 				}},
+		// 				Pattern: to.Ptr("[url:value = 'https://www.contoso.com']"),
+		// 				PatternType: to.Ptr("url"),
+		// 				Revoked: to.Ptr(false),
+		// 				Source: to.Ptr("Azure Sentinel"),
+		// 				ThreatIntelligenceTags: []*string{
+		// 					to.Ptr("new schema")},
+		// 					ThreatTypes: []*string{
+		// 						to.Ptr("compromised")},
+		// 						ValidFrom: to.Ptr("2020-04-15T17:44:00.114052Z"),
+		// 					},
+		// 				},
+		// 				&armsecurityinsights.ThreatIntelligenceIndicatorModel{
+		// 					Name: to.Ptr("e16ef847-962e-d7b6-9c8b-a33e4bd30e47"),
+		// 					Type: to.Ptr("Microsoft.SecurityInsights/ThreatIntelligence"),
+		// 					ID: to.Ptr("/subscriptions/bd794837-4d29-4647-9105-6339bfdb4e6a/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/ThreatIntelligence/e16ef847-962e-d7b6-9c8b-a33e4bd30e47"),
+		// 					Etag: to.Ptr("\"00002a2c-0000-0800-0000-5e97683b0000\""),
+		// 					Kind: to.Ptr(armsecurityinsights.ThreatIntelligenceResourceInnerKindIndicator),
+		// 					Properties: &armsecurityinsights.ThreatIntelligenceIndicatorProperties{
+		// 						Description: to.Ptr("debugging indicators"),
+		// 						Confidence: to.Ptr[int32](78),
+		// 						Created: to.Ptr("2020-04-15T19:51:17.1050923Z"),
+		// 						CreatedByRef: to.Ptr("contoso@contoso.com"),
+		// 						DisplayName: to.Ptr("updated indicator"),
+		// 						ExternalID: to.Ptr("indicator--73be1729-babb-4348-a6c4-94621cae2530"),
+		// 						ExternalReferences: []*armsecurityinsights.ThreatIntelligenceExternalReference{
+		// 						},
+		// 						GranularMarkings: []*armsecurityinsights.ThreatIntelligenceGranularMarkingModel{
+		// 						},
+		// 						KillChainPhases: []*armsecurityinsights.ThreatIntelligenceKillChainPhase{
+		// 						},
+		// 						LastUpdatedTimeUTC: to.Ptr("2020-04-15T20:15:11.074903Z"),
+		// 						Pattern: to.Ptr("[url:value = 'https://www.contoso.com']"),
+		// 						PatternType: to.Ptr("url"),
+		// 						Revoked: to.Ptr(false),
+		// 						Source: to.Ptr("Azure Sentinel"),
+		// 						ThreatIntelligenceTags: []*string{
+		// 							to.Ptr("patching tags")},
+		// 							ThreatTypes: []*string{
+		// 								to.Ptr("compromised")},
+		// 								ValidFrom: to.Ptr("2020-04-15T17:44:00.114052Z"),
+		// 							},
+		// 					}},
+		// 				}
 	}
 }

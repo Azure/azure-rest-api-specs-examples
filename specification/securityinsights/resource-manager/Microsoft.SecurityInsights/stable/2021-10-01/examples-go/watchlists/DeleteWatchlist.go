@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2021-10-01/examples/watchlists/DeleteWatchlist.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/stable/2021-10-01/examples/watchlists/DeleteWatchlist.json
 func ExampleWatchlistsClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armsecurityinsights.NewWatchlistsClient("d0cfe6b2-9ac0-4464-9919-dccaee2e48c0", cred, nil)
+	clientFactory, err := armsecurityinsights.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"myRg",
-		"myWorkspace",
-		"highValueAsset",
-		nil)
+	_, err = clientFactory.NewWatchlistsClient().Delete(ctx, "myRg", "myWorkspace", "highValueAsset", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

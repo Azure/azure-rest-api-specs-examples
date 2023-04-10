@@ -8,27 +8,54 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotcentral/armiotcentral"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/iotcentral/resource-manager/Microsoft.IoTCentral/stable/2021-06-01/examples/Apps_ListByResourceGroup.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/iotcentral/resource-manager/Microsoft.IoTCentral/stable/2021-06-01/examples/Apps_ListByResourceGroup.json
 func ExampleAppsClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armiotcentral.NewAppsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armiotcentral.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByResourceGroupPager("resRg",
-		nil)
+	pager := clientFactory.NewAppsClient().NewListByResourceGroupPager("resRg", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.AppListResult = armiotcentral.AppListResult{
+		// 	Value: []*armiotcentral.App{
+		// 		{
+		// 			Name: to.Ptr("myIoTCentralApp"),
+		// 			Type: to.Ptr("Microsoft.IoTCentral/IoTApps"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/resRg/providers/Microsoft.IoTCentral/iotApps/myIoTCentralApp"),
+		// 			Location: to.Ptr("westus"),
+		// 			Tags: map[string]*string{
+		// 				"key": to.Ptr("value"),
+		// 			},
+		// 			Identity: &armiotcentral.SystemAssignedServiceIdentity{
+		// 				Type: to.Ptr(armiotcentral.SystemAssignedServiceIdentityTypeSystemAssigned),
+		// 				PrincipalID: to.Ptr("8988ab15-3e7a-4586-8a1c-ed07a73a53e9"),
+		// 				TenantID: to.Ptr("f686d426-8d16-42db-81b7-ab578e110ccd"),
+		// 			},
+		// 			Properties: &armiotcentral.AppProperties{
+		// 				ApplicationID: to.Ptr("6ebd8fd3-6e34-419e-908f-9be61ec6f6d6"),
+		// 				DisplayName: to.Ptr("My IoT Central App"),
+		// 				State: to.Ptr(armiotcentral.AppStateCreated),
+		// 				Subdomain: to.Ptr("my-iot-central-app"),
+		// 				Template: to.Ptr("iotc-pnp-preview@1.0.0"),
+		// 			},
+		// 			SKU: &armiotcentral.AppSKUInfo{
+		// 				Name: to.Ptr(armiotcentral.AppSKU("F1")),
+		// 			},
+		// 	}},
+		// }
 	}
 }

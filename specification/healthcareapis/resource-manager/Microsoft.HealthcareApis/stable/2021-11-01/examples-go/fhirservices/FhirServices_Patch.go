@@ -9,27 +9,22 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/healthcareapis/armhealthcareapis"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/examples/fhirservices/FhirServices_Patch.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/examples/fhirservices/FhirServices_Patch.json
 func ExampleFhirServicesClient_BeginUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhealthcareapis.NewFhirServicesClient("subid", cred, nil)
+	clientFactory, err := armhealthcareapis.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx,
-		"testRG",
-		"fhirservice1",
-		"workspace1",
-		armhealthcareapis.FhirServicePatchResource{
-			Tags: map[string]*string{
-				"tagKey": to.Ptr("tagValue"),
-			},
+	poller, err := clientFactory.NewFhirServicesClient().BeginUpdate(ctx, "testRG", "fhirservice1", "workspace1", armhealthcareapis.FhirServicePatchResource{
+		Tags: map[string]*string{
+			"tagKey": to.Ptr("tagValue"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -37,6 +32,18 @@ func ExampleFhirServicesClient_BeginUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.FhirService = armhealthcareapis.FhirService{
+	// 	Name: to.Ptr("fhirservice1"),
+	// 	Type: to.Ptr("Microsoft.HealthcareApis/workspaces/fhirservices"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/testRG/providers/Microsoft.HealthcareApis/workspaces/workspace1/fhirservices/fhirservice1"),
+	// 	Tags: map[string]*string{
+	// 		"tagKey": to.Ptr("tagValue"),
+	// 	},
+	// 	Properties: &armhealthcareapis.FhirServiceProperties{
+	// 		ProvisioningState: to.Ptr(armhealthcareapis.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

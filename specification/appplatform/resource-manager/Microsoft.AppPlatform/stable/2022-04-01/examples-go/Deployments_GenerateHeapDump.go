@@ -9,27 +9,21 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/Deployments_GenerateHeapDump.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/Deployments_GenerateHeapDump.json
 func ExampleDeploymentsClient_BeginGenerateHeapDump() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappplatform.NewDeploymentsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armappplatform.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginGenerateHeapDump(ctx,
-		"myResourceGroup",
-		"myservice",
-		"myapp",
-		"mydeployment",
-		armappplatform.DiagnosticParameters{
-			AppInstance: to.Ptr("myappinstance"),
-			FilePath:    to.Ptr("/byos/diagnose"),
-		},
-		nil)
+	poller, err := clientFactory.NewDeploymentsClient().BeginGenerateHeapDump(ctx, "myResourceGroup", "myservice", "myapp", "mydeployment", armappplatform.DiagnosticParameters{
+		AppInstance: to.Ptr("myappinstance"),
+		FilePath:    to.Ptr("/byos/diagnose"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

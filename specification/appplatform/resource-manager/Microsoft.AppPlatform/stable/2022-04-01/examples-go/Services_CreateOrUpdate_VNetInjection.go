@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/Services_CreateOrUpdate.json
-func ExampleServicesClient_BeginCreateOrUpdate_servicesCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/Services_CreateOrUpdate_VNetInjection.json
+func ExampleServicesClient_BeginCreateOrUpdate_servicesCreateOrUpdateVNetInjection() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -25,7 +25,15 @@ func ExampleServicesClient_BeginCreateOrUpdate_servicesCreateOrUpdate() {
 		Tags: map[string]*string{
 			"key1": to.Ptr("value1"),
 		},
-		Properties: &armappplatform.ClusterResourceProperties{},
+		Properties: &armappplatform.ClusterResourceProperties{
+			NetworkProfile: &armappplatform.NetworkProfile{
+				AppNetworkResourceGroup:            to.Ptr("my-app-network-rg"),
+				AppSubnetID:                        to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/apps"),
+				ServiceCidr:                        to.Ptr("10.8.0.0/16,10.244.0.0/16,10.245.0.1/16"),
+				ServiceRuntimeNetworkResourceGroup: to.Ptr("my-service-runtime-network-rg"),
+				ServiceRuntimeSubnetID:             to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/serviceRuntime"),
+			},
+		},
 		SKU: &armappplatform.SKU{
 			Name: to.Ptr("S0"),
 			Tier: to.Ptr("Standard"),
@@ -59,9 +67,10 @@ func ExampleServicesClient_BeginCreateOrUpdate_servicesCreateOrUpdate() {
 	// 	},
 	// 	Properties: &armappplatform.ClusterResourceProperties{
 	// 		NetworkProfile: &armappplatform.NetworkProfile{
+	// 			AppNetworkResourceGroup: to.Ptr("my-app-network-rg"),
+	// 			AppSubnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/apps"),
 	// 			OutboundIPs: &armappplatform.NetworkProfileOutboundIPs{
 	// 				PublicIPs: []*string{
-	// 					to.Ptr("20.39.3.173"),
 	// 					to.Ptr("40.64.67.13")},
 	// 				},
 	// 				RequiredTraffics: []*armappplatform.RequiredTraffic{
@@ -89,6 +98,9 @@ func ExampleServicesClient_BeginCreateOrUpdate_servicesCreateOrUpdate() {
 	// 									Port: to.Ptr[int32](9000),
 	// 									Protocol: to.Ptr("TCP"),
 	// 							}},
+	// 							ServiceCidr: to.Ptr("10.8.0.0/16,10.244.0.0/16,10.245.0.1/16"),
+	// 							ServiceRuntimeNetworkResourceGroup: to.Ptr("my-service-runtime-network-rg"),
+	// 							ServiceRuntimeSubnetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/serviceRuntime"),
 	// 						},
 	// 						ProvisioningState: to.Ptr(armappplatform.ProvisioningStateSucceeded),
 	// 						ServiceID: to.Ptr("12345678abcd1234abcd12345678abcd"),

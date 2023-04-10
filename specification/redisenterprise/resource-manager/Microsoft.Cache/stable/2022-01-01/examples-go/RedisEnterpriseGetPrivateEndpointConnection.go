@@ -8,25 +8,38 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/examples/RedisEnterpriseGetPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/examples/RedisEnterpriseGetPrivateEndpointConnection.json
 func ExamplePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armredisenterprise.NewPrivateEndpointConnectionsClient("subid", cred, nil)
+	clientFactory, err := armredisenterprise.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"rg1",
-		"cache1",
-		"pectest01",
-		nil)
+	res, err := clientFactory.NewPrivateEndpointConnectionsClient().Get(ctx, "rg1", "cache1", "pectest01", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnection = armredisenterprise.PrivateEndpointConnection{
+	// 	Name: to.Ptr("pectest01"),
+	// 	Type: to.Ptr("Microsoft.Cache/redisEnterprise/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/privateEndpointConnections/pectest01"),
+	// 	Properties: &armredisenterprise.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armredisenterprise.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/petest01"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armredisenterprise.PrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("Auto-Approved"),
+	// 			ActionsRequired: to.Ptr("None"),
+	// 			Status: to.Ptr(armredisenterprise.PrivateEndpointServiceConnectionStatusApproved),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armredisenterprise.PrivateEndpointConnectionProvisioningStateSucceeded),
+	// 	},
+	// }
 }

@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Profile-PATCH-MonitorConfig.json
-func ExampleProfilesClient_Update() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Profile-PUT-WithCustomHeaders.json
+func ExampleProfilesClient_CreateOrUpdate_profilePutWithCustomHeaders() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,8 +20,28 @@ func ExampleProfilesClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewProfilesClient().Update(ctx, "azuresdkfornetautoresttrafficmanager2583", "azuresdkfornetautoresttrafficmanager6192", armtrafficmanager.Profile{
+	res, err := clientFactory.NewProfilesClient().CreateOrUpdate(ctx, "azuresdkfornetautoresttrafficmanager2583", "azuresdkfornetautoresttrafficmanager6192", armtrafficmanager.Profile{
+		Location: to.Ptr("global"),
 		Properties: &armtrafficmanager.ProfileProperties{
+			DNSConfig: &armtrafficmanager.DNSConfig{
+				RelativeName: to.Ptr("azuresdkfornetautoresttrafficmanager6192"),
+				TTL:          to.Ptr[int64](35),
+			},
+			Endpoints: []*armtrafficmanager.Endpoint{
+				{
+					Name: to.Ptr("My external endpoint"),
+					Type: to.Ptr("Microsoft.network/TrafficManagerProfiles/ExternalEndpoints"),
+					Properties: &armtrafficmanager.EndpointProperties{
+						CustomHeaders: []*armtrafficmanager.EndpointPropertiesCustomHeadersItem{
+							{
+								Name:  to.Ptr("header-2"),
+								Value: to.Ptr("value-2-overridden"),
+							}},
+						EndpointLocation: to.Ptr("North Europe"),
+						EndpointStatus:   to.Ptr(armtrafficmanager.EndpointStatusEnabled),
+						Target:           to.Ptr("foobar.contoso.com"),
+					},
+				}},
 			MonitorConfig: &armtrafficmanager.MonitorConfig{
 				Path: to.Ptr("/testpath.aspx"),
 				CustomHeaders: []*armtrafficmanager.MonitorConfigCustomHeadersItem{
@@ -33,12 +53,24 @@ func ExampleProfilesClient_Update() {
 						Name:  to.Ptr("header-2"),
 						Value: to.Ptr("value-2"),
 					}},
-				IntervalInSeconds:         to.Ptr[int64](30),
+				ExpectedStatusCodeRanges: []*armtrafficmanager.MonitorConfigExpectedStatusCodeRangesItem{
+					{
+						Max: to.Ptr[int32](205),
+						Min: to.Ptr[int32](200),
+					},
+					{
+						Max: to.Ptr[int32](410),
+						Min: to.Ptr[int32](400),
+					}},
+				IntervalInSeconds:         to.Ptr[int64](10),
 				Port:                      to.Ptr[int64](80),
-				TimeoutInSeconds:          to.Ptr[int64](6),
-				ToleratedNumberOfFailures: to.Ptr[int64](4),
+				TimeoutInSeconds:          to.Ptr[int64](5),
+				ToleratedNumberOfFailures: to.Ptr[int64](2),
 				Protocol:                  to.Ptr(armtrafficmanager.MonitorProtocolHTTP),
 			},
+			ProfileStatus:               to.Ptr(armtrafficmanager.ProfileStatusEnabled),
+			TrafficRoutingMethod:        to.Ptr(armtrafficmanager.TrafficRoutingMethodPerformance),
+			TrafficViewEnrollmentStatus: to.Ptr(armtrafficmanager.TrafficViewEnrollmentStatusDisabled),
 		},
 	}, nil)
 	if err != nil {
@@ -52,8 +84,6 @@ func ExampleProfilesClient_Update() {
 	// 	Type: to.Ptr("Microsoft.Network/trafficManagerProfiles"),
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager2583/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager6192"),
 	// 	Location: to.Ptr("global"),
-	// 	Tags: map[string]*string{
-	// 	},
 	// 	Properties: &armtrafficmanager.ProfileProperties{
 	// 		DNSConfig: &armtrafficmanager.DNSConfig{
 	// 			Fqdn: to.Ptr("azuresdkfornetautoresttrafficmanager6192.tmpreview.watmtest.azure-test.net"),
@@ -66,6 +96,11 @@ func ExampleProfilesClient_Update() {
 	// 				Type: to.Ptr("Microsoft.Network/trafficManagerProfiles/externalEndpoints"),
 	// 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager2583/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager6192/externalEndpoints/My external endpoint"),
 	// 				Properties: &armtrafficmanager.EndpointProperties{
+	// 					CustomHeaders: []*armtrafficmanager.EndpointPropertiesCustomHeadersItem{
+	// 						{
+	// 							Name: to.Ptr("header-2"),
+	// 							Value: to.Ptr("value-2-overridden"),
+	// 					}},
 	// 					EndpointLocation: to.Ptr("North Europe"),
 	// 					EndpointMonitorStatus: to.Ptr(armtrafficmanager.EndpointMonitorStatusCheckingEndpoint),
 	// 					EndpointStatus: to.Ptr(armtrafficmanager.EndpointStatusEnabled),
@@ -85,15 +120,16 @@ func ExampleProfilesClient_Update() {
 	// 					Name: to.Ptr("header-2"),
 	// 					Value: to.Ptr("value-2"),
 	// 			}},
-	// 			IntervalInSeconds: to.Ptr[int64](30),
+	// 			IntervalInSeconds: to.Ptr[int64](10),
 	// 			Port: to.Ptr[int64](80),
 	// 			ProfileMonitorStatus: to.Ptr(armtrafficmanager.ProfileMonitorStatusCheckingEndpoints),
-	// 			TimeoutInSeconds: to.Ptr[int64](6),
-	// 			ToleratedNumberOfFailures: to.Ptr[int64](4),
+	// 			TimeoutInSeconds: to.Ptr[int64](5),
+	// 			ToleratedNumberOfFailures: to.Ptr[int64](2),
 	// 			Protocol: to.Ptr(armtrafficmanager.MonitorProtocolHTTP),
 	// 		},
 	// 		ProfileStatus: to.Ptr(armtrafficmanager.ProfileStatusEnabled),
 	// 		TrafficRoutingMethod: to.Ptr(armtrafficmanager.TrafficRoutingMethodPerformance),
+	// 		TrafficViewEnrollmentStatus: to.Ptr(armtrafficmanager.TrafficViewEnrollmentStatusDisabled),
 	// 	},
 	// }
 }

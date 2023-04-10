@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Profile-PUT-MultiValue.json
-func ExampleProfilesClient_CreateOrUpdate_profilePutMultiValue() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Profile-PUT-NoEndpoints.json
+func ExampleProfilesClient_CreateOrUpdate_profilePutNoEndpoints() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -27,15 +27,13 @@ func ExampleProfilesClient_CreateOrUpdate_profilePutMultiValue() {
 				RelativeName: to.Ptr("azsmnet6386"),
 				TTL:          to.Ptr[int64](35),
 			},
-			MaxReturn: to.Ptr[int64](2),
 			MonitorConfig: &armtrafficmanager.MonitorConfig{
 				Path:     to.Ptr("/testpath.aspx"),
 				Port:     to.Ptr[int64](80),
 				Protocol: to.Ptr(armtrafficmanager.MonitorProtocolHTTP),
 			},
-			ProfileStatus:               to.Ptr(armtrafficmanager.ProfileStatusEnabled),
-			TrafficRoutingMethod:        to.Ptr(armtrafficmanager.TrafficRoutingMethodMultiValue),
-			TrafficViewEnrollmentStatus: to.Ptr(armtrafficmanager.TrafficViewEnrollmentStatusDisabled),
+			ProfileStatus:        to.Ptr(armtrafficmanager.ProfileStatusEnabled),
+			TrafficRoutingMethod: to.Ptr(armtrafficmanager.TrafficRoutingMethodPerformance),
 		},
 	}, nil)
 	if err != nil {
@@ -57,7 +55,6 @@ func ExampleProfilesClient_CreateOrUpdate_profilePutMultiValue() {
 	// 		},
 	// 		Endpoints: []*armtrafficmanager.Endpoint{
 	// 		},
-	// 		MaxReturn: to.Ptr[int64](2),
 	// 		MonitorConfig: &armtrafficmanager.MonitorConfig{
 	// 			Path: to.Ptr("/testpath.aspx"),
 	// 			IntervalInSeconds: to.Ptr[int64](30),
@@ -68,8 +65,7 @@ func ExampleProfilesClient_CreateOrUpdate_profilePutMultiValue() {
 	// 			Protocol: to.Ptr(armtrafficmanager.MonitorProtocolHTTP),
 	// 		},
 	// 		ProfileStatus: to.Ptr(armtrafficmanager.ProfileStatusEnabled),
-	// 		TrafficRoutingMethod: to.Ptr(armtrafficmanager.TrafficRoutingMethodMultiValue),
-	// 		TrafficViewEnrollmentStatus: to.Ptr(armtrafficmanager.TrafficViewEnrollmentStatusDisabled),
+	// 		TrafficRoutingMethod: to.Ptr(armtrafficmanager.TrafficRoutingMethodPerformance),
 	// 	},
 	// }
 }

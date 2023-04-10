@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/HeatMap-GET.json
-func ExampleHeatMapClient_Get_heatMapGet() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/HeatMap-GET-With-TopLeft-BotRight.json
+func ExampleHeatMapClient_Get_heatMapGetWithTopLeftBotRight() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,8 +19,12 @@ func ExampleHeatMapClient_Get_heatMapGet() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewHeatMapClient().Get(ctx, "azuresdkfornetautoresttrafficmanager1323", "azuresdkfornetautoresttrafficmanager3880", &armtrafficmanager.HeatMapClientGetOptions{TopLeft: []float64{},
-		BotRight: []float64{},
+	res, err := clientFactory.NewHeatMapClient().Get(ctx, "azuresdkfornetautoresttrafficmanager1323", "azuresdkfornetautoresttrafficmanager3880", &armtrafficmanager.HeatMapClientGetOptions{TopLeft: []float64{
+		10,
+		50.001},
+		BotRight: []float64{
+			-50.001,
+			80},
 	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -46,8 +50,8 @@ func ExampleHeatMapClient_Get_heatMapGet() {
 	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T12:00:00Z"); return t}()),
 	// 		TrafficFlows: []*armtrafficmanager.TrafficFlow{
 	// 			{
-	// 				Latitude: to.Ptr[float64](99.99),
-	// 				Longitude: to.Ptr[float64](0),
+	// 				Latitude: to.Ptr[float64](9.99),
+	// 				Longitude: to.Ptr[float64](75.01),
 	// 				QueryExperiences: []*armtrafficmanager.QueryExperience{
 	// 					{
 	// 						EndpointID: to.Ptr[int32](1),
@@ -62,8 +66,8 @@ func ExampleHeatMapClient_Get_heatMapGet() {
 	// 				SourceIP: to.Ptr("1.1.1.1"),
 	// 			},
 	// 			{
-	// 				Latitude: to.Ptr[float64](-99.99),
-	// 				Longitude: to.Ptr[float64](1),
+	// 				Latitude: to.Ptr[float64](-49.99),
+	// 				Longitude: to.Ptr[float64](51),
 	// 				QueryExperiences: []*armtrafficmanager.QueryExperience{
 	// 					{
 	// 						EndpointID: to.Ptr[int32](1),

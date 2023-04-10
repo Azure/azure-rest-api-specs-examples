@@ -8,22 +8,18 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ManagedEnvironmentsStorages_Delete.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9a65970ef1837c0af1800c906aa365ba95871b26/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ManagedEnvironmentsStorages_Delete.json
 func ExampleManagedEnvironmentsStoragesClient_Delete() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappcontainers.NewManagedEnvironmentsStoragesClient("8efdecc5-919e-44eb-b179-915dca89ebf9", cred, nil)
+	clientFactory, err := armappcontainers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = client.Delete(ctx,
-		"examplerg",
-		"managedEnv",
-		"jlaw-demo1",
-		nil)
+	_, err = clientFactory.NewManagedEnvironmentsStoragesClient().Delete(ctx, "examplerg", "managedEnv", "jlaw-demo1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

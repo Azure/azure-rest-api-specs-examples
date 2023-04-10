@@ -8,24 +8,106 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridnetwork/armhybridnetwork"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/examples/VendorSkuGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2021-05-01/examples/VendorSkuGet.json
 func ExampleVendorSKUsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhybridnetwork.NewVendorSKUsClient("subid", cred, nil)
+	clientFactory, err := armhybridnetwork.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"TestVendor",
-		"TestSku",
-		nil)
+	res, err := clientFactory.NewVendorSKUsClient().Get(ctx, "TestVendor", "TestSku", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.VendorSKU = armhybridnetwork.VendorSKU{
+	// 	Name: to.Ptr("TestSku"),
+	// 	Type: to.Ptr("Microsoft.HybridNetwork/vendors/vendorskus"),
+	// 	ID: to.Ptr("/subscriptions/subid/providers/Microsoft.HybridNetwork/vendors/TestVendor/vendorskus/TestSku"),
+	// 	Properties: &armhybridnetwork.VendorSKUPropertiesFormat{
+	// 		DeploymentMode: to.Ptr(armhybridnetwork.SKUDeploymentModePrivateEdgeZone),
+	// 		ManagedApplicationTemplate: map[string]any{
+	// 		},
+	// 		NetworkFunctionTemplate: &armhybridnetwork.NetworkFunctionTemplate{
+	// 			NetworkFunctionRoleConfigurations: []*armhybridnetwork.NetworkFunctionRoleConfiguration{
+	// 				{
+	// 					CustomProfile: &armhybridnetwork.CustomProfile{
+	// 						MetadataConfigurationPath: to.Ptr("/var/logs/network.cfg"),
+	// 					},
+	// 					NetworkInterfaces: []*armhybridnetwork.NetworkInterface{
+	// 						{
+	// 							IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
+	// 								{
+	// 									Gateway: to.Ptr(""),
+	// 									IPAddress: to.Ptr(""),
+	// 									IPAllocationMethod: to.Ptr(armhybridnetwork.IPAllocationMethodDynamic),
+	// 									IPVersion: to.Ptr(armhybridnetwork.IPVersionIPv4),
+	// 									Subnet: to.Ptr(""),
+	// 							}},
+	// 							MacAddress: to.Ptr(""),
+	// 							NetworkInterfaceName: to.Ptr("nic1"),
+	// 							VMSwitchType: to.Ptr(armhybridnetwork.VMSwitchType("")),
+	// 						},
+	// 						{
+	// 							IPConfigurations: []*armhybridnetwork.NetworkInterfaceIPConfiguration{
+	// 								{
+	// 									Gateway: to.Ptr(""),
+	// 									IPAddress: to.Ptr(""),
+	// 									IPAllocationMethod: to.Ptr(armhybridnetwork.IPAllocationMethodDynamic),
+	// 									IPVersion: to.Ptr(armhybridnetwork.IPVersionIPv4),
+	// 									Subnet: to.Ptr(""),
+	// 							}},
+	// 							MacAddress: to.Ptr(""),
+	// 							NetworkInterfaceName: to.Ptr("nic2"),
+	// 							VMSwitchType: to.Ptr(armhybridnetwork.VMSwitchType("")),
+	// 					}},
+	// 					OSProfile: &armhybridnetwork.OsProfile{
+	// 						AdminUsername: to.Ptr("dummyuser"),
+	// 						CustomData: to.Ptr("base-64 encoded string of custom data"),
+	// 						LinuxConfiguration: &armhybridnetwork.LinuxConfiguration{
+	// 							SSH: &armhybridnetwork.SSHConfiguration{
+	// 								PublicKeys: []*armhybridnetwork.SSHPublicKey{
+	// 									{
+	// 										Path: to.Ptr("home/user/.ssh/authorized_keys"),
+	// 										KeyData: to.Ptr("ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAgEAwrr66r8n6B8Y0zMF3dOpXEapIQD9DiYQ6D6/zwor9o39jSkHNiMMER/GETBbzP83LOcekm02aRjo55ArO7gPPVvCXbrirJu9pkm4AC4BBre5xSLS= user@constoso-DSH"),
+	// 								}},
+	// 							},
+	// 						},
+	// 					},
+	// 					RoleName: to.Ptr("test"),
+	// 					RoleType: to.Ptr(armhybridnetwork.NetworkFunctionRoleConfigurationTypeVirtualMachine),
+	// 					StorageProfile: &armhybridnetwork.StorageProfile{
+	// 						DataDisks: []*armhybridnetwork.DataDisk{
+	// 							{
+	// 								Name: to.Ptr("DataDisk1"),
+	// 								CreateOption: to.Ptr(armhybridnetwork.DiskCreateOptionTypesEmpty),
+	// 								DiskSizeGB: to.Ptr[int32](10),
+	// 						}},
+	// 						ImageReference: &armhybridnetwork.ImageReference{
+	// 							Offer: to.Ptr("UbuntuServer"),
+	// 							Publisher: to.Ptr("Canonical"),
+	// 							SKU: to.Ptr("18.04-LTS"),
+	// 							Version: to.Ptr("18.04.201804262"),
+	// 						},
+	// 						OSDisk: &armhybridnetwork.OsDisk{
+	// 							Name: to.Ptr("vhdName"),
+	// 							DiskSizeGB: to.Ptr[int32](30),
+	// 							OSType: to.Ptr(armhybridnetwork.OperatingSystemTypesLinux),
+	// 							Vhd: &armhybridnetwork.VirtualHardDisk{
+	// 							},
+	// 						},
+	// 					},
+	// 					VirtualMachineSize: to.Ptr(armhybridnetwork.VirtualMachineSizeTypesStandardD3V2),
+	// 			}},
+	// 		},
+	// 		Preview: to.Ptr(true),
+	// 		ProvisioningState: to.Ptr(armhybridnetwork.ProvisioningStateSucceeded),
+	// 	},
+	// }
 }

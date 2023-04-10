@@ -8,24 +8,31 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ContainerApps_ListSecrets.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9a65970ef1837c0af1800c906aa365ba95871b26/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ContainerApps_ListSecrets.json
 func ExampleContainerAppsClient_ListSecrets() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappcontainers.NewContainerAppsClient("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345", cred, nil)
+	clientFactory, err := armappcontainers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListSecrets(ctx,
-		"rg",
-		"testcontainerApp0",
-		nil)
+	res, err := clientFactory.NewContainerAppsClient().ListSecrets(ctx, "rg", "testcontainerApp0", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.SecretsCollection = armappcontainers.SecretsCollection{
+	// 	Value: []*armappcontainers.ContainerAppSecret{
+	// 		{
+	// 			Name: to.Ptr("secret1"),
+	// 		},
+	// 		{
+	// 			Name: to.Ptr("secret2"),
+	// 	}},
+	// }
 }

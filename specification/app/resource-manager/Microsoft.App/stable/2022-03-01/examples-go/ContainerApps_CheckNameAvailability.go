@@ -4,12 +4,13 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9a65970ef1837c0af1800c906aa365ba95871b26/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/DaprComponents_ListSecrets.json
-func ExampleDaprComponentsClient_ListSecrets() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9a65970ef1837c0af1800c906aa365ba95871b26/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ContainerApps_CheckNameAvailability.json
+func ExampleNamespacesClient_CheckNameAvailability_containerAppsCheckNameAvailability() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,20 +20,19 @@ func ExampleDaprComponentsClient_ListSecrets() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewDaprComponentsClient().ListSecrets(ctx, "examplerg", "myenvironment", "reddog", nil)
+	res, err := clientFactory.NewNamespacesClient().CheckNameAvailability(ctx, "examplerg", "testcontainerenv", armappcontainers.CheckNameAvailabilityRequest{
+		Name: to.Ptr("testcappname"),
+		Type: to.Ptr("Microsoft.App/containerApps"),
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.DaprSecretsCollection = armappcontainers.DaprSecretsCollection{
-	// 	Value: []*armappcontainers.Secret{
-	// 		{
-	// 			Name: to.Ptr("secret1"),
-	// 		},
-	// 		{
-	// 			Name: to.Ptr("secret2"),
-	// 	}},
+	// res.CheckNameAvailabilityResponse = armappcontainers.CheckNameAvailabilityResponse{
+	// 	Message: to.Ptr(""),
+	// 	NameAvailable: to.Ptr(true),
+	// 	Reason: to.Ptr(armappcontainers.CheckNameAvailabilityReason("None")),
 	// }
 }

@@ -9,35 +9,43 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ManagedEnvironmentsStorages_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9a65970ef1837c0af1800c906aa365ba95871b26/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/examples/ManagedEnvironmentsStorages_CreateOrUpdate.json
 func ExampleManagedEnvironmentsStoragesClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappcontainers.NewManagedEnvironmentsStoragesClient("8efdecc5-919e-44eb-b179-915dca89ebf9", cred, nil)
+	clientFactory, err := armappcontainers.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"examplerg",
-		"managedEnv",
-		"jlaw-demo1",
-		armappcontainers.ManagedEnvironmentStorage{
-			Properties: &armappcontainers.ManagedEnvironmentStorageProperties{
-				AzureFile: &armappcontainers.AzureFileProperties{
-					AccessMode:  to.Ptr(armappcontainers.AccessModeReadOnly),
-					AccountKey:  to.Ptr("key"),
-					AccountName: to.Ptr("account1"),
-					ShareName:   to.Ptr("share1"),
-				},
+	res, err := clientFactory.NewManagedEnvironmentsStoragesClient().CreateOrUpdate(ctx, "examplerg", "managedEnv", "jlaw-demo1", armappcontainers.ManagedEnvironmentStorage{
+		Properties: &armappcontainers.ManagedEnvironmentStorageProperties{
+			AzureFile: &armappcontainers.AzureFileProperties{
+				AccessMode:  to.Ptr(armappcontainers.AccessModeReadOnly),
+				AccountKey:  to.Ptr("key"),
+				AccountName: to.Ptr("account1"),
+				ShareName:   to.Ptr("share1"),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.ManagedEnvironmentStorage = armappcontainers.ManagedEnvironmentStorage{
+	// 	Name: to.Ptr("jlaw-demo1"),
+	// 	Type: to.Ptr("Microsoft.App/managedEnvironments/storages"),
+	// 	ID: to.Ptr("/subscriptions/8efdecc5-919e-44eb-b179-915dca89ebf9/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/managedEnv/storages/jlaw-demo1"),
+	// 	Properties: &armappcontainers.ManagedEnvironmentStorageProperties{
+	// 		AzureFile: &armappcontainers.AzureFileProperties{
+	// 			AccessMode: to.Ptr(armappcontainers.AccessModeReadOnly),
+	// 			AccountName: to.Ptr("account1"),
+	// 			ShareName: to.Ptr("share1"),
+	// 		},
+	// 	},
+	// }
 }

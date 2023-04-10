@@ -15,11 +15,11 @@ func ExampleCachesClient_BeginFlush() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewCachesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armstoragecache.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginFlush(ctx, "scgroup", "sc", nil)
+	poller, err := clientFactory.NewCachesClient().BeginFlush(ctx, "scgroup", "sc", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

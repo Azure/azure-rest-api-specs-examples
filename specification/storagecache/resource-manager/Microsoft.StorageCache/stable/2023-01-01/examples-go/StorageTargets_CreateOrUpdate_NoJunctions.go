@@ -16,11 +16,11 @@ func ExampleStorageTargetsClient_BeginCreateOrUpdate_storageTargetsCreateOrUpdat
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewStorageTargetsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armstoragecache.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "scgroup", "sc1", "st1", armstoragecache.StorageTarget{
+	poller, err := clientFactory.NewStorageTargetsClient().BeginCreateOrUpdate(ctx, "scgroup", "sc1", "st1", armstoragecache.StorageTarget{
 		Properties: &armstoragecache.StorageTargetProperties{
 			Nfs3: &armstoragecache.Nfs3Target{
 				Target:            to.Ptr("10.0.44.44"),

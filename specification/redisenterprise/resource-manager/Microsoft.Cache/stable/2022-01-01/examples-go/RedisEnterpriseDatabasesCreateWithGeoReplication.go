@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/examples/RedisEnterpriseDatabasesCreate.json
-func ExampleDatabasesClient_BeginCreate_redisEnterpriseDatabasesCreate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/examples/RedisEnterpriseDatabasesCreateWithGeoReplication.json
+func ExampleDatabasesClient_BeginCreate_redisEnterpriseDatabasesCreateWithActiveGeoReplication() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -24,22 +24,16 @@ func ExampleDatabasesClient_BeginCreate_redisEnterpriseDatabasesCreate() {
 		Properties: &armredisenterprise.DatabaseProperties{
 			ClientProtocol:   to.Ptr(armredisenterprise.ProtocolEncrypted),
 			ClusteringPolicy: to.Ptr(armredisenterprise.ClusteringPolicyEnterpriseCluster),
-			EvictionPolicy:   to.Ptr(armredisenterprise.EvictionPolicyAllKeysLRU),
-			Modules: []*armredisenterprise.Module{
-				{
-					Name: to.Ptr("RedisBloom"),
-					Args: to.Ptr("ERROR_RATE 0.00 INITIAL_SIZE 400"),
-				},
-				{
-					Name: to.Ptr("RedisTimeSeries"),
-					Args: to.Ptr("RETENTION_POLICY 20"),
-				},
-				{
-					Name: to.Ptr("RediSearch"),
-				}},
-			Persistence: &armredisenterprise.Persistence{
-				AofEnabled:   to.Ptr(true),
-				AofFrequency: to.Ptr(armredisenterprise.AofFrequencyOneS),
+			EvictionPolicy:   to.Ptr(armredisenterprise.EvictionPolicyNoEviction),
+			GeoReplication: &armredisenterprise.DatabasePropertiesGeoReplication{
+				GroupNickname: to.Ptr("groupName"),
+				LinkedDatabases: []*armredisenterprise.LinkedDatabase{
+					{
+						ID: to.Ptr("/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"),
+					},
+					{
+						ID: to.Ptr("/subscriptions/subid2/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"),
+					}},
 			},
 			Port: to.Ptr[int32](10000),
 		},
@@ -57,30 +51,22 @@ func ExampleDatabasesClient_BeginCreate_redisEnterpriseDatabasesCreate() {
 	// res.Database = armredisenterprise.Database{
 	// 	Name: to.Ptr("cache1/default"),
 	// 	Type: to.Ptr("Microsoft.Cache/redisEnterprise/databases"),
-	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"),
+	// 	ID: to.Ptr("/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"),
 	// 	Properties: &armredisenterprise.DatabaseProperties{
 	// 		ClientProtocol: to.Ptr(armredisenterprise.ProtocolEncrypted),
 	// 		ClusteringPolicy: to.Ptr(armredisenterprise.ClusteringPolicyEnterpriseCluster),
-	// 		EvictionPolicy: to.Ptr(armredisenterprise.EvictionPolicyAllKeysLRU),
-	// 		Modules: []*armredisenterprise.Module{
-	// 			{
-	// 				Name: to.Ptr("RedisBloom"),
-	// 				Args: to.Ptr("ERROR_RATE 0.00 INITIAL_SIZE 400"),
-	// 				Version: to.Ptr("1.0.0"),
-	// 			},
-	// 			{
-	// 				Name: to.Ptr("RedisTimeSeries"),
-	// 				Args: to.Ptr("RETENTION_POLICY 20"),
-	// 				Version: to.Ptr("1.0.0"),
-	// 			},
-	// 			{
-	// 				Name: to.Ptr("RediSearch"),
-	// 				Args: to.Ptr(""),
-	// 				Version: to.Ptr("1.0.0"),
-	// 		}},
-	// 		Persistence: &armredisenterprise.Persistence{
-	// 			AofEnabled: to.Ptr(true),
-	// 			AofFrequency: to.Ptr(armredisenterprise.AofFrequencyOneS),
+	// 		EvictionPolicy: to.Ptr(armredisenterprise.EvictionPolicyNoEviction),
+	// 		GeoReplication: &armredisenterprise.DatabasePropertiesGeoReplication{
+	// 			GroupNickname: to.Ptr("groupName"),
+	// 			LinkedDatabases: []*armredisenterprise.LinkedDatabase{
+	// 				{
+	// 					ID: to.Ptr("/subscriptions/subid1/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"),
+	// 					State: to.Ptr(armredisenterprise.LinkStateLinking),
+	// 				},
+	// 				{
+	// 					ID: to.Ptr("/subscriptions/subid2/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"),
+	// 					State: to.Ptr(armredisenterprise.LinkStateLinking),
+	// 			}},
 	// 		},
 	// 		Port: to.Ptr[int32](10000),
 	// 		ProvisioningState: to.Ptr(armredisenterprise.ProvisioningStateSucceeded),

@@ -8,25 +8,37 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/healthcareapis/armhealthcareapis"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/examples/privatelink/WorkspaceGetPrivateEndpointConnection.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2021-11-01/examples/privatelink/WorkspaceGetPrivateEndpointConnection.json
 func ExampleWorkspacePrivateEndpointConnectionsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armhealthcareapis.NewWorkspacePrivateEndpointConnectionsClient("subid", cred, nil)
+	clientFactory, err := armhealthcareapis.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx,
-		"testRG",
-		"workspace1",
-		"myConnection",
-		nil)
+	res, err := clientFactory.NewWorkspacePrivateEndpointConnectionsClient().Get(ctx, "testRG", "workspace1", "myConnection", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.PrivateEndpointConnectionDescription = armhealthcareapis.PrivateEndpointConnectionDescription{
+	// 	Name: to.Ptr("myConnection"),
+	// 	Type: to.Ptr("Microsoft.HealthcareApis/workspaces/privateEndpointConnections"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.HealthcareApis/workspaces/workspace1/privateEndpointConnections/myConnection"),
+	// 	Properties: &armhealthcareapis.PrivateEndpointConnectionProperties{
+	// 		PrivateEndpoint: &armhealthcareapis.PrivateEndpoint{
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/privateEndpoints/peexample01"),
+	// 		},
+	// 		PrivateLinkServiceConnectionState: &armhealthcareapis.PrivateLinkServiceConnectionState{
+	// 			Description: to.Ptr("Auto-Approved"),
+	// 			ActionsRequired: to.Ptr("None"),
+	// 			Status: to.Ptr(armhealthcareapis.PrivateEndpointServiceConnectionStatusApproved),
+	// 		},
+	// 	},
+	// }
 }

@@ -8,30 +8,73 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/BuildService_ListBuildResults.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/BuildService_ListBuildResults.json
 func ExampleBuildServiceClient_NewListBuildResultsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappplatform.NewBuildServiceClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armappplatform.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListBuildResultsPager("myResourceGroup",
-		"myservice",
-		"default",
-		"mybuild",
-		nil)
+	pager := clientFactory.NewBuildServiceClient().NewListBuildResultsPager("myResourceGroup", "myservice", "default", "mybuild", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.BuildResultCollection = armappplatform.BuildResultCollection{
+		// 	Value: []*armappplatform.BuildResult{
+		// 		{
+		// 			Name: to.Ptr("123"),
+		// 			Type: to.Ptr("Microsoft.AppPlatform/Spring/buildServices/builds/results"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/buildServices/default/builds/mybuild/results/123"),
+		// 			SystemData: &armappplatform.SystemData{
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-11T03:16:03.944Z"); return t}()),
+		// 				CreatedBy: to.Ptr("sample-user"),
+		// 				CreatedByType: to.Ptr(armappplatform.CreatedByTypeUser),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-11T03:17:03.944Z"); return t}()),
+		// 				LastModifiedBy: to.Ptr("sample-user"),
+		// 				LastModifiedByType: to.Ptr(armappplatform.LastModifiedByTypeUser),
+		// 			},
+		// 			Properties: &armappplatform.BuildResultProperties{
+		// 				Name: to.Ptr("123"),
+		// 				BuildPodName: to.Ptr("mybuild-default-1"),
+		// 				BuildStages: []*armappplatform.BuildStageProperties{
+		// 					{
+		// 						Name: to.Ptr("prepare"),
+		// 						Status: to.Ptr(armappplatform.KPackBuildStageProvisioningStateRunning),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("detect"),
+		// 						Status: to.Ptr(armappplatform.KPackBuildStageProvisioningStateNotStarted),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("analyze"),
+		// 						Status: to.Ptr(armappplatform.KPackBuildStageProvisioningStateNotStarted),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("restore"),
+		// 						Status: to.Ptr(armappplatform.KPackBuildStageProvisioningStateNotStarted),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("build"),
+		// 						Status: to.Ptr(armappplatform.KPackBuildStageProvisioningStateNotStarted),
+		// 					},
+		// 					{
+		// 						Name: to.Ptr("export"),
+		// 						Status: to.Ptr(armappplatform.KPackBuildStageProvisioningStateNotStarted),
+		// 				}},
+		// 				ProvisioningState: to.Ptr(armappplatform.BuildResultProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

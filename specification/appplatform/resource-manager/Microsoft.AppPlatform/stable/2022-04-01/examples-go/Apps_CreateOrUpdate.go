@@ -9,59 +9,54 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/Apps_CreateOrUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/examples/Apps_CreateOrUpdate.json
 func ExampleAppsClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armappplatform.NewAppsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armappplatform.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx,
-		"myResourceGroup",
-		"myservice",
-		"myapp",
-		armappplatform.AppResource{
-			Identity: &armappplatform.ManagedIdentityProperties{
-				Type: to.Ptr(armappplatform.ManagedIdentityTypeSystemAssigned),
+	poller, err := clientFactory.NewAppsClient().BeginCreateOrUpdate(ctx, "myResourceGroup", "myservice", "myapp", armappplatform.AppResource{
+		Identity: &armappplatform.ManagedIdentityProperties{
+			Type: to.Ptr(armappplatform.ManagedIdentityTypeSystemAssigned),
+		},
+		Location: to.Ptr("eastus"),
+		Properties: &armappplatform.AppResourceProperties{
+			AddonConfigs: map[string]map[string]any{
+				"ApplicationConfigurationService": {
+					"resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/configurationServices/myacs",
+				},
+				"ServiceRegistry": {
+					"resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/serviceRegistries/myServiceRegistry",
+				},
 			},
-			Location: to.Ptr("eastus"),
-			Properties: &armappplatform.AppResourceProperties{
-				AddonConfigs: map[string]map[string]interface{}{
-					"ApplicationConfigurationService": {
-						"resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/configurationServices/myacs",
-					},
-					"ServiceRegistry": {
-						"resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/serviceRegistries/myServiceRegistry",
-					},
+			EnableEndToEndTLS: to.Ptr(false),
+			Fqdn:              to.Ptr("myapp.mydomain.com"),
+			HTTPSOnly:         to.Ptr(false),
+			LoadedCertificates: []*armappplatform.LoadedCertificate{
+				{
+					LoadTrustStore: to.Ptr(false),
+					ResourceID:     to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"),
 				},
-				EnableEndToEndTLS: to.Ptr(false),
-				Fqdn:              to.Ptr("myapp.mydomain.com"),
-				HTTPSOnly:         to.Ptr(false),
-				LoadedCertificates: []*armappplatform.LoadedCertificate{
-					{
-						LoadTrustStore: to.Ptr(false),
-						ResourceID:     to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"),
-					},
-					{
-						LoadTrustStore: to.Ptr(true),
-						ResourceID:     to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"),
-					}},
-				PersistentDisk: &armappplatform.PersistentDisk{
-					MountPath: to.Ptr("/mypersistentdisk"),
-					SizeInGB:  to.Ptr[int32](2),
-				},
-				Public: to.Ptr(true),
-				TemporaryDisk: &armappplatform.TemporaryDisk{
-					MountPath: to.Ptr("/mytemporarydisk"),
-					SizeInGB:  to.Ptr[int32](2),
-				},
+				{
+					LoadTrustStore: to.Ptr(true),
+					ResourceID:     to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"),
+				}},
+			PersistentDisk: &armappplatform.PersistentDisk{
+				MountPath: to.Ptr("/mypersistentdisk"),
+				SizeInGB:  to.Ptr[int32](2),
+			},
+			Public: to.Ptr(true),
+			TemporaryDisk: &armappplatform.TemporaryDisk{
+				MountPath: to.Ptr("/mytemporarydisk"),
+				SizeInGB:  to.Ptr[int32](2),
 			},
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -69,6 +64,51 @@ func ExampleAppsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to pull the result: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.AppResource = armappplatform.AppResource{
+	// 	Name: to.Ptr("myapp"),
+	// 	Type: to.Ptr("Microsoft.AppPlatform/Spring/apps"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/apps/myapp"),
+	// 	SystemData: &armappplatform.SystemData{
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-11T03:16:03.944Z"); return t}()),
+	// 		CreatedBy: to.Ptr("sample-user"),
+	// 		CreatedByType: to.Ptr(armappplatform.CreatedByTypeUser),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-11T03:17:03.944Z"); return t}()),
+	// 		LastModifiedBy: to.Ptr("sample-user"),
+	// 		LastModifiedByType: to.Ptr(armappplatform.LastModifiedByTypeUser),
+	// 	},
+	// 	Identity: &armappplatform.ManagedIdentityProperties{
+	// 		Type: to.Ptr(armappplatform.ManagedIdentityTypeSystemAssigned),
+	// 		PrincipalID: to.Ptr("principalid"),
+	// 		TenantID: to.Ptr("tenantid"),
+	// 	},
+	// 	Location: to.Ptr("eastus"),
+	// 	Properties: &armappplatform.AppResourceProperties{
+	// 		AddonConfigs: map[string]map[string]any{
+	// 			"ApplicationConfigurationService": map[string]any{
+	// 				"resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/configurationServices/myacs",
+	// 			},
+	// 			"ServiceRegistry": map[string]any{
+	// 				"resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/serviceRegistries/myServiceRegistry",
+	// 			},
+	// 		},
+	// 		EnableEndToEndTLS: to.Ptr(false),
+	// 		Fqdn: to.Ptr("myapp.mydomain.com"),
+	// 		HTTPSOnly: to.Ptr(false),
+	// 		PersistentDisk: &armappplatform.PersistentDisk{
+	// 			MountPath: to.Ptr("/mypersistentdisk"),
+	// 			SizeInGB: to.Ptr[int32](2),
+	// 			UsedInGB: to.Ptr[int32](1),
+	// 		},
+	// 		ProvisioningState: to.Ptr(armappplatform.AppResourceProvisioningStateSucceeded),
+	// 		Public: to.Ptr(true),
+	// 		TemporaryDisk: &armappplatform.TemporaryDisk{
+	// 			MountPath: to.Ptr("/mytemporarydisk"),
+	// 			SizeInGB: to.Ptr[int32](2),
+	// 		},
+	// 		URL: to.Ptr("myapp.myservice.azuremicroservices.io"),
+	// 	},
+	// }
 }

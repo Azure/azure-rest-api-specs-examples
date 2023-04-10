@@ -8,24 +8,37 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/examples/ManagedHsm_listPrivateLinkResources.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/examples/ManagedHsm_listPrivateLinkResources.json
 func ExampleMHSMPrivateLinkResourcesClient_ListByMHSMResource() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkeyvault.NewMHSMPrivateLinkResourcesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armkeyvault.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListByMHSMResource(ctx,
-		"sample-group",
-		"sample-mhsm",
-		nil)
+	res, err := clientFactory.NewMHSMPrivateLinkResourcesClient().ListByMHSMResource(ctx, "sample-group", "sample-mhsm", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.MHSMPrivateLinkResourceListResult = armkeyvault.MHSMPrivateLinkResourceListResult{
+	// 	Value: []*armkeyvault.MHSMPrivateLinkResource{
+	// 		{
+	// 			Name: to.Ptr("managedhsm"),
+	// 			Type: to.Ptr("Microsoft.KeyVault/managedhsms/privateLinkResources"),
+	// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-resource-group/providers/Microsoft.KeyVault/managedhsms/sample-mhsm/privateLinkResources/managedhsm"),
+	// 			Properties: &armkeyvault.MHSMPrivateLinkResourceProperties{
+	// 				GroupID: to.Ptr("managedhsms"),
+	// 				RequiredMembers: []*string{
+	// 					to.Ptr("default")},
+	// 					RequiredZoneNames: []*string{
+	// 						to.Ptr("privatelink.managedhsm.azure.net")},
+	// 					},
+	// 			}},
+	// 		}
 }

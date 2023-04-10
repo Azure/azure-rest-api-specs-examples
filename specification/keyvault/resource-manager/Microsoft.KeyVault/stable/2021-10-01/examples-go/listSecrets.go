@@ -8,28 +8,60 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/examples/listSecrets.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/examples/listSecrets.json
 func ExampleSecretsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkeyvault.NewSecretsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armkeyvault.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("sample-group",
-		"sample-vault",
-		&armkeyvault.SecretsClientListOptions{Top: nil})
+	pager := clientFactory.NewSecretsClient().NewListPager("sample-group", "sample-vault", &armkeyvault.SecretsClientListOptions{Top: nil})
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.SecretListResult = armkeyvault.SecretListResult{
+		// 	Value: []*armkeyvault.Secret{
+		// 		{
+		// 			Name: to.Ptr("secret-name"),
+		// 			Type: to.Ptr("Microsoft.KeyVault/vaults/secrets"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/secrets/secret-name"),
+		// 			Location: to.Ptr("westus"),
+		// 			Properties: &armkeyvault.SecretProperties{
+		// 				Attributes: &armkeyvault.SecretAttributes{
+		// 					Created: to.Ptr(time.Unix(1514941476, 0)),
+		// 					Enabled: to.Ptr(true),
+		// 					Updated: to.Ptr(time.Unix(1514941476, 0)),
+		// 				},
+		// 				SecretURI: to.Ptr("https://sample-vault.vault.azure.net/secrets/secret-name"),
+		// 				SecretURIWithVersion: to.Ptr("https://sample-vault.vault.azure.net/secrets/secret-name/40af42fbc10047f8a756a73211492f56"),
+		// 			},
+		// 		},
+		// 		{
+		// 			Name: to.Ptr("secret-name2"),
+		// 			Type: to.Ptr("Microsoft.KeyVault/vaults/secrets"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/secrets/secret-name2"),
+		// 			Location: to.Ptr("westus"),
+		// 			Properties: &armkeyvault.SecretProperties{
+		// 				Attributes: &armkeyvault.SecretAttributes{
+		// 					Created: to.Ptr(time.Unix(1514941476, 0)),
+		// 					Enabled: to.Ptr(true),
+		// 					Updated: to.Ptr(time.Unix(1514941476, 0)),
+		// 				},
+		// 				SecretURI: to.Ptr("https://sample-vault.vault.azure.net/secrets/secret-name2"),
+		// 				SecretURIWithVersion: to.Ptr("https://sample-vault.vault.azure.net/secrets/secret-name2/cd7264a6f56c44d1b594423c80609aae"),
+		// 			},
+		// 	}},
+		// }
 	}
 }

@@ -15,11 +15,11 @@ func ExampleStorageTargetsClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewStorageTargetsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armstoragecache.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.Get(ctx, "scgroup", "sc1", "st1", nil)
+	res, err := clientFactory.NewStorageTargetsClient().Get(ctx, "scgroup", "sc1", "st1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -15,11 +15,11 @@ func ExampleStorageTargetsClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewStorageTargetsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armstoragecache.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "scgroup", "sc1", "st1", &armstoragecache.StorageTargetsClientBeginDeleteOptions{Force: nil})
+	poller, err := clientFactory.NewStorageTargetsClient().BeginDelete(ctx, "scgroup", "sc1", "st1", &armstoragecache.StorageTargetsClientBeginDeleteOptions{Force: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

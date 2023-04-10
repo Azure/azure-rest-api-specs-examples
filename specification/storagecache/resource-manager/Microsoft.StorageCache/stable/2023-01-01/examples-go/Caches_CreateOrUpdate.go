@@ -18,11 +18,11 @@ func ExampleCachesClient_BeginCreateOrUpdate_cachesCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armstoragecache.NewCachesClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armstoragecache.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "scgroup", "sc1", armstoragecache.Cache{
+	poller, err := clientFactory.NewCachesClient().BeginCreateOrUpdate(ctx, "scgroup", "sc1", armstoragecache.Cache{
 		Identity: &armstoragecache.CacheIdentity{
 			Type: to.Ptr(armstoragecache.CacheIdentityTypeUserAssigned),
 			UserAssignedIdentities: map[string]*armstoragecache.UserAssignedIdentitiesValue{

@@ -15,11 +15,11 @@ func ExampleGremlinResourcesClient_NewListGremlinGraphsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewGremlinResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListGremlinGraphsPager("rgName", "ddb1", "databaseName", nil)
+	pager := clientFactory.NewGremlinResourcesClient().NewListGremlinGraphsPager("rgName", "ddb1", "databaseName", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

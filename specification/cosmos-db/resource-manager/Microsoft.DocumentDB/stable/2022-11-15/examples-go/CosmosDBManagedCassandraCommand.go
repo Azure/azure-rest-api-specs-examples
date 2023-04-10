@@ -16,11 +16,11 @@ func ExampleCassandraClustersClient_BeginInvokeCommand() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCassandraClustersClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginInvokeCommand(ctx, "cassandra-prod-rg", "cassandra-prod", armcosmos.CommandPostBody{
+	poller, err := clientFactory.NewCassandraClustersClient().BeginInvokeCommand(ctx, "cassandra-prod-rg", "cassandra-prod", armcosmos.CommandPostBody{
 		Command: to.Ptr("nodetool status"),
 		Host:    to.Ptr("10.0.1.12"),
 	}, nil)

@@ -16,11 +16,11 @@ func ExampleCollectionPartitionClient_NewListUsagesPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCollectionPartitionClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListUsagesPager("rg1", "ddb1", "databaseRid", "collectionRid", &armcosmos.CollectionPartitionClientListUsagesOptions{Filter: to.Ptr("$filter=name.value eq 'Partition Storage'")})
+	pager := clientFactory.NewCollectionPartitionClient().NewListUsagesPager("rg1", "ddb1", "databaseRid", "collectionRid", &armcosmos.CollectionPartitionClientListUsagesOptions{Filter: to.Ptr("$filter=name.value eq 'Partition Storage'")})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

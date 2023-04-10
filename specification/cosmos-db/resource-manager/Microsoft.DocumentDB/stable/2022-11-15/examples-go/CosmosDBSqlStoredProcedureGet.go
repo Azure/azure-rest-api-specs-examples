@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_GetSQLStoredProcedure() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetSQLStoredProcedure(ctx, "rgName", "ddb1", "databaseName", "containerName", "storedProcedureName", nil)
+	res, err := clientFactory.NewSQLResourcesClient().GetSQLStoredProcedure(ctx, "rgName", "ddb1", "databaseName", "containerName", "storedProcedureName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

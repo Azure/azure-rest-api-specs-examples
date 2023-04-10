@@ -15,11 +15,11 @@ func ExampleDatabaseAccountsClient_ListConnectionStrings_cosmosDbDatabaseAccount
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewDatabaseAccountsClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.ListConnectionStrings(ctx, "rg1", "ddb1", nil)
+	res, err := clientFactory.NewDatabaseAccountsClient().ListConnectionStrings(ctx, "rg1", "ddb1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

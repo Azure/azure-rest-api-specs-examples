@@ -16,11 +16,11 @@ func ExampleDatabaseAccountsClient_BeginRegenerateKey() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewDatabaseAccountsClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginRegenerateKey(ctx, "rg1", "ddb1", armcosmos.DatabaseAccountRegenerateKeyParameters{
+	poller, err := clientFactory.NewDatabaseAccountsClient().BeginRegenerateKey(ctx, "rg1", "ddb1", armcosmos.DatabaseAccountRegenerateKeyParameters{
 		KeyKind: to.Ptr(armcosmos.KeyKindPrimary),
 	}, nil)
 	if err != nil {

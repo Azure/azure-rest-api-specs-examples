@@ -15,11 +15,11 @@ func ExampleMongoDBResourcesClient_GetMongoDBCollection() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewMongoDBResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetMongoDBCollection(ctx, "rgName", "ddb1", "databaseName", "collectionName", nil)
+	res, err := clientFactory.NewMongoDBResourcesClient().GetMongoDBCollection(ctx, "rgName", "ddb1", "databaseName", "collectionName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

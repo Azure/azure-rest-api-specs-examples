@@ -15,11 +15,11 @@ func ExampleCassandraResourcesClient_BeginMigrateCassandraKeyspaceToAutoscale() 
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCassandraResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginMigrateCassandraKeyspaceToAutoscale(ctx, "rg1", "ddb1", "keyspaceName", nil)
+	poller, err := clientFactory.NewCassandraResourcesClient().BeginMigrateCassandraKeyspaceToAutoscale(ctx, "rg1", "ddb1", "keyspaceName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -15,11 +15,11 @@ func ExampleRestorableDatabaseAccountsClient_NewListByLocationPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewRestorableDatabaseAccountsClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListByLocationPager("West US", nil)
+	pager := clientFactory.NewRestorableDatabaseAccountsClient().NewListByLocationPager("West US", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

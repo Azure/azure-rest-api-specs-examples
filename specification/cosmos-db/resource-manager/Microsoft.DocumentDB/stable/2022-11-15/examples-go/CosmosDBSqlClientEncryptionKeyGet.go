@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_GetClientEncryptionKey() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subId", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetClientEncryptionKey(ctx, "rgName", "accountName", "databaseName", "cekName", nil)
+	res, err := clientFactory.NewSQLResourcesClient().GetClientEncryptionKey(ctx, "rgName", "accountName", "databaseName", "cekName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

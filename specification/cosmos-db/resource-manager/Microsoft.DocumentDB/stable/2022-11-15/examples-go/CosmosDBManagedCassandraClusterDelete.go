@@ -15,11 +15,11 @@ func ExampleCassandraClustersClient_BeginDelete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCassandraClustersClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDelete(ctx, "cassandra-prod-rg", "cassandra-prod", nil)
+	poller, err := clientFactory.NewCassandraClustersClient().BeginDelete(ctx, "cassandra-prod-rg", "cassandra-prod", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -16,11 +16,11 @@ func ExampleSQLResourcesClient_BeginUpdateSQLContainerThroughput() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdateSQLContainerThroughput(ctx, "rg1", "ddb1", "databaseName", "containerName", armcosmos.ThroughputSettingsUpdateParameters{
+	poller, err := clientFactory.NewSQLResourcesClient().BeginUpdateSQLContainerThroughput(ctx, "rg1", "ddb1", "databaseName", "containerName", armcosmos.ThroughputSettingsUpdateParameters{
 		Location: to.Ptr("West US"),
 		Tags:     map[string]*string{},
 		Properties: &armcosmos.ThroughputSettingsUpdateProperties{

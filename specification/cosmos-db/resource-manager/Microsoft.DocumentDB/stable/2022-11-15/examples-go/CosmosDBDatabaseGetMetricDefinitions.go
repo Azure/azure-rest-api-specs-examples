@@ -15,11 +15,11 @@ func ExampleDatabaseClient_NewListMetricDefinitionsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewDatabaseClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListMetricDefinitionsPager("rg1", "ddb1", "databaseRid", nil)
+	pager := clientFactory.NewDatabaseClient().NewListMetricDefinitionsPager("rg1", "ddb1", "databaseRid", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

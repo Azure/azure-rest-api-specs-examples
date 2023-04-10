@@ -16,11 +16,11 @@ func ExampleMongoDBResourcesClient_BeginUpdateMongoDBCollectionThroughput() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewMongoDBResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdateMongoDBCollectionThroughput(ctx, "rg1", "ddb1", "databaseName", "collectionName", armcosmos.ThroughputSettingsUpdateParameters{
+	poller, err := clientFactory.NewMongoDBResourcesClient().BeginUpdateMongoDBCollectionThroughput(ctx, "rg1", "ddb1", "databaseName", "collectionName", armcosmos.ThroughputSettingsUpdateParameters{
 		Location: to.Ptr("West US"),
 		Tags:     map[string]*string{},
 		Properties: &armcosmos.ThroughputSettingsUpdateProperties{

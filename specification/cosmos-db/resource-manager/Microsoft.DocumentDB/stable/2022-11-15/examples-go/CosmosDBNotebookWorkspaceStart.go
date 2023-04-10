@@ -15,11 +15,11 @@ func ExampleNotebookWorkspacesClient_BeginStart() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewNotebookWorkspacesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginStart(ctx, "rg1", "ddb1", armcosmos.NotebookWorkspaceNameDefault, nil)
+	poller, err := clientFactory.NewNotebookWorkspacesClient().BeginStart(ctx, "rg1", "ddb1", armcosmos.NotebookWorkspaceNameDefault, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

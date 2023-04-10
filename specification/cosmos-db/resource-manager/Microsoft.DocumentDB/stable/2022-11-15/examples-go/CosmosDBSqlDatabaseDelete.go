@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_BeginDeleteSQLDatabase() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginDeleteSQLDatabase(ctx, "rg1", "ddb1", "databaseName", nil)
+	poller, err := clientFactory.NewSQLResourcesClient().BeginDeleteSQLDatabase(ctx, "rg1", "ddb1", "databaseName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

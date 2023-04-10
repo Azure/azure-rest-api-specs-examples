@@ -15,11 +15,11 @@ func ExampleTableResourcesClient_BeginMigrateTableToAutoscale() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewTableResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginMigrateTableToAutoscale(ctx, "rg1", "ddb1", "tableName", nil)
+	poller, err := clientFactory.NewTableResourcesClient().BeginMigrateTableToAutoscale(ctx, "rg1", "ddb1", "tableName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -16,11 +16,11 @@ func ExampleSQLResourcesClient_BeginCreateUpdateSQLStoredProcedure() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateUpdateSQLStoredProcedure(ctx, "rg1", "ddb1", "databaseName", "containerName", "storedProcedureName", armcosmos.SQLStoredProcedureCreateUpdateParameters{
+	poller, err := clientFactory.NewSQLResourcesClient().BeginCreateUpdateSQLStoredProcedure(ctx, "rg1", "ddb1", "databaseName", "containerName", "storedProcedureName", armcosmos.SQLStoredProcedureCreateUpdateParameters{
 		Properties: &armcosmos.SQLStoredProcedureCreateUpdateProperties{
 			Options: &armcosmos.CreateUpdateOptions{},
 			Resource: &armcosmos.SQLStoredProcedureResource{

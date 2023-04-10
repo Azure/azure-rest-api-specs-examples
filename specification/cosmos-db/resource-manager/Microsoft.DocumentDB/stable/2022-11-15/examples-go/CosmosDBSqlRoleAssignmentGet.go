@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_GetSQLRoleAssignment() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("mySubscriptionId", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetSQLRoleAssignment(ctx, "myRoleAssignmentId", "myResourceGroupName", "myAccountName", nil)
+	res, err := clientFactory.NewSQLResourcesClient().GetSQLRoleAssignment(ctx, "myRoleAssignmentId", "myResourceGroupName", "myAccountName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

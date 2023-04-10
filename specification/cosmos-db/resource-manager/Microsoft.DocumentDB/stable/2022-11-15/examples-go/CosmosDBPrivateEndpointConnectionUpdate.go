@@ -16,11 +16,11 @@ func ExamplePrivateEndpointConnectionsClient_BeginCreateOrUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewPrivateEndpointConnectionsClient("00000000-1111-2222-3333-444444444444", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateOrUpdate(ctx, "rg1", "ddb1", "privateEndpointConnectionName", armcosmos.PrivateEndpointConnection{
+	poller, err := clientFactory.NewPrivateEndpointConnectionsClient().BeginCreateOrUpdate(ctx, "rg1", "ddb1", "privateEndpointConnectionName", armcosmos.PrivateEndpointConnection{
 		Properties: &armcosmos.PrivateEndpointConnectionProperties{
 			PrivateLinkServiceConnectionState: &armcosmos.PrivateLinkServiceConnectionStateProperty{
 				Description: to.Ptr("Approved by johndoe@contoso.com"),

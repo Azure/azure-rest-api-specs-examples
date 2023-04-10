@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_GetSQLContainer() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetSQLContainer(ctx, "rgName", "ddb1", "databaseName", "containerName", nil)
+	res, err := clientFactory.NewSQLResourcesClient().GetSQLContainer(ctx, "rgName", "ddb1", "databaseName", "containerName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

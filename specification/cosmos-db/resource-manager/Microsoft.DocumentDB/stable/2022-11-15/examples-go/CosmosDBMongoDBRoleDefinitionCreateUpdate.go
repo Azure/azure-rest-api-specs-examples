@@ -16,11 +16,11 @@ func ExampleMongoDBResourcesClient_BeginCreateUpdateMongoRoleDefinition() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewMongoDBResourcesClient("mySubscriptionId", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateUpdateMongoRoleDefinition(ctx, "myMongoRoleDefinitionId", "myResourceGroupName", "myAccountName", armcosmos.MongoRoleDefinitionCreateUpdateParameters{
+	poller, err := clientFactory.NewMongoDBResourcesClient().BeginCreateUpdateMongoRoleDefinition(ctx, "myMongoRoleDefinitionId", "myResourceGroupName", "myAccountName", armcosmos.MongoRoleDefinitionCreateUpdateParameters{
 		Properties: &armcosmos.MongoRoleDefinitionResource{
 			DatabaseName: to.Ptr("sales"),
 			Privileges: []*armcosmos.Privilege{

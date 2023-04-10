@@ -16,11 +16,11 @@ func ExampleSQLResourcesClient_BeginCreateUpdateSQLRoleAssignment() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("mySubscriptionId", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginCreateUpdateSQLRoleAssignment(ctx, "myRoleAssignmentId", "myResourceGroupName", "myAccountName", armcosmos.SQLRoleAssignmentCreateUpdateParameters{
+	poller, err := clientFactory.NewSQLResourcesClient().BeginCreateUpdateSQLRoleAssignment(ctx, "myRoleAssignmentId", "myResourceGroupName", "myAccountName", armcosmos.SQLRoleAssignmentCreateUpdateParameters{
 		Properties: &armcosmos.SQLRoleAssignmentResource{
 			PrincipalID:      to.Ptr("myPrincipalId"),
 			RoleDefinitionID: to.Ptr("/subscriptions/mySubscriptionId/resourceGroups/myResourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlRoleDefinitions/myRoleDefinitionId"),

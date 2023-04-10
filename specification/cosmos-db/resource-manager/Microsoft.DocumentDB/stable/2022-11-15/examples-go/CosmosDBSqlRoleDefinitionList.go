@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_NewListSQLRoleDefinitionsPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("mySubscriptionId", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListSQLRoleDefinitionsPager("myResourceGroupName", "myAccountName", nil)
+	pager := clientFactory.NewSQLResourcesClient().NewListSQLRoleDefinitionsPager("myResourceGroupName", "myAccountName", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

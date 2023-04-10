@@ -16,11 +16,11 @@ func ExampleCassandraDataCentersClient_BeginUpdate() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewCassandraDataCentersClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := client.BeginUpdate(ctx, "cassandra-prod-rg", "cassandra-prod", "dc1", armcosmos.DataCenterResource{
+	poller, err := clientFactory.NewCassandraDataCentersClient().BeginUpdate(ctx, "cassandra-prod-rg", "cassandra-prod", "dc1", armcosmos.DataCenterResource{
 		Properties: &armcosmos.DataCenterResourceProperties{
 			Base64EncodedCassandraYamlFragment: to.Ptr("Y29tcGFjdGlvbl90aHJvdWdocHV0X21iX3Blcl9zZWM6IDMyCmNvbXBhY3Rpb25fbGFyZ2VfcGFydGl0aW9uX3dhcm5pbmdfdGhyZXNob2xkX21iOiAxMDA="),
 			DataCenterLocation:                 to.Ptr("West US 2"),

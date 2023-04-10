@@ -15,11 +15,11 @@ func ExampleSQLResourcesClient_GetSQLUserDefinedFunction() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armcosmos.NewSQLResourcesClient("subid", cred, nil)
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.GetSQLUserDefinedFunction(ctx, "rgName", "ddb1", "databaseName", "containerName", "userDefinedFunctionName", nil)
+	res, err := clientFactory.NewSQLResourcesClient().GetSQLUserDefinedFunction(ctx, "rgName", "ddb1", "databaseName", "containerName", "userDefinedFunctionName", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

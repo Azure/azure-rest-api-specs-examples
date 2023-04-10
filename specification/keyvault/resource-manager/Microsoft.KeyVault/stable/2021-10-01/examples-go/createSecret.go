@@ -9,30 +9,41 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/keyvault/armkeyvault"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/examples/createSecret.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/0cc5e2efd6ffccf30e80d1e150b488dd87198b94/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2021-10-01/examples/createSecret.json
 func ExampleSecretsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armkeyvault.NewSecretsClient("00000000-0000-0000-0000-000000000000", cred, nil)
+	clientFactory, err := armkeyvault.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := client.CreateOrUpdate(ctx,
-		"sample-group",
-		"sample-vault",
-		"secret-name",
-		armkeyvault.SecretCreateOrUpdateParameters{
-			Properties: &armkeyvault.SecretProperties{
-				Value: to.Ptr("secret-value"),
-			},
+	res, err := clientFactory.NewSecretsClient().CreateOrUpdate(ctx, "sample-group", "sample-vault", "secret-name", armkeyvault.SecretCreateOrUpdateParameters{
+		Properties: &armkeyvault.SecretProperties{
+			Value: to.Ptr("secret-value"),
 		},
-		nil)
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
-	// TODO: use response item
+	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Secret = armkeyvault.Secret{
+	// 	Name: to.Ptr("secret-name"),
+	// 	Type: to.Ptr("Microsoft.KeyVault/vaults/secrets"),
+	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault/secrets/secret-name"),
+	// 	Location: to.Ptr("westus"),
+	// 	Properties: &armkeyvault.SecretProperties{
+	// 		Attributes: &armkeyvault.SecretAttributes{
+	// 			Created: to.Ptr(time.Unix(1514938738, 0)),
+	// 			Enabled: to.Ptr(true),
+	// 			Updated: to.Ptr(time.Unix(1514938738, 0)),
+	// 		},
+	// 		SecretURI: to.Ptr("https://sample-vault.vault.azure.net/secrets/secret-name"),
+	// 		SecretURIWithVersion: to.Ptr("https:/sample-vault.vault.azure.net/secrets/secret-name/baf6de32c4774c7c81345f6476cf90a4"),
+	// 	},
+	// }
 }

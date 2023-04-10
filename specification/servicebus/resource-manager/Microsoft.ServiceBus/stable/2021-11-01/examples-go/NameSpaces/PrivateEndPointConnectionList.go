@@ -8,28 +8,45 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicebus/armservicebus"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/NameSpaces/PrivateEndPointConnectionList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/NameSpaces/PrivateEndPointConnectionList.json
 func ExamplePrivateEndpointConnectionsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewPrivateEndpointConnectionsClient("subID", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListPager("SDK-ServiceBus-4794",
-		"sdk-Namespace-5828",
-		nil)
+	pager := clientFactory.NewPrivateEndpointConnectionsClient().NewListPager("SDK-ServiceBus-4794", "sdk-Namespace-5828", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.PrivateEndpointConnectionListResult = armservicebus.PrivateEndpointConnectionListResult{
+		// 	Value: []*armservicebus.PrivateEndpointConnection{
+		// 		{
+		// 			Name: to.Ptr("5dc668b3-70e4-437f-b61c-a3c1e594be7a"),
+		// 			Type: to.Ptr("Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections"),
+		// 			ID: to.Ptr("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-ServiceBus-7182/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-5705-new/privateEndpointConnections/5dc668b3-70e4-437f-b61c-a3c1e594be7a"),
+		// 			Properties: &armservicebus.PrivateEndpointConnectionProperties{
+		// 				PrivateEndpoint: &armservicebus.PrivateEndpoint{
+		// 					ID: to.Ptr("/subscriptions/dbedb4e0-40e6-4145-81f3-f1314c150774/resourceGroups/SDK-ServiceBus-7182/providers/Microsoft.Network/privateEndpoints/sdk-Namespace-5705-new"),
+		// 				},
+		// 				PrivateLinkServiceConnectionState: &armservicebus.ConnectionState{
+		// 					Description: to.Ptr("Auto-Approved"),
+		// 					Status: to.Ptr(armservicebus.PrivateLinkConnectionStatusApproved),
+		// 				},
+		// 				ProvisioningState: to.Ptr(armservicebus.EndPointProvisioningStateSucceeded),
+		// 			},
+		// 	}},
+		// }
 	}
 }

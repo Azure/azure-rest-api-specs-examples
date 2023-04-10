@@ -8,29 +8,40 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicebus/armservicebus"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/tree/main/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/Queues/SBQueueAuthorizationRuleListAll.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/Queues/SBQueueAuthorizationRuleListAll.json
 func ExampleQueuesClient_NewListAuthorizationRulesPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	client, err := armservicebus.NewQueuesClient("5f750a97-50d9-4e36-8081-c9ee4c0210d4", cred, nil)
+	clientFactory, err := armservicebus.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := client.NewListAuthorizationRulesPager("ArunMonocle",
-		"sdk-Namespace-7982",
-		"sdk-Queues-2317",
-		nil)
+	pager := clientFactory.NewQueuesClient().NewListAuthorizationRulesPager("ArunMonocle", "sdk-Namespace-7982", "sdk-Queues-2317", nil)
 	for pager.More() {
-		nextResult, err := pager.NextPage(ctx)
+		page, err := pager.NextPage(ctx)
 		if err != nil {
 			log.Fatalf("failed to advance page: %v", err)
 		}
-		for _, v := range nextResult.Value {
-			// TODO: use page item
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
 			_ = v
 		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.SBAuthorizationRuleListResult = armservicebus.SBAuthorizationRuleListResult{
+		// 	Value: []*armservicebus.SBAuthorizationRule{
+		// 		{
+		// 			Name: to.Ptr("sdk-AuthRules-5800"),
+		// 			Type: to.Ptr("Microsoft.ServiceBus/Namespaces/Queues/AuthorizationRules"),
+		// 			ID: to.Ptr("/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-7982/queues/sdk-Queues-2317/authorizationRules/sdk-AuthRules-5800"),
+		// 			Properties: &armservicebus.SBAuthorizationRuleProperties{
+		// 				Rights: []*armservicebus.AccessRights{
+		// 					to.Ptr(armservicebus.AccessRightsListen),
+		// 					to.Ptr(armservicebus.AccessRightsSend)},
+		// 				},
+		// 		}},
+		// 	}
 	}
 }

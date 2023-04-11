@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/HeatMap-GET.json
-func ExampleHeatMapClient_Get_heatMapGet() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/HeatMap-GET-With-Null-Values.json
+func ExampleHeatMapClient_Get_heatMapGetWithNullValues() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -30,17 +30,17 @@ func ExampleHeatMapClient_Get_heatMapGet() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.HeatMapModel = armtrafficmanager.HeatMapModel{
 	// 	Name: to.Ptr("default"),
-	// 	Type: to.Ptr("Microsoft.Network/trafficManagerProfiles/heatMaps/latencyVolumeByLocation"),
-	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager1323/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager3880/heatMaps/latencyVolumeByLocation"),
+	// 	Type: to.Ptr("Microsoft.Network/trafficManagerProfiles/heatMaps/default"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager1323/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager3880/heatMaps/default"),
 	// 	Properties: &armtrafficmanager.HeatMapProperties{
 	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-22T12:50:00Z"); return t}()),
 	// 		Endpoints: []*armtrafficmanager.HeatMapEndpoint{
 	// 			{
-	// 				EndpointID: to.Ptr[int32](1),
+	// 				EndpointID: to.Ptr[int32](0),
 	// 				ResourceID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager1323/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager3880/externalEndpoints/azuresdkfornetautoresttrafficmanager3880"),
 	// 			},
 	// 			{
-	// 				EndpointID: to.Ptr[int32](2),
+	// 				EndpointID: to.Ptr[int32](1),
 	// 				ResourceID: to.Ptr("/subscriptions/562d4115-c01e-4m67-9bbd-c11c2d58ad73/resourceGroups/azuresdkfornetautoresttrafficmanager1300/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager3885/externalEndpoints/azuresdkfornetautoresttrafficmanager3881"),
 	// 		}},
 	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T12:00:00Z"); return t}()),
@@ -50,28 +50,27 @@ func ExampleHeatMapClient_Get_heatMapGet() {
 	// 				Longitude: to.Ptr[float64](0),
 	// 				QueryExperiences: []*armtrafficmanager.QueryExperience{
 	// 					{
-	// 						EndpointID: to.Ptr[int32](1),
-	// 						Latency: to.Ptr[float64](99.222),
+	// 						EndpointID: to.Ptr[int32](0),
+	// 						Latency: to.Ptr[float64](99),
 	// 						QueryCount: to.Ptr[int32](1000000),
 	// 					},
 	// 					{
-	// 						EndpointID: to.Ptr[int32](2),
-	// 						Latency: to.Ptr[float64](1.222),
+	// 						EndpointID: to.Ptr[int32](1),
+	// 						Latency: to.Ptr[float64](1),
 	// 						QueryCount: to.Ptr[int32](1),
 	// 				}},
 	// 				SourceIP: to.Ptr("1.1.1.1"),
 	// 			},
 	// 			{
-	// 				Latitude: to.Ptr[float64](-99.99),
-	// 				Longitude: to.Ptr[float64](1),
+	// 				Latitude: to.Ptr[float64](1.11),
+	// 				Longitude: to.Ptr[float64](-2.35),
 	// 				QueryExperiences: []*armtrafficmanager.QueryExperience{
 	// 					{
-	// 						EndpointID: to.Ptr[int32](1),
-	// 						Latency: to.Ptr[float64](96.222),
+	// 						EndpointID: to.Ptr[int32](0),
 	// 						QueryCount: to.Ptr[int32](100),
 	// 					},
 	// 					{
-	// 						EndpointID: to.Ptr[int32](2),
+	// 						EndpointID: to.Ptr[int32](1),
 	// 						Latency: to.Ptr[float64](4.222),
 	// 						QueryCount: to.Ptr[int32](500),
 	// 				}},

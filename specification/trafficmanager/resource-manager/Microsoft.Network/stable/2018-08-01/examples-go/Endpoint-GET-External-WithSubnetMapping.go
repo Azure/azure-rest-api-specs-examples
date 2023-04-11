@@ -4,13 +4,12 @@ import (
 	"context"
 	"log"
 
-	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trafficmanager/armtrafficmanager"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Endpoint-PATCH-External-Target.json
-func ExampleEndpointsClient_Update() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/trafficmanager/resource-manager/Microsoft.Network/stable/2018-08-01/examples/Endpoint-GET-External-WithSubnetMapping.json
+func ExampleEndpointsClient_Get_endpointGetExternalWithSubnetMapping() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,14 +19,7 @@ func ExampleEndpointsClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewEndpointsClient().Update(ctx, "azuresdkfornetautoresttrafficmanager1421", "azsmnet6386", armtrafficmanager.EndpointTypeExternalEndpoints, "azsmnet7187", armtrafficmanager.Endpoint{
-		Name: to.Ptr("azsmnet7187"),
-		Type: to.Ptr("Microsoft.Network/trafficManagerProfiles/externalEndpoints"),
-		ID:   to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager1421/providers/Microsoft.Network/trafficManagerProfiles/azsmnet6386/externalEndpoints/azsmnet7187"),
-		Properties: &armtrafficmanager.EndpointProperties{
-			Target: to.Ptr("another.foobar.contoso.com"),
-		},
-	}, nil)
+	res, err := clientFactory.NewEndpointsClient().Get(ctx, "azuresdkfornetautoresttrafficmanager2191", "azuresdkfornetautoresttrafficmanager8224", armtrafficmanager.EndpointTypeExternalEndpoints, "My%20external%20endpoint", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -35,15 +27,23 @@ func ExampleEndpointsClient_Update() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.Endpoint = armtrafficmanager.Endpoint{
-	// 	Name: to.Ptr("azsmnet7187"),
+	// 	Name: to.Ptr("My external endpoint"),
 	// 	Type: to.Ptr("Microsoft.Network/trafficManagerProfiles/externalEndpoints"),
-	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager1421/providers/Microsoft.Network/trafficManagerProfiles/azsmnet6386/externalEndpoints/azsmnet7187"),
+	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/azuresdkfornetautoresttrafficmanager2191/providers/Microsoft.Network/trafficManagerProfiles/azuresdkfornetautoresttrafficmanager8224/externalEndpoints/My external endpoint"),
 	// 	Properties: &armtrafficmanager.EndpointProperties{
-	// 		EndpointLocation: to.Ptr("North Europe"),
 	// 		EndpointMonitorStatus: to.Ptr(armtrafficmanager.EndpointMonitorStatusCheckingEndpoint),
 	// 		EndpointStatus: to.Ptr(armtrafficmanager.EndpointStatusEnabled),
 	// 		Priority: to.Ptr[int64](1),
-	// 		Target: to.Ptr("another.foobar.contoso.com"),
+	// 		Subnets: []*armtrafficmanager.EndpointPropertiesSubnetsItem{
+	// 			{
+	// 				First: to.Ptr("1.2.3.0"),
+	// 				Scope: to.Ptr[int32](24),
+	// 			},
+	// 			{
+	// 				First: to.Ptr("25.26.27.28"),
+	// 				Last: to.Ptr("29.30.31.32"),
+	// 		}},
+	// 		Target: to.Ptr("foobar.contoso.com"),
 	// 		Weight: to.Ptr[int64](1),
 	// 	},
 	// }

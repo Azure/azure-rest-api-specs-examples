@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listFieldsByModuleAndType.json
-func ExampleFieldsClient_NewListByTypePager() {
+func ExampleObjectDataTypesClient_NewListFieldsByModuleAndTypePager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleFieldsClient_NewListByTypePager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewFieldsClient().NewListByTypePager("rg", "MyAutomationAccount", "MyModule", "MyCustomType", nil)
+	pager := clientFactory.NewObjectDataTypesClient().NewListFieldsByModuleAndTypePager("rg", "MyAutomationAccount", "MyModule", "MyCustomType", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

@@ -1,0 +1,14 @@
+/** Samples for SapCentralInstances List. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPCentralInstances_List.json
+     */
+    /**
+     * Sample code: SAPCentralInstances_List.
+     *
+     * @param manager Entry point to WorkloadsManager.
+     */
+    public static void sAPCentralInstancesList(com.azure.resourcemanager.workloads.WorkloadsManager manager) {
+        manager.sapCentralInstances().list("test-rg", "X00", com.azure.core.util.Context.NONE);
+    }
+}

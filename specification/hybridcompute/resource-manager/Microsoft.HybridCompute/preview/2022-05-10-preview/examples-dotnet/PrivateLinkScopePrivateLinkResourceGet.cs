@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridComputePrivateLinkResource created on azure
-// for more information of creating HybridComputePrivateLinkResource, please refer to the document of HybridComputePrivateLinkResource
+// this example assumes you already have this HybridComputePrivateLinkScopeResource created on azure
+// for more information of creating HybridComputePrivateLinkScopeResource, please refer to the document of HybridComputePrivateLinkScopeResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myResourceGroup";
 string scopeName = "myPrivateLinkScope";
-string groupName = "hybridcompute";
-ResourceIdentifier hybridComputePrivateLinkResourceId = HybridComputePrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName, groupName);
-HybridComputePrivateLinkResource hybridComputePrivateLinkResource = client.GetHybridComputePrivateLinkResource(hybridComputePrivateLinkResourceId);
+ResourceIdentifier hybridComputePrivateLinkScopeResourceId = HybridComputePrivateLinkScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName);
+HybridComputePrivateLinkScopeResource hybridComputePrivateLinkScope = client.GetHybridComputePrivateLinkScopeResource(hybridComputePrivateLinkScopeResourceId);
+
+// get the collection of this HybridComputePrivateLinkResource
+HybridComputePrivateLinkResourceCollection collection = hybridComputePrivateLinkScope.GetHybridComputePrivateLinkResources();
 
 // invoke the operation
-HybridComputePrivateLinkResource result = await hybridComputePrivateLinkResource.GetAsync();
+string groupName = "hybridcompute";
+bool result = await collection.ExistsAsync(groupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HybridComputePrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -35,7 +35,7 @@ public final class Main {
                 "myRegistry",
                 "myTask",
                 new TaskUpdateParameters()
-                    .withTags(mapOf("testkey", "value"))
+                    .withTags(mapOf("testkey", "fakeTokenPlaceholder"))
                     .withStatus(TaskStatus.ENABLED)
                     .withAgentConfiguration(new AgentProperties().withCpu(3))
                     .withStep(

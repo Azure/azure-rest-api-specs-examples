@@ -1,4 +1,4 @@
-/** Samples for Diagnostics ListSiteDiagnosticCategories. */
+/** Samples for Diagnostics ListSiteDiagnosticCategoriesSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_ListSiteDiagnosticCategories.json
@@ -14,6 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .listSiteDiagnosticCategories("Sample-WestUSResourceGroup", "SampleApp", com.azure.core.util.Context.NONE);
+            .listSiteDiagnosticCategoriesSlot(
+                "Sample-WestUSResourceGroup", "SampleApp", "Production", com.azure.core.util.Context.NONE);
     }
 }

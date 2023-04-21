@@ -24,7 +24,7 @@ public final class Main {
                 "myRegistry",
                 "quicktask",
                 new TaskUpdateParameters()
-                    .withTags(mapOf("testkey", "value"))
+                    .withTags(mapOf("testkey", "fakeTokenPlaceholder"))
                     .withStatus(TaskStatus.ENABLED)
                     .withLogTemplate("acr/tasks:{{.Run.OS}}"),
                 com.azure.core.util.Context.NONE);

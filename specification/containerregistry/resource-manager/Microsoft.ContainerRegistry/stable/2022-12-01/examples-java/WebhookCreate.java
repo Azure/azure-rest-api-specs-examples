@@ -26,11 +26,10 @@ public final class Main {
                 "myRegistry",
                 "myWebhook",
                 new WebhookCreateParameters()
-                    .withTags(mapOf("key", "value"))
+                    .withTags(mapOf("key", "fakeTokenPlaceholder"))
                     .withLocation("westus")
                     .withServiceUri("http://myservice.com")
-                    .withCustomHeaders(
-                        mapOf("Authorization", "Basic 000000000000000000000000000000000000000000000000000"))
+                    .withCustomHeaders(mapOf("Authorization", "fakeTokenPlaceholder"))
                     .withStatus(WebhookStatus.ENABLED)
                     .withScope("myRepository")
                     .withActions(Arrays.asList(WebhookAction.PUSH)),

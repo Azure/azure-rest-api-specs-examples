@@ -24,7 +24,7 @@ public final class Main {
                 "myResourceGroup",
                 "myRegistry",
                 new RegistryUpdateParameters()
-                    .withTags(mapOf("key", "value"))
+                    .withTags(mapOf("key", "fakeTokenPlaceholder"))
                     .withSku(new Sku().withName(SkuName.STANDARD))
                     .withAdminUserEnabled(true),
                 com.azure.core.util.Context.NONE);

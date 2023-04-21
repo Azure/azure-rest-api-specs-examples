@@ -25,7 +25,7 @@ public final class Main {
                 "quicktask",
                 new TaskInner()
                     .withLocation("eastus")
-                    .withTags(mapOf("testkey", "value"))
+                    .withTags(mapOf("testkey", "fakeTokenPlaceholder"))
                     .withStatus(TaskStatus.ENABLED)
                     .withLogTemplate("acr/tasks:{{.Run.OS}}")
                     .withIsSystemTask(true),

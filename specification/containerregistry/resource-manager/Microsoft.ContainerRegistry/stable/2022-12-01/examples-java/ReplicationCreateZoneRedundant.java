@@ -25,7 +25,7 @@ public final class Main {
                 "myReplication",
                 new ReplicationInner()
                     .withLocation("eastus")
-                    .withTags(mapOf("key", "value"))
+                    .withTags(mapOf("key", "fakeTokenPlaceholder"))
                     .withRegionEndpointEnabled(true)
                     .withZoneRedundancy(ZoneRedundancy.ENABLED),
                 com.azure.core.util.Context.NONE);

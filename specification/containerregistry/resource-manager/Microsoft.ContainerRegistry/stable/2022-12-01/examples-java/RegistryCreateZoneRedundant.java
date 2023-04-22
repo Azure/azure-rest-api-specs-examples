@@ -26,7 +26,7 @@ public final class Main {
                 "myRegistry",
                 new RegistryInner()
                     .withLocation("westus")
-                    .withTags(mapOf("key", "value"))
+                    .withTags(mapOf("key", "fakeTokenPlaceholder"))
                     .withSku(new Sku().withName(SkuName.STANDARD))
                     .withZoneRedundancy(ZoneRedundancy.ENABLED),
                 com.azure.core.util.Context.NONE);

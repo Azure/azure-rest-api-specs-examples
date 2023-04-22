@@ -46,7 +46,7 @@ public final class Main {
                 "mytTask",
                 new TaskInner()
                     .withLocation("eastus")
-                    .withTags(mapOf("testkey", "value"))
+                    .withTags(mapOf("testkey", "fakeTokenPlaceholder"))
                     .withIdentity(
                         new IdentityProperties()
                             .withType(ResourceIdentityType.SYSTEM_ASSIGNED_USER_ASSIGNED)

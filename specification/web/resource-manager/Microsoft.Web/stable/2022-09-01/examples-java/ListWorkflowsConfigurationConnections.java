@@ -1,20 +1,21 @@
-/** Samples for WebApps ListWorkflowsConnections. */
+/** Samples for WebApps ListWorkflowsConnectionsSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/ListWorkflowsConfigurationConnections.json
      */
     /**
-     * Sample code: List the Instance Workflows Configuration Connections.
+     * Sample code: List the Instance Workflows Configuration Connections Slot.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void listTheInstanceWorkflowsConfigurationConnections(
+    public static void listTheInstanceWorkflowsConfigurationConnectionsSlot(
         com.azure.resourcemanager.AzureResourceManager azure) {
         azure
             .webApps()
             .manager()
             .serviceClient()
             .getWebApps()
-            .listWorkflowsConnectionsWithResponse("testrg123", "testsite2", com.azure.core.util.Context.NONE);
+            .listWorkflowsConnectionsSlotWithResponse(
+                "testrg123", "testsite2", "staging", com.azure.core.util.Context.NONE);
     }
 }

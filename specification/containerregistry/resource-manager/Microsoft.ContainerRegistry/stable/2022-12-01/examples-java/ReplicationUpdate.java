@@ -22,7 +22,7 @@ public final class Main {
                 "myResourceGroup",
                 "myRegistry",
                 "myReplication",
-                new ReplicationUpdateParameters().withTags(mapOf("key", "value")),
+                new ReplicationUpdateParameters().withTags(mapOf("key", "fakeTokenPlaceholder")),
                 com.azure.core.util.Context.NONE);
     }
 

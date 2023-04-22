@@ -22,7 +22,7 @@ public final class Main {
                 "myResourceGroup",
                 "myRegistry",
                 "myReplication",
-                new ReplicationInner().withLocation("eastus").withTags(mapOf("key", "value")),
+                new ReplicationInner().withLocation("eastus").withTags(mapOf("key", "fakeTokenPlaceholder")),
                 com.azure.core.util.Context.NONE);
     }
 

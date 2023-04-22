@@ -1,0 +1,19 @@
+/** Samples for SqlResources ListSqlTriggers. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2023-03-15/examples/CosmosDBSqlTriggerList.json
+     */
+    /**
+     * Sample code: CosmosDBSqlTriggerList.
+     *
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void cosmosDBSqlTriggerList(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure
+            .cosmosDBAccounts()
+            .manager()
+            .serviceClient()
+            .getSqlResources()
+            .listSqlTriggers("rgName", "ddb1", "databaseName", "containerName", com.azure.core.util.Context.NONE);
+    }
+}

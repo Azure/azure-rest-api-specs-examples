@@ -1,4 +1,4 @@
-/** Samples for WebApps StopWebSiteNetworkTrace. */
+/** Samples for WebApps StopNetworkTrace. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/StopWebSiteNetworkTrace.json
@@ -15,6 +15,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .stopWebSiteNetworkTraceWithResponse("testrg123", "SampleApp", com.azure.core.util.Context.NONE);
+            .stopNetworkTraceWithResponse("testrg123", "SampleApp", com.azure.core.util.Context.NONE);
     }
 }

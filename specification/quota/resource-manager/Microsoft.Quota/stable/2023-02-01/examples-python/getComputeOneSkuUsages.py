@@ -1,0 +1,32 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.quota import QuotaMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-quota
+# USAGE
+    python get_compute_one_sku_usages.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = QuotaMgmtClient(
+        credential=DefaultAzureCredential(),
+    )
+
+    response = client.usages.get(
+        resource_name="standardNDSFamily",
+        scope="subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Compute/locations/eastus",
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/quota/resource-manager/Microsoft.Quota/stable/2023-02-01/examples/getComputeOneSkuUsages.json
+if __name__ == "__main__":
+    main()

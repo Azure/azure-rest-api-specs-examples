@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/examples/GovernanceRules/PostGovernanceRule_example.json
-func ExampleGovernanceRulesClient_BeginRuleIDExecuteSingleSubscription() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e716082ac474f182e2220e4f38f1d6191e7636cf/specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/examples/GovernanceRules/PostGovernanceRule_example.json
+func ExampleGovernanceRulesClient_BeginExecute_executeGovernanceRuleOverSubscriptionScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleGovernanceRulesClient_BeginRuleIDExecuteSingleSubscription() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewGovernanceRulesClient().BeginRuleIDExecuteSingleSubscription(ctx, "ad9a8e26-29d9-4829-bb30-e597a58cdbb8", &armsecurity.GovernanceRulesClientBeginRuleIDExecuteSingleSubscriptionOptions{ExecuteGovernanceRuleParams: nil})
+	poller, err := clientFactory.NewGovernanceRulesClient().BeginExecute(ctx, "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", "ad9a8e26-29d9-4829-bb30-e597a58cdbb8", &armsecurity.GovernanceRulesClientBeginExecuteOptions{ExecuteGovernanceRuleParams: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

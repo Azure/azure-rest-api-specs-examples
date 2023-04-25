@@ -1,0 +1,20 @@
+const { EventHubManagementClient } = require("@azure/arm-eventhub");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Lists the available Namespaces within a resource group.
+ *
+ * @summary Lists the available Namespaces within a resource group.
+ * x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/examples/NameSpaces/EHNameSpaceListByResourceGroup.json
+ */
+async function namespaceListByResourceGroup() {
+  const subscriptionId = process.env["EVENTHUB_SUBSCRIPTION_ID"] || "SampleSubscription";
+  const resourceGroupName = process.env["EVENTHUB_RESOURCE_GROUP"] || "ResurceGroupSample";
+  const credential = new DefaultAzureCredential();
+  const client = new EventHubManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.namespaces.listByResourceGroup(resourceGroupName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

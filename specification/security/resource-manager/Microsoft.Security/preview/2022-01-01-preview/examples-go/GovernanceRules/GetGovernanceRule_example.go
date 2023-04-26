@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/af3f7994582c0cbd61a48b636907ad2ac95d332c/specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/examples/GovernanceRules/GetGovernanceRule_example.json
-func ExampleGovernanceRulesClient_Get() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e716082ac474f182e2220e4f38f1d6191e7636cf/specification/security/resource-manager/Microsoft.Security/preview/2022-01-01-preview/examples/GovernanceRules/GetGovernanceRule_example.json
+func ExampleGovernanceRulesClient_Get_getAGovernanceRuleOverSubscriptionScope() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleGovernanceRulesClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewGovernanceRulesClient().Get(ctx, "ad9a8e26-29d9-4829-bb30-e597a58cdbb8", nil)
+	res, err := clientFactory.NewGovernanceRulesClient().Get(ctx, "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23", "ad9a8e26-29d9-4829-bb30-e597a58cdbb8", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -31,7 +31,7 @@ func ExampleGovernanceRulesClient_Get() {
 	// 	Type: to.Ptr("Microsoft.Security/governanceRules"),
 	// 	ID: to.Ptr("subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/governanceRules/ad9a8e26-29d9-4829-bb30-e597a58cdbb8"),
 	// 	Properties: &armsecurity.GovernanceRuleProperties{
-	// 		Description: to.Ptr("A rule on critical recommendations"),
+	// 		Description: to.Ptr("A rule for critical recommendations"),
 	// 		ConditionSets: []any{
 	// 			map[string]any{
 	// 				"conditions":[]any{
@@ -43,12 +43,21 @@ func ExampleGovernanceRulesClient_Get() {
 	// 				},
 	// 		}},
 	// 		DisplayName: to.Ptr("Admin's rule"),
+	// 		ExcludedScopes: []*string{
+	// 		},
 	// 		GovernanceEmailNotification: &armsecurity.GovernanceRuleEmailNotification{
 	// 			DisableManagerEmailNotification: to.Ptr(false),
 	// 			DisableOwnerEmailNotification: to.Ptr(false),
 	// 		},
+	// 		IncludeMemberScopes: to.Ptr(false),
 	// 		IsDisabled: to.Ptr(false),
 	// 		IsGracePeriod: to.Ptr(true),
+	// 		Metadata: &armsecurity.GovernanceRuleMetadata{
+	// 			CreatedBy: to.Ptr("c23b5354-ff0a-4b2a-9f92-6f144effd936"),
+	// 			CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-10T08:31:26.7993124Z"); return t}()),
+	// 			UpdatedBy: to.Ptr("c23b5354-ff0a-4b2a-9f92-6f144effd936"),
+	// 			UpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-10T08:31:26.7993124Z"); return t}()),
+	// 		},
 	// 		OwnerSource: &armsecurity.GovernanceRuleOwnerSource{
 	// 			Type: to.Ptr(armsecurity.GovernanceRuleOwnerSourceTypeManually),
 	// 			Value: to.Ptr("user@contoso.com"),
@@ -57,6 +66,7 @@ func ExampleGovernanceRulesClient_Get() {
 	// 		RulePriority: to.Ptr[int32](200),
 	// 		RuleType: to.Ptr(armsecurity.GovernanceRuleTypeIntegrated),
 	// 		SourceResourceType: to.Ptr(armsecurity.GovernanceRuleSourceResourceTypeAssessments),
+	// 		TenantID: to.Ptr("f0b6d37b-e4bc-4719-9291-c066c3194f23"),
 	// 	},
 	// }
 }

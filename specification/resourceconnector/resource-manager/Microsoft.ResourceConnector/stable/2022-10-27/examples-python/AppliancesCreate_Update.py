@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.resourceconnector import Appliances
+from azure.mgmt.resourceconnector import ResourceConnectorMgmtClient
 
 """
 # PREREQUISITES
@@ -16,7 +16,7 @@ from azure.mgmt.resourceconnector import Appliances
 
 
 def main():
-    client = Appliances(
+    client = ResourceConnectorMgmtClient(
         credential=DefaultAzureCredential(),
         subscription_id="11111111-2222-3333-4444-555555555555",
     )

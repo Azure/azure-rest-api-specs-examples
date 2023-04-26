@@ -6,9 +6,9 @@ public final class Main {
     /**
      * Sample code: DeleteTestLineResource.
      *
-     * @param manager Entry point to VoiceservicesManager.
+     * @param manager Entry point to VoiceServicesManager.
      */
-    public static void deleteTestLineResource(com.azure.resourcemanager.voiceservices.VoiceservicesManager manager) {
+    public static void deleteTestLineResource(com.azure.resourcemanager.voiceservices.VoiceServicesManager manager) {
         manager.testLines().delete("testrg", "myname", "myline", com.azure.core.util.Context.NONE);
     }
 }

@@ -6,9 +6,9 @@ public final class Main {
     /**
      * Sample code: ListTestLineResource.
      *
-     * @param manager Entry point to VoiceservicesManager.
+     * @param manager Entry point to VoiceServicesManager.
      */
-    public static void listTestLineResource(com.azure.resourcemanager.voiceservices.VoiceservicesManager manager) {
+    public static void listTestLineResource(com.azure.resourcemanager.voiceservices.VoiceServicesManager manager) {
         manager.testLines().listByCommunicationsGateway("testrg", "myname", com.azure.core.util.Context.NONE);
     }
 }

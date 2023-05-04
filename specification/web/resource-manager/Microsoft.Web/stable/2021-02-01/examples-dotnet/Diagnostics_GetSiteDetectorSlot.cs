@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.AppService;
+using Azure.ResourceManager.AppService.Models;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/examples/Diagnostics_GetSiteDetectorSlot.json
 // this example is just showing the usage of "Diagnostics_GetSiteDetectorSlot" operation, for the dependent resources, they will have to be created separately.
@@ -13,21 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteSlotDiagnosticResource created on azure
-// for more information of creating SiteSlotDiagnosticResource, please refer to the document of SiteSlotDiagnosticResource
+// this example assumes you already have this SiteSlotDiagnosticDetectorResource created on azure
+// for more information of creating SiteSlotDiagnosticDetectorResource, please refer to the document of SiteSlotDiagnosticDetectorResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string siteName = "SampleApp";
 string slot = "staging";
 string diagnosticCategory = "availability";
-ResourceIdentifier siteSlotDiagnosticResourceId = SiteSlotDiagnosticResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, slot, diagnosticCategory);
-SiteSlotDiagnosticResource siteSlotDiagnostic = client.GetSiteSlotDiagnosticResource(siteSlotDiagnosticResourceId);
-
-// get the collection of this SiteSlotDiagnosticDetectorResource
-SiteSlotDiagnosticDetectorCollection collection = siteSlotDiagnostic.GetSiteSlotDiagnosticDetectors();
+string detectorName = "sitecrashes";
+ResourceIdentifier siteSlotDiagnosticDetectorResourceId = SiteSlotDiagnosticDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, slot, diagnosticCategory, detectorName);
+SiteSlotDiagnosticDetectorResource siteSlotDiagnosticDetector = client.GetSiteSlotDiagnosticDetectorResource(siteSlotDiagnosticDetectorResourceId);
 
 // invoke the operation
-string detectorName = "sitecrashes";
-bool result = await collection.ExistsAsync(detectorName);
+SiteSlotDiagnosticDetectorResource result = await siteSlotDiagnosticDetector.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DetectorDefinitionResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

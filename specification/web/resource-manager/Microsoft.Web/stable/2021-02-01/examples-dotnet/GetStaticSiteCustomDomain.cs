@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteResource created on azure
-// for more information of creating StaticSiteResource, please refer to the document of StaticSiteResource
+// this example assumes you already have this StaticSiteCustomDomainOverviewResource created on azure
+// for more information of creating StaticSiteCustomDomainOverviewResource, please refer to the document of StaticSiteCustomDomainOverviewResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
-ResourceIdentifier staticSiteResourceId = StaticSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-StaticSiteResource staticSite = client.GetStaticSiteResource(staticSiteResourceId);
-
-// get the collection of this StaticSiteCustomDomainOverviewResource
-StaticSiteCustomDomainOverviewCollection collection = staticSite.GetStaticSiteCustomDomainOverviews();
+string domainName = "custom.domain.net";
+ResourceIdentifier staticSiteCustomDomainOverviewResourceId = StaticSiteCustomDomainOverviewResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, domainName);
+StaticSiteCustomDomainOverviewResource staticSiteCustomDomainOverview = client.GetStaticSiteCustomDomainOverviewResource(staticSiteCustomDomainOverviewResourceId);
 
 // invoke the operation
-string domainName = "custom.domain.net";
-bool result = await collection.ExistsAsync(domainName);
+StaticSiteCustomDomainOverviewResource result = await staticSiteCustomDomainOverview.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StaticSiteCustomDomainOverviewData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -1,0 +1,32 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.PaloAltoNetworks.Ngfw;
+
+// Generated from example definition: specification/paloaltonetworks/resource-manager/PaloAltoNetworks.Cloudngfw/preview/2022-08-29-preview/examples/PrefixListLocalRulestack_Get_MaximumSet_Gen.json
+// this example is just showing the usage of "PrefixListLocalRulestack_Get" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this LocalRulestackResource created on azure
+// for more information of creating LocalRulestackResource, please refer to the document of LocalRulestackResource
+string subscriptionId = "2bf4a339-294d-4c25-b0b2-ef649e9f5c27";
+string resourceGroupName = "rgopenapi";
+string localRulestackName = "lrs1";
+ResourceIdentifier localRulestackResourceId = LocalRulestackResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, localRulestackName);
+LocalRulestackResource localRulestackResource = client.GetLocalRulestackResource(localRulestackResourceId);
+
+// get the collection of this PrefixListResource
+PrefixListResourceCollection collection = localRulestackResource.GetPrefixListResources();
+
+// invoke the operation
+string name = "armid1";
+bool result = await collection.ExistsAsync(name);
+
+Console.WriteLine($"Succeeded: {result}");

@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppServicePlanResource created on azure
-// for more information of creating AppServicePlanResource, please refer to the document of AppServicePlanResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
-string name = "testsf6141";
-ResourceIdentifier appServicePlanResourceId = AppServicePlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-AppServicePlanResource appServicePlan = client.GetAppServicePlanResource(appServicePlanResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this AppServicePlanResource
+AppServicePlanCollection collection = resourceGroupResource.GetAppServicePlans();
 
 // invoke the operation
-AppServicePlanResource result = await appServicePlan.GetAsync();
+string name = "testsf6141";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppServicePlanData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

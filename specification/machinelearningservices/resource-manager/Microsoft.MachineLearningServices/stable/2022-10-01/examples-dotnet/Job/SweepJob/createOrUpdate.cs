@@ -17,19 +17,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningJobResource created on azure
+// for more information of creating MachineLearningJobResource, please refer to the document of MachineLearningJobResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningJobResource
-MachineLearningJobCollection collection = machineLearningWorkspace.GetMachineLearningJobs();
+string id = "string";
+ResourceIdentifier machineLearningJobResourceId = MachineLearningJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, id);
+MachineLearningJobResource machineLearningJob = client.GetMachineLearningJobResource(machineLearningJobResourceId);
 
 // invoke the operation
-string id = "string";
 MachineLearningJobData data = new MachineLearningJobData(new MachineLearningSweepJob(new MachineLearningObjective(MachineLearningGoal.Minimize, "string"), new GridSamplingAlgorithm(), BinaryData.FromObjectAsJson(new Dictionary<string, object>()
 {
     ["string"] = new Dictionary<string, object>()
@@ -96,7 +93,7 @@ MachineLearningJobData data = new MachineLearningJobData(new MachineLearningSwee
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearningJobResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, id, data);
+ArmOperation<MachineLearningJobResource> lro = await machineLearningJob.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningJobResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

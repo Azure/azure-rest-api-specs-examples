@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningWorkspaceConnectionResource created on azure
+// for more information of creating MachineLearningWorkspaceConnectionResource, please refer to the document of MachineLearningWorkspaceConnectionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "resourceGroup-1";
 string workspaceName = "workspace-1";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningWorkspaceConnectionResource
-MachineLearningWorkspaceConnectionCollection collection = machineLearningWorkspace.GetMachineLearningWorkspaceConnections();
+string connectionName = "connection-1";
+ResourceIdentifier machineLearningWorkspaceConnectionResourceId = MachineLearningWorkspaceConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, connectionName);
+MachineLearningWorkspaceConnectionResource machineLearningWorkspaceConnection = client.GetMachineLearningWorkspaceConnectionResource(machineLearningWorkspaceConnectionResourceId);
 
 // invoke the operation
-string connectionName = "connection-1";
-bool result = await collection.ExistsAsync(connectionName);
+MachineLearningWorkspaceConnectionResource result = await machineLearningWorkspaceConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MachineLearningWorkspaceConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

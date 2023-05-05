@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningModelContainerResource created on azure
+// for more information of creating MachineLearningModelContainerResource, please refer to the document of MachineLearningModelContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg123";
 string workspaceName = "workspace123";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningModelContainerResource
-MachineLearningModelContainerCollection collection = machineLearningWorkspace.GetMachineLearningModelContainers();
+string name = "testContainer";
+ResourceIdentifier machineLearningModelContainerResourceId = MachineLearningModelContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningModelContainerResource machineLearningModelContainer = client.GetMachineLearningModelContainerResource(machineLearningModelContainerResourceId);
 
 // invoke the operation
-string name = "testContainer";
 MachineLearningModelContainerData data = new MachineLearningModelContainerData(new MachineLearningModelContainerProperties()
 {
     Description = "Model container description",
@@ -37,7 +34,7 @@ MachineLearningModelContainerData data = new MachineLearningModelContainerData(n
     ["tag2"] = "value2",
     },
 });
-ArmOperation<MachineLearningModelContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<MachineLearningModelContainerResource> lro = await machineLearningModelContainer.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningModelContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -2619,3 +2619,17 @@ id,name,language,tag,package,version,date_epoch,date
 2618,azure-mgmt-network@23.0.1,python,azure-mgmt-network_23.0.1,azure-mgmt-network,23.0.1,1682565810,04/27/2023
 2619,com.azure.resourcemanager:azure-resourcemanager-appconfiguration:1.0.0-beta.7,java,azure-resourcemanager-appconfiguration_1.0.0-beta.7,azure-resourcemanager-appconfiguration,1.0.0-beta.7,1682671970,04/28/2023
 2620,"Azure.ResourceManager.Network,1.2.0",dotnet,Azure.ResourceManager.Network_1.2.0,Azure.ResourceManager.Network,1.2.0,1682671737,04/28/2023
+2621,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/paloaltonetworksngfw/armpanngfw@v0.1.0,go,sdk/resourcemanager/paloaltonetworksngfw/armpanngfw/v0.1.0,sdk/resourcemanager/paloaltonetworksngfw/armpanngfw,v0.1.0,1683172730,05/04/2023
+2622,@azure/arm-paloaltonetworksngfw@1.0.0-beta.1,js,@azure/arm-paloaltonetworksngfw_1.0.0-beta.1,@azure/arm-paloaltonetworksngfw,1.0.0-beta.1,1683173882,05/04/2023
+2623,"Azure.ResourceManager.AppService,1.0.2",dotnet,Azure.ResourceManager.AppService_1.0.2,Azure.ResourceManager.AppService,1.0.2,1683191139,05/04/2023
+2624,"Azure.ResourceManager.ContainerInstance,1.1.0-beta.4",dotnet,Azure.ResourceManager.ContainerInstance_1.1.0-beta.4,Azure.ResourceManager.ContainerInstance,1.1.0-beta.4,1683191023,05/04/2023
+2625,"Azure.ResourceManager.NewRelicObservability,1.0.0-beta.1",dotnet,Azure.ResourceManager.NewRelicObservability_1.0.0-beta.1,Azure.ResourceManager.NewRelicObservability,1.0.0-beta.1,1683184727,05/04/2023
+2626,azure-mgmt-monitor@6.0.1,python,azure-mgmt-monitor_6.0.1,azure-mgmt-monitor,6.0.1,1683183247,05/04/2023
+2627,azure-mgmt-paloaltonetworksngfw@1.0.0b1,python,azure-mgmt-paloaltonetworksngfw_1.0.0b1,azure-mgmt-paloaltonetworksngfw,1.0.0b1,1683183217,05/04/2023
+2628,"Azure.ResourceManager.MachineLearning,1.1.1",dotnet,Azure.ResourceManager.MachineLearning_1.1.1,Azure.ResourceManager.MachineLearning,1.1.1,1683271185,05/05/2023
+2629,"Azure.ResourceManager.KeyVault,1.2.0-beta.1",dotnet,Azure.ResourceManager.KeyVault_1.2.0-beta.1,Azure.ResourceManager.KeyVault,1.2.0-beta.1,1683269707,05/05/2023
+2630,"Azure.ResourceManager.ContainerInstance,1.1.0",dotnet,Azure.ResourceManager.ContainerInstance_1.1.0,Azure.ResourceManager.ContainerInstance,1.1.0,1683255575,05/05/2023
+2631,"Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.0.0-beta.1",dotnet,Azure.ResourceManager.PaloAltoNetworks.Ngfw_1.0.0-beta.1,Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.0.0-beta.1,1683214787,05/04/2023
+2632,"Azure.ResourceManager.SelfHelp,1.0.0-beta.1",dotnet,Azure.ResourceManager.SelfHelp_1.0.0-beta.1,Azure.ResourceManager.SelfHelp,1.0.0-beta.1,1683210520,05/04/2023
+2633,azure-mgmt-paloaltonetworksngfw@1.0.0b2,python,azure-mgmt-paloaltonetworksngfw_1.0.0b2,azure-mgmt-paloaltonetworksngfw,1.0.0b2,1683269061,05/05/2023
+2634,"Azure.ResourceManager.Qumulo,1.0.0",dotnet,Azure.ResourceManager.Qumulo_1.0.0,Azure.ResourceManager.Qumulo,1.0.0,1683295122,05/05/2023

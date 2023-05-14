@@ -2633,3 +2633,8 @@ id,name,language,tag,package,version,date_epoch,date
 2632,"Azure.ResourceManager.SelfHelp,1.0.0-beta.1",dotnet,Azure.ResourceManager.SelfHelp_1.0.0-beta.1,Azure.ResourceManager.SelfHelp,1.0.0-beta.1,1683210520,05/04/2023
 2633,azure-mgmt-paloaltonetworksngfw@1.0.0b2,python,azure-mgmt-paloaltonetworksngfw_1.0.0b2,azure-mgmt-paloaltonetworksngfw,1.0.0b2,1683269061,05/05/2023
 2634,"Azure.ResourceManager.Qumulo,1.0.0",dotnet,Azure.ResourceManager.Qumulo_1.0.0,Azure.ResourceManager.Qumulo,1.0.0,1683295122,05/05/2023
+2635,"Azure.ResourceManager.ResourceHealth,1.0.0",dotnet,Azure.ResourceManager.ResourceHealth_1.0.0,Azure.ResourceManager.ResourceHealth,1.0.0,1683375437,05/06/2023
+2636,azure-mgmt-recoveryservicesbackup@6.0.0,python,azure-mgmt-recoveryservicesbackup_6.0.0,azure-mgmt-recoveryservicesbackup,6.0.0,1683514878,05/08/2023
+2637,azure-mgmt-cosmosdb@9.2.0,python,azure-mgmt-cosmosdb_9.2.0,azure-mgmt-cosmosdb,9.2.0,1683514866,05/08/2023
+2638,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/extendedlocation/armextendedlocation@v1.2.0-beta.1,go,sdk/resourcemanager/extendedlocation/armextendedlocation/v1.2.0-beta.1,sdk/resourcemanager/extendedlocation/armextendedlocation,v1.2.0-beta.1,1683783771,05/11/2023
+2639,azure-mgmt-machinelearningservices@2.0.0b2,python,azure-mgmt-machinelearningservices_2.0.0b2,azure-mgmt-machinelearningservices,2.0.0b2,1683879908,05/12/2023

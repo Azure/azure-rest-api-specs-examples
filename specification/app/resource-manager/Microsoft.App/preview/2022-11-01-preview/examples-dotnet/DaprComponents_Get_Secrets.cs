@@ -1,0 +1,33 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.AppContainers;
+using Azure.ResourceManager.AppContainers.Models;
+
+// Generated from example definition: specification/app/resource-manager/Microsoft.App/preview/2022-11-01-preview/examples/DaprComponents_Get_Secrets.json
+// this example is just showing the usage of "DaprComponents_Get" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
+string resourceGroupName = "examplerg";
+string environmentName = "myenvironment";
+ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
+ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
+
+// get the collection of this ContainerAppManagedEnvironmentDaprComponentResource
+ContainerAppManagedEnvironmentDaprComponentCollection collection = containerAppManagedEnvironment.GetContainerAppManagedEnvironmentDaprComponents();
+
+// invoke the operation
+string componentName = "reddog";
+bool result = await collection.ExistsAsync(componentName);
+
+Console.WriteLine($"Succeeded: {result}");

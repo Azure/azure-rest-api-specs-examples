@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AssociationsInterface Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to TrafficControllerManager.
      */
     public static void deleteAssociation(com.azure.resourcemanager.servicenetworking.TrafficControllerManager manager) {
-        manager.associationsInterfaces().delete("rg1", "TC1", "associatedvnet-2", Context.NONE);
+        manager.associationsInterfaces().delete("rg1", "tc1", "as1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for AssociationsInterface ListByTrafficController. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to TrafficControllerManager.
      */
     public static void getAssociations(com.azure.resourcemanager.servicenetworking.TrafficControllerManager manager) {
-        manager.associationsInterfaces().listByTrafficController("rg1", "TC1", Context.NONE);
+        manager.associationsInterfaces().listByTrafficController("rg1", "tc1", com.azure.core.util.Context.NONE);
     }
 }

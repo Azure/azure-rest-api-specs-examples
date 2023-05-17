@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TrafficControllerInterface GetByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void getTrafficController(
         com.azure.resourcemanager.servicenetworking.TrafficControllerManager manager) {
-        manager.trafficControllerInterfaces().getByResourceGroupWithResponse("rg1", "TC1", Context.NONE);
+        manager
+            .trafficControllerInterfaces()
+            .getByResourceGroupWithResponse("rg1", "tc1", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for FrontendsInterface Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to TrafficControllerManager.
      */
     public static void deleteFrontend(com.azure.resourcemanager.servicenetworking.TrafficControllerManager manager) {
-        manager.frontendsInterfaces().delete("rg1", "TC1", "publicIp1", Context.NONE);
+        manager.frontendsInterfaces().delete("rg1", "tc1", "fe1", com.azure.core.util.Context.NONE);
     }
 }

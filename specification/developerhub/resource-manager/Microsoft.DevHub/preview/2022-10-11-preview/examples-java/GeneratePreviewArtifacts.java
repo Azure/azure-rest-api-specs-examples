@@ -1,0 +1,37 @@
+import com.azure.resourcemanager.devhub.fluent.models.ArtifactGenerationProperties;
+import com.azure.resourcemanager.devhub.models.DockerfileGenerationMode;
+import com.azure.resourcemanager.devhub.models.GenerationLanguage;
+import com.azure.resourcemanager.devhub.models.GenerationManifestType;
+import com.azure.resourcemanager.devhub.models.ManifestGenerationMode;
+
+/** Samples for ResourceProvider GeneratePreviewArtifacts. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/developerhub/resource-manager/Microsoft.DevHub/preview/2022-10-11-preview/examples/GeneratePreviewArtifacts.json
+     */
+    /**
+     * Sample code: Artifact Generation Properties.
+     *
+     * @param manager Entry point to DevHubManager.
+     */
+    public static void artifactGenerationProperties(com.azure.resourcemanager.devhub.DevHubManager manager) {
+        manager
+            .resourceProviders()
+            .generatePreviewArtifactsWithResponse(
+                "location1",
+                new ArtifactGenerationProperties()
+                    .withGenerationLanguage(GenerationLanguage.JAVASCRIPT)
+                    .withLanguageVersion("14")
+                    .withPort("80")
+                    .withAppName("my-app")
+                    .withDockerfileOutputDirectory("./")
+                    .withManifestOutputDirectory("./")
+                    .withDockerfileGenerationMode(DockerfileGenerationMode.ENABLED)
+                    .withManifestGenerationMode(ManifestGenerationMode.ENABLED)
+                    .withManifestType(GenerationManifestType.KUBE)
+                    .withImageName("myimage")
+                    .withNamespace("my-namespace")
+                    .withImageTag("latest"),
+                com.azure.core.util.Context.NONE);
+    }
+}

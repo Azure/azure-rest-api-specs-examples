@@ -1,0 +1,42 @@
+import com.azure.resourcemanager.networkcloud.models.ManagedResourceGroupConfiguration;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for ClusterManagers CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/networkcloud/resource-manager/Microsoft.NetworkCloud/preview/2022-12-12-preview/examples/ClusterManagers_Create.json
+     */
+    /**
+     * Sample code: Create or update cluster manager.
+     *
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void createOrUpdateClusterManager(
+        com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        manager
+            .clusterManagers()
+            .define("clusterManagerName")
+            .withRegion("location")
+            .withExistingResourceGroup("resourceGroupName")
+            .withFabricControllerId(
+                "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/fabricControllerName")
+            .withTags(mapOf("key1", "myvalue1", "key2", "myvalue2"))
+            .withAnalyticsWorkspaceId(
+                "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/microsoft.operationalInsights/workspaces/logAnalyticsWorkspaceName")
+            .withManagedResourceGroupConfiguration(
+                new ManagedResourceGroupConfiguration().withLocation("East US").withName("my-managed-rg"))
+            .create();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for TrafficControllerInterface List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void getTrafficControllersList(
         com.azure.resourcemanager.servicenetworking.TrafficControllerManager manager) {
-        manager.trafficControllerInterfaces().list(Context.NONE);
+        manager.trafficControllerInterfaces().list(com.azure.core.util.Context.NONE);
     }
 }

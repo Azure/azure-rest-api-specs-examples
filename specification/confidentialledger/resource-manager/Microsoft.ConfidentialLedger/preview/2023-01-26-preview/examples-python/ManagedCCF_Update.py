@@ -6,7 +6,7 @@ from azure.mgmt.confidentialledger import ConfidentialLedger
     pip install azure-identity
     pip install azure-mgmt-confidentialledger
 # USAGE
-    python confidential_ledger_delete.py
+    python managed_ccf_update.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -21,12 +21,22 @@ def main():
         subscription_id="0000000-0000-0000-0000-000000000001",
     )
 
-    client.ledger.begin_delete(
+    client.managed_ccf.begin_update(
         resource_group_name="DummyResourceGroupName",
-        ledger_name="DummyLedgerName",
+        app_name="DummyMccfAppName",
+        managed_ccf={
+            "location": "EastUS",
+            "properties": {
+                "deploymentType": {
+                    "appSourceUri": "https://myaccount.blob.core.windows.net/storage/mccfsource?sv=2022-02-11%st=2022-03-11",
+                    "languageRuntime": "CPP",
+                }
+            },
+            "tags": {"additionalProps1": "additional properties"},
+        },
     ).result()
 
 
-# x-ms-original-file: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2023-01-26-preview/examples/ConfidentialLedger_Delete.json
+# x-ms-original-file: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2023-01-26-preview/examples/ManagedCCF_Update.json
 if __name__ == "__main__":
     main()

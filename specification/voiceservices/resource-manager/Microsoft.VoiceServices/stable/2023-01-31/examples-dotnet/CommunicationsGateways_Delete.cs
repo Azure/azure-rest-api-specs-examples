@@ -16,15 +16,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CommunicationsGatewayResource created on azure
-// for more information of creating CommunicationsGatewayResource, please refer to the document of CommunicationsGatewayResource
+// this example assumes you already have this VoiceServicesCommunicationsGatewayResource created on azure
+// for more information of creating VoiceServicesCommunicationsGatewayResource, please refer to the document of VoiceServicesCommunicationsGatewayResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "testrg";
 string communicationsGatewayName = "myname";
-ResourceIdentifier communicationsGatewayResourceId = CommunicationsGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName);
-CommunicationsGatewayResource communicationsGateway = client.GetCommunicationsGatewayResource(communicationsGatewayResourceId);
+ResourceIdentifier voiceServicesCommunicationsGatewayResourceId = VoiceServicesCommunicationsGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName);
+VoiceServicesCommunicationsGatewayResource voiceServicesCommunicationsGateway = client.GetVoiceServicesCommunicationsGatewayResource(voiceServicesCommunicationsGatewayResourceId);
 
 // invoke the operation
-await communicationsGateway.DeleteAsync(WaitUntil.Completed);
+await voiceServicesCommunicationsGateway.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine($"Succeeded");

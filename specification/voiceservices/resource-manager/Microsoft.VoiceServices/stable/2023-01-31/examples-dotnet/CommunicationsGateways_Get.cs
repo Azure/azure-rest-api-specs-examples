@@ -23,8 +23,8 @@ string resourceGroupName = "testrg";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this CommunicationsGatewayResource
-CommunicationsGatewayCollection collection = resourceGroupResource.GetCommunicationsGateways();
+// get the collection of this VoiceServicesCommunicationsGatewayResource
+VoiceServicesCommunicationsGatewayCollection collection = resourceGroupResource.GetVoiceServicesCommunicationsGateways();
 
 // invoke the operation
 string communicationsGatewayName = "myname";

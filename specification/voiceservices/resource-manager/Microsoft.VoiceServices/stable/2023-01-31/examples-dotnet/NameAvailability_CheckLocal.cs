@@ -23,11 +23,11 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("useast");
-CheckNameAvailabilityContent content = new CheckNameAvailabilityContent()
+VoiceServicesCheckNameAvailabilityContent content = new VoiceServicesCheckNameAvailabilityContent()
 {
     Name = "myname",
-    ResourceType = "Microsoft.VoiceServices/CommunicationsGateway",
+    ResourceType = new ResourceType("Microsoft.VoiceServices/CommunicationsGateway"),
 };
-CheckNameAvailabilityResponse result = await subscriptionResource.CheckLocalNameAvailabilityAsync(location, content);
+VoiceServicesCheckNameAvailabilityResult result = await subscriptionResource.CheckVoiceServicesNameAvailabilityAsync(location, content);
 
 Console.WriteLine($"Succeeded: {result}");

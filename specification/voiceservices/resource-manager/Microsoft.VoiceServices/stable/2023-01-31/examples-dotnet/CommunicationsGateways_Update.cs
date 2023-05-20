@@ -16,20 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CommunicationsGatewayResource created on azure
-// for more information of creating CommunicationsGatewayResource, please refer to the document of CommunicationsGatewayResource
+// this example assumes you already have this VoiceServicesCommunicationsGatewayResource created on azure
+// for more information of creating VoiceServicesCommunicationsGatewayResource, please refer to the document of VoiceServicesCommunicationsGatewayResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "testrg";
 string communicationsGatewayName = "myname";
-ResourceIdentifier communicationsGatewayResourceId = CommunicationsGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName);
-CommunicationsGatewayResource communicationsGateway = client.GetCommunicationsGatewayResource(communicationsGatewayResourceId);
+ResourceIdentifier voiceServicesCommunicationsGatewayResourceId = VoiceServicesCommunicationsGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName);
+VoiceServicesCommunicationsGatewayResource voiceServicesCommunicationsGateway = client.GetVoiceServicesCommunicationsGatewayResource(voiceServicesCommunicationsGatewayResourceId);
 
 // invoke the operation
-CommunicationsGatewayPatch patch = new CommunicationsGatewayPatch();
-CommunicationsGatewayResource result = await communicationsGateway.UpdateAsync(patch);
+VoiceServicesCommunicationsGatewayPatch patch = new VoiceServicesCommunicationsGatewayPatch();
+VoiceServicesCommunicationsGatewayResource result = await voiceServicesCommunicationsGateway.UpdateAsync(patch);
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-CommunicationsGatewayData resourceData = result.Data;
+VoiceServicesCommunicationsGatewayData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,21 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TestLineResource created on azure
-// for more information of creating TestLineResource, please refer to the document of TestLineResource
+// this example assumes you already have this VoiceServicesTestLineResource created on azure
+// for more information of creating VoiceServicesTestLineResource, please refer to the document of VoiceServicesTestLineResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "testrg";
 string communicationsGatewayName = "myname";
 string testLineName = "myline";
-ResourceIdentifier testLineResourceId = TestLineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName, testLineName);
-TestLineResource testLine = client.GetTestLineResource(testLineResourceId);
+ResourceIdentifier voiceServicesTestLineResourceId = VoiceServicesTestLineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, communicationsGatewayName, testLineName);
+VoiceServicesTestLineResource voiceServicesTestLine = client.GetVoiceServicesTestLineResource(voiceServicesTestLineResourceId);
 
 // invoke the operation
-TestLinePatch patch = new TestLinePatch();
-TestLineResource result = await testLine.UpdateAsync(patch);
+VoiceServicesTestLinePatch patch = new VoiceServicesTestLinePatch();
+VoiceServicesTestLineResource result = await voiceServicesTestLine.UpdateAsync(patch);
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-TestLineData resourceData = result.Data;
+VoiceServicesTestLineData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

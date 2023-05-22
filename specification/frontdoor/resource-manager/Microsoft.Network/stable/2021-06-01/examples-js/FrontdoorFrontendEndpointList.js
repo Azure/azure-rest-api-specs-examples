@@ -1,0 +1,24 @@
+const { FrontDoorManagementClient } = require("@azure/arm-frontdoor");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Lists all of the frontend endpoints within a Front Door.
+ *
+ * @summary Lists all of the frontend endpoints within a Front Door.
+ * x-ms-original-file: specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/examples/FrontdoorFrontendEndpointList.json
+ */
+async function listFrontendEndpointsInAFrontDoor() {
+  const subscriptionId = process.env["FRONTDOOR_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["FRONTDOOR_RESOURCE_GROUP"] || "rg1";
+  const frontDoorName = "frontDoor1";
+  const credential = new DefaultAzureCredential();
+  const client = new FrontDoorManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.frontendEndpoints.listByFrontDoor(
+    resourceGroupName,
+    frontDoorName
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentGetExperiment.json
  */
 async function getsAnExperimentByExperimentName() {
-  const subscriptionId = "subid";
-  const resourceGroupName = "MyResourceGroup";
+  const subscriptionId = process.env["FRONTDOOR_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["FRONTDOOR_RESOURCE_GROUP"] || "MyResourceGroup";
   const profileName = "MyProfile";
   const experimentName = "MyExperiment";
   const credential = new DefaultAzureCredential();
@@ -17,5 +17,3 @@ async function getsAnExperimentByExperimentName() {
   const result = await client.experiments.get(resourceGroupName, profileName, experimentName);
   console.log(result);
 }
-
-getsAnExperimentByExperimentName().catch(console.error);

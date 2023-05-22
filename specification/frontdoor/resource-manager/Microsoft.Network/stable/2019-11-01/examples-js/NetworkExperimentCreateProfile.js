@@ -8,9 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentCreateProfile.json
  */
 async function createsAnNetworkExperimentProfileInAResourceGroup() {
-  const subscriptionId = "subid";
+  const subscriptionId = process.env["FRONTDOOR_SUBSCRIPTION_ID"] || "subid";
   const profileName = "MyProfile";
-  const resourceGroupName = "MyResourceGroup";
+  const resourceGroupName = process.env["FRONTDOOR_RESOURCE_GROUP"] || "MyResourceGroup";
   const parameters = { enabledState: "Enabled", location: "WestUs" };
   const credential = new DefaultAzureCredential();
   const client = new FrontDoorManagementClient(credential, subscriptionId);
@@ -21,5 +21,3 @@ async function createsAnNetworkExperimentProfileInAResourceGroup() {
   );
   console.log(result);
 }
-
-createsAnNetworkExperimentProfileInAResourceGroup().catch(console.error);

@@ -35,6 +35,7 @@ public final class Main {
                     .withEndDate(OffsetDateTime.parse("2021-06-19T22:21:51.1287144Z")))
             .withStatus(ScheduledActionStatus.ENABLED)
             .withViewId("/providers/Microsoft.CostManagement/views/swaggerExample")
+            .withIfMatch("")
             .create();
     }
 }

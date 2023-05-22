@@ -1,0 +1,27 @@
+const { NetworkCloud } = require("@azure/arm-networkcloud");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Run the command or the script on the provided bare metal machine. The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
+ *
+ * @summary Run the command or the script on the provided bare metal machine. The URL to storage account with the command execution results and the command exit code can be retrieved from the operation status API once available.
+ * x-ms-original-file: specification/networkcloud/resource-manager/Microsoft.NetworkCloud/preview/2022-12-12-preview/examples/BareMetalMachines_RunCommand.json
+ */
+async function runCommandOnBareMetalMachine() {
+  const subscriptionId = process.env["NETWORKCLOUD_SUBSCRIPTION_ID"] || "subscriptionId";
+  const resourceGroupName = process.env["NETWORKCLOUD_RESOURCE_GROUP"] || "resourceGroupName";
+  const bareMetalMachineName = "bareMetalMachineName";
+  const bareMetalMachineRunCommandParameters = {
+    arguments: ["--argument1", "argument2"],
+    limitTimeSeconds: 60,
+    script: "cHdkCg==",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new NetworkCloud(credential, subscriptionId);
+  const result = await client.bareMetalMachines.beginRunCommandAndWait(
+    resourceGroupName,
+    bareMetalMachineName,
+    bareMetalMachineRunCommandParameters
+  );
+  console.log(result);
+}

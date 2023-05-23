@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/PrivateZoneListInSubscription.json
  */
 async function getPrivateDnsZoneBySubscription() {
-  const subscriptionId = "subscriptionId";
+  const subscriptionId = process.env["PRIVATEDNS_SUBSCRIPTION_ID"] || "subscriptionId";
   const credential = new DefaultAzureCredential();
   const client = new PrivateDnsManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function getPrivateDnsZoneBySubscription() {
   }
   console.log(resArray);
 }
-
-getPrivateDnsZoneBySubscription().catch(console.error);

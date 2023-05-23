@@ -8,8 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetAAAAList.json
  */
 async function getPrivateDnsZoneAaaaRecordSets() {
-  const subscriptionId = "subscriptionId";
-  const resourceGroupName = "resourceGroup1";
+  const subscriptionId = process.env["PRIVATEDNS_SUBSCRIPTION_ID"] || "subscriptionId";
+  const resourceGroupName = process.env["PRIVATEDNS_RESOURCE_GROUP"] || "resourceGroup1";
   const privateZoneName = "privatezone1.com";
   const recordType = "AAAA";
   const credential = new DefaultAzureCredential();
@@ -24,5 +24,3 @@ async function getPrivateDnsZoneAaaaRecordSets() {
   }
   console.log(resArray);
 }
-
-getPrivateDnsZoneAaaaRecordSets().catch(console.error);

@@ -1,4 +1,4 @@
-/** Samples for NetworkExperimentProfiles List. */
+/** Samples for NetworkExperimentProfiles ListByResourceGroup. */
 public final class Main {
     /*
      * x-ms-original-file: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentListProfiles.json
@@ -10,6 +10,6 @@ public final class Main {
      */
     public static void listNetworkExperimentProfilesInAResourceGroup(
         com.azure.resourcemanager.frontdoor.FrontDoorManager manager) {
-        manager.networkExperimentProfiles().list(com.azure.core.util.Context.NONE);
+        manager.networkExperimentProfiles().listByResourceGroup("MyResourceGroup", com.azure.core.util.Context.NONE);
     }
 }

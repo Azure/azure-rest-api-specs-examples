@@ -1,0 +1,42 @@
+const { NetworkCloud } = require("@azure/arm-networkcloud");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Create a new default CNI network or update the properties of the existing default CNI network.
+ *
+ * @summary Create a new default CNI network or update the properties of the existing default CNI network.
+ * x-ms-original-file: specification/networkcloud/resource-manager/Microsoft.NetworkCloud/preview/2022-12-12-preview/examples/DefaultCniNetworks_Create.json
+ */
+async function createOrUpdateDefaultCniNetwork() {
+  const subscriptionId = process.env["NETWORKCLOUD_SUBSCRIPTION_ID"] || "subscriptionId";
+  const resourceGroupName = process.env["NETWORKCLOUD_RESOURCE_GROUP"] || "resourceGroupName";
+  const defaultCniNetworkName = "defaultCniNetworkName";
+  const defaultCniNetworkParameters = {
+    cniBgpConfiguration: {
+      bgpPeers: [{ asNumber: 64497, peerIp: "203.0.113.254" }],
+      communityAdvertisements: [{ communities: ["64512:100"], subnetPrefix: "192.0.2.0/27" }],
+      serviceExternalPrefixes: ["192.0.2.0/28"],
+      serviceLoadBalancerPrefixes: ["192.0.2.16/28"],
+    },
+    extendedLocation: {
+      name: "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/clusterExtendedLocationName",
+      type: "CustomLocation",
+    },
+    ipAllocationType: "DualStack",
+    ipv4ConnectedPrefix: "203.0.113.0/24",
+    ipv6ConnectedPrefix: "2001:db8:0:3::/64",
+    l3IsolationDomainId:
+      "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/l3IsolationDomainName",
+    location: "location",
+    tags: { key1: "myvalue1", key2: "myvalue2" },
+    vlan: 12,
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new NetworkCloud(credential, subscriptionId);
+  const result = await client.defaultCniNetworks.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    defaultCniNetworkName,
+    defaultCniNetworkParameters
+  );
+  console.log(result);
+}

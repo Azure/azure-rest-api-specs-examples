@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/71121282e39bccae590462648e77bca283df6d2b/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/FrontendsGet.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4a7af0df86022e5e6cc6e8f40ca1981c4557a4bc/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/FrontendsGet.json
 func ExampleFrontendsInterfaceClient_NewListByTrafficControllerPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,7 +19,7 @@ func ExampleFrontendsInterfaceClient_NewListByTrafficControllerPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewFrontendsInterfaceClient().NewListByTrafficControllerPager("rg1", "TC1", nil)
+	pager := clientFactory.NewFrontendsInterfaceClient().NewListByTrafficControllerPager("rg1", "tc1", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -33,17 +33,13 @@ func ExampleFrontendsInterfaceClient_NewListByTrafficControllerPager() {
 		// page.FrontendListResult = armservicenetworking.FrontendListResult{
 		// 	Value: []*armservicenetworking.Frontend{
 		// 		{
-		// 			Name: to.Ptr("publicIp1"),
+		// 			Name: to.Ptr("fe1"),
 		// 			Type: to.Ptr("Microsoft.ServiceNetworking/trafficControllers/frontends"),
-		// 			ID: to.Ptr("resourceUriAsString"),
-		// 			Location: to.Ptr("West US"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ServiceNetworking/trafficControllers/tc1/frontends/fe1"),
+		// 			Location: to.Ptr("NorthCentralUS"),
 		// 			Properties: &armservicenetworking.FrontendProperties{
-		// 				IPAddressVersion: to.Ptr(armservicenetworking.FrontendIPAddressVersionIPv4),
-		// 				Mode: to.Ptr("public"),
+		// 				Fqdn: to.Ptr("test.net"),
 		// 				ProvisioningState: to.Ptr(armservicenetworking.ProvisioningStateSucceeded),
-		// 				PublicIPAddress: &armservicenetworking.FrontendPropertiesIPAddress{
-		// 					ID: to.Ptr("resourceUriAsString"),
-		// 				},
 		// 			},
 		// 	}},
 		// }

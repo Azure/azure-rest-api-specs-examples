@@ -10,9 +10,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
 async function organizationsGetApiKey() {
   const subscriptionId =
     process.env["ELASTIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = process.env["ELASTIC_RESOURCE_GROUP"] || "myResourceGroup";
   const credential = new DefaultAzureCredential();
   const client = new MicrosoftElastic(credential, subscriptionId);
-  const result = await client.organizations.getApiKey(resourceGroupName);
+  const result = await client.organizations.getApiKey();
   console.log(result);
 }

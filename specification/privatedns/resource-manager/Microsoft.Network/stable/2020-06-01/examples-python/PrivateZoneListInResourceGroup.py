@@ -6,7 +6,7 @@ from azure.mgmt.privatedns import PrivateDnsManagementClient
     pip install azure-identity
     pip install azure-mgmt-privatedns
 # USAGE
-    python get_private_dns_zone_by_resource_group.py
+    python private_zone_list_in_resource_group.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

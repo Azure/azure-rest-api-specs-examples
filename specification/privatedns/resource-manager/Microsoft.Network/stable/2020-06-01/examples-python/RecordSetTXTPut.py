@@ -6,7 +6,7 @@ from azure.mgmt.privatedns import PrivateDnsManagementClient
     pip install azure-identity
     pip install azure-mgmt-privatedns
 # USAGE
-    python put_private_dns_zone_txt_record_set.py
+    python record_set_txt_put.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

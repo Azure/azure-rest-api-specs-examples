@@ -1,0 +1,20 @@
+const { PostgreSQLManagementFlexibleServerClient } = require("@azure/arm-postgresql-flexible");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets information about a configuration of server.
+ *
+ * @summary Gets information about a configuration of server.
+ * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/preview/2023-03-01-preview/examples/ConfigurationGet.json
+ */
+async function configurationGet() {
+  const subscriptionId =
+    process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "testrg";
+  const serverName = "testserver";
+  const configurationName = "array_nulls";
+  const credential = new DefaultAzureCredential();
+  const client = new PostgreSQLManagementFlexibleServerClient(credential, subscriptionId);
+  const result = await client.configurations.get(resourceGroupName, serverName, configurationName);
+  console.log(result);
+}

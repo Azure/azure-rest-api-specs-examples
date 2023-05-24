@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/preview/2020-07-01-preview/examples/listPolicyExemptionsForResource.json
  */
 async function listAllPolicyExemptionsThatApplyToAResource() {
-  const subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-  const resourceGroupName = "TestResourceGroup";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
+  const resourceGroupName = process.env["POLICY_RESOURCE_GROUP"] || "TestResourceGroup";
   const resourceProviderNamespace = "Microsoft.Compute";
   const parentResourcePath = "virtualMachines/MyTestVm";
   const resourceType = "domainNames";
@@ -28,5 +29,3 @@ async function listAllPolicyExemptionsThatApplyToAResource() {
   }
   console.log(resArray);
 }
-
-listAllPolicyExemptionsThatApplyToAResource().catch(console.error);

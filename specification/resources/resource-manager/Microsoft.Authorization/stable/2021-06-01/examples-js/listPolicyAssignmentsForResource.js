@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/listPolicyAssignmentsForResource.json
  */
 async function listAllPolicyAssignmentsThatApplyToAResource() {
-  const subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-  const resourceGroupName = "TestResourceGroup";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
+  const resourceGroupName = process.env["POLICY_RESOURCE_GROUP"] || "TestResourceGroup";
   const resourceProviderNamespace = "Microsoft.Compute";
   const parentResourcePath = "virtualMachines/MyTestVm";
   const resourceType = "domainNames";
@@ -28,5 +29,3 @@ async function listAllPolicyAssignmentsThatApplyToAResource() {
   }
   console.log(resArray);
 }
-
-listAllPolicyAssignmentsThatApplyToAResource().catch(console.error);

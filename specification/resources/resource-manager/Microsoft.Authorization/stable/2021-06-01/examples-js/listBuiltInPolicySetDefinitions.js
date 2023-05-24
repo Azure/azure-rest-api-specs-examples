@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/listBuiltInPolicySetDefinitions.json
  */
 async function listBuiltInPolicySetDefinitions() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
   const client = new PolicyClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +18,3 @@ async function listBuiltInPolicySetDefinitions() {
   }
   console.log(resArray);
 }
-
-listBuiltInPolicySetDefinitions().catch(console.error);

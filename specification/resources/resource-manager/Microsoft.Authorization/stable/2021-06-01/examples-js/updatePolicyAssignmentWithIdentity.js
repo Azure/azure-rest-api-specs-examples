@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/updatePolicyAssignmentWithIdentity.json
  */
 async function updateAPolicyAssignmentWithASystemAssignedIdentity() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
   const policyAssignmentName = "EnforceNaming";
   const parameters = {
@@ -20,5 +21,3 @@ async function updateAPolicyAssignmentWithASystemAssignedIdentity() {
   const result = await client.policyAssignments.update(scope, policyAssignmentName, parameters);
   console.log(result);
 }
-
-updateAPolicyAssignmentWithASystemAssignedIdentity().catch(console.error);

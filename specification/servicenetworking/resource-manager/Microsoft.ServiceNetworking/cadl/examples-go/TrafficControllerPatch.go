@@ -4,11 +4,12 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/71121282e39bccae590462648e77bca283df6d2b/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/TrafficControllerPatch.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4a7af0df86022e5e6cc6e8f40ca1981c4557a4bc/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/TrafficControllerPatch.json
 func ExampleTrafficControllerInterfaceClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,11 +20,9 @@ func ExampleTrafficControllerInterfaceClient_Update() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewTrafficControllerInterfaceClient().Update(ctx, "rg1", "TC1", armservicenetworking.TrafficControllerUpdate{
-		Properties: map[string]any{
-			"configurationEndpoints": []any{
-				"abc.eastus.trafficcontroller.azure.net",
-			},
+	res, err := clientFactory.NewTrafficControllerInterfaceClient().Update(ctx, "rg1", "tc1", armservicenetworking.TrafficControllerUpdate{
+		Tags: map[string]*string{
+			"key1": to.Ptr("value1"),
 		},
 	}, nil)
 	if err != nil {
@@ -33,23 +32,23 @@ func ExampleTrafficControllerInterfaceClient_Update() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.TrafficController = armservicenetworking.TrafficController{
-	// 	Name: to.Ptr("atc"),
-	// 	Type: to.Ptr("Microsoft.ServiceNetworking/TrafficController"),
-	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ServiceNetworking/trafficController/tc"),
-	// 	Location: to.Ptr("West US"),
+	// 	Name: to.Ptr("tc1"),
+	// 	Type: to.Ptr("Microsoft.ServiceNetworking/trafficControllers"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ServiceNetworking/trafficControllers/tc1"),
+	// 	Location: to.Ptr("NorthCentralUS"),
 	// 	Tags: map[string]*string{
 	// 		"key1": to.Ptr("value1"),
 	// 	},
 	// 	Properties: &armservicenetworking.TrafficControllerProperties{
 	// 		Associations: []*armservicenetworking.ResourceID{
 	// 			{
-	// 				ID: to.Ptr("/sub1/rg2/tc/tcame/association/as1"),
+	// 				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ServiceNetworking/trafficControllers/tc1/association/as1"),
 	// 		}},
 	// 		ConfigurationEndpoints: []*string{
-	// 			to.Ptr("abc.westus.trafficcontroller.azure.net")},
+	// 			to.Ptr("abc.trafficcontroller.azure.net")},
 	// 			Frontends: []*armservicenetworking.ResourceID{
 	// 				{
-	// 					ID: to.Ptr("/sub1/rg2/tc/tcame/frontends/fe1"),
+	// 					ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ServiceNetworking/trafficControllers/tc1/frontends/fe1"),
 	// 			}},
 	// 			ProvisioningState: to.Ptr(armservicenetworking.ProvisioningStateSucceeded),
 	// 		},

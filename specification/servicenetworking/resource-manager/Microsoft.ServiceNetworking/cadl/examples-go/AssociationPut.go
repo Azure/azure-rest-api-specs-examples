@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/71121282e39bccae590462648e77bca283df6d2b/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/AssociationPut.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4a7af0df86022e5e6cc6e8f40ca1981c4557a4bc/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/AssociationPut.json
 func ExampleAssociationsInterfaceClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -20,12 +20,12 @@ func ExampleAssociationsInterfaceClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewAssociationsInterfaceClient().BeginCreateOrUpdate(ctx, "rg1", "TC1", "associatedvnet-1", armservicenetworking.Association{
-		Location: to.Ptr("West US"),
+	poller, err := clientFactory.NewAssociationsInterfaceClient().BeginCreateOrUpdate(ctx, "rg1", "tc1", "as1", armservicenetworking.Association{
+		Location: to.Ptr("NorthCentralUS"),
 		Properties: &armservicenetworking.AssociationProperties{
-			AssociationType: to.Ptr("subnets"),
+			AssociationType: to.Ptr(armservicenetworking.AssociationTypeSubnets),
 			Subnet: &armservicenetworking.AssociationSubnet{
-				ID: to.Ptr("subnetFullRef"),
+				ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-tc/subnets/tc-subnet"),
 			},
 		},
 	}, nil)
@@ -42,13 +42,13 @@ func ExampleAssociationsInterfaceClient_BeginCreateOrUpdate() {
 	// res.Association = armservicenetworking.Association{
 	// 	Name: to.Ptr("associatedvnet-1"),
 	// 	Type: to.Ptr("Microsoft.ServiceNetworking/trafficControllers/associations"),
-	// 	ID: to.Ptr("resourceUriAsString  "),
-	// 	Location: to.Ptr("West US"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.ServiceNetworking/trafficControllers/tc1/associations/as1"),
+	// 	Location: to.Ptr("NorthCentralUS"),
 	// 	Properties: &armservicenetworking.AssociationProperties{
-	// 		AssociationType: to.Ptr("subnets"),
+	// 		AssociationType: to.Ptr(armservicenetworking.AssociationTypeSubnets),
 	// 		ProvisioningState: to.Ptr(armservicenetworking.ProvisioningStateSucceeded),
 	// 		Subnet: &armservicenetworking.AssociationSubnet{
-	// 			ID: to.Ptr("subnetFullRef"),
+	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-tc/subnets/tc-subnet"),
 	// 		},
 	// 	},
 	// }

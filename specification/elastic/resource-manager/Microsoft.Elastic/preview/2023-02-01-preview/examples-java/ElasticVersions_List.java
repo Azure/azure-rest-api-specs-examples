@@ -9,6 +9,6 @@ public final class Main {
      * @param manager Entry point to ElasticManager.
      */
     public static void elasticVersionsList(com.azure.resourcemanager.elastic.ElasticManager manager) {
-        manager.elasticVersions().listWithResponse("myregion", com.azure.core.util.Context.NONE);
+        manager.elasticVersions().list("myregion", com.azure.core.util.Context.NONE);
     }
 }

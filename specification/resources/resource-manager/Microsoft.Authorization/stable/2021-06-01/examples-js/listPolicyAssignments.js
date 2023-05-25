@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/listPolicyAssignments.json
  */
 async function listPolicyAssignmentsThatApplyToASubscription() {
-  const subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
   const filter = "atScope()";
   const options = { filter };
   const credential = new DefaultAzureCredential();
@@ -19,5 +20,3 @@ async function listPolicyAssignmentsThatApplyToASubscription() {
   }
   console.log(resArray);
 }
-
-listPolicyAssignmentsThatApplyToASubscription().catch(console.error);

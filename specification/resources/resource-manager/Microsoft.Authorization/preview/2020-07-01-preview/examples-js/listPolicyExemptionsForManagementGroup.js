@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/preview/2020-07-01-preview/examples/listPolicyExemptionsForManagementGroup.json
  */
 async function listPolicyExemptionsThatApplyToAManagementGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupId = "DevOrg";
   const filter = "atScope()";
   const options = {
@@ -25,5 +26,3 @@ async function listPolicyExemptionsThatApplyToAManagementGroup() {
   }
   console.log(resArray);
 }
-
-listPolicyExemptionsThatApplyToAManagementGroup().catch(console.error);

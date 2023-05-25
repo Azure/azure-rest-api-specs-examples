@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/getPolicySetDefinitionAtManagementGroup.json
  */
 async function retrieveAPolicySetDefinitionAtManagementGroupLevel() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policySetDefinitionName = "CostManagement";
   const managementGroupId = "MyManagementGroup";
   const credential = new DefaultAzureCredential();
@@ -19,5 +20,3 @@ async function retrieveAPolicySetDefinitionAtManagementGroupLevel() {
   );
   console.log(result);
 }
-
-retrieveAPolicySetDefinitionAtManagementGroupLevel().catch(console.error);

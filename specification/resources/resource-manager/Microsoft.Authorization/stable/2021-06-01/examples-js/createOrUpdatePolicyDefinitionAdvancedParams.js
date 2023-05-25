@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicyDefinitionAdvancedParams.json
  */
 async function createOrUpdateAPolicyDefinitionWithAdvancedParameters() {
-  const subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
   const policyDefinitionName = "EventHubDiagnosticLogs";
   const parameters = {
     description:
@@ -54,5 +55,3 @@ async function createOrUpdateAPolicyDefinitionWithAdvancedParameters() {
   const result = await client.policyDefinitions.createOrUpdate(policyDefinitionName, parameters);
   console.log(result);
 }
-
-createOrUpdateAPolicyDefinitionWithAdvancedParameters().catch(console.error);

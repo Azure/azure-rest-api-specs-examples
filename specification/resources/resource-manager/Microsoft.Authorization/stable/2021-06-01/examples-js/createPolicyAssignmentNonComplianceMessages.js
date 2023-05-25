@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createPolicyAssignmentNonComplianceMessages.json
  */
 async function createOrUpdateAPolicyAssignmentWithMultipleNonComplianceMessages() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
   const policyAssignmentName = "securityInitAssignment";
   const parameters = {
@@ -35,5 +36,3 @@ async function createOrUpdateAPolicyAssignmentWithMultipleNonComplianceMessages(
   const result = await client.policyAssignments.create(scope, policyAssignmentName, parameters);
   console.log(result);
 }
-
-createOrUpdateAPolicyAssignmentWithMultipleNonComplianceMessages().catch(console.error);

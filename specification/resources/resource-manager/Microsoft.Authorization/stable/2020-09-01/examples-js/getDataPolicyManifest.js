@@ -8,12 +8,11 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2020-09-01/examples/getDataPolicyManifest.json
  */
 async function retrieveADataPolicyManifestByPolicyMode() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyMode = "Microsoft.KeyVault.Data";
   const credential = new DefaultAzureCredential();
   const client = new PolicyClient(credential, subscriptionId);
   const result = await client.dataPolicyManifests.getByPolicyMode(policyMode);
   console.log(result);
 }
-
-retrieveADataPolicyManifestByPolicyMode().catch(console.error);

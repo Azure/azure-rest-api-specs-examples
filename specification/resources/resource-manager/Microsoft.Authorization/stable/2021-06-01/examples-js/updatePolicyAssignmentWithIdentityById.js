@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/updatePolicyAssignmentWithIdentityById.json
  */
 async function updatePolicyAssignmentWithAManagedIdentityById() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const policyAssignmentId =
     "providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Authorization/policyAssignments/LowCostStorage";
   const parameters = {
@@ -20,5 +21,3 @@ async function updatePolicyAssignmentWithAManagedIdentityById() {
   const result = await client.policyAssignments.updateById(policyAssignmentId, parameters);
   console.log(result);
 }
-
-updatePolicyAssignmentWithAManagedIdentityById().catch(console.error);

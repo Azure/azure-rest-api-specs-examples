@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/listPolicyAssignmentsForManagementGroup.json
  */
 async function listPolicyAssignmentsThatApplyToAManagementGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["POLICY_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const managementGroupId = "TestManagementGroup";
   const filter = "atScope()";
   const options = {
@@ -25,5 +26,3 @@ async function listPolicyAssignmentsThatApplyToAManagementGroup() {
   }
   console.log(resArray);
 }
-
-listPolicyAssignmentsThatApplyToAManagementGroup().catch(console.error);

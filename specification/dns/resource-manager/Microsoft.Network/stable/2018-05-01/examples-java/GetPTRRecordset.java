@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.models.RecordType;
 
 /** Samples for RecordSets Get. */
@@ -17,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .getWithResponse("rg1", "0.0.127.in-addr.arpa", "1", RecordType.PTR, Context.NONE);
+            .getWithResponse("rg1", "0.0.127.in-addr.arpa", "1", RecordType.PTR, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.MxRecord;
 import com.azure.resourcemanager.privatedns.models.RecordType;
@@ -28,13 +27,13 @@ public final class Main {
                 RecordType.MX,
                 "recordMX",
                 new RecordSetInner()
-                    .withMetadata(mapOf("key1", "value1"))
+                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
                     .withTtl(3600L)
                     .withMxRecords(
                         Arrays.asList(new MxRecord().withPreference(0).withExchange("mail.privatezone1.com"))),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

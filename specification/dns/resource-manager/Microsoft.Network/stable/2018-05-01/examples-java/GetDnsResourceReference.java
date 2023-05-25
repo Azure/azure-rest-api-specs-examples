@@ -1,5 +1,4 @@
 import com.azure.core.management.SubResource;
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.models.DnsResourceReferenceRequest;
 import java.util.Arrays;
 
@@ -27,6 +26,6 @@ public final class Main {
                                 new SubResource()
                                     .withId(
                                         "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/trafficManagerProfiles/testpp2"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

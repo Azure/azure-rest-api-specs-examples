@@ -3,7 +3,7 @@ import com.azure.resourcemanager.sql.fluent.models.BackupShortTermRetentionPolic
 import com.azure.resourcemanager.sql.models.DiffBackupIntervalInHours;
 import com.azure.resourcemanager.sql.models.ShortTermRetentionPolicyName;
 
-/** Samples for BackupShortTermRetentionPolicies Update. */
+/** Samples for BackupShortTermRetentionPolicies CreateOrUpdate. */
 public final class Main {
     /*
      * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/UpdateShortTermRetentionPolicy.json
@@ -20,7 +20,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getBackupShortTermRetentionPolicies()
-            .update(
+            .createOrUpdate(
                 "resourceGroup",
                 "testsvr",
                 "testdb",

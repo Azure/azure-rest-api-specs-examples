@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Zones List. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listZonesBySubscription(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.dnsZones().manager().serviceClient().getZones().list(null, Context.NONE);
+        azure.dnsZones().manager().serviceClient().getZones().list(null, com.azure.core.util.Context.NONE);
     }
 }

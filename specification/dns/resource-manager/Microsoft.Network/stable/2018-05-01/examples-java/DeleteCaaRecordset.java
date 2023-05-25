@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.models.RecordType;
 
 /** Samples for RecordSets Delete. */
@@ -17,6 +16,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .deleteWithResponse("rg1", "zone1", "record1", RecordType.CAA, null, Context.NONE);
+            .deleteWithResponse("rg1", "zone1", "record1", RecordType.CAA, null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.fluent.models.ZoneInner;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,10 +21,10 @@ public final class Main {
             .createOrUpdateWithResponse(
                 "rg1",
                 "zone1",
-                new ZoneInner().withLocation("Global").withTags(mapOf("key1", "value1")),
+                new ZoneInner().withLocation("Global").withTags(mapOf("key1", "fakeTokenPlaceholder")),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

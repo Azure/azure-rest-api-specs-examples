@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.models.RecordType;
 
 /** Samples for RecordSets ListByType. */
@@ -17,6 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .listByType("resourceGroup1", "privatezone1.com", RecordType.MX, null, null, Context.NONE);
+            .listByType(
+                "resourceGroup1", "privatezone1.com", RecordType.MX, null, null, com.azure.core.util.Context.NONE);
     }
 }

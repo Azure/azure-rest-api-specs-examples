@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.models.ZoneUpdate;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +18,12 @@ public final class Main {
             .manager()
             .serviceClient()
             .getZones()
-            .updateWithResponse("rg1", "zone1", new ZoneUpdate().withTags(mapOf("key2", "value2")), null, Context.NONE);
+            .updateWithResponse(
+                "rg1",
+                "zone1",
+                new ZoneUpdate().withTags(mapOf("key2", "fakeTokenPlaceholder")),
+                null,
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

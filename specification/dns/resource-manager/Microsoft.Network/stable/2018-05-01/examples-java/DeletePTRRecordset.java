@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.models.RecordType;
 
 /** Samples for RecordSets Delete. */
@@ -17,6 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .deleteWithResponse("rg1", "0.0.127.in-addr.arpa", "1", RecordType.PTR, null, Context.NONE);
+            .deleteWithResponse(
+                "rg1", "0.0.127.in-addr.arpa", "1", RecordType.PTR, null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.RecordType;
 import java.util.HashMap;
@@ -25,9 +24,9 @@ public final class Main {
                 "privatezone1.com",
                 RecordType.CNAME,
                 "recordCNAME",
-                new RecordSetInner().withMetadata(mapOf("key2", "value2")),
+                new RecordSetInner().withMetadata(mapOf("key2", "fakeTokenPlaceholder")),
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

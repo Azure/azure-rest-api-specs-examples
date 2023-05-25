@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for PrivateZones GetByResourceGroup. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getPrivateZones()
-            .getByResourceGroupWithResponse("resourceGroup1", "privatezone1.com", Context.NONE);
+            .getByResourceGroupWithResponse("resourceGroup1", "privatezone1.com", com.azure.core.util.Context.NONE);
     }
 }

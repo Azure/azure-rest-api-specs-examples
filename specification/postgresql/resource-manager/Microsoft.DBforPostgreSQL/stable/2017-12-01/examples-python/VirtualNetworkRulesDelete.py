@@ -21,12 +21,11 @@ def main():
         subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
     )
 
-    response = client.virtual_network_rules.begin_delete(
+    client.virtual_network_rules.begin_delete(
         resource_group_name="TestGroup",
         server_name="vnet-test-svr",
         virtual_network_rule_name="vnet-firewall-rule",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/VirtualNetworkRulesDelete.json

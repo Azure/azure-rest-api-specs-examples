@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Zones ListByResourceGroup. */
 public final class Main {
     /*
@@ -11,6 +9,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listZonesByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.dnsZones().manager().serviceClient().getZones().listByResourceGroup("rg1", null, Context.NONE);
+        azure
+            .dnsZones()
+            .manager()
+            .serviceClient()
+            .getZones()
+            .listByResourceGroup("rg1", null, com.azure.core.util.Context.NONE);
     }
 }

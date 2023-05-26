@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.dns.models.CaaRecord;
 import com.azure.resourcemanager.dns.models.RecordType;
@@ -28,13 +27,13 @@ public final class Main {
                 "record1",
                 RecordType.CAA,
                 new RecordSetInner()
-                    .withMetadata(mapOf("key1", "value1"))
+                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
                     .withTtl(3600L)
                     .withCaaRecords(
                         Arrays.asList(new CaaRecord().withFlags(0).withTag("issue").withValue("ca.contoso.com"))),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.ARecord;
 import com.azure.resourcemanager.privatedns.models.RecordType;
@@ -28,12 +27,12 @@ public final class Main {
                 RecordType.A,
                 "recordA",
                 new RecordSetInner()
-                    .withMetadata(mapOf("key1", "value1"))
+                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
                     .withTtl(3600L)
                     .withARecords(Arrays.asList(new ARecord().withIpv4Address("1.2.3.4"))),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

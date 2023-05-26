@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.CnameRecord;
 import com.azure.resourcemanager.privatedns.models.RecordType;
@@ -27,12 +26,12 @@ public final class Main {
                 RecordType.CNAME,
                 "recordCNAME",
                 new RecordSetInner()
-                    .withMetadata(mapOf("key1", "value1"))
+                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
                     .withTtl(3600L)
                     .withCnameRecord(new CnameRecord().withCname("contoso.com")),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.dns.models.NsRecord;
 import com.azure.resourcemanager.dns.models.RecordType;
@@ -28,12 +27,12 @@ public final class Main {
                 "record1",
                 RecordType.NS,
                 new RecordSetInner()
-                    .withMetadata(mapOf("key1", "value1"))
+                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
                     .withTtl(3600L)
                     .withNsRecords(Arrays.asList(new NsRecord().withNsdname("ns1.contoso.com"))),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

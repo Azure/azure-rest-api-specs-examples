@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.RecordType;
 import com.azure.resourcemanager.privatedns.models.SrvRecord;
@@ -28,7 +27,7 @@ public final class Main {
                 RecordType.SRV,
                 "recordSRV",
                 new RecordSetInner()
-                    .withMetadata(mapOf("key1", "value1"))
+                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
                     .withTtl(3600L)
                     .withSrvRecords(
                         Arrays
@@ -36,7 +35,7 @@ public final class Main {
                                 new SrvRecord().withPriority(0).withWeight(10).withPort(80).withTarget("contoso.com"))),
                 null,
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.dns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.dns.models.RecordType;
 import java.util.HashMap;
@@ -25,9 +24,9 @@ public final class Main {
                 "zone1",
                 "record1",
                 RecordType.AAAA,
-                new RecordSetInner().withMetadata(mapOf("key2", "value2")),
+                new RecordSetInner().withMetadata(mapOf("key2", "fakeTokenPlaceholder")),
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

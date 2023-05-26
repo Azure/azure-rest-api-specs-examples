@@ -1,22 +1,22 @@
 import com.azure.resourcemanager.appservice.fluent.models.CsmPublishingCredentialsPoliciesEntityInner;
 
-/** Samples for WebApps UpdateScmAllowed. */
+/** Samples for WebApps UpdateFtpAllowed. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/UpdatePublishingCredentialsPolicy.json
      */
     /**
-     * Sample code: Update SCM Allowed.
+     * Sample code: Update FTP Allowed.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void updateSCMAllowed(com.azure.resourcemanager.AzureResourceManager azure) {
+    public static void updateFTPAllowed(com.azure.resourcemanager.AzureResourceManager azure) {
         azure
             .webApps()
             .manager()
             .serviceClient()
             .getWebApps()
-            .updateScmAllowedWithResponse(
+            .updateFtpAllowedWithResponse(
                 "rg",
                 "testSite",
                 new CsmPublishingCredentialsPoliciesEntityInner().withAllow(true),

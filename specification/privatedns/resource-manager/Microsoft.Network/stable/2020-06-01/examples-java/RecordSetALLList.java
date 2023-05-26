@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RecordSets List. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .list("resourceGroup1", "privatezone1.com", null, null, Context.NONE);
+            .list("resourceGroup1", "privatezone1.com", null, null, com.azure.core.util.Context.NONE);
     }
 }

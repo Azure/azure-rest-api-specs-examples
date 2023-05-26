@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.privatedns.models.RecordType;
 
 /** Samples for RecordSets Delete. */
@@ -18,6 +17,11 @@ public final class Main {
             .serviceClient()
             .getRecordSets()
             .deleteWithResponse(
-                "resourceGroup1", "privatezone1.com", RecordType.AAAA, "recordAAAA", null, Context.NONE);
+                "resourceGroup1",
+                "privatezone1.com",
+                RecordType.AAAA,
+                "recordAAAA",
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

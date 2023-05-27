@@ -6,7 +6,7 @@ from azure.mgmt.costmanagement import CostManagementClient
     pip install azure-identity
     pip install azure-mgmt-costmanagement
 # USAGE
-    python billing_account_dimensions_list.py
+    python generate_detailed_cost_report_operation_results_by_subscription_scope.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -20,13 +20,13 @@ def main():
         credential=DefaultAzureCredential(),
     )
 
-    response = client.dimensions.list(
-        scope="providers/Microsoft.Billing/billingAccounts/100",
-    )
-    for item in response:
-        print(item)
+    response = client.generate_detailed_cost_report_operation_results.begin_get(
+        operation_id="00000000-0000-0000-0000-000000000000",
+        scope="subscriptions/00000000-0000-0000-0000-000000000000",
+    ).result()
+    print(response)
 
 
-# x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-10-01/examples/BillingAccountDimensionsList.json
+# x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-10-01/examples/GenerateDetailedCostReportOperationResultsBySubscriptionScope.json
 if __name__ == "__main__":
     main()

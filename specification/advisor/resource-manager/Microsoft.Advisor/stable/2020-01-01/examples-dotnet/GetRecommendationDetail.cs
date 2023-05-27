@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Advisor;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/GetRecommendationDetail.json
 // this example is just showing the usage of "Recommendations_Get" operation, for the dependent resources, they will have to be created separately.
@@ -13,16 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this ResourceRecommendationBaseResource
+// this example assumes you already have this ResourceRecommendationBaseResource created on azure
+// for more information of creating ResourceRecommendationBaseResource, please refer to the document of ResourceRecommendationBaseResource
 string resourceUri = "resourceUri";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-ResourceRecommendationBaseCollection collection = client.GetResourceRecommendationBases(scopeId);
+string recommendationId = "recommendationId";
+ResourceIdentifier resourceRecommendationBaseResourceId = ResourceRecommendationBaseResource.CreateResourceIdentifier(resourceUri, recommendationId);
+ResourceRecommendationBaseResource resourceRecommendationBase = client.GetResourceRecommendationBaseResource(resourceRecommendationBaseResourceId);
 
 // invoke the operation
-string recommendationId = "recommendationId";
-bool result = await collection.ExistsAsync(recommendationId);
+ResourceRecommendationBaseResource result = await resourceRecommendationBase.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ResourceRecommendationBaseData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

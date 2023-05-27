@@ -14,20 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiResource created on azure
-// for more information of creating ApiResource, please refer to the document of ApiResource
+// this example assumes you already have this ApiReleaseResource created on azure
+// for more information of creating ApiReleaseResource, please refer to the document of ApiReleaseResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "a1";
-ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
-ApiResource api = client.GetApiResource(apiResourceId);
-
-// get the collection of this ApiReleaseResource
-ApiReleaseCollection collection = api.GetApiReleases();
+string releaseId = "5a7cb545298324c53224a799";
+ResourceIdentifier apiReleaseResourceId = ApiReleaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, releaseId);
+ApiReleaseResource apiRelease = client.GetApiReleaseResource(apiReleaseResourceId);
 
 // invoke the operation
-string releaseId = "5a7cb545298324c53224a799";
-bool result = await collection.ExistsAsync(releaseId);
+ApiReleaseResource result = await apiRelease.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiReleaseData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

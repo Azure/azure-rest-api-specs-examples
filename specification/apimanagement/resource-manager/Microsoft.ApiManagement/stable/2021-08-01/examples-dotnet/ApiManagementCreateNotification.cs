@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementServiceResource created on azure
-// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
+// this example assumes you already have this ApiManagementNotificationResource created on azure
+// for more information of creating ApiManagementNotificationResource, please refer to the document of ApiManagementNotificationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
-
-// get the collection of this ApiManagementNotificationResource
-ApiManagementNotificationCollection collection = apiManagementService.GetApiManagementNotifications();
+NotificationName notificationName = NotificationName.RequestPublisherNotificationMessage;
+ResourceIdentifier apiManagementNotificationResourceId = ApiManagementNotificationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, notificationName);
+ApiManagementNotificationResource apiManagementNotification = client.GetApiManagementNotificationResource(apiManagementNotificationResourceId);
 
 // invoke the operation
-NotificationName notificationName = NotificationName.RequestPublisherNotificationMessage;
-ArmOperation<ApiManagementNotificationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, notificationName);
+ArmOperation<ApiManagementNotificationResource> lro = await apiManagementNotification.UpdateAsync(WaitUntil.Completed);
 ApiManagementNotificationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiOperationResource created on azure
-// for more information of creating ApiOperationResource, please refer to the document of ApiOperationResource
+// this example assumes you already have this ApiResource created on azure
+// for more information of creating ApiResource, please refer to the document of ApiResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "swagger-petstore";
-string operationId = "loginUser";
-ResourceIdentifier apiOperationResourceId = ApiOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId);
-ApiOperationResource apiOperation = client.GetApiOperationResource(apiOperationResourceId);
+ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
+ApiResource api = client.GetApiResource(apiResourceId);
+
+// get the collection of this ApiOperationResource
+ApiOperationCollection collection = api.GetApiOperations();
 
 // invoke the operation
-ApiOperationResource result = await apiOperation.GetAsync();
+string operationId = "loginUser";
+bool result = await collection.ExistsAsync(operationId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiOperationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

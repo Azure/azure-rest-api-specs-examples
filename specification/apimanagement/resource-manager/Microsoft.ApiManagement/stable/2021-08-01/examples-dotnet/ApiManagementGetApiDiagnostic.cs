@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiResource created on azure
-// for more information of creating ApiResource, please refer to the document of ApiResource
+// this example assumes you already have this ApiDiagnosticResource created on azure
+// for more information of creating ApiDiagnosticResource, please refer to the document of ApiDiagnosticResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "57d1f7558aa04f15146d9d8a";
-ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
-ApiResource api = client.GetApiResource(apiResourceId);
-
-// get the collection of this ApiDiagnosticResource
-ApiDiagnosticCollection collection = api.GetApiDiagnostics();
+string diagnosticId = "applicationinsights";
+ResourceIdentifier apiDiagnosticResourceId = ApiDiagnosticResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, diagnosticId);
+ApiDiagnosticResource apiDiagnostic = client.GetApiDiagnosticResource(apiDiagnosticResourceId);
 
 // invoke the operation
-string diagnosticId = "applicationinsights";
-bool result = await collection.ExistsAsync(diagnosticId);
+ApiDiagnosticResource result = await apiDiagnostic.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DiagnosticContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

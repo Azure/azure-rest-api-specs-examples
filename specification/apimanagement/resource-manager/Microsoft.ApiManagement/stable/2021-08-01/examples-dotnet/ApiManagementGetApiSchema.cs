@@ -14,21 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiSchemaResource created on azure
-// for more information of creating ApiSchemaResource, please refer to the document of ApiSchemaResource
+// this example assumes you already have this ApiResource created on azure
+// for more information of creating ApiResource, please refer to the document of ApiResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "59d6bb8f1f7fab13dc67ec9b";
-string schemaId = "ec12520d-9d48-4e7b-8f39-698ca2ac63f1";
-ResourceIdentifier apiSchemaResourceId = ApiSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, schemaId);
-ApiSchemaResource apiSchema = client.GetApiSchemaResource(apiSchemaResourceId);
+ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
+ApiResource api = client.GetApiResource(apiResourceId);
+
+// get the collection of this ApiSchemaResource
+ApiSchemaCollection collection = api.GetApiSchemas();
 
 // invoke the operation
-ApiSchemaResource result = await apiSchema.GetAsync();
+string schemaId = "ec12520d-9d48-4e7b-8f39-698ca2ac63f1";
+bool result = await collection.ExistsAsync(schemaId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiSchemaData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

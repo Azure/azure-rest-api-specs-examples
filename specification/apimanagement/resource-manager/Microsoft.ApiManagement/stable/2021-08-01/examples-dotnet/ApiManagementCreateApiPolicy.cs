@@ -15,27 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiResource created on azure
-// for more information of creating ApiResource, please refer to the document of ApiResource
+// this example assumes you already have this ApiPolicyResource created on azure
+// for more information of creating ApiPolicyResource, please refer to the document of ApiPolicyResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5600b57e7e8880006a040001";
-ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
-ApiResource api = client.GetApiResource(apiResourceId);
-
-// get the collection of this ApiPolicyResource
-ApiPolicyCollection collection = api.GetApiPolicies();
+PolicyName policyId = PolicyName.Policy;
+ResourceIdentifier apiPolicyResourceId = ApiPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, policyId);
+ApiPolicyResource apiPolicy = client.GetApiPolicyResource(apiPolicyResourceId);
 
 // invoke the operation
-PolicyName policyId = PolicyName.Policy;
 PolicyContractData data = new PolicyContractData()
 {
     Value = "<policies> <inbound /> <backend>    <forward-request />  </backend>  <outbound /></policies>",
     Format = PolicyContentFormat.Xml,
 };
 ETag? ifMatch = new ETag("*");
-ArmOperation<ApiPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyId, data, ifMatch: ifMatch);
+ArmOperation<ApiPolicyResource> lro = await apiPolicy.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
 ApiPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

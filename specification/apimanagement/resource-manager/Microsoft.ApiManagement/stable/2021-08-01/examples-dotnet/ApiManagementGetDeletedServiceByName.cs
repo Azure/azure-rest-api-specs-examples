@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,18 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this ApiManagementDeletedServiceResource created on azure
+// for more information of creating ApiManagementDeletedServiceResource, please refer to the document of ApiManagementDeletedServiceResource
 string subscriptionId = "subid";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this ApiManagementDeletedServiceResource
-ApiManagementDeletedServiceCollection collection = subscriptionResource.GetApiManagementDeletedServices();
-
-// invoke the operation
 AzureLocation location = new AzureLocation("westus");
 string serviceName = "apimService3";
-bool result = await collection.ExistsAsync(location, serviceName);
+ResourceIdentifier apiManagementDeletedServiceResourceId = ApiManagementDeletedServiceResource.CreateResourceIdentifier(subscriptionId, location, serviceName);
+ApiManagementDeletedServiceResource apiManagementDeletedService = client.GetApiManagementDeletedServiceResource(apiManagementDeletedServiceResourceId);
 
-Console.WriteLine($"Succeeded: {result}");
+// invoke the operation
+ApiManagementDeletedServiceResource result = await apiManagementDeletedService.GetAsync();
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiManagementDeletedServiceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

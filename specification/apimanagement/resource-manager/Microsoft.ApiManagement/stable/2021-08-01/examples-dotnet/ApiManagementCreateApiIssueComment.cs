@@ -14,28 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiIssueResource created on azure
-// for more information of creating ApiIssueResource, please refer to the document of ApiIssueResource
+// this example assumes you already have this ApiIssueCommentResource created on azure
+// for more information of creating ApiIssueCommentResource, please refer to the document of ApiIssueCommentResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "57d1f7558aa04f15146d9d8a";
 string issueId = "57d2ef278aa04f0ad01d6cdc";
-ResourceIdentifier apiIssueResourceId = ApiIssueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId);
-ApiIssueResource apiIssue = client.GetApiIssueResource(apiIssueResourceId);
-
-// get the collection of this ApiIssueCommentResource
-ApiIssueCommentCollection collection = apiIssue.GetApiIssueComments();
+string commentId = "599e29ab193c3c0bd0b3e2fb";
+ResourceIdentifier apiIssueCommentResourceId = ApiIssueCommentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId, commentId);
+ApiIssueCommentResource apiIssueComment = client.GetApiIssueCommentResource(apiIssueCommentResourceId);
 
 // invoke the operation
-string commentId = "599e29ab193c3c0bd0b3e2fb";
 ApiIssueCommentData data = new ApiIssueCommentData()
 {
     Text = "Issue comment.",
     CreatedOn = DateTimeOffset.Parse("2018-02-01T22:21:20.467Z"),
     UserId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
 };
-ArmOperation<ApiIssueCommentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, commentId, data);
+ArmOperation<ApiIssueCommentResource> lro = await apiIssueComment.UpdateAsync(WaitUntil.Completed, data);
 ApiIssueCommentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

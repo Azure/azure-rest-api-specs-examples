@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementPrivateLinkResource created on azure
-// for more information of creating ApiManagementPrivateLinkResource, please refer to the document of ApiManagementPrivateLinkResource
+// this example assumes you already have this ApiManagementServiceResource created on azure
+// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-string privateLinkSubResourceName = "privateLinkSubResourceName";
-ResourceIdentifier apiManagementPrivateLinkResourceId = ApiManagementPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, privateLinkSubResourceName);
-ApiManagementPrivateLinkResource apiManagementPrivateLinkResource = client.GetApiManagementPrivateLinkResource(apiManagementPrivateLinkResourceId);
+ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
+
+// get the collection of this ApiManagementPrivateLinkResource
+ApiManagementPrivateLinkResourceCollection collection = apiManagementService.GetApiManagementPrivateLinkResources();
 
 // invoke the operation
-ApiManagementPrivateLinkResource result = await apiManagementPrivateLinkResource.GetAsync();
+string privateLinkSubResourceName = "privateLinkSubResourceName";
+bool result = await collection.ExistsAsync(privateLinkSubResourceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiManagementPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,28 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiOperationResource created on azure
-// for more information of creating ApiOperationResource, please refer to the document of ApiOperationResource
+// this example assumes you already have this ApiOperationPolicyResource created on azure
+// for more information of creating ApiOperationPolicyResource, please refer to the document of ApiOperationPolicyResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5600b57e7e8880006a040001";
 string operationId = "5600b57e7e8880006a080001";
-ResourceIdentifier apiOperationResourceId = ApiOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId);
-ApiOperationResource apiOperation = client.GetApiOperationResource(apiOperationResourceId);
-
-// get the collection of this ApiOperationPolicyResource
-ApiOperationPolicyCollection collection = apiOperation.GetApiOperationPolicies();
+PolicyName policyId = PolicyName.Policy;
+ResourceIdentifier apiOperationPolicyResourceId = ApiOperationPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId, policyId);
+ApiOperationPolicyResource apiOperationPolicy = client.GetApiOperationPolicyResource(apiOperationPolicyResourceId);
 
 // invoke the operation
-PolicyName policyId = PolicyName.Policy;
 PolicyContractData data = new PolicyContractData()
 {
     Value = "<policies> <inbound /> <backend>    <forward-request />  </backend>  <outbound /></policies>",
     Format = PolicyContentFormat.Xml,
 };
 ETag? ifMatch = new ETag("*");
-ArmOperation<ApiOperationPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyId, data, ifMatch: ifMatch);
+ArmOperation<ApiOperationPolicyResource> lro = await apiOperationPolicy.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
 ApiOperationPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

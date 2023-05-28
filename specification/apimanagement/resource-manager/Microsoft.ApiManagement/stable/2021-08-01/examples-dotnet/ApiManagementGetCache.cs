@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ApiManagement;
-using Azure.ResourceManager.ApiManagement.Models;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2021-08-01/examples/ApiManagementGetCache.json
 // this example is just showing the usage of "Cache_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementCacheResource created on azure
-// for more information of creating ApiManagementCacheResource, please refer to the document of ApiManagementCacheResource
+// this example assumes you already have this ApiManagementServiceResource created on azure
+// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-string cacheId = "c1";
-ResourceIdentifier apiManagementCacheResourceId = ApiManagementCacheResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, cacheId);
-ApiManagementCacheResource apiManagementCache = client.GetApiManagementCacheResource(apiManagementCacheResourceId);
+ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
+
+// get the collection of this ApiManagementCacheResource
+ApiManagementCacheCollection collection = apiManagementService.GetApiManagementCaches();
 
 // invoke the operation
-ApiManagementCacheResource result = await apiManagementCache.GetAsync();
+string cacheId = "c1";
+bool result = await collection.ExistsAsync(cacheId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiManagementCacheData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

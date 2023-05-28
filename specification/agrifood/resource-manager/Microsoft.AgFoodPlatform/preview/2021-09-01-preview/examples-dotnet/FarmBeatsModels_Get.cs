@@ -5,6 +5,8 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.AgFoodPlatform;
+using Azure.ResourceManager.AgFoodPlatform.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/FarmBeatsModels_Get.json
@@ -15,18 +17,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this FarmBeatResource created on azure
+// for more information of creating FarmBeatResource, please refer to the document of FarmBeatResource
 string subscriptionId = "11111111-2222-3333-4444-555555555555";
 string resourceGroupName = "examples-rg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this FarmBeatResource
-FarmBeatCollection collection = resourceGroupResource.GetFarmBeats();
+string farmBeatsResourceName = "examples-farmBeatsResourceName";
+ResourceIdentifier farmBeatResourceId = FarmBeatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName);
+FarmBeatResource farmBeat = client.GetFarmBeatResource(farmBeatResourceId);
 
 // invoke the operation
-string farmBeatsResourceName = "examples-farmBeatsResourceName";
-bool result = await collection.ExistsAsync(farmBeatsResourceName);
+FarmBeatResource result = await farmBeat.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FarmBeatData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

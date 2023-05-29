@@ -31,7 +31,7 @@ string certificateName = "sha1-0a0e4f50d51beadeac1d35afc5116098e7902e6e";
 BatchAccountCertificateCreateOrUpdateContent content = new BatchAccountCertificateCreateOrUpdateContent()
 {
     ThumbprintAlgorithm = "sha1",
-    Thumbprint = BinaryData.FromString("0a0e4f50d51beadeac1d35afc5116098e7902e6e"),
+    ThumbprintString = "0a0e4f50d51beadeac1d35afc5116098e7902e6e",
     Format = BatchAccountCertificateFormat.Pfx,
     Data = BinaryData.FromString("MIIJsgIBAzCCCW4GCSqGSIb3DQE..."),
     Password = "<ExamplePassword>",

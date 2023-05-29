@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryResource created on azure
-// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
+// this example assumes you already have this ContainerRegistryPrivateLinkResource created on azure
+// for more information of creating ContainerRegistryPrivateLinkResource, please refer to the document of ContainerRegistryPrivateLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
-ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
-
-// get the collection of this ContainerRegistryPrivateLinkResource
-ContainerRegistryPrivateLinkResourceCollection collection = containerRegistry.GetContainerRegistryPrivateLinkResources();
+string groupName = "registry";
+ResourceIdentifier containerRegistryPrivateLinkResourceId = ContainerRegistryPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, groupName);
+ContainerRegistryPrivateLinkResource containerRegistryPrivateLinkResource = client.GetContainerRegistryPrivateLinkResource(containerRegistryPrivateLinkResourceId);
 
 // invoke the operation
-string groupName = "registry";
-bool result = await collection.ExistsAsync(groupName);
+ContainerRegistryPrivateLinkResource result = await containerRegistryPrivateLinkResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerRegistryPrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

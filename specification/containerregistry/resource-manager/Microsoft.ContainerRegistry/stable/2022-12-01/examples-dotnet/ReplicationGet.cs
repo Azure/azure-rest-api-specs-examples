@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryReplicationResource created on azure
-// for more information of creating ContainerRegistryReplicationResource, please refer to the document of ContainerRegistryReplicationResource
+// this example assumes you already have this ContainerRegistryResource created on azure
+// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-string replicationName = "myReplication";
-ResourceIdentifier containerRegistryReplicationResourceId = ContainerRegistryReplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, replicationName);
-ContainerRegistryReplicationResource containerRegistryReplication = client.GetContainerRegistryReplicationResource(containerRegistryReplicationResourceId);
+ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
+
+// get the collection of this ContainerRegistryReplicationResource
+ContainerRegistryReplicationCollection collection = containerRegistry.GetContainerRegistryReplications();
 
 // invoke the operation
-ContainerRegistryReplicationResource result = await containerRegistryReplication.GetAsync();
+string replicationName = "myReplication";
+bool result = await collection.ExistsAsync(replicationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerRegistryReplicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

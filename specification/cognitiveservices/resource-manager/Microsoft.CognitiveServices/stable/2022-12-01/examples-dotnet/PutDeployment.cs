@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesAccountResource created on azure
-// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
+// this example assumes you already have this CognitiveServicesAccountDeploymentResource created on azure
+// for more information of creating CognitiveServicesAccountDeploymentResource, please refer to the document of CognitiveServicesAccountDeploymentResource
 string subscriptionId = "subscriptionId";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
-
-// get the collection of this CognitiveServicesAccountDeploymentResource
-CognitiveServicesAccountDeploymentCollection collection = cognitiveServicesAccount.GetCognitiveServicesAccountDeployments();
+string deploymentName = "deploymentName";
+ResourceIdentifier cognitiveServicesAccountDeploymentResourceId = CognitiveServicesAccountDeploymentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, deploymentName);
+CognitiveServicesAccountDeploymentResource cognitiveServicesAccountDeployment = client.GetCognitiveServicesAccountDeploymentResource(cognitiveServicesAccountDeploymentResourceId);
 
 // invoke the operation
-string deploymentName = "deploymentName";
 CognitiveServicesAccountDeploymentData data = new CognitiveServicesAccountDeploymentData()
 {
     Properties = new CognitiveServicesAccountDeploymentProperties()
@@ -45,7 +42,7 @@ CognitiveServicesAccountDeploymentData data = new CognitiveServicesAccountDeploy
         },
     },
 };
-ArmOperation<CognitiveServicesAccountDeploymentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deploymentName, data);
+ArmOperation<CognitiveServicesAccountDeploymentResource> lro = await cognitiveServicesAccountDeployment.UpdateAsync(WaitUntil.Completed, data);
 CognitiveServicesAccountDeploymentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

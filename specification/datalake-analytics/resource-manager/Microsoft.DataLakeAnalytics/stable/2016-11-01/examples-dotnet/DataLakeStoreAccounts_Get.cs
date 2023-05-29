@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataLakeAnalyticsAccountResource created on azure
-// for more information of creating DataLakeAnalyticsAccountResource, please refer to the document of DataLakeAnalyticsAccountResource
+// this example assumes you already have this DataLakeStoreAccountInformationResource created on azure
+// for more information of creating DataLakeStoreAccountInformationResource, please refer to the document of DataLakeStoreAccountInformationResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1669ab345";
 string resourceGroupName = "contosorg";
 string accountName = "contosoadla";
-ResourceIdentifier dataLakeAnalyticsAccountResourceId = DataLakeAnalyticsAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-DataLakeAnalyticsAccountResource dataLakeAnalyticsAccount = client.GetDataLakeAnalyticsAccountResource(dataLakeAnalyticsAccountResourceId);
-
-// get the collection of this DataLakeStoreAccountInformationResource
-DataLakeStoreAccountInformationCollection collection = dataLakeAnalyticsAccount.GetAllDataLakeStoreAccountInformation();
+string dataLakeStoreAccountName = "test_adls_account";
+ResourceIdentifier dataLakeStoreAccountInformationResourceId = DataLakeStoreAccountInformationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, dataLakeStoreAccountName);
+DataLakeStoreAccountInformationResource dataLakeStoreAccountInformation = client.GetDataLakeStoreAccountInformationResource(dataLakeStoreAccountInformationResourceId);
 
 // invoke the operation
-string dataLakeStoreAccountName = "test_adls_account";
-bool result = await collection.ExistsAsync(dataLakeStoreAccountName);
+DataLakeStoreAccountInformationResource result = await dataLakeStoreAccountInformation.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataLakeStoreAccountInformationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

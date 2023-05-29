@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeRoleResource created on azure
-// for more information of creating DataBoxEdgeRoleResource, please refer to the document of DataBoxEdgeRoleResource
+// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
+// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-string name = "IoTRole1";
-ResourceIdentifier dataBoxEdgeRoleResourceId = DataBoxEdgeRoleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
-DataBoxEdgeRoleResource dataBoxEdgeRole = client.GetDataBoxEdgeRoleResource(dataBoxEdgeRoleResourceId);
+ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
+DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
+
+// get the collection of this DataBoxEdgeRoleResource
+DataBoxEdgeRoleCollection collection = dataBoxEdgeDevice.GetDataBoxEdgeRoles();
 
 // invoke the operation
-DataBoxEdgeRoleResource result = await dataBoxEdgeRole.GetAsync();
+string name = "IoTRole1";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataBoxEdgeRoleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

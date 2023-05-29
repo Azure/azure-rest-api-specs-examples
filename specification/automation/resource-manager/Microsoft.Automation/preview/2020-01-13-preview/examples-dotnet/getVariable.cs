@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this AutomationVariableResource created on azure
+// for more information of creating AutomationVariableResource, please refer to the document of AutomationVariableResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "sampleAccount9";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this AutomationVariableResource
-AutomationVariableCollection collection = automationAccount.GetAutomationVariables();
+string variableName = "sampleVariable";
+ResourceIdentifier automationVariableResourceId = AutomationVariableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, variableName);
+AutomationVariableResource automationVariable = client.GetAutomationVariableResource(automationVariableResourceId);
 
 // invoke the operation
-string variableName = "sampleVariable";
-bool result = await collection.ExistsAsync(variableName);
+AutomationVariableResource result = await automationVariable.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomationVariableData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

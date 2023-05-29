@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this AutomationWebhookResource created on azure
+// for more information of creating AutomationWebhookResource, please refer to the document of AutomationWebhookResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "myAutomationAccount33";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this AutomationWebhookResource
-AutomationWebhookCollection collection = automationAccount.GetAutomationWebhooks();
+string webhookName = "TestWebhook";
+ResourceIdentifier automationWebhookResourceId = AutomationWebhookResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, webhookName);
+AutomationWebhookResource automationWebhook = client.GetAutomationWebhookResource(automationWebhookResourceId);
 
 // invoke the operation
-string webhookName = "TestWebhook";
-bool result = await collection.ExistsAsync(webhookName);
+AutomationWebhookResource result = await automationWebhook.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomationWebhookData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

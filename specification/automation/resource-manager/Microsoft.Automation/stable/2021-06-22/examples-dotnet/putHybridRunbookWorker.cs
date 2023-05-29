@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridRunbookWorkerGroupResource created on azure
-// for more information of creating HybridRunbookWorkerGroupResource, please refer to the document of HybridRunbookWorkerGroupResource
+// this example assumes you already have this HybridRunbookWorkerResource created on azure
+// for more information of creating HybridRunbookWorkerResource, please refer to the document of HybridRunbookWorkerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "testaccount";
 string hybridRunbookWorkerGroupName = "TestHybridGroup";
-ResourceIdentifier hybridRunbookWorkerGroupResourceId = HybridRunbookWorkerGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName);
-HybridRunbookWorkerGroupResource hybridRunbookWorkerGroup = client.GetHybridRunbookWorkerGroupResource(hybridRunbookWorkerGroupResourceId);
-
-// get the collection of this HybridRunbookWorkerResource
-HybridRunbookWorkerCollection collection = hybridRunbookWorkerGroup.GetHybridRunbookWorkers();
+string hybridRunbookWorkerId = "c010ad12-ef14-4a2a-aa9e-ef22c4745ddd";
+ResourceIdentifier hybridRunbookWorkerResourceId = HybridRunbookWorkerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName, hybridRunbookWorkerId);
+HybridRunbookWorkerResource hybridRunbookWorker = client.GetHybridRunbookWorkerResource(hybridRunbookWorkerResourceId);
 
 // invoke the operation
-string hybridRunbookWorkerId = "c010ad12-ef14-4a2a-aa9e-ef22c4745ddd";
 HybridRunbookWorkerCreateOrUpdateContent content = new HybridRunbookWorkerCreateOrUpdateContent()
 {
     VmResourceId = new ResourceIdentifier("/subscriptions/vmsubid/resourceGroups/vmrg/providers/Microsoft.Compute/virtualMachines/vmname"),
 };
-ArmOperation<HybridRunbookWorkerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, hybridRunbookWorkerId, content);
+ArmOperation<HybridRunbookWorkerResource> lro = await hybridRunbookWorker.UpdateAsync(WaitUntil.Completed, content);
 HybridRunbookWorkerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

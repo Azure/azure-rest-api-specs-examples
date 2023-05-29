@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationAccountResource created on azure
-// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
+// this example assumes you already have this DscNodeConfigurationResource created on azure
+// for more information of creating DscNodeConfigurationResource, please refer to the document of DscNodeConfigurationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "myAutomationAccount20";
-ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
-AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
-
-// get the collection of this DscNodeConfigurationResource
-DscNodeConfigurationCollection collection = automationAccount.GetDscNodeConfigurations();
+string nodeConfigurationName = "configName.nodeConfigName";
+ResourceIdentifier dscNodeConfigurationResourceId = DscNodeConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, nodeConfigurationName);
+DscNodeConfigurationResource dscNodeConfiguration = client.GetDscNodeConfigurationResource(dscNodeConfigurationResourceId);
 
 // invoke the operation
-string nodeConfigurationName = "configName.nodeConfigName";
 DscNodeConfigurationCreateOrUpdateContent content = new DscNodeConfigurationCreateOrUpdateContent()
 {
     Name = "configName.nodeConfigName",
@@ -41,6 +38,6 @@ DscNodeConfigurationCreateOrUpdateContent content = new DscNodeConfigurationCrea
     ConfigurationName = "configName",
     IsIncrementNodeConfigurationBuildRequired = true,
 };
-await collection.CreateOrUpdateAsync(WaitUntil.Completed, nodeConfigurationName, content);
+await dscNodeConfiguration.UpdateAsync(WaitUntil.Completed, content);
 
 Console.WriteLine($"Succeeded");

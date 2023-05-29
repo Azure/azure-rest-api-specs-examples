@@ -14,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteAuthorizationResource created on azure
-// for more information of creating ExpressRouteAuthorizationResource, please refer to the document of ExpressRouteAuthorizationResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string authorizationName = "authorization1";
-ResourceIdentifier expressRouteAuthorizationResourceId = ExpressRouteAuthorizationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, authorizationName);
-ExpressRouteAuthorizationResource expressRouteAuthorization = client.GetExpressRouteAuthorizationResource(expressRouteAuthorizationResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this ExpressRouteAuthorizationResource
+ExpressRouteAuthorizationCollection collection = avsPrivateCloud.GetExpressRouteAuthorizations();
 
 // invoke the operation
-ExpressRouteAuthorizationResource result = await expressRouteAuthorization.GetAsync();
+string authorizationName = "authorization1";
+bool result = await collection.ExistsAsync(authorizationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ExpressRouteAuthorizationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

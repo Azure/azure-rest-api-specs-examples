@@ -14,21 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudDatastoreResource created on azure
-// for more information of creating AvsPrivateCloudDatastoreResource, please refer to the document of AvsPrivateCloudDatastoreResource
+// this example assumes you already have this AvsPrivateCloudClusterResource created on azure
+// for more information of creating AvsPrivateCloudClusterResource, please refer to the document of AvsPrivateCloudClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
 string clusterName = "cluster1";
-string datastoreName = "datastore1";
-ResourceIdentifier avsPrivateCloudDatastoreResourceId = AvsPrivateCloudDatastoreResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, clusterName, datastoreName);
-AvsPrivateCloudDatastoreResource avsPrivateCloudDatastore = client.GetAvsPrivateCloudDatastoreResource(avsPrivateCloudDatastoreResourceId);
+ResourceIdentifier avsPrivateCloudClusterResourceId = AvsPrivateCloudClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, clusterName);
+AvsPrivateCloudClusterResource avsPrivateCloudCluster = client.GetAvsPrivateCloudClusterResource(avsPrivateCloudClusterResourceId);
+
+// get the collection of this AvsPrivateCloudDatastoreResource
+AvsPrivateCloudDatastoreCollection collection = avsPrivateCloudCluster.GetAvsPrivateCloudDatastores();
 
 // invoke the operation
-AvsPrivateCloudDatastoreResource result = await avsPrivateCloudDatastore.GetAsync();
+string datastoreName = "datastore1";
+bool result = await collection.ExistsAsync(datastoreName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AvsPrivateCloudDatastoreData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

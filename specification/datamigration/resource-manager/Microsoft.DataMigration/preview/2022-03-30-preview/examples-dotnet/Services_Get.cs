@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this DataMigrationServiceResource created on azure
+// for more information of creating DataMigrationServiceResource, please refer to the document of DataMigrationServiceResource
 string subscriptionId = "fc04246f-04c5-437e-ac5e-206a19e7193f";
 string groupName = "DmsSdkRg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, groupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this DataMigrationServiceResource
-DataMigrationServiceCollection collection = resourceGroupResource.GetDataMigrationServices();
+string serviceName = "DmsSdkService";
+ResourceIdentifier dataMigrationServiceResourceId = DataMigrationServiceResource.CreateResourceIdentifier(subscriptionId, groupName, serviceName);
+DataMigrationServiceResource dataMigrationService = client.GetDataMigrationServiceResource(dataMigrationServiceResourceId);
 
 // invoke the operation
-string serviceName = "DmsSdkService";
-bool result = await collection.ExistsAsync(serviceName);
+DataMigrationServiceResource result = await dataMigrationService.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataMigrationServiceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

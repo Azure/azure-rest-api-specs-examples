@@ -37,7 +37,6 @@ ConnectorMappingResourceFormatData data = new ConnectorMappingResourceFormatData
         ErrorLimit = 10,
     }, new ConnectorMappingFormat()
     {
-        FormatType = FormatType.TextFormat,
         ColumnDelimiter = "|",
     }, new ConnectorMappingAvailability(5)
     {

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomanageConfigurationProfileResource created on azure
-// for more information of creating AutomanageConfigurationProfileResource, please refer to the document of AutomanageConfigurationProfileResource
+// this example assumes you already have this AutomanageConfigurationProfileVersionResource created on azure
+// for more information of creating AutomanageConfigurationProfileVersionResource, please refer to the document of AutomanageConfigurationProfileVersionResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string configurationProfileName = "customConfigurationProfile";
-ResourceIdentifier automanageConfigurationProfileResourceId = AutomanageConfigurationProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configurationProfileName);
-AutomanageConfigurationProfileResource automanageConfigurationProfile = client.GetAutomanageConfigurationProfileResource(automanageConfigurationProfileResourceId);
-
-// get the collection of this AutomanageConfigurationProfileVersionResource
-AutomanageConfigurationProfileVersionCollection collection = automanageConfigurationProfile.GetAutomanageConfigurationProfileVersions();
+string versionName = "version1";
+ResourceIdentifier automanageConfigurationProfileVersionResourceId = AutomanageConfigurationProfileVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configurationProfileName, versionName);
+AutomanageConfigurationProfileVersionResource automanageConfigurationProfileVersion = client.GetAutomanageConfigurationProfileVersionResource(automanageConfigurationProfileVersionResourceId);
 
 // invoke the operation
-string versionName = "version1";
-bool result = await collection.ExistsAsync(versionName);
+AutomanageConfigurationProfileVersionResource result = await automanageConfigurationProfileVersion.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomanageConfigurationProfileData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteAuthorizationResource created on azure
-// for more information of creating ExpressRouteAuthorizationResource, please refer to the document of ExpressRouteAuthorizationResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string authorizationName = "authorization1";
-ResourceIdentifier expressRouteAuthorizationResourceId = ExpressRouteAuthorizationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, authorizationName);
-ExpressRouteAuthorizationResource expressRouteAuthorization = client.GetExpressRouteAuthorizationResource(expressRouteAuthorizationResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this ExpressRouteAuthorizationResource
+ExpressRouteAuthorizationCollection collection = avsPrivateCloud.GetExpressRouteAuthorizations();
 
 // invoke the operation
+string authorizationName = "authorization1";
 ExpressRouteAuthorizationData data = new ExpressRouteAuthorizationData();
-ArmOperation<ExpressRouteAuthorizationResource> lro = await expressRouteAuthorization.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExpressRouteAuthorizationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationName, data);
 ExpressRouteAuthorizationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

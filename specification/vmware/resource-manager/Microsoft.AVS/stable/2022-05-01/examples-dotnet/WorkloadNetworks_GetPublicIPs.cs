@@ -14,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkloadNetworkPublicIPResource created on azure
-// for more information of creating WorkloadNetworkPublicIPResource, please refer to the document of WorkloadNetworkPublicIPResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string publicIPId = "publicIP1";
-ResourceIdentifier workloadNetworkPublicIPResourceId = WorkloadNetworkPublicIPResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, publicIPId);
-WorkloadNetworkPublicIPResource workloadNetworkPublicIP = client.GetWorkloadNetworkPublicIPResource(workloadNetworkPublicIPResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this WorkloadNetworkPublicIPResource
+WorkloadNetworkPublicIPCollection collection = avsPrivateCloud.GetWorkloadNetworkPublicIPs();
 
 // invoke the operation
-WorkloadNetworkPublicIPResource result = await workloadNetworkPublicIP.GetAsync();
+string publicIPId = "publicIP1";
+bool result = await collection.ExistsAsync(publicIPId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WorkloadNetworkPublicIPData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

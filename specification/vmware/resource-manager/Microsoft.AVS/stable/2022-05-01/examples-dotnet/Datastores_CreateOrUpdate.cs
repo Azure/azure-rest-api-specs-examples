@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudDatastoreResource created on azure
-// for more information of creating AvsPrivateCloudDatastoreResource, please refer to the document of AvsPrivateCloudDatastoreResource
+// this example assumes you already have this AvsPrivateCloudClusterResource created on azure
+// for more information of creating AvsPrivateCloudClusterResource, please refer to the document of AvsPrivateCloudClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
 string clusterName = "cluster1";
-string datastoreName = "datastore1";
-ResourceIdentifier avsPrivateCloudDatastoreResourceId = AvsPrivateCloudDatastoreResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, clusterName, datastoreName);
-AvsPrivateCloudDatastoreResource avsPrivateCloudDatastore = client.GetAvsPrivateCloudDatastoreResource(avsPrivateCloudDatastoreResourceId);
+ResourceIdentifier avsPrivateCloudClusterResourceId = AvsPrivateCloudClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, clusterName);
+AvsPrivateCloudClusterResource avsPrivateCloudCluster = client.GetAvsPrivateCloudClusterResource(avsPrivateCloudClusterResourceId);
+
+// get the collection of this AvsPrivateCloudDatastoreResource
+AvsPrivateCloudDatastoreCollection collection = avsPrivateCloudCluster.GetAvsPrivateCloudDatastores();
 
 // invoke the operation
+string datastoreName = "datastore1";
 AvsPrivateCloudDatastoreData data = new AvsPrivateCloudDatastoreData()
 {
     NetAppVolumeId = new ResourceIdentifier("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1"),
 };
-ArmOperation<AvsPrivateCloudDatastoreResource> lro = await avsPrivateCloudDatastore.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AvsPrivateCloudDatastoreResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, datastoreName, data);
 AvsPrivateCloudDatastoreResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

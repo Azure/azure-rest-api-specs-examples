@@ -15,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeStorageContainerResource created on azure
-// for more information of creating DataBoxEdgeStorageContainerResource, please refer to the document of DataBoxEdgeStorageContainerResource
+// this example assumes you already have this DataBoxEdgeStorageAccountResource created on azure
+// for more information of creating DataBoxEdgeStorageAccountResource, please refer to the document of DataBoxEdgeStorageAccountResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
 string storageAccountName = "storageaccount1";
-string containerName = "blobcontainer1";
-ResourceIdentifier dataBoxEdgeStorageContainerResourceId = DataBoxEdgeStorageContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, storageAccountName, containerName);
-DataBoxEdgeStorageContainerResource dataBoxEdgeStorageContainer = client.GetDataBoxEdgeStorageContainerResource(dataBoxEdgeStorageContainerResourceId);
+ResourceIdentifier dataBoxEdgeStorageAccountResourceId = DataBoxEdgeStorageAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, storageAccountName);
+DataBoxEdgeStorageAccountResource dataBoxEdgeStorageAccount = client.GetDataBoxEdgeStorageAccountResource(dataBoxEdgeStorageAccountResourceId);
+
+// get the collection of this DataBoxEdgeStorageContainerResource
+DataBoxEdgeStorageContainerCollection collection = dataBoxEdgeStorageAccount.GetDataBoxEdgeStorageContainers();
 
 // invoke the operation
+string containerName = "blobcontainer1";
 DataBoxEdgeStorageContainerData data = new DataBoxEdgeStorageContainerData(DataBoxEdgeStorageContainerDataFormat.BlockBlob);
-ArmOperation<DataBoxEdgeStorageContainerResource> lro = await dataBoxEdgeStorageContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataBoxEdgeStorageContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, containerName, data);
 DataBoxEdgeStorageContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

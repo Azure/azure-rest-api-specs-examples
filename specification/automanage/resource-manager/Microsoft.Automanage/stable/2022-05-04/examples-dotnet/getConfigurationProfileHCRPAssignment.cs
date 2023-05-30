@@ -15,18 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this AutomanageHcrpConfigurationProfileAssignmentResource
+// this example assumes you already have this AutomanageHcrpConfigurationProfileAssignmentResource created on azure
+// for more information of creating AutomanageHcrpConfigurationProfileAssignmentResource, please refer to the document of AutomanageHcrpConfigurationProfileAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string machineName = "myMachineName";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}", subscriptionId, resourceGroupName, machineName));
-AutomanageHcrpConfigurationProfileAssignmentCollection collection = client.GetAutomanageHcrpConfigurationProfileAssignments(scopeId);
+string configurationProfileAssignmentName = "default";
+ResourceIdentifier automanageHcrpConfigurationProfileAssignmentResourceId = AutomanageHcrpConfigurationProfileAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, configurationProfileAssignmentName);
+AutomanageHcrpConfigurationProfileAssignmentResource automanageHcrpConfigurationProfileAssignment = client.GetAutomanageHcrpConfigurationProfileAssignmentResource(automanageHcrpConfigurationProfileAssignmentResourceId);
 
 // invoke the operation
-string configurationProfileAssignmentName = "default";
-bool result = await collection.ExistsAsync(configurationProfileAssignmentName);
+AutomanageHcrpConfigurationProfileAssignmentResource result = await automanageHcrpConfigurationProfileAssignment.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomanageConfigurationProfileAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

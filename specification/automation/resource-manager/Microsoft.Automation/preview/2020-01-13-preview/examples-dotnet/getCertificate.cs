@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationCertificateResource created on azure
-// for more information of creating AutomationCertificateResource, please refer to the document of AutomationCertificateResource
+// this example assumes you already have this AutomationAccountResource created on azure
+// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "myAutomationAccount33";
-string certificateName = "testCert";
-ResourceIdentifier automationCertificateResourceId = AutomationCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, certificateName);
-AutomationCertificateResource automationCertificate = client.GetAutomationCertificateResource(automationCertificateResourceId);
+ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
+AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
+
+// get the collection of this AutomationCertificateResource
+AutomationCertificateCollection collection = automationAccount.GetAutomationCertificates();
 
 // invoke the operation
-AutomationCertificateResource result = await automationCertificate.GetAsync();
+string certificateName = "testCert";
+bool result = await collection.ExistsAsync(certificateName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AutomationCertificateData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

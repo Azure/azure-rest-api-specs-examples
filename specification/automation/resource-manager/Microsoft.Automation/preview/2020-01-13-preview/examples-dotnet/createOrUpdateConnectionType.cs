@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationConnectionTypeResource created on azure
-// for more information of creating AutomationConnectionTypeResource, please refer to the document of AutomationConnectionTypeResource
+// this example assumes you already have this AutomationAccountResource created on azure
+// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "myAutomationAccount22";
-string connectionTypeName = "myCT";
-ResourceIdentifier automationConnectionTypeResourceId = AutomationConnectionTypeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, connectionTypeName);
-AutomationConnectionTypeResource automationConnectionType = client.GetAutomationConnectionTypeResource(automationConnectionTypeResourceId);
+ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
+AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
+
+// get the collection of this AutomationConnectionTypeResource
+AutomationConnectionTypeCollection collection = automationAccount.GetAutomationConnectionTypes();
 
 // invoke the operation
+string connectionTypeName = "myCT";
 AutomationConnectionTypeCreateOrUpdateContent content = new AutomationConnectionTypeCreateOrUpdateContent("myCT", new Dictionary<string, AutomationConnectionFieldDefinition>()
 {
     ["myBoolField"] = new AutomationConnectionFieldDefinition("bool")
@@ -47,7 +50,7 @@ AutomationConnectionTypeCreateOrUpdateContent content = new AutomationConnection
 {
     IsGlobal = false,
 };
-ArmOperation<AutomationConnectionTypeResource> lro = await automationConnectionType.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<AutomationConnectionTypeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionTypeName, content);
 AutomationConnectionTypeResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

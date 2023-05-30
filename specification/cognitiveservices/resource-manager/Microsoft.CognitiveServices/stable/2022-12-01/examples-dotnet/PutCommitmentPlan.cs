@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CognitiveServicesAccountResource created on azure
-// for more information of creating CognitiveServicesAccountResource, please refer to the document of CognitiveServicesAccountResource
+// this example assumes you already have this CommitmentPlanResource created on azure
+// for more information of creating CommitmentPlanResource, please refer to the document of CommitmentPlanResource
 string subscriptionId = "subscriptionId";
 string resourceGroupName = "resourceGroupName";
 string accountName = "accountName";
-ResourceIdentifier cognitiveServicesAccountResourceId = CognitiveServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-CognitiveServicesAccountResource cognitiveServicesAccount = client.GetCognitiveServicesAccountResource(cognitiveServicesAccountResourceId);
-
-// get the collection of this CommitmentPlanResource
-CommitmentPlanCollection collection = cognitiveServicesAccount.GetCommitmentPlans();
+string commitmentPlanName = "commitmentPlanName";
+ResourceIdentifier commitmentPlanResourceId = CommitmentPlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, commitmentPlanName);
+CommitmentPlanResource commitmentPlan = client.GetCommitmentPlanResource(commitmentPlanResourceId);
 
 // invoke the operation
-string commitmentPlanName = "commitmentPlanName";
 CommitmentPlanData data = new CommitmentPlanData()
 {
     Properties = new CommitmentPlanProperties()
@@ -41,7 +38,7 @@ CommitmentPlanData data = new CommitmentPlanData()
         AutoRenew = true,
     },
 };
-ArmOperation<CommitmentPlanResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, commitmentPlanName, data);
+ArmOperation<CommitmentPlanResource> lro = await commitmentPlan.UpdateAsync(WaitUntil.Completed, data);
 CommitmentPlanResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

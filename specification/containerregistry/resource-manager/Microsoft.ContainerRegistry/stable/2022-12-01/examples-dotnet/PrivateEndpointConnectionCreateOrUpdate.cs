@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryResource created on azure
-// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
+// this example assumes you already have this ContainerRegistryPrivateEndpointConnectionResource created on azure
+// for more information of creating ContainerRegistryPrivateEndpointConnectionResource, please refer to the document of ContainerRegistryPrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
-ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
-
-// get the collection of this ContainerRegistryPrivateEndpointConnectionResource
-ContainerRegistryPrivateEndpointConnectionCollection collection = containerRegistry.GetContainerRegistryPrivateEndpointConnections();
+string privateEndpointConnectionName = "myConnection";
+ResourceIdentifier containerRegistryPrivateEndpointConnectionResourceId = ContainerRegistryPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, privateEndpointConnectionName);
+ContainerRegistryPrivateEndpointConnectionResource containerRegistryPrivateEndpointConnection = client.GetContainerRegistryPrivateEndpointConnectionResource(containerRegistryPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "myConnection";
 ContainerRegistryPrivateEndpointConnectionData data = new ContainerRegistryPrivateEndpointConnectionData()
 {
     ConnectionState = new ContainerRegistryPrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ ContainerRegistryPrivateEndpointConnectionData data = new ContainerRegistryPriva
         Description = "Auto-Approved",
     },
 };
-ArmOperation<ContainerRegistryPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<ContainerRegistryPrivateEndpointConnectionResource> lro = await containerRegistryPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 ContainerRegistryPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

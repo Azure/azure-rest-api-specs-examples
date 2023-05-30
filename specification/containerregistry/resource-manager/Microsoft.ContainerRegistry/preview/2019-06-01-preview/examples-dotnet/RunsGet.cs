@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ContainerRegistry;
-using Azure.ResourceManager.ContainerRegistry.Models;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RunsGet.json
 // this example is just showing the usage of "Runs_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerRegistryRunResource created on azure
-// for more information of creating ContainerRegistryRunResource, please refer to the document of ContainerRegistryRunResource
+// this example assumes you already have this ContainerRegistryResource created on azure
+// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-string runId = "0accec26-d6de-4757-8e74-d080f38eaaab";
-ResourceIdentifier containerRegistryRunResourceId = ContainerRegistryRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, runId);
-ContainerRegistryRunResource containerRegistryRun = client.GetContainerRegistryRunResource(containerRegistryRunResourceId);
+ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
+
+// get the collection of this ContainerRegistryRunResource
+ContainerRegistryRunCollection collection = containerRegistry.GetContainerRegistryRuns();
 
 // invoke the operation
-ContainerRegistryRunResource result = await containerRegistryRun.GetAsync();
+string runId = "0accec26-d6de-4757-8e74-d080f38eaaab";
+bool result = await collection.ExistsAsync(runId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerRegistryRunData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

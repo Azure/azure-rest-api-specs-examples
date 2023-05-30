@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Batch;
 using Azure.ResourceManager.Batch.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/batch/resource-manager/Microsoft.Batch/stable/2022-10-01/examples/PrivateBatchAccountGet.json
@@ -16,19 +17,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BatchAccountResource created on azure
-// for more information of creating BatchAccountResource, please refer to the document of BatchAccountResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "default-azurebatch-japaneast";
-string accountName = "sampleacct";
-ResourceIdentifier batchAccountResourceId = BatchAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-BatchAccountResource batchAccount = client.GetBatchAccountResource(batchAccountResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this BatchAccountResource
+BatchAccountCollection collection = resourceGroupResource.GetBatchAccounts();
 
 // invoke the operation
-BatchAccountResource result = await batchAccount.GetAsync();
+string accountName = "sampleacct";
+bool result = await collection.ExistsAsync(accountName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BatchAccountData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

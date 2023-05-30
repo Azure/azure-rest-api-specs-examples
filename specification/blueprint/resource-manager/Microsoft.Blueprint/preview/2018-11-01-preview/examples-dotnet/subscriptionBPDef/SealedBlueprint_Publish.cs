@@ -14,17 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PublishedBlueprintResource created on azure
-// for more information of creating PublishedBlueprintResource, please refer to the document of PublishedBlueprintResource
+// this example assumes you already have this BlueprintResource created on azure
+// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
 string blueprintName = "simpleBlueprint";
-string versionId = "v2";
-ResourceIdentifier publishedBlueprintResourceId = PublishedBlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName, versionId);
-PublishedBlueprintResource publishedBlueprint = client.GetPublishedBlueprintResource(publishedBlueprintResourceId);
+ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
+BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
+
+// get the collection of this PublishedBlueprintResource
+PublishedBlueprintCollection collection = blueprint.GetPublishedBlueprints();
 
 // invoke the operation
+string versionId = "v2";
 PublishedBlueprintData data = new PublishedBlueprintData();
-ArmOperation<PublishedBlueprintResource> lro = await publishedBlueprint.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PublishedBlueprintResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, versionId, data);
 PublishedBlueprintResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

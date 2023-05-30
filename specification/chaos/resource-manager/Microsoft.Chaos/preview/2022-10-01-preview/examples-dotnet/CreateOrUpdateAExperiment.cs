@@ -18,15 +18,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExperimentResource created on azure
-// for more information of creating ExperimentResource, please refer to the document of ExperimentResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 string resourceGroupName = "exampleRG";
-string experimentName = "exampleExperiment";
-ResourceIdentifier experimentResourceId = ExperimentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, experimentName);
-ExperimentResource experiment = client.GetExperimentResource(experimentResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ExperimentResource
+ExperimentCollection collection = resourceGroupResource.GetExperiments();
 
 // invoke the operation
+string experimentName = "exampleExperiment";
 ExperimentData data = new ExperimentData(new AzureLocation("eastus2euap"), new Step[]
 {
 new Step("step1",new Branch[]
@@ -44,15 +47,12 @@ new KeyValuePair("abruptShutdown","false")
 new Selector(SelectorType.List,"selector1",new TargetReference[]
 {
 new TargetReference("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine")
-{
-ReferenceType = TargetReferenceType.ChaosTarget,
-}
 })
 })
 {
     Identity = new ManagedServiceIdentity("SystemAssigned"),
 };
-ArmOperation<ExperimentResource> lro = await experiment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExperimentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, experimentName, data);
 ExperimentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

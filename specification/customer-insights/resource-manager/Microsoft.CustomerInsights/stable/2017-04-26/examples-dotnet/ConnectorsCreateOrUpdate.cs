@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ConnectorResourceFormatResource created on azure
-// for more information of creating ConnectorResourceFormatResource, please refer to the document of ConnectorResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string connectorName = "testConnector";
-ResourceIdentifier connectorResourceFormatResourceId = ConnectorResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, connectorName);
-ConnectorResourceFormatResource connectorResourceFormat = client.GetConnectorResourceFormatResource(connectorResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this ConnectorResourceFormatResource
+ConnectorResourceFormatCollection collection = hub.GetConnectorResourceFormats();
 
 // invoke the operation
+string connectorName = "testConnector";
 ConnectorResourceFormatData data = new ConnectorResourceFormatData()
 {
     ConnectorType = ConnectorType.AzureBlob,
@@ -39,7 +42,7 @@ ConnectorResourceFormatData data = new ConnectorResourceFormatData()
     ["organizationUrl"] = "https://XXX.crmlivetie.com/"}),
     },
 };
-ArmOperation<ConnectorResourceFormatResource> lro = await connectorResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ConnectorResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectorName, data);
 ConnectorResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

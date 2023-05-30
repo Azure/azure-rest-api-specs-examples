@@ -14,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MonitoringTagRuleResource created on azure
-// for more information of creating MonitoringTagRuleResource, please refer to the document of MonitoringTagRuleResource
+// this example assumes you already have this DatadogMonitorResource created on azure
+// for more information of creating DatadogMonitorResource, please refer to the document of DatadogMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-string ruleSetName = "default";
-ResourceIdentifier monitoringTagRuleResourceId = MonitoringTagRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, ruleSetName);
-MonitoringTagRuleResource monitoringTagRule = client.GetMonitoringTagRuleResource(monitoringTagRuleResourceId);
+ResourceIdentifier datadogMonitorResourceId = DatadogMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+DatadogMonitorResource datadogMonitorResource = client.GetDatadogMonitorResource(datadogMonitorResourceId);
+
+// get the collection of this MonitoringTagRuleResource
+MonitoringTagRuleCollection collection = datadogMonitorResource.GetMonitoringTagRules();
 
 // invoke the operation
-MonitoringTagRuleResource result = await monitoringTagRule.GetAsync();
+string ruleSetName = "default";
+bool result = await collection.ExistsAsync(ruleSetName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MonitoringTagRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

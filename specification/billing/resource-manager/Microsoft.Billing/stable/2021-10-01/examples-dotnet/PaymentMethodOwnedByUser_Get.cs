@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,17 +13,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingPaymentMethodResource created on azure
-// for more information of creating BillingPaymentMethodResource, please refer to the document of BillingPaymentMethodResource
-string paymentMethodName = "ABCDABCDABC0";
-ResourceIdentifier billingPaymentMethodResourceId = BillingPaymentMethodResource.CreateResourceIdentifier(paymentMethodName);
-BillingPaymentMethodResource billingPaymentMethod = client.GetBillingPaymentMethodResource(billingPaymentMethodResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this BillingPaymentMethodResource
+BillingPaymentMethodCollection collection = tenantResource.GetBillingPaymentMethods();
 
 // invoke the operation
-BillingPaymentMethodResource result = await billingPaymentMethod.GetAsync();
+string paymentMethodName = "ABCDABCDABC0";
+bool result = await collection.ExistsAsync(paymentMethodName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingPaymentMethodData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

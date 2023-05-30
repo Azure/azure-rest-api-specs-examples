@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,19 +13,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingPaymentMethodLinkResource created on azure
-// for more information of creating BillingPaymentMethodLinkResource, please refer to the document of BillingPaymentMethodLinkResource
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this BillingPaymentMethodLinkResource
 string billingAccountName = "00000000-0000-0000-0000-000000000032:00000000-0000-0000-0000-000000000099_2019-05-31";
 string billingProfileName = "ABC1-A1CD-AB1-BP1";
-string paymentMethodName = "ABCDABCDABC0";
-ResourceIdentifier billingPaymentMethodLinkResourceId = BillingPaymentMethodLinkResource.CreateResourceIdentifier(billingAccountName, billingProfileName, paymentMethodName);
-BillingPaymentMethodLinkResource billingPaymentMethodLink = client.GetBillingPaymentMethodLinkResource(billingPaymentMethodLinkResourceId);
+BillingPaymentMethodLinkCollection collection = tenantResource.GetBillingPaymentMethodLinks(billingAccountName, billingProfileName);
 
 // invoke the operation
-BillingPaymentMethodLinkResource result = await billingPaymentMethodLink.GetAsync();
+string paymentMethodName = "ABCDABCDABC0";
+bool result = await collection.ExistsAsync(paymentMethodName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingPaymentMethodLinkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

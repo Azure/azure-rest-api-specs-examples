@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CdnCustomDomainResource created on azure
-// for more information of creating CdnCustomDomainResource, please refer to the document of CdnCustomDomainResource
+// this example assumes you already have this CdnEndpointResource created on azure
+// for more information of creating CdnEndpointResource, please refer to the document of CdnEndpointResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
 string endpointName = "endpoint1";
-string customDomainName = "www-someDomain-net";
-ResourceIdentifier cdnCustomDomainResourceId = CdnCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName, customDomainName);
-CdnCustomDomainResource cdnCustomDomain = client.GetCdnCustomDomainResource(cdnCustomDomainResourceId);
+ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName);
+CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
+
+// get the collection of this CdnCustomDomainResource
+CdnCustomDomainCollection collection = cdnEndpoint.GetCdnCustomDomains();
 
 // invoke the operation
-CdnCustomDomainResource result = await cdnCustomDomain.GetAsync();
+string customDomainName = "www-someDomain-net";
+bool result = await collection.ExistsAsync(customDomainName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CdnCustomDomainData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

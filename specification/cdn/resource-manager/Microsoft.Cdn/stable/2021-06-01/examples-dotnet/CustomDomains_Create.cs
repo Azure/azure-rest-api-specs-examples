@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CdnCustomDomainResource created on azure
-// for more information of creating CdnCustomDomainResource, please refer to the document of CdnCustomDomainResource
+// this example assumes you already have this CdnEndpointResource created on azure
+// for more information of creating CdnEndpointResource, please refer to the document of CdnEndpointResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
 string endpointName = "endpoint1";
-string customDomainName = "www-someDomain-net";
-ResourceIdentifier cdnCustomDomainResourceId = CdnCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName, customDomainName);
-CdnCustomDomainResource cdnCustomDomain = client.GetCdnCustomDomainResource(cdnCustomDomainResourceId);
+ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName);
+CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
+
+// get the collection of this CdnCustomDomainResource
+CdnCustomDomainCollection collection = cdnEndpoint.GetCdnCustomDomains();
 
 // invoke the operation
+string customDomainName = "www-someDomain-net";
 CdnCustomDomainCreateOrUpdateContent content = new CdnCustomDomainCreateOrUpdateContent()
 {
     HostName = "www.someDomain.net",
 };
-ArmOperation<CdnCustomDomainResource> lro = await cdnCustomDomain.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<CdnCustomDomainResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, customDomainName, content);
 CdnCustomDomainResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

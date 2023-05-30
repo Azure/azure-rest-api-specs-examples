@@ -16,20 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorSecretResource created on azure
-// for more information of creating FrontDoorSecretResource, please refer to the document of FrontDoorSecretResource
+// this example assumes you already have this ProfileResource created on azure
+// for more information of creating ProfileResource, please refer to the document of ProfileResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
-string secretName = "secret1";
-ResourceIdentifier frontDoorSecretResourceId = FrontDoorSecretResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, secretName);
-FrontDoorSecretResource frontDoorSecret = client.GetFrontDoorSecretResource(frontDoorSecretResourceId);
+ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
+ProfileResource profile = client.GetProfileResource(profileResourceId);
+
+// get the collection of this FrontDoorSecretResource
+FrontDoorSecretCollection collection = profile.GetFrontDoorSecrets();
 
 // invoke the operation
-FrontDoorSecretResource result = await frontDoorSecret.GetAsync();
+string secretName = "secret1";
+bool result = await collection.ExistsAsync(secretName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-FrontDoorSecretData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

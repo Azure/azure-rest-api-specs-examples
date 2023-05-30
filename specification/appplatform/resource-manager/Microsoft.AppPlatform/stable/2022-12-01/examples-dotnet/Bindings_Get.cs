@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformAppResource created on azure
-// for more information of creating AppPlatformAppResource, please refer to the document of AppPlatformAppResource
+// this example assumes you already have this AppPlatformBindingResource created on azure
+// for more information of creating AppPlatformBindingResource, please refer to the document of AppPlatformBindingResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string appName = "myapp";
-ResourceIdentifier appPlatformAppResourceId = AppPlatformAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, appName);
-AppPlatformAppResource appPlatformApp = client.GetAppPlatformAppResource(appPlatformAppResourceId);
-
-// get the collection of this AppPlatformBindingResource
-AppPlatformBindingCollection collection = appPlatformApp.GetAppPlatformBindings();
+string bindingName = "mybinding";
+ResourceIdentifier appPlatformBindingResourceId = AppPlatformBindingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, appName, bindingName);
+AppPlatformBindingResource appPlatformBinding = client.GetAppPlatformBindingResource(appPlatformBindingResourceId);
 
 // invoke the operation
-string bindingName = "mybinding";
-bool result = await collection.ExistsAsync(bindingName);
+AppPlatformBindingResource result = await appPlatformBinding.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AppPlatformBindingData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

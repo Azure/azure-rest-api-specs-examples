@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProjectFileResource created on azure
-// for more information of creating ProjectFileResource, please refer to the document of ProjectFileResource
+// this example assumes you already have this ProjectResource created on azure
+// for more information of creating ProjectResource, please refer to the document of ProjectResource
 string subscriptionId = "fc04246f-04c5-437e-ac5e-206a19e7193f";
 string groupName = "DmsSdkRg";
 string serviceName = "DmsSdkService";
 string projectName = "DmsSdkProject";
-string fileName = "x114d023d8";
-ResourceIdentifier projectFileResourceId = ProjectFileResource.CreateResourceIdentifier(subscriptionId, groupName, serviceName, projectName, fileName);
-ProjectFileResource projectFile = client.GetProjectFileResource(projectFileResourceId);
+ResourceIdentifier projectResourceId = ProjectResource.CreateResourceIdentifier(subscriptionId, groupName, serviceName, projectName);
+ProjectResource project = client.GetProjectResource(projectResourceId);
+
+// get the collection of this ProjectFileResource
+ProjectFileCollection collection = project.GetProjectFiles();
 
 // invoke the operation
-ProjectFileResource result = await projectFile.GetAsync();
+string fileName = "x114d023d8";
+bool result = await collection.ExistsAsync(fileName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ProjectFileData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

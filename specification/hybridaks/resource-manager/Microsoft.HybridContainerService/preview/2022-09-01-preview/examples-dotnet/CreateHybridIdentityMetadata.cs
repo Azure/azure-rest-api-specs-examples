@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProvisionedClusterResource created on azure
-// for more information of creating ProvisionedClusterResource, please refer to the document of ProvisionedClusterResource
+// this example assumes you already have this HybridIdentityMetadataResource created on azure
+// for more information of creating HybridIdentityMetadataResource, please refer to the document of HybridIdentityMetadataResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string resourceName = "ContosoTargetCluster";
-ResourceIdentifier provisionedClusterResourceId = ProvisionedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-ProvisionedClusterResource provisionedCluster = client.GetProvisionedClusterResource(provisionedClusterResourceId);
-
-// get the collection of this HybridIdentityMetadataResource
-HybridIdentityMetadataCollection collection = provisionedCluster.GetAllHybridIdentityMetadata();
+string hybridIdentityMetadataResourceName = "default";
+ResourceIdentifier hybridIdentityMetadataResourceId = HybridIdentityMetadataResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, hybridIdentityMetadataResourceName);
+HybridIdentityMetadataResource hybridIdentityMetadata = client.GetHybridIdentityMetadataResource(hybridIdentityMetadataResourceId);
 
 // invoke the operation
-string hybridIdentityMetadataResourceName = "default";
 HybridIdentityMetadataData data = new HybridIdentityMetadataData()
 {
     ResourceUid = "f8b82dff-38ef-4220-99ef-d3a3f86ddc6c",
     PublicKey = "8ec7d60c-9700-40b1-8e6e-e5b2f6f477f2",
 };
-ArmOperation<HybridIdentityMetadataResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, hybridIdentityMetadataResourceName, data);
+ArmOperation<HybridIdentityMetadataResource> lro = await hybridIdentityMetadata.UpdateAsync(WaitUntil.Completed, data);
 HybridIdentityMetadataResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

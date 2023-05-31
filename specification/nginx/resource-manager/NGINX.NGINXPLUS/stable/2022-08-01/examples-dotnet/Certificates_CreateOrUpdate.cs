@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NginxDeploymentResource created on azure
-// for more information of creating NginxDeploymentResource, please refer to the document of NginxDeploymentResource
+// this example assumes you already have this NginxCertificateResource created on azure
+// for more information of creating NginxCertificateResource, please refer to the document of NginxCertificateResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string deploymentName = "myDeployment";
-ResourceIdentifier nginxDeploymentResourceId = NginxDeploymentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deploymentName);
-NginxDeploymentResource nginxDeployment = client.GetNginxDeploymentResource(nginxDeploymentResourceId);
-
-// get the collection of this NginxCertificateResource
-NginxCertificateCollection collection = nginxDeployment.GetNginxCertificates();
+string certificateName = "default";
+ResourceIdentifier nginxCertificateResourceId = NginxCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deploymentName, certificateName);
+NginxCertificateResource nginxCertificate = client.GetNginxCertificateResource(nginxCertificateResourceId);
 
 // invoke the operation
-string certificateName = "default";
 NginxCertificateData data = new NginxCertificateData(new AzureLocation("placeholder"));
-ArmOperation<NginxCertificateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, certificateName, data);
+ArmOperation<NginxCertificateResource> lro = await nginxCertificate.UpdateAsync(WaitUntil.Completed, data);
 NginxCertificateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

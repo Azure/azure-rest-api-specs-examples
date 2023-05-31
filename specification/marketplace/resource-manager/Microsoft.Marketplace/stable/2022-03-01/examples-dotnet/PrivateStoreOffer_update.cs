@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Marketplace;
-using Azure.ResourceManager.Marketplace.Models;
 
 // Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2022-03-01/examples/PrivateStoreOffer_update.json
 // this example is just showing the usage of "PrivateStoreCollectionOffer_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,15 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateStoreOfferResource created on azure
-// for more information of creating PrivateStoreOfferResource, please refer to the document of PrivateStoreOfferResource
+// this example assumes you already have this PrivateStoreCollectionInfoResource created on azure
+// for more information of creating PrivateStoreCollectionInfoResource, please refer to the document of PrivateStoreCollectionInfoResource
 Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
 Guid collectionId = Guid.Parse("56a1a02d-8cf8-45df-bf37-d5f7120fcb3d");
-string offerId = "marketplacetestthirdparty.md-test-third-party-2";
-ResourceIdentifier privateStoreOfferResourceId = PrivateStoreOfferResource.CreateResourceIdentifier(privateStoreId, collectionId, offerId);
-PrivateStoreOfferResource privateStoreOffer = client.GetPrivateStoreOfferResource(privateStoreOfferResourceId);
+ResourceIdentifier privateStoreCollectionInfoResourceId = PrivateStoreCollectionInfoResource.CreateResourceIdentifier(privateStoreId, collectionId);
+PrivateStoreCollectionInfoResource privateStoreCollectionInfo = client.GetPrivateStoreCollectionInfoResource(privateStoreCollectionInfoResourceId);
+
+// get the collection of this PrivateStoreOfferResource
+PrivateStoreOfferCollection collection = privateStoreCollectionInfo.GetPrivateStoreOffers();
 
 // invoke the operation
+string offerId = "marketplacetestthirdparty.md-test-third-party-2";
 PrivateStoreOfferData data = new PrivateStoreOfferData()
 {
     ETag = new ETag("\"9301f4fd-0000-0100-0000-5e248b350666\""),
@@ -32,7 +34,7 @@ PrivateStoreOfferData data = new PrivateStoreOfferData()
     "0001","0002"
     },
 };
-ArmOperation<PrivateStoreOfferResource> lro = await privateStoreOffer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PrivateStoreOfferResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, offerId, data);
 PrivateStoreOfferResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

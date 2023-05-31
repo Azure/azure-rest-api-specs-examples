@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BotResource created on azure
-// for more information of creating BotResource, please refer to the document of BotResource
+// this example assumes you already have this BotChannelResource created on azure
+// for more information of creating BotChannelResource, please refer to the document of BotChannelResource
 string subscriptionId = "subscription-id";
 string resourceGroupName = "OneResourceGroupName";
 string resourceName = "samplebotname";
-ResourceIdentifier botResourceId = BotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-BotResource bot = client.GetBotResource(botResourceId);
-
-// get the collection of this BotChannelResource
-BotChannelCollection collection = bot.GetBotChannels();
+BotChannelName channelName = BotChannelName.EmailChannel;
+ResourceIdentifier botChannelResourceId = BotChannelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, channelName);
+BotChannelResource botChannel = client.GetBotChannelResource(botChannelResourceId);
 
 // invoke the operation
-BotChannelName channelName = BotChannelName.EmailChannel;
-bool result = await collection.ExistsAsync(channelName);
+BotChannelResource result = await botChannel.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BotChannelData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

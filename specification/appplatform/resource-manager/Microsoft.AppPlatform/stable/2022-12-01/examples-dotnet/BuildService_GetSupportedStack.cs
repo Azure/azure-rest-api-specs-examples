@@ -13,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformSupportedStackResource created on azure
-// for more information of creating AppPlatformSupportedStackResource, please refer to the document of AppPlatformSupportedStackResource
+// this example assumes you already have this AppPlatformBuildServiceResource created on azure
+// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
-string stackName = "io.buildpacks.stacks.bionic-base";
-ResourceIdentifier appPlatformSupportedStackResourceId = AppPlatformSupportedStackResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, stackName);
-AppPlatformSupportedStackResource appPlatformSupportedStack = client.GetAppPlatformSupportedStackResource(appPlatformSupportedStackResourceId);
+ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
+AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
+
+// get the collection of this AppPlatformSupportedStackResource
+AppPlatformSupportedStackCollection collection = appPlatformBuildService.GetAppPlatformSupportedStacks();
 
 // invoke the operation
-AppPlatformSupportedStackResource result = await appPlatformSupportedStack.GetAsync();
+string stackName = "io.buildpacks.stacks.bionic-base";
+bool result = await collection.ExistsAsync(stackName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppPlatformSupportedStackData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

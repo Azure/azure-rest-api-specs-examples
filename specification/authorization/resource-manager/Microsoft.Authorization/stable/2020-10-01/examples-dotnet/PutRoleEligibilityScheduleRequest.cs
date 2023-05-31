@@ -16,14 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RoleEligibilityScheduleRequestResource created on azure
-// for more information of creating RoleEligibilityScheduleRequestResource, please refer to the document of RoleEligibilityScheduleRequestResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this RoleEligibilityScheduleRequestResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-string roleEligibilityScheduleRequestName = "64caffb6-55c0-4deb-a585-68e948ea1ad6";
-ResourceIdentifier roleEligibilityScheduleRequestResourceId = RoleEligibilityScheduleRequestResource.CreateResourceIdentifier(scope, roleEligibilityScheduleRequestName);
-RoleEligibilityScheduleRequestResource roleEligibilityScheduleRequest = client.GetRoleEligibilityScheduleRequestResource(roleEligibilityScheduleRequestResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+RoleEligibilityScheduleRequestCollection collection = client.GetRoleEligibilityScheduleRequests(scopeId);
 
 // invoke the operation
+string roleEligibilityScheduleRequestName = "64caffb6-55c0-4deb-a585-68e948ea1ad6";
 RoleEligibilityScheduleRequestData data = new RoleEligibilityScheduleRequestData()
 {
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608"),
@@ -36,7 +38,7 @@ RoleEligibilityScheduleRequestData data = new RoleEligibilityScheduleRequestData
     EndOn = null,
     Duration = XmlConvert.ToTimeSpan("P365D"),
 };
-ArmOperation<RoleEligibilityScheduleRequestResource> lro = await roleEligibilityScheduleRequest.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RoleEligibilityScheduleRequestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleEligibilityScheduleRequestName, data);
 RoleEligibilityScheduleRequestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

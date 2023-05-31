@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoClusterResource created on azure
-// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
+// this example assumes you already have this KustoAttachedDatabaseConfigurationResource created on azure
+// for more information of creating KustoAttachedDatabaseConfigurationResource, please refer to the document of KustoAttachedDatabaseConfigurationResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster2";
-ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
-
-// get the collection of this KustoAttachedDatabaseConfigurationResource
-KustoAttachedDatabaseConfigurationCollection collection = kustoCluster.GetKustoAttachedDatabaseConfigurations();
+string attachedDatabaseConfigurationName = "attachedDatabaseConfigurationsTest";
+ResourceIdentifier kustoAttachedDatabaseConfigurationResourceId = KustoAttachedDatabaseConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, attachedDatabaseConfigurationName);
+KustoAttachedDatabaseConfigurationResource kustoAttachedDatabaseConfiguration = client.GetKustoAttachedDatabaseConfigurationResource(kustoAttachedDatabaseConfigurationResourceId);
 
 // invoke the operation
-string attachedDatabaseConfigurationName = "attachedDatabaseConfigurationsTest";
 KustoAttachedDatabaseConfigurationData data = new KustoAttachedDatabaseConfigurationData()
 {
     Location = new AzureLocation("westus"),
@@ -63,7 +60,7 @@ KustoAttachedDatabaseConfigurationData data = new KustoAttachedDatabaseConfigura
     },
     DatabaseNameOverride = "overridekustodatabase",
 };
-ArmOperation<KustoAttachedDatabaseConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, attachedDatabaseConfigurationName, data);
+ArmOperation<KustoAttachedDatabaseConfigurationResource> lro = await kustoAttachedDatabaseConfiguration.UpdateAsync(WaitUntil.Completed, data);
 KustoAttachedDatabaseConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

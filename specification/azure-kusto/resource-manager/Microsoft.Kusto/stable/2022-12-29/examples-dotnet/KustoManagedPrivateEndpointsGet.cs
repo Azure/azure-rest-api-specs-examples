@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoClusterResource created on azure
-// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
+// this example assumes you already have this KustoManagedPrivateEndpointResource created on azure
+// for more information of creating KustoManagedPrivateEndpointResource, please refer to the document of KustoManagedPrivateEndpointResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
-ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
-
-// get the collection of this KustoManagedPrivateEndpointResource
-KustoManagedPrivateEndpointCollection collection = kustoCluster.GetKustoManagedPrivateEndpoints();
+string managedPrivateEndpointName = "managedPrivateEndpointTest";
+ResourceIdentifier kustoManagedPrivateEndpointResourceId = KustoManagedPrivateEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, managedPrivateEndpointName);
+KustoManagedPrivateEndpointResource kustoManagedPrivateEndpoint = client.GetKustoManagedPrivateEndpointResource(kustoManagedPrivateEndpointResourceId);
 
 // invoke the operation
-string managedPrivateEndpointName = "managedPrivateEndpointTest";
-bool result = await collection.ExistsAsync(managedPrivateEndpointName);
+KustoManagedPrivateEndpointResource result = await kustoManagedPrivateEndpoint.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+KustoManagedPrivateEndpointData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

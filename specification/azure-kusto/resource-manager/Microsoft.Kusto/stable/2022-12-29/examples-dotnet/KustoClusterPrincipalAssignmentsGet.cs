@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoClusterResource created on azure
-// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
+// this example assumes you already have this KustoClusterPrincipalAssignmentResource created on azure
+// for more information of creating KustoClusterPrincipalAssignmentResource, please refer to the document of KustoClusterPrincipalAssignmentResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
-ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
-
-// get the collection of this KustoClusterPrincipalAssignmentResource
-KustoClusterPrincipalAssignmentCollection collection = kustoCluster.GetKustoClusterPrincipalAssignments();
+string principalAssignmentName = "kustoprincipal1";
+ResourceIdentifier kustoClusterPrincipalAssignmentResourceId = KustoClusterPrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, principalAssignmentName);
+KustoClusterPrincipalAssignmentResource kustoClusterPrincipalAssignment = client.GetKustoClusterPrincipalAssignmentResource(kustoClusterPrincipalAssignmentResourceId);
 
 // invoke the operation
-string principalAssignmentName = "kustoprincipal1";
-bool result = await collection.ExistsAsync(principalAssignmentName);
+KustoClusterPrincipalAssignmentResource result = await kustoClusterPrincipalAssignment.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+KustoClusterPrincipalAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

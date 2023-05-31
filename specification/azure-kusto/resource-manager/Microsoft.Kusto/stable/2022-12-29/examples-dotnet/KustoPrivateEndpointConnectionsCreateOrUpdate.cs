@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoClusterResource created on azure
-// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
+// this example assumes you already have this KustoPrivateEndpointConnectionResource created on azure
+// for more information of creating KustoPrivateEndpointConnectionResource, please refer to the document of KustoPrivateEndpointConnectionResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoclusterrptest4";
-ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
-
-// get the collection of this KustoPrivateEndpointConnectionResource
-KustoPrivateEndpointConnectionCollection collection = kustoCluster.GetKustoPrivateEndpointConnections();
+string privateEndpointConnectionName = "privateEndpointTest";
+ResourceIdentifier kustoPrivateEndpointConnectionResourceId = KustoPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, privateEndpointConnectionName);
+KustoPrivateEndpointConnectionResource kustoPrivateEndpointConnection = client.GetKustoPrivateEndpointConnectionResource(kustoPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "privateEndpointTest";
 KustoPrivateEndpointConnectionData data = new KustoPrivateEndpointConnectionData()
 {
     ConnectionState = new KustoPrivateLinkServiceConnectionStateProperty()
@@ -36,7 +33,7 @@ KustoPrivateEndpointConnectionData data = new KustoPrivateEndpointConnectionData
         Description = "Approved by johndoe@contoso.com",
     },
 };
-ArmOperation<KustoPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<KustoPrivateEndpointConnectionResource> lro = await kustoPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 KustoPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

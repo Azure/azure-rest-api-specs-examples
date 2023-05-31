@@ -18,19 +18,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExperimentResource created on azure
-// for more information of creating ExperimentResource, please refer to the document of ExperimentResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 string resourceGroupName = "exampleRG";
-string experimentName = "exampleExperiment";
-ResourceIdentifier experimentResourceId = ExperimentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, experimentName);
-ExperimentResource experiment = client.GetExperimentResource(experimentResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ExperimentResource
+ExperimentCollection collection = resourceGroupResource.GetExperiments();
 
 // invoke the operation
-ExperimentResource result = await experiment.GetAsync();
+string experimentName = "exampleExperiment";
+bool result = await collection.ExistsAsync(experimentName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ExperimentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CapabilityTypeResource created on azure
-// for more information of creating CapabilityTypeResource, please refer to the document of CapabilityTypeResource
+// this example assumes you already have this TargetTypeResource created on azure
+// for more information of creating TargetTypeResource, please refer to the document of TargetTypeResource
 string subscriptionId = "6b052e15-03d3-4f17-b2e1-be7f07588291";
 string locationName = "westus2";
 string targetTypeName = "Microsoft-VirtualMachine";
-string capabilityTypeName = "Shutdown-1.0";
-ResourceIdentifier capabilityTypeResourceId = CapabilityTypeResource.CreateResourceIdentifier(subscriptionId, locationName, targetTypeName, capabilityTypeName);
-CapabilityTypeResource capabilityType = client.GetCapabilityTypeResource(capabilityTypeResourceId);
+ResourceIdentifier targetTypeResourceId = TargetTypeResource.CreateResourceIdentifier(subscriptionId, locationName, targetTypeName);
+TargetTypeResource targetType = client.GetTargetTypeResource(targetTypeResourceId);
+
+// get the collection of this CapabilityTypeResource
+CapabilityTypeCollection collection = targetType.GetCapabilityTypes();
 
 // invoke the operation
-CapabilityTypeResource result = await capabilityType.GetAsync();
+string capabilityTypeName = "Shutdown-1.0";
+bool result = await collection.ExistsAsync(capabilityTypeName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CapabilityTypeData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

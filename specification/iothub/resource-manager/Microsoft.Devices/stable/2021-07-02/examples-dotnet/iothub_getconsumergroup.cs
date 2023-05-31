@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotHubDescriptionResource created on azure
-// for more information of creating IotHubDescriptionResource, please refer to the document of IotHubDescriptionResource
+// this example assumes you already have this EventHubConsumerGroupInfoResource created on azure
+// for more information of creating EventHubConsumerGroupInfoResource, please refer to the document of EventHubConsumerGroupInfoResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "testHub";
-ResourceIdentifier iotHubDescriptionResourceId = IotHubDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-IotHubDescriptionResource iotHubDescription = client.GetIotHubDescriptionResource(iotHubDescriptionResourceId);
-
-// get the collection of this EventHubConsumerGroupInfoResource
 string eventHubEndpointName = "events";
-EventHubConsumerGroupInfoCollection collection = iotHubDescription.GetEventHubConsumerGroupInfos(eventHubEndpointName);
+string name = "test";
+ResourceIdentifier eventHubConsumerGroupInfoResourceId = EventHubConsumerGroupInfoResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, eventHubEndpointName, name);
+EventHubConsumerGroupInfoResource eventHubConsumerGroupInfo = client.GetEventHubConsumerGroupInfoResource(eventHubConsumerGroupInfoResourceId);
 
 // invoke the operation
-string name = "test";
-bool result = await collection.ExistsAsync(name);
+EventHubConsumerGroupInfoResource result = await eventHubConsumerGroupInfo.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventHubConsumerGroupInfoData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

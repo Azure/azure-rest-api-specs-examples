@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkResource created on azure
-// for more information of creating VirtualNetworkResource, please refer to the document of VirtualNetworkResource
+// this example assumes you already have this SubnetResource created on azure
+// for more information of creating SubnetResource, please refer to the document of SubnetResource
 string subscriptionId = "subId";
 string resourceGroupName = "subnet-test";
 string virtualNetworkName = "vnetname";
-ResourceIdentifier virtualNetworkResourceId = VirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName);
-VirtualNetworkResource virtualNetwork = client.GetVirtualNetworkResource(virtualNetworkResourceId);
-
-// get the collection of this SubnetResource
-SubnetCollection collection = virtualNetwork.GetSubnets();
+string subnetName = "subnet1";
+ResourceIdentifier subnetResourceId = SubnetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName, subnetName);
+SubnetResource subnet = client.GetSubnetResource(subnetResourceId);
 
 // invoke the operation
-string subnetName = "subnet1";
-bool result = await collection.ExistsAsync(subnetName);
+SubnetResource result = await subnet.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SubnetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

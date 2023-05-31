@@ -16,15 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebApplicationFirewallPolicyResource created on azure
-// for more information of creating WebApplicationFirewallPolicyResource, please refer to the document of WebApplicationFirewallPolicyResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string policyName = "Policy1";
-ResourceIdentifier webApplicationFirewallPolicyResourceId = WebApplicationFirewallPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, policyName);
-WebApplicationFirewallPolicyResource webApplicationFirewallPolicy = client.GetWebApplicationFirewallPolicyResource(webApplicationFirewallPolicyResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this WebApplicationFirewallPolicyResource
+WebApplicationFirewallPolicyCollection collection = resourceGroupResource.GetWebApplicationFirewallPolicies();
 
 // invoke the operation
+string policyName = "Policy1";
 WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData()
 {
     CustomRules =
@@ -131,7 +134,7 @@ Action = RuleMatchActionType.AnomalyScoring,
     },
     Location = new AzureLocation("WestUs"),
 };
-ArmOperation<WebApplicationFirewallPolicyResource> lro = await webApplicationFirewallPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<WebApplicationFirewallPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
 WebApplicationFirewallPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

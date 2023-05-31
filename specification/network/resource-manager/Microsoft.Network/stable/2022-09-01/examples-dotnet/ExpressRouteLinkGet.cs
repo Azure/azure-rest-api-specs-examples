@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRoutePortResource created on azure
-// for more information of creating ExpressRoutePortResource, please refer to the document of ExpressRoutePortResource
+// this example assumes you already have this ExpressRouteLinkResource created on azure
+// for more information of creating ExpressRouteLinkResource, please refer to the document of ExpressRouteLinkResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string expressRoutePortName = "portName";
-ResourceIdentifier expressRoutePortResourceId = ExpressRoutePortResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRoutePortName);
-ExpressRoutePortResource expressRoutePort = client.GetExpressRoutePortResource(expressRoutePortResourceId);
-
-// get the collection of this ExpressRouteLinkResource
-ExpressRouteLinkCollection collection = expressRoutePort.GetExpressRouteLinks();
+string linkName = "linkName";
+ResourceIdentifier expressRouteLinkResourceId = ExpressRouteLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRoutePortName, linkName);
+ExpressRouteLinkResource expressRouteLink = client.GetExpressRouteLinkResource(expressRouteLinkResourceId);
 
 // invoke the operation
-string linkName = "linkName";
-bool result = await collection.ExistsAsync(linkName);
+ExpressRouteLinkResource result = await expressRouteLink.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ExpressRouteLinkData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

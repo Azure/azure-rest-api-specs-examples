@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this InboundNatRuleResource created on azure
-// for more information of creating InboundNatRuleResource, please refer to the document of InboundNatRuleResource
+// this example assumes you already have this LoadBalancerResource created on azure
+// for more information of creating LoadBalancerResource, please refer to the document of LoadBalancerResource
 string subscriptionId = "subid";
 string resourceGroupName = "testrg";
 string loadBalancerName = "lb1";
-string inboundNatRuleName = "natRule1.1";
-ResourceIdentifier inboundNatRuleResourceId = InboundNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName, inboundNatRuleName);
-InboundNatRuleResource inboundNatRule = client.GetInboundNatRuleResource(inboundNatRuleResourceId);
+ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName);
+LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
+
+// get the collection of this InboundNatRuleResource
+InboundNatRuleCollection collection = loadBalancer.GetInboundNatRules();
 
 // invoke the operation
-InboundNatRuleResource result = await inboundNatRule.GetAsync();
+string inboundNatRuleName = "natRule1.1";
+bool result = await collection.ExistsAsync(inboundNatRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-InboundNatRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

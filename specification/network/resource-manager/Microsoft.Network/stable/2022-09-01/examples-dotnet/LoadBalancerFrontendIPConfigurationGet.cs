@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LoadBalancerResource created on azure
-// for more information of creating LoadBalancerResource, please refer to the document of LoadBalancerResource
+// this example assumes you already have this FrontendIPConfigurationResource created on azure
+// for more information of creating FrontendIPConfigurationResource, please refer to the document of FrontendIPConfigurationResource
 string subscriptionId = "subid";
 string resourceGroupName = "testrg";
 string loadBalancerName = "lb";
-ResourceIdentifier loadBalancerResourceId = LoadBalancerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName);
-LoadBalancerResource loadBalancer = client.GetLoadBalancerResource(loadBalancerResourceId);
-
-// get the collection of this FrontendIPConfigurationResource
-FrontendIPConfigurationCollection collection = loadBalancer.GetFrontendIPConfigurations();
+string frontendIPConfigurationName = "frontend";
+ResourceIdentifier frontendIPConfigurationResourceId = FrontendIPConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, loadBalancerName, frontendIPConfigurationName);
+FrontendIPConfigurationResource frontendIPConfiguration = client.GetFrontendIPConfigurationResource(frontendIPConfigurationResourceId);
 
 // invoke the operation
-string frontendIPConfigurationName = "frontend";
-bool result = await collection.ExistsAsync(frontendIPConfigurationName);
+FrontendIPConfigurationResource result = await frontendIPConfiguration.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FrontendIPConfigurationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

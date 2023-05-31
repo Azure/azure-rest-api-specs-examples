@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Network;
-using Azure.ResourceManager.Network.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2022-09-01/examples/VirtualWANGet.json
@@ -16,19 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualWanResource created on azure
-// for more information of creating VirtualWanResource, please refer to the document of VirtualWanResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string virtualWanName = "wan1";
-ResourceIdentifier virtualWanResourceId = VirtualWanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualWanName);
-VirtualWanResource virtualWan = client.GetVirtualWanResource(virtualWanResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this VirtualWanResource
+VirtualWanCollection collection = resourceGroupResource.GetVirtualWans();
 
 // invoke the operation
-VirtualWanResource result = await virtualWan.GetAsync();
+string virtualWanName = "wan1";
+bool result = await collection.ExistsAsync(virtualWanName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VirtualWanData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

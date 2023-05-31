@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Network;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2022-09-01/examples/GetApplicationGatewayWafDynamicManifestsDefault.json
 // this example is just showing the usage of "ApplicationGatewayWafDynamicManifestsDefault_Get" operation, for the dependent resources, they will have to be created separately.
@@ -13,18 +14,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApplicationGatewayWafDynamicManifestResource created on azure
-// for more information of creating ApplicationGatewayWafDynamicManifestResource, please refer to the document of ApplicationGatewayWafDynamicManifestResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "subid";
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this ApplicationGatewayWafDynamicManifestResource
 AzureLocation location = new AzureLocation("westus");
-ResourceIdentifier applicationGatewayWafDynamicManifestResourceId = ApplicationGatewayWafDynamicManifestResource.CreateResourceIdentifier(subscriptionId, location);
-ApplicationGatewayWafDynamicManifestResource applicationGatewayWafDynamicManifest = client.GetApplicationGatewayWafDynamicManifestResource(applicationGatewayWafDynamicManifestResourceId);
+ApplicationGatewayWafDynamicManifestCollection collection = subscriptionResource.GetApplicationGatewayWafDynamicManifests(location);
 
 // invoke the operation
-ApplicationGatewayWafDynamicManifestResource result = await applicationGatewayWafDynamicManifest.GetAsync();
+bool result = await collection.ExistsAsync();
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApplicationGatewayWafDynamicManifestData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualHubResource created on azure
-// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
+// this example assumes you already have this HubRouteTableResource created on azure
+// for more information of creating HubRouteTableResource, please refer to the document of HubRouteTableResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
-VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
-
-// get the collection of this HubRouteTableResource
-HubRouteTableCollection collection = virtualHub.GetHubRouteTables();
+string routeTableName = "hubRouteTable1";
+ResourceIdentifier hubRouteTableResourceId = HubRouteTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routeTableName);
+HubRouteTableResource hubRouteTable = client.GetHubRouteTableResource(hubRouteTableResourceId);
 
 // invoke the operation
-string routeTableName = "hubRouteTable1";
-bool result = await collection.ExistsAsync(routeTableName);
+HubRouteTableResource result = await hubRouteTable.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HubRouteTableData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

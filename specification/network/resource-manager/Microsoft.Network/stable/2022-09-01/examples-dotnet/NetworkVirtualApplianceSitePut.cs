@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualApplianceSiteResource created on azure
-// for more information of creating VirtualApplianceSiteResource, please refer to the document of VirtualApplianceSiteResource
+// this example assumes you already have this NetworkVirtualApplianceResource created on azure
+// for more information of creating NetworkVirtualApplianceResource, please refer to the document of NetworkVirtualApplianceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkVirtualApplianceName = "nva";
-string siteName = "site1";
-ResourceIdentifier virtualApplianceSiteResourceId = VirtualApplianceSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName, siteName);
-VirtualApplianceSiteResource virtualApplianceSite = client.GetVirtualApplianceSiteResource(virtualApplianceSiteResourceId);
+ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName);
+NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
+
+// get the collection of this VirtualApplianceSiteResource
+VirtualApplianceSiteCollection collection = networkVirtualAppliance.GetVirtualApplianceSites();
 
 // invoke the operation
+string siteName = "site1";
 VirtualApplianceSiteData data = new VirtualApplianceSiteData()
 {
     AddressPrefix = "192.168.1.0/24",
@@ -35,7 +38,7 @@ VirtualApplianceSiteData data = new VirtualApplianceSiteData()
         Default = true,
     },
 };
-ArmOperation<VirtualApplianceSiteResource> lro = await virtualApplianceSite.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<VirtualApplianceSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, siteName, data);
 VirtualApplianceSiteResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

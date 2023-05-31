@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkResource created on azure
-// for more information of creating VirtualNetworkResource, please refer to the document of VirtualNetworkResource
+// this example assumes you already have this SubnetResource created on azure
+// for more information of creating SubnetResource, please refer to the document of SubnetResource
 string subscriptionId = "subid";
 string resourceGroupName = "subnet-test";
 string virtualNetworkName = "vnetname";
-ResourceIdentifier virtualNetworkResourceId = VirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName);
-VirtualNetworkResource virtualNetwork = client.GetVirtualNetworkResource(virtualNetworkResourceId);
-
-// get the collection of this SubnetResource
-SubnetCollection collection = virtualNetwork.GetSubnets();
+string subnetName = "subnet1";
+ResourceIdentifier subnetResourceId = SubnetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName, subnetName);
+SubnetResource subnet = client.GetSubnetResource(subnetResourceId);
 
 // invoke the operation
-string subnetName = "subnet1";
 SubnetData data = new SubnetData()
 {
     AddressPrefix = "10.0.0.0/16",
@@ -39,7 +36,7 @@ SubnetData data = new SubnetData()
     }
     },
 };
-ArmOperation<SubnetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, subnetName, data);
+ArmOperation<SubnetResource> lro = await subnet.UpdateAsync(WaitUntil.Completed, data);
 SubnetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

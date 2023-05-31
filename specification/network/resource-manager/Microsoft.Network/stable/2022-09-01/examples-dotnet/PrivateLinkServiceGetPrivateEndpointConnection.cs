@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkPrivateEndpointConnectionResource created on azure
-// for more information of creating NetworkPrivateEndpointConnectionResource, please refer to the document of NetworkPrivateEndpointConnectionResource
+// this example assumes you already have this PrivateLinkServiceResource created on azure
+// for more information of creating PrivateLinkServiceResource, please refer to the document of PrivateLinkServiceResource
 string subscriptionId = "subId";
 string resourceGroupName = "rg1";
 string serviceName = "testPls";
-string peConnectionName = "testPlePeConnection";
-ResourceIdentifier networkPrivateEndpointConnectionResourceId = NetworkPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, peConnectionName);
-NetworkPrivateEndpointConnectionResource networkPrivateEndpointConnection = client.GetNetworkPrivateEndpointConnectionResource(networkPrivateEndpointConnectionResourceId);
+ResourceIdentifier privateLinkServiceResourceId = PrivateLinkServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+PrivateLinkServiceResource privateLinkService = client.GetPrivateLinkServiceResource(privateLinkServiceResourceId);
+
+// get the collection of this NetworkPrivateEndpointConnectionResource
+NetworkPrivateEndpointConnectionCollection collection = privateLinkService.GetNetworkPrivateEndpointConnections();
 
 // invoke the operation
-NetworkPrivateEndpointConnectionResource result = await networkPrivateEndpointConnection.GetAsync();
+string peConnectionName = "testPlePeConnection";
+bool result = await collection.ExistsAsync(peConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

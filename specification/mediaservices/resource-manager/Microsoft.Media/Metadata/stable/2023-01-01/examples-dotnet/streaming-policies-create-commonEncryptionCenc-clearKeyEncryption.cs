@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaServicesAccountResource created on azure
-// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
+// this example assumes you already have this StreamingPolicyResource created on azure
+// for more information of creating StreamingPolicyResource, please refer to the document of StreamingPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
-ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
-
-// get the collection of this StreamingPolicyResource
-StreamingPolicyCollection collection = mediaServicesAccount.GetStreamingPolicies();
+string streamingPolicyName = "UserCreatedSecureStreamingPolicyWithCommonEncryptionCencOnly";
+ResourceIdentifier streamingPolicyResourceId = StreamingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, streamingPolicyName);
+StreamingPolicyResource streamingPolicy = client.GetStreamingPolicyResource(streamingPolicyResourceId);
 
 // invoke the operation
-string streamingPolicyName = "UserCreatedSecureStreamingPolicyWithCommonEncryptionCencOnly";
 StreamingPolicyData data = new StreamingPolicyData()
 {
     DefaultContentKeyPolicyName = "PolicyWithPlayReadyOptionAndOpenRestriction",
@@ -57,7 +54,7 @@ StreamingPolicyData data = new StreamingPolicyData()
         ClearKeyEncryptionCustomKeysAcquisitionUriTemplate = "https://contoso.com/{AlternativeMediaId}/clearkey/",
     },
 };
-ArmOperation<StreamingPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, streamingPolicyName, data);
+ArmOperation<StreamingPolicyResource> lro = await streamingPolicy.UpdateAsync(WaitUntil.Completed, data);
 StreamingPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

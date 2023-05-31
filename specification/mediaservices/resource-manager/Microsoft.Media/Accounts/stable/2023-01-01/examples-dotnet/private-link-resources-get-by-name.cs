@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaServicesAccountResource created on azure
-// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
+// this example assumes you already have this MediaServicesPrivateLinkResource created on azure
+// for more information of creating MediaServicesPrivateLinkResource, please refer to the document of MediaServicesPrivateLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contososports";
-ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
-
-// get the collection of this MediaServicesPrivateLinkResource
-MediaServicesPrivateLinkResourceCollection collection = mediaServicesAccount.GetMediaServicesPrivateLinkResources();
+string name = "keydelivery";
+ResourceIdentifier mediaServicesPrivateLinkResourceId = MediaServicesPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, name);
+MediaServicesPrivateLinkResource mediaServicesPrivateLinkResource = client.GetMediaServicesPrivateLinkResource(mediaServicesPrivateLinkResourceId);
 
 // invoke the operation
-string name = "keydelivery";
-bool result = await collection.ExistsAsync(name);
+MediaServicesPrivateLinkResource result = await mediaServicesPrivateLinkResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MediaServicesPrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

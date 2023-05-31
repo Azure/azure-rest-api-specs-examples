@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaLiveEventResource created on azure
-// for more information of creating MediaLiveEventResource, please refer to the document of MediaLiveEventResource
+// this example assumes you already have this MediaLiveOutputResource created on azure
+// for more information of creating MediaLiveOutputResource, please refer to the document of MediaLiveOutputResource
 string subscriptionId = "0a6ec948-5a62-437d-b9df-934dc7c1b722";
 string resourceGroupName = "mediaresources";
 string accountName = "slitestmedia10";
 string liveEventName = "myLiveEvent1";
-ResourceIdentifier mediaLiveEventResourceId = MediaLiveEventResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, liveEventName);
-MediaLiveEventResource mediaLiveEvent = client.GetMediaLiveEventResource(mediaLiveEventResourceId);
-
-// get the collection of this MediaLiveOutputResource
-MediaLiveOutputCollection collection = mediaLiveEvent.GetMediaLiveOutputs();
+string liveOutputName = "myLiveOutput1";
+ResourceIdentifier mediaLiveOutputResourceId = MediaLiveOutputResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, liveEventName, liveOutputName);
+MediaLiveOutputResource mediaLiveOutput = client.GetMediaLiveOutputResource(mediaLiveOutputResourceId);
 
 // invoke the operation
-string liveOutputName = "myLiveOutput1";
-bool result = await collection.ExistsAsync(liveOutputName);
+MediaLiveOutputResource result = await mediaLiveOutput.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MediaLiveOutputData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

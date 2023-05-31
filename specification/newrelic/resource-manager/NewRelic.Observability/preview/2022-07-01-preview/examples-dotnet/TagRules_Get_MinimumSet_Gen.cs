@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TagRuleResource created on azure
-// for more information of creating TagRuleResource, please refer to the document of TagRuleResource
+// this example assumes you already have this NewRelicMonitorResource created on azure
+// for more information of creating NewRelicMonitorResource, please refer to the document of NewRelicMonitorResource
 string subscriptionId = "ddqonpqwjr";
 string resourceGroupName = "rgopenapi";
 string monitorName = "ipxmlcbonyxtolzejcjshkmlron";
-string ruleSetName = "bxcantgzggsepbhqmedjqyrqeezmfb";
-ResourceIdentifier tagRuleResourceId = TagRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, ruleSetName);
-TagRuleResource tagRule = client.GetTagRuleResource(tagRuleResourceId);
+ResourceIdentifier newRelicMonitorResourceId = NewRelicMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResource(newRelicMonitorResourceId);
+
+// get the collection of this TagRuleResource
+TagRuleCollection collection = newRelicMonitorResource.GetTagRules();
 
 // invoke the operation
-TagRuleResource result = await tagRule.GetAsync();
+string ruleSetName = "bxcantgzggsepbhqmedjqyrqeezmfb";
+bool result = await collection.ExistsAsync(ruleSetName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-TagRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

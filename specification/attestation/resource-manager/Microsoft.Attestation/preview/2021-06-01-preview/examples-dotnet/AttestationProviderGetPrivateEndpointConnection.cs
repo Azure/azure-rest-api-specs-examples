@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AttestationPrivateEndpointConnectionResource created on azure
-// for more information of creating AttestationPrivateEndpointConnectionResource, please refer to the document of AttestationPrivateEndpointConnectionResource
+// this example assumes you already have this AttestationProviderResource created on azure
+// for more information of creating AttestationProviderResource, please refer to the document of AttestationProviderResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res6977";
 string providerName = "sto2527";
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
-ResourceIdentifier attestationPrivateEndpointConnectionResourceId = AttestationPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, providerName, privateEndpointConnectionName);
-AttestationPrivateEndpointConnectionResource attestationPrivateEndpointConnection = client.GetAttestationPrivateEndpointConnectionResource(attestationPrivateEndpointConnectionResourceId);
+ResourceIdentifier attestationProviderResourceId = AttestationProviderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, providerName);
+AttestationProviderResource attestationProvider = client.GetAttestationProviderResource(attestationProviderResourceId);
+
+// get the collection of this AttestationPrivateEndpointConnectionResource
+AttestationPrivateEndpointConnectionCollection collection = attestationProvider.GetAttestationPrivateEndpointConnections();
 
 // invoke the operation
-AttestationPrivateEndpointConnectionResource result = await attestationPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AttestationPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.NetApp;
-using Azure.ResourceManager.NetApp.Models;
 
 // Generated from example definition: specification/netapp/resource-manager/Microsoft.NetApp/stable/2022-09-01/examples/Backups_Get.json
 // this example is just showing the usage of "Backups_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,22 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppVolumeBackupResource created on azure
-// for more information of creating NetAppVolumeBackupResource, please refer to the document of NetAppVolumeBackupResource
+// this example assumes you already have this NetAppVolumeResource created on azure
+// for more information of creating NetAppVolumeResource, please refer to the document of NetAppVolumeResource
 string subscriptionId = "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
 string volumeName = "volume1";
-string backupName = "backup1";
-ResourceIdentifier netAppVolumeBackupResourceId = NetAppVolumeBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName, backupName);
-NetAppVolumeBackupResource netAppVolumeBackup = client.GetNetAppVolumeBackupResource(netAppVolumeBackupResourceId);
+ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
+NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
+
+// get the collection of this NetAppVolumeBackupResource
+NetAppVolumeBackupCollection collection = netAppVolume.GetNetAppVolumeBackups();
 
 // invoke the operation
-NetAppVolumeBackupResource result = await netAppVolumeBackup.GetAsync();
+string backupName = "backup1";
+bool result = await collection.ExistsAsync(backupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetAppBackupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

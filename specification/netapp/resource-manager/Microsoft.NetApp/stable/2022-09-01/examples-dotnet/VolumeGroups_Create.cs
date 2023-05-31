@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetAppAccountResource created on azure
-// for more information of creating NetAppAccountResource, please refer to the document of NetAppAccountResource
+// this example assumes you already have this NetAppVolumeGroupResource created on azure
+// for more information of creating NetAppVolumeGroupResource, please refer to the document of NetAppVolumeGroupResource
 string subscriptionId = "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
 string resourceGroupName = "myRG";
 string accountName = "account1";
-ResourceIdentifier netAppAccountResourceId = NetAppAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-NetAppAccountResource netAppAccount = client.GetNetAppAccountResource(netAppAccountResourceId);
-
-// get the collection of this NetAppVolumeGroupResource
-NetAppVolumeGroupCollection collection = netAppAccount.GetNetAppVolumeGroups();
+string volumeGroupName = "group1";
+ResourceIdentifier netAppVolumeGroupResourceId = NetAppVolumeGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, volumeGroupName);
+NetAppVolumeGroupResource netAppVolumeGroup = client.GetNetAppVolumeGroupResource(netAppVolumeGroupResourceId);
 
 // invoke the operation
-string volumeGroupName = "group1";
 NetAppVolumeGroupData data = new NetAppVolumeGroupData()
 {
     Location = new AzureLocation("westus"),
@@ -67,7 +64,7 @@ NetAppVolumeGroupData data = new NetAppVolumeGroupData()
     }
     },
 };
-ArmOperation<NetAppVolumeGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, volumeGroupName, data);
+ArmOperation<NetAppVolumeGroupResource> lro = await netAppVolumeGroup.UpdateAsync(WaitUntil.Completed, data);
 NetAppVolumeGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

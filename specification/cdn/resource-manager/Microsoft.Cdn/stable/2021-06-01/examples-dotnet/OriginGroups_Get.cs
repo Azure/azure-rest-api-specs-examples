@@ -16,21 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CdnOriginGroupResource created on azure
-// for more information of creating CdnOriginGroupResource, please refer to the document of CdnOriginGroupResource
+// this example assumes you already have this CdnEndpointResource created on azure
+// for more information of creating CdnEndpointResource, please refer to the document of CdnEndpointResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
 string endpointName = "endpoint1";
-string originGroupName = "originGroup1";
-ResourceIdentifier cdnOriginGroupResourceId = CdnOriginGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName, originGroupName);
-CdnOriginGroupResource cdnOriginGroup = client.GetCdnOriginGroupResource(cdnOriginGroupResourceId);
+ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, endpointName);
+CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
+
+// get the collection of this CdnOriginGroupResource
+CdnOriginGroupCollection collection = cdnEndpoint.GetCdnOriginGroups();
 
 // invoke the operation
-CdnOriginGroupResource result = await cdnOriginGroup.GetAsync();
+string originGroupName = "originGroup1";
+bool result = await collection.ExistsAsync(originGroupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CdnOriginGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

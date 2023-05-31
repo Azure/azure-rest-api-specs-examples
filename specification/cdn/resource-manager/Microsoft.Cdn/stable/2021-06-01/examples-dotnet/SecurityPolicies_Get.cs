@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorSecurityPolicyResource created on azure
-// for more information of creating FrontDoorSecurityPolicyResource, please refer to the document of FrontDoorSecurityPolicyResource
+// this example assumes you already have this ProfileResource created on azure
+// for more information of creating ProfileResource, please refer to the document of ProfileResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
-string securityPolicyName = "securityPolicy1";
-ResourceIdentifier frontDoorSecurityPolicyResourceId = FrontDoorSecurityPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, securityPolicyName);
-FrontDoorSecurityPolicyResource frontDoorSecurityPolicy = client.GetFrontDoorSecurityPolicyResource(frontDoorSecurityPolicyResourceId);
+ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
+ProfileResource profile = client.GetProfileResource(profileResourceId);
+
+// get the collection of this FrontDoorSecurityPolicyResource
+FrontDoorSecurityPolicyCollection collection = profile.GetFrontDoorSecurityPolicies();
 
 // invoke the operation
-FrontDoorSecurityPolicyResource result = await frontDoorSecurityPolicy.GetAsync();
+string securityPolicyName = "securityPolicy1";
+bool result = await collection.ExistsAsync(securityPolicyName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-FrontDoorSecurityPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

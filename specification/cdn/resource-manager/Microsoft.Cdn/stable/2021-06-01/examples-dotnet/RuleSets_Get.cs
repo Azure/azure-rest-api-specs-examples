@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Cdn;
+using Azure.ResourceManager.Cdn.Models;
 
 // Generated from example definition: specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/examples/RuleSets_Get.json
 // this example is just showing the usage of "FrontDoorRuleSets_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProfileResource created on azure
-// for more information of creating ProfileResource, please refer to the document of ProfileResource
+// this example assumes you already have this FrontDoorRuleSetResource created on azure
+// for more information of creating FrontDoorRuleSetResource, please refer to the document of FrontDoorRuleSetResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
-ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
-ProfileResource profile = client.GetProfileResource(profileResourceId);
-
-// get the collection of this FrontDoorRuleSetResource
-FrontDoorRuleSetCollection collection = profile.GetFrontDoorRuleSets();
+string ruleSetName = "ruleSet1";
+ResourceIdentifier frontDoorRuleSetResourceId = FrontDoorRuleSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, ruleSetName);
+FrontDoorRuleSetResource frontDoorRuleSet = client.GetFrontDoorRuleSetResource(frontDoorRuleSetResourceId);
 
 // invoke the operation
-string ruleSetName = "ruleSet1";
-bool result = await collection.ExistsAsync(ruleSetName);
+FrontDoorRuleSetResource result = await frontDoorRuleSet.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FrontDoorRuleSetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

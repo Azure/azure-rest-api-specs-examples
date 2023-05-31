@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorSecretResource created on azure
-// for more information of creating FrontDoorSecretResource, please refer to the document of FrontDoorSecretResource
+// this example assumes you already have this ProfileResource created on azure
+// for more information of creating ProfileResource, please refer to the document of ProfileResource
 string subscriptionId = "subid";
 string resourceGroupName = "RG";
 string profileName = "profile1";
-string secretName = "secret1";
-ResourceIdentifier frontDoorSecretResourceId = FrontDoorSecretResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName, secretName);
-FrontDoorSecretResource frontDoorSecret = client.GetFrontDoorSecretResource(frontDoorSecretResourceId);
+ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, profileName);
+ProfileResource profile = client.GetProfileResource(profileResourceId);
+
+// get the collection of this FrontDoorSecretResource
+FrontDoorSecretCollection collection = profile.GetFrontDoorSecrets();
 
 // invoke the operation
+string secretName = "secret1";
 FrontDoorSecretData data = new FrontDoorSecretData()
 {
     Properties = new CustomerCertificateProperties(new WritableSubResource()
@@ -37,7 +40,7 @@ FrontDoorSecretData data = new FrontDoorSecretData()
         UseLatestVersion = false,
     },
 };
-ArmOperation<FrontDoorSecretResource> lro = await frontDoorSecret.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<FrontDoorSecretResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, secretName, data);
 FrontDoorSecretResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceResource created on azure
-// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
+// this example assumes you already have this MigrationConfigurationResource created on azure
+// for more information of creating MigrationConfigurationResource, please refer to the document of MigrationConfigurationResource
 string subscriptionId = "SubscriptionId";
 string resourceGroupName = "ResourceGroup";
 string namespaceName = "sdk-Namespace-41";
-ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
-
-// get the collection of this MigrationConfigurationResource
-MigrationConfigurationCollection collection = serviceBusNamespace.GetMigrationConfigurations();
+MigrationConfigurationName configName = MigrationConfigurationName.Default;
+ResourceIdentifier migrationConfigurationResourceId = MigrationConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, configName);
+MigrationConfigurationResource migrationConfiguration = client.GetMigrationConfigurationResource(migrationConfigurationResourceId);
 
 // invoke the operation
-MigrationConfigurationName configName = MigrationConfigurationName.Default;
-bool result = await collection.ExistsAsync(configName);
+MigrationConfigurationResource result = await migrationConfiguration.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MigrationConfigurationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

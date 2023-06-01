@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceResource created on azure
-// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
+// this example assumes you already have this MigrationConfigurationResource created on azure
+// for more information of creating MigrationConfigurationResource, please refer to the document of MigrationConfigurationResource
 string subscriptionId = "SubscriptionId";
 string resourceGroupName = "ResourceGroup";
 string namespaceName = "sdk-Namespace-41";
-ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
-
-// get the collection of this MigrationConfigurationResource
-MigrationConfigurationCollection collection = serviceBusNamespace.GetMigrationConfigurations();
+MigrationConfigurationName configName = MigrationConfigurationName.Default;
+ResourceIdentifier migrationConfigurationResourceId = MigrationConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, configName);
+MigrationConfigurationResource migrationConfiguration = client.GetMigrationConfigurationResource(migrationConfigurationResourceId);
 
 // invoke the operation
-MigrationConfigurationName configName = MigrationConfigurationName.Default;
 MigrationConfigurationData data = new MigrationConfigurationData()
 {
     TargetServiceBusNamespace = new ResourceIdentifier("/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028"),
     PostMigrationName = "sdk-PostMigration-5919",
 };
-ArmOperation<MigrationConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configName, data);
+ArmOperation<MigrationConfigurationResource> lro = await migrationConfiguration.UpdateAsync(WaitUntil.Completed, data);
 MigrationConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

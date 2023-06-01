@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceResource created on azure
-// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
+// this example assumes you already have this ServiceBusTopicResource created on azure
+// for more information of creating ServiceBusTopicResource, please refer to the document of ServiceBusTopicResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-1617";
-ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
-
-// get the collection of this ServiceBusTopicResource
-ServiceBusTopicCollection collection = serviceBusNamespace.GetServiceBusTopics();
+string topicName = "sdk-Topics-5488";
+ResourceIdentifier serviceBusTopicResourceId = ServiceBusTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName);
+ServiceBusTopicResource serviceBusTopic = client.GetServiceBusTopicResource(serviceBusTopicResourceId);
 
 // invoke the operation
-string topicName = "sdk-Topics-5488";
 ServiceBusTopicData data = new ServiceBusTopicData()
 {
     EnableExpress = true,
 };
-ArmOperation<ServiceBusTopicResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, topicName, data);
+ArmOperation<ServiceBusTopicResource> lro = await serviceBusTopic.UpdateAsync(WaitUntil.Completed, data);
 ServiceBusTopicResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

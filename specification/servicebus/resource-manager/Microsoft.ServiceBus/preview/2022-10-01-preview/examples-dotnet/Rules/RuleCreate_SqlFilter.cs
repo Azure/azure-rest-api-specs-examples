@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusRuleResource created on azure
-// for more information of creating ServiceBusRuleResource, please refer to the document of ServiceBusRuleResource
+// this example assumes you already have this ServiceBusSubscriptionResource created on azure
+// for more information of creating ServiceBusSubscriptionResource, please refer to the document of ServiceBusSubscriptionResource
 string subscriptionId = "subscriptionId";
 string resourceGroupName = "resourceGroupName";
 string namespaceName = "sdk-Namespace-1319";
 string topicName = "sdk-Topics-2081";
 string subscriptionName = "sdk-Subscriptions-8691";
-string ruleName = "sdk-Rules-6571";
-ResourceIdentifier serviceBusRuleResourceId = ServiceBusRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, subscriptionName, ruleName);
-ServiceBusRuleResource serviceBusRule = client.GetServiceBusRuleResource(serviceBusRuleResourceId);
+ResourceIdentifier serviceBusSubscriptionResourceId = ServiceBusSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, subscriptionName);
+ServiceBusSubscriptionResource serviceBusSubscription = client.GetServiceBusSubscriptionResource(serviceBusSubscriptionResourceId);
+
+// get the collection of this ServiceBusRuleResource
+ServiceBusRuleCollection collection = serviceBusSubscription.GetServiceBusRules();
 
 // invoke the operation
+string ruleName = "sdk-Rules-6571";
 ServiceBusRuleData data = new ServiceBusRuleData()
 {
     FilterType = ServiceBusFilterType.SqlFilter,
@@ -35,7 +38,7 @@ ServiceBusRuleData data = new ServiceBusRuleData()
         SqlExpression = "myproperty=test",
     },
 };
-ArmOperation<ServiceBusRuleResource> lro = await serviceBusRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceBusRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 ServiceBusRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

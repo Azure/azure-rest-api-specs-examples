@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotSecurityAggregatedRecommendationResource created on azure
-// for more information of creating IotSecurityAggregatedRecommendationResource, please refer to the document of IotSecurityAggregatedRecommendationResource
+// this example assumes you already have this IotSecuritySolutionAnalyticsModelResource created on azure
+// for more information of creating IotSecuritySolutionAnalyticsModelResource, please refer to the document of IotSecuritySolutionAnalyticsModelResource
 string subscriptionId = "075423e9-7d33-4166-8bdf-3920b04e3735";
 string resourceGroupName = "IoTEdgeResources";
 string solutionName = "default";
-string aggregatedRecommendationName = "OpenPortsOnDevice";
-ResourceIdentifier iotSecurityAggregatedRecommendationResourceId = IotSecurityAggregatedRecommendationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, solutionName, aggregatedRecommendationName);
-IotSecurityAggregatedRecommendationResource iotSecurityAggregatedRecommendation = client.GetIotSecurityAggregatedRecommendationResource(iotSecurityAggregatedRecommendationResourceId);
+ResourceIdentifier iotSecuritySolutionAnalyticsModelResourceId = IotSecuritySolutionAnalyticsModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, solutionName);
+IotSecuritySolutionAnalyticsModelResource iotSecuritySolutionAnalyticsModel = client.GetIotSecuritySolutionAnalyticsModelResource(iotSecuritySolutionAnalyticsModelResourceId);
+
+// get the collection of this IotSecurityAggregatedRecommendationResource
+IotSecurityAggregatedRecommendationCollection collection = iotSecuritySolutionAnalyticsModel.GetIotSecurityAggregatedRecommendations();
 
 // invoke the operation
-IotSecurityAggregatedRecommendationResource result = await iotSecurityAggregatedRecommendation.GetAsync();
+string aggregatedRecommendationName = "OpenPortsOnDevice";
+bool result = await collection.ExistsAsync(aggregatedRecommendationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-IotSecurityAggregatedRecommendationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

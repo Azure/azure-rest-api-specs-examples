@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -15,8 +14,8 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseSqlPoolColumnResource created on azure
-// for more information of creating SynapseSqlPoolColumnResource, please refer to the document of SynapseSqlPoolColumnResource
+// this example assumes you already have this SynapseSensitivityLabelResource created on azure
+// for more information of creating SynapseSensitivityLabelResource, please refer to the document of SynapseSensitivityLabelResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string workspaceName = "myServer";
@@ -24,14 +23,15 @@ string sqlPoolName = "myDatabase";
 string schemaName = "dbo";
 string tableName = "myTable";
 string columnName = "myColumn";
-ResourceIdentifier synapseSqlPoolColumnResourceId = SynapseSqlPoolColumnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, schemaName, tableName, columnName);
-SynapseSqlPoolColumnResource synapseSqlPoolColumn = client.GetSynapseSqlPoolColumnResource(synapseSqlPoolColumnResourceId);
-
-// get the collection of this SynapseSensitivityLabelResource
-SynapseSensitivityLabelCollection collection = synapseSqlPoolColumn.GetSynapseSensitivityLabels();
+SynapseSensitivityLabelSource sensitivityLabelSource = SynapseSensitivityLabelSource.Current;
+ResourceIdentifier synapseSensitivityLabelResourceId = SynapseSensitivityLabelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, schemaName, tableName, columnName, sensitivityLabelSource);
+SynapseSensitivityLabelResource synapseSensitivityLabel = client.GetSynapseSensitivityLabelResource(synapseSensitivityLabelResourceId);
 
 // invoke the operation
-SynapseSensitivityLabelSource sensitivityLabelSource = SynapseSensitivityLabelSource.Current;
-bool result = await collection.ExistsAsync(sensitivityLabelSource);
+SynapseSensitivityLabelResource result = await synapseSensitivityLabel.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseSensitivityLabelData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseEncryptionProtectorResource created on azure
-// for more information of creating SynapseEncryptionProtectorResource, please refer to the document of SynapseEncryptionProtectorResource
+// this example assumes you already have this SynapseWorkspaceResource created on azure
+// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "wsg-7398";
 string workspaceName = "testWorkspace";
-SynapseEncryptionProtectorName encryptionProtectorName = SynapseEncryptionProtectorName.Current;
-ResourceIdentifier synapseEncryptionProtectorResourceId = SynapseEncryptionProtectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, encryptionProtectorName);
-SynapseEncryptionProtectorResource synapseEncryptionProtector = client.GetSynapseEncryptionProtectorResource(synapseEncryptionProtectorResourceId);
+ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+
+// get the collection of this SynapseEncryptionProtectorResource
+SynapseEncryptionProtectorCollection collection = synapseWorkspace.GetSynapseEncryptionProtectors();
 
 // invoke the operation
+SynapseEncryptionProtectorName encryptionProtectorName = SynapseEncryptionProtectorName.Current;
 SynapseEncryptionProtectorData data = new SynapseEncryptionProtectorData()
 {
     ServerKeyName = "ServiceManaged",
     ServerKeyType = SynapseServerKeyType.ServiceManaged,
 };
-ArmOperation<SynapseEncryptionProtectorResource> lro = await synapseEncryptionProtector.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapseEncryptionProtectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, encryptionProtectorName, data);
 SynapseEncryptionProtectorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

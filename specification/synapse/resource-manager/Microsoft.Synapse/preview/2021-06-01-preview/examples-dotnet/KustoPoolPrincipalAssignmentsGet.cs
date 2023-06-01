@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseClusterPrincipalAssignmentResource created on azure
-// for more information of creating SynapseClusterPrincipalAssignmentResource, please refer to the document of SynapseClusterPrincipalAssignmentResource
+// this example assumes you already have this SynapseKustoPoolResource created on azure
+// for more information of creating SynapseKustoPoolResource, please refer to the document of SynapseKustoPoolResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "synapseWorkspaceName";
 string kustoPoolName = "kustoclusterrptest4";
-string principalAssignmentName = "kustoprincipal1";
-ResourceIdentifier synapseClusterPrincipalAssignmentResourceId = SynapseClusterPrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, principalAssignmentName);
-SynapseClusterPrincipalAssignmentResource synapseClusterPrincipalAssignment = client.GetSynapseClusterPrincipalAssignmentResource(synapseClusterPrincipalAssignmentResourceId);
+ResourceIdentifier synapseKustoPoolResourceId = SynapseKustoPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName);
+SynapseKustoPoolResource synapseKustoPool = client.GetSynapseKustoPoolResource(synapseKustoPoolResourceId);
+
+// get the collection of this SynapseClusterPrincipalAssignmentResource
+SynapseClusterPrincipalAssignmentCollection collection = synapseKustoPool.GetSynapseClusterPrincipalAssignments();
 
 // invoke the operation
-SynapseClusterPrincipalAssignmentResource result = await synapseClusterPrincipalAssignment.GetAsync();
+string principalAssignmentName = "kustoprincipal1";
+bool result = await collection.ExistsAsync(principalAssignmentName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseClusterPrincipalAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

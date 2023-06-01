@@ -14,22 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkloadClassifierResource created on azure
-// for more information of creating SynapseWorkloadClassifierResource, please refer to the document of SynapseWorkloadClassifierResource
+// this example assumes you already have this SynapseWorkloadGroupResource created on azure
+// for more information of creating SynapseWorkloadGroupResource, please refer to the document of SynapseWorkloadGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-6852";
 string workspaceName = "sqlcrudtest-2080";
 string sqlPoolName = "sqlcrudtest-9187";
 string workloadGroupName = "wlm_workloadgroup";
-string workloadClassifierName = "wlm_classifier";
-ResourceIdentifier synapseWorkloadClassifierResourceId = SynapseWorkloadClassifierResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, workloadGroupName, workloadClassifierName);
-SynapseWorkloadClassifierResource synapseWorkloadClassifier = client.GetSynapseWorkloadClassifierResource(synapseWorkloadClassifierResourceId);
+ResourceIdentifier synapseWorkloadGroupResourceId = SynapseWorkloadGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, workloadGroupName);
+SynapseWorkloadGroupResource synapseWorkloadGroup = client.GetSynapseWorkloadGroupResource(synapseWorkloadGroupResourceId);
+
+// get the collection of this SynapseWorkloadClassifierResource
+SynapseWorkloadClassifierCollection collection = synapseWorkloadGroup.GetSynapseWorkloadClassifiers();
 
 // invoke the operation
-SynapseWorkloadClassifierResource result = await synapseWorkloadClassifier.GetAsync();
+string workloadClassifierName = "wlm_classifier";
+bool result = await collection.ExistsAsync(workloadClassifierName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseWorkloadClassifierData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

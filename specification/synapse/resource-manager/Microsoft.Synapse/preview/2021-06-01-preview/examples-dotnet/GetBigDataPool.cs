@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkspaceResource created on azure
-// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
+// this example assumes you already have this SynapseBigDataPoolInfoResource created on azure
+// for more information of creating SynapseBigDataPoolInfoResource, please refer to the document of SynapseBigDataPoolInfoResource
 string subscriptionId = "01234567-89ab-4def-0123-456789abcdef";
 string resourceGroupName = "ExampleResourceGroup";
 string workspaceName = "ExampleWorkspace";
-ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
-
-// get the collection of this SynapseBigDataPoolInfoResource
-SynapseBigDataPoolInfoCollection collection = synapseWorkspace.GetSynapseBigDataPoolInfos();
+string bigDataPoolName = "ExamplePool";
+ResourceIdentifier synapseBigDataPoolInfoResourceId = SynapseBigDataPoolInfoResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, bigDataPoolName);
+SynapseBigDataPoolInfoResource synapseBigDataPoolInfo = client.GetSynapseBigDataPoolInfoResource(synapseBigDataPoolInfoResourceId);
 
 // invoke the operation
-string bigDataPoolName = "ExamplePool";
-bool result = await collection.ExistsAsync(bigDataPoolName);
+SynapseBigDataPoolInfoResource result = await synapseBigDataPoolInfo.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseBigDataPoolInfoData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

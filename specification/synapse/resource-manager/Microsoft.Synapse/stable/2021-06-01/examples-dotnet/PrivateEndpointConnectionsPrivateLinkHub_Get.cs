@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapsePrivateLinkHubResource created on azure
-// for more information of creating SynapsePrivateLinkHubResource, please refer to the document of SynapsePrivateLinkHubResource
+// this example assumes you already have this SynapsePrivateEndpointConnectionForPrivateLinkHubResource created on azure
+// for more information of creating SynapsePrivateEndpointConnectionForPrivateLinkHubResource, please refer to the document of SynapsePrivateEndpointConnectionForPrivateLinkHubResource
 string subscriptionId = "48b08652-d7a1-4d52-b13f-5a2471dce57b";
 string resourceGroupName = "gh-res-grp";
 string privateLinkHubName = "pe0";
-ResourceIdentifier synapsePrivateLinkHubResourceId = SynapsePrivateLinkHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateLinkHubName);
-SynapsePrivateLinkHubResource synapsePrivateLinkHub = client.GetSynapsePrivateLinkHubResource(synapsePrivateLinkHubResourceId);
-
-// get the collection of this SynapsePrivateEndpointConnectionForPrivateLinkHubResource
-SynapsePrivateEndpointConnectionForPrivateLinkHubCollection collection = synapsePrivateLinkHub.GetSynapsePrivateEndpointConnectionForPrivateLinkHubs();
+string privateEndpointConnectionName = "pe0-f3ed30f5-338c-4855-a542-24a403694ad2";
+ResourceIdentifier synapsePrivateEndpointConnectionForPrivateLinkHubResourceId = SynapsePrivateEndpointConnectionForPrivateLinkHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateLinkHubName, privateEndpointConnectionName);
+SynapsePrivateEndpointConnectionForPrivateLinkHubResource synapsePrivateEndpointConnectionForPrivateLinkHub = client.GetSynapsePrivateEndpointConnectionForPrivateLinkHubResource(synapsePrivateEndpointConnectionForPrivateLinkHubResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "pe0-f3ed30f5-338c-4855-a542-24a403694ad2";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+SynapsePrivateEndpointConnectionForPrivateLinkHubResource result = await synapsePrivateEndpointConnectionForPrivateLinkHub.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapsePrivateEndpointConnectionForPrivateLinkHubData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

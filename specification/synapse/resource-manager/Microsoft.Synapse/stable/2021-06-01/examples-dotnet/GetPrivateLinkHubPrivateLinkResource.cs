@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapsePrivateLinkHubResource created on azure
-// for more information of creating SynapsePrivateLinkHubResource, please refer to the document of SynapsePrivateLinkHubResource
+// this example assumes you already have this SynapsePrivateLinkResource created on azure
+// for more information of creating SynapsePrivateLinkResource, please refer to the document of SynapsePrivateLinkResource
 string subscriptionId = "01234567-89ab-4def-0123-456789abcdef";
 string resourceGroupName = "ExampleResourceGroup";
 string privateLinkHubName = "ExamplePrivateLinkHub";
-ResourceIdentifier synapsePrivateLinkHubResourceId = SynapsePrivateLinkHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateLinkHubName);
-SynapsePrivateLinkHubResource synapsePrivateLinkHub = client.GetSynapsePrivateLinkHubResource(synapsePrivateLinkHubResourceId);
-
-// get the collection of this SynapsePrivateLinkResource
-SynapsePrivateLinkResourceCollection collection = synapsePrivateLinkHub.GetSynapsePrivateLinkResources();
+string privateLinkResourceName = "sql";
+ResourceIdentifier synapsePrivateLinkResourceId = SynapsePrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateLinkHubName, privateLinkResourceName);
+SynapsePrivateLinkResource synapsePrivateLinkResource = client.GetSynapsePrivateLinkResource(synapsePrivateLinkResourceId);
 
 // invoke the operation
-string privateLinkResourceName = "sql";
-bool result = await collection.ExistsAsync(privateLinkResourceName);
+SynapsePrivateLinkResource result = await synapsePrivateLinkResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapsePrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseKustoPoolResource created on azure
-// for more information of creating SynapseKustoPoolResource, please refer to the document of SynapseKustoPoolResource
+// this example assumes you already have this SynapseAttachedDatabaseConfigurationResource created on azure
+// for more information of creating SynapseAttachedDatabaseConfigurationResource, please refer to the document of SynapseAttachedDatabaseConfigurationResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "kustorptest";
 string kustoPoolName = "kustoclusterrptest4";
-ResourceIdentifier synapseKustoPoolResourceId = SynapseKustoPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName);
-SynapseKustoPoolResource synapseKustoPool = client.GetSynapseKustoPoolResource(synapseKustoPoolResourceId);
-
-// get the collection of this SynapseAttachedDatabaseConfigurationResource
-SynapseAttachedDatabaseConfigurationCollection collection = synapseKustoPool.GetSynapseAttachedDatabaseConfigurations();
+string attachedDatabaseConfigurationName = "attachedDatabaseConfigurations1";
+ResourceIdentifier synapseAttachedDatabaseConfigurationResourceId = SynapseAttachedDatabaseConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, attachedDatabaseConfigurationName);
+SynapseAttachedDatabaseConfigurationResource synapseAttachedDatabaseConfiguration = client.GetSynapseAttachedDatabaseConfigurationResource(synapseAttachedDatabaseConfigurationResourceId);
 
 // invoke the operation
-string attachedDatabaseConfigurationName = "attachedDatabaseConfigurations1";
 SynapseAttachedDatabaseConfigurationData data = new SynapseAttachedDatabaseConfigurationData()
 {
     Location = new AzureLocation("westus"),
@@ -63,7 +60,7 @@ SynapseAttachedDatabaseConfigurationData data = new SynapseAttachedDatabaseConfi
         },
     },
 };
-ArmOperation<SynapseAttachedDatabaseConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, attachedDatabaseConfigurationName, data);
+ArmOperation<SynapseAttachedDatabaseConfigurationResource> lro = await synapseAttachedDatabaseConfiguration.UpdateAsync(WaitUntil.Completed, data);
 SynapseAttachedDatabaseConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

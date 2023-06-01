@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseIntegrationRuntimeResource created on azure
-// for more information of creating SynapseIntegrationRuntimeResource, please refer to the document of SynapseIntegrationRuntimeResource
+// this example assumes you already have this SynapseWorkspaceResource created on azure
+// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string workspaceName = "exampleWorkspace";
-string integrationRuntimeName = "exampleIntegrationRuntime";
-ResourceIdentifier synapseIntegrationRuntimeResourceId = SynapseIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, integrationRuntimeName);
-SynapseIntegrationRuntimeResource synapseIntegrationRuntime = client.GetSynapseIntegrationRuntimeResource(synapseIntegrationRuntimeResourceId);
+ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+
+// get the collection of this SynapseIntegrationRuntimeResource
+SynapseIntegrationRuntimeCollection collection = synapseWorkspace.GetSynapseIntegrationRuntimes();
 
 // invoke the operation
-SynapseIntegrationRuntimeResource result = await synapseIntegrationRuntime.GetAsync();
+string integrationRuntimeName = "exampleIntegrationRuntime";
+bool result = await collection.ExistsAsync(integrationRuntimeName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseIntegrationRuntimeData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

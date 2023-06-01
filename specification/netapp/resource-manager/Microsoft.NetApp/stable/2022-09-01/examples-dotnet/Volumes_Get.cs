@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -15,20 +16,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CapacityPoolResource created on azure
-// for more information of creating CapacityPoolResource, please refer to the document of CapacityPoolResource
+// this example assumes you already have this NetAppVolumeResource created on azure
+// for more information of creating NetAppVolumeResource, please refer to the document of NetAppVolumeResource
 string subscriptionId = "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
 string resourceGroupName = "myRG";
 string accountName = "account1";
 string poolName = "pool1";
-ResourceIdentifier capacityPoolResourceId = CapacityPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName);
-CapacityPoolResource capacityPool = client.GetCapacityPoolResource(capacityPoolResourceId);
-
-// get the collection of this NetAppVolumeResource
-NetAppVolumeCollection collection = capacityPool.GetNetAppVolumes();
+string volumeName = "volume1";
+ResourceIdentifier netAppVolumeResourceId = NetAppVolumeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, poolName, volumeName);
+NetAppVolumeResource netAppVolume = client.GetNetAppVolumeResource(netAppVolumeResourceId);
 
 // invoke the operation
-string volumeName = "volume1";
-bool result = await collection.ExistsAsync(volumeName);
+NetAppVolumeResource result = await netAppVolume.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetAppVolumeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

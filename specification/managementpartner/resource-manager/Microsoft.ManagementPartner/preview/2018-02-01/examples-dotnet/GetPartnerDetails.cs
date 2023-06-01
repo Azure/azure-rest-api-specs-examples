@@ -14,17 +14,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PartnerResponseResource created on azure
-// for more information of creating PartnerResponseResource, please refer to the document of PartnerResponseResource
-string partnerId = "123456";
-ResourceIdentifier partnerResponseResourceId = PartnerResponseResource.CreateResourceIdentifier(partnerId);
-PartnerResponseResource partnerResponse = client.GetPartnerResponseResource(partnerResponseResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this PartnerResponseResource
+PartnerResponseCollection collection = tenantResource.GetPartnerResponses();
 
 // invoke the operation
-PartnerResponseResource result = await partnerResponse.GetAsync();
+string partnerId = "123456";
+bool result = await collection.ExistsAsync(partnerId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PartnerResponseData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

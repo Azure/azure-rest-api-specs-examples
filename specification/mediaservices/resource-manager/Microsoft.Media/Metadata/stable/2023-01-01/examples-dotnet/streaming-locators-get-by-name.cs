@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaServicesAccountResource created on azure
-// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
+// this example assumes you already have this StreamingLocatorResource created on azure
+// for more information of creating StreamingLocatorResource, please refer to the document of StreamingLocatorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
-ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
-
-// get the collection of this StreamingLocatorResource
-StreamingLocatorCollection collection = mediaServicesAccount.GetStreamingLocators();
+string streamingLocatorName = "clearStreamingLocator";
+ResourceIdentifier streamingLocatorResourceId = StreamingLocatorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, streamingLocatorName);
+StreamingLocatorResource streamingLocator = client.GetStreamingLocatorResource(streamingLocatorResourceId);
 
 // invoke the operation
-string streamingLocatorName = "clearStreamingLocator";
-bool result = await collection.ExistsAsync(streamingLocatorName);
+StreamingLocatorResource result = await streamingLocator.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StreamingLocatorData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

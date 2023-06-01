@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaServicesAccountResource created on azure
-// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
+// this example assumes you already have this ContentKeyPolicyResource created on azure
+// for more information of creating ContentKeyPolicyResource, please refer to the document of ContentKeyPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
-ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
-
-// get the collection of this ContentKeyPolicyResource
-ContentKeyPolicyCollection collection = mediaServicesAccount.GetContentKeyPolicies();
+string contentKeyPolicyName = "PolicyWithMultipleOptions";
+ResourceIdentifier contentKeyPolicyResourceId = ContentKeyPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, contentKeyPolicyName);
+ContentKeyPolicyResource contentKeyPolicy = client.GetContentKeyPolicyResource(contentKeyPolicyResourceId);
 
 // invoke the operation
-string contentKeyPolicyName = "PolicyWithMultipleOptions";
-bool result = await collection.ExistsAsync(contentKeyPolicyName);
+ContentKeyPolicyResource result = await contentKeyPolicy.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContentKeyPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

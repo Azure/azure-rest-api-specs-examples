@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaServicesAccountFilterResource created on azure
-// for more information of creating MediaServicesAccountFilterResource, please refer to the document of MediaServicesAccountFilterResource
+// this example assumes you already have this MediaServicesAccountResource created on azure
+// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
-string filterName = "accountFilterWithTrack";
-ResourceIdentifier mediaServicesAccountFilterResourceId = MediaServicesAccountFilterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, filterName);
-MediaServicesAccountFilterResource mediaServicesAccountFilter = client.GetMediaServicesAccountFilterResource(mediaServicesAccountFilterResourceId);
+ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
+
+// get the collection of this MediaServicesAccountFilterResource
+MediaServicesAccountFilterCollection collection = mediaServicesAccount.GetMediaServicesAccountFilters();
 
 // invoke the operation
-MediaServicesAccountFilterResource result = await mediaServicesAccountFilter.GetAsync();
+string filterName = "accountFilterWithTrack";
+bool result = await collection.ExistsAsync(filterName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MediaServicesAccountFilterData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

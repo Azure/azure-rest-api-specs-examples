@@ -16,20 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvailabilityGroupListenerResource created on azure
-// for more information of creating AvailabilityGroupListenerResource, please refer to the document of AvailabilityGroupListenerResource
+// this example assumes you already have this SqlVmGroupResource created on azure
+// for more information of creating SqlVmGroupResource, please refer to the document of SqlVmGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
 string sqlVmGroupName = "testvmgroup";
-string availabilityGroupListenerName = "agl-test";
-ResourceIdentifier availabilityGroupListenerResourceId = AvailabilityGroupListenerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVmGroupName, availabilityGroupListenerName);
-AvailabilityGroupListenerResource availabilityGroupListener = client.GetAvailabilityGroupListenerResource(availabilityGroupListenerResourceId);
+ResourceIdentifier sqlVmGroupResourceId = SqlVmGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVmGroupName);
+SqlVmGroupResource sqlVmGroup = client.GetSqlVmGroupResource(sqlVmGroupResourceId);
+
+// get the collection of this AvailabilityGroupListenerResource
+AvailabilityGroupListenerCollection collection = sqlVmGroup.GetAvailabilityGroupListeners();
 
 // invoke the operation
-AvailabilityGroupListenerResource result = await availabilityGroupListener.GetAsync();
+string availabilityGroupListenerName = "agl-test";
+bool result = await collection.ExistsAsync(availabilityGroupListenerName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AvailabilityGroupListenerData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

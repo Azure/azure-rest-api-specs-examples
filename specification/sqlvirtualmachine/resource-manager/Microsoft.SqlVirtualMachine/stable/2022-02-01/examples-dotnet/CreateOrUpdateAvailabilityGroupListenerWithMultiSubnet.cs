@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvailabilityGroupListenerResource created on azure
-// for more information of creating AvailabilityGroupListenerResource, please refer to the document of AvailabilityGroupListenerResource
+// this example assumes you already have this SqlVmGroupResource created on azure
+// for more information of creating SqlVmGroupResource, please refer to the document of SqlVmGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
 string sqlVmGroupName = "testvmgroup";
-string availabilityGroupListenerName = "agl-test";
-ResourceIdentifier availabilityGroupListenerResourceId = AvailabilityGroupListenerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVmGroupName, availabilityGroupListenerName);
-AvailabilityGroupListenerResource availabilityGroupListener = client.GetAvailabilityGroupListenerResource(availabilityGroupListenerResourceId);
+ResourceIdentifier sqlVmGroupResourceId = SqlVmGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVmGroupName);
+SqlVmGroupResource sqlVmGroup = client.GetSqlVmGroupResource(sqlVmGroupResourceId);
+
+// get the collection of this AvailabilityGroupListenerResource
+AvailabilityGroupListenerCollection collection = sqlVmGroup.GetAvailabilityGroupListeners();
 
 // invoke the operation
+string availabilityGroupListenerName = "agl-test";
 AvailabilityGroupListenerData data = new AvailabilityGroupListenerData()
 {
     AvailabilityGroupName = "ag-test",
@@ -43,7 +46,7 @@ AvailabilityGroupListenerData data = new AvailabilityGroupListenerData()
     },
     Port = 1433,
 };
-ArmOperation<AvailabilityGroupListenerResource> lro = await availabilityGroupListener.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AvailabilityGroupListenerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, availabilityGroupListenerName, data);
 AvailabilityGroupListenerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

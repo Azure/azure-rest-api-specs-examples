@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoClusterResource created on azure
-// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
+// this example assumes you already have this KustoClusterPrincipalAssignmentResource created on azure
+// for more information of creating KustoClusterPrincipalAssignmentResource, please refer to the document of KustoClusterPrincipalAssignmentResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
-ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
-
-// get the collection of this KustoClusterPrincipalAssignmentResource
-KustoClusterPrincipalAssignmentCollection collection = kustoCluster.GetKustoClusterPrincipalAssignments();
+string principalAssignmentName = "kustoprincipal1";
+ResourceIdentifier kustoClusterPrincipalAssignmentResourceId = KustoClusterPrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, principalAssignmentName);
+KustoClusterPrincipalAssignmentResource kustoClusterPrincipalAssignment = client.GetKustoClusterPrincipalAssignmentResource(kustoClusterPrincipalAssignmentResourceId);
 
 // invoke the operation
-string principalAssignmentName = "kustoprincipal1";
 KustoClusterPrincipalAssignmentData data = new KustoClusterPrincipalAssignmentData()
 {
     ClusterPrincipalId = "87654321-1234-1234-1234-123456789123",
@@ -35,7 +32,7 @@ KustoClusterPrincipalAssignmentData data = new KustoClusterPrincipalAssignmentDa
     TenantId = Guid.Parse("12345678-1234-1234-1234-123456789123"),
     PrincipalType = KustoPrincipalAssignmentType.App,
 };
-ArmOperation<KustoClusterPrincipalAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, principalAssignmentName, data);
+ArmOperation<KustoClusterPrincipalAssignmentResource> lro = await kustoClusterPrincipalAssignment.UpdateAsync(WaitUntil.Completed, data);
 KustoClusterPrincipalAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

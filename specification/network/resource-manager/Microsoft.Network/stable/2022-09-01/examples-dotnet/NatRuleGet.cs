@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnGatewayNatRuleResource created on azure
-// for more information of creating VpnGatewayNatRuleResource, please refer to the document of VpnGatewayNatRuleResource
+// this example assumes you already have this VpnGatewayResource created on azure
+// for more information of creating VpnGatewayResource, please refer to the document of VpnGatewayResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string gatewayName = "gateway1";
-string natRuleName = "natRule1";
-ResourceIdentifier vpnGatewayNatRuleResourceId = VpnGatewayNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, natRuleName);
-VpnGatewayNatRuleResource vpnGatewayNatRule = client.GetVpnGatewayNatRuleResource(vpnGatewayNatRuleResourceId);
+ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
+VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
+
+// get the collection of this VpnGatewayNatRuleResource
+VpnGatewayNatRuleCollection collection = vpnGateway.GetVpnGatewayNatRules();
 
 // invoke the operation
-VpnGatewayNatRuleResource result = await vpnGatewayNatRule.GetAsync();
+string natRuleName = "natRule1";
+bool result = await collection.ExistsAsync(natRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VpnGatewayNatRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

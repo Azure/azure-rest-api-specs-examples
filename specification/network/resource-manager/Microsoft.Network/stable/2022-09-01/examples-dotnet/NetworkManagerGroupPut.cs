@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerResource created on azure
-// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
+// this example assumes you already have this NetworkGroupResource created on azure
+// for more information of creating NetworkGroupResource, please refer to the document of NetworkGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
-ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
-NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
-
-// get the collection of this NetworkGroupResource
-NetworkGroupCollection collection = networkManager.GetNetworkGroups();
+string networkGroupName = "testNetworkGroup";
+ResourceIdentifier networkGroupResourceId = NetworkGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, networkGroupName);
+NetworkGroupResource networkGroup = client.GetNetworkGroupResource(networkGroupResourceId);
 
 // invoke the operation
-string networkGroupName = "testNetworkGroup";
 NetworkGroupData data = new NetworkGroupData()
 {
     Description = "A sample group",
 };
-ArmOperation<NetworkGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkGroupName, data);
+ArmOperation<NetworkGroupResource> lro = await networkGroup.UpdateAsync(WaitUntil.Completed, data);
 NetworkGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

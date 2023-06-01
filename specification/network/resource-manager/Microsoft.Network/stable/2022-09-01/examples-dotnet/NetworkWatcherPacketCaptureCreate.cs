@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PacketCaptureResource created on azure
-// for more information of creating PacketCaptureResource, please refer to the document of PacketCaptureResource
+// this example assumes you already have this NetworkWatcherResource created on azure
+// for more information of creating NetworkWatcherResource, please refer to the document of NetworkWatcherResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkWatcherName = "nw1";
-string packetCaptureName = "pc1";
-ResourceIdentifier packetCaptureResourceId = PacketCaptureResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName, packetCaptureName);
-PacketCaptureResource packetCapture = client.GetPacketCaptureResource(packetCaptureResourceId);
+ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName);
+NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
+
+// get the collection of this PacketCaptureResource
+PacketCaptureCollection collection = networkWatcher.GetPacketCaptures();
 
 // invoke the operation
+string packetCaptureName = "pc1";
 PacketCaptureCreateOrUpdateContent content = new PacketCaptureCreateOrUpdateContent("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1", new PacketCaptureStorageLocation()
 {
     StorageId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Storage/storageAccounts/pcstore"),
@@ -45,7 +48,7 @@ PacketCaptureCreateOrUpdateContent content = new PacketCaptureCreateOrUpdateCont
     }
     },
 };
-ArmOperation<PacketCaptureResource> lro = await packetCapture.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<PacketCaptureResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, packetCaptureName, content);
 PacketCaptureResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualHubResource created on azure
-// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
+// this example assumes you already have this HubVirtualNetworkConnectionResource created on azure
+// for more information of creating HubVirtualNetworkConnectionResource, please refer to the document of HubVirtualNetworkConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
-VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
-
-// get the collection of this HubVirtualNetworkConnectionResource
-HubVirtualNetworkConnectionCollection collection = virtualHub.GetHubVirtualNetworkConnections();
+string connectionName = "connection1";
+ResourceIdentifier hubVirtualNetworkConnectionResourceId = HubVirtualNetworkConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, connectionName);
+HubVirtualNetworkConnectionResource hubVirtualNetworkConnection = client.GetHubVirtualNetworkConnectionResource(hubVirtualNetworkConnectionResourceId);
 
 // invoke the operation
-string connectionName = "connection1";
-bool result = await collection.ExistsAsync(connectionName);
+HubVirtualNetworkConnectionResource result = await hubVirtualNetworkConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HubVirtualNetworkConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

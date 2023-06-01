@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerResource created on azure
-// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
+// this example assumes you already have this ConnectivityConfigurationResource created on azure
+// for more information of creating ConnectivityConfigurationResource, please refer to the document of ConnectivityConfigurationResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string networkManagerName = "testNetworkManager";
-ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
-NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
-
-// get the collection of this ConnectivityConfigurationResource
-ConnectivityConfigurationCollection collection = networkManager.GetConnectivityConfigurations();
+string configurationName = "myTestConnectivityConfig";
+ResourceIdentifier connectivityConfigurationResourceId = ConnectivityConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
+ConnectivityConfigurationResource connectivityConfiguration = client.GetConnectivityConfigurationResource(connectivityConfigurationResourceId);
 
 // invoke the operation
-string configurationName = "myTestConnectivityConfig";
 ConnectivityConfigurationData data = new ConnectivityConfigurationData()
 {
     Description = "Sample Configuration",
@@ -51,7 +48,7 @@ ConnectivityConfigurationData data = new ConnectivityConfigurationData()
     },
     DeleteExistingPeering = DeleteExistingPeering.True,
 };
-ArmOperation<ConnectivityConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
+ArmOperation<ConnectivityConfigurationResource> lro = await connectivityConfiguration.UpdateAsync(WaitUntil.Completed, data);
 ConnectivityConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

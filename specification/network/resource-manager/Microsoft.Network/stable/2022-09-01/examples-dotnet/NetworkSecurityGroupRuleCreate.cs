@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityRuleResource created on azure
-// for more information of creating SecurityRuleResource, please refer to the document of SecurityRuleResource
+// this example assumes you already have this NetworkSecurityGroupResource created on azure
+// for more information of creating NetworkSecurityGroupResource, please refer to the document of NetworkSecurityGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkSecurityGroupName = "testnsg";
-string securityRuleName = "rule1";
-ResourceIdentifier securityRuleResourceId = SecurityRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityGroupName, securityRuleName);
-SecurityRuleResource securityRule = client.GetSecurityRuleResource(securityRuleResourceId);
+ResourceIdentifier networkSecurityGroupResourceId = NetworkSecurityGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkSecurityGroupName);
+NetworkSecurityGroupResource networkSecurityGroup = client.GetNetworkSecurityGroupResource(networkSecurityGroupResourceId);
+
+// get the collection of this SecurityRuleResource
+SecurityRuleCollection collection = networkSecurityGroup.GetSecurityRules();
 
 // invoke the operation
+string securityRuleName = "rule1";
 SecurityRuleData data = new SecurityRuleData()
 {
     Protocol = SecurityRuleProtocol.Asterisk,
@@ -36,7 +39,7 @@ SecurityRuleData data = new SecurityRuleData()
     Priority = 100,
     Direction = SecurityRuleDirection.Outbound,
 };
-ArmOperation<SecurityRuleResource> lro = await securityRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SecurityRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityRuleName, data);
 SecurityRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

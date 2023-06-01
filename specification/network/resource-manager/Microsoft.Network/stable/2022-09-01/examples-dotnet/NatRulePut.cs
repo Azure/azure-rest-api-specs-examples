@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnGatewayNatRuleResource created on azure
-// for more information of creating VpnGatewayNatRuleResource, please refer to the document of VpnGatewayNatRuleResource
+// this example assumes you already have this VpnGatewayResource created on azure
+// for more information of creating VpnGatewayResource, please refer to the document of VpnGatewayResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string gatewayName = "gateway1";
-string natRuleName = "natRule1";
-ResourceIdentifier vpnGatewayNatRuleResourceId = VpnGatewayNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, natRuleName);
-VpnGatewayNatRuleResource vpnGatewayNatRule = client.GetVpnGatewayNatRuleResource(vpnGatewayNatRuleResourceId);
+ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName);
+VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
+
+// get the collection of this VpnGatewayNatRuleResource
+VpnGatewayNatRuleCollection collection = vpnGateway.GetVpnGatewayNatRules();
 
 // invoke the operation
+string natRuleName = "natRule1";
 VpnGatewayNatRuleData data = new VpnGatewayNatRuleData()
 {
     VpnNatRuleType = VpnNatRuleType.Static,
@@ -45,7 +48,7 @@ VpnGatewayNatRuleData data = new VpnGatewayNatRuleData()
     },
     IPConfigurationId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/cloudnet1-VNG/ipConfigurations/default",
 };
-ArmOperation<VpnGatewayNatRuleResource> lro = await vpnGatewayNatRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<VpnGatewayNatRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, natRuleName, data);
 VpnGatewayNatRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

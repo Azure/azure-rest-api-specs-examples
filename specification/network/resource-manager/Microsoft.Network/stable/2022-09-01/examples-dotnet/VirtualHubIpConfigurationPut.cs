@@ -14,19 +14,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualHubResource created on azure
-// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
+// this example assumes you already have this HubIPConfigurationResource created on azure
+// for more information of creating HubIPConfigurationResource, please refer to the document of HubIPConfigurationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "hub1";
-ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
-VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
-
-// get the collection of this HubIPConfigurationResource
-HubIPConfigurationCollection collection = virtualHub.GetHubIPConfigurations();
+string ipConfigName = "ipconfig1";
+ResourceIdentifier hubIPConfigurationResourceId = HubIPConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, ipConfigName);
+HubIPConfigurationResource hubIPConfiguration = client.GetHubIPConfigurationResource(hubIPConfigurationResourceId);
 
 // invoke the operation
-string ipConfigName = "ipconfig1";
 HubIPConfigurationData data = new HubIPConfigurationData()
 {
     Subnet = new SubnetData()
@@ -34,7 +31,7 @@ HubIPConfigurationData data = new HubIPConfigurationData()
         Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"),
     },
 };
-ArmOperation<HubIPConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ipConfigName, data);
+ArmOperation<HubIPConfigurationResource> lro = await hubIPConfiguration.UpdateAsync(WaitUntil.Completed, data);
 HubIPConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

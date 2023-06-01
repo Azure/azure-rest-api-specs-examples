@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RoutingIntentResource created on azure
-// for more information of creating RoutingIntentResource, please refer to the document of RoutingIntentResource
+// this example assumes you already have this VirtualHubResource created on azure
+// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-string routingIntentName = "Intent1";
-ResourceIdentifier routingIntentResourceId = RoutingIntentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routingIntentName);
-RoutingIntentResource routingIntent = client.GetRoutingIntentResource(routingIntentResourceId);
+ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
+VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
+
+// get the collection of this RoutingIntentResource
+RoutingIntentCollection collection = virtualHub.GetRoutingIntents();
 
 // invoke the operation
-RoutingIntentResource result = await routingIntent.GetAsync();
+string routingIntentName = "Intent1";
+bool result = await collection.ExistsAsync(routingIntentName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RoutingIntentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RoutingIntentResource created on azure
-// for more information of creating RoutingIntentResource, please refer to the document of RoutingIntentResource
+// this example assumes you already have this VirtualHubResource created on azure
+// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-string routingIntentName = "Intent1";
-ResourceIdentifier routingIntentResourceId = RoutingIntentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routingIntentName);
-RoutingIntentResource routingIntent = client.GetRoutingIntentResource(routingIntentResourceId);
+ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
+VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
+
+// get the collection of this RoutingIntentResource
+RoutingIntentCollection collection = virtualHub.GetRoutingIntents();
 
 // invoke the operation
+string routingIntentName = "Intent1";
 RoutingIntentData data = new RoutingIntentData()
 {
     RoutingPolicies =
@@ -38,7 +41,7 @@ RoutingIntentData data = new RoutingIntentData()
     },"/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1")
     },
 };
-ArmOperation<RoutingIntentResource> lro = await routingIntent.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RoutingIntentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routingIntentName, data);
 RoutingIntentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerResource created on azure
-// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
+// this example assumes you already have this SecurityAdminConfigurationResource created on azure
+// for more information of creating SecurityAdminConfigurationResource, please refer to the document of SecurityAdminConfigurationResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
-ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
-NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
-
-// get the collection of this SecurityAdminConfigurationResource
-SecurityAdminConfigurationCollection collection = networkManager.GetSecurityAdminConfigurations();
+string configurationName = "myTestSecurityConfig";
+ResourceIdentifier securityAdminConfigurationResourceId = SecurityAdminConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
+SecurityAdminConfigurationResource securityAdminConfiguration = client.GetSecurityAdminConfigurationResource(securityAdminConfigurationResourceId);
 
 // invoke the operation
-string configurationName = "myTestSecurityConfig";
-bool result = await collection.ExistsAsync(configurationName);
+SecurityAdminConfigurationResource result = await securityAdminConfiguration.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityAdminConfigurationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -14,20 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebPubSubSharedPrivateLinkResource created on azure
-// for more information of creating WebPubSubSharedPrivateLinkResource, please refer to the document of WebPubSubSharedPrivateLinkResource
+// this example assumes you already have this WebPubSubResource created on azure
+// for more information of creating WebPubSubResource, please refer to the document of WebPubSubResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "myWebPubSubService";
-string sharedPrivateLinkResourceName = "upstream";
-ResourceIdentifier webPubSubSharedPrivateLinkResourceId = WebPubSubSharedPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, sharedPrivateLinkResourceName);
-WebPubSubSharedPrivateLinkResource webPubSubSharedPrivateLink = client.GetWebPubSubSharedPrivateLinkResource(webPubSubSharedPrivateLinkResourceId);
+ResourceIdentifier webPubSubResourceId = WebPubSubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+WebPubSubResource webPubSub = client.GetWebPubSubResource(webPubSubResourceId);
+
+// get the collection of this WebPubSubSharedPrivateLinkResource
+WebPubSubSharedPrivateLinkCollection collection = webPubSub.GetWebPubSubSharedPrivateLinks();
 
 // invoke the operation
-WebPubSubSharedPrivateLinkResource result = await webPubSubSharedPrivateLink.GetAsync();
+string sharedPrivateLinkResourceName = "upstream";
+bool result = await collection.ExistsAsync(sharedPrivateLinkResourceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WebPubSubSharedPrivateLinkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

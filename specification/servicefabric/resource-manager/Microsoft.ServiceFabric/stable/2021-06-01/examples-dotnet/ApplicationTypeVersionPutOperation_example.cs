@@ -14,20 +14,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceFabricApplicationTypeResource created on azure
-// for more information of creating ServiceFabricApplicationTypeResource, please refer to the document of ServiceFabricApplicationTypeResource
+// this example assumes you already have this ServiceFabricApplicationTypeVersionResource created on azure
+// for more information of creating ServiceFabricApplicationTypeVersionResource, please refer to the document of ServiceFabricApplicationTypeVersionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resRg";
 string clusterName = "myCluster";
 string applicationTypeName = "myAppType";
-ResourceIdentifier serviceFabricApplicationTypeResourceId = ServiceFabricApplicationTypeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationTypeName);
-ServiceFabricApplicationTypeResource serviceFabricApplicationType = client.GetServiceFabricApplicationTypeResource(serviceFabricApplicationTypeResourceId);
-
-// get the collection of this ServiceFabricApplicationTypeVersionResource
-ServiceFabricApplicationTypeVersionCollection collection = serviceFabricApplicationType.GetServiceFabricApplicationTypeVersions();
+string version = "1.0";
+ResourceIdentifier serviceFabricApplicationTypeVersionResourceId = ServiceFabricApplicationTypeVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationTypeName, version);
+ServiceFabricApplicationTypeVersionResource serviceFabricApplicationTypeVersion = client.GetServiceFabricApplicationTypeVersionResource(serviceFabricApplicationTypeVersionResourceId);
 
 // invoke the operation
-string version = "1.0";
 ServiceFabricApplicationTypeVersionData data = new ServiceFabricApplicationTypeVersionData(new AzureLocation("placeholder"))
 {
     AppPackageUri = new Uri("http://fakelink.test.com/MyAppType"),
@@ -35,7 +32,7 @@ ServiceFabricApplicationTypeVersionData data = new ServiceFabricApplicationTypeV
     {
     },
 };
-ArmOperation<ServiceFabricApplicationTypeVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);
+ArmOperation<ServiceFabricApplicationTypeVersionResource> lro = await serviceFabricApplicationTypeVersion.UpdateAsync(WaitUntil.Completed, data);
 ServiceFabricApplicationTypeVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

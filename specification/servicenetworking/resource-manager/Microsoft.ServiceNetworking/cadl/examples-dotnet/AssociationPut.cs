@@ -19,7 +19,7 @@ ArmClient client = new ArmClient(cred);
 // for more information of creating TrafficControllerResource, please refer to the document of TrafficControllerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string trafficControllerName = "TC1";
+string trafficControllerName = "tc1";
 ResourceIdentifier trafficControllerResourceId = TrafficControllerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName);
 TrafficControllerResource trafficController = client.GetTrafficControllerResource(trafficControllerResourceId);
 
@@ -27,11 +27,11 @@ TrafficControllerResource trafficController = client.GetTrafficControllerResourc
 AssociationCollection collection = trafficController.GetAssociations();
 
 // invoke the operation
-string associationName = "associatedvnet-1";
-AssociationData data = new AssociationData(new AzureLocation("West US"))
+string associationName = "as1";
+AssociationData data = new AssociationData(new AzureLocation("NorthCentralUS"))
 {
     AssociationType = AssociationType.Subnets,
-    SubnetId = new ResourceIdentifier("subnetFullRef"),
+    SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-tc/subnets/tc-subnet"),
 };
 ArmOperation<AssociationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, associationName, data);
 AssociationResource result = lro.Value;

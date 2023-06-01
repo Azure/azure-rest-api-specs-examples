@@ -19,19 +19,16 @@ ArmClient client = new ArmClient(cred);
 // for more information of creating AssociationResource, please refer to the document of AssociationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string trafficControllerName = "TC1";
-string associationName = "associatedvnet-1";
+string trafficControllerName = "tc1";
+string associationName = "as1";
 ResourceIdentifier associationResourceId = AssociationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName, associationName);
 AssociationResource association = client.GetAssociationResource(associationResourceId);
 
 // invoke the operation
 AssociationPatch patch = new AssociationPatch()
 {
-    Properties = new AssociationUpdateProperties()
-    {
-        AssociationType = AssociationType.Subnets,
-        SubnetId = new ResourceIdentifier("subnetFullRef"),
-    },
+    AssociationType = AssociationType.Subnets,
+    SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-tc/subnets/tc-subnet"),
 };
 AssociationResource result = await association.UpdateAsync(patch);
 

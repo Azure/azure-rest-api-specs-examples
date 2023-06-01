@@ -19,7 +19,7 @@ ArmClient client = new ArmClient(cred);
 // for more information of creating TrafficControllerResource, please refer to the document of TrafficControllerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string trafficControllerName = "TC1";
+string trafficControllerName = "tc1";
 ResourceIdentifier trafficControllerResourceId = TrafficControllerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName);
 TrafficControllerResource trafficController = client.GetTrafficControllerResource(trafficControllerResourceId);
 

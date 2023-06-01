@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ServiceNetworking;
-using Azure.ResourceManager.ServiceNetworking.Models;
 
 // Generated from example definition: specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/cadl/examples/FrontendsGet.json
 // this example is just showing the usage of "FrontendsInterface_ListByTrafficController" operation, for the dependent resources, they will have to be created separately.
@@ -19,7 +18,7 @@ ArmClient client = new ArmClient(cred);
 // for more information of creating TrafficControllerResource, please refer to the document of TrafficControllerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string trafficControllerName = "TC1";
+string trafficControllerName = "tc1";
 ResourceIdentifier trafficControllerResourceId = TrafficControllerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName);
 TrafficControllerResource trafficController = client.GetTrafficControllerResource(trafficControllerResourceId);
 

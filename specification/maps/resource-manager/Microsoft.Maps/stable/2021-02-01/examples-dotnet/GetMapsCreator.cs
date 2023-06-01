@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MapsCreatorResource created on azure
-// for more information of creating MapsCreatorResource, please refer to the document of MapsCreatorResource
+// this example assumes you already have this MapsAccountResource created on azure
+// for more information of creating MapsAccountResource, please refer to the document of MapsAccountResource
 string subscriptionId = "21a9967a-e8a9-4656-a70b-96ff1c4d05a0";
 string resourceGroupName = "myResourceGroup";
 string accountName = "myMapsAccount";
-string creatorName = "myCreator";
-ResourceIdentifier mapsCreatorResourceId = MapsCreatorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, creatorName);
-MapsCreatorResource mapsCreator = client.GetMapsCreatorResource(mapsCreatorResourceId);
+ResourceIdentifier mapsAccountResourceId = MapsAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+MapsAccountResource mapsAccount = client.GetMapsAccountResource(mapsAccountResourceId);
+
+// get the collection of this MapsCreatorResource
+MapsCreatorCollection collection = mapsAccount.GetMapsCreators();
 
 // invoke the operation
-MapsCreatorResource result = await mapsCreator.GetAsync();
+string creatorName = "myCreator";
+bool result = await collection.ExistsAsync(creatorName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MapsCreatorData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

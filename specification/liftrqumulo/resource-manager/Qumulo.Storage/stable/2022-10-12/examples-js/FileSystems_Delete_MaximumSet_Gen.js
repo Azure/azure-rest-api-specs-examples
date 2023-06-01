@@ -1,4 +1,4 @@
-const { QumuloStorage } = require("@azure/arm-liftrqumulo");
+const { QumuloStorage } = require("@azure/arm-qumulo");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**

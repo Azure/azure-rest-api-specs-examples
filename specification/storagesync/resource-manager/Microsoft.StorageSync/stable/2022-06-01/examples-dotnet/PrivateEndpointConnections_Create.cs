@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageSyncServiceResource created on azure
-// for more information of creating StorageSyncServiceResource, please refer to the document of StorageSyncServiceResource
+// this example assumes you already have this StorageSyncPrivateEndpointConnectionResource created on azure
+// for more information of creating StorageSyncPrivateEndpointConnectionResource, please refer to the document of StorageSyncPrivateEndpointConnectionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res7687";
 string storageSyncServiceName = "sss2527";
-ResourceIdentifier storageSyncServiceResourceId = StorageSyncServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName);
-StorageSyncServiceResource storageSyncService = client.GetStorageSyncServiceResource(storageSyncServiceResourceId);
-
-// get the collection of this StorageSyncPrivateEndpointConnectionResource
-StorageSyncPrivateEndpointConnectionCollection collection = storageSyncService.GetStorageSyncPrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+ResourceIdentifier storageSyncPrivateEndpointConnectionResourceId = StorageSyncPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName, privateEndpointConnectionName);
+StorageSyncPrivateEndpointConnectionResource storageSyncPrivateEndpointConnection = client.GetStorageSyncPrivateEndpointConnectionResource(storageSyncPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
 StorageSyncPrivateEndpointConnectionData data = new StorageSyncPrivateEndpointConnectionData()
 {
     ConnectionState = new StorageSyncPrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ StorageSyncPrivateEndpointConnectionData data = new StorageSyncPrivateEndpointCo
         Description = "Auto-Approved",
     },
 };
-ArmOperation<StorageSyncPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<StorageSyncPrivateEndpointConnectionResource> lro = await storageSyncPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 StorageSyncPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

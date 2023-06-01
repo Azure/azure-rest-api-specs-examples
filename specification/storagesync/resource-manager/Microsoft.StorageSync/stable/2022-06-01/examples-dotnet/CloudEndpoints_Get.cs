@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CloudEndpointResource created on azure
-// for more information of creating CloudEndpointResource, please refer to the document of CloudEndpointResource
+// this example assumes you already have this StorageSyncGroupResource created on azure
+// for more information of creating StorageSyncGroupResource, please refer to the document of StorageSyncGroupResource
 string subscriptionId = "52b8da2f-61e0-4a1f-8dde-336911f367fb";
 string resourceGroupName = "SampleResourceGroup_1";
 string storageSyncServiceName = "SampleStorageSyncService_1";
 string syncGroupName = "SampleSyncGroup_1";
-string cloudEndpointName = "SampleCloudEndpoint_1";
-ResourceIdentifier cloudEndpointResourceId = CloudEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName, syncGroupName, cloudEndpointName);
-CloudEndpointResource cloudEndpoint = client.GetCloudEndpointResource(cloudEndpointResourceId);
+ResourceIdentifier storageSyncGroupResourceId = StorageSyncGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName, syncGroupName);
+StorageSyncGroupResource storageSyncGroup = client.GetStorageSyncGroupResource(storageSyncGroupResourceId);
+
+// get the collection of this CloudEndpointResource
+CloudEndpointCollection collection = storageSyncGroup.GetCloudEndpoints();
 
 // invoke the operation
-CloudEndpointResource result = await cloudEndpoint.GetAsync();
+string cloudEndpointName = "SampleCloudEndpoint_1";
+bool result = await collection.ExistsAsync(cloudEndpointName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CloudEndpointData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

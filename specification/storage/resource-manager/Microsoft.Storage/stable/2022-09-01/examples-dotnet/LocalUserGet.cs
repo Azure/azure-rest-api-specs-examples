@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageAccountLocalUserResource created on azure
-// for more information of creating StorageAccountLocalUserResource, please refer to the document of StorageAccountLocalUserResource
+// this example assumes you already have this StorageAccountResource created on azure
+// for more information of creating StorageAccountResource, please refer to the document of StorageAccountResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res6977";
 string accountName = "sto2527";
-string username = "user1";
-ResourceIdentifier storageAccountLocalUserResourceId = StorageAccountLocalUserResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, username);
-StorageAccountLocalUserResource storageAccountLocalUser = client.GetStorageAccountLocalUserResource(storageAccountLocalUserResourceId);
+ResourceIdentifier storageAccountResourceId = StorageAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+StorageAccountResource storageAccount = client.GetStorageAccountResource(storageAccountResourceId);
+
+// get the collection of this StorageAccountLocalUserResource
+StorageAccountLocalUserCollection collection = storageAccount.GetStorageAccountLocalUsers();
 
 // invoke the operation
-StorageAccountLocalUserResource result = await storageAccountLocalUser.GetAsync();
+string username = "user1";
+bool result = await collection.ExistsAsync(username);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StorageAccountLocalUserData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

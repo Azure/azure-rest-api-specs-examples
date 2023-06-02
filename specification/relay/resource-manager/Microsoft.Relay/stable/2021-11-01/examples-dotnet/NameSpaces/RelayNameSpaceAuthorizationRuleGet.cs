@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayNamespaceResource created on azure
-// for more information of creating RelayNamespaceResource, please refer to the document of RelayNamespaceResource
+// this example assumes you already have this RelayNamespaceAuthorizationRuleResource created on azure
+// for more information of creating RelayNamespaceAuthorizationRuleResource, please refer to the document of RelayNamespaceAuthorizationRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-01";
-ResourceIdentifier relayNamespaceResourceId = RelayNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-RelayNamespaceResource relayNamespace = client.GetRelayNamespaceResource(relayNamespaceResourceId);
-
-// get the collection of this RelayNamespaceAuthorizationRuleResource
-RelayNamespaceAuthorizationRuleCollection collection = relayNamespace.GetRelayNamespaceAuthorizationRules();
+string authorizationRuleName = "example-RelayAuthRules-01";
+ResourceIdentifier relayNamespaceAuthorizationRuleResourceId = RelayNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
+RelayNamespaceAuthorizationRuleResource relayNamespaceAuthorizationRule = client.GetRelayNamespaceAuthorizationRuleResource(relayNamespaceAuthorizationRuleResourceId);
 
 // invoke the operation
-string authorizationRuleName = "example-RelayAuthRules-01";
-bool result = await collection.ExistsAsync(authorizationRuleName);
+RelayNamespaceAuthorizationRuleResource result = await relayNamespaceAuthorizationRule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RelayAuthorizationRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,26 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayNamespaceResource created on azure
-// for more information of creating RelayNamespaceResource, please refer to the document of RelayNamespaceResource
+// this example assumes you already have this WcfRelayResource created on azure
+// for more information of creating WcfRelayResource, please refer to the document of WcfRelayResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-9953";
-ResourceIdentifier relayNamespaceResourceId = RelayNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-RelayNamespaceResource relayNamespace = client.GetRelayNamespaceResource(relayNamespaceResourceId);
-
-// get the collection of this WcfRelayResource
-WcfRelayCollection collection = relayNamespace.GetWcfRelays();
+string relayName = "example-Relay-Wcf-1194";
+ResourceIdentifier wcfRelayResourceId = WcfRelayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, relayName);
+WcfRelayResource wcfRelay = client.GetWcfRelayResource(wcfRelayResourceId);
 
 // invoke the operation
-string relayName = "example-Relay-Wcf-1194";
 WcfRelayData data = new WcfRelayData()
 {
     RelayType = RelayType.NetTcp,
     IsClientAuthorizationRequired = true,
     IsTransportSecurityRequired = true,
 };
-ArmOperation<WcfRelayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, relayName, data);
+ArmOperation<WcfRelayResource> lro = await wcfRelay.UpdateAsync(WaitUntil.Completed, data);
 WcfRelayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

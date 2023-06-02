@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayHybridConnectionResource created on azure
-// for more information of creating RelayHybridConnectionResource, please refer to the document of RelayHybridConnectionResource
+// this example assumes you already have this RelayHybridConnectionAuthorizationRuleResource created on azure
+// for more information of creating RelayHybridConnectionAuthorizationRuleResource, please refer to the document of RelayHybridConnectionAuthorizationRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-01";
 string hybridConnectionName = "example-Relay-Hybrid-01";
-ResourceIdentifier relayHybridConnectionResourceId = RelayHybridConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, hybridConnectionName);
-RelayHybridConnectionResource relayHybridConnection = client.GetRelayHybridConnectionResource(relayHybridConnectionResourceId);
-
-// get the collection of this RelayHybridConnectionAuthorizationRuleResource
-RelayHybridConnectionAuthorizationRuleCollection collection = relayHybridConnection.GetRelayHybridConnectionAuthorizationRules();
+string authorizationRuleName = "example-RelayAuthRules-01";
+ResourceIdentifier relayHybridConnectionAuthorizationRuleResourceId = RelayHybridConnectionAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, hybridConnectionName, authorizationRuleName);
+RelayHybridConnectionAuthorizationRuleResource relayHybridConnectionAuthorizationRule = client.GetRelayHybridConnectionAuthorizationRuleResource(relayHybridConnectionAuthorizationRuleResourceId);
 
 // invoke the operation
-string authorizationRuleName = "example-RelayAuthRules-01";
 RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
 {
     Rights =
@@ -36,7 +33,7 @@ RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
     RelayAccessRight.Listen,RelayAccessRight.Send
     },
 };
-ArmOperation<RelayHybridConnectionAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
+ArmOperation<RelayHybridConnectionAuthorizationRuleResource> lro = await relayHybridConnectionAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
 RelayHybridConnectionAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

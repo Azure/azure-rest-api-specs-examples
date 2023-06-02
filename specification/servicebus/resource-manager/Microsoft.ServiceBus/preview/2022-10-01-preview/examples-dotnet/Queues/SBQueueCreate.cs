@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceResource created on azure
-// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
+// this example assumes you already have this ServiceBusQueueResource created on azure
+// for more information of creating ServiceBusQueueResource, please refer to the document of ServiceBusQueueResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-3174";
-ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
-
-// get the collection of this ServiceBusQueueResource
-ServiceBusQueueCollection collection = serviceBusNamespace.GetServiceBusQueues();
+string queueName = "sdk-Queues-5647";
+ResourceIdentifier serviceBusQueueResourceId = ServiceBusQueueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, queueName);
+ServiceBusQueueResource serviceBusQueue = client.GetServiceBusQueueResource(serviceBusQueueResourceId);
 
 // invoke the operation
-string queueName = "sdk-Queues-5647";
 ServiceBusQueueData data = new ServiceBusQueueData()
 {
     EnablePartitioning = true,
 };
-ArmOperation<ServiceBusQueueResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, queueName, data);
+ArmOperation<ServiceBusQueueResource> lro = await serviceBusQueue.UpdateAsync(WaitUntil.Completed, data);
 ServiceBusQueueResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

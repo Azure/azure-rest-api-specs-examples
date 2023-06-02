@@ -14,21 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusSubscriptionResource created on azure
-// for more information of creating ServiceBusSubscriptionResource, please refer to the document of ServiceBusSubscriptionResource
+// this example assumes you already have this ServiceBusTopicResource created on azure
+// for more information of creating ServiceBusTopicResource, please refer to the document of ServiceBusTopicResource
 string subscriptionId = "Subscriptionid";
 string resourceGroupName = "ResourceGroup";
 string namespaceName = "sdk-Namespace-1349";
 string topicName = "sdk-Topics-8740";
-string subscriptionName = "sdk-Subscriptions-2178";
-ResourceIdentifier serviceBusSubscriptionResourceId = ServiceBusSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, subscriptionName);
-ServiceBusSubscriptionResource serviceBusSubscription = client.GetServiceBusSubscriptionResource(serviceBusSubscriptionResourceId);
+ResourceIdentifier serviceBusTopicResourceId = ServiceBusTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName);
+ServiceBusTopicResource serviceBusTopic = client.GetServiceBusTopicResource(serviceBusTopicResourceId);
+
+// get the collection of this ServiceBusSubscriptionResource
+ServiceBusSubscriptionCollection collection = serviceBusTopic.GetServiceBusSubscriptions();
 
 // invoke the operation
-ServiceBusSubscriptionResource result = await serviceBusSubscription.GetAsync();
+string subscriptionName = "sdk-Subscriptions-2178";
+bool result = await collection.ExistsAsync(subscriptionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ServiceBusSubscriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

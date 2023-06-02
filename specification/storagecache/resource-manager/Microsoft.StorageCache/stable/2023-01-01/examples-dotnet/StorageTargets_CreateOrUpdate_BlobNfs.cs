@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageTargetResource created on azure
-// for more information of creating StorageTargetResource, please refer to the document of StorageTargetResource
+// this example assumes you already have this StorageCacheResource created on azure
+// for more information of creating StorageCacheResource, please refer to the document of StorageCacheResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "scgroup";
 string cacheName = "sc1";
-string storageTargetName = "st1";
-ResourceIdentifier storageTargetResourceId = StorageTargetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName, storageTargetName);
-StorageTargetResource storageTarget = client.GetStorageTargetResource(storageTargetResourceId);
+ResourceIdentifier storageCacheResourceId = StorageCacheResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName);
+StorageCacheResource storageCache = client.GetStorageCacheResource(storageCacheResourceId);
+
+// get the collection of this StorageTargetResource
+StorageTargetCollection collection = storageCache.GetStorageTargets();
 
 // invoke the operation
+string storageTargetName = "st1";
 StorageTargetData data = new StorageTargetData()
 {
     Junctions =
@@ -43,7 +46,7 @@ StorageTargetData data = new StorageTargetData()
         WriteBackDelayInSeconds = 3600,
     },
 };
-ArmOperation<StorageTargetResource> lro = await storageTarget.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StorageTargetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, storageTargetName, data);
 StorageTargetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

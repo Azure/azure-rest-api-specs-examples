@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageSyncServiceResource created on azure
-// for more information of creating StorageSyncServiceResource, please refer to the document of StorageSyncServiceResource
+// this example assumes you already have this StorageSyncGroupResource created on azure
+// for more information of creating StorageSyncGroupResource, please refer to the document of StorageSyncGroupResource
 string subscriptionId = "52b8da2f-61e0-4a1f-8dde-336911f367fb";
 string resourceGroupName = "SampleResourceGroup_1";
 string storageSyncServiceName = "SampleStorageSyncService_1";
-ResourceIdentifier storageSyncServiceResourceId = StorageSyncServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName);
-StorageSyncServiceResource storageSyncService = client.GetStorageSyncServiceResource(storageSyncServiceResourceId);
-
-// get the collection of this StorageSyncGroupResource
-StorageSyncGroupCollection collection = storageSyncService.GetStorageSyncGroups();
+string syncGroupName = "SampleSyncGroup_1";
+ResourceIdentifier storageSyncGroupResourceId = StorageSyncGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName, syncGroupName);
+StorageSyncGroupResource storageSyncGroup = client.GetStorageSyncGroupResource(storageSyncGroupResourceId);
 
 // invoke the operation
-string syncGroupName = "SampleSyncGroup_1";
-bool result = await collection.ExistsAsync(syncGroupName);
+StorageSyncGroupResource result = await storageSyncGroup.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StorageSyncGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

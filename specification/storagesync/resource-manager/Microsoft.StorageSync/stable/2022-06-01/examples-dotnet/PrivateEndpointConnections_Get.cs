@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageSyncServiceResource created on azure
-// for more information of creating StorageSyncServiceResource, please refer to the document of StorageSyncServiceResource
+// this example assumes you already have this StorageSyncPrivateEndpointConnectionResource created on azure
+// for more information of creating StorageSyncPrivateEndpointConnectionResource, please refer to the document of StorageSyncPrivateEndpointConnectionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res6977";
 string storageSyncServiceName = "sss2527";
-ResourceIdentifier storageSyncServiceResourceId = StorageSyncServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName);
-StorageSyncServiceResource storageSyncService = client.GetStorageSyncServiceResource(storageSyncServiceResourceId);
-
-// get the collection of this StorageSyncPrivateEndpointConnectionResource
-StorageSyncPrivateEndpointConnectionCollection collection = storageSyncService.GetStorageSyncPrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+ResourceIdentifier storageSyncPrivateEndpointConnectionResourceId = StorageSyncPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, storageSyncServiceName, privateEndpointConnectionName);
+StorageSyncPrivateEndpointConnectionResource storageSyncPrivateEndpointConnection = client.GetStorageSyncPrivateEndpointConnectionResource(storageSyncPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+StorageSyncPrivateEndpointConnectionResource result = await storageSyncPrivateEndpointConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StorageSyncPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

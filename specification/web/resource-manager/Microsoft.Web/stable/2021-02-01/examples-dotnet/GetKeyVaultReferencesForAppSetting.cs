@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteConfigAppsettingResource created on azure
-// for more information of creating SiteConfigAppsettingResource, please refer to the document of SiteConfigAppsettingResource
+// this example assumes you already have this WebSiteResource created on azure
+// for more information of creating WebSiteResource, please refer to the document of WebSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string name = "testc6282";
-string appSettingKey = "setting";
-ResourceIdentifier siteConfigAppsettingResourceId = SiteConfigAppsettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, appSettingKey);
-SiteConfigAppsettingResource siteConfigAppsetting = client.GetSiteConfigAppsettingResource(siteConfigAppsettingResourceId);
+ResourceIdentifier webSiteResourceId = WebSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+WebSiteResource webSite = client.GetWebSiteResource(webSiteResourceId);
+
+// get the collection of this SiteConfigAppsettingResource
+SiteConfigAppsettingCollection collection = webSite.GetSiteConfigAppsettings();
 
 // invoke the operation
-SiteConfigAppsettingResource result = await siteConfigAppsetting.GetAsync();
+string appSettingKey = "setting";
+bool result = await collection.ExistsAsync(appSettingKey);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiKeyVaultReferenceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

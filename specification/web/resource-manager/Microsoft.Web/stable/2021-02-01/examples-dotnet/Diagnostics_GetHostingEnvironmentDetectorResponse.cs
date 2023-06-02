@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppServiceEnvironmentResource created on azure
-// for more information of creating AppServiceEnvironmentResource, please refer to the document of AppServiceEnvironmentResource
+// this example assumes you already have this HostingEnvironmentDetectorResource created on azure
+// for more information of creating HostingEnvironmentDetectorResource, please refer to the document of HostingEnvironmentDetectorResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string name = "SampleAppServiceEnvironment";
-ResourceIdentifier appServiceEnvironmentResourceId = AppServiceEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-AppServiceEnvironmentResource appServiceEnvironment = client.GetAppServiceEnvironmentResource(appServiceEnvironmentResourceId);
-
-// get the collection of this HostingEnvironmentDetectorResource
-HostingEnvironmentDetectorCollection collection = appServiceEnvironment.GetHostingEnvironmentDetectors();
+string detectorName = "runtimeavailability";
+ResourceIdentifier hostingEnvironmentDetectorResourceId = HostingEnvironmentDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, detectorName);
+HostingEnvironmentDetectorResource hostingEnvironmentDetector = client.GetHostingEnvironmentDetectorResource(hostingEnvironmentDetectorResourceId);
 
 // invoke the operation
-string detectorName = "runtimeavailability";
-bool result = await collection.ExistsAsync(detectorName);
+HostingEnvironmentDetectorResource result = await hostingEnvironmentDetector.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AppServiceDetectorData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

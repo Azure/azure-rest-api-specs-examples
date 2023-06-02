@@ -13,16 +13,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this ComplianceResultResource
+// this example assumes you already have this ComplianceResultResource created on azure
+// for more information of creating ComplianceResultResource, please refer to the document of ComplianceResultResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceId));
-ComplianceResultCollection collection = client.GetComplianceResults(scopeId);
+string complianceResultName = "DesignateMoreThanOneOwner";
+ResourceIdentifier complianceResultResourceId = ComplianceResultResource.CreateResourceIdentifier(resourceId, complianceResultName);
+ComplianceResultResource complianceResult = client.GetComplianceResultResource(complianceResultResourceId);
 
 // invoke the operation
-string complianceResultName = "DesignateMoreThanOneOwner";
-bool result = await collection.ExistsAsync(complianceResultName);
+ComplianceResultResource result = await complianceResult.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ComplianceResultData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this SecurityConnectorResource created on azure
+// for more information of creating SecurityConnectorResource, please refer to the document of SecurityConnectorResource
 string subscriptionId = "a5caac9c-5c04-49af-b3d0-e204f40345d5";
 string resourceGroupName = "exampleResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this SecurityConnectorResource
-SecurityConnectorCollection collection = resourceGroupResource.GetSecurityConnectors();
+string securityConnectorName = "exampleSecurityConnectorName";
+ResourceIdentifier securityConnectorResourceId = SecurityConnectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName);
+SecurityConnectorResource securityConnector = client.GetSecurityConnectorResource(securityConnectorResourceId);
 
 // invoke the operation
-string securityConnectorName = "exampleSecurityConnectorName";
-bool result = await collection.ExistsAsync(securityConnectorName);
+SecurityConnectorResource result = await securityConnector.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityConnectorData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

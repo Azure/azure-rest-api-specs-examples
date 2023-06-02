@@ -4,6 +4,7 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -15,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityCenterLocationResource created on azure
-// for more information of creating SecurityCenterLocationResource, please refer to the document of SecurityCenterLocationResource
+// this example assumes you already have this AdaptiveApplicationControlGroupResource created on azure
+// for more information of creating AdaptiveApplicationControlGroupResource, please refer to the document of AdaptiveApplicationControlGroupResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 AzureLocation ascLocation = new AzureLocation("centralus");
-ResourceIdentifier securityCenterLocationResourceId = SecurityCenterLocationResource.CreateResourceIdentifier(subscriptionId, ascLocation);
-SecurityCenterLocationResource securityCenterLocation = client.GetSecurityCenterLocationResource(securityCenterLocationResourceId);
-
-// get the collection of this AdaptiveApplicationControlGroupResource
-AdaptiveApplicationControlGroupCollection collection = securityCenterLocation.GetAdaptiveApplicationControlGroups();
+string groupName = "ERELGROUP1";
+ResourceIdentifier adaptiveApplicationControlGroupResourceId = AdaptiveApplicationControlGroupResource.CreateResourceIdentifier(subscriptionId, ascLocation, groupName);
+AdaptiveApplicationControlGroupResource adaptiveApplicationControlGroup = client.GetAdaptiveApplicationControlGroupResource(adaptiveApplicationControlGroupResourceId);
 
 // invoke the operation
-string groupName = "ERELGROUP1";
-bool result = await collection.ExistsAsync(groupName);
+AdaptiveApplicationControlGroupResource result = await adaptiveApplicationControlGroup.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AdaptiveApplicationControlGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

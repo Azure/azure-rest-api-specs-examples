@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisResource created on azure
-// for more information of creating RedisResource, please refer to the document of RedisResource
+// this example assumes you already have this RedisLinkedServerWithPropertyResource created on azure
+// for more information of creating RedisLinkedServerWithPropertyResource, please refer to the document of RedisLinkedServerWithPropertyResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string name = "cache1";
-ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-RedisResource redis = client.GetRedisResource(redisResourceId);
-
-// get the collection of this RedisLinkedServerWithPropertyResource
-RedisLinkedServerWithPropertyCollection collection = redis.GetRedisLinkedServerWithProperties();
+string linkedServerName = "cache2";
+ResourceIdentifier redisLinkedServerWithPropertyResourceId = RedisLinkedServerWithPropertyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, linkedServerName);
+RedisLinkedServerWithPropertyResource redisLinkedServerWithProperty = client.GetRedisLinkedServerWithPropertyResource(redisLinkedServerWithPropertyResourceId);
 
 // invoke the operation
-string linkedServerName = "cache2";
-bool result = await collection.ExistsAsync(linkedServerName);
+RedisLinkedServerWithPropertyResource result = await redisLinkedServerWithProperty.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RedisLinkedServerWithPropertyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

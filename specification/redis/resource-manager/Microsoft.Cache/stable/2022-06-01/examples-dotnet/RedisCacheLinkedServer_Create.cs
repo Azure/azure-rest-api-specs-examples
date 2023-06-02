@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisResource created on azure
-// for more information of creating RedisResource, please refer to the document of RedisResource
+// this example assumes you already have this RedisLinkedServerWithPropertyResource created on azure
+// for more information of creating RedisLinkedServerWithPropertyResource, please refer to the document of RedisLinkedServerWithPropertyResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string name = "cache1";
-ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-RedisResource redis = client.GetRedisResource(redisResourceId);
-
-// get the collection of this RedisLinkedServerWithPropertyResource
-RedisLinkedServerWithPropertyCollection collection = redis.GetRedisLinkedServerWithProperties();
+string linkedServerName = "cache2";
+ResourceIdentifier redisLinkedServerWithPropertyResourceId = RedisLinkedServerWithPropertyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, linkedServerName);
+RedisLinkedServerWithPropertyResource redisLinkedServerWithProperty = client.GetRedisLinkedServerWithPropertyResource(redisLinkedServerWithPropertyResourceId);
 
 // invoke the operation
-string linkedServerName = "cache2";
 RedisLinkedServerWithPropertyCreateOrUpdateContent content = new RedisLinkedServerWithPropertyCreateOrUpdateContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Cache/Redis/cache2"), new AzureLocation("West US"), RedisLinkedServerRole.Secondary);
-ArmOperation<RedisLinkedServerWithPropertyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkedServerName, content);
+ArmOperation<RedisLinkedServerWithPropertyResource> lro = await redisLinkedServerWithProperty.UpdateAsync(WaitUntil.Completed, content);
 RedisLinkedServerWithPropertyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

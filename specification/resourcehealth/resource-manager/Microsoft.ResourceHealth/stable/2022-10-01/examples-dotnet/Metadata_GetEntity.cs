@@ -13,17 +13,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceHealthMetadataEntityResource created on azure
-// for more information of creating ResourceHealthMetadataEntityResource, please refer to the document of ResourceHealthMetadataEntityResource
-string name = "status";
-ResourceIdentifier resourceHealthMetadataEntityResourceId = ResourceHealthMetadataEntityResource.CreateResourceIdentifier(name);
-ResourceHealthMetadataEntityResource resourceHealthMetadataEntity = client.GetResourceHealthMetadataEntityResource(resourceHealthMetadataEntityResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this ResourceHealthMetadataEntityResource
+ResourceHealthMetadataEntityCollection collection = tenantResource.GetResourceHealthMetadataEntities();
 
 // invoke the operation
-ResourceHealthMetadataEntityResource result = await resourceHealthMetadataEntity.GetAsync();
+string name = "status";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ResourceHealthMetadataEntityData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

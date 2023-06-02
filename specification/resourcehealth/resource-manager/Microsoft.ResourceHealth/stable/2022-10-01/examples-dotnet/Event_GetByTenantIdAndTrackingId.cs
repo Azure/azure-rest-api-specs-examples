@@ -13,19 +13,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResourceHealthEventResource created on azure
-// for more information of creating TenantResourceHealthEventResource, please refer to the document of TenantResourceHealthEventResource
-string eventTrackingId = "eventTrackingId";
-ResourceIdentifier tenantResourceHealthEventResourceId = TenantResourceHealthEventResource.CreateResourceIdentifier(eventTrackingId);
-TenantResourceHealthEventResource tenantResourceHealthEvent = client.GetTenantResourceHealthEventResource(tenantResourceHealthEventResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this TenantResourceHealthEventResource
+TenantResourceHealthEventCollection collection = tenantResource.GetTenantResourceHealthEvents();
 
 // invoke the operation
+string eventTrackingId = "eventTrackingId";
 string filter = "properties/status eq 'Active'";
 string queryStartTime = "7/10/2022";
-TenantResourceHealthEventResource result = await tenantResourceHealthEvent.GetAsync(filter: filter, queryStartTime: queryStartTime);
+bool result = await collection.ExistsAsync(eventTrackingId, filter: filter, queryStartTime: queryStartTime);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ResourceHealthEventData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

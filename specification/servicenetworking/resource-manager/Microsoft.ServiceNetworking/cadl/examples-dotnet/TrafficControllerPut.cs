@@ -26,8 +26,8 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 TrafficControllerCollection collection = resourceGroupResource.GetTrafficControllers();
 
 // invoke the operation
-string trafficControllerName = "TC1";
-TrafficControllerData data = new TrafficControllerData(new AzureLocation("West US"))
+string trafficControllerName = "tc1";
+TrafficControllerData data = new TrafficControllerData(new AzureLocation("NorthCentralUS"))
 {
     Tags =
     {

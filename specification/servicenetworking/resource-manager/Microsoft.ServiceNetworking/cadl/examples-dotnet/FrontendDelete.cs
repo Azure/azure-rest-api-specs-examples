@@ -19,8 +19,8 @@ ArmClient client = new ArmClient(cred);
 // for more information of creating FrontendResource, please refer to the document of FrontendResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string trafficControllerName = "TC1";
-string frontendName = "publicIp1";
+string trafficControllerName = "tc1";
+string frontendName = "fe1";
 ResourceIdentifier frontendResourceId = FrontendResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName, frontendName);
 FrontendResource frontend = client.GetFrontendResource(frontendResourceId);
 

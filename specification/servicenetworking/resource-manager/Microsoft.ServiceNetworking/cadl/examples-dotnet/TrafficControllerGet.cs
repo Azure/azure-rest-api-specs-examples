@@ -26,7 +26,7 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 TrafficControllerCollection collection = resourceGroupResource.GetTrafficControllers();
 
 // invoke the operation
-string trafficControllerName = "TC1";
+string trafficControllerName = "tc1";
 bool result = await collection.ExistsAsync(trafficControllerName);
 
 Console.WriteLine($"Succeeded: {result}");

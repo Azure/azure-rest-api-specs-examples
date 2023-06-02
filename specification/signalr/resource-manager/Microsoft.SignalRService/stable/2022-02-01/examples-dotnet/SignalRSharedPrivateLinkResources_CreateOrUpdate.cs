@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SignalRResource created on azure
-// for more information of creating SignalRResource, please refer to the document of SignalRResource
+// this example assumes you already have this SignalRSharedPrivateLinkResource created on azure
+// for more information of creating SignalRSharedPrivateLinkResource, please refer to the document of SignalRSharedPrivateLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "mySignalRService";
-ResourceIdentifier signalRResourceId = SignalRResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-SignalRResource signalR = client.GetSignalRResource(signalRResourceId);
-
-// get the collection of this SignalRSharedPrivateLinkResource
-SignalRSharedPrivateLinkResourceCollection collection = signalR.GetSignalRSharedPrivateLinkResources();
+string sharedPrivateLinkResourceName = "upstream";
+ResourceIdentifier signalRSharedPrivateLinkResourceId = SignalRSharedPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, sharedPrivateLinkResourceName);
+SignalRSharedPrivateLinkResource signalRSharedPrivateLinkResource = client.GetSignalRSharedPrivateLinkResource(signalRSharedPrivateLinkResourceId);
 
 // invoke the operation
-string sharedPrivateLinkResourceName = "upstream";
 SignalRSharedPrivateLinkResourceData data = new SignalRSharedPrivateLinkResourceData()
 {
     GroupId = "sites",
     PrivateLinkResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp"),
     RequestMessage = "Please approve",
 };
-ArmOperation<SignalRSharedPrivateLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sharedPrivateLinkResourceName, data);
+ArmOperation<SignalRSharedPrivateLinkResource> lro = await signalRSharedPrivateLinkResource.UpdateAsync(WaitUntil.Completed, data);
 SignalRSharedPrivateLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

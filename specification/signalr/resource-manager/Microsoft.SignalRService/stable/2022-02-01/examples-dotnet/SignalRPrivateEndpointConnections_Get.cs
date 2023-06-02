@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SignalRResource created on azure
-// for more information of creating SignalRResource, please refer to the document of SignalRResource
+// this example assumes you already have this SignalRPrivateEndpointConnectionResource created on azure
+// for more information of creating SignalRPrivateEndpointConnectionResource, please refer to the document of SignalRPrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "mySignalRService";
-ResourceIdentifier signalRResourceId = SignalRResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-SignalRResource signalR = client.GetSignalRResource(signalRResourceId);
-
-// get the collection of this SignalRPrivateEndpointConnectionResource
-SignalRPrivateEndpointConnectionCollection collection = signalR.GetSignalRPrivateEndpointConnections();
+string privateEndpointConnectionName = "mysignalrservice.1fa229cd-bf3f-47f0-8c49-afb36723997e";
+ResourceIdentifier signalRPrivateEndpointConnectionResourceId = SignalRPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
+SignalRPrivateEndpointConnectionResource signalRPrivateEndpointConnection = client.GetSignalRPrivateEndpointConnectionResource(signalRPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "mysignalrservice.1fa229cd-bf3f-47f0-8c49-afb36723997e";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+SignalRPrivateEndpointConnectionResource result = await signalRPrivateEndpointConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SignalRPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

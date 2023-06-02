@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseClusterPrincipalAssignmentResource created on azure
-// for more information of creating SynapseClusterPrincipalAssignmentResource, please refer to the document of SynapseClusterPrincipalAssignmentResource
+// this example assumes you already have this SynapseKustoPoolResource created on azure
+// for more information of creating SynapseKustoPoolResource, please refer to the document of SynapseKustoPoolResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "synapseWorkspaceName";
 string kustoPoolName = "kustoclusterrptest4";
-string principalAssignmentName = "kustoprincipal1";
-ResourceIdentifier synapseClusterPrincipalAssignmentResourceId = SynapseClusterPrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName, principalAssignmentName);
-SynapseClusterPrincipalAssignmentResource synapseClusterPrincipalAssignment = client.GetSynapseClusterPrincipalAssignmentResource(synapseClusterPrincipalAssignmentResourceId);
+ResourceIdentifier synapseKustoPoolResourceId = SynapseKustoPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName);
+SynapseKustoPoolResource synapseKustoPool = client.GetSynapseKustoPoolResource(synapseKustoPoolResourceId);
+
+// get the collection of this SynapseClusterPrincipalAssignmentResource
+SynapseClusterPrincipalAssignmentCollection collection = synapseKustoPool.GetSynapseClusterPrincipalAssignments();
 
 // invoke the operation
+string principalAssignmentName = "kustoprincipal1";
 SynapseClusterPrincipalAssignmentData data = new SynapseClusterPrincipalAssignmentData()
 {
     PrincipalId = "87654321-1234-1234-1234-123456789123",
@@ -33,7 +36,7 @@ SynapseClusterPrincipalAssignmentData data = new SynapseClusterPrincipalAssignme
     TenantId = Guid.Parse("12345678-1234-1234-1234-123456789123"),
     PrincipalType = SynapsePrincipalType.App,
 };
-ArmOperation<SynapseClusterPrincipalAssignmentResource> lro = await synapseClusterPrincipalAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapseClusterPrincipalAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, principalAssignmentName, data);
 SynapseClusterPrincipalAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

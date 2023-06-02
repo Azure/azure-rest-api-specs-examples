@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseServerBlobAuditingPolicyResource created on azure
-// for more information of creating SynapseServerBlobAuditingPolicyResource, please refer to the document of SynapseServerBlobAuditingPolicyResource
+// this example assumes you already have this SynapseWorkspaceResource created on azure
+// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "wsg-7398";
 string workspaceName = "testWorkspace";
-SynapseBlobAuditingPolicyName blobAuditingPolicyName = SynapseBlobAuditingPolicyName.Default;
-ResourceIdentifier synapseServerBlobAuditingPolicyResourceId = SynapseServerBlobAuditingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, blobAuditingPolicyName);
-SynapseServerBlobAuditingPolicyResource synapseServerBlobAuditingPolicy = client.GetSynapseServerBlobAuditingPolicyResource(synapseServerBlobAuditingPolicyResourceId);
+ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+
+// get the collection of this SynapseServerBlobAuditingPolicyResource
+SynapseServerBlobAuditingPolicyCollection collection = synapseWorkspace.GetSynapseServerBlobAuditingPolicies();
 
 // invoke the operation
+SynapseBlobAuditingPolicyName blobAuditingPolicyName = SynapseBlobAuditingPolicyName.Default;
 SynapseServerBlobAuditingPolicyData data = new SynapseServerBlobAuditingPolicyData()
 {
     State = SynapseBlobAuditingPolicyState.Enabled,
@@ -40,7 +43,7 @@ SynapseServerBlobAuditingPolicyData data = new SynapseServerBlobAuditingPolicyDa
     IsAzureMonitorTargetEnabled = true,
     QueueDelayMs = 4000,
 };
-ArmOperation<SynapseServerBlobAuditingPolicyResource> lro = await synapseServerBlobAuditingPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapseServerBlobAuditingPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, blobAuditingPolicyName, data);
 SynapseServerBlobAuditingPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

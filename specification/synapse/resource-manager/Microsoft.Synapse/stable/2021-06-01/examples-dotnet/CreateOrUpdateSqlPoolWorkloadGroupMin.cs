@@ -14,24 +14,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkloadGroupResource created on azure
-// for more information of creating SynapseWorkloadGroupResource, please refer to the document of SynapseWorkloadGroupResource
+// this example assumes you already have this SynapseSqlPoolResource created on azure
+// for more information of creating SynapseSqlPoolResource, please refer to the document of SynapseSqlPoolResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-6852";
 string workspaceName = "sqlcrudtest-2080";
 string sqlPoolName = "sqlcrudtest-9187";
-string workloadGroupName = "smallrc";
-ResourceIdentifier synapseWorkloadGroupResourceId = SynapseWorkloadGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, workloadGroupName);
-SynapseWorkloadGroupResource synapseWorkloadGroup = client.GetSynapseWorkloadGroupResource(synapseWorkloadGroupResourceId);
+ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName);
+SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
+
+// get the collection of this SynapseWorkloadGroupResource
+SynapseWorkloadGroupCollection collection = synapseSqlPool.GetSynapseWorkloadGroups();
 
 // invoke the operation
+string workloadGroupName = "smallrc";
 SynapseWorkloadGroupData data = new SynapseWorkloadGroupData()
 {
     MinResourcePercent = 0,
     MaxResourcePercent = 100,
     MinResourcePercentPerRequest = 3,
 };
-ArmOperation<SynapseWorkloadGroupResource> lro = await synapseWorkloadGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapseWorkloadGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workloadGroupName, data);
 SynapseWorkloadGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

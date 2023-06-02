@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseKeyResource created on azure
-// for more information of creating SynapseKeyResource, please refer to the document of SynapseKeyResource
+// this example assumes you already have this SynapseWorkspaceResource created on azure
+// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
 string subscriptionId = "01234567-89ab-4def-0123-456789abcdef";
 string resourceGroupName = "ExampleResourceGroup";
 string workspaceName = "ExampleWorkspace";
-string keyName = "somekey";
-ResourceIdentifier synapseKeyResourceId = SynapseKeyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, keyName);
-SynapseKeyResource synapseKey = client.GetSynapseKeyResource(synapseKeyResourceId);
+ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+
+// get the collection of this SynapseKeyResource
+SynapseKeyCollection collection = synapseWorkspace.GetSynapseKeys();
 
 // invoke the operation
+string keyName = "somekey";
 SynapseKeyData data = new SynapseKeyData()
 {
     IsActiveCmk = true,
     KeyVaultUri = new Uri("https://vault.azure.net/keys/somesecret"),
 };
-ArmOperation<SynapseKeyResource> lro = await synapseKey.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapseKeyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, keyName, data);
 SynapseKeyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
 
@@ -16,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SapProviderInstanceResource created on azure
-// for more information of creating SapProviderInstanceResource, please refer to the document of SapProviderInstanceResource
+// this example assumes you already have this SapMonitorResource created on azure
+// for more information of creating SapMonitorResource, please refer to the document of SapMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "mySapMonitor";
-string providerInstanceName = "myProviderInstance";
-ResourceIdentifier sapProviderInstanceResourceId = SapProviderInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, providerInstanceName);
-SapProviderInstanceResource sapProviderInstance = client.GetSapProviderInstanceResource(sapProviderInstanceResourceId);
+ResourceIdentifier sapMonitorResourceId = SapMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+SapMonitorResource sapMonitor = client.GetSapMonitorResource(sapMonitorResourceId);
+
+// get the collection of this SapProviderInstanceResource
+SapProviderInstanceCollection collection = sapMonitor.GetSapProviderInstances();
 
 // invoke the operation
+string providerInstanceName = "myProviderInstance";
 SapProviderInstanceData data = new SapProviderInstanceData()
 {
     ProviderSettings = new MsSqlServerProviderInstanceProperties()
@@ -39,7 +41,7 @@ SapProviderInstanceData data = new SapProviderInstanceData()
         SslPreference = SapSslPreference.RootCertificate,
     },
 };
-ArmOperation<SapProviderInstanceResource> lro = await sapProviderInstance.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SapProviderInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, providerInstanceName, data);
 SapProviderInstanceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

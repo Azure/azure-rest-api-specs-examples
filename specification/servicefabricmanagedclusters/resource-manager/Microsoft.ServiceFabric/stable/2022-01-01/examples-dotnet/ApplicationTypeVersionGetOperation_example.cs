@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ServiceFabricManagedClusters;
+using Azure.ResourceManager.ServiceFabricManagedClusters.Models;
 
 // Generated from example definition: specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/stable/2022-01-01/examples/ApplicationTypeVersionGetOperation_example.json
 // this example is just showing the usage of "ApplicationTypeVersions_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceFabricManagedApplicationTypeResource created on azure
-// for more information of creating ServiceFabricManagedApplicationTypeResource, please refer to the document of ServiceFabricManagedApplicationTypeResource
+// this example assumes you already have this ServiceFabricManagedApplicationTypeVersionResource created on azure
+// for more information of creating ServiceFabricManagedApplicationTypeVersionResource, please refer to the document of ServiceFabricManagedApplicationTypeVersionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resRg";
 string clusterName = "myCluster";
 string applicationTypeName = "myAppType";
-ResourceIdentifier serviceFabricManagedApplicationTypeResourceId = ServiceFabricManagedApplicationTypeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationTypeName);
-ServiceFabricManagedApplicationTypeResource serviceFabricManagedApplicationType = client.GetServiceFabricManagedApplicationTypeResource(serviceFabricManagedApplicationTypeResourceId);
-
-// get the collection of this ServiceFabricManagedApplicationTypeVersionResource
-ServiceFabricManagedApplicationTypeVersionCollection collection = serviceFabricManagedApplicationType.GetServiceFabricManagedApplicationTypeVersions();
+string version = "1.0";
+ResourceIdentifier serviceFabricManagedApplicationTypeVersionResourceId = ServiceFabricManagedApplicationTypeVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationTypeName, version);
+ServiceFabricManagedApplicationTypeVersionResource serviceFabricManagedApplicationTypeVersion = client.GetServiceFabricManagedApplicationTypeVersionResource(serviceFabricManagedApplicationTypeVersionResourceId);
 
 // invoke the operation
-string version = "1.0";
-bool result = await collection.ExistsAsync(version);
+ServiceFabricManagedApplicationTypeVersionResource result = await serviceFabricManagedApplicationTypeVersion.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ServiceFabricManagedApplicationTypeVersionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

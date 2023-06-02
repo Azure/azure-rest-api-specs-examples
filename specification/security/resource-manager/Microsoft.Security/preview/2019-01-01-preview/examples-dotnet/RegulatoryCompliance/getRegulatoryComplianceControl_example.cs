@@ -13,19 +13,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RegulatoryComplianceControlResource created on azure
-// for more information of creating RegulatoryComplianceControlResource, please refer to the document of RegulatoryComplianceControlResource
+// this example assumes you already have this RegulatoryComplianceStandardResource created on azure
+// for more information of creating RegulatoryComplianceStandardResource, please refer to the document of RegulatoryComplianceStandardResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string regulatoryComplianceStandardName = "PCI-DSS-3.2";
-string regulatoryComplianceControlName = "1.1";
-ResourceIdentifier regulatoryComplianceControlResourceId = RegulatoryComplianceControlResource.CreateResourceIdentifier(subscriptionId, regulatoryComplianceStandardName, regulatoryComplianceControlName);
-RegulatoryComplianceControlResource regulatoryComplianceControl = client.GetRegulatoryComplianceControlResource(regulatoryComplianceControlResourceId);
+ResourceIdentifier regulatoryComplianceStandardResourceId = RegulatoryComplianceStandardResource.CreateResourceIdentifier(subscriptionId, regulatoryComplianceStandardName);
+RegulatoryComplianceStandardResource regulatoryComplianceStandard = client.GetRegulatoryComplianceStandardResource(regulatoryComplianceStandardResourceId);
+
+// get the collection of this RegulatoryComplianceControlResource
+RegulatoryComplianceControlCollection collection = regulatoryComplianceStandard.GetRegulatoryComplianceControls();
 
 // invoke the operation
-RegulatoryComplianceControlResource result = await regulatoryComplianceControl.GetAsync();
+string regulatoryComplianceControlName = "1.1";
+bool result = await collection.ExistsAsync(regulatoryComplianceControlName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RegulatoryComplianceControlData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

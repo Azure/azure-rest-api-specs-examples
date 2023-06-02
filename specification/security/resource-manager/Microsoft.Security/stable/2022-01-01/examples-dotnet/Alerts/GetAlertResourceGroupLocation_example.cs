@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2022-01-01/examples/Alerts/GetAlertResourceGroupLocation_example.json
@@ -14,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ResourceGroupSecurityAlertResource created on azure
+// for more information of creating ResourceGroupSecurityAlertResource, please refer to the document of ResourceGroupSecurityAlertResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string resourceGroupName = "myRg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ResourceGroupSecurityAlertResource
 AzureLocation ascLocation = new AzureLocation("westeurope");
-ResourceGroupSecurityAlertCollection collection = resourceGroupResource.GetResourceGroupSecurityAlerts(ascLocation);
+string alertName = "2518298467986649999_4d25bfef-2d77-4a08-adc0-3e35715cc92a";
+ResourceIdentifier resourceGroupSecurityAlertResourceId = ResourceGroupSecurityAlertResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, ascLocation, alertName);
+ResourceGroupSecurityAlertResource resourceGroupSecurityAlert = client.GetResourceGroupSecurityAlertResource(resourceGroupSecurityAlertResourceId);
 
 // invoke the operation
-string alertName = "2518298467986649999_4d25bfef-2d77-4a08-adc0-3e35715cc92a";
-bool result = await collection.ExistsAsync(alertName);
+ResourceGroupSecurityAlertResource result = await resourceGroupSecurityAlert.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityAlertData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

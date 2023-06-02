@@ -4,8 +4,8 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
+using Azure.ResourceManager.SecurityCenter.Models;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2021-01-15-preview/examples/IngestionSettings/CreateIngestionSetting_example.json
 // this example is just showing the usage of "IngestionSettings_Create" operation, for the dependent resources, they will have to be created separately.
@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this IngestionSettingResource created on azure
+// for more information of creating IngestionSettingResource, please refer to the document of IngestionSettingResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this IngestionSettingResource
-IngestionSettingCollection collection = subscriptionResource.GetIngestionSettings();
+string ingestionSettingName = "default";
+ResourceIdentifier ingestionSettingResourceId = IngestionSettingResource.CreateResourceIdentifier(subscriptionId, ingestionSettingName);
+IngestionSettingResource ingestionSetting = client.GetIngestionSettingResource(ingestionSettingResourceId);
 
 // invoke the operation
-string ingestionSettingName = "default";
 IngestionSettingData data = new IngestionSettingData();
-ArmOperation<IngestionSettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ingestionSettingName, data);
+ArmOperation<IngestionSettingResource> lro = await ingestionSetting.UpdateAsync(WaitUntil.Completed, data);
 IngestionSettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

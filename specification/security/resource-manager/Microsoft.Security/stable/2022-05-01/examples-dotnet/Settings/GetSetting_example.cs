@@ -26,7 +26,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 SecuritySettingCollection collection = subscriptionResource.GetSecuritySettings();
 
 // invoke the operation
-SecuritySettingName settingName = SecuritySettingName.Mcas;
+SecuritySettingName settingName = SecuritySettingName.Wdatp;
 bool result = await collection.ExistsAsync(settingName);
 
 Console.WriteLine($"Succeeded: {result}");

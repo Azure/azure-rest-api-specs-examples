@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -16,17 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SubscriptionAssessmentMetadataResource created on azure
+// for more information of creating SubscriptionAssessmentMetadataResource, please refer to the document of SubscriptionAssessmentMetadataResource
 string subscriptionId = "0980887d-03d6-408c-9566-532f3456804e";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SubscriptionAssessmentMetadataResource
-SubscriptionAssessmentMetadataCollection collection = subscriptionResource.GetAllSubscriptionAssessmentMetadata();
+string assessmentMetadataName = "21300918-b2e3-0346-785f-c77ff57d243b";
+ResourceIdentifier subscriptionAssessmentMetadataResourceId = SubscriptionAssessmentMetadataResource.CreateResourceIdentifier(subscriptionId, assessmentMetadataName);
+SubscriptionAssessmentMetadataResource subscriptionAssessmentMetadata = client.GetSubscriptionAssessmentMetadataResource(subscriptionAssessmentMetadataResourceId);
 
 // invoke the operation
-string assessmentMetadataName = "21300918-b2e3-0346-785f-c77ff57d243b";
-bool result = await collection.ExistsAsync(assessmentMetadataName);
+SubscriptionAssessmentMetadataResource result = await subscriptionAssessmentMetadata.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityAssessmentMetadataData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

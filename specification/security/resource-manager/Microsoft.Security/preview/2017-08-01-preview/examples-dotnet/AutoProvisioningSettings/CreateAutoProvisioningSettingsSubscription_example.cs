@@ -4,6 +4,7 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -15,19 +16,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutoProvisioningSettingResource created on azure
-// for more information of creating AutoProvisioningSettingResource, please refer to the document of AutoProvisioningSettingResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-string settingName = "default";
-ResourceIdentifier autoProvisioningSettingResourceId = AutoProvisioningSettingResource.CreateResourceIdentifier(subscriptionId, settingName);
-AutoProvisioningSettingResource autoProvisioningSetting = client.GetAutoProvisioningSettingResource(autoProvisioningSettingResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this AutoProvisioningSettingResource
+AutoProvisioningSettingCollection collection = subscriptionResource.GetAutoProvisioningSettings();
 
 // invoke the operation
+string settingName = "default";
 AutoProvisioningSettingData data = new AutoProvisioningSettingData()
 {
     AutoProvision = AutoProvisionState.On,
 };
-ArmOperation<AutoProvisioningSettingResource> lro = await autoProvisioningSetting.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AutoProvisioningSettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, settingName, data);
 AutoProvisioningSettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

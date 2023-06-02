@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FileShareResource created on azure
-// for more information of creating FileShareResource, please refer to the document of FileShareResource
+// this example assumes you already have this FileServiceResource created on azure
+// for more information of creating FileServiceResource, please refer to the document of FileServiceResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res9871";
 string accountName = "sto6217";
-string shareName = "share1634";
-ResourceIdentifier fileShareResourceId = FileShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName);
-FileShareResource fileShare = client.GetFileShareResource(fileShareResourceId);
+ResourceIdentifier fileServiceResourceId = FileServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+FileServiceResource fileService = client.GetFileServiceResource(fileServiceResourceId);
+
+// get the collection of this FileShareResource
+FileShareCollection collection = fileService.GetFileShares();
 
 // invoke the operation
-FileShareResource result = await fileShare.GetAsync();
+string shareName = "share1634";
+bool result = await collection.ExistsAsync(shareName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-FileShareData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

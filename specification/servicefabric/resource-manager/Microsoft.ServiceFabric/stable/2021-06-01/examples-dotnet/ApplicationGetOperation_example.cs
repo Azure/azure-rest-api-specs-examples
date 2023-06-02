@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceFabricApplicationResource created on azure
-// for more information of creating ServiceFabricApplicationResource, please refer to the document of ServiceFabricApplicationResource
+// this example assumes you already have this ServiceFabricClusterResource created on azure
+// for more information of creating ServiceFabricClusterResource, please refer to the document of ServiceFabricClusterResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resRg";
 string clusterName = "myCluster";
-string applicationName = "myApp";
-ResourceIdentifier serviceFabricApplicationResourceId = ServiceFabricApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationName);
-ServiceFabricApplicationResource serviceFabricApplication = client.GetServiceFabricApplicationResource(serviceFabricApplicationResourceId);
+ResourceIdentifier serviceFabricClusterResourceId = ServiceFabricClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+ServiceFabricClusterResource serviceFabricCluster = client.GetServiceFabricClusterResource(serviceFabricClusterResourceId);
+
+// get the collection of this ServiceFabricApplicationResource
+ServiceFabricApplicationCollection collection = serviceFabricCluster.GetServiceFabricApplications();
 
 // invoke the operation
-ServiceFabricApplicationResource result = await serviceFabricApplication.GetAsync();
+string applicationName = "myApp";
+bool result = await collection.ExistsAsync(applicationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ServiceFabricApplicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

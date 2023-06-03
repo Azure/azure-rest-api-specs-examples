@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayPrivateLinkResource created on azure
-// for more information of creating RelayPrivateLinkResource, please refer to the document of RelayPrivateLinkResource
+// this example assumes you already have this RelayNamespaceResource created on azure
+// for more information of creating RelayNamespaceResource, please refer to the document of RelayNamespaceResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-5849";
-string privateLinkResourceName = "{PrivateLinkResource name}";
-ResourceIdentifier relayPrivateLinkResourceId = RelayPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, privateLinkResourceName);
-RelayPrivateLinkResource relayPrivateLinkResource = client.GetRelayPrivateLinkResource(relayPrivateLinkResourceId);
+ResourceIdentifier relayNamespaceResourceId = RelayNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+RelayNamespaceResource relayNamespace = client.GetRelayNamespaceResource(relayNamespaceResourceId);
+
+// get the collection of this RelayPrivateLinkResource
+RelayPrivateLinkResourceCollection collection = relayNamespace.GetRelayPrivateLinkResources();
 
 // invoke the operation
-RelayPrivateLinkResource result = await relayPrivateLinkResource.GetAsync();
+string privateLinkResourceName = "{PrivateLinkResource name}";
+bool result = await collection.ExistsAsync(privateLinkResourceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RelayPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

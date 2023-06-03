@@ -15,15 +15,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this SubscriptionAliasResource
-SubscriptionAliasCollection collection = tenantResource.GetSubscriptionAliases();
+// this example assumes you already have this SubscriptionAliasResource created on azure
+// for more information of creating SubscriptionAliasResource, please refer to the document of SubscriptionAliasResource
+string aliasName = "aliasForNewSub";
+ResourceIdentifier subscriptionAliasResourceId = SubscriptionAliasResource.CreateResourceIdentifier(aliasName);
+SubscriptionAliasResource subscriptionAlias = client.GetSubscriptionAliasResource(subscriptionAliasResourceId);
 
 // invoke the operation
-string aliasName = "aliasForNewSub";
 SubscriptionAliasCreateOrUpdateContent content = new SubscriptionAliasCreateOrUpdateContent()
 {
     DisplayName = "Test Subscription",
@@ -43,7 +41,7 @@ SubscriptionAliasCreateOrUpdateContent content = new SubscriptionAliasCreateOrUp
         },
     },
 };
-ArmOperation<SubscriptionAliasResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, aliasName, content);
+ArmOperation<SubscriptionAliasResource> lro = await subscriptionAlias.UpdateAsync(WaitUntil.Completed, content);
 SubscriptionAliasResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

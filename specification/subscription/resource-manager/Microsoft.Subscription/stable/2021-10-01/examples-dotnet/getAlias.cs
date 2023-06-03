@@ -15,15 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this SubscriptionAliasResource
-SubscriptionAliasCollection collection = tenantResource.GetSubscriptionAliases();
+// this example assumes you already have this SubscriptionAliasResource created on azure
+// for more information of creating SubscriptionAliasResource, please refer to the document of SubscriptionAliasResource
+string aliasName = "aliasForNewSub";
+ResourceIdentifier subscriptionAliasResourceId = SubscriptionAliasResource.CreateResourceIdentifier(aliasName);
+SubscriptionAliasResource subscriptionAlias = client.GetSubscriptionAliasResource(subscriptionAliasResourceId);
 
 // invoke the operation
-string aliasName = "aliasForNewSub";
-bool result = await collection.ExistsAsync(aliasName);
+SubscriptionAliasResource result = await subscriptionAlias.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SubscriptionAliasData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

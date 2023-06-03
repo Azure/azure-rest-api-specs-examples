@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
-// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
+// this example assumes you already have this OperationalInsightsDataExportResource created on azure
+// for more information of creating OperationalInsightsDataExportResource, please refer to the document of OperationalInsightsDataExportResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "RgTest1";
 string workspaceName = "DeWnTest1234";
-ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
-
-// get the collection of this OperationalInsightsDataExportResource
-OperationalInsightsDataExportCollection collection = operationalInsightsWorkspace.GetOperationalInsightsDataExports();
+string dataExportName = "export1";
+ResourceIdentifier operationalInsightsDataExportResourceId = OperationalInsightsDataExportResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, dataExportName);
+OperationalInsightsDataExportResource operationalInsightsDataExport = client.GetOperationalInsightsDataExportResource(operationalInsightsDataExportResourceId);
 
 // invoke the operation
-string dataExportName = "export1";
-bool result = await collection.ExistsAsync(dataExportName);
+OperationalInsightsDataExportResource result = await operationalInsightsDataExport.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+OperationalInsightsDataExportData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

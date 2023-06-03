@@ -4,6 +4,7 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.OperationalInsights;
 using Azure.ResourceManager.OperationalInsights.Models;
 using Azure.ResourceManager.Resources;
@@ -16,18 +17,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this OperationalInsightsClusterResource created on azure
+// for more information of creating OperationalInsightsClusterResource, please refer to the document of OperationalInsightsClusterResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "oiautorest6685";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this OperationalInsightsClusterResource
-OperationalInsightsClusterCollection collection = resourceGroupResource.GetOperationalInsightsClusters();
+string clusterName = "oiautorest6685";
+ResourceIdentifier operationalInsightsClusterResourceId = OperationalInsightsClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+OperationalInsightsClusterResource operationalInsightsCluster = client.GetOperationalInsightsClusterResource(operationalInsightsClusterResourceId);
 
 // invoke the operation
-string clusterName = "oiautorest6685";
-bool result = await collection.ExistsAsync(clusterName);
+OperationalInsightsClusterResource result = await operationalInsightsCluster.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+OperationalInsightsClusterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

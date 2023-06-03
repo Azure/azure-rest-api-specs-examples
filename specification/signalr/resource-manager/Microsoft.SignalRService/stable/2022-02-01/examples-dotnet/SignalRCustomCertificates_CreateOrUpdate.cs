@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SignalRResource created on azure
-// for more information of creating SignalRResource, please refer to the document of SignalRResource
+// this example assumes you already have this SignalRCustomCertificateResource created on azure
+// for more information of creating SignalRCustomCertificateResource, please refer to the document of SignalRCustomCertificateResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "mySignalRService";
-ResourceIdentifier signalRResourceId = SignalRResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-SignalRResource signalR = client.GetSignalRResource(signalRResourceId);
-
-// get the collection of this SignalRCustomCertificateResource
-SignalRCustomCertificateCollection collection = signalR.GetSignalRCustomCertificates();
+string certificateName = "myCert";
+ResourceIdentifier signalRCustomCertificateResourceId = SignalRCustomCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, certificateName);
+SignalRCustomCertificateResource signalRCustomCertificate = client.GetSignalRCustomCertificateResource(signalRCustomCertificateResourceId);
 
 // invoke the operation
-string certificateName = "myCert";
 SignalRCustomCertificateData data = new SignalRCustomCertificateData(new Uri("https://myvault.keyvault.azure.net/"), "mycert")
 {
     KeyVaultSecretVersion = "bb6a44b2743f47f68dad0d6cc9756432",
 };
-ArmOperation<SignalRCustomCertificateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, certificateName, data);
+ArmOperation<SignalRCustomCertificateResource> lro = await signalRCustomCertificate.UpdateAsync(WaitUntil.Completed, data);
 SignalRCustomCertificateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

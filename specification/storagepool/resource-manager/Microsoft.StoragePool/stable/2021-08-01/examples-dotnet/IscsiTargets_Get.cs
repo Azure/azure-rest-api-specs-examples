@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DiskPoolResource created on azure
-// for more information of creating DiskPoolResource, please refer to the document of DiskPoolResource
+// this example assumes you already have this DiskPoolIscsiTargetResource created on azure
+// for more information of creating DiskPoolIscsiTargetResource, please refer to the document of DiskPoolIscsiTargetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string diskPoolName = "myDiskPool";
-ResourceIdentifier diskPoolResourceId = DiskPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, diskPoolName);
-DiskPoolResource diskPool = client.GetDiskPoolResource(diskPoolResourceId);
-
-// get the collection of this DiskPoolIscsiTargetResource
-DiskPoolIscsiTargetCollection collection = diskPool.GetDiskPoolIscsiTargets();
+string iscsiTargetName = "myIscsiTarget";
+ResourceIdentifier diskPoolIscsiTargetResourceId = DiskPoolIscsiTargetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, diskPoolName, iscsiTargetName);
+DiskPoolIscsiTargetResource diskPoolIscsiTarget = client.GetDiskPoolIscsiTargetResource(diskPoolIscsiTargetResourceId);
 
 // invoke the operation
-string iscsiTargetName = "myIscsiTarget";
-bool result = await collection.ExistsAsync(iscsiTargetName);
+DiskPoolIscsiTargetResource result = await diskPoolIscsiTarget.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DiskPoolIscsiTargetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

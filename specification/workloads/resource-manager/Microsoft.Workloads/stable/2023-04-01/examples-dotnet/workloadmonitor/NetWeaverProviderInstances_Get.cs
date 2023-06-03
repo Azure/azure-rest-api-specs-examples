@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Workloads;
 using Azure.ResourceManager.Workloads.Models;
 
@@ -16,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SapProviderInstanceResource created on azure
-// for more information of creating SapProviderInstanceResource, please refer to the document of SapProviderInstanceResource
+// this example assumes you already have this SapMonitorResource created on azure
+// for more information of creating SapMonitorResource, please refer to the document of SapMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "mySapMonitor";
-string providerInstanceName = "myProviderInstance";
-ResourceIdentifier sapProviderInstanceResourceId = SapProviderInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, providerInstanceName);
-SapProviderInstanceResource sapProviderInstance = client.GetSapProviderInstanceResource(sapProviderInstanceResourceId);
+ResourceIdentifier sapMonitorResourceId = SapMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+SapMonitorResource sapMonitor = client.GetSapMonitorResource(sapMonitorResourceId);
+
+// get the collection of this SapProviderInstanceResource
+SapProviderInstanceCollection collection = sapMonitor.GetSapProviderInstances();
 
 // invoke the operation
-SapProviderInstanceResource result = await sapProviderInstance.GetAsync();
+string providerInstanceName = "myProviderInstance";
+bool result = await collection.ExistsAsync(providerInstanceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SapProviderInstanceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

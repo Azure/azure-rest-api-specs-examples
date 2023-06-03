@@ -15,18 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProviderRegistrationResource created on azure
-// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
+// this example assumes you already have this NotificationRegistrationResource created on azure
+// for more information of creating NotificationRegistrationResource, please refer to the document of NotificationRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
-ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
-
-// get the collection of this NotificationRegistrationResource
-NotificationRegistrationCollection collection = providerRegistration.GetNotificationRegistrations();
+string notificationRegistrationName = "fooNotificationRegistration";
+ResourceIdentifier notificationRegistrationResourceId = NotificationRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, notificationRegistrationName);
+NotificationRegistrationResource notificationRegistration = client.GetNotificationRegistrationResource(notificationRegistrationResourceId);
 
 // invoke the operation
-string notificationRegistrationName = "fooNotificationRegistration";
 NotificationRegistrationData data = new NotificationRegistrationData()
 {
     Properties = new NotificationRegistrationProperties()
@@ -57,7 +54,7 @@ NotificationRegistrationData data = new NotificationRegistrationData()
         },
     },
 };
-ArmOperation<NotificationRegistrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, notificationRegistrationName, data);
+ArmOperation<NotificationRegistrationResource> lro = await notificationRegistration.UpdateAsync(WaitUntil.Completed, data);
 NotificationRegistrationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

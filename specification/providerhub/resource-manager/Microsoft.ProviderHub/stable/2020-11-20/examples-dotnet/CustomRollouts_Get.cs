@@ -15,18 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProviderRegistrationResource created on azure
-// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
+// this example assumes you already have this CustomRolloutResource created on azure
+// for more information of creating CustomRolloutResource, please refer to the document of CustomRolloutResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
-ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
-
-// get the collection of this CustomRolloutResource
-CustomRolloutCollection collection = providerRegistration.GetCustomRollouts();
+string rolloutName = "canaryTesting99";
+ResourceIdentifier customRolloutResourceId = CustomRolloutResource.CreateResourceIdentifier(subscriptionId, providerNamespace, rolloutName);
+CustomRolloutResource customRollout = client.GetCustomRolloutResource(customRolloutResourceId);
 
 // invoke the operation
-string rolloutName = "canaryTesting99";
-bool result = await collection.ExistsAsync(rolloutName);
+CustomRolloutResource result = await customRollout.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CustomRolloutData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

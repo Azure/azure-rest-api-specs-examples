@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -16,23 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SecurityCenterPricingResource created on azure
+// for more information of creating SecurityCenterPricingResource, please refer to the document of SecurityCenterPricingResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SecurityCenterPricingResource
-SecurityCenterPricingCollection collection = subscriptionResource.GetSecurityCenterPricings();
+string pricingName = "VirtualMachines";
+ResourceIdentifier securityCenterPricingResourceId = SecurityCenterPricingResource.CreateResourceIdentifier(subscriptionId, pricingName);
+SecurityCenterPricingResource securityCenterPricing = client.GetSecurityCenterPricingResource(securityCenterPricingResourceId);
 
 // invoke the operation
-string pricingName = "VirtualMachines";
 SecurityCenterPricingData data = new SecurityCenterPricingData()
 {
     PricingTier = SecurityCenterPricingTier.Standard,
     SubPlan = "P2",
 };
-ArmOperation<SecurityCenterPricingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, pricingName, data);
+ArmOperation<SecurityCenterPricingResource> lro = await securityCenterPricing.UpdateAsync(WaitUntil.Completed, data);
 SecurityCenterPricingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

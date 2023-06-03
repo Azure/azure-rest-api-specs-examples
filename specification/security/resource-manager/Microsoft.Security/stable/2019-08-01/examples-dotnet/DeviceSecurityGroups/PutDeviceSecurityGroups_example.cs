@@ -16,16 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this DeviceSecurityGroupResource
+// this example assumes you already have this DeviceSecurityGroupResource created on azure
+// for more information of creating DeviceSecurityGroupResource, please refer to the document of DeviceSecurityGroupResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/SampleRG/providers/Microsoft.Devices/iotHubs/sampleiothub";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceId));
-DeviceSecurityGroupCollection collection = client.GetDeviceSecurityGroups(scopeId);
+string deviceSecurityGroupName = "samplesecuritygroup";
+ResourceIdentifier deviceSecurityGroupResourceId = DeviceSecurityGroupResource.CreateResourceIdentifier(resourceId, deviceSecurityGroupName);
+DeviceSecurityGroupResource deviceSecurityGroup = client.GetDeviceSecurityGroupResource(deviceSecurityGroupResourceId);
 
 // invoke the operation
-string deviceSecurityGroupName = "samplesecuritygroup";
 DeviceSecurityGroupData data = new DeviceSecurityGroupData()
 {
     TimeWindowRules =
@@ -33,7 +31,7 @@ DeviceSecurityGroupData data = new DeviceSecurityGroupData()
     new ActiveConnectionsNotInAllowedRange(true,0,30,XmlConvert.ToTimeSpan("PT05M"))
     },
 };
-ArmOperation<DeviceSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deviceSecurityGroupName, data);
+ArmOperation<DeviceSecurityGroupResource> lro = await deviceSecurityGroup.UpdateAsync(WaitUntil.Completed, data);
 DeviceSecurityGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

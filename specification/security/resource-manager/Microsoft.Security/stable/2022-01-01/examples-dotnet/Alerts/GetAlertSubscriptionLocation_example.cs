@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.SecurityCenter;
-using Azure.ResourceManager.SecurityCenter.Models;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/stable/2022-01-01/examples/Alerts/GetAlertSubscriptionLocation_example.json
 // this example is just showing the usage of "Alerts_GetSubscriptionLevel" operation, for the dependent resources, they will have to be created separately.
@@ -15,18 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityCenterLocationResource created on azure
-// for more information of creating SecurityCenterLocationResource, please refer to the document of SecurityCenterLocationResource
+// this example assumes you already have this SubscriptionSecurityAlertResource created on azure
+// for more information of creating SubscriptionSecurityAlertResource, please refer to the document of SubscriptionSecurityAlertResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 AzureLocation ascLocation = new AzureLocation("westeurope");
-ResourceIdentifier securityCenterLocationResourceId = SecurityCenterLocationResource.CreateResourceIdentifier(subscriptionId, ascLocation);
-SecurityCenterLocationResource securityCenterLocation = client.GetSecurityCenterLocationResource(securityCenterLocationResourceId);
-
-// get the collection of this SubscriptionSecurityAlertResource
-SubscriptionSecurityAlertCollection collection = securityCenterLocation.GetSubscriptionSecurityAlerts();
+string alertName = "2518770965529163669_F144EE95-A3E5-42DA-A279-967D115809AA";
+ResourceIdentifier subscriptionSecurityAlertResourceId = SubscriptionSecurityAlertResource.CreateResourceIdentifier(subscriptionId, ascLocation, alertName);
+SubscriptionSecurityAlertResource subscriptionSecurityAlert = client.GetSubscriptionSecurityAlertResource(subscriptionSecurityAlertResourceId);
 
 // invoke the operation
-string alertName = "2518770965529163669_F144EE95-A3E5-42DA-A279-967D115809AA";
-bool result = await collection.ExistsAsync(alertName);
+SubscriptionSecurityAlertResource result = await subscriptionSecurityAlert.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityAlertData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

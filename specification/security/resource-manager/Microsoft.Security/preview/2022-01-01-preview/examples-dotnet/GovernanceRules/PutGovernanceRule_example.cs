@@ -16,18 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionGovernanceRuleResource created on azure
-// for more information of creating SubscriptionGovernanceRuleResource, please refer to the document of SubscriptionGovernanceRuleResource
-string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
+// this example assumes you already have this GovernanceRuleResource created on azure
+// for more information of creating GovernanceRuleResource, please refer to the document of GovernanceRuleResource
+string scope = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string ruleId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
-ResourceIdentifier subscriptionGovernanceRuleResourceId = SubscriptionGovernanceRuleResource.CreateResourceIdentifier(subscriptionId, ruleId);
-SubscriptionGovernanceRuleResource subscriptionGovernanceRule = client.GetSubscriptionGovernanceRuleResource(subscriptionGovernanceRuleResourceId);
+ResourceIdentifier governanceRuleResourceId = GovernanceRuleResource.CreateResourceIdentifier(scope, ruleId);
+GovernanceRuleResource governanceRule = client.GetGovernanceRuleResource(governanceRuleResourceId);
 
 // invoke the operation
 GovernanceRuleData data = new GovernanceRuleData()
 {
     DisplayName = "Admin's rule",
-    Description = "A rule on critical recommendations",
+    Description = "A rule for critical recommendations",
     RemediationTimeframe = "7.00:00:00",
     IsGracePeriod = true,
     RulePriority = 200,
@@ -55,8 +55,8 @@ GovernanceRuleData data = new GovernanceRuleData()
         IsOwnerEmailNotificationDisabled = false,
     },
 };
-ArmOperation<SubscriptionGovernanceRuleResource> lro = await subscriptionGovernanceRule.UpdateAsync(WaitUntil.Completed, data);
-SubscriptionGovernanceRuleResource result = lro.Value;
+ArmOperation<GovernanceRuleResource> lro = await governanceRule.UpdateAsync(WaitUntil.Completed, data);
+GovernanceRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisResource created on azure
-// for more information of creating RedisResource, please refer to the document of RedisResource
+// this example assumes you already have this RedisFirewallRuleResource created on azure
+// for more information of creating RedisFirewallRuleResource, please refer to the document of RedisFirewallRuleResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string cacheName = "cache1";
-ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName);
-RedisResource redis = client.GetRedisResource(redisResourceId);
-
-// get the collection of this RedisFirewallRuleResource
-RedisFirewallRuleCollection collection = redis.GetRedisFirewallRules();
+string ruleName = "rule1";
+ResourceIdentifier redisFirewallRuleResourceId = RedisFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName, ruleName);
+RedisFirewallRuleResource redisFirewallRule = client.GetRedisFirewallRuleResource(redisFirewallRuleResourceId);
 
 // invoke the operation
-string ruleName = "rule1";
-bool result = await collection.ExistsAsync(ruleName);
+RedisFirewallRuleResource result = await redisFirewallRule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RedisFirewallRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

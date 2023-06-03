@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisPrivateEndpointConnectionResource created on azure
-// for more information of creating RedisPrivateEndpointConnectionResource, please refer to the document of RedisPrivateEndpointConnectionResource
+// this example assumes you already have this RedisResource created on azure
+// for more information of creating RedisResource, please refer to the document of RedisResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rgtest01";
 string cacheName = "cachetest01";
-string privateEndpointConnectionName = "pectest01";
-ResourceIdentifier redisPrivateEndpointConnectionResourceId = RedisPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName, privateEndpointConnectionName);
-RedisPrivateEndpointConnectionResource redisPrivateEndpointConnection = client.GetRedisPrivateEndpointConnectionResource(redisPrivateEndpointConnectionResourceId);
+ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName);
+RedisResource redis = client.GetRedisResource(redisResourceId);
+
+// get the collection of this RedisPrivateEndpointConnectionResource
+RedisPrivateEndpointConnectionCollection collection = redis.GetRedisPrivateEndpointConnections();
 
 // invoke the operation
-RedisPrivateEndpointConnectionResource result = await redisPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "pectest01";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RedisPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

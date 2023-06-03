@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MoverResourceSetResource created on azure
-// for more information of creating MoverResourceSetResource, please refer to the document of MoverResourceSetResource
+// this example assumes you already have this MoverResource created on azure
+// for more information of creating MoverResource, please refer to the document of MoverResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string moverResourceSetName = "movecollection1";
-ResourceIdentifier moverResourceSetResourceId = MoverResourceSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, moverResourceSetName);
-MoverResourceSetResource moverResourceSet = client.GetMoverResourceSetResource(moverResourceSetResourceId);
-
-// get the collection of this MoverResource
-MoverResourceCollection collection = moverResourceSet.GetMoverResources();
+string moverResourceName = "moveresourcename1";
+ResourceIdentifier moverResourceId = MoverResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, moverResourceSetName, moverResourceName);
+MoverResource moverResource = client.GetMoverResource(moverResourceId);
 
 // invoke the operation
-string moverResourceName = "moveresourcename1";
 MoverResourceData data = new MoverResourceData()
 {
     Properties = new MoverResourceProperties(new ResourceIdentifier("/subscriptions/subid/resourceGroups/eastusRG/providers/Microsoft.Compute/virtualMachines/eastusvm1"))
@@ -52,7 +49,7 @@ MoverResourceData data = new MoverResourceData()
         },
     },
 };
-ArmOperation<MoverResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, moverResourceName, data);
+ArmOperation<MoverResource> lro = await moverResource.UpdateAsync(WaitUntil.Completed, data);
 MoverResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

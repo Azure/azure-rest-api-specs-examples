@@ -17,19 +17,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MetricAlertResource created on azure
-// for more information of creating MetricAlertResource, please refer to the document of MetricAlertResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "gigtest";
-string ruleName = "chiricutin";
-ResourceIdentifier metricAlertResourceId = MetricAlertResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, ruleName);
-MetricAlertResource metricAlert = client.GetMetricAlertResource(metricAlertResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this MetricAlertResource
+MetricAlertCollection collection = resourceGroupResource.GetMetricAlerts();
 
 // invoke the operation
-MetricAlertResource result = await metricAlert.GetAsync();
+string ruleName = "chiricutin";
+bool result = await collection.ExistsAsync(ruleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MetricAlertData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

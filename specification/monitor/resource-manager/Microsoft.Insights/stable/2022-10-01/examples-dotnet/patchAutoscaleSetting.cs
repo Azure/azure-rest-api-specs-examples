@@ -88,7 +88,6 @@ AutoscaleSettingPatch patch = new AutoscaleSettingPatch()
     {
     new AutoscaleNotification()
     {
-    Operation = MonitorOperationType.Scale,
     Email = new EmailNotification()
     {
     SendToSubscriptionAdministrator = true,

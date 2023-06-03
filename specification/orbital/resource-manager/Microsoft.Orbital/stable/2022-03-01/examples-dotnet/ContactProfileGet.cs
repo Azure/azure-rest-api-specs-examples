@@ -1,5 +1,7 @@
 using System;
+using System.Net;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure;
 using Azure.Core;
 using Azure.Identity;
@@ -16,19 +18,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OrbitalContactProfileResource created on azure
-// for more information of creating OrbitalContactProfileResource, please refer to the document of OrbitalContactProfileResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "c1be1141-a7c9-4aac-9608-3c2e2f1152c3";
 string resourceGroupName = "contoso-Rgp";
-string contactProfileName = "CONTOSO-CP";
-ResourceIdentifier orbitalContactProfileResourceId = OrbitalContactProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, contactProfileName);
-OrbitalContactProfileResource orbitalContactProfile = client.GetOrbitalContactProfileResource(orbitalContactProfileResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this OrbitalContactProfileResource
+OrbitalContactProfileCollection collection = resourceGroupResource.GetOrbitalContactProfiles();
 
 // invoke the operation
-OrbitalContactProfileResource result = await orbitalContactProfile.GetAsync();
+string contactProfileName = "CONTOSO-CP";
+bool result = await collection.ExistsAsync(contactProfileName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-OrbitalContactProfileData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

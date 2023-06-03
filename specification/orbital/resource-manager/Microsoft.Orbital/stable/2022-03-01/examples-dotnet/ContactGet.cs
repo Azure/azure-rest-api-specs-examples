@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OrbitalSpacecraftResource created on azure
-// for more information of creating OrbitalSpacecraftResource, please refer to the document of OrbitalSpacecraftResource
+// this example assumes you already have this OrbitalContactResource created on azure
+// for more information of creating OrbitalContactResource, please refer to the document of OrbitalContactResource
 string subscriptionId = "c1be1141-a7c9-4aac-9608-3c2e2f1152c3";
 string resourceGroupName = "contoso-Rgp";
 string spacecraftName = "CONTOSO_SAT";
-ResourceIdentifier orbitalSpacecraftResourceId = OrbitalSpacecraftResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName);
-OrbitalSpacecraftResource orbitalSpacecraft = client.GetOrbitalSpacecraftResource(orbitalSpacecraftResourceId);
-
-// get the collection of this OrbitalContactResource
-OrbitalContactCollection collection = orbitalSpacecraft.GetOrbitalContacts();
+string contactName = "contact1";
+ResourceIdentifier orbitalContactResourceId = OrbitalContactResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName, contactName);
+OrbitalContactResource orbitalContact = client.GetOrbitalContactResource(orbitalContactResourceId);
 
 // invoke the operation
-string contactName = "contact1";
-bool result = await collection.ExistsAsync(contactName);
+OrbitalContactResource result = await orbitalContact.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+OrbitalContactData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

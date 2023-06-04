@@ -15,18 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProviderRegistrationResource created on azure
-// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
+// this example assumes you already have this NotificationRegistrationResource created on azure
+// for more information of creating NotificationRegistrationResource, please refer to the document of NotificationRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
-ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
-
-// get the collection of this NotificationRegistrationResource
-NotificationRegistrationCollection collection = providerRegistration.GetNotificationRegistrations();
+string notificationRegistrationName = "fooNotificationRegistration";
+ResourceIdentifier notificationRegistrationResourceId = NotificationRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, notificationRegistrationName);
+NotificationRegistrationResource notificationRegistration = client.GetNotificationRegistrationResource(notificationRegistrationResourceId);
 
 // invoke the operation
-string notificationRegistrationName = "fooNotificationRegistration";
-bool result = await collection.ExistsAsync(notificationRegistrationName);
+NotificationRegistrationResource result = await notificationRegistration.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NotificationRegistrationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

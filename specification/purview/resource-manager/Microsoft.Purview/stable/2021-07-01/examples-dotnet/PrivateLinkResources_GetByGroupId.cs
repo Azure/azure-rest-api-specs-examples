@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PurviewPrivateLinkResource created on azure
-// for more information of creating PurviewPrivateLinkResource, please refer to the document of PurviewPrivateLinkResource
+// this example assumes you already have this PurviewAccountResource created on azure
+// for more information of creating PurviewAccountResource, please refer to the document of PurviewAccountResource
 string subscriptionId = "12345678-1234-1234-12345678abc";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "account1";
-string groupId = "group1";
-ResourceIdentifier purviewPrivateLinkResourceId = PurviewPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, groupId);
-PurviewPrivateLinkResource purviewPrivateLinkResource = client.GetPurviewPrivateLinkResource(purviewPrivateLinkResourceId);
+ResourceIdentifier purviewAccountResourceId = PurviewAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+PurviewAccountResource purviewAccount = client.GetPurviewAccountResource(purviewAccountResourceId);
+
+// get the collection of this PurviewPrivateLinkResource
+PurviewPrivateLinkResourceCollection collection = purviewAccount.GetPurviewPrivateLinkResources();
 
 // invoke the operation
-PurviewPrivateLinkResource result = await purviewPrivateLinkResource.GetAsync();
+string groupId = "group1";
+bool result = await collection.ExistsAsync(groupId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PurviewPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

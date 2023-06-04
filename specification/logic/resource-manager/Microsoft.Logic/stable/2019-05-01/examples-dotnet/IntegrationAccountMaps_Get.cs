@@ -16,20 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountMapResource created on azure
-// for more information of creating IntegrationAccountMapResource, please refer to the document of IntegrationAccountMapResource
+// this example assumes you already have this IntegrationAccountResource created on azure
+// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-string mapName = "testMap";
-ResourceIdentifier integrationAccountMapResourceId = IntegrationAccountMapResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, mapName);
-IntegrationAccountMapResource integrationAccountMap = client.GetIntegrationAccountMapResource(integrationAccountMapResourceId);
+ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
+IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
+
+// get the collection of this IntegrationAccountMapResource
+IntegrationAccountMapCollection collection = integrationAccount.GetIntegrationAccountMaps();
 
 // invoke the operation
-IntegrationAccountMapResource result = await integrationAccountMap.GetAsync();
+string mapName = "testMap";
+bool result = await collection.ExistsAsync(mapName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-IntegrationAccountMapData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

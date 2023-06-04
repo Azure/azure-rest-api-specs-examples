@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountMapResource created on azure
-// for more information of creating IntegrationAccountMapResource, please refer to the document of IntegrationAccountMapResource
+// this example assumes you already have this IntegrationAccountResource created on azure
+// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
 string subscriptionId = "<Azure-subscription-ID>";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-string mapName = "testMap";
-ResourceIdentifier integrationAccountMapResourceId = IntegrationAccountMapResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, mapName);
-IntegrationAccountMapResource integrationAccountMap = client.GetIntegrationAccountMapResource(integrationAccountMapResourceId);
+ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
+IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
+
+// get the collection of this IntegrationAccountMapResource
+IntegrationAccountMapCollection collection = integrationAccount.GetIntegrationAccountMaps();
 
 // invoke the operation
+string mapName = "testMap";
 IntegrationAccountMapData data = new IntegrationAccountMapData(new AzureLocation("westus"), IntegrationAccountMapType.Xslt)
 {
     ContentType = new ContentType("application/xml"),
@@ -33,7 +36,7 @@ IntegrationAccountMapData data = new IntegrationAccountMapData(new AzureLocation
     {
     }),
 };
-ArmOperation<IntegrationAccountMapResource> lro = await integrationAccountMap.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<IntegrationAccountMapResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, mapName, data);
 IntegrationAccountMapResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -7,6 +7,7 @@ using Azure.ResourceManager;
 using Azure.ResourceManager.Orbital;
 using Azure.ResourceManager.Orbital.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Resources.Models;
 
 // Generated from example definition: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-03-01/examples/SpacecraftGet.json
 // this example is just showing the usage of "Spacecrafts_Get" operation, for the dependent resources, they will have to be created separately.
@@ -16,18 +17,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this OrbitalSpacecraftResource created on azure
+// for more information of creating OrbitalSpacecraftResource, please refer to the document of OrbitalSpacecraftResource
 string subscriptionId = "c1be1141-a7c9-4aac-9608-3c2e2f1152c3";
 string resourceGroupName = "contoso-Rgp";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this OrbitalSpacecraftResource
-OrbitalSpacecraftCollection collection = resourceGroupResource.GetOrbitalSpacecrafts();
+string spacecraftName = "CONTOSO_SAT";
+ResourceIdentifier orbitalSpacecraftResourceId = OrbitalSpacecraftResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName);
+OrbitalSpacecraftResource orbitalSpacecraft = client.GetOrbitalSpacecraftResource(orbitalSpacecraftResourceId);
 
 // invoke the operation
-string spacecraftName = "CONTOSO_SAT";
-bool result = await collection.ExistsAsync(spacecraftName);
+OrbitalSpacecraftResource result = await orbitalSpacecraft.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+OrbitalSpacecraftData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -14,19 +14,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OrbitalSpacecraftResource created on azure
-// for more information of creating OrbitalSpacecraftResource, please refer to the document of OrbitalSpacecraftResource
+// this example assumes you already have this OrbitalContactResource created on azure
+// for more information of creating OrbitalContactResource, please refer to the document of OrbitalContactResource
 string subscriptionId = "c1be1141-a7c9-4aac-9608-3c2e2f1152c3";
 string resourceGroupName = "contoso-Rgp";
 string spacecraftName = "CONTOSO_SAT";
-ResourceIdentifier orbitalSpacecraftResourceId = OrbitalSpacecraftResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName);
-OrbitalSpacecraftResource orbitalSpacecraft = client.GetOrbitalSpacecraftResource(orbitalSpacecraftResourceId);
-
-// get the collection of this OrbitalContactResource
-OrbitalContactCollection collection = orbitalSpacecraft.GetOrbitalContacts();
+string contactName = "contact1";
+ResourceIdentifier orbitalContactResourceId = OrbitalContactResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, spacecraftName, contactName);
+OrbitalContactResource orbitalContact = client.GetOrbitalContactResource(orbitalContactResourceId);
 
 // invoke the operation
-string contactName = "contact1";
 OrbitalContactData data = new OrbitalContactData()
 {
     ReservationStartOn = DateTimeOffset.Parse("2022-03-02T10:58:30Z"),
@@ -34,7 +31,7 @@ OrbitalContactData data = new OrbitalContactData()
     GroundStationName = "EASTUS2_0",
     ContactProfileId = new ResourceIdentifier("/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Orbital/contactProfiles/CONTOSO-CP"),
 };
-ArmOperation<OrbitalContactResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, contactName, data);
+ArmOperation<OrbitalContactResource> lro = await orbitalContact.UpdateAsync(WaitUntil.Completed, data);
 OrbitalContactResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -15,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KeyVaultResource created on azure
-// for more information of creating KeyVaultResource, please refer to the document of KeyVaultResource
+// this example assumes you already have this KeyVaultSecretResource created on azure
+// for more information of creating KeyVaultSecretResource, please refer to the document of KeyVaultSecretResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "sample-group";
 string vaultName = "sample-vault";
-ResourceIdentifier keyVaultResourceId = KeyVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
-KeyVaultResource keyVault = client.GetKeyVaultResource(keyVaultResourceId);
-
-// get the collection of this KeyVaultSecretResource
-KeyVaultSecretCollection collection = keyVault.GetKeyVaultSecrets();
+string secretName = "secret-name";
+ResourceIdentifier keyVaultSecretResourceId = KeyVaultSecretResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, secretName);
+KeyVaultSecretResource keyVaultSecret = client.GetKeyVaultSecretResource(keyVaultSecretResourceId);
 
 // invoke the operation
-string secretName = "secret-name";
-bool result = await collection.ExistsAsync(secretName);
+KeyVaultSecretResource result = await keyVaultSecret.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+KeyVaultSecretData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

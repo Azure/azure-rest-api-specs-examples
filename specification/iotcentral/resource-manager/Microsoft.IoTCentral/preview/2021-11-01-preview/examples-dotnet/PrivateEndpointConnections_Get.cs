@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotCentralPrivateEndpointConnectionResource created on azure
-// for more information of creating IotCentralPrivateEndpointConnectionResource, please refer to the document of IotCentralPrivateEndpointConnectionResource
+// this example assumes you already have this IotCentralAppResource created on azure
+// for more information of creating IotCentralAppResource, please refer to the document of IotCentralAppResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "resRg";
 string resourceName = "myIoTCentralApp";
-string privateEndpointConnectionName = "myIoTCentralAppEndpoint";
-ResourceIdentifier iotCentralPrivateEndpointConnectionResourceId = IotCentralPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
-IotCentralPrivateEndpointConnectionResource iotCentralPrivateEndpointConnection = client.GetIotCentralPrivateEndpointConnectionResource(iotCentralPrivateEndpointConnectionResourceId);
+ResourceIdentifier iotCentralAppResourceId = IotCentralAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+IotCentralAppResource iotCentralApp = client.GetIotCentralAppResource(iotCentralAppResourceId);
+
+// get the collection of this IotCentralPrivateEndpointConnectionResource
+IotCentralPrivateEndpointConnectionCollection collection = iotCentralApp.GetIotCentralPrivateEndpointConnections();
 
 // invoke the operation
-IotCentralPrivateEndpointConnectionResource result = await iotCentralPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "myIoTCentralAppEndpoint";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-IotCentralPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

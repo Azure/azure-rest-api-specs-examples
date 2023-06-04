@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthcareApisWorkspacePrivateEndpointConnectionResource created on azure
-// for more information of creating HealthcareApisWorkspacePrivateEndpointConnectionResource, please refer to the document of HealthcareApisWorkspacePrivateEndpointConnectionResource
+// this example assumes you already have this HealthcareApisWorkspaceResource created on azure
+// for more information of creating HealthcareApisWorkspaceResource, please refer to the document of HealthcareApisWorkspaceResource
 string subscriptionId = "subid";
 string resourceGroupName = "testRG";
 string workspaceName = "workspace1";
-string privateEndpointConnectionName = "myConnection";
-ResourceIdentifier healthcareApisWorkspacePrivateEndpointConnectionResourceId = HealthcareApisWorkspacePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
-HealthcareApisWorkspacePrivateEndpointConnectionResource healthcareApisWorkspacePrivateEndpointConnection = client.GetHealthcareApisWorkspacePrivateEndpointConnectionResource(healthcareApisWorkspacePrivateEndpointConnectionResourceId);
+ResourceIdentifier healthcareApisWorkspaceResourceId = HealthcareApisWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+HealthcareApisWorkspaceResource healthcareApisWorkspace = client.GetHealthcareApisWorkspaceResource(healthcareApisWorkspaceResourceId);
+
+// get the collection of this HealthcareApisWorkspacePrivateEndpointConnectionResource
+HealthcareApisWorkspacePrivateEndpointConnectionCollection collection = healthcareApisWorkspace.GetHealthcareApisWorkspacePrivateEndpointConnections();
 
 // invoke the operation
-HealthcareApisWorkspacePrivateEndpointConnectionResource result = await healthcareApisWorkspacePrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "myConnection";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HealthcareApisPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -16,20 +16,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthcareApisIotConnectorResource created on azure
-// for more information of creating HealthcareApisIotConnectorResource, please refer to the document of HealthcareApisIotConnectorResource
+// this example assumes you already have this HealthcareApisIotFhirDestinationResource created on azure
+// for more information of creating HealthcareApisIotFhirDestinationResource, please refer to the document of HealthcareApisIotFhirDestinationResource
 string subscriptionId = "subid";
 string resourceGroupName = "testRG";
 string workspaceName = "workspace1";
 string iotConnectorName = "blue";
-ResourceIdentifier healthcareApisIotConnectorResourceId = HealthcareApisIotConnectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, iotConnectorName);
-HealthcareApisIotConnectorResource healthcareApisIotConnector = client.GetHealthcareApisIotConnectorResource(healthcareApisIotConnectorResourceId);
-
-// get the collection of this HealthcareApisIotFhirDestinationResource
-HealthcareApisIotFhirDestinationCollection collection = healthcareApisIotConnector.GetHealthcareApisIotFhirDestinations();
+string fhirDestinationName = "dest1";
+ResourceIdentifier healthcareApisIotFhirDestinationResourceId = HealthcareApisIotFhirDestinationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, iotConnectorName, fhirDestinationName);
+HealthcareApisIotFhirDestinationResource healthcareApisIotFhirDestination = client.GetHealthcareApisIotFhirDestinationResource(healthcareApisIotFhirDestinationResourceId);
 
 // invoke the operation
-string fhirDestinationName = "dest1";
-bool result = await collection.ExistsAsync(fhirDestinationName);
+HealthcareApisIotFhirDestinationResource result = await healthcareApisIotFhirDestination.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HealthcareApisIotFhirDestinationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridDataManagerResource created on azure
-// for more information of creating HybridDataManagerResource, please refer to the document of HybridDataManagerResource
+// this example assumes you already have this HybridDataServiceResource created on azure
+// for more information of creating HybridDataServiceResource, please refer to the document of HybridDataServiceResource
 string subscriptionId = "6e0219f5-327a-4365-904f-05eed4227ad7";
 string resourceGroupName = "ResourceGroupForSDKTest";
 string dataManagerName = "TestAzureSDKOperations";
-ResourceIdentifier hybridDataManagerResourceId = HybridDataManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName);
-HybridDataManagerResource hybridDataManager = client.GetHybridDataManagerResource(hybridDataManagerResourceId);
-
-// get the collection of this HybridDataServiceResource
-HybridDataServiceCollection collection = hybridDataManager.GetHybridDataServices();
+string dataServiceName = "DataTransformation";
+ResourceIdentifier hybridDataServiceResourceId = HybridDataServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName, dataServiceName);
+HybridDataServiceResource hybridDataService = client.GetHybridDataServiceResource(hybridDataServiceResourceId);
 
 // invoke the operation
-string dataServiceName = "DataTransformation";
-bool result = await collection.ExistsAsync(dataServiceName);
+HybridDataServiceResource result = await hybridDataService.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HybridDataServiceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

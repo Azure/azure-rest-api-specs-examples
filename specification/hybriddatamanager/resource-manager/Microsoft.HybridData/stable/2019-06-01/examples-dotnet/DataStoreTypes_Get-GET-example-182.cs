@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridDataManagerResource created on azure
-// for more information of creating HybridDataManagerResource, please refer to the document of HybridDataManagerResource
+// this example assumes you already have this HybridDataStoreTypeResource created on azure
+// for more information of creating HybridDataStoreTypeResource, please refer to the document of HybridDataStoreTypeResource
 string subscriptionId = "6e0219f5-327a-4365-904f-05eed4227ad7";
 string resourceGroupName = "ResourceGroupForSDKTest";
 string dataManagerName = "TestAzureSDKOperations";
-ResourceIdentifier hybridDataManagerResourceId = HybridDataManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName);
-HybridDataManagerResource hybridDataManager = client.GetHybridDataManagerResource(hybridDataManagerResourceId);
-
-// get the collection of this HybridDataStoreTypeResource
-HybridDataStoreTypeCollection collection = hybridDataManager.GetHybridDataStoreTypes();
+string dataStoreTypeName = "StorSimple8000Series";
+ResourceIdentifier hybridDataStoreTypeResourceId = HybridDataStoreTypeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName, dataStoreTypeName);
+HybridDataStoreTypeResource hybridDataStoreType = client.GetHybridDataStoreTypeResource(hybridDataStoreTypeResourceId);
 
 // invoke the operation
-string dataStoreTypeName = "StorSimple8000Series";
-bool result = await collection.ExistsAsync(dataStoreTypeName);
+HybridDataStoreTypeResource result = await hybridDataStoreType.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HybridDataStoreTypeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

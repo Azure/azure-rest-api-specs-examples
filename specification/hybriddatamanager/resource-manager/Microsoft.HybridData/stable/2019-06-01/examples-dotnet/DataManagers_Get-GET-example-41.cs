@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.HybridData;
+using Azure.ResourceManager.HybridData.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/hybriddatamanager/resource-manager/Microsoft.HybridData/stable/2019-06-01/examples/DataManagers_Get-GET-example-41.json
@@ -15,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this HybridDataManagerResource created on azure
+// for more information of creating HybridDataManagerResource, please refer to the document of HybridDataManagerResource
 string subscriptionId = "6e0219f5-327a-4365-904f-05eed4227ad7";
 string resourceGroupName = "ResourceGroupForSDKTest";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this HybridDataManagerResource
-HybridDataManagerCollection collection = resourceGroupResource.GetHybridDataManagers();
+string dataManagerName = "TestAzureSDKOperations";
+ResourceIdentifier hybridDataManagerResourceId = HybridDataManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName);
+HybridDataManagerResource hybridDataManager = client.GetHybridDataManagerResource(hybridDataManagerResourceId);
 
 // invoke the operation
-string dataManagerName = "TestAzureSDKOperations";
-bool result = await collection.ExistsAsync(dataManagerName);
+HybridDataManagerResource result = await hybridDataManager.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HybridDataManagerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

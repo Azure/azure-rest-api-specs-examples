@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningDatastoreResource created on azure
-// for more information of creating MachineLearningDatastoreResource, please refer to the document of MachineLearningDatastoreResource
+// this example assumes you already have this MachineLearningWorkspaceResource created on azure
+// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-string name = "string";
-ResourceIdentifier machineLearningDatastoreResourceId = MachineLearningDatastoreResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
-MachineLearningDatastoreResource machineLearningDatastore = client.GetMachineLearningDatastoreResource(machineLearningDatastoreResourceId);
+ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
+
+// get the collection of this MachineLearningDatastoreResource
+MachineLearningDatastoreCollection collection = machineLearningWorkspace.GetMachineLearningDatastores();
 
 // invoke the operation
+string name = "string";
 MachineLearningDatastoreData data = new MachineLearningDatastoreData(new MachineLearningAzureDataLakeGen1Datastore(new MachineLearningServicePrincipalDatastoreCredentials(Guid.Parse("00000000-1111-2222-3333-444444444444"), new MachineLearningServicePrincipalDatastoreSecrets()
 {
     ClientSecret = "string",
@@ -44,7 +47,7 @@ MachineLearningDatastoreData data = new MachineLearningDatastoreData(new Machine
     },
 });
 bool? skipValidation = false;
-ArmOperation<MachineLearningDatastoreResource> lro = await machineLearningDatastore.UpdateAsync(WaitUntil.Completed, data, skipValidation: skipValidation);
+ArmOperation<MachineLearningDatastoreResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data, skipValidation: skipValidation);
 MachineLearningDatastoreResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningEnvironmentContainerResource created on azure
-// for more information of creating MachineLearningEnvironmentContainerResource, please refer to the document of MachineLearningEnvironmentContainerResource
+// this example assumes you already have this MachineLearningEnvironmentVersionResource created on azure
+// for more information of creating MachineLearningEnvironmentVersionResource, please refer to the document of MachineLearningEnvironmentVersionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string name = "string";
-ResourceIdentifier machineLearningEnvironmentContainerResourceId = MachineLearningEnvironmentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
-MachineLearningEnvironmentContainerResource machineLearningEnvironmentContainer = client.GetMachineLearningEnvironmentContainerResource(machineLearningEnvironmentContainerResourceId);
-
-// get the collection of this MachineLearningEnvironmentVersionResource
-MachineLearningEnvironmentVersionCollection collection = machineLearningEnvironmentContainer.GetMachineLearningEnvironmentVersions();
+string version = "string";
+ResourceIdentifier machineLearningEnvironmentVersionResourceId = MachineLearningEnvironmentVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name, version);
+MachineLearningEnvironmentVersionResource machineLearningEnvironmentVersion = client.GetMachineLearningEnvironmentVersionResource(machineLearningEnvironmentVersionResourceId);
 
 // invoke the operation
-string version = "string";
-bool result = await collection.ExistsAsync(version);
+MachineLearningEnvironmentVersionResource result = await machineLearningEnvironmentVersion.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MachineLearningEnvironmentVersionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

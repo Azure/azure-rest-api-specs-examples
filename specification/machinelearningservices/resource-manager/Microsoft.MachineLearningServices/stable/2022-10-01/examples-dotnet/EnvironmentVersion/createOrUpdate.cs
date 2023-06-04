@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningEnvironmentContainerResource created on azure
-// for more information of creating MachineLearningEnvironmentContainerResource, please refer to the document of MachineLearningEnvironmentContainerResource
+// this example assumes you already have this MachineLearningEnvironmentVersionResource created on azure
+// for more information of creating MachineLearningEnvironmentVersionResource, please refer to the document of MachineLearningEnvironmentVersionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string name = "string";
-ResourceIdentifier machineLearningEnvironmentContainerResourceId = MachineLearningEnvironmentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
-MachineLearningEnvironmentContainerResource machineLearningEnvironmentContainer = client.GetMachineLearningEnvironmentContainerResource(machineLearningEnvironmentContainerResourceId);
-
-// get the collection of this MachineLearningEnvironmentVersionResource
-MachineLearningEnvironmentVersionCollection collection = machineLearningEnvironmentContainer.GetMachineLearningEnvironmentVersions();
+string version = "string";
+ResourceIdentifier machineLearningEnvironmentVersionResourceId = MachineLearningEnvironmentVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name, version);
+MachineLearningEnvironmentVersionResource machineLearningEnvironmentVersion = client.GetMachineLearningEnvironmentVersionResource(machineLearningEnvironmentVersionResourceId);
 
 // invoke the operation
-string version = "string";
 MachineLearningEnvironmentVersionData data = new MachineLearningEnvironmentVersionData(new MachineLearningEnvironmentVersionProperties()
 {
     Build = new MachineLearningBuildContext(new Uri("https://storage-account.blob.core.windows.net/azureml/DockerBuildContext/95ddede6b9b8c4e90472db3acd0a8d28/"))
@@ -54,7 +51,7 @@ MachineLearningEnvironmentVersionData data = new MachineLearningEnvironmentVersi
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearningEnvironmentVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);
+ArmOperation<MachineLearningEnvironmentVersionResource> lro = await machineLearningEnvironmentVersion.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningEnvironmentVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

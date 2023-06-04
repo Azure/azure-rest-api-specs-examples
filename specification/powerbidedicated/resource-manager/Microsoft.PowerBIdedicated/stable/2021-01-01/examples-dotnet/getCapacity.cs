@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DedicatedCapacityResource created on azure
-// for more information of creating DedicatedCapacityResource, please refer to the document of DedicatedCapacityResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "613192d7-503f-477a-9cfe-4efc3ee2bd60";
 string resourceGroupName = "TestRG";
-string dedicatedCapacityName = "azsdktest";
-ResourceIdentifier dedicatedCapacityResourceId = DedicatedCapacityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dedicatedCapacityName);
-DedicatedCapacityResource dedicatedCapacity = client.GetDedicatedCapacityResource(dedicatedCapacityResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this DedicatedCapacityResource
+DedicatedCapacityCollection collection = resourceGroupResource.GetDedicatedCapacities();
 
 // invoke the operation
-DedicatedCapacityResource result = await dedicatedCapacity.GetAsync();
+string dedicatedCapacityName = "azsdktest";
+bool result = await collection.ExistsAsync(dedicatedCapacityName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DedicatedCapacityData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

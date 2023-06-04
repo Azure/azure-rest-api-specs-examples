@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
-// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
+// this example assumes you already have this OperationalInsightsLinkedStorageAccountsResource created on azure
+// for more information of creating OperationalInsightsLinkedStorageAccountsResource, please refer to the document of OperationalInsightsLinkedStorageAccountsResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "mms-eus";
 string workspaceName = "testLinkStorageAccountsWS";
-ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
-
-// get the collection of this OperationalInsightsLinkedStorageAccountsResource
-OperationalInsightsLinkedStorageAccountsCollection collection = operationalInsightsWorkspace.GetAllOperationalInsightsLinkedStorageAccounts();
+OperationalInsightsDataSourceType dataSourceType = OperationalInsightsDataSourceType.CustomLogs;
+ResourceIdentifier operationalInsightsLinkedStorageAccountsResourceId = OperationalInsightsLinkedStorageAccountsResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, dataSourceType);
+OperationalInsightsLinkedStorageAccountsResource operationalInsightsLinkedStorageAccounts = client.GetOperationalInsightsLinkedStorageAccountsResource(operationalInsightsLinkedStorageAccountsResourceId);
 
 // invoke the operation
-OperationalInsightsDataSourceType dataSourceType = OperationalInsightsDataSourceType.CustomLogs;
-bool result = await collection.ExistsAsync(dataSourceType);
+OperationalInsightsLinkedStorageAccountsResource result = await operationalInsightsLinkedStorageAccounts.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+OperationalInsightsLinkedStorageAccountsData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

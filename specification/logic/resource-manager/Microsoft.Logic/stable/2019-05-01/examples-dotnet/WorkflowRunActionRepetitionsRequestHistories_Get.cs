@@ -13,23 +13,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowRunActionRepetitionRequestHistoryResource created on azure
-// for more information of creating LogicWorkflowRunActionRepetitionRequestHistoryResource, please refer to the document of LogicWorkflowRunActionRepetitionRequestHistoryResource
+// this example assumes you already have this LogicWorkflowRunActionRepetitionResource created on azure
+// for more information of creating LogicWorkflowRunActionRepetitionResource, please refer to the document of LogicWorkflowRunActionRepetitionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string workflowName = "test-workflow";
 string runName = "08586776228332053161046300351";
 string actionName = "HTTP_Webhook";
 string repetitionName = "000001";
-string requestHistoryName = "08586611142732800686";
-ResourceIdentifier logicWorkflowRunActionRepetitionRequestHistoryResourceId = LogicWorkflowRunActionRepetitionRequestHistoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, actionName, repetitionName, requestHistoryName);
-LogicWorkflowRunActionRepetitionRequestHistoryResource logicWorkflowRunActionRepetitionRequestHistory = client.GetLogicWorkflowRunActionRepetitionRequestHistoryResource(logicWorkflowRunActionRepetitionRequestHistoryResourceId);
+ResourceIdentifier logicWorkflowRunActionRepetitionResourceId = LogicWorkflowRunActionRepetitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, actionName, repetitionName);
+LogicWorkflowRunActionRepetitionResource logicWorkflowRunActionRepetition = client.GetLogicWorkflowRunActionRepetitionResource(logicWorkflowRunActionRepetitionResourceId);
+
+// get the collection of this LogicWorkflowRunActionRepetitionRequestHistoryResource
+LogicWorkflowRunActionRepetitionRequestHistoryCollection collection = logicWorkflowRunActionRepetition.GetLogicWorkflowRunActionRepetitionRequestHistories();
 
 // invoke the operation
-LogicWorkflowRunActionRepetitionRequestHistoryResource result = await logicWorkflowRunActionRepetitionRequestHistory.GetAsync();
+string requestHistoryName = "08586611142732800686";
+bool result = await collection.ExistsAsync(requestHistoryName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LogicWorkflowRequestHistoryData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -13,20 +13,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowRunResource created on azure
-// for more information of creating LogicWorkflowRunResource, please refer to the document of LogicWorkflowRunResource
+// this example assumes you already have this LogicWorkflowRunOperationResource created on azure
+// for more information of creating LogicWorkflowRunOperationResource, please refer to the document of LogicWorkflowRunOperationResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string workflowName = "testFlow";
 string runName = "08586774142730039209110422528";
-ResourceIdentifier logicWorkflowRunResourceId = LogicWorkflowRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName);
-LogicWorkflowRunResource logicWorkflowRun = client.GetLogicWorkflowRunResource(logicWorkflowRunResourceId);
-
-// get the collection of this LogicWorkflowRunOperationResource
-LogicWorkflowRunOperationCollection collection = logicWorkflowRun.GetLogicWorkflowRunOperations();
+string operationId = "ebdcbbde-c4db-43ec-987c-fd0f7726f43b";
+ResourceIdentifier logicWorkflowRunOperationResourceId = LogicWorkflowRunOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, operationId);
+LogicWorkflowRunOperationResource logicWorkflowRunOperation = client.GetLogicWorkflowRunOperationResource(logicWorkflowRunOperationResourceId);
 
 // invoke the operation
-string operationId = "ebdcbbde-c4db-43ec-987c-fd0f7726f43b";
-bool result = await collection.ExistsAsync(operationId);
+LogicWorkflowRunOperationResource result = await logicWorkflowRunOperation.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LogicWorkflowRunData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountSchemaResource created on azure
-// for more information of creating IntegrationAccountSchemaResource, please refer to the document of IntegrationAccountSchemaResource
+// this example assumes you already have this IntegrationAccountResource created on azure
+// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-string schemaName = "testSchema";
-ResourceIdentifier integrationAccountSchemaResourceId = IntegrationAccountSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, schemaName);
-IntegrationAccountSchemaResource integrationAccountSchema = client.GetIntegrationAccountSchemaResource(integrationAccountSchemaResourceId);
+ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
+IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
+
+// get the collection of this IntegrationAccountSchemaResource
+IntegrationAccountSchemaCollection collection = integrationAccount.GetIntegrationAccountSchemas();
 
 // invoke the operation
+string schemaName = "testSchema";
 IntegrationAccountSchemaData data = new IntegrationAccountSchemaData(new AzureLocation("westus"), IntegrationAccountSchemaType.Xml)
 {
     Metadata = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
@@ -38,7 +41,7 @@ IntegrationAccountSchemaData data = new IntegrationAccountSchemaData(new AzureLo
     ["integrationAccountSchemaName"] = "IntegrationAccountSchema8120",
     },
 };
-ArmOperation<IntegrationAccountSchemaResource> lro = await integrationAccountSchema.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<IntegrationAccountSchemaResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, schemaName, data);
 IntegrationAccountSchemaResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

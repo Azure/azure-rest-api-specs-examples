@@ -16,20 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountAssemblyDefinitionResource created on azure
-// for more information of creating IntegrationAccountAssemblyDefinitionResource, please refer to the document of IntegrationAccountAssemblyDefinitionResource
+// this example assumes you already have this IntegrationAccountResource created on azure
+// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-string assemblyArtifactName = "testAssembly";
-ResourceIdentifier integrationAccountAssemblyDefinitionResourceId = IntegrationAccountAssemblyDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, assemblyArtifactName);
-IntegrationAccountAssemblyDefinitionResource integrationAccountAssemblyDefinition = client.GetIntegrationAccountAssemblyDefinitionResource(integrationAccountAssemblyDefinitionResourceId);
+ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
+IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
+
+// get the collection of this IntegrationAccountAssemblyDefinitionResource
+IntegrationAccountAssemblyDefinitionCollection collection = integrationAccount.GetIntegrationAccountAssemblyDefinitions();
 
 // invoke the operation
-IntegrationAccountAssemblyDefinitionResource result = await integrationAccountAssemblyDefinition.GetAsync();
+string assemblyArtifactName = "testAssembly";
+bool result = await collection.ExistsAsync(assemblyArtifactName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-IntegrationAccountAssemblyDefinitionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

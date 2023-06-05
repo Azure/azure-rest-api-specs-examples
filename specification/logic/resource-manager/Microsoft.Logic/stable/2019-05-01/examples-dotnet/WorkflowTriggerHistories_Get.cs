@@ -13,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowTriggerHistoryResource created on azure
-// for more information of creating LogicWorkflowTriggerHistoryResource, please refer to the document of LogicWorkflowTriggerHistoryResource
+// this example assumes you already have this LogicWorkflowTriggerResource created on azure
+// for more information of creating LogicWorkflowTriggerResource, please refer to the document of LogicWorkflowTriggerResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string workflowName = "testWorkflowName";
 string triggerName = "testTriggerName";
-string historyName = "08586676746934337772206998657CU22";
-ResourceIdentifier logicWorkflowTriggerHistoryResourceId = LogicWorkflowTriggerHistoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, triggerName, historyName);
-LogicWorkflowTriggerHistoryResource logicWorkflowTriggerHistory = client.GetLogicWorkflowTriggerHistoryResource(logicWorkflowTriggerHistoryResourceId);
+ResourceIdentifier logicWorkflowTriggerResourceId = LogicWorkflowTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, triggerName);
+LogicWorkflowTriggerResource logicWorkflowTrigger = client.GetLogicWorkflowTriggerResource(logicWorkflowTriggerResourceId);
+
+// get the collection of this LogicWorkflowTriggerHistoryResource
+LogicWorkflowTriggerHistoryCollection collection = logicWorkflowTrigger.GetLogicWorkflowTriggerHistories();
 
 // invoke the operation
-LogicWorkflowTriggerHistoryResource result = await logicWorkflowTriggerHistory.GetAsync();
+string historyName = "08586676746934337772206998657CU22";
+bool result = await collection.ExistsAsync(historyName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LogicWorkflowTriggerHistoryData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

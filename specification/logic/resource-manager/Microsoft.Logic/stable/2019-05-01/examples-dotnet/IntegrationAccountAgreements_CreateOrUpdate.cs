@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountAgreementResource created on azure
-// for more information of creating IntegrationAccountAgreementResource, please refer to the document of IntegrationAccountAgreementResource
+// this example assumes you already have this IntegrationAccountResource created on azure
+// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-string agreementName = "testAgreement";
-ResourceIdentifier integrationAccountAgreementResourceId = IntegrationAccountAgreementResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, agreementName);
-IntegrationAccountAgreementResource integrationAccountAgreement = client.GetIntegrationAccountAgreementResource(integrationAccountAgreementResourceId);
+ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
+IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
+
+// get the collection of this IntegrationAccountAgreementResource
+IntegrationAccountAgreementCollection collection = integrationAccount.GetIntegrationAccountAgreements();
 
 // invoke the operation
+string agreementName = "testAgreement";
 IntegrationAccountAgreementData data = new IntegrationAccountAgreementData(new AzureLocation("westus"), IntegrationAccountAgreementType.AS2, "HostPartner", "GuestPartner", new IntegrationAccountBusinessIdentity("ZZ", "ZZ"), new IntegrationAccountBusinessIdentity("AA", "AA"), new IntegrationAccountAgreementContent()
 {
     AS2 = new AS2AgreementContent(new AS2OneWayAgreement(new IntegrationAccountBusinessIdentity("AA", "AA"), new IntegrationAccountBusinessIdentity("ZZ", "ZZ"), new AS2ProtocolSettings(new AS2MessageConnectionSettings(true, true, true, true), new AS2AcknowledgementConnectionSettings(true, true, true, true), new AS2MdnSettings(true, true, true, true, true, AS2HashingAlgorithm.Sha1)
@@ -49,7 +52,7 @@ IntegrationAccountAgreementData data = new IntegrationAccountAgreementData(new A
     ["IntegrationAccountAgreement"] = "<IntegrationAccountAgreementName>",
     },
 };
-ArmOperation<IntegrationAccountAgreementResource> lro = await integrationAccountAgreement.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<IntegrationAccountAgreementResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, agreementName, data);
 IntegrationAccountAgreementResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

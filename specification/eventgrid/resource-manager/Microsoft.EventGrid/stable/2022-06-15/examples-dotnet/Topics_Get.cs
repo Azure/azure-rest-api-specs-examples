@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridTopicResource created on azure
-// for more information of creating EventGridTopicResource, please refer to the document of EventGridTopicResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
 string resourceGroupName = "examplerg";
-string topicName = "exampletopic2";
-ResourceIdentifier eventGridTopicResourceId = EventGridTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, topicName);
-EventGridTopicResource eventGridTopic = client.GetEventGridTopicResource(eventGridTopicResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this EventGridTopicResource
+EventGridTopicCollection collection = resourceGroupResource.GetEventGridTopics();
 
 // invoke the operation
-EventGridTopicResource result = await eventGridTopic.GetAsync();
+string topicName = "exampletopic2";
+bool result = await collection.ExistsAsync(topicName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EventGridTopicData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

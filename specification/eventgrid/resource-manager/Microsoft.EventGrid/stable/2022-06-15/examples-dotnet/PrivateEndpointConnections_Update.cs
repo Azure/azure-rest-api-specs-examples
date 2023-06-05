@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridTopicPrivateEndpointConnectionResource created on azure
-// for more information of creating EventGridTopicPrivateEndpointConnectionResource, please refer to the document of EventGridTopicPrivateEndpointConnectionResource
+// this example assumes you already have this EventGridTopicResource created on azure
+// for more information of creating EventGridTopicResource, please refer to the document of EventGridTopicResource
 string subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
 string resourceGroupName = "examplerg";
 string parentName = "exampletopic1";
-string privateEndpointConnectionName = "BMTPE5.8A30D251-4C61-489D-A1AA-B37C4A329B8B";
-ResourceIdentifier eventGridTopicPrivateEndpointConnectionResourceId = EventGridTopicPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName, privateEndpointConnectionName);
-EventGridTopicPrivateEndpointConnectionResource eventGridTopicPrivateEndpointConnection = client.GetEventGridTopicPrivateEndpointConnectionResource(eventGridTopicPrivateEndpointConnectionResourceId);
+ResourceIdentifier eventGridTopicResourceId = EventGridTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName);
+EventGridTopicResource eventGridTopic = client.GetEventGridTopicResource(eventGridTopicResourceId);
+
+// get the collection of this EventGridTopicPrivateEndpointConnectionResource
+EventGridTopicPrivateEndpointConnectionCollection collection = eventGridTopic.GetEventGridTopicPrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "BMTPE5.8A30D251-4C61-489D-A1AA-B37C4A329B8B";
 EventGridPrivateEndpointConnectionData data = new EventGridPrivateEndpointConnectionData()
 {
     ConnectionState = new EventGridPrivateEndpointConnectionState()
@@ -34,7 +37,7 @@ EventGridPrivateEndpointConnectionData data = new EventGridPrivateEndpointConnec
         ActionsRequired = "None",
     },
 };
-ArmOperation<EventGridTopicPrivateEndpointConnectionResource> lro = await eventGridTopicPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<EventGridTopicPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 EventGridTopicPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

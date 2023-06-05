@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.GuestConfiguration;
-using Azure.ResourceManager.GuestConfiguration.Models;
 
 // Generated from example definition: specification/guestconfiguration/resource-manager/Microsoft.GuestConfiguration/stable/2022-01-25/examples/getVMSSGuestConfigurationAssignment.json
 // this example is just showing the usage of "GuestConfigurationAssignmentsVMSS_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +13,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GuestConfigurationVmssAssignmentResource created on azure
-// for more information of creating GuestConfigurationVmssAssignmentResource, please refer to the document of GuestConfigurationVmssAssignmentResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this GuestConfigurationVmssAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string vmssName = "myVMSSName";
-string name = "SecureProtocol";
-ResourceIdentifier guestConfigurationVmssAssignmentResourceId = GuestConfigurationVmssAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmssName, name);
-GuestConfigurationVmssAssignmentResource guestConfigurationVmssAssignment = client.GetGuestConfigurationVmssAssignmentResource(guestConfigurationVmssAssignmentResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}", subscriptionId, resourceGroupName, vmssName));
+GuestConfigurationVmssAssignmentCollection collection = client.GetGuestConfigurationVmssAssignments(scopeId);
 
 // invoke the operation
-GuestConfigurationVmssAssignmentResource result = await guestConfigurationVmssAssignment.GetAsync();
+string name = "SecureProtocol";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GuestConfigurationAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

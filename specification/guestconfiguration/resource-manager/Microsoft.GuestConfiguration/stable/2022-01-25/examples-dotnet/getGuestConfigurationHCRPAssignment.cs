@@ -15,20 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GuestConfigurationHcrpAssignmentResource created on azure
-// for more information of creating GuestConfigurationHcrpAssignmentResource, please refer to the document of GuestConfigurationHcrpAssignmentResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this GuestConfigurationHcrpAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string machineName = "myMachineName";
-string guestConfigurationAssignmentName = "SecureProtocol";
-ResourceIdentifier guestConfigurationHcrpAssignmentResourceId = GuestConfigurationHcrpAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, guestConfigurationAssignmentName);
-GuestConfigurationHcrpAssignmentResource guestConfigurationHcrpAssignment = client.GetGuestConfigurationHcrpAssignmentResource(guestConfigurationHcrpAssignmentResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}", subscriptionId, resourceGroupName, machineName));
+GuestConfigurationHcrpAssignmentCollection collection = client.GetGuestConfigurationHcrpAssignments(scopeId);
 
 // invoke the operation
-GuestConfigurationHcrpAssignmentResource result = await guestConfigurationHcrpAssignment.GetAsync();
+string guestConfigurationAssignmentName = "SecureProtocol";
+bool result = await collection.ExistsAsync(guestConfigurationAssignmentName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GuestConfigurationAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

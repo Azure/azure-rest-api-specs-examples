@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceResource created on azure
-// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
+// this example assumes you already have this EventHubResource created on azure
+// for more information of creating EventHubResource, please refer to the document of EventHubResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "Default-NotificationHubs-AustraliaEast";
 string namespaceName = "sdk-Namespace-5357";
-ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
-
-// get the collection of this EventHubResource
-EventHubCollection collection = eventHubsNamespace.GetEventHubs();
+string eventHubName = "sdk-EventHub-6547";
+ResourceIdentifier eventHubResourceId = EventHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName);
+EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
 
 // invoke the operation
-string eventHubName = "sdk-EventHub-6547";
 EventHubData data = new EventHubData()
 {
     PartitionCount = 4,
@@ -53,7 +50,7 @@ EventHubData data = new EventHubData()
         TombstoneRetentionTimeInHours = 1,
     },
 };
-ArmOperation<EventHubResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, eventHubName, data);
+ArmOperation<EventHubResource> lro = await eventHub.UpdateAsync(WaitUntil.Completed, data);
 EventHubResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

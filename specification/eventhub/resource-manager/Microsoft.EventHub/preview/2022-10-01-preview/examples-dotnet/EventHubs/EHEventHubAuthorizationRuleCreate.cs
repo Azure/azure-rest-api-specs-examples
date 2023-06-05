@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubAuthorizationRuleResource created on azure
-// for more information of creating EventHubAuthorizationRuleResource, please refer to the document of EventHubAuthorizationRuleResource
+// this example assumes you already have this EventHubResource created on azure
+// for more information of creating EventHubResource, please refer to the document of EventHubResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-960";
 string eventHubName = "sdk-EventHub-532";
-string authorizationRuleName = "sdk-Authrules-2513";
-ResourceIdentifier eventHubAuthorizationRuleResourceId = EventHubAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName, authorizationRuleName);
-EventHubAuthorizationRuleResource eventHubAuthorizationRule = client.GetEventHubAuthorizationRuleResource(eventHubAuthorizationRuleResourceId);
+ResourceIdentifier eventHubResourceId = EventHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName);
+EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
+
+// get the collection of this EventHubAuthorizationRuleResource
+EventHubAuthorizationRuleCollection collection = eventHub.GetEventHubAuthorizationRules();
 
 // invoke the operation
+string authorizationRuleName = "sdk-Authrules-2513";
 EventHubsAuthorizationRuleData data = new EventHubsAuthorizationRuleData()
 {
     Rights =
@@ -33,7 +36,7 @@ EventHubsAuthorizationRuleData data = new EventHubsAuthorizationRuleData()
     EventHubsAccessRight.Listen,EventHubsAccessRight.Send
     },
 };
-ArmOperation<EventHubAuthorizationRuleResource> lro = await eventHubAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<EventHubAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
 EventHubAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

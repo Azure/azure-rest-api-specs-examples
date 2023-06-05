@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HDInsightPrivateEndpointConnectionResource created on azure
-// for more information of creating HDInsightPrivateEndpointConnectionResource, please refer to the document of HDInsightPrivateEndpointConnectionResource
+// this example assumes you already have this HDInsightClusterResource created on azure
+// for more information of creating HDInsightClusterResource, please refer to the document of HDInsightClusterResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string clusterName = "cluster1";
-string privateEndpointConnectionName = "testprivateep.b3bf5fed-9b12-4560-b7d0-2abe1bba07e2";
-ResourceIdentifier hdInsightPrivateEndpointConnectionResourceId = HDInsightPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, privateEndpointConnectionName);
-HDInsightPrivateEndpointConnectionResource hdInsightPrivateEndpointConnection = client.GetHDInsightPrivateEndpointConnectionResource(hdInsightPrivateEndpointConnectionResourceId);
+ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
+
+// get the collection of this HDInsightPrivateEndpointConnectionResource
+HDInsightPrivateEndpointConnectionCollection collection = hdInsightCluster.GetHDInsightPrivateEndpointConnections();
 
 // invoke the operation
-HDInsightPrivateEndpointConnectionResource result = await hdInsightPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "testprivateep.b3bf5fed-9b12-4560-b7d0-2abe1bba07e2";
+bool result = await collection.ExistsAsync(privateEndpointConnectionName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HDInsightPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

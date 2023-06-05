@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthcareApisServiceResource created on azure
-// for more information of creating HealthcareApisServiceResource, please refer to the document of HealthcareApisServiceResource
+// this example assumes you already have this HealthcareApisServicePrivateLinkResource created on azure
+// for more information of creating HealthcareApisServicePrivateLinkResource, please refer to the document of HealthcareApisServicePrivateLinkResource
 string subscriptionId = "subid";
 string resourceGroupName = "rgname";
 string resourceName = "service1";
-ResourceIdentifier healthcareApisServiceResourceId = HealthcareApisServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-HealthcareApisServiceResource healthcareApisService = client.GetHealthcareApisServiceResource(healthcareApisServiceResourceId);
-
-// get the collection of this HealthcareApisServicePrivateLinkResource
-HealthcareApisServicePrivateLinkResourceCollection collection = healthcareApisService.GetHealthcareApisServicePrivateLinkResources();
+string groupName = "fhir";
+ResourceIdentifier healthcareApisServicePrivateLinkResourceId = HealthcareApisServicePrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, groupName);
+HealthcareApisServicePrivateLinkResource healthcareApisServicePrivateLinkResource = client.GetHealthcareApisServicePrivateLinkResource(healthcareApisServicePrivateLinkResourceId);
 
 // invoke the operation
-string groupName = "fhir";
-bool result = await collection.ExistsAsync(groupName);
+HealthcareApisServicePrivateLinkResource result = await healthcareApisServicePrivateLinkResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HealthcareApisPrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedNetworkPeeringPolicyResource created on azure
-// for more information of creating ManagedNetworkPeeringPolicyResource, please refer to the document of ManagedNetworkPeeringPolicyResource
+// this example assumes you already have this ManagedNetworkResource created on azure
+// for more information of creating ManagedNetworkResource, please refer to the document of ManagedNetworkResource
 string subscriptionId = "subscriptionA";
 string resourceGroupName = "myResourceGroup";
 string managedNetworkName = "myManagedNetwork";
-string managedNetworkPeeringPolicyName = "myHubAndSpoke";
-ResourceIdentifier managedNetworkPeeringPolicyResourceId = ManagedNetworkPeeringPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedNetworkName, managedNetworkPeeringPolicyName);
-ManagedNetworkPeeringPolicyResource managedNetworkPeeringPolicy = client.GetManagedNetworkPeeringPolicyResource(managedNetworkPeeringPolicyResourceId);
+ResourceIdentifier managedNetworkResourceId = ManagedNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedNetworkName);
+ManagedNetworkResource managedNetwork = client.GetManagedNetworkResource(managedNetworkResourceId);
+
+// get the collection of this ManagedNetworkPeeringPolicyResource
+ManagedNetworkPeeringPolicyCollection collection = managedNetwork.GetManagedNetworkPeeringPolicies();
 
 // invoke the operation
+string managedNetworkPeeringPolicyName = "myHubAndSpoke";
 ManagedNetworkPeeringPolicyData data = new ManagedNetworkPeeringPolicyData()
 {
     Properties = new ManagedNetworkPeeringPolicyProperties(ConnectivityType.HubAndSpokeTopology)
@@ -40,7 +43,7 @@ ManagedNetworkPeeringPolicyData data = new ManagedNetworkPeeringPolicyData()
         },
     },
 };
-ArmOperation<ManagedNetworkPeeringPolicyResource> lro = await managedNetworkPeeringPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedNetworkPeeringPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedNetworkPeeringPolicyName, data);
 ManagedNetworkPeeringPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

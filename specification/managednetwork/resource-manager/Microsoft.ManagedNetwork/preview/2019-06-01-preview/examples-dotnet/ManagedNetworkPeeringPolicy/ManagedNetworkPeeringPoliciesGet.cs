@@ -16,20 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedNetworkPeeringPolicyResource created on azure
-// for more information of creating ManagedNetworkPeeringPolicyResource, please refer to the document of ManagedNetworkPeeringPolicyResource
+// this example assumes you already have this ManagedNetworkResource created on azure
+// for more information of creating ManagedNetworkResource, please refer to the document of ManagedNetworkResource
 string subscriptionId = "subscriptionA";
 string resourceGroupName = "myResourceGroup";
 string managedNetworkName = "myManagedNetwork";
-string managedNetworkPeeringPolicyName = "myHubAndSpoke";
-ResourceIdentifier managedNetworkPeeringPolicyResourceId = ManagedNetworkPeeringPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedNetworkName, managedNetworkPeeringPolicyName);
-ManagedNetworkPeeringPolicyResource managedNetworkPeeringPolicy = client.GetManagedNetworkPeeringPolicyResource(managedNetworkPeeringPolicyResourceId);
+ResourceIdentifier managedNetworkResourceId = ManagedNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedNetworkName);
+ManagedNetworkResource managedNetwork = client.GetManagedNetworkResource(managedNetworkResourceId);
+
+// get the collection of this ManagedNetworkPeeringPolicyResource
+ManagedNetworkPeeringPolicyCollection collection = managedNetwork.GetManagedNetworkPeeringPolicies();
 
 // invoke the operation
-ManagedNetworkPeeringPolicyResource result = await managedNetworkPeeringPolicy.GetAsync();
+string managedNetworkPeeringPolicyName = "myHubAndSpoke";
+bool result = await collection.ExistsAsync(managedNetworkPeeringPolicyName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedNetworkPeeringPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

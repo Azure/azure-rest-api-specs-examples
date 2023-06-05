@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KeyVaultResource created on azure
-// for more information of creating KeyVaultResource, please refer to the document of KeyVaultResource
+// this example assumes you already have this KeyVaultPrivateEndpointConnectionResource created on azure
+// for more information of creating KeyVaultPrivateEndpointConnectionResource, please refer to the document of KeyVaultPrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "sample-group";
 string vaultName = "sample-vault";
-ResourceIdentifier keyVaultResourceId = KeyVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
-KeyVaultResource keyVault = client.GetKeyVaultResource(keyVaultResourceId);
-
-// get the collection of this KeyVaultPrivateEndpointConnectionResource
-KeyVaultPrivateEndpointConnectionCollection collection = keyVault.GetKeyVaultPrivateEndpointConnections();
+string privateEndpointConnectionName = "sample-pec";
+ResourceIdentifier keyVaultPrivateEndpointConnectionResourceId = KeyVaultPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, privateEndpointConnectionName);
+KeyVaultPrivateEndpointConnectionResource keyVaultPrivateEndpointConnection = client.GetKeyVaultPrivateEndpointConnectionResource(keyVaultPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "sample-pec";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+KeyVaultPrivateEndpointConnectionResource result = await keyVaultPrivateEndpointConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+KeyVaultPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

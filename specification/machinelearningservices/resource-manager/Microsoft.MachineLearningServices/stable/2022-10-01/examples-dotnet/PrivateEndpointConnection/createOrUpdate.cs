@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningPrivateEndpointConnectionResource created on azure
+// for more information of creating MachineLearningPrivateEndpointConnectionResource, please refer to the document of MachineLearningPrivateEndpointConnectionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "rg-1234";
 string workspaceName = "testworkspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningPrivateEndpointConnectionResource
-MachineLearningPrivateEndpointConnectionCollection collection = machineLearningWorkspace.GetMachineLearningPrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+ResourceIdentifier machineLearningPrivateEndpointConnectionResourceId = MachineLearningPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
+MachineLearningPrivateEndpointConnectionResource machineLearningPrivateEndpointConnection = client.GetMachineLearningPrivateEndpointConnectionResource(machineLearningPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
 MachineLearningPrivateEndpointConnectionData data = new MachineLearningPrivateEndpointConnectionData(new AzureLocation("placeholder"))
 {
     ConnectionState = new MachineLearningPrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ MachineLearningPrivateEndpointConnectionData data = new MachineLearningPrivateEn
         Description = "Auto-Approved",
     },
 };
-ArmOperation<MachineLearningPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<MachineLearningPrivateEndpointConnectionResource> lro = await machineLearningPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

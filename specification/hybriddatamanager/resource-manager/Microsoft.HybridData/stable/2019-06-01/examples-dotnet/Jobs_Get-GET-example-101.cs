@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,21 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridDataJobDefinitionResource created on azure
-// for more information of creating HybridDataJobDefinitionResource, please refer to the document of HybridDataJobDefinitionResource
+// this example assumes you already have this HybridDataJobResource created on azure
+// for more information of creating HybridDataJobResource, please refer to the document of HybridDataJobResource
 string subscriptionId = "6e0219f5-327a-4365-904f-05eed4227ad7";
 string resourceGroupName = "ResourceGroupForSDKTest";
 string dataManagerName = "TestAzureSDKOperations";
 string dataServiceName = "DataTransformation";
 string jobDefinitionName = "jobdeffromtestcode1";
-ResourceIdentifier hybridDataJobDefinitionResourceId = HybridDataJobDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName, dataServiceName, jobDefinitionName);
-HybridDataJobDefinitionResource hybridDataJobDefinition = client.GetHybridDataJobDefinitionResource(hybridDataJobDefinitionResourceId);
-
-// get the collection of this HybridDataJobResource
-HybridDataJobCollection collection = hybridDataJobDefinition.GetHybridDataJobs();
+string jobId = "99ef93fe-36be-43e4-bebf-de6746730601";
+ResourceIdentifier hybridDataJobResourceId = HybridDataJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, dataManagerName, dataServiceName, jobDefinitionName, jobId);
+HybridDataJobResource hybridDataJob = client.GetHybridDataJobResource(hybridDataJobResourceId);
 
 // invoke the operation
-string jobId = "99ef93fe-36be-43e4-bebf-de6746730601";
-bool result = await collection.ExistsAsync(jobId);
+HybridDataJobResource result = await hybridDataJob.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HybridDataJobData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

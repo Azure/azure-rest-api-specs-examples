@@ -17,19 +17,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CustomLocationResource created on azure
-// for more information of creating CustomLocationResource, please refer to the document of CustomLocationResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "11111111-2222-3333-4444-555555555555";
 string resourceGroupName = "testresourcegroup";
-string resourceName = "customLocation01";
-ResourceIdentifier customLocationResourceId = CustomLocationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-CustomLocationResource customLocation = client.GetCustomLocationResource(customLocationResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this CustomLocationResource
+CustomLocationCollection collection = resourceGroupResource.GetCustomLocations();
 
 // invoke the operation
-CustomLocationResource result = await customLocation.GetAsync();
+string resourceName = "customLocation01";
+bool result = await collection.ExistsAsync(resourceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CustomLocationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

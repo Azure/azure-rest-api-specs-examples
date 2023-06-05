@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LabResource created on azure
-// for more information of creating LabResource, please refer to the document of LabResource
+// this example assumes you already have this LabServicesScheduleResource created on azure
+// for more information of creating LabServicesScheduleResource, please refer to the document of LabServicesScheduleResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string labName = "testlab";
-ResourceIdentifier labResourceId = LabResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName);
-LabResource lab = client.GetLabResource(labResourceId);
-
-// get the collection of this LabServicesScheduleResource
-LabServicesScheduleCollection collection = lab.GetLabServicesSchedules();
+string scheduleName = "schedule1";
+ResourceIdentifier labServicesScheduleResourceId = LabServicesScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, scheduleName);
+LabServicesScheduleResource labServicesSchedule = client.GetLabServicesScheduleResource(labServicesScheduleResourceId);
 
 // invoke the operation
-string scheduleName = "schedule1";
-bool result = await collection.ExistsAsync(scheduleName);
+LabServicesScheduleResource result = await labServicesSchedule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LabServicesScheduleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

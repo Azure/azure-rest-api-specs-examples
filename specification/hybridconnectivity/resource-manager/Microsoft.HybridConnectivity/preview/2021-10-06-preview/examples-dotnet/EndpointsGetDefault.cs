@@ -15,16 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this EndpointResource
+// this example assumes you already have this EndpointResource created on azure
+// for more information of creating EndpointResource, please refer to the document of EndpointResource
 string scope = "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-EndpointResourceCollection collection = client.GetEndpointResources(scopeId);
+string endpointName = "default";
+ResourceIdentifier endpointResourceId = EndpointResource.CreateResourceIdentifier(scope, endpointName);
+EndpointResource endpointResource = client.GetEndpointResource(endpointResourceId);
 
 // invoke the operation
-string endpointName = "default";
-bool result = await collection.ExistsAsync(endpointName);
+EndpointResource result = await endpointResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EndpointResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

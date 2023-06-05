@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSanVolumeGroupResource created on azure
-// for more information of creating ElasticSanVolumeGroupResource, please refer to the document of ElasticSanVolumeGroupResource
+// this example assumes you already have this ElasticSanResource created on azure
+// for more information of creating ElasticSanResource, please refer to the document of ElasticSanResource
 string subscriptionId = "aaaaaaaaaaaaaaaaaa";
 string resourceGroupName = "rgelasticsan";
 string elasticSanName = "ti7q-k952-1qB3J_5";
-string volumeGroupName = "u_5I_1j4t3";
-ResourceIdentifier elasticSanVolumeGroupResourceId = ElasticSanVolumeGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName, volumeGroupName);
-ElasticSanVolumeGroupResource elasticSanVolumeGroup = client.GetElasticSanVolumeGroupResource(elasticSanVolumeGroupResourceId);
+ResourceIdentifier elasticSanResourceId = ElasticSanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName);
+ElasticSanResource elasticSan = client.GetElasticSanResource(elasticSanResourceId);
+
+// get the collection of this ElasticSanVolumeGroupResource
+ElasticSanVolumeGroupCollection collection = elasticSan.GetElasticSanVolumeGroups();
 
 // invoke the operation
-ElasticSanVolumeGroupResource result = await elasticSanVolumeGroup.GetAsync();
+string volumeGroupName = "u_5I_1j4t3";
+bool result = await collection.ExistsAsync(volumeGroupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ElasticSanVolumeGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

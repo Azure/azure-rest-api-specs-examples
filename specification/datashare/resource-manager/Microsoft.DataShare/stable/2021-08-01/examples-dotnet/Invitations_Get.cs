@@ -14,21 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataShareInvitationResource created on azure
-// for more information of creating DataShareInvitationResource, please refer to the document of DataShareInvitationResource
+// this example assumes you already have this DataShareResource created on azure
+// for more information of creating DataShareResource, please refer to the document of DataShareResource
 string subscriptionId = "433a8dfd-e5d5-4e77-ad86-90acdc75eb1a";
 string resourceGroupName = "SampleResourceGroup";
 string accountName = "Account1";
 string shareName = "Share1";
-string invitationName = "Invitation1";
-ResourceIdentifier dataShareInvitationResourceId = DataShareInvitationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName, invitationName);
-DataShareInvitationResource dataShareInvitation = client.GetDataShareInvitationResource(dataShareInvitationResourceId);
+ResourceIdentifier dataShareResourceId = DataShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, shareName);
+DataShareResource dataShare = client.GetDataShareResource(dataShareResourceId);
+
+// get the collection of this DataShareInvitationResource
+DataShareInvitationCollection collection = dataShare.GetDataShareInvitations();
 
 // invoke the operation
-DataShareInvitationResource result = await dataShareInvitation.GetAsync();
+string invitationName = "Invitation1";
+bool result = await collection.ExistsAsync(invitationName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataShareInvitationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

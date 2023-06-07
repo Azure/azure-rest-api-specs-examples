@@ -5,7 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataShare;
-using Azure.ResourceManager.Models;
+using Azure.ResourceManager.DataShare.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/datashare/resource-manager/Microsoft.DataShare/stable/2021-08-01/examples/Accounts_Get.json
@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this DataShareAccountResource created on azure
+// for more information of creating DataShareAccountResource, please refer to the document of DataShareAccountResource
 string subscriptionId = "12345678-1234-1234-12345678abc";
 string resourceGroupName = "SampleResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this DataShareAccountResource
-DataShareAccountCollection collection = resourceGroupResource.GetDataShareAccounts();
+string accountName = "Account1";
+ResourceIdentifier dataShareAccountResourceId = DataShareAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+DataShareAccountResource dataShareAccount = client.GetDataShareAccountResource(dataShareAccountResourceId);
 
 // invoke the operation
-string accountName = "Account1";
-bool result = await collection.ExistsAsync(accountName);
+DataShareAccountResource result = await dataShareAccount.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataShareAccountData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

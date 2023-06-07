@@ -15,16 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GuestConfigurationHcrpAssignmentResource created on azure
-// for more information of creating GuestConfigurationHcrpAssignmentResource, please refer to the document of GuestConfigurationHcrpAssignmentResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this GuestConfigurationHcrpAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string machineName = "myMachineName";
-string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
-ResourceIdentifier guestConfigurationHcrpAssignmentResourceId = GuestConfigurationHcrpAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, guestConfigurationAssignmentName);
-GuestConfigurationHcrpAssignmentResource guestConfigurationHcrpAssignment = client.GetGuestConfigurationHcrpAssignmentResource(guestConfigurationHcrpAssignmentResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}", subscriptionId, resourceGroupName, machineName));
+GuestConfigurationHcrpAssignmentCollection collection = client.GetGuestConfigurationHcrpAssignments(scopeId);
 
 // invoke the operation
+string guestConfigurationAssignmentName = "NotInstalledApplicationForWindows";
 GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
 {
     Properties = new GuestConfigurationAssignmentProperties()
@@ -50,7 +52,7 @@ GuestConfigurationAssignmentData data = new GuestConfigurationAssignmentData()
     Name = "NotInstalledApplicationForWindows",
     Location = new AzureLocation("westcentralus"),
 };
-ArmOperation<GuestConfigurationHcrpAssignmentResource> lro = await guestConfigurationHcrpAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<GuestConfigurationHcrpAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, guestConfigurationAssignmentName, data);
 GuestConfigurationHcrpAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

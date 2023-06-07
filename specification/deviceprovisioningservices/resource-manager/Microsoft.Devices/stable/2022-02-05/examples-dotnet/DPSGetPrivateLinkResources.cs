@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DeviceProvisioningServiceResource created on azure
-// for more information of creating DeviceProvisioningServiceResource, please refer to the document of DeviceProvisioningServiceResource
+// this example assumes you already have this DeviceProvisioningServicesPrivateLinkResource created on azure
+// for more information of creating DeviceProvisioningServicesPrivateLinkResource, please refer to the document of DeviceProvisioningServicesPrivateLinkResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "myFirstProvisioningService";
-ResourceIdentifier deviceProvisioningServiceResourceId = DeviceProvisioningServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-DeviceProvisioningServiceResource deviceProvisioningService = client.GetDeviceProvisioningServiceResource(deviceProvisioningServiceResourceId);
-
-// get the collection of this DeviceProvisioningServicesPrivateLinkResource
-DeviceProvisioningServicesPrivateLinkResourceCollection collection = deviceProvisioningService.GetDeviceProvisioningServicesPrivateLinkResources();
+string groupId = "iotDps";
+ResourceIdentifier deviceProvisioningServicesPrivateLinkResourceId = DeviceProvisioningServicesPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, groupId);
+DeviceProvisioningServicesPrivateLinkResource deviceProvisioningServicesPrivateLinkResource = client.GetDeviceProvisioningServicesPrivateLinkResource(deviceProvisioningServicesPrivateLinkResourceId);
 
 // invoke the operation
-string groupId = "iotDps";
-bool result = await collection.ExistsAsync(groupId);
+DeviceProvisioningServicesPrivateLinkResource result = await deviceProvisioningServicesPrivateLinkResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DeviceProvisioningServicesPrivateLinkResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

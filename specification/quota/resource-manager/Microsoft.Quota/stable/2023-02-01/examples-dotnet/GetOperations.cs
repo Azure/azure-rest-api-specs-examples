@@ -19,7 +19,7 @@ ArmClient client = new ArmClient(cred);
 var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation and iterate over the result
-await foreach (OperationResponse item in tenantResource.GetQuotaOperationsAsync())
+await foreach (QuotaOperationResult item in tenantResource.GetQuotaOperationsAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

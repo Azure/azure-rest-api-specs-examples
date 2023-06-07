@@ -27,8 +27,8 @@ CurrentQuotaLimitBaseData data = new CurrentQuotaLimitBaseData()
 {
     Properties = new QuotaProperties()
     {
-        Limit = new LimitObject(10),
-        Name = new ResourceName()
+        Limit = new QuotaLimitObject(10),
+        Name = new QuotaRequestResourceName()
         {
             Value = "standardFSv2Family",
         },

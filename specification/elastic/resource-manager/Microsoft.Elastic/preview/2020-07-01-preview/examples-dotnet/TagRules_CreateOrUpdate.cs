@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MonitoringTagRuleResource created on azure
-// for more information of creating MonitoringTagRuleResource, please refer to the document of MonitoringTagRuleResource
+// this example assumes you already have this ElasticMonitorResource created on azure
+// for more information of creating ElasticMonitorResource, please refer to the document of ElasticMonitorResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string monitorName = "myMonitor";
-string ruleSetName = "default";
-ResourceIdentifier monitoringTagRuleResourceId = MonitoringTagRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, ruleSetName);
-MonitoringTagRuleResource monitoringTagRule = client.GetMonitoringTagRuleResource(monitoringTagRuleResourceId);
+ResourceIdentifier elasticMonitorResourceId = ElasticMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+ElasticMonitorResource elasticMonitorResource = client.GetElasticMonitorResource(elasticMonitorResourceId);
+
+// get the collection of this MonitoringTagRuleResource
+MonitoringTagRuleCollection collection = elasticMonitorResource.GetMonitoringTagRules();
 
 // invoke the operation
+string ruleSetName = "default";
 MonitoringTagRuleData data = new MonitoringTagRuleData();
-ArmOperation<MonitoringTagRuleResource> lro = await monitoringTagRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MonitoringTagRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleSetName, data);
 MonitoringTagRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

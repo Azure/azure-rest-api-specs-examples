@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabVmScheduleResource created on azure
-// for more information of creating DevTestLabVmScheduleResource, please refer to the document of DevTestLabVmScheduleResource
+// this example assumes you already have this DevTestLabVmResource created on azure
+// for more information of creating DevTestLabVmResource, please refer to the document of DevTestLabVmResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string vmName = "{vmName}";
-string name = "LabVmsShutdown";
-ResourceIdentifier devTestLabVmScheduleResourceId = DevTestLabVmScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, vmName, name);
-DevTestLabVmScheduleResource devTestLabVmSchedule = client.GetDevTestLabVmScheduleResource(devTestLabVmScheduleResourceId);
+ResourceIdentifier devTestLabVmResourceId = DevTestLabVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, vmName);
+DevTestLabVmResource devTestLabVm = client.GetDevTestLabVmResource(devTestLabVmResourceId);
+
+// get the collection of this DevTestLabVmScheduleResource
+DevTestLabVmScheduleCollection collection = devTestLabVm.GetDevTestLabVmSchedules();
 
 // invoke the operation
-DevTestLabVmScheduleResource result = await devTestLabVmSchedule.GetAsync();
+string name = "LabVmsShutdown";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DevTestLabScheduleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

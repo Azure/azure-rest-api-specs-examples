@@ -15,21 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabServiceFabricResource created on azure
-// for more information of creating DevTestLabServiceFabricResource, please refer to the document of DevTestLabServiceFabricResource
+// this example assumes you already have this DevTestLabServiceFabricScheduleResource created on azure
+// for more information of creating DevTestLabServiceFabricScheduleResource, please refer to the document of DevTestLabServiceFabricScheduleResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string userName = "@me";
 string serviceFabricName = "{serviceFrabicName}";
-ResourceIdentifier devTestLabServiceFabricResourceId = DevTestLabServiceFabricResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName, serviceFabricName);
-DevTestLabServiceFabricResource devTestLabServiceFabric = client.GetDevTestLabServiceFabricResource(devTestLabServiceFabricResourceId);
-
-// get the collection of this DevTestLabServiceFabricScheduleResource
-DevTestLabServiceFabricScheduleCollection collection = devTestLabServiceFabric.GetDevTestLabServiceFabricSchedules();
+string name = "{scheduleName}";
+ResourceIdentifier devTestLabServiceFabricScheduleResourceId = DevTestLabServiceFabricScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName, serviceFabricName, name);
+DevTestLabServiceFabricScheduleResource devTestLabServiceFabricSchedule = client.GetDevTestLabServiceFabricScheduleResource(devTestLabServiceFabricScheduleResourceId);
 
 // invoke the operation
-string name = "{scheduleName}";
-bool result = await collection.ExistsAsync(name);
+DevTestLabServiceFabricScheduleResource result = await devTestLabServiceFabricSchedule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevTestLabScheduleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -13,20 +13,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabArtifactSourceResource created on azure
-// for more information of creating DevTestLabArtifactSourceResource, please refer to the document of DevTestLabArtifactSourceResource
+// this example assumes you already have this DevTestLabArmTemplateResource created on azure
+// for more information of creating DevTestLabArmTemplateResource, please refer to the document of DevTestLabArmTemplateResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string artifactSourceName = "{artifactSourceName}";
-ResourceIdentifier devTestLabArtifactSourceResourceId = DevTestLabArtifactSourceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, artifactSourceName);
-DevTestLabArtifactSourceResource devTestLabArtifactSource = client.GetDevTestLabArtifactSourceResource(devTestLabArtifactSourceResourceId);
-
-// get the collection of this DevTestLabArmTemplateResource
-DevTestLabArmTemplateCollection collection = devTestLabArtifactSource.GetDevTestLabArmTemplates();
+string name = "{armTemplateName}";
+ResourceIdentifier devTestLabArmTemplateResourceId = DevTestLabArmTemplateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, artifactSourceName, name);
+DevTestLabArmTemplateResource devTestLabArmTemplate = client.GetDevTestLabArmTemplateResource(devTestLabArmTemplateResourceId);
 
 // invoke the operation
-string name = "{armTemplateName}";
-bool result = await collection.ExistsAsync(name);
+DevTestLabArmTemplateResource result = await devTestLabArmTemplate.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevTestLabArmTemplateData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

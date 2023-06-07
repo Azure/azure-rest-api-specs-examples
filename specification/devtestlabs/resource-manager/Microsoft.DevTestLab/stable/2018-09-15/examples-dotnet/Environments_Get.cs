@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabEnvironmentResource created on azure
-// for more information of creating DevTestLabEnvironmentResource, please refer to the document of DevTestLabEnvironmentResource
+// this example assumes you already have this DevTestLabUserResource created on azure
+// for more information of creating DevTestLabUserResource, please refer to the document of DevTestLabUserResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string userName = "@me";
-string name = "{environmentName}";
-ResourceIdentifier devTestLabEnvironmentResourceId = DevTestLabEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName, name);
-DevTestLabEnvironmentResource devTestLabEnvironment = client.GetDevTestLabEnvironmentResource(devTestLabEnvironmentResourceId);
+ResourceIdentifier devTestLabUserResourceId = DevTestLabUserResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName);
+DevTestLabUserResource devTestLabUser = client.GetDevTestLabUserResource(devTestLabUserResourceId);
+
+// get the collection of this DevTestLabEnvironmentResource
+DevTestLabEnvironmentCollection collection = devTestLabUser.GetDevTestLabEnvironments();
 
 // invoke the operation
-DevTestLabEnvironmentResource result = await devTestLabEnvironment.GetAsync();
+string name = "{environmentName}";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DevTestLabEnvironmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

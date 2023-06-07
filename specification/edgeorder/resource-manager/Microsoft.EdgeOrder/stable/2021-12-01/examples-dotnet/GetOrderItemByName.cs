@@ -16,19 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EdgeOrderItemResource created on azure
-// for more information of creating EdgeOrderItemResource, please refer to the document of EdgeOrderItemResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "fa68082f-8ff7-4a25-95c7-ce9da541242f";
 string resourceGroupName = "TestRG";
-string orderItemName = "TestOrderItemName01";
-ResourceIdentifier edgeOrderItemResourceId = EdgeOrderItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, orderItemName);
-EdgeOrderItemResource edgeOrderItem = client.GetEdgeOrderItemResource(edgeOrderItemResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this EdgeOrderItemResource
+EdgeOrderItemCollection collection = resourceGroupResource.GetEdgeOrderItems();
 
 // invoke the operation
-EdgeOrderItemResource result = await edgeOrderItem.GetAsync();
+string orderItemName = "TestOrderItemName01";
+bool result = await collection.ExistsAsync(orderItemName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EdgeOrderItemData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

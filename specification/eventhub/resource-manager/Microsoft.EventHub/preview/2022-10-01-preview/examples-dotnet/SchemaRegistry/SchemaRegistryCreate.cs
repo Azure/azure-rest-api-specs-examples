@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceResource created on azure
-// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
+// this example assumes you already have this EventHubsSchemaGroupResource created on azure
+// for more information of creating EventHubsSchemaGroupResource, please refer to the document of EventHubsSchemaGroupResource
 string subscriptionId = "e8baea74-64ce-459b-bee3-5aa4c47b3ae3";
 string resourceGroupName = "alitest";
 string namespaceName = "ali-ua-test-eh-system-1";
-ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
-
-// get the collection of this EventHubsSchemaGroupResource
-EventHubsSchemaGroupCollection collection = eventHubsNamespace.GetEventHubsSchemaGroups();
+string schemaGroupName = "testSchemaGroup1";
+ResourceIdentifier eventHubsSchemaGroupResourceId = EventHubsSchemaGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, schemaGroupName);
+EventHubsSchemaGroupResource eventHubsSchemaGroup = client.GetEventHubsSchemaGroupResource(eventHubsSchemaGroupResourceId);
 
 // invoke the operation
-string schemaGroupName = "testSchemaGroup1";
 EventHubsSchemaGroupData data = new EventHubsSchemaGroupData()
 {
     GroupProperties =
@@ -36,7 +33,7 @@ EventHubsSchemaGroupData data = new EventHubsSchemaGroupData()
     SchemaCompatibility = EventHubsSchemaCompatibility.Forward,
     SchemaType = EventHubsSchemaType.Avro,
 };
-ArmOperation<EventHubsSchemaGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, schemaGroupName, data);
+ArmOperation<EventHubsSchemaGroupResource> lro = await eventHubsSchemaGroup.UpdateAsync(WaitUntil.Completed, data);
 EventHubsSchemaGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

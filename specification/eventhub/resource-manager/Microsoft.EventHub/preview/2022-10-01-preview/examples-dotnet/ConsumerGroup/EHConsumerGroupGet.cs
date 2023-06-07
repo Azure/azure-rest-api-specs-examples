@@ -14,20 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubResource created on azure
-// for more information of creating EventHubResource, please refer to the document of EventHubResource
+// this example assumes you already have this EventHubsConsumerGroupResource created on azure
+// for more information of creating EventHubsConsumerGroupResource, please refer to the document of EventHubsConsumerGroupResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-2661";
 string eventHubName = "sdk-EventHub-6681";
-ResourceIdentifier eventHubResourceId = EventHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName);
-EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
-
-// get the collection of this EventHubsConsumerGroupResource
-EventHubsConsumerGroupCollection collection = eventHub.GetEventHubsConsumerGroups();
+string consumerGroupName = "sdk-ConsumerGroup-5563";
+ResourceIdentifier eventHubsConsumerGroupResourceId = EventHubsConsumerGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName, consumerGroupName);
+EventHubsConsumerGroupResource eventHubsConsumerGroup = client.GetEventHubsConsumerGroupResource(eventHubsConsumerGroupResourceId);
 
 // invoke the operation
-string consumerGroupName = "sdk-ConsumerGroup-5563";
-bool result = await collection.ExistsAsync(consumerGroupName);
+EventHubsConsumerGroupResource result = await eventHubsConsumerGroup.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventHubsConsumerGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

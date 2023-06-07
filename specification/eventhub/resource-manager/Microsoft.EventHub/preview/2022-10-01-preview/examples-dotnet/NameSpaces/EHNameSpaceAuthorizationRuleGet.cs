@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceAuthorizationRuleResource created on azure
-// for more information of creating EventHubsNamespaceAuthorizationRuleResource, please refer to the document of EventHubsNamespaceAuthorizationRuleResource
+// this example assumes you already have this EventHubsNamespaceResource created on azure
+// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ArunMonocle";
 string namespaceName = "sdk-Namespace-2702";
-string authorizationRuleName = "sdk-Authrules-1746";
-ResourceIdentifier eventHubsNamespaceAuthorizationRuleResourceId = EventHubsNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
-EventHubsNamespaceAuthorizationRuleResource eventHubsNamespaceAuthorizationRule = client.GetEventHubsNamespaceAuthorizationRuleResource(eventHubsNamespaceAuthorizationRuleResourceId);
+ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
+
+// get the collection of this EventHubsNamespaceAuthorizationRuleResource
+EventHubsNamespaceAuthorizationRuleCollection collection = eventHubsNamespace.GetEventHubsNamespaceAuthorizationRules();
 
 // invoke the operation
-EventHubsNamespaceAuthorizationRuleResource result = await eventHubsNamespaceAuthorizationRule.GetAsync();
+string authorizationRuleName = "sdk-Authrules-1746";
+bool result = await collection.ExistsAsync(authorizationRuleName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EventHubsAuthorizationRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

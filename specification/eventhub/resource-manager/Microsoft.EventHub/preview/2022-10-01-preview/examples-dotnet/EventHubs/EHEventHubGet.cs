@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceResource created on azure
-// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
+// this example assumes you already have this EventHubResource created on azure
+// for more information of creating EventHubResource, please refer to the document of EventHubResource
 string subscriptionId = "e2f361f0-3b27-4503-a9cc-21cfba380093";
 string resourceGroupName = "Default-NotificationHubs-AustraliaEast";
 string namespaceName = "sdk-Namespace-716";
-ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
-
-// get the collection of this EventHubResource
-EventHubCollection collection = eventHubsNamespace.GetEventHubs();
+string eventHubName = "sdk-EventHub-10";
+ResourceIdentifier eventHubResourceId = EventHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, eventHubName);
+EventHubResource eventHub = client.GetEventHubResource(eventHubResourceId);
 
 // invoke the operation
-string eventHubName = "sdk-EventHub-10";
-bool result = await collection.ExistsAsync(eventHubName);
+EventHubResource result = await eventHub.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventHubData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

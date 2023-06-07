@@ -14,19 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceTopologyResource created on azure
-// for more information of creating ServiceTopologyResource, please refer to the document of ServiceTopologyResource
+// this example assumes you already have this ServiceResource created on azure
+// for more information of creating ServiceResource, please refer to the document of ServiceResource
 string subscriptionId = "caac1590-e859-444f-a9e0-62091c0f5929";
 string resourceGroupName = "myResourceGroup";
 string serviceTopologyName = "myTopology";
-ResourceIdentifier serviceTopologyResourceId = ServiceTopologyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceTopologyName);
-ServiceTopologyResource serviceTopologyResource = client.GetServiceTopologyResource(serviceTopologyResourceId);
-
-// get the collection of this ServiceResource
-ServiceResourceCollection collection = serviceTopologyResource.GetServiceResources();
+string serviceName = "myService";
+ResourceIdentifier serviceResourceId = ServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceTopologyName, serviceName);
+ServiceResource serviceResource = client.GetServiceResource(serviceResourceId);
 
 // invoke the operation
-string serviceName = "myService";
-bool result = await collection.ExistsAsync(serviceName);
+ServiceResource result = await serviceResource.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ServiceResourceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

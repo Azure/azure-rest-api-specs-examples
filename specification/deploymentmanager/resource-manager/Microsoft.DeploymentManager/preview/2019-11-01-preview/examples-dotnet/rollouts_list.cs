@@ -1,11 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DeploymentManager;
-using Azure.ResourceManager.DeploymentManager.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollouts_list.json

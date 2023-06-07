@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.EventGrid;
+using Azure.ResourceManager.EventGrid.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/stable/2022-06-15/examples/PartnerTopics_Get.json
@@ -15,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this PartnerTopicResource created on azure
+// for more information of creating PartnerTopicResource, please refer to the document of PartnerTopicResource
 string subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
 string resourceGroupName = "examplerg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this PartnerTopicResource
-PartnerTopicCollection collection = resourceGroupResource.GetPartnerTopics();
+string partnerTopicName = "examplePartnerTopicName1";
+ResourceIdentifier partnerTopicResourceId = PartnerTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, partnerTopicName);
+PartnerTopicResource partnerTopic = client.GetPartnerTopicResource(partnerTopicResourceId);
 
 // invoke the operation
-string partnerTopicName = "examplePartnerTopicName1";
-bool result = await collection.ExistsAsync(partnerTopicName);
+PartnerTopicResource result = await partnerTopic.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PartnerTopicData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

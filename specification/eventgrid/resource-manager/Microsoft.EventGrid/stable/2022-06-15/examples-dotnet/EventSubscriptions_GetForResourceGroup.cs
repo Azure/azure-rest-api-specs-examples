@@ -15,16 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this EventSubscriptionResource
+// this example assumes you already have this EventSubscriptionResource created on azure
+// for more information of creating EventSubscriptionResource, please refer to the document of EventSubscriptionResource
 string scope = "subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-EventSubscriptionCollection collection = client.GetEventSubscriptions(scopeId);
+string eventSubscriptionName = "examplesubscription2";
+ResourceIdentifier eventSubscriptionResourceId = EventSubscriptionResource.CreateResourceIdentifier(scope, eventSubscriptionName);
+EventSubscriptionResource eventSubscription = client.GetEventSubscriptionResource(eventSubscriptionResourceId);
 
 // invoke the operation
-string eventSubscriptionName = "examplesubscription2";
-bool result = await collection.ExistsAsync(eventSubscriptionName);
+EventSubscriptionResource result = await eventSubscription.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventGridSubscriptionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

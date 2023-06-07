@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PartnerTopicResource created on azure
-// for more information of creating PartnerTopicResource, please refer to the document of PartnerTopicResource
+// this example assumes you already have this PartnerTopicEventSubscriptionResource created on azure
+// for more information of creating PartnerTopicEventSubscriptionResource, please refer to the document of PartnerTopicEventSubscriptionResource
 string subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
 string resourceGroupName = "examplerg";
 string partnerTopicName = "examplePartnerTopic1";
-ResourceIdentifier partnerTopicResourceId = PartnerTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, partnerTopicName);
-PartnerTopicResource partnerTopic = client.GetPartnerTopicResource(partnerTopicResourceId);
-
-// get the collection of this PartnerTopicEventSubscriptionResource
-PartnerTopicEventSubscriptionCollection collection = partnerTopic.GetPartnerTopicEventSubscriptions();
+string eventSubscriptionName = "examplesubscription1";
+ResourceIdentifier partnerTopicEventSubscriptionResourceId = PartnerTopicEventSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, partnerTopicName, eventSubscriptionName);
+PartnerTopicEventSubscriptionResource partnerTopicEventSubscription = client.GetPartnerTopicEventSubscriptionResource(partnerTopicEventSubscriptionResourceId);
 
 // invoke the operation
-string eventSubscriptionName = "examplesubscription1";
-bool result = await collection.ExistsAsync(eventSubscriptionName);
+PartnerTopicEventSubscriptionResource result = await partnerTopicEventSubscription.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventGridSubscriptionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

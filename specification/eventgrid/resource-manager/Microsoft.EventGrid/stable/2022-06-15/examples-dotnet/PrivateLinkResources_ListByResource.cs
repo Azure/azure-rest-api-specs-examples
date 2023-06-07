@@ -13,19 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridTopicResource created on azure
-// for more information of creating EventGridTopicResource, please refer to the document of EventGridTopicResource
+// this example assumes you already have this EventGridDomainResource created on azure
+// for more information of creating EventGridDomainResource, please refer to the document of EventGridDomainResource
 string subscriptionId = "5b4b650e-28b9-4790-b3ab-ddbd88d727c4";
 string resourceGroupName = "examplerg";
 string parentName = "exampletopic1";
-ResourceIdentifier eventGridTopicResourceId = EventGridTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName);
-EventGridTopicResource eventGridTopic = client.GetEventGridTopicResource(eventGridTopicResourceId);
+ResourceIdentifier eventGridDomainResourceId = EventGridDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName);
+EventGridDomainResource eventGridDomain = client.GetEventGridDomainResource(eventGridDomainResourceId);
 
-// get the collection of this EventGridTopicPrivateLinkResource
-EventGridTopicPrivateLinkResourceCollection collection = eventGridTopic.GetEventGridTopicPrivateLinkResources();
+// get the collection of this EventGridDomainPrivateLinkResource
+EventGridDomainPrivateLinkResourceCollection collection = eventGridDomain.GetEventGridDomainPrivateLinkResources();
 
 // invoke the operation and iterate over the result
-await foreach (EventGridTopicPrivateLinkResource item in collection.GetAllAsync())
+await foreach (EventGridDomainPrivateLinkResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance

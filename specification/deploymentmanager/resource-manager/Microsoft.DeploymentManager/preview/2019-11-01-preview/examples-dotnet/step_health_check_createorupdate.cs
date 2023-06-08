@@ -7,7 +7,6 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DeploymentManager;
 using Azure.ResourceManager.DeploymentManager.Models;
-using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/step_health_check_createorupdate.json
 // this example is just showing the usage of "Steps_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -17,18 +16,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this StepResource created on azure
+// for more information of creating StepResource, please refer to the document of StepResource
 string subscriptionId = "caac1590-e859-444f-a9e0-62091c0f5929";
 string resourceGroupName = "myResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this StepResource
-StepResourceCollection collection = resourceGroupResource.GetStepResources();
+string stepName = "healthCheckStep";
+ResourceIdentifier stepResourceId = StepResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, stepName);
+StepResource stepResource = client.GetStepResource(stepResourceId);
 
 // invoke the operation
-string stepName = "healthCheckStep";
 StepResourceData data = new StepResourceData(new AzureLocation("centralus"), new HealthCheckStepProperties(new RestHealthCheckStepAttributes(XmlConvert.ToTimeSpan("PT2H"))
 {
     HealthChecks =
@@ -77,7 +73,7 @@ StepResourceData data = new StepResourceData(new AzureLocation("centralus"), new
     {
     },
 };
-ArmOperation<StepResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, stepName, data);
+ArmOperation<StepResource> lro = await stepResource.UpdateAsync(WaitUntil.Completed, data);
 StepResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

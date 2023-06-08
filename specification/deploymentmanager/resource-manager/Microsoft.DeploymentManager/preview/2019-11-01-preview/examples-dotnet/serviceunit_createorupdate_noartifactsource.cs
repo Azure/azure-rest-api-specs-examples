@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceResource created on azure
-// for more information of creating ServiceResource, please refer to the document of ServiceResource
+// this example assumes you already have this ServiceUnitResource created on azure
+// for more information of creating ServiceUnitResource, please refer to the document of ServiceUnitResource
 string subscriptionId = "caac1590-e859-444f-a9e0-62091c0f5929";
 string resourceGroupName = "myResourceGroup";
 string serviceTopologyName = "myTopology";
 string serviceName = "myService";
-ResourceIdentifier serviceResourceId = ServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceTopologyName, serviceName);
-ServiceResource serviceResource = client.GetServiceResource(serviceResourceId);
-
-// get the collection of this ServiceUnitResource
-ServiceUnitResourceCollection collection = serviceResource.GetServiceUnitResources();
+string serviceUnitName = "myServiceUnit";
+ResourceIdentifier serviceUnitResourceId = ServiceUnitResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceTopologyName, serviceName, serviceUnitName);
+ServiceUnitResource serviceUnitResource = client.GetServiceUnitResource(serviceUnitResourceId);
 
 // invoke the operation
-string serviceUnitName = "myServiceUnit";
 ServiceUnitResourceData data = new ServiceUnitResourceData(new AzureLocation("centralus"), "myDeploymentResourceGroup", DeploymentMode.Incremental)
 {
     Artifacts = new ServiceUnitArtifacts()
@@ -40,7 +37,7 @@ ServiceUnitResourceData data = new ServiceUnitResourceData(new AzureLocation("ce
     {
     },
 };
-ArmOperation<ServiceUnitResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceUnitName, data);
+ArmOperation<ServiceUnitResource> lro = await serviceUnitResource.UpdateAsync(WaitUntil.Completed, data);
 ServiceUnitResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

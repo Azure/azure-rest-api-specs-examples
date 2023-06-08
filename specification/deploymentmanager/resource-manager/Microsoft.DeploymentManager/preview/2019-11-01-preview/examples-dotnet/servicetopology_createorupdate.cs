@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DeploymentManager;
-using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/servicetopology_createorupdate.json
 // this example is just showing the usage of "ServiceTopologies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,18 +14,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ServiceTopologyResource created on azure
+// for more information of creating ServiceTopologyResource, please refer to the document of ServiceTopologyResource
 string subscriptionId = "caac1590-e859-444f-a9e0-62091c0f5929";
 string resourceGroupName = "myResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ServiceTopologyResource
-ServiceTopologyResourceCollection collection = resourceGroupResource.GetServiceTopologyResources();
+string serviceTopologyName = "myTopology";
+ResourceIdentifier serviceTopologyResourceId = ServiceTopologyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceTopologyName);
+ServiceTopologyResource serviceTopologyResource = client.GetServiceTopologyResource(serviceTopologyResourceId);
 
 // invoke the operation
-string serviceTopologyName = "myTopology";
 ServiceTopologyResourceData data = new ServiceTopologyResourceData(new AzureLocation("centralus"))
 {
     ArtifactSourceId = "Microsoft.DeploymentManager/artifactSources/myArtifactSource",
@@ -34,7 +30,7 @@ ServiceTopologyResourceData data = new ServiceTopologyResourceData(new AzureLoca
     {
     },
 };
-ArmOperation<ServiceTopologyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceTopologyName, data);
+ArmOperation<ServiceTopologyResource> lro = await serviceTopologyResource.UpdateAsync(WaitUntil.Completed, data);
 ServiceTopologyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

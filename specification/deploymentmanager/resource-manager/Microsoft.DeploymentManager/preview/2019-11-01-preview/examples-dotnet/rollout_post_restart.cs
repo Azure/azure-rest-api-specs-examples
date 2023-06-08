@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DeploymentManager;
-using Azure.ResourceManager.DeploymentManager.Models;
 
 // Generated from example definition: specification/deploymentmanager/resource-manager/Microsoft.DeploymentManager/preview/2019-11-01-preview/examples/rollout_post_restart.json
 // this example is just showing the usage of "Rollouts_Restart" operation, for the dependent resources, they will have to be created separately.

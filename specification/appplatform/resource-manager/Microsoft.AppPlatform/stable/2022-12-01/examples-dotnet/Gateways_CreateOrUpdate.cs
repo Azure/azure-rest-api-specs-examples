@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformGatewayResource created on azure
-// for more information of creating AppPlatformGatewayResource, please refer to the document of AppPlatformGatewayResource
+// this example assumes you already have this AppPlatformServiceResource created on azure
+// for more information of creating AppPlatformServiceResource, please refer to the document of AppPlatformServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
-string gatewayName = "default";
-ResourceIdentifier appPlatformGatewayResourceId = AppPlatformGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayName);
-AppPlatformGatewayResource appPlatformGateway = client.GetAppPlatformGatewayResource(appPlatformGatewayResourceId);
+ResourceIdentifier appPlatformServiceResourceId = AppPlatformServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceResource(appPlatformServiceResourceId);
+
+// get the collection of this AppPlatformGatewayResource
+AppPlatformGatewayCollection collection = appPlatformService.GetAppPlatformGateways();
 
 // invoke the operation
+string gatewayName = "default";
 AppPlatformGatewayData data = new AppPlatformGatewayData()
 {
     Properties = new AppPlatformGatewayProperties()
@@ -43,7 +46,7 @@ AppPlatformGatewayData data = new AppPlatformGatewayData()
         Capacity = 2,
     },
 };
-ArmOperation<AppPlatformGatewayResource> lro = await appPlatformGateway.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AppPlatformGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, gatewayName, data);
 AppPlatformGatewayResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

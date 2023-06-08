@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.rdbms import MySQLManagementClient
+from azure.mgmt.rdbms.mysql_flexibleservers import MySQLManagementClient
 
 """
 # PREREQUISITES
@@ -21,12 +21,11 @@ def main():
         subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
     )
 
-    response = client.servers.begin_reset_gtid(
+    client.servers.begin_reset_gtid(
         resource_group_name="TestGroup",
         server_name="testserver",
         parameters={"gtidSet": "4aff5b51-97ba-11ed-a955-002248036acc:1-16"},
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/preview/2022-09-30-preview/examples/ServerResetGtid.json

@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.rdbms import PostgreSQLManagementClient
+from azure.mgmt.rdbms.postgresql import PostgreSQLManagementClient
 
 """
 # PREREQUISITES

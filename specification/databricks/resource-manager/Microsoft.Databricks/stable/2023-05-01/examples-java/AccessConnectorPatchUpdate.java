@@ -1,0 +1,35 @@
+import com.azure.resourcemanager.databricks.models.AccessConnector;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for AccessConnectors Update. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/databricks/resource-manager/Microsoft.Databricks/stable/2023-05-01/examples/AccessConnectorPatchUpdate.json
+     */
+    /**
+     * Sample code: Update an azure databricks accessConnector.
+     *
+     * @param manager Entry point to AzureDatabricksManager.
+     */
+    public static void updateAnAzureDatabricksAccessConnector(
+        com.azure.resourcemanager.databricks.AzureDatabricksManager manager) {
+        AccessConnector resource =
+            manager
+                .accessConnectors()
+                .getByResourceGroupWithResponse("rg", "myAccessConnector", com.azure.core.util.Context.NONE)
+                .getValue();
+        resource.update().withTags(mapOf("key1", "value1")).apply();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

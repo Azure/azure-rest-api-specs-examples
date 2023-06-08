@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DevTestLabs;
+using Azure.ResourceManager.DevTestLabs.Models;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/ServiceFabrics_Get.json
 // this example is just showing the usage of "ServiceFabrics_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabUserResource created on azure
-// for more information of creating DevTestLabUserResource, please refer to the document of DevTestLabUserResource
+// this example assumes you already have this DevTestLabServiceFabricResource created on azure
+// for more information of creating DevTestLabServiceFabricResource, please refer to the document of DevTestLabServiceFabricResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
 string userName = "{userName}";
-ResourceIdentifier devTestLabUserResourceId = DevTestLabUserResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName);
-DevTestLabUserResource devTestLabUser = client.GetDevTestLabUserResource(devTestLabUserResourceId);
-
-// get the collection of this DevTestLabServiceFabricResource
-DevTestLabServiceFabricCollection collection = devTestLabUser.GetDevTestLabServiceFabrics();
+string name = "{serviceFabricName}";
+ResourceIdentifier devTestLabServiceFabricResourceId = DevTestLabServiceFabricResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, userName, name);
+DevTestLabServiceFabricResource devTestLabServiceFabric = client.GetDevTestLabServiceFabricResource(devTestLabServiceFabricResourceId);
 
 // invoke the operation
-string name = "{serviceFabricName}";
-bool result = await collection.ExistsAsync(name);
+DevTestLabServiceFabricResource result = await devTestLabServiceFabric.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevTestLabServiceFabricData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

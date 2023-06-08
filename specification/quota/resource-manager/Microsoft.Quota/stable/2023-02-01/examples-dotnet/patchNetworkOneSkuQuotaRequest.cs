@@ -27,12 +27,12 @@ CurrentQuotaLimitBaseData data = new CurrentQuotaLimitBaseData()
 {
     Properties = new QuotaProperties()
     {
-        Limit = new LimitObject(10),
-        Name = new ResourceName()
+        Limit = new QuotaLimitObject(10),
+        Name = new QuotaRequestResourceName()
         {
             Value = "MinPublicIpInterNetworkPrefixLength",
         },
-        ResourceType = "MinPublicIpInterNetworkPrefixLength",
+        ResourceTypeName = "MinPublicIpInterNetworkPrefixLength",
     },
 };
 ArmOperation<CurrentQuotaLimitBaseResource> lro = await currentQuotaLimitBase.UpdateAsync(WaitUntil.Completed, data);

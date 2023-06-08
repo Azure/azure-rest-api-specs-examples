@@ -29,12 +29,12 @@ CurrentQuotaLimitBaseData data = new CurrentQuotaLimitBaseData()
 {
     Properties = new QuotaProperties()
     {
-        Limit = new LimitObject(10),
-        Name = new ResourceName()
+        Limit = new QuotaLimitObject(10),
+        Name = new QuotaRequestResourceName()
         {
             Value = "StandardSkuPublicIpAddresses",
         },
-        ResourceType = "PublicIpAddresses",
+        ResourceTypeName = "PublicIpAddresses",
     },
 };
 ArmOperation<CurrentQuotaLimitBaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);

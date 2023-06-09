@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.rdbms import MySQLManagementClient
+from azure.mgmt.rdbms.mysql import MySQLManagementClient
 
 """
 # PREREQUISITES
@@ -21,13 +21,12 @@ def main():
         subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
     )
 
-    response = client.begin_create_recommended_action_session(
+    client.begin_create_recommended_action_session(
         resource_group_name="testResourceGroupName",
         server_name="testServerName",
         advisor_name="Index",
         database_name="someDatabaseName",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2018-06-01/examples/RecommendedActionSessionCreate.json

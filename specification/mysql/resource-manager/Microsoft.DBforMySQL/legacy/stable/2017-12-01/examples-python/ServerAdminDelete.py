@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.rdbms import MySQLManagementClient
+from azure.mgmt.rdbms.mysql import MySQLManagementClient
 
 """
 # PREREQUISITES
@@ -21,11 +21,10 @@ def main():
         subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
     )
 
-    response = client.server_administrators.begin_delete(
+    client.server_administrators.begin_delete(
         resource_group_name="testrg",
         server_name="mysqltestsvc4",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2017-12-01/examples/ServerAdminDelete.json

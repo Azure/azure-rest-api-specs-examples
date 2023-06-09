@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformApiPortalResource created on azure
-// for more information of creating AppPlatformApiPortalResource, please refer to the document of AppPlatformApiPortalResource
+// this example assumes you already have this AppPlatformApiPortalCustomDomainResource created on azure
+// for more information of creating AppPlatformApiPortalCustomDomainResource, please refer to the document of AppPlatformApiPortalCustomDomainResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string apiPortalName = "default";
-ResourceIdentifier appPlatformApiPortalResourceId = AppPlatformApiPortalResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiPortalName);
-AppPlatformApiPortalResource appPlatformApiPortal = client.GetAppPlatformApiPortalResource(appPlatformApiPortalResourceId);
-
-// get the collection of this AppPlatformApiPortalCustomDomainResource
-AppPlatformApiPortalCustomDomainCollection collection = appPlatformApiPortal.GetAppPlatformApiPortalCustomDomains();
+string domainName = "myDomainName";
+ResourceIdentifier appPlatformApiPortalCustomDomainResourceId = AppPlatformApiPortalCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiPortalName, domainName);
+AppPlatformApiPortalCustomDomainResource appPlatformApiPortalCustomDomain = client.GetAppPlatformApiPortalCustomDomainResource(appPlatformApiPortalCustomDomainResourceId);
 
 // invoke the operation
-string domainName = "myDomainName";
 AppPlatformApiPortalCustomDomainData data = new AppPlatformApiPortalCustomDomainData()
 {
     ApiPortalCustomDomainThumbprint = "*",
 };
-ArmOperation<AppPlatformApiPortalCustomDomainResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, domainName, data);
+ArmOperation<AppPlatformApiPortalCustomDomainResource> lro = await appPlatformApiPortalCustomDomain.UpdateAsync(WaitUntil.Completed, data);
 AppPlatformApiPortalCustomDomainResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

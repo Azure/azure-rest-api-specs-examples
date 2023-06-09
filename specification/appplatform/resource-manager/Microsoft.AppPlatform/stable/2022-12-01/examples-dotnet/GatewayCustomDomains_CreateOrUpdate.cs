@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformGatewayCustomDomainResource created on azure
-// for more information of creating AppPlatformGatewayCustomDomainResource, please refer to the document of AppPlatformGatewayCustomDomainResource
+// this example assumes you already have this AppPlatformGatewayResource created on azure
+// for more information of creating AppPlatformGatewayResource, please refer to the document of AppPlatformGatewayResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string gatewayName = "default";
-string domainName = "myDomainName";
-ResourceIdentifier appPlatformGatewayCustomDomainResourceId = AppPlatformGatewayCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayName, domainName);
-AppPlatformGatewayCustomDomainResource appPlatformGatewayCustomDomain = client.GetAppPlatformGatewayCustomDomainResource(appPlatformGatewayCustomDomainResourceId);
+ResourceIdentifier appPlatformGatewayResourceId = AppPlatformGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayName);
+AppPlatformGatewayResource appPlatformGateway = client.GetAppPlatformGatewayResource(appPlatformGatewayResourceId);
+
+// get the collection of this AppPlatformGatewayCustomDomainResource
+AppPlatformGatewayCustomDomainCollection collection = appPlatformGateway.GetAppPlatformGatewayCustomDomains();
 
 // invoke the operation
+string domainName = "myDomainName";
 AppPlatformGatewayCustomDomainData data = new AppPlatformGatewayCustomDomainData()
 {
     GatewayCustomDomainThumbprint = "*",
 };
-ArmOperation<AppPlatformGatewayCustomDomainResource> lro = await appPlatformGatewayCustomDomain.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AppPlatformGatewayCustomDomainResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, domainName, data);
 AppPlatformGatewayCustomDomainResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

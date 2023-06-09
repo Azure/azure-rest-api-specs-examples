@@ -1,0 +1,34 @@
+import com.azure.resourcemanager.databricks.models.Workspace;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for Workspaces Update. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/databricks/resource-manager/Microsoft.Databricks/stable/2023-02-01/examples/WorkspaceUpdate.json
+     */
+    /**
+     * Sample code: Update a workspace's tags.
+     *
+     * @param manager Entry point to AzureDatabricksManager.
+     */
+    public static void updateAWorkspaceSTags(com.azure.resourcemanager.databricks.AzureDatabricksManager manager) {
+        Workspace resource =
+            manager
+                .workspaces()
+                .getByResourceGroupWithResponse("rg", "myWorkspace", com.azure.core.util.Context.NONE)
+                .getValue();
+        resource.update().withTags(mapOf("mytag1", "myvalue1")).apply();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

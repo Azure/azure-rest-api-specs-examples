@@ -21,12 +21,11 @@ def main():
         subscription_id="04cf684a-d41f-4550-9f70-7708a3a2283b",
     )
 
-    response = client.backup_instances.begin_stop_protection(
+    client.backup_instances.begin_stop_protection(
         resource_group_name="testrg",
         vault_name="testvault",
         backup_instance_name="testbi",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-01-01/examples/BackupInstanceOperations/StopProtection.json

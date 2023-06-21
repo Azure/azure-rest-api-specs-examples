@@ -21,11 +21,10 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.export_jobs.begin_trigger(
+    client.export_jobs.begin_trigger(
         resource_group_name="SwaggerTestRg",
         vault_name="NetSDKTestRsVault",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-01-01/examples/JobCRUD/TriggerExportJobs.json

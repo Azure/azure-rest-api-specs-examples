@@ -1,0 +1,134 @@
+package armcosmos_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/1b33e81bbdc28fcd6644a1315b8d7b1b6d030590/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2023-03-15-preview/examples/CosmosDBGremlinGraphCreateUpdate.json
+func ExampleGremlinResourcesClient_BeginCreateUpdateGremlinGraph() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcosmos.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	poller, err := clientFactory.NewGremlinResourcesClient().BeginCreateUpdateGremlinGraph(ctx, "rg1", "ddb1", "databaseName", "graphName", armcosmos.GremlinGraphCreateUpdateParameters{
+		Location: to.Ptr("West US"),
+		Tags:     map[string]*string{},
+		Properties: &armcosmos.GremlinGraphCreateUpdateProperties{
+			Options: &armcosmos.CreateUpdateOptions{},
+			Resource: &armcosmos.GremlinGraphResource{
+				ConflictResolutionPolicy: &armcosmos.ConflictResolutionPolicy{
+					ConflictResolutionPath: to.Ptr("/path"),
+					Mode:                   to.Ptr(armcosmos.ConflictResolutionModeLastWriterWins),
+				},
+				DefaultTTL: to.Ptr[int32](100),
+				ID:         to.Ptr("graphName"),
+				IndexingPolicy: &armcosmos.IndexingPolicy{
+					Automatic:     to.Ptr(true),
+					ExcludedPaths: []*armcosmos.ExcludedPath{},
+					IncludedPaths: []*armcosmos.IncludedPath{
+						{
+							Path: to.Ptr("/*"),
+							Indexes: []*armcosmos.Indexes{
+								{
+									DataType:  to.Ptr(armcosmos.DataTypeString),
+									Kind:      to.Ptr(armcosmos.IndexKindRange),
+									Precision: to.Ptr[int32](-1),
+								},
+								{
+									DataType:  to.Ptr(armcosmos.DataTypeNumber),
+									Kind:      to.Ptr(armcosmos.IndexKindRange),
+									Precision: to.Ptr[int32](-1),
+								}},
+						}},
+					IndexingMode: to.Ptr(armcosmos.IndexingModeConsistent),
+				},
+				PartitionKey: &armcosmos.ContainerPartitionKey{
+					Kind: to.Ptr(armcosmos.PartitionKindHash),
+					Paths: []*string{
+						to.Ptr("/AccountNumber")},
+				},
+				UniqueKeyPolicy: &armcosmos.UniqueKeyPolicy{
+					UniqueKeys: []*armcosmos.UniqueKey{
+						{
+							Paths: []*string{
+								to.Ptr("/testPath")},
+						}},
+				},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	res, err := poller.PollUntilDone(ctx, nil)
+	if err != nil {
+		log.Fatalf("failed to pull the result: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.GremlinGraphGetResults = armcosmos.GremlinGraphGetResults{
+	// 	Name: to.Ptr("graphName"),
+	// 	Type: to.Ptr("Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/gremlinGraphs"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.DocumentDB/databaseAccounts/ddb1/gremlinDatabases/databaseName/gremlinGraphs/graphName"),
+	// 	Location: to.Ptr("West US"),
+	// 	Tags: map[string]*string{
+	// 	},
+	// 	Properties: &armcosmos.GremlinGraphGetProperties{
+	// 		Resource: &armcosmos.GremlinGraphGetPropertiesResource{
+	// 			Etag: to.Ptr("\"00005900-0000-0000-0000-56f9a2630000\""),
+	// 			Rid: to.Ptr("PD5DALigDgw="),
+	// 			Ts: to.Ptr[float32](1459200611),
+	// 			ConflictResolutionPolicy: &armcosmos.ConflictResolutionPolicy{
+	// 				ConflictResolutionPath: to.Ptr("/path"),
+	// 				Mode: to.Ptr(armcosmos.ConflictResolutionModeLastWriterWins),
+	// 			},
+	// 			DefaultTTL: to.Ptr[int32](100),
+	// 			ID: to.Ptr("graphName"),
+	// 			IndexingPolicy: &armcosmos.IndexingPolicy{
+	// 				Automatic: to.Ptr(true),
+	// 				ExcludedPaths: []*armcosmos.ExcludedPath{
+	// 				},
+	// 				IncludedPaths: []*armcosmos.IncludedPath{
+	// 					{
+	// 						Path: to.Ptr("/*"),
+	// 						Indexes: []*armcosmos.Indexes{
+	// 							{
+	// 								DataType: to.Ptr(armcosmos.DataTypeString),
+	// 								Kind: to.Ptr(armcosmos.IndexKindRange),
+	// 								Precision: to.Ptr[int32](-1),
+	// 							},
+	// 							{
+	// 								DataType: to.Ptr(armcosmos.DataTypeNumber),
+	// 								Kind: to.Ptr(armcosmos.IndexKindRange),
+	// 								Precision: to.Ptr[int32](-1),
+	// 						}},
+	// 				}},
+	// 				IndexingMode: to.Ptr(armcosmos.IndexingModeConsistent),
+	// 			},
+	// 			PartitionKey: &armcosmos.ContainerPartitionKey{
+	// 				Kind: to.Ptr(armcosmos.PartitionKindHash),
+	// 				Paths: []*string{
+	// 					to.Ptr("/AccountNumber")},
+	// 				},
+	// 				UniqueKeyPolicy: &armcosmos.UniqueKeyPolicy{
+	// 					UniqueKeys: []*armcosmos.UniqueKey{
+	// 						{
+	// 							Paths: []*string{
+	// 								to.Ptr("/testPath")},
+	// 						}},
+	// 					},
+	// 				},
+	// 			},
+	// 		}
+}

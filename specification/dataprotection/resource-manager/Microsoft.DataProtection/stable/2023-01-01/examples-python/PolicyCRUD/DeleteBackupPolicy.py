@@ -21,12 +21,11 @@ def main():
         subscription_id="04cf684a-d41f-4550-9f70-7708a3a2283b",
     )
 
-    response = client.backup_policies.delete(
+    client.backup_policies.delete(
         resource_group_name="000pikumar",
         vault_name="PrivatePreviewVault",
         backup_policy_name="OSSDBPolicy",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-01-01/examples/PolicyCRUD/DeleteBackupPolicy.json

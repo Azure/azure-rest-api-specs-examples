@@ -21,10 +21,9 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.resource_groups.begin_delete(
+    client.resource_groups.begin_delete(
         resource_group_name="my-resource-group",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/ForceDeleteVMsInResourceGroup.json

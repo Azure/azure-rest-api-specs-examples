@@ -21,10 +21,9 @@ def main():
         subscription_id="SUBSCRIPTION_ID",
     )
 
-    response = client.tags.begin_delete_at_scope(
+    client.tags.begin_delete_at_scope(
         scope="subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/my-resource-group/providers/myPRNameSpace/VM/myVm",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/DeleteTagsResource.json

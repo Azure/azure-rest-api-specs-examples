@@ -1,0 +1,20 @@
+const { CosmosDBForPostgreSQL } = require("@azure/arm-cosmosdbforpostgresql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets information about a server in cluster.
+ *
+ * @summary Gets information about a server in cluster.
+ * x-ms-original-file: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-11-08/examples/ServerGet.json
+ */
+async function getTheServerOfCluster() {
+  const subscriptionId =
+    process.env["COSMOSFORPOSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
+  const resourceGroupName = process.env["COSMOSFORPOSTGRESQL_RESOURCE_GROUP"] || "TestGroup";
+  const clusterName = "testcluster1";
+  const serverName = "testcluster1-c";
+  const credential = new DefaultAzureCredential();
+  const client = new CosmosDBForPostgreSQL(credential, subscriptionId);
+  const result = await client.servers.get(resourceGroupName, clusterName, serverName);
+  console.log(result);
+}

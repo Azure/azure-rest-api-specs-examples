@@ -1,4 +1,4 @@
-/** Samples for WebApps StartWebSiteNetworkTraceOperation. */
+/** Samples for WebApps StartNetworkTrace. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/StartWebSiteNetworkTraceOperation.json
@@ -14,7 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .startWebSiteNetworkTraceOperation(
-                "testrg123", "SampleApp", 60, null, null, com.azure.core.util.Context.NONE);
+            .startNetworkTrace("testrg123", "SampleApp", 60, null, null, com.azure.core.util.Context.NONE);
     }
 }

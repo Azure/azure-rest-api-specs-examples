@@ -1,4 +1,4 @@
-/** Samples for Diagnostics ListSiteAnalysesSlot. */
+/** Samples for Diagnostics ListSiteAnalyses. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_ListSiteAnalysesSlot.json
@@ -14,7 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .listSiteAnalysesSlot(
-                "Sample-WestUSResourceGroup", "SampleApp", "availability", "staging", com.azure.core.util.Context.NONE);
+            .listSiteAnalyses(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", com.azure.core.util.Context.NONE);
     }
 }

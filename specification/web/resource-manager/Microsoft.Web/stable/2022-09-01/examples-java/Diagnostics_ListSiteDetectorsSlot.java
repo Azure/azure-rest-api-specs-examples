@@ -1,4 +1,4 @@
-/** Samples for Diagnostics ListSiteDetectors. */
+/** Samples for Diagnostics ListSiteDetectorsSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_ListSiteDetectorsSlot.json
@@ -14,7 +14,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .listSiteDetectors(
-                "Sample-WestUSResourceGroup", "SampleApp", "availability", com.azure.core.util.Context.NONE);
+            .listSiteDetectorsSlot(
+                "Sample-WestUSResourceGroup", "SampleApp", "availability", "staging", com.azure.core.util.Context.NONE);
     }
 }

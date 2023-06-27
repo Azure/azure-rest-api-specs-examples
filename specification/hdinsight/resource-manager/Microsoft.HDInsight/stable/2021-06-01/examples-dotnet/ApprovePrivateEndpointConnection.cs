@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HDInsightClusterResource created on azure
-// for more information of creating HDInsightClusterResource, please refer to the document of HDInsightClusterResource
+// this example assumes you already have this HDInsightPrivateEndpointConnectionResource created on azure
+// for more information of creating HDInsightPrivateEndpointConnectionResource, please refer to the document of HDInsightPrivateEndpointConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string clusterName = "cluster1";
-ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
-
-// get the collection of this HDInsightPrivateEndpointConnectionResource
-HDInsightPrivateEndpointConnectionCollection collection = hdInsightCluster.GetHDInsightPrivateEndpointConnections();
+string privateEndpointConnectionName = "testprivateep.b3bf5fed-9b12-4560-b7d0-2abe1bba07e2";
+ResourceIdentifier hdInsightPrivateEndpointConnectionResourceId = HDInsightPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, privateEndpointConnectionName);
+HDInsightPrivateEndpointConnectionResource hdInsightPrivateEndpointConnection = client.GetHDInsightPrivateEndpointConnectionResource(hdInsightPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "testprivateep.b3bf5fed-9b12-4560-b7d0-2abe1bba07e2";
 HDInsightPrivateEndpointConnectionData data = new HDInsightPrivateEndpointConnectionData(new HDInsightPrivateLinkServiceConnectionState(HDInsightPrivateLinkServiceConnectionStatus.Approved)
 {
     Description = "update it from pending to approved.",
     ActionsRequired = "None",
 });
-ArmOperation<HDInsightPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<HDInsightPrivateEndpointConnectionResource> lro = await hdInsightPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 HDInsightPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

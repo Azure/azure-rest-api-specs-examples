@@ -1,0 +1,24 @@
+const { AzureNetworkFabricManagementServiceAPI } = require("@azure/arm-managednetworkfabric");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Implements ExternalNetworks GET method.
+ *
+ * @summary Implements ExternalNetworks GET method.
+ * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/ExternalNetworks_Get_MaximumSet_Gen.json
+ */
+async function externalNetworksGetMaximumSetGen() {
+  const subscriptionId = process.env["MANAGEDNETWORKFABRIC_SUBSCRIPTION_ID"] || "subscriptionId";
+  const resourceGroupName =
+    process.env["MANAGEDNETWORKFABRIC_RESOURCE_GROUP"] || "resourceGroupName";
+  const l3IsolationDomainName = "example-l3domain";
+  const externalNetworkName = "example-externalnetwork";
+  const credential = new DefaultAzureCredential();
+  const client = new AzureNetworkFabricManagementServiceAPI(credential, subscriptionId);
+  const result = await client.externalNetworks.get(
+    resourceGroupName,
+    l3IsolationDomainName,
+    externalNetworkName
+  );
+  console.log(result);
+}

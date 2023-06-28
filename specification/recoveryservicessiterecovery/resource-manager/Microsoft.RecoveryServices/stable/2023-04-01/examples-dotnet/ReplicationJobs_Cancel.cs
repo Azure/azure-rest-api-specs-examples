@@ -1,0 +1,35 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+
+// Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-04-01/examples/ReplicationJobs_Cancel.json
+// this example is just showing the usage of "ReplicationJobs_Cancel" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this SiteRecoveryJobResource created on azure
+// for more information of creating SiteRecoveryJobResource, please refer to the document of SiteRecoveryJobResource
+string subscriptionId = "c183865e-6077-46f2-a3b1-deb0f4f4650a";
+string resourceGroupName = "resourceGroupPS1";
+string resourceName = "vault1";
+string jobName = "2653c648-fc72-4316-86f3-fdf8eaa0066b";
+ResourceIdentifier siteRecoveryJobResourceId = SiteRecoveryJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, jobName);
+SiteRecoveryJobResource siteRecoveryJob = client.GetSiteRecoveryJobResource(siteRecoveryJobResourceId);
+
+// invoke the operation
+ArmOperation<SiteRecoveryJobResource> lro = await siteRecoveryJob.CancelAsync(WaitUntil.Completed);
+SiteRecoveryJobResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SiteRecoveryJobData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

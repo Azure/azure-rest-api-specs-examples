@@ -1,0 +1,42 @@
+import com.azure.resourcemanager.managednetworkfabric.models.ExpressRouteConnectionInformation;
+import com.azure.resourcemanager.managednetworkfabric.models.ManagedResourceGroupConfiguration;
+import java.util.Arrays;
+
+/** Samples for NetworkFabricControllers Create. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/NetworkFabricControllers_Create_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: NetworkFabricControllers_Create_MaximumSet_Gen.
+     *
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkFabricControllersCreateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager
+            .networkFabricControllers()
+            .define("NetworkControllerName")
+            .withRegion("eastus")
+            .withExistingResourceGroup("resourceGroupName")
+            .withManagedResourceGroupConfiguration(
+                new ManagedResourceGroupConfiguration().withName("managedResourceGroupName").withLocation("eastus"))
+            .withIpv4AddressSpace("172.253.0.0/19")
+            .withInfrastructureExpressRouteConnections(
+                Arrays
+                    .asList(
+                        new ExpressRouteConnectionInformation()
+                            .withExpressRouteCircuitId(
+                                "/subscriptions/xxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName")
+                            .withExpressRouteAuthorizationKey("fakeTokenPlaceholder")))
+            .withWorkloadExpressRouteConnections(
+                Arrays
+                    .asList(
+                        new ExpressRouteConnectionInformation()
+                            .withExpressRouteCircuitId(
+                                "/subscriptions/xxxxx/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/expressRouteCircuitName")
+                            .withExpressRouteAuthorizationKey("fakeTokenPlaceholder")))
+            .withAnnotation("lab 1")
+            .create();
+    }
+}

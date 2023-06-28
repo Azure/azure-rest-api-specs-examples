@@ -1,0 +1,40 @@
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlList;
+import com.azure.resourcemanager.managednetworkfabric.models.AccessControlListConditionProperties;
+import com.azure.resourcemanager.managednetworkfabric.models.AddressFamily;
+import com.azure.resourcemanager.managednetworkfabric.models.ConditionActionType;
+import java.util.Arrays;
+
+/** Samples for AccessControlLists Update. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/AccessControlLists_Update_MinimumSet_Gen.json
+     */
+    /**
+     * Sample code: AccessControlLists_Update_MinimumSet_Gen.
+     *
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void accessControlListsUpdateMinimumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        AccessControlList resource =
+            manager
+                .accessControlLists()
+                .getByResourceGroupWithResponse("resourceGroupName", "aclOne", com.azure.core.util.Context.NONE)
+                .getValue();
+        resource
+            .update()
+            .withAddressFamily(AddressFamily.IPV4)
+            .withConditions(
+                Arrays
+                    .asList(
+                        new AccessControlListConditionProperties()
+                            .withSequenceNumber(4)
+                            .withAction(ConditionActionType.ALLOW)
+                            .withDestinationAddress("1.1.1.2")
+                            .withDestinationPort("21")
+                            .withSourceAddress("2.2.2.3")
+                            .withSourcePort("65000")
+                            .withProtocol(6)))
+            .apply();
+    }
+}

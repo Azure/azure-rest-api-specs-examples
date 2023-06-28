@@ -1,0 +1,29 @@
+import com.azure.resourcemanager.managednetworkfabric.models.EnableDisableOnResources;
+import java.util.Arrays;
+
+/** Samples for ExternalNetworks ClearArpEntries. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/ExternalNetworks_clearArpEntries_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: ExternalNetworks_clearArpEntries_MaximumSet_Gen.
+     *
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void externalNetworksClearArpEntriesMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager
+            .externalNetworks()
+            .clearArpEntries(
+                "resourceGroupName",
+                "example-l3domain",
+                "example-externalnetwork",
+                new EnableDisableOnResources()
+                    .withResourceIds(
+                        Arrays
+                            .asList(
+                                "/subscriptions/xxxxxx/resourceGroups/resourcegroupname/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/example-l3domain")),
+                com.azure.core.util.Context.NONE);
+    }
+}

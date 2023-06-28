@@ -1,0 +1,17 @@
+/** Samples for NetworkToNetworkInterconnects Delete. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/NetworkToNetworkInterconnects_Delete_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: NetworkToNetworkInterconnects_Delete_MaximumSet_Gen.
+     *
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkToNetworkInterconnectsDeleteMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager
+            .networkToNetworkInterconnects()
+            .delete("resourceGroupName", "FabricName", "DefaultNNI", com.azure.core.util.Context.NONE);
+    }
+}

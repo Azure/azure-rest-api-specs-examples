@@ -1,0 +1,23 @@
+import com.azure.resourcemanager.managednetworkfabric.models.UpdateVersionProperties;
+
+/** Samples for NetworkDevices UpdateVersion. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/NetworkDevices_updateVersion_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: NetworkDevices_updateVersion_MaximumSet_Gen.
+     *
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void networkDevicesUpdateVersionMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        manager
+            .networkDevices()
+            .updateVersion(
+                "resourceGroupName",
+                "networkDeviceName",
+                new UpdateVersionProperties().withSkuVersion("DefaultSku"),
+                com.azure.core.util.Context.NONE);
+    }
+}

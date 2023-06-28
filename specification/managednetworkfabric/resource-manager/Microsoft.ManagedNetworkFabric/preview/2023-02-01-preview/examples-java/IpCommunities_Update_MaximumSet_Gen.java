@@ -1,0 +1,36 @@
+import com.azure.resourcemanager.managednetworkfabric.models.IpCommunity;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for IpCommunities Update. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/IpCommunities_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: IpCommunities_Update_MaximumSet_Gen.
+     *
+     * @param manager Entry point to ManagedNetworkFabricManager.
+     */
+    public static void ipCommunitiesUpdateMaximumSetGen(
+        com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
+        IpCommunity resource =
+            manager
+                .ipCommunities()
+                .getByResourceGroupWithResponse(
+                    "resourceGroupName", "example-ipCommunity", com.azure.core.util.Context.NONE)
+                .getValue();
+        resource.update().withTags(mapOf("key2814", "")).apply();
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

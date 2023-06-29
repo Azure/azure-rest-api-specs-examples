@@ -1,0 +1,33 @@
+const { AzureNetworkFabricManagementServiceAPI } = require("@azure/arm-managednetworkfabric");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Implements IP Prefix PUT method.
+ *
+ * @summary Implements IP Prefix PUT method.
+ * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/IpPrefixes_Create_MaximumSet_Gen.json
+ */
+async function ipPrefixesCreateMaximumSetGen() {
+  const subscriptionId = process.env["MANAGEDNETWORKFABRIC_SUBSCRIPTION_ID"] || "subscriptionId";
+  const resourceGroupName =
+    process.env["MANAGEDNETWORKFABRIC_RESOURCE_GROUP"] || "resourcegroupname";
+  const ipPrefixName = "example-ipPrefix";
+  const body = {
+    annotation: "annotationValue",
+    ipPrefixRules: [
+      {
+        action: "Permit",
+        condition: "EqualTo",
+        networkPrefix: "1.1.1.0/24",
+        sequenceNumber: 12,
+        subnetMaskLength: 28,
+      },
+    ],
+    location: "EastUS",
+    tags: { key6404: "" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new AzureNetworkFabricManagementServiceAPI(credential, subscriptionId);
+  const result = await client.ipPrefixes.beginCreateAndWait(resourceGroupName, ipPrefixName, body);
+  console.log(result);
+}

@@ -1,0 +1,102 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.ManagedNetworkFabric;
+using Azure.ResourceManager.ManagedNetworkFabric.Models;
+using Azure.ResourceManager.Resources;
+
+// Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/preview/2023-02-01-preview/examples/NetworkFabrics_Create_MaximumSet_Gen.json
+// this example is just showing the usage of "NetworkFabrics_Create" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+string subscriptionId = "subscriptionId";
+string resourceGroupName = "resourceGroupName";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkFabricResource
+NetworkFabricCollection collection = resourceGroupResource.GetNetworkFabrics();
+
+// invoke the operation
+string networkFabricName = "FabricName";
+NetworkFabricData data = new NetworkFabricData(new AzureLocation("eastuseuap"))
+{
+    Annotation = "annotationValue",
+    NetworkFabricSku = "M4-A400-A100-C16-aa",
+    RackCount = 4,
+    ServerCountPerRack = 8,
+    IPv4Prefix = "10.18.0.0/19",
+    IPv6Prefix = "3FFE:FFFF:0:CD40::/59",
+    FabricASN = 29249,
+    NetworkFabricControllerId = "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedNetworkFabric/networkFabricControllers/fabricControllerName",
+    TerminalServerConfiguration = new TerminalServerConfiguration()
+    {
+        Username = "username",
+        Password = "xxxx",
+        SerialNumber = "123456",
+        PrimaryIPv4Prefix = "20.0.0.12/30",
+        PrimaryIPv6Prefix = "3FFE:FFFF:0:CD30::a8/126",
+        SecondaryIPv4Prefix = "20.0.0.13/30",
+        SecondaryIPv6Prefix = "3FFE:FFFF:0:CD30::ac/126",
+    },
+    ManagementNetworkConfiguration = new ManagementNetworkConfiguration(new VpnConfigurationProperties(PeeringOption.OptionA)
+    {
+        OptionBProperties = new NetworkFabricOptionBProperties(new string[]
+{
+"65046:10039"
+}, new string[]
+{
+"65046:10039"
+}),
+        OptionAProperties = new NetworkFabricOptionAProperties()
+        {
+            Mtu = 5892,
+            VlanId = 2724,
+            PeerASN = 42666,
+            PrimaryIPv4Prefix = "20.0.0.12/30",
+            PrimaryIPv6Prefix = "3FFE:FFFF:0:CD30::a8/126",
+            SecondaryIPv4Prefix = "20.0.0.13/30",
+            SecondaryIPv6Prefix = "3FFE:FFFF:0:CD30::ac/126",
+        },
+    }, new VpnConfigurationProperties(PeeringOption.OptionA)
+    {
+        OptionBProperties = new NetworkFabricOptionBProperties(new string[]
+{
+"65046:10050"
+}, new string[]
+{
+"65046:10050"
+}),
+        OptionAProperties = new NetworkFabricOptionAProperties()
+        {
+            Mtu = 5892,
+            VlanId = 2724,
+            PeerASN = 42666,
+            PrimaryIPv4Prefix = "10.0.0.14/30",
+            PrimaryIPv6Prefix = "2FFE:FFFF:0:CD30::a7/126",
+            SecondaryIPv4Prefix = "10.0.0.15/30",
+            SecondaryIPv6Prefix = "2FFE:FFFF:0:CD30::ac/126",
+        },
+    }),
+    Tags =
+    {
+    ["key6468"] = "",
+    },
+};
+ArmOperation<NetworkFabricResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkFabricName, data);
+NetworkFabricResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkFabricData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

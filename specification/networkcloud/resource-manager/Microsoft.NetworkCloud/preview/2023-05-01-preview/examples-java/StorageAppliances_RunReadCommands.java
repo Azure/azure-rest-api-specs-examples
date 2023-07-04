@@ -1,0 +1,27 @@
+import com.azure.resourcemanager.networkcloud.models.StorageApplianceCommandSpecification;
+import com.azure.resourcemanager.networkcloud.models.StorageApplianceRunReadCommandsParameters;
+import java.util.Arrays;
+
+/** Samples for StorageAppliances RunReadCommands. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/networkcloud/resource-manager/Microsoft.NetworkCloud/preview/2023-05-01-preview/examples/StorageAppliances_RunReadCommands.json
+     */
+    /**
+     * Sample code: Run and retrieve output from read only commands on storage appliance.
+     *
+     * @param manager Entry point to NetworkCloudManager.
+     */
+    public static void runAndRetrieveOutputFromReadOnlyCommandsOnStorageAppliance(
+        com.azure.resourcemanager.networkcloud.NetworkCloudManager manager) {
+        manager
+            .storageAppliances()
+            .runReadCommands(
+                "resourceGroupName",
+                "storageApplianceName",
+                new StorageApplianceRunReadCommandsParameters()
+                    .withCommands(Arrays.asList(new StorageApplianceCommandSpecification().withCommand("AlertList")))
+                    .withLimitTimeSeconds(60L),
+                com.azure.core.util.Context.NONE);
+    }
+}

@@ -22,8 +22,8 @@ var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Curr
 
 // invoke the operation
 string savingsPlanOrderId = "00000000-0000-0000-0000-000000000000";
-BenefitUtilizationSummariesRequest benefitUtilizationSummariesRequest = new BenefitUtilizationSummariesRequest(BenefitRecommendationUsageGrain.Daily, DateTimeOffset.Parse("2022-06-01T00:00:00Z"), DateTimeOffset.Parse("2022-08-31T00:00:00Z"));
-ArmOperation<BenefitUtilizationSummariesOperationStatus> lro = await tenantResource.GenerateBenefitUtilizationSummariesReportSavingsPlanOrderScopeAsync(WaitUntil.Completed, savingsPlanOrderId, benefitUtilizationSummariesRequest);
+BenefitUtilizationSummariesContent content = new BenefitUtilizationSummariesContent(BenefitRecommendationUsageGrain.Daily, DateTimeOffset.Parse("2022-06-01T00:00:00Z"), DateTimeOffset.Parse("2022-08-31T00:00:00Z"));
+ArmOperation<BenefitUtilizationSummariesOperationStatus> lro = await tenantResource.GenerateBenefitUtilizationSummariesReportSavingsPlanOrderScopeAsync(WaitUntil.Completed, savingsPlanOrderId, content);
 BenefitUtilizationSummariesOperationStatus result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

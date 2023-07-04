@@ -21,11 +21,11 @@ ArmClient client = new ArmClient(cred);
 var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
 
 // invoke the operation
-CheckNameAvailabilityRequest checkNameAvailabilityRequest = new CheckNameAvailabilityRequest()
+CostManagementNameAvailabilityContent content = new CostManagementNameAvailabilityContent()
 {
     Name = "testName",
     ResourceType = "Microsoft.CostManagement/ScheduledActions",
 };
-CheckNameAvailabilityResponse result = await tenantResource.CheckNameAvailabilityScheduledActionAsync(checkNameAvailabilityRequest);
+CostManagementNameAvailabilityResult result = await tenantResource.CheckCostManagementNameAvailabilityByScheduledActionAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

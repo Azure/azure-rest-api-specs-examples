@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.CostManagement;
+using Azure.ResourceManager.CostManagement.Models;
 
 // Generated from example definition: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2023-03-01/examples/SingleResourceGroupAlert.json
 // this example is just showing the usage of "Alerts_Get" operation, for the dependent resources, they will have to be created separately.
@@ -13,16 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this CostManagementAlertResource
+// this example assumes you already have this CostManagementAlertResource created on azure
+// for more information of creating CostManagementAlertResource, please refer to the document of CostManagementAlertResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ScreenSharingTest-peer";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-CostManagementAlertCollection collection = client.GetCostManagementAlerts(scopeId);
+string alertId = "22222222-2222-2222-2222-222222222222";
+ResourceIdentifier costManagementAlertResourceId = CostManagementAlertResource.CreateResourceIdentifier(scope, alertId);
+CostManagementAlertResource costManagementAlert = client.GetCostManagementAlertResource(costManagementAlertResourceId);
 
 // invoke the operation
-string alertId = "22222222-2222-2222-2222-222222222222";
-bool result = await collection.ExistsAsync(alertId);
+CostManagementAlertResource result = await costManagementAlert.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CostManagementAlertData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -23,11 +23,11 @@ var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Curr
 // invoke the operation
 string billingAccountId = "00000000-0000-0000-0000-000000000000";
 string billingProfileId = "CZSFR-SDFXC-DSDF";
-BenefitUtilizationSummariesRequest benefitUtilizationSummariesRequest = new BenefitUtilizationSummariesRequest(BenefitRecommendationUsageGrain.Daily, DateTimeOffset.Parse("2022-06-01T00:00:00Z"), DateTimeOffset.Parse("2022-08-31T00:00:00Z"))
+BenefitUtilizationSummariesContent content = new BenefitUtilizationSummariesContent(BenefitRecommendationUsageGrain.Daily, DateTimeOffset.Parse("2022-06-01T00:00:00Z"), DateTimeOffset.Parse("2022-08-31T00:00:00Z"))
 {
     Kind = BillingAccountBenefitKind.Reservation,
 };
-ArmOperation<BenefitUtilizationSummariesOperationStatus> lro = await tenantResource.GenerateBenefitUtilizationSummariesReportBillingProfileScopeAsync(WaitUntil.Completed, billingAccountId, billingProfileId, benefitUtilizationSummariesRequest);
+ArmOperation<BenefitUtilizationSummariesOperationStatus> lro = await tenantResource.GenerateBenefitUtilizationSummariesReportBillingProfileScopeAsync(WaitUntil.Completed, billingAccountId, billingProfileId, content);
 BenefitUtilizationSummariesOperationStatus result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

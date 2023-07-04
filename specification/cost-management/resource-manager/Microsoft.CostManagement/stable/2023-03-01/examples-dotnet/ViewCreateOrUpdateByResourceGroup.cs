@@ -15,14 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CostManagementViewsResource created on azure
-// for more information of creating CostManagementViewsResource, please refer to the document of CostManagementViewsResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this CostManagementViewsResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG";
-string viewName = "swaggerExample";
-ResourceIdentifier costManagementViewsResourceId = CostManagementViewsResource.CreateResourceIdentifier(scope, viewName);
-CostManagementViewsResource costManagementViews = client.GetCostManagementViewsResource(costManagementViewsResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+CostManagementViewsCollection collection = client.GetAllCostManagementViews(scopeId);
 
 // invoke the operation
+string viewName = "swaggerExample";
 CostManagementViewData data = new CostManagementViewData()
 {
     DisplayName = "swagger Example",
@@ -31,16 +33,16 @@ CostManagementViewData data = new CostManagementViewData()
     Metric = ViewMetricType.ActualCost,
     Kpis =
     {
-    new KpiProperties()
+    new ViewKpiProperties()
     {
-    ViewKpiType = ViewKpiType.Forecast,
+    KpiType = ViewKpiType.Forecast,
     Id = null,
-    Enabled = true,
-    },new KpiProperties()
+    IsEnabled = true,
+    },new ViewKpiProperties()
     {
-    ViewKpiType = ViewKpiType.Budget,
-    Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo",
-    Enabled = true,
+    KpiType = ViewKpiType.Budget,
+    Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"),
+    IsEnabled = true,
     }
     },
     Pivots =
@@ -81,7 +83,7 @@ CostManagementViewData data = new CostManagementViewData()
     },
     ETag = new ETag("\"1d4ff9fe66f1d10\""),
 };
-ArmOperation<CostManagementViewsResource> lro = await costManagementViews.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<CostManagementViewsResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, viewName, data);
 CostManagementViewsResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

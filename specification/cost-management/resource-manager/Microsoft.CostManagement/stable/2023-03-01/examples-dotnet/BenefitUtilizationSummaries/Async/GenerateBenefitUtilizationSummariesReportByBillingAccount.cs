@@ -22,11 +22,11 @@ var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Curr
 
 // invoke the operation
 string billingAccountId = "8099099";
-BenefitUtilizationSummariesRequest benefitUtilizationSummariesRequest = new BenefitUtilizationSummariesRequest(BenefitRecommendationUsageGrain.Daily, DateTimeOffset.Parse("2022-06-01T00:00:00Z"), DateTimeOffset.Parse("2022-08-31T00:00:00Z"))
+BenefitUtilizationSummariesContent content = new BenefitUtilizationSummariesContent(BenefitRecommendationUsageGrain.Daily, DateTimeOffset.Parse("2022-06-01T00:00:00Z"), DateTimeOffset.Parse("2022-08-31T00:00:00Z"))
 {
     Kind = BillingAccountBenefitKind.Reservation,
 };
-ArmOperation<BenefitUtilizationSummariesOperationStatus> lro = await tenantResource.GenerateBenefitUtilizationSummariesReportBillingAccountScopeAsync(WaitUntil.Completed, billingAccountId, benefitUtilizationSummariesRequest);
+ArmOperation<BenefitUtilizationSummariesOperationStatus> lro = await tenantResource.GenerateBenefitUtilizationSummariesReportBillingAccountScopeAsync(WaitUntil.Completed, billingAccountId, content);
 BenefitUtilizationSummariesOperationStatus result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

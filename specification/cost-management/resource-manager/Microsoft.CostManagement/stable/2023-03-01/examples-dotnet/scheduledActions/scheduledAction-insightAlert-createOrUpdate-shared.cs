@@ -15,14 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScheduledActionResource created on azure
-// for more information of creating ScheduledActionResource, please refer to the document of ScheduledActionResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this ScheduledActionResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-string name = "dailyAnomalyByResource";
-ResourceIdentifier scheduledActionResourceId = ScheduledActionResource.CreateResourceIdentifier(scope, name);
-ScheduledActionResource scheduledAction = client.GetScheduledActionResource(scheduledActionResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+ScheduledActionCollection collection = client.GetScheduledActions(scopeId);
 
 // invoke the operation
+string name = "dailyAnomalyByResource";
 ScheduledActionData data = new ScheduledActionData()
 {
     DisplayName = "Daily anomaly by resource",
@@ -32,11 +34,11 @@ ScheduledActionData data = new ScheduledActionData()
 }, "Cost anomaly detected in the resource"),
     Schedule = new ScheduleProperties(ScheduleFrequency.Daily, DateTimeOffset.Parse("2020-06-19T22:21:51.1287144Z"), DateTimeOffset.Parse("2021-06-19T22:21:51.1287144Z")),
     Status = ScheduledActionStatus.Enabled,
-    ViewId = "/providers/Microsoft.CostManagement/views/swaggerExample",
+    ViewId = new ResourceIdentifier("/providers/Microsoft.CostManagement/views/swaggerExample"),
     Kind = ScheduledActionKind.InsightAlert,
 };
 string ifMatch = "";
-ArmOperation<ScheduledActionResource> lro = await scheduledAction.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
+ArmOperation<ScheduledActionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data, ifMatch: ifMatch);
 ScheduledActionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

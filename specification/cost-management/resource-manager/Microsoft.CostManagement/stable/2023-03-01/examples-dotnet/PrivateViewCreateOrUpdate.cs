@@ -30,16 +30,16 @@ CostManagementViewData data = new CostManagementViewData()
     Metric = ViewMetricType.ActualCost,
     Kpis =
     {
-    new KpiProperties()
+    new ViewKpiProperties()
     {
-    ViewKpiType = ViewKpiType.Forecast,
+    KpiType = ViewKpiType.Forecast,
     Id = null,
-    Enabled = true,
-    },new KpiProperties()
+    IsEnabled = true,
+    },new ViewKpiProperties()
     {
-    ViewKpiType = ViewKpiType.Budget,
-    Id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo",
-    Enabled = true,
+    KpiType = ViewKpiType.Budget,
+    Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MYDEVTESTRG/providers/Microsoft.Consumption/budgets/swaggerDemo"),
+    IsEnabled = true,
     }
     },
     Pivots =

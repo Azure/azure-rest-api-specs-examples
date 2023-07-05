@@ -15,15 +15,13 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this TenantScheduledActionResource
-TenantScheduledActionCollection collection = tenantResource.GetTenantScheduledActions();
+// this example assumes you already have this TenantScheduledActionResource created on azure
+// for more information of creating TenantScheduledActionResource, please refer to the document of TenantScheduledActionResource
+string name = "monthlyCostByResource";
+ResourceIdentifier tenantScheduledActionResourceId = TenantScheduledActionResource.CreateResourceIdentifier(name);
+TenantScheduledActionResource tenantScheduledAction = client.GetTenantScheduledActionResource(tenantScheduledActionResourceId);
 
 // invoke the operation
-string name = "monthlyCostByResource";
 ScheduledActionData data = new ScheduledActionData()
 {
     DisplayName = "Monthly Cost By Resource",
@@ -44,11 +42,11 @@ ScheduledActionData data = new ScheduledActionData()
         },
     },
     Status = ScheduledActionStatus.Enabled,
-    ViewId = "/providers/Microsoft.CostManagement/views/swaggerExample",
+    ViewId = new ResourceIdentifier("/providers/Microsoft.CostManagement/views/swaggerExample"),
     Kind = ScheduledActionKind.Email,
 };
 string ifMatch = "";
-ArmOperation<TenantScheduledActionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data, ifMatch: ifMatch);
+ArmOperation<TenantScheduledActionResource> lro = await tenantScheduledAction.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
 TenantScheduledActionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

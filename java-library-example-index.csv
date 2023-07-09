@@ -2963,3 +2963,7 @@ id,name,language,tag,package,version,date_epoch,date
 2962,"Azure.ResourceManager.NetworkCloud,1.0.0-beta.2",dotnet,Azure.ResourceManager.NetworkCloud_1.0.0-beta.2,Azure.ResourceManager.NetworkCloud,1.0.0-beta.2,1688108068,06/30/2023
 2963,"Azure.ResourceManager.TrafficManager,1.1.0",dotnet,Azure.ResourceManager.TrafficManager_1.1.0,Azure.ResourceManager.TrafficManager,1.1.0,1688093617,06/30/2023
 2964,"Azure.ResourceManager.Maps,1.1.0-beta.2",dotnet,Azure.ResourceManager.Maps_1.1.0-beta.2,Azure.ResourceManager.Maps,1.1.0-beta.2,1688093179,06/30/2023
+2965,com.azure.resourcemanager:azure-resourcemanager-networkcloud:1.0.0-beta.2,java,azure-resourcemanager-networkcloud_1.0.0-beta.2,azure-resourcemanager-networkcloud,1.0.0-beta.2,1688351755,07/03/2023
+2966,"Azure.ResourceManager.StorageCache,1.2.0-beta.2",dotnet,Azure.ResourceManager.StorageCache_1.2.0-beta.2,Azure.ResourceManager.StorageCache,1.2.0-beta.2,1688348890,07/03/2023
+2967,"Azure.ResourceManager.CostManagement,1.0.0",dotnet,Azure.ResourceManager.CostManagement_1.0.0,Azure.ResourceManager.CostManagement,1.0.0,1688428349,07/03/2023
+2968,"Azure.ResourceManager.Kusto,1.4.0",dotnet,Azure.ResourceManager.Kusto_1.4.0,Azure.ResourceManager.Kusto,1.4.0,1688695641,07/07/2023

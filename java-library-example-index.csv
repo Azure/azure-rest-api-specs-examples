@@ -2967,3 +2967,7 @@ id,name,language,tag,package,version,date_epoch,date
 2966,"Azure.ResourceManager.StorageCache,1.2.0-beta.2",dotnet,Azure.ResourceManager.StorageCache_1.2.0-beta.2,Azure.ResourceManager.StorageCache,1.2.0-beta.2,1688348890,07/03/2023
 2967,"Azure.ResourceManager.CostManagement,1.0.0",dotnet,Azure.ResourceManager.CostManagement_1.0.0,Azure.ResourceManager.CostManagement,1.0.0,1688428349,07/03/2023
 2968,"Azure.ResourceManager.Kusto,1.4.0",dotnet,Azure.ResourceManager.Kusto_1.4.0,Azure.ResourceManager.Kusto,1.4.0,1688695641,07/07/2023
+2969,"Azure.ResourceManager.Sphere,1.0.0-beta.1",dotnet,Azure.ResourceManager.Sphere_1.0.0-beta.1,Azure.ResourceManager.Sphere,1.0.0-beta.1,1689131385,07/12/2023
+2970,@azure/arm-paloaltonetworksngfw@1.0.0,js,@azure/arm-paloaltonetworksngfw_1.0.0,@azure/arm-paloaltonetworksngfw,1.0.0,1689304839,07/14/2023
+2971,"Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.0.0",dotnet,Azure.ResourceManager.PaloAltoNetworks.Ngfw_1.0.0,Azure.ResourceManager.PaloAltoNetworks.Ngfw,1.0.0,1689307207,07/14/2023
+2972,azure-mgmt-paloaltonetworksngfw@1.0.0,python,azure-mgmt-paloaltonetworksngfw_1.0.0,azure-mgmt-paloaltonetworksngfw,1.0.0,1689315105,07/14/2023

@@ -20,10 +20,9 @@ def main():
         credential=DefaultAzureCredential(),
     )
 
-    response = client.scheduled_actions.run(
+    client.scheduled_actions.run(
         name="monthlyCostByResource",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-10-01/examples/scheduledActions/scheduledAction-sendNow-private.json

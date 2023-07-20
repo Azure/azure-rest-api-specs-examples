@@ -20,11 +20,10 @@ def main():
         credential=DefaultAzureCredential(),
     )
 
-    response = client.scheduled_actions.run_by_scope(
+    client.scheduled_actions.run_by_scope(
         scope="subscriptions/00000000-0000-0000-0000-000000000000",
         name="monthlyCostByResource",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-10-01/examples/scheduledActions/scheduledAction-sendNow-shared.json

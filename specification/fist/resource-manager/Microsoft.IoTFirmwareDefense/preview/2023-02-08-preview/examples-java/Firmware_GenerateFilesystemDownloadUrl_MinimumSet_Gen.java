@@ -1,0 +1,18 @@
+/** Samples for Firmware GenerateFilesystemDownloadUrl. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/preview/2023-02-08-preview/examples/Firmware_GenerateFilesystemDownloadUrl_MinimumSet_Gen.json
+     */
+    /**
+     * Sample code: Firmware_GenerateFilesystemDownloadUrl_MinimumSet_Gen.
+     *
+     * @param manager Entry point to IoTFirmwareDefenseManager.
+     */
+    public static void firmwareGenerateFilesystemDownloadUrlMinimumSetGen(
+        com.azure.resourcemanager.iotfirmwaredefense.IoTFirmwareDefenseManager manager) {
+        manager
+            .firmwares()
+            .generateFilesystemDownloadUrlWithResponse(
+                "rgworkspaces-firmwares", "A7", "umrkdttp", com.azure.core.util.Context.NONE);
+    }
+}

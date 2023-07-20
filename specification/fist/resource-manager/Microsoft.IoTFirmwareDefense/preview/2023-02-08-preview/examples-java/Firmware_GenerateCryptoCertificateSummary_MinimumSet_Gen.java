@@ -1,0 +1,18 @@
+/** Samples for Firmware GenerateCryptoCertificateSummary. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/preview/2023-02-08-preview/examples/Firmware_GenerateCryptoCertificateSummary_MinimumSet_Gen.json
+     */
+    /**
+     * Sample code: Firmware_GenerateCryptoCertificateSummary_MinimumSet_Gen.
+     *
+     * @param manager Entry point to IoTFirmwareDefenseManager.
+     */
+    public static void firmwareGenerateCryptoCertificateSummaryMinimumSetGen(
+        com.azure.resourcemanager.iotfirmwaredefense.IoTFirmwareDefenseManager manager) {
+        manager
+            .firmwares()
+            .generateCryptoCertificateSummaryWithResponse(
+                "rgworkspaces-firmwares", "j5QE_", "wujtpcgypfpqseyrsebolarkspy", com.azure.core.util.Context.NONE);
+    }
+}

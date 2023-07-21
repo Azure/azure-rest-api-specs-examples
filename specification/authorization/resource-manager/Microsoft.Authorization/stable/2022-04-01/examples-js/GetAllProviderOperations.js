@@ -8,10 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/stable/2022-04-01/examples/GetAllProviderOperations.json
  */
 async function listProviderOperationsMetadataForAllResourceProviders() {
-  const subscriptionId =
-    process.env["AUTHORIZATION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
-  const client = new AuthorizationManagementClient(credential, subscriptionId);
+  const client = new AuthorizationManagementClient(credential);
   const resArray = new Array();
   for await (let item of client.providerOperationsMetadataOperations.list()) {
     resArray.push(item);

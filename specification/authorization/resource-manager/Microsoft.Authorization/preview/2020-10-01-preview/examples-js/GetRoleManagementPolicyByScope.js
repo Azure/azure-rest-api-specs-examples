@@ -8,12 +8,10 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/examples/GetRoleManagementPolicyByScope.json
  */
 async function getRoleManagementPolicyByRoleDefinitionFilter() {
-  const subscriptionId =
-    process.env["AUTHORIZATION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope =
     "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368";
   const credential = new DefaultAzureCredential();
-  const client = new AuthorizationManagementClient(credential, subscriptionId);
+  const client = new AuthorizationManagementClient(credential);
   const resArray = new Array();
   for await (let item of client.roleManagementPolicies.listForScope(scope)) {
     resArray.push(item);

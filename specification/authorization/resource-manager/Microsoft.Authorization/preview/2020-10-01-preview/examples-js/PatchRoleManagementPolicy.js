@@ -8,8 +8,6 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/examples/PatchRoleManagementPolicy.json
  */
 async function patchRoleManagementPolicy() {
-  const subscriptionId =
-    process.env["AUTHORIZATION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope =
     "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368";
   const roleManagementPolicyName = "570c3619-7688-4b34-b290-2b8bb3ccab2a";
@@ -307,7 +305,7 @@ async function patchRoleManagementPolicy() {
     ],
   };
   const credential = new DefaultAzureCredential();
-  const client = new AuthorizationManagementClient(credential, subscriptionId);
+  const client = new AuthorizationManagementClient(credential);
   const result = await client.roleManagementPolicies.update(
     scope,
     roleManagementPolicyName,

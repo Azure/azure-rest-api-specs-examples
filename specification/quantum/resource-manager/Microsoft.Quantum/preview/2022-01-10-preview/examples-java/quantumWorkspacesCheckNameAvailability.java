@@ -1,0 +1,24 @@
+import com.azure.resourcemanager.quantum.models.CheckNameAvailabilityParameters;
+
+/** Samples for WorkspaceOperation CheckNameAvailability. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/quantum/resource-manager/Microsoft.Quantum/preview/2022-01-10-preview/examples/quantumWorkspacesCheckNameAvailability.json
+     */
+    /**
+     * Sample code: QuantumWorkspacesCheckNameAvailability.
+     *
+     * @param manager Entry point to AzureQuantumManager.
+     */
+    public static void quantumWorkspacesCheckNameAvailability(
+        com.azure.resourcemanager.quantum.AzureQuantumManager manager) {
+        manager
+            .workspaceOperations()
+            .checkNameAvailabilityWithResponse(
+                "westus2",
+                new CheckNameAvailabilityParameters()
+                    .withName("sample-workspace-name")
+                    .withType("Microsoft.Quantum/Workspaces"),
+                com.azure.core.util.Context.NONE);
+    }
+}

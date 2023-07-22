@@ -8,8 +8,6 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/stable/2022-04-01/examples/RoleAssignments_CreateForResourceGroup.json
  */
 async function createRoleAssignmentForResourceGroup() {
-  const subscriptionId =
-    process.env["AUTHORIZATION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const scope = "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/resourceGroups/testrg";
   const roleAssignmentName = "05c5a614-a7d6-4502-b150-c2fb455033ff";
   const parameters = {
@@ -19,7 +17,7 @@ async function createRoleAssignmentForResourceGroup() {
       "/subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/providers/Microsoft.Authorization/roleDefinitions/0b5fe924-9a61-425c-96af-cfe6e287ca2d",
   };
   const credential = new DefaultAzureCredential();
-  const client = new AuthorizationManagementClient(credential, subscriptionId);
+  const client = new AuthorizationManagementClient(credential);
   const result = await client.roleAssignments.create(scope, roleAssignmentName, parameters);
   console.log(result);
 }

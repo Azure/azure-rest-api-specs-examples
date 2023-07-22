@@ -7,9 +7,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * @summary Create a role management policy assignment
  * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/examples/PutRoleManagementPolicyAssignment.json
  */
-async function getConfigurations() {
-  const subscriptionId =
-    process.env["AUTHORIZATION_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+async function putRoleManagementPolicyAssignment() {
   const scope =
     "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368";
   const roleManagementPolicyAssignmentName =
@@ -22,7 +20,7 @@ async function getConfigurations() {
     scope: "/subscriptions/129ff972-28f8-46b8-a726-e497be039368",
   };
   const credential = new DefaultAzureCredential();
-  const client = new AuthorizationManagementClient(credential, subscriptionId);
+  const client = new AuthorizationManagementClient(credential);
   const result = await client.roleManagementPolicyAssignments.create(
     scope,
     roleManagementPolicyAssignmentName,

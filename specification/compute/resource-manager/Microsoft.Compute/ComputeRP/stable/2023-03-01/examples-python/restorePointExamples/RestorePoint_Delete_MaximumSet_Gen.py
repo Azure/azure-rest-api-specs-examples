@@ -21,12 +21,11 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.restore_points.begin_delete(
+    client.restore_points.begin_delete(
         resource_group_name="rgcompute",
         restore_point_collection_name="aaaaaaaaaaaaaaaaaaaaaa",
         restore_point_name="a",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/restorePointExamples/RestorePoint_Delete_MaximumSet_Gen.json

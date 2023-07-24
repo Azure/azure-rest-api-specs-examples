@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.availability_sets.delete(
+    client.availability_sets.delete(
         resource_group_name="rgcompute",
         availability_set_name="aaaaaaaaaaaaaaaaaaaa",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/availabilitySetExamples/AvailabilitySet_Delete_MaximumSet_Gen.json

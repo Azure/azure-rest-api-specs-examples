@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.ssh_public_keys.delete(
+    client.ssh_public_keys.delete(
         resource_group_name="rgcompute",
         ssh_public_key_name="aaaaaaaaaaaaaaaaaaa",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/sshPublicKeyExamples/SshPublicKey_Delete_MinimumSet_Gen.json

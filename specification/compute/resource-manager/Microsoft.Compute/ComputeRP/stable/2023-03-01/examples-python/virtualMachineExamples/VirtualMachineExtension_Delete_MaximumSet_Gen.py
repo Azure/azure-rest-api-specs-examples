@@ -21,12 +21,11 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machine_extensions.begin_delete(
+    client.virtual_machine_extensions.begin_delete(
         resource_group_name="rgcompute",
         vm_name="aaaaaaaaaaaaa",
         vm_extension_name="aaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineExamples/VirtualMachineExtension_Delete_MaximumSet_Gen.json

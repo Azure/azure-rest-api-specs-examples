@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.capacity_reservation_groups.delete(
+    client.capacity_reservation_groups.delete(
         resource_group_name="rgcompute",
         capacity_reservation_group_name="aaaaaaaaaaaaaaaaaaaaaaaaaa",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/capacityReservationExamples/CapacityReservationGroup_Delete_MinimumSet_Gen.json

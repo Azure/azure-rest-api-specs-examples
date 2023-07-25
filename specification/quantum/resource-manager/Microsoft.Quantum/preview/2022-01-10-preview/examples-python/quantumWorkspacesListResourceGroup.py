@@ -6,7 +6,7 @@ from azure.mgmt.quantum import AzureQuantumManagementClient
     pip install azure-identity
     pip install azure-mgmt-quantum
 # USAGE
-    python quantum_workspaces_list_by_resource_group.py
+    python quantum_workspaces_list_resource_group.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

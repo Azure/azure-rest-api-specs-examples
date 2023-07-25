@@ -1,0 +1,35 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.mobilenetwork import MobileNetworkManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-mobilenetwork
+# USAGE
+    python data_network_create.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = MobileNetworkManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="00000000-0000-0000-0000-000000000000",
+    )
+
+    response = client.data_networks.begin_create_or_update(
+        resource_group_name="rg1",
+        mobile_network_name="testMobileNetwork",
+        data_network_name="testDataNetwork",
+        parameters={"location": "eastus", "properties": {"description": "myFavouriteDataNetwork"}},
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2023-06-01/examples/DataNetworkCreate.json
+if __name__ == "__main__":
+    main()

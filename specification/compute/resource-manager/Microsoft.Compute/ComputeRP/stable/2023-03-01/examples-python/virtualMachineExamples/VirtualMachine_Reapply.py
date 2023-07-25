@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machines.begin_reapply(
+    client.virtual_machines.begin_reapply(
         resource_group_name="ResourceGroup",
         vm_name="VMName",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineExamples/VirtualMachine_Reapply.json

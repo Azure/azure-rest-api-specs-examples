@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machines.begin_reimage(
+    client.virtual_machines.begin_reimage(
         resource_group_name="myResourceGroup",
         vm_name="myVMName",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineExamples/VirtualMachine_Reimage.json

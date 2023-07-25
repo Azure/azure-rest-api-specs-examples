@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machines.simulate_eviction(
+    client.virtual_machines.simulate_eviction(
         resource_group_name="ResourceGroup",
         vm_name="VMName",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineExamples/VirtualMachine_SimulateEviction.json

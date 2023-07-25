@@ -21,11 +21,10 @@ def main():
         subscription_id="b4f1213b-cacc-4816-8bfb-f30f90643de8",
     )
 
-    response = client.virtual_machine_scale_sets.begin_reapply(
+    client.virtual_machine_scale_sets.begin_reapply(
         resource_group_name="VirtualMachineScaleSetReapplyTestRG",
         vm_scale_set_name="VMSSReapply-Test-ScaleSet",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Reapply_MaximumSet_Gen.json

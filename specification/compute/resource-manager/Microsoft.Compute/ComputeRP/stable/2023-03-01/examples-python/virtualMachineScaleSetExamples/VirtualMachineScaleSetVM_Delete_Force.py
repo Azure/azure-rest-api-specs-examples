@@ -21,12 +21,11 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machine_scale_set_vms.begin_delete(
+    client.virtual_machine_scale_set_vms.begin_delete(
         resource_group_name="myResourceGroup",
         vm_scale_set_name="myvmScaleSet",
         instance_id="0",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_Delete_Force.json

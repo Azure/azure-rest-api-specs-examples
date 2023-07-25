@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machines.begin_start(
+    client.virtual_machines.begin_start(
         resource_group_name="rgcompute",
         vm_name="aaaaaaaaaaaaaaaaaaaa",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineExamples/VirtualMachine_Start_MaximumSet_Gen.json

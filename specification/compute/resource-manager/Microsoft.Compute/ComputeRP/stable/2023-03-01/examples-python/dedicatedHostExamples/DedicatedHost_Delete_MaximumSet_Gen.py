@@ -21,12 +21,11 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.dedicated_hosts.begin_delete(
+    client.dedicated_hosts.begin_delete(
         resource_group_name="rgcompute",
         host_group_name="aaaaaa",
         host_name="aaaaaaaaaaaaaaa",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/dedicatedHostExamples/DedicatedHost_Delete_MaximumSet_Gen.json

@@ -21,12 +21,11 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machine_scale_set_vms.begin_power_off(
+    client.virtual_machine_scale_set_vms.begin_power_off(
         resource_group_name="rgcompute",
         vm_scale_set_name="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
         instance_id="aaaaaaaaaaaaaaaaaaaaaa",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetVM_PowerOff_MinimumSet_Gen.json

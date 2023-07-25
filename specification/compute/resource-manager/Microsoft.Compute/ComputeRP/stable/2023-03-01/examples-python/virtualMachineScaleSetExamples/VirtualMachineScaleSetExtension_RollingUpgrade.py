@@ -21,11 +21,10 @@ def main():
         subscription_id="{subscription-id}",
     )
 
-    response = client.virtual_machine_scale_set_rolling_upgrades.begin_start_extension_upgrade(
+    client.virtual_machine_scale_set_rolling_upgrades.begin_start_extension_upgrade(
         resource_group_name="myResourceGroup",
         vm_scale_set_name="{vmss-name}",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSetExtension_RollingUpgrade.json

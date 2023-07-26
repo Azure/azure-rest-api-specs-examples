@@ -1,0 +1,29 @@
+import com.azure.resourcemanager.netapp.models.BackupRestoreFiles;
+import java.util.Arrays;
+
+/** Samples for Backups RestoreFiles. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2022-11-01/examples/Backups_SingleFileRestore.json
+     */
+    /**
+     * Sample code: Backups_SingleFileRestore.
+     *
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void backupsSingleFileRestore(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager
+            .backups()
+            .restoreFiles(
+                "myRG",
+                "account1",
+                "pool1",
+                "volume1",
+                "backup1",
+                new BackupRestoreFiles()
+                    .withFileList(Arrays.asList("/dir1/customer1.db", "/dir1/customer2.db"))
+                    .withDestinationVolumeId(
+                        "/subscriptions/D633CC2E-722B-4AE1-B636-BBD9E4C60ED9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/volume1"),
+                com.azure.core.util.Context.NONE);
+    }
+}

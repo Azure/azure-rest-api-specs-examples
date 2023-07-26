@@ -1,0 +1,39 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.network import NetworkManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-network
+# USAGE
+    python inbound_security_rule_put.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = NetworkManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="subid",
+    )
+
+    response = client.inbound_security_rule.begin_create_or_update(
+        resource_group_name="rg1",
+        network_virtual_appliance_name="nva",
+        rule_collection_name="rule1",
+        parameters={
+            "properties": {
+                "rules": [{"destinationPortRange": 22, "protocol": "TCP", "sourceAddressPrefix": "50.20.121.5/32"}]
+            }
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/network/resource-manager/Microsoft.Network/stable/2023-02-01/examples/InboundSecurityRulePut.json
+if __name__ == "__main__":
+    main()

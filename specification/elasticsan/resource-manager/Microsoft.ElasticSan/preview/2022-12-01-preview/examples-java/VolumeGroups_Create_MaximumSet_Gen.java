@@ -1,0 +1,36 @@
+import com.azure.resourcemanager.elasticsan.models.Action;
+import com.azure.resourcemanager.elasticsan.models.EncryptionType;
+import com.azure.resourcemanager.elasticsan.models.NetworkRuleSet;
+import com.azure.resourcemanager.elasticsan.models.StorageTargetType;
+import com.azure.resourcemanager.elasticsan.models.VirtualNetworkRule;
+import java.util.Arrays;
+
+/** Samples for VolumeGroups Create. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2022-12-01-preview/examples/VolumeGroups_Create_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: VolumeGroups_Create_MaximumSet_Gen.
+     *
+     * @param manager Entry point to ElasticSanManager.
+     */
+    public static void volumeGroupsCreateMaximumSetGen(com.azure.resourcemanager.elasticsan.ElasticSanManager manager) {
+        manager
+            .volumeGroups()
+            .define("volumegroupname")
+            .withExistingElasticSan("resourcegroupname", "elasticsanname")
+            .withProtocolType(StorageTargetType.ISCSI)
+            .withEncryption(EncryptionType.ENCRYPTION_AT_REST_WITH_PLATFORM_KEY)
+            .withNetworkAcls(
+                new NetworkRuleSet()
+                    .withVirtualNetworkRules(
+                        Arrays
+                            .asList(
+                                new VirtualNetworkRule()
+                                    .withVirtualNetworkResourceId(
+                                        "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}")
+                                    .withAction(Action.ALLOW))))
+            .create();
+    }
+}

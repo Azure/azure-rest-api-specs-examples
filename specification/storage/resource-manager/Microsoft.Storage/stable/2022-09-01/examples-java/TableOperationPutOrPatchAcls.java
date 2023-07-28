@@ -5,7 +5,7 @@ import com.azure.resourcemanager.storage.models.TableSignedIdentifier;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 
-/** Samples for Table Create. */
+/** Samples for Table Update. */
 public final class Main {
     /*
      * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2022-09-01/examples/TableOperationPutOrPatchAcls.json
@@ -21,7 +21,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getTables()
-            .createWithResponse(
+            .updateWithResponse(
                 "res3376",
                 "sto328",
                 "table6185",

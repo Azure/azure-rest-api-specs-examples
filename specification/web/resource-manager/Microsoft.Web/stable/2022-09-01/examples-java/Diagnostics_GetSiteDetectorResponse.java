@@ -1,4 +1,4 @@
-/** Samples for Diagnostics GetSiteDetectorResponse. */
+/** Samples for Diagnostics GetSiteDetectorResponseSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_GetSiteDetectorResponse.json
@@ -14,10 +14,11 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteDetectorResponseWithResponse(
+            .getSiteDetectorResponseSlotWithResponse(
                 "Sample-WestUSResourceGroup",
                 "SampleApp",
                 "runtimeavailability",
+                "staging",
                 null,
                 null,
                 null,

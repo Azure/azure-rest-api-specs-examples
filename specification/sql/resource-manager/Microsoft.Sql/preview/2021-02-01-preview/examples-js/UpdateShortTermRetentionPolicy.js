@@ -20,7 +20,7 @@ async function updateTheShortTermRetentionPolicyForTheDatabase() {
   };
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
-  const result = await client.backupShortTermRetentionPolicies.beginCreateOrUpdateAndWait(
+  const result = await client.backupShortTermRetentionPolicies.beginUpdateAndWait(
     resourceGroupName,
     serverName,
     databaseName,

@@ -1,0 +1,24 @@
+const { SqlManagementClient } = require("@azure/arm-sql");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
+ *
+ * @summary Fails over from the current primary server to this server. This operation tries planned before forced failover but might still result in data loss.
+ * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/preview/2022-11-01-preview/examples/FailoverGroupTryPlannedBeforeForcedFailover.json
+ */
+async function tryPlannedBeforeForcedFailoverOfAFailoverGroup() {
+  const subscriptionId =
+    process.env["SQL_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["SQL_RESOURCE_GROUP"] || "Default";
+  const serverName = "failovergroupsecondaryserver";
+  const failoverGroupName = "failovergrouptest3";
+  const credential = new DefaultAzureCredential();
+  const client = new SqlManagementClient(credential, subscriptionId);
+  const result = await client.failoverGroups.beginTryPlannedBeforeForcedFailoverAndWait(
+    resourceGroupName,
+    serverName,
+    failoverGroupName
+  );
+  console.log(result);
+}

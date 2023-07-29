@@ -1,0 +1,25 @@
+const { AzureNetworkFabricManagementServiceAPI } = require("@azure/arm-managednetworkfabric");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Implements Network To Network Interconnects list by Network Fabric GET method.
+ *
+ * @summary Implements Network To Network Interconnects list by Network Fabric GET method.
+ * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkToNetworkInterconnects_ListByNetworkFabric_MaximumSet_Gen.json
+ */
+async function networkToNetworkInterconnectsListByNetworkFabricMaximumSetGen() {
+  const subscriptionId =
+    process.env["MANAGEDNETWORKFABRIC_SUBSCRIPTION_ID"] || "1234ABCD-0A1B-1234-5678-123456ABCDEF";
+  const resourceGroupName = process.env["MANAGEDNETWORKFABRIC_RESOURCE_GROUP"] || "example-rg";
+  const networkFabricName = "example-fabric";
+  const credential = new DefaultAzureCredential();
+  const client = new AzureNetworkFabricManagementServiceAPI(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.networkToNetworkInterconnects.listByNetworkFabric(
+    resourceGroupName,
+    networkFabricName
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

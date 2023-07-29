@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CommunityGalleryResource created on azure
-// for more information of creating CommunityGalleryResource, please refer to the document of CommunityGalleryResource
+// this example assumes you already have this CommunityGalleryImageResource created on azure
+// for more information of creating CommunityGalleryImageResource, please refer to the document of CommunityGalleryImageResource
 string subscriptionId = "{subscription-id}";
 AzureLocation location = new AzureLocation("myLocation");
 string publicGalleryName = "publicGalleryName";
-ResourceIdentifier communityGalleryResourceId = CommunityGalleryResource.CreateResourceIdentifier(subscriptionId, location, publicGalleryName);
-CommunityGalleryResource communityGallery = client.GetCommunityGalleryResource(communityGalleryResourceId);
-
-// get the collection of this CommunityGalleryImageResource
-CommunityGalleryImageCollection collection = communityGallery.GetCommunityGalleryImages();
+string galleryImageName = "myGalleryImageName";
+ResourceIdentifier communityGalleryImageResourceId = CommunityGalleryImageResource.CreateResourceIdentifier(subscriptionId, location, publicGalleryName, galleryImageName);
+CommunityGalleryImageResource communityGalleryImage = client.GetCommunityGalleryImageResource(communityGalleryImageResourceId);
 
 // invoke the operation
-string galleryImageName = "myGalleryImageName";
-bool result = await collection.ExistsAsync(galleryImageName);
+CommunityGalleryImageResource result = await communityGalleryImage.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CommunityGalleryImageData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

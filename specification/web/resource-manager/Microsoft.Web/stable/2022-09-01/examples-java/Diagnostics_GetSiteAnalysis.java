@@ -1,4 +1,4 @@
-/** Samples for Diagnostics GetSiteAnalysisSlot. */
+/** Samples for Diagnostics GetSiteAnalysis. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_GetSiteAnalysis.json
@@ -14,12 +14,11 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteAnalysisSlotWithResponse(
+            .getSiteAnalysisWithResponse(
                 "Sample-WestUSResourceGroup",
                 "SampleApp",
                 "availability",
                 "appanalysis",
-                "Production",
                 com.azure.core.util.Context.NONE);
     }
 }

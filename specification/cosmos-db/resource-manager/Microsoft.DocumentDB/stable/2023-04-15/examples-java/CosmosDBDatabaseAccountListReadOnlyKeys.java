@@ -1,4 +1,4 @@
-/** Samples for DatabaseAccounts GetReadOnlyKeys. */
+/** Samples for DatabaseAccounts ListReadOnlyKeys. */
 public final class Main {
     /*
      * x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2023-04-15/examples/CosmosDBDatabaseAccountListReadOnlyKeys.json
@@ -14,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDatabaseAccounts()
-            .getReadOnlyKeysWithResponse("rg1", "ddb1", com.azure.core.util.Context.NONE);
+            .listReadOnlyKeysWithResponse("rg1", "ddb1", com.azure.core.util.Context.NONE);
     }
 }

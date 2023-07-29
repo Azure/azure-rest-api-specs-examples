@@ -1,4 +1,4 @@
-/** Samples for Diagnostics GetSiteDetectorSlot. */
+/** Samples for Diagnostics GetSiteDetector. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_GetSiteDetector.json
@@ -14,12 +14,11 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .getSiteDetectorSlotWithResponse(
+            .getSiteDetectorWithResponse(
                 "Sample-WestUSResourceGroup",
                 "SampleApp",
                 "availability",
                 "sitecrashes",
-                "Production",
                 com.azure.core.util.Context.NONE);
     }
 }

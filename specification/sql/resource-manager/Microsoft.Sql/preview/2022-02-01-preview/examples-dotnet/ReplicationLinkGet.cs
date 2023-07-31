@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerDatabaseReplicationLinkResource created on azure
-// for more information of creating SqlServerDatabaseReplicationLinkResource, please refer to the document of SqlServerDatabaseReplicationLinkResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string serverName = "sourcesvr";
 string databaseName = "gamma-db";
-string linkId = "4891ca10-ebd0-47d7-9182-c722651780fb";
-ResourceIdentifier sqlServerDatabaseReplicationLinkResourceId = SqlServerDatabaseReplicationLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, linkId);
-SqlServerDatabaseReplicationLinkResource sqlServerDatabaseReplicationLink = client.GetSqlServerDatabaseReplicationLinkResource(sqlServerDatabaseReplicationLinkResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this SqlServerDatabaseReplicationLinkResource
+SqlServerDatabaseReplicationLinkCollection collection = sqlDatabase.GetSqlServerDatabaseReplicationLinks();
 
 // invoke the operation
-SqlServerDatabaseReplicationLinkResource result = await sqlServerDatabaseReplicationLink.GetAsync();
+string linkId = "4891ca10-ebd0-47d7-9182-c722651780fb";
+bool result = await collection.ExistsAsync(linkId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SqlServerDatabaseReplicationLinkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

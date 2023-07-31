@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceAzureADOnlyAuthenticationResource created on azure
-// for more information of creating ManagedInstanceAzureADOnlyAuthenticationResource, please refer to the document of ManagedInstanceAzureADOnlyAuthenticationResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string managedInstanceName = "managedInstance";
-AuthenticationName authenticationName = AuthenticationName.Default;
-ResourceIdentifier managedInstanceAzureADOnlyAuthenticationResourceId = ManagedInstanceAzureADOnlyAuthenticationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, authenticationName);
-ManagedInstanceAzureADOnlyAuthenticationResource managedInstanceAzureADOnlyAuthentication = client.GetManagedInstanceAzureADOnlyAuthenticationResource(managedInstanceAzureADOnlyAuthenticationResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstanceAzureADOnlyAuthenticationResource
+ManagedInstanceAzureADOnlyAuthenticationCollection collection = managedInstance.GetManagedInstanceAzureADOnlyAuthentications();
 
 // invoke the operation
+AuthenticationName authenticationName = AuthenticationName.Default;
 ManagedInstanceAzureADOnlyAuthenticationData data = new ManagedInstanceAzureADOnlyAuthenticationData()
 {
     IsAzureADOnlyAuthenticationEnabled = false,
 };
-ArmOperation<ManagedInstanceAzureADOnlyAuthenticationResource> lro = await managedInstanceAzureADOnlyAuthentication.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedInstanceAzureADOnlyAuthenticationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authenticationName, data);
 ManagedInstanceAzureADOnlyAuthenticationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

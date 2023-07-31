@@ -1,9 +1,9 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ResourceGroupBasedManagedInstanceLongTermRetentionBackupGet.json
@@ -14,22 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupLongTermRetentionManagedInstanceBackupResource created on azure
-// for more information of creating ResourceGroupLongTermRetentionManagedInstanceBackupResource, please refer to the document of ResourceGroupLongTermRetentionManagedInstanceBackupResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testResourceGroup";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ResourceGroupLongTermRetentionManagedInstanceBackupResource
 AzureLocation locationName = new AzureLocation("japaneast");
 string managedInstanceName = "testInstance";
 string databaseName = "testDatabase";
-string backupName = "55555555-6666-7777-8888-999999999999;131637960820000000";
-ResourceIdentifier resourceGroupLongTermRetentionManagedInstanceBackupResourceId = ResourceGroupLongTermRetentionManagedInstanceBackupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, locationName, managedInstanceName, databaseName, backupName);
-ResourceGroupLongTermRetentionManagedInstanceBackupResource resourceGroupLongTermRetentionManagedInstanceBackup = client.GetResourceGroupLongTermRetentionManagedInstanceBackupResource(resourceGroupLongTermRetentionManagedInstanceBackupResourceId);
+ResourceGroupLongTermRetentionManagedInstanceBackupCollection collection = resourceGroupResource.GetResourceGroupLongTermRetentionManagedInstanceBackups(locationName, managedInstanceName, databaseName);
 
 // invoke the operation
-ResourceGroupLongTermRetentionManagedInstanceBackupResource result = await resourceGroupLongTermRetentionManagedInstanceBackup.GetAsync();
+string backupName = "55555555-6666-7777-8888-999999999999;131637960820000000";
+bool result = await collection.ExistsAsync(backupName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedInstanceLongTermRetentionBackupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

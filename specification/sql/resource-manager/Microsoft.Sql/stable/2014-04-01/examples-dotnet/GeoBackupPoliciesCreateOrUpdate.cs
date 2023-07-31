@@ -15,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GeoBackupPolicyResource created on azure
-// for more information of creating GeoBackupPolicyResource, please refer to the document of GeoBackupPolicyResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-4799";
 string serverName = "sqlcrudtest-5961";
 string databaseName = "testdw";
-GeoBackupPolicyName geoBackupPolicyName = GeoBackupPolicyName.Default;
-ResourceIdentifier geoBackupPolicyResourceId = GeoBackupPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, geoBackupPolicyName);
-GeoBackupPolicyResource geoBackupPolicy = client.GetGeoBackupPolicyResource(geoBackupPolicyResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this GeoBackupPolicyResource
+GeoBackupPolicyCollection collection = sqlDatabase.GetGeoBackupPolicies();
 
 // invoke the operation
+GeoBackupPolicyName geoBackupPolicyName = GeoBackupPolicyName.Default;
 GeoBackupPolicyData data = new GeoBackupPolicyData(GeoBackupPolicyState.Enabled);
-ArmOperation<GeoBackupPolicyResource> lro = await geoBackupPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<GeoBackupPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, geoBackupPolicyName, data);
 GeoBackupPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

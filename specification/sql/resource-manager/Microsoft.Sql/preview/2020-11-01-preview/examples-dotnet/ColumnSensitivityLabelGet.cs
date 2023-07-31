@@ -14,8 +14,8 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseColumnResource created on azure
-// for more information of creating SqlDatabaseColumnResource, please refer to the document of SqlDatabaseColumnResource
+// this example assumes you already have this SqlDatabaseSensitivityLabelResource created on azure
+// for more information of creating SqlDatabaseSensitivityLabelResource, please refer to the document of SqlDatabaseSensitivityLabelResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string serverName = "myServer";
@@ -23,14 +23,15 @@ string databaseName = "myDatabase";
 string schemaName = "dbo";
 string tableName = "myTable";
 string columnName = "myColumn";
-ResourceIdentifier sqlDatabaseColumnResourceId = SqlDatabaseColumnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName, tableName, columnName);
-SqlDatabaseColumnResource sqlDatabaseColumn = client.GetSqlDatabaseColumnResource(sqlDatabaseColumnResourceId);
-
-// get the collection of this SqlDatabaseSensitivityLabelResource
-SqlDatabaseSensitivityLabelCollection collection = sqlDatabaseColumn.GetSqlDatabaseSensitivityLabels();
+SensitivityLabelSource sensitivityLabelSource = SensitivityLabelSource.Current;
+ResourceIdentifier sqlDatabaseSensitivityLabelResourceId = SqlDatabaseSensitivityLabelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName, tableName, columnName, sensitivityLabelSource);
+SqlDatabaseSensitivityLabelResource sqlDatabaseSensitivityLabel = client.GetSqlDatabaseSensitivityLabelResource(sqlDatabaseSensitivityLabelResourceId);
 
 // invoke the operation
-SensitivityLabelSource sensitivityLabelSource = SensitivityLabelSource.Current;
-bool result = await collection.ExistsAsync(sensitivityLabelSource);
+SqlDatabaseSensitivityLabelResource result = await sqlDatabaseSensitivityLabel.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SensitivityLabelData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

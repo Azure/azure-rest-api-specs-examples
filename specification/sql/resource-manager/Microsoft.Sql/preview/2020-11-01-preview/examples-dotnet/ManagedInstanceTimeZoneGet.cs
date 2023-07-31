@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ManagedInstanceTimeZoneGet.json
@@ -14,18 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SqlTimeZoneResource created on azure
+// for more information of creating SqlTimeZoneResource, please refer to the document of SqlTimeZoneResource
 string subscriptionId = "37d5e605-6142-4d79-b564-28b6dbfeec0f";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SqlTimeZoneResource
 AzureLocation locationName = new AzureLocation("canadaeast");
-SqlTimeZoneCollection collection = subscriptionResource.GetSqlTimeZones(locationName);
+string timeZoneId = "Haiti Standard Time";
+ResourceIdentifier sqlTimeZoneResourceId = SqlTimeZoneResource.CreateResourceIdentifier(subscriptionId, locationName, timeZoneId);
+SqlTimeZoneResource sqlTimeZone = client.GetSqlTimeZoneResource(sqlTimeZoneResourceId);
 
 // invoke the operation
-string timeZoneId = "Haiti Standard Time";
-bool result = await collection.ExistsAsync(timeZoneId);
+SqlTimeZoneResource result = await sqlTimeZone.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlTimeZoneData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

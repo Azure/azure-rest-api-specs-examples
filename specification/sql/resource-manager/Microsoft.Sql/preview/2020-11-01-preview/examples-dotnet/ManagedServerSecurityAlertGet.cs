@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedServerSecurityAlertPolicyResource created on azure
-// for more information of creating ManagedServerSecurityAlertPolicyResource, please refer to the document of ManagedServerSecurityAlertPolicyResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securityalert-4799";
 string managedInstanceName = "securityalert-6440";
-SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-ResourceIdentifier managedServerSecurityAlertPolicyResourceId = ManagedServerSecurityAlertPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, securityAlertPolicyName);
-ManagedServerSecurityAlertPolicyResource managedServerSecurityAlertPolicy = client.GetManagedServerSecurityAlertPolicyResource(managedServerSecurityAlertPolicyResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedServerSecurityAlertPolicyResource
+ManagedServerSecurityAlertPolicyCollection collection = managedInstance.GetManagedServerSecurityAlertPolicies();
 
 // invoke the operation
-ManagedServerSecurityAlertPolicyResource result = await managedServerSecurityAlertPolicy.GetAsync();
+SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
+bool result = await collection.ExistsAsync(securityAlertPolicyName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedServerSecurityAlertPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

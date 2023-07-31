@@ -4,6 +4,7 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql;
 using Azure.ResourceManager.Sql.Models;
 
@@ -15,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerTrustGroupResource created on azure
-// for more information of creating SqlServerTrustGroupResource, please refer to the document of SqlServerTrustGroupResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this SqlServerTrustGroupResource
 AzureLocation locationName = new AzureLocation("Japan East");
-string serverTrustGroupName = "server-trust-group-test";
-ResourceIdentifier sqlServerTrustGroupResourceId = SqlServerTrustGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, locationName, serverTrustGroupName);
-SqlServerTrustGroupResource sqlServerTrustGroup = client.GetSqlServerTrustGroupResource(sqlServerTrustGroupResourceId);
+SqlServerTrustGroupCollection collection = resourceGroupResource.GetSqlServerTrustGroups(locationName);
 
 // invoke the operation
+string serverTrustGroupName = "server-trust-group-test";
 SqlServerTrustGroupData data = new SqlServerTrustGroupData()
 {
     GroupMembers =
@@ -36,7 +40,7 @@ SqlServerTrustGroupData data = new SqlServerTrustGroupData()
     ServerTrustGroupPropertiesTrustScopesItem.GlobalTransactions,ServerTrustGroupPropertiesTrustScopesItem.ServiceBroker
     },
 };
-ArmOperation<SqlServerTrustGroupResource> lro = await sqlServerTrustGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SqlServerTrustGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverTrustGroupName, data);
 SqlServerTrustGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

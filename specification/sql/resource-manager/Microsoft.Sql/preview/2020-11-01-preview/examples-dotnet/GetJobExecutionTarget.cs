@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Sql;
+using Azure.ResourceManager.Sql.Models;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/GetJobExecutionTarget.json
 // this example is just showing the usage of "JobTargetExecutions_Get" operation, for the dependent resources, they will have to be created separately.
@@ -13,8 +14,8 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobExecutionStepTargetResource created on azure
-// for more information of creating SqlServerJobExecutionStepTargetResource, please refer to the document of SqlServerJobExecutionStepTargetResource
+// this example assumes you already have this SqlServerJobExecutionStepResource created on azure
+// for more information of creating SqlServerJobExecutionStepResource, please refer to the document of SqlServerJobExecutionStepResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
@@ -22,15 +23,14 @@ string jobAgentName = "agent1";
 string jobName = "job1";
 Guid jobExecutionId = Guid.Parse("5A86BF65-43AC-F258-2524-9E92992F97CA");
 string stepName = "step1";
-Guid targetId = Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
-ResourceIdentifier sqlServerJobExecutionStepTargetResourceId = SqlServerJobExecutionStepTargetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, stepName, targetId);
-SqlServerJobExecutionStepTargetResource sqlServerJobExecutionStepTarget = client.GetSqlServerJobExecutionStepTargetResource(sqlServerJobExecutionStepTargetResourceId);
+ResourceIdentifier sqlServerJobExecutionStepResourceId = SqlServerJobExecutionStepResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId, stepName);
+SqlServerJobExecutionStepResource sqlServerJobExecutionStep = client.GetSqlServerJobExecutionStepResource(sqlServerJobExecutionStepResourceId);
+
+// get the collection of this SqlServerJobExecutionStepTargetResource
+SqlServerJobExecutionStepTargetCollection collection = sqlServerJobExecutionStep.GetSqlServerJobExecutionStepTargets();
 
 // invoke the operation
-SqlServerJobExecutionStepTargetResource result = await sqlServerJobExecutionStepTarget.GetAsync();
+Guid targetId = Guid.Parse("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee");
+bool result = await collection.ExistsAsync(targetId);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SqlServerJobExecutionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -15,21 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedTransparentDataEncryptionResource created on azure
-// for more information of creating ManagedTransparentDataEncryptionResource, please refer to the document of ManagedTransparentDataEncryptionResource
+// this example assumes you already have this ManagedDatabaseResource created on azure
+// for more information of creating ManagedDatabaseResource, please refer to the document of ManagedDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "security-tde-resourcegroup";
 string managedInstanceName = "securitytde";
 string databaseName = "testdb";
-TransparentDataEncryptionName tdeName = TransparentDataEncryptionName.Current;
-ResourceIdentifier managedTransparentDataEncryptionResourceId = ManagedTransparentDataEncryptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, tdeName);
-ManagedTransparentDataEncryptionResource managedTransparentDataEncryption = client.GetManagedTransparentDataEncryptionResource(managedTransparentDataEncryptionResourceId);
+ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName);
+ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
+
+// get the collection of this ManagedTransparentDataEncryptionResource
+ManagedTransparentDataEncryptionCollection collection = managedDatabase.GetManagedTransparentDataEncryptions();
 
 // invoke the operation
-ManagedTransparentDataEncryptionResource result = await managedTransparentDataEncryption.GetAsync();
+TransparentDataEncryptionName tdeName = TransparentDataEncryptionName.Current;
+bool result = await collection.ExistsAsync(tdeName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedTransparentDataEncryptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

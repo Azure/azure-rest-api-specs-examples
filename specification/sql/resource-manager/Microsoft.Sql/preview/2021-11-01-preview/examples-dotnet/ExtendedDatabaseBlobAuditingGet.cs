@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseResource created on azure
-// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
+// this example assumes you already have this ExtendedDatabaseBlobAuditingPolicyResource created on azure
+// for more information of creating ExtendedDatabaseBlobAuditingPolicyResource, please refer to the document of ExtendedDatabaseBlobAuditingPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "blobauditingtest-6852";
 string serverName = "blobauditingtest-2080";
 string databaseName = "testdb";
-ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
-
-// get the collection of this ExtendedDatabaseBlobAuditingPolicyResource
-ExtendedDatabaseBlobAuditingPolicyCollection collection = sqlDatabase.GetExtendedDatabaseBlobAuditingPolicies();
+BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
+ResourceIdentifier extendedDatabaseBlobAuditingPolicyResourceId = ExtendedDatabaseBlobAuditingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, blobAuditingPolicyName);
+ExtendedDatabaseBlobAuditingPolicyResource extendedDatabaseBlobAuditingPolicy = client.GetExtendedDatabaseBlobAuditingPolicyResource(extendedDatabaseBlobAuditingPolicyResourceId);
 
 // invoke the operation
-BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-bool result = await collection.ExistsAsync(blobAuditingPolicyName);
+ExtendedDatabaseBlobAuditingPolicyResource result = await extendedDatabaseBlobAuditingPolicy.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ExtendedDatabaseBlobAuditingPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

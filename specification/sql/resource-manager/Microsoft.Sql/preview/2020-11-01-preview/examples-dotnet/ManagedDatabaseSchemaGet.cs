@@ -13,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedDatabaseSchemaResource created on azure
-// for more information of creating ManagedDatabaseSchemaResource, please refer to the document of ManagedDatabaseSchemaResource
+// this example assumes you already have this ManagedDatabaseResource created on azure
+// for more information of creating ManagedDatabaseResource, please refer to the document of ManagedDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string managedInstanceName = "myManagedInstanceName";
 string databaseName = "myDatabase";
-string schemaName = "dbo";
-ResourceIdentifier managedDatabaseSchemaResourceId = ManagedDatabaseSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, schemaName);
-ManagedDatabaseSchemaResource managedDatabaseSchema = client.GetManagedDatabaseSchemaResource(managedDatabaseSchemaResourceId);
+ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName);
+ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
+
+// get the collection of this ManagedDatabaseSchemaResource
+ManagedDatabaseSchemaCollection collection = managedDatabase.GetManagedDatabaseSchemas();
 
 // invoke the operation
-ManagedDatabaseSchemaResource result = await managedDatabaseSchema.GetAsync();
+string schemaName = "dbo";
+bool result = await collection.ExistsAsync(schemaName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DatabaseSchemaData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

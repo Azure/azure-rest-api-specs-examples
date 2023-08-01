@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedTransparentDataEncryptionResource created on azure
-// for more information of creating ManagedTransparentDataEncryptionResource, please refer to the document of ManagedTransparentDataEncryptionResource
+// this example assumes you already have this ManagedDatabaseResource created on azure
+// for more information of creating ManagedDatabaseResource, please refer to the document of ManagedDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securitytde-42-rg";
 string managedInstanceName = "securitytde-42";
 string databaseName = "testdb";
-TransparentDataEncryptionName tdeName = TransparentDataEncryptionName.Current;
-ResourceIdentifier managedTransparentDataEncryptionResourceId = ManagedTransparentDataEncryptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, tdeName);
-ManagedTransparentDataEncryptionResource managedTransparentDataEncryption = client.GetManagedTransparentDataEncryptionResource(managedTransparentDataEncryptionResourceId);
+ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName);
+ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
+
+// get the collection of this ManagedTransparentDataEncryptionResource
+ManagedTransparentDataEncryptionCollection collection = managedDatabase.GetManagedTransparentDataEncryptions();
 
 // invoke the operation
+TransparentDataEncryptionName tdeName = TransparentDataEncryptionName.Current;
 ManagedTransparentDataEncryptionData data = new ManagedTransparentDataEncryptionData()
 {
     State = TransparentDataEncryptionState.Enabled,
 };
-ArmOperation<ManagedTransparentDataEncryptionResource> lro = await managedTransparentDataEncryption.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedTransparentDataEncryptionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tdeName, data);
 ManagedTransparentDataEncryptionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

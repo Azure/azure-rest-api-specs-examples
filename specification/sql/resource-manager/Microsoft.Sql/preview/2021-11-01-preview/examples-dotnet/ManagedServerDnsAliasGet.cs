@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this ManagedServerDnsAliasResource created on azure
+// for more information of creating ManagedServerDnsAliasResource, please refer to the document of ManagedServerDnsAliasResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string managedInstanceName = "dns-mi";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this ManagedServerDnsAliasResource
-ManagedServerDnsAliasCollection collection = managedInstance.GetManagedServerDnsAliases();
+string dnsAliasName = "dns-alias-mi";
+ResourceIdentifier managedServerDnsAliasResourceId = ManagedServerDnsAliasResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, dnsAliasName);
+ManagedServerDnsAliasResource managedServerDnsAlias = client.GetManagedServerDnsAliasResource(managedServerDnsAliasResourceId);
 
 // invoke the operation
-string dnsAliasName = "dns-alias-mi";
-bool result = await collection.ExistsAsync(dnsAliasName);
+ManagedServerDnsAliasResource result = await managedServerDnsAlias.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ManagedServerDnsAliasData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

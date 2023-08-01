@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this SqlServerDevOpsAuditingSettingResource created on azure
+// for more information of creating SqlServerDevOpsAuditingSettingResource, please refer to the document of SqlServerDevOpsAuditingSettingResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "devAuditTestRG";
 string serverName = "devOpsAuditTestSvr";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this SqlServerDevOpsAuditingSettingResource
-SqlServerDevOpsAuditingSettingCollection collection = sqlServer.GetSqlServerDevOpsAuditingSettings();
+string devOpsAuditingSettingsName = "Default";
+ResourceIdentifier sqlServerDevOpsAuditingSettingResourceId = SqlServerDevOpsAuditingSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, devOpsAuditingSettingsName);
+SqlServerDevOpsAuditingSettingResource sqlServerDevOpsAuditingSetting = client.GetSqlServerDevOpsAuditingSettingResource(sqlServerDevOpsAuditingSettingResourceId);
 
 // invoke the operation
-string devOpsAuditingSettingsName = "Default";
-bool result = await collection.ExistsAsync(devOpsAuditingSettingsName);
+SqlServerDevOpsAuditingSettingResource result = await sqlServerDevOpsAuditingSetting.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlServerDevOpsAuditingSettingData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

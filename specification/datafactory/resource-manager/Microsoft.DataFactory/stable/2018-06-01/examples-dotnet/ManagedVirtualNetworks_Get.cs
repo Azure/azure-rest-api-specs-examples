@@ -23,8 +23,8 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryVirtualNetworkResource
-FactoryVirtualNetworkCollection collection = dataFactory.GetFactoryVirtualNetworks();
+// get the collection of this DataFactoryManagedVirtualNetworkResource
+DataFactoryManagedVirtualNetworkCollection collection = dataFactory.GetDataFactoryManagedVirtualNetworks();
 
 // invoke the operation
 string managedVirtualNetworkName = "exampleManagedVirtualNetworkName";

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -30,11 +31,11 @@ TriggerFilterContent content = new TriggerFilterContent()
 {
     ParentTriggerName = "exampleTrigger",
 };
-await foreach (FactoryTriggerResource item in dataFactory.GetTriggersAsync(content))
+await foreach (DataFactoryTriggerResource item in dataFactory.GetTriggersAsync(content))
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    FactoryTriggerData resourceData = item.Data;
+    DataFactoryTriggerData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

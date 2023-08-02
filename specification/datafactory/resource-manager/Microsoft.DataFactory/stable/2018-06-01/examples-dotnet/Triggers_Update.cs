@@ -15,19 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryTriggerResource created on azure
-// for more information of creating FactoryTriggerResource, please refer to the document of FactoryTriggerResource
+// this example assumes you already have this DataFactoryTriggerResource created on azure
+// for more information of creating DataFactoryTriggerResource, please refer to the document of DataFactoryTriggerResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string triggerName = "exampleTrigger";
-ResourceIdentifier factoryTriggerResourceId = FactoryTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, triggerName);
-FactoryTriggerResource factoryTrigger = client.GetFactoryTriggerResource(factoryTriggerResourceId);
+ResourceIdentifier dataFactoryTriggerResourceId = DataFactoryTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, triggerName);
+DataFactoryTriggerResource dataFactoryTrigger = client.GetDataFactoryTriggerResource(dataFactoryTriggerResourceId);
 
 // invoke the operation
-FactoryTriggerData data = new FactoryTriggerData(new ScheduleTrigger(new ScheduleTriggerRecurrence()
+DataFactoryTriggerData data = new DataFactoryTriggerData(new DataFactoryScheduleTrigger(new ScheduleTriggerRecurrence()
 {
-    Frequency = RecurrenceFrequency.Minute,
+    Frequency = DataFactoryRecurrenceFrequency.Minute,
     Interval = 4,
     StartOn = DateTimeOffset.Parse("2018-06-16T00:39:14.905167Z"),
     EndOn = DateTimeOffset.Parse("2018-06-16T00:55:14.905167Z"),
@@ -38,7 +38,7 @@ FactoryTriggerData data = new FactoryTriggerData(new ScheduleTrigger(new Schedul
     {
     new TriggerPipelineReference()
     {
-    PipelineReference = new FactoryPipelineReference(FactoryPipelineReferenceType.PipelineReference,"examplePipeline"),
+    PipelineReference = new DataFactoryPipelineReference(DataFactoryPipelineReferenceType.PipelineReference,"examplePipeline"),
     Parameters =
     {
     ["OutputBlobNameList"] = BinaryData.FromObjectAsJson(new object[] { "exampleoutput.csv" }),
@@ -47,11 +47,11 @@ FactoryTriggerData data = new FactoryTriggerData(new ScheduleTrigger(new Schedul
     },
     Description = "Example description",
 });
-ArmOperation<FactoryTriggerResource> lro = await factoryTrigger.UpdateAsync(WaitUntil.Completed, data);
-FactoryTriggerResource result = lro.Value;
+ArmOperation<DataFactoryTriggerResource> lro = await dataFactoryTrigger.UpdateAsync(WaitUntil.Completed, data);
+DataFactoryTriggerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryTriggerData resourceData = result.Data;
+DataFactoryTriggerData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

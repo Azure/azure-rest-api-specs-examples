@@ -16,25 +16,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryIntegrationRuntimeResource created on azure
-// for more information of creating FactoryIntegrationRuntimeResource, please refer to the document of FactoryIntegrationRuntimeResource
+// this example assumes you already have this DataFactoryIntegrationRuntimeResource created on azure
+// for more information of creating DataFactoryIntegrationRuntimeResource, please refer to the document of DataFactoryIntegrationRuntimeResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string integrationRuntimeName = "exampleIntegrationRuntime";
-ResourceIdentifier factoryIntegrationRuntimeResourceId = FactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
-FactoryIntegrationRuntimeResource factoryIntegrationRuntime = client.GetFactoryIntegrationRuntimeResource(factoryIntegrationRuntimeResourceId);
+ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
+DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation
-FactoryIntegrationRuntimePatch patch = new FactoryIntegrationRuntimePatch()
+DataFactoryIntegrationRuntimePatch patch = new DataFactoryIntegrationRuntimePatch()
 {
-    AutoUpdate = IntegrationRuntimeAutoUpdate.Off,
+    AutoUpdate = IntegrationRuntimeAutoUpdateState.Off,
     UpdateDelayOffset = XmlConvert.ToTimeSpan("\"PT3H\""),
 };
-FactoryIntegrationRuntimeResource result = await factoryIntegrationRuntime.UpdateAsync(patch);
+DataFactoryIntegrationRuntimeResource result = await dataFactoryIntegrationRuntime.UpdateAsync(patch);
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryIntegrationRuntimeData resourceData = result.Data;
+DataFactoryIntegrationRuntimeData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

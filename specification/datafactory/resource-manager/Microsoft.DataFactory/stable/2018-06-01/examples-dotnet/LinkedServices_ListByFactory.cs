@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -24,15 +24,15 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryLinkedServiceResource
-FactoryLinkedServiceCollection collection = dataFactory.GetFactoryLinkedServices();
+// get the collection of this DataFactoryLinkedServiceResource
+DataFactoryLinkedServiceCollection collection = dataFactory.GetDataFactoryLinkedServices();
 
 // invoke the operation and iterate over the result
-await foreach (FactoryLinkedServiceResource item in collection.GetAllAsync())
+await foreach (DataFactoryLinkedServiceResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    FactoryLinkedServiceData resourceData = item.Data;
+    DataFactoryLinkedServiceData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

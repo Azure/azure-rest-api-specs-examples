@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -25,7 +26,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation locationId = new AzureLocation("East US");
-FactoryRepoUpdate factoryRepoUpdate = new FactoryRepoUpdate()
+FactoryRepoContent content = new FactoryRepoContent()
 {
     FactoryResourceId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName"),
     RepoConfiguration = new FactoryVstsConfiguration("ADF", "repo", "master", "/", "project")
@@ -34,7 +35,7 @@ FactoryRepoUpdate factoryRepoUpdate = new FactoryRepoUpdate()
         LastCommitId = "",
     },
 };
-DataFactoryResource result = await subscriptionResource.ConfigureFactoryRepoInformationAsync(locationId, factoryRepoUpdate);
+DataFactoryResource result = await subscriptionResource.ConfigureFactoryRepoInformationAsync(locationId, content);
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance

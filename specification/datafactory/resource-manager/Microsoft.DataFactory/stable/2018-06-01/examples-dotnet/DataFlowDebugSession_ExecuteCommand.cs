@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -35,7 +36,7 @@ DataFlowDebugCommandContent content = new DataFlowDebugCommandContent()
         RowLimits = 100,
     },
 };
-ArmOperation<FactoryDataFlowDebugCommandResult> lro = await dataFactory.ExecuteDataFlowDebugSessionCommandAsync(WaitUntil.Completed, content);
-FactoryDataFlowDebugCommandResult result = lro.Value;
+ArmOperation<DataFactoryDataFlowDebugCommandResult> lro = await dataFactory.ExecuteDataFlowDebugSessionCommandAsync(WaitUntil.Completed, content);
+DataFactoryDataFlowDebugCommandResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

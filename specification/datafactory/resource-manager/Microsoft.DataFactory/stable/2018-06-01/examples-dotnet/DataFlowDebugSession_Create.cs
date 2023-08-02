@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -26,10 +27,10 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-FactoryDataFlowDebugSessionContent content = new FactoryDataFlowDebugSessionContent()
+DataFactoryDataFlowDebugSessionContent content = new DataFactoryDataFlowDebugSessionContent()
 {
     TimeToLiveInMinutes = 60,
-    IntegrationRuntime = new FactoryIntegrationRuntimeDebugInfo(new ManagedIntegrationRuntime()
+    IntegrationRuntime = new DataFactoryIntegrationRuntimeDebugInfo(new ManagedIntegrationRuntime()
     {
         ComputeProperties = new IntegrationRuntimeComputeProperties()
         {
@@ -46,7 +47,7 @@ FactoryDataFlowDebugSessionContent content = new FactoryDataFlowDebugSessionCont
         Name = "ir1",
     },
 };
-ArmOperation<FactoryDataFlowCreateDebugSessionResult> lro = await dataFactory.CreateDataFlowDebugSessionAsync(WaitUntil.Completed, content);
-FactoryDataFlowCreateDebugSessionResult result = lro.Value;
+ArmOperation<DataFactoryDataFlowCreateDebugSessionResult> lro = await dataFactory.CreateDataFlowDebugSessionAsync(WaitUntil.Completed, content);
+DataFactoryDataFlowCreateDebugSessionResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

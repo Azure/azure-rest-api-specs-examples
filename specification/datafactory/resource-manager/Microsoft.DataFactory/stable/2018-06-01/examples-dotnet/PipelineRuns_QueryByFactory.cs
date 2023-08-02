@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -36,7 +37,7 @@ RunFilterContent content = new RunFilterContent(DateTimeOffset.Parse("2018-06-16
     })
     },
 };
-await foreach (FactoryPipelineRunInfo item in dataFactory.GetPipelineRunsAsync(content))
+await foreach (DataFactoryPipelineRunInfo item in dataFactory.GetPipelineRunsAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

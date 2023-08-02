@@ -23,17 +23,17 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryVirtualNetworkResource
-FactoryVirtualNetworkCollection collection = dataFactory.GetFactoryVirtualNetworks();
+// get the collection of this DataFactoryManagedVirtualNetworkResource
+DataFactoryManagedVirtualNetworkCollection collection = dataFactory.GetDataFactoryManagedVirtualNetworks();
 
 // invoke the operation
 string managedVirtualNetworkName = "exampleManagedVirtualNetworkName";
-FactoryVirtualNetworkData data = new FactoryVirtualNetworkData(new ManagedVirtualNetwork());
-ArmOperation<FactoryVirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedVirtualNetworkName, data);
-FactoryVirtualNetworkResource result = lro.Value;
+DataFactoryManagedVirtualNetworkData data = new DataFactoryManagedVirtualNetworkData(new DataFactoryManagedVirtualNetworkProperties());
+ArmOperation<DataFactoryManagedVirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedVirtualNetworkName, data);
+DataFactoryManagedVirtualNetworkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryVirtualNetworkData resourceData = result.Data;
+DataFactoryManagedVirtualNetworkData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

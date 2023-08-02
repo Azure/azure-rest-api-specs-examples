@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -26,10 +27,10 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-FactoryDataFlowDebugPackageContent content = new FactoryDataFlowDebugPackageContent()
+DataFactoryDataFlowDebugPackageContent content = new DataFactoryDataFlowDebugPackageContent()
 {
     SessionId = Guid.Parse("f06ed247-9d07-49b2-b05e-2cb4a2fc871e"),
-    DataFlow = new FactoryDataFlowDebugInfo(new FactoryMappingDataFlowDefinition()
+    DataFlow = new DataFactoryDataFlowDebugInfo(new DataFactoryMappingDataFlowProperties()
     {
         Sources =
         {
@@ -51,20 +52,24 @@ FactoryDataFlowDebugPackageContent content = new FactoryDataFlowDebugPackageCont
     },
     Datasets =
     {
-    new FactoryDatasetDebugInfo(new DelimitedTextDataset(new FactoryLinkedServiceReference(FactoryLinkedServiceReferenceType.LinkedServiceReference,"linkedService5"))
+    new DataFactoryDatasetDebugInfo(new DelimitedTextDataset(new DataFactoryLinkedServiceReference("LinkedServiceReference","linkedService5"))
     {
     DataLocation = new AzureBlobStorageLocation()
     {
-    Container = BinaryData.FromString("dataflow-sample-data"),
-    FileName = BinaryData.FromString("Ansiencoding.csv"),
+    Container = "dataflow-sample-data",
+    FileName = "Ansiencoding.csv",
     },
-    ColumnDelimiter = BinaryData.FromString(","),
-    QuoteChar = BinaryData.FromString("\""),
-    EscapeChar = BinaryData.FromString("\\"),
-    FirstRowAsHeader = BinaryData.FromString("true"),
-    Schema = BinaryData.FromObjectAsJson(new object[] { new Dictionary<string, object>()
+    ColumnDelimiter = ",",
+    QuoteChar = "\"",
+    EscapeChar = "\\",
+    FirstRowAsHeader = true,
+    Schema = new DatasetSchemaDataElement[]
     {
-    ["type"] = "String"} }),
+    new DatasetSchemaDataElement()
+    {
+    SchemaColumnType = "String",
+    }
+    },
     Annotations =
     {
     },
@@ -75,10 +80,10 @@ FactoryDataFlowDebugPackageContent content = new FactoryDataFlowDebugPackageCont
     },
     LinkedServices =
     {
-    new FactoryLinkedServiceDebugInfo(new AzureBlobStorageLinkedService()
+    new DataFactoryLinkedServiceDebugInfo(new AzureBlobStorageLinkedService()
     {
-    ConnectionString = BinaryData.FromString("DefaultEndpointsProtocol=https;AccountName=<storageName>;EndpointSuffix=core.windows.net;"),
-    EncryptedCredential = BinaryData.FromString("<credential>"),
+    ConnectionString = "DefaultEndpointsProtocol=https;AccountName=<storageName>;EndpointSuffix=core.windows.net;",
+    EncryptedCredential = "<credential>",
     Annotations =
     {
     },
@@ -118,6 +123,6 @@ FactoryDataFlowDebugPackageContent content = new FactoryDataFlowDebugPackageCont
         }),
     },
 };
-FactoryDataFlowStartDebugSessionResult result = await dataFactory.AddDataFlowToDebugSessionAsync(content);
+DataFactoryDataFlowStartDebugSessionResult result = await dataFactory.AddDataFlowToDebugSessionAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

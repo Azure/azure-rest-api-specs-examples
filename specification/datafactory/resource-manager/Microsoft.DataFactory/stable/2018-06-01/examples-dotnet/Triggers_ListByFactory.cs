@@ -23,15 +23,15 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryTriggerResource
-FactoryTriggerCollection collection = dataFactory.GetFactoryTriggers();
+// get the collection of this DataFactoryTriggerResource
+DataFactoryTriggerCollection collection = dataFactory.GetDataFactoryTriggers();
 
 // invoke the operation and iterate over the result
-await foreach (FactoryTriggerResource item in collection.GetAllAsync())
+await foreach (DataFactoryTriggerResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    FactoryTriggerData resourceData = item.Data;
+    DataFactoryTriggerData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

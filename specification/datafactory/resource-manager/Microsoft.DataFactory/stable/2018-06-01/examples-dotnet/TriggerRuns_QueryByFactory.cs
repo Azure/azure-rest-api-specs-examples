@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -36,7 +37,7 @@ RunFilterContent content = new RunFilterContent(DateTimeOffset.Parse("2018-06-16
     })
     },
 };
-await foreach (FactoryTriggerRun item in dataFactory.GetTriggerRunsAsync(content))
+await foreach (DataFactoryTriggerRun item in dataFactory.GetTriggerRunsAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

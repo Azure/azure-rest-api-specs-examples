@@ -16,25 +16,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryGlobalParameterResource created on azure
-// for more information of creating FactoryGlobalParameterResource, please refer to the document of FactoryGlobalParameterResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string globalParameterName = "default";
-ResourceIdentifier factoryGlobalParameterResourceId = FactoryGlobalParameterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, globalParameterName);
-FactoryGlobalParameterResource factoryGlobalParameter = client.GetFactoryGlobalParameterResource(factoryGlobalParameterResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryGlobalParameterResource
+DataFactoryGlobalParameterCollection collection = dataFactory.GetDataFactoryGlobalParameters();
 
 // invoke the operation
-FactoryGlobalParameterData data = new FactoryGlobalParameterData(new Dictionary<string, FactoryGlobalParameterSpecification>()
+string globalParameterName = "default";
+DataFactoryGlobalParameterData data = new DataFactoryGlobalParameterData(new Dictionary<string, DataFactoryGlobalParameterProperties>()
 {
-    ["waitTime"] = new FactoryGlobalParameterSpecification(FactoryGlobalParameterType.Int, BinaryData.FromString("5")),
+    ["waitTime"] = new DataFactoryGlobalParameterProperties(DataFactoryGlobalParameterType.Int, BinaryData.FromString("5")),
 });
-ArmOperation<FactoryGlobalParameterResource> lro = await factoryGlobalParameter.UpdateAsync(WaitUntil.Completed, data);
-FactoryGlobalParameterResource result = lro.Value;
+ArmOperation<DataFactoryGlobalParameterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, globalParameterName, data);
+DataFactoryGlobalParameterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryGlobalParameterData resourceData = result.Data;
+DataFactoryGlobalParameterData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

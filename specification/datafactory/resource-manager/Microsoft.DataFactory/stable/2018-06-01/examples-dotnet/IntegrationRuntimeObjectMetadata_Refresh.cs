@@ -16,17 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryIntegrationRuntimeResource created on azure
-// for more information of creating FactoryIntegrationRuntimeResource, please refer to the document of FactoryIntegrationRuntimeResource
+// this example assumes you already have this DataFactoryIntegrationRuntimeResource created on azure
+// for more information of creating DataFactoryIntegrationRuntimeResource, please refer to the document of DataFactoryIntegrationRuntimeResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string integrationRuntimeName = "testactivityv2";
-ResourceIdentifier factoryIntegrationRuntimeResourceId = FactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
-FactoryIntegrationRuntimeResource factoryIntegrationRuntime = client.GetFactoryIntegrationRuntimeResource(factoryIntegrationRuntimeResourceId);
+ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
+DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation
-ArmOperation<SsisObjectMetadataStatusResult> lro = await factoryIntegrationRuntime.RefreshIntegrationRuntimeObjectMetadataAsync(WaitUntil.Completed);
+ArmOperation<SsisObjectMetadataStatusResult> lro = await dataFactoryIntegrationRuntime.RefreshIntegrationRuntimeObjectMetadataAsync(WaitUntil.Completed);
 SsisObjectMetadataStatusResult result = lro.Value;
 
 Console.WriteLine($"Succeeded: {result}");

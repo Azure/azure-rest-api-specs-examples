@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Xml;
 using Azure;
 using Azure.Core;
 using Azure.Identity;
@@ -25,8 +24,8 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryPipelineResource
-FactoryPipelineCollection collection = dataFactory.GetFactoryPipelines();
+// get the collection of this DataFactoryPipelineResource
+DataFactoryPipelineCollection collection = dataFactory.GetDataFactoryPipelines();
 
 // invoke the operation
 string pipelineName = "examplePipeline";

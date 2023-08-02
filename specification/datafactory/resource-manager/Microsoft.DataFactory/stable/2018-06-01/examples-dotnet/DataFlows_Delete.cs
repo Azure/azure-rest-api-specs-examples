@@ -15,16 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryDataFlowResource created on azure
-// for more information of creating FactoryDataFlowResource, please refer to the document of FactoryDataFlowResource
+// this example assumes you already have this DataFactoryDataFlowResource created on azure
+// for more information of creating DataFactoryDataFlowResource, please refer to the document of DataFactoryDataFlowResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string dataFlowName = "exampleDataFlow";
-ResourceIdentifier factoryDataFlowResourceId = FactoryDataFlowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, dataFlowName);
-FactoryDataFlowResource factoryDataFlow = client.GetFactoryDataFlowResource(factoryDataFlowResourceId);
+ResourceIdentifier dataFactoryDataFlowResourceId = DataFactoryDataFlowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, dataFlowName);
+DataFactoryDataFlowResource dataFactoryDataFlow = client.GetDataFactoryDataFlowResource(dataFactoryDataFlowResourceId);
 
 // invoke the operation
-await factoryDataFlow.DeleteAsync(WaitUntil.Completed);
+await dataFactoryDataFlow.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine($"Succeeded");

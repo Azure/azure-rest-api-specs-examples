@@ -15,16 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryPrivateEndpointConnectionResource created on azure
-// for more information of creating FactoryPrivateEndpointConnectionResource, please refer to the document of FactoryPrivateEndpointConnectionResource
+// this example assumes you already have this DataFactoryPrivateEndpointConnectionResource created on azure
+// for more information of creating DataFactoryPrivateEndpointConnectionResource, please refer to the document of DataFactoryPrivateEndpointConnectionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string privateEndpointConnectionName = "connection";
-ResourceIdentifier factoryPrivateEndpointConnectionResourceId = FactoryPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, privateEndpointConnectionName);
-FactoryPrivateEndpointConnectionResource factoryPrivateEndpointConnection = client.GetFactoryPrivateEndpointConnectionResource(factoryPrivateEndpointConnectionResourceId);
+ResourceIdentifier dataFactoryPrivateEndpointConnectionResourceId = DataFactoryPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, privateEndpointConnectionName);
+DataFactoryPrivateEndpointConnectionResource dataFactoryPrivateEndpointConnection = client.GetDataFactoryPrivateEndpointConnectionResource(dataFactoryPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-await factoryPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
+await dataFactoryPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine($"Succeeded");

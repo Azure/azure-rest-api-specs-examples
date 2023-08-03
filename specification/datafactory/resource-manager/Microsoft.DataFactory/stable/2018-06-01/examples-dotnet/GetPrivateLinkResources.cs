@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -26,7 +27,7 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (FactoryPrivateLinkResource item in dataFactory.GetPrivateLinkResourcesAsync())
+await foreach (DataFactoryPrivateLinkResource item in dataFactory.GetPrivateLinkResourcesAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

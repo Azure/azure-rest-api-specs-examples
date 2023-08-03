@@ -15,17 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryTriggerResource created on azure
-// for more information of creating FactoryTriggerResource, please refer to the document of FactoryTriggerResource
+// this example assumes you already have this DataFactoryTriggerResource created on azure
+// for more information of creating DataFactoryTriggerResource, please refer to the document of DataFactoryTriggerResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string triggerName = "exampleTrigger";
-ResourceIdentifier factoryTriggerResourceId = FactoryTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, triggerName);
-FactoryTriggerResource factoryTrigger = client.GetFactoryTriggerResource(factoryTriggerResourceId);
+ResourceIdentifier dataFactoryTriggerResourceId = DataFactoryTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, triggerName);
+DataFactoryTriggerResource dataFactoryTrigger = client.GetDataFactoryTriggerResource(dataFactoryTriggerResourceId);
 
 // invoke the operation
 string runId = "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b";
-await factoryTrigger.RerunTriggerRunAsync(runId);
+await dataFactoryTrigger.RerunTriggerRunAsync(runId);
 
 Console.WriteLine($"Succeeded");

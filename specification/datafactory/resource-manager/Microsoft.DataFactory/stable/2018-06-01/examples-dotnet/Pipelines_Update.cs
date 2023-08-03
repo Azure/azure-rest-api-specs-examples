@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Xml;
 using Azure;
 using Azure.Core;
 using Azure.Identity;
@@ -25,19 +24,19 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryPipelineResource
-FactoryPipelineCollection collection = dataFactory.GetFactoryPipelines();
+// get the collection of this DataFactoryPipelineResource
+DataFactoryPipelineCollection collection = dataFactory.GetDataFactoryPipelines();
 
 // invoke the operation
 string pipelineName = "examplePipeline";
-FactoryPipelineData data = new FactoryPipelineData()
+DataFactoryPipelineData data = new DataFactoryPipelineData()
 {
     Description = "Example description",
     Activities =
     {
-    new ForEachActivity("ExampleForeachActivity",new FactoryExpressionDefinition(FactoryExpressionType.Expression,"@pipeline().parameters.OutputBlobNameList"),new PipelineActivity[]
+    new ForEachActivity("ExampleForeachActivity",new DataFactoryExpression(DataFactoryExpressionType.Expression,"@pipeline().parameters.OutputBlobNameList"),new PipelineActivity[]
     {
-    new CopyActivity("ExampleCopyActivity",new AzureBlobSource(),new AzureBlobSink())
+    new CopyActivity("ExampleCopyActivity",new DataFactoryBlobSource(),new DataFactoryBlobSink())
     {
     Inputs =
     {
@@ -64,7 +63,7 @@ FactoryPipelineData data = new FactoryPipelineData()
     },
     }
     },
-    DataIntegrationUnits = BinaryData.FromString("32"),
+    DataIntegrationUnits = 32,
     }
     })
     {
@@ -75,13 +74,13 @@ FactoryPipelineData data = new FactoryPipelineData()
     {
     ["OutputBlobNameList"] = new EntityParameterSpecification(EntityParameterType.Array),
     },
-    ElapsedTimeMetricDuration = XmlConvert.ToTimeSpan("0.00:10:00"),
+    ElapsedTimeMetricDuration = BinaryData.FromString("0.00:10:00"),
 };
-ArmOperation<FactoryPipelineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, pipelineName, data);
-FactoryPipelineResource result = lro.Value;
+ArmOperation<DataFactoryPipelineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, pipelineName, data);
+DataFactoryPipelineResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryPipelineData resourceData = result.Data;
+DataFactoryPipelineData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -23,20 +23,20 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryIntegrationRuntimeResource
-FactoryIntegrationRuntimeCollection collection = dataFactory.GetFactoryIntegrationRuntimes();
+// get the collection of this DataFactoryIntegrationRuntimeResource
+DataFactoryIntegrationRuntimeCollection collection = dataFactory.GetDataFactoryIntegrationRuntimes();
 
 // invoke the operation
 string integrationRuntimeName = "exampleIntegrationRuntime";
-FactoryIntegrationRuntimeData data = new FactoryIntegrationRuntimeData(new SelfHostedIntegrationRuntime()
+DataFactoryIntegrationRuntimeData data = new DataFactoryIntegrationRuntimeData(new SelfHostedIntegrationRuntime()
 {
     Description = "A selfhosted integration runtime",
 });
-ArmOperation<FactoryIntegrationRuntimeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, integrationRuntimeName, data);
-FactoryIntegrationRuntimeResource result = lro.Value;
+ArmOperation<DataFactoryIntegrationRuntimeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, integrationRuntimeName, data);
+DataFactoryIntegrationRuntimeResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryIntegrationRuntimeData resourceData = result.Data;
+DataFactoryIntegrationRuntimeData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

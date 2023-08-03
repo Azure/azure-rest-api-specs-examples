@@ -16,16 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryGlobalParameterResource created on azure
-// for more information of creating FactoryGlobalParameterResource, please refer to the document of FactoryGlobalParameterResource
+// this example assumes you already have this DataFactoryGlobalParameterResource created on azure
+// for more information of creating DataFactoryGlobalParameterResource, please refer to the document of DataFactoryGlobalParameterResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string globalParameterName = "default";
-ResourceIdentifier factoryGlobalParameterResourceId = FactoryGlobalParameterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, globalParameterName);
-FactoryGlobalParameterResource factoryGlobalParameter = client.GetFactoryGlobalParameterResource(factoryGlobalParameterResourceId);
+ResourceIdentifier dataFactoryGlobalParameterResourceId = DataFactoryGlobalParameterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, globalParameterName);
+DataFactoryGlobalParameterResource dataFactoryGlobalParameter = client.GetDataFactoryGlobalParameterResource(dataFactoryGlobalParameterResourceId);
 
 // invoke the operation
-await factoryGlobalParameter.DeleteAsync(WaitUntil.Completed);
+await dataFactoryGlobalParameter.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine($"Succeeded");

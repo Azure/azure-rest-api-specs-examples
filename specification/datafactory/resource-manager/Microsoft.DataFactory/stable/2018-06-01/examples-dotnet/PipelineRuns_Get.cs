@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -27,6 +28,6 @@ DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResou
 
 // invoke the operation
 string runId = "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b";
-FactoryPipelineRunInfo result = await dataFactory.GetPipelineRunAsync(runId);
+DataFactoryPipelineRunInfo result = await dataFactory.GetPipelineRunAsync(runId);
 
 Console.WriteLine($"Succeeded: {result}");

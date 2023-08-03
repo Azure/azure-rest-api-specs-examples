@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -26,14 +27,14 @@ ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIde
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
 // invoke the operation
-FactoryDataPlaneUserAccessPolicy policy = new FactoryDataPlaneUserAccessPolicy()
+DataFactoryDataPlaneUserAccessPolicy policy = new DataFactoryDataPlaneUserAccessPolicy()
 {
     Permissions = "r",
     AccessResourcePath = "",
     ProfileName = "DefaultProfile",
-    StartTime = "2018-11-10T02:46:20.2659347Z",
-    ExpireTime = "2018-11-10T09:46:20.2659347Z",
+    StartOn = DateTimeOffset.Parse("2018-11-10T02:46:20.2659347Z"),
+    ExpireOn = DateTimeOffset.Parse("2018-11-10T09:46:20.2659347Z"),
 };
-FactoryDataPlaneAccessPolicyResult result = await dataFactory.GetDataPlaneAccessAsync(policy);
+DataFactoryDataPlaneAccessPolicyResult result = await dataFactory.GetDataPlaneAccessAsync(policy);
 
 Console.WriteLine($"Succeeded: {result}");

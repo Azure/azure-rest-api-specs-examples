@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryPrivateEndpointConnectionResource created on azure
-// for more information of creating FactoryPrivateEndpointConnectionResource, please refer to the document of FactoryPrivateEndpointConnectionResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string privateEndpointConnectionName = "connection";
-ResourceIdentifier factoryPrivateEndpointConnectionResourceId = FactoryPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, privateEndpointConnectionName);
-FactoryPrivateEndpointConnectionResource factoryPrivateEndpointConnection = client.GetFactoryPrivateEndpointConnectionResource(factoryPrivateEndpointConnectionResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryPrivateEndpointConnectionResource
+DataFactoryPrivateEndpointConnectionCollection collection = dataFactory.GetDataFactoryPrivateEndpointConnections();
 
 // invoke the operation
-FactoryPrivateEndpointConnectionCreateOrUpdateContent content = new FactoryPrivateEndpointConnectionCreateOrUpdateContent()
+string privateEndpointConnectionName = "connection";
+DataFactoryPrivateEndpointConnectionCreateOrUpdateContent content = new DataFactoryPrivateEndpointConnectionCreateOrUpdateContent()
 {
     Properties = new PrivateLinkConnectionApprovalRequest()
     {
@@ -38,11 +41,11 @@ FactoryPrivateEndpointConnectionCreateOrUpdateContent content = new FactoryPriva
         PrivateEndpointId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.DataFactory/factories/exampleFactoryName/privateEndpoints/myPrivateEndpoint"),
     },
 };
-ArmOperation<FactoryPrivateEndpointConnectionResource> lro = await factoryPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, content);
-FactoryPrivateEndpointConnectionResource result = lro.Value;
+ArmOperation<DataFactoryPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, content);
+DataFactoryPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryPrivateEndpointConnectionData resourceData = result.Data;
+DataFactoryPrivateEndpointConnectionData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

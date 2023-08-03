@@ -16,17 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryIntegrationRuntimeResource created on azure
-// for more information of creating FactoryIntegrationRuntimeResource, please refer to the document of FactoryIntegrationRuntimeResource
+// this example assumes you already have this DataFactoryIntegrationRuntimeResource created on azure
+// for more information of creating DataFactoryIntegrationRuntimeResource, please refer to the document of DataFactoryIntegrationRuntimeResource
 string subscriptionId = "7ad7c73b-38b8-4df3-84ee-52ff91092f61";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string integrationRuntimeName = "exampleIntegrationRuntime";
-ResourceIdentifier factoryIntegrationRuntimeResourceId = FactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
-FactoryIntegrationRuntimeResource factoryIntegrationRuntime = client.GetFactoryIntegrationRuntimeResource(factoryIntegrationRuntimeResourceId);
+ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
+DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint item in factoryIntegrationRuntime.GetOutboundNetworkDependenciesAsync())
+await foreach (IntegrationRuntimeOutboundNetworkDependenciesCategoryEndpoint item in dataFactoryIntegrationRuntime.GetOutboundNetworkDependenciesAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

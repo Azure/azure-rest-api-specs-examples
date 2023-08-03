@@ -23,15 +23,15 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryDataFlowResource
-FactoryDataFlowCollection collection = dataFactory.GetFactoryDataFlows();
+// get the collection of this DataFactoryDataFlowResource
+DataFactoryDataFlowCollection collection = dataFactory.GetDataFactoryDataFlows();
 
 // invoke the operation and iterate over the result
-await foreach (FactoryDataFlowResource item in collection.GetAllAsync())
+await foreach (DataFactoryDataFlowResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    FactoryDataFlowData resourceData = item.Data;
+    DataFactoryDataFlowData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

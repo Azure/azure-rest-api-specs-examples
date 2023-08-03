@@ -16,14 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryIntegrationRuntimeResource created on azure
-// for more information of creating FactoryIntegrationRuntimeResource, please refer to the document of FactoryIntegrationRuntimeResource
+// this example assumes you already have this DataFactoryIntegrationRuntimeResource created on azure
+// for more information of creating DataFactoryIntegrationRuntimeResource, please refer to the document of DataFactoryIntegrationRuntimeResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string integrationRuntimeName = "exampleIntegrationRuntime";
-ResourceIdentifier factoryIntegrationRuntimeResourceId = FactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
-FactoryIntegrationRuntimeResource factoryIntegrationRuntime = client.GetFactoryIntegrationRuntimeResource(factoryIntegrationRuntimeResourceId);
+ResourceIdentifier dataFactoryIntegrationRuntimeResourceId = DataFactoryIntegrationRuntimeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, integrationRuntimeName);
+DataFactoryIntegrationRuntimeResource dataFactoryIntegrationRuntime = client.GetDataFactoryIntegrationRuntimeResource(dataFactoryIntegrationRuntimeResourceId);
 
 // invoke the operation
 string nodeName = "Node_1";
@@ -31,6 +31,6 @@ UpdateIntegrationRuntimeNodeContent content = new UpdateIntegrationRuntimeNodeCo
 {
     ConcurrentJobsLimit = 2,
 };
-SelfHostedIntegrationRuntimeNode result = await factoryIntegrationRuntime.UpdateIntegrationRuntimeNodeAsync(nodeName, content);
+SelfHostedIntegrationRuntimeNode result = await dataFactoryIntegrationRuntime.UpdateIntegrationRuntimeNodeAsync(nodeName, content);
 
 Console.WriteLine($"Succeeded: {result}");

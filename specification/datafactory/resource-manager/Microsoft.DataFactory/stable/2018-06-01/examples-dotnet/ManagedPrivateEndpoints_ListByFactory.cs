@@ -15,24 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryVirtualNetworkResource created on azure
-// for more information of creating FactoryVirtualNetworkResource, please refer to the document of FactoryVirtualNetworkResource
+// this example assumes you already have this DataFactoryManagedVirtualNetworkResource created on azure
+// for more information of creating DataFactoryManagedVirtualNetworkResource, please refer to the document of DataFactoryManagedVirtualNetworkResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string managedVirtualNetworkName = "exampleManagedVirtualNetworkName";
-ResourceIdentifier factoryVirtualNetworkResourceId = FactoryVirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, managedVirtualNetworkName);
-FactoryVirtualNetworkResource factoryVirtualNetwork = client.GetFactoryVirtualNetworkResource(factoryVirtualNetworkResourceId);
+ResourceIdentifier dataFactoryManagedVirtualNetworkResourceId = DataFactoryManagedVirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, managedVirtualNetworkName);
+DataFactoryManagedVirtualNetworkResource dataFactoryManagedVirtualNetwork = client.GetDataFactoryManagedVirtualNetworkResource(dataFactoryManagedVirtualNetworkResourceId);
 
-// get the collection of this FactoryPrivateEndpointResource
-FactoryPrivateEndpointCollection collection = factoryVirtualNetwork.GetFactoryPrivateEndpoints();
+// get the collection of this DataFactoryPrivateEndpointResource
+DataFactoryPrivateEndpointCollection collection = dataFactoryManagedVirtualNetwork.GetDataFactoryPrivateEndpoints();
 
 // invoke the operation and iterate over the result
-await foreach (FactoryPrivateEndpointResource item in collection.GetAllAsync())
+await foreach (DataFactoryPrivateEndpointResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    FactoryPrivateEndpointData resourceData = item.Data;
+    DataFactoryPrivateEndpointData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -28,7 +29,7 @@ DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResou
 // invoke the operation and iterate over the result
 string runId = "2f7fdb90-5df1-4b8e-ac2f-064cfa58202b";
 RunFilterContent content = new RunFilterContent(DateTimeOffset.Parse("2018-06-16T00:36:44.3345758Z"), DateTimeOffset.Parse("2018-06-16T00:49:48.3686473Z"));
-await foreach (ActivityRunInfo item in dataFactory.GetActivityRunAsync(runId, content))
+await foreach (PipelineActivityRunInformation item in dataFactory.GetActivityRunAsync(runId, content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

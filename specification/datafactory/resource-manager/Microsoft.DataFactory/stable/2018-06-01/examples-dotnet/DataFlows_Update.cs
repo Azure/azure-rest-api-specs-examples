@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryDataFlowResource created on azure
-// for more information of creating FactoryDataFlowResource, please refer to the document of FactoryDataFlowResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string dataFlowName = "exampleDataFlow";
-ResourceIdentifier factoryDataFlowResourceId = FactoryDataFlowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, dataFlowName);
-FactoryDataFlowResource factoryDataFlow = client.GetFactoryDataFlowResource(factoryDataFlowResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryDataFlowResource
+DataFactoryDataFlowCollection collection = dataFactory.GetDataFactoryDataFlows();
 
 // invoke the operation
-FactoryDataFlowData data = new FactoryDataFlowData(new FactoryMappingDataFlowDefinition()
+string dataFlowName = "exampleDataFlow";
+DataFactoryDataFlowData data = new DataFactoryDataFlowData(new DataFactoryMappingDataFlowProperties()
 {
     Sources =
     {
@@ -47,14 +50,17 @@ FactoryDataFlowData data = new FactoryDataFlowData(new FactoryMappingDataFlowDef
     Dataset = new DatasetReference(DatasetReferenceType.DatasetReference,"CADOutput"),
     }
     },
-    Script = "source(output(PreviousConversionRate as double,Country as string,DateTime1 as string,CurrentConversionRate as double),allowSchemaDrift: false,validateSchema: false) ~> USDCurrency\nsource(output(PreviousConversionRate as double,Country as string,DateTime1 as string,CurrentConversionRate as double),allowSchemaDrift: true,validateSchema: false) ~> CADSource\nUSDCurrency, CADSource union(byName: true)~> Union\nUnion derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn\nNewCurrencyColumn split(Country == 'USD',Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)\nConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink\nConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink",
+    ScriptLines =
+    {
+    "source(output(","PreviousConversionRate as double,","Country as string,","DateTime1 as string,","CurrentConversionRate as double","),","allowSchemaDrift: false,","validateSchema: false) ~> USDCurrency","source(output(","PreviousConversionRate as double,","Country as string,","DateTime1 as string,","CurrentConversionRate as double","),","allowSchemaDrift: true,","validateSchema: false) ~> CADSource","USDCurrency, CADSource union(byName: true)~> Union","Union derive(NewCurrencyRate = round(CurrentConversionRate*1.25)) ~> NewCurrencyColumn","NewCurrencyColumn split(Country == 'USD',","Country == 'CAD',disjoint: false) ~> ConditionalSplit1@(USD, CAD)","ConditionalSplit1@USD sink(saveMode:'overwrite' ) ~> USDSink","ConditionalSplit1@CAD sink(saveMode:'overwrite' ) ~> CADSink"
+    },
     Description = "Sample demo data flow to convert currencies showing usage of union, derive and conditional split transformation.",
 });
-ArmOperation<FactoryDataFlowResource> lro = await factoryDataFlow.UpdateAsync(WaitUntil.Completed, data);
-FactoryDataFlowResource result = lro.Value;
+ArmOperation<DataFactoryDataFlowResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataFlowName, data);
+DataFactoryDataFlowResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryDataFlowData resourceData = result.Data;
+DataFactoryDataFlowData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

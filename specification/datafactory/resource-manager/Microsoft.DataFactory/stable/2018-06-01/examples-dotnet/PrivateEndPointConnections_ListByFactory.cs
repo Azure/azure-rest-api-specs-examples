@@ -23,15 +23,15 @@ string factoryName = "exampleFactoryName";
 ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
 DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
 
-// get the collection of this FactoryPrivateEndpointConnectionResource
-FactoryPrivateEndpointConnectionCollection collection = dataFactory.GetFactoryPrivateEndpointConnections();
+// get the collection of this DataFactoryPrivateEndpointConnectionResource
+DataFactoryPrivateEndpointConnectionCollection collection = dataFactory.GetDataFactoryPrivateEndpointConnections();
 
 // invoke the operation and iterate over the result
-await foreach (FactoryPrivateEndpointConnectionResource item in collection.GetAllAsync())
+await foreach (DataFactoryPrivateEndpointConnectionResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    FactoryPrivateEndpointConnectionData resourceData = item.Data;
+    DataFactoryPrivateEndpointConnectionData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

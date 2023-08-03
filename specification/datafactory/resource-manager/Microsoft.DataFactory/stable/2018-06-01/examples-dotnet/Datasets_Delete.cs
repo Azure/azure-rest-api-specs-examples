@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -16,16 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryDatasetResource created on azure
-// for more information of creating FactoryDatasetResource, please refer to the document of FactoryDatasetResource
+// this example assumes you already have this DataFactoryDatasetResource created on azure
+// for more information of creating DataFactoryDatasetResource, please refer to the document of DataFactoryDatasetResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string datasetName = "exampleDataset";
-ResourceIdentifier factoryDatasetResourceId = FactoryDatasetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, datasetName);
-FactoryDatasetResource factoryDataset = client.GetFactoryDatasetResource(factoryDatasetResourceId);
+ResourceIdentifier dataFactoryDatasetResourceId = DataFactoryDatasetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, datasetName);
+DataFactoryDatasetResource dataFactoryDataset = client.GetDataFactoryDatasetResource(dataFactoryDatasetResourceId);
 
 // invoke the operation
-await factoryDataset.DeleteAsync(WaitUntil.Completed);
+await dataFactoryDataset.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine($"Succeeded");

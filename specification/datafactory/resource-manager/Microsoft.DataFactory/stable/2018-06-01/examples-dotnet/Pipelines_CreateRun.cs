@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Xml;
 using Azure;
 using Azure.Core;
 using Azure.Identity;
@@ -17,14 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryPipelineResource created on azure
-// for more information of creating FactoryPipelineResource, please refer to the document of FactoryPipelineResource
+// this example assumes you already have this DataFactoryPipelineResource created on azure
+// for more information of creating DataFactoryPipelineResource, please refer to the document of DataFactoryPipelineResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string pipelineName = "examplePipeline";
-ResourceIdentifier factoryPipelineResourceId = FactoryPipelineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, pipelineName);
-FactoryPipelineResource factoryPipeline = client.GetFactoryPipelineResource(factoryPipelineResourceId);
+ResourceIdentifier dataFactoryPipelineResourceId = DataFactoryPipelineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, pipelineName);
+DataFactoryPipelineResource dataFactoryPipeline = client.GetDataFactoryPipelineResource(dataFactoryPipelineResourceId);
 
 // invoke the operation
 IDictionary<string, BinaryData> parameterValueSpecification = new Dictionary<string, BinaryData>()
@@ -32,6 +31,6 @@ IDictionary<string, BinaryData> parameterValueSpecification = new Dictionary<str
     ["OutputBlobNameList"] = BinaryData.FromObjectAsJson(new object[] { "exampleoutput.csv" }),
 };
 string referencePipelineRunId = null;
-PipelineCreateRunResult result = await factoryPipeline.CreateRunAsync(parameterValueSpecification: parameterValueSpecification, referencePipelineRunId: referencePipelineRunId);
+PipelineCreateRunResult result = await dataFactoryPipeline.CreateRunAsync(parameterValueSpecification: parameterValueSpecification, referencePipelineRunId: referencePipelineRunId);
 
 Console.WriteLine($"Succeeded: {result}");

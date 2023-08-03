@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
+using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataFactory;
@@ -16,20 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FactoryLinkedServiceResource created on azure
-// for more information of creating FactoryLinkedServiceResource, please refer to the document of FactoryLinkedServiceResource
+// this example assumes you already have this DataFactoryLinkedServiceResource created on azure
+// for more information of creating DataFactoryLinkedServiceResource, please refer to the document of DataFactoryLinkedServiceResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string linkedServiceName = "exampleLinkedService";
-ResourceIdentifier factoryLinkedServiceResourceId = FactoryLinkedServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, linkedServiceName);
-FactoryLinkedServiceResource factoryLinkedService = client.GetFactoryLinkedServiceResource(factoryLinkedServiceResourceId);
+ResourceIdentifier dataFactoryLinkedServiceResourceId = DataFactoryLinkedServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, linkedServiceName);
+DataFactoryLinkedServiceResource dataFactoryLinkedService = client.GetDataFactoryLinkedServiceResource(dataFactoryLinkedServiceResourceId);
 
 // invoke the operation
-FactoryLinkedServiceResource result = await factoryLinkedService.GetAsync();
+DataFactoryLinkedServiceResource result = await dataFactoryLinkedService.GetAsync();
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FactoryLinkedServiceData resourceData = result.Data;
+DataFactoryLinkedServiceData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

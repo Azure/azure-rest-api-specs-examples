@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/ListSuppressions.json
  */
 async function listSuppressions() {
-  const subscriptionId = "subscriptionId1";
+  const subscriptionId = process.env["ADVISOR_SUBSCRIPTION_ID"] || "subscriptionId1";
   const credential = new DefaultAzureCredential();
   const client = new AdvisorManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function listSuppressions() {
   }
   console.log(resArray);
 }
-
-listSuppressions().catch(console.error);

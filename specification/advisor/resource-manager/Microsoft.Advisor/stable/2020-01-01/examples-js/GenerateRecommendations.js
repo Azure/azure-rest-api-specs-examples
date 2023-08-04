@@ -8,11 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/GenerateRecommendations.json
  */
 async function generateRecommendations() {
-  const subscriptionId = "subscriptionId";
+  const subscriptionId = process.env["ADVISOR_SUBSCRIPTION_ID"] || "subscriptionId";
   const credential = new DefaultAzureCredential();
   const client = new AdvisorManagementClient(credential, subscriptionId);
   const result = await client.recommendations.generate();
   console.log(result);
 }
-
-generateRecommendations().catch(console.error);

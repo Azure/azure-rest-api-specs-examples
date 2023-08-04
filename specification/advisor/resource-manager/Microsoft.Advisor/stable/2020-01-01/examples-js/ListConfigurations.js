@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/ListConfigurations.json
  */
 async function getConfigurations() {
-  const subscriptionId = "subscriptionId";
+  const subscriptionId = process.env["ADVISOR_SUBSCRIPTION_ID"] || "subscriptionId";
   const credential = new DefaultAzureCredential();
   const client = new AdvisorManagementClient(credential, subscriptionId);
   const resArray = new Array();
@@ -17,5 +17,3 @@ async function getConfigurations() {
   }
   console.log(resArray);
 }
-
-getConfigurations().catch(console.error);

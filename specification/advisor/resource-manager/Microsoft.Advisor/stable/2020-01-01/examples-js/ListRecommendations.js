@@ -8,7 +8,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/ListRecommendations.json
  */
 async function listRecommendations() {
-  const subscriptionId = "subscriptionId";
+  const subscriptionId = process.env["ADVISOR_SUBSCRIPTION_ID"] || "subscriptionId";
   const top = 10;
   const options = { top };
   const credential = new DefaultAzureCredential();
@@ -19,5 +19,3 @@ async function listRecommendations() {
   }
   console.log(resArray);
 }
-
-listRecommendations().catch(console.error);

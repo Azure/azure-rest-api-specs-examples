@@ -8,13 +8,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/CreateSuppression.json
  */
 async function createSuppression() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
   const resourceUri = "resourceUri";
   const recommendationId = "recommendationId";
   const name = "suppressionName1";
   const suppressionContract = { ttl: "07:00:00:00" };
   const credential = new DefaultAzureCredential();
-  const client = new AdvisorManagementClient(credential, subscriptionId);
+  const client = new AdvisorManagementClient(credential);
   const result = await client.suppressions.create(
     resourceUri,
     recommendationId,
@@ -23,5 +22,3 @@ async function createSuppression() {
   );
   console.log(result);
 }
-
-createSuppression().catch(console.error);

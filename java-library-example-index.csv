@@ -3063,3 +3063,9 @@ id,name,language,tag,package,version,date_epoch,date
 3062,"Azure.ResourceManager.Compute,1.2.0-beta.2",dotnet,Azure.ResourceManager.Compute_1.2.0-beta.2,Azure.ResourceManager.Compute,1.2.0-beta.2,1690525932,07/28/2023
 3063,azure-mgmt-sql@4.0.0b11,python,azure-mgmt-sql_4.0.0b11,azure-mgmt-sql,4.0.0b11,1690537155,07/28/2023
 3064,"Azure.ResourceManager.ManagedNetworkFabric,1.0.0",dotnet,Azure.ResourceManager.ManagedNetworkFabric_1.0.0,Azure.ResourceManager.ManagedNetworkFabric,1.0.0,1690619818,07/29/2023
+3065,@azure/arm-sphere@1.0.0-beta.1,js,@azure/arm-sphere_1.0.0-beta.1,@azure/arm-sphere,1.0.0-beta.1,1690794786,07/31/2023
+3066,"Azure.ResourceManager.Network,1.4.0",dotnet,Azure.ResourceManager.Network_1.4.0,Azure.ResourceManager.Network,1.4.0,1690791536,07/31/2023
+3067,"Azure.ResourceManager.ElasticSan,1.0.0-beta.4",dotnet,Azure.ResourceManager.ElasticSan_1.0.0-beta.4,Azure.ResourceManager.ElasticSan,1.0.0-beta.4,1690790347,07/31/2023
+3068,"Azure.ResourceManager.Sql,1.3.0-beta.2",dotnet,Azure.ResourceManager.Sql_1.3.0-beta.2,Azure.ResourceManager.Sql,1.3.0-beta.2,1690771472,07/31/2023
+3069,"Azure.ResourceManager.DataFactory,1.0.0-beta.3",dotnet,Azure.ResourceManager.DataFactory_1.0.0-beta.3,Azure.ResourceManager.DataFactory,1.0.0-beta.3,1690973528,08/02/2023
+3070,@azure/arm-advisor@3.2.0,js,@azure/arm-advisor_3.2.0,@azure/arm-advisor,3.2.0,1691110518,08/04/2023

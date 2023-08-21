@@ -1,0 +1,50 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.storage import StorageManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-storage
+# USAGE
+    python storage_account_enable_ad.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = StorageManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="{subscription-id}",
+    )
+
+    response = client.storage_accounts.update(
+        resource_group_name="res9407",
+        account_name="sto8596",
+        parameters={
+            "properties": {
+                "azureFilesIdentityBasedAuthentication": {
+                    "activeDirectoryProperties": {
+                        "accountType": "User",
+                        "azureStorageSid": "S-1-5-21-2400535526-2334094090-2402026252-0012",
+                        "domainGuid": "aebfc118-9fa9-4732-a21f-d98e41a77ae1",
+                        "domainName": "adtest.com",
+                        "domainSid": "S-1-5-21-2400535526-2334094090-2402026252",
+                        "forestName": "adtest.com",
+                        "netBiosDomainName": "adtest.com",
+                        "samAccountName": "sam12498",
+                    },
+                    "directoryServiceOptions": "AD",
+                }
+            }
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/StorageAccountEnableAD.json
+if __name__ == "__main__":
+    main()

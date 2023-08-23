@@ -6,10 +6,10 @@ public final class Main {
     /**
      * Sample code: List Appliances by subscription.
      *
-     * @param manager Entry point to AppliancesManager.
+     * @param manager Entry point to ResourceConnectorManager.
      */
     public static void listAppliancesBySubscription(
-        com.azure.resourcemanager.resourceconnector.AppliancesManager manager) {
+        com.azure.resourcemanager.resourceconnector.ResourceConnectorManager manager) {
         manager.appliances().list(com.azure.core.util.Context.NONE);
     }
 }

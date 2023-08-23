@@ -10,9 +10,10 @@ public final class Main {
     /**
      * Sample code: Create/Update Appliance.
      *
-     * @param manager Entry point to AppliancesManager.
+     * @param manager Entry point to ResourceConnectorManager.
      */
-    public static void createUpdateAppliance(com.azure.resourcemanager.resourceconnector.AppliancesManager manager) {
+    public static void createUpdateAppliance(
+        com.azure.resourcemanager.resourceconnector.ResourceConnectorManager manager) {
         manager
             .appliances()
             .define("appliance01")

@@ -6,10 +6,10 @@ public final class Main {
     /**
      * Sample code: List Appliances by resource group.
      *
-     * @param manager Entry point to AppliancesManager.
+     * @param manager Entry point to ResourceConnectorManager.
      */
     public static void listAppliancesByResourceGroup(
-        com.azure.resourcemanager.resourceconnector.AppliancesManager manager) {
+        com.azure.resourcemanager.resourceconnector.ResourceConnectorManager manager) {
         manager.appliances().listByResourceGroup("testresourcegroup", com.azure.core.util.Context.NONE);
     }
 }

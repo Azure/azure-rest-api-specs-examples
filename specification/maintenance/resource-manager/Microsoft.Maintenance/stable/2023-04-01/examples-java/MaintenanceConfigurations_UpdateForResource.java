@@ -1,0 +1,34 @@
+import com.azure.resourcemanager.maintenance.models.MaintenanceConfiguration;
+import com.azure.resourcemanager.maintenance.models.MaintenanceScope;
+import com.azure.resourcemanager.maintenance.models.Visibility;
+
+/** Samples for MaintenanceConfigurations Update. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/maintenance/resource-manager/Microsoft.Maintenance/stable/2023-04-01/examples/MaintenanceConfigurations_UpdateForResource.json
+     */
+    /**
+     * Sample code: MaintenanceConfigurations_UpdateForResource.
+     *
+     * @param manager Entry point to MaintenanceManager.
+     */
+    public static void maintenanceConfigurationsUpdateForResource(
+        com.azure.resourcemanager.maintenance.MaintenanceManager manager) {
+        MaintenanceConfiguration resource =
+            manager
+                .maintenanceConfigurations()
+                .getByResourceGroupWithResponse("examplerg", "configuration1", com.azure.core.util.Context.NONE)
+                .getValue();
+        resource
+            .update()
+            .withNamespace("Microsoft.Maintenance")
+            .withMaintenanceScope(MaintenanceScope.OSIMAGE)
+            .withVisibility(Visibility.CUSTOM)
+            .withStartDateTime("2020-04-30 08:00")
+            .withExpirationDateTime("9999-12-31 00:00")
+            .withDuration("05:00")
+            .withTimeZone("Pacific Standard Time")
+            .withRecurEvery("Month Third Sunday")
+            .apply();
+    }
+}

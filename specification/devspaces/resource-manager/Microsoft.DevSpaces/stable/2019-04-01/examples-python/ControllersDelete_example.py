@@ -6,7 +6,7 @@ from azure.mgmt.devspaces import DevSpacesManagementClient
     pip install azure-identity
     pip install azure-mgmt-devspaces
 # USAGE
-    python controllers_delete.py
+    python controllers_delete_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -21,11 +21,10 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.controllers.begin_delete(
+    client.controllers.begin_delete(
         resource_group_name="myResourceGroup",
         name="myControllerResource",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/devspaces/resource-manager/Microsoft.DevSpaces/stable/2019-04-01/examples/ControllersDelete_example.json

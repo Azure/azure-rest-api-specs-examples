@@ -6,7 +6,7 @@ from azure.mgmt.devspaces import DevSpacesManagementClient
     pip install azure-identity
     pip install azure-mgmt-devspaces
 # USAGE
-    python container_host_mappings_get_container_host_mapping.py
+    python container_host_mappings_get_container_host_mapping_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

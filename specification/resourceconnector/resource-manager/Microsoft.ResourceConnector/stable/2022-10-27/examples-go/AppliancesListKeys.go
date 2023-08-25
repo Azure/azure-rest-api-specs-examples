@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resourceconnector/armresourceconnector"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/1f22d4dbd99b0fe347ad79e79d4eb1ed44a87291/specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/stable/2022-10-27/examples/AppliancesListKeys.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5f700acd3d094d8eedca381932f2e7916afd2e55/specification/resourceconnector/resource-manager/Microsoft.ResourceConnector/stable/2022-10-27/examples/AppliancesListKeys.json
 func ExampleAppliancesClient_ListKeys() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,7 +19,7 @@ func ExampleAppliancesClient_ListKeys() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewAppliancesClient().ListKeys(ctx, "testresourcegroup", "appliance01", nil)
+	res, err := clientFactory.NewAppliancesClient().ListKeys(ctx, "testresourcegroup", "appliance01", &armresourceconnector.AppliancesClientListKeysOptions{ArtifactType: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

@@ -1,4 +1,4 @@
-/** Samples for WebApps GetInstanceInfoSlot. */
+/** Samples for WebApps GetInstanceInfo. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/GetSiteInstanceInfo.json
@@ -14,7 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .getInstanceInfoSlotWithResponse(
-                "testrg123", "tests346", "134987120", "staging", com.azure.core.util.Context.NONE);
+            .getInstanceInfoWithResponse("testrg123", "tests346", "134987120", com.azure.core.util.Context.NONE);
     }
 }

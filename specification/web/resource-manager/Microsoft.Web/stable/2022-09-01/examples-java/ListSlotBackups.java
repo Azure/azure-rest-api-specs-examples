@@ -1,4 +1,4 @@
-/** Samples for WebApps ListSiteBackups. */
+/** Samples for WebApps ListSiteBackupsSlot. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/ListSlotBackups.json
@@ -14,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .listSiteBackups("testrg123", "tests346", com.azure.core.util.Context.NONE);
+            .listSiteBackupsSlot("testrg123", "tests346", "staging", com.azure.core.util.Context.NONE);
     }
 }

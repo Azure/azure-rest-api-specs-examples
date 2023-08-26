@@ -1,6 +1,6 @@
 import com.azure.resourcemanager.appservice.fluent.models.WorkerPoolResourceInner;
 
-/** Samples for AppServiceEnvironments CreateOrUpdateWorkerPool. */
+/** Samples for AppServiceEnvironments UpdateWorkerPool. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/AppServiceEnvironments_CreateOrUpdateWorkerPool.json
@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getAppServiceEnvironments()
-            .createOrUpdateWorkerPool(
+            .updateWorkerPoolWithResponse(
                 "test-rg",
                 "test-ase",
                 "0",

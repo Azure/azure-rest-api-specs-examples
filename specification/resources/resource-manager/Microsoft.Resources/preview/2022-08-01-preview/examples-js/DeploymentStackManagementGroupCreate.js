@@ -1,0 +1,37 @@
+const { DeploymentStacksClient } = require("@azure/arm-resourcesdeploymentstacks");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Creates or updates a Deployment Stack.
+ *
+ * @summary Creates or updates a Deployment Stack.
+ * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/preview/2022-08-01-preview/examples/DeploymentStackManagementGroupCreate.json
+ */
+async function deploymentStacksCreateOrUpdate() {
+  const managementGroupId = "myMg";
+  const deploymentStackName = "simpleDeploymentStack";
+  const deploymentStack = {
+    actionOnUnmanage: {
+      managementGroups: "detach",
+      resourceGroups: "delete",
+      resources: "delete",
+    },
+    denySettings: {
+      applyToChildScopes: false,
+      excludedActions: ["action"],
+      excludedPrincipals: ["principal"],
+      mode: "denyDelete",
+    },
+    location: "eastus",
+    parameters: { parameter1: { value: "a string" } },
+    tags: { tagkey: "tagVal" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new DeploymentStacksClient(credential);
+  const result = await client.deploymentStacks.beginCreateOrUpdateAtManagementGroupAndWait(
+    managementGroupId,
+    deploymentStackName,
+    deploymentStack
+  );
+  console.log(result);
+}

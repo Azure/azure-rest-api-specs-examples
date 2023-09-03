@@ -3136,3 +3136,6 @@ id,name,language,tag,package,version,date_epoch,date
 3135,azure-mgmt-avs@8.0.0,python,azure-mgmt-avs_8.0.0,azure-mgmt-avs,8.0.0,1692931369,08/25/2023
 3136,azure-mgmt-apicenter@1.0.0b1,python,azure-mgmt-apicenter_1.0.0b1,azure-mgmt-apicenter,1.0.0b1,1692931347,08/25/2023
 3137,@azure/arm-maintenance@1.0.0-beta.1,js,@azure/arm-maintenance_1.0.0-beta.1,@azure/arm-maintenance,1.0.0-beta.1,1692969047,08/25/2023
+3138,"Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.1",dotnet,Azure.ResourceManager.HDInsight.Containers_1.0.0-beta.1,Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.1,1693119356,08/27/2023
+3139,com.azure.resourcemanager:azure-resourcemanager-hybridconnectivity:1.0.0-beta.1,java,azure-resourcemanager-hybridconnectivity_1.0.0-beta.1,azure-resourcemanager-hybridconnectivity,1.0.0-beta.1,1693364768,08/30/2023
+3140,azure-mgmt-sql@4.0.0b12,python,azure-mgmt-sql_4.0.0b12,azure-mgmt-sql,4.0.0b12,1693383202,08/30/2023

@@ -1,0 +1,31 @@
+const { RecoveryServicesBackupClient } = require("@azure/arm-recoveryservicesbackup");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Updates Vault encryption config.
+ *
+ * @summary Updates Vault encryption config.
+ * x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-04-01/examples/BackupResourceEncryptionConfig_Put.json
+ */
+async function updateVaultEncryptionConfiguration() {
+  const subscriptionId =
+    process.env["RECOVERYSERVICESBACKUP_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const vaultName = "source-rsv";
+  const resourceGroupName = process.env["RECOVERYSERVICESBACKUP_RESOURCE_GROUP"] || "test-rg";
+  const parameters = {
+    properties: {
+      encryptionAtRestType: "CustomerManaged",
+      infrastructureEncryptionState: "true",
+      keyUri: "https://gktestkv1.vault.azure.net/keys/Test1/ed2e8cdc7f86477ebf0c6462b504a9ed",
+      subscriptionId: "1a2311d9-66f5-47d3-a9fb-7a37da63934b",
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new RecoveryServicesBackupClient(credential, subscriptionId);
+  const result = await client.backupResourceEncryptionConfigs.update(
+    vaultName,
+    resourceGroupName,
+    parameters
+  );
+  console.log(result);
+}

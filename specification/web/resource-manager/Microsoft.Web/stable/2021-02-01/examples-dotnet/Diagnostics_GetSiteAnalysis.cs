@@ -4,29 +4,32 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.AppService;
+using Azure.ResourceManager.AppService.Models;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/examples/Diagnostics_GetSiteAnalysis.json
-// this example is just showing the usage of "Diagnostics_GetSiteAnalysis" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "Diagnostics_GetSiteAnalysisSlot" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteDiagnosticResource created on azure
-// for more information of creating SiteDiagnosticResource, please refer to the document of SiteDiagnosticResource
+// this example assumes you already have this SiteSlotDiagnosticAnalysisResource created on azure
+// for more information of creating SiteSlotDiagnosticAnalysisResource, please refer to the document of SiteSlotDiagnosticAnalysisResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string siteName = "SampleApp";
+string slot = "Production";
 string diagnosticCategory = "availability";
-ResourceIdentifier siteDiagnosticResourceId = SiteDiagnosticResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, diagnosticCategory);
-SiteDiagnosticResource siteDiagnostic = client.GetSiteDiagnosticResource(siteDiagnosticResourceId);
-
-// get the collection of this SiteDiagnosticAnalysisResource
-SiteDiagnosticAnalysisCollection collection = siteDiagnostic.GetSiteDiagnosticAnalyses();
+string analysisName = "appanalysis";
+ResourceIdentifier siteSlotDiagnosticAnalysisResourceId = SiteSlotDiagnosticAnalysisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, slot, diagnosticCategory, analysisName);
+SiteSlotDiagnosticAnalysisResource siteSlotDiagnosticAnalysis = client.GetSiteSlotDiagnosticAnalysisResource(siteSlotDiagnosticAnalysisResourceId);
 
 // invoke the operation
-string analysisName = "appanalysis";
-bool result = await collection.ExistsAsync(analysisName);
+SiteSlotDiagnosticAnalysisResource result = await siteSlotDiagnosticAnalysis.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WebSiteAnalysisDefinitionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -7,24 +7,25 @@ using Azure.ResourceManager.AppService;
 using Azure.ResourceManager.AppService.Models;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/examples/Diagnostics_ExecuteSiteDetectorSlot.json
-// this example is just showing the usage of "Diagnostics_ExecuteSiteDetector" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "Diagnostics_ExecuteSiteDetectorSlot" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteDiagnosticDetectorResource created on azure
-// for more information of creating SiteDiagnosticDetectorResource, please refer to the document of SiteDiagnosticDetectorResource
+// this example assumes you already have this SiteSlotDiagnosticDetectorResource created on azure
+// for more information of creating SiteSlotDiagnosticDetectorResource, please refer to the document of SiteSlotDiagnosticDetectorResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string siteName = "SampleApp";
+string slot = "staging";
 string diagnosticCategory = "availability";
 string detectorName = "sitecrashes";
-ResourceIdentifier siteDiagnosticDetectorResourceId = SiteDiagnosticDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, diagnosticCategory, detectorName);
-SiteDiagnosticDetectorResource siteDiagnosticDetector = client.GetSiteDiagnosticDetectorResource(siteDiagnosticDetectorResourceId);
+ResourceIdentifier siteSlotDiagnosticDetectorResourceId = SiteSlotDiagnosticDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, slot, diagnosticCategory, detectorName);
+SiteSlotDiagnosticDetectorResource siteSlotDiagnosticDetector = client.GetSiteSlotDiagnosticDetectorResource(siteSlotDiagnosticDetectorResourceId);
 
 // invoke the operation
-DiagnosticDetectorResponse result = await siteDiagnosticDetector.ExecuteAsync();
+DiagnosticDetectorResponse result = await siteSlotDiagnosticDetector.ExecuteSiteDetectorSlotAsync();
 
 Console.WriteLine($"Succeeded: {result}");

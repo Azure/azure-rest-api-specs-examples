@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CertificateOrderDetectorResource created on azure
-// for more information of creating CertificateOrderDetectorResource, please refer to the document of CertificateOrderDetectorResource
+// this example assumes you already have this AppServiceCertificateOrderResource created on azure
+// for more information of creating AppServiceCertificateOrderResource, please refer to the document of AppServiceCertificateOrderResource
 string subscriptionId = "5700fc96-77b4-4f8d-afce-c353d8c443bd";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string certificateOrderName = "SampleCertificateOrderName";
-string detectorName = "AutoRenewStatus";
-ResourceIdentifier certificateOrderDetectorResourceId = CertificateOrderDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, certificateOrderName, detectorName);
-CertificateOrderDetectorResource certificateOrderDetector = client.GetCertificateOrderDetectorResource(certificateOrderDetectorResourceId);
+ResourceIdentifier appServiceCertificateOrderResourceId = AppServiceCertificateOrderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, certificateOrderName);
+AppServiceCertificateOrderResource appServiceCertificateOrder = client.GetAppServiceCertificateOrderResource(appServiceCertificateOrderResourceId);
+
+// get the collection of this CertificateOrderDetectorResource
+CertificateOrderDetectorCollection collection = appServiceCertificateOrder.GetCertificateOrderDetectors();
 
 // invoke the operation
-CertificateOrderDetectorResource result = await certificateOrderDetector.GetAsync();
+string detectorName = "AutoRenewStatus";
+bool result = await collection.ExistsAsync(detectorName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppServiceDetectorData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebSiteResource created on azure
-// for more information of creating WebSiteResource, please refer to the document of WebSiteResource
+// this example assumes you already have this SiteInstanceResource created on azure
+// for more information of creating SiteInstanceResource, please refer to the document of SiteInstanceResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string name = "tests346";
-ResourceIdentifier webSiteResourceId = WebSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-WebSiteResource webSite = client.GetWebSiteResource(webSiteResourceId);
-
-// get the collection of this SiteInstanceResource
-SiteInstanceCollection collection = webSite.GetSiteInstances();
+string instanceId = "134987120";
+ResourceIdentifier siteInstanceResourceId = SiteInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, instanceId);
+SiteInstanceResource siteInstance = client.GetSiteInstanceResource(siteInstanceResourceId);
 
 // invoke the operation
-string instanceId = "134987120";
-bool result = await collection.ExistsAsync(instanceId);
+SiteInstanceResource result = await siteInstance.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WebSiteInstanceStatusData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

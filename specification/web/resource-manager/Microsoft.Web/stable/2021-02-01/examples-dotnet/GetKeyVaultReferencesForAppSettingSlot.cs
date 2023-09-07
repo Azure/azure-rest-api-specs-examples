@@ -13,21 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebSiteSlotConfigAppSettingResource created on azure
-// for more information of creating WebSiteSlotConfigAppSettingResource, please refer to the document of WebSiteSlotConfigAppSettingResource
+// this example assumes you already have this WebSiteSlotResource created on azure
+// for more information of creating WebSiteSlotResource, please refer to the document of WebSiteSlotResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string name = "testc6282";
 string slot = "stage";
-string appSettingKey = "setting";
-ResourceIdentifier webSiteSlotConfigAppSettingResourceId = WebSiteSlotConfigAppSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot, appSettingKey);
-WebSiteSlotConfigAppSettingResource webSiteSlotConfigAppSetting = client.GetWebSiteSlotConfigAppSettingResource(webSiteSlotConfigAppSettingResourceId);
+ResourceIdentifier webSiteSlotResourceId = WebSiteSlotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot);
+WebSiteSlotResource webSiteSlot = client.GetWebSiteSlotResource(webSiteSlotResourceId);
+
+// get the collection of this WebSiteSlotConfigAppSettingResource
+WebSiteSlotConfigAppSettingCollection collection = webSiteSlot.GetWebSiteSlotConfigAppSettings();
 
 // invoke the operation
-WebSiteSlotConfigAppSettingResource result = await webSiteSlotConfigAppSetting.GetAsync();
+string appSettingKey = "setting";
+bool result = await collection.ExistsAsync(appSettingKey);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiKeyVaultReferenceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

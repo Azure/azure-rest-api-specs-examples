@@ -1,0 +1,23 @@
+const { HybridConnectivityManagementAPI } = require("@azure/arm-hybridconnectivity");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Deletes the service details to the target resource.
+ *
+ * @summary Deletes the service details to the target resource.
+ * x-ms-original-file: specification/hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2023-03-15/examples/ServiceConfigurationsDeleteSSH.json
+ */
+async function serviceConfigurationsDeleteSsh() {
+  const resourceUri =
+    "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default";
+  const endpointName = "default";
+  const serviceConfigurationName = "SSH";
+  const credential = new DefaultAzureCredential();
+  const client = new HybridConnectivityManagementAPI(credential);
+  const result = await client.serviceConfigurations.delete(
+    resourceUri,
+    endpointName,
+    serviceConfigurationName
+  );
+  console.log(result);
+}

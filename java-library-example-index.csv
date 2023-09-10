@@ -3139,3 +3139,12 @@ id,name,language,tag,package,version,date_epoch,date
 3138,"Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.1",dotnet,Azure.ResourceManager.HDInsight.Containers_1.0.0-beta.1,Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.1,1693119356,08/27/2023
 3139,com.azure.resourcemanager:azure-resourcemanager-hybridconnectivity:1.0.0-beta.1,java,azure-resourcemanager-hybridconnectivity_1.0.0-beta.1,azure-resourcemanager-hybridconnectivity,1.0.0-beta.1,1693364768,08/30/2023
 3140,azure-mgmt-sql@4.0.0b12,python,azure-mgmt-sql_4.0.0b12,azure-mgmt-sql,4.0.0b12,1693383202,08/30/2023
+3141,@azure/arm-recoveryservices@5.4.0,js,@azure/arm-recoveryservices_5.4.0,@azure/arm-recoveryservices,5.4.0,1693905962,09/05/2023
+3142,@azure/arm-recoveryservicesbackup@11.0.0,js,@azure/arm-recoveryservicesbackup_11.0.0,@azure/arm-recoveryservicesbackup,11.0.0,1693905902,09/05/2023
+3143,"Azure.ResourceManager.IotHub,1.1.0-beta.2",dotnet,Azure.ResourceManager.IotHub_1.1.0-beta.2,Azure.ResourceManager.IotHub,1.1.0-beta.2,1693833725,09/04/2023
+3144,azure-mgmt-recoveryservices@2.5.0,python,azure-mgmt-recoveryservices_2.5.0,azure-mgmt-recoveryservices,2.5.0,1693899026,09/05/2023
+3145,"Azure.ResourceManager.AppService,1.1.0-beta.2",dotnet,Azure.ResourceManager.AppService_1.1.0-beta.2,Azure.ResourceManager.AppService,1.1.0-beta.2,1693976845,09/06/2023
+3146,"Azure.ResourceManager.Maintenance,1.2.0-beta.3",dotnet,Azure.ResourceManager.Maintenance_1.2.0-beta.3,Azure.ResourceManager.Maintenance,1.2.0-beta.3,1693926492,09/05/2023
+3147,@azure/arm-hybridconnectivity@1.0.0-beta.1,js,@azure/arm-hybridconnectivity_1.0.0-beta.1,@azure/arm-hybridconnectivity,1.0.0-beta.1,1694071849,09/07/2023
+3148,"Azure.ResourceManager.RecoveryServicesBackup,1.1.0",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.1.0,Azure.ResourceManager.RecoveryServicesBackup,1.1.0,1694138754,09/08/2023
+3149,"Azure.ResourceManager.RecoveryServices,1.1.0",dotnet,Azure.ResourceManager.RecoveryServices_1.1.0,Azure.ResourceManager.RecoveryServices,1.1.0,1694138459,09/08/2023

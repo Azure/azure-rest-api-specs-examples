@@ -15,21 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GalleryApplicationResource created on azure
-// for more information of creating GalleryApplicationResource, please refer to the document of GalleryApplicationResource
+// this example assumes you already have this GalleryApplicationVersionResource created on azure
+// for more information of creating GalleryApplicationVersionResource, please refer to the document of GalleryApplicationVersionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string galleryName = "myGalleryName";
 string galleryApplicationName = "myGalleryApplicationName";
-ResourceIdentifier galleryApplicationResourceId = GalleryApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, galleryName, galleryApplicationName);
-GalleryApplicationResource galleryApplication = client.GetGalleryApplicationResource(galleryApplicationResourceId);
-
-// get the collection of this GalleryApplicationVersionResource
-GalleryApplicationVersionCollection collection = galleryApplication.GetGalleryApplicationVersions();
+string galleryApplicationVersionName = "1.0.0";
+ResourceIdentifier galleryApplicationVersionResourceId = GalleryApplicationVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, galleryName, galleryApplicationName, galleryApplicationVersionName);
+GalleryApplicationVersionResource galleryApplicationVersion = client.GetGalleryApplicationVersionResource(galleryApplicationVersionResourceId);
 
 // invoke the operation
-string galleryApplicationVersionName = "1.0.0";
 ReplicationStatusType? expand = ReplicationStatusType.ReplicationStatus;
-bool result = await collection.ExistsAsync(galleryApplicationVersionName, expand: expand);
+GalleryApplicationVersionResource result = await galleryApplicationVersion.GetAsync(expand: expand);
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GalleryApplicationVersionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

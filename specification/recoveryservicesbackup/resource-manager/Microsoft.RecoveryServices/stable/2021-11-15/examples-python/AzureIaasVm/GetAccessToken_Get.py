@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.recoveryservicesbackup import RecoveryServicesBackupPassiveClient
+from azure.mgmt.recoveryservicesbackup.passivestamp import RecoveryServicesBackupPassiveClient
 
 """
 # PREREQUISITES

@@ -1,0 +1,16 @@
+/** Samples for Domains Delete. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/preview/2023-04-01-preview/examples/domains/delete.json
+     */
+    /**
+     * Sample code: Delete Domains resource.
+     *
+     * @param manager Entry point to CommunicationManager.
+     */
+    public static void deleteDomainsResource(com.azure.resourcemanager.communication.CommunicationManager manager) {
+        manager
+            .domains()
+            .delete("MyResourceGroup", "MyEmailServiceResource", "mydomain.com", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,28 @@
+using System;
+using System.Threading.Tasks;
+using Azure;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager;
+using Azure.ResourceManager.Marketplace;
+using Azure.ResourceManager.Marketplace.Models;
+
+// Generated from example definition: specification/marketplace/resource-manager/Microsoft.Marketplace/stable/2023-01-01/examples/DeletePrivateStoreCollection.json
+// this example is just showing the usage of "PrivateStoreCollection_Delete" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this PrivateStoreCollectionInfoResource created on azure
+// for more information of creating PrivateStoreCollectionInfoResource, please refer to the document of PrivateStoreCollectionInfoResource
+Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
+Guid collectionId = Guid.Parse("d0f5aa2c-ecc3-4d87-906a-f8c486dcc4f1");
+ResourceIdentifier privateStoreCollectionInfoResourceId = PrivateStoreCollectionInfoResource.CreateResourceIdentifier(privateStoreId, collectionId);
+PrivateStoreCollectionInfoResource privateStoreCollectionInfo = client.GetPrivateStoreCollectionInfoResource(privateStoreCollectionInfoResourceId);
+
+// invoke the operation
+await privateStoreCollectionInfo.DeleteAsync(WaitUntil.Completed);
+
+Console.WriteLine($"Succeeded");

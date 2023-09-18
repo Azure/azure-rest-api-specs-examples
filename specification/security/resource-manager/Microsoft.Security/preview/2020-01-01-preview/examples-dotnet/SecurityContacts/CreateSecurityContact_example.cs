@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -16,17 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SecurityContactResource created on azure
+// for more information of creating SecurityContactResource, please refer to the document of SecurityContactResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SecurityContactResource
-SecurityContactCollection collection = subscriptionResource.GetSecurityContacts();
+string securityContactName = "default";
+ResourceIdentifier securityContactResourceId = SecurityContactResource.CreateResourceIdentifier(subscriptionId, securityContactName);
+SecurityContactResource securityContact = client.GetSecurityContactResource(securityContactResourceId);
 
 // invoke the operation
-string securityContactName = "default";
 SecurityContactData data = new SecurityContactData()
 {
     Emails = "john@contoso.com;jane@contoso.com",
@@ -45,7 +41,7 @@ SecurityContactData data = new SecurityContactData()
         },
     },
 };
-ArmOperation<SecurityContactResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityContactName, data);
+ArmOperation<SecurityContactResource> lro = await securityContact.UpdateAsync(WaitUntil.Completed, data);
 SecurityContactResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

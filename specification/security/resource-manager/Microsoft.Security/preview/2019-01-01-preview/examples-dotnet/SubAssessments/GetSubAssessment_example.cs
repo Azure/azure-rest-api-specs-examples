@@ -13,18 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityAssessmentResource created on azure
-// for more information of creating SecurityAssessmentResource, please refer to the document of SecurityAssessmentResource
+// this example assumes you already have this SecuritySubAssessmentResource created on azure
+// for more information of creating SecuritySubAssessmentResource, please refer to the document of SecuritySubAssessmentResource
 string scope = "subscriptions/212f9889-769e-45ae-ab43-6da33674bd26/resourceGroups/DEMORG/providers/Microsoft.Compute/virtualMachines/vm2";
 string assessmentName = "1195afff-c881-495e-9bc5-1486211ae03f";
-ResourceIdentifier securityAssessmentResourceId = SecurityAssessmentResource.CreateResourceIdentifier(scope, assessmentName);
-SecurityAssessmentResource securityAssessment = client.GetSecurityAssessmentResource(securityAssessmentResourceId);
-
-// get the collection of this SecuritySubAssessmentResource
-SecuritySubAssessmentCollection collection = securityAssessment.GetSecuritySubAssessments();
+string subAssessmentName = "95f7da9c-a2a4-1322-0758-fcd24ef09b85";
+ResourceIdentifier securitySubAssessmentResourceId = SecuritySubAssessmentResource.CreateResourceIdentifier(scope, assessmentName, subAssessmentName);
+SecuritySubAssessmentResource securitySubAssessment = client.GetSecuritySubAssessmentResource(securitySubAssessmentResourceId);
 
 // invoke the operation
-string subAssessmentName = "95f7da9c-a2a4-1322-0758-fcd24ef09b85";
-bool result = await collection.ExistsAsync(subAssessmentName);
+SecuritySubAssessmentResource result = await securitySubAssessment.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecuritySubAssessmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

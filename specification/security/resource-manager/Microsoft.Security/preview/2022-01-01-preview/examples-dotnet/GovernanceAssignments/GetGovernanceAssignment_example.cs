@@ -15,19 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GovernanceAssignmentResource created on azure
-// for more information of creating GovernanceAssignmentResource, please refer to the document of GovernanceAssignmentResource
+// this example assumes you already have this SecurityAssessmentResource created on azure
+// for more information of creating SecurityAssessmentResource, please refer to the document of SecurityAssessmentResource
 string scope = "subscriptions/c32e05d9-7207-4e22-bdf4-4f7d9c72e5fd/resourceGroups/compute_servers/providers/Microsoft.Compute/virtualMachines/win2012";
 string assessmentName = "6b9421dd-5555-2251-9b3d-2be58e2f82cd";
-string assignmentKey = "6634ff9f-127b-4bf2-8e6e-b1737f5e789c";
-ResourceIdentifier governanceAssignmentResourceId = GovernanceAssignmentResource.CreateResourceIdentifier(scope, assessmentName, assignmentKey);
-GovernanceAssignmentResource governanceAssignment = client.GetGovernanceAssignmentResource(governanceAssignmentResourceId);
+ResourceIdentifier securityAssessmentResourceId = SecurityAssessmentResource.CreateResourceIdentifier(scope, assessmentName);
+SecurityAssessmentResource securityAssessment = client.GetSecurityAssessmentResource(securityAssessmentResourceId);
+
+// get the collection of this GovernanceAssignmentResource
+GovernanceAssignmentCollection collection = securityAssessment.GetGovernanceAssignments();
 
 // invoke the operation
-GovernanceAssignmentResource result = await governanceAssignment.GetAsync();
+string assignmentKey = "6634ff9f-127b-4bf2-8e6e-b1737f5e789c";
+bool result = await collection.ExistsAsync(assignmentKey);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GovernanceAssignmentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

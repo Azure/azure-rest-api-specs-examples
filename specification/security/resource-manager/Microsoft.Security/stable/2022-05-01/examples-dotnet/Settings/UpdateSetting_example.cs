@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -16,22 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SecuritySettingResource created on azure
+// for more information of creating SecuritySettingResource, please refer to the document of SecuritySettingResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SecuritySettingResource
-SecuritySettingCollection collection = subscriptionResource.GetSecuritySettings();
+SecuritySettingName settingName = SecuritySettingName.Wdatp;
+ResourceIdentifier securitySettingResourceId = SecuritySettingResource.CreateResourceIdentifier(subscriptionId, settingName);
+SecuritySettingResource securitySetting = client.GetSecuritySettingResource(securitySettingResourceId);
 
 // invoke the operation
-SecuritySettingName settingName = SecuritySettingName.Wdatp;
 SecuritySettingData data = new DataExportSettings()
 {
     IsEnabled = true,
 };
-ArmOperation<SecuritySettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, settingName, data);
+ArmOperation<SecuritySettingResource> lro = await securitySetting.UpdateAsync(WaitUntil.Completed, data);
 SecuritySettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

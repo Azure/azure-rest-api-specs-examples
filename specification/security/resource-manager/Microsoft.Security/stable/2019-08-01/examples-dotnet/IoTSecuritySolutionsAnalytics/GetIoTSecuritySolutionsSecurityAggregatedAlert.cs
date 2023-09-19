@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotSecuritySolutionAnalyticsModelResource created on azure
-// for more information of creating IotSecuritySolutionAnalyticsModelResource, please refer to the document of IotSecuritySolutionAnalyticsModelResource
+// this example assumes you already have this IotSecurityAggregatedAlertResource created on azure
+// for more information of creating IotSecurityAggregatedAlertResource, please refer to the document of IotSecurityAggregatedAlertResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string resourceGroupName = "MyGroup";
 string solutionName = "default";
-ResourceIdentifier iotSecuritySolutionAnalyticsModelResourceId = IotSecuritySolutionAnalyticsModelResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, solutionName);
-IotSecuritySolutionAnalyticsModelResource iotSecuritySolutionAnalyticsModel = client.GetIotSecuritySolutionAnalyticsModelResource(iotSecuritySolutionAnalyticsModelResourceId);
-
-// get the collection of this IotSecurityAggregatedAlertResource
-IotSecurityAggregatedAlertCollection collection = iotSecuritySolutionAnalyticsModel.GetIotSecurityAggregatedAlerts();
+string aggregatedAlertName = "IoT_Bruteforce_Fail/2019-02-02";
+ResourceIdentifier iotSecurityAggregatedAlertResourceId = IotSecurityAggregatedAlertResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, solutionName, aggregatedAlertName);
+IotSecurityAggregatedAlertResource iotSecurityAggregatedAlert = client.GetIotSecurityAggregatedAlertResource(iotSecurityAggregatedAlertResourceId);
 
 // invoke the operation
-string aggregatedAlertName = "IoT_Bruteforce_Fail/2019-02-02";
-bool result = await collection.ExistsAsync(aggregatedAlertName);
+IotSecurityAggregatedAlertResource result = await iotSecurityAggregatedAlert.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+IotSecurityAggregatedAlertData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

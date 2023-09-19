@@ -13,18 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RegulatoryComplianceStandardResource created on azure
-// for more information of creating RegulatoryComplianceStandardResource, please refer to the document of RegulatoryComplianceStandardResource
+// this example assumes you already have this RegulatoryComplianceControlResource created on azure
+// for more information of creating RegulatoryComplianceControlResource, please refer to the document of RegulatoryComplianceControlResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string regulatoryComplianceStandardName = "PCI-DSS-3.2";
-ResourceIdentifier regulatoryComplianceStandardResourceId = RegulatoryComplianceStandardResource.CreateResourceIdentifier(subscriptionId, regulatoryComplianceStandardName);
-RegulatoryComplianceStandardResource regulatoryComplianceStandard = client.GetRegulatoryComplianceStandardResource(regulatoryComplianceStandardResourceId);
-
-// get the collection of this RegulatoryComplianceControlResource
-RegulatoryComplianceControlCollection collection = regulatoryComplianceStandard.GetRegulatoryComplianceControls();
+string regulatoryComplianceControlName = "1.1";
+ResourceIdentifier regulatoryComplianceControlResourceId = RegulatoryComplianceControlResource.CreateResourceIdentifier(subscriptionId, regulatoryComplianceStandardName, regulatoryComplianceControlName);
+RegulatoryComplianceControlResource regulatoryComplianceControl = client.GetRegulatoryComplianceControlResource(regulatoryComplianceControlResourceId);
 
 // invoke the operation
-string regulatoryComplianceControlName = "1.1";
-bool result = await collection.ExistsAsync(regulatoryComplianceControlName);
+RegulatoryComplianceControlResource result = await regulatoryComplianceControl.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RegulatoryComplianceControlData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

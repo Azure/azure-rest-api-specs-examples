@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.recoveryservicesbackup import RecoveryServicesBackupPassiveClient
+from azure.mgmt.recoveryservicesbackup.passivestamp import RecoveryServicesBackupPassiveClient
 
 """
 # PREREQUISITES
@@ -21,7 +21,7 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.cross_region_restore.begin_trigger(
+    client.cross_region_restore.begin_trigger(
         azure_region="southeastasia",
         parameters={
             "crossRegionRestoreAccessDetails": {
@@ -69,7 +69,6 @@ def main():
             },
         },
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-11-15/examples/AzureIaasVm/TriggerCrossRegionRestore_Post.json

@@ -1,5 +1,5 @@
 from azure.identity import DefaultAzureCredential
-from azure.mgmt.recoveryservicesbackup import RecoveryServicesBackupPassiveClient
+from azure.mgmt.recoveryservicesbackup.passivestamp import RecoveryServicesBackupPassiveClient
 
 """
 # PREREQUISITES
@@ -21,11 +21,10 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.crr_operation_results.get(
+    client.crr_operation_results.get(
         azure_region="southeastasia",
         operation_id="00000000-0000-0000-0000-000000000000",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2021-11-15/examples/AzureIaasVm/GetCrrOperationResults_Get.json

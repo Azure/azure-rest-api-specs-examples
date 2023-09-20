@@ -1,0 +1,31 @@
+const { CommunicationServiceManagementClient } = require("@azure/arm-communication");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+ *
+ * @summary Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+ * x-ms-original-file: specification/communication/resource-manager/Microsoft.Communication/preview/2023-04-01-preview/examples/senderUsernames/createOrUpdate.json
+ */
+async function createOrUpdateSenderUsernamesResource() {
+  const subscriptionId =
+    process.env["COMMUNICATION_SUBSCRIPTION_ID"] || "11112222-3333-4444-5555-666677778888";
+  const resourceGroupName = process.env["COMMUNICATION_RESOURCE_GROUP"] || "contosoResourceGroup";
+  const emailServiceName = "contosoEmailService";
+  const domainName = "contoso.com";
+  const senderUsername = "contosoNewsAlerts";
+  const parameters = {
+    displayName: "Contoso News Alerts",
+    username: "contosoNewsAlerts",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new CommunicationServiceManagementClient(credential, subscriptionId);
+  const result = await client.senderUsernames.createOrUpdate(
+    resourceGroupName,
+    emailServiceName,
+    domainName,
+    senderUsername,
+    parameters
+  );
+  console.log(result);
+}

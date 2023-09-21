@@ -6,11 +6,11 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/solutions/armmanagedapplications"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/solutions/armmanagedapplications/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/7a2ac91de424f271cf91cc8009f3fe9ee8249086/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/createOrUpdateApplicationDefinition.json
-func ExampleApplicationDefinitionsClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5fb045bd44f143bae17da2e01552ae531f77d0ba/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/createOrUpdateApplicationDefinition.json
+func ExampleApplicationDefinitionsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleApplicationDefinitionsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewApplicationDefinitionsClient().BeginCreateOrUpdate(ctx, "rg", "myManagedApplicationDef", armmanagedapplications.ApplicationDefinition{
+	res, err := clientFactory.NewApplicationDefinitionsClient().CreateOrUpdate(ctx, "rg", "myManagedApplicationDef", armmanagedapplications.ApplicationDefinition{
 		Properties: &armmanagedapplications.ApplicationDefinitionProperties{
 			Description: to.Ptr("myManagedApplicationDef description"),
 			Authorizations: []*armmanagedapplications.ApplicationAuthorization{
@@ -35,10 +35,6 @@ func ExampleApplicationDefinitionsClient_BeginCreateOrUpdate() {
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
-	}
-	res, err := poller.PollUntilDone(ctx, nil)
-	if err != nil {
-		log.Fatalf("failed to pull the result: %v", err)
 	}
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res

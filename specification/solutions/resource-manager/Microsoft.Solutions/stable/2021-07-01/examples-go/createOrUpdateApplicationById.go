@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/solutions/armmanagedapplications/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5fb045bd44f143bae17da2e01552ae531f77d0ba/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/createOrUpdateApplication.json
-func ExampleApplicationsClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5fb045bd44f143bae17da2e01552ae531f77d0ba/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/createOrUpdateApplicationById.json
+func ExampleApplicationsClient_BeginCreateOrUpdateByID() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewApplicationsClient().BeginCreateOrUpdate(ctx, "rg", "myManagedApplication", armmanagedapplications.Application{
+	poller, err := clientFactory.NewApplicationsClient().BeginCreateOrUpdateByID(ctx, "subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applications/myManagedApplication", armmanagedapplications.Application{
 		Kind: to.Ptr("ServiceCatalog"),
 		Properties: &armmanagedapplications.ApplicationProperties{
 			ApplicationDefinitionID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applicationDefinitions/myAppDef"),

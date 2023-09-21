@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/solutions/armmanagedapplications/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5fb045bd44f143bae17da2e01552ae531f77d0ba/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/createOrUpdateApplication.json
-func ExampleApplicationsClient_BeginCreateOrUpdate() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5fb045bd44f143bae17da2e01552ae531f77d0ba/specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/updateApplicationById.json
+func ExampleApplicationsClient_BeginUpdateByID() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,13 +20,14 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewApplicationsClient().BeginCreateOrUpdate(ctx, "rg", "myManagedApplication", armmanagedapplications.Application{
+	poller, err := clientFactory.NewApplicationsClient().BeginUpdateByID(ctx, "subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applications/myManagedApplication", &armmanagedapplications.ApplicationsClientBeginUpdateByIDOptions{Parameters: &armmanagedapplications.ApplicationPatchable{
 		Kind: to.Ptr("ServiceCatalog"),
 		Properties: &armmanagedapplications.ApplicationProperties{
 			ApplicationDefinitionID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applicationDefinitions/myAppDef"),
 			ManagedResourceGroupID:  to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
 		},
-	}, nil)
+	},
+	})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -37,7 +38,7 @@ func ExampleApplicationsClient_BeginCreateOrUpdate() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.Application = armmanagedapplications.Application{
+	// res.ApplicationPatchable = armmanagedapplications.ApplicationPatchable{
 	// 	Name: to.Ptr("myManagedApplication"),
 	// 	Type: to.Ptr("Microsoft.Solutions/applications"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applications/myManagedApplication"),

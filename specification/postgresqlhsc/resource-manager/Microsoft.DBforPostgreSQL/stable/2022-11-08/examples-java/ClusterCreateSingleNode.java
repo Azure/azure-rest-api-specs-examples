@@ -1,28 +1,35 @@
-import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
 /** Samples for Clusters Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-11-08/examples/ClusterCreatePITR.json
+     * x-ms-original-file: specification/postgresqlhsc/resource-manager/Microsoft.DBforPostgreSQL/stable/2022-11-08/examples/ClusterCreateSingleNode.json
      */
     /**
-     * Sample code: Create a new cluster as a point in time restore.
+     * Sample code: Create a new single node cluster.
      *
      * @param manager Entry point to CosmosDBForPostgreSqlManager.
      */
-    public static void createANewClusterAsAPointInTimeRestore(
+    public static void createANewSingleNodeCluster(
         com.azure.resourcemanager.cosmosdbforpostgresql.CosmosDBForPostgreSqlManager manager) {
         manager
             .clusters()
-            .define("testcluster")
+            .define("testcluster-singlenode")
             .withRegion("westus")
             .withExistingResourceGroup("TestGroup")
-            .withSourceResourceId(
-                "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/source-cluster")
-            .withSourceLocation("westus")
-            .withPointInTimeUtc(OffsetDateTime.parse("2017-12-14T00:00:37.467Z"))
+            .withTags(mapOf("owner", "JohnDoe"))
+            .withAdministratorLoginPassword("password")
+            .withPostgresqlVersion("15")
+            .withCitusVersion("11.3")
+            .withPreferredPrimaryZone("1")
+            .withEnableShardsOnCoordinator(true)
+            .withEnableHa(true)
+            .withCoordinatorServerEdition("GeneralPurpose")
+            .withCoordinatorStorageQuotaInMb(131072)
+            .withCoordinatorVCores(8)
+            .withCoordinatorEnablePublicIpAccess(true)
+            .withNodeCount(0)
             .create();
     }
 

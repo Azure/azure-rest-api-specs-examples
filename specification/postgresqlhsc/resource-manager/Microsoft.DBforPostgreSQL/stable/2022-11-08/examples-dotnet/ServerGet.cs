@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBForPostgreSqlClusterResource created on azure
-// for more information of creating CosmosDBForPostgreSqlClusterResource, please refer to the document of CosmosDBForPostgreSqlClusterResource
+// this example assumes you already have this CosmosDBForPostgreSqlClusterServerResource created on azure
+// for more information of creating CosmosDBForPostgreSqlClusterServerResource, please refer to the document of CosmosDBForPostgreSqlClusterServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string clusterName = "testcluster1";
-ResourceIdentifier cosmosDBForPostgreSqlClusterResourceId = CosmosDBForPostgreSqlClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-CosmosDBForPostgreSqlClusterResource cosmosDBForPostgreSqlCluster = client.GetCosmosDBForPostgreSqlClusterResource(cosmosDBForPostgreSqlClusterResourceId);
-
-// get the collection of this CosmosDBForPostgreSqlClusterServerResource
-CosmosDBForPostgreSqlClusterServerCollection collection = cosmosDBForPostgreSqlCluster.GetCosmosDBForPostgreSqlClusterServers();
+string serverName = "testcluster1-c";
+ResourceIdentifier cosmosDBForPostgreSqlClusterServerResourceId = CosmosDBForPostgreSqlClusterServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, serverName);
+CosmosDBForPostgreSqlClusterServerResource cosmosDBForPostgreSqlClusterServer = client.GetCosmosDBForPostgreSqlClusterServerResource(cosmosDBForPostgreSqlClusterServerResourceId);
 
 // invoke the operation
-string serverName = "testcluster1-c";
-bool result = await collection.ExistsAsync(serverName);
+CosmosDBForPostgreSqlClusterServerResource result = await cosmosDBForPostgreSqlClusterServer.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBForPostgreSqlClusterServerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

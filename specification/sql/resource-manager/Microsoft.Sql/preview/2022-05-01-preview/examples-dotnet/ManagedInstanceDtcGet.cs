@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this ManagedInstanceDtcResource created on azure
+// for more information of creating ManagedInstanceDtcResource, please refer to the document of ManagedInstanceDtcResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
 string managedInstanceName = "testinstance";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this ManagedInstanceDtcResource
-ManagedInstanceDtcCollection collection = managedInstance.GetManagedInstanceDtcs();
+DtcName dtcName = DtcName.Current;
+ResourceIdentifier managedInstanceDtcResourceId = ManagedInstanceDtcResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, dtcName);
+ManagedInstanceDtcResource managedInstanceDtc = client.GetManagedInstanceDtcResource(managedInstanceDtcResourceId);
 
 // invoke the operation
-DtcName dtcName = DtcName.Current;
-bool result = await collection.ExistsAsync(dtcName);
+ManagedInstanceDtcResource result = await managedInstanceDtc.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ManagedInstanceDtcData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,23 +15,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExtendedServerBlobAuditingPolicyResource created on azure
-// for more information of creating ExtendedServerBlobAuditingPolicyResource, please refer to the document of ExtendedServerBlobAuditingPolicyResource
+// this example assumes you already have this SqlServerResource created on azure
+// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "blobauditingtest-4799";
 string serverName = "blobauditingtest-6440";
-BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-ResourceIdentifier extendedServerBlobAuditingPolicyResourceId = ExtendedServerBlobAuditingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, blobAuditingPolicyName);
-ExtendedServerBlobAuditingPolicyResource extendedServerBlobAuditingPolicy = client.GetExtendedServerBlobAuditingPolicyResource(extendedServerBlobAuditingPolicyResourceId);
+ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
+
+// get the collection of this ExtendedServerBlobAuditingPolicyResource
+ExtendedServerBlobAuditingPolicyCollection collection = sqlServer.GetExtendedServerBlobAuditingPolicies();
 
 // invoke the operation
+BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
 ExtendedServerBlobAuditingPolicyData data = new ExtendedServerBlobAuditingPolicyData()
 {
     State = BlobAuditingPolicyState.Enabled,
     StorageEndpoint = "https://mystorage.blob.core.windows.net",
     StorageAccountAccessKey = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",
 };
-ArmOperation<ExtendedServerBlobAuditingPolicyResource> lro = await extendedServerBlobAuditingPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExtendedServerBlobAuditingPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, blobAuditingPolicyName, data);
 ExtendedServerBlobAuditingPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

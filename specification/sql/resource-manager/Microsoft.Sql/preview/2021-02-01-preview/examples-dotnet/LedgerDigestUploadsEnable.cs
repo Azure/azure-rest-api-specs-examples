@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LedgerDigestUploadResource created on azure
-// for more information of creating LedgerDigestUploadResource, please refer to the document of LedgerDigestUploadResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "ledgertestrg";
 string serverName = "ledgertestserver";
 string databaseName = "testdb";
-LedgerDigestUploadsName ledgerDigestUploads = LedgerDigestUploadsName.Current;
-ResourceIdentifier ledgerDigestUploadResourceId = LedgerDigestUploadResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, ledgerDigestUploads);
-LedgerDigestUploadResource ledgerDigestUpload = client.GetLedgerDigestUploadResource(ledgerDigestUploadResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this LedgerDigestUploadResource
+LedgerDigestUploadCollection collection = sqlDatabase.GetLedgerDigestUploads();
 
 // invoke the operation
+LedgerDigestUploadsName ledgerDigestUploads = LedgerDigestUploadsName.Current;
 LedgerDigestUploadData data = new LedgerDigestUploadData()
 {
     DigestStorageEndpoint = "https://MyAccount.blob.core.windows.net",
 };
-ArmOperation<LedgerDigestUploadResource> lro = await ledgerDigestUpload.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<LedgerDigestUploadResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ledgerDigestUploads, data);
 LedgerDigestUploadResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

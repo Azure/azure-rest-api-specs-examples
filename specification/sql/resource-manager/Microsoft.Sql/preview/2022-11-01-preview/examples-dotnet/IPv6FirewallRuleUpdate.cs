@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this IPv6FirewallRuleResource created on azure
+// for more information of creating IPv6FirewallRuleResource, please refer to the document of IPv6FirewallRuleResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "firewallrulecrudtest-12";
 string serverName = "firewallrulecrudtest-6285";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this IPv6FirewallRuleResource
-IPv6FirewallRuleCollection collection = sqlServer.GetIPv6FirewallRules();
+string firewallRuleName = "firewallrulecrudtest-3927";
+ResourceIdentifier iPv6FirewallRuleResourceId = IPv6FirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, firewallRuleName);
+IPv6FirewallRuleResource iPv6FirewallRule = client.GetIPv6FirewallRuleResource(iPv6FirewallRuleResourceId);
 
 // invoke the operation
-string firewallRuleName = "firewallrulecrudtest-3927";
 IPv6FirewallRuleData data = new IPv6FirewallRuleData()
 {
     StartIPv6Address = "0000:0000:0000:0000:0000:ffff:0000:0001",
     EndIPv6Address = "0000:0000:0000:0000:0000:ffff:0000:0001",
 };
-ArmOperation<IPv6FirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, firewallRuleName, data);
+ArmOperation<IPv6FirewallRuleResource> lro = await iPv6FirewallRule.UpdateAsync(WaitUntil.Completed, data);
 IPv6FirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

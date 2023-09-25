@@ -13,22 +13,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedDatabaseTableResource created on azure
-// for more information of creating ManagedDatabaseTableResource, please refer to the document of ManagedDatabaseTableResource
+// this example assumes you already have this ManagedDatabaseColumnResource created on azure
+// for more information of creating ManagedDatabaseColumnResource, please refer to the document of ManagedDatabaseColumnResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string managedInstanceName = "myManagedInstanceName";
 string databaseName = "myDatabase";
 string schemaName = "dbo";
 string tableName = "table1";
-ResourceIdentifier managedDatabaseTableResourceId = ManagedDatabaseTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, schemaName, tableName);
-ManagedDatabaseTableResource managedDatabaseTable = client.GetManagedDatabaseTableResource(managedDatabaseTableResourceId);
-
-// get the collection of this ManagedDatabaseColumnResource
-ManagedDatabaseColumnCollection collection = managedDatabaseTable.GetManagedDatabaseColumns();
+string columnName = "column1";
+ResourceIdentifier managedDatabaseColumnResourceId = ManagedDatabaseColumnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, schemaName, tableName, columnName);
+ManagedDatabaseColumnResource managedDatabaseColumn = client.GetManagedDatabaseColumnResource(managedDatabaseColumnResourceId);
 
 // invoke the operation
-string columnName = "column1";
-bool result = await collection.ExistsAsync(columnName);
+ManagedDatabaseColumnResource result = await managedDatabaseColumn.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DatabaseColumnData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

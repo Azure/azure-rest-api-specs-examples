@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Sql;
+using Azure.ResourceManager.Sql.Models;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/DatabaseAdvisorGet.json
 // this example is just showing the usage of "DatabaseAdvisors_Get" operation, for the dependent resources, they will have to be created separately.
@@ -13,20 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseResource created on azure
-// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
+// this example assumes you already have this SqlDatabaseAdvisorResource created on azure
+// for more information of creating SqlDatabaseAdvisorResource, please refer to the document of SqlDatabaseAdvisorResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "workloadinsight-demos";
 string serverName = "misosisvr";
 string databaseName = "IndexAdvisor_test_3";
-ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
-
-// get the collection of this SqlDatabaseAdvisorResource
-SqlDatabaseAdvisorCollection collection = sqlDatabase.GetSqlDatabaseAdvisors();
+string advisorName = "CreateIndex";
+ResourceIdentifier sqlDatabaseAdvisorResourceId = SqlDatabaseAdvisorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, advisorName);
+SqlDatabaseAdvisorResource sqlDatabaseAdvisor = client.GetSqlDatabaseAdvisorResource(sqlDatabaseAdvisorResourceId);
 
 // invoke the operation
-string advisorName = "CreateIndex";
-bool result = await collection.ExistsAsync(advisorName);
+SqlDatabaseAdvisorResource result = await sqlDatabaseAdvisor.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlAdvisorData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

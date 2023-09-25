@@ -14,20 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedDatabaseResource created on azure
-// for more information of creating ManagedDatabaseResource, please refer to the document of ManagedDatabaseResource
+// this example assumes you already have this ManagedDatabaseRestoreDetailResource created on azure
+// for more information of creating ManagedDatabaseRestoreDetailResource, please refer to the document of ManagedDatabaseRestoreDetailResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string managedInstanceName = "managedInstance";
 string databaseName = "testdb";
-ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName);
-ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
-
-// get the collection of this ManagedDatabaseRestoreDetailResource
-ManagedDatabaseRestoreDetailCollection collection = managedDatabase.GetManagedDatabaseRestoreDetails();
+RestoreDetailsName restoreDetailsName = RestoreDetailsName.Default;
+ResourceIdentifier managedDatabaseRestoreDetailResourceId = ManagedDatabaseRestoreDetailResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, restoreDetailsName);
+ManagedDatabaseRestoreDetailResource managedDatabaseRestoreDetail = client.GetManagedDatabaseRestoreDetailResource(managedDatabaseRestoreDetailResourceId);
 
 // invoke the operation
-RestoreDetailsName restoreDetailsName = RestoreDetailsName.Default;
-bool result = await collection.ExistsAsync(restoreDetailsName);
+ManagedDatabaseRestoreDetailResource result = await managedDatabaseRestoreDetail.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ManagedDatabaseRestoreDetailData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

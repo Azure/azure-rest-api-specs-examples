@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseSchemaResource created on azure
-// for more information of creating SqlDatabaseSchemaResource, please refer to the document of SqlDatabaseSchemaResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string serverName = "serverName";
 string databaseName = "myDatabase";
-string schemaName = "dbo";
-ResourceIdentifier sqlDatabaseSchemaResourceId = SqlDatabaseSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName);
-SqlDatabaseSchemaResource sqlDatabaseSchema = client.GetSqlDatabaseSchemaResource(sqlDatabaseSchemaResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this SqlDatabaseSchemaResource
+SqlDatabaseSchemaCollection collection = sqlDatabase.GetSqlDatabaseSchemas();
 
 // invoke the operation
-SqlDatabaseSchemaResource result = await sqlDatabaseSchema.GetAsync();
+string schemaName = "dbo";
+NullableResponse<SqlDatabaseSchemaResource> response = await collection.GetIfExistsAsync(schemaName);
+SqlDatabaseSchemaResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DatabaseSchemaData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DatabaseSchemaData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

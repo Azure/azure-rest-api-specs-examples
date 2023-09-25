@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstancePrivateLinkResource created on azure
-// for more information of creating ManagedInstancePrivateLinkResource, please refer to the document of ManagedInstancePrivateLinkResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string managedInstanceName = "test-cl";
-string groupName = "plr";
-ResourceIdentifier managedInstancePrivateLinkResourceId = ManagedInstancePrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, groupName);
-ManagedInstancePrivateLinkResource managedInstancePrivateLink = client.GetManagedInstancePrivateLinkResource(managedInstancePrivateLinkResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstancePrivateLinkResource
+ManagedInstancePrivateLinkCollection collection = managedInstance.GetManagedInstancePrivateLinks();
 
 // invoke the operation
-ManagedInstancePrivateLinkResource result = await managedInstancePrivateLink.GetAsync();
+string groupName = "plr";
+NullableResponse<ManagedInstancePrivateLinkResource> response = await collection.GetIfExistsAsync(groupName);
+ManagedInstancePrivateLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedInstancePrivateLinkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagedInstancePrivateLinkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

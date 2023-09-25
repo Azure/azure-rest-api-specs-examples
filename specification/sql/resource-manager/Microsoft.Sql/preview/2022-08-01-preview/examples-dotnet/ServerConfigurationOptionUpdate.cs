@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceServerConfigurationOptionResource created on azure
-// for more information of creating ManagedInstanceServerConfigurationOptionResource, please refer to the document of ManagedInstanceServerConfigurationOptionResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
 string managedInstanceName = "testinstance";
-ManagedInstanceServerConfigurationOptionName serverConfigurationOptionName = ManagedInstanceServerConfigurationOptionName.AllowPolybaseExport;
-ResourceIdentifier managedInstanceServerConfigurationOptionResourceId = ManagedInstanceServerConfigurationOptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, serverConfigurationOptionName);
-ManagedInstanceServerConfigurationOptionResource managedInstanceServerConfigurationOption = client.GetManagedInstanceServerConfigurationOptionResource(managedInstanceServerConfigurationOptionResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstanceServerConfigurationOptionResource
+ManagedInstanceServerConfigurationOptionCollection collection = managedInstance.GetManagedInstanceServerConfigurationOptions();
 
 // invoke the operation
+ManagedInstanceServerConfigurationOptionName serverConfigurationOptionName = ManagedInstanceServerConfigurationOptionName.AllowPolybaseExport;
 ManagedInstanceServerConfigurationOptionData data = new ManagedInstanceServerConfigurationOptionData()
 {
     ServerConfigurationOptionValue = 1,
 };
-ArmOperation<ManagedInstanceServerConfigurationOptionResource> lro = await managedInstanceServerConfigurationOption.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedInstanceServerConfigurationOptionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverConfigurationOptionName, data);
 ManagedInstanceServerConfigurationOptionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

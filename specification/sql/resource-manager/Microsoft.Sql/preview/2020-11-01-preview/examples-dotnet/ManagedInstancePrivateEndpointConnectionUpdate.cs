@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstancePrivateEndpointConnectionResource created on azure
-// for more information of creating ManagedInstancePrivateEndpointConnectionResource, please refer to the document of ManagedInstancePrivateEndpointConnectionResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string managedInstanceName = "test-cl";
-string privateEndpointConnectionName = "private-endpoint-connection-name";
-ResourceIdentifier managedInstancePrivateEndpointConnectionResourceId = ManagedInstancePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, privateEndpointConnectionName);
-ManagedInstancePrivateEndpointConnectionResource managedInstancePrivateEndpointConnection = client.GetManagedInstancePrivateEndpointConnectionResource(managedInstancePrivateEndpointConnectionResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstancePrivateEndpointConnectionResource
+ManagedInstancePrivateEndpointConnectionCollection collection = managedInstance.GetManagedInstancePrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "private-endpoint-connection-name";
 ManagedInstancePrivateEndpointConnectionData data = new ManagedInstancePrivateEndpointConnectionData()
 {
     ConnectionState = new ManagedInstancePrivateLinkServiceConnectionStateProperty("Approved", "Approved by johndoe@contoso.com"),
 };
-ArmOperation<ManagedInstancePrivateEndpointConnectionResource> lro = await managedInstancePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedInstancePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 ManagedInstancePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

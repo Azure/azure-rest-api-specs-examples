@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this RecoverableManagedDatabaseResource created on azure
+// for more information of creating RecoverableManagedDatabaseResource, please refer to the document of RecoverableManagedDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Test1";
 string managedInstanceName = "managedInstance";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this RecoverableManagedDatabaseResource
-RecoverableManagedDatabaseCollection collection = managedInstance.GetRecoverableManagedDatabases();
+string recoverableDatabaseName = "testdb";
+ResourceIdentifier recoverableManagedDatabaseResourceId = RecoverableManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, recoverableDatabaseName);
+RecoverableManagedDatabaseResource recoverableManagedDatabase = client.GetRecoverableManagedDatabaseResource(recoverableManagedDatabaseResourceId);
 
 // invoke the operation
-string recoverableDatabaseName = "testdb";
-bool result = await collection.ExistsAsync(recoverableDatabaseName);
+RecoverableManagedDatabaseResource result = await recoverableManagedDatabase.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RecoverableManagedDatabaseData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

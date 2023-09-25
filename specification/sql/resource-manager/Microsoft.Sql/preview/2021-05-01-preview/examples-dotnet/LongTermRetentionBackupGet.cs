@@ -1,10 +1,11 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Sql;
+using Azure.ResourceManager.Sql.Models;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/LongTermRetentionBackupGet.json
 // this example is just showing the usage of "LongTermRetentionBackups_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SubscriptionLongTermRetentionBackupResource created on azure
+// for more information of creating SubscriptionLongTermRetentionBackupResource, please refer to the document of SubscriptionLongTermRetentionBackupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SubscriptionLongTermRetentionBackupResource
 AzureLocation locationName = new AzureLocation("japaneast");
 string longTermRetentionServerName = "testserver";
 string longTermRetentionDatabaseName = "testDatabase";
-SubscriptionLongTermRetentionBackupCollection collection = subscriptionResource.GetSubscriptionLongTermRetentionBackups(locationName, longTermRetentionServerName, longTermRetentionDatabaseName);
+string backupName = "55555555-6666-7777-8888-999999999999;131637960820000000";
+ResourceIdentifier subscriptionLongTermRetentionBackupResourceId = SubscriptionLongTermRetentionBackupResource.CreateResourceIdentifier(subscriptionId, locationName, longTermRetentionServerName, longTermRetentionDatabaseName, backupName);
+SubscriptionLongTermRetentionBackupResource subscriptionLongTermRetentionBackup = client.GetSubscriptionLongTermRetentionBackupResource(subscriptionLongTermRetentionBackupResourceId);
 
 // invoke the operation
-string backupName = "55555555-6666-7777-8888-999999999999;131637960820000000";
-bool result = await collection.ExistsAsync(backupName);
+SubscriptionLongTermRetentionBackupResource result = await subscriptionLongTermRetentionBackup.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LongTermRetentionBackupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

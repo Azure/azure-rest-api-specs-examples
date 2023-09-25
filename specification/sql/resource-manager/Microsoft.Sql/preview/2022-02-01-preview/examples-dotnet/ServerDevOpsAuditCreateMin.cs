@@ -15,23 +15,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerDevOpsAuditingSettingResource created on azure
-// for more information of creating SqlServerDevOpsAuditingSettingResource, please refer to the document of SqlServerDevOpsAuditingSettingResource
+// this example assumes you already have this SqlServerResource created on azure
+// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "devAuditTestRG";
 string serverName = "devOpsAuditTestSvr";
-string devOpsAuditingSettingsName = "Default";
-ResourceIdentifier sqlServerDevOpsAuditingSettingResourceId = SqlServerDevOpsAuditingSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, devOpsAuditingSettingsName);
-SqlServerDevOpsAuditingSettingResource sqlServerDevOpsAuditingSetting = client.GetSqlServerDevOpsAuditingSettingResource(sqlServerDevOpsAuditingSettingResourceId);
+ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
+
+// get the collection of this SqlServerDevOpsAuditingSettingResource
+SqlServerDevOpsAuditingSettingCollection collection = sqlServer.GetSqlServerDevOpsAuditingSettings();
 
 // invoke the operation
+string devOpsAuditingSettingsName = "Default";
 SqlServerDevOpsAuditingSettingData data = new SqlServerDevOpsAuditingSettingData()
 {
     State = BlobAuditingPolicyState.Enabled,
     StorageEndpoint = "https://mystorage.blob.core.windows.net",
     StorageAccountAccessKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
 };
-ArmOperation<SqlServerDevOpsAuditingSettingResource> lro = await sqlServerDevOpsAuditingSetting.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SqlServerDevOpsAuditingSettingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, devOpsAuditingSettingsName, data);
 SqlServerDevOpsAuditingSettingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

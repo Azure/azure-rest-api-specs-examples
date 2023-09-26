@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this ManagedInstanceStartStopScheduleResource created on azure
+// for more information of creating ManagedInstanceStartStopScheduleResource, please refer to the document of ManagedInstanceStartStopScheduleResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "schedulerg";
 string managedInstanceName = "schedulemi";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this ManagedInstanceStartStopScheduleResource
-ManagedInstanceStartStopScheduleCollection collection = managedInstance.GetManagedInstanceStartStopSchedules();
+ManagedInstanceStartStopScheduleName startStopScheduleName = ManagedInstanceStartStopScheduleName.Default;
+ResourceIdentifier managedInstanceStartStopScheduleResourceId = ManagedInstanceStartStopScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, startStopScheduleName);
+ManagedInstanceStartStopScheduleResource managedInstanceStartStopSchedule = client.GetManagedInstanceStartStopScheduleResource(managedInstanceStartStopScheduleResourceId);
 
 // invoke the operation
-ManagedInstanceStartStopScheduleName startStopScheduleName = ManagedInstanceStartStopScheduleName.Default;
-bool result = await collection.ExistsAsync(startStopScheduleName);
+ManagedInstanceStartStopScheduleResource result = await managedInstanceStartStopSchedule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ManagedInstanceStartStopScheduleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

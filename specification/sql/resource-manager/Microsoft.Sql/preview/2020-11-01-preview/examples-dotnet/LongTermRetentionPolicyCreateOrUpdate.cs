@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseResource created on azure
-// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
+// this example assumes you already have this LongTermRetentionPolicyResource created on azure
+// for more information of creating LongTermRetentionPolicyResource, please refer to the document of LongTermRetentionPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "resourceGroup";
 string serverName = "testserver";
 string databaseName = "testDatabase";
-ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
-
-// get the collection of this LongTermRetentionPolicyResource
-LongTermRetentionPolicyCollection collection = sqlDatabase.GetLongTermRetentionPolicies();
+LongTermRetentionPolicyName policyName = LongTermRetentionPolicyName.Default;
+ResourceIdentifier longTermRetentionPolicyResourceId = LongTermRetentionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, policyName);
+LongTermRetentionPolicyResource longTermRetentionPolicy = client.GetLongTermRetentionPolicyResource(longTermRetentionPolicyResourceId);
 
 // invoke the operation
-LongTermRetentionPolicyName policyName = LongTermRetentionPolicyName.Default;
 LongTermRetentionPolicyData data = new LongTermRetentionPolicyData()
 {
     WeeklyRetention = "P1M",
@@ -36,7 +33,7 @@ LongTermRetentionPolicyData data = new LongTermRetentionPolicyData()
     YearlyRetention = "P5Y",
     WeekOfYear = 5,
 };
-ArmOperation<LongTermRetentionPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
+ArmOperation<LongTermRetentionPolicyResource> lro = await longTermRetentionPolicy.UpdateAsync(WaitUntil.Completed, data);
 LongTermRetentionPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

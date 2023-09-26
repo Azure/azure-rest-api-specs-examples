@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this ServiceObjectiveResource created on azure
+// for more information of creating ServiceObjectiveResource, please refer to the document of ServiceObjectiveResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "sqlcrudtest";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this ServiceObjectiveResource
-ServiceObjectiveCollection collection = sqlServer.GetServiceObjectives();
+string serviceObjectiveName = "29dd7459-4a7c-4e56-be22-f0adda49440d";
+ResourceIdentifier serviceObjectiveResourceId = ServiceObjectiveResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, serviceObjectiveName);
+ServiceObjectiveResource serviceObjective = client.GetServiceObjectiveResource(serviceObjectiveResourceId);
 
 // invoke the operation
-string serviceObjectiveName = "29dd7459-4a7c-4e56-be22-f0adda49440d";
-bool result = await collection.ExistsAsync(serviceObjectiveName);
+ServiceObjectiveResource result = await serviceObjective.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ServiceObjectiveData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -29,6 +30,18 @@ ResourceGroupLongTermRetentionBackupCollection collection = resourceGroupResourc
 
 // invoke the operation
 string backupName = "55555555-6666-7777-8888-999999999999;131637960820000000";
-bool result = await collection.ExistsAsync(backupName);
+NullableResponse<ResourceGroupLongTermRetentionBackupResource> response = await collection.GetIfExistsAsync(backupName);
+ResourceGroupLongTermRetentionBackupResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LongTermRetentionBackupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

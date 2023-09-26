@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseResource created on azure
-// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
+// this example assumes you already have this SqlDatabaseSecurityAlertPolicyResource created on azure
+// for more information of creating SqlDatabaseSecurityAlertPolicyResource, please refer to the document of SqlDatabaseSecurityAlertPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securityalert-6852";
 string serverName = "securityalert-2080";
 string databaseName = "testdb";
-ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
-
-// get the collection of this SqlDatabaseSecurityAlertPolicyResource
-SqlDatabaseSecurityAlertPolicyCollection collection = sqlDatabase.GetSqlDatabaseSecurityAlertPolicies();
+SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
+ResourceIdentifier sqlDatabaseSecurityAlertPolicyResourceId = SqlDatabaseSecurityAlertPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, securityAlertPolicyName);
+SqlDatabaseSecurityAlertPolicyResource sqlDatabaseSecurityAlertPolicy = client.GetSqlDatabaseSecurityAlertPolicyResource(sqlDatabaseSecurityAlertPolicyResourceId);
 
 // invoke the operation
-SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-bool result = await collection.ExistsAsync(securityAlertPolicyName);
+SqlDatabaseSecurityAlertPolicyResource result = await sqlDatabaseSecurityAlertPolicy.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlDatabaseSecurityAlertPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

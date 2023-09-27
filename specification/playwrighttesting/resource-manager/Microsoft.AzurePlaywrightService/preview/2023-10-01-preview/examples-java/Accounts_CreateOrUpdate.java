@@ -1,0 +1,38 @@
+import com.azure.resourcemanager.playwrighttesting.models.EnablementStatus;
+import java.util.HashMap;
+import java.util.Map;
+
+/** Samples for Accounts CreateOrUpdate. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/playwrighttesting/resource-manager/Microsoft.AzurePlaywrightService/preview/2023-10-01-preview/examples/Accounts_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: Accounts_CreateOrUpdate.
+     *
+     * @param manager Entry point to PlaywrightTestingManager.
+     */
+    public static void accountsCreateOrUpdate(
+        com.azure.resourcemanager.playwrighttesting.PlaywrightTestingManager manager) {
+        manager
+            .accounts()
+            .define("myPlaywrightAccount")
+            .withRegion("westus")
+            .withExistingResourceGroup("dummyrg")
+            .withTags(mapOf("Team", "Dev Exp"))
+            .withRegionalAffinity(EnablementStatus.ENABLED)
+            .create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -26,6 +27,18 @@ VpnSiteLinkCollection collection = vpnSite.GetVpnSiteLinks();
 
 // invoke the operation
 string vpnSiteLinkName = "vpnSiteLink1";
-bool result = await collection.ExistsAsync(vpnSiteLinkName);
+NullableResponse<VpnSiteLinkResource> response = await collection.GetIfExistsAsync(vpnSiteLinkName);
+VpnSiteLinkResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VpnSiteLinkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

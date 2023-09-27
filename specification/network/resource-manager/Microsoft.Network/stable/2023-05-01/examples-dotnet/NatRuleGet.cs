@@ -28,6 +28,18 @@ VpnGatewayNatRuleCollection collection = vpnGateway.GetVpnGatewayNatRules();
 
 // invoke the operation
 string natRuleName = "natRule1";
-bool result = await collection.ExistsAsync(natRuleName);
+NullableResponse<VpnGatewayNatRuleResource> response = await collection.GetIfExistsAsync(natRuleName);
+VpnGatewayNatRuleResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VpnGatewayNatRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

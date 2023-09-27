@@ -28,6 +28,18 @@ DataFactoryIntegrationRuntimeCollection collection = dataFactory.GetDataFactoryI
 
 // invoke the operation
 string integrationRuntimeName = "exampleIntegrationRuntime";
-bool result = await collection.ExistsAsync(integrationRuntimeName);
+NullableResponse<DataFactoryIntegrationRuntimeResource> response = await collection.GetIfExistsAsync(integrationRuntimeName);
+DataFactoryIntegrationRuntimeResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataFactoryIntegrationRuntimeData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

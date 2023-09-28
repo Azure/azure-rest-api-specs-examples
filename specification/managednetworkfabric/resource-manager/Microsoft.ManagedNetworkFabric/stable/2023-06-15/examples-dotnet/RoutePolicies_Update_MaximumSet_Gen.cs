@@ -27,6 +27,7 @@ NetworkFabricRoutePolicyResource networkFabricRoutePolicy = client.GetNetworkFab
 // invoke the operation
 NetworkFabricRoutePolicyPatch patch = new NetworkFabricRoutePolicyPatch()
 {
+    DefaultAction = CommunityActionType.Deny,
     Statements =
     {
     new RoutePolicyStatementProperties(7,new StatementConditionProperties()

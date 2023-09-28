@@ -1,9 +1,11 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ManagedNetworkFabric;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkFabricSkus_Get_MaximumSet_Gen.json
 // this example is just showing the usage of "NetworkFabricSkus_Get" operation, for the dependent resources, they will have to be created separately.
@@ -13,18 +15,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkFabricSkuResource created on azure
-// for more information of creating NetworkFabricSkuResource, please refer to the document of NetworkFabricSkuResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "1234ABCD-0A1B-1234-5678-123456ABCDEF";
-string networkFabricSkuName = "example-fabricsku";
-ResourceIdentifier networkFabricSkuResourceId = NetworkFabricSkuResource.CreateResourceIdentifier(subscriptionId, networkFabricSkuName);
-NetworkFabricSkuResource networkFabricSku = client.GetNetworkFabricSkuResource(networkFabricSkuResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this NetworkFabricSkuResource
+NetworkFabricSkuCollection collection = subscriptionResource.GetNetworkFabricSkus();
 
 // invoke the operation
-NetworkFabricSkuResource result = await networkFabricSku.GetAsync();
+string networkFabricSkuName = "example-fabricsku";
+NullableResponse<NetworkFabricSkuResource> response = await collection.GetIfExistsAsync(networkFabricSkuName);
+NetworkFabricSkuResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkFabricSkuData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkFabricSkuData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

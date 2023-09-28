@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryManagedVirtualNetworkResource created on azure
-// for more information of creating DataFactoryManagedVirtualNetworkResource, please refer to the document of DataFactoryManagedVirtualNetworkResource
+// this example assumes you already have this DataFactoryPrivateEndpointResource created on azure
+// for more information of creating DataFactoryPrivateEndpointResource, please refer to the document of DataFactoryPrivateEndpointResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
 string managedVirtualNetworkName = "exampleManagedVirtualNetworkName";
-ResourceIdentifier dataFactoryManagedVirtualNetworkResourceId = DataFactoryManagedVirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, managedVirtualNetworkName);
-DataFactoryManagedVirtualNetworkResource dataFactoryManagedVirtualNetwork = client.GetDataFactoryManagedVirtualNetworkResource(dataFactoryManagedVirtualNetworkResourceId);
-
-// get the collection of this DataFactoryPrivateEndpointResource
-DataFactoryPrivateEndpointCollection collection = dataFactoryManagedVirtualNetwork.GetDataFactoryPrivateEndpoints();
+string managedPrivateEndpointName = "exampleManagedPrivateEndpointName";
+ResourceIdentifier dataFactoryPrivateEndpointResourceId = DataFactoryPrivateEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, managedVirtualNetworkName, managedPrivateEndpointName);
+DataFactoryPrivateEndpointResource dataFactoryPrivateEndpoint = client.GetDataFactoryPrivateEndpointResource(dataFactoryPrivateEndpointResourceId);
 
 // invoke the operation
-string managedPrivateEndpointName = "exampleManagedPrivateEndpointName";
-bool result = await collection.ExistsAsync(managedPrivateEndpointName);
+DataFactoryPrivateEndpointResource result = await dataFactoryPrivateEndpoint.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataFactoryPrivateEndpointData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

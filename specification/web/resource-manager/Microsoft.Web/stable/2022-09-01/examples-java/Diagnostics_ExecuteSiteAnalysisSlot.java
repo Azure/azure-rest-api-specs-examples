@@ -1,4 +1,4 @@
-/** Samples for Diagnostics ExecuteSiteAnalysisSlot. */
+/** Samples for Diagnostics ExecuteSiteAnalysis. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/Diagnostics_ExecuteSiteAnalysisSlot.json
@@ -14,12 +14,11 @@ public final class Main {
             .manager()
             .serviceClient()
             .getDiagnostics()
-            .executeSiteAnalysisSlotWithResponse(
+            .executeSiteAnalysisWithResponse(
                 "Sample-WestUSResourceGroup",
                 "SampleApp",
                 "availability",
                 "apprestartanalyses",
-                "staging",
                 null,
                 null,
                 null,

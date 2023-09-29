@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this NetworkFabricRoutePolicyResource created on azure
+// for more information of creating NetworkFabricRoutePolicyResource, please refer to the document of NetworkFabricRoutePolicyResource
 string subscriptionId = "1234ABCD-0A1B-1234-5678-123456ABCDEF";
 string resourceGroupName = "example-rg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this NetworkFabricRoutePolicyResource
-NetworkFabricRoutePolicyCollection collection = resourceGroupResource.GetNetworkFabricRoutePolicies();
+string routePolicyName = "example-routePolicy";
+ResourceIdentifier networkFabricRoutePolicyResourceId = NetworkFabricRoutePolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, routePolicyName);
+NetworkFabricRoutePolicyResource networkFabricRoutePolicy = client.GetNetworkFabricRoutePolicyResource(networkFabricRoutePolicyResourceId);
 
 // invoke the operation
-string routePolicyName = "example-routePolicy";
-bool result = await collection.ExistsAsync(routePolicyName);
+NetworkFabricRoutePolicyResource result = await networkFabricRoutePolicy.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkFabricRoutePolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

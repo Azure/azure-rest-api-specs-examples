@@ -33,6 +33,7 @@ NetworkFabricAccessControlListData data = new NetworkFabricAccessControlListData
     Annotation = "annotation",
     ConfigurationType = NetworkFabricConfigurationType.File,
     AclsUri = new Uri("https://ACL-Storage-URL"),
+    DefaultAction = CommunityActionType.Permit,
     MatchConfigurations =
     {
     new AccessControlListMatchConfiguration()

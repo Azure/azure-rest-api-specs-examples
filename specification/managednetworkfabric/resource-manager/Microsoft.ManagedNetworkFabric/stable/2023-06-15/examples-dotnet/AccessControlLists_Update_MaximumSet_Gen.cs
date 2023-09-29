@@ -29,6 +29,7 @@ NetworkFabricAccessControlListPatch patch = new NetworkFabricAccessControlListPa
 {
     ConfigurationType = NetworkFabricConfigurationType.File,
     AclsUri = new Uri("https://microsoft.com/a"),
+    DefaultAction = CommunityActionType.Permit,
     MatchConfigurations =
     {
     new AccessControlListMatchConfiguration()

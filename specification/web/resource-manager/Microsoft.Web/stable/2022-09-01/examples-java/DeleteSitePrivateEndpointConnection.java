@@ -1,4 +1,4 @@
-/** Samples for StaticSites DeletePrivateEndpointConnection. */
+/** Samples for WebApps DeletePrivateEndpointConnection. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/DeleteSitePrivateEndpointConnection.json
@@ -13,7 +13,7 @@ public final class Main {
             .webApps()
             .manager()
             .serviceClient()
-            .getStaticSites()
+            .getWebApps()
             .deletePrivateEndpointConnection("rg", "testSite", "connection", com.azure.core.util.Context.NONE);
     }
 }

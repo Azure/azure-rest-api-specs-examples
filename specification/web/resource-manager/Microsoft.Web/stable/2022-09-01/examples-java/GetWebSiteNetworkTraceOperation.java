@@ -1,4 +1,4 @@
-/** Samples for WebApps GetNetworkTraceOperationSlot. */
+/** Samples for WebApps GetNetworkTraceOperation. */
 public final class Main {
     /*
      * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2022-09-01/examples/GetWebSiteNetworkTraceOperation.json
@@ -15,11 +15,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .getNetworkTraceOperationSlotWithResponse(
-                "testrg123",
-                "SampleApp",
-                "c291433b-53ad-4c49-8cae-0a293eae1c6d",
-                "Production",
-                com.azure.core.util.Context.NONE);
+            .getNetworkTraceOperationWithResponse(
+                "testrg123", "SampleApp", "c291433b-53ad-4c49-8cae-0a293eae1c6d", com.azure.core.util.Context.NONE);
     }
 }

@@ -4,8 +4,8 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.DatabaseFleetManager;
-using Azure.ResourceManager.DatabaseFleetManager.Models;
+using Azure.ResourceManager.ContainerServiceFleet;
+using Azure.ResourceManager.ContainerServiceFleet.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2023-06-15-preview/examples/Fleets_ListBySub.json
@@ -23,11 +23,11 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (DatabaseFleetResource item in subscriptionResource.GetDatabaseFleetsAsync())
+await foreach (ContainerServiceFleetResource item in subscriptionResource.GetContainerServiceFleetsAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    DatabaseFleetData resourceData = item.Data;
+    ContainerServiceFleetData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

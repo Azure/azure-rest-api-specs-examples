@@ -4,8 +4,8 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.DatabaseFleetManager;
-using Azure.ResourceManager.DatabaseFleetManager.Models;
+using Azure.ResourceManager.ContainerServiceFleet;
+using Azure.ResourceManager.ContainerServiceFleet.Models;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/preview/2023-06-15-preview/examples/UpdateRuns_CreateOrUpdate.json
 // this example is just showing the usage of "UpdateRuns_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,30 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseFleetUpdateRunResource created on azure
-// for more information of creating DatabaseFleetUpdateRunResource, please refer to the document of DatabaseFleetUpdateRunResource
+// this example assumes you already have this ContainerServiceFleetResource created on azure
+// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
-string updateRunName = "run1";
-ResourceIdentifier databaseFleetUpdateRunResourceId = DatabaseFleetUpdateRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateRunName);
-DatabaseFleetUpdateRunResource databaseFleetUpdateRun = client.GetDatabaseFleetUpdateRunResource(databaseFleetUpdateRunResourceId);
+ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
+ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
+
+// get the collection of this ContainerServiceFleetUpdateRunResource
+ContainerServiceFleetUpdateRunCollection collection = containerServiceFleet.GetContainerServiceFleetUpdateRuns();
 
 // invoke the operation
-DatabaseFleetUpdateRunData data = new DatabaseFleetUpdateRunData()
+string updateRunName = "run1";
+ContainerServiceFleetUpdateRunData data = new ContainerServiceFleetUpdateRunData()
 {
     StrategyStages =
     {
-    new FleetUpdateStage("stage1")
+    new ContainerServiceFleetUpdateStage("stage1")
     {
     Groups =
     {
-    new FleetUpdateGroup("group-a")
+    new ContainerServiceFleetUpdateGroup("group-a")
     },
     AfterStageWaitInSeconds = 3600,
     }
     },
-    ManagedClusterUpdate = new FleetManagedClusterUpdate(new FleetManagedClusterUpgradeSpec(FleetManagedClusterUpgradeType.Full)
+    ManagedClusterUpdate = new ContainerServiceFleetManagedClusterUpdate(new ContainerServiceFleetManagedClusterUpgradeSpec(ContainerServiceFleetManagedClusterUpgradeType.Full)
     {
         KubernetesVersion = "1.26.1",
     })
@@ -46,11 +49,11 @@ DatabaseFleetUpdateRunData data = new DatabaseFleetUpdateRunData()
         SelectionType = NodeImageSelectionType.Latest,
     },
 };
-ArmOperation<DatabaseFleetUpdateRunResource> lro = await databaseFleetUpdateRun.UpdateAsync(WaitUntil.Completed, data);
-DatabaseFleetUpdateRunResource result = lro.Value;
+ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateRunName, data);
+ContainerServiceFleetUpdateRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-DatabaseFleetUpdateRunData resourceData = result.Data;
+ContainerServiceFleetUpdateRunData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

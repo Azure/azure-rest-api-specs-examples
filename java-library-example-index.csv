@@ -3238,3 +3238,5 @@ id,name,language,tag,package,version,date_epoch,date
 3237,azure-mgmt-cosmosdb@9.3.0,python,azure-mgmt-cosmosdb_9.3.0,azure-mgmt-cosmosdb,9.3.0,1695883507,09/28/2023
 3238,"Azure.ResourceManager.MachineLearning,1.2.0-beta.2",dotnet,Azure.ResourceManager.MachineLearning_1.2.0-beta.2,Azure.ResourceManager.MachineLearning,1.2.0-beta.2,1696000840,09/29/2023
 3239,"Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0-beta.1",dotnet,Azure.ResourceManager.RecoveryServicesDataReplication_1.0.0-beta.1,Azure.ResourceManager.RecoveryServicesDataReplication,1.0.0-beta.1,1696000701,09/29/2023
+3240,"Azure.ResourceManager.ContainerServiceFleet,1.0.0-beta.1",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.0.0-beta.1,Azure.ResourceManager.ContainerServiceFleet,1.0.0-beta.1,1696677597,10/07/2023
+3241,azure-mgmt-redhatopenshift@1.4.0,python,azure-mgmt-redhatopenshift_1.4.0,azure-mgmt-redhatopenshift,1.4.0,1696670487,10/07/2023

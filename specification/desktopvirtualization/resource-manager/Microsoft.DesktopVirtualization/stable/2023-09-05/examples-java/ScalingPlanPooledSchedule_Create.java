@@ -1,0 +1,43 @@
+import com.azure.resourcemanager.desktopvirtualization.models.DayOfWeek;
+import com.azure.resourcemanager.desktopvirtualization.models.SessionHostLoadBalancingAlgorithm;
+import com.azure.resourcemanager.desktopvirtualization.models.Time;
+import java.util.Arrays;
+
+/** Samples for ScalingPlanPooledSchedules Create. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/examples/ScalingPlanPooledSchedule_Create.json
+     */
+    /**
+     * Sample code: ScalingPlanPooledSchedules_Create.
+     *
+     * @param manager Entry point to DesktopVirtualizationManager.
+     */
+    public static void scalingPlanPooledSchedulesCreate(
+        com.azure.resourcemanager.desktopvirtualization.DesktopVirtualizationManager manager) {
+        manager
+            .scalingPlanPooledSchedules()
+            .define("scalingPlanScheduleWeekdays1")
+            .withExistingScalingPlan("resourceGroup1", "scalingPlan1")
+            .withDaysOfWeek(
+                Arrays
+                    .asList(
+                        DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY))
+            .withRampUpStartTime(new Time().withHour(6).withMinute(0))
+            .withRampUpLoadBalancingAlgorithm(SessionHostLoadBalancingAlgorithm.DEPTH_FIRST)
+            .withRampUpMinimumHostsPct(20)
+            .withRampUpCapacityThresholdPct(80)
+            .withPeakStartTime(new Time().withHour(8).withMinute(0))
+            .withPeakLoadBalancingAlgorithm(SessionHostLoadBalancingAlgorithm.BREADTH_FIRST)
+            .withRampDownStartTime(new Time().withHour(18).withMinute(0))
+            .withRampDownLoadBalancingAlgorithm(SessionHostLoadBalancingAlgorithm.DEPTH_FIRST)
+            .withRampDownMinimumHostsPct(20)
+            .withRampDownCapacityThresholdPct(50)
+            .withRampDownForceLogoffUsers(true)
+            .withRampDownWaitTimeMinutes(30)
+            .withRampDownNotificationMessage("message")
+            .withOffPeakStartTime(new Time().withHour(20).withMinute(0))
+            .withOffPeakLoadBalancingAlgorithm(SessionHostLoadBalancingAlgorithm.DEPTH_FIRST)
+            .create();
+    }
+}

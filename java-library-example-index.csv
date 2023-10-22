@@ -3253,3 +3253,10 @@ id,name,language,tag,package,version,date_epoch,date
 3252,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.0.0,java,azure-resourcemanager-postgresqlflexibleserver_1.0.0,azure-resourcemanager-postgresqlflexibleserver,1.0.0,1697003440,10/11/2023
 3253,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.2.0,java,azure-resourcemanager-recoveryservicesbackup_1.2.0,azure-resourcemanager-recoveryservicesbackup,1.2.0,1697096900,10/12/2023
 3254,"Azure.ResourceManager.ContainerServiceFleet,1.0.0-beta.2",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.0.0-beta.2,Azure.ResourceManager.ContainerServiceFleet,1.0.0-beta.2,1697191079,10/13/2023
+3255,com.azure.resourcemanager:azure-resourcemanager-desktopvirtualization:1.1.0,java,azure-resourcemanager-desktopvirtualization_1.1.0,azure-resourcemanager-desktopvirtualization,1.1.0,1697507715,10/17/2023
+3256,"Azure.ResourceManager.HybridCompute,1.0.0-beta.5",dotnet,Azure.ResourceManager.HybridCompute_1.0.0-beta.5,Azure.ResourceManager.HybridCompute,1.0.0-beta.5,1697533293,10/17/2023
+3257,azure-mgmt-keyvault@10.3.0,python,azure-mgmt-keyvault_10.3.0,azure-mgmt-keyvault,10.3.0,1697624162,10/18/2023
+3258,"Azure.ResourceManager.NetApp,1.4.0",dotnet,Azure.ResourceManager.NetApp_1.4.0,Azure.ResourceManager.NetApp,1.4.0,1697684516,10/19/2023
+3259,com.azure.resourcemanager:azure-resourcemanager-netapp:1.0.0,java,azure-resourcemanager-netapp_1.0.0,azure-resourcemanager-netapp,1.0.0,1697773354,10/20/2023
+3260,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.0.0-beta.4,java,azure-resourcemanager-azurestackhci_1.0.0-beta.4,azure-resourcemanager-azurestackhci,1.0.0-beta.4,1697772739,10/20/2023
+3261,@azure/arm-containerservice@19.4.0-beta.2,js,@azure/arm-containerservice_19.4.0-beta.2,@azure/arm-containerservice,19.4.0-beta.2,1697769646,10/20/2023

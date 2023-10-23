@@ -1,0 +1,46 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.desktopvirtualization import DesktopVirtualizationMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-desktopvirtualization
+# USAGE
+    python application_create.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = DesktopVirtualizationMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="daefabc0-95b4-48b3-b645-8a753a63c4fa",
+    )
+
+    response = client.applications.create_or_update(
+        resource_group_name="resourceGroup1",
+        application_group_name="applicationGroup1",
+        application_name="application1",
+        application={
+            "properties": {
+                "commandLineArguments": "arguments",
+                "commandLineSetting": "Allow",
+                "description": "des1",
+                "filePath": "path",
+                "friendlyName": "friendly",
+                "iconIndex": 1,
+                "iconPath": "icon",
+                "showInPortal": True,
+            }
+        },
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/examples/Application_Create.json
+if __name__ == "__main__":
+    main()

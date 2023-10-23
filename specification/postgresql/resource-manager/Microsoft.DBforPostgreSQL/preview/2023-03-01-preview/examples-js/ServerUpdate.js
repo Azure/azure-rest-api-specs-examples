@@ -17,7 +17,7 @@ async function serverUpdate() {
     backup: { backupRetentionDays: 20 },
     createMode: "Update",
     sku: { name: "Standard_D8s_v3", tier: "GeneralPurpose" },
-    storage: { autoGrow: "Enabled", iopsTier: "P30", storageSizeGB: 1024 },
+    storage: { autoGrow: "Enabled", storageSizeGB: 1024, tier: "P30" },
   };
   const credential = new DefaultAzureCredential();
   const client = new PostgreSQLManagementFlexibleServerClient(credential, subscriptionId);

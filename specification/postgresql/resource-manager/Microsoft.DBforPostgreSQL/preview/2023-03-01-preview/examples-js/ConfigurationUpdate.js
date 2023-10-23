@@ -13,13 +13,10 @@ async function updateAUserConfiguration() {
   const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "testrg";
   const serverName = "testserver";
   const configurationName = "event_scheduler";
-  const parameters = {
-    source: "user-override",
-    value: "on",
-  };
+  const parameters = { source: "user-override", value: "on" };
   const credential = new DefaultAzureCredential();
   const client = new PostgreSQLManagementFlexibleServerClient(credential, subscriptionId);
-  const result = await client.configurations.beginUpdateAndWait(
+  const result = await client.configurations.beginPutAndWait(
     resourceGroupName,
     serverName,
     configurationName,

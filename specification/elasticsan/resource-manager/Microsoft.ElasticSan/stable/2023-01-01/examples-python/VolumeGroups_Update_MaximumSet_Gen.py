@@ -1,0 +1,57 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.elasticsan import ElasticSanMgmtClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-elasticsan
+# USAGE
+    python volume_groups_update_maximum_set_gen.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ElasticSanMgmtClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="subscriptionid",
+    )
+
+    response = client.volume_groups.begin_update(
+        resource_group_name="resourcegroupname",
+        elastic_san_name="elasticsanname",
+        volume_group_name="volumegroupname",
+        parameters={
+            "identity": {"type": "None", "userAssignedIdentities": {"key7482": {}}},
+            "properties": {
+                "encryption": "EncryptionAtRestWithPlatformKey",
+                "encryptionProperties": {
+                    "identity": {"userAssignedIdentity": "im"},
+                    "keyVaultProperties": {
+                        "keyName": "sftaiernmrzypnrkpakrrawxcbsqzc",
+                        "keyVaultUri": "https://microsoft.com/axmblwp",
+                        "keyVersion": "c",
+                    },
+                },
+                "networkAcls": {
+                    "virtualNetworkRules": [
+                        {
+                            "action": "Allow",
+                            "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}",
+                        }
+                    ]
+                },
+                "protocolType": "Iscsi",
+            },
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2023-01-01/examples/VolumeGroups_Update_MaximumSet_Gen.json
+if __name__ == "__main__":
+    main()

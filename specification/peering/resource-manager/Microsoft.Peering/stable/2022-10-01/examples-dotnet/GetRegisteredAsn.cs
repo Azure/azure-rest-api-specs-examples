@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PeeringRegisteredAsnResource created on azure
-// for more information of creating PeeringRegisteredAsnResource, please refer to the document of PeeringRegisteredAsnResource
+// this example assumes you already have this PeeringResource created on azure
+// for more information of creating PeeringResource, please refer to the document of PeeringResource
 string subscriptionId = "subId";
 string resourceGroupName = "rgName";
 string peeringName = "peeringName";
-string registeredAsnName = "registeredAsnName0";
-ResourceIdentifier peeringRegisteredAsnResourceId = PeeringRegisteredAsnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringName, registeredAsnName);
-PeeringRegisteredAsnResource peeringRegisteredAsn = client.GetPeeringRegisteredAsnResource(peeringRegisteredAsnResourceId);
+ResourceIdentifier peeringResourceId = PeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringName);
+PeeringResource peering = client.GetPeeringResource(peeringResourceId);
+
+// get the collection of this PeeringRegisteredAsnResource
+PeeringRegisteredAsnCollection collection = peering.GetPeeringRegisteredAsns();
 
 // invoke the operation
-PeeringRegisteredAsnResource result = await peeringRegisteredAsn.GetAsync();
+string registeredAsnName = "registeredAsnName0";
+NullableResponse<PeeringRegisteredAsnResource> response = await collection.GetIfExistsAsync(registeredAsnName);
+PeeringRegisteredAsnResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PeeringRegisteredAsnData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PeeringRegisteredAsnData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

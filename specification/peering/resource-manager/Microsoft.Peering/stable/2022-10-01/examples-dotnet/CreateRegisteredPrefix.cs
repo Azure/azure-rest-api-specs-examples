@@ -14,21 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PeeringRegisteredPrefixResource created on azure
-// for more information of creating PeeringRegisteredPrefixResource, please refer to the document of PeeringRegisteredPrefixResource
+// this example assumes you already have this PeeringResource created on azure
+// for more information of creating PeeringResource, please refer to the document of PeeringResource
 string subscriptionId = "subId";
 string resourceGroupName = "rgName";
 string peeringName = "peeringName";
-string registeredPrefixName = "registeredPrefixName";
-ResourceIdentifier peeringRegisteredPrefixResourceId = PeeringRegisteredPrefixResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringName, registeredPrefixName);
-PeeringRegisteredPrefixResource peeringRegisteredPrefix = client.GetPeeringRegisteredPrefixResource(peeringRegisteredPrefixResourceId);
+ResourceIdentifier peeringResourceId = PeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringName);
+PeeringResource peering = client.GetPeeringResource(peeringResourceId);
+
+// get the collection of this PeeringRegisteredPrefixResource
+PeeringRegisteredPrefixCollection collection = peering.GetPeeringRegisteredPrefixes();
 
 // invoke the operation
+string registeredPrefixName = "registeredPrefixName";
 PeeringRegisteredPrefixData data = new PeeringRegisteredPrefixData()
 {
     Prefix = "10.22.20.0/24",
 };
-ArmOperation<PeeringRegisteredPrefixResource> lro = await peeringRegisteredPrefix.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<PeeringRegisteredPrefixResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, registeredPrefixName, data);
 PeeringRegisteredPrefixResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

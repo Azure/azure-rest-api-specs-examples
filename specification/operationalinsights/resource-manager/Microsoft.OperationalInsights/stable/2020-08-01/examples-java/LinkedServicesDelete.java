@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LinkedServices Delete. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void linkedServicesDelete(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.linkedServices().delete("rg1", "TestLinkWS", "Cluster", Context.NONE);
+        manager.linkedServices().delete("rg1", "TestLinkWS", "Cluster", com.azure.core.util.Context.NONE);
     }
 }

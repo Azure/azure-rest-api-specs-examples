@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ManagementGroups List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void workspacesListManagementGroups(
         com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.managementGroups().list("rg1", "TestLinkWS", Context.NONE);
+        manager.managementGroups().list("rg1", "TestLinkWS", com.azure.core.util.Context.NONE);
     }
 }

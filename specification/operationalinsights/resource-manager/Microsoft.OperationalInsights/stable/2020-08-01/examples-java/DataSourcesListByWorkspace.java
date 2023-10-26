@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DataSources ListByWorkspace. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void dataSourcesListByWorkspace(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
         manager
             .dataSources()
-            .listByWorkspace("OIAutoRest5123", "AzTest9724", "kind='WindowsEvent'", null, Context.NONE);
+            .listByWorkspace(
+                "OIAutoRest5123", "AzTest9724", "kind='WindowsEvent'", null, com.azure.core.util.Context.NONE);
     }
 }

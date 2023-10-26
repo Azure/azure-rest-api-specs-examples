@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LinkedServices ListByWorkspace. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void linkedServicesListByWorkspace(
         com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.linkedServices().listByWorkspace("mms-eus", "TestLinkWS", Context.NONE);
+        manager.linkedServices().listByWorkspace("mms-eus", "TestLinkWS", com.azure.core.util.Context.NONE);
     }
 }

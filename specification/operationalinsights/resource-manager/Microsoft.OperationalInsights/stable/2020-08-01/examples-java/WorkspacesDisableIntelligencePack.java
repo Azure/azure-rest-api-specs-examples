@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for IntelligencePacks Disable. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void intelligencePacksDisable(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.intelligencePacks().disableWithResponse("rg1", "TestLinkWS", "ChangeTracking", Context.NONE);
+        manager
+            .intelligencePacks()
+            .disableWithResponse("rg1", "TestLinkWS", "ChangeTracking", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for SavedSearches Get. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void savedSearchesGet(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
         manager
             .savedSearches()
-            .getWithResponse("TestRG", "TestWS", "00000000-0000-0000-0000-00000000000", Context.NONE);
+            .getWithResponse(
+                "TestRG", "TestWS", "00000000-0000-0000-0000-00000000000", com.azure.core.util.Context.NONE);
     }
 }

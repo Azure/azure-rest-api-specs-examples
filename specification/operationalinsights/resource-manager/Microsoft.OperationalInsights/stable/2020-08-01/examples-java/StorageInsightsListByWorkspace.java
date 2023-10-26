@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for StorageInsightConfigs ListByWorkspace. */
 public final class Main {
     /*
@@ -11,6 +9,8 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void storageInsightsList(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.storageInsightConfigs().listByWorkspace("OIAutoRest5123", "aztest5048", Context.NONE);
+        manager
+            .storageInsightConfigs()
+            .listByWorkspace("OIAutoRest5123", "aztest5048", com.azure.core.util.Context.NONE);
     }
 }

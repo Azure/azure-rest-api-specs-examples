@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Queries Delete. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .queries()
             .deleteWithResponse(
-                "my-resource-group", "my-querypack", "a449f8af-8e64-4b3a-9b16-5a7165ff98c4", Context.NONE);
+                "my-resource-group",
+                "my-querypack",
+                "a449f8af-8e64-4b3a-9b16-5a7165ff98c4",
+                com.azure.core.util.Context.NONE);
     }
 }

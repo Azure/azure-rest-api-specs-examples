@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LinkedServices Get. */
 public final class Main {
     /*
@@ -11,6 +9,6 @@ public final class Main {
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void linkedServicesGet(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.linkedServices().getWithResponse("mms-eus", "TestLinkWS", "Cluster", Context.NONE);
+        manager.linkedServices().getWithResponse("mms-eus", "TestLinkWS", "Cluster", com.azure.core.util.Context.NONE);
     }
 }

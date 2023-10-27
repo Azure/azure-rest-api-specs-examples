@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.loganalytics.models.WorkspacePurgeBody;
 import com.azure.resourcemanager.loganalytics.models.WorkspacePurgeBodyFilters;
 import java.util.Arrays;
@@ -29,6 +28,6 @@ public final class Main {
                                     .withOperator("==")
                                     .withValue(
                                         "/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/SomeResourceGroup/providers/microsoft.insights/components/AppInsightResource"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

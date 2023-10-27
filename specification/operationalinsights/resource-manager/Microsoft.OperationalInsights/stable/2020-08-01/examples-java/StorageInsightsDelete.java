@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for StorageInsightConfigs Delete. */
 public final class Main {
     /*
@@ -13,6 +11,6 @@ public final class Main {
     public static void storageInsightsDelete(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
         manager
             .storageInsightConfigs()
-            .deleteWithResponse("OIAutoRest5123", "aztest5048", "AzTestSI1110", Context.NONE);
+            .deleteWithResponse("OIAutoRest5123", "aztest5048", "AzTestSI1110", com.azure.core.util.Context.NONE);
     }
 }

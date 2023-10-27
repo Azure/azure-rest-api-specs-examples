@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.loganalytics.models.LogAnalyticsQueryPack;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,11 +16,12 @@ public final class Main {
         LogAnalyticsQueryPack resource =
             manager
                 .queryPacks()
-                .getByResourceGroupWithResponse("my-resource-group", "my-querypack", Context.NONE)
+                .getByResourceGroupWithResponse("my-resource-group", "my-querypack", com.azure.core.util.Context.NONE)
                 .getValue();
         resource.update().withTags(mapOf("Tag1", "Value1", "Tag2", "Value2")).apply();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for QueryPacks ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void queryPackListByResourceGroup(
         com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager.queryPacks().listByResourceGroup("my-resource-group", Context.NONE);
+        manager.queryPacks().listByResourceGroup("my-resource-group", com.azure.core.util.Context.NONE);
     }
 }

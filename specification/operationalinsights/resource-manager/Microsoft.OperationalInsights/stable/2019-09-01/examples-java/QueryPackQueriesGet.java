@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Queries Get. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void queryGet(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
         manager
             .queries()
-            .getWithResponse("my-resource-group", "my-querypack", "a449f8af-8e64-4b3a-9b16-5a7165ff98c4", Context.NONE);
+            .getWithResponse(
+                "my-resource-group",
+                "my-querypack",
+                "a449f8af-8e64-4b3a-9b16-5a7165ff98c4",
+                com.azure.core.util.Context.NONE);
     }
 }

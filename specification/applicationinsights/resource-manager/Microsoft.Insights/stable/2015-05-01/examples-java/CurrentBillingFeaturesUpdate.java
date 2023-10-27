@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.applicationinsights.fluent.models.ApplicationInsightsComponentBillingFeaturesInner;
 import com.azure.resourcemanager.applicationinsights.models.ApplicationInsightsComponentDataVolumeCap;
 import java.util.Arrays;
@@ -23,9 +22,9 @@ public final class Main {
                 new ApplicationInsightsComponentBillingFeaturesInner()
                     .withDataVolumeCap(
                         new ApplicationInsightsComponentDataVolumeCap()
-                            .withCap(100.0f)
+                            .withCap(100.0F)
                             .withStopSendNotificationWhenHitCap(true))
                     .withCurrentBillingFeatures(Arrays.asList("Basic", "Application Insights Enterprise")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

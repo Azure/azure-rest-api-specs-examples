@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Components Delete. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void componentsDelete(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.components().deleteWithResponse("my-resource-group", "my-component", Context.NONE);
+        manager
+            .components()
+            .deleteByResourceGroupWithResponse("my-resource-group", "my-component", com.azure.core.util.Context.NONE);
     }
 }

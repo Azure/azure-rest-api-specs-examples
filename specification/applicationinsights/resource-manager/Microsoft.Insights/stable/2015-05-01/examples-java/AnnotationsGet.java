@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Annotations Get. */
 public final class Main {
     /*
@@ -14,6 +12,10 @@ public final class Main {
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
         manager
             .annotations()
-            .getWithResponse("my-resource-group", "my-component", "444e2c08-274a-4bbb-a89e-d77bb720f44a", Context.NONE);
+            .getWithResponse(
+                "my-resource-group",
+                "my-component",
+                "444e2c08-274a-4bbb-a89e-d77bb720f44a",
+                com.azure.core.util.Context.NONE);
     }
 }

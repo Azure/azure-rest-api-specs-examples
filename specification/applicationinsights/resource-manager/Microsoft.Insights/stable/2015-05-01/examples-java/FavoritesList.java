@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Favorites List. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void favoritesList(com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
         manager
             .favorites()
-            .listWithResponse("my-resource-group", "my-ai-component", null, null, null, null, Context.NONE);
+            .listWithResponse(
+                "my-resource-group", "my-ai-component", null, null, null, null, com.azure.core.util.Context.NONE);
     }
 }

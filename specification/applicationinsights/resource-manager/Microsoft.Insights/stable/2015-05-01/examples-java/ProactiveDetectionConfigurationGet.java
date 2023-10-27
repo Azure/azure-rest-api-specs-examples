@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ProactiveDetectionConfigurations Get. */
 public final class Main {
     /*
@@ -14,6 +12,6 @@ public final class Main {
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
         manager
             .proactiveDetectionConfigurations()
-            .getWithResponse("my-resource-group", "my-component", "slowpageloadtime", Context.NONE);
+            .getWithResponse("my-resource-group", "my-component", "slowpageloadtime", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Components List. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void componentsListJson(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.components().list(Context.NONE);
+        manager.components().list(com.azure.core.util.Context.NONE);
     }
 }

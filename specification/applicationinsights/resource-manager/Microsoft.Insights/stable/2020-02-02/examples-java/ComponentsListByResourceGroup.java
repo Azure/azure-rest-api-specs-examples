@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Components ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void componentListByResourceGroup(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.components().listByResourceGroup("my-resource-group", Context.NONE);
+        manager.components().listByResourceGroup("my-resource-group", com.azure.core.util.Context.NONE);
     }
 }

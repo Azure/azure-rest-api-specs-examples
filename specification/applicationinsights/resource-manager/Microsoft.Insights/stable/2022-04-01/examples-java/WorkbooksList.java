@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.applicationinsights.models.CategoryType;
 
 /** Samples for Workbooks ListByResourceGroup. */
@@ -20,6 +19,6 @@ public final class Main {
                 null,
                 "/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourceGroups/my-resource-group/providers/Microsoft.Web/sites/MyApp",
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

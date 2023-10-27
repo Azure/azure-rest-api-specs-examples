@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.applicationinsights.fluent.models.ApplicationInsightsComponentProactiveDetectionConfigurationInner;
 import com.azure.resourcemanager.applicationinsights.models.ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions;
 import java.util.Arrays;
@@ -37,6 +36,6 @@ public final class Main {
                             .withIsEnabledByDefault(true)
                             .withIsInPreview(false)
                             .withSupportsEmailNotifications(true)),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

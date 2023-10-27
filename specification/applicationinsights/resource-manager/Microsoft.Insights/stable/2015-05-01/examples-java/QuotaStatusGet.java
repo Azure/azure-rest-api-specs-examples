@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ComponentQuotaStatus Get. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void componentCurrentBillingFeaturesGet(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.componentQuotaStatus().getWithResponse("my-resource-group", "my-component", Context.NONE);
+        manager
+            .componentQuotaStatus()
+            .getWithResponse("my-resource-group", "my-component", com.azure.core.util.Context.NONE);
     }
 }

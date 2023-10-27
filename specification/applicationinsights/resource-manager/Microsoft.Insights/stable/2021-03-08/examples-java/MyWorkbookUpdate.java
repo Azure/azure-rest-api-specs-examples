@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.applicationinsights.models.Kind;
 import com.azure.resourcemanager.applicationinsights.models.MyWorkbook;
 
@@ -18,7 +17,7 @@ public final class Main {
             manager
                 .myWorkbooks()
                 .getByResourceGroupWithResponse(
-                    "my-resource-group", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", Context.NONE)
+                    "my-resource-group", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", com.azure.core.util.Context.NONE)
                 .getValue();
         resource
             .update()

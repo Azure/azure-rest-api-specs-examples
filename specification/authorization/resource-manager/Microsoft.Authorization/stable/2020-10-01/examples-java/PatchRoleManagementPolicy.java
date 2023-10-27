@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.authorization.fluent.models.RoleManagementPolicyInner;
 import com.azure.resourcemanager.authorization.models.ApprovalMode;
 import com.azure.resourcemanager.authorization.models.ApprovalSettings;
@@ -253,6 +252,6 @@ public final class Main {
                                     .withNotificationLevel(NotificationLevel.CRITICAL)
                                     .withRecipientType(RecipientType.APPROVER)
                                     .withIsDefaultRecipientsEnabled(true))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

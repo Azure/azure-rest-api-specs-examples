@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Permissions ListForResource. */
 public final class Main {
     /*
@@ -18,6 +16,11 @@ public final class Main {
             .roleServiceClient()
             .getPermissions()
             .listForResource(
-                "rgname", "rpnamespace", "parentResourcePath", "resourceType", "resourceName", Context.NONE);
+                "rgname",
+                "rpnamespace",
+                "parentResourcePath",
+                "resourceType",
+                "resourceName",
+                com.azure.core.util.Context.NONE);
     }
 }

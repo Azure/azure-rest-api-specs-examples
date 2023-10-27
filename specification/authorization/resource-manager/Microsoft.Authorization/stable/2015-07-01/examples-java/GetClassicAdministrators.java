@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ClassicAdministrators List. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getClassicAdministrators()
-            .list(Context.NONE);
+            .list(com.azure.core.util.Context.NONE);
     }
 }

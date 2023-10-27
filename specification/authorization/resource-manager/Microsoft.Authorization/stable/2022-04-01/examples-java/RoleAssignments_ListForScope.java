@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleAssignments ListForScope. */
 public final class Main {
     /*
@@ -17,6 +15,11 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getRoleAssignments()
-            .listForScope("subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2", null, null, null, Context.NONE);
+            .listForScope(
+                "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2",
+                null,
+                null,
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

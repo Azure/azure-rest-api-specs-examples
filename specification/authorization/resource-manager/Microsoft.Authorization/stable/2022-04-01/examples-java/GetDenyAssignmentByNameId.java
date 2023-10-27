@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DenyAssignments Get. */
 public final class Main {
     /*
@@ -17,6 +15,7 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getDenyAssignments()
-            .getWithResponse("subscriptions/subId/resourcegroups/rgname", "denyAssignmentId", Context.NONE);
+            .getWithResponse(
+                "subscriptions/subId/resourcegroups/rgname", "denyAssignmentId", com.azure.core.util.Context.NONE);
     }
 }

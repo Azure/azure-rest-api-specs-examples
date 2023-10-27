@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DenyAssignments List. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getDenyAssignments()
-            .list(null, Context.NONE);
+            .list(null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleDefinitions GetById. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getRoleDefinitions()
-            .getByIdWithResponse("roleDefinitionId", Context.NONE);
+            .getByIdWithResponse("roleDefinitionId", com.azure.core.util.Context.NONE);
     }
 }

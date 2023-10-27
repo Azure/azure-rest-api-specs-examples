@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleDefinitions List. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getRoleDefinitions()
-            .list("scope", null, Context.NONE);
+            .list("scope", null, com.azure.core.util.Context.NONE);
     }
 }

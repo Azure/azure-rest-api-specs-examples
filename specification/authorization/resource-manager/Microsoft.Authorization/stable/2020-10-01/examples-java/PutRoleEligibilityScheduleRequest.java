@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.authorization.fluent.models.RoleEligibilityScheduleRequestInner;
 import com.azure.resourcemanager.authorization.models.RequestType;
 import com.azure.resourcemanager.authorization.models.RoleEligibilityScheduleRequestPropertiesScheduleInfo;
@@ -42,6 +41,6 @@ public final class Main {
                         "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]"
                             + " StringEqualsIgnoreCase 'foo_storage_container'")
                     .withConditionVersion("1.0"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

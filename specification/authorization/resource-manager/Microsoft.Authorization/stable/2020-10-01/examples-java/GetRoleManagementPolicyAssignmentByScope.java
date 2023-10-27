@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleManagementPolicyAssignments ListForScope. */
 public final class Main {
     /*
@@ -18,6 +16,7 @@ public final class Main {
             .roleServiceClient()
             .getRoleManagementPolicyAssignments()
             .listForScope(
-                "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368", Context.NONE);
+                "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368",
+                com.azure.core.util.Context.NONE);
     }
 }

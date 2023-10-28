@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for LiveToken Get. */
 public final class Main {
     /*
@@ -16,6 +14,6 @@ public final class Main {
             .liveTokens()
             .getWithResponse(
                 "subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/FabrikamFiberApp/providers/microsoft.insights/components/CustomAvailabilityTest/providers/microsoft.insights/generatelivetoken",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ApiKeys Get. */
 public final class Main {
     /*
@@ -13,6 +11,10 @@ public final class Main {
     public static void aPIKeysGet(com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
         manager
             .apiKeys()
-            .getWithResponse("my-resource-group", "my-component", "bb820f1b-3110-4a8b-ba2c-8c1129d7eb6a", Context.NONE);
+            .getWithResponse(
+                "my-resource-group",
+                "my-component",
+                "bb820f1b-3110-4a8b-ba2c-8c1129d7eb6a",
+                com.azure.core.util.Context.NONE);
     }
 }

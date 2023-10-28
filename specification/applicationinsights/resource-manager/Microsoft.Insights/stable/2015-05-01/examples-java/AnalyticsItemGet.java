@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.applicationinsights.models.ItemScopePath;
 
 /** Samples for AnalyticsItems Get. */
@@ -21,6 +20,6 @@ public final class Main {
                 ItemScopePath.ANALYTICS_ITEMS,
                 "3466c160-4a10-4df8-afdf-0007f3f6dee5",
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

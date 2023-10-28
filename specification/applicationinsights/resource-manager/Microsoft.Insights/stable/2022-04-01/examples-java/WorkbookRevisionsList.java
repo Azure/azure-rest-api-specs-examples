@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Workbooks RevisionsList. */
 public final class Main {
     /*
@@ -12,6 +10,9 @@ public final class Main {
      */
     public static void workbookRevisionsList(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.workbooks().revisionsList("my-resource-group", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", Context.NONE);
+        manager
+            .workbooks()
+            .revisionsList(
+                "my-resource-group", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", com.azure.core.util.Context.NONE);
     }
 }

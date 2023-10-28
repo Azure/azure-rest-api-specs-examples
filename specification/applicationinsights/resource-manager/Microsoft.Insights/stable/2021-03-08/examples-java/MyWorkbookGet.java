@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for MyWorkbooks GetByResourceGroup. */
 public final class Main {
     /*
@@ -13,6 +11,7 @@ public final class Main {
     public static void workbookGet(com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
         manager
             .myWorkbooks()
-            .getByResourceGroupWithResponse("my-resource-group", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", Context.NONE);
+            .getByResourceGroupWithResponse(
+                "my-resource-group", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", com.azure.core.util.Context.NONE);
     }
 }

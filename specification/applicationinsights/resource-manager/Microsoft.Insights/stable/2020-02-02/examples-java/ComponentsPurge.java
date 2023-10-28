@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.applicationinsights.models.ComponentPurgeBody;
 import com.azure.resourcemanager.applicationinsights.models.ComponentPurgeBodyFilters;
 import java.util.Arrays;
@@ -29,6 +28,6 @@ public final class Main {
                                     .withColumn("TimeGenerated")
                                     .withOperator(">")
                                     .withValue("2017-09-01T00:00:00"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Annotations List. */
 public final class Main {
     /*
@@ -19,6 +17,6 @@ public final class Main {
                 "my-component",
                 "2018-02-05T00%3A30%3A00.000Z",
                 "2018-02-06T00%3A33A00.000Z",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

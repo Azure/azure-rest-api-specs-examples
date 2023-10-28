@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkItemConfigurations GetDefault. */
 public final class Main {
     /*
@@ -12,6 +10,8 @@ public final class Main {
      */
     public static void workItemConfigurationsGetDefault(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.workItemConfigurations().getDefaultWithResponse("my-resource-group", "my-component", Context.NONE);
+        manager
+            .workItemConfigurations()
+            .getDefaultWithResponse("my-resource-group", "my-component", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for WorkbookTemplates ListByResourceGroup. */
 public final class Main {
     /*
@@ -12,6 +10,6 @@ public final class Main {
      */
     public static void workbookTemplatesList(
         com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        manager.workbookTemplates().listByResourceGroup("my-resource-group", Context.NONE);
+        manager.workbookTemplates().listByResourceGroup("my-resource-group", com.azure.core.util.Context.NONE);
     }
 }

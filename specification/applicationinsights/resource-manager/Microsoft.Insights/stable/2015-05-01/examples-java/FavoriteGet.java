@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Favorites Get. */
 public final class Main {
     /*
@@ -14,6 +12,9 @@ public final class Main {
         manager
             .favorites()
             .getWithResponse(
-                "my-resource-group", "my-ai-component", "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2", Context.NONE);
+                "my-resource-group",
+                "my-ai-component",
+                "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2",
+                com.azure.core.util.Context.NONE);
     }
 }

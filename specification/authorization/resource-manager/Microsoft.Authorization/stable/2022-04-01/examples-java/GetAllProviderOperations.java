@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for ProviderOperationsMetadata List. */
 public final class Main {
     /*
@@ -18,6 +16,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getProviderOperationsMetadatas()
-            .list(null, Context.NONE);
+            .list(null, com.azure.core.util.Context.NONE);
     }
 }

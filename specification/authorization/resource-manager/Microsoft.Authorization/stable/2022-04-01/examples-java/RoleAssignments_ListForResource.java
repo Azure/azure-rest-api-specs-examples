@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleAssignments ListForResource. */
 public final class Main {
     /*
@@ -18,6 +16,12 @@ public final class Main {
             .roleServiceClient()
             .getRoleAssignments()
             .listForResource(
-                "testrg", "Microsoft.DocumentDb", "databaseAccounts", "test-db-account", null, null, Context.NONE);
+                "testrg",
+                "Microsoft.DocumentDb",
+                "databaseAccounts",
+                "test-db-account",
+                null,
+                null,
+                com.azure.core.util.Context.NONE);
     }
 }

@@ -1,3 +1,5 @@
+import com.azure.resourcemanager.resources.models.ResourceName;
+
 /** Samples for ResourceName CheckResourceName. */
 public final class Main {
     /*
@@ -14,6 +16,6 @@ public final class Main {
             .manager()
             .subscriptionClient()
             .getResourceNames()
-            .checkResourceNameWithResponse(null, com.azure.core.util.Context.NONE);
+            .checkResourceNameWithResponse(new ResourceName(), com.azure.core.util.Context.NONE);
     }
 }

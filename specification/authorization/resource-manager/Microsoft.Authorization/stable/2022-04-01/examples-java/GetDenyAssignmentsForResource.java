@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DenyAssignments ListForResource. */
 public final class Main {
     /*
@@ -24,6 +22,6 @@ public final class Main {
                 "resourceType",
                 "resourceName",
                 null,
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

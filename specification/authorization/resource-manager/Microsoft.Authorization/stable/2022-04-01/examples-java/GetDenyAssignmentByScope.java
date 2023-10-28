@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DenyAssignments ListForScope. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getDenyAssignments()
-            .listForScope("subscriptions/subId", null, Context.NONE);
+            .listForScope("subscriptions/subId", null, com.azure.core.util.Context.NONE);
     }
 }

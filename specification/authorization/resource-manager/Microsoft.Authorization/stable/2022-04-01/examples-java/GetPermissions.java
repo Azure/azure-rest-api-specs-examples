@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for Permissions ListByResourceGroup. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getPermissions()
-            .listByResourceGroup("rgname", Context.NONE);
+            .listByResourceGroup("rgname", com.azure.core.util.Context.NONE);
     }
 }

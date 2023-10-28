@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for DenyAssignments GetById. */
 public final class Main {
     /*
@@ -19,6 +17,6 @@ public final class Main {
             .getDenyAssignments()
             .getByIdWithResponse(
                 "subscriptions/subId/resourcegroups/rgname/providers/Microsoft.Authorization/denyAssignments/daId",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

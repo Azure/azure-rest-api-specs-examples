@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.authorization.fluent.models.RoleDefinitionInner;
 
 /** Samples for RoleDefinitions CreateOrUpdate. */
@@ -18,6 +17,7 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getRoleDefinitions()
-            .createOrUpdateWithResponse("scope", "roleDefinitionId", new RoleDefinitionInner(), Context.NONE);
+            .createOrUpdateWithResponse(
+                "scope", "roleDefinitionId", new RoleDefinitionInner(), com.azure.core.util.Context.NONE);
     }
 }

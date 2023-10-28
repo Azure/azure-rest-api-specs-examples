@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleAssignmentSchedules Get. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
             .getWithResponse(
                 "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
                 "c9e264ff-3133-4776-a81a-ebc7c33c8ec6",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

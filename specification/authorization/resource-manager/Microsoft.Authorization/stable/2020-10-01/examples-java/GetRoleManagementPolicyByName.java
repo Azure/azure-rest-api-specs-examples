@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleManagementPolicies Get. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
             .getWithResponse(
                 "providers/Microsoft.Subscription/subscriptions/129ff972-28f8-46b8-a726-e497be039368",
                 "570c3619-7688-4b34-b290-2b8bb3ccab2a",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

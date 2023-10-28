@@ -1,4 +1,3 @@
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.authorization.fluent.models.RoleManagementPolicyInner;
 import com.azure.resourcemanager.authorization.models.NotificationDeliveryMechanism;
 import com.azure.resourcemanager.authorization.models.NotificationLevel;
@@ -53,6 +52,6 @@ public final class Main {
                                     .withRecipientType(RecipientType.ADMIN)
                                     .withNotificationRecipients(Arrays.asList("admin_admin_eligible@test.com"))
                                     .withIsDefaultRecipientsEnabled(false))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

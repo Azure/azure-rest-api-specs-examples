@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for EligibleChildResources Get. */
 public final class Main {
     /*
@@ -20,6 +18,6 @@ public final class Main {
             .get(
                 "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
                 "resourceType eq 'resourcegroup'",
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

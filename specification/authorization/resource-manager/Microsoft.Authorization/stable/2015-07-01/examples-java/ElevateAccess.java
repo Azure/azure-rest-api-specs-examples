@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for GlobalAdministrator ElevateAccess. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getGlobalAdministrators()
-            .elevateAccessWithResponse(Context.NONE);
+            .elevateAccessWithResponse(com.azure.core.util.Context.NONE);
     }
 }

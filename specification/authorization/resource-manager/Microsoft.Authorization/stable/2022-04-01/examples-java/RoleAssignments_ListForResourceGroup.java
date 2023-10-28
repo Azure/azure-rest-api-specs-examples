@@ -1,5 +1,3 @@
-import com.azure.core.util.Context;
-
 /** Samples for RoleAssignments ListByResourceGroup. */
 public final class Main {
     /*
@@ -17,6 +15,6 @@ public final class Main {
             .manager()
             .roleServiceClient()
             .getRoleAssignments()
-            .listByResourceGroup("testrg", null, null, Context.NONE);
+            .listByResourceGroup("testrg", null, null, com.azure.core.util.Context.NONE);
     }
 }

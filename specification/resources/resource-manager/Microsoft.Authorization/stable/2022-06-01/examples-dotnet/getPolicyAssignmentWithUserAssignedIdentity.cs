@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -17,16 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this PolicyAssignmentResource
+// this example assumes you already have this PolicyAssignmentResource created on azure
+// for more information of creating PolicyAssignmentResource, please refer to the document of PolicyAssignmentResource
 string scope = "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-PolicyAssignmentCollection collection = client.GetGenericResource(scopeId).GetPolicyAssignments();
+string policyAssignmentName = "EnforceNaming";
+ResourceIdentifier policyAssignmentResourceId = PolicyAssignmentResource.CreateResourceIdentifier(scope, policyAssignmentName);
+PolicyAssignmentResource policyAssignment = client.GetPolicyAssignmentResource(policyAssignmentResourceId);
 
 // invoke the operation
-string policyAssignmentName = "EnforceNaming";
-bool result = await collection.ExistsAsync(policyAssignmentName);
+PolicyAssignmentResource result = await policyAssignment.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PolicyAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

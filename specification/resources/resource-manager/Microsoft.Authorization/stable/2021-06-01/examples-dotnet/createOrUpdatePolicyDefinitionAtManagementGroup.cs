@@ -5,6 +5,7 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.ManagementGroups;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 
@@ -16,14 +17,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementGroupPolicyDefinitionResource created on azure
-// for more information of creating ManagementGroupPolicyDefinitionResource, please refer to the document of ManagementGroupPolicyDefinitionResource
+// this example assumes you already have this ManagementGroupResource created on azure
+// for more information of creating ManagementGroupResource, please refer to the document of ManagementGroupResource
 string managementGroupId = "MyManagementGroup";
-string policyDefinitionName = "ResourceNaming";
-ResourceIdentifier managementGroupPolicyDefinitionResourceId = ManagementGroupPolicyDefinitionResource.CreateResourceIdentifier(managementGroupId, policyDefinitionName);
-ManagementGroupPolicyDefinitionResource managementGroupPolicyDefinition = client.GetManagementGroupPolicyDefinitionResource(managementGroupPolicyDefinitionResourceId);
+ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateResourceIdentifier(managementGroupId);
+ManagementGroupResource managementGroupResource = client.GetManagementGroupResource(managementGroupResourceId);
+
+// get the collection of this ManagementGroupPolicyDefinitionResource
+ManagementGroupPolicyDefinitionCollection collection = managementGroupResource.GetManagementGroupPolicyDefinitions();
 
 // invoke the operation
+string policyDefinitionName = "ResourceNaming";
 PolicyDefinitionData data = new PolicyDefinitionData()
 {
     Mode = "All",
@@ -70,7 +74,7 @@ PolicyDefinitionData data = new PolicyDefinitionData()
     },
     },
 };
-ArmOperation<ManagementGroupPolicyDefinitionResource> lro = await managementGroupPolicyDefinition.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagementGroupPolicyDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyDefinitionName, data);
 ManagementGroupPolicyDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

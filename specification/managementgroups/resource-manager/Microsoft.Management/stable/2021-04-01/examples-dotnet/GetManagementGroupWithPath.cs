@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ManagementGroups;
 using Azure.ResourceManager.ManagementGroups.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/examples/GetManagementGroupWithPath.json
 // this example is just showing the usage of "ManagementGroups_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,19 +16,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementGroupResource created on azure
-// for more information of creating ManagementGroupResource, please refer to the document of ManagementGroupResource
-string groupId = "20000000-0001-0000-0000-000000000000";
-ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateResourceIdentifier(groupId);
-ManagementGroupResource managementGroup = client.GetManagementGroupResource(managementGroupResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this ManagementGroupResource
+ManagementGroupCollection collection = tenantResource.GetManagementGroups();
 
 // invoke the operation
+string groupId = "20000000-0001-0000-0000-000000000000";
 ManagementGroupExpandType? expand = ManagementGroupExpandType.Path;
 string cacheControl = "no-cache";
-ManagementGroupResource result = await managementGroup.GetAsync(expand: expand, cacheControl: cacheControl);
+NullableResponse<ManagementGroupResource> response = await collection.GetIfExistsAsync(groupId, expand: expand, cacheControl: cacheControl);
+ManagementGroupResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagementGroupData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagementGroupData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

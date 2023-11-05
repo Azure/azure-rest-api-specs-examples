@@ -3356,3 +3356,15 @@ id,name,language,tag,package,version,date_epoch,date
 3355,azure-mgmt-azurestackhci@8.0.0b3,python,azure-mgmt-azurestackhci_8.0.0b3,azure-mgmt-azurestackhci,8.0.0b3,1698400600,10/27/2023
 3356,azure-mgmt-containerservicefleet@1.0.0,python,azure-mgmt-containerservicefleet_1.0.0,azure-mgmt-containerservicefleet,1.0.0,1698374788,10/27/2023
 3357,@azure/arm-containerservicefleet@1.0.0,js,@azure/arm-containerservicefleet_1.0.0,@azure/arm-containerservicefleet,1.0.0,1698414065,10/27/2023
+3358,@azure/arm-azurestackhci@4.0.0-beta.1,js,@azure/arm-azurestackhci_4.0.0-beta.1,@azure/arm-azurestackhci,4.0.0-beta.1,1698651812,10/30/2023
+3359,"Azure.ResourceManager.HardwareSecurityModules,1.0.0-beta.1",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.0.0-beta.1,Azure.ResourceManager.HardwareSecurityModules,1.0.0-beta.1,1698659688,10/30/2023
+3360,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v5@v5.3.0-beta.2,go,sdk/resourcemanager/compute/armcompute/v5.3.0-beta.2,sdk/resourcemanager/compute/armcompute,v5.3.0-beta.2,1698681142,10/30/2023
+3361,"Azure.ResourceManager.ResourceHealth,1.1.0-beta.2",dotnet,Azure.ResourceManager.ResourceHealth_1.1.0-beta.2,Azure.ResourceManager.ResourceHealth,1.1.0-beta.2,1698718196,10/31/2023
+3362,"Azure.ResourceManager.Maintenance,1.2.0-beta.5",dotnet,Azure.ResourceManager.Maintenance_1.2.0-beta.5,Azure.ResourceManager.Maintenance,1.2.0-beta.5,1698713473,10/31/2023
+3363,"Azure.ResourceManager.CosmosDB,1.4.0-beta.4",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.4,Azure.ResourceManager.CosmosDB,1.4.0-beta.4,1698713271,10/31/2023
+3364,"Azure.ResourceManager.NetworkAnalytics,1.0.0-beta.1",dotnet,Azure.ResourceManager.NetworkAnalytics_1.0.0-beta.1,Azure.ResourceManager.NetworkAnalytics,1.0.0-beta.1,1698809935,11/01/2023
+3365,"Azure.ResourceManager.ServiceNetworking,1.0.0",dotnet,Azure.ResourceManager.ServiceNetworking_1.0.0,Azure.ResourceManager.ServiceNetworking,1.0.0,1698889974,11/02/2023
+3366,"Azure.ResourceManager.Search,1.2.0",dotnet,Azure.ResourceManager.Search_1.2.0,Azure.ResourceManager.Search,1.2.0,1698889408,11/02/2023
+3367,"Azure.ResourceManager,1.8.0",dotnet,Azure.ResourceManager_1.8.0,Azure.ResourceManager,1.8.0,1698843888,11/01/2023
+3368,"Azure.ResourceManager.HybridNetwork,1.0.0-beta.1",dotnet,Azure.ResourceManager.HybridNetwork_1.0.0-beta.1,Azure.ResourceManager.HybridNetwork,1.0.0-beta.1,1699000285,11/03/2023
+3369,"Azure.ResourceManager.MySql,1.1.0-beta.3",dotnet,Azure.ResourceManager.MySql_1.1.0-beta.3,Azure.ResourceManager.MySql,1.1.0-beta.3,1698995701,11/03/2023

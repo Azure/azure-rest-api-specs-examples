@@ -3368,3 +3368,7 @@ id,name,language,tag,package,version,date_epoch,date
 3367,"Azure.ResourceManager,1.8.0",dotnet,Azure.ResourceManager_1.8.0,Azure.ResourceManager,1.8.0,1698843888,11/01/2023
 3368,"Azure.ResourceManager.HybridNetwork,1.0.0-beta.1",dotnet,Azure.ResourceManager.HybridNetwork_1.0.0-beta.1,Azure.ResourceManager.HybridNetwork,1.0.0-beta.1,1699000285,11/03/2023
 3369,"Azure.ResourceManager.MySql,1.1.0-beta.3",dotnet,Azure.ResourceManager.MySql_1.1.0-beta.3,Azure.ResourceManager.MySql,1.1.0-beta.3,1698995701,11/03/2023
+3370,"Azure.ResourceManager,1.8.1",dotnet,Azure.ResourceManager_1.8.1,Azure.ResourceManager,1.8.1,1699352863,11/07/2023
+3371,"Azure.ResourceManager.NetApp,1.4.1",dotnet,Azure.ResourceManager.NetApp_1.4.1,Azure.ResourceManager.NetApp,1.4.1,1699329835,11/07/2023
+3372,"Azure.ResourceManager.SelfHelp,1.1.0-beta.1",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.1,Azure.ResourceManager.SelfHelp,1.1.0-beta.1,1699324421,11/07/2023
+3373,"Azure.ResourceManager.Communication,1.2.0-beta.3",dotnet,Azure.ResourceManager.Communication_1.2.0-beta.3,Azure.ResourceManager.Communication,1.2.0-beta.3,1699460438,11/08/2023

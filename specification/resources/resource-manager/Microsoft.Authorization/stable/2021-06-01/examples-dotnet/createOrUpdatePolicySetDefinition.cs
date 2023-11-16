@@ -40,7 +40,7 @@ PolicySetDefinitionData data = new PolicySetDefinitionData()
     ["namePrefix"] = new ArmPolicyParameter()
     {
     ParameterType = ArmPolicyParameterType.String,
-    DefaultValue = BinaryData.FromString("myPrefix"),
+    DefaultValue = BinaryData.FromString("\"myPrefix\""),
     Metadata = new ParameterDefinitionsValueMetadata()
     {
     DisplayName = "Prefix to enforce on resource names",
@@ -65,11 +65,11 @@ PolicySetDefinitionData data = new PolicySetDefinitionData()
     {
     ["prefix"] = new ArmPolicyParameterValue()
     {
-    Value = BinaryData.FromString("[parameters('namePrefix')]"),
+    Value = BinaryData.FromString("\"[parameters('namePrefix')]\""),
     },
     ["suffix"] = new ArmPolicyParameterValue()
     {
-    Value = BinaryData.FromString("-LC"),
+    Value = BinaryData.FromString("\"-LC\""),
     },
     },
     PolicyDefinitionReferenceId = "Resource_Naming",

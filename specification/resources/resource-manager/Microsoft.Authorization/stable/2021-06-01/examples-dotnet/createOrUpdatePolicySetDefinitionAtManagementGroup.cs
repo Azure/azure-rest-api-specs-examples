@@ -54,11 +54,11 @@ PolicySetDefinitionData data = new PolicySetDefinitionData()
     {
     ["prefix"] = new ArmPolicyParameterValue()
     {
-    Value = BinaryData.FromString("DeptA"),
+    Value = BinaryData.FromString("\"DeptA\""),
     },
     ["suffix"] = new ArmPolicyParameterValue()
     {
-    Value = BinaryData.FromString("-LC"),
+    Value = BinaryData.FromString("\"-LC\""),
     },
     },
     PolicyDefinitionReferenceId = "Resource_Naming",

@@ -35,11 +35,11 @@ PolicyAssignmentData data = new PolicyAssignmentData()
     {
     ["prefix"] = new ArmPolicyParameterValue()
     {
-    Value = BinaryData.FromString("DeptA"),
+    Value = BinaryData.FromString("\"DeptA\""),
     },
     ["suffix"] = new ArmPolicyParameterValue()
     {
-    Value = BinaryData.FromString("-LC"),
+    Value = BinaryData.FromString("\"-LC\""),
     },
     },
     Description = "Force resource names to begin with given DeptA and end with -LC",

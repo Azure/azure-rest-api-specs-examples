@@ -1,0 +1,21 @@
+/** Samples for PrivateEndpointConnections Get. */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2023-06-20-preview/examples/privateEndpoint/PrivateEndpointConnection_Get.json
+     */
+    /**
+     * Sample code: Gets private endpoint connection.
+     *
+     * @param manager Entry point to HybridComputeManager.
+     */
+    public static void getsPrivateEndpointConnection(
+        com.azure.resourcemanager.hybridcompute.HybridComputeManager manager) {
+        manager
+            .privateEndpointConnections()
+            .getWithResponse(
+                "myResourceGroup",
+                "myPrivateLinkScope",
+                "private-endpoint-connection-name",
+                com.azure.core.util.Context.NONE);
+    }
+}

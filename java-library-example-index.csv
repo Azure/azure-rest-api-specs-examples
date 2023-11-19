@@ -3372,3 +3372,14 @@ id,name,language,tag,package,version,date_epoch,date
 3371,"Azure.ResourceManager.NetApp,1.4.1",dotnet,Azure.ResourceManager.NetApp_1.4.1,Azure.ResourceManager.NetApp,1.4.1,1699329835,11/07/2023
 3372,"Azure.ResourceManager.SelfHelp,1.1.0-beta.1",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.1,Azure.ResourceManager.SelfHelp,1.1.0-beta.1,1699324421,11/07/2023
 3373,"Azure.ResourceManager.Communication,1.2.0-beta.3",dotnet,Azure.ResourceManager.Communication_1.2.0-beta.3,Azure.ResourceManager.Communication,1.2.0-beta.3,1699460438,11/08/2023
+3374,com.azure.resourcemanager:azure-resourcemanager-mobilenetwork:1.0.0,java,azure-resourcemanager-mobilenetwork_1.0.0,azure-resourcemanager-mobilenetwork,1.0.0,1700033939,11/15/2023
+3375,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.1.0-beta.1,java,azure-resourcemanager-postgresqlflexibleserver_1.1.0-beta.1,azure-resourcemanager-postgresqlflexibleserver,1.1.0-beta.1,1700012542,11/15/2023
+3376,"Azure.ResourceManager.Grafana,1.1.0-beta.2",dotnet,Azure.ResourceManager.Grafana_1.1.0-beta.2,Azure.ResourceManager.Grafana,1.1.0-beta.2,1700018989,11/15/2023
+3377,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.0.0,java,azure-resourcemanager-dashboard_1.0.0,azure-resourcemanager-dashboard,1.0.0,1700110041,11/16/2023
+3378,com.azure.resourcemanager:azure-resourcemanager-chaos:1.0.0,java,azure-resourcemanager-chaos_1.0.0,azure-resourcemanager-chaos,1.0.0,1700106745,11/16/2023
+3379,com.azure.resourcemanager:azure-resourcemanager-confluent:1.0.0,java,azure-resourcemanager-confluent_1.0.0,azure-resourcemanager-confluent,1.0.0,1700106371,11/16/2023
+3380,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.3,java,azure-resourcemanager-hybridcompute_1.0.0-beta.3,azure-resourcemanager-hybridcompute,1.0.0-beta.3,1700102907,11/16/2023
+3381,"Azure.ResourceManager,1.9.0",dotnet,Azure.ResourceManager_1.9.0,Azure.ResourceManager,1.9.0,1700112935,11/16/2023
+3382,"Azure.ResourceManager.ConnectedVMwarevSphere,1.0.0",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.0.0,Azure.ResourceManager.ConnectedVMwarevSphere,1.0.0,1700055157,11/15/2023
+3383,"Azure.ResourceManager.Resources,1.7.0",dotnet,Azure.ResourceManager.Resources_1.7.0,Azure.ResourceManager.Resources,1.7.0,1700205791,11/17/2023
+3384,azure-mgmt-sql@4.0.0b13,python,azure-mgmt-sql_4.0.0b13,azure-mgmt-sql,4.0.0b13,1700190390,11/17/2023

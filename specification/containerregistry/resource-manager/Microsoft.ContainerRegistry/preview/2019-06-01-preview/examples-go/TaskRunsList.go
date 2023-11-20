@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/68d03f91ea7c30e1ab28fb9d35c13f81bc85b724/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TaskRunsList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/bbe1ea8bf5aa6cfbfa8855e03dbb9a93f8266bcd/specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/TaskRunsList.json
 func ExampleTaskRunsClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -60,10 +60,10 @@ func ExampleTaskRunsClient_NewListPager() {
 		// 						AgentConfiguration: &armcontainerregistry.AgentProperties{
 		// 							CPU: to.Ptr[int32](2),
 		// 						},
-		// 						CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:29.2278794+00:00"); return t}()),
-		// 						FinishTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:37.0349516+00:00"); return t}()),
+		// 						CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:29.227Z"); return t}()),
+		// 						FinishTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:37.034Z"); return t}()),
 		// 						IsArchiveEnabled: to.Ptr(true),
-		// 						LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:37+00:00"); return t}()),
+		// 						LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:37.000Z"); return t}()),
 		// 						Platform: &armcontainerregistry.PlatformProperties{
 		// 							Architecture: to.Ptr(armcontainerregistry.ArchitectureAmd64),
 		// 							OS: to.Ptr(armcontainerregistry.OSLinux),
@@ -71,7 +71,7 @@ func ExampleTaskRunsClient_NewListPager() {
 		// 						ProvisioningState: to.Ptr(armcontainerregistry.ProvisioningStateSucceeded),
 		// 						RunID: to.Ptr("yd4"),
 		// 						RunType: to.Ptr(armcontainerregistry.RunTypeQuickRun),
-		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:29.4589616+00:00"); return t}()),
+		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T17:15:29.458Z"); return t}()),
 		// 						Status: to.Ptr(armcontainerregistry.RunStatusSucceeded),
 		// 					},
 		// 				},

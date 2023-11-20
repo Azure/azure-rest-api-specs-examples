@@ -32,7 +32,7 @@ func ExampleBackupsClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210615T160516"),
 	// 	Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 	// 		BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-	// 		CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-15T16:05:19.902522+00:00"); return t}()),
+	// 		CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-15T16:05:19.902Z"); return t}()),
 	// 		Source: to.Ptr("Automatic"),
 	// 	},
 	// }

@@ -63,7 +63,7 @@ func ExampleServersClient_BeginUpdate_serverUpdate() {
 	// 		AvailabilityZone: to.Ptr("1"),
 	// 		Backup: &armpostgresqlflexibleservers.Backup{
 	// 			BackupRetentionDays: to.Ptr[int32](20),
-	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-26T01:16:58.3723361+00:00"); return t}()),
+	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-26T01:16:58.372Z"); return t}()),
 	// 			GeoRedundantBackup: to.Ptr(armpostgresqlflexibleservers.GeoRedundantBackupEnumDisabled),
 	// 		},
 	// 		DataEncryption: &armpostgresqlflexibleservers.DataEncryption{

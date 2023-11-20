@@ -87,7 +87,7 @@ func ExampleServersClient_BeginCreate_createANewServerWithActiveDirectoryAuthent
 	// 		AvailabilityZone: to.Ptr("1"),
 	// 		Backup: &armpostgresqlflexibleservers.Backup{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
-	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-26T01:08:06.7197478+00:00"); return t}()),
+	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-26T01:08:06.719Z"); return t}()),
 	// 			GeoRedundantBackup: to.Ptr(armpostgresqlflexibleservers.GeoRedundantBackupEnumDisabled),
 	// 		},
 	// 		FullyQualifiedDomainName: to.Ptr("c7d7483a8ceb.test-private-dns-zone.postgres.database.azure.com"),

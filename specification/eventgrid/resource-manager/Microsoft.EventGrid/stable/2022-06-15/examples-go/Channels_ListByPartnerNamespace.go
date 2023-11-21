@@ -40,7 +40,7 @@ func ExampleChannelsClient_NewListByPartnerNamespacePager() {
 		// 			ID: to.Ptr("/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/examplerg/providers/Microsoft.EventGrid/partnerNamespaces/examplePartnerNamespaceName1/changes/exampleChannelName1"),
 		// 			Properties: &armeventgrid.ChannelProperties{
 		// 				ChannelType: to.Ptr(armeventgrid.ChannelTypePartnerTopic),
-		// 				ExpirationTimeIfNotActivatedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-21T22:50:25.410433Z"); return t}()),
+		// 				ExpirationTimeIfNotActivatedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-21T22:50:25.410Z"); return t}()),
 		// 				MessageForActivation: to.Ptr("Example message to approver"),
 		// 				PartnerTopicInfo: &armeventgrid.PartnerTopicInfo{
 		// 					Name: to.Ptr("examplePartnerTopic1"),

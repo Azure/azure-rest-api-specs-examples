@@ -38,7 +38,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210615T160516"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-15T16:05:19.902522+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-15T16:05:19.902Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -48,7 +48,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210616T160520"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T16:05:23.9243453+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T16:05:23.924Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -58,7 +58,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210617T160525"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T16:05:28.1247488+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T16:05:28.124Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -68,7 +68,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210618T160529"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-18T16:05:32.2736701+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-18T16:05:32.273Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -78,7 +78,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210619T160533"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-19T16:05:36.8603354+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-19T16:05:36.860Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -88,7 +88,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210620T160538"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-20T16:05:41.9200138+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-20T16:05:41.920Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -98,7 +98,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210621T160543"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T16:05:48.8528447+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T16:05:48.852Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -108,7 +108,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210622T160803"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-22T16:08:06.3121688+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-22T16:08:06.312Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -118,7 +118,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210622T210807"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-22T21:08:10.5057354+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-22T21:08:10.505Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -128,7 +128,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210623T212413"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-23T21:24:16.9401531+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-23T21:24:16.940Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 		},
@@ -138,7 +138,7 @@ func ExampleBackupsClient_NewListByServerPager() {
 		// 			ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresqltestserver/backups/daily_20210624T061328"),
 		// 			Properties: &armpostgresqlflexibleservers.ServerBackupProperties{
 		// 				BackupType: to.Ptr(armpostgresqlflexibleservers.OriginFull),
-		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T06:13:31.4962137+00:00"); return t}()),
+		// 				CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T06:13:31.496Z"); return t}()),
 		// 				Source: to.Ptr("Automatic"),
 		// 			},
 		// 	}},

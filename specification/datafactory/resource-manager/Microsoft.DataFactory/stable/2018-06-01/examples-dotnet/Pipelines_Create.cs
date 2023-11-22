@@ -43,8 +43,8 @@ DataFactoryPipelineData data = new DataFactoryPipelineData()
     {
     Parameters =
     {
-    ["MyFileName"] = BinaryData.FromString("examplecontainer.csv"),
-    ["MyFolderPath"] = BinaryData.FromString("examplecontainer"),
+    ["MyFileName"] = BinaryData.FromString("\"examplecontainer.csv\""),
+    ["MyFolderPath"] = BinaryData.FromString("\"examplecontainer\""),
     },
     }
     },
@@ -58,7 +58,7 @@ DataFactoryPipelineData data = new DataFactoryPipelineData()
     {
     ["type"] = "Expression",
     ["value"] = "@item()"}),
-    ["MyFolderPath"] = BinaryData.FromString("examplecontainer"),
+    ["MyFolderPath"] = BinaryData.FromString("\"examplecontainer\""),
     },
     }
     },
@@ -85,7 +85,7 @@ DataFactoryPipelineData data = new DataFactoryPipelineData()
     ["type"] = "Expression",
     ["value"] = "@pipeline().parameters.JobId"}),
     },
-    ElapsedTimeMetricDuration = BinaryData.FromString("0.00:10:00"),
+    ElapsedTimeMetricDuration = BinaryData.FromString("\"0.00:10:00\""),
 };
 ArmOperation<DataFactoryPipelineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, pipelineName, data);
 DataFactoryPipelineResource result = lro.Value;

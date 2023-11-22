@@ -108,7 +108,7 @@ DataFactoryDataFlowDebugPackageContent content = new DataFactoryDataFlowDebugPac
         },
         Parameters =
         {
-        ["sourcePath"] = BinaryData.FromString("Toy"),
+        ["sourcePath"] = BinaryData.FromString("\"Toy\""),
         },
         DatasetParameters = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
         {

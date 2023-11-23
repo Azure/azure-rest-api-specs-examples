@@ -72,7 +72,7 @@ func ExampleTenantActivityLogsClient_NewListPager_getTenantActivityLogsWithoutFi
 		// 				LocalizedValue: to.Ptr("End request"),
 		// 				Value: to.Ptr("EndRequest"),
 		// 			},
-		// 			EventTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-01-21T22:14:26.9792776Z"); return t}()),
+		// 			EventTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-01-21T22:14:26.979Z"); return t}()),
 		// 			HTTPRequest: &armmonitor.HTTPRequestInfo{
 		// 				Method: to.Ptr("PUT"),
 		// 				ClientIPAddress: to.Ptr("192.168.35.115"),
@@ -100,7 +100,7 @@ func ExampleTenantActivityLogsClient_NewListPager_getTenantActivityLogsWithoutFi
 		// 				LocalizedValue: to.Ptr("Created (HTTP Status Code: 201)"),
 		// 				Value: to.Ptr("Created"),
 		// 			},
-		// 			SubmissionTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-01-21T22:14:39.9936304Z"); return t}()),
+		// 			SubmissionTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-01-21T22:14:39.993Z"); return t}()),
 		// 			SubscriptionID: to.Ptr("089bd33f-d4ec-47fe-8ba5-0753aa5c5b33"),
 		// 	}},
 		// }

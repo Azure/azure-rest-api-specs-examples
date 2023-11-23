@@ -72,7 +72,7 @@ func ExampleMetricsClient_List_getMetricWithError() {
 	// 					Data: []*armmonitor.MetricValue{
 	// 						{
 	// 							Average: to.Ptr[float64](0),
-	// 							TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-07T21:51:00Z"); return t}()),
+	// 							TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-07T21:51:00.000Z"); return t}()),
 	// 					}},
 	// 					Metadatavalues: []*armmonitor.MetadataValue{
 	// 					},

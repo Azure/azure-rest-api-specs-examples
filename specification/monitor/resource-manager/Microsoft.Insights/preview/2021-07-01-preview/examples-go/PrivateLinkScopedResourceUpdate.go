@@ -44,10 +44,10 @@ func ExamplePrivateLinkScopedResourcesClient_BeginCreateOrUpdate() {
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 	},
 	// 	SystemData: &armmonitor.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T12:59:57.051056Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T12:59:57.051Z"); return t}()),
 	// 		CreatedBy: to.Ptr("bobby@contoso.com"),
 	// 		CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T12:59:57.051056Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T12:59:57.051Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("bobby@contoso.com"),
 	// 		LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 	// 	},

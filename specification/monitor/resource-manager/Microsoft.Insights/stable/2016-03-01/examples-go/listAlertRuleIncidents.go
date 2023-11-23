@@ -34,9 +34,9 @@ func ExampleAlertRuleIncidentsClient_NewListByAlertRulePager() {
 		// 	Value: []*armmonitor.Incident{
 		// 		{
 		// 			Name: to.Ptr("Website_started"),
-		// 			ActivatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-13T15:45:26.9792776Z"); return t}()),
+		// 			ActivatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-13T15:45:26.979Z"); return t}()),
 		// 			IsActive: to.Ptr(true),
-		// 			ResolvedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-13T22:14:28.9792776Z"); return t}()),
+		// 			ResolvedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-13T22:14:28.979Z"); return t}()),
 		// 			RuleName: to.Ptr("myRuleName"),
 		// 	}},
 		// }

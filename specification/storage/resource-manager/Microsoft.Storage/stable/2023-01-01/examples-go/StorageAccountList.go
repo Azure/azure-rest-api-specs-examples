@@ -43,19 +43,19 @@ func ExampleAccountsClient_NewListPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:28:53.4540398Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:28:53.454Z"); return t}()),
 		// 				Encryption: &armstorage.Encryption{
 		// 					KeySource: to.Ptr(armstorage.KeySourceMicrosoftStorage),
 		// 					Services: &armstorage.EncryptionServices{
 		// 						Blob: &armstorage.EncryptionService{
 		// 							Enabled: to.Ptr(true),
 		// 							KeyType: to.Ptr(armstorage.KeyTypeAccount),
-		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 		// 						},
 		// 						File: &armstorage.EncryptionService{
 		// 							Enabled: to.Ptr(true),
 		// 							KeyType: to.Ptr(armstorage.KeyTypeAccount),
-		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 		// 						},
 		// 					},
 		// 				},
@@ -115,7 +115,7 @@ func ExampleAccountsClient_NewListPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T10:06:30.6093014Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T10:06:30.609Z"); return t}()),
 		// 				PrimaryEndpoints: &armstorage.Endpoints{
 		// 					Blob: to.Ptr("https://sto3699.blob.core.windows.net/"),
 		// 					File: to.Ptr("https://sto3699.file.core.windows.net/"),
@@ -150,7 +150,7 @@ func ExampleAccountsClient_NewListPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.7633306Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.763Z"); return t}()),
 		// 				Encryption: &armstorage.Encryption{
 		// 					KeySource: to.Ptr(armstorage.KeySourceMicrosoftKeyvault),
 		// 					KeyVaultProperties: &armstorage.KeyVaultProperties{
@@ -158,24 +158,24 @@ func ExampleAccountsClient_NewListPager() {
 		// 						KeyName: to.Ptr("wrappingKey"),
 		// 						KeyVaultURI: to.Ptr("https://myvault8569.vault.azure.net"),
 		// 						KeyVersion: to.Ptr(""),
-		// 						LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.7023290Z"); return t}()),
+		// 						LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.702Z"); return t}()),
 		// 					},
 		// 					Services: &armstorage.EncryptionServices{
 		// 						Blob: &armstorage.EncryptionService{
 		// 							Enabled: to.Ptr(true),
 		// 							KeyType: to.Ptr(armstorage.KeyTypeAccount),
-		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 		// 						},
 		// 						File: &armstorage.EncryptionService{
 		// 							Enabled: to.Ptr(true),
 		// 							KeyType: to.Ptr(armstorage.KeyTypeAccount),
-		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+		// 							LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 		// 						},
 		// 					},
 		// 				},
 		// 				GeoReplicationStats: &armstorage.GeoReplicationStats{
 		// 					CanFailover: to.Ptr(true),
-		// 					LastSyncTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-30T00:25:34Z"); return t}()),
+		// 					LastSyncTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-30T00:25:34.000Z"); return t}()),
 		// 					Status: to.Ptr(armstorage.GeoReplicationStatusLive),
 		// 				},
 		// 				IsHnsEnabled: to.Ptr(true),
@@ -247,7 +247,7 @@ func ExampleAccountsClient_NewListPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T10:09:39.5625175Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T10:09:39.562Z"); return t}()),
 		// 				PrimaryEndpoints: &armstorage.Endpoints{
 		// 					Blob: to.Ptr("https://sto6637.blob.core.windows.net/"),
 		// 					File: to.Ptr("https://sto6637.file.core.windows.net/"),
@@ -277,7 +277,7 @@ func ExampleAccountsClient_NewListPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:28:20.8686541Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:28:20.868Z"); return t}()),
 		// 				PrimaryEndpoints: &armstorage.Endpoints{
 		// 					Blob: to.Ptr("https://sto834.blob.core.windows.net/"),
 		// 					File: to.Ptr("https://sto834.file.core.windows.net/"),
@@ -312,7 +312,7 @@ func ExampleAccountsClient_NewListPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T09:46:19.6556989Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T09:46:19.655Z"); return t}()),
 		// 				PrimaryEndpoints: &armstorage.Endpoints{
 		// 					Blob: to.Ptr("https://sto9174.blob.core.windows.net/"),
 		// 					File: to.Ptr("https://sto9174.file.core.windows.net/"),

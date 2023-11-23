@@ -54,7 +54,7 @@ func ExampleObjectReplicationPoliciesClient_CreateOrUpdate_storageAccountUpdateO
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res7687/providers/Microsoft.Storage/storageAccounts/src1122/objectReplicationPolicies/2a20bb73-5717-4635-985a-5d4cf777438f"),
 	// 	Properties: &armstorage.ObjectReplicationPolicyProperties{
 	// 		DestinationAccount: to.Ptr("dst112"),
-	// 		EnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-08T03:01:55.7168089Z"); return t}()),
+	// 		EnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-08T03:01:55.716Z"); return t}()),
 	// 		PolicyID: to.Ptr("2a20bb73-5717-4635-985a-5d4cf777438f"),
 	// 		Rules: []*armstorage.ObjectReplicationPolicyRule{
 	// 			{

@@ -24,12 +24,12 @@ func ExampleAccountsClient_ListAccountSAS() {
 	}
 	res, err := clientFactory.NewAccountsClient().ListAccountSAS(ctx, "res7985", "sto8588", armstorage.AccountSasParameters{
 		KeyToSign:              to.Ptr("key1"),
-		SharedAccessExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T11:42:03.1567373Z"); return t }()),
+		SharedAccessExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T11:42:03.156Z"); return t }()),
 		Permissions:            to.Ptr(armstorage.PermissionsR),
 		Protocols:              to.Ptr(armstorage.HTTPProtocolHTTPSHTTP),
 		ResourceTypes:          to.Ptr(armstorage.SignedResourceTypesS),
 		Services:               to.Ptr(armstorage.ServicesB),
-		SharedAccessStartTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T10:42:03.1567373Z"); return t }()),
+		SharedAccessStartTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T10:42:03.156Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

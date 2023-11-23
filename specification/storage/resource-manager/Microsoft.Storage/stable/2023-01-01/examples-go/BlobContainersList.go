@@ -43,7 +43,7 @@ func ExampleBlobContainersClient_NewListPager_listContainers() {
 		// 			Properties: &armstorage.ContainerProperties{
 		// 				HasImmutabilityPolicy: to.Ptr(false),
 		// 				HasLegalHold: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T08:20:47Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T08:20:47.000Z"); return t}()),
 		// 				LeaseState: to.Ptr(armstorage.LeaseStateAvailable),
 		// 				LeaseStatus: to.Ptr(armstorage.LeaseStatusUnlocked),
 		// 				PublicAccess: to.Ptr(armstorage.PublicAccessContainer),
@@ -57,7 +57,7 @@ func ExampleBlobContainersClient_NewListPager_listContainers() {
 		// 			Properties: &armstorage.ContainerProperties{
 		// 				HasImmutabilityPolicy: to.Ptr(false),
 		// 				HasLegalHold: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T08:20:47Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T08:20:47.000Z"); return t}()),
 		// 				LeaseState: to.Ptr(armstorage.LeaseStateAvailable),
 		// 				LeaseStatus: to.Ptr(armstorage.LeaseStatusUnlocked),
 		// 				PublicAccess: to.Ptr(armstorage.PublicAccessNone),

@@ -43,8 +43,8 @@ func ExampleFileSharesClient_NewListPager_listDeletedShares() {
 		// 			Etag: to.Ptr("\"0x8D589847D51C7DE\""),
 		// 			Properties: &armstorage.FileShareProperties{
 		// 				Deleted: to.Ptr(true),
-		// 				DeletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-14T08:20:47Z"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T08:20:47Z"); return t}()),
+		// 				DeletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-14T08:20:47.000Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T08:20:47.000Z"); return t}()),
 		// 				RemainingRetentionDays: to.Ptr[int32](30),
 		// 				ShareQuota: to.Ptr[int32](1024),
 		// 				Version: to.Ptr("1234567890"),
@@ -56,7 +56,7 @@ func ExampleFileSharesClient_NewListPager_listDeletedShares() {
 		// 			ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res9290/providers/Microsoft.Storage/storageAccounts/sto1590/fileServices/default/shares/share4052"),
 		// 			Etag: to.Ptr("\"0x8D589847DAB5AF9\""),
 		// 			Properties: &armstorage.FileShareProperties{
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T08:20:47Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T08:20:47.000Z"); return t}()),
 		// 				ShareQuota: to.Ptr[int32](1024),
 		// 			},
 		// 	}},

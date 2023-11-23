@@ -64,7 +64,7 @@ func ExampleAccountsClient_Update_storageAccountEnableCmk() {
 	// 	},
 	// 	Kind: to.Ptr(armstorage.KindStorage),
 	// 	Properties: &armstorage.AccountProperties{
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.7633306Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.763Z"); return t}()),
 	// 		Encryption: &armstorage.Encryption{
 	// 			KeySource: to.Ptr(armstorage.KeySourceMicrosoftKeyvault),
 	// 			KeyVaultProperties: &armstorage.KeyVaultProperties{
@@ -72,18 +72,18 @@ func ExampleAccountsClient_Update_storageAccountEnableCmk() {
 	// 				KeyName: to.Ptr("wrappingKey"),
 	// 				KeyVaultURI: to.Ptr("https://myvault8569.vault.azure.net"),
 	// 				KeyVersion: to.Ptr(""),
-	// 				LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.7023290Z"); return t}()),
+	// 				LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.702Z"); return t}()),
 	// 			},
 	// 			Services: &armstorage.EncryptionServices{
 	// 				Blob: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 				File: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},

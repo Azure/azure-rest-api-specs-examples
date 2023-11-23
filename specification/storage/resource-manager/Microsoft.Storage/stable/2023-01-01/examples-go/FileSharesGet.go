@@ -34,7 +34,7 @@ func ExampleFileSharesClient_Get_getShares() {
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res9871/providers/Microsoft.Storage/storageAccounts/sto6217/fileServices/default/shares/share1634"),
 	// 	Etag: to.Ptr("\"0x8D592D74CC20EBA\""),
 	// 	FileShareProperties: &armstorage.FileShareProperties{
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-26T05:06:14Z"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-26T05:06:14.000Z"); return t}()),
 	// 		ShareQuota: to.Ptr[int32](1024),
 	// 	},
 	// }

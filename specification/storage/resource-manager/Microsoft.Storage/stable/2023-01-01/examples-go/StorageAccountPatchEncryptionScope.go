@@ -39,13 +39,13 @@ func ExampleEncryptionScopesClient_Patch() {
 	// 	Type: to.Ptr("Microsoft.Storage/storageAccounts/encryptionScopes"),
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/accountname/encryptionScopes/{encryption-scope-name}"),
 	// 	EncryptionScopeProperties: &armstorage.EncryptionScopeProperties{
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-16T02:42:41.7633306Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-16T02:42:41.763Z"); return t}()),
 	// 		KeyVaultProperties: &armstorage.EncryptionScopeKeyVaultProperties{
 	// 			CurrentVersionedKeyIdentifier: to.Ptr("https://testvault.vault.core.windows.net/keys/key1/863425f1358359c"),
 	// 			KeyURI: to.Ptr("https://testvault.vault.core.windows.net/keys/key1/863425f1358359c"),
-	// 			LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.7023290Z"); return t}()),
+	// 			LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.702Z"); return t}()),
 	// 		},
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-17T06:23:14.4513306Z"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-17T06:23:14.451Z"); return t}()),
 	// 		Source: to.Ptr(armstorage.EncryptionScopeSourceMicrosoftKeyVault),
 	// 		State: to.Ptr(armstorage.EncryptionScopeStateEnabled),
 	// 	},

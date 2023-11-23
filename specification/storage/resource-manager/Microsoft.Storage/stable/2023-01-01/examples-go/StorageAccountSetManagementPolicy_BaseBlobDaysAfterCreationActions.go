@@ -64,7 +64,7 @@ func ExampleManagementPoliciesClient_CreateOrUpdate_storageAccountSetManagementP
 	// 	Type: to.Ptr("Microsoft.Storage/storageAccounts/managementPolicies"),
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res7231/providers/Microsoft.Storage/storageAccounts/sto288/managementPolicies/default"),
 	// 	Properties: &armstorage.ManagementPolicyProperties{
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-08T02:53:39.0932539Z"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-08T02:53:39.093Z"); return t}()),
 	// 		Policy: &armstorage.ManagementPolicySchema{
 	// 			Rules: []*armstorage.ManagementPolicyRule{
 	// 				{

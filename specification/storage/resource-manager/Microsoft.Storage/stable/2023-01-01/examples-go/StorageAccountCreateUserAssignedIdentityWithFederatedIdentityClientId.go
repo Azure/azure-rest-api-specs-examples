@@ -86,7 +86,7 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreateUserAssignedIdentityW
 	// 	Kind: to.Ptr(armstorage.KindStorageV2),
 	// 	Properties: &armstorage.AccountProperties{
 	// 		AccessTier: to.Ptr(armstorage.AccessTierHot),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.0839093Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.083Z"); return t}()),
 	// 		Encryption: &armstorage.Encryption{
 	// 			EncryptionIdentity: &armstorage.EncryptionIdentity{
 	// 				EncryptionFederatedIdentityClientID: to.Ptr("f83c6b1b-4d34-47e4-bb34-9d83df58b540"),
@@ -98,18 +98,18 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreateUserAssignedIdentityW
 	// 				KeyName: to.Ptr("wrappingKey"),
 	// 				KeyVaultURI: to.Ptr("https://myvault8569.vault.azure.net"),
 	// 				KeyVersion: to.Ptr(""),
-	// 				LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.7023290Z"); return t}()),
+	// 				LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.702Z"); return t}()),
 	// 			},
 	// 			Services: &armstorage.EncryptionServices{
 	// 				Blob: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.1739587Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.173Z"); return t}()),
 	// 				},
 	// 				File: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.1739587Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.173Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},

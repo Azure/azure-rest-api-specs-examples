@@ -32,7 +32,7 @@ func ExampleObjectReplicationPoliciesClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res6977/providers/Microsoft.Storage/storageAccounts/sto2527/objectReplicationPolicies/{objectReplicationPolicy-Id}"),
 	// 	Properties: &armstorage.ObjectReplicationPolicyProperties{
 	// 		DestinationAccount: to.Ptr("destAccount1"),
-	// 		EnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-08T03:01:55.7168089Z"); return t}()),
+	// 		EnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-08T03:01:55.716Z"); return t}()),
 	// 		PolicyID: to.Ptr("{objectReplicationPolicy-Id}"),
 	// 		Rules: []*armstorage.ObjectReplicationPolicyRule{
 	// 			{

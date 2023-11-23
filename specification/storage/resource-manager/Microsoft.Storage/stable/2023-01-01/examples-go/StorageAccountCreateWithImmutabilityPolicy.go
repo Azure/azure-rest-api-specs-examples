@@ -62,7 +62,7 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreateWithImmutabilityPolic
 	// 	},
 	// 	Kind: to.Ptr(armstorage.KindStorage),
 	// 	Properties: &armstorage.AccountProperties{
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:25:33.4863236Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:25:33.486Z"); return t}()),
 	// 		ImmutableStorageWithVersioning: &armstorage.ImmutableStorageAccount{
 	// 			Enabled: to.Ptr(true),
 	// 			ImmutabilityPolicy: &armstorage.AccountImmutabilityPolicyProperties{

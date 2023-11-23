@@ -32,7 +32,7 @@ func ExampleAccountsClient_BeginRestoreBlobRanges() {
 				EndRange:   to.Ptr(""),
 				StartRange: to.Ptr("container2/blobpath3"),
 			}},
-		TimeToRestore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-20T15:30:00.0000000Z"); return t }()),
+		TimeToRestore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-20T15:30:00.000Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -55,7 +55,7 @@ func ExampleAccountsClient_BeginRestoreBlobRanges() {
 	// 				EndRange: to.Ptr(""),
 	// 				StartRange: to.Ptr("container2/blobpath3"),
 	// 		}},
-	// 		TimeToRestore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-20T15:30:00.0000000Z"); return t}()),
+	// 		TimeToRestore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-20T15:30:00.000Z"); return t}()),
 	// 	},
 	// 	RestoreID: to.Ptr("{restore_id}"),
 	// 	Status: to.Ptr(armstorage.BlobRestoreProgressStatus("Succeeded")),

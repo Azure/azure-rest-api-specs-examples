@@ -38,32 +38,32 @@ func ExampleAccountsClient_GetProperties_storageAccountGetProperties() {
 	// 	Kind: to.Ptr(armstorage.KindStorage),
 	// 	Properties: &armstorage.AccountProperties{
 	// 		AccountMigrationInProgress: to.Ptr(false),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.7633306Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.763Z"); return t}()),
 	// 		Encryption: &armstorage.Encryption{
 	// 			KeySource: to.Ptr(armstorage.KeySourceMicrosoftStorage),
 	// 			Services: &armstorage.EncryptionServices{
 	// 				Blob: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 				File: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},
 	// 		GeoReplicationStats: &armstorage.GeoReplicationStats{
 	// 			CanFailover: to.Ptr(true),
-	// 			LastSyncTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-30T00:25:34Z"); return t}()),
+	// 			LastSyncTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-30T00:25:34.000Z"); return t}()),
 	// 			Status: to.Ptr(armstorage.GeoReplicationStatusLive),
 	// 		},
 	// 		IsHnsEnabled: to.Ptr(true),
 	// 		IsSKUConversionBlocked: to.Ptr(false),
 	// 		KeyCreationTime: &armstorage.KeyCreationTime{
-	// 			Key1: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.4322836Z"); return t}()),
-	// 			Key2: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.4322836Z"); return t}()),
+	// 			Key1: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.432Z"); return t}()),
+	// 			Key2: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.432Z"); return t}()),
 	// 		},
 	// 		NetworkRuleSet: &armstorage.NetworkRuleSet{
 	// 			Bypass: to.Ptr(armstorage.BypassAzureServices),

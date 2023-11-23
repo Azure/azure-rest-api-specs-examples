@@ -24,7 +24,7 @@ func ExampleAccountsClient_ListServiceSAS() {
 	}
 	res, err := clientFactory.NewAccountsClient().ListServiceSAS(ctx, "res7439", "sto1299", armstorage.ServiceSasParameters{
 		CanonicalizedResource:  to.Ptr("/blob/sto1299/music"),
-		SharedAccessExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T11:32:48.8457197Z"); return t }()),
+		SharedAccessExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T11:32:48.845Z"); return t }()),
 		Permissions:            to.Ptr(armstorage.PermissionsL),
 		Resource:               to.Ptr(armstorage.SignedResourceC),
 	}, nil)

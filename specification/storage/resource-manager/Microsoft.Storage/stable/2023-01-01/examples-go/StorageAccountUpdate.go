@@ -82,19 +82,19 @@ func ExampleAccountsClient_Update_storageAccountUpdate() {
 	// 	Properties: &armstorage.AccountProperties{
 	// 		AllowBlobPublicAccess: to.Ptr(false),
 	// 		AllowSharedKeyAccess: to.Ptr(true),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.7633306Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.763Z"); return t}()),
 	// 		Encryption: &armstorage.Encryption{
 	// 			KeySource: to.Ptr(armstorage.KeySourceMicrosoftStorage),
 	// 			Services: &armstorage.EncryptionServices{
 	// 				Blob: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 				File: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},
@@ -102,8 +102,8 @@ func ExampleAccountsClient_Update_storageAccountUpdate() {
 	// 		IsLocalUserEnabled: to.Ptr(true),
 	// 		IsSftpEnabled: to.Ptr(true),
 	// 		KeyCreationTime: &armstorage.KeyCreationTime{
-	// 			Key1: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.4322836Z"); return t}()),
-	// 			Key2: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.4322836Z"); return t}()),
+	// 			Key1: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.432Z"); return t}()),
+	// 			Key2: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-18T04:42:22.432Z"); return t}()),
 	// 		},
 	// 		KeyPolicy: &armstorage.KeyPolicy{
 	// 			KeyExpirationPeriodInDays: to.Ptr[int32](20),

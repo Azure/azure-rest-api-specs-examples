@@ -104,7 +104,7 @@ func ExampleDeploymentsClient_BeginCreateOrUpdate_createADeploymentThatWillRedep
 	// 					ContentVersion: to.Ptr("1.0.0.0"),
 	// 					URI: to.Ptr("https://example.com/exampleTemplate.json"),
 	// 				},
-	// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-03-01T00:00:00.0000000Z"); return t}()),
+	// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-03-01T00:00:00.000Z"); return t}()),
 	// 			},
 	// 		}
 }

@@ -71,7 +71,7 @@ func ExampleDeploymentsClient_BeginCreateOrUpdate_createADeploymentThatWillDeplo
 	// 				ContentVersion: to.Ptr("1.0.0.0"),
 	// 				ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1"),
 	// 			},
-	// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-05T01:20:01.723776Z"); return t}()),
+	// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-05T01:20:01.723Z"); return t}()),
 	// 		},
 	// 	}
 }

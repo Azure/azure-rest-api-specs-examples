@@ -37,8 +37,8 @@ func ExampleClient_NewListBuiltInsPager() {
 		// 			Type: to.Ptr("Microsoft.Resources/builtInTemplateSpecs"),
 		// 			ID: to.Ptr("/providers/Microsoft.Resources/builtInTemplateSpecs/nameOfBuiltIn"),
 		// 			SystemData: &armtemplatespecs.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-01T01:01:01.1075056Z"); return t}()),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-02T02:03:01.1974346Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-01T01:01:01.107Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-02T02:03:01.197Z"); return t}()),
 		// 			},
 		// 			Location: to.Ptr("eastus"),
 		// 			Properties: &armtemplatespecs.TemplateSpecProperties{
@@ -50,8 +50,8 @@ func ExampleClient_NewListBuiltInsPager() {
 		// 			Type: to.Ptr("Microsoft.Resources/builtInTemplateSpecs"),
 		// 			ID: to.Ptr("/providers/Microsoft.Resources/builtInTemplateSpecs/nameOfAnotherBuiltIn"),
 		// 			SystemData: &armtemplatespecs.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-03T03:01:01.1282121Z"); return t}()),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-03T05:22:06.1974346Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-03T03:01:01.128Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-03T05:22:06.197Z"); return t}()),
 		// 			},
 		// 			Location: to.Ptr("eastus"),
 		// 			Properties: &armtemplatespecs.TemplateSpecProperties{

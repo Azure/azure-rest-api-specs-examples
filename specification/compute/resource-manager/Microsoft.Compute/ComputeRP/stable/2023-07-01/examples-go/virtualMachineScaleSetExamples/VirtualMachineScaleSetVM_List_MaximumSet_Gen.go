@@ -480,7 +480,7 @@ func ExampleVirtualMachineScaleSetVMsClient_NewListPager_virtualMachineScaleSetV
 		// 							WriteAcceleratorEnabled: to.Ptr(true),
 		// 						},
 		// 					},
-		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.3138469+00:00"); return t}()),
+		// 					TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.313Z"); return t}()),
 		// 					UserData: to.Ptr("RXhhbXBsZSBVc2VyRGF0YQ=="),
 		// 					VMID: to.Ptr("42af9fdf-b906-4ad7-9905-8316209ff619"),
 		// 				},

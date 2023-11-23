@@ -40,9 +40,9 @@ func ExampleVirtualMachinesClient_BeginAssessPatches() {
 	// 			Classifications: []*string{
 	// 				to.Ptr("Definition Updates")},
 	// 				KbID: to.Ptr("2267602"),
-	// 				LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:18:45.2830263Z"); return t}()),
+	// 				LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:18:45.283Z"); return t}()),
 	// 				PatchID: to.Ptr("35428702-5784-4ba4-a6e0-5222258b5411"),
-	// 				PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-07T00:00:00Z"); return t}()),
+	// 				PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-07T00:00:00.000Z"); return t}()),
 	// 				RebootBehavior: to.Ptr(armcompute.VMGuestPatchRebootBehaviorNeverReboots),
 	// 				Version: to.Ptr(""),
 	// 			},
@@ -53,16 +53,16 @@ func ExampleVirtualMachinesClient_BeginAssessPatches() {
 	// 				Classifications: []*string{
 	// 					to.Ptr("Update Rollups")},
 	// 					KbID: to.Ptr("890830"),
-	// 					LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:18:45.2830263Z"); return t}()),
+	// 					LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:18:45.283Z"); return t}()),
 	// 					PatchID: to.Ptr("39f9cdd1-795c-4d0e-8c0a-73ab3f31746d"),
-	// 					PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-07T00:00:00Z"); return t}()),
+	// 					PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-07T00:00:00.000Z"); return t}()),
 	// 					RebootBehavior: to.Ptr(armcompute.VMGuestPatchRebootBehaviorCanRequestReboot),
 	// 					Version: to.Ptr(""),
 	// 			}},
 	// 			CriticalAndSecurityPatchCount: to.Ptr[int32](1),
 	// 			OtherPatchCount: to.Ptr[int32](2),
 	// 			RebootPending: to.Ptr(true),
-	// 			StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:02:04.2556154Z"); return t}()),
+	// 			StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:02:04.255Z"); return t}()),
 	// 			Status: to.Ptr(armcompute.PatchOperationStatusSucceeded),
 	// 		}
 }

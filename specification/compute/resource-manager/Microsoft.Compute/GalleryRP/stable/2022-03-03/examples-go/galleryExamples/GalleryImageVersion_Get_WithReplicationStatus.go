@@ -33,7 +33,7 @@ func ExampleGalleryImageVersionsClient_Get_getAGalleryImageVersionWithReplicatio
 	// 	Properties: &armcompute.GalleryImageVersionProperties{
 	// 		ProvisioningState: to.Ptr(armcompute.GalleryProvisioningStateSucceeded),
 	// 		PublishingProfile: &armcompute.GalleryImageVersionPublishingProfile{
-	// 			PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t}()),
+	// 			PublishedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00.000Z"); return t}()),
 	// 			ReplicaCount: to.Ptr[int32](1),
 	// 			StorageAccountType: to.Ptr(armcompute.StorageAccountTypeStandardLRS),
 	// 			TargetRegions: []*armcompute.TargetRegion{

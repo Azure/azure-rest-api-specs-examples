@@ -25,14 +25,14 @@ func ExampleWatchersClient_BeginGetAzureReachabilityReport() {
 	poller, err := clientFactory.NewWatchersClient().BeginGetAzureReachabilityReport(ctx, "rg1", "nw1", armnetwork.AzureReachabilityReportParameters{
 		AzureLocations: []*string{
 			to.Ptr("West US")},
-		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-10T00:00:00Z"); return t }()),
+		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-10T00:00:00.000Z"); return t }()),
 		ProviderLocation: &armnetwork.AzureReachabilityReportLocation{
 			Country: to.Ptr("United States"),
 			State:   to.Ptr("washington"),
 		},
 		Providers: []*string{
 			to.Ptr("Frontier Communications of America, Inc. - ASN 5650")},
-		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-07T00:00:00Z"); return t }()),
+		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-07T00:00:00.000Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -56,15 +56,15 @@ func ExampleWatchersClient_BeginGetAzureReachabilityReport() {
 	// 			Latencies: []*armnetwork.AzureReachabilityReportLatencyInfo{
 	// 				{
 	// 					Score: to.Ptr[int32](94),
-	// 					TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-07T00:00:00Z"); return t}()),
+	// 					TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-07T00:00:00.000Z"); return t}()),
 	// 				},
 	// 				{
 	// 					Score: to.Ptr[int32](94),
-	// 					TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-08T00:00:00Z"); return t}()),
+	// 					TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-08T00:00:00.000Z"); return t}()),
 	// 				},
 	// 				{
 	// 					Score: to.Ptr[int32](94),
-	// 					TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-09T00:00:00Z"); return t}()),
+	// 					TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-09T00:00:00.000Z"); return t}()),
 	// 			}},
 	// 			Provider: to.Ptr("Frontier Communications of America, Inc. - ASN 5650"),
 	// 	}},

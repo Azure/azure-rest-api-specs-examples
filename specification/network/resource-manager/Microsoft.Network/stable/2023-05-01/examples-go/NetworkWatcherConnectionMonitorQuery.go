@@ -35,7 +35,7 @@ func ExampleConnectionMonitorsClient_BeginQuery() {
 	// 	States: []*armnetwork.ConnectionStateSnapshot{
 	// 		{
 	// 			ConnectionState: to.Ptr(armnetwork.ConnectionStateReachable),
-	// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-08T05:12:41.5265438Z"); return t}()),
+	// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-08T05:12:41.526Z"); return t}()),
 	// 			EvaluationState: to.Ptr(armnetwork.EvaluationStateCompleted),
 	// 			Hops: []*armnetwork.ConnectivityHop{
 	// 				{
@@ -58,7 +58,7 @@ func ExampleConnectionMonitorsClient_BeginQuery() {
 	// 						},
 	// 						ResourceID: to.Ptr("subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1"),
 	// 				}},
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-08T03:42:33.3387305Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-08T03:42:33.338Z"); return t}()),
 	// 		}},
 	// 	}
 }

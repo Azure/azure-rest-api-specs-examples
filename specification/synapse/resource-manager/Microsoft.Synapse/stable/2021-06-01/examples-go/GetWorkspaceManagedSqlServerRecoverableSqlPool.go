@@ -32,7 +32,7 @@ func ExampleWorkspaceManagedSQLServerRecoverableSQLPoolsClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/wsg-7398/providers/Microsoft.Synapse/workspaces/testWorkspace/recoverableSqlpools/recoverableSqlpools-1235"),
 	// 	Properties: &armsynapse.RecoverableSQLPoolProperties{
 	// 		Edition: to.Ptr("Standard"),
-	// 		LastAvailableBackupDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T01:06:29.78Z"); return t}()),
+	// 		LastAvailableBackupDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T01:06:29.780Z"); return t}()),
 	// 		ServiceLevelObjective: to.Ptr("S0"),
 	// 	},
 	// }

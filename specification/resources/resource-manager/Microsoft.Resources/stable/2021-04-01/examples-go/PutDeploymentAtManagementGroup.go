@@ -88,7 +88,7 @@ func ExampleDeploymentsClient_BeginCreateOrUpdateAtManagementGroupScope() {
 	// 							}},
 	// 					}},
 	// 					ProvisioningState: to.Ptr(armresources.ProvisioningStateSucceeded),
-	// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-24T22:52:38.7895563Z"); return t}()),
+	// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-24T22:52:38.789Z"); return t}()),
 	// 				},
 	// 			}
 }

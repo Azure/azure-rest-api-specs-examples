@@ -43,7 +43,7 @@ func ExampleServicesClient_CreateOrUpdate() {
 	// 		BillingDomainName: to.Ptr("a.b.c"),
 	// 		Notes: to.Ptr("blah"),
 	// 		Quantity: to.Ptr[int64](1000000),
-	// 		StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T12:00:00000Z"); return t}()),
+	// 		StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "NaN-NaN-NaNTNaN:NaN:NaN.NaNZ"); return t}()),
 	// 	},
 	// }
 }

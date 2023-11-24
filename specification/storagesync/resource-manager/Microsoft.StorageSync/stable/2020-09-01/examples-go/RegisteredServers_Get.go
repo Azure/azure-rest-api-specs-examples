@@ -32,7 +32,7 @@ func ExampleRegisteredServersClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/3a048283-338f-4002-a9dd-a50fdadcb392/resourceGroups/SampleResourceGroup_1/providers/Microsoft.StorageSync/storageSyncServices/SampleStorageSyncService_1/registeredServers/080d4133-bdb5-40a0-96a0-71a6057bfe9a"),
 	// 	Properties: &armstoragesync.RegisteredServerProperties{
 	// 		AgentVersion: to.Ptr("3.1.5.0"),
-	// 		AgentVersionExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T21:50:40.5840543Z"); return t}()),
+	// 		AgentVersionExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T21:50:40.584Z"); return t}()),
 	// 		AgentVersionStatus: to.Ptr(armstoragesync.RegisteredServerAgentVersionStatusOk),
 	// 		ClusterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 	// 		ClusterName: to.Ptr(""),

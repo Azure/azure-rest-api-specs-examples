@@ -55,9 +55,9 @@ func ExampleCapacityReservationsClient_Get() {
 	// 		},
 	// 		PlatformFaultDomainCount: to.Ptr[int32](3),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
-	// 		ProvisioningTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.3138469+00:00"); return t}()),
+	// 		ProvisioningTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.313Z"); return t}()),
 	// 		ReservationID: to.Ptr("{GUID}"),
-	// 		TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.3138469+00:00"); return t}()),
+	// 		TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.313Z"); return t}()),
 	// 		VirtualMachinesAssociated: []*armcompute.SubResourceReadOnly{
 	// 			{
 	// 				ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM1"),

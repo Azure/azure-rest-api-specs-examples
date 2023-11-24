@@ -70,7 +70,7 @@ func ExampleSnapshotsClient_NewListByResourceGroupPager() {
 		// 				},
 		// 				OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
-		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.9278721+00:00"); return t}()),
+		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.927Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

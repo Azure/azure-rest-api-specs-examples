@@ -70,7 +70,7 @@ func ExampleSnapshotsClient_NewListPager() {
 		// 				},
 		// 				OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
-		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:47:30.6630569+00:00"); return t}()),
+		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:47:30.663Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -112,7 +112,7 @@ func ExampleSnapshotsClient_NewListPager() {
 		// 				},
 		// 				OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
-		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:47:30.3247198+00:00"); return t}()),
+		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:47:30.324Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

@@ -123,7 +123,7 @@ func ExampleVirtualMachinesClient_Get_getAVirtualMachine() {
 	// 				OSType: to.Ptr(armcompute.OperatingSystemTypesWindows),
 	// 			},
 	// 		},
-	// 		TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.3138469+00:00"); return t}()),
+	// 		TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-27T01:02:38.313Z"); return t}()),
 	// 		UserData: to.Ptr("RXhhbXBsZSBVc2VyRGF0YQ=="),
 	// 		VMID: to.Ptr("0f47b100-583c-48e3-a4c0-aefc2c9bbcc1"),
 	// 	},

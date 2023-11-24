@@ -37,7 +37,7 @@ func ExampleDisksClient_Get() {
 	// 	},
 	// 	ManagedBy: to.Ptr("/subscriptions/123caaa-123v-v211-a49f-f88ccac5bf88/resourceGroups/ResourceGroupName/providers/Microsoft.Compute/virtualMachines/TestVM414689371c88843d65ec"),
 	// 	Properties: &armcompute.DiskProperties{
-	// 		LastOwnershipUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.079872+00:00"); return t}()),
+	// 		LastOwnershipUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.079Z"); return t}()),
 	// 		CreationData: &armcompute.CreationData{
 	// 			CreateOption: to.Ptr(armcompute.DiskCreateOptionFromImage),
 	// 			ImageReference: &armcompute.ImageDiskReference{
@@ -81,7 +81,7 @@ func ExampleDisksClient_Get() {
 	// 			AcceleratedNetwork: to.Ptr(true),
 	// 		},
 	// 		SupportsHibernation: to.Ptr(true),
-	// 		TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.079872+00:00"); return t}()),
+	// 		TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-28T04:41:35.079Z"); return t}()),
 	// 	},
 	// 	SKU: &armcompute.DiskSKU{
 	// 		Name: to.Ptr(armcompute.DiskStorageAccountTypesStandardLRS),

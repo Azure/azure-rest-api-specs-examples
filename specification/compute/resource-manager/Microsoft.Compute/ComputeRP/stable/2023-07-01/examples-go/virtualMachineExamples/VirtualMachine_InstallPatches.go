@@ -29,7 +29,7 @@ func ExampleVirtualMachinesClient_BeginInstallPatches() {
 			ClassificationsToInclude: []*armcompute.VMGuestPatchClassificationWindows{
 				to.Ptr(armcompute.VMGuestPatchClassificationWindowsCritical),
 				to.Ptr(armcompute.VMGuestPatchClassificationWindowsSecurity)},
-			MaxPatchPublishDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T02:36:43.0539904+00:00"); return t }()),
+			MaxPatchPublishDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T02:36:43.053Z"); return t }()),
 		},
 	}, nil)
 	if err != nil {
@@ -70,7 +70,7 @@ func ExampleVirtualMachinesClient_BeginInstallPatches() {
 	// 			}},
 	// 			PendingPatchCount: to.Ptr[int32](2),
 	// 			RebootStatus: to.Ptr(armcompute.VMGuestPatchRebootStatusCompleted),
-	// 			StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:02:04.2556154Z"); return t}()),
+	// 			StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-24T21:02:04.255Z"); return t}()),
 	// 			Status: to.Ptr(armcompute.PatchOperationStatusSucceeded),
 	// 		}
 }

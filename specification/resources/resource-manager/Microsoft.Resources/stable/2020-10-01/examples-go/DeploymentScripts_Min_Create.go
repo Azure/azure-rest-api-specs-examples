@@ -65,9 +65,9 @@ func ExampleClient_BeginCreate_deploymentScriptsCreateMinCreate() {
 	// 			ProvisioningState: to.Ptr(armdeploymentscripts.ScriptProvisioningStateSucceeded),
 	// 			Status: &armdeploymentscripts.ScriptStatus{
 	// 				ContainerInstanceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.ContainerInstance/containerGroups/scriptContainer"),
-	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T15:19:45-08:00"); return t}()),
-	// 				ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T15:19:45-08:00"); return t}()),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T15:19:45-08:00"); return t}()),
+	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T23:19:45.000Z"); return t}()),
+	// 				ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T23:19:45.000Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-13T23:19:45.000Z"); return t}()),
 	// 				StorageAccountID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scriptRG/providers/Microsoft.Storage/storageAccounts/scriptStorage"),
 	// 			},
 	// 			Arguments: to.Ptr("-Location 'westus' -Name \"*rg2\""),

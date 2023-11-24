@@ -38,7 +38,7 @@ func ExampleJobsClient_NewListByManagerPager() {
 		// 			Type: to.Ptr("Microsoft.StorSimple/managers/devices/jobs"),
 		// 			ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/jemdeviceforsdk/jobs/07103ea6-0092-4bee-853c-72a98256421e"),
 		// 			Kind: to.Ptr("Series8000"),
-		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-22T09:19:06.8856335Z"); return t}()),
+		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-22T09:19:06.885Z"); return t}()),
 		// 			PercentComplete: to.Ptr[int32](100),
 		// 			Properties: &armstorsimple8000series.JobProperties{
 		// 				DataStats: &armstorsimple8000series.DataStatistics{
@@ -85,7 +85,7 @@ func ExampleJobsClient_NewListByManagerPager() {
 		// 				JobType: to.Ptr(armstorsimple8000series.JobTypeFailoverVolumeContainers),
 		// 				SourceDeviceID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/Device05ForSDKTest"),
 		// 			},
-		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-22T09:17:48.2546292Z"); return t}()),
+		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-22T09:17:48.254Z"); return t}()),
 		// 			Status: to.Ptr(armstorsimple8000series.JobStatusSucceeded),
 		// 		},
 		// 		{
@@ -93,7 +93,7 @@ func ExampleJobsClient_NewListByManagerPager() {
 		// 			Type: to.Ptr("Microsoft.StorSimple/managers/devices/jobs"),
 		// 			ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/Device05ForSDKTest/jobs/55d9f42a-b130-4bbe-8f40-985174a37ce8"),
 		// 			Kind: to.Ptr("Series8000"),
-		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-19T09:04:37.6893123Z"); return t}()),
+		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-19T09:04:37.689Z"); return t}()),
 		// 			PercentComplete: to.Ptr[int32](100),
 		// 			Properties: &armstorsimple8000series.JobProperties{
 		// 				DataStats: &armstorsimple8000series.DataStatistics{
@@ -140,7 +140,7 @@ func ExampleJobsClient_NewListByManagerPager() {
 		// 				JobType: to.Ptr(armstorsimple8000series.JobTypeFailoverVolumeContainers),
 		// 				SourceDeviceID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/jemdeviceforsdk"),
 		// 			},
-		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-19T09:02:57.4352674Z"); return t}()),
+		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-19T09:02:57.435Z"); return t}()),
 		// 			Status: to.Ptr(armstorsimple8000series.JobStatusSucceeded),
 		// 		},
 		// 		{
@@ -148,7 +148,7 @@ func ExampleJobsClient_NewListByManagerPager() {
 		// 			Type: to.Ptr("Microsoft.StorSimple/managers/devices/jobs"),
 		// 			ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/jemdeviceforsdk/jobs/a8418e26-99e8-4b11-883f-c08ca74db2b0"),
 		// 			Kind: to.Ptr("Series8000"),
-		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-13T10:51:59.006313Z"); return t}()),
+		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-13T10:51:59.006Z"); return t}()),
 		// 			PercentComplete: to.Ptr[int32](100),
 		// 			Properties: &armstorsimple8000series.JobProperties{
 		// 				DataStats: &armstorsimple8000series.DataStatistics{
@@ -195,7 +195,7 @@ func ExampleJobsClient_NewListByManagerPager() {
 		// 				JobType: to.Ptr(armstorsimple8000series.JobTypeFailoverVolumeContainers),
 		// 				SourceDeviceID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/Device05ForSDKTest"),
 		// 			},
-		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-13T10:50:46.7648845Z"); return t}()),
+		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-13T10:50:46.764Z"); return t}()),
 		// 			Status: to.Ptr(armstorsimple8000series.JobStatusSucceeded),
 		// 	}},
 		// }

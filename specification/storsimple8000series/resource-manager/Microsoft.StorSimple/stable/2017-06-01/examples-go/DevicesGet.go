@@ -33,7 +33,7 @@ func ExampleDevicesClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/4385cf00-2d3a-425a-832f-f4285b1c9dce/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/ManagerForSDKTest1/devices/Device001ForSDKTest"),
 	// 	Kind: to.Ptr("Series8000"),
 	// 	Properties: &armstorsimple8000series.DeviceProperties{
-	// 		ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-22T09:36:20.9632051Z"); return t}()),
+	// 		ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-22T09:36:20.963Z"); return t}()),
 	// 		ActiveController: to.Ptr(armstorsimple8000series.ControllerIDController0),
 	// 		AgentGroupVersion: to.Ptr[int32](7),
 	// 		AvailableLocalStorageInBytes: to.Ptr[int64](43980464128),

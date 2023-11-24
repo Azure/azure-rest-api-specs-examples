@@ -33,7 +33,7 @@ func ExampleMultipleActivationKeysClient_Get() {
 	// 	Location: to.Ptr("East US"),
 	// 	Properties: &armwindowsesu.MultipleActivationKeyProperties{
 	// 		AgreementNumber: to.Ptr("1a2b45ag"),
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-21T21:12:26+00:00"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-21T21:12:26.000Z"); return t}()),
 	// 		InstalledServerNumber: to.Ptr[int32](100),
 	// 		IsEligible: to.Ptr(true),
 	// 		MultipleActivationKey: to.Ptr("aaaaa-bbbbb-ccccc-ddddd-eeeee"),

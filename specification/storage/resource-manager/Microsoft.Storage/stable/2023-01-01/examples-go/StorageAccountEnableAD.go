@@ -67,7 +67,7 @@ func ExampleAccountsClient_Update_storageAccountEnableAd() {
 	// 			},
 	// 			DirectoryServiceOptions: to.Ptr(armstorage.DirectoryServiceOptionsAD),
 	// 		},
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.7633306Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-01T02:42:41.763Z"); return t}()),
 	// 		PrimaryEndpoints: &armstorage.Endpoints{
 	// 			Blob: to.Ptr("https://sto8596.blob.core.windows.net/"),
 	// 			Dfs: to.Ptr("https://sto8596.dfs.core.windows.net/"),

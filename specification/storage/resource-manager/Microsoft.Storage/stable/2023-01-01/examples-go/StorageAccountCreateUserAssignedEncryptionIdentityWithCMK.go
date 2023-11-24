@@ -85,7 +85,7 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreateUserAssignedEncryptio
 	// 	Kind: to.Ptr(armstorage.KindStorageV2),
 	// 	Properties: &armstorage.AccountProperties{
 	// 		AccessTier: to.Ptr(armstorage.AccessTierHot),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.0839093Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.083Z"); return t}()),
 	// 		Encryption: &armstorage.Encryption{
 	// 			EncryptionIdentity: &armstorage.EncryptionIdentity{
 	// 				EncryptionUserAssignedIdentity: to.Ptr("/subscriptions/{subscription-id}/resourcegroups/res9101/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managed-identity-name}"),
@@ -96,18 +96,18 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreateUserAssignedEncryptio
 	// 				KeyName: to.Ptr("wrappingKey"),
 	// 				KeyVaultURI: to.Ptr("https://myvault8569.vault.azure.net"),
 	// 				KeyVersion: to.Ptr(""),
-	// 				LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.7023290Z"); return t}()),
+	// 				LastKeyRotationTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-13T20:36:23.702Z"); return t}()),
 	// 			},
 	// 			Services: &armstorage.EncryptionServices{
 	// 				Blob: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.1739587Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.173Z"); return t}()),
 	// 				},
 	// 				File: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.1739587Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-15T00:43:14.173Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},

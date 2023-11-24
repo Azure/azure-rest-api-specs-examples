@@ -42,7 +42,7 @@ func ExampleFileSharesClient_NewListPager_listShareSnapshots() {
 		// 			ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res9290/providers/Microsoft.Storage/storageAccounts/sto1590/fileServices/default/shares/share4052"),
 		// 			Etag: to.Ptr("\"0x8D589847DAB5AF9\""),
 		// 			Properties: &armstorage.FileShareProperties{
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-26T05:47:05.0000000Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-26T05:47:05.000Z"); return t}()),
 		// 				ShareQuota: to.Ptr[int32](1024),
 		// 			},
 		// 		},
@@ -52,9 +52,9 @@ func ExampleFileSharesClient_NewListPager_listShareSnapshots() {
 		// 			ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/res9290/providers/Microsoft.Storage/storageAccounts/sto1590/fileServices/default/shares/share4052"),
 		// 			Etag: to.Ptr("\"0x8D589847DAB5AF9\""),
 		// 			Properties: &armstorage.FileShareProperties{
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-26T05:47:05.0000000Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-26T05:47:05.000Z"); return t}()),
 		// 				ShareQuota: to.Ptr[int32](1024),
-		// 				SnapshotTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-26T05:48:07.0000000Z"); return t}()),
+		// 				SnapshotTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-26T05:48:07.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

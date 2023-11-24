@@ -43,7 +43,7 @@ func ExampleAccountsClient_NewListByResourceGroupPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:24:47.818801Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:24:47.818Z"); return t}()),
 		// 				IsHnsEnabled: to.Ptr(true),
 		// 				PrimaryEndpoints: &armstorage.Endpoints{
 		// 					Blob: to.Ptr("https://sto4036.blob.core.windows.net/"),
@@ -76,7 +76,7 @@ func ExampleAccountsClient_NewListByResourceGroupPager() {
 		// 			},
 		// 			Kind: to.Ptr(armstorage.KindStorage),
 		// 			Properties: &armstorage.AccountProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:24:15.7068366Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:24:15.706Z"); return t}()),
 		// 				PrimaryEndpoints: &armstorage.Endpoints{
 		// 					Blob: to.Ptr("https://sto4452.blob.core.windows.net/"),
 		// 					File: to.Ptr("https://sto4452.file.core.windows.net/"),

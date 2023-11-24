@@ -36,8 +36,8 @@ func ExampleEncryptionScopesClient_Put_storageAccountPutEncryptionScopeWithInfra
 	// 	Type: to.Ptr("Microsoft.Storage/storageAccounts/encryptionScopes"),
 	// 	ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/accountname/encryptionScopes/{encryption-scope-name}"),
 	// 	EncryptionScopeProperties: &armstorage.EncryptionScopeProperties{
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-16T02:42:41.7633306Z"); return t}()),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-16T02:42:41.7633306Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-16T02:42:41.763Z"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-16T02:42:41.763Z"); return t}()),
 	// 		RequireInfrastructureEncryption: to.Ptr(true),
 	// 		Source: to.Ptr(armstorage.EncryptionScopeSourceMicrosoftStorage),
 	// 		State: to.Ptr(armstorage.EncryptionScopeStateEnabled),

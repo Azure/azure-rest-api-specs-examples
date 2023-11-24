@@ -72,7 +72,7 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreatePremiumBlockBlobStora
 	// 	Properties: &armstorage.AccountProperties{
 	// 		AccessTier: to.Ptr(armstorage.AccessTierPremium),
 	// 		AllowBlobPublicAccess: to.Ptr(false),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:25:33.4863236Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-24T13:25:33.486Z"); return t}()),
 	// 		Encryption: &armstorage.Encryption{
 	// 			KeySource: to.Ptr(armstorage.KeySourceMicrosoftStorage),
 	// 			RequireInfrastructureEncryption: to.Ptr(false),
@@ -80,12 +80,12 @@ func ExampleAccountsClient_BeginCreate_storageAccountCreatePremiumBlockBlobStora
 	// 				Blob: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 				File: &armstorage.EncryptionService{
 	// 					Enabled: to.Ptr(true),
 	// 					KeyType: to.Ptr(armstorage.KeyTypeAccount),
-	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.7036140Z"); return t}()),
+	// 					LastEnabledTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-11T20:49:31.703Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},

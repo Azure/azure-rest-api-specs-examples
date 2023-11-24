@@ -31,8 +31,8 @@ func ExampleTemplateSpecVersionsClient_GetBuiltIn() {
 	// 	Type: to.Ptr("Microsoft.Resources/builtInTemplateSpecs/versions"),
 	// 	ID: to.Ptr("/providers/Microsoft.Resources/builtInTemplateSpecs/nameOfTheBuiltIn/versions/v1.0"),
 	// 	SystemData: &armtemplatespecs.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-01T01:01:01.1075056Z"); return t}()),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-01T01:01:01.1075056Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-01T01:01:01.107Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-01T01:01:01.107Z"); return t}()),
 	// 	},
 	// 	Location: to.Ptr("eastus"),
 	// 	Properties: &armtemplatespecs.TemplateSpecVersionProperties{

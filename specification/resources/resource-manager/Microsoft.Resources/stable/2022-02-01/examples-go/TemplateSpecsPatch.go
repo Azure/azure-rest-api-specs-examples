@@ -37,10 +37,10 @@ func ExampleClient_Update() {
 	// 	Type: to.Ptr("Microsoft.Resources/templateSpecs"),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/templateSpecRG/providers/Microsoft.Resources/templateSpecs/simpleTemplateSpec"),
 	// 	SystemData: &armtemplatespecs.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.107Z"); return t}()),
 	// 		CreatedBy: to.Ptr("string"),
 	// 		CreatedByType: to.Ptr(armtemplatespecs.CreatedByTypeApplication),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.1974346Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.197Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("string"),
 	// 		LastModifiedByType: to.Ptr(armtemplatespecs.CreatedByTypeApplication),
 	// 	},

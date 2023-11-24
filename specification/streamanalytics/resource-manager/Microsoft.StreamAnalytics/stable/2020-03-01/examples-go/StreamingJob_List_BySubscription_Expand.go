@@ -45,7 +45,7 @@ func ExampleStreamingJobsClient_NewListPager_listAllStreamingJobsInASubscription
 		// 			},
 		// 			Properties: &armstreamanalytics.StreamingJobProperties{
 		// 				CompatibilityLevel: to.Ptr(armstreamanalytics.CompatibilityLevelOne0),
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-11T04:37:11.54Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-11T04:37:11.540Z"); return t}()),
 		// 				DataLocale: to.Ptr("en-US"),
 		// 				Etag: to.Ptr("8081b2a3-dfe6-457f-8740-1a22d209bf8a"),
 		// 				EventsLateArrivalMaxDelayInSeconds: to.Ptr[int32](5),
@@ -129,7 +129,7 @@ func ExampleStreamingJobsClient_NewListPager_listAllStreamingJobsInASubscription
 		// 			},
 		// 			Properties: &armstreamanalytics.StreamingJobProperties{
 		// 				CompatibilityLevel: to.Ptr(armstreamanalytics.CompatibilityLevelOne0),
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-11T04:38:11.54Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-11T04:38:11.540Z"); return t}()),
 		// 				DataLocale: to.Ptr("en-US"),
 		// 				Etag: to.Ptr("5420059f-e5d7-47d4-be44-40816a4dca7e"),
 		// 				EventsLateArrivalMaxDelayInSeconds: to.Ptr[int32](5),

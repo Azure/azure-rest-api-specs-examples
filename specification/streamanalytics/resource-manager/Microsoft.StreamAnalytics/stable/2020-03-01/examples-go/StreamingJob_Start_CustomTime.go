@@ -24,7 +24,7 @@ func ExampleStreamingJobsClient_BeginStart_startAStreamingJobWithCustomTimeOutpu
 	}
 	poller, err := clientFactory.NewStreamingJobsClient().BeginStart(ctx, "sjrg6936", "sj59", &armstreamanalytics.StreamingJobsClientBeginStartOptions{StartJobParameters: &armstreamanalytics.StartStreamingJobParameters{
 		OutputStartMode: to.Ptr(armstreamanalytics.OutputStartModeCustomTime),
-		OutputStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2012-12-12T12:12:12Z"); return t }()),
+		OutputStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2012-12-12T12:12:12.000Z"); return t }()),
 	},
 	})
 	if err != nil {

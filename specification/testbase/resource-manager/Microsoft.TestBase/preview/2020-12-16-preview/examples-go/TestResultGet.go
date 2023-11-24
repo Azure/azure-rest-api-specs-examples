@@ -64,7 +64,7 @@ func ExampleTestResultsClient_Get() {
 	// 		PackageID: to.Ptr("b5ed1bcc-e74c-40d8-82f2-1773f616f93e"),
 	// 		PackageVersion: to.Ptr("3.0.1"),
 	// 		ReleaseName: to.Ptr("2020.12B"),
-	// 		ReleaseVersionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-28T17:30:00Z"); return t}()),
+	// 		ReleaseVersionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-28T17:30:00.000Z"); return t}()),
 	// 		TestRunTime: to.Ptr("00:21:30"),
 	// 		TestStatus: to.Ptr(armtestbase.TestStatusCompleted),
 	// 		TestType: to.Ptr("Out of box test"),

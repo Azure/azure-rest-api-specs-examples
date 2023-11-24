@@ -113,7 +113,7 @@ func ExamplePackagesClient_BeginCreate() {
 	// 		BlobPath: to.Ptr("storageAccountPath/package.zip"),
 	// 		FlightingRing: to.Ptr("Insider Beta Channel"),
 	// 		IsEnabled: to.Ptr(true),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-28T17:30:00Z"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-28T17:30:00.000Z"); return t}()),
 	// 		PackageStatus: to.Ptr(armtestbase.PackageStatusReady),
 	// 		ProvisioningState: to.Ptr(armtestbase.ProvisioningStateSucceeded),
 	// 		TargetOSList: []*armtestbase.TargetOSInfo{

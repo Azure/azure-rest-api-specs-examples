@@ -15,11 +15,11 @@ func ExampleOperationsClient_NewListPager() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armstorageimportexport.NewClientFactory("<subscription-id>", nil, cred, nil)
+	clientFactory, err := armstorageimportexport.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	pager := clientFactory.NewOperationsClient().NewListPager(&armstorageimportexport.OperationsClientListOptions{AcceptLanguage: nil})
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

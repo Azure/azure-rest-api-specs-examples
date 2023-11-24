@@ -42,10 +42,10 @@ func ExampleDataCollectionRuleAssociationsClient_NewListByDataCollectionEndpoint
 		// 				ProvisioningState: to.Ptr(armmonitor.KnownDataCollectionRuleAssociationProvisioningStateSucceeded),
 		// 			},
 		// 			SystemData: &armmonitor.DataCollectionRuleAssociationProxyOnlyResourceSystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T12:34:56.1234567Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T12:34:56.123Z"); return t}()),
 		// 				CreatedBy: to.Ptr("user1"),
 		// 				CreatedByType: to.Ptr(armmonitor.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-02T12:34:56.1234567Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-02T12:34:56.123Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("user2"),
 		// 				LastModifiedByType: to.Ptr(armmonitor.CreatedByTypeUser),
 		// 			},

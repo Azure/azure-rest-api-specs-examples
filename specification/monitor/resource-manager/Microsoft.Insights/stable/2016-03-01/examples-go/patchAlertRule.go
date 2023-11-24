@@ -75,7 +75,7 @@ func ExampleAlertRulesClient_Update() {
 	// 			WindowSize: to.Ptr("PT5M"),
 	// 		},
 	// 		IsEnabled: to.Ptr(true),
-	// 		LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-11-23T21:23:52.0221265Z"); return t}()),
+	// 		LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-11-23T21:23:52.022Z"); return t}()),
 	// 	},
 	// }
 }

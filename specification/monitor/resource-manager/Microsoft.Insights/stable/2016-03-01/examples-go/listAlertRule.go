@@ -65,7 +65,7 @@ func ExampleAlertRulesClient_NewListByResourceGroupPager() {
 		// 						WindowSize: to.Ptr("PT5M"),
 		// 					},
 		// 					IsEnabled: to.Ptr(true),
-		// 					LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-11-10T21:04:39.0005255Z"); return t}()),
+		// 					LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-11-10T21:04:39.000Z"); return t}()),
 		// 				},
 		// 			},
 		// 			{
@@ -95,7 +95,7 @@ func ExampleAlertRulesClient_NewListByResourceGroupPager() {
 		// 						WindowSize: to.Ptr("PT5M"),
 		// 					},
 		// 					IsEnabled: to.Ptr(true),
-		// 					LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-11-10T21:04:39.1082596Z"); return t}()),
+		// 					LastUpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-11-10T21:04:39.108Z"); return t}()),
 		// 				},
 		// 		}},
 		// 	}

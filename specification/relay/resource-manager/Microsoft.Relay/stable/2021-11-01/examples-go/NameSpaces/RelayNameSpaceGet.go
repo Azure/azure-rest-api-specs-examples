@@ -36,7 +36,7 @@ func ExampleNamespacesClient_Get() {
 	// 		"tag2": to.Ptr("value2"),
 	// 	},
 	// 	Properties: &armrelay.NamespaceProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:38:12.46Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:38:12.460Z"); return t}()),
 	// 		MetricID: to.Ptr("ffffffff-ffff-ffff-ffff-ffffffffffff:example-RelayRelayNamespace-01"),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		ServiceBusEndpoint: to.Ptr("https://example-RelayRelayNamespace-01.servicebus.windows.net:443/"),

@@ -42,11 +42,11 @@ func ExampleNamespacesClient_NewListPager() {
 		// 				"tag2": to.Ptr("value2"),
 		// 			},
 		// 			Properties: &armrelay.NamespaceProperties{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.4131724Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.413Z"); return t}()),
 		// 				MetricID: to.Ptr("ffffffff-ffff-ffff-ffff-ffffffffffff:example-RelayRelayNamespace-01"),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				ServiceBusEndpoint: to.Ptr("https://example-RelayRelayNamespace-01.servicebus.windows.net:443/"),
-		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:59.4131724Z"); return t}()),
+		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:59.413Z"); return t}()),
 		// 			},
 		// 			SKU: &armrelay.SKU{
 		// 				Name: to.Ptr(armrelay.SKUNameStandard),
@@ -63,11 +63,11 @@ func ExampleNamespacesClient_NewListPager() {
 		// 				"tag2": to.Ptr("value2"),
 		// 			},
 		// 			Properties: &armrelay.NamespaceProperties{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:39.4131724Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:39.413Z"); return t}()),
 		// 				MetricID: to.Ptr("ffffffff-ffff-ffff-ffff-ffffffffffff:example-RelayRelayNamespace-02"),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				ServiceBusEndpoint: to.Ptr("https://example-RelayRelayNamespace-02.servicebus.windows.net:443/"),
-		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.4131724Z"); return t}()),
+		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.413Z"); return t}()),
 		// 			},
 		// 			SKU: &armrelay.SKU{
 		// 				Name: to.Ptr(armrelay.SKUNameStandard),

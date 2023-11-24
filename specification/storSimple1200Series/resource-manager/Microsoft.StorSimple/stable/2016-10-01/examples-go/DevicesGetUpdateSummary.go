@@ -31,11 +31,11 @@ func ExampleDevicesClient_GetUpdateSummary() {
 	// 	Type: to.Ptr("Microsoft.StorSimple/managers/devices/updateSummary"),
 	// 	ID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hManagerForSDKTest4/devices/HBVT-02X525X2W0/updateSummary/default"),
 	// 	Properties: &armstorsimple1200series.UpdatesProperties{
-	// 		DeviceLastScannedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-02T05:46:21.6812618Z"); return t}()),
+	// 		DeviceLastScannedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-02T05:46:21.681Z"); return t}()),
 	// 		DeviceVersion: to.Ptr("10.0.10296.0"),
 	// 		InProgressDownloadJobID: to.Ptr(""),
 	// 		InProgressInstallJobID: to.Ptr(""),
-	// 		LastCompletedScanTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-02T05:46:22.3687602Z"); return t}()),
+	// 		LastCompletedScanTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-02T05:46:22.368Z"); return t}()),
 	// 		RebootRequiredForInstall: to.Ptr(false),
 	// 		RegularUpdatesAvailable: to.Ptr(false),
 	// 		Status: to.Ptr(armstorsimple1200series.UpdateOperationIdle),

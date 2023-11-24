@@ -32,7 +32,7 @@ func ExampleDevicesClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/HSDK-ARCSX4MVKZ"),
 	// 	Properties: &armstorsimple1200series.DeviceProperties{
 	// 		Type: to.Ptr(armstorsimple1200series.DeviceTypeSeries9000OnPremVirtualAppliance),
-	// 		ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T10:59:26.1659747Z"); return t}()),
+	// 		ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T10:59:26.165Z"); return t}()),
 	// 		AllowedDeviceOperations: []*armstorsimple1200series.DeviceOperation{
 	// 			to.Ptr(armstorsimple1200series.DeviceOperationDeactivate),
 	// 			to.Ptr(armstorsimple1200series.DeviceOperationBrowsable)},

@@ -38,7 +38,7 @@ func ExampleDevicesClient_NewListFailoverTargetPager() {
 		// 			ID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/HSDK-DMNJB2PET0"),
 		// 			Properties: &armstorsimple1200series.DeviceProperties{
 		// 				Type: to.Ptr(armstorsimple1200series.DeviceTypeSeries9000OnPremVirtualAppliance),
-		// 				ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-11T14:42:31.0604569Z"); return t}()),
+		// 				ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-11T14:42:31.060Z"); return t}()),
 		// 				AllowedDeviceOperations: []*armstorsimple1200series.DeviceOperation{
 		// 					to.Ptr(armstorsimple1200series.DeviceOperationDelete),
 		// 					to.Ptr(armstorsimple1200series.DeviceOperationDRTarget),
@@ -59,7 +59,7 @@ func ExampleDevicesClient_NewListFailoverTargetPager() {
 		// 					ID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/HSDK-YYMYCY4NK0"),
 		// 					Properties: &armstorsimple1200series.DeviceProperties{
 		// 						Type: to.Ptr(armstorsimple1200series.DeviceTypeSeries9000OnPremVirtualAppliance),
-		// 						ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-11T15:19:40.8252542Z"); return t}()),
+		// 						ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-11T15:19:40.825Z"); return t}()),
 		// 						AllowedDeviceOperations: []*armstorsimple1200series.DeviceOperation{
 		// 							to.Ptr(armstorsimple1200series.DeviceOperationDelete),
 		// 							to.Ptr(armstorsimple1200series.DeviceOperationDRTarget),

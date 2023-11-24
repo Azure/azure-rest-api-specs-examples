@@ -38,7 +38,7 @@ func ExampleDevicesClient_NewListByManagerPager() {
 		// 			ID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/hsdk-4xy4fi2ivg"),
 		// 			Properties: &armstorsimple1200series.DeviceProperties{
 		// 				Type: to.Ptr(armstorsimple1200series.DeviceTypeSeries9000OnPremVirtualAppliance),
-		// 				ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-09T09:47:59.8284448Z"); return t}()),
+		// 				ActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-09T09:47:59.828Z"); return t}()),
 		// 				AllowedDeviceOperations: []*armstorsimple1200series.DeviceOperation{
 		// 					to.Ptr(armstorsimple1200series.DeviceOperationDelete),
 		// 					to.Ptr(armstorsimple1200series.DeviceOperationDRTarget),

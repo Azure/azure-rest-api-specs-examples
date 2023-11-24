@@ -61,10 +61,10 @@ func ExampleClient_BeginCreateOrUpdateAtManagementGroup() {
 	// 	Type: to.Ptr("Microsoft.Resources/deploymentStacks"),
 	// 	ID: to.Ptr("/providers/Microsoft.Management/managementGroups/myMg/providers/Microsoft.Resources/deploymentStacks/simpleDeploymentStack"),
 	// 	SystemData: &armdeploymentstacks.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.107Z"); return t}()),
 	// 		CreatedBy: to.Ptr("string"),
 	// 		CreatedByType: to.Ptr(armdeploymentstacks.CreatedByTypeApplication),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.1974346Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.197Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("string"),
 	// 		LastModifiedByType: to.Ptr(armdeploymentstacks.CreatedByTypeApplication),
 	// 	},

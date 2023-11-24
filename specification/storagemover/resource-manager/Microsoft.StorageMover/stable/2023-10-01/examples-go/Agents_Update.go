@@ -41,7 +41,7 @@ func ExampleAgentsClient_Update() {
 	// 		AgentVersion: to.Ptr("1.0.0"),
 	// 		ArcResourceID: to.Ptr("/subscriptions/60bcfc77-6589-4da2-b7fd-f9ec9322cf95/resourceGroups/examples-rg/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"),
 	// 		ArcVMUUID: to.Ptr("3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"),
-	// 		LastStatusUpdate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-07-01T02:21:01.1075056Z"); return t}()),
+	// 		LastStatusUpdate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-07-01T02:21:01.107Z"); return t}()),
 	// 		LocalIPAddress: to.Ptr("192.168.0.0"),
 	// 		MemoryInMB: to.Ptr[int64](100024),
 	// 		NumberOfCores: to.Ptr[int64](32),

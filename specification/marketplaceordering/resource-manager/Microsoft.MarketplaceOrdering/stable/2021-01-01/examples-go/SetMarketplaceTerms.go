@@ -31,7 +31,7 @@ func ExampleMarketplaceAgreementsClient_Create() {
 			PrivacyPolicyLink:    to.Ptr("test.privacyPolicyLink"),
 			Product:              to.Ptr("offid"),
 			Publisher:            to.Ptr("pubid"),
-			RetrieveDatetime:     to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T11:33:07.12132Z"); return t }()),
+			RetrieveDatetime:     to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T11:33:07.121Z"); return t }()),
 			Signature:            to.Ptr("ASDFSDAFWEFASDGWERLWER"),
 		},
 	}, nil)
@@ -53,7 +53,7 @@ func ExampleMarketplaceAgreementsClient_Create() {
 	// 		PrivacyPolicyLink: to.Ptr("test.privacyPolicyLink"),
 	// 		Product: to.Ptr("offid"),
 	// 		Publisher: to.Ptr("pubid"),
-	// 		RetrieveDatetime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T11:33:07.12132Z"); return t}()),
+	// 		RetrieveDatetime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T11:33:07.121Z"); return t}()),
 	// 		Signature: to.Ptr("ASDFSDAFWEFASDGWERLWER"),
 	// 	},
 	// }

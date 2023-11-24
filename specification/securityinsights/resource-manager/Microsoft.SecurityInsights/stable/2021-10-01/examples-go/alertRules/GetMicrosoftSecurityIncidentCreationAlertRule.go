@@ -37,7 +37,7 @@ func ExampleAlertRulesClient_Get_getAMicrosoftSecurityIncidentCreationRule() {
 	// 			ProductFilter: to.Ptr(armsecurityinsights.MicrosoftSecurityProductNameMicrosoftCloudAppSecurity),
 	// 			DisplayName: to.Ptr("testing displayname"),
 	// 			Enabled: to.Ptr(true),
-	// 			LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T12:05:35.7296311Z"); return t}()),
+	// 			LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T12:05:35.729Z"); return t}()),
 	// 		},
 	// 	},
 	// 	                        }

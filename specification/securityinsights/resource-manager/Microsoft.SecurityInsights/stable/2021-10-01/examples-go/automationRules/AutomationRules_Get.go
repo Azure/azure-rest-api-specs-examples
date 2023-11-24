@@ -46,7 +46,7 @@ func ExampleAutomationRulesClient_Get() {
 	// 			ObjectID: to.Ptr("2046feea-040d-4a46-9e2b-91c2941bfa70"),
 	// 			UserPrincipalName: to.Ptr("john@contoso.com"),
 	// 		},
-	// 		CreatedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:00:00Z"); return t}()),
+	// 		CreatedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:00:00.000Z"); return t}()),
 	// 		DisplayName: to.Ptr("High severity incidents escalation"),
 	// 		LastModifiedBy: &armsecurityinsights.ClientInfo{
 	// 			Name: to.Ptr("john doe"),
@@ -54,7 +54,7 @@ func ExampleAutomationRulesClient_Get() {
 	// 			ObjectID: to.Ptr("2046feea-040d-4a46-9e2b-91c2941bfa70"),
 	// 			UserPrincipalName: to.Ptr("john@contoso.com"),
 	// 		},
-	// 		LastModifiedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:00:30Z"); return t}()),
+	// 		LastModifiedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:00:30.000Z"); return t}()),
 	// 		Order: to.Ptr[int32](1),
 	// 		TriggeringLogic: &armsecurityinsights.AutomationRuleTriggeringLogic{
 	// 			Conditions: []armsecurityinsights.AutomationRuleConditionClassification{

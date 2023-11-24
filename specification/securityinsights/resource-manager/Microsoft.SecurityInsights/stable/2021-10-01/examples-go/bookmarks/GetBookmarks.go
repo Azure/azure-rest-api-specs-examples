@@ -38,7 +38,7 @@ func ExampleBookmarksClient_NewListPager() {
 		// 			ID: to.Ptr("/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/bookmarks/73e01a99-5cd7-4139-a149-9f2736ff2ab5"),
 		// 			Etag: to.Ptr("\"0300bf09-0000-0000-0000-5c37296e0000\""),
 		// 			Properties: &armsecurityinsights.BookmarkProperties{
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:15:30Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:15:30.000Z"); return t}()),
 		// 				CreatedBy: &armsecurityinsights.UserInfo{
 		// 					Name: to.Ptr("john doe"),
 		// 					Email: to.Ptr("john@contoso.com"),
@@ -57,7 +57,7 @@ func ExampleBookmarksClient_NewListPager() {
 		// 					Notes: to.Ptr("Found a suspicious activity"),
 		// 					Query: to.Ptr("SecurityEvent | where TimeGenerated > ago(1d) and TimeGenerated < ago(2d)"),
 		// 					QueryResult: to.Ptr("Security Event query result"),
-		// 					Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:15:30Z"); return t}()),
+		// 					Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:15:30.000Z"); return t}()),
 		// 					UpdatedBy: &armsecurityinsights.UserInfo{
 		// 						Name: to.Ptr("john doe"),
 		// 						Email: to.Ptr("john@contoso.com"),

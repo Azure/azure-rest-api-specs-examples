@@ -32,7 +32,7 @@ func ExampleWatchlistItemsClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace/providers/Microsoft.SecurityInsights/Watchlists/highValueAsset/WatchlistItems/fd37d325-7090-47fe-851a-5b5a00c3f576"),
 	// 	Etag: to.Ptr("\"f2089bfa-0000-0d00-0000-601c58b42021\""),
 	// 	Properties: &armsecurityinsights.WatchlistItemProperties{
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-04T12:27:32.3783333-08:00"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-04T20:27:32.378Z"); return t}()),
 	// 		CreatedBy: &armsecurityinsights.UserInfo{
 	// 			Name: to.Ptr("john doe"),
 	// 			Email: to.Ptr("john@contoso.com"),
@@ -49,7 +49,7 @@ func ExampleWatchlistItemsClient_Get() {
 	// 			"Header-5": "v1_5",
 	// 		},
 	// 		TenantID: to.Ptr("3f8901fe-63d9-4875-9ad5-9fb3b8105797"),
-	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-04T12:27:32.3783333-08:00"); return t}()),
+	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-04T20:27:32.378Z"); return t}()),
 	// 		UpdatedBy: &armsecurityinsights.UserInfo{
 	// 			Name: to.Ptr("john doe"),
 	// 			Email: to.Ptr("john@contoso.com"),

@@ -54,6 +54,6 @@ func ExampleWatchersClient_BeginGetTroubleshootingResult() {
 	// 			}},
 	// 			Summary: to.Ptr("We are sorry, your VPN gateway is unreachable from the Internet"),
 	// 	}},
-	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-12T00:19:47.0442834Z"); return t}()),
+	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-12T00:19:47.044Z"); return t}()),
 	// }
 }

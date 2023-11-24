@@ -30,9 +30,9 @@ func ExampleWatchersClient_GetTopology() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.Topology = armnetwork.Topology{
-	// 	CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-02T19:31:55.9461781Z"); return t}()),
+	// 	CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-02T19:31:55.946Z"); return t}()),
 	// 	ID: to.Ptr("ce592f46-8164-4bf2-ad36-b8e4acf6fb68"),
-	// 	LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-27T00:00:13.2005337Z"); return t}()),
+	// 	LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-27T00:00:13.200Z"); return t}()),
 	// 	Resources: []*armnetwork.TopologyResource{
 	// 		{
 	// 			Name: to.Ptr("MultiTierApp0"),

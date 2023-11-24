@@ -39,10 +39,10 @@ func ExampleAdminRulesClient_CreateOrUpdate_createADefaultAdminRule() {
 	// 		ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/myTestSecurityConfig/ruleCollections/testRuleCollection/rules/SampleDefaultAdminRule"),
 	// 		Kind: to.Ptr(armnetwork.AdminRuleKindDefault),
 	// 		SystemData: &armnetwork.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-11T18:52:27Z"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-11T18:52:27.000Z"); return t}()),
 	// 			CreatedBy: to.Ptr("b69a9388-9488-4534-b470-7ec6d41beef5"),
 	// 			CreatedByType: to.Ptr(armnetwork.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-11T18:52:27Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-11T18:52:27.000Z"); return t}()),
 	// 			LastModifiedBy: to.Ptr("b69a9388-9488-4534-b470-7ec6d41beef5"),
 	// 			LastModifiedByType: to.Ptr(armnetwork.CreatedByTypeUser),
 	// 		},

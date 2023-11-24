@@ -1,0 +1,176 @@
+package armintegrationspaces_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/integrationspaces/armintegrationspaces"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/db9788dde7a0c2c0d82e4fdf5f7b4de3843937e3/specification/azureintegrationspaces/resource-manager/Microsoft.IntegrationSpaces/preview/2023-11-14-preview/examples/Applications_ValidateBusinessProcessDevelopmentArtifact.json
+func ExampleApplicationsClient_ValidateBusinessProcessDevelopmentArtifact() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armintegrationspaces.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	_, err = clientFactory.NewApplicationsClient().ValidateBusinessProcessDevelopmentArtifact(ctx, "testrg", "Space1", "Application1", armintegrationspaces.SaveOrValidateBusinessProcessDevelopmentArtifactRequest{
+		Name: to.Ptr("BusinessProcess1"),
+		Properties: &armintegrationspaces.BusinessProcessDevelopmentArtifactProperties{
+			Description: to.Ptr("First Business Process"),
+			BusinessProcessMapping: map[string]*armintegrationspaces.BusinessProcessMappingItem{
+				"Completed": {
+					LogicAppResourceID: to.Ptr("subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"),
+					OperationName:      to.Ptr("CompletedPO"),
+					OperationType:      to.Ptr("Action"),
+					WorkflowName:       to.Ptr("Fulfillment"),
+				},
+				"Denied": {
+					LogicAppResourceID: to.Ptr("subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"),
+					OperationName:      to.Ptr("DeniedPO"),
+					OperationType:      to.Ptr("Action"),
+					WorkflowName:       to.Ptr("Fulfillment"),
+				},
+				"Processing": {
+					LogicAppResourceID: to.Ptr("subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"),
+					OperationName:      to.Ptr("ApprovedPO"),
+					OperationType:      to.Ptr("Action"),
+					WorkflowName:       to.Ptr("PurchaseOrder"),
+				},
+				"Received": {
+					LogicAppResourceID: to.Ptr("subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"),
+					OperationName:      to.Ptr("manual"),
+					OperationType:      to.Ptr("Trigger"),
+					WorkflowName:       to.Ptr("PurchaseOrder"),
+				},
+				"Shipped": {
+					LogicAppResourceID: to.Ptr("subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1"),
+					OperationName:      to.Ptr("ShippedPO"),
+					OperationType:      to.Ptr("Action"),
+					WorkflowName:       to.Ptr("Fulfillment"),
+				},
+			},
+			BusinessProcessStages: map[string]*armintegrationspaces.BusinessProcessStage{
+				"Completed": {
+					Description: to.Ptr("Completed"),
+					StagesBefore: []*string{
+						to.Ptr("Shipped")},
+				},
+				"Denied": {
+					Description: to.Ptr("Denied"),
+					StagesBefore: []*string{
+						to.Ptr("Processing")},
+				},
+				"Processing": {
+					Description: to.Ptr("Processing"),
+					Properties: map[string]*string{
+						"ApprovalState": to.Ptr("String"),
+						"ApproverName":  to.Ptr("String"),
+						"POAmount":      to.Ptr("Integer"),
+					},
+					StagesBefore: []*string{
+						to.Ptr("Received")},
+				},
+				"Received@": {
+					Description: to.Ptr("received"),
+					Properties: map[string]*string{
+						"City":     to.Ptr("String"),
+						"Product":  to.Ptr("String"),
+						"Quantity": to.Ptr("Integer"),
+						"State":    to.Ptr("String"),
+					},
+				},
+				"Shipped": {
+					Description: to.Ptr("Shipped"),
+					Properties: map[string]*string{
+						"ShipPriority": to.Ptr("Integer"),
+						"TrackingID":   to.Ptr("Integer"),
+					},
+					StagesBefore: []*string{
+						to.Ptr("Denied")},
+				},
+			},
+			Identifier: &armintegrationspaces.BusinessProcessIdentifier{
+				PropertyName: to.Ptr("businessIdentifier-1"),
+				PropertyType: to.Ptr("String"),
+			},
+			TrackingProfiles: map[string]*armintegrationspaces.TrackingProfileDefinition{
+				"subscriptions/sub1/resourcegroups/group1/providers/Microsoft.Web/sites/logicApp1": {
+					Schema: to.Ptr("https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2023-01-01/trackingdefinitionschema.json#"),
+					BusinessProcess: &armintegrationspaces.BusinessProcessReference{
+						Name:    to.Ptr("businessProcess1"),
+						Version: to.Ptr("d52c9c91-6e10-4a90-9c1f-08ee5d01c656"),
+					},
+					TrackingDefinitions: map[string]*armintegrationspaces.FlowTrackingDefinition{
+						"Fulfillment": {
+							CorrelationContext: &armintegrationspaces.TrackingCorrelationContext{
+								OperationName: to.Ptr("manual"),
+								OperationType: to.Ptr("Trigger"),
+								PropertyName:  to.Ptr("OrderNumber"),
+								Value:         to.Ptr("@trigger().outputs.body.OrderNumber"),
+							},
+							Events: map[string]*armintegrationspaces.TrackingEventDefinition{
+								"Completed": {
+									OperationName: to.Ptr("CompletedPO"),
+									OperationType: to.Ptr("Action"),
+									Properties:    map[string]any{},
+								},
+								"Denied": {
+									OperationName: to.Ptr("DeniedPO"),
+									OperationType: to.Ptr("Action"),
+									Properties:    map[string]any{},
+								},
+								"Shipped": {
+									OperationName: to.Ptr("ShippedPO"),
+									OperationType: to.Ptr("Action"),
+									Properties: map[string]any{
+										"ShipPriority": "@action().inputs.shipPriority",
+										"TrackingID":   "@action().inputs.trackingID",
+									},
+								},
+							},
+						},
+						"PurchaseOrder": {
+							CorrelationContext: &armintegrationspaces.TrackingCorrelationContext{
+								OperationName: to.Ptr("manual"),
+								OperationType: to.Ptr("Trigger"),
+								PropertyName:  to.Ptr("OrderNumber"),
+								Value:         to.Ptr("@trigger().outputs.body.OrderNumber"),
+							},
+							Events: map[string]*armintegrationspaces.TrackingEventDefinition{
+								"Processing": {
+									OperationName: to.Ptr("ApprovedPO"),
+									OperationType: to.Ptr("Action"),
+									Properties: map[string]any{
+										"ApprovalStatus": "@action().inputs.ApprovalStatus",
+										"ApproverName":   "@action().inputs.ApproverName",
+										"POAmount":       "@action().inputs.POamount",
+									},
+								},
+								"Received": {
+									OperationName: to.Ptr("manual"),
+									OperationType: to.Ptr("Trigger"),
+									Properties: map[string]any{
+										"City":     "@trigger().outputs.body.Address.City",
+										"Product":  "@trigger().outputs.body.Product",
+										"Quantity": "@trigger().outputs.body.Quantity",
+										"State":    "@trigger().outputs.body.Address.State",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}, nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+}

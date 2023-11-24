@@ -33,12 +33,12 @@ func ExampleReservationOrderClient_Get_getReservationWithExpandPayments() {
 	// 	Etag: to.Ptr[int32](7),
 	// 	ID: to.Ptr("/providers/microsoft.capacity/reservationOrders/1f14354c-dc12-4c8d-8090-6f295a3a34aa"),
 	// 	Properties: &armreservations.ReservationOrderProperties{
-	// 		BenefitStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T03:51:49Z"); return t}()),
+	// 		BenefitStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T03:51:49.000Z"); return t}()),
 	// 		BillingPlan: to.Ptr(armreservations.ReservationBillingPlanMonthly),
-	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T03:51:49Z"); return t}()),
+	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T03:51:49.000Z"); return t}()),
 	// 		DisplayName: to.Ptr("cabri"),
 	// 		ExpiryDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2018-08-30"); return t}()),
-	// 		ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-30T03:51:49Z"); return t}()),
+	// 		ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-30T03:51:49.000Z"); return t}()),
 	// 		OriginalQuantity: to.Ptr[int32](7),
 	// 		PlanInformation: &armreservations.ReservationOrderBillingPlanInformation{
 	// 			NextPaymentDueDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2019-09-30"); return t}()),
@@ -138,7 +138,7 @@ func ExampleReservationOrderClient_Get_getReservationWithExpandPayments() {
 	// 			}},
 	// 		},
 	// 		ProvisioningState: to.Ptr(armreservations.ProvisioningStateSucceeded),
-	// 		RequestDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T03:49:19Z"); return t}()),
+	// 		RequestDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T03:49:19.000Z"); return t}()),
 	// 		Reservations: []*armreservations.ReservationResponse{
 	// 			{
 	// 				ID: to.Ptr("/providers/microsoft.capacity/reservationOrders/1f14354c-dc12-4c8d-8090-6f295a3a34aa/reservations/c8c926bd-fc5d-4e29-9d43-b68340ac23a6"),

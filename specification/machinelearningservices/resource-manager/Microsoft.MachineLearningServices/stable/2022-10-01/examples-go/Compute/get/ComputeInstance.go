@@ -30,8 +30,8 @@ func ExampleComputeClient_Get_getAnComputeInstance() {
 	// 	Properties: &armmachinelearning.ComputeInstance{
 	// 		Description: to.Ptr("some compute"),
 	// 		ComputeType: to.Ptr(armmachinelearning.ComputeTypeComputeInstance),
-	// 		CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.0000000+00:00"); return t}()),
-	// 		ModifiedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.0000000+00:00"); return t}()),
+	// 		CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.000Z"); return t}()),
+	// 		ModifiedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.000Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armmachinelearning.ProvisioningStateSucceeded),
 	// 		Properties: &armmachinelearning.ComputeInstanceProperties{
 	// 			ApplicationSharingPolicy: to.Ptr(armmachinelearning.ApplicationSharingPolicyShared),

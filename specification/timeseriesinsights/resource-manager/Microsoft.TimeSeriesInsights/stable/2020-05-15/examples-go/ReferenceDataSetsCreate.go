@@ -57,7 +57,7 @@ func ExampleReferenceDataSetsClient_CreateOrUpdate() {
 	// 				Name: to.Ptr("DeviceFloor"),
 	// 				Type: to.Ptr(armtimeseriesinsights.ReferenceDataKeyPropertyTypeDouble),
 	// 		}},
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-18T19:20:33.2288820Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-18T19:20:33.228Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armtimeseriesinsights.ProvisioningStateSucceeded),
 	// 	},
 	// }

@@ -41,7 +41,7 @@ func ExampleJobsClient_NewListByDevicePager() {
 		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-23T22:02:39.005Z"); return t}()),
 		// 			PercentComplete: to.Ptr[int32](100),
 		// 			Properties: &armstorsimple8000series.JobProperties{
-		// 				BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+		// 				BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				BackupType: to.Ptr(armstorsimple8000series.BackupTypeCloudSnapshot),
 		// 				DataStats: &armstorsimple8000series.DataStatistics{
 		// 					CloudData: to.Ptr[int64](138),
@@ -66,7 +66,7 @@ func ExampleJobsClient_NewListByDevicePager() {
 		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-23T21:30:37.397Z"); return t}()),
 		// 			PercentComplete: to.Ptr[int32](100),
 		// 			Properties: &armstorsimple8000series.JobProperties{
-		// 				BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+		// 				BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				BackupType: to.Ptr(armstorsimple8000series.BackupTypeCloudSnapshot),
 		// 				DataStats: &armstorsimple8000series.DataStatistics{
 		// 					CloudData: to.Ptr[int64](152),
@@ -91,7 +91,7 @@ func ExampleJobsClient_NewListByDevicePager() {
 		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-23T21:23:21.028Z"); return t}()),
 		// 			PercentComplete: to.Ptr[int32](100),
 		// 			Properties: &armstorsimple8000series.JobProperties{
-		// 				BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+		// 				BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				BackupType: to.Ptr(armstorsimple8000series.BackupTypeCloudSnapshot),
 		// 				DataStats: &armstorsimple8000series.DataStatistics{
 		// 					CloudData: to.Ptr[int64](152),

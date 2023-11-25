@@ -45,7 +45,7 @@ func ExampleBackupSchedulesClient_NewListByBackupPolicyPager() {
 		// 					RecurrenceValue: to.Ptr[int32](1),
 		// 				},
 		// 				ScheduleStatus: to.Ptr(armstorsimple8000series.ScheduleStatusEnabled),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-24T00:00:00Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-24T00:00:00.000Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -65,7 +65,7 @@ func ExampleBackupSchedulesClient_NewListByBackupPolicyPager() {
 		// 						to.Ptr(armstorsimple8000series.DayOfWeekFriday)},
 		// 					},
 		// 					ScheduleStatus: to.Ptr(armstorsimple8000series.ScheduleStatusEnabled),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-24T01:00:00Z"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-24T01:00:00.000Z"); return t}()),
 		// 				},
 		// 		}},
 		// 	}

@@ -88,10 +88,10 @@ func ExampleAccountsClient_CreateOrUpdate_createAccountWithEncryption() {
 	// 		Tier: to.Ptr("Standard"),
 	// 	},
 	// 	SystemData: &armmaps.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-02T01:01:01.1075056Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-02T01:01:01.107Z"); return t}()),
 	// 		CreatedBy: to.Ptr("string"),
 	// 		CreatedByType: to.Ptr(armmaps.CreatedByTypeApplication),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-02T01:01:01.1075056Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-02T01:01:01.107Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("string"),
 	// 		LastModifiedByType: to.Ptr(armmaps.CreatedByTypeApplication),
 	// 	},

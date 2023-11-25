@@ -42,12 +42,12 @@ func ExampleNamespacesClient_NewListByResourceGroupPager() {
 		// 				"tag2": to.Ptr("value2"),
 		// 			},
 		// 			Properties: &armservicebus.SBNamespaceProperties{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:36.76Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:36.760Z"); return t}()),
 		// 				DisableLocalAuth: to.Ptr(false),
 		// 				MetricID: to.Ptr("5f750a97-50d9-4e36-8081-c9ee4c0210d4:sdk-namespace-2924"),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				ServiceBusEndpoint: to.Ptr("https://sdk-Namespace-2924.servicebus.windows-int.net:443/"),
-		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:59.35Z"); return t}()),
+		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:59.350Z"); return t}()),
 		// 			},
 		// 			SKU: &armservicebus.SBSKU{
 		// 				Name: to.Ptr(armservicebus.SKUNameStandard),

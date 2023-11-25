@@ -31,9 +31,9 @@ func ExampleTopicsClient_Get() {
 	// 	Type: to.Ptr("Microsoft.ServiceBus/Namespaces/Topics"),
 	// 	ID: to.Ptr("/subscriptions/5f750a97-50d9-4e36-8081-c9ee4c0210d4/resourceGroups/ArunMonocle/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-1617/topics/sdk-Topics-5488"),
 	// 	Properties: &armservicebus.SBTopicProperties{
-	// 		AccessedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+	// 		AccessedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		AutoDeleteOnIdle: to.Ptr("P10675199DT2H48M5.4775807S"),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T20:50:31.4442694Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T20:50:31.444Z"); return t}()),
 	// 		DefaultMessageTimeToLive: to.Ptr("P10675199DT2H48M5.4775807S"),
 	// 		DuplicateDetectionHistoryTimeWindow: to.Ptr("PT10M"),
 	// 		EnableBatchedOperations: to.Ptr(true),
@@ -46,7 +46,7 @@ func ExampleTopicsClient_Get() {
 	// 		Status: to.Ptr(armservicebus.EntityStatusActive),
 	// 		SubscriptionCount: to.Ptr[int32](0),
 	// 		SupportOrdering: to.Ptr(true),
-	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T20:52:32.2092264Z"); return t}()),
+	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T20:52:32.209Z"); return t}()),
 	// 	},
 	// }
 }

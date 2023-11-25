@@ -43,7 +43,7 @@ func ExampleNamespacesClient_Update() {
 	// 		"tag4": to.Ptr("value4"),
 	// 	},
 	// 	Properties: &armservicebus.SBNamespaceProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T23:07:58.17Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T23:07:58.170Z"); return t}()),
 	// 		DisableLocalAuth: to.Ptr(false),
 	// 		MetricID: to.Ptr("5f750a97-50d9-4e36-8081-c9ee4c0210d4:sdk-namespace-3285"),
 	// 		ProvisioningState: to.Ptr("Succeeded"),

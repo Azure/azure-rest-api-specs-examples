@@ -38,7 +38,7 @@ func ExampleQueuesClient_CreateOrUpdate() {
 	// 	Properties: &armservicebus.SBQueueProperties{
 	// 		AccessedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T18:07:34.227Z"); return t}()),
 	// 		AutoDeleteOnIdle: to.Ptr("P10675199DT2H48M5.4775807S"),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T18:07:33.68Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T18:07:33.680Z"); return t}()),
 	// 		DefaultMessageTimeToLive: to.Ptr("P10675199DT2H48M5.4775807S"),
 	// 		DuplicateDetectionHistoryTimeWindow: to.Ptr("PT10M"),
 	// 		EnableExpress: to.Ptr(false),

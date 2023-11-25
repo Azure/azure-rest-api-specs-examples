@@ -60,8 +60,8 @@ func ExampleClustersClient_BeginUpdate() {
 				}},
 			ReliabilityLevel:              to.Ptr(armservicefabric.ReliabilityLevelBronze),
 			UpgradeMode:                   to.Ptr(armservicefabric.UpgradeModeAutomatic),
-			UpgradePauseEndTimestampUTC:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-25T22:00:00Z"); return t }()),
-			UpgradePauseStartTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T22:00:00Z"); return t }()),
+			UpgradePauseEndTimestampUTC:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-25T22:00:00.000Z"); return t }()),
+			UpgradePauseStartTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T22:00:00.000Z"); return t }()),
 			UpgradeWave:                   to.Ptr(armservicefabric.ClusterUpgradeCadence("Wave")),
 		},
 		Tags: map[string]*string{
@@ -219,8 +219,8 @@ func ExampleClustersClient_BeginUpdate() {
 	// 							UpgradeTimeout: to.Ptr("01:00:00"),
 	// 						},
 	// 						UpgradeMode: to.Ptr(armservicefabric.UpgradeModeAutomatic),
-	// 						UpgradePauseEndTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-25T22:00:00Z"); return t}()),
-	// 						UpgradePauseStartTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T22:00:00Z"); return t}()),
+	// 						UpgradePauseEndTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-25T22:00:00.000Z"); return t}()),
+	// 						UpgradePauseStartTimestampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-21T22:00:00.000Z"); return t}()),
 	// 						UpgradeWave: to.Ptr(armservicefabric.ClusterUpgradeCadenceWave2),
 	// 					},
 	// 				}

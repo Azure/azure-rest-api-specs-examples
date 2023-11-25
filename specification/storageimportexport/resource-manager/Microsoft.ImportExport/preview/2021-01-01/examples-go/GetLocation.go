@@ -15,11 +15,11 @@ func ExampleLocationsClient_Get() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armstorageimportexport.NewClientFactory("<subscription-id>", nil, cred, nil)
+	clientFactory, err := armstorageimportexport.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewLocationsClient().Get(ctx, "West US", nil)
+	res, err := clientFactory.NewLocationsClient().Get(ctx, "West US", &armstorageimportexport.LocationsClientGetOptions{AcceptLanguage: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

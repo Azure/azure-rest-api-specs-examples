@@ -15,11 +15,11 @@ func ExampleJobsClient_Delete() {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armstorageimportexport.NewClientFactory("<subscription-id>", nil, cred, nil)
+	clientFactory, err := armstorageimportexport.NewClientFactory("<subscription-id>", cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = clientFactory.NewJobsClient().Delete(ctx, "myJob", "myResourceGroup", nil)
+	_, err = clientFactory.NewJobsClient().Delete(ctx, "myJob", "myResourceGroup", &armstorageimportexport.JobsClientDeleteOptions{AcceptLanguage: nil})
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

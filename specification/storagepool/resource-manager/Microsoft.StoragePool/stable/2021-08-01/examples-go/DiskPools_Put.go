@@ -83,10 +83,10 @@ func ExampleDiskPoolsClient_BeginCreateOrUpdate() {
 	// 				Tier: to.Ptr("Basic"),
 	// 			},
 	// 			SystemData: &armstoragepool.SystemMetadata{
-	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-24T06:53:57+00:00"); return t}()),
+	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-24T06:53:57.000Z"); return t}()),
 	// 				CreatedBy: to.Ptr("alias"),
 	// 				CreatedByType: to.Ptr(armstoragepool.CreatedByTypeUser),
-	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-24T06:53:57+00:00"); return t}()),
+	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-24T06:53:57.000Z"); return t}()),
 	// 				LastModifiedBy: to.Ptr("alias"),
 	// 				LastModifiedByType: to.Ptr(armstoragepool.CreatedByTypeUser),
 	// 			},

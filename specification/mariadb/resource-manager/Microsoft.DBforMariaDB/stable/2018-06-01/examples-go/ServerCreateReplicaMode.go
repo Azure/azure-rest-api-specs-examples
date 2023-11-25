@@ -47,7 +47,7 @@ func ExampleServersClient_BeginCreate_createAReplicaServer() {
 	// 	},
 	// 	Properties: &armmariadb.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T18:02:41.577+00:00"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T18:02:41.577Z"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("targetserver.mariadb.database.azure.com"),
 	// 		MasterServerID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MasterResourceGroup/providers/Microsoft.DBforMariaDB/servers/masterserver"),
 	// 		ReplicaCapacity: to.Ptr[int32](0),

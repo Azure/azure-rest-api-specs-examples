@@ -46,7 +46,7 @@ func ExampleServersClient_BeginUpdate() {
 	// 	},
 	// 	Properties: &armmariadb.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T18:02:41.577+00:00"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T18:02:41.577Z"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("mariadbtestsvc4.mariadb.database.azure.com"),
 	// 		SSLEnforcement: to.Ptr(armmariadb.SSLEnforcementEnumDisabled),
 	// 		StorageProfile: &armmariadb.StorageProfile{

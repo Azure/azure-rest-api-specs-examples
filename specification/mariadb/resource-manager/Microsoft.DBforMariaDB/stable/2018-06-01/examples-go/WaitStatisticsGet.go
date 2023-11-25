@@ -33,11 +33,11 @@ func ExampleWaitStatisticsClient_Get() {
 	// 	Properties: &armmariadb.WaitStatisticProperties{
 	// 		Count: to.Ptr[int64](2),
 	// 		DatabaseName: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testResourceGroupName/providers/Microsoft.DBforMariaDB/servers/testServerName/databases/mariadb"),
-	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-06T17:45:00Z"); return t}()),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-06T17:45:00.000Z"); return t}()),
 	// 		EventName: to.Ptr("wait/io/socket/sql/client_connection"),
 	// 		EventTypeName: to.Ptr("send"),
 	// 		QueryID: to.Ptr[int64](2),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-06T17:30:00Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-06T17:30:00.000Z"); return t}()),
 	// 		TotalTimeInMs: to.Ptr[float64](12.346),
 	// 		UserID: to.Ptr[int64](0),
 	// 	},

@@ -87,7 +87,7 @@ func ExampleAlertRulesClient_Get_getAScheduledAlertRule() {
 	// 								ReopenClosedIncident: to.Ptr(false),
 	// 							},
 	// 						},
-	// 						LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:15:30Z"); return t}()),
+	// 						LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-01T13:15:30.000Z"); return t}()),
 	// 						SuppressionDuration: to.Ptr("PT1H"),
 	// 						SuppressionEnabled: to.Ptr(false),
 	// 						Tactics: []*armsecurityinsights.AttackTactic{

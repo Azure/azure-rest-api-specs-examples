@@ -39,7 +39,7 @@ func ExampleAlertRuleTemplatesClient_Get() {
 	// 				AlertDisplayNameFormat: to.Ptr("Alert on event {{EventName}}"),
 	// 			},
 	// 			AlertRulesCreatedByTemplateCount: to.Ptr[int32](0),
-	// 			CreatedDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-02-27T00:00:00Z"); return t}()),
+	// 			CreatedDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-02-27T00:00:00.000Z"); return t}()),
 	// 			CustomDetails: map[string]*string{
 	// 				"EventNames": to.Ptr("EventName"),
 	// 				"EventTypes": to.Ptr("EventTypeName"),
@@ -65,7 +65,7 @@ func ExampleAlertRuleTemplatesClient_Get() {
 	// 			EventGroupingSettings: &armsecurityinsights.EventGroupingSettings{
 	// 				AggregationKind: to.Ptr(armsecurityinsights.EventGroupingAggregationKindAlertPerResult),
 	// 			},
-	// 			LastUpdatedDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-27T10:00:00Z"); return t}()),
+	// 			LastUpdatedDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-27T10:00:00.000Z"); return t}()),
 	// 			Query: to.Ptr("let timeframe = 1d;\nAWSCloudTrail\n| where TimeGenerated >= ago(timeframe)\n| where EventName == \"CreateNetworkAclEntry\"\n    or EventName == \"CreateRoute\"\n| project TimeGenerated, EventName, EventTypeName, UserIdentityAccountId, UserIdentityPrincipalid, UserAgent, UserIdentityUserName, SessionMfaAuthenticated, SourceIpAddress, AWSRegion, EventSource, AdditionalEventData, ResponseElements\n| extend AccountCustomEntity = UserIdentityUserName, IPCustomEntity = SourceIpAddress"),
 	// 			QueryFrequency: to.Ptr("P1D"),
 	// 			QueryPeriod: to.Ptr("P1D"),

@@ -46,7 +46,7 @@ func ExampleAlertRulesClient_CreateOrUpdate_createsOrUpdatesAFusionAlertRule() {
 	// 			AlertRuleTemplateName: to.Ptr("f71aba3d-28fb-450b-b192-4e76a83015c8"),
 	// 			DisplayName: to.Ptr("Advanced Multi-Stage Attack Detection"),
 	// 			Enabled: to.Ptr(true),
-	// 			LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T13:13:11.5340061Z"); return t}()),
+	// 			LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-04T13:13:11.534Z"); return t}()),
 	// 			Severity: to.Ptr(armsecurityinsights.AlertSeverityHigh),
 	// 			Tactics: []*armsecurityinsights.AttackTactic{
 	// 				to.Ptr(armsecurityinsights.AttackTacticPersistence),

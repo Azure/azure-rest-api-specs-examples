@@ -36,10 +36,10 @@ func ExampleBotsClient_Update() {
 	// 	Type: to.Ptr("Microsoft.HealthBot/healthBots"),
 	// 	ID: to.Ptr("/subscriptions/subscription-id/resourceGroups/OneResourceGroupName/providers/Microsoft.HealthBot/healthBots/samplebotname"),
 	// 	SystemData: &armhealthbot.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-05T17:18:19.1234567Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-05T17:18:19.123Z"); return t}()),
 	// 		CreatedBy: to.Ptr("jack@outlook.com"),
 	// 		CreatedByType: to.Ptr(armhealthbot.IdentityTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-06T17:18:19.1234567Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-06T17:18:19.123Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("ryan@outlook.com"),
 	// 		LastModifiedByType: to.Ptr(armhealthbot.IdentityTypeUser),
 	// 	},

@@ -35,8 +35,8 @@ func ExampleLinkerClient_BeginValidate() {
 	// 		AuthType: to.Ptr(armservicelinker.AuthTypeSecret),
 	// 		IsConnectionAvailable: to.Ptr(true),
 	// 		LinkerName: to.Ptr("linkName"),
-	// 		ReportEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:06:09Z"); return t}()),
-	// 		ReportStartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:05:09Z"); return t}()),
+	// 		ReportEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:06:09.000Z"); return t}()),
+	// 		ReportStartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:05:09.000Z"); return t}()),
 	// 		SourceID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
 	// 		TargetID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DocumentDb/databaseAccounts/test-acc/mongodbDatabases/test-db"),
 	// 		ValidationDetail: []*armservicelinker.ValidationResultItem{

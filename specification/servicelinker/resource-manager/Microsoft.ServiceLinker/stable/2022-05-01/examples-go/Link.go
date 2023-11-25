@@ -41,7 +41,7 @@ func ExampleLinkerClient_Get() {
 	// 		},
 	// 	},
 	// 	SystemData: &armservicelinker.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:05:09Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-12T22:05:09.000Z"); return t}()),
 	// 	},
 	// }
 }

@@ -41,7 +41,7 @@ func ExampleAssignmentsVMSSClient_Delete() {
 	// 			ContentURI: to.Ptr("https://mystorageaccount.blob.core.windows.net/builtinconfig/AuditSecureProtocol/AuditSecureProtocol_1.0.0.3.zip"),
 	// 			Version: to.Ptr("1.0.0.3"),
 	// 		},
-	// 		LastComplianceStatusChecked: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T22:14:13Z"); return t}()),
+	// 		LastComplianceStatusChecked: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T22:14:13.000Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armguestconfiguration.ProvisioningStateSucceeded),
 	// 		ResourceType: to.Ptr("VMSS"),
 	// 	},

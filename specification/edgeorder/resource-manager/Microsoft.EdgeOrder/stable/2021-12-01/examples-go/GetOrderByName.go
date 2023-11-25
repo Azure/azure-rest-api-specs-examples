@@ -34,7 +34,7 @@ func ExampleManagementClient_GetOrderByName() {
 	// 		CurrentStage: &armedgeorder.StageDetails{
 	// 			StageName: to.Ptr(armedgeorder.StageNameInReview),
 	// 			StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:35:20.8521455+05:30"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T06:05:20.852Z"); return t}()),
 	// 		},
 	// 		OrderItemIDs: []*string{
 	// 			to.Ptr("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.EdgeOrder/orderItems/TestOrderItemName3")},
@@ -42,17 +42,17 @@ func ExampleManagementClient_GetOrderByName() {
 	// 				{
 	// 					StageName: to.Ptr(armedgeorder.StageNamePlaced),
 	// 					StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:30:30.2717243+05:30"); return t}()),
+	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T06:00:30.271Z"); return t}()),
 	// 				},
 	// 				{
 	// 					StageName: to.Ptr(armedgeorder.StageNameInReview),
 	// 					StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:35:20.8521455+05:30"); return t}()),
+	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T06:05:20.852Z"); return t}()),
 	// 			}},
 	// 		},
 	// 		SystemData: &armedgeorder.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		},
 	// 	}
 }

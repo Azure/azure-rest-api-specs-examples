@@ -37,7 +37,7 @@ func ExampleNamespacesClient_Get() {
 	// 	Tags: map[string]*string{
 	// 	},
 	// 	Properties: &armnotificationhubs.NamespaceProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-02T00:44:56.58Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-02T00:44:56.580Z"); return t}()),
 	// 		Critical: to.Ptr(false),
 	// 		DataCenter: to.Ptr("SN1"),
 	// 		Enabled: to.Ptr(true),
@@ -46,7 +46,7 @@ func ExampleNamespacesClient_Get() {
 	// 		ScaleUnit: to.Ptr("SN1-001"),
 	// 		ServiceBusEndpoint: to.Ptr("https://nh-sdk-ns.servicebus.windows.net:443/"),
 	// 		Status: to.Ptr("Active"),
-	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-02T01:02:19.79Z"); return t}()),
+	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-02T01:02:19.790Z"); return t}()),
 	// 	},
 	// }
 }

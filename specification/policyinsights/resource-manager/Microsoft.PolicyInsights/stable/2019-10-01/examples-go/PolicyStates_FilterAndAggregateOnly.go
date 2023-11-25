@@ -26,7 +26,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForSubscriptionPager_filterAnd
 		Filter:    to.Ptr("PolicyDefinitionAction eq 'deny'"),
 		OrderBy:   nil,
 		Select:    nil,
-		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00Z"); return t }()),
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00.000Z"); return t }()),
 		To:        nil,
 		Apply:     to.Ptr("aggregate($count as NumDenyStates)"),
 		SkipToken: nil,

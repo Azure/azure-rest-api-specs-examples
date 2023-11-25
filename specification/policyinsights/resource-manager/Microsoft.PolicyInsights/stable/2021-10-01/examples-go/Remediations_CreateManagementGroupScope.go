@@ -37,13 +37,13 @@ func ExampleRemediationsClient_CreateOrUpdateAtManagementGroup() {
 	// 	ID: to.Ptr("/providers/microsoft.management/managementGroups/financeMg/providers/microsoft.policyinsights/remediations/storageRemediation"),
 	// 	Properties: &armpolicyinsights.RemediationProperties{
 	// 		CorrelationID: to.Ptr("a14e1d60-dae9-4771-b4be-a556d69e77a6"),
-	// 		CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-12T20:58:58.7531298Z"); return t}()),
+	// 		CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-12T20:58:58.753Z"); return t}()),
 	// 		DeploymentStatus: &armpolicyinsights.RemediationDeploymentSummary{
 	// 			FailedDeployments: to.Ptr[int32](0),
 	// 			SuccessfulDeployments: to.Ptr[int32](0),
 	// 			TotalDeployments: to.Ptr[int32](2),
 	// 		},
-	// 		LastUpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-12T20:58:58.7531298Z"); return t}()),
+	// 		LastUpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-12T20:58:58.753Z"); return t}()),
 	// 		PolicyAssignmentID: to.Ptr("/providers/microsoft.management/managementGroups/financeMg/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		ResourceDiscoveryMode: to.Ptr(armpolicyinsights.ResourceDiscoveryModeExistingNonCompliant),

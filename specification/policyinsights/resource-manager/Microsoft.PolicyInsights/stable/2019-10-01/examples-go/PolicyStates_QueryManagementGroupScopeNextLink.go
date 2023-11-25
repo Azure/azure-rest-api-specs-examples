@@ -69,7 +69,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForManagementGroupPager_queryL
 		// 				ResourceTags: to.Ptr("tbd"),
 		// 				ResourceType: to.Ptr("/microsoft.insights/autoscalesettings"),
 		// 				SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:41:47Z"); return t}()),
+		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:41:47.000Z"); return t}()),
 		// 			},
 		// 			{
 		// 				ODataContext: to.Ptr("https://management.azure.com/providers/Microsoft.Management/managementGroups/myManagementGroup/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity"),
@@ -96,7 +96,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForManagementGroupPager_queryL
 		// 					ResourceTags: to.Ptr("tbd"),
 		// 					ResourceType: to.Ptr("/microsoft.insights/autoscalesettings"),
 		// 					SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:41:47Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:41:47.000Z"); return t}()),
 		// 			}},
 		// 		}
 	}

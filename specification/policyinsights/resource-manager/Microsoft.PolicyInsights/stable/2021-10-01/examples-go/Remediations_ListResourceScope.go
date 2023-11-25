@@ -47,7 +47,7 @@ func ExampleRemediationsClient_NewListForResourcePager_listRemediationsAtIndivid
 		// 			ID: to.Ptr("/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1/providers/microsoft.policyinsights/remediations/790996e6-9871-4b1f-9cd9-ec42cd6ced1e"),
 		// 			Properties: &armpolicyinsights.RemediationProperties{
 		// 				CorrelationID: to.Ptr("a14e1d60-dae9-4771-b4be-a556d69e77a6"),
-		// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:51:09.075918Z"); return t}()),
+		// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:51:09.075Z"); return t}()),
 		// 				DeploymentStatus: &armpolicyinsights.RemediationDeploymentSummary{
 		// 					FailedDeployments: to.Ptr[int32](0),
 		// 					SuccessfulDeployments: to.Ptr[int32](1),
@@ -56,7 +56,7 @@ func ExampleRemediationsClient_NewListForResourcePager_listRemediationsAtIndivid
 		// 				FailureThreshold: &armpolicyinsights.RemediationPropertiesFailureThreshold{
 		// 					Percentage: to.Ptr[float32](0.1),
 		// 				},
-		// 				LastUpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:52:10.0011706Z"); return t}()),
+		// 				LastUpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:52:10.001Z"); return t}()),
 		// 				ParallelDeployments: to.Ptr[int32](6),
 		// 				PolicyAssignmentID: to.Ptr("/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.authorization/policyassignments/b101830944f246d8a14088c5"),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
@@ -65,10 +65,10 @@ func ExampleRemediationsClient_NewListForResourcePager_listRemediationsAtIndivid
 		// 				StatusMessage: to.Ptr("Remediation extended status"),
 		// 			},
 		// 			SystemData: &armpolicyinsights.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:49:16.4638131Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:49:16.463Z"); return t}()),
 		// 				CreatedBy: to.Ptr("b69a9388-9488-4534-b470-7ec6d41beef6"),
 		// 				CreatedByType: to.Ptr(armpolicyinsights.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:50:18.4647478Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:50:18.464Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("b69a9388-9488-4534-b470-7ec6d41beef6"),
 		// 				LastModifiedByType: to.Ptr(armpolicyinsights.CreatedByTypeUser),
 		// 			},

@@ -42,9 +42,9 @@ func ExampleRemediationsClient_NewListDeploymentsAtResourcePager() {
 		// page.RemediationDeploymentsListResult = armpolicyinsights.RemediationDeploymentsListResult{
 		// 	Value: []*armpolicyinsights.RemediationDeployment{
 		// 		{
-		// 			CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:51:09.075918Z"); return t}()),
+		// 			CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:51:09.075Z"); return t}()),
 		// 			DeploymentID: to.Ptr("/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.resources/deployments/a088e8fd-8600-4126-8d74-fc7ead0e9ae4"),
-		// 			LastUpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:52:09.8919106Z"); return t}()),
+		// 			LastUpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T21:52:09.891Z"); return t}()),
 		// 			RemediatedResourceID: to.Ptr("/subscriptions/35ee058e-5fa0-414c-8145-3ebb8d09b6e2/resourcegroups/myResourceGroup/providers/microsoft.storage/storageaccounts/storAc1"),
 		// 			ResourceLocation: to.Ptr("eastus"),
 		// 			Status: to.Ptr("Succeeded"),

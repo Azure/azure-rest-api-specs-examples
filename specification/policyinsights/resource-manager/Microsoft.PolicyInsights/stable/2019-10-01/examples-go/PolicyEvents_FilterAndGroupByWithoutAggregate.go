@@ -26,7 +26,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager_filterAnd
 		Filter:    to.Ptr("PolicyDefinitionAction ne 'audit' and PolicyDefinitionAction ne 'append'"),
 		OrderBy:   nil,
 		Select:    nil,
-		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-05T18:00:00Z"); return t }()),
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-05T18:00:00.000Z"); return t }()),
 		To:        nil,
 		Apply:     to.Ptr("groupby((PolicyAssignmentId, PolicyDefinitionId, PolicyDefinitionAction, ResourceId))"),
 		SkipToken: nil,

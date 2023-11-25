@@ -68,7 +68,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForSubscriptionPager_queryLate
 		// 				ResourceTags: to.Ptr("tbd"),
 		// 				ResourceType: to.Ptr("/Microsoft.Network/publicIPAddresses"),
 		// 				SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:48:05Z"); return t}()),
+		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:48:05.000Z"); return t}()),
 		// 			},
 		// 			{
 		// 				ODataContext: to.Ptr("https://management.azure.com/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity"),
@@ -94,7 +94,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForSubscriptionPager_queryLate
 		// 					ResourceTags: to.Ptr("tbd"),
 		// 					ResourceType: to.Ptr("/Microsoft.Network/publicIPAddresses"),
 		// 					SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:48:05Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-09T17:48:05.000Z"); return t}()),
 		// 			}},
 		// 		}
 	}

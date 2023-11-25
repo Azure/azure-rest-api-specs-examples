@@ -82,7 +82,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForResourcePager_queryComponen
 		// 			ResourceType: to.Ptr("Microsoft.KeyVault/vaults"),
 		// 			SubscriptionID: to.Ptr("e78961ba-36fe-4739-9212-e3031b4c8db7"),
 		// 			TenantID: to.Ptr(""),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T19:42:08.3252921Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T19:42:08.325Z"); return t}()),
 		// 	}},
 		// }
 	}

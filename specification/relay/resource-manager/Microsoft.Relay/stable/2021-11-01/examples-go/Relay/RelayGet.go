@@ -31,13 +31,13 @@ func ExampleWCFRelaysClient_Get() {
 	// 	Type: to.Ptr("Microsoft.Relay/WcfRelays"),
 	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/example-RelayNamespace-9953/WcfRelays/example-Relay-Wcf-1194"),
 	// 	Properties: &armrelay.WcfRelayProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-16T00:26:17.5014661Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-16T00:26:17.501Z"); return t}()),
 	// 		IsDynamic: to.Ptr(false),
 	// 		ListenerCount: to.Ptr[int32](0),
 	// 		RelayType: to.Ptr(armrelay.RelaytypeNetTCP),
 	// 		RequiresClientAuthorization: to.Ptr(true),
 	// 		RequiresTransportSecurity: to.Ptr(true),
-	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-16T00:26:17.5014661Z"); return t}()),
+	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-16T00:26:17.501Z"); return t}()),
 	// 	},
 	// }
 }

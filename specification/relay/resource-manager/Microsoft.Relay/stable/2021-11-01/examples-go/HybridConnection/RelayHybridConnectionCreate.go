@@ -36,9 +36,9 @@ func ExampleHybridConnectionsClient_CreateOrUpdate() {
 	// 	Type: to.Ptr("Microsoft.Relay/Namespaces/HybridConnections"),
 	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/resourcegroup/providers/Microsoft.Relay/namespaces/example-RelayNamespace-01/HybridConnections/example-Relay-Hybrid-01"),
 	// 	Properties: &armrelay.HybridConnectionProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.4131724Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.413Z"); return t}()),
 	// 		RequiresClientAuthorization: to.Ptr(true),
-	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.4131724Z"); return t}()),
+	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-23T20:34:49.413Z"); return t}()),
 	// 	},
 	// }
 }

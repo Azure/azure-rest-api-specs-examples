@@ -50,8 +50,8 @@ func ExampleManagersClient_UploadRegistrationCertificate() {
 	// 		ServicePrincipalObjectID: to.Ptr("86d19f0e-82b7-49bf-a16e-1fbb4e5288d5"),
 	// 		Subject: to.Ptr("CN=Windows Azure Tools"),
 	// 		Thumbprint: to.Ptr("0526BD0123A52EABDB586AF0C080ABEEF3BB4240"),
-	// 		ValidFrom: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-10T15:36:40+00:00"); return t}()),
-	// 		ValidTo: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T15:46:40+00:00"); return t}()),
+	// 		ValidFrom: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-10T15:36:40.000Z"); return t}()),
+	// 		ValidTo: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-13T15:46:40.000Z"); return t}()),
 	// 	},
 	// }
 }

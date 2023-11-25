@@ -30,10 +30,10 @@ func ExampleJobsClient_Get() {
 	// 	Name: to.Ptr("06c7ee19-35a2-4248-bf1b-408009b31b63"),
 	// 	Type: to.Ptr("Microsoft.StorSimple/managers/devices/jobs"),
 	// 	ID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/HSDK-ARCSX4MVKZ/jobs/06c7ee19-35a2-4248-bf1b-408009b31b63"),
-	// 	EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T11:14:39.9697221Z"); return t}()),
+	// 	EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T11:14:39.969Z"); return t}()),
 	// 	PercentComplete: to.Ptr[int32](100),
 	// 	Properties: &armstorsimple1200series.JobProperties{
-	// 		BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+	// 		BackupPointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		DeviceID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/HSDK-ARCSX4MVKZ"),
 	// 		EntityID: to.Ptr("/subscriptions/9eb689cd-7243-43b4-b6f6-5c65cb296641/resourceGroups/ResourceGroupForSDKTest/providers/Microsoft.StorSimple/managers/hAzureSDKOperations/devices/HSDK-ARCSX4MVKZ"),
 	// 		EntityType: to.Ptr("Microsoft.StorSimple/managers/devices"),
@@ -48,7 +48,7 @@ func ExampleJobsClient_Get() {
 	// 		},
 	// 		TargetType: to.Ptr(armstorsimple1200series.TargetTypeFileServer),
 	// 	},
-	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T11:14:03.8045323Z"); return t}()),
+	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T11:14:03.804Z"); return t}()),
 	// 	Status: to.Ptr(armstorsimple1200series.JobStatusSucceeded),
 	// }
 }

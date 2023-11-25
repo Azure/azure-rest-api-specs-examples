@@ -28,6 +28,6 @@ func ExampleTestResultsClient_GetVideoDownloadURL() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.DownloadURLResponse = armtestbase.DownloadURLResponse{
 	// 	DownloadURL: to.Ptr("test result video download URL"),
-	// 	ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-10T06:00:00Z"); return t}()),
+	// 	ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-10T06:00:00.000Z"); return t}()),
 	// }
 }

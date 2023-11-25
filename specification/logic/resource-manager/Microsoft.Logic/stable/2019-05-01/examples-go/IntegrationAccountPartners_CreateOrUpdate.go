@@ -48,7 +48,7 @@ func ExampleIntegrationAccountPartnersClient_CreateOrUpdate() {
 	// 	Type: to.Ptr("Microsoft.Logic/integrationAccounts/partners"),
 	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/flowrg/providers/Microsoft.Logic/integrationAccounts/testIntegrationAccount/partners/testPartner"),
 	// 	Properties: &armlogic.IntegrationAccountPartnerProperties{
-	// 		ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T20:06:23.5904806Z"); return t}()),
+	// 		ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T20:06:23.590Z"); return t}()),
 	// 		Content: &armlogic.PartnerContent{
 	// 			B2B: &armlogic.B2BPartnerContent{
 	// 				BusinessIdentities: []*armlogic.BusinessIdentity{
@@ -58,7 +58,7 @@ func ExampleIntegrationAccountPartnersClient_CreateOrUpdate() {
 	// 				}},
 	// 			},
 	// 		},
-	// 		CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T20:06:23.5895246Z"); return t}()),
+	// 		CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T20:06:23.589Z"); return t}()),
 	// 		Metadata: map[string]any{
 	// 		},
 	// 		PartnerType: to.Ptr(armlogic.PartnerTypeB2B),

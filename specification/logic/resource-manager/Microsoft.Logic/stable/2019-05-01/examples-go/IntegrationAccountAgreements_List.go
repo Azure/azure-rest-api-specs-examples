@@ -40,7 +40,7 @@ func ExampleIntegrationAccountAgreementsClient_NewListPager() {
 		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/<IntegrationAccountName>/agreements/<IntegrationAccountAgreementName>"),
 		// 			Properties: &armlogic.IntegrationAccountAgreementProperties{
 		// 				AgreementType: to.Ptr(armlogic.AgreementTypeX12),
-		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:54.1520445Z"); return t}()),
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:54.152Z"); return t}()),
 		// 				Content: &armlogic.AgreementContent{
 		// 					X12: &armlogic.X12AgreementContent{
 		// 						ReceiveAgreement: &armlogic.X12OneWayAgreement{
@@ -220,7 +220,7 @@ func ExampleIntegrationAccountAgreementsClient_NewListPager() {
 		// 						},
 		// 					},
 		// 				},
-		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:54.1516558Z"); return t}()),
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:54.151Z"); return t}()),
 		// 				GuestIdentity: &armlogic.BusinessIdentity{
 		// 					Qualifier: to.Ptr("AA"),
 		// 					Value: to.Ptr("AA"),
@@ -241,7 +241,7 @@ func ExampleIntegrationAccountAgreementsClient_NewListPager() {
 		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/<IntegrationAccountName>/agreements/<IntegrationAccountAgreementName>"),
 		// 			Properties: &armlogic.IntegrationAccountAgreementProperties{
 		// 				AgreementType: to.Ptr(armlogic.AgreementTypeAS2),
-		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.4140804Z"); return t}()),
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.414Z"); return t}()),
 		// 				Content: &armlogic.AgreementContent{
 		// 					AS2: &armlogic.AS2AgreementContent{
 		// 						ReceiveAgreement: &armlogic.AS2OneWayAgreement{
@@ -378,7 +378,7 @@ func ExampleIntegrationAccountAgreementsClient_NewListPager() {
 		// 						},
 		// 					},
 		// 				},
-		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.4134038Z"); return t}()),
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.413Z"); return t}()),
 		// 				GuestIdentity: &armlogic.BusinessIdentity{
 		// 					Qualifier: to.Ptr("AA"),
 		// 					Value: to.Ptr("AA"),
@@ -399,7 +399,7 @@ func ExampleIntegrationAccountAgreementsClient_NewListPager() {
 		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/<IntegrationAccountName>/agreements/<IntegrationAccountAgreementName>"),
 		// 			Properties: &armlogic.IntegrationAccountAgreementProperties{
 		// 				AgreementType: to.Ptr(armlogic.AgreementTypeEdifact),
-		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.8212345Z"); return t}()),
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.821Z"); return t}()),
 		// 				Content: &armlogic.AgreementContent{
 		// 					Edifact: &armlogic.EdifactAgreementContent{
 		// 						ReceiveAgreement: &armlogic.EdifactOneWayAgreement{
@@ -608,7 +608,7 @@ func ExampleIntegrationAccountAgreementsClient_NewListPager() {
 		// 						},
 		// 					},
 		// 				},
-		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.8205121Z"); return t}()),
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:00:53.820Z"); return t}()),
 		// 				GuestIdentity: &armlogic.BusinessIdentity{
 		// 					Qualifier: to.Ptr("AA"),
 		// 					Value: to.Ptr("AA"),

@@ -188,7 +188,7 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount4533/agreements/<IntegrationAccountAgreementName>"),
 	// 	Properties: &armlogic.IntegrationAccountAgreementProperties{
 	// 		AgreementType: to.Ptr(armlogic.AgreementTypeAS2),
-	// 		ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:32:54.2945291Z"); return t}()),
+	// 		ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:32:54.294Z"); return t}()),
 	// 		Content: &armlogic.AgreementContent{
 	// 			AS2: &armlogic.AS2AgreementContent{
 	// 				ReceiveAgreement: &armlogic.AS2OneWayAgreement{
@@ -325,7 +325,7 @@ func ExampleIntegrationAccountAgreementsClient_CreateOrUpdate() {
 	// 				},
 	// 			},
 	// 		},
-	// 		CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:32:54.2938748Z"); return t}()),
+	// 		CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-06T22:32:54.293Z"); return t}()),
 	// 		GuestIdentity: &armlogic.BusinessIdentity{
 	// 			Qualifier: to.Ptr("AA"),
 	// 			Value: to.Ptr("AA"),

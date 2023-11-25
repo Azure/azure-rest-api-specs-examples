@@ -72,7 +72,7 @@ func ExampleClient_Get_getManagementGroupsWithExpandAndRecurse() {
 	// 				ID: to.Ptr("/providers/Microsoft.Management/managementGroups/20000000-0000-0000-0000-000000000000"),
 	// 			},
 	// 			UpdatedBy: to.Ptr("bd490e30-04cb-433e-b8c8-6066959a8bab"),
-	// 			UpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-25T02:26:49.0022093Z"); return t}()),
+	// 			UpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-25T02:26:49.002Z"); return t}()),
 	// 			Version: to.Ptr[int32](2),
 	// 		},
 	// 	},

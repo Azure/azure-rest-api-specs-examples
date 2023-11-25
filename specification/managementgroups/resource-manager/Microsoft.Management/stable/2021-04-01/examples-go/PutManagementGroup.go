@@ -54,7 +54,7 @@ func ExampleClient_BeginCreateOrUpdate() {
 	// 				ID: to.Ptr("/providers/Microsoft.Management/managementGroups/RootGroup"),
 	// 			},
 	// 			UpdatedBy: to.Ptr("16b8ef21-5c9f-420c-bcc9-e4f8c9f30b4b"),
-	// 			UpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00.00Z"); return t}()),
+	// 			UpdatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00.000Z"); return t}()),
 	// 			Version: to.Ptr[int32](1),
 	// 		},
 	// 	},

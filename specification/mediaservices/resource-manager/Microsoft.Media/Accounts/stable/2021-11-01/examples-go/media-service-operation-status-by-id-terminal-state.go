@@ -28,9 +28,9 @@ func ExampleOperationStatusesClient_Get_getStatusOfAsynchronousOperationWhenItIs
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.MediaServiceOperationStatus = armmediaservices.MediaServiceOperationStatus{
 	// 	Name: to.Ptr("D612C429-2526-49D5-961B-885AE11406FD"),
-	// 	EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T12:56:36.002812-08:00"); return t}()),
+	// 	EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T20:56:36.002Z"); return t}()),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/locations/westus/MediaServicesOperationStatuses/D612C429-2526-49D5-961B-885AE11406FD"),
-	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T12:56:36.002812-08:00"); return t}()),
+	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T20:56:36.002Z"); return t}()),
 	// 	Status: to.Ptr("Succeeded"),
 	// }
 }

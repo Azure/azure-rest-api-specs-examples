@@ -29,7 +29,7 @@ func ExampleAssetTrackOperationStatusesClient_Get_getStatusOfAsynchronousOperati
 	// res.AssetTrackOperationStatus = armmediaservices.AssetTrackOperationStatus{
 	// 	Name: to.Ptr("5827d9a1-1fb4-4e54-ac40-8eeed9b862c8"),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/assets/ClimbingMountRainer/tracks/text1/operationStatuses/5827d9a1-1fb4-4e54-ac40-8eeed9b862c8"),
-	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-01T00:00:00Z"); return t}()),
+	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-01T00:00:00.000Z"); return t}()),
 	// 	Status: to.Ptr("InProgress"),
 	// }
 }

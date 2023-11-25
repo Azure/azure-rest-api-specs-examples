@@ -34,8 +34,8 @@ func ExampleStreamingLocatorsClient_Get() {
 	// 		AssetName: to.Ptr("ClimbingMountRainier"),
 	// 		ContentKeys: []*armmediaservices.StreamingLocatorContentKey{
 	// 		},
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:32.1154071Z"); return t}()),
-	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.9999999Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:32.115Z"); return t}()),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.999Z"); return t}()),
 	// 		StreamingLocatorID: to.Ptr("7684043b-f6d1-44a7-8bed-8a4aa474c5a4"),
 	// 		StreamingPolicyName: to.Ptr("clearStreamingPolicy"),
 	// 	},

@@ -43,8 +43,8 @@ func ExampleStreamingLocatorsClient_NewListPager() {
 		// 				AssetName: to.Ptr("ClimbingMountRainier"),
 		// 				ContentKeys: []*armmediaservices.StreamingLocatorContentKey{
 		// 				},
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:31.9341192Z"); return t}()),
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.9999999Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:31.934Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.999Z"); return t}()),
 		// 				StreamingLocatorID: to.Ptr("6a116ec6-0c85-441f-9c31-89a5bc3adf0a"),
 		// 				StreamingPolicyName: to.Ptr("clearStreamingPolicy"),
 		// 			},
@@ -57,8 +57,8 @@ func ExampleStreamingLocatorsClient_NewListPager() {
 		// 				AssetName: to.Ptr("ClimbingMountRainier"),
 		// 				ContentKeys: []*armmediaservices.StreamingLocatorContentKey{
 		// 				},
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:31.9544387Z"); return t}()),
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.9999999Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:31.954Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.999Z"); return t}()),
 		// 				StreamingLocatorID: to.Ptr("7338ef90-ffc8-42de-8bff-de8f99973300"),
 		// 				StreamingPolicyName: to.Ptr("secureStreamingPolicy"),
 		// 			},

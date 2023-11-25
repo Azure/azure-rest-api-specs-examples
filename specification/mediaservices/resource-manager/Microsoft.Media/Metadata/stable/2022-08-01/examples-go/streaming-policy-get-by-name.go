@@ -31,7 +31,7 @@ func ExampleStreamingPoliciesClient_Get() {
 	// 	Type: to.Ptr("Microsoft.Media/mediaservices/streamingPolicies"),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/streamingPolicies/clearStreamingPolicy"),
 	// 	Properties: &armmediaservices.StreamingPolicyProperties{
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:30.8501486Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:30.850Z"); return t}()),
 	// 		NoEncryption: &armmediaservices.NoEncryption{
 	// 			EnabledProtocols: &armmediaservices.EnabledProtocols{
 	// 				Dash: to.Ptr(true),

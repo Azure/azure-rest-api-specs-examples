@@ -33,11 +33,11 @@ func ExampleLiveOutputsClient_Get() {
 	// 	Properties: &armmediaservices.LiveOutputProperties{
 	// 		ArchiveWindowLength: to.Ptr("PT5M"),
 	// 		AssetName: to.Ptr("cb2ae0bc-677a-4830-9c8e-06ce4c4cb607"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00-08:00"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T08:00:00.000Z"); return t}()),
 	// 		Hls: &armmediaservices.Hls{
 	// 			FragmentsPerTsSegment: to.Ptr[int32](5),
 	// 		},
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00-08:00"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T08:00:00.000Z"); return t}()),
 	// 		ManifestName: to.Ptr("fc7096f5-c488-4b86-8302-f3bfde53fc27"),
 	// 		OutputSnapTime: to.Ptr[int64](0),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
@@ -45,10 +45,10 @@ func ExampleLiveOutputsClient_Get() {
 	// 		RewindWindowLength: to.Ptr("PT4M"),
 	// 	},
 	// 	SystemData: &armmediaservices.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00-08:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T08:00:00.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("example@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00-08:00"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T08:00:00.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("example@microsoft.com"),
 	// 		LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 	// 	},

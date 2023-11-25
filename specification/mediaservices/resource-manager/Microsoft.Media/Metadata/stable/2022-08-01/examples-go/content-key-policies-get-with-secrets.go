@@ -28,8 +28,8 @@ func ExampleContentKeyPoliciesClient_GetPolicyPropertiesWithSecrets() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.ContentKeyPolicyProperties = armmediaservices.ContentKeyPolicyProperties{
 	// 	Description: to.Ptr("A policy with multiple options."),
-	// 	Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-12-01T00:00:00Z"); return t}()),
-	// 	LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-02T00:00:00Z"); return t}()),
+	// 	Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-12-01T00:00:00.000Z"); return t}()),
+	// 	LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-02T00:00:00.000Z"); return t}()),
 	// 	Options: []*armmediaservices.ContentKeyPolicyOption{
 	// 		{
 	// 			Configuration: &armmediaservices.ContentKeyPolicyClearKeyConfiguration{

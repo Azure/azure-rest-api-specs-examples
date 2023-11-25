@@ -35,7 +35,7 @@ func ExampleLiveEventsClient_OperationLocation() {
 	// 	},
 	// 	Properties: &armmediaservices.LiveEventProperties{
 	// 		Description: to.Ptr(""),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.3474032Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.347Z"); return t}()),
 	// 		CrossSiteAccessPolicies: &armmediaservices.CrossSiteAccessPolicies{
 	// 			ClientAccessPolicy: to.Ptr("<access-policy><cross-domain-access><policy><allow-from http-methods=\"*\"><domain uri=\"http://*\"/></allow-from><grant-to><resource path=\"/\" include-subpaths=\"true\"/></grant-to></policy></cross-domain-access></access-policy>"),
 	// 			CrossDomainPolicy: to.Ptr("<cross-domain-policy><allow-access-from domain=\"*\" secure=\"false\" /></cross-domain-policy>"),
@@ -52,7 +52,7 @@ func ExampleLiveEventsClient_OperationLocation() {
 	// 			KeyFrameIntervalDuration: to.Ptr("PT6S"),
 	// 			StreamingProtocol: to.Ptr(armmediaservices.LiveEventInputProtocolFragmentedMP4),
 	// 		},
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.3474032Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.347Z"); return t}()),
 	// 		Preview: &armmediaservices.LiveEventPreview{
 	// 			AccessControl: &armmediaservices.LiveEventPreviewAccessControl{
 	// 				IP: &armmediaservices.IPAccessControl{
@@ -78,10 +78,10 @@ func ExampleLiveEventsClient_OperationLocation() {
 	// 			UseStaticHostname: to.Ptr(false),
 	// 		},
 	// 		SystemData: &armmediaservices.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.3474032Z"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.347Z"); return t}()),
 	// 			CreatedBy: to.Ptr("example@microsoft.com"),
 	// 			CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.3474032Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:08.347Z"); return t}()),
 	// 			LastModifiedBy: to.Ptr("example@microsoft.com"),
 	// 			LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 	// 		},

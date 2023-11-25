@@ -31,10 +31,10 @@ func ExampleCapacitiesClient_GetDetails() {
 	// 	ID: to.Ptr("/subscriptions/613192d7-503f-477a-9cfe-4efc3ee2bd60/resourceGroups/TestRG/providers/Microsoft.PowerBIDedicated/capacities/azsdktest"),
 	// 	Location: to.Ptr("West US"),
 	// 	SystemData: &armpowerbidedicated.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T00:00:19.1234567Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T00:00:19.123Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user1"),
 	// 		CreatedByType: to.Ptr(armpowerbidedicated.IdentityTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T00:00:19.1234567Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-01T00:00:19.123Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user2"),
 	// 		LastModifiedByType: to.Ptr(armpowerbidedicated.IdentityTypeUser),
 	// 	},

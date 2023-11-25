@@ -28,8 +28,8 @@ func ExampleContactsClient_BeginCreate() {
 				ID: to.Ptr("/subscriptions/c1be1141-a7c9-4aac-9608-3c2e2f1152c3/resourceGroups/contoso-Rgp/providers/Microsoft.Orbital/contactProfiles/CONTOSO-CP"),
 			},
 			GroundStationName:    to.Ptr("EASTUS2_0"),
-			ReservationEndTime:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45Z"); return t }()),
-			ReservationStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30Z"); return t }()),
+			ReservationEndTime:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45.000Z"); return t }()),
+			ReservationStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30.000Z"); return t }()),
 		},
 	}, nil)
 	if err != nil {
@@ -54,15 +54,15 @@ func ExampleContactsClient_BeginCreate() {
 	// 		EndElevationDegrees: to.Ptr[float32](5.048656),
 	// 		GroundStationName: to.Ptr("EASTUS2_0"),
 	// 		MaximumElevationDegrees: to.Ptr[float32](85.9796),
-	// 		ReservationEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45Z"); return t}()),
-	// 		ReservationStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30Z"); return t}()),
-	// 		RxEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45Z"); return t}()),
-	// 		RxStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30Z"); return t}()),
+	// 		ReservationEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45.000Z"); return t}()),
+	// 		ReservationStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30.000Z"); return t}()),
+	// 		RxEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45.000Z"); return t}()),
+	// 		RxStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30.000Z"); return t}()),
 	// 		StartAzimuthDegrees: to.Ptr[float32](165.758896),
 	// 		StartElevationDegrees: to.Ptr[float32](5),
 	// 		Status: to.Ptr(armorbital.ContactsStatusScheduled),
-	// 		TxEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45Z"); return t}()),
-	// 		TxStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30Z"); return t}()),
+	// 		TxEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T11:10:45.000Z"); return t}()),
+	// 		TxStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-02-22T10:58:30.000Z"); return t}()),
 	// 	},
 	// }
 }

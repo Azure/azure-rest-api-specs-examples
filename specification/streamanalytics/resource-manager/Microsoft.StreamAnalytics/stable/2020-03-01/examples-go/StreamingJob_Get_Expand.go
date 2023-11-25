@@ -39,7 +39,7 @@ func ExampleStreamingJobsClient_Get_getAStreamingJobAndUseTheExpandODataQueryPar
 	// 	},
 	// 	Properties: &armstreamanalytics.StreamingJobProperties{
 	// 		CompatibilityLevel: to.Ptr(armstreamanalytics.CompatibilityLevelOne0),
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-11T04:37:11.54Z"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-11T04:37:11.540Z"); return t}()),
 	// 		DataLocale: to.Ptr("en-US"),
 	// 		EventsLateArrivalMaxDelayInSeconds: to.Ptr[int32](5),
 	// 		EventsOutOfOrderMaxDelayInSeconds: to.Ptr[int32](0),

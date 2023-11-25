@@ -50,10 +50,10 @@ func ExampleMoveCollectionsClient_NewListMoveCollectionsBySubscriptionPager() {
 		// 				Version: to.Ptr("V1"),
 		// 			},
 		// 			SystemData: &armresourcemover.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-29T15:06:54.2757906Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-29T15:06:54.275Z"); return t}()),
 		// 				CreatedBy: to.Ptr("user@microsoft.com"),
 		// 				CreatedByType: to.Ptr(armresourcemover.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-29T15:06:54.2757906Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-29T15:06:54.275Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("user@microsoft.com"),
 		// 				LastModifiedByType: to.Ptr(armresourcemover.CreatedByTypeUser),
 		// 			},

@@ -44,13 +44,13 @@ func ExampleProjectsClient_Update() {
 	// 	Location: to.Ptr("West Europe"),
 	// 	Properties: &armmigrate.ProjectProperties{
 	// 		AssessmentSolutionID: to.Ptr("/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourceGroups/abgoyal-westEurope/providers/Microsoft.Migrate/assessmentprojects/abGoyalProject2"),
-	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-26T05:56:58.7521828Z"); return t}()),
+	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-26T05:56:58.752Z"); return t}()),
 	// 		NumberOfAssessments: to.Ptr[int32](0),
 	// 		NumberOfGroups: to.Ptr[int32](0),
 	// 		NumberOfMachines: to.Ptr[int32](0),
 	// 		ProjectStatus: to.Ptr(armmigrate.ProjectStatusActive),
 	// 		ServiceEndpoint: to.Ptr("https://localhost/"),
-	// 		UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-26T05:56:58.7990948Z"); return t}()),
+	// 		UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-26T05:56:58.799Z"); return t}()),
 	// 	},
 	// 	Tags: map[string]any{
 	// 	},

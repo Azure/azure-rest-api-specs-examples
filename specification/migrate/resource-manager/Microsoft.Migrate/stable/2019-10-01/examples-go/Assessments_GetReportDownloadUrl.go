@@ -28,6 +28,6 @@ func ExampleAssessmentsClient_GetReportDownloadURL() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.DownloadURL = armmigrate.DownloadURL{
 	// 	AssessmentReportURL: to.Ptr("link-to-download-assessment-report"),
-	// 	ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-05T13:17:23.5437337Z"); return t}()),
+	// 	ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-05T13:17:23.543Z"); return t}()),
 	// }
 }

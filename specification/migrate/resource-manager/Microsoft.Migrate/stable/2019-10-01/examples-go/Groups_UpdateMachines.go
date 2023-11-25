@@ -35,10 +35,10 @@ func ExampleGroupsClient_UpdateMachines() {
 	// 		AreAssessmentsRunning: to.Ptr(false),
 	// 		Assessments: []*string{
 	// 			to.Ptr("/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourceGroups/abgoyal-westeurope/providers/Microsoft.Migrate/assessmentprojects/abgoyalWEselfhostb72bproject/groups/Test1/assessments/assessment_5_9_2019_16_22_14")},
-	// 			CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T10:52:07.7368474Z"); return t}()),
+	// 			CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T10:52:07.736Z"); return t}()),
 	// 			GroupStatus: to.Ptr(armmigrate.GroupStatusCompleted),
 	// 			MachineCount: to.Ptr[int32](26),
-	// 			UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-10T14:07:41.752989Z"); return t}()),
+	// 			UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-10T14:07:41.752Z"); return t}()),
 	// 		},
 	// 	}
 }

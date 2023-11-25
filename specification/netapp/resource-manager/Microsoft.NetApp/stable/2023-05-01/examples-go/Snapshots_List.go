@@ -38,7 +38,7 @@ func ExampleSnapshotsClient_NewListPager() {
 		// 			ID: to.Ptr("/subscriptions/D633CC2E-722B-4AE1-B636-BBD9E4C60ED9/resourceGroups/myRG/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/volume1/snapshots/snapshot1"),
 		// 			Location: to.Ptr("eastus"),
 		// 			Properties: &armnetapp.SnapshotProperties{
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T13:23:33Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T13:23:33.000Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				SnapshotID: to.Ptr("9760acf5-4638-11e7-9bdb-020073ca3333"),
 		// 			},

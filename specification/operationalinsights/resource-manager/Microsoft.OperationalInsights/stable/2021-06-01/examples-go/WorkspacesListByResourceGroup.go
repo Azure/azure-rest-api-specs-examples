@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c767823fdfd9d5e96bad245e3ea4d14d94a716bb/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2021-06-01/examples/WorkspacesListByResourceGroup.json
-func ExampleWorkspacesClient_NewListByResourceGroupPager() {
+func ExampleDeletedWorkspacesClient_NewListByResourceGroupPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleWorkspacesClient_NewListByResourceGroupPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewWorkspacesClient().NewListByResourceGroupPager("oiautorest6685", nil)
+	pager := clientFactory.NewDeletedWorkspacesClient().NewListByResourceGroupPager("oiautorest6685", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {

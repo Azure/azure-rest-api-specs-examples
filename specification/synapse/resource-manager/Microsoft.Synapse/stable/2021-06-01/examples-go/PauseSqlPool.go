@@ -40,10 +40,10 @@ func ExampleSQLPoolsClient_BeginPause() {
 	// 	},
 	// 	Properties: &armsynapse.SQLPoolResourceProperties{
 	// 		Collation: to.Ptr("SQL_Latin1_General_CP1_CI_AS"),
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-10T00:56:19.2Z"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-10T00:56:19.200Z"); return t}()),
 	// 		MaxSizeBytes: to.Ptr[int64](268435456000),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
-	// 		RestorePointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+	// 		RestorePointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		Status: to.Ptr("Online"),
 	// 	},
 	// 	SKU: &armsynapse.SKU{

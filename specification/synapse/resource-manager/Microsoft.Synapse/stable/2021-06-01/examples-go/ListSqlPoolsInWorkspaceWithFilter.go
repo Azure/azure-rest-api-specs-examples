@@ -42,7 +42,7 @@ func ExampleSQLPoolsClient_NewListByWorkspacePager_listSqlAnalyticsPoolsInAWorks
 		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-10T00:59:33.483Z"); return t}()),
 		// 				MaxSizeBytes: to.Ptr[int64](32212254720),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
-		// 				RestorePointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+		// 				RestorePointInTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				Status: to.Ptr("Online"),
 		// 				StorageAccountType: to.Ptr(armsynapse.StorageAccountTypeGRS),
 		// 			},

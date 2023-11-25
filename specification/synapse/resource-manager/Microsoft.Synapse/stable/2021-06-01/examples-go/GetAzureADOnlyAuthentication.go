@@ -32,7 +32,7 @@ func ExampleAzureADOnlyAuthenticationsClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-6852/providers/Microsoft.Synapse/workspaces/workspace-2080/azureADOnlyAuthentications/default"),
 	// 	Properties: &armsynapse.AzureADOnlyAuthenticationProperties{
 	// 		AzureADOnlyAuthentication: to.Ptr(true),
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-10T00:56:19.2Z"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-10T00:56:19.200Z"); return t}()),
 	// 		State: to.Ptr(armsynapse.StateValueConsistent),
 	// 	},
 	// }

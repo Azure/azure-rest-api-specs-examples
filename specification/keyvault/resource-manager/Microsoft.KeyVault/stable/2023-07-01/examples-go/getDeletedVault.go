@@ -31,10 +31,10 @@ func ExampleVaultsClient_GetDeleted() {
 	// 	Type: to.Ptr("Microsoft.KeyVault/deletedVaults"),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.KeyVault/locations/westus/deletedVaults/sample-vault"),
 	// 	Properties: &armkeyvault.DeletedVaultProperties{
-	// 		DeletionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-01T00:00:59Z"); return t}()),
+	// 		DeletionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-01T00:00:59.000Z"); return t}()),
 	// 		Location: to.Ptr("westus"),
 	// 		PurgeProtectionEnabled: to.Ptr(true),
-	// 		ScheduledPurgeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-01T00:00:59Z"); return t}()),
+	// 		ScheduledPurgeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-01T00:00:59.000Z"); return t}()),
 	// 		Tags: map[string]*string{
 	// 		},
 	// 		VaultID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sample-group/providers/Microsoft.KeyVault/vaults/sample-vault"),

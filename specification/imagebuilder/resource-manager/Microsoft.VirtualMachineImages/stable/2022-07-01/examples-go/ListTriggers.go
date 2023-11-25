@@ -42,7 +42,7 @@ func ExampleTriggersClient_NewListByImageTemplatePager() {
 		// 				Status: &armvirtualmachineimagebuilder.TriggerStatus{
 		// 					Code: to.Ptr("Healthy"),
 		// 					Message: to.Ptr(""),
-		// 					Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-21T17:32:28Z"); return t}()),
+		// 					Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-21T17:32:28.000Z"); return t}()),
 		// 				},
 		// 			},
 		// 	}},

@@ -36,8 +36,8 @@ func ExampleComputeClient_NewListPager() {
 		// 			Properties: &armmachinelearning.AKS{
 		// 				Description: to.Ptr("some compute"),
 		// 				ComputeType: to.Ptr(armmachinelearning.ComputeTypeAKS),
-		// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.0000000+00:00"); return t}()),
-		// 				ModifiedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.0000000+00:00"); return t}()),
+		// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.000Z"); return t}()),
+		// 				ModifiedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.000Z"); return t}()),
 		// 				ProvisioningState: to.Ptr(armmachinelearning.ProvisioningStateSucceeded),
 		// 				ResourceID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute123-56826-c9b00420020b2"),
 		// 			},
@@ -50,8 +50,8 @@ func ExampleComputeClient_NewListPager() {
 		// 			Properties: &armmachinelearning.AKS{
 		// 				Description: to.Ptr("some compute"),
 		// 				ComputeType: to.Ptr(armmachinelearning.ComputeTypeAKS),
-		// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.0000000+00:00"); return t}()),
-		// 				ModifiedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.0000000+00:00"); return t}()),
+		// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.000Z"); return t}()),
+		// 				ModifiedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-01T22:00:00.000Z"); return t}()),
 		// 				ProvisioningState: to.Ptr(armmachinelearning.ProvisioningStateSucceeded),
 		// 				ResourceID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testrg123/providers/Microsoft.ContainerService/managedClusters/compute1234-56826-c9b00420020b2"),
 		// 			},

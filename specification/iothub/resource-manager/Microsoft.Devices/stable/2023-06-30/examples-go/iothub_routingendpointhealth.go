@@ -35,8 +35,8 @@ func ExampleResourceClient_NewGetEndpointHealthPager() {
 		// 		{
 		// 			EndpointID: to.Ptr("id1"),
 		// 			HealthStatus: to.Ptr(armiothub.EndpointHealthStatusHealthy),
-		// 			LastSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Wed, 13 Sep 2022 18:04:32 GMT"); return t}()),
-		// 			LastSuccessfulSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Wed, 13 Sep 2022 18:04:32 GMT"); return t}()),
+		// 			LastSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2022-09-13T18:04:32.000Z"); return t}()),
+		// 			LastSuccessfulSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2022-09-13T18:04:32.000Z"); return t}()),
 		// 		},
 		// 		{
 		// 			EndpointID: to.Ptr("id2"),
@@ -46,9 +46,9 @@ func ExampleResourceClient_NewGetEndpointHealthPager() {
 		// 			EndpointID: to.Ptr("id3"),
 		// 			HealthStatus: to.Ptr(armiothub.EndpointHealthStatusUnhealthy),
 		// 			LastKnownError: to.Ptr("NotFound"),
-		// 			LastKnownErrorTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Wed, 13 Sep 2022 18:04:32 GMT"); return t}()),
-		// 			LastSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Wed, 13 Sep 2022 18:04:32 GMT"); return t}()),
-		// 			LastSuccessfulSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Wed, 13 Sep 2022 18:04:32 GMT"); return t}()),
+		// 			LastKnownErrorTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2022-09-13T18:04:32.000Z"); return t}()),
+		// 			LastSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2022-09-13T18:04:32.000Z"); return t}()),
+		// 			LastSuccessfulSendAttemptTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2022-09-13T18:04:32.000Z"); return t}()),
 		// 	}},
 		// }
 	}

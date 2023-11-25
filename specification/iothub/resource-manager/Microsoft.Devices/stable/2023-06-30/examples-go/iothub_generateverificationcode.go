@@ -29,12 +29,12 @@ func ExampleCertificatesClient_GenerateVerificationCode() {
 	// res.CertificateWithNonceDescription = armiothub.CertificateWithNonceDescription{
 	// 	Name: to.Ptr("cert"),
 	// 	Properties: &armiothub.CertificatePropertiesWithNonce{
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Thu, 12 Oct 2017 19:23:50 GMT"); return t}()),
-	// 		Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Sat, 31 Dec 2039 23:59:59 GMT"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2017-10-12T19:23:50.000Z"); return t}()),
+	// 		Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2039-12-31T23:59:59.000Z"); return t}()),
 	// 		IsVerified: to.Ptr(false),
 	// 		Subject: to.Ptr("CN=andbucdevice1"),
 	// 		Thumbprint: to.Ptr("##############################"),
-	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Thu, 12 Oct 2017 19:26:56 GMT"); return t}()),
+	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2017-10-12T19:26:56.000Z"); return t}()),
 	// 		VerificationCode: to.Ptr("##################################"),
 	// 	},
 	// }

@@ -40,7 +40,7 @@ func ExampleEnvironmentsClient_Get() {
 	// 			Capacity: to.Ptr[int32](1),
 	// 		},
 	// 		Properties: &armtimeseriesinsights.Gen1EnvironmentResourceProperties{
-	// 			CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-18T19:20:33.2288820Z"); return t}()),
+	// 			CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-18T19:20:33.228Z"); return t}()),
 	// 			ProvisioningState: to.Ptr(armtimeseriesinsights.ProvisioningStateSucceeded),
 	// 			DataRetentionTime: to.Ptr("P31D"),
 	// 			PartitionKeyProperties: []*armtimeseriesinsights.TimeSeriesIDProperty{

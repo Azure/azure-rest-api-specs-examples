@@ -46,10 +46,10 @@ func ExampleConnectedClusterClient_Get() {
 	// 		TotalNodeCount: to.Ptr[int32](2),
 	// 	},
 	// 	SystemData: &armhybridkubernetes.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:06:33.9173186Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:06:33.917Z"); return t}()),
 	// 		CreatedBy: to.Ptr("sikasire@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armhybridkubernetes.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:14:58.865041Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-17T07:14:58.865Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("2d2a754c-cade-4935-83d4-ce413c5a3910"),
 	// 		LastModifiedByType: to.Ptr(armhybridkubernetes.LastModifiedByTypeApplication),
 	// 	},

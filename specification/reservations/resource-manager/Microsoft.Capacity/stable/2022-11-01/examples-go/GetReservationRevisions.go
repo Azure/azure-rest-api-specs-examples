@@ -42,11 +42,11 @@ func ExampleReservationClient_NewListRevisionsPager() {
 		// 				AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeShared),
 		// 				BillingPlan: to.Ptr(armreservations.ReservationBillingPlanMonthly),
 		// 				DisplayName: to.Ptr("cabri_test"),
-		// 				EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T23:57:48.1891638Z"); return t}()),
+		// 				EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T23:57:48.189Z"); return t}()),
 		// 				ExpiryDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2018-09-22"); return t}()),
-		// 				ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T23:57:48.1891638Z"); return t}()),
+		// 				ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T23:57:48.189Z"); return t}()),
 		// 				InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
-		// 				LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T23:57:54.3768768Z"); return t}()),
+		// 				LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T23:57:54.376Z"); return t}()),
 		// 				MergeProperties: &armreservations.ReservationMergeProperties{
 		// 					MergeSources: []*string{
 		// 						to.Ptr("/providers/microsoft.capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/00238563-7312-4c20-a134-8c030bf938a7"),
@@ -75,15 +75,15 @@ func ExampleReservationClient_NewListRevisionsPager() {
 		// 					AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeSingle),
 		// 					BillingPlan: to.Ptr(armreservations.ReservationBillingPlanMonthly),
 		// 					DisplayName: to.Ptr("cabri_test"),
-		// 					EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:32.7632798Z"); return t}()),
+		// 					EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:32.763Z"); return t}()),
 		// 					ExpiryDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2018-09-22"); return t}()),
-		// 					ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T22:46:32.7632798Z"); return t}()),
+		// 					ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T22:46:32.763Z"); return t}()),
 		// 					ExtendedStatusInfo: &armreservations.ExtendedStatusInfo{
 		// 						Message: to.Ptr("An operation is in progress on your reservation. Please wait for operation to complete before taking further action"),
 		// 						StatusCode: to.Ptr(armreservations.ReservationStatusCodePending),
 		// 					},
 		// 					InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
-		// 					LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T23:57:47.488284Z"); return t}()),
+		// 					LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T23:57:47.488Z"); return t}()),
 		// 					MergeProperties: &armreservations.ReservationMergeProperties{
 		// 						MergeSources: []*string{
 		// 							to.Ptr("/providers/microsoft.capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/00238563-7312-4c20-a134-8c030bf938a7"),
@@ -112,11 +112,11 @@ func ExampleReservationClient_NewListRevisionsPager() {
 		// 						AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeSingle),
 		// 						BillingPlan: to.Ptr(armreservations.ReservationBillingPlanMonthly),
 		// 						DisplayName: to.Ptr("cabri_test"),
-		// 						EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:32.7632798Z"); return t}()),
+		// 						EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:32.763Z"); return t}()),
 		// 						ExpiryDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2018-09-22"); return t}()),
-		// 						ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T22:46:32.7632798Z"); return t}()),
+		// 						ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T22:46:32.763Z"); return t}()),
 		// 						InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
-		// 						LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:32.7632798Z"); return t}()),
+		// 						LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:32.763Z"); return t}()),
 		// 						MergeProperties: &armreservations.ReservationMergeProperties{
 		// 							MergeSources: []*string{
 		// 								to.Ptr("/providers/microsoft.capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/00238563-7312-4c20-a134-8c030bf938a7"),
@@ -147,11 +147,11 @@ func ExampleReservationClient_NewListRevisionsPager() {
 		// 							},
 		// 							AppliedScopeType: to.Ptr(armreservations.AppliedScopeTypeSingle),
 		// 							DisplayName: to.Ptr("cabri_test"),
-		// 							EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:27.3313607Z"); return t}()),
+		// 							EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:27.331Z"); return t}()),
 		// 							ExpiryDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2018-09-22"); return t}()),
-		// 							ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T22:46:27.3313607Z"); return t}()),
+		// 							ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-22T22:46:27.331Z"); return t}()),
 		// 							InstanceFlexibility: to.Ptr(armreservations.InstanceFlexibilityOn),
-		// 							LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:27.3313607Z"); return t}()),
+		// 							LastUpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-22T22:46:27.331Z"); return t}()),
 		// 							MergeProperties: &armreservations.ReservationMergeProperties{
 		// 								MergeSources: []*string{
 		// 									to.Ptr("/providers/microsoft.capacity/reservationOrders/276e7ae4-84d0-4da6-ab4b-d6b94f3557da/reservations/00238563-7312-4c20-a134-8c030bf938a7"),

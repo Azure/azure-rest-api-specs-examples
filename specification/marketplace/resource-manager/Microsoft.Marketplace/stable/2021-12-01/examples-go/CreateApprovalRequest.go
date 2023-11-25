@@ -31,10 +31,10 @@ func ExamplePrivateStoreClient_CreateApprovalRequest() {
 	// 	Type: to.Ptr("Microsoft.Marketplace/privateStores/requestApprovals"),
 	// 	ID: to.Ptr("/providers/Microsoft.Marketplace/privateStores/9afd3c45-5230-4d58-9469-2cacc00bba68/requestApprovals/marketplacetestthirdparty.md-test-third-party-2"),
 	// 	SystemData: &armmarketplace.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-01T10:23:17.6571572+02:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-01T08:23:17.657Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user@somedoamin.com"),
 	// 		CreatedByType: to.Ptr(armmarketplace.IdentityTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-01T10:23:17.6571572+02:00"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-01T08:23:17.657Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user@somedoamin.com"),
 	// 		LastModifiedByType: to.Ptr(armmarketplace.IdentityTypeUser),
 	// 	},

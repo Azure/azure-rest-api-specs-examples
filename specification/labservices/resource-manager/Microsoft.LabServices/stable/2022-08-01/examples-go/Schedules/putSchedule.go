@@ -26,12 +26,12 @@ func ExampleSchedulesClient_CreateOrUpdate() {
 		Properties: &armlabservices.ScheduleProperties{
 			Notes: to.Ptr("Schedule 1 for students"),
 			RecurrencePattern: &armlabservices.RecurrencePattern{
-				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14T23:59:59Z"); return t }()),
+				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14T23:59:59.000Z"); return t }()),
 				Frequency:      to.Ptr(armlabservices.RecurrenceFrequencyDaily),
 				Interval:       to.Ptr[int32](2),
 			},
-			StartAt:    to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00Z"); return t }()),
-			StopAt:     to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00Z"); return t }()),
+			StartAt:    to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00.000Z"); return t }()),
+			StopAt:     to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00.000Z"); return t }()),
 			TimeZoneID: to.Ptr("America/Los_Angeles"),
 		},
 	}, nil)
@@ -48,20 +48,20 @@ func ExampleSchedulesClient_CreateOrUpdate() {
 	// 	Properties: &armlabservices.ScheduleProperties{
 	// 		Notes: to.Ptr("Schedule 1 for students"),
 	// 		RecurrencePattern: &armlabservices.RecurrencePattern{
-	// 			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14T23:59:59Z"); return t}()),
+	// 			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-14T23:59:59.000Z"); return t}()),
 	// 			Frequency: to.Ptr(armlabservices.RecurrenceFrequencyDaily),
 	// 			Interval: to.Ptr[int32](2),
 	// 		},
-	// 		StartAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00Z"); return t}()),
-	// 		StopAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00Z"); return t}()),
+	// 		StartAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T12:00:00.000Z"); return t}()),
+	// 		StopAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-26T18:00:00.000Z"); return t}()),
 	// 		TimeZoneID: to.Ptr("America/Los_Angeles"),
 	// 		ProvisioningState: to.Ptr(armlabservices.ProvisioningStateSucceeded),
 	// 	},
 	// 	SystemData: &armlabservices.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T10:00:00Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T10:00:00.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("identity123"),
 	// 		CreatedByType: to.Ptr(armlabservices.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-01T09:12:28Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-01T09:12:28.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("identity123"),
 	// 		LastModifiedByType: to.Ptr(armlabservices.CreatedByTypeUser),
 	// 	},

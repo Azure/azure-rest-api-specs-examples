@@ -80,10 +80,10 @@ func ExampleOpenShiftClustersClient_BeginCreateOrUpdate() {
 	// 	Type: to.Ptr("Microsoft.RedHatOpenShift/OpenShiftClusters"),
 	// 	ID: to.Ptr("/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/resourceName"),
 	// 	SystemData: &armredhatopenshift.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.1075056Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.107Z"); return t}()),
 	// 		CreatedBy: to.Ptr("string"),
 	// 		CreatedByType: to.Ptr(armredhatopenshift.CreatedByTypeApplication),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.1075056Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.107Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("string"),
 	// 		LastModifiedByType: to.Ptr(armredhatopenshift.CreatedByTypeApplication),
 	// 	},

@@ -46,7 +46,7 @@ func ExampleContainerGroupsClient_NewListPager() {
 		// 							InstanceView: &armcontainerinstance.ContainerPropertiesInstanceView{
 		// 								CurrentState: &armcontainerinstance.ContainerState{
 		// 									DetailStatus: to.Ptr(""),
-		// 									StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-17T17:27:21Z"); return t}()),
+		// 									StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-17T17:27:21.000Z"); return t}()),
 		// 									State: to.Ptr("Running"),
 		// 								},
 		// 								Events: []*armcontainerinstance.Event{

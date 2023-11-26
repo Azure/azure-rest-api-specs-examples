@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/58be094c6b365f8d4d73a91e293dfb4818e57cf6/specification/app/resource-manager/Microsoft.App/stable/2023-05-01/examples/ManagedEnvironments_Get.json
-func ExampleManagedEnvironmentsClient_Get() {
+func ExampleManagedEnvironmentsDiagnosticsClient_GetRoot() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleManagedEnvironmentsClient_Get() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewManagedEnvironmentsClient().Get(ctx, "examplerg", "jlaw-demo1", nil)
+	res, err := clientFactory.NewManagedEnvironmentsDiagnosticsClient().GetRoot(ctx, "examplerg", "jlaw-demo1", nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -37,7 +37,7 @@ func ExampleManagedEnvironmentsClient_Get() {
 	// 		CustomDomainConfiguration: &armappcontainers.CustomDomainConfiguration{
 	// 			CustomDomainVerificationID: to.Ptr("custom domain verification id"),
 	// 			DNSSuffix: to.Ptr("www.my-name.com"),
-	// 			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-06T04:00:00Z"); return t}()),
+	// 			ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-06T04:00:00.000Z"); return t}()),
 	// 			SubjectName: to.Ptr("CN=www.my-name.com"),
 	// 			Thumbprint: to.Ptr("CERTIFICATE_THUMBPRINT"),
 	// 		},

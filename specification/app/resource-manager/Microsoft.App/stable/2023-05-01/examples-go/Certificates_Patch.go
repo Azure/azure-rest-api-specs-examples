@@ -41,8 +41,8 @@ func ExampleCertificatesClient_Update() {
 	// 		"tag2": to.Ptr("value2"),
 	// 	},
 	// 	Properties: &armappcontainers.CertificateProperties{
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-06T04:00:00Z"); return t}()),
-	// 		IssueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-06T04:00:00Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-06T04:00:00.000Z"); return t}()),
+	// 		IssueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-06T04:00:00.000Z"); return t}()),
 	// 		Issuer: to.Ptr("Issuer Name"),
 	// 		ProvisioningState: to.Ptr(armappcontainers.CertificateProvisioningStateSucceeded),
 	// 		SubjectAlternativeNames: []*string{

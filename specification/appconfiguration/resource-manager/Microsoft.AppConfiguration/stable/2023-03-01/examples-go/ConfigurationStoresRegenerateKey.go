@@ -33,7 +33,7 @@ func ExampleConfigurationStoresClient_RegenerateKey() {
 	// 	Name: to.Ptr("Primary"),
 	// 	ConnectionString: to.Ptr("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 	// 	ID: to.Ptr("439AD01B4BE67DB1"),
-	// 	LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-26T22:59:24.2370906+00:00"); return t}()),
+	// 	LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-26T22:59:24.237Z"); return t}()),
 	// 	ReadOnly: to.Ptr(false),
 	// 	Value: to.Ptr("000000000000000000000000000000000000000000000000000000"),
 	// }

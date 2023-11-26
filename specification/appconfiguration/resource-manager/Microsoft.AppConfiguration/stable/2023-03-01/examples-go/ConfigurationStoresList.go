@@ -45,7 +45,7 @@ func ExampleConfigurationStoresClient_NewListPager() {
 		// 				TenantID: to.Ptr("BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB"),
 		// 			},
 		// 			Properties: &armappconfiguration.ConfigurationStoreProperties{
-		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 		// 				DisableLocalAuth: to.Ptr(false),
 		// 				Encryption: &armappconfiguration.EncryptionProperties{
 		// 					KeyVaultProperties: &armappconfiguration.KeyVaultProperties{
@@ -61,10 +61,10 @@ func ExampleConfigurationStoresClient_NewListPager() {
 		// 				Name: to.Ptr("Standard"),
 		// 			},
 		// 			SystemData: &armappconfiguration.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 		// 				CreatedBy: to.Ptr("foo@contoso.com"),
 		// 				CreatedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("foo@contoso.com"),
 		// 				LastModifiedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
 		// 			},
@@ -82,7 +82,7 @@ func ExampleConfigurationStoresClient_NewListPager() {
 		// 				TenantID: to.Ptr("BBBBBBBB-BBBB-BBBB-BBBB-BBBBBBBBBBBB"),
 		// 			},
 		// 			Properties: &armappconfiguration.ConfigurationStoreProperties{
-		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T23:06:59+00:00"); return t}()),
+		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T23:06:59.000Z"); return t}()),
 		// 				DisableLocalAuth: to.Ptr(false),
 		// 				Encryption: &armappconfiguration.EncryptionProperties{
 		// 					KeyVaultProperties: &armappconfiguration.KeyVaultProperties{
@@ -98,10 +98,10 @@ func ExampleConfigurationStoresClient_NewListPager() {
 		// 				Name: to.Ptr("Standard"),
 		// 			},
 		// 			SystemData: &armappconfiguration.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 		// 				CreatedBy: to.Ptr("foo@contoso.com"),
 		// 				CreatedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("foo@contoso.com"),
 		// 				LastModifiedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
 		// 			},

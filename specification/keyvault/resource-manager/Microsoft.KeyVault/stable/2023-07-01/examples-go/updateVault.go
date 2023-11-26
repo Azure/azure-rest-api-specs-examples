@@ -182,10 +182,10 @@ func ExampleVaultsClient_Update() {
 	// 					VaultURI: to.Ptr("https://sample-vault.vault.azure.net"),
 	// 				},
 	// 				SystemData: &armkeyvault.SystemData{
-	// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.0000000Z"); return t}()),
+	// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.000Z"); return t}()),
 	// 					CreatedBy: to.Ptr("keyVaultUser1"),
 	// 					CreatedByType: to.Ptr(armkeyvault.IdentityTypeUser),
-	// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.0000000Z"); return t}()),
+	// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.000Z"); return t}()),
 	// 					LastModifiedBy: to.Ptr("keyVaultUser2"),
 	// 					LastModifiedByType: to.Ptr(armkeyvault.IdentityTypeUser),
 	// 				},

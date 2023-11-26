@@ -39,7 +39,7 @@ func ExampleServersClient_NewListPager() {
 		// 			Location: to.Ptr("westus"),
 		// 			Properties: &armmariadb.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("testuser"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:02.627+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:02.627Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("mariadbtestsvc1.mariadb.database.azure.com"),
 		// 				MinimalTLSVersion: to.Ptr(armmariadb.MinimalTLSVersionEnumTLS12),
 		// 				PrivateEndpointConnections: []*armmariadb.ServerPrivateEndpointConnection{
@@ -68,7 +68,7 @@ func ExampleServersClient_NewListPager() {
 		// 			Location: to.Ptr("westus"),
 		// 			Properties: &armmariadb.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("testuser"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:54.3+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:54.300Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("mariadbtstsvc2.mariadb.database.azure.com"),
 		// 				MinimalTLSVersion: to.Ptr(armmariadb.MinimalTLSVersionEnumTLS11),
 		// 				PrivateEndpointConnections: []*armmariadb.ServerPrivateEndpointConnection{
@@ -110,7 +110,7 @@ func ExampleServersClient_NewListPager() {
 		// 			Location: to.Ptr("westus"),
 		// 			Properties: &armmariadb.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("testuser"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:59:44.847+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:59:44.847Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("mariadbtestsvc3.mariadb.database.azure.com"),
 		// 				MinimalTLSVersion: to.Ptr(armmariadb.MinimalTLSVersionEnumTLS10),
 		// 				PrivateEndpointConnections: []*armmariadb.ServerPrivateEndpointConnection{

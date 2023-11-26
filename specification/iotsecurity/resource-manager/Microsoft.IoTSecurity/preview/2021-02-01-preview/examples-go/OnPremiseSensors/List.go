@@ -35,10 +35,10 @@ func ExampleOnPremiseSensorsClient_List() {
 	// 			Properties: map[string]any{
 	// 			},
 	// 			SystemData: &armiotsecurity.SystemData{
-	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.0928001Z"); return t}()),
+	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.092Z"); return t}()),
 	// 				CreatedBy: to.Ptr("string"),
 	// 				CreatedByType: to.Ptr(armiotsecurity.CreatedByTypeUser),
-	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.0928001Z"); return t}()),
+	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.092Z"); return t}()),
 	// 				LastModifiedBy: to.Ptr("string"),
 	// 				LastModifiedByType: to.Ptr(armiotsecurity.CreatedByTypeUser),
 	// 			},
@@ -50,10 +50,10 @@ func ExampleOnPremiseSensorsClient_List() {
 	// 			Properties: map[string]any{
 	// 			},
 	// 			SystemData: &armiotsecurity.SystemData{
-	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.0928001Z"); return t}()),
+	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.092Z"); return t}()),
 	// 				CreatedBy: to.Ptr("string"),
 	// 				CreatedByType: to.Ptr(armiotsecurity.CreatedByTypeUser),
-	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.0928001Z"); return t}()),
+	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.092Z"); return t}()),
 	// 				LastModifiedBy: to.Ptr("string"),
 	// 				LastModifiedByType: to.Ptr(armiotsecurity.CreatedByTypeUser),
 	// 			},

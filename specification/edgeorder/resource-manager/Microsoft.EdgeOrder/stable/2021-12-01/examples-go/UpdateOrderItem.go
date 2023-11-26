@@ -75,7 +75,7 @@ func ExampleManagementClient_BeginUpdateOrderItem() {
 	// 				CurrentStage: &armedgeorder.StageDetails{
 	// 					StageName: to.Ptr(armedgeorder.StageNamePlaced),
 	// 					StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:30:31.5838042+05:30"); return t}()),
+	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T06:00:31.583Z"); return t}()),
 	// 				},
 	// 				DeletionStatus: to.Ptr(armedgeorder.ActionStatusEnumNotAllowed),
 	// 				ManagementRpDetailsList: []*armedgeorder.ResourceProviderDetails{
@@ -88,7 +88,7 @@ func ExampleManagementClient_BeginUpdateOrderItem() {
 	// 					{
 	// 						StageName: to.Ptr(armedgeorder.StageNamePlaced),
 	// 						StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-	// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:30:31.5838042+05:30"); return t}()),
+	// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T06:00:31.583Z"); return t}()),
 	// 					},
 	// 					{
 	// 						StageName: to.Ptr(armedgeorder.StageNameConfirmed),
@@ -132,11 +132,11 @@ func ExampleManagementClient_BeginUpdateOrderItem() {
 	// 				},
 	// 				ReturnStatus: to.Ptr(armedgeorder.OrderItemReturnEnumNotReturnable),
 	// 			},
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:29:47.3483197+05:30"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:59:47.348Z"); return t}()),
 	// 		},
 	// 		SystemData: &armedgeorder.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		},
 	// 	}
 }

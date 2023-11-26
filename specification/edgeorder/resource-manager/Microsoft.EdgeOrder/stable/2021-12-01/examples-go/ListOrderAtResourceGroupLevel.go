@@ -40,7 +40,7 @@ func ExampleManagementClient_NewListOrderAtResourceGroupLevelPager() {
 		// 				CurrentStage: &armedgeorder.StageDetails{
 		// 					StageName: to.Ptr(armedgeorder.StageNamePlaced),
 		// 					StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:55:46.9437439+05:30"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:25:46.943Z"); return t}()),
 		// 				},
 		// 				OrderItemIDs: []*string{
 		// 					to.Ptr("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.EdgeOrder/orderItems/TestOrderItemName1")},
@@ -48,7 +48,7 @@ func ExampleManagementClient_NewListOrderAtResourceGroupLevelPager() {
 		// 						{
 		// 							StageName: to.Ptr(armedgeorder.StageNamePlaced),
 		// 							StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 							StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:55:46.9437439+05:30"); return t}()),
+		// 							StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:25:46.943Z"); return t}()),
 		// 						},
 		// 						{
 		// 							StageName: to.Ptr(armedgeorder.StageNameInReview),
@@ -56,8 +56,8 @@ func ExampleManagementClient_NewListOrderAtResourceGroupLevelPager() {
 		// 					}},
 		// 				},
 		// 				SystemData: &armedgeorder.SystemData{
-		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
-		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 			},
 		// 			{
@@ -68,7 +68,7 @@ func ExampleManagementClient_NewListOrderAtResourceGroupLevelPager() {
 		// 					CurrentStage: &armedgeorder.StageDetails{
 		// 						StageName: to.Ptr(armedgeorder.StageNamePlaced),
 		// 						StageStatus: to.Ptr(armedgeorder.StageStatusInProgress),
-		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:58:46.5241979+05:30"); return t}()),
+		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:28:46.524Z"); return t}()),
 		// 					},
 		// 					OrderItemIDs: []*string{
 		// 						to.Ptr("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.EdgeOrder/orderItems/TestOrderItemName2")},
@@ -83,8 +83,8 @@ func ExampleManagementClient_NewListOrderAtResourceGroupLevelPager() {
 		// 						}},
 		// 					},
 		// 					SystemData: &armedgeorder.SystemData{
-		// 						CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
-		// 						LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 						CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
+		// 						LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 					},
 		// 			}},
 		// 		}

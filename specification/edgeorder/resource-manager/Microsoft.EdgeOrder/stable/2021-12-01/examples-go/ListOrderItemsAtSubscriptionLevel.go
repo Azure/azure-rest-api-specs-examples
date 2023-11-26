@@ -71,7 +71,7 @@ func ExampleManagementClient_NewListOrderItemsAtSubscriptionLevelPager() {
 		// 						CurrentStage: &armedgeorder.StageDetails{
 		// 							StageName: to.Ptr(armedgeorder.StageNameConfirmed),
 		// 							StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 							StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:05:00.3575338+05:30"); return t}()),
+		// 							StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:35:00.357Z"); return t}()),
 		// 						},
 		// 						DeletionStatus: to.Ptr(armedgeorder.ActionStatusEnumNotAllowed),
 		// 						ManagementRpDetailsList: []*armedgeorder.ResourceProviderDetails{
@@ -84,12 +84,12 @@ func ExampleManagementClient_NewListOrderItemsAtSubscriptionLevelPager() {
 		// 							{
 		// 								StageName: to.Ptr(armedgeorder.StageNamePlaced),
 		// 								StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 								StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:55:54.3427968+05:30"); return t}()),
+		// 								StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:25:54.342Z"); return t}()),
 		// 							},
 		// 							{
 		// 								StageName: to.Ptr(armedgeorder.StageNameConfirmed),
 		// 								StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 								StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:05:00.3575338+05:30"); return t}()),
+		// 								StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:35:00.357Z"); return t}()),
 		// 							},
 		// 							{
 		// 								StageName: to.Ptr(armedgeorder.StageNameReadyToShip),
@@ -129,11 +129,11 @@ func ExampleManagementClient_NewListOrderItemsAtSubscriptionLevelPager() {
 		// 						},
 		// 						ReturnStatus: to.Ptr(armedgeorder.OrderItemReturnEnumNotReturnable),
 		// 					},
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:55:10.2820482+05:30"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:25:10.282Z"); return t}()),
 		// 				},
 		// 				SystemData: &armedgeorder.SystemData{
-		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
-		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
+		// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 			},
 		// 			{
@@ -172,7 +172,7 @@ func ExampleManagementClient_NewListOrderItemsAtSubscriptionLevelPager() {
 		// 							CurrentStage: &armedgeorder.StageDetails{
 		// 								StageName: to.Ptr(armedgeorder.StageNameConfirmed),
 		// 								StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 								StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:07:29.9896685+05:30"); return t}()),
+		// 								StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:37:29.989Z"); return t}()),
 		// 							},
 		// 							DeletionStatus: to.Ptr(armedgeorder.ActionStatusEnumNotAllowed),
 		// 							ManagementRpDetailsList: []*armedgeorder.ResourceProviderDetails{
@@ -185,12 +185,12 @@ func ExampleManagementClient_NewListOrderItemsAtSubscriptionLevelPager() {
 		// 								{
 		// 									StageName: to.Ptr(armedgeorder.StageNamePlaced),
 		// 									StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 									StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:59:04.9701334+05:30"); return t}()),
+		// 									StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:29:04.970Z"); return t}()),
 		// 								},
 		// 								{
 		// 									StageName: to.Ptr(armedgeorder.StageNameConfirmed),
 		// 									StageStatus: to.Ptr(armedgeorder.StageStatusSucceeded),
-		// 									StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T11:07:29.9896685+05:30"); return t}()),
+		// 									StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:37:29.989Z"); return t}()),
 		// 								},
 		// 								{
 		// 									StageName: to.Ptr(armedgeorder.StageNameReadyToShip),
@@ -230,11 +230,11 @@ func ExampleManagementClient_NewListOrderItemsAtSubscriptionLevelPager() {
 		// 							},
 		// 							ReturnStatus: to.Ptr(armedgeorder.OrderItemReturnEnumNotReturnable),
 		// 						},
-		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T10:58:27.5824859+05:30"); return t}()),
+		// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-03-04T05:28:27.582Z"); return t}()),
 		// 					},
 		// 					SystemData: &armedgeorder.SystemData{
-		// 						CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
-		// 						LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 						CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
+		// 						LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 					},
 		// 			}},
 		// 		}

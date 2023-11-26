@@ -85,9 +85,9 @@ func ExampleAccountsClient_BeginCreate() {
 	// 	},
 	// 	Properties: &armdatalakestore.AccountProperties{
 	// 		AccountID: to.Ptr("94f4bf5d-78a9-4c31-8aa7-b34d07bad898"),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T13:21:56.6819037-07:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T20:21:56.681Z"); return t}()),
 	// 		Endpoint: to.Ptr("testadlfs17607.azuredatalakestore.net"),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T13:21:56.6819037-07:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T20:21:56.681Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armdatalakestore.DataLakeStoreAccountStatusSucceeded),
 	// 		State: to.Ptr(armdatalakestore.DataLakeStoreAccountStateActive),
 	// 		CurrentTier: to.Ptr(armdatalakestore.TierTypeConsumption),

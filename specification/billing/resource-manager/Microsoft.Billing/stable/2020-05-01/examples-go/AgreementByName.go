@@ -34,18 +34,18 @@ func ExampleAgreementsClient_Get() {
 	// 		AcceptanceMode: to.Ptr(armbilling.AcceptanceModeClickToAccept),
 	// 		AgreementLink: to.Ptr("https://agreementuri1.com"),
 	// 		Category: to.Ptr(armbilling.CategoryMicrosoftCustomerAgreement),
-	// 		EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-05T00:00:00Z"); return t}()),
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-05T00:00:00Z"); return t}()),
+	// 		EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-05T00:00:00.000Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-05T00:00:00.000Z"); return t}()),
 	// 		Participants: []*armbilling.Participants{
 	// 			{
 	// 				Email: to.Ptr("abc@contoso.com"),
 	// 				Status: to.Ptr("Accepted"),
-	// 				StatusDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-01T00:00:00Z"); return t}()),
+	// 				StatusDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-01T00:00:00.000Z"); return t}()),
 	// 			},
 	// 			{
 	// 				Email: to.Ptr("xyz@contoso.com"),
 	// 				Status: to.Ptr("Declined"),
-	// 				StatusDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-02T00:00:00Z"); return t}()),
+	// 				StatusDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-02T00:00:00.000Z"); return t}()),
 	// 		}},
 	// 		Status: to.Ptr("Published"),
 	// 	},

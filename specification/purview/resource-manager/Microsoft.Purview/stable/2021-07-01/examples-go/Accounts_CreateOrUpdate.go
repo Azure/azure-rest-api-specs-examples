@@ -42,15 +42,15 @@ func ExampleAccountsClient_BeginCreateOrUpdate() {
 	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/SampleResourceGroup/providers/Microsoft.Purview/accounts/account1"),
 	// 	Location: to.Ptr("West US 2"),
 	// 	SystemData: &armpurview.TrackedResourceSystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-11-22T18:39:58.6929344Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-11-22T18:39:58.692Z"); return t}()),
 	// 		CreatedBy: to.Ptr("client-name"),
 	// 		CreatedByType: to.Ptr(armpurview.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-16T23:24:34.3430059Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-16T23:24:34.343Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("client-name"),
 	// 		LastModifiedByType: to.Ptr(armpurview.LastModifiedByTypeUser),
 	// 	},
 	// 	Properties: &armpurview.AccountProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-11-22T18:39:58.6929344Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-11-22T18:39:58.692Z"); return t}()),
 	// 		CreatedBy: to.Ptr("client-name"),
 	// 		CreatedByObjectID: to.Ptr("client-objectId"),
 	// 		Endpoints: &armpurview.AccountPropertiesEndpoints{

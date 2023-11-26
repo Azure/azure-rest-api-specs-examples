@@ -73,7 +73,7 @@ func ExampleClient_BeginCreateOrUpdate() {
 	// 		},
 	// 		FilteredSync: to.Ptr(armdomainservices.FilteredSyncEnabled),
 	// 		LdapsSettings: &armdomainservices.LdapsSettings{
-	// 			CertificateNotAfter: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-15T21:43:21Z"); return t}()),
+	// 			CertificateNotAfter: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-15T21:43:21.000Z"); return t}()),
 	// 			CertificateThumbprint: to.Ptr("9154A390F0C387D679E0DD040701745CDFED67F3"),
 	// 			ExternalAccess: to.Ptr(armdomainservices.ExternalAccessEnabled),
 	// 			Ldaps: to.Ptr(armdomainservices.LdapsEnabled),

@@ -43,9 +43,9 @@ func ExampleAssignmentReportsVMSSClient_NewListPager() {
 		// 					},
 		// 				},
 		// 				ComplianceStatus: to.Ptr(armguestconfiguration.ComplianceStatusCompliant),
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T22:14:13Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T22:14:13.000Z"); return t}()),
 		// 				ReportID: to.Ptr("7367cbb8-ae99-47d0-a33b-a283564d2cb1"),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T22:13:53Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T22:13:53.000Z"); return t}()),
 		// 				VM: &armguestconfiguration.VMInfo{
 		// 					ID: to.Ptr("/subscriptions/mysubscriptionid/resourceGroups/myResourceGroupName/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSSName/virtualMachines/1"),
 		// 					UUID: to.Ptr("vmuuid"),
@@ -63,9 +63,9 @@ func ExampleAssignmentReportsVMSSClient_NewListPager() {
 		// 					},
 		// 				},
 		// 				ComplianceStatus: to.Ptr(armguestconfiguration.ComplianceStatusCompliant),
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T20:14:13Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T20:14:13.000Z"); return t}()),
 		// 				ReportID: to.Ptr("41ee2caf-48f9-4999-a793-82ec7c6beb2c"),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T20:13:53Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-29T20:13:53.000Z"); return t}()),
 		// 				VM: &armguestconfiguration.VMInfo{
 		// 					ID: to.Ptr("/subscriptions/mysubscriptionid/resourceGroups/myResourceGroupName/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSSName/virtualMachines/1"),
 		// 					UUID: to.Ptr("vmuuid"),

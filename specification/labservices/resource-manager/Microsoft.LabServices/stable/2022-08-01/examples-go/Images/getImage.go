@@ -43,10 +43,10 @@ func ExampleImagesClient_Get() {
 	// 		Version: to.Ptr("2019.0.20190410"),
 	// 	},
 	// 	SystemData: &armlabservices.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T10:00:00Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T10:00:00.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("identity123"),
 	// 		CreatedByType: to.Ptr(armlabservices.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-01T09:12:28Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-01T09:12:28.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("identity123"),
 	// 		LastModifiedByType: to.Ptr(armlabservices.CreatedByTypeUser),
 	// 	},

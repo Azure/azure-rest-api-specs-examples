@@ -29,10 +29,10 @@ func ExampleCertificateOrdersClient_RetrieveCertificateEmailHistory() {
 	// res.CertificateEmailArray = []*armappservice.CertificateEmail{
 	// 	{
 	// 		EmailID: to.Ptr("customer@email.com"),
-	// 		TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25+00:00"); return t}()),
+	// 		TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25.000Z"); return t}()),
 	// 	},
 	// 	{
 	// 		EmailID: to.Ptr("customer@email.com"),
-	// 		TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-12T23:40:25+00:00"); return t}()),
+	// 		TimeStamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-12T23:40:25.000Z"); return t}()),
 	// }}
 }

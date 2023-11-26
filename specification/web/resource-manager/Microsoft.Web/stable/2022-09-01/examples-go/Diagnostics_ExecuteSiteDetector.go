@@ -35,13 +35,13 @@ func ExampleDiagnosticsClient_ExecuteSiteDetector_executeSiteDetector() {
 	// 	Properties: &armappservice.DiagnosticDetectorResponseProperties{
 	// 		AbnormalTimePeriods: []*armappservice.DetectorAbnormalTimePeriod{
 	// 			{
-	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-06T22:50:00Z"); return t}()),
+	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-06T22:50:00.000Z"); return t}()),
 	// 				Solutions: []*armappservice.Solution{
 	// 				},
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-05T22:50:00Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-05T22:50:00.000Z"); return t}()),
 	// 		}},
-	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-06T22:50:00Z"); return t}()),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-05T22:50:00Z"); return t}()),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-06T22:50:00.000Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-05T22:50:00.000Z"); return t}()),
 	// 	},
 	// }
 }

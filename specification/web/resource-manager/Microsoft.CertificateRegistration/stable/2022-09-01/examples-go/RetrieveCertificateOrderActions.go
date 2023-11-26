@@ -29,14 +29,14 @@ func ExampleCertificateOrdersClient_RetrieveCertificateActions() {
 	// res.CertificateOrderActionArray = []*armappservice.CertificateOrderAction{
 	// 	{
 	// 		ActionType: to.Ptr(armappservice.CertificateOrderActionTypeFraudDetected),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25+00:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25.000Z"); return t}()),
 	// 	},
 	// 	{
 	// 		ActionType: to.Ptr(armappservice.CertificateOrderActionTypeCertificateRevoked),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25+00:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25.000Z"); return t}()),
 	// 	},
 	// 	{
 	// 		ActionType: to.Ptr(armappservice.CertificateOrderActionTypeCertificateIssued),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25+00:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-12T23:40:25.000Z"); return t}()),
 	// }}
 }

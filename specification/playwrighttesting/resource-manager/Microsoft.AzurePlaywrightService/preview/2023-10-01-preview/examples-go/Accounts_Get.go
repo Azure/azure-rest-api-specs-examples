@@ -31,10 +31,10 @@ func ExampleAccountsClient_Get() {
 	// 	Type: to.Ptr("Microsoft.AzurePlaywrightService/accounts"),
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/dummyrg/providers/Microsoft.AzurePlaywrightService/accounts/myPlaywrightAccount"),
 	// 	SystemData: &armplaywrighttesting.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-28T12:32:33Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-28T12:32:33.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("userId1001"),
 	// 		CreatedByType: to.Ptr(armplaywrighttesting.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-28T12:32:33Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-28T12:32:33.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("userId1001"),
 	// 		LastModifiedByType: to.Ptr(armplaywrighttesting.CreatedByTypeUser),
 	// 	},

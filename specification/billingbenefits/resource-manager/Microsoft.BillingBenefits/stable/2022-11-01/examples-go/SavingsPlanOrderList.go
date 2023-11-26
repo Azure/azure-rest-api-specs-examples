@@ -42,7 +42,7 @@ func ExampleSavingsPlanOrderClient_NewListPager() {
 		// 				BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/20000000-1000-0000-0000-000000000004:20000000-0000-3000-0000-000000000000_2019-05-31/billingProfiles/KPSV-DWNE-BG7-TGB"),
 		// 				BillingScopeID: to.Ptr("20000000-0000-0000-0000-000000000005"),
 		// 				DisplayName: to.Ptr("Compute_SavingsPlan_10-28-2022_16-38"),
-		// 				ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-10-28T23:40:30.6028303Z"); return t}()),
+		// 				ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-10-28T23:40:30.602Z"); return t}()),
 		// 				ProvisioningState: to.Ptr(armbillingbenefits.ProvisioningStateSucceeded),
 		// 				SavingsPlans: []*string{
 		// 					to.Ptr("/providers/Microsoft.BillingBenefits/savingsPlanOrders/20000000-0000-0000-0000-000000000000/savingsPlans/20000000-0000-0000-0000-000000000001")},

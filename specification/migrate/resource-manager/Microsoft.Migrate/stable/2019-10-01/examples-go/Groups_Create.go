@@ -40,10 +40,10 @@ func ExampleGroupsClient_Create() {
 	// 		AreAssessmentsRunning: to.Ptr(false),
 	// 		Assessments: []*string{
 	// 		},
-	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T10:52:56.1574737Z"); return t}()),
+	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T10:52:56.157Z"); return t}()),
 	// 		GroupStatus: to.Ptr(armmigrate.GroupStatusCompleted),
 	// 		MachineCount: to.Ptr[int32](0),
-	// 		UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T11:18:49.5485462Z"); return t}()),
+	// 		UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T11:18:49.548Z"); return t}()),
 	// 	},
 	// }
 }

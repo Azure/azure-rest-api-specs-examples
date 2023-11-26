@@ -34,15 +34,15 @@ func ExampleProjectsClient_Get() {
 	// 	Location: to.Ptr("westeurope"),
 	// 	Properties: &armmigrate.ProjectProperties{
 	// 		AssessmentSolutionID: to.Ptr("/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourcegroups/abgoyal-westeurope/providers/microsoft.migrate/migrateprojects/abgoyalweselfhost/Solutions/Servers-Assessment-ServerAssessment"),
-	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T08:28:53.3305058Z"); return t}()),
-	// 		LastAssessmentTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T11:18:47.7893715Z"); return t}()),
+	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T08:28:53.330Z"); return t}()),
+	// 		LastAssessmentTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-14T11:18:47.789Z"); return t}()),
 	// 		NumberOfAssessments: to.Ptr[int32](3),
 	// 		NumberOfGroups: to.Ptr[int32](2),
 	// 		NumberOfMachines: to.Ptr[int32](28),
 	// 		ProjectStatus: to.Ptr(armmigrate.ProjectStatusActive),
 	// 		ProvisioningState: to.Ptr(armmigrate.ProvisioningStateSucceeded),
 	// 		ServiceEndpoint: to.Ptr("https://asmsrvprodwe.prod.migration.windowsazure.com/"),
-	// 		UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T10:11:16.0228967Z"); return t}()),
+	// 		UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T10:11:16.022Z"); return t}()),
 	// 	},
 	// }
 }

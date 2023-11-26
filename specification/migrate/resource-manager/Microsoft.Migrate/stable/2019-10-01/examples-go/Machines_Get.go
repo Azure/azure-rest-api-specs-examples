@@ -34,7 +34,7 @@ func ExampleMachinesClient_Get() {
 	// 	Properties: &armmigrate.MachineProperties{
 	// 		Description: to.Ptr("Microsoft Azure Migration Image on Windows Server 2016"),
 	// 		BootType: to.Ptr(armmigrate.MachineBootTypeBIOS),
-	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T09:58:22.1734149Z"); return t}()),
+	// 		CreatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T09:58:22.173Z"); return t}()),
 	// 		DatacenterManagementServerArmID: to.Ptr("/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourceGroups/abgoyal-westEurope/providers/Microsoft.OffAzure/VMwareSites/PortalvCenterbc2fsite/vcenters/idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3"),
 	// 		DatacenterManagementServerName: to.Ptr("IDCLAB-A360.fareast.corp.microsoft.com"),
 	// 		DiscoveryMachineArmID: to.Ptr("/subscriptions/6393a73f-8d55-47ef-b6dd-179b3e0c7910/resourcegroups/abgoyal-westeurope/providers/microsoft.offazure/vmwaresites/portalvcenterbc2fsite/machines/idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_52bd4eeb-faf4-7d95-4dd5-5524350ce2bb"),
@@ -59,7 +59,7 @@ func ExampleMachinesClient_Get() {
 	// 			NumberOfCores: to.Ptr[int32](8),
 	// 			OperatingSystemName: to.Ptr("Microsoft Windows Server 2016 (64-bit)"),
 	// 			OperatingSystemType: to.Ptr("windowsGuest"),
-	// 			UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T09:58:22.2990529Z"); return t}()),
+	// 			UpdatedTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-09T09:58:22.299Z"); return t}()),
 	// 		},
 	// 	}
 }

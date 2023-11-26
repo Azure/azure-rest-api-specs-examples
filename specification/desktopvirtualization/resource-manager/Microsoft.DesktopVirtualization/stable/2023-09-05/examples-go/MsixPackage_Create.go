@@ -28,7 +28,7 @@ func ExampleMSIXPackagesClient_CreateOrUpdate() {
 			ImagePath:             to.Ptr("imagepath"),
 			IsActive:              to.Ptr(false),
 			IsRegularRegistration: to.Ptr(false),
-			LastUpdated:           to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.9571247Z"); return t }()),
+			LastUpdated:           to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.957Z"); return t }()),
 			PackageApplications: []*armdesktopvirtualization.MsixPackageApplications{
 				{
 					Description:    to.Ptr("application-desc"),
@@ -66,7 +66,7 @@ func ExampleMSIXPackagesClient_CreateOrUpdate() {
 	// 		ImagePath: to.Ptr("imagepath"),
 	// 		IsActive: to.Ptr(false),
 	// 		IsRegularRegistration: to.Ptr(false),
-	// 		LastUpdated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.9571247Z"); return t}()),
+	// 		LastUpdated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.957Z"); return t}()),
 	// 		PackageApplications: []*armdesktopvirtualization.MsixPackageApplications{
 	// 			{
 	// 				Description: to.Ptr("desc"),
@@ -89,10 +89,10 @@ func ExampleMSIXPackagesClient_CreateOrUpdate() {
 	// 		Version: to.Ptr("version"),
 	// 	},
 	// 	SystemData: &armdesktopvirtualization.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.123Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user1"),
 	// 		CreatedByType: to.Ptr(armdesktopvirtualization.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.123Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user2"),
 	// 		LastModifiedByType: to.Ptr(armdesktopvirtualization.CreatedByTypeUser),
 	// 	},

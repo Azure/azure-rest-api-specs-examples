@@ -70,7 +70,7 @@ func ExampleHostPoolsClient_NewListByResourceGroupPager() {
 		// 				PersonalDesktopAssignmentType: to.Ptr(armdesktopvirtualization.PersonalDesktopAssignmentTypeAutomatic),
 		// 				PreferredAppGroupType: to.Ptr(armdesktopvirtualization.PreferredAppGroupTypeDesktop),
 		// 				RegistrationInfo: &armdesktopvirtualization.RegistrationInfo{
-		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.9571247Z"); return t}()),
+		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.957Z"); return t}()),
 		// 					RegistrationTokenOperation: to.Ptr(armdesktopvirtualization.RegistrationTokenOperationUpdate),
 		// 					Token: to.Ptr("token"),
 		// 				},
@@ -82,10 +82,10 @@ func ExampleHostPoolsClient_NewListByResourceGroupPager() {
 		// 				VMTemplate: to.Ptr("{json:json}"),
 		// 			},
 		// 			SystemData: &armdesktopvirtualization.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.123Z"); return t}()),
 		// 				CreatedBy: to.Ptr("user1"),
 		// 				CreatedByType: to.Ptr(armdesktopvirtualization.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.123Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("user2"),
 		// 				LastModifiedByType: to.Ptr(armdesktopvirtualization.CreatedByTypeUser),
 		// 			},
@@ -124,7 +124,7 @@ func ExampleHostPoolsClient_NewListByResourceGroupPager() {
 		// 				PersonalDesktopAssignmentType: to.Ptr(armdesktopvirtualization.PersonalDesktopAssignmentTypeAutomatic),
 		// 				PreferredAppGroupType: to.Ptr(armdesktopvirtualization.PreferredAppGroupTypeDesktop),
 		// 				RegistrationInfo: &armdesktopvirtualization.RegistrationInfo{
-		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.9571247Z"); return t}()),
+		// 					ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2008-09-22T14:01:54.957Z"); return t}()),
 		// 					RegistrationTokenOperation: to.Ptr(armdesktopvirtualization.RegistrationTokenOperationUpdate),
 		// 					Token: to.Ptr("token"),
 		// 				},
@@ -136,10 +136,10 @@ func ExampleHostPoolsClient_NewListByResourceGroupPager() {
 		// 				VMTemplate: to.Ptr("{json:json}"),
 		// 			},
 		// 			SystemData: &armdesktopvirtualization.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.123Z"); return t}()),
 		// 				CreatedBy: to.Ptr("user1"),
 		// 				CreatedByType: to.Ptr(armdesktopvirtualization.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.123Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("user2"),
 		// 				LastModifiedByType: to.Ptr(armdesktopvirtualization.CreatedByTypeUser),
 		// 			},

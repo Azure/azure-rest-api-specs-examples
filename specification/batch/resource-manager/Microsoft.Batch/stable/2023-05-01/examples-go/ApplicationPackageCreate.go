@@ -34,7 +34,7 @@ func ExampleApplicationPackageClient_Create() {
 	// 	Properties: &armbatch.ApplicationPackageProperties{
 	// 		State: to.Ptr(armbatch.PackageStatePending),
 	// 		StorageURL: to.Ptr("http://mystorage1.blob.core.windows.net/myapp?mysas"),
-	// 		StorageURLExpiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-27T18:48:09.9330991Z"); return t}()),
+	// 		StorageURLExpiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-27T18:48:09.933Z"); return t}()),
 	// 	},
 	// }
 }

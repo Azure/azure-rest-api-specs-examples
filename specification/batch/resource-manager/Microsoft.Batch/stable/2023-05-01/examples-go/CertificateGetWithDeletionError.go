@@ -46,9 +46,9 @@ func ExampleCertificateClient_Get_getCertificateWithDeletionError() {
 	// 			}},
 	// 		},
 	// 		PreviousProvisioningState: to.Ptr(armbatch.CertificateProvisioningStateDeleting),
-	// 		PreviousProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-21T00:15:25.5625498Z"); return t}()),
+	// 		PreviousProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-21T00:15:25.562Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armbatch.CertificateProvisioningStateSucceeded),
-	// 		ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-21T01:47:38.4420202Z"); return t}()),
+	// 		ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-21T01:47:38.442Z"); return t}()),
 	// 		PublicData: to.Ptr("MIICrjCCAZagAwI..."),
 	// 	},
 	// }

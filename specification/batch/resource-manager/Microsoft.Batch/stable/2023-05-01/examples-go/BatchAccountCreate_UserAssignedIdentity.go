@@ -63,7 +63,7 @@ func ExampleAccountClient_BeginCreate_batchAccountCreateUserAssignedIdentity() {
 	// 		ActiveJobAndJobScheduleQuota: to.Ptr[int32](20),
 	// 		AutoStorage: &armbatch.AutoStorageProperties{
 	// 			StorageAccountID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Storage/storageAccounts/samplestorage"),
-	// 			LastKeySync: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-10T23:48:38.9878479Z"); return t}()),
+	// 			LastKeySync: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-10T23:48:38.987Z"); return t}()),
 	// 		},
 	// 		DedicatedCoreQuota: to.Ptr[int32](20),
 	// 		LowPriorityCoreQuota: to.Ptr[int32](20),

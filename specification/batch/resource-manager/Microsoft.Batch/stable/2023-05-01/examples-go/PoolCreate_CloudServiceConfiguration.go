@@ -127,7 +127,7 @@ func ExamplePoolClient_Create_createPoolFullCloudServiceConfiguration() {
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/sampleacct/pools/testpool"),
 	// 	Properties: &armbatch.PoolProperties{
 	// 		AllocationState: to.Ptr(armbatch.AllocationStateResizing),
-	// 		AllocationStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.9407275Z"); return t}()),
+	// 		AllocationStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.940Z"); return t}()),
 	// 		ApplicationLicenses: []*string{
 	// 			to.Ptr("app-license0"),
 	// 			to.Ptr("app-license1")},
@@ -144,7 +144,7 @@ func ExamplePoolClient_Create_createPoolFullCloudServiceConfiguration() {
 	// 					Visibility: []*armbatch.CertificateVisibility{
 	// 						to.Ptr(armbatch.CertificateVisibilityRemoteUser)},
 	// 				}},
-	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.9407275Z"); return t}()),
+	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.940Z"); return t}()),
 	// 				CurrentDedicatedNodes: to.Ptr[int32](0),
 	// 				CurrentLowPriorityNodes: to.Ptr[int32](0),
 	// 				DeploymentConfiguration: &armbatch.DeploymentConfiguration{
@@ -154,7 +154,7 @@ func ExamplePoolClient_Create_createPoolFullCloudServiceConfiguration() {
 	// 					},
 	// 				},
 	// 				InterNodeCommunication: to.Ptr(armbatch.InterNodeCommunicationStateEnabled),
-	// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.9407275Z"); return t}()),
+	// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.940Z"); return t}()),
 	// 				Metadata: []*armbatch.MetadataItem{
 	// 					{
 	// 						Name: to.Ptr("metadata-1"),
@@ -174,7 +174,7 @@ func ExamplePoolClient_Create_createPoolFullCloudServiceConfiguration() {
 	// 						SubnetID: to.Ptr("/subscriptions/subid/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123"),
 	// 					},
 	// 					ProvisioningState: to.Ptr(armbatch.PoolProvisioningStateSucceeded),
-	// 					ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.9407275Z"); return t}()),
+	// 					ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.940Z"); return t}()),
 	// 					ScaleSettings: &armbatch.ScaleSettings{
 	// 						FixedScale: &armbatch.FixedScaleSettings{
 	// 							NodeDeallocationOption: to.Ptr(armbatch.ComputeNodeDeallocationOptionTaskCompletion),

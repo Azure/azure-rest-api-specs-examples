@@ -56,6 +56,6 @@ func ExampleGenerateCostDetailsReportClient_BeginGetOperationResults() {
 	// 		},
 	// 	},
 	// 	Status: to.Ptr(armcostmanagement.CostDetailsStatusTypeCompletedCostDetailsStatusType),
-	// 	ValidTill: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-10T08:08:46.1973252Z"); return t}()),
+	// 	ValidTill: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-10T08:08:46.197Z"); return t}()),
 	// }
 }

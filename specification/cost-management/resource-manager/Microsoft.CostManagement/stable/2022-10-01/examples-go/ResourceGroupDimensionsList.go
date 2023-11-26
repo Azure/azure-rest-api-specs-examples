@@ -49,8 +49,8 @@ func ExampleDimensionsClient_NewListPager_resourceGroupDimensionsListLegacy() {
 		// 					FilterEnabled: to.Ptr(true),
 		// 					GroupingEnabled: to.Ptr(true),
 		// 					Total: to.Ptr[int32](1),
-		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-31T00:00:00-07:00"); return t}()),
-		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-01T00:00:00-07:00"); return t}()),
+		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-31T07:00:00.000Z"); return t}()),
+		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-01T07:00:00.000Z"); return t}()),
 		// 				},
 		// 			},
 		// 			{
@@ -69,8 +69,8 @@ func ExampleDimensionsClient_NewListPager_resourceGroupDimensionsListLegacy() {
 		// 						FilterEnabled: to.Ptr(true),
 		// 						GroupingEnabled: to.Ptr(true),
 		// 						Total: to.Ptr[int32](27),
-		// 						UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-31T00:00:00-07:00"); return t}()),
-		// 						UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-01T00:00:00-07:00"); return t}()),
+		// 						UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-31T07:00:00.000Z"); return t}()),
+		// 						UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-01T07:00:00.000Z"); return t}()),
 		// 					},
 		// 			}},
 		// 		}

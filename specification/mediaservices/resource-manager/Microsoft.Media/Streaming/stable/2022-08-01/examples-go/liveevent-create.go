@@ -77,7 +77,7 @@ func ExampleLiveEventsClient_BeginCreate() {
 	// 	},
 	// 	Properties: &armmediaservices.LiveEventProperties{
 	// 		Description: to.Ptr("test event 1"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:06.0982751Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:06.098Z"); return t}()),
 	// 		CrossSiteAccessPolicies: &armmediaservices.CrossSiteAccessPolicies{
 	// 		},
 	// 		Encoding: &armmediaservices.LiveEventEncoding{
@@ -100,7 +100,7 @@ func ExampleLiveEventsClient_BeginCreate() {
 	// 			KeyFrameIntervalDuration: to.Ptr("PT6S"),
 	// 			StreamingProtocol: to.Ptr(armmediaservices.LiveEventInputProtocolFragmentedMP4),
 	// 		},
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:06.0982751Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:06.098Z"); return t}()),
 	// 		Preview: &armmediaservices.LiveEventPreview{
 	// 			AccessControl: &armmediaservices.LiveEventPreviewAccessControl{
 	// 				IP: &armmediaservices.IPAccessControl{

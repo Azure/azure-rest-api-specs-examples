@@ -33,7 +33,7 @@ func ExampleContentKeyPoliciesClient_CreateOrUpdate_createsAContentKeyPolicyWith
 						Licenses: []*armmediaservices.ContentKeyPolicyPlayReadyLicense{
 							{
 								AllowTestDevices: to.Ptr(true),
-								BeginDate:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-16T18:22:53.46Z"); return t }()),
+								BeginDate:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-16T18:22:53.460Z"); return t }()),
 								ContentKeyLocation: &armmediaservices.ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader{
 									ODataType: to.Ptr("#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader"),
 								},
@@ -67,8 +67,8 @@ func ExampleContentKeyPoliciesClient_CreateOrUpdate_createsAContentKeyPolicyWith
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/contentKeyPolicies/PolicyWithPlayReadyOptionAndOpenRestriction"),
 	// 	Properties: &armmediaservices.ContentKeyPolicyProperties{
 	// 		Description: to.Ptr("ArmPolicyDescription"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2012-11-01T00:00:00Z"); return t}()),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:29.51Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2012-11-01T00:00:00.000Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:29.510Z"); return t}()),
 	// 		Options: []*armmediaservices.ContentKeyPolicyOption{
 	// 			{
 	// 				Name: to.Ptr("ArmPolicyOptionName"),
@@ -77,7 +77,7 @@ func ExampleContentKeyPoliciesClient_CreateOrUpdate_createsAContentKeyPolicyWith
 	// 					Licenses: []*armmediaservices.ContentKeyPolicyPlayReadyLicense{
 	// 						{
 	// 							AllowTestDevices: to.Ptr(true),
-	// 							BeginDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-16T18:22:53.46Z"); return t}()),
+	// 							BeginDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-16T18:22:53.460Z"); return t}()),
 	// 							ContentKeyLocation: &armmediaservices.ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader{
 	// 								ODataType: to.Ptr("#Microsoft.Media.ContentKeyPolicyPlayReadyContentEncryptionKeyFromHeader"),
 	// 							},

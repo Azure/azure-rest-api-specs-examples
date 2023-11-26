@@ -44,8 +44,8 @@ func ExampleTransformsClient_CreateOrUpdate() {
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoresources/providers/Microsoft.Media/mediaservices/contosomedia/transforms/createdTransform"),
 	// 	Properties: &armmediaservices.TransformProperties{
 	// 		Description: to.Ptr("Example Transform to illustrate create and update."),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.7664818Z"); return t}()),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.7664818Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.766Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.766Z"); return t}()),
 	// 		Outputs: []*armmediaservices.TransformOutput{
 	// 			{
 	// 				OnError: to.Ptr(armmediaservices.OnErrorTypeStopProcessingJob),
@@ -57,10 +57,10 @@ func ExampleTransformsClient_CreateOrUpdate() {
 	// 		}},
 	// 	},
 	// 	SystemData: &armmediaservices.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.7664818Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.766Z"); return t}()),
 	// 		CreatedBy: to.Ptr("contoso@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.7664818Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.766Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 	// 		LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 	// 	},

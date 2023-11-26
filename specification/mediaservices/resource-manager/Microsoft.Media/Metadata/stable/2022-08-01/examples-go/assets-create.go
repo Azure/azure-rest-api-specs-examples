@@ -40,7 +40,7 @@ func ExampleAssetsClient_CreateOrUpdate() {
 	// 		Description: to.Ptr("A documentary showing the ascent of Mount Logan"),
 	// 		AssetID: to.Ptr("09194258-36ba-4403-abb3-68780e6bc545"),
 	// 		Container: to.Ptr("asset-09194258-36ba-4403-abb3-68780e6bc545"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:26.08Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:26.080Z"); return t}()),
 	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:26.107Z"); return t}()),
 	// 		StorageAccountName: to.Ptr("storage0"),
 	// 		StorageEncryptionFormat: to.Ptr(armmediaservices.AssetStorageEncryptionFormatNone),

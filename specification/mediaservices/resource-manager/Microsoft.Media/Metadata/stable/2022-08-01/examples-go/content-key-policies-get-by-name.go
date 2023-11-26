@@ -32,8 +32,8 @@ func ExampleContentKeyPoliciesClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/contentKeyPolicies/PolicyWithMultipleOptions"),
 	// 	Properties: &armmediaservices.ContentKeyPolicyProperties{
 	// 		Description: to.Ptr("A policy with multiple options."),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-12-01T00:00:00Z"); return t}()),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-02T00:00:00Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-12-01T00:00:00.000Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-12-02T00:00:00.000Z"); return t}()),
 	// 		Options: []*armmediaservices.ContentKeyPolicyOption{
 	// 			{
 	// 				Configuration: &armmediaservices.ContentKeyPolicyClearKeyConfiguration{

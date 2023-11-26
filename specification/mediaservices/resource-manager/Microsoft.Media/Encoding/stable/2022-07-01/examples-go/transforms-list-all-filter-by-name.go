@@ -41,8 +41,8 @@ func ExampleTransformsClient_NewListPager_listsTheTransformsFilterByName() {
 		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoresources/providers/Microsoft.Media/mediaservices/contosomedia/transforms/sampleEncodeAndVideoIndex"),
 		// 			Properties: &armmediaservices.TransformProperties{
 		// 				Description: to.Ptr("A sample Transform using the Standard Encoder with a built-in preset, as well as the Video Analyzer."),
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
-		// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
+		// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
 		// 				Outputs: []*armmediaservices.TransformOutput{
 		// 					{
 		// 						OnError: to.Ptr(armmediaservices.OnErrorTypeStopProcessingJob),
@@ -63,10 +63,10 @@ func ExampleTransformsClient_NewListPager_listsTheTransformsFilterByName() {
 		// 				}},
 		// 			},
 		// 			SystemData: &armmediaservices.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
 		// 				CreatedBy: to.Ptr("contoso@microsoft.com"),
 		// 				CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 		// 				LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 		// 			},
@@ -77,8 +77,8 @@ func ExampleTransformsClient_NewListPager_listsTheTransformsFilterByName() {
 		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoresources/providers/Microsoft.Media/mediaservices/contosomedia/transforms/sampleEncode"),
 		// 			Properties: &armmediaservices.TransformProperties{
 		// 				Description: to.Ptr("A sample Transform using the Standard Encoder with a built in preset."),
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
-		// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
+		// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
 		// 				Outputs: []*armmediaservices.TransformOutput{
 		// 					{
 		// 						OnError: to.Ptr(armmediaservices.OnErrorTypeStopProcessingJob),
@@ -90,10 +90,10 @@ func ExampleTransformsClient_NewListPager_listsTheTransformsFilterByName() {
 		// 				}},
 		// 			},
 		// 			SystemData: &armmediaservices.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
 		// 				CreatedBy: to.Ptr("contoso@microsoft.com"),
 		// 				CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.2387023Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:31.238Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 		// 				LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 		// 			},

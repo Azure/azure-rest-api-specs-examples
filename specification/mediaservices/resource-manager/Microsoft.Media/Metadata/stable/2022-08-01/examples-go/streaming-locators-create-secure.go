@@ -25,8 +25,8 @@ func ExampleStreamingLocatorsClient_Create_createsAStreamingLocatorWithSecureStr
 	_, err = clientFactory.NewStreamingLocatorsClient().Create(ctx, "contoso", "contosomedia", "UserCreatedSecureStreamingLocator", armmediaservices.StreamingLocator{
 		Properties: &armmediaservices.StreamingLocatorProperties{
 			AssetName:           to.Ptr("ClimbingMountRainier"),
-			EndTime:             to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2028-12-31T23:59:59.9999999Z"); return t }()),
-			StartTime:           to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-01T00:00:00Z"); return t }()),
+			EndTime:             to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2028-12-31T23:59:59.999Z"); return t }()),
+			StartTime:           to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-01T00:00:00.000Z"); return t }()),
 			StreamingPolicyName: to.Ptr("secureStreamingPolicy"),
 		},
 	}, nil)

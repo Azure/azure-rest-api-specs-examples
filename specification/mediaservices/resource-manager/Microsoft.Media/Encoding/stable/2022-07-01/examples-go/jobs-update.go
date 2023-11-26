@@ -49,7 +49,7 @@ func ExampleJobsClient_Update() {
 	// 		Description: to.Ptr("Example job to illustrate update."),
 	// 		CorrelationData: map[string]*string{
 	// 		},
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:00Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:00.000Z"); return t}()),
 	// 		Input: &armmediaservices.JobInputs{
 	// 			ODataType: to.Ptr("#Microsoft.Media.JobInputs"),
 	// 			Inputs: []armmediaservices.JobInputClassification{
@@ -62,7 +62,7 @@ func ExampleJobsClient_Update() {
 	// 					AssetName: to.Ptr("job1-InputAsset"),
 	// 			}},
 	// 		},
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:33.9584586Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:33.958Z"); return t}()),
 	// 		Outputs: []armmediaservices.JobOutputClassification{
 	// 			&armmediaservices.JobOutputAsset{
 	// 				ODataType: to.Ptr("#Microsoft.Media.JobOutputAsset"),
@@ -75,10 +75,10 @@ func ExampleJobsClient_Update() {
 	// 		State: to.Ptr(armmediaservices.JobStateQueued),
 	// 	},
 	// 	SystemData: &armmediaservices.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:00Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:00.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("contoso@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:33.9584586Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-17T23:14:33.958Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 	// 		LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 	// 	},

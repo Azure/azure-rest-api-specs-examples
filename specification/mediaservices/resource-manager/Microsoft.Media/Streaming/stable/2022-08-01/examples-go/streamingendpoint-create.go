@@ -35,12 +35,12 @@ func ExampleStreamingEndpointsClient_BeginCreate() {
 					AkamaiSignatureHeaderAuthenticationKeyList: []*armmediaservices.AkamaiSignatureHeaderAuthenticationKey{
 						{
 							Base64Key:  to.Ptr("dGVzdGlkMQ=="),
-							Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2029-12-31T16:00:00-08:00"); return t }()),
+							Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2030-01-01T00:00:00.000Z"); return t }()),
 							Identifier: to.Ptr("id1"),
 						},
 						{
 							Base64Key:  to.Ptr("dGVzdGlkMQ=="),
-							Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2030-12-31T16:00:00-08:00"); return t }()),
+							Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2031-01-01T00:00:00.000Z"); return t }()),
 							Identifier: to.Ptr("id2"),
 						}},
 				},
@@ -83,12 +83,12 @@ func ExampleStreamingEndpointsClient_BeginCreate() {
 	// 				AkamaiSignatureHeaderAuthenticationKeyList: []*armmediaservices.AkamaiSignatureHeaderAuthenticationKey{
 	// 					{
 	// 						Base64Key: to.Ptr("dGVzdGlkMQ=="),
-	// 						Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2030-01-01T00:00:00Z"); return t}()),
+	// 						Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2030-01-01T00:00:00.000Z"); return t}()),
 	// 						Identifier: to.Ptr("id1"),
 	// 					},
 	// 					{
 	// 						Base64Key: to.Ptr("dGVzdGlkMQ=="),
-	// 						Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2031-01-01T00:00:00Z"); return t}()),
+	// 						Expiration: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2031-01-01T00:00:00.000Z"); return t}()),
 	// 						Identifier: to.Ptr("id2"),
 	// 				}},
 	// 			},
@@ -103,12 +103,12 @@ func ExampleStreamingEndpointsClient_BeginCreate() {
 	// 		AvailabilitySetName: to.Ptr("availableset"),
 	// 		CdnEnabled: to.Ptr(false),
 	// 		CdnProfile: to.Ptr(""),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:09.7561389Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:09.756Z"); return t}()),
 	// 		CustomHostNames: []*string{
 	// 		},
-	// 		FreeTrialEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00-08:00"); return t}()),
+	// 		FreeTrialEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T08:00:00.000Z"); return t}()),
 	// 		HostName: to.Ptr("mystreamingendpoint1-slitestmedia10.streaming.mediaservices.windows.net"),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:09.7561389Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-03T02:25:09.756Z"); return t}()),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		ResourceState: to.Ptr(armmediaservices.StreamingEndpointResourceStateStopped),
 	// 		ScaleUnits: to.Ptr[int32](1),

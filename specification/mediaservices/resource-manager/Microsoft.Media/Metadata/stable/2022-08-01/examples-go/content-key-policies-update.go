@@ -47,7 +47,7 @@ func ExampleContentKeyPoliciesClient_Update() {
 	// 	ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Media/mediaservices/contosomedia/contentKeyPolicies/PolicyWithClearKeyOptionAndTokenRestriction"),
 	// 	Properties: &armmediaservices.ContentKeyPolicyProperties{
 	// 		Description: to.Ptr("Updated Policy"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-01T00:00:00Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-01T00:00:00.000Z"); return t}()),
 	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:30.303Z"); return t}()),
 	// 		Options: []*armmediaservices.ContentKeyPolicyOption{
 	// 			{

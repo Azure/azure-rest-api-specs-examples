@@ -40,7 +40,7 @@ func ExampleAssetsClient_Update() {
 	// 		AlternateID: to.Ptr("CLIMB00004"),
 	// 		AssetID: to.Ptr("89af1750-e681-4fbe-8c4c-9a5567867a6b"),
 	// 		Container: to.Ptr("asset-89af1750-e681-4fbe-8c4c-9a5567867a6b"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2011-02-01T00:00:00Z"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2011-02-01T00:00:00.000Z"); return t}()),
 	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-08T18:29:26.503Z"); return t}()),
 	// 		StorageEncryptionFormat: to.Ptr(armmediaservices.AssetStorageEncryptionFormatNone),
 	// 	},

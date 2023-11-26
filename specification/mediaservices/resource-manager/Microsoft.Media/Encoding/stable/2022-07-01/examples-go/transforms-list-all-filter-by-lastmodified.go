@@ -41,8 +41,8 @@ func ExampleTransformsClient_NewListPager_listsTheTransformsFilterByLastmodified
 		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoresources/providers/Microsoft.Media/mediaservices/contosomedia/transforms/sampleEncodeAndVideoIndex"),
 		// 			Properties: &armmediaservices.TransformProperties{
 		// 				Description: to.Ptr("A sample Transform using the Video Analyzer."),
-		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10Z"); return t}()),
-		// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10Z"); return t}()),
+		// 				Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10.000Z"); return t}()),
+		// 				LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10.000Z"); return t}()),
 		// 				Outputs: []*armmediaservices.TransformOutput{
 		// 					{
 		// 						OnError: to.Ptr(armmediaservices.OnErrorTypeStopProcessingJob),
@@ -55,10 +55,10 @@ func ExampleTransformsClient_NewListPager_listsTheTransformsFilterByLastmodified
 		// 				}},
 		// 			},
 		// 			SystemData: &armmediaservices.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10.000Z"); return t}()),
 		// 				CreatedBy: to.Ptr("contoso@microsoft.com"),
 		// 				CreatedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-01T00:00:10.000Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 		// 				LastModifiedByType: to.Ptr(armmediaservices.CreatedByTypeUser),
 		// 			},

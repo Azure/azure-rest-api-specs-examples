@@ -33,7 +33,7 @@ func ExampleFilesClient_Get() {
 	// 	Properties: &armdatamigration.ProjectFileProperties{
 	// 		Extension: to.Ptr("sql"),
 	// 		FilePath: to.Ptr("SchemaInput/DmsSdkFile.sql"),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T20:01:33+00:00"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T20:01:33.000Z"); return t}()),
 	// 		MediaType: to.Ptr("text/plain"),
 	// 		Size: to.Ptr[int64](51835),
 	// 	},

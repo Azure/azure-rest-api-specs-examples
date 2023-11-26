@@ -39,7 +39,7 @@ func ExampleMonitorsClient_NewListBySubscriptionPager() {
 		// 				MonitoringStatus: to.Ptr(armlogz.MonitoringStatusEnabled),
 		// 				PlanData: &armlogz.PlanData{
 		// 					BillingCycle: to.Ptr("Monthly"),
-		// 					EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T15:14:33+02:00"); return t}()),
+		// 					EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T13:14:33.000Z"); return t}()),
 		// 					PlanDetails: to.Ptr("logzapitestplan"),
 		// 					UsageType: to.Ptr("Committed"),
 		// 				},

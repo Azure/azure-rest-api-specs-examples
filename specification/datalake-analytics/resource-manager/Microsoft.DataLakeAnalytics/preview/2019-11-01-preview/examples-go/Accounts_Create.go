@@ -86,9 +86,9 @@ func ExampleAccountsClient_BeginCreate() {
 	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/rgaba12041/providers/Microsoft.DataLakeAnalytics/accounts/testaba15818"),
 	// 	Properties: &armdatalakeanalytics.AccountProperties{
 	// 		AccountID: to.Ptr("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T13:21:56.6819037-07:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T20:21:56.681Z"); return t}()),
 	// 		Endpoint: to.Ptr("test_endpoint"),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T13:21:56.6819037-07:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-14T20:21:56.681Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armdatalakeanalytics.DataLakeAnalyticsAccountStatusSucceeded),
 	// 		State: to.Ptr(armdatalakeanalytics.DataLakeAnalyticsAccountStateActive),
 	// 		ComputePolicies: []*armdatalakeanalytics.ComputePolicy{

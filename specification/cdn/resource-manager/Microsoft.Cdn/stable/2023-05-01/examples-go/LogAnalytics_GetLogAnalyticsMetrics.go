@@ -37,34 +37,34 @@ func ExampleLogAnalyticsClient_GetLogAnalyticsMetrics() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.MetricsResponse = armcdn.MetricsResponse{
-	// 	DateTimeBegin: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T12:30:27.554+08:00"); return t}()),
-	// 	DateTimeEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T13:00:27.554+08:00"); return t}()),
+	// 	DateTimeBegin: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:30:27.554Z"); return t}()),
+	// 	DateTimeEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T05:00:27.554Z"); return t}()),
 	// 	Granularity: to.Ptr(armcdn.MetricsGranularityPT5M),
 	// 	Series: []*armcdn.MetricsResponseSeriesItem{
 	// 		{
 	// 			Data: []*armcdn.Components1Gs0LlpSchemasMetricsresponsePropertiesSeriesItemsPropertiesDataItems{
 	// 				{
-	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:35:00+00:00"); return t}()),
+	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:35:00.000Z"); return t}()),
 	// 					Value: to.Ptr[float32](4250),
 	// 				},
 	// 				{
-	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:40:00+00:00"); return t}()),
+	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:40:00.000Z"); return t}()),
 	// 					Value: to.Ptr[float32](3120),
 	// 				},
 	// 				{
-	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:45:00+00:00"); return t}()),
+	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:45:00.000Z"); return t}()),
 	// 					Value: to.Ptr[float32](2221),
 	// 				},
 	// 				{
-	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:50:00+00:00"); return t}()),
+	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:50:00.000Z"); return t}()),
 	// 					Value: to.Ptr[float32](2466),
 	// 				},
 	// 				{
-	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:55:00+00:00"); return t}()),
+	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T04:55:00.000Z"); return t}()),
 	// 					Value: to.Ptr[float32](2654),
 	// 				},
 	// 				{
-	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T05:00:00+00:00"); return t}()),
+	// 					DateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T05:00:00.000Z"); return t}()),
 	// 					Value: to.Ptr[float32](3565),
 	// 			}},
 	// 			Groups: []*armcdn.MetricsResponseSeriesPropertiesItemsItem{

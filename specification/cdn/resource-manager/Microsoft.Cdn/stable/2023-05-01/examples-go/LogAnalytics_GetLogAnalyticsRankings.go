@@ -31,8 +31,8 @@ func ExampleLogAnalyticsClient_GetLogAnalyticsRankings() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.RankingsResponse = armcdn.RankingsResponse{
-	// 	DateTimeBegin: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T14:49:27.554+08:00"); return t}()),
-	// 	DateTimeEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T17:49:27.554+08:00"); return t}()),
+	// 	DateTimeBegin: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T06:49:27.554Z"); return t}()),
+	// 	DateTimeEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T09:49:27.554Z"); return t}()),
 	// 	Tables: []*armcdn.RankingsResponseTablesItem{
 	// 		{
 	// 			Data: []*armcdn.RankingsResponseTablesPropertiesItemsItem{

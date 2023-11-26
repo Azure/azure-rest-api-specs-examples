@@ -45,14 +45,14 @@ func ExampleAggregatedCostClient_GetForBillingPeriodByManagementGroup() {
 	// 					},
 	// 					Currency: to.Ptr("USD"),
 	// 					MarketplaceCharges: to.Ptr[float64](50.786),
-	// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-31T00:00:00.0000000Z"); return t}()),
-	// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-01T00:00:00.0000000Z"); return t}()),
+	// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-31T00:00:00.000Z"); return t}()),
+	// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-01T00:00:00.000Z"); return t}()),
 	// 				},
 	// 		}},
 	// 		Currency: to.Ptr("USD"),
 	// 		MarketplaceCharges: to.Ptr[float64](150.786),
-	// 		UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-31T00:00:00.0000000Z"); return t}()),
-	// 		UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-01T00:00:00.0000000Z"); return t}()),
+	// 		UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-31T00:00:00.000Z"); return t}()),
+	// 		UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-01T00:00:00.000Z"); return t}()),
 	// 	},
 	// }
 }

@@ -53,7 +53,7 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccountW
 		// 				InvoiceNumber: to.Ptr("3304"),
 		// 				LotID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/Microsoft.Consumption/lots/G202001083926600XXXXX"),
 		// 				LotSource: to.Ptr("ConsumptionCommitment"),
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

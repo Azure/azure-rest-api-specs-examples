@@ -45,7 +45,7 @@ func ExampleReservationTransactionsClient_NewListByBillingProfilePager() {
 		// 				BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/fcebaabc-fced-4284-a83d-79f83dee183c:45796ba8-988f-45ad-bea9-7b71fc6c7513_2018-09-30/billingProfiles/Z76D-SGAF-BG7-TGB"),
 		// 				BillingProfileName: to.Ptr("IT Department*"),
 		// 				Currency: to.Ptr("USD"),
-		// 				EventDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-25T21:21:38Z"); return t}()),
+		// 				EventDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-25T21:21:38.000Z"); return t}()),
 		// 				EventType: to.Ptr("Purchase"),
 		// 				Invoice: to.Ptr("T000456437"),
 		// 				InvoiceID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/fcebaabc-fced-4284-a83d-79f83dee183c:45796ba8-988f-45ad-bea9-7b71fc6c7513_2018-09-30/billingProfiles/Z76D-SGAF-BG7-TGB/invoices/T000456437"),

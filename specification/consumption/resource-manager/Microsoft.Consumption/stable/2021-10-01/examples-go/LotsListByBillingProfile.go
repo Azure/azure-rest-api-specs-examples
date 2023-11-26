@@ -47,7 +47,7 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					ExchangeRateMonth: to.Ptr[int32](1),
 		// 				},
 		// 				CreditCurrency: to.Ptr("USD"),
-		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00Z"); return t}()),
+		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00.000Z"); return t}()),
 		// 				OriginalAmount: &armconsumption.Amount{
 		// 					Currency: to.Ptr("USD"),
 		// 					Value: to.Ptr[float64](5000),
@@ -62,7 +62,7 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller1"),
 		// 				},
 		// 				Source: to.Ptr(armconsumption.LotSourcePurchasedCredit),
-		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00Z"); return t}()),
+		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -80,7 +80,7 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					ExchangeRateMonth: to.Ptr[int32](1),
 		// 				},
 		// 				CreditCurrency: to.Ptr("USD"),
-		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-31T00:00:00Z"); return t}()),
+		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-31T00:00:00.000Z"); return t}()),
 		// 				OriginalAmount: &armconsumption.Amount{
 		// 					Currency: to.Ptr("USD"),
 		// 					Value: to.Ptr[float64](6000),
@@ -95,7 +95,7 @@ func ExampleLotsClient_NewListByBillingProfilePager() {
 		// 					ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller2"),
 		// 				},
 		// 				Source: to.Ptr(armconsumption.LotSourcePurchasedCredit),
-		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00Z"); return t}()),
+		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

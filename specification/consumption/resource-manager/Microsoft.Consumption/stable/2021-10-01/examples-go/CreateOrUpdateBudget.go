@@ -76,8 +76,8 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 			},
 			TimeGrain: to.Ptr(armconsumption.TimeGrainTypeMonthly),
 			TimePeriod: &armconsumption.BudgetTimePeriod{
-				EndDate:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-31T00:00:00Z"); return t }()),
-				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00Z"); return t }()),
+				EndDate:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-31T00:00:00.000Z"); return t }()),
+				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00.000Z"); return t }()),
 			},
 		},
 	}, nil)
@@ -148,8 +148,8 @@ func ExampleBudgetsClient_CreateOrUpdate() {
 	// 								},
 	// 								TimeGrain: to.Ptr(armconsumption.TimeGrainTypeMonthly),
 	// 								TimePeriod: &armconsumption.BudgetTimePeriod{
-	// 									EndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-31T00:00:00Z"); return t}()),
-	// 									StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00Z"); return t}()),
+	// 									EndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-31T00:00:00.000Z"); return t}()),
+	// 									StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00.000Z"); return t}()),
 	// 								},
 	// 							},
 	// 						}

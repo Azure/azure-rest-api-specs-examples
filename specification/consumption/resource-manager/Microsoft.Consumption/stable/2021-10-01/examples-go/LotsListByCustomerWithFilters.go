@@ -42,14 +42,14 @@ func ExampleLotsClient_NewListByCustomerPager_lotsListByCustomerWithFilter() {
 		// 					Currency: to.Ptr("USD"),
 		// 					Value: to.Ptr[float64](60.9),
 		// 				},
-		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00Z"); return t}()),
+		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 				OriginalAmount: &armconsumption.Amount{
 		// 					Currency: to.Ptr("USD"),
 		// 					Value: to.Ptr[float64](5000),
 		// 				},
 		// 				PoNumber: to.Ptr("3524"),
 		// 				Source: to.Ptr(armconsumption.LotSourcePurchasedCredit),
-		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00Z"); return t}()),
+		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

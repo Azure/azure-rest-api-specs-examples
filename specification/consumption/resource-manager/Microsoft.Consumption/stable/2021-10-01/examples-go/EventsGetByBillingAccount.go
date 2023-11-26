@@ -56,7 +56,7 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccount(
 		// 					Currency: to.Ptr("USD"),
 		// 					Value: to.Ptr[float64](500),
 		// 				},
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -79,7 +79,7 @@ func ExampleEventsClient_NewListByBillingAccountPager_eventsGetByBillingAccount(
 		// 				InvoiceNumber: to.Ptr("3304"),
 		// 				LotID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/Microsoft.Consumption/lots/7004bc39-974d-482e-8e45-caf91dba0870"),
 		// 				LotSource: to.Ptr("AzurePrepayment"),
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

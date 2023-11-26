@@ -86,7 +86,7 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					ResellerDescription: to.Ptr("Reseller information"),
 		// 					ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller1"),
 		// 				},
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -147,7 +147,7 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					ResellerDescription: to.Ptr("Reseller information"),
 		// 					ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller1"),
 		// 				},
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -208,7 +208,7 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					ResellerDescription: to.Ptr("Reseller information"),
 		// 					ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller1"),
 		// 				},
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -269,7 +269,7 @@ func ExampleEventsClient_NewListByBillingProfilePager() {
 		// 					ResellerDescription: to.Ptr("Reseller information"),
 		// 					ResellerID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234:5678/billingProfiles/2468/providers/Microsoft.Consumption/reseller/reseller1"),
 		// 				},
-		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00Z"); return t}()),
+		// 				TransactionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-01T00:00:00.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

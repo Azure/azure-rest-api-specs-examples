@@ -41,7 +41,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 			Kind: to.Ptr(armconsumption.ReservationRecommendationKindLegacy),
 		// 			Properties: &armconsumption.LegacySingleScopeReservationRecommendationProperties{
 		// 				CostWithNoReservedInstances: to.Ptr[float64](0),
-		// 				FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-06T00:00:00Z"); return t}()),
+		// 				FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-06T00:00:00.000Z"); return t}()),
 		// 				LookBackPeriod: to.Ptr("Last7Days"),
 		// 				MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 				NetSavings: to.Ptr[float64](4.634521202630137),
@@ -61,7 +61,7 @@ func ExampleReservationRecommendationsClient_NewListPager_reservationRecommendat
 		// 			Kind: to.Ptr(armconsumption.ReservationRecommendationKindLegacy),
 		// 			Properties: &armconsumption.LegacySingleScopeReservationRecommendationProperties{
 		// 				CostWithNoReservedInstances: to.Ptr[float64](0),
-		// 				FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-06T00:00:00Z"); return t}()),
+		// 				FirstUsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-06T00:00:00.000Z"); return t}()),
 		// 				LookBackPeriod: to.Ptr("Last7Days"),
 		// 				MeterID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 				NetSavings: to.Ptr[float64](7.289315723178081),

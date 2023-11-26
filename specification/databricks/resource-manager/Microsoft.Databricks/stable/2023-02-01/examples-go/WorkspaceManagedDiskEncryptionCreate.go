@@ -64,7 +64,7 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate_createAWorkspaceWithCustomerMan
 	// 			Oid: to.Ptr("22222222-2222-2222-2222-222222222222"),
 	// 			Puid: to.Ptr("33333333"),
 	// 		},
-	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-20T00:10:29.2858439Z"); return t}()),
+	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-20T00:10:29.285Z"); return t}()),
 	// 		DiskEncryptionSetID: to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG/providers/Microsoft.Compute/diskEncryptionSets/myDiskEncryptionSet"),
 	// 		Encryption: &armdatabricks.WorkspacePropertiesEncryption{
 	// 			Entities: &armdatabricks.EncryptionEntitiesDefinition{

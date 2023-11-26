@@ -57,7 +57,7 @@ func ExampleWorkspacesClient_BeginCreateOrUpdate_createAWorkspaceWhichIsReadyFor
 	// 			Oid: to.Ptr("22222222-2222-2222-2222-222222222222"),
 	// 			Puid: to.Ptr("33333333"),
 	// 		},
-	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-20T00:10:29.2858439Z"); return t}()),
+	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-20T00:10:29.285Z"); return t}()),
 	// 		ManagedResourceGroupID: to.Ptr("/subscriptions/subid/resourceGroups/myManagedRG"),
 	// 		ProvisioningState: to.Ptr(armdatabricks.ProvisioningStateSucceeded),
 	// 		StorageAccountIdentity: &armdatabricks.ManagedIdentityConfiguration{

@@ -24,7 +24,7 @@ func ExampleLabsClient_BeginExportResourceUsage() {
 	}
 	poller, err := clientFactory.NewLabsClient().BeginExportResourceUsage(ctx, "resourceGroupName", "{labName}", armdevtestlabs.ExportResourceUsageParameters{
 		BlobStorageAbsoluteSasURI: to.Ptr("https://invalid.blob.core.windows.net/export.blob?sv=2015-07-08&sig={sas}&sp=rcw"),
-		UsageStartDate:            to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-01T00:00:00Z"); return t }()),
+		UsageStartDate:            to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-01T00:00:00.000Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

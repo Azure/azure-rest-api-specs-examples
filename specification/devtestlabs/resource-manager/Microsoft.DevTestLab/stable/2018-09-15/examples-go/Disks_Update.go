@@ -39,7 +39,7 @@ func ExampleDisksClient_Update() {
 	// 		"tagName1": to.Ptr("tagValue1"),
 	// 	},
 	// 	Properties: &armdevtestlabs.DiskProperties{
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-04T20:21:02.0182357+00:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-04T20:21:02.018Z"); return t}()),
 	// 		DiskSizeGiB: to.Ptr[int32](1023),
 	// 		DiskType: to.Ptr(armdevtestlabs.StorageTypeStandard),
 	// 		DiskURI: to.Ptr(""),

@@ -43,7 +43,7 @@ func ExampleFormulasClient_NewListPager() {
 		// 			Properties: &armdevtestlabs.FormulaProperties{
 		// 				Description: to.Ptr("Formula used to create a Linux VM"),
 		// 				Author: to.Ptr("user@contoso.com"),
-		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-22T19:13:35.9922091+00:00"); return t}()),
+		// 				CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-22T19:13:35.992Z"); return t}()),
 		// 				FormulaContent: &armdevtestlabs.LabVirtualMachineCreationParameter{
 		// 					Location: to.Ptr("{location}"),
 		// 					Properties: &armdevtestlabs.LabVirtualMachineCreationParameterProperties{

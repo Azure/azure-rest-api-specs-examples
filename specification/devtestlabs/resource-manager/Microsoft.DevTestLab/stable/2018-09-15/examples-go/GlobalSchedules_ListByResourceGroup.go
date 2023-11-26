@@ -42,7 +42,7 @@ func ExampleGlobalSchedulesClient_NewListByResourceGroupPager() {
 		// 			ID: to.Ptr("/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/schedules/labvmautostart"),
 		// 			Location: to.Ptr("{location}"),
 		// 			Properties: &armdevtestlabs.ScheduleProperties{
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T22:54:54.9335182+00:00"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T22:54:54.933Z"); return t}()),
 		// 				NotificationSettings: &armdevtestlabs.NotificationSettings{
 		// 					Status: to.Ptr(armdevtestlabs.EnableStatusDisabled),
 		// 					TimeInMinutes: to.Ptr[int32](0),

@@ -44,7 +44,7 @@ func ExampleServiceFabricsClient_ListApplicableSchedules() {
 	// 				"tagName1": to.Ptr("tagValue1"),
 	// 			},
 	// 			Properties: &armdevtestlabs.ScheduleProperties{
-	// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T18:40:48.1739018-07:00"); return t}()),
+	// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T01:40:48.173Z"); return t}()),
 	// 				DailyRecurrence: &armdevtestlabs.DayDetails{
 	// 					Time: to.Ptr("{timeOfTheDayTheScheduleWillOccurEveryDay}"),
 	// 				},
@@ -82,7 +82,7 @@ func ExampleServiceFabricsClient_ListApplicableSchedules() {
 	// 					"tagName1": to.Ptr("tagValue1"),
 	// 				},
 	// 				Properties: &armdevtestlabs.ScheduleProperties{
-	// 					CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T18:40:48.1739018-07:00"); return t}()),
+	// 					CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T01:40:48.173Z"); return t}()),
 	// 					DailyRecurrence: &armdevtestlabs.DayDetails{
 	// 						Time: to.Ptr("{timeOfTheDayTheScheduleWillOccurEveryDay}"),
 	// 					},

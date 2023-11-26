@@ -32,9 +32,9 @@ func ExampleResourceClient_ExportDevices() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.JobResponse = armiothub.JobResponse{
 	// 	Type: to.Ptr(armiothub.JobTypeUnknown),
-	// 	EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Thu, 15 Jun 2017 19:20:58 GMT"); return t}()),
+	// 	EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2017-06-15T19:20:58.000Z"); return t}()),
 	// 	JobID: to.Ptr("test"),
-	// 	StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Thu, 15 Jun 2017 19:20:58 GMT"); return t}()),
+	// 	StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2017-06-15T19:20:58.000Z"); return t}()),
 	// 	Status: to.Ptr(armiothub.JobStatusUnknown),
 	// }
 }

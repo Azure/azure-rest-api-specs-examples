@@ -31,10 +31,10 @@ func ExamplePrivateLinkResourcesClient_Get() {
 	// 	Type: to.Ptr("Microsoft.DBforPostgreSQL/serverGroupsv2/privateLinkResources"),
 	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/testcluster/privateLinkResources/plr"),
 	// 	SystemData: &armcosmosforpostgresql.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-01T17:18:19.1234567Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-01T17:18:19.123Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user1"),
 	// 		CreatedByType: to.Ptr(armcosmosforpostgresql.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-02T17:18:19.1234567Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-02T17:18:19.123Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user2"),
 	// 		LastModifiedByType: to.Ptr(armcosmosforpostgresql.CreatedByTypeUser),
 	// 	},

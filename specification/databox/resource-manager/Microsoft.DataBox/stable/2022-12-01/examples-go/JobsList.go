@@ -48,7 +48,7 @@ func ExampleJobsClient_NewListPager() {
 		// 			Properties: &armdatabox.JobProperties{
 		// 				CancellationReason: to.Ptr("Old job which is still in ordered state cancelled by the service"),
 		// 				DeliveryInfo: &armdatabox.JobDeliveryInfo{
-		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 				DeliveryType: to.Ptr(armdatabox.JobDeliveryTypeNonScheduled),
 		// 				IsCancellable: to.Ptr(false),
@@ -56,7 +56,7 @@ func ExampleJobsClient_NewListPager() {
 		// 				IsDeletable: to.Ptr(true),
 		// 				IsPrepareToShipEnabled: to.Ptr(false),
 		// 				IsShippingAddressEditable: to.Ptr(false),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-30T14:44:39.77401+05:30"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-30T09:14:39.774Z"); return t}()),
 		// 				Status: to.Ptr(armdatabox.StageNameCancelled),
 		// 				TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
 		// 			},
@@ -77,7 +77,7 @@ func ExampleJobsClient_NewListPager() {
 		// 			Properties: &armdatabox.JobProperties{
 		// 				CancellationReason: to.Ptr("Old job which is still in ordered state cancelled by the service"),
 		// 				DeliveryInfo: &armdatabox.JobDeliveryInfo{
-		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 				DeliveryType: to.Ptr(armdatabox.JobDeliveryTypeNonScheduled),
 		// 				IsCancellable: to.Ptr(false),
@@ -85,7 +85,7 @@ func ExampleJobsClient_NewListPager() {
 		// 				IsDeletable: to.Ptr(true),
 		// 				IsPrepareToShipEnabled: to.Ptr(false),
 		// 				IsShippingAddressEditable: to.Ptr(false),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-10T18:03:22.2578238+05:30"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-10T12:33:22.257Z"); return t}()),
 		// 				Status: to.Ptr(armdatabox.StageNameCancelled),
 		// 				TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
 		// 			},

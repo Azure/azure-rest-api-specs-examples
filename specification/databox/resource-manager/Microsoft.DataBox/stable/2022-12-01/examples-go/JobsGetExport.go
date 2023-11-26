@@ -43,7 +43,7 @@ func ExampleJobsClient_Get_jobsGetExport() {
 	// 	Properties: &armdatabox.JobProperties{
 	// 		CancellationReason: to.Ptr("CancelTest"),
 	// 		DeliveryInfo: &armdatabox.JobDeliveryInfo{
-	// 			ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+	// 			ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		},
 	// 		DeliveryType: to.Ptr(armdatabox.JobDeliveryTypeNonScheduled),
 	// 		IsCancellable: to.Ptr(false),
@@ -51,7 +51,7 @@ func ExampleJobsClient_Get_jobsGetExport() {
 	// 		IsDeletable: to.Ptr(true),
 	// 		IsPrepareToShipEnabled: to.Ptr(true),
 	// 		IsShippingAddressEditable: to.Ptr(false),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T10:49:08.7195419+05:30"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T05:19:08.719Z"); return t}()),
 	// 		Status: to.Ptr(armdatabox.StageNameCancelled),
 	// 		TransferType: to.Ptr(armdatabox.TransferTypeExportFromAzure),
 	// 		Details: &armdatabox.JobDetails{
@@ -100,13 +100,13 @@ func ExampleJobsClient_Get_jobsGetExport() {
 	// 					DisplayName: to.Ptr("Ordered"),
 	// 					StageName: to.Ptr(armdatabox.StageNameDeviceOrdered),
 	// 					StageStatus: to.Ptr(armdatabox.StageStatusSucceeded),
-	// 					StageTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T10:49:12.7675644+05:30"); return t}()),
+	// 					StageTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T05:19:12.767Z"); return t}()),
 	// 				},
 	// 				{
 	// 					DisplayName: to.Ptr("Canceled"),
 	// 					StageName: to.Ptr(armdatabox.StageNameCancelled),
 	// 					StageStatus: to.Ptr(armdatabox.StageStatusSucceeded),
-	// 					StageTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T10:49:57.2572438+05:30"); return t}()),
+	// 					StageTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T05:19:57.257Z"); return t}()),
 	// 			}},
 	// 			KeyEncryptionKey: &armdatabox.KeyEncryptionKey{
 	// 				KekType: to.Ptr(armdatabox.KekTypeMicrosoftManaged),

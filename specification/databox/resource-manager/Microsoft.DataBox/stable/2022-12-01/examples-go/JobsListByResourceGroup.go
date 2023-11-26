@@ -49,7 +49,7 @@ func ExampleJobsClient_NewListByResourceGroupPager() {
 		// 			ID: to.Ptr("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.DataBox/jobs/TestJobName1"),
 		// 			Properties: &armdatabox.JobProperties{
 		// 				DeliveryInfo: &armdatabox.JobDeliveryInfo{
-		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 				DeliveryType: to.Ptr(armdatabox.JobDeliveryTypeNonScheduled),
 		// 				IsCancellable: to.Ptr(true),
@@ -57,7 +57,7 @@ func ExampleJobsClient_NewListByResourceGroupPager() {
 		// 				IsDeletable: to.Ptr(false),
 		// 				IsPrepareToShipEnabled: to.Ptr(true),
 		// 				IsShippingAddressEditable: to.Ptr(true),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-03T11:55:54.463792+05:30"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-03T06:25:54.463Z"); return t}()),
 		// 				Status: to.Ptr(armdatabox.StageNameDeviceOrdered),
 		// 				TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
 		// 			},
@@ -77,7 +77,7 @@ func ExampleJobsClient_NewListByResourceGroupPager() {
 		// 			ID: to.Ptr("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.DataBox/jobs/TestJobName2"),
 		// 			Properties: &armdatabox.JobProperties{
 		// 				DeliveryInfo: &armdatabox.JobDeliveryInfo{
-		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+		// 					ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 				DeliveryType: to.Ptr(armdatabox.JobDeliveryTypeNonScheduled),
 		// 				IsCancellable: to.Ptr(true),
@@ -85,7 +85,7 @@ func ExampleJobsClient_NewListByResourceGroupPager() {
 		// 				IsDeletable: to.Ptr(false),
 		// 				IsPrepareToShipEnabled: to.Ptr(true),
 		// 				IsShippingAddressEditable: to.Ptr(true),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T10:50:36.3341513+05:30"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-07T05:20:36.334Z"); return t}()),
 		// 				Status: to.Ptr(armdatabox.StageNameDeviceOrdered),
 		// 				TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
 		// 			},

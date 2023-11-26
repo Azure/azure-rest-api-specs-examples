@@ -80,14 +80,14 @@ func ExampleJobsClient_BeginCreate_jobsCreateDevicePassword() {
 	// 	ID: to.Ptr("/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.DataBox/jobs/TestJobName1"),
 	// 	Properties: &armdatabox.JobProperties{
 	// 		DeliveryInfo: &armdatabox.JobDeliveryInfo{
-	// 			ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T05:30:00+05:30"); return t}()),
+	// 			ScheduledDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		},
 	// 		DeliveryType: to.Ptr(armdatabox.JobDeliveryTypeNonScheduled),
 	// 		IsCancellable: to.Ptr(true),
 	// 		IsCancellableWithoutFee: to.Ptr(true),
 	// 		IsDeletable: to.Ptr(false),
 	// 		IsShippingAddressEditable: to.Ptr(true),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-21T14:49:49.0027611+05:30"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-21T09:19:49.002Z"); return t}()),
 	// 		Status: to.Ptr(armdatabox.StageNameDeviceOrdered),
 	// 		TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
 	// 		Details: &armdatabox.JobDetails{
@@ -131,7 +131,7 @@ func ExampleJobsClient_BeginCreate_jobsCreateDevicePassword() {
 	// 						DisplayName: to.Ptr("Ordered"),
 	// 						StageName: to.Ptr(armdatabox.StageNameDeviceOrdered),
 	// 						StageStatus: to.Ptr(armdatabox.StageStatusSucceeded),
-	// 						StageTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-21T14:49:52.3995743+05:30"); return t}()),
+	// 						StageTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-21T09:19:52.399Z"); return t}()),
 	// 					},
 	// 					{
 	// 						DisplayName: to.Ptr("Processed"),

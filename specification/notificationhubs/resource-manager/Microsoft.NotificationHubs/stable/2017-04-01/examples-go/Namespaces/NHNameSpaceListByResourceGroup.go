@@ -46,11 +46,11 @@ func ExampleNamespacesClient_NewListPager() {
 		// 				"tag2": to.Ptr("value2"),
 		// 			},
 		// 			Properties: &armnotificationhubs.NamespaceProperties{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:36.76Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:36.760Z"); return t}()),
 		// 				MetricID: to.Ptr("29cfa613-cbbc-4512-b1d6-1b3a92c7fa40:sdk-namespace-2924"),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				ServiceBusEndpoint: to.Ptr("https://sdk-Namespace-2924.servicebus.windows-int.net:443/"),
-		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:59.35Z"); return t}()),
+		// 				UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T22:26:59.350Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

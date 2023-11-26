@@ -50,7 +50,7 @@ func ExampleNamespacesClient_Patch() {
 	// 		"tag4": to.Ptr("value4"),
 	// 	},
 	// 	Properties: &armnotificationhubs.NamespaceProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T23:07:58.17Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-25T23:07:58.170Z"); return t}()),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		ServiceBusEndpoint: to.Ptr("https://sdk-Namespace-3285.servicebus.windows-int.net:443/"),
 	// 	},

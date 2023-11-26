@@ -37,7 +37,7 @@ func ExampleWorkflowRunActionRepetitionsRequestHistoriesClient_NewListPager() {
 		// 			Type: to.Ptr("Microsoft.Logic/workflows/runs/actions/requestHistories"),
 		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/test-resource-group/providers/Microsoft.Logic/workflows/test-workflow/runs/08586611142736787787412824395CU21/actions/HTTP_Webhook/requestHistories/08586611142732800686"),
 		// 			Properties: &armlogic.RequestHistoryProperties{
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-25T18:36:52.1863033Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-25T18:36:52.186Z"); return t}()),
 		// 				Response: &armlogic.Response{
 		// 					BodyLink: &armlogic.ContentLink{
 		// 						ContentHash: &armlogic.ContentHash{
@@ -58,7 +58,7 @@ func ExampleWorkflowRunActionRepetitionsRequestHistoriesClient_NewListPager() {
 		// 					},
 		// 					StatusCode: to.Ptr[int32](302),
 		// 				},
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-25T18:36:51.9206732Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-25T18:36:51.920Z"); return t}()),
 		// 				Request: &armlogic.Request{
 		// 					Method: to.Ptr("GET"),
 		// 					Headers: map[string]any{

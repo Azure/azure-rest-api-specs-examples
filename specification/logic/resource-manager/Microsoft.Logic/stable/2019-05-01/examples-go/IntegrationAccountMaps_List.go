@@ -39,7 +39,7 @@ func ExampleIntegrationAccountMapsClient_NewListPager() {
 		// 			Type: to.Ptr("Microsoft.Logic/integrationAccounts/maps"),
 		// 			ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/testIntegrationAccount/maps/IntegrationAccountMap9943"),
 		// 			Properties: &armlogic.IntegrationAccountMapProperties{
-		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T18:34:32.390576Z"); return t}()),
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T18:34:32.390Z"); return t}()),
 		// 				ContentLink: &armlogic.ContentLink{
 		// 					ContentHash: &armlogic.ContentHash{
 		// 						Algorithm: to.Ptr("md5"),
@@ -49,7 +49,7 @@ func ExampleIntegrationAccountMapsClient_NewListPager() {
 		// 					ContentVersion: to.Ptr("\"0x8D45CE3C6D23B4B\""),
 		// 					URI: to.Ptr("<Uri>"),
 		// 				},
-		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T18:34:32.3902373Z"); return t}()),
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T18:34:32.390Z"); return t}()),
 		// 				MapType: to.Ptr(armlogic.MapTypeXslt),
 		// 				Metadata: map[string]any{
 		// 				},

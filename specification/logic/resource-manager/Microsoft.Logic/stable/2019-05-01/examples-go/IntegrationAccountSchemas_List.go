@@ -39,7 +39,7 @@ func ExampleIntegrationAccountSchemasClient_NewListPager() {
 		// 			Type: to.Ptr("Microsoft.Logic/integrationAccounts/schemas"),
 		// 			ID: to.Ptr("/subscriptions/<subscriptionId>/resourceGroups/testResourceGroup/providers/Microsoft.Logic/integrationAccounts/<integrationAccountName>/schemas/IntegrationAccountSchema3944"),
 		// 			Properties: &armlogic.IntegrationAccountSchemaProperties{
-		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T01:34:16.7098626Z"); return t}()),
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T01:34:16.709Z"); return t}()),
 		// 				ContentLink: &armlogic.ContentLink{
 		// 					ContentHash: &armlogic.ContentHash{
 		// 						Algorithm: to.Ptr("md5"),
@@ -49,7 +49,7 @@ func ExampleIntegrationAccountSchemasClient_NewListPager() {
 		// 					ContentVersion: to.Ptr("\"0x8D45C553EECEB76\""),
 		// 					URI: to.Ptr("<contentLinkUri>"),
 		// 				},
-		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T01:34:16.7088958Z"); return t}()),
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-24T01:34:16.708Z"); return t}()),
 		// 				DocumentName: to.Ptr("OrderFile"),
 		// 				Metadata: map[string]any{
 		// 				},

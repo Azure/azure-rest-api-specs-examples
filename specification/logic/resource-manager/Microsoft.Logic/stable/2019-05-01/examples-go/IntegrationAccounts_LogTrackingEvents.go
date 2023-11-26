@@ -30,7 +30,7 @@ func ExampleIntegrationAccountsClient_LogTrackingEvents() {
 					Message: to.Ptr("Some error occurred"),
 				},
 				EventLevel: to.Ptr(armlogic.EventLevelInformational),
-				EventTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-08-05T01:54:49.505567Z"); return t }()),
+				EventTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-08-05T01:54:49.505Z"); return t }()),
 				Record: map[string]any{
 					"agreementProperties": map[string]any{
 						"agreementName":       "testAgreement",

@@ -38,12 +38,12 @@ func ExampleIntegrationAccountSessionsClient_CreateOrUpdate() {
 	// 	Type: to.Ptr("Microsoft.Logic/integrationAccounts/sessions"),
 	// 	ID: to.Ptr("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/testrg123/providers/Microsoft.Logic/integrationAccounts/testia123/sessions/testsession123-ICN"),
 	// 	Properties: &armlogic.IntegrationAccountSessionProperties{
-	// 		ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-21T20:41:35.9796534Z"); return t}()),
+	// 		ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-21T20:41:35.979Z"); return t}()),
 	// 		Content: map[string]any{
 	// 			"controlNumber": "1234",
 	// 			"controlNumberChangedTime": "2017-02-21T22:30:11.9923759Z",
 	// 		},
-	// 		CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-21T20:41:35.9789189Z"); return t}()),
+	// 		CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-21T20:41:35.978Z"); return t}()),
 	// 	},
 	// }
 }

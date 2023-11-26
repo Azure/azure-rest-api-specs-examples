@@ -24,7 +24,7 @@ func ExampleWorkflowsClient_ListCallbackURL() {
 	}
 	res, err := clientFactory.NewWorkflowsClient().ListCallbackURL(ctx, "testResourceGroup", "testWorkflow", armlogic.GetCallbackURLParameters{
 		KeyType:  to.Ptr(armlogic.KeyTypePrimary),
-		NotAfter: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-19T16:00:00Z"); return t }()),
+		NotAfter: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-19T16:00:00.000Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)

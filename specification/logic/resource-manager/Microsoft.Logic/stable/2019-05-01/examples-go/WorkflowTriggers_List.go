@@ -39,8 +39,8 @@ func ExampleWorkflowTriggersClient_NewListPager() {
 		// 			Name: to.Ptr("manual"),
 		// 			Type: to.Ptr("Microsoft.Logic/workflows/triggers"),
 		// 			Properties: &armlogic.WorkflowTriggerProperties{
-		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T18:47:49.5288666Z"); return t}()),
-		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T17:32:30.2496336Z"); return t}()),
+		// 				ChangedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T18:47:49.528Z"); return t}()),
+		// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-10T17:32:30.249Z"); return t}()),
 		// 				ProvisioningState: to.Ptr(armlogic.WorkflowTriggerProvisioningStateSucceeded),
 		// 				State: to.Ptr(armlogic.WorkflowStateEnabled),
 		// 				Workflow: &armlogic.ResourceReference{

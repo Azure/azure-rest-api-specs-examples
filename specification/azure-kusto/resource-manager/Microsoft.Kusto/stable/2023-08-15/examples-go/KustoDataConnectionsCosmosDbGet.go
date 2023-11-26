@@ -41,7 +41,7 @@ func ExampleDataConnectionsClient_Get_kustoDataConnectionsCosmosDbGet() {
 	// 			ManagedIdentityResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-123456789098/resourceGroups/kustorptest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/managedidentityTest1"),
 	// 			MappingRuleName: to.Ptr("TestMapping"),
 	// 			ProvisioningState: to.Ptr(armkusto.ProvisioningStateSucceeded),
-	// 			RetrievalStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-29T12:00:00.6554616Z"); return t}()),
+	// 			RetrievalStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-29T12:00:00.655Z"); return t}()),
 	// 			TableName: to.Ptr("TestTable"),
 	// 		},
 	// 	},

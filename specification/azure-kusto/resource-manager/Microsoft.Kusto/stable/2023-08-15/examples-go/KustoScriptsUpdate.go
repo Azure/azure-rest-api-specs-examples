@@ -48,10 +48,10 @@ func ExampleScriptsClient_BeginUpdate() {
 	// 		ScriptURL: to.Ptr("https://mysa.blob.core.windows.net/container/script.txt"),
 	// 	},
 	// 	SystemData: &armkusto.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-29T15:06:54.2757906Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-29T15:06:54.275Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armkusto.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-01T17:16:24.3644126Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-01T17:16:24.364Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user2@microsoft.com"),
 	// 		LastModifiedByType: to.Ptr(armkusto.CreatedByTypeUser),
 	// 	},

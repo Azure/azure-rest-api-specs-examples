@@ -45,7 +45,7 @@ func ExamplePolicyTrackedResourcesClient_NewListQueryResultsForSubscriptionPager
 		// 		{
 		// 			CreatedBy: &armpolicyinsights.TrackedResourceModificationDetails{
 		// 				DeploymentID: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Resources/deployments/deploymentName"),
-		// 				DeploymentTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-09T00:00:00.0000000Z"); return t}()),
+		// 				DeploymentTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-09T00:00:00.000Z"); return t}()),
 		// 				PolicyDetails: &armpolicyinsights.PolicyDetails{
 		// 					PolicyAssignmentID: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Authorization/policyAssignments/createdByPolicyAssignment"),
 		// 					PolicyAssignmentScope: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/"),
@@ -54,14 +54,14 @@ func ExamplePolicyTrackedResourcesClient_NewListQueryResultsForSubscriptionPager
 		// 			},
 		// 			LastModifiedBy: &armpolicyinsights.TrackedResourceModificationDetails{
 		// 				DeploymentID: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Resources/deployments/deploymentName"),
-		// 				DeploymentTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-09T00:00:00.0000000Z"); return t}()),
+		// 				DeploymentTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-09T00:00:00.000Z"); return t}()),
 		// 				PolicyDetails: &armpolicyinsights.PolicyDetails{
 		// 					PolicyAssignmentID: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Authorization/policyAssignments/lastModifiedByPolicyAssignment"),
 		// 					PolicyAssignmentScope: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/"),
 		// 					PolicyDefinitionID: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Authorization/policyDefinitions/lastModifiedByPolicyDefinition"),
 		// 				},
 		// 			},
-		// 			LastUpdateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-09T20:40:17.3585243Z"); return t}()),
+		// 			LastUpdateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-09T20:40:17.358Z"); return t}()),
 		// 			PolicyDetails: &armpolicyinsights.PolicyDetails{
 		// 				PolicyAssignmentDisplayName: to.Ptr("My Policy Assignment Display name"),
 		// 				PolicyAssignmentID: to.Ptr("/subscriptions/fff8dfdb-fff3-fff0-fff4-fffdcbe6b2ef/resourceGroups/myResourceGroup/providers/Microsoft.Authorization/policyAssignments/myPolicyAssignment"),

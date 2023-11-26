@@ -67,7 +67,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForPolicySetDefinitionPager_qu
 		// 			ResourceType: to.Ptr("/Microsoft.ClassicCompute/domainNames/serviceCertificates"),
 		// 			SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
 		// 			TenantID: to.Ptr("fff988bf-fff1-ffff-fffb-fffcd011db47"),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-08T19:49:32.9539023Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-08T19:49:32.953Z"); return t}()),
 		// 		},
 		// 		{
 		// 			ODataContext: to.Ptr("https://management.azure.com/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/providers/Microsoft.Authorization/policySetDefinitions/3e3807c1-65c9-49e0-a406-82d8ae3e338c/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity"),
@@ -93,7 +93,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForPolicySetDefinitionPager_qu
 		// 			ResourceType: to.Ptr("/Microsoft.ClassicCompute/domainNames/serviceCertificates"),
 		// 			SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
 		// 			TenantID: to.Ptr("fff988bf-fff1-ffff-fffb-fffcd011db47"),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-08T19:49:32.9498186Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-08T19:49:32.949Z"); return t}()),
 		// 	}},
 		// }
 	}

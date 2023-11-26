@@ -65,7 +65,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForResourceGroupLevelPolicyAss
 		// 				ResourceTags: to.Ptr("tbd"),
 		// 				ResourceType: to.Ptr("/Microsoft.Security/policies"),
 		// 				SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-13T00:38:50Z"); return t}()),
+		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-13T00:38:50.000Z"); return t}()),
 		// 			},
 		// 			{
 		// 				ODataContext: to.Ptr("https://management.azure.com/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/resourceGroups/myResourceGroup/providers/Microsoft.Authorization/policyAssignments/myPolicyAssignment/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity"),
@@ -88,7 +88,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForResourceGroupLevelPolicyAss
 		// 					ResourceTags: to.Ptr("tbd"),
 		// 					ResourceType: to.Ptr("/Microsoft.Authorization/policyAssignments"),
 		// 					SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-13T00:38:50Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-13T00:38:50.000Z"); return t}()),
 		// 			}},
 		// 		}
 	}

@@ -55,7 +55,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForResourcePager_queryComponen
 		// 					PolicyDefinitionAction: to.Ptr("audit"),
 		// 					PrincipalOid: to.Ptr("0d81b461-6bb0-4909-a102-d51803a7d275"),
 		// 					TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T17:45:23.0367Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T17:45:23.036Z"); return t}()),
 		// 				},
 		// 				{
 		// 					Name: to.Ptr("cert-RSA-cert-2"),
@@ -64,7 +64,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForResourcePager_queryComponen
 		// 					PolicyDefinitionAction: to.Ptr("audit"),
 		// 					PrincipalOid: to.Ptr("0d81b461-6bb0-4909-a102-d51803a7d275"),
 		// 					TenantID: to.Ptr("72f988bf-86f1-41af-91ab-2d7cd011db47"),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T17:45:22.7682778Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T17:45:22.768Z"); return t}()),
 		// 			}},
 		// 			EffectiveParameters: to.Ptr(""),
 		// 			IsCompliant: to.Ptr(false),
@@ -92,7 +92,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForResourcePager_queryComponen
 		// 			ResourceType: to.Ptr("Microsoft.KeyVault/vaults"),
 		// 			SubscriptionID: to.Ptr("e78961ba-36fe-4739-9212-e3031b4c8db7"),
 		// 			TenantID: to.Ptr(""),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T19:42:08.3252921Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-21T19:42:08.325Z"); return t}()),
 		// 	}},
 		// }
 	}

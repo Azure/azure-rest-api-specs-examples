@@ -26,7 +26,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager_filterAnd
 		Filter:    to.Ptr("PolicyDefinitionAction eq 'deny'"),
 		OrderBy:   to.Ptr("NumDeniedResources desc"),
 		Select:    nil,
-		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t }()),
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00.000Z"); return t }()),
 		To:        nil,
 		Apply:     to.Ptr("groupby((PolicyAssignmentId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicyDefinitionId), aggregate($count as NumDeniedResources))"),
 		SkipToken: nil,

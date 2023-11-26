@@ -26,8 +26,8 @@ func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager_timeRange
 		Filter:    nil,
 		OrderBy:   to.Ptr("Timestamp desc, PolicyAssignmentId asc, SubscriptionId asc, ResourceGroup asc, ResourceId"),
 		Select:    to.Ptr("Timestamp, PolicyAssignmentId, PolicyDefinitionId, SubscriptionId, ResourceGroup, ResourceId"),
-		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T18:00:00Z"); return t }()),
-		To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-06T18:00:00Z"); return t }()),
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T18:00:00.000Z"); return t }()),
+		To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-06T18:00:00.000Z"); return t }()),
 		Apply:     nil,
 		SkipToken: nil,
 		Expand:    nil,
@@ -53,7 +53,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager_timeRange
 		// 			ResourceGroup: to.Ptr("myResourceGroup"),
 		// 			ResourceID: to.Ptr("/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/resourcegroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myDomain"),
 		// 			SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T22:34:02.3475017Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T22:34:02.347Z"); return t}()),
 		// 		},
 		// 		{
 		// 			ODataContext: to.Ptr("https://management.azure.com/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/providers/Microsoft.PolicyInsights/policyEvents/$metadata#default/$entity"),
@@ -62,7 +62,7 @@ func ExamplePolicyEventsClient_NewListQueryResultsForSubscriptionPager_timeRange
 		// 			ResourceGroup: to.Ptr("myResourceGroup"),
 		// 			ResourceID: to.Ptr("/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/resourcegroups/myResourceGroup/providers/Microsoft.ClassicCompute/domainNames/myDomain"),
 		// 			SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T22:34:01.6135357Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-05T22:34:01.613Z"); return t}()),
 		// 	}},
 		// }
 	}

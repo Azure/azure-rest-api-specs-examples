@@ -26,8 +26,8 @@ func ExamplePolicyStatesClient_NewListQueryResultsForSubscriptionPager_timeRange
 		Filter:    nil,
 		OrderBy:   to.Ptr("Timestamp desc, PolicyAssignmentId asc, SubscriptionId asc, ResourceGroup asc, ResourceId"),
 		Select:    to.Ptr("Timestamp, PolicyAssignmentId, PolicyDefinitionId, SubscriptionId, ResourceGroup, ResourceId, policyDefinitionGroupNames"),
-		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00Z"); return t }()),
-		To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T18:00:00Z"); return t }()),
+		From:      to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-05T18:00:00.000Z"); return t }()),
+		To:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T18:00:00.000Z"); return t }()),
 		Apply:     nil,
 		SkipToken: nil,
 		Expand:    nil,
@@ -55,7 +55,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForSubscriptionPager_timeRange
 		// 				ResourceGroup: to.Ptr("myrg1"),
 		// 				ResourceID: to.Ptr("/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/mysa1"),
 		// 				SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T17:58:00Z"); return t}()),
+		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T17:58:00.000Z"); return t}()),
 		// 			},
 		// 			{
 		// 				ODataContext: to.Ptr("https://management.azure.com/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity"),
@@ -66,7 +66,7 @@ func ExamplePolicyStatesClient_NewListQueryResultsForSubscriptionPager_timeRange
 		// 				ResourceGroup: to.Ptr("myrg2"),
 		// 				ResourceID: to.Ptr("/subscriptions/fffedd8f-ffff-fffd-fffd-fffed2f84852/resourceGroups/myrg2/providers/Microsoft.Storage/storageAccounts/mysa2"),
 		// 				SubscriptionID: to.Ptr("fffedd8f-ffff-fffd-fffd-fffed2f84852"),
-		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T17:58:00Z"); return t}()),
+		// 				Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-06T17:58:00.000Z"); return t}()),
 		// 		}},
 		// 	}
 	}

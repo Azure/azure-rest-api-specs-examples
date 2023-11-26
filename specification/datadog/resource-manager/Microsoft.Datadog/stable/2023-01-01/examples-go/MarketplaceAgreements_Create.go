@@ -37,7 +37,7 @@ func ExampleMarketplaceAgreementsClient_CreateOrUpdate() {
 	// 		PrivacyPolicyLink: to.Ptr("test.privacyPolicyLink1"),
 	// 		Product: to.Ptr("offid1"),
 	// 		Publisher: to.Ptr("pubid1"),
-	// 		RetrieveDatetime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T11:33:07.12132Z"); return t}()),
+	// 		RetrieveDatetime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-15T11:33:07.121Z"); return t}()),
 	// 		Signature: to.Ptr("ASDFSDAFWEFASDGWERLWER"),
 	// 	},
 	// }

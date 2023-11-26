@@ -34,12 +34,12 @@ func ExampleProviderShareSubscriptionsClient_GetByShare() {
 	// 		ConsumerEmail: to.Ptr("john.smith@microsoft.com"),
 	// 		ConsumerName: to.Ptr("John Smith"),
 	// 		ConsumerTenantName: to.Ptr("Microsoft"),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-13T08:52:42.6224087Z"); return t}()),
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-26T22:33:24.5785265Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-13T08:52:42.622Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-26T22:33:24.578Z"); return t}()),
 	// 		ProviderEmail: to.Ptr("john.smith@microsoft.com"),
 	// 		ProviderName: to.Ptr("John Smith"),
 	// 		ShareSubscriptionStatus: to.Ptr(armdatashare.ShareSubscriptionStatusActive),
-	// 		SharedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-13T08:45:40.9005877Z"); return t}()),
+	// 		SharedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-13T08:45:40.900Z"); return t}()),
 	// 	},
 	// }
 }

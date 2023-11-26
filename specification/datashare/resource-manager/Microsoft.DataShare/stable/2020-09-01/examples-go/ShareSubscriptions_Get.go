@@ -31,8 +31,8 @@ func ExampleShareSubscriptionsClient_Get() {
 	// 	Type: to.Ptr("Microsoft.DataShare/accounts/shareSubscriptions"),
 	// 	ID: to.Ptr("/subscriptions/433a8dfd-e5d5-4e77-ad86-90acdc75eb1a/resourceGroups/SampleResourceGroup/providers/Microsoft.DataShare/accounts/Account1/sharesubscriptions/ShareSubscription1"),
 	// 	Properties: &armdatashare.ShareSubscriptionProperties{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-17T22:32:36.8185016Z"); return t}()),
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-26T22:33:24.5785265Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-01-17T22:32:36.818Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-26T22:33:24.578Z"); return t}()),
 	// 		InvitationID: to.Ptr("4256e2cf-0f82-4865-961b-12f83333f487"),
 	// 		ProviderEmail: to.Ptr("jack.rose@microsoft.com"),
 	// 		ProviderName: to.Ptr("Jack Rose"),

@@ -74,7 +74,7 @@ func ExampleBackupPoliciesClient_NewListPager() {
 		// 													DaysOfTheWeek: []*armdataprotection.DayOfWeek{
 		// 														to.Ptr(armdataprotection.DayOfWeekSunday)},
 		// 														ScheduleTimes: []*time.Time{
-		// 															to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-03-01T13:00:00Z"); return t}())},
+		// 															to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-03-01T13:00:00.000Z"); return t}())},
 		// 													}},
 		// 													IsDefault: to.Ptr(false),
 		// 													TagInfo: &armdataprotection.RetentionTag{

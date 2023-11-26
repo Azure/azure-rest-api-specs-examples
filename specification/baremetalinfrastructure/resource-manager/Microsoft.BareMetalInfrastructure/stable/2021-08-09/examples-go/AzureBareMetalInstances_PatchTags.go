@@ -68,10 +68,10 @@ func ExampleAzureBareMetalInstancesClient_Update_updateTagsFieldOfAnAzureBareMet
 	// 		},
 	// 	},
 	// 	SystemData: &armbaremetalinfrastructure.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-20T23:10:22.6828621Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-20T23:10:22.682Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armbaremetalinfrastructure.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-21T08:01:22.0000000Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-07-21T08:01:22.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user@microsoft.com"),
 	// 		LastModifiedByType: to.Ptr(armbaremetalinfrastructure.CreatedByTypeUser),
 	// 	},

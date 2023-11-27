@@ -49,7 +49,7 @@ func ExampleReservationsDetailsClient_NewListByReservationOrderPager() {
 		// 				ReservedHours: to.Ptr[float64](24),
 		// 				SKUName: to.Ptr("Standard_D2_v2"),
 		// 				TotalReservedQuantity: to.Ptr[float64](1),
-		// 				UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-29T00:00:00Z"); return t}()),
+		// 				UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-29T00:00:00.000Z"); return t}()),
 		// 				UsedHours: to.Ptr[float64](24),
 		// 			},
 		// 	}},

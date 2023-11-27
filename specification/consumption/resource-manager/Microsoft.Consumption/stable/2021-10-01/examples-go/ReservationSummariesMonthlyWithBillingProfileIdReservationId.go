@@ -50,7 +50,7 @@ func ExampleReservationsSummariesClient_NewListPager_reservationSummariesMonthly
 		// 				ReservationOrderID: to.Ptr("9f39ba10-794f-4dcb-8f4b-8d0cb47c27dc"),
 		// 				ReservedHours: to.Ptr[float64](720),
 		// 				SKUName: to.Ptr("Standard_B1s"),
-		// 				UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-01T00:00:00-07:00"); return t}()),
+		// 				UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-09-01T07:00:00.000Z"); return t}()),
 		// 				UsedHours: to.Ptr[float64](0),
 		// 			},
 		// 	}},

@@ -53,7 +53,7 @@ func ExampleReservationsSummariesClient_NewListByReservationOrderAndReservationP
 		// 				ReservedHours: to.Ptr[float64](0),
 		// 				SKUName: to.Ptr("Standard_D8s_v3"),
 		// 				TotalReservedQuantity: to.Ptr[float64](155),
-		// 				UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00Z"); return t}()),
+		// 				UsageDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-01T00:00:00.000Z"); return t}()),
 		// 				UsedHours: to.Ptr[float64](0),
 		// 				UsedQuantity: to.Ptr[float64](0),
 		// 				UtilizedPercentage: to.Ptr[float64](0),

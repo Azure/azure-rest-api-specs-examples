@@ -65,8 +65,8 @@ func ExampleMarketplacesClient_NewListPager_subscriptionMarketplacesList() {
 		// 				SubscriptionGUID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 		// 				SubscriptionName: to.Ptr("azure subscription"),
 		// 				UnitOfMeasure: to.Ptr("10 Hours"),
-		// 				UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-13T23:59:59Z"); return t}()),
-		// 				UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-13T00:00:00Z"); return t}()),
+		// 				UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-13T23:59:59.000Z"); return t}()),
+		// 				UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-02-13T00:00:00.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

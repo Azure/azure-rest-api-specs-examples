@@ -44,8 +44,8 @@ func ExampleLogAnalyticsClient_GetWafLogAnalyticsRankings() {
 	// 						Value: to.Ptr[int64](1268),
 	// 				}},
 	// 		}},
-	// 		DateTimeBegin: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T14:49:27.554+08:00"); return t}()),
-	// 		DateTimeEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T17:49:27.554+08:00"); return t}()),
+	// 		DateTimeBegin: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T06:49:27.554Z"); return t}()),
+	// 		DateTimeEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-04T09:49:27.554Z"); return t}()),
 	// 		Groups: []*string{
 	// 			to.Ptr("ruleId")},
 	// 		}

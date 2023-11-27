@@ -13,16 +13,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this DataShareConsumerInvitationResource
-DataShareConsumerInvitationCollection collection = tenantResource.GetDataShareConsumerInvitations();
-
-// invoke the operation
+// this example assumes you already have this DataShareConsumerInvitationResource created on azure
+// for more information of creating DataShareConsumerInvitationResource, please refer to the document of DataShareConsumerInvitationResource
 AzureLocation location = new AzureLocation("East US 2");
 Guid invitationId = Guid.Parse("dfbbc788-19eb-4607-a5a1-c74181bfff03");
-bool result = await collection.ExistsAsync(location, invitationId);
+ResourceIdentifier dataShareConsumerInvitationResourceId = DataShareConsumerInvitationResource.CreateResourceIdentifier(location, invitationId);
+DataShareConsumerInvitationResource dataShareConsumerInvitation = client.GetDataShareConsumerInvitationResource(dataShareConsumerInvitationResourceId);
 
-Console.WriteLine($"Succeeded: {result}");
+// invoke the operation
+DataShareConsumerInvitationResource result = await dataShareConsumerInvitation.GetAsync();
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataShareConsumerInvitationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

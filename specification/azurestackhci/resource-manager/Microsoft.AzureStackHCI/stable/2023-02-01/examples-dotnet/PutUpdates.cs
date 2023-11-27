@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HciClusterResource created on azure
-// for more information of creating HciClusterResource, please refer to the document of HciClusterResource
+// this example assumes you already have this UpdateResource created on azure
+// for more information of creating UpdateResource, please refer to the document of UpdateResource
 string subscriptionId = "b8d594e5-51f3-4c11-9c54-a7771b81c712";
 string resourceGroupName = "testrg";
 string clusterName = "testcluster";
-ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
-
-// get the collection of this UpdateResource
-UpdateCollection collection = hciCluster.GetUpdates();
+string updateName = "Microsoft4.2203.2.32";
+ResourceIdentifier updateResourceId = UpdateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, updateName);
+UpdateResource update = client.GetUpdateResource(updateResourceId);
 
 // invoke the operation
-string updateName = "Microsoft4.2203.2.32";
 UpdateData data = new UpdateData()
 {
     InstalledOn = DateTimeOffset.Parse("2022-04-06T14:08:18.254Z"),
@@ -54,7 +51,7 @@ UpdateData data = new UpdateData()
     ProgressPercentage = 0,
     NotifyMessage = "Brief message with instructions for updates of AvailabilityType Notify",
 };
-ArmOperation<UpdateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateName, data);
+ArmOperation<UpdateResource> lro = await update.UpdateAsync(WaitUntil.Completed, data);
 UpdateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

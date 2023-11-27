@@ -8,10 +8,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5c9459305484e0456b4a922e3d31a61e2ddd3c99/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/TriggerRuns_QueryByFactory.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/69ece3818b8b0929b43a07c3fe25716427734882/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/TriggerRuns_QueryByFactory.json
 func ExampleTriggerRunsClient_QueryByFactory() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -30,8 +30,8 @@ func ExampleTriggerRunsClient_QueryByFactory() {
 				Values: []*string{
 					to.Ptr("exampleTrigger")},
 			}},
-		LastUpdatedAfter:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:36:44.3345758Z"); return t }()),
-		LastUpdatedBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:49:48.3686473Z"); return t }()),
+		LastUpdatedAfter:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:36:44.334Z"); return t }()),
+		LastUpdatedBefore: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:49:48.368Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -50,7 +50,7 @@ func ExampleTriggerRunsClient_QueryByFactory() {
 	// 			Status: to.Ptr(armdatafactory.TriggerRunStatusSucceeded),
 	// 			TriggerName: to.Ptr("exampleTrigger"),
 	// 			TriggerRunID: to.Ptr("08586724970898148904457116912CU27"),
-	// 			TriggerRunTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:43:15.660141Z"); return t}()),
+	// 			TriggerRunTimestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:43:15.660Z"); return t}()),
 	// 			TriggerType: to.Ptr("ScheduleTrigger"),
 	// 			TriggeredPipelines: map[string]*string{
 	// 				"examplePipeline": to.Ptr("9f3ce8b3-37d7-43eb-96ac-a656c0476283"),

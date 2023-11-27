@@ -16,30 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ScalingPlanResource created on azure
+// for more information of creating ScalingPlanResource, please refer to the document of ScalingPlanResource
 string subscriptionId = "daefabc0-95b4-48b3-b645-8a753a63c4fa";
 string resourceGroupName = "resourceGroup1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ScalingPlanResource
-ScalingPlanCollection collection = resourceGroupResource.GetScalingPlans();
+string scalingPlanName = "scalingPlan1";
+ResourceIdentifier scalingPlanResourceId = ScalingPlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scalingPlanName);
+ScalingPlanResource scalingPlan = client.GetScalingPlanResource(scalingPlanResourceId);
 
 // invoke the operation
-string scalingPlanName = "scalingPlan1";
-NullableResponse<ScalingPlanResource> response = await collection.GetIfExistsAsync(scalingPlanName);
-ScalingPlanResource result = response.HasValue ? response.Value : null;
+ScalingPlanResource result = await scalingPlan.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ScalingPlanData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ScalingPlanData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -61,14 +61,14 @@ func ExampleInvoicesClient_Get_invoiceWithRebillDetails() {
 	// 				Source: to.Ptr(armbilling.DocumentSourceDRS),
 	// 				URL: to.Ptr("https://microsoft.com/taxDoc.pdf"),
 	// 		}},
-	// 		DueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-16T17:32:28Z"); return t}()),
+	// 		DueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-16T17:32:28.000Z"); return t}()),
 	// 		FreeAzureCreditApplied: &armbilling.Amount{
 	// 			Currency: to.Ptr("USD"),
 	// 			Value: to.Ptr[float32](0),
 	// 		},
-	// 		InvoiceDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T17:32:28Z"); return t}()),
-	// 		InvoicePeriodEndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-15T17:32:28Z"); return t}()),
-	// 		InvoicePeriodStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T17:32:28Z"); return t}()),
+	// 		InvoiceDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T17:32:28.000Z"); return t}()),
+	// 		InvoicePeriodEndDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-15T17:32:28.000Z"); return t}()),
+	// 		InvoicePeriodStartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T17:32:28.000Z"); return t}()),
 	// 		IsMonthlyInvoice: to.Ptr(false),
 	// 		Payments: []*armbilling.PaymentProperties{
 	// 			{
@@ -76,7 +76,7 @@ func ExampleInvoicesClient_Get_invoiceWithRebillDetails() {
 	// 					Currency: to.Ptr("USD"),
 	// 					Value: to.Ptr[float32](2),
 	// 				},
-	// 				Date: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-14T17:32:28Z"); return t}()),
+	// 				Date: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-14T17:32:28.000Z"); return t}()),
 	// 				PaymentMethodFamily: to.Ptr(armbilling.PaymentMethodFamilyCreditCard),
 	// 				PaymentMethodType: to.Ptr("visa"),
 	// 				PaymentType: to.Ptr("credited"),

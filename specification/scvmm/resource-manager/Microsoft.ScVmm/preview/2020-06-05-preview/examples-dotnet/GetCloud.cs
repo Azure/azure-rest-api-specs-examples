@@ -5,8 +5,8 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ArcScVmm;
-using Azure.ResourceManager.ArcScVmm.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Resources.Models;
 
 // Generated from example definition: specification/scvmm/resource-manager/Microsoft.ScVmm/preview/2020-06-05-preview/examples/GetCloud.json
 // this example is just showing the usage of "Clouds_Get" operation, for the dependent resources, they will have to be created separately.
@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScVmmCloudResource created on azure
-// for more information of creating ScVmmCloudResource, please refer to the document of ScVmmCloudResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
-string cloudName = "HRCloud";
-ResourceIdentifier scVmmCloudResourceId = ScVmmCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cloudName);
-ScVmmCloudResource scVmmCloud = client.GetScVmmCloudResource(scVmmCloudResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this ScVmmCloudResource
+ScVmmCloudCollection collection = resourceGroupResource.GetScVmmClouds();
 
 // invoke the operation
-ScVmmCloudResource result = await scVmmCloud.GetAsync();
+string cloudName = "HRCloud";
+NullableResponse<ScVmmCloudResource> response = await collection.GetIfExistsAsync(cloudName);
+ScVmmCloudResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ScVmmCloudData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ScVmmCloudData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

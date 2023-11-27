@@ -28,6 +28,18 @@ ScVmmAvailabilitySetCollection collection = resourceGroupResource.GetScVmmAvaila
 
 // invoke the operation
 string availabilitySetName = "HRAvailabilitySet";
-bool result = await collection.ExistsAsync(availabilitySetName);
+NullableResponse<ScVmmAvailabilitySetResource> response = await collection.GetIfExistsAsync(availabilitySetName);
+ScVmmAvailabilitySetResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ScVmmAvailabilitySetData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

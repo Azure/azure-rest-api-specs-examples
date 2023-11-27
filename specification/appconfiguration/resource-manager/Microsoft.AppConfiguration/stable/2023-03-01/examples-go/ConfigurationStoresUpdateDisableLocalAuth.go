@@ -46,7 +46,7 @@ func ExampleConfigurationStoresClient_BeginUpdate_configurationStoresUpdateDisab
 	// 	Tags: map[string]*string{
 	// 	},
 	// 	Properties: &armappconfiguration.ConfigurationStoreProperties{
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 	// 		DisableLocalAuth: to.Ptr(true),
 	// 		Encryption: &armappconfiguration.EncryptionProperties{
 	// 			KeyVaultProperties: &armappconfiguration.KeyVaultProperties{
@@ -62,10 +62,10 @@ func ExampleConfigurationStoresClient_BeginUpdate_configurationStoresUpdateDisab
 	// 		Name: to.Ptr("Standard"),
 	// 	},
 	// 	SystemData: &armappconfiguration.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("foo@contoso.com"),
 	// 		CreatedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("foo@contoso.com"),
 	// 		LastModifiedByType: to.Ptr(armappconfiguration.CreatedByTypeUser),
 	// 	},

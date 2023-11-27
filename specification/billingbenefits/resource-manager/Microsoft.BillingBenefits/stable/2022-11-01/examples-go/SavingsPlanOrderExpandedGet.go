@@ -37,7 +37,7 @@ func ExampleSavingsPlanOrderClient_Get_savingsPlanOrderWithExpandedPaymentsGet()
 	// 		BillingProfileID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/20000000-1000-0000-0000-000000000000:20000000-0000-3000-0000-000000000000_2019-05-31/billingProfiles/KPSV-DWNE-BG7-TGB"),
 	// 		BillingScopeID: to.Ptr("/providers/Microsoft.Billing/billingAccounts/1234567/billingSubscriptions/30000000-0000-0000-0000-000000000003"),
 	// 		DisplayName: to.Ptr("Compute_SavingsPlan_10-19-2022_11-01"),
-	// 		ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-10-19T18:03:55.2519794Z"); return t}()),
+	// 		ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-10-19T18:03:55.251Z"); return t}()),
 	// 		PlanInformation: &armbillingbenefits.BillingPlanInformation{
 	// 			NextPaymentDueDate: to.Ptr(func() time.Time { t, _ := time.Parse("2006-01-02", "2022-11-19"); return t}()),
 	// 			PricingCurrencyTotal: &armbillingbenefits.Price{

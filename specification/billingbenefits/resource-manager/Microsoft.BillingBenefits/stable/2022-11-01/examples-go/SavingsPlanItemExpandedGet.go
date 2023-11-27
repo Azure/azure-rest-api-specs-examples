@@ -44,10 +44,10 @@ func ExampleSavingsPlanClient_Get_savingsPlanItemWithExpandedRenewPropertiesGet(
 	// 		},
 	// 		DisplayName: to.Ptr("Compute_SavingsPlan_patch_rename2"),
 	// 		DisplayProvisioningState: to.Ptr("Succeeded"),
-	// 		EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-21T18:15:42.4098626Z"); return t}()),
-	// 		ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-10-18T21:16:13.1854959Z"); return t}()),
+	// 		EffectiveDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-21T18:15:42.409Z"); return t}()),
+	// 		ExpiryDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-10-18T21:16:13.185Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armbillingbenefits.ProvisioningStateSucceeded),
-	// 		PurchaseDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-18T21:14:26.8279361Z"); return t}()),
+	// 		PurchaseDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-10-18T21:14:26.827Z"); return t}()),
 	// 		Renew: to.Ptr(true),
 	// 		RenewProperties: &armbillingbenefits.RenewProperties{
 	// 			PurchaseProperties: &armbillingbenefits.PurchaseRequest{

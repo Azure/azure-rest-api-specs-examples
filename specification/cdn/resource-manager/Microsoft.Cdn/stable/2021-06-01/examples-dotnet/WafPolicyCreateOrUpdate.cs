@@ -37,7 +37,7 @@ CdnWebApplicationFirewallPolicyData data = new CdnWebApplicationFirewallPolicyDa
     {
         DefaultRedirectUri = new Uri("http://www.bing.com"),
         DefaultCustomBlockResponseStatusCode = PolicySettingsDefaultCustomBlockResponseStatusCode.TwoHundred,
-        DefaultCustomBlockResponseBody = BinaryData.FromString("PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg=="),
+        DefaultCustomBlockResponseBody = BinaryData.FromString("\"PGh0bWw+CjxoZWFkZXI+PHRpdGxlPkhlbGxvPC90aXRsZT48L2hlYWRlcj4KPGJvZHk+CkhlbGxvIHdvcmxkCjwvYm9keT4KPC9odG1sPg==\""),
     },
     RateLimitRules =
     {

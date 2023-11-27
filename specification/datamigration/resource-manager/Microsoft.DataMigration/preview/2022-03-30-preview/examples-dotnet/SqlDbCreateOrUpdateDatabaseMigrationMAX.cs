@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/SqlDbCreateOrUpdateDatabaseMigrationMAX.json
 // this example is just showing the usage of "DatabaseMigrationsSqlDb_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseMigrationSqlDBResource created on azure
-// for more information of creating DatabaseMigrationSqlDBResource, please refer to the document of DatabaseMigrationSqlDBResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
-string sqlDBInstanceName = "sqldbinstance";
-string targetDBName = "db1";
-ResourceIdentifier databaseMigrationSqlDBResourceId = DatabaseMigrationSqlDBResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlDBInstanceName, targetDBName);
-DatabaseMigrationSqlDBResource databaseMigrationSqlDB = client.GetDatabaseMigrationSqlDBResource(databaseMigrationSqlDBResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this DatabaseMigrationSqlDBResource
+DatabaseMigrationSqlDBCollection collection = resourceGroupResource.GetDatabaseMigrationSqlDBs();
 
 // invoke the operation
+string sqlDBInstanceName = "sqldbinstance";
+string targetDBName = "db1";
 DatabaseMigrationSqlDBData data = new DatabaseMigrationSqlDBData()
 {
     Properties = new DatabaseMigrationSqlDBProperties()
@@ -56,7 +60,7 @@ DatabaseMigrationSqlDBData data = new DatabaseMigrationSqlDBData()
         MigrationService = "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/testrg/providers/Microsoft.DataMigration/sqlMigrationServices/testagent",
     },
 };
-ArmOperation<DatabaseMigrationSqlDBResource> lro = await databaseMigrationSqlDB.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DatabaseMigrationSqlDBResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sqlDBInstanceName, targetDBName, data);
 DatabaseMigrationSqlDBResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

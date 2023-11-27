@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/SqlDbGetDatabaseMigration.json
 // this example is just showing the usage of "DatabaseMigrationsSqlDb_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +16,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseMigrationSqlDBResource created on azure
-// for more information of creating DatabaseMigrationSqlDBResource, please refer to the document of DatabaseMigrationSqlDBResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
-string sqlDBInstanceName = "sqldbinstance";
-string targetDBName = "db1";
-ResourceIdentifier databaseMigrationSqlDBResourceId = DatabaseMigrationSqlDBResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlDBInstanceName, targetDBName);
-DatabaseMigrationSqlDBResource databaseMigrationSqlDB = client.GetDatabaseMigrationSqlDBResource(databaseMigrationSqlDBResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this DatabaseMigrationSqlDBResource
+DatabaseMigrationSqlDBCollection collection = resourceGroupResource.GetDatabaseMigrationSqlDBs();
 
 // invoke the operation
-DatabaseMigrationSqlDBResource result = await databaseMigrationSqlDB.GetAsync();
+string sqlDBInstanceName = "sqldbinstance";
+string targetDBName = "db1";
+NullableResponse<DatabaseMigrationSqlDBResource> response = await collection.GetIfExistsAsync(sqlDBInstanceName, targetDBName);
+DatabaseMigrationSqlDBResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DatabaseMigrationSqlDBData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DatabaseMigrationSqlDBData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

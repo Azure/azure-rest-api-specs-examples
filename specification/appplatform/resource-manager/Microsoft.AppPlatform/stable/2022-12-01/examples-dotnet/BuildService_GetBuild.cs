@@ -29,6 +29,18 @@ AppPlatformBuildCollection collection = appPlatformBuildService.GetAppPlatformBu
 
 // invoke the operation
 string buildName = "mybuild";
-bool result = await collection.ExistsAsync(buildName);
+NullableResponse<AppPlatformBuildResource> response = await collection.GetIfExistsAsync(buildName);
+AppPlatformBuildResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppPlatformBuildData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

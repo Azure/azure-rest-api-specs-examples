@@ -34,7 +34,7 @@ func ExampleCommunicationsNoSubscriptionClient_Get() {
 	// 		Body: to.Ptr("this is a test message"),
 	// 		CommunicationDirection: to.Ptr(armsupport.CommunicationDirectionOutbound),
 	// 		CommunicationType: to.Ptr(armsupport.CommunicationTypeWeb),
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-08-24T20:18:19Z"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-08-24T20:18:19.000Z"); return t}()),
 	// 		Sender: to.Ptr("user@contoso.com"),
 	// 		Subject: to.Ptr("this is a test message"),
 	// 	},

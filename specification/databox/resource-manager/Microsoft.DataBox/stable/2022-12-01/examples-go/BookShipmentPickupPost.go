@@ -23,9 +23,9 @@ func ExampleJobsClient_BookShipmentPickUp() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewJobsClient().BookShipmentPickUp(ctx, "YourResourceGroupName", "TestJobName1", armdatabox.ShipmentPickUpRequest{
-		EndTime:          to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-22T18:30:00Z"); return t }()),
+		EndTime:          to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-22T18:30:00.000Z"); return t }()),
 		ShipmentLocation: to.Ptr("Front desk"),
-		StartTime:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-20T18:30:00Z"); return t }()),
+		StartTime:        to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-20T18:30:00.000Z"); return t }()),
 	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
@@ -35,6 +35,6 @@ func ExampleJobsClient_BookShipmentPickUp() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.ShipmentPickUpResponse = armdatabox.ShipmentPickUpResponse{
 	// 	ConfirmationNumber: to.Ptr("XXXXXXXXXXX"),
-	// 	ReadyByTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-20T18:30:00Z"); return t}()),
+	// 	ReadyByTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-20T18:30:00.000Z"); return t}()),
 	// }
 }

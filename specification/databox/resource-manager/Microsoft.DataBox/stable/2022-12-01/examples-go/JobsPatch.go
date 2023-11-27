@@ -66,7 +66,7 @@ func ExampleJobsClient_BeginUpdate_jobsPatch() {
 	// 	Properties: &armdatabox.JobProperties{
 	// 		IsCancellable: to.Ptr(true),
 	// 		IsShippingAddressEditable: to.Ptr(true),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-13T16:28:38.9999793+05:30"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-13T10:58:38.999Z"); return t}()),
 	// 		Status: to.Ptr(armdatabox.StageNameDeviceOrdered),
 	// 		TransferType: to.Ptr(armdatabox.TransferTypeImportToAzure),
 	// 	},

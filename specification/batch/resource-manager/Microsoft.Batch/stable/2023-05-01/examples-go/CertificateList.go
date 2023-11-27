@@ -45,7 +45,7 @@ func ExampleCertificateClient_NewListByBatchAccountPager_listCertificates() {
 		// 				Thumbprint: to.Ptr("0a0e4f50d51beadeac1d35afc5116098e7902e6e"),
 		// 				ThumbprintAlgorithm: to.Ptr("sha1"),
 		// 				ProvisioningState: to.Ptr(armbatch.CertificateProvisioningStateSucceeded),
-		// 				ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-21T01:47:38.4420202Z"); return t}()),
+		// 				ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-21T01:47:38.442Z"); return t}()),
 		// 				PublicData: to.Ptr("MIICrjCCAZagAwI..."),
 		// 			},
 		// 	}},

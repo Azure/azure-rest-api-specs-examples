@@ -61,8 +61,8 @@ func ExamplePoolClient_Create_createPoolAcceleratedNetworking() {
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/sampleacct/pools/testpool"),
 	// 	Properties: &armbatch.PoolProperties{
 	// 		AllocationState: to.Ptr(armbatch.AllocationStateSteady),
-	// 		AllocationStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T03:00:34.0646502Z"); return t}()),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.8592226Z"); return t}()),
+	// 		AllocationStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T03:00:34.064Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.859Z"); return t}()),
 	// 		CurrentDedicatedNodes: to.Ptr[int32](1),
 	// 		CurrentLowPriorityNodes: to.Ptr[int32](0),
 	// 		CurrentNodeCommunicationMode: to.Ptr(armbatch.NodeCommunicationModeClassic),
@@ -78,18 +78,18 @@ func ExamplePoolClient_Create_createPoolAcceleratedNetworking() {
 	// 			},
 	// 		},
 	// 		InterNodeCommunication: to.Ptr(armbatch.InterNodeCommunicationStateDisabled),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.8592226Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.859Z"); return t}()),
 	// 		NetworkConfiguration: &armbatch.NetworkConfiguration{
 	// 			DynamicVNetAssignmentScope: to.Ptr(armbatch.DynamicVNetAssignmentScopeNone),
 	// 			EnableAcceleratedNetworking: to.Ptr(true),
 	// 			SubnetID: to.Ptr("/subscriptions/subid/resourceGroups/rg1234/providers/Microsoft.Network/virtualNetworks/network1234/subnets/subnet123"),
 	// 		},
 	// 		ProvisioningState: to.Ptr(armbatch.PoolProvisioningStateSucceeded),
-	// 		ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.8592226Z"); return t}()),
+	// 		ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.859Z"); return t}()),
 	// 		ResizeOperationStatus: &armbatch.ResizeOperationStatus{
 	// 			NodeDeallocationOption: to.Ptr(armbatch.ComputeNodeDeallocationOptionRequeue),
 	// 			ResizeTimeout: to.Ptr("PT15M"),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.8592226Z"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-04-27T02:59:41.859Z"); return t}()),
 	// 			TargetDedicatedNodes: to.Ptr[int32](1),
 	// 		},
 	// 		ScaleSettings: &armbatch.ScaleSettings{

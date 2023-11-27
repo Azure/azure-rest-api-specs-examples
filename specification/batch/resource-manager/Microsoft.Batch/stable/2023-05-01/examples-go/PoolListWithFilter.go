@@ -45,7 +45,7 @@ func ExamplePoolClient_NewListByBatchAccountPager_listPoolWithFilter() {
 		// 				AllocationState: to.Ptr(armbatch.AllocationStateSteady),
 		// 				CurrentDedicatedNodes: to.Ptr[int32](0),
 		// 				CurrentLowPriorityNodes: to.Ptr[int32](2),
-		// 				ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.9407275Z"); return t}()),
+		// 				ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-28T10:22:55.940Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -57,7 +57,7 @@ func ExamplePoolClient_NewListByBatchAccountPager_listPoolWithFilter() {
 		// 				AllocationState: to.Ptr(armbatch.AllocationStateResizing),
 		// 				CurrentDedicatedNodes: to.Ptr[int32](4),
 		// 				CurrentLowPriorityNodes: to.Ptr[int32](0),
-		// 				ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-26T10:22:55.9407275Z"); return t}()),
+		// 				ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-26T10:22:55.940Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

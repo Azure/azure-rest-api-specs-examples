@@ -48,7 +48,7 @@ func ExampleApplicationPackageClient_NewListPager() {
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/default-azurebatch-japaneast/providers/Microsoft.Batch/batchAccounts/sampleacct/applications/app1/versions/2.0"),
 		// 			Properties: &armbatch.ApplicationPackageProperties{
 		// 				Format: to.Ptr("zip"),
-		// 				LastActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-27T18:48:09.9330991Z"); return t}()),
+		// 				LastActivationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-27T18:48:09.933Z"); return t}()),
 		// 				State: to.Ptr(armbatch.PackageStateActive),
 		// 			},
 		// 	}},

@@ -77,8 +77,8 @@ func ExamplePoolClient_Create_createPoolUserAssignedIdentities() {
 	// 	},
 	// 	Properties: &armbatch.PoolProperties{
 	// 		AllocationState: to.Ptr(armbatch.AllocationStateResizing),
-	// 		AllocationStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.9407275Z"); return t}()),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.9407275Z"); return t}()),
+	// 		AllocationStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.940Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.940Z"); return t}()),
 	// 		CurrentDedicatedNodes: to.Ptr[int32](0),
 	// 		CurrentLowPriorityNodes: to.Ptr[int32](0),
 	// 		DeploymentConfiguration: &armbatch.DeploymentConfiguration{
@@ -93,9 +93,9 @@ func ExamplePoolClient_Create_createPoolUserAssignedIdentities() {
 	// 			},
 	// 		},
 	// 		InterNodeCommunication: to.Ptr(armbatch.InterNodeCommunicationStateDisabled),
-	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.9407275Z"); return t}()),
+	// 		LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.940Z"); return t}()),
 	// 		ProvisioningState: to.Ptr(armbatch.PoolProvisioningStateSucceeded),
-	// 		ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.9407275Z"); return t}()),
+	// 		ProvisioningStateTransitionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-01T10:22:55.940Z"); return t}()),
 	// 		ScaleSettings: &armbatch.ScaleSettings{
 	// 			AutoScale: &armbatch.AutoScaleSettings{
 	// 				EvaluationInterval: to.Ptr("PT5M"),

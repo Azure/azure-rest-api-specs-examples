@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this MonitorPrivateLinkScopeResource created on azure
+// for more information of creating MonitorPrivateLinkScopeResource, please refer to the document of MonitorPrivateLinkScopeResource
 string subscriptionId = "86dc51d3-92ed-4d7e-947a-775ea79b4919";
 string resourceGroupName = "my-resource-group";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this MonitorPrivateLinkScopeResource
-MonitorPrivateLinkScopeCollection collection = resourceGroupResource.GetMonitorPrivateLinkScopes();
+string scopeName = "my-privatelinkscope";
+ResourceIdentifier monitorPrivateLinkScopeResourceId = MonitorPrivateLinkScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName);
+MonitorPrivateLinkScopeResource monitorPrivateLinkScope = client.GetMonitorPrivateLinkScopeResource(monitorPrivateLinkScopeResourceId);
 
 // invoke the operation
-string scopeName = "my-privatelinkscope";
-bool result = await collection.ExistsAsync(scopeName);
+MonitorPrivateLinkScopeResource result = await monitorPrivateLinkScope.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MonitorPrivateLinkScopeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

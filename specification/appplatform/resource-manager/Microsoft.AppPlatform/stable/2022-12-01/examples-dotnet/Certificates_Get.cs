@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformCertificateResource created on azure
-// for more information of creating AppPlatformCertificateResource, please refer to the document of AppPlatformCertificateResource
+// this example assumes you already have this AppPlatformServiceResource created on azure
+// for more information of creating AppPlatformServiceResource, please refer to the document of AppPlatformServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
-string certificateName = "mycertificate";
-ResourceIdentifier appPlatformCertificateResourceId = AppPlatformCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, certificateName);
-AppPlatformCertificateResource appPlatformCertificate = client.GetAppPlatformCertificateResource(appPlatformCertificateResourceId);
+ResourceIdentifier appPlatformServiceResourceId = AppPlatformServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceResource(appPlatformServiceResourceId);
+
+// get the collection of this AppPlatformCertificateResource
+AppPlatformCertificateCollection collection = appPlatformService.GetAppPlatformCertificates();
 
 // invoke the operation
-AppPlatformCertificateResource result = await appPlatformCertificate.GetAsync();
+string certificateName = "mycertificate";
+NullableResponse<AppPlatformCertificateResource> response = await collection.GetIfExistsAsync(certificateName);
+AppPlatformCertificateResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppPlatformCertificateData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppPlatformCertificateData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

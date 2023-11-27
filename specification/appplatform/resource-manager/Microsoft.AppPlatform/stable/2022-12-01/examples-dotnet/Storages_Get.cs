@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformStorageResource created on azure
-// for more information of creating AppPlatformStorageResource, please refer to the document of AppPlatformStorageResource
+// this example assumes you already have this AppPlatformServiceResource created on azure
+// for more information of creating AppPlatformServiceResource, please refer to the document of AppPlatformServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
-string storageName = "mystorage";
-ResourceIdentifier appPlatformStorageResourceId = AppPlatformStorageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, storageName);
-AppPlatformStorageResource appPlatformStorage = client.GetAppPlatformStorageResource(appPlatformStorageResourceId);
+ResourceIdentifier appPlatformServiceResourceId = AppPlatformServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceResource(appPlatformServiceResourceId);
+
+// get the collection of this AppPlatformStorageResource
+AppPlatformStorageCollection collection = appPlatformService.GetAppPlatformStorages();
 
 // invoke the operation
-AppPlatformStorageResource result = await appPlatformStorage.GetAsync();
+string storageName = "mystorage";
+NullableResponse<AppPlatformStorageResource> response = await collection.GetIfExistsAsync(storageName);
+AppPlatformStorageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppPlatformStorageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppPlatformStorageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformBuildpackBindingResource created on azure
-// for more information of creating AppPlatformBuildpackBindingResource, please refer to the document of AppPlatformBuildpackBindingResource
+// this example assumes you already have this AppPlatformBuilderResource created on azure
+// for more information of creating AppPlatformBuilderResource, please refer to the document of AppPlatformBuilderResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
 string builderName = "default";
-string buildpackBindingName = "myBuildpackBinding";
-ResourceIdentifier appPlatformBuildpackBindingResourceId = AppPlatformBuildpackBindingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, builderName, buildpackBindingName);
-AppPlatformBuildpackBindingResource appPlatformBuildpackBinding = client.GetAppPlatformBuildpackBindingResource(appPlatformBuildpackBindingResourceId);
+ResourceIdentifier appPlatformBuilderResourceId = AppPlatformBuilderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, builderName);
+AppPlatformBuilderResource appPlatformBuilder = client.GetAppPlatformBuilderResource(appPlatformBuilderResourceId);
+
+// get the collection of this AppPlatformBuildpackBindingResource
+AppPlatformBuildpackBindingCollection collection = appPlatformBuilder.GetAppPlatformBuildpackBindings();
 
 // invoke the operation
+string buildpackBindingName = "myBuildpackBinding";
 AppPlatformBuildpackBindingData data = new AppPlatformBuildpackBindingData()
 {
     Properties = new AppPlatformBuildpackBindingProperties()
@@ -47,7 +50,7 @@ AppPlatformBuildpackBindingData data = new AppPlatformBuildpackBindingData()
         },
     },
 };
-ArmOperation<AppPlatformBuildpackBindingResource> lro = await appPlatformBuildpackBinding.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AppPlatformBuildpackBindingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, buildpackBindingName, data);
 AppPlatformBuildpackBindingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -46,7 +46,7 @@ func ExampleServersClient_BeginUpdate() {
 	// 	},
 	// 	Properties: &armmysql.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T18:02:41.577+00:00"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T18:02:41.577Z"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("mysqltestsvc4.mysql.database.azure.com"),
 	// 		SSLEnforcement: to.Ptr(armmysql.SSLEnforcementEnumDisabled),
 	// 		StorageProfile: &armmysql.StorageProfile{

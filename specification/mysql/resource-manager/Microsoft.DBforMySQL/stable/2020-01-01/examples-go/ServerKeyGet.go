@@ -32,7 +32,7 @@ func ExampleServerKeysClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.DBforMySQL/servers/testserver/keys/someVault_someKey_01234567890123456789012345678901"),
 	// 	Kind: to.Ptr("azurekeyvault"),
 	// 	Properties: &armmysql.ServerKeyProperties{
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T00:00:00.0Z"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T00:00:00.000Z"); return t}()),
 	// 		ServerKeyType: to.Ptr(armmysql.ServerKeyTypeAzureKeyVault),
 	// 		URI: to.Ptr("https://someVault.vault.azure.net/keys/someKey/01234567890123456789012345678901"),
 	// 	},

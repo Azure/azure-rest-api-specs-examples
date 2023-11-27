@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -15,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudResource created on azure
-// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
+// this example assumes you already have this ScriptExecutionResource created on azure
+// for more information of creating ScriptExecutionResource, please refer to the document of ScriptExecutionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
-AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
-
-// get the collection of this ScriptExecutionResource
-ScriptExecutionCollection collection = avsPrivateCloud.GetScriptExecutions();
+string scriptExecutionName = "addSsoServer";
+ResourceIdentifier scriptExecutionResourceId = ScriptExecutionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, scriptExecutionName);
+ScriptExecutionResource scriptExecution = client.GetScriptExecutionResource(scriptExecutionResourceId);
 
 // invoke the operation
-string scriptExecutionName = "addSsoServer";
-bool result = await collection.ExistsAsync(scriptExecutionName);
+ScriptExecutionResource result = await scriptExecution.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ScriptExecutionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

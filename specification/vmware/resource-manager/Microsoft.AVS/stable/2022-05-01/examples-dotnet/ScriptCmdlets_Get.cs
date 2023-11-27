@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScriptCmdletResource created on azure
-// for more information of creating ScriptCmdletResource, please refer to the document of ScriptCmdletResource
+// this example assumes you already have this ScriptPackageResource created on azure
+// for more information of creating ScriptPackageResource, please refer to the document of ScriptPackageResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "{privateCloudName}";
 string scriptPackageName = "{scriptPackageName}";
-string scriptCmdletName = "New-ExternalSsoDomain";
-ResourceIdentifier scriptCmdletResourceId = ScriptCmdletResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, scriptPackageName, scriptCmdletName);
-ScriptCmdletResource scriptCmdlet = client.GetScriptCmdletResource(scriptCmdletResourceId);
+ResourceIdentifier scriptPackageResourceId = ScriptPackageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, scriptPackageName);
+ScriptPackageResource scriptPackage = client.GetScriptPackageResource(scriptPackageResourceId);
+
+// get the collection of this ScriptCmdletResource
+ScriptCmdletCollection collection = scriptPackage.GetScriptCmdlets();
 
 // invoke the operation
-ScriptCmdletResource result = await scriptCmdlet.GetAsync();
+string scriptCmdletName = "New-ExternalSsoDomain";
+NullableResponse<ScriptCmdletResource> response = await collection.GetIfExistsAsync(scriptCmdletName);
+ScriptCmdletResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ScriptCmdletData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ScriptCmdletData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

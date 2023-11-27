@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudClusterResource created on azure
-// for more information of creating AvsPrivateCloudClusterResource, please refer to the document of AvsPrivateCloudClusterResource
+// this example assumes you already have this PlacementPolicyResource created on azure
+// for more information of creating PlacementPolicyResource, please refer to the document of PlacementPolicyResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
 string clusterName = "cluster1";
-ResourceIdentifier avsPrivateCloudClusterResourceId = AvsPrivateCloudClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, clusterName);
-AvsPrivateCloudClusterResource avsPrivateCloudCluster = client.GetAvsPrivateCloudClusterResource(avsPrivateCloudClusterResourceId);
-
-// get the collection of this PlacementPolicyResource
-PlacementPolicyCollection collection = avsPrivateCloudCluster.GetPlacementPolicies();
+string placementPolicyName = "policy1";
+ResourceIdentifier placementPolicyResourceId = PlacementPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, clusterName, placementPolicyName);
+PlacementPolicyResource placementPolicy = client.GetPlacementPolicyResource(placementPolicyResourceId);
 
 // invoke the operation
-string placementPolicyName = "policy1";
-bool result = await collection.ExistsAsync(placementPolicyName);
+PlacementPolicyResource result = await placementPolicy.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PlacementPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

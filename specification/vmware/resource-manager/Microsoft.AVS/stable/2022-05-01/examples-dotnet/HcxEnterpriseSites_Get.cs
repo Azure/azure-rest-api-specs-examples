@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HcxEnterpriseSiteResource created on azure
-// for more information of creating HcxEnterpriseSiteResource, please refer to the document of HcxEnterpriseSiteResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string hcxEnterpriseSiteName = "site1";
-ResourceIdentifier hcxEnterpriseSiteResourceId = HcxEnterpriseSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, hcxEnterpriseSiteName);
-HcxEnterpriseSiteResource hcxEnterpriseSite = client.GetHcxEnterpriseSiteResource(hcxEnterpriseSiteResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this HcxEnterpriseSiteResource
+HcxEnterpriseSiteCollection collection = avsPrivateCloud.GetHcxEnterpriseSites();
 
 // invoke the operation
-HcxEnterpriseSiteResource result = await hcxEnterpriseSite.GetAsync();
+string hcxEnterpriseSiteName = "site1";
+NullableResponse<HcxEnterpriseSiteResource> response = await collection.GetIfExistsAsync(hcxEnterpriseSiteName);
+HcxEnterpriseSiteResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HcxEnterpriseSiteData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HcxEnterpriseSiteData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

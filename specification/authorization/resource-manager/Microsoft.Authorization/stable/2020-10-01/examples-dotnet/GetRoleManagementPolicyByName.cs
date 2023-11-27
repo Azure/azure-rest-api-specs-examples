@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -23,6 +24,18 @@ RoleManagementPolicyCollection collection = client.GetRoleManagementPolicies(sco
 
 // invoke the operation
 string roleManagementPolicyName = "570c3619-7688-4b34-b290-2b8bb3ccab2a";
-bool result = await collection.ExistsAsync(roleManagementPolicyName);
+NullableResponse<RoleManagementPolicyResource> response = await collection.GetIfExistsAsync(roleManagementPolicyName);
+RoleManagementPolicyResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RoleManagementPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

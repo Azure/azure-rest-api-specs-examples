@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -23,6 +24,18 @@ RoleEligibilityScheduleCollection collection = client.GetRoleEligibilitySchedule
 
 // invoke the operation
 string roleEligibilityScheduleName = "b1477448-2cc6-4ceb-93b4-54a202a89413";
-bool result = await collection.ExistsAsync(roleEligibilityScheduleName);
+NullableResponse<RoleEligibilityScheduleResource> response = await collection.GetIfExistsAsync(roleEligibilityScheduleName);
+RoleEligibilityScheduleResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RoleEligibilityScheduleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

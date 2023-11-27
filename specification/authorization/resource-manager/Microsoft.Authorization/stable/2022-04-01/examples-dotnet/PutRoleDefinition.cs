@@ -14,18 +14,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this AuthorizationRoleDefinitionResource
+// this example assumes you already have this AuthorizationRoleDefinitionResource created on azure
+// for more information of creating AuthorizationRoleDefinitionResource, please refer to the document of AuthorizationRoleDefinitionResource
 string scope = "scope";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-AuthorizationRoleDefinitionCollection collection = client.GetAuthorizationRoleDefinitions(scopeId);
+ResourceIdentifier roleDefinitionId = new ResourceIdentifier("roleDefinitionId");
+ResourceIdentifier authorizationRoleDefinitionResourceId = AuthorizationRoleDefinitionResource.CreateResourceIdentifier(scope, roleDefinitionId);
+AuthorizationRoleDefinitionResource authorizationRoleDefinition = client.GetAuthorizationRoleDefinitionResource(authorizationRoleDefinitionResourceId);
 
 // invoke the operation
-ResourceIdentifier roleDefinitionId = new ResourceIdentifier("roleDefinitionId");
 AuthorizationRoleDefinitionData data = new AuthorizationRoleDefinitionData();
-ArmOperation<AuthorizationRoleDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleDefinitionId, data);
+ArmOperation<AuthorizationRoleDefinitionResource> lro = await authorizationRoleDefinition.UpdateAsync(WaitUntil.Completed, data);
 AuthorizationRoleDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

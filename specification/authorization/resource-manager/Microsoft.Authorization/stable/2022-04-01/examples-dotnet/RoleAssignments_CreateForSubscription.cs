@@ -15,21 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this RoleAssignmentResource
+// this example assumes you already have this RoleAssignmentResource created on azure
+// for more information of creating RoleAssignmentResource, please refer to the document of RoleAssignmentResource
 string scope = "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-RoleAssignmentCollection collection = client.GetRoleAssignments(scopeId);
+string roleAssignmentName = "05c5a614-a7d6-4502-b150-c2fb455033ff";
+ResourceIdentifier roleAssignmentResourceId = RoleAssignmentResource.CreateResourceIdentifier(scope, roleAssignmentName);
+RoleAssignmentResource roleAssignment = client.GetRoleAssignmentResource(roleAssignmentResourceId);
 
 // invoke the operation
-string roleAssignmentName = "05c5a614-a7d6-4502-b150-c2fb455033ff";
 RoleAssignmentCreateOrUpdateContent content = new RoleAssignmentCreateOrUpdateContent(new ResourceIdentifier("/subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/providers/Microsoft.Authorization/roleDefinitions/0b5fe924-9a61-425c-96af-cfe6e287ca2d"), Guid.Parse("ce2ce14e-85d7-4629-bdbc-454d0519d987"))
 {
     PrincipalType = RoleManagementPrincipalType.User,
 };
-ArmOperation<RoleAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleAssignmentName, content);
+ArmOperation<RoleAssignmentResource> lro = await roleAssignment.UpdateAsync(WaitUntil.Completed, content);
 RoleAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -35,7 +35,7 @@ func ExampleRoleAssignmentScheduleRequestsClient_Create() {
 					Type:     to.Ptr(armauthorization.TypeAfterDuration),
 					Duration: to.Ptr("PT8H"),
 				},
-				StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.91Z"); return t }()),
+				StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.910Z"); return t }()),
 			},
 		},
 	}, nil)

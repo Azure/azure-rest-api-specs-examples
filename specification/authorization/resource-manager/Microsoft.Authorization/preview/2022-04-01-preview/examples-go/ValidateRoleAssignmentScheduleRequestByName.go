@@ -35,7 +35,7 @@ func ExampleRoleAssignmentScheduleRequestsClient_Validate() {
 					Type:     to.Ptr(armauthorization.TypeAfterDuration),
 					Duration: to.Ptr("PT8H"),
 				},
-				StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.91Z"); return t }()),
+				StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.910Z"); return t }()),
 			},
 		},
 	}, nil)
@@ -52,7 +52,7 @@ func ExampleRoleAssignmentScheduleRequestsClient_Validate() {
 	// 	Properties: &armauthorization.RoleAssignmentScheduleRequestProperties{
 	// 		Condition: to.Ptr("@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'"),
 	// 		ConditionVersion: to.Ptr("1.0"),
-	// 		CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.91Z"); return t}()),
+	// 		CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.910Z"); return t}()),
 	// 		ExpandedProperties: &armauthorization.ExpandedProperties{
 	// 			Principal: &armauthorization.ExpandedPropertiesPrincipal{
 	// 				Type: to.Ptr("User"),
@@ -81,7 +81,7 @@ func ExampleRoleAssignmentScheduleRequestsClient_Validate() {
 	// 				Type: to.Ptr(armauthorization.TypeAfterDuration),
 	// 				Duration: to.Ptr("PT8H"),
 	// 			},
-	// 			StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.91Z"); return t}()),
+	// 			StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:35:27.910Z"); return t}()),
 	// 		},
 	// 		Scope: to.Ptr("/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f"),
 	// 		Status: to.Ptr(armauthorization.StatusProvisioned),

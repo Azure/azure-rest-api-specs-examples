@@ -5,10 +5,10 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5c9459305484e0456b4a922e3d31a61e2ddd3c99/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_List.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/69ece3818b8b0929b43a07c3fe25716427734882/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_List.json
 func ExampleFactoriesClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -46,7 +46,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-29T13:39:35.615921Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-29T13:39:35.615Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2017-09-01-preview"),
 		// 			},
@@ -65,7 +65,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-14T00:06:04.6667461Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-14T00:06:04.666Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2017-09-01-preview"),
 		// 			},
@@ -84,7 +84,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-15T08:56:07.1828318Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-15T08:56:07.182Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2017-09-01-preview"),
 		// 			},
@@ -98,7 +98,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 			Tags: map[string]*string{
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:35:35.7133828Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:35:35.713Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2018-06-01"),
 		// 			},
@@ -113,7 +113,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				"exampleTag": to.Ptr("exampleValue"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:41:50.0041314Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:41:50.004Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				PurviewConfiguration: &armdatafactory.PurviewConfiguration{
 		// 					PurviewResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Purview/accounts/examplePurview"),
@@ -145,7 +145,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-29T13:39:35.615921Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-29T13:39:35.615Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2017-09-01-preview"),
 		// 			},
@@ -164,7 +164,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-14T00:06:04.6667461Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-14T00:06:04.666Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2017-09-01-preview"),
 		// 			},
@@ -183,7 +183,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				TenantID: to.Ptr("12345678-1234-1234-1234-123456789abc"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-15T08:56:07.1828318Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-15T08:56:07.182Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2017-09-01-preview"),
 		// 			},
@@ -197,7 +197,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 			Tags: map[string]*string{
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:35:35.7133828Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:35:35.713Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				Version: to.Ptr("2018-06-01"),
 		// 			},
@@ -212,7 +212,7 @@ func ExampleFactoriesClient_NewListPager() {
 		// 				"exampleTag": to.Ptr("exampleValue"),
 		// 			},
 		// 			Properties: &armdatafactory.FactoryProperties{
-		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:41:50.0041314Z"); return t}()),
+		// 				CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-19T05:41:50.004Z"); return t}()),
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				PurviewConfiguration: &armdatafactory.PurviewConfiguration{
 		// 					PurviewResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourceGroups/exampleResourceGroup/providers/Microsoft.Purview/accounts/examplePurview"),

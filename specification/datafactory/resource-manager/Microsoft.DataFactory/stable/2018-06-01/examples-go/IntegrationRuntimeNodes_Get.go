@@ -5,10 +5,10 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5c9459305484e0456b4a922e3d31a61e2ddd3c99/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimeNodes_Get.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/69ece3818b8b0929b43a07c3fe25716427734882/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/IntegrationRuntimeNodes_Get.json
 func ExampleIntegrationRuntimeNodesClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -36,13 +36,13 @@ func ExampleIntegrationRuntimeNodesClient_Get() {
 	// 	},
 	// 	HostServiceURI: to.Ptr("https://yanzhang-dt.fareast.corp.microsoft.com:8050/HostServiceRemote.svc/"),
 	// 	IsActiveDispatcher: to.Ptr(true),
-	// 	LastConnectTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-17T06:30:46.6262976Z"); return t}()),
-	// 	LastStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-17T03:45:30.8499851Z"); return t}()),
+	// 	LastConnectTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-17T06:30:46.626Z"); return t}()),
+	// 	LastStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-17T03:45:30.849Z"); return t}()),
 	// 	LastUpdateResult: to.Ptr(armdatafactory.IntegrationRuntimeUpdateResultNone),
 	// 	MachineName: to.Ptr("YANZHANG-DT"),
 	// 	MaxConcurrentJobs: to.Ptr[int32](20),
 	// 	NodeName: to.Ptr("Node_1"),
-	// 	RegisterTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-17T03:44:55.8012825Z"); return t}()),
+	// 	RegisterTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-17T03:44:55.801Z"); return t}()),
 	// 	Status: to.Ptr(armdatafactory.SelfHostedIntegrationRuntimeNodeStatusOnline),
 	// 	Version: to.Ptr("3.8.6743.6"),
 	// 	VersionStatus: to.Ptr("UpToDate"),

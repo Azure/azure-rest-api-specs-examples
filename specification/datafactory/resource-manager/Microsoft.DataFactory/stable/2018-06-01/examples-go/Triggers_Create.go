@@ -8,10 +8,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/5c9459305484e0456b4a922e3d31a61e2ddd3c99/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/69ece3818b8b0929b43a07c3fe25716427734882/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_Create.json
 func ExampleTriggersClient_CreateOrUpdate_triggersCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -39,10 +39,10 @@ func ExampleTriggersClient_CreateOrUpdate_triggersCreate() {
 				}},
 			TypeProperties: &armdatafactory.ScheduleTriggerTypeProperties{
 				Recurrence: &armdatafactory.ScheduleTriggerRecurrence{
-					EndTime:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:55:13.8441801Z"); return t }()),
+					EndTime:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:55:13.844Z"); return t }()),
 					Frequency: to.Ptr(armdatafactory.RecurrenceFrequencyMinute),
 					Interval:  to.Ptr[int32](4),
-					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:39:13.8441801Z"); return t }()),
+					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:39:13.844Z"); return t }()),
 					TimeZone:  to.Ptr("UTC"),
 				},
 			},
@@ -76,10 +76,10 @@ func ExampleTriggersClient_CreateOrUpdate_triggersCreate() {
 	// 		}},
 	// 		TypeProperties: &armdatafactory.ScheduleTriggerTypeProperties{
 	// 			Recurrence: &armdatafactory.ScheduleTriggerRecurrence{
-	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:55:13.8441801Z"); return t}()),
+	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:55:13.844Z"); return t}()),
 	// 				Frequency: to.Ptr(armdatafactory.RecurrenceFrequencyMinute),
 	// 				Interval: to.Ptr[int32](4),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:39:13.8441801Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-16T00:39:13.844Z"); return t}()),
 	// 				TimeZone: to.Ptr("UTC"),
 	// 			},
 	// 		},

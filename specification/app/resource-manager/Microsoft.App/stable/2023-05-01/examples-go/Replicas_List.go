@@ -45,7 +45,7 @@ func ExampleContainerAppsRevisionReplicasClient_ListReplicas() {
 	// 						RunningStateDetails: to.Ptr("testDetail"),
 	// 						Started: to.Ptr(true),
 	// 				}},
-	// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-25T19:42:45Z"); return t}()),
+	// 				CreatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-25T19:42:45.000Z"); return t}()),
 	// 				InitContainers: []*armappcontainers.ReplicaContainer{
 	// 				},
 	// 				RunningState: to.Ptr(armappcontainers.ContainerAppReplicaRunningStateRunning),

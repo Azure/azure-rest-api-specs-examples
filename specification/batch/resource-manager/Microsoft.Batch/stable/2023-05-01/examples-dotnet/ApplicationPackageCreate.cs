@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Batch;
+using Azure.ResourceManager.Batch.Models;
 
 // Generated from example definition: specification/batch/resource-manager/Microsoft.Batch/stable/2023-05-01/examples/ApplicationPackageCreate.json
 // this example is just showing the usage of "ApplicationPackage_Create" operation, for the dependent resources, they will have to be created separately.
@@ -14,22 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BatchApplicationResource created on azure
-// for more information of creating BatchApplicationResource, please refer to the document of BatchApplicationResource
+// this example assumes you already have this BatchApplicationPackageResource created on azure
+// for more information of creating BatchApplicationPackageResource, please refer to the document of BatchApplicationPackageResource
 string subscriptionId = "subid";
 string resourceGroupName = "default-azurebatch-japaneast";
 string accountName = "sampleacct";
 string applicationName = "app1";
-ResourceIdentifier batchApplicationResourceId = BatchApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, applicationName);
-BatchApplicationResource batchApplication = client.GetBatchApplicationResource(batchApplicationResourceId);
-
-// get the collection of this BatchApplicationPackageResource
-BatchApplicationPackageCollection collection = batchApplication.GetBatchApplicationPackages();
+string versionName = "1";
+ResourceIdentifier batchApplicationPackageResourceId = BatchApplicationPackageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, applicationName, versionName);
+BatchApplicationPackageResource batchApplicationPackage = client.GetBatchApplicationPackageResource(batchApplicationPackageResourceId);
 
 // invoke the operation
-string versionName = "1";
 BatchApplicationPackageData data = new BatchApplicationPackageData();
-ArmOperation<BatchApplicationPackageResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, versionName, data);
+ArmOperation<BatchApplicationPackageResource> lro = await batchApplicationPackage.UpdateAsync(WaitUntil.Completed, data);
 BatchApplicationPackageResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

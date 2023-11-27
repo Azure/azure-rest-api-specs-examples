@@ -33,12 +33,12 @@ func ExampleDpsCertificateClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/91d12660-3dec-467a-be2a-213b5544ddc0/resourceGroups/myResourceGroup/providers/Microsoft.Devices/IotHubs/andbuc-hub/certificates/cert"),
 	// 	Properties: &armdeviceprovisioningservices.CertificateProperties{
 	// 		Certificate: []byte("######################################"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Thu, 12 Oct 2017 19:23:50 GMT"); return t}()),
-	// 		Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Sat, 31 Dec 2039 23:59:59 GMT"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2017-10-12T19:23:50.000Z"); return t}()),
+	// 		Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2039-12-31T23:59:59.000Z"); return t}()),
 	// 		IsVerified: to.Ptr(false),
 	// 		Subject: to.Ptr("CN=testdevice1"),
 	// 		Thumbprint: to.Ptr("97388663832D0393C9246CAB4FBA2C8677185A25"),
-	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "Thu, 12 Oct 2017 19:23:50 GMT"); return t}()),
+	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2017-10-12T19:23:50.000Z"); return t}()),
 	// 	},
 	// }
 }

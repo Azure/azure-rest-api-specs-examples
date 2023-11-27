@@ -46,8 +46,8 @@ func ExampleExportsClient_Get_exportGetByManagementGroup() {
 	// 					Granularity: to.Ptr(armcostmanagement.GranularityTypeDaily),
 	// 				},
 	// 				TimePeriod: &armcostmanagement.ExportTimePeriod{
-	// 					From: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-01T00:00:00Z"); return t}()),
-	// 					To: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-31T00:00:00Z"); return t}()),
+	// 					From: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-09-01T00:00:00.000Z"); return t}()),
+	// 					To: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-31T00:00:00.000Z"); return t}()),
 	// 				},
 	// 				Timeframe: to.Ptr(armcostmanagement.TimeframeTypeCustom),
 	// 			},

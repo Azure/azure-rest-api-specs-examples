@@ -66,8 +66,8 @@ func ExampleForecastClient_ExternalCloudProviderUsage_externalSubscriptionForeca
 			Granularity: to.Ptr(armcostmanagement.GranularityTypeDaily),
 		},
 		TimePeriod: &armcostmanagement.ForecastTimePeriod{
-			From: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-01T00:00:00+00:00"); return t }()),
-			To:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-31T23:59:59+00:00"); return t }()),
+			From: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-01T00:00:00.000Z"); return t }()),
+			To:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-31T23:59:59.000Z"); return t }()),
 		},
 		Timeframe: to.Ptr(armcostmanagement.ForecastTimeframeCustom),
 	}, &armcostmanagement.ForecastClientExternalCloudProviderUsageOptions{Filter: nil})

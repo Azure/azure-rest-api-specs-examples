@@ -53,8 +53,8 @@ func ExampleDimensionsClient_NewListPager_billingProfileDimensionsListWithFilter
 		// 					FilterEnabled: to.Ptr(true),
 		// 					GroupingEnabled: to.Ptr(true),
 		// 					Total: to.Ptr[int32](1409),
-		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-31T00:00:00-07:00"); return t}()),
-		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-01T00:00:00-07:00"); return t}()),
+		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-31T07:00:00.000Z"); return t}()),
+		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-10-01T07:00:00.000Z"); return t}()),
 		// 				},
 		// 		}},
 		// 	}

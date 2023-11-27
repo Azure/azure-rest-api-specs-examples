@@ -52,8 +52,8 @@ func ExampleDimensionsClient_NewByExternalCloudProviderTypePager_externalBilling
 		// 					FilterEnabled: to.Ptr(true),
 		// 					GroupingEnabled: to.Ptr(true),
 		// 					Total: to.Ptr[int32](0),
-		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-31T00:00:00Z"); return t}()),
-		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T00:00:00Z"); return t}()),
+		// 					UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-31T00:00:00.000Z"); return t}()),
+		// 					UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T00:00:00.000Z"); return t}()),
 		// 				},
 		// 			},
 		// 			{
@@ -72,8 +72,8 @@ func ExampleDimensionsClient_NewByExternalCloudProviderTypePager_externalBilling
 		// 						FilterEnabled: to.Ptr(true),
 		// 						GroupingEnabled: to.Ptr(true),
 		// 						Total: to.Ptr[int32](0),
-		// 						UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-31T00:00:00Z"); return t}()),
-		// 						UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T00:00:00Z"); return t}()),
+		// 						UsageEnd: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-31T00:00:00.000Z"); return t}()),
+		// 						UsageStart: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T00:00:00.000Z"); return t}()),
 		// 					},
 		// 			}},
 		// 		}

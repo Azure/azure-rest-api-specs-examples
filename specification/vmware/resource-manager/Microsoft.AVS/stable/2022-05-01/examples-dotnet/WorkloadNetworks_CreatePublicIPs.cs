@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudResource created on azure
-// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
+// this example assumes you already have this WorkloadNetworkPublicIPResource created on azure
+// for more information of creating WorkloadNetworkPublicIPResource, please refer to the document of WorkloadNetworkPublicIPResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
-AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
-
-// get the collection of this WorkloadNetworkPublicIPResource
-WorkloadNetworkPublicIPCollection collection = avsPrivateCloud.GetWorkloadNetworkPublicIPs();
+string publicIPId = "publicIP1";
+ResourceIdentifier workloadNetworkPublicIPResourceId = WorkloadNetworkPublicIPResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, publicIPId);
+WorkloadNetworkPublicIPResource workloadNetworkPublicIP = client.GetWorkloadNetworkPublicIPResource(workloadNetworkPublicIPResourceId);
 
 // invoke the operation
-string publicIPId = "publicIP1";
 WorkloadNetworkPublicIPData data = new WorkloadNetworkPublicIPData()
 {
     DisplayName = "publicIP1",
     NumberOfPublicIPs = 32,
 };
-ArmOperation<WorkloadNetworkPublicIPResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, publicIPId, data);
+ArmOperation<WorkloadNetworkPublicIPResource> lro = await workloadNetworkPublicIP.UpdateAsync(WaitUntil.Completed, data);
 WorkloadNetworkPublicIPResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HcxEnterpriseSiteResource created on azure
-// for more information of creating HcxEnterpriseSiteResource, please refer to the document of HcxEnterpriseSiteResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string hcxEnterpriseSiteName = "site1";
-ResourceIdentifier hcxEnterpriseSiteResourceId = HcxEnterpriseSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, hcxEnterpriseSiteName);
-HcxEnterpriseSiteResource hcxEnterpriseSite = client.GetHcxEnterpriseSiteResource(hcxEnterpriseSiteResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this HcxEnterpriseSiteResource
+HcxEnterpriseSiteCollection collection = avsPrivateCloud.GetHcxEnterpriseSites();
 
 // invoke the operation
+string hcxEnterpriseSiteName = "site1";
 HcxEnterpriseSiteData data = new HcxEnterpriseSiteData();
-ArmOperation<HcxEnterpriseSiteResource> lro = await hcxEnterpriseSite.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HcxEnterpriseSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, hcxEnterpriseSiteName, data);
 HcxEnterpriseSiteResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

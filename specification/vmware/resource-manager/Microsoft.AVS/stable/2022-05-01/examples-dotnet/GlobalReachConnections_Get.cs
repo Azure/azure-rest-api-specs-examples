@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GlobalReachConnectionResource created on azure
-// for more information of creating GlobalReachConnectionResource, please refer to the document of GlobalReachConnectionResource
+// this example assumes you already have this AvsPrivateCloudResource created on azure
+// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-string globalReachConnectionName = "connection1";
-ResourceIdentifier globalReachConnectionResourceId = GlobalReachConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, globalReachConnectionName);
-GlobalReachConnectionResource globalReachConnection = client.GetGlobalReachConnectionResource(globalReachConnectionResourceId);
+ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
+AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
+
+// get the collection of this GlobalReachConnectionResource
+GlobalReachConnectionCollection collection = avsPrivateCloud.GetGlobalReachConnections();
 
 // invoke the operation
-GlobalReachConnectionResource result = await globalReachConnection.GetAsync();
+string globalReachConnectionName = "connection1";
+NullableResponse<GlobalReachConnectionResource> response = await collection.GetIfExistsAsync(globalReachConnectionName);
+GlobalReachConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GlobalReachConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GlobalReachConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

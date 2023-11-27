@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudResource created on azure
-// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
+// this example assumes you already have this WorkloadNetworkDnsServiceResource created on azure
+// for more information of creating WorkloadNetworkDnsServiceResource, please refer to the document of WorkloadNetworkDnsServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
-AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
-
-// get the collection of this WorkloadNetworkDnsServiceResource
-WorkloadNetworkDnsServiceCollection collection = avsPrivateCloud.GetWorkloadNetworkDnsServices();
+string dnsServiceId = "dnsService1";
+ResourceIdentifier workloadNetworkDnsServiceResourceId = WorkloadNetworkDnsServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, dnsServiceId);
+WorkloadNetworkDnsServiceResource workloadNetworkDnsService = client.GetWorkloadNetworkDnsServiceResource(workloadNetworkDnsServiceResourceId);
 
 // invoke the operation
-string dnsServiceId = "dnsService1";
-bool result = await collection.ExistsAsync(dnsServiceId);
+WorkloadNetworkDnsServiceResource result = await workloadNetworkDnsService.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WorkloadNetworkDnsServiceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

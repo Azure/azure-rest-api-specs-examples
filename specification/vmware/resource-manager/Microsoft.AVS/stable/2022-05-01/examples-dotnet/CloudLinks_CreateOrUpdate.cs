@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AvsPrivateCloudResource created on azure
-// for more information of creating AvsPrivateCloudResource, please refer to the document of AvsPrivateCloudResource
+// this example assumes you already have this AvsCloudLinkResource created on azure
+// for more information of creating AvsCloudLinkResource, please refer to the document of AvsCloudLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "group1";
 string privateCloudName = "cloud1";
-ResourceIdentifier avsPrivateCloudResourceId = AvsPrivateCloudResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName);
-AvsPrivateCloudResource avsPrivateCloud = client.GetAvsPrivateCloudResource(avsPrivateCloudResourceId);
-
-// get the collection of this AvsCloudLinkResource
-AvsCloudLinkCollection collection = avsPrivateCloud.GetAvsCloudLinks();
+string cloudLinkName = "cloudLink1";
+ResourceIdentifier avsCloudLinkResourceId = AvsCloudLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, privateCloudName, cloudLinkName);
+AvsCloudLinkResource avsCloudLink = client.GetAvsCloudLinkResource(avsCloudLinkResourceId);
 
 // invoke the operation
-string cloudLinkName = "cloudLink1";
 AvsCloudLinkData data = new AvsCloudLinkData()
 {
     LinkedCloud = new ResourceIdentifier("/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2"),
 };
-ArmOperation<AvsCloudLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cloudLinkName, data);
+ArmOperation<AvsCloudLinkResource> lro = await avsCloudLink.UpdateAsync(WaitUntil.Completed, data);
 AvsCloudLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

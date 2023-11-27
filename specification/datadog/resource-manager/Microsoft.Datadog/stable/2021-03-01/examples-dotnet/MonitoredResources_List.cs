@@ -26,7 +26,7 @@ ResourceIdentifier datadogMonitorResourceId = DatadogMonitorResource.CreateResou
 DatadogMonitorResource datadogMonitorResource = client.GetDatadogMonitorResource(datadogMonitorResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (MonitoredResource item in datadogMonitorResource.GetMonitoredResourcesAsync())
+await foreach (MonitoredResourceContent item in datadogMonitorResource.GetMonitoredResourcesAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

@@ -22,6 +22,6 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-DatadogAgreementResource result = await subscriptionResource.CreateOrUpdateMarketplaceAgreementAsync();
+DatadogAgreementResourceProperties result = await subscriptionResource.CreateOrUpdateMarketplaceAgreementAsync();
 
 Console.WriteLine($"Succeeded: {result}");

@@ -73,7 +73,7 @@ ArtifactData data = new TemplateArtifact(BinaryData.FromObjectAsJson(new Diction
 {
     ["storageAccountType"] = new ParameterValue()
     {
-        Value = BinaryData.FromString("[parameters('storageAccountType')]"),
+        Value = BinaryData.FromString("\"[parameters('storageAccountType')]\""),
     },
 })
 {

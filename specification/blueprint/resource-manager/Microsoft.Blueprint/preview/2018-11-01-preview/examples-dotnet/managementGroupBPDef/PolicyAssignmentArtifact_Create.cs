@@ -32,11 +32,11 @@ ArtifactData data = new PolicyAssignmentArtifact("/providers/Microsoft.Authoriza
 {
     ["tagName"] = new ParameterValue()
     {
-        Value = BinaryData.FromString("costCenter"),
+        Value = BinaryData.FromString("\"costCenter\""),
     },
     ["tagValue"] = new ParameterValue()
     {
-        Value = BinaryData.FromString("[parameter('costCenter')]"),
+        Value = BinaryData.FromString("\"[parameter('costCenter')]\""),
     },
 })
 {

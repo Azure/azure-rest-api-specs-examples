@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HubResource created on azure
-// for more information of creating HubResource, please refer to the document of HubResource
+// this example assumes you already have this PredictionResourceFormatResource created on azure
+// for more information of creating PredictionResourceFormatResource, please refer to the document of PredictionResourceFormatResource
 string subscriptionId = "c909e979-ef71-4def-a970-bc7c154db8c5";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
-HubResource hub = client.GetHubResource(hubResourceId);
-
-// get the collection of this PredictionResourceFormatResource
-PredictionResourceFormatCollection collection = hub.GetPredictionResourceFormats();
+string predictionName = "sdktest";
+ResourceIdentifier predictionResourceFormatResourceId = PredictionResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, predictionName);
+PredictionResourceFormatResource predictionResourceFormat = client.GetPredictionResourceFormatResource(predictionResourceFormatResourceId);
 
 // invoke the operation
-string predictionName = "sdktest";
-bool result = await collection.ExistsAsync(predictionName);
+PredictionResourceFormatResource result = await predictionResourceFormat.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PredictionResourceFormatData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

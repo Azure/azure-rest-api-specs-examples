@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KpiResourceFormatResource created on azure
-// for more information of creating KpiResourceFormatResource, please refer to the document of KpiResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
-string kpiName = "kpiTest45453647";
-ResourceIdentifier kpiResourceFormatResourceId = KpiResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, kpiName);
-KpiResourceFormatResource kpiResourceFormat = client.GetKpiResourceFormatResource(kpiResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this KpiResourceFormatResource
+KpiResourceFormatCollection collection = hub.GetKpiResourceFormats();
 
 // invoke the operation
+string kpiName = "kpiTest45453647";
 KpiResourceFormatData data = new KpiResourceFormatData()
 {
     EntityType = EntityType.Profile,
@@ -51,7 +54,7 @@ KpiResourceFormatData data = new KpiResourceFormatData()
     new KpiAlias("alias","Id+4")
     },
 };
-ArmOperation<KpiResourceFormatResource> lro = await kpiResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<KpiResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, kpiName, data);
 KpiResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

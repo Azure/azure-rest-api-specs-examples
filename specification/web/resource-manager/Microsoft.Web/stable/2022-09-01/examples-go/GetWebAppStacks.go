@@ -112,7 +112,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-03T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-03T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("3.0.103"),
@@ -125,7 +125,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-03T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-03T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("3.0.103"),
@@ -149,7 +149,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-23T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-23T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.2.207"),
@@ -162,7 +162,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-23T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-23T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.2.207"),
@@ -181,7 +181,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-21T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-21T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.1.807"),
@@ -193,7 +193,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-21T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-21T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.1.807"),
@@ -211,7 +211,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.1.202"),
@@ -224,7 +224,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.1.202"),
@@ -248,7 +248,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("1.1.14"),
@@ -261,7 +261,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("1.1.14"),
@@ -280,7 +280,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("1.1.14"),
@@ -293,7 +293,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-27T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("1.1.14"),
@@ -394,7 +394,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("14.x"),
@@ -418,7 +418,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("12.x"),
@@ -430,7 +430,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -447,7 +447,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("12.x"),
@@ -471,7 +471,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -489,7 +489,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -508,7 +508,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -528,7 +528,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -540,7 +540,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -558,7 +558,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -577,7 +577,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -590,7 +590,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -608,7 +608,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -620,7 +620,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -637,7 +637,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("10.x"),
@@ -660,7 +660,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -683,7 +683,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -701,7 +701,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -719,7 +719,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -731,7 +731,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -749,7 +749,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -767,7 +767,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -779,7 +779,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -797,7 +797,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -815,7 +815,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -833,7 +833,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -851,7 +851,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -869,7 +869,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -881,7 +881,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -899,7 +899,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-31T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -922,7 +922,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -945,7 +945,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -963,7 +963,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -981,7 +981,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -999,7 +999,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1017,7 +1017,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1029,7 +1029,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1047,7 +1047,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1065,7 +1065,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1083,7 +1083,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1106,7 +1106,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1118,7 +1118,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1136,7 +1136,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1154,7 +1154,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 										},
@@ -1255,7 +1255,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.7"),
@@ -1268,7 +1268,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("2.7"),
@@ -1303,7 +1303,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-12-28T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-12-28T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1314,7 +1314,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-12-28T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-12-28T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1331,7 +1331,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-06T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-06T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1342,7 +1342,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-06T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-06T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1359,7 +1359,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1370,7 +1370,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-30T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-30T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1387,7 +1387,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1405,7 +1405,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1417,7 +1417,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1440,7 +1440,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-09-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-09-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1452,7 +1452,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-09-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-09-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1550,7 +1550,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1568,7 +1568,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1586,7 +1586,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1604,7 +1604,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1622,7 +1622,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -1656,7 +1656,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1669,7 +1669,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1688,7 +1688,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1700,7 +1700,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1718,7 +1718,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1730,7 +1730,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1748,7 +1748,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1760,7 +1760,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1778,7 +1778,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1796,7 +1796,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2026-10-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("11"),
@@ -1819,7 +1819,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1832,7 +1832,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1851,7 +1851,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1863,7 +1863,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1881,7 +1881,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1893,7 +1893,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1911,7 +1911,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1923,7 +1923,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1941,7 +1941,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1959,7 +1959,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -1995,7 +1995,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -2031,7 +2031,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -2067,7 +2067,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -2103,7 +2103,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -2121,7 +2121,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2025-04-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(true),
 		// 											SupportedVersion: to.Ptr("8"),
@@ -2198,7 +2198,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -2217,7 +2217,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -2235,7 +2235,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -2253,7 +2253,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
@@ -2271,7 +2271,7 @@ func ExampleProviderClient_NewGetWebAppStacksPager() {
 		// 										AppInsightsSettings: &armappservice.AppInsightsWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},
-		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00+00:00"); return t}()),
+		// 										EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-08-01T00:00:00.000Z"); return t}()),
 		// 										GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 											IsSupported: to.Ptr(false),
 		// 										},

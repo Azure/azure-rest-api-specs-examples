@@ -39,7 +39,7 @@ func ExampleEnvironmentsClient_NewListUsagesPager() {
 		// 			},
 		// 			CurrentValue: to.Ptr[int64](37888),
 		// 			Limit: to.Ptr[int64](1099511627776),
-		// 			NextResetTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.9999999Z"); return t}()),
+		// 			NextResetTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T23:59:59.999Z"); return t}()),
 		// 			Unit: to.Ptr("Bytes"),
 		// 	}},
 		// }

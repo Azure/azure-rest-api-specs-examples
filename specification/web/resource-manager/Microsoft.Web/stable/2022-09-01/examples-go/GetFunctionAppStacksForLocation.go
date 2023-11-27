@@ -672,7 +672,7 @@ func ExampleProviderClient_NewGetFunctionAppStacksForLocationPager() {
 		// 																															AppSettingsDictionary: map[string]*string{
 		// 																																"FUNCTIONS_WORKER_RUNTIME": to.Ptr("powershell"),
 		// 																															},
-		// 																															EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-04T00:00:00+00:00"); return t}()),
+		// 																															EndOfLifeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-04T00:00:00.000Z"); return t}()),
 		// 																															GitHubActionSettings: &armappservice.GitHubActionWebAppStackSettings{
 		// 																																IsSupported: to.Ptr(false),
 		// 																															},

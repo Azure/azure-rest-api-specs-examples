@@ -45,7 +45,7 @@ func ExampleServersClient_NewListByResourceGroupPager() {
 		// 				AvailabilityZone: to.Ptr("1"),
 		// 				Backup: &armmysqlflexibleservers.Backup{
 		// 					BackupRetentionDays: to.Ptr[int32](7),
-		// 					EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T07:08:17.4259886+00:00"); return t}()),
+		// 					EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T07:08:17.425Z"); return t}()),
 		// 					GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 		// 				},
 		// 				FullyQualifiedDomainName: to.Ptr("mysqltestserver1.database.mysql.azure.com"),
@@ -91,7 +91,7 @@ func ExampleServersClient_NewListByResourceGroupPager() {
 		// 				AvailabilityZone: to.Ptr("2"),
 		// 				Backup: &armmysqlflexibleservers.Backup{
 		// 					BackupRetentionDays: to.Ptr[int32](7),
-		// 					EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T07:08:17.4259886+00:00"); return t}()),
+		// 					EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T07:08:17.425Z"); return t}()),
 		// 					GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 		// 				},
 		// 				FullyQualifiedDomainName: to.Ptr("mysqltestserver2.mysql.database.azure.com"),
@@ -137,7 +137,7 @@ func ExampleServersClient_NewListByResourceGroupPager() {
 		// 				AvailabilityZone: to.Ptr("1"),
 		// 				Backup: &armmysqlflexibleservers.Backup{
 		// 					BackupRetentionDays: to.Ptr[int32](7),
-		// 					EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T06:28:19.0611667+00:00"); return t}()),
+		// 					EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T06:28:19.061Z"); return t}()),
 		// 					GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 		// 				},
 		// 				FullyQualifiedDomainName: to.Ptr("mysqltestserver3.mysql.database.azure.com"),

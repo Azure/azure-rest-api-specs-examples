@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.KeyVault;
-using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-02-01/examples/getDeletedVault.json
 // this example is just showing the usage of "Vaults_GetDeleted" operation, for the dependent resources, they will have to be created separately.
@@ -14,18 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this DeletedKeyVaultResource created on azure
+// for more information of creating DeletedKeyVaultResource, please refer to the document of DeletedKeyVaultResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this DeletedKeyVaultResource
-DeletedKeyVaultCollection collection = subscriptionResource.GetDeletedKeyVaults();
-
-// invoke the operation
 AzureLocation location = new AzureLocation("westus");
 string vaultName = "sample-vault";
-bool result = await collection.ExistsAsync(location, vaultName);
+ResourceIdentifier deletedKeyVaultResourceId = DeletedKeyVaultResource.CreateResourceIdentifier(subscriptionId, location, vaultName);
+DeletedKeyVaultResource deletedKeyVault = client.GetDeletedKeyVaultResource(deletedKeyVaultResourceId);
 
-Console.WriteLine($"Succeeded: {result}");
+// invoke the operation
+DeletedKeyVaultResource result = await deletedKeyVault.GetAsync();
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DeletedKeyVaultData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

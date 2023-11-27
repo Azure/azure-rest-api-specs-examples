@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this FailoverGroupResource created on azure
+// for more information of creating FailoverGroupResource, please refer to the document of FailoverGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string serverName = "failovergroupprimaryserver";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this FailoverGroupResource
-FailoverGroupCollection collection = sqlServer.GetFailoverGroups();
+string failoverGroupName = "failovergrouptest3";
+ResourceIdentifier failoverGroupResourceId = FailoverGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, failoverGroupName);
+FailoverGroupResource failoverGroup = client.GetFailoverGroupResource(failoverGroupResourceId);
 
 // invoke the operation
-string failoverGroupName = "failovergrouptest3";
-NullableResponse<FailoverGroupResource> response = await collection.GetIfExistsAsync(failoverGroupName);
-FailoverGroupResource result = response.HasValue ? response.Value : null;
+FailoverGroupResource result = await failoverGroup.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FailoverGroupData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FailoverGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

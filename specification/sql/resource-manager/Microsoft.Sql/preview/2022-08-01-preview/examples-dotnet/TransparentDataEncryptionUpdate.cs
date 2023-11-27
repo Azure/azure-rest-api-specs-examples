@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseResource created on azure
-// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
+// this example assumes you already have this LogicalDatabaseTransparentDataEncryptionResource created on azure
+// for more information of creating LogicalDatabaseTransparentDataEncryptionResource, please refer to the document of LogicalDatabaseTransparentDataEncryptionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securitytde-42-rg";
 string serverName = "securitytde-42";
 string databaseName = "testdb";
-ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
-
-// get the collection of this LogicalDatabaseTransparentDataEncryptionResource
-LogicalDatabaseTransparentDataEncryptionCollection collection = sqlDatabase.GetLogicalDatabaseTransparentDataEncryptions();
+TransparentDataEncryptionName tdeName = TransparentDataEncryptionName.Current;
+ResourceIdentifier logicalDatabaseTransparentDataEncryptionResourceId = LogicalDatabaseTransparentDataEncryptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, tdeName);
+LogicalDatabaseTransparentDataEncryptionResource logicalDatabaseTransparentDataEncryption = client.GetLogicalDatabaseTransparentDataEncryptionResource(logicalDatabaseTransparentDataEncryptionResourceId);
 
 // invoke the operation
-TransparentDataEncryptionName tdeName = TransparentDataEncryptionName.Current;
 LogicalDatabaseTransparentDataEncryptionData data = new LogicalDatabaseTransparentDataEncryptionData()
 {
     State = TransparentDataEncryptionState.Enabled,
 };
-ArmOperation<LogicalDatabaseTransparentDataEncryptionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tdeName, data);
+ArmOperation<LogicalDatabaseTransparentDataEncryptionResource> lro = await logicalDatabaseTransparentDataEncryption.UpdateAsync(WaitUntil.Completed, data);
 LogicalDatabaseTransparentDataEncryptionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

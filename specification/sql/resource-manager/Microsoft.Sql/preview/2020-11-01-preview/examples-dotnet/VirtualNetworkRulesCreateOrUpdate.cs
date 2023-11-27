@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this SqlServerVirtualNetworkRuleResource created on azure
+// for more information of creating SqlServerVirtualNetworkRuleResource, please refer to the document of SqlServerVirtualNetworkRuleResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string serverName = "vnet-test-svr";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this SqlServerVirtualNetworkRuleResource
-SqlServerVirtualNetworkRuleCollection collection = sqlServer.GetSqlServerVirtualNetworkRules();
+string virtualNetworkRuleName = "vnet-firewall-rule";
+ResourceIdentifier sqlServerVirtualNetworkRuleResourceId = SqlServerVirtualNetworkRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, virtualNetworkRuleName);
+SqlServerVirtualNetworkRuleResource sqlServerVirtualNetworkRule = client.GetSqlServerVirtualNetworkRuleResource(sqlServerVirtualNetworkRuleResourceId);
 
 // invoke the operation
-string virtualNetworkRuleName = "vnet-firewall-rule";
 SqlServerVirtualNetworkRuleData data = new SqlServerVirtualNetworkRuleData()
 {
     VirtualNetworkSubnetId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/testsubnet"),
     IgnoreMissingVnetServiceEndpoint = false,
 };
-ArmOperation<SqlServerVirtualNetworkRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkRuleName, data);
+ArmOperation<SqlServerVirtualNetworkRuleResource> lro = await sqlServerVirtualNetworkRule.UpdateAsync(WaitUntil.Completed, data);
 SqlServerVirtualNetworkRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Sql;
+using Azure.ResourceManager.Sql.Models;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/CreateOrUpdateJobExecution.json
 // this example is just showing the usage of "JobExecutions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -14,19 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobExecutionResource created on azure
-// for more information of creating SqlServerJobExecutionResource, please refer to the document of SqlServerJobExecutionResource
+// this example assumes you already have this SqlServerJobResource created on azure
+// for more information of creating SqlServerJobResource, please refer to the document of SqlServerJobResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
 string jobAgentName = "agent1";
 string jobName = "job1";
-Guid jobExecutionId = Guid.Parse("5A86BF65-43AC-F258-2524-9E92992F97CA");
-ResourceIdentifier sqlServerJobExecutionResourceId = SqlServerJobExecutionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName, jobExecutionId);
-SqlServerJobExecutionResource sqlServerJobExecution = client.GetSqlServerJobExecutionResource(sqlServerJobExecutionResourceId);
+ResourceIdentifier sqlServerJobResourceId = SqlServerJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName);
+SqlServerJobResource sqlServerJob = client.GetSqlServerJobResource(sqlServerJobResourceId);
+
+// get the collection of this SqlServerJobExecutionResource
+SqlServerJobExecutionCollection collection = sqlServerJob.GetSqlServerJobExecutions();
 
 // invoke the operation
-ArmOperation<SqlServerJobExecutionResource> lro = await sqlServerJobExecution.UpdateAsync(WaitUntil.Completed);
+Guid jobExecutionId = Guid.Parse("5A86BF65-43AC-F258-2524-9E92992F97CA");
+ArmOperation<SqlServerJobExecutionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, jobExecutionId);
 SqlServerJobExecutionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

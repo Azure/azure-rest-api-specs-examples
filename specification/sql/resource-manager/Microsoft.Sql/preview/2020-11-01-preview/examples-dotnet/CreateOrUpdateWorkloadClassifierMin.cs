@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkloadGroupResource created on azure
-// for more information of creating WorkloadGroupResource, please refer to the document of WorkloadGroupResource
+// this example assumes you already have this WorkloadClassifierResource created on azure
+// for more information of creating WorkloadClassifierResource, please refer to the document of WorkloadClassifierResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string serverName = "testsvr";
 string databaseName = "testdb";
 string workloadGroupName = "wlm_workloadgroup";
-ResourceIdentifier workloadGroupResourceId = WorkloadGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, workloadGroupName);
-WorkloadGroupResource workloadGroup = client.GetWorkloadGroupResource(workloadGroupResourceId);
-
-// get the collection of this WorkloadClassifierResource
-WorkloadClassifierCollection collection = workloadGroup.GetWorkloadClassifiers();
+string workloadClassifierName = "wlm_workloadclassifier";
+ResourceIdentifier workloadClassifierResourceId = WorkloadClassifierResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, workloadGroupName, workloadClassifierName);
+WorkloadClassifierResource workloadClassifier = client.GetWorkloadClassifierResource(workloadClassifierResourceId);
 
 // invoke the operation
-string workloadClassifierName = "wlm_workloadclassifier";
 WorkloadClassifierData data = new WorkloadClassifierData()
 {
     MemberName = "dbo",
 };
-ArmOperation<WorkloadClassifierResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workloadClassifierName, data);
+ArmOperation<WorkloadClassifierResource> lro = await workloadClassifier.UpdateAsync(WaitUntil.Completed, data);
 WorkloadClassifierResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

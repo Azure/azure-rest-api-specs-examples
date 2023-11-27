@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerConnectionPolicyResource created on azure
-// for more information of creating SqlServerConnectionPolicyResource, please refer to the document of SqlServerConnectionPolicyResource
+// this example assumes you already have this SqlServerResource created on azure
+// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
 string serverName = "testserver";
-ConnectionPolicyName connectionPolicyName = ConnectionPolicyName.Default;
-ResourceIdentifier sqlServerConnectionPolicyResourceId = SqlServerConnectionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, connectionPolicyName);
-SqlServerConnectionPolicyResource sqlServerConnectionPolicy = client.GetSqlServerConnectionPolicyResource(sqlServerConnectionPolicyResourceId);
+ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
+
+// get the collection of this SqlServerConnectionPolicyResource
+SqlServerConnectionPolicyCollection collection = sqlServer.GetSqlServerConnectionPolicies();
 
 // invoke the operation
+ConnectionPolicyName connectionPolicyName = ConnectionPolicyName.Default;
 SqlServerConnectionPolicyData data = new SqlServerConnectionPolicyData()
 {
     ConnectionType = ServerConnectionType.Redirect,
 };
-ArmOperation<SqlServerConnectionPolicyResource> lro = await sqlServerConnectionPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SqlServerConnectionPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionPolicyName, data);
 SqlServerConnectionPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

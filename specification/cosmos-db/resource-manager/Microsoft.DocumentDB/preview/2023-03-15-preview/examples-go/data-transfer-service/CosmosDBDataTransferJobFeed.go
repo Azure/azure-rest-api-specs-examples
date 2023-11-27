@@ -42,7 +42,7 @@ func ExampleDataTransferJobsClient_NewListByDatabaseAccountPager() {
 		// 					EndpointURL: to.Ptr("https://blob.windows.net"),
 		// 				},
 		// 				JobName: to.Ptr("j1"),
-		// 				LastUpdatedUTCTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-12T12:04:23.1530000Z"); return t}()),
+		// 				LastUpdatedUTCTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-12T12:04:23.153Z"); return t}()),
 		// 				ProcessedCount: to.Ptr[int64](100),
 		// 				Source: &armcosmos.CassandraDataTransferDataSourceSink{
 		// 					Component: to.Ptr(armcosmos.DataTransferComponentCosmosDBCassandra),

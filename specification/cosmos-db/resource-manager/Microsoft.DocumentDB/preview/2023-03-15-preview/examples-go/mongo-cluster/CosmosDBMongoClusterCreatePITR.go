@@ -27,7 +27,7 @@ func ExampleMongoClustersClient_BeginCreateOrUpdate_createANewMongoClusterWithPo
 		Properties: &armcosmos.MongoClusterProperties{
 			CreateMode: to.Ptr(armcosmos.CreateModePointInTimeRestore),
 			RestoreParameters: &armcosmos.MongoClusterRestoreParameters{
-				PointInTimeUTC:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-01-13T20:07:35Z"); return t }()),
+				PointInTimeUTC:   to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-01-13T20:07:35.000Z"); return t }()),
 				SourceResourceID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestResourceGroup/providers/Microsoft.DocumentDB/mongoClusters/myOtherMongoCluster"),
 			},
 		},

@@ -26,6 +26,18 @@ RoleEligibilityScheduleRequestCollection collection = client.GetRoleEligibilityS
 
 // invoke the operation
 string roleEligibilityScheduleRequestName = "64caffb6-55c0-4deb-a585-68e948ea1ad6";
-bool result = await collection.ExistsAsync(roleEligibilityScheduleRequestName);
+NullableResponse<RoleEligibilityScheduleRequestResource> response = await collection.GetIfExistsAsync(roleEligibilityScheduleRequestName);
+RoleEligibilityScheduleRequestResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RoleEligibilityScheduleRequestData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

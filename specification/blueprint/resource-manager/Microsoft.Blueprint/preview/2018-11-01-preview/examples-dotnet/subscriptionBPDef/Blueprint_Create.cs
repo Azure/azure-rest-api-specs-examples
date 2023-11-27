@@ -15,16 +15,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this BlueprintResource
+// this example assumes you already have this BlueprintResource created on azure
+// for more information of creating BlueprintResource, please refer to the document of BlueprintResource
 string resourceScope = "subscriptions/00000000-0000-0000-0000-000000000000";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceScope));
-BlueprintCollection collection = client.GetBlueprints(scopeId);
+string blueprintName = "simpleBlueprint";
+ResourceIdentifier blueprintResourceId = BlueprintResource.CreateResourceIdentifier(resourceScope, blueprintName);
+BlueprintResource blueprint = client.GetBlueprintResource(blueprintResourceId);
 
 // invoke the operation
-string blueprintName = "simpleBlueprint";
 BlueprintData data = new BlueprintData()
 {
     Description = "blueprint contains all artifact kinds {'template', 'rbac', 'policy'}",
@@ -53,7 +51,7 @@ BlueprintData data = new BlueprintData()
     },
     },
 };
-ArmOperation<BlueprintResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, blueprintName, data);
+ArmOperation<BlueprintResource> lro = await blueprint.UpdateAsync(WaitUntil.Completed, data);
 BlueprintResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

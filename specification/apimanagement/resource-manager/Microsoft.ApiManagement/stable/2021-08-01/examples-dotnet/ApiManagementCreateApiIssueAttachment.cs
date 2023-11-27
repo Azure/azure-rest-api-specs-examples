@@ -14,25 +14,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiIssueAttachmentResource created on azure
-// for more information of creating ApiIssueAttachmentResource, please refer to the document of ApiIssueAttachmentResource
+// this example assumes you already have this ApiIssueResource created on azure
+// for more information of creating ApiIssueResource, please refer to the document of ApiIssueResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "57d1f7558aa04f15146d9d8a";
 string issueId = "57d2ef278aa04f0ad01d6cdc";
-string attachmentId = "57d2ef278aa04f0888cba3f3";
-ResourceIdentifier apiIssueAttachmentResourceId = ApiIssueAttachmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId, attachmentId);
-ApiIssueAttachmentResource apiIssueAttachment = client.GetApiIssueAttachmentResource(apiIssueAttachmentResourceId);
+ResourceIdentifier apiIssueResourceId = ApiIssueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, issueId);
+ApiIssueResource apiIssue = client.GetApiIssueResource(apiIssueResourceId);
+
+// get the collection of this ApiIssueAttachmentResource
+ApiIssueAttachmentCollection collection = apiIssue.GetApiIssueAttachments();
 
 // invoke the operation
+string attachmentId = "57d2ef278aa04f0888cba3f3";
 ApiIssueAttachmentData data = new ApiIssueAttachmentData()
 {
     Title = "Issue attachment.",
     ContentFormat = "image/jpeg",
     Content = "IEJhc2U2NA==",
 };
-ArmOperation<ApiIssueAttachmentResource> lro = await apiIssueAttachment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ApiIssueAttachmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, attachmentId, data);
 ApiIssueAttachmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

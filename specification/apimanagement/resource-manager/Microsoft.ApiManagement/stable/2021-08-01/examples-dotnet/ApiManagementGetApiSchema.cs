@@ -28,6 +28,18 @@ ApiSchemaCollection collection = api.GetApiSchemas();
 
 // invoke the operation
 string schemaId = "ec12520d-9d48-4e7b-8f39-698ca2ac63f1";
-bool result = await collection.ExistsAsync(schemaId);
+NullableResponse<ApiSchemaResource> response = await collection.GetIfExistsAsync(schemaId);
+ApiSchemaResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiSchemaData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

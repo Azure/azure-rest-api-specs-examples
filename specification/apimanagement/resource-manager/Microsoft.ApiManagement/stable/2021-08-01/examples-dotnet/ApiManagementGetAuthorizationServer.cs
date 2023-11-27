@@ -28,6 +28,18 @@ ApiManagementAuthorizationServerCollection collection = apiManagementService.Get
 
 // invoke the operation
 string authsid = "newauthServer2";
-bool result = await collection.ExistsAsync(authsid);
+NullableResponse<ApiManagementAuthorizationServerResource> response = await collection.GetIfExistsAsync(authsid);
+ApiManagementAuthorizationServerResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiManagementAuthorizationServerData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

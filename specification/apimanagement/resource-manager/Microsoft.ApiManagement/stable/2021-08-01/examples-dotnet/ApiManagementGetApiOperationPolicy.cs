@@ -15,22 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiOperationPolicyResource created on azure
-// for more information of creating ApiOperationPolicyResource, please refer to the document of ApiOperationPolicyResource
+// this example assumes you already have this ApiOperationResource created on azure
+// for more information of creating ApiOperationResource, please refer to the document of ApiOperationResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5600b539c53f5b0062040001";
 string operationId = "5600b53ac53f5b0062080006";
-PolicyName policyId = PolicyName.Policy;
-ResourceIdentifier apiOperationPolicyResourceId = ApiOperationPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId, policyId);
-ApiOperationPolicyResource apiOperationPolicy = client.GetApiOperationPolicyResource(apiOperationPolicyResourceId);
+ResourceIdentifier apiOperationResourceId = ApiOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, operationId);
+ApiOperationResource apiOperation = client.GetApiOperationResource(apiOperationResourceId);
+
+// get the collection of this ApiOperationPolicyResource
+ApiOperationPolicyCollection collection = apiOperation.GetApiOperationPolicies();
 
 // invoke the operation
-ApiOperationPolicyResource result = await apiOperationPolicy.GetAsync();
+PolicyName policyId = PolicyName.Policy;
+NullableResponse<ApiOperationPolicyResource> response = await collection.GetIfExistsAsync(policyId);
+ApiOperationPolicyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PolicyContractData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PolicyContractData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

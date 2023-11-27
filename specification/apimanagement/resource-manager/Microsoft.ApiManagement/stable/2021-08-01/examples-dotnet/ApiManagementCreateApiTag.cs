@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiTagResource created on azure
-// for more information of creating ApiTagResource, please refer to the document of ApiTagResource
+// this example assumes you already have this ApiResource created on azure
+// for more information of creating ApiResource, please refer to the document of ApiResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5931a75ae4bbd512a88c680b";
-string tagId = "tagId1";
-ResourceIdentifier apiTagResourceId = ApiTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, tagId);
-ApiTagResource apiTag = client.GetApiTagResource(apiTagResourceId);
+ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
+ApiResource api = client.GetApiResource(apiResourceId);
+
+// get the collection of this ApiTagResource
+ApiTagCollection collection = api.GetApiTags();
 
 // invoke the operation
-ArmOperation<ApiTagResource> lro = await apiTag.UpdateAsync(WaitUntil.Completed);
+string tagId = "tagId1";
+ArmOperation<ApiTagResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tagId);
 ApiTagResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

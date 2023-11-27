@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementServiceResource created on azure
-// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
+// this example assumes you already have this ApiManagementTagResource created on azure
+// for more information of creating ApiManagementTagResource, please refer to the document of ApiManagementTagResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
-
-// get the collection of this ApiManagementTagResource
-ApiManagementTagCollection collection = apiManagementService.GetApiManagementTags();
+string tagId = "59306a29e4bbd510dc24e5f9";
+ResourceIdentifier apiManagementTagResourceId = ApiManagementTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, tagId);
+ApiManagementTagResource apiManagementTag = client.GetApiManagementTagResource(apiManagementTagResourceId);
 
 // invoke the operation
-string tagId = "59306a29e4bbd510dc24e5f9";
-bool result = await collection.ExistsAsync(tagId);
+ApiManagementTagResource result = await apiManagementTag.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+TagContractData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

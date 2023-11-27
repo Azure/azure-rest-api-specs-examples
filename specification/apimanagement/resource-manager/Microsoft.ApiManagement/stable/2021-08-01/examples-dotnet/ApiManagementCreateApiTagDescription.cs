@@ -15,24 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiTagDescriptionResource created on azure
-// for more information of creating ApiTagDescriptionResource, please refer to the document of ApiTagDescriptionResource
+// this example assumes you already have this ApiResource created on azure
+// for more information of creating ApiResource, please refer to the document of ApiResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string apiId = "5931a75ae4bbd512a88c680b";
-string tagDescriptionId = "tagId1";
-ResourceIdentifier apiTagDescriptionResourceId = ApiTagDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId, tagDescriptionId);
-ApiTagDescriptionResource apiTagDescription = client.GetApiTagDescriptionResource(apiTagDescriptionResourceId);
+ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
+ApiResource api = client.GetApiResource(apiResourceId);
+
+// get the collection of this ApiTagDescriptionResource
+ApiTagDescriptionCollection collection = api.GetApiTagDescriptions();
 
 // invoke the operation
+string tagDescriptionId = "tagId1";
 ApiTagDescriptionCreateOrUpdateContent content = new ApiTagDescriptionCreateOrUpdateContent()
 {
     Description = "Some description that will be displayed for operation's tag if the tag is assigned to operation of the API",
     ExternalDocsUri = new Uri("http://some.url/additionaldoc"),
     ExternalDocsDescription = "Description of the external docs resource",
 };
-ArmOperation<ApiTagDescriptionResource> lro = await apiTagDescription.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<ApiTagDescriptionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tagDescriptionId, content);
 ApiTagDescriptionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

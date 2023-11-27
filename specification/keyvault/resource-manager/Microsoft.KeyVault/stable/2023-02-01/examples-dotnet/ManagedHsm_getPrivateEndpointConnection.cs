@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedHsmPrivateEndpointConnectionResource created on azure
-// for more information of creating ManagedHsmPrivateEndpointConnectionResource, please refer to the document of ManagedHsmPrivateEndpointConnectionResource
+// this example assumes you already have this ManagedHsmResource created on azure
+// for more information of creating ManagedHsmResource, please refer to the document of ManagedHsmResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "sample-group";
 string name = "sample-mhsm";
-string privateEndpointConnectionName = "sample-pec";
-ResourceIdentifier managedHsmPrivateEndpointConnectionResourceId = ManagedHsmPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, privateEndpointConnectionName);
-ManagedHsmPrivateEndpointConnectionResource managedHsmPrivateEndpointConnection = client.GetManagedHsmPrivateEndpointConnectionResource(managedHsmPrivateEndpointConnectionResourceId);
+ResourceIdentifier managedHsmResourceId = ManagedHsmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+ManagedHsmResource managedHsm = client.GetManagedHsmResource(managedHsmResourceId);
+
+// get the collection of this ManagedHsmPrivateEndpointConnectionResource
+ManagedHsmPrivateEndpointConnectionCollection collection = managedHsm.GetManagedHsmPrivateEndpointConnections();
 
 // invoke the operation
-ManagedHsmPrivateEndpointConnectionResource result = await managedHsmPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "sample-pec";
+NullableResponse<ManagedHsmPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+ManagedHsmPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedHsmPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagedHsmPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

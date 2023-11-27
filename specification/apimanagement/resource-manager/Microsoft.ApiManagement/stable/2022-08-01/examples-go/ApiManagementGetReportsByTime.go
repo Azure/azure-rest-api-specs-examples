@@ -52,7 +52,7 @@ func ExampleReportsClient_NewListByTimePager() {
 		// 			ServiceTimeAvg: to.Ptr[float64](1255.917425),
 		// 			ServiceTimeMax: to.Ptr[float64](1697.3612),
 		// 			ServiceTimeMin: to.Ptr[float64](882.8264),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-03T00:15:00Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-03T00:15:00.000Z"); return t}()),
 		// 		},
 		// 		{
 		// 			APITimeAvg: to.Ptr[float64](872.7818777777778),
@@ -70,7 +70,7 @@ func ExampleReportsClient_NewListByTimePager() {
 		// 			ServiceTimeAvg: to.Ptr[float64](824.2847111111112),
 		// 			ServiceTimeMax: to.Ptr[float64](973.2262000000001),
 		// 			ServiceTimeMin: to.Ptr[float64](215.24),
-		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-03T00:30:00Z"); return t}()),
+		// 			Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-03T00:30:00.000Z"); return t}()),
 		// 	}},
 		// }
 	}

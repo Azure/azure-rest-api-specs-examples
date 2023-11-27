@@ -59,7 +59,7 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementCreateServiceWithNatG
 	// 	Properties: &armapimanagement.ServiceProperties{
 	// 		APIVersionConstraint: &armapimanagement.APIVersionConstraint{
 	// 		},
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-26T18:41:01.2506031Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-26T18:41:01.250Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("false"),
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("false"),
@@ -104,10 +104,10 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementCreateServiceWithNatG
 	// 				Capacity: to.Ptr[int32](1),
 	// 			},
 	// 			SystemData: &armapimanagement.SystemData{
-	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-11T18:41:00.9390609Z"); return t}()),
+	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-11T18:41:00.939Z"); return t}()),
 	// 				CreatedBy: to.Ptr("user@contoso.com"),
 	// 				CreatedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
-	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-11T18:41:00.9390609Z"); return t}()),
+	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-11T18:41:00.939Z"); return t}()),
 	// 				LastModifiedBy: to.Ptr("user@contoso.com"),
 	// 				LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 	// 			},

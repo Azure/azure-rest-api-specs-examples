@@ -39,13 +39,13 @@ func ExampleCertificateClient_CreateOrUpdate_apiManagementCreateCertificateWithK
 	// 	Type: to.Ptr("Microsoft.ApiManagement/service/certificates"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/templateCertkv"),
 	// 	Properties: &armapimanagement.CertificateContractProperties{
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2037-01-01T07:00:00Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2037-01-01T07:00:00.000Z"); return t}()),
 	// 		KeyVault: &armapimanagement.KeyVaultContractProperties{
 	// 			IdentityClientID: to.Ptr("ceaa6b06-c00f-43ef-99ac-f53d1fe876a0"),
 	// 			SecretIdentifier: to.Ptr("https://rpbvtkeyvaultintegration.vault-int.azure-int.net/secrets/msitestingCert"),
 	// 			LastStatus: &armapimanagement.KeyVaultLastAccessStatusContractProperties{
 	// 				Code: to.Ptr("Success"),
-	// 				TimeStampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-22T00:24:53.3191468Z"); return t}()),
+	// 				TimeStampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-22T00:24:53.319Z"); return t}()),
 	// 			},
 	// 		},
 	// 		Subject: to.Ptr("CN=*.msitesting.net"),

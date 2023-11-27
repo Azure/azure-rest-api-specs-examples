@@ -32,7 +32,7 @@ func ExamplePortalRevisionClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/portalRevisions/20201112101010"),
 	// 	Properties: &armapimanagement.PortalRevisionContractProperties{
 	// 		Description: to.Ptr("portal revision 1"),
-	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-12T22:51:36.47Z"); return t}()),
+	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-12T22:51:36.470Z"); return t}()),
 	// 		IsCurrent: to.Ptr(true),
 	// 		Status: to.Ptr(armapimanagement.PortalRevisionStatusCompleted),
 	// 		UpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-12T22:52:00.097Z"); return t}()),

@@ -91,7 +91,7 @@ func ExampleServiceClient_BeginUpdate_apiManagementUpdateServiceToNewVnetAndAvai
 	// 						to.Ptr("2"),
 	// 						to.Ptr("3")},
 	// 				}},
-	// 				CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-08T23:41:35.6447381Z"); return t}()),
+	// 				CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-08T23:41:35.644Z"); return t}()),
 	// 				CustomProperties: map[string]*string{
 	// 					"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("false"),
 	// 					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("false"),
@@ -124,7 +124,7 @@ func ExampleServiceClient_BeginUpdate_apiManagementUpdateServiceToNewVnetAndAvai
 	// 					{
 	// 						Type: to.Ptr(armapimanagement.HostnameTypeProxy),
 	// 						Certificate: &armapimanagement.CertificateInformation{
-	// 							Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-06-09T23:59:59+00:00"); return t}()),
+	// 							Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-06-09T23:59:59.000Z"); return t}()),
 	// 							Subject: to.Ptr("CN=mycustomdomain.int-azure-api.net"),
 	// 							Thumbprint: to.Ptr("2994B5FFB8F76B3C687D324A8DEE0432C1ED18CD"),
 	// 						},
@@ -156,7 +156,7 @@ func ExampleServiceClient_BeginUpdate_apiManagementUpdateServiceToNewVnetAndAvai
 	// 					Capacity: to.Ptr[int32](3),
 	// 				},
 	// 				SystemData: &armapimanagement.SystemData{
-	// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-21T20:04:21.6108974Z"); return t}()),
+	// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-21T20:04:21.610Z"); return t}()),
 	// 					LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 	// 					LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 	// 				},

@@ -68,7 +68,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetService() {
 	// 			},
 	// 			Certificates: []*armapimanagement.CertificateConfiguration{
 	// 			},
-	// 			CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.9453556Z"); return t}()),
+	// 			CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.945Z"); return t}()),
 	// 			CustomProperties: map[string]*string{
 	// 				"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("false"),
 	// 				"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("false"),
@@ -94,7 +94,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetService() {
 	// 				{
 	// 					Type: to.Ptr(armapimanagement.HostnameTypeProxy),
 	// 					Certificate: &armapimanagement.CertificateInformation{
-	// 						Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32+00:00"); return t}()),
+	// 						Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32.000Z"); return t}()),
 	// 						Subject: to.Ptr("CN=*.current.int-azure-api.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US"),
 	// 						Thumbprint: to.Ptr("BA0C286XXXXXXXX58A4A507E3DBD51"),
 	// 					},
@@ -107,7 +107,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetService() {
 	// 				{
 	// 					Type: to.Ptr(armapimanagement.HostnameTypeDeveloperPortal),
 	// 					Certificate: &armapimanagement.CertificateInformation{
-	// 						Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32+00:00"); return t}()),
+	// 						Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32.000Z"); return t}()),
 	// 						Subject: to.Ptr("CN=*.current.int-azure-api.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US"),
 	// 						Thumbprint: to.Ptr("BA0C286XXXXXXXX58A4A507E3DBD51"),
 	// 					},
@@ -120,7 +120,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetService() {
 	// 				{
 	// 					Type: to.Ptr(armapimanagement.HostnameTypeManagement),
 	// 					Certificate: &armapimanagement.CertificateInformation{
-	// 						Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32+00:00"); return t}()),
+	// 						Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32.000Z"); return t}()),
 	// 						Subject: to.Ptr("CN=*.current.int-azure-api.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US"),
 	// 						Thumbprint: to.Ptr("BA0C286XXXXXXXX58A4A507E3DBD51"),
 	// 					},
@@ -168,10 +168,10 @@ func ExampleServiceClient_Get_apiManagementServiceGetService() {
 	// 					Capacity: to.Ptr[int32](1),
 	// 				},
 	// 				SystemData: &armapimanagement.SystemData{
-	// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.7106733Z"); return t}()),
+	// 					CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.710Z"); return t}()),
 	// 					CreatedBy: to.Ptr("string"),
 	// 					CreatedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
-	// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-20T06:33:09.6159006Z"); return t}()),
+	// 					LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-20T06:33:09.615Z"); return t}()),
 	// 					LastModifiedBy: to.Ptr("foo@contoso.com"),
 	// 					LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 	// 				},

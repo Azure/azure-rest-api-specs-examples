@@ -52,7 +52,7 @@ func ExampleUserClient_CreateOrUpdate() {
 	// 		Groups: []*armapimanagement.GroupContractProperties{
 	// 		},
 	// 		LastName: to.Ptr("bar"),
-	// 		RegistrationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-07T21:21:29.16Z"); return t}()),
+	// 		RegistrationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-07T21:21:29.160Z"); return t}()),
 	// 	},
 	// }
 }

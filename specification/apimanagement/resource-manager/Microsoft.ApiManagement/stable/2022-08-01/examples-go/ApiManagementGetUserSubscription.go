@@ -32,7 +32,7 @@ func ExampleUserSubscriptionClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1/subscriptions/5fa9b096f3df14003c070001"),
 	// 	Properties: &armapimanagement.SubscriptionContractProperties{
 	// 		AllowTracing: to.Ptr(true),
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-09T21:11:50.58Z"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-09T21:11:50.580Z"); return t}()),
 	// 		OwnerID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
 	// 		Scope: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/products/starter"),
 	// 		State: to.Ptr(armapimanagement.SubscriptionStateActive),

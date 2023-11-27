@@ -33,12 +33,12 @@ func ExampleTenantConfigurationClient_GetSyncState() {
 	// 	Properties: &armapimanagement.TenantConfigurationSyncStateContractProperties{
 	// 		Branch: to.Ptr("master"),
 	// 		CommitID: to.Ptr("de891c2342c7058dde45e5e624eae7e558c94683"),
-	// 		ConfigurationChangeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:11:43.862781Z"); return t}()),
+	// 		ConfigurationChangeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:11:43.862Z"); return t}()),
 	// 		IsExport: to.Ptr(true),
 	// 		IsGitEnabled: to.Ptr(true),
 	// 		IsSynced: to.Ptr(true),
 	// 		LastOperationID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/tenant/configuration/operationResults/6074f0bd093a9d0dac3d7347"),
-	// 		SyncDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T01:15:53.9824995Z"); return t}()),
+	// 		SyncDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T01:15:53.982Z"); return t}()),
 	// 	},
 	// }
 }

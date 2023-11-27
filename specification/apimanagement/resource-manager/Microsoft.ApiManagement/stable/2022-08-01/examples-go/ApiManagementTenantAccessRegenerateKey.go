@@ -9,7 +9,7 @@ import (
 )
 
 // Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4cd95123fb961c68740565a1efcaa5e43bd35802/specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementTenantAccessRegenerateKey.json
-func ExampleTenantAccessGitClient_RegeneratePrimaryKey() {
+func ExampleTenantAccessClient_RegeneratePrimaryKey() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleTenantAccessGitClient_RegeneratePrimaryKey() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	_, err = clientFactory.NewTenantAccessGitClient().RegeneratePrimaryKey(ctx, "rg1", "apimService1", armapimanagement.AccessIDNameAccess, nil)
+	_, err = clientFactory.NewTenantAccessClient().RegeneratePrimaryKey(ctx, "rg1", "apimService1", armapimanagement.AccessIDNameAccess, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

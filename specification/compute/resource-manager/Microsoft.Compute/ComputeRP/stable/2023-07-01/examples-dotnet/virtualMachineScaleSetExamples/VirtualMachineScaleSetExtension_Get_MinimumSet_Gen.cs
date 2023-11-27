@@ -28,6 +28,18 @@ VirtualMachineScaleSetExtensionCollection collection = virtualMachineScaleSet.Ge
 
 // invoke the operation
 string vmssExtensionName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-bool result = await collection.ExistsAsync(vmssExtensionName);
+NullableResponse<VirtualMachineScaleSetExtensionResource> response = await collection.GetIfExistsAsync(vmssExtensionName);
+VirtualMachineScaleSetExtensionResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VirtualMachineScaleSetExtensionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

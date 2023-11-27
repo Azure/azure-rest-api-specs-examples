@@ -68,8 +68,8 @@ CloudServiceData data = new CloudServiceData(new AzureLocation("westus"))
     CloudServiceExtensionPropertiesType = "RDP",
     TypeHandlerVersion = "1.2",
     AutoUpgradeMinorVersion = false,
-    Settings = BinaryData.FromString("<PublicConfig><UserName>UserAzure</UserName><Expiration>10/22/2021 15:05:45</Expiration></PublicConfig>"),
-    ProtectedSettings = BinaryData.FromString("<PrivateConfig><Password>{password}</Password></PrivateConfig>"),
+    Settings = BinaryData.FromString("\"<PublicConfig><UserName>UserAzure</UserName><Expiration>10/22/2021 15:05:45</Expiration></PublicConfig>\""),
+    ProtectedSettings = BinaryData.FromString("\"<PrivateConfig><Password>{password}</Password></PrivateConfig>\""),
     }
     },
 };

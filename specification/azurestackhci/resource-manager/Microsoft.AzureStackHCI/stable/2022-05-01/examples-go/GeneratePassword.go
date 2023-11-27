@@ -27,9 +27,9 @@ func ExampleArcSettingsClient_GeneratePassword() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.PasswordCredential = armazurestackhci.PasswordCredential{
-	// 	EndDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2121-02-17T16:24:23.6264377+05:30"); return t}()),
+	// 	EndDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2121-02-17T10:54:23.626Z"); return t}()),
 	// 	KeyID: to.Ptr("00000000-2d47-4fb2-8ed2-fed71a5c197b"),
 	// 	SecretText: to.Ptr("secretText"),
-	// 	StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-17T16:24:23.6264005+05:30"); return t}()),
+	// 	StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-17T10:54:23.626Z"); return t}()),
 	// }
 }

@@ -32,7 +32,7 @@ func ExampleBackupsClient_Put() {
 	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforMySQL/flexibleServers/mysqltestserver/backups/customer_20220507t073755_bb392c3b-17c6-4d3f-9742-8479ca87b3ac_mybackup"),
 	// 	Properties: &armmysqlflexibleservers.ServerBackupProperties{
 	// 		BackupType: to.Ptr("FULL"),
-	// 		CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-07T07:38:01.1498043+00:00"); return t}()),
+	// 		CompletedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-07T07:38:01.149Z"); return t}()),
 	// 		Source: to.Ptr("Automatic"),
 	// 	},
 	// }

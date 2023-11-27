@@ -60,7 +60,7 @@ func ExampleServersClient_BeginUpdate_updateServerWithByok() {
 	// 		AvailabilityZone: to.Ptr("1"),
 	// 		Backup: &armmysqlflexibleservers.Backup{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
-	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T06:11:38.4150019+00:00"); return t}()),
+	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T06:11:38.415Z"); return t}()),
 	// 			GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 	// 		},
 	// 		FullyQualifiedDomainName: to.Ptr("mysqltestserver.database.mysql.azure.com"),

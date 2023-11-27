@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Advisor;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/advisor/resource-manager/Microsoft.Advisor/stable/2020-01-01/examples/CreateSuppression.json
 // this example is just showing the usage of "Suppressions_Create" operation, for the dependent resources, they will have to be created separately.
@@ -14,23 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceRecommendationBaseResource created on azure
-// for more information of creating ResourceRecommendationBaseResource, please refer to the document of ResourceRecommendationBaseResource
+// this example assumes you already have this SuppressionContractResource created on azure
+// for more information of creating SuppressionContractResource, please refer to the document of SuppressionContractResource
 string resourceUri = "resourceUri";
 string recommendationId = "recommendationId";
-ResourceIdentifier resourceRecommendationBaseResourceId = ResourceRecommendationBaseResource.CreateResourceIdentifier(resourceUri, recommendationId);
-ResourceRecommendationBaseResource resourceRecommendationBase = client.GetResourceRecommendationBaseResource(resourceRecommendationBaseResourceId);
-
-// get the collection of this SuppressionContractResource
-SuppressionContractCollection collection = resourceRecommendationBase.GetSuppressionContracts();
+string name = "suppressionName1";
+ResourceIdentifier suppressionContractResourceId = SuppressionContractResource.CreateResourceIdentifier(resourceUri, recommendationId, name);
+SuppressionContractResource suppressionContract = client.GetSuppressionContractResource(suppressionContractResourceId);
 
 // invoke the operation
-string name = "suppressionName1";
 SuppressionContractData data = new SuppressionContractData()
 {
     Ttl = "07:00:00:00",
 };
-ArmOperation<SuppressionContractResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<SuppressionContractResource> lro = await suppressionContract.UpdateAsync(WaitUntil.Completed, data);
 SuppressionContractResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

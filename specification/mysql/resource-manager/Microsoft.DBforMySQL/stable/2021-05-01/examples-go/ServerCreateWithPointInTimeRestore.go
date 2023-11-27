@@ -60,7 +60,7 @@ func ExampleServersClient_BeginCreate_createAServerAsAPointInTimeRestore() {
 	// 		AvailabilityZone: to.Ptr("1"),
 	// 		Backup: &armmysqlflexibleservers.Backup{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
-	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T00:15:24.00+00:00"); return t}()),
+	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T00:15:24.000Z"); return t}()),
 	// 			GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 	// 		},
 	// 		FullyQualifiedDomainName: to.Ptr("targetserver.database.mysql.azure.com"),

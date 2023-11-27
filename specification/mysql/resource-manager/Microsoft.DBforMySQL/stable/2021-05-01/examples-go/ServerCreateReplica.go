@@ -50,7 +50,7 @@ func ExampleServersClient_BeginCreate_createAReplicaServer() {
 	// 		AvailabilityZone: to.Ptr("3"),
 	// 		Backup: &armmysqlflexibleservers.Backup{
 	// 			BackupRetentionDays: to.Ptr[int32](7),
-	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T08:19:18.5729164+00:00"); return t}()),
+	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-24T08:19:18.572Z"); return t}()),
 	// 			GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
 	// 		},
 	// 		FullyQualifiedDomainName: to.Ptr("replica-server.database.mysql.azure.com"),

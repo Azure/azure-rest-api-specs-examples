@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabArtifactSourceResource created on azure
-// for more information of creating DevTestLabArtifactSourceResource, please refer to the document of DevTestLabArtifactSourceResource
+// this example assumes you already have this DevTestLabResource created on azure
+// for more information of creating DevTestLabResource, please refer to the document of DevTestLabResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{labName}";
-string name = "{artifactSourceName}";
-ResourceIdentifier devTestLabArtifactSourceResourceId = DevTestLabArtifactSourceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, name);
-DevTestLabArtifactSourceResource devTestLabArtifactSource = client.GetDevTestLabArtifactSourceResource(devTestLabArtifactSourceResourceId);
+ResourceIdentifier devTestLabResourceId = DevTestLabResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName);
+DevTestLabResource devTestLab = client.GetDevTestLabResource(devTestLabResourceId);
+
+// get the collection of this DevTestLabArtifactSourceResource
+DevTestLabArtifactSourceCollection collection = devTestLab.GetDevTestLabArtifactSources();
 
 // invoke the operation
-DevTestLabArtifactSourceResource result = await devTestLabArtifactSource.GetAsync();
+string name = "{artifactSourceName}";
+NullableResponse<DevTestLabArtifactSourceResource> response = await collection.GetIfExistsAsync(name);
+DevTestLabArtifactSourceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DevTestLabArtifactSourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DevTestLabArtifactSourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

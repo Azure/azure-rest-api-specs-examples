@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevTestLabServiceRunnerResource created on azure
-// for more information of creating DevTestLabServiceRunnerResource, please refer to the document of DevTestLabServiceRunnerResource
+// this example assumes you already have this DevTestLabResource created on azure
+// for more information of creating DevTestLabResource, please refer to the document of DevTestLabResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "resourceGroupName";
 string labName = "{devtestlabName}";
-string name = "{servicerunnerName}";
-ResourceIdentifier devTestLabServiceRunnerResourceId = DevTestLabServiceRunnerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName, name);
-DevTestLabServiceRunnerResource devTestLabServiceRunner = client.GetDevTestLabServiceRunnerResource(devTestLabServiceRunnerResourceId);
+ResourceIdentifier devTestLabResourceId = DevTestLabResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labName);
+DevTestLabResource devTestLab = client.GetDevTestLabResource(devTestLabResourceId);
+
+// get the collection of this DevTestLabServiceRunnerResource
+DevTestLabServiceRunnerCollection collection = devTestLab.GetDevTestLabServiceRunners();
 
 // invoke the operation
+string name = "{servicerunnerName}";
 DevTestLabServiceRunnerData data = new DevTestLabServiceRunnerData(new AzureLocation("{location}"))
 {
     Identity = new DevTestLabManagedIdentity()
@@ -39,7 +42,7 @@ DevTestLabServiceRunnerData data = new DevTestLabServiceRunnerData(new AzureLoca
     ["tagName1"] = "tagValue1",
     },
 };
-ArmOperation<DevTestLabServiceRunnerResource> lro = await devTestLabServiceRunner.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DevTestLabServiceRunnerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 DevTestLabServiceRunnerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MonitorPrivateEndpointConnectionResource created on azure
-// for more information of creating MonitorPrivateEndpointConnectionResource, please refer to the document of MonitorPrivateEndpointConnectionResource
+// this example assumes you already have this MonitorPrivateLinkScopeResource created on azure
+// for more information of creating MonitorPrivateLinkScopeResource, please refer to the document of MonitorPrivateLinkScopeResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "MyResourceGroup";
 string scopeName = "MyPrivateLinkScope";
-string privateEndpointConnectionName = "private-endpoint-connection-name";
-ResourceIdentifier monitorPrivateEndpointConnectionResourceId = MonitorPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName, privateEndpointConnectionName);
-MonitorPrivateEndpointConnectionResource monitorPrivateEndpointConnection = client.GetMonitorPrivateEndpointConnectionResource(monitorPrivateEndpointConnectionResourceId);
+ResourceIdentifier monitorPrivateLinkScopeResourceId = MonitorPrivateLinkScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName);
+MonitorPrivateLinkScopeResource monitorPrivateLinkScope = client.GetMonitorPrivateLinkScopeResource(monitorPrivateLinkScopeResourceId);
+
+// get the collection of this MonitorPrivateEndpointConnectionResource
+MonitorPrivateEndpointConnectionCollection collection = monitorPrivateLinkScope.GetMonitorPrivateEndpointConnections();
 
 // invoke the operation
-MonitorPrivateEndpointConnectionResource result = await monitorPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "private-endpoint-connection-name";
+NullableResponse<MonitorPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+MonitorPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MonitorPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MonitorPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

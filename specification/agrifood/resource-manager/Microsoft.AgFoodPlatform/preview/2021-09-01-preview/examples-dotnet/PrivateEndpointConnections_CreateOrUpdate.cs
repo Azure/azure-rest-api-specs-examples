@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AgFoodPlatformPrivateEndpointConnectionResource created on azure
-// for more information of creating AgFoodPlatformPrivateEndpointConnectionResource, please refer to the document of AgFoodPlatformPrivateEndpointConnectionResource
+// this example assumes you already have this FarmBeatResource created on azure
+// for more information of creating FarmBeatResource, please refer to the document of FarmBeatResource
 string subscriptionId = "11111111-2222-3333-4444-555555555555";
 string resourceGroupName = "examples-rg";
 string farmBeatsResourceName = "examples-farmbeatsResourceName";
-string privateEndpointConnectionName = "privateEndpointConnectionName";
-ResourceIdentifier agFoodPlatformPrivateEndpointConnectionResourceId = AgFoodPlatformPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName, privateEndpointConnectionName);
-AgFoodPlatformPrivateEndpointConnectionResource agFoodPlatformPrivateEndpointConnection = client.GetAgFoodPlatformPrivateEndpointConnectionResource(agFoodPlatformPrivateEndpointConnectionResourceId);
+ResourceIdentifier farmBeatResourceId = FarmBeatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, farmBeatsResourceName);
+FarmBeatResource farmBeat = client.GetFarmBeatResource(farmBeatResourceId);
+
+// get the collection of this AgFoodPlatformPrivateEndpointConnectionResource
+AgFoodPlatformPrivateEndpointConnectionCollection collection = farmBeat.GetAgFoodPlatformPrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "privateEndpointConnectionName";
 AgFoodPlatformPrivateEndpointConnectionData data = new AgFoodPlatformPrivateEndpointConnectionData()
 {
     ConnectionState = new AgFoodPlatformPrivateLinkServiceConnectionState()
@@ -33,7 +36,7 @@ AgFoodPlatformPrivateEndpointConnectionData data = new AgFoodPlatformPrivateEndp
         Description = "Approved by johndoe@contoso.com",
     },
 };
-ArmOperation<AgFoodPlatformPrivateEndpointConnectionResource> lro = await agFoodPlatformPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AgFoodPlatformPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 AgFoodPlatformPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

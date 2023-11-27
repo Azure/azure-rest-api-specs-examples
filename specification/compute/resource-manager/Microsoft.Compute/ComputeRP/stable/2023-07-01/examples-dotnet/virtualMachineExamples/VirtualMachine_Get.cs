@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using System.Xml;
 using Azure;
 using Azure.Core;
 using Azure.Identity;
@@ -17,20 +16,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineResource created on azure
-// for more information of creating VirtualMachineResource, please refer to the document of VirtualMachineResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
-string vmName = "myVM";
-ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmName);
-VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this VirtualMachineResource
+VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines();
 
 // invoke the operation
+string vmName = "myVM";
 InstanceViewType? expand = InstanceViewType.UserData;
-VirtualMachineResource result = await virtualMachine.GetAsync(expand: expand);
+NullableResponse<VirtualMachineResource> response = await collection.GetIfExistsAsync(vmName, expand: expand);
+VirtualMachineResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VirtualMachineData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VirtualMachineData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

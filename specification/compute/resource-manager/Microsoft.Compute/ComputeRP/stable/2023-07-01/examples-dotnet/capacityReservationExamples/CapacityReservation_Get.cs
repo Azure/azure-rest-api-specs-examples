@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CapacityReservationGroupResource created on azure
-// for more information of creating CapacityReservationGroupResource, please refer to the document of CapacityReservationGroupResource
+// this example assumes you already have this CapacityReservationResource created on azure
+// for more information of creating CapacityReservationResource, please refer to the document of CapacityReservationResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
 string capacityReservationGroupName = "myCapacityReservationGroup";
-ResourceIdentifier capacityReservationGroupResourceId = CapacityReservationGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, capacityReservationGroupName);
-CapacityReservationGroupResource capacityReservationGroup = client.GetCapacityReservationGroupResource(capacityReservationGroupResourceId);
-
-// get the collection of this CapacityReservationResource
-CapacityReservationCollection collection = capacityReservationGroup.GetCapacityReservations();
+string capacityReservationName = "myCapacityReservation";
+ResourceIdentifier capacityReservationResourceId = CapacityReservationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, capacityReservationGroupName, capacityReservationName);
+CapacityReservationResource capacityReservation = client.GetCapacityReservationResource(capacityReservationResourceId);
 
 // invoke the operation
-string capacityReservationName = "myCapacityReservation";
 CapacityReservationInstanceViewType? expand = CapacityReservationInstanceViewType.InstanceView;
-bool result = await collection.ExistsAsync(capacityReservationName, expand: expand);
+CapacityReservationResource result = await capacityReservation.GetAsync(expand: expand);
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CapacityReservationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineScaleSetResource created on azure
-// for more information of creating VirtualMachineScaleSetResource, please refer to the document of VirtualMachineScaleSetResource
+// this example assumes you already have this VirtualMachineScaleSetVmResource created on azure
+// for more information of creating VirtualMachineScaleSetVmResource, please refer to the document of VirtualMachineScaleSetVmResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string virtualMachineScaleSetName = "{vmss-name}";
-ResourceIdentifier virtualMachineScaleSetResourceId = VirtualMachineScaleSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName);
-VirtualMachineScaleSetResource virtualMachineScaleSet = client.GetVirtualMachineScaleSetResource(virtualMachineScaleSetResourceId);
-
-// get the collection of this VirtualMachineScaleSetVmResource
-VirtualMachineScaleSetVmCollection collection = virtualMachineScaleSet.GetVirtualMachineScaleSetVms();
+string instanceId = "0";
+ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName, instanceId);
+VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
 
 // invoke the operation
-string instanceId = "0";
-bool result = await collection.ExistsAsync(instanceId);
+VirtualMachineScaleSetVmResource result = await virtualMachineScaleSetVm.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VirtualMachineScaleSetVmData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

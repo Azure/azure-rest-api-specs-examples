@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementServiceResource created on azure
-// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
+// this example assumes you already have this ApiManagementCertificateResource created on azure
+// for more information of creating ApiManagementCertificateResource, please refer to the document of ApiManagementCertificateResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
-
-// get the collection of this ApiManagementCertificateResource
-ApiManagementCertificateCollection collection = apiManagementService.GetApiManagementCertificates();
+string certificateId = "templateCertkv";
+ResourceIdentifier apiManagementCertificateResourceId = ApiManagementCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, certificateId);
+ApiManagementCertificateResource apiManagementCertificate = client.GetApiManagementCertificateResource(apiManagementCertificateResourceId);
 
 // invoke the operation
-string certificateId = "templateCertkv";
 ApiManagementCertificateCreateOrUpdateContent content = new ApiManagementCertificateCreateOrUpdateContent()
 {
     KeyVaultDetails = new KeyVaultContractCreateProperties()
@@ -36,7 +33,7 @@ ApiManagementCertificateCreateOrUpdateContent content = new ApiManagementCertifi
         IdentityClientId = "ceaa6b06-c00f-43ef-99ac-f53d1fe876a0",
     },
 };
-ArmOperation<ApiManagementCertificateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, certificateId, content);
+ArmOperation<ApiManagementCertificateResource> lro = await apiManagementCertificate.UpdateAsync(WaitUntil.Completed, content);
 ApiManagementCertificateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

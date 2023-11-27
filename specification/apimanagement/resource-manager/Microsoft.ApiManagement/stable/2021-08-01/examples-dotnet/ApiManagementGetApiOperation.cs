@@ -29,6 +29,18 @@ ApiOperationCollection collection = api.GetApiOperations();
 
 // invoke the operation
 string operationId = "57d2ef278aa04f0ad01d6cdc";
-bool result = await collection.ExistsAsync(operationId);
+NullableResponse<ApiOperationResource> response = await collection.GetIfExistsAsync(operationId);
+ApiOperationResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiOperationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

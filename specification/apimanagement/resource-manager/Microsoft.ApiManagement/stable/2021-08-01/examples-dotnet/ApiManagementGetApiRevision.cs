@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiResource created on azure
-// for more information of creating ApiResource, please refer to the document of ApiResource
+// this example assumes you already have this ApiManagementServiceResource created on azure
+// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-string apiId = "echo-api;rev=3";
-ResourceIdentifier apiResourceId = ApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, apiId);
-ApiResource api = client.GetApiResource(apiResourceId);
+ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
+
+// get the collection of this ApiResource
+ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
-ApiResource result = await api.GetAsync();
+string apiId = "echo-api;rev=3";
+NullableResponse<ApiResource> response = await collection.GetIfExistsAsync(apiId);
+ApiResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

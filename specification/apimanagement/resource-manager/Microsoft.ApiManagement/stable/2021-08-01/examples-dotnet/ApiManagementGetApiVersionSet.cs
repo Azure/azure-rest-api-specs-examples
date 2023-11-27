@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiVersionSetResource created on azure
-// for more information of creating ApiVersionSetResource, please refer to the document of ApiVersionSetResource
+// this example assumes you already have this ApiManagementServiceResource created on azure
+// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-string versionSetId = "vs1";
-ResourceIdentifier apiVersionSetResourceId = ApiVersionSetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, versionSetId);
-ApiVersionSetResource apiVersionSet = client.GetApiVersionSetResource(apiVersionSetResourceId);
+ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
+
+// get the collection of this ApiVersionSetResource
+ApiVersionSetCollection collection = apiManagementService.GetApiVersionSets();
 
 // invoke the operation
-ApiVersionSetResource result = await apiVersionSet.GetAsync();
+string versionSetId = "vs1";
+NullableResponse<ApiVersionSetResource> response = await collection.GetIfExistsAsync(versionSetId);
+ApiVersionSetResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiVersionSetData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiVersionSetData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

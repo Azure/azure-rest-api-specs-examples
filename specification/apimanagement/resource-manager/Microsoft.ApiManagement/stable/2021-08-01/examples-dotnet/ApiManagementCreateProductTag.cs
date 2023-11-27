@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementProductTagResource created on azure
-// for more information of creating ApiManagementProductTagResource, please refer to the document of ApiManagementProductTagResource
+// this example assumes you already have this ApiManagementProductResource created on azure
+// for more information of creating ApiManagementProductResource, please refer to the document of ApiManagementProductResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string productId = "5931a75ae4bbd512a88c680b";
-string tagId = "tagId1";
-ResourceIdentifier apiManagementProductTagResourceId = ApiManagementProductTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, productId, tagId);
-ApiManagementProductTagResource apiManagementProductTag = client.GetApiManagementProductTagResource(apiManagementProductTagResourceId);
+ResourceIdentifier apiManagementProductResourceId = ApiManagementProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, productId);
+ApiManagementProductResource apiManagementProduct = client.GetApiManagementProductResource(apiManagementProductResourceId);
+
+// get the collection of this ApiManagementProductTagResource
+ApiManagementProductTagCollection collection = apiManagementProduct.GetApiManagementProductTags();
 
 // invoke the operation
-ArmOperation<ApiManagementProductTagResource> lro = await apiManagementProductTag.UpdateAsync(WaitUntil.Completed);
+string tagId = "tagId1";
+ArmOperation<ApiManagementProductTagResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tagId);
 ApiManagementProductTagResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

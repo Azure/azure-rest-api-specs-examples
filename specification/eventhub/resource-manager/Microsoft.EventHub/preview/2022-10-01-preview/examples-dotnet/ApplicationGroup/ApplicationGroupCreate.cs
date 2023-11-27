@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsApplicationGroupResource created on azure
-// for more information of creating EventHubsApplicationGroupResource, please refer to the document of EventHubsApplicationGroupResource
+// this example assumes you already have this EventHubsNamespaceResource created on azure
+// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosotest";
 string namespaceName = "contoso-ua-test-eh-system-1";
-string applicationGroupName = "appGroup1";
-ResourceIdentifier eventHubsApplicationGroupResourceId = EventHubsApplicationGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, applicationGroupName);
-EventHubsApplicationGroupResource eventHubsApplicationGroup = client.GetEventHubsApplicationGroupResource(eventHubsApplicationGroupResourceId);
+ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
+
+// get the collection of this EventHubsApplicationGroupResource
+EventHubsApplicationGroupCollection collection = eventHubsNamespace.GetEventHubsApplicationGroups();
 
 // invoke the operation
+string applicationGroupName = "appGroup1";
 EventHubsApplicationGroupData data = new EventHubsApplicationGroupData()
 {
     IsEnabled = true,
@@ -34,7 +37,7 @@ EventHubsApplicationGroupData data = new EventHubsApplicationGroupData()
     new EventHubsThrottlingPolicy("ThrottlingPolicy1",7912,EventHubsMetricId.IncomingMessages),new EventHubsThrottlingPolicy("ThrottlingPolicy2",3951729,EventHubsMetricId.IncomingBytes),new EventHubsThrottlingPolicy("ThrottlingPolicy3",245175,EventHubsMetricId.OutgoingBytes)
     },
 };
-ArmOperation<EventHubsApplicationGroupResource> lro = await eventHubsApplicationGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<EventHubsApplicationGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationGroupName, data);
 EventHubsApplicationGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

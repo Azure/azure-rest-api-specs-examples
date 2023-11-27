@@ -27,6 +27,18 @@ EventHubsDisasterRecoveryCollection collection = eventHubsNamespace.GetEventHubs
 
 // invoke the operation
 string @alias = "sdk-DisasterRecovery-3814";
-bool result = await collection.ExistsAsync(@alias);
+NullableResponse<EventHubsDisasterRecoveryResource> response = await collection.GetIfExistsAsync(@alias);
+EventHubsDisasterRecoveryResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EventHubsDisasterRecoveryData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

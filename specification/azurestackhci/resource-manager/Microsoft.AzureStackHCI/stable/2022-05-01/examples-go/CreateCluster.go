@@ -59,10 +59,10 @@ func ExampleClustersClient_Create() {
 	// 		TrialDaysRemaining: to.Ptr[float32](30),
 	// 	},
 	// 	SystemData: &armazurestackhci.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.1234567Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T17:18:19.123Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user1"),
 	// 		CreatedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.1234567Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-02T17:18:19.123Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("user2"),
 	// 		LastModifiedByType: to.Ptr(armazurestackhci.CreatedByTypeUser),
 	// 	},

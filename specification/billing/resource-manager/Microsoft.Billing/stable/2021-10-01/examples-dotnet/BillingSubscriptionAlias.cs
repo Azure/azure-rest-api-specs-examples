@@ -25,6 +25,18 @@ BillingSubscriptionAliasCollection collection = tenantResource.GetBillingSubscri
 
 // invoke the operation
 string aliasName = "c356b7c7-7545-4686-b843-c1a49cf853fc";
-bool result = await collection.ExistsAsync(aliasName);
+NullableResponse<BillingSubscriptionAliasResource> response = await collection.GetIfExistsAsync(aliasName);
+BillingSubscriptionAliasResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BillingSubscriptionAliasData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

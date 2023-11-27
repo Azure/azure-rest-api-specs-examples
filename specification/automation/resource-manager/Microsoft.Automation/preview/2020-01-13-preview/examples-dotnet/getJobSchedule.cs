@@ -28,6 +28,18 @@ AutomationJobScheduleCollection collection = automationAccount.GetAutomationJobS
 
 // invoke the operation
 Guid jobScheduleId = Guid.Parse("0fa462ba-3aa2-4138-83ca-9ebc3bc55cdc");
-bool result = await collection.ExistsAsync(jobScheduleId);
+NullableResponse<AutomationJobScheduleResource> response = await collection.GetIfExistsAsync(jobScheduleId);
+AutomationJobScheduleResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AutomationJobScheduleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

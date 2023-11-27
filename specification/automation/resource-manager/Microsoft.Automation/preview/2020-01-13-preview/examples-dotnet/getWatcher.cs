@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Automation;
-using Azure.ResourceManager.Automation.Models;
 
 // Generated from example definition: specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/getWatcher.json
 // this example is just showing the usage of "Watcher_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomationWatcherResource created on azure
-// for more information of creating AutomationWatcherResource, please refer to the document of AutomationWatcherResource
+// this example assumes you already have this AutomationAccountResource created on azure
+// for more information of creating AutomationAccountResource, please refer to the document of AutomationAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg";
 string automationAccountName = "MyTestAutomationAccount";
-string watcherName = "MyTestWatcher";
-ResourceIdentifier automationWatcherResourceId = AutomationWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName, watcherName);
-AutomationWatcherResource automationWatcher = client.GetAutomationWatcherResource(automationWatcherResourceId);
+ResourceIdentifier automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationAccountName);
+AutomationAccountResource automationAccount = client.GetAutomationAccountResource(automationAccountResourceId);
+
+// get the collection of this AutomationWatcherResource
+AutomationWatcherCollection collection = automationAccount.GetAutomationWatchers();
 
 // invoke the operation
-AutomationWatcherResource result = await automationWatcher.GetAsync();
+string watcherName = "MyTestWatcher";
+NullableResponse<AutomationWatcherResource> response = await collection.GetIfExistsAsync(watcherName);
+AutomationWatcherResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AutomationWatcherData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AutomationWatcherData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

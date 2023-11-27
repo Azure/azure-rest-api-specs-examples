@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevCenterResource created on azure
-// for more information of creating DevCenterResource, please refer to the document of DevCenterResource
+// this example assumes you already have this DevCenterCatalogResource created on azure
+// for more information of creating DevCenterCatalogResource, please refer to the document of DevCenterCatalogResource
 string subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
-ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName);
-DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
-
-// get the collection of this DevCenterCatalogResource
-DevCenterCatalogCollection collection = devCenter.GetDevCenterCatalogs();
+string catalogName = "CentralCatalog";
+ResourceIdentifier devCenterCatalogResourceId = DevCenterCatalogResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, catalogName);
+DevCenterCatalogResource devCenterCatalog = client.GetDevCenterCatalogResource(devCenterCatalogResourceId);
 
 // invoke the operation
-string catalogName = "CentralCatalog";
-bool result = await collection.ExistsAsync(catalogName);
+DevCenterCatalogResource result = await devCenterCatalog.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevCenterCatalogData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

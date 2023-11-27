@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -26,6 +27,18 @@ ProjectDevBoxDefinitionCollection collection = devCenterProject.GetProjectDevBox
 
 // invoke the operation
 string devBoxDefinitionName = "WebDevBox";
-bool result = await collection.ExistsAsync(devBoxDefinitionName);
+NullableResponse<ProjectDevBoxDefinitionResource> response = await collection.GetIfExistsAsync(devBoxDefinitionName);
+ProjectDevBoxDefinitionResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DevBoxDefinitionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

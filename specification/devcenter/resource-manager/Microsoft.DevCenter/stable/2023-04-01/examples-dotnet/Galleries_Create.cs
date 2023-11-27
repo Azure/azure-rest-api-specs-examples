@@ -14,21 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevCenterGalleryResource created on azure
-// for more information of creating DevCenterGalleryResource, please refer to the document of DevCenterGalleryResource
+// this example assumes you already have this DevCenterResource created on azure
+// for more information of creating DevCenterResource, please refer to the document of DevCenterResource
 string subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
-string galleryName = "StandardGallery";
-ResourceIdentifier devCenterGalleryResourceId = DevCenterGalleryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName);
-DevCenterGalleryResource devCenterGallery = client.GetDevCenterGalleryResource(devCenterGalleryResourceId);
+ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName);
+DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
+
+// get the collection of this DevCenterGalleryResource
+DevCenterGalleryCollection collection = devCenter.GetDevCenterGalleries();
 
 // invoke the operation
+string galleryName = "StandardGallery";
 DevCenterGalleryData data = new DevCenterGalleryData()
 {
     GalleryResourceId = new ResourceIdentifier("/subscriptions/0ac520ee-14c0-480f-b6c9-0a90c58ffff/resourceGroups/rg1/providers/Microsoft.Compute/galleries/StandardGallery"),
 };
-ArmOperation<DevCenterGalleryResource> lro = await devCenterGallery.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DevCenterGalleryResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, galleryName, data);
 DevCenterGalleryResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

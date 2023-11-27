@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevCenterImageResource created on azure
-// for more information of creating DevCenterImageResource, please refer to the document of DevCenterImageResource
+// this example assumes you already have this DevCenterGalleryResource created on azure
+// for more information of creating DevCenterGalleryResource, please refer to the document of DevCenterGalleryResource
 string subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
 string galleryName = "DefaultDevGallery";
-string imageName = "ContosoBaseImage";
-ResourceIdentifier devCenterImageResourceId = DevCenterImageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName, imageName);
-DevCenterImageResource devCenterImage = client.GetDevCenterImageResource(devCenterImageResourceId);
+ResourceIdentifier devCenterGalleryResourceId = DevCenterGalleryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName);
+DevCenterGalleryResource devCenterGallery = client.GetDevCenterGalleryResource(devCenterGalleryResourceId);
+
+// get the collection of this DevCenterImageResource
+DevCenterImageCollection collection = devCenterGallery.GetDevCenterImages();
 
 // invoke the operation
-DevCenterImageResource result = await devCenterImage.GetAsync();
+string imageName = "ContosoBaseImage";
+NullableResponse<DevCenterImageResource> response = await collection.GetIfExistsAsync(imageName);
+DevCenterImageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DevCenterImageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DevCenterImageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

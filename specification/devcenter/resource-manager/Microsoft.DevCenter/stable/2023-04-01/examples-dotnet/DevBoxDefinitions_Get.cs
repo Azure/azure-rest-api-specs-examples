@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevCenterResource created on azure
-// for more information of creating DevCenterResource, please refer to the document of DevCenterResource
+// this example assumes you already have this DevBoxDefinitionResource created on azure
+// for more information of creating DevBoxDefinitionResource, please refer to the document of DevBoxDefinitionResource
 string subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
-ResourceIdentifier devCenterResourceId = DevCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName);
-DevCenterResource devCenter = client.GetDevCenterResource(devCenterResourceId);
-
-// get the collection of this DevBoxDefinitionResource
-DevBoxDefinitionCollection collection = devCenter.GetDevBoxDefinitions();
+string devBoxDefinitionName = "WebDevBox";
+ResourceIdentifier devBoxDefinitionResourceId = DevBoxDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, devBoxDefinitionName);
+DevBoxDefinitionResource devBoxDefinition = client.GetDevBoxDefinitionResource(devBoxDefinitionResourceId);
 
 // invoke the operation
-string devBoxDefinitionName = "WebDevBox";
-bool result = await collection.ExistsAsync(devBoxDefinitionName);
+DevBoxDefinitionResource result = await devBoxDefinition.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DevBoxDefinitionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

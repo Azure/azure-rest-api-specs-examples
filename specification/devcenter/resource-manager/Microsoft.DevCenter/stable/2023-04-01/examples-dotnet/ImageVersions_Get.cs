@@ -13,21 +13,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevCenterImageResource created on azure
-// for more information of creating DevCenterImageResource, please refer to the document of DevCenterImageResource
+// this example assumes you already have this ImageVersionResource created on azure
+// for more information of creating ImageVersionResource, please refer to the document of ImageVersionResource
 string subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff";
 string resourceGroupName = "rg1";
 string devCenterName = "Contoso";
 string galleryName = "DefaultDevGallery";
 string imageName = "Win11";
-ResourceIdentifier devCenterImageResourceId = DevCenterImageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName, imageName);
-DevCenterImageResource devCenterImage = client.GetDevCenterImageResource(devCenterImageResourceId);
-
-// get the collection of this ImageVersionResource
-ImageVersionCollection collection = devCenterImage.GetImageVersions();
+string versionName = "1.0.0";
+ResourceIdentifier imageVersionResourceId = ImageVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, devCenterName, galleryName, imageName, versionName);
+ImageVersionResource imageVersion = client.GetImageVersionResource(imageVersionResourceId);
 
 // invoke the operation
-string versionName = "1.0.0";
-bool result = await collection.ExistsAsync(versionName);
+ImageVersionResource result = await imageVersion.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ImageVersionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

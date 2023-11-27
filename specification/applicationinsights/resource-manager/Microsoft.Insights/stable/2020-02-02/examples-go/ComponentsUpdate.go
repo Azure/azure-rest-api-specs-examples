@@ -49,7 +49,7 @@ func ExampleComponentsClient_CreateOrUpdate_componentUpdate() {
 	// 		ApplicationID: to.Ptr("my-component"),
 	// 		ApplicationType: to.Ptr(armapplicationinsights.ApplicationTypeWeb),
 	// 		ConnectionString: to.Ptr("InstrumentationKey=bc095013-3cf2-45ac-ab47-123456789abc"),
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-24T01:05:38.5934061+00:00"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-01-24T01:05:38.593Z"); return t}()),
 	// 		DisableIPMasking: to.Ptr(false),
 	// 		FlowType: to.Ptr(armapplicationinsights.FlowTypeBluefield),
 	// 		HockeyAppID: to.Ptr(""),

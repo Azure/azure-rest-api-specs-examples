@@ -75,9 +75,9 @@ func ExampleTicketsClient_BeginCreate_createATicketToRequestQuotaIncreaseForLowP
 	// 			PreferredTimeZone: to.Ptr("Pacific Standard Time"),
 	// 			PrimaryEmailAddress: to.Ptr("abc@contoso.com"),
 	// 		},
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18.000Z"); return t}()),
 	// 		FileWorkspaceName: to.Ptr("testticket"),
-	// 		ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23Z"); return t}()),
+	// 		ModifiedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:23.000Z"); return t}()),
 	// 		ProblemClassificationDisplayName: to.Ptr("Batch"),
 	// 		ProblemClassificationID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid/problemClassifications/batch_problemClassification_guid"),
 	// 		QuotaTicketDetails: &armsupport.QuotaTicketDetails{
@@ -93,9 +93,9 @@ func ExampleTicketsClient_BeginCreate_createATicketToRequestQuotaIncreaseForLowP
 	// 		ServiceDisplayName: to.Ptr("Service and subscription limits (quotas)"),
 	// 		ServiceID: to.Ptr("/providers/Microsoft.Support/services/quota_service_guid"),
 	// 		ServiceLevelAgreement: &armsupport.ServiceLevelAgreement{
-	// 			ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18Z"); return t}()),
+	// 			ExpirationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-21T17:36:18.000Z"); return t}()),
 	// 			SLAMinutes: to.Ptr[int32](240),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18Z"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-03-20T21:36:18.000Z"); return t}()),
 	// 		},
 	// 		Severity: to.Ptr(armsupport.SeverityLevelModerate),
 	// 		Status: to.Ptr("Open"),

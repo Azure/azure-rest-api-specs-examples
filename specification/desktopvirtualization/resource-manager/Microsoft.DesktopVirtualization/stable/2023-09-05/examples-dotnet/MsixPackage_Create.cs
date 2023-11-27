@@ -57,8 +57,8 @@ MsixPackageData data = new MsixPackageData()
     AppUserModelId = "AppUserModelId",
     FriendlyName = "friendlyname",
     IconImageName = "Apptile",
-    RawIcon = BinaryData.FromString("VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"),
-    RawPng = BinaryData.FromString("VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo"),
+    RawIcon = BinaryData.FromString("\"VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo\""),
+    RawPng = BinaryData.FromString("\"VGhpcyBpcyBhIHN0cmluZyB0byBoYXNo\""),
     }
     },
 };

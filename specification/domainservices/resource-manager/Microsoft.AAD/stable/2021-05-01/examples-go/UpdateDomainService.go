@@ -25,7 +25,7 @@ func ExampleClient_BeginUpdate() {
 	poller, err := clientFactory.NewClient().BeginUpdate(ctx, "TestResourceGroup", "TestDomainService.com", armdomainservices.DomainService{
 		Properties: &armdomainservices.DomainServiceProperties{
 			ConfigDiagnostics: &armdomainservices.ConfigDiagnostics{
-				LastExecuted: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "2021-05-05T12:00:23Z;"); return t }()),
+				LastExecuted: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC1123, "NaN-NaN-NaNTNaN:NaN:NaN.NaNZ"); return t }()),
 				ValidatorResults: []*armdomainservices.ConfigDiagnosticsValidatorResult{
 					{
 						Issues: []*armdomainservices.ConfigDiagnosticsValidatorResultIssue{
@@ -92,7 +92,7 @@ func ExampleClient_BeginUpdate() {
 	// 		},
 	// 		FilteredSync: to.Ptr(armdomainservices.FilteredSyncEnabled),
 	// 		LdapsSettings: &armdomainservices.LdapsSettings{
-	// 			CertificateNotAfter: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-15T21:43:21Z"); return t}()),
+	// 			CertificateNotAfter: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-15T21:43:21.000Z"); return t}()),
 	// 			CertificateThumbprint: to.Ptr("9154A390F0C387D679E0DD040701745CDFED67F3"),
 	// 			ExternalAccess: to.Ptr(armdomainservices.ExternalAccessEnabled),
 	// 			Ldaps: to.Ptr(armdomainservices.LdapsEnabled),

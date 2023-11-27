@@ -34,7 +34,7 @@ func ExampleRoleEligibilityScheduleRequestsClient_Create() {
 					Type:     to.Ptr(armauthorization.TypeAfterDuration),
 					Duration: to.Ptr("P365D"),
 				},
-				StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:31:27.91Z"); return t }()),
+				StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-09T21:31:27.910Z"); return t }()),
 			},
 		},
 	}, nil)

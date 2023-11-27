@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AttestationProviderResource created on azure
-// for more information of creating AttestationProviderResource, please refer to the document of AttestationProviderResource
+// this example assumes you already have this AttestationPrivateEndpointConnectionResource created on azure
+// for more information of creating AttestationPrivateEndpointConnectionResource, please refer to the document of AttestationPrivateEndpointConnectionResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res7687";
 string providerName = "sto9699";
-ResourceIdentifier attestationProviderResourceId = AttestationProviderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, providerName);
-AttestationProviderResource attestationProvider = client.GetAttestationProviderResource(attestationProviderResourceId);
-
-// get the collection of this AttestationPrivateEndpointConnectionResource
-AttestationPrivateEndpointConnectionCollection collection = attestationProvider.GetAttestationPrivateEndpointConnections();
+string privateEndpointConnectionName = "{privateEndpointConnectionName}";
+ResourceIdentifier attestationPrivateEndpointConnectionResourceId = AttestationPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, providerName, privateEndpointConnectionName);
+AttestationPrivateEndpointConnectionResource attestationPrivateEndpointConnection = client.GetAttestationPrivateEndpointConnectionResource(attestationPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "{privateEndpointConnectionName}";
 AttestationPrivateEndpointConnectionData data = new AttestationPrivateEndpointConnectionData()
 {
     ConnectionState = new AttestationPrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ AttestationPrivateEndpointConnectionData data = new AttestationPrivateEndpointCo
         Description = "Auto-Approved",
     },
 };
-ArmOperation<AttestationPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<AttestationPrivateEndpointConnectionResource> lro = await attestationPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 AttestationPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

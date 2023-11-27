@@ -31,10 +31,10 @@ func ExampleWorkflowClient_Get() {
 	// 	Type: to.Ptr("Micfosoft.DevHub/Workflow"),
 	// 	ID: to.Ptr("/subscription/subscriptionId1/resourceGroups/resourceGroup1/providers/Microsoft.DevHub/workflow/workflow1"),
 	// 	SystemData: &armdevhub.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("foo@contoso.com"),
 	// 		CreatedByType: to.Ptr(armdevhub.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55+00:00"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-24T16:30:55.000Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("foo@contoso.com"),
 	// 		LastModifiedByType: to.Ptr(armdevhub.CreatedByTypeUser),
 	// 	},

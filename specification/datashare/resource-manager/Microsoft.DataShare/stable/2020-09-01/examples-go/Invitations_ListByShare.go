@@ -40,9 +40,9 @@ func ExampleInvitationsClient_NewListBySharePager() {
 		// 			Type: to.Ptr("Microsoft.DataShare/Invitation"),
 		// 			ID: to.Ptr("/subscriptions/433a8dfd-e5d5-4e77-ad86-90acdc75eb1a/resourceGroups/testrg/providers/Microsoft.DataShare/accounts/account1/shares/share1/invitations/ancd"),
 		// 			Properties: &armdatashare.InvitationProperties{
-		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-26T22:33:24.5785265Z"); return t}()),
+		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-26T22:33:24.578Z"); return t}()),
 		// 				InvitationStatus: to.Ptr(armdatashare.InvitationStatusAccepted),
-		// 				SentAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-26T22:33:24.5785265Z"); return t}()),
+		// 				SentAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-26T22:33:24.578Z"); return t}()),
 		// 				TargetEmail: to.Ptr("johnsmith@microsoft.com"),
 		// 				UserEmail: to.Ptr("johnsmith@microsoft.com"),
 		// 				UserName: to.Ptr("John Smith"),

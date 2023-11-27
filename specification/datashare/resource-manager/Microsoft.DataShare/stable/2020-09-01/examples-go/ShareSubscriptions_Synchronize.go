@@ -34,7 +34,7 @@ func ExampleShareSubscriptionsClient_BeginSynchronize() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.ShareSubscriptionSynchronization = armdatashare.ShareSubscriptionSynchronization{
-	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-30T02:37:48.4979104Z"); return t}()),
+	// 	StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-30T02:37:48.497Z"); return t}()),
 	// 	Status: to.Ptr("Succeeded"),
 	// 	SynchronizationID: to.Ptr("343c4772-ad68-41aa-91b9-bab1c92f9c27"),
 	// }

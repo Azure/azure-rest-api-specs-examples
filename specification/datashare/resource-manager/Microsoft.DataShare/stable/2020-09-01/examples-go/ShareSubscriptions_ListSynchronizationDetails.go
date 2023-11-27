@@ -43,8 +43,8 @@ func ExampleShareSubscriptionsClient_NewListSynchronizationDetailsPager() {
 		// 			DataSetID: to.Ptr("7d0536a6-3fa5-43de-b152-3d07c4f6b2bb"),
 		// 			DataSetType: to.Ptr(armdatashare.DataSetTypeBlob),
 		// 			DurationMs: to.Ptr[int32](2000),
-		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
-		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
+		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
+		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
 		// 			Status: to.Ptr("Completed"),
 		// 	}},
 		// }

@@ -36,7 +36,7 @@ func ExampleShareSubscriptionsClient_NewListSourceShareSynchronizationSettingsPa
 		// 			Kind: to.Ptr(armdatashare.SourceShareSynchronizationSettingKindScheduleBased),
 		// 			Properties: &armdatashare.ScheduledSourceShareSynchronizationSettingProperties{
 		// 				RecurrenceInterval: to.Ptr(armdatashare.RecurrenceIntervalHour),
-		// 				SynchronizationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-03-15T19:45:58Z"); return t}()),
+		// 				SynchronizationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-03-15T19:45:58.000Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

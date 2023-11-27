@@ -32,7 +32,7 @@ func ExampleSharesClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/433a8dfd-e5d5-4e77-ad86-90acdc75eb1a/resourceGroups/SampleResourceGroup/providers/Microsoft.DataShare/accounts/Account1/shares/Share1"),
 	// 	Properties: &armdatashare.ShareProperties{
 	// 		Description: to.Ptr("share description"),
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T06:15:15.6818898Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T06:15:15.681Z"); return t}()),
 	// 		ShareKind: to.Ptr(armdatashare.ShareKindCopyBased),
 	// 		Terms: to.Ptr("Confidential"),
 	// 		UserEmail: to.Ptr("johnsmith@microsoft.com"),

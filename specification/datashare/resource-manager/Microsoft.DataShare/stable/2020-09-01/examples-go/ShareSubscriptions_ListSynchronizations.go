@@ -37,9 +37,9 @@ func ExampleShareSubscriptionsClient_NewListSynchronizationsPager() {
 		// 	Value: []*armdatashare.ShareSubscriptionSynchronization{
 		// 		{
 		// 			DurationMs: to.Ptr[int32](2000),
-		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
+		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
 		// 			Message: to.Ptr("nda"),
-		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
+		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
 		// 			Status: to.Ptr("Completed"),
 		// 			SynchronizationID: to.Ptr("runId"),
 		// 			SynchronizationMode: to.Ptr(armdatashare.SynchronizationModeIncremental),

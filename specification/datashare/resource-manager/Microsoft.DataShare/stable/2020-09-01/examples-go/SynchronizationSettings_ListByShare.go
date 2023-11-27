@@ -39,7 +39,7 @@ func ExampleSynchronizationSettingsClient_NewListBySharePager() {
 		// 			Kind: to.Ptr(armdatashare.SynchronizationSettingKindScheduleBased),
 		// 			Properties: &armdatashare.ScheduledSynchronizationSettingProperties{
 		// 				RecurrenceInterval: to.Ptr(armdatashare.RecurrenceIntervalDay),
-		// 				SynchronizationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
+		// 				SynchronizationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
 		// 				UserName: to.Ptr("John Smith"),
 		// 			},
 		// 	}},

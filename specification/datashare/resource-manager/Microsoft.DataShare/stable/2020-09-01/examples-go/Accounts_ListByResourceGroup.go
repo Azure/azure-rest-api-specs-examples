@@ -45,7 +45,7 @@ func ExampleAccountsClient_NewListByResourceGroupPager() {
 		// 				Type: to.Ptr(armdatashare.TypeSystemAssigned),
 		// 			},
 		// 			Properties: &armdatashare.AccountProperties{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
 		// 				UserEmail: to.Ptr("johnsmith@microsoft.com"),
 		// 				UserName: to.Ptr("John Smith,"),
 		// 			},
@@ -59,7 +59,7 @@ func ExampleAccountsClient_NewListByResourceGroupPager() {
 		// 				Type: to.Ptr(armdatashare.TypeSystemAssigned),
 		// 			},
 		// 			Properties: &armdatashare.AccountProperties{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.9614956Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-14T04:47:52.961Z"); return t}()),
 		// 				UserEmail: to.Ptr("johnsmith@microsoft.com"),
 		// 				UserName: to.Ptr("John Smith,"),
 		// 			},

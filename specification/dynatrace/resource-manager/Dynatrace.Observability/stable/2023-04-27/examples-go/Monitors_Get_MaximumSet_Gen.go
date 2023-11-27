@@ -66,7 +66,7 @@ func ExampleMonitorsClient_Get_monitorsGetMaximumSetGen() {
 	// 			MonitoringStatus: to.Ptr(armdynatrace.MonitoringStatusEnabled),
 	// 			PlanData: &armdynatrace.PlanData{
 	// 				BillingCycle: to.Ptr("Monthly"),
-	// 				EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T15:14:33+02:00"); return t}()),
+	// 				EffectiveDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-30T13:14:33.000Z"); return t}()),
 	// 				PlanDetails: to.Ptr("dynatraceapitestplan"),
 	// 				UsageType: to.Ptr("Committed"),
 	// 			},

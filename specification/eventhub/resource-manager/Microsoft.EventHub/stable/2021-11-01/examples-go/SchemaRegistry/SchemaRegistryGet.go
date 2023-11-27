@@ -32,13 +32,13 @@ func ExampleSchemaRegistryClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/e8baea74-64ce-459b-bee3-5aa4c47b3ae3/resourceGroups/alitest/providers/Microsoft.EventHub/namespaces/ali-ua-test-eh-system-1/schemagroups/testSchemaGroup1"),
 	// 	Location: to.Ptr("EAST US 2 EUAP"),
 	// 	Properties: &armeventhub.SchemaGroupProperties{
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-13T03:08:11.1671879Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-13T03:08:11.167Z"); return t}()),
 	// 		ETag: to.Ptr("51ddcff4-a287-423c-b194-7a8ebbfd8366"),
 	// 		GroupProperties: map[string]*string{
 	// 		},
 	// 		SchemaCompatibility: to.Ptr(armeventhub.SchemaCompatibilityForward),
 	// 		SchemaType: to.Ptr(armeventhub.SchemaTypeAvro),
-	// 		UpdatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-13T03:08:11.1671879Z"); return t}()),
+	// 		UpdatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-10-13T03:08:11.167Z"); return t}()),
 	// 	},
 	// }
 }

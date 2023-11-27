@@ -99,7 +99,7 @@ func ExampleNamespacesClient_BeginCreateOrUpdate() {
 	// 		MetricID: to.Ptr("MetricGUID:NamespaceSample"),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		ServiceBusEndpoint: to.Ptr("https://NamespaceSample.servicebus.windows-int.net:443/"),
-	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-16T22:37:42.29Z"); return t}()),
+	// 		UpdatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-16T22:37:42.290Z"); return t}()),
 	// 		ZoneRedundant: to.Ptr(false),
 	// 	},
 	// 	SKU: &armeventhub.SKU{

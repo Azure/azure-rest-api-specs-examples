@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CassandraViewGetResultResource created on azure
-// for more information of creating CassandraViewGetResultResource, please refer to the document of CassandraViewGetResultResource
+// this example assumes you already have this CassandraKeyspaceResource created on azure
+// for more information of creating CassandraKeyspaceResource, please refer to the document of CassandraKeyspaceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string keyspaceName = "keyspacename";
-string viewName = "viewname";
-ResourceIdentifier cassandraViewGetResultResourceId = CassandraViewGetResultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, keyspaceName, viewName);
-CassandraViewGetResultResource cassandraViewGetResult = client.GetCassandraViewGetResultResource(cassandraViewGetResultResourceId);
+ResourceIdentifier cassandraKeyspaceResourceId = CassandraKeyspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, keyspaceName);
+CassandraKeyspaceResource cassandraKeyspace = client.GetCassandraKeyspaceResource(cassandraKeyspaceResourceId);
+
+// get the collection of this CassandraViewGetResultResource
+CassandraViewGetResultCollection collection = cassandraKeyspace.GetCassandraViewGetResults();
 
 // invoke the operation
+string viewName = "viewname";
 CassandraViewGetResultCreateOrUpdateContent content = new CassandraViewGetResultCreateOrUpdateContent(new AzureLocation("placeholder"), new CassandraViewResource("viewname", "SELECT columna, columnb, columnc FROM keyspacename.srctablename WHERE columna IS NOT NULL AND columnc IS NOT NULL PRIMARY (columnc, columna)"))
 {
     Options = new CosmosDBCreateUpdateConfig(),
@@ -33,7 +36,7 @@ CassandraViewGetResultCreateOrUpdateContent content = new CassandraViewGetResult
     {
     },
 };
-ArmOperation<CassandraViewGetResultResource> lro = await cassandraViewGetResult.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<CassandraViewGetResultResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, viewName, content);
 CassandraViewGetResultResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

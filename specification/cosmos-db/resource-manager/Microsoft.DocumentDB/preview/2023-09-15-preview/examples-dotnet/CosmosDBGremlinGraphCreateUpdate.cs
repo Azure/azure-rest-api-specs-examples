@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GremlinDatabaseResource created on azure
-// for more information of creating GremlinDatabaseResource, please refer to the document of GremlinDatabaseResource
+// this example assumes you already have this GremlinGraphResource created on azure
+// for more information of creating GremlinGraphResource, please refer to the document of GremlinGraphResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string databaseName = "databaseName";
-ResourceIdentifier gremlinDatabaseResourceId = GremlinDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-GremlinDatabaseResource gremlinDatabase = client.GetGremlinDatabaseResource(gremlinDatabaseResourceId);
-
-// get the collection of this GremlinGraphResource
-GremlinGraphCollection collection = gremlinDatabase.GetGremlinGraphs();
+string graphName = "graphName";
+ResourceIdentifier gremlinGraphResourceId = GremlinGraphResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, graphName);
+GremlinGraphResource gremlinGraph = client.GetGremlinGraphResource(gremlinGraphResourceId);
 
 // invoke the operation
-string graphName = "graphName";
 GremlinGraphCreateOrUpdateContent content = new GremlinGraphCreateOrUpdateContent(new AzureLocation("West US"), new GremlinGraphResourceInfo("graphName")
 {
     IndexingPolicy = new CosmosDBIndexingPolicy()
@@ -91,7 +88,7 @@ GremlinGraphCreateOrUpdateContent content = new GremlinGraphCreateOrUpdateConten
     {
     },
 };
-ArmOperation<GremlinGraphResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, graphName, content);
+ArmOperation<GremlinGraphResource> lro = await gremlinGraph.UpdateAsync(WaitUntil.Completed, content);
 GremlinGraphResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

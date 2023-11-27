@@ -15,33 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlContainerResource created on azure
-// for more information of creating CosmosDBSqlContainerResource, please refer to the document of CosmosDBSqlContainerResource
+// this example assumes you already have this CosmosDBSqlStoredProcedureResource created on azure
+// for more information of creating CosmosDBSqlStoredProcedureResource, please refer to the document of CosmosDBSqlStoredProcedureResource
 string subscriptionId = "subid";
 string resourceGroupName = "rgName";
 string accountName = "ddb1";
 string databaseName = "databaseName";
 string containerName = "containerName";
-ResourceIdentifier cosmosDBSqlContainerResourceId = CosmosDBSqlContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName);
-CosmosDBSqlContainerResource cosmosDBSqlContainer = client.GetCosmosDBSqlContainerResource(cosmosDBSqlContainerResourceId);
-
-// get the collection of this CosmosDBSqlStoredProcedureResource
-CosmosDBSqlStoredProcedureCollection collection = cosmosDBSqlContainer.GetCosmosDBSqlStoredProcedures();
+string storedProcedureName = "storedProcedureName";
+ResourceIdentifier cosmosDBSqlStoredProcedureResourceId = CosmosDBSqlStoredProcedureResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName, storedProcedureName);
+CosmosDBSqlStoredProcedureResource cosmosDBSqlStoredProcedure = client.GetCosmosDBSqlStoredProcedureResource(cosmosDBSqlStoredProcedureResourceId);
 
 // invoke the operation
-string storedProcedureName = "storedProcedureName";
-NullableResponse<CosmosDBSqlStoredProcedureResource> response = await collection.GetIfExistsAsync(storedProcedureName);
-CosmosDBSqlStoredProcedureResource result = response.HasValue ? response.Value : null;
+CosmosDBSqlStoredProcedureResource result = await cosmosDBSqlStoredProcedure.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CosmosDBSqlStoredProcedureData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CosmosDBSqlStoredProcedureData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

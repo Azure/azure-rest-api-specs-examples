@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CassandraKeyspaceResource created on azure
-// for more information of creating CassandraKeyspaceResource, please refer to the document of CassandraKeyspaceResource
+// this example assumes you already have this CassandraTableResource created on azure
+// for more information of creating CassandraTableResource, please refer to the document of CassandraTableResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string keyspaceName = "keyspaceName";
-ResourceIdentifier cassandraKeyspaceResourceId = CassandraKeyspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, keyspaceName);
-CassandraKeyspaceResource cassandraKeyspace = client.GetCassandraKeyspaceResource(cassandraKeyspaceResourceId);
-
-// get the collection of this CassandraTableResource
-CassandraTableCollection collection = cassandraKeyspace.GetCassandraTables();
+string tableName = "tableName";
+ResourceIdentifier cassandraTableResourceId = CassandraTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, keyspaceName, tableName);
+CassandraTableResource cassandraTable = client.GetCassandraTableResource(cassandraTableResourceId);
 
 // invoke the operation
-string tableName = "tableName";
 CassandraTableCreateOrUpdateContent content = new CassandraTableCreateOrUpdateContent(new AzureLocation("West US"), new CassandraTableResourceInfo("tableName")
 {
     DefaultTtl = 100,
@@ -66,7 +63,7 @@ CassandraTableCreateOrUpdateContent content = new CassandraTableCreateOrUpdateCo
     {
     },
 };
-ArmOperation<CassandraTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tableName, content);
+ArmOperation<CassandraTableResource> lro = await cassandraTable.UpdateAsync(WaitUntil.Completed, content);
 CassandraTableResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

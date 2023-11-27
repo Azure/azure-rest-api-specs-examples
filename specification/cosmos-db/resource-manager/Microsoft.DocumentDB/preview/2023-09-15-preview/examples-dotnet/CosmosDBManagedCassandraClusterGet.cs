@@ -16,30 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this CassandraClusterResource created on azure
+// for more information of creating CassandraClusterResource, please refer to the document of CassandraClusterResource
 string subscriptionId = "subid";
 string resourceGroupName = "cassandra-prod-rg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this CassandraClusterResource
-CassandraClusterCollection collection = resourceGroupResource.GetCassandraClusters();
+string clusterName = "cassandra-prod";
+ResourceIdentifier cassandraClusterResourceId = CassandraClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+CassandraClusterResource cassandraCluster = client.GetCassandraClusterResource(cassandraClusterResourceId);
 
 // invoke the operation
-string clusterName = "cassandra-prod";
-NullableResponse<CassandraClusterResource> response = await collection.GetIfExistsAsync(clusterName);
-CassandraClusterResource result = response.HasValue ? response.Value : null;
+CassandraClusterResource result = await cassandraCluster.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CassandraClusterData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CassandraClusterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

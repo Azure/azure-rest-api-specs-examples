@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBTableResource created on azure
-// for more information of creating CosmosDBTableResource, please refer to the document of CosmosDBTableResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-string tableName = "tableName";
-ResourceIdentifier cosmosDBTableResourceId = CosmosDBTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, tableName);
-CosmosDBTableResource cosmosDBTable = client.GetCosmosDBTableResource(cosmosDBTableResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this CosmosDBTableResource
+CosmosDBTableCollection collection = cosmosDBAccount.GetCosmosDBTables();
 
 // invoke the operation
+string tableName = "tableName";
 CosmosDBTableCreateOrUpdateContent content = new CosmosDBTableCreateOrUpdateContent(new AzureLocation("West US"), new CosmosDBTableResourceInfo("tableName"))
 {
     Options = new CosmosDBCreateUpdateConfig(),
@@ -32,7 +35,7 @@ CosmosDBTableCreateOrUpdateContent content = new CosmosDBTableCreateOrUpdateCont
     {
     },
 };
-ArmOperation<CosmosDBTableResource> lro = await cosmosDBTable.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<CosmosDBTableResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, tableName, content);
 CosmosDBTableResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,16 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this ScheduledActionResource
+// this example assumes you already have this ScheduledActionResource created on azure
+// for more information of creating ScheduledActionResource, please refer to the document of ScheduledActionResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-ScheduledActionCollection collection = client.GetScheduledActions(scopeId);
+string name = "monthlyCostByResource";
+ResourceIdentifier scheduledActionResourceId = ScheduledActionResource.CreateResourceIdentifier(scope, name);
+ScheduledActionResource scheduledAction = client.GetScheduledActionResource(scheduledActionResourceId);
 
 // invoke the operation
-string name = "monthlyCostByResource";
-bool result = await collection.ExistsAsync(name);
+ScheduledActionResource result = await scheduledAction.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ScheduledActionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

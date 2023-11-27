@@ -31,7 +31,7 @@ func ExampleCassandraClustersClient_GetBackup() {
 	// 	Type: to.Ptr("Microsoft.DocumentDB/cassandraClusters/backups"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/cassandra-prod-rg/providers/Microsoft.DocumentDB/cassandraClusters/cassandra-prod/backups/1611250348"),
 	// 	Properties: &armcosmos.BackupResourceProperties{
-	// 		Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-21T17:32:28Z"); return t}()),
+	// 		Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-21T17:32:28.000Z"); return t}()),
 	// 	},
 	// }
 }

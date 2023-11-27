@@ -36,7 +36,7 @@ func ExampleDataTransferJobsClient_Cancel() {
 	// 			EndpointURL: to.Ptr("https://blob.windows.net"),
 	// 		},
 	// 		JobName: to.Ptr("j1"),
-	// 		LastUpdatedUTCTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-12T11:10:55.2780000Z"); return t}()),
+	// 		LastUpdatedUTCTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-12T11:10:55.278Z"); return t}()),
 	// 		ProcessedCount: to.Ptr[int64](20),
 	// 		Source: &armcosmos.CassandraDataTransferDataSourceSink{
 	// 			Component: to.Ptr(armcosmos.DataTransferComponentCosmosDBCassandra),

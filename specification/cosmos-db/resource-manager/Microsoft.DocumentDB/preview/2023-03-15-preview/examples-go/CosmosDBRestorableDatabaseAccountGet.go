@@ -34,18 +34,18 @@ func ExampleRestorableDatabaseAccountsClient_GetByLocation() {
 	// 	Properties: &armcosmos.RestorableDatabaseAccountProperties{
 	// 		AccountName: to.Ptr("ddb1"),
 	// 		APIType: to.Ptr(armcosmos.APITypeSQL),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-11T21:56:15Z"); return t}()),
-	// 		DeletionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-12T22:05:09Z"); return t}()),
-	// 		OldestRestorableTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-01T22:05:09Z"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-11T21:56:15.000Z"); return t}()),
+	// 		DeletionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-12T22:05:09.000Z"); return t}()),
+	// 		OldestRestorableTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-01T22:05:09.000Z"); return t}()),
 	// 		RestorableLocations: []*armcosmos.RestorableLocationResource{
 	// 			{
-	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-30T21:13:10Z"); return t}()),
-	// 				DeletionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-30T21:13:35Z"); return t}()),
+	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-30T21:13:10.000Z"); return t}()),
+	// 				DeletionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-30T21:13:35.000Z"); return t}()),
 	// 				LocationName: to.Ptr("South Central US"),
 	// 				RegionalDatabaseAccountInstanceID: to.Ptr("d7a01f78-606f-45c6-9dac-0df32f433bb5"),
 	// 			},
 	// 			{
-	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-30T21:13:10Z"); return t}()),
+	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-30T21:13:10.000Z"); return t}()),
 	// 				LocationName: to.Ptr("West US"),
 	// 				RegionalDatabaseAccountInstanceID: to.Ptr("fdb43d84-1572-4697-b6e7-2bcda0c51b2c"),
 	// 		}},

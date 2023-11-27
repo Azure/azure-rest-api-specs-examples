@@ -54,7 +54,7 @@ func ExampleDatabaseAccountsClient_Get() {
 	// 		BackupPolicy: &armcosmos.PeriodicModeBackupPolicy{
 	// 			Type: to.Ptr(armcosmos.BackupPolicyTypePeriodic),
 	// 			MigrationState: &armcosmos.BackupPolicyMigrationState{
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-09T21:07:16Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-09T21:07:16.000Z"); return t}()),
 	// 				Status: to.Ptr(armcosmos.BackupPolicyMigrationStatusInProgress),
 	// 				TargetType: to.Ptr(armcosmos.BackupPolicyTypeContinuous),
 	// 			},
@@ -96,16 +96,16 @@ func ExampleDatabaseAccountsClient_Get() {
 	// 		IsVirtualNetworkFilterEnabled: to.Ptr(false),
 	// 		KeysMetadata: &armcosmos.DatabaseAccountKeysMetadata{
 	// 			PrimaryMasterKey: &armcosmos.AccountKeyMetadata{
-	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11Z"); return t}()),
+	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11.000Z"); return t}()),
 	// 			},
 	// 			PrimaryReadonlyMasterKey: &armcosmos.AccountKeyMetadata{
-	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11Z"); return t}()),
+	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11.000Z"); return t}()),
 	// 			},
 	// 			SecondaryMasterKey: &armcosmos.AccountKeyMetadata{
-	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11Z"); return t}()),
+	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11.000Z"); return t}()),
 	// 			},
 	// 			SecondaryReadonlyMasterKey: &armcosmos.AccountKeyMetadata{
-	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11Z"); return t}()),
+	// 				GenerationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-02-25T20:30:11.000Z"); return t}()),
 	// 			},
 	// 		},
 	// 		Locations: []*armcosmos.Location{

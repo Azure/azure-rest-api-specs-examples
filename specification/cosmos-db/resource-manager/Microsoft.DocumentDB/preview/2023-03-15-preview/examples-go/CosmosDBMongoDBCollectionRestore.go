@@ -32,7 +32,7 @@ func ExampleMongoDBResourcesClient_BeginCreateUpdateMongoDBCollection_cosmosDbMo
 				ID:         to.Ptr("collectionName"),
 				RestoreParameters: &armcosmos.ResourceRestoreParameters{
 					RestoreSource:         to.Ptr("/subscriptions/subid/providers/Microsoft.DocumentDB/locations/WestUS/restorableDatabaseAccounts/restorableDatabaseAccountId"),
-					RestoreTimestampInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-20T18:28:00Z"); return t }()),
+					RestoreTimestampInUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-20T18:28:00.000Z"); return t }()),
 				},
 			},
 		},

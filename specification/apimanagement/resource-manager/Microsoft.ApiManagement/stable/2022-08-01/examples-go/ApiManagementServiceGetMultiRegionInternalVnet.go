@@ -54,7 +54,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetMultiRegionInternalVnet() {
 	// 				}},
 	// 				APIVersionConstraint: &armapimanagement.APIVersionConstraint{
 	// 				},
-	// 				CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-02T01:42:09.1268424Z"); return t}()),
+	// 				CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-02T01:42:09.126Z"); return t}()),
 	// 				CustomProperties: map[string]*string{
 	// 					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
 	// 					"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": to.Ptr("True"),
@@ -79,7 +79,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetMultiRegionInternalVnet() {
 	// 					{
 	// 						Type: to.Ptr(armapimanagement.HostnameTypeProxy),
 	// 						Certificate: &armapimanagement.CertificateInformation{
-	// 							Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-16T16:51:34+00:00"); return t}()),
+	// 							Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-16T16:51:34.000Z"); return t}()),
 	// 							Subject: to.Ptr("CN=*.preview.net"),
 	// 							Thumbprint: to.Ptr("B4330123DBAXXXXXXXXX1F35E84493476"),
 	// 						},

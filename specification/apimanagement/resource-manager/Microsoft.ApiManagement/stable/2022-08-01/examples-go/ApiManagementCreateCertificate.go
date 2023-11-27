@@ -37,7 +37,7 @@ func ExampleCertificateClient_CreateOrUpdate_apiManagementCreateCertificate() {
 	// 	Type: to.Ptr("Microsoft.ApiManagement/service/certificates"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/tempcert"),
 	// 	Properties: &armapimanagement.CertificateContractProperties{
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-17T21:55:07+00:00"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-17T21:55:07.000Z"); return t}()),
 	// 		Subject: to.Ptr("CN=contoso.com"),
 	// 		Thumbprint: to.Ptr("*******************3"),
 	// 	},

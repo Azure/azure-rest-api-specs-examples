@@ -46,7 +46,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetServiceHavingMsi() {
 	// 	},
 	// 	Location: to.Ptr("West Europe"),
 	// 	Properties: &armapimanagement.ServiceProperties{
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-04-12T00:20:15.6018952Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-04-12T00:20:15.601Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("False"),
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
@@ -72,7 +72,7 @@ func ExampleServiceClient_Get_apiManagementServiceGetServiceHavingMsi() {
 	// 			{
 	// 				Type: to.Ptr(armapimanagement.HostnameTypeProxy),
 	// 				Certificate: &armapimanagement.CertificateInformation{
-	// 					Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-18T11:11:47+00:00"); return t}()),
+	// 					Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-18T11:11:47.000Z"); return t}()),
 	// 					Subject: to.Ptr("CN=*.msitesting.net"),
 	// 					Thumbprint: to.Ptr("9833D531D7A45XXXXXA85908BD3692E0BD3F"),
 	// 				},

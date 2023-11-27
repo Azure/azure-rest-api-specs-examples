@@ -66,7 +66,7 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementCreateServiceInVnetWi
 	// 	Etag: to.Ptr("AAAAAAAGTAs="),
 	// 	Location: to.Ptr("East US 2 EUAP"),
 	// 	Properties: &armapimanagement.ServiceProperties{
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-22T06:53:46.6409875Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-22T06:53:46.640Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("False"),
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
@@ -110,10 +110,10 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementCreateServiceInVnetWi
 	// 			Capacity: to.Ptr[int32](2),
 	// 		},
 	// 		SystemData: &armapimanagement.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.107Z"); return t}()),
 	// 			CreatedBy: to.Ptr("string"),
 	// 			CreatedByType: to.Ptr(armapimanagement.CreatedByTypeApplication),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.1974346Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.197Z"); return t}()),
 	// 			LastModifiedBy: to.Ptr("string"),
 	// 			LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeApplication),
 	// 		},

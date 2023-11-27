@@ -31,7 +31,7 @@ func ExampleCertificateClient_Get_apiManagementGetCertificate() {
 	// 	Type: to.Ptr("Microsoft.ApiManagement/service/certificates"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/templateCert1"),
 	// 	Properties: &armapimanagement.CertificateContractProperties{
-	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-23T17:03:41Z"); return t}()),
+	// 		ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-23T17:03:41.000Z"); return t}()),
 	// 		Subject: to.Ptr("CN=mutual-authcert"),
 	// 		Thumbprint: to.Ptr("EBA**********************8594A6"),
 	// 	},

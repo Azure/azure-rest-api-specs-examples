@@ -41,7 +41,7 @@ func ExampleSubscriptionClient_NewListPager() {
 		// 			Type: to.Ptr("Microsoft.ApiManagement/service/subscriptions"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/subscriptions/5600b59475ff190048070001"),
 		// 			Properties: &armapimanagement.SubscriptionContractProperties{
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-22T01:57:40.3Z"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-22T01:57:40.300Z"); return t}()),
 		// 				OwnerID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/1"),
 		// 				Scope: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/products/5600b59475ff190048060001"),
 		// 				State: to.Ptr(armapimanagement.SubscriptionStateActive),
@@ -54,11 +54,11 @@ func ExampleSubscriptionClient_NewListPager() {
 		// 			Properties: &armapimanagement.SubscriptionContractProperties{
 		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-17T17:45:33.837Z"); return t}()),
 		// 				DisplayName: to.Ptr("Starter"),
-		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-04-01T00:00:00Z"); return t}()),
-		// 				NotificationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-20T00:00:00Z"); return t}()),
+		// 				ExpirationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-04-01T00:00:00.000Z"); return t}()),
+		// 				NotificationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-20T00:00:00.000Z"); return t}()),
 		// 				OwnerID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/56eaec62baf08b06e46d27fd"),
 		// 				Scope: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/products/5600b59475ff190048060001"),
-		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-17T00:00:00Z"); return t}()),
+		// 				StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-17T00:00:00.000Z"); return t}()),
 		// 				State: to.Ptr(armapimanagement.SubscriptionStateActive),
 		// 			},
 		// 		},

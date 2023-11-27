@@ -62,7 +62,7 @@ func ExampleServiceClient_BeginBackup_apiManagementBackupWithUserAssignedManaged
 	// 	},
 	// 	Location: to.Ptr("Central US EUAP"),
 	// 	Properties: &armapimanagement.ServiceProperties{
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-23T16:26:47.8637967Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-23T16:26:47.863Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("False"),
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
@@ -104,7 +104,7 @@ func ExampleServiceClient_BeginBackup_apiManagementBackupWithUserAssignedManaged
 	// 			Capacity: to.Ptr[int32](1),
 	// 		},
 	// 		SystemData: &armapimanagement.SystemData{
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-30T06:24:57.0008037Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-30T06:24:57.000Z"); return t}()),
 	// 			LastModifiedBy: to.Ptr("contoso@microsoft.com"),
 	// 			LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 	// 		},

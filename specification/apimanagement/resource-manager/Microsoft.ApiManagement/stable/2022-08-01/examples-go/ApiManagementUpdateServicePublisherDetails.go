@@ -51,7 +51,7 @@ func ExampleServiceClient_BeginUpdate_apiManagementUpdateServicePublisherDetails
 	// 	Etag: to.Ptr("AAAAAAAYRPs="),
 	// 	Location: to.Ptr("West US"),
 	// 	Properties: &armapimanagement.ServiceProperties{
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-29T17:50:42.3191122Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-29T17:50:42.319Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": to.Ptr("False"),
 	// 		},

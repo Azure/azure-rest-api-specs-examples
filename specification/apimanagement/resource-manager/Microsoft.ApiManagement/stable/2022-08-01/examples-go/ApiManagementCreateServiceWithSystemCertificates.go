@@ -69,13 +69,13 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementCreateServiceWithSyst
 	// 		Certificates: []*armapimanagement.CertificateConfiguration{
 	// 			{
 	// 				Certificate: &armapimanagement.CertificateInformation{
-	// 					Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2036-01-01T07:00:00+00:00"); return t}()),
+	// 					Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2036-01-01T07:00:00.000Z"); return t}()),
 	// 					Subject: to.Ptr("CN=*.msitesting.net"),
 	// 					Thumbprint: to.Ptr("8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2"),
 	// 				},
 	// 				StoreName: to.Ptr(armapimanagement.CertificateConfigurationStoreNameCertificateAuthority),
 	// 		}},
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-18T06:33:28.0906918Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-18T06:33:28.090Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("False"),
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
@@ -116,10 +116,10 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementCreateServiceWithSyst
 	// 			Capacity: to.Ptr[int32](1),
 	// 		},
 	// 		SystemData: &armapimanagement.SystemData{
-	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.1075056Z"); return t}()),
+	// 			CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-01T01:01:01.107Z"); return t}()),
 	// 			CreatedBy: to.Ptr("string"),
 	// 			CreatedByType: to.Ptr(armapimanagement.CreatedByTypeApplication),
-	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.1974346Z"); return t}()),
+	// 			LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-02T02:03:01.197Z"); return t}()),
 	// 			LastModifiedBy: to.Ptr("string"),
 	// 			LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeApplication),
 	// 		},

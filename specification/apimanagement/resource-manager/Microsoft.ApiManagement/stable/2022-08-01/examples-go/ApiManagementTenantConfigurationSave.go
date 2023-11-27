@@ -43,9 +43,9 @@ func ExampleTenantConfigurationClient_BeginSave() {
 	// 		ActionLog: []*armapimanagement.OperationResultLogItemContract{
 	// 		},
 	// 		ResultInfo: to.Ptr("The configuration was successfully saved to master as commit c0ae274f6046912107bad734834cbf65918668b6."),
-	// 		Started: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:31:14.94Z"); return t}()),
+	// 		Started: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:31:14.940Z"); return t}()),
 	// 		Status: to.Ptr(armapimanagement.AsyncOperationStatusSucceeded),
-	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:31:27.59Z"); return t}()),
+	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:31:27.590Z"); return t}()),
 	// 	},
 	// }
 }

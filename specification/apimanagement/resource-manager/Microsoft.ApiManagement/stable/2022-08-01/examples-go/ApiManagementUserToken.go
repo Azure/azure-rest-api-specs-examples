@@ -24,7 +24,7 @@ func ExampleUserClient_GetSharedAccessToken() {
 	}
 	res, err := clientFactory.NewUserClient().GetSharedAccessToken(ctx, "rg1", "apimService1", "userId1718", armapimanagement.UserTokenParameters{
 		Properties: &armapimanagement.UserTokenParameterProperties{
-			Expiry:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-21T00:44:24.2845269Z"); return t }()),
+			Expiry:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-04-21T00:44:24.284Z"); return t }()),
 			KeyType: to.Ptr(armapimanagement.KeyTypePrimary),
 		},
 	}, nil)

@@ -41,7 +41,7 @@ func ExampleSubscriptionClient_CreateOrUpdate() {
 	// 	Type: to.Ptr("Microsoft.ApiManagement/service/subscriptions"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/subscriptions/testsub"),
 	// 	Properties: &armapimanagement.SubscriptionContractProperties{
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T23:34:03.1055076Z"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T23:34:03.105Z"); return t}()),
 	// 		DisplayName: to.Ptr("testsub"),
 	// 		OwnerID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7"),
 	// 		Scope: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/products/5600b59475ff190048060002"),

@@ -44,7 +44,7 @@ func ExampleServiceClient_BeginApplyNetworkConfigurationUpdates() {
 	// 	Etag: to.Ptr("AAAAAAAXX6Y="),
 	// 	Location: to.Ptr("East Asia"),
 	// 	Properties: &armapimanagement.ServiceProperties{
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-22T01:50:34.7921566Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-22T01:50:34.792Z"); return t}()),
 	// 		GatewayURL: to.Ptr("https://apimService1.azure-api.net"),
 	// 		HostnameConfigurations: []*armapimanagement.HostnameConfiguration{
 	// 		},

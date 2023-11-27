@@ -43,7 +43,7 @@ func ExampleTenantConfigurationClient_BeginValidate() {
 	// 		ActionLog: []*armapimanagement.OperationResultLogItemContract{
 	// 		},
 	// 		ResultInfo: to.Ptr("Validation is successfull"),
-	// 		Started: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:55:30.62Z"); return t}()),
+	// 		Started: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:55:30.620Z"); return t}()),
 	// 		Status: to.Ptr(armapimanagement.AsyncOperationStatusSucceeded),
 	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-13T00:55:39.857Z"); return t}()),
 	// 	},

@@ -45,7 +45,7 @@ func ExamplePortalRevisionClient_BeginUpdate() {
 	// 		CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-13T22:47:13.397Z"); return t}()),
 	// 		IsCurrent: to.Ptr(true),
 	// 		Status: to.Ptr(armapimanagement.PortalRevisionStatusCompleted),
-	// 		UpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-13T23:29:25.34Z"); return t}()),
+	// 		UpdatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-13T23:29:25.340Z"); return t}()),
 	// 	},
 	// }
 }

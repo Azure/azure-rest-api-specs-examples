@@ -51,7 +51,7 @@ func ExampleServiceClient_BeginCreateOrUpdate_apiManagementUndelete() {
 	// 	Properties: &armapimanagement.ServiceProperties{
 	// 		APIVersionConstraint: &armapimanagement.APIVersionConstraint{
 	// 		},
-	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-18T06:10:56.0327105Z"); return t}()),
+	// 		CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-18T06:10:56.032Z"); return t}()),
 	// 		CustomProperties: map[string]*string{
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("False"),
 	// 			"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),

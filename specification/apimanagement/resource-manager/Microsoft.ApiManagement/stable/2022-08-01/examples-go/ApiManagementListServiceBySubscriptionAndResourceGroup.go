@@ -73,7 +73,7 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 					},
 		// 					Certificates: []*armapimanagement.CertificateConfiguration{
 		// 					},
-		// 					CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.9453556Z"); return t}()),
+		// 					CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.945Z"); return t}()),
 		// 					CustomProperties: map[string]*string{
 		// 						"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("false"),
 		// 						"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("false"),
@@ -99,7 +99,7 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 						{
 		// 							Type: to.Ptr(armapimanagement.HostnameTypeProxy),
 		// 							Certificate: &armapimanagement.CertificateInformation{
-		// 								Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32+00:00"); return t}()),
+		// 								Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32.000Z"); return t}()),
 		// 								Subject: to.Ptr("CN=*.current.int-azure-api.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US"),
 		// 								Thumbprint: to.Ptr("BA0C286F71AF3B6A01BDB240C58A4A507E3DBD51"),
 		// 							},
@@ -112,7 +112,7 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 						{
 		// 							Type: to.Ptr(armapimanagement.HostnameTypeDeveloperPortal),
 		// 							Certificate: &armapimanagement.CertificateInformation{
-		// 								Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32+00:00"); return t}()),
+		// 								Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32.000Z"); return t}()),
 		// 								Subject: to.Ptr("CN=*.current.int-azure-api.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US"),
 		// 								Thumbprint: to.Ptr("BA0C286F71AF3B6A01BDB240C58A4A507E3DBD51"),
 		// 							},
@@ -125,7 +125,7 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 						{
 		// 							Type: to.Ptr(armapimanagement.HostnameTypeManagement),
 		// 							Certificate: &armapimanagement.CertificateInformation{
-		// 								Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32+00:00"); return t}()),
+		// 								Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T22:32:32.000Z"); return t}()),
 		// 								Subject: to.Ptr("CN=*.current.int-azure-api.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US"),
 		// 								Thumbprint: to.Ptr("BA0C286F71AF3B6A01BDB240C58A4A507E3DBD51"),
 		// 							},
@@ -153,10 +153,10 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 						Capacity: to.Ptr[int32](1),
 		// 					},
 		// 					SystemData: &armapimanagement.SystemData{
-		// 						CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.7106733Z"); return t}()),
+		// 						CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:40:00.710Z"); return t}()),
 		// 						CreatedBy: to.Ptr("bar@contoso.com"),
 		// 						CreatedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
-		// 						LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-20T06:33:09.6159006Z"); return t}()),
+		// 						LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-20T06:33:09.615Z"); return t}()),
 		// 						LastModifiedBy: to.Ptr("foo@contoso.com"),
 		// 						LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 		// 					},
@@ -171,7 +171,7 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 					Etag: to.Ptr("AAAAAAAWKwo="),
 		// 					Location: to.Ptr("East US"),
 		// 					Properties: &armapimanagement.ServiceProperties{
-		// 						CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-10T18:07:23.4565211Z"); return t}()),
+		// 						CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-08-10T18:07:23.456Z"); return t}()),
 		// 						CustomProperties: map[string]*string{
 		// 							"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("False"),
 		// 							"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
@@ -227,7 +227,7 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 						APIVersionConstraint: &armapimanagement.APIVersionConstraint{
 		// 							MinAPIVersion: to.Ptr("2019-12-01"),
 		// 						},
-		// 						CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:39:58.6555759Z"); return t}()),
+		// 						CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:39:58.655Z"); return t}()),
 		// 						CustomProperties: map[string]*string{
 		// 							"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("false"),
 		// 							"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("False"),
@@ -269,10 +269,10 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 							Capacity: to.Ptr[int32](2),
 		// 						},
 		// 						SystemData: &armapimanagement.SystemData{
-		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:39:58.4591834Z"); return t}()),
+		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-16T09:39:58.459Z"); return t}()),
 		// 							CreatedBy: to.Ptr("bar@contoso.com"),
 		// 							CreatedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
-		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T15:05:13.5494721Z"); return t}()),
+		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T15:05:13.549Z"); return t}()),
 		// 							LastModifiedBy: to.Ptr("bar@contoso.com"),
 		// 							LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 		// 						},
@@ -311,13 +311,13 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 								Certificates: []*armapimanagement.CertificateConfiguration{
 		// 									{
 		// 										Certificate: &armapimanagement.CertificateInformation{
-		// 											Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-25T22:51:47+00:00"); return t}()),
+		// 											Expiry: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-11-25T22:51:47.000Z"); return t}()),
 		// 											Subject: to.Ptr("CN=*.apim.net"),
 		// 											Thumbprint: to.Ptr("4E8234312EC69245D1AE296C4882D46FB84076A3"),
 		// 										},
 		// 										StoreName: to.Ptr(armapimanagement.CertificateConfigurationStoreNameRoot),
 		// 								}},
-		// 								CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-09T10:06:22.2133978Z"); return t}()),
+		// 								CreatedAtUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-09T10:06:22.213Z"); return t}()),
 		// 								CustomProperties: map[string]*string{
 		// 									"Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": to.Ptr("false"),
 		// 									"Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": to.Ptr("false"),
@@ -358,10 +358,10 @@ func ExampleServiceClient_NewListByResourceGroupPager() {
 		// 									Capacity: to.Ptr[int32](3),
 		// 								},
 		// 								SystemData: &armapimanagement.SystemData{
-		// 									CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-09T10:06:21.7336597Z"); return t}()),
+		// 									CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-09T10:06:21.733Z"); return t}()),
 		// 									CreatedBy: to.Ptr("v-ssaiprasan@microsoft.com"),
 		// 									CreatedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
-		// 									LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-10T14:27:05.546816Z"); return t}()),
+		// 									LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-10T14:27:05.546Z"); return t}()),
 		// 									LastModifiedBy: to.Ptr("v-ssaiprasan@microsoft.com"),
 		// 									LastModifiedByType: to.Ptr(armapimanagement.CreatedByTypeUser),
 		// 								},

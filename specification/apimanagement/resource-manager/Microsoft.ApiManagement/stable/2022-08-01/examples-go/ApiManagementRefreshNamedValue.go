@@ -45,7 +45,7 @@ func ExampleNamedValueClient_BeginRefreshSecret() {
 	// 				SecretIdentifier: to.Ptr("https://rpbvtkeyvaultintegration.vault.azure.net/secrets/msitestingCert"),
 	// 				LastStatus: &armapimanagement.KeyVaultLastAccessStatusContractProperties{
 	// 					Code: to.Ptr("Success"),
-	// 					TimeStampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-11T00:54:31.8024882Z"); return t}()),
+	// 					TimeStampUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-11T00:54:31.802Z"); return t}()),
 	// 				},
 	// 			},
 	// 		},

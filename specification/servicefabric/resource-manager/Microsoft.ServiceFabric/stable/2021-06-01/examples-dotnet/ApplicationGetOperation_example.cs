@@ -28,6 +28,18 @@ ServiceFabricApplicationCollection collection = serviceFabricCluster.GetServiceF
 
 // invoke the operation
 string applicationName = "myApp";
-bool result = await collection.ExistsAsync(applicationName);
+NullableResponse<ServiceFabricApplicationResource> response = await collection.GetIfExistsAsync(applicationName);
+ServiceFabricApplicationResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ServiceFabricApplicationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

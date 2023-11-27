@@ -38,9 +38,9 @@ func ExampleRequestsClient_NewListPager_listLockboxRequestsInASubscriptionWithFi
 		// 			Type: to.Ptr("requests"),
 		// 			ID: to.Ptr("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CustomerLockbox/requests/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		// 			Properties: &armcustomerlockbox.LockboxRequestResponseProperties{
-		// 				CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-17T23:15:42.031334Z"); return t}()),
+		// 				CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-17T23:15:42.031Z"); return t}()),
 		// 				Duration: to.Ptr("8"),
-		// 				ExpirationDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-21T23:15:42.031334Z"); return t}()),
+		// 				ExpirationDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-06-21T23:15:42.031Z"); return t}()),
 		// 				Justification: to.Ptr("Microsoft Support Team is requesting access to your resource temporarily for troubleshooting."),
 		// 				RequestID: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		// 				ResourceIDs: to.Ptr("SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/RESOURCEGROUPS/DEMORG/PROVIDERS/MICROSOFT.COMPUTE/VIRTUALMACHINES/DEMO"),
@@ -57,9 +57,9 @@ func ExampleRequestsClient_NewListPager_listLockboxRequestsInASubscriptionWithFi
 		// 			Type: to.Ptr("requests"),
 		// 			ID: to.Ptr("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.CustomerLockbox/requests/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		// 			Properties: &armcustomerlockbox.LockboxRequestResponseProperties{
-		// 				CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T03:12:51.2672319Z"); return t}()),
+		// 				CreatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-19T03:12:51.267Z"); return t}()),
 		// 				Duration: to.Ptr("8"),
-		// 				ExpirationDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-23T03:12:51.2672319Z"); return t}()),
+		// 				ExpirationDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-11-23T03:12:51.267Z"); return t}()),
 		// 				Justification: to.Ptr("Microsoft Support Team is requesting access to your resource temporarily for troubleshooting."),
 		// 				RequestID: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
 		// 				ResourceIDs: to.Ptr("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),

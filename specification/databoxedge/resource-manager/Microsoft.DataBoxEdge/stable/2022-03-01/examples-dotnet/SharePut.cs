@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
-// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
+// this example assumes you already have this DataBoxEdgeShareResource created on azure
+// for more information of creating DataBoxEdgeShareResource, please refer to the document of DataBoxEdgeShareResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
-DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
-
-// get the collection of this DataBoxEdgeShareResource
-DataBoxEdgeShareCollection collection = dataBoxEdgeDevice.GetDataBoxEdgeShares();
+string name = "smbshare";
+ResourceIdentifier dataBoxEdgeShareResourceId = DataBoxEdgeShareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
+DataBoxEdgeShareResource dataBoxEdgeShare = client.GetDataBoxEdgeShareResource(dataBoxEdgeShareResourceId);
 
 // invoke the operation
-string name = "smbshare";
 DataBoxEdgeShareData data = new DataBoxEdgeShareData(new ShareStatus("Online"), DataBoxEdgeShareMonitoringStatus.Enabled, ShareAccessProtocol.Smb)
 {
     Description = "",
@@ -38,7 +35,7 @@ DataBoxEdgeShareData data = new DataBoxEdgeShareData(new ShareStatus("Online"), 
     },
     DataPolicy = DataBoxEdgeDataPolicy.Cloud,
 };
-ArmOperation<DataBoxEdgeShareResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<DataBoxEdgeShareResource> lro = await dataBoxEdgeShare.UpdateAsync(WaitUntil.Completed, data);
 DataBoxEdgeShareResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

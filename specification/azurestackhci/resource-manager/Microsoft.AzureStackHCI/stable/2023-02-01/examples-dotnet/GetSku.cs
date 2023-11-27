@@ -13,21 +13,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OfferResource created on azure
-// for more information of creating OfferResource, please refer to the document of OfferResource
+// this example assumes you already have this HciSkuResource created on azure
+// for more information of creating HciSkuResource, please refer to the document of HciSkuResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "test-rg";
 string clusterName = "myCluster";
 string publisherName = "publisher1";
 string offerName = "offer1";
-ResourceIdentifier offerResourceId = OfferResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, publisherName, offerName);
-OfferResource offer = client.GetOfferResource(offerResourceId);
-
-// get the collection of this HciSkuResource
-HciSkuCollection collection = offer.GetHciSkus();
+string skuName = "sku1";
+ResourceIdentifier hciSkuResourceId = HciSkuResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, publisherName, offerName, skuName);
+HciSkuResource hciSku = client.GetHciSkuResource(hciSkuResourceId);
 
 // invoke the operation
-string skuName = "sku1";
-bool result = await collection.ExistsAsync(skuName);
+HciSkuResource result = await hciSku.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HciSkuData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

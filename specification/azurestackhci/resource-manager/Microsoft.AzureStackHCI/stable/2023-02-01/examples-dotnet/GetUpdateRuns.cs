@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this UpdateRunResource created on azure
-// for more information of creating UpdateRunResource, please refer to the document of UpdateRunResource
+// this example assumes you already have this UpdateResource created on azure
+// for more information of creating UpdateResource, please refer to the document of UpdateResource
 string subscriptionId = "b8d594e5-51f3-4c11-9c54-a7771b81c712";
 string resourceGroupName = "testrg";
 string clusterName = "testcluster";
 string updateName = "Microsoft4.2203.2.32";
-string updateRunName = "23b779ba-0d52-4a80-8571-45ca74664ec3";
-ResourceIdentifier updateRunResourceId = UpdateRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, updateName, updateRunName);
-UpdateRunResource updateRun = client.GetUpdateRunResource(updateRunResourceId);
+ResourceIdentifier updateResourceId = UpdateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, updateName);
+UpdateResource update = client.GetUpdateResource(updateResourceId);
+
+// get the collection of this UpdateRunResource
+UpdateRunCollection collection = update.GetUpdateRuns();
 
 // invoke the operation
-UpdateRunResource result = await updateRun.GetAsync();
+string updateRunName = "23b779ba-0d52-4a80-8571-45ca74664ec3";
+NullableResponse<UpdateRunResource> response = await collection.GetIfExistsAsync(updateRunName);
+UpdateRunResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-UpdateRunData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    UpdateRunData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

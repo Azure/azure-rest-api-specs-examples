@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ContainerAppManagedEnvironmentResource
-ContainerAppManagedEnvironmentCollection collection = resourceGroupResource.GetContainerAppManagedEnvironments();
+string environmentName = "jlaw-demo1";
+ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
+ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
 
 // invoke the operation
-string environmentName = "jlaw-demo1";
-bool result = await collection.ExistsAsync(environmentName);
+ContainerAppManagedEnvironmentResource result = await containerAppManagedEnvironment.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppManagedEnvironmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

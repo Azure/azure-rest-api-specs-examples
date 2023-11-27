@@ -44,17 +44,17 @@ ServiceFabricClusterData data = new ServiceFabricClusterData(new AzureLocation("
     {
         CommonNames =
         {
-        new ClusterServerCertificateCommonName("abc.com",BinaryData.FromString("12599211F8F14C90AFA9532AD79A6F2CA1C00622"))
+        new ClusterServerCertificateCommonName("abc.com",BinaryData.FromString("\"12599211F8F14C90AFA9532AD79A6F2CA1C00622\""))
         },
         X509StoreName = ClusterCertificateStoreName.My,
     },
     ClientCertificateCommonNames =
     {
-    new ClusterClientCertificateCommonName(true,"abc.com",BinaryData.FromString("5F3660C715EBBDA31DB1FFDCF508302348DE8E7A"))
+    new ClusterClientCertificateCommonName(true,"abc.com",BinaryData.FromString("\"5F3660C715EBBDA31DB1FFDCF508302348DE8E7A\""))
     },
     ClientCertificateThumbprints =
     {
-    new ClusterClientCertificateThumbprint(true,BinaryData.FromString("5F3660C715EBBDA31DB1FFDCF508302348DE8E7A"))
+    new ClusterClientCertificateThumbprint(true,BinaryData.FromString("\"5F3660C715EBBDA31DB1FFDCF508302348DE8E7A\""))
     },
     ClusterCodeVersion = "7.0.470.9590",
     DiagnosticsStorageAccountConfig = new DiagnosticsStorageAccountConfig("diag", "StorageAccountKey1", new Uri("https://diag.blob.core.windows.net/"), new Uri("https://diag.queue.core.windows.net/"), new Uri("https://diag.table.core.windows.net/")),
@@ -83,7 +83,7 @@ ServiceFabricClusterData data = new ServiceFabricClusterData(new AzureLocation("
     {
         CommonNames =
         {
-        new ClusterServerCertificateCommonName("abc.com",BinaryData.FromString("12599211F8F14C90AFA9532AD79A6F2CA1C00622"))
+        new ClusterServerCertificateCommonName("abc.com",BinaryData.FromString("\"12599211F8F14C90AFA9532AD79A6F2CA1C00622\""))
         },
         X509StoreName = ClusterCertificateStoreName.My,
     },

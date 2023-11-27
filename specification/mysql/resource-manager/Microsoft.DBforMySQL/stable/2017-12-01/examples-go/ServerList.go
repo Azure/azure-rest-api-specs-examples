@@ -39,7 +39,7 @@ func ExampleServersClient_NewListPager() {
 		// 			Location: to.Ptr("westus"),
 		// 			Properties: &armmysql.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("testuser"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:02.627+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:02.627Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("mysqltestsvc1.mysql.database.azure.com"),
 		// 				PrivateEndpointConnections: []*armmysql.ServerPrivateEndpointConnection{
 		// 				},
@@ -67,7 +67,7 @@ func ExampleServersClient_NewListPager() {
 		// 			Location: to.Ptr("westus"),
 		// 			Properties: &armmysql.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("testuser"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:54.3+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:56:54.300Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("mysqltstsvc2.mysql.database.azure.com"),
 		// 				PrivateEndpointConnections: []*armmysql.ServerPrivateEndpointConnection{
 		// 					{
@@ -108,7 +108,7 @@ func ExampleServersClient_NewListPager() {
 		// 			Location: to.Ptr("westus"),
 		// 			Properties: &armmysql.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("testuser"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:59:44.847+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-28T23:59:44.847Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("mysqltestsvc3.mysql.database.azure.com"),
 		// 				PrivateEndpointConnections: []*armmysql.ServerPrivateEndpointConnection{
 		// 					{

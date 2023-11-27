@@ -42,7 +42,7 @@ func ExampleReplicasClient_NewListByServerPager() {
 		// 			},
 		// 			Properties: &armmysql.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("cloudsa"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T23:56:54.3+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T23:56:54.300Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("testserver.mysql.database.azure.com"),
 		// 				MasterServerID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforMySQL/servers/testmaster"),
 		// 				ReplicaCapacity: to.Ptr[int32](0),
@@ -73,7 +73,7 @@ func ExampleReplicasClient_NewListByServerPager() {
 		// 			},
 		// 			Properties: &armmysql.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("cloudsa"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T23:56:54.3+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T23:56:54.300Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("testserver1.mysql.database.azure.com"),
 		// 				MasterServerID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforMySQL/servers/testmaster"),
 		// 				ReplicaCapacity: to.Ptr[int32](0),
@@ -104,7 +104,7 @@ func ExampleReplicasClient_NewListByServerPager() {
 		// 			},
 		// 			Properties: &armmysql.ServerProperties{
 		// 				AdministratorLogin: to.Ptr("cloudsa"),
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T23:56:54.3+00:00"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-11T23:56:54.300Z"); return t}()),
 		// 				FullyQualifiedDomainName: to.Ptr("testserver2.mysql.database.azure.com"),
 		// 				MasterServerID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup/providers/Microsoft.DBforMySQL/servers/testmaster"),
 		// 				ReplicaCapacity: to.Ptr[int32](0),

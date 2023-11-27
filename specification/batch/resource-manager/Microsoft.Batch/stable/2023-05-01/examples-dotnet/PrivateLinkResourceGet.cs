@@ -13,20 +13,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BatchPrivateLinkResource created on azure
-// for more information of creating BatchPrivateLinkResource, please refer to the document of BatchPrivateLinkResource
+// this example assumes you already have this BatchAccountResource created on azure
+// for more information of creating BatchAccountResource, please refer to the document of BatchAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "default-azurebatch-japaneast";
 string accountName = "sampleacct";
-string privateLinkResourceName = "batchAccount";
-ResourceIdentifier batchPrivateLinkResourceId = BatchPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, privateLinkResourceName);
-BatchPrivateLinkResource batchPrivateLinkResource = client.GetBatchPrivateLinkResource(batchPrivateLinkResourceId);
+ResourceIdentifier batchAccountResourceId = BatchAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+BatchAccountResource batchAccount = client.GetBatchAccountResource(batchAccountResourceId);
+
+// get the collection of this BatchPrivateLinkResource
+BatchPrivateLinkResourceCollection collection = batchAccount.GetBatchPrivateLinkResources();
 
 // invoke the operation
-BatchPrivateLinkResource result = await batchPrivateLinkResource.GetAsync();
+string privateLinkResourceName = "batchAccount";
+bool result = await collection.ExistsAsync(privateLinkResourceName);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BatchPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

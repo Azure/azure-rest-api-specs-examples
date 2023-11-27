@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BatchAccountResource created on azure
-// for more information of creating BatchAccountResource, please refer to the document of BatchAccountResource
+// this example assumes you already have this BatchAccountCertificateResource created on azure
+// for more information of creating BatchAccountCertificateResource, please refer to the document of BatchAccountCertificateResource
 string subscriptionId = "subid";
 string resourceGroupName = "default-azurebatch-japaneast";
 string accountName = "sampleacct";
-ResourceIdentifier batchAccountResourceId = BatchAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-BatchAccountResource batchAccount = client.GetBatchAccountResource(batchAccountResourceId);
-
-// get the collection of this BatchAccountCertificateResource
-BatchAccountCertificateCollection collection = batchAccount.GetBatchAccountCertificates();
+string certificateName = "sha1-0a0e4f50d51beadeac1d35afc5116098e7902e6e";
+ResourceIdentifier batchAccountCertificateResourceId = BatchAccountCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, certificateName);
+BatchAccountCertificateResource batchAccountCertificate = client.GetBatchAccountCertificateResource(batchAccountCertificateResourceId);
 
 // invoke the operation
-string certificateName = "sha1-0a0e4f50d51beadeac1d35afc5116098e7902e6e";
-bool result = await collection.ExistsAsync(certificateName);
+BatchAccountCertificateResource result = await batchAccountCertificate.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BatchAccountCertificateData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

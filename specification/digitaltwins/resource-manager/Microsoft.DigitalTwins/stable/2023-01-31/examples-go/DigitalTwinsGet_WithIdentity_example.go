@@ -43,10 +43,10 @@ func ExampleClient_Get_getADigitalTwinsInstanceResourceWithIdentity() {
 	// 	},
 	// 	Location: to.Ptr("westus2"),
 	// 	SystemData: &armdigitaltwins.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-11T17:13:59.4037715Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-11T17:13:59.403Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user@example.com"),
 	// 		CreatedByType: to.Ptr(armdigitaltwins.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-11T17:14:02.5281409Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-11T17:14:02.528Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("d2baee3d-44c0-41b6-9961-92563de66a97"),
 	// 		LastModifiedByType: to.Ptr(armdigitaltwins.CreatedByTypeApplication),
 	// 	},

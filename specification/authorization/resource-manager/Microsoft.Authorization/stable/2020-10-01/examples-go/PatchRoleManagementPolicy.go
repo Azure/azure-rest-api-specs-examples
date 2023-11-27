@@ -570,7 +570,7 @@ func ExampleRoleManagementPoliciesClient_Update_patchRoleManagementPolicy() {
 	// 																													LastModifiedBy: &armauthorization.Principal{
 	// 																														DisplayName: to.Ptr("Admin"),
 	// 																													},
-	// 																													LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-17T16:35:27.91+00:00"); return t}()),
+	// 																													LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-17T16:35:27.910Z"); return t}()),
 	// 																													PolicyProperties: &armauthorization.PolicyProperties{
 	// 																														Scope: &armauthorization.PolicyPropertiesScope{
 	// 																															Type: to.Ptr("subscription"),

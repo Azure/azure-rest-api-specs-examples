@@ -1,0 +1,32 @@
+const { ChaosManagementClient } = require("@azure/arm-chaos");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to The operation to update an experiment.
+ *
+ * @summary The operation to update an experiment.
+ * x-ms-original-file: specification/chaos/resource-manager/Microsoft.Chaos/stable/2023-11-01/examples/UpdateExperiment.json
+ */
+async function updateAnExperimentInAResourceGroup() {
+  const subscriptionId =
+    process.env["CHAOS_SUBSCRIPTION_ID"] || "6b052e15-03d3-4f17-b2e1-be7f07588291";
+  const resourceGroupName = process.env["CHAOS_RESOURCE_GROUP"] || "exampleRG";
+  const experimentName = "exampleExperiment";
+  const experiment = {
+    identity: {
+      type: "UserAssigned",
+      userAssignedIdentities: {
+        "/subscriptions/6b052e1503d34f17B2e1Be7f07588291/resourceGroups/exampleRG/providers/MicrosoftManagedIdentity/userAssignedIdentity/exampleUMI":
+          {},
+      },
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ChaosManagementClient(credential, subscriptionId);
+  const result = await client.experiments.beginUpdateAndWait(
+    resourceGroupName,
+    experimentName,
+    experiment
+  );
+  console.log(result);
+}

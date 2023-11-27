@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DevCenterProjectResource created on azure
-// for more information of creating DevCenterProjectResource, please refer to the document of DevCenterProjectResource
+// this example assumes you already have this ProjectAttachedNetworkConnectionResource created on azure
+// for more information of creating ProjectAttachedNetworkConnectionResource, please refer to the document of ProjectAttachedNetworkConnectionResource
 string subscriptionId = "0ac520ee-14c0-480f-b6c9-0a90c58ffff";
 string resourceGroupName = "rg1";
 string projectName = "DevProject";
-ResourceIdentifier devCenterProjectResourceId = DevCenterProjectResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName);
-DevCenterProjectResource devCenterProject = client.GetDevCenterProjectResource(devCenterProjectResourceId);
-
-// get the collection of this ProjectAttachedNetworkConnectionResource
-ProjectAttachedNetworkConnectionCollection collection = devCenterProject.GetProjectAttachedNetworkConnections();
+string attachedNetworkConnectionName = "network-uswest3";
+ResourceIdentifier projectAttachedNetworkConnectionResourceId = ProjectAttachedNetworkConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, projectName, attachedNetworkConnectionName);
+ProjectAttachedNetworkConnectionResource projectAttachedNetworkConnection = client.GetProjectAttachedNetworkConnectionResource(projectAttachedNetworkConnectionResourceId);
 
 // invoke the operation
-string attachedNetworkConnectionName = "network-uswest3";
-bool result = await collection.ExistsAsync(attachedNetworkConnectionName);
+ProjectAttachedNetworkConnectionResource result = await projectAttachedNetworkConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AttachedNetworkConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

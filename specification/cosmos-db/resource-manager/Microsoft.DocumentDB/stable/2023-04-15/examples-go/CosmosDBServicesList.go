@@ -37,7 +37,7 @@ func ExampleServiceClient_NewListPager() {
 		// 			Type: to.Ptr("Microsoft.DocumentDB/databaseAccounts/services"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.DocumentDB/databaseAccounts/ddb1/services/sqlDedicatedGateway"),
 		// 			Properties: &armcosmos.SQLDedicatedGatewayServiceResourceProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-25T12:56:05.4622517Z"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-01-25T12:56:05.462Z"); return t}()),
 		// 				InstanceCount: to.Ptr[int32](1),
 		// 				InstanceSize: to.Ptr(armcosmos.ServiceSizeCosmosD4S),
 		// 				ServiceType: to.Ptr(armcosmos.ServiceTypeSQLDedicatedGateway),

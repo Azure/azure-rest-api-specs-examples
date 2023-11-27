@@ -1,0 +1,30 @@
+const { WebSiteManagementClient } = require("@azure/arm-appservice");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Link backend to a static site
+ *
+ * @summary Link backend to a static site
+ * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2023-01-01/examples/LinkBackendToStaticSite.json
+ */
+async function linkABackendToAStaticSite() {
+  const subscriptionId =
+    process.env["APPSERVICE_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const resourceGroupName = process.env["APPSERVICE_RESOURCE_GROUP"] || "rg";
+  const name = "testStaticSite0";
+  const linkedBackendName = "testBackend";
+  const staticSiteLinkedBackendEnvelope = {
+    backendResourceId:
+      "/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/backendRg/providers/Microsoft.Web/sites/testBackend",
+    region: "West US 2",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new WebSiteManagementClient(credential, subscriptionId);
+  const result = await client.staticSites.beginLinkBackendAndWait(
+    resourceGroupName,
+    name,
+    linkedBackendName,
+    staticSiteLinkedBackendEnvelope
+  );
+  console.log(result);
+}

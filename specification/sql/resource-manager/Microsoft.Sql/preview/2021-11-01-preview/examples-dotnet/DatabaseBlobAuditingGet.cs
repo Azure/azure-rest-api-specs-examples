@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseResource created on azure
-// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
+// this example assumes you already have this SqlDatabaseBlobAuditingPolicyResource created on azure
+// for more information of creating SqlDatabaseBlobAuditingPolicyResource, please refer to the document of SqlDatabaseBlobAuditingPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "blobauditingtest-6852";
 string serverName = "blobauditingtest-2080";
 string databaseName = "testdb";
-ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
-
-// get the collection of this SqlDatabaseBlobAuditingPolicyResource
-SqlDatabaseBlobAuditingPolicyCollection collection = sqlDatabase.GetSqlDatabaseBlobAuditingPolicies();
+BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
+ResourceIdentifier sqlDatabaseBlobAuditingPolicyResourceId = SqlDatabaseBlobAuditingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, blobAuditingPolicyName);
+SqlDatabaseBlobAuditingPolicyResource sqlDatabaseBlobAuditingPolicy = client.GetSqlDatabaseBlobAuditingPolicyResource(sqlDatabaseBlobAuditingPolicyResourceId);
 
 // invoke the operation
-BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
-NullableResponse<SqlDatabaseBlobAuditingPolicyResource> response = await collection.GetIfExistsAsync(blobAuditingPolicyName);
-SqlDatabaseBlobAuditingPolicyResource result = response.HasValue ? response.Value : null;
+SqlDatabaseBlobAuditingPolicyResource result = await sqlDatabaseBlobAuditingPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SqlDatabaseBlobAuditingPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlDatabaseBlobAuditingPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

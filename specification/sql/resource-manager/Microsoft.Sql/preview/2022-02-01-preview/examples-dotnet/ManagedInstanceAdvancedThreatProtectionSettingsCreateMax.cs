@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this ManagedInstanceAdvancedThreatProtectionResource created on azure
+// for more information of creating ManagedInstanceAdvancedThreatProtectionResource, please refer to the document of ManagedInstanceAdvancedThreatProtectionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "threatprotection-4799";
 string managedInstanceName = "threatprotection-6440";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this ManagedInstanceAdvancedThreatProtectionResource
-ManagedInstanceAdvancedThreatProtectionCollection collection = managedInstance.GetManagedInstanceAdvancedThreatProtections();
+AdvancedThreatProtectionName advancedThreatProtectionName = AdvancedThreatProtectionName.Default;
+ResourceIdentifier managedInstanceAdvancedThreatProtectionResourceId = ManagedInstanceAdvancedThreatProtectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, advancedThreatProtectionName);
+ManagedInstanceAdvancedThreatProtectionResource managedInstanceAdvancedThreatProtection = client.GetManagedInstanceAdvancedThreatProtectionResource(managedInstanceAdvancedThreatProtectionResourceId);
 
 // invoke the operation
-AdvancedThreatProtectionName advancedThreatProtectionName = AdvancedThreatProtectionName.Default;
 ManagedInstanceAdvancedThreatProtectionData data = new ManagedInstanceAdvancedThreatProtectionData()
 {
     State = AdvancedThreatProtectionState.Enabled,
 };
-ArmOperation<ManagedInstanceAdvancedThreatProtectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, advancedThreatProtectionName, data);
+ArmOperation<ManagedInstanceAdvancedThreatProtectionResource> lro = await managedInstanceAdvancedThreatProtection.UpdateAsync(WaitUntil.Completed, data);
 ManagedInstanceAdvancedThreatProtectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

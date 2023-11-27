@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CassandraKeyspaceResource created on azure
-// for more information of creating CassandraKeyspaceResource, please refer to the document of CassandraKeyspaceResource
+// this example assumes you already have this CassandraTableResource created on azure
+// for more information of creating CassandraTableResource, please refer to the document of CassandraTableResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string keyspaceName = "keyspaceName";
-ResourceIdentifier cassandraKeyspaceResourceId = CassandraKeyspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, keyspaceName);
-CassandraKeyspaceResource cassandraKeyspace = client.GetCassandraKeyspaceResource(cassandraKeyspaceResourceId);
-
-// get the collection of this CassandraTableResource
-CassandraTableCollection collection = cassandraKeyspace.GetCassandraTables();
+string tableName = "tableName";
+ResourceIdentifier cassandraTableResourceId = CassandraTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, keyspaceName, tableName);
+CassandraTableResource cassandraTable = client.GetCassandraTableResource(cassandraTableResourceId);
 
 // invoke the operation
-string tableName = "tableName";
-NullableResponse<CassandraTableResource> response = await collection.GetIfExistsAsync(tableName);
-CassandraTableResource result = response.HasValue ? response.Value : null;
+CassandraTableResource result = await cassandraTable.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    CassandraTableData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CassandraTableData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

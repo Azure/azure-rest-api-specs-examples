@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlTriggerResource created on azure
-// for more information of creating CosmosDBSqlTriggerResource, please refer to the document of CosmosDBSqlTriggerResource
+// this example assumes you already have this CosmosDBSqlContainerResource created on azure
+// for more information of creating CosmosDBSqlContainerResource, please refer to the document of CosmosDBSqlContainerResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
 string databaseName = "databaseName";
 string containerName = "containerName";
-string triggerName = "triggerName";
-ResourceIdentifier cosmosDBSqlTriggerResourceId = CosmosDBSqlTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName, triggerName);
-CosmosDBSqlTriggerResource cosmosDBSqlTrigger = client.GetCosmosDBSqlTriggerResource(cosmosDBSqlTriggerResourceId);
+ResourceIdentifier cosmosDBSqlContainerResourceId = CosmosDBSqlContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName, containerName);
+CosmosDBSqlContainerResource cosmosDBSqlContainer = client.GetCosmosDBSqlContainerResource(cosmosDBSqlContainerResourceId);
+
+// get the collection of this CosmosDBSqlTriggerResource
+CosmosDBSqlTriggerCollection collection = cosmosDBSqlContainer.GetCosmosDBSqlTriggers();
 
 // invoke the operation
+string triggerName = "triggerName";
 CosmosDBSqlTriggerCreateOrUpdateContent content = new CosmosDBSqlTriggerCreateOrUpdateContent(new AzureLocation("placeholder"), new CosmosDBSqlTriggerResourceInfo("triggerName")
 {
     Body = "body",
@@ -36,7 +39,7 @@ CosmosDBSqlTriggerCreateOrUpdateContent content = new CosmosDBSqlTriggerCreateOr
 {
     Options = new CosmosDBCreateUpdateConfig(),
 };
-ArmOperation<CosmosDBSqlTriggerResource> lro = await cosmosDBSqlTrigger.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<CosmosDBSqlTriggerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, triggerName, content);
 CosmosDBSqlTriggerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

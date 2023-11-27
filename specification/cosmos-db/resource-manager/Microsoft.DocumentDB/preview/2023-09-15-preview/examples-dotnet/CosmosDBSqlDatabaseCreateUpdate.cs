@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CosmosDBSqlDatabaseResource created on azure
-// for more information of creating CosmosDBSqlDatabaseResource, please refer to the document of CosmosDBSqlDatabaseResource
+// this example assumes you already have this CosmosDBAccountResource created on azure
+// for more information of creating CosmosDBAccountResource, please refer to the document of CosmosDBAccountResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string accountName = "ddb1";
-string databaseName = "databaseName";
-ResourceIdentifier cosmosDBSqlDatabaseResourceId = CosmosDBSqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, databaseName);
-CosmosDBSqlDatabaseResource cosmosDBSqlDatabase = client.GetCosmosDBSqlDatabaseResource(cosmosDBSqlDatabaseResourceId);
+ResourceIdentifier cosmosDBAccountResourceId = CosmosDBAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+CosmosDBAccountResource cosmosDBAccount = client.GetCosmosDBAccountResource(cosmosDBAccountResourceId);
+
+// get the collection of this CosmosDBSqlDatabaseResource
+CosmosDBSqlDatabaseCollection collection = cosmosDBAccount.GetCosmosDBSqlDatabases();
 
 // invoke the operation
+string databaseName = "databaseName";
 CosmosDBSqlDatabaseCreateOrUpdateContent content = new CosmosDBSqlDatabaseCreateOrUpdateContent(new AzureLocation("West US"), new CosmosDBSqlDatabaseResourceInfo("databaseName"))
 {
     Options = new CosmosDBCreateUpdateConfig(),
@@ -32,7 +35,7 @@ CosmosDBSqlDatabaseCreateOrUpdateContent content = new CosmosDBSqlDatabaseCreate
     {
     },
 };
-ArmOperation<CosmosDBSqlDatabaseResource> lro = await cosmosDBSqlDatabase.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<CosmosDBSqlDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, content);
 CosmosDBSqlDatabaseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

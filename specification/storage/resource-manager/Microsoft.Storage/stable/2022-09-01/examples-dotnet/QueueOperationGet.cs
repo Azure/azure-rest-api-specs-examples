@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageQueueResource created on azure
-// for more information of creating StorageQueueResource, please refer to the document of StorageQueueResource
+// this example assumes you already have this QueueServiceResource created on azure
+// for more information of creating QueueServiceResource, please refer to the document of QueueServiceResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res3376";
 string accountName = "sto328";
-string queueName = "queue6185";
-ResourceIdentifier storageQueueResourceId = StorageQueueResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, queueName);
-StorageQueueResource storageQueue = client.GetStorageQueueResource(storageQueueResourceId);
+ResourceIdentifier queueServiceResourceId = QueueServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+QueueServiceResource queueService = client.GetQueueServiceResource(queueServiceResourceId);
+
+// get the collection of this StorageQueueResource
+StorageQueueCollection collection = queueService.GetStorageQueues();
 
 // invoke the operation
-StorageQueueResource result = await storageQueue.GetAsync();
+string queueName = "queue6185";
+NullableResponse<StorageQueueResource> response = await collection.GetIfExistsAsync(queueName);
+StorageQueueResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StorageQueueData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StorageQueueData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

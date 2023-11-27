@@ -62,10 +62,10 @@ func ExampleAlertProcessingRulesClient_CreateOrUpdate_createOrUpdateARuleThatAdd
 	// 				to.Ptr("/subscriptions/subId1")},
 	// 			},
 	// 			SystemData: &armalertsmanagement.SystemData{
-	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-12T22:05:09Z"); return t}()),
+	// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-12T22:05:09.000Z"); return t}()),
 	// 				CreatedBy: to.Ptr("abc@microsoft.com"),
 	// 				CreatedByType: to.Ptr(armalertsmanagement.CreatedByTypeUser),
-	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-13T16:15:34Z"); return t}()),
+	// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-02-13T16:15:34.000Z"); return t}()),
 	// 				LastModifiedBy: to.Ptr("xyz@microsoft.com"),
 	// 				LastModifiedByType: to.Ptr(armalertsmanagement.CreatedByTypeUser),
 	// 			},

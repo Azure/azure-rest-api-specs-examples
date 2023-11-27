@@ -46,7 +46,7 @@ func ExampleSmartGroupsClient_ChangeState() {
 	// 				Count: to.Ptr[int64](1),
 	// 		}},
 	// 		AlertsCount: to.Ptr[int64](1942),
-	// 		LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-13T06:30:09Z"); return t}()),
+	// 		LastModifiedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-13T06:30:09.000Z"); return t}()),
 	// 		LastModifiedUserName: to.Ptr("System"),
 	// 		MonitorConditions: []*armalertsmanagement.SmartGroupAggregatedProperty{
 	// 			{
@@ -75,7 +75,7 @@ func ExampleSmartGroupsClient_ChangeState() {
 	// 		}},
 	// 		Severity: to.Ptr(armalertsmanagement.SeveritySev3),
 	// 		SmartGroupState: to.Ptr(armalertsmanagement.StateAcknowledged),
-	// 		StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-06T12:35:09Z"); return t}()),
+	// 		StartDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-06T12:35:09.000Z"); return t}()),
 	// 	},
 	// }
 }

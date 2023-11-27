@@ -90,10 +90,10 @@ func ExampleAlertProcessingRulesClient_Update() {
 	// 							to.Ptr("/subscriptions/1e3ff1c0-771a-4119-a03b-be82a51e232d/resourceGroups/alertscorrelationrg")},
 	// 						},
 	// 						SystemData: &armalertsmanagement.SystemData{
-	// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-12T22:05:09Z"); return t}()),
+	// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-12T22:05:09.000Z"); return t}()),
 	// 							CreatedBy: to.Ptr("abc@microsoft.com"),
 	// 							CreatedByType: to.Ptr(armalertsmanagement.CreatedByTypeUser),
-	// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-12T22:05:09Z"); return t}()),
+	// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-12T22:05:09.000Z"); return t}()),
 	// 							LastModifiedBy: to.Ptr("xyz@microsoft.com"),
 	// 							LastModifiedByType: to.Ptr(armalertsmanagement.CreatedByTypeUser),
 	// 						},

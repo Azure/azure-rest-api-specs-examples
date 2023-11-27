@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,17 +14,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingAccountPolicyResource created on azure
-// for more information of creating BillingAccountPolicyResource, please refer to the document of BillingAccountPolicyResource
-string billingAccountId = "testBillingAccountId";
-ResourceIdentifier billingAccountPolicyResourceId = BillingAccountPolicyResource.CreateResourceIdentifier(billingAccountId);
-BillingAccountPolicyResource billingAccountPolicy = client.GetBillingAccountPolicyResource(billingAccountPolicyResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this BillingAccountPolicyResource
+BillingAccountPolicyCollection collection = tenantResource.GetBillingAccountPolicies();
 
 // invoke the operation
-BillingAccountPolicyResource result = await billingAccountPolicy.GetAsync();
+string billingAccountId = "testBillingAccountId";
+NullableResponse<BillingAccountPolicyResource> response = await collection.GetIfExistsAsync(billingAccountId);
+BillingAccountPolicyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingAccountPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BillingAccountPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

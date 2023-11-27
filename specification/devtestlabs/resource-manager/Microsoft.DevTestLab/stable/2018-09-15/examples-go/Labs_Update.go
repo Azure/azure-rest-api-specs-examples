@@ -41,7 +41,7 @@ func ExampleLabsClient_Update() {
 	// 			Markdown: to.Ptr(""),
 	// 			Title: to.Ptr(""),
 	// 		},
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T18:40:48.1739018-07:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T01:40:48.173Z"); return t}()),
 	// 		EnvironmentPermission: to.Ptr(armdevtestlabs.EnvironmentPermissionReader),
 	// 		LabStorageType: to.Ptr(armdevtestlabs.StorageTypeStandard),
 	// 		MandatoryArtifactsResourceIDsLinux: []*string{

@@ -34,7 +34,7 @@ func ExampleVirtualMachinesClient_ListApplicableSchedules() {
 	// 			ID: to.Ptr("/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/Microsoft.DevTestLab/labs/{labName}/schedules/myAutoShutdownSchedule"),
 	// 			Location: to.Ptr("{location}"),
 	// 			Properties: &armdevtestlabs.ScheduleProperties{
-	// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T21:48:14.1369355+00:00"); return t}()),
+	// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T21:48:14.136Z"); return t}()),
 	// 				DailyRecurrence: &armdevtestlabs.DayDetails{
 	// 					Time: to.Ptr("1900"),
 	// 				},
@@ -69,7 +69,7 @@ func ExampleVirtualMachinesClient_ListApplicableSchedules() {
 	// 				ID: to.Ptr("/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/Microsoft.DevTestLab/labs/{labName}/schedules/myAutoStartSchedule"),
 	// 				Location: to.Ptr("{location}"),
 	// 				Properties: &armdevtestlabs.ScheduleProperties{
-	// 					CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T21:46:37.0473976+00:00"); return t}()),
+	// 					CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T21:46:37.047Z"); return t}()),
 	// 					DailyRecurrence: &armdevtestlabs.DayDetails{
 	// 						Time: to.Ptr("0900"),
 	// 					},

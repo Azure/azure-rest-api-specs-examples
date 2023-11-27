@@ -33,7 +33,7 @@ func ExampleUsersClient_Update() {
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.User = armdevtestlabs.User{
 	// 	Properties: &armdevtestlabs.UserProperties{
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T18:40:48.1739018-07:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T01:40:48.173Z"); return t}()),
 	// 		Identity: &armdevtestlabs.UserIdentity{
 	// 			AppID: to.Ptr("{appId}"),
 	// 			ObjectID: to.Ptr("{objectId}"),

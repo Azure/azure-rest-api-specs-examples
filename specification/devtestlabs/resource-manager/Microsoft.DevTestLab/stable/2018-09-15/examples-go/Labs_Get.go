@@ -42,7 +42,7 @@ func ExampleLabsClient_Get() {
 	// 			Title: to.Ptr(""),
 	// 		},
 	// 		ArtifactsStorageAccount: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"),
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T18:40:48.1739018-07:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T01:40:48.173Z"); return t}()),
 	// 		DefaultPremiumStorageAccount: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"),
 	// 		DefaultStorageAccount: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"),
 	// 		EnvironmentPermission: to.Ptr(armdevtestlabs.EnvironmentPermissionReader),

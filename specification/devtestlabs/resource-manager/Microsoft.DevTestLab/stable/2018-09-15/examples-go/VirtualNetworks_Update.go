@@ -39,7 +39,7 @@ func ExampleVirtualNetworksClient_Update() {
 	// 		"tagName1": to.Ptr("tagValue1"),
 	// 	},
 	// 	Properties: &armdevtestlabs.VirtualNetworkProperties{
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T13:01:44.6005134-07:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T20:01:44.600Z"); return t}()),
 	// 		ExternalProviderResourceID: to.Ptr("/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}"),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		SubnetOverrides: []*armdevtestlabs.SubnetOverride{

@@ -52,7 +52,7 @@ func ExampleArtifactSourcesClient_CreateOrUpdate() {
 	// 	Properties: &armdevtestlabs.ArtifactSourceProperties{
 	// 		ArmTemplateFolderPath: to.Ptr("{armTemplateFolderPath}"),
 	// 		BranchRef: to.Ptr("{branchRef}"),
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-16T16:53:02.4830866-07:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-16T23:53:02.483Z"); return t}()),
 	// 		DisplayName: to.Ptr("{displayName}"),
 	// 		FolderPath: to.Ptr("{folderPath}"),
 	// 		ProvisioningState: to.Ptr("Succeeded"),

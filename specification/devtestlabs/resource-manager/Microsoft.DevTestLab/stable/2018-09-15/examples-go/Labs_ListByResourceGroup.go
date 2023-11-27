@@ -51,7 +51,7 @@ func ExampleLabsClient_NewListByResourceGroupPager() {
 		// 					Markdown: to.Ptr(""),
 		// 					Title: to.Ptr(""),
 		// 				},
-		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T10:23:20.9573599-07:00"); return t}()),
+		// 				CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-02T17:23:20.957Z"); return t}()),
 		// 				EnvironmentPermission: to.Ptr(armdevtestlabs.EnvironmentPermissionReader),
 		// 				LabStorageType: to.Ptr(armdevtestlabs.StorageTypeStandard),
 		// 				MandatoryArtifactsResourceIDsLinux: []*string{

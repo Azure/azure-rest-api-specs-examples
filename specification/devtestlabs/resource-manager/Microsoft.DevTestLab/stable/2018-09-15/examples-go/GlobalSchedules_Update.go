@@ -40,7 +40,7 @@ func ExampleGlobalSchedulesClient_Update() {
 	// 		"tagName1": to.Ptr("tagValue1"),
 	// 	},
 	// 	Properties: &armdevtestlabs.ScheduleProperties{
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T22:54:54.9335182+00:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-12-29T22:54:54.933Z"); return t}()),
 	// 		NotificationSettings: &armdevtestlabs.NotificationSettings{
 	// 			Status: to.Ptr(armdevtestlabs.EnableStatusDisabled),
 	// 			TimeInMinutes: to.Ptr[int32](0),

@@ -69,7 +69,7 @@ func ExampleVirtualMachinesClient_BeginCreateOrUpdate() {
 	// 		},
 	// 		CreatedByUser: to.Ptr(""),
 	// 		CreatedByUserID: to.Ptr(""),
-	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T16:53:02.4830866-07:00"); return t}()),
+	// 		CreatedDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-10-01T23:53:02.483Z"); return t}()),
 	// 		DataDiskParameters: []*armdevtestlabs.DataDiskProperties{
 	// 		},
 	// 		DisallowPublicIPAddress: to.Ptr(true),

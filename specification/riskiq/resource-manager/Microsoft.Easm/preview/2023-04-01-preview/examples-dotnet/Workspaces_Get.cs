@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DefenderEasm;
+using Azure.ResourceManager.DefenderEasm.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/riskiq/resource-manager/Microsoft.Easm/preview/2023-04-01-preview/examples/Workspaces_Get.json
@@ -15,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this EasmWorkspaceResource created on azure
+// for more information of creating EasmWorkspaceResource, please refer to the document of EasmWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "dummyrg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this EasmWorkspaceResource
-EasmWorkspaceCollection collection = resourceGroupResource.GetEasmWorkspaces();
+string workspaceName = "ThisisaWorkspace";
+ResourceIdentifier easmWorkspaceResourceId = EasmWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+EasmWorkspaceResource easmWorkspace = client.GetEasmWorkspaceResource(easmWorkspaceResourceId);
 
 // invoke the operation
-string workspaceName = "ThisisaWorkspace";
-bool result = await collection.ExistsAsync(workspaceName);
+EasmWorkspaceResource result = await easmWorkspace.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EasmWorkspaceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

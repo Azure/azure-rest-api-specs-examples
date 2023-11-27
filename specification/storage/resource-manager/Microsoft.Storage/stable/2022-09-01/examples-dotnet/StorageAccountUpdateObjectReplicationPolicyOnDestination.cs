@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageAccountResource created on azure
-// for more information of creating StorageAccountResource, please refer to the document of StorageAccountResource
+// this example assumes you already have this ObjectReplicationPolicyResource created on azure
+// for more information of creating ObjectReplicationPolicyResource, please refer to the document of ObjectReplicationPolicyResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "res7687";
 string accountName = "dst112";
-ResourceIdentifier storageAccountResourceId = StorageAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-StorageAccountResource storageAccount = client.GetStorageAccountResource(storageAccountResourceId);
-
-// get the collection of this ObjectReplicationPolicyResource
-ObjectReplicationPolicyCollection collection = storageAccount.GetObjectReplicationPolicies();
+string objectReplicationPolicyId = "2a20bb73-5717-4635-985a-5d4cf777438f";
+ResourceIdentifier objectReplicationPolicyResourceId = ObjectReplicationPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, objectReplicationPolicyId);
+ObjectReplicationPolicyResource objectReplicationPolicy = client.GetObjectReplicationPolicyResource(objectReplicationPolicyResourceId);
 
 // invoke the operation
-string objectReplicationPolicyId = "2a20bb73-5717-4635-985a-5d4cf777438f";
 ObjectReplicationPolicyData data = new ObjectReplicationPolicyData()
 {
     SourceAccount = "src1122",
@@ -47,7 +44,7 @@ ObjectReplicationPolicyData data = new ObjectReplicationPolicyData()
     },new ObjectReplicationPolicyRule("scont179","dcont179")
     },
 };
-ArmOperation<ObjectReplicationPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, objectReplicationPolicyId, data);
+ArmOperation<ObjectReplicationPolicyResource> lro = await objectReplicationPolicy.UpdateAsync(WaitUntil.Completed, data);
 ObjectReplicationPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

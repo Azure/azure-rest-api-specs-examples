@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataBox;
 using Azure.ResourceManager.DataBox.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsGet.json
@@ -16,20 +17,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataBoxJobResource created on azure
-// for more information of creating DataBoxJobResource, please refer to the document of DataBoxJobResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "YourSubscriptionId";
 string resourceGroupName = "YourResourceGroupName";
-string jobName = "TestJobName1";
-ResourceIdentifier dataBoxJobResourceId = DataBoxJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, jobName);
-DataBoxJobResource dataBoxJob = client.GetDataBoxJobResource(dataBoxJobResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this DataBoxJobResource
+DataBoxJobCollection collection = resourceGroupResource.GetDataBoxJobs();
 
 // invoke the operation
+string jobName = "TestJobName1";
 string expand = "details";
-DataBoxJobResource result = await dataBoxJob.GetAsync(expand: expand);
+NullableResponse<DataBoxJobResource> response = await collection.GetIfExistsAsync(jobName, expand: expand);
+DataBoxJobResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataBoxJobData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataBoxJobData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

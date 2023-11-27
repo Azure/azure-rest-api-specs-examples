@@ -5,7 +5,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ContainerRegistry;
-using Azure.ResourceManager.ContainerRegistry.Models;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/stable/2022-12-01/examples/ScopeMapGet.json
 // this example is just showing the usage of "ScopeMaps_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScopeMapResource created on azure
-// for more information of creating ScopeMapResource, please refer to the document of ScopeMapResource
+// this example assumes you already have this ContainerRegistryResource created on azure
+// for more information of creating ContainerRegistryResource, please refer to the document of ContainerRegistryResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string registryName = "myRegistry";
-string scopeMapName = "myScopeMap";
-ResourceIdentifier scopeMapResourceId = ScopeMapResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, scopeMapName);
-ScopeMapResource scopeMap = client.GetScopeMapResource(scopeMapResourceId);
+ResourceIdentifier containerRegistryResourceId = ContainerRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+ContainerRegistryResource containerRegistry = client.GetContainerRegistryResource(containerRegistryResourceId);
+
+// get the collection of this ScopeMapResource
+ScopeMapCollection collection = containerRegistry.GetScopeMaps();
 
 // invoke the operation
-ScopeMapResource result = await scopeMap.GetAsync();
+string scopeMapName = "myScopeMap";
+NullableResponse<ScopeMapResource> response = await collection.GetIfExistsAsync(scopeMapName);
+ScopeMapResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ScopeMapData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ScopeMapData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

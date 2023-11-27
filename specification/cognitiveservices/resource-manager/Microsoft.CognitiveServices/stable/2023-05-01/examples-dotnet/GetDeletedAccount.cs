@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this CognitiveServicesDeletedAccountResource created on azure
+// for more information of creating CognitiveServicesDeletedAccountResource, please refer to the document of CognitiveServicesDeletedAccountResource
 string subscriptionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this CognitiveServicesDeletedAccountResource
-CognitiveServicesDeletedAccountCollection collection = subscriptionResource.GetCognitiveServicesDeletedAccounts();
-
-// invoke the operation
 AzureLocation location = new AzureLocation("westus");
 string resourceGroupName = "myResourceGroup";
 string accountName = "myAccount";
-bool result = await collection.ExistsAsync(location, resourceGroupName, accountName);
+ResourceIdentifier cognitiveServicesDeletedAccountResourceId = CognitiveServicesDeletedAccountResource.CreateResourceIdentifier(subscriptionId, location, resourceGroupName, accountName);
+CognitiveServicesDeletedAccountResource cognitiveServicesDeletedAccount = client.GetCognitiveServicesDeletedAccountResource(cognitiveServicesDeletedAccountResourceId);
 
-Console.WriteLine($"Succeeded: {result}");
+// invoke the operation
+CognitiveServicesDeletedAccountResource result = await cognitiveServicesDeletedAccount.GetAsync();
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CognitiveServicesAccountData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

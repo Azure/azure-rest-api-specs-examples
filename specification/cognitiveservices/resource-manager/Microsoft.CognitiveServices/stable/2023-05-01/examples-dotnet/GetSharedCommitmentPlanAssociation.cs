@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CommitmentPlanAccountAssociationResource created on azure
-// for more information of creating CommitmentPlanAccountAssociationResource, please refer to the document of CommitmentPlanAccountAssociationResource
+// this example assumes you already have this CognitiveServicesCommitmentPlanResource created on azure
+// for more information of creating CognitiveServicesCommitmentPlanResource, please refer to the document of CognitiveServicesCommitmentPlanResource
 string subscriptionId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
 string resourceGroupName = "resourceGroupName";
 string commitmentPlanName = "commitmentPlanName";
-string commitmentPlanAssociationName = "commitmentPlanAssociationName";
-ResourceIdentifier commitmentPlanAccountAssociationResourceId = CommitmentPlanAccountAssociationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, commitmentPlanName, commitmentPlanAssociationName);
-CommitmentPlanAccountAssociationResource commitmentPlanAccountAssociation = client.GetCommitmentPlanAccountAssociationResource(commitmentPlanAccountAssociationResourceId);
+ResourceIdentifier cognitiveServicesCommitmentPlanResourceId = CognitiveServicesCommitmentPlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, commitmentPlanName);
+CognitiveServicesCommitmentPlanResource cognitiveServicesCommitmentPlan = client.GetCognitiveServicesCommitmentPlanResource(cognitiveServicesCommitmentPlanResourceId);
+
+// get the collection of this CommitmentPlanAccountAssociationResource
+CommitmentPlanAccountAssociationCollection collection = cognitiveServicesCommitmentPlan.GetCommitmentPlanAccountAssociations();
 
 // invoke the operation
-CommitmentPlanAccountAssociationResource result = await commitmentPlanAccountAssociation.GetAsync();
+string commitmentPlanAssociationName = "commitmentPlanAssociationName";
+NullableResponse<CommitmentPlanAccountAssociationResource> response = await collection.GetIfExistsAsync(commitmentPlanAssociationName);
+CommitmentPlanAccountAssociationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CommitmentPlanAccountAssociationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CommitmentPlanAccountAssociationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

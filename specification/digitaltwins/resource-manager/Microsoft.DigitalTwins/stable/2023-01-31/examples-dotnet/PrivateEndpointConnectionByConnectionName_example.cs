@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DigitalTwinsDescriptionResource created on azure
-// for more information of creating DigitalTwinsDescriptionResource, please refer to the document of DigitalTwinsDescriptionResource
+// this example assumes you already have this DigitalTwinsPrivateEndpointConnectionResource created on azure
+// for more information of creating DigitalTwinsPrivateEndpointConnectionResource, please refer to the document of DigitalTwinsPrivateEndpointConnectionResource
 string subscriptionId = "50016170-c839-41ba-a724-51e9df440b9e";
 string resourceGroupName = "resRg";
 string resourceName = "myDigitalTwinsService";
-ResourceIdentifier digitalTwinsDescriptionResourceId = DigitalTwinsDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-DigitalTwinsDescriptionResource digitalTwinsDescription = client.GetDigitalTwinsDescriptionResource(digitalTwinsDescriptionResourceId);
-
-// get the collection of this DigitalTwinsPrivateEndpointConnectionResource
-DigitalTwinsPrivateEndpointConnectionCollection collection = digitalTwinsDescription.GetDigitalTwinsPrivateEndpointConnections();
+string privateEndpointConnectionName = "myPrivateConnection";
+ResourceIdentifier digitalTwinsPrivateEndpointConnectionResourceId = DigitalTwinsPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
+DigitalTwinsPrivateEndpointConnectionResource digitalTwinsPrivateEndpointConnection = client.GetDigitalTwinsPrivateEndpointConnectionResource(digitalTwinsPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "myPrivateConnection";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+DigitalTwinsPrivateEndpointConnectionResource result = await digitalTwinsPrivateEndpointConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DigitalTwinsPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

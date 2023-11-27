@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DigitalTwinsDescriptionResource created on azure
-// for more information of creating DigitalTwinsDescriptionResource, please refer to the document of DigitalTwinsDescriptionResource
+// this example assumes you already have this DigitalTwinsPrivateEndpointConnectionResource created on azure
+// for more information of creating DigitalTwinsPrivateEndpointConnectionResource, please refer to the document of DigitalTwinsPrivateEndpointConnectionResource
 string subscriptionId = "50016170-c839-41ba-a724-51e9df440b9e";
 string resourceGroupName = "resRg";
 string resourceName = "myDigitalTwinsService";
-ResourceIdentifier digitalTwinsDescriptionResourceId = DigitalTwinsDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-DigitalTwinsDescriptionResource digitalTwinsDescription = client.GetDigitalTwinsDescriptionResource(digitalTwinsDescriptionResourceId);
-
-// get the collection of this DigitalTwinsPrivateEndpointConnectionResource
-DigitalTwinsPrivateEndpointConnectionCollection collection = digitalTwinsDescription.GetDigitalTwinsPrivateEndpointConnections();
+string privateEndpointConnectionName = "myPrivateConnection";
+ResourceIdentifier digitalTwinsPrivateEndpointConnectionResourceId = DigitalTwinsPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
+DigitalTwinsPrivateEndpointConnectionResource digitalTwinsPrivateEndpointConnection = client.GetDigitalTwinsPrivateEndpointConnectionResource(digitalTwinsPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "myPrivateConnection";
 DigitalTwinsPrivateEndpointConnectionData data = new DigitalTwinsPrivateEndpointConnectionData(new DigitalTwinsPrivateEndpointConnectionProperties()
 {
     PrivateLinkServiceConnectionState = new DigitalTwinsPrivateLinkServiceConnectionState(DigitalTwinsPrivateLinkServiceConnectionStatus.Approved, "Approved by johndoe@company.com."),
 });
-ArmOperation<DigitalTwinsPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<DigitalTwinsPrivateEndpointConnectionResource> lro = await digitalTwinsPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 DigitalTwinsPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

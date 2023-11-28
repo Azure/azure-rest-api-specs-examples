@@ -44,17 +44,17 @@ func ExampleAvailabilityStatusesClient_NewListPager() {
 		// 				Category: to.Ptr("Unplanned"),
 		// 				Context: to.Ptr("Platform Initiated"),
 		// 				DetailedStatus: to.Ptr("Disk problems are preventing us from automatically recovering your virtual machine"),
-		// 				OccurredTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-29T09:12:00Z"); return t}()),
+		// 				OccurredTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-29T09:12:00.000Z"); return t}()),
 		// 				ReasonChronicity: to.Ptr(armresourcehealth.ReasonChronicityTypesPersistent),
 		// 				ReasonType: to.Ptr("Unplanned"),
-		// 				ReportedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-05-04T14:11:29.7598931Z"); return t}()),
-		// 				ResolutionETA: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-29T09:37:00Z"); return t}()),
-		// 				RootCauseAttributionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-29T09:13:00Z"); return t}()),
+		// 				ReportedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-05-04T14:11:29.759Z"); return t}()),
+		// 				ResolutionETA: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-29T09:37:00.000Z"); return t}()),
+		// 				RootCauseAttributionTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-29T09:13:00.000Z"); return t}()),
 		// 				ServiceImpactingEvents: []*armresourcehealth.ServiceImpactingEvent{
 		// 					{
 		// 						CorrelationID: to.Ptr("b56d0180-2d6c-4f7b-b750-c1eca681874c"),
-		// 						EventStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-05-02T19:23:13.7115125Z"); return t}()),
-		// 						EventStatusLastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-05-02T19:27:04.9543491Z"); return t}()),
+		// 						EventStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-05-02T19:23:13.711Z"); return t}()),
+		// 						EventStatusLastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-05-02T19:27:04.954Z"); return t}()),
 		// 						IncidentProperties: &armresourcehealth.ServiceImpactingEventIncidentProperties{
 		// 							IncidentType: to.Ptr("outage"),
 		// 							Region: to.Ptr("East US"),
@@ -77,7 +77,7 @@ func ExampleAvailabilityStatusesClient_NewListPager() {
 		// 			Properties: &armresourcehealth.AvailabilityStatusProperties{
 		// 				AvailabilityState: to.Ptr(armresourcehealth.AvailabilityStateValuesAvailable),
 		// 				DetailedStatus: to.Ptr("There aren’t any known Azure platform problems affecting this virtual machine"),
-		// 				OccurredTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-28T16:23:00Z"); return t}()),
+		// 				OccurredTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2016-03-28T16:23:00.000Z"); return t}()),
 		// 				ReasonChronicity: to.Ptr(armresourcehealth.ReasonChronicityTypesPersistent),
 		// 				Summary: to.Ptr("This virtual machine is running normally"),
 		// 			},

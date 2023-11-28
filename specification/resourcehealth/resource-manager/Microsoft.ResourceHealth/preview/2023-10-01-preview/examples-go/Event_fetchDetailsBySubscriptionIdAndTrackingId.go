@@ -57,15 +57,15 @@ func ExampleEventClient_FetchDetailsBySubscriptionIDAndTrackingID() {
 	// 							to.Ptr("{subscriptionId}")},
 	// 							ImpactedTenants: []*string{
 	// 							},
-	// 							LastUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T21:05:00Z"); return t}()),
+	// 							LastUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T21:05:00.000Z"); return t}()),
 	// 							Status: to.Ptr(armresourcehealth.EventStatusValuesActive),
 	// 					}},
 	// 					ImpactedService: to.Ptr("Virtual Machines"),
 	// 			}},
-	// 			ImpactMitigationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-08T00:00:00Z"); return t}()),
-	// 			ImpactStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-07T00:00:00Z"); return t}()),
+	// 			ImpactMitigationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-08T00:00:00.000Z"); return t}()),
+	// 			ImpactStartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-07T00:00:00.000Z"); return t}()),
 	// 			IsHIR: to.Ptr(false),
-	// 			LastUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-08T00:00:00Z"); return t}()),
+	// 			LastUpdateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-08T00:00:00.000Z"); return t}()),
 	// 			Level: to.Ptr(armresourcehealth.LevelValuesWarning),
 	// 			Links: []*armresourcehealth.Link{
 	// 				{

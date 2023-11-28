@@ -22,7 +22,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (DatadogAgreementResource item in subscriptionResource.GetMarketplaceAgreementsAsync())
+await foreach (DatadogAgreementResourceProperties item in subscriptionResource.GetMarketplaceAgreementsAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ConnectorMappingResourceFormatResource created on azure
-// for more information of creating ConnectorMappingResourceFormatResource, please refer to the document of ConnectorMappingResourceFormatResource
+// this example assumes you already have this ConnectorResourceFormatResource created on azure
+// for more information of creating ConnectorResourceFormatResource, please refer to the document of ConnectorResourceFormatResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "sdkTestHub";
 string connectorName = "testConnector8858";
-string mappingName = "testMapping12491";
-ResourceIdentifier connectorMappingResourceFormatResourceId = ConnectorMappingResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, connectorName, mappingName);
-ConnectorMappingResourceFormatResource connectorMappingResourceFormat = client.GetConnectorMappingResourceFormatResource(connectorMappingResourceFormatResourceId);
+ResourceIdentifier connectorResourceFormatResourceId = ConnectorResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, connectorName);
+ConnectorResourceFormatResource connectorResourceFormat = client.GetConnectorResourceFormatResource(connectorResourceFormatResourceId);
+
+// get the collection of this ConnectorMappingResourceFormatResource
+ConnectorMappingResourceFormatCollection collection = connectorResourceFormat.GetConnectorMappingResourceFormats();
 
 // invoke the operation
+string mappingName = "testMapping12491";
 ConnectorMappingResourceFormatData data = new ConnectorMappingResourceFormatData()
 {
     EntityType = EntityType.Interaction,
@@ -61,7 +64,7 @@ IsEncrypted = true,
         HasHeader = false,
     },
 };
-ArmOperation<ConnectorMappingResourceFormatResource> lro = await connectorMappingResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ConnectorMappingResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, mappingName, data);
 ConnectorMappingResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

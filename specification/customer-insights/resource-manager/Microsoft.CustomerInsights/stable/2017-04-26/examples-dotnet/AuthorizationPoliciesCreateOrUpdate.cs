@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AuthorizationPolicyResourceFormatResource created on azure
-// for more information of creating AuthorizationPolicyResourceFormatResource, please refer to the document of AuthorizationPolicyResourceFormatResource
+// this example assumes you already have this HubResource created on azure
+// for more information of creating HubResource, please refer to the document of HubResource
 string subscriptionId = "subid";
 string resourceGroupName = "TestHubRG";
 string hubName = "azSdkTestHub";
-string authorizationPolicyName = "testPolicy4222";
-ResourceIdentifier authorizationPolicyResourceFormatResourceId = AuthorizationPolicyResourceFormatResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName, authorizationPolicyName);
-AuthorizationPolicyResourceFormatResource authorizationPolicyResourceFormat = client.GetAuthorizationPolicyResourceFormatResource(authorizationPolicyResourceFormatResourceId);
+ResourceIdentifier hubResourceId = HubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hubName);
+HubResource hub = client.GetHubResource(hubResourceId);
+
+// get the collection of this AuthorizationPolicyResourceFormatResource
+AuthorizationPolicyResourceFormatCollection collection = hub.GetAuthorizationPolicyResourceFormats();
 
 // invoke the operation
+string authorizationPolicyName = "testPolicy4222";
 AuthorizationPolicyResourceFormatData data = new AuthorizationPolicyResourceFormatData()
 {
     Permissions =
@@ -32,7 +35,7 @@ AuthorizationPolicyResourceFormatData data = new AuthorizationPolicyResourceForm
     PermissionType.Read,PermissionType.Write,PermissionType.Manage
     },
 };
-ArmOperation<AuthorizationPolicyResourceFormatResource> lro = await authorizationPolicyResourceFormat.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AuthorizationPolicyResourceFormatResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationPolicyName, data);
 AuthorizationPolicyResourceFormatResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

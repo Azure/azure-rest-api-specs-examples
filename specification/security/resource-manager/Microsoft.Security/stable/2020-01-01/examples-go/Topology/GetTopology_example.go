@@ -32,7 +32,7 @@ func ExampleTopologyClient_Get() {
 	// 	Type: to.Ptr("Microsoft.Security/locations/topologies"),
 	// 	ID: to.Ptr("/subscriptions/3eeab341-f466-499c-a8be-85427e154bad/resourceGroups/myservers/providers/Microsoft.Security/locations/centralus/topologies/vnets"),
 	// 	Properties: &armsecurity.TopologyResourceProperties{
-	// 		CalculatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-10T13:56:10.5755270Z"); return t}()),
+	// 		CalculatedDateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-07-10T13:56:10.575Z"); return t}()),
 	// 		TopologyResources: []*armsecurity.TopologySingleResource{
 	// 			{
 	// 				Children: []*armsecurity.TopologySingleResourceChild{

@@ -141,10 +141,10 @@ func ExampleIotSecuritySolutionClient_NewListByResourceGroupPager_listIoTSecurit
 		// 							Workspace: to.Ptr("/subscriptions/c4930e90-cd72-4aa5-93e9-2d081d129569/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace1"),
 		// 						},
 		// 						SystemData: &armsecurity.SystemData{
-		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.0928001Z"); return t}()),
+		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.092Z"); return t}()),
 		// 							CreatedBy: to.Ptr("string"),
 		// 							CreatedByType: to.Ptr(armsecurity.CreatedByTypeUser),
-		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.0928001Z"); return t}()),
+		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-04-27T21:53:29.092Z"); return t}()),
 		// 							LastModifiedBy: to.Ptr("string"),
 		// 							LastModifiedByType: to.Ptr(armsecurity.CreatedByTypeUser),
 		// 						},

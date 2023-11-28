@@ -43,8 +43,8 @@ func ExampleAssessmentsClient_Get_getSecurityRecommendationTaskFromSecurityDataL
 	// 			Description: to.Ptr("The effective policy for the assessment was evaluated to off - use Microsoft.Authorization/policyAssignments to turn this assessment on"),
 	// 			Cause: to.Ptr("OffByPolicy"),
 	// 			Code: to.Ptr(armsecurity.AssessmentStatusCodeNotApplicable),
-	// 			FirstEvaluationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-12T09:07:18.6759138Z"); return t}()),
-	// 			StatusChangeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-12T09:07:18.6759138Z"); return t}()),
+	// 			FirstEvaluationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-12T09:07:18.675Z"); return t}()),
+	// 			StatusChangeDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-04-12T09:07:18.675Z"); return t}()),
 	// 		},
 	// 	},
 	// }

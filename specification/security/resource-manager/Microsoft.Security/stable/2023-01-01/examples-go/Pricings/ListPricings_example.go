@@ -33,7 +33,7 @@ func ExamplePricingsClient_List() {
 	// 			Type: to.Ptr("Microsoft.Security/pricings"),
 	// 			ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/pricings/VirtualMachines"),
 	// 			Properties: &armsecurity.PricingProperties{
-	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 				FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 				PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 				SubPlan: to.Ptr("P2"),
@@ -49,7 +49,7 @@ func ExamplePricingsClient_List() {
 	// 			Type: to.Ptr("Microsoft.Security/pricings"),
 	// 			ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/pricings/SqlServers"),
 	// 			Properties: &armsecurity.PricingProperties{
-	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 				FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 				PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 			},
@@ -68,7 +68,7 @@ func ExamplePricingsClient_List() {
 	// 			Type: to.Ptr("Microsoft.Security/pricings"),
 	// 			ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/pricings/StorageAccounts"),
 	// 			Properties: &armsecurity.PricingProperties{
-	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 				FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 				PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 				SubPlan: to.Ptr("PerStorageAccount"),
@@ -91,7 +91,7 @@ func ExamplePricingsClient_List() {
 	// 			Type: to.Ptr("Microsoft.Security/pricings"),
 	// 			ID: to.Ptr("/subscriptions/d34fd44c-ebfa-4a9c-bceb-9eeafe72ac15/providers/Microsoft.Security/pricings/SqlServerVirtualMachines"),
 	// 			Properties: &armsecurity.PricingProperties{
-	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 				EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 				FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 				PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 			},
@@ -125,7 +125,7 @@ func ExamplePricingsClient_List() {
 	// 					Type: to.Ptr("Microsoft.Security/pricings"),
 	// 					ID: to.Ptr("/subscriptions/d34fd44c-ebfa-4a9c-bceb-9eeafe72ac15/providers/Microsoft.Security/pricings/KeyVaults"),
 	// 					Properties: &armsecurity.PricingProperties{
-	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 						FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 						PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 					},
@@ -135,7 +135,7 @@ func ExamplePricingsClient_List() {
 	// 					Type: to.Ptr("Microsoft.Security/pricings"),
 	// 					ID: to.Ptr("/subscriptions/d34fd44c-ebfa-4a9c-bceb-9eeafe72ac15/providers/Microsoft.Security/pricings/Dns"),
 	// 					Properties: &armsecurity.PricingProperties{
-	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 						FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 						PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 					},
@@ -145,7 +145,7 @@ func ExamplePricingsClient_List() {
 	// 					Type: to.Ptr("Microsoft.Security/pricings"),
 	// 					ID: to.Ptr("/subscriptions/d34fd44c-ebfa-4a9c-bceb-9eeafe72ac15/providers/Microsoft.Security/pricings/Arm"),
 	// 					Properties: &armsecurity.PricingProperties{
-	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 						FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 						PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 					},
@@ -164,7 +164,7 @@ func ExamplePricingsClient_List() {
 	// 					Type: to.Ptr("Microsoft.Security/pricings"),
 	// 					ID: to.Ptr("/subscriptions/d34fd44c-ebfa-4a9c-bceb-9eeafe72ac15/providers/Microsoft.Security/pricings/Containers"),
 	// 					Properties: &armsecurity.PricingProperties{
-	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 						FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 						PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 						Extensions: []*armsecurity.Extension{
@@ -179,7 +179,7 @@ func ExamplePricingsClient_List() {
 	// 					Type: to.Ptr("Microsoft.Security/pricings"),
 	// 					ID: to.Ptr("/subscriptions/d34fd44c-ebfa-4a9c-bceb-9eeafe72ac15/providers/Microsoft.Security/pricings/CloudPosture"),
 	// 					Properties: &armsecurity.PricingProperties{
-	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 						EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 						FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 						PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 						Extensions: []*armsecurity.Extension{

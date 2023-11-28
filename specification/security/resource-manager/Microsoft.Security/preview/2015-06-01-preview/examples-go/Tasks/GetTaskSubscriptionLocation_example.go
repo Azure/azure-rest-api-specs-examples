@@ -31,8 +31,8 @@ func ExampleTasksClient_GetSubscriptionLevelTask() {
 	// 	Type: to.Ptr("Microsoft.Security/locations/tasks"),
 	// 	ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/locations/westeurope/tasks/62609ee7-d0a5-8616-9fe4-1df5cca7758d"),
 	// 	Properties: &armsecurity.TaskProperties{
-	// 		CreationTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-05T10:42:03.9935508Z"); return t}()),
-	// 		LastStateChangeTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-05T10:42:03.9935508Z"); return t}()),
+	// 		CreationTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-05T10:42:03.993Z"); return t}()),
+	// 		LastStateChangeTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-05T10:42:03.993Z"); return t}()),
 	// 		SecurityTaskParameters: &armsecurity.TaskParameters{
 	// 			AdditionalProperties: map[string]any{
 	// 				"location": "uksouth",

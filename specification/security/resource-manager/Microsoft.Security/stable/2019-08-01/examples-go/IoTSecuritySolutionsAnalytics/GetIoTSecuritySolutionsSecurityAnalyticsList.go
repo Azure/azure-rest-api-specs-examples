@@ -35,7 +35,7 @@ func ExampleIotSecuritySolutionAnalyticsClient_List() {
 	// 			Properties: &armsecurity.IoTSecuritySolutionAnalyticsModelProperties{
 	// 				DevicesMetrics: []*armsecurity.IoTSecuritySolutionAnalyticsModelPropertiesDevicesMetricsItem{
 	// 					{
-	// 						Date: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-02-01T00:00:00Z"); return t}()),
+	// 						Date: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-02-01T00:00:00.000Z"); return t}()),
 	// 						DevicesMetrics: &armsecurity.IoTSeverityMetrics{
 	// 							High: to.Ptr[int64](3),
 	// 							Low: to.Ptr[int64](70),
@@ -43,7 +43,7 @@ func ExampleIotSecuritySolutionAnalyticsClient_List() {
 	// 						},
 	// 					},
 	// 					{
-	// 						Date: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-02-02T00:00:00Z"); return t}()),
+	// 						Date: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-02-02T00:00:00.000Z"); return t}()),
 	// 						DevicesMetrics: &armsecurity.IoTSeverityMetrics{
 	// 							High: to.Ptr[int64](3),
 	// 							Low: to.Ptr[int64](65),

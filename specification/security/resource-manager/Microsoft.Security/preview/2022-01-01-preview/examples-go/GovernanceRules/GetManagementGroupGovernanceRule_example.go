@@ -54,9 +54,9 @@ func ExampleGovernanceRulesClient_Get_getAGovernanceRuleOverManagementGroupScope
 	// 			IsGracePeriod: to.Ptr(true),
 	// 			Metadata: &armsecurity.GovernanceRuleMetadata{
 	// 				CreatedBy: to.Ptr("c23b5354-ff0a-4b2a-9f92-6f144effd936"),
-	// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-10T08:31:26.7993124Z"); return t}()),
+	// 				CreatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-10T08:31:26.799Z"); return t}()),
 	// 				UpdatedBy: to.Ptr("c23b5354-ff0a-4b2a-9f92-6f144effd936"),
-	// 				UpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-10T08:31:26.7993124Z"); return t}()),
+	// 				UpdatedOn: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-11-10T08:31:26.799Z"); return t}()),
 	// 			},
 	// 			OwnerSource: &armsecurity.GovernanceRuleOwnerSource{
 	// 				Type: to.Ptr(armsecurity.GovernanceRuleOwnerSourceTypeManually),

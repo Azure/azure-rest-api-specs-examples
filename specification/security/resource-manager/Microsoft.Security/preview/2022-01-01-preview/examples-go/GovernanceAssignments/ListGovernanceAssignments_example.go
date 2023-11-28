@@ -44,9 +44,9 @@ func ExampleGovernanceAssignmentsClient_NewListPager() {
 		// 				},
 		// 				IsGracePeriod: to.Ptr(true),
 		// 				Owner: to.Ptr("user@contoso.com"),
-		// 				RemediationDueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-07T13:00:00.0000000Z"); return t}()),
+		// 				RemediationDueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-07T13:00:00.000Z"); return t}()),
 		// 				RemediationEta: &armsecurity.RemediationEta{
-		// 					Eta: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T13:00:00.0000000Z"); return t}()),
+		// 					Eta: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T13:00:00.000Z"); return t}()),
 		// 					Justification: to.Ptr("Justification of ETA"),
 		// 				},
 		// 			},
@@ -63,9 +63,9 @@ func ExampleGovernanceAssignmentsClient_NewListPager() {
 		// 				},
 		// 				IsGracePeriod: to.Ptr(true),
 		// 				Owner: to.Ptr("user2@contoso.com"),
-		// 				RemediationDueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-07T13:00:00.0000000Z"); return t}()),
+		// 				RemediationDueDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-07T13:00:00.000Z"); return t}()),
 		// 				RemediationEta: &armsecurity.RemediationEta{
-		// 					Eta: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T13:00:00.0000000Z"); return t}()),
+		// 					Eta: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-08T13:00:00.000Z"); return t}()),
 		// 					Justification: to.Ptr("Justification of ETA"),
 		// 				},
 		// 			},

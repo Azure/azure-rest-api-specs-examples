@@ -31,8 +31,8 @@ func ExampleTasksClient_GetResourceGroupLevelTask() {
 	// 	Type: to.Ptr("Microsoft.Security/locations/tasks"),
 	// 	ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Security/locations/westeurope/tasks/d55b4dc0-779c-c66c-33e5-d7bce24c4222"),
 	// 	Properties: &armsecurity.TaskProperties{
-	// 		CreationTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-02T11:41:27.0541014Z"); return t}()),
-	// 		LastStateChangeTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-02T11:41:27.0541014Z"); return t}()),
+	// 		CreationTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-02T11:41:27.054Z"); return t}()),
+	// 		LastStateChangeTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-04-02T11:41:27.054Z"); return t}()),
 	// 		SecurityTaskParameters: &armsecurity.TaskParameters{
 	// 			AdditionalProperties: map[string]any{
 	// 				"isDataDiskEncrypted": false,

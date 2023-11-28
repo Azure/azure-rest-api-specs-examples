@@ -36,7 +36,7 @@ func ExampleCompliancesClient_Get() {
 	// 				Percentage: to.Ptr[float64](77.77777777777779),
 	// 				SegmentType: to.Ptr("Compliant"),
 	// 		}},
-	// 		AssessmentTimestampUTCDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00Z"); return t}()),
+	// 		AssessmentTimestampUTCDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-01T00:00:00.000Z"); return t}()),
 	// 		ResourceCount: to.Ptr[int32](18),
 	// 	},
 	// }

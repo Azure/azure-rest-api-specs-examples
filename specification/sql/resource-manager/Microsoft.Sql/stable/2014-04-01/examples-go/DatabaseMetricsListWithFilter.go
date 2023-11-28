@@ -37,14 +37,14 @@ func ExampleDatabasesClient_NewListMetricsPager() {
 		// 				LocalizedValue: to.Ptr("CPU percentage"),
 		// 				Value: to.Ptr("cpu_percent"),
 		// 			},
-		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:55:00Z"); return t}()),
+		// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:55:00.000Z"); return t}()),
 		// 			MetricValues: []*armsql.MetricValue{
 		// 				{
 		// 					Average: to.Ptr[float64](0),
 		// 					Count: to.Ptr[int32](1),
 		// 					Maximum: to.Ptr[float64](0),
 		// 					Minimum: to.Ptr[float64](0),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:30:01Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:30:01.000Z"); return t}()),
 		// 					Total: to.Ptr[float64](0),
 		// 				},
 		// 				{
@@ -52,7 +52,7 @@ func ExampleDatabasesClient_NewListMetricsPager() {
 		// 					Count: to.Ptr[int32](1),
 		// 					Maximum: to.Ptr[float64](0),
 		// 					Minimum: to.Ptr[float64](0),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:40:01Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:40:01.000Z"); return t}()),
 		// 					Total: to.Ptr[float64](0),
 		// 				},
 		// 				{
@@ -60,10 +60,10 @@ func ExampleDatabasesClient_NewListMetricsPager() {
 		// 					Count: to.Ptr[int32](1),
 		// 					Maximum: to.Ptr[float64](0),
 		// 					Minimum: to.Ptr[float64](0),
-		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:50:01Z"); return t}()),
+		// 					Timestamp: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:50:01.000Z"); return t}()),
 		// 					Total: to.Ptr[float64](0),
 		// 			}},
-		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:35:00Z"); return t}()),
+		// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-02T18:35:00.000Z"); return t}()),
 		// 			TimeGrain: to.Ptr("00:10:00"),
 		// 			Unit: to.Ptr(armsql.UnitTypePercent),
 		// 	}},

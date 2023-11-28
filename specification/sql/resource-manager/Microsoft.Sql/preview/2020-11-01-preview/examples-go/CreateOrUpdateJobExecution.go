@@ -35,7 +35,7 @@ func ExampleJobExecutionsClient_BeginCreateOrUpdate() {
 	// 	Type: to.Ptr("Microsoft.Sql/servers/jobAgents/executions"),
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/jobs/job1/executions/5555-6666-7777-8888-999999999999"),
 	// 	Properties: &armsql.JobExecutionProperties{
-	// 		CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-18T19:02:00.8707045Z"); return t}()),
+	// 		CreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-18T19:02:00.870Z"); return t}()),
 	// 		CurrentAttempts: to.Ptr[int32](0),
 	// 		JobExecutionID: to.Ptr("5A86BF65-43AC-F258-2524-9E92992F97CA"),
 	// 		JobVersion: to.Ptr[int32](1),

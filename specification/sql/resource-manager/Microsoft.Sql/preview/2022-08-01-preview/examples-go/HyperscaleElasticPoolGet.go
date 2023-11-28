@@ -33,7 +33,7 @@ func ExampleElasticPoolsClient_Get_getAHyperscaleElasticPool() {
 	// 	Location: to.Ptr("Japan East"),
 	// 	Kind: to.Ptr("vcore,pool"),
 	// 	Properties: &armsql.ElasticPoolProperties{
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-26T03:46:20.57Z"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-08-26T03:46:20.570Z"); return t}()),
 	// 		HighAvailabilityReplicaCount: to.Ptr[int32](2),
 	// 		LicenseType: to.Ptr(armsql.ElasticPoolLicenseTypeLicenseIncluded),
 	// 		MaintenanceConfigurationID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default"),

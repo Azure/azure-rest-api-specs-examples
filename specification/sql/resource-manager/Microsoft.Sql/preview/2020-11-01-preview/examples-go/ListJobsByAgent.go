@@ -41,9 +41,9 @@ func ExampleJobsClient_NewListByAgentPager() {
 		// 				Schedule: &armsql.JobSchedule{
 		// 					Type: to.Ptr(armsql.JobScheduleTypeRecurring),
 		// 					Enabled: to.Ptr(true),
-		// 					EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T23:59:59Z"); return t}()),
+		// 					EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T23:59:59.000Z"); return t}()),
 		// 					Interval: to.Ptr("PT5M"),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T18:30:01Z"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T18:30:01.000Z"); return t}()),
 		// 				},
 		// 				Version: to.Ptr[int32](0),
 		// 			},
@@ -57,8 +57,8 @@ func ExampleJobsClient_NewListByAgentPager() {
 		// 				Schedule: &armsql.JobSchedule{
 		// 					Type: to.Ptr(armsql.JobScheduleTypeOnce),
 		// 					Enabled: to.Ptr(true),
-		// 					EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-27T06:00:00Z"); return t}()),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-01T03:45:00Z"); return t}()),
+		// 					EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-27T06:00:00.000Z"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-01T03:45:00.000Z"); return t}()),
 		// 				},
 		// 				Version: to.Ptr[int32](1),
 		// 			},
@@ -72,8 +72,8 @@ func ExampleJobsClient_NewListByAgentPager() {
 		// 				Schedule: &armsql.JobSchedule{
 		// 					Type: to.Ptr(armsql.JobScheduleTypeOnce),
 		// 					Enabled: to.Ptr(false),
-		// 					EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-27T06:00:00Z"); return t}()),
-		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-01T03:45:00Z"); return t}()),
+		// 					EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-27T06:00:00.000Z"); return t}()),
+		// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-07-01T03:45:00.000Z"); return t}()),
 		// 				},
 		// 				Version: to.Ptr[int32](1),
 		// 			},

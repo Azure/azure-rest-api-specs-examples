@@ -32,9 +32,9 @@ func ExampleLongTermRetentionManagedInstanceBackupsClient_Get() {
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/Locations/japaneast/longTermRetentionManagedInstances/testInstance/longTermRetentionDatabases/testDatabase/longTermRetentionManagedInstanceBackups/55555555-6666-7777-8888-999999999999;131637960820000000"),
 	// 	Properties: &armsql.ManagedInstanceLongTermRetentionBackupProperties{
 	// 		BackupStorageRedundancy: to.Ptr(armsql.BackupStorageRedundancyGeo),
-	// 		BackupTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-23T08:00:00Z"); return t}()),
+	// 		BackupTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-23T08:00:00.000Z"); return t}()),
 	// 		DatabaseName: to.Ptr("testDatabase"),
-	// 		ManagedInstanceCreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-01T08:00:00Z"); return t}()),
+	// 		ManagedInstanceCreateTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-09-01T08:00:00.000Z"); return t}()),
 	// 		ManagedInstanceName: to.Ptr("testInstance"),
 	// 	},
 	// }

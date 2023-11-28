@@ -35,8 +35,8 @@ func ExampleJobsClient_CreateOrUpdate_createAJobWithDefaultProperties() {
 	// 		Schedule: &armsql.JobSchedule{
 	// 			Type: to.Ptr(armsql.JobScheduleTypeOnce),
 	// 			Enabled: to.Ptr(false),
-	// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T11:59:59Z"); return t}()),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T00:00:00Z"); return t}()),
+	// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "9999-12-31T11:59:59.000Z"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T00:00:00.000Z"); return t}()),
 	// 		},
 	// 		Version: to.Ptr[int32](0),
 	// 	},

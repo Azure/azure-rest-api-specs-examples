@@ -66,7 +66,7 @@ func ExampleManagedInstanceOperationsClient_Get() {
 	// 			TotalSteps: to.Ptr("5"),
 	// 		},
 	// 		PercentComplete: to.Ptr[int32](100),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-06T11:08:44.49Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-06T11:08:44.490Z"); return t}()),
 	// 		State: to.Ptr(armsql.ManagementOperationStateCancelled),
 	// 	},
 	// }

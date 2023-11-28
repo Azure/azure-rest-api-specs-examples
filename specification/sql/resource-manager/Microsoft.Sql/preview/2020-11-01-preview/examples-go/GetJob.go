@@ -35,8 +35,8 @@ func ExampleJobsClient_Get() {
 	// 		Schedule: &armsql.JobSchedule{
 	// 			Type: to.Ptr(armsql.JobScheduleTypeOnce),
 	// 			Enabled: to.Ptr(true),
-	// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T23:59:59Z"); return t}()),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T18:30:01Z"); return t}()),
+	// 			EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T23:59:59.000Z"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2015-09-24T18:30:01.000Z"); return t}()),
 	// 		},
 	// 		Version: to.Ptr[int32](0),
 	// 	},

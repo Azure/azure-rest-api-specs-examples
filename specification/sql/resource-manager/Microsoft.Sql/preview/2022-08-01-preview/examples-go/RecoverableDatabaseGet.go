@@ -34,7 +34,7 @@ func ExampleRecoverableDatabasesClient_Get_getARecoverableDatabase() {
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/recoverabledatabasetest-6852/providers/Microsoft.Sql/servers/recoverabledatabasetest-2080/recoverableDatabases/recoverabledatabasetest-9187"),
 	// 	Properties: &armsql.RecoverableDatabaseProperties{
 	// 		Edition: to.Ptr("Basic"),
-	// 		LastAvailableBackupDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T01:06:29.78Z"); return t}()),
+	// 		LastAvailableBackupDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T01:06:29.780Z"); return t}()),
 	// 		ServiceLevelObjective: to.Ptr("Basic"),
 	// 	},
 	// }

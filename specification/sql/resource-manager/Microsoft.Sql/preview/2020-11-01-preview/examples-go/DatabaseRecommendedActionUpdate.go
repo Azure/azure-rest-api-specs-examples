@@ -54,7 +54,7 @@ func ExampleDatabaseRecommendedActionsClient_Update() {
 	// 				Unit: to.Ptr("Megabytes"),
 	// 		}},
 	// 		ExecuteActionInitiatedBy: to.Ptr(armsql.RecommendedActionInitiatedByUser),
-	// 		ExecuteActionInitiatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-20T15:11:15Z"); return t}()),
+	// 		ExecuteActionInitiatedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-20T15:11:15.000Z"); return t}()),
 	// 		ImplementationDetails: &armsql.RecommendedActionImplementationInfo{
 	// 			Method: to.Ptr(armsql.ImplementationMethodTSQL),
 	// 			Script: to.Ptr("CREATE NONCLUSTERED INDEX [nci_wi_DataPoints_B892614093BAC56295EF6018BD4CB51B] ON [CRM].[DataPoints] ([Name],[Money],[Power]) INCLUDE ([Hour], [System], [LastChanged]) WITH (ONLINE = ON)"),
@@ -62,7 +62,7 @@ func ExampleDatabaseRecommendedActionsClient_Update() {
 	// 		IsArchivedAction: to.Ptr(false),
 	// 		IsExecutableAction: to.Ptr(true),
 	// 		IsRevertableAction: to.Ptr(true),
-	// 		LastRefresh: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04Z"); return t}()),
+	// 		LastRefresh: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04.000Z"); return t}()),
 	// 		ObservedImpact: []*armsql.RecommendedActionImpactRecord{
 	// 		},
 	// 		RecommendationReason: to.Ptr(""),
@@ -70,11 +70,11 @@ func ExampleDatabaseRecommendedActionsClient_Update() {
 	// 		State: &armsql.RecommendedActionStateInfo{
 	// 			ActionInitiatedBy: to.Ptr(armsql.RecommendedActionInitiatedByUser),
 	// 			CurrentValue: to.Ptr(armsql.RecommendedActionCurrentStatePending),
-	// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-20T15:11:15Z"); return t}()),
+	// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-20T15:11:15.000Z"); return t}()),
 	// 		},
 	// 		TimeSeries: []*armsql.RecommendedActionMetricInfo{
 	// 		},
-	// 		ValidSince: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04Z"); return t}()),
+	// 		ValidSince: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04.000Z"); return t}()),
 	// 		Details: map[string]any{
 	// 			"schema": "[CRM]",
 	// 			"includedColumns": "[Hour], [System], [LastChanged]",

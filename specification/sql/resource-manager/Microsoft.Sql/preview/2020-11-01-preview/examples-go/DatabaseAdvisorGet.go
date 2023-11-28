@@ -33,7 +33,7 @@ func ExampleDatabaseAdvisorsClient_Get() {
 	// 	Properties: &armsql.AdvisorProperties{
 	// 		AdvisorStatus: to.Ptr(armsql.AdvisorStatusGA),
 	// 		AutoExecuteStatus: to.Ptr(armsql.AutoExecuteStatusDisabled),
-	// 		LastChecked: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-20T00:24:39Z"); return t}()),
+	// 		LastChecked: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-20T00:24:39.000Z"); return t}()),
 	// 		RecommendationsStatus: to.Ptr("Ok"),
 	// 	},
 	// }

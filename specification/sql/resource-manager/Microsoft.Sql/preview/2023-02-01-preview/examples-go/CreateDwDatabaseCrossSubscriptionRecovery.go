@@ -46,7 +46,7 @@ func ExampleDatabasesClient_BeginCreateOrUpdate_createsADataWarehouseDatabaseAsA
 	// 	Properties: &armsql.DatabaseProperties{
 	// 		CatalogCollation: to.Ptr(armsql.CatalogCollationTypeSQLLatin1GeneralCP1CIAS),
 	// 		Collation: to.Ptr("SQL_Latin1_General_CP1_CI_AS"),
-	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-24T06:46:14.99Z"); return t}()),
+	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-01-24T06:46:14.990Z"); return t}()),
 	// 		CurrentBackupStorageRedundancy: to.Ptr(armsql.BackupStorageRedundancyGeo),
 	// 		CurrentServiceObjectiveName: to.Ptr("DW1000c"),
 	// 		CurrentSKU: &armsql.SKU{

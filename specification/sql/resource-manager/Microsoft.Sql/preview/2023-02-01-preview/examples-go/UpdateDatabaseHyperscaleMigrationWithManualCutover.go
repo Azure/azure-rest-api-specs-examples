@@ -67,7 +67,7 @@ func ExampleDatabasesClient_BeginCreateOrUpdate_updatesADatabaseToHyperscaleSloW
 	// 		},
 	// 		DatabaseID: to.Ptr("dad50ee1-9fbb-4fb9-bd2b-5786d175ce3c"),
 	// 		DefaultSecondaryLocation: to.Ptr("North Europe"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-12-08T12:42:00Z"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-12-08T12:42:00.000Z"); return t}()),
 	// 		IsInfraEncryptionEnabled: to.Ptr(false),
 	// 		IsLedgerOn: to.Ptr(false),
 	// 		LicenseType: to.Ptr(armsql.DatabaseLicenseTypeLicenseIncluded),

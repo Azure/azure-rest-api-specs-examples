@@ -109,7 +109,7 @@ func ExampleProtectionPoliciesClient_CreateOrUpdate_createOrUpdateDailyAzureStor
 	// 					DurationType: to.Ptr(armrecoveryservicesbackup.RetentionDurationTypeDays),
 	// 				},
 	// 				RetentionTimes: []*time.Time{
-	// 					to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00Z"); return t}())},
+	// 					to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00.000Z"); return t}())},
 	// 				},
 	// 				MonthlySchedule: &armrecoveryservicesbackup.MonthlyRetentionSchedule{
 	// 					RetentionDuration: &armrecoveryservicesbackup.RetentionDuration{
@@ -124,7 +124,7 @@ func ExampleProtectionPoliciesClient_CreateOrUpdate_createOrUpdateDailyAzureStor
 	// 								to.Ptr(armrecoveryservicesbackup.WeekOfMonthFirst)},
 	// 							},
 	// 							RetentionTimes: []*time.Time{
-	// 								to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00Z"); return t}())},
+	// 								to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00.000Z"); return t}())},
 	// 							},
 	// 							WeeklySchedule: &armrecoveryservicesbackup.WeeklyRetentionSchedule{
 	// 								DaysOfTheWeek: []*armrecoveryservicesbackup.DayOfWeek{
@@ -134,7 +134,7 @@ func ExampleProtectionPoliciesClient_CreateOrUpdate_createOrUpdateDailyAzureStor
 	// 										DurationType: to.Ptr(armrecoveryservicesbackup.RetentionDurationTypeWeeks),
 	// 									},
 	// 									RetentionTimes: []*time.Time{
-	// 										to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00Z"); return t}())},
+	// 										to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00.000Z"); return t}())},
 	// 									},
 	// 									YearlySchedule: &armrecoveryservicesbackup.YearlyRetentionSchedule{
 	// 										MonthsOfYear: []*armrecoveryservicesbackup.MonthOfYear{
@@ -151,14 +151,14 @@ func ExampleProtectionPoliciesClient_CreateOrUpdate_createOrUpdateDailyAzureStor
 	// 														to.Ptr(armrecoveryservicesbackup.WeekOfMonthFirst)},
 	// 													},
 	// 													RetentionTimes: []*time.Time{
-	// 														to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00Z"); return t}())},
+	// 														to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00.000Z"); return t}())},
 	// 													},
 	// 												},
 	// 												SchedulePolicy: &armrecoveryservicesbackup.SimpleSchedulePolicy{
 	// 													SchedulePolicyType: to.Ptr("SimpleSchedulePolicy"),
 	// 													ScheduleRunFrequency: to.Ptr(armrecoveryservicesbackup.ScheduleRunTypeDaily),
 	// 													ScheduleRunTimes: []*time.Time{
-	// 														to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00Z"); return t}())},
+	// 														to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-29T08:00:00.000Z"); return t}())},
 	// 														ScheduleWeeklyFrequency: to.Ptr[int32](0),
 	// 													},
 	// 													TimeZone: to.Ptr("UTC"),

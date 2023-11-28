@@ -48,14 +48,14 @@ func ExampleBackupPoliciesClient_NewListPager_listProtectionPoliciesWithBackupMa
 		// 							DurationType: to.Ptr(armrecoveryservicesbackup.RetentionDurationTypeDays),
 		// 						},
 		// 						RetentionTimes: []*time.Time{
-		// 							to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00Z"); return t}())},
+		// 							to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00.000Z"); return t}())},
 		// 						},
 		// 					},
 		// 					SchedulePolicy: &armrecoveryservicesbackup.SimpleSchedulePolicy{
 		// 						SchedulePolicyType: to.Ptr("SimpleSchedulePolicy"),
 		// 						ScheduleRunFrequency: to.Ptr(armrecoveryservicesbackup.ScheduleRunTypeDaily),
 		// 						ScheduleRunTimes: []*time.Time{
-		// 							to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00Z"); return t}())},
+		// 							to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00.000Z"); return t}())},
 		// 							ScheduleWeeklyFrequency: to.Ptr[int32](0),
 		// 						},
 		// 					},
@@ -75,14 +75,14 @@ func ExampleBackupPoliciesClient_NewListPager_listProtectionPoliciesWithBackupMa
 		// 									DurationType: to.Ptr(armrecoveryservicesbackup.RetentionDurationTypeDays),
 		// 								},
 		// 								RetentionTimes: []*time.Time{
-		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T02:00:00Z"); return t}())},
+		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T02:00:00.000Z"); return t}())},
 		// 								},
 		// 							},
 		// 							SchedulePolicy: &armrecoveryservicesbackup.SimpleSchedulePolicy{
 		// 								SchedulePolicyType: to.Ptr("SimpleSchedulePolicy"),
 		// 								ScheduleRunFrequency: to.Ptr(armrecoveryservicesbackup.ScheduleRunTypeDaily),
 		// 								ScheduleRunTimes: []*time.Time{
-		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T02:00:00Z"); return t}())},
+		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T02:00:00.000Z"); return t}())},
 		// 									ScheduleWeeklyFrequency: to.Ptr[int32](0),
 		// 								},
 		// 								TimeZone: to.Ptr("Pacific Standard Time"),
@@ -103,14 +103,14 @@ func ExampleBackupPoliciesClient_NewListPager_listProtectionPoliciesWithBackupMa
 		// 											DurationType: to.Ptr(armrecoveryservicesbackup.RetentionDurationTypeDays),
 		// 										},
 		// 										RetentionTimes: []*time.Time{
-		// 											to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T02:00:00Z"); return t}())},
+		// 											to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T02:00:00.000Z"); return t}())},
 		// 										},
 		// 									},
 		// 									SchedulePolicy: &armrecoveryservicesbackup.SimpleSchedulePolicyV2{
 		// 										SchedulePolicyType: to.Ptr("SimpleSchedulePolicyV2"),
 		// 										DailySchedule: &armrecoveryservicesbackup.DailySchedule{
 		// 											ScheduleRunTimes: []*time.Time{
-		// 												to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T10:00:00Z"); return t}())},
+		// 												to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-01-24T10:00:00.000Z"); return t}())},
 		// 											},
 		// 											ScheduleRunFrequency: to.Ptr(armrecoveryservicesbackup.ScheduleRunTypeDaily),
 		// 										},

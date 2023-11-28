@@ -48,7 +48,7 @@ func ExampleRecoveryPointsClient_Get() {
 	// 				Type: to.Ptr(armrecoveryservicesbackup.RecoveryPointTierTypeHardenedRP),
 	// 				Status: to.Ptr(armrecoveryservicesbackup.RecoveryPointTierStatusValid),
 	// 		}},
-	// 		RecoveryPointTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-22T22:32:46.6088472Z"); return t}()),
+	// 		RecoveryPointTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-11-22T22:32:46.608Z"); return t}()),
 	// 		RecoveryPointType: to.Ptr("CrashConsistent"),
 	// 		SourceVMStorageType: to.Ptr("NormalStorage"),
 	// 		VirtualMachineSize: to.Ptr("Standard_D1"),

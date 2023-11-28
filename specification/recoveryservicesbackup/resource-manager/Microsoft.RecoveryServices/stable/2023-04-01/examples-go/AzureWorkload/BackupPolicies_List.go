@@ -55,14 +55,14 @@ func ExampleBackupPoliciesClient_NewListPager_listProtectionPoliciesWithBackupMa
 		// 									DurationType: to.Ptr(armrecoveryservicesbackup.RetentionDurationTypeDays),
 		// 								},
 		// 								RetentionTimes: []*time.Time{
-		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00Z"); return t}())},
+		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00.000Z"); return t}())},
 		// 								},
 		// 							},
 		// 							SchedulePolicy: &armrecoveryservicesbackup.SimpleSchedulePolicy{
 		// 								SchedulePolicyType: to.Ptr("SimpleSchedulePolicy"),
 		// 								ScheduleRunFrequency: to.Ptr(armrecoveryservicesbackup.ScheduleRunTypeDaily),
 		// 								ScheduleRunTimes: []*time.Time{
-		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00Z"); return t}())},
+		// 									to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-05T19:00:00.000Z"); return t}())},
 		// 									ScheduleWeeklyFrequency: to.Ptr[int32](0),
 		// 								},
 		// 							},

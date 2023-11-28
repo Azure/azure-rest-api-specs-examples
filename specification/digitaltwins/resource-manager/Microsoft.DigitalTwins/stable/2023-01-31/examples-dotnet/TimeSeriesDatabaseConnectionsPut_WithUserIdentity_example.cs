@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DigitalTwinsDescriptionResource created on azure
-// for more information of creating DigitalTwinsDescriptionResource, please refer to the document of DigitalTwinsDescriptionResource
+// this example assumes you already have this TimeSeriesDatabaseConnectionResource created on azure
+// for more information of creating TimeSeriesDatabaseConnectionResource, please refer to the document of TimeSeriesDatabaseConnectionResource
 string subscriptionId = "50016170-c839-41ba-a724-51e9df440b9e";
 string resourceGroupName = "resRg";
 string resourceName = "myDigitalTwinsService";
-ResourceIdentifier digitalTwinsDescriptionResourceId = DigitalTwinsDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-DigitalTwinsDescriptionResource digitalTwinsDescription = client.GetDigitalTwinsDescriptionResource(digitalTwinsDescriptionResourceId);
-
-// get the collection of this TimeSeriesDatabaseConnectionResource
-TimeSeriesDatabaseConnectionCollection collection = digitalTwinsDescription.GetTimeSeriesDatabaseConnections();
+string timeSeriesDatabaseConnectionName = "myConnection";
+ResourceIdentifier timeSeriesDatabaseConnectionResourceId = TimeSeriesDatabaseConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, timeSeriesDatabaseConnectionName);
+TimeSeriesDatabaseConnectionResource timeSeriesDatabaseConnection = client.GetTimeSeriesDatabaseConnectionResource(timeSeriesDatabaseConnectionResourceId);
 
 // invoke the operation
-string timeSeriesDatabaseConnectionName = "myConnection";
 TimeSeriesDatabaseConnectionData data = new TimeSeriesDatabaseConnectionData()
 {
     Properties = new DataExplorerConnectionProperties(new ResourceIdentifier("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.Kusto/clusters/mycluster"), new Uri("https://mycluster.kusto.windows.net"), "myDatabase", new Uri("sb://myeh.servicebus.windows.net/"), "myeh", new ResourceIdentifier("/subscriptions/c493073e-2460-45ba-a403-f3e0df1e9feg/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/myeh"))
@@ -40,7 +37,7 @@ TimeSeriesDatabaseConnectionData data = new TimeSeriesDatabaseConnectionData()
         },
     },
 };
-ArmOperation<TimeSeriesDatabaseConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, timeSeriesDatabaseConnectionName, data);
+ArmOperation<TimeSeriesDatabaseConnectionResource> lro = await timeSeriesDatabaseConnection.UpdateAsync(WaitUntil.Completed, data);
 TimeSeriesDatabaseConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+// this example assumes you already have this ContainerAppManagedEnvironmentStorageResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentStorageResource, please refer to the document of ContainerAppManagedEnvironmentStorageResource
 string subscriptionId = "8efdecc5-919e-44eb-b179-915dca89ebf9";
 string resourceGroupName = "examplerg";
 string environmentName = "managedEnv";
-ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
-ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
-
-// get the collection of this ContainerAppManagedEnvironmentStorageResource
-ContainerAppManagedEnvironmentStorageCollection collection = containerAppManagedEnvironment.GetContainerAppManagedEnvironmentStorages();
+string storageName = "jlaw-demo1";
+ResourceIdentifier containerAppManagedEnvironmentStorageResourceId = ContainerAppManagedEnvironmentStorageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, storageName);
+ContainerAppManagedEnvironmentStorageResource containerAppManagedEnvironmentStorage = client.GetContainerAppManagedEnvironmentStorageResource(containerAppManagedEnvironmentStorageResourceId);
 
 // invoke the operation
-string storageName = "jlaw-demo1";
-bool result = await collection.ExistsAsync(storageName);
+ContainerAppManagedEnvironmentStorageResource result = await containerAppManagedEnvironmentStorage.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppManagedEnvironmentStorageData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

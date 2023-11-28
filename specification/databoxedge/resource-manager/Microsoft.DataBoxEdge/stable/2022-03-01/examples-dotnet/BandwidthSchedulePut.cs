@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BandwidthScheduleResource created on azure
-// for more information of creating BandwidthScheduleResource, please refer to the document of BandwidthScheduleResource
+// this example assumes you already have this DataBoxEdgeDeviceResource created on azure
+// for more information of creating DataBoxEdgeDeviceResource, please refer to the document of DataBoxEdgeDeviceResource
 string subscriptionId = "4385cf00-2d3a-425a-832f-f4285b1c9dce";
 string resourceGroupName = "GroupForEdgeAutomation";
 string deviceName = "testedgedevice";
-string name = "bandwidth-1";
-ResourceIdentifier bandwidthScheduleResourceId = BandwidthScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName, name);
-BandwidthScheduleResource bandwidthSchedule = client.GetBandwidthScheduleResource(bandwidthScheduleResourceId);
+ResourceIdentifier dataBoxEdgeDeviceResourceId = DataBoxEdgeDeviceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, deviceName);
+DataBoxEdgeDeviceResource dataBoxEdgeDevice = client.GetDataBoxEdgeDeviceResource(dataBoxEdgeDeviceResourceId);
+
+// get the collection of this BandwidthScheduleResource
+BandwidthScheduleCollection collection = dataBoxEdgeDevice.GetBandwidthSchedules();
 
 // invoke the operation
+string name = "bandwidth-1";
 BandwidthScheduleData data = new BandwidthScheduleData(TimeSpan.Parse("0:0:0"), TimeSpan.Parse("13:59:0"), 100, new DataBoxEdgeDayOfWeek[]
 {
 DataBoxEdgeDayOfWeek.Sunday,DataBoxEdgeDayOfWeek.Monday
 });
-ArmOperation<BandwidthScheduleResource> lro = await bandwidthSchedule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BandwidthScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 BandwidthScheduleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -137,10 +137,10 @@ func ExampleSAPVirtualInstancesClient_BeginCreate_installSapSoftwareOnDistribute
 	// 	Type: to.Ptr("microsoft.workloads/sapvirtualinstances"),
 	// 	ID: to.Ptr("/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/aa-rg/providers/Microsoft.Workloads/sapVirtualInstances/X00"),
 	// 	SystemData: &armworkloads.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-18T18:25:55.2406546Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-18T18:25:55.240Z"); return t}()),
 	// 		CreatedBy: to.Ptr("f1bc9460-9d57-4c16-99a8-5a19378a3a93"),
 	// 		CreatedByType: to.Ptr(armworkloads.CreatedByTypeApplication),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-18T18:50:59.1945444Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-08-18T18:50:59.194Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("f1bc9460-9d57-4c16-99a8-5a19378a3a93"),
 	// 		LastModifiedByType: to.Ptr(armworkloads.CreatedByTypeApplication),
 	// 	},

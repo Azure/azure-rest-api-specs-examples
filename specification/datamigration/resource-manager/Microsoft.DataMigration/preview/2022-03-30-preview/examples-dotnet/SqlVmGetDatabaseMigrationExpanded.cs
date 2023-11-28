@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.DataMigration;
 using Azure.ResourceManager.DataMigration.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/datamigration/resource-manager/Microsoft.DataMigration/preview/2022-03-30-preview/examples/SqlVmGetDatabaseMigrationExpanded.json
 // this example is just showing the usage of "DatabaseMigrationsSqlVm_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,21 +16,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DatabaseMigrationSqlVmResource created on azure
-// for more information of creating DatabaseMigrationSqlVmResource, please refer to the document of DatabaseMigrationSqlVmResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
-string sqlVirtualMachineName = "testvm";
-string targetDBName = "db1";
-ResourceIdentifier databaseMigrationSqlVmResourceId = DatabaseMigrationSqlVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, sqlVirtualMachineName, targetDBName);
-DatabaseMigrationSqlVmResource databaseMigrationSqlVm = client.GetDatabaseMigrationSqlVmResource(databaseMigrationSqlVmResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this DatabaseMigrationSqlVmResource
+DatabaseMigrationSqlVmCollection collection = resourceGroupResource.GetDatabaseMigrationSqlVms();
 
 // invoke the operation
+string sqlVirtualMachineName = "testvm";
+string targetDBName = "db1";
 string expand = "MigrationStatusDetails";
-DatabaseMigrationSqlVmResource result = await databaseMigrationSqlVm.GetAsync(expand: expand);
+NullableResponse<DatabaseMigrationSqlVmResource> response = await collection.GetIfExistsAsync(sqlVirtualMachineName, targetDBName, expand: expand);
+DatabaseMigrationSqlVmResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DatabaseMigrationSqlVmData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DatabaseMigrationSqlVmData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

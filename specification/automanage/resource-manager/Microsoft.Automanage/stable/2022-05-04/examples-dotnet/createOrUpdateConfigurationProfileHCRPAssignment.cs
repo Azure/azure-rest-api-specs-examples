@@ -15,16 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AutomanageHcrpConfigurationProfileAssignmentResource created on azure
-// for more information of creating AutomanageHcrpConfigurationProfileAssignmentResource, please refer to the document of AutomanageHcrpConfigurationProfileAssignmentResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this AutomanageHcrpConfigurationProfileAssignmentResource
 string subscriptionId = "mySubscriptionId";
 string resourceGroupName = "myResourceGroupName";
 string machineName = "myMachineName";
-string configurationProfileAssignmentName = "default";
-ResourceIdentifier automanageHcrpConfigurationProfileAssignmentResourceId = AutomanageHcrpConfigurationProfileAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, configurationProfileAssignmentName);
-AutomanageHcrpConfigurationProfileAssignmentResource automanageHcrpConfigurationProfileAssignment = client.GetAutomanageHcrpConfigurationProfileAssignmentResource(automanageHcrpConfigurationProfileAssignmentResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.HybridCompute/machines/{2}", subscriptionId, resourceGroupName, machineName));
+AutomanageHcrpConfigurationProfileAssignmentCollection collection = client.GetAutomanageHcrpConfigurationProfileAssignments(scopeId);
 
 // invoke the operation
+string configurationProfileAssignmentName = "default";
 AutomanageConfigurationProfileAssignmentData data = new AutomanageConfigurationProfileAssignmentData()
 {
     Properties = new AutomanageConfigurationProfileAssignmentProperties()
@@ -32,7 +34,7 @@ AutomanageConfigurationProfileAssignmentData data = new AutomanageConfigurationP
         ConfigurationProfile = new ResourceIdentifier("/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"),
     },
 };
-ArmOperation<AutomanageHcrpConfigurationProfileAssignmentResource> lro = await automanageHcrpConfigurationProfileAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AutomanageHcrpConfigurationProfileAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationProfileAssignmentName, data);
 AutomanageHcrpConfigurationProfileAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

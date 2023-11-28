@@ -13,15 +13,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this AutomanageBestPracticeResource
-AutomanageBestPracticeCollection collection = tenantResource.GetAutomanageBestPractices();
+// this example assumes you already have this AutomanageBestPracticeResource created on azure
+// for more information of creating AutomanageBestPracticeResource, please refer to the document of AutomanageBestPracticeResource
+string bestPracticeName = "azureBestPracticesProduction";
+ResourceIdentifier automanageBestPracticeResourceId = AutomanageBestPracticeResource.CreateResourceIdentifier(bestPracticeName);
+AutomanageBestPracticeResource automanageBestPractice = client.GetAutomanageBestPracticeResource(automanageBestPracticeResourceId);
 
 // invoke the operation
-string bestPracticeName = "azureBestPracticesProduction";
-bool result = await collection.ExistsAsync(bestPracticeName);
+AutomanageBestPracticeResource result = await automanageBestPractice.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutomanageBestPracticeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -41,7 +41,7 @@ func ExampleReplicationRecoveryServicesProvidersClient_BeginRefreshProvider() {
 	// 			FabricFriendlyName: to.Ptr("cloud1"),
 	// 			FabricType: to.Ptr("HyperVSite"),
 	// 			FriendlyName: to.Ptr("CP-B3L40406-12.ntdev.corp.microsoft.com"),
-	// 			LastHeartBeat: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T09:48:36.6528303Z"); return t}()),
+	// 			LastHeartBeat: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T09:48:36.652Z"); return t}()),
 	// 			ProtectedItemCount: to.Ptr[int32](2),
 	// 			ProviderVersion: to.Ptr("5.1.2250.0"),
 	// 			ProviderVersionState: to.Ptr("Latest"),

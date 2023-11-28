@@ -82,7 +82,7 @@ func ExampleReplicationJobsClient_BeginResume() {
 	// 			},
 	// 			FriendlyName: to.Ptr("Test failover"),
 	// 			ScenarioName: to.Ptr("TestFailover"),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-25T09:57:57.0357829Z"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-25T09:57:57.035Z"); return t}()),
 	// 			State: to.Ptr("Suspended"),
 	// 			StateDescription: to.Ptr("WaitingForStopTestFailover"),
 	// 			TargetInstanceType: to.Ptr("ProtectionEntity"),

@@ -43,12 +43,12 @@ func ExampleReplicationJobsClient_Get() {
 	// 			},
 	// 			InstanceType: to.Ptr("AsrJobDetails"),
 	// 		},
-	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:57Z"); return t}()),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:57.000Z"); return t}()),
 	// 		Errors: []*armrecoveryservicessiterecovery.JobErrorDetails{
 	// 		},
 	// 		FriendlyName: to.Ptr("Delete a recovery plan"),
 	// 		ScenarioName: to.Ptr("DeleteRecoveryPlan"),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:56.800358Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:56.800Z"); return t}()),
 	// 		State: to.Ptr("Succeeded"),
 	// 		StateDescription: to.Ptr("Completed"),
 	// 		TargetInstanceType: to.Ptr("RecoveryPlan"),
@@ -62,11 +62,11 @@ func ExampleReplicationJobsClient_Get() {
 	// 				CustomDetails: &armrecoveryservicessiterecovery.ManualActionTaskDetails{
 	// 					InstanceType: to.Ptr("ManualActionTaskDetails"),
 	// 				},
-	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:57.318574Z"); return t}()),
+	// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:57.318Z"); return t}()),
 	// 				Errors: []*armrecoveryservicessiterecovery.JobErrorDetails{
 	// 				},
 	// 				FriendlyName: to.Ptr("Delete a recovery plan task"),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:57.3029434Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T11:25:57.302Z"); return t}()),
 	// 				State: to.Ptr("Succeeded"),
 	// 				StateDescription: to.Ptr("Completed"),
 	// 				TaskID: to.Ptr("763326a2-01c9-4257-b2a1-0aac56465014"),

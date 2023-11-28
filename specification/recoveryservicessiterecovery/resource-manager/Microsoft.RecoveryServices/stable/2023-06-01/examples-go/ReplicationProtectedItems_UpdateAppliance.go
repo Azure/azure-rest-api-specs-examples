@@ -52,7 +52,7 @@ func ExampleReplicationProtectedItemsClient_BeginUpdateAppliance() {
 	// 			CurrentScenario: &armrecoveryservicessiterecovery.CurrentScenarioDetails{
 	// 				JobID: to.Ptr("/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/Ayan-0106-SA-RG/providers/Microsoft.RecoveryServices/vaults/Ayan-0106-SA-Vault/replicationJobs/None"),
 	// 				ScenarioName: to.Ptr("None"),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1753-01-01T01:01:01Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1753-01-01T01:01:01.000Z"); return t}()),
 	// 			},
 	// 			EventCorrelationID: to.Ptr("fb40d161-cffd-44d9-a252-0b7978e1f73c"),
 	// 			FailoverHealth: to.Ptr("Normal"),

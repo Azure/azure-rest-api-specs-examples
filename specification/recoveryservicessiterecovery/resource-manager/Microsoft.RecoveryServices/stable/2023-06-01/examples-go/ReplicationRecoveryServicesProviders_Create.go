@@ -60,7 +60,7 @@ func ExampleReplicationRecoveryServicesProvidersClient_BeginCreate() {
 	// 			FabricFriendlyName: to.Ptr("vmwarefabric1"),
 	// 			FabricType: to.Ptr("VMwareV2"),
 	// 			FriendlyName: to.Ptr("vmwareprovider1"),
-	// 			LastHeartBeat: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T09:16:04.9405768Z"); return t}()),
+	// 			LastHeartBeat: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T09:16:04.940Z"); return t}()),
 	// 			ProtectedItemCount: to.Ptr[int32](2),
 	// 			ProviderVersion: to.Ptr("5.1.3688.0"),
 	// 			ProviderVersionState: to.Ptr("Latest"),

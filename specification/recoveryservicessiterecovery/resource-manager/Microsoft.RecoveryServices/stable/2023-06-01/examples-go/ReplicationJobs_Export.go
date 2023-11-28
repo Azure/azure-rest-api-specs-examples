@@ -50,11 +50,11 @@ func ExampleReplicationJobsClient_BeginExport() {
 	// 			BlobURI: to.Ptr("<blobUri>"),
 	// 			SasToken: to.Ptr("<sasToken>"),
 	// 		},
-	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-04T14:33:43Z"); return t}()),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-04T14:33:43.000Z"); return t}()),
 	// 		Errors: []*armrecoveryservicessiterecovery.JobErrorDetails{
 	// 		},
 	// 		ScenarioName: to.Ptr("ExportJobs"),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-04T14:33:42.2765562Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-04T14:33:42.276Z"); return t}()),
 	// 		State: to.Ptr("Succeeded"),
 	// 		StateDescription: to.Ptr("Completed"),
 	// 		TargetInstanceType: to.Ptr("Other"),

@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdateWatcher.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/createOrUpdateWatcher.json
 func ExampleWatcherClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -40,9 +40,9 @@ func ExampleWatcherClient_CreateOrUpdate() {
 	// 	ID: to.Ptr("/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/MyTestAutomationAccount/watchers/MyTestWatcher"),
 	// 	Properties: &armautomation.WatcherProperties{
 	// 		Description: to.Ptr("This is a test watcher."),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-14T21:14:09.607+00:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-14T21:14:09.607Z"); return t}()),
 	// 		ExecutionFrequencyInSeconds: to.Ptr[int64](60),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-14T21:14:09.607+00:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-14T21:14:09.607Z"); return t}()),
 	// 		ScriptName: to.Ptr("MyTestWatcherRunbook"),
 	// 		ScriptRunOn: to.Ptr("MyTestHybridWorkerGroup"),
 	// 		Status: to.Ptr("New"),

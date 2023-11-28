@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listPagedDscNodesByAutomationAccountWithStatusFilter.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listPagedDscNodesByAutomationAccountWithStatusFilter.json
 func ExampleDscNodeClient_NewListByAutomationAccountPager_listPagedDscNodesByAutomationAccountWithNodeStatusFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -49,12 +49,12 @@ func ExampleDscNodeClient_NewListByAutomationAccountPager_listPagedDscNodesByAut
 		// 						Version: to.Ptr("2.75.0.0"),
 		// 				}},
 		// 				IP: to.Ptr("ip"),
-		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.0963773+00:00"); return t}()),
+		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.096Z"); return t}()),
 		// 				NodeConfiguration: &armautomation.DscNodeConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SetupServer.localhost"),
 		// 				},
 		// 				NodeID: to.Ptr("01D64CDE-85DD-4C9B-B8F1-2F725348FDEC"),
-		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.5393083+00:00"); return t}()),
+		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.539Z"); return t}()),
 		// 				Status: to.Ptr("Compliant"),
 		// 			},
 		// 		},
@@ -69,12 +69,12 @@ func ExampleDscNodeClient_NewListByAutomationAccountPager_listPagedDscNodesByAut
 		// 						Version: to.Ptr("2.75.0.0"),
 		// 				}},
 		// 				IP: to.Ptr("ip"),
-		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.0963773+00:00"); return t}()),
+		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.096Z"); return t}()),
 		// 				NodeConfiguration: &armautomation.DscNodeConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SetupServer.localhost"),
 		// 				},
 		// 				NodeID: to.Ptr("E13076D7-A959-4067-B02F-4F014AAD22D7"),
-		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.5393083+00:00"); return t}()),
+		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.539Z"); return t}()),
 		// 				Status: to.Ptr("Compliant"),
 		// 			},
 		// 		},
@@ -89,12 +89,12 @@ func ExampleDscNodeClient_NewListByAutomationAccountPager_listPagedDscNodesByAut
 		// 						Version: to.Ptr("2.75.0.0"),
 		// 				}},
 		// 				IP: to.Ptr("ip"),
-		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.0963773+00:00"); return t}()),
+		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.096Z"); return t}()),
 		// 				NodeConfiguration: &armautomation.DscNodeConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SetupServer.localhost"),
 		// 				},
 		// 				NodeID: to.Ptr("4289B441-B9A0-4309-93FC-0C5100CFBE46"),
-		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.5393083+00:00"); return t}()),
+		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.539Z"); return t}()),
 		// 				Status: to.Ptr("Compliant"),
 		// 			},
 		// 		},
@@ -109,12 +109,12 @@ func ExampleDscNodeClient_NewListByAutomationAccountPager_listPagedDscNodesByAut
 		// 						Version: to.Ptr("2.75.0.0"),
 		// 				}},
 		// 				IP: to.Ptr("ip"),
-		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.0963773+00:00"); return t}()),
+		// 				LastSeen: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-22T22:25:39.096Z"); return t}()),
 		// 				NodeConfiguration: &armautomation.DscNodeConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SetupServer.localhost"),
 		// 				},
 		// 				NodeID: to.Ptr("CBD2212B-8F4C-4049-98E7-1DBCBED7343B"),
-		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.5393083+00:00"); return t}()),
+		// 				RegistrationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-10T00:51:12.539Z"); return t}()),
 		// 				Status: to.Ptr("NotCompliant"),
 		// 			},
 		// 	}},

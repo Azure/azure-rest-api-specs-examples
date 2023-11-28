@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/getDscNodeReport.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/getDscNodeReport.json
 func ExampleNodeReportsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -29,7 +29,7 @@ func ExampleNodeReportsClient_Get() {
 	// res.DscNodeReport = armautomation.DscNodeReport{
 	// 	Type: to.Ptr("Consistency"),
 	// 	ConfigurationVersion: to.Ptr("2.0.0"),
-	// 	EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:27.587+00:00"); return t}()),
+	// 	EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:27.587Z"); return t}()),
 	// 	Errors: []*armautomation.DscReportError{
 	// 	},
 	// 	HostName: to.Ptr("DSCCOMP"),
@@ -44,7 +44,7 @@ func ExampleNodeReportsClient_Get() {
 	// 			to.Ptr("2001:0:9d38:78cf:106b:130a:53ef:fdfa"),
 	// 			to.Ptr("fe80::106b:130a:53ef:fdfa%7")},
 	// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/nodes/nodeId/reports/903a5ead-140c-11e7-a943-000d3a6140c9"),
-	// 			LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:29.4440401+00:00"); return t}()),
+	// 			LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:29.444Z"); return t}()),
 	// 			MetaConfiguration: &armautomation.DscMetaConfiguration{
 	// 				ActionAfterReboot: to.Ptr("ContinueConfiguration"),
 	// 				AllowModuleOverwrite: to.Ptr(false),
@@ -69,10 +69,10 @@ func ExampleNodeReportsClient_Get() {
 	// 					ResourceID: to.Ptr("[WindowsFeature]IIS"),
 	// 					ResourceName: to.Ptr("WindowsFeature"),
 	// 					SourceInfo: to.Ptr("::4::32::WindowsFeature"),
-	// 					StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:28.181+00:00"); return t}()),
+	// 					StartDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:28.181Z"); return t}()),
 	// 					Status: to.Ptr("Compliant"),
 	// 			}},
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:27.587+00:00"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:16:27.587Z"); return t}()),
 	// 			Status: to.Ptr("Compliant"),
 	// 		}
 }

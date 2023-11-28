@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/getPagedDscConfigurationsWithNoFilter.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/getPagedDscConfigurationsWithNoFilter.json
 func ExampleDscConfigurationClient_NewListByAutomationAccountPager_listPagedDscConfigurationsWithNoFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -44,8 +44,8 @@ func ExampleDscConfigurationClient_NewListByAutomationAccountPager_listPagedDscC
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/configurations/SqlServerBig"),
 		// 			Location: to.Ptr("East US 2"),
 		// 			Properties: &armautomation.DscConfigurationProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997Z"); return t}()),
 		// 				NodeConfigurationCount: to.Ptr[int32](1),
 		// 				State: to.Ptr(armautomation.DscConfigurationStatePublished),
 		// 			},
@@ -56,8 +56,8 @@ func ExampleDscConfigurationClient_NewListByAutomationAccountPager_listPagedDscC
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/configurations/SqlServerLittle"),
 		// 			Location: to.Ptr("East US 2"),
 		// 			Properties: &armautomation.DscConfigurationProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997Z"); return t}()),
 		// 				NodeConfigurationCount: to.Ptr[int32](1),
 		// 				State: to.Ptr(armautomation.DscConfigurationStatePublished),
 		// 			},
@@ -68,8 +68,8 @@ func ExampleDscConfigurationClient_NewListByAutomationAccountPager_listPagedDscC
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/configurations/SetupServer"),
 		// 			Location: to.Ptr("East US 2"),
 		// 			Properties: &armautomation.DscConfigurationProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T18:53:24.997Z"); return t}()),
 		// 				NodeConfigurationCount: to.Ptr[int32](1),
 		// 				State: to.Ptr(armautomation.DscConfigurationStatePublished),
 		// 			},

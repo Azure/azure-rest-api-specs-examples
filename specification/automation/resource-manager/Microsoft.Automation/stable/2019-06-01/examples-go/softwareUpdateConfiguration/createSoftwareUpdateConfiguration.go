@@ -11,7 +11,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfiguration/createSoftwareUpdateConfiguration.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfiguration/createSoftwareUpdateConfiguration.json
 func ExampleSoftwareUpdateConfigurationsClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -30,10 +30,10 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 						to.Ptr("Monday"),
 						to.Ptr("Thursday")},
 				},
-				ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-09T11:22:57+00:00"); return t }()),
+				ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-09T11:22:57.000Z"); return t }()),
 				Frequency:  to.Ptr(armautomation.ScheduleFrequencyHour),
 				Interval:   to.Ptr[int64](1),
-				StartTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T12:22:57+00:00"); return t }()),
+				StartTime:  to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T12:22:57.000Z"); return t }()),
 				TimeZone:   to.Ptr("America/Los_Angeles"),
 			},
 			Tasks: &armautomation.SoftwareUpdateConfigurationTasks{
@@ -111,26 +111,26 @@ func ExampleSoftwareUpdateConfigurationsClient_Create() {
 	// 	ID: to.Ptr("/subscriptions/51766542-3ed7-4a72-a187-0c8ab644ddab/resourceGroups/mygroup/providers/Microsoft.Automation/automationAccounts/myaccount/softwareUpdateConfigurations/testpatch"),
 	// 	Properties: &armautomation.SoftwareUpdateConfigurationProperties{
 	// 		CreatedBy: to.Ptr("adam@contoso.com"),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.5233333+00:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.523Z"); return t}()),
 	// 		Error: &armautomation.ErrorResponse{
 	// 		},
 	// 		LastModifiedBy: to.Ptr("adam@contoso.com"),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.68+00:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.680Z"); return t}()),
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 		ScheduleInfo: &armautomation.SUCScheduleProperties{
 	// 			Description: to.Ptr(""),
 	// 			AdvancedSchedule: &armautomation.AdvancedSchedule{
 	// 			},
-	// 			CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.5233333+00:00"); return t}()),
-	// 			ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-09T11:22:00-08:00"); return t}()),
+	// 			CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.523Z"); return t}()),
+	// 			ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-09T19:22:00.000Z"); return t}()),
 	// 			ExpiryTimeOffsetMinutes: to.Ptr[float64](-480),
 	// 			Frequency: to.Ptr(armautomation.ScheduleFrequencyWeek),
 	// 			Interval: to.Ptr[int64](1),
 	// 			IsEnabled: to.Ptr(true),
-	// 			LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.5233333+00:00"); return t}()),
-	// 			NextRun: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T12:22:00-07:00"); return t}()),
+	// 			LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.523Z"); return t}()),
+	// 			NextRun: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T19:22:00.000Z"); return t}()),
 	// 			NextRunOffsetMinutes: to.Ptr[float64](-420),
-	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T12:22:00-07:00"); return t}()),
+	// 			StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T19:22:00.000Z"); return t}()),
 	// 			StartTimeOffsetMinutes: to.Ptr[float64](-420),
 	// 			TimeZone: to.Ptr("America/Los_Angeles"),
 	// 		},

@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listVariables_Next100.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listVariables_Next100.json
 func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -36,9 +36,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable9"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable9"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:01:07.38+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:01:07.380Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:01:07.38+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:01:07.380Z"); return t}()),
 		// 				Value: to.Ptr("\"server9.domain.com\""),
 		// 			},
 		// 		},
@@ -46,9 +46,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable90"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable90"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:19.147+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:19.147Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:19.147+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:19.147Z"); return t}()),
 		// 				Value: to.Ptr("\"server90.domain.com\""),
 		// 			},
 		// 		},
@@ -56,9 +56,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable91"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable91"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:20.257+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:20.257Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:20.257+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:20.257Z"); return t}()),
 		// 				Value: to.Ptr("\"server91.domain.com\""),
 		// 			},
 		// 		},
@@ -66,9 +66,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable92"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable92"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.037+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.037Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.037+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.037Z"); return t}()),
 		// 				Value: to.Ptr("\"server92.domain.com\""),
 		// 			},
 		// 		},
@@ -76,9 +76,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable93"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable93"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.803+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.803Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.803+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:21.803Z"); return t}()),
 		// 				Value: to.Ptr("\"server93.domain.com\""),
 		// 			},
 		// 		},
@@ -86,9 +86,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable94"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable94"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:22.583+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:22.583Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:22.583+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:22.583Z"); return t}()),
 		// 				Value: to.Ptr("\"server94.domain.com\""),
 		// 			},
 		// 		},
@@ -96,9 +96,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable95"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable95"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:23.333+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:23.333Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:23.333+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:23.333Z"); return t}()),
 		// 				Value: to.Ptr("\"server95.domain.com\""),
 		// 			},
 		// 		},
@@ -106,9 +106,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable96"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable96"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.163+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.163Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.163+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.163Z"); return t}()),
 		// 				Value: to.Ptr("\"server96.domain.com\""),
 		// 			},
 		// 		},
@@ -116,9 +116,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable97"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable97"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.973+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.973Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.973+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:24.973Z"); return t}()),
 		// 				Value: to.Ptr("\"server97.domain.com\""),
 		// 			},
 		// 		},
@@ -126,9 +126,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable98"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable98"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:25.757+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:25.757Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:25.757+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:25.757Z"); return t}()),
 		// 				Value: to.Ptr("\"server98.domain.com\""),
 		// 			},
 		// 		},
@@ -136,9 +136,9 @@ func ExampleVariableClient_NewListByAutomationAccountPager_listVariablesNext100(
 		// 			Name: to.Ptr("sampleVariable99"),
 		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/sampleAccount9/variables/sampleVariable99"),
 		// 			Properties: &armautomation.VariableProperties{
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:26.553+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:26.553Z"); return t}()),
 		// 				IsEncrypted: to.Ptr(false),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:26.553+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:02:26.553Z"); return t}()),
 		// 				Value: to.Ptr("\"server99.domain.com\""),
 		// 			},
 		// 	}},

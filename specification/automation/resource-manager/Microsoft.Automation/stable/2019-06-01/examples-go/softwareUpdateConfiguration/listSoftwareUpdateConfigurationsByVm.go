@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfiguration/listSoftwareUpdateConfigurationsByVm.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfiguration/listSoftwareUpdateConfigurationsByVm.json
 func ExampleSoftwareUpdateConfigurationsClient_List_listSoftwareUpdateConfigurationsTargetingASpecificAzureVirtualMachine() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -35,12 +35,12 @@ func ExampleSoftwareUpdateConfigurationsClient_List_listSoftwareUpdateConfigurat
 	// 			Name: to.Ptr("testpatch-01"),
 	// 			ID: to.Ptr("/subscriptions/1a7d4044-286c-4acb-969a-96639265bf2e/resourceGroups/Mo-Resources-WCUS/providers/Microsoft.Automation/automationAccounts/Mo-AAA-WCUS/softwareUpdateConfigurations/testpatch-01"),
 	// 			Properties: &armautomation.SoftwareUpdateConfigurationCollectionItemProperties{
-	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.5233333+00:00"); return t}()),
+	// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.523Z"); return t}()),
 	// 				Frequency: to.Ptr(armautomation.ScheduleFrequencyWeek),
-	// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.68+00:00"); return t}()),
-	// 				NextRun: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T12:22:00-07:00"); return t}()),
+	// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T18:54:50.680Z"); return t}()),
+	// 				NextRun: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T19:22:00.000Z"); return t}()),
 	// 				ProvisioningState: to.Ptr("Succeeded"),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T12:22:00-07:00"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-19T19:22:00.000Z"); return t}()),
 	// 				Tasks: &armautomation.SoftwareUpdateConfigurationTasks{
 	// 					PostTask: &armautomation.TaskProperties{
 	// 						Source: to.Ptr("GetCache"),
@@ -69,12 +69,12 @@ func ExampleSoftwareUpdateConfigurationsClient_List_listSoftwareUpdateConfigurat
 	// 				Name: to.Ptr("testpatch-02"),
 	// 				ID: to.Ptr("/subscriptions/1a7d4044-286c-4acb-969a-96639265bf2e/resourceGroups/Mo-Resources-WCUS/providers/Microsoft.Automation/automationAccounts/Mo-AAA-WCUS/softwareUpdateConfigurations/testpatch-02"),
 	// 				Properties: &armautomation.SoftwareUpdateConfigurationCollectionItemProperties{
-	// 					CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-11T21:52:02.7733333+00:00"); return t}()),
+	// 					CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-11T21:52:02.773Z"); return t}()),
 	// 					Frequency: to.Ptr(armautomation.ScheduleFrequencyHour),
-	// 					LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-11T21:52:22.88+00:00"); return t}()),
-	// 					NextRun: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-05T12:26:00-07:00"); return t}()),
+	// 					LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-08-11T21:52:22.880Z"); return t}()),
+	// 					NextRun: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-05T19:26:00.000Z"); return t}()),
 	// 					ProvisioningState: to.Ptr("Succeeded"),
-	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-05T12:26:00-07:00"); return t}()),
+	// 					StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-05T19:26:00.000Z"); return t}()),
 	// 					Tasks: &armautomation.SoftwareUpdateConfigurationTasks{
 	// 						PostTask: &armautomation.TaskProperties{
 	// 							Source: to.Ptr("GetCache"),

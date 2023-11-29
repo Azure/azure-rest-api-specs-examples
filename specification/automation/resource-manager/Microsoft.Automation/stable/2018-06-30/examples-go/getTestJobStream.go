@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/examples/getTestJobStream.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/examples/getTestJobStream.json
 func ExampleTestJobStreamsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -32,7 +32,7 @@ func ExampleTestJobStreamsClient_Get() {
 	// 		JobStreamID: to.Ptr("851b2101-686f-40e2-8a4b-5b8df08afbd1:00636535684910693884:00000000000000000001"),
 	// 		StreamText: to.Ptr(""),
 	// 		StreamType: to.Ptr(armautomation.JobStreamTypeOutput),
-	// 		Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-07T02:48:11.0693884+00:00"); return t}()),
+	// 		Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-07T02:48:11.069Z"); return t}()),
 	// 		Value: map[string]any{
 	// 		},
 	// 	},

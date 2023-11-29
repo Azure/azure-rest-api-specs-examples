@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listPagedDscNodeConfigurationsWithNoFilter.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/listPagedDscNodeConfigurationsWithNoFilter.json
 func ExampleDscNodeConfigurationClient_NewListByAutomationAccountPager_listPagedDscNodeConfigurationsByAutomationAccountWithNoFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -46,8 +46,8 @@ func ExampleDscNodeConfigurationClient_NewListByAutomationAccountPager_listPaged
 		// 				Configuration: &armautomation.DscConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SetupServer"),
 		// 				},
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
 		// 				NodeCount: to.Ptr[int64](2),
 		// 			},
 		// 		},
@@ -59,8 +59,8 @@ func ExampleDscNodeConfigurationClient_NewListByAutomationAccountPager_listPaged
 		// 				Configuration: &armautomation.DscConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SetupClient"),
 		// 				},
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
 		// 				NodeCount: to.Ptr[int64](6),
 		// 			},
 		// 		},
@@ -72,8 +72,8 @@ func ExampleDscNodeConfigurationClient_NewListByAutomationAccountPager_listPaged
 		// 				Configuration: &armautomation.DscConfigurationAssociationProperty{
 		// 					Name: to.Ptr("webServer"),
 		// 				},
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
 		// 				NodeCount: to.Ptr[int64](5),
 		// 			},
 		// 		},
@@ -85,8 +85,8 @@ func ExampleDscNodeConfigurationClient_NewListByAutomationAccountPager_listPaged
 		// 				Configuration: &armautomation.DscConfigurationAssociationProperty{
 		// 					Name: to.Ptr("SqlServer"),
 		// 				},
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.8901968+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:17:06.890Z"); return t}()),
 		// 				NodeCount: to.Ptr[int64](1),
 		// 			},
 		// 	}},

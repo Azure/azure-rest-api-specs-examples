@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/sourceControl/getAllSourceControls.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/sourceControl/getAllSourceControls.json
 func ExampleSourceControlClient_NewListByAutomationAccountPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -39,9 +39,9 @@ func ExampleSourceControlClient_NewListByAutomationAccountPager() {
 		// 				Description: to.Ptr("my description"),
 		// 				AutoSync: to.Ptr(true),
 		// 				Branch: to.Ptr("master"),
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				FolderPath: to.Ptr("/sampleFolder/sampleFolder2"),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				PublishRunbook: to.Ptr(true),
 		// 				RepoURL: to.Ptr("https://github.com/SampleUserRepro/PowerShell-1"),
 		// 				SourceType: to.Ptr(armautomation.SourceTypeGitHub),
@@ -54,9 +54,9 @@ func ExampleSourceControlClient_NewListByAutomationAccountPager() {
 		// 				Description: to.Ptr("my description"),
 		// 				AutoSync: to.Ptr(true),
 		// 				Branch: to.Ptr("master"),
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				FolderPath: to.Ptr("/sampleFolder/sampleFolder2"),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				PublishRunbook: to.Ptr(true),
 		// 				RepoURL: to.Ptr("https://github.com/SampleUserRepro/PowerShell-2"),
 		// 				SourceType: to.Ptr(armautomation.SourceTypeGitHub),
@@ -69,9 +69,9 @@ func ExampleSourceControlClient_NewListByAutomationAccountPager() {
 		// 				Description: to.Ptr("my description"),
 		// 				AutoSync: to.Ptr(true),
 		// 				Branch: to.Ptr("master"),
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				FolderPath: to.Ptr("/sampleFolder/sampleFolder2"),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				PublishRunbook: to.Ptr(true),
 		// 				RepoURL: to.Ptr("https://github.com/SampleUserRepro/PowerShell-3"),
 		// 				SourceType: to.Ptr(armautomation.SourceTypeGitHub),
@@ -84,9 +84,9 @@ func ExampleSourceControlClient_NewListByAutomationAccountPager() {
 		// 				Description: to.Ptr("my description"),
 		// 				AutoSync: to.Ptr(true),
 		// 				Branch: to.Ptr("master"),
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				FolderPath: to.Ptr("/sampleFolder/sampleFolder2"),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				PublishRunbook: to.Ptr(true),
 		// 				RepoURL: to.Ptr("https://github.com/SampleUserRepro/PowerShell-4"),
 		// 				SourceType: to.Ptr(armautomation.SourceTypeGitHub),
@@ -99,9 +99,9 @@ func ExampleSourceControlClient_NewListByAutomationAccountPager() {
 		// 				Description: to.Ptr("my description"),
 		// 				AutoSync: to.Ptr(true),
 		// 				Branch: to.Ptr("master"),
-		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				FolderPath: to.Ptr("/sampleFolder/sampleFolder2"),
-		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937+00:00"); return t}()),
+		// 				LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T22:59:00.937Z"); return t}()),
 		// 				PublishRunbook: to.Ptr(true),
 		// 				RepoURL: to.Ptr("https://github.com/SampleUserRepro/PowerShell-5"),
 		// 				SourceType: to.Ptr(armautomation.SourceTypeGitHub),

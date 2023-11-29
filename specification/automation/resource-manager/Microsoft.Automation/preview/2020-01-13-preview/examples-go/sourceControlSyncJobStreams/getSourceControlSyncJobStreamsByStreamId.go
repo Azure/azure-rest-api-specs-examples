@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/sourceControlSyncJobStreams/getSourceControlSyncJobStreamsByStreamId.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/preview/2020-01-13-preview/examples/sourceControlSyncJobStreams/getSourceControlSyncJobStreamsByStreamId.json
 func ExampleSourceControlSyncJobStreamsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -33,7 +33,7 @@ func ExampleSourceControlSyncJobStreamsClient_Get() {
 	// 		StreamText: to.Ptr("New-AzureAffinityGroup : Cannot validate argument on parameter 'Location'. The argument is null or empty. Provide an \r\nargument that is not null or empty, and then try the command again.\r\nAt DatabaseExportImport1fba401e-0:69 char:69\r\n+ \r\n + CategoryInfo : InvalidData: . . . ."),
 	// 		StreamType: to.Ptr(armautomation.StreamTypeError),
 	// 		Summary: to.Ptr(""),
-	// 		Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:14:26.903+00:00"); return t}()),
+	// 		Time: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-28T23:14:26.903Z"); return t}()),
 	// 		Value: map[string]any{
 	// 			"Exception": map[string]any{
 	// 				"Message": "System.Management.Automation.ParameterBindingValidationException: Cannot validate argument on parameter 'Location'. The argument is null or empty . . .} }",

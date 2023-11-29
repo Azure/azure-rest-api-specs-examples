@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfigurationRun/getSoftwareUpdateConfigurationRunById.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfigurationRun/getSoftwareUpdateConfigurationRunById.json
 func ExampleSoftwareUpdateConfigurationRunsClient_GetByID() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -32,16 +32,16 @@ func ExampleSoftwareUpdateConfigurationRunsClient_GetByID() {
 	// 	Properties: &armautomation.SoftwareUpdateConfigurationRunProperties{
 	// 		ComputerCount: to.Ptr[int32](1),
 	// 		ConfiguredDuration: to.Ptr("PT2H"),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:30:36.2401233+00:00"); return t}()),
-	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:30:42.8466667+00:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:30:36.240Z"); return t}()),
+	// 		EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:30:42.846Z"); return t}()),
 	// 		FailedCount: to.Ptr[int32](0),
 	// 		LastModifiedBy: to.Ptr(""),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:31:39.3966667+00:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:31:39.396Z"); return t}()),
 	// 		OSType: to.Ptr("Windows"),
 	// 		SoftwareUpdateConfiguration: &armautomation.UpdateConfigurationNavigation{
 	// 			Name: to.Ptr("mypatch"),
 	// 		},
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:30:36.2401233+00:00"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-10-23T02:30:36.240Z"); return t}()),
 	// 		Status: to.Ptr("Succeeded"),
 	// 		Tasks: &armautomation.SoftwareUpdateConfigurationRunTasks{
 	// 			PreTask: &armautomation.SoftwareUpdateConfigurationRunTaskProperties{

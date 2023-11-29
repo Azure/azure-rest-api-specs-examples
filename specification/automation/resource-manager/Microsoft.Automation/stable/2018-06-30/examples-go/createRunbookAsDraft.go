@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/examples/createRunbookAsDraft.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2018-06-30/examples/createRunbookAsDraft.json
 func ExampleRunbookClient_CreateOrUpdate_createRunbookAsDraft() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -53,9 +53,9 @@ func ExampleRunbookClient_CreateOrUpdate_createRunbookAsDraft() {
 	// 	Etag: to.Ptr("\"636263318866000000\""),
 	// 	Properties: &armautomation.RunbookProperties{
 	// 		Description: to.Ptr("Description of the Runbook"),
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-09T03:25:59.097+00:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-09T03:25:59.097Z"); return t}()),
 	// 		JobCount: to.Ptr[int32](0),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-09T03:25:59.097+00:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-02-09T03:25:59.097Z"); return t}()),
 	// 		LogActivityTrace: to.Ptr[int32](0),
 	// 		LogProgress: to.Ptr(false),
 	// 		LogVerbose: to.Ptr(false),

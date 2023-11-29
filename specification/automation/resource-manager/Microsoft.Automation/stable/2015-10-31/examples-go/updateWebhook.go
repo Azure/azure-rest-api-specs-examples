@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/automation/armautomation"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/main/specification/automation/resource-manager/Microsoft.Automation/stable/2015-10-31/examples/updateWebhook.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/432872fac1d0f8edcae98a0e8504afc0ee302710/specification/automation/resource-manager/Microsoft.Automation/stable/2015-10-31/examples/updateWebhook.json
 func ExampleWebhookClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -37,11 +37,11 @@ func ExampleWebhookClient_Update() {
 	// 	Name: to.Ptr("TestWebhook"),
 	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Automation/automationAccounts/myAutomationAccount33/webhooks/TestWebhook"),
 	// 	Properties: &armautomation.WebhookProperties{
-	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-30T21:52:01.272378+00:00"); return t}()),
-	// 		ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-30T23:03:14.5752078+00:00"); return t}()),
+	// 		CreationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-30T21:52:01.272Z"); return t}()),
+	// 		ExpiryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-30T23:03:14.575Z"); return t}()),
 	// 		IsEnabled: to.Ptr(false),
 	// 		LastModifiedBy: to.Ptr(""),
-	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-30T23:03:14.9069441+00:00"); return t}()),
+	// 		LastModifiedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-30T23:03:14.906Z"); return t}()),
 	// 		Runbook: &armautomation.RunbookAssociationProperty{
 	// 			Name: to.Ptr("TestRunbook"),
 	// 		},

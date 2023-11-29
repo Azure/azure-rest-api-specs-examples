@@ -51,10 +51,10 @@ func ExampleSAPVirtualInstancesClient_BeginCreate_registerExistingSapSystemAsVir
 	// 	Type: to.Ptr("microsoft.workloads/sapvirtualinstances"),
 	// 	ID: to.Ptr("/subscriptions/8e17e36c-42e9-4cd5-a078-7b44883414e0/resourceGroups/test-rg/providers/Microsoft.Workloads/sapVirtualInstances/Q20"),
 	// 	SystemData: &armworkloads.SystemData{
-	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-27T08:22:52.3318907Z"); return t}()),
+	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-27T08:22:52.331Z"); return t}()),
 	// 		CreatedBy: to.Ptr("abc@microsoft.com"),
 	// 		CreatedByType: to.Ptr(armworkloads.CreatedByTypeUser),
-	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-27T11:44:17.9310503Z"); return t}()),
+	// 		LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-07-27T11:44:17.931Z"); return t}()),
 	// 		LastModifiedBy: to.Ptr("abc@microsoft.com"),
 	// 		LastModifiedByType: to.Ptr(armworkloads.CreatedByTypeUser),
 	// 	},

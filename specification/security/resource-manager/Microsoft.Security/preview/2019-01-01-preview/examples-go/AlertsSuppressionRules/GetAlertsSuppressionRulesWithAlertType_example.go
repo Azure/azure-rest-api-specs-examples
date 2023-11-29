@@ -39,8 +39,8 @@ func ExampleAlertsSuppressionRulesClient_NewListPager_getSuppressionAlertRuleFor
 		// 			Properties: &armsecurity.AlertsSuppressionRuleProperties{
 		// 				AlertType: to.Ptr("IpAnomaly"),
 		// 				Comment: to.Ptr("Test VM"),
-		// 				ExpirationDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T19:50:47.083633Z"); return t}()),
-		// 				LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-31T19:50:47.083633Z"); return t}()),
+		// 				ExpirationDateUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-12-01T19:50:47.083Z"); return t}()),
+		// 				LastModifiedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-31T19:50:47.083Z"); return t}()),
 		// 				Reason: to.Ptr("FalsePositive"),
 		// 				State: to.Ptr(armsecurity.RuleStateEnabled),
 		// 				SuppressionAlertsScope: &armsecurity.SuppressionAlertsScope{

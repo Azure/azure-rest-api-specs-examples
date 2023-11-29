@@ -57,7 +57,7 @@ func ExampleSubAssessmentsClient_NewListPager() {
 		// 					Code: to.Ptr(armsecurity.SubAssessmentStatusCodeHealthy),
 		// 					Severity: to.Ptr(armsecurity.SeverityHigh),
 		// 				},
-		// 				TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-23T12:20:08.7644808Z"); return t}()),
+		// 				TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-23T12:20:08.764Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

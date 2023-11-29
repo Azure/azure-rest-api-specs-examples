@@ -43,7 +43,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 				AlertURI: to.Ptr("https://portal.azure.com/#blade/Microsoft_Azure_Security/AlertBlade/alertId/2518298467986649999_4d25bfef-2d77-4a08-adc0-3e35715cc92a/subscriptionId/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroup/myRg1/referencedFrom/alertDeepLink/location/westeurope"),
 		// 				CompromisedEntity: to.Ptr("vm1"),
 		// 				CorrelationKey: to.Ptr("kso0LFWxzCll5tqrk5hmrBJ+MY1BX806W6q6+0s9Lk="),
-		// 				EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-22T00:00:00.0000000Z"); return t}()),
+		// 				EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-22T00:00:00.000Z"); return t}()),
 		// 				Entities: []*armsecurity.AlertEntity{
 		// 					{
 		// 						AdditionalProperties: map[string]any{
@@ -71,7 +71,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 				},
 		// 				Intent: to.Ptr(armsecurity.IntentExecution),
 		// 				IsIncident: to.Ptr(true),
-		// 				ProcessingEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-23T13:47:58.9205584Z"); return t}()),
+		// 				ProcessingEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-23T13:47:58.920Z"); return t}()),
 		// 				ProductComponentName: to.Ptr("testName"),
 		// 				ProductName: to.Ptr("Azure Security Center"),
 		// 				RemediationSteps: []*string{
@@ -89,7 +89,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 							WorkspaceSubscriptionID: to.Ptr("20ff7fc3-e762-44dd-bd96-b71116dcdc23"),
 		// 					}},
 		// 					Severity: to.Ptr(armsecurity.AlertSeverityHigh),
-		// 					StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-22T00:00:00.0000000Z"); return t}()),
+		// 					StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-22T00:00:00.000Z"); return t}()),
 		// 					Status: to.Ptr(armsecurity.AlertStatusActive),
 		// 					SubTechniques: []*string{
 		// 						to.Ptr("T1059.001"),
@@ -136,7 +136,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 							to.Ptr("T1059"),
 		// 							to.Ptr("T1053"),
 		// 							to.Ptr("T1072")},
-		// 							TimeGeneratedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-23T13:47:58.0000000Z"); return t}()),
+		// 							TimeGeneratedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-23T13:47:58.000Z"); return t}()),
 		// 							VendorName: to.Ptr("Microsoft"),
 		// 							Version: to.Ptr("2022-01-01"),
 		// 						},
@@ -152,7 +152,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 							AlertURI: to.Ptr("https://portal.azure.com/#blade/Microsoft_Azure_Security/AlertBlade/alertId/2518298467986649999_4d25bfef-2d77-4a08-adc0-3e35715cc92a/subscriptionId/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroup/myRg1/referencedFrom/alertDeepLink/location/westeurope"),
 		// 							CompromisedEntity: to.Ptr("vm2"),
 		// 							CorrelationKey: to.Ptr("4hno6LF0xzCl5tqrk4nrBW+MY1BX816W6q6+0srk4"),
-		// 							EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:45.0045913Z"); return t}()),
+		// 							EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:45.004Z"); return t}()),
 		// 							Entities: []*armsecurity.AlertEntity{
 		// 								{
 		// 									AdditionalProperties: map[string]any{
@@ -225,7 +225,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 							},
 		// 							Intent: to.Ptr(armsecurity.IntentExecution),
 		// 							IsIncident: to.Ptr(true),
-		// 							ProcessingEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:48.9810457Z"); return t}()),
+		// 							ProcessingEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:48.981Z"); return t}()),
 		// 							ProductComponentName: to.Ptr("testName2"),
 		// 							ProductName: to.Ptr("Azure Security Center"),
 		// 							RemediationSteps: []*string{
@@ -248,7 +248,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 										WorkspaceSubscriptionID: to.Ptr("20ff7fc3-e762-44dd-bd96-b71116dcdc23"),
 		// 								}},
 		// 								Severity: to.Ptr(armsecurity.AlertSeverityMedium),
-		// 								StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:45.0045913Z"); return t}()),
+		// 								StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:45.004Z"); return t}()),
 		// 								Status: to.Ptr(armsecurity.AlertStatusActive),
 		// 								SubTechniques: []*string{
 		// 									to.Ptr("T1059.001"),
@@ -325,7 +325,7 @@ func ExampleAlertsClient_NewListSubscriptionLevelByRegionPager() {
 		// 										to.Ptr("T1059"),
 		// 										to.Ptr("T1053"),
 		// 										to.Ptr("T1072")},
-		// 										TimeGeneratedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:48.3810457Z"); return t}()),
+		// 										TimeGeneratedUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-05-07T13:51:48.381Z"); return t}()),
 		// 										VendorName: to.Ptr("Microsoft"),
 		// 										Version: to.Ptr("2022-01-01"),
 		// 									},

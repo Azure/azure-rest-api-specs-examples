@@ -31,7 +31,7 @@ func ExamplePricingsClient_Get_getPricingsOnSubscriptionVirtualMachinesPlan() {
 	// 	Type: to.Ptr("Microsoft.Security/pricings"),
 	// 	ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/providers/Microsoft.Security/pricings/VirtualMachines"),
 	// 	Properties: &armsecurity.PricingProperties{
-	// 		EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.1921106Z"); return t}()),
+	// 		EnablementTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2023-03-01T12:42:42.192Z"); return t}()),
 	// 		FreeTrialRemainingTime: to.Ptr("PT0S"),
 	// 		PricingTier: to.Ptr(armsecurity.PricingTierStandard),
 	// 		SubPlan: to.Ptr("P2"),

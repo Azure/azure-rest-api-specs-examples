@@ -44,14 +44,14 @@ func ExampleJitNetworkAccessPoliciesClient_NewListByRegionPager() {
 		// 					{
 		// 						Justification: to.Ptr("testing a new version of the product"),
 		// 						Requestor: to.Ptr("barbara@contoso.com"),
-		// 						StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-17T08:06:45.5691611Z"); return t}()),
+		// 						StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-17T08:06:45.569Z"); return t}()),
 		// 						VirtualMachines: []*armsecurity.JitNetworkAccessRequestVirtualMachine{
 		// 							{
 		// 								ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg1/providers/Microsoft.Compute/virtualMachines/vm1"),
 		// 								Ports: []*armsecurity.JitNetworkAccessRequestPort{
 		// 									{
 		// 										AllowedSourceAddressPrefix: to.Ptr("192.127.0.2"),
-		// 										EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-17T09:06:45.5691611Z"); return t}()),
+		// 										EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-05-17T09:06:45.569Z"); return t}()),
 		// 										Number: to.Ptr[int32](3389),
 		// 										Status: to.Ptr(armsecurity.StatusInitiated),
 		// 										StatusReason: to.Ptr(armsecurity.StatusReasonUserRequested),

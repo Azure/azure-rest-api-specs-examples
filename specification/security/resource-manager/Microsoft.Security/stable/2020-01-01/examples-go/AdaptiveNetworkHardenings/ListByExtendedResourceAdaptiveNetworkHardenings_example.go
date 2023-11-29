@@ -70,7 +70,7 @@ func ExampleAdaptiveNetworkHardeningsClient_NewListByExtendedResourcePager() {
 		// 										Protocols: []*armsecurity.TransportProtocol{
 		// 											to.Ptr(armsecurity.TransportProtocolTCP)},
 		// 									}},
-		// 									RulesCalculationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T00:00:00.0000000Z"); return t}()),
+		// 									RulesCalculationTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-08-15T00:00:00.000Z"); return t}()),
 		// 								},
 		// 						}},
 		// 					}

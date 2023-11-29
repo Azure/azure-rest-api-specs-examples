@@ -26,11 +26,23 @@ func ExampleExternalSecuritySolutionsClient_Get() {
 	// You could use response here. We use blank identifier for just demo purposes.
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-	// res.ExternalSecuritySolution = armsecurity.ExternalSecuritySolution{
-	// 	Kind: to.Ptr(armsecurity.ExternalSecuritySolutionKindAAD),
-	// 	Location: to.Ptr("eastus"),
-	// 	Name: to.Ptr("aad_defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus"),
-	// 	Type: to.Ptr("Microsoft.Security/locations/externalSecuritySolutions"),
-	// 	ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/defaultresourcegroup-eus/providers/Microsoft.Security/locations/centralus/externalSecuritySolutions/aad_defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus"),
-	// }
+	// res = armsecurity.ExternalSecuritySolutionsClientGetResponse{
+	// 	                            ExternalSecuritySolutionClassification: &armsecurity.AADExternalSecuritySolution{
+	// 		Location: to.Ptr("eastus"),
+	// 		Name: to.Ptr("aad_defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus"),
+	// 		Type: to.Ptr("Microsoft.Security/locations/externalSecuritySolutions"),
+	// 		ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/defaultresourcegroup-eus/providers/Microsoft.Security/locations/centralus/externalSecuritySolutions/aad_defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus"),
+	// 		Kind: to.Ptr(armsecurity.ExternalSecuritySolutionKindAAD),
+	// 		Properties: &armsecurity.AADSolutionProperties{
+	// 			DeviceType: to.Ptr("Azure Active Directory Identity Protection"),
+	// 			DeviceVendor: to.Ptr("Microsoft"),
+	// 			Workspace: &armsecurity.ConnectedWorkspace{
+	// 				ID: to.Ptr("/subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationalInsights/workspaces/defaultworkspace-20ff7fc3-e762-44dd-bd96-b71116dcdc23-eus"),
+	// 			},
+	// 			AdditionalProperties: map[string]any{
+	// 				"connectivityState": "Discovered",
+	// 			},
+	// 		},
+	// 	},
+	// 	                        }
 }

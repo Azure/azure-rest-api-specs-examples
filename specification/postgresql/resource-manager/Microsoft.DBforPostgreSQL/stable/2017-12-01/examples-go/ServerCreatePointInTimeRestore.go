@@ -59,7 +59,7 @@ func ExampleServersClient_BeginCreate_createADatabaseAsAPointInTimeRestore() {
 	// 	},
 	// 	Properties: &armpostgresql.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-14T21:08:24.637+00:00"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-12-14T21:08:24.637Z"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("targetserver.postgres.database.azure.com"),
 	// 		SSLEnforcement: to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),
 	// 		StorageProfile: &armpostgresql.StorageProfile{

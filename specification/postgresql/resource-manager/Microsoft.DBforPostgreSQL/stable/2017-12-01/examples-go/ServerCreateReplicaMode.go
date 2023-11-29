@@ -50,7 +50,7 @@ func ExampleServersClient_BeginCreate_createAReplicaServer() {
 	// 	Location: to.Ptr("westcentralus"),
 	// 	Properties: &armpostgresql.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("postgres"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-20T00:17:56.677+00:00"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-06-20T00:17:56.677Z"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("testserver-replica1.postgres.database.azure.com"),
 	// 		MasterServerID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TestGroup_WestCentralUS/providers/Microsoft.DBforPostgreSQL/servers/testserver-master"),
 	// 		ReplicaCapacity: to.Ptr[int32](0),

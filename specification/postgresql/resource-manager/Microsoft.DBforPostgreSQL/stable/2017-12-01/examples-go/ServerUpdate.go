@@ -47,7 +47,7 @@ func ExampleServersClient_BeginUpdate() {
 	// 	},
 	// 	Properties: &armpostgresql.ServerProperties{
 	// 		AdministratorLogin: to.Ptr("cloudsa"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T21:08:24.637+00:00"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-03-14T21:08:24.637Z"); return t}()),
 	// 		FullyQualifiedDomainName: to.Ptr("pgtestsvc4.postgres.database.azure.com"),
 	// 		MinimalTLSVersion: to.Ptr(armpostgresql.MinimalTLSVersionEnumTLS12),
 	// 		SSLEnforcement: to.Ptr(armpostgresql.SSLEnforcementEnumEnabled),

@@ -37,7 +37,7 @@ func ExampleChildAvailabilityStatusesClient_GetByResource() {
 	// 	Properties: &armresourcehealth.AvailabilityStatusProperties{
 	// 		AvailabilityState: to.Ptr(armresourcehealth.AvailabilityStateValuesAvailable),
 	// 		DetailedStatus: to.Ptr(""),
-	// 		OccurredTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-30T23:37:44Z"); return t}()),
+	// 		OccurredTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-11-30T23:37:44.000Z"); return t}()),
 	// 		ReasonChronicity: to.Ptr(armresourcehealth.ReasonChronicityTypesPersistent),
 	// 		ReasonType: to.Ptr(""),
 	// 		RecommendedActions: []*armresourcehealth.RecommendedAction{
@@ -51,7 +51,7 @@ func ExampleChildAvailabilityStatusesClient_GetByResource() {
 	// 				ActionURL: to.Ptr("<#SupportCase>"),
 	// 				ActionURLText: to.Ptr("contact support"),
 	// 		}},
-	// 		ReportedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-04T01:19:11.955255Z"); return t}()),
+	// 		ReportedTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2018-12-04T01:19:11.955Z"); return t}()),
 	// 		Summary: to.Ptr("There aren't any known Azure platform problems affecting this virtual machine"),
 	// 	},
 	// }

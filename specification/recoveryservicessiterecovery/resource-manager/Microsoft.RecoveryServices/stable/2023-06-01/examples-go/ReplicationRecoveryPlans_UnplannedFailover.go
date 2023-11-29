@@ -53,7 +53,7 @@ func ExampleReplicationRecoveryPlansClient_BeginUnplannedFailover() {
 	// 			CurrentScenario: &armrecoveryservicessiterecovery.CurrentScenarioDetails{
 	// 				JobID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationJobs/60b84068-9adb-4867-a49d-88be40bff14b"),
 	// 				ScenarioName: to.Ptr("UnplannedFailover"),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T10:03:03.2206946Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T10:03:03.220Z"); return t}()),
 	// 			},
 	// 			CurrentScenarioStatus: to.Ptr("Succeeded"),
 	// 			CurrentScenarioStatusDescription: to.Ptr("Completed"),
@@ -102,8 +102,8 @@ func ExampleReplicationRecoveryPlansClient_BeginUnplannedFailover() {
 	// 					StartGroupActions: []*armrecoveryservicessiterecovery.RecoveryPlanAction{
 	// 					},
 	// 			}},
-	// 			LastPlannedFailoverTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T08:58:35.9062813Z"); return t}()),
-	// 			LastTestFailoverTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T07:00:27.8354747Z"); return t}()),
+	// 			LastPlannedFailoverTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T08:58:35.906Z"); return t}()),
+	// 			LastTestFailoverTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T07:00:27.835Z"); return t}()),
 	// 			PrimaryFabricFriendlyName: to.Ptr("cloud1"),
 	// 			PrimaryFabricID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/cloud1"),
 	// 			RecoveryFabricFriendlyName: to.Ptr("Microsoft Azure"),

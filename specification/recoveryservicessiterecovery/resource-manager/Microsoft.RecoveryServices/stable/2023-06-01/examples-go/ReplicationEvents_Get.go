@@ -45,7 +45,7 @@ func ExampleReplicationEventsClient_Get() {
 	// 			InstanceType: to.Ptr("HyperVReplicaAzure"),
 	// 		},
 	// 		Severity: to.Ptr("OK"),
-	// 		TimeOfOccurrence: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T14:28:28.5071531Z"); return t}()),
+	// 		TimeOfOccurrence: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T14:28:28.507Z"); return t}()),
 	// 	},
 	// }
 }

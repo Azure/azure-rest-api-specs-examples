@@ -57,7 +57,7 @@ func ExampleReplicationProtectedItemsClient_BeginAddDisks() {
 	// 			CurrentScenario: &armrecoveryservicessiterecovery.CurrentScenarioDetails{
 	// 				JobID: to.Ptr("/Subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationJobs/None"),
 	// 				ScenarioName: to.Ptr("None"),
-	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1752-12-31T19:31:01Z"); return t}()),
+	// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1752-12-31T19:31:01.000Z"); return t}()),
 	// 			},
 	// 			FailoverHealth: to.Ptr("Normal"),
 	// 			FriendlyName: to.Ptr("f8491e4f-817a-40dd-a90c-af773978c75b"),

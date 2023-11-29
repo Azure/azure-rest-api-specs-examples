@@ -61,7 +61,7 @@ func ExampleReplicationJobsClient_BeginCancel() {
 	// 		},
 	// 		FriendlyName: to.Ptr("Planned failover"),
 	// 		ScenarioName: to.Ptr("PlannedFailover"),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-03T06:16:06.3235186Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-03T06:16:06.323Z"); return t}()),
 	// 		State: to.Ptr("Cancelling"),
 	// 		StateDescription: to.Ptr("Cancelling"),
 	// 		TargetInstanceType: to.Ptr("ProtectionEntity"),

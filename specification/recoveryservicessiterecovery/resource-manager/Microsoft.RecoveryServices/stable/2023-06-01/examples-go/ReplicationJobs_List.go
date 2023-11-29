@@ -38,12 +38,12 @@ func ExampleReplicationJobsClient_NewListPager() {
 		// 			Properties: &armrecoveryservicessiterecovery.JobProperties{
 		// 				AllowedActions: []*string{
 		// 				},
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T12:46:11Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T12:46:11.000Z"); return t}()),
 		// 				Errors: []*armrecoveryservicessiterecovery.JobErrorDetails{
 		// 				},
 		// 				FriendlyName: to.Ptr("Create replication policy"),
 		// 				ScenarioName: to.Ptr("AddProtectionProfile"),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T12:46:04.641851Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-04-27T12:46:04.641Z"); return t}()),
 		// 				State: to.Ptr("Succeeded"),
 		// 				StateDescription: to.Ptr("Completed"),
 		// 				TargetInstanceType: to.Ptr("ProtectionProfile"),
@@ -59,12 +59,12 @@ func ExampleReplicationJobsClient_NewListPager() {
 		// 			Properties: &armrecoveryservicessiterecovery.JobProperties{
 		// 				AllowedActions: []*string{
 		// 				},
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T14:07:21Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T14:07:21.000Z"); return t}()),
 		// 				Errors: []*armrecoveryservicessiterecovery.JobErrorDetails{
 		// 				},
 		// 				FriendlyName: to.Ptr("Register the Azure Site Recovery Provider"),
 		// 				ScenarioName: to.Ptr("RegisterDra"),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T14:07:19.2784338Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T14:07:19.278Z"); return t}()),
 		// 				State: to.Ptr("Succeeded"),
 		// 				StateDescription: to.Ptr("Completed"),
 		// 				TargetInstanceType: to.Ptr("Server"),
@@ -80,12 +80,12 @@ func ExampleReplicationJobsClient_NewListPager() {
 		// 			Properties: &armrecoveryservicessiterecovery.JobProperties{
 		// 				AllowedActions: []*string{
 		// 				},
-		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T05:56:16Z"); return t}()),
+		// 				EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T05:56:16.000Z"); return t}()),
 		// 				Errors: []*armrecoveryservicessiterecovery.JobErrorDetails{
 		// 				},
 		// 				FriendlyName: to.Ptr("Create a site"),
 		// 				ScenarioName: to.Ptr("CreateSite"),
-		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T05:56:14.569095Z"); return t}()),
+		// 				StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-02T05:56:14.569Z"); return t}()),
 		// 				State: to.Ptr("Succeeded"),
 		// 				StateDescription: to.Ptr("Completed"),
 		// 				TargetInstanceType: to.Ptr("Server"),

@@ -37,7 +37,7 @@ func ExampleRestorableDroppedDatabasesClient_Get_getsARestorableDroppedDatabase(
 	// 		BackupStorageRedundancy: to.Ptr(armsql.BackupStorageRedundancyGeo),
 	// 		CreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-07T04:41:33.937Z"); return t}()),
 	// 		DatabaseName: to.Ptr("testdb"),
-	// 		DeletionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-27T02:49:47.69Z"); return t}()),
+	// 		DeletionDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-27T02:49:47.690Z"); return t}()),
 	// 		MaxSizeBytes: to.Ptr[int64](268435456000),
 	// 	},
 	// 	SKU: &armsql.SKU{

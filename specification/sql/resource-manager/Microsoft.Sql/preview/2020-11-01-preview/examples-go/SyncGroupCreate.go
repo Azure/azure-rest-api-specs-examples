@@ -47,7 +47,7 @@ func ExampleSyncGroupsClient_BeginCreateOrUpdate_createASyncGroup() {
 	// 		ConflictResolutionPolicy: to.Ptr(armsql.SyncConflictResolutionPolicyHubWin),
 	// 		HubDatabaseUserName: to.Ptr("hubUser"),
 	// 		Interval: to.Ptr[int32](-1),
-	// 		LastSyncTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "0001-01-01T08:00:00Z"); return t}()),
+	// 		LastSyncTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "1-01-01T08:00:00.000Z"); return t}()),
 	// 		PrivateEndpointName: to.Ptr("PE_67FDBBD6-B2D8-4014-9CC6-C68ABBCFD481_syncgroupcrud-8475"),
 	// 		SyncDatabaseID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/syncgroupcrud-3521/providers/Microsoft.Sql/servers/syncgroupcrud-8475/databases/syncgroupcrud-4328"),
 	// 		SyncState: to.Ptr(armsql.SyncGroupStateNotReady),

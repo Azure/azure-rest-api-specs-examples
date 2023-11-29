@@ -38,7 +38,7 @@ func ExampleRestorePointsClient_NewListByDatabasePager_listDatabaseRestorePoints
 		// 			ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/sqlcrudtest-6730/providers/Microsoft.Sql/servers/sqlcrudtest-9007/databases/3481/restorepoints/ContinuousRestorePoint"),
 		// 			Location: to.Ptr("West US"),
 		// 			Properties: &armsql.RestorePointProperties{
-		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-12T00:00:00Z"); return t}()),
+		// 				EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-06-12T00:00:00.000Z"); return t}()),
 		// 				RestorePointType: to.Ptr(armsql.RestorePointTypeCONTINUOUS),
 		// 			},
 		// 	}},

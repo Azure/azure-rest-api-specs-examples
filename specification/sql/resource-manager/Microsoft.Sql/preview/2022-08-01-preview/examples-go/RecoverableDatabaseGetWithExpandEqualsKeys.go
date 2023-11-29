@@ -41,7 +41,7 @@ func ExampleRecoverableDatabasesClient_Get_getsARecoverableDatabaseWithExpandEqu
 	// 			"https://your-key-vault-name.vault.azure.net/yourKey2/yourKey2Version": &armsql.DatabaseKey{
 	// 			},
 	// 		},
-	// 		LastAvailableBackupDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T01:06:29.78Z"); return t}()),
+	// 		LastAvailableBackupDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-05-26T01:06:29.780Z"); return t}()),
 	// 		ServiceLevelObjective: to.Ptr("Basic"),
 	// 	},
 	// }

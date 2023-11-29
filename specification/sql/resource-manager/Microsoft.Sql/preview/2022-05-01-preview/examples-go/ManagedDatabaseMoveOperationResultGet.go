@@ -38,7 +38,7 @@ func ExampleManagedDatabaseMoveOperationsClient_Get() {
 	// 		SourceDatabaseName: to.Ptr("db1"),
 	// 		SourceManagedInstanceID: to.Ptr("subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/rg1/providers/Microsoft.Sql/managedInstances/mi1"),
 	// 		SourceManagedInstanceName: to.Ptr("mi1"),
-	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-24T12:54:29.72Z"); return t}()),
+	// 		StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-05-24T12:54:29.720Z"); return t}()),
 	// 		State: to.Ptr(armsql.ManagementOperationStateInProgress),
 	// 		TargetDatabaseName: to.Ptr("db1"),
 	// 		TargetManagedInstanceID: to.Ptr("subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/rg2/providers/Microsoft.Sql/managedInstances/mi2"),

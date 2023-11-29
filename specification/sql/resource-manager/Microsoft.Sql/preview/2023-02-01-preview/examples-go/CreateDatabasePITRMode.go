@@ -59,7 +59,7 @@ func ExampleDatabasesClient_BeginCreateOrUpdate_createsADatabaseFromPointInTimeR
 	// 		},
 	// 		DatabaseID: to.Ptr("2463ef48-53e2-4c26-9781-2d7138080bfd"),
 	// 		DefaultSecondaryLocation: to.Ptr("SoutheastAsia"),
-	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-23T20:47:37Z"); return t}()),
+	// 		EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-10-23T20:47:37.000Z"); return t}()),
 	// 		IsInfraEncryptionEnabled: to.Ptr(false),
 	// 		IsLedgerOn: to.Ptr(false),
 	// 		MaxSizeBytes: to.Ptr[int64](268435456000),

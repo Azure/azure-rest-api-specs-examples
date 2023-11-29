@@ -53,18 +53,18 @@ func ExampleDatabaseRecommendedActionsClient_Get() {
 	// 		IsArchivedAction: to.Ptr(false),
 	// 		IsExecutableAction: to.Ptr(true),
 	// 		IsRevertableAction: to.Ptr(true),
-	// 		LastRefresh: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04Z"); return t}()),
+	// 		LastRefresh: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04.000Z"); return t}()),
 	// 		ObservedImpact: []*armsql.RecommendedActionImpactRecord{
 	// 		},
 	// 		RecommendationReason: to.Ptr(""),
 	// 		Score: to.Ptr[int32](1),
 	// 		State: &armsql.RecommendedActionStateInfo{
 	// 			CurrentValue: to.Ptr(armsql.RecommendedActionCurrentStateActive),
-	// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:05Z"); return t}()),
+	// 			LastModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:05.000Z"); return t}()),
 	// 		},
 	// 		TimeSeries: []*armsql.RecommendedActionMetricInfo{
 	// 		},
-	// 		ValidSince: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04Z"); return t}()),
+	// 		ValidSince: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-01T14:38:04.000Z"); return t}()),
 	// 		Details: map[string]any{
 	// 			"schema": "[CRM]",
 	// 			"includedColumns": "[Hour], [System], [LastChanged]",

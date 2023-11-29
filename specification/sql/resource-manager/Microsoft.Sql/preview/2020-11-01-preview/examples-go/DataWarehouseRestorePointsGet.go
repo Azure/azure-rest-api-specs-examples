@@ -32,7 +32,7 @@ func ExampleRestorePointsClient_Get_getsADatawarehouseDatabaseRestorePoint() {
 	// 	ID: to.Ptr("/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/restorePoints/131546477590000000"),
 	// 	Location: to.Ptr("japaneast"),
 	// 	Properties: &armsql.RestorePointProperties{
-	// 		RestorePointCreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-10T08:00:00Z"); return t}()),
+	// 		RestorePointCreationDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2017-03-10T08:00:00.000Z"); return t}()),
 	// 		RestorePointLabel: to.Ptr("mylabel"),
 	// 		RestorePointType: to.Ptr(armsql.RestorePointTypeDISCRETE),
 	// 	},

@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoDatabasePrincipalAssignmentResource created on azure
-// for more information of creating KustoDatabasePrincipalAssignmentResource, please refer to the document of KustoDatabasePrincipalAssignmentResource
+// this example assumes you already have this KustoDatabaseResource created on azure
+// for more information of creating KustoDatabaseResource, please refer to the document of KustoDatabaseResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string clusterName = "kustoCluster";
 string databaseName = "Kustodatabase8";
-string principalAssignmentName = "kustoprincipal1";
-ResourceIdentifier kustoDatabasePrincipalAssignmentResourceId = KustoDatabasePrincipalAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName, principalAssignmentName);
-KustoDatabasePrincipalAssignmentResource kustoDatabasePrincipalAssignment = client.GetKustoDatabasePrincipalAssignmentResource(kustoDatabasePrincipalAssignmentResourceId);
+ResourceIdentifier kustoDatabaseResourceId = KustoDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName);
+KustoDatabaseResource kustoDatabase = client.GetKustoDatabaseResource(kustoDatabaseResourceId);
+
+// get the collection of this KustoDatabasePrincipalAssignmentResource
+KustoDatabasePrincipalAssignmentCollection collection = kustoDatabase.GetKustoDatabasePrincipalAssignments();
 
 // invoke the operation
+string principalAssignmentName = "kustoprincipal1";
 KustoDatabasePrincipalAssignmentData data = new KustoDatabasePrincipalAssignmentData()
 {
     DatabasePrincipalId = "87654321-1234-1234-1234-123456789123",
@@ -33,7 +36,7 @@ KustoDatabasePrincipalAssignmentData data = new KustoDatabasePrincipalAssignment
     TenantId = Guid.Parse("12345678-1234-1234-1234-123456789123"),
     PrincipalType = KustoPrincipalAssignmentType.App,
 };
-ArmOperation<KustoDatabasePrincipalAssignmentResource> lro = await kustoDatabasePrincipalAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<KustoDatabasePrincipalAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, principalAssignmentName, data);
 KustoDatabasePrincipalAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

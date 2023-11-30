@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Kusto;
 using Azure.ResourceManager.Kusto.Models;
+using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-08-15/examples/KustoClustersGet.json
@@ -16,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this KustoClusterResource created on azure
-// for more information of creating KustoClusterResource, please refer to the document of KustoClusterResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
-string clusterName = "kustoCluster";
-ResourceIdentifier kustoClusterResourceId = KustoClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-KustoClusterResource kustoCluster = client.GetKustoClusterResource(kustoClusterResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this KustoClusterResource
+KustoClusterCollection collection = resourceGroupResource.GetKustoClusters();
 
 // invoke the operation
-KustoClusterResource result = await kustoCluster.GetAsync();
+string clusterName = "kustoCluster";
+NullableResponse<KustoClusterResource> response = await collection.GetIfExistsAsync(clusterName);
+KustoClusterResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-KustoClusterData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    KustoClusterData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

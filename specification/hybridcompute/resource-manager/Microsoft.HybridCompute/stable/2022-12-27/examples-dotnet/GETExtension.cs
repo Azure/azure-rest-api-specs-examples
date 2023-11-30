@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.HybridCompute;
+using Azure.ResourceManager.HybridCompute.Models;
 
 // Generated from example definition: specification/hybridcompute/resource-manager/Microsoft.HybridCompute/stable/2022-12-27/examples/GETExtension.json
 // this example is just showing the usage of "MachineExtensions_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridComputeMachineResource created on azure
-// for more information of creating HybridComputeMachineResource, please refer to the document of HybridComputeMachineResource
+// this example assumes you already have this HybridComputeMachineExtensionResource created on azure
+// for more information of creating HybridComputeMachineExtensionResource, please refer to the document of HybridComputeMachineExtensionResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
 string machineName = "myMachine";
-ResourceIdentifier hybridComputeMachineResourceId = HybridComputeMachineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName);
-HybridComputeMachineResource hybridComputeMachine = client.GetHybridComputeMachineResource(hybridComputeMachineResourceId);
-
-// get the collection of this HybridComputeMachineExtensionResource
-HybridComputeMachineExtensionCollection collection = hybridComputeMachine.GetHybridComputeMachineExtensions();
+string extensionName = "CustomScriptExtension";
+ResourceIdentifier hybridComputeMachineExtensionResourceId = HybridComputeMachineExtensionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, machineName, extensionName);
+HybridComputeMachineExtensionResource hybridComputeMachineExtension = client.GetHybridComputeMachineExtensionResource(hybridComputeMachineExtensionResourceId);
 
 // invoke the operation
-string extensionName = "CustomScriptExtension";
-NullableResponse<HybridComputeMachineExtensionResource> response = await collection.GetIfExistsAsync(extensionName);
-HybridComputeMachineExtensionResource result = response.HasValue ? response.Value : null;
+HybridComputeMachineExtensionResource result = await hybridComputeMachineExtension.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    HybridComputeMachineExtensionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HybridComputeMachineExtensionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

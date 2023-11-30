@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HDInsightApplicationResource created on azure
-// for more information of creating HDInsightApplicationResource, please refer to the document of HDInsightApplicationResource
+// this example assumes you already have this HDInsightClusterResource created on azure
+// for more information of creating HDInsightClusterResource, please refer to the document of HDInsightClusterResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string clusterName = "cluster1";
-string applicationName = "hue";
-ResourceIdentifier hdInsightApplicationResourceId = HDInsightApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationName);
-HDInsightApplicationResource hdInsightApplication = client.GetHDInsightApplicationResource(hdInsightApplicationResourceId);
+ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
+
+// get the collection of this HDInsightApplicationResource
+HDInsightApplicationCollection collection = hdInsightCluster.GetHDInsightApplications();
 
 // invoke the operation
+string applicationName = "hue";
 HDInsightApplicationData data = new HDInsightApplicationData()
 {
     Properties = new HDInsightApplicationProperties()
@@ -69,7 +72,7 @@ HDInsightApplicationData data = new HDInsightApplicationData()
         },
     },
 };
-ArmOperation<HDInsightApplicationResource> lro = await hdInsightApplication.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HDInsightApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationName, data);
 HDInsightApplicationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

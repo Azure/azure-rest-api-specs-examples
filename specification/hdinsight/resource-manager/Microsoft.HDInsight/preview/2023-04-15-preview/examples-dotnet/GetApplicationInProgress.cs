@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HDInsightApplicationResource created on azure
-// for more information of creating HDInsightApplicationResource, please refer to the document of HDInsightApplicationResource
+// this example assumes you already have this HDInsightClusterResource created on azure
+// for more information of creating HDInsightClusterResource, please refer to the document of HDInsightClusterResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string clusterName = "cluster1";
-string applicationName = "app";
-ResourceIdentifier hdInsightApplicationResourceId = HDInsightApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, applicationName);
-HDInsightApplicationResource hdInsightApplication = client.GetHDInsightApplicationResource(hdInsightApplicationResourceId);
+ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
+
+// get the collection of this HDInsightApplicationResource
+HDInsightApplicationCollection collection = hdInsightCluster.GetHDInsightApplications();
 
 // invoke the operation
-HDInsightApplicationResource result = await hdInsightApplication.GetAsync();
+string applicationName = "app";
+NullableResponse<HDInsightApplicationResource> response = await collection.GetIfExistsAsync(applicationName);
+HDInsightApplicationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HDInsightApplicationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HDInsightApplicationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthcareApisWorkspaceResource created on azure
-// for more information of creating HealthcareApisWorkspaceResource, please refer to the document of HealthcareApisWorkspaceResource
+// this example assumes you already have this HealthcareApisWorkspacePrivateEndpointConnectionResource created on azure
+// for more information of creating HealthcareApisWorkspacePrivateEndpointConnectionResource, please refer to the document of HealthcareApisWorkspacePrivateEndpointConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "testRG";
 string workspaceName = "workspace1";
-ResourceIdentifier healthcareApisWorkspaceResourceId = HealthcareApisWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-HealthcareApisWorkspaceResource healthcareApisWorkspace = client.GetHealthcareApisWorkspaceResource(healthcareApisWorkspaceResourceId);
-
-// get the collection of this HealthcareApisWorkspacePrivateEndpointConnectionResource
-HealthcareApisWorkspacePrivateEndpointConnectionCollection collection = healthcareApisWorkspace.GetHealthcareApisWorkspacePrivateEndpointConnections();
+string privateEndpointConnectionName = "myConnection";
+ResourceIdentifier healthcareApisWorkspacePrivateEndpointConnectionResourceId = HealthcareApisWorkspacePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
+HealthcareApisWorkspacePrivateEndpointConnectionResource healthcareApisWorkspacePrivateEndpointConnection = client.GetHealthcareApisWorkspacePrivateEndpointConnectionResource(healthcareApisWorkspacePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "myConnection";
 HealthcareApisPrivateEndpointConnectionData data = new HealthcareApisPrivateEndpointConnectionData()
 {
     ConnectionState = new HealthcareApisPrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ HealthcareApisPrivateEndpointConnectionData data = new HealthcareApisPrivateEndp
         Description = "Auto-Approved",
     },
 };
-ArmOperation<HealthcareApisWorkspacePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<HealthcareApisWorkspacePrivateEndpointConnectionResource> lro = await healthcareApisWorkspacePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 HealthcareApisWorkspacePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

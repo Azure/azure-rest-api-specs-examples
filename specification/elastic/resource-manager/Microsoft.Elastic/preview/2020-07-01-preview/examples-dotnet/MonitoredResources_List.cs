@@ -25,7 +25,7 @@ ResourceIdentifier elasticMonitorResourceId = ElasticMonitorResource.CreateResou
 ElasticMonitorResource elasticMonitorResource = client.GetElasticMonitorResource(elasticMonitorResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (MonitoredResource item in elasticMonitorResource.GetMonitoredResourcesAsync())
+await foreach (MonitoredResourceContent item in elasticMonitorResource.GetMonitoredResourcesAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

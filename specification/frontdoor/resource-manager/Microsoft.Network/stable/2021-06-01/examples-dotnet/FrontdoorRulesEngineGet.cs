@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorResource created on azure
-// for more information of creating FrontDoorResource, please refer to the document of FrontDoorResource
+// this example assumes you already have this FrontDoorRulesEngineResource created on azure
+// for more information of creating FrontDoorRulesEngineResource, please refer to the document of FrontDoorRulesEngineResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string frontDoorName = "frontDoor1";
-ResourceIdentifier frontDoorResourceId = FrontDoorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, frontDoorName);
-FrontDoorResource frontDoor = client.GetFrontDoorResource(frontDoorResourceId);
-
-// get the collection of this FrontDoorRulesEngineResource
-FrontDoorRulesEngineCollection collection = frontDoor.GetFrontDoorRulesEngines();
+string rulesEngineName = "rulesEngine1";
+ResourceIdentifier frontDoorRulesEngineResourceId = FrontDoorRulesEngineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, frontDoorName, rulesEngineName);
+FrontDoorRulesEngineResource frontDoorRulesEngine = client.GetFrontDoorRulesEngineResource(frontDoorRulesEngineResourceId);
 
 // invoke the operation
-string rulesEngineName = "rulesEngine1";
-bool result = await collection.ExistsAsync(rulesEngineName);
+FrontDoorRulesEngineResource result = await frontDoorRulesEngine.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FrontDoorRulesEngineData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSanPrivateEndpointConnectionResource created on azure
-// for more information of creating ElasticSanPrivateEndpointConnectionResource, please refer to the document of ElasticSanPrivateEndpointConnectionResource
+// this example assumes you already have this ElasticSanResource created on azure
+// for more information of creating ElasticSanResource, please refer to the document of ElasticSanResource
 string subscriptionId = "subscriptionid";
 string resourceGroupName = "resourcegroupname";
 string elasticSanName = "elasticsanname";
-string privateEndpointConnectionName = "privateendpointconnectionname";
-ResourceIdentifier elasticSanPrivateEndpointConnectionResourceId = ElasticSanPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName, privateEndpointConnectionName);
-ElasticSanPrivateEndpointConnectionResource elasticSanPrivateEndpointConnection = client.GetElasticSanPrivateEndpointConnectionResource(elasticSanPrivateEndpointConnectionResourceId);
+ResourceIdentifier elasticSanResourceId = ElasticSanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName);
+ElasticSanResource elasticSan = client.GetElasticSanResource(elasticSanResourceId);
+
+// get the collection of this ElasticSanPrivateEndpointConnectionResource
+ElasticSanPrivateEndpointConnectionCollection collection = elasticSan.GetElasticSanPrivateEndpointConnections();
 
 // invoke the operation
-ElasticSanPrivateEndpointConnectionResource result = await elasticSanPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "privateendpointconnectionname";
+NullableResponse<ElasticSanPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+ElasticSanPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ElasticSanPrivateEndpointConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ElasticSanPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

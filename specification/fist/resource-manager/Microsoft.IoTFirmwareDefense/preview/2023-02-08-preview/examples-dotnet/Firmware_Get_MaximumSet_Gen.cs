@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FirmwareWorkspaceResource created on azure
-// for more information of creating FirmwareWorkspaceResource, please refer to the document of FirmwareWorkspaceResource
+// this example assumes you already have this FirmwareResource created on azure
+// for more information of creating FirmwareResource, please refer to the document of FirmwareResource
 string subscriptionId = "685C0C6F-9867-4B1C-A534-AA3A05B54BCE";
 string resourceGroupName = "rgworkspaces-firmwares";
 string workspaceName = "A7";
-ResourceIdentifier firmwareWorkspaceResourceId = FirmwareWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-FirmwareWorkspaceResource firmwareWorkspace = client.GetFirmwareWorkspaceResource(firmwareWorkspaceResourceId);
-
-// get the collection of this FirmwareResource
-FirmwareCollection collection = firmwareWorkspace.GetFirmwares();
+string firmwareName = "umrkdttp";
+ResourceIdentifier firmwareResourceId = FirmwareResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, firmwareName);
+FirmwareResource firmware = client.GetFirmwareResource(firmwareResourceId);
 
 // invoke the operation
-string firmwareName = "umrkdttp";
-bool result = await collection.ExistsAsync(firmwareName);
+FirmwareResource result = await firmware.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FirmwareData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

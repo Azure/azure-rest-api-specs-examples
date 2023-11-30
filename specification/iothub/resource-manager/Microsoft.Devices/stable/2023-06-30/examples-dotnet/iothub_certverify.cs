@@ -28,7 +28,7 @@ IotHubCertificateDescriptionResource iotHubCertificateDescription = client.GetIo
 string ifMatch = "AAAAAAAADGk=";
 IotHubCertificateVerificationContent content = new IotHubCertificateVerificationContent()
 {
-    Certificate = BinaryData.FromString("#####################################"),
+    Certificate = BinaryData.FromString("\"#####################################\""),
 };
 IotHubCertificateDescriptionResource result = await iotHubCertificateDescription.VerifyAsync(ifMatch, content);
 

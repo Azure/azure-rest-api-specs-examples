@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HDInsightClusterPoolResource created on azure
-// for more information of creating HDInsightClusterPoolResource, please refer to the document of HDInsightClusterPoolResource
+// this example assumes you already have this HDInsightClusterResource created on azure
+// for more information of creating HDInsightClusterResource, please refer to the document of HDInsightClusterResource
 string subscriptionId = "10e32bab-26da-4cc4-a441-52b318f824e6";
 string resourceGroupName = "hiloResourcegroup";
 string clusterPoolName = "clusterpool1";
-ResourceIdentifier hdInsightClusterPoolResourceId = HDInsightClusterPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterPoolName);
-HDInsightClusterPoolResource hdInsightClusterPool = client.GetHDInsightClusterPoolResource(hdInsightClusterPoolResourceId);
-
-// get the collection of this HDInsightClusterResource
-HDInsightClusterCollection collection = hdInsightClusterPool.GetHDInsightClusters();
+string clusterName = "cluster1";
+ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterPoolName, clusterName);
+HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-string clusterName = "cluster1";
-bool result = await collection.ExistsAsync(clusterName);
+HDInsightClusterResource result = await hdInsightCluster.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+HDInsightClusterData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HealthcareApisServicePrivateLinkResource created on azure
-// for more information of creating HealthcareApisServicePrivateLinkResource, please refer to the document of HealthcareApisServicePrivateLinkResource
+// this example assumes you already have this HealthcareApisServiceResource created on azure
+// for more information of creating HealthcareApisServiceResource, please refer to the document of HealthcareApisServiceResource
 string subscriptionId = "subid";
 string resourceGroupName = "rgname";
 string resourceName = "service1";
-string groupName = "fhir";
-ResourceIdentifier healthcareApisServicePrivateLinkResourceId = HealthcareApisServicePrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, groupName);
-HealthcareApisServicePrivateLinkResource healthcareApisServicePrivateLinkResource = client.GetHealthcareApisServicePrivateLinkResource(healthcareApisServicePrivateLinkResourceId);
+ResourceIdentifier healthcareApisServiceResourceId = HealthcareApisServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+HealthcareApisServiceResource healthcareApisService = client.GetHealthcareApisServiceResource(healthcareApisServiceResourceId);
+
+// get the collection of this HealthcareApisServicePrivateLinkResource
+HealthcareApisServicePrivateLinkResourceCollection collection = healthcareApisService.GetHealthcareApisServicePrivateLinkResources();
 
 // invoke the operation
-HealthcareApisServicePrivateLinkResource result = await healthcareApisServicePrivateLinkResource.GetAsync();
+string groupName = "fhir";
+NullableResponse<HealthcareApisServicePrivateLinkResource> response = await collection.GetIfExistsAsync(groupName);
+HealthcareApisServicePrivateLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HealthcareApisPrivateLinkResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HealthcareApisPrivateLinkResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

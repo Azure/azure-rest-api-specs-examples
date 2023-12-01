@@ -4,7 +4,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Synapse;
 using Azure.ResourceManager.Synapse.Models;
 
@@ -16,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseKustoPoolResource created on azure
-// for more information of creating SynapseKustoPoolResource, please refer to the document of SynapseKustoPoolResource
+// this example assumes you already have this SynapseWorkspaceResource created on azure
+// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
 string subscriptionId = "12345678-1234-1234-1234-123456789098";
 string resourceGroupName = "kustorptest";
 string workspaceName = "synapseWorkspaceName";
-string kustoPoolName = "kustoclusterrptest4";
-ResourceIdentifier synapseKustoPoolResourceId = SynapseKustoPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, kustoPoolName);
-SynapseKustoPoolResource synapseKustoPool = client.GetSynapseKustoPoolResource(synapseKustoPoolResourceId);
+ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+
+// get the collection of this SynapseKustoPoolResource
+SynapseKustoPoolCollection collection = synapseWorkspace.GetSynapseKustoPools();
 
 // invoke the operation
-SynapseKustoPoolResource result = await synapseKustoPool.GetAsync();
+string kustoPoolName = "kustoclusterrptest4";
+NullableResponse<SynapseKustoPoolResource> response = await collection.GetIfExistsAsync(kustoPoolName);
+SynapseKustoPoolResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseKustoPoolData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseKustoPoolData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

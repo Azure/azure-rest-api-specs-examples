@@ -28,6 +28,18 @@ SynapseServerBlobAuditingPolicyCollection collection = synapseWorkspace.GetSynap
 
 // invoke the operation
 SynapseBlobAuditingPolicyName blobAuditingPolicyName = SynapseBlobAuditingPolicyName.Default;
-bool result = await collection.ExistsAsync(blobAuditingPolicyName);
+NullableResponse<SynapseServerBlobAuditingPolicyResource> response = await collection.GetIfExistsAsync(blobAuditingPolicyName);
+SynapseServerBlobAuditingPolicyResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseServerBlobAuditingPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

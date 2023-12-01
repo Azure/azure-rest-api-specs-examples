@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapsePrivateEndpointConnectionResource created on azure
-// for more information of creating SynapsePrivateEndpointConnectionResource, please refer to the document of SynapsePrivateEndpointConnectionResource
+// this example assumes you already have this SynapseWorkspaceResource created on azure
+// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
 string subscriptionId = "01234567-89ab-4def-0123-456789abcdef";
 string resourceGroupName = "ExampleResourceGroup";
 string workspaceName = "ExampleWorkspace";
-string privateEndpointConnectionName = "ExamplePrivateEndpointConnection";
-ResourceIdentifier synapsePrivateEndpointConnectionResourceId = SynapsePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, privateEndpointConnectionName);
-SynapsePrivateEndpointConnectionResource synapsePrivateEndpointConnection = client.GetSynapsePrivateEndpointConnectionResource(synapsePrivateEndpointConnectionResourceId);
+ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+
+// get the collection of this SynapsePrivateEndpointConnectionResource
+SynapsePrivateEndpointConnectionCollection collection = synapseWorkspace.GetSynapsePrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "ExamplePrivateEndpointConnection";
 SynapsePrivateEndpointConnectionData data = new SynapsePrivateEndpointConnectionData()
 {
     ConnectionState = new SynapsePrivateLinkServiceConnectionState()
@@ -33,7 +36,7 @@ SynapsePrivateEndpointConnectionData data = new SynapsePrivateEndpointConnection
         Description = "Approved by abc@example.com",
     },
 };
-ArmOperation<SynapsePrivateEndpointConnectionResource> lro = await synapsePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SynapsePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 SynapsePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

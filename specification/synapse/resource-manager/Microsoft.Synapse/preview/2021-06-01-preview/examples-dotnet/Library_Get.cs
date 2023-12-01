@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkspaceResource created on azure
-// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
+// this example assumes you already have this SynapseLibraryResource created on azure
+// for more information of creating SynapseLibraryResource, please refer to the document of SynapseLibraryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string workspaceName = "exampleWorkspace";
-ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
-
-// get the collection of this SynapseLibraryResource
-SynapseLibraryCollection collection = synapseWorkspace.GetSynapseLibraries();
+string libraryName = "exampleLibraryName.jar";
+ResourceIdentifier synapseLibraryResourceId = SynapseLibraryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, libraryName);
+SynapseLibraryResource synapseLibrary = client.GetSynapseLibraryResource(synapseLibraryResourceId);
 
 // invoke the operation
-string libraryName = "exampleLibraryName.jar";
-bool result = await collection.ExistsAsync(libraryName);
+SynapseLibraryResource result = await synapseLibrary.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseLibraryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -59,7 +59,7 @@ SynapseWorkspaceData data = new SynapseWorkspaceData(new AzureLocation("East US"
             KekIdentity = new KekIdentityProperties()
             {
                 UserAssignedIdentityId = new ResourceIdentifier("/subscriptions/b64d7b94-73e7-4d36-94b2-7764ea3fd74a/resourcegroups/SynapseCI/providers/Microsoft.ManagedIdentity/userAssignedIdentities/uami1"),
-                UseSystemAssignedIdentity = BinaryData.FromString("false"),
+                UseSystemAssignedIdentity = BinaryData.FromString("\"false\""),
             },
         },
     },

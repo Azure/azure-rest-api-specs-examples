@@ -13,20 +13,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseSqlPoolResource created on azure
-// for more information of creating SynapseSqlPoolResource, please refer to the document of SynapseSqlPoolResource
+// this example assumes you already have this SynapseReplicationLinkResource created on azure
+// for more information of creating SynapseReplicationLinkResource, please refer to the document of SynapseReplicationLinkResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-4799";
 string workspaceName = "sqlcrudtest-6440";
 string sqlPoolName = "testdb";
-ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName);
-SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
-
-// get the collection of this SynapseReplicationLinkResource
-SynapseReplicationLinkCollection collection = synapseSqlPool.GetSynapseReplicationLinks();
+string linkId = "5b301b68-03f6-4b26-b0f4-73ebb8634238";
+ResourceIdentifier synapseReplicationLinkResourceId = SynapseReplicationLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, linkId);
+SynapseReplicationLinkResource synapseReplicationLink = client.GetSynapseReplicationLinkResource(synapseReplicationLinkResourceId);
 
 // invoke the operation
-string linkId = "5b301b68-03f6-4b26-b0f4-73ebb8634238";
-bool result = await collection.ExistsAsync(linkId);
+SynapseReplicationLinkResource result = await synapseReplicationLink.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseReplicationLinkData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkspaceResource created on azure
-// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
+// this example assumes you already have this SynapseRestorableDroppedSqlPoolResource created on azure
+// for more information of creating SynapseRestorableDroppedSqlPoolResource, please refer to the document of SynapseRestorableDroppedSqlPoolResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "restorabledroppeddatabasetest-1257";
 string workspaceName = "restorabledroppeddatabasetest-2389";
-ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
-
-// get the collection of this SynapseRestorableDroppedSqlPoolResource
-SynapseRestorableDroppedSqlPoolCollection collection = synapseWorkspace.GetSynapseRestorableDroppedSqlPools();
+string restorableDroppedSqlPoolId = "restorabledroppeddatabasetest-7654,131403269876900000";
+ResourceIdentifier synapseRestorableDroppedSqlPoolResourceId = SynapseRestorableDroppedSqlPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, restorableDroppedSqlPoolId);
+SynapseRestorableDroppedSqlPoolResource synapseRestorableDroppedSqlPool = client.GetSynapseRestorableDroppedSqlPoolResource(synapseRestorableDroppedSqlPoolResourceId);
 
 // invoke the operation
-string restorableDroppedSqlPoolId = "restorabledroppeddatabasetest-7654,131403269876900000";
-bool result = await collection.ExistsAsync(restorableDroppedSqlPoolId);
+SynapseRestorableDroppedSqlPoolResource result = await synapseRestorableDroppedSqlPool.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseRestorableDroppedSqlPoolData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkspaceResource created on azure
-// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
+// this example assumes you already have this SynapseExtendedServerBlobAuditingPolicyResource created on azure
+// for more information of creating SynapseExtendedServerBlobAuditingPolicyResource, please refer to the document of SynapseExtendedServerBlobAuditingPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "wsg-7398";
 string workspaceName = "testWorkspace";
-ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
-
-// get the collection of this SynapseExtendedServerBlobAuditingPolicyResource
-SynapseExtendedServerBlobAuditingPolicyCollection collection = synapseWorkspace.GetSynapseExtendedServerBlobAuditingPolicies();
+SynapseBlobAuditingPolicyName blobAuditingPolicyName = SynapseBlobAuditingPolicyName.Default;
+ResourceIdentifier synapseExtendedServerBlobAuditingPolicyResourceId = SynapseExtendedServerBlobAuditingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, blobAuditingPolicyName);
+SynapseExtendedServerBlobAuditingPolicyResource synapseExtendedServerBlobAuditingPolicy = client.GetSynapseExtendedServerBlobAuditingPolicyResource(synapseExtendedServerBlobAuditingPolicyResourceId);
 
 // invoke the operation
-SynapseBlobAuditingPolicyName blobAuditingPolicyName = SynapseBlobAuditingPolicyName.Default;
-bool result = await collection.ExistsAsync(blobAuditingPolicyName);
+SynapseExtendedServerBlobAuditingPolicyResource result = await synapseExtendedServerBlobAuditingPolicy.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SynapseExtendedServerBlobAuditingPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

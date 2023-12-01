@@ -1,5 +1,4 @@
 using System;
-using System.Net;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -18,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseWorkspaceResource created on azure
-// for more information of creating SynapseWorkspaceResource, please refer to the document of SynapseWorkspaceResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "resourceGroup1";
-string workspaceName = "workspace1";
-ResourceIdentifier synapseWorkspaceResourceId = SynapseWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-SynapseWorkspaceResource synapseWorkspace = client.GetSynapseWorkspaceResource(synapseWorkspaceResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this SynapseWorkspaceResource
+SynapseWorkspaceCollection collection = resourceGroupResource.GetSynapseWorkspaces();
 
 // invoke the operation
-SynapseWorkspaceResource result = await synapseWorkspace.GetAsync();
+string workspaceName = "workspace1";
+NullableResponse<SynapseWorkspaceResource> response = await collection.GetIfExistsAsync(workspaceName);
+SynapseWorkspaceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseWorkspaceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseWorkspaceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

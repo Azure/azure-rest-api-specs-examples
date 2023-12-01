@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseSqlPoolConnectionPolicyResource created on azure
-// for more information of creating SynapseSqlPoolConnectionPolicyResource, please refer to the document of SynapseSqlPoolConnectionPolicyResource
+// this example assumes you already have this SynapseSqlPoolResource created on azure
+// for more information of creating SynapseSqlPoolResource, please refer to the document of SynapseSqlPoolResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "blobauditingtest-6852";
 string workspaceName = "blobauditingtest-2080";
 string sqlPoolName = "testdb";
-SqlPoolConnectionPolicyName connectionPolicyName = SqlPoolConnectionPolicyName.Default;
-ResourceIdentifier synapseSqlPoolConnectionPolicyResourceId = SynapseSqlPoolConnectionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, connectionPolicyName);
-SynapseSqlPoolConnectionPolicyResource synapseSqlPoolConnectionPolicy = client.GetSynapseSqlPoolConnectionPolicyResource(synapseSqlPoolConnectionPolicyResourceId);
+ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName);
+SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
+
+// get the collection of this SynapseSqlPoolConnectionPolicyResource
+SynapseSqlPoolConnectionPolicyCollection collection = synapseSqlPool.GetSynapseSqlPoolConnectionPolicies();
 
 // invoke the operation
-SynapseSqlPoolConnectionPolicyResource result = await synapseSqlPoolConnectionPolicy.GetAsync();
+SqlPoolConnectionPolicyName connectionPolicyName = SqlPoolConnectionPolicyName.Default;
+NullableResponse<SynapseSqlPoolConnectionPolicyResource> response = await collection.GetIfExistsAsync(connectionPolicyName);
+SynapseSqlPoolConnectionPolicyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseSqlPoolConnectionPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseSqlPoolConnectionPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

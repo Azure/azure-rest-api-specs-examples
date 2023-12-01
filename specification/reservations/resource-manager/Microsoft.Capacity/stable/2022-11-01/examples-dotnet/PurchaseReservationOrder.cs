@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Core;
@@ -16,13 +15,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ReservationOrderResource created on azure
-// for more information of creating ReservationOrderResource, please refer to the document of ReservationOrderResource
-Guid reservationOrderId = Guid.Parse("a075419f-44cc-497f-b68a-14ee811d48b9");
-ResourceIdentifier reservationOrderResourceId = ReservationOrderResource.CreateResourceIdentifier(reservationOrderId);
-ReservationOrderResource reservationOrder = client.GetReservationOrderResource(reservationOrderResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this ReservationOrderResource
+ReservationOrderCollection collection = tenantResource.GetReservationOrders();
 
 // invoke the operation
+Guid reservationOrderId = Guid.Parse("a075419f-44cc-497f-b68a-14ee811d48b9");
 ReservationPurchaseContent content = new ReservationPurchaseContent()
 {
     SkuName = "standard_D1",
@@ -40,7 +41,7 @@ ReservationPurchaseContent content = new ReservationPurchaseContent()
     IsRenewEnabled = false,
     ReservedResourceInstanceFlexibility = InstanceFlexibility.On,
 };
-ArmOperation<ReservationOrderResource> lro = await reservationOrder.UpdateAsync(WaitUntil.Completed, content);
+ArmOperation<ReservationOrderResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, reservationOrderId, content);
 ReservationOrderResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

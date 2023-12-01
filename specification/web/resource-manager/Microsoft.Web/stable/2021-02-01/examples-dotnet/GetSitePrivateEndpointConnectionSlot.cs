@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteSlotPrivateEndpointConnectionResource created on azure
-// for more information of creating SiteSlotPrivateEndpointConnectionResource, please refer to the document of SiteSlotPrivateEndpointConnectionResource
+// this example assumes you already have this WebSiteSlotResource created on azure
+// for more information of creating WebSiteSlotResource, please refer to the document of WebSiteSlotResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testSite";
 string slot = "stage";
-string privateEndpointConnectionName = "connection";
-ResourceIdentifier siteSlotPrivateEndpointConnectionResourceId = SiteSlotPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot, privateEndpointConnectionName);
-SiteSlotPrivateEndpointConnectionResource siteSlotPrivateEndpointConnection = client.GetSiteSlotPrivateEndpointConnectionResource(siteSlotPrivateEndpointConnectionResourceId);
+ResourceIdentifier webSiteSlotResourceId = WebSiteSlotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot);
+WebSiteSlotResource webSiteSlot = client.GetWebSiteSlotResource(webSiteSlotResourceId);
+
+// get the collection of this SiteSlotPrivateEndpointConnectionResource
+SiteSlotPrivateEndpointConnectionCollection collection = webSiteSlot.GetSiteSlotPrivateEndpointConnections();
 
 // invoke the operation
-SiteSlotPrivateEndpointConnectionResource result = await siteSlotPrivateEndpointConnection.GetAsync();
+string privateEndpointConnectionName = "connection";
+NullableResponse<SiteSlotPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+SiteSlotPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-RemotePrivateEndpointConnectionARMResourceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    RemotePrivateEndpointConnectionARMResourceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

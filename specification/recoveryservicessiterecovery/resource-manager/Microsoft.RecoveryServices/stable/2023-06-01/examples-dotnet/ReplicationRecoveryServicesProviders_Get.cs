@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-06-01/examples/ReplicationRecoveryServicesProviders_Get.json
 // this example is just showing the usage of "ReplicationRecoveryServicesProviders_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,32 +16,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteRecoveryFabricResource created on azure
-// for more information of creating SiteRecoveryFabricResource, please refer to the document of SiteRecoveryFabricResource
+// this example assumes you already have this SiteRecoveryServicesProviderResource created on azure
+// for more information of creating SiteRecoveryServicesProviderResource, please refer to the document of SiteRecoveryServicesProviderResource
 string subscriptionId = "c183865e-6077-46f2-a3b1-deb0f4f4650a";
 string resourceGroupName = "resourceGroupPS1";
 string resourceName = "vault1";
 string fabricName = "cloud1";
-ResourceIdentifier siteRecoveryFabricResourceId = SiteRecoveryFabricResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName);
-SiteRecoveryFabricResource siteRecoveryFabric = client.GetSiteRecoveryFabricResource(siteRecoveryFabricResourceId);
-
-// get the collection of this SiteRecoveryServicesProviderResource
-SiteRecoveryServicesProviderCollection collection = siteRecoveryFabric.GetSiteRecoveryServicesProviders();
+string providerName = "241641e6-ee7b-4ee4-8141-821fadda43fa";
+ResourceIdentifier siteRecoveryServicesProviderResourceId = SiteRecoveryServicesProviderResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, fabricName, providerName);
+SiteRecoveryServicesProviderResource siteRecoveryServicesProvider = client.GetSiteRecoveryServicesProviderResource(siteRecoveryServicesProviderResourceId);
 
 // invoke the operation
-string providerName = "241641e6-ee7b-4ee4-8141-821fadda43fa";
-NullableResponse<SiteRecoveryServicesProviderResource> response = await collection.GetIfExistsAsync(providerName);
-SiteRecoveryServicesProviderResource result = response.HasValue ? response.Value : null;
+SiteRecoveryServicesProviderResource result = await siteRecoveryServicesProvider.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SiteRecoveryServicesProviderData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SiteRecoveryServicesProviderData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

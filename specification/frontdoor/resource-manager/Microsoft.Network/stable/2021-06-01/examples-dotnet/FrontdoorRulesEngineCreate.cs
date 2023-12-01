@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorResource created on azure
-// for more information of creating FrontDoorResource, please refer to the document of FrontDoorResource
+// this example assumes you already have this FrontDoorRulesEngineResource created on azure
+// for more information of creating FrontDoorRulesEngineResource, please refer to the document of FrontDoorRulesEngineResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string frontDoorName = "frontDoor1";
-ResourceIdentifier frontDoorResourceId = FrontDoorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, frontDoorName);
-FrontDoorResource frontDoor = client.GetFrontDoorResource(frontDoorResourceId);
-
-// get the collection of this FrontDoorRulesEngineResource
-FrontDoorRulesEngineCollection collection = frontDoor.GetFrontDoorRulesEngines();
+string rulesEngineName = "rulesEngine1";
+ResourceIdentifier frontDoorRulesEngineResourceId = FrontDoorRulesEngineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, frontDoorName, rulesEngineName);
+FrontDoorRulesEngineResource frontDoorRulesEngine = client.GetFrontDoorRulesEngineResource(frontDoorRulesEngineResourceId);
 
 // invoke the operation
-string rulesEngineName = "rulesEngine1";
 FrontDoorRulesEngineData data = new FrontDoorRulesEngineData()
 {
     Rules =
@@ -113,7 +110,7 @@ FrontDoorRulesEngineData data = new FrontDoorRulesEngineData()
     }
     },
 };
-ArmOperation<FrontDoorRulesEngineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, rulesEngineName, data);
+ArmOperation<FrontDoorRulesEngineResource> lro = await frontDoorRulesEngine.UpdateAsync(WaitUntil.Completed, data);
 FrontDoorRulesEngineResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

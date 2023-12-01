@@ -16,19 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this StreamingJobResource created on azure
+// for more information of creating StreamingJobResource, please refer to the document of StreamingJobResource
 string subscriptionId = "56b5e0a9-b645-407d-99b0-c64f86013e3d";
 string resourceGroupName = "sjrg3276";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this StreamingJobResource
-StreamingJobCollection collection = resourceGroupResource.GetStreamingJobs();
+string jobName = "sj7804";
+ResourceIdentifier streamingJobResourceId = StreamingJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, jobName);
+StreamingJobResource streamingJob = client.GetStreamingJobResource(streamingJobResourceId);
 
 // invoke the operation
-string jobName = "sj7804";
 string expand = "inputs,outputs,transformation,functions";
-bool result = await collection.ExistsAsync(jobName, expand: expand);
+StreamingJobResource result = await streamingJob.GetAsync(expand: expand);
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StreamingJobData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -34,7 +34,7 @@ HybridComputeMachineExtensionData data = new HybridComputeMachineExtensionData(n
     TypeHandlerVersion = "1.10",
     Settings =
     {
-    ["commandToExecute"] = BinaryData.FromString("powershell.exe -c \"Get-Process | Where-Object { $_.CPU -gt 10000 }\""),
+    ["commandToExecute"] = BinaryData.FromString("\"powershell.exe -c \"Get-Process | Where-Object { $_.CPU -gt 10000 }\"\""),
     },
 };
 ArmOperation<HybridComputeMachineExtensionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, extensionName, data);

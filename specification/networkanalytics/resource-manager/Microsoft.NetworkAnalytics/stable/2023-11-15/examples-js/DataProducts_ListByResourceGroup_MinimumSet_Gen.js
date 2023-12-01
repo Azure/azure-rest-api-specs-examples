@@ -1,0 +1,22 @@
+const { MicrosoftNetworkAnalytics } = require("@azure/arm-networkanalytics");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to List data products by resource group.
+ *
+ * @summary List data products by resource group.
+ * x-ms-original-file: specification/networkanalytics/resource-manager/Microsoft.NetworkAnalytics/stable/2023-11-15/examples/DataProducts_ListByResourceGroup_MinimumSet_Gen.json
+ */
+async function dataProductsListByResourceGroupMaximumSetGenGeneratedByMinimumSetRuleMinimumSetGen() {
+  const subscriptionId =
+    process.env["NETWORKANALYTICS_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-00000000000";
+  const resourceGroupName =
+    process.env["NETWORKANALYTICS_RESOURCE_GROUP"] || "aoiresourceGroupName";
+  const credential = new DefaultAzureCredential();
+  const client = new MicrosoftNetworkAnalytics(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.dataProducts.listByResourceGroup(resourceGroupName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

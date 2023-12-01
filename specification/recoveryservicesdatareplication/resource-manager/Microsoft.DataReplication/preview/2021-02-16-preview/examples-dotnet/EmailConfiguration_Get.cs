@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataReplicationEmailConfigurationResource created on azure
-// for more information of creating DataReplicationEmailConfigurationResource, please refer to the document of DataReplicationEmailConfigurationResource
+// this example assumes you already have this DataReplicationVaultResource created on azure
+// for more information of creating DataReplicationVaultResource, please refer to the document of DataReplicationVaultResource
 string subscriptionId = "930CEC23-4430-4513-B855-DBA237E2F3BF";
 string resourceGroupName = "rgrecoveryservicesdatareplication";
 string vaultName = "4";
-string emailConfigurationName = "0";
-ResourceIdentifier dataReplicationEmailConfigurationResourceId = DataReplicationEmailConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, emailConfigurationName);
-DataReplicationEmailConfigurationResource dataReplicationEmailConfiguration = client.GetDataReplicationEmailConfigurationResource(dataReplicationEmailConfigurationResourceId);
+ResourceIdentifier dataReplicationVaultResourceId = DataReplicationVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
+DataReplicationVaultResource dataReplicationVault = client.GetDataReplicationVaultResource(dataReplicationVaultResourceId);
+
+// get the collection of this DataReplicationEmailConfigurationResource
+DataReplicationEmailConfigurationCollection collection = dataReplicationVault.GetDataReplicationEmailConfigurations();
 
 // invoke the operation
-DataReplicationEmailConfigurationResource result = await dataReplicationEmailConfiguration.GetAsync();
+string emailConfigurationName = "0";
+NullableResponse<DataReplicationEmailConfigurationResource> response = await collection.GetIfExistsAsync(emailConfigurationName);
+DataReplicationEmailConfigurationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataReplicationEmailConfigurationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataReplicationEmailConfigurationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

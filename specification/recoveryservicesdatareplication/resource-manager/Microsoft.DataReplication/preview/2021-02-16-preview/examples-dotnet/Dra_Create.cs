@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataReplicationFabricResource created on azure
-// for more information of creating DataReplicationFabricResource, please refer to the document of DataReplicationFabricResource
+// this example assumes you already have this DataReplicationDraResource created on azure
+// for more information of creating DataReplicationDraResource, please refer to the document of DataReplicationDraResource
 string subscriptionId = "930CEC23-4430-4513-B855-DBA237E2F3BF";
 string resourceGroupName = "rgrecoveryservicesdatareplication";
 string fabricName = "wPR";
-ResourceIdentifier dataReplicationFabricResourceId = DataReplicationFabricResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fabricName);
-DataReplicationFabricResource dataReplicationFabric = client.GetDataReplicationFabricResource(dataReplicationFabricResourceId);
-
-// get the collection of this DataReplicationDraResource
-DataReplicationDraCollection collection = dataReplicationFabric.GetDataReplicationDras();
+string fabricAgentName = "M";
+ResourceIdentifier dataReplicationDraResourceId = DataReplicationDraResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fabricName, fabricAgentName);
+DataReplicationDraResource dataReplicationDra = client.GetDataReplicationDraResource(dataReplicationDraResourceId);
 
 // invoke the operation
-string fabricAgentName = "M";
 DataReplicationDraData data = new DataReplicationDraData(new DataReplicationDraProperties("envzcoijbqhtrpncbjbhk", "y", new DataReplicationIdentity(Guid.Parse("joclkkdovixwapephhxaqtefubhhmq"), "cwktzrwajuvfyyymfstpey", "khsiaqfbpuhp", "dkjobanyqgzenivyxhvavottpc", "bubwwbowfhdmujrt"), new DataReplicationIdentity(Guid.Parse("joclkkdovixwapephhxaqtefubhhmq"), "cwktzrwajuvfyyymfstpey", "khsiaqfbpuhp", "dkjobanyqgzenivyxhvavottpc", "bubwwbowfhdmujrt"), new GeneralDraModelCustomProperties()));
-ArmOperation<DataReplicationDraResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fabricAgentName, data);
+ArmOperation<DataReplicationDraResource> lro = await dataReplicationDra.UpdateAsync(WaitUntil.Completed, data);
 DataReplicationDraResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

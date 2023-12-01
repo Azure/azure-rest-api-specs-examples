@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataReplicationProtectedItemResource created on azure
-// for more information of creating DataReplicationProtectedItemResource, please refer to the document of DataReplicationProtectedItemResource
+// this example assumes you already have this DataReplicationVaultResource created on azure
+// for more information of creating DataReplicationVaultResource, please refer to the document of DataReplicationVaultResource
 string subscriptionId = "930CEC23-4430-4513-B855-DBA237E2F3BF";
 string resourceGroupName = "rgrecoveryservicesdatareplication";
 string vaultName = "4";
-string protectedItemName = "d";
-ResourceIdentifier dataReplicationProtectedItemResourceId = DataReplicationProtectedItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, protectedItemName);
-DataReplicationProtectedItemResource dataReplicationProtectedItem = client.GetDataReplicationProtectedItemResource(dataReplicationProtectedItemResourceId);
+ResourceIdentifier dataReplicationVaultResourceId = DataReplicationVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
+DataReplicationVaultResource dataReplicationVault = client.GetDataReplicationVaultResource(dataReplicationVaultResourceId);
+
+// get the collection of this DataReplicationProtectedItemResource
+DataReplicationProtectedItemCollection collection = dataReplicationVault.GetDataReplicationProtectedItems();
 
 // invoke the operation
-DataReplicationProtectedItemResource result = await dataReplicationProtectedItem.GetAsync();
+string protectedItemName = "d";
+NullableResponse<DataReplicationProtectedItemResource> response = await collection.GetIfExistsAsync(protectedItemName);
+DataReplicationProtectedItemResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataReplicationProtectedItemData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataReplicationProtectedItemData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

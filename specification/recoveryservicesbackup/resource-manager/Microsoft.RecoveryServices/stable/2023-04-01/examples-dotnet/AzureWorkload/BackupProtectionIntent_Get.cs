@@ -30,6 +30,18 @@ BackupProtectionIntentCollection collection = resourceGroupResource.GetBackupPro
 string vaultName = "myVault";
 string fabricName = "Azure";
 string intentObjectName = "249D9B07-D2EF-4202-AA64-65F35418564E";
-bool result = await collection.ExistsAsync(vaultName, fabricName, intentObjectName);
+NullableResponse<BackupProtectionIntentResource> response = await collection.GetIfExistsAsync(vaultName, fabricName, intentObjectName);
+BackupProtectionIntentResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BackupProtectionIntentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

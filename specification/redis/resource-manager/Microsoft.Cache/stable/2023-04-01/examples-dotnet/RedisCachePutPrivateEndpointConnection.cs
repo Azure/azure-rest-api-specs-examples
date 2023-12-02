@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisResource created on azure
-// for more information of creating RedisResource, please refer to the document of RedisResource
+// this example assumes you already have this RedisPrivateEndpointConnectionResource created on azure
+// for more information of creating RedisPrivateEndpointConnectionResource, please refer to the document of RedisPrivateEndpointConnectionResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "rgtest01";
 string cacheName = "cachetest01";
-ResourceIdentifier redisResourceId = RedisResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName);
-RedisResource redis = client.GetRedisResource(redisResourceId);
-
-// get the collection of this RedisPrivateEndpointConnectionResource
-RedisPrivateEndpointConnectionCollection collection = redis.GetRedisPrivateEndpointConnections();
+string privateEndpointConnectionName = "pectest01";
+ResourceIdentifier redisPrivateEndpointConnectionResourceId = RedisPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cacheName, privateEndpointConnectionName);
+RedisPrivateEndpointConnectionResource redisPrivateEndpointConnection = client.GetRedisPrivateEndpointConnectionResource(redisPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "pectest01";
 RedisPrivateEndpointConnectionData data = new RedisPrivateEndpointConnectionData()
 {
     RedisPrivateLinkServiceConnectionState = new RedisPrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ RedisPrivateEndpointConnectionData data = new RedisPrivateEndpointConnectionData
         Description = "Auto-Approved",
     },
 };
-ArmOperation<RedisPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<RedisPrivateEndpointConnectionResource> lro = await redisPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 RedisPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

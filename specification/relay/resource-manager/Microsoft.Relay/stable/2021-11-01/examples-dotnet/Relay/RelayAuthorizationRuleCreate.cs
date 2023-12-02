@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WcfRelayAuthorizationRuleResource created on azure
-// for more information of creating WcfRelayAuthorizationRuleResource, please refer to the document of WcfRelayAuthorizationRuleResource
+// this example assumes you already have this WcfRelayResource created on azure
+// for more information of creating WcfRelayResource, please refer to the document of WcfRelayResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-01";
 string relayName = "example-Relay-wcf-01";
-string authorizationRuleName = "example-RelayAuthRules-01";
-ResourceIdentifier wcfRelayAuthorizationRuleResourceId = WcfRelayAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, relayName, authorizationRuleName);
-WcfRelayAuthorizationRuleResource wcfRelayAuthorizationRule = client.GetWcfRelayAuthorizationRuleResource(wcfRelayAuthorizationRuleResourceId);
+ResourceIdentifier wcfRelayResourceId = WcfRelayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, relayName);
+WcfRelayResource wcfRelay = client.GetWcfRelayResource(wcfRelayResourceId);
+
+// get the collection of this WcfRelayAuthorizationRuleResource
+WcfRelayAuthorizationRuleCollection collection = wcfRelay.GetWcfRelayAuthorizationRules();
 
 // invoke the operation
+string authorizationRuleName = "example-RelayAuthRules-01";
 RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
 {
     Rights =
@@ -33,7 +36,7 @@ RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
     RelayAccessRight.Listen,RelayAccessRight.Send
     },
 };
-ArmOperation<WcfRelayAuthorizationRuleResource> lro = await wcfRelayAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<WcfRelayAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
 WcfRelayAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -30,6 +31,18 @@ HealthMonitorCollection collection = resourceGroupResource.GetHealthMonitors(pro
 // invoke the operation
 string monitorId = "logical-disks|C@3A|free-space";
 string expand = "evidence";
-bool result = await collection.ExistsAsync(monitorId, expand: expand);
+NullableResponse<HealthMonitorResource> response = await collection.GetIfExistsAsync(monitorId, expand: expand);
+HealthMonitorResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HealthMonitorData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -13,19 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowResource created on azure
-// for more information of creating LogicWorkflowResource, please refer to the document of LogicWorkflowResource
+// this example assumes you already have this LogicWorkflowRunResource created on azure
+// for more information of creating LogicWorkflowRunResource, please refer to the document of LogicWorkflowRunResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string workflowName = "test-workflow";
-ResourceIdentifier logicWorkflowResourceId = LogicWorkflowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName);
-LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkflowResourceId);
-
-// get the collection of this LogicWorkflowRunResource
-LogicWorkflowRunCollection collection = logicWorkflow.GetLogicWorkflowRuns();
+string runName = "08586676746934337772206998657CU22";
+ResourceIdentifier logicWorkflowRunResourceId = LogicWorkflowRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName);
+LogicWorkflowRunResource logicWorkflowRun = client.GetLogicWorkflowRunResource(logicWorkflowRunResourceId);
 
 // invoke the operation
-string runName = "08586676746934337772206998657CU22";
-bool result = await collection.ExistsAsync(runName);
+LogicWorkflowRunResource result = await logicWorkflowRun.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LogicWorkflowRunData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -17,18 +17,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this LogicWorkflowResource created on azure
+// for more information of creating LogicWorkflowResource, please refer to the document of LogicWorkflowResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this LogicWorkflowResource
-LogicWorkflowCollection collection = resourceGroupResource.GetLogicWorkflows();
+string workflowName = "test-workflow";
+ResourceIdentifier logicWorkflowResourceId = LogicWorkflowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName);
+LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkflowResourceId);
 
 // invoke the operation
-string workflowName = "test-workflow";
 LogicWorkflowData data = new LogicWorkflowData(new AzureLocation("brazilsouth"))
 {
     IntegrationAccount = new LogicResourceReference()
@@ -106,7 +103,7 @@ LogicWorkflowData data = new LogicWorkflowData(new AzureLocation("brazilsouth"))
     {
     },
 };
-ArmOperation<LogicWorkflowResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workflowName, data);
+ArmOperation<LogicWorkflowResource> lro = await logicWorkflow.UpdateAsync(WaitUntil.Completed, data);
 LogicWorkflowResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteUserProvidedFunctionAppResource created on azure
-// for more information of creating StaticSiteUserProvidedFunctionAppResource, please refer to the document of StaticSiteUserProvidedFunctionAppResource
+// this example assumes you already have this StaticSiteResource created on azure
+// for more information of creating StaticSiteResource, please refer to the document of StaticSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
-string functionAppName = "testFunctionApp";
-ResourceIdentifier staticSiteUserProvidedFunctionAppResourceId = StaticSiteUserProvidedFunctionAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, functionAppName);
-StaticSiteUserProvidedFunctionAppResource staticSiteUserProvidedFunctionApp = client.GetStaticSiteUserProvidedFunctionAppResource(staticSiteUserProvidedFunctionAppResourceId);
+ResourceIdentifier staticSiteResourceId = StaticSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+StaticSiteResource staticSite = client.GetStaticSiteResource(staticSiteResourceId);
+
+// get the collection of this StaticSiteUserProvidedFunctionAppResource
+StaticSiteUserProvidedFunctionAppCollection collection = staticSite.GetStaticSiteUserProvidedFunctionApps();
 
 // invoke the operation
-StaticSiteUserProvidedFunctionAppResource result = await staticSiteUserProvidedFunctionApp.GetAsync();
+string functionAppName = "testFunctionApp";
+NullableResponse<StaticSiteUserProvidedFunctionAppResource> response = await collection.GetIfExistsAsync(functionAppName);
+StaticSiteUserProvidedFunctionAppResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-StaticSiteUserProvidedFunctionAppData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    StaticSiteUserProvidedFunctionAppData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

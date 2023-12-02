@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryEnvironmentContainerResource created on azure
-// for more information of creating MachineLearningRegistryEnvironmentContainerResource, please refer to the document of MachineLearningRegistryEnvironmentContainerResource
+// this example assumes you already have this MachineLearningRegistryResource created on azure
+// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg123";
 string registryName = "testregistry";
-string environmentName = "testEnvironment";
-ResourceIdentifier machineLearningRegistryEnvironmentContainerResourceId = MachineLearningRegistryEnvironmentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, environmentName);
-MachineLearningRegistryEnvironmentContainerResource machineLearningRegistryEnvironmentContainer = client.GetMachineLearningRegistryEnvironmentContainerResource(machineLearningRegistryEnvironmentContainerResourceId);
+ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
+
+// get the collection of this MachineLearningRegistryEnvironmentContainerResource
+MachineLearningRegistryEnvironmentContainerCollection collection = machineLearningRegistry.GetMachineLearningRegistryEnvironmentContainers();
 
 // invoke the operation
+string environmentName = "testEnvironment";
 MachineLearningEnvironmentContainerData data = new MachineLearningEnvironmentContainerData(new MachineLearningEnvironmentContainerProperties()
 {
     Description = "string",
@@ -41,7 +44,7 @@ MachineLearningEnvironmentContainerData data = new MachineLearningEnvironmentCon
     ["additionalProp3"] = "string",
     },
 });
-ArmOperation<MachineLearningRegistryEnvironmentContainerResource> lro = await machineLearningRegistryEnvironmentContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearningRegistryEnvironmentContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, environmentName, data);
 MachineLearningRegistryEnvironmentContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

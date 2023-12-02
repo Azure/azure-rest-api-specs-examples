@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningFeatureStoreEntityContainerResource created on azure
+// for more information of creating MachineLearningFeatureStoreEntityContainerResource, please refer to the document of MachineLearningFeatureStoreEntityContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningFeatureStoreEntityContainerResource
-MachineLearningFeatureStoreEntityContainerCollection collection = machineLearningWorkspace.GetMachineLearningFeatureStoreEntityContainers();
+string name = "string";
+ResourceIdentifier machineLearningFeatureStoreEntityContainerResourceId = MachineLearningFeatureStoreEntityContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningFeatureStoreEntityContainerResource machineLearningFeatureStoreEntityContainer = client.GetMachineLearningFeatureStoreEntityContainerResource(machineLearningFeatureStoreEntityContainerResourceId);
 
 // invoke the operation
-string name = "string";
-NullableResponse<MachineLearningFeatureStoreEntityContainerResource> response = await collection.GetIfExistsAsync(name);
-MachineLearningFeatureStoreEntityContainerResource result = response.HasValue ? response.Value : null;
+MachineLearningFeatureStoreEntityContainerResource result = await machineLearningFeatureStoreEntityContainer.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MachineLearningFeatureStoreEntityContainerData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MachineLearningFeatureStoreEntityContainerData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

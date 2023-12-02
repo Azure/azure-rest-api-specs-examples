@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningFeatureSetContainerResource created on azure
+// for more information of creating MachineLearningFeatureSetContainerResource, please refer to the document of MachineLearningFeatureSetContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningFeatureSetContainerResource
-MachineLearningFeatureSetContainerCollection collection = machineLearningWorkspace.GetMachineLearningFeatureSetContainers();
+string name = "string";
+ResourceIdentifier machineLearningFeatureSetContainerResourceId = MachineLearningFeatureSetContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningFeatureSetContainerResource machineLearningFeatureSetContainer = client.GetMachineLearningFeatureSetContainerResource(machineLearningFeatureSetContainerResourceId);
 
 // invoke the operation
-string name = "string";
 MachineLearningFeatureSetContainerData data = new MachineLearningFeatureSetContainerData(new MachineLearningFeatureSetContainerProperties()
 {
     IsArchived = false,
@@ -41,7 +38,7 @@ MachineLearningFeatureSetContainerData data = new MachineLearningFeatureSetConta
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearningFeatureSetContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<MachineLearningFeatureSetContainerResource> lro = await machineLearningFeatureSetContainer.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningFeatureSetContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

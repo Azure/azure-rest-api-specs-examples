@@ -16,21 +16,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningComponentVersionResource created on azure
-// for more information of creating MachineLearningComponentVersionResource, please refer to the document of MachineLearningComponentVersionResource
+// this example assumes you already have this MachineLearningComponentContainerResource created on azure
+// for more information of creating MachineLearningComponentContainerResource, please refer to the document of MachineLearningComponentContainerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string name = "string";
-string version = "string";
-ResourceIdentifier machineLearningComponentVersionResourceId = MachineLearningComponentVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name, version);
-MachineLearningComponentVersionResource machineLearningComponentVersion = client.GetMachineLearningComponentVersionResource(machineLearningComponentVersionResourceId);
+ResourceIdentifier machineLearningComponentContainerResourceId = MachineLearningComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningComponentContainerResource machineLearningComponentContainer = client.GetMachineLearningComponentContainerResource(machineLearningComponentContainerResourceId);
+
+// get the collection of this MachineLearningComponentVersionResource
+MachineLearningComponentVersionCollection collection = machineLearningComponentContainer.GetMachineLearningComponentVersions();
 
 // invoke the operation
-MachineLearningComponentVersionResource result = await machineLearningComponentVersion.GetAsync();
+string version = "string";
+NullableResponse<MachineLearningComponentVersionResource> response = await collection.GetIfExistsAsync(version);
+MachineLearningComponentVersionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MachineLearningComponentVersionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MachineLearningComponentVersionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

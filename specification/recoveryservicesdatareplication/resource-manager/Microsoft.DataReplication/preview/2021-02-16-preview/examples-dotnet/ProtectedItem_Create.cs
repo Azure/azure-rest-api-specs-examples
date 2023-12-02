@@ -15,18 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataReplicationProtectedItemResource created on azure
-// for more information of creating DataReplicationProtectedItemResource, please refer to the document of DataReplicationProtectedItemResource
+// this example assumes you already have this DataReplicationVaultResource created on azure
+// for more information of creating DataReplicationVaultResource, please refer to the document of DataReplicationVaultResource
 string subscriptionId = "930CEC23-4430-4513-B855-DBA237E2F3BF";
 string resourceGroupName = "rgrecoveryservicesdatareplication";
 string vaultName = "4";
-string protectedItemName = "d";
-ResourceIdentifier dataReplicationProtectedItemResourceId = DataReplicationProtectedItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, protectedItemName);
-DataReplicationProtectedItemResource dataReplicationProtectedItem = client.GetDataReplicationProtectedItemResource(dataReplicationProtectedItemResourceId);
+ResourceIdentifier dataReplicationVaultResourceId = DataReplicationVaultResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
+DataReplicationVaultResource dataReplicationVault = client.GetDataReplicationVaultResource(dataReplicationVaultResourceId);
+
+// get the collection of this DataReplicationProtectedItemResource
+DataReplicationProtectedItemCollection collection = dataReplicationVault.GetDataReplicationProtectedItems();
 
 // invoke the operation
+string protectedItemName = "d";
 DataReplicationProtectedItemData data = new DataReplicationProtectedItemData(new DataReplicationProtectedItemProperties("tjoeiynplt", "jwxdo", new GeneralProtectedItemModelCustomProperties()));
-ArmOperation<DataReplicationProtectedItemResource> lro = await dataReplicationProtectedItem.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataReplicationProtectedItemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, protectedItemName, data);
 DataReplicationProtectedItemResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

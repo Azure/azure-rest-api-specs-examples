@@ -16,18 +16,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this CustomAssessmentAutomationResource created on azure
+// for more information of creating CustomAssessmentAutomationResource, please refer to the document of CustomAssessmentAutomationResource
 string subscriptionId = "e5d1b86c-3051-44d5-8802-aa65d45a279b";
 string resourceGroupName = "TestResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this CustomAssessmentAutomationResource
-CustomAssessmentAutomationCollection collection = resourceGroupResource.GetCustomAssessmentAutomations();
+string customAssessmentAutomationName = "MyCustomAssessmentAutomation";
+ResourceIdentifier customAssessmentAutomationResourceId = CustomAssessmentAutomationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, customAssessmentAutomationName);
+CustomAssessmentAutomationResource customAssessmentAutomation = client.GetCustomAssessmentAutomationResource(customAssessmentAutomationResourceId);
 
 // invoke the operation
-string customAssessmentAutomationName = "MyCustomAssessmentAutomation";
 CustomAssessmentAutomationCreateOrUpdateContent content = new CustomAssessmentAutomationCreateOrUpdateContent()
 {
     CompressedQuery = "DQAKAEkAYQBtAF8ARwByAG8AdQBwAA0ACgB8ACAAZQB4AHQAZQBuAGQAIABIAGUAYQBsAHQAaABTAHQAYQB0AHUAcwAgAD0AIABpAGYAZgAoAHQAbwBzAHQAcgBpAG4AZwAoAFIAZQBjAG8AcgBkAC4AVQBzAGUAcgBOAGEAbQBlACkAIABjAG8AbgB0AGEAaQBuAHMAIAAnAHUAcwBlAHIAJwAsACAAJwBVAE4ASABFAEEATABUAEgAWQAnACwAIAAnAEgARQBBAEwAVABIAFkAJwApAA0ACgA=",
@@ -37,7 +34,7 @@ CustomAssessmentAutomationCreateOrUpdateContent content = new CustomAssessmentAu
     Description = "Data should be encrypted",
     RemediationDescription = "Encrypt store by...",
 };
-ArmOperation<CustomAssessmentAutomationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, customAssessmentAutomationName, content);
+ArmOperation<CustomAssessmentAutomationResource> lro = await customAssessmentAutomation.UpdateAsync(WaitUntil.Completed, content);
 CustomAssessmentAutomationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

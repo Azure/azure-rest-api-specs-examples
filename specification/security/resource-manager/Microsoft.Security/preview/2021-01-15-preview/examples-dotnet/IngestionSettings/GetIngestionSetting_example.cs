@@ -26,6 +26,18 @@ IngestionSettingCollection collection = subscriptionResource.GetIngestionSetting
 
 // invoke the operation
 string ingestionSettingName = "default";
-bool result = await collection.ExistsAsync(ingestionSettingName);
+NullableResponse<IngestionSettingResource> response = await collection.GetIfExistsAsync(ingestionSettingName);
+IngestionSettingResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    IngestionSettingData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

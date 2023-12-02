@@ -16,16 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this GovernanceRuleResource
+// this example assumes you already have this GovernanceRuleResource created on azure
+// for more information of creating GovernanceRuleResource, please refer to the document of GovernanceRuleResource
 string scope = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-GovernanceRuleCollection collection = client.GetGovernanceRules(scopeId);
+string ruleId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
+ResourceIdentifier governanceRuleResourceId = GovernanceRuleResource.CreateResourceIdentifier(scope, ruleId);
+GovernanceRuleResource governanceRule = client.GetGovernanceRuleResource(governanceRuleResourceId);
 
 // invoke the operation
-string ruleId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
-bool result = await collection.ExistsAsync(ruleId);
+GovernanceRuleResource result = await governanceRule.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+GovernanceRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

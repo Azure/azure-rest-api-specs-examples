@@ -27,6 +27,18 @@ GovernanceAssignmentCollection collection = securityAssessment.GetGovernanceAssi
 
 // invoke the operation
 string assignmentKey = "6634ff9f-127b-4bf2-8e6e-b1737f5e789c";
-bool result = await collection.ExistsAsync(assignmentKey);
+NullableResponse<GovernanceAssignmentResource> response = await collection.GetIfExistsAsync(assignmentKey);
+GovernanceAssignmentResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GovernanceAssignmentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

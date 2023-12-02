@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkCloudKubernetesClusterResource created on azure
-// for more information of creating NetworkCloudKubernetesClusterResource, please refer to the document of NetworkCloudKubernetesClusterResource
+// this example assumes you already have this NetworkCloudAgentPoolResource created on azure
+// for more information of creating NetworkCloudAgentPoolResource, please refer to the document of NetworkCloudAgentPoolResource
 string subscriptionId = "123e4567-e89b-12d3-a456-426655440000";
 string resourceGroupName = "resourceGroupName";
 string kubernetesClusterName = "kubernetesClusterName";
-ResourceIdentifier networkCloudKubernetesClusterResourceId = NetworkCloudKubernetesClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, kubernetesClusterName);
-NetworkCloudKubernetesClusterResource networkCloudKubernetesCluster = client.GetNetworkCloudKubernetesClusterResource(networkCloudKubernetesClusterResourceId);
-
-// get the collection of this NetworkCloudAgentPoolResource
-NetworkCloudAgentPoolCollection collection = networkCloudKubernetesCluster.GetNetworkCloudAgentPools();
+string agentPoolName = "agentPoolName";
+ResourceIdentifier networkCloudAgentPoolResourceId = NetworkCloudAgentPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, kubernetesClusterName, agentPoolName);
+NetworkCloudAgentPoolResource networkCloudAgentPool = client.GetNetworkCloudAgentPoolResource(networkCloudAgentPoolResourceId);
 
 // invoke the operation
-string agentPoolName = "agentPoolName";
-bool result = await collection.ExistsAsync(agentPoolName);
+NetworkCloudAgentPoolResource result = await networkCloudAgentPool.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkCloudAgentPoolData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

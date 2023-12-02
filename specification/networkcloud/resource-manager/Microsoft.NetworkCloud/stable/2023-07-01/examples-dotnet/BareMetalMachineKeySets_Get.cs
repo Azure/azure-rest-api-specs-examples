@@ -16,20 +16,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkCloudBareMetalMachineKeySetResource created on azure
-// for more information of creating NetworkCloudBareMetalMachineKeySetResource, please refer to the document of NetworkCloudBareMetalMachineKeySetResource
+// this example assumes you already have this NetworkCloudClusterResource created on azure
+// for more information of creating NetworkCloudClusterResource, please refer to the document of NetworkCloudClusterResource
 string subscriptionId = "123e4567-e89b-12d3-a456-426655440000";
 string resourceGroupName = "resourceGroupName";
 string clusterName = "clusterName";
-string bareMetalMachineKeySetName = "bareMetalMachineKeySetName";
-ResourceIdentifier networkCloudBareMetalMachineKeySetResourceId = NetworkCloudBareMetalMachineKeySetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, bareMetalMachineKeySetName);
-NetworkCloudBareMetalMachineKeySetResource networkCloudBareMetalMachineKeySet = client.GetNetworkCloudBareMetalMachineKeySetResource(networkCloudBareMetalMachineKeySetResourceId);
+ResourceIdentifier networkCloudClusterResourceId = NetworkCloudClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+NetworkCloudClusterResource networkCloudCluster = client.GetNetworkCloudClusterResource(networkCloudClusterResourceId);
+
+// get the collection of this NetworkCloudBareMetalMachineKeySetResource
+NetworkCloudBareMetalMachineKeySetCollection collection = networkCloudCluster.GetNetworkCloudBareMetalMachineKeySets();
 
 // invoke the operation
-NetworkCloudBareMetalMachineKeySetResource result = await networkCloudBareMetalMachineKeySet.GetAsync();
+string bareMetalMachineKeySetName = "bareMetalMachineKeySetName";
+NullableResponse<NetworkCloudBareMetalMachineKeySetResource> response = await collection.GetIfExistsAsync(bareMetalMachineKeySetName);
+NetworkCloudBareMetalMachineKeySetResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkCloudBareMetalMachineKeySetData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkCloudBareMetalMachineKeySetData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseRestorePointResource created on azure
-// for more information of creating SynapseRestorePointResource, please refer to the document of SynapseRestorePointResource
+// this example assumes you already have this SynapseSqlPoolResource created on azure
+// for more information of creating SynapseSqlPoolResource, please refer to the document of SynapseSqlPoolResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string workspaceName = "testws";
 string sqlPoolName = "testpool";
-string restorePointName = "131546477590000000";
-ResourceIdentifier synapseRestorePointResourceId = SynapseRestorePointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, restorePointName);
-SynapseRestorePointResource synapseRestorePoint = client.GetSynapseRestorePointResource(synapseRestorePointResourceId);
+ResourceIdentifier synapseSqlPoolResourceId = SynapseSqlPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName);
+SynapseSqlPoolResource synapseSqlPool = client.GetSynapseSqlPoolResource(synapseSqlPoolResourceId);
+
+// get the collection of this SynapseRestorePointResource
+SynapseRestorePointCollection collection = synapseSqlPool.GetSynapseRestorePoints();
 
 // invoke the operation
-SynapseRestorePointResource result = await synapseRestorePoint.GetAsync();
+string restorePointName = "131546477590000000";
+NullableResponse<SynapseRestorePointResource> response = await collection.GetIfExistsAsync(restorePointName);
+SynapseRestorePointResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseRestorePointData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseRestorePointData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,23 +14,34 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SynapseSqlPoolColumnResource created on azure
-// for more information of creating SynapseSqlPoolColumnResource, please refer to the document of SynapseSqlPoolColumnResource
+// this example assumes you already have this SynapseSqlPoolTableResource created on azure
+// for more information of creating SynapseSqlPoolTableResource, please refer to the document of SynapseSqlPoolTableResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string workspaceName = "serverName";
 string sqlPoolName = "myDatabase";
 string schemaName = "dbo";
 string tableName = "table1";
-string columnName = "column1";
-ResourceIdentifier synapseSqlPoolColumnResourceId = SynapseSqlPoolColumnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, schemaName, tableName, columnName);
-SynapseSqlPoolColumnResource synapseSqlPoolColumn = client.GetSynapseSqlPoolColumnResource(synapseSqlPoolColumnResourceId);
+ResourceIdentifier synapseSqlPoolTableResourceId = SynapseSqlPoolTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, sqlPoolName, schemaName, tableName);
+SynapseSqlPoolTableResource synapseSqlPoolTable = client.GetSynapseSqlPoolTableResource(synapseSqlPoolTableResourceId);
+
+// get the collection of this SynapseSqlPoolColumnResource
+SynapseSqlPoolColumnCollection collection = synapseSqlPoolTable.GetSynapseSqlPoolColumns();
 
 // invoke the operation
-SynapseSqlPoolColumnResource result = await synapseSqlPoolColumn.GetAsync();
+string columnName = "column1";
+NullableResponse<SynapseSqlPoolColumnResource> response = await collection.GetIfExistsAsync(columnName);
+SynapseSqlPoolColumnResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SynapseSqlPoolColumnData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SynapseSqlPoolColumnData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

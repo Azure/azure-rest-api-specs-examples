@@ -14,16 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FederatedIdentityCredentialResource created on azure
-// for more information of creating FederatedIdentityCredentialResource, please refer to the document of FederatedIdentityCredentialResource
+// this example assumes you already have this UserAssignedIdentityResource created on azure
+// for more information of creating UserAssignedIdentityResource, please refer to the document of UserAssignedIdentityResource
 string subscriptionId = "c267c0e7-0a73-4789-9e17-d26aeb0904e5";
 string resourceGroupName = "rgName";
 string resourceName = "resourceName";
-string federatedIdentityCredentialResourceName = "ficResourceName";
-ResourceIdentifier federatedIdentityCredentialResourceId = FederatedIdentityCredentialResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, federatedIdentityCredentialResourceName);
-FederatedIdentityCredentialResource federatedIdentityCredential = client.GetFederatedIdentityCredentialResource(federatedIdentityCredentialResourceId);
+ResourceIdentifier userAssignedIdentityResourceId = UserAssignedIdentityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+UserAssignedIdentityResource userAssignedIdentity = client.GetUserAssignedIdentityResource(userAssignedIdentityResourceId);
+
+// get the collection of this FederatedIdentityCredentialResource
+FederatedIdentityCredentialCollection collection = userAssignedIdentity.GetFederatedIdentityCredentials();
 
 // invoke the operation
+string federatedIdentityCredentialResourceName = "ficResourceName";
 FederatedIdentityCredentialData data = new FederatedIdentityCredentialData()
 {
     IssuerUri = new Uri("https://oidc.prod-aks.azure.com/TenantGUID/IssuerGUID"),
@@ -33,7 +36,7 @@ FederatedIdentityCredentialData data = new FederatedIdentityCredentialData()
     "api://AzureADTokenExchange"
     },
 };
-ArmOperation<FederatedIdentityCredentialResource> lro = await federatedIdentityCredential.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<FederatedIdentityCredentialResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, federatedIdentityCredentialResourceName, data);
 FederatedIdentityCredentialResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

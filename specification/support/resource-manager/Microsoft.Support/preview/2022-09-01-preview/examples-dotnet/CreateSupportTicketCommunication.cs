@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionSupportTicketResource created on azure
-// for more information of creating SubscriptionSupportTicketResource, please refer to the document of SubscriptionSupportTicketResource
+// this example assumes you already have this SupportTicketCommunicationResource created on azure
+// for more information of creating SupportTicketCommunicationResource, please refer to the document of SupportTicketCommunicationResource
 string subscriptionId = "subid";
 string supportTicketName = "testticket";
-ResourceIdentifier subscriptionSupportTicketResourceId = SubscriptionSupportTicketResource.CreateResourceIdentifier(subscriptionId, supportTicketName);
-SubscriptionSupportTicketResource subscriptionSupportTicket = client.GetSubscriptionSupportTicketResource(subscriptionSupportTicketResourceId);
-
-// get the collection of this SupportTicketCommunicationResource
-SupportTicketCommunicationCollection collection = subscriptionSupportTicket.GetSupportTicketCommunications();
+string communicationName = "testcommunication";
+ResourceIdentifier supportTicketCommunicationResourceId = SupportTicketCommunicationResource.CreateResourceIdentifier(subscriptionId, supportTicketName, communicationName);
+SupportTicketCommunicationResource supportTicketCommunication = client.GetSupportTicketCommunicationResource(supportTicketCommunicationResourceId);
 
 // invoke the operation
-string communicationName = "testcommunication";
 SupportTicketCommunicationData data = new SupportTicketCommunicationData()
 {
     Sender = "user@contoso.com",
     Subject = "This is a test message from a customer!",
     Body = "This is a test message from a customer!",
 };
-ArmOperation<SupportTicketCommunicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, communicationName, data);
+ArmOperation<SupportTicketCommunicationResource> lro = await supportTicketCommunication.UpdateAsync(WaitUntil.Completed, data);
 SupportTicketCommunicationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

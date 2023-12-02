@@ -28,6 +28,18 @@ WebPubSubPrivateEndpointConnectionCollection collection = webPubSub.GetWebPubSub
 
 // invoke the operation
 string privateEndpointConnectionName = "mywebpubsubservice.1fa229cd-bf3f-47f0-8c49-afb36723997e";
-bool result = await collection.ExistsAsync(privateEndpointConnectionName);
+NullableResponse<WebPubSubPrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
+WebPubSubPrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    WebPubSubPrivateEndpointConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkCloudClusterResource created on azure
-// for more information of creating NetworkCloudClusterResource, please refer to the document of NetworkCloudClusterResource
+// this example assumes you already have this NetworkCloudBmcKeySetResource created on azure
+// for more information of creating NetworkCloudBmcKeySetResource, please refer to the document of NetworkCloudBmcKeySetResource
 string subscriptionId = "123e4567-e89b-12d3-a456-426655440000";
 string resourceGroupName = "resourceGroupName";
 string clusterName = "clusterName";
-ResourceIdentifier networkCloudClusterResourceId = NetworkCloudClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-NetworkCloudClusterResource networkCloudCluster = client.GetNetworkCloudClusterResource(networkCloudClusterResourceId);
-
-// get the collection of this NetworkCloudBmcKeySetResource
-NetworkCloudBmcKeySetCollection collection = networkCloudCluster.GetNetworkCloudBmcKeySets();
+string bmcKeySetName = "bmcKeySetName";
+ResourceIdentifier networkCloudBmcKeySetResourceId = NetworkCloudBmcKeySetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, bmcKeySetName);
+NetworkCloudBmcKeySetResource networkCloudBmcKeySet = client.GetNetworkCloudBmcKeySetResource(networkCloudBmcKeySetResourceId);
 
 // invoke the operation
-string bmcKeySetName = "bmcKeySetName";
-bool result = await collection.ExistsAsync(bmcKeySetName);
+NetworkCloudBmcKeySetResource result = await networkCloudBmcKeySet.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkCloudBmcKeySetData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

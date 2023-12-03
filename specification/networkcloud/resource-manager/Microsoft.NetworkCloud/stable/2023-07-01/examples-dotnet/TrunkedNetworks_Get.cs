@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkCloudTrunkedNetworkResource created on azure
-// for more information of creating NetworkCloudTrunkedNetworkResource, please refer to the document of NetworkCloudTrunkedNetworkResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "123e4567-e89b-12d3-a456-426655440000";
 string resourceGroupName = "resourceGroupName";
-string trunkedNetworkName = "trunkedNetworkName";
-ResourceIdentifier networkCloudTrunkedNetworkResourceId = NetworkCloudTrunkedNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trunkedNetworkName);
-NetworkCloudTrunkedNetworkResource networkCloudTrunkedNetwork = client.GetNetworkCloudTrunkedNetworkResource(networkCloudTrunkedNetworkResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkCloudTrunkedNetworkResource
+NetworkCloudTrunkedNetworkCollection collection = resourceGroupResource.GetNetworkCloudTrunkedNetworks();
 
 // invoke the operation
-NetworkCloudTrunkedNetworkResource result = await networkCloudTrunkedNetwork.GetAsync();
+string trunkedNetworkName = "trunkedNetworkName";
+NullableResponse<NetworkCloudTrunkedNetworkResource> response = await collection.GetIfExistsAsync(trunkedNetworkName);
+NetworkCloudTrunkedNetworkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkCloudTrunkedNetworkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkCloudTrunkedNetworkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

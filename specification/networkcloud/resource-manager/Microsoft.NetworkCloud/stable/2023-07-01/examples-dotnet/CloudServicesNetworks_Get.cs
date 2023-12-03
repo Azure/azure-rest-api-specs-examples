@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkCloudCloudServicesNetworkResource created on azure
-// for more information of creating NetworkCloudCloudServicesNetworkResource, please refer to the document of NetworkCloudCloudServicesNetworkResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "123e4567-e89b-12d3-a456-426655440000";
 string resourceGroupName = "resourceGroupName";
-string cloudServicesNetworkName = "cloudServicesNetworkName";
-ResourceIdentifier networkCloudCloudServicesNetworkResourceId = NetworkCloudCloudServicesNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cloudServicesNetworkName);
-NetworkCloudCloudServicesNetworkResource networkCloudCloudServicesNetwork = client.GetNetworkCloudCloudServicesNetworkResource(networkCloudCloudServicesNetworkResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkCloudCloudServicesNetworkResource
+NetworkCloudCloudServicesNetworkCollection collection = resourceGroupResource.GetNetworkCloudCloudServicesNetworks();
 
 // invoke the operation
-NetworkCloudCloudServicesNetworkResource result = await networkCloudCloudServicesNetwork.GetAsync();
+string cloudServicesNetworkName = "cloudServicesNetworkName";
+NullableResponse<NetworkCloudCloudServicesNetworkResource> response = await collection.GetIfExistsAsync(cloudServicesNetworkName);
+NetworkCloudCloudServicesNetworkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkCloudCloudServicesNetworkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkCloudCloudServicesNetworkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

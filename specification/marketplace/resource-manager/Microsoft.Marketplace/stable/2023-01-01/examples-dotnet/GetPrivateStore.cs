@@ -15,17 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PrivateStoreResource created on azure
-// for more information of creating PrivateStoreResource, please refer to the document of PrivateStoreResource
-Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
-ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceIdentifier(privateStoreId);
-PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
+// this example assumes you already have this TenantResource created on azure
+// for more information of creating TenantResource, please refer to the document of TenantResource
+var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
+
+// get the collection of this PrivateStoreResource
+PrivateStoreCollection collection = tenantResource.GetPrivateStores();
 
 // invoke the operation
-PrivateStoreResource result = await privateStore.GetAsync();
+Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
+NullableResponse<PrivateStoreResource> response = await collection.GetIfExistsAsync(privateStoreId);
+PrivateStoreResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-PrivateStoreData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PrivateStoreData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

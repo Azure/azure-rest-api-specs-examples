@@ -15,14 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MarketplaceAdminApprovalRequestResource created on azure
-// for more information of creating MarketplaceAdminApprovalRequestResource, please refer to the document of MarketplaceAdminApprovalRequestResource
+// this example assumes you already have this PrivateStoreResource created on azure
+// for more information of creating PrivateStoreResource, please refer to the document of PrivateStoreResource
 Guid privateStoreId = Guid.Parse("a0e28e55-90c4-41d8-8e34-bb7ef7775406");
-string adminRequestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
-ResourceIdentifier marketplaceAdminApprovalRequestResourceId = MarketplaceAdminApprovalRequestResource.CreateResourceIdentifier(privateStoreId, adminRequestApprovalId);
-MarketplaceAdminApprovalRequestResource marketplaceAdminApprovalRequest = client.GetMarketplaceAdminApprovalRequestResource(marketplaceAdminApprovalRequestResourceId);
+ResourceIdentifier privateStoreResourceId = PrivateStoreResource.CreateResourceIdentifier(privateStoreId);
+PrivateStoreResource privateStore = client.GetPrivateStoreResource(privateStoreResourceId);
+
+// get the collection of this MarketplaceAdminApprovalRequestResource
+MarketplaceAdminApprovalRequestCollection collection = privateStore.GetMarketplaceAdminApprovalRequests();
 
 // invoke the operation
+string adminRequestApprovalId = "marketplacetestthirdparty.md-test-third-party-2";
 MarketplaceAdminApprovalRequestData data = new MarketplaceAdminApprovalRequestData()
 {
     PublisherId = "marketplacetestthirdparty",
@@ -37,7 +40,7 @@ MarketplaceAdminApprovalRequestData data = new MarketplaceAdminApprovalRequestDa
     Guid.Parse("f8ee227e-85d7-477d-abbf-854d6decaf70"),Guid.Parse("39246ad6-c521-4fed-8de7-77dede2e873f")
     },
 };
-ArmOperation<MarketplaceAdminApprovalRequestResource> lro = await marketplaceAdminApprovalRequest.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MarketplaceAdminApprovalRequestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, adminRequestApprovalId, data);
 MarketplaceAdminApprovalRequestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

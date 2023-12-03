@@ -15,15 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CustomRolloutResource created on azure
-// for more information of creating CustomRolloutResource, please refer to the document of CustomRolloutResource
+// this example assumes you already have this ProviderRegistrationResource created on azure
+// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-string rolloutName = "brazilUsShoeBoxTesting";
-ResourceIdentifier customRolloutResourceId = CustomRolloutResource.CreateResourceIdentifier(subscriptionId, providerNamespace, rolloutName);
-CustomRolloutResource customRollout = client.GetCustomRolloutResource(customRolloutResourceId);
+ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
+ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
+
+// get the collection of this CustomRolloutResource
+CustomRolloutCollection collection = providerRegistration.GetCustomRollouts();
 
 // invoke the operation
+string rolloutName = "brazilUsShoeBoxTesting";
 CustomRolloutData data = new CustomRolloutData(new CustomRolloutProperties(new CustomRolloutSpecification(new TrafficRegions()
 {
     Regions =
@@ -31,7 +34,7 @@ CustomRolloutData data = new CustomRolloutData(new CustomRolloutProperties(new C
     new AzureLocation("brazilus")
     },
 })));
-ArmOperation<CustomRolloutResource> lro = await customRollout.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<CustomRolloutResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, rolloutName, data);
 CustomRolloutResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

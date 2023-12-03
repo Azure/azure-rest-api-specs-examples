@@ -16,18 +16,15 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ProviderRegistrationResource created on azure
-// for more information of creating ProviderRegistrationResource, please refer to the document of ProviderRegistrationResource
+// this example assumes you already have this DefaultRolloutResource created on azure
+// for more information of creating DefaultRolloutResource, please refer to the document of DefaultRolloutResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
-ResourceIdentifier providerRegistrationResourceId = ProviderRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace);
-ProviderRegistrationResource providerRegistration = client.GetProviderRegistrationResource(providerRegistrationResourceId);
-
-// get the collection of this DefaultRolloutResource
-DefaultRolloutCollection collection = providerRegistration.GetDefaultRollouts();
+string rolloutName = "2020week10";
+ResourceIdentifier defaultRolloutResourceId = DefaultRolloutResource.CreateResourceIdentifier(subscriptionId, providerNamespace, rolloutName);
+DefaultRolloutResource defaultRollout = client.GetDefaultRolloutResource(defaultRolloutResourceId);
 
 // invoke the operation
-string rolloutName = "2020week10";
 DefaultRolloutData data = new DefaultRolloutData()
 {
     Properties = new DefaultRolloutProperties()
@@ -48,7 +45,7 @@ DefaultRolloutData data = new DefaultRolloutData()
         },
     },
 };
-ArmOperation<DefaultRolloutResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, rolloutName, data);
+ArmOperation<DefaultRolloutResource> lro = await defaultRollout.UpdateAsync(WaitUntil.Completed, data);
 DefaultRolloutResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

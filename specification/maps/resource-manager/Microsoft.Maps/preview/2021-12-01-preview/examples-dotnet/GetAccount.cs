@@ -17,19 +17,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MapsAccountResource created on azure
-// for more information of creating MapsAccountResource, please refer to the document of MapsAccountResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "21a9967a-e8a9-4656-a70b-96ff1c4d05a0";
 string resourceGroupName = "myResourceGroup";
-string accountName = "myMapsAccount";
-ResourceIdentifier mapsAccountResourceId = MapsAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-MapsAccountResource mapsAccount = client.GetMapsAccountResource(mapsAccountResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this MapsAccountResource
+MapsAccountCollection collection = resourceGroupResource.GetMapsAccounts();
 
 // invoke the operation
-MapsAccountResource result = await mapsAccount.GetAsync();
+string accountName = "myMapsAccount";
+NullableResponse<MapsAccountResource> response = await collection.GetIfExistsAsync(accountName);
+MapsAccountResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MapsAccountData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MapsAccountData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

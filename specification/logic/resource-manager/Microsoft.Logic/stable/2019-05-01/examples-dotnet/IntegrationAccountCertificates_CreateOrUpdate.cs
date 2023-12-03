@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountResource created on azure
-// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
+// this example assumes you already have this IntegrationAccountCertificateResource created on azure
+// for more information of creating IntegrationAccountCertificateResource, please refer to the document of IntegrationAccountCertificateResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
-IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
-
-// get the collection of this IntegrationAccountCertificateResource
-IntegrationAccountCertificateCollection collection = integrationAccount.GetIntegrationAccountCertificates();
+string certificateName = "testCertificate";
+ResourceIdentifier integrationAccountCertificateResourceId = IntegrationAccountCertificateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, certificateName);
+IntegrationAccountCertificateResource integrationAccountCertificate = client.GetIntegrationAccountCertificateResource(integrationAccountCertificateResourceId);
 
 // invoke the operation
-string certificateName = "testCertificate";
 IntegrationAccountCertificateData data = new IntegrationAccountCertificateData(new AzureLocation("brazilsouth"))
 {
     Key = new IntegrationAccountKeyVaultKeyReference("<keyName>")
@@ -35,9 +32,9 @@ IntegrationAccountCertificateData data = new IntegrationAccountCertificateData(n
         KeyVersion = "87d9764197604449b9b8eb7bd8710868",
         ResourceId = new ResourceIdentifier("/subscriptions/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourcegroups/testResourceGroup/providers/microsoft.keyvault/vaults/<keyVaultName>"),
     },
-    PublicCertificate = BinaryData.FromString("<publicCertificateValue>"),
+    PublicCertificate = BinaryData.FromString("\"<publicCertificateValue>\""),
 };
-ArmOperation<IntegrationAccountCertificateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, certificateName, data);
+ArmOperation<IntegrationAccountCertificateResource> lro = await integrationAccountCertificate.UpdateAsync(WaitUntil.Completed, data);
 IntegrationAccountCertificateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

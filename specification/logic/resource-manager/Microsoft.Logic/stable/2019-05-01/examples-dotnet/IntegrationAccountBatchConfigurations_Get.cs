@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationAccountResource created on azure
-// for more information of creating IntegrationAccountResource, please refer to the document of IntegrationAccountResource
+// this example assumes you already have this IntegrationAccountBatchConfigurationResource created on azure
+// for more information of creating IntegrationAccountBatchConfigurationResource, please refer to the document of IntegrationAccountBatchConfigurationResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string integrationAccountName = "testIntegrationAccount";
-ResourceIdentifier integrationAccountResourceId = IntegrationAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName);
-IntegrationAccountResource integrationAccount = client.GetIntegrationAccountResource(integrationAccountResourceId);
-
-// get the collection of this IntegrationAccountBatchConfigurationResource
-IntegrationAccountBatchConfigurationCollection collection = integrationAccount.GetIntegrationAccountBatchConfigurations();
+string batchConfigurationName = "testBatchConfiguration";
+ResourceIdentifier integrationAccountBatchConfigurationResourceId = IntegrationAccountBatchConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, integrationAccountName, batchConfigurationName);
+IntegrationAccountBatchConfigurationResource integrationAccountBatchConfiguration = client.GetIntegrationAccountBatchConfigurationResource(integrationAccountBatchConfigurationResourceId);
 
 // invoke the operation
-string batchConfigurationName = "testBatchConfiguration";
-bool result = await collection.ExistsAsync(batchConfigurationName);
+IntegrationAccountBatchConfigurationResource result = await integrationAccountBatchConfiguration.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+IntegrationAccountBatchConfigurationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

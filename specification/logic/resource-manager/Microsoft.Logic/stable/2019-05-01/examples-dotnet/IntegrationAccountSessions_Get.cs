@@ -28,6 +28,18 @@ IntegrationAccountSessionCollection collection = integrationAccount.GetIntegrati
 
 // invoke the operation
 string sessionName = "testsession123-ICN";
-bool result = await collection.ExistsAsync(sessionName);
+NullableResponse<IntegrationAccountSessionResource> response = await collection.GetIfExistsAsync(sessionName);
+IntegrationAccountSessionResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    IntegrationAccountSessionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

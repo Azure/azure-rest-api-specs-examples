@@ -13,21 +13,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowRunActionResource created on azure
-// for more information of creating LogicWorkflowRunActionResource, please refer to the document of LogicWorkflowRunActionResource
+// this example assumes you already have this LogicWorkflowRunActionScopeRepetitionResource created on azure
+// for more information of creating LogicWorkflowRunActionScopeRepetitionResource, please refer to the document of LogicWorkflowRunActionScopeRepetitionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string workflowName = "testFlow";
 string runName = "08586776228332053161046300351";
 string actionName = "for_each";
-ResourceIdentifier logicWorkflowRunActionResourceId = LogicWorkflowRunActionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, actionName);
-LogicWorkflowRunActionResource logicWorkflowRunAction = client.GetLogicWorkflowRunActionResource(logicWorkflowRunActionResourceId);
-
-// get the collection of this LogicWorkflowRunActionScopeRepetitionResource
-LogicWorkflowRunActionScopeRepetitionCollection collection = logicWorkflowRunAction.GetLogicWorkflowRunActionScopeRepetitions();
+string repetitionName = "000000";
+ResourceIdentifier logicWorkflowRunActionScopeRepetitionResourceId = LogicWorkflowRunActionScopeRepetitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, actionName, repetitionName);
+LogicWorkflowRunActionScopeRepetitionResource logicWorkflowRunActionScopeRepetition = client.GetLogicWorkflowRunActionScopeRepetitionResource(logicWorkflowRunActionScopeRepetitionResourceId);
 
 // invoke the operation
-string repetitionName = "000000";
-bool result = await collection.ExistsAsync(repetitionName);
+LogicWorkflowRunActionScopeRepetitionResource result = await logicWorkflowRunActionScopeRepetition.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LogicWorkflowRunActionRepetitionDefinitionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisEnterpriseClusterResource created on azure
-// for more information of creating RedisEnterpriseClusterResource, please refer to the document of RedisEnterpriseClusterResource
+// this example assumes you already have this RedisEnterpriseDatabaseResource created on azure
+// for more information of creating RedisEnterpriseDatabaseResource, please refer to the document of RedisEnterpriseDatabaseResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string clusterName = "cache1";
-ResourceIdentifier redisEnterpriseClusterResourceId = RedisEnterpriseClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-RedisEnterpriseClusterResource redisEnterpriseCluster = client.GetRedisEnterpriseClusterResource(redisEnterpriseClusterResourceId);
-
-// get the collection of this RedisEnterpriseDatabaseResource
-RedisEnterpriseDatabaseCollection collection = redisEnterpriseCluster.GetRedisEnterpriseDatabases();
+string databaseName = "default";
+ResourceIdentifier redisEnterpriseDatabaseResourceId = RedisEnterpriseDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, databaseName);
+RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpriseDatabaseResource(redisEnterpriseDatabaseResourceId);
 
 // invoke the operation
-string databaseName = "default";
-bool result = await collection.ExistsAsync(databaseName);
+RedisEnterpriseDatabaseResource result = await redisEnterpriseDatabase.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+RedisEnterpriseDatabaseData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

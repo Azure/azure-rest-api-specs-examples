@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RedisEnterpriseClusterResource created on azure
-// for more information of creating RedisEnterpriseClusterResource, please refer to the document of RedisEnterpriseClusterResource
+// this example assumes you already have this RedisEnterprisePrivateEndpointConnectionResource created on azure
+// for more information of creating RedisEnterprisePrivateEndpointConnectionResource, please refer to the document of RedisEnterprisePrivateEndpointConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string clusterName = "cache1";
-ResourceIdentifier redisEnterpriseClusterResourceId = RedisEnterpriseClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
-RedisEnterpriseClusterResource redisEnterpriseCluster = client.GetRedisEnterpriseClusterResource(redisEnterpriseClusterResourceId);
-
-// get the collection of this RedisEnterprisePrivateEndpointConnectionResource
-RedisEnterprisePrivateEndpointConnectionCollection collection = redisEnterpriseCluster.GetRedisEnterprisePrivateEndpointConnections();
+string privateEndpointConnectionName = "pectest01";
+ResourceIdentifier redisEnterprisePrivateEndpointConnectionResourceId = RedisEnterprisePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, privateEndpointConnectionName);
+RedisEnterprisePrivateEndpointConnectionResource redisEnterprisePrivateEndpointConnection = client.GetRedisEnterprisePrivateEndpointConnectionResource(redisEnterprisePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "pectest01";
 RedisEnterprisePrivateEndpointConnectionData data = new RedisEnterprisePrivateEndpointConnectionData()
 {
     ConnectionState = new RedisEnterprisePrivateLinkServiceConnectionState()
@@ -36,7 +33,7 @@ RedisEnterprisePrivateEndpointConnectionData data = new RedisEnterprisePrivateEn
         Description = "Auto-Approved",
     },
 };
-ArmOperation<RedisEnterprisePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
+ArmOperation<RedisEnterprisePrivateEndpointConnectionResource> lro = await redisEnterprisePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
 RedisEnterprisePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

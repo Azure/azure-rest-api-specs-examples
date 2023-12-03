@@ -15,20 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SphereProductResource created on azure
-// for more information of creating SphereProductResource, please refer to the document of SphereProductResource
+// this example assumes you already have this SphereDeviceGroupResource created on azure
+// for more information of creating SphereDeviceGroupResource, please refer to the document of SphereDeviceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "MyResourceGroup1";
 string catalogName = "MyCatalog1";
 string productName = "MyProduct1";
-ResourceIdentifier sphereProductResourceId = SphereProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, catalogName, productName);
-SphereProductResource sphereProduct = client.GetSphereProductResource(sphereProductResourceId);
-
-// get the collection of this SphereDeviceGroupResource
-SphereDeviceGroupCollection collection = sphereProduct.GetSphereDeviceGroups();
+string deviceGroupName = "MyDeviceGroup1";
+ResourceIdentifier sphereDeviceGroupResourceId = SphereDeviceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, catalogName, productName, deviceGroupName);
+SphereDeviceGroupResource sphereDeviceGroup = client.GetSphereDeviceGroupResource(sphereDeviceGroupResourceId);
 
 // invoke the operation
-string deviceGroupName = "MyDeviceGroup1";
-bool result = await collection.ExistsAsync(deviceGroupName);
+SphereDeviceGroupResource result = await sphereDeviceGroup.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SphereDeviceGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

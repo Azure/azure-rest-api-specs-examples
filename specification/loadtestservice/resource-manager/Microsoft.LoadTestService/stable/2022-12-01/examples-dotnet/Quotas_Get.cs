@@ -4,7 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.LoadTesting;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.LoadTesting.Models;
 
 // Generated from example definition: specification/loadtestservice/resource-manager/Microsoft.LoadTestService/stable/2022-12-01/examples/Quotas_Get.json
 // this example is just showing the usage of "Quotas_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,18 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this LoadTestingQuotaResource created on azure
+// for more information of creating LoadTestingQuotaResource, please refer to the document of LoadTestingQuotaResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this LoadTestingQuotaResource
 AzureLocation location = new AzureLocation("westus");
-LoadTestingQuotaCollection collection = subscriptionResource.GetAllLoadTestingQuota(location);
+string quotaBucketName = "testQuotaBucket";
+ResourceIdentifier loadTestingQuotaResourceId = LoadTestingQuotaResource.CreateResourceIdentifier(subscriptionId, location, quotaBucketName);
+LoadTestingQuotaResource loadTestingQuota = client.GetLoadTestingQuotaResource(loadTestingQuotaResourceId);
 
 // invoke the operation
-string quotaBucketName = "testQuotaBucket";
-bool result = await collection.ExistsAsync(quotaBucketName);
+LoadTestingQuotaResource result = await loadTestingQuota.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LoadTestingQuotaData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

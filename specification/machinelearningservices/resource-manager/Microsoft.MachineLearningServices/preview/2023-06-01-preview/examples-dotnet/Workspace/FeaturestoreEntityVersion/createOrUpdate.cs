@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningFeatureStoreEntityContainerResource created on azure
-// for more information of creating MachineLearningFeatureStoreEntityContainerResource, please refer to the document of MachineLearningFeatureStoreEntityContainerResource
+// this example assumes you already have this MachineLearningFeaturestoreEntityVersionResource created on azure
+// for more information of creating MachineLearningFeaturestoreEntityVersionResource, please refer to the document of MachineLearningFeaturestoreEntityVersionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string name = "string";
-ResourceIdentifier machineLearningFeatureStoreEntityContainerResourceId = MachineLearningFeatureStoreEntityContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
-MachineLearningFeatureStoreEntityContainerResource machineLearningFeatureStoreEntityContainer = client.GetMachineLearningFeatureStoreEntityContainerResource(machineLearningFeatureStoreEntityContainerResourceId);
-
-// get the collection of this MachineLearningFeaturestoreEntityVersionResource
-MachineLearningFeaturestoreEntityVersionCollection collection = machineLearningFeatureStoreEntityContainer.GetMachineLearningFeaturestoreEntityVersions();
+string version = "string";
+ResourceIdentifier machineLearningFeaturestoreEntityVersionResourceId = MachineLearningFeaturestoreEntityVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name, version);
+MachineLearningFeaturestoreEntityVersionResource machineLearningFeaturestoreEntityVersion = client.GetMachineLearningFeaturestoreEntityVersionResource(machineLearningFeaturestoreEntityVersionResourceId);
 
 // invoke the operation
-string version = "string";
 MachineLearningFeaturestoreEntityVersionData data = new MachineLearningFeaturestoreEntityVersionData(new MachineLearningFeatureStoreEntityVersionProperties()
 {
     IndexColumns =
@@ -51,7 +48,7 @@ MachineLearningFeaturestoreEntityVersionData data = new MachineLearningFeaturest
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearningFeaturestoreEntityVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);
+ArmOperation<MachineLearningFeaturestoreEntityVersionResource> lro = await machineLearningFeaturestoreEntityVersion.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningFeaturestoreEntityVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

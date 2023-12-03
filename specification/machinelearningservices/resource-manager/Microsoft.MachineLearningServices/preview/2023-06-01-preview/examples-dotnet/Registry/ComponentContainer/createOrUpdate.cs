@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearninRegistryComponentContainerResource created on azure
-// for more information of creating MachineLearninRegistryComponentContainerResource, please refer to the document of MachineLearninRegistryComponentContainerResource
+// this example assumes you already have this MachineLearningRegistryResource created on azure
+// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
-string componentName = "string";
-ResourceIdentifier machineLearninRegistryComponentContainerResourceId = MachineLearninRegistryComponentContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, componentName);
-MachineLearninRegistryComponentContainerResource machineLearninRegistryComponentContainer = client.GetMachineLearninRegistryComponentContainerResource(machineLearninRegistryComponentContainerResourceId);
+ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
+
+// get the collection of this MachineLearninRegistryComponentContainerResource
+MachineLearninRegistryComponentContainerCollection collection = machineLearningRegistry.GetMachineLearninRegistryComponentContainers();
 
 // invoke the operation
+string componentName = "string";
 MachineLearningComponentContainerData data = new MachineLearningComponentContainerData(new MachineLearningComponentContainerProperties()
 {
     Description = "string",
@@ -37,7 +40,7 @@ MachineLearningComponentContainerData data = new MachineLearningComponentContain
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearninRegistryComponentContainerResource> lro = await machineLearninRegistryComponentContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearninRegistryComponentContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, componentName, data);
 MachineLearninRegistryComponentContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryModelContainerResource created on azure
-// for more information of creating MachineLearningRegistryModelContainerResource, please refer to the document of MachineLearningRegistryModelContainerResource
+// this example assumes you already have this MachineLearningRegistryResource created on azure
+// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg123";
 string registryName = "registry123";
-string modelName = "testContainer";
-ResourceIdentifier machineLearningRegistryModelContainerResourceId = MachineLearningRegistryModelContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, modelName);
-MachineLearningRegistryModelContainerResource machineLearningRegistryModelContainer = client.GetMachineLearningRegistryModelContainerResource(machineLearningRegistryModelContainerResourceId);
+ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
+
+// get the collection of this MachineLearningRegistryModelContainerResource
+MachineLearningRegistryModelContainerCollection collection = machineLearningRegistry.GetMachineLearningRegistryModelContainers();
 
 // invoke the operation
-MachineLearningRegistryModelContainerResource result = await machineLearningRegistryModelContainer.GetAsync();
+string modelName = "testContainer";
+NullableResponse<MachineLearningRegistryModelContainerResource> response = await collection.GetIfExistsAsync(modelName);
+MachineLearningRegistryModelContainerResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MachineLearningModelContainerData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MachineLearningModelContainerData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryModelContainerResource created on azure
-// for more information of creating MachineLearningRegistryModelContainerResource, please refer to the document of MachineLearningRegistryModelContainerResource
+// this example assumes you already have this MachineLearningRegistryResource created on azure
+// for more information of creating MachineLearningRegistryResource, please refer to the document of MachineLearningRegistryResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg123";
 string registryName = "registry123";
-string modelName = "testContainer";
-ResourceIdentifier machineLearningRegistryModelContainerResourceId = MachineLearningRegistryModelContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, modelName);
-MachineLearningRegistryModelContainerResource machineLearningRegistryModelContainer = client.GetMachineLearningRegistryModelContainerResource(machineLearningRegistryModelContainerResourceId);
+ResourceIdentifier machineLearningRegistryResourceId = MachineLearningRegistryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName);
+MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearningRegistryResource(machineLearningRegistryResourceId);
+
+// get the collection of this MachineLearningRegistryModelContainerResource
+MachineLearningRegistryModelContainerCollection collection = machineLearningRegistry.GetMachineLearningRegistryModelContainers();
 
 // invoke the operation
+string modelName = "testContainer";
 MachineLearningModelContainerData data = new MachineLearningModelContainerData(new MachineLearningModelContainerProperties()
 {
     Description = "Model container description",
@@ -34,7 +37,7 @@ MachineLearningModelContainerData data = new MachineLearningModelContainerData(n
     ["tag2"] = "value2",
     },
 });
-ArmOperation<MachineLearningRegistryModelContainerResource> lro = await machineLearningRegistryModelContainer.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MachineLearningRegistryModelContainerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, modelName, data);
 MachineLearningRegistryModelContainerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

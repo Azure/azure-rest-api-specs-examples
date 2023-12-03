@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningScheduleResource created on azure
+// for more information of creating MachineLearningScheduleResource, please refer to the document of MachineLearningScheduleResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningScheduleResource
-MachineLearningScheduleCollection collection = machineLearningWorkspace.GetMachineLearningSchedules();
+string name = "string";
+ResourceIdentifier machineLearningScheduleResourceId = MachineLearningScheduleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningScheduleResource machineLearningSchedule = client.GetMachineLearningScheduleResource(machineLearningScheduleResourceId);
 
 // invoke the operation
-string name = "string";
 MachineLearningScheduleData data = new MachineLearningScheduleData(new MachineLearningScheduleProperties(new MachineLearningEndpointScheduleAction(BinaryData.FromObjectAsJson(new Dictionary<string, object>()
 {
     ["9965593e-526f-4b89-bb36-761138cf2794"] = null
@@ -51,7 +48,7 @@ MachineLearningScheduleData data = new MachineLearningScheduleData(new MachineLe
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearningScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<MachineLearningScheduleResource> lro = await machineLearningSchedule.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningScheduleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

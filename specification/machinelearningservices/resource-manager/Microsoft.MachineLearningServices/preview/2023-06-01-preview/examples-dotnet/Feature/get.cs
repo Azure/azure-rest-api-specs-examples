@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningFeatureResource created on azure
-// for more information of creating MachineLearningFeatureResource, please refer to the document of MachineLearningFeatureResource
+// this example assumes you already have this MachineLearningFeatureSetVersionResource created on azure
+// for more information of creating MachineLearningFeatureSetVersionResource, please refer to the document of MachineLearningFeatureSetVersionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
 string featuresetName = "string";
 string featuresetVersion = "string";
-string featureName = "string";
-ResourceIdentifier machineLearningFeatureResourceId = MachineLearningFeatureResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, featuresetName, featuresetVersion, featureName);
-MachineLearningFeatureResource machineLearningFeature = client.GetMachineLearningFeatureResource(machineLearningFeatureResourceId);
+ResourceIdentifier machineLearningFeatureSetVersionResourceId = MachineLearningFeatureSetVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, featuresetName, featuresetVersion);
+MachineLearningFeatureSetVersionResource machineLearningFeatureSetVersion = client.GetMachineLearningFeatureSetVersionResource(machineLearningFeatureSetVersionResourceId);
+
+// get the collection of this MachineLearningFeatureResource
+MachineLearningFeatureCollection collection = machineLearningFeatureSetVersion.GetMachineLearningFeatures();
 
 // invoke the operation
-MachineLearningFeatureResource result = await machineLearningFeature.GetAsync();
+string featureName = "string";
+NullableResponse<MachineLearningFeatureResource> response = await collection.GetIfExistsAsync(featureName);
+MachineLearningFeatureResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MachineLearningFeatureData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MachineLearningFeatureData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

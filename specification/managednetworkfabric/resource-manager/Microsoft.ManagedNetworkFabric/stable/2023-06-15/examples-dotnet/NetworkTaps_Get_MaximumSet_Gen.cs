@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkTapResource created on azure
-// for more information of creating NetworkTapResource, please refer to the document of NetworkTapResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "1234ABCD-0A1B-1234-5678-123456ABCDEF";
 string resourceGroupName = "example-rg";
-string networkTapName = "example-networkTap";
-ResourceIdentifier networkTapResourceId = NetworkTapResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkTapName);
-NetworkTapResource networkTap = client.GetNetworkTapResource(networkTapResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this NetworkTapResource
+NetworkTapCollection collection = resourceGroupResource.GetNetworkTaps();
 
 // invoke the operation
-NetworkTapResource result = await networkTap.GetAsync();
+string networkTapName = "example-networkTap";
+NullableResponse<NetworkTapResource> response = await collection.GetIfExistsAsync(networkTapName);
+NetworkTapResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NetworkTapData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NetworkTapData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

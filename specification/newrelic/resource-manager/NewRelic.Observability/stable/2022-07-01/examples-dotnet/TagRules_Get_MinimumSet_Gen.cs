@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NewRelicObservabilityTagRuleResource created on azure
-// for more information of creating NewRelicObservabilityTagRuleResource, please refer to the document of NewRelicObservabilityTagRuleResource
+// this example assumes you already have this NewRelicMonitorResource created on azure
+// for more information of creating NewRelicMonitorResource, please refer to the document of NewRelicMonitorResource
 string subscriptionId = "ddqonpqwjr";
 string resourceGroupName = "rgopenapi";
 string monitorName = "ipxmlcbonyxtolzejcjshkmlron";
-string ruleSetName = "bxcantgzggsepbhqmedjqyrqeezmfb";
-ResourceIdentifier newRelicObservabilityTagRuleResourceId = NewRelicObservabilityTagRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName, ruleSetName);
-NewRelicObservabilityTagRuleResource newRelicObservabilityTagRule = client.GetNewRelicObservabilityTagRuleResource(newRelicObservabilityTagRuleResourceId);
+ResourceIdentifier newRelicMonitorResourceId = NewRelicMonitorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, monitorName);
+NewRelicMonitorResource newRelicMonitorResource = client.GetNewRelicMonitorResource(newRelicMonitorResourceId);
+
+// get the collection of this NewRelicObservabilityTagRuleResource
+NewRelicObservabilityTagRuleCollection collection = newRelicMonitorResource.GetNewRelicObservabilityTagRules();
 
 // invoke the operation
-NewRelicObservabilityTagRuleResource result = await newRelicObservabilityTagRule.GetAsync();
+string ruleSetName = "bxcantgzggsepbhqmedjqyrqeezmfb";
+NullableResponse<NewRelicObservabilityTagRuleResource> response = await collection.GetIfExistsAsync(ruleSetName);
+NewRelicObservabilityTagRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NewRelicObservabilityTagRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NewRelicObservabilityTagRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

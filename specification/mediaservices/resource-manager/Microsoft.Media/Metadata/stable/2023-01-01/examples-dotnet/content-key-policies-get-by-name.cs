@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContentKeyPolicyResource created on azure
-// for more information of creating ContentKeyPolicyResource, please refer to the document of ContentKeyPolicyResource
+// this example assumes you already have this MediaServicesAccountResource created on azure
+// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
-string contentKeyPolicyName = "PolicyWithMultipleOptions";
-ResourceIdentifier contentKeyPolicyResourceId = ContentKeyPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, contentKeyPolicyName);
-ContentKeyPolicyResource contentKeyPolicy = client.GetContentKeyPolicyResource(contentKeyPolicyResourceId);
+ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
+MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
+
+// get the collection of this ContentKeyPolicyResource
+ContentKeyPolicyCollection collection = mediaServicesAccount.GetContentKeyPolicies();
 
 // invoke the operation
-ContentKeyPolicyResource result = await contentKeyPolicy.GetAsync();
+string contentKeyPolicyName = "PolicyWithMultipleOptions";
+NullableResponse<ContentKeyPolicyResource> response = await collection.GetIfExistsAsync(contentKeyPolicyName);
+ContentKeyPolicyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContentKeyPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContentKeyPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaServicesAccountResource created on azure
-// for more information of creating MediaServicesAccountResource, please refer to the document of MediaServicesAccountResource
+// this example assumes you already have this MediaServicesPrivateEndpointConnectionResource created on azure
+// for more information of creating MediaServicesPrivateEndpointConnectionResource, please refer to the document of MediaServicesPrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contososports";
-ResourceIdentifier mediaServicesAccountResourceId = MediaServicesAccountResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName);
-MediaServicesAccountResource mediaServicesAccount = client.GetMediaServicesAccountResource(mediaServicesAccountResourceId);
-
-// get the collection of this MediaServicesPrivateEndpointConnectionResource
-MediaServicesPrivateEndpointConnectionCollection collection = mediaServicesAccount.GetMediaServicesPrivateEndpointConnections();
+string name = "connectionName1";
+ResourceIdentifier mediaServicesPrivateEndpointConnectionResourceId = MediaServicesPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, name);
+MediaServicesPrivateEndpointConnectionResource mediaServicesPrivateEndpointConnection = client.GetMediaServicesPrivateEndpointConnectionResource(mediaServicesPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string name = "connectionName1";
-bool result = await collection.ExistsAsync(name);
+MediaServicesPrivateEndpointConnectionResource result = await mediaServicesPrivateEndpointConnection.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MediaServicesPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

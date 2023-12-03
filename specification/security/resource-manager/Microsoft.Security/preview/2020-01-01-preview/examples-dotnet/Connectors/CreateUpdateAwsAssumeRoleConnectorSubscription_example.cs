@@ -4,6 +4,7 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -15,14 +16,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityCloudConnectorResource created on azure
-// for more information of creating SecurityCloudConnectorResource, please refer to the document of SecurityCloudConnectorResource
+// this example assumes you already have this SubscriptionResource created on azure
+// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-string connectorName = "aws_dev2";
-ResourceIdentifier securityCloudConnectorResourceId = SecurityCloudConnectorResource.CreateResourceIdentifier(subscriptionId, connectorName);
-SecurityCloudConnectorResource securityCloudConnector = client.GetSecurityCloudConnectorResource(securityCloudConnectorResourceId);
+ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
+SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
+
+// get the collection of this SecurityCloudConnectorResource
+SecurityCloudConnectorCollection collection = subscriptionResource.GetSecurityCloudConnectors();
 
 // invoke the operation
+string connectorName = "aws_dev2";
 SecurityCloudConnectorData data = new SecurityCloudConnectorData()
 {
     HybridComputeSettings = new HybridComputeSettingsProperties(AutoProvisionState.On)
@@ -42,7 +46,7 @@ SecurityCloudConnectorData data = new SecurityCloudConnectorData()
     },
     AuthenticationDetails = new AwsAssumeRoleAuthenticationDetailsProperties("arn:aws:iam::81231569658:role/AscConnector", Guid.Parse("20ff7fc3-e762-44dd-bd96-b71116dcdc23")),
 };
-ArmOperation<SecurityCloudConnectorResource> lro = await securityCloudConnector.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SecurityCloudConnectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectorName, data);
 SecurityCloudConnectorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

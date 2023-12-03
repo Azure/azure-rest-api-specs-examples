@@ -16,15 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityAutomationResource created on azure
-// for more information of creating SecurityAutomationResource, please refer to the document of SecurityAutomationResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "a5caac9c-5c04-49af-b3d0-e204f40345d5";
 string resourceGroupName = "exampleResourceGroup";
-string automationName = "exampleAutomation";
-ResourceIdentifier securityAutomationResourceId = SecurityAutomationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, automationName);
-SecurityAutomationResource securityAutomation = client.GetSecurityAutomationResource(securityAutomationResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this SecurityAutomationResource
+SecurityAutomationCollection collection = resourceGroupResource.GetSecurityAutomations();
 
 // invoke the operation
+string automationName = "exampleAutomation";
 SecurityAutomationData data = new SecurityAutomationData(new AzureLocation("Central US"))
 {
     Description = "An example of a security automation that triggers one LogicApp resource (myTest1) on any security assessment of type customAssessment",
@@ -73,7 +76,7 @@ SecurityAutomationData data = new SecurityAutomationData(new AzureLocation("Cent
     {
     },
 };
-ArmOperation<SecurityAutomationResource> lro = await securityAutomation.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SecurityAutomationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, automationName, data);
 SecurityAutomationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

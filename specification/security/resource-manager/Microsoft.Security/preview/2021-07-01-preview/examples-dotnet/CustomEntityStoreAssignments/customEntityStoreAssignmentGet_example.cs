@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this CustomEntityStoreAssignmentResource created on azure
+// for more information of creating CustomEntityStoreAssignmentResource, please refer to the document of CustomEntityStoreAssignmentResource
 string subscriptionId = "e5d1b86c-3051-44d5-8802-aa65d45a279b";
 string resourceGroupName = "TestResourceGroup";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this CustomEntityStoreAssignmentResource
-CustomEntityStoreAssignmentCollection collection = resourceGroupResource.GetCustomEntityStoreAssignments();
+string customEntityStoreAssignmentName = "33e7cc6e-a139-4723-a0e5-76993aee0771";
+ResourceIdentifier customEntityStoreAssignmentResourceId = CustomEntityStoreAssignmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, customEntityStoreAssignmentName);
+CustomEntityStoreAssignmentResource customEntityStoreAssignment = client.GetCustomEntityStoreAssignmentResource(customEntityStoreAssignmentResourceId);
 
 // invoke the operation
-string customEntityStoreAssignmentName = "33e7cc6e-a139-4723-a0e5-76993aee0771";
-bool result = await collection.ExistsAsync(customEntityStoreAssignmentName);
+CustomEntityStoreAssignmentResource result = await customEntityStoreAssignment.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CustomEntityStoreAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

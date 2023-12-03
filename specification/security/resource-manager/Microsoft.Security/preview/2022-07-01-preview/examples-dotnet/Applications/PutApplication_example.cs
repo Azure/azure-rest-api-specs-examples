@@ -5,7 +5,6 @@ using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 using Azure.ResourceManager.SecurityCenter.Models;
 
@@ -17,17 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SubscriptionSecurityApplicationResource created on azure
+// for more information of creating SubscriptionSecurityApplicationResource, please refer to the document of SubscriptionSecurityApplicationResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SubscriptionSecurityApplicationResource
-SubscriptionSecurityApplicationCollection collection = subscriptionResource.GetSubscriptionSecurityApplications();
+string applicationId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
+ResourceIdentifier subscriptionSecurityApplicationResourceId = SubscriptionSecurityApplicationResource.CreateResourceIdentifier(subscriptionId, applicationId);
+SubscriptionSecurityApplicationResource subscriptionSecurityApplication = client.GetSubscriptionSecurityApplicationResource(subscriptionSecurityApplicationResourceId);
 
 // invoke the operation
-string applicationId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
 SecurityApplicationData data = new SecurityApplicationData()
 {
     DisplayName = "Admin's application",
@@ -44,7 +40,7 @@ SecurityApplicationData data = new SecurityApplicationData()
     ["value"] = "-bil-"} }})
     },
 };
-ArmOperation<SubscriptionSecurityApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationId, data);
+ArmOperation<SubscriptionSecurityApplicationResource> lro = await subscriptionSecurityApplication.UpdateAsync(WaitUntil.Completed, data);
 SubscriptionSecurityApplicationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

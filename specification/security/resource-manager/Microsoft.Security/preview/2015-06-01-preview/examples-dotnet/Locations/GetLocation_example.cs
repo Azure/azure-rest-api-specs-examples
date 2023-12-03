@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
+using Azure.ResourceManager.SecurityCenter.Models;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/examples/Locations/GetLocation_example.json
 // this example is just showing the usage of "Locations_Get" operation, for the dependent resources, they will have to be created separately.
@@ -14,17 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SecurityCenterLocationResource created on azure
+// for more information of creating SecurityCenterLocationResource, please refer to the document of SecurityCenterLocationResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SecurityCenterLocationResource
-SecurityCenterLocationCollection collection = subscriptionResource.GetSecurityCenterLocations();
+AzureLocation ascLocation = new AzureLocation("centralus");
+ResourceIdentifier securityCenterLocationResourceId = SecurityCenterLocationResource.CreateResourceIdentifier(subscriptionId, ascLocation);
+SecurityCenterLocationResource securityCenterLocation = client.GetSecurityCenterLocationResource(securityCenterLocationResourceId);
 
 // invoke the operation
-AzureLocation ascLocation = new AzureLocation("centralus");
-bool result = await collection.ExistsAsync(ascLocation);
+SecurityCenterLocationResource result = await securityCenterLocation.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityCenterLocationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

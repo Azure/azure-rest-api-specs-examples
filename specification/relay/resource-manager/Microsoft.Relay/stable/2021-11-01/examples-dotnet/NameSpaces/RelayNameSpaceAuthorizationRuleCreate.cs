@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RelayNamespaceAuthorizationRuleResource created on azure
-// for more information of creating RelayNamespaceAuthorizationRuleResource, please refer to the document of RelayNamespaceAuthorizationRuleResource
+// this example assumes you already have this RelayNamespaceResource created on azure
+// for more information of creating RelayNamespaceResource, please refer to the document of RelayNamespaceResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "resourcegroup";
 string namespaceName = "example-RelayNamespace-01";
-string authorizationRuleName = "example-RelayAuthRules-01";
-ResourceIdentifier relayNamespaceAuthorizationRuleResourceId = RelayNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
-RelayNamespaceAuthorizationRuleResource relayNamespaceAuthorizationRule = client.GetRelayNamespaceAuthorizationRuleResource(relayNamespaceAuthorizationRuleResourceId);
+ResourceIdentifier relayNamespaceResourceId = RelayNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
+RelayNamespaceResource relayNamespace = client.GetRelayNamespaceResource(relayNamespaceResourceId);
+
+// get the collection of this RelayNamespaceAuthorizationRuleResource
+RelayNamespaceAuthorizationRuleCollection collection = relayNamespace.GetRelayNamespaceAuthorizationRules();
 
 // invoke the operation
+string authorizationRuleName = "example-RelayAuthRules-01";
 RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
 {
     Rights =
@@ -32,7 +35,7 @@ RelayAuthorizationRuleData data = new RelayAuthorizationRuleData()
     RelayAccessRight.Listen,RelayAccessRight.Send
     },
 };
-ArmOperation<RelayNamespaceAuthorizationRuleResource> lro = await relayNamespaceAuthorizationRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RelayNamespaceAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, data);
 RelayNamespaceAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

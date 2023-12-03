@@ -6,6 +6,7 @@ using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.RecoveryServicesBackup;
 using Azure.ResourceManager.RecoveryServicesBackup.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2023-04-01/examples/BackupResourceEncryptionConfig_Put.json
 // this example is just showing the usage of "BackupResourceEncryptionConfigs_Update" operation, for the dependent resources, they will have to be created separately.
@@ -15,15 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BackupResourceEncryptionConfigExtendedResource created on azure
-// for more information of creating BackupResourceEncryptionConfigExtendedResource, please refer to the document of BackupResourceEncryptionConfigExtendedResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "test-rg";
-string vaultName = "source-rsv";
-ResourceIdentifier backupResourceEncryptionConfigExtendedResourceId = BackupResourceEncryptionConfigExtendedResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName);
-BackupResourceEncryptionConfigExtendedResource backupResourceEncryptionConfigExtended = client.GetBackupResourceEncryptionConfigExtendedResource(backupResourceEncryptionConfigExtendedResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this BackupResourceEncryptionConfigExtendedResource
+BackupResourceEncryptionConfigExtendedCollection collection = resourceGroupResource.GetBackupResourceEncryptionConfigExtendeds();
 
 // invoke the operation
+string vaultName = "source-rsv";
 BackupResourceEncryptionConfigExtendedCreateOrUpdateContent content = new BackupResourceEncryptionConfigExtendedCreateOrUpdateContent(new AzureLocation("placeholder"))
 {
     Properties = new BackupResourceEncryptionConfig()
@@ -34,6 +38,6 @@ BackupResourceEncryptionConfigExtendedCreateOrUpdateContent content = new Backup
         InfrastructureEncryptionState = new InfrastructureEncryptionState("true"),
     },
 };
-await backupResourceEncryptionConfigExtended.UpdateAsync(WaitUntil.Completed, content);
+await collection.CreateOrUpdateAsync(WaitUntil.Completed, vaultName, content);
 
 Console.WriteLine($"Succeeded");

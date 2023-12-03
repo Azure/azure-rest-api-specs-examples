@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BackupProtectionContainerResource created on azure
-// for more information of creating BackupProtectionContainerResource, please refer to the document of BackupProtectionContainerResource
+// this example assumes you already have this BackupProtectedItemResource created on azure
+// for more information of creating BackupProtectedItemResource, please refer to the document of BackupProtectedItemResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "SwaggerTestRg";
 string vaultName = "NetSDKTestRsVault";
 string fabricName = "Azure";
 string containerName = "IaasVMContainer;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1";
-ResourceIdentifier backupProtectionContainerResourceId = BackupProtectionContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, fabricName, containerName);
-BackupProtectionContainerResource backupProtectionContainer = client.GetBackupProtectionContainerResource(backupProtectionContainerResourceId);
-
-// get the collection of this BackupProtectedItemResource
-BackupProtectedItemCollection collection = backupProtectionContainer.GetBackupProtectedItems();
+string protectedItemName = "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1";
+ResourceIdentifier backupProtectedItemResourceId = BackupProtectedItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vaultName, fabricName, containerName, protectedItemName);
+BackupProtectedItemResource backupProtectedItem = client.GetBackupProtectedItemResource(backupProtectedItemResourceId);
 
 // invoke the operation
-string protectedItemName = "VM;iaasvmcontainerv2;netsdktestrg;netvmtestv2vm1";
 BackupProtectedItemData data = new BackupProtectedItemData(new AzureLocation("placeholder"))
 {
     Properties = new IaasComputeVmProtectedItem()
@@ -38,7 +35,7 @@ BackupProtectedItemData data = new BackupProtectedItemData(new AzureLocation("pl
         SourceResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/netsdktestrg/providers/Microsoft.Compute/virtualMachines/netvmtestv2vm1"),
     },
 };
-ArmOperation<BackupProtectedItemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, protectedItemName, data);
+ArmOperation<BackupProtectedItemResource> lro = await backupProtectedItem.UpdateAsync(WaitUntil.Completed, data);
 BackupProtectedItemResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

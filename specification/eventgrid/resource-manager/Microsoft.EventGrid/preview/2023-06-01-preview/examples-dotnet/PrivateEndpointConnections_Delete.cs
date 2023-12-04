@@ -15,16 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridPartnerNamespacePrivateEndpointConnectionResource created on azure
-// for more information of creating EventGridPartnerNamespacePrivateEndpointConnectionResource, please refer to the document of EventGridPartnerNamespacePrivateEndpointConnectionResource
+// this example assumes you already have this EventGridDomainPrivateEndpointConnectionResource created on azure
+// for more information of creating EventGridDomainPrivateEndpointConnectionResource, please refer to the document of EventGridDomainPrivateEndpointConnectionResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string parentName = "exampletopic1";
 string privateEndpointConnectionName = "BMTPE5.8A30D251-4C61-489D-A1AA-B37C4A329B8B";
-ResourceIdentifier eventGridPartnerNamespacePrivateEndpointConnectionResourceId = EventGridPartnerNamespacePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName, privateEndpointConnectionName);
-EventGridPartnerNamespacePrivateEndpointConnectionResource eventGridPartnerNamespacePrivateEndpointConnection = client.GetEventGridPartnerNamespacePrivateEndpointConnectionResource(eventGridPartnerNamespacePrivateEndpointConnectionResourceId);
+ResourceIdentifier eventGridDomainPrivateEndpointConnectionResourceId = EventGridDomainPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName, privateEndpointConnectionName);
+EventGridDomainPrivateEndpointConnectionResource eventGridDomainPrivateEndpointConnection = client.GetEventGridDomainPrivateEndpointConnectionResource(eventGridDomainPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-await eventGridPartnerNamespacePrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
+await eventGridDomainPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine($"Succeeded");

@@ -15,19 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridNamespaceResource created on azure
-// for more information of creating EventGridNamespaceResource, please refer to the document of EventGridNamespaceResource
+// this example assumes you already have this NamespaceTopicResource created on azure
+// for more information of creating NamespaceTopicResource, please refer to the document of NamespaceTopicResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e41";
 string resourceGroupName = "examplerg";
 string namespaceName = "examplenamespace2";
-ResourceIdentifier eventGridNamespaceResourceId = EventGridNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventGridNamespaceResource eventGridNamespace = client.GetEventGridNamespaceResource(eventGridNamespaceResourceId);
-
-// get the collection of this NamespaceTopicResource
-NamespaceTopicCollection collection = eventGridNamespace.GetNamespaceTopics();
+string topicName = "examplenamespacetopic2";
+ResourceIdentifier namespaceTopicResourceId = NamespaceTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName);
+NamespaceTopicResource namespaceTopic = client.GetNamespaceTopicResource(namespaceTopicResourceId);
 
 // invoke the operation
-string topicName = "examplenamespacetopic2";
-bool result = await collection.ExistsAsync(topicName);
+NamespaceTopicResource result = await namespaceTopic.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NamespaceTopicData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

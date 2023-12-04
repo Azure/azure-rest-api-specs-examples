@@ -16,18 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this EventGridDomainResource created on azure
+// for more information of creating EventGridDomainResource, please refer to the document of EventGridDomainResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this EventGridDomainResource
-EventGridDomainCollection collection = resourceGroupResource.GetEventGridDomains();
+string domainName = "exampledomain2";
+ResourceIdentifier eventGridDomainResourceId = EventGridDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName);
+EventGridDomainResource eventGridDomain = client.GetEventGridDomainResource(eventGridDomainResourceId);
 
 // invoke the operation
-string domainName = "exampledomain2";
-bool result = await collection.ExistsAsync(domainName);
+EventGridDomainResource result = await eventGridDomain.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventGridDomainData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

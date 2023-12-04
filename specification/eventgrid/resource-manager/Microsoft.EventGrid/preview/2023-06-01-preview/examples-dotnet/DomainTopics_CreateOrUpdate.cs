@@ -14,17 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DomainTopicResource created on azure
-// for more information of creating DomainTopicResource, please refer to the document of DomainTopicResource
+// this example assumes you already have this EventGridDomainResource created on azure
+// for more information of creating EventGridDomainResource, please refer to the document of EventGridDomainResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string domainName = "exampledomain1";
-string domainTopicName = "exampledomaintopic1";
-ResourceIdentifier domainTopicResourceId = DomainTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName, domainTopicName);
-DomainTopicResource domainTopic = client.GetDomainTopicResource(domainTopicResourceId);
+ResourceIdentifier eventGridDomainResourceId = EventGridDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName);
+EventGridDomainResource eventGridDomain = client.GetEventGridDomainResource(eventGridDomainResourceId);
+
+// get the collection of this DomainTopicResource
+DomainTopicCollection collection = eventGridDomain.GetDomainTopics();
 
 // invoke the operation
-ArmOperation<DomainTopicResource> lro = await domainTopic.UpdateAsync(WaitUntil.Completed);
+string domainTopicName = "exampledomaintopic1";
+ArmOperation<DomainTopicResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, domainTopicName);
 DomainTopicResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

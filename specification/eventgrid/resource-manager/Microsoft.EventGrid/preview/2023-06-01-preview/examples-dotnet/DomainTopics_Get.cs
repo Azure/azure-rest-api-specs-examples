@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DomainTopicResource created on azure
-// for more information of creating DomainTopicResource, please refer to the document of DomainTopicResource
+// this example assumes you already have this EventGridDomainResource created on azure
+// for more information of creating EventGridDomainResource, please refer to the document of EventGridDomainResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string domainName = "exampledomain2";
-string domainTopicName = "topic1";
-ResourceIdentifier domainTopicResourceId = DomainTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName, domainTopicName);
-DomainTopicResource domainTopic = client.GetDomainTopicResource(domainTopicResourceId);
+ResourceIdentifier eventGridDomainResourceId = EventGridDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, domainName);
+EventGridDomainResource eventGridDomain = client.GetEventGridDomainResource(eventGridDomainResourceId);
+
+// get the collection of this DomainTopicResource
+DomainTopicCollection collection = eventGridDomain.GetDomainTopics();
 
 // invoke the operation
-DomainTopicResource result = await domainTopic.GetAsync();
+string domainTopicName = "topic1";
+NullableResponse<DomainTopicResource> response = await collection.GetIfExistsAsync(domainTopicName);
+DomainTopicResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DomainTopicData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DomainTopicData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

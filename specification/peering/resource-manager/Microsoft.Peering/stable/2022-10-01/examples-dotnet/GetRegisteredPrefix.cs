@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PeeringResource created on azure
-// for more information of creating PeeringResource, please refer to the document of PeeringResource
+// this example assumes you already have this PeeringRegisteredPrefixResource created on azure
+// for more information of creating PeeringRegisteredPrefixResource, please refer to the document of PeeringRegisteredPrefixResource
 string subscriptionId = "subId";
 string resourceGroupName = "rgName";
 string peeringName = "peeringName";
-ResourceIdentifier peeringResourceId = PeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringName);
-PeeringResource peering = client.GetPeeringResource(peeringResourceId);
-
-// get the collection of this PeeringRegisteredPrefixResource
-PeeringRegisteredPrefixCollection collection = peering.GetPeeringRegisteredPrefixes();
+string registeredPrefixName = "registeredPrefixName";
+ResourceIdentifier peeringRegisteredPrefixResourceId = PeeringRegisteredPrefixResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, peeringName, registeredPrefixName);
+PeeringRegisteredPrefixResource peeringRegisteredPrefix = client.GetPeeringRegisteredPrefixResource(peeringRegisteredPrefixResourceId);
 
 // invoke the operation
-string registeredPrefixName = "registeredPrefixName";
-NullableResponse<PeeringRegisteredPrefixResource> response = await collection.GetIfExistsAsync(registeredPrefixName);
-PeeringRegisteredPrefixResource result = response.HasValue ? response.Value : null;
+PeeringRegisteredPrefixResource result = await peeringRegisteredPrefix.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    PeeringRegisteredPrefixData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PeeringRegisteredPrefixData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

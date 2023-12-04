@@ -15,16 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this CurrentQuotaLimitBaseResource
+// this example assumes you already have this CurrentQuotaLimitBaseResource created on azure
+// for more information of creating CurrentQuotaLimitBaseResource, please refer to the document of CurrentQuotaLimitBaseResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Compute/locations/eastus";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-CurrentQuotaLimitBaseCollection collection = client.GetCurrentQuotaLimitBases(scopeId);
+string resourceName = "standardNDSFamily";
+ResourceIdentifier currentQuotaLimitBaseResourceId = CurrentQuotaLimitBaseResource.CreateResourceIdentifier(scope, resourceName);
+CurrentQuotaLimitBaseResource currentQuotaLimitBase = client.GetCurrentQuotaLimitBaseResource(currentQuotaLimitBaseResourceId);
 
 // invoke the operation
-string resourceName = "standardNDSFamily";
-bool result = await collection.ExistsAsync(resourceName);
+CurrentQuotaLimitBaseResource result = await currentQuotaLimitBase.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+CurrentQuotaLimitBaseData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

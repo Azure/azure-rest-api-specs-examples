@@ -4,7 +4,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.PolicyInsights;
-using Azure.ResourceManager.PolicyInsights.Models;
 
 // Generated from example definition: specification/policyinsights/resource-manager/Microsoft.PolicyInsights/stable/2019-10-01/examples/PolicyMetadata_GetResource.json
 // this example is just showing the usage of "PolicyMetadata_GetResource" operation, for the dependent resources, they will have to be created separately.
@@ -14,15 +13,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this TenantResource created on azure
-// for more information of creating TenantResource, please refer to the document of TenantResource
-var tenantResource = client.GetTenants().GetAllAsync().GetAsyncEnumerator().Current;
-
-// get the collection of this PolicyMetadataResource
-PolicyMetadataCollection collection = tenantResource.GetAllPolicyMetadata();
+// this example assumes you already have this PolicyMetadataResource created on azure
+// for more information of creating PolicyMetadataResource, please refer to the document of PolicyMetadataResource
+string resourceName = "NIST_SP_800-53_R4_AC-2";
+ResourceIdentifier policyMetadataResourceId = PolicyMetadataResource.CreateResourceIdentifier(resourceName);
+PolicyMetadataResource policyMetadata = client.GetPolicyMetadataResource(policyMetadataResourceId);
 
 // invoke the operation
-string resourceName = "NIST_SP_800-53_R4_AC-2";
-bool result = await collection.ExistsAsync(resourceName);
+PolicyMetadataResource result = await policyMetadata.GetAsync();
 
-Console.WriteLine($"Succeeded: {result}");
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PolicyMetadataData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

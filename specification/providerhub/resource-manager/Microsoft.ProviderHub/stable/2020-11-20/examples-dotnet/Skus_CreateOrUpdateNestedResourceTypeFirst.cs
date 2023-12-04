@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NestedResourceTypeFirstSkuResource created on azure
-// for more information of creating NestedResourceTypeFirstSkuResource, please refer to the document of NestedResourceTypeFirstSkuResource
+// this example assumes you already have this ResourceTypeRegistrationResource created on azure
+// for more information of creating ResourceTypeRegistrationResource, please refer to the document of ResourceTypeRegistrationResource
 string subscriptionId = "ab7a8701-f7ef-471a-a2f4-d0ebbf494f77";
 string providerNamespace = "Microsoft.Contoso";
 string resourceType = "testResourceType";
+ResourceIdentifier resourceTypeRegistrationResourceId = ResourceTypeRegistrationResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType);
+ResourceTypeRegistrationResource resourceTypeRegistration = client.GetResourceTypeRegistrationResource(resourceTypeRegistrationResourceId);
+
+// get the collection of this NestedResourceTypeFirstSkuResource
 string nestedResourceTypeFirst = "nestedResourceTypeFirst";
-string sku = "testSku";
-ResourceIdentifier nestedResourceTypeFirstSkuResourceId = NestedResourceTypeFirstSkuResource.CreateResourceIdentifier(subscriptionId, providerNamespace, resourceType, nestedResourceTypeFirst, sku);
-NestedResourceTypeFirstSkuResource nestedResourceTypeFirstSku = client.GetNestedResourceTypeFirstSkuResource(nestedResourceTypeFirstSkuResourceId);
+NestedResourceTypeFirstSkuCollection collection = resourceTypeRegistration.GetNestedResourceTypeFirstSkus(nestedResourceTypeFirst);
 
 // invoke the operation
+string sku = "testSku";
 ResourceTypeSkuData data = new ResourceTypeSkuData()
 {
     Properties = new ResourceTypeSkuProperties(new ResourceTypeSkuSetting[]
@@ -45,7 +48,7 @@ new ResourceTypeSkuCost("xxx")
 }
 }),
 };
-ArmOperation<NestedResourceTypeFirstSkuResource> lro = await nestedResourceTypeFirstSku.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<NestedResourceTypeFirstSkuResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sku, data);
 NestedResourceTypeFirstSkuResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

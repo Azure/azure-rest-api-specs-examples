@@ -31,7 +31,7 @@ new OperationalInsightsWorkspacePurgeFilter()
 {
 Column = "TimeGenerated",
 Operator = ">",
-Value = BinaryData.FromString("2017-09-01T00:00:00"),
+Value = BinaryData.FromString("\"2017-09-01T00:00:00\""),
 }
 });
 OperationalInsightsWorkspacePurgeResult result = await operationalInsightsWorkspace.PurgeAsync(content);

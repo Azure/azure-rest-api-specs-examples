@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceFleetResource created on azure
-// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
+// this example assumes you already have this ContainerServiceFleetUpdateRunResource created on azure
+// for more information of creating ContainerServiceFleetUpdateRunResource, please refer to the document of ContainerServiceFleetUpdateRunResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
-ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
-ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
-
-// get the collection of this ContainerServiceFleetUpdateRunResource
-ContainerServiceFleetUpdateRunCollection collection = containerServiceFleet.GetContainerServiceFleetUpdateRuns();
+string updateRunName = "run1";
+ResourceIdentifier containerServiceFleetUpdateRunResourceId = ContainerServiceFleetUpdateRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateRunName);
+ContainerServiceFleetUpdateRunResource containerServiceFleetUpdateRun = client.GetContainerServiceFleetUpdateRunResource(containerServiceFleetUpdateRunResourceId);
 
 // invoke the operation
-string updateRunName = "run1";
-NullableResponse<ContainerServiceFleetUpdateRunResource> response = await collection.GetIfExistsAsync(updateRunName);
-ContainerServiceFleetUpdateRunResource result = response.HasValue ? response.Value : null;
+ContainerServiceFleetUpdateRunResource result = await containerServiceFleetUpdateRun.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerServiceFleetUpdateRunData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerServiceFleetUpdateRunData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

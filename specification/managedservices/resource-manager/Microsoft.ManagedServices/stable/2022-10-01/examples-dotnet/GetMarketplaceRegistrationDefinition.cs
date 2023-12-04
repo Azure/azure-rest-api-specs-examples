@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -13,18 +14,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedServicesMarketplaceRegistrationResource created on azure
-// for more information of creating ManagedServicesMarketplaceRegistrationResource, please refer to the document of ManagedServicesMarketplaceRegistrationResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this ManagedServicesMarketplaceRegistrationResource
 string scope = "subscription/0afefe50-734e-4610-8a82-a144ahf49dea";
-string marketplaceIdentifier = "publisher.product.planName.version";
-ResourceIdentifier managedServicesMarketplaceRegistrationResourceId = ManagedServicesMarketplaceRegistrationResource.CreateResourceIdentifier(scope, marketplaceIdentifier);
-ManagedServicesMarketplaceRegistrationResource managedServicesMarketplaceRegistration = client.GetManagedServicesMarketplaceRegistrationResource(managedServicesMarketplaceRegistrationResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+ManagedServicesMarketplaceRegistrationCollection collection = client.GetManagedServicesMarketplaceRegistrations(scopeId);
 
 // invoke the operation
-ManagedServicesMarketplaceRegistrationResource result = await managedServicesMarketplaceRegistration.GetAsync();
+string marketplaceIdentifier = "publisher.product.planName.version";
+NullableResponse<ManagedServicesMarketplaceRegistrationResource> response = await collection.GetIfExistsAsync(marketplaceIdentifier);
+ManagedServicesMarketplaceRegistrationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedServicesMarketplaceRegistrationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagedServicesMarketplaceRegistrationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

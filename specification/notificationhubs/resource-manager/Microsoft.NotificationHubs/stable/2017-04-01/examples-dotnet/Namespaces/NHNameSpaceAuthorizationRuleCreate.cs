@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NotificationHubNamespaceResource created on azure
-// for more information of creating NotificationHubNamespaceResource, please refer to the document of NotificationHubNamespaceResource
+// this example assumes you already have this NotificationHubNamespaceAuthorizationRuleResource created on azure
+// for more information of creating NotificationHubNamespaceAuthorizationRuleResource, please refer to the document of NotificationHubNamespaceAuthorizationRuleResource
 string subscriptionId = "29cfa613-cbbc-4512-b1d6-1b3a92c7fa40";
 string resourceGroupName = "5ktrial";
 string namespaceName = "nh-sdk-ns";
-ResourceIdentifier notificationHubNamespaceResourceId = NotificationHubNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-NotificationHubNamespaceResource notificationHubNamespace = client.GetNotificationHubNamespaceResource(notificationHubNamespaceResourceId);
-
-// get the collection of this NotificationHubNamespaceAuthorizationRuleResource
-NotificationHubNamespaceAuthorizationRuleCollection collection = notificationHubNamespace.GetNotificationHubNamespaceAuthorizationRules();
+string authorizationRuleName = "sdk-AuthRules-1788";
+ResourceIdentifier notificationHubNamespaceAuthorizationRuleResourceId = NotificationHubNamespaceAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, authorizationRuleName);
+NotificationHubNamespaceAuthorizationRuleResource notificationHubNamespaceAuthorizationRule = client.GetNotificationHubNamespaceAuthorizationRuleResource(notificationHubNamespaceAuthorizationRuleResourceId);
 
 // invoke the operation
-string authorizationRuleName = "sdk-AuthRules-1788";
 SharedAccessAuthorizationRuleCreateOrUpdateContent content = new SharedAccessAuthorizationRuleCreateOrUpdateContent(new SharedAccessAuthorizationRuleProperties()
 {
     Rights =
@@ -35,7 +32,7 @@ SharedAccessAuthorizationRuleCreateOrUpdateContent content = new SharedAccessAut
     AuthorizationRuleAccessRight.Listen,AuthorizationRuleAccessRight.Send
     },
 });
-ArmOperation<NotificationHubNamespaceAuthorizationRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationRuleName, content);
+ArmOperation<NotificationHubNamespaceAuthorizationRuleResource> lro = await notificationHubNamespaceAuthorizationRule.UpdateAsync(WaitUntil.Completed, content);
 NotificationHubNamespaceAuthorizationRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -16,19 +16,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HybridContainerServiceVirtualNetworkResource created on azure
-// for more information of creating HybridContainerServiceVirtualNetworkResource, please refer to the document of HybridContainerServiceVirtualNetworkResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b";
 string resourceGroupName = "test-arcappliance-resgrp";
-string virtualNetworksName = "test-vnet-static";
-ResourceIdentifier hybridContainerServiceVirtualNetworkResourceId = HybridContainerServiceVirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworksName);
-HybridContainerServiceVirtualNetworkResource hybridContainerServiceVirtualNetwork = client.GetHybridContainerServiceVirtualNetworkResource(hybridContainerServiceVirtualNetworkResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this HybridContainerServiceVirtualNetworkResource
+HybridContainerServiceVirtualNetworkCollection collection = resourceGroupResource.GetHybridContainerServiceVirtualNetworks();
 
 // invoke the operation
-HybridContainerServiceVirtualNetworkResource result = await hybridContainerServiceVirtualNetwork.GetAsync();
+string virtualNetworksName = "test-vnet-static";
+NullableResponse<HybridContainerServiceVirtualNetworkResource> response = await collection.GetIfExistsAsync(virtualNetworksName);
+HybridContainerServiceVirtualNetworkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-HybridContainerServiceVirtualNetworkData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    HybridContainerServiceVirtualNetworkData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

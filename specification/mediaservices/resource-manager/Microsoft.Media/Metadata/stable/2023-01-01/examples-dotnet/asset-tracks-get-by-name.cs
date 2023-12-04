@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MediaAssetTrackResource created on azure
-// for more information of creating MediaAssetTrackResource, please refer to the document of MediaAssetTrackResource
+// this example assumes you already have this MediaAssetResource created on azure
+// for more information of creating MediaAssetResource, please refer to the document of MediaAssetResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "contosorg";
 string accountName = "contosomedia";
 string assetName = "ClimbingMountRainer";
-string trackName = "text1";
-ResourceIdentifier mediaAssetTrackResourceId = MediaAssetTrackResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, assetName, trackName);
-MediaAssetTrackResource mediaAssetTrack = client.GetMediaAssetTrackResource(mediaAssetTrackResourceId);
+ResourceIdentifier mediaAssetResourceId = MediaAssetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, accountName, assetName);
+MediaAssetResource mediaAsset = client.GetMediaAssetResource(mediaAssetResourceId);
+
+// get the collection of this MediaAssetTrackResource
+MediaAssetTrackCollection collection = mediaAsset.GetMediaAssetTracks();
 
 // invoke the operation
-MediaAssetTrackResource result = await mediaAssetTrack.GetAsync();
+string trackName = "text1";
+NullableResponse<MediaAssetTrackResource> response = await collection.GetIfExistsAsync(trackName);
+MediaAssetTrackResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MediaAssetTrackData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MediaAssetTrackData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

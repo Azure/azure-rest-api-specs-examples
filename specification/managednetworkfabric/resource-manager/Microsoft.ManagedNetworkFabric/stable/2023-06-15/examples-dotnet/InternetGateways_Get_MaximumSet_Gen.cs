@@ -5,6 +5,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.ManagedNetworkFabric;
+using Azure.ResourceManager.ManagedNetworkFabric.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/InternetGateways_Get_MaximumSet_Gen.json
@@ -15,30 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this NetworkFabricInternetGatewayResource created on azure
+// for more information of creating NetworkFabricInternetGatewayResource, please refer to the document of NetworkFabricInternetGatewayResource
 string subscriptionId = "1234ABCD-0A1B-1234-5678-123456ABCDEF";
 string resourceGroupName = "example-rg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this NetworkFabricInternetGatewayResource
-NetworkFabricInternetGatewayCollection collection = resourceGroupResource.GetNetworkFabricInternetGateways();
+string internetGatewayName = "example-internetGateway";
+ResourceIdentifier networkFabricInternetGatewayResourceId = NetworkFabricInternetGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, internetGatewayName);
+NetworkFabricInternetGatewayResource networkFabricInternetGateway = client.GetNetworkFabricInternetGatewayResource(networkFabricInternetGatewayResourceId);
 
 // invoke the operation
-string internetGatewayName = "example-internetGateway";
-NullableResponse<NetworkFabricInternetGatewayResource> response = await collection.GetIfExistsAsync(internetGatewayName);
-NetworkFabricInternetGatewayResource result = response.HasValue ? response.Value : null;
+NetworkFabricInternetGatewayResource result = await networkFabricInternetGateway.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    NetworkFabricInternetGatewayData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkFabricInternetGatewayData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

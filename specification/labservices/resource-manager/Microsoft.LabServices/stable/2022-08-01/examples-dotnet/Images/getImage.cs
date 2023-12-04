@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LabVirtualMachineImageResource created on azure
-// for more information of creating LabVirtualMachineImageResource, please refer to the document of LabVirtualMachineImageResource
+// this example assumes you already have this LabPlanResource created on azure
+// for more information of creating LabPlanResource, please refer to the document of LabPlanResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string labPlanName = "testlabplan";
-string imageName = "image1";
-ResourceIdentifier labVirtualMachineImageResourceId = LabVirtualMachineImageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labPlanName, imageName);
-LabVirtualMachineImageResource labVirtualMachineImage = client.GetLabVirtualMachineImageResource(labVirtualMachineImageResourceId);
+ResourceIdentifier labPlanResourceId = LabPlanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, labPlanName);
+LabPlanResource labPlan = client.GetLabPlanResource(labPlanResourceId);
+
+// get the collection of this LabVirtualMachineImageResource
+LabVirtualMachineImageCollection collection = labPlan.GetLabVirtualMachineImages();
 
 // invoke the operation
-LabVirtualMachineImageResource result = await labVirtualMachineImage.GetAsync();
+string imageName = "image1";
+NullableResponse<LabVirtualMachineImageResource> response = await collection.GetIfExistsAsync(imageName);
+LabVirtualMachineImageResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LabVirtualMachineImageData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LabVirtualMachineImageData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

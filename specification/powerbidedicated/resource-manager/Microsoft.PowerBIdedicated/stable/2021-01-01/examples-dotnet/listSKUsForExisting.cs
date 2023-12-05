@@ -25,7 +25,7 @@ ResourceIdentifier dedicatedCapacityResourceId = DedicatedCapacityResource.Creat
 DedicatedCapacityResource dedicatedCapacity = client.GetDedicatedCapacityResource(dedicatedCapacityResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (SkuDetailsForExistingResource item in dedicatedCapacity.GetSkusForCapacityAsync())
+await foreach (SkuDetails item in dedicatedCapacity.GetSkusForCapacityAsync())
 {
     Console.WriteLine($"Succeeded: {item}");
 }

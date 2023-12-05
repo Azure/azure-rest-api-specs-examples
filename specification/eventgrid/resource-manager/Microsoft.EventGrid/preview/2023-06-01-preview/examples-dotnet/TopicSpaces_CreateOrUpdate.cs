@@ -14,19 +14,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridNamespaceResource created on azure
-// for more information of creating EventGridNamespaceResource, please refer to the document of EventGridNamespaceResource
+// this example assumes you already have this TopicSpaceResource created on azure
+// for more information of creating TopicSpaceResource, please refer to the document of TopicSpaceResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string namespaceName = "exampleNamespaceName1";
-ResourceIdentifier eventGridNamespaceResourceId = EventGridNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventGridNamespaceResource eventGridNamespace = client.GetEventGridNamespaceResource(eventGridNamespaceResourceId);
-
-// get the collection of this TopicSpaceResource
-TopicSpaceCollection collection = eventGridNamespace.GetTopicSpaces();
+string topicSpaceName = "exampleTopicSpaceName1";
+ResourceIdentifier topicSpaceResourceId = TopicSpaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicSpaceName);
+TopicSpaceResource topicSpace = client.GetTopicSpaceResource(topicSpaceResourceId);
 
 // invoke the operation
-string topicSpaceName = "exampleTopicSpaceName1";
 TopicSpaceData data = new TopicSpaceData()
 {
     TopicTemplates =
@@ -34,7 +31,7 @@ TopicSpaceData data = new TopicSpaceData()
     "filter1","filter2"
     },
 };
-ArmOperation<TopicSpaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, topicSpaceName, data);
+ArmOperation<TopicSpaceResource> lro = await topicSpace.UpdateAsync(WaitUntil.Completed, data);
 TopicSpaceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

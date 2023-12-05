@@ -27,6 +27,18 @@ CaCertificateCollection collection = eventGridNamespace.GetCaCertificates();
 
 // invoke the operation
 string caCertificateName = "exampleCACertificateName1";
-bool result = await collection.ExistsAsync(caCertificateName);
+NullableResponse<CaCertificateResource> response = await collection.GetIfExistsAsync(caCertificateName);
+CaCertificateResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CaCertificateData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

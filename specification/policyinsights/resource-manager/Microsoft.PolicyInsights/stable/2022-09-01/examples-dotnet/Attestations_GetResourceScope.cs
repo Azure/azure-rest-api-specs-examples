@@ -26,6 +26,18 @@ PolicyAttestationCollection collection = client.GetPolicyAttestations(scopeId);
 
 // invoke the operation
 string attestationName = "790996e6-9871-4b1f-9cd9-ec42cd6ced1e";
-bool result = await collection.ExistsAsync(attestationName);
+NullableResponse<PolicyAttestationResource> response = await collection.GetIfExistsAsync(attestationName);
+PolicyAttestationResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    PolicyAttestationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

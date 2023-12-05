@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NotificationHubAuthorizationRuleResource created on azure
-// for more information of creating NotificationHubAuthorizationRuleResource, please refer to the document of NotificationHubAuthorizationRuleResource
+// this example assumes you already have this NotificationHubResource created on azure
+// for more information of creating NotificationHubResource, please refer to the document of NotificationHubResource
 string subscriptionId = "29cfa613-cbbc-4512-b1d6-1b3a92c7fa40";
 string resourceGroupName = "5ktrial";
 string namespaceName = "nh-sdk-ns";
 string notificationHubName = "nh-sdk-hub";
-string authorizationRuleName = "DefaultListenSharedAccessSignature";
-ResourceIdentifier notificationHubAuthorizationRuleResourceId = NotificationHubAuthorizationRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, notificationHubName, authorizationRuleName);
-NotificationHubAuthorizationRuleResource notificationHubAuthorizationRule = client.GetNotificationHubAuthorizationRuleResource(notificationHubAuthorizationRuleResourceId);
+ResourceIdentifier notificationHubResourceId = NotificationHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, notificationHubName);
+NotificationHubResource notificationHub = client.GetNotificationHubResource(notificationHubResourceId);
+
+// get the collection of this NotificationHubAuthorizationRuleResource
+NotificationHubAuthorizationRuleCollection collection = notificationHub.GetNotificationHubAuthorizationRules();
 
 // invoke the operation
-NotificationHubAuthorizationRuleResource result = await notificationHubAuthorizationRule.GetAsync();
+string authorizationRuleName = "DefaultListenSharedAccessSignature";
+NullableResponse<NotificationHubAuthorizationRuleResource> response = await collection.GetIfExistsAsync(authorizationRuleName);
+NotificationHubAuthorizationRuleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NotificationHubAuthorizationRuleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NotificationHubAuthorizationRuleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

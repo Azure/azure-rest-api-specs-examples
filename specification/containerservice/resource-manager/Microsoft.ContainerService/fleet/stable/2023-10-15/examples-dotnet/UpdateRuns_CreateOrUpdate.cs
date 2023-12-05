@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceFleetResource created on azure
-// for more information of creating ContainerServiceFleetResource, please refer to the document of ContainerServiceFleetResource
+// this example assumes you already have this ContainerServiceFleetUpdateRunResource created on azure
+// for more information of creating ContainerServiceFleetUpdateRunResource, please refer to the document of ContainerServiceFleetUpdateRunResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string fleetName = "fleet1";
-ResourceIdentifier containerServiceFleetResourceId = ContainerServiceFleetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName);
-ContainerServiceFleetResource containerServiceFleet = client.GetContainerServiceFleetResource(containerServiceFleetResourceId);
-
-// get the collection of this ContainerServiceFleetUpdateRunResource
-ContainerServiceFleetUpdateRunCollection collection = containerServiceFleet.GetContainerServiceFleetUpdateRuns();
+string updateRunName = "run1";
+ResourceIdentifier containerServiceFleetUpdateRunResourceId = ContainerServiceFleetUpdateRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, fleetName, updateRunName);
+ContainerServiceFleetUpdateRunResource containerServiceFleetUpdateRun = client.GetContainerServiceFleetUpdateRunResource(containerServiceFleetUpdateRunResourceId);
 
 // invoke the operation
-string updateRunName = "run1";
 ContainerServiceFleetUpdateRunData data = new ContainerServiceFleetUpdateRunData()
 {
     UpdateStrategyId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ContainerService/fleets/myFleet/updateStrategies/strategy1"),
@@ -50,7 +47,7 @@ ContainerServiceFleetUpdateRunData data = new ContainerServiceFleetUpdateRunData
         SelectionType = NodeImageSelectionType.Latest,
     },
 };
-ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateRunName, data);
+ArmOperation<ContainerServiceFleetUpdateRunResource> lro = await containerServiceFleetUpdateRun.UpdateAsync(WaitUntil.Completed, data);
 ContainerServiceFleetUpdateRunResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

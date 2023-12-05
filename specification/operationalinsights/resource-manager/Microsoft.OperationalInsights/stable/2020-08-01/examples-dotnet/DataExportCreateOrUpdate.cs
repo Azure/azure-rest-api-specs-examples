@@ -14,16 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OperationalInsightsDataExportResource created on azure
-// for more information of creating OperationalInsightsDataExportResource, please refer to the document of OperationalInsightsDataExportResource
+// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
+// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "RgTest1";
 string workspaceName = "DeWnTest1234";
-string dataExportName = "export1";
-ResourceIdentifier operationalInsightsDataExportResourceId = OperationalInsightsDataExportResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, dataExportName);
-OperationalInsightsDataExportResource operationalInsightsDataExport = client.GetOperationalInsightsDataExportResource(operationalInsightsDataExportResourceId);
+ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
+
+// get the collection of this OperationalInsightsDataExportResource
+OperationalInsightsDataExportCollection collection = operationalInsightsWorkspace.GetOperationalInsightsDataExports();
 
 // invoke the operation
+string dataExportName = "export1";
 OperationalInsightsDataExportData data = new OperationalInsightsDataExportData()
 {
     TableNames =
@@ -32,7 +35,7 @@ OperationalInsightsDataExportData data = new OperationalInsightsDataExportData()
     },
     ResourceId = new ResourceIdentifier("/subscriptions/192b9f85-a39a-4276-b96d-d5cd351703f9/resourceGroups/OIAutoRest1234/providers/Microsoft.EventHub/namespaces/test"),
 };
-ArmOperation<OperationalInsightsDataExportResource> lro = await operationalInsightsDataExport.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<OperationalInsightsDataExportResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataExportName, data);
 OperationalInsightsDataExportResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

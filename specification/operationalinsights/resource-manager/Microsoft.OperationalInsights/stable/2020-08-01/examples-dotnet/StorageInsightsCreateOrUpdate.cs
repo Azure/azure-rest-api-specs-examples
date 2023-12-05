@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StorageInsightResource created on azure
-// for more information of creating StorageInsightResource, please refer to the document of StorageInsightResource
+// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
+// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "OIAutoRest5123";
 string workspaceName = "aztest5048";
-string storageInsightName = "AzTestSI1110";
-ResourceIdentifier storageInsightResourceId = StorageInsightResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, storageInsightName);
-StorageInsightResource storageInsight = client.GetStorageInsightResource(storageInsightResourceId);
+ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
+
+// get the collection of this StorageInsightResource
+StorageInsightCollection collection = operationalInsightsWorkspace.GetStorageInsights();
 
 // invoke the operation
+string storageInsightName = "AzTestSI1110";
 StorageInsightData data = new StorageInsightData()
 {
     Containers =
@@ -37,7 +40,7 @@ StorageInsightData data = new StorageInsightData()
     },
     StorageAccount = new OperationalInsightsStorageAccount(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000005/resourcegroups/OIAutoRest6987/providers/microsoft.storage/storageaccounts/AzTestFakeSA9945"), "1234"),
 };
-ArmOperation<StorageInsightResource> lro = await storageInsight.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StorageInsightResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, storageInsightName, data);
 StorageInsightResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

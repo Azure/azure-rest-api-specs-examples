@@ -1,13 +1,15 @@
 using System;
 using System.Threading.Tasks;
+using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.OperationalInsights;
+using Azure.ResourceManager.OperationalInsights.Models;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/WorkspacesSubscriptionList.json
-// this example is just showing the usage of "DeletedWorkspaces_List" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "Workspaces_List" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -21,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (OperationalInsightsWorkspaceResource item in subscriptionResource.GetDeletedWorkspacesAsync())
+await foreach (OperationalInsightsWorkspaceResource item in subscriptionResource.GetOperationalInsightsWorkspacesAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance

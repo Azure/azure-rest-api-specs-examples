@@ -31,7 +31,7 @@ new OperationalInsightsWorkspacePurgeFilter()
 {
 Column = "_ResourceId",
 Operator = "==",
-Value = BinaryData.FromString("/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/SomeResourceGroup/providers/microsoft.insights/components/AppInsightResource"),
+Value = BinaryData.FromString("\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/SomeResourceGroup/providers/microsoft.insights/components/AppInsightResource\""),
 }
 });
 OperationalInsightsWorkspacePurgeResult result = await operationalInsightsWorkspace.PurgeAsync(content);

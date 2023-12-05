@@ -27,6 +27,18 @@ LogAnalyticsQueryPackCollection collection = resourceGroupResource.GetLogAnalyti
 
 // invoke the operation
 string queryPackName = "my-querypack";
-bool result = await collection.ExistsAsync(queryPackName);
+NullableResponse<LogAnalyticsQueryPackResource> response = await collection.GetIfExistsAsync(queryPackName);
+LogAnalyticsQueryPackResource result = response.HasValue ? response.Value : null;
 
-Console.WriteLine($"Succeeded: {result}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LogAnalyticsQueryPackData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

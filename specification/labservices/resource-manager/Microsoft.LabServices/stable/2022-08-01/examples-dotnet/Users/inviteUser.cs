@@ -28,7 +28,7 @@ LabUserResource labUser = client.GetLabUserResource(labUserResourceId);
 // invoke the operation
 LabUserInviteRequestContent content = new LabUserInviteRequestContent()
 {
-    Text = BinaryData.FromString("Invitation to lab testlab"),
+    Text = BinaryData.FromString("\"Invitation to lab testlab\""),
 };
 await labUser.InviteAsync(WaitUntil.Completed, content);
 

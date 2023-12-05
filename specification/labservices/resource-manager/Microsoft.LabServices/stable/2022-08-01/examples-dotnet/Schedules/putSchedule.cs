@@ -37,7 +37,7 @@ LabServicesScheduleData data = new LabServicesScheduleData()
         Interval = 2,
     },
     TimeZoneId = "America/Los_Angeles",
-    Notes = BinaryData.FromString("Schedule 1 for students"),
+    Notes = BinaryData.FromString("\"Schedule 1 for students\""),
 };
 ArmOperation<LabServicesScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scheduleName, data);
 LabServicesScheduleResource result = lro.Value;

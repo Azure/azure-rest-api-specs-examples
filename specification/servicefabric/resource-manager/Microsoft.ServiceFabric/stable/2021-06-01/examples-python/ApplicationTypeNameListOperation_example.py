@@ -6,7 +6,7 @@ from azure.mgmt.servicefabric import ServiceFabricManagementClient
     pip install azure-identity
     pip install azure-mgmt-servicefabric
 # USAGE
-    python get_a_list_of_application_type_name_resources.py
+    python application_type_name_list_operation_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -25,7 +25,8 @@ def main():
         resource_group_name="resRg",
         cluster_name="myCluster",
     )
-    print(response)
+    for item in response:
+        print(item)
 
 
 # x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationTypeNameListOperation_example.json

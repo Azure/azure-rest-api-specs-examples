@@ -6,7 +6,7 @@ from azure.mgmt.servicefabric import ServiceFabricManagementClient
     pip install azure-identity
     pip install azure-mgmt-servicefabric
 # USAGE
-    python delete_a_service.py
+    python service_delete_operation_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -21,13 +21,12 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.services.begin_delete(
+    client.services.begin_delete(
         resource_group_name="resRg",
         cluster_name="myCluster",
         application_name="myApp",
         service_name="myService",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ServiceDeleteOperation_example.json

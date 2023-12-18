@@ -6,7 +6,7 @@ from azure.mgmt.servicefabric import ServiceFabricManagementClient
     pip install azure-identity
     pip install azure-mgmt-servicefabric
 # USAGE
-    python list_cluster_by_resource_group.py
+    python cluster_list_by_resource_group_operation_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -24,7 +24,8 @@ def main():
     response = client.clusters.list_by_resource_group(
         resource_group_name="resRg",
     )
-    print(response)
+    for item in response:
+        print(item)
 
 
 # x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ClusterListByResourceGroupOperation_example.json

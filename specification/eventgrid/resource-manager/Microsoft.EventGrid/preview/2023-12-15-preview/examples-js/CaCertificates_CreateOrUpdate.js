@@ -23,7 +23,7 @@ async function caCertificatesCreateOrUpdate() {
     resourceGroupName,
     namespaceName,
     caCertificateName,
-    caCertificateInfo
+    caCertificateInfo,
   );
   console.log(result);
 }

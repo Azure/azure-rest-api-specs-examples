@@ -20,7 +20,7 @@ async function partnerNamespacesUpdate() {
   const result = await client.partnerNamespaces.beginUpdateAndWait(
     resourceGroupName,
     partnerNamespaceName,
-    partnerNamespaceUpdateParameters
+    partnerNamespaceUpdateParameters,
   );
   console.log(result);
 }

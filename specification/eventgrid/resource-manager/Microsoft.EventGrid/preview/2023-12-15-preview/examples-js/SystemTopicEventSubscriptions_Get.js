@@ -18,7 +18,7 @@ async function systemTopicEventSubscriptionsGet() {
   const result = await client.systemTopicEventSubscriptions.get(
     resourceGroupName,
     systemTopicName,
-    eventSubscriptionName
+    eventSubscriptionName,
   );
   console.log(result);
 }

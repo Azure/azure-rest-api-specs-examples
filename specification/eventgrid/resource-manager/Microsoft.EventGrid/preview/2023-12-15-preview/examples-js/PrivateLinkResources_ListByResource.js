@@ -19,7 +19,7 @@ async function privateLinkResourcesListByResource() {
   for await (let item of client.privateLinkResources.listByResource(
     resourceGroupName,
     parentType,
-    parentName
+    parentName,
   )) {
     resArray.push(item);
   }

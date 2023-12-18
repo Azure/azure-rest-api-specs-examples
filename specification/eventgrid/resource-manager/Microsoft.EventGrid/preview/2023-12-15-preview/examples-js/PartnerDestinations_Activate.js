@@ -16,7 +16,7 @@ async function partnerDestinationsActivate() {
   const client = new EventGridManagementClient(credential, subscriptionId);
   const result = await client.partnerDestinations.activate(
     resourceGroupName,
-    partnerDestinationName
+    partnerDestinationName,
   );
   console.log(result);
 }

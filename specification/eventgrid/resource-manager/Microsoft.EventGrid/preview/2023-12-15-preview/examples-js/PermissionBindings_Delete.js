@@ -18,7 +18,7 @@ async function permissionBindingsDelete() {
   const result = await client.permissionBindings.beginDeleteAndWait(
     resourceGroupName,
     namespaceName,
-    permissionBindingName
+    permissionBindingName,
   );
   console.log(result);
 }

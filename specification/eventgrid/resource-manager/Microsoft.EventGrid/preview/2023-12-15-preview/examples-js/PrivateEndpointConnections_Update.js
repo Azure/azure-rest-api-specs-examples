@@ -28,7 +28,7 @@ async function privateEndpointConnectionsUpdate() {
     parentType,
     parentName,
     privateEndpointConnectionName,
-    privateEndpointConnection
+    privateEndpointConnection,
   );
   console.log(result);
 }

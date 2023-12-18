@@ -20,7 +20,7 @@ async function partnerRegistrationsUpdate() {
   const result = await client.partnerRegistrations.beginUpdateAndWait(
     resourceGroupName,
     partnerRegistrationName,
-    partnerRegistrationUpdateParameters
+    partnerRegistrationUpdateParameters,
   );
   console.log(result);
 }

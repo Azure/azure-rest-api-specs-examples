@@ -20,7 +20,7 @@ async function namespacesRegenerateKey() {
   const result = await client.namespaces.beginRegenerateKeyAndWait(
     resourceGroupName,
     namespaceName,
-    regenerateKeyRequest
+    regenerateKeyRequest,
   );
   console.log(result);
 }

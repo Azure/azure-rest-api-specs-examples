@@ -18,7 +18,7 @@ async function namespaceTopicsListSharedAccessKeys() {
   const result = await client.namespaceTopics.listSharedAccessKeys(
     resourceGroupName,
     namespaceName,
-    topicName
+    topicName,
   );
   console.log(result);
 }

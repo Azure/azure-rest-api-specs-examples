@@ -20,7 +20,7 @@ async function privateEndpointConnectionsDelete() {
     resourceGroupName,
     parentType,
     parentName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

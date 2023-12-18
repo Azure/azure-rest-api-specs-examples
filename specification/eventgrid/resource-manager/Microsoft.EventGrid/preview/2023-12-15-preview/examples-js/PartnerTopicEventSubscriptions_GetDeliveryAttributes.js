@@ -18,7 +18,7 @@ async function partnerTopicEventSubscriptionsGetDeliveryAttributes() {
   const result = await client.partnerTopicEventSubscriptions.getDeliveryAttributes(
     resourceGroupName,
     partnerTopicName,
-    eventSubscriptionName
+    eventSubscriptionName,
   );
   console.log(result);
 }

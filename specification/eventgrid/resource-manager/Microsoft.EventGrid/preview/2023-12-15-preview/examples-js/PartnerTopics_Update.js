@@ -20,7 +20,7 @@ async function partnerTopicsUpdate() {
   const result = await client.partnerTopics.update(
     resourceGroupName,
     partnerTopicName,
-    partnerTopicUpdateParameters
+    partnerTopicUpdateParameters,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function topicSpacesCreateOrUpdate() {
     resourceGroupName,
     namespaceName,
     topicSpaceName,
-    topicSpaceInfo
+    topicSpaceInfo,
   );
   console.log(result);
 }

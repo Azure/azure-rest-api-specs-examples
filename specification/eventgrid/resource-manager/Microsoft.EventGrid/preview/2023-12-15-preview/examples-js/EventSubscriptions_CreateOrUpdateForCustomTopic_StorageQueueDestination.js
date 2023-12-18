@@ -36,7 +36,7 @@ async function eventSubscriptionsCreateOrUpdateForCustomTopicStorageQueueDestina
   const result = await client.eventSubscriptions.beginCreateOrUpdateAndWait(
     scope,
     eventSubscriptionName,
-    eventSubscriptionInfo
+    eventSubscriptionInfo,
   );
   console.log(result);
 }

@@ -26,7 +26,7 @@ async function namespacesCreateOrUpdate() {
   const result = await client.namespaces.beginCreateOrUpdateAndWait(
     resourceGroupName,
     namespaceName,
-    namespaceInfo
+    namespaceInfo,
   );
   console.log(result);
 }

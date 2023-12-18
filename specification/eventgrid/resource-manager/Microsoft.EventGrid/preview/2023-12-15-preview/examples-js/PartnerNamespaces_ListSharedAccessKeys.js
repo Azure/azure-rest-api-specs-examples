@@ -16,7 +16,7 @@ async function partnerNamespacesListSharedAccessKeys() {
   const client = new EventGridManagementClient(credential, subscriptionId);
   const result = await client.partnerNamespaces.listSharedAccessKeys(
     resourceGroupName,
-    partnerNamespaceName
+    partnerNamespaceName,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function namespacesUpdate() {
   const result = await client.namespaces.beginUpdateAndWait(
     resourceGroupName,
     namespaceName,
-    namespaceUpdateParameters
+    namespaceUpdateParameters,
   );
   console.log(result);
 }

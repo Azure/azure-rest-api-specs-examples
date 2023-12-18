@@ -19,7 +19,7 @@ async function domainTopicEventSubscriptionsList() {
   for await (let item of client.domainTopicEventSubscriptions.list(
     resourceGroupName,
     domainName,
-    topicName
+    topicName,
   )) {
     resArray.push(item);
   }

@@ -30,7 +30,7 @@ async function domainEventSubscriptionsCreateOrUpdate() {
     resourceGroupName,
     domainName,
     eventSubscriptionName,
-    eventSubscriptionInfo
+    eventSubscriptionInfo,
   );
   console.log(result);
 }

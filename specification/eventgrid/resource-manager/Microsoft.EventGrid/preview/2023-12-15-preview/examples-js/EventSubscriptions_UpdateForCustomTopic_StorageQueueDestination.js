@@ -36,7 +36,7 @@ async function eventSubscriptionsUpdateForCustomTopicStorageQueueDestination() {
   const result = await client.eventSubscriptions.beginUpdateAndWait(
     scope,
     eventSubscriptionName,
-    eventSubscriptionUpdateParameters
+    eventSubscriptionUpdateParameters,
   );
   console.log(result);
 }

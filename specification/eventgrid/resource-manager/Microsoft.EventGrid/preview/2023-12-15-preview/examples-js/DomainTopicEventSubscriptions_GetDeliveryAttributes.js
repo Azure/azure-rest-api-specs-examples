@@ -20,7 +20,7 @@ async function domainTopicEventSubscriptionsGetDeliveryAttributes() {
     resourceGroupName,
     domainName,
     topicName,
-    eventSubscriptionName
+    eventSubscriptionName,
   );
   console.log(result);
 }

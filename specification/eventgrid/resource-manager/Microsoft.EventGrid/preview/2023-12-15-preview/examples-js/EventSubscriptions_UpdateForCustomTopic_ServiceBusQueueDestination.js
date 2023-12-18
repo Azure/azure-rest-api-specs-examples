@@ -34,7 +34,7 @@ async function eventSubscriptionsUpdateForCustomTopicServiceBusQueueDestination(
   const result = await client.eventSubscriptions.beginUpdateAndWait(
     scope,
     eventSubscriptionName,
-    eventSubscriptionUpdateParameters
+    eventSubscriptionUpdateParameters,
   );
   console.log(result);
 }

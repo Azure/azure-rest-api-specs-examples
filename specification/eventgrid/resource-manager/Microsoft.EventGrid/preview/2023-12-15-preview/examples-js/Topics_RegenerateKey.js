@@ -18,7 +18,7 @@ async function topicsRegenerateKey() {
   const result = await client.topics.beginRegenerateKeyAndWait(
     resourceGroupName,
     topicName,
-    regenerateKeyRequest
+    regenerateKeyRequest,
   );
   console.log(result);
 }

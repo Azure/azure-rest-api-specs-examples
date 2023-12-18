@@ -20,7 +20,7 @@ async function privateLinkResourcesGet() {
     resourceGroupName,
     parentType,
     parentName,
-    privateLinkResourceName
+    privateLinkResourceName,
   );
   console.log(result);
 }

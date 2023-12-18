@@ -18,7 +18,7 @@ async function namespaceTopicsDelete() {
   const result = await client.namespaceTopics.beginDeleteAndWait(
     resourceGroupName,
     namespaceName,
-    topicName
+    topicName,
   );
   console.log(result);
 }

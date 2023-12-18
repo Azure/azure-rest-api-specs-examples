@@ -25,7 +25,7 @@ async function partnerTopicsCreateOrUpdate() {
   const result = await client.partnerTopics.createOrUpdate(
     resourceGroupName,
     partnerTopicName,
-    partnerTopicInfo
+    partnerTopicInfo,
   );
   console.log(result);
 }

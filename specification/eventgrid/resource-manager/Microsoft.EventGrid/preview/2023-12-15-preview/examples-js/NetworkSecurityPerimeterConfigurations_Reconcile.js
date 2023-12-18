@@ -22,7 +22,7 @@ async function networkSecurityPerimeterConfigurationsReconcile() {
     resourceType,
     resourceName,
     perimeterGuid,
-    associationName
+    associationName,
   );
   console.log(result);
 }

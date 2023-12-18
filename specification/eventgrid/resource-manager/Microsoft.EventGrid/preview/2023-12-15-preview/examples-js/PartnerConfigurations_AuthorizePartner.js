@@ -20,7 +20,7 @@ async function partnerConfigurationsAuthorizePartner() {
   const client = new EventGridManagementClient(credential, subscriptionId);
   const result = await client.partnerConfigurations.authorizePartner(
     resourceGroupName,
-    partnerInfo
+    partnerInfo,
   );
   console.log(result);
 }

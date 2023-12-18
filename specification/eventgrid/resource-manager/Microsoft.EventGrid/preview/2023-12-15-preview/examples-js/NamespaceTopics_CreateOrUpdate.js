@@ -24,7 +24,7 @@ async function namespaceTopicsCreateOrUpdate() {
     resourceGroupName,
     namespaceName,
     topicName,
-    namespaceTopicInfo
+    namespaceTopicInfo,
   );
   console.log(result);
 }

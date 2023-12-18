@@ -28,7 +28,7 @@ async function eventSubscriptionsCreateOrUpdateForCustomTopicWebhookDestination(
   const result = await client.eventSubscriptions.beginCreateOrUpdateAndWait(
     scope,
     eventSubscriptionName,
-    eventSubscriptionInfo
+    eventSubscriptionInfo,
   );
   console.log(result);
 }

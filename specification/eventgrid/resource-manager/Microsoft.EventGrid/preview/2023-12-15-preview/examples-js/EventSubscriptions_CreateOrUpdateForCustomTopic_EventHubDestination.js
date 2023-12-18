@@ -34,7 +34,7 @@ async function eventSubscriptionsCreateOrUpdateForCustomTopicEventHubDestination
   const result = await client.eventSubscriptions.beginCreateOrUpdateAndWait(
     scope,
     eventSubscriptionName,
-    eventSubscriptionInfo
+    eventSubscriptionInfo,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function domainEventSubscriptionsGetFullUrl() {
   const result = await client.domainEventSubscriptions.getFullUrl(
     resourceGroupName,
     domainName,
-    eventSubscriptionName
+    eventSubscriptionName,
   );
   console.log(result);
 }

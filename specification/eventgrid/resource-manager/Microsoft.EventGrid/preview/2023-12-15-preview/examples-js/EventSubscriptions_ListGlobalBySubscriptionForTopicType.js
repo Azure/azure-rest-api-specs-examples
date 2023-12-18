@@ -15,7 +15,7 @@ async function eventSubscriptionsListGlobalBySubscriptionForTopicType() {
   const client = new EventGridManagementClient(credential, subscriptionId);
   const resArray = new Array();
   for await (let item of client.eventSubscriptions.listGlobalBySubscriptionForTopicType(
-    topicTypeName
+    topicTypeName,
   )) {
     resArray.push(item);
   }

@@ -26,7 +26,7 @@ async function topicsCreateOrUpdate() {
   const result = await client.topics.beginCreateOrUpdateAndWait(
     resourceGroupName,
     topicName,
-    topicInfo
+    topicInfo,
   );
   console.log(result);
 }

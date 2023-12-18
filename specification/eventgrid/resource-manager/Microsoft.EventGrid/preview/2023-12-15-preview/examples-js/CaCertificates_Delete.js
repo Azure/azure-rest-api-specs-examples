@@ -18,7 +18,7 @@ async function caCertificatesDelete() {
   const result = await client.caCertificates.beginDeleteAndWait(
     resourceGroupName,
     namespaceName,
-    caCertificateName
+    caCertificateName,
   );
   console.log(result);
 }

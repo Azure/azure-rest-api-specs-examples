@@ -20,7 +20,7 @@ async function namespaceTopicsRegenerateKey() {
     resourceGroupName,
     namespaceName,
     topicName,
-    regenerateKeyRequest
+    regenerateKeyRequest,
   );
   console.log(result);
 }

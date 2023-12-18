@@ -31,7 +31,7 @@ async function topicEventSubscriptionsUpdate() {
     resourceGroupName,
     topicName,
     eventSubscriptionName,
-    eventSubscriptionUpdateParameters
+    eventSubscriptionUpdateParameters,
   );
   console.log(result);
 }

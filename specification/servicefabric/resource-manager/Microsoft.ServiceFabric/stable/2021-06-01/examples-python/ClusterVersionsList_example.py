@@ -6,7 +6,7 @@ from azure.mgmt.servicefabric import ServiceFabricManagementClient
     pip install azure-identity
     pip install azure-mgmt-servicefabric
 # USAGE
-    python list_cluster_versions.py
+    python cluster_versions_list_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

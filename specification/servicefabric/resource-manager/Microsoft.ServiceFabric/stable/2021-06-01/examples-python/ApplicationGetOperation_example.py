@@ -6,7 +6,7 @@ from azure.mgmt.servicefabric import ServiceFabricManagementClient
     pip install azure-identity
     pip install azure-mgmt-servicefabric
 # USAGE
-    python get_an_application.py
+    python application_get_operation_example.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

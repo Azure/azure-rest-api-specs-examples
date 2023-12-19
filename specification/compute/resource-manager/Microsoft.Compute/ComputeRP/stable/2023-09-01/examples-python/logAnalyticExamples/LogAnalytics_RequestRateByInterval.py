@@ -1,0 +1,39 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.compute import ComputeManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-compute
+# USAGE
+    python log_analytics_request_rate_by_interval.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ComputeManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="{subscription-id}",
+    )
+
+    response = client.log_analytics.begin_export_request_rate_by_interval(
+        location="westus",
+        parameters={
+            "blobContainerSasUri": "https://somesasuri",
+            "fromTime": "2018-01-21T01:54:06.862601Z",
+            "groupByResourceName": True,
+            "intervalLength": "FiveMins",
+            "toTime": "2018-01-23T01:54:06.862601Z",
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-09-01/examples/logAnalyticExamples/LogAnalytics_RequestRateByInterval.json
+if __name__ == "__main__":
+    main()

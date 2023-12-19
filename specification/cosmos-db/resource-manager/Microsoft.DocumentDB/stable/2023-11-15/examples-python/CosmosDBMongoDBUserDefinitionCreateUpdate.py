@@ -1,0 +1,44 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.cosmosdb import CosmosDBManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-cosmosdb
+# USAGE
+    python cosmos_db_mongo_db_user_definition_create_update.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = CosmosDBManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="mySubscriptionId",
+    )
+
+    response = client.mongo_db_resources.begin_create_update_mongo_user_definition(
+        mongo_user_definition_id="myMongoUserDefinitionId",
+        resource_group_name="myResourceGroupName",
+        account_name="myAccountName",
+        create_update_mongo_user_definition_parameters={
+            "properties": {
+                "customData": "My custom data",
+                "databaseName": "sales",
+                "mechanisms": "SCRAM-SHA-256",
+                "password": "myPassword",
+                "roles": [{"db": "sales", "role": "myReadRole"}],
+                "userName": "myUserName",
+            }
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/cosmos-db/resource-manager/Microsoft.DocumentDB/stable/2023-11-15/examples/CosmosDBMongoDBUserDefinitionCreateUpdate.json
+if __name__ == "__main__":
+    main()

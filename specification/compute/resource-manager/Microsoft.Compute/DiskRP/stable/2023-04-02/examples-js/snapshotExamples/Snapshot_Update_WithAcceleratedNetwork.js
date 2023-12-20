@@ -21,7 +21,7 @@ async function updateASnapshotWithAcceleratedNetworking() {
   const result = await client.snapshots.beginUpdateAndWait(
     resourceGroupName,
     snapshotName,
-    snapshot
+    snapshot,
   );
   console.log(result);
 }

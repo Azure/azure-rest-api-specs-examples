@@ -25,7 +25,7 @@ async function grantsAccessToADiskRestorePoint() {
     restorePointCollectionName,
     vmRestorePointName,
     diskRestorePointName,
-    grantAccessData
+    grantAccessData,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function updateExistingCloudServiceToAddTags() {
   const result = await client.cloudServices.beginUpdateAndWait(
     resourceGroupName,
     cloudServiceName,
-    options
+    options,
   );
   console.log(result);
 }

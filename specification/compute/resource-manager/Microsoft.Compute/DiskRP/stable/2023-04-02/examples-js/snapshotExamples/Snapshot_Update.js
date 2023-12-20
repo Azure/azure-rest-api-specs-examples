@@ -20,7 +20,7 @@ async function updateASnapshot() {
   const result = await client.snapshots.beginUpdateAndWait(
     resourceGroupName,
     snapshotName,
-    snapshot
+    snapshot,
   );
   console.log(result);
 }

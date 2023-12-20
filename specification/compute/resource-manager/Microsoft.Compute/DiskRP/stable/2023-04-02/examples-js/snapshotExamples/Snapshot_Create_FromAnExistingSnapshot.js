@@ -24,7 +24,7 @@ async function createASnapshotFromAnExistingSnapshotInTheSameOrADifferentSubscri
   const result = await client.snapshots.beginCreateOrUpdateAndWait(
     resourceGroupName,
     snapshotName,
-    snapshot
+    snapshot,
   );
   console.log(result);
 }

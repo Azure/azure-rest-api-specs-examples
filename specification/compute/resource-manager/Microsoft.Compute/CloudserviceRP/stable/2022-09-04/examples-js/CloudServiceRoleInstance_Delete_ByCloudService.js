@@ -20,7 +20,7 @@ async function deleteCloudServiceRoleInstancesInACloudService() {
   const result = await client.cloudServices.beginDeleteInstancesAndWait(
     resourceGroupName,
     cloudServiceName,
-    options
+    options,
   );
   console.log(result);
 }

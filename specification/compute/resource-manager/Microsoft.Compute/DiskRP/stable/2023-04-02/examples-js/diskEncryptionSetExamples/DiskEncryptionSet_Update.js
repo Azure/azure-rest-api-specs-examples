@@ -26,7 +26,7 @@ async function updateADiskEncryptionSet() {
   const result = await client.diskEncryptionSets.beginUpdateAndWait(
     resourceGroupName,
     diskEncryptionSetName,
-    diskEncryptionSet
+    diskEncryptionSet,
   );
   console.log(result);
 }

@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v5"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c78b5d8bd3aff2d82a5f034d9164b1a9ac030e09/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2023-04-02/examples/snapshotExamples/Snapshot_Create_FromAnElasticSanVolumeSnapshot.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/60679ee3db06e93eb73faa0587fed93ed843d6dc/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2023-04-02/examples/snapshotExamples/Snapshot_Create_FromAnElasticSanVolumeSnapshot.json
 func ExampleSnapshotsClient_BeginCreateOrUpdate_createASnapshotFromAnElasticSanVolumeSnapshot() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -24,8 +24,8 @@ func ExampleSnapshotsClient_BeginCreateOrUpdate_createASnapshotFromAnElasticSanV
 		Location: to.Ptr("West US"),
 		Properties: &armcompute.SnapshotProperties{
 			CreationData: &armcompute.CreationData{
-				CreateOption:     to.Ptr(armcompute.DiskCreateOptionCopyFromSanSnapshot),
-				SourceResourceID: to.Ptr("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"),
+				CreateOption:         to.Ptr(armcompute.DiskCreateOptionCopyFromSanSnapshot),
+				ElasticSanResourceID: to.Ptr("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"),
 			},
 		},
 	}, nil)
@@ -46,7 +46,7 @@ func ExampleSnapshotsClient_BeginCreateOrUpdate_createASnapshotFromAnElasticSanV
 	// 	Properties: &armcompute.SnapshotProperties{
 	// 		CreationData: &armcompute.CreationData{
 	// 			CreateOption: to.Ptr(armcompute.DiskCreateOptionCopyFromSanSnapshot),
-	// 			SourceResourceID: to.Ptr("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"),
+	// 			ElasticSanResourceID: to.Ptr("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"),
 	// 		},
 	// 		ProvisioningState: to.Ptr("Succeeded"),
 	// 	},

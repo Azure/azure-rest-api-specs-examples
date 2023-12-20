@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationDeleteOperation_example.json
  */
 async function deleteAnApplication() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationName = "myApp";
   const credential = new DefaultAzureCredential();
@@ -17,9 +18,7 @@ async function deleteAnApplication() {
   const result = await client.applications.beginDeleteAndWait(
     resourceGroupName,
     clusterName,
-    applicationName
+    applicationName,
   );
   console.log(result);
 }
-
-deleteAnApplication().catch(console.error);

@@ -8,14 +8,16 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ServiceListOperation_example.json
  */
 async function getAListOfServiceResources() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationName = "myApp";
   const credential = new DefaultAzureCredential();
   const client = new ServiceFabricManagementClient(credential, subscriptionId);
-  const result = await client.services.list(resourceGroupName, clusterName, applicationName);
-  console.log(result);
+  const resArray = new Array();
+  for await (let item of client.services.list(resourceGroupName, clusterName, applicationName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
 }
-
-getAListOfServiceResources().catch(console.error);

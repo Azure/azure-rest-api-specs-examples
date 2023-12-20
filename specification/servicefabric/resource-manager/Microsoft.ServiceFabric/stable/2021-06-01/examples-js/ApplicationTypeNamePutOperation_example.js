@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationTypeNamePutOperation_example.json
  */
 async function putAnApplicationType() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationTypeName = "myAppType";
   const parameters = { tags: {} };
@@ -19,9 +20,7 @@ async function putAnApplicationType() {
     resourceGroupName,
     clusterName,
     applicationTypeName,
-    parameters
+    parameters,
   );
   console.log(result);
 }
-
-putAnApplicationType().catch(console.error);

@@ -8,7 +8,8 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ClusterVersionsGet_example.json
  */
 async function getClusterVersion() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
   const location = "eastus";
   const clusterVersion = "6.1.480.9494";
   const credential = new DefaultAzureCredential();
@@ -16,5 +17,3 @@ async function getClusterVersion() {
   const result = await client.clusterVersions.get(location, clusterVersion);
   console.log(result);
 }
-
-getClusterVersion().catch(console.error);

@@ -8,12 +8,14 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ClusterListByResourceGroupOperation_example.json
  */
 async function listClusterByResourceGroup() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const credential = new DefaultAzureCredential();
   const client = new ServiceFabricManagementClient(credential, subscriptionId);
-  const result = await client.clusters.listByResourceGroup(resourceGroupName);
-  console.log(result);
+  const resArray = new Array();
+  for await (let item of client.clusters.listByResourceGroup(resourceGroupName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
 }
-
-listClusterByResourceGroup().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationTypeVersionGetOperation_example.json
  */
 async function getAnApplicationTypeVersion() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationTypeName = "myAppType";
   const version = "1.0";
@@ -19,9 +20,7 @@ async function getAnApplicationTypeVersion() {
     resourceGroupName,
     clusterName,
     applicationTypeName,
-    version
+    version,
   );
   console.log(result);
 }
-
-getAnApplicationTypeVersion().catch(console.error);

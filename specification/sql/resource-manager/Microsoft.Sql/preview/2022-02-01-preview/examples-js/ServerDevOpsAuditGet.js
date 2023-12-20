@@ -18,7 +18,7 @@ async function getAServerDevOpsAuditSettings() {
   const result = await client.serverDevOpsAuditSettings.get(
     resourceGroupName,
     serverName,
-    devOpsAuditingSettingsName
+    devOpsAuditingSettingsName,
   );
   console.log(result);
 }

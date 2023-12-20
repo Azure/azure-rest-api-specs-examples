@@ -26,7 +26,7 @@ async function createOrUpdateAnElasticPoolWithAvailabilityZone() {
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

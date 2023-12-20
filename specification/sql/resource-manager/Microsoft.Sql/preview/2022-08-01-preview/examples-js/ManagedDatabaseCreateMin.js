@@ -20,7 +20,7 @@ async function createsANewManagedDatabaseWithMinimalProperties() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

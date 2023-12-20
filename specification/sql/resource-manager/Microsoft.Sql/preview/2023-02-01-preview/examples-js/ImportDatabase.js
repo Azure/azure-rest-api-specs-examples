@@ -28,7 +28,7 @@ async function importsToAnExistingEmptyDatabase() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

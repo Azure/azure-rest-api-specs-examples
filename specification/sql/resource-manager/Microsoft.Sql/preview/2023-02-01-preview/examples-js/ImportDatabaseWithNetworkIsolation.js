@@ -34,7 +34,7 @@ async function importsToAnExistingEmptyDatabaseUsingPrivateLinkToCommunicateWith
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

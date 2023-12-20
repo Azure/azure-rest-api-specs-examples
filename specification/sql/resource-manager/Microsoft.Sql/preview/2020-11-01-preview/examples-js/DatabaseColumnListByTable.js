@@ -23,7 +23,7 @@ async function listDatabaseColumns() {
     serverName,
     databaseName,
     schemaName,
-    tableName
+    tableName,
   )) {
     resArray.push(item);
   }

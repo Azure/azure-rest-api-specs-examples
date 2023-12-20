@@ -17,7 +17,7 @@ async function obtainListOfInstanceTopResourceConsumingQueriesMinimalRequestAndR
   const resArray = new Array();
   for await (let item of client.managedInstances.listByManagedInstance(
     resourceGroupName,
-    managedInstanceName
+    managedInstanceName,
   )) {
     resArray.push(item);
   }

@@ -18,7 +18,7 @@ async function deletesAPrivateEndpointConnectionWithAGivenName() {
   const result = await client.managedInstancePrivateEndpointConnections.beginDeleteAndWait(
     resourceGroupName,
     managedInstanceName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

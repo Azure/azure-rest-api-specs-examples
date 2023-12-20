@@ -24,7 +24,7 @@ async function updateADatabaseTransparentDataEncryptionStateWithMinimalParameter
     serverName,
     databaseName,
     tdeName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

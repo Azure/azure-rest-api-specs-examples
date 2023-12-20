@@ -20,7 +20,7 @@ async function createOrUpdateDataMaskingPolicyMin() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

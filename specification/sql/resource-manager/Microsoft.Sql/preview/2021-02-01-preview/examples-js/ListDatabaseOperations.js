@@ -19,7 +19,7 @@ async function listTheDatabaseManagementOperations() {
   for await (let item of client.databaseOperations.listByDatabase(
     resourceGroupName,
     serverName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

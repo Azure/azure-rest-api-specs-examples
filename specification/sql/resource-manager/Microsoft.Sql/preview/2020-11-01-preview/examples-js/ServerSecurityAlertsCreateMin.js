@@ -20,7 +20,7 @@ async function updateAServerThreatDetectionPolicyWithMinimalParameters() {
     resourceGroupName,
     serverName,
     securityAlertPolicyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

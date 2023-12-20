@@ -19,7 +19,7 @@ async function listAllJobExecutionsInAJobAgent() {
   for await (let item of client.jobExecutions.listByAgent(
     resourceGroupName,
     serverName,
-    jobAgentName
+    jobAgentName,
   )) {
     resArray.push(item);
   }

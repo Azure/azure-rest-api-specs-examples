@@ -22,7 +22,7 @@ async function completesAManagedDatabaseExternalBackupRestore() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

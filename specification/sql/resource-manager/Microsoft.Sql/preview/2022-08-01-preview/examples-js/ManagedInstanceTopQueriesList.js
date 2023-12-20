@@ -24,7 +24,7 @@ async function obtainListOfInstanceTopResourceConsumingQueries() {
   for await (let item of client.managedInstances.listByManagedInstance(
     resourceGroupName,
     managedInstanceName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

@@ -23,7 +23,7 @@ async function startsAManagedDatabaseMoveWithNoOptionalParametersSpecified() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

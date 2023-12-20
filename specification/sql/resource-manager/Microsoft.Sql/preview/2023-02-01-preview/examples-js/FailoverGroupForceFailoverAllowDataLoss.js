@@ -18,7 +18,7 @@ async function forcedFailoverOfAFailoverGroupAllowingDataLoss() {
   const result = await client.failoverGroups.beginForceFailoverAllowDataLossAndWait(
     resourceGroupName,
     serverName,
-    failoverGroupName
+    failoverGroupName,
   );
   console.log(result);
 }

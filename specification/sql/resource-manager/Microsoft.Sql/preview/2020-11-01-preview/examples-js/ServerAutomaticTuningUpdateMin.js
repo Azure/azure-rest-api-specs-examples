@@ -18,7 +18,7 @@ async function updatesServerAutomaticTuningSettingsWithMinimalProperties() {
   const result = await client.serverAutomaticTuningOperations.update(
     resourceGroupName,
     serverName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

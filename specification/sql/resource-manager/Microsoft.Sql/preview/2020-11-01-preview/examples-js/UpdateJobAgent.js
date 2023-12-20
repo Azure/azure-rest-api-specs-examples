@@ -20,7 +20,7 @@ async function updateAJobAgentTags() {
     resourceGroupName,
     serverName,
     jobAgentName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -24,7 +24,7 @@ async function getAJobStepExecution() {
     jobAgentName,
     jobName,
     jobExecutionId,
-    stepName
+    stepName,
   );
   console.log(result);
 }

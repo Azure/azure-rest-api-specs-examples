@@ -30,7 +30,7 @@ async function createOrUpdateAJobStepWithMinimalPropertiesSpecified() {
     jobAgentName,
     jobName,
     stepName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

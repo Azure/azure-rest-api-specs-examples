@@ -20,7 +20,7 @@ async function getTheShortTermRetentionPolicyForTheDatabase() {
     resourceGroupName,
     managedInstanceName,
     restorableDroppedDatabaseId,
-    policyName
+    policyName,
   );
   console.log(result);
 }

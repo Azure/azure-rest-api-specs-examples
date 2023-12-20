@@ -22,7 +22,7 @@ async function createAServerCommunicationLink() {
     resourceGroupName,
     serverName,
     communicationLinkName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

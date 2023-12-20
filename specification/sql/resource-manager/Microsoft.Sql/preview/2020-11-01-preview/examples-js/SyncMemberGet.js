@@ -22,7 +22,7 @@ async function getASyncMember() {
     serverName,
     databaseName,
     syncGroupName,
-    syncMemberName
+    syncMemberName,
   );
   console.log(result);
 }

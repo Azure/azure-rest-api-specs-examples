@@ -32,7 +32,7 @@ async function updatesADatabaseToHyperscaleTierByTriggeringManualCutoverDuringMi
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

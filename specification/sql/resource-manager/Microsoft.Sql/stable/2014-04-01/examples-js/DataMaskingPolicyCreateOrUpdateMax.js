@@ -23,7 +23,7 @@ async function createOrUpdateDataMaskingPolicyMax() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -29,7 +29,7 @@ async function createASyncGroup() {
     serverName,
     databaseName,
     syncGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -25,7 +25,7 @@ async function createsANewManagedDatabaseFromRestoringAGeoReplicatedBackup() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

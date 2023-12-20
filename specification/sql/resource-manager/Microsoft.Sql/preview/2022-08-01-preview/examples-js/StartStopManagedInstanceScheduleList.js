@@ -17,7 +17,7 @@ async function listsTheManagedInstanceStartOrStopSchedules() {
   const resArray = new Array();
   for await (let item of client.startStopManagedInstanceSchedules.listByInstance(
     resourceGroupName,
-    managedInstanceName
+    managedInstanceName,
   )) {
     resArray.push(item);
   }

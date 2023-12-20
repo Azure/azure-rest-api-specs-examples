@@ -18,7 +18,7 @@ async function tryPlannedBeforeForcedFailoverOfAFailoverGroup() {
   const result = await client.failoverGroups.beginTryPlannedBeforeForcedFailoverAndWait(
     resourceGroupName,
     serverName,
-    failoverGroupName
+    failoverGroupName,
   );
   console.log(result);
 }

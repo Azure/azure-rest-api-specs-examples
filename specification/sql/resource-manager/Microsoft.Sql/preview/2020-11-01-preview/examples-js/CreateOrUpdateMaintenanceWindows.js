@@ -24,7 +24,7 @@ async function setsMaintenanceWindowSettingsForASelectedDatabase() {
     serverName,
     databaseName,
     maintenanceWindowName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

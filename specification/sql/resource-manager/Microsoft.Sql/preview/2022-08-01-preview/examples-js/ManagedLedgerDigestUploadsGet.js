@@ -20,7 +20,7 @@ async function getsTheCurrentLedgerDigestUploadConfigurationForADatabase() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    ledgerDigestUploads
+    ledgerDigestUploads,
   );
   console.log(result);
 }

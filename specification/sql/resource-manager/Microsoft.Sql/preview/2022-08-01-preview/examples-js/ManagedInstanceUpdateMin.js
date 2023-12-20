@@ -18,7 +18,7 @@ async function updateManagedInstanceWithMinimalProperties() {
   const result = await client.managedInstances.beginUpdateAndWait(
     resourceGroupName,
     managedInstanceName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

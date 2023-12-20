@@ -30,7 +30,7 @@ async function createOrUpdateDataMaskingRuleForText() {
     serverName,
     databaseName,
     dataMaskingRuleName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function disablesUploadingLedgerDigestsForADatabase() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    ledgerDigestUploads
+    ledgerDigestUploads,
   );
   console.log(result);
 }

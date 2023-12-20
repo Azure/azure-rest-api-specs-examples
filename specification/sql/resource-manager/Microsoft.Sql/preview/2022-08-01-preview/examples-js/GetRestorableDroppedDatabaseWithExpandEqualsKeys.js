@@ -21,7 +21,7 @@ async function getsARestorableDroppedDatabaseWithExpandEqualsKeys() {
     resourceGroupName,
     serverName,
     restorableDroppedDatabaseId,
-    options
+    options,
   );
   console.log(result);
 }

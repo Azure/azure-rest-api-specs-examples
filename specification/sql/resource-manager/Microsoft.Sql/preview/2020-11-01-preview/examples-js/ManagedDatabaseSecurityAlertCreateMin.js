@@ -22,7 +22,7 @@ async function updateADatabaseThreatDetectionPolicyWithMinimalParameters() {
     managedInstanceName,
     databaseName,
     securityAlertPolicyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -30,7 +30,7 @@ async function updateASyncGroup() {
     serverName,
     databaseName,
     syncGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

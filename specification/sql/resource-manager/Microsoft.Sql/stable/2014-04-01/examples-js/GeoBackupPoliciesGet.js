@@ -20,7 +20,7 @@ async function getGeoBackupPolicy() {
     resourceGroupName,
     serverName,
     databaseName,
-    geoBackupPolicyName
+    geoBackupPolicyName,
   );
   console.log(result);
 }

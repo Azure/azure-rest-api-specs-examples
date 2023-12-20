@@ -19,7 +19,7 @@ async function failoverAManagedInstance() {
   const result = await client.managedInstances.beginFailoverAndWait(
     resourceGroupName,
     managedInstanceName,
-    options
+    options,
   );
   console.log(result);
 }

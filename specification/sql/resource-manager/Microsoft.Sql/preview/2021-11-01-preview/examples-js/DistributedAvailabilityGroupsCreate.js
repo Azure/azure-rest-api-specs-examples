@@ -25,7 +25,7 @@ async function createADistributedAvailabilityGroup() {
     resourceGroupName,
     managedInstanceName,
     distributedAvailabilityGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

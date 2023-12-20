@@ -22,7 +22,7 @@ async function getsTheLatestManagedDatabaseMoveOperationsForEachDatabaseUnderSpe
   for await (let item of client.managedDatabaseMoveOperations.listByLocation(
     resourceGroupName,
     locationName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

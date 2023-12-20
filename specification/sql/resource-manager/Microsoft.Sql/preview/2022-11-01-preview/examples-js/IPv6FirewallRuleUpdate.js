@@ -23,7 +23,7 @@ async function updateAnIPv6FirewallRuleMaxOrMin() {
     resourceGroupName,
     serverName,
     firewallRuleName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -19,7 +19,7 @@ async function getsAListOfDatabasesInAnElasticPool() {
   for await (let item of client.databases.listByElasticPool(
     resourceGroupName,
     serverName,
-    elasticPoolName
+    elasticPoolName,
   )) {
     resArray.push(item);
   }

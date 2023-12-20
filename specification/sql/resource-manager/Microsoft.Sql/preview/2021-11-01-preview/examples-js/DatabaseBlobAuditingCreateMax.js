@@ -35,7 +35,7 @@ async function createOrUpdateADatabaseBlobAuditingPolicyWithAllParameters() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

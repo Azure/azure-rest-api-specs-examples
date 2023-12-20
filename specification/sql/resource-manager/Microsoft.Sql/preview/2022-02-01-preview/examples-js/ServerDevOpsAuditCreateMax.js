@@ -26,7 +26,7 @@ async function updateAServerDevOpsAuditSettingsWithAllParams() {
     resourceGroupName,
     serverName,
     devOpsAuditingSettingsName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

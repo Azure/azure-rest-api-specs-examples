@@ -23,7 +23,7 @@ async function createsANewManagedDatabaseWithMaximalProperties() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

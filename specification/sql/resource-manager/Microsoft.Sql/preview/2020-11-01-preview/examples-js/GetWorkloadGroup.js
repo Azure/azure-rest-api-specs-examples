@@ -20,7 +20,7 @@ async function getsAWorkloadGroupForADataWarehouse() {
     resourceGroupName,
     serverName,
     databaseName,
-    workloadGroupName
+    workloadGroupName,
   );
   console.log(result);
 }

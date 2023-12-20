@@ -26,7 +26,7 @@ async function createsANewManagedDatabaseFromRestoringALongTermRetentionBackup()
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function getTheLongTermRetentionBackupOfAManagedDatabase() {
     locationName,
     managedInstanceName,
     databaseName,
-    backupName
+    backupName,
   );
   console.log(result);
 }

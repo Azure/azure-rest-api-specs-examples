@@ -24,7 +24,7 @@ async function enablesManagedLedgerDigestUploadConfigurationForADatabase() {
     managedInstanceName,
     databaseName,
     ledgerDigestUploads,
-    parameters
+    parameters,
   );
   console.log(result);
 }

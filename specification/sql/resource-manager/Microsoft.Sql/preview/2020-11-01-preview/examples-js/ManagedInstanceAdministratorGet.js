@@ -18,7 +18,7 @@ async function getAdministratorOfManagedInstance() {
   const result = await client.managedInstanceAdministrators.get(
     resourceGroupName,
     managedInstanceName,
-    administratorName
+    administratorName,
   );
   console.log(result);
 }

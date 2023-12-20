@@ -33,7 +33,7 @@ async function updatesADatabaseToHyperscaleSloWithManualCutover() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

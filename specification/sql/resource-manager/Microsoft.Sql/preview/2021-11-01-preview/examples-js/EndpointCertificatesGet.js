@@ -18,7 +18,7 @@ async function getsAnEndpointCertificate() {
   const result = await client.endpointCertificates.get(
     resourceGroupName,
     managedInstanceName,
-    endpointType
+    endpointType,
   );
   console.log(result);
 }

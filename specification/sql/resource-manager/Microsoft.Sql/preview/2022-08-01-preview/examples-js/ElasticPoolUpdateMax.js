@@ -25,7 +25,7 @@ async function updateAnElasticPoolWithAllParameter() {
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

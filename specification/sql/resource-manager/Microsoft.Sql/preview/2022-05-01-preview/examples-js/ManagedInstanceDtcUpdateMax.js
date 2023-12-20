@@ -34,7 +34,7 @@ async function updatesManagedInstanceDtcSettingsWithAllOptionalParametersSpecifi
     resourceGroupName,
     managedInstanceName,
     dtcName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function updatesDatabaseAutomaticTuningSettingsWithMinimalProperties() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

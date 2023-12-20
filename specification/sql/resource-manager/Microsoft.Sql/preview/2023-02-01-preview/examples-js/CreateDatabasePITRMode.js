@@ -26,7 +26,7 @@ async function createsADatabaseFromPointInTimeRestore() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

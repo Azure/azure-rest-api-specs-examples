@@ -17,7 +17,7 @@ async function listTheManagedInstanceManagementOperations() {
   const resArray = new Array();
   for await (let item of client.managedInstanceOperations.listByManagedInstance(
     resourceGroupName,
-    managedInstanceName
+    managedInstanceName,
   )) {
     resArray.push(item);
   }

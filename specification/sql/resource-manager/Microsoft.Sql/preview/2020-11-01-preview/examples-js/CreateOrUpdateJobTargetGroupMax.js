@@ -54,7 +54,7 @@ async function createOrUpdateATargetGroupWithAllProperties() {
     serverName,
     jobAgentName,
     targetGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

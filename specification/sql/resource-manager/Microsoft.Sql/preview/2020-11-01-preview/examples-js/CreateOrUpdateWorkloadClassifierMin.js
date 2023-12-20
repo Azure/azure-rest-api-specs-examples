@@ -24,7 +24,7 @@ async function createAWorkloadGroupWithTheRequiredPropertiesSpecified() {
     databaseName,
     workloadGroupName,
     workloadClassifierName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

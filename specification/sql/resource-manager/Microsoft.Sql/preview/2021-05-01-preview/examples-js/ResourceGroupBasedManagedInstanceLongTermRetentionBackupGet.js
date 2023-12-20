@@ -22,7 +22,7 @@ async function getTheLongTermRetentionBackup() {
     locationName,
     managedInstanceName,
     databaseName,
-    backupName
+    backupName,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function deleteATargetGroup() {
     resourceGroupName,
     serverName,
     jobAgentName,
-    targetGroupName
+    targetGroupName,
   );
   console.log(result);
 }

@@ -22,7 +22,7 @@ async function getDatabaseTable() {
     serverName,
     databaseName,
     schemaName,
-    tableName
+    tableName,
   );
   console.log(result);
 }

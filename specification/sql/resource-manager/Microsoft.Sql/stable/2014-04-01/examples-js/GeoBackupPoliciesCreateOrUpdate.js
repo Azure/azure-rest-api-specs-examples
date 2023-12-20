@@ -22,7 +22,7 @@ async function updateGeoBackupPolicy() {
     serverName,
     databaseName,
     geoBackupPolicyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

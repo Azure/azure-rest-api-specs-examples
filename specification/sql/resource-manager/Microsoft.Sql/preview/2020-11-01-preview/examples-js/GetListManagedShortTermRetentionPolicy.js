@@ -19,7 +19,7 @@ async function getTheShortTermRetentionPolicyListForTheDatabase() {
   for await (let item of client.managedBackupShortTermRetentionPolicies.listByDatabase(
     resourceGroupName,
     managedInstanceName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

@@ -20,7 +20,7 @@ async function revalidatesTheEncryptionProtectorForAParticularDatabase() {
     resourceGroupName,
     serverName,
     databaseName,
-    encryptionProtectorName
+    encryptionProtectorName,
   );
   console.log(result);
 }

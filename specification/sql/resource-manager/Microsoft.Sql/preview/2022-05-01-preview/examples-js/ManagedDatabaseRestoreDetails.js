@@ -20,7 +20,7 @@ async function managedDatabaseRestoreDetails() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    restoreDetailsName
+    restoreDetailsName,
   );
   console.log(result);
 }

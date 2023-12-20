@@ -36,7 +36,7 @@ async function patchADatabaseWithDatabaseLevelCustomerManagedKeys() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

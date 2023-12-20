@@ -21,7 +21,7 @@ async function failoverAnDatabase() {
     resourceGroupName,
     serverName,
     databaseName,
-    options
+    options,
   );
   console.log(result);
 }

@@ -34,7 +34,7 @@ async function exportsADatabaseUsingPrivateLinkToCommunicateWithSqlServerAndStor
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

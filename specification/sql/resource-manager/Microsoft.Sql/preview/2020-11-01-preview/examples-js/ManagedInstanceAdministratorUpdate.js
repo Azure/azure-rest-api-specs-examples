@@ -25,7 +25,7 @@ async function updateAdministratorOfManagedInstance() {
     resourceGroupName,
     managedInstanceName,
     administratorName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -24,7 +24,7 @@ async function resetsMaintenanceWindowOfADatabaseToDefault() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

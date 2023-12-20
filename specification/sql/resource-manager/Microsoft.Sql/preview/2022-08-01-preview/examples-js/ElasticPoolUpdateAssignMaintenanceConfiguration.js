@@ -23,7 +23,7 @@ async function assignsMaintenanceConfigurationToAnElasticPool() {
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

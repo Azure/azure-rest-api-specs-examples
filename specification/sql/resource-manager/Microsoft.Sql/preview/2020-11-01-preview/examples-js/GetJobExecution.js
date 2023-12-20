@@ -22,7 +22,7 @@ async function getAJobExecution() {
     serverName,
     jobAgentName,
     jobName,
-    jobExecutionId
+    jobExecutionId,
   );
   console.log(result);
 }

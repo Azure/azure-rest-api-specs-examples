@@ -20,7 +20,7 @@ async function getsADatawarehouseDatabaseRestorePoint() {
     resourceGroupName,
     serverName,
     databaseName,
-    restorePointName
+    restorePointName,
   );
   console.log(result);
 }

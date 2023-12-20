@@ -20,7 +20,7 @@ async function getsADatabaseRestorePoint() {
     resourceGroupName,
     serverName,
     databaseName,
-    restorePointName
+    restorePointName,
   );
   console.log(result);
 }

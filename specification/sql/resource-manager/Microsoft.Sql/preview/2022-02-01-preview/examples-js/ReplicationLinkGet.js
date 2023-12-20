@@ -20,7 +20,7 @@ async function getsTheReplicationLink() {
     resourceGroupName,
     serverName,
     databaseName,
-    linkId
+    linkId,
   );
   console.log(result);
 }

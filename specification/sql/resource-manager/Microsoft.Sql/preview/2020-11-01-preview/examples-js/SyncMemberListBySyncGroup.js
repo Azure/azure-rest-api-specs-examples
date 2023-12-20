@@ -21,7 +21,7 @@ async function listSyncMembersUnderASyncGroup() {
     resourceGroupName,
     serverName,
     databaseName,
-    syncGroupName
+    syncGroupName,
   )) {
     resArray.push(item);
   }

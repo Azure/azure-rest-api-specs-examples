@@ -21,7 +21,7 @@ async function getsARecoverableDatabaseWithExpandEqualsKeys() {
     resourceGroupName,
     serverName,
     databaseName,
-    options
+    options,
   );
   console.log(result);
 }

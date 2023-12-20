@@ -18,7 +18,7 @@ async function getIPv6FirewallRule() {
   const result = await client.iPv6FirewallRules.get(
     resourceGroupName,
     serverName,
-    firewallRuleName
+    firewallRuleName,
   );
   console.log(result);
 }

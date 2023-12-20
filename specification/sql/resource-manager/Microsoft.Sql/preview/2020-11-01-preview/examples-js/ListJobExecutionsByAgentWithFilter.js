@@ -32,7 +32,7 @@ async function listAllJobExecutionsInAJobAgentWithFiltering() {
     resourceGroupName,
     serverName,
     jobAgentName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

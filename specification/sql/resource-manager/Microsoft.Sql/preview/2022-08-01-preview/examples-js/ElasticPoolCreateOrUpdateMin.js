@@ -20,7 +20,7 @@ async function createOrUpdateElasticPoolWithMinimumParameters() {
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

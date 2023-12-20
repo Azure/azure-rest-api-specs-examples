@@ -27,7 +27,7 @@ async function createsADatabaseAsAnOnLineSecondary() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -29,7 +29,7 @@ async function updateAServerThreatDetectionPolicyWithAllParameters() {
     resourceGroupName,
     serverName,
     securityAlertPolicyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

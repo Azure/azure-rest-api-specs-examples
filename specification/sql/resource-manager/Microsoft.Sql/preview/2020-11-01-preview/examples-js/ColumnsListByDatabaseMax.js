@@ -30,7 +30,7 @@ async function filterDatabaseColumns() {
     resourceGroupName,
     serverName,
     databaseName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

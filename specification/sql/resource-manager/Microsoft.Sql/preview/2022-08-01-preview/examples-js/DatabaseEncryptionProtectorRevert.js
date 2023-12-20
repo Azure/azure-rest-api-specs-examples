@@ -20,7 +20,7 @@ async function revertsTheEncryptionProtectorForAParticularDatabase() {
     resourceGroupName,
     serverName,
     databaseName,
-    encryptionProtectorName
+    encryptionProtectorName,
   );
   console.log(result);
 }

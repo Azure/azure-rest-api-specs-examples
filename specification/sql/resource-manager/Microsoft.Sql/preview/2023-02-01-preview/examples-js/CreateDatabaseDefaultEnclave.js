@@ -23,7 +23,7 @@ async function createsADatabaseWithDefaultEnclaveType() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

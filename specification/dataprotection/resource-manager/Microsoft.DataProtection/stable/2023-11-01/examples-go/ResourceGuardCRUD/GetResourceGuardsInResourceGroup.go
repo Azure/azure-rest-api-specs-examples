@@ -1,0 +1,62 @@
+package armdataprotection_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v3"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b8c74fd80b415fa1ebb6fa787d454694c39e0fd5/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-11-01/examples/ResourceGuardCRUD/GetResourceGuardsInResourceGroup.json
+func ExampleResourceGuardsClient_NewGetResourcesInResourceGroupPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armdataprotection.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewResourceGuardsClient().NewGetResourcesInResourceGroupPager("SampleResourceGroup", nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.ResourceGuardResourceList = armdataprotection.ResourceGuardResourceList{
+		// 	Value: []*armdataprotection.ResourceGuardResource{
+		// 		{
+		// 			Name: to.Ptr("VaultGuardTestNew"),
+		// 			Type: to.Ptr("Microsoft.DataProtection/resourceGuards"),
+		// 			ID: to.Ptr("/subscriptions/c999d45b-944f-418c-a0d8-c3fcfd1802c8/resourceGroups/vaultguardRGNew/providers/Microsoft.DataProtection/resourceGuards/VaultGuardTestNew"),
+		// 			Location: to.Ptr("eastus"),
+		// 			Tags: map[string]*string{
+		// 				"TestKey": to.Ptr("TestValue"),
+		// 			},
+		// 			Properties: &armdataprotection.ResourceGuard{
+		// 				Description: to.Ptr("Please take JIT access before performing any of the critical operation"),
+		// 				AllowAutoApprovals: to.Ptr(true),
+		// 				ProvisioningState: to.Ptr(armdataprotection.ProvisioningStateSucceeded),
+		// 				ResourceGuardOperations: []*armdataprotection.ResourceGuardOperation{
+		// 					{
+		// 						RequestResourceType: to.Ptr("Microsoft.DataProtection/resourceGuards/deleteResourceGuardProxyRequests"),
+		// 						VaultCriticalOperation: to.Ptr("Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/delete"),
+		// 					},
+		// 					{
+		// 						RequestResourceType: to.Ptr("Microsoft.DataProtection/resourceGuards/disableSoftDeleteRequests"),
+		// 						VaultCriticalOperation: to.Ptr("Microsoft.RecoveryServices/vaults/backupconfig/write"),
+		// 				}},
+		// 				VaultCriticalOperationExclusionList: []*string{
+		// 				},
+		// 			},
+		// 	}},
+		// }
+	}
+}

@@ -4,11 +4,12 @@ import (
 	"context"
 	"log"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/selfhelp/armselfhelp/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/3066a973f4baf2e2bf072a013b585a820bb10146/specification/help/resource-manager/Microsoft.Help/preview/2023-09-01-preview/examples/CreateDiagnosticForKeyVaultResource.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b8c74fd80b415fa1ebb6fa787d454694c39e0fd5/specification/help/resource-manager/Microsoft.Help/preview/2023-09-01-preview/examples/CreateDiagnosticForKeyVaultResource.json
 func ExampleDiagnosticsClient_BeginCreate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -19,7 +20,17 @@ func ExampleDiagnosticsClient_BeginCreate() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	poller, err := clientFactory.NewDiagnosticsClient().BeginCreate(ctx, "subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourceGroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read", "VMNotWorkingInsight", armselfhelp.DiagnosticResource{}, nil)
+	poller, err := clientFactory.NewDiagnosticsClient().BeginCreate(ctx, "subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourceGroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read", "VMNotWorkingInsight", armselfhelp.DiagnosticResource{
+		Properties: &armselfhelp.DiagnosticResourceProperties{
+			Insights: []*armselfhelp.DiagnosticInvocation{
+				{
+					SolutionID: to.Ptr("SampleSolutionId1"),
+				},
+				{
+					SolutionID: to.Ptr("SampleSolutionId2"),
+				}},
+		},
+	}, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}
@@ -35,23 +46,7 @@ func ExampleDiagnosticsClient_BeginCreate() {
 	// 	Type: to.Ptr("VMNotWorkingInsight"),
 	// 	ID: to.Ptr("/subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourceGroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read/providers/Microsoft.Help/diagnostics/VMNotWorkingInsight"),
 	// 	Properties: &armselfhelp.DiagnosticResourceProperties{
-	// 		AcceptedAt: to.Ptr("2023-03-10T03:04:40Z"),
-	// 		Diagnostics: []*armselfhelp.Diagnostic{
-	// 			{
-	// 				Error: &armselfhelp.Error{
-	// 					Code: to.Ptr("errorCode"),
-	// 					Message: to.Ptr("errorMessage"),
-	// 				},
-	// 				Insights: []*armselfhelp.Insight{
-	// 					{
-	// 						ID: to.Ptr("InsightArticleId"),
-	// 						ImportanceLevel: to.Ptr(armselfhelp.ImportanceLevelCritical),
-	// 						Results: to.Ptr("Article Content"),
-	// 						Title: to.Ptr("An example title for an Insight"),
-	// 				}},
-	// 				SolutionID: to.Ptr("sampleSolutionId"),
-	// 				Status: to.Ptr(armselfhelp.StatusSucceeded),
-	// 		}},
+	// 		AcceptedAt: to.Ptr("2023-11-05T18:13:15.8708055+00:00"),
 	// 		ProvisioningState: to.Ptr(armselfhelp.DiagnosticProvisioningStateSucceeded),
 	// 	},
 	// }

@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/selfhelp/armselfhelp/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/3066a973f4baf2e2bf072a013b585a820bb10146/specification/help/resource-manager/Microsoft.Help/preview/2023-09-01-preview/examples/GetDiagnosticForKeyVaultResource.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b8c74fd80b415fa1ebb6fa787d454694c39e0fd5/specification/help/resource-manager/Microsoft.Help/preview/2023-09-01-preview/examples/GetDiagnosticForKeyVaultResource.json
 func ExampleDiagnosticsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -34,18 +34,25 @@ func ExampleDiagnosticsClient_Get() {
 	// 		AcceptedAt: to.Ptr("2023-03-10T03:04:40Z"),
 	// 		Diagnostics: []*armselfhelp.Diagnostic{
 	// 			{
-	// 				Error: &armselfhelp.Error{
-	// 					Code: to.Ptr("errorCode"),
-	// 					Message: to.Ptr("errorMessage"),
-	// 				},
 	// 				Insights: []*armselfhelp.Insight{
 	// 					{
-	// 						ID: to.Ptr("InsightArticleId"),
+	// 						ID: to.Ptr("InsightArticleId1"),
 	// 						ImportanceLevel: to.Ptr(armselfhelp.ImportanceLevelCritical),
 	// 						Results: to.Ptr("Article Content"),
 	// 						Title: to.Ptr("An example title for an Insight"),
 	// 				}},
-	// 				SolutionID: to.Ptr("sampleSolutionId"),
+	// 				SolutionID: to.Ptr("sampleSolutionId1"),
+	// 				Status: to.Ptr(armselfhelp.StatusSucceeded),
+	// 			},
+	// 			{
+	// 				Insights: []*armselfhelp.Insight{
+	// 					{
+	// 						ID: to.Ptr("InsightArticleId3"),
+	// 						ImportanceLevel: to.Ptr(armselfhelp.ImportanceLevelCritical),
+	// 						Results: to.Ptr("Article Content"),
+	// 						Title: to.Ptr("An example title for an Insight"),
+	// 				}},
+	// 				SolutionID: to.Ptr("sampleSolutionId2"),
 	// 				Status: to.Ptr(armselfhelp.StatusSucceeded),
 	// 		}},
 	// 		ProvisioningState: to.Ptr(armselfhelp.DiagnosticProvisioningStateSucceeded),

@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/selfhelp/armselfhelp/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/3066a973f4baf2e2bf072a013b585a820bb10146/specification/help/resource-manager/Microsoft.Help/preview/2023-09-01-preview/examples/Troubleshooter_Create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b8c74fd80b415fa1ebb6fa787d454694c39e0fd5/specification/help/resource-manager/Microsoft.Help/preview/2023-09-01-preview/examples/Troubleshooter_Create.json
 func ExampleTroubleshootersClient_Create() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -57,7 +57,7 @@ func ExampleTroubleshootersClient_Create() {
 	// 						QuestionContent: to.Ptr("Is VPN Connected?"),
 	// 						QuestionContentType: to.Ptr(armselfhelp.QuestionContentTypeText),
 	// 						QuestionID: to.Ptr("6cbe3f23-f3c2-41f3-886e-0cfbeee19b24"),
-	// 						QuestionType: to.Ptr("MultiChoice"),
+	// 						QuestionType: to.Ptr(armselfhelp.QuestionType("MultiChoice")),
 	// 						ResponseOptions: []*armselfhelp.ResponseOption{
 	// 							{
 	// 								Key: to.Ptr("Yes"),

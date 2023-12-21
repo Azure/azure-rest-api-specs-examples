@@ -20,7 +20,7 @@ async function plannedFailoverOfAReplicationLink() {
     resourceGroupName,
     serverName,
     databaseName,
-    linkId
+    linkId,
   );
   console.log(result);
 }

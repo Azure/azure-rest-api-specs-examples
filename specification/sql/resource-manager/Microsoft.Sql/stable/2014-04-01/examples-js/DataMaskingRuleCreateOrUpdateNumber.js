@@ -29,7 +29,7 @@ async function createOrUpdateDataMaskingRuleForNumbers() {
     serverName,
     databaseName,
     dataMaskingRuleName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

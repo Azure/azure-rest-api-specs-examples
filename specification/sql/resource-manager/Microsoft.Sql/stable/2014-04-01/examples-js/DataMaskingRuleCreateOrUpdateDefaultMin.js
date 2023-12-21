@@ -27,7 +27,7 @@ async function createOrUpdateDataMaskingRuleForDefaultMin() {
     serverName,
     databaseName,
     dataMaskingRuleName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

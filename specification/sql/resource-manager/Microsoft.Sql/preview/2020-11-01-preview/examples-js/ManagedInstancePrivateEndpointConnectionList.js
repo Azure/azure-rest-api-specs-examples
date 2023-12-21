@@ -17,7 +17,7 @@ async function getsListOfPrivateEndpointConnectionsOnAServer() {
   const resArray = new Array();
   for await (let item of client.managedInstancePrivateEndpointConnections.listByManagedInstance(
     resourceGroupName,
-    managedInstanceName
+    managedInstanceName,
   )) {
     resArray.push(item);
   }

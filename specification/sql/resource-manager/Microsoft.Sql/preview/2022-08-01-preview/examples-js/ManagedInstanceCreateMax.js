@@ -49,7 +49,7 @@ async function createManagedInstanceWithAllProperties() {
   const result = await client.managedInstances.beginCreateOrUpdateAndWait(
     resourceGroupName,
     managedInstanceName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

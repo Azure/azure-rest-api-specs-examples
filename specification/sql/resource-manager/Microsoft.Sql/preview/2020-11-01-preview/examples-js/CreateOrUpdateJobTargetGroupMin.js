@@ -22,7 +22,7 @@ async function createOrUpdateATargetGroupWithMinimalProperties() {
     serverName,
     jobAgentName,
     targetGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

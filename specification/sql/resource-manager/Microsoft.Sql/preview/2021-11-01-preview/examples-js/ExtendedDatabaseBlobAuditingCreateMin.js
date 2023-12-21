@@ -25,7 +25,7 @@ async function createOrUpdateAnExtendedDatabaseBlobAuditingPolicyWithMinimalPara
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

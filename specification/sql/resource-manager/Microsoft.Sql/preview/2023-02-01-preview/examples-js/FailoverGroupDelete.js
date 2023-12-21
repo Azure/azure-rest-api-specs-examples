@@ -18,7 +18,7 @@ async function deleteFailoverGroup() {
   const result = await client.failoverGroups.beginDeleteAndWait(
     resourceGroupName,
     serverName,
-    failoverGroupName
+    failoverGroupName,
   );
   console.log(result);
 }

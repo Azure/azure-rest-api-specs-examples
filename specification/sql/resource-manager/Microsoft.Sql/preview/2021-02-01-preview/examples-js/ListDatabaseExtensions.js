@@ -20,7 +20,7 @@ async function listDatabaseExtensions() {
   for await (let item of client.databaseExtensionsOperations.listByDatabase(
     resourceGroupName,
     serverName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

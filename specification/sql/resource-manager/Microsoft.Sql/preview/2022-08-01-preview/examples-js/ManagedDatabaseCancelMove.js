@@ -23,7 +23,7 @@ async function cancelsAManagedDatabaseMove() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

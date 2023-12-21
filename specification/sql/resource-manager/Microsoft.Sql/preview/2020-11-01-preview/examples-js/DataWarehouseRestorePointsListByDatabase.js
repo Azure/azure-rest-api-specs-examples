@@ -19,7 +19,7 @@ async function listDatawarehouseDatabaseRestorePoints() {
   for await (let item of client.restorePoints.listByDatabase(
     resourceGroupName,
     serverName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

@@ -27,7 +27,7 @@ async function createOrUpdateTheLtrPolicyForTheManagedDatabase() {
     managedInstanceName,
     databaseName,
     policyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

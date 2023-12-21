@@ -23,7 +23,7 @@ async function updateASyncAgent() {
     resourceGroupName,
     serverName,
     syncAgentName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

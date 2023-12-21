@@ -21,7 +21,7 @@ async function listOfDatabaseRecommendedActionsForAllAdvisors() {
     resourceGroupName,
     serverName,
     databaseName,
-    options
+    options,
   );
   console.log(result);
 }

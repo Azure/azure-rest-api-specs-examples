@@ -33,7 +33,7 @@ async function updateManagedInstanceWithAllProperties() {
   const result = await client.managedInstances.beginUpdateAndWait(
     resourceGroupName,
     managedInstanceName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

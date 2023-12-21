@@ -18,7 +18,7 @@ async function getsAPrivateLinkResourceForSql() {
   const result = await client.managedInstancePrivateLinkResources.get(
     resourceGroupName,
     managedInstanceName,
-    groupName
+    groupName,
   );
   console.log(result);
 }

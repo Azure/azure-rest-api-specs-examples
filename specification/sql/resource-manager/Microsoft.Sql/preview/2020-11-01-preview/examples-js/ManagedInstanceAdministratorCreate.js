@@ -25,7 +25,7 @@ async function createAdministratorOfManagedInstance() {
     resourceGroupName,
     managedInstanceName,
     administratorName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

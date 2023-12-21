@@ -33,7 +33,7 @@ async function updateAServerBlobAuditingPolicyWithAllParameters() {
   const result = await client.serverBlobAuditingPolicies.beginCreateOrUpdateAndWait(
     resourceGroupName,
     serverName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

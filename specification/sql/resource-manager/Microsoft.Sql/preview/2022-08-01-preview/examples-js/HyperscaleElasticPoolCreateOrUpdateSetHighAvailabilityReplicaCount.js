@@ -24,7 +24,7 @@ async function createOrUpdateHyperscaleElasticPoolWithHighAvailabilityReplicaCou
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -27,7 +27,7 @@ async function createsADatabaseAsAStandbySecondary() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

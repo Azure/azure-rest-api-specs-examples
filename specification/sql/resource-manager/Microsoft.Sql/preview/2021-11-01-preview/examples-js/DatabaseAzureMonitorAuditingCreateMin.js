@@ -23,7 +23,7 @@ async function createOrUpdateADatabaseAzureMonitorAuditingPolicyWithMinimalParam
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

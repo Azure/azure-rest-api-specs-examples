@@ -24,7 +24,7 @@ async function obtainQueryExecutionStatisticsMinimalExampleWithOnlyMandatoryRequ
     managedInstanceName,
     databaseName,
     queryId,
-    options
+    options,
   )) {
     resArray.push(item);
   }

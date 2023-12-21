@@ -22,7 +22,7 @@ async function updateADatabaseAdvancedThreatProtectionSettingsWithAllParameters(
     serverName,
     databaseName,
     advancedThreatProtectionName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

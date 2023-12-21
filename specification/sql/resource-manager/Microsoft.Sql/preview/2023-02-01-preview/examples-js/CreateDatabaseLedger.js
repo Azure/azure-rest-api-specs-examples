@@ -20,7 +20,7 @@ async function createsADatabaseWithLedgerOn() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

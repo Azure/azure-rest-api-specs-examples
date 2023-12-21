@@ -26,7 +26,7 @@ async function createsANewManagedDatabaseUsingPointInTimeRestore() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -24,7 +24,7 @@ async function createOrUpdateElasticPoolWithPreferredEnclaveTypeParameterAsDefau
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

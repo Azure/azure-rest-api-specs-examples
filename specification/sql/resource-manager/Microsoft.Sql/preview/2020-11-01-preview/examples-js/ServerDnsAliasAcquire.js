@@ -23,7 +23,7 @@ async function acquireServerDnsAlias() {
     resourceGroupName,
     serverName,
     dnsAliasName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

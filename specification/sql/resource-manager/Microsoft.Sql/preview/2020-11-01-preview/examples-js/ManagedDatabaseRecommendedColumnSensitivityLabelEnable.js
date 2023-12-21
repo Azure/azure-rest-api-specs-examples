@@ -24,7 +24,7 @@ async function enablesTheSensitivityRecommendationsOnAGivenColumn() {
     databaseName,
     schemaName,
     tableName,
-    columnName
+    columnName,
   );
   console.log(result);
 }

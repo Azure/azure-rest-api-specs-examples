@@ -31,7 +31,7 @@ async function updateADatabaseThreatDetectionPolicyWithAllParameters() {
     serverName,
     databaseName,
     securityAlertPolicyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

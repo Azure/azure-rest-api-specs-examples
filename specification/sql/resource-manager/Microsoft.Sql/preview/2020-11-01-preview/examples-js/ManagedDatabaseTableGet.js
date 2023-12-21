@@ -22,7 +22,7 @@ async function getManagedDatabaseTable() {
     managedInstanceName,
     databaseName,
     schemaName,
-    tableName
+    tableName,
   );
   console.log(result);
 }

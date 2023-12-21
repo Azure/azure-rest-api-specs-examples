@@ -23,7 +23,7 @@ async function updateTheEncryptionProtectorToServiceManaged() {
     resourceGroupName,
     serverName,
     encryptionProtectorName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

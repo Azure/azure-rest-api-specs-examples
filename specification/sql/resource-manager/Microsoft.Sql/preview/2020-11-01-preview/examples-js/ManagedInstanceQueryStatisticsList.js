@@ -21,7 +21,7 @@ async function obtainQueryExecutionStatistics() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    queryId
+    queryId,
   )) {
     resArray.push(item);
   }

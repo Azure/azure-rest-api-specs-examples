@@ -23,7 +23,7 @@ async function createsADatabaseWithVbsEnclaveType() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

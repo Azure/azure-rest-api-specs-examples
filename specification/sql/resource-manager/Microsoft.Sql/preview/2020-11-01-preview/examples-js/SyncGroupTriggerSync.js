@@ -20,7 +20,7 @@ async function triggerASyncGroupSynchronization() {
     resourceGroupName,
     serverName,
     databaseName,
-    syncGroupName
+    syncGroupName,
   );
   console.log(result);
 }

@@ -33,7 +33,7 @@ async function createANewSyncMember() {
     databaseName,
     syncGroupName,
     syncMemberName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

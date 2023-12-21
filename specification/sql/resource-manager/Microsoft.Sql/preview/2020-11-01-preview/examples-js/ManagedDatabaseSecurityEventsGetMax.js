@@ -31,7 +31,7 @@ async function getTheManagedDatabaseSecurityEventsWithMaximalParameters() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

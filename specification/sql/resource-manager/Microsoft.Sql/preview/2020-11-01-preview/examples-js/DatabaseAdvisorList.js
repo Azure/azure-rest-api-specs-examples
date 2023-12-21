@@ -18,7 +18,7 @@ async function listOfDatabaseAdvisors() {
   const result = await client.databaseAdvisors.listByDatabase(
     resourceGroupName,
     serverName,
-    databaseName
+    databaseName,
   );
   console.log(result);
 }

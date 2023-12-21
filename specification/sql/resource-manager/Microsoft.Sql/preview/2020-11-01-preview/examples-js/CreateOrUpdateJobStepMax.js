@@ -49,7 +49,7 @@ async function createOrUpdateAJobStepWithAllPropertiesSpecified() {
     jobAgentName,
     jobName,
     stepName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

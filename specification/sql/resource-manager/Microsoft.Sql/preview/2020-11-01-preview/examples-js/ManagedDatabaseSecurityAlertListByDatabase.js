@@ -19,7 +19,7 @@ async function getAListOfTheDatabaseThreatDetectionPolicies() {
   for await (let item of client.managedDatabaseSecurityAlertPolicies.listByDatabase(
     resourceGroupName,
     managedInstanceName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

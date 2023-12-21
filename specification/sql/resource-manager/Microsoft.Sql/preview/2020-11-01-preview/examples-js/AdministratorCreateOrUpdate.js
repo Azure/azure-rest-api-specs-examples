@@ -25,7 +25,7 @@ async function createsOrUpdatesAnExistingAzureActiveDirectoryAdministrator() {
     resourceGroupName,
     serverName,
     administratorName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

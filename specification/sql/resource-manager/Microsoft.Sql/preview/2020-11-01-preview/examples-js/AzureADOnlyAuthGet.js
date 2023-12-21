@@ -18,7 +18,7 @@ async function getsAAzureActiveDirectoryOnlyAuthenticationProperty() {
   const result = await client.serverAzureADOnlyAuthentications.get(
     resourceGroupName,
     serverName,
-    authenticationName
+    authenticationName,
   );
   console.log(result);
 }

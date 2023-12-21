@@ -32,7 +32,7 @@ async function createServerTrustGroup() {
     resourceGroupName,
     locationName,
     serverTrustGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

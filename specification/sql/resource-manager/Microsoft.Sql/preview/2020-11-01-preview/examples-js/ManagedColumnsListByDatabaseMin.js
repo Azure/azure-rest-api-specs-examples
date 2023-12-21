@@ -19,7 +19,7 @@ async function listManagedDatabaseColumns() {
   for await (let item of client.managedDatabaseColumns.listByDatabase(
     resourceGroupName,
     managedInstanceName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

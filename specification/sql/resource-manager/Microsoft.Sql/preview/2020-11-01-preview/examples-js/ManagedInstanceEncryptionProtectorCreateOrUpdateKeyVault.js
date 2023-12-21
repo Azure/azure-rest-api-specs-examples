@@ -24,7 +24,7 @@ async function updateTheEncryptionProtectorToKeyVault() {
     resourceGroupName,
     managedInstanceName,
     encryptionProtectorName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

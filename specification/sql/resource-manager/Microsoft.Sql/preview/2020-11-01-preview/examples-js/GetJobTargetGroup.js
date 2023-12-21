@@ -20,7 +20,7 @@ async function getATargetGroup() {
     resourceGroupName,
     serverName,
     jobAgentName,
-    targetGroupName
+    targetGroupName,
   );
   console.log(result);
 }

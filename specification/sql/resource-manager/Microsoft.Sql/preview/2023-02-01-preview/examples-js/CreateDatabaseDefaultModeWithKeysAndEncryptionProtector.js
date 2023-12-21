@@ -38,7 +38,7 @@ async function createsADatabaseWithDatabaseLevelCustomerManagedKeys() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function getADatabaseBlobAuditingPolicy() {
   const result = await client.databaseBlobAuditingPolicies.get(
     resourceGroupName,
     serverName,
-    databaseName
+    databaseName,
   );
   console.log(result);
 }

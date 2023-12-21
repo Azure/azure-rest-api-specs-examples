@@ -23,7 +23,7 @@ async function deleteTheLongTermRetentionBackup() {
       locationName,
       managedInstanceName,
       databaseName,
-      backupName
+      backupName,
     );
   console.log(result);
 }

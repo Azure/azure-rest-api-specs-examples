@@ -29,7 +29,7 @@ async function createAWorkloadGroupWithAllPropertiesSpecified() {
     serverName,
     databaseName,
     workloadGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

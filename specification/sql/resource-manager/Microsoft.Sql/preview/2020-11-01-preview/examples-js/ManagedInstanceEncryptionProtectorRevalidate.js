@@ -18,7 +18,7 @@ async function revalidatesTheEncryptionProtector() {
   const result = await client.managedInstanceEncryptionProtectors.beginRevalidateAndWait(
     resourceGroupName,
     managedInstanceName,
-    encryptionProtectorName
+    encryptionProtectorName,
   );
   console.log(result);
 }

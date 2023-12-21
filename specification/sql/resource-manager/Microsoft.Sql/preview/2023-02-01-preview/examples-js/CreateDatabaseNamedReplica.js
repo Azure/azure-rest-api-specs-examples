@@ -27,7 +27,7 @@ async function createsADatabaseAsNamedReplicaSecondary() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

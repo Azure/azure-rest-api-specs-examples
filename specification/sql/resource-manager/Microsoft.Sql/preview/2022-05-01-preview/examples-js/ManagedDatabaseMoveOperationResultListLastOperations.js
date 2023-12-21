@@ -17,7 +17,7 @@ async function getsTheLatestManagedDatabaseMoveOperationsForEachDatabaseUnderSpe
   const resArray = new Array();
   for await (let item of client.managedDatabaseMoveOperations.listByLocation(
     resourceGroupName,
-    locationName
+    locationName,
   )) {
     resArray.push(item);
   }

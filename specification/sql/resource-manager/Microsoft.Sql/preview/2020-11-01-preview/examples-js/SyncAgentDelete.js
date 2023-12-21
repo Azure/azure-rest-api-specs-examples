@@ -18,7 +18,7 @@ async function deleteASyncAgent() {
   const result = await client.syncAgents.beginDeleteAndWait(
     resourceGroupName,
     serverName,
-    syncAgentName
+    syncAgentName,
   );
   console.log(result);
 }

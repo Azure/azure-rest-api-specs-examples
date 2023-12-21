@@ -20,7 +20,7 @@ async function getAManagedDatabaseAdvancedThreatProtectionSettings() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    advancedThreatProtectionName
+    advancedThreatProtectionName,
   );
   console.log(result);
 }

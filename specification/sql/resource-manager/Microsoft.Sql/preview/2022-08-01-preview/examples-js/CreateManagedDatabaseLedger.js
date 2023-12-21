@@ -23,7 +23,7 @@ async function createsANewManagedDatabaseWithLedgerOn() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

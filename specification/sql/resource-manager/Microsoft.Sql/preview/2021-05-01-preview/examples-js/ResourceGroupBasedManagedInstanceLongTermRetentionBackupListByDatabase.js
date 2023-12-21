@@ -21,7 +21,7 @@ async function getAllLongTermRetentionBackupsUnderTheDatabase() {
     resourceGroupName,
     locationName,
     managedInstanceName,
-    databaseName
+    databaseName,
   )) {
     resArray.push(item);
   }

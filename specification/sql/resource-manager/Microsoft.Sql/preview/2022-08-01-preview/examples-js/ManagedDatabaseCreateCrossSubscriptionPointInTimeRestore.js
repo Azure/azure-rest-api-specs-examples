@@ -28,7 +28,7 @@ async function createsANewManagedDatabaseUsingCrossSubscriptionPointInTimeRestor
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

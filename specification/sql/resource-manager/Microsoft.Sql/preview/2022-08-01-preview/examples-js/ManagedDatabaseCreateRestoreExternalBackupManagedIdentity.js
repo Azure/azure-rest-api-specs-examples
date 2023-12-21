@@ -28,7 +28,7 @@ async function createsANewManagedDatabaseByRestoringFromAnExternalBackupUsingMan
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -23,7 +23,7 @@ async function createsADatabaseWithSpecifiedBackupStorageRedundancy() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

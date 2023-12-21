@@ -20,7 +20,7 @@ async function updatesAManagedDatabaseWithMaximalProperties() {
     resourceGroupName,
     managedInstanceName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

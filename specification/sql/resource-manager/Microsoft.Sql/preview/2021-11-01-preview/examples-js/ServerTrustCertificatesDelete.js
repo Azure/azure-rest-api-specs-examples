@@ -18,7 +18,7 @@ async function deleteServerTrustCertificate() {
   const result = await client.serverTrustCertificates.beginDeleteAndWait(
     resourceGroupName,
     managedInstanceName,
-    certificateName
+    certificateName,
   );
   console.log(result);
 }

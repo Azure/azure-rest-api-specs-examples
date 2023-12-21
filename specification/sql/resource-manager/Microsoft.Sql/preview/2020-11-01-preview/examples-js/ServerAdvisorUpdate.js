@@ -20,7 +20,7 @@ async function updateServerAdvisor() {
     resourceGroupName,
     serverName,
     advisorName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

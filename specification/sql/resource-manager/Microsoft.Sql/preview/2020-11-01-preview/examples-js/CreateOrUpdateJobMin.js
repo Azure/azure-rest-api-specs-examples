@@ -22,7 +22,7 @@ async function createAJobWithDefaultProperties() {
     serverName,
     jobAgentName,
     jobName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

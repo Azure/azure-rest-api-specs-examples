@@ -25,7 +25,7 @@ async function updateTheShortTermRetentionPolicyForTheRestorableDroppedDatabase(
       managedInstanceName,
       restorableDroppedDatabaseId,
       policyName,
-      parameters
+      parameters,
     );
   console.log(result);
 }

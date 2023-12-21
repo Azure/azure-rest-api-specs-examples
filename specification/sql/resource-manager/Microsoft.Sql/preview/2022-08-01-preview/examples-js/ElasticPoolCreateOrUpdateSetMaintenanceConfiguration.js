@@ -24,7 +24,7 @@ async function createOrUpdateElasticPoolWithMaintenanceConfigurationParameter() 
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

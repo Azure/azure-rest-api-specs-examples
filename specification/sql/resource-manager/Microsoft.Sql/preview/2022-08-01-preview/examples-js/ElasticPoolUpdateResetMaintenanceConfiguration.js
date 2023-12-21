@@ -23,7 +23,7 @@ async function resetsMaintenanceConfigurationOfAnElasticPoolToDefault() {
     resourceGroupName,
     serverName,
     elasticPoolName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

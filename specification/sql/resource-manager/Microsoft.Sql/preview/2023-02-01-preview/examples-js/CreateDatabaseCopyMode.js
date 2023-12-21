@@ -26,7 +26,7 @@ async function createsADatabaseAsACopy() {
     resourceGroupName,
     serverName,
     databaseName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

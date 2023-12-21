@@ -24,7 +24,7 @@ async function updateAServerDevOpsAuditSettingsWithMinimalInput() {
     resourceGroupName,
     serverName,
     devOpsAuditingSettingsName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

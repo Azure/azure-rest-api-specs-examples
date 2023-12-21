@@ -22,7 +22,7 @@ async function updateADatabaseAdvancedThreatProtectionSettingsWithMinimalParamet
     serverName,
     databaseName,
     advancedThreatProtectionName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

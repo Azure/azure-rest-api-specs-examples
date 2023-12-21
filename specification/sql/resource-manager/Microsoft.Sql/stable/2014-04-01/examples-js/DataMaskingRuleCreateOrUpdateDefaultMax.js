@@ -29,7 +29,7 @@ async function createOrUpdateDataMaskingRuleForDefaultMax() {
     serverName,
     databaseName,
     dataMaskingRuleName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

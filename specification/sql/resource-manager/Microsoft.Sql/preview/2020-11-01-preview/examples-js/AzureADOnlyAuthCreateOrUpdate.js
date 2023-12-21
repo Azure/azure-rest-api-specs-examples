@@ -22,7 +22,7 @@ async function createsOrUpdatesAzureActiveDirectoryOnlyAuthenticationObject() {
     resourceGroupName,
     serverName,
     authenticationName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

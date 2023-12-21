@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ClusterPatchOperation_example.json
  */
 async function patchACluster() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const parameters = {
     eventStoreServiceEnabled: true,
@@ -47,9 +48,7 @@ async function patchACluster() {
   const result = await client.clusters.beginUpdateAndWait(
     resourceGroupName,
     clusterName,
-    parameters
+    parameters,
   );
   console.log(result);
 }
-
-patchACluster().catch(console.error);

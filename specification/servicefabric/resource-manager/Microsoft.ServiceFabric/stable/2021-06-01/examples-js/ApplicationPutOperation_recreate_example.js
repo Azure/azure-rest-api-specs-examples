@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationPutOperation_recreate_example.json
  */
 async function putAnApplicationWithRecreateOption() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationName = "myApp";
   const parameters = {
@@ -25,9 +26,7 @@ async function putAnApplicationWithRecreateOption() {
     resourceGroupName,
     clusterName,
     applicationName,
-    parameters
+    parameters,
   );
   console.log(result);
 }
-
-putAnApplicationWithRecreateOption().catch(console.error);

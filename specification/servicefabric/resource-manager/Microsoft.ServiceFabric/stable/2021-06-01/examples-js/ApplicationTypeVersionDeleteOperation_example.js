@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationTypeVersionDeleteOperation_example.json
  */
 async function deleteAnApplicationTypeVersion() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationTypeName = "myAppType";
   const version = "1.0";
@@ -19,9 +20,7 @@ async function deleteAnApplicationTypeVersion() {
     resourceGroupName,
     clusterName,
     applicationTypeName,
-    version
+    version,
   );
   console.log(result);
 }
-
-deleteAnApplicationTypeVersion().catch(console.error);

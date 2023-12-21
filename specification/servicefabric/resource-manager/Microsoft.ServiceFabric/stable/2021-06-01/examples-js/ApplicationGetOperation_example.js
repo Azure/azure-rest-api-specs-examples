@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationGetOperation_example.json
  */
 async function getAnApplication() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const applicationName = "myApp";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getAnApplication() {
   const result = await client.applications.get(resourceGroupName, clusterName, applicationName);
   console.log(result);
 }
-
-getAnApplication().catch(console.error);

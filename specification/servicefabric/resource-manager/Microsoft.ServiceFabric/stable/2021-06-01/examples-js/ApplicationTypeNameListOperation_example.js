@@ -8,13 +8,15 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/servicefabric/resource-manager/Microsoft.ServiceFabric/stable/2021-06-01/examples/ApplicationTypeNameListOperation_example.json
  */
 async function getAListOfApplicationTypeNameResources() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "resRg";
+  const subscriptionId =
+    process.env["SERVICEFABRIC_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["SERVICEFABRIC_RESOURCE_GROUP"] || "resRg";
   const clusterName = "myCluster";
   const credential = new DefaultAzureCredential();
   const client = new ServiceFabricManagementClient(credential, subscriptionId);
-  const result = await client.applicationTypes.list(resourceGroupName, clusterName);
-  console.log(result);
+  const resArray = new Array();
+  for await (let item of client.applicationTypes.list(resourceGroupName, clusterName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
 }
-
-getAListOfApplicationTypeNameResources().catch(console.error);

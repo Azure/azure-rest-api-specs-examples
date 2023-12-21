@@ -24,7 +24,7 @@ async function addsAnActiveDIrectoryAdministratorForTheServer() {
     resourceGroupName,
     serverName,
     objectId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function administratorDelete() {
   const result = await client.administrators.beginDeleteAndWait(
     resourceGroupName,
     serverName,
-    objectId
+    objectId,
   );
   console.log(result);
 }

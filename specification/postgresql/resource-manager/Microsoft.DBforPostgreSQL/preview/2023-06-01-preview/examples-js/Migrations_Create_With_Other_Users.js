@@ -34,7 +34,7 @@ async function migrationsCreateByPassingUserNames() {
     resourceGroupName,
     targetDbServerName,
     migrationName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

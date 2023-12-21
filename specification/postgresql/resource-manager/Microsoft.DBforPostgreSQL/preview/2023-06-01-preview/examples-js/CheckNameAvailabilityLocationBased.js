@@ -19,7 +19,7 @@ async function nameAvailability() {
   const client = new PostgreSQLManagementFlexibleServerClient(credential, subscriptionId);
   const result = await client.checkNameAvailabilityWithLocation.execute(
     locationName,
-    nameAvailabilityRequest
+    nameAvailabilityRequest,
   );
   console.log(result);
 }

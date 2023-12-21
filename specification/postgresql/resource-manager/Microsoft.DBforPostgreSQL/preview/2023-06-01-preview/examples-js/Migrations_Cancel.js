@@ -20,7 +20,7 @@ async function cancelMigration() {
     resourceGroupName,
     targetDbServerName,
     migrationName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

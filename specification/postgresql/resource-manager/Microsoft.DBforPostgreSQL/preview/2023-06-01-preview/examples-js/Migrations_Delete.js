@@ -18,7 +18,7 @@ async function migrationsDelete() {
     subscriptionId,
     resourceGroupName,
     targetDbServerName,
-    migrationName
+    migrationName,
   );
   console.log(result);
 }

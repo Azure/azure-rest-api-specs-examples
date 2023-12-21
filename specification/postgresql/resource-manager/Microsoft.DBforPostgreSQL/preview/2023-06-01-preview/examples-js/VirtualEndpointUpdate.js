@@ -23,7 +23,7 @@ async function updateAVirtualEndpointForAServerToUpdateThe() {
     resourceGroupName,
     serverName,
     virtualEndpointName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

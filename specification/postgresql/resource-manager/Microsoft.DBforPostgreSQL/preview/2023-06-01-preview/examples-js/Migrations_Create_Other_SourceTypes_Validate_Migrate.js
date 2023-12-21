@@ -35,7 +35,7 @@ async function createMigrationWithOtherSourceTypesForValidateAndMigrate() {
     resourceGroupName,
     targetDbServerName,
     migrationName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

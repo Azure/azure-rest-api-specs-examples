@@ -21,7 +21,7 @@ async function getSasOnManagedDiskAndVMGuestState() {
   const result = await client.disks.beginGrantAccessAndWait(
     resourceGroupName,
     diskName,
-    grantAccessData
+    grantAccessData,
   );
   console.log(result);
 }

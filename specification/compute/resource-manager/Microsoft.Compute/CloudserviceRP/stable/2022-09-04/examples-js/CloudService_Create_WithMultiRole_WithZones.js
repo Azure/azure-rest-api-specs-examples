@@ -57,7 +57,7 @@ async function createNewCloudServiceWithMultipleRolesInASpecificAvailabilityZone
   const result = await client.cloudServices.beginCreateOrUpdateAndWait(
     resourceGroupName,
     cloudServiceName,
-    options
+    options,
   );
   console.log(result);
 }

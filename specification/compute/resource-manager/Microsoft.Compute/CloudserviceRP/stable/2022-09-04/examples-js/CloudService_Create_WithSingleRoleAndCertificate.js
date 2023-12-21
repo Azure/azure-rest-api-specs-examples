@@ -67,7 +67,7 @@ async function createNewCloudServiceWithSingleRoleAndCertificateFromKeyVault() {
   const result = await client.cloudServices.beginCreateOrUpdateAndWait(
     resourceGroupName,
     cloudServiceName,
-    options
+    options,
   );
   console.log(result);
 }

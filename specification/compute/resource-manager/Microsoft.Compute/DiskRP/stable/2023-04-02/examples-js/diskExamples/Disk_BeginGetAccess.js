@@ -21,7 +21,7 @@ async function getASasOnAManagedDisk() {
   const result = await client.disks.beginGrantAccessAndWait(
     resourceGroupName,
     diskName,
-    grantAccessData
+    grantAccessData,
   );
   console.log(result);
 }

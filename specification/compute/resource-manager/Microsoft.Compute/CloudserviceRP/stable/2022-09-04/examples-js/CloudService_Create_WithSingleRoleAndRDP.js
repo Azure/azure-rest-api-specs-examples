@@ -68,7 +68,7 @@ async function createNewCloudServiceWithSingleRoleAndRdpExtension() {
   const result = await client.cloudServices.beginCreateOrUpdateAndWait(
     resourceGroupName,
     cloudServiceName,
-    options
+    options,
   );
   console.log(result);
 }

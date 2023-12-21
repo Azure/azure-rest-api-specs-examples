@@ -31,7 +31,7 @@ async function createADiskEncryptionSetWithKeyVaultFromADifferentTenant() {
   const result = await client.diskEncryptionSets.beginCreateOrUpdateAndWait(
     resourceGroupName,
     diskEncryptionSetName,
-    diskEncryptionSet
+    diskEncryptionSet,
   );
   console.log(result);
 }

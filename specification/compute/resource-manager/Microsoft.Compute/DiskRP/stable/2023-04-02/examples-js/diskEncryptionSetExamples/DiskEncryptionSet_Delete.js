@@ -15,7 +15,7 @@ async function deleteADiskEncryptionSet() {
   const client = new ComputeManagementClient(credential, subscriptionId);
   const result = await client.diskEncryptionSets.beginDeleteAndWait(
     resourceGroupName,
-    diskEncryptionSetName
+    diskEncryptionSetName,
   );
   console.log(result);
 }

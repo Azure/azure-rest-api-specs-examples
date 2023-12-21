@@ -17,7 +17,7 @@ async function deleteAPrivateEndpointConnectionUnderADiskAccessResource() {
   const result = await client.diskAccesses.beginDeleteAPrivateEndpointConnectionAndWait(
     resourceGroupName,
     diskAccessName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

@@ -19,7 +19,7 @@ async function getAnIncrementalDiskRestorePointResource() {
     resourceGroupName,
     restorePointCollectionName,
     vmRestorePointName,
-    diskRestorePointName
+    diskRestorePointName,
   );
   console.log(result);
 }

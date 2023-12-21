@@ -20,7 +20,7 @@ async function restartCloudServiceRoleInstancesInACloudService() {
   const result = await client.cloudServices.beginRestartAndWait(
     resourceGroupName,
     cloudServiceName,
-    options
+    options,
   );
   console.log(result);
 }

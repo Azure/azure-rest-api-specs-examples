@@ -1,4 +1,4 @@
-/** Samples for RecordSets ListAllByDnsZone. */
+/** Samples for RecordSets ListByDnsZone. */
 public final class Main {
     /*
      * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/ListRecordSetsByZone.json
@@ -14,6 +14,6 @@ public final class Main {
             .manager()
             .serviceClient()
             .getRecordSets()
-            .listAllByDnsZone("rg1", "zone1", null, null, com.azure.core.util.Context.NONE);
+            .listByDnsZone("rg1", "zone1", null, null, com.azure.core.util.Context.NONE);
     }
 }

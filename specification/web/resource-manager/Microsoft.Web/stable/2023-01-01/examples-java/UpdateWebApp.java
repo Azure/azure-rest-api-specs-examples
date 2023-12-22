@@ -16,7 +16,7 @@ public final class Main {
             .manager()
             .serviceClient()
             .getWebApps()
-            .updateWithResponse(
+            .update(
                 "testrg123",
                 "sitef6141",
                 new SitePatchResourceInner()

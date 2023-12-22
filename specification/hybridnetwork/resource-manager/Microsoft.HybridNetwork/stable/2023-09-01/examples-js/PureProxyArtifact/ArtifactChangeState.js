@@ -1,0 +1,31 @@
+const { HybridNetworkManagementClient } = require("@azure/arm-hybridnetwork");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Change artifact state defined in artifact store.
+ *
+ * @summary Change artifact state defined in artifact store.
+ * x-ms-original-file: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/PureProxyArtifact/ArtifactChangeState.json
+ */
+async function updateAnArtifactState() {
+  const subscriptionId = process.env["HYBRIDNETWORK_SUBSCRIPTION_ID"] || "subid";
+  const resourceGroupName = process.env["HYBRIDNETWORK_RESOURCE_GROUP"] || "TestResourceGroup";
+  const publisherName = "TestPublisher";
+  const artifactStoreName = "TestArtifactStoreName";
+  const artifactName = "fedrbac";
+  const artifactVersionName = "1.0.0";
+  const parameters = {
+    properties: { artifactState: "Deprecated" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new HybridNetworkManagementClient(credential, subscriptionId);
+  const result = await client.proxyArtifact.beginUpdateStateAndWait(
+    resourceGroupName,
+    publisherName,
+    artifactStoreName,
+    artifactName,
+    artifactVersionName,
+    parameters,
+  );
+  console.log(result);
+}

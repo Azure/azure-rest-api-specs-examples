@@ -1,0 +1,19 @@
+const { HybridNetworkManagementClient } = require("@azure/arm-hybridnetwork");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Lists all sites in the network service in a subscription.
+ *
+ * @summary Lists all sites in the network service in a subscription.
+ * x-ms-original-file: specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/SiteListBySubscription.json
+ */
+async function listAllHybridNetworkSitesInASubscription() {
+  const subscriptionId = process.env["HYBRIDNETWORK_SUBSCRIPTION_ID"] || "subid";
+  const credential = new DefaultAzureCredential();
+  const client = new HybridNetworkManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.sites.listBySubscription()) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

@@ -18,7 +18,7 @@ async function migrationsGetMigrationWithValidationFailures() {
     subscriptionId,
     resourceGroupName,
     targetDbServerName,
-    migrationName
+    migrationName,
   );
   console.log(result);
 }

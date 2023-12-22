@@ -21,7 +21,7 @@ async function sampleExecuteBackup() {
   const result = await client.flexibleServer.beginStartLtrBackupAndWait(
     resourceGroupName,
     serverName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

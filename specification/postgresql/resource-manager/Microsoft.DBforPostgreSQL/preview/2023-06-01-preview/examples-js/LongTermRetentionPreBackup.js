@@ -20,7 +20,7 @@ async function samplePrebackup() {
   const result = await client.flexibleServer.triggerLtrPreBackup(
     resourceGroupName,
     serverName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

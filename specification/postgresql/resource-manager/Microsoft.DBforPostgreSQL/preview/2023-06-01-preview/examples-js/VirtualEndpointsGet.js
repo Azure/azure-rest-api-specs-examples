@@ -18,7 +18,7 @@ async function getAVirtualEndpoint() {
   const result = await client.virtualEndpoints.get(
     resourceGroupName,
     serverName,
-    virtualEndpointName
+    virtualEndpointName,
   );
   console.log(result);
 }

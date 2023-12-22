@@ -34,7 +34,7 @@ async function createPreMigrationValidation() {
     resourceGroupName,
     targetDbServerName,
     migrationName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

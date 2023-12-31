@@ -3877,3 +3877,4 @@ id,name,language,tag,package,version,date_epoch,date
 3876,@azure/arm-healthcareapis@3.0.0,js,@azure/arm-healthcareapis_3.0.0,@azure/arm-healthcareapis,3.0.0,1703214205,12/22/2023
 3877,@azure/arm-dataprotection@2.0.0,js,@azure/arm-dataprotection_2.0.0,@azure/arm-dataprotection,2.0.0,1703214201,12/22/2023
 3878,azure-mgmt-netapp@12.0.0b1,python,azure-mgmt-netapp_12.0.0b1,azure-mgmt-netapp,12.0.0b1,1703213910,12/22/2023
+3879,"Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.1",dotnet,Azure.ResourceManager.SpringAppDiscovery_1.0.0-beta.1,Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.1,1703486200,12/25/2023

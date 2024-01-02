@@ -32,7 +32,7 @@ SnapshotData data = new SnapshotData(new AzureLocation("West US"))
 {
     CreationData = new DiskCreationData(DiskCreateOption.CopyFromSanSnapshot)
     {
-        SourceResourceId = new ResourceIdentifier("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"),
+        ElasticSanResourceId = new ResourceIdentifier("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ElasticSan/elasticSans/myElasticSan/volumegroups/myElasticSanVolumeGroup/snapshots/myElasticSanVolumeSnapshot"),
     },
 };
 ArmOperation<SnapshotResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, snapshotName, data);

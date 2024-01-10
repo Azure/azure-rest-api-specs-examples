@@ -3878,3 +3878,8 @@ id,name,language,tag,package,version,date_epoch,date
 3877,@azure/arm-dataprotection@2.0.0,js,@azure/arm-dataprotection_2.0.0,@azure/arm-dataprotection,2.0.0,1703214201,12/22/2023
 3878,azure-mgmt-netapp@12.0.0b1,python,azure-mgmt-netapp_12.0.0b1,azure-mgmt-netapp,12.0.0b1,1703213910,12/22/2023
 3879,"Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.1",dotnet,Azure.ResourceManager.SpringAppDiscovery_1.0.0-beta.1,Azure.ResourceManager.SpringAppDiscovery,1.0.0-beta.1,1703486200,12/25/2023
+3880,"Azure.ResourceManager.Compute,1.3.0",dotnet,Azure.ResourceManager.Compute_1.3.0,Azure.ResourceManager.Compute,1.3.0,1704163884,01/02/2024
+3881,"Azure.ResourceManager.Nginx,1.0.0",dotnet,Azure.ResourceManager.Nginx_1.0.0,Azure.ResourceManager.Nginx,1.0.0,1704273315,01/03/2024
+3882,"Azure.ResourceManager.RecoveryServicesBackup,1.2.0",dotnet,Azure.ResourceManager.RecoveryServicesBackup_1.2.0,Azure.ResourceManager.RecoveryServicesBackup,1.2.0,1704267581,01/03/2024
+3883,"Azure.ResourceManager.HybridCompute,1.0.0-beta.7",dotnet,Azure.ResourceManager.HybridCompute_1.0.0-beta.7,Azure.ResourceManager.HybridCompute,1.0.0-beta.7,1704335102,01/04/2024
+3884,"Azure.ResourceManager.HybridContainerService,1.0.0-beta.4",dotnet,Azure.ResourceManager.HybridContainerService_1.0.0-beta.4,Azure.ResourceManager.HybridContainerService,1.0.0-beta.4,1704335007,01/04/2024

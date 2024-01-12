@@ -4,6 +4,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Resources.Models;
 
 // Generated from example definition: specification/resources/resource-manager/Microsoft.Resources/stable/2022-12-01/examples/GetTenants.json
 // this example is just showing the usage of "Tenants_List" operation, for the dependent resources, they will have to be created separately.

@@ -17,31 +17,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this JitNetworkAccessPolicyResource created on azure
+// for more information of creating JitNetworkAccessPolicyResource, please refer to the document of JitNetworkAccessPolicyResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string resourceGroupName = "myRg1";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this JitNetworkAccessPolicyResource
 AzureLocation ascLocation = new AzureLocation("westeurope");
-JitNetworkAccessPolicyCollection collection = resourceGroupResource.GetJitNetworkAccessPolicies(ascLocation);
+string jitNetworkAccessPolicyName = "default";
+ResourceIdentifier jitNetworkAccessPolicyResourceId = JitNetworkAccessPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, ascLocation, jitNetworkAccessPolicyName);
+JitNetworkAccessPolicyResource jitNetworkAccessPolicy = client.GetJitNetworkAccessPolicyResource(jitNetworkAccessPolicyResourceId);
 
 // invoke the operation
-string jitNetworkAccessPolicyName = "default";
-NullableResponse<JitNetworkAccessPolicyResource> response = await collection.GetIfExistsAsync(jitNetworkAccessPolicyName);
-JitNetworkAccessPolicyResource result = response.HasValue ? response.Value : null;
+JitNetworkAccessPolicyResource result = await jitNetworkAccessPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    JitNetworkAccessPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+JitNetworkAccessPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

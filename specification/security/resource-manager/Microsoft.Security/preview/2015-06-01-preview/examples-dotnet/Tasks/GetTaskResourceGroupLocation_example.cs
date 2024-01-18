@@ -1,10 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.SecurityCenter;
 
 // Generated from example definition: specification/security/resource-manager/Microsoft.Security/preview/2015-06-01-preview/examples/Tasks/GetTaskResourceGroupLocation_example.json
@@ -15,31 +13,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this ResourceGroupSecurityTaskResource created on azure
+// for more information of creating ResourceGroupSecurityTaskResource, please refer to the document of ResourceGroupSecurityTaskResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string resourceGroupName = "myRg";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this ResourceGroupSecurityTaskResource
 AzureLocation ascLocation = new AzureLocation("westeurope");
-ResourceGroupSecurityTaskCollection collection = resourceGroupResource.GetResourceGroupSecurityTasks(ascLocation);
+string taskName = "d55b4dc0-779c-c66c-33e5-d7bce24c4222";
+ResourceIdentifier resourceGroupSecurityTaskResourceId = ResourceGroupSecurityTaskResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, ascLocation, taskName);
+ResourceGroupSecurityTaskResource resourceGroupSecurityTask = client.GetResourceGroupSecurityTaskResource(resourceGroupSecurityTaskResourceId);
 
 // invoke the operation
-string taskName = "d55b4dc0-779c-c66c-33e5-d7bce24c4222";
-NullableResponse<ResourceGroupSecurityTaskResource> response = await collection.GetIfExistsAsync(taskName);
-ResourceGroupSecurityTaskResource result = response.HasValue ? response.Value : null;
+ResourceGroupSecurityTaskResource result = await resourceGroupSecurityTask.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SecurityTaskData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityTaskData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

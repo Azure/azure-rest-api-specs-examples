@@ -3888,3 +3888,7 @@ id,name,language,tag,package,version,date_epoch,date
 3887,"Azure.ResourceManager,1.11.0-beta.1",dotnet,Azure.ResourceManager_1.11.0-beta.1,Azure.ResourceManager,1.11.0-beta.1,1705031256,01/12/2024
 3888,"Azure.ResourceManager.Workloads,1.2.0-beta.1",dotnet,Azure.ResourceManager.Workloads_1.2.0-beta.1,Azure.ResourceManager.Workloads,1.2.0-beta.1,1705035441,01/12/2024
 3889,azure-mgmt-recoveryservicesbackup@8.0.0,python,azure-mgmt-recoveryservicesbackup_8.0.0,azure-mgmt-recoveryservicesbackup,8.0.0,1705288090,01/15/2024
+3890,"Azure.ResourceManager.HybridContainerService,1.0.0-beta.5",dotnet,Azure.ResourceManager.HybridContainerService_1.0.0-beta.5,Azure.ResourceManager.HybridContainerService,1.0.0-beta.5,1705459774,01/17/2024
+3891,"Azure.ResourceManager.Network,1.7.0",dotnet,Azure.ResourceManager.Network_1.7.0,Azure.ResourceManager.Network,1.7.0,1705383180,01/16/2024
+3892,"Azure.ResourceManager.SecurityCenter,1.2.0-beta.5",dotnet,Azure.ResourceManager.SecurityCenter_1.2.0-beta.5,Azure.ResourceManager.SecurityCenter,1.2.0-beta.5,1705371254,01/16/2024
+3893,azure-mgmt-servicefabricmanagedclusters@2.0.0b5,python,azure-mgmt-servicefabricmanagedclusters_2.0.0b5,azure-mgmt-servicefabricmanagedclusters,2.0.0b5,1705549506,01/18/2024

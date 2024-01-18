@@ -15,29 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this SecurityAssessmentResource
+// this example assumes you already have this SecurityAssessmentResource created on azure
+// for more information of creating SecurityAssessmentResource, please refer to the document of SecurityAssessmentResource
 string resourceId = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23/resourceGroups/myRg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss2";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceId));
-SecurityAssessmentCollection collection = client.GetSecurityAssessments(scopeId);
+string assessmentName = "21300918-b2e3-0346-785f-c77ff57d243b";
+ResourceIdentifier securityAssessmentResourceId = SecurityAssessmentResource.CreateResourceIdentifier(resourceId, assessmentName);
+SecurityAssessmentResource securityAssessment = client.GetSecurityAssessmentResource(securityAssessmentResourceId);
 
 // invoke the operation
-string assessmentName = "21300918-b2e3-0346-785f-c77ff57d243b";
 SecurityAssessmentODataExpand? expand = SecurityAssessmentODataExpand.Links;
-NullableResponse<SecurityAssessmentResource> response = await collection.GetIfExistsAsync(assessmentName, expand: expand);
-SecurityAssessmentResource result = response.HasValue ? response.Value : null;
+SecurityAssessmentResource result = await securityAssessment.GetAsync(expand: expand);
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SecurityAssessmentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityAssessmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

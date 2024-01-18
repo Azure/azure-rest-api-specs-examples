@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,28 +13,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this SecurityComplianceResource
+// this example assumes you already have this SecurityComplianceResource created on azure
+// for more information of creating SecurityComplianceResource, please refer to the document of SecurityComplianceResource
 string scope = "subscriptions/20ff7fc3-e762-44dd-bd96-b71116dcdc23";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-SecurityComplianceCollection collection = client.GetSecurityCompliances(scopeId);
+string complianceName = "2018-01-01Z";
+ResourceIdentifier securityComplianceResourceId = SecurityComplianceResource.CreateResourceIdentifier(scope, complianceName);
+SecurityComplianceResource securityCompliance = client.GetSecurityComplianceResource(securityComplianceResourceId);
 
 // invoke the operation
-string complianceName = "2018-01-01Z";
-NullableResponse<SecurityComplianceResource> response = await collection.GetIfExistsAsync(complianceName);
-SecurityComplianceResource result = response.HasValue ? response.Value : null;
+SecurityComplianceResource result = await securityCompliance.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SecurityComplianceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SecurityComplianceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

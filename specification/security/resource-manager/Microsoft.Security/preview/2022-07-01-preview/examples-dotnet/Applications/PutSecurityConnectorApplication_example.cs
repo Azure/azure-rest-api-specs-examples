@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SecurityConnectorResource created on azure
-// for more information of creating SecurityConnectorResource, please refer to the document of SecurityConnectorResource
+// this example assumes you already have this SecurityConnectorApplicationResource created on azure
+// for more information of creating SecurityConnectorApplicationResource, please refer to the document of SecurityConnectorApplicationResource
 string subscriptionId = "20ff7fc3-e762-44dd-bd96-b71116dcdc23";
 string resourceGroupName = "gcpResourceGroup";
 string securityConnectorName = "gcpconnector";
-ResourceIdentifier securityConnectorResourceId = SecurityConnectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName);
-SecurityConnectorResource securityConnector = client.GetSecurityConnectorResource(securityConnectorResourceId);
-
-// get the collection of this SecurityConnectorApplicationResource
-SecurityConnectorApplicationCollection collection = securityConnector.GetSecurityConnectorApplications();
+string applicationId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
+ResourceIdentifier securityConnectorApplicationResourceId = SecurityConnectorApplicationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, securityConnectorName, applicationId);
+SecurityConnectorApplicationResource securityConnectorApplication = client.GetSecurityConnectorApplicationResource(securityConnectorApplicationResourceId);
 
 // invoke the operation
-string applicationId = "ad9a8e26-29d9-4829-bb30-e597a58cdbb8";
 SecurityApplicationData data = new SecurityApplicationData()
 {
     DisplayName = "GCP Admin's application",
@@ -45,7 +42,7 @@ SecurityApplicationData data = new SecurityApplicationData()
     ["value"] = "-prod-"} }})
     },
 };
-ArmOperation<SecurityConnectorApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, applicationId, data);
+ArmOperation<SecurityConnectorApplicationResource> lro = await securityConnectorApplication.UpdateAsync(WaitUntil.Completed, data);
 SecurityConnectorApplicationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

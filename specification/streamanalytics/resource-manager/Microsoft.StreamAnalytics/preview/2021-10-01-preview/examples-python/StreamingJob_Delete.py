@@ -6,7 +6,7 @@ from azure.mgmt.streamanalytics import StreamAnalyticsManagementClient
     pip install azure-identity
     pip install azure-mgmt-streamanalytics
 # USAGE
-    python delete_a_streaming_job.py
+    python streaming_job_delete.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -21,11 +21,10 @@ def main():
         subscription_id="56b5e0a9-b645-407d-99b0-c64f86013e3d",
     )
 
-    response = client.streaming_jobs.begin_delete(
+    client.streaming_jobs.begin_delete(
         resource_group_name="sjrg6936",
         job_name="sj59",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/StreamingJob_Delete.json

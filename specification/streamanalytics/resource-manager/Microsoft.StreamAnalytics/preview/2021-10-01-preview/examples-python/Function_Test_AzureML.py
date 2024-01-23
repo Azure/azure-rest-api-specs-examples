@@ -6,7 +6,7 @@ from azure.mgmt.streamanalytics import StreamAnalyticsManagementClient
     pip install azure-identity
     pip install azure-mgmt-streamanalytics
 # USAGE
-    python test_the_connection_for_an_azure_ml_function.py
+    python function_test_azure_ml.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,8 +22,8 @@ def main():
     )
 
     response = client.functions.begin_test(
-        resource_group_name="sjrg7",
-        job_name="sj9093",
+        resource_group_name="sjrg",
+        job_name="sjName",
         function_name="function588",
     ).result()
     print(response)

@@ -6,7 +6,7 @@ from azure.mgmt.streamanalytics import StreamAnalyticsManagementClient
     pip install azure-identity
     pip install azure-mgmt-streamanalytics
 # USAGE
-    python list_all_streaming_jobs_in_a_subscription_and_use_the_$expand_odata_query_parameter_to_expand_inputs,_outputs,_transformation,_and_functions.py
+    python streaming_job_list_by_subscription_expand.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

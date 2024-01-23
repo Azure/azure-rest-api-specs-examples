@@ -6,7 +6,7 @@ from azure.mgmt.streamanalytics import StreamAnalyticsManagementClient
     pip install azure-identity
     pip install azure-mgmt-streamanalytics
 # USAGE
-    python get_an_azure_function_output.py
+    python output_get_azure_function.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

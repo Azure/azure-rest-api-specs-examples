@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.datafactory.models.PipelineReference;
@@ -11,46 +12,35 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Triggers CreateOrUpdate. */
+/**
+ * Samples for Triggers CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_Create.json
+     * x-ms-original-file:
+     * specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_Create.json
      */
     /**
      * Sample code: Triggers_Create.
-     *
+     * 
      * @param manager Entry point to DataFactoryManager.
      */
     public static void triggersCreate(com.azure.resourcemanager.datafactory.DataFactoryManager manager)
         throws IOException {
         manager
-            .triggers()
-            .define("exampleTrigger")
+            .triggers().define(
+                "exampleTrigger")
             .withExistingFactory("exampleResourceGroup", "exampleFactoryName")
-            .withProperties(
-                new ScheduleTrigger()
-                    .withPipelines(
-                        Arrays
-                            .asList(
-                                new TriggerPipelineReference()
-                                    .withPipelineReference(new PipelineReference().withReferenceName("examplePipeline"))
-                                    .withParameters(
-                                        mapOf(
-                                            "OutputBlobNameList",
-                                            SerializerFactory
-                                                .createDefaultManagementSerializerAdapter()
-                                                .deserialize(
-                                                    "[\"exampleoutput.csv\"]",
-                                                    Object.class,
-                                                    SerializerEncoding.JSON)))))
-                    .withRecurrence(
-                        new ScheduleTriggerRecurrence()
-                            .withFrequency(RecurrenceFrequency.MINUTE)
-                            .withInterval(4)
-                            .withStartTime(OffsetDateTime.parse("2018-06-16T00:39:13.8441801Z"))
-                            .withEndTime(OffsetDateTime.parse("2018-06-16T00:55:13.8441801Z"))
-                            .withTimeZone("UTC")
-                            .withAdditionalProperties(mapOf())))
+            .withProperties(new ScheduleTrigger()
+                .withPipelines(Arrays.asList(new TriggerPipelineReference()
+                    .withPipelineReference(new PipelineReference().withReferenceName("examplePipeline"))
+                    .withParameters(mapOf("OutputBlobNameList",
+                        SerializerFactory.createDefaultManagementSerializerAdapter()
+                            .deserialize("[\"exampleoutput.csv\"]", Object.class, SerializerEncoding.JSON)))))
+                .withRecurrence(new ScheduleTriggerRecurrence().withFrequency(RecurrenceFrequency.MINUTE)
+                    .withInterval(4).withStartTime(OffsetDateTime.parse("2018-06-16T00:39:13.8441801Z"))
+                    .withEndTime(OffsetDateTime.parse("2018-06-16T00:55:13.8441801Z")).withTimeZone("UTC")
+                    .withAdditionalProperties(mapOf())))
             .create();
     }
 

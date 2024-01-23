@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.datafactory.models.BlobSink;
@@ -17,83 +18,44 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Pipelines CreateOrUpdate. */
+/**
+ * Samples for Pipelines CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Pipelines_Create.json
+     * x-ms-original-file:
+     * specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Pipelines_Create.json
      */
     /**
      * Sample code: Pipelines_Create.
-     *
+     * 
      * @param manager Entry point to DataFactoryManager.
      */
     public static void pipelinesCreate(com.azure.resourcemanager.datafactory.DataFactoryManager manager)
         throws IOException {
-        manager
-            .pipelines()
-            .define("examplePipeline")
-            .withExistingFactory("exampleResourceGroup", "exampleFactoryName")
-            .withActivities(
-                Arrays
-                    .asList(
-                        new ForEachActivity()
-                            .withName("ExampleForeachActivity")
-                            .withIsSequential(true)
-                            .withItems(new Expression().withValue("@pipeline().parameters.OutputBlobNameList"))
-                            .withActivities(
-                                Arrays
-                                    .asList(
-                                        new CopyActivity()
-                                            .withName("ExampleCopyActivity")
-                                            .withInputs(
-                                                Arrays
-                                                    .asList(
-                                                        new DatasetReference()
-                                                            .withReferenceName("exampleDataset")
-                                                            .withParameters(
-                                                                mapOf(
-                                                                    "MyFileName",
-                                                                    "examplecontainer.csv",
-                                                                    "MyFolderPath",
-                                                                    "examplecontainer"))))
-                                            .withOutputs(
-                                                Arrays
-                                                    .asList(
-                                                        new DatasetReference()
-                                                            .withReferenceName("exampleDataset")
-                                                            .withParameters(
-                                                                mapOf(
-                                                                    "MyFileName",
-                                                                    SerializerFactory
-                                                                        .createDefaultManagementSerializerAdapter()
-                                                                        .deserialize(
-                                                                            "{\"type\":\"Expression\",\"value\":\"@item()\"}",
-                                                                            Object.class,
-                                                                            SerializerEncoding.JSON),
-                                                                    "MyFolderPath",
-                                                                    "examplecontainer"))))
-                                            .withSource(new BlobSource())
-                                            .withSink(new BlobSink())
-                                            .withDataIntegrationUnits(32)))))
-            .withParameters(
-                mapOf(
-                    "JobId",
-                    new ParameterSpecification().withType(ParameterType.STRING),
-                    "OutputBlobNameList",
-                    new ParameterSpecification().withType(ParameterType.ARRAY)))
+        manager.pipelines().define("examplePipeline").withExistingFactory("exampleResourceGroup", "exampleFactoryName")
+            .withActivities(Arrays.asList(new ForEachActivity().withName("ExampleForeachActivity")
+                .withIsSequential(true)
+                .withItems(new Expression().withValue("@pipeline().parameters.OutputBlobNameList"))
+                .withActivities(Arrays.asList(new CopyActivity().withName("ExampleCopyActivity")
+                    .withInputs(Arrays.asList(new DatasetReference().withReferenceName("exampleDataset").withParameters(
+                        mapOf("MyFileName", "examplecontainer.csv", "MyFolderPath", "examplecontainer"))))
+                    .withOutputs(Arrays.asList(new DatasetReference().withReferenceName("exampleDataset")
+                        .withParameters(mapOf("MyFileName",
+                            SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                                "{\"type\":\"Expression\",\"value\":\"@item()\"}", Object.class,
+                                SerializerEncoding.JSON),
+                            "MyFolderPath", "examplecontainer"))))
+                    .withSource(new BlobSource()).withSink(new BlobSink()).withDataIntegrationUnits(32)))))
+            .withParameters(mapOf("JobId", new ParameterSpecification().withType(ParameterType.STRING),
+                "OutputBlobNameList", new ParameterSpecification().withType(ParameterType.ARRAY)))
             .withVariables(mapOf("TestVariableArray", new VariableSpecification().withType(VariableType.ARRAY)))
-            .withRunDimensions(
-                mapOf(
-                    "JobId",
-                    SerializerFactory
-                        .createDefaultManagementSerializerAdapter()
-                        .deserialize(
-                            "{\"type\":\"Expression\",\"value\":\"@pipeline().parameters.JobId\"}",
-                            Object.class,
-                            SerializerEncoding.JSON)))
-            .withPolicy(
-                new PipelinePolicy()
-                    .withElapsedTimeMetric(new PipelineElapsedTimeMetricPolicy().withDuration("0.00:10:00")))
+            .withRunDimensions(mapOf("JobId",
+                SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                    "{\"type\":\"Expression\",\"value\":\"@pipeline().parameters.JobId\"}", Object.class,
+                    SerializerEncoding.JSON)))
+            .withPolicy(new PipelinePolicy()
+                .withElapsedTimeMetric(new PipelineElapsedTimeMetricPolicy().withDuration("0.00:10:00")))
             .create();
     }
 

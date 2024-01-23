@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.datafactory.models.PipelineReference;
@@ -12,55 +13,34 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Triggers CreateOrUpdate. */
+/**
+ * Samples for Triggers CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_Update.json
+     * x-ms-original-file:
+     * specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Triggers_Update.json
      */
     /**
      * Sample code: Triggers_Update.
-     *
+     * 
      * @param manager Entry point to DataFactoryManager.
      */
     public static void triggersUpdate(com.azure.resourcemanager.datafactory.DataFactoryManager manager)
         throws IOException {
-        TriggerResource resource =
-            manager
-                .triggers()
-                .getWithResponse(
-                    "exampleResourceGroup",
-                    "exampleFactoryName",
-                    "exampleTrigger",
-                    null,
-                    com.azure.core.util.Context.NONE)
-                .getValue();
-        resource
-            .update()
-            .withProperties(
-                new ScheduleTrigger()
-                    .withDescription("Example description")
-                    .withPipelines(
-                        Arrays
-                            .asList(
-                                new TriggerPipelineReference()
-                                    .withPipelineReference(new PipelineReference().withReferenceName("examplePipeline"))
-                                    .withParameters(
-                                        mapOf(
-                                            "OutputBlobNameList",
-                                            SerializerFactory
-                                                .createDefaultManagementSerializerAdapter()
-                                                .deserialize(
-                                                    "[\"exampleoutput.csv\"]",
-                                                    Object.class,
-                                                    SerializerEncoding.JSON)))))
-                    .withRecurrence(
-                        new ScheduleTriggerRecurrence()
-                            .withFrequency(RecurrenceFrequency.MINUTE)
-                            .withInterval(4)
-                            .withStartTime(OffsetDateTime.parse("2018-06-16T00:39:14.905167Z"))
-                            .withEndTime(OffsetDateTime.parse("2018-06-16T00:55:14.905167Z"))
-                            .withTimeZone("UTC")
-                            .withAdditionalProperties(mapOf())))
+        TriggerResource resource = manager.triggers().getWithResponse("exampleResourceGroup", "exampleFactoryName",
+            "exampleTrigger", null, com.azure.core.util.Context.NONE).getValue();
+        resource.update()
+            .withProperties(new ScheduleTrigger().withDescription("Example description")
+                .withPipelines(Arrays.asList(new TriggerPipelineReference()
+                    .withPipelineReference(new PipelineReference().withReferenceName("examplePipeline"))
+                    .withParameters(mapOf("OutputBlobNameList",
+                        SerializerFactory.createDefaultManagementSerializerAdapter()
+                            .deserialize("[\"exampleoutput.csv\"]", Object.class, SerializerEncoding.JSON)))))
+                .withRecurrence(new ScheduleTriggerRecurrence().withFrequency(RecurrenceFrequency.MINUTE)
+                    .withInterval(4).withStartTime(OffsetDateTime.parse("2018-06-16T00:39:14.905167Z"))
+                    .withEndTime(OffsetDateTime.parse("2018-06-16T00:55:14.905167Z")).withTimeZone("UTC")
+                    .withAdditionalProperties(mapOf())))
             .apply();
     }
 

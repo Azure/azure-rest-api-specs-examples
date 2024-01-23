@@ -3900,3 +3900,4 @@ id,name,language,tag,package,version,date_epoch,date
 3899,azure-mgmt-streamanalytics@2.0.0b2,python,azure-mgmt-streamanalytics_2.0.0b2,azure-mgmt-streamanalytics,2.0.0b2,1705903956,01/22/2024
 3900,azure-mgmt-compute@30.5.0,python,azure-mgmt-compute_30.5.0,azure-mgmt-compute,30.5.0,1705896971,01/22/2024
 3901,azure-mgmt-containerservice@29.0.0,python,azure-mgmt-containerservice_29.0.0,azure-mgmt-containerservice,29.0.0,1705892535,01/22/2024
+3902,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.1.0-beta.2,java,azure-resourcemanager-postgresqlflexibleserver_1.1.0-beta.2,azure-resourcemanager-postgresqlflexibleserver,1.1.0-beta.2,1705977165,01/23/2024

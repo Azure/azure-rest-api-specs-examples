@@ -1,0 +1,29 @@
+
+import com.azure.resourcemanager.springappdiscovery.models.SpringbootserversProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for Springbootservers CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/offazurespringboot/resource-manager/Microsoft.OffAzureSpringBoot/preview/2023-01-01-preview/
+     * examples/springbootservers_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: springbootservers_CreateOrUpdate_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to SpringAppDiscoveryManager.
+     */
+    public static void springbootserversCreateOrUpdateMaximumSetGen(
+        com.azure.resourcemanager.springappdiscovery.SpringAppDiscoveryManager manager) {
+        manager.springbootservers().define("zkarbqnwnxeozvjrkpdqmgnwedwgtwcmmyqwaijkn")
+            .withExistingSpringbootsite("rgspringbootservers",
+                "hlkrzldhyobavtabgpubtjbhlslnjmsvkthwcfboriwyxndacjypzbj")
+            .withProperties(new SpringbootserversProperties().withPort(10).withServer("thhuxocfyqpeluqcgnypi")
+                .withFqdnAndIpAddressList(Arrays.asList()).withMachineArmId("fvfkiapbqsprnbzczdfmuryknrna")
+                .withTotalApps(5).withSpringBootApps(17).withErrors(Arrays.asList()))
+            .create();
+    }
+}

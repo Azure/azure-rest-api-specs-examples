@@ -3904,3 +3904,6 @@ id,name,language,tag,package,version,date_epoch,date
 3903,com.azure.resourcemanager:azure-resourcemanager-streamanalytics:1.0.0-beta.3,java,azure-resourcemanager-streamanalytics_1.0.0-beta.3,azure-resourcemanager-streamanalytics,1.0.0-beta.3,1705906222,01/22/2024
 3904,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.25,java,azure-resourcemanager-datafactory_1.0.0-beta.25,azure-resourcemanager-datafactory,1.0.0-beta.25,1705897335,01/22/2024
 3905,azure-mgmt-rdbms@10.2.0b14,python,azure-mgmt-rdbms_10.2.0b14,azure-mgmt-rdbms,10.2.0b14,1705989273,01/23/2024
+3906,com.azure.resourcemanager:azure-resourcemanager-imagebuilder:1.0.0,java,azure-resourcemanager-imagebuilder_1.0.0,azure-resourcemanager-imagebuilder,1.0.0,1706000247,01/23/2024
+3907,com.azure.resourcemanager:azure-resourcemanager-springappdiscovery:1.0.0-beta.1,java,azure-resourcemanager-springappdiscovery_1.0.0-beta.1,azure-resourcemanager-springappdiscovery,1.0.0-beta.1,1705998348,01/23/2024
+3908,"Azure.ResourceManager.Redis,1.3.0",dotnet,Azure.ResourceManager.Redis_1.3.0,Azure.ResourceManager.Redis,1.3.0,1705992002,01/23/2024

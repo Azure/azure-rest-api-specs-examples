@@ -3912,3 +3912,4 @@ id,name,language,tag,package,version,date_epoch,date
 3911,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.3.0,java,azure-resourcemanager-recoveryservicesbackup_1.3.0,azure-resourcemanager-recoveryservicesbackup,1.3.0,1706076514,01/24/2024
 3912,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan@v1.0.0,go,sdk/resourcemanager/elasticsan/armelasticsan/v1.0.0,sdk/resourcemanager/elasticsan/armelasticsan,v1.0.0,1706068042,01/24/2024
 3913,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v4@v4.7.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v4.7.0,sdk/resourcemanager/containerservice/armcontainerservice,v4.7.0,1706065679,01/24/2024
+3914,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v5@v5.5.0,go,sdk/resourcemanager/compute/armcompute/v5.5.0,sdk/resourcemanager/compute/armcompute,v5.5.0,1706065677,01/24/2024

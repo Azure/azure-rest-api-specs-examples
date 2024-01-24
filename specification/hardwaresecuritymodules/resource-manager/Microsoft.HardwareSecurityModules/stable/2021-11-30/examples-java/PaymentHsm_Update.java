@@ -1,25 +1,30 @@
-import com.azure.core.util.Context;
+
 import com.azure.resourcemanager.hardwaresecuritymodules.models.DedicatedHsm;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for DedicatedHsm Update. */
+/**
+ * Samples for DedicatedHsm Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/PaymentHsm_Update.json
+     * x-ms-original-file:
+     * specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/
+     * examples/PaymentHsm_Update.json
      */
     /**
      * Sample code: Update an existing payment HSM.
-     *
+     * 
      * @param manager Entry point to HardwareSecurityModulesManager.
      */
     public static void updateAnExistingPaymentHSM(
         com.azure.resourcemanager.hardwaresecuritymodules.HardwareSecurityModulesManager manager) {
-        DedicatedHsm resource =
-            manager.dedicatedHsms().getByResourceGroupWithResponse("hsm-group", "hsm1", Context.NONE).getValue();
+        DedicatedHsm resource = manager.dedicatedHsms()
+            .getByResourceGroupWithResponse("hsm-group", "hsm1", com.azure.core.util.Context.NONE).getValue();
         resource.update().withTags(mapOf("Dept", "hsm", "Environment", "dogfood", "Slice", "A")).apply();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

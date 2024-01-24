@@ -1,0 +1,20 @@
+
+/**
+ * Samples for DataProducts ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/networkanalytics/resource-manager/Microsoft.NetworkAnalytics/stable/2023-11-15/examples/
+     * DataProducts_ListByResourceGroup_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: DataProducts_ListByResourceGroup_MaximumSet_Gen.
+     * 
+     * @param manager Entry point to NetworkAnalyticsManager.
+     */
+    public static void dataProductsListByResourceGroupMaximumSetGen(
+        com.azure.resourcemanager.networkanalytics.NetworkAnalyticsManager manager) {
+        manager.dataProducts().listByResourceGroup("aoiresourceGroupName", com.azure.core.util.Context.NONE);
+    }
+}

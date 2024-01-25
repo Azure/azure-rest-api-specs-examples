@@ -3917,3 +3917,4 @@ id,name,language,tag,package,version,date_epoch,date
 3916,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v2@v2.7.0,go,sdk/resourcemanager/cosmos/armcosmos/v2.7.0,sdk/resourcemanager/cosmos/armcosmos,v2.7.0,1706065673,01/24/2024
 3917,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v4@v4.0.0,go,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup/v4.0.0,sdk/resourcemanager/recoveryservices/armrecoveryservicesbackup,v4.0.0,1706065668,01/24/2024
 3918,azure-mgmt-recoveryservicesbackup@9.0.0,python,azure-mgmt-recoveryservicesbackup_9.0.0,azure-mgmt-recoveryservicesbackup,9.0.0,1706067003,01/24/2024
+3919,com.azure.resourcemanager:azure-resourcemanager-hybridcontainerservice:1.0.0,java,azure-resourcemanager-hybridcontainerservice_1.0.0,azure-resourcemanager-hybridcontainerservice,1.0.0,1706160985,01/25/2024

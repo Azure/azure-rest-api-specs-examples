@@ -3921,3 +3921,4 @@ id,name,language,tag,package,version,date_epoch,date
 3920,azure-mgmt-elasticsan@1.0.0,python,azure-mgmt-elasticsan_1.0.0,azure-mgmt-elasticsan,1.0.0,1706152769,01/25/2024
 3921,azure-mgmt-hybridcontainerservice@1.0.0,python,azure-mgmt-hybridcontainerservice_1.0.0,azure-mgmt-hybridcontainerservice,1.0.0,1706152762,01/25/2024
 3922,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.0.0,java,azure-resourcemanager-elasticsan_1.0.0,azure-resourcemanager-elasticsan,1.0.0,1706163040,01/25/2024
+3923,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/streamanalytics/armstreamanalytics/v2@v2.0.0-beta.1,go,sdk/resourcemanager/streamanalytics/armstreamanalytics/v2.0.0-beta.1,sdk/resourcemanager/streamanalytics/armstreamanalytics,v2.0.0-beta.1,1706175517,01/25/2024

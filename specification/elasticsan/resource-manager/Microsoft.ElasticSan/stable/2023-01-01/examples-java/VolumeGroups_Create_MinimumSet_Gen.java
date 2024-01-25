@@ -1,21 +1,22 @@
+
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for VolumeGroups Create. */
+/**
+ * Samples for VolumeGroups Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2023-01-01/examples/VolumeGroups_Create_MinimumSet_Gen.json
+     * x-ms-original-file: specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2023-01-01/examples/
+     * VolumeGroups_Create_MinimumSet_Gen.json
      */
     /**
      * Sample code: VolumeGroups_Create_MinimumSet_Gen.
-     *
+     * 
      * @param manager Entry point to ElasticSanManager.
      */
     public static void volumeGroupsCreateMinimumSetGen(com.azure.resourcemanager.elasticsan.ElasticSanManager manager) {
-        manager
-            .volumeGroups()
-            .define("volumegroupname")
-            .withExistingElasticSan("resourcegroupname", "elasticsanname")
+        manager.volumeGroups().define("volumegroupname").withExistingElasticSan("resourcegroupname", "elasticsanname")
             .create();
     }
 

@@ -3919,3 +3919,4 @@ id,name,language,tag,package,version,date_epoch,date
 3918,azure-mgmt-recoveryservicesbackup@9.0.0,python,azure-mgmt-recoveryservicesbackup_9.0.0,azure-mgmt-recoveryservicesbackup,9.0.0,1706067003,01/24/2024
 3919,com.azure.resourcemanager:azure-resourcemanager-hybridcontainerservice:1.0.0,java,azure-resourcemanager-hybridcontainerservice_1.0.0,azure-resourcemanager-hybridcontainerservice,1.0.0,1706160985,01/25/2024
 3920,azure-mgmt-elasticsan@1.0.0,python,azure-mgmt-elasticsan_1.0.0,azure-mgmt-elasticsan,1.0.0,1706152769,01/25/2024
+3921,azure-mgmt-hybridcontainerservice@1.0.0,python,azure-mgmt-hybridcontainerservice_1.0.0,azure-mgmt-hybridcontainerservice,1.0.0,1706152762,01/25/2024

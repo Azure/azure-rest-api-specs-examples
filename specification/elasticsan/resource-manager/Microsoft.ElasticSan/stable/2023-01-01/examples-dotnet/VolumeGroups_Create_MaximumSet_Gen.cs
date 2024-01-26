@@ -38,17 +38,17 @@ ElasticSanVolumeGroupData data = new ElasticSanVolumeGroupData()
         [new ResourceIdentifier("key7482")] = new UserAssignedIdentity(),
         },
     },
-    ProtocolType = StorageTargetType.Iscsi,
+    ProtocolType = ElasticSanStorageTargetType.Iscsi,
     Encryption = ElasticSanEncryptionType.EncryptionAtRestWithCustomerManagedKey,
-    EncryptionProperties = new Models.EncryptionProperties()
+    EncryptionProperties = new ElasticSanEncryptionProperties()
     {
-        KeyVaultProperties = new Models.KeyVaultProperties()
+        KeyVaultProperties = new ElasticSanKeyVaultProperties()
         {
             KeyName = "sftaiernmrzypnrkpakrrawxcbsqzc",
             KeyVersion = "c",
             KeyVaultUri = new Uri("https://microsoft.com/axmblwp"),
         },
-        EncryptionUserAssignedIdentity = "im",
+        EncryptionUserAssignedIdentity = new ResourceIdentifier("im"),
     },
     VirtualNetworkRules =
     {

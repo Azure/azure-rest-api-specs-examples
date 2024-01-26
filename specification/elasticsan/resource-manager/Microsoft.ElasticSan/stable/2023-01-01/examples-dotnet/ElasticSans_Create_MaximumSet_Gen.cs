@@ -37,7 +37,7 @@ ElasticSanData data = new ElasticSanData(new AzureLocation("France Central"), ne
     {
     "1"
     },
-    PublicNetworkAccess = PublicNetworkAccess.Enabled,
+    PublicNetworkAccess = ElasticSanPublicNetworkAccess.Enabled,
     Tags =
     {
     ["key9316"] = "ihndtieqibtob",

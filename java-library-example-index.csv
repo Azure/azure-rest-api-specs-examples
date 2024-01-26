@@ -3946,3 +3946,4 @@ id,name,language,tag,package,version,date_epoch,date
 3945,azure-mgmt-appplatform@9.0.0,python,azure-mgmt-appplatform_9.0.0,azure-mgmt-appplatform,9.0.0,1706241414,01/26/2024
 3946,azure-mgmt-hardwaresecuritymodules@1.0.0b1,python,azure-mgmt-hardwaresecuritymodules_1.0.0b1,azure-mgmt-hardwaresecuritymodules,1.0.0b1,1706241095,01/26/2024
 3947,azure-mgmt-cosmosdb@10.0.0b2,python,azure-mgmt-cosmosdb_10.0.0b2,azure-mgmt-cosmosdb,10.0.0b2,1706241092,01/26/2024
+3948,azure-mgmt-datafactory@5.0.0,python,azure-mgmt-datafactory_5.0.0,azure-mgmt-datafactory,5.0.0,1706241080,01/26/2024

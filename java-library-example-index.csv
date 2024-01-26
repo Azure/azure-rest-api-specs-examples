@@ -3935,3 +3935,4 @@ id,name,language,tag,package,version,date_epoch,date
 3934,@azure/arm-recoveryservicesbackup@13.0.0,js,@azure/arm-recoveryservicesbackup_13.0.0,@azure/arm-recoveryservicesbackup,13.0.0,1706255773,01/26/2024
 3935,@azure/arm-datafactory@13.0.0,js,@azure/arm-datafactory_13.0.0,@azure/arm-datafactory,13.0.0,1706253917,01/26/2024
 3936,@azure/arm-networkanalytics@1.0.0,js,@azure/arm-networkanalytics_1.0.0,@azure/arm-networkanalytics,1.0.0,1706252819,01/26/2024
+3937,@azure/arm-compute@21.4.0,js,@azure/arm-compute_21.4.0,@azure/arm-compute,21.4.0,1706251329,01/26/2024

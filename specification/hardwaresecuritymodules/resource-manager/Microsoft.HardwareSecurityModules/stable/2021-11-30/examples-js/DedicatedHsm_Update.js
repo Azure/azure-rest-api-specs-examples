@@ -1,4 +1,4 @@
-const { AzureDedicatedHSMResourceProvider } = require("@azure/arm-hardwaresecuritymodules");
+const { AzureHSMResourceProvider } = require("@azure/arm-hardwaresecuritymodules");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,19 +8,19 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/DedicatedHsm_Update.json
  */
 async function updateAnExistingDedicatedHsm() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
-  const resourceGroupName = "hsm-group";
+  const subscriptionId =
+    process.env["HARDWARESECURITYMODULES_SUBSCRIPTION_ID"] ||
+    "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["HARDWARESECURITYMODULES_RESOURCE_GROUP"] || "hsm-group";
   const name = "hsm1";
   const tags = { dept: "hsm", environment: "dogfood", slice: "A" };
   const options = { tags };
   const credential = new DefaultAzureCredential();
-  const client = new AzureDedicatedHSMResourceProvider(credential, subscriptionId);
+  const client = new AzureHSMResourceProvider(credential, subscriptionId);
   const result = await client.dedicatedHsmOperations.beginUpdateAndWait(
     resourceGroupName,
     name,
-    options
+    options,
   );
   console.log(result);
 }
-
-updateAnExistingDedicatedHsm().catch(console.error);

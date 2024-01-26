@@ -6,10 +6,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d55b8005f05b040b852c15e74a0f3e36494a15e1/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/PaymentHsm_Update.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/18b5c820705ab69735b7e1e2e0da5e37ca6e1969/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/PaymentHsm_Update.json
 func ExampleDedicatedHsmClient_BeginUpdate_updateAnExistingPaymentHsm() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -75,7 +75,7 @@ func ExampleDedicatedHsmClient_BeginUpdate_updateAnExistingPaymentHsm() {
 	// 		StampID: to.Ptr("stamp01"),
 	// 		StatusMessage: to.Ptr("DedicatedHsm device is functional."),
 	// 	},
-	// 	SystemData: &armhardwaresecuritymodules.SystemData{
+	// 	SystemData: &armhardwaresecuritymodules.DedicatedHsmSystemData{
 	// 		CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-01-01T12:00:00.000Z"); return t}()),
 	// 		CreatedBy: to.Ptr("user1"),
 	// 		CreatedByType: to.Ptr(armhardwaresecuritymodules.IdentityTypeUser),

@@ -3941,3 +3941,4 @@ id,name,language,tag,package,version,date_epoch,date
 3940,"Azure.ResourceManager.NetworkAnalytics,1.0.0",dotnet,Azure.ResourceManager.NetworkAnalytics_1.0.0,Azure.ResourceManager.NetworkAnalytics,1.0.0,1706255674,01/26/2024
 3941,"Azure.ResourceManager.DataFactory,1.0.0-beta.6",dotnet,Azure.ResourceManager.DataFactory_1.0.0-beta.6,Azure.ResourceManager.DataFactory,1.0.0-beta.6,1706255226,01/26/2024
 3942,"Azure.ResourceManager.LargeInstance,1.0.0-beta.1",dotnet,Azure.ResourceManager.LargeInstance_1.0.0-beta.1,Azure.ResourceManager.LargeInstance,1.0.0-beta.1,1706252312,01/26/2024
+3943,"Azure.ResourceManager.ElasticSan,1.0.0",dotnet,Azure.ResourceManager.ElasticSan_1.0.0,Azure.ResourceManager.ElasticSan,1.0.0,1706244647,01/26/2024

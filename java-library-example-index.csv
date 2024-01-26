@@ -3944,3 +3944,4 @@ id,name,language,tag,package,version,date_epoch,date
 3943,"Azure.ResourceManager.ElasticSan,1.0.0",dotnet,Azure.ResourceManager.ElasticSan_1.0.0,Azure.ResourceManager.ElasticSan,1.0.0,1706244647,01/26/2024
 3944,azure-mgmt-networkanalytics@1.0.0,python,azure-mgmt-networkanalytics_1.0.0,azure-mgmt-networkanalytics,1.0.0,1706242509,01/26/2024
 3945,azure-mgmt-appplatform@9.0.0,python,azure-mgmt-appplatform_9.0.0,azure-mgmt-appplatform,9.0.0,1706241414,01/26/2024
+3946,azure-mgmt-hardwaresecuritymodules@1.0.0b1,python,azure-mgmt-hardwaresecuritymodules_1.0.0b1,azure-mgmt-hardwaresecuritymodules,1.0.0b1,1706241095,01/26/2024

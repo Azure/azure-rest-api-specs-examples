@@ -3938,3 +3938,4 @@ id,name,language,tag,package,version,date_epoch,date
 3937,@azure/arm-compute@21.4.0,js,@azure/arm-compute_21.4.0,@azure/arm-compute,21.4.0,1706251329,01/26/2024
 3938,@azure/arm-elasticsan@1.0.0,js,@azure/arm-elasticsan_1.0.0,@azure/arm-elasticsan,1.0.0,1706251309,01/26/2024
 3939,@azure/arm-cosmosdb@15.6.0,js,@azure/arm-cosmosdb_15.6.0,@azure/arm-cosmosdb,15.6.0,1706235085,01/26/2024
+3940,"Azure.ResourceManager.NetworkAnalytics,1.0.0",dotnet,Azure.ResourceManager.NetworkAnalytics_1.0.0,Azure.ResourceManager.NetworkAnalytics,1.0.0,1706255674,01/26/2024

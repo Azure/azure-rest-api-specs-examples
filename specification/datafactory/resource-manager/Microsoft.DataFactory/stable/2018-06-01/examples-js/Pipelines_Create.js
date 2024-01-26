@@ -70,7 +70,7 @@ async function pipelinesCreate() {
     resourceGroupName,
     factoryName,
     pipelineName,
-    pipeline
+    pipeline,
   );
   console.log(result);
 }

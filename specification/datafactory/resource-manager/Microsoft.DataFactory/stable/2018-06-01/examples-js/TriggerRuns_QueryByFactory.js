@@ -22,7 +22,7 @@ async function triggerRunsQueryByFactory() {
   const result = await client.triggerRuns.queryByFactory(
     resourceGroupName,
     factoryName,
-    filterParameters
+    filterParameters,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function integrationRuntimeObjectMetadataRefresh() {
   const result = await client.integrationRuntimeObjectMetadata.beginRefreshAndWait(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

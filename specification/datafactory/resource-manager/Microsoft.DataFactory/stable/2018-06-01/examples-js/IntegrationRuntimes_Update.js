@@ -23,7 +23,7 @@ async function integrationRuntimesUpdate() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    updateIntegrationRuntimeRequest
+    updateIntegrationRuntimeRequest,
   );
   console.log(result);
 }

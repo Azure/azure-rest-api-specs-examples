@@ -22,7 +22,7 @@ async function globalParametersUpdate() {
     resourceGroupName,
     factoryName,
     globalParameterName,
-    defaultParam
+    defaultParam,
   );
   console.log(result);
 }

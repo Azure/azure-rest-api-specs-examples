@@ -27,7 +27,7 @@ async function changeDataCaptureCreate() {
     resourceGroupName,
     factoryName,
     changeDataCaptureName,
-    changeDataCapture
+    changeDataCapture,
   );
   console.log(result);
 }

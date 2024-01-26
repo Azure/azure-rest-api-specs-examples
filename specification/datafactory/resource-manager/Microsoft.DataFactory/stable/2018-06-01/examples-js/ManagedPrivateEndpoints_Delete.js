@@ -20,7 +20,7 @@ async function managedVirtualNetworksDelete() {
     resourceGroupName,
     factoryName,
     managedVirtualNetworkName,
-    managedPrivateEndpointName
+    managedPrivateEndpointName,
   );
   console.log(result);
 }

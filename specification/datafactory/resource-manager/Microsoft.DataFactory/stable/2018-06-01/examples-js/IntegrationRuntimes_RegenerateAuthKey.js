@@ -22,7 +22,7 @@ async function integrationRuntimesRegenerateAuthKey() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    regenerateKeyParameters
+    regenerateKeyParameters,
   );
   console.log(result);
 }

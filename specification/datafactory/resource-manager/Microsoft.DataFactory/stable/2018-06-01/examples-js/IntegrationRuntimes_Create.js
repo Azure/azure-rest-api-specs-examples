@@ -25,7 +25,7 @@ async function integrationRuntimesCreate() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    integrationRuntime
+    integrationRuntime,
   );
   console.log(result);
 }

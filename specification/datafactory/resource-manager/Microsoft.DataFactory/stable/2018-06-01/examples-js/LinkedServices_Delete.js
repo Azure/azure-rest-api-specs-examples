@@ -18,7 +18,7 @@ async function linkedServicesDelete() {
   const result = await client.linkedServices.delete(
     resourceGroupName,
     factoryName,
-    linkedServiceName
+    linkedServiceName,
   );
   console.log(result);
 }

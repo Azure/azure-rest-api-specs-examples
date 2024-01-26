@@ -18,7 +18,7 @@ async function deleteAPrivateEndpointConnectionForADatafactory() {
   const result = await client.privateEndpointConnection.delete(
     resourceGroupName,
     factoryName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

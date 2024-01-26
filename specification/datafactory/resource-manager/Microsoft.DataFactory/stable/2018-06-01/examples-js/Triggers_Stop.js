@@ -18,7 +18,7 @@ async function triggersStop() {
   const result = await client.triggers.beginStopAndWait(
     resourceGroupName,
     factoryName,
-    triggerName
+    triggerName,
   );
   console.log(result);
 }

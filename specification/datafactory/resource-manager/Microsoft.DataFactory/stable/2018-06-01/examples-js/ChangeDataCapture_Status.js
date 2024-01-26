@@ -18,7 +18,7 @@ async function changeDataCaptureStart() {
   const result = await client.changeDataCapture.status(
     resourceGroupName,
     factoryName,
-    changeDataCaptureName
+    changeDataCaptureName,
   );
   console.log(result);
 }

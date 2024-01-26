@@ -20,7 +20,7 @@ async function triggersQueryByFactory() {
   const result = await client.triggers.queryByFactory(
     resourceGroupName,
     factoryName,
-    filterParameters
+    filterParameters,
   );
   console.log(result);
 }

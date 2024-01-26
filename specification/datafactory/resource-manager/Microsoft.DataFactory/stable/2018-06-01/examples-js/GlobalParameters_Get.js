@@ -18,7 +18,7 @@ async function globalParametersGet() {
   const result = await client.globalParameters.get(
     resourceGroupName,
     factoryName,
-    globalParameterName
+    globalParameterName,
   );
   console.log(result);
 }

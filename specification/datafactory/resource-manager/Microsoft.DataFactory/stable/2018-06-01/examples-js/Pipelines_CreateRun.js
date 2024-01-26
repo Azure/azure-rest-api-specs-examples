@@ -27,7 +27,7 @@ async function pipelinesCreateRun() {
     resourceGroupName,
     factoryName,
     pipelineName,
-    options
+    options,
   );
   console.log(result);
 }

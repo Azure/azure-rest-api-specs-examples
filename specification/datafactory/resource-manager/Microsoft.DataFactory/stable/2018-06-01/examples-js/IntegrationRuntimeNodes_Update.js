@@ -24,7 +24,7 @@ async function integrationRuntimeNodesUpdate() {
     factoryName,
     integrationRuntimeName,
     nodeName,
-    updateIntegrationRuntimeNodeRequest
+    updateIntegrationRuntimeNodeRequest,
   );
   console.log(result);
 }

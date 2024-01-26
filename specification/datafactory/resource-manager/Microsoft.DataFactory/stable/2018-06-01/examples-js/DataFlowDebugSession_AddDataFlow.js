@@ -82,7 +82,7 @@ async function dataFlowDebugSessionAddDataFlow() {
   const result = await client.dataFlowDebugSession.addDataFlow(
     resourceGroupName,
     factoryName,
-    request
+    request,
   );
   console.log(result);
 }

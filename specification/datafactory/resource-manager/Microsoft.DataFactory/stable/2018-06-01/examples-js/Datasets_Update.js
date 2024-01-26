@@ -36,7 +36,7 @@ async function datasetsUpdate() {
     resourceGroupName,
     factoryName,
     datasetName,
-    dataset
+    dataset,
   );
   console.log(result);
 }

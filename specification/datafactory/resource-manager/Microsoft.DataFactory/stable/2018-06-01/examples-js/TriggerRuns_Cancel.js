@@ -20,7 +20,7 @@ async function triggersCancel() {
     resourceGroupName,
     factoryName,
     triggerName,
-    runId
+    runId,
   );
   console.log(result);
 }

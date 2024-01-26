@@ -41,7 +41,7 @@ async function triggersUpdate() {
     resourceGroupName,
     factoryName,
     triggerName,
-    trigger
+    trigger,
   );
   console.log(result);
 }

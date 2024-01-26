@@ -17,7 +17,7 @@ async function privateEndPointConnectionsListByFactory() {
   const resArray = new Array();
   for await (let item of client.privateEndPointConnections.listByFactory(
     resourceGroupName,
-    factoryName
+    factoryName,
   )) {
     resArray.push(item);
   }

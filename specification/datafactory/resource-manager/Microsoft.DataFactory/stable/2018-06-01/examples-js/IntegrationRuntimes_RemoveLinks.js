@@ -22,7 +22,7 @@ async function integrationRuntimesUpgrade() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    linkedIntegrationRuntimeRequest
+    linkedIntegrationRuntimeRequest,
   );
   console.log(result);
 }

@@ -17,7 +17,7 @@ async function dataFlowDebugSessionQueryByFactory() {
   const resArray = new Array();
   for await (let item of client.dataFlowDebugSession.listQueryByFactory(
     resourceGroupName,
-    factoryName
+    factoryName,
   )) {
     resArray.push(item);
   }

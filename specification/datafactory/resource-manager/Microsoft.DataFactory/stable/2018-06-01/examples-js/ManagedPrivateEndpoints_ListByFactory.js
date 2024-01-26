@@ -19,7 +19,7 @@ async function managedPrivateEndpointsListByFactory() {
   for await (let item of client.managedPrivateEndpoints.listByFactory(
     resourceGroupName,
     factoryName,
-    managedVirtualNetworkName
+    managedVirtualNetworkName,
   )) {
     resArray.push(item);
   }

@@ -22,7 +22,7 @@ async function managedVirtualNetworksCreate() {
     resourceGroupName,
     factoryName,
     managedVirtualNetworkName,
-    managedVirtualNetwork
+    managedVirtualNetwork,
   );
   console.log(result);
 }

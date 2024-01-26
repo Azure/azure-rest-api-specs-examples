@@ -18,7 +18,7 @@ async function integrationRuntimesListAuthKeys() {
   const result = await client.integrationRuntimes.listAuthKeys(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

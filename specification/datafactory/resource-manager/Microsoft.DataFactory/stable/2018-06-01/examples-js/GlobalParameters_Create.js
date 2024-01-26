@@ -22,7 +22,7 @@ async function globalParametersCreate() {
     resourceGroupName,
     factoryName,
     globalParameterName,
-    defaultParam
+    defaultParam,
   );
   console.log(result);
 }

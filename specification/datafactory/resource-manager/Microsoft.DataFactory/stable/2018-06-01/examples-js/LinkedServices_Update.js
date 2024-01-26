@@ -30,7 +30,7 @@ async function linkedServicesUpdate() {
     resourceGroupName,
     factoryName,
     linkedServiceName,
-    linkedService
+    linkedService,
   );
   console.log(result);
 }

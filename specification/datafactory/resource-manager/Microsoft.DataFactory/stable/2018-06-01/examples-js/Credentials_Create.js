@@ -26,7 +26,7 @@ async function credentialsCreate() {
     resourceGroupName,
     factoryName,
     credentialName,
-    credentials
+    credentials,
   );
   console.log(result);
 }

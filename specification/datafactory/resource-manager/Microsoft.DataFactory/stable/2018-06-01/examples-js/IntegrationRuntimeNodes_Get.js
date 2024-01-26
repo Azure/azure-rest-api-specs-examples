@@ -20,7 +20,7 @@ async function integrationRuntimeNodesGet() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    nodeName
+    nodeName,
   );
   console.log(result);
 }

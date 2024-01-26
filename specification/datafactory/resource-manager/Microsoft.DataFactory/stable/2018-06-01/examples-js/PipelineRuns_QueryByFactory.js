@@ -28,7 +28,7 @@ async function pipelineRunsQueryByFactory() {
   const result = await client.pipelineRuns.queryByFactory(
     resourceGroupName,
     factoryName,
-    filterParameters
+    filterParameters,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function integrationRuntimesSyncCredentials() {
   const result = await client.integrationRuntimes.syncCredentials(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

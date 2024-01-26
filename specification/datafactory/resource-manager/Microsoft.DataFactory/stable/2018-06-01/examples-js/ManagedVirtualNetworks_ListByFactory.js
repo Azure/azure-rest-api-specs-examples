@@ -17,7 +17,7 @@ async function managedVirtualNetworksListByFactory() {
   const resArray = new Array();
   for await (let item of client.managedVirtualNetworks.listByFactory(
     resourceGroupName,
-    factoryName
+    factoryName,
   )) {
     resArray.push(item);
   }

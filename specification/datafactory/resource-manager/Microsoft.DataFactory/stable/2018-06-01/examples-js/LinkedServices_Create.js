@@ -29,7 +29,7 @@ async function linkedServicesCreate() {
     resourceGroupName,
     factoryName,
     linkedServiceName,
-    linkedService
+    linkedService,
   );
   console.log(result);
 }

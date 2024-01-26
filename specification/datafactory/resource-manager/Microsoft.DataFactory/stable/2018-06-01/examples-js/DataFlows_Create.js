@@ -76,7 +76,7 @@ async function dataFlowsCreate() {
     resourceGroupName,
     factoryName,
     dataFlowName,
-    dataFlow
+    dataFlow,
   );
   console.log(result);
 }

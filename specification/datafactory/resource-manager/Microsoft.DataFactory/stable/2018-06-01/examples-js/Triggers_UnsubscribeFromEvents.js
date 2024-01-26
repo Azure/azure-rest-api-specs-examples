@@ -18,7 +18,7 @@ async function triggersUnsubscribeFromEvents() {
   const result = await client.triggers.beginUnsubscribeFromEventsAndWait(
     resourceGroupName,
     factoryName,
-    triggerName
+    triggerName,
   );
   console.log(result);
 }

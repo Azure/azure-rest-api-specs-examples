@@ -3924,3 +3924,4 @@ id,name,language,tag,package,version,date_epoch,date
 3923,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/streamanalytics/armstreamanalytics/v2@v2.0.0-beta.1,go,sdk/resourcemanager/streamanalytics/armstreamanalytics/v2.0.0-beta.1,sdk/resourcemanager/streamanalytics/armstreamanalytics,v2.0.0-beta.1,1706175517,01/25/2024
 3924,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkanalytics/armnetworkanalytics@v1.0.0,go,sdk/resourcemanager/networkanalytics/armnetworkanalytics/v1.0.0,sdk/resourcemanager/networkanalytics/armnetworkanalytics,v1.0.0,1706165188,01/25/2024
 3925,com.azure.resourcemanager:azure-resourcemanager:2.35.0,java,azure-resourcemanager_2.35.0,azure-resourcemanager,2.35.0,1706252861,01/26/2024
+3926,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.0.0-beta.3,go,sdk/resourcemanager/cosmos/armcosmos/v3.0.0-beta.3,sdk/resourcemanager/cosmos/armcosmos,v3.0.0-beta.3,1706257464,01/26/2024

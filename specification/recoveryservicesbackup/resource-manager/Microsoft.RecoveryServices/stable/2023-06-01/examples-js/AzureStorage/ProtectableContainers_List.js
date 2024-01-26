@@ -22,7 +22,7 @@ async function listProtectableItemsWithBackupManagementTypeFilterAsAzureStorage(
     vaultName,
     resourceGroupName,
     fabricName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

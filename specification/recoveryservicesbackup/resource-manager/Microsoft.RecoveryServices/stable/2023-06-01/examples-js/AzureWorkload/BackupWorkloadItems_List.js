@@ -26,7 +26,7 @@ async function listWorkloadItemsInContainer() {
     resourceGroupName,
     fabricName,
     containerName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

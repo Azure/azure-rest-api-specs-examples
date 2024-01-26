@@ -18,7 +18,7 @@ async function deletePrivateEndpointConnection() {
   const result = await client.privateEndpointConnectionOperations.beginDeleteAndWait(
     vaultName,
     resourceGroupName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

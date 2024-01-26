@@ -24,7 +24,7 @@ async function getProtectionPolicyOperationStatus() {
     vaultName,
     resourceGroupName,
     policyName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

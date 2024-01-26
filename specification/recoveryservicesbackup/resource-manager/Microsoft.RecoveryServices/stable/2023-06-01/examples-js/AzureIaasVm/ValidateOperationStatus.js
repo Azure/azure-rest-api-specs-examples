@@ -22,7 +22,7 @@ async function getOperationStatusOfValidateOperation() {
   const result = await client.validateOperationStatuses.get(
     vaultName,
     resourceGroupName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

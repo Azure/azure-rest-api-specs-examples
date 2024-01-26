@@ -27,7 +27,7 @@ async function revokeInstantItemLevelRecoveryForAzureVM() {
     fabricName,
     containerName,
     protectedItemName,
-    recoveryPointId
+    recoveryPointId,
   );
   console.log(result);
 }

@@ -54,7 +54,7 @@ async function restoreToNewAzureIaasVMWithIaasVMRestoreWithRehydrationRequest() 
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

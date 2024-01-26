@@ -23,7 +23,7 @@ async function prepareDataMove() {
   const result = await client.beginBMSPrepareDataMoveAndWait(
     vaultName,
     resourceGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

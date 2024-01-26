@@ -27,7 +27,7 @@ async function unlockDeleteResourceGuardProxy() {
     vaultName,
     resourceGroupName,
     resourceGuardProxyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

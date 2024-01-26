@@ -28,7 +28,7 @@ async function createResourceGuardProxy() {
     vaultName,
     resourceGroupName,
     resourceGuardProxyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

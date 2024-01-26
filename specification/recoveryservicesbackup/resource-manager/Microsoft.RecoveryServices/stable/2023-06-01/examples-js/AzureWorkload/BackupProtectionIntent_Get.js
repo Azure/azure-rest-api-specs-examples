@@ -22,7 +22,7 @@ async function getProtectionIntentForAnItem() {
     vaultName,
     resourceGroupName,
     fabricName,
-    intentObjectName
+    intentObjectName,
   );
   console.log(result);
 }

@@ -35,7 +35,7 @@ async function registerAzureStorageProtectionContainers() {
     resourceGroupName,
     fabricName,
     containerName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

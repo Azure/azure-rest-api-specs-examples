@@ -66,7 +66,7 @@ async function createOrUpdateDailyAzureStorageProtectionPolicy() {
     vaultName,
     resourceGroupName,
     policyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

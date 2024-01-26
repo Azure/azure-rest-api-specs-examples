@@ -30,7 +30,7 @@ async function triggerRpMoveOperation() {
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -41,7 +41,7 @@ async function triggerValidateOperation() {
   const result = await client.validateOperation.beginTriggerAndWait(
     vaultName,
     resourceGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

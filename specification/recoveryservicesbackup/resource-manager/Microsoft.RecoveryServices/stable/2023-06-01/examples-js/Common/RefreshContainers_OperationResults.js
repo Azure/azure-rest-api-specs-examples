@@ -20,7 +20,7 @@ async function azureVMDiscoveryOperationResult() {
     vaultName,
     resourceGroupName,
     fabricName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

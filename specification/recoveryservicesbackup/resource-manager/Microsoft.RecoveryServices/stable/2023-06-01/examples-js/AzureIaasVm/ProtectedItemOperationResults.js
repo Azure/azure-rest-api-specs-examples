@@ -24,7 +24,7 @@ async function getOperationResultsOfProtectedVM() {
     fabricName,
     containerName,
     protectedItemName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

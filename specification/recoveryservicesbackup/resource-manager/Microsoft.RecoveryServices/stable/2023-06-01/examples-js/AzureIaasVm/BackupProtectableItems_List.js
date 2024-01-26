@@ -22,7 +22,7 @@ async function listProtectableItemsWithBackupManagementTypeFilterAsAzureIaasVM()
   for await (let item of client.backupProtectableItems.list(
     vaultName,
     resourceGroupName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

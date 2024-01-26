@@ -25,7 +25,7 @@ async function getProtectedClassicVirtualMachineDetails() {
     resourceGroupName,
     fabricName,
     containerName,
-    protectedItemName
+    protectedItemName,
   );
   console.log(result);
 }

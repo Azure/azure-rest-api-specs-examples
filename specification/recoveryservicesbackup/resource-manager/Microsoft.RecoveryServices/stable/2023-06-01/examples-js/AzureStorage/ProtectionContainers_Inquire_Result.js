@@ -22,7 +22,7 @@ async function getAzureStorageProtectionContainerOperationResult() {
     resourceGroupName,
     fabricName,
     containerName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

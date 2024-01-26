@@ -20,7 +20,7 @@ async function cancelJobOperationResult() {
     vaultName,
     resourceGroupName,
     jobName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

@@ -34,7 +34,7 @@ async function enableProtectionOnAzureIaasVM() {
     fabricName,
     containerName,
     protectedItemName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

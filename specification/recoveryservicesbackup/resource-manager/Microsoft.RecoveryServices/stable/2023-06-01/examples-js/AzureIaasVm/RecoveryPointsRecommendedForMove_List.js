@@ -29,7 +29,7 @@ async function getProtectedAzureVMRecoveryPointsRecommendedForMove() {
     fabricName,
     containerName,
     protectedItemName,
-    parameters
+    parameters,
   )) {
     resArray.push(item);
   }

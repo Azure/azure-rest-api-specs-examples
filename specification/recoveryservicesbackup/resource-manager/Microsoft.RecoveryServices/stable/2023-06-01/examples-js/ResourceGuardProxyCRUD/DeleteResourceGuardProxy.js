@@ -19,7 +19,7 @@ async function deleteResourceGuardProxy() {
   const result = await client.resourceGuardProxy.delete(
     vaultName,
     resourceGroupName,
-    resourceGuardProxyName
+    resourceGuardProxyName,
   );
   console.log(result);
 }

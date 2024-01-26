@@ -51,7 +51,7 @@ async function restoreToNewAzureIaasVMWithIaasVMRestoreRequest() {
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

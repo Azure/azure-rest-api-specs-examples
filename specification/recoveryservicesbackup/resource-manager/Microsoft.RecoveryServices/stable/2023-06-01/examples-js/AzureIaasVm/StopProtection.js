@@ -33,7 +33,7 @@ async function stopProtectionWithRetainDataOnAzureIaasVM() {
     fabricName,
     containerName,
     protectedItemName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

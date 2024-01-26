@@ -20,7 +20,7 @@ async function triggerAzureVMDiscovery() {
   const result = await client.protectionContainers.refresh(
     vaultName,
     resourceGroupName,
-    fabricName
+    fabricName,
   );
   console.log(result);
 }

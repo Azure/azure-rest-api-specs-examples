@@ -24,7 +24,7 @@ async function getTheTieringSavingsCostInfoForVault() {
   const result = await client.fetchTieringCost.beginPostAndWait(
     resourceGroupName,
     vaultName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -32,7 +32,7 @@ async function updatePrivateEndpointConnection() {
     vaultName,
     resourceGroupName,
     privateEndpointConnectionName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

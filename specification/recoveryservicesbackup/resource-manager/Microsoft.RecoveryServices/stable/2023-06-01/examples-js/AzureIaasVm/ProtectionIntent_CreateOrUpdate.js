@@ -30,7 +30,7 @@ async function createOrUpdateAzureVMProtectionIntent() {
     resourceGroupName,
     fabricName,
     intentObjectName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

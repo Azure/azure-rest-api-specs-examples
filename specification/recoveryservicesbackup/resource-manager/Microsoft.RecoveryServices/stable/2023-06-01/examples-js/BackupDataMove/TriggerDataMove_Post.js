@@ -24,7 +24,7 @@ async function triggerDataMove() {
   const result = await client.beginBMSTriggerDataMoveAndWait(
     vaultName,
     resourceGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

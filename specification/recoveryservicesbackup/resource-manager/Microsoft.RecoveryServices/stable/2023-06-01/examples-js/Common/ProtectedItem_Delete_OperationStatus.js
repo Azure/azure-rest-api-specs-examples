@@ -23,7 +23,7 @@ async function getProtectedItemDeleteOperationStatus() {
   const result = await client.backupOperationStatuses.get(
     vaultName,
     resourceGroupName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

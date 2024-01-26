@@ -21,7 +21,7 @@ async function dataTypesDeleteDataMaximumSetGen() {
     resourceGroupName,
     dataProductName,
     dataTypeName,
-    body
+    body,
   );
   console.log(result);
 }

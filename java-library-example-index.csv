@@ -3929,3 +3929,4 @@ id,name,language,tag,package,version,date_epoch,date
 3928,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appplatform/armappplatform/v2@v2.0.0,go,sdk/resourcemanager/appplatform/armappplatform/v2.0.0,sdk/resourcemanager/appplatform/armappplatform,v2.0.0,1706255467,01/26/2024
 3929,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2@v2.0.0-beta.1,go,sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2.0.0-beta.1,sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules,v2.0.0-beta.1,1706235019,01/26/2024
 3930,@azure/arm-hardwaresecuritymodules@2.0.0-beta.1,js,@azure/arm-hardwaresecuritymodules_2.0.0-beta.1,@azure/arm-hardwaresecuritymodules,2.0.0-beta.1,1706264935,01/26/2024
+3931,@azure/arm-appplatform@3.0.0,js,@azure/arm-appplatform_3.0.0,@azure/arm-appplatform,3.0.0,1706260316,01/26/2024

@@ -3933,3 +3933,4 @@ id,name,language,tag,package,version,date_epoch,date
 3932,@azure/arm-hybridcontainerservice@1.0.0,js,@azure/arm-hybridcontainerservice_1.0.0,@azure/arm-hybridcontainerservice,1.0.0,1706256940,01/26/2024
 3933,@azure/arm-containerservice@19.7.0,js,@azure/arm-containerservice_19.7.0,@azure/arm-containerservice,19.7.0,1706255810,01/26/2024
 3934,@azure/arm-recoveryservicesbackup@13.0.0,js,@azure/arm-recoveryservicesbackup_13.0.0,@azure/arm-recoveryservicesbackup,13.0.0,1706255773,01/26/2024
+3935,@azure/arm-datafactory@13.0.0,js,@azure/arm-datafactory_13.0.0,@azure/arm-datafactory,13.0.0,1706253917,01/26/2024

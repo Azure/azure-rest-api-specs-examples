@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.InstancePoolUpdate;
 import java.util.HashMap;
@@ -6,7 +7,8 @@ import java.util.Map;
 /** Samples for InstancePools Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/PatchInstancePool.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/PatchInstancePool.json
      */
     /**
      * Sample code: Patch an instance pool.
@@ -14,12 +16,8 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchAnInstancePool(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getInstancePools()
-            .update("group1", "testIP", new InstancePoolUpdate().withTags(mapOf("x", "y")), Context.NONE);
+        azure.sqlServers().manager().serviceClient().getInstancePools().update("group1", "testIP",
+            new InstancePoolUpdate().withTags(mapOf("x", "y")), Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

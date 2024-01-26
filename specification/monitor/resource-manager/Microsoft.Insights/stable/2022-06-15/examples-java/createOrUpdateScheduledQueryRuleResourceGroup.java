@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.ScheduledQueryRuleResourceInner;
 import com.azure.resourcemanager.monitor.models.Actions;
@@ -15,62 +16,35 @@ import java.util.Map;
 /** Samples for ScheduledQueryRules CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-15/examples/createOrUpdateScheduledQueryRuleResourceGroup.json
+     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-15/examples/
+     * createOrUpdateScheduledQueryRuleResourceGroup.json
      */
     /**
      * Sample code: Create or update a scheduled query rule on Resource group(s).
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void createOrUpdateAScheduledQueryRuleOnResourceGroupS(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .diagnosticSettings()
-            .manager()
-            .serviceClient()
-            .getScheduledQueryRules()
-            .createOrUpdateWithResponse(
-                "QueryResourceGroupName",
-                "heartbeat",
-                new ScheduledQueryRuleResourceInner()
-                    .withLocation("eastus")
-                    .withDescription("Health check rule")
-                    .withSeverity(AlertSeverity.FOUR)
-                    .withEnabled(true)
-                    .withScopes(
-                        Arrays
-                            .asList(
-                                "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1"))
-                    .withEvaluationFrequency(Duration.parse("PT5M"))
-                    .withWindowSize(Duration.parse("PT10M"))
-                    .withTargetResourceTypes(Arrays.asList("Microsoft.Compute/virtualMachines"))
-                    .withCriteria(
-                        new ScheduledQueryRuleCriteria()
-                            .withAllOf(
-                                Arrays
-                                    .asList(
-                                        new Condition()
-                                            .withQuery("Heartbeat")
-                                            .withTimeAggregation(TimeAggregation.COUNT)
-                                            .withDimensions(Arrays.asList())
-                                            .withOperator(ConditionOperator.GREATER_THAN)
-                                            .withThreshold(360.0D)
-                                            .withFailingPeriods(
-                                                new ConditionFailingPeriods()
-                                                    .withNumberOfEvaluationPeriods(1L)
-                                                    .withMinFailingPeriodsToAlert(1L)))))
-                    .withMuteActionsDuration(Duration.parse("PT30M"))
-                    .withActions(
-                        new Actions()
-                            .withActionGroups(
-                                Arrays
-                                    .asList(
-                                        "/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"))
-                            .withCustomProperties(mapOf("key11", "value11", "key12", "value12")))
-                    .withCheckWorkspaceAlertsStorageConfigured(true)
-                    .withSkipQueryValidation(true)
-                    .withAutoMitigate(true),
-                Context.NONE);
+    public static void
+        createOrUpdateAScheduledQueryRuleOnResourceGroupS(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.diagnosticSettings().manager().serviceClient().getScheduledQueryRules().createOrUpdateWithResponse(
+            "QueryResourceGroupName", "heartbeat",
+            new ScheduledQueryRuleResourceInner().withLocation("eastus").withDescription("Health check rule")
+                .withSeverity(AlertSeverity.FOUR).withEnabled(true)
+                .withScopes(Arrays
+                    .asList("/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147/resourceGroups/scopeResourceGroup1"))
+                .withEvaluationFrequency(Duration.parse("PT5M")).withWindowSize(Duration.parse("PT10M"))
+                .withTargetResourceTypes(Arrays.asList("Microsoft.Compute/virtualMachines"))
+                .withCriteria(new ScheduledQueryRuleCriteria().withAllOf(Arrays.asList(new Condition()
+                    .withQuery("Heartbeat").withTimeAggregation(TimeAggregation.COUNT).withDimensions(Arrays.asList())
+                    .withOperator(ConditionOperator.GREATER_THAN).withThreshold(360.0D)
+                    .withFailingPeriods(new ConditionFailingPeriods()
+                        .withNumberOfEvaluationPeriods(1L).withMinFailingPeriodsToAlert(1L)))))
+                .withMuteActionsDuration(Duration.parse("PT30M"))
+                .withActions(new Actions().withActionGroups(Arrays.asList(
+                    "/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"))
+                    .withCustomProperties(mapOf("key11", "value11", "key12", "value12")))
+                .withCheckWorkspaceAlertsStorageConfigured(true).withSkipQueryValidation(true).withAutoMitigate(true),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

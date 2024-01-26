@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.dns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.dns.models.AaaaRecord;
 import com.azure.resourcemanager.dns.models.RecordType;
@@ -8,7 +9,8 @@ import java.util.Map;
 /** Samples for RecordSets CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateAAAARecordset.json
+     * x-ms-original-file:
+     * specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateAAAARecordset.json
      */
     /**
      * Sample code: Create AAAA recordset.
@@ -16,23 +18,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAAAARecordset(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .createOrUpdateWithResponse(
-                "rg1",
-                "zone1",
-                "record1",
-                RecordType.AAAA,
-                new RecordSetInner()
-                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
-                    .withTtl(3600L)
-                    .withAaaaRecords(Arrays.asList(new AaaaRecord().withIpv6Address("::1"))),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getRecordSets().createOrUpdateWithResponse("rg1", "zone1", "record1",
+            RecordType.AAAA, new RecordSetInner().withMetadata(mapOf("key1", "fakeTokenPlaceholder")).withTtl(3600L)
+                .withAaaaRecords(Arrays.asList(new AaaaRecord().withIpv6Address("::1"))),
+            null, null, com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

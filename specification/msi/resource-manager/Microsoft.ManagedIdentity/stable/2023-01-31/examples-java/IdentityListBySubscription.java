@@ -1,7 +1,9 @@
+
 /** Samples for UserAssignedIdentities List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/examples/IdentityListBySubscription.json
+     * x-ms-original-file: specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/examples/
+     * IdentityListBySubscription.json
      */
     /**
      * Sample code: IdentityListBySubscription.

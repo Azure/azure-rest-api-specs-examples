@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.models.Identity;
 import com.azure.resourcemanager.search.models.IdentityType;
 import com.azure.resourcemanager.search.models.SearchServiceUpdate;
@@ -9,7 +10,8 @@ import java.util.Map;
 /** Samples for Services Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchUpdateServiceToRemoveIdentity.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchUpdateServiceToRemoveIdentity.json
      */
     /**
      * Sample code: SearchUpdateServiceToRemoveIdentity.
@@ -17,19 +19,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchUpdateServiceToRemoveIdentity(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .updateWithResponse(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceUpdate()
-                    .withSku(new Sku().withName(SkuName.STANDARD))
-                    .withIdentity(new Identity().withType(IdentityType.NONE)),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.searchServices().manager().serviceClient().getServices()
+            .updateWithResponse("rg1", "mysearchservice", new SearchServiceUpdate()
+                .withSku(new Sku().withName(SkuName.STANDARD)).withIdentity(new Identity().withType(IdentityType.NONE)),
+                null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

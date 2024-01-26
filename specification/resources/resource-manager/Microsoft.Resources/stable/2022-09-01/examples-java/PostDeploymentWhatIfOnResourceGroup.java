@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.resources.models.DeploymentMode;
 import com.azure.resourcemanager.resources.models.DeploymentWhatIf;
 import com.azure.resourcemanager.resources.models.DeploymentWhatIfProperties;
@@ -8,30 +9,21 @@ import java.util.Map;
 /** Samples for Deployments WhatIf. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/PostDeploymentWhatIfOnResourceGroup.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/
+     * PostDeploymentWhatIfOnResourceGroup.json
      */
     /**
      * Sample code: Predict template changes at resource group scope.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void predictTemplateChangesAtResourceGroupScope(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .serviceClient()
-            .getDeployments()
-            .whatIf(
-                "my-resource-group",
-                "my-deployment",
-                new DeploymentWhatIf()
-                    .withProperties(
-                        new DeploymentWhatIfProperties()
-                            .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
-                            .withParameters(mapOf())
-                            .withMode(DeploymentMode.INCREMENTAL)),
-                com.azure.core.util.Context.NONE);
+    public static void
+        predictTemplateChangesAtResourceGroupScope(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.genericResources().manager().serviceClient().getDeployments().whatIf("my-resource-group", "my-deployment",
+            new DeploymentWhatIf().withProperties(new DeploymentWhatIfProperties()
+                .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
+                .withParameters(mapOf()).withMode(DeploymentMode.INCREMENTAL)),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

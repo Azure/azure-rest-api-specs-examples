@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.SensitivityLabelInner;
 import com.azure.resourcemanager.sql.fluent.models.SensitivityLabelUpdateInner;
@@ -9,7 +10,8 @@ import java.util.Arrays;
 /** Samples for SensitivityLabels Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/SensitivityLabelsCurrentUpdate.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/SensitivityLabelsCurrentUpdate.json
      */
     /**
      * Sample code: Update sensitivity labels of a given database using an operations batch.
@@ -18,48 +20,21 @@ public final class Main {
      */
     public static void updateSensitivityLabelsOfAGivenDatabaseUsingAnOperationsBatch(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getSensitivityLabels()
-            .updateWithResponse(
-                "myRG",
-                "myServer",
-                "myDatabase",
-                new SensitivityLabelUpdateList()
-                    .withOperations(
-                        Arrays
-                            .asList(
-                                new SensitivityLabelUpdateInner()
-                                    .withOp(SensitivityLabelUpdateKind.SET)
-                                    .withSchema("dbo")
-                                    .withTable("table1")
-                                    .withColumn("column1")
-                                    .withSensitivityLabel(
-                                        new SensitivityLabelInner()
-                                            .withLabelName("Highly Confidential")
-                                            .withLabelId("3A477B16-9423-432B-AA97-6069B481CEC3")
-                                            .withInformationType("Financial")
-                                            .withInformationTypeId("1D3652D6-422C-4115-82F1-65DAEBC665C8")
-                                            .withRank(SensitivityLabelRank.LOW)),
-                                new SensitivityLabelUpdateInner()
-                                    .withOp(SensitivityLabelUpdateKind.SET)
-                                    .withSchema("dbo")
-                                    .withTable("table2")
-                                    .withColumn("column2")
-                                    .withSensitivityLabel(
-                                        new SensitivityLabelInner()
-                                            .withLabelName("PII")
-                                            .withLabelId("bf91e08c-f4f0-478a-b016-25164b2a65ff")
-                                            .withInformationType("PhoneNumber")
-                                            .withInformationTypeId("d22fa6e9-5ee4-3bde-4c2b-a409604c4646")
-                                            .withRank(SensitivityLabelRank.CRITICAL)),
-                                new SensitivityLabelUpdateInner()
-                                    .withOp(SensitivityLabelUpdateKind.REMOVE)
-                                    .withSchema("dbo")
-                                    .withTable("Table1")
-                                    .withColumn("Column3"))),
-                Context.NONE);
+        azure.sqlServers().manager().serviceClient().getSensitivityLabels().updateWithResponse("myRG", "myServer",
+            "myDatabase",
+            new SensitivityLabelUpdateList().withOperations(Arrays.asList(new SensitivityLabelUpdateInner()
+                .withOp(SensitivityLabelUpdateKind.SET).withSchema("dbo").withTable("table1").withColumn("column1")
+                .withSensitivityLabel(new SensitivityLabelInner().withLabelName("Highly Confidential")
+                    .withLabelId("3A477B16-9423-432B-AA97-6069B481CEC3").withInformationType("Financial")
+                    .withInformationTypeId("1D3652D6-422C-4115-82F1-65DAEBC665C8").withRank(SensitivityLabelRank.LOW)),
+                new SensitivityLabelUpdateInner().withOp(SensitivityLabelUpdateKind.SET).withSchema("dbo")
+                    .withTable("table2").withColumn("column2")
+                    .withSensitivityLabel(new SensitivityLabelInner().withLabelName("PII")
+                        .withLabelId("bf91e08c-f4f0-478a-b016-25164b2a65ff").withInformationType("PhoneNumber")
+                        .withInformationTypeId("d22fa6e9-5ee4-3bde-4c2b-a409604c4646")
+                        .withRank(SensitivityLabelRank.CRITICAL)),
+                new SensitivityLabelUpdateInner().withOp(SensitivityLabelUpdateKind.REMOVE).withSchema("dbo")
+                    .withTable("Table1").withColumn("Column3"))),
+            Context.NONE);
     }
 }

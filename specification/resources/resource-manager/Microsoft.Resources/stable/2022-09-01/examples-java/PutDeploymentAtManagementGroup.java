@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.resources.models.DeploymentMode;
 import com.azure.resourcemanager.resources.models.DeploymentProperties;
 import com.azure.resourcemanager.resources.models.ScopedDeployment;
@@ -8,7 +9,8 @@ import java.util.Map;
 /** Samples for Deployments CreateOrUpdateAtManagementGroupScope. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/PutDeploymentAtManagementGroup.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/
+     * PutDeploymentAtManagementGroup.json
      */
     /**
      * Sample code: Create deployment at management group scope.
@@ -16,22 +18,13 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createDeploymentAtManagementGroupScope(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .serviceClient()
-            .getDeployments()
-            .createOrUpdateAtManagementGroupScope(
-                "my-management-group-id",
-                "my-deployment",
-                new ScopedDeployment()
-                    .withLocation("eastus")
-                    .withProperties(
-                        new DeploymentProperties()
-                            .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
-                            .withParameters(mapOf())
-                            .withMode(DeploymentMode.INCREMENTAL)),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().serviceClient().getDeployments().createOrUpdateAtManagementGroupScope(
+            "my-management-group-id", "my-deployment",
+            new ScopedDeployment().withLocation("eastus")
+                .withProperties(new DeploymentProperties()
+                    .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
+                    .withParameters(mapOf()).withMode(DeploymentMode.INCREMENTAL)),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

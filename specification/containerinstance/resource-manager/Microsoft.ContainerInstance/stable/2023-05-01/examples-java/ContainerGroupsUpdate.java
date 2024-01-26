@@ -1,3 +1,4 @@
+
 import com.azure.core.management.Resource;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,9 @@ import java.util.Map;
 /** Samples for ContainerGroups Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2023-05-01/examples/ContainerGroupsUpdate.json
+     * x-ms-original-file:
+     * specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2023-05-01/examples/
+     * ContainerGroupsUpdate.json
      */
     /**
      * Sample code: ContainerGroupsUpdate.
@@ -13,16 +16,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerGroupsUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .containerGroups()
-            .manager()
-            .serviceClient()
-            .getContainerGroups()
-            .updateWithResponse(
-                "demoResource",
-                "demo1",
-                new Resource().withTags(mapOf("tag1key", "fakeTokenPlaceholder", "tag2key", "fakeTokenPlaceholder")),
-                com.azure.core.util.Context.NONE);
+        azure.containerGroups().manager().serviceClient().getContainerGroups().updateWithResponse("demoResource",
+            "demo1",
+            new Resource().withTags(mapOf("tag1key", "fakeTokenPlaceholder", "tag2key", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicyAssignmentInner;
@@ -12,7 +13,8 @@ import java.util.Map;
 /** Samples for PolicyAssignments Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/createPolicyAssignmentWithResourceSelectors.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
+     * createPolicyAssignmentWithResourceSelectors.json
      */
     /**
      * Sample code: Create or update a policy assignment with resource selectors.
@@ -21,35 +23,19 @@ public final class Main {
      */
     public static void createOrUpdateAPolicyAssignmentWithResourceSelectors(
         com.azure.resourcemanager.AzureResourceManager azure) throws IOException {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicyAssignments()
-            .createWithResponse(
-                "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2",
-                "CostManagement",
-                new PolicyAssignmentInner()
-                    .withDisplayName("Limit the resource location and resource SKU")
-                    .withPolicyDefinitionId(
-                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/CostManagement")
-                    .withDescription("Limit the resource location and resource SKU")
-                    .withMetadata(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize("{\"assignedBy\":\"Special Someone\"}", Object.class, SerializerEncoding.JSON))
-                    .withResourceSelectors(
-                        Arrays
-                            .asList(
-                                new ResourceSelector()
-                                    .withName("SDPRegions")
-                                    .withSelectors(
-                                        Arrays
-                                            .asList(
-                                                new Selector()
-                                                    .withKind(SelectorKind.RESOURCE_LOCATION)
-                                                    .withIn(Arrays.asList("eastus2euap", "centraluseuap")))))),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().policyClient().getPolicyAssignments().createWithResponse(
+            "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2", "CostManagement",
+            new PolicyAssignmentInner().withDisplayName("Limit the resource location and resource SKU")
+                .withPolicyDefinitionId(
+                    "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policySetDefinitions/CostManagement")
+                .withDescription("Limit the resource location and resource SKU")
+                .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
+                    .deserialize("{\"assignedBy\":\"Special Someone\"}", Object.class, SerializerEncoding.JSON))
+                .withResourceSelectors(
+                    Arrays.asList(new ResourceSelector().withName("SDPRegions")
+                        .withSelectors(Arrays.asList(new Selector().withKind(SelectorKind.RESOURCE_LOCATION)
+                            .withIn(Arrays.asList("eastus2euap", "centraluseuap")))))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

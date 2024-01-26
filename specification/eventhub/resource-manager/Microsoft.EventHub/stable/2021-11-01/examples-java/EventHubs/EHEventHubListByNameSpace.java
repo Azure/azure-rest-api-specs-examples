@@ -1,9 +1,12 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for EventHubs ListByNamespace. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/EventHubs/EHEventHubListByNameSpace.json
+     * x-ms-original-file:
+     * specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/EventHubs/
+     * EHEventHubListByNameSpace.json
      */
     /**
      * Sample code: EventHubsListAll.
@@ -11,11 +14,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void eventHubsListAll(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .eventHubs()
-            .manager()
-            .serviceClient()
-            .getEventHubs()
+        azure.eventHubs().manager().serviceClient().getEventHubs()
             .listByNamespace("Default-NotificationHubs-AustraliaEast", "sdk-Namespace-5357", null, null, Context.NONE);
     }
 }

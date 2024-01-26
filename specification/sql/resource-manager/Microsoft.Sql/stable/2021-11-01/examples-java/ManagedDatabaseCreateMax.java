@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedDatabaseInner;
 import java.util.HashMap;
@@ -6,26 +7,20 @@ import java.util.Map;
 /** Samples for ManagedDatabases CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedDatabaseCreateMax.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedDatabaseCreateMax.json
      */
     /**
      * Sample code: Creates a new managed database with maximal properties.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void createsANewManagedDatabaseWithMaximalProperties(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getManagedDatabases()
-            .createOrUpdate(
-                "Default-SQL-SouthEastAsia",
-                "managedInstance",
-                "managedDatabase",
-                new ManagedDatabaseInner().withLocation("southeastasia").withTags(mapOf("tagKey1", "TagValue1")),
-                Context.NONE);
+    public static void
+        createsANewManagedDatabaseWithMaximalProperties(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.sqlServers().manager().serviceClient().getManagedDatabases().createOrUpdate("Default-SQL-SouthEastAsia",
+            "managedInstance", "managedDatabase",
+            new ManagedDatabaseInner().withLocation("southeastasia").withTags(mapOf("tagKey1", "TagValue1")),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

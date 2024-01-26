@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for FailoverGroups Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/FailoverGroupGet.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/FailoverGroupGet.json
      */
     /**
      * Sample code: Get failover group.
@@ -11,11 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getFailoverGroup(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getFailoverGroups()
-            .getWithResponse("Default", "failover-group-primary-server", "failover-group-test", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getFailoverGroups().getWithResponse("Default",
+            "failover-group-primary-server", "failover-group-test", Context.NONE);
     }
 }

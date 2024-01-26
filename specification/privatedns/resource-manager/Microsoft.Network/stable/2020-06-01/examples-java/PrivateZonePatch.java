@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.privatedns.fluent.models.PrivateZoneInner;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,8 @@ import java.util.Map;
 /** Samples for PrivateZones Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/PrivateZonePatch.json
+     * x-ms-original-file:
+     * specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/PrivateZonePatch.json
      */
     /**
      * Sample code: PATCH Private DNS Zone.
@@ -13,17 +15,9 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void pATCHPrivateDNSZone(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .privateDnsZones()
-            .manager()
-            .serviceClient()
-            .getPrivateZones()
-            .update(
-                "resourceGroup1",
-                "privatezone1.com",
-                new PrivateZoneInner().withTags(mapOf("key2", "fakeTokenPlaceholder")),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.privateDnsZones().manager().serviceClient().getPrivateZones().update("resourceGroup1", "privatezone1.com",
+            new PrivateZoneInner().withTags(mapOf("key2", "fakeTokenPlaceholder")), null,
+            com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

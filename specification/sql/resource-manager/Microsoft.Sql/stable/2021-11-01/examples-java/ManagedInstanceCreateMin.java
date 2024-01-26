@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceInner;
 import com.azure.resourcemanager.sql.models.ManagedInstanceLicenseType;
@@ -8,34 +9,24 @@ import java.util.Map;
 /** Samples for ManagedInstances CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedInstanceCreateMin.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedInstanceCreateMin.json
      */
     /**
      * Sample code: Create managed instance with minimal properties.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void createManagedInstanceWithMinimalProperties(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getManagedInstances()
-            .createOrUpdate(
-                "testrg",
-                "testinstance",
-                new ManagedInstanceInner()
-                    .withLocation("Japan East")
-                    .withSku(new Sku().withName("GP_Gen4").withTier("GeneralPurpose"))
-                    .withAdministratorLogin("dummylogin")
-                    .withAdministratorLoginPassword("fakeTokenPlaceholder")
-                    .withSubnetId(
-                        "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1")
-                    .withLicenseType(ManagedInstanceLicenseType.LICENSE_INCLUDED)
-                    .withVCores(8)
-                    .withStorageSizeInGB(1024),
-                Context.NONE);
+    public static void
+        createManagedInstanceWithMinimalProperties(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.sqlServers().manager().serviceClient().getManagedInstances().createOrUpdate("testrg", "testinstance",
+            new ManagedInstanceInner().withLocation("Japan East")
+                .withSku(new Sku().withName("GP_Gen4").withTier("GeneralPurpose")).withAdministratorLogin("dummylogin")
+                .withAdministratorLoginPassword("fakeTokenPlaceholder")
+                .withSubnetId(
+                    "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1")
+                .withLicenseType(ManagedInstanceLicenseType.LICENSE_INCLUDED).withVCores(8).withStorageSizeInGB(1024),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

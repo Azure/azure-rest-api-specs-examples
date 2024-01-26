@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for MaintenanceWindowOptionsOperation Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/GetMaintenanceWindowOptions.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/GetMaintenanceWindowOptions.json
      */
     /**
      * Sample code: Gets a list of available maintenance windows for a selected database.
@@ -12,11 +14,7 @@ public final class Main {
      */
     public static void getsAListOfAvailableMaintenanceWindowsForASelectedDatabase(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getMaintenanceWindowOptionsOperations()
+        azure.sqlServers().manager().serviceClient().getMaintenanceWindowOptionsOperations()
             .getWithResponse("Default-SQL-SouthEastAsia", "testsvr", "testdb", "current", Context.NONE);
     }
 }

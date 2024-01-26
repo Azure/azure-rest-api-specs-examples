@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceAzureADOnlyAuthenticationInner;
 import com.azure.resourcemanager.sql.models.AuthenticationName;
@@ -5,7 +6,8 @@ import com.azure.resourcemanager.sql.models.AuthenticationName;
 /** Samples for ManagedInstanceAzureADOnlyAuthentications CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedInstanceAzureADOnlyAuthCreateOrUpdate.json
+     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/
+     * ManagedInstanceAzureADOnlyAuthCreateOrUpdate.json
      */
     /**
      * Sample code: Creates or updates Azure Active Directory only authentication object.
@@ -14,16 +16,8 @@ public final class Main {
      */
     public static void createsOrUpdatesAzureActiveDirectoryOnlyAuthenticationObject(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getManagedInstanceAzureADOnlyAuthentications()
-            .createOrUpdate(
-                "Default-SQL-SouthEastAsia",
-                "managedInstance",
-                AuthenticationName.DEFAULT,
-                new ManagedInstanceAzureADOnlyAuthenticationInner().withAzureADOnlyAuthentication(false),
-                Context.NONE);
+        azure.sqlServers().manager().serviceClient().getManagedInstanceAzureADOnlyAuthentications().createOrUpdate(
+            "Default-SQL-SouthEastAsia", "managedInstance", AuthenticationName.DEFAULT,
+            new ManagedInstanceAzureADOnlyAuthenticationInner().withAzureADOnlyAuthentication(false), Context.NONE);
     }
 }

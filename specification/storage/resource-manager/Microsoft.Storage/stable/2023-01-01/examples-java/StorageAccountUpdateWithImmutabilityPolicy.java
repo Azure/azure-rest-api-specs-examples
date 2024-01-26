@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.storage.models.AccountImmutabilityPolicyProperties;
 import com.azure.resourcemanager.storage.models.AccountImmutabilityPolicyState;
 import com.azure.resourcemanager.storage.models.ImmutableStorageAccount;
@@ -8,32 +9,23 @@ import java.util.Map;
 /** Samples for StorageAccounts Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/StorageAccountUpdateWithImmutabilityPolicy.json
+     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/
+     * StorageAccountUpdateWithImmutabilityPolicy.json
      */
     /**
      * Sample code: StorageAccountUpdateWithImmutabilityPolicy.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void storageAccountUpdateWithImmutabilityPolicy(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .storageAccounts()
-            .manager()
-            .serviceClient()
-            .getStorageAccounts()
-            .updateWithResponse(
-                "res9407",
-                "sto8596",
+    public static void
+        storageAccountUpdateWithImmutabilityPolicy(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.storageAccounts().manager().serviceClient().getStorageAccounts()
+            .updateWithResponse("res9407", "sto8596",
                 new StorageAccountUpdateParameters()
-                    .withImmutableStorageWithVersioning(
-                        new ImmutableStorageAccount()
-                            .withEnabled(true)
-                            .withImmutabilityPolicy(
-                                new AccountImmutabilityPolicyProperties()
-                                    .withImmutabilityPeriodSinceCreationInDays(15)
-                                    .withState(AccountImmutabilityPolicyState.LOCKED)
-                                    .withAllowProtectedAppendWrites(true))),
+                    .withImmutableStorageWithVersioning(new ImmutableStorageAccount().withEnabled(true)
+                        .withImmutabilityPolicy(new AccountImmutabilityPolicyProperties()
+                            .withImmutabilityPeriodSinceCreationInDays(15)
+                            .withState(AccountImmutabilityPolicyState.LOCKED).withAllowProtectedAppendWrites(true))),
                 com.azure.core.util.Context.NONE);
     }
 

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.dns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.dns.models.MxRecord;
 import com.azure.resourcemanager.dns.models.RecordType;
@@ -8,7 +9,8 @@ import java.util.Map;
 /** Samples for RecordSets CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateMXRecordset.json
+     * x-ms-original-file:
+     * specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateMXRecordset.json
      */
     /**
      * Sample code: Create MX recordset.
@@ -16,23 +18,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createMXRecordset(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .createOrUpdateWithResponse(
-                "rg1",
-                "zone1",
-                "record1",
-                RecordType.MX,
-                new RecordSetInner()
-                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
-                    .withTtl(3600L)
-                    .withMxRecords(Arrays.asList(new MxRecord().withPreference(0).withExchange("mail.contoso.com"))),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getRecordSets().createOrUpdateWithResponse("rg1", "zone1", "record1",
+            RecordType.MX,
+            new RecordSetInner().withMetadata(mapOf("key1", "fakeTokenPlaceholder")).withTtl(3600L)
+                .withMxRecords(Arrays.asList(new MxRecord().withPreference(0).withExchange("mail.contoso.com"))),
+            null, null, com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

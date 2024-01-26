@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicySetDefinitionInner;
@@ -12,7 +13,8 @@ import java.util.Map;
 /** Samples for PolicySetDefinitions CreateOrUpdateAtManagementGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicySetDefinitionWithGroupsAtManagementGroup.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
+     * createOrUpdatePolicySetDefinitionWithGroupsAtManagementGroup.json
      */
     /**
      * Sample code: Create or update a policy set definition with groups at management group level.
@@ -21,64 +23,32 @@ public final class Main {
      */
     public static void createOrUpdateAPolicySetDefinitionWithGroupsAtManagementGroupLevel(
         com.azure.resourcemanager.AzureResourceManager azure) throws IOException {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicySetDefinitions()
-            .createOrUpdateAtManagementGroupWithResponse(
-                "CostManagement",
-                "MyManagementGroup",
-                new PolicySetDefinitionInner()
-                    .withDisplayName("Cost Management")
+        azure.genericResources().manager().policyClient().getPolicySetDefinitions()
+            .createOrUpdateAtManagementGroupWithResponse("CostManagement", "MyManagementGroup",
+                new PolicySetDefinitionInner().withDisplayName("Cost Management")
                     .withDescription("Policies to enforce low cost storage SKUs")
-                    .withMetadata(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize("{\"category\":\"Cost Management\"}", Object.class, SerializerEncoding.JSON))
-                    .withPolicyDefinitions(
-                        Arrays
-                            .asList(
-                                new PolicyDefinitionReference()
-                                    .withPolicyDefinitionId(
-                                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
-                                    .withParameters(
-                                        mapOf(
-                                            "listOfAllowedSKUs",
-                                            new ParameterValuesValue()
-                                                .withValue(
-                                                    SerializerFactory
-                                                        .createDefaultManagementSerializerAdapter()
-                                                        .deserialize(
-                                                            "[\"Standard_GRS\",\"Standard_LRS\"]",
-                                                            Object.class,
-                                                            SerializerEncoding.JSON))))
-                                    .withPolicyDefinitionReferenceId("Limit_Skus")
-                                    .withGroupNames(Arrays.asList("CostSaving")),
-                                new PolicyDefinitionReference()
-                                    .withPolicyDefinitionId(
-                                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
-                                    .withParameters(
-                                        mapOf(
-                                            "prefix",
-                                            new ParameterValuesValue().withValue("DeptA"),
-                                            "suffix",
-                                            new ParameterValuesValue().withValue("-LC")))
-                                    .withPolicyDefinitionReferenceId("Resource_Naming")
-                                    .withGroupNames(Arrays.asList("Organizational"))))
-                    .withPolicyDefinitionGroups(
-                        Arrays
-                            .asList(
-                                new PolicyDefinitionGroup()
-                                    .withName("CostSaving")
-                                    .withDisplayName("Cost Management Policies")
-                                    .withDescription("Policies designed to control spend within a subscription."),
-                                new PolicyDefinitionGroup()
-                                    .withName("Organizational")
-                                    .withDisplayName("Organizational Policies")
-                                    .withDescription(
-                                        "Policies that help enforce resource organization standards within a"
-                                            + " subscription."))),
+                    .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
+                        .deserialize("{\"category\":\"Cost Management\"}", Object.class, SerializerEncoding.JSON))
+                    .withPolicyDefinitions(Arrays.asList(new PolicyDefinitionReference().withPolicyDefinitionId(
+                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
+                        .withParameters(mapOf("listOfAllowedSKUs",
+                            new ParameterValuesValue()
+                                .withValue(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                                    "[\"Standard_GRS\",\"Standard_LRS\"]", Object.class, SerializerEncoding.JSON))))
+                        .withPolicyDefinitionReferenceId("Limit_Skus").withGroupNames(Arrays.asList("CostSaving")),
+                        new PolicyDefinitionReference().withPolicyDefinitionId(
+                            "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
+                            .withParameters(mapOf("prefix", new ParameterValuesValue().withValue("DeptA"), "suffix",
+                                new ParameterValuesValue().withValue("-LC")))
+                            .withPolicyDefinitionReferenceId("Resource_Naming")
+                            .withGroupNames(Arrays.asList("Organizational"))))
+                    .withPolicyDefinitionGroups(Arrays.asList(
+                        new PolicyDefinitionGroup().withName("CostSaving").withDisplayName("Cost Management Policies")
+                            .withDescription("Policies designed to control spend within a subscription."),
+                        new PolicyDefinitionGroup().withName("Organizational")
+                            .withDisplayName("Organizational Policies")
+                            .withDescription("Policies that help enforce resource organization standards within a"
+                                + " subscription."))),
                 com.azure.core.util.Context.NONE);
     }
 

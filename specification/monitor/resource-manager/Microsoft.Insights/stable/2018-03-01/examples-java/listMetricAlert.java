@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for MetricAlerts ListByResourceGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/examples/listMetricAlert.json
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/examples/listMetricAlert.json
      */
     /**
      * Sample code: List metric alert rules.
@@ -11,11 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listMetricAlertRules(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .diagnosticSettings()
-            .manager()
-            .serviceClient()
-            .getMetricAlerts()
-            .listByResourceGroup("gigtest", Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getMetricAlerts().listByResourceGroup("gigtest",
+            Context.NONE);
     }
 }

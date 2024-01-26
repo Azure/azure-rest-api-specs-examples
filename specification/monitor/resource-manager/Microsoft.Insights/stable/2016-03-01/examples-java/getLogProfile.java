@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for LogProfiles Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/getLogProfile.json
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/getLogProfile.json
      */
     /**
      * Sample code: Get log profile.

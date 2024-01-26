@@ -1,7 +1,9 @@
+
 /** Samples for ManagementLocks ListByResourceGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2017-04-01/examples/ManagementLocks_ListAtResourceGroupLevel.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2017-04-01/examples/
+     * ManagementLocks_ListAtResourceGroupLevel.json
      */
     /**
      * Sample code: List management groups at resource group level.
@@ -9,11 +11,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listManagementGroupsAtResourceGroupLevel(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .managementLockClient()
-            .getManagementLocks()
+        azure.genericResources().manager().managementLockClient().getManagementLocks()
             .listByResourceGroup("resourcegroupname", null, com.azure.core.util.Context.NONE);
     }
 }

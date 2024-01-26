@@ -1,7 +1,9 @@
+
 /** Samples for ResourceUsage List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/ResourceUsage_List.json
+     * x-ms-original-file:
+     * specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/ResourceUsage_List.json
      */
     /**
      * Sample code: ResourceUsage_List.

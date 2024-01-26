@@ -1,7 +1,9 @@
+
 /** Samples for ResourceGroups Delete. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/ForceDeleteVMsAndVMSSInResourceGroup.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/
+     * ForceDeleteVMsAndVMSSInResourceGroup.json
      */
     /**
      * Sample code: Force delete all the Virtual Machines and Virtual Machine Scale Sets in a resource group.
@@ -10,14 +12,8 @@ public final class Main {
      */
     public static void forceDeleteAllTheVirtualMachinesAndVirtualMachineScaleSetsInAResourceGroup(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .serviceClient()
-            .getResourceGroups()
-            .delete(
-                "my-resource-group",
-                "Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets",
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().serviceClient().getResourceGroups().delete("my-resource-group",
+            "Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachineScaleSets",
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.storage.models.AllowedCopyScope;
 import com.azure.resourcemanager.storage.models.Encryption;
 import com.azure.resourcemanager.storage.models.EncryptionService;
@@ -20,7 +21,8 @@ import java.util.Map;
 /** Samples for StorageAccounts Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/StorageAccountCreateAllowedCopyScopeToAAD.json
+     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/
+     * StorageAccountCreateAllowedCopyScopeToAAD.json
      */
     /**
      * Sample code: StorageAccountCreateAllowedCopyScopeToAAD.
@@ -28,41 +30,27 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void storageAccountCreateAllowedCopyScopeToAAD(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .storageAccounts()
-            .manager()
-            .serviceClient()
-            .getStorageAccounts()
-            .create(
-                "res9101",
-                "sto4445",
-                new StorageAccountCreateParameters()
-                    .withSku(new Sku().withName(SkuName.STANDARD_GRS))
-                    .withKind(Kind.STORAGE)
-                    .withLocation("eastus")
+        azure.storageAccounts().manager().serviceClient().getStorageAccounts()
+            .create("res9101", "sto4445",
+                new StorageAccountCreateParameters().withSku(new Sku().withName(SkuName.STANDARD_GRS))
+                    .withKind(Kind.STORAGE).withLocation("eastus")
                     .withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder"))
-                    .withAllowedCopyScope(AllowedCopyScope.AAD)
+                    .withAllowedCopyScope(
+                        AllowedCopyScope.AAD)
                     .withSasPolicy(
-                        new SasPolicy()
-                            .withSasExpirationPeriod("1.15:59:59")
-                            .withExpirationAction(ExpirationAction.LOG))
+                        new SasPolicy().withSasExpirationPeriod(
+                            "1.15:59:59").withExpirationAction(
+                                ExpirationAction.LOG))
                     .withKeyPolicy(new KeyPolicy().withKeyExpirationPeriodInDays(20))
-                    .withEncryption(
-                        new Encryption()
-                            .withServices(
-                                new EncryptionServices()
-                                    .withBlob(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT))
-                                    .withFile(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT)))
-                            .withKeySource(KeySource.MICROSOFT_STORAGE)
-                            .withRequireInfrastructureEncryption(false))
+                    .withEncryption(new Encryption()
+                        .withServices(new EncryptionServices()
+                            .withBlob(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT))
+                            .withFile(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT)))
+                        .withKeySource(KeySource.MICROSOFT_STORAGE).withRequireInfrastructureEncryption(false))
                     .withIsHnsEnabled(true)
-                    .withRoutingPreference(
-                        new RoutingPreference()
-                            .withRoutingChoice(RoutingChoice.MICROSOFT_ROUTING)
-                            .withPublishMicrosoftEndpoints(true)
-                            .withPublishInternetEndpoints(true))
-                    .withAllowBlobPublicAccess(false)
-                    .withMinimumTlsVersion(MinimumTlsVersion.TLS1_2)
+                    .withRoutingPreference(new RoutingPreference().withRoutingChoice(RoutingChoice.MICROSOFT_ROUTING)
+                        .withPublishMicrosoftEndpoints(true).withPublishInternetEndpoints(true))
+                    .withAllowBlobPublicAccess(false).withMinimumTlsVersion(MinimumTlsVersion.TLS1_2)
                     .withAllowSharedKeyAccess(true),
                 com.azure.core.util.Context.NONE);
     }

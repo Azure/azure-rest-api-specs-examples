@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.cdn.models.ResourceReference;
 import com.azure.resourcemanager.cdn.models.SecretType;
 import com.azure.resourcemanager.cdn.models.ValidateSecretInput;
@@ -5,7 +6,8 @@ import com.azure.resourcemanager.cdn.models.ValidateSecretInput;
 /** Samples for AfdProfiles ValidateSecret. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/AFDProfiles_ValidateSecret.json
+     * x-ms-original-file:
+     * specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/AFDProfiles_ValidateSecret.json
      */
     /**
      * Sample code: Validate_Secret.
@@ -13,20 +15,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void validateSecret(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .cdnProfiles()
-            .manager()
-            .serviceClient()
-            .getAfdProfiles()
-            .validateSecretWithResponse(
-                "RG",
-                "profile1",
-                new ValidateSecretInput()
-                    .withSecretType(SecretType.CUSTOMER_CERTIFICATE)
-                    .withSecretSource(
-                        new ResourceReference()
-                            .withId(
-                                "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/certificate/certName")),
-                com.azure.core.util.Context.NONE);
+        azure.cdnProfiles().manager().serviceClient().getAfdProfiles().validateSecretWithResponse("RG", "profile1",
+            new ValidateSecretInput().withSecretType(SecretType.CUSTOMER_CERTIFICATE)
+                .withSecretSource(new ResourceReference().withId(
+                    "/subscriptions/subid/resourcegroups/RG/providers/Microsoft.KeyVault/vault/kvName/certificate/certName")),
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,9 +1,11 @@
+
 import com.azure.resourcemanager.dns.models.RecordType;
 
 /** Samples for RecordSets Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/GetTXTRecordset.json
+     * x-ms-original-file:
+     * specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/GetTXTRecordset.json
      */
     /**
      * Sample code: Get TXT recordset.
@@ -11,11 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getTXTRecordset(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .getWithResponse("rg1", "zone1", "record1", RecordType.TXT, com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getRecordSets().getWithResponse("rg1", "zone1", "record1",
+            RecordType.TXT, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.resources.models.Identity;
 import com.azure.resourcemanager.resources.models.IdentityUserAssignedIdentitiesValue;
 import com.azure.resourcemanager.resources.models.PolicyAssignmentUpdate;
@@ -8,33 +9,24 @@ import java.util.Map;
 /** Samples for PolicyAssignments Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/updatePolicyAssignmentWithUserAssignedIdentity.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
+     * updatePolicyAssignmentWithUserAssignedIdentity.json
      */
     /**
      * Sample code: Update a policy assignment with a user assigned identity.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void updateAPolicyAssignmentWithAUserAssignedIdentity(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicyAssignments()
-            .updateWithResponse(
-                "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2",
-                "EnforceNaming",
-                new PolicyAssignmentUpdate()
-                    .withLocation("eastus")
-                    .withIdentity(
-                        new Identity()
-                            .withType(ResourceIdentityType.USER_ASSIGNED)
-                            .withUserAssignedIdentities(
-                                mapOf(
-                                    "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/testResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity",
-                                    new IdentityUserAssignedIdentitiesValue()))),
-                com.azure.core.util.Context.NONE);
+    public static void
+        updateAPolicyAssignmentWithAUserAssignedIdentity(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.genericResources().manager().policyClient().getPolicyAssignments().updateWithResponse(
+            "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2", "EnforceNaming",
+            new PolicyAssignmentUpdate().withLocation("eastus").withIdentity(new Identity()
+                .withType(ResourceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/resourceGroups/testResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity",
+                    new IdentityUserAssignedIdentitiesValue()))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

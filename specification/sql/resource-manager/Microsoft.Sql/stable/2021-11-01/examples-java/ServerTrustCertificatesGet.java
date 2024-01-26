@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for ServerTrustCertificates Get. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ServerTrustCertificatesGet.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ServerTrustCertificatesGet.json
      */
     /**
      * Sample code: Gets server trust certificate.
@@ -11,11 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsServerTrustCertificate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getServerTrustCertificates()
-            .getWithResponse("testrg", "testcl", "customerCertificateName", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getServerTrustCertificates().getWithResponse("testrg", "testcl",
+            "customerCertificateName", Context.NONE);
     }
 }

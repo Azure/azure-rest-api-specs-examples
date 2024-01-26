@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for SyncGroups ListSyncDatabaseIds. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/SyncGroupGetSyncDatabaseId.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/SyncGroupGetSyncDatabaseId.json
      */
     /**
      * Sample code: Get a sync database ID.

@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for InstanceFailoverGroups Delete. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/InstanceFailoverGroupDelete.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/InstanceFailoverGroupDelete.json
      */
     /**
      * Sample code: Delete failover group.
@@ -11,11 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteFailoverGroup(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getInstanceFailoverGroups()
-            .delete("Default", "Japan East", "failover-group-test-1", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getInstanceFailoverGroups().delete("Default", "Japan East",
+            "failover-group-test-1", Context.NONE);
     }
 }

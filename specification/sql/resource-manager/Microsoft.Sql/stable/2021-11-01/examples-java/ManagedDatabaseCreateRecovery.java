@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedDatabaseInner;
 import com.azure.resourcemanager.sql.models.ManagedDatabaseCreateMode;
@@ -7,7 +8,8 @@ import java.util.Map;
 /** Samples for ManagedDatabases CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedDatabaseCreateRecovery.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedDatabaseCreateRecovery.json
      */
     /**
      * Sample code: Creates a new managed database from restoring a geo-replicated backup.
@@ -16,21 +18,12 @@ public final class Main {
      */
     public static void createsANewManagedDatabaseFromRestoringAGeoReplicatedBackup(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getManagedDatabases()
-            .createOrUpdate(
-                "Default-SQL-SouthEastAsia",
-                "server1",
-                "testdb_recovered",
-                new ManagedDatabaseInner()
-                    .withLocation("southeastasia")
-                    .withCreateMode(ManagedDatabaseCreateMode.RECOVERY)
-                    .withRecoverableDatabaseId(
-                        "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/Default-SQL-WestEurope/providers/Microsoft.Sql/managedInstances/testsvr/recoverableDatabases/testdb"),
-                Context.NONE);
+        azure.sqlServers().manager().serviceClient().getManagedDatabases().createOrUpdate("Default-SQL-SouthEastAsia",
+            "server1", "testdb_recovered",
+            new ManagedDatabaseInner().withLocation("southeastasia").withCreateMode(ManagedDatabaseCreateMode.RECOVERY)
+                .withRecoverableDatabaseId(
+                    "/subscriptions/11111111-2222-3333-4444-555555555555/resourceGroups/Default-SQL-WestEurope/providers/Microsoft.Sql/managedInstances/testsvr/recoverableDatabases/testdb"),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

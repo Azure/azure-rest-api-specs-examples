@@ -1,7 +1,9 @@
+
 /** Samples for Providers List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/GetProviders.json
+     * x-ms-original-file:
+     * specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/GetProviders.json
      */
     /**
      * Sample code: Get providers.

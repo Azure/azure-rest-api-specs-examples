@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.fluent.models.SearchServiceInner;
 import com.azure.resourcemanager.search.models.EncryptionWithCmk;
 import com.azure.resourcemanager.search.models.HostingMode;
@@ -10,33 +11,22 @@ import java.util.Map;
 /** Samples for Services CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchCreateOrUpdateServiceWithCmkEnforcement.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchCreateOrUpdateServiceWithCmkEnforcement.json
      */
     /**
      * Sample code: SearchCreateOrUpdateServiceWithCmkEnforcement.
      *
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
-    public static void searchCreateOrUpdateServiceWithCmkEnforcement(
-        com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .createOrUpdate(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceInner()
-                    .withLocation("westus")
-                    .withTags(mapOf("app-name", "My e-commerce app"))
-                    .withSku(new Sku().withName(SkuName.STANDARD))
-                    .withReplicaCount(3)
-                    .withPartitionCount(1)
-                    .withHostingMode(HostingMode.DEFAULT)
-                    .withEncryptionWithCmk(new EncryptionWithCmk().withEnforcement(SearchEncryptionWithCmk.ENABLED)),
-                null,
-                com.azure.core.util.Context.NONE);
+    public static void
+        searchCreateOrUpdateServiceWithCmkEnforcement(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.searchServices().manager().serviceClient().getServices().createOrUpdate("rg1", "mysearchservice",
+            new SearchServiceInner().withLocation("westus").withTags(mapOf("app-name", "My e-commerce app"))
+                .withSku(new Sku().withName(SkuName.STANDARD)).withReplicaCount(3).withPartitionCount(1)
+                .withHostingMode(HostingMode.DEFAULT)
+                .withEncryptionWithCmk(new EncryptionWithCmk().withEnforcement(SearchEncryptionWithCmk.ENABLED)),
+            null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

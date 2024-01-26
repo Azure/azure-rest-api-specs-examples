@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ServerNetworkAccessFlag;
 import com.azure.resourcemanager.sql.models.ServerUpdate;
@@ -13,19 +14,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateAServer(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getServers()
-            .update(
-                "sqlcrudtest-7398",
-                "sqlcrudtest-4645",
-                new ServerUpdate()
-                    .withAdministratorLogin("dummylogin")
-                    .withAdministratorLoginPassword("fakeTokenPlaceholder")
-                    .withPublicNetworkAccess(ServerNetworkAccessFlag.DISABLED)
-                    .withRestrictOutboundNetworkAccess(ServerNetworkAccessFlag.ENABLED),
-                Context.NONE);
+        azure.sqlServers().manager().serviceClient().getServers().update("sqlcrudtest-7398", "sqlcrudtest-4645",
+            new ServerUpdate().withAdministratorLogin("dummylogin")
+                .withAdministratorLoginPassword("fakeTokenPlaceholder")
+                .withPublicNetworkAccess(ServerNetworkAccessFlag.DISABLED)
+                .withRestrictOutboundNetworkAccess(ServerNetworkAccessFlag.ENABLED),
+            Context.NONE);
     }
 }

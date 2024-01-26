@@ -1,7 +1,9 @@
+
 /** Samples for Profiles List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/Profiles_List.json
+     * x-ms-original-file:
+     * specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/Profiles_List.json
      */
     /**
      * Sample code: Profiles_List.

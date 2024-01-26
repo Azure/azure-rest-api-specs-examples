@@ -1,7 +1,10 @@
+
 /** Samples for Profiles List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/examples/Profile-GET-BySubscription.json
+     * x-ms-original-file:
+     * specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/examples/Profile-GET-
+     * BySubscription.json
      */
     /**
      * Sample code: ListBySubscription.

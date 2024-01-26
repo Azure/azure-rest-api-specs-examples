@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DatabaseAdvancedThreatProtectionInner;
 import com.azure.resourcemanager.sql.models.AdvancedThreatProtectionName;
@@ -6,7 +7,8 @@ import com.azure.resourcemanager.sql.models.AdvancedThreatProtectionState;
 /** Samples for DatabaseAdvancedThreatProtectionSettings CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/DatabaseAdvancedThreatProtectionSettingsCreateMin.json
+     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/
+     * DatabaseAdvancedThreatProtectionSettingsCreateMin.json
      */
     /**
      * Sample code: Update a database's Advanced Threat Protection settings with minimal parameters.
@@ -15,15 +17,8 @@ public final class Main {
      */
     public static void updateADatabaseSAdvancedThreatProtectionSettingsWithMinimalParameters(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getDatabaseAdvancedThreatProtectionSettings()
-            .createOrUpdateWithResponse(
-                "threatprotection-4799",
-                "threatprotection-6440",
-                "testdb",
+        azure.sqlServers().manager().serviceClient().getDatabaseAdvancedThreatProtectionSettings()
+            .createOrUpdateWithResponse("threatprotection-4799", "threatprotection-6440", "testdb",
                 AdvancedThreatProtectionName.DEFAULT,
                 new DatabaseAdvancedThreatProtectionInner().withState(AdvancedThreatProtectionState.DISABLED),
                 Context.NONE);

@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicyDefinitionInner;
@@ -11,7 +12,8 @@ import java.util.Map;
 /** Samples for PolicyDefinitions CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicyDefinition.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
+     * createOrUpdatePolicyDefinition.json
      */
     /**
      * Sample code: Create or update a policy definition.
@@ -20,48 +22,25 @@ public final class Main {
      */
     public static void createOrUpdateAPolicyDefinition(com.azure.resourcemanager.AzureResourceManager azure)
         throws IOException {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicyDefinitions()
-            .createOrUpdateWithResponse(
-                "ResourceNaming",
-                new PolicyDefinitionInner()
-                    .withMode("All")
-                    .withDisplayName("Enforce resource naming convention")
-                    .withDescription("Force resource names to begin with given 'prefix' and/or end with given 'suffix'")
-                    .withPolicyRule(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize(
-                                "{\"if\":{\"not\":{\"field\":\"name\",\"like\":\"[concat(parameters('prefix'), '*',"
-                                    + " parameters('suffix'))]\"}},\"then\":{\"effect\":\"deny\"}}",
-                                Object.class,
-                                SerializerEncoding.JSON))
-                    .withMetadata(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize("{\"category\":\"Naming\"}", Object.class, SerializerEncoding.JSON))
-                    .withParameters(
-                        mapOf(
-                            "prefix",
-                            new ParameterDefinitionsValue()
-                                .withType(ParameterType.STRING)
-                                .withMetadata(
-                                    new ParameterDefinitionsValueMetadata()
-                                        .withDisplayName("Prefix")
-                                        .withDescription("Resource name prefix")
-                                        .withAdditionalProperties(mapOf())),
-                            "suffix",
-                            new ParameterDefinitionsValue()
-                                .withType(ParameterType.STRING)
-                                .withMetadata(
-                                    new ParameterDefinitionsValueMetadata()
-                                        .withDisplayName("Suffix")
-                                        .withDescription("Resource name suffix")
-                                        .withAdditionalProperties(mapOf())))),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().policyClient().getPolicyDefinitions().createOrUpdateWithResponse(
+            "ResourceNaming",
+            new PolicyDefinitionInner().withMode("All").withDisplayName("Enforce resource naming convention")
+                .withDescription("Force resource names to begin with given 'prefix' and/or end with given 'suffix'")
+                .withPolicyRule(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                    "{\"if\":{\"not\":{\"field\":\"name\",\"like\":\"[concat(parameters('prefix'), '*',"
+                        + " parameters('suffix'))]\"}},\"then\":{\"effect\":\"deny\"}}",
+                    Object.class, SerializerEncoding.JSON))
+                .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
+                    .deserialize("{\"category\":\"Naming\"}", Object.class, SerializerEncoding.JSON))
+                .withParameters(mapOf("prefix",
+                    new ParameterDefinitionsValue().withType(ParameterType.STRING)
+                        .withMetadata(new ParameterDefinitionsValueMetadata().withDisplayName("Prefix")
+                            .withDescription("Resource name prefix").withAdditionalProperties(mapOf())),
+                    "suffix",
+                    new ParameterDefinitionsValue().withType(ParameterType.STRING)
+                        .withMetadata(new ParameterDefinitionsValueMetadata().withDisplayName("Suffix")
+                            .withDescription("Resource name suffix").withAdditionalProperties(mapOf())))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

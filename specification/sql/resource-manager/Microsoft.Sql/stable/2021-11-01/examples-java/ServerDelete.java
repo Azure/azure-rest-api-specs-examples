@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for Servers Delete. */
@@ -11,11 +12,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteServer(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getServers()
-            .delete("sqlcrudtest-7398", "sqlcrudtest-6661", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getServers().delete("sqlcrudtest-7398", "sqlcrudtest-6661",
+            Context.NONE);
     }
 }

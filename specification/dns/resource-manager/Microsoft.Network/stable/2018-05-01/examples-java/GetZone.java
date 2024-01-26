@@ -1,3 +1,4 @@
+
 /** Samples for Zones GetByResourceGroup. */
 public final class Main {
     /*
@@ -9,11 +10,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getZone(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getZones()
-            .getByResourceGroupWithResponse("rg1", "zone1", com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getZones().getByResourceGroupWithResponse("rg1", "zone1",
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.dns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.dns.models.CaaRecord;
 import com.azure.resourcemanager.dns.models.RecordType;
@@ -8,7 +9,8 @@ import java.util.Map;
 /** Samples for RecordSets CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateCaaRecordset.json
+     * x-ms-original-file:
+     * specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateCaaRecordset.json
      */
     /**
      * Sample code: Create CAA recordset.
@@ -16,24 +18,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createCAARecordset(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .createOrUpdateWithResponse(
-                "rg1",
-                "zone1",
-                "record1",
-                RecordType.CAA,
-                new RecordSetInner()
-                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
-                    .withTtl(3600L)
-                    .withCaaRecords(
-                        Arrays.asList(new CaaRecord().withFlags(0).withTag("issue").withValue("ca.contoso.com"))),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getRecordSets().createOrUpdateWithResponse("rg1", "zone1", "record1",
+            RecordType.CAA,
+            new RecordSetInner().withMetadata(mapOf("key1", "fakeTokenPlaceholder")).withTtl(3600L).withCaaRecords(
+                Arrays.asList(new CaaRecord().withFlags(0).withTag("issue").withValue("ca.contoso.com"))),
+            null, null, com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

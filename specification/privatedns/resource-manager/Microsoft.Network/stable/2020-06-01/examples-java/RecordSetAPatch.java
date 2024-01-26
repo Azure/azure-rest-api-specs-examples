@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.RecordType;
 import java.util.HashMap;
@@ -6,7 +7,8 @@ import java.util.Map;
 /** Samples for RecordSets Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetAPatch.json
+     * x-ms-original-file:
+     * specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetAPatch.json
      */
     /**
      * Sample code: PATCH Private DNS Zone A Record Set.
@@ -14,19 +16,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void pATCHPrivateDNSZoneARecordSet(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .privateDnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .updateWithResponse(
-                "resourceGroup1",
-                "privatezone1.com",
-                RecordType.A,
-                "recordA",
-                new RecordSetInner().withMetadata(mapOf("key2", "fakeTokenPlaceholder")),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.privateDnsZones().manager().serviceClient().getRecordSets().updateWithResponse("resourceGroup1",
+            "privatezone1.com", RecordType.A, "recordA",
+            new RecordSetInner().withMetadata(mapOf("key2", "fakeTokenPlaceholder")), null,
+            com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

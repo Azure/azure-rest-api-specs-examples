@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for AutoscaleSettings List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/listAutoscaleSettingBySubscription.json
+     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/
+     * listAutoscaleSettingBySubscription.json
      */
     /**
      * Sample code: List autoscale settings by subs.

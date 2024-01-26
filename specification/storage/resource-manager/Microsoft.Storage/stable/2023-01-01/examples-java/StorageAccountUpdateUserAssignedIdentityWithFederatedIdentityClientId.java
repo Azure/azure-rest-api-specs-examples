@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.storage.models.Encryption;
 import com.azure.resourcemanager.storage.models.EncryptionIdentity;
 import com.azure.resourcemanager.storage.models.EncryptionService;
@@ -18,7 +19,8 @@ import java.util.Map;
 /** Samples for StorageAccounts Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/StorageAccountUpdateUserAssignedIdentityWithFederatedIdentityClientId.json
+     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/
+     * StorageAccountUpdateUserAssignedIdentityWithFederatedIdentityClientId.json
      */
     /**
      * Sample code: StorageAccountUpdateUserAssignedIdentityWithFederatedIdentityClientId.
@@ -27,42 +29,24 @@ public final class Main {
      */
     public static void storageAccountUpdateUserAssignedIdentityWithFederatedIdentityClientId(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .storageAccounts()
-            .manager()
-            .serviceClient()
-            .getStorageAccounts()
-            .updateWithResponse(
-                "res131918",
-                "sto131918",
-                new StorageAccountUpdateParameters()
-                    .withSku(new Sku().withName(SkuName.STANDARD_LRS))
-                    .withIdentity(
-                        new Identity()
-                            .withType(IdentityType.USER_ASSIGNED)
-                            .withUserAssignedIdentities(
-                                mapOf(
-                                    "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managed-identity-name}",
-                                    new UserAssignedIdentity())))
-                    .withKind(Kind.STORAGE)
-                    .withEncryption(
-                        new Encryption()
-                            .withServices(
-                                new EncryptionServices()
-                                    .withBlob(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT))
-                                    .withFile(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT)))
-                            .withKeySource(KeySource.MICROSOFT_KEYVAULT)
-                            .withKeyVaultProperties(
-                                new KeyVaultProperties()
-                                    .withKeyName("fakeTokenPlaceholder")
-                                    .withKeyVersion("fakeTokenPlaceholder")
-                                    .withKeyVaultUri("fakeTokenPlaceholder"))
-                            .withEncryptionIdentity(
-                                new EncryptionIdentity()
-                                    .withEncryptionUserAssignedIdentity(
-                                        "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managed-identity-name}")
-                                    .withEncryptionFederatedIdentityClientId("3109d1c4-a5de-4d84-8832-feabb916a4b6"))),
-                com.azure.core.util.Context.NONE);
+        azure.storageAccounts().manager().serviceClient().getStorageAccounts().updateWithResponse("res131918",
+            "sto131918",
+            new StorageAccountUpdateParameters().withSku(new Sku().withName(SkuName.STANDARD_LRS))
+                .withIdentity(new Identity().withType(IdentityType.USER_ASSIGNED).withUserAssignedIdentities(mapOf(
+                    "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managed-identity-name}",
+                    new UserAssignedIdentity())))
+                .withKind(Kind.STORAGE)
+                .withEncryption(new Encryption()
+                    .withServices(new EncryptionServices()
+                        .withBlob(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT))
+                        .withFile(new EncryptionService().withEnabled(true).withKeyType(KeyType.ACCOUNT)))
+                    .withKeySource(KeySource.MICROSOFT_KEYVAULT)
+                    .withKeyVaultProperties(new KeyVaultProperties().withKeyName("fakeTokenPlaceholder")
+                        .withKeyVersion("fakeTokenPlaceholder").withKeyVaultUri("fakeTokenPlaceholder"))
+                    .withEncryptionIdentity(new EncryptionIdentity().withEncryptionUserAssignedIdentity(
+                        "/subscriptions/{subscription-id}/resourceGroups/res9101/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{managed-identity-name}")
+                        .withEncryptionFederatedIdentityClientId("3109d1c4-a5de-4d84-8832-feabb916a4b6"))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

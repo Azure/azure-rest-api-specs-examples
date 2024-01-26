@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.models.SearchServiceUpdate;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,8 @@ import java.util.Map;
 /** Samples for Services Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchUpdateServiceDisableLocalAuth.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchUpdateServiceDisableLocalAuth.json
      */
     /**
      * Sample code: SearchUpdateServiceDisableLocalAuth.
@@ -13,20 +15,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchUpdateServiceDisableLocalAuth(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .updateWithResponse(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceUpdate()
-                    .withTags(mapOf("app-name", "My e-commerce app", "new-tag", "Adding a new tag"))
-                    .withReplicaCount(2)
-                    .withDisableLocalAuth(true),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.searchServices().manager().serviceClient().getServices().updateWithResponse("rg1", "mysearchservice",
+            new SearchServiceUpdate().withTags(mapOf("app-name", "My e-commerce app", "new-tag", "Adding a new tag"))
+                .withReplicaCount(2).withDisableLocalAuth(true),
+            null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

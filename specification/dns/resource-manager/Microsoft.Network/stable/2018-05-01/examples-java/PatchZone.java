@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.dns.models.ZoneUpdate;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,8 @@ import java.util.Map;
 /** Samples for Zones Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/PatchZone.json
+     * x-ms-original-file:
+     * specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/PatchZone.json
      */
     /**
      * Sample code: Patch zone.
@@ -13,17 +15,8 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchZone(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getZones()
-            .updateWithResponse(
-                "rg1",
-                "zone1",
-                new ZoneUpdate().withTags(mapOf("key2", "fakeTokenPlaceholder")),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getZones().updateWithResponse("rg1", "zone1",
+            new ZoneUpdate().withTags(mapOf("key2", "fakeTokenPlaceholder")), null, com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

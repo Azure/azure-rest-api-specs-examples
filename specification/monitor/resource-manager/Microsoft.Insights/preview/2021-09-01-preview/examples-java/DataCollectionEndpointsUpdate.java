@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.ResourceForUpdate;
 import java.util.HashMap;
@@ -6,7 +7,9 @@ import java.util.Map;
 /** Samples for DataCollectionEndpoints Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/examples/DataCollectionEndpointsUpdate.json
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/preview/2021-09-01-preview/examples/
+     * DataCollectionEndpointsUpdate.json
      */
     /**
      * Sample code: Update data collection endpoint.
@@ -14,16 +17,9 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateDataCollectionEndpoint(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .diagnosticSettings()
-            .manager()
-            .serviceClient()
-            .getDataCollectionEndpoints()
-            .updateWithResponse(
-                "myResourceGroup",
-                "myCollectionEndpoint",
-                new ResourceForUpdate().withTags(mapOf("tag1", "A", "tag2", "B", "tag3", "C")),
-                Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getDataCollectionEndpoints().updateWithResponse(
+            "myResourceGroup", "myCollectionEndpoint",
+            new ResourceForUpdate().withTags(mapOf("tag1", "A", "tag2", "B", "tag3", "C")), Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

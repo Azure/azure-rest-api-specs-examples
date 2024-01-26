@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.resources.fluent.models.DeploymentInner;
 import com.azure.resourcemanager.resources.models.DeploymentMode;
 import com.azure.resourcemanager.resources.models.DeploymentProperties;
@@ -8,7 +9,8 @@ import java.util.Map;
 /** Samples for Deployments CreateOrUpdateAtSubscriptionScope. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/PutDeploymentSubscriptionTemplateSpecsWithId.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/
+     * PutDeploymentSubscriptionTemplateSpecsWithId.json
      */
     /**
      * Sample code: Create a deployment that will deploy a templateSpec with the given resourceId.
@@ -17,23 +19,11 @@ public final class Main {
      */
     public static void createADeploymentThatWillDeployATemplateSpecWithTheGivenResourceId(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .serviceClient()
-            .getDeployments()
-            .createOrUpdateAtSubscriptionScope(
-                "my-deployment",
-                new DeploymentInner()
-                    .withLocation("eastus")
-                    .withProperties(
-                        new DeploymentProperties()
-                            .withTemplateLink(
-                                new TemplateLink()
-                                    .withId(
-                                        "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1"))
-                            .withParameters(mapOf())
-                            .withMode(DeploymentMode.INCREMENTAL)),
+        azure.genericResources().manager().serviceClient().getDeployments()
+            .createOrUpdateAtSubscriptionScope("my-deployment", new DeploymentInner().withLocation("eastus")
+                .withProperties(new DeploymentProperties().withTemplateLink(new TemplateLink().withId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/my-resource-group/providers/Microsoft.Resources/TemplateSpecs/TemplateSpec-Name/versions/v1"))
+                    .withParameters(mapOf()).withMode(DeploymentMode.INCREMENTAL)),
                 com.azure.core.util.Context.NONE);
     }
 

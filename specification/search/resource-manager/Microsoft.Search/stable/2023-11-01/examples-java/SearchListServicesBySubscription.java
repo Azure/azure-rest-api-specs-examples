@@ -1,7 +1,9 @@
+
 /** Samples for Services List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchListServicesBySubscription.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchListServicesBySubscription.json
      */
     /**
      * Sample code: SearchListServicesBySubscription.

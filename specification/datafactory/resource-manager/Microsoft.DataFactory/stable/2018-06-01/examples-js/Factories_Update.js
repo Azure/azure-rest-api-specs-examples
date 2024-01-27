@@ -20,7 +20,7 @@ async function factoriesUpdate() {
   const result = await client.factories.update(
     resourceGroupName,
     factoryName,
-    factoryUpdateParameters
+    factoryUpdateParameters,
   );
   console.log(result);
 }

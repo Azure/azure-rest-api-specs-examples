@@ -18,7 +18,7 @@ async function getAPrivateEndpointConnectionForADatafactory() {
   const result = await client.privateEndpointConnection.get(
     resourceGroupName,
     factoryName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

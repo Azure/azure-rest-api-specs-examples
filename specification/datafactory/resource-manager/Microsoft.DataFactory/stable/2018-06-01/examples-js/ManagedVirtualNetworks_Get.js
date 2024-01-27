@@ -18,7 +18,7 @@ async function managedVirtualNetworksGet() {
   const result = await client.managedVirtualNetworks.get(
     resourceGroupName,
     factoryName,
-    managedVirtualNetworkName
+    managedVirtualNetworkName,
   );
   console.log(result);
 }

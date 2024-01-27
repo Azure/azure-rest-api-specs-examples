@@ -18,7 +18,7 @@ async function integrationRuntimesStop() {
   const result = await client.integrationRuntimes.beginStopAndWait(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function triggersGetEventSubscriptionStatus() {
   const result = await client.triggers.getEventSubscriptionStatus(
     resourceGroupName,
     factoryName,
-    triggerName
+    triggerName,
   );
   console.log(result);
 }

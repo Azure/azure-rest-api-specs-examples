@@ -18,7 +18,7 @@ async function globalParametersDelete() {
   const result = await client.globalParameters.delete(
     resourceGroupName,
     factoryName,
-    globalParameterName
+    globalParameterName,
   );
   console.log(result);
 }

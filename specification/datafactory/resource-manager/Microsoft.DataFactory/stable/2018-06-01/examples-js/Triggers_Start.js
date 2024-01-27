@@ -18,7 +18,7 @@ async function triggersStart() {
   const result = await client.triggers.beginStartAndWait(
     resourceGroupName,
     factoryName,
-    triggerName
+    triggerName,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function integrationRuntimesUpgrade() {
   const result = await client.integrationRuntimes.upgrade(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

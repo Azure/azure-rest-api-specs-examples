@@ -25,7 +25,7 @@ async function integrationRuntimesCreateLinkedIntegrationRuntime() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    createLinkedIntegrationRuntimeRequest
+    createLinkedIntegrationRuntimeRequest,
   );
   console.log(result);
 }

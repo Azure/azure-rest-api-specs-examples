@@ -21,7 +21,7 @@ async function exposureControlGetFeatureValueByFactory() {
   const result = await client.exposureControl.getFeatureValueByFactory(
     resourceGroupName,
     factoryName,
-    exposureControlRequest
+    exposureControlRequest,
   );
   console.log(result);
 }

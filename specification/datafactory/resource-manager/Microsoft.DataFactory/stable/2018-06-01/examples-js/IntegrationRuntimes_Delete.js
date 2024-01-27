@@ -18,7 +18,7 @@ async function integrationRuntimesDelete() {
   const result = await client.integrationRuntimes.delete(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

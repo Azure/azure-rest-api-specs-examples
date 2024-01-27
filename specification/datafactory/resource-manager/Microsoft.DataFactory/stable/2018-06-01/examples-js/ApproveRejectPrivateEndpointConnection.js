@@ -31,7 +31,7 @@ async function approvesOrRejectsAPrivateEndpointConnectionForAFactory() {
     resourceGroupName,
     factoryName,
     privateEndpointConnectionName,
-    privateEndpointWrapper
+    privateEndpointWrapper,
   );
   console.log(result);
 }

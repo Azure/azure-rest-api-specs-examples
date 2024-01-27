@@ -18,7 +18,7 @@ async function changeDataCaptureDelete() {
   const result = await client.changeDataCapture.delete(
     resourceGroupName,
     factoryName,
-    changeDataCaptureName
+    changeDataCaptureName,
   );
   console.log(result);
 }

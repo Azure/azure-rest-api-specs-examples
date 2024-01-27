@@ -18,7 +18,7 @@ async function triggersSubscribeToEvents() {
   const result = await client.triggers.beginSubscribeToEventsAndWait(
     resourceGroupName,
     factoryName,
-    triggerName
+    triggerName,
   );
   console.log(result);
 }

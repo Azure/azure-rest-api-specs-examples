@@ -20,7 +20,7 @@ async function integrationRuntimesNodesDelete() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    nodeName
+    nodeName,
   );
   console.log(result);
 }

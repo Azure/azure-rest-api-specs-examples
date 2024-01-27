@@ -40,7 +40,7 @@ async function triggersCreate() {
     resourceGroupName,
     factoryName,
     triggerName,
-    trigger
+    trigger,
   );
   console.log(result);
 }

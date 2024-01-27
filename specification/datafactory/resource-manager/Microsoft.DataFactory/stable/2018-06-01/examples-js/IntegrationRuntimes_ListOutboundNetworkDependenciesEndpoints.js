@@ -18,7 +18,7 @@ async function integrationRuntimesOutboundNetworkDependenciesEndpoints() {
   const result = await client.integrationRuntimes.listOutboundNetworkDependenciesEndpoints(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

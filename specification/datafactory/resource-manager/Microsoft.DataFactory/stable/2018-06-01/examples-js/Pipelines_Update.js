@@ -64,7 +64,7 @@ async function pipelinesUpdate() {
     resourceGroupName,
     factoryName,
     pipelineName,
-    pipeline
+    pipeline,
   );
   console.log(result);
 }

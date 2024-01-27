@@ -34,7 +34,7 @@ async function dataFlowDebugSessionCreate() {
   const result = await client.dataFlowDebugSession.beginCreateAndWait(
     resourceGroupName,
     factoryName,
-    request
+    request,
   );
   console.log(result);
 }

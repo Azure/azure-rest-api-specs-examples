@@ -22,7 +22,7 @@ async function dataFlowDebugSessionExecuteCommand() {
   const result = await client.dataFlowDebugSession.beginExecuteCommandAndWait(
     resourceGroupName,
     factoryName,
-    request
+    request,
   );
   console.log(result);
 }

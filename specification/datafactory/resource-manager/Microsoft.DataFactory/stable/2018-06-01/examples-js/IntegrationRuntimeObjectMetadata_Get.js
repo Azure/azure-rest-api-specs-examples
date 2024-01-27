@@ -25,7 +25,7 @@ async function integrationRuntimeObjectMetadataGet() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    options
+    options,
   );
   console.log(result);
 }

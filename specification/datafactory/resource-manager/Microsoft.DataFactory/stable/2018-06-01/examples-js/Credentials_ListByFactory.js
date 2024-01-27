@@ -17,7 +17,7 @@ async function credentialsListByFactory() {
   const resArray = new Array();
   for await (let item of client.credentialOperations.listByFactory(
     resourceGroupName,
-    factoryName
+    factoryName,
   )) {
     resArray.push(item);
   }

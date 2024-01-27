@@ -18,7 +18,7 @@ async function credentialsDelete() {
   const result = await client.credentialOperations.delete(
     resourceGroupName,
     factoryName,
-    credentialName
+    credentialName,
   );
   console.log(result);
 }

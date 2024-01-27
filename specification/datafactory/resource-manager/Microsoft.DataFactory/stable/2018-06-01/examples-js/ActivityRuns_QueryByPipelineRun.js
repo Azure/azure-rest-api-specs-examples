@@ -23,7 +23,7 @@ async function activityRunsQueryByPipelineRun() {
     resourceGroupName,
     factoryName,
     runId,
-    filterParameters
+    filterParameters,
   );
   console.log(result);
 }

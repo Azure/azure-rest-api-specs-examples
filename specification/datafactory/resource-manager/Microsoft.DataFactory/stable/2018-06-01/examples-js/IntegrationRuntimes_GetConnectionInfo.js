@@ -18,7 +18,7 @@ async function integrationRuntimesGetConnectionInfo() {
   const result = await client.integrationRuntimes.getConnectionInfo(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

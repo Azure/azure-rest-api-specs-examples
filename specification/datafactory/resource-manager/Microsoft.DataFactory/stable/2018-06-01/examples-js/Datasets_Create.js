@@ -35,7 +35,7 @@ async function datasetsCreate() {
     resourceGroupName,
     factoryName,
     datasetName,
-    dataset
+    dataset,
   );
   console.log(result);
 }

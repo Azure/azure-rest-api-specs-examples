@@ -20,7 +20,7 @@ async function managedPrivateEndpointsGet() {
     resourceGroupName,
     factoryName,
     managedVirtualNetworkName,
-    managedPrivateEndpointName
+    managedPrivateEndpointName,
   );
   console.log(result);
 }

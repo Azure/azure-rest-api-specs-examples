@@ -29,7 +29,7 @@ async function managedVirtualNetworksCreate() {
     factoryName,
     managedVirtualNetworkName,
     managedPrivateEndpointName,
-    managedPrivateEndpoint
+    managedPrivateEndpoint,
   );
   console.log(result);
 }

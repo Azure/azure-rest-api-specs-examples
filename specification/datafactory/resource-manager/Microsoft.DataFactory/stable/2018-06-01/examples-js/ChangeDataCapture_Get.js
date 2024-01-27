@@ -18,7 +18,7 @@ async function changeDataCaptureGet() {
   const result = await client.changeDataCapture.get(
     resourceGroupName,
     factoryName,
-    changeDataCaptureName
+    changeDataCaptureName,
   );
   console.log(result);
 }

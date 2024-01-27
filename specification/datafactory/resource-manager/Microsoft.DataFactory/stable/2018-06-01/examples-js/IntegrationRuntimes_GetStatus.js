@@ -18,7 +18,7 @@ async function integrationRuntimesGetStatus() {
   const result = await client.integrationRuntimes.getStatus(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function integrationRuntimeNodesGetIPAddress() {
     resourceGroupName,
     factoryName,
     integrationRuntimeName,
-    nodeName
+    nodeName,
   );
   console.log(result);
 }

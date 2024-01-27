@@ -18,7 +18,7 @@ async function integrationRuntimesStart() {
   const result = await client.integrationRuntimes.beginStartAndWait(
     resourceGroupName,
     factoryName,
-    integrationRuntimeName
+    integrationRuntimeName,
   );
   console.log(result);
 }

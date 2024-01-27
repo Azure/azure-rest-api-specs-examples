@@ -18,7 +18,7 @@ async function credentialsGet() {
   const result = await client.credentialOperations.get(
     resourceGroupName,
     factoryName,
-    credentialName
+    credentialName,
   );
   console.log(result);
 }

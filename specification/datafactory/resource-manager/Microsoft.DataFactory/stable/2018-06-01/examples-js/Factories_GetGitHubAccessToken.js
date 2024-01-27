@@ -22,7 +22,7 @@ async function factoriesGetGitHubAccessToken() {
   const result = await client.factories.getGitHubAccessToken(
     resourceGroupName,
     factoryName,
-    gitHubAccessTokenRequest
+    gitHubAccessTokenRequest,
   );
   console.log(result);
 }

@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedDatabaseInner;
 import com.azure.resourcemanager.sql.models.ManagedDatabaseCreateMode;
@@ -7,7 +8,9 @@ import java.util.Map;
 /** Samples for ManagedDatabases CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedDatabaseCreateRestoreLtrBackup.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedDatabaseCreateRestoreLtrBackup
+     * .json
      */
     /**
      * Sample code: Creates a new managed database from restoring a long term retention backup.
@@ -16,22 +19,13 @@ public final class Main {
      */
     public static void createsANewManagedDatabaseFromRestoringALongTermRetentionBackup(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getManagedDatabases()
-            .createOrUpdate(
-                "Default-SQL-SouthEastAsia",
-                "managedInstance",
-                "managedDatabase",
-                new ManagedDatabaseInner()
-                    .withLocation("southeastasia")
-                    .withCollation("SQL_Latin1_General_CP1_CI_AS")
-                    .withCreateMode(ManagedDatabaseCreateMode.RESTORE_EXTERNAL_BACKUP)
-                    .withStorageContainerUri("https://myaccountname.blob.core.windows.net/backups")
-                    .withStorageContainerSasToken("fakeTokenPlaceholder"),
-                Context.NONE);
+        azure.sqlServers().manager().serviceClient().getManagedDatabases().createOrUpdate("Default-SQL-SouthEastAsia",
+            "managedInstance", "managedDatabase",
+            new ManagedDatabaseInner().withLocation("southeastasia").withCollation("SQL_Latin1_General_CP1_CI_AS")
+                .withCreateMode(ManagedDatabaseCreateMode.RESTORE_EXTERNAL_BACKUP)
+                .withStorageContainerUri("https://myaccountname.blob.core.windows.net/backups")
+                .withStorageContainerSasToken("fakeTokenPlaceholder"),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

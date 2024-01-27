@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.fluent.models.SearchServiceInner;
 import com.azure.resourcemanager.search.models.HostingMode;
 import com.azure.resourcemanager.search.models.IpRule;
@@ -11,7 +12,8 @@ import java.util.Map;
 /** Samples for Services CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchCreateOrUpdateServiceToAllowAccessFromPublicCustomIPs.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchCreateOrUpdateServiceToAllowAccessFromPublicCustomIPs.json
      */
     /**
      * Sample code: SearchCreateOrUpdateServiceToAllowAccessFromPublicCustomIPs.
@@ -20,29 +22,13 @@ public final class Main {
      */
     public static void searchCreateOrUpdateServiceToAllowAccessFromPublicCustomIPs(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .createOrUpdate(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceInner()
-                    .withLocation("westus")
-                    .withTags(mapOf("app-name", "My e-commerce app"))
-                    .withSku(new Sku().withName(SkuName.STANDARD))
-                    .withReplicaCount(1)
-                    .withPartitionCount(1)
-                    .withHostingMode(HostingMode.DEFAULT)
-                    .withNetworkRuleSet(
-                        new NetworkRuleSet()
-                            .withIpRules(
-                                Arrays
-                                    .asList(
-                                        new IpRule().withValue("123.4.5.6"), new IpRule().withValue("123.4.6.0/18")))),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.searchServices().manager().serviceClient().getServices().createOrUpdate("rg1", "mysearchservice",
+            new SearchServiceInner().withLocation("westus").withTags(mapOf("app-name", "My e-commerce app"))
+                .withSku(new Sku().withName(SkuName.STANDARD)).withReplicaCount(1).withPartitionCount(1)
+                .withHostingMode(HostingMode.DEFAULT)
+                .withNetworkRuleSet(new NetworkRuleSet().withIpRules(
+                    Arrays.asList(new IpRule().withValue("123.4.5.6"), new IpRule().withValue("123.4.6.0/18")))),
+            null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

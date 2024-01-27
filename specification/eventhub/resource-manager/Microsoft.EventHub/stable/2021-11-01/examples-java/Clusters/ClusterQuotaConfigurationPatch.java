@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.eventhubs.fluent.models.ClusterQuotaConfigurationPropertiesInner;
 import java.util.HashMap;
@@ -6,7 +7,9 @@ import java.util.Map;
 /** Samples for Configuration Patch. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/Clusters/ClusterQuotaConfigurationPatch.json
+     * x-ms-original-file:
+     * specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/Clusters/
+     * ClusterQuotaConfigurationPatch.json
      */
     /**
      * Sample code: ClustersQuotasConfigurationPatch.
@@ -14,16 +17,9 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void clustersQuotasConfigurationPatch(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .eventHubs()
-            .manager()
-            .serviceClient()
-            .getConfigurations()
-            .patchWithResponse(
-                "ArunMonocle",
-                "testCluster",
-                new ClusterQuotaConfigurationPropertiesInner()
-                    .withSettings(mapOf("eventhub-per-namespace-quota", "20", "namespaces-per-cluster-quota", "200")),
+        azure.eventHubs().manager().serviceClient().getConfigurations()
+            .patchWithResponse("ArunMonocle", "testCluster", new ClusterQuotaConfigurationPropertiesInner()
+                .withSettings(mapOf("eventhub-per-namespace-quota", "20", "namespaces-per-cluster-quota", "200")),
                 Context.NONE);
     }
 

@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for Operations List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/EHOperations_List.json
+     * x-ms-original-file:
+     * specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/EHOperations_List.json
      */
     /**
      * Sample code: EHOperations_List.

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.redis.models.RedisConfiguration;
 import com.azure.resourcemanager.redis.models.RedisCreateParameters;
 import com.azure.resourcemanager.redis.models.Sku;
@@ -11,7 +12,9 @@ import java.util.Map;
 /** Samples for Redis Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2023-08-01/examples/RedisCacheCreateDefaultVersion.json
+     * x-ms-original-file:
+     * specification/redis/resource-manager/Microsoft.Cache/stable/2023-08-01/examples/RedisCacheCreateDefaultVersion.
+     * json
      */
     /**
      * Sample code: RedisCacheCreateDefaultVersion.
@@ -19,28 +22,16 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void redisCacheCreateDefaultVersion(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .redisCaches()
-            .manager()
-            .serviceClient()
-            .getRedis()
-            .create(
-                "rg1",
-                "cache1",
-                new RedisCreateParameters()
-                    .withZones(Arrays.asList("1"))
-                    .withLocation("West US")
-                    .withSku(new Sku().withName(SkuName.PREMIUM).withFamily(SkuFamily.P).withCapacity(1))
-                    .withSubnetId(
-                        "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1")
-                    .withStaticIp("192.168.0.5")
-                    .withRedisConfiguration(
-                        new RedisConfiguration().withMaxmemoryPolicy("allkeys-lru").withAdditionalProperties(mapOf()))
-                    .withEnableNonSslPort(true)
-                    .withReplicasPerPrimary(2)
-                    .withShardCount(2)
-                    .withMinimumTlsVersion(TlsVersion.ONE_TWO),
-                com.azure.core.util.Context.NONE);
+        azure.redisCaches().manager().serviceClient().getRedis().create("rg1", "cache1", new RedisCreateParameters()
+            .withZones(Arrays.asList("1")).withLocation("West US")
+            .withSku(new Sku().withName(SkuName.PREMIUM).withFamily(SkuFamily.P).withCapacity(1))
+            .withSubnetId(
+                "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/network1/subnets/subnet1")
+            .withStaticIp("192.168.0.5")
+            .withRedisConfiguration(
+                new RedisConfiguration().withMaxmemoryPolicy("allkeys-lru").withAdditionalProperties(mapOf()))
+            .withEnableNonSslPort(true).withReplicasPerPrimary(2).withShardCount(2)
+            .withMinimumTlsVersion(TlsVersion.ONE_TWO), com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

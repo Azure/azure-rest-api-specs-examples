@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for ManagedInstances ListByManagedInstance. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedInstanceTopQueriesListMin.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/ManagedInstanceTopQueriesListMin.json
      */
     /**
      * Sample code: Obtain list of instance's top resource consuming queries. Minimal request and response.
@@ -12,12 +14,7 @@ public final class Main {
      */
     public static void obtainListOfInstanceSTopResourceConsumingQueriesMinimalRequestAndResponse(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getManagedInstances()
-            .listByManagedInstance(
-                "sqlcrudtest-7398", "sqlcrudtest-4645", null, null, null, null, null, null, null, Context.NONE);
+        azure.sqlServers().manager().serviceClient().getManagedInstances().listByManagedInstance("sqlcrudtest-7398",
+            "sqlcrudtest-4645", null, null, null, null, null, null, null, Context.NONE);
     }
 }

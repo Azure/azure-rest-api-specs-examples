@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicySetDefinitionInner;
@@ -14,7 +15,8 @@ import java.util.Map;
 /** Samples for PolicySetDefinitions CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicySetDefinition.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
+     * createOrUpdatePolicySetDefinition.json
      */
     /**
      * Sample code: Create or update a policy set definition.
@@ -23,58 +25,28 @@ public final class Main {
      */
     public static void createOrUpdateAPolicySetDefinition(com.azure.resourcemanager.AzureResourceManager azure)
         throws IOException {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicySetDefinitions()
-            .createOrUpdateWithResponse(
-                "CostManagement",
-                new PolicySetDefinitionInner()
-                    .withDisplayName("Cost Management")
-                    .withDescription("Policies to enforce low cost storage SKUs")
-                    .withMetadata(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize("{\"category\":\"Cost Management\"}", Object.class, SerializerEncoding.JSON))
-                    .withParameters(
-                        mapOf(
-                            "namePrefix",
-                            new ParameterDefinitionsValue()
-                                .withType(ParameterType.STRING)
-                                .withDefaultValue("myPrefix")
-                                .withMetadata(
-                                    new ParameterDefinitionsValueMetadata()
-                                        .withDisplayName("Prefix to enforce on resource names")
-                                        .withAdditionalProperties(mapOf()))))
-                    .withPolicyDefinitions(
-                        Arrays
-                            .asList(
-                                new PolicyDefinitionReference()
-                                    .withPolicyDefinitionId(
-                                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
-                                    .withParameters(
-                                        mapOf(
-                                            "listOfAllowedSKUs",
-                                            new ParameterValuesValue()
-                                                .withValue(
-                                                    SerializerFactory
-                                                        .createDefaultManagementSerializerAdapter()
-                                                        .deserialize(
-                                                            "[\"Standard_GRS\",\"Standard_LRS\"]",
-                                                            Object.class,
-                                                            SerializerEncoding.JSON))))
-                                    .withPolicyDefinitionReferenceId("Limit_Skus"),
-                                new PolicyDefinitionReference()
-                                    .withPolicyDefinitionId(
-                                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
-                                    .withParameters(
-                                        mapOf(
-                                            "prefix",
-                                            new ParameterValuesValue().withValue("[parameters('namePrefix')]"),
-                                            "suffix",
-                                            new ParameterValuesValue().withValue("-LC")))
-                                    .withPolicyDefinitionReferenceId("Resource_Naming"))),
+        azure.genericResources().manager().policyClient().getPolicySetDefinitions()
+            .createOrUpdateWithResponse("CostManagement", new PolicySetDefinitionInner()
+                .withDisplayName("Cost Management").withDescription("Policies to enforce low cost storage SKUs")
+                .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
+                    .deserialize("{\"category\":\"Cost Management\"}", Object.class, SerializerEncoding.JSON))
+                .withParameters(mapOf("namePrefix",
+                    new ParameterDefinitionsValue().withType(ParameterType.STRING).withDefaultValue("myPrefix")
+                        .withMetadata(new ParameterDefinitionsValueMetadata()
+                            .withDisplayName("Prefix to enforce on resource names").withAdditionalProperties(mapOf()))))
+                .withPolicyDefinitions(Arrays.asList(new PolicyDefinitionReference().withPolicyDefinitionId(
+                    "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
+                    .withParameters(mapOf("listOfAllowedSKUs",
+                        new ParameterValuesValue()
+                            .withValue(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                                "[\"Standard_GRS\",\"Standard_LRS\"]", Object.class, SerializerEncoding.JSON))))
+                    .withPolicyDefinitionReferenceId("Limit_Skus"),
+                    new PolicyDefinitionReference().withPolicyDefinitionId(
+                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
+                        .withParameters(
+                            mapOf("prefix", new ParameterValuesValue().withValue("[parameters('namePrefix')]"),
+                                "suffix", new ParameterValuesValue().withValue("-LC")))
+                        .withPolicyDefinitionReferenceId("Resource_Naming"))),
                 com.azure.core.util.Context.NONE);
     }
 

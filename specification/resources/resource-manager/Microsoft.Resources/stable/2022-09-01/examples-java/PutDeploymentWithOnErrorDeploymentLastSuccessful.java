@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.resources.fluent.models.DeploymentInner;
 import com.azure.resourcemanager.resources.models.DeploymentMode;
 import com.azure.resourcemanager.resources.models.DeploymentProperties;
@@ -10,7 +11,8 @@ import java.util.Map;
 /** Samples for Deployments CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/PutDeploymentWithOnErrorDeploymentLastSuccessful.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/
+     * PutDeploymentWithOnErrorDeploymentLastSuccessful.json
      */
     /**
      * Sample code: Create a deployment that will redeploy the last successful deployment on failure.
@@ -19,23 +21,13 @@ public final class Main {
      */
     public static void createADeploymentThatWillRedeployTheLastSuccessfulDeploymentOnFailure(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .serviceClient()
-            .getDeployments()
-            .createOrUpdate(
-                "my-resource-group",
-                "my-deployment",
-                new DeploymentInner()
-                    .withProperties(
-                        new DeploymentProperties()
-                            .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
-                            .withParameters(mapOf())
-                            .withMode(DeploymentMode.COMPLETE)
-                            .withOnErrorDeployment(
-                                new OnErrorDeployment().withType(OnErrorDeploymentType.LAST_SUCCESSFUL))),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().serviceClient().getDeployments().createOrUpdate("my-resource-group",
+            "my-deployment",
+            new DeploymentInner().withProperties(new DeploymentProperties()
+                .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
+                .withParameters(mapOf()).withMode(DeploymentMode.COMPLETE)
+                .withOnErrorDeployment(new OnErrorDeployment().withType(OnErrorDeploymentType.LAST_SUCCESSFUL))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

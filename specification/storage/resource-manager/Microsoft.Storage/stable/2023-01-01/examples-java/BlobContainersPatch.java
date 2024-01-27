@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.storage.fluent.models.BlobContainerInner;
 import com.azure.resourcemanager.storage.models.PublicAccess;
 import java.util.HashMap;
@@ -6,7 +7,8 @@ import java.util.Map;
 /** Samples for BlobContainers Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/BlobContainersPatch.json
+     * x-ms-original-file:
+     * specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/BlobContainersPatch.json
      */
     /**
      * Sample code: UpdateContainers.
@@ -14,18 +16,9 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateContainers(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .storageAccounts()
-            .manager()
-            .serviceClient()
-            .getBlobContainers()
-            .updateWithResponse(
-                "res3376",
-                "sto328",
-                "container6185",
-                new BlobContainerInner()
-                    .withPublicAccess(PublicAccess.CONTAINER)
-                    .withMetadata(mapOf("metadata", "true")),
+        azure.storageAccounts().manager().serviceClient().getBlobContainers()
+            .updateWithResponse("res3376", "sto328", "container6185", new BlobContainerInner()
+                .withPublicAccess(PublicAccess.CONTAINER).withMetadata(mapOf("metadata", "true")),
                 com.azure.core.util.Context.NONE);
     }
 

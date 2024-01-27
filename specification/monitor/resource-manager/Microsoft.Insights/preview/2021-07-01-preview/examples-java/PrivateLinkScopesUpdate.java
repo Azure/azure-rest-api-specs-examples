@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.AzureMonitorPrivateLinkScopeInner;
 import com.azure.resourcemanager.monitor.models.AccessMode;
@@ -9,7 +10,9 @@ import java.util.Map;
 /** Samples for PrivateLinkScopes CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/PrivateLinkScopesUpdate.json
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/
+     * PrivateLinkScopesUpdate.json
      */
     /**
      * Sample code: PrivateLinkScopeUpdate.
@@ -17,23 +20,12 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void privateLinkScopeUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .diagnosticSettings()
-            .manager()
-            .serviceClient()
-            .getPrivateLinkScopes()
-            .createOrUpdateWithResponse(
-                "my-resource-group",
-                "my-privatelinkscope",
-                new AzureMonitorPrivateLinkScopeInner()
-                    .withLocation("Global")
-                    .withTags(mapOf("Tag1", "Value1"))
-                    .withAccessModeSettings(
-                        new AccessModeSettings()
-                            .withQueryAccessMode(AccessMode.OPEN)
-                            .withIngestionAccessMode(AccessMode.OPEN)
-                            .withExclusions(Arrays.asList())),
-                Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getPrivateLinkScopes().createOrUpdateWithResponse(
+            "my-resource-group", "my-privatelinkscope",
+            new AzureMonitorPrivateLinkScopeInner().withLocation("Global").withTags(mapOf("Tag1", "Value1"))
+                .withAccessModeSettings(new AccessModeSettings().withQueryAccessMode(AccessMode.OPEN)
+                    .withIngestionAccessMode(AccessMode.OPEN).withExclusions(Arrays.asList())),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

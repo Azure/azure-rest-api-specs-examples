@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicyAssignmentInner;
@@ -12,7 +13,8 @@ import java.util.Map;
 /** Samples for PolicyAssignments CreateById. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/createPolicyAssignmentWithIdentityById.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
+     * createPolicyAssignmentWithIdentityById.json
      */
     /**
      * Sample code: Create or update policy assignment with a managed identity by ID.
@@ -21,37 +23,21 @@ public final class Main {
      */
     public static void createOrUpdatePolicyAssignmentWithAManagedIdentityByID(
         com.azure.resourcemanager.AzureResourceManager azure) throws IOException {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicyAssignments()
-            .createByIdWithResponse(
-                "providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Authorization/policyAssignments/LowCostStorage",
-                new PolicyAssignmentInner()
-                    .withLocation("eastus")
-                    .withIdentity(new Identity().withType(ResourceIdentityType.SYSTEM_ASSIGNED))
-                    .withDisplayName("Enforce storage account SKU")
-                    .withPolicyDefinitionId(
-                        "/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
-                    .withParameters(
-                        mapOf(
-                            "listOfAllowedSKUs",
-                            new ParameterValuesValue()
-                                .withValue(
-                                    SerializerFactory
-                                        .createDefaultManagementSerializerAdapter()
-                                        .deserialize(
-                                            "[\"Standard_GRS\",\"Standard_LRS\"]",
-                                            Object.class,
-                                            SerializerEncoding.JSON))))
-                    .withDescription("Allow only storage accounts of SKU Standard_GRS or Standard_LRS to be created")
-                    .withMetadata(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize("{\"assignedBy\":\"Cheapskate Boss\"}", Object.class, SerializerEncoding.JSON))
-                    .withEnforcementMode(EnforcementMode.DEFAULT),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().policyClient().getPolicyAssignments().createByIdWithResponse(
+            "providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Authorization/policyAssignments/LowCostStorage",
+            new PolicyAssignmentInner().withLocation("eastus")
+                .withIdentity(new Identity().withType(ResourceIdentityType.SYSTEM_ASSIGNED))
+                .withDisplayName("Enforce storage account SKU")
+                .withPolicyDefinitionId(
+                    "/providers/Microsoft.Authorization/policyDefinitions/7433c107-6db4-4ad1-b57a-a76dce0154a1")
+                .withParameters(mapOf("listOfAllowedSKUs",
+                    new ParameterValuesValue().withValue(SerializerFactory.createDefaultManagementSerializerAdapter()
+                        .deserialize("[\"Standard_GRS\",\"Standard_LRS\"]", Object.class, SerializerEncoding.JSON))))
+                .withDescription("Allow only storage accounts of SKU Standard_GRS or Standard_LRS to be created")
+                .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
+                    .deserialize("{\"assignedBy\":\"Cheapskate Boss\"}", Object.class, SerializerEncoding.JSON))
+                .withEnforcementMode(EnforcementMode.DEFAULT),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

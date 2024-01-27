@@ -1,9 +1,12 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for Clusters ListAvailableClusterRegion. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/Clusters/ListAvailableClustersGet.json
+     * x-ms-original-file:
+     * specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/Clusters/
+     * ListAvailableClustersGet.json
      */
     /**
      * Sample code: ListAvailableClusters.

@@ -1,7 +1,10 @@
+
 /** Samples for DenyAssignments GetById. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/stable/2022-04-01/examples/GetDenyAssignmentById.json
+     * x-ms-original-file:
+     * specification/authorization/resource-manager/Microsoft.Authorization/stable/2022-04-01/examples/
+     * GetDenyAssignmentById.json
      */
     /**
      * Sample code: Get deny assignment by ID.
@@ -9,12 +12,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getDenyAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .accessManagement()
-            .roleAssignments()
-            .manager()
-            .roleServiceClient()
-            .getDenyAssignments()
+        azure.accessManagement().roleAssignments().manager().roleServiceClient().getDenyAssignments()
             .getByIdWithResponse(
                 "subscriptions/subId/resourcegroups/rgname/providers/Microsoft.Authorization/denyAssignments/daId",
                 com.azure.core.util.Context.NONE);

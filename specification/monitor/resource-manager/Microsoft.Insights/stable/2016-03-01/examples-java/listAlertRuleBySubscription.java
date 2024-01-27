@@ -1,9 +1,12 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for AlertRules List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/listAlertRuleBySubscription.json
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/listAlertRuleBySubscription.
+     * json
      */
     /**
      * Sample code: List alert rules.

@@ -1,9 +1,12 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for Clusters ListByResourceGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/Clusters/ClustersListByResourceGroup.json
+     * x-ms-original-file:
+     * specification/eventhub/resource-manager/Microsoft.EventHub/stable/2021-11-01/examples/Clusters/
+     * ClustersListByResourceGroup.json
      */
     /**
      * Sample code: ClustersListByResourceGroup.

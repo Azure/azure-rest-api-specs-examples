@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.cdn.models.EndpointUpdateParameters;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,8 @@ import java.util.Map;
 /** Samples for Endpoints Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/Endpoints_Update.json
+     * x-ms-original-file:
+     * specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/Endpoints_Update.json
      */
     /**
      * Sample code: Endpoints_Update.
@@ -13,17 +15,9 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void endpointsUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .cdnProfiles()
-            .manager()
-            .serviceClient()
-            .getEndpoints()
-            .update(
-                "RG",
-                "profile1",
-                "endpoint1",
-                new EndpointUpdateParameters().withTags(mapOf("additionalProperties", "Tag1")),
-                com.azure.core.util.Context.NONE);
+        azure.cdnProfiles().manager().serviceClient().getEndpoints().update("RG", "profile1", "endpoint1",
+            new EndpointUpdateParameters().withTags(mapOf("additionalProperties", "Tag1")),
+            com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

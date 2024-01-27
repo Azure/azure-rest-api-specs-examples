@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.models.SearchSemanticSearch;
 import com.azure.resourcemanager.search.models.SearchServiceUpdate;
 import java.util.HashMap;
@@ -6,7 +7,8 @@ import java.util.Map;
 /** Samples for Services Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchUpdateServiceWithSemanticSearch.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchUpdateServiceWithSemanticSearch.json
      */
     /**
      * Sample code: SearchUpdateServiceWithSemanticSearch.
@@ -14,20 +16,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchUpdateServiceWithSemanticSearch(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .updateWithResponse(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceUpdate()
-                    .withTags(mapOf("app-name", "My e-commerce app", "new-tag", "Adding a new tag"))
-                    .withReplicaCount(2)
-                    .withSemanticSearch(SearchSemanticSearch.STANDARD),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.searchServices().manager().serviceClient().getServices().updateWithResponse("rg1", "mysearchservice",
+            new SearchServiceUpdate().withTags(mapOf("app-name", "My e-commerce app", "new-tag", "Adding a new tag"))
+                .withReplicaCount(2).withSemanticSearch(SearchSemanticSearch.STANDARD),
+            null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

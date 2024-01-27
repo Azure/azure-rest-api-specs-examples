@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.cdn.models.LogMetric;
 import com.azure.resourcemanager.cdn.models.LogMetricsGranularity;
 import com.azure.resourcemanager.cdn.models.LogMetricsGroupBy;
@@ -7,7 +8,9 @@ import java.util.Arrays;
 /** Samples for LogAnalytics GetLogAnalyticsMetrics. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/LogAnalytics_GetLogAnalyticsMetrics.json
+     * x-ms-original-file:
+     * specification/cdn/resource-manager/Microsoft.Cdn/stable/2023-05-01/examples/LogAnalytics_GetLogAnalyticsMetrics.
+     * json
      */
     /**
      * Sample code: LogAnalytics_GetLogAnalyticsMetrics.
@@ -15,23 +18,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void logAnalyticsGetLogAnalyticsMetrics(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .cdnProfiles()
-            .manager()
-            .serviceClient()
-            .getLogAnalytics()
-            .getLogAnalyticsMetricsWithResponse(
-                "RG",
-                "profile1",
-                Arrays.asList(LogMetric.CLIENT_REQUEST_COUNT),
-                OffsetDateTime.parse("2020-11-04T04:30:00.000Z"),
-                OffsetDateTime.parse("2020-11-04T05:00:00.000Z"),
-                LogMetricsGranularity.PT5M,
-                Arrays.asList("customdomain1.azurecdn.net", "customdomain2.azurecdn.net"),
-                Arrays.asList("https"),
-                Arrays.asList(LogMetricsGroupBy.PROTOCOL),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.cdnProfiles().manager().serviceClient().getLogAnalytics().getLogAnalyticsMetricsWithResponse("RG",
+            "profile1", Arrays.asList(LogMetric.CLIENT_REQUEST_COUNT), OffsetDateTime.parse("2020-11-04T04:30:00.000Z"),
+            OffsetDateTime.parse("2020-11-04T05:00:00.000Z"), LogMetricsGranularity.PT5M,
+            Arrays.asList("customdomain1.azurecdn.net", "customdomain2.azurecdn.net"), Arrays.asList("https"),
+            Arrays.asList(LogMetricsGroupBy.PROTOCOL), null, null, com.azure.core.util.Context.NONE);
     }
 }

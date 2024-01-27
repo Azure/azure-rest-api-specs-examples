@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.ARecord;
 import com.azure.resourcemanager.privatedns.models.RecordType;
@@ -8,7 +9,8 @@ import java.util.Map;
 /** Samples for RecordSets CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetAPut.json
+     * x-ms-original-file:
+     * specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetAPut.json
      */
     /**
      * Sample code: PUT Private DNS Zone A Record Set.
@@ -16,23 +18,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void pUTPrivateDNSZoneARecordSet(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .privateDnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .createOrUpdateWithResponse(
-                "resourceGroup1",
-                "privatezone1.com",
-                RecordType.A,
-                "recordA",
-                new RecordSetInner()
-                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
-                    .withTtl(3600L)
+        azure.privateDnsZones().manager().serviceClient().getRecordSets()
+            .createOrUpdateWithResponse("resourceGroup1", "privatezone1.com", RecordType.A, "recordA",
+                new RecordSetInner().withMetadata(mapOf("key1", "fakeTokenPlaceholder")).withTtl(3600L)
                     .withARecords(Arrays.asList(new ARecord().withIpv4Address("1.2.3.4"))),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+                null, null, com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

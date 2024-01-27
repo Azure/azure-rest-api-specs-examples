@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.AlertRulePatchObject;
 import java.util.HashMap;
@@ -6,7 +7,9 @@ import java.util.Map;
 /** Samples for ActivityLogAlerts Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/examples/ActivityLogAlertRule_Update.json
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/examples/ActivityLogAlertRule_Update.
+     * json
      */
     /**
      * Sample code: Patch an Activity Log Alert rule.
@@ -14,16 +17,10 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchAnActivityLogAlertRule(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .diagnosticSettings()
-            .manager()
-            .serviceClient()
-            .getActivityLogAlerts()
-            .updateWithResponse(
-                "MyResourceGroup",
-                "SampleActivityLogAlertRule",
-                new AlertRulePatchObject().withTags(mapOf("key1", "value1", "key2", "value2")).withEnabled(false),
-                Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getActivityLogAlerts().updateWithResponse(
+            "MyResourceGroup", "SampleActivityLogAlertRule",
+            new AlertRulePatchObject().withTags(mapOf("key1", "value1", "key2", "value2")).withEnabled(false),
+            Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,7 +1,9 @@
+
 /** Samples for Operations List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/OperationsList.json
+     * x-ms-original-file:
+     * specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/OperationsList.json
      */
     /**
      * Sample code: OperationsList.

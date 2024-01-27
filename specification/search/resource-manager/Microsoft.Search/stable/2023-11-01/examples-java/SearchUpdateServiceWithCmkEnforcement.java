@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.models.EncryptionWithCmk;
 import com.azure.resourcemanager.search.models.SearchEncryptionWithCmk;
 import com.azure.resourcemanager.search.models.SearchServiceUpdate;
@@ -7,7 +8,8 @@ import java.util.Map;
 /** Samples for Services Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchUpdateServiceWithCmkEnforcement.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchUpdateServiceWithCmkEnforcement.json
      */
     /**
      * Sample code: SearchUpdateServiceWithCmkEnforcement.
@@ -15,20 +17,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchUpdateServiceWithCmkEnforcement(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .updateWithResponse(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceUpdate()
-                    .withTags(mapOf("app-name", "My e-commerce app", "new-tag", "Adding a new tag"))
-                    .withReplicaCount(2)
-                    .withEncryptionWithCmk(new EncryptionWithCmk().withEnforcement(SearchEncryptionWithCmk.ENABLED)),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.searchServices().manager().serviceClient().getServices().updateWithResponse("rg1", "mysearchservice",
+            new SearchServiceUpdate().withTags(mapOf("app-name", "My e-commerce app", "new-tag", "Adding a new tag"))
+                .withReplicaCount(2)
+                .withEncryptionWithCmk(new EncryptionWithCmk().withEnforcement(SearchEncryptionWithCmk.ENABLED)),
+            null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

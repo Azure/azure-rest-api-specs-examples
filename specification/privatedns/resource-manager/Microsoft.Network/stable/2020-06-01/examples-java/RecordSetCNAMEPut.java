@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.privatedns.fluent.models.RecordSetInner;
 import com.azure.resourcemanager.privatedns.models.CnameRecord;
 import com.azure.resourcemanager.privatedns.models.RecordType;
@@ -7,7 +8,8 @@ import java.util.Map;
 /** Samples for RecordSets CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetCNAMEPut.json
+     * x-ms-original-file:
+     * specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/RecordSetCNAMEPut.json
      */
     /**
      * Sample code: PUT Private DNS Zone CNAME Record Set.
@@ -15,23 +17,11 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void pUTPrivateDNSZoneCNAMERecordSet(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .privateDnsZones()
-            .manager()
-            .serviceClient()
-            .getRecordSets()
-            .createOrUpdateWithResponse(
-                "resourceGroup1",
-                "privatezone1.com",
-                RecordType.CNAME,
-                "recordCNAME",
-                new RecordSetInner()
-                    .withMetadata(mapOf("key1", "fakeTokenPlaceholder"))
-                    .withTtl(3600L)
-                    .withCnameRecord(new CnameRecord().withCname("contoso.com")),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.privateDnsZones().manager().serviceClient().getRecordSets().createOrUpdateWithResponse("resourceGroup1",
+            "privatezone1.com", RecordType.CNAME, "recordCNAME",
+            new RecordSetInner().withMetadata(mapOf("key1", "fakeTokenPlaceholder")).withTtl(3600L).withCnameRecord(
+                new CnameRecord().withCname("contoso.com")),
+            null, null, com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

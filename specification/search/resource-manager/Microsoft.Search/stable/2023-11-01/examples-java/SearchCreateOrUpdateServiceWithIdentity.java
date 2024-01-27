@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.search.fluent.models.SearchServiceInner;
 import com.azure.resourcemanager.search.models.HostingMode;
 import com.azure.resourcemanager.search.models.Identity;
@@ -10,7 +11,8 @@ import java.util.Map;
 /** Samples for Services CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/SearchCreateOrUpdateServiceWithIdentity.json
+     * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
+     * SearchCreateOrUpdateServiceWithIdentity.json
      */
     /**
      * Sample code: SearchCreateOrUpdateServiceWithIdentity.
@@ -18,24 +20,12 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchCreateOrUpdateServiceWithIdentity(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .searchServices()
-            .manager()
-            .serviceClient()
-            .getServices()
-            .createOrUpdate(
-                "rg1",
-                "mysearchservice",
-                new SearchServiceInner()
-                    .withLocation("westus")
-                    .withTags(mapOf("app-name", "My e-commerce app"))
-                    .withSku(new Sku().withName(SkuName.STANDARD))
-                    .withIdentity(new Identity().withType(IdentityType.SYSTEM_ASSIGNED))
-                    .withReplicaCount(3)
-                    .withPartitionCount(1)
-                    .withHostingMode(HostingMode.DEFAULT),
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.searchServices().manager().serviceClient().getServices().createOrUpdate("rg1", "mysearchservice",
+            new SearchServiceInner().withLocation("westus").withTags(mapOf("app-name", "My e-commerce app"))
+                .withSku(new Sku().withName(SkuName.STANDARD))
+                .withIdentity(new Identity().withType(IdentityType.SYSTEM_ASSIGNED)).withReplicaCount(3)
+                .withPartitionCount(1).withHostingMode(HostingMode.DEFAULT),
+            null, com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

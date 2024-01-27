@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DatabaseAutomaticTuningInner;
 import com.azure.resourcemanager.sql.models.AutomaticTuningMode;
@@ -7,7 +8,8 @@ import java.util.Map;
 /** Samples for DatabaseAutomaticTuning Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/DatabaseAutomaticTuningUpdateMin.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/DatabaseAutomaticTuningUpdateMin.json
      */
     /**
      * Sample code: Updates database automatic tuning settings with minimal properties.
@@ -16,17 +18,9 @@ public final class Main {
      */
     public static void updatesDatabaseAutomaticTuningSettingsWithMinimalProperties(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getDatabaseAutomaticTunings()
-            .updateWithResponse(
-                "default-sql-onebox",
-                "testsvr11",
-                "db1",
-                new DatabaseAutomaticTuningInner().withDesiredState(AutomaticTuningMode.AUTO),
-                Context.NONE);
+        azure.sqlServers().manager().serviceClient().getDatabaseAutomaticTunings().updateWithResponse(
+            "default-sql-onebox", "testsvr11", "db1",
+            new DatabaseAutomaticTuningInner().withDesiredState(AutomaticTuningMode.AUTO), Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

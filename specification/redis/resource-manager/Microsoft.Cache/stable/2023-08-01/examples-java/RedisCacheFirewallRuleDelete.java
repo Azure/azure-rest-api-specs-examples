@@ -1,7 +1,9 @@
+
 /** Samples for FirewallRules Delete. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/redis/resource-manager/Microsoft.Cache/stable/2023-08-01/examples/RedisCacheFirewallRuleDelete.json
+     * x-ms-original-file:
+     * specification/redis/resource-manager/Microsoft.Cache/stable/2023-08-01/examples/RedisCacheFirewallRuleDelete.json
      */
     /**
      * Sample code: RedisCacheFirewallRuleDelete.
@@ -9,11 +11,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void redisCacheFirewallRuleDelete(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .redisCaches()
-            .manager()
-            .serviceClient()
-            .getFirewallRules()
-            .deleteWithResponse("rg1", "cache1", "rule1", com.azure.core.util.Context.NONE);
+        azure.redisCaches().manager().serviceClient().getFirewallRules().deleteWithResponse("rg1", "cache1", "rule1",
+            com.azure.core.util.Context.NONE);
     }
 }

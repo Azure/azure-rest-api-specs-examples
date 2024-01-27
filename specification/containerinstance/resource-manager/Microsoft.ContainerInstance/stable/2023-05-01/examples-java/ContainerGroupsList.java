@@ -1,7 +1,10 @@
+
 /** Samples for ContainerGroups List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2023-05-01/examples/ContainerGroupsList.json
+     * x-ms-original-file:
+     * specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2023-05-01/examples/
+     * ContainerGroupsList.json
      */
     /**
      * Sample code: ContainerGroupsList.

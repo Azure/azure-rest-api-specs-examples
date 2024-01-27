@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.containerinstance.fluent.models.ContainerGroupInner;
@@ -20,7 +21,9 @@ import java.util.Map;
 /** Samples for ContainerGroups CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2023-05-01/examples/ContainerGroupExtensions.json
+     * x-ms-original-file:
+     * specification/containerinstance/resource-manager/Microsoft.ContainerInstance/stable/2023-05-01/examples/
+     * ContainerGroupExtensions.json
      */
     /**
      * Sample code: ContainerGroupCreateWithExtensions.
@@ -29,67 +32,31 @@ public final class Main {
      */
     public static void containerGroupCreateWithExtensions(com.azure.resourcemanager.AzureResourceManager azure)
         throws IOException {
-        azure
-            .containerGroups()
-            .manager()
-            .serviceClient()
-            .getContainerGroups()
-            .createOrUpdate(
-                "demo",
-                "demo1",
-                new ContainerGroupInner()
-                    .withLocation("eastus2")
-                    .withContainers(
-                        Arrays
-                            .asList(
-                                new Container()
-                                    .withName("demo1")
-                                    .withImage("nginx")
-                                    .withCommand(Arrays.asList())
-                                    .withPorts(Arrays.asList(new ContainerPort().withPort(80)))
-                                    .withEnvironmentVariables(Arrays.asList())
-                                    .withResources(
-                                        new ResourceRequirements()
-                                            .withRequests(new ResourceRequests().withMemoryInGB(1.5).withCpu(1.0)))))
-                    .withImageRegistryCredentials(Arrays.asList())
-                    .withIpAddress(
-                        new IpAddress()
-                            .withPorts(
-                                Arrays.asList(new Port().withProtocol(ContainerGroupNetworkProtocol.TCP).withPort(80)))
-                            .withType(ContainerGroupIpAddressType.PRIVATE))
-                    .withOsType(OperatingSystemTypes.LINUX)
-                    .withSubnetIds(
-                        Arrays
-                            .asList(
-                                new ContainerGroupSubnetId()
-                                    .withId(
-                                        "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-rg-vnet/subnets/test-subnet")))
-                    .withExtensions(
-                        Arrays
-                            .asList(
-                                new DeploymentExtensionSpec()
-                                    .withName("kube-proxy")
-                                    .withExtensionType("kube-proxy")
-                                    .withVersion("1.0")
-                                    .withSettings(
-                                        SerializerFactory
-                                            .createDefaultManagementSerializerAdapter()
-                                            .deserialize(
-                                                "{\"clusterCidr\":\"10.240.0.0/16\",\"kubeVersion\":\"v1.9.10\"}",
-                                                Object.class,
-                                                SerializerEncoding.JSON))
-                                    .withProtectedSettings(
-                                        SerializerFactory
-                                            .createDefaultManagementSerializerAdapter()
-                                            .deserialize(
-                                                "{\"kubeConfig\":\"<kubeconfig encoded string>\"}",
-                                                Object.class,
-                                                SerializerEncoding.JSON)),
-                                new DeploymentExtensionSpec()
-                                    .withName("vk-realtime-metrics")
-                                    .withExtensionType("realtime-metrics")
-                                    .withVersion("1.0"))),
-                com.azure.core.util.Context.NONE);
+        azure.containerGroups().manager().serviceClient().getContainerGroups().createOrUpdate("demo", "demo1",
+            new ContainerGroupInner().withLocation("eastus2")
+                .withContainers(Arrays.asList(new Container().withName("demo1").withImage("nginx")
+                    .withCommand(Arrays.asList()).withPorts(Arrays.asList(new ContainerPort().withPort(80)))
+                    .withEnvironmentVariables(Arrays.asList())
+                    .withResources(new ResourceRequirements()
+                        .withRequests(new ResourceRequests().withMemoryInGB(1.5).withCpu(1.0)))))
+                .withImageRegistryCredentials(Arrays.asList())
+                .withIpAddress(new IpAddress()
+                    .withPorts(Arrays.asList(new Port().withProtocol(ContainerGroupNetworkProtocol.TCP).withPort(80)))
+                    .withType(ContainerGroupIpAddressType.PRIVATE))
+                .withOsType(OperatingSystemTypes.LINUX)
+                .withSubnetIds(Arrays.asList(new ContainerGroupSubnetId().withId(
+                    "/subscriptions/00000000-0000-0000-0000-00000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-rg-vnet/subnets/test-subnet")))
+                .withExtensions(Arrays.asList(
+                    new DeploymentExtensionSpec().withName("kube-proxy").withExtensionType("kube-proxy")
+                        .withVersion("1.0")
+                        .withSettings(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                            "{\"clusterCidr\":\"10.240.0.0/16\",\"kubeVersion\":\"v1.9.10\"}", Object.class,
+                            SerializerEncoding.JSON))
+                        .withProtectedSettings(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
+                            "{\"kubeConfig\":\"<kubeconfig encoded string>\"}", Object.class, SerializerEncoding.JSON)),
+                    new DeploymentExtensionSpec().withName("vk-realtime-metrics").withExtensionType("realtime-metrics")
+                        .withVersion("1.0"))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

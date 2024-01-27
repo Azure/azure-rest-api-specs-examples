@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.resources.models.DeploymentMode;
 import com.azure.resourcemanager.resources.models.DeploymentProperties;
 import com.azure.resourcemanager.resources.models.ScopedDeployment;
@@ -8,7 +9,9 @@ import java.util.Map;
 /** Samples for Deployments CreateOrUpdateAtTenantScope. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/PutDeploymentAtTenant.json
+     * x-ms-original-file:
+     * specification/resources/resource-manager/Microsoft.Resources/stable/2022-09-01/examples/PutDeploymentAtTenant.
+     * json
      */
     /**
      * Sample code: Create deployment at tenant scope.
@@ -16,22 +19,13 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createDeploymentAtTenantScope(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .genericResources()
-            .manager()
-            .serviceClient()
-            .getDeployments()
-            .createOrUpdateAtTenantScope(
-                "tenant-dep01",
-                new ScopedDeployment()
-                    .withLocation("eastus")
-                    .withProperties(
-                        new DeploymentProperties()
-                            .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
-                            .withParameters(mapOf())
-                            .withMode(DeploymentMode.INCREMENTAL))
-                    .withTags(mapOf("tagKey1", "fakeTokenPlaceholder", "tagKey2", "fakeTokenPlaceholder")),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().serviceClient().getDeployments().createOrUpdateAtTenantScope("tenant-dep01",
+            new ScopedDeployment().withLocation("eastus")
+                .withProperties(new DeploymentProperties()
+                    .withTemplateLink(new TemplateLink().withUri("https://example.com/exampleTemplate.json"))
+                    .withParameters(mapOf()).withMode(DeploymentMode.INCREMENTAL))
+                .withTags(mapOf("tagKey1", "fakeTokenPlaceholder", "tagKey2", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

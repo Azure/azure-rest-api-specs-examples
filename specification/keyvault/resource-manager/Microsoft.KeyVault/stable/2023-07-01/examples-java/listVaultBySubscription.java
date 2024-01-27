@@ -1,7 +1,10 @@
+
 /** Samples for Vaults ListBySubscription. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/listVaultBySubscription.json
+     * x-ms-original-file:
+     * specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/listVaultBySubscription.
+     * json
      */
     /**
      * Sample code: List vaults in the specified subscription.

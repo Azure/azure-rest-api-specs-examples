@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.storage.models.ActiveDirectoryProperties;
 import com.azure.resourcemanager.storage.models.ActiveDirectoryPropertiesAccountType;
 import com.azure.resourcemanager.storage.models.AzureFilesIdentityBasedAuthentication;
@@ -9,7 +10,8 @@ import java.util.Map;
 /** Samples for StorageAccounts Update. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/StorageAccountEnableAD.json
+     * x-ms-original-file:
+     * specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/StorageAccountEnableAD.json
      */
     /**
      * Sample code: StorageAccountEnableAD.
@@ -17,29 +19,16 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void storageAccountEnableAD(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .storageAccounts()
-            .manager()
-            .serviceClient()
-            .getStorageAccounts()
-            .updateWithResponse(
-                "res9407",
-                "sto8596",
-                new StorageAccountUpdateParameters()
-                    .withAzureFilesIdentityBasedAuthentication(
-                        new AzureFilesIdentityBasedAuthentication()
-                            .withDirectoryServiceOptions(DirectoryServiceOptions.AD)
-                            .withActiveDirectoryProperties(
-                                new ActiveDirectoryProperties()
-                                    .withDomainName("adtest.com")
-                                    .withNetBiosDomainName("adtest.com")
-                                    .withForestName("adtest.com")
-                                    .withDomainGuid("aebfc118-9fa9-4732-a21f-d98e41a77ae1")
-                                    .withDomainSid("S-1-5-21-2400535526-2334094090-2402026252")
-                                    .withAzureStorageSid("S-1-5-21-2400535526-2334094090-2402026252-0012")
-                                    .withSamAccountName("sam12498")
-                                    .withAccountType(ActiveDirectoryPropertiesAccountType.USER))),
-                com.azure.core.util.Context.NONE);
+        azure.storageAccounts().manager().serviceClient().getStorageAccounts().updateWithResponse("res9407", "sto8596",
+            new StorageAccountUpdateParameters().withAzureFilesIdentityBasedAuthentication(
+                new AzureFilesIdentityBasedAuthentication().withDirectoryServiceOptions(DirectoryServiceOptions.AD)
+                    .withActiveDirectoryProperties(new ActiveDirectoryProperties().withDomainName("adtest.com")
+                        .withNetBiosDomainName("adtest.com").withForestName("adtest.com")
+                        .withDomainGuid("aebfc118-9fa9-4732-a21f-d98e41a77ae1")
+                        .withDomainSid("S-1-5-21-2400535526-2334094090-2402026252")
+                        .withAzureStorageSid("S-1-5-21-2400535526-2334094090-2402026252-0012")
+                        .withSamAccountName("sam12498").withAccountType(ActiveDirectoryPropertiesAccountType.USER))),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

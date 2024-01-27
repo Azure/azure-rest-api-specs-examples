@@ -1,7 +1,10 @@
+
 /** Samples for VirtualNetworkLinks List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/VirtualNetworkLinkList.json
+     * x-ms-original-file:
+     * specification/privatedns/resource-manager/Microsoft.Network/stable/2020-06-01/examples/VirtualNetworkLinkList.
+     * json
      */
     /**
      * Sample code: Get Private DNS Zone Virtual Network Links.
@@ -9,11 +12,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getPrivateDNSZoneVirtualNetworkLinks(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .privateDnsZones()
-            .manager()
-            .serviceClient()
-            .getVirtualNetworkLinks()
-            .list("resourceGroup1", "privatezone1.com", null, com.azure.core.util.Context.NONE);
+        azure.privateDnsZones().manager().serviceClient().getVirtualNetworkLinks().list("resourceGroup1",
+            "privatezone1.com", null, com.azure.core.util.Context.NONE);
     }
 }

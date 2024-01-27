@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.dns.fluent.models.ZoneInner;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,8 @@ import java.util.Map;
 /** Samples for Zones CreateOrUpdate. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateZone.json
+     * x-ms-original-file:
+     * specification/dns/resource-manager/Microsoft.Network/stable/2018-05-01/examples/CreateOrUpdateZone.json
      */
     /**
      * Sample code: Create zone.
@@ -13,18 +15,9 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createZone(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .dnsZones()
-            .manager()
-            .serviceClient()
-            .getZones()
-            .createOrUpdateWithResponse(
-                "rg1",
-                "zone1",
-                new ZoneInner().withLocation("Global").withTags(mapOf("key1", "fakeTokenPlaceholder")),
-                null,
-                null,
-                com.azure.core.util.Context.NONE);
+        azure.dnsZones().manager().serviceClient().getZones().createOrUpdateWithResponse("rg1", "zone1",
+            new ZoneInner().withLocation("Global").withTags(mapOf("key1", "fakeTokenPlaceholder")), null, null,
+            com.azure.core.util.Context.NONE);
     }
 
     @SuppressWarnings("unchecked")

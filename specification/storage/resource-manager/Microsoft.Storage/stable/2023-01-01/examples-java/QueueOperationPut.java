@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.storage.fluent.models.StorageQueueInner;
 import java.util.HashMap;
 import java.util.Map;
@@ -5,7 +6,8 @@ import java.util.Map;
 /** Samples for Queue Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/QueueOperationPut.json
+     * x-ms-original-file:
+     * specification/storage/resource-manager/Microsoft.Storage/stable/2023-01-01/examples/QueueOperationPut.json
      */
     /**
      * Sample code: QueueOperationPut.
@@ -13,13 +15,8 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void queueOperationPut(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .storageAccounts()
-            .manager()
-            .serviceClient()
-            .getQueues()
-            .createWithResponse(
-                "res3376", "sto328", "queue6185", new StorageQueueInner(), com.azure.core.util.Context.NONE);
+        azure.storageAccounts().manager().serviceClient().getQueues().createWithResponse("res3376", "sto328",
+            "queue6185", new StorageQueueInner(), com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

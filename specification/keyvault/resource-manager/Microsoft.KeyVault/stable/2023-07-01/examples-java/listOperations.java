@@ -1,7 +1,9 @@
+
 /** Samples for Operations List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/listOperations.json
+     * x-ms-original-file:
+     * specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-07-01/examples/listOperations.json
      */
     /**
      * Sample code: Lists available Rest API operations.

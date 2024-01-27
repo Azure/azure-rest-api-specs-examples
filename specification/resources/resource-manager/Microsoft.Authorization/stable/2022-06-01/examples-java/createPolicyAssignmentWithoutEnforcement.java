@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.resources.fluent.models.PolicyAssignmentInner;
@@ -10,7 +11,8 @@ import java.util.Map;
 /** Samples for PolicyAssignments Create. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/createPolicyAssignmentWithoutEnforcement.json
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
+     * createPolicyAssignmentWithoutEnforcement.json
      */
     /**
      * Sample code: Create or update a policy assignment without enforcing policy effect during resource creation or
@@ -20,31 +22,17 @@ public final class Main {
      */
     public static void createOrUpdateAPolicyAssignmentWithoutEnforcingPolicyEffectDuringResourceCreationOrUpdate(
         com.azure.resourcemanager.AzureResourceManager azure) throws IOException {
-        azure
-            .genericResources()
-            .manager()
-            .policyClient()
-            .getPolicyAssignments()
-            .createWithResponse(
-                "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2",
-                "EnforceNaming",
-                new PolicyAssignmentInner()
-                    .withDisplayName("Enforce resource naming rules")
-                    .withPolicyDefinitionId(
-                        "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
-                    .withParameters(
-                        mapOf(
-                            "prefix",
-                            new ParameterValuesValue().withValue("DeptA"),
-                            "suffix",
-                            new ParameterValuesValue().withValue("-LC")))
-                    .withDescription("Force resource names to begin with given DeptA and end with -LC")
-                    .withMetadata(
-                        SerializerFactory
-                            .createDefaultManagementSerializerAdapter()
-                            .deserialize("{\"assignedBy\":\"Special Someone\"}", Object.class, SerializerEncoding.JSON))
-                    .withEnforcementMode(EnforcementMode.DO_NOT_ENFORCE),
-                com.azure.core.util.Context.NONE);
+        azure.genericResources().manager().policyClient().getPolicyAssignments().createWithResponse(
+            "subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2", "EnforceNaming",
+            new PolicyAssignmentInner().withDisplayName("Enforce resource naming rules").withPolicyDefinitionId(
+                "/subscriptions/ae640e6b-ba3e-4256-9d62-2993eecfa6f2/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming")
+                .withParameters(mapOf("prefix", new ParameterValuesValue().withValue("DeptA"), "suffix",
+                    new ParameterValuesValue().withValue("-LC")))
+                .withDescription("Force resource names to begin with given DeptA and end with -LC")
+                .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
+                    .deserialize("{\"assignedBy\":\"Special Someone\"}", Object.class, SerializerEncoding.JSON))
+                .withEnforcementMode(EnforcementMode.DO_NOT_ENFORCE),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

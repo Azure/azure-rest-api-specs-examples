@@ -1,9 +1,11 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for Operations List. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/SBOperations_List.json
+     * x-ms-original-file:
+     * specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/SBOperations_List.json
      */
     /**
      * Sample code: OperationsList.

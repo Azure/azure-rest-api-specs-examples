@@ -1,9 +1,12 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for VirtualClusters ListByResourceGroup. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/VirtualClusterListByResourceGroup.json
+     * x-ms-original-file:
+     * specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/VirtualClusterListByResourceGroup.
+     * json
      */
     /**
      * Sample code: List virtual clusters by resource group.

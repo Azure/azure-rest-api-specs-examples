@@ -1,10 +1,13 @@
+
 import com.azure.resourcemanager.authorization.models.PrincipalType;
 import com.azure.resourcemanager.authorization.models.RoleAssignmentCreateParameters;
 
 /** Samples for RoleAssignments CreateById. */
 public final class Main {
     /*
-     * x-ms-original-file: specification/authorization/resource-manager/Microsoft.Authorization/stable/2022-04-01/examples/RoleAssignments_CreateById.json
+     * x-ms-original-file:
+     * specification/authorization/resource-manager/Microsoft.Authorization/stable/2022-04-01/examples/
+     * RoleAssignments_CreateById.json
      */
     /**
      * Sample code: Create or update role assignment by ID.
@@ -12,19 +15,13 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateRoleAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .accessManagement()
-            .roleAssignments()
-            .manager()
-            .roleServiceClient()
-            .getRoleAssignments()
+        azure.accessManagement().roleAssignments().manager().roleServiceClient().getRoleAssignments()
             .createByIdWithResponse(
                 "subscriptions/a925f2f7-5c63-4b7b-8799-25a5f97bc3b2/providers/Microsoft.Authorization/roleAssignments/b0f43c54-e787-4862-89b1-a653fa9cf747",
                 new RoleAssignmentCreateParameters()
                     .withRoleDefinitionId(
                         "/providers/Microsoft.Authorization/roleDefinitions/0b5fe924-9a61-425c-96af-cfe6e287ca2d")
-                    .withPrincipalId("ce2ce14e-85d7-4629-bdbc-454d0519d987")
-                    .withPrincipalType(PrincipalType.USER),
+                    .withPrincipalId("ce2ce14e-85d7-4629-bdbc-454d0519d987").withPrincipalType(PrincipalType.USER),
                 com.azure.core.util.Context.NONE);
     }
 }

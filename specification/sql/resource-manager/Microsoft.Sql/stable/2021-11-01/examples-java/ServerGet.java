@@ -1,3 +1,4 @@
+
 import com.azure.core.util.Context;
 
 /** Samples for Servers GetByResourceGroup. */
@@ -11,11 +12,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getServer(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .sqlServers()
-            .manager()
-            .serviceClient()
-            .getServers()
-            .getByResourceGroupWithResponse("sqlcrudtest-7398", "sqlcrudtest-4645", null, Context.NONE);
+        azure.sqlServers().manager().serviceClient().getServers().getByResourceGroupWithResponse("sqlcrudtest-7398",
+            "sqlcrudtest-4645", null, Context.NONE);
     }
 }

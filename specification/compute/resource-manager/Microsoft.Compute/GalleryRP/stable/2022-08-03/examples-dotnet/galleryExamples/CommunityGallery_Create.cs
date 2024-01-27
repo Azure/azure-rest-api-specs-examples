@@ -36,7 +36,7 @@ GalleryData data = new GalleryData(new AzureLocation("West US"))
         Permission = GallerySharingPermissionType.Community,
         CommunityGalleryInfo = new CommunityGalleryInfo()
         {
-            PublisherUri = new Uri("uri"),
+            PublisherUriString = "uri",
             PublisherContact = "pir@microsoft.com",
             Eula = "eula",
             PublicNamePrefix = "PirPublic",

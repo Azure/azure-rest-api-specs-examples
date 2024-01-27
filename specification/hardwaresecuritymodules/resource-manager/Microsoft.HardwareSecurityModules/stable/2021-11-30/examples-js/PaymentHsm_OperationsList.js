@@ -1,4 +1,4 @@
-const { AzureDedicatedHSMResourceProvider } = require("@azure/arm-hardwaresecuritymodules");
+const { AzureHSMResourceProvider } = require("@azure/arm-hardwaresecuritymodules");
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
@@ -8,14 +8,14 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/examples/PaymentHsm_OperationsList.json
  */
 async function getAListOfPaymentHsmOperations() {
-  const subscriptionId = "00000000-0000-0000-0000-000000000000";
+  const subscriptionId =
+    process.env["HARDWARESECURITYMODULES_SUBSCRIPTION_ID"] ||
+    "00000000-0000-0000-0000-000000000000";
   const credential = new DefaultAzureCredential();
-  const client = new AzureDedicatedHSMResourceProvider(credential, subscriptionId);
+  const client = new AzureHSMResourceProvider(credential, subscriptionId);
   const resArray = new Array();
   for await (let item of client.operations.list()) {
     resArray.push(item);
   }
   console.log(resArray);
 }
-
-getAListOfPaymentHsmOperations().catch(console.error);

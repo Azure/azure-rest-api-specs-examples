@@ -16,31 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ElasticSanResource created on azure
-// for more information of creating ElasticSanResource, please refer to the document of ElasticSanResource
+// this example assumes you already have this ElasticSanVolumeGroupResource created on azure
+// for more information of creating ElasticSanVolumeGroupResource, please refer to the document of ElasticSanVolumeGroupResource
 string subscriptionId = "subscriptionid";
 string resourceGroupName = "resourcegroupname";
 string elasticSanName = "elasticsanname";
-ResourceIdentifier elasticSanResourceId = ElasticSanResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName);
-ElasticSanResource elasticSan = client.GetElasticSanResource(elasticSanResourceId);
-
-// get the collection of this ElasticSanVolumeGroupResource
-ElasticSanVolumeGroupCollection collection = elasticSan.GetElasticSanVolumeGroups();
+string volumeGroupName = "volumegroupname";
+ResourceIdentifier elasticSanVolumeGroupResourceId = ElasticSanVolumeGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, elasticSanName, volumeGroupName);
+ElasticSanVolumeGroupResource elasticSanVolumeGroup = client.GetElasticSanVolumeGroupResource(elasticSanVolumeGroupResourceId);
 
 // invoke the operation
-string volumeGroupName = "volumegroupname";
-NullableResponse<ElasticSanVolumeGroupResource> response = await collection.GetIfExistsAsync(volumeGroupName);
-ElasticSanVolumeGroupResource result = response.HasValue ? response.Value : null;
+ElasticSanVolumeGroupResource result = await elasticSanVolumeGroup.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ElasticSanVolumeGroupData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ElasticSanVolumeGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -3948,3 +3948,4 @@ id,name,language,tag,package,version,date_epoch,date
 3947,azure-mgmt-cosmosdb@10.0.0b2,python,azure-mgmt-cosmosdb_10.0.0b2,azure-mgmt-cosmosdb,10.0.0b2,1706241092,01/26/2024
 3948,azure-mgmt-datafactory@5.0.0,python,azure-mgmt-datafactory_5.0.0,azure-mgmt-datafactory,5.0.0,1706241080,01/26/2024
 3949,"Azure.ResourceManager,1.10.1",dotnet,Azure.ResourceManager_1.10.1,Azure.ResourceManager,1.10.1,1706286044,01/26/2024
+3950,"Azure.ResourceManager.Compute,1.4.0-beta.1",dotnet,Azure.ResourceManager.Compute_1.4.0-beta.1,Azure.ResourceManager.Compute,1.4.0-beta.1,1706278582,01/26/2024

@@ -18,7 +18,7 @@ async function getOperationResultForPrepareDataMove() {
   const result = await client.bMSPrepareDataMoveOperationResult.get(
     vaultName,
     resourceGroupName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

@@ -20,7 +20,7 @@ async function getOperationStatus() {
     vaultName,
     resourceGroupName,
     privateEndpointConnectionName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

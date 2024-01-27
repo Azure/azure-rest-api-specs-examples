@@ -25,7 +25,7 @@ async function updateVaultEncryptionConfiguration() {
   const result = await client.backupResourceEncryptionConfigs.update(
     vaultName,
     resourceGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

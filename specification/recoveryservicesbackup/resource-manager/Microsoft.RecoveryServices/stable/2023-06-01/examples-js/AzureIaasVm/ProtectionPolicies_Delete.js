@@ -20,7 +20,7 @@ async function deleteAzureVMProtectionPolicy() {
   const result = await client.protectionPolicies.beginDeleteAndWait(
     vaultName,
     resourceGroupName,
-    policyName
+    policyName,
   );
   console.log(result);
 }

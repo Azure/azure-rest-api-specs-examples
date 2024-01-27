@@ -26,7 +26,7 @@ async function getTheTieringSavingsCostInfoForProtectedItem() {
   const result = await client.fetchTieringCost.beginPostAndWait(
     resourceGroupName,
     vaultName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

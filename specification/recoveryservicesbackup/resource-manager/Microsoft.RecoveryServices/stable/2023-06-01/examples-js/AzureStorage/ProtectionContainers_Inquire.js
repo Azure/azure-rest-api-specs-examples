@@ -20,7 +20,7 @@ async function inquireAzureStorageProtectionContainers() {
     vaultName,
     resourceGroupName,
     fabricName,
-    containerName
+    containerName,
   );
   console.log(result);
 }

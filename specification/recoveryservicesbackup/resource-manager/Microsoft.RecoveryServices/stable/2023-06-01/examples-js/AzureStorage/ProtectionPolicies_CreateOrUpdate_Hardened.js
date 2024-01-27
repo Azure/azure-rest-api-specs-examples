@@ -69,7 +69,7 @@ async function createOrUpdateAzureStorageVaultStandardProtectionPolicy() {
     vaultName,
     resourceGroupName,
     policyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

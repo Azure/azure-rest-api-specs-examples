@@ -40,7 +40,7 @@ async function provisionInstantItemLevelRecoveryForAzureVM() {
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

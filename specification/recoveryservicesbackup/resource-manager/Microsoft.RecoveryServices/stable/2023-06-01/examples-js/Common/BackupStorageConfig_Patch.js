@@ -24,7 +24,7 @@ async function updateVaultStorageConfiguration() {
   const result = await client.backupResourceStorageConfigsNonCRR.patch(
     vaultName,
     resourceGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

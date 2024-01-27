@@ -18,7 +18,7 @@ async function fetchTieringCostOperationResult() {
   const result = await client.getTieringCostOperationResult.get(
     resourceGroupName,
     vaultName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

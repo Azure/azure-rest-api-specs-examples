@@ -25,7 +25,7 @@ async function deleteProtectionFromAzureVirtualMachine() {
     resourceGroupName,
     fabricName,
     containerName,
-    protectedItemName
+    protectedItemName,
   );
   console.log(result);
 }

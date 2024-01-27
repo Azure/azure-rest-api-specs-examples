@@ -49,7 +49,7 @@ async function restoreDisksWithIaasVMRestoreRequestWithIdentityBasedRestoreDetai
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

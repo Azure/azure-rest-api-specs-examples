@@ -20,7 +20,7 @@ async function listBackupProtectionContainers() {
   for await (let item of client.backupProtectionContainers.list(
     vaultName,
     resourceGroupName,
-    options
+    options,
   )) {
     resArray.push(item);
   }

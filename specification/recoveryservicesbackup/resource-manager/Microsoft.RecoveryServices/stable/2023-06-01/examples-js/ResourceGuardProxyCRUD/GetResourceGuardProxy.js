@@ -19,7 +19,7 @@ async function getResourceGuardProxy() {
   const result = await client.resourceGuardProxy.get(
     vaultName,
     resourceGroupName,
-    resourceGuardProxyName
+    resourceGuardProxyName,
   );
   console.log(result);
 }

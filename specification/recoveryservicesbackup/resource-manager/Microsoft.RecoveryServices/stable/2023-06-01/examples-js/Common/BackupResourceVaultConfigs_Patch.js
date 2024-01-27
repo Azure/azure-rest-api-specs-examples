@@ -20,7 +20,7 @@ async function updateVaultSecurityConfig() {
   const result = await client.backupResourceVaultConfigs.update(
     vaultName,
     resourceGroupName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

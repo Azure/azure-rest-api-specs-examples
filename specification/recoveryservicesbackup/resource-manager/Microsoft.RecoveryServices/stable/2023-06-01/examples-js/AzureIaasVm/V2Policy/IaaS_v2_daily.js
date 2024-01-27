@@ -67,7 +67,7 @@ async function createOrUpdateEnhancedAzureVMProtectionPolicyWithDailyBackup() {
     vaultName,
     resourceGroupName,
     policyName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

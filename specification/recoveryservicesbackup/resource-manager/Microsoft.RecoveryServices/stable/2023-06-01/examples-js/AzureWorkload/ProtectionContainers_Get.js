@@ -20,7 +20,7 @@ async function getProtectionContainerDetails() {
     vaultName,
     resourceGroupName,
     fabricName,
-    containerName
+    containerName,
   );
   console.log(result);
 }

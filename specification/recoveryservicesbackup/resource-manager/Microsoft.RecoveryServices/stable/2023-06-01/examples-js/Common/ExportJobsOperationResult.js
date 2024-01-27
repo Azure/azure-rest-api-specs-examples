@@ -20,7 +20,7 @@ async function exportJobsOperationResults() {
   const result = await client.exportJobsOperationResults.get(
     vaultName,
     resourceGroupName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

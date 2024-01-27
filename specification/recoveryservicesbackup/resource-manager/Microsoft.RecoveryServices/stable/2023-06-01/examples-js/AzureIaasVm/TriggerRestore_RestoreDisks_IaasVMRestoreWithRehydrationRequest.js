@@ -46,7 +46,7 @@ async function restoreDisksWithIaasVMRestoreWithRehydrationRequest() {
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

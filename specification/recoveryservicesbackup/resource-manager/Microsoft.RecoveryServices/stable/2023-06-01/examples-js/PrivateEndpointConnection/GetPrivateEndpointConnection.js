@@ -18,7 +18,7 @@ async function getPrivateEndpointConnection() {
   const result = await client.privateEndpointConnectionOperations.get(
     vaultName,
     resourceGroupName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

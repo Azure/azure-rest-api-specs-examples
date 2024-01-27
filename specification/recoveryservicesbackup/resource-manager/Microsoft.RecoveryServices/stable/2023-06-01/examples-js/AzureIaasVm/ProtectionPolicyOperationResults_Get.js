@@ -20,7 +20,7 @@ async function getProtectionPolicyOperationResults() {
     vaultName,
     resourceGroupName,
     policyName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

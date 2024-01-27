@@ -52,7 +52,7 @@ async function restoreDisksWithIaasVMRestoreRequest() {
     containerName,
     protectedItemName,
     recoveryPointId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

@@ -18,7 +18,7 @@ async function getOperationResultsOfValidateOperation() {
   const result = await client.validateOperationResults.get(
     vaultName,
     resourceGroupName,
-    operationId
+    operationId,
   );
   console.log(result);
 }

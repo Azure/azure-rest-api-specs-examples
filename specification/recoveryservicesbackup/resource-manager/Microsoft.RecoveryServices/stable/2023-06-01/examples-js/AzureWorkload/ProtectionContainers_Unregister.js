@@ -22,7 +22,7 @@ async function unregisterProtectionContainer() {
     vaultName,
     resourceGroupName,
     fabricName,
-    containerName
+    containerName,
   );
   console.log(result);
 }

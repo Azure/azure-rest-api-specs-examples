@@ -20,7 +20,7 @@ async function deleteProtectionIntentFromItem() {
     vaultName,
     resourceGroupName,
     fabricName,
-    intentObjectName
+    intentObjectName,
   );
   console.log(result);
 }

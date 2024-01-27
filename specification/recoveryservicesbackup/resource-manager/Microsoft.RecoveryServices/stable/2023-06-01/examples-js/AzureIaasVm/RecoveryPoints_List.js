@@ -24,7 +24,7 @@ async function getProtectedAzureVMRecoveryPoints() {
     resourceGroupName,
     fabricName,
     containerName,
-    protectedItemName
+    protectedItemName,
   )) {
     resArray.push(item);
   }

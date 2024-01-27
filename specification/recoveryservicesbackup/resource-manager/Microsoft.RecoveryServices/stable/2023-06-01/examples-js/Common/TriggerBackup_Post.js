@@ -29,7 +29,7 @@ async function triggerBackup() {
     fabricName,
     containerName,
     protectedItemName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

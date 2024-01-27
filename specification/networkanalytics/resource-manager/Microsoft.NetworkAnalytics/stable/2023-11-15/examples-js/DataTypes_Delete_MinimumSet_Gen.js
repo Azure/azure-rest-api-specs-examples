@@ -19,7 +19,7 @@ async function dataTypesDeleteMaximumSetGenGeneratedByMinimumSetRuleMinimumSetGe
   const result = await client.dataTypes.beginDeleteAndWait(
     resourceGroupName,
     dataProductName,
-    dataTypeName
+    dataTypeName,
   );
   console.log(result);
 }

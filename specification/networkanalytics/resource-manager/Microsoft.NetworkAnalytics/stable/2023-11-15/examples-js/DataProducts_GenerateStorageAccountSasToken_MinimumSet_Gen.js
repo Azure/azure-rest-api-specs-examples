@@ -23,7 +23,7 @@ async function dataProductsGenerateStorageAccountSasTokenMaximumSetGenGeneratedB
   const result = await client.dataProducts.generateStorageAccountSasToken(
     resourceGroupName,
     dataProductName,
-    body
+    body,
   );
   console.log(result);
 }

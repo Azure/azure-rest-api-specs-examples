@@ -65,7 +65,7 @@ async function dataProductsCreateMaximumSetGen() {
   const result = await client.dataProducts.beginCreateAndWait(
     resourceGroupName,
     dataProductName,
-    resource
+    resource,
   );
   console.log(result);
 }

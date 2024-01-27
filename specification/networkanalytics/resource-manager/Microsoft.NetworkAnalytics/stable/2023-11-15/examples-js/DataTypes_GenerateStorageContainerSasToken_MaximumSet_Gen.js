@@ -25,7 +25,7 @@ async function dataTypesGenerateStorageContainerSasTokenMaximumSetGen() {
     resourceGroupName,
     dataProductName,
     dataTypeName,
-    body
+    body,
   );
   console.log(result);
 }

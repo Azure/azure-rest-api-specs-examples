@@ -19,7 +19,7 @@ async function dataTypesDeleteMaximumSetGen() {
   const result = await client.dataTypes.beginDeleteAndWait(
     resourceGroupName,
     dataProductName,
-    dataTypeName
+    dataTypeName,
   );
   console.log(result);
 }

@@ -19,7 +19,7 @@ async function dataProductsListRolesAssignmentsMaximumSetGenGeneratedByMinimumSe
   const result = await client.dataProducts.listRolesAssignments(
     resourceGroupName,
     dataProductName,
-    body
+    body,
   );
   console.log(result);
 }

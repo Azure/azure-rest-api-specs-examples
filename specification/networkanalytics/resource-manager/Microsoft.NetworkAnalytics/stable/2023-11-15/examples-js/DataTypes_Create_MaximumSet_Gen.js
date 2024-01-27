@@ -29,7 +29,7 @@ async function dataTypesCreateMaximumSetGen() {
     resourceGroupName,
     dataProductName,
     dataTypeName,
-    resource
+    resource,
   );
   console.log(result);
 }

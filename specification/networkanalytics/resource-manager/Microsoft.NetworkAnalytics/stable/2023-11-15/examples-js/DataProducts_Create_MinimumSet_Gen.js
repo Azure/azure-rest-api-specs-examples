@@ -27,7 +27,7 @@ async function dataProductsCreateMaximumSetGenGeneratedByMinimumSetRuleMinimumSe
   const result = await client.dataProducts.beginCreateAndWait(
     resourceGroupName,
     dataProductName,
-    resource
+    resource,
   );
   console.log(result);
 }

@@ -28,7 +28,7 @@ async function dataTypesUpdateMaximumSetGen() {
     resourceGroupName,
     dataProductName,
     dataTypeName,
-    properties
+    properties,
   );
   console.log(result);
 }

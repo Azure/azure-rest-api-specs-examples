@@ -21,7 +21,7 @@ async function dataTypesUpdateMaximumSetGenGeneratedByMinimumSetRuleMinimumSetGe
     resourceGroupName,
     dataProductName,
     dataTypeName,
-    properties
+    properties,
   );
   console.log(result);
 }

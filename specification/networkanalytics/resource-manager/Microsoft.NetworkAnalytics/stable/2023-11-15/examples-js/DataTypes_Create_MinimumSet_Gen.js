@@ -21,7 +21,7 @@ async function dataTypesCreateMaximumSetGenGeneratedByMinimumSetRuleMinimumSetGe
     resourceGroupName,
     dataProductName,
     dataTypeName,
-    resource
+    resource,
   );
   console.log(result);
 }

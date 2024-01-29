@@ -3949,3 +3949,4 @@ id,name,language,tag,package,version,date_epoch,date
 3948,azure-mgmt-datafactory@5.0.0,python,azure-mgmt-datafactory_5.0.0,azure-mgmt-datafactory,5.0.0,1706241080,01/26/2024
 3949,"Azure.ResourceManager,1.10.1",dotnet,Azure.ResourceManager_1.10.1,Azure.ResourceManager,1.10.1,1706286044,01/26/2024
 3950,"Azure.ResourceManager.Compute,1.4.0-beta.1",dotnet,Azure.ResourceManager.Compute_1.4.0-beta.1,Azure.ResourceManager.Compute,1.4.0-beta.1,1706278582,01/26/2024
+3951,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.26,java,azure-resourcemanager-datafactory_1.0.0-beta.26,azure-resourcemanager-datafactory,1.0.0-beta.26,1706501387,01/29/2024

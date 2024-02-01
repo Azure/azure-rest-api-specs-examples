@@ -3953,3 +3953,4 @@ id,name,language,tag,package,version,date_epoch,date
 3952,"Azure.ResourceManager.AppConfiguration,1.2.0",dotnet,Azure.ResourceManager.AppConfiguration_1.2.0,Azure.ResourceManager.AppConfiguration,1.2.0,1706683967,01/31/2024
 3953,"Azure.ResourceManager.HybridContainerService,1.0.0",dotnet,Azure.ResourceManager.HybridContainerService_1.0.0,Azure.ResourceManager.HybridContainerService,1.0.0,1706678945,01/31/2024
 3954,azure-mgmt-springappdiscovery@1.0.0b1,python,azure-mgmt-springappdiscovery_1.0.0b1,azure-mgmt-springappdiscovery,1.0.0b1,1706687009,01/31/2024
+3955,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/springappdiscovery/armspringappdiscovery@v0.1.0,go,sdk/resourcemanager/springappdiscovery/armspringappdiscovery/v0.1.0,sdk/resourcemanager/springappdiscovery/armspringappdiscovery,v0.1.0,1706758780,02/01/2024

@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this ManagedServerSecurityAlertPolicyResource created on azure
+// for more information of creating ManagedServerSecurityAlertPolicyResource, please refer to the document of ManagedServerSecurityAlertPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securityalert-4799";
 string managedInstanceName = "securityalert-6440";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this ManagedServerSecurityAlertPolicyResource
-ManagedServerSecurityAlertPolicyCollection collection = managedInstance.GetManagedServerSecurityAlertPolicies();
+SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
+ResourceIdentifier managedServerSecurityAlertPolicyResourceId = ManagedServerSecurityAlertPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, securityAlertPolicyName);
+ManagedServerSecurityAlertPolicyResource managedServerSecurityAlertPolicy = client.GetManagedServerSecurityAlertPolicyResource(managedServerSecurityAlertPolicyResourceId);
 
 // invoke the operation
-SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
 ManagedServerSecurityAlertPolicyData data = new ManagedServerSecurityAlertPolicyData()
 {
     State = SecurityAlertsPolicyState.Enabled,
 };
-ArmOperation<ManagedServerSecurityAlertPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityAlertPolicyName, data);
+ArmOperation<ManagedServerSecurityAlertPolicyResource> lro = await managedServerSecurityAlertPolicy.UpdateAsync(WaitUntil.Completed, data);
 ManagedServerSecurityAlertPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

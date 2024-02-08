@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobCredentialResource created on azure
-// for more information of creating SqlServerJobCredentialResource, please refer to the document of SqlServerJobCredentialResource
+// this example assumes you already have this SqlServerJobAgentResource created on azure
+// for more information of creating SqlServerJobAgentResource, please refer to the document of SqlServerJobAgentResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
 string jobAgentName = "agent1";
-string credentialName = "cred1";
-ResourceIdentifier sqlServerJobCredentialResourceId = SqlServerJobCredentialResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, credentialName);
-SqlServerJobCredentialResource sqlServerJobCredential = client.GetSqlServerJobCredentialResource(sqlServerJobCredentialResourceId);
+ResourceIdentifier sqlServerJobAgentResourceId = SqlServerJobAgentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName);
+SqlServerJobAgentResource sqlServerJobAgent = client.GetSqlServerJobAgentResource(sqlServerJobAgentResourceId);
+
+// get the collection of this SqlServerJobCredentialResource
+SqlServerJobCredentialCollection collection = sqlServerJobAgent.GetSqlServerJobCredentials();
 
 // invoke the operation
+string credentialName = "cred1";
 SqlServerJobCredentialData data = new SqlServerJobCredentialData()
 {
     Username = "myuser",
     Password = "<password>",
 };
-ArmOperation<SqlServerJobCredentialResource> lro = await sqlServerJobCredential.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SqlServerJobCredentialResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, credentialName, data);
 SqlServerJobCredentialResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

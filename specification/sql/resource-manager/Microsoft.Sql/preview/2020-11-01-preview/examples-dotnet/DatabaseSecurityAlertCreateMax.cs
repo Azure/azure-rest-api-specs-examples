@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseSecurityAlertPolicyResource created on azure
-// for more information of creating SqlDatabaseSecurityAlertPolicyResource, please refer to the document of SqlDatabaseSecurityAlertPolicyResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securityalert-4799";
 string serverName = "securityalert-6440";
 string databaseName = "testdb";
-SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
-ResourceIdentifier sqlDatabaseSecurityAlertPolicyResourceId = SqlDatabaseSecurityAlertPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, securityAlertPolicyName);
-SqlDatabaseSecurityAlertPolicyResource sqlDatabaseSecurityAlertPolicy = client.GetSqlDatabaseSecurityAlertPolicyResource(sqlDatabaseSecurityAlertPolicyResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this SqlDatabaseSecurityAlertPolicyResource
+SqlDatabaseSecurityAlertPolicyCollection collection = sqlDatabase.GetSqlDatabaseSecurityAlertPolicies();
 
 // invoke the operation
+SqlSecurityAlertPolicyName securityAlertPolicyName = SqlSecurityAlertPolicyName.Default;
 SqlDatabaseSecurityAlertPolicyData data = new SqlDatabaseSecurityAlertPolicyData()
 {
     State = SecurityAlertsPolicyState.Enabled,
@@ -42,7 +45,7 @@ SqlDatabaseSecurityAlertPolicyData data = new SqlDatabaseSecurityAlertPolicyData
     StorageAccountAccessKey = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",
     RetentionDays = 6,
 };
-ArmOperation<SqlDatabaseSecurityAlertPolicyResource> lro = await sqlDatabaseSecurityAlertPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SqlDatabaseSecurityAlertPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityAlertPolicyName, data);
 SqlDatabaseSecurityAlertPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

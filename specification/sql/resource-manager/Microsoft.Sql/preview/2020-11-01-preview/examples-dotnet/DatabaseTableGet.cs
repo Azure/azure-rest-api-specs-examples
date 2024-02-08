@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,33 +13,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseSchemaResource created on azure
-// for more information of creating SqlDatabaseSchemaResource, please refer to the document of SqlDatabaseSchemaResource
+// this example assumes you already have this SqlDatabaseTableResource created on azure
+// for more information of creating SqlDatabaseTableResource, please refer to the document of SqlDatabaseTableResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string serverName = "serverName";
 string databaseName = "myDatabase";
 string schemaName = "dbo";
-ResourceIdentifier sqlDatabaseSchemaResourceId = SqlDatabaseSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName);
-SqlDatabaseSchemaResource sqlDatabaseSchema = client.GetSqlDatabaseSchemaResource(sqlDatabaseSchemaResourceId);
-
-// get the collection of this SqlDatabaseTableResource
-SqlDatabaseTableCollection collection = sqlDatabaseSchema.GetSqlDatabaseTables();
+string tableName = "table1";
+ResourceIdentifier sqlDatabaseTableResourceId = SqlDatabaseTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName, tableName);
+SqlDatabaseTableResource sqlDatabaseTable = client.GetSqlDatabaseTableResource(sqlDatabaseTableResourceId);
 
 // invoke the operation
-string tableName = "table1";
-NullableResponse<SqlDatabaseTableResource> response = await collection.GetIfExistsAsync(tableName);
-SqlDatabaseTableResource result = response.HasValue ? response.Value : null;
+SqlDatabaseTableResource result = await sqlDatabaseTable.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DatabaseTableData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DatabaseTableData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

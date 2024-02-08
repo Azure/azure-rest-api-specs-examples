@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobAgentResource created on azure
-// for more information of creating SqlServerJobAgentResource, please refer to the document of SqlServerJobAgentResource
+// this example assumes you already have this SqlServerJobTargetGroupResource created on azure
+// for more information of creating SqlServerJobTargetGroupResource, please refer to the document of SqlServerJobTargetGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
 string jobAgentName = "agent1";
-ResourceIdentifier sqlServerJobAgentResourceId = SqlServerJobAgentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName);
-SqlServerJobAgentResource sqlServerJobAgent = client.GetSqlServerJobAgentResource(sqlServerJobAgentResourceId);
-
-// get the collection of this SqlServerJobTargetGroupResource
-SqlServerJobTargetGroupCollection collection = sqlServerJobAgent.GetSqlServerJobTargetGroups();
+string targetGroupName = "targetGroup1";
+ResourceIdentifier sqlServerJobTargetGroupResourceId = SqlServerJobTargetGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, targetGroupName);
+SqlServerJobTargetGroupResource sqlServerJobTargetGroup = client.GetSqlServerJobTargetGroupResource(sqlServerJobTargetGroupResourceId);
 
 // invoke the operation
-string targetGroupName = "targetGroup1";
 SqlServerJobTargetGroupData data = new SqlServerJobTargetGroupData()
 {
     Members =
@@ -58,7 +55,7 @@ SqlServerJobTargetGroupData data = new SqlServerJobTargetGroupData()
     }
     },
 };
-ArmOperation<SqlServerJobTargetGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, targetGroupName, data);
+ArmOperation<SqlServerJobTargetGroupResource> lro = await sqlServerJobTargetGroup.UpdateAsync(WaitUntil.Completed, data);
 SqlServerJobTargetGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceResource created on azure
-// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
+// this example assumes you already have this ManagedInstanceAzureADOnlyAuthenticationResource created on azure
+// for more information of creating ManagedInstanceAzureADOnlyAuthenticationResource, please refer to the document of ManagedInstanceAzureADOnlyAuthenticationResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string managedInstanceName = "managedInstance";
-ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
-ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
-
-// get the collection of this ManagedInstanceAzureADOnlyAuthenticationResource
-ManagedInstanceAzureADOnlyAuthenticationCollection collection = managedInstance.GetManagedInstanceAzureADOnlyAuthentications();
+AuthenticationName authenticationName = AuthenticationName.Default;
+ResourceIdentifier managedInstanceAzureADOnlyAuthenticationResourceId = ManagedInstanceAzureADOnlyAuthenticationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, authenticationName);
+ManagedInstanceAzureADOnlyAuthenticationResource managedInstanceAzureADOnlyAuthentication = client.GetManagedInstanceAzureADOnlyAuthenticationResource(managedInstanceAzureADOnlyAuthenticationResourceId);
 
 // invoke the operation
-AuthenticationName authenticationName = AuthenticationName.Default;
-NullableResponse<ManagedInstanceAzureADOnlyAuthenticationResource> response = await collection.GetIfExistsAsync(authenticationName);
-ManagedInstanceAzureADOnlyAuthenticationResource result = response.HasValue ? response.Value : null;
+ManagedInstanceAzureADOnlyAuthenticationResource result = await managedInstanceAzureADOnlyAuthentication.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ManagedInstanceAzureADOnlyAuthenticationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ManagedInstanceAzureADOnlyAuthenticationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

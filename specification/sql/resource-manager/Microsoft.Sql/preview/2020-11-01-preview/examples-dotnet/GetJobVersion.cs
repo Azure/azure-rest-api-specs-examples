@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager;
@@ -14,33 +13,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobResource created on azure
-// for more information of creating SqlServerJobResource, please refer to the document of SqlServerJobResource
+// this example assumes you already have this SqlServerJobVersionResource created on azure
+// for more information of creating SqlServerJobVersionResource, please refer to the document of SqlServerJobVersionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
 string jobAgentName = "agent1";
 string jobName = "job1";
-ResourceIdentifier sqlServerJobResourceId = SqlServerJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName);
-SqlServerJobResource sqlServerJob = client.GetSqlServerJobResource(sqlServerJobResourceId);
-
-// get the collection of this SqlServerJobVersionResource
-SqlServerJobVersionCollection collection = sqlServerJob.GetSqlServerJobVersions();
+int jobVersion = 1;
+ResourceIdentifier sqlServerJobVersionResourceId = SqlServerJobVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName, jobVersion);
+SqlServerJobVersionResource sqlServerJobVersion = client.GetSqlServerJobVersionResource(sqlServerJobVersionResourceId);
 
 // invoke the operation
-int jobVersion = 1;
-NullableResponse<SqlServerJobVersionResource> response = await collection.GetIfExistsAsync(jobVersion);
-SqlServerJobVersionResource result = response.HasValue ? response.Value : null;
+SqlServerJobVersionResource result = await sqlServerJobVersion.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SqlServerJobVersionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlServerJobVersionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

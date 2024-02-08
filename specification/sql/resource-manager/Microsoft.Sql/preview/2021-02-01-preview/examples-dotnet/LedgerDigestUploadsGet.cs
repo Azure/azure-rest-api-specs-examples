@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LedgerDigestUploadResource created on azure
-// for more information of creating LedgerDigestUploadResource, please refer to the document of LedgerDigestUploadResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "ledgertestrg";
 string serverName = "ledgertestserver";
 string databaseName = "testdb";
-LedgerDigestUploadsName ledgerDigestUploads = LedgerDigestUploadsName.Current;
-ResourceIdentifier ledgerDigestUploadResourceId = LedgerDigestUploadResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, ledgerDigestUploads);
-LedgerDigestUploadResource ledgerDigestUpload = client.GetLedgerDigestUploadResource(ledgerDigestUploadResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this LedgerDigestUploadResource
+LedgerDigestUploadCollection collection = sqlDatabase.GetLedgerDigestUploads();
 
 // invoke the operation
-LedgerDigestUploadResource result = await ledgerDigestUpload.GetAsync();
+LedgerDigestUploadsName ledgerDigestUploads = LedgerDigestUploadsName.Current;
+NullableResponse<LedgerDigestUploadResource> response = await collection.GetIfExistsAsync(ledgerDigestUploads);
+LedgerDigestUploadResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LedgerDigestUploadData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LedgerDigestUploadData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

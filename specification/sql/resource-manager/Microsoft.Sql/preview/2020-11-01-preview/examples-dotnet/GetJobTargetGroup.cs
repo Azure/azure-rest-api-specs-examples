@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobAgentResource created on azure
-// for more information of creating SqlServerJobAgentResource, please refer to the document of SqlServerJobAgentResource
+// this example assumes you already have this SqlServerJobTargetGroupResource created on azure
+// for more information of creating SqlServerJobTargetGroupResource, please refer to the document of SqlServerJobTargetGroupResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
 string jobAgentName = "agent1";
-ResourceIdentifier sqlServerJobAgentResourceId = SqlServerJobAgentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName);
-SqlServerJobAgentResource sqlServerJobAgent = client.GetSqlServerJobAgentResource(sqlServerJobAgentResourceId);
-
-// get the collection of this SqlServerJobTargetGroupResource
-SqlServerJobTargetGroupCollection collection = sqlServerJobAgent.GetSqlServerJobTargetGroups();
+string targetGroupName = "targetGroup1";
+ResourceIdentifier sqlServerJobTargetGroupResourceId = SqlServerJobTargetGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, targetGroupName);
+SqlServerJobTargetGroupResource sqlServerJobTargetGroup = client.GetSqlServerJobTargetGroupResource(sqlServerJobTargetGroupResourceId);
 
 // invoke the operation
-string targetGroupName = "targetGroup1";
-NullableResponse<SqlServerJobTargetGroupResource> response = await collection.GetIfExistsAsync(targetGroupName);
-SqlServerJobTargetGroupResource result = response.HasValue ? response.Value : null;
+SqlServerJobTargetGroupResource result = await sqlServerJobTargetGroup.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    SqlServerJobTargetGroupData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+SqlServerJobTargetGroupData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedDatabaseResource created on azure
-// for more information of creating ManagedDatabaseResource, please refer to the document of ManagedDatabaseResource
+// this example assumes you already have this ManagedInstanceLongTermRetentionPolicyResource created on azure
+// for more information of creating ManagedInstanceLongTermRetentionPolicyResource, please refer to the document of ManagedInstanceLongTermRetentionPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testResourceGroup";
 string managedInstanceName = "testInstance";
 string databaseName = "testDatabase";
-ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName);
-ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
-
-// get the collection of this ManagedInstanceLongTermRetentionPolicyResource
-ManagedInstanceLongTermRetentionPolicyCollection collection = managedDatabase.GetManagedInstanceLongTermRetentionPolicies();
+ManagedInstanceLongTermRetentionPolicyName policyName = ManagedInstanceLongTermRetentionPolicyName.Default;
+ResourceIdentifier managedInstanceLongTermRetentionPolicyResourceId = ManagedInstanceLongTermRetentionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, policyName);
+ManagedInstanceLongTermRetentionPolicyResource managedInstanceLongTermRetentionPolicy = client.GetManagedInstanceLongTermRetentionPolicyResource(managedInstanceLongTermRetentionPolicyResourceId);
 
 // invoke the operation
-ManagedInstanceLongTermRetentionPolicyName policyName = ManagedInstanceLongTermRetentionPolicyName.Default;
-NullableResponse<ManagedInstanceLongTermRetentionPolicyResource> response = await collection.GetIfExistsAsync(policyName);
-ManagedInstanceLongTermRetentionPolicyResource result = response.HasValue ? response.Value : null;
+ManagedInstanceLongTermRetentionPolicyResource result = await managedInstanceLongTermRetentionPolicy.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ManagedInstanceLongTermRetentionPolicyData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ManagedInstanceLongTermRetentionPolicyData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

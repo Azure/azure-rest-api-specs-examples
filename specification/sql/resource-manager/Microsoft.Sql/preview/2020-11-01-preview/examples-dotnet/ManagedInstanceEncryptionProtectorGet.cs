@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceEncryptionProtectorResource created on azure
-// for more information of creating ManagedInstanceEncryptionProtectorResource, please refer to the document of ManagedInstanceEncryptionProtectorResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-7398";
 string managedInstanceName = "sqlcrudtest-4645";
-EncryptionProtectorName encryptionProtectorName = EncryptionProtectorName.Current;
-ResourceIdentifier managedInstanceEncryptionProtectorResourceId = ManagedInstanceEncryptionProtectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, encryptionProtectorName);
-ManagedInstanceEncryptionProtectorResource managedInstanceEncryptionProtector = client.GetManagedInstanceEncryptionProtectorResource(managedInstanceEncryptionProtectorResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstanceEncryptionProtectorResource
+ManagedInstanceEncryptionProtectorCollection collection = managedInstance.GetManagedInstanceEncryptionProtectors();
 
 // invoke the operation
-ManagedInstanceEncryptionProtectorResource result = await managedInstanceEncryptionProtector.GetAsync();
+EncryptionProtectorName encryptionProtectorName = EncryptionProtectorName.Current;
+NullableResponse<ManagedInstanceEncryptionProtectorResource> response = await collection.GetIfExistsAsync(encryptionProtectorName);
+ManagedInstanceEncryptionProtectorResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagedInstanceEncryptionProtectorData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagedInstanceEncryptionProtectorData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

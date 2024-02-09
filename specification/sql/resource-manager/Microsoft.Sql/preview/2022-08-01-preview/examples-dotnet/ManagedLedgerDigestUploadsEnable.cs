@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedLedgerDigestUploadResource created on azure
-// for more information of creating ManagedLedgerDigestUploadResource, please refer to the document of ManagedLedgerDigestUploadResource
+// this example assumes you already have this ManagedDatabaseResource created on azure
+// for more information of creating ManagedDatabaseResource, please refer to the document of ManagedDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "ledgertestrg";
 string managedInstanceName = "ledgertestserver";
 string databaseName = "testdb";
-ManagedLedgerDigestUploadsName ledgerDigestUploads = ManagedLedgerDigestUploadsName.Current;
-ResourceIdentifier managedLedgerDigestUploadResourceId = ManagedLedgerDigestUploadResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName, ledgerDigestUploads);
-ManagedLedgerDigestUploadResource managedLedgerDigestUpload = client.GetManagedLedgerDigestUploadResource(managedLedgerDigestUploadResourceId);
+ResourceIdentifier managedDatabaseResourceId = ManagedDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, databaseName);
+ManagedDatabaseResource managedDatabase = client.GetManagedDatabaseResource(managedDatabaseResourceId);
+
+// get the collection of this ManagedLedgerDigestUploadResource
+ManagedLedgerDigestUploadCollection collection = managedDatabase.GetManagedLedgerDigestUploads();
 
 // invoke the operation
+ManagedLedgerDigestUploadsName ledgerDigestUploads = ManagedLedgerDigestUploadsName.Current;
 ManagedLedgerDigestUploadData data = new ManagedLedgerDigestUploadData()
 {
     DigestStorageEndpoint = "https://MyAccount.blob.core.windows.net",
 };
-ArmOperation<ManagedLedgerDigestUploadResource> lro = await managedLedgerDigestUpload.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedLedgerDigestUploadResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ledgerDigestUploads, data);
 ManagedLedgerDigestUploadResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

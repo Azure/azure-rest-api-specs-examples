@@ -15,22 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagedInstanceEncryptionProtectorResource created on azure
-// for more information of creating ManagedInstanceEncryptionProtectorResource, please refer to the document of ManagedInstanceEncryptionProtectorResource
+// this example assumes you already have this ManagedInstanceResource created on azure
+// for more information of creating ManagedInstanceResource, please refer to the document of ManagedInstanceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-7398";
 string managedInstanceName = "sqlcrudtest-4645";
-EncryptionProtectorName encryptionProtectorName = EncryptionProtectorName.Current;
-ResourceIdentifier managedInstanceEncryptionProtectorResourceId = ManagedInstanceEncryptionProtectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName, encryptionProtectorName);
-ManagedInstanceEncryptionProtectorResource managedInstanceEncryptionProtector = client.GetManagedInstanceEncryptionProtectorResource(managedInstanceEncryptionProtectorResourceId);
+ResourceIdentifier managedInstanceResourceId = ManagedInstanceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, managedInstanceName);
+ManagedInstanceResource managedInstance = client.GetManagedInstanceResource(managedInstanceResourceId);
+
+// get the collection of this ManagedInstanceEncryptionProtectorResource
+ManagedInstanceEncryptionProtectorCollection collection = managedInstance.GetManagedInstanceEncryptionProtectors();
 
 // invoke the operation
+EncryptionProtectorName encryptionProtectorName = EncryptionProtectorName.Current;
 ManagedInstanceEncryptionProtectorData data = new ManagedInstanceEncryptionProtectorData()
 {
     ServerKeyName = "ServiceManaged",
     ServerKeyType = SqlServerKeyType.ServiceManaged,
 };
-ArmOperation<ManagedInstanceEncryptionProtectorResource> lro = await managedInstanceEncryptionProtector.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ManagedInstanceEncryptionProtectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, encryptionProtectorName, data);
 ManagedInstanceEncryptionProtectorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

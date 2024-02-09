@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this ExtendedServerBlobAuditingPolicyResource created on azure
+// for more information of creating ExtendedServerBlobAuditingPolicyResource, please refer to the document of ExtendedServerBlobAuditingPolicyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "blobauditingtest-4799";
 string serverName = "blobauditingtest-6440";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this ExtendedServerBlobAuditingPolicyResource
-ExtendedServerBlobAuditingPolicyCollection collection = sqlServer.GetExtendedServerBlobAuditingPolicies();
+BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
+ResourceIdentifier extendedServerBlobAuditingPolicyResourceId = ExtendedServerBlobAuditingPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, blobAuditingPolicyName);
+ExtendedServerBlobAuditingPolicyResource extendedServerBlobAuditingPolicy = client.GetExtendedServerBlobAuditingPolicyResource(extendedServerBlobAuditingPolicyResourceId);
 
 // invoke the operation
-BlobAuditingPolicyName blobAuditingPolicyName = BlobAuditingPolicyName.Default;
 ExtendedServerBlobAuditingPolicyData data = new ExtendedServerBlobAuditingPolicyData()
 {
     PredicateExpression = "object_name = 'SensitiveData'",
@@ -44,7 +41,7 @@ ExtendedServerBlobAuditingPolicyData data = new ExtendedServerBlobAuditingPolicy
     StorageAccountAccessKey = "sdlfkjabc+sdlfkjsdlkfsjdfLDKFTERLKFDFKLjsdfksjdflsdkfD2342309432849328476458/3RSD==",
     StorageAccountSubscriptionId = Guid.Parse("00000000-1234-0000-5678-000000000000"),
 };
-ArmOperation<ExtendedServerBlobAuditingPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, blobAuditingPolicyName, data);
+ArmOperation<ExtendedServerBlobAuditingPolicyResource> lro = await extendedServerBlobAuditingPolicy.UpdateAsync(WaitUntil.Completed, data);
 ExtendedServerBlobAuditingPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

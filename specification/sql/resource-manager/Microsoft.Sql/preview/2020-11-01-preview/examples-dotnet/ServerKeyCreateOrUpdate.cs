@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this SqlServerKeyResource created on azure
+// for more information of creating SqlServerKeyResource, please refer to the document of SqlServerKeyResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-7398";
 string serverName = "sqlcrudtest-4645";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this SqlServerKeyResource
-SqlServerKeyCollection collection = sqlServer.GetSqlServerKeys();
+string keyName = "someVault_someKey_01234567890123456789012345678901";
+ResourceIdentifier sqlServerKeyResourceId = SqlServerKeyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, keyName);
+SqlServerKeyResource sqlServerKey = client.GetSqlServerKeyResource(sqlServerKeyResourceId);
 
 // invoke the operation
-string keyName = "someVault_someKey_01234567890123456789012345678901";
 SqlServerKeyData data = new SqlServerKeyData()
 {
     ServerKeyType = SqlServerKeyType.AzureKeyVault,
     Uri = new Uri("https://someVault.vault.azure.net/keys/someKey/01234567890123456789012345678901"),
 };
-ArmOperation<SqlServerKeyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, keyName, data);
+ArmOperation<SqlServerKeyResource> lro = await sqlServerKey.UpdateAsync(WaitUntil.Completed, data);
 SqlServerKeyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

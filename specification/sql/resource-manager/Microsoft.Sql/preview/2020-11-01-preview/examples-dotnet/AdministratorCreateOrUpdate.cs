@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this SqlServerAzureADAdministratorResource created on azure
+// for more information of creating SqlServerAzureADAdministratorResource, please refer to the document of SqlServerAzureADAdministratorResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-4799";
 string serverName = "sqlcrudtest-6440";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this SqlServerAzureADAdministratorResource
-SqlServerAzureADAdministratorCollection collection = sqlServer.GetSqlServerAzureADAdministrators();
+SqlAdministratorName administratorName = SqlAdministratorName.ActiveDirectory;
+ResourceIdentifier sqlServerAzureADAdministratorResourceId = SqlServerAzureADAdministratorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, administratorName);
+SqlServerAzureADAdministratorResource sqlServerAzureADAdministrator = client.GetSqlServerAzureADAdministratorResource(sqlServerAzureADAdministratorResourceId);
 
 // invoke the operation
-SqlAdministratorName administratorName = SqlAdministratorName.ActiveDirectory;
 SqlServerAzureADAdministratorData data = new SqlServerAzureADAdministratorData()
 {
     AdministratorType = SqlAdministratorType.ActiveDirectory,
@@ -35,7 +32,7 @@ SqlServerAzureADAdministratorData data = new SqlServerAzureADAdministratorData()
     Sid = Guid.Parse("c6b82b90-a647-49cb-8a62-0d2d3cb7ac7c"),
     TenantId = Guid.Parse("c6b82b90-a647-49cb-8a62-0d2d3cb7ac7c"),
 };
-ArmOperation<SqlServerAzureADAdministratorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, administratorName, data);
+ArmOperation<SqlServerAzureADAdministratorResource> lro = await sqlServerAzureADAdministrator.UpdateAsync(WaitUntil.Completed, data);
 SqlServerAzureADAdministratorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

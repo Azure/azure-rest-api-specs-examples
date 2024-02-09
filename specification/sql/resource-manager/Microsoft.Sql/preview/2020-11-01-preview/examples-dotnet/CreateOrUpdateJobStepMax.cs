@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerJobResource created on azure
-// for more information of creating SqlServerJobResource, please refer to the document of SqlServerJobResource
+// this example assumes you already have this SqlServerJobStepResource created on azure
+// for more information of creating SqlServerJobStepResource, please refer to the document of SqlServerJobStepResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "group1";
 string serverName = "server1";
 string jobAgentName = "agent1";
 string jobName = "job1";
-ResourceIdentifier sqlServerJobResourceId = SqlServerJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName);
-SqlServerJobResource sqlServerJob = client.GetSqlServerJobResource(sqlServerJobResourceId);
-
-// get the collection of this SqlServerJobStepResource
-SqlServerJobStepCollection collection = sqlServerJob.GetSqlServerJobSteps();
+string stepName = "step1";
+ResourceIdentifier sqlServerJobStepResourceId = SqlServerJobStepResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, jobAgentName, jobName, stepName);
+SqlServerJobStepResource sqlServerJobStep = client.GetSqlServerJobStepResource(sqlServerJobStepResourceId);
 
 // invoke the operation
-string stepName = "step1";
 SqlServerJobStepData data = new SqlServerJobStepData()
 {
     StepId = 1,
@@ -56,7 +53,7 @@ SqlServerJobStepData data = new SqlServerJobStepData()
         RetryIntervalBackoffMultiplier = 3,
     },
 };
-ArmOperation<SqlServerJobStepResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, stepName, data);
+ArmOperation<SqlServerJobStepResource> lro = await sqlServerJobStep.UpdateAsync(WaitUntil.Completed, data);
 SqlServerJobStepResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

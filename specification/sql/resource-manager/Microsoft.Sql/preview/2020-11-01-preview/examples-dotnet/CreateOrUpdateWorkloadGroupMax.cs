@@ -14,17 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkloadGroupResource created on azure
-// for more information of creating WorkloadGroupResource, please refer to the document of WorkloadGroupResource
+// this example assumes you already have this SqlDatabaseResource created on azure
+// for more information of creating SqlDatabaseResource, please refer to the document of SqlDatabaseResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default-SQL-SouthEastAsia";
 string serverName = "testsvr";
 string databaseName = "testdb";
-string workloadGroupName = "smallrc";
-ResourceIdentifier workloadGroupResourceId = WorkloadGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, workloadGroupName);
-WorkloadGroupResource workloadGroup = client.GetWorkloadGroupResource(workloadGroupResourceId);
+ResourceIdentifier sqlDatabaseResourceId = SqlDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
+SqlDatabaseResource sqlDatabase = client.GetSqlDatabaseResource(sqlDatabaseResourceId);
+
+// get the collection of this WorkloadGroupResource
+WorkloadGroupCollection collection = sqlDatabase.GetWorkloadGroups();
 
 // invoke the operation
+string workloadGroupName = "smallrc";
 WorkloadGroupData data = new WorkloadGroupData()
 {
     MinResourcePercent = 0,
@@ -34,7 +37,7 @@ WorkloadGroupData data = new WorkloadGroupData()
     Importance = "normal",
     QueryExecutionTimeout = 0,
 };
-ArmOperation<WorkloadGroupResource> lro = await workloadGroup.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<WorkloadGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workloadGroupName, data);
 WorkloadGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

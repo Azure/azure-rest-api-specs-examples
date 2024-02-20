@@ -1,0 +1,21 @@
+const { SpringAppDiscoveryManagementClient } = require("@azure/arm-springappdiscovery");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to List springbootsites resource by resourceGroup.
+ *
+ * @summary List springbootsites resource by resourceGroup.
+ * x-ms-original-file: specification/offazurespringboot/resource-manager/Microsoft.OffAzureSpringBoot/preview/2023-01-01-preview/examples/springbootsites_ListByResourceGroup_MinimumSet_Gen.json
+ */
+async function springbootsitesListByResourceGroupMinimumSetGen() {
+  const subscriptionId =
+    process.env["SPRINGAPPDISCOVERY_SUBSCRIPTION_ID"] || "chshxczdscjpcyvyethat";
+  const resourceGroupName = process.env["SPRINGAPPDISCOVERY_RESOURCE_GROUP"] || "rgspringbootsites";
+  const credential = new DefaultAzureCredential();
+  const client = new SpringAppDiscoveryManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.springbootsites.listByResourceGroup(resourceGroupName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

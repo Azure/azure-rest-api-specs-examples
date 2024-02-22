@@ -3963,3 +3963,4 @@ id,name,language,tag,package,version,date_epoch,date
 3962,@azure/arm-springappdiscovery@1.0.0-beta.1,js,@azure/arm-springappdiscovery_1.0.0-beta.1,@azure/arm-springappdiscovery,1.0.0-beta.1,1708337552,02/19/2024
 3963,azure-mgmt-containerservice@29.1.0,python,azure-mgmt-containerservice_29.1.0,azure-mgmt-containerservice,29.1.0,1708408676,02/20/2024
 3964,"Azure.ResourceManager.RedisEnterprise,1.1.0",dotnet,Azure.ResourceManager.RedisEnterprise_1.1.0,Azure.ResourceManager.RedisEnterprise,1.1.0,1708439518,02/20/2024
+3965,com.azure.resourcemanager:azure-resourcemanager-apicenter:1.0.0,java,azure-resourcemanager-apicenter_1.0.0,azure-resourcemanager-apicenter,1.0.0,1708589393,02/22/2024

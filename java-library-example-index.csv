@@ -3967,3 +3967,4 @@ id,name,language,tag,package,version,date_epoch,date
 3966,com.azure.resourcemanager:azure-resourcemanager-recoveryservicessiterecovery:1.1.0,java,azure-resourcemanager-recoveryservicessiterecovery_1.1.0,azure-resourcemanager-recoveryservicessiterecovery,1.1.0,1708583123,02/22/2024
 3967,com.azure.resourcemanager:azure-resourcemanager-astro:1.0.0-beta.1,java,azure-resourcemanager-astro_1.0.0-beta.1,azure-resourcemanager-astro,1.0.0-beta.1,1708582412,02/22/2024
 3968,"Azure.ResourceManager.Communication,1.2.0",dotnet,Azure.ResourceManager.Communication_1.2.0,Azure.ResourceManager.Communication,1.2.0,1708596701,02/22/2024
+3969,azure-mgmt-apicenter@1.0.0,python,azure-mgmt-apicenter_1.0.0,azure-mgmt-apicenter,1.0.0,1708592998,02/22/2024

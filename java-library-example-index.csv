@@ -3973,3 +3973,4 @@ id,name,language,tag,package,version,date_epoch,date
 3972,azure-mgmt-recoveryservicessiterecovery@1.2.0,python,azure-mgmt-recoveryservicessiterecovery_1.2.0,azure-mgmt-recoveryservicessiterecovery,1.2.0,1708579149,02/22/2024
 3973,azure-mgmt-servicefabricmanagedclusters@2.0.0b6,python,azure-mgmt-servicefabricmanagedclusters_2.0.0b6,azure-mgmt-servicefabricmanagedclusters,2.0.0b6,1708579098,02/22/2024
 3974,azure-mgmt-network@25.3.0,python,azure-mgmt-network_25.3.0,azure-mgmt-network,25.3.0,1708579080,02/22/2024
+3975,azure-mgmt-servicefabric@2.2.0b1,python,azure-mgmt-servicefabric_2.2.0b1,azure-mgmt-servicefabric,2.2.0b1,1708579054,02/22/2024

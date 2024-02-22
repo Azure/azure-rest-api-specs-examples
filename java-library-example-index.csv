@@ -3971,3 +3971,4 @@ id,name,language,tag,package,version,date_epoch,date
 3970,azure-mgmt-storagecache@1.6.0b1,python,azure-mgmt-storagecache_1.6.0b1,azure-mgmt-storagecache,1.6.0b1,1708581106,02/22/2024
 3971,azure-mgmt-astro@1.0.0b1,python,azure-mgmt-astro_1.0.0b1,azure-mgmt-astro,1.0.0b1,1708579159,02/22/2024
 3972,azure-mgmt-recoveryservicessiterecovery@1.2.0,python,azure-mgmt-recoveryservicessiterecovery_1.2.0,azure-mgmt-recoveryservicessiterecovery,1.2.0,1708579149,02/22/2024
+3973,azure-mgmt-servicefabricmanagedclusters@2.0.0b6,python,azure-mgmt-servicefabricmanagedclusters_2.0.0b6,azure-mgmt-servicefabricmanagedclusters,2.0.0b6,1708579098,02/22/2024

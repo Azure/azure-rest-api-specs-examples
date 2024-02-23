@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DedicatedHostResource created on azure
-// for more information of creating DedicatedHostResource, please refer to the document of DedicatedHostResource
+// this example assumes you already have this DedicatedHostGroupResource created on azure
+// for more information of creating DedicatedHostGroupResource, please refer to the document of DedicatedHostGroupResource
 string subscriptionId = "{subscriptionId}";
 string resourceGroupName = "myResourceGroup";
 string hostGroupName = "myDedicatedHostGroup";
-string hostName = "myHost";
-ResourceIdentifier dedicatedHostResourceId = DedicatedHostResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hostGroupName, hostName);
-DedicatedHostResource dedicatedHost = client.GetDedicatedHostResource(dedicatedHostResourceId);
+ResourceIdentifier dedicatedHostGroupResourceId = DedicatedHostGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, hostGroupName);
+DedicatedHostGroupResource dedicatedHostGroup = client.GetDedicatedHostGroupResource(dedicatedHostGroupResourceId);
+
+// get the collection of this DedicatedHostResource
+DedicatedHostCollection collection = dedicatedHostGroup.GetDedicatedHosts();
 
 // invoke the operation
+string hostName = "myHost";
 InstanceViewType? expand = InstanceViewType.InstanceView;
-DedicatedHostResource result = await dedicatedHost.GetAsync(expand: expand);
+NullableResponse<DedicatedHostResource> response = await collection.GetIfExistsAsync(hostName, expand: expand);
+DedicatedHostResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DedicatedHostData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DedicatedHostData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

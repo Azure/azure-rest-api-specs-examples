@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ComputePrivateEndpointConnectionResource created on azure
-// for more information of creating ComputePrivateEndpointConnectionResource, please refer to the document of ComputePrivateEndpointConnectionResource
+// this example assumes you already have this DiskAccessResource created on azure
+// for more information of creating DiskAccessResource, please refer to the document of DiskAccessResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string diskAccessName = "myDiskAccess";
-string privateEndpointConnectionName = "myPrivateEndpointConnection";
-ResourceIdentifier computePrivateEndpointConnectionResourceId = ComputePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, diskAccessName, privateEndpointConnectionName);
-ComputePrivateEndpointConnectionResource computePrivateEndpointConnection = client.GetComputePrivateEndpointConnectionResource(computePrivateEndpointConnectionResourceId);
+ResourceIdentifier diskAccessResourceId = DiskAccessResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, diskAccessName);
+DiskAccessResource diskAccess = client.GetDiskAccessResource(diskAccessResourceId);
+
+// get the collection of this ComputePrivateEndpointConnectionResource
+ComputePrivateEndpointConnectionCollection collection = diskAccess.GetComputePrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "myPrivateEndpointConnection";
 ComputePrivateEndpointConnectionData data = new ComputePrivateEndpointConnectionData()
 {
     ConnectionState = new ComputePrivateLinkServiceConnectionState()
@@ -33,7 +36,7 @@ ComputePrivateEndpointConnectionData data = new ComputePrivateEndpointConnection
         Description = "Approving myPrivateEndpointConnection",
     },
 };
-ArmOperation<ComputePrivateEndpointConnectionResource> lro = await computePrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ComputePrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 ComputePrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

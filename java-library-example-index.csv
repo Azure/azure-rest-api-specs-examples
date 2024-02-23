@@ -3976,3 +3976,4 @@ id,name,language,tag,package,version,date_epoch,date
 3975,azure-mgmt-servicefabric@2.2.0b1,python,azure-mgmt-servicefabric_2.2.0b1,azure-mgmt-servicefabric,2.2.0b1,1708579054,02/22/2024
 3976,"Azure.ResourceManager.RecoveryServicesSiteRecovery,1.2.0",dotnet,Azure.ResourceManager.RecoveryServicesSiteRecovery_1.2.0,Azure.ResourceManager.RecoveryServicesSiteRecovery,1.2.0,1708674714,02/23/2024
 3977,"Azure.ResourceManager.Compute,1.4.0",dotnet,Azure.ResourceManager.Compute_1.4.0,Azure.ResourceManager.Compute,1.4.0,1708664887,02/23/2024
+3978,"Azure.ResourceManager.ResourceMover,1.1.2-beta.1",dotnet,Azure.ResourceManager.ResourceMover_1.1.2-beta.1,Azure.ResourceManager.ResourceMover,1.1.2-beta.1,1708615836,02/22/2024

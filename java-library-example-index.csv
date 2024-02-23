@@ -3963,3 +3963,14 @@ id,name,language,tag,package,version,date_epoch,date
 3962,@azure/arm-springappdiscovery@1.0.0-beta.1,js,@azure/arm-springappdiscovery_1.0.0-beta.1,@azure/arm-springappdiscovery,1.0.0-beta.1,1708337552,02/19/2024
 3963,azure-mgmt-containerservice@29.1.0,python,azure-mgmt-containerservice_29.1.0,azure-mgmt-containerservice,29.1.0,1708408676,02/20/2024
 3964,"Azure.ResourceManager.RedisEnterprise,1.1.0",dotnet,Azure.ResourceManager.RedisEnterprise_1.1.0,Azure.ResourceManager.RedisEnterprise,1.1.0,1708439518,02/20/2024
+3965,com.azure.resourcemanager:azure-resourcemanager-apicenter:1.0.0,java,azure-resourcemanager-apicenter_1.0.0,azure-resourcemanager-apicenter,1.0.0,1708589393,02/22/2024
+3966,com.azure.resourcemanager:azure-resourcemanager-recoveryservicessiterecovery:1.1.0,java,azure-resourcemanager-recoveryservicessiterecovery_1.1.0,azure-resourcemanager-recoveryservicessiterecovery,1.1.0,1708583123,02/22/2024
+3967,com.azure.resourcemanager:azure-resourcemanager-astro:1.0.0-beta.1,java,azure-resourcemanager-astro_1.0.0-beta.1,azure-resourcemanager-astro,1.0.0-beta.1,1708582412,02/22/2024
+3968,"Azure.ResourceManager.Communication,1.2.0",dotnet,Azure.ResourceManager.Communication_1.2.0,Azure.ResourceManager.Communication,1.2.0,1708596701,02/22/2024
+3969,azure-mgmt-apicenter@1.0.0,python,azure-mgmt-apicenter_1.0.0,azure-mgmt-apicenter,1.0.0,1708592998,02/22/2024
+3970,azure-mgmt-storagecache@1.6.0b1,python,azure-mgmt-storagecache_1.6.0b1,azure-mgmt-storagecache,1.6.0b1,1708581106,02/22/2024
+3971,azure-mgmt-astro@1.0.0b1,python,azure-mgmt-astro_1.0.0b1,azure-mgmt-astro,1.0.0b1,1708579159,02/22/2024
+3972,azure-mgmt-recoveryservicessiterecovery@1.2.0,python,azure-mgmt-recoveryservicessiterecovery_1.2.0,azure-mgmt-recoveryservicessiterecovery,1.2.0,1708579149,02/22/2024
+3973,azure-mgmt-servicefabricmanagedclusters@2.0.0b6,python,azure-mgmt-servicefabricmanagedclusters_2.0.0b6,azure-mgmt-servicefabricmanagedclusters,2.0.0b6,1708579098,02/22/2024
+3974,azure-mgmt-network@25.3.0,python,azure-mgmt-network_25.3.0,azure-mgmt-network,25.3.0,1708579080,02/22/2024
+3975,azure-mgmt-servicefabric@2.2.0b1,python,azure-mgmt-servicefabric_2.2.0b1,azure-mgmt-servicefabric,2.2.0b1,1708579054,02/22/2024

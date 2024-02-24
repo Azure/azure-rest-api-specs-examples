@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RestorePointGroupResource created on azure
-// for more information of creating RestorePointGroupResource, please refer to the document of RestorePointGroupResource
+// this example assumes you already have this RestorePointResource created on azure
+// for more information of creating RestorePointResource, please refer to the document of RestorePointResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string restorePointGroupName = "rpcName";
-ResourceIdentifier restorePointGroupResourceId = RestorePointGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, restorePointGroupName);
-RestorePointGroupResource restorePointGroup = client.GetRestorePointGroupResource(restorePointGroupResourceId);
-
-// get the collection of this RestorePointResource
-RestorePointCollection collection = restorePointGroup.GetRestorePoints();
+string restorePointName = "rpName";
+ResourceIdentifier restorePointResourceId = RestorePointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, restorePointGroupName, restorePointName);
+RestorePointResource restorePoint = client.GetRestorePointResource(restorePointResourceId);
 
 // invoke the operation
-string restorePointName = "rpName";
 RestorePointData data = new RestorePointData()
 {
     SourceRestorePointId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/sourceRpcName/restorePoints/sourceRpName"),
 };
-ArmOperation<RestorePointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, restorePointName, data);
+ArmOperation<RestorePointResource> lro = await restorePoint.UpdateAsync(WaitUntil.Completed, data);
 RestorePointResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

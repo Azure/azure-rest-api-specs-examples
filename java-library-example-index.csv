@@ -3979,3 +3979,4 @@ id,name,language,tag,package,version,date_epoch,date
 3978,"Azure.ResourceManager.ResourceMover,1.1.2-beta.1",dotnet,Azure.ResourceManager.ResourceMover_1.1.2-beta.1,Azure.ResourceManager.ResourceMover,1.1.2-beta.1,1708615836,02/22/2024
 3979,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.0.0-beta.10,java,azure-resourcemanager-storagecache_1.0.0-beta.10,azure-resourcemanager-storagecache,1.0.0-beta.10,1709015784,02/27/2024
 3980,com.azure.resourcemanager:azure-resourcemanager-largeinstance:1.0.0-beta.1,java,azure-resourcemanager-largeinstance_1.0.0-beta.1,azure-resourcemanager-largeinstance,1.0.0-beta.1,1709006819,02/27/2024
+3981,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/largeinstance/armlargeinstance@v0.1.0,go,sdk/resourcemanager/largeinstance/armlargeinstance/v0.1.0,sdk/resourcemanager/largeinstance/armlargeinstance,v0.1.0,1709024730,02/27/2024

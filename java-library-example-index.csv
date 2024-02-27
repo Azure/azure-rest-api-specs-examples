@@ -3977,3 +3977,4 @@ id,name,language,tag,package,version,date_epoch,date
 3976,"Azure.ResourceManager.RecoveryServicesSiteRecovery,1.2.0",dotnet,Azure.ResourceManager.RecoveryServicesSiteRecovery_1.2.0,Azure.ResourceManager.RecoveryServicesSiteRecovery,1.2.0,1708674714,02/23/2024
 3977,"Azure.ResourceManager.Compute,1.4.0",dotnet,Azure.ResourceManager.Compute_1.4.0,Azure.ResourceManager.Compute,1.4.0,1708664887,02/23/2024
 3978,"Azure.ResourceManager.ResourceMover,1.1.2-beta.1",dotnet,Azure.ResourceManager.ResourceMover_1.1.2-beta.1,Azure.ResourceManager.ResourceMover,1.1.2-beta.1,1708615836,02/22/2024
+3979,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.0.0-beta.10,java,azure-resourcemanager-storagecache_1.0.0-beta.10,azure-resourcemanager-storagecache,1.0.0-beta.10,1709015784,02/27/2024

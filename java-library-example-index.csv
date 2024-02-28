@@ -3989,3 +3989,4 @@ id,name,language,tag,package,version,date_epoch,date
 3988,com.azure.resourcemanager:azure-resourcemanager-playwrighttesting:1.0.0-beta.2,java,azure-resourcemanager-playwrighttesting_1.0.0-beta.2,azure-resourcemanager-playwrighttesting,1.0.0-beta.2,1709091393,02/28/2024
 3989,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v6@v6.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v6.0.0,sdk/resourcemanager/datafactory/armdatafactory,v6.0.0,1709100323,02/28/2024
 3990,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v2@v2.0.0,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v2.0.0,sdk/resourcemanager/redisenterprise/armredisenterprise,v2.0.0,1709099914,02/28/2024
+3991,"Azure.ResourceManager.NetApp,1.5.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.5.0-beta.1,Azure.ResourceManager.NetApp,1.5.0-beta.1,1709097957,02/28/2024

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for AutoscaleSettings Delete. */
+/**
+ * Samples for AutoscaleSettings Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete an autoscale setting.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAnAutoscaleSetting(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getAutoscaleSettings()
-            .deleteWithResponse("TestingMetricsScaleSet", "MySetting", Context.NONE);
+            .deleteWithResponse("TestingMetricsScaleSet", "MySetting", com.azure.core.util.Context.NONE);
     }
 }

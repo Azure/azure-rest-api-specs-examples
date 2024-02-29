@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ActivityLogs List. */
+/**
+ * Samples for ActivityLogs List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Get Activity Logs with filter.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getActivityLogsWithFilter(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getActivityLogs()
-            .list("eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and"
-                + " resourceGroupName eq 'MSSupportGroup'", null, Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getActivityLogs().list(
+            "eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'",
+            null, com.azure.core.util.Context.NONE);
     }
 }

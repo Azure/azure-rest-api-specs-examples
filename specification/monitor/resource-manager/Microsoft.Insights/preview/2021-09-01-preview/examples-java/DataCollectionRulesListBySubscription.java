@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DataCollectionRules List. */
+/**
+ * Samples for DataCollectionRules List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,10 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: List data collection rules by subscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDataCollectionRulesBySubscription(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getDataCollectionRules().list(Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getDataCollectionRules()
+            .list(com.azure.core.util.Context.NONE);
     }
 }

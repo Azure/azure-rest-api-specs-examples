@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.ArmRoleReceiver;
 import com.azure.resourcemanager.monitor.models.AutomationRunbookReceiver;
 import com.azure.resourcemanager.monitor.models.AzureAppPushReceiver;
@@ -14,7 +13,9 @@ import com.azure.resourcemanager.monitor.models.VoiceReceiver;
 import com.azure.resourcemanager.monitor.models.WebhookReceiver;
 import java.util.Arrays;
 
-/** Samples for ActionGroups PostTestNotifications. */
+/**
+ * Samples for ActionGroups PostTestNotifications.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -22,12 +23,12 @@ public final class Main {
      */
     /**
      * Sample code: Create notifications at subscription level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createNotificationsAtSubscriptionLevel(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getActionGroups()
-            .postTestNotifications(new NotificationRequestBody().withAlertType("budget")
+        azure.diagnosticSettings().manager().serviceClient().getActionGroups().postTestNotifications(
+            new NotificationRequestBody().withAlertType("budget")
                 .withEmailReceivers(Arrays.asList(
                     new EmailReceiver().withName("John Doe's email").withEmailAddress("johndoe@email.com")
                         .withUseCommonAlertSchema(false),
@@ -82,6 +83,6 @@ public final class Main {
                     new EventHubReceiver().withName("Sample eventHub").withEventHubNameSpace("testEventHubNameSpace")
                         .withEventHubName("testEventHub").withTenantId("68a4459a-ccb8-493c-b9da-dd30457d1b84")
                         .withSubscriptionId("187f412d-1758-44d9-b052-169e2564721d"))),
-                Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

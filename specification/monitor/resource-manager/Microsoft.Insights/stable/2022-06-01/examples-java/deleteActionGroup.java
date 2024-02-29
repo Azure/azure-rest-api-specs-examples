@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ActionGroups Delete. */
+/**
+ * Samples for ActionGroups Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete an action group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAnActionGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getActionGroups()
-            .deleteWithResponse("Default-NotificationRules", "SampleActionGroup", Context.NONE);
+            .deleteWithResponse("Default-NotificationRules", "SampleActionGroup", com.azure.core.util.Context.NONE);
     }
 }

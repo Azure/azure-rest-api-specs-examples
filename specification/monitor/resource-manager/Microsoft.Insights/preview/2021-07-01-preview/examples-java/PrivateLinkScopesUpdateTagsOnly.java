@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.TagsResource;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PrivateLinkScopes UpdateTags. */
+/**
+ * Samples for PrivateLinkScopes UpdateTags.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,15 +14,16 @@ public final class Main {
      */
     /**
      * Sample code: PrivateLinkScopeUpdateTagsOnly.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void privateLinkScopeUpdateTagsOnly(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getPrivateLinkScopes().updateTagsWithResponse(
             "my-resource-group", "my-privatelinkscope",
-            new TagsResource().withTags(mapOf("Tag1", "Value1", "Tag2", "Value2")), Context.NONE);
+            new TagsResource().withTags(mapOf("Tag1", "Value1", "Tag2", "Value2")), com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

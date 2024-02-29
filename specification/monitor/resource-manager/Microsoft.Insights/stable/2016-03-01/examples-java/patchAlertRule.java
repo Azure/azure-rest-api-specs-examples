@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.AlertRuleResourcePatch;
 import com.azure.resourcemanager.monitor.models.ConditionOperator;
 import com.azure.resourcemanager.monitor.models.RuleMetricDataSource;
@@ -10,7 +9,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for AlertRules Update. */
+/**
+ * Samples for AlertRules Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -18,7 +19,7 @@ public final class Main {
      */
     /**
      * Sample code: Patch an alert rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchAnAlertRule(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -30,9 +31,10 @@ public final class Main {
                     "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest")
                     .withMetricName("Requests")).withOperator(ConditionOperator.GREATER_THAN).withThreshold(3.0)
                     .withWindowSize(Duration.parse("PT5M")).withTimeAggregation(TimeAggregationOperator.TOTAL))
-                .withActions(Arrays.asList()), Context.NONE);
+                .withActions(Arrays.asList()), com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

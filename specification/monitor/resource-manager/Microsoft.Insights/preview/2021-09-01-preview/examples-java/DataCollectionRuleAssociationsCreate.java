@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.DataCollectionRuleAssociationProxyOnlyResourceInner;
 
-/** Samples for DataCollectionRuleAssociations Create. */
+/**
+ * Samples for DataCollectionRuleAssociations Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update association.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAssociation(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -20,6 +21,6 @@ public final class Main {
             "myAssociation",
             new DataCollectionRuleAssociationProxyOnlyResourceInner().withDataCollectionRuleId(
                 "/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

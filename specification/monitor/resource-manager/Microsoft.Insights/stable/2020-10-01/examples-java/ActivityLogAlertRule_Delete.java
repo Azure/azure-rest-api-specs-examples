@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ActivityLogAlerts Delete. */
+/**
+ * Samples for ActivityLogAlerts Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete an Activity Log Alert rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAnActivityLogAlertRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getActivityLogAlerts()
-            .deleteWithResponse("MyResourceGroup", "SampleActivityLogAlertRule", Context.NONE);
+            .deleteWithResponse("MyResourceGroup", "SampleActivityLogAlertRule", com.azure.core.util.Context.NONE);
     }
 }

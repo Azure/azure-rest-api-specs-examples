@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ActionGroups ListByResourceGroup. */
+/**
+ * Samples for ActionGroups ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List action groups at resource group level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listActionGroupsAtResourceGroupLevel(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getActionGroups()
-            .listByResourceGroup("Default-NotificationRules", Context.NONE);
+            .listByResourceGroup("Default-NotificationRules", com.azure.core.util.Context.NONE);
     }
 }

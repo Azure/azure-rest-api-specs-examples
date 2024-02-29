@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.AutoscaleProfileInner;
 import com.azure.resourcemanager.monitor.fluent.models.AutoscaleSettingResourceInner;
 import com.azure.resourcemanager.monitor.fluent.models.ScaleRuleInner;
@@ -26,7 +25,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for AutoscaleSettings CreateOrUpdate. */
+/**
+ * Samples for AutoscaleSettings CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/
@@ -34,13 +35,13 @@ public final class Main {
      */
     /**
      * Sample code: Create or update an autoscale setting.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAnAutoscaleSetting(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getAutoscaleSettings()
             .createOrUpdateWithResponse("TestingMetricsScaleSet", "MySetting", new AutoscaleSettingResourceInner()
-                .withLocation("West US").withTags(mapOf("key1", "value1", "key2", "value2"))
+                .withLocation("West US").withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder"))
                 .withProfiles(Arrays.asList(new AutoscaleProfileInner().withName("adios")
                     .withCapacity(new ScaleCapacity().withMinimum("1").withMaximum("10").withDefaultProperty("1"))
                     .withRules(Arrays.asList(new ScaleRuleInner().withMetricTrigger(new MetricTrigger()
@@ -101,9 +102,10 @@ public final class Main {
                     new PredictiveAutoscalePolicy().withScaleMode(PredictiveAutoscalePolicyScaleMode.ENABLED))
                 .withTargetResourceUri(
                     "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

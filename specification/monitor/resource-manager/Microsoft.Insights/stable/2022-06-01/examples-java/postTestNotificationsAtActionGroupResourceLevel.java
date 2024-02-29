@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.ArmRoleReceiver;
 import com.azure.resourcemanager.monitor.models.AutomationRunbookReceiver;
 import com.azure.resourcemanager.monitor.models.AzureAppPushReceiver;
@@ -14,7 +13,9 @@ import com.azure.resourcemanager.monitor.models.VoiceReceiver;
 import com.azure.resourcemanager.monitor.models.WebhookReceiver;
 import java.util.Arrays;
 
-/** Samples for ActionGroups CreateNotificationsAtActionGroupResourceLevel. */
+/**
+ * Samples for ActionGroups CreateNotificationsAtActionGroupResourceLevel.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/
@@ -22,7 +23,7 @@ public final class Main {
      */
     /**
      * Sample code: Create notifications at resource group level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createNotificationsAtResourceGroupLevel(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -89,6 +90,6 @@ public final class Main {
                         .withEventHubNameSpace("testEventHubNameSpace").withEventHubName("testEventHub")
                         .withTenantId("68a4459a-ccb8-493c-b9da-dd30457d1b84")
                         .withSubscriptionId("187f412d-1758-44d9-b052-169e2564721d"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

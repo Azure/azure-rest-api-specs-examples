@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for PrivateLinkScopedResources Delete. */
+/**
+ * Samples for PrivateLinkScopedResources Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Deletes a scoped resource with a given name.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deletesAScopedResourceWithAGivenName(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getPrivateLinkScopedResources().delete("MyResourceGroup",
-            "MyPrivateLinkScope", "scoped-resource-name", Context.NONE);
+            "MyPrivateLinkScope", "scoped-resource-name", com.azure.core.util.Context.NONE);
     }
 }

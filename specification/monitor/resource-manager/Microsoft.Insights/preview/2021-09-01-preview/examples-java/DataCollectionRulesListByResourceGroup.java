@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DataCollectionRules ListByResourceGroup. */
+/**
+ * Samples for DataCollectionRules ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: List data collection rules by resource group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDataCollectionRulesByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getDataCollectionRules()
-            .listByResourceGroup("myResourceGroup", Context.NONE);
+            .listByResourceGroup("myResourceGroup", com.azure.core.util.Context.NONE);
     }
 }

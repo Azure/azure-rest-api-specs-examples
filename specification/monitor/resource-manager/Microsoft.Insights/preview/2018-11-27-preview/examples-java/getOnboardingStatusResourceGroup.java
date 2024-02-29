@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for VMInsights GetOnboardingStatus. */
+/**
+ * Samples for VMInsights GetOnboardingStatus.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,63 @@ public final class Main {
      */
     /**
      * Sample code: Get status for a resource group that has at least one VM that is actively reporting data.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getStatusForAResourceGroupThatHasAtLeastOneVMThatIsActivelyReportingData(
         com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getVMInsights().getOnboardingStatusWithResponse(
-            "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87/resourceGroups/resource-group-with-vms", Context.NONE);
+            "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87/resourceGroups/resource-group-with-vms",
+            com.azure.core.util.Context.NONE);
+    }
+
+    /*
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/examples/
+     * getOnboardingStatusSingleVM.json
+     */
+    /**
+     * Sample code: Get status for a VM that is actively reporting data.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void
+        getStatusForAVMThatIsActivelyReportingData(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.diagnosticSettings().manager().serviceClient().getVMInsights().getOnboardingStatusWithResponse(
+            "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87/resourceGroups/vm-resource-group/providers/Microsoft.Compute/virtualMachines/ubuntu-vm",
+            com.azure.core.util.Context.NONE);
+    }
+
+    /*
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/examples/
+     * getOnboardingStatusVMScaleSet.json
+     */
+    /**
+     * Sample code: Get status for a VM scale set that is actively reporting data.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void
+        getStatusForAVMScaleSetThatIsActivelyReportingData(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.diagnosticSettings().manager().serviceClient().getVMInsights().getOnboardingStatusWithResponse(
+            "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87/resourceGroups/my-service-cluster/providers/Microsoft.Compute/virtualMachineScaleSets/scale-set-01",
+            com.azure.core.util.Context.NONE);
+    }
+
+    /*
+     * x-ms-original-file:
+     * specification/monitor/resource-manager/Microsoft.Insights/preview/2018-11-27-preview/examples/
+     * getOnboardingStatusSubscription.json
+     */
+    /**
+     * Sample code: Get status for a subscription that has at least one VM that is actively reporting data.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void getStatusForASubscriptionThatHasAtLeastOneVMThatIsActivelyReportingData(
+        com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.diagnosticSettings().manager().serviceClient().getVMInsights().getOnboardingStatusWithResponse(
+            "subscriptions/3d51de47-8d1c-4d24-b42f-bcae075dfa87", com.azure.core.util.Context.NONE);
     }
 }

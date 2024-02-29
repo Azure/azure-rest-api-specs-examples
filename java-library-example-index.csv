@@ -3996,3 +3996,4 @@ id,name,language,tag,package,version,date_epoch,date
 3995,@azure/arm-containerservice@19.8.0-beta.1,js,@azure/arm-containerservice_19.8.0-beta.1,@azure/arm-containerservice,19.8.0-beta.1,1709196081,02/29/2024
 3996,@azure/arm-apicenter@1.0.0,js,@azure/arm-apicenter_1.0.0,@azure/arm-apicenter,1.0.0,1709195925,02/29/2024
 3997,@azure/arm-network@33.1.0,js,@azure/arm-network_33.1.0,@azure/arm-network,33.1.0,1709194411,02/29/2024
+3998,@azure/arm-redisenterprisecache@3.0.0,js,@azure/arm-redisenterprisecache_3.0.0,@azure/arm-redisenterprisecache,3.0.0,1709194193,02/29/2024

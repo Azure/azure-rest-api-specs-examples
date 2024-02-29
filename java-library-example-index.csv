@@ -3994,3 +3994,4 @@ id,name,language,tag,package,version,date_epoch,date
 3993,@azure/arm-astro@1.0.0-beta.1,js,@azure/arm-astro_1.0.0-beta.1,@azure/arm-astro,1.0.0-beta.1,1709196136,02/29/2024
 3994,@azure/arm-playwrighttesting@1.0.0-beta.2,js,@azure/arm-playwrighttesting_1.0.0-beta.2,@azure/arm-playwrighttesting,1.0.0-beta.2,1709196104,02/29/2024
 3995,@azure/arm-containerservice@19.8.0-beta.1,js,@azure/arm-containerservice_19.8.0-beta.1,@azure/arm-containerservice,19.8.0-beta.1,1709196081,02/29/2024
+3996,@azure/arm-apicenter@1.0.0,js,@azure/arm-apicenter_1.0.0,@azure/arm-apicenter,1.0.0,1709195925,02/29/2024

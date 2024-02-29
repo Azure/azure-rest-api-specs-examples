@@ -13,7 +13,13 @@ async function triggerRunsQueryByFactory() {
   const resourceGroupName = process.env["DATAFACTORY_RESOURCE_GROUP"] || "exampleResourceGroup";
   const factoryName = "exampleFactoryName";
   const filterParameters = {
-    filters: [{ operand: "TriggerName", operator: "Equals", values: ["exampleTrigger"] }],
+    filters: [
+      {
+        operand: "TriggerName",
+        operator: "Equals",
+        values: ["exampleTrigger"],
+      },
+    ],
     lastUpdatedAfter: new Date("2018-06-16T00:36:44.3345758Z"),
     lastUpdatedBefore: new Date("2018-06-16T00:49:48.3686473Z"),
   };

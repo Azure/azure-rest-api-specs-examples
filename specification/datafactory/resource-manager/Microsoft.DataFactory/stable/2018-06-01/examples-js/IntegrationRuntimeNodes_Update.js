@@ -14,9 +14,7 @@ async function integrationRuntimeNodesUpdate() {
   const factoryName = "exampleFactoryName";
   const integrationRuntimeName = "exampleIntegrationRuntime";
   const nodeName = "Node_1";
-  const updateIntegrationRuntimeNodeRequest = {
-    concurrentJobsLimit: 2,
-  };
+  const updateIntegrationRuntimeNodeRequest = { concurrentJobsLimit: 2 };
   const credential = new DefaultAzureCredential();
   const client = new DataFactoryManagementClient(credential, subscriptionId);
   const result = await client.integrationRuntimeNodes.update(

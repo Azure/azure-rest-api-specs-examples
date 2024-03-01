@@ -4003,3 +4003,4 @@ id,name,language,tag,package,version,date_epoch,date
 4002,"Azure.ResourceManager.Chaos,1.1.0-beta.1",dotnet,Azure.ResourceManager.Chaos_1.1.0-beta.1,Azure.ResourceManager.Chaos,1.1.0-beta.1,1709130524,02/28/2024
 4003,@azure/arm-largeinstance@1.0.0-beta.1,js,@azure/arm-largeinstance_1.0.0-beta.1,@azure/arm-largeinstance,1.0.0-beta.1,1709264830,03/01/2024
 4004,@azure/arm-storagecache@7.1.0-beta.1,js,@azure/arm-storagecache_7.1.0-beta.1,@azure/arm-storagecache,7.1.0-beta.1,1709193707,02/29/2024
+4005,"Azure.ResourceManager,1.10.2",dotnet,Azure.ResourceManager_1.10.2,Azure.ResourceManager,1.10.2,1709293175,03/01/2024

@@ -1,0 +1,48 @@
+const { SiteRecoveryManagementClient } = require("@azure/arm-recoveryservices-siterecovery");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to The operation to add a recovery services provider.
+ *
+ * @summary The operation to add a recovery services provider.
+ * x-ms-original-file: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationRecoveryServicesProviders_Create.json
+ */
+async function addsARecoveryServicesProvider() {
+  const subscriptionId =
+    process.env["RECOVERYSERVICESSITERECOVERY_SUBSCRIPTION_ID"] ||
+    "cb53d0c3-bd59-4721-89bc-06916a9147ef";
+  const resourceName = "migrationvault";
+  const resourceGroupName =
+    process.env["RECOVERYSERVICESSITERECOVERY_RESOURCE_GROUP"] || "resourcegroup1";
+  const fabricName = "vmwarefabric1";
+  const providerName = "vmwareprovider1";
+  const addProviderInput = {
+    properties: {
+      authenticationIdentityInput: {
+        aadAuthority: "https://login.microsoftonline.com",
+        applicationId: "f66fce08-c0c6-47a1-beeb-0ede5ea94f90",
+        audience: "https://microsoft.onmicrosoft.com/cf19e349-644c-4c6a-bcae-9c8f35357874",
+        objectId: "141360b8-5686-4240-a027-5e24e6affeba",
+        tenantId: "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      },
+      machineName: "vmwareprovider1",
+      resourceAccessIdentityInput: {
+        aadAuthority: "https://login.microsoftonline.com",
+        applicationId: "f66fce08-c0c6-47a1-beeb-0ede5ea94f90",
+        audience: "https://microsoft.onmicrosoft.com/cf19e349-644c-4c6a-bcae-9c8f35357874",
+        objectId: "141360b8-5686-4240-a027-5e24e6affeba",
+        tenantId: "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      },
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new SiteRecoveryManagementClient(credential, subscriptionId);
+  const result = await client.replicationRecoveryServicesProviders.beginCreateAndWait(
+    resourceName,
+    resourceGroupName,
+    fabricName,
+    providerName,
+    addProviderInput,
+  );
+  console.log(result);
+}

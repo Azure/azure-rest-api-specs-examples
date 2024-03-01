@@ -3990,3 +3990,14 @@ id,name,language,tag,package,version,date_epoch,date
 3989,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v6@v6.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v6.0.0,sdk/resourcemanager/datafactory/armdatafactory,v6.0.0,1709100323,02/28/2024
 3990,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v2@v2.0.0,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v2.0.0,sdk/resourcemanager/redisenterprise/armredisenterprise,v2.0.0,1709099914,02/28/2024
 3991,"Azure.ResourceManager.NetApp,1.5.0-beta.1",dotnet,Azure.ResourceManager.NetApp_1.5.0-beta.1,Azure.ResourceManager.NetApp,1.5.0-beta.1,1709097957,02/28/2024
+3992,com.azure.resourcemanager:azure-resourcemanager:2.36.0,java,azure-resourcemanager_2.36.0,azure-resourcemanager,2.36.0,1709193568,02/29/2024
+3993,@azure/arm-astro@1.0.0-beta.1,js,@azure/arm-astro_1.0.0-beta.1,@azure/arm-astro,1.0.0-beta.1,1709196136,02/29/2024
+3994,@azure/arm-playwrighttesting@1.0.0-beta.2,js,@azure/arm-playwrighttesting_1.0.0-beta.2,@azure/arm-playwrighttesting,1.0.0-beta.2,1709196104,02/29/2024
+3995,@azure/arm-containerservice@19.8.0-beta.1,js,@azure/arm-containerservice_19.8.0-beta.1,@azure/arm-containerservice,19.8.0-beta.1,1709196081,02/29/2024
+3996,@azure/arm-apicenter@1.0.0,js,@azure/arm-apicenter_1.0.0,@azure/arm-apicenter,1.0.0,1709195925,02/29/2024
+3997,@azure/arm-network@33.1.0,js,@azure/arm-network_33.1.0,@azure/arm-network,33.1.0,1709194411,02/29/2024
+3998,@azure/arm-redisenterprisecache@3.0.0,js,@azure/arm-redisenterprisecache_3.0.0,@azure/arm-redisenterprisecache,3.0.0,1709194193,02/29/2024
+3999,@azure/arm-datafactory@14.0.0,js,@azure/arm-datafactory_14.0.0,@azure/arm-datafactory,14.0.0,1709194150,02/29/2024
+4000,@azure/arm-streamanalytics@5.0.0-beta.1,js,@azure/arm-streamanalytics_5.0.0-beta.1,@azure/arm-streamanalytics,5.0.0-beta.1,1709194100,02/29/2024
+4001,@azure/arm-recoveryservices-siterecovery@5.2.0,js,@azure/arm-recoveryservices-siterecovery_5.2.0,@azure/arm-recoveryservices-siterecovery,5.2.0,1709193681,02/29/2024
+4002,"Azure.ResourceManager.Chaos,1.1.0-beta.1",dotnet,Azure.ResourceManager.Chaos_1.1.0-beta.1,Azure.ResourceManager.Chaos,1.1.0-beta.1,1709130524,02/28/2024

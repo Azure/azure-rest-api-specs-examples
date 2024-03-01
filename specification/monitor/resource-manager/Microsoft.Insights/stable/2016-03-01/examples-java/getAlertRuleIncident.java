@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for AlertRuleIncidents Get. */
+/**
+ * Samples for AlertRuleIncidents Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a single alert rule incident.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getASingleAlertRuleIncident(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getAlertRuleIncidents().getWithResponse("Rac46PostSwapRG",
-            "myRuleName", "Website_started", Context.NONE);
+            "myRuleName", "Website_started", com.azure.core.util.Context.NONE);
     }
 }

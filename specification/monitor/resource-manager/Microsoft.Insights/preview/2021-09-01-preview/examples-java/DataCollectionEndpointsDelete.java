@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DataCollectionEndpoints Delete. */
+/**
+ * Samples for DataCollectionEndpoints Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete data collection endpoint.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteDataCollectionEndpoint(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getDataCollectionEndpoints()
-            .deleteWithResponse("myResourceGroup", "myCollectionEndpoint", Context.NONE);
+            .deleteWithResponse("myResourceGroup", "myCollectionEndpoint", com.azure.core.util.Context.NONE);
     }
 }

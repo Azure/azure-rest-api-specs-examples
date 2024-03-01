@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps GetNetworkTraces.
+ * Samples for WebApps GetNetworkTracesSlotV2.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getNetworkTracesForASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().getNetworkTracesWithResponse("testrg123", "SampleApp",
-            "c291433b-53ad-4c49-8cae-0a293eae1c6d", com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getWebApps().getNetworkTracesSlotV2WithResponse("testrg123",
+            "SampleApp", "c291433b-53ad-4c49-8cae-0a293eae1c6d", "Production", com.azure.core.util.Context.NONE);
     }
 }

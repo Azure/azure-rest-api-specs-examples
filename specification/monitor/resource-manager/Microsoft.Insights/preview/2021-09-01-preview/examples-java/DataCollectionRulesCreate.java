@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.DataCollectionRuleResourceInner;
 import com.azure.resourcemanager.monitor.models.DataCollectionRuleDataSources;
 import com.azure.resourcemanager.monitor.models.DataCollectionRuleDestinations;
@@ -16,7 +15,9 @@ import com.azure.resourcemanager.monitor.models.SyslogDataSource;
 import com.azure.resourcemanager.monitor.models.WindowsEventLogDataSource;
 import java.util.Arrays;
 
-/** Samples for DataCollectionRules Create. */
+/**
+ * Samples for DataCollectionRules Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -25,7 +26,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update data collection rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateDataCollectionRule(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -73,6 +74,6 @@ public final class Main {
                     .withStreams(Arrays.asList(KnownDataFlowStreams.MICROSOFT_PERF,
                         KnownDataFlowStreams.MICROSOFT_SYSLOG, KnownDataFlowStreams.MICROSOFT_WINDOWS_EVENT))
                     .withDestinations(Arrays.asList("centralWorkspace")))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

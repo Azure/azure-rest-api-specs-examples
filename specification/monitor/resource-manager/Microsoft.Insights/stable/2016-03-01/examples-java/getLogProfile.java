@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for LogProfiles Get. */
+/**
+ * Samples for LogProfiles Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,10 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get log profile.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getLogProfile(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getLogProfiles().getWithResponse("default", Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getLogProfiles().getWithResponse("default",
+            com.azure.core.util.Context.NONE);
     }
 }

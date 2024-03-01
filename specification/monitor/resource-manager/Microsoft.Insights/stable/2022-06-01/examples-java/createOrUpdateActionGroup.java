@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.ActionGroupResourceInner;
 import com.azure.resourcemanager.monitor.models.ArmRoleReceiver;
 import com.azure.resourcemanager.monitor.models.AutomationRunbookReceiver;
@@ -16,7 +15,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ActionGroups CreateOrUpdate. */
+/**
+ * Samples for ActionGroups CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -25,7 +26,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update an action group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAnActionGroup(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -84,9 +85,10 @@ public final class Main {
                     new EventHubReceiver().withName("Sample eventHub").withEventHubNameSpace("testEventHubNameSpace")
                         .withEventHubName("testEventHub").withTenantId("68a4459a-ccb8-493c-b9da-dd30457d1b84")
                         .withSubscriptionId("187f412d-1758-44d9-b052-169e2564721d"))),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

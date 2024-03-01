@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.models.AlertRulePatchObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ActivityLogAlerts Update. */
+/**
+ * Samples for ActivityLogAlerts Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,16 +14,17 @@ public final class Main {
      */
     /**
      * Sample code: Patch an Activity Log Alert rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchAnActivityLogAlertRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getActivityLogAlerts().updateWithResponse(
-            "MyResourceGroup", "SampleActivityLogAlertRule",
-            new AlertRulePatchObject().withTags(mapOf("key1", "value1", "key2", "value2")).withEnabled(false),
-            Context.NONE);
+            "MyResourceGroup", "SampleActivityLogAlertRule", new AlertRulePatchObject()
+                .withTags(mapOf("key1", "fakeTokenPlaceholder", "key2", "fakeTokenPlaceholder")).withEnabled(false),
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

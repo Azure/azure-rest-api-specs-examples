@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for PrivateLinkScopes Delete. */
+/**
+ * Samples for PrivateLinkScopes Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: PrivateLinkScopesDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void privateLinkScopesDelete(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getPrivateLinkScopes().delete("my-resource-group",
-            "my-privatelinkscope", Context.NONE);
+            "my-privatelinkscope", com.azure.core.util.Context.NONE);
     }
 }

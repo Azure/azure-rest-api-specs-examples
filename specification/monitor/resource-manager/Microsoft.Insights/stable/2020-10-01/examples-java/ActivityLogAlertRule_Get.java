@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ActivityLogAlerts GetByResourceGroup. */
+/**
+ * Samples for ActivityLogAlerts GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Get an Activity Log Alert rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAnActivityLogAlertRule(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getActivityLogAlerts()
-            .getByResourceGroupWithResponse("MyResourceGroup", "SampleActivityLogAlertRule", Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getActivityLogAlerts().getByResourceGroupWithResponse(
+            "MyResourceGroup", "SampleActivityLogAlertRule", com.azure.core.util.Context.NONE);
     }
 }

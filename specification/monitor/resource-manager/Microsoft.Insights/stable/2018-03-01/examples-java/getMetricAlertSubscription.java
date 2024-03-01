@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for MetricAlerts GetByResourceGroup. */
+/**
+ * Samples for MetricAlerts GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Get an alert rule on subscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAnAlertRuleOnSubscription(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getMetricAlerts().getByResourceGroupWithResponse("gigtest",
-            "MetricAlertAtSubscriptionLevel", Context.NONE);
+            "MetricAlertAtSubscriptionLevel", com.azure.core.util.Context.NONE);
     }
 }

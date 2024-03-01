@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.AzureMonitorPrivateLinkScopeInner;
 import com.azure.resourcemanager.monitor.models.AccessMode;
 import com.azure.resourcemanager.monitor.models.AccessModeSettings;
@@ -7,7 +6,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PrivateLinkScopes CreateOrUpdate. */
+/**
+ * Samples for PrivateLinkScopes CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -16,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: PrivateLinkScopeUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void privateLinkScopeUpdate(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -25,9 +26,10 @@ public final class Main {
             new AzureMonitorPrivateLinkScopeInner().withLocation("Global").withTags(mapOf("Tag1", "Value1"))
                 .withAccessModeSettings(new AccessModeSettings().withQueryAccessMode(AccessMode.OPEN)
                     .withIngestionAccessMode(AccessMode.OPEN).withExclusions(Arrays.asList())),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

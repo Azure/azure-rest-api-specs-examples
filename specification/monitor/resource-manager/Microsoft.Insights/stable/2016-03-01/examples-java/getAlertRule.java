@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for AlertRules GetByResourceGroup. */
+/**
+ * Samples for AlertRules GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get an alert rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAnAlertRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getAlertRules()
-            .getByResourceGroupWithResponse("Rac46PostSwapRG", "chiricutin", Context.NONE);
+            .getByResourceGroupWithResponse("Rac46PostSwapRG", "chiricutin", com.azure.core.util.Context.NONE);
     }
 }

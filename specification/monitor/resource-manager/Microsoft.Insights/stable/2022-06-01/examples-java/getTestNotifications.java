@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ActionGroups GetTestNotifications. */
+/**
+ * Samples for ActionGroups GetTestNotifications.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get notification details at subscription level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getNotificationDetailsAtSubscriptionLevel(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getActionGroups()
-            .getTestNotificationsWithResponse("11000222191287", Context.NONE);
+            .getTestNotificationsWithResponse("11000222191287", com.azure.core.util.Context.NONE);
     }
 }

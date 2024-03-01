@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ScheduledQueryRules GetByResourceGroup. */
+/**
+ * Samples for ScheduledQueryRules GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a scheduled query rule for single resource.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAScheduledQueryRuleForSingleResource(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getScheduledQueryRules()
-            .getByResourceGroupWithResponse("QueryResourceGroupName", "perf", Context.NONE);
+            .getByResourceGroupWithResponse("QueryResourceGroupName", "perf", com.azure.core.util.Context.NONE);
     }
 }

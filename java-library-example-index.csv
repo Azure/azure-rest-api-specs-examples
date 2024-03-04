@@ -4009,3 +4009,4 @@ id,name,language,tag,package,version,date_epoch,date
 4008,azure-mgmt-playwrighttesting@1.0.0b2,python,azure-mgmt-playwrighttesting_1.0.0b2,azure-mgmt-playwrighttesting,1.0.0b2,1709527038,03/04/2024
 4009,azure-mgmt-redisenterprise@3.0.0,python,azure-mgmt-redisenterprise_3.0.0,azure-mgmt-redisenterprise,3.0.0,1709527033,03/04/2024
 4010,azure-mgmt-datafactory@6.0.0,python,azure-mgmt-datafactory_6.0.0,azure-mgmt-datafactory,6.0.0,1709527029,03/04/2024
+4011,azure-mgmt-rdbms@10.2.0b15,python,azure-mgmt-rdbms_10.2.0b15,azure-mgmt-rdbms,10.2.0b15,1709527025,03/04/2024

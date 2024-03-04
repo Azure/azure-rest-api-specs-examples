@@ -1,0 +1,35 @@
+from azure.identity import DefaultAzureCredential
+from azure.mgmt.redisenterprise import RedisEnterpriseManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-redisenterprise
+# USAGE
+    python redis_enterprise_databases_regenerate_key.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = RedisEnterpriseManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="subid",
+    )
+
+    response = client.databases.begin_regenerate_key(
+        resource_group_name="rg1",
+        cluster_name="cache1",
+        database_name="default",
+        parameters={"keyType": "Primary"},
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2023-11-01/examples/RedisEnterpriseDatabasesRegenerateKey.json
+if __name__ == "__main__":
+    main()

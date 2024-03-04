@@ -4006,3 +4006,4 @@ id,name,language,tag,package,version,date_epoch,date
 4005,"Azure.ResourceManager,1.10.2",dotnet,Azure.ResourceManager_1.10.2,Azure.ResourceManager,1.10.2,1709293175,03/01/2024
 4006,"Azure.ResourceManager.IotFirmwareDefense,1.0.0",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.0.0,Azure.ResourceManager.IotFirmwareDefense,1.0.0,1709292283,03/01/2024
 4007,azure-mgmt-chaos@1.1.0,python,azure-mgmt-chaos_1.1.0,azure-mgmt-chaos,1.1.0,1709527109,03/04/2024
+4008,azure-mgmt-playwrighttesting@1.0.0b2,python,azure-mgmt-playwrighttesting_1.0.0b2,azure-mgmt-playwrighttesting,1.0.0b2,1709527038,03/04/2024

@@ -4008,3 +4008,4 @@ id,name,language,tag,package,version,date_epoch,date
 4007,azure-mgmt-chaos@1.1.0,python,azure-mgmt-chaos_1.1.0,azure-mgmt-chaos,1.1.0,1709527109,03/04/2024
 4008,azure-mgmt-playwrighttesting@1.0.0b2,python,azure-mgmt-playwrighttesting_1.0.0b2,azure-mgmt-playwrighttesting,1.0.0b2,1709527038,03/04/2024
 4009,azure-mgmt-redisenterprise@3.0.0,python,azure-mgmt-redisenterprise_3.0.0,azure-mgmt-redisenterprise,3.0.0,1709527033,03/04/2024
+4010,azure-mgmt-datafactory@6.0.0,python,azure-mgmt-datafactory_6.0.0,azure-mgmt-datafactory,6.0.0,1709527029,03/04/2024

@@ -4005,3 +4005,9 @@ id,name,language,tag,package,version,date_epoch,date
 4004,@azure/arm-storagecache@7.1.0-beta.1,js,@azure/arm-storagecache_7.1.0-beta.1,@azure/arm-storagecache,7.1.0-beta.1,1709193707,02/29/2024
 4005,"Azure.ResourceManager,1.10.2",dotnet,Azure.ResourceManager_1.10.2,Azure.ResourceManager,1.10.2,1709293175,03/01/2024
 4006,"Azure.ResourceManager.IotFirmwareDefense,1.0.0",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.0.0,Azure.ResourceManager.IotFirmwareDefense,1.0.0,1709292283,03/01/2024
+4007,azure-mgmt-chaos@1.1.0,python,azure-mgmt-chaos_1.1.0,azure-mgmt-chaos,1.1.0,1709527109,03/04/2024
+4008,azure-mgmt-playwrighttesting@1.0.0b2,python,azure-mgmt-playwrighttesting_1.0.0b2,azure-mgmt-playwrighttesting,1.0.0b2,1709527038,03/04/2024
+4009,azure-mgmt-redisenterprise@3.0.0,python,azure-mgmt-redisenterprise_3.0.0,azure-mgmt-redisenterprise,3.0.0,1709527033,03/04/2024
+4010,azure-mgmt-datafactory@6.0.0,python,azure-mgmt-datafactory_6.0.0,azure-mgmt-datafactory,6.0.0,1709527029,03/04/2024
+4011,azure-mgmt-rdbms@10.2.0b15,python,azure-mgmt-rdbms_10.2.0b15,azure-mgmt-rdbms,10.2.0b15,1709527025,03/04/2024
+4012,azure-mgmt-azurelargeinstance@1.0.0b1,python,azure-mgmt-azurelargeinstance_1.0.0b1,azure-mgmt-azurelargeinstance,1.0.0b1,1709527022,03/04/2024

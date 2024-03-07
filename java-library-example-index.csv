@@ -4015,3 +4015,4 @@ id,name,language,tag,package,version,date_epoch,date
 4014,"Azure.ResourceManager.Support,1.1.0-beta.4",dotnet,Azure.ResourceManager.Support_1.1.0-beta.4,Azure.ResourceManager.Support,1.1.0-beta.4,1709703383,03/06/2024
 4015,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity@v0.13.0,go,sdk/resourcemanager/security/armsecurity/v0.13.0,sdk/resourcemanager/security/armsecurity,v0.13.0,1709798470,03/07/2024
 4016,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storageactions/armstorageactions@v0.1.0,go,sdk/resourcemanager/storageactions/armstorageactions/v0.1.0,sdk/resourcemanager/storageactions/armstorageactions,v0.1.0,1709794180,03/07/2024
+4017,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v4@v4.8.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v4.8.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v4.8.0-beta.1,1709781033,03/07/2024

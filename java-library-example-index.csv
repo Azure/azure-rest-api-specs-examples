@@ -4012,3 +4012,4 @@ id,name,language,tag,package,version,date_epoch,date
 4011,azure-mgmt-rdbms@10.2.0b15,python,azure-mgmt-rdbms_10.2.0b15,azure-mgmt-rdbms,10.2.0b15,1709527025,03/04/2024
 4012,azure-mgmt-azurelargeinstance@1.0.0b1,python,azure-mgmt-azurelargeinstance_1.0.0b1,azure-mgmt-azurelargeinstance,1.0.0b1,1709527022,03/04/2024
 4013,"Azure.ResourceManager.Batch,1.4.0",dotnet,Azure.ResourceManager.Batch_1.4.0,Azure.ResourceManager.Batch,1.4.0,1709627950,03/05/2024
+4014,"Azure.ResourceManager.Support,1.1.0-beta.4",dotnet,Azure.ResourceManager.Support_1.1.0-beta.4,Azure.ResourceManager.Support,1.1.0-beta.4,1709703383,03/06/2024

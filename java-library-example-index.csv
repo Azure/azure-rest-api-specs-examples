@@ -4018,3 +4018,4 @@ id,name,language,tag,package,version,date_epoch,date
 4017,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v4@v4.8.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v4.8.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v4.8.0-beta.1,1709781033,03/07/2024
 4018,@azure/arm-chaos@1.1.0,js,@azure/arm-chaos_1.1.0,@azure/arm-chaos,1.1.0,1709819741,03/07/2024
 4019,"Azure.ResourceManager.Confluent,1.2.0",dotnet,Azure.ResourceManager.Confluent_1.2.0,Azure.ResourceManager.Confluent,1.2.0,1709821474,03/07/2024
+4020,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.27,java,azure-resourcemanager-datafactory_1.0.0-beta.27,azure-resourcemanager-datafactory,1.0.0-beta.27,1710404745,03/14/2024

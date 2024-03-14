@@ -4020,3 +4020,4 @@ id,name,language,tag,package,version,date_epoch,date
 4019,"Azure.ResourceManager.Confluent,1.2.0",dotnet,Azure.ResourceManager.Confluent_1.2.0,Azure.ResourceManager.Confluent,1.2.0,1709821474,03/07/2024
 4020,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.27,java,azure-resourcemanager-datafactory_1.0.0-beta.27,azure-resourcemanager-datafactory,1.0.0-beta.27,1710404745,03/14/2024
 4021,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.0.0,java,azure-resourcemanager-redisenterprise_2.0.0,azure-resourcemanager-redisenterprise,2.0.0,1710402752,03/14/2024
+4022,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0-beta.6,java,azure-resourcemanager-security_1.0.0-beta.6,azure-resourcemanager-security,1.0.0-beta.6,1710401289,03/14/2024

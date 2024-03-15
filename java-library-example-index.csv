@@ -4025,3 +4025,4 @@ id,name,language,tag,package,version,date_epoch,date
 4024,"Azure.ResourceManager.DataFactory,1.0.0",dotnet,Azure.ResourceManager.DataFactory_1.0.0,Azure.ResourceManager.DataFactory,1.0.0,1710410769,03/14/2024
 4025,com.azure.resourcemanager:azure-resourcemanager-notificationhubs:1.0.0-beta.4,java,azure-resourcemanager-notificationhubs_1.0.0-beta.4,azure-resourcemanager-notificationhubs,1.0.0-beta.4,1710499759,03/15/2024
 4026,com.azure.resourcemanager:azure-resourcemanager-newrelicobservability:1.1.0,java,azure-resourcemanager-newrelicobservability_1.1.0,azure-resourcemanager-newrelicobservability,1.1.0,1710493613,03/15/2024
+4027,com.azure.resourcemanager:azure-resourcemanager-chaos:1.1.0,java,azure-resourcemanager-chaos_1.1.0,azure-resourcemanager-chaos,1.1.0,1710483787,03/15/2024

@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlFlexibleServerResource created on azure
-// for more information of creating MySqlFlexibleServerResource, please refer to the document of MySqlFlexibleServerResource
+// this example assumes you already have this MySqlFlexibleServerAadAdministratorResource created on azure
+// for more information of creating MySqlFlexibleServerAadAdministratorResource, please refer to the document of MySqlFlexibleServerAadAdministratorResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "testrg";
 string serverName = "mysqltestsvc4";
-ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
-
-// get the collection of this MySqlFlexibleServerAadAdministratorResource
-MySqlFlexibleServerAadAdministratorCollection collection = mySqlFlexibleServer.GetMySqlFlexibleServerAadAdministrators();
+MySqlFlexibleServerAdministratorName administratorName = MySqlFlexibleServerAdministratorName.ActiveDirectory;
+ResourceIdentifier mySqlFlexibleServerAadAdministratorResourceId = MySqlFlexibleServerAadAdministratorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, administratorName);
+MySqlFlexibleServerAadAdministratorResource mySqlFlexibleServerAadAdministrator = client.GetMySqlFlexibleServerAadAdministratorResource(mySqlFlexibleServerAadAdministratorResourceId);
 
 // invoke the operation
-MySqlFlexibleServerAdministratorName administratorName = MySqlFlexibleServerAdministratorName.ActiveDirectory;
 MySqlFlexibleServerAadAdministratorData data = new MySqlFlexibleServerAadAdministratorData()
 {
     AdministratorType = MySqlFlexibleServerAdministratorType.ActiveDirectory,
@@ -36,7 +33,7 @@ MySqlFlexibleServerAadAdministratorData data = new MySqlFlexibleServerAadAdminis
     TenantId = Guid.Parse("c12b7025-bfe2-46c1-b463-993b5e4cd467"),
     IdentityResourceId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-umi"),
 };
-ArmOperation<MySqlFlexibleServerAadAdministratorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, administratorName, data);
+ArmOperation<MySqlFlexibleServerAadAdministratorResource> lro = await mySqlFlexibleServerAadAdministrator.UpdateAsync(WaitUntil.Completed, data);
 MySqlFlexibleServerAadAdministratorResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

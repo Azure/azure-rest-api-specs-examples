@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlFlexibleServerDatabaseResource created on azure
-// for more information of creating MySqlFlexibleServerDatabaseResource, please refer to the document of MySqlFlexibleServerDatabaseResource
+// this example assumes you already have this MySqlFlexibleServerResource created on azure
+// for more information of creating MySqlFlexibleServerResource, please refer to the document of MySqlFlexibleServerResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-string databaseName = "db1";
-ResourceIdentifier mySqlFlexibleServerDatabaseResourceId = MySqlFlexibleServerDatabaseResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName);
-MySqlFlexibleServerDatabaseResource mySqlFlexibleServerDatabase = client.GetMySqlFlexibleServerDatabaseResource(mySqlFlexibleServerDatabaseResourceId);
+ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
+
+// get the collection of this MySqlFlexibleServerDatabaseResource
+MySqlFlexibleServerDatabaseCollection collection = mySqlFlexibleServer.GetMySqlFlexibleServerDatabases();
 
 // invoke the operation
+string databaseName = "db1";
 MySqlFlexibleServerDatabaseData data = new MySqlFlexibleServerDatabaseData()
 {
     Charset = "utf8",
     Collation = "utf8_general_ci",
 };
-ArmOperation<MySqlFlexibleServerDatabaseResource> lro = await mySqlFlexibleServerDatabase.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<MySqlFlexibleServerDatabaseResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, databaseName, data);
 MySqlFlexibleServerDatabaseResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlServerResource created on azure
-// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
+// this example assumes you already have this MySqlFirewallRuleResource created on azure
+// for more information of creating MySqlFirewallRuleResource, please refer to the document of MySqlFirewallRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
-
-// get the collection of this MySqlFirewallRuleResource
-MySqlFirewallRuleCollection collection = mySqlServer.GetMySqlFirewallRules();
+string firewallRuleName = "rule1";
+ResourceIdentifier mySqlFirewallRuleResourceId = MySqlFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, firewallRuleName);
+MySqlFirewallRuleResource mySqlFirewallRule = client.GetMySqlFirewallRuleResource(mySqlFirewallRuleResourceId);
 
 // invoke the operation
-string firewallRuleName = "rule1";
 MySqlFirewallRuleData data = new MySqlFirewallRuleData(IPAddress.Parse("0.0.0.0"), IPAddress.Parse("255.255.255.255"));
-ArmOperation<MySqlFirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, firewallRuleName, data);
+ArmOperation<MySqlFirewallRuleResource> lro = await mySqlFirewallRule.UpdateAsync(WaitUntil.Completed, data);
 MySqlFirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

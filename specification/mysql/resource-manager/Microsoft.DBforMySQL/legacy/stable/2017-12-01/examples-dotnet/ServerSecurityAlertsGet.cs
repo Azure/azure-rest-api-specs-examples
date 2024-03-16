@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlServerSecurityAlertPolicyResource created on azure
-// for more information of creating MySqlServerSecurityAlertPolicyResource, please refer to the document of MySqlServerSecurityAlertPolicyResource
+// this example assumes you already have this MySqlServerResource created on azure
+// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "securityalert-4799";
 string serverName = "securityalert-6440";
-MySqlSecurityAlertPolicyName securityAlertPolicyName = MySqlSecurityAlertPolicyName.Default;
-ResourceIdentifier mySqlServerSecurityAlertPolicyResourceId = MySqlServerSecurityAlertPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, securityAlertPolicyName);
-MySqlServerSecurityAlertPolicyResource mySqlServerSecurityAlertPolicy = client.GetMySqlServerSecurityAlertPolicyResource(mySqlServerSecurityAlertPolicyResourceId);
+ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
+
+// get the collection of this MySqlServerSecurityAlertPolicyResource
+MySqlServerSecurityAlertPolicyCollection collection = mySqlServer.GetMySqlServerSecurityAlertPolicies();
 
 // invoke the operation
-MySqlServerSecurityAlertPolicyResource result = await mySqlServerSecurityAlertPolicy.GetAsync();
+MySqlSecurityAlertPolicyName securityAlertPolicyName = MySqlSecurityAlertPolicyName.Default;
+NullableResponse<MySqlServerSecurityAlertPolicyResource> response = await collection.GetIfExistsAsync(securityAlertPolicyName);
+MySqlServerSecurityAlertPolicyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MySqlServerSecurityAlertPolicyData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MySqlServerSecurityAlertPolicyData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -15,25 +15,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlServerResource created on azure
-// for more information of creating MySqlServerResource, please refer to the document of MySqlServerResource
+// this example assumes you already have this MySqlServerKeyResource created on azure
+// for more information of creating MySqlServerKeyResource, please refer to the document of MySqlServerKeyResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "testrg";
 string serverName = "testserver";
-ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
-
-// get the collection of this MySqlServerKeyResource
-MySqlServerKeyCollection collection = mySqlServer.GetMySqlServerKeys();
+string keyName = "someVault_someKey_01234567890123456789012345678901";
+ResourceIdentifier mySqlServerKeyResourceId = MySqlServerKeyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, keyName);
+MySqlServerKeyResource mySqlServerKey = client.GetMySqlServerKeyResource(mySqlServerKeyResourceId);
 
 // invoke the operation
-string keyName = "someVault_someKey_01234567890123456789012345678901";
 MySqlServerKeyData data = new MySqlServerKeyData()
 {
     ServerKeyType = MySqlServerKeyType.AzureKeyVault,
     Uri = new Uri("https://someVault.vault.azure.net/keys/someKey/01234567890123456789012345678901"),
 };
-ArmOperation<MySqlServerKeyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, keyName, data);
+ArmOperation<MySqlServerKeyResource> lro = await mySqlServerKey.UpdateAsync(WaitUntil.Completed, data);
 MySqlServerKeyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

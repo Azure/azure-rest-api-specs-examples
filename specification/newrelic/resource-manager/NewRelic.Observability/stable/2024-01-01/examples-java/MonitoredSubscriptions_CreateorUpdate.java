@@ -1,0 +1,22 @@
+
+import com.azure.resourcemanager.newrelicobservability.models.ConfigurationName;
+
+/**
+ * Samples for MonitoredSubscriptions CreateorUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/newrelic/resource-manager/NewRelic.Observability/stable/2024-01-01/examples/
+     * MonitoredSubscriptions_CreateorUpdate.json
+     */
+    /**
+     * Sample code: Monitors_AddMonitoredSubscriptions.
+     * 
+     * @param manager Entry point to NewRelicObservabilityManager.
+     */
+    public static void monitorsAddMonitoredSubscriptions(
+        com.azure.resourcemanager.newrelicobservability.NewRelicObservabilityManager manager) {
+        manager.monitoredSubscriptions().define(ConfigurationName.DEFAULT)
+            .withExistingMonitor("myResourceGroup", "myMonitor").create();
+    }
+}

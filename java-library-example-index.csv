@@ -4023,3 +4023,10 @@ id,name,language,tag,package,version,date_epoch,date
 4022,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0-beta.6,java,azure-resourcemanager-security_1.0.0-beta.6,azure-resourcemanager-security,1.0.0-beta.6,1710401289,03/14/2024
 4023,"Azure.ResourceManager.Sphere,1.0.0",dotnet,Azure.ResourceManager.Sphere_1.0.0,Azure.ResourceManager.Sphere,1.0.0,1710412102,03/14/2024
 4024,"Azure.ResourceManager.DataFactory,1.0.0",dotnet,Azure.ResourceManager.DataFactory_1.0.0,Azure.ResourceManager.DataFactory,1.0.0,1710410769,03/14/2024
+4025,com.azure.resourcemanager:azure-resourcemanager-notificationhubs:1.0.0-beta.4,java,azure-resourcemanager-notificationhubs_1.0.0-beta.4,azure-resourcemanager-notificationhubs,1.0.0-beta.4,1710499759,03/15/2024
+4026,com.azure.resourcemanager:azure-resourcemanager-newrelicobservability:1.1.0,java,azure-resourcemanager-newrelicobservability_1.1.0,azure-resourcemanager-newrelicobservability,1.1.0,1710493613,03/15/2024
+4027,com.azure.resourcemanager:azure-resourcemanager-chaos:1.1.0,java,azure-resourcemanager-chaos_1.1.0,azure-resourcemanager-chaos,1.1.0,1710483787,03/15/2024
+4028,com.azure.resourcemanager:azure-resourcemanager-quantum:1.0.0-beta.2,java,azure-resourcemanager-quantum_1.0.0-beta.2,azure-resourcemanager-quantum,1.0.0-beta.2,1710479767,03/15/2024
+4029,com.azure.resourcemanager:azure-resourcemanager-cosmosdbforpostgresql:1.1.0-beta.1,java,azure-resourcemanager-cosmosdbforpostgresql_1.1.0-beta.1,azure-resourcemanager-cosmosdbforpostgresql,1.1.0-beta.1,1710476498,03/15/2024
+4030,"Azure.ResourceManager.MySql,1.1.0-beta.5",dotnet,Azure.ResourceManager.MySql_1.1.0-beta.5,Azure.ResourceManager.MySql,1.1.0-beta.5,1710431608,03/14/2024
+4031,azure-mgmt-compute@30.6.0,python,azure-mgmt-compute_30.6.0,azure-mgmt-compute,30.6.0,1710485585,03/15/2024

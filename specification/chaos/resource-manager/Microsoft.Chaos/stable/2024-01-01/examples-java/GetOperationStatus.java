@@ -1,0 +1,19 @@
+
+/**
+ * Samples for OperationStatuses Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/examples/GetOperationStatus.json
+     */
+    /**
+     * Sample code: Get specific operation status.
+     * 
+     * @param manager Entry point to ChaosManager.
+     */
+    public static void getSpecificOperationStatus(com.azure.resourcemanager.chaos.ChaosManager manager) {
+        manager.operationStatuses().getWithResponse("West US", "713192d7-503f-477a-9cfe-4efc3ee2bd11",
+            com.azure.core.util.Context.NONE);
+    }
+}

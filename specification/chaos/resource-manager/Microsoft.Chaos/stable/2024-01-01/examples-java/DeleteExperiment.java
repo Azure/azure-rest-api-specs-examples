@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Experiments Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/examples/DeleteExperiment.json
+     */
+    /**
+     * Sample code: Delete a Experiment in a resource group.
+     * 
+     * @param manager Entry point to ChaosManager.
+     */
+    public static void deleteAExperimentInAResourceGroup(com.azure.resourcemanager.chaos.ChaosManager manager) {
+        manager.experiments().delete("exampleRG", "exampleExperiment", com.azure.core.util.Context.NONE);
+    }
+}

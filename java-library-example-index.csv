@@ -4030,3 +4030,4 @@ id,name,language,tag,package,version,date_epoch,date
 4029,com.azure.resourcemanager:azure-resourcemanager-cosmosdbforpostgresql:1.1.0-beta.1,java,azure-resourcemanager-cosmosdbforpostgresql_1.1.0-beta.1,azure-resourcemanager-cosmosdbforpostgresql,1.1.0-beta.1,1710476498,03/15/2024
 4030,"Azure.ResourceManager.MySql,1.1.0-beta.5",dotnet,Azure.ResourceManager.MySql_1.1.0-beta.5,Azure.ResourceManager.MySql,1.1.0-beta.5,1710431608,03/14/2024
 4031,azure-mgmt-compute@30.6.0,python,azure-mgmt-compute_30.6.0,azure-mgmt-compute,30.6.0,1710485585,03/15/2024
+4032,"Azure.ResourceManager.NetApp,1.5.0",dotnet,Azure.ResourceManager.NetApp_1.5.0,Azure.ResourceManager.NetApp,1.5.0,1710521546,03/15/2024

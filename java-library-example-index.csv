@@ -4042,3 +4042,4 @@ id,name,language,tag,package,version,date_epoch,date
 4041,azure-mgmt-communication@2.1.0,python,azure-mgmt-communication_2.1.0,azure-mgmt-communication,2.1.0,1710740823,03/18/2024
 4042,azure-mgmt-newrelicobservability@1.1.0,python,azure-mgmt-newrelicobservability_1.1.0,azure-mgmt-newrelicobservability,1.1.0,1710740752,03/18/2024
 4043,azure-mgmt-mobilenetwork@3.2.0,python,azure-mgmt-mobilenetwork_3.2.0,azure-mgmt-mobilenetwork,3.2.0,1710740744,03/18/2024
+4044,azure-mgmt-datafactory@6.1.0,python,azure-mgmt-datafactory_6.1.0,azure-mgmt-datafactory,6.1.0,1710732480,03/18/2024

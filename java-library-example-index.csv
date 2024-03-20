@@ -4046,3 +4046,4 @@ id,name,language,tag,package,version,date_epoch,date
 4045,azure-mgmt-cosmosdbforpostgresql@1.1.0b1,python,azure-mgmt-cosmosdbforpostgresql_1.1.0b1,azure-mgmt-cosmosdbforpostgresql,1.1.0b1,1710732470,03/18/2024
 4046,azure-mgmt-search@9.2.0b1,python,azure-mgmt-search_9.2.0b1,azure-mgmt-search,9.2.0b1,1710732434,03/18/2024
 4047,azure-mgmt-nginx@3.1.0b1,python,azure-mgmt-nginx_3.1.0b1,azure-mgmt-nginx,3.1.0b1,1710732424,03/18/2024
+4048,azure-mgmt-confluent@2.1.0,python,azure-mgmt-confluent_2.1.0,azure-mgmt-confluent,2.1.0,1710732419,03/18/2024

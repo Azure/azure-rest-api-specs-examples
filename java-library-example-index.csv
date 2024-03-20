@@ -4040,3 +4040,4 @@ id,name,language,tag,package,version,date_epoch,date
 4039,azure-mgmt-cosmosdb@10.0.0b3,python,azure-mgmt-cosmosdb_10.0.0b3,azure-mgmt-cosmosdb,10.0.0b3,1710828142,03/19/2024
 4040,azure-mgmt-appcontainers@3.1.0b1,python,azure-mgmt-appcontainers_3.1.0b1,azure-mgmt-appcontainers,3.1.0b1,1710746666,03/18/2024
 4041,azure-mgmt-communication@2.1.0,python,azure-mgmt-communication_2.1.0,azure-mgmt-communication,2.1.0,1710740823,03/18/2024
+4042,azure-mgmt-newrelicobservability@1.1.0,python,azure-mgmt-newrelicobservability_1.1.0,azure-mgmt-newrelicobservability,1.1.0,1710740752,03/18/2024

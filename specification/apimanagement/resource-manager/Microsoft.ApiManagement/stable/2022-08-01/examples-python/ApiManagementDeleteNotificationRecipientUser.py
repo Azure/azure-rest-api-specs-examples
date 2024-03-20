@@ -1,6 +1,12 @@
+from typing import TYPE_CHECKING, Union
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.apimanagement import ApiManagementClient
 
+if TYPE_CHECKING:
+    # pylint: disable=unused-import,ungrouped-imports
+    from .. import models as _models
 """
 # PREREQUISITES
     pip install azure-identity
@@ -21,13 +27,12 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.notification_recipient_user.delete(
+    client.notification_recipient_user.delete(
         resource_group_name="rg1",
         service_name="apimService1",
         notification_name="RequestPublisherNotificationMessage",
         user_id="576823d0a40f7e74ec07d642",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementDeleteNotificationRecipientUser.json

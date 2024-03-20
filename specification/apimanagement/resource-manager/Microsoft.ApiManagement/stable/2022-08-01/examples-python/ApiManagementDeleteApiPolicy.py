@@ -1,6 +1,12 @@
+from typing import TYPE_CHECKING, Union
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.apimanagement import ApiManagementClient
 
+if TYPE_CHECKING:
+    # pylint: disable=unused-import,ungrouped-imports
+    from .. import models as _models
 """
 # PREREQUISITES
     pip install azure-identity
@@ -21,14 +27,13 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.api_policy.delete(
+    client.api_policy.delete(
         resource_group_name="rg1",
         service_name="apimService1",
         api_id="loggerId",
         policy_id="policy",
         if_match="*",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementDeleteApiPolicy.json

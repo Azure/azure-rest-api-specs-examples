@@ -1,4 +1,7 @@
+from typing import Any, IO, Union
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.apimanagement import ApiManagementClient
 
 """
@@ -21,13 +24,12 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.gateway.regenerate_key(
+    client.gateway.regenerate_key(
         resource_group_name="rg1",
         service_name="apimService1",
         gateway_id="gwId",
         parameters={"keyType": "primary"},
     )
-    print(response)
 
 
 # x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementGatewayRegenerateKey.json

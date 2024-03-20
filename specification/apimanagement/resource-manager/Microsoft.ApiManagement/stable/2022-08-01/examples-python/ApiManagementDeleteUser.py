@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.apimanagement import ApiManagementClient
 
 """
@@ -21,13 +22,12 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.user.delete(
+    client.user.delete(
         resource_group_name="rg1",
         service_name="apimService1",
         user_id="5931a75ae4bbd512288c680b",
         if_match="*",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementDeleteUser.json

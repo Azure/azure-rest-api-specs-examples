@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.apimanagement import ApiManagementClient
 
 """
@@ -21,7 +22,7 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.api_issue_comment.delete(
+    client.api_issue_comment.delete(
         resource_group_name="rg1",
         service_name="apimService1",
         api_id="57d1f7558aa04f15146d9d8a",
@@ -29,7 +30,6 @@ def main():
         comment_id="599e29ab193c3c0bd0b3e2fb",
         if_match="*",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementDeleteApiIssueComment.json

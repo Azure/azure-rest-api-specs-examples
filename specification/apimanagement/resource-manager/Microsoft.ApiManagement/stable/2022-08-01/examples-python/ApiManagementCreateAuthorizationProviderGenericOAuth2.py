@@ -1,4 +1,7 @@
+from typing import Any, IO, Union
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.apimanagement import ApiManagementClient
 
 """
@@ -33,10 +36,10 @@ def main():
                     "grantTypes": {
                         "authorizationCode": {
                             "authorizationUrl": "https://www.eventbrite.com/oauth/authorize",
-                            "clientId": "ZYIJTBTABHOUQQDLZY",
-                            "clientSecret": "Q3iPSaKQ~fZFcJk5vKmqzUAfJagcJ8",
+                            "clientId": "genericClientId",
+                            "clientSecret": "xxxxxxxxxxxxxxxxxxxxxxxx",
                             "refreshUrl": "https://www.eventbrite.com/oauth/token",
-                            "scopes": None,
+                            "scopes": "",
                             "tokenUrl": "https://www.eventbrite.com/oauth/token",
                         }
                     },

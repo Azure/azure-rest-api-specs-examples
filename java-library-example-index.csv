@@ -4044,3 +4044,4 @@ id,name,language,tag,package,version,date_epoch,date
 4043,azure-mgmt-mobilenetwork@3.2.0,python,azure-mgmt-mobilenetwork_3.2.0,azure-mgmt-mobilenetwork,3.2.0,1710740744,03/18/2024
 4044,azure-mgmt-datafactory@6.1.0,python,azure-mgmt-datafactory_6.1.0,azure-mgmt-datafactory,6.1.0,1710732480,03/18/2024
 4045,azure-mgmt-cosmosdbforpostgresql@1.1.0b1,python,azure-mgmt-cosmosdbforpostgresql_1.1.0b1,azure-mgmt-cosmosdbforpostgresql,1.1.0b1,1710732470,03/18/2024
+4046,azure-mgmt-search@9.2.0b1,python,azure-mgmt-search_9.2.0b1,azure-mgmt-search,9.2.0b1,1710732434,03/18/2024

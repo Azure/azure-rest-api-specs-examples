@@ -4050,3 +4050,4 @@ id,name,language,tag,package,version,date_epoch,date
 4049,azure-mgmt-batch@17.3.0,python,azure-mgmt-batch_17.3.0,azure-mgmt-batch,17.3.0,1710732396,03/18/2024
 4050,com.azure.resourcemanager:azure-resourcemanager-mobilenetwork:1.1.0,java,azure-resourcemanager-mobilenetwork_1.1.0,azure-resourcemanager-mobilenetwork,1.1.0,1710898903,03/20/2024
 4051,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v6@v6.1.0,go,sdk/resourcemanager/datafactory/armdatafactory/v6.1.0,sdk/resourcemanager/datafactory/armdatafactory,v6.1.0,1710907271,03/20/2024
+4052,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quantum/armquantum@v0.8.0,go,sdk/resourcemanager/quantum/armquantum/v0.8.0,sdk/resourcemanager/quantum/armquantum,v0.8.0,1710905763,03/20/2024

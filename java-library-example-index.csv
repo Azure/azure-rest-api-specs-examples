@@ -4032,3 +4032,4 @@ id,name,language,tag,package,version,date_epoch,date
 4031,azure-mgmt-compute@30.6.0,python,azure-mgmt-compute_30.6.0,azure-mgmt-compute,30.6.0,1710485585,03/15/2024
 4032,"Azure.ResourceManager.NetApp,1.5.0",dotnet,Azure.ResourceManager.NetApp_1.5.0,Azure.ResourceManager.NetApp,1.5.0,1710521546,03/15/2024
 4033,com.azure.resourcemanager:azure-resourcemanager-communication:2.1.0,java,azure-resourcemanager-communication_2.1.0,azure-resourcemanager-communication,2.1.0,1710818739,03/19/2024
+4034,com.azure.resourcemanager:azure-resourcemanager-iotfirmwaredefense:1.0.0,java,azure-resourcemanager-iotfirmwaredefense_1.0.0,azure-resourcemanager-iotfirmwaredefense,1.0.0,1710818584,03/19/2024

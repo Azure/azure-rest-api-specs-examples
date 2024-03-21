@@ -4082,3 +4082,4 @@ id,name,language,tag,package,version,date_epoch,date
 4081,@azure/arm-compute@21.5.0,js,@azure/arm-compute_21.5.0,@azure/arm-compute,21.5.0,1711009338,03/21/2024
 4082,@azure/arm-newrelicobservability@1.1.0,js,@azure/arm-newrelicobservability_1.1.0,@azure/arm-newrelicobservability,1.1.0,1711007383,03/21/2024
 4083,@azure/arm-containerservice@19.8.0-beta.2,js,@azure/arm-containerservice_19.8.0-beta.2,@azure/arm-containerservice,19.8.0-beta.2,1711007380,03/21/2024
+4084,@azure/arm-communication@4.1.0,js,@azure/arm-communication_4.1.0,@azure/arm-communication,4.1.0,1711007379,03/21/2024

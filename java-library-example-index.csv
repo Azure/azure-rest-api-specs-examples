@@ -4069,3 +4069,4 @@ id,name,language,tag,package,version,date_epoch,date
 4068,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/nginx/armnginx/v3@v3.1.0-beta.1,go,sdk/resourcemanager/nginx/armnginx/v3.1.0-beta.1,sdk/resourcemanager/nginx/armnginx,v3.1.0-beta.1,1710913596,03/20/2024
 4069,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/notificationhubs/armnotificationhubs/v2@v2.0.0-beta.1,go,sdk/resourcemanager/notificationhubs/armnotificationhubs/v2.0.0-beta.1,sdk/resourcemanager/notificationhubs/armnotificationhubs,v2.0.0-beta.1,1710913250,03/20/2024
 4070,com.azure.resourcemanager:azure-resourcemanager-confluent:1.1.0,java,azure-resourcemanager-confluent_1.1.0,azure-resourcemanager-confluent,1.1.0,1711005781,03/21/2024
+4071,com.azure.resourcemanager:azure-resourcemanager-storageactions:1.0.0-beta.1,java,azure-resourcemanager-storageactions_1.0.0-beta.1,azure-resourcemanager-storageactions,1.0.0-beta.1,1710995199,03/21/2024

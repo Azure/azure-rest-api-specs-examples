@@ -4086,3 +4086,4 @@ id,name,language,tag,package,version,date_epoch,date
 4085,@azure/arm-appcontainers@2.1.0-beta.1,js,@azure/arm-appcontainers_2.1.0-beta.1,@azure/arm-appcontainers,2.1.0-beta.1,1711007376,03/21/2024
 4086,azure-mgmt-netapp@12.0.0,python,azure-mgmt-netapp_12.0.0,azure-mgmt-netapp,12.0.0,1711002531,03/21/2024
 4087,azure-mgmt-workloadssapvirtualinstance@1.0.0b1,python,azure-mgmt-workloadssapvirtualinstance_1.0.0b1,azure-mgmt-workloadssapvirtualinstance,1.0.0b1,1711002366,03/21/2024
+4088,azure-mgmt-storageactions@1.0.0b1,python,azure-mgmt-storageactions_1.0.0b1,azure-mgmt-storageactions,1.0.0b1,1711002345,03/21/2024

@@ -4064,3 +4064,4 @@ id,name,language,tag,package,version,date_epoch,date
 4063,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v3@v3.0.0-beta.1,go,sdk/resourcemanager/appcontainers/armappcontainers/v3.0.0-beta.1,sdk/resourcemanager/appcontainers/armappcontainers,v3.0.0-beta.1,1710918630,03/20/2024
 4064,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport/v2@v2.0.0-beta.3,go,sdk/resourcemanager/support/armsupport/v2.0.0-beta.3,sdk/resourcemanager/support/armsupport,v2.0.0-beta.3,1710913634,03/20/2024
 4065,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/confluent/armconfluent@v1.3.0,go,sdk/resourcemanager/confluent/armconfluent/v1.3.0,sdk/resourcemanager/confluent/armconfluent,v1.3.0,1710913608,03/20/2024
+4066,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch@v1.4.0-beta.1,go,sdk/resourcemanager/search/armsearch/v1.4.0-beta.1,sdk/resourcemanager/search/armsearch,v1.4.0-beta.1,1710913607,03/20/2024

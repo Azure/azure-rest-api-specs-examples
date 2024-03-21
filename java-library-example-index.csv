@@ -4084,3 +4084,4 @@ id,name,language,tag,package,version,date_epoch,date
 4083,@azure/arm-containerservice@19.8.0-beta.2,js,@azure/arm-containerservice_19.8.0-beta.2,@azure/arm-containerservice,19.8.0-beta.2,1711007380,03/21/2024
 4084,@azure/arm-communication@4.1.0,js,@azure/arm-communication_4.1.0,@azure/arm-communication,4.1.0,1711007379,03/21/2024
 4085,@azure/arm-appcontainers@2.1.0-beta.1,js,@azure/arm-appcontainers_2.1.0-beta.1,@azure/arm-appcontainers,2.1.0-beta.1,1711007376,03/21/2024
+4086,azure-mgmt-netapp@12.0.0,python,azure-mgmt-netapp_12.0.0,azure-mgmt-netapp,12.0.0,1711002531,03/21/2024

@@ -4087,3 +4087,4 @@ id,name,language,tag,package,version,date_epoch,date
 4086,azure-mgmt-netapp@12.0.0,python,azure-mgmt-netapp_12.0.0,azure-mgmt-netapp,12.0.0,1711002531,03/21/2024
 4087,azure-mgmt-workloadssapvirtualinstance@1.0.0b1,python,azure-mgmt-workloadssapvirtualinstance_1.0.0b1,azure-mgmt-workloadssapvirtualinstance,1.0.0b1,1711002366,03/21/2024
 4088,azure-mgmt-storageactions@1.0.0b1,python,azure-mgmt-storageactions_1.0.0b1,azure-mgmt-storageactions,1.0.0b1,1711002345,03/21/2024
+4089,azure-mgmt-notificationhubs@8.1.0b2,python,azure-mgmt-notificationhubs_8.1.0b2,azure-mgmt-notificationhubs,8.1.0b2,1711002317,03/21/2024

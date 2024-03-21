@@ -1,0 +1,18 @@
+
+/**
+ * Samples for Sites Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2024-02-01/examples/SiteGet.json
+     */
+    /**
+     * Sample code: Get mobile network site.
+     * 
+     * @param manager Entry point to MobileNetworkManager.
+     */
+    public static void getMobileNetworkSite(com.azure.resourcemanager.mobilenetwork.MobileNetworkManager manager) {
+        manager.sites().getWithResponse("rg1", "testMobileNetwork", "testSite", com.azure.core.util.Context.NONE);
+    }
+}

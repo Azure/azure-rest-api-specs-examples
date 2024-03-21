@@ -1,0 +1,106 @@
+package armsearch_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/search/armsearch"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/cf5ad1932d00c7d15497705ad6b71171d3d68b1e/specification/search/resource-manager/Microsoft.Search/preview/2024-03-01-preview/examples/ListSupportedPrivateLinkResources.json
+func ExamplePrivateLinkResourcesClient_NewListSupportedPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armsearch.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewPrivateLinkResourcesClient().NewListSupportedPager("rg1", "mysearchservice", &armsearch.SearchManagementRequestOptions{ClientRequestID: nil}, nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.PrivateLinkResourcesResult = armsearch.PrivateLinkResourcesResult{
+		// 	Value: []*armsearch.PrivateLinkResource{
+		// 		{
+		// 			Name: to.Ptr("searchService"),
+		// 			Type: to.Ptr("Microsoft.Search/searchServices/privateLinkResources"),
+		// 			ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Search/searchServices/mysearchservice/privateLinkResources/searchService"),
+		// 			Properties: &armsearch.PrivateLinkResourceProperties{
+		// 				GroupID: to.Ptr("searchService"),
+		// 				RequiredMembers: []*string{
+		// 					to.Ptr("searchService")},
+		// 					RequiredZoneNames: []*string{
+		// 						to.Ptr("privatelink.search.windows.net")},
+		// 						ShareablePrivateLinkResourceTypes: []*armsearch.ShareablePrivateLinkResourceType{
+		// 							{
+		// 								Name: to.Ptr("blob"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.Storage/storageAccounts"),
+		// 									Description: to.Ptr("Azure AI Search indexers can connect to blobs in Azure Storage for reading data from an indexer data source, for writing intermediate results of indexer execution or for storing any knowledge store projections."),
+		// 									GroupID: to.Ptr("blob"),
+		// 								},
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("table"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.Storage/storageAccounts"),
+		// 									Description: to.Ptr("Azure AI Search indexers can connect to tables in Azure Storage for reading data from an indexer data source, for writing intermediate results of indexer execution or for storing any knowledge store projections."),
+		// 									GroupID: to.Ptr("table"),
+		// 								},
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("Sql"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.DocumentDB/databaseAccounts"),
+		// 									Description: to.Ptr("Azure AI Search indexers can connect to Azure Cosmos DB API for NoSQL for reading data from an indexer data source."),
+		// 									GroupID: to.Ptr("Sql"),
+		// 								},
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("plr"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.Sql/servers"),
+		// 									Description: to.Ptr("Azure AI Search indexers can connect to Azure SQL database on a server for reading data from an indexer data source."),
+		// 									GroupID: to.Ptr("sqlServer"),
+		// 								},
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("vault"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.KeyVault/vaults"),
+		// 									Description: to.Ptr("Azure AI Search can access keys in Azure Key Vault to encrypt sensitive data in a search index and synonym map data."),
+		// 									GroupID: to.Ptr("vault"),
+		// 								},
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("plr"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.DBforMySQL/servers"),
+		// 									Description: to.Ptr("Azure AI Search indexers can connect to MySQL databases for reading data from an indexer data source."),
+		// 									GroupID: to.Ptr("mysqlServer"),
+		// 								},
+		// 							},
+		// 							{
+		// 								Name: to.Ptr("site"),
+		// 								Properties: &armsearch.ShareablePrivateLinkResourceProperties{
+		// 									Type: to.Ptr("Microsoft.Web/sites"),
+		// 									Description: to.Ptr("For custom skills that connect to an app service, you can specify sites as the group ID."),
+		// 									GroupID: to.Ptr("sites"),
+		// 								},
+		// 						}},
+		// 					},
+		// 			}},
+		// 		}
+	}
+}

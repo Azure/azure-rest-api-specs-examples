@@ -4048,3 +4048,13 @@ id,name,language,tag,package,version,date_epoch,date
 4047,azure-mgmt-nginx@3.1.0b1,python,azure-mgmt-nginx_3.1.0b1,azure-mgmt-nginx,3.1.0b1,1710732424,03/18/2024
 4048,azure-mgmt-confluent@2.1.0,python,azure-mgmt-confluent_2.1.0,azure-mgmt-confluent,2.1.0,1710732419,03/18/2024
 4049,azure-mgmt-batch@17.3.0,python,azure-mgmt-batch_17.3.0,azure-mgmt-batch,17.3.0,1710732396,03/18/2024
+4050,com.azure.resourcemanager:azure-resourcemanager-mobilenetwork:1.1.0,java,azure-resourcemanager-mobilenetwork_1.1.0,azure-resourcemanager-mobilenetwork,1.1.0,1710898903,03/20/2024
+4051,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v6@v6.1.0,go,sdk/resourcemanager/datafactory/armdatafactory/v6.1.0,sdk/resourcemanager/datafactory/armdatafactory,v6.1.0,1710907271,03/20/2024
+4052,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quantum/armquantum@v0.8.0,go,sdk/resourcemanager/quantum/armquantum/v0.8.0,sdk/resourcemanager/quantum/armquantum,v0.8.0,1710905763,03/20/2024
+4053,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmosforpostgresql/armcosmosforpostgresql@v1.2.0-beta.1,go,sdk/resourcemanager/cosmosforpostgresql/armcosmosforpostgresql/v1.2.0-beta.1,sdk/resourcemanager/cosmosforpostgresql/armcosmosforpostgresql,v1.2.0-beta.1,1710905515,03/20/2024
+4054,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/communication/armcommunication/v2@v2.2.0,go,sdk/resourcemanager/communication/armcommunication/v2.2.0,sdk/resourcemanager/communication/armcommunication,v2.2.0,1710905373,03/20/2024
+4055,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.0.0-beta.4,go,sdk/resourcemanager/cosmos/armcosmos/v3.0.0-beta.4,sdk/resourcemanager/cosmos/armcosmos,v3.0.0-beta.4,1710905367,03/20/2024
+4056,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v4@v4.8.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v4.8.0,sdk/resourcemanager/containerservice/armcontainerservice,v4.8.0,1710903915,03/20/2024
+4057,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v5@v5.6.0,go,sdk/resourcemanager/compute/armcompute/v5.6.0,sdk/resourcemanager/compute/armcompute,v5.6.0,1710903903,03/20/2024
+4058,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotfirmwaredefense/armiotfirmwaredefense@v1.0.0,go,sdk/resourcemanager/iotfirmwaredefense/armiotfirmwaredefense/v1.0.0,sdk/resourcemanager/iotfirmwaredefense/armiotfirmwaredefense,v1.0.0,1710903895,03/20/2024
+4059,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/chaos/armchaos@v1.1.0,go,sdk/resourcemanager/chaos/armchaos/v1.1.0,sdk/resourcemanager/chaos/armchaos,v1.1.0,1710903876,03/20/2024

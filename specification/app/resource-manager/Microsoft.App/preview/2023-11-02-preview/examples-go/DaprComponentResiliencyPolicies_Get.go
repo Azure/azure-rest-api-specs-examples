@@ -1,0 +1,69 @@
+package armappcontainers_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v3"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/d74afb775446d7f0bc1810fdc5a128c56289e854/specification/app/resource-manager/Microsoft.App/preview/2023-11-02-preview/examples/DaprComponentResiliencyPolicies_Get.json
+func ExampleDaprComponentResiliencyPoliciesClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armappcontainers.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewDaprComponentResiliencyPoliciesClient().Get(ctx, "examplerg", "myenvironment", "mydaprcomponent", "myresiliencypolicy", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.DaprComponentResiliencyPolicy = armappcontainers.DaprComponentResiliencyPolicy{
+	// 	Name: to.Ptr("myresiliencypolicy"),
+	// 	Type: to.Ptr("Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies"),
+	// 	ID: to.Ptr("/subscriptions/8efdecc5-919e-44eb-b179-915dca89ebf9/resourceGroups/examplerg/providers/Microsoft.App/managedEnvironments/myenvironment/daprComponents/mydaprcomponent/resiliencyPolicies/myresiliencypolicy"),
+	// 	Properties: &armappcontainers.DaprComponentResiliencyPolicyProperties{
+	// 		InboundPolicy: &armappcontainers.DaprComponentResiliencyPolicyConfiguration{
+	// 			CircuitBreakerPolicy: &armappcontainers.DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration{
+	// 				ConsecutiveErrors: to.Ptr[int32](5),
+	// 				TimeoutInSeconds: to.Ptr[int32](10),
+	// 			},
+	// 			HTTPRetryPolicy: &armappcontainers.DaprComponentResiliencyPolicyHTTPRetryPolicyConfiguration{
+	// 				MaxRetries: to.Ptr[int32](15),
+	// 				RetryBackOff: &armappcontainers.DaprComponentResiliencyPolicyHTTPRetryBackOffConfiguration{
+	// 					InitialDelayInMilliseconds: to.Ptr[int32](2000),
+	// 					MaxIntervalInMilliseconds: to.Ptr[int32](5500),
+	// 				},
+	// 			},
+	// 			TimeoutPolicy: &armappcontainers.DaprComponentResiliencyPolicyTimeoutPolicyConfiguration{
+	// 				ResponseTimeoutInSeconds: to.Ptr[int32](30),
+	// 			},
+	// 		},
+	// 		OutboundPolicy: &armappcontainers.DaprComponentResiliencyPolicyConfiguration{
+	// 			CircuitBreakerPolicy: &armappcontainers.DaprComponentResiliencyPolicyCircuitBreakerPolicyConfiguration{
+	// 				ConsecutiveErrors: to.Ptr[int32](3),
+	// 				IntervalInSeconds: to.Ptr[int32](60),
+	// 				TimeoutInSeconds: to.Ptr[int32](20),
+	// 			},
+	// 			HTTPRetryPolicy: &armappcontainers.DaprComponentResiliencyPolicyHTTPRetryPolicyConfiguration{
+	// 				MaxRetries: to.Ptr[int32](5),
+	// 				RetryBackOff: &armappcontainers.DaprComponentResiliencyPolicyHTTPRetryBackOffConfiguration{
+	// 					InitialDelayInMilliseconds: to.Ptr[int32](100),
+	// 					MaxIntervalInMilliseconds: to.Ptr[int32](30000),
+	// 				},
+	// 			},
+	// 			TimeoutPolicy: &armappcontainers.DaprComponentResiliencyPolicyTimeoutPolicyConfiguration{
+	// 				ResponseTimeoutInSeconds: to.Ptr[int32](12),
+	// 			},
+	// 		},
+	// 	},
+	// }
+}

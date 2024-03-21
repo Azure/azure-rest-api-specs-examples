@@ -4077,3 +4077,4 @@ id,name,language,tag,package,version,date_epoch,date
 4076,@azure/arm-search@3.3.0-beta.1,js,@azure/arm-search_3.3.0-beta.1,@azure/arm-search,3.3.0-beta.1,1711009993,03/21/2024
 4077,@azure/arm-netapp@20.0.0,js,@azure/arm-netapp_20.0.0,@azure/arm-netapp,20.0.0,1711009938,03/21/2024
 4078,@azure/arm-nginx@4.0.0-beta.1,js,@azure/arm-nginx_4.0.0-beta.1,@azure/arm-nginx,4.0.0-beta.1,1711009711,03/21/2024
+4079,@azure/arm-confluent@3.1.0,js,@azure/arm-confluent_3.1.0,@azure/arm-confluent,3.1.0,1711009620,03/21/2024

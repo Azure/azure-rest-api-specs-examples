@@ -4079,3 +4079,4 @@ id,name,language,tag,package,version,date_epoch,date
 4078,@azure/arm-nginx@4.0.0-beta.1,js,@azure/arm-nginx_4.0.0-beta.1,@azure/arm-nginx,4.0.0-beta.1,1711009711,03/21/2024
 4079,@azure/arm-confluent@3.1.0,js,@azure/arm-confluent_3.1.0,@azure/arm-confluent,3.1.0,1711009620,03/21/2024
 4080,@azure/arm-datafactory@14.1.0,js,@azure/arm-datafactory_14.1.0,@azure/arm-datafactory,14.1.0,1711009394,03/21/2024
+4081,@azure/arm-compute@21.5.0,js,@azure/arm-compute_21.5.0,@azure/arm-compute,21.5.0,1711009338,03/21/2024

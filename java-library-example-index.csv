@@ -4062,3 +4062,4 @@ id,name,language,tag,package,version,date_epoch,date
 4061,com.azure.resourcemanager:azure-resourcemanager-support:1.0.0-beta.4,java,azure-resourcemanager-support_1.0.0-beta.4,azure-resourcemanager-support,1.0.0-beta.4,1710917530,03/20/2024
 4062,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.0.0-beta.7,java,azure-resourcemanager-appcontainers_1.0.0-beta.7,azure-resourcemanager-appcontainers,1.0.0-beta.7,1710913127,03/20/2024
 4063,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v3@v3.0.0-beta.1,go,sdk/resourcemanager/appcontainers/armappcontainers/v3.0.0-beta.1,sdk/resourcemanager/appcontainers/armappcontainers,v3.0.0-beta.1,1710918630,03/20/2024
+4064,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/support/armsupport/v2@v2.0.0-beta.3,go,sdk/resourcemanager/support/armsupport/v2.0.0-beta.3,sdk/resourcemanager/support/armsupport,v2.0.0-beta.3,1710913634,03/20/2024

@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.support.models.ProblemClassificationsClassificationInput;
+
+/**
+ * Samples for ProblemClassifications ClassifyProblems.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/support/resource-manager/Microsoft.Support/preview/2023-06-01-preview/examples/
+     * ClassifyProblemClassificationsForSubscription.json
+     */
+    /**
+     * Sample code: Classify list of problemClassifications for a specified Azure service for a subscription.
+     * 
+     * @param manager Entry point to SupportManager.
+     */
+    public static void classifyListOfProblemClassificationsForASpecifiedAzureServiceForASubscription(
+        com.azure.resourcemanager.support.SupportManager manager) {
+        manager.problemClassifications().classifyProblemsWithResponse("serviceId1",
+            new ProblemClassificationsClassificationInput().withIssueSummary("Can not connect to Windows VM")
+                .withResourceId(
+                    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgname/providers/Microsoft.Compute/virtualMachines/vmname"),
+            com.azure.core.util.Context.NONE);
+    }
+}

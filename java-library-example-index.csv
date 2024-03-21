@@ -4088,3 +4088,4 @@ id,name,language,tag,package,version,date_epoch,date
 4087,azure-mgmt-workloadssapvirtualinstance@1.0.0b1,python,azure-mgmt-workloadssapvirtualinstance_1.0.0b1,azure-mgmt-workloadssapvirtualinstance,1.0.0b1,1711002366,03/21/2024
 4088,azure-mgmt-storageactions@1.0.0b1,python,azure-mgmt-storageactions_1.0.0b1,azure-mgmt-storageactions,1.0.0b1,1711002345,03/21/2024
 4089,azure-mgmt-notificationhubs@8.1.0b2,python,azure-mgmt-notificationhubs_8.1.0b2,azure-mgmt-notificationhubs,8.1.0b2,1711002317,03/21/2024
+4090,azure-mgmt-quantum@1.0.0b5,python,azure-mgmt-quantum_1.0.0b5,azure-mgmt-quantum,1.0.0b5,1710998763,03/21/2024

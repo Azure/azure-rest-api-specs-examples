@@ -4099,3 +4099,4 @@ id,name,language,tag,package,version,date_epoch,date
 4098,@azure/arm-support@2.2.0-beta.2,js,@azure/arm-support_2.2.0-beta.2,@azure/arm-support,2.2.0-beta.2,1711089113,03/22/2024
 4099,@azure/arm-workloadssapvirtualinstance@1.0.0-beta.1,js,@azure/arm-workloadssapvirtualinstance_1.0.0-beta.1,@azure/arm-workloadssapvirtualinstance,1.0.0-beta.1,1711078849,03/22/2024
 4100,@azure/arm-notificationhubs@3.0.0-beta.1,js,@azure/arm-notificationhubs_3.0.0-beta.1,@azure/arm-notificationhubs,3.0.0-beta.1,1711078036,03/22/2024
+4101,@azure/arm-iotfirmwaredefense@1.0.0,js,@azure/arm-iotfirmwaredefense_1.0.0,@azure/arm-iotfirmwaredefense,1.0.0,1711077991,03/22/2024

@@ -29,7 +29,12 @@ async function updateAVMByDetachingDataDisk() {
     storageProfile: {
       dataDisks: [
         { createOption: "Empty", diskSizeGB: 1023, lun: 0, toBeDetached: true },
-        { createOption: "Empty", diskSizeGB: 1023, lun: 1, toBeDetached: false },
+        {
+          createOption: "Empty",
+          diskSizeGB: 1023,
+          lun: 1,
+          toBeDetached: false,
+        },
       ],
       imageReference: {
         offer: "WindowsServer",

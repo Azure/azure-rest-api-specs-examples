@@ -4093,3 +4093,4 @@ id,name,language,tag,package,version,date_epoch,date
 4092,com.azure.resourcemanager:azure-resourcemanager:2.37.0,java,azure-resourcemanager_2.37.0,azure-resourcemanager,2.37.0,1711093959,03/22/2024
 4093,com.azure.resourcemanager:azure-resourcemanager-workloadssapvirtualinstance:1.0.0-beta.1,java,azure-resourcemanager-workloadssapvirtualinstance_1.0.0-beta.1,azure-resourcemanager-workloadssapvirtualinstance,1.0.0-beta.1,1711093768,03/22/2024
 4094,@azure/arm-mobilenetwork@5.0.0,js,@azure/arm-mobilenetwork_5.0.0,@azure/arm-mobilenetwork,5.0.0,1711095915,03/22/2024
+4095,@azure/arm-cosmosdb@16.0.0-beta.7,js,@azure/arm-cosmosdb_16.0.0-beta.7,@azure/arm-cosmosdb,16.0.0-beta.7,1711095890,03/22/2024

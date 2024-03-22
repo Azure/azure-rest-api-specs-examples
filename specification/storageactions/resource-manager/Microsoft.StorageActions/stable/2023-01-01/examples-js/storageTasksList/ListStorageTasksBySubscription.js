@@ -1,0 +1,20 @@
+const { StorageActionsManagementClient } = require("@azure/arm-storageactions");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Lists all the storage tasks available under the subscription.
+ *
+ * @summary Lists all the storage tasks available under the subscription.
+ * x-ms-original-file: specification/storageactions/resource-manager/Microsoft.StorageActions/stable/2023-01-01/examples/storageTasksList/ListStorageTasksBySubscription.json
+ */
+async function listStorageTasksBySubscription() {
+  const subscriptionId =
+    process.env["STORAGEACTIONS_SUBSCRIPTION_ID"] || "1f31ba14-ce16-4281-b9b4-3e78da6e1616";
+  const credential = new DefaultAzureCredential();
+  const client = new StorageActionsManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.storageTasks.listBySubscription()) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

@@ -4090,3 +4090,4 @@ id,name,language,tag,package,version,date_epoch,date
 4089,azure-mgmt-notificationhubs@8.1.0b2,python,azure-mgmt-notificationhubs_8.1.0b2,azure-mgmt-notificationhubs,8.1.0b2,1711002317,03/21/2024
 4090,azure-mgmt-quantum@1.0.0b5,python,azure-mgmt-quantum_1.0.0b5,azure-mgmt-quantum,1.0.0b5,1710998763,03/21/2024
 4091,azure-mgmt-support@6.1.0b3,python,azure-mgmt-support_6.1.0b3,azure-mgmt-support,6.1.0b3,1710998704,03/21/2024
+4092,com.azure.resourcemanager:azure-resourcemanager:2.37.0,java,azure-resourcemanager_2.37.0,azure-resourcemanager,2.37.0,1711093959,03/22/2024

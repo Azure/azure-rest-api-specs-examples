@@ -1,0 +1,20 @@
+const { MobileNetworkManagementClient } = require("@azure/arm-mobilenetwork");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets information about the specified SIM.
+ *
+ * @summary Gets information about the specified SIM.
+ * x-ms-original-file: specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2024-02-01/examples/SimGet.json
+ */
+async function getSim() {
+  const subscriptionId =
+    process.env["MOBILENETWORK_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["MOBILENETWORK_RESOURCE_GROUP"] || "testResourceGroupName";
+  const simGroupName = "testSimGroup";
+  const simName = "testSimName";
+  const credential = new DefaultAzureCredential();
+  const client = new MobileNetworkManagementClient(credential, subscriptionId);
+  const result = await client.sims.get(resourceGroupName, simGroupName, simName);
+  console.log(result);
+}

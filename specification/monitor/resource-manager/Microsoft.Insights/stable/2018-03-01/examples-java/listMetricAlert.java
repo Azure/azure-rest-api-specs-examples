@@ -1,6 +1,6 @@
 
 /**
- * Samples for MetricAlerts ListByResourceGroup.
+ * Samples for MetricAlerts List.
  */
 public final class Main {
     /*
@@ -13,7 +13,6 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listMetricAlertRules(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.diagnosticSettings().manager().serviceClient().getMetricAlerts().listByResourceGroup("gigtest",
-            com.azure.core.util.Context.NONE);
+        azure.diagnosticSettings().manager().serviceClient().getMetricAlerts().list(com.azure.core.util.Context.NONE);
     }
 }

@@ -4102,3 +4102,4 @@ id,name,language,tag,package,version,date_epoch,date
 4101,@azure/arm-iotfirmwaredefense@1.0.0,js,@azure/arm-iotfirmwaredefense_1.0.0,@azure/arm-iotfirmwaredefense,1.0.0,1711077991,03/22/2024
 4102,@azure/arm-quantum@1.0.0-beta.2,js,@azure/arm-quantum_1.0.0-beta.2,@azure/arm-quantum,1.0.0-beta.2,1711077991,03/22/2024
 4103,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance@v0.1.0,go,sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance/v0.1.0,sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance,v0.1.0,1711338811,03/25/2024
+4104,@azure/arm-containerservice@19.8.0,js,@azure/arm-containerservice_19.8.0,@azure/arm-containerservice,19.8.0,1711333194,03/25/2024

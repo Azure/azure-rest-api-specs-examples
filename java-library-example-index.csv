@@ -4103,3 +4103,7 @@ id,name,language,tag,package,version,date_epoch,date
 4102,@azure/arm-quantum@1.0.0-beta.2,js,@azure/arm-quantum_1.0.0-beta.2,@azure/arm-quantum,1.0.0-beta.2,1711077991,03/22/2024
 4103,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance@v0.1.0,go,sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance/v0.1.0,sdk/resourcemanager/workloadssapvirtualinstance/armworkloadssapvirtualinstance,v0.1.0,1711338811,03/25/2024
 4104,@azure/arm-containerservice@19.8.0,js,@azure/arm-containerservice_19.8.0,@azure/arm-containerservice,19.8.0,1711333194,03/25/2024
+4105,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/sphere/armsphere@v1.0.0,go,sdk/resourcemanager/sphere/armsphere/v1.0.0,sdk/resourcemanager/sphere/armsphere,v1.0.0,1711426819,03/26/2024
+4106,@azure/arm-sphere@1.0.0,js,@azure/arm-sphere_1.0.0,@azure/arm-sphere,1.0.0,1711446741,03/26/2024
+4107,"Azure.ResourceManager.SignalR,1.1.1",dotnet,Azure.ResourceManager.SignalR_1.1.1,Azure.ResourceManager.SignalR,1.1.1,1711406531,03/25/2024
+4108,azure-mgmt-sphere@1.0.0,python,azure-mgmt-sphere_1.0.0,azure-mgmt-sphere,1.0.0,1711437752,03/26/2024

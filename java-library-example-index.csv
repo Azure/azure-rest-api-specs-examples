@@ -4109,3 +4109,4 @@ id,name,language,tag,package,version,date_epoch,date
 4108,azure-mgmt-sphere@1.0.0,python,azure-mgmt-sphere_1.0.0,azure-mgmt-sphere,1.0.0,1711437752,03/26/2024
 4109,com.azure.resourcemanager:azure-resourcemanager-sphere:1.0.0,java,azure-resourcemanager-sphere_1.0.0,azure-resourcemanager-sphere,1.0.0,1711509518,03/27/2024
 4110,azure-mgmt-iotfirmwaredefense@1.0.0,python,azure-mgmt-iotfirmwaredefense_1.0.0,azure-mgmt-iotfirmwaredefense,1.0.0,1711508950,03/27/2024
+4111,com.azure.resourcemanager:azure-resourcemanager-batch:1.1.0-beta.4,java,azure-resourcemanager-batch_1.1.0-beta.4,azure-resourcemanager-batch,1.1.0-beta.4,1711543586,03/27/2024

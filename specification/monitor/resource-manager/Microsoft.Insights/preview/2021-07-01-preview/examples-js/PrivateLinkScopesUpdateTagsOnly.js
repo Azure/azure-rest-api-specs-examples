@@ -19,7 +19,7 @@ async function privateLinkScopeUpdateTagsOnly() {
   const result = await client.privateLinkScopes.updateTags(
     resourceGroupName,
     scopeName,
-    privateLinkScopeTags
+    privateLinkScopeTags,
   );
   console.log(result);
 }

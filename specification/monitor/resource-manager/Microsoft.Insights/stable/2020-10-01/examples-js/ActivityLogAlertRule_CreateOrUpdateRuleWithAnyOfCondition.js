@@ -44,7 +44,7 @@ async function createOrUpdateAnActivityLogAlertRuleWithAnyOfCondition() {
   const result = await client.activityLogAlerts.createOrUpdate(
     resourceGroupName,
     activityLogAlertName,
-    activityLogAlertRule
+    activityLogAlertRule,
   );
   console.log(result);
 }

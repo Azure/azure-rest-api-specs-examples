@@ -18,7 +18,7 @@ async function getsPrivateEndpointConnection() {
   const result = await client.privateEndpointConnections.get(
     resourceGroupName,
     scopeName,
-    privateEndpointConnectionName
+    privateEndpointConnectionName,
   );
   console.log(result);
 }

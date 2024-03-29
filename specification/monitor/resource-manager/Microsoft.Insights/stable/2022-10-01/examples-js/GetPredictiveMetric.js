@@ -26,7 +26,7 @@ async function getMetricForData() {
     interval,
     metricNamespace,
     metricName,
-    aggregation
+    aggregation,
   );
   console.log(result);
 }

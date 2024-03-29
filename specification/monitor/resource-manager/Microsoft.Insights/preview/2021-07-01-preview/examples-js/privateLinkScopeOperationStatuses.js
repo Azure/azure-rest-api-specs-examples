@@ -16,7 +16,7 @@ async function getSpecificOperationStatus() {
   const client = new MonitorClient(credential, subscriptionId);
   const result = await client.privateLinkScopeOperationStatus.get(
     asyncOperationId,
-    resourceGroupName
+    resourceGroupName,
   );
   console.log(result);
 }

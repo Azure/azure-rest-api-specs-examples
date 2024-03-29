@@ -139,7 +139,7 @@ async function createOrUpdateAnAutoscaleSetting() {
   const result = await client.autoscaleSettings.createOrUpdate(
     resourceGroupName,
     autoscaleSettingName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

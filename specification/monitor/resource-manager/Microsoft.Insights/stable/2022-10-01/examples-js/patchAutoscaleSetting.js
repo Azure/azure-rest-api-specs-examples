@@ -138,7 +138,7 @@ async function patchAnAutoscaleSetting() {
   const result = await client.autoscaleSettings.update(
     resourceGroupName,
     autoscaleSettingName,
-    autoscaleSettingResource
+    autoscaleSettingResource,
   );
   console.log(result);
 }

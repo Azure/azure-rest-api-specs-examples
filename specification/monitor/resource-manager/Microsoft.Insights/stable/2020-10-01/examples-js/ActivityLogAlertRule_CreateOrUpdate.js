@@ -39,7 +39,7 @@ async function createOrUpdateAnActivityLogAlertRule() {
   const result = await client.activityLogAlerts.createOrUpdate(
     resourceGroupName,
     activityLogAlertName,
-    activityLogAlertRule
+    activityLogAlertRule,
   );
   console.log(result);
 }

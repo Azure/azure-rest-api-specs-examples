@@ -21,7 +21,7 @@ async function patchAnActivityLogAlertRule() {
   const result = await client.activityLogAlerts.update(
     resourceGroupName,
     activityLogAlertName,
-    activityLogAlertRulePatch
+    activityLogAlertRulePatch,
   );
   console.log(result);
 }

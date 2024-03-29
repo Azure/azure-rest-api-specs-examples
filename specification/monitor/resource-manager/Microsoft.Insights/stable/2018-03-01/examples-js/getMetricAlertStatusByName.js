@@ -19,7 +19,7 @@ async function getAnAlertRuleStatus() {
   const result = await client.metricAlertsStatus.listByName(
     resourceGroupName,
     ruleName,
-    statusName
+    statusName,
   );
   console.log(result);
 }

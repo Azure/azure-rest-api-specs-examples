@@ -4110,3 +4110,4 @@ id,name,language,tag,package,version,date_epoch,date
 4109,com.azure.resourcemanager:azure-resourcemanager-sphere:1.0.0,java,azure-resourcemanager-sphere_1.0.0,azure-resourcemanager-sphere,1.0.0,1711509518,03/27/2024
 4110,azure-mgmt-iotfirmwaredefense@1.0.0,python,azure-mgmt-iotfirmwaredefense_1.0.0,azure-mgmt-iotfirmwaredefense,1.0.0,1711508950,03/27/2024
 4111,com.azure.resourcemanager:azure-resourcemanager-batch:1.1.0-beta.4,java,azure-resourcemanager-batch_1.1.0-beta.4,azure-resourcemanager-batch,1.1.0-beta.4,1711543586,03/27/2024
+4112,@azure/arm-monitor@8.0.0-beta.5,js,@azure/arm-monitor_8.0.0-beta.5,@azure/arm-monitor,8.0.0-beta.5,1711707427,03/29/2024

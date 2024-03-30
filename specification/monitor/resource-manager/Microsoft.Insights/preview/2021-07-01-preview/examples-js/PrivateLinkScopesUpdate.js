@@ -26,7 +26,7 @@ async function privateLinkScopeUpdate() {
   const result = await client.privateLinkScopes.createOrUpdate(
     resourceGroupName,
     scopeName,
-    azureMonitorPrivateLinkScopePayload
+    azureMonitorPrivateLinkScopePayload,
   );
   console.log(result);
 }

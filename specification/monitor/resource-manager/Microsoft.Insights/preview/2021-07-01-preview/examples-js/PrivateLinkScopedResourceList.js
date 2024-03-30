@@ -17,7 +17,7 @@ async function getsListOfScopedResourcesInAPrivateLinkScope() {
   const resArray = new Array();
   for await (let item of client.privateLinkScopedResources.listByPrivateLinkScope(
     resourceGroupName,
-    scopeName
+    scopeName,
   )) {
     resArray.push(item);
   }

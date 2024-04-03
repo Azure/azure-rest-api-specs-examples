@@ -4111,3 +4111,4 @@ id,name,language,tag,package,version,date_epoch,date
 4110,azure-mgmt-iotfirmwaredefense@1.0.0,python,azure-mgmt-iotfirmwaredefense_1.0.0,azure-mgmt-iotfirmwaredefense,1.0.0,1711508950,03/27/2024
 4111,com.azure.resourcemanager:azure-resourcemanager-batch:1.1.0-beta.4,java,azure-resourcemanager-batch_1.1.0-beta.4,azure-resourcemanager-batch,1.1.0-beta.4,1711543586,03/27/2024
 4112,@azure/arm-monitor@8.0.0-beta.5,js,@azure/arm-monitor_8.0.0-beta.5,@azure/arm-monitor,8.0.0-beta.5,1711707427,03/29/2024
+4113,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v5@v5.1.1,go,sdk/resourcemanager/network/armnetwork/v5.1.1,sdk/resourcemanager/network/armnetwork,v5.1.1,1712044363,04/02/2024

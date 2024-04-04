@@ -4117,3 +4117,4 @@ id,name,language,tag,package,version,date_epoch,date
 4116,@azure/arm-migrationdiscoverysap@1.0.0-beta.1,js,@azure/arm-migrationdiscoverysap_1.0.0-beta.1,@azure/arm-migrationdiscoverysap,1.0.0-beta.1,1712025822,04/02/2024
 4117,azure-mgmt-containerservicefleet@1.1.0,python,azure-mgmt-containerservicefleet_1.1.0,azure-mgmt-containerservicefleet,1.1.0,1712129008,04/03/2024
 4118,@azure/arm-containerservicefleet@1.1.0-beta.1,js,@azure/arm-containerservicefleet_1.1.0-beta.1,@azure/arm-containerservicefleet,1.1.0-beta.1,1712143948,04/03/2024
+4119,@azure/arm-hdinsightcontainers@1.0.0-beta.2,js,@azure/arm-hdinsightcontainers_1.0.0-beta.2,@azure/arm-hdinsightcontainers,1.0.0-beta.2,1712143335,04/03/2024

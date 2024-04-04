@@ -1,0 +1,20 @@
+const { WorkloadsClient } = require("@azure/arm-migrationdiscoverysap");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets all SAP Migration discovery site resources in a Subscription.
+ *
+ * @summary Gets all SAP Migration discovery site resources in a Subscription.
+ * x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/SAPDiscoverySites/preview/2023-10-01-preview/examples/SAPDiscoverySites_ListBySubscription.json
+ */
+async function listSapMigrationDiscoverySiteResourcesInASubscription() {
+  const subscriptionId =
+    process.env["MIGRATIONDISCOVERY_SUBSCRIPTION_ID"] || "6d875e77-e412-4d7d-9af4-8895278b4443";
+  const credential = new DefaultAzureCredential();
+  const client = new WorkloadsClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.sapDiscoverySites.listBySubscription()) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

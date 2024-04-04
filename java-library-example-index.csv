@@ -4112,3 +4112,7 @@ id,name,language,tag,package,version,date_epoch,date
 4111,com.azure.resourcemanager:azure-resourcemanager-batch:1.1.0-beta.4,java,azure-resourcemanager-batch_1.1.0-beta.4,azure-resourcemanager-batch,1.1.0-beta.4,1711543586,03/27/2024
 4112,@azure/arm-monitor@8.0.0-beta.5,js,@azure/arm-monitor_8.0.0-beta.5,@azure/arm-monitor,8.0.0-beta.5,1711707427,03/29/2024
 4113,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v5@v5.1.1,go,sdk/resourcemanager/network/armnetwork/v5.1.1,sdk/resourcemanager/network/armnetwork,v5.1.1,1712044363,04/02/2024
+4114,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers@v0.3.0,go,sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers/v0.3.0,sdk/resourcemanager/hdinsightcontainers/armhdinsightcontainers,v0.3.0,1712122213,04/03/2024
+4115,@azure/arm-cosmosdbforpostgresql@1.1.0-beta.1,js,@azure/arm-cosmosdbforpostgresql_1.1.0-beta.1,@azure/arm-cosmosdbforpostgresql,1.1.0-beta.1,1712027008,04/02/2024
+4116,@azure/arm-migrationdiscoverysap@1.0.0-beta.1,js,@azure/arm-migrationdiscoverysap_1.0.0-beta.1,@azure/arm-migrationdiscoverysap,1.0.0-beta.1,1712025822,04/02/2024
+4117,azure-mgmt-containerservicefleet@1.1.0,python,azure-mgmt-containerservicefleet_1.1.0,azure-mgmt-containerservicefleet,1.1.0,1712129008,04/03/2024

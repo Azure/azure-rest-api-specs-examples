@@ -6,7 +6,7 @@ from azure.mgmt.migrationdiscoverysap import MigrationDiscoverySapMgmtClient
     pip install azure-identity
     pip install azure-mgmt-migrationdiscoverysap
 # USAGE
-    python operations_list.py
+    python sap_discovery_sites_delete.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -18,14 +18,15 @@ from azure.mgmt.migrationdiscoverysap import MigrationDiscoverySapMgmtClient
 def main():
     client = MigrationDiscoverySapMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="SUBSCRIPTION_ID",
+        subscription_id="6d875e77-e412-4d7d-9af4-8895278b4443",
     )
 
-    response = client.operations.list()
-    for item in response:
-        print(item)
+    client.sap_discovery_sites.begin_delete(
+        resource_group_name="test-rg",
+        sap_discovery_site_name="SampleSite",
+    ).result()
 
 
-# x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/operations/preview/2023-10-01-preview/examples/Operations_List.json
+# x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/SAPDiscoverySites/preview/2023-10-01-preview/examples/SAPDiscoverySites_Delete.json
 if __name__ == "__main__":
     main()

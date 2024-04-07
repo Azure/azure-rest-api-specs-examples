@@ -4121,3 +4121,4 @@ id,name,language,tag,package,version,date_epoch,date
 4120,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservicefleet/armcontainerservicefleet@v1.2.0-beta.1,go,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet/v1.2.0-beta.1,sdk/resourcemanager/containerservicefleet/armcontainerservicefleet,v1.2.0-beta.1,1712473757,04/07/2024
 4121,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/migrationdiscovery/armmigrationdiscoverysap@v0.1.0,go,sdk/resourcemanager/migrationdiscovery/armmigrationdiscoverysap/v0.1.0,sdk/resourcemanager/migrationdiscovery/armmigrationdiscoverysap,v0.1.0,1712472033,04/07/2024
 4122,azure-mgmt-migrationdiscoverysap@1.0.0b1,python,azure-mgmt-migrationdiscoverysap_1.0.0b1,azure-mgmt-migrationdiscoverysap,1.0.0b1,1712475322,04/07/2024
+4123,azure-mgmt-sql@4.0.0b16,python,azure-mgmt-sql_4.0.0b16,azure-mgmt-sql,4.0.0b16,1712468399,04/07/2024

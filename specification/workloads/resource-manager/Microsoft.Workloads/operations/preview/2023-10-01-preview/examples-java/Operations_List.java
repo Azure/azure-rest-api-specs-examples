@@ -11,10 +11,10 @@ public final class Main {
     /**
      * Sample code: List the operations for the provider.
      * 
-     * @param manager Entry point to WorkloadsSapVirtualInstanceManager.
+     * @param manager Entry point to MigrationDiscoverySapManager.
      */
     public static void listTheOperationsForTheProvider(
-        com.azure.resourcemanager.workloadssapvirtualinstance.WorkloadsSapVirtualInstanceManager manager) {
+        com.azure.resourcemanager.migrationdiscoverysap.MigrationDiscoverySapManager manager) {
         manager.operations().list(com.azure.core.util.Context.NONE);
     }
 }

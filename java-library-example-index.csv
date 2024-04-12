@@ -4124,3 +4124,4 @@ id,name,language,tag,package,version,date_epoch,date
 4123,azure-mgmt-sql@4.0.0b16,python,azure-mgmt-sql_4.0.0b16,azure-mgmt-sql,4.0.0b16,1712468399,04/07/2024
 4124,azure-mgmt-hdinsightcontainers@1.0.0b2,python,azure-mgmt-hdinsightcontainers_1.0.0b2,azure-mgmt-hdinsightcontainers,1.0.0b2,1712468390,04/07/2024
 4125,com.azure.resourcemanager:azure-resourcemanager-migrationdiscoverysap:1.0.0-beta.1,java,azure-resourcemanager-migrationdiscoverysap_1.0.0-beta.1,azure-resourcemanager-migrationdiscoverysap,1.0.0-beta.1,1712716555,04/10/2024
+4126,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.1.0-beta.1,java,azure-resourcemanager-containerservicefleet_1.1.0-beta.1,azure-resourcemanager-containerservicefleet,1.1.0-beta.1,1712809121,04/11/2024

@@ -4126,3 +4126,4 @@ id,name,language,tag,package,version,date_epoch,date
 4125,com.azure.resourcemanager:azure-resourcemanager-migrationdiscoverysap:1.0.0-beta.1,java,azure-resourcemanager-migrationdiscoverysap_1.0.0-beta.1,azure-resourcemanager-migrationdiscoverysap,1.0.0-beta.1,1712716555,04/10/2024
 4126,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.1.0-beta.1,java,azure-resourcemanager-containerservicefleet_1.1.0-beta.1,azure-resourcemanager-containerservicefleet,1.1.0-beta.1,1712809121,04/11/2024
 4127,com.azure.resourcemanager:azure-resourcemanager-frontdoor:1.0.0,java,azure-resourcemanager-frontdoor_1.0.0,azure-resourcemanager-frontdoor,1.0.0,1713163499,04/15/2024
+4128,com.azure.resourcemanager:azure-resourcemanager-healthcareapis:1.1.0,java,azure-resourcemanager-healthcareapis_1.1.0,azure-resourcemanager-healthcareapis,1.1.0,1713151811,04/15/2024

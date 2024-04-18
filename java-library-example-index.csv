@@ -4129,3 +4129,4 @@ id,name,language,tag,package,version,date_epoch,date
 4128,com.azure.resourcemanager:azure-resourcemanager-healthcareapis:1.1.0,java,azure-resourcemanager-healthcareapis_1.1.0,azure-resourcemanager-healthcareapis,1.1.0,1713151811,04/15/2024
 4129,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/frontdoor/armfrontdoor@v1.4.0,go,sdk/resourcemanager/frontdoor/armfrontdoor/v1.4.0,sdk/resourcemanager/frontdoor/armfrontdoor,v1.4.0,1713151284,04/15/2024
 4130,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v2@v2.2.0,go,sdk/resourcemanager/cdn/armcdn/v2.2.0,sdk/resourcemanager/cdn/armcdn,v2.2.0,1713151275,04/15/2024
+4131,com.azure.resourcemanager:azure-resourcemanager:2.38.0,java,azure-resourcemanager_2.38.0,azure-resourcemanager,2.38.0,1713267637,04/16/2024

@@ -4130,3 +4130,5 @@ id,name,language,tag,package,version,date_epoch,date
 4129,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/frontdoor/armfrontdoor@v1.4.0,go,sdk/resourcemanager/frontdoor/armfrontdoor/v1.4.0,sdk/resourcemanager/frontdoor/armfrontdoor,v1.4.0,1713151284,04/15/2024
 4130,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cdn/armcdn/v2@v2.2.0,go,sdk/resourcemanager/cdn/armcdn/v2.2.0,sdk/resourcemanager/cdn/armcdn,v2.2.0,1713151275,04/15/2024
 4131,com.azure.resourcemanager:azure-resourcemanager:2.38.0,java,azure-resourcemanager_2.38.0,azure-resourcemanager,2.38.0,1713267637,04/16/2024
+4132,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.28,java,azure-resourcemanager-datafactory_1.0.0-beta.28,azure-resourcemanager-datafactory,1.0.0-beta.28,1713435491,04/18/2024
+4133,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.1.0-beta.3,java,azure-resourcemanager-postgresqlflexibleserver_1.1.0-beta.3,azure-resourcemanager-postgresqlflexibleserver,1.1.0-beta.3,1713423386,04/18/2024

@@ -4133,3 +4133,4 @@ id,name,language,tag,package,version,date_epoch,date
 4132,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.28,java,azure-resourcemanager-datafactory_1.0.0-beta.28,azure-resourcemanager-datafactory,1.0.0-beta.28,1713435491,04/18/2024
 4133,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.1.0-beta.3,java,azure-resourcemanager-postgresqlflexibleserver_1.1.0-beta.3,azure-resourcemanager-postgresqlflexibleserver,1.1.0-beta.3,1713423386,04/18/2024
 4134,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/standbypool/armstandbypool@v0.1.0,go,sdk/resourcemanager/standbypool/armstandbypool/v0.1.0,sdk/resourcemanager/standbypool/armstandbypool,v0.1.0,1713771211,04/22/2024
+4135,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceregistry/armdeviceregistry@v0.1.0,go,sdk/resourcemanager/deviceregistry/armdeviceregistry/v0.1.0,sdk/resourcemanager/deviceregistry/armdeviceregistry,v0.1.0,1713769536,04/22/2024

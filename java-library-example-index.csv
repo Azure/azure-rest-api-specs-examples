@@ -4144,3 +4144,4 @@ id,name,language,tag,package,version,date_epoch,date
 4143,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota@v1.1.0-beta.1,go,sdk/resourcemanager/quota/armquota/v1.1.0-beta.1,sdk/resourcemanager/quota/armquota,v1.1.0-beta.1,1713754619,04/22/2024
 4144,azure-mgmt-recoveryservicesbackup@9.1.0,python,azure-mgmt-recoveryservicesbackup_9.1.0,azure-mgmt-recoveryservicesbackup,9.1.0,1713767745,04/22/2024
 4145,azure-mgmt-rdbms@10.2.0b16,python,azure-mgmt-rdbms_10.2.0b16,azure-mgmt-rdbms,10.2.0b16,1713765409,04/22/2024
+4146,azure-mgmt-recoveryservices@3.0.0,python,azure-mgmt-recoveryservices_3.0.0,azure-mgmt-recoveryservices,3.0.0,1713765357,04/22/2024

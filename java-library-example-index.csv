@@ -4149,3 +4149,4 @@ id,name,language,tag,package,version,date_epoch,date
 4148,azure-mgmt-containerservice@30.0.0,python,azure-mgmt-containerservice_30.0.0,azure-mgmt-containerservice,30.0.0,1713765324,04/22/2024
 4149,azure-mgmt-confidentialledger@2.0.0b4,python,azure-mgmt-confidentialledger_2.0.0b4,azure-mgmt-confidentialledger,2.0.0b4,1713765309,04/22/2024
 4150,azure-mgmt-healthcareapis@2.1.0,python,azure-mgmt-healthcareapis_2.1.0,azure-mgmt-healthcareapis,2.1.0,1713765267,04/22/2024
+4151,@azure/arm-frontdoor@5.3.0,js,@azure/arm-frontdoor_5.3.0,@azure/arm-frontdoor,5.3.0,1713172492,04/15/2024

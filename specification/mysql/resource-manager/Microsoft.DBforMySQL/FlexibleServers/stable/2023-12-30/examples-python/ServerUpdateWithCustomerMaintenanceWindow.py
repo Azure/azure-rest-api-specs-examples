@@ -1,0 +1,41 @@
+from typing import Any, IO, Union
+
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.rdbms.mysql_flexibleservers import MySQLManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-rdbms
+# USAGE
+    python server_update_with_customer_maintenance_window.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = MySQLManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="ffffffff-ffff-ffff-ffff-ffffffffffff",
+    )
+
+    response = client.servers.begin_update(
+        resource_group_name="testrg",
+        server_name="mysqltestserver",
+        parameters={
+            "properties": {
+                "maintenanceWindow": {"customWindow": "Enabled", "dayOfWeek": 1, "startHour": 8, "startMinute": 0}
+            }
+        },
+    ).result()
+    print(response)
+
+
+# x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerUpdateWithCustomerMaintenanceWindow.json
+if __name__ == "__main__":
+    main()

@@ -4152,3 +4152,4 @@ id,name,language,tag,package,version,date_epoch,date
 4151,@azure/arm-frontdoor@5.3.0,js,@azure/arm-frontdoor_5.3.0,@azure/arm-frontdoor,5.3.0,1713172492,04/15/2024
 4152,@azure/arm-cdn@9.1.0,js,@azure/arm-cdn_9.1.0,@azure/arm-cdn,9.1.0,1713168359,04/15/2024
 4153,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.4,java,azure-resourcemanager-hybridcompute_1.0.0-beta.4,azure-resourcemanager-hybridcompute,1.0.0-beta.4,1713864248,04/23/2024
+4154,com.azure.resourcemanager:azure-resourcemanager-support:1.0.0,java,azure-resourcemanager-support_1.0.0,azure-resourcemanager-support,1.0.0,1713855438,04/23/2024

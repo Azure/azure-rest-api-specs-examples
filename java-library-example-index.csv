@@ -4154,3 +4154,4 @@ id,name,language,tag,package,version,date_epoch,date
 4153,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.4,java,azure-resourcemanager-hybridcompute_1.0.0-beta.4,azure-resourcemanager-hybridcompute,1.0.0-beta.4,1713864248,04/23/2024
 4154,com.azure.resourcemanager:azure-resourcemanager-support:1.0.0,java,azure-resourcemanager-support_1.0.0,azure-resourcemanager-support,1.0.0,1713855438,04/23/2024
 4155,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.0.0-beta.4,java,azure-resourcemanager-confidentialledger_1.0.0-beta.4,azure-resourcemanager-confidentialledger,1.0.0-beta.4,1713851058,04/23/2024
+4156,com.azure.resourcemanager:azure-resourcemanager-selfhelp:1.1.0-beta.3,java,azure-resourcemanager-selfhelp_1.1.0-beta.3,azure-resourcemanager-selfhelp,1.1.0-beta.3,1713843387,04/23/2024

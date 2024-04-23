@@ -22,7 +22,7 @@ async function updatesAnExperiment() {
     resourceGroupName,
     profileName,
     experimentName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

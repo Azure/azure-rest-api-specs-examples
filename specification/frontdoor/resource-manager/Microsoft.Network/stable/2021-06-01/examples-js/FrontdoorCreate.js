@@ -125,7 +125,7 @@ async function createOrUpdateSpecificFrontDoor() {
   const result = await client.frontDoors.beginCreateOrUpdateAndWait(
     resourceGroupName,
     frontDoorName,
-    frontDoorParameters
+    frontDoorParameters,
   );
   console.log(result);
 }

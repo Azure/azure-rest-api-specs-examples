@@ -19,7 +19,7 @@ async function getsALatencyScorecardForAGivenExperiment() {
     resourceGroupName,
     profileName,
     experimentName,
-    aggregationInterval
+    aggregationInterval,
   );
   console.log(result);
 }

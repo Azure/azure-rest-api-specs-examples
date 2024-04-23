@@ -20,7 +20,7 @@ async function updatesAnExperiment() {
   const result = await client.networkExperimentProfiles.beginUpdateAndWait(
     resourceGroupName,
     profileName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

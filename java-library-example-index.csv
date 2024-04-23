@@ -4157,3 +4157,4 @@ id,name,language,tag,package,version,date_epoch,date
 4156,com.azure.resourcemanager:azure-resourcemanager-selfhelp:1.1.0-beta.3,java,azure-resourcemanager-selfhelp_1.1.0-beta.3,azure-resourcemanager-selfhelp,1.1.0-beta.3,1713843387,04/23/2024
 4157,com.azure.resourcemanager:azure-resourcemanager-devcenter:1.0.0-beta.7,java,azure-resourcemanager-devcenter_1.0.0-beta.7,azure-resourcemanager-devcenter,1.0.0-beta.7,1713841743,04/23/2024
 4158,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v5@v5.0.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v5.0.0,sdk/resourcemanager/containerservice/armcontainerservice,v5.0.0,1713864021,04/23/2024
+4159,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter/v2@v2.0.0,go,sdk/resourcemanager/devcenter/armdevcenter/v2.0.0,sdk/resourcemanager/devcenter/armdevcenter,v2.0.0,1713863847,04/23/2024

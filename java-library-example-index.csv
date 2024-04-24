@@ -4161,3 +4161,4 @@ id,name,language,tag,package,version,date_epoch,date
 4160,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.1,java,azure-resourcemanager-quota_1.1.0-beta.1,azure-resourcemanager-quota,1.1.0-beta.1,1713950103,04/24/2024
 4161,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.1,java,azure-resourcemanager-edgezones_1.0.0-beta.1,azure-resourcemanager-edgezones,1.0.0-beta.1,1713935605,04/24/2024
 4162,azure-mgmt-standbypool@1.0.0b1,python,azure-mgmt-standbypool_1.0.0b1,azure-mgmt-standbypool,1.0.0b1,1713937226,04/24/2024
+4163,azure-mgmt-deviceregistry@1.0.0b1,python,azure-mgmt-deviceregistry_1.0.0b1,azure-mgmt-deviceregistry,1.0.0b1,1713937216,04/24/2024

@@ -4164,3 +4164,4 @@ id,name,language,tag,package,version,date_epoch,date
 4163,azure-mgmt-deviceregistry@1.0.0b1,python,azure-mgmt-deviceregistry_1.0.0b1,azure-mgmt-deviceregistry,1.0.0b1,1713937216,04/24/2024
 4164,azure-mgmt-devcenter@1.1.0,python,azure-mgmt-devcenter_1.1.0,azure-mgmt-devcenter,1.1.0,1713937199,04/24/2024
 4165,azure-mgmt-quota@2.0.0b1,python,azure-mgmt-quota_2.0.0b1,azure-mgmt-quota,2.0.0b1,1713937191,04/24/2024
+4166,azure-mgmt-selfhelp@2.0.0b3,python,azure-mgmt-selfhelp_2.0.0b3,azure-mgmt-selfhelp,2.0.0b3,1713937187,04/24/2024

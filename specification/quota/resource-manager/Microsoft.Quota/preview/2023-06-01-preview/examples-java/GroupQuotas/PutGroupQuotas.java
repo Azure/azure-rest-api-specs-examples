@@ -1,0 +1,31 @@
+
+import com.azure.resourcemanager.quota.fluent.models.GroupQuotasEntityInner;
+import com.azure.resourcemanager.quota.models.AdditionalAttributes;
+import com.azure.resourcemanager.quota.models.EnvironmentType;
+import com.azure.resourcemanager.quota.models.GroupQuotasEntityBase;
+import com.azure.resourcemanager.quota.models.GroupingId;
+import com.azure.resourcemanager.quota.models.GroupingIdType;
+
+/**
+ * Samples for GroupQuotas CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/quota/resource-manager/Microsoft.Quota/preview/2023-06-01-preview/examples/GroupQuotas/
+     * PutGroupQuotas.json
+     */
+    /**
+     * Sample code: GroupQuotas_Put_Request_ForCompute.
+     * 
+     * @param manager Entry point to QuotaManager.
+     */
+    public static void groupQuotasPutRequestForCompute(com.azure.resourcemanager.quota.QuotaManager manager) {
+        manager.groupQuotas().createOrUpdate("E7EC67B3-7657-4966-BFFC-41EFD36BAA09", "groupquota1",
+            new GroupQuotasEntityInner().withProperties(new GroupQuotasEntityBase().withDisplayName("GroupQuota1")
+                .withAdditionalAttributes(new AdditionalAttributes().withGroupId(new GroupingId()
+                    .withGroupingIdType(GroupingIdType.SERVICE_TREE_ID).withValue("yourServiceTreeIdHere"))
+                    .withEnvironment(EnvironmentType.PRODUCTION))),
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,19 @@
+
+/**
+ * Samples for ProjectCatalogs Connect.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2024-02-01/examples/ProjectCatalogs_Connect.
+     * json
+     */
+    /**
+     * Sample code: ProjectCatalogs_Connect.
+     * 
+     * @param manager Entry point to DevCenterManager.
+     */
+    public static void projectCatalogsConnect(com.azure.resourcemanager.devcenter.DevCenterManager manager) {
+        manager.projectCatalogs().connect("rg1", "DevProject", "CentralCatalog", com.azure.core.util.Context.NONE);
+    }
+}

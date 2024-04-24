@@ -4159,3 +4159,4 @@ id,name,language,tag,package,version,date_epoch,date
 4158,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v5@v5.0.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v5.0.0,sdk/resourcemanager/containerservice/armcontainerservice,v5.0.0,1713864021,04/23/2024
 4159,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devcenter/armdevcenter/v2@v2.0.0,go,sdk/resourcemanager/devcenter/armdevcenter/v2.0.0,sdk/resourcemanager/devcenter/armdevcenter,v2.0.0,1713863847,04/23/2024
 4160,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.1,java,azure-resourcemanager-quota_1.1.0-beta.1,azure-resourcemanager-quota,1.1.0-beta.1,1713950103,04/24/2024
+4161,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.1,java,azure-resourcemanager-edgezones_1.0.0-beta.1,azure-resourcemanager-edgezones,1.0.0-beta.1,1713935605,04/24/2024

@@ -4168,3 +4168,4 @@ id,name,language,tag,package,version,date_epoch,date
 4167,azure-mgmt-hybridcompute@9.0.0b2,python,azure-mgmt-hybridcompute_9.0.0b2,azure-mgmt-hybridcompute,9.0.0b2,1713937173,04/24/2024
 4168,azure-mgmt-support@7.0.0,python,azure-mgmt-support_7.0.0,azure-mgmt-support,7.0.0,1713937172,04/24/2024
 4169,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v7@v7.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v7.0.0,sdk/resourcemanager/datafactory/armdatafactory,v7.0.0,1714024374,04/25/2024
+4170,azure-mgmt-compute@31.0.0,python,azure-mgmt-compute_31.0.0,azure-mgmt-compute,31.0.0,1714026358,04/25/2024

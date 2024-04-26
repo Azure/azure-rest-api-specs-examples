@@ -4169,3 +4169,4 @@ id,name,language,tag,package,version,date_epoch,date
 4168,azure-mgmt-support@7.0.0,python,azure-mgmt-support_7.0.0,azure-mgmt-support,7.0.0,1713937172,04/24/2024
 4169,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v7@v7.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v7.0.0,sdk/resourcemanager/datafactory/armdatafactory,v7.0.0,1714024374,04/25/2024
 4170,azure-mgmt-compute@31.0.0,python,azure-mgmt-compute_31.0.0,azure-mgmt-compute,31.0.0,1714026358,04/25/2024
+4171,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v5@v5.1.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v5.1.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v5.1.0-beta.1,1714112481,04/26/2024

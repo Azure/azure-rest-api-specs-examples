@@ -4176,3 +4176,4 @@ id,name,language,tag,package,version,date_epoch,date
 4175,@azure/arm-healthcareapis@3.1.0,js,@azure/arm-healthcareapis_3.1.0,@azure/arm-healthcareapis,3.1.0,1714117949,04/26/2024
 4176,@azure/arm-devcenter@1.1.0,js,@azure/arm-devcenter_1.1.0,@azure/arm-devcenter,1.1.0,1714117917,04/26/2024
 4177,@azure/arm-support@3.0.0,js,@azure/arm-support_3.0.0,@azure/arm-support,3.0.0,1714109802,04/26/2024
+4178,@azure/arm-hybridcompute@4.0.0-beta.1,js,@azure/arm-hybridcompute_4.0.0-beta.1,@azure/arm-hybridcompute,4.0.0-beta.1,1714104571,04/26/2024

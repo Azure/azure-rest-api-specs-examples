@@ -4180,3 +4180,4 @@ id,name,language,tag,package,version,date_epoch,date
 4179,@azure/arm-postgresql-flexible@8.0.0-beta.6,js,@azure/arm-postgresql-flexible_8.0.0-beta.6,@azure/arm-postgresql-flexible,8.0.0-beta.6,1714104176,04/26/2024
 4180,@azure/arm-quota@1.1.0-beta.1,js,@azure/arm-quota_1.1.0-beta.1,@azure/arm-quota,1.1.0-beta.1,1714103793,04/26/2024
 4181,@azure/arm-confidentialledger@1.3.0-beta.2,js,@azure/arm-confidentialledger_1.3.0-beta.2,@azure/arm-confidentialledger,1.3.0-beta.2,1714103551,04/26/2024
+4182,@azure/arm-standbypool@1.0.0-beta.1,js,@azure/arm-standbypool_1.0.0-beta.1,@azure/arm-standbypool,1.0.0-beta.1,1714055202,04/25/2024

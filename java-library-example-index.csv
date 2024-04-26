@@ -4177,3 +4177,4 @@ id,name,language,tag,package,version,date_epoch,date
 4176,@azure/arm-devcenter@1.1.0,js,@azure/arm-devcenter_1.1.0,@azure/arm-devcenter,1.1.0,1714117917,04/26/2024
 4177,@azure/arm-support@3.0.0,js,@azure/arm-support_3.0.0,@azure/arm-support,3.0.0,1714109802,04/26/2024
 4178,@azure/arm-hybridcompute@4.0.0-beta.1,js,@azure/arm-hybridcompute_4.0.0-beta.1,@azure/arm-hybridcompute,4.0.0-beta.1,1714104571,04/26/2024
+4179,@azure/arm-postgresql-flexible@8.0.0-beta.6,js,@azure/arm-postgresql-flexible_8.0.0-beta.6,@azure/arm-postgresql-flexible,8.0.0-beta.6,1714104176,04/26/2024

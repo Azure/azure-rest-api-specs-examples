@@ -5,10 +5,10 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v6"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v7"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/01a71545e82bb98b8137d3038150c436d46a59ed/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Credentials_ListByFactory.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/92de53a5f1e0e03c94b40475d2135d97148ed014/specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Credentials_ListByFactory.json
 func ExampleCredentialOperationsClient_NewListByFactoryPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -31,7 +31,7 @@ func ExampleCredentialOperationsClient_NewListByFactoryPager() {
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 		// page.CredentialListResponse = armdatafactory.CredentialListResponse{
-		// 	Value: []*armdatafactory.ManagedIdentityCredentialResource{
+		// 	Value: []*armdatafactory.CredentialResource{
 		// 		{
 		// 			Name: to.Ptr("exampleLinkedService"),
 		// 			Type: to.Ptr("Microsoft.DataFactory/factories/credentials"),
@@ -40,8 +40,10 @@ func ExampleCredentialOperationsClient_NewListByFactoryPager() {
 		// 			Properties: &armdatafactory.ManagedIdentityCredential{
 		// 				Type: to.Ptr("ManagedIdentity"),
 		// 				Description: to.Ptr("Example description"),
-		// 				TypeProperties: &armdatafactory.ManagedIdentityTypeProperties{
-		// 					ResourceID: to.Ptr("/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"),
+		// 				AdditionalProperties: map[string]any{
+		// 					"typeProperties": map[string]any{
+		// 						"resourceId": "/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami",
+		// 					},
 		// 				},
 		// 			},
 		// 	}},

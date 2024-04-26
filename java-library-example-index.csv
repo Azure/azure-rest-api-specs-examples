@@ -4173,3 +4173,4 @@ id,name,language,tag,package,version,date_epoch,date
 4172,@azure/arm-containerservice@20.0.0,js,@azure/arm-containerservice_20.0.0,@azure/arm-containerservice,20.0.0,1714126059,04/26/2024
 4173,@azure/arm-datafactory@15.0.0,js,@azure/arm-datafactory_15.0.0,@azure/arm-datafactory,15.0.0,1714124462,04/26/2024
 4174,@azure/arm-deviceregistry@1.0.0-beta.1,js,@azure/arm-deviceregistry_1.0.0-beta.1,@azure/arm-deviceregistry,1.0.0-beta.1,1714117982,04/26/2024
+4175,@azure/arm-healthcareapis@3.1.0,js,@azure/arm-healthcareapis_3.1.0,@azure/arm-healthcareapis,3.1.0,1714117949,04/26/2024

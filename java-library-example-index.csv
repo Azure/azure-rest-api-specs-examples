@@ -4169,3 +4169,15 @@ id,name,language,tag,package,version,date_epoch,date
 4168,azure-mgmt-support@7.0.0,python,azure-mgmt-support_7.0.0,azure-mgmt-support,7.0.0,1713937172,04/24/2024
 4169,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v7@v7.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v7.0.0,sdk/resourcemanager/datafactory/armdatafactory,v7.0.0,1714024374,04/25/2024
 4170,azure-mgmt-compute@31.0.0,python,azure-mgmt-compute_31.0.0,azure-mgmt-compute,31.0.0,1714026358,04/25/2024
+4171,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v5@v5.1.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v5.1.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v5.1.0-beta.1,1714112481,04/26/2024
+4172,@azure/arm-containerservice@20.0.0,js,@azure/arm-containerservice_20.0.0,@azure/arm-containerservice,20.0.0,1714126059,04/26/2024
+4173,@azure/arm-datafactory@15.0.0,js,@azure/arm-datafactory_15.0.0,@azure/arm-datafactory,15.0.0,1714124462,04/26/2024
+4174,@azure/arm-deviceregistry@1.0.0-beta.1,js,@azure/arm-deviceregistry_1.0.0-beta.1,@azure/arm-deviceregistry,1.0.0-beta.1,1714117982,04/26/2024
+4175,@azure/arm-healthcareapis@3.1.0,js,@azure/arm-healthcareapis_3.1.0,@azure/arm-healthcareapis,3.1.0,1714117949,04/26/2024
+4176,@azure/arm-devcenter@1.1.0,js,@azure/arm-devcenter_1.1.0,@azure/arm-devcenter,1.1.0,1714117917,04/26/2024
+4177,@azure/arm-support@3.0.0,js,@azure/arm-support_3.0.0,@azure/arm-support,3.0.0,1714109802,04/26/2024
+4178,@azure/arm-hybridcompute@4.0.0-beta.1,js,@azure/arm-hybridcompute_4.0.0-beta.1,@azure/arm-hybridcompute,4.0.0-beta.1,1714104571,04/26/2024
+4179,@azure/arm-postgresql-flexible@8.0.0-beta.6,js,@azure/arm-postgresql-flexible_8.0.0-beta.6,@azure/arm-postgresql-flexible,8.0.0-beta.6,1714104176,04/26/2024
+4180,@azure/arm-quota@1.1.0-beta.1,js,@azure/arm-quota_1.1.0-beta.1,@azure/arm-quota,1.1.0-beta.1,1714103793,04/26/2024
+4181,@azure/arm-confidentialledger@1.3.0-beta.2,js,@azure/arm-confidentialledger_1.3.0-beta.2,@azure/arm-confidentialledger,1.3.0-beta.2,1714103551,04/26/2024
+4182,@azure/arm-standbypool@1.0.0-beta.1,js,@azure/arm-standbypool_1.0.0-beta.1,@azure/arm-standbypool,1.0.0-beta.1,1714055202,04/25/2024

@@ -4183,3 +4183,4 @@ id,name,language,tag,package,version,date_epoch,date
 4182,@azure/arm-standbypool@1.0.0-beta.1,js,@azure/arm-standbypool_1.0.0-beta.1,@azure/arm-standbypool,1.0.0-beta.1,1714055202,04/25/2024
 4183,@azure/arm-compute@21.6.0,js,@azure/arm-compute_21.6.0,@azure/arm-compute,21.6.0,1714132683,04/26/2024
 4184,com.azure.resourcemanager:azure-resourcemanager-eventgrid:1.2.0-beta.6,java,azure-resourcemanager-eventgrid_1.2.0-beta.6,azure-resourcemanager-eventgrid,1.2.0-beta.6,1714287923,04/28/2024
+4185,@azure/arm-guestconfiguration@1.0.0-beta.1,js,@azure/arm-guestconfiguration_1.0.0-beta.1,@azure/arm-guestconfiguration,1.0.0-beta.1,1714295066,04/28/2024

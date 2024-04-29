@@ -1,0 +1,77 @@
+package armmysqlflexibleservers_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers/v2"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b8691fbfca8fcdc5a241a0b501c32fd4a76bb0cd/specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerGetWithVnet.json
+func ExampleServersClient_Get_getAServerWithVnet() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armmysqlflexibleservers.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewServersClient().Get(ctx, "testrg", "mysqltestserver", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.Server = armmysqlflexibleservers.Server{
+	// 	Name: to.Ptr("mysqltestserver"),
+	// 	Type: to.Ptr("Microsoft.DBforMySQL/flexibleServers"),
+	// 	ID: to.Ptr("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.DBforMySQL/flexibleServers/mysqltestserver"),
+	// 	Location: to.Ptr("Southeast Asia"),
+	// 	Tags: map[string]*string{
+	// 		"num": to.Ptr("1"),
+	// 	},
+	// 	Properties: &armmysqlflexibleservers.ServerProperties{
+	// 		AdministratorLogin: to.Ptr("cloudsa"),
+	// 		AvailabilityZone: to.Ptr("3"),
+	// 		Backup: &armmysqlflexibleservers.Backup{
+	// 			BackupIntervalHours: to.Ptr[int32](24),
+	// 			BackupRetentionDays: to.Ptr[int32](7),
+	// 			EarliestRestoreDate: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-06-17T06:11:38.415Z"); return t}()),
+	// 			GeoRedundantBackup: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
+	// 		},
+	// 		FullyQualifiedDomainName: to.Ptr("mysqltestserver.database.mysql.azure.com"),
+	// 		HighAvailability: &armmysqlflexibleservers.HighAvailability{
+	// 			Mode: to.Ptr(armmysqlflexibleservers.HighAvailabilityModeDisabled),
+	// 			State: to.Ptr(armmysqlflexibleservers.HighAvailabilityStateNotEnabled),
+	// 		},
+	// 		MaintenanceWindow: &armmysqlflexibleservers.MaintenanceWindow{
+	// 			CustomWindow: to.Ptr("Disabled"),
+	// 			DayOfWeek: to.Ptr[int32](0),
+	// 			StartHour: to.Ptr[int32](0),
+	// 			StartMinute: to.Ptr[int32](0),
+	// 		},
+	// 		Network: &armmysqlflexibleservers.Network{
+	// 			DelegatedSubnetResourceID: to.Ptr("/subscriptions/2941a09d-7bcf-42fe-91ca-1765f521c829/resourceGroups/OrcabrCI-Vnet-Resource-Group/providers/Microsoft.Network/virtualNetworks/OrcabrCI-Vnet/subnets/mysql-subnet"),
+	// 			PublicNetworkAccess: to.Ptr(armmysqlflexibleservers.EnableStatusEnumDisabled),
+	// 		},
+	// 		ReplicaCapacity: to.Ptr[int32](10),
+	// 		ReplicationRole: to.Ptr(armmysqlflexibleservers.ReplicationRoleNone),
+	// 		State: to.Ptr(armmysqlflexibleservers.ServerStateReady),
+	// 		Storage: &armmysqlflexibleservers.Storage{
+	// 			AutoGrow: to.Ptr(armmysqlflexibleservers.EnableStatusEnumEnabled),
+	// 			Iops: to.Ptr[int32](600),
+	// 			StorageSizeGB: to.Ptr[int32](100),
+	// 			StorageSKU: to.Ptr("Premium_LRS"),
+	// 		},
+	// 		Version: to.Ptr(armmysqlflexibleservers.ServerVersionFive7),
+	// 	},
+	// 	SKU: &armmysqlflexibleservers.MySQLServerSKU{
+	// 		Name: to.Ptr("Standard_D2ds_v4"),
+	// 		Tier: to.Ptr(armmysqlflexibleservers.ServerSKUTierGeneralPurpose),
+	// 	},
+	// }
+}

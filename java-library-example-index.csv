@@ -4185,3 +4185,7 @@ id,name,language,tag,package,version,date_epoch,date
 4184,com.azure.resourcemanager:azure-resourcemanager-eventgrid:1.2.0-beta.6,java,azure-resourcemanager-eventgrid_1.2.0-beta.6,azure-resourcemanager-eventgrid,1.2.0-beta.6,1714287923,04/28/2024
 4185,@azure/arm-guestconfiguration@1.0.0-beta.1,js,@azure/arm-guestconfiguration_1.0.0-beta.1,@azure/arm-guestconfiguration,1.0.0-beta.1,1714295066,04/28/2024
 4186,@azure/arm-selfhelp@2.0.0-beta.3,js,@azure/arm-selfhelp_2.0.0-beta.3,@azure/arm-selfhelp,2.0.0-beta.3,1714291045,04/28/2024
+4187,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0-beta.5,java,azure-resourcemanager-mysqlflexibleserver_1.0.0-beta.5,azure-resourcemanager-mysqlflexibleserver,1.0.0-beta.5,1714359963,04/29/2024
+4188,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mysql/armmysqlflexibleservers/v2@v2.0.0-beta.3,go,sdk/resourcemanager/mysql/armmysqlflexibleservers/v2.0.0-beta.3,sdk/resourcemanager/mysql/armmysqlflexibleservers,v2.0.0-beta.3,1714359870,04/29/2024
+4189,azure-mgmt-eventgrid@10.3.0b4,python,azure-mgmt-eventgrid_10.3.0b4,azure-mgmt-eventgrid,10.3.0b4,1714369911,04/29/2024
+4190,azure-mgmt-azurelargeinstance@1.0.0b2,python,azure-mgmt-azurelargeinstance_1.0.0b2,azure-mgmt-azurelargeinstance,1.0.0b2,1714360700,04/29/2024

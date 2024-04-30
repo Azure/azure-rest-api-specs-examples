@@ -4190,3 +4190,4 @@ id,name,language,tag,package,version,date_epoch,date
 4189,azure-mgmt-eventgrid@10.3.0b4,python,azure-mgmt-eventgrid_10.3.0b4,azure-mgmt-eventgrid,10.3.0b4,1714369911,04/29/2024
 4190,azure-mgmt-azurelargeinstance@1.0.0b2,python,azure-mgmt-azurelargeinstance_1.0.0b2,azure-mgmt-azurelargeinstance,1.0.0b2,1714360700,04/29/2024
 4191,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventgrid/armeventgrid/v2@v2.3.0-beta.2,go,sdk/resourcemanager/eventgrid/armeventgrid/v2.3.0-beta.2,sdk/resourcemanager/eventgrid/armeventgrid,v2.3.0-beta.2,1714448429,04/30/2024
+4192,@azure/arm-eventgrid@14.2.0-beta.4,js,@azure/arm-eventgrid_14.2.0-beta.4,@azure/arm-eventgrid,14.2.0-beta.4,1714459291,04/30/2024

@@ -1,0 +1,33 @@
+const { EventGridManagementClient } = require("@azure/arm-eventgrid");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Create or update a client with the specified parameters.
+ *
+ * @summary Create or update a client with the specified parameters.
+ * x-ms-original-file: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/Clients_CreateOrUpdate.json
+ */
+async function clientsCreateOrUpdate() {
+  const subscriptionId =
+    process.env["EVENTGRID_SUBSCRIPTION_ID"] || "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
+  const resourceGroupName = process.env["EVENTGRID_RESOURCE_GROUP"] || "examplerg";
+  const namespaceName = "exampleNamespaceName1";
+  const clientName = "exampleClientName1";
+  const clientInfo = {
+    description: "This is a test client",
+    attributes: { deviceTypes: ["Fan", "Light", "AC"], floor: 3, room: "345" },
+    clientCertificateAuthentication: {
+      validationScheme: "SubjectMatchesAuthenticationName",
+    },
+    state: "Enabled",
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new EventGridManagementClient(credential, subscriptionId);
+  const result = await client.clients.beginCreateOrUpdateAndWait(
+    resourceGroupName,
+    namespaceName,
+    clientName,
+    clientInfo,
+  );
+  console.log(result);
+}

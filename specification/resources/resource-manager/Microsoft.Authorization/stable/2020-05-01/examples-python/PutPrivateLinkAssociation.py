@@ -1,4 +1,7 @@
+from typing import Any, IO, Union
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.resource import ResourcePrivateLinkClient
 
 """

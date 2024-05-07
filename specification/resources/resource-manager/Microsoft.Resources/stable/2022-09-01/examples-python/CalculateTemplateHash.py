@@ -1,6 +1,15 @@
+import sys
+from typing import Any
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.resource import ResourceManagementClient
 
+if sys.version_info >= (3, 9):
+    from collections.abc import MutableMapping
+else:
+    from typing import MutableMapping  # type: ignore  # pylint: disable=ungrouped-imports
+JSON = MutableMapping[str, Any]  # pylint: disable=unsubscriptable-object
 """
 # PREREQUISITES
     pip install azure-identity

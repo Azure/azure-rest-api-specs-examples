@@ -4195,3 +4195,4 @@ id,name,language,tag,package,version,date_epoch,date
 4194,"Azure.ResourceManager.SignalR,1.1.2",dotnet,Azure.ResourceManager.SignalR_1.1.2,Azure.ResourceManager.SignalR,1.1.2,1715094118,05/07/2024
 4195,azure-mgmt-resource@23.1.1,python,azure-mgmt-resource_23.1.1,azure-mgmt-resource,23.1.1,1715155555,05/08/2024
 4196,azure-mgmt-datafactory@7.1.0,python,azure-mgmt-datafactory_7.1.0,azure-mgmt-datafactory,7.1.0,1715319571,05/10/2024
+4197,@azure/arm-selfhelp@2.0.0-beta.4,js,@azure/arm-selfhelp_2.0.0-beta.4,@azure/arm-selfhelp,2.0.0-beta.4,1715570283,05/13/2024

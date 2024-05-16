@@ -22,7 +22,7 @@ async function getsASingleSoftwareDataOfTheVirtualMachine() {
     resourceNamespace,
     resourceType,
     resourceName,
-    softwareName
+    softwareName,
   );
   console.log(result);
 }

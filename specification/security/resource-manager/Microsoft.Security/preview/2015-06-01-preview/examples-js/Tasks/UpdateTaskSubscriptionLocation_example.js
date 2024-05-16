@@ -18,7 +18,7 @@ async function changeSecurityRecommendationTaskState() {
   const result = await client.tasks.updateSubscriptionLevelTaskState(
     ascLocation,
     taskName,
-    taskUpdateActionType
+    taskUpdateActionType,
   );
   console.log(result);
 }

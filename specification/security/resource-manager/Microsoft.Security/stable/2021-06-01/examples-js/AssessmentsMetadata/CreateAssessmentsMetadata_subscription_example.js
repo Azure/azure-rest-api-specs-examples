@@ -28,7 +28,7 @@ async function createSecurityAssessmentMetadataForSubscription() {
   const client = new SecurityCenter(credential, subscriptionId);
   const result = await client.assessmentsMetadata.createInSubscription(
     assessmentMetadataName,
-    assessmentMetadata
+    assessmentMetadata,
   );
   console.log(result);
 }

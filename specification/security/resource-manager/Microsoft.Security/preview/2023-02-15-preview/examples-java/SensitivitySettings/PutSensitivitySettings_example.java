@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 /**
- * Samples for ResourceProvider UpdateSensitivitySettings.
+ * Samples for SensitivitySettings CreateOrUpdate.
  */
 public final class Main {
     /*
@@ -18,7 +18,7 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void updateSensitivitySettings(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.resourceProviders().updateSensitivitySettingsWithResponse(
+        manager.sensitivitySettings().createOrUpdateWithResponse(
             new UpdateSensitivitySettingsRequest()
                 .withSensitiveInfoTypesIds(Arrays.asList(UUID.fromString("f2f8a7a1-28c0-404b-9ab4-30a0a7af18cb"),
                     UUID.fromString("b452f22b-f87d-4f48-8490-ecf0873325b5"),

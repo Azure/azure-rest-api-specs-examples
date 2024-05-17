@@ -4196,3 +4196,5 @@ id,name,language,tag,package,version,date_epoch,date
 4195,azure-mgmt-resource@23.1.1,python,azure-mgmt-resource_23.1.1,azure-mgmt-resource,23.1.1,1715155555,05/08/2024
 4196,azure-mgmt-datafactory@7.1.0,python,azure-mgmt-datafactory_7.1.0,azure-mgmt-datafactory,7.1.0,1715319571,05/10/2024
 4197,@azure/arm-selfhelp@2.0.0-beta.4,js,@azure/arm-selfhelp_2.0.0-beta.4,@azure/arm-selfhelp,2.0.0-beta.4,1715570283,05/13/2024
+4198,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0-beta.7,java,azure-resourcemanager-security_1.0.0-beta.7,azure-resourcemanager-security,1.0.0-beta.7,1715828530,05/16/2024
+4199,@azure/arm-security@6.0.0-beta.5,js,@azure/arm-security_6.0.0-beta.5,@azure/arm-security,6.0.0-beta.5,1715848106,05/16/2024

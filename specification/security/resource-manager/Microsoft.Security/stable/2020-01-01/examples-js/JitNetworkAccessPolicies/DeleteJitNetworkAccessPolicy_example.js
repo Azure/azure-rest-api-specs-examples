@@ -18,7 +18,7 @@ async function deleteAJitNetworkAccessPolicy() {
   const result = await client.jitNetworkAccessPolicies.delete(
     resourceGroupName,
     ascLocation,
-    jitNetworkAccessPolicyName
+    jitNetworkAccessPolicyName,
   );
   console.log(result);
 }

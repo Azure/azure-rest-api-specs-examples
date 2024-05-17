@@ -20,7 +20,7 @@ async function createACustomEntityStoreAssignment() {
   const result = await client.customEntityStoreAssignments.create(
     resourceGroupName,
     customEntityStoreAssignmentName,
-    customEntityStoreAssignmentRequestBody
+    customEntityStoreAssignmentRequestBody,
   );
   console.log(result);
 }

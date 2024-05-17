@@ -18,7 +18,7 @@ async function getJitNetworkAccessPolicy() {
   const result = await client.jitNetworkAccessPolicies.get(
     resourceGroupName,
     ascLocation,
-    jitNetworkAccessPolicyName
+    jitNetworkAccessPolicyName,
   );
   console.log(result);
 }

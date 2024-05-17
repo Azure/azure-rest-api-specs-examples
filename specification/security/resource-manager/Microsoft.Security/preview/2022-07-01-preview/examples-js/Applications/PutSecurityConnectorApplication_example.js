@@ -29,7 +29,7 @@ async function createApplication() {
     resourceGroupName,
     securityConnectorName,
     applicationId,
-    application
+    application,
   );
   console.log(result);
 }

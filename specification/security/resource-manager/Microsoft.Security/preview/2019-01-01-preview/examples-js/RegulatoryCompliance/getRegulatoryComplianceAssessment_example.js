@@ -18,7 +18,7 @@ async function getSelectedRegulatoryComplianceAssessmentDetailsAndState() {
   const result = await client.regulatoryComplianceAssessments.get(
     regulatoryComplianceStandardName,
     regulatoryComplianceControlName,
-    regulatoryComplianceAssessmentName
+    regulatoryComplianceAssessmentName,
   );
   console.log(result);
 }

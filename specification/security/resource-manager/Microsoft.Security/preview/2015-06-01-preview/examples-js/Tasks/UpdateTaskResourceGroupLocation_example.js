@@ -20,7 +20,7 @@ async function changeSecurityRecommendationTaskState() {
     resourceGroupName,
     ascLocation,
     taskName,
-    taskUpdateActionType
+    taskUpdateActionType,
   );
   console.log(result);
 }

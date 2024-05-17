@@ -28,7 +28,7 @@ async function useThisMethodToUpdateExistingIoTSecuritySolution() {
   const result = await client.iotSecuritySolution.update(
     resourceGroupName,
     solutionName,
-    updateIotSecuritySolutionData
+    updateIotSecuritySolutionData,
   );
   console.log(result);
 }

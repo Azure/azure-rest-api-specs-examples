@@ -1,6 +1,6 @@
 
 /**
- * Samples for ResourceProvider GetSensitivitySettings.
+ * Samples for SensitivitySettings Get.
  */
 public final class Main {
     /*
@@ -14,6 +14,6 @@ public final class Main {
      * @param manager Entry point to SecurityManager.
      */
     public static void getSensitivitySettings(com.azure.resourcemanager.security.SecurityManager manager) {
-        manager.resourceProviders().getSensitivitySettingsWithResponse(com.azure.core.util.Context.NONE);
+        manager.sensitivitySettings().getWithResponse(com.azure.core.util.Context.NONE);
     }
 }

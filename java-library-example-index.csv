@@ -4199,3 +4199,4 @@ id,name,language,tag,package,version,date_epoch,date
 4198,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0-beta.7,java,azure-resourcemanager-security_1.0.0-beta.7,azure-resourcemanager-security,1.0.0-beta.7,1715828530,05/16/2024
 4199,@azure/arm-security@6.0.0-beta.5,js,@azure/arm-security_6.0.0-beta.5,@azure/arm-security,6.0.0-beta.5,1715848106,05/16/2024
 4200,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.1.0,java,azure-resourcemanager-containerservicefleet_1.1.0,azure-resourcemanager-containerservicefleet,1.1.0,1715938977,05/17/2024
+4201,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.3.0,java,azure-resourcemanager-recoveryservices_1.3.0,azure-resourcemanager-recoveryservices,1.3.0,1716195164,05/20/2024

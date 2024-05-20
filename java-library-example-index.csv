@@ -4201,3 +4201,4 @@ id,name,language,tag,package,version,date_epoch,date
 4200,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.1.0,java,azure-resourcemanager-containerservicefleet_1.1.0,azure-resourcemanager-containerservicefleet,1.1.0,1715938977,05/17/2024
 4201,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.3.0,java,azure-resourcemanager-recoveryservices_1.3.0,azure-resourcemanager-recoveryservices,1.3.0,1716195164,05/20/2024
 4202,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.0.0-beta.11,java,azure-resourcemanager-storagecache_1.0.0-beta.11,azure-resourcemanager-storagecache,1.0.0-beta.11,1716188647,05/20/2024
+4203,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.1,java,azure-resourcemanager-nginx_1.1.0-beta.1,azure-resourcemanager-nginx,1.1.0-beta.1,1716184096,05/20/2024

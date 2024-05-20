@@ -4204,3 +4204,4 @@ id,name,language,tag,package,version,date_epoch,date
 4203,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.1,java,azure-resourcemanager-nginx_1.1.0-beta.1,azure-resourcemanager-nginx,1.1.0-beta.1,1716184096,05/20/2024
 4204,com.azure.resourcemanager:azure-resourcemanager-maintenance:1.1.0-beta.1,java,azure-resourcemanager-maintenance_1.1.0-beta.1,azure-resourcemanager-maintenance,1.1.0-beta.1,1716173131,05/20/2024
 4205,azure-mgmt-cosmosdb@9.5.0,python,azure-mgmt-cosmosdb_9.5.0,azure-mgmt-cosmosdb,9.5.0,1716189822,05/20/2024
+4206,azure-mgmt-sql@4.0.0b17,python,azure-mgmt-sql_4.0.0b17,azure-mgmt-sql,4.0.0b17,1716187786,05/20/2024

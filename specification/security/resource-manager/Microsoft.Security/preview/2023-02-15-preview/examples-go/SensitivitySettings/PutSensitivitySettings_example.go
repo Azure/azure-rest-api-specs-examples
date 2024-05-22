@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b43974e07d3204c4b6f8396627f5430994a7f7c9/specification/security/resource-manager/Microsoft.Security/preview/2023-02-15-preview/examples/SensitivitySettings/PutSensitivitySettings_example.json
-func ExampleCenterClient_UpdateSensitivitySettings() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9ac34f238dd6b9071f486b57e9f9f1a0c43ec6f6/specification/security/resource-manager/Microsoft.Security/preview/2023-02-15-preview/examples/SensitivitySettings/PutSensitivitySettings_example.json
+func ExampleSensitivitySettingsClient_CreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -20,7 +20,7 @@ func ExampleCenterClient_UpdateSensitivitySettings() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewCenterClient().UpdateSensitivitySettings(ctx, armsecurity.UpdateSensitivitySettingsRequest{
+	res, err := clientFactory.NewSensitivitySettingsClient().CreateOrUpdate(ctx, armsecurity.UpdateSensitivitySettingsRequest{
 		SensitiveInfoTypesIDs: []*string{
 			to.Ptr("f2f8a7a1-28c0-404b-9ab4-30a0a7af18cb"),
 			to.Ptr("b452f22b-f87d-4f48-8490-ecf0873325b5"),

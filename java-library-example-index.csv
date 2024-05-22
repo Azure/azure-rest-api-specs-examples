@@ -4208,3 +4208,4 @@ id,name,language,tag,package,version,date_epoch,date
 4207,azure-mgmt-maintenance@2.2.0b2,python,azure-mgmt-maintenance_2.2.0b2,azure-mgmt-maintenance,2.2.0b2,1716187741,05/20/2024
 4208,azure-mgmt-security@7.0.0,python,azure-mgmt-security_7.0.0,azure-mgmt-security,7.0.0,1716182312,05/20/2024
 4209,com.azure.resourcemanager:azure-resourcemanager-selfhelp:1.1.0-beta.4,java,azure-resourcemanager-selfhelp_1.1.0-beta.4,azure-resourcemanager-selfhelp,1.1.0-beta.4,1716263832,05/21/2024
+4210,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.0.0,go,sdk/resourcemanager/netapp/armnetapp/v7.0.0,sdk/resourcemanager/netapp/armnetapp,v7.0.0,1716359996,05/22/2024

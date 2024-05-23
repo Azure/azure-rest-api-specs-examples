@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b43974e07d3204c4b6f8396627f5430994a7f7c9/specification/security/resource-manager/Microsoft.Security/preview/2023-02-15-preview/examples/SensitivitySettings/GetSensitivitySettings_example.json
-func ExampleCenterClient_GetSensitivitySettings() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9ac34f238dd6b9071f486b57e9f9f1a0c43ec6f6/specification/security/resource-manager/Microsoft.Security/preview/2023-02-15-preview/examples/SensitivitySettings/GetSensitivitySettings_example.json
+func ExampleSensitivitySettingsClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleCenterClient_GetSensitivitySettings() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewCenterClient().GetSensitivitySettings(ctx, nil)
+	res, err := clientFactory.NewSensitivitySettingsClient().Get(ctx, nil)
 	if err != nil {
 		log.Fatalf("failed to finish the request: %v", err)
 	}

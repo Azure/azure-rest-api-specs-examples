@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/b43974e07d3204c4b6f8396627f5430994a7f7c9/specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/examples/Connectors/CreateUpdateAwsCredConnectorSubscription_example.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/9ac34f238dd6b9071f486b57e9f9f1a0c43ec6f6/specification/security/resource-manager/Microsoft.Security/preview/2020-01-01-preview/examples/Connectors/CreateUpdateAwsCredConnectorSubscription_example.json
 func ExampleAccountConnectorsClient_CreateOrUpdate_awsCredCreateACloudAccountConnectorForASubscription() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -24,7 +24,7 @@ func ExampleAccountConnectorsClient_CreateOrUpdate_awsCredCreateACloudAccountCon
 		Properties: &armsecurity.ConnectorSettingProperties{
 			AuthenticationDetails: &armsecurity.AwsCredsAuthenticationDetailsProperties{
 				AuthenticationType: to.Ptr(armsecurity.AuthenticationTypeAwsCreds),
-				AwsAccessKeyID:     to.Ptr("AKIARPZCNODDNAEQFSOE"),
+				AwsAccessKeyID:     to.Ptr("<awsAccessKeyId>"),
 				AwsSecretAccessKey: to.Ptr("<awsSecretAccessKey>"),
 			},
 			HybridComputeSettings: &armsecurity.HybridComputeSettingsProperties{

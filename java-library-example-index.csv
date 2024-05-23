@@ -4218,3 +4218,4 @@ id,name,language,tag,package,version,date_epoch,date
 4217,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/maintenance/armmaintenance@v1.4.0-beta.1,go,sdk/resourcemanager/maintenance/armmaintenance/v1.4.0-beta.1,sdk/resourcemanager/maintenance/armmaintenance,v1.4.0-beta.1,1716345218,05/22/2024
 4218,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/security/armsecurity@v0.14.0,go,sdk/resourcemanager/security/armsecurity/v0.14.0,sdk/resourcemanager/security/armsecurity,v0.14.0,1716344204,05/22/2024
 4219,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.4.0,java,azure-resourcemanager-recoveryservicesbackup_1.4.0,azure-resourcemanager-recoveryservicesbackup,1.4.0,1716456183,05/23/2024
+4220,azure-mgmt-storagecache@2.0.0,python,azure-mgmt-storagecache_2.0.0,azure-mgmt-storagecache,2.0.0,1716443011,05/23/2024

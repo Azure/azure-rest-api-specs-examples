@@ -4224,3 +4224,4 @@ id,name,language,tag,package,version,date_epoch,date
 4223,com.azure.resourcemanager:azure-resourcemanager:2.39.0,java,azure-resourcemanager_2.39.0,azure-resourcemanager,2.39.0,1716535039,05/24/2024
 4224,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v0.1.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v0.1.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v0.1.0,1716537040,05/24/2024
 4225,@azure/arm-machinelearning@2.2.0,js,@azure/arm-machinelearning_2.2.0,@azure/arm-machinelearning,2.2.0,1716542268,05/24/2024
+4226,@azure/arm-sql@11.0.0-beta.1,js,@azure/arm-sql_11.0.0-beta.1,@azure/arm-sql,11.0.0-beta.1,1716533654,05/24/2024

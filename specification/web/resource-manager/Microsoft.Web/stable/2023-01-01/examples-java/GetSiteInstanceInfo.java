@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps GetInstanceInfoSlot.
+ * Samples for WebApps GetInstanceInfo.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getSiteInstanceInfo(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().getInstanceInfoSlotWithResponse("testrg123", "tests346",
-            "134987120", "staging", com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getWebApps().getInstanceInfoWithResponse("testrg123", "tests346",
+            "134987120", com.azure.core.util.Context.NONE);
     }
 }

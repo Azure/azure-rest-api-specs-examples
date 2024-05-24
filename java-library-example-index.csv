@@ -4229,3 +4229,4 @@ id,name,language,tag,package,version,date_epoch,date
 4228,@azure/arm-recoveryservices@6.0.0,js,@azure/arm-recoveryservices_6.0.0,@azure/arm-recoveryservices,6.0.0,1716532127,05/24/2024
 4229,@azure/arm-storagecache@8.0.0,js,@azure/arm-storagecache_8.0.0,@azure/arm-storagecache,8.0.0,1716532073,05/24/2024
 4230,@azure/arm-containerservicefleet@1.1.0,js,@azure/arm-containerservicefleet_1.1.0,@azure/arm-containerservicefleet,1.1.0,1716532003,05/24/2024
+4231,@azure/arm-maintenance@1.0.0-beta.2,js,@azure/arm-maintenance_1.0.0-beta.2,@azure/arm-maintenance,1.0.0-beta.2,1716531945,05/24/2024

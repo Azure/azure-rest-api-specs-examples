@@ -4226,3 +4226,4 @@ id,name,language,tag,package,version,date_epoch,date
 4225,@azure/arm-machinelearning@2.2.0,js,@azure/arm-machinelearning_2.2.0,@azure/arm-machinelearning,2.2.0,1716542268,05/24/2024
 4226,@azure/arm-sql@11.0.0-beta.1,js,@azure/arm-sql_11.0.0-beta.1,@azure/arm-sql,11.0.0-beta.1,1716533654,05/24/2024
 4227,@azure/arm-oracledatabase@1.0.0-beta.1,js,@azure/arm-oracledatabase_1.0.0-beta.1,@azure/arm-oracledatabase,1.0.0-beta.1,1716533290,05/24/2024
+4228,@azure/arm-recoveryservices@6.0.0,js,@azure/arm-recoveryservices_6.0.0,@azure/arm-recoveryservices,6.0.0,1716532127,05/24/2024

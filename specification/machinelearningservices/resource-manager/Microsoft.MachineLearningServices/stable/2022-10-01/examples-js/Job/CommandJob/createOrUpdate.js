@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Job/CommandJob/createOrUpdate.json
  */
 async function createOrUpdateCommandJob() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const id = "string";
   const body = {
@@ -49,7 +50,9 @@ async function createOrUpdateCommandJob() {
       resources: {
         instanceCount: 1,
         instanceType: "string",
-        properties: { string: { "e6b6493e-7d5e-4db3-be1e-306ec641327e": null } },
+        properties: {
+          string: { "e6b6493e-7d5e-4db3-be1e-306ec641327e": null },
+        },
       },
       services: {
         string: {
@@ -67,5 +70,3 @@ async function createOrUpdateCommandJob() {
   const result = await client.jobs.createOrUpdate(resourceGroupName, workspaceName, id, body);
   console.log(result);
 }
-
-createOrUpdateCommandJob().catch(console.error);

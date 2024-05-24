@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/WorkspaceConnection/get.json
  */
 async function getWorkspaceConnection() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "resourceGroup-1";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "resourceGroup-1";
   const workspaceName = "workspace-1";
   const connectionName = "connection-1";
   const credential = new DefaultAzureCredential();
@@ -17,9 +18,7 @@ async function getWorkspaceConnection() {
   const result = await client.workspaceConnections.get(
     resourceGroupName,
     workspaceName,
-    connectionName
+    connectionName,
   );
   console.log(result);
 }
-
-getWorkspaceConnection().catch(console.error);

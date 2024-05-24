@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/OnlineDeployment/list.json
  */
 async function listOnlineDeployments() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const endpointName = "testEndpointName";
   const orderBy = "string";
@@ -22,11 +23,9 @@ async function listOnlineDeployments() {
     resourceGroupName,
     workspaceName,
     endpointName,
-    options
+    options,
   )) {
     resArray.push(item);
   }
   console.log(resArray);
 }
-
-listOnlineDeployments().catch(console.error);

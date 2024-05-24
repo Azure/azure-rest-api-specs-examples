@@ -8,13 +8,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Workspace/listNotebookAccessToken.json
  */
 async function listWorkspaceKeys() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "workspace-1234";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "workspace-1234";
   const workspaceName = "testworkspace";
   const credential = new DefaultAzureCredential();
   const client = new AzureMachineLearningWorkspaces(credential, subscriptionId);
   const result = await client.workspaces.listNotebookAccessToken(resourceGroupName, workspaceName);
   console.log(result);
 }
-
-listWorkspaceKeys().catch(console.error);

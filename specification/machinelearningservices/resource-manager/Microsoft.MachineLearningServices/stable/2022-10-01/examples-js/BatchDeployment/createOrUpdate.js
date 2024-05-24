@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/BatchDeployment/createOrUpdate.json
  */
 async function createOrUpdateBatchDeployment() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const endpointName = "testEndpointName";
   const deploymentName = "testDeploymentName";
@@ -37,7 +38,9 @@ async function createOrUpdateBatchDeployment() {
       resources: {
         instanceCount: 1,
         instanceType: "string",
-        properties: { string: { "cd3c37dc-2876-4ca4-8a54-21bd7619724a": null } },
+        properties: {
+          string: { "cd3c37dc-2876-4ca4-8a54-21bd7619724a": null },
+        },
       },
       retrySettings: { maxRetries: 1, timeout: "PT5M" },
     },
@@ -57,9 +60,7 @@ async function createOrUpdateBatchDeployment() {
     workspaceName,
     endpointName,
     deploymentName,
-    body
+    body,
   );
   console.log(result);
 }
-
-createOrUpdateBatchDeployment().catch(console.error);

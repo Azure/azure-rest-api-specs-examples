@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Datastore/AzureDataLakeGen1WServicePrincipal/createOrUpdate.json
  */
 async function createOrUpdateDatastoreAzureDataLakeGen1WOrServicePrincipal() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const name = "string";
   const skipValidation = false;
@@ -38,9 +39,7 @@ async function createOrUpdateDatastoreAzureDataLakeGen1WOrServicePrincipal() {
     workspaceName,
     name,
     body,
-    options
+    options,
   );
   console.log(result);
 }
-
-createOrUpdateDatastoreAzureDataLakeGen1WOrServicePrincipal().catch(console.error);

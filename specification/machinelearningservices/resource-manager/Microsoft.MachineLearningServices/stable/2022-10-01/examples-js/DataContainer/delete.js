@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/DataContainer/delete.json
  */
 async function deleteDataContainer() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "testrg123";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "testrg123";
   const workspaceName = "workspace123";
   const name = "datacontainer123";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function deleteDataContainer() {
   const result = await client.dataContainers.delete(resourceGroupName, workspaceName, name);
   console.log(result);
 }
-
-deleteDataContainer().catch(console.error);

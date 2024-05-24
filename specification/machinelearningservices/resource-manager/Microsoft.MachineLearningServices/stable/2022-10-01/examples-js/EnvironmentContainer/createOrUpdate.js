@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/EnvironmentContainer/createOrUpdate.json
  */
 async function createOrUpdateEnvironmentContainer() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "testrg123";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "testrg123";
   const workspaceName = "testworkspace";
   const name = "testEnvironment";
   const body = {
@@ -33,9 +34,7 @@ async function createOrUpdateEnvironmentContainer() {
     resourceGroupName,
     workspaceName,
     name,
-    body
+    body,
   );
   console.log(result);
 }
-
-createOrUpdateEnvironmentContainer().catch(console.error);

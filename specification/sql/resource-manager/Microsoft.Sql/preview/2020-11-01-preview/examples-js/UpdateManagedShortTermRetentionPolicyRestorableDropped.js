@@ -20,7 +20,7 @@ async function updateTheShortTermRetentionPolicyForTheRestorableDroppedDatabase(
   const credential = new DefaultAzureCredential();
   const client = new SqlManagementClient(credential, subscriptionId);
   const result =
-    await client.managedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.beginCreateOrUpdateAndWait(
+    await client.managedRestorableDroppedDatabaseBackupShortTermRetentionPolicies.beginUpdateAndWait(
       resourceGroupName,
       managedInstanceName,
       restorableDroppedDatabaseId,

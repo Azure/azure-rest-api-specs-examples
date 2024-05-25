@@ -4221,3 +4221,14 @@ id,name,language,tag,package,version,date_epoch,date
 4220,azure-mgmt-storagecache@2.0.0,python,azure-mgmt-storagecache_2.0.0,azure-mgmt-storagecache,2.0.0,1716443011,05/23/2024
 4221,azure-mgmt-containerservicefleet@2.0.0,python,azure-mgmt-containerservicefleet_2.0.0,azure-mgmt-containerservicefleet,2.0.0,1716442987,05/23/2024
 4222,azure-mgmt-netapp@13.0.0,python,azure-mgmt-netapp_13.0.0,azure-mgmt-netapp,13.0.0,1716442986,05/23/2024
+4223,com.azure.resourcemanager:azure-resourcemanager:2.39.0,java,azure-resourcemanager_2.39.0,azure-resourcemanager,2.39.0,1716535039,05/24/2024
+4224,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v0.1.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v0.1.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v0.1.0,1716537040,05/24/2024
+4225,@azure/arm-machinelearning@2.2.0,js,@azure/arm-machinelearning_2.2.0,@azure/arm-machinelearning,2.2.0,1716542268,05/24/2024
+4226,@azure/arm-sql@11.0.0-beta.1,js,@azure/arm-sql_11.0.0-beta.1,@azure/arm-sql,11.0.0-beta.1,1716533654,05/24/2024
+4227,@azure/arm-oracledatabase@1.0.0-beta.1,js,@azure/arm-oracledatabase_1.0.0-beta.1,@azure/arm-oracledatabase,1.0.0-beta.1,1716533290,05/24/2024
+4228,@azure/arm-recoveryservices@6.0.0,js,@azure/arm-recoveryservices_6.0.0,@azure/arm-recoveryservices,6.0.0,1716532127,05/24/2024
+4229,@azure/arm-storagecache@8.0.0,js,@azure/arm-storagecache_8.0.0,@azure/arm-storagecache,8.0.0,1716532073,05/24/2024
+4230,@azure/arm-containerservicefleet@1.1.0,js,@azure/arm-containerservicefleet_1.1.0,@azure/arm-containerservicefleet,1.1.0,1716532003,05/24/2024
+4231,@azure/arm-maintenance@1.0.0-beta.2,js,@azure/arm-maintenance_1.0.0-beta.2,@azure/arm-maintenance,1.0.0-beta.2,1716531945,05/24/2024
+4232,@azure/arm-recoveryservicesbackup@13.1.0,js,@azure/arm-recoveryservicesbackup_13.1.0,@azure/arm-recoveryservicesbackup,13.1.0,1716531851,05/24/2024
+4233,@azure/arm-netapp@21.0.0,js,@azure/arm-netapp_21.0.0,@azure/arm-netapp,21.0.0,1716527992,05/24/2024

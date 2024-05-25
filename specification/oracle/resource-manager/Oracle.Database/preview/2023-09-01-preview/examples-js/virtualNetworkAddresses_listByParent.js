@@ -1,0 +1,25 @@
+const { OracleDatabaseManagementClient } = require("@azure/arm-oracledatabase");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to List VirtualNetworkAddress resources by CloudVmCluster
+ *
+ * @summary List VirtualNetworkAddress resources by CloudVmCluster
+ * x-ms-original-file: specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/virtualNetworkAddresses_listByParent.json
+ */
+async function listVirtualNetworkAddressesByVMCluster() {
+  const subscriptionId =
+    process.env["ORACLEDATABASE_SUBSCRIPTION_ID"] || "00000000-0000-0000-0000-000000000000";
+  const resourceGroupName = process.env["ORACLEDATABASE_RESOURCE_GROUP"] || "rg000";
+  const cloudvmclustername = "cluster1";
+  const credential = new DefaultAzureCredential();
+  const client = new OracleDatabaseManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.virtualNetworkAddresses.listByCloudVmCluster(
+    resourceGroupName,
+    cloudvmclustername,
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

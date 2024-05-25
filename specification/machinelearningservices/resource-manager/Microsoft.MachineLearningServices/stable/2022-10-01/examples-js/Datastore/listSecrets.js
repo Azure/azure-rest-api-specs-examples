@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/Datastore/listSecrets.json
  */
 async function getDatastoreSecrets() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const name = "string";
   const credential = new DefaultAzureCredential();
@@ -17,5 +18,3 @@ async function getDatastoreSecrets() {
   const result = await client.datastores.listSecrets(resourceGroupName, workspaceName, name);
   console.log(result);
 }
-
-getDatastoreSecrets().catch(console.error);

@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/OnlineEndpoint/delete.json
  */
 async function deleteOnlineEndpoint() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const endpointName = "testEndpointName";
   const credential = new DefaultAzureCredential();
@@ -17,9 +18,7 @@ async function deleteOnlineEndpoint() {
   const result = await client.onlineEndpoints.beginDeleteAndWait(
     resourceGroupName,
     workspaceName,
-    endpointName
+    endpointName,
   );
   console.log(result);
 }
-
-deleteOnlineEndpoint().catch(console.error);

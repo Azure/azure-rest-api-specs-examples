@@ -8,8 +8,9 @@ const { DefaultAzureCredential } = require("@azure/identity");
  * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2022-10-01/examples/OnlineEndpoint/createOrUpdate.json
  */
 async function createOrUpdateOnlineEndpoint() {
-  const subscriptionId = "00000000-1111-2222-3333-444444444444";
-  const resourceGroupName = "test-rg";
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
   const workspaceName = "my-aml-workspace";
   const endpointName = "testEndpointName";
   const body = {
@@ -41,9 +42,7 @@ async function createOrUpdateOnlineEndpoint() {
     resourceGroupName,
     workspaceName,
     endpointName,
-    body
+    body,
   );
   console.log(result);
 }
-
-createOrUpdateOnlineEndpoint().catch(console.error);

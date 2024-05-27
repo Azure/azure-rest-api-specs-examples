@@ -4232,3 +4232,4 @@ id,name,language,tag,package,version,date_epoch,date
 4231,@azure/arm-maintenance@1.0.0-beta.2,js,@azure/arm-maintenance_1.0.0-beta.2,@azure/arm-maintenance,1.0.0-beta.2,1716531945,05/24/2024
 4232,@azure/arm-recoveryservicesbackup@13.1.0,js,@azure/arm-recoveryservicesbackup_13.1.0,@azure/arm-recoveryservicesbackup,13.1.0,1716531851,05/24/2024
 4233,@azure/arm-netapp@21.0.0,js,@azure/arm-netapp_21.0.0,@azure/arm-netapp,21.0.0,1716527992,05/24/2024
+4234,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/selfhelp/armselfhelp/v2@v2.0.0-beta.5,go,sdk/resourcemanager/selfhelp/armselfhelp/v2.0.0-beta.5,sdk/resourcemanager/selfhelp/armselfhelp,v2.0.0-beta.5,1716792880,05/27/2024

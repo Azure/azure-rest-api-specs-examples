@@ -9,20 +9,19 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/selfhelp/armselfhelp/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c77bbf822be2deaac1b690270c6cd03a52df0e37/specification/help/resource-manager/Microsoft.Help/preview/2024-03-01-preview/examples/DiscoverSolutionsAtTenantScope.json
-func ExampleDiscoverySolutionNLPTenantScopeClient_Post() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c3cc9abe085093ba880ee3eeb792edb4fa789553/specification/help/resource-manager/Microsoft.Help/preview/2024-03-01-preview/examples/DiscoverSolutionsAtTenantScope.json
+func ExampleDiscoverySolutionNLPClient_DiscoverSolutions() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
 	}
 	ctx := context.Background()
-	clientFactory, err := armselfhelp.NewClientFactory("<subscription-id>", cred, nil)
+	clientFactory, err := armselfhelp.NewClientFactory(cred, nil)
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	res, err := clientFactory.NewDiscoverySolutionNLPTenantScopeClient().Post(ctx, &armselfhelp.DiscoverySolutionNLPTenantScopeClientPostOptions{DiscoverSolutionRequest: &armselfhelp.DiscoveryNlpRequest{
+	res, err := clientFactory.NewDiscoverySolutionNLPClient().DiscoverSolutions(ctx, &armselfhelp.DiscoverySolutionNLPClientDiscoverSolutionsOptions{DiscoverSolutionRequest: &armselfhelp.DiscoveryNlpRequest{
 		IssueSummary: to.Ptr("how to retrieve certs from deleted keyvault."),
-		ResourceID:   to.Ptr("subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourceGroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read"),
 		ServiceID:    to.Ptr("0d0fcd2e-c4fd-4349-8497-200edb39s3ca"),
 	},
 	})

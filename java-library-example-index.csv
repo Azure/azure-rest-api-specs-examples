@@ -4234,3 +4234,4 @@ id,name,language,tag,package,version,date_epoch,date
 4233,@azure/arm-netapp@21.0.0,js,@azure/arm-netapp_21.0.0,@azure/arm-netapp,21.0.0,1716527992,05/24/2024
 4234,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/selfhelp/armselfhelp/v2@v2.0.0-beta.5,go,sdk/resourcemanager/selfhelp/armselfhelp/v2.0.0-beta.5,sdk/resourcemanager/selfhelp/armselfhelp,v2.0.0-beta.5,1716792880,05/27/2024
 4235,azure-mgmt-network@25.4.0,python,azure-mgmt-network_25.4.0,azure-mgmt-network,25.4.0,1716793312,05/27/2024
+4236,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.0.0-beta.1,java,azure-resourcemanager-oracledatabase_1.0.0-beta.1,azure-resourcemanager-oracledatabase,1.0.0-beta.1,1716891670,05/28/2024

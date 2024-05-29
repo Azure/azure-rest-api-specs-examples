@@ -4236,3 +4236,4 @@ id,name,language,tag,package,version,date_epoch,date
 4235,azure-mgmt-network@25.4.0,python,azure-mgmt-network_25.4.0,azure-mgmt-network,25.4.0,1716793312,05/27/2024
 4236,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.0.0-beta.1,java,azure-resourcemanager-oracledatabase_1.0.0-beta.1,azure-resourcemanager-oracledatabase,1.0.0-beta.1,1716891670,05/28/2024
 4237,azure-mgmt-selfhelp@2.0.0b4,python,azure-mgmt-selfhelp_2.0.0b4,azure-mgmt-selfhelp,2.0.0b4,1716875529,05/28/2024
+4238,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure@v0.1.0,go,sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure/v0.1.0,sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure,v0.1.0,1716963691,05/29/2024

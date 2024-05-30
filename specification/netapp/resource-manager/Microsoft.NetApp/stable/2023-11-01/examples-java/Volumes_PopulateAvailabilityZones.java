@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Volumes PopulateAvailabilityZone.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2023-11-01/examples/
+     * Volumes_PopulateAvailabilityZones.json
+     */
+    /**
+     * Sample code: Volumes_PopulateAvailabilityZones.
+     * 
+     * @param manager Entry point to NetAppFilesManager.
+     */
+    public static void volumesPopulateAvailabilityZones(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
+        manager.volumes().populateAvailabilityZone("myRG", "account1", "pool1", "volume1",
+            com.azure.core.util.Context.NONE);
+    }
+}

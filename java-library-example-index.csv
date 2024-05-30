@@ -4239,3 +4239,4 @@ id,name,language,tag,package,version,date_epoch,date
 4238,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure@v0.1.0,go,sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure/v0.1.0,sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure,v0.1.0,1716963691,05/29/2024
 4239,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt@v0.1.0,go,sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt/v0.1.0,sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt,v0.1.0,1716963196,05/29/2024
 4240,com.azure.resourcemanager:azure-resourcemanager-netapp:1.2.0,java,azure-resourcemanager-netapp_1.2.0,azure-resourcemanager-netapp,1.2.0,1717054811,05/30/2024
+4241,azure-mgmt-oracledatabase@1.0.0b1,python,azure-mgmt-oracledatabase_1.0.0b1,azure-mgmt-oracledatabase,1.0.0b1,1717059621,05/30/2024

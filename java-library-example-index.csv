@@ -4241,3 +4241,4 @@ id,name,language,tag,package,version,date_epoch,date
 4240,com.azure.resourcemanager:azure-resourcemanager-netapp:1.2.0,java,azure-resourcemanager-netapp_1.2.0,azure-resourcemanager-netapp,1.2.0,1717054811,05/30/2024
 4241,azure-mgmt-oracledatabase@1.0.0b1,python,azure-mgmt-oracledatabase_1.0.0b1,azure-mgmt-oracledatabase,1.0.0b1,1717059621,05/30/2024
 4242,azure-mgmt-hybridcompute@9.0.0b3,python,azure-mgmt-hybridcompute_9.0.0b3,azure-mgmt-hybridcompute,9.0.0b3,1717055891,05/30/2024
+4243,@azure/arm-informaticadatamanagement@1.0.0-beta.1,js,@azure/arm-informaticadatamanagement_1.0.0-beta.1,@azure/arm-informaticadatamanagement,1.0.0-beta.1,1717145859,05/31/2024

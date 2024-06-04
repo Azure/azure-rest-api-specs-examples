@@ -4244,3 +4244,4 @@ id,name,language,tag,package,version,date_epoch,date
 4243,@azure/arm-informaticadatamanagement@1.0.0-beta.1,js,@azure/arm-informaticadatamanagement_1.0.0-beta.1,@azure/arm-informaticadatamanagement,1.0.0-beta.1,1717145859,05/31/2024
 4244,@azure/arm-devopsinfrastructure@1.0.0-beta.1,js,@azure/arm-devopsinfrastructure_1.0.0-beta.1,@azure/arm-devopsinfrastructure,1.0.0-beta.1,1717144542,05/31/2024
 4245,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.5,java,azure-resourcemanager-hybridcompute_1.0.0-beta.5,azure-resourcemanager-hybridcompute,1.0.0-beta.5,1717477120,06/04/2024
+4246,com.azure.resourcemanager:azure-resourcemanager-informaticadatamanagement:1.0.0-beta.1,java,azure-resourcemanager-informaticadatamanagement_1.0.0-beta.1,azure-resourcemanager-informaticadatamanagement,1.0.0-beta.1,1717469823,06/04/2024

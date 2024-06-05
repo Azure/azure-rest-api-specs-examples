@@ -4243,3 +4243,6 @@ id,name,language,tag,package,version,date_epoch,date
 4242,azure-mgmt-hybridcompute@9.0.0b3,python,azure-mgmt-hybridcompute_9.0.0b3,azure-mgmt-hybridcompute,9.0.0b3,1717055891,05/30/2024
 4243,@azure/arm-informaticadatamanagement@1.0.0-beta.1,js,@azure/arm-informaticadatamanagement_1.0.0-beta.1,@azure/arm-informaticadatamanagement,1.0.0-beta.1,1717145859,05/31/2024
 4244,@azure/arm-devopsinfrastructure@1.0.0-beta.1,js,@azure/arm-devopsinfrastructure_1.0.0-beta.1,@azure/arm-devopsinfrastructure,1.0.0-beta.1,1717144542,05/31/2024
+4245,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.5,java,azure-resourcemanager-hybridcompute_1.0.0-beta.5,azure-resourcemanager-hybridcompute,1.0.0-beta.5,1717477120,06/04/2024
+4246,com.azure.resourcemanager:azure-resourcemanager-informaticadatamanagement:1.0.0-beta.1,java,azure-resourcemanager-informaticadatamanagement_1.0.0-beta.1,azure-resourcemanager-informaticadatamanagement,1.0.0-beta.1,1717469823,06/04/2024
+4247,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.0.0-beta.3,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.0.0-beta.3,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.0.0-beta.3,1717483821,06/04/2024

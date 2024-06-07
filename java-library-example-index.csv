@@ -4249,3 +4249,4 @@ id,name,language,tag,package,version,date_epoch,date
 4248,azure-mgmt-rdbms@10.2.0b17,python,azure-mgmt-rdbms_10.2.0b17,azure-mgmt-rdbms,10.2.0b17,1717569578,06/05/2024
 4249,@azure/arm-hybridcompute@4.0.0-beta.2,js,@azure/arm-hybridcompute_4.0.0-beta.2,@azure/arm-hybridcompute,4.0.0-beta.2,1717644474,06/06/2024
 4250,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.1.0-beta.1,java,azure-resourcemanager-redisenterprise_2.1.0-beta.1,azure-resourcemanager-redisenterprise,2.1.0-beta.1,1717753809,06/07/2024
+4251,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/datafactory/armdatafactory/v8@v8.0.0,go,sdk/resourcemanager/datafactory/armdatafactory/v8.0.0,sdk/resourcemanager/datafactory/armdatafactory,v8.0.0,1717739966,06/07/2024

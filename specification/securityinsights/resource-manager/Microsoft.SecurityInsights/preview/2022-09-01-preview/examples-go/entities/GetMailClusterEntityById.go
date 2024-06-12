@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/GetMailClusterEntityById.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/GetMailClusterEntityById.json
 func ExampleEntitiesClient_Get_getAMailClusterEntity() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -49,7 +49,7 @@ func ExampleEntitiesClient_Get_getAMailClusterEntity() {
 	// 			NetworkMessageIDs: []*string{
 	// 				to.Ptr("ccfce855-e02f-491b-a1cc-5bafb371ad0c")},
 	// 				Query: to.Ptr("kqlFilter"),
-	// 				QueryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T01:42:01.6026755Z"); return t}()),
+	// 				QueryTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T01:42:01.602Z"); return t}()),
 	// 				Source: to.Ptr("ClusterSourceIdentifier"),
 	// 				Threats: []*string{
 	// 					to.Ptr("thrreat1"),

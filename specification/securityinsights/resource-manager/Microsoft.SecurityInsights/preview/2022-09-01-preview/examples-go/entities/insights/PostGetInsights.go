@@ -11,7 +11,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/insights/PostGetInsights.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/insights/PostGetInsights.json
 func ExampleEntitiesClient_GetInsights() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -70,8 +70,8 @@ func ExampleEntitiesClient_GetInsights() {
 	// 					}},
 	// 					QueryID: to.Ptr("e29ee1ef-7445-455e-85f1-269f2d536d61"),
 	// 					QueryTimeInterval: &armsecurityinsights.EntityInsightItemQueryTimeInterval{
-	// 						EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:35:20Z"); return t}()),
-	// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:35:20Z"); return t}()),
+	// 						EndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:35:20.000Z"); return t}()),
+	// 						StartTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:35:20.000Z"); return t}()),
 	// 					},
 	// 					TableQueryResults: &armsecurityinsights.InsightsTableResult{
 	// 						Columns: []*armsecurityinsights.InsightsTableResultColumnsItem{

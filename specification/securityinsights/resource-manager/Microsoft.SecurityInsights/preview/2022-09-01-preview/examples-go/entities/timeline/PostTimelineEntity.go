@@ -11,7 +11,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/timeline/PostTimelineEntity.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/timeline/PostTimelineEntity.json
 func ExampleEntitiesGetTimelineClient_List() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -67,19 +67,19 @@ func ExampleEntitiesGetTimelineClient_List() {
 	// 			AlertType: to.Ptr("4467341f-fb73-4f99-a9b3-29473532cf5a_c93bf33e-055e-4972-9e7d-f84fe3fb61ae"),
 	// 			AzureResourceID: to.Ptr("4467341f-fb73-4f99-a9b3-29473532cf5a_bf7c3a2f-b743-6410-3ff0-ec64b5995d50"),
 	// 			DisplayName: to.Ptr("Alert display name"),
-	// 			EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:31:28.02Z"); return t}()),
+	// 			EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:31:28.020Z"); return t}()),
 	// 			ProductName: to.Ptr("Azure Sentinel"),
 	// 			Severity: to.Ptr(armsecurityinsights.AlertSeverityMedium),
-	// 			StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:32:28.01Z"); return t}()),
-	// 			TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:37:25.8136594Z"); return t}()),
+	// 			StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:32:28.010Z"); return t}()),
+	// 			TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:37:25.813Z"); return t}()),
 	// 		},
 	// 		&armsecurityinsights.ActivityTimelineItem{
 	// 			Kind: to.Ptr(armsecurityinsights.EntityTimelineKindActivity),
-	// 			BucketEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:31:28.02Z"); return t}()),
-	// 			BucketStartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T21:31:28.02Z"); return t}()),
+	// 			BucketEndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:31:28.020Z"); return t}()),
+	// 			BucketStartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T21:31:28.020Z"); return t}()),
 	// 			Content: to.Ptr("he user has deleted the account 3 time(s)"),
-	// 			FirstActivityTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T21:35:28.02Z"); return t}()),
-	// 			LastActivityTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T21:35:28.02Z"); return t}()),
+	// 			FirstActivityTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T21:35:28.020Z"); return t}()),
+	// 			LastActivityTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T21:35:28.020Z"); return t}()),
 	// 			QueryID: to.Ptr("e0459780-ac9d-4b72-8bd4-fecf6b46a0a1"),
 	// 			Title: to.Ptr("The user has deleted an account"),
 	// 		},
@@ -88,16 +88,16 @@ func ExampleEntitiesGetTimelineClient_List() {
 	// 			Description: to.Ptr("Anomalous private to public port scanning activity with high destination port count along with low port ratio. The ratios are normalized by multiplying them by 10,000 to get them to a more usable value between 0.0 and 1.0."),
 	// 			AzureResourceID: to.Ptr("4467341f-fb73-4f99-a9b3-29473532cf5a_d56430ef-f421-2c9c-0b7d-d082285843c6"),
 	// 			DisplayName: to.Ptr("(Preview) Anomalous scanning activity"),
-	// 			EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:31:28.02Z"); return t}()),
+	// 			EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:31:28.020Z"); return t}()),
 	// 			Intent: to.Ptr("Discovery"),
 	// 			ProductName: to.Ptr("Azure Sentinel"),
 	// 			Reasons: []*string{
 	// 				to.Ptr("High destination port count"),
 	// 				to.Ptr("Low port ratio")},
-	// 				StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:32:28.01Z"); return t}()),
+	// 				StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:32:28.010Z"); return t}()),
 	// 				Techniques: []*string{
 	// 					to.Ptr("T1046")},
-	// 					TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:37:25.8136594Z"); return t}()),
+	// 					TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T23:37:25.813Z"); return t}()),
 	// 					Vendor: to.Ptr("Microsoft"),
 	// 			}},
 	// 		}

@@ -4253,3 +4253,4 @@ id,name,language,tag,package,version,date_epoch,date
 4252,azure-mgmt-datafactory@8.0.0,python,azure-mgmt-datafactory_8.0.0,azure-mgmt-datafactory,8.0.0,1717741924,06/07/2024
 4253,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2@v2.0.0-beta.4,go,sdk/resourcemanager/securityinsights/armsecurityinsights/v2.0.0-beta.4,sdk/resourcemanager/securityinsights/armsecurityinsights,v2.0.0-beta.4,1718182236,06/12/2024
 4254,@azure/arm-datafactory@16.0.0,js,@azure/arm-datafactory_16.0.0,@azure/arm-datafactory,16.0.0,1718104143,06/11/2024
+4255,azure-mgmt-cdn@13.1.1,python,azure-mgmt-cdn_13.1.1,azure-mgmt-cdn,13.1.1,1718174888,06/12/2024

@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/incidents/GetAllIncidentAlerts.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/incidents/GetAllIncidentAlerts.json
 func ExampleIncidentsClient_ListAlerts() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -41,8 +41,8 @@ func ExampleIncidentsClient_ListAlerts() {
 	// 				AlertDisplayName: to.Ptr("myAlert"),
 	// 				AlertType: to.Ptr("myAlert"),
 	// 				ConfidenceLevel: to.Ptr(armsecurityinsights.ConfidenceLevelUnknown),
-	// 				EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.6158361Z"); return t}()),
-	// 				ProcessingEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.6158361Z"); return t}()),
+	// 				EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.615Z"); return t}()),
+	// 				ProcessingEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.615Z"); return t}()),
 	// 				ProductName: to.Ptr("Azure Security Center"),
 	// 				ResourceIdentifiers: []any{
 	// 					map[string]any{
@@ -52,12 +52,12 @@ func ExampleIncidentsClient_ListAlerts() {
 	// 						"workspaceId": "c8c99641-985d-4e4e-8e91-fb3466cd0e5b",
 	// 				}},
 	// 				Severity: to.Ptr(armsecurityinsights.AlertSeverityLow),
-	// 				StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.6158361Z"); return t}()),
+	// 				StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.615Z"); return t}()),
 	// 				Status: to.Ptr(armsecurityinsights.AlertStatusNew),
 	// 				SystemAlertID: to.Ptr("baa8a239-6fde-4ab7-a093-d09f7b75c58c"),
 	// 				Tactics: []*armsecurityinsights.AttackTactic{
 	// 				},
-	// 				TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.6158361Z"); return t}()),
+	// 				TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-07-20T18:21:53.615Z"); return t}()),
 	// 				VendorName: to.Ptr("Microsoft"),
 	// 			},
 	// 	}},

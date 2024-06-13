@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/GetSecurityAlertEntityById.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/entities/GetSecurityAlertEntityById.json
 func ExampleEntitiesClient_Get_getASecurityAlertEntity() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -47,20 +47,20 @@ func ExampleEntitiesClient_Get_getASecurityAlertEntity() {
 	// 			AlertLink: to.Ptr("https://portal.azure.com/#blade/Microsoft_Azure_Security/AlertBlade/alertId/2518119885989999999_4aa486e0-6f85-41af-99ea-7acdce7be6c8/subscriptionId/d0cfe6b2-9ac0-4464-9919-dccaee2e48c0/myRg/myWorkspace/referencedFrom/alertDeepLink/location/centralus"),
 	// 			AlertType: to.Ptr("c8c99641-985d-4e4e-8e91-fb3466cd0e5b_46c7b6c0-ff43-44dd-8b4d-ceffff7aa7df"),
 	// 			ConfidenceLevel: to.Ptr(armsecurityinsights.ConfidenceLevelUnknown),
-	// 			EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T13:21:45.926185Z"); return t}()),
+	// 			EndTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T13:21:45.926Z"); return t}()),
 	// 			Intent: to.Ptr(armsecurityinsights.KillChainIntentUnknown),
-	// 			ProcessingEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-06T13:56:53.5392366Z"); return t}()),
+	// 			ProcessingEndTime: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-07-06T13:56:53.539Z"); return t}()),
 	// 			ProductComponentName: to.Ptr("Scheduled Alerts"),
 	// 			ProductName: to.Ptr("Azure Sentinel"),
 	// 			ProviderAlertID: to.Ptr("c2bafff9-fb31-41d0-a177-ecbff7a02ffe"),
 	// 			Severity: to.Ptr(armsecurityinsights.AlertSeverityMedium),
-	// 			StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T08:21:45.926185Z"); return t}()),
+	// 			StartTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T08:21:45.926Z"); return t}()),
 	// 			Status: to.Ptr(armsecurityinsights.AlertStatusNew),
 	// 			SystemAlertID: to.Ptr("4aa486e0-6f85-41af-99ea-7acdce7be6c8"),
 	// 			Tactics: []*armsecurityinsights.AttackTactic{
 	// 				to.Ptr(armsecurityinsights.AttackTacticPersistence),
 	// 				to.Ptr(armsecurityinsights.AttackTacticLateralMovement)},
-	// 				TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T13:56:53.5392366Z"); return t}()),
+	// 				TimeGenerated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T13:56:53.539Z"); return t}()),
 	// 				VendorName: to.Ptr("Microsoft"),
 	// 			},
 	// 		},

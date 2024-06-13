@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/incidents/CreateTeam.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/incidents/CreateTeam.json
 func ExampleIncidentsClient_CreateTeam() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -34,7 +34,7 @@ func ExampleIncidentsClient_CreateTeam() {
 	// 	Name: to.Ptr("Team name"),
 	// 	Description: to.Ptr("Team description"),
 	// 	PrimaryChannelURL: to.Ptr("https://teams.microsoft.com/l/team/19:80bf3b25485b4067b7d2dc4eec9e1578%40thread.tacv2/conversations?groupId=99978838-9bda-4ad4-8f93-4cf7ebc50ca5&tenantId=5b5a146c-eba8-46af-96f8-e31b50d15a3f"),
-	// 	TeamCreationTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-15T17:08:21.9954238+02:00"); return t}()),
+	// 	TeamCreationTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-03-15T15:08:21.995Z"); return t}()),
 	// 	TeamID: to.Ptr("99978838-9bda-4ad4-8f93-4cf7ebc50ca5"),
 	// }
 }

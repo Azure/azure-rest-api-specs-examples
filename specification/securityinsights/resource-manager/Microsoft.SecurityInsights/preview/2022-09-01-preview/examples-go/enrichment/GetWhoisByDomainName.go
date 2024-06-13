@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/enrichment/GetWhoisByDomainName.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/enrichment/GetWhoisByDomainName.json
 func ExampleDomainWhoisClient_Get() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -27,7 +27,7 @@ func ExampleDomainWhoisClient_Get() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.EnrichmentDomainWhois = armsecurityinsights.EnrichmentDomainWhois{
-	// 	Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T16:15:01.187045Z"); return t}()),
+	// 	Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T16:15:01.187Z"); return t}()),
 	// 	Domain: to.Ptr("microsoft.com"),
 	// 	ParsedWhois: &armsecurityinsights.EnrichmentDomainWhoisDetails{
 	// 		Contacts: &armsecurityinsights.EnrichmentDomainWhoisContacts{
@@ -85,6 +85,6 @@ func ExampleDomainWhoisClient_Get() {
 	// 							to.Ptr("serverTransferProhibited"),
 	// 							to.Ptr("serverDeleteProhibited")},
 	// 						},
-	// 						Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T16:15:01.187045Z"); return t}()),
+	// 						Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2021-09-01T16:15:01.187Z"); return t}()),
 	// 					}
 }

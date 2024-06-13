@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/securityinsights/armsecurityinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/e24bbf6a66cb0a19c072c6f15cee163acbd7acf7/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/watchlists/CreateWatchlist.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/6c4f3c695f0250dcb261598a62004f0aef10b9db/specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/watchlists/CreateWatchlist.json
 func ExampleWatchlistsClient_CreateOrUpdate_createsOrUpdatesAWatchlist() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -44,7 +44,7 @@ func ExampleWatchlistsClient_CreateOrUpdate_createsOrUpdatesAWatchlist() {
 	// 	Etag: to.Ptr("\"0300bf09-0000-0000-0000-5c37296e0000\""),
 	// 	Properties: &armsecurityinsights.WatchlistProperties{
 	// 		Description: to.Ptr("Watchlist from CSV content"),
-	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-28T00:26:54.7746089+00:00"); return t}()),
+	// 		Created: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-28T00:26:54.774Z"); return t}()),
 	// 		CreatedBy: &armsecurityinsights.UserInfo{
 	// 			Name: to.Ptr("john doe"),
 	// 			Email: to.Ptr("john@contoso.com"),
@@ -57,7 +57,7 @@ func ExampleWatchlistsClient_CreateOrUpdate_createsOrUpdatesAWatchlist() {
 	// 		Source: to.Ptr("watchlist.csv"),
 	// 		SourceType: to.Ptr(armsecurityinsights.SourceTypeLocalFile),
 	// 		TenantID: to.Ptr("f686d426-8d16-42db-81b7-ab578e110ccd"),
-	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-28T00:26:57+00:00"); return t}()),
+	// 		Updated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-09-28T00:26:57.000Z"); return t}()),
 	// 		UpdatedBy: &armsecurityinsights.UserInfo{
 	// 			Name: to.Ptr("john doe"),
 	// 			Email: to.Ptr("john@contoso.com"),

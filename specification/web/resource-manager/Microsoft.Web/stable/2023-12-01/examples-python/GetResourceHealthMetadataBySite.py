@@ -1,0 +1,34 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.web import WebSiteManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-web
+# USAGE
+    python get_resource_health_metadata_by_site.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = WebSiteManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="4adb32ad-8327-4cbb-b775-b84b4465bb38",
+    )
+
+    response = client.resource_health_metadata.get_by_site(
+        resource_group_name="Default-Web-NorthCentralUS",
+        name="newsiteinnewASE-NCUS",
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/GetResourceHealthMetadataBySite.json
+if __name__ == "__main__":
+    main()

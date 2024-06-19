@@ -4258,3 +4258,4 @@ id,name,language,tag,package,version,date_epoch,date
 4257,azure-mgmt-storagemover@2.1.0,python,azure-mgmt-storagemover_2.1.0,azure-mgmt-storagemover,2.1.0,1718689892,06/18/2024
 4258,azure-mgmt-storage@21.2.0,python,azure-mgmt-storage_21.2.0,azure-mgmt-storage,21.2.0,1718677570,06/18/2024
 4259,azure-mgmt-web@7.3.0,python,azure-mgmt-web_7.3.0,azure-mgmt-web,7.3.0,1718677421,06/18/2024
+4260,azure-mgmt-cosmosdb@9.5.1,python,azure-mgmt-cosmosdb_9.5.1,azure-mgmt-cosmosdb,9.5.1,1718789393,06/19/2024

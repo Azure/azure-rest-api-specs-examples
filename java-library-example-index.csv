@@ -4255,3 +4255,6 @@ id,name,language,tag,package,version,date_epoch,date
 4254,@azure/arm-datafactory@16.0.0,js,@azure/arm-datafactory_16.0.0,@azure/arm-datafactory,16.0.0,1718104143,06/11/2024
 4255,azure-mgmt-cdn@13.1.1,python,azure-mgmt-cdn_13.1.1,azure-mgmt-cdn,13.1.1,1718174888,06/12/2024
 4256,azure-mgmt-mobilenetwork@3.3.0,python,azure-mgmt-mobilenetwork_3.3.0,azure-mgmt-mobilenetwork,3.3.0,1718608059,06/17/2024
+4257,azure-mgmt-storagemover@2.1.0,python,azure-mgmt-storagemover_2.1.0,azure-mgmt-storagemover,2.1.0,1718689892,06/18/2024
+4258,azure-mgmt-storage@21.2.0,python,azure-mgmt-storage_21.2.0,azure-mgmt-storage,21.2.0,1718677570,06/18/2024
+4259,azure-mgmt-web@7.3.0,python,azure-mgmt-web_7.3.0,azure-mgmt-web,7.3.0,1718677421,06/18/2024

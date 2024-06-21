@@ -4263,3 +4263,4 @@ id,name,language,tag,package,version,date_epoch,date
 4262,com.azure.resourcemanager:azure-resourcemanager-selfhelp:1.1.0-beta.5,java,azure-resourcemanager-selfhelp_1.1.0-beta.5,azure-resourcemanager-selfhelp,1.1.0-beta.5,1718955882,06/21/2024
 4263,com.azure.resourcemanager:azure-resourcemanager-imagebuilder:1.1.0,java,azure-resourcemanager-imagebuilder_1.1.0,azure-resourcemanager-imagebuilder,1.1.0,1718946722,06/21/2024
 4264,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.29,java,azure-resourcemanager-datafactory_1.0.0-beta.29,azure-resourcemanager-datafactory,1.0.0-beta.29,1718940873,06/21/2024
+4265,com.azure.resourcemanager:azure-resourcemanager-mobilenetwork:1.2.0,java,azure-resourcemanager-mobilenetwork_1.2.0,azure-resourcemanager-mobilenetwork,1.2.0,1718594271,06/17/2024

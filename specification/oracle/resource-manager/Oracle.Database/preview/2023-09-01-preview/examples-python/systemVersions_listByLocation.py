@@ -1,5 +1,3 @@
-from typing import Any, IO, Union
-
 from azure.identity import DefaultAzureCredential
 
 from azure.mgmt.oracledatabase import OracleDatabaseMgmtClient
@@ -9,7 +7,7 @@ from azure.mgmt.oracledatabase import OracleDatabaseMgmtClient
     pip install azure-identity
     pip install azure-mgmt-oracledatabase
 # USAGE
-    python autonomous_database_backup_create.py
+    python system_versions_list_by_location.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -24,21 +22,13 @@ def main():
         subscription_id="00000000-0000-0000-0000-000000000000",
     )
 
-    response = client.autonomous_database_backups.begin_create_or_update(
-        resource_group_name="rg000",
-        autonomousdatabasename="databasedb1",
-        adbbackupid="1711644130",
-        resource={
-            "properties": {
-                "autonomousDatabaseOcid": "ocid1.autonomousdatabase.oc1..aaaaa3klq",
-                "displayName": "Nightly Backup",
-                "retentionPeriodInDays": 365,
-            }
-        },
-    ).result()
-    print(response)
+    response = client.system_versions.list_by_location(
+        location="eastus",
+    )
+    for item in response:
+        print(item)
 
 
-# x-ms-original-file: specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/autonomousDatabaseBackup_create.json
+# x-ms-original-file: specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/systemVersions_listByLocation.json
 if __name__ == "__main__":
     main()

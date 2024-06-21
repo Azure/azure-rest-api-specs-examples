@@ -4272,3 +4272,4 @@ id,name,language,tag,package,version,date_epoch,date
 4271,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder/v2@v2.3.0,go,sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder/v2.3.0,sdk/resourcemanager/virtualmachineimagebuilder/armvirtualmachineimagebuilder,v2.3.0,1718950812,06/21/2024
 4272,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeploymentstacks@v1.0.0,go,sdk/resourcemanager/resources/armdeploymentstacks/v1.0.0,sdk/resourcemanager/resources/armdeploymentstacks,v1.0.0,1718948253,06/21/2024
 4273,@azure/arm-cosmosdb@16.0.0-beta.8,js,@azure/arm-cosmosdb_16.0.0-beta.8,@azure/arm-cosmosdb,16.0.0-beta.8,1718965183,06/21/2024
+4274,azure-mgmt-oracledatabase@1.0.0b2,python,azure-mgmt-oracledatabase_1.0.0b2,azure-mgmt-oracledatabase,1.0.0b2,1718964678,06/21/2024

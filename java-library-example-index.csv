@@ -4268,3 +4268,4 @@ id,name,language,tag,package,version,date_epoch,date
 4267,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v5@v5.2.0,go,sdk/resourcemanager/network/armnetwork/v5.2.0,sdk/resourcemanager/network/armnetwork,v5.2.0,1718960773,06/21/2024
 4268,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v3@v3.0.0,go,sdk/resourcemanager/appservice/armappservice/v3.0.0,sdk/resourcemanager/appservice/armappservice,v3.0.0,1718959542,06/21/2024
 4269,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storagemover/armstoragemover/v2@v2.2.0,go,sdk/resourcemanager/storagemover/armstoragemover/v2.2.0,sdk/resourcemanager/storagemover/armstoragemover,v2.2.0,1718955342,06/21/2024
+4270,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mobilenetwork/armmobilenetwork/v4@v4.1.0,go,sdk/resourcemanager/mobilenetwork/armmobilenetwork/v4.1.0,sdk/resourcemanager/mobilenetwork/armmobilenetwork,v4.1.0,1718950821,06/21/2024

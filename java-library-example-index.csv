@@ -4261,3 +4261,4 @@ id,name,language,tag,package,version,date_epoch,date
 4260,azure-mgmt-cosmosdb@9.5.1,python,azure-mgmt-cosmosdb_9.5.1,azure-mgmt-cosmosdb,9.5.1,1718789393,06/19/2024
 4261,azure-mgmt-imagebuilder@1.4.0,python,azure-mgmt-imagebuilder_1.4.0,azure-mgmt-imagebuilder,1.4.0,1718862154,06/20/2024
 4262,com.azure.resourcemanager:azure-resourcemanager-selfhelp:1.1.0-beta.5,java,azure-resourcemanager-selfhelp_1.1.0-beta.5,azure-resourcemanager-selfhelp,1.1.0-beta.5,1718955882,06/21/2024
+4263,com.azure.resourcemanager:azure-resourcemanager-imagebuilder:1.1.0,java,azure-resourcemanager-imagebuilder_1.1.0,azure-resourcemanager-imagebuilder,1.1.0,1718946722,06/21/2024

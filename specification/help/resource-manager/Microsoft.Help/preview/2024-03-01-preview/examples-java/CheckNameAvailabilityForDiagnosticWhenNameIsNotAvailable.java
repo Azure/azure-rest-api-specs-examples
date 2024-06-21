@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.selfhelp.models.CheckNameAvailabilityRequest;
 
 /**
- * Samples for CheckNameAvailability Post.
+ * Samples for CheckNameAvailability CheckAvailability.
  */
 public final class Main {
     /*
@@ -16,7 +16,8 @@ public final class Main {
      */
     public static void exampleWhenNameIsNotAvailableForADiagnosticResource(
         com.azure.resourcemanager.selfhelp.SelfHelpManager manager) {
-        manager.checkNameAvailabilities().postWithResponse("subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6",
+        manager.checkNameAvailabilities().checkAvailabilityWithResponse(
+            "subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6",
             new CheckNameAvailabilityRequest().withName("sampleName").withType("Microsoft.Help/diagnostics"),
             com.azure.core.util.Context.NONE);
     }
@@ -32,7 +33,8 @@ public final class Main {
      */
     public static void
         exampleWhenNameIsAvailableForADiagnosticResource(com.azure.resourcemanager.selfhelp.SelfHelpManager manager) {
-        manager.checkNameAvailabilities().postWithResponse("subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6",
+        manager.checkNameAvailabilities().checkAvailabilityWithResponse(
+            "subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6",
             new CheckNameAvailabilityRequest().withName("sampleName").withType("Microsoft.Help/diagnostics"),
             com.azure.core.util.Context.NONE);
     }

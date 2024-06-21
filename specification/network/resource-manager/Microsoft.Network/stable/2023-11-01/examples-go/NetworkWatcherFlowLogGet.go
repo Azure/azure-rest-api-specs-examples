@@ -1,0 +1,59 @@
+package armnetwork_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v5"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/f4c6c8697c59f966db0d1e36b62df3af3bca9065/specification/network/resource-manager/Microsoft.Network/stable/2023-11-01/examples/NetworkWatcherFlowLogGet.json
+func ExampleFlowLogsClient_Get() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armnetwork.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	res, err := clientFactory.NewFlowLogsClient().Get(ctx, "rg1", "nw1", "flowLog1", nil)
+	if err != nil {
+		log.Fatalf("failed to finish the request: %v", err)
+	}
+	// You could use response here. We use blank identifier for just demo purposes.
+	_ = res
+	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+	// res.FlowLog = armnetwork.FlowLog{
+	// 	Name: to.Ptr("flowLog1"),
+	// 	Type: to.Ptr("Microsoft.Network/networkWatchers/FlowLogs"),
+	// 	ID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/тц1/FlowLogs/flowLog1"),
+	// 	Location: to.Ptr("centraluseuap"),
+	// 	Etag: to.Ptr("W/\"00000000-0000-0000-0000-000000000000\""),
+	// 	Properties: &armnetwork.FlowLogPropertiesFormat{
+	// 		Format: &armnetwork.FlowLogFormatParameters{
+	// 			Type: to.Ptr(armnetwork.FlowLogFormatTypeJSON),
+	// 			Version: to.Ptr[int32](2),
+	// 		},
+	// 		Enabled: to.Ptr(true),
+	// 		FlowAnalyticsConfiguration: &armnetwork.TrafficAnalyticsProperties{
+	// 			NetworkWatcherFlowAnalyticsConfiguration: &armnetwork.TrafficAnalyticsConfigurationProperties{
+	// 				Enabled: to.Ptr(false),
+	// 				TrafficAnalyticsInterval: to.Ptr[int32](60),
+	// 				WorkspaceID: to.Ptr("-"),
+	// 				WorkspaceRegion: to.Ptr("-"),
+	// 			},
+	// 		},
+	// 		ProvisioningState: to.Ptr(armnetwork.ProvisioningStateSucceeded),
+	// 		RetentionPolicy: &armnetwork.RetentionPolicyParameters{
+	// 			Days: to.Ptr[int32](0),
+	// 			Enabled: to.Ptr(false),
+	// 		},
+	// 		StorageID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/wzstorage002"),
+	// 		TargetResourceGUID: to.Ptr("00000000-0000-0000-0000-000000000000"),
+	// 		TargetResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg/providers/Microsoft.Network/networkSecurityGroups/vm5-nsg"),
+	// 	},
+	// }
+}

@@ -4274,3 +4274,4 @@ id,name,language,tag,package,version,date_epoch,date
 4273,@azure/arm-cosmosdb@16.0.0-beta.8,js,@azure/arm-cosmosdb_16.0.0-beta.8,@azure/arm-cosmosdb,16.0.0-beta.8,1718965183,06/21/2024
 4274,azure-mgmt-oracledatabase@1.0.0b2,python,azure-mgmt-oracledatabase_1.0.0b2,azure-mgmt-oracledatabase,1.0.0b2,1718964678,06/21/2024
 4275,@azure/arm-network@33.2.0,js,@azure/arm-network_33.2.0,@azure/arm-network,33.2.0,1718970772,06/21/2024
+4276,@azure/arm-mysql-flexible@4.0.0-beta.2,js,@azure/arm-mysql-flexible_4.0.0-beta.2,@azure/arm-mysql-flexible,4.0.0-beta.2,1718970402,06/21/2024

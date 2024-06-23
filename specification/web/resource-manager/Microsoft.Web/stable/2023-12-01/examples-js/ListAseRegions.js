@@ -1,0 +1,20 @@
+const { WebSiteManagementClient } = require("@azure/arm-appservice");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Description for get a list of available ASE regions and its supported Skus.
+ *
+ * @summary Description for get a list of available ASE regions and its supported Skus.
+ * x-ms-original-file: specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/ListAseRegions.json
+ */
+async function listAseregions() {
+  const subscriptionId =
+    process.env["APPSERVICE_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const credential = new DefaultAzureCredential();
+  const client = new WebSiteManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.listAseRegions()) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

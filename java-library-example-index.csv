@@ -4273,3 +4273,8 @@ id,name,language,tag,package,version,date_epoch,date
 4272,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armdeploymentstacks@v1.0.0,go,sdk/resourcemanager/resources/armdeploymentstacks/v1.0.0,sdk/resourcemanager/resources/armdeploymentstacks,v1.0.0,1718948253,06/21/2024
 4273,@azure/arm-cosmosdb@16.0.0-beta.8,js,@azure/arm-cosmosdb_16.0.0-beta.8,@azure/arm-cosmosdb,16.0.0-beta.8,1718965183,06/21/2024
 4274,azure-mgmt-oracledatabase@1.0.0b2,python,azure-mgmt-oracledatabase_1.0.0b2,azure-mgmt-oracledatabase,1.0.0b2,1718964678,06/21/2024
+4275,@azure/arm-network@33.2.0,js,@azure/arm-network_33.2.0,@azure/arm-network,33.2.0,1718970772,06/21/2024
+4276,@azure/arm-mysql-flexible@4.0.0-beta.2,js,@azure/arm-mysql-flexible_4.0.0-beta.2,@azure/arm-mysql-flexible,4.0.0-beta.2,1718970402,06/21/2024
+4277,@azure/arm-imagebuilder@4.1.0,js,@azure/arm-imagebuilder_4.1.0,@azure/arm-imagebuilder,4.1.0,1718970267,06/21/2024
+4278,@azure/arm-mobilenetwork@6.0.0,js,@azure/arm-mobilenetwork_6.0.0,@azure/arm-mobilenetwork,6.0.0,1718970248,06/21/2024
+4279,@azure/arm-appservice@15.0.0,js,@azure/arm-appservice_15.0.0,@azure/arm-appservice,15.0.0,1718969483,06/21/2024

@@ -4278,3 +4278,4 @@ id,name,language,tag,package,version,date_epoch,date
 4277,@azure/arm-imagebuilder@4.1.0,js,@azure/arm-imagebuilder_4.1.0,@azure/arm-imagebuilder,4.1.0,1718970267,06/21/2024
 4278,@azure/arm-mobilenetwork@6.0.0,js,@azure/arm-mobilenetwork_6.0.0,@azure/arm-mobilenetwork,6.0.0,1718970248,06/21/2024
 4279,@azure/arm-appservice@15.0.0,js,@azure/arm-appservice_15.0.0,@azure/arm-appservice,15.0.0,1718969483,06/21/2024
+4280,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/scvmm/armscvmm@v1.0.0,go,sdk/resourcemanager/scvmm/armscvmm/v1.0.0,sdk/resourcemanager/scvmm/armscvmm,v1.0.0,1719215404,06/24/2024

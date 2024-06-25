@@ -4281,3 +4281,4 @@ id,name,language,tag,package,version,date_epoch,date
 4280,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/scvmm/armscvmm@v1.0.0,go,sdk/resourcemanager/scvmm/armscvmm/v1.0.0,sdk/resourcemanager/scvmm/armscvmm,v1.0.0,1719215404,06/24/2024
 4281,@azure/arm-resourcesdeploymentstacks@1.0.0,js,@azure/arm-resourcesdeploymentstacks_1.0.0,@azure/arm-resourcesdeploymentstacks,1.0.0,1719217766,06/24/2024
 4282,@azure/arm-avs@5.0.0,js,@azure/arm-avs_5.0.0,@azure/arm-avs,5.0.0,1719217419,06/24/2024
+4283,com.azure.resourcemanager:azure-resourcemanager-avs:1.2.0-beta.1,java,azure-resourcemanager-avs_1.2.0-beta.1,azure-resourcemanager-avs,1.2.0-beta.1,1719303218,06/25/2024

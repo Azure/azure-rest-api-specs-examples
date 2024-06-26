@@ -4293,3 +4293,4 @@ id,name,language,tag,package,version,date_epoch,date
 4292,@azure/arm-oracledatabase@1.0.0-beta.2,js,@azure/arm-oracledatabase_1.0.0-beta.2,@azure/arm-oracledatabase,1.0.0-beta.2,1719392984,06/26/2024
 4293,@azure/arm-cosmosdb@16.0.0,js,@azure/arm-cosmosdb_16.0.0,@azure/arm-cosmosdb,16.0.0,1719377893,06/26/2024
 4294,@azure/arm-scvmm@1.0.0,js,@azure/arm-scvmm_1.0.0,@azure/arm-scvmm,1.0.0,1719371824,06/26/2024
+4295,azure-mgmt-scvmm@1.0.0,python,azure-mgmt-scvmm_1.0.0,azure-mgmt-scvmm,1.0.0,1719386115,06/26/2024

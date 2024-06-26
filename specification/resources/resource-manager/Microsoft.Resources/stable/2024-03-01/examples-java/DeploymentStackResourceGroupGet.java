@@ -1,0 +1,19 @@
+
+/**
+ * Samples for DeploymentStacks GetByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2024-03-01/examples/
+     * DeploymentStackResourceGroupGet.json
+     */
+    /**
+     * Sample code: DeploymentStacksResourceGroupGet.
+     * 
+     * @param azure The entry point for accessing resource management APIs in Azure.
+     */
+    public static void deploymentStacksResourceGroupGet(com.azure.resourcemanager.AzureResourceManager azure) {
+        azure.genericResources().manager().deploymentStackClient().getDeploymentStacks().getByResourceGroupWithResponse(
+            "deploymentStacksRG", "simpleDeploymentStack", com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,5 +1,7 @@
 
-/** Samples for Subscriptions List. */
+/**
+ * Samples for Subscriptions List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: GetAllSubscriptions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAllSubscriptions(com.azure.resourcemanager.AzureResourceManager azure) {

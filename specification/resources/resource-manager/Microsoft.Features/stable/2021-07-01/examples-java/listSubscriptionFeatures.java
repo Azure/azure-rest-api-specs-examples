@@ -1,5 +1,7 @@
 
-/** Samples for Features ListAll. */
+/**
+ * Samples for Features ListAll.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List subscription Features.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listSubscriptionFeatures(com.azure.resourcemanager.AzureResourceManager azure) {

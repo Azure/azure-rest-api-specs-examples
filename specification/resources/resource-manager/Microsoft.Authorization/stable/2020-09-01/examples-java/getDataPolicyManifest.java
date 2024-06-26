@@ -1,5 +1,7 @@
 
-/** Samples for DataPolicyManifests GetByPolicyMode. */
+/**
+ * Samples for DataPolicyManifests GetByPolicyMode.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Retrieve a data policy manifest by policy mode.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void retrieveADataPolicyManifestByPolicyMode(com.azure.resourcemanager.AzureResourceManager azure) {

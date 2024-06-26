@@ -1,5 +1,7 @@
 
-/** Samples for Changes Get. */
+/**
+ * Samples for Changes Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: GetChange.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getChange(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -10,7 +10,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PolicySetDefinitions CreateOrUpdate. */
+/**
+ * Samples for PolicySetDefinitions CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
@@ -18,7 +20,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a policy set definition with groups.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAPolicySetDefinitionWithGroups(
@@ -46,7 +48,7 @@ public final class Main {
                         .withDescription("Policies designed to control spend within a subscription."),
                     new PolicyDefinitionGroup().withName("Organizational").withDisplayName("Organizational Policies")
                         .withDescription(
-                            "Policies that help enforce resource organization standards within a" + " subscription."))),
+                            "Policies that help enforce resource organization standards within a subscription."))),
                 com.azure.core.util.Context.NONE);
     }
 

@@ -12,7 +12,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PolicySetDefinitions CreateOrUpdate. */
+/**
+ * Samples for PolicySetDefinitions CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
@@ -20,7 +22,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a policy set definition.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAPolicySetDefinition(com.azure.resourcemanager.AzureResourceManager azure)

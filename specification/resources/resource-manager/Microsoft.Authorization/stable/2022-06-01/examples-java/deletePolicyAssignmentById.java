@@ -1,5 +1,7 @@
 
-/** Samples for PolicyAssignments DeleteById. */
+/**
+ * Samples for PolicyAssignments DeleteById.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Delete a policy assignment by ID.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAPolicyAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {

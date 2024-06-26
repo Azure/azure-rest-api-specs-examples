@@ -10,7 +10,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PolicyDefinitions CreateOrUpdate. */
+/**
+ * Samples for PolicyDefinitions CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
@@ -18,7 +20,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a policy definition with advanced parameters.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAPolicyDefinitionWithAdvancedParameters(
@@ -27,9 +29,7 @@ public final class Main {
             .createOrUpdateWithResponse("EventHubDiagnosticLogs", new PolicyDefinitionInner().withMode("Indexed")
                 .withDisplayName("Event Hubs should have diagnostic logging enabled")
                 .withDescription(
-                    "Audit enabling of logs and retain them up to a year. This enables recreation of activity"
-                        + " trails for investigation purposes when a security incident occurs or your network is"
-                        + " compromised")
+                    "Audit enabling of logs and retain them up to a year. This enables recreation of activity trails for investigation purposes when a security incident occurs or your network is compromised")
                 .withPolicyRule(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
                     "{\"if\":{\"equals\":\"Microsoft.EventHub/namespaces\",\"field\":\"type\"},\"then\":{\"effect\":\"AuditIfNotExists\",\"details\":{\"type\":\"Microsoft.Insights/diagnosticSettings\",\"existenceCondition\":{\"allOf\":[{\"equals\":\"true\",\"field\":\"Microsoft.Insights/diagnosticSettings/logs[*].retentionPolicy.enabled\"},{\"equals\":\"[parameters('requiredRetentionDays')]\",\"field\":\"Microsoft.Insights/diagnosticSettings/logs[*].retentionPolicy.days\"}]}}}}",
                     Object.class, SerializerEncoding.JSON))

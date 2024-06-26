@@ -1,5 +1,7 @@
 
-/** Samples for Changes List. */
+/**
+ * Samples for Changes List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: ListChanges.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listChanges(com.azure.resourcemanager.AzureResourceManager azure) {

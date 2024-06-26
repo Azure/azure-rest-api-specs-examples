@@ -1,5 +1,7 @@
 
-/** Samples for Features Get. */
+/**
+ * Samples for Features Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Get feature.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getFeature(com.azure.resourcemanager.AzureResourceManager azure) {

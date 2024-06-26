@@ -4285,3 +4285,4 @@ id,name,language,tag,package,version,date_epoch,date
 4284,com.azure.resourcemanager:azure-resourcemanager-storagemover:1.2.0,java,azure-resourcemanager-storagemover_1.2.0,azure-resourcemanager-storagemover,1.2.0,1719295363,06/25/2024
 4285,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.0.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.0.0,sdk/resourcemanager/cosmos/armcosmos,v3.0.0,1719285864,06/25/2024
 4286,@azure/arm-storagemover@2.1.0,js,@azure/arm-storagemover_2.1.0,@azure/arm-storagemover,2.1.0,1719296185,06/25/2024
+4287,com.azure.resourcemanager:azure-resourcemanager-scvmm:1.0.0,java,azure-resourcemanager-scvmm_1.0.0,azure-resourcemanager-scvmm,1.0.0,1719389152,06/26/2024

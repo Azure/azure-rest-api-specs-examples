@@ -4294,3 +4294,4 @@ id,name,language,tag,package,version,date_epoch,date
 4293,@azure/arm-cosmosdb@16.0.0,js,@azure/arm-cosmosdb_16.0.0,@azure/arm-cosmosdb,16.0.0,1719377893,06/26/2024
 4294,@azure/arm-scvmm@1.0.0,js,@azure/arm-scvmm_1.0.0,@azure/arm-scvmm,1.0.0,1719371824,06/26/2024
 4295,azure-mgmt-scvmm@1.0.0,python,azure-mgmt-scvmm_1.0.0,azure-mgmt-scvmm,1.0.0,1719386115,06/26/2024
+4296,azure-mgmt-redisenterprise@3.1.0b1,python,azure-mgmt-redisenterprise_3.1.0b1,azure-mgmt-redisenterprise,3.1.0b1,1719386105,06/26/2024

@@ -4290,3 +4290,4 @@ id,name,language,tag,package,version,date_epoch,date
 4289,com.azure.resourcemanager:azure-resourcemanager:2.40.0,java,azure-resourcemanager_2.40.0,azure-resourcemanager,2.40.0,1719368038,06/26/2024
 4290,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.0.0-beta.1,go,sdk/resourcemanager/avs/armavs/v2.0.0-beta.1,sdk/resourcemanager/avs/armavs,v2.0.0-beta.1,1719389324,06/26/2024
 4291,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v0.2.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v0.2.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v0.2.0,1719382082,06/26/2024
+4292,@azure/arm-oracledatabase@1.0.0-beta.2,js,@azure/arm-oracledatabase_1.0.0-beta.2,@azure/arm-oracledatabase,1.0.0-beta.2,1719392984,06/26/2024

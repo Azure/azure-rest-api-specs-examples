@@ -8,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ee6d9fd7687d4b67117c5a167c191a7e7e70b53/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/operations_list.json
-func ExampleOperationsClient_NewListPager() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ee6d9fd7687d4b67117c5a167c191a7e7e70b53/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/systemVersions_listByLocation.json
+func ExampleSystemVersionsClient_NewListByLocationPager_listExadataSystemVersionsByTheProvidedFilter() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -19,7 +19,7 @@ func ExampleOperationsClient_NewListPager() {
 	if err != nil {
 		log.Fatalf("failed to create client: %v", err)
 	}
-	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	pager := clientFactory.NewSystemVersionsClient().NewListByLocationPager("eastus", nil)
 	for pager.More() {
 		page, err := pager.NextPage(ctx)
 		if err != nil {
@@ -30,17 +30,13 @@ func ExampleOperationsClient_NewListPager() {
 			_ = v
 		}
 		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
-		// page.OperationListResult = armoracledatabase.OperationListResult{
-		// 	Value: []*armoracledatabase.Operation{
+		// page.SystemVersionListResult = armoracledatabase.SystemVersionListResult{
+		// 	Value: []*armoracledatabase.SystemVersion{
 		// 		{
-		// 			Name: to.Ptr("Oracle.Database/cloudExadataInfrastructures/Read"),
-		// 			Display: &armoracledatabase.OperationDisplay{
-		// 				Description: to.Ptr("Reads Exadata Infrastructure"),
-		// 				Operation: to.Ptr("Get/list Exadata Infrastructure resources"),
-		// 				Provider: to.Ptr("Oracle.Database"),
-		// 				Resource: to.Ptr("cloudExadataInfrastructures"),
+		// 			ID: to.Ptr("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Oracle.Database/locations/eastus/systemVersion/22.1.7.0.0.230113"),
+		// 			Properties: &armoracledatabase.SystemVersionProperties{
+		// 				SystemVersion: to.Ptr("22.1.7.0.0.230113"),
 		// 			},
-		// 			IsDataAction: to.Ptr(false),
 		// 	}},
 		// }
 	}

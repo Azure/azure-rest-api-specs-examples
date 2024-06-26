@@ -1,0 +1,26 @@
+const { ScVmm } = require("@azure/arm-scvmm");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Updates the VirtualMachineTemplate resource.
+ *
+ * @summary Updates the VirtualMachineTemplate resource.
+ * x-ms-original-file: specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/examples/VirtualMachineTemplates_Update_MaximumSet_Gen.json
+ */
+async function virtualMachineTemplatesUpdateMaximumSet() {
+  const subscriptionId =
+    process.env["SCVMM_SUBSCRIPTION_ID"] || "79332E5A-630B-480F-A266-A941C015AB19";
+  const resourceGroupName = process.env["SCVMM_RESOURCE_GROUP"] || "rgscvmm";
+  const virtualMachineTemplateName = "g";
+  const properties = {
+    tags: { key6634: "wwfhrg" },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ScVmm(credential, subscriptionId);
+  const result = await client.virtualMachineTemplates.beginUpdateAndWait(
+    resourceGroupName,
+    virtualMachineTemplateName,
+    properties,
+  );
+  console.log(result);
+}

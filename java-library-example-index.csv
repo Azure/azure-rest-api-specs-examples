@@ -4287,3 +4287,4 @@ id,name,language,tag,package,version,date_epoch,date
 4286,@azure/arm-storagemover@2.1.0,js,@azure/arm-storagemover_2.1.0,@azure/arm-storagemover,2.1.0,1719296185,06/25/2024
 4287,com.azure.resourcemanager:azure-resourcemanager-scvmm:1.0.0,java,azure-resourcemanager-scvmm_1.0.0,azure-resourcemanager-scvmm,1.0.0,1719389152,06/26/2024
 4288,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.0.0-beta.2,java,azure-resourcemanager-oracledatabase_1.0.0-beta.2,azure-resourcemanager-oracledatabase,1.0.0-beta.2,1719380877,06/26/2024
+4289,com.azure.resourcemanager:azure-resourcemanager:2.40.0,java,azure-resourcemanager_2.40.0,azure-resourcemanager,2.40.0,1719368038,06/26/2024

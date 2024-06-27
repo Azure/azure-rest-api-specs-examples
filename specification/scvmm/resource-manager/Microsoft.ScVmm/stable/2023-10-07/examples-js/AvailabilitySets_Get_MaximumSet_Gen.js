@@ -1,0 +1,19 @@
+const { ScVmm } = require("@azure/arm-scvmm");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Implements AvailabilitySet GET method.
+ *
+ * @summary Implements AvailabilitySet GET method.
+ * x-ms-original-file: specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/examples/AvailabilitySets_Get_MaximumSet_Gen.json
+ */
+async function availabilitySetsGetMaximumSet() {
+  const subscriptionId =
+    process.env["SCVMM_SUBSCRIPTION_ID"] || "79332E5A-630B-480F-A266-A941C015AB19";
+  const resourceGroupName = process.env["SCVMM_RESOURCE_GROUP"] || "rgscvmm";
+  const availabilitySetResourceName = "-";
+  const credential = new DefaultAzureCredential();
+  const client = new ScVmm(credential, subscriptionId);
+  const result = await client.availabilitySets.get(resourceGroupName, availabilitySetResourceName);
+  console.log(result);
+}

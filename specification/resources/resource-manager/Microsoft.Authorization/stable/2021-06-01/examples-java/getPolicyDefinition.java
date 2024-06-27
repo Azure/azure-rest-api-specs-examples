@@ -1,5 +1,7 @@
 
-/** Samples for PolicyDefinitions Get. */
+/**
+ * Samples for PolicyDefinitions Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Retrieve a policy definition.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void retrieveAPolicyDefinition(com.azure.resourcemanager.AzureResourceManager azure) {

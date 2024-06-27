@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.resources.models.ResourceName;
 
-/** Samples for ResourceName CheckResourceName. */
+/**
+ * Samples for ResourceName CheckResourceName.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: CheckValidityForAResourceName.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void checkValidityForAResourceName(com.azure.resourcemanager.AzureResourceManager azure) {

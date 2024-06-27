@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PolicyDefinitions CreateOrUpdate. */
+/**
+ * Samples for PolicyDefinitions CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
@@ -17,7 +19,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a policy definition.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAPolicyDefinition(com.azure.resourcemanager.AzureResourceManager azure)
@@ -27,8 +29,7 @@ public final class Main {
             new PolicyDefinitionInner().withMode("All").withDisplayName("Enforce resource naming convention")
                 .withDescription("Force resource names to begin with given 'prefix' and/or end with given 'suffix'")
                 .withPolicyRule(SerializerFactory.createDefaultManagementSerializerAdapter().deserialize(
-                    "{\"if\":{\"not\":{\"field\":\"name\",\"like\":\"[concat(parameters('prefix'), '*',"
-                        + " parameters('suffix'))]\"}},\"then\":{\"effect\":\"deny\"}}",
+                    "{\"if\":{\"not\":{\"field\":\"name\",\"like\":\"[concat(parameters('prefix'), '*', parameters('suffix'))]\"}},\"then\":{\"effect\":\"deny\"}}",
                     Object.class, SerializerEncoding.JSON))
                 .withMetadata(SerializerFactory.createDefaultManagementSerializerAdapter()
                     .deserialize("{\"category\":\"Naming\"}", Object.class, SerializerEncoding.JSON))

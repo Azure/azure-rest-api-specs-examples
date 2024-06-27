@@ -6,7 +6,9 @@ import com.azure.resourcemanager.resources.models.ExemptionCategory;
 import java.io.IOException;
 import java.util.Arrays;
 
-/** Samples for PolicyExemptions CreateOrUpdate. */
+/**
+ * Samples for PolicyExemptions CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a policy exemption.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAPolicyExemption(com.azure.resourcemanager.AzureResourceManager azure)

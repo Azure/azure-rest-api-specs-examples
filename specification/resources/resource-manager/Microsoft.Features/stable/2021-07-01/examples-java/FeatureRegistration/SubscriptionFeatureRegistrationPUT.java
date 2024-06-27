@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.resources.fluent.models.SubscriptionFeatureRegistrationInner;
 import com.azure.resourcemanager.resources.models.SubscriptionFeatureRegistrationProperties;
 
-/** Samples for SubscriptionFeatureRegistrations CreateOrUpdate. */
+/**
+ * Samples for SubscriptionFeatureRegistrations CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Creates a feature registration.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createsAFeatureRegistration(com.azure.resourcemanager.AzureResourceManager azure) {

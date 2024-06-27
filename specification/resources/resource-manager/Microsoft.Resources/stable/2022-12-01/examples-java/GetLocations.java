@@ -1,5 +1,7 @@
 
-/** Samples for Subscriptions ListLocations. */
+/**
+ * Samples for Subscriptions ListLocations.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: GetLocationsWithASubscriptionId.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getLocationsWithASubscriptionId(com.azure.resourcemanager.AzureResourceManager azure) {

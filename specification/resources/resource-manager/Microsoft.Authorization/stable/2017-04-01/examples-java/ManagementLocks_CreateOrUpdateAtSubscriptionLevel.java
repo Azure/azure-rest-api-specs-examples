@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.resources.fluent.models.ManagementLockObjectInner;
 import com.azure.resourcemanager.resources.models.LockLevel;
 
-/** Samples for ManagementLocks CreateOrUpdateAtSubscriptionLevel. */
+/**
+ * Samples for ManagementLocks CreateOrUpdateAtSubscriptionLevel.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2017-04-01/examples/
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create management lock at subscription level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createManagementLockAtSubscriptionLevel(com.azure.resourcemanager.AzureResourceManager azure) {

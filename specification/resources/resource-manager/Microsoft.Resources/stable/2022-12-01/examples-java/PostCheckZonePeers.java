@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.resources.models.CheckZonePeersRequest;
 import java.util.Arrays;
 
-/** Samples for Subscriptions CheckZonePeers. */
+/**
+ * Samples for Subscriptions CheckZonePeers.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: GetLogicalZoneMapping.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getLogicalZoneMapping(com.azure.resourcemanager.AzureResourceManager azure) {

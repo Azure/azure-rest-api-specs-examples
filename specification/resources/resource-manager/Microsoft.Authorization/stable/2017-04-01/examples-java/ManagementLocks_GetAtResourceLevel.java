@@ -1,5 +1,7 @@
 
-/** Samples for ManagementLocks GetAtResourceLevel. */
+/**
+ * Samples for ManagementLocks GetAtResourceLevel.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2017-04-01/examples/
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Get management lock at resource level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getManagementLockAtResourceLevel(com.azure.resourcemanager.AzureResourceManager azure) {

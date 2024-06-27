@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PolicyAssignments Create. */
+/**
+ * Samples for PolicyAssignments Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
@@ -17,7 +19,7 @@ public final class Main {
     /**
      * Sample code: Create or update a policy assignment without enforcing policy effect during resource creation or
      * update.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAPolicyAssignmentWithoutEnforcingPolicyEffectDuringResourceCreationOrUpdate(

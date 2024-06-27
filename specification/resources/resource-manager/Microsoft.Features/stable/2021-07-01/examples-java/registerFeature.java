@@ -1,5 +1,7 @@
 
-/** Samples for Features Register. */
+/**
+ * Samples for Features Register.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Register feature.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void registerFeature(com.azure.resourcemanager.AzureResourceManager azure) {

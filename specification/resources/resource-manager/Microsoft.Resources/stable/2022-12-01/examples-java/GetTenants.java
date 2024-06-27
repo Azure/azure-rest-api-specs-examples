@@ -1,5 +1,7 @@
 
-/** Samples for Tenants List. */
+/**
+ * Samples for Tenants List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: GetAllTenants.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAllTenants(com.azure.resourcemanager.AzureResourceManager azure) {

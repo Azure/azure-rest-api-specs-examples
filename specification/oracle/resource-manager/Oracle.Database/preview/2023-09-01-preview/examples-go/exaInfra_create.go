@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/520e274d7d95fc6d1002dd3c1fcaf8d55d27f63e/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/exaInfra_create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ee6d9fd7687d4b67117c5a167c191a7e7e70b53/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/exaInfra_create.json
 func ExampleCloudExadataInfrastructuresClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -61,7 +61,7 @@ func ExampleCloudExadataInfrastructuresClient_BeginCreateOrUpdate() {
 	// 			{
 	// 				Email: to.Ptr("noreply@oracle.com"),
 	// 		}},
-	// 		DataStorageSizeInTbs: to.Ptr[int32](10),
+	// 		DataStorageSizeInTbs: to.Ptr[float64](10),
 	// 		DbNodeStorageSizeInGbs: to.Ptr[int32](10),
 	// 		DbServerVersion: to.Ptr("19.0.0.0"),
 	// 		DisplayName: to.Ptr("infra 1"),

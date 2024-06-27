@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/520e274d7d95fc6d1002dd3c1fcaf8d55d27f63e/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/vmClusters_create.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ee6d9fd7687d4b67117c5a167c191a7e7e70b53/specification/oracle/resource-manager/Oracle.Database/preview/2023-09-01-preview/examples/vmClusters_create.json
 func ExampleCloudVMClustersClient_BeginCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -48,7 +48,7 @@ func ExampleCloudVMClustersClient_BeginCreateOrUpdate() {
 			IsSparseDiskgroupEnabled: to.Ptr(false),
 			LicenseModel:             to.Ptr(armoracledatabase.LicenseModelLicenseIncluded),
 			MemorySizeInGbs:          to.Ptr[int32](1000),
-			NsgCidrs: []*armoracledatabase.NSGCidr{
+			NsgCidrs: []*armoracledatabase.NsgCidr{
 				{
 					DestinationPortRange: &armoracledatabase.PortRange{
 						Max: to.Ptr[int32](1522),

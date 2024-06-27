@@ -4285,3 +4285,13 @@ id,name,language,tag,package,version,date_epoch,date
 4284,com.azure.resourcemanager:azure-resourcemanager-storagemover:1.2.0,java,azure-resourcemanager-storagemover_1.2.0,azure-resourcemanager-storagemover,1.2.0,1719295363,06/25/2024
 4285,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.0.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.0.0,sdk/resourcemanager/cosmos/armcosmos,v3.0.0,1719285864,06/25/2024
 4286,@azure/arm-storagemover@2.1.0,js,@azure/arm-storagemover_2.1.0,@azure/arm-storagemover,2.1.0,1719296185,06/25/2024
+4287,com.azure.resourcemanager:azure-resourcemanager-scvmm:1.0.0,java,azure-resourcemanager-scvmm_1.0.0,azure-resourcemanager-scvmm,1.0.0,1719389152,06/26/2024
+4288,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.0.0-beta.2,java,azure-resourcemanager-oracledatabase_1.0.0-beta.2,azure-resourcemanager-oracledatabase,1.0.0-beta.2,1719380877,06/26/2024
+4289,com.azure.resourcemanager:azure-resourcemanager:2.40.0,java,azure-resourcemanager_2.40.0,azure-resourcemanager,2.40.0,1719368038,06/26/2024
+4290,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.0.0-beta.1,go,sdk/resourcemanager/avs/armavs/v2.0.0-beta.1,sdk/resourcemanager/avs/armavs,v2.0.0-beta.1,1719389324,06/26/2024
+4291,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v0.2.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v0.2.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v0.2.0,1719382082,06/26/2024
+4292,@azure/arm-oracledatabase@1.0.0-beta.2,js,@azure/arm-oracledatabase_1.0.0-beta.2,@azure/arm-oracledatabase,1.0.0-beta.2,1719392984,06/26/2024
+4293,@azure/arm-cosmosdb@16.0.0,js,@azure/arm-cosmosdb_16.0.0,@azure/arm-cosmosdb,16.0.0,1719377893,06/26/2024
+4294,@azure/arm-scvmm@1.0.0,js,@azure/arm-scvmm_1.0.0,@azure/arm-scvmm,1.0.0,1719371824,06/26/2024
+4295,azure-mgmt-scvmm@1.0.0,python,azure-mgmt-scvmm_1.0.0,azure-mgmt-scvmm,1.0.0,1719386115,06/26/2024
+4296,azure-mgmt-redisenterprise@3.1.0b1,python,azure-mgmt-redisenterprise_3.1.0b1,azure-mgmt-redisenterprise,3.1.0b1,1719386105,06/26/2024

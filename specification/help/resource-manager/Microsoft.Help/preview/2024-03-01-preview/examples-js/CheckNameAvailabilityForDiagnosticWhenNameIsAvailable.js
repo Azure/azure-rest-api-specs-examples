@@ -18,6 +18,6 @@ async function exampleWhenNameIsAvailableForADiagnosticResource() {
   };
   const credential = new DefaultAzureCredential();
   const client = new HelpRP(credential);
-  const result = await client.checkNameAvailability.post(scope, options);
+  const result = await client.checkNameAvailability.checkAvailability(scope, options);
   console.log(result);
 }

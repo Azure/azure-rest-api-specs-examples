@@ -17,6 +17,6 @@ async function discoverySolutionsUsingIssueSummaryAndServiceId() {
   };
   const credential = new DefaultAzureCredential();
   const client = new HelpRP(credential);
-  const result = await client.discoverySolutionNLPTenantScope.post(options);
+  const result = await client.discoverySolutionNLP.discoverSolutions(options);
   console.log(result);
 }

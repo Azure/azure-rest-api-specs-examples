@@ -15,7 +15,7 @@ async function createCloneAutonomousDatabase() {
   const resource = {
     location: "eastus",
     properties: {
-      adminPassword: "",
+      adminPassword: "********",
       characterSet: "AL32UTF8",
       cloneType: "Full",
       computeCount: 2,

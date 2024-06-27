@@ -15,7 +15,7 @@ async function createAutonomousDatabase() {
   const resource = {
     location: "eastus",
     properties: {
-      adminPassword: "",
+      adminPassword: "********",
       characterSet: "AL32UTF8",
       computeCount: 2,
       computeModel: "ECPU",

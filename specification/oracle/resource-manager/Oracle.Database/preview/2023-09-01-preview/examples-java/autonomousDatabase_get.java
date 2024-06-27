@@ -9,11 +9,11 @@ public final class Main {
      * json
      */
     /**
-     * Sample code: Get Autonomous Database.
+     * Sample code: AutonomousDatabases_Get.
      * 
      * @param manager Entry point to OracleDatabaseManager.
      */
-    public static void getAutonomousDatabase(com.azure.resourcemanager.oracledatabase.OracleDatabaseManager manager) {
+    public static void autonomousDatabasesGet(com.azure.resourcemanager.oracledatabase.OracleDatabaseManager manager) {
         manager.autonomousDatabases().getByResourceGroupWithResponse("rg000", "databasedb1",
             com.azure.core.util.Context.NONE);
     }

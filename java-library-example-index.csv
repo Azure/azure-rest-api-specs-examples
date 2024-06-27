@@ -4300,3 +4300,4 @@ id,name,language,tag,package,version,date_epoch,date
 4299,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcomplianceautomation/armappcomplianceautomation@v1.0.0,go,sdk/resourcemanager/appcomplianceautomation/armappcomplianceautomation/v1.0.0,sdk/resourcemanager/appcomplianceautomation/armappcomplianceautomation,v1.0.0,1719469094,06/27/2024
 4300,@azure/arm-selfhelp@2.0.0-beta.5,js,@azure/arm-selfhelp_2.0.0-beta.5,@azure/arm-selfhelp,2.0.0-beta.5,1719468825,06/27/2024
 4301,azure-mgmt-appcomplianceautomation@1.0.0,python,azure-mgmt-appcomplianceautomation_1.0.0,azure-mgmt-appcomplianceautomation,1.0.0,1719472577,06/27/2024
+4302,azure-mgmt-storage@21.2.1,python,azure-mgmt-storage_21.2.1,azure-mgmt-storage,21.2.1,1719472295,06/27/2024

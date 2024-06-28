@@ -4295,3 +4295,9 @@ id,name,language,tag,package,version,date_epoch,date
 4294,@azure/arm-scvmm@1.0.0,js,@azure/arm-scvmm_1.0.0,@azure/arm-scvmm,1.0.0,1719371824,06/26/2024
 4295,azure-mgmt-scvmm@1.0.0,python,azure-mgmt-scvmm_1.0.0,azure-mgmt-scvmm,1.0.0,1719386115,06/26/2024
 4296,azure-mgmt-redisenterprise@3.1.0b1,python,azure-mgmt-redisenterprise_3.1.0b1,azure-mgmt-redisenterprise,3.1.0b1,1719386105,06/26/2024
+4297,com.azure.resourcemanager:azure-resourcemanager-appcomplianceautomation:1.0.0,java,azure-resourcemanager-appcomplianceautomation_1.0.0,azure-resourcemanager-appcomplianceautomation,1.0.0,1719455763,06/27/2024
+4298,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.6.0,go,sdk/resourcemanager/storage/armstorage/v1.6.0,sdk/resourcemanager/storage/armstorage,v1.6.0,1719474939,06/27/2024
+4299,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcomplianceautomation/armappcomplianceautomation@v1.0.0,go,sdk/resourcemanager/appcomplianceautomation/armappcomplianceautomation/v1.0.0,sdk/resourcemanager/appcomplianceautomation/armappcomplianceautomation,v1.0.0,1719469094,06/27/2024
+4300,@azure/arm-selfhelp@2.0.0-beta.5,js,@azure/arm-selfhelp_2.0.0-beta.5,@azure/arm-selfhelp,2.0.0-beta.5,1719468825,06/27/2024
+4301,azure-mgmt-appcomplianceautomation@1.0.0,python,azure-mgmt-appcomplianceautomation_1.0.0,azure-mgmt-appcomplianceautomation,1.0.0,1719472577,06/27/2024
+4302,azure-mgmt-storage@21.2.1,python,azure-mgmt-storage_21.2.1,azure-mgmt-storage,21.2.1,1719472295,06/27/2024

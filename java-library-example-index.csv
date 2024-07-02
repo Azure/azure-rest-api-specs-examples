@@ -4303,3 +4303,4 @@ id,name,language,tag,package,version,date_epoch,date
 4302,azure-mgmt-storage@21.2.1,python,azure-mgmt-storage_21.2.1,azure-mgmt-storage,21.2.1,1719472295,06/27/2024
 4303,@azure/arm-storage@18.3.0,js,@azure/arm-storage_18.3.0,@azure/arm-storage,18.3.0,1719545884,06/28/2024
 4304,azure-mgmt-avs@9.0.0b1,python,azure-mgmt-avs_9.0.0b1,azure-mgmt-avs,9.0.0b1,1719564039,06/28/2024
+4305,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.0.0-beta.1,java,azure-resourcemanager-mongocluster_1.0.0-beta.1,azure-resourcemanager-mongocluster,1.0.0-beta.1,1719895237,07/02/2024

@@ -1,0 +1,18 @@
+
+/**
+ * Samples for DbServers Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/oracle/resource-manager/Oracle.Database/stable/2023-09-01/examples/dbServers_get.json
+     */
+    /**
+     * Sample code: Get DbServer by parent.
+     * 
+     * @param manager Entry point to OracleDatabaseManager.
+     */
+    public static void getDbServerByParent(com.azure.resourcemanager.oracledatabase.OracleDatabaseManager manager) {
+        manager.dbServers().getWithResponse("rg000", "infra1", "ocid1....aaaaaa", com.azure.core.util.Context.NONE);
+    }
+}

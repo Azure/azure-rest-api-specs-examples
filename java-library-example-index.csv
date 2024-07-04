@@ -4305,3 +4305,4 @@ id,name,language,tag,package,version,date_epoch,date
 4304,azure-mgmt-avs@9.0.0b1,python,azure-mgmt-avs_9.0.0b1,azure-mgmt-avs,9.0.0b1,1719564039,06/28/2024
 4305,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.0.0-beta.1,java,azure-resourcemanager-mongocluster_1.0.0-beta.1,azure-resourcemanager-mongocluster,1.0.0-beta.1,1719895237,07/02/2024
 4306,@azure/arm-appcomplianceautomation@1.0.0,js,@azure/arm-appcomplianceautomation_1.0.0,@azure/arm-appcomplianceautomation,1.0.0,1719468909,06/27/2024
+4307,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.0.0,java,azure-resourcemanager-oracledatabase_1.0.0,azure-resourcemanager-oracledatabase,1.0.0,1720064653,07/04/2024

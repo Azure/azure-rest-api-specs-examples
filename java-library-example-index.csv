@@ -4307,3 +4307,4 @@ id,name,language,tag,package,version,date_epoch,date
 4306,@azure/arm-appcomplianceautomation@1.0.0,js,@azure/arm-appcomplianceautomation_1.0.0,@azure/arm-appcomplianceautomation,1.0.0,1719468909,06/27/2024
 4307,com.azure.resourcemanager:azure-resourcemanager-oracledatabase:1.0.0,java,azure-resourcemanager-oracledatabase_1.0.0,azure-resourcemanager-oracledatabase,1.0.0,1720064653,07/04/2024
 4308,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/oracledatabase/armoracledatabase@v1.0.0,go,sdk/resourcemanager/oracledatabase/armoracledatabase/v1.0.0,sdk/resourcemanager/oracledatabase/armoracledatabase,v1.0.0,1720070764,07/04/2024
+4309,@azure/arm-oracledatabase@1.0.0,js,@azure/arm-oracledatabase_1.0.0,@azure/arm-oracledatabase,1.0.0,1720087429,07/04/2024

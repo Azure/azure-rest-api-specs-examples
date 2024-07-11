@@ -4310,3 +4310,4 @@ id,name,language,tag,package,version,date_epoch,date
 4309,@azure/arm-oracledatabase@1.0.0,js,@azure/arm-oracledatabase_1.0.0,@azure/arm-oracledatabase,1.0.0,1720087429,07/04/2024
 4310,azure-mgmt-oracledatabase@1.0.0,python,azure-mgmt-oracledatabase_1.0.0,azure-mgmt-oracledatabase,1.0.0,1720084377,07/04/2024
 4311,azure-mgmt-appplatform@9.1.0,python,azure-mgmt-appplatform_9.1.0,azure-mgmt-appplatform,9.1.0,1720062864,07/04/2024
+4312,@azure/arm-redisenterprisecache@3.1.0-beta.1,js,@azure/arm-redisenterprisecache_3.1.0-beta.1,@azure/arm-redisenterprisecache,3.1.0-beta.1,1720687583,07/11/2024

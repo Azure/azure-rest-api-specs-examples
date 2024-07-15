@@ -4316,3 +4316,4 @@ id,name,language,tag,package,version,date_epoch,date
 4315,azure-mgmt-appplatform@9.1.0.post2,python,azure-mgmt-appplatform_9.1.0.post2,azure-mgmt-appplatform,9.1.0.post2,1720833942,07/13/2024
 4316,azure-mgmt-oracledatabase@1.0.0.post2,python,azure-mgmt-oracledatabase_1.0.0.post2,azure-mgmt-oracledatabase,1.0.0.post2,1720833906,07/13/2024
 4317,com.azure.resourcemanager:azure-resourcemanager-informaticadatamanagement:1.0.0,java,azure-resourcemanager-informaticadatamanagement_1.0.0,azure-resourcemanager-informaticadatamanagement,1.0.0,1721024518,07/15/2024
+4318,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt@v1.0.0,go,sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt/v1.0.0,sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt,v1.0.0,1721037173,07/15/2024

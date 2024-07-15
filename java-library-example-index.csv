@@ -4318,3 +4318,4 @@ id,name,language,tag,package,version,date_epoch,date
 4317,com.azure.resourcemanager:azure-resourcemanager-informaticadatamanagement:1.0.0,java,azure-resourcemanager-informaticadatamanagement_1.0.0,azure-resourcemanager-informaticadatamanagement,1.0.0,1721024518,07/15/2024
 4318,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt@v1.0.0,go,sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt/v1.0.0,sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt,v1.0.0,1721037173,07/15/2024
 4319,@azure/arm-informaticadatamanagement@1.0.0,js,@azure/arm-informaticadatamanagement_1.0.0,@azure/arm-informaticadatamanagement,1.0.0,1721035397,07/15/2024
+4320,azure-mgmt-informaticadatamanagement@1.0.0,python,azure-mgmt-informaticadatamanagement_1.0.0,azure-mgmt-informaticadatamanagement,1.0.0,1721037528,07/15/2024

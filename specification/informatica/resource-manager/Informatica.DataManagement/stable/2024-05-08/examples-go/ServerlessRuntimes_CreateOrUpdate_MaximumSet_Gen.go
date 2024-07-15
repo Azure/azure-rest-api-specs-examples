@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/a07cb79078c828c5404a5154fea6c60d6e43256e/specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/ServerlessRuntimes_CreateOrUpdate_MaximumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/56537883b7cdb95618c3d1ec1c0ee37b59d88d72/specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/ServerlessRuntimes_CreateOrUpdate_MaximumSet_Gen.json
 func ExampleServerlessRuntimesClient_BeginCreateOrUpdate_serverlessRuntimesCreateOrUpdate() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -66,8 +66,8 @@ func ExampleServerlessRuntimesClient_BeginCreateOrUpdate_serverlessRuntimesCreat
 			},
 			ServerlessRuntimeNetworkProfile: &arminformaticadatamgmt.ServerlessRuntimeNetworkProfile{
 				NetworkInterfaceConfiguration: &arminformaticadatamgmt.NetworkInterfaceConfiguration{
-					SubnetID:         to.Ptr("s"),
-					VnetID:           to.Ptr("uaqjvtubxccjs"),
+					SubnetID:         to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/subnet1"),
+					VnetID:           to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/HypernetVnet1"),
 					VnetResourceGUID: to.Ptr("5328d299-1462-4be0-bef1-303a28e556a0"),
 				},
 			},
@@ -149,8 +149,8 @@ func ExampleServerlessRuntimesClient_BeginCreateOrUpdate_serverlessRuntimesCreat
 	// 		},
 	// 		ServerlessRuntimeNetworkProfile: &arminformaticadatamgmt.ServerlessRuntimeNetworkProfile{
 	// 			NetworkInterfaceConfiguration: &arminformaticadatamgmt.NetworkInterfaceConfiguration{
-	// 				SubnetID: to.Ptr("s"),
-	// 				VnetID: to.Ptr("uaqjvtubxccjs"),
+	// 				SubnetID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Networks/virtualNetworks/test-vnet/subnets/subnet1"),
+	// 				VnetID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/HypernetVnet1"),
 	// 				VnetResourceGUID: to.Ptr("5328d299-1462-4be0-bef1-303a28e556a0"),
 	// 			},
 	// 		},

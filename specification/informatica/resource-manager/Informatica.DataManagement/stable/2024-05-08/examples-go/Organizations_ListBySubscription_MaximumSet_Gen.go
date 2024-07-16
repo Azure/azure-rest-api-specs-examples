@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/a07cb79078c828c5404a5154fea6c60d6e43256e/specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/Organizations_ListBySubscription_MaximumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/56537883b7cdb95618c3d1ec1c0ee37b59d88d72/specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/Organizations_ListBySubscription_MaximumSet_Gen.json
 func ExampleOrganizationsClient_NewListBySubscriptionPager_organizationsListBySubscription() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -61,7 +61,7 @@ func ExampleOrganizationsClient_NewListBySubscriptionPager_organizationsListBySu
 		// 					InformaticaRegion: to.Ptr("zfqodqpbeflhedypiijdkc"),
 		// 					OrganizationID: to.Ptr("wtdmhlwhkvgqdumaehgfgiqcxgnqpx"),
 		// 					OrganizationName: to.Ptr("nomzbvwe"),
-		// 					SingleSignOnURL: to.Ptr("espcbzjhtmgwfdkckhqk"),
+		// 					SingleSignOnURL: to.Ptr("https://contoso.com/singlesignon"),
 		// 				},
 		// 				LinkOrganization: &arminformaticadatamgmt.LinkOrganization{
 		// 					Token: to.Ptr("jjfouhoqpumjvrdsfbimgcy"),

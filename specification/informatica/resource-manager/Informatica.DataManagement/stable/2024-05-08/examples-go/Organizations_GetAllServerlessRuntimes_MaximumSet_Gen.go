@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/informaticadatamgmt/arminformaticadatamgmt"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/a07cb79078c828c5404a5154fea6c60d6e43256e/specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/Organizations_GetAllServerlessRuntimes_MaximumSet_Gen.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/56537883b7cdb95618c3d1ec1c0ee37b59d88d72/specification/informatica/resource-manager/Informatica.DataManagement/stable/2024-05-08/examples/Organizations_GetAllServerlessRuntimes_MaximumSet_Gen.json
 func ExampleOrganizationsClient_GetAllServerlessRuntimes_organizationsGetAllServerlessRuntimes() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -43,12 +43,12 @@ func ExampleOrganizationsClient_GetAllServerlessRuntimes_organizationsGetAllServ
 	// 				Platform: to.Ptr("p"),
 	// 				Region: to.Ptr("lrudpuvzcuh"),
 	// 				ResourceGroupName: to.Ptr("ly"),
-	// 				ServerlessArmResourceID: to.Ptr("kmviaxayvasaceptsuxkzhqjzjur"),
+	// 				ServerlessArmResourceID: to.Ptr("/subscriptions/subid/resourceGroups/rg1/providers/Informatica.DataManagement/organizations/org1/serverlessRuntimes/serverlessRuntimeName"),
 	// 				Subnet: to.Ptr("mmhpqazmxniguwzmqiu"),
 	// 				SubscriptionID: to.Ptr("zl"),
 	// 				SupplementaryFileLocation: to.Ptr("wylmhc"),
 	// 				Tags: to.Ptr("tevuusglxuivd"),
-	// 				TenantID: to.Ptr("elbephnucclhjihcj"),
+	// 				TenantID: to.Ptr("00000000-0000-0000-0000-000000000000"),
 	// 				Vnet: to.Ptr("vvs"),
 	// 			},
 	// 			Status: to.Ptr("exvtblad"),

@@ -4320,3 +4320,4 @@ id,name,language,tag,package,version,date_epoch,date
 4319,@azure/arm-informaticadatamanagement@1.0.0,js,@azure/arm-informaticadatamanagement_1.0.0,@azure/arm-informaticadatamanagement,1.0.0,1721035397,07/15/2024
 4320,azure-mgmt-informaticadatamanagement@1.0.0,python,azure-mgmt-informaticadatamanagement_1.0.0,azure-mgmt-informaticadatamanagement,1.0.0,1721037528,07/15/2024
 4321,azure-mgmt-sql@4.0.0b18,python,azure-mgmt-sql_4.0.0b18,azure-mgmt-sql,4.0.0b18,1721110736,07/16/2024
+4322,azure-mgmt-keyvault@10.3.1,python,azure-mgmt-keyvault_10.3.1,azure-mgmt-keyvault,10.3.1,1721186902,07/17/2024

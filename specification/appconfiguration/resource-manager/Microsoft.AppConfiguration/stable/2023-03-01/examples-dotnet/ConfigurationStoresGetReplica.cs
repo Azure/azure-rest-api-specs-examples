@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.AppConfiguration;
 
 // Generated from example definition: specification/appconfiguration/resource-manager/Microsoft.AppConfiguration/stable/2023-03-01/examples/ConfigurationStoresGetReplica.json
@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppConfigurationReplicaResource created on azure
-// for more information of creating AppConfigurationReplicaResource, please refer to the document of AppConfigurationReplicaResource
+// this example assumes you already have this AppConfigurationStoreResource created on azure
+// for more information of creating AppConfigurationStoreResource, please refer to the document of AppConfigurationStoreResource
 string subscriptionId = "c80fb759-c965-4c6a-9110-9b2b2d038882";
 string resourceGroupName = "myResourceGroup";
 string configStoreName = "contoso";
-string replicaName = "myReplicaEus";
-ResourceIdentifier appConfigurationReplicaResourceId = AppConfigurationReplicaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configStoreName, replicaName);
-AppConfigurationReplicaResource appConfigurationReplica = client.GetAppConfigurationReplicaResource(appConfigurationReplicaResourceId);
+ResourceIdentifier appConfigurationStoreResourceId = AppConfigurationStoreResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, configStoreName);
+AppConfigurationStoreResource appConfigurationStore = client.GetAppConfigurationStoreResource(appConfigurationStoreResourceId);
+
+// get the collection of this AppConfigurationReplicaResource
+AppConfigurationReplicaCollection collection = appConfigurationStore.GetAppConfigurationReplicas();
 
 // invoke the operation
-AppConfigurationReplicaResource result = await appConfigurationReplica.GetAsync();
+string replicaName = "myReplicaEus";
+NullableResponse<AppConfigurationReplicaResource> response = await collection.GetIfExistsAsync(replicaName);
+AppConfigurationReplicaResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppConfigurationReplicaData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppConfigurationReplicaData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

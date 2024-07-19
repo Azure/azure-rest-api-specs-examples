@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.MySql;
 using Azure.ResourceManager.MySql.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2017-12-01/examples/ReplicasListByServer.json
 // this example is just showing the usage of "Replicas_ListByServer" operation, for the dependent resources, they will have to be created separately.

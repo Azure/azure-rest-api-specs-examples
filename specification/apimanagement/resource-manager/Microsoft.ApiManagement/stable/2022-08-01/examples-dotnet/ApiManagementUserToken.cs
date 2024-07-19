@@ -1,0 +1,35 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.ApiManagement.Models;
+using Azure.ResourceManager.ApiManagement;
+
+// Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementUserToken.json
+// this example is just showing the usage of "User_GetSharedAccessToken" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this ApiManagementUserResource created on azure
+// for more information of creating ApiManagementUserResource, please refer to the document of ApiManagementUserResource
+string subscriptionId = "subid";
+string resourceGroupName = "rg1";
+string serviceName = "apimService1";
+string userId = "userId1718";
+ResourceIdentifier apiManagementUserResourceId = ApiManagementUserResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, userId);
+ApiManagementUserResource apiManagementUser = client.GetApiManagementUserResource(apiManagementUserResourceId);
+
+// invoke the operation
+UserTokenContent content = new UserTokenContent()
+{
+    KeyType = TokenGenerationUsedKeyType.Primary,
+    ExpireOn = DateTimeOffset.Parse("2019-04-21T00:44:24.2845269Z"),
+};
+UserTokenResult result = await apiManagementUser.GetSharedAccessTokenAsync(content);
+
+Console.WriteLine($"Succeeded: {result}");

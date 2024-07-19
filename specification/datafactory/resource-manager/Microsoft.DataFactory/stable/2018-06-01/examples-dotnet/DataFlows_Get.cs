@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataFactory;
 using Azure.ResourceManager.DataFactory.Models;
+using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/DataFlows_Get.json
 // this example is just showing the usage of "DataFlows_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryDataFlowResource created on azure
-// for more information of creating DataFactoryDataFlowResource, please refer to the document of DataFactoryDataFlowResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string dataFlowName = "exampleDataFlow";
-ResourceIdentifier dataFactoryDataFlowResourceId = DataFactoryDataFlowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, dataFlowName);
-DataFactoryDataFlowResource dataFactoryDataFlow = client.GetDataFactoryDataFlowResource(dataFactoryDataFlowResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryDataFlowResource
+DataFactoryDataFlowCollection collection = dataFactory.GetDataFactoryDataFlows();
 
 // invoke the operation
-DataFactoryDataFlowResource result = await dataFactoryDataFlow.GetAsync();
+string dataFlowName = "exampleDataFlow";
+NullableResponse<DataFactoryDataFlowResource> response = await collection.GetIfExistsAsync(dataFlowName);
+DataFactoryDataFlowResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataFactoryDataFlowData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataFactoryDataFlowData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

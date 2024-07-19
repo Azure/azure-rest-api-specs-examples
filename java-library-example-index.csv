@@ -4321,3 +4321,6 @@ id,name,language,tag,package,version,date_epoch,date
 4320,azure-mgmt-informaticadatamanagement@1.0.0,python,azure-mgmt-informaticadatamanagement_1.0.0,azure-mgmt-informaticadatamanagement,1.0.0,1721037528,07/15/2024
 4321,azure-mgmt-sql@4.0.0b18,python,azure-mgmt-sql_4.0.0b18,azure-mgmt-sql,4.0.0b18,1721110736,07/16/2024
 4322,azure-mgmt-keyvault@10.3.1,python,azure-mgmt-keyvault_10.3.1,azure-mgmt-keyvault,10.3.1,1721186902,07/17/2024
+4323,"Azure.ResourceManager.MySql,1.1.0",dotnet,Azure.ResourceManager.MySql_1.1.0,Azure.ResourceManager.MySql,1.1.0,1721263237,07/18/2024
+4324,"Azure.ResourceManager.NewRelicObservability,1.1.0",dotnet,Azure.ResourceManager.NewRelicObservability_1.1.0,Azure.ResourceManager.NewRelicObservability,1.1.0,1721039290,07/15/2024
+4325,"Azure.ResourceManager.Redis,1.4.0",dotnet,Azure.ResourceManager.Redis_1.4.0,Azure.ResourceManager.Redis,1.4.0,1721023641,07/15/2024

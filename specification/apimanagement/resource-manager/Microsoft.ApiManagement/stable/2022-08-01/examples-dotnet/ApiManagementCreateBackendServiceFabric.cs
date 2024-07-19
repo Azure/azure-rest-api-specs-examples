@@ -1,0 +1,60 @@
+using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Threading.Tasks;
+using Azure.Core;
+using Azure.Identity;
+using Azure.ResourceManager.ApiManagement.Models;
+using Azure.ResourceManager.ApiManagement;
+
+// Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementCreateBackendServiceFabric.json
+// this example is just showing the usage of "Backend_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+
+// get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
+TokenCredential cred = new DefaultAzureCredential();
+// authenticate your client
+ArmClient client = new ArmClient(cred);
+
+// this example assumes you already have this ApiManagementServiceResource created on azure
+// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
+string subscriptionId = "subid";
+string resourceGroupName = "rg1";
+string serviceName = "apimService1";
+ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
+ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
+
+// get the collection of this ApiManagementBackendResource
+ApiManagementBackendCollection collection = apiManagementService.GetApiManagementBackends();
+
+// invoke the operation
+string backendId = "sfbackend";
+ApiManagementBackendData data = new ApiManagementBackendData()
+{
+    Description = "Service Fabric Test App 1",
+    BackendServiceFabricCluster = new BackendServiceFabricClusterProperties(new string[]
+{
+"https://somecluster.com"
+})
+    {
+        ClientCertificateId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/cert1",
+        MaxPartitionResolutionRetries = 5,
+        ServerX509Names =
+        {
+        new X509CertificateName()
+        {
+        Name = "ServerCommonName1",
+        IssuerCertificateThumbprint = "IssuerCertificateThumbprint1",
+        }
+        },
+    },
+    Uri = new Uri("fabric:/mytestapp/mytestservice"),
+    Protocol = BackendProtocol.Http,
+};
+ArmOperation<ApiManagementBackendResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, backendId, data);
+ApiManagementBackendResource result = lro.Value;
+
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiManagementBackendData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

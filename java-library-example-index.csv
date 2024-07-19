@@ -4376,3 +4376,4 @@ id,name,language,tag,package,version,date_epoch,date
 4375,"Azure.ResourceManager.HealthcareApis,1.3.0",dotnet,Azure.ResourceManager.HealthcareApis_1.3.0,Azure.ResourceManager.HealthcareApis,1.3.0,1711957386,04/01/2024
 4376,"Azure.ResourceManager.ScVmm,1.0.0-beta.5",dotnet,Azure.ResourceManager.ScVmm_1.0.0-beta.5,Azure.ResourceManager.ScVmm,1.0.0-beta.5,1711727680,03/29/2024
 4377,"Azure.ResourceManager.DeviceRegistry,1.0.0-beta.1",dotnet,Azure.ResourceManager.DeviceRegistry_1.0.0-beta.1,Azure.ResourceManager.DeviceRegistry,1.0.0-beta.1,1711585031,03/28/2024
+4378,"Azure.ResourceManager.StandbyPool,1.0.0-beta.1",dotnet,Azure.ResourceManager.StandbyPool_1.0.0-beta.1,Azure.ResourceManager.StandbyPool,1.0.0-beta.1,1711584808,03/28/2024

@@ -4358,3 +4358,4 @@ id,name,language,tag,package,version,date_epoch,date
 4357,"Azure.ResourceManager.PostgreSql,1.2.0-beta.6",dotnet,Azure.ResourceManager.PostgreSql_1.2.0-beta.6,Azure.ResourceManager.PostgreSql,1.2.0-beta.6,1715073185,05/07/2024
 4358,"Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.4",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0-beta.4,Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.4,1715005033,05/06/2024
 4359,"Azure.ResourceManager.FrontDoor,1.3.0",dotnet,Azure.ResourceManager.FrontDoor_1.3.0,Azure.ResourceManager.FrontDoor,1.3.0,1714977979,05/06/2024
+4360,"Azure.ResourceManager.ApplicationInsights,1.0.0",dotnet,Azure.ResourceManager.ApplicationInsights_1.0.0,Azure.ResourceManager.ApplicationInsights,1.0.0,1714483605,04/30/2024

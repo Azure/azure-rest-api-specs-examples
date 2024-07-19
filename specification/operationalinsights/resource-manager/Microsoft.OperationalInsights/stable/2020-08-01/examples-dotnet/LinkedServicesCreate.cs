@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.OperationalInsights;
 
 // Generated from example definition: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/LinkedServicesCreate.json
@@ -14,21 +14,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OperationalInsightsLinkedServiceResource created on azure
-// for more information of creating OperationalInsightsLinkedServiceResource, please refer to the document of OperationalInsightsLinkedServiceResource
+// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
+// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "mms-eus";
 string workspaceName = "TestLinkWS";
-string linkedServiceName = "Cluster";
-ResourceIdentifier operationalInsightsLinkedServiceResourceId = OperationalInsightsLinkedServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, linkedServiceName);
-OperationalInsightsLinkedServiceResource operationalInsightsLinkedService = client.GetOperationalInsightsLinkedServiceResource(operationalInsightsLinkedServiceResourceId);
+ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
+
+// get the collection of this OperationalInsightsLinkedServiceResource
+OperationalInsightsLinkedServiceCollection collection = operationalInsightsWorkspace.GetOperationalInsightsLinkedServices();
 
 // invoke the operation
+string linkedServiceName = "Cluster";
 OperationalInsightsLinkedServiceData data = new OperationalInsightsLinkedServiceData()
 {
     WriteAccessResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/clusters/testcluster"),
 };
-ArmOperation<OperationalInsightsLinkedServiceResource> lro = await operationalInsightsLinkedService.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<OperationalInsightsLinkedServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkedServiceName, data);
 OperationalInsightsLinkedServiceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

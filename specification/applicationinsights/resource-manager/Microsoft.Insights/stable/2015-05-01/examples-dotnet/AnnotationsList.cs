@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnnotationsList.json
 // this example is just showing the usage of "Annotations_List" operation, for the dependent resources, they will have to be created separately.
@@ -27,7 +27,7 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 // invoke the operation and iterate over the result
 string start = "2018-02-05T00%253A30%253A00.000Z";
 string end = "2018-02-06T00%253A33A00.000Z";
-await foreach (Annotation item in applicationInsightsComponent.GetAnnotationsAsync(start, end))
+await foreach (ApplicationInsightsAnnotation item in applicationInsightsComponent.GetAnnotationsAsync(start, end))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

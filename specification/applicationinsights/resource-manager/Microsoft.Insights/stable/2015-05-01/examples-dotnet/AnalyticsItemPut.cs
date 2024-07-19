@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnalyticsItemPut.json
 // this example is just showing the usage of "AnalyticsItems_Put" operation, for the dependent resources, they will have to be created separately.
@@ -25,14 +25,14 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation
-ItemScopePath scopePath = ItemScopePath.AnalyticsItems;
+AnalyticsItemScopePath scopePath = AnalyticsItemScopePath.AnalyticsItems;
 ApplicationInsightsComponentAnalyticsItem itemProperties = new ApplicationInsightsComponentAnalyticsItem()
 {
     Name = "Exceptions - New in the last 24 hours",
     Content = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n",
-    Scope = ItemScope.Shared,
-    ItemType = ItemType.Query,
+    Scope = ComponentItemScope.Shared,
+    ComponentItemType = ComponentItemType.Query,
 };
-ApplicationInsightsComponentAnalyticsItem result = await applicationInsightsComponent.PutAnalyticsItemAsync(scopePath, itemProperties);
+ApplicationInsightsComponentAnalyticsItem result = await applicationInsightsComponent.AddOrUpdateAnalyticsItemAsync(scopePath, itemProperties);
 
 Console.WriteLine($"Succeeded: {result}");

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnnotationsCreate.json
 // this example is just showing the usage of "Annotations_Create" operation, for the dependent resources, they will have to be created separately.
@@ -25,15 +25,15 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation and iterate over the result
-Annotation annotationProperties = new Annotation()
+ApplicationInsightsAnnotation annotationProperties = new ApplicationInsightsAnnotation()
 {
     AnnotationName = "TestAnnotation",
     Category = "Text",
-    EventOn = DateTimeOffset.Parse("2018-01-31T13:41:38.657Z"),
+    EventOccurredOn = DateTimeOffset.Parse("2018-01-31T13:41:38.657Z"),
     Id = "444e2c08-274a-4bbb-a89e-d77bb720f44a",
     Properties = "{\"Comments\":\"Testing\",\"Label\":\"Success\"}",
 };
-await foreach (Annotation item in applicationInsightsComponent.CreateAnnotationsAsync(annotationProperties))
+await foreach (ApplicationInsightsAnnotation item in applicationInsightsComponent.CreateAnnotationsAsync(annotationProperties))
 {
     Console.WriteLine($"Succeeded: {item}");
 }

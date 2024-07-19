@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/examples/WebTestCreateStandard.json
 // this example is just showing the usage of "WebTests_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -23,12 +23,12 @@ string resourceGroupName = "my-resource-group";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this WebTestResource
-WebTestCollection collection = resourceGroupResource.GetWebTests();
+// get the collection of this ApplicationInsightsWebTestResource
+ApplicationInsightsWebTestCollection collection = resourceGroupResource.GetApplicationInsightsWebTests();
 
 // invoke the operation
 string webTestName = "my-webtest-my-component";
-WebTestData data = new WebTestData(new AzureLocation("South Central US"))
+ApplicationInsightsWebTestData data = new ApplicationInsightsWebTestData(new AzureLocation("South Central US"))
 {
     SyntheticMonitorId = "my-webtest-my-component",
     WebTestName = "my-webtest-my-component",
@@ -45,16 +45,16 @@ WebTestData data = new WebTestData(new AzureLocation("South Central US"))
     Location = new AzureLocation("us-fl-mia-edge"),
     }
     },
-    Request = new WebTestPropertiesRequest()
+    Request = new WebTestRequest()
     {
         RequestUri = new Uri("https://bing.com"),
         Headers =
         {
-        new HeaderField()
+        new WebTestRequestHeaderField()
         {
         HeaderFieldName = "Content-Language",
         HeaderFieldValue = "de-DE",
-        },new HeaderField()
+        },new WebTestRequestHeaderField()
         {
         HeaderFieldName = "Accept-Language",
         HeaderFieldValue = "de-DE",
@@ -63,17 +63,17 @@ WebTestData data = new WebTestData(new AzureLocation("South Central US"))
         HttpVerb = "POST",
         RequestBody = "SGVsbG8gd29ybGQ=",
     },
-    ValidationRules = new WebTestPropertiesValidationRules()
+    ValidationRules = new WebTestValidationRules()
     {
         CheckSsl = true,
-        SSLCertRemainingLifetimeCheck = 100,
+        SslCertRemainingLifetimeCheck = 100,
     },
 };
-ArmOperation<WebTestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, webTestName, data);
-WebTestResource result = lro.Value;
+ArmOperation<ApplicationInsightsWebTestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, webTestName, data);
+ApplicationInsightsWebTestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-WebTestData resourceData = result.Data;
+ApplicationInsightsWebTestData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

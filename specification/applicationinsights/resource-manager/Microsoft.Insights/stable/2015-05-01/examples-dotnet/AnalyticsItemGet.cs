@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnalyticsItemGet.json
 // this example is just showing the usage of "AnalyticsItems_Get" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation
-ItemScopePath scopePath = ItemScopePath.AnalyticsItems;
+AnalyticsItemScopePath scopePath = AnalyticsItemScopePath.AnalyticsItems;
 string id = "3466c160-4a10-4df8-afdf-0007f3f6dee5";
 ApplicationInsightsComponentAnalyticsItem result = await applicationInsightsComponent.GetAnalyticsItemAsync(scopePath, id: id);
 

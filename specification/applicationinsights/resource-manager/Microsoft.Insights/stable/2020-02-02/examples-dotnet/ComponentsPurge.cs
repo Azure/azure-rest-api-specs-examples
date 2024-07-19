@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsPurge.json
 // this example is just showing the usage of "Components_Purge" operation, for the dependent resources, they will have to be created separately.
@@ -25,15 +25,15 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation
-ComponentPurgeBody body = new ComponentPurgeBody("Heartbeat", new ComponentPurgeBodyFilters[]
+ComponentPurgeContent content = new ComponentPurgeContent("Heartbeat", new ComponentPurgeFilters[]
 {
-new ComponentPurgeBodyFilters()
+new ComponentPurgeFilters()
 {
 Column = "TimeGenerated",
 Operator = ">",
 Value = BinaryData.FromString("\"2017-09-01T00:00:00\""),
 }
 });
-ComponentPurgeResponse result = await applicationInsightsComponent.PurgeAsync(body);
+ComponentPurgeResult result = await applicationInsightsComponent.PurgeAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ProactiveDetectionConfigurationUpdate.json
 // this example is just showing the usage of "ProactiveDetectionConfigurations_Update" operation, for the dependent resources, they will have to be created separately.
@@ -35,7 +35,7 @@ ApplicationInsightsComponentProactiveDetectionConfiguration proactiveDetectionPr
     {
     "foo@microsoft.com","foo2@microsoft.com"
     },
-    LastUpdatedTime = null,
+    LastUpdatedOn = null,
     RuleDefinitions = new ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions()
     {
         Name = "slowpageloadtime",
@@ -45,7 +45,7 @@ ApplicationInsightsComponentProactiveDetectionConfiguration proactiveDetectionPr
         IsHidden = false,
         IsEnabledByDefault = true,
         IsInPreview = false,
-        SupportsEmailNotifications = true,
+        IsEmailNotificationsSupported = true,
     },
 };
 ApplicationInsightsComponentProactiveDetectionConfiguration result = await applicationInsightsComponent.UpdateProactiveDetectionConfigurationAsync(configurationId, proactiveDetectionProperties);

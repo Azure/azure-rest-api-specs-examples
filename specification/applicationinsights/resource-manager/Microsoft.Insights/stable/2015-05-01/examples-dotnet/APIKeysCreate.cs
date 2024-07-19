@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/APIKeysCreate.json
 // this example is just showing the usage of "APIKeys_Create" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation
-APIKeyContent content = new APIKeyContent()
+ApplicationInsightsApiKeyContent content = new ApplicationInsightsApiKeyContent()
 {
     Name = "test2",
     LinkedReadProperties =
@@ -37,6 +37,6 @@ APIKeyContent content = new APIKeyContent()
     "/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.Insights/components/my-component/annotations"
     },
 };
-ApplicationInsightsComponentAPIKey result = await applicationInsightsComponent.CreateAPIKeyAsync(content);
+ApplicationInsightsComponentApiKey result = await applicationInsightsComponent.CreateApiKeyAsync(content);
 
 Console.WriteLine($"Succeeded: {result}");

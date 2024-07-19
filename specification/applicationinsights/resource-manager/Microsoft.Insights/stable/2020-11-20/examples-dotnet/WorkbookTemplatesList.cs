@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-11-20/examples/WorkbookTemplatesList.json
 // this example is just showing the usage of "WorkbookTemplates_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -24,15 +24,15 @@ string resourceGroupName = "my-resource-group";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this WorkbookTemplateResource
-WorkbookTemplateCollection collection = resourceGroupResource.GetWorkbookTemplates();
+// get the collection of this ApplicationInsightsWorkbookTemplateResource
+ApplicationInsightsWorkbookTemplateCollection collection = resourceGroupResource.GetApplicationInsightsWorkbookTemplates();
 
 // invoke the operation and iterate over the result
-await foreach (WorkbookTemplateResource item in collection.GetAllAsync())
+await foreach (ApplicationInsightsWorkbookTemplateResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    WorkbookTemplateData resourceData = item.Data;
+    ApplicationInsightsWorkbookTemplateData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

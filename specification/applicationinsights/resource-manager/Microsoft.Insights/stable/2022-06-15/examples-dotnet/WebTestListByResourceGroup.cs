@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/examples/WebTestListByResourceGroup.json
 // this example is just showing the usage of "WebTests_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -23,15 +23,15 @@ string resourceGroupName = "my-resource-group";
 ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
-// get the collection of this WebTestResource
-WebTestCollection collection = resourceGroupResource.GetWebTests();
+// get the collection of this ApplicationInsightsWebTestResource
+ApplicationInsightsWebTestCollection collection = resourceGroupResource.GetApplicationInsightsWebTests();
 
 // invoke the operation and iterate over the result
-await foreach (WebTestResource item in collection.GetAllAsync())
+await foreach (ApplicationInsightsWebTestResource item in collection.GetAllAsync())
 {
     // the variable item is a resource, you could call other operations on this instance as well
     // but just for demo, we get its data from this resource instance
-    WebTestData resourceData = item.Data;
+    ApplicationInsightsWebTestData resourceData = item.Data;
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/resources/resource-manager/Microsoft.Authorization/stable/2020-05-01/examples/ManagementLocks_GetAtScope.json
 // this example is just showing the usage of "ManagementLocks_GetByScope" operation, for the dependent resources, they will have to be created separately.
@@ -15,18 +15,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementLockResource created on azure
-// for more information of creating ManagementLockResource, please refer to the document of ManagementLockResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this ManagementLockResource
 string scope = "subscriptions/subscriptionId";
-string lockName = "testlock";
-ResourceIdentifier managementLockResourceId = ManagementLockResource.CreateResourceIdentifier(scope, lockName);
-ManagementLockResource managementLock = client.GetManagementLockResource(managementLockResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+ManagementLockCollection collection = client.GetGenericResource(scopeId).GetManagementLocks();
 
 // invoke the operation
-ManagementLockResource result = await managementLock.GetAsync();
+string lockName = "testlock";
+NullableResponse<ManagementLockResource> response = await collection.GetIfExistsAsync(lockName);
+ManagementLockResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagementLockData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagementLockData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

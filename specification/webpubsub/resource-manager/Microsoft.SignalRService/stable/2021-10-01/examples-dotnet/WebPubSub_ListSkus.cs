@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.WebPubSub;
 using Azure.ResourceManager.WebPubSub.Models;
+using Azure.ResourceManager.WebPubSub;
 
 // Generated from example definition: specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/examples/WebPubSub_ListSkus.json
 // this example is just showing the usage of "WebPubSub_ListSkus" operation, for the dependent resources, they will have to be created separately.

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.WebPubSub;
 
 // Generated from example definition: specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2021-10-01/examples/WebPubSubSharedPrivateLinkResources_Get.json
@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebPubSubResource created on azure
-// for more information of creating WebPubSubResource, please refer to the document of WebPubSubResource
+// this example assumes you already have this WebPubSubSharedPrivateLinkResource created on azure
+// for more information of creating WebPubSubSharedPrivateLinkResource, please refer to the document of WebPubSubSharedPrivateLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "myWebPubSubService";
-ResourceIdentifier webPubSubResourceId = WebPubSubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-WebPubSubResource webPubSub = client.GetWebPubSubResource(webPubSubResourceId);
-
-// get the collection of this WebPubSubSharedPrivateLinkResource
-WebPubSubSharedPrivateLinkCollection collection = webPubSub.GetWebPubSubSharedPrivateLinks();
+string sharedPrivateLinkResourceName = "upstream";
+ResourceIdentifier webPubSubSharedPrivateLinkResourceId = WebPubSubSharedPrivateLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, sharedPrivateLinkResourceName);
+WebPubSubSharedPrivateLinkResource webPubSubSharedPrivateLink = client.GetWebPubSubSharedPrivateLinkResource(webPubSubSharedPrivateLinkResourceId);
 
 // invoke the operation
-string sharedPrivateLinkResourceName = "upstream";
-NullableResponse<WebPubSubSharedPrivateLinkResource> response = await collection.GetIfExistsAsync(sharedPrivateLinkResourceName);
-WebPubSubSharedPrivateLinkResource result = response.HasValue ? response.Value : null;
+WebPubSubSharedPrivateLinkResource result = await webPubSubSharedPrivateLink.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    WebPubSubSharedPrivateLinkData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WebPubSubSharedPrivateLinkData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

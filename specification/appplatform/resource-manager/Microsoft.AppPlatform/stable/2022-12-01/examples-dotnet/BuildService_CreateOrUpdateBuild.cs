@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AppPlatform;
 using Azure.ResourceManager.AppPlatform.Models;
+using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/BuildService_CreateOrUpdateBuild.json
 // this example is just showing the usage of "BuildService_CreateOrUpdateBuild" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformBuildServiceResource created on azure
-// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
+// this example assumes you already have this AppPlatformBuildResource created on azure
+// for more information of creating AppPlatformBuildResource, please refer to the document of AppPlatformBuildResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
-ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
-AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
-
-// get the collection of this AppPlatformBuildResource
-AppPlatformBuildCollection collection = appPlatformBuildService.GetAppPlatformBuilds();
+string buildName = "mybuild";
+ResourceIdentifier appPlatformBuildResourceId = AppPlatformBuildResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, buildName);
+AppPlatformBuildResource appPlatformBuild = client.GetAppPlatformBuildResource(appPlatformBuildResourceId);
 
 // invoke the operation
-string buildName = "mybuild";
 AppPlatformBuildData data = new AppPlatformBuildData()
 {
     Properties = new AppPlatformBuildProperties()
@@ -47,7 +44,7 @@ AppPlatformBuildData data = new AppPlatformBuildData()
         },
     },
 };
-ArmOperation<AppPlatformBuildResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, buildName, data);
+ArmOperation<AppPlatformBuildResource> lro = await appPlatformBuild.UpdateAsync(WaitUntil.Completed, data);
 AppPlatformBuildResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

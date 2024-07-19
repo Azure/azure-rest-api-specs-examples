@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AppPlatform;
 using Azure.ResourceManager.AppPlatform.Models;
+using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/GatewayRouteConfigs_CreateOrUpdate.json
 // this example is just showing the usage of "GatewayRouteConfigs_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,17 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformGatewayRouteConfigResource created on azure
-// for more information of creating AppPlatformGatewayRouteConfigResource, please refer to the document of AppPlatformGatewayRouteConfigResource
+// this example assumes you already have this AppPlatformGatewayResource created on azure
+// for more information of creating AppPlatformGatewayResource, please refer to the document of AppPlatformGatewayResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string gatewayName = "default";
-string routeConfigName = "myRouteConfig";
-ResourceIdentifier appPlatformGatewayRouteConfigResourceId = AppPlatformGatewayRouteConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayName, routeConfigName);
-AppPlatformGatewayRouteConfigResource appPlatformGatewayRouteConfig = client.GetAppPlatformGatewayRouteConfigResource(appPlatformGatewayRouteConfigResourceId);
+ResourceIdentifier appPlatformGatewayResourceId = AppPlatformGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayName);
+AppPlatformGatewayResource appPlatformGateway = client.GetAppPlatformGatewayResource(appPlatformGatewayResourceId);
+
+// get the collection of this AppPlatformGatewayRouteConfigResource
+AppPlatformGatewayRouteConfigCollection collection = appPlatformGateway.GetAppPlatformGatewayRouteConfigs();
 
 // invoke the operation
+string routeConfigName = "myRouteConfig";
 AppPlatformGatewayRouteConfigData data = new AppPlatformGatewayRouteConfigData()
 {
     Properties = new AppPlatformGatewayRouteConfigProperties()
@@ -51,7 +54,7 @@ AppPlatformGatewayRouteConfigData data = new AppPlatformGatewayRouteConfigData()
         },
     },
 };
-ArmOperation<AppPlatformGatewayRouteConfigResource> lro = await appPlatformGatewayRouteConfig.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AppPlatformGatewayRouteConfigResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeConfigName, data);
 AppPlatformGatewayRouteConfigResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

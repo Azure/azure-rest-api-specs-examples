@@ -1,11 +1,12 @@
-using System;
-using System.Threading.Tasks;
 using Azure;
+using Azure.ResourceManager;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AppPlatform;
 using Azure.ResourceManager.AppPlatform.Models;
+using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/Deployments_Get_CustomContainer.json
 // this example is just showing the usage of "Deployments_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,21 +16,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformDeploymentResource created on azure
-// for more information of creating AppPlatformDeploymentResource, please refer to the document of AppPlatformDeploymentResource
+// this example assumes you already have this AppPlatformAppResource created on azure
+// for more information of creating AppPlatformAppResource, please refer to the document of AppPlatformAppResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string appName = "myapp";
-string deploymentName = "mydeployment";
-ResourceIdentifier appPlatformDeploymentResourceId = AppPlatformDeploymentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, appName, deploymentName);
-AppPlatformDeploymentResource appPlatformDeployment = client.GetAppPlatformDeploymentResource(appPlatformDeploymentResourceId);
+ResourceIdentifier appPlatformAppResourceId = AppPlatformAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, appName);
+AppPlatformAppResource appPlatformApp = client.GetAppPlatformAppResource(appPlatformAppResourceId);
+
+// get the collection of this AppPlatformDeploymentResource
+AppPlatformDeploymentCollection collection = appPlatformApp.GetAppPlatformDeployments();
 
 // invoke the operation
-AppPlatformDeploymentResource result = await appPlatformDeployment.GetAsync();
+string deploymentName = "mydeployment";
+NullableResponse<AppPlatformDeploymentResource> response = await collection.GetIfExistsAsync(deploymentName);
+AppPlatformDeploymentResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppPlatformDeploymentData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppPlatformDeploymentData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

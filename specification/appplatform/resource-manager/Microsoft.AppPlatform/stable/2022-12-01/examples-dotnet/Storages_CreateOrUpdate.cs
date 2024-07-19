@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AppPlatform;
 using Azure.ResourceManager.AppPlatform.Models;
+using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/Storages_CreateOrUpdate.json
 // this example is just showing the usage of "Storages_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformServiceResource created on azure
-// for more information of creating AppPlatformServiceResource, please refer to the document of AppPlatformServiceResource
+// this example assumes you already have this AppPlatformStorageResource created on azure
+// for more information of creating AppPlatformStorageResource, please refer to the document of AppPlatformStorageResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
-ResourceIdentifier appPlatformServiceResourceId = AppPlatformServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceResource(appPlatformServiceResourceId);
-
-// get the collection of this AppPlatformStorageResource
-AppPlatformStorageCollection collection = appPlatformService.GetAppPlatformStorages();
+string storageName = "mystorage";
+ResourceIdentifier appPlatformStorageResourceId = AppPlatformStorageResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, storageName);
+AppPlatformStorageResource appPlatformStorage = client.GetAppPlatformStorageResource(appPlatformStorageResourceId);
 
 // invoke the operation
-string storageName = "mystorage";
 AppPlatformStorageData data = new AppPlatformStorageData()
 {
     Properties = new AppPlatformStorageAccount("storage-account-name", "account-key-of-storage-account"),
 };
-ArmOperation<AppPlatformStorageResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, storageName, data);
+ArmOperation<AppPlatformStorageResource> lro = await appPlatformStorage.UpdateAsync(WaitUntil.Completed, data);
 AppPlatformStorageResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

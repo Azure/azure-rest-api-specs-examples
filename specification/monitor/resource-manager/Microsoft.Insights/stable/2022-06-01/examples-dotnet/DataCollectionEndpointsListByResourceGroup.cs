@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Monitor;
 using Azure.ResourceManager.Monitor.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/DataCollectionEndpointsListByResourceGroup.json
 // this example is just showing the usage of "DataCollectionEndpoints_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.

@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Monitor;
 using Azure.ResourceManager.Monitor.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/getAutoscaleSetting.json
 // this example is just showing the usage of "AutoscaleSettings_Get" operation, for the dependent resources, they will have to be created separately.

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/PrivateLinkScopedResourceUpdate.json
@@ -14,24 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MonitorPrivateLinkScopeResource created on azure
-// for more information of creating MonitorPrivateLinkScopeResource, please refer to the document of MonitorPrivateLinkScopeResource
+// this example assumes you already have this MonitorPrivateLinkScopedResource created on azure
+// for more information of creating MonitorPrivateLinkScopedResource, please refer to the document of MonitorPrivateLinkScopedResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "MyResourceGroup";
 string scopeName = "MyPrivateLinkScope";
-ResourceIdentifier monitorPrivateLinkScopeResourceId = MonitorPrivateLinkScopeResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName);
-MonitorPrivateLinkScopeResource monitorPrivateLinkScope = client.GetMonitorPrivateLinkScopeResource(monitorPrivateLinkScopeResourceId);
-
-// get the collection of this MonitorPrivateLinkScopedResource
-MonitorPrivateLinkScopedResourceCollection collection = monitorPrivateLinkScope.GetMonitorPrivateLinkScopedResources();
+string name = "scoped-resource-name";
+ResourceIdentifier monitorPrivateLinkScopedResourceId = MonitorPrivateLinkScopedResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, scopeName, name);
+MonitorPrivateLinkScopedResource monitorPrivateLinkScopedResource = client.GetMonitorPrivateLinkScopedResource(monitorPrivateLinkScopedResourceId);
 
 // invoke the operation
-string name = "scoped-resource-name";
 MonitorPrivateLinkScopedResourceData data = new MonitorPrivateLinkScopedResourceData()
 {
     LinkedResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/components/my-component"),
 };
-ArmOperation<MonitorPrivateLinkScopedResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
+ArmOperation<MonitorPrivateLinkScopedResource> lro = await monitorPrivateLinkScopedResource.UpdateAsync(WaitUntil.Completed, data);
 MonitorPrivateLinkScopedResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

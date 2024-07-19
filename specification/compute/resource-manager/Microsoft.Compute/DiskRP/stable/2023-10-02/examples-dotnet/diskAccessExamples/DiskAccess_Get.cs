@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2023-10-02/examples/diskAccessExamples/DiskAccess_Get.json
 // this example is just showing the usage of "DiskAccesses_Get" operation, for the dependent resources, they will have to be created separately.

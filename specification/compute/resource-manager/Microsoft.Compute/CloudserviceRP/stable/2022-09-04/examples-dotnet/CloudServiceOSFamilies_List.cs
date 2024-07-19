@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/CloudServiceOSFamilies_List.json
 // this example is just showing the usage of "CloudServiceOperatingSystems_ListOSFamilies" operation, for the dependent resources, they will have to be created separately.

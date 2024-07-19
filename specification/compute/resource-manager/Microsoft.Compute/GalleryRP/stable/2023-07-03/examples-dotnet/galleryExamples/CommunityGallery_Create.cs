@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2023-07-03/examples/galleryExamples/CommunityGallery_Create.json
 // this example is just showing the usage of "Galleries_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.

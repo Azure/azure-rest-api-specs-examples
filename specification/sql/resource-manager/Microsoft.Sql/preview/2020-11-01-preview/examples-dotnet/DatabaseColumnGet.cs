@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Sql;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/DatabaseColumnGet.json
@@ -13,23 +14,34 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlDatabaseColumnResource created on azure
-// for more information of creating SqlDatabaseColumnResource, please refer to the document of SqlDatabaseColumnResource
+// this example assumes you already have this SqlDatabaseTableResource created on azure
+// for more information of creating SqlDatabaseTableResource, please refer to the document of SqlDatabaseTableResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "myRG";
 string serverName = "serverName";
 string databaseName = "myDatabase";
 string schemaName = "dbo";
 string tableName = "table1";
-string columnName = "column1";
-ResourceIdentifier sqlDatabaseColumnResourceId = SqlDatabaseColumnResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName, tableName, columnName);
-SqlDatabaseColumnResource sqlDatabaseColumn = client.GetSqlDatabaseColumnResource(sqlDatabaseColumnResourceId);
+ResourceIdentifier sqlDatabaseTableResourceId = SqlDatabaseTableResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, databaseName, schemaName, tableName);
+SqlDatabaseTableResource sqlDatabaseTable = client.GetSqlDatabaseTableResource(sqlDatabaseTableResourceId);
+
+// get the collection of this SqlDatabaseColumnResource
+SqlDatabaseColumnCollection collection = sqlDatabaseTable.GetSqlDatabaseColumns();
 
 // invoke the operation
-SqlDatabaseColumnResource result = await sqlDatabaseColumn.GetAsync();
+string columnName = "column1";
+NullableResponse<SqlDatabaseColumnResource> response = await collection.GetIfExistsAsync(columnName);
+SqlDatabaseColumnResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DatabaseColumnData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DatabaseColumnData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

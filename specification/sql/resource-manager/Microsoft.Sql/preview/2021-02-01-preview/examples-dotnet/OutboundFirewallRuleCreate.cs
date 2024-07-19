@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Sql;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2021-02-01-preview/examples/OutboundFirewallRuleCreate.json
@@ -14,21 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this OutboundFirewallRuleResource created on azure
+// for more information of creating OutboundFirewallRuleResource, please refer to the document of OutboundFirewallRuleResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "sqlcrudtest-7398";
 string serverName = "sqlcrudtest-4645";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this OutboundFirewallRuleResource
-OutboundFirewallRuleCollection collection = sqlServer.GetOutboundFirewallRules();
+string outboundRuleFqdn = "server.database.windows.net";
+ResourceIdentifier outboundFirewallRuleResourceId = OutboundFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, outboundRuleFqdn);
+OutboundFirewallRuleResource outboundFirewallRule = client.GetOutboundFirewallRuleResource(outboundFirewallRuleResourceId);
 
 // invoke the operation
-string outboundRuleFqdn = "server.database.windows.net";
 OutboundFirewallRuleData data = new OutboundFirewallRuleData();
-ArmOperation<OutboundFirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, outboundRuleFqdn, data);
+ArmOperation<OutboundFirewallRuleResource> lro = await outboundFirewallRule.UpdateAsync(WaitUntil.Completed, data);
 OutboundFirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Sql;
 using Azure.ResourceManager.Sql.Models;
+using Azure.ResourceManager.Sql;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2021-05-01-preview/examples/ServerConnectionPoliciesUpdate.json
 // this example is just showing the usage of "ServerConnectionPolicies_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerConnectionPolicyResource created on azure
-// for more information of creating SqlServerConnectionPolicyResource, please refer to the document of SqlServerConnectionPolicyResource
+// this example assumes you already have this SqlServerResource created on azure
+// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "testrg";
 string serverName = "testserver";
-ConnectionPolicyName connectionPolicyName = ConnectionPolicyName.Default;
-ResourceIdentifier sqlServerConnectionPolicyResourceId = SqlServerConnectionPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, connectionPolicyName);
-SqlServerConnectionPolicyResource sqlServerConnectionPolicy = client.GetSqlServerConnectionPolicyResource(sqlServerConnectionPolicyResourceId);
+ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
+
+// get the collection of this SqlServerConnectionPolicyResource
+SqlServerConnectionPolicyCollection collection = sqlServer.GetSqlServerConnectionPolicies();
 
 // invoke the operation
+ConnectionPolicyName connectionPolicyName = ConnectionPolicyName.Default;
 SqlServerConnectionPolicyData data = new SqlServerConnectionPolicyData()
 {
     ConnectionType = ServerConnectionType.Redirect,
 };
-ArmOperation<SqlServerConnectionPolicyResource> lro = await sqlServerConnectionPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SqlServerConnectionPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionPolicyName, data);
 SqlServerConnectionPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

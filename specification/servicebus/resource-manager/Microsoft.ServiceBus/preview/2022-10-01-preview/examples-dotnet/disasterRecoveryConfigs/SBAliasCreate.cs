@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.ServiceBus;
 
 // Generated from example definition: specification/servicebus/resource-manager/Microsoft.ServiceBus/preview/2022-10-01-preview/examples/disasterRecoveryConfigs/SBAliasCreate.json
@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceBusNamespaceResource created on azure
-// for more information of creating ServiceBusNamespaceResource, please refer to the document of ServiceBusNamespaceResource
+// this example assumes you already have this ServiceBusDisasterRecoveryResource created on azure
+// for more information of creating ServiceBusDisasterRecoveryResource, please refer to the document of ServiceBusDisasterRecoveryResource
 string subscriptionId = "5f750a97-50d9-4e36-8081-c9ee4c0210d4";
 string resourceGroupName = "ardsouzatestRG";
 string namespaceName = "sdk-Namespace-8860";
-ResourceIdentifier serviceBusNamespaceResourceId = ServiceBusNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-ServiceBusNamespaceResource serviceBusNamespace = client.GetServiceBusNamespaceResource(serviceBusNamespaceResourceId);
-
-// get the collection of this ServiceBusDisasterRecoveryResource
-ServiceBusDisasterRecoveryCollection collection = serviceBusNamespace.GetServiceBusDisasterRecoveries();
+string @alias = "sdk-Namespace-8860";
+ResourceIdentifier serviceBusDisasterRecoveryResourceId = ServiceBusDisasterRecoveryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, @alias);
+ServiceBusDisasterRecoveryResource serviceBusDisasterRecovery = client.GetServiceBusDisasterRecoveryResource(serviceBusDisasterRecoveryResourceId);
 
 // invoke the operation
-string @alias = "sdk-Namespace-8860";
 ServiceBusDisasterRecoveryData data = new ServiceBusDisasterRecoveryData()
 {
     PartnerNamespace = "sdk-Namespace-37",
     AlternateName = "alternameforAlias-Namespace-8860",
 };
-ArmOperation<ServiceBusDisasterRecoveryResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, @alias, data);
+ArmOperation<ServiceBusDisasterRecoveryResource> lro = await serviceBusDisasterRecovery.UpdateAsync(WaitUntil.Completed, data);
 ServiceBusDisasterRecoveryResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

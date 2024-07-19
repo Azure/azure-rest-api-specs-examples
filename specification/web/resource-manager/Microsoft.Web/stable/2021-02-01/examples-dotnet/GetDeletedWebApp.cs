@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.AppService;
+using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2021-02-01/examples/GetDeletedWebApp.json
 // this example is just showing the usage of "Global_GetDeletedWebApp" operation, for the dependent resources, they will have to be created separately.
@@ -15,29 +16,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this DeletedSiteResource created on azure
+// for more information of creating DeletedSiteResource, please refer to the document of DeletedSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this DeletedSiteResource
-DeletedSiteCollection collection = subscriptionResource.GetDeletedSites();
+string deletedSiteId = "9";
+ResourceIdentifier deletedSiteResourceId = DeletedSiteResource.CreateResourceIdentifier(subscriptionId, deletedSiteId);
+DeletedSiteResource deletedSite = client.GetDeletedSiteResource(deletedSiteResourceId);
 
 // invoke the operation
-string deletedSiteId = "9";
-NullableResponse<DeletedSiteResource> response = await collection.GetIfExistsAsync(deletedSiteId);
-DeletedSiteResource result = response.HasValue ? response.Value : null;
+DeletedSiteResource result = await deletedSite.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DeletedSiteData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DeletedSiteData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

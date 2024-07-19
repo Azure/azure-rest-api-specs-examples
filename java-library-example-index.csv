@@ -4345,3 +4345,4 @@ id,name,language,tag,package,version,date_epoch,date
 4344,"Azure.ResourceManager.StorageCache,1.3.0",dotnet,Azure.ResourceManager.StorageCache_1.3.0,Azure.ResourceManager.StorageCache,1.3.0,1717409114,06/03/2024
 4345,"Azure.ResourceManager.NotificationHubs,1.2.0-beta.1",dotnet,Azure.ResourceManager.NotificationHubs_1.2.0-beta.1,Azure.ResourceManager.NotificationHubs,1.2.0-beta.1,1717406149,06/03/2024
 4346,"Azure.ResourceManager.Nginx,1.1.0-beta.1",dotnet,Azure.ResourceManager.Nginx_1.1.0-beta.1,Azure.ResourceManager.Nginx,1.1.0-beta.1,1715955913,05/17/2024
+4347,"Azure.ResourceManager.StorageActions,1.0.0-beta.1",dotnet,Azure.ResourceManager.StorageActions_1.0.0-beta.1,Azure.ResourceManager.StorageActions,1.0.0-beta.1,1715951924,05/17/2024

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/DataCollectionRuleAssociationsCreate.json
@@ -14,21 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
-// get the collection of this DataCollectionRuleAssociationResource
+// this example assumes you already have this DataCollectionRuleAssociationResource created on azure
+// for more information of creating DataCollectionRuleAssociationResource, please refer to the document of DataCollectionRuleAssociationResource
 string resourceUri = "subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-DataCollectionRuleAssociationCollection collection = client.GetDataCollectionRuleAssociations(scopeId);
+string associationName = "myAssociation";
+ResourceIdentifier dataCollectionRuleAssociationResourceId = DataCollectionRuleAssociationResource.CreateResourceIdentifier(resourceUri, associationName);
+DataCollectionRuleAssociationResource dataCollectionRuleAssociation = client.GetDataCollectionRuleAssociationResource(dataCollectionRuleAssociationResourceId);
 
 // invoke the operation
-string associationName = "myAssociation";
 DataCollectionRuleAssociationData data = new DataCollectionRuleAssociationData()
 {
     DataCollectionRuleId = new ResourceIdentifier("/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Insights/dataCollectionRules/myCollectionRule"),
 };
-ArmOperation<DataCollectionRuleAssociationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, associationName, data);
+ArmOperation<DataCollectionRuleAssociationResource> lro = await dataCollectionRuleAssociation.UpdateAsync(WaitUntil.Completed, data);
 DataCollectionRuleAssociationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

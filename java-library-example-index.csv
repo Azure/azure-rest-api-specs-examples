@@ -4354,3 +4354,4 @@ id,name,language,tag,package,version,date_epoch,date
 4353,"Azure.ResourceManager.ManagedServiceIdentities,1.2.3",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.2.3,Azure.ResourceManager.ManagedServiceIdentities,1.2.3,1715094026,05/07/2024
 4354,"Azure.ResourceManager.Authorization,1.1.3",dotnet,Azure.ResourceManager.Authorization_1.1.3,Azure.ResourceManager.Authorization,1.1.3,1715093995,05/07/2024
 4355,"Azure.ResourceManager,1.12.0",dotnet,Azure.ResourceManager_1.12.0,Azure.ResourceManager,1.12.0,1715075305,05/07/2024
+4356,"Azure.ResourceManager.ServiceBus,1.1.0-beta.7",dotnet,Azure.ResourceManager.ServiceBus_1.1.0-beta.7,Azure.ResourceManager.ServiceBus,1.1.0-beta.7,1715075252,05/07/2024

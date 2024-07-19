@@ -4330,3 +4330,4 @@ id,name,language,tag,package,version,date_epoch,date
 4329,"Azure.ResourceManager.Resources,1.8.0",dotnet,Azure.ResourceManager.Resources_1.8.0,Azure.ResourceManager.Resources,1.8.0,1720091774,07/04/2024
 4330,"Azure.ResourceManager.OracleDatabase,1.0.0",dotnet,Azure.ResourceManager.OracleDatabase_1.0.0,Azure.ResourceManager.OracleDatabase,1.0.0,1720078769,07/04/2024
 4331,"Azure.ResourceManager.AppContainers,1.2.0",dotnet,Azure.ResourceManager.AppContainers_1.2.0,Azure.ResourceManager.AppContainers,1.2.0,1719573251,06/28/2024
+4332,"Azure.ResourceManager.InformaticaDataManagement,1.0.0-beta.1",dotnet,Azure.ResourceManager.InformaticaDataManagement_1.0.0-beta.1,Azure.ResourceManager.InformaticaDataManagement,1.0.0-beta.1,1719572778,06/28/2024

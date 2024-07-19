@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ExportConfigurationUpdate.json
 // this example is just showing the usage of "ExportConfigurations_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,18 +26,18 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 
 // invoke the operation
 string exportId = "uGOoki0jQsyEs3IdQ83Q4QsNr4=";
-ApplicationInsightsComponentExportRequest exportProperties = new ApplicationInsightsComponentExportRequest()
+ApplicationInsightsComponentExportContent content = new ApplicationInsightsComponentExportContent()
 {
     RecordTypes = "Requests, Event, Exceptions, Metrics, PageViews, PageViewPerformance, Rdd, PerformanceCounters, Availability",
     DestinationType = "Blob",
     DestinationAddress = "https://mystorageblob.blob.core.windows.net/fchentest?sv=2015-04-05&sr=c&sig=token",
     IsEnabled = "true",
-    NotificationQueueEnabled = "false",
+    IsNotificationQueueEnabled = "false",
     NotificationQueueUri = new Uri(""),
     DestinationStorageSubscriptionId = "subid",
     DestinationStorageLocationId = "eastus",
-    DestinationAccountId = "/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.ClassicStorage/storageAccounts/mystorageblob",
+    DestinationAccountId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.ClassicStorage/storageAccounts/mystorageblob"),
 };
-ApplicationInsightsComponentExportConfiguration result = await applicationInsightsComponent.UpdateExportConfigurationAsync(exportId, exportProperties);
+ApplicationInsightsComponentExportConfiguration result = await applicationInsightsComponent.UpdateExportConfigurationAsync(exportId, content);
 
 Console.WriteLine($"Succeeded: {result}");

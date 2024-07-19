@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsCreate.json
 // this example is just showing the usage of "Components_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,10 +30,10 @@ ApplicationInsightsComponentCollection collection = resourceGroupResource.GetApp
 string resourceName = "my-component";
 ApplicationInsightsComponentData data = new ApplicationInsightsComponentData(new AzureLocation("South Central US"), "web")
 {
-    ApplicationType = ApplicationType.Web,
-    FlowType = FlowType.Bluefield,
-    RequestSource = RequestSource.Rest,
-    WorkspaceResourceId = "/subscriptions/subid/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace",
+    ApplicationType = ApplicationInsightsApplicationType.Web,
+    FlowType = ComponentFlowType.Bluefield,
+    RequestSource = ComponentRequestSource.Rest,
+    WorkspaceResourceId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"),
 };
 ArmOperation<ApplicationInsightsComponentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);
 ApplicationInsightsComponentResource result = lro.Value;

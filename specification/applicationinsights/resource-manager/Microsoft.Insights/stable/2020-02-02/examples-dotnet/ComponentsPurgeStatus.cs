@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsPurgeStatus.json
 // this example is just showing the usage of "Components_GetPurgeStatus" operation, for the dependent resources, they will have to be created separately.
@@ -26,6 +26,6 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 
 // invoke the operation
 string purgeId = "purge-970318e7-b859-4edb-8903-83b1b54d0b74";
-ComponentPurgeStatusResponse result = await applicationInsightsComponent.GetPurgeStatusAsync(purgeId);
+ComponentPurgeStatusResult result = await applicationInsightsComponent.GetPurgeStatusAsync(purgeId);
 
 Console.WriteLine($"Succeeded: {result}");

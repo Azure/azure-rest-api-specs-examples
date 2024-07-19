@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.ApplicationInsights;
 using Azure.ResourceManager.ApplicationInsights.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/APIKeysGet.json
 // this example is just showing the usage of "APIKeys_Get" operation, for the dependent resources, they will have to be created separately.
@@ -26,6 +26,6 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 
 // invoke the operation
 string keyId = "bb820f1b-3110-4a8b-ba2c-8c1129d7eb6a";
-ApplicationInsightsComponentAPIKey result = await applicationInsightsComponent.GetAPIKeyAsync(keyId);
+ApplicationInsightsComponentApiKey result = await applicationInsightsComponent.GetApiKeyAsync(keyId);
 
 Console.WriteLine($"Succeeded: {result}");

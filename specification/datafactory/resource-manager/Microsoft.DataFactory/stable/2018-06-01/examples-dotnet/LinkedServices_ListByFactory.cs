@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataFactory;
 using Azure.ResourceManager.DataFactory.Models;
+using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/LinkedServices_ListByFactory.json
 // this example is just showing the usage of "LinkedServices_ListByFactory" operation, for the dependent resources, they will have to be created separately.

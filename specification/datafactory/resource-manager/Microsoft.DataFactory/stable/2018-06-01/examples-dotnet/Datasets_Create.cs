@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataFactory;
 using Azure.ResourceManager.DataFactory.Models;
+using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Datasets_Create.json
 // this example is just showing the usage of "Datasets_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -16,19 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryDatasetResource created on azure
+// for more information of creating DataFactoryDatasetResource, please refer to the document of DataFactoryDatasetResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryDatasetResource
-DataFactoryDatasetCollection collection = dataFactory.GetDataFactoryDatasets();
+string datasetName = "exampleDataset";
+ResourceIdentifier dataFactoryDatasetResourceId = DataFactoryDatasetResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, datasetName);
+DataFactoryDatasetResource dataFactoryDataset = client.GetDataFactoryDatasetResource(dataFactoryDatasetResourceId);
 
 // invoke the operation
-string datasetName = "exampleDataset";
 DataFactoryDatasetData data = new DataFactoryDatasetData(new AzureBlobDataset(new DataFactoryLinkedServiceReference("LinkedServiceReference", "exampleLinkedService"))
 {
     FolderPath = DataFactoryElement<string>.FromExpression("@dataset().MyFolderPath"),
@@ -40,7 +37,7 @@ DataFactoryDatasetData data = new DataFactoryDatasetData(new AzureBlobDataset(ne
     ["MyFolderPath"] = new EntityParameterSpecification(EntityParameterType.String),
     },
 });
-ArmOperation<DataFactoryDatasetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, datasetName, data);
+ArmOperation<DataFactoryDatasetResource> lro = await dataFactoryDataset.UpdateAsync(WaitUntil.Completed, data);
 DataFactoryDatasetResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

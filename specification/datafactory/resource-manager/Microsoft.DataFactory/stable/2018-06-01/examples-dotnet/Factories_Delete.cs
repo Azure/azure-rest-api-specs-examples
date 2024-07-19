@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Core.Expressions.DataFactory;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DataFactory;
 using Azure.ResourceManager.DataFactory.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DataFactory;
 
 // Generated from example definition: specification/datafactory/resource-manager/Microsoft.DataFactory/stable/2018-06-01/examples/Factories_Delete.json
 // this example is just showing the usage of "Factories_Delete" operation, for the dependent resources, they will have to be created separately.

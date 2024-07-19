@@ -4336,3 +4336,4 @@ id,name,language,tag,package,version,date_epoch,date
 4335,"Azure.ResourceManager.ServiceFabricManagedClusters,1.2.0",dotnet,Azure.ResourceManager.ServiceFabricManagedClusters_1.2.0,Azure.ResourceManager.ServiceFabricManagedClusters,1.2.0,1719416470,06/26/2024
 4336,"Azure.ResourceManager.SelfHelp,1.1.0-beta.4",dotnet,Azure.ResourceManager.SelfHelp_1.1.0-beta.4,Azure.ResourceManager.SelfHelp,1.1.0-beta.4,1719392062,06/26/2024
 4337,"Azure.ResourceManager.CosmosDB,1.4.0-beta.10",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.10,Azure.ResourceManager.CosmosDB,1.4.0-beta.10,1719362901,06/26/2024
+4338,"Azure.ResourceManager.Network,1.8.0",dotnet,Azure.ResourceManager.Network_1.8.0,Azure.ResourceManager.Network,1.8.0,1719238248,06/24/2024

@@ -4365,3 +4365,4 @@ id,name,language,tag,package,version,date_epoch,date
 4364,"Azure.ResourceManager.ContainerRegistry,1.2.1",dotnet,Azure.ResourceManager.ContainerRegistry_1.2.1,Azure.ResourceManager.ContainerRegistry,1.2.1,1714356293,04/29/2024
 4365,"Azure.ResourceManager.ContainerInstance,1.2.1",dotnet,Azure.ResourceManager.ContainerInstance_1.2.1,Azure.ResourceManager.ContainerInstance,1.2.1,1714313206,04/28/2024
 4366,"Azure.ResourceManager.AppPlatform,1.1.1",dotnet,Azure.ResourceManager.AppPlatform_1.1.1,Azure.ResourceManager.AppPlatform,1.1.1,1714313200,04/28/2024
+4367,"Azure.ResourceManager.Astro,1.0.0-beta.1",dotnet,Azure.ResourceManager.Astro_1.0.0-beta.1,Azure.ResourceManager.Astro,1.0.0-beta.1,1714288498,04/28/2024

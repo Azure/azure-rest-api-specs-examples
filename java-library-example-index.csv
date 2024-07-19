@@ -4342,3 +4342,4 @@ id,name,language,tag,package,version,date_epoch,date
 4341,"Azure.ResourceManager.HybridCompute,1.0.0-beta.9",dotnet,Azure.ResourceManager.HybridCompute_1.0.0-beta.9,Azure.ResourceManager.HybridCompute,1.0.0-beta.9,1717756312,06/07/2024
 4342,"Azure.ResourceManager.DataFactory,1.1.0",dotnet,Azure.ResourceManager.DataFactory_1.1.0,Azure.ResourceManager.DataFactory,1.1.0,1717754476,06/07/2024
 4343,"Azure.ResourceManager.EventGrid,1.1.0-beta.5",dotnet,Azure.ResourceManager.EventGrid_1.1.0-beta.5,Azure.ResourceManager.EventGrid,1.1.0-beta.5,1717662818,06/06/2024
+4344,"Azure.ResourceManager.StorageCache,1.3.0",dotnet,Azure.ResourceManager.StorageCache_1.3.0,Azure.ResourceManager.StorageCache,1.3.0,1717409114,06/03/2024

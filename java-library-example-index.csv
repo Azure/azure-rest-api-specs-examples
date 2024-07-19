@@ -4340,3 +4340,4 @@ id,name,language,tag,package,version,date_epoch,date
 4339,"Azure.ResourceManager.ContainerService,1.2.2",dotnet,Azure.ResourceManager.ContainerService_1.2.2,Azure.ResourceManager.ContainerService,1.2.2,1718634082,06/17/2024
 4340,"Azure.ResourceManager.EventHubs,1.1.0",dotnet,Azure.ResourceManager.EventHubs_1.1.0,Azure.ResourceManager.EventHubs,1.1.0,1718264434,06/13/2024
 4341,"Azure.ResourceManager.HybridCompute,1.0.0-beta.9",dotnet,Azure.ResourceManager.HybridCompute_1.0.0-beta.9,Azure.ResourceManager.HybridCompute,1.0.0-beta.9,1717756312,06/07/2024
+4342,"Azure.ResourceManager.DataFactory,1.1.0",dotnet,Azure.ResourceManager.DataFactory_1.1.0,Azure.ResourceManager.DataFactory,1.1.0,1717754476,06/07/2024

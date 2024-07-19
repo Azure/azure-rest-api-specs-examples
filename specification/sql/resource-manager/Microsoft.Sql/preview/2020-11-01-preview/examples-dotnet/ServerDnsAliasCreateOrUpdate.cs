@@ -1,9 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
+using Azure.ResourceManager.Sql.Models;
 using Azure.ResourceManager.Sql;
 
 // Generated from example definition: specification/sql/resource-manager/Microsoft.Sql/preview/2020-11-01-preview/examples/ServerDnsAliasCreateOrUpdate.json
@@ -14,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SqlServerResource created on azure
-// for more information of creating SqlServerResource, please refer to the document of SqlServerResource
+// this example assumes you already have this SqlServerDnsAliasResource created on azure
+// for more information of creating SqlServerDnsAliasResource, please refer to the document of SqlServerDnsAliasResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "Default";
 string serverName = "dns-alias-server";
-ResourceIdentifier sqlServerResourceId = SqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-SqlServerResource sqlServer = client.GetSqlServerResource(sqlServerResourceId);
-
-// get the collection of this SqlServerDnsAliasResource
-SqlServerDnsAliasCollection collection = sqlServer.GetSqlServerDnsAliases();
+string dnsAliasName = "dns-alias-name-1";
+ResourceIdentifier sqlServerDnsAliasResourceId = SqlServerDnsAliasResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, dnsAliasName);
+SqlServerDnsAliasResource sqlServerDnsAlias = client.GetSqlServerDnsAliasResource(sqlServerDnsAliasResourceId);
 
 // invoke the operation
-string dnsAliasName = "dns-alias-name-1";
-ArmOperation<SqlServerDnsAliasResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dnsAliasName);
+ArmOperation<SqlServerDnsAliasResource> lro = await sqlServerDnsAlias.UpdateAsync(WaitUntil.Completed);
 SqlServerDnsAliasResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

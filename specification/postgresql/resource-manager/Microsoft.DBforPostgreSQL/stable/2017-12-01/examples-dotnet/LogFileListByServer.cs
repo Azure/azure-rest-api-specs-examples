@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.PostgreSql;
 using Azure.ResourceManager.PostgreSql.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.PostgreSql;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2017-12-01/examples/LogFileListByServer.json
 // this example is just showing the usage of "LogFiles_ListByServer" operation, for the dependent resources, they will have to be created separately.

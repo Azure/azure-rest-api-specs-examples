@@ -1,10 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.PostgreSql.FlexibleServers;
 
 // Generated from example definition: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/preview/2023-03-01-preview/examples/FirewallRuleCreate.json
@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlFlexibleServerResource created on azure
-// for more information of creating PostgreSqlFlexibleServerResource, please refer to the document of PostgreSqlFlexibleServerResource
+// this example assumes you already have this PostgreSqlFlexibleServerFirewallRuleResource created on azure
+// for more information of creating PostgreSqlFlexibleServerFirewallRuleResource, please refer to the document of PostgreSqlFlexibleServerFirewallRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "testrg";
 string serverName = "testserver";
-ResourceIdentifier postgreSqlFlexibleServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-PostgreSqlFlexibleServerResource postgreSqlFlexibleServer = client.GetPostgreSqlFlexibleServerResource(postgreSqlFlexibleServerResourceId);
-
-// get the collection of this PostgreSqlFlexibleServerFirewallRuleResource
-PostgreSqlFlexibleServerFirewallRuleCollection collection = postgreSqlFlexibleServer.GetPostgreSqlFlexibleServerFirewallRules();
+string firewallRuleName = "rule1";
+ResourceIdentifier postgreSqlFlexibleServerFirewallRuleResourceId = PostgreSqlFlexibleServerFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, firewallRuleName);
+PostgreSqlFlexibleServerFirewallRuleResource postgreSqlFlexibleServerFirewallRule = client.GetPostgreSqlFlexibleServerFirewallRuleResource(postgreSqlFlexibleServerFirewallRuleResourceId);
 
 // invoke the operation
-string firewallRuleName = "rule1";
 PostgreSqlFlexibleServerFirewallRuleData data = new PostgreSqlFlexibleServerFirewallRuleData(IPAddress.Parse("0.0.0.0"), IPAddress.Parse("255.255.255.255"));
-ArmOperation<PostgreSqlFlexibleServerFirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, firewallRuleName, data);
+ArmOperation<PostgreSqlFlexibleServerFirewallRuleResource> lro = await postgreSqlFlexibleServerFirewallRule.UpdateAsync(WaitUntil.Completed, data);
 PostgreSqlFlexibleServerFirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

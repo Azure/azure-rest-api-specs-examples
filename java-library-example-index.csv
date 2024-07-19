@@ -4356,3 +4356,4 @@ id,name,language,tag,package,version,date_epoch,date
 4355,"Azure.ResourceManager,1.12.0",dotnet,Azure.ResourceManager_1.12.0,Azure.ResourceManager,1.12.0,1715075305,05/07/2024
 4356,"Azure.ResourceManager.ServiceBus,1.1.0-beta.7",dotnet,Azure.ResourceManager.ServiceBus_1.1.0-beta.7,Azure.ResourceManager.ServiceBus,1.1.0-beta.7,1715075252,05/07/2024
 4357,"Azure.ResourceManager.PostgreSql,1.2.0-beta.6",dotnet,Azure.ResourceManager.PostgreSql_1.2.0-beta.6,Azure.ResourceManager.PostgreSql,1.2.0-beta.6,1715073185,05/07/2024
+4358,"Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.4",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0-beta.4,Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.4,1715005033,05/06/2024

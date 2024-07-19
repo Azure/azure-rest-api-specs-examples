@@ -4380,3 +4380,4 @@ id,name,language,tag,package,version,date_epoch,date
 4379,"Azure.ResourceManager.MobileNetwork,1.2.0",dotnet,Azure.ResourceManager.MobileNetwork_1.2.0,Azure.ResourceManager.MobileNetwork,1.2.0,1711203805,03/23/2024
 4380,"Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.3",dotnet,Azure.ResourceManager.HDInsight.Containers_1.0.0-beta.3,Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.3,1711203775,03/23/2024
 4381,"Azure.ResourceManager.HybridCompute,1.0.0-beta.10",dotnet,Azure.ResourceManager.HybridCompute_1.0.0-beta.10,Azure.ResourceManager.HybridCompute,1.0.0-beta.10,1721380400,07/19/2024
+4382,"Azure.ResourceManager.GuestConfiguration,1.2.0",dotnet,Azure.ResourceManager.GuestConfiguration_1.2.0,Azure.ResourceManager.GuestConfiguration,1.2.0,1721378767,07/19/2024

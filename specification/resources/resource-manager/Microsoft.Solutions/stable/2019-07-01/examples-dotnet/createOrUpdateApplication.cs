@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/resources/resource-manager/Microsoft.Solutions/stable/2019-07-01/examples/createOrUpdateApplication.json

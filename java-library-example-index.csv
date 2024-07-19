@@ -4369,3 +4369,4 @@ id,name,language,tag,package,version,date_epoch,date
 4368,"Azure.ResourceManager.Maintenance,1.2.0-beta.8",dotnet,Azure.ResourceManager.Maintenance_1.2.0-beta.8,Azure.ResourceManager.Maintenance,1.2.0-beta.8,1714288412,04/28/2024
 4369,"Azure.ResourceManager.TrustedSigning,1.0.0-beta.1",dotnet,Azure.ResourceManager.TrustedSigning_1.0.0-beta.1,Azure.ResourceManager.TrustedSigning,1.0.0-beta.1,1714142238,04/26/2024
 4370,"Azure.ResourceManager.EdgeZones,1.0.0-beta.1",dotnet,Azure.ResourceManager.EdgeZones_1.0.0-beta.1,Azure.ResourceManager.EdgeZones,1.0.0-beta.1,1714103316,04/26/2024
+4371,"Azure.ResourceManager.Support,1.1.0",dotnet,Azure.ResourceManager.Support_1.1.0,Azure.ResourceManager.Support,1.1.0,1714103188,04/26/2024

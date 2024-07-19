@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Authorization;
 using Azure.ResourceManager.Authorization.Models;
+using Azure.ResourceManager.Authorization;
 
 // Generated from example definition: specification/authorization/resource-manager/Microsoft.Authorization/stable/2020-10-01/examples/PutRoleAssignmentScheduleRequest.json
 // this example is just showing the usage of "RoleAssignmentScheduleRequests_Create" operation, for the dependent resources, they will have to be created separately.
@@ -16,14 +16,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this RoleAssignmentScheduleRequestResource created on azure
-// for more information of creating RoleAssignmentScheduleRequestResource, please refer to the document of RoleAssignmentScheduleRequestResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this RoleAssignmentScheduleRequestResource
 string scope = "providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f";
-string roleAssignmentScheduleRequestName = "fea7a502-9a96-4806-a26f-eee560e52045";
-ResourceIdentifier roleAssignmentScheduleRequestResourceId = RoleAssignmentScheduleRequestResource.CreateResourceIdentifier(scope, roleAssignmentScheduleRequestName);
-RoleAssignmentScheduleRequestResource roleAssignmentScheduleRequest = client.GetRoleAssignmentScheduleRequestResource(roleAssignmentScheduleRequestResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
+RoleAssignmentScheduleRequestCollection collection = client.GetRoleAssignmentScheduleRequests(scopeId);
 
 // invoke the operation
+string roleAssignmentScheduleRequestName = "fea7a502-9a96-4806-a26f-eee560e52045";
 RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData()
 {
     RoleDefinitionId = new ResourceIdentifier("/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608"),
@@ -37,7 +39,7 @@ RoleAssignmentScheduleRequestData data = new RoleAssignmentScheduleRequestData()
     EndOn = null,
     Duration = XmlConvert.ToTimeSpan("PT8H"),
 };
-ArmOperation<RoleAssignmentScheduleRequestResource> lro = await roleAssignmentScheduleRequest.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<RoleAssignmentScheduleRequestResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, roleAssignmentScheduleRequestName, data);
 RoleAssignmentScheduleRequestResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

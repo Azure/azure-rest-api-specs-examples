@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.Resources;
 
 // Generated from example definition: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/createOrUpdatePolicyDefinitionAdvancedParams.json
 // this example is just showing the usage of "PolicyDefinitions_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -16,17 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this SubscriptionPolicyDefinitionResource created on azure
+// for more information of creating SubscriptionPolicyDefinitionResource, please refer to the document of SubscriptionPolicyDefinitionResource
 string subscriptionId = "ae640e6b-ba3e-4256-9d62-2993eecfa6f2";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscription = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this SubscriptionPolicyDefinitionResource
-SubscriptionPolicyDefinitionCollection collection = subscription.GetSubscriptionPolicyDefinitions();
+string policyDefinitionName = "EventHubDiagnosticLogs";
+ResourceIdentifier subscriptionPolicyDefinitionResourceId = SubscriptionPolicyDefinitionResource.CreateResourceIdentifier(subscriptionId, policyDefinitionName);
+SubscriptionPolicyDefinitionResource subscriptionPolicyDefinition = client.GetSubscriptionPolicyDefinitionResource(subscriptionPolicyDefinitionResourceId);
 
 // invoke the operation
-string policyDefinitionName = "EventHubDiagnosticLogs";
 PolicyDefinitionData data = new PolicyDefinitionData()
 {
     Mode = "Indexed",
@@ -80,7 +77,7 @@ PolicyDefinitionData data = new PolicyDefinitionData()
     },
     },
 };
-ArmOperation<SubscriptionPolicyDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyDefinitionName, data);
+ArmOperation<SubscriptionPolicyDefinitionResource> lro = await subscriptionPolicyDefinition.UpdateAsync(WaitUntil.Completed, data);
 SubscriptionPolicyDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

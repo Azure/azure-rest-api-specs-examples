@@ -6,11 +6,10 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.FrontDoor.Models;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.FrontDoor;
 
-// Generated from example definition: specification/frontdoor/resource-manager/Microsoft.Network/stable/2021-06-01/examples/FrontdoorListAll.json
-// this example is just showing the usage of "FrontDoors_List" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/examples/WafListManagedRuleSets.json
+// this example is just showing the usage of "ManagedRuleSets_List" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -24,13 +23,9 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-await foreach (FrontDoorResource item in subscriptionResource.GetFrontDoorsAsync())
+await foreach (ManagedRuleSetDefinition item in subscriptionResource.GetManagedRuleSetsAsync())
 {
-    // the variable item is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FrontDoorData resourceData = item.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+    Console.WriteLine($"Succeeded: {item}");
 }
 
 Console.WriteLine($"Succeeded");

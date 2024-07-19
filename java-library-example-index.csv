@@ -4372,3 +4372,4 @@ id,name,language,tag,package,version,date_epoch,date
 4371,"Azure.ResourceManager.Support,1.1.0",dotnet,Azure.ResourceManager.Support_1.1.0,Azure.ResourceManager.Support,1.1.0,1714103188,04/26/2024
 4372,"Azure.ResourceManager.AppService,1.1.0-beta.5",dotnet,Azure.ResourceManager.AppService_1.1.0-beta.5,Azure.ResourceManager.AppService,1.1.0-beta.5,1713517310,04/19/2024
 4373,"Azure.ResourceManager.WebPubSub,1.2.0-beta.1",dotnet,Azure.ResourceManager.WebPubSub_1.2.0-beta.1,Azure.ResourceManager.WebPubSub,1.2.0-beta.1,1713259973,04/16/2024
+4374,"Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.1",dotnet,Azure.ResourceManager.MigrationDiscoverySap_1.0.0-beta.1,Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.1,1712159218,04/03/2024

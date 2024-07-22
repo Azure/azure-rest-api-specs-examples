@@ -4384,3 +4384,4 @@ id,name,language,tag,package,version,date_epoch,date
 4383,com.azure.resourcemanager:azure-resourcemanager-dataprotection:1.3.0,java,azure-resourcemanager-dataprotection_1.3.0,azure-resourcemanager-dataprotection,1.3.0,1721642420,07/22/2024
 4384,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.6,java,azure-resourcemanager-hybridcompute_1.0.0-beta.6,azure-resourcemanager-hybridcompute,1.0.0-beta.6,1721621489,07/22/2024
 4385,azure-mgmt-containerservice@31.0.0,python,azure-mgmt-containerservice_31.0.0,azure-mgmt-containerservice,31.0.0,1721617644,07/22/2024
+4386,azure-mgmt-search@9.2.0b2,python,azure-mgmt-search_9.2.0b2,azure-mgmt-search,9.2.0b2,1721616208,07/22/2024

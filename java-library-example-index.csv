@@ -4385,3 +4385,4 @@ id,name,language,tag,package,version,date_epoch,date
 4384,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0-beta.6,java,azure-resourcemanager-hybridcompute_1.0.0-beta.6,azure-resourcemanager-hybridcompute,1.0.0-beta.6,1721621489,07/22/2024
 4385,azure-mgmt-containerservice@31.0.0,python,azure-mgmt-containerservice_31.0.0,azure-mgmt-containerservice,31.0.0,1721617644,07/22/2024
 4386,azure-mgmt-search@9.2.0b2,python,azure-mgmt-search_9.2.0b2,azure-mgmt-search,9.2.0b2,1721616208,07/22/2024
+4387,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.0.0-beta.2,java,azure-resourcemanager-computefleet_1.0.0-beta.2,azure-resourcemanager-computefleet,1.0.0-beta.2,1721726687,07/23/2024

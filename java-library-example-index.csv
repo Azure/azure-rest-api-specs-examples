@@ -4391,3 +4391,4 @@ id,name,language,tag,package,version,date_epoch,date
 4390,azure-mgmt-hybridcompute@9.0.0b4,python,azure-mgmt-hybridcompute_9.0.0b4,azure-mgmt-hybridcompute,9.0.0b4,1721713908,07/23/2024
 4391,azure-mgmt-netapp@13.1.0,python,azure-mgmt-netapp_13.1.0,azure-mgmt-netapp,13.1.0,1721713893,07/23/2024
 4392,azure-mgmt-redhatopenshift@1.5.0,python,azure-mgmt-redhatopenshift_1.5.0,azure-mgmt-redhatopenshift,1.5.0,1721713878,07/23/2024
+4393,azure-mgmt-redis@14.4.0,python,azure-mgmt-redis_14.4.0,azure-mgmt-redis,14.4.0,1721713864,07/23/2024

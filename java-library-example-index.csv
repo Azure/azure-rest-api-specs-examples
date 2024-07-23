@@ -4389,3 +4389,4 @@ id,name,language,tag,package,version,date_epoch,date
 4388,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.0.0-beta.4,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.0.0-beta.4,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.0.0-beta.4,1721719247,07/23/2024
 4389,"Azure.ResourceManager.Quota,1.1.0-beta.2",dotnet,Azure.ResourceManager.Quota_1.1.0-beta.2,Azure.ResourceManager.Quota,1.1.0-beta.2,1721650653,07/22/2024
 4390,azure-mgmt-hybridcompute@9.0.0b4,python,azure-mgmt-hybridcompute_9.0.0b4,azure-mgmt-hybridcompute,9.0.0b4,1721713908,07/23/2024
+4391,azure-mgmt-netapp@13.1.0,python,azure-mgmt-netapp_13.1.0,azure-mgmt-netapp,13.1.0,1721713893,07/23/2024

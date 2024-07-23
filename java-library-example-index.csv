@@ -4387,3 +4387,4 @@ id,name,language,tag,package,version,date_epoch,date
 4386,azure-mgmt-search@9.2.0b2,python,azure-mgmt-search_9.2.0b2,azure-mgmt-search,9.2.0b2,1721616208,07/22/2024
 4387,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.0.0-beta.2,java,azure-resourcemanager-computefleet_1.0.0-beta.2,azure-resourcemanager-computefleet,1.0.0-beta.2,1721726687,07/23/2024
 4388,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.0.0-beta.4,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.0.0-beta.4,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.0.0-beta.4,1721719247,07/23/2024
+4389,"Azure.ResourceManager.Quota,1.1.0-beta.2",dotnet,Azure.ResourceManager.Quota_1.1.0-beta.2,Azure.ResourceManager.Quota,1.1.0-beta.2,1721650653,07/22/2024

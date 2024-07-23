@@ -1,0 +1,20 @@
+
+/**
+ * Samples for DeletedBackupInstances Undelete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2024-04-01/examples/
+     * DeletedBackupInstanceOperations/UndeleteDeletedBackupInstance.json
+     */
+    /**
+     * Sample code: Undelete Deleted BackupInstance.
+     * 
+     * @param manager Entry point to DataProtectionManager.
+     */
+    public static void
+        undeleteDeletedBackupInstance(com.azure.resourcemanager.dataprotection.DataProtectionManager manager) {
+        manager.deletedBackupInstances().undelete("testrg", "testvault", "testbi", com.azure.core.util.Context.NONE);
+    }
+}

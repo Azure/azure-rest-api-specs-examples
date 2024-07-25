@@ -4401,3 +4401,4 @@ id,name,language,tag,package,version,date_epoch,date
 4400,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.0.0,go,sdk/resourcemanager/network/armnetwork/v6.0.0,sdk/resourcemanager/network/armnetwork,v6.0.0,1721894475,07/25/2024
 4401,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6@v6.0.0,go,sdk/resourcemanager/compute/armcompute/v6.0.0,sdk/resourcemanager/compute/armcompute,v6.0.0,1721894298,07/25/2024
 4402,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.1.0,go,sdk/resourcemanager/netapp/armnetapp/v7.1.0,sdk/resourcemanager/netapp/armnetapp,v7.1.0,1721880086,07/25/2024
+4403,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis/v3@v3.2.0,go,sdk/resourcemanager/redis/armredis/v3.2.0,sdk/resourcemanager/redis/armredis,v3.2.0,1721879077,07/25/2024

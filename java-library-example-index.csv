@@ -4396,3 +4396,4 @@ id,name,language,tag,package,version,date_epoch,date
 4395,com.azure.resourcemanager:azure-resourcemanager-netapp:1.3.0,java,azure-resourcemanager-netapp_1.3.0,azure-resourcemanager-netapp,1.3.0,1721797431,07/24/2024
 4396,@azure/arm-containerservice@20.1.0-beta.1,js,@azure/arm-containerservice_20.1.0-beta.1,@azure/arm-containerservice,20.1.0-beta.1,1721734253,07/23/2024
 4397,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.0.0-beta.8,java,azure-resourcemanager-appcontainers_1.0.0-beta.8,azure-resourcemanager-appcontainers,1.0.0-beta.8,1721863650,07/24/2024
+4398,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redhatopenshift/armredhatopenshift@v1.6.0,go,sdk/resourcemanager/redhatopenshift/armredhatopenshift/v1.6.0,sdk/resourcemanager/redhatopenshift/armredhatopenshift,v1.6.0,1721896954,07/25/2024

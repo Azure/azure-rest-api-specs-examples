@@ -4397,3 +4397,4 @@ id,name,language,tag,package,version,date_epoch,date
 4396,@azure/arm-containerservice@20.1.0-beta.1,js,@azure/arm-containerservice_20.1.0-beta.1,@azure/arm-containerservice,20.1.0-beta.1,1721734253,07/23/2024
 4397,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.0.0-beta.8,java,azure-resourcemanager-appcontainers_1.0.0-beta.8,azure-resourcemanager-appcontainers,1.0.0-beta.8,1721863650,07/24/2024
 4398,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redhatopenshift/armredhatopenshift@v1.6.0,go,sdk/resourcemanager/redhatopenshift/armredhatopenshift/v1.6.0,sdk/resourcemanager/redhatopenshift/armredhatopenshift,v1.6.0,1721896954,07/25/2024
+4399,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v5@v5.1.0-beta.2,go,sdk/resourcemanager/containerservice/armcontainerservice/v5.1.0-beta.2,sdk/resourcemanager/containerservice/armcontainerservice,v5.1.0-beta.2,1721894499,07/25/2024

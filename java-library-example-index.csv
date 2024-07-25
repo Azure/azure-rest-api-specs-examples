@@ -4400,3 +4400,4 @@ id,name,language,tag,package,version,date_epoch,date
 4399,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v5@v5.1.0-beta.2,go,sdk/resourcemanager/containerservice/armcontainerservice/v5.1.0-beta.2,sdk/resourcemanager/containerservice/armcontainerservice,v5.1.0-beta.2,1721894499,07/25/2024
 4400,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.0.0,go,sdk/resourcemanager/network/armnetwork/v6.0.0,sdk/resourcemanager/network/armnetwork,v6.0.0,1721894475,07/25/2024
 4401,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6@v6.0.0,go,sdk/resourcemanager/compute/armcompute/v6.0.0,sdk/resourcemanager/compute/armcompute,v6.0.0,1721894298,07/25/2024
+4402,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.1.0,go,sdk/resourcemanager/netapp/armnetapp/v7.1.0,sdk/resourcemanager/netapp/armnetapp,v7.1.0,1721880086,07/25/2024

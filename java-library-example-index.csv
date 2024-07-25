@@ -4403,3 +4403,4 @@ id,name,language,tag,package,version,date_epoch,date
 4402,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.1.0,go,sdk/resourcemanager/netapp/armnetapp/v7.1.0,sdk/resourcemanager/netapp/armnetapp,v7.1.0,1721880086,07/25/2024
 4403,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis/v3@v3.2.0,go,sdk/resourcemanager/redis/armredis/v3.2.0,sdk/resourcemanager/redis/armredis,v3.2.0,1721879077,07/25/2024
 4404,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dataprotection/armdataprotection/v3@v3.1.0,go,sdk/resourcemanager/dataprotection/armdataprotection/v3.1.0,sdk/resourcemanager/dataprotection/armdataprotection,v3.1.0,1721878975,07/25/2024
+4405,azure-mgmt-servicefabricmanagedclusters@2.0.0,python,azure-mgmt-servicefabricmanagedclusters_2.0.0,azure-mgmt-servicefabricmanagedclusters,2.0.0,1721893732,07/25/2024

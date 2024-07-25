@@ -1,0 +1,40 @@
+from typing import TYPE_CHECKING, Union
+
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.servicefabricmanagedclusters import ServiceFabricManagedClustersManagementClient
+
+if TYPE_CHECKING:
+    # pylint: disable=unused-import,ungrouped-imports
+    from .. import models as _models
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-servicefabricmanagedclusters
+# USAGE
+    python managed_cluster_version_get_by_environment_example.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = ServiceFabricManagedClustersManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="00000000-0000-0000-0000-000000000000",
+    )
+
+    response = client.managed_cluster_version.get_by_environment(
+        location="eastus",
+        environment="Windows",
+        cluster_version="7.2.477.9590",
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/servicefabricmanagedclusters/resource-manager/Microsoft.ServiceFabric/stable/2024-04-01/examples/ManagedClusterVersionGetByEnvironment_example.json
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,20 @@
+const { HybridComputeManagementClient } = require("@azure/arm-hybridcompute");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Gets a list of all Azure Arc PrivateLinkScopes within a subscription.
+ *
+ * @summary Gets a list of all Azure Arc PrivateLinkScopes within a subscription.
+ * x-ms-original-file: specification/hybridcompute/resource-manager/Microsoft.HybridCompute/preview/2024-05-20-preview/examples/privateLinkScope/PrivateLinkScopes_List.json
+ */
+async function privateLinkScopesListJson() {
+  const subscriptionId =
+    process.env["HYBRIDCOMPUTE_SUBSCRIPTION_ID"] || "86dc51d3-92ed-4d7e-947a-775ea79b4919";
+  const credential = new DefaultAzureCredential();
+  const client = new HybridComputeManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.privateLinkScopes.list()) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

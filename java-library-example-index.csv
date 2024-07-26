@@ -4418,3 +4418,4 @@ id,name,language,tag,package,version,date_epoch,date
 4417,@azure/arm-netapp@21.1.0,js,@azure/arm-netapp_21.1.0,@azure/arm-netapp,21.1.0,1721976407,07/26/2024
 4418,@azure/arm-qumulo@2.0.0,js,@azure/arm-qumulo_2.0.0,@azure/arm-qumulo,2.0.0,1721974046,07/26/2024
 4419,@azure/arm-dataprotection@2.1.0,js,@azure/arm-dataprotection_2.1.0,@azure/arm-dataprotection,2.1.0,1721963126,07/26/2024
+4420,"Azure.ResourceManager.DataFactory,1.2.0",dotnet,Azure.ResourceManager.DataFactory_1.2.0,Azure.ResourceManager.DataFactory,1.2.0,1721982852,07/26/2024

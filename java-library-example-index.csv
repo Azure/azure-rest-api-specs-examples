@@ -4411,3 +4411,4 @@ id,name,language,tag,package,version,date_epoch,date
 4410,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.1,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.1,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.1,1721985287,07/26/2024
 4411,@azure/arm-redhatopenshift@1.0.0-beta.1,js,@azure/arm-redhatopenshift_1.0.0-beta.1,@azure/arm-redhatopenshift,1.0.0-beta.1,1721983852,07/26/2024
 4412,@azure/arm-hybridcompute@4.0.0-beta.3,js,@azure/arm-hybridcompute_4.0.0-beta.3,@azure/arm-hybridcompute,4.0.0-beta.3,1721983336,07/26/2024
+4413,@azure/arm-containerservice@21.0.0,js,@azure/arm-containerservice_21.0.0,@azure/arm-containerservice,21.0.0,1721983018,07/26/2024

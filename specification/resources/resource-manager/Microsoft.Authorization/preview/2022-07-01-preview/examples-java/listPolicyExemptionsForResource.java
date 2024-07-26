@@ -1,5 +1,7 @@
 
-/** Samples for PolicyExemptions ListForResource. */
+/**
+ * Samples for PolicyExemptions ListForResource.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List all policy exemptions that apply to a resource.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

@@ -3,7 +3,9 @@ import com.azure.resourcemanager.resources.models.Identity;
 import com.azure.resourcemanager.resources.models.PolicyAssignmentUpdate;
 import com.azure.resourcemanager.resources.models.ResourceIdentityType;
 
-/** Samples for PolicyAssignments UpdateById. */
+/**
+ * Samples for PolicyAssignments UpdateById.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Update policy assignment with a managed identity by ID.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.ScheduledQueryRuleResourceInner;
 import com.azure.resourcemanager.monitor.models.Actions;
 import com.azure.resourcemanager.monitor.models.AlertSeverity;
@@ -15,7 +14,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ScheduledQueryRules CreateOrUpdate. */
+/**
+ * Samples for ScheduledQueryRules CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-15/examples/
@@ -23,7 +24,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a scheduled query rule for Single Resource.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -49,11 +50,12 @@ public final class Main {
                 .withMuteActionsDuration(Duration.parse("PT30M"))
                 .withActions(new Actions().withActionGroups(Arrays.asList(
                     "/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"))
-                    .withCustomProperties(mapOf("key11", "value11", "key12", "value12")))
+                    .withCustomProperties(mapOf("key11", "fakeTokenPlaceholder", "key12", "fakeTokenPlaceholder")))
                 .withCheckWorkspaceAlertsStorageConfigured(true).withSkipQueryValidation(true).withAutoMitigate(true),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

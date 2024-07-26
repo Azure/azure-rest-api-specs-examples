@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DataCollectionRuleAssociations ListByRule. */
+/**
+ * Samples for DataCollectionRuleAssociations ListByRule.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: List associations for specified data collection rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         listAssociationsForSpecifiedDataCollectionRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getDataCollectionRuleAssociations()
-            .listByRule("myResourceGroup", "myCollectionRule", Context.NONE);
+            .listByRule("myResourceGroup", "myCollectionRule", com.azure.core.util.Context.NONE);
     }
 }

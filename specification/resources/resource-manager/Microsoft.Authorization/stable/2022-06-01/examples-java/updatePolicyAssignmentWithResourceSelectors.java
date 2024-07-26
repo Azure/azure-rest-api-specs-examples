@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PolicyAssignments Update. */
+/**
+ * Samples for PolicyAssignments Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: Update a policy assignment with resource selectors.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for PrivateLinkScopedResources ListByPrivateLinkScope. */
+/**
+ * Samples for PrivateLinkScopedResources ListByPrivateLinkScope.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets list of scoped resources in a private link scope.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getsListOfScopedResourcesInAPrivateLinkScope(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getPrivateLinkScopedResources()
-            .listByPrivateLinkScope("MyResourceGroup", "MyPrivateLinkScope", Context.NONE);
+            .listByPrivateLinkScope("MyResourceGroup", "MyPrivateLinkScope", com.azure.core.util.Context.NONE);
     }
 }

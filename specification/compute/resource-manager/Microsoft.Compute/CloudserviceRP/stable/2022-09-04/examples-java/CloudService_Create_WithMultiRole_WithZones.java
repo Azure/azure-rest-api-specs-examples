@@ -1,3 +1,4 @@
+
 import com.azure.core.management.SubResource;
 import com.azure.resourcemanager.compute.fluent.models.CloudServiceInner;
 import com.azure.resourcemanager.compute.models.CloudServiceNetworkProfile;
@@ -12,72 +13,41 @@ import com.azure.resourcemanager.compute.models.LoadBalancerFrontendIpConfigurat
 import com.azure.resourcemanager.compute.models.LoadBalancerFrontendIpConfigurationProperties;
 import java.util.Arrays;
 
-/** Samples for CloudServices CreateOrUpdate. */
+/**
+ * Samples for CloudServices CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/CloudService_Create_WithMultiRole_WithZones.json
+     * x-ms-original-file:
+     * specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/
+     * CloudService_Create_WithMultiRole_WithZones.json
      */
     /**
      * Sample code: Create New Cloud Service with Multiple Roles in a specific availability zone.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createNewCloudServiceWithMultipleRolesInASpecificAvailabilityZone(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure
-            .virtualMachines()
-            .manager()
-            .serviceClient()
-            .getCloudServices()
-            .createOrUpdate(
-                "ConstosoRG",
-                "{cs-name}",
-                new CloudServiceInner()
-                    .withLocation("westus")
-                    .withProperties(
-                        new CloudServiceProperties()
-                            .withPackageUrl("{PackageUrl}")
-                            .withConfiguration("{ServiceConfiguration}")
-                            .withUpgradeMode(CloudServiceUpgradeMode.AUTO)
-                            .withRoleProfile(
-                                new CloudServiceRoleProfile()
-                                    .withRoles(
-                                        Arrays
-                                            .asList(
-                                                new CloudServiceRoleProfileProperties()
-                                                    .withName("ContosoFrontend")
-                                                    .withSku(
-                                                        new CloudServiceRoleSku()
-                                                            .withName("Standard_D1_v2")
-                                                            .withTier("Standard")
-                                                            .withCapacity(1L)),
-                                                new CloudServiceRoleProfileProperties()
-                                                    .withName("ContosoBackend")
-                                                    .withSku(
-                                                        new CloudServiceRoleSku()
-                                                            .withName("Standard_D1_v2")
-                                                            .withTier("Standard")
-                                                            .withCapacity(1L)))))
-                            .withNetworkProfile(
-                                new CloudServiceNetworkProfile()
-                                    .withLoadBalancerConfigurations(
-                                        Arrays
-                                            .asList(
-                                                new LoadBalancerConfiguration()
-                                                    .withName("contosolb")
-                                                    .withProperties(
-                                                        new LoadBalancerConfigurationProperties()
-                                                            .withFrontendIpConfigurations(
-                                                                Arrays
-                                                                    .asList(
-                                                                        new LoadBalancerFrontendIpConfiguration()
-                                                                            .withName("contosofe")
-                                                                            .withProperties(
-                                                                                new LoadBalancerFrontendIpConfigurationProperties()
-                                                                                    .withPublicIpAddress(
-                                                                                        new SubResource()
-                                                                                            .withId(
-                                                                                                "/subscriptions/{subscription-id}/resourceGroups/ConstosoRG/providers/Microsoft.Network/publicIPAddresses/contosopublicip"))))))))))
+        azure.virtualMachines().manager().serviceClient().getCloudServices()
+            .createOrUpdate("ConstosoRG", "{cs-name}",
+                new CloudServiceInner().withLocation("westus")
+                    .withProperties(new CloudServiceProperties().withPackageUrl("{PackageUrl}")
+                        .withConfiguration("{ServiceConfiguration}").withUpgradeMode(CloudServiceUpgradeMode.AUTO)
+                        .withRoleProfile(new CloudServiceRoleProfile().withRoles(Arrays.asList(
+                            new CloudServiceRoleProfileProperties().withName("ContosoFrontend")
+                                .withSku(new CloudServiceRoleSku().withName("Standard_D1_v2").withTier("Standard")
+                                    .withCapacity(1L)),
+                            new CloudServiceRoleProfileProperties().withName("ContosoBackend")
+                                .withSku(new CloudServiceRoleSku().withName("Standard_D1_v2").withTier("Standard")
+                                    .withCapacity(1L)))))
+                        .withNetworkProfile(new CloudServiceNetworkProfile().withLoadBalancerConfigurations(
+                            Arrays.asList(new LoadBalancerConfiguration().withName("contosolb")
+                                .withProperties(new LoadBalancerConfigurationProperties().withFrontendIpConfigurations(
+                                    Arrays.asList(new LoadBalancerFrontendIpConfiguration().withName("contosofe")
+                                        .withProperties(new LoadBalancerFrontendIpConfigurationProperties()
+                                            .withPublicIpAddress(new SubResource().withId(
+                                                "/subscriptions/{subscription-id}/resourceGroups/ConstosoRG/providers/Microsoft.Network/publicIPAddresses/contosopublicip"))))))))))
                     .withZones(Arrays.asList("1")),
                 com.azure.core.util.Context.NONE);
     }

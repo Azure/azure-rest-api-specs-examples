@@ -4415,3 +4415,4 @@ id,name,language,tag,package,version,date_epoch,date
 4414,@azure/arm-search@4.0.0-beta.1,js,@azure/arm-search_4.0.0-beta.1,@azure/arm-search,4.0.0-beta.1,1721981073,07/26/2024
 4415,@azure/arm-rediscache@8.1.0,js,@azure/arm-rediscache_8.1.0,@azure/arm-rediscache,8.1.0,1721976425,07/26/2024
 4416,@azure/arm-compute@22.0.0,js,@azure/arm-compute_22.0.0,@azure/arm-compute,22.0.0,1721976413,07/26/2024
+4417,@azure/arm-netapp@21.1.0,js,@azure/arm-netapp_21.1.0,@azure/arm-netapp,21.1.0,1721976407,07/26/2024

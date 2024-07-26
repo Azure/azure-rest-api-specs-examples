@@ -4410,3 +4410,4 @@ id,name,language,tag,package,version,date_epoch,date
 4409,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.0.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.0.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.0.0,1721973679,07/26/2024
 4410,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.1,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.1,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.1,1721985287,07/26/2024
 4411,@azure/arm-redhatopenshift@1.0.0-beta.1,js,@azure/arm-redhatopenshift_1.0.0-beta.1,@azure/arm-redhatopenshift,1.0.0-beta.1,1721983852,07/26/2024
+4412,@azure/arm-hybridcompute@4.0.0-beta.3,js,@azure/arm-hybridcompute_4.0.0-beta.3,@azure/arm-hybridcompute,4.0.0-beta.3,1721983336,07/26/2024

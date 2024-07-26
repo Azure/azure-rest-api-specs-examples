@@ -16,31 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryLinkedServiceResource created on azure
+// for more information of creating DataFactoryLinkedServiceResource, please refer to the document of DataFactoryLinkedServiceResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryLinkedServiceResource
-DataFactoryLinkedServiceCollection collection = dataFactory.GetDataFactoryLinkedServices();
+string linkedServiceName = "exampleLinkedService";
+ResourceIdentifier dataFactoryLinkedServiceResourceId = DataFactoryLinkedServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, linkedServiceName);
+DataFactoryLinkedServiceResource dataFactoryLinkedService = client.GetDataFactoryLinkedServiceResource(dataFactoryLinkedServiceResourceId);
 
 // invoke the operation
-string linkedServiceName = "exampleLinkedService";
-NullableResponse<DataFactoryLinkedServiceResource> response = await collection.GetIfExistsAsync(linkedServiceName);
-DataFactoryLinkedServiceResource result = response.HasValue ? response.Value : null;
+DataFactoryLinkedServiceResource result = await dataFactoryLinkedService.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    DataFactoryLinkedServiceData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+DataFactoryLinkedServiceData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

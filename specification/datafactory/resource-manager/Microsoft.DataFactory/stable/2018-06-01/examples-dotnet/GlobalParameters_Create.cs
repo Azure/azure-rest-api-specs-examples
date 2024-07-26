@@ -16,21 +16,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryGlobalParameterResource created on azure
-// for more information of creating DataFactoryGlobalParameterResource, please refer to the document of DataFactoryGlobalParameterResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string globalParameterName = "default";
-ResourceIdentifier dataFactoryGlobalParameterResourceId = DataFactoryGlobalParameterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, globalParameterName);
-DataFactoryGlobalParameterResource dataFactoryGlobalParameter = client.GetDataFactoryGlobalParameterResource(dataFactoryGlobalParameterResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryGlobalParameterResource
+DataFactoryGlobalParameterCollection collection = dataFactory.GetDataFactoryGlobalParameters();
 
 // invoke the operation
+string globalParameterName = "default";
 DataFactoryGlobalParameterData data = new DataFactoryGlobalParameterData(new Dictionary<string, DataFactoryGlobalParameterProperties>()
 {
     ["waitTime"] = new DataFactoryGlobalParameterProperties(DataFactoryGlobalParameterType.Int, BinaryData.FromString("\"5\"")),
 });
-ArmOperation<DataFactoryGlobalParameterResource> lro = await dataFactoryGlobalParameter.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataFactoryGlobalParameterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, globalParameterName, data);
 DataFactoryGlobalParameterResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

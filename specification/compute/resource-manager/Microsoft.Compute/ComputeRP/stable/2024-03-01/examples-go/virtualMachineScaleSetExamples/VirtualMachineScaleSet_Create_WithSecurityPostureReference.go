@@ -6,10 +6,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v5"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/92de53a5f1e0e03c94b40475d2135d97148ed014/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_WithSecurityPostureReference.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/81a4ee5a83ae38620c0e1404793caffe005d26e4/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-03-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_WithSecurityPostureReference.json
 func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWithSecurityPostureReference() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -56,7 +56,10 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 					ComputerNamePrefix: to.Ptr("{vmss-name}"),
 				},
 				SecurityPostureReference: &armcompute.SecurityPostureReference{
-					ID: to.Ptr("/CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest"),
+					ExcludeExtensions: []*string{
+						to.Ptr("{securityPostureVMExtensionName}")},
+					ID:            to.Ptr("/CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest"),
+					IsOverridable: to.Ptr(true),
 				},
 				StorageProfile: &armcompute.VirtualMachineScaleSetStorageProfile{
 					ImageReference: &armcompute.ImageReference{
@@ -144,27 +147,30 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 	// 				},
 	// 			},
 	// 			SecurityPostureReference: &armcompute.SecurityPostureReference{
-	// 				ID: to.Ptr("/CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest"),
-	// 			},
-	// 			StorageProfile: &armcompute.VirtualMachineScaleSetStorageProfile{
-	// 				ImageReference: &armcompute.ImageReference{
-	// 					Offer: to.Ptr("WindowsServer"),
-	// 					Publisher: to.Ptr("MicrosoftWindowsServer"),
-	// 					SKU: to.Ptr("2022-Datacenter"),
-	// 					Version: to.Ptr("latest"),
+	// 				ExcludeExtensions: []*string{
+	// 					to.Ptr("{securityPostureVMExtensionName}")},
+	// 					ID: to.Ptr("/CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest"),
+	// 					IsOverridable: to.Ptr(true),
 	// 				},
-	// 				OSDisk: &armcompute.VirtualMachineScaleSetOSDisk{
-	// 					Name: to.Ptr("osDisk"),
-	// 					Caching: to.Ptr(armcompute.CachingTypesReadWrite),
-	// 					CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesFromImage),
+	// 				StorageProfile: &armcompute.VirtualMachineScaleSetStorageProfile{
+	// 					ImageReference: &armcompute.ImageReference{
+	// 						Offer: to.Ptr("WindowsServer"),
+	// 						Publisher: to.Ptr("MicrosoftWindowsServer"),
+	// 						SKU: to.Ptr("2022-Datacenter"),
+	// 						Version: to.Ptr("latest"),
+	// 					},
+	// 					OSDisk: &armcompute.VirtualMachineScaleSetOSDisk{
+	// 						Name: to.Ptr("osDisk"),
+	// 						Caching: to.Ptr(armcompute.CachingTypesReadWrite),
+	// 						CreateOption: to.Ptr(armcompute.DiskCreateOptionTypesFromImage),
+	// 					},
 	// 				},
 	// 			},
 	// 		},
-	// 	},
-	// 	SKU: &armcompute.SKU{
-	// 		Name: to.Ptr("Standard_A1"),
-	// 		Capacity: to.Ptr[int64](3),
-	// 		Tier: to.Ptr("Standard"),
-	// 	},
-	// }
+	// 		SKU: &armcompute.SKU{
+	// 			Name: to.Ptr("Standard_A1"),
+	// 			Capacity: to.Ptr[int64](3),
+	// 			Tier: to.Ptr("Standard"),
+	// 		},
+	// 	}
 }

@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryServiceCredentialResource created on azure
+// for more information of creating DataFactoryServiceCredentialResource, please refer to the document of DataFactoryServiceCredentialResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryServiceCredentialResource
-DataFactoryServiceCredentialCollection collection = dataFactory.GetDataFactoryServiceCredentials();
+string credentialName = "exampleCredential";
+ResourceIdentifier dataFactoryServiceCredentialResourceId = DataFactoryServiceCredentialResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, credentialName);
+DataFactoryServiceCredentialResource dataFactoryServiceCredential = client.GetDataFactoryServiceCredentialResource(dataFactoryServiceCredentialResourceId);
 
 // invoke the operation
-string credentialName = "exampleCredential";
 DataFactoryServiceCredentialData data = new DataFactoryServiceCredentialData(new DataFactoryManagedIdentityCredentialProperties()
 {
     ResourceId = new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-12345678abc/resourcegroups/exampleResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/exampleUami"),
 });
-ArmOperation<DataFactoryServiceCredentialResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, credentialName, data);
+ArmOperation<DataFactoryServiceCredentialResource> lro = await dataFactoryServiceCredential.UpdateAsync(WaitUntil.Completed, data);
 DataFactoryServiceCredentialResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

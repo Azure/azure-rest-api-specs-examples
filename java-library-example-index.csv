@@ -4406,3 +4406,16 @@ id,name,language,tag,package,version,date_epoch,date
 4405,azure-mgmt-servicefabricmanagedclusters@2.0.0,python,azure-mgmt-servicefabricmanagedclusters_2.0.0,azure-mgmt-servicefabricmanagedclusters,2.0.0,1721893732,07/25/2024
 4406,azure-mgmt-network@26.0.0,python,azure-mgmt-network_26.0.0,azure-mgmt-network,26.0.0,1721892639,07/25/2024
 4407,azure-mgmt-compute@32.0.0,python,azure-mgmt-compute_32.0.0,azure-mgmt-compute,32.0.0,1721892596,07/25/2024
+4408,com.azure.resourcemanager:azure-resourcemanager:2.41.0,java,azure-resourcemanager_2.41.0,azure-resourcemanager,2.41.0,1721905609,07/25/2024
+4409,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.0.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.0.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.0.0,1721973679,07/26/2024
+4410,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.1,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.1,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.1,1721985287,07/26/2024
+4411,@azure/arm-redhatopenshift@1.0.0-beta.1,js,@azure/arm-redhatopenshift_1.0.0-beta.1,@azure/arm-redhatopenshift,1.0.0-beta.1,1721983852,07/26/2024
+4412,@azure/arm-hybridcompute@4.0.0-beta.3,js,@azure/arm-hybridcompute_4.0.0-beta.3,@azure/arm-hybridcompute,4.0.0-beta.3,1721983336,07/26/2024
+4413,@azure/arm-containerservice@21.0.0,js,@azure/arm-containerservice_21.0.0,@azure/arm-containerservice,21.0.0,1721983018,07/26/2024
+4414,@azure/arm-search@4.0.0-beta.1,js,@azure/arm-search_4.0.0-beta.1,@azure/arm-search,4.0.0-beta.1,1721981073,07/26/2024
+4415,@azure/arm-rediscache@8.1.0,js,@azure/arm-rediscache_8.1.0,@azure/arm-rediscache,8.1.0,1721976425,07/26/2024
+4416,@azure/arm-compute@22.0.0,js,@azure/arm-compute_22.0.0,@azure/arm-compute,22.0.0,1721976413,07/26/2024
+4417,@azure/arm-netapp@21.1.0,js,@azure/arm-netapp_21.1.0,@azure/arm-netapp,21.1.0,1721976407,07/26/2024
+4418,@azure/arm-qumulo@2.0.0,js,@azure/arm-qumulo_2.0.0,@azure/arm-qumulo,2.0.0,1721974046,07/26/2024
+4419,@azure/arm-dataprotection@2.1.0,js,@azure/arm-dataprotection_2.1.0,@azure/arm-dataprotection,2.1.0,1721963126,07/26/2024
+4420,"Azure.ResourceManager.DataFactory,1.2.0",dotnet,Azure.ResourceManager.DataFactory_1.2.0,Azure.ResourceManager.DataFactory,1.2.0,1721982852,07/26/2024

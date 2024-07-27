@@ -1,5 +1,7 @@
 
-/** Samples for PolicyAssignments ListForResource. */
+/**
+ * Samples for PolicyAssignments ListForResource.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2022-06-01/examples/
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: List all policy assignments that apply to a resource.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

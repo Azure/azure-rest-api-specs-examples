@@ -6,7 +6,9 @@ import com.azure.resourcemanager.resources.models.Selector;
 import com.azure.resourcemanager.resources.models.SelectorKind;
 import java.util.Arrays;
 
-/** Samples for PolicyExemptions Update. */
+/**
+ * Samples for PolicyExemptions Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: Update a policy exemption with resource selectors.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

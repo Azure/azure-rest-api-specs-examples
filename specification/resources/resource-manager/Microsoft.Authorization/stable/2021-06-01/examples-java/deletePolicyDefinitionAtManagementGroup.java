@@ -1,5 +1,7 @@
 
-/** Samples for PolicyDefinitions DeleteAtManagementGroup. */
+/**
+ * Samples for PolicyDefinitions DeleteAtManagementGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Delete a policy definition at management group level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

@@ -1,5 +1,7 @@
 
-/** Samples for PolicySetDefinitions ListByManagementGroup. */
+/**
+ * Samples for PolicySetDefinitions ListByManagementGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/resources/resource-manager/Microsoft.Authorization/stable/2021-06-01/examples/
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: List policy set definitions at management group level.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

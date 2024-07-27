@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DataCollectionRuleAssociations ListByDataCollectionEndpoint. */
+/**
+ * Samples for DataCollectionRuleAssociations ListByDataCollectionEndpoint.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,13 @@ public final class Main {
      */
     /**
      * Sample code: List associations for specified data collection endpoint.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         listAssociationsForSpecifiedDataCollectionEndpoint(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.diagnosticSettings().manager().serviceClient().getDataCollectionRuleAssociations()
-            .listByDataCollectionEndpoint("myResourceGroup", "myDataCollectionEndpointName", Context.NONE);
+            .listByDataCollectionEndpoint("myResourceGroup", "myDataCollectionEndpointName",
+                com.azure.core.util.Context.NONE);
     }
 }

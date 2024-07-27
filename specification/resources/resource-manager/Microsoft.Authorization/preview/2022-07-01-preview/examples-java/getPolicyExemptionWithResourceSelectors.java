@@ -1,5 +1,7 @@
 
-/** Samples for PolicyExemptions Get. */
+/**
+ * Samples for PolicyExemptions Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Retrieve a policy exemption with resource selectors.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

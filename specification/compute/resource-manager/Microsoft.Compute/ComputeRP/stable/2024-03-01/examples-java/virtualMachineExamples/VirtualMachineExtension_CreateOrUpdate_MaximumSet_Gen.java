@@ -48,23 +48,6 @@ public final class Main {
             com.azure.core.util.Context.NONE);
     }
 
-    /*
-     * x-ms-original-file:
-     * specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-03-01/examples/
-     * virtualMachineExamples/VirtualMachineExtension_CreateOrUpdate_MinimumSet_Gen.json
-     */
-    /**
-     * Sample code: VirtualMachineExtension_CreateOrUpdate_MinimumSet_Gen.
-     * 
-     * @param azure The entry point for accessing resource management APIs in Azure.
-     */
-    public static void
-        virtualMachineExtensionCreateOrUpdateMinimumSetGen(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.virtualMachines().manager().serviceClient().getVirtualMachineExtensions().createOrUpdate("rgcompute",
-            "myVM", "myVMExtension", new VirtualMachineExtensionInner().withLocation("westus"),
-            com.azure.core.util.Context.NONE);
-    }
-
     // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {

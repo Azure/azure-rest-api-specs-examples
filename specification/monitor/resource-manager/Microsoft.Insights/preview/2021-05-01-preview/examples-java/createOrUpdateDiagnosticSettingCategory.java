@@ -1,12 +1,13 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.DiagnosticSettingsResourceInner;
 import com.azure.resourcemanager.monitor.models.LogSettings;
 import com.azure.resourcemanager.monitor.models.MetricSettings;
 import com.azure.resourcemanager.monitor.models.RetentionPolicy;
 import java.util.Arrays;
 
-/** Samples for DiagnosticSettingsOperation CreateOrUpdate. */
+/**
+ * Samples for DiagnosticSettingsOperation CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Creates or Updates the diagnostic setting for category.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -26,9 +27,7 @@ public final class Main {
                 "mysetting",
                 new DiagnosticSettingsResourceInner().withStorageAccountId(
                     "/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/apptest/providers/Microsoft.Storage/storageAccounts/appteststorage1")
-                    .withEventHubAuthorizationRuleId(
-                        "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/microsoft.eventhub/namespaces/mynamespace/authorizationrules/myrule")
-                    .withEventHubName("myeventhub")
+                    .withEventHubAuthorizationRuleId("fakeTokenPlaceholder").withEventHubName("myeventhub")
                     .withMetrics(Arrays.asList(new MetricSettings().withCategory("WorkflowMetrics").withEnabled(true)
                         .withRetentionPolicy(new RetentionPolicy().withEnabled(false).withDays(0))))
                     .withLogs(Arrays.asList(new LogSettings().withCategory("WorkflowRuntime").withEnabled(true)
@@ -37,6 +36,6 @@ public final class Main {
                     .withMarketplacePartnerId(
                         "/subscriptions/abcdeabc-1234-1234-ab12-123a1234567a/resourceGroups/test-rg/providers/Microsoft.Datadog/monitors/dd1")
                     .withLogAnalyticsDestinationType("Dedicated"),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

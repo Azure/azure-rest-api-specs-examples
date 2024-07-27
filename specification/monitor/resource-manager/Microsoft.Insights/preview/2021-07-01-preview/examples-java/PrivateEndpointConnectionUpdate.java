@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.monitor.fluent.models.PrivateEndpointConnectionInner;
 import com.azure.resourcemanager.monitor.models.PrivateEndpointServiceConnectionStatus;
 import com.azure.resourcemanager.monitor.models.PrivateLinkServiceConnectionState;
 
-/** Samples for PrivateEndpointConnections CreateOrUpdate. */
+/**
+ * Samples for PrivateEndpointConnections CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Approve or reject a private endpoint connection with a given name.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -23,6 +24,6 @@ public final class Main {
             new PrivateEndpointConnectionInner().withPrivateLinkServiceConnectionState(
                 new PrivateLinkServiceConnectionState().withStatus(PrivateEndpointServiceConnectionStatus.APPROVED)
                     .withDescription("Approved by johndoe@contoso.com")),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

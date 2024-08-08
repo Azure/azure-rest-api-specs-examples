@@ -4427,3 +4427,4 @@ id,name,language,tag,package,version,date_epoch,date
 4426,"Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.4",dotnet,Azure.ResourceManager.HDInsight.Containers_1.0.0-beta.4,Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.4,1722495916,08/01/2024
 4427,azure-mgmt-appcontainers@3.1.0,python,azure-mgmt-appcontainers_3.1.0,azure-mgmt-appcontainers,3.1.0,1722930716,08/06/2024
 4428,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.0.0,java,azure-resourcemanager-appcontainers_1.0.0,azure-resourcemanager-appcontainers,1.0.0,1723025922,08/07/2024
+4429,@azure/arm-appcontainers@2.1.0,js,@azure/arm-appcontainers_2.1.0,@azure/arm-appcontainers,2.1.0,1723094949,08/08/2024

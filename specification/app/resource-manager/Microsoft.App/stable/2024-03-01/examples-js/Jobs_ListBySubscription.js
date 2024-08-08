@@ -1,0 +1,20 @@
+const { ContainerAppsAPIClient } = require("@azure/arm-appcontainers");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Get the Container Apps Jobs in a given subscription.
+ *
+ * @summary Get the Container Apps Jobs in a given subscription.
+ * x-ms-original-file: specification/app/resource-manager/Microsoft.App/stable/2024-03-01/examples/Jobs_ListBySubscription.json
+ */
+async function listContainerAppsJobsBySubscription() {
+  const subscriptionId =
+    process.env["APPCONTAINERS_SUBSCRIPTION_ID"] || "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
+  const credential = new DefaultAzureCredential();
+  const client = new ContainerAppsAPIClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.jobs.listBySubscription()) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

@@ -4431,3 +4431,6 @@ id,name,language,tag,package,version,date_epoch,date
 4430,com.azure.resourcemanager:azure-resourcemanager-healthdataaiservices:1.0.0-beta.1,java,azure-resourcemanager-healthdataaiservices_1.0.0-beta.1,azure-resourcemanager-healthdataaiservices,1.0.0-beta.1,1723622320,08/14/2024
 4431,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/healthdataaiservices/armhealthdataaiservices@v0.1.0,go,sdk/resourcemanager/healthdataaiservices/armhealthdataaiservices/v0.1.0,sdk/resourcemanager/healthdataaiservices/armhealthdataaiservices,v0.1.0,1723694285,08/15/2024
 4432,"Azure.ResourceManager.Hci,1.2.0",dotnet,Azure.ResourceManager.Hci_1.2.0,Azure.ResourceManager.Hci,1.2.0,1723646394,08/14/2024
+4433,"Azure.ResourceManager.ConnectedVMwarevSphere,1.1.0",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.1.0,Azure.ResourceManager.ConnectedVMwarevSphere,1.1.0,1723799253,08/16/2024
+4434,"Azure.ResourceManager.DevOpsInfrastructure,1.0.0-beta.1",dotnet,Azure.ResourceManager.DevOpsInfrastructure_1.0.0-beta.1,Azure.ResourceManager.DevOpsInfrastructure,1.0.0-beta.1,1723790590,08/16/2024
+4435,"Azure.ResourceManager.AppComplianceAutomation,1.0.0",dotnet,Azure.ResourceManager.AppComplianceAutomation_1.0.0,Azure.ResourceManager.AppComplianceAutomation,1.0.0,1723734843,08/15/2024

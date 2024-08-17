@@ -4434,3 +4434,4 @@ id,name,language,tag,package,version,date_epoch,date
 4433,"Azure.ResourceManager.ConnectedVMwarevSphere,1.1.0",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.1.0,Azure.ResourceManager.ConnectedVMwarevSphere,1.1.0,1723799253,08/16/2024
 4434,"Azure.ResourceManager.DevOpsInfrastructure,1.0.0-beta.1",dotnet,Azure.ResourceManager.DevOpsInfrastructure_1.0.0-beta.1,Azure.ResourceManager.DevOpsInfrastructure,1.0.0-beta.1,1723790590,08/16/2024
 4435,"Azure.ResourceManager.AppComplianceAutomation,1.0.0",dotnet,Azure.ResourceManager.AppComplianceAutomation_1.0.0,Azure.ResourceManager.AppComplianceAutomation,1.0.0,1723734843,08/15/2024
+4436,"Azure.ResourceManager.NetApp,1.7.0",dotnet,Azure.ResourceManager.NetApp_1.7.0,Azure.ResourceManager.NetApp,1.7.0,1723826755,08/16/2024

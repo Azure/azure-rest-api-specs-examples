@@ -16,16 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryPipelineResource created on azure
-// for more information of creating DataFactoryPipelineResource, please refer to the document of DataFactoryPipelineResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string pipelineName = "examplePipeline";
-ResourceIdentifier dataFactoryPipelineResourceId = DataFactoryPipelineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, pipelineName);
-DataFactoryPipelineResource dataFactoryPipeline = client.GetDataFactoryPipelineResource(dataFactoryPipelineResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryPipelineResource
+DataFactoryPipelineCollection collection = dataFactory.GetDataFactoryPipelines();
 
 // invoke the operation
+string pipelineName = "examplePipeline";
 DataFactoryPipelineData data = new DataFactoryPipelineData()
 {
     Description = "Example description",
@@ -73,7 +76,7 @@ DataFactoryPipelineData data = new DataFactoryPipelineData()
     },
     ElapsedTimeMetricDuration = BinaryData.FromString("\"0.00:10:00\""),
 };
-ArmOperation<DataFactoryPipelineResource> lro = await dataFactoryPipeline.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataFactoryPipelineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, pipelineName, data);
 DataFactoryPipelineResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

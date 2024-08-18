@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryManagedVirtualNetworkResource created on azure
+// for more information of creating DataFactoryManagedVirtualNetworkResource, please refer to the document of DataFactoryManagedVirtualNetworkResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryManagedVirtualNetworkResource
-DataFactoryManagedVirtualNetworkCollection collection = dataFactory.GetDataFactoryManagedVirtualNetworks();
+string managedVirtualNetworkName = "exampleManagedVirtualNetworkName";
+ResourceIdentifier dataFactoryManagedVirtualNetworkResourceId = DataFactoryManagedVirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, managedVirtualNetworkName);
+DataFactoryManagedVirtualNetworkResource dataFactoryManagedVirtualNetwork = client.GetDataFactoryManagedVirtualNetworkResource(dataFactoryManagedVirtualNetworkResourceId);
 
 // invoke the operation
-string managedVirtualNetworkName = "exampleManagedVirtualNetworkName";
 DataFactoryManagedVirtualNetworkData data = new DataFactoryManagedVirtualNetworkData(new DataFactoryManagedVirtualNetworkProperties());
-ArmOperation<DataFactoryManagedVirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, managedVirtualNetworkName, data);
+ArmOperation<DataFactoryManagedVirtualNetworkResource> lro = await dataFactoryManagedVirtualNetwork.UpdateAsync(WaitUntil.Completed, data);
 DataFactoryManagedVirtualNetworkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

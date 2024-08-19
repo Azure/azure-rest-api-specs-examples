@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/cf3574813e15bb33b3cb610f44edfcbebd8b1b23/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPackQueriesSearch.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ce13e8353a25125a41bc01705c0a7794dac32a7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPackQueriesSearch.json
 func ExampleQueriesClient_NewSearchPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -51,10 +51,10 @@ func ExampleQueriesClient_NewSearchPager() {
 		// 			Type: to.Ptr("microsoft.operationalinsights/queryPacks/queries"),
 		// 			ID: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4918/resourceGroups/my-resource-group/providers/microsoft.operationalinsights/queryPacks/my-querypack/queries/4337bb16-d6fe-4ff7-97cf-59df25941476"),
 		// 			SystemData: &armoperationalinsights.SystemData{
-		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.1075056Z"); return t}()),
+		// 				CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.107Z"); return t}()),
 		// 				CreatedBy: to.Ptr("string"),
 		// 				CreatedByType: to.Ptr(armoperationalinsights.IdentityTypeApplication),
-		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-04T02:03:01.1974346Z"); return t}()),
+		// 				LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-04T02:03:01.197Z"); return t}()),
 		// 				LastModifiedBy: to.Ptr("string"),
 		// 				LastModifiedByType: to.Ptr(armoperationalinsights.IdentityTypeApplication),
 		// 			},
@@ -74,8 +74,8 @@ func ExampleQueriesClient_NewSearchPager() {
 		// 							"my-other-label": []*string{
 		// 								to.Ptr("label2")},
 		// 							},
-		// 							TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:29:56.1030254Z"); return t}()),
-		// 							TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:29:56.1030254Z"); return t}()),
+		// 							TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:29:56.103Z"); return t}()),
+		// 							TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:29:56.103Z"); return t}()),
 		// 						},
 		// 					},
 		// 					{
@@ -83,10 +83,10 @@ func ExampleQueriesClient_NewSearchPager() {
 		// 						Type: to.Ptr("microsoft.operationalinsights/queryPacks/queries"),
 		// 						ID: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4918/resourceGroups/my-resource-group/providers/microsoft.operationalinsights/queryPacks/my-querypack/queries/bf015bf7-be70-49c2-8d52-4cce85c42ef1"),
 		// 						SystemData: &armoperationalinsights.SystemData{
-		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.1075056Z"); return t}()),
+		// 							CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.107Z"); return t}()),
 		// 							CreatedBy: to.Ptr("string"),
 		// 							CreatedByType: to.Ptr(armoperationalinsights.IdentityTypeApplication),
-		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-04T02:03:01.1974346Z"); return t}()),
+		// 							LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-04T02:03:01.197Z"); return t}()),
 		// 							LastModifiedBy: to.Ptr("string"),
 		// 							LastModifiedByType: to.Ptr(armoperationalinsights.IdentityTypeApplication),
 		// 						},
@@ -106,8 +106,8 @@ func ExampleQueriesClient_NewSearchPager() {
 		// 										"my-other-label": []*string{
 		// 											to.Ptr("label2")},
 		// 										},
-		// 										TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:26.7943629Z"); return t}()),
-		// 										TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:26.7943629Z"); return t}()),
+		// 										TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:26.794Z"); return t}()),
+		// 										TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:26.794Z"); return t}()),
 		// 									},
 		// 								},
 		// 								{
@@ -115,10 +115,10 @@ func ExampleQueriesClient_NewSearchPager() {
 		// 									Type: to.Ptr("microsoft.operationalinsights/queryPacks/queries"),
 		// 									ID: to.Ptr("/subscriptions/86dc51d3-92ed-4d7e-947a-775ea79b4918/resourceGroups/my-resource-group/providers/microsoft.operationalinsights/queryPacks/my-querypack/queries/8d91c6ca-9c56-49c6-b3ae-112a68871acd"),
 		// 									SystemData: &armoperationalinsights.SystemData{
-		// 										CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.1075056Z"); return t}()),
+		// 										CreatedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-03T01:01:01.107Z"); return t}()),
 		// 										CreatedBy: to.Ptr("string"),
 		// 										CreatedByType: to.Ptr(armoperationalinsights.IdentityTypeApplication),
-		// 										LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-04T02:03:01.1974346Z"); return t}()),
+		// 										LastModifiedAt: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2020-02-04T02:03:01.197Z"); return t}()),
 		// 										LastModifiedBy: to.Ptr("string"),
 		// 										LastModifiedByType: to.Ptr(armoperationalinsights.IdentityTypeApplication),
 		// 									},
@@ -139,8 +139,8 @@ func ExampleQueriesClient_NewSearchPager() {
 		// 													"my-other-label": []*string{
 		// 														to.Ptr("label2")},
 		// 													},
-		// 													TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:29.4505584Z"); return t}()),
-		// 													TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:29.4505584Z"); return t}()),
+		// 													TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:29.450Z"); return t}()),
+		// 													TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-15T10:30:29.450Z"); return t}()),
 		// 												},
 		// 										}},
 		// 									}

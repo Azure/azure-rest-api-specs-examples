@@ -9,8 +9,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ce13e8353a25125a41bc01705c0a7794dac32a7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurge.json
-func ExampleWorkspacePurgeClient_Purge_workspacePurge() {
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ce13e8353a25125a41bc01705c0a7794dac32a7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/WorkspacesPurgeResourceId.json
+func ExampleWorkspacePurgeClient_Purge_workspacePurgeResourceId() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
 		log.Fatalf("failed to obtain a credential: %v", err)
@@ -23,9 +23,9 @@ func ExampleWorkspacePurgeClient_Purge_workspacePurge() {
 	_, err = clientFactory.NewWorkspacePurgeClient().Purge(ctx, "OIAutoRest5123", "aztest5048", armoperationalinsights.WorkspacePurgeBody{
 		Filters: []*armoperationalinsights.WorkspacePurgeBodyFilters{
 			{
-				Column:   to.Ptr("TimeGenerated"),
-				Operator: to.Ptr(">"),
-				Value:    "2017-09-01T00:00:00",
+				Column:   to.Ptr("_ResourceId"),
+				Operator: to.Ptr("=="),
+				Value:    "/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/SomeResourceGroup/providers/microsoft.insights/components/AppInsightResource",
 			}},
 		Table: to.Ptr("Heartbeat"),
 	}, nil)

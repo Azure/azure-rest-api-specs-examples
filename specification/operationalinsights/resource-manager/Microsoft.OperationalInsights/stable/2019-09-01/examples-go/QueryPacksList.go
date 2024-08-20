@@ -8,7 +8,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/operationalinsights/armoperationalinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/cf3574813e15bb33b3cb610f44edfcbebd8b1b23/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPacksList.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/4ce13e8353a25125a41bc01705c0a7794dac32a7/specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2019-09-01/examples/QueryPacksList.json
 func ExampleQueryPacksClient_NewListPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -42,8 +42,8 @@ func ExampleQueryPacksClient_NewListPager() {
 		// 			Properties: &armoperationalinsights.LogAnalyticsQueryPackProperties{
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				QueryPackID: to.Ptr("d1c8fc00-2b68-441e-8f9b-ded8748dc6aa"),
-		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-04T12:37:56.8543652Z"); return t}()),
-		// 				TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-04T12:37:56.8543652Z"); return t}()),
+		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-04T12:37:56.854Z"); return t}()),
+		// 				TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-04T12:37:56.854Z"); return t}()),
 		// 			},
 		// 		},
 		// 		{
@@ -56,8 +56,8 @@ func ExampleQueryPacksClient_NewListPager() {
 		// 			Properties: &armoperationalinsights.LogAnalyticsQueryPackProperties{
 		// 				ProvisioningState: to.Ptr("Succeeded"),
 		// 				QueryPackID: to.Ptr("aac8fc00-2b68-441e-8f9b-ded8748dc635"),
-		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-04T12:37:56.8543652Z"); return t}()),
-		// 				TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-04T12:37:56.8543652Z"); return t}()),
+		// 				TimeCreated: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-06-04T12:37:56.854Z"); return t}()),
+		// 				TimeModified: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2019-08-04T12:37:56.854Z"); return t}()),
 		// 			},
 		// 	}},
 		// }

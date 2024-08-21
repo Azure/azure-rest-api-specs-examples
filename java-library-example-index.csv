@@ -4454,3 +4454,4 @@ id,name,language,tag,package,version,date_epoch,date
 4453,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.1.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.1.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v6.1.0-beta.1,1724208341,08/21/2024
 4454,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6@v6.1.0,go,sdk/resourcemanager/compute/armcompute/v6.1.0,sdk/resourcemanager/compute/armcompute,v6.1.0,1724208325,08/21/2024
 4455,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking@v1.1.0-beta.1,go,sdk/resourcemanager/servicenetworking/armservicenetworking/v1.1.0-beta.1,sdk/resourcemanager/servicenetworking/armservicenetworking,v1.1.0-beta.1,1724207782,08/21/2024
+4456,azure-mgmt-hdinsight@9.0.0b3,python,azure-mgmt-hdinsight_9.0.0b3,azure-mgmt-hdinsight,9.0.0b3,1724231610,08/21/2024

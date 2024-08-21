@@ -1,0 +1,48 @@
+package armservicenetworking_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/aa23ddc02b2b1c5a34c56a49d83b77c0a1aaa614/specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/preview/2024-05-01-preview/examples/OperationsList.json
+func ExampleOperationsClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armservicenetworking.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewOperationsClient().NewListPager(nil)
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.OperationListResult = armservicenetworking.OperationListResult{
+		// 	Value: []*armservicenetworking.Operation{
+		// 		{
+		// 			Name: to.Ptr("Microsoft.ServiceNetworking/trafficControllers/read"),
+		// 			Display: &armservicenetworking.OperationDisplay{
+		// 				Description: to.Ptr("Traffic Controller is a L7 Load Balancing solution for a Multi Cluster setup"),
+		// 				Operation: to.Ptr("Get Traffic Controller configuration"),
+		// 				Provider: to.Ptr("Microsoft Service Networking"),
+		// 				Resource: to.Ptr("Traffic Controller"),
+		// 			},
+		// 			IsDataAction: to.Ptr(false),
+		// 			Origin: to.Ptr(armservicenetworking.OriginUserSystem),
+		// 	}},
+		// }
+	}
+}

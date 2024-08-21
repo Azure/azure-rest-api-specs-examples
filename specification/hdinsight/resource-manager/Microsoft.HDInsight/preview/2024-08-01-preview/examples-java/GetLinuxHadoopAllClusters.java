@@ -1,0 +1,19 @@
+
+/**
+ * Samples for Clusters List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/
+     * GetLinuxHadoopAllClusters.json
+     */
+    /**
+     * Sample code: Get All Hadoop on Linux clusters.
+     * 
+     * @param manager Entry point to HDInsightManager.
+     */
+    public static void getAllHadoopOnLinuxClusters(com.azure.resourcemanager.hdinsight.HDInsightManager manager) {
+        manager.clusters().list(com.azure.core.util.Context.NONE);
+    }
+}

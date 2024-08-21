@@ -6,10 +6,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/de1f3772629b6f4d3ac01548a5f6d719bfb97c9e/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/CreateOrUpdateFunctionAppFlexConsumptionWithDetails.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/21c2852d62ccc3abe9cc3800c989c6826f8363dc/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/CreateOrUpdateFunctionAppFlexConsumptionWithDetails.json
 func ExampleWebAppsClient_BeginCreateOrUpdate_createOrUpdateFlexConsumptionFunctionAppWithDetails() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -43,13 +43,13 @@ func ExampleWebAppsClient_BeginCreateOrUpdate_createOrUpdateFlexConsumptionFunct
 					AlwaysReady: []*armappservice.FunctionsAlwaysReadyConfig{
 						{
 							Name:          to.Ptr("http"),
-							InstanceCount: to.Ptr[float32](2),
+							InstanceCount: to.Ptr[int32](2),
 						}},
-					InstanceMemoryMB:     to.Ptr[float32](2048),
-					MaximumInstanceCount: to.Ptr[float32](100),
+					InstanceMemoryMB:     to.Ptr[int32](2048),
+					MaximumInstanceCount: to.Ptr[int32](100),
 					Triggers: &armappservice.FunctionsScaleAndConcurrencyTriggers{
 						HTTP: &armappservice.FunctionsScaleAndConcurrencyTriggersHTTP{
-							PerInstanceConcurrency: to.Ptr[float32](16),
+							PerInstanceConcurrency: to.Ptr[int32](16),
 						},
 					},
 				},
@@ -112,13 +112,13 @@ func ExampleWebAppsClient_BeginCreateOrUpdate_createOrUpdateFlexConsumptionFunct
 	// 					AlwaysReady: []*armappservice.FunctionsAlwaysReadyConfig{
 	// 						{
 	// 							Name: to.Ptr("http"),
-	// 							InstanceCount: to.Ptr[float32](2),
+	// 							InstanceCount: to.Ptr[int32](2),
 	// 					}},
-	// 					InstanceMemoryMB: to.Ptr[float32](2048),
-	// 					MaximumInstanceCount: to.Ptr[float32](100),
+	// 					InstanceMemoryMB: to.Ptr[int32](2048),
+	// 					MaximumInstanceCount: to.Ptr[int32](100),
 	// 					Triggers: &armappservice.FunctionsScaleAndConcurrencyTriggers{
 	// 						HTTP: &armappservice.FunctionsScaleAndConcurrencyTriggersHTTP{
-	// 							PerInstanceConcurrency: to.Ptr[float32](16),
+	// 							PerInstanceConcurrency: to.Ptr[int32](16),
 	// 						},
 	// 					},
 	// 				},
@@ -139,7 +139,7 @@ func ExampleWebAppsClient_BeginCreateOrUpdate_createOrUpdateFlexConsumptionFunct
 	// 				HTTPSOnly: to.Ptr(true),
 	// 				HyperV: to.Ptr(false),
 	// 				IsXenon: to.Ptr(false),
-	// 				LastModifiedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-01-08T16:24:54.800Z"); return t}()),
+	// 				LastModifiedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2024-01-09T00:24:54.800Z"); return t}()),
 	// 				OutboundIPAddresses: to.Ptr("70.37.102.201,20.225.43.144"),
 	// 				PossibleOutboundIPAddresses: to.Ptr("70.37.102.201,20.225.43.144,20.225.184.122,20.225.184.188"),
 	// 				PublicNetworkAccess: to.Ptr("Enabled"),

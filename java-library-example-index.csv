@@ -4442,3 +4442,4 @@ id,name,language,tag,package,version,date_epoch,date
 4441,azure-mgmt-datafactory@9.0.0,python,azure-mgmt-datafactory_9.0.0,azure-mgmt-datafactory,9.0.0,1724123006,08/20/2024
 4442,azure-mgmt-netapp@13.2.0,python,azure-mgmt-netapp_13.2.0,azure-mgmt-netapp,13.2.0,1724121860,08/20/2024
 4443,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0-beta.30,java,azure-resourcemanager-datafactory_1.0.0-beta.30,azure-resourcemanager-datafactory,1.0.0-beta.30,1724234228,08/21/2024
+4444,com.azure.resourcemanager:azure-resourcemanager-hdinsight:1.1.0-beta.2,java,azure-resourcemanager-hdinsight_1.1.0-beta.2,azure-resourcemanager-hdinsight,1.1.0-beta.2,1724210411,08/21/2024

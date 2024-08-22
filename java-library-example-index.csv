@@ -4456,3 +4456,4 @@ id,name,language,tag,package,version,date_epoch,date
 4455,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking@v1.1.0-beta.1,go,sdk/resourcemanager/servicenetworking/armservicenetworking/v1.1.0-beta.1,sdk/resourcemanager/servicenetworking/armservicenetworking,v1.1.0-beta.1,1724207782,08/21/2024
 4456,azure-mgmt-hdinsight@9.0.0b3,python,azure-mgmt-hdinsight_9.0.0b3,azure-mgmt-hdinsight,9.0.0b3,1724231610,08/21/2024
 4457,com.azure.resourcemanager:azure-resourcemanager-machinelearning:1.1.0,java,azure-resourcemanager-machinelearning_1.1.0,azure-resourcemanager-machinelearning,1.1.0,1724322767,08/22/2024
+4458,com.azure.resourcemanager:azure-resourcemanager-redhatopenshift:1.0.0-beta.1,java,azure-resourcemanager-redhatopenshift_1.0.0-beta.1,azure-resourcemanager-redhatopenshift,1.0.0-beta.1,1724287040,08/22/2024

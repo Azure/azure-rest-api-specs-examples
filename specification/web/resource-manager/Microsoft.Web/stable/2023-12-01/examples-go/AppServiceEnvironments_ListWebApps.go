@@ -5,10 +5,10 @@ import (
 	"log"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v3"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appservice/armappservice/v4"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/de1f3772629b6f4d3ac01548a5f6d719bfb97c9e/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/AppServiceEnvironments_ListWebApps.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/21c2852d62ccc3abe9cc3800c989c6826f8363dc/specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/AppServiceEnvironments_ListWebApps.json
 func ExampleEnvironmentsClient_NewListWebAppsPager() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -73,7 +73,7 @@ func ExampleEnvironmentsClient_NewListWebAppsPager() {
 		// 						HyperV: to.Ptr(false),
 		// 						IsXenon: to.Ptr(false),
 		// 						KeyVaultReferenceIdentity: to.Ptr("SystemAssigned"),
-		// 						LastModifiedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-04-08T12:41:04.123Z"); return t}()),
+		// 						LastModifiedTimeUTC: to.Ptr(func() time.Time { t, _ := time.Parse(time.RFC3339Nano, "2022-04-08T20:41:04.123Z"); return t}()),
 		// 						OutboundIPAddresses: to.Ptr("20.112.141.120"),
 		// 						PossibleOutboundIPAddresses: to.Ptr("20.112.141.120"),
 		// 						RedundancyMode: to.Ptr(armappservice.RedundancyModeNone),

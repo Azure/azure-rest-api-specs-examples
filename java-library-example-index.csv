@@ -4461,3 +4461,4 @@ id,name,language,tag,package,version,date_epoch,date
 4460,@azure/arm-containerservice@21.1.0-beta.1,js,@azure/arm-containerservice_21.1.0-beta.1,@azure/arm-containerservice,21.1.0-beta.1,1724395352,08/23/2024
 4461,@azure/arm-compute@22.1.0,js,@azure/arm-compute_22.1.0,@azure/arm-compute,22.1.0,1724395116,08/23/2024
 4462,@azure/arm-netapp@21.2.0,js,@azure/arm-netapp_21.2.0,@azure/arm-netapp,21.2.0,1724394636,08/23/2024
+4463,@azure/arm-machinelearning@3.0.0,js,@azure/arm-machinelearning_3.0.0,@azure/arm-machinelearning,3.0.0,1724394361,08/23/2024

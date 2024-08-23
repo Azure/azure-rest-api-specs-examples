@@ -4464,3 +4464,4 @@ id,name,language,tag,package,version,date_epoch,date
 4463,@azure/arm-machinelearning@3.0.0,js,@azure/arm-machinelearning_3.0.0,@azure/arm-machinelearning,3.0.0,1724394361,08/23/2024
 4464,@azure/arm-hdinsightcontainers@1.0.0-beta.3,js,@azure/arm-hdinsightcontainers_1.0.0-beta.3,@azure/arm-hdinsightcontainers,1.0.0-beta.3,1724393059,08/23/2024
 4465,@azure/arm-azurestackhci@4.0.0-beta.2,js,@azure/arm-azurestackhci_4.0.0-beta.2,@azure/arm-azurestackhci,4.0.0-beta.2,1724392957,08/23/2024
+4466,azure-mgmt-compute@33.0.0,python,azure-mgmt-compute_33.0.0,azure-mgmt-compute,33.0.0,1724402554,08/23/2024

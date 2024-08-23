@@ -4460,3 +4460,4 @@ id,name,language,tag,package,version,date_epoch,date
 4459,com.azure.resourcemanager:azure-resourcemanager:2.42.0,java,azure-resourcemanager_2.42.0,azure-resourcemanager,2.42.0,1724403226,08/23/2024
 4460,@azure/arm-containerservice@21.1.0-beta.1,js,@azure/arm-containerservice_21.1.0-beta.1,@azure/arm-containerservice,21.1.0-beta.1,1724395352,08/23/2024
 4461,@azure/arm-compute@22.1.0,js,@azure/arm-compute_22.1.0,@azure/arm-compute,22.1.0,1724395116,08/23/2024
+4462,@azure/arm-netapp@21.2.0,js,@azure/arm-netapp_21.2.0,@azure/arm-netapp,21.2.0,1724394636,08/23/2024

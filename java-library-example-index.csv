@@ -4458,3 +4458,4 @@ id,name,language,tag,package,version,date_epoch,date
 4457,com.azure.resourcemanager:azure-resourcemanager-machinelearning:1.1.0,java,azure-resourcemanager-machinelearning_1.1.0,azure-resourcemanager-machinelearning,1.1.0,1724322767,08/22/2024
 4458,com.azure.resourcemanager:azure-resourcemanager-redhatopenshift:1.0.0-beta.1,java,azure-resourcemanager-redhatopenshift_1.0.0-beta.1,azure-resourcemanager-redhatopenshift,1.0.0-beta.1,1724287040,08/22/2024
 4459,com.azure.resourcemanager:azure-resourcemanager:2.42.0,java,azure-resourcemanager_2.42.0,azure-resourcemanager,2.42.0,1724403226,08/23/2024
+4460,@azure/arm-containerservice@21.1.0-beta.1,js,@azure/arm-containerservice_21.1.0-beta.1,@azure/arm-containerservice,21.1.0-beta.1,1724395352,08/23/2024

@@ -1,5 +1,7 @@
 
-/** Samples for ContainerGroups Restart. */
+/**
+ * Samples for ContainerGroups Restart.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerRestart.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerRestart(com.azure.resourcemanager.AzureResourceManager azure) {

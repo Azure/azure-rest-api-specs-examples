@@ -1,5 +1,7 @@
 
-/** Samples for Vaults ListByResourceGroup. */
+/**
+ * Samples for Vaults ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List vaults in the specified resource group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listVaultsInTheSpecifiedResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {

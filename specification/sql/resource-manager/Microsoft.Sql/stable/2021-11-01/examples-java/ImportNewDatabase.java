@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ImportNewDatabaseDefinition;
 import com.azure.resourcemanager.sql.models.StorageKeyType;
 
-/** Samples for Servers ImportDatabase. */
+/**
+ * Samples for Servers ImportDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Imports to a new database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void importsToANewDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -20,6 +21,6 @@ public final class Main {
                 .withStorageKeyType(StorageKeyType.STORAGE_ACCESS_KEY).withStorageKey("fakeTokenPlaceholder")
                 .withStorageUri("https://test.blob.core.windows.net/test.bacpac").withAdministratorLogin("login")
                 .withAdministratorLoginPassword("fakeTokenPlaceholder").withAuthenticationType("Sql"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

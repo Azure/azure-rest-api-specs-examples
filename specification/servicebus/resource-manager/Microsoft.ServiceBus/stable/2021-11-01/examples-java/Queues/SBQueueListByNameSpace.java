@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Queues ListByNamespace. */
+/**
+ * Samples for Queues ListByNamespace.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: QueueListByNameSpace.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void queueListByNameSpace(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getQueues().listByNamespace("ArunMonocle",
-            "sdk-Namespace-3174", null, null, Context.NONE);
+            "sdk-Namespace-3174", null, null, com.azure.core.util.Context.NONE);
     }
 }

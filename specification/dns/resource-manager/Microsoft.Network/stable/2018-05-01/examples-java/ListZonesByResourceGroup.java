@@ -1,5 +1,7 @@
 
-/** Samples for Zones ListByResourceGroup. */
+/**
+ * Samples for Zones ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: List zones by resource group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listZonesByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DeletedServers Get. */
+/**
+ * Samples for DeletedServers Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get deleted server.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getDeletedServer(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDeletedServers().getWithResponse("japaneast",
-            "sqlcrudtest-d-1414", Context.NONE);
+            "sqlcrudtest-d-1414", com.azure.core.util.Context.NONE);
     }
 }

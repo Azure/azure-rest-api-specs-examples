@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Namespaces GetByResourceGroup. */
+/**
+ * Samples for Namespaces GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceGet(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getNamespaces()
-            .getByResourceGroupWithResponse("ArunMonocle", "sdk-Namespace-2924", Context.NONE);
+            .getByResourceGroupWithResponse("ArunMonocle", "sdk-Namespace-2924", com.azure.core.util.Context.NONE);
     }
 }

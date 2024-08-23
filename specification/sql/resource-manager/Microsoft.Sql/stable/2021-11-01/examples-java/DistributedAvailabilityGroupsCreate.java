@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DistributedAvailabilityGroupInner;
 
-/** Samples for DistributedAvailabilityGroups CreateOrUpdate. */
+/**
+ * Samples for DistributedAvailabilityGroups CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create a distributed availability group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createADistributedAvailabilityGroup(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -19,6 +20,6 @@ public final class Main {
             "testcl", "dag",
             new DistributedAvailabilityGroupInner().withTargetDatabase("testdb").withSourceEndpoint("TCP://SERVER:7022")
                 .withPrimaryAvailabilityGroupName("BoxLocalAg1").withSecondaryAvailabilityGroupName("testcl"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

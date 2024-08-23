@@ -1,5 +1,7 @@
 
-/** Samples for HeatMap Get. */
+/**
+ * Samples for HeatMap Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: HeatMap-GET-With-Null-Values.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void heatMapGETWithNullValues(com.azure.resourcemanager.AzureResourceManager azure) {

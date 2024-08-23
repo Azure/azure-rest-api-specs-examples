@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.search.models.CheckNameAvailabilityInput;
 
-/** Samples for Services CheckNameAvailability. */
+/**
+ * Samples for Services CheckNameAvailability.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchCheckNameAvailability.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchCheckNameAvailability(com.azure.resourcemanager.AzureResourceManager azure) {

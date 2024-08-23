@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DistributedAvailabilityGroups Get. */
+/**
+ * Samples for DistributedAvailabilityGroups Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets the distributed availability group info.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsTheDistributedAvailabilityGroupInfo(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDistributedAvailabilityGroups().getWithResponse("testrg",
-            "testcl", "dag", Context.NONE);
+            "testcl", "dag", com.azure.core.util.Context.NONE);
     }
 }

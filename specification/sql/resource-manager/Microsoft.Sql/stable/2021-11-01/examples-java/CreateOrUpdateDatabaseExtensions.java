@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.DatabaseExtensions;
 import com.azure.resourcemanager.sql.models.OperationMode;
 import com.azure.resourcemanager.sql.models.StorageKeyType;
 
-/** Samples for DatabaseExtensionsOperation CreateOrUpdate. */
+/**
+ * Samples for DatabaseExtensionsOperation CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or Update database extensions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateDatabaseExtensions(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -22,6 +23,6 @@ public final class Main {
             new DatabaseExtensions().withOperationMode(OperationMode.POLYBASE_IMPORT)
                 .withStorageKeyType(StorageKeyType.STORAGE_ACCESS_KEY).withStorageKey("fakeTokenPlaceholder")
                 .withStorageUri("https://teststorage.blob.core.windows.net/testcontainer/Manifest.xml"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

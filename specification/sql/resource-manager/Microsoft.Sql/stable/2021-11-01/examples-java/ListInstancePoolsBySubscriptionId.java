@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for InstancePools List. */
+/**
+ * Samples for InstancePools List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,10 +10,10 @@ public final class Main {
      */
     /**
      * Sample code: List instance pools in the subscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listInstancePoolsInTheSubscription(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getInstancePools().list(Context.NONE);
+        azure.sqlServers().manager().serviceClient().getInstancePools().list(com.azure.core.util.Context.NONE);
     }
 }

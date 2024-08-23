@@ -6,7 +6,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for RecordSets CreateOrUpdate. */
+/**
+ * Samples for RecordSets CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Create TXT recordset.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createTXTRecordset(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -25,6 +27,7 @@ public final class Main {
             null, null, com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

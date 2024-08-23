@@ -1,5 +1,7 @@
 
-/** Samples for ContainerGroups Stop. */
+/**
+ * Samples for ContainerGroups Stop.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerStop.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerStop(com.azure.resourcemanager.AzureResourceManager azure) {

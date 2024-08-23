@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ServerBlobAuditingPolicyInner;
 import com.azure.resourcemanager.sql.models.BlobAuditingPolicyState;
 
-/** Samples for ServerBlobAuditingPolicies CreateOrUpdate. */
+/**
+ * Samples for ServerBlobAuditingPolicies CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Update a server's blob auditing policy with minimal parameters.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -21,6 +22,6 @@ public final class Main {
             new ServerBlobAuditingPolicyInner().withState(BlobAuditingPolicyState.ENABLED)
                 .withStorageEndpoint("https://mystorage.blob.core.windows.net")
                 .withStorageAccountAccessKey("fakeTokenPlaceholder"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

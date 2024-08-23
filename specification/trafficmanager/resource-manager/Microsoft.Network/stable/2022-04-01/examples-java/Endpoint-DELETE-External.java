@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.trafficmanager.models.EndpointTypes;
 
-/** Samples for Endpoints Delete. */
+/**
+ * Samples for Endpoints Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Endpoint-DELETE-External.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void endpointDELETEExternal(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,12 +1,13 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceInner;
 import com.azure.resourcemanager.sql.models.ManagedInstanceLicenseType;
 import com.azure.resourcemanager.sql.models.Sku;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ManagedInstances CreateOrUpdate. */
+/**
+ * Samples for ManagedInstances CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create managed instance with minimal properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -26,9 +27,10 @@ public final class Main {
                 .withSubnetId(
                     "/subscriptions/20D7082A-0FC7-4468-82BD-542694D5042B/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1")
                 .withLicenseType(ManagedInstanceLicenseType.LICENSE_INCLUDED).withVCores(8).withStorageSizeInGB(1024),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

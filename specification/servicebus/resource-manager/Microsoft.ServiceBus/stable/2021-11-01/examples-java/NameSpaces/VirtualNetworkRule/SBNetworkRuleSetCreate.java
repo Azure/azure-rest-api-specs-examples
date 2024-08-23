@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.fluent.models.NetworkRuleSetInner;
 import com.azure.resourcemanager.servicebus.models.DefaultAction;
 import com.azure.resourcemanager.servicebus.models.NWRuleSetIpRules;
@@ -8,7 +7,9 @@ import com.azure.resourcemanager.servicebus.models.NetworkRuleIpAction;
 import com.azure.resourcemanager.servicebus.models.Subnet;
 import java.util.Arrays;
 
-/** Samples for Namespaces CreateOrUpdateNetworkRuleSet. */
+/**
+ * Samples for Namespaces CreateOrUpdateNetworkRuleSet.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -17,7 +18,7 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceNetworkRuleSetCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceNetworkRuleSetCreate(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -39,6 +40,6 @@ public final class Main {
                         new NWRuleSetIpRules().withIpMask("1.1.1.3").withAction(NetworkRuleIpAction.ALLOW),
                         new NWRuleSetIpRules().withIpMask("1.1.1.4").withAction(NetworkRuleIpAction.ALLOW),
                         new NWRuleSetIpRules().withIpMask("1.1.1.5").withAction(NetworkRuleIpAction.ALLOW))),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

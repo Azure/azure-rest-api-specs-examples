@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DatabaseInner;
 import com.azure.resourcemanager.sql.models.CreateMode;
 import com.azure.resourcemanager.sql.models.Sku;
 
-/** Samples for Databases CreateOrUpdate. */
+/**
+ * Samples for Databases CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Creates a database with default mode.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createsADatabaseWithDefaultMode(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -21,6 +22,6 @@ public final class Main {
             new DatabaseInner().withLocation("southeastasia").withSku(new Sku().withName("S0").withTier("Standard"))
                 .withCreateMode(CreateMode.DEFAULT).withCollation("SQL_Latin1_General_CP1_CI_AS")
                 .withMaxSizeBytes(1073741824L),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

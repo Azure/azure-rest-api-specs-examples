@@ -7,7 +7,9 @@ import com.azure.resourcemanager.search.models.SkuName;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Services CreateOrUpdate. */
+/**
+ * Samples for Services CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchCreateOrUpdateServiceToAllowAccessFromPrivateEndpoints.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchCreateOrUpdateServiceToAllowAccessFromPrivateEndpoints(

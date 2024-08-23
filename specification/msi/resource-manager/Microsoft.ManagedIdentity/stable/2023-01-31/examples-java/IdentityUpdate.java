@@ -3,7 +3,9 @@ import com.azure.resourcemanager.msi.models.IdentityUpdate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for UserAssignedIdentities Update. */
+/**
+ * Samples for UserAssignedIdentities Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: IdentityUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void identityUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

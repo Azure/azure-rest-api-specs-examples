@@ -6,7 +6,9 @@ import com.azure.resourcemanager.search.models.SearchServiceUpdate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Services Update. */
+/**
+ * Samples for Services Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchUpdateServiceAuthOptions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchUpdateServiceAuthOptions(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Servers ListByResourceGroup. */
+/**
+ * Samples for Servers ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List servers by resource group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listServersByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServers().listByResourceGroup("sqlcrudtest-7398", null,
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

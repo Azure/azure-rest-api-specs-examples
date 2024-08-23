@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DatabaseInner;
 import com.azure.resourcemanager.sql.models.CreateMode;
 import java.time.OffsetDateTime;
 
-/** Samples for Databases CreateOrUpdate. */
+/**
+ * Samples for Databases CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +15,7 @@ public final class Main {
     /**
      * Sample code: Creates a data warehouse database as a cross-subscription restore from a restore point of an
      * existing database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createsADataWarehouseDatabaseAsACrossSubscriptionRestoreFromARestorePointOfAnExistingDatabase(
@@ -24,6 +25,6 @@ public final class Main {
             new DatabaseInner().withLocation("southeastasia").withCreateMode(CreateMode.POINT_IN_TIME_RESTORE)
                 .withRestorePointInTime(OffsetDateTime.parse("2022-01-22T05:35:31.503Z")).withSourceResourceId(
                     "/subscriptions/55555555-6666-7777-8888-999999999999/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/srcsvr/databases/srcdw"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

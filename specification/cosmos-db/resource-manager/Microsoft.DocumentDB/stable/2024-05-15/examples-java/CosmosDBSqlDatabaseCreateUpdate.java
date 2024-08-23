@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBSqlDatabaseCreateUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBSqlDatabaseCreateUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

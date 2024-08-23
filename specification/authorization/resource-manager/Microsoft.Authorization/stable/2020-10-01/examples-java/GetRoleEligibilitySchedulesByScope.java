@@ -1,5 +1,7 @@
 
-/** Samples for RoleEligibilitySchedules ListForScope. */
+/**
+ * Samples for RoleEligibilitySchedules ListForScope.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: GetRoleEligibilitySchedulesByScope.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getRoleEligibilitySchedulesByScope(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,5 +1,7 @@
 
-/** Samples for RoleAssignmentScheduleRequests Cancel. */
+/**
+ * Samples for RoleAssignmentScheduleRequests Cancel.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: CancelRoleAssignmentScheduleRequestByName.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cancelRoleAssignmentScheduleRequestByName(com.azure.resourcemanager.AzureResourceManager azure) {

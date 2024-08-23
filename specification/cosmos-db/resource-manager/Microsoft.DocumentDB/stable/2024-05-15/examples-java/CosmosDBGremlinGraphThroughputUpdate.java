@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBGremlinGraphThroughputUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBGremlinGraphThroughputUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

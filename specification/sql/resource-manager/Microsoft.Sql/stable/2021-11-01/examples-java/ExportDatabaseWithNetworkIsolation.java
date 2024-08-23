@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ExportDatabaseDefinition;
 import com.azure.resourcemanager.sql.models.NetworkIsolationSettings;
 import com.azure.resourcemanager.sql.models.StorageKeyType;
 
-/** Samples for Databases Export. */
+/**
+ * Samples for Databases Export.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Exports a database, using private link to communicate with SQL server and storage account.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void exportsADatabaseUsingPrivateLinkToCommunicateWithSQLServerAndStorageAccount(
@@ -27,6 +28,6 @@ public final class Main {
                     "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Storage/storageAccounts/test-privatelink")
                     .withSqlServerResourceId(
                         "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/testsvr")),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

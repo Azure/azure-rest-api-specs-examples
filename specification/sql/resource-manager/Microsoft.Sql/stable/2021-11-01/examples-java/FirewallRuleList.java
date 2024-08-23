@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for FirewallRules ListByServer. */
+/**
+ * Samples for FirewallRules ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List Firewall Rules.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listFirewallRules(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getFirewallRules().listByServer("firewallrulecrudtest-12",
-            "firewallrulecrudtest-6285", Context.NONE);
+            "firewallrulecrudtest-6285", com.azure.core.util.Context.NONE);
     }
 }

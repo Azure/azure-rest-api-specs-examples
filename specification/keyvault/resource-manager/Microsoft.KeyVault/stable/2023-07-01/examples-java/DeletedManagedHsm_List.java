@@ -1,5 +1,7 @@
 
-/** Samples for ManagedHsms ListDeleted. */
+/**
+ * Samples for ManagedHsms ListDeleted.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: List deleted managed HSMs in the specified subscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

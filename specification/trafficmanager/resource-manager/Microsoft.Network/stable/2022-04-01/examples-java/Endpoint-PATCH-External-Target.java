@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.trafficmanager.fluent.models.EndpointInner;
 import com.azure.resourcemanager.trafficmanager.models.EndpointTypes;
 
-/** Samples for Endpoints Update. */
+/**
+ * Samples for Endpoints Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Endpoint-PATCH-External-Target.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void endpointPATCHExternalTarget(com.azure.resourcemanager.AzureResourceManager azure) {

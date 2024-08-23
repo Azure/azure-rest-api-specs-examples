@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for FirewallRules Get. */
+/**
+ * Samples for FirewallRules Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get Firewall Rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getFirewallRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getFirewallRules().getWithResponse("firewallrulecrudtest-12",
-            "firewallrulecrudtest-6285", "firewallrulecrudtest-2304", Context.NONE);
+            "firewallrulecrudtest-6285", "firewallrulecrudtest-2304", com.azure.core.util.Context.NONE);
     }
 }

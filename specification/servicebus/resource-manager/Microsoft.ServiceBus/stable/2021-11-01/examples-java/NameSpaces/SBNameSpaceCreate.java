@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.fluent.models.SBNamespaceInner;
 import com.azure.resourcemanager.servicebus.models.SBSku;
 import com.azure.resourcemanager.servicebus.models.SkuName;
@@ -7,7 +6,9 @@ import com.azure.resourcemanager.servicebus.models.SkuTier;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Namespaces CreateOrUpdate. */
+/**
+ * Samples for Namespaces CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -16,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceCreate(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -24,9 +25,10 @@ public final class Main {
             "sdk-Namespace2924",
             new SBNamespaceInner().withLocation("South Central US").withTags(mapOf("tag1", "value1", "tag2", "value2"))
                 .withSku(new SBSku().withName(SkuName.STANDARD).withTier(SkuTier.STANDARD)),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

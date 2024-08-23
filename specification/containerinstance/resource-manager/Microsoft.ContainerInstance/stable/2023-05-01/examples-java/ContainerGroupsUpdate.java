@@ -3,7 +3,9 @@ import com.azure.core.management.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ContainerGroups Update. */
+/**
+ * Samples for ContainerGroups Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerGroupsUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerGroupsUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

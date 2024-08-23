@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Agent Pool with Dedicated Host Group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAgentPoolWithDedicatedHostGroup(com.azure.resourcemanager.AzureResourceManager azure) {

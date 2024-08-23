@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DeletedServers ListByLocation. */
+/**
+ * Samples for DeletedServers ListByLocation.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,10 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List deleted servers.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDeletedServers(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getDeletedServers().listByLocation("japaneast", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getDeletedServers().listByLocation("japaneast",
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,12 +1,13 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.fluent.models.PrivateEndpointConnectionInner;
 import com.azure.resourcemanager.servicebus.models.ConnectionState;
 import com.azure.resourcemanager.servicebus.models.EndPointProvisioningState;
 import com.azure.resourcemanager.servicebus.models.PrivateEndpoint;
 import com.azure.resourcemanager.servicebus.models.PrivateLinkConnectionStatus;
 
-/** Samples for PrivateEndpointConnections CreateOrUpdate. */
+/**
+ * Samples for PrivateEndpointConnections CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: NameSpacePrivateEndPointConnectionCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpacePrivateEndPointConnectionCreate(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -26,6 +27,6 @@ public final class Main {
                     .withPrivateLinkServiceConnectionState(new ConnectionState()
                         .withStatus(PrivateLinkConnectionStatus.REJECTED).withDescription("testing"))
                     .withProvisioningState(EndPointProvisioningState.SUCCEEDED),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

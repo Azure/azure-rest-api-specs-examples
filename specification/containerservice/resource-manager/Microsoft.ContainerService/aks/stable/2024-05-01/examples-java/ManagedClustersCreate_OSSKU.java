@@ -35,7 +35,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Managed Cluster with OSSKU.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createManagedClusterWithOSSKU(com.azure.resourcemanager.AzureResourceManager azure) {

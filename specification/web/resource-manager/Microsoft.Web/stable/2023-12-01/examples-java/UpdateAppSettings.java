@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Update App Settings.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateAppSettings(com.azure.resourcemanager.AzureResourceManager azure) {

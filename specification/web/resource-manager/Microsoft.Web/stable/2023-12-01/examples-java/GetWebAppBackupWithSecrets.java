@@ -17,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: Get web app backup with secrets.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getWebAppBackupWithSecrets(com.azure.resourcemanager.AzureResourceManager azure) {

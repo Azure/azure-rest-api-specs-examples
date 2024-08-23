@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerBlobAuditingPolicies ListByServer. */
+/**
+ * Samples for ServerBlobAuditingPolicies ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List auditing settings of a server.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listAuditingSettingsOfAServer(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerBlobAuditingPolicies()
-            .listByServer("blobauditingtest-4799", "blobauditingtest-6440", Context.NONE);
+            .listByServer("blobauditingtest-4799", "blobauditingtest-6440", com.azure.core.util.Context.NONE);
     }
 }

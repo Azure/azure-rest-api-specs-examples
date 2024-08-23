@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DisasterRecoveryConfigs Get. */
+/**
+ * Samples for DisasterRecoveryConfigs Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: SBAliasGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void sBAliasGet(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.serviceBusNamespaces().manager().serviceClient().getDisasterRecoveryConfigs()
-            .getWithResponse("ardsouzatestRG", "sdk-Namespace-8860", "sdk-DisasterRecovery-3814", Context.NONE);
+        azure.serviceBusNamespaces().manager().serviceClient().getDisasterRecoveryConfigs().getWithResponse(
+            "ardsouzatestRG", "sdk-Namespace-8860", "sdk-DisasterRecovery-3814", com.azure.core.util.Context.NONE);
     }
 }

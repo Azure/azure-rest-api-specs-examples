@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Namespaces DeleteAuthorizationRule. */
+/**
+ * Samples for Namespaces DeleteAuthorizationRule.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceAuthorizationRuleDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceAuthorizationRuleDelete(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getNamespaces().deleteAuthorizationRuleWithResponse(
-            "ArunMonocle", "sdk-namespace-6914", "sdk-AuthRules-1788", Context.NONE);
+            "ArunMonocle", "sdk-namespace-6914", "sdk-AuthRules-1788", com.azure.core.util.Context.NONE);
     }
 }

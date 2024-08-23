@@ -33,7 +33,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Managed Cluster with Node Public IP Prefix.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

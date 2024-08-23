@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for EndpointCertificates Get. */
+/**
+ * Samples for EndpointCertificates Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets an endpoint certificate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsAnEndpointCertificate(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getEndpointCertificates().getWithResponse("testrg", "testcl",
-            "DATABASE_MIRRORING", Context.NONE);
+            "DATABASE_MIRRORING", com.azure.core.util.Context.NONE);
     }
 }

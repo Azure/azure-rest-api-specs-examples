@@ -29,7 +29,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBRestoreDatabaseAccountCreateUpdate.json.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

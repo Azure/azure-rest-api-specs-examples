@@ -10,7 +10,9 @@ import com.azure.resourcemanager.keyvault.models.VaultAccessPolicyProperties;
 import java.util.Arrays;
 import java.util.UUID;
 
-/** Samples for Vaults UpdateAccessPolicy. */
+/**
+ * Samples for Vaults UpdateAccessPolicy.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -19,7 +21,7 @@ public final class Main {
      */
     /**
      * Sample code: Add an access policy, or update an access policy with new permissions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void addAnAccessPolicyOrUpdateAnAccessPolicyWithNewPermissions(

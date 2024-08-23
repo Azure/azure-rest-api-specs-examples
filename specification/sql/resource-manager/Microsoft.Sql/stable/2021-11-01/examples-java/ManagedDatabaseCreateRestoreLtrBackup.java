@@ -1,11 +1,12 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedDatabaseInner;
 import com.azure.resourcemanager.sql.models.ManagedDatabaseCreateMode;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ManagedDatabases CreateOrUpdate. */
+/**
+ * Samples for ManagedDatabases CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Creates a new managed database from restoring a long term retention backup.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createsANewManagedDatabaseFromRestoringALongTermRetentionBackup(
@@ -25,9 +26,10 @@ public final class Main {
                 .withCreateMode(ManagedDatabaseCreateMode.RESTORE_EXTERNAL_BACKUP)
                 .withStorageContainerUri("https://myaccountname.blob.core.windows.net/backups")
                 .withStorageContainerSasToken("fakeTokenPlaceholder"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

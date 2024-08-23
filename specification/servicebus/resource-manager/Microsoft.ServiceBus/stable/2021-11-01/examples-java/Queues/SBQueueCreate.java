@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.fluent.models.SBQueueInner;
 
-/** Samples for Queues CreateOrUpdate. */
+/**
+ * Samples for Queues CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,11 +12,12 @@ public final class Main {
      */
     /**
      * Sample code: QueueCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void queueCreate(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getQueues().createOrUpdateWithResponse("ArunMonocle",
-            "sdk-Namespace-3174", "sdk-Queues-5647", new SBQueueInner().withEnablePartitioning(true), Context.NONE);
+            "sdk-Namespace-3174", "sdk-Queues-5647", new SBQueueInner().withEnablePartitioning(true),
+            com.azure.core.util.Context.NONE);
     }
 }

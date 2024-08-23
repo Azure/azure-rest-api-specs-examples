@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for RestorePoints Get. */
+/**
+ * Samples for RestorePoints Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets a database restore point.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsADatabaseRestorePoint(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getRestorePoints().getWithResponse("Default-SQL-SouthEastAsia",
-            "testserver", "testDatabase", "131546477590000000", Context.NONE);
+            "testserver", "testDatabase", "131546477590000000", com.azure.core.util.Context.NONE);
     }
 }

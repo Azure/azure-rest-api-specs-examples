@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ServerDnsAliasAcquisition;
 
-/** Samples for ServerDnsAliases Acquire. */
+/**
+ * Samples for ServerDnsAliases Acquire.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: Acquire server DNS alias.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void acquireServerDNSAlias(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -18,6 +19,6 @@ public final class Main {
             "dns-alias-name-1",
             new ServerDnsAliasAcquisition().withOldServerDnsAliasId(
                 "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/dns-alias-old-server/dnsAliases/dns-alias-name-1"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

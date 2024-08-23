@@ -28,7 +28,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBGremlinGraphCreateUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBGremlinGraphCreateUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

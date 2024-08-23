@@ -1,5 +1,7 @@
 
-/** Samples for RoleAssignmentScheduleInstances Get. */
+/**
+ * Samples for RoleAssignmentScheduleInstances Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: GetRoleAssignmentScheduleInstanceByName.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getRoleAssignmentScheduleInstanceByName(com.azure.resourcemanager.AzureResourceManager azure) {

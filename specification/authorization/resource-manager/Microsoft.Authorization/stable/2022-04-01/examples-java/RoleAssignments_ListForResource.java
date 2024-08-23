@@ -1,5 +1,7 @@
 
-/** Samples for RoleAssignments ListForResource. */
+/**
+ * Samples for RoleAssignments ListForResource.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List role assignments for a resource.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listRoleAssignmentsForAResource(com.azure.resourcemanager.AzureResourceManager azure) {

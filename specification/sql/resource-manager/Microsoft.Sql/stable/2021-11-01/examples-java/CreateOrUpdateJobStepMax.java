@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.JobStepInner;
 import com.azure.resourcemanager.sql.models.JobStepAction;
 import com.azure.resourcemanager.sql.models.JobStepActionSource;
@@ -9,7 +8,9 @@ import com.azure.resourcemanager.sql.models.JobStepOutput;
 import com.azure.resourcemanager.sql.models.JobStepOutputType;
 import java.util.UUID;
 
-/** Samples for JobSteps CreateOrUpdate. */
+/**
+ * Samples for JobSteps CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -17,7 +18,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a job step with all properties specified.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -36,6 +37,6 @@ public final class Main {
                 .withExecutionOptions(new JobStepExecutionOptions().withTimeoutSeconds(1234).withRetryAttempts(42)
                     .withInitialRetryIntervalSeconds(11).withMaximumRetryIntervalSeconds(222)
                     .withRetryIntervalBackoffMultiplier(3.0F)),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

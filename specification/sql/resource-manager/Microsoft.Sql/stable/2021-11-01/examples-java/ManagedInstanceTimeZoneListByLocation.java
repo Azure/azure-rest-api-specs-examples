@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for TimeZones ListByLocation. */
+/**
+ * Samples for TimeZones ListByLocation.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,10 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: List managed instance time zones by location.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listManagedInstanceTimeZonesByLocation(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getTimeZones().listByLocation("canadaeast", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getTimeZones().listByLocation("canadaeast",
+            com.azure.core.util.Context.NONE);
     }
 }

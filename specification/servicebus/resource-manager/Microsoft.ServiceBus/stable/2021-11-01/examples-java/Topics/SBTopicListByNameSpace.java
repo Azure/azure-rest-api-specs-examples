@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Topics ListByNamespace. */
+/**
+ * Samples for Topics ListByNamespace.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: TopicGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void topicGet(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getTopics().listByNamespace("Default-ServiceBus-WestUS",
-            "sdk-Namespace-1617", null, null, Context.NONE);
+            "sdk-Namespace-1617", null, null, com.azure.core.util.Context.NONE);
     }
 }

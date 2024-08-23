@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.JobStepInner;
 import com.azure.resourcemanager.sql.models.JobStepAction;
 
-/** Samples for JobSteps CreateOrUpdate. */
+/**
+ * Samples for JobSteps CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a job step with minimal properties specified.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -21,6 +22,6 @@ public final class Main {
             new JobStepInner().withTargetGroup(
                 "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Sql/servers/server1/jobAgents/agent1/targetGroups/targetGroup0")
                 .withCredential("fakeTokenPlaceholder").withAction(new JobStepAction().withValue("select 1")),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedDatabaseQueries ListByQuery. */
+/**
+ * Samples for ManagedDatabaseQueries ListByQuery.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Obtain query execution statistics.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void obtainQueryExecutionStatistics(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabaseQueries().listByQuery("sqlcrudtest-7398",
-            "sqlcrudtest-4645", "database_1", "42", null, null, null, Context.NONE);
+            "sqlcrudtest-4645", "database_1", "42", null, null, null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DisasterRecoveryConfigs ListKeys. */
+/**
+ * Samples for DisasterRecoveryConfigs ListKeys.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,13 +10,13 @@ public final class Main {
      */
     /**
      * Sample code: DisasterRecoveryConfigsAuthorizationRuleListKey.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         disasterRecoveryConfigsAuthorizationRuleListKey(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getDisasterRecoveryConfigs().listKeysWithResponse(
             "exampleResourceGroup", "sdk-Namespace-2702", "sdk-DisasterRecovery-4047", "sdk-Authrules-1746",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedServerDnsAliases Delete. */
+/**
+ * Samples for ManagedServerDnsAliases Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete managed server DNS alias.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteManagedServerDNSAlias(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedServerDnsAliases().delete("Default", "dns-mi",
-            "dns-alias-mi", Context.NONE);
+            "dns-alias-mi", com.azure.core.util.Context.NONE);
     }
 }

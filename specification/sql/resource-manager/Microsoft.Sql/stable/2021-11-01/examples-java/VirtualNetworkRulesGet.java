@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for VirtualNetworkRules Get. */
+/**
+ * Samples for VirtualNetworkRules Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets a virtual network rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsAVirtualNetworkRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getVirtualNetworkRules().getWithResponse("Default",
-            "vnet-test-svr", "vnet-firewall-rule", Context.NONE);
+            "vnet-test-svr", "vnet-firewall-rule", com.azure.core.util.Context.NONE);
     }
 }

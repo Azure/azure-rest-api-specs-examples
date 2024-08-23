@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.VirtualClusterUpdate;
 
-/** Samples for VirtualClusters Update. */
+/**
+ * Samples for VirtualClusters Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: Update virtual cluster with tags.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateVirtualClusterWithTags(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -18,6 +19,6 @@ public final class Main {
             "vc-subnet1-f769ed71-b3ad-491a-a9d5-26eeceaa6be2",
             new VirtualClusterUpdate().withMaintenanceConfigurationId(
                 "/subscriptions/ab0e51c0-83c0-4380-8ae9-025516df392f/resourceGroups/Federation/providers/Microsoft.Maintenance/maintenanceConfigurations/MiPolicy1"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

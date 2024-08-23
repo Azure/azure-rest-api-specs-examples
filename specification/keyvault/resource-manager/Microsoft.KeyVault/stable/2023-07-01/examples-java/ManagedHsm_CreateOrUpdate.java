@@ -9,7 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/** Samples for ManagedHsms CreateOrUpdate. */
+/**
+ * Samples for ManagedHsms CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -18,7 +20,7 @@ public final class Main {
      */
     /**
      * Sample code: Create a new managed HSM Pool or update an existing managed HSM Pool.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

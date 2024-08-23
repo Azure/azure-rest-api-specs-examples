@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Bastion Host With Zones.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createBastionHostWithZones(com.azure.resourcemanager.AzureResourceManager azure) {

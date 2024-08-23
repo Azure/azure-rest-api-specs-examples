@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.msi.fluent.models.FederatedIdentityCredentialInner;
 import java.util.Arrays;
 
-/** Samples for FederatedIdentityCredentials CreateOrUpdate. */
+/**
+ * Samples for FederatedIdentityCredentials CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/msi/resource-manager/Microsoft.ManagedIdentity/stable/2023-01-31/examples/
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: FederatedIdentityCredentialCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void federatedIdentityCredentialCreate(com.azure.resourcemanager.AzureResourceManager azure) {

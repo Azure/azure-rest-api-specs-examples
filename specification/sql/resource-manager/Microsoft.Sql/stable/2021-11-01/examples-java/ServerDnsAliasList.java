@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerDnsAliases ListByServer. */
+/**
+ * Samples for ServerDnsAliases ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List server DNS aliases.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listServerDNSAliases(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerDnsAliases().listByServer("Default", "dns-alias-server",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

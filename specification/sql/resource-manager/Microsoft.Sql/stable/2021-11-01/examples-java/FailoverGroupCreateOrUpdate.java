@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.FailoverGroupInner;
 import com.azure.resourcemanager.sql.models.FailoverGroupReadOnlyEndpoint;
 import com.azure.resourcemanager.sql.models.FailoverGroupReadWriteEndpoint;
@@ -8,7 +7,9 @@ import com.azure.resourcemanager.sql.models.ReadOnlyEndpointFailoverPolicy;
 import com.azure.resourcemanager.sql.models.ReadWriteEndpointFailoverPolicy;
 import java.util.Arrays;
 
-/** Samples for FailoverGroups CreateOrUpdate. */
+/**
+ * Samples for FailoverGroups CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -16,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: Create failover group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createFailoverGroup(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -33,6 +34,6 @@ public final class Main {
                 .withDatabases(Arrays.asList(
                     "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-1",
                     "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default/providers/Microsoft.Sql/servers/failover-group-primary-server/databases/testdb-2")),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

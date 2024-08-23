@@ -1,5 +1,7 @@
 
-/** Samples for ProviderOperationsMetadata List. */
+/**
+ * Samples for ProviderOperationsMetadata List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List provider operations metadata for all resource providers.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

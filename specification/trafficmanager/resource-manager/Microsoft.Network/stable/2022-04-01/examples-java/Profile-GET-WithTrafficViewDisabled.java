@@ -1,5 +1,7 @@
 
-/** Samples for Profiles GetByResourceGroup. */
+/**
+ * Samples for Profiles GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Profile-GET-WithTrafficViewDisabled.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void profileGETWithTrafficViewDisabled(com.azure.resourcemanager.AzureResourceManager azure) {

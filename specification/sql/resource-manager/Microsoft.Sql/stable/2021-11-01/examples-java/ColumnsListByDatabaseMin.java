@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseColumns ListByDatabase. */
+/**
+ * Samples for DatabaseColumns ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List database columns.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDatabaseColumns(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseColumns().listByDatabase("myRG", "serverName",
-            "myDatabase", null, null, null, null, null, Context.NONE);
+            "myDatabase", null, null, null, null, null, com.azure.core.util.Context.NONE);
     }
 }

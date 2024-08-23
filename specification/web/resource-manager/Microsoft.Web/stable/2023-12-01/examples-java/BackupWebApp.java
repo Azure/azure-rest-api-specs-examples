@@ -16,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Backup web app.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void backupWebApp(com.azure.resourcemanager.AzureResourceManager azure) {

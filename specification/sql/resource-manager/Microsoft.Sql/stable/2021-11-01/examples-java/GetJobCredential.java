@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobCredentials Get. */
+/**
+ * Samples for JobCredentials Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a credential.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getACredential(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobCredentials().getWithResponse("group1", "server1", "agent1",
-            "cred1", Context.NONE);
+            "cred1", com.azure.core.util.Context.NONE);
     }
 }

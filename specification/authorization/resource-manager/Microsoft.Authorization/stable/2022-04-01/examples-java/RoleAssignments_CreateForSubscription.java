@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.authorization.models.PrincipalType;
 import com.azure.resourcemanager.authorization.models.RoleAssignmentCreateParameters;
 
-/** Samples for RoleAssignments Create. */
+/**
+ * Samples for RoleAssignments Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Create role assignment for subscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createRoleAssignmentForSubscription(com.azure.resourcemanager.AzureResourceManager azure) {

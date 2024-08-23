@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for MaintenanceWindowOptionsOperation Get. */
+/**
+ * Samples for MaintenanceWindowOptionsOperation Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets a list of available maintenance windows for a selected database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsAListOfAvailableMaintenanceWindowsForASelectedDatabase(
         com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getMaintenanceWindowOptionsOperations()
-            .getWithResponse("Default-SQL-SouthEastAsia", "testsvr", "testdb", "current", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getMaintenanceWindowOptionsOperations().getWithResponse(
+            "Default-SQL-SouthEastAsia", "testsvr", "testdb", "current", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedInstances List. */
+/**
+ * Samples for ManagedInstances List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,10 +9,10 @@ public final class Main {
      */
     /**
      * Sample code: List managed instances.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listManagedInstances(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getManagedInstances().list(null, Context.NONE);
+        azure.sqlServers().manager().serviceClient().getManagedInstances().list(null, com.azure.core.util.Context.NONE);
     }
 }

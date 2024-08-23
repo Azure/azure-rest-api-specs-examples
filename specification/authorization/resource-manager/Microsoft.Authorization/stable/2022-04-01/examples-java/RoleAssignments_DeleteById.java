@@ -1,5 +1,7 @@
 
-/** Samples for RoleAssignments DeleteById. */
+/**
+ * Samples for RoleAssignments DeleteById.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Delete role assignment by ID.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteRoleAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {

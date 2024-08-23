@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for EndpointCertificates ListByInstance. */
+/**
+ * Samples for EndpointCertificates ListByInstance.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a list of endpoint certificates.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAListOfEndpointCertificates(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getEndpointCertificates().listByInstance("testrg", "testcl",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,7 @@
 
-/** Samples for ManagedHsms GetByResourceGroup. */
+/**
+ * Samples for ManagedHsms GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Retrieve a managed HSM Pool.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void retrieveAManagedHSMPool(com.azure.resourcemanager.AzureResourceManager azure) {

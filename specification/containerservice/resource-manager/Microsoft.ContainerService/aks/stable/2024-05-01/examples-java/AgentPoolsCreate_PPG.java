@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Agent Pool with PPG.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAgentPoolWithPPG(com.azure.resourcemanager.AzureResourceManager azure) {

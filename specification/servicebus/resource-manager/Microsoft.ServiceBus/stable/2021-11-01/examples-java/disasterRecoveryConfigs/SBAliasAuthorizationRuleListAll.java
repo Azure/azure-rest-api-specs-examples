@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DisasterRecoveryConfigs ListAuthorizationRules. */
+/**
+ * Samples for DisasterRecoveryConfigs ListAuthorizationRules.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceAuthorizationRuleListAll.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceAuthorizationRuleListAll(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getDisasterRecoveryConfigs().listAuthorizationRules(
-            "exampleResourceGroup", "sdk-Namespace-9080", "sdk-DisasterRecovery-4047", Context.NONE);
+            "exampleResourceGroup", "sdk-Namespace-9080", "sdk-DisasterRecovery-4047",
+            com.azure.core.util.Context.NONE);
     }
 }

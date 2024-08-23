@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for VirtualNetworkRules ListByServer. */
+/**
+ * Samples for VirtualNetworkRules ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List virtual network rules.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listVirtualNetworkRules(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getVirtualNetworkRules().listByServer("Default", "vnet-test-svr",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

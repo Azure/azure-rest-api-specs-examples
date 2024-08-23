@@ -1,12 +1,13 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.JobTargetGroupInner;
 import com.azure.resourcemanager.sql.models.JobTarget;
 import com.azure.resourcemanager.sql.models.JobTargetGroupMembershipType;
 import com.azure.resourcemanager.sql.models.JobTargetType;
 import java.util.Arrays;
 
-/** Samples for JobTargetGroups CreateOrUpdate. */
+/**
+ * Samples for JobTargetGroups CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a target group with all properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -33,6 +34,6 @@ public final class Main {
                 new JobTarget().withMembershipType(JobTargetGroupMembershipType.INCLUDE)
                     .withType(JobTargetType.SQL_SHARD_MAP).withServerName("server3").withShardMapName("shardMap1")
                     .withRefreshCredential("fakeTokenPlaceholder"))),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

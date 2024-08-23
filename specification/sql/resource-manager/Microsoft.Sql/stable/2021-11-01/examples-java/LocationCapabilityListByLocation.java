@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Capabilities ListByLocation. */
+/**
+ * Samples for Capabilities ListByLocation.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: List subscription capabilities in the given location.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         listSubscriptionCapabilitiesInTheGivenLocation(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getCapabilities().listByLocationWithResponse("eastus", null,
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

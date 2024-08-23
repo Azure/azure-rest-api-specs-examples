@@ -16,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Validate App Service Certificate purchase information by subscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void validateAppServiceCertificatePurchaseInformationBySubscription(

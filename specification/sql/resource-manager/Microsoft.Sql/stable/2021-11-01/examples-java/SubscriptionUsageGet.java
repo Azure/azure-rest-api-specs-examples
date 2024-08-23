@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for SubscriptionUsages Get. */
+/**
+ * Samples for SubscriptionUsages Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Get specific subscription usage in the given location.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getSpecificSubscriptionUsageInTheGivenLocation(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getSubscriptionUsages().getWithResponse("WestUS", "ServerQuota",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

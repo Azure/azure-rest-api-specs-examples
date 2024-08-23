@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Update Application Gateway tags.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateApplicationGatewayTags(com.azure.resourcemanager.AzureResourceManager azure) {

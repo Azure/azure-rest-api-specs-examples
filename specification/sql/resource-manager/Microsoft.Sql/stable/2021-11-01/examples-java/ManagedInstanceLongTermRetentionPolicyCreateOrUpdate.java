@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceLongTermRetentionPolicyInner;
 import com.azure.resourcemanager.sql.models.ManagedInstanceLongTermRetentionPolicyName;
 
-/** Samples for ManagedInstanceLongTermRetentionPolicies CreateOrUpdate. */
+/**
+ * Samples for ManagedInstanceLongTermRetentionPolicies CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update the LTR policy for the managed database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -20,6 +21,6 @@ public final class Main {
             "testResourceGroup", "testInstance", "testDatabase", ManagedInstanceLongTermRetentionPolicyName.DEFAULT,
             new ManagedInstanceLongTermRetentionPolicyInner().withWeeklyRetention("P1M").withMonthlyRetention("P1Y")
                 .withYearlyRetention("P5Y").withWeekOfYear(5),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

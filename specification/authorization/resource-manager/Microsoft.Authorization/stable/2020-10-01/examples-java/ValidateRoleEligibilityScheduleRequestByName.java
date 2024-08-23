@@ -6,7 +6,9 @@ import com.azure.resourcemanager.authorization.models.RoleEligibilityScheduleReq
 import com.azure.resourcemanager.authorization.models.Type;
 import java.time.OffsetDateTime;
 
-/** Samples for RoleEligibilityScheduleRequests Validate. */
+/**
+ * Samples for RoleEligibilityScheduleRequests Validate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: ValidateRoleEligibilityScheduleRequestByName.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -30,8 +32,8 @@ public final class Main {
                         .withStartDateTime(OffsetDateTime.parse("2020-09-09T21:31:27.91Z"))
                         .withExpiration(new RoleEligibilityScheduleRequestPropertiesScheduleInfoExpiration()
                             .withType(Type.AFTER_DURATION).withDuration("P365D")))
-                    .withCondition("@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]"
-                        + " StringEqualsIgnoreCase 'foo_storage_container'")
+                    .withCondition(
+                        "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'")
                     .withConditionVersion("1.0"),
                 com.azure.core.util.Context.NONE);
     }

@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.BackupStorageRedundancy;
 import com.azure.resourcemanager.sql.models.CopyLongTermRetentionBackupParameters;
 
-/** Samples for LongTermRetentionBackups Copy. */
+/**
+ * Samples for LongTermRetentionBackups Copy.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Copy the long term retention backup.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void copyTheLongTermRetentionBackup(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -20,6 +21,6 @@ public final class Main {
             new CopyLongTermRetentionBackupParameters().withTargetServerResourceId(
                 "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver2")
                 .withTargetDatabaseName("testDatabase2").withTargetBackupStorageRedundancy(BackupStorageRedundancy.GEO),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

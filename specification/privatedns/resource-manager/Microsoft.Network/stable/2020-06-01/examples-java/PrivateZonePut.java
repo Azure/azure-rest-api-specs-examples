@@ -3,7 +3,9 @@ import com.azure.resourcemanager.privatedns.fluent.models.PrivateZoneInner;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for PrivateZones CreateOrUpdate. */
+/**
+ * Samples for PrivateZones CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: PUT Private DNS Zone.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void pUTPrivateDNSZone(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -21,6 +23,7 @@ public final class Main {
             com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

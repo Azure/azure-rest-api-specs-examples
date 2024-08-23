@@ -1,5 +1,7 @@
 
-/** Samples for ContainerGroups Delete. */
+/**
+ * Samples for ContainerGroups Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerGroupsDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerGroupsDelete(com.azure.resourcemanager.AzureResourceManager azure) {

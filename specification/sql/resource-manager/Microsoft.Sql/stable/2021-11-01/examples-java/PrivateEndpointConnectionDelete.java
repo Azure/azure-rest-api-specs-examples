@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for PrivateEndpointConnections Delete. */
+/**
+ * Samples for PrivateEndpointConnections Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Deletes a private endpoint connection with a given name.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         deletesAPrivateEndpointConnectionWithAGivenName(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getPrivateEndpointConnections().delete("Default", "test-svr",
-            "private-endpoint-connection-name", Context.NONE);
+            "private-endpoint-connection-name", com.azure.core.util.Context.NONE);
     }
 }

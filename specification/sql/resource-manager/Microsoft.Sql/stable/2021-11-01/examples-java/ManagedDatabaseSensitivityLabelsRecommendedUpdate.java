@@ -1,11 +1,12 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.RecommendedSensitivityLabelUpdate;
 import com.azure.resourcemanager.sql.models.RecommendedSensitivityLabelUpdateKind;
 import com.azure.resourcemanager.sql.models.RecommendedSensitivityLabelUpdateList;
 import java.util.Arrays;
 
-/** Samples for ManagedDatabaseRecommendedSensitivityLabels Update. */
+/**
+ * Samples for ManagedDatabaseRecommendedSensitivityLabels Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/sql/resource-manager/Microsoft.Sql/stable/2021-11-01/examples/
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Update recommended sensitivity labels of a given database using an operations batch.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateRecommendedSensitivityLabelsOfAGivenDatabaseUsingAnOperationsBatch(
@@ -27,6 +28,6 @@ public final class Main {
                         .withSchema("dbo").withTable("table2").withColumn("column2"),
                     new RecommendedSensitivityLabelUpdate().withOp(RecommendedSensitivityLabelUpdateKind.DISABLE)
                         .withSchema("dbo").withTable("Table1").withColumn("Column3"))),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

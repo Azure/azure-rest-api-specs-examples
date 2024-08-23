@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.dns.models.RecordType;
 
-/** Samples for RecordSets Get. */
+/**
+ * Samples for RecordSets Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: Get A recordset.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getARecordset(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerTrustCertificates ListByInstance. */
+/**
+ * Samples for ServerTrustCertificates ListByInstance.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets a list of server trust certificates on a given server.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getsAListOfServerTrustCertificatesOnAGivenServer(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerTrustCertificates().listByInstance("testrg", "testcl",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

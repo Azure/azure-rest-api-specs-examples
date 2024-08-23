@@ -6,7 +6,9 @@ import com.azure.resourcemanager.authorization.models.RoleAssignmentScheduleRequ
 import com.azure.resourcemanager.authorization.models.Type;
 import java.time.OffsetDateTime;
 
-/** Samples for RoleAssignmentScheduleRequests Create. */
+/**
+ * Samples for RoleAssignmentScheduleRequests Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +17,7 @@ public final class Main {
      */
     /**
      * Sample code: PutRoleAssignmentScheduleRequest.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void putRoleAssignmentScheduleRequest(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -30,8 +32,8 @@ public final class Main {
                         .withExpiration(new RoleAssignmentScheduleRequestPropertiesScheduleInfoExpiration()
                             .withType(Type.AFTER_DURATION).withDuration("PT8H")))
                     .withLinkedRoleEligibilityScheduleId("b1477448-2cc6-4ceb-93b4-54a202a89413")
-                    .withCondition("@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName]"
-                        + " StringEqualsIgnoreCase 'foo_storage_container'")
+                    .withCondition(
+                        "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'")
                     .withConditionVersion("1.0"),
                 com.azure.core.util.Context.NONE);
     }

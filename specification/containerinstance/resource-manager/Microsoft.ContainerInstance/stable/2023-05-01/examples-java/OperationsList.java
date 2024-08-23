@@ -1,5 +1,7 @@
 
-/** Samples for Operations List. */
+/**
+ * Samples for Operations List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: OperationsList.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void operationsList(com.azure.resourcemanager.AzureResourceManager azure) {

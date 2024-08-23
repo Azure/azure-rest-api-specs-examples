@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedDatabaseColumns Get. */
+/**
+ * Samples for ManagedDatabaseColumns Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get managed database column.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getManagedDatabaseColumn(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabaseColumns().getWithResponse("myRG",
-            "myManagedInstanceName", "myDatabase", "dbo", "table1", "column1", Context.NONE);
+            "myManagedInstanceName", "myDatabase", "dbo", "table1", "column1", com.azure.core.util.Context.NONE);
     }
 }

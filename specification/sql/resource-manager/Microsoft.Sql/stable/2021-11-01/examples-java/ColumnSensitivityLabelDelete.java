@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for SensitivityLabels Delete. */
+/**
+ * Samples for SensitivityLabels Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Deletes the sensitivity label of a given column.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deletesTheSensitivityLabelOfAGivenColumn(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getSensitivityLabels().deleteWithResponse("myRG", "myServer",
-            "myDatabase", "dbo", "myTable", "myColumn", Context.NONE);
+            "myDatabase", "dbo", "myTable", "myColumn", com.azure.core.util.Context.NONE);
     }
 }

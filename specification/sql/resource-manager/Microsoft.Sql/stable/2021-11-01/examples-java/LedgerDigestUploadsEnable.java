@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.LedgerDigestUploadsInner;
 import com.azure.resourcemanager.sql.models.LedgerDigestUploadsName;
 
-/** Samples for LedgerDigestUploadsOperation CreateOrUpdate. */
+/**
+ * Samples for LedgerDigestUploadsOperation CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Enables ledger digest upload configuration for a database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -19,6 +20,6 @@ public final class Main {
         azure.sqlServers().manager().serviceClient().getLedgerDigestUploadsOperations().createOrUpdate("ledgertestrg",
             "ledgertestserver", "testdb", LedgerDigestUploadsName.CURRENT,
             new LedgerDigestUploadsInner().withDigestStorageEndpoint("https://MyAccount.blob.core.windows.net"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

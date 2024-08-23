@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for TimeZones Get. */
+/**
+ * Samples for TimeZones Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get managed instance time zone.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getManagedInstanceTimeZone(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getTimeZones().getWithResponse("canadaeast", "Haiti Standard Time",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

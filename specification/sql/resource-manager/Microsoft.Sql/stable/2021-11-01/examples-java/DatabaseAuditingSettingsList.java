@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseBlobAuditingPolicies ListByDatabase. */
+/**
+ * Samples for DatabaseBlobAuditingPolicies ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List audit settings of a database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listAuditSettingsOfADatabase(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getDatabaseBlobAuditingPolicies()
-            .listByDatabase("blobauditingtest-6852", "blobauditingtest-2080", "testdb", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getDatabaseBlobAuditingPolicies().listByDatabase(
+            "blobauditingtest-6852", "blobauditingtest-2080", "testdb", com.azure.core.util.Context.NONE);
     }
 }

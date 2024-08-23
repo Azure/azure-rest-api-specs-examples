@@ -16,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Agent Pool using an agent pool snapshot.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAgentPoolUsingAnAgentPoolSnapshot(com.azure.resourcemanager.AzureResourceManager azure) {

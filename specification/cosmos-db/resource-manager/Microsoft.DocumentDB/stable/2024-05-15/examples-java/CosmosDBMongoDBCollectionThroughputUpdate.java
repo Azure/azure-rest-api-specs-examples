@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBMongoDBCollectionThroughputUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBMongoDBCollectionThroughputUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

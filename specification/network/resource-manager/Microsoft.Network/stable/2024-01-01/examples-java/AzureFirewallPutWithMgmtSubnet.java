@@ -33,7 +33,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Azure Firewall With management subnet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAzureFirewallWithManagementSubnet(com.azure.resourcemanager.AzureResourceManager azure) {

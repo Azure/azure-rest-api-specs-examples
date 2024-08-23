@@ -1,5 +1,7 @@
 
-/** Samples for Location ListCachedImages. */
+/**
+ * Samples for Location ListCachedImages.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: CachedImages.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cachedImages(com.azure.resourcemanager.AzureResourceManager azure) {

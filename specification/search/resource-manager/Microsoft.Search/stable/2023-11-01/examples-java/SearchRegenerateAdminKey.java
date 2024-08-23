@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.search.models.AdminKeyKind;
 
-/** Samples for AdminKeys Regenerate. */
+/**
+ * Samples for AdminKeys Regenerate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchRegenerateAdminKey.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchRegenerateAdminKey(com.azure.resourcemanager.AzureResourceManager azure) {

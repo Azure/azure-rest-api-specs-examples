@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for RestorePoints Delete. */
+/**
+ * Samples for RestorePoints Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Deletes a restore point.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deletesARestorePoint(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getRestorePoints().deleteWithResponse("Default-SQL-SouthEastAsia",
-            "testserver", "testDatabase", "131546477590000000", Context.NONE);
+            "testserver", "testDatabase", "131546477590000000", com.azure.core.util.Context.NONE);
     }
 }

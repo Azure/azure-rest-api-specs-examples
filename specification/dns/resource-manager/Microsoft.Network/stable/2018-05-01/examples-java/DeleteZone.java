@@ -1,5 +1,7 @@
 
-/** Samples for Zones Delete. */
+/**
+ * Samples for Zones Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Delete zone.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteZone(com.azure.resourcemanager.AzureResourceManager azure) {

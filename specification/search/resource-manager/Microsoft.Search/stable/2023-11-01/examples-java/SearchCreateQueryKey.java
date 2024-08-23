@@ -1,5 +1,7 @@
 
-/** Samples for QueryKeys Create. */
+/**
+ * Samples for QueryKeys Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchCreateQueryKey.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchCreateQueryKey(com.azure.resourcemanager.AzureResourceManager azure) {

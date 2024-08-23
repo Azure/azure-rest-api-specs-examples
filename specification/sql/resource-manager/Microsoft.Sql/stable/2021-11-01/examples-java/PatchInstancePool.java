@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.InstancePoolUpdate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for InstancePools Update. */
+/**
+ * Samples for InstancePools Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,14 +13,15 @@ public final class Main {
      */
     /**
      * Sample code: Patch an instance pool.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchAnInstancePool(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getInstancePools().update("group1", "testIP",
-            new InstancePoolUpdate().withTags(mapOf("x", "y")), Context.NONE);
+            new InstancePoolUpdate().withTags(mapOf("x", "y")), com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

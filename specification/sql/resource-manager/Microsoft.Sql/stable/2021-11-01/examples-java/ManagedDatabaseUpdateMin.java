@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ManagedDatabaseUpdate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ManagedDatabases Update. */
+/**
+ * Samples for ManagedDatabases Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,16 +13,17 @@ public final class Main {
      */
     /**
      * Sample code: Updates a managed database with minimal properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         updatesAManagedDatabaseWithMinimalProperties(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabases().update("Default-SQL-SouthEastAsia",
-            "managedInstance", "testdb", new ManagedDatabaseUpdate().withTags(mapOf("tagKey1", "TagValue1")),
-            Context.NONE);
+            "managedInstance", "testdb", new ManagedDatabaseUpdate().withTags(mapOf("tagKey1", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

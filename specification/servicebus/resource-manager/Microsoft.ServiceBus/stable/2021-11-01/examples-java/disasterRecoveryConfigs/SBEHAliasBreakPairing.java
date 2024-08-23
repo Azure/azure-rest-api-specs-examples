@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DisasterRecoveryConfigs BreakPairing. */
+/**
+ * Samples for DisasterRecoveryConfigs BreakPairing.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: SBEHAliasBreakPairing.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void sBEHAliasBreakPairing(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getDisasterRecoveryConfigs().breakPairingWithResponse(
-            "ardsouzatestRG", "sdk-Namespace-8860", "sdk-DisasterRecovery-3814", Context.NONE);
+            "ardsouzatestRG", "sdk-Namespace-8860", "sdk-DisasterRecovery-3814", com.azure.core.util.Context.NONE);
     }
 }

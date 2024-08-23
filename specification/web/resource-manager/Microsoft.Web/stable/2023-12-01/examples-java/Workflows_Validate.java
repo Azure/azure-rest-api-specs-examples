@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Validate a workflow.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void validateAWorkflow(com.azure.resourcemanager.AzureResourceManager azure) throws IOException {

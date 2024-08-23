@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.RestoreDetailsName;
 
-/** Samples for ManagedDatabaseRestoreDetails Get. */
+/**
+ * Samples for ManagedDatabaseRestoreDetails Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +11,12 @@ public final class Main {
      */
     /**
      * Sample code: Managed database restore details.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void managedDatabaseRestoreDetails(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabaseRestoreDetails().getWithResponse(
-            "Default-SQL-SouthEastAsia", "managedInstance", "testdb", RestoreDetailsName.DEFAULT, Context.NONE);
+            "Default-SQL-SouthEastAsia", "managedInstance", "testdb", RestoreDetailsName.DEFAULT,
+            com.azure.core.util.Context.NONE);
     }
 }

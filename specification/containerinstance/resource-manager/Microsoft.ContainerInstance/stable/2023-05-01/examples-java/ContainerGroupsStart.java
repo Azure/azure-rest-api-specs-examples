@@ -1,5 +1,7 @@
 
-/** Samples for ContainerGroups Start. */
+/**
+ * Samples for ContainerGroups Start.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerStart.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerStart(com.azure.resourcemanager.AzureResourceManager azure) {

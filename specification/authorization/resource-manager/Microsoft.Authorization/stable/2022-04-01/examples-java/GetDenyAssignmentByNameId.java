@@ -1,5 +1,7 @@
 
-/** Samples for DenyAssignments Get. */
+/**
+ * Samples for DenyAssignments Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Get deny assignment by name.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getDenyAssignmentByName(com.azure.resourcemanager.AzureResourceManager azure) {

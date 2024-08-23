@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.EncryptionProtectorName;
 
-/** Samples for EncryptionProtectors Revalidate. */
+/**
+ * Samples for EncryptionProtectors Revalidate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +11,11 @@ public final class Main {
      */
     /**
      * Sample code: Revalidates the encryption protector.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void revalidatesTheEncryptionProtector(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getEncryptionProtectors().revalidate("sqlcrudtest-7398",
-            "sqlcrudtest-4645", EncryptionProtectorName.CURRENT, Context.NONE);
+            "sqlcrudtest-4645", EncryptionProtectorName.CURRENT, com.azure.core.util.Context.NONE);
     }
 }

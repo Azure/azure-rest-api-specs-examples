@@ -1,5 +1,7 @@
 
-/** Samples for DenyAssignments ListForScope. */
+/**
+ * Samples for DenyAssignments ListForScope.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List deny assignments for scope.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDenyAssignmentsForScope(com.azure.resourcemanager.AzureResourceManager azure) {

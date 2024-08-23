@@ -13,7 +13,9 @@ import com.azure.resourcemanager.trafficmanager.models.TrafficRoutingMethod;
 import com.azure.resourcemanager.trafficmanager.models.TrafficViewEnrollmentStatus;
 import java.util.Arrays;
 
-/** Samples for Profiles CreateOrUpdate. */
+/**
+ * Samples for Profiles CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -22,7 +24,7 @@ public final class Main {
      */
     /**
      * Sample code: Profile-PUT-WithCustomHeaders.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void profilePUTWithCustomHeaders(com.azure.resourcemanager.AzureResourceManager azure) {

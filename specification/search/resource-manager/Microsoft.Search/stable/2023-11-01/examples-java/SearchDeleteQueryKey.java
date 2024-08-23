@@ -1,5 +1,7 @@
 
-/** Samples for QueryKeys Delete. */
+/**
+ * Samples for QueryKeys Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchDeleteQueryKey.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchDeleteQueryKey(com.azure.resourcemanager.AzureResourceManager azure) {

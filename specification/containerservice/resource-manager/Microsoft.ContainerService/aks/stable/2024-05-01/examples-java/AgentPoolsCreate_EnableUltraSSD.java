@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Agent Pool with UltraSSD enabled.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAgentPoolWithUltraSSDEnabled(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -5,7 +5,9 @@ import com.azure.resourcemanager.trafficmanager.models.MonitorConfigCustomHeader
 import com.azure.resourcemanager.trafficmanager.models.MonitorProtocol;
 import java.util.Arrays;
 
-/** Samples for Profiles Update. */
+/**
+ * Samples for Profiles Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Profile-PATCH-MonitorConfig.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void profilePATCHMonitorConfig(com.azure.resourcemanager.AzureResourceManager azure) {

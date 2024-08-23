@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Topics ListAuthorizationRules. */
+/**
+ * Samples for Topics ListAuthorizationRules.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: TopicAuthorizationRuleListAll.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void topicAuthorizationRuleListAll(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getTopics().listAuthorizationRules("ArunMonocle",
-            "sdk-Namespace-6261", "sdk-Topics-1984", Context.NONE);
+            "sdk-Namespace-6261", "sdk-Topics-1984", com.azure.core.util.Context.NONE);
     }
 }

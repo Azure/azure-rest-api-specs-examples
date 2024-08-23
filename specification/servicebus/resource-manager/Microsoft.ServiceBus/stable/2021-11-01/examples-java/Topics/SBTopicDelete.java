@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Topics Delete. */
+/**
+ * Samples for Topics Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: TopicDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void topicDelete(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getTopics().deleteWithResponse("ArunMonocle",
-            "sdk-Namespace-1617", "sdk-Topics-5488", Context.NONE);
+            "sdk-Namespace-1617", "sdk-Topics-5488", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.privatedns.models.RecordType;
 
-/** Samples for RecordSets Delete. */
+/**
+ * Samples for RecordSets Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: DELETE Private DNS Zone SRV Record Set.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void dELETEPrivateDNSZoneSRVRecordSet(com.azure.resourcemanager.AzureResourceManager azure) {

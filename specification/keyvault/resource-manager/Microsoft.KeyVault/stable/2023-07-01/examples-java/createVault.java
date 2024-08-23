@@ -12,7 +12,9 @@ import com.azure.resourcemanager.keyvault.models.VaultProperties;
 import java.util.Arrays;
 import java.util.UUID;
 
-/** Samples for Vaults CreateOrUpdate. */
+/**
+ * Samples for Vaults CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -20,7 +22,7 @@ public final class Main {
      */
     /**
      * Sample code: Create a new vault or update an existing vault.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createANewVaultOrUpdateAnExistingVault(com.azure.resourcemanager.AzureResourceManager azure) {

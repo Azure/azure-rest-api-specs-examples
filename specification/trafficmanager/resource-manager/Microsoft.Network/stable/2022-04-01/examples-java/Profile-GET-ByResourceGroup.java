@@ -1,5 +1,7 @@
 
-/** Samples for Profiles ListByResourceGroup. */
+/**
+ * Samples for Profiles ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ListProfilesByResourceGroup.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listProfilesByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {

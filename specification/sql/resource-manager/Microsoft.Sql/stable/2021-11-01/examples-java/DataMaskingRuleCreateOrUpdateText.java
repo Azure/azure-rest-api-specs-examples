@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DataMaskingRuleInner;
 import com.azure.resourcemanager.sql.models.DataMaskingFunction;
 import com.azure.resourcemanager.sql.models.DataMaskingPolicyName;
 
-/** Samples for DataMaskingRules CreateOrUpdate. */
+/**
+ * Samples for DataMaskingRules CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Create/Update data masking rule for text.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createUpdateDataMaskingRuleForText(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -22,6 +23,6 @@ public final class Main {
             new DataMaskingRuleInner().withSchemaName("dbo").withTableName("Table_1").withColumnName("test1")
                 .withMaskingFunction(DataMaskingFunction.TEXT).withPrefixSize("1").withSuffixSize("0")
                 .withReplacementString("asdf"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

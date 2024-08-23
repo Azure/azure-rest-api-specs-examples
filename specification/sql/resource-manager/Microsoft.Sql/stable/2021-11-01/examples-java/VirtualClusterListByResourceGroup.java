@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for VirtualClusters ListByResourceGroup. */
+/**
+ * Samples for VirtualClusters ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,10 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: List virtual clusters by resource group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listVirtualClustersByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getVirtualClusters().listByResourceGroup("testrg", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getVirtualClusters().listByResourceGroup("testrg",
+            com.azure.core.util.Context.NONE);
     }
 }

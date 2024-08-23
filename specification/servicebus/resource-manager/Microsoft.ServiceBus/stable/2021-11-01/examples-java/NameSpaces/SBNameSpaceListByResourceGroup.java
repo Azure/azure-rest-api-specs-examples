@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Namespaces ListByResourceGroup. */
+/**
+ * Samples for Namespaces ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceListByResourceGroup.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceListByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getNamespaces().listByResourceGroup("ArunMonocle",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

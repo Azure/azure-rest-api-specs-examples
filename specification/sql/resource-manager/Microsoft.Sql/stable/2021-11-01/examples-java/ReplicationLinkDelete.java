@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ReplicationLinks Delete. */
+/**
+ * Samples for ReplicationLinks Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete replication link on server.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteReplicationLinkOnServer(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getReplicationLinks().delete("Default", "sourcesvr", "gamma-db",
-            "4891ca10-ebd0-47d7-9182-c722651780fb", Context.NONE);
+            "4891ca10-ebd0-47d7-9182-c722651780fb", com.azure.core.util.Context.NONE);
     }
 }

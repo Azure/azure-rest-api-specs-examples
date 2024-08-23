@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Namespaces GetNetworkRuleSet. */
+/**
+ * Samples for Namespaces GetNetworkRuleSet.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceNetworkRuleSetGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceNetworkRuleSetGet(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getNamespaces()
-            .getNetworkRuleSetWithResponse("ResourceGroup", "sdk-Namespace-6019", Context.NONE);
+            .getNetworkRuleSetWithResponse("ResourceGroup", "sdk-Namespace-6019", com.azure.core.util.Context.NONE);
     }
 }

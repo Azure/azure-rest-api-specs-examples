@@ -1,5 +1,7 @@
 
-/** Samples for ClassicAdministrators List. */
+/**
+ * Samples for ClassicAdministrators List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: List classic administrators.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listClassicAdministrators(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Namespaces ListKeys. */
+/**
+ * Samples for Namespaces ListKeys.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceAuthorizationRuleListKey.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceAuthorizationRuleListKey(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getNamespaces().listKeysWithResponse("ArunMonocle",
-            "sdk-namespace-6914", "sdk-AuthRules-1788", Context.NONE);
+            "sdk-namespace-6914", "sdk-AuthRules-1788", com.azure.core.util.Context.NONE);
     }
 }

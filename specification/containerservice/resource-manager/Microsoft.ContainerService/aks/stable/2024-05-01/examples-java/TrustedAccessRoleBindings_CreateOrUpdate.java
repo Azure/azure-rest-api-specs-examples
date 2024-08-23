@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a trusted access role binding.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateATrustedAccessRoleBinding(com.azure.resourcemanager.AzureResourceManager azure) {

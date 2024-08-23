@@ -20,7 +20,7 @@ public final class Main {
      */
     /**
      * Sample code: Create App Service Domain.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAppServiceDomain(com.azure.resourcemanager.AzureResourceManager azure) {

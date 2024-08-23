@@ -12,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Or Update Certificate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateCertificate(com.azure.resourcemanager.AzureResourceManager azure) {

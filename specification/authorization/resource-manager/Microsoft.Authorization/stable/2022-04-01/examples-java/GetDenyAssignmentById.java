@@ -1,5 +1,7 @@
 
-/** Samples for DenyAssignments GetById. */
+/**
+ * Samples for DenyAssignments GetById.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Get deny assignment by ID.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getDenyAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {

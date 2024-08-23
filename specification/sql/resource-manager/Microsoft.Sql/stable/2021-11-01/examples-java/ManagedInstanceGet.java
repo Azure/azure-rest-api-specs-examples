@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedInstances GetByResourceGroup. */
+/**
+ * Samples for ManagedInstances GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get managed instance.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getManagedInstance(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedInstances().getByResourceGroupWithResponse("testrg",
-            "testinstance", null, Context.NONE);
+            "testinstance", null, com.azure.core.util.Context.NONE);
     }
 }

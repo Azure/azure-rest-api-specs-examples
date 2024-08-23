@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for SyncMembers ListBySyncGroup. */
+/**
+ * Samples for SyncMembers ListBySyncGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List sync members under a sync group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listSyncMembersUnderASyncGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getSyncMembers().listBySyncGroup("syncgroupcrud-65440",
-            "syncgroupcrud-8475", "syncgroupcrud-4328", "syncgroupcrud-3187", Context.NONE);
+            "syncgroupcrud-8475", "syncgroupcrud-4328", "syncgroupcrud-3187", com.azure.core.util.Context.NONE);
     }
 }

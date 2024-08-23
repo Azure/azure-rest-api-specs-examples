@@ -1,5 +1,7 @@
 
-/** Samples for Vaults GetDeleted. */
+/**
+ * Samples for Vaults GetDeleted.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Retrieve a deleted vault.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void retrieveADeletedVault(com.azure.resourcemanager.AzureResourceManager azure) {

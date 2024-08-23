@@ -1,5 +1,7 @@
 
-/** Samples for RoleAssignments GetById. */
+/**
+ * Samples for RoleAssignments GetById.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Get role assignment by ID.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getRoleAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {

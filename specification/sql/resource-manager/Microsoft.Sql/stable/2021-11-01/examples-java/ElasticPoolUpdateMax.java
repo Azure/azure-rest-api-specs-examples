@@ -1,11 +1,12 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ElasticPoolLicenseType;
 import com.azure.resourcemanager.sql.models.ElasticPoolPerDatabaseSettings;
 import com.azure.resourcemanager.sql.models.ElasticPoolUpdate;
 import com.azure.resourcemanager.sql.models.Sku;
 
-/** Samples for ElasticPools Update. */
+/**
+ * Samples for ElasticPools Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Update an elastic pool with all parameter.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateAnElasticPoolWithAllParameter(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -23,6 +24,6 @@ public final class Main {
                 .withPerDatabaseSettings(
                     new ElasticPoolPerDatabaseSettings().withMinCapacity(0.25D).withMaxCapacity(1.0D))
                 .withZoneRedundant(true).withLicenseType(ElasticPoolLicenseType.LICENSE_INCLUDED),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

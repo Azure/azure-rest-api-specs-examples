@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobTargetGroups Delete. */
+/**
+ * Samples for JobTargetGroups Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete a target group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteATargetGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobTargetGroups().deleteWithResponse("group1", "server1",
-            "agent1", "targetGroup1", Context.NONE);
+            "agent1", "targetGroup1", com.azure.core.util.Context.NONE);
     }
 }

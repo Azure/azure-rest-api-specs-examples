@@ -16,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Deploys workflow artifacts.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deploysWorkflowArtifacts(com.azure.resourcemanager.AzureResourceManager azure)

@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ReplicaType;
 
-/** Samples for ManagedInstances Failover. */
+/**
+ * Samples for ManagedInstances Failover.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +11,11 @@ public final class Main {
      */
     /**
      * Sample code: Failover a managed instance.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void failoverAManagedInstance(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedInstances().failover("group1", "instanceName",
-            ReplicaType.PRIMARY, Context.NONE);
+            ReplicaType.PRIMARY, com.azure.core.util.Context.NONE);
     }
 }

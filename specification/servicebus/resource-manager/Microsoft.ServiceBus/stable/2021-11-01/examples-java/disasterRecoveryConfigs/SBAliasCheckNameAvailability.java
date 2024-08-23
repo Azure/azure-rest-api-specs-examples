@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.models.CheckNameAvailability;
 
-/** Samples for DisasterRecoveryConfigs CheckNameAvailability. */
+/**
+ * Samples for DisasterRecoveryConfigs CheckNameAvailability.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,12 +12,12 @@ public final class Main {
      */
     /**
      * Sample code: AliasNameAvailability.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void aliasNameAvailability(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getDisasterRecoveryConfigs()
             .checkNameAvailabilityWithResponse("exampleResourceGroup", "sdk-Namespace-9080",
-                new CheckNameAvailability().withName("sdk-DisasterRecovery-9474"), Context.NONE);
+                new CheckNameAvailability().withName("sdk-DisasterRecovery-9474"), com.azure.core.util.Context.NONE);
     }
 }

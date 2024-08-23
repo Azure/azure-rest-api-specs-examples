@@ -1,5 +1,7 @@
 
-/** Samples for SharedPrivateLinkResources Get. */
+/**
+ * Samples for SharedPrivateLinkResources Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: SharedPrivateLinkResourceGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void sharedPrivateLinkResourceGet(com.azure.resourcemanager.AzureResourceManager azure) {

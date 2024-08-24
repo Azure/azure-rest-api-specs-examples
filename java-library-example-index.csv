@@ -4457,3 +4457,11 @@ id,name,language,tag,package,version,date_epoch,date
 4456,azure-mgmt-hdinsight@9.0.0b3,python,azure-mgmt-hdinsight_9.0.0b3,azure-mgmt-hdinsight,9.0.0b3,1724231610,08/21/2024
 4457,com.azure.resourcemanager:azure-resourcemanager-machinelearning:1.1.0,java,azure-resourcemanager-machinelearning_1.1.0,azure-resourcemanager-machinelearning,1.1.0,1724322767,08/22/2024
 4458,com.azure.resourcemanager:azure-resourcemanager-redhatopenshift:1.0.0-beta.1,java,azure-resourcemanager-redhatopenshift_1.0.0-beta.1,azure-resourcemanager-redhatopenshift,1.0.0-beta.1,1724287040,08/22/2024
+4459,com.azure.resourcemanager:azure-resourcemanager:2.42.0,java,azure-resourcemanager_2.42.0,azure-resourcemanager,2.42.0,1724403226,08/23/2024
+4460,@azure/arm-containerservice@21.1.0-beta.1,js,@azure/arm-containerservice_21.1.0-beta.1,@azure/arm-containerservice,21.1.0-beta.1,1724395352,08/23/2024
+4461,@azure/arm-compute@22.1.0,js,@azure/arm-compute_22.1.0,@azure/arm-compute,22.1.0,1724395116,08/23/2024
+4462,@azure/arm-netapp@21.2.0,js,@azure/arm-netapp_21.2.0,@azure/arm-netapp,21.2.0,1724394636,08/23/2024
+4463,@azure/arm-machinelearning@3.0.0,js,@azure/arm-machinelearning_3.0.0,@azure/arm-machinelearning,3.0.0,1724394361,08/23/2024
+4464,@azure/arm-hdinsightcontainers@1.0.0-beta.3,js,@azure/arm-hdinsightcontainers_1.0.0-beta.3,@azure/arm-hdinsightcontainers,1.0.0-beta.3,1724393059,08/23/2024
+4465,@azure/arm-azurestackhci@4.0.0-beta.2,js,@azure/arm-azurestackhci_4.0.0-beta.2,@azure/arm-azurestackhci,4.0.0-beta.2,1724392957,08/23/2024
+4466,azure-mgmt-compute@33.0.0,python,azure-mgmt-compute_33.0.0,azure-mgmt-compute,33.0.0,1724402554,08/23/2024

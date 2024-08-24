@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.containerinstance.models.ContainerExecRequest;
 import com.azure.resourcemanager.containerinstance.models.ContainerExecRequestTerminalSize;
 
-/** Samples for Containers ExecuteCommand. */
+/**
+ * Samples for Containers ExecuteCommand.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerExec.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerExec(com.azure.resourcemanager.AzureResourceManager azure) {

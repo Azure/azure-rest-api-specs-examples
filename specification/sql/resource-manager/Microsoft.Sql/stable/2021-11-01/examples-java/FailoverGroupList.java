@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for FailoverGroups ListByServer. */
+/**
+ * Samples for FailoverGroups ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List failover group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listFailoverGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getFailoverGroups().listByServer("Default",
-            "failover-group-primary-server", Context.NONE);
+            "failover-group-primary-server", com.azure.core.util.Context.NONE);
     }
 }

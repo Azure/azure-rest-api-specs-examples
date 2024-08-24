@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedInstanceInner;
 import com.azure.resourcemanager.sql.models.BackupStorageRedundancy;
 import com.azure.resourcemanager.sql.models.ManagedInstanceExternalAdministrator;
@@ -13,7 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-/** Samples for ManagedInstances CreateOrUpdate. */
+/**
+ * Samples for ManagedInstances CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -21,12 +22,12 @@ public final class Main {
      */
     /**
      * Sample code: Create managed instance with all properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createManagedInstanceWithAllProperties(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedInstances().createOrUpdate("testrg", "testinstance",
-            new ManagedInstanceInner().withLocation("Japan East").withTags(mapOf("tagKey1", "TagValue1"))
+            new ManagedInstanceInner().withLocation("Japan East").withTags(mapOf("tagKey1", "fakeTokenPlaceholder"))
                 .withSku(new Sku().withName("GP_Gen5").withTier("GeneralPurpose")).withAdministratorLogin("dummylogin")
                 .withAdministratorLoginPassword("fakeTokenPlaceholder")
                 .withSubnetId(
@@ -47,9 +48,10 @@ public final class Main {
                     .withTenantId(UUID.fromString("00000011-1111-2222-2222-123456789111"))
                     .withAzureADOnlyAuthentication(true))
                 .withServicePrincipal(new ServicePrincipal().withType(ServicePrincipalType.SYSTEM_ASSIGNED)),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

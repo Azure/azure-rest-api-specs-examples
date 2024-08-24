@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for InstanceFailoverGroups ListByLocation. */
+/**
+ * Samples for InstanceFailoverGroups ListByLocation.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List failover group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listFailoverGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getInstanceFailoverGroups().listByLocation("Default", "Japan East",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

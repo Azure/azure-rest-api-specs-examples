@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Jobs ListByAgent. */
+/**
+ * Samples for Jobs ListByAgent.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,10 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List jobs in a job agent.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listJobsInAJobAgent(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getJobs().listByAgent("group1", "server1", "agent1", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getJobs().listByAgent("group1", "server1", "agent1",
+            com.azure.core.util.Context.NONE);
     }
 }

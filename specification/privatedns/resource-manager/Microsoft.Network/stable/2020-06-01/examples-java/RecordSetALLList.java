@@ -1,5 +1,7 @@
 
-/** Samples for RecordSets List. */
+/**
+ * Samples for RecordSets List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: GET Private DNS Zone ALL Record Sets.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void gETPrivateDNSZoneALLRecordSets(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,11 +1,12 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ServerBlobAuditingPolicyInner;
 import com.azure.resourcemanager.sql.models.BlobAuditingPolicyState;
 import java.util.Arrays;
 import java.util.UUID;
 
-/** Samples for ServerBlobAuditingPolicies CreateOrUpdate. */
+/**
+ * Samples for ServerBlobAuditingPolicies CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Update a server's blob auditing policy with all parameters.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -28,6 +29,6 @@ public final class Main {
                 .withStorageEndpoint("https://mystorage.blob.core.windows.net")
                 .withStorageAccountAccessKey("fakeTokenPlaceholder").withStorageAccountSubscriptionId(
                     UUID.fromString("00000000-1234-0000-5678-000000000000")),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

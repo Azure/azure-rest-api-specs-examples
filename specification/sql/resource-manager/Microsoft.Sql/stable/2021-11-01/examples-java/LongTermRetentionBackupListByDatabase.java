@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for LongTermRetentionBackups ListByDatabase. */
+/**
+ * Samples for LongTermRetentionBackups ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: Get all long term retention backups under the database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getAllLongTermRetentionBackupsUnderTheDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getLongTermRetentionBackups().listByDatabase("japaneast",
-            "testserver", "testDatabase", null, null, Context.NONE);
+            "testserver", "testDatabase", null, null, com.azure.core.util.Context.NONE);
     }
 }

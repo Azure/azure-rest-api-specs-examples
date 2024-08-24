@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.DatabaseAutomaticTuningInner;
 import com.azure.resourcemanager.sql.models.AutomaticTuningMode;
 import com.azure.resourcemanager.sql.models.AutomaticTuningOptionModeDesired;
@@ -7,7 +6,9 @@ import com.azure.resourcemanager.sql.models.AutomaticTuningOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for DatabaseAutomaticTuning Update. */
+/**
+ * Samples for DatabaseAutomaticTuning Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Updates database automatic tuning settings with all properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -28,9 +29,10 @@ public final class Main {
                     new AutomaticTuningOptions().withDesiredState(AutomaticTuningOptionModeDesired.ON),
                     "forceLastGoodPlan",
                     new AutomaticTuningOptions().withDesiredState(AutomaticTuningOptionModeDesired.DEFAULT))),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

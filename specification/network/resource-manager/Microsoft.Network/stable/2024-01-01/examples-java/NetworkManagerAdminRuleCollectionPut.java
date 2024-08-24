@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or Update an admin rule collection.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAnAdminRuleCollection(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -8,7 +8,9 @@ import com.azure.resourcemanager.authorization.models.RoleManagementPolicyNotifi
 import com.azure.resourcemanager.authorization.models.RoleManagementPolicyRuleTarget;
 import java.util.Arrays;
 
-/** Samples for RoleManagementPolicies Update. */
+/**
+ * Samples for RoleManagementPolicies Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -17,7 +19,7 @@ public final class Main {
      */
     /**
      * Sample code: PatchPartialRoleManagementPolicy.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchPartialRoleManagementPolicy(com.azure.resourcemanager.AzureResourceManager azure) {

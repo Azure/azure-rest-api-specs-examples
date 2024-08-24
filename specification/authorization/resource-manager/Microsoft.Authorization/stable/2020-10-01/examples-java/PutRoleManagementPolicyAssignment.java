@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.authorization.fluent.models.RoleManagementPolicyAssignmentInner;
 
-/** Samples for RoleManagementPolicyAssignments Create. */
+/**
+ * Samples for RoleManagementPolicyAssignments Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: PutRoleManagementPolicyAssignment.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void putRoleManagementPolicyAssignment(com.azure.resourcemanager.AzureResourceManager azure) {

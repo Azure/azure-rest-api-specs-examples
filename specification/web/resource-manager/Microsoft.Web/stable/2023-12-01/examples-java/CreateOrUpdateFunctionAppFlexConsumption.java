@@ -25,7 +25,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or Update Flex Consumption function app.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateFlexConsumptionFunctionApp(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -45,7 +45,7 @@ public final class Main {
                             .withStorageAccountConnectionStringName("TheAppSettingName"))))
                 .withRuntime(new FunctionsRuntime().withName(RuntimeName.PYTHON).withVersion("3.11"))
                 .withScaleAndConcurrency(
-                    new FunctionsScaleAndConcurrency().withMaximumInstanceCount(100.0F).withInstanceMemoryMB(2048.0F))),
+                    new FunctionsScaleAndConcurrency().withMaximumInstanceCount(100).withInstanceMemoryMB(2048))),
             com.azure.core.util.Context.NONE);
     }
 

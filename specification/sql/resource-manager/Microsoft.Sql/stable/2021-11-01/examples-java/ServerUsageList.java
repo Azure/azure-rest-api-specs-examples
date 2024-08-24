@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerUsages ListByServer. */
+/**
+ * Samples for ServerUsages ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List servers usages.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listServersUsages(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerUsages().listByServer("sqlcrudtest-6730",
-            "sqlcrudtest-9007", Context.NONE);
+            "sqlcrudtest-9007", com.azure.core.util.Context.NONE);
     }
 }

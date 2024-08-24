@@ -17,7 +17,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ContainerGroups CreateOrUpdate. */
+/**
+ * Samples for ContainerGroups CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -26,7 +28,7 @@ public final class Main {
      */
     /**
      * Sample code: ConfidentialContainerGroup.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void confidentialContainerGroup(com.azure.resourcemanager.AzureResourceManager azure) {

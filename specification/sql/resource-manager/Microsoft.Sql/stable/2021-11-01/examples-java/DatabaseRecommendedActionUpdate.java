@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.RecommendedActionInner;
 import com.azure.resourcemanager.sql.models.RecommendedActionCurrentState;
 import com.azure.resourcemanager.sql.models.RecommendedActionStateInfo;
 
-/** Samples for DatabaseRecommendedActions Update. */
+/**
+ * Samples for DatabaseRecommendedActions Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Update database recommended action.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateDatabaseRecommendedAction(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -21,6 +22,6 @@ public final class Main {
             "IR_[CRM]_[DataPoints]_4821CD2F9510D98184BB",
             new RecommendedActionInner()
                 .withState(new RecommendedActionStateInfo().withCurrentValue(RecommendedActionCurrentState.PENDING)),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

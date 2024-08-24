@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Update Auth Settings.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateAuthSettings(com.azure.resourcemanager.AzureResourceManager azure) {

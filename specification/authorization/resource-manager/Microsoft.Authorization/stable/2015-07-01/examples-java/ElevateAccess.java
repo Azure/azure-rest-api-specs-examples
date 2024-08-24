@@ -1,5 +1,7 @@
 
-/** Samples for GlobalAdministrator ElevateAccess. */
+/**
+ * Samples for GlobalAdministrator ElevateAccess.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Elevate access global administrator.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void elevateAccessGlobalAdministrator(com.azure.resourcemanager.AzureResourceManager azure) {

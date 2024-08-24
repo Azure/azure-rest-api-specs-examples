@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for VirtualNetworkRules Delete. */
+/**
+ * Samples for VirtualNetworkRules Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete a virtual network rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAVirtualNetworkRule(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getVirtualNetworkRules().delete("Default", "vnet-test-svr",
-            "vnet-firewall-rule", Context.NONE);
+            "vnet-firewall-rule", com.azure.core.util.Context.NONE);
     }
 }

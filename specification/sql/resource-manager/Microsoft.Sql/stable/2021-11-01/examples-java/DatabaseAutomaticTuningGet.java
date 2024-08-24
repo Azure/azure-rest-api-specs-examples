@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseAutomaticTuning Get. */
+/**
+ * Samples for DatabaseAutomaticTuning Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a database's automatic tuning settings.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getADatabaseSAutomaticTuningSettings(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseAutomaticTunings().getWithResponse("default-sql-onebox",
-            "testsvr11", "db1", Context.NONE);
+            "testsvr11", "db1", com.azure.core.util.Context.NONE);
     }
 }

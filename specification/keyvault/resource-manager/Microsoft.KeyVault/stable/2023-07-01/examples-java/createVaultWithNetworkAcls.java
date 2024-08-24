@@ -12,7 +12,9 @@ import com.azure.resourcemanager.keyvault.models.VirtualNetworkRule;
 import java.util.Arrays;
 import java.util.UUID;
 
-/** Samples for Vaults CreateOrUpdate. */
+/**
+ * Samples for Vaults CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -21,7 +23,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update a vault with network acls.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAVaultWithNetworkAcls(com.azure.resourcemanager.AzureResourceManager azure) {

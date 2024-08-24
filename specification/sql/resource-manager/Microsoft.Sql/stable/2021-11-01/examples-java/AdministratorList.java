@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerAzureADAdministrators ListByServer. */
+/**
+ * Samples for ServerAzureADAdministrators ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets a list of Azure Active Directory administrator.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getsAListOfAzureActiveDirectoryAdministrator(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerAzureADAdministrators().listByServer("sqlcrudtest-4799",
-            "sqlcrudtest-6440", Context.NONE);
+            "sqlcrudtest-6440", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedDatabases Delete. */
+/**
+ * Samples for ManagedDatabases Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete managed database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteManagedDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabases().delete("Default-SQL-SouthEastAsia",
-            "managedInstance", "testdb", Context.NONE);
+            "managedInstance", "testdb", com.azure.core.util.Context.NONE);
     }
 }

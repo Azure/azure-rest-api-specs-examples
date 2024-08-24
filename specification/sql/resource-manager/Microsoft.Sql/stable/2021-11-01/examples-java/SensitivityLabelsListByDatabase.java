@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for SensitivityLabels ListByDatabase. */
+/**
+ * Samples for SensitivityLabels ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets the current and recommended sensitivity labels of a given database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsTheCurrentAndRecommendedSensitivityLabelsOfAGivenDatabase(
         com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getSensitivityLabels().listByDatabase("myRG", "myServer",
-            "myDatabase", null, Context.NONE);
+            "myDatabase", null, com.azure.core.util.Context.NONE);
     }
 }

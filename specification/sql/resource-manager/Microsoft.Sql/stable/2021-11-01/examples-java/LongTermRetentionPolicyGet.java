@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.LongTermRetentionPolicyName;
 
-/** Samples for LongTermRetentionPolicies Get. */
+/**
+ * Samples for LongTermRetentionPolicies Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +11,12 @@ public final class Main {
      */
     /**
      * Sample code: Get the long term retention policy for the database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getTheLongTermRetentionPolicyForTheDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getLongTermRetentionPolicies().getWithResponse("resourceGroup",
-            "testserver", "testDatabase", LongTermRetentionPolicyName.DEFAULT, Context.NONE);
+            "testserver", "testDatabase", LongTermRetentionPolicyName.DEFAULT, com.azure.core.util.Context.NONE);
     }
 }

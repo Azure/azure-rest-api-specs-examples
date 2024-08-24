@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBMongoDBRoleDefinitionCreateUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBMongoDBRoleDefinitionCreateUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

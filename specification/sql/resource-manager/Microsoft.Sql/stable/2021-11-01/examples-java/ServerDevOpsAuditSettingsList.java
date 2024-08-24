@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerDevOpsAuditSettings ListByServer. */
+/**
+ * Samples for ServerDevOpsAuditSettings ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List DevOps audit settings of a server.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDevOpsAuditSettingsOfAServer(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerDevOpsAuditSettings().listByServer("devAuditTestRG",
-            "devOpsAuditTestSvr", Context.NONE);
+            "devOpsAuditTestSvr", com.azure.core.util.Context.NONE);
     }
 }

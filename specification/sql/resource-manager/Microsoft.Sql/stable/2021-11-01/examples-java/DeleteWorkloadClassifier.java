@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for WorkloadClassifiers Delete. */
+/**
+ * Samples for WorkloadClassifiers Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete a workload classifier.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAWorkloadClassifier(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getWorkloadClassifiers().delete("Default-SQL-SouthEastAsia",
-            "testsvr", "testdb", "wlm_workloadgroup", "wlm_workloadclassifier", Context.NONE);
+            "testsvr", "testdb", "wlm_workloadgroup", "wlm_workloadclassifier", com.azure.core.util.Context.NONE);
     }
 }

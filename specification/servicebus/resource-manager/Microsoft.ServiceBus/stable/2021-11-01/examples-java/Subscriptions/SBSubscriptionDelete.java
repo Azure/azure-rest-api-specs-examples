@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Subscriptions Delete. */
+/**
+ * Samples for Subscriptions Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: SubscriptionDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void subscriptionDelete(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getSubscriptions().deleteWithResponse("ResourceGroup",
-            "sdk-Namespace-5882", "sdk-Topics-1804", "sdk-Subscriptions-3670", Context.NONE);
+            "sdk-Namespace-5882", "sdk-Topics-1804", "sdk-Subscriptions-3670", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for PrivateLinkResources Get. */
+/**
+ * Samples for PrivateLinkResources Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets a private link resource for SQL.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsAPrivateLinkResourceForSQL(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getPrivateLinkResources().getWithResponse("Default", "test-svr",
-            "plr", Context.NONE);
+            "plr", com.azure.core.util.Context.NONE);
     }
 }

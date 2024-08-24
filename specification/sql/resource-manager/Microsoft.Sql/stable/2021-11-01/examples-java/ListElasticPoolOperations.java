@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ElasticPoolOperations ListByElasticPool. */
+/**
+ * Samples for ElasticPoolOperations ListByElasticPool.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List the elastic pool management operations.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listTheElasticPoolManagementOperations(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getElasticPoolOperations().listByElasticPool("sqlcrudtestgroup",
-            "sqlcrudtestserver", "testpool", Context.NONE);
+            "sqlcrudtestserver", "testpool", com.azure.core.util.Context.NONE);
     }
 }

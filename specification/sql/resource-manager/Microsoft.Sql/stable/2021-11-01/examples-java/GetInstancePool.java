@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for InstancePools GetByResourceGroup. */
+/**
+ * Samples for InstancePools GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get an instance pool.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAnInstancePool(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getInstancePools().getByResourceGroupWithResponse("group1",
-            "testIP", Context.NONE);
+            "testIP", com.azure.core.util.Context.NONE);
     }
 }

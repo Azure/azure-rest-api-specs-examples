@@ -3,7 +3,9 @@ import com.azure.resourcemanager.search.models.SearchServiceUpdate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Services Update. */
+/**
+ * Samples for Services Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/search/resource-manager/Microsoft.Search/stable/2023-11-01/examples/
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: SearchUpdateServiceDisableLocalAuth.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void searchUpdateServiceDisableLocalAuth(com.azure.resourcemanager.AzureResourceManager azure) {

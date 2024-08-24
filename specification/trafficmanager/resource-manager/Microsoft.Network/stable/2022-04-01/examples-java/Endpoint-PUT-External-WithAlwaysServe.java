@@ -4,7 +4,9 @@ import com.azure.resourcemanager.trafficmanager.models.AlwaysServe;
 import com.azure.resourcemanager.trafficmanager.models.EndpointStatus;
 import com.azure.resourcemanager.trafficmanager.models.EndpointTypes;
 
-/** Samples for Endpoints CreateOrUpdate. */
+/**
+ * Samples for Endpoints CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Endpoint-PUT-External-WithAlwaysServe.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void endpointPUTExternalWithAlwaysServe(com.azure.resourcemanager.AzureResourceManager azure) {

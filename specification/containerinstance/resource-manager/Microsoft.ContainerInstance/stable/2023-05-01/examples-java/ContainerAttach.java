@@ -1,5 +1,7 @@
 
-/** Samples for Containers Attach. */
+/**
+ * Samples for Containers Attach.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerAttach.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerAttach(com.azure.resourcemanager.AzureResourceManager azure) {

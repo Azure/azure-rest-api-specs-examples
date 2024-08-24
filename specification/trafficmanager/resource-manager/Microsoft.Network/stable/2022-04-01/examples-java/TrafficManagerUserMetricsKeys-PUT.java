@@ -1,5 +1,7 @@
 
-/** Samples for TrafficManagerUserMetricsKeys CreateOrUpdate. */
+/**
+ * Samples for TrafficManagerUserMetricsKeys CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/examples/
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: TrafficManagerUserMetricsKeys-PUT.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void trafficManagerUserMetricsKeysPUT(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ServerConnectionPolicyInner;
 import com.azure.resourcemanager.sql.models.ConnectionPolicyName;
 import com.azure.resourcemanager.sql.models.ServerConnectionType;
 
-/** Samples for ServerConnectionPolicies CreateOrUpdate. */
+/**
+ * Samples for ServerConnectionPolicies CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,12 +13,13 @@ public final class Main {
      */
     /**
      * Sample code: Updates a server connection policy.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updatesAServerConnectionPolicy(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerConnectionPolicies().createOrUpdate("testrg",
             "testserver", ConnectionPolicyName.DEFAULT,
-            new ServerConnectionPolicyInner().withConnectionType(ServerConnectionType.REDIRECT), Context.NONE);
+            new ServerConnectionPolicyInner().withConnectionType(ServerConnectionType.REDIRECT),
+            com.azure.core.util.Context.NONE);
     }
 }

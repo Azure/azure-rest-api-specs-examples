@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Queues Get. */
+/**
+ * Samples for Queues Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: QueueGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void queueGet(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getQueues().getWithResponse("ArunMonocle",
-            "sdk-Namespace-3174", "sdk-Queues-5647", Context.NONE);
+            "sdk-Namespace-3174", "sdk-Queues-5647", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ManagedInstanceUpdate;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ManagedInstances Update. */
+/**
+ * Samples for ManagedInstances Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,15 +13,17 @@ public final class Main {
      */
     /**
      * Sample code: Update managed instance with minimal properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         updateManagedInstanceWithMinimalProperties(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedInstances().update("testrg", "testinstance",
-            new ManagedInstanceUpdate().withTags(mapOf("tagKey1", "TagValue1")), Context.NONE);
+            new ManagedInstanceUpdate().withTags(mapOf("tagKey1", "fakeTokenPlaceholder")),
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

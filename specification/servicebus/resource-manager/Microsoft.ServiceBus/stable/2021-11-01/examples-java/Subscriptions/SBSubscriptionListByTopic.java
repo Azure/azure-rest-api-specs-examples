@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Subscriptions ListByTopic. */
+/**
+ * Samples for Subscriptions ListByTopic.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: SubscriptionListByTopic.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void subscriptionListByTopic(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getSubscriptions().listByTopic("ResourceGroup",
-            "sdk-Namespace-1349", "sdk-Topics-8740", null, null, Context.NONE);
+            "sdk-Namespace-1349", "sdk-Topics-8740", null, null, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobExecutions Create. */
+/**
+ * Samples for JobExecutions Create.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Start a job execution.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void startAJobExecution(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobExecutions().create("group1", "server1", "agent1", "job1",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

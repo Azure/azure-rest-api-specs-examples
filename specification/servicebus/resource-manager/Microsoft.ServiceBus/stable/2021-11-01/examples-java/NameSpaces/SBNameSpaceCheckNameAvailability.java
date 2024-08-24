@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.models.CheckNameAvailability;
 
-/** Samples for Namespaces CheckNameAvailability. */
+/**
+ * Samples for Namespaces CheckNameAvailability.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,11 +12,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceCheckNameAvailability.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceCheckNameAvailability(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getNamespaces().checkNameAvailabilityWithResponse(
-            new CheckNameAvailability().withName("sdk-Namespace-2924"), Context.NONE);
+            new CheckNameAvailability().withName("sdk-Namespace-2924"), com.azure.core.util.Context.NONE);
     }
 }

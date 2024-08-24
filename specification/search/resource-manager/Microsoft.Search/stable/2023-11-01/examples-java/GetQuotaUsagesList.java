@@ -1,5 +1,7 @@
 
-/** Samples for Usages ListBySubscription. */
+/**
+ * Samples for Usages ListBySubscription.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: GetQuotaUsagesList.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getQuotaUsagesList(com.azure.resourcemanager.AzureResourceManager azure) {

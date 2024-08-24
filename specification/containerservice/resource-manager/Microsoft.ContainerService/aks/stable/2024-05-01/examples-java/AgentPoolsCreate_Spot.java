@@ -18,7 +18,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Spot Agent Pool.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createSpotAgentPool(com.azure.resourcemanager.AzureResourceManager azure) {

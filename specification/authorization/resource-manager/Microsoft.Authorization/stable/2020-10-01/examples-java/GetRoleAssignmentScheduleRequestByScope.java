@@ -1,5 +1,7 @@
 
-/** Samples for RoleAssignmentScheduleRequests ListForScope. */
+/**
+ * Samples for RoleAssignmentScheduleRequests ListForScope.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: GetRoleAssignmentScheduleRequestByScope.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getRoleAssignmentScheduleRequestByScope(com.azure.resourcemanager.AzureResourceManager azure) {

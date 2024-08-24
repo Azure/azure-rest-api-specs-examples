@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DeletedServers Recover. */
+/**
+ * Samples for DeletedServers Recover.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Recover deleted server.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void recoverDeletedServer(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDeletedServers().recover("japaneast", "sqlcrudtest-d-1414",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

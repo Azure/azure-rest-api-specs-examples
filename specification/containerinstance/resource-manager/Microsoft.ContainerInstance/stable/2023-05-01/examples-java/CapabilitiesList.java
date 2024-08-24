@@ -1,5 +1,7 @@
 
-/** Samples for Location ListCapabilities. */
+/**
+ * Samples for Location ListCapabilities.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: GetCapabilities.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getCapabilities(com.azure.resourcemanager.AzureResourceManager azure) {

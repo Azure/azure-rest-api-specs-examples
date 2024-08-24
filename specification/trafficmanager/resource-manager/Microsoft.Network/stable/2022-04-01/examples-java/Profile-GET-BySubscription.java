@@ -1,5 +1,7 @@
 
-/** Samples for Profiles List. */
+/**
+ * Samples for Profiles List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: ListBySubscription.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listBySubscription(com.azure.resourcemanager.AzureResourceManager azure) {

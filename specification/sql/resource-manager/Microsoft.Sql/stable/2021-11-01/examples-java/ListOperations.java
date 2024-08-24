@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Operations List. */
+/**
+ * Samples for Operations List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Lists all of the available SQL Rest API operations.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         listsAllOfTheAvailableSQLRestAPIOperations(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getOperations().list(Context.NONE);
+        azure.sqlServers().manager().serviceClient().getOperations().list(com.azure.core.util.Context.NONE);
     }
 }

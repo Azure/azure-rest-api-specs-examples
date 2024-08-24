@@ -18,7 +18,7 @@ public final class Main {
      */
     /**
      * Sample code: Create an admin rule.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAnAdminRule(com.azure.resourcemanager.AzureResourceManager azure) {

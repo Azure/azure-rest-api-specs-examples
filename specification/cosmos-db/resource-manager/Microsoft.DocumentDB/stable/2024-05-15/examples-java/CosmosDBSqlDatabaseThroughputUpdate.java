@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBSqlDatabaseThroughputUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBSqlDatabaseThroughputUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

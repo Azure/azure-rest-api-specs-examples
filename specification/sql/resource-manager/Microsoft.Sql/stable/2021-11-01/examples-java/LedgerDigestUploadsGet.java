@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.LedgerDigestUploadsName;
 
-/** Samples for LedgerDigestUploadsOperation Get. */
+/**
+ * Samples for LedgerDigestUploadsOperation Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +11,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets the current ledger digest upload configuration for a database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsTheCurrentLedgerDigestUploadConfigurationForADatabase(
         com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getLedgerDigestUploadsOperations().getWithResponse("ledgertestrg",
-            "ledgertestserver", "testdb", LedgerDigestUploadsName.CURRENT, Context.NONE);
+            "ledgertestserver", "testdb", LedgerDigestUploadsName.CURRENT, com.azure.core.util.Context.NONE);
     }
 }

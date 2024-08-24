@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedDatabaseSecurityEvents ListByDatabase. */
+/**
+ * Samples for ManagedDatabaseSecurityEvents ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: Get the managed database's security events with minimal parameters.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getTheManagedDatabaseSSecurityEventsWithMinimalParameters(
         com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabaseSecurityEvents().listByDatabase("testrg",
-            "testcl", "database1", null, null, null, null, Context.NONE);
+            "testcl", "database1", null, null, null, null, com.azure.core.util.Context.NONE);
     }
 }

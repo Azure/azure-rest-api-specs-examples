@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseSchemas Get. */
+/**
+ * Samples for DatabaseSchemas Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get database schema.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getDatabaseSchema(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseSchemas().getWithResponse("myRG", "serverName",
-            "myDatabase", "dbo", Context.NONE);
+            "myDatabase", "dbo", com.azure.core.util.Context.NONE);
     }
 }

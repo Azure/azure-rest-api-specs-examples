@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerTrustGroups ListByLocation. */
+/**
+ * Samples for ServerTrustGroups ListByLocation.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List server trust groups.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listServerTrustGroups(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerTrustGroups().listByLocation("Default", "Japan East",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

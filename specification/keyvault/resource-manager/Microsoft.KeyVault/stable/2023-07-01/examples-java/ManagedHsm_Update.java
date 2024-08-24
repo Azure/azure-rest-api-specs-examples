@@ -3,7 +3,9 @@ import com.azure.resourcemanager.keyvault.fluent.models.ManagedHsmInner;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ManagedHsms Update. */
+/**
+ * Samples for ManagedHsms Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Update an existing managed HSM Pool.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateAnExistingManagedHSMPool(com.azure.resourcemanager.AzureResourceManager azure) {

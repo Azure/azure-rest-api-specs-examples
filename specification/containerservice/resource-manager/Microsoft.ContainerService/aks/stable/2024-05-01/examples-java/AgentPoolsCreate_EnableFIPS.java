@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Agent Pool with FIPS enabled OS.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAgentPoolWithFIPSEnabledOS(com.azure.resourcemanager.AzureResourceManager azure) {

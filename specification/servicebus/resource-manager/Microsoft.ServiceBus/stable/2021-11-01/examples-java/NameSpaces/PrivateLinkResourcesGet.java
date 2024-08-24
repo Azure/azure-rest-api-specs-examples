@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for PrivateLinkResources Get. */
+/**
+ * Samples for PrivateLinkResources Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: NameSpacePrivateLinkResourcesGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpacePrivateLinkResourcesGet(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getPrivateLinkResources().getWithResponse("ArunMonocle",
-            "sdk-Namespace-2924", Context.NONE);
+            "sdk-Namespace-2924", com.azure.core.util.Context.NONE);
     }
 }

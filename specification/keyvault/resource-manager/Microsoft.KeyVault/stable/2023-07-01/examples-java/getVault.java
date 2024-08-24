@@ -1,5 +1,7 @@
 
-/** Samples for Vaults GetByResourceGroup. */
+/**
+ * Samples for Vaults GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Retrieve a vault.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void retrieveAVault(com.azure.resourcemanager.AzureResourceManager azure) {

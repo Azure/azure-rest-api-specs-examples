@@ -29,7 +29,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBDatabaseAccountPatch.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBDatabaseAccountPatch(com.azure.resourcemanager.AzureResourceManager azure) {

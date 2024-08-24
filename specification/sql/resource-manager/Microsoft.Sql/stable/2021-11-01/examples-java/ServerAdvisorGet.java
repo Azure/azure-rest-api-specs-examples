@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerAdvisors Get. */
+/**
+ * Samples for ServerAdvisors Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get server advisor.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getServerAdvisor(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerAdvisors().getWithResponse("workloadinsight-demos",
-            "misosisvr", "CreateIndex", Context.NONE);
+            "misosisvr", "CreateIndex", com.azure.core.util.Context.NONE);
     }
 }

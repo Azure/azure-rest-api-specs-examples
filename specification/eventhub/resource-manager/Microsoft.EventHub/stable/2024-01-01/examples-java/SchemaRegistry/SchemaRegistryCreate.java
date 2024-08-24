@@ -16,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: SchemaRegistryCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void schemaRegistryCreate(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for RestorableDroppedDatabases Get. */
+/**
+ * Samples for RestorableDroppedDatabases Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets a restorable dropped database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsARestorableDroppedDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getRestorableDroppedDatabases()
-            .getWithResponse("Default-SQL-SouthEastAsia", "testsvr", "testdb,131403269876900000", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getRestorableDroppedDatabases().getWithResponse(
+            "Default-SQL-SouthEastAsia", "testsvr", "testdb,131403269876900000", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ImportNewDatabaseDefinition;
 import com.azure.resourcemanager.sql.models.NetworkIsolationSettings;
 import com.azure.resourcemanager.sql.models.StorageKeyType;
 
-/** Samples for Servers ImportDatabase. */
+/**
+ * Samples for Servers ImportDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Imports to a new database, using private link for the SQL server and storage account.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void importsToANewDatabaseUsingPrivateLinkForTheSQLServerAndStorageAccount(
@@ -27,6 +28,6 @@ public final class Main {
                     "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Storage/storageAccounts/test-privatelink")
                     .withSqlServerResourceId(
                         "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/Default-SQL-SouthEastAsia/providers/Microsoft.Sql/servers/testsvr")),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

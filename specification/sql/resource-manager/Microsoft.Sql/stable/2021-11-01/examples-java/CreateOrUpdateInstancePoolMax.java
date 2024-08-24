@@ -1,12 +1,13 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.InstancePoolInner;
 import com.azure.resourcemanager.sql.models.InstancePoolLicenseType;
 import com.azure.resourcemanager.sql.models.Sku;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for InstancePools CreateOrUpdate. */
+/**
+ * Samples for InstancePools CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Create an instance pool with all properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAnInstancePoolWithAllProperties(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -24,9 +25,10 @@ public final class Main {
                 .withSubnetId(
                     "/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/group1/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet1")
                 .withVCores(8).withLicenseType(InstancePoolLicenseType.LICENSE_INCLUDED),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

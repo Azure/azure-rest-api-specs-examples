@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ReplicationLinks FailoverAllowDataLoss. */
+/**
+ * Samples for ReplicationLinks FailoverAllowDataLoss.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: Forced failover of a replication link.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void forcedFailoverOfAReplicationLink(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getReplicationLinks().failoverAllowDataLoss("Default", "sourcesvr",
-            "gamma-db", "4891ca10-ebd0-47d7-9182-c722651780fb", Context.NONE);
+            "gamma-db", "4891ca10-ebd0-47d7-9182-c722651780fb", com.azure.core.util.Context.NONE);
     }
 }

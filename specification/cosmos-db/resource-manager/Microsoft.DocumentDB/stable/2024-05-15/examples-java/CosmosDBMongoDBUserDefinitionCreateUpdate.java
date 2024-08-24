@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBMongoDBUserDefinitionCreateUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBMongoDBUserDefinitionCreateUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

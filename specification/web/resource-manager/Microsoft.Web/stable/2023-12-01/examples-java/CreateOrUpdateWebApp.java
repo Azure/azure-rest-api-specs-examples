@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or Update web app.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateWebApp(com.azure.resourcemanager.AzureResourceManager azure) {

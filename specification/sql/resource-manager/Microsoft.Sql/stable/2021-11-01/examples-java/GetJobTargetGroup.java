@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobTargetGroups Get. */
+/**
+ * Samples for JobTargetGroups Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a target group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getATargetGroup(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobTargetGroups().getWithResponse("group1", "server1", "agent1",
-            "targetGroup1", Context.NONE);
+            "targetGroup1", com.azure.core.util.Context.NONE);
     }
 }

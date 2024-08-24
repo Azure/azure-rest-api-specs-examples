@@ -1,5 +1,7 @@
 
-/** Samples for SharedPrivateLinkResources Delete. */
+/**
+ * Samples for SharedPrivateLinkResources Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: SharedPrivateLinkResourceDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void sharedPrivateLinkResourceDelete(com.azure.resourcemanager.AzureResourceManager azure) {

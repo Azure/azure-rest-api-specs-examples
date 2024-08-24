@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.ReplicaType;
 
-/** Samples for Databases Failover. */
+/**
+ * Samples for Databases Failover.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +11,11 @@ public final class Main {
      */
     /**
      * Sample code: Failover an database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void failoverAnDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabases().failover("group1", "testServer", "testDatabase",
-            ReplicaType.PRIMARY, Context.NONE);
+            ReplicaType.PRIMARY, com.azure.core.util.Context.NONE);
     }
 }

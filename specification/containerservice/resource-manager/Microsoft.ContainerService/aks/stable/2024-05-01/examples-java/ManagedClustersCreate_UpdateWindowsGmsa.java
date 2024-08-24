@@ -37,7 +37,7 @@ public final class Main {
      */
     /**
      * Sample code: Create/Update Managed Cluster with Windows gMSA enabled.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

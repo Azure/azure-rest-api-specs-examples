@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ReplicationLinks ListByDatabase. */
+/**
+ * Samples for ReplicationLinks ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List replication links on server on database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listReplicationLinksOnServerOnDatabase(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getReplicationLinks().listByDatabase("Default", "sourcesvr",
-            "tetha-db", Context.NONE);
+            "tetha-db", com.azure.core.util.Context.NONE);
     }
 }

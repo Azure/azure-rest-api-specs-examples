@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DataWarehouseUserActivitiesOperation ListByDatabase. */
+/**
+ * Samples for DataWarehouseUserActivitiesOperation ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List of the user activities of a data warehouse.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listOfTheUserActivitiesOfADataWarehouse(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDataWarehouseUserActivitiesOperations()
-            .listByDatabase("Default-SQL-SouthEastAsia", "testsvr", "testdb", Context.NONE);
+            .listByDatabase("Default-SQL-SouthEastAsia", "testsvr", "testdb", com.azure.core.util.Context.NONE);
     }
 }

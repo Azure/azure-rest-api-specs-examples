@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseColumns Get. */
+/**
+ * Samples for DatabaseColumns Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get database column.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getDatabaseColumn(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseColumns().getWithResponse("myRG", "serverName",
-            "myDatabase", "dbo", "table1", "column1", Context.NONE);
+            "myDatabase", "dbo", "table1", "column1", com.azure.core.util.Context.NONE);
     }
 }

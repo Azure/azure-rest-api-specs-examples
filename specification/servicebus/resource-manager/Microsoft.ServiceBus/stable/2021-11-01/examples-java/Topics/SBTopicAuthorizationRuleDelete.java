@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Topics DeleteAuthorizationRule. */
+/**
+ * Samples for Topics DeleteAuthorizationRule.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: TopicAuthorizationRuleDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void topicAuthorizationRuleDelete(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getTopics().deleteAuthorizationRuleWithResponse(
-            "ArunMonocle", "sdk-Namespace-6261", "sdk-Topics-1984", "sdk-AuthRules-4310", Context.NONE);
+            "ArunMonocle", "sdk-Namespace-6261", "sdk-Topics-1984", "sdk-AuthRules-4310",
+            com.azure.core.util.Context.NONE);
     }
 }

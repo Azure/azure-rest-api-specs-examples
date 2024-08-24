@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Patch Bastion Host.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void patchBastionHost(com.azure.resourcemanager.AzureResourceManager azure) {

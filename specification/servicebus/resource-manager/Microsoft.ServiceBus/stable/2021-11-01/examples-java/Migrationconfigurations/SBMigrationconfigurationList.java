@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for MigrationConfigs List. */
+/**
+ * Samples for MigrationConfigs List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: MigrationConfigurationsList.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void migrationConfigurationsList(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getMigrationConfigs().list("ResourceGroup",
-            "sdk-Namespace-9259", Context.NONE);
+            "sdk-Namespace-9259", com.azure.core.util.Context.NONE);
     }
 }

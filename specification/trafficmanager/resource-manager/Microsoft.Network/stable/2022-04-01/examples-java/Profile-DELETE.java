@@ -1,5 +1,7 @@
 
-/** Samples for Profiles Delete. */
+/**
+ * Samples for Profiles Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: Profile-DELETE.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void profileDELETE(com.azure.resourcemanager.AzureResourceManager azure) {

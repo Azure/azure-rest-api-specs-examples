@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for LedgerDigestUploadsOperation ListByDatabase. */
+/**
+ * Samples for LedgerDigestUploadsOperation ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets list of ledger digest upload settings on a database.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getsListOfLedgerDigestUploadSettingsOnADatabase(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getLedgerDigestUploadsOperations().listByDatabase("ledgertestrg",
-            "ledgertestserver", "testdb", Context.NONE);
+            "ledgertestserver", "testdb", com.azure.core.util.Context.NONE);
     }
 }

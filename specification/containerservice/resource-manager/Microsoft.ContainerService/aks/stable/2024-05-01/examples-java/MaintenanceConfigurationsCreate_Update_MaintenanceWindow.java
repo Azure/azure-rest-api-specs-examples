@@ -20,7 +20,7 @@ public final class Main {
      */
     /**
      * Sample code: Create/Update Maintenance Configuration with Maintenance Window.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createUpdateMaintenanceConfigurationWithMaintenanceWindow(

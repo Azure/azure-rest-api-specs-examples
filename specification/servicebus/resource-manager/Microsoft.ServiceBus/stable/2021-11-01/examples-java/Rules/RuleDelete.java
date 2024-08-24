@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Rules Delete. */
+/**
+ * Samples for Rules Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: RulesDelete.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void rulesDelete(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getRules().deleteWithResponse("ArunMonocle",
-            "sdk-Namespace-1319", "sdk-Topics-2081", "sdk-Subscriptions-8691", "sdk-Rules-6571", Context.NONE);
+            "sdk-Namespace-1319", "sdk-Topics-2081", "sdk-Subscriptions-8691", "sdk-Rules-6571",
+            com.azure.core.util.Context.NONE);
     }
 }

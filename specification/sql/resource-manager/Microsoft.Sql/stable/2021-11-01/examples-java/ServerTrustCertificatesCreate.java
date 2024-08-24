@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ServerTrustCertificateInner;
 
-/** Samples for ServerTrustCertificates CreateOrUpdate. */
+/**
+ * Samples for ServerTrustCertificates CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +11,13 @@ public final class Main {
      */
     /**
      * Sample code: Create server trust certificate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createServerTrustCertificate(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerTrustCertificates().createOrUpdate("testrg", "testcl",
             "customerCertificateName",
-            new ServerTrustCertificateInner().withPublicBlob("308203AE30820296A0030201020210"), Context.NONE);
+            new ServerTrustCertificateInner().withPublicBlob("308203AE30820296A0030201020210"),
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Topics ListKeys. */
+/**
+ * Samples for Topics ListKeys.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: TopicAuthorizationRuleListKey.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void topicAuthorizationRuleListKey(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getTopics().listKeysWithResponse(
-            "Default-ServiceBus-WestUS", "sdk-Namespace8408", "sdk-Topics2075", "sdk-Authrules5067", Context.NONE);
+            "Default-ServiceBus-WestUS", "sdk-Namespace8408", "sdk-Topics2075", "sdk-Authrules5067",
+            com.azure.core.util.Context.NONE);
     }
 }

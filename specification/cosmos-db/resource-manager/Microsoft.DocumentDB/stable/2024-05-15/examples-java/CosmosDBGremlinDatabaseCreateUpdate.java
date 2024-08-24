@@ -15,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBGremlinDatabaseCreateUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBGremlinDatabaseCreateUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

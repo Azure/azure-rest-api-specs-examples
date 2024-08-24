@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobCredentials ListByAgent. */
+/**
+ * Samples for JobCredentials ListByAgent.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List credentials in a job agent.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listCredentialsInAJobAgent(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobCredentials().listByAgent("group1", "server1", "agent1",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

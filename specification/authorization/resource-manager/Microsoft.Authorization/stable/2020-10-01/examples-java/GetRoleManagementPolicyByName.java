@@ -1,5 +1,7 @@
 
-/** Samples for RoleManagementPolicies Get. */
+/**
+ * Samples for RoleManagementPolicies Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: GetRoleManagementPolicyByName.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getRoleManagementPolicyByName(com.azure.resourcemanager.AzureResourceManager azure) {

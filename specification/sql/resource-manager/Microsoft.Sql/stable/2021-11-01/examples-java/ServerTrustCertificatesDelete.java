@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerTrustCertificates Delete. */
+/**
+ * Samples for ServerTrustCertificates Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete server trust certificate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteServerTrustCertificate(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getServerTrustCertificates().delete("testrg", "testcl",
-            "customerCertificateName", Context.NONE);
+            "customerCertificateName", com.azure.core.util.Context.NONE);
     }
 }

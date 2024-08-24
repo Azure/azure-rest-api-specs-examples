@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedDatabases ListByInstance. */
+/**
+ * Samples for ManagedDatabases ListByInstance.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +10,11 @@ public final class Main {
      */
     /**
      * Sample code: List databases by managed instances.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDatabasesByManagedInstances(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabases().listByInstance("Test1", "managedInstance",
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

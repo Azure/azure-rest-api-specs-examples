@@ -4,7 +4,9 @@ import com.azure.resourcemanager.search.models.PrivateEndpointConnectionProperti
 import com.azure.resourcemanager.search.models.PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState;
 import com.azure.resourcemanager.search.models.PrivateLinkServiceConnectionStatus;
 
-/** Samples for PrivateEndpointConnections Update. */
+/**
+ * Samples for PrivateEndpointConnections Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: PrivateEndpointConnectionUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void privateEndpointConnectionUpdate(com.azure.resourcemanager.AzureResourceManager azure) {

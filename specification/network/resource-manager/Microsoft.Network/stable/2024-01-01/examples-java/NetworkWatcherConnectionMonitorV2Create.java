@@ -21,7 +21,7 @@ public final class Main {
      */
     /**
      * Sample code: Create connection monitor V2.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createConnectionMonitorV2(com.azure.resourcemanager.AzureResourceManager azure) {

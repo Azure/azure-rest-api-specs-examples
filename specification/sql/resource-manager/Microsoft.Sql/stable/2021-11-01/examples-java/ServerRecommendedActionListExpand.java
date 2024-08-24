@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ServerAdvisors ListByServer. */
+/**
+ * Samples for ServerAdvisors ListByServer.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,12 +10,12 @@ public final class Main {
      */
     /**
      * Sample code: List of server recommended actions for all advisors.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         listOfServerRecommendedActionsForAllAdvisors(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getServerAdvisors()
-            .listByServerWithResponse("workloadinsight-demos", "misosisvr", "recommendedActions", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getServerAdvisors().listByServerWithResponse(
+            "workloadinsight-demos", "misosisvr", "recommendedActions", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,7 @@
 
-/** Samples for SystemAssignedIdentities GetByScope. */
+/**
+ * Samples for SystemAssignedIdentities GetByScope.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: MsiOperationsList.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void msiOperationsList(com.azure.resourcemanager.AzureResourceManager azure) {

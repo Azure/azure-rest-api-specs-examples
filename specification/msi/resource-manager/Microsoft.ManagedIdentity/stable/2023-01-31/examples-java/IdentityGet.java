@@ -1,5 +1,7 @@
 
-/** Samples for UserAssignedIdentities GetByResourceGroup. */
+/**
+ * Samples for UserAssignedIdentities GetByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: IdentityGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void identityGet(com.azure.resourcemanager.AzureResourceManager azure) {

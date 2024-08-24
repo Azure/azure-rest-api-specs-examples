@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseSchemas ListByDatabase. */
+/**
+ * Samples for DatabaseSchemas ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List database schemas.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDatabaseSchemas(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseSchemas().listByDatabase("myRG", "serverName",
-            "myDatabase", null, Context.NONE);
+            "myDatabase", null, com.azure.core.util.Context.NONE);
     }
 }

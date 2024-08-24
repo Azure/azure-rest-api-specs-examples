@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import java.util.UUID;
 
-/** Samples for JobExecutions Get. */
+/**
+ * Samples for JobExecutions Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +11,11 @@ public final class Main {
      */
     /**
      * Sample code: Get a job execution.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAJobExecution(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobExecutions().getWithResponse("group1", "server1", "agent1",
-            "job1", UUID.fromString("5A86BF65-43AC-F258-2524-9E92992F97CA"), Context.NONE);
+            "job1", UUID.fromString("5A86BF65-43AC-F258-2524-9E92992F97CA"), com.azure.core.util.Context.NONE);
     }
 }

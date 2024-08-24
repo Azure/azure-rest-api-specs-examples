@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.trafficmanager.models.CheckTrafficManagerRelativeDnsNameAvailabilityParameters;
 
-/** Samples for Profiles CheckTrafficManagerRelativeDnsNameAvailability. */
+/**
+ * Samples for Profiles CheckTrafficManagerRelativeDnsNameAvailability.
+ */
 public final class Main {
     /*
      * x-ms-original-file: specification/trafficmanager/resource-manager/Microsoft.Network/stable/2022-04-01/examples/
@@ -9,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: NameAvailabilityTest_NameAvailablePOST21.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameAvailabilityTestNameAvailablePOST21(com.azure.resourcemanager.AzureResourceManager azure) {

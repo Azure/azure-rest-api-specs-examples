@@ -18,7 +18,7 @@ public final class Main {
      */
     /**
      * Sample code: CosmosDBManagedCassandraClusterCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void cosmosDBManagedCassandraClusterCreate(com.azure.resourcemanager.AzureResourceManager azure) {

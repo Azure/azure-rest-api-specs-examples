@@ -1,5 +1,7 @@
 
-/** Samples for RoleManagementPolicies ListForScope. */
+/**
+ * Samples for RoleManagementPolicies ListForScope.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: GetRoleManagementPolicyByRoleDefinitionFilter.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

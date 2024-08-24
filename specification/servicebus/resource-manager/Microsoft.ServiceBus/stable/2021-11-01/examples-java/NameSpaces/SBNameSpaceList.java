@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Namespaces List. */
+/**
+ * Samples for Namespaces List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,10 +10,10 @@ public final class Main {
      */
     /**
      * Sample code: NameSpaceList.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void nameSpaceList(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.serviceBusNamespaces().manager().serviceClient().getNamespaces().list(Context.NONE);
+        azure.serviceBusNamespaces().manager().serviceClient().getNamespaces().list(com.azure.core.util.Context.NONE);
     }
 }

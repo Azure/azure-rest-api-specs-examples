@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import java.time.OffsetDateTime;
 
-/** Samples for JobExecutions ListByAgent. */
+/**
+ * Samples for JobExecutions ListByAgent.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: List all job executions in a job agent with filtering.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -19,6 +20,6 @@ public final class Main {
         azure.sqlServers().manager().serviceClient().getJobExecutions().listByAgent("group1", "server1", "agent1",
             OffsetDateTime.parse("2017-03-21T19:00:00Z"), OffsetDateTime.parse("2017-03-21T19:05:00Z"),
             OffsetDateTime.parse("2017-03-21T19:20:00Z"), OffsetDateTime.parse("2017-03-21T19:25:00Z"), false, null,
-            null, Context.NONE);
+            null, com.azure.core.util.Context.NONE);
     }
 }

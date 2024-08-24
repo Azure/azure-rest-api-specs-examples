@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.SyncMemberInner;
 import com.azure.resourcemanager.sql.models.SyncDirection;
 import com.azure.resourcemanager.sql.models.SyncMemberDbType;
 
-/** Samples for SyncMembers CreateOrUpdate. */
+/**
+ * Samples for SyncMembers CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Update a sync member.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateASyncMember(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -24,6 +25,6 @@ public final class Main {
                 .withUsePrivateLinkConnection(true).withServerName("syncgroupcrud-3379.database.windows.net")
                 .withDatabaseName("syncgroupcrud-7421").withUsername("myUser")
                 .withSyncDirection(SyncDirection.BIDIRECTIONAL),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

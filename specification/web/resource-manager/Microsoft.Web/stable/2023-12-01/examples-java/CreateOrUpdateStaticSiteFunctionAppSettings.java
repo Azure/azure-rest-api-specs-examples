@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Creates or updates the function app settings of a static site.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

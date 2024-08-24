@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.SensitivityLabelSource;
 
-/** Samples for SensitivityLabels Get. */
+/**
+ * Samples for SensitivityLabels Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,11 +11,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets the sensitivity label of a given column.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsTheSensitivityLabelOfAGivenColumn(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getSensitivityLabels().getWithResponse("myRG", "myServer",
-            "myDatabase", "dbo", "myTable", "myColumn", SensitivityLabelSource.CURRENT, Context.NONE);
+            "myDatabase", "dbo", "myTable", "myColumn", SensitivityLabelSource.CURRENT,
+            com.azure.core.util.Context.NONE);
     }
 }

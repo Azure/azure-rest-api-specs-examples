@@ -43,7 +43,7 @@ public final class Main {
      */
     /**
      * Sample code: Create/Update Managed Cluster with Azure Service Mesh.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

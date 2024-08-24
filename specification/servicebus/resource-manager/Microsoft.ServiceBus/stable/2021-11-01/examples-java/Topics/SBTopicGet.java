@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for Topics Get. */
+/**
+ * Samples for Topics Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: TopicGet.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void topicGet(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.serviceBusNamespaces().manager().serviceClient().getTopics().getWithResponse("ArunMonocle",
-            "sdk-Namespace-1617", "sdk-Topics-5488", Context.NONE);
+            "sdk-Namespace-1617", "sdk-Topics-5488", com.azure.core.util.Context.NONE);
     }
 }

@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.keyvault.models.VaultCheckNameAvailabilityParameters;
 
-/** Samples for Vaults CheckNameAvailability. */
+/**
+ * Samples for Vaults CheckNameAvailability.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Validate a vault name.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void validateAVaultName(com.azure.resourcemanager.AzureResourceManager azure) {

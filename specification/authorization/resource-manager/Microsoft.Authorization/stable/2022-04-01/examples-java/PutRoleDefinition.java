@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.authorization.fluent.models.RoleDefinitionInner;
 
-/** Samples for RoleDefinitions CreateOrUpdate. */
+/**
+ * Samples for RoleDefinitions CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -10,7 +12,7 @@ public final class Main {
      */
     /**
      * Sample code: Create role definition.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createRoleDefinition(com.azure.resourcemanager.AzureResourceManager azure) {

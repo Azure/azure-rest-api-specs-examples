@@ -32,7 +32,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Managed Cluster with Web App Routing Ingress Profile configured.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createManagedClusterWithWebAppRoutingIngressProfileConfigured(

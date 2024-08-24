@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for TransparentDataEncryptions ListByDatabase. */
+/**
+ * Samples for TransparentDataEncryptions ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Get a list of the database's transparent data encryption.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getAListOfTheDatabaseSTransparentDataEncryption(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getTransparentDataEncryptions()
-            .listByDatabase("security-tde-resourcegroup", "securitytde", "testdb", Context.NONE);
+            .listByDatabase("security-tde-resourcegroup", "securitytde", "testdb", com.azure.core.util.Context.NONE);
     }
 }

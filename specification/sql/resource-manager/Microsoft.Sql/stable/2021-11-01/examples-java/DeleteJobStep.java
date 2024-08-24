@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobSteps Delete. */
+/**
+ * Samples for JobSteps Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Delete a job step.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteAJobStep(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobSteps().deleteWithResponse("group1", "server1", "agent1",
-            "job1", "step1", Context.NONE);
+            "job1", "step1", com.azure.core.util.Context.NONE);
     }
 }

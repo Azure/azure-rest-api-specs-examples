@@ -3,7 +3,9 @@ import com.azure.resourcemanager.msi.fluent.models.IdentityInner;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for UserAssignedIdentities CreateOrUpdate. */
+/**
+ * Samples for UserAssignedIdentities CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: IdentityCreate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void identityCreate(com.azure.resourcemanager.AzureResourceManager azure) {

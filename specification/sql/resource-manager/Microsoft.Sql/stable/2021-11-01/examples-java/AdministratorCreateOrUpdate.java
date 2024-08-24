@@ -1,11 +1,12 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ServerAzureADAdministratorInner;
 import com.azure.resourcemanager.sql.models.AdministratorName;
 import com.azure.resourcemanager.sql.models.AdministratorType;
 import java.util.UUID;
 
-/** Samples for ServerAzureADAdministrators CreateOrUpdate. */
+/**
+ * Samples for ServerAzureADAdministrators CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Creates or updates an existing Azure Active Directory administrator.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createsOrUpdatesAnExistingAzureActiveDirectoryAdministrator(
@@ -23,6 +24,6 @@ public final class Main {
             new ServerAzureADAdministratorInner().withAdministratorType(AdministratorType.ACTIVE_DIRECTORY)
                 .withLogin("bob@contoso.com").withSid(UUID.fromString("c6b82b90-a647-49cb-8a62-0d2d3cb7ac7c"))
                 .withTenantId(UUID.fromString("c6b82b90-a647-49cb-8a62-0d2d3cb7ac7c")),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

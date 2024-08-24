@@ -20,7 +20,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Agent Pool with OSSKU.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createAgentPoolWithOSSKU(com.azure.resourcemanager.AzureResourceManager azure) {

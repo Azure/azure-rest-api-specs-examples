@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedServerDnsAliases Get. */
+/**
+ * Samples for ManagedServerDnsAliases Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get managed server DNS alias.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getManagedServerDNSAlias(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedServerDnsAliases().getWithResponse("Default", "dns-mi",
-            "dns-alias-mi", Context.NONE);
+            "dns-alias-mi", com.azure.core.util.Context.NONE);
     }
 }

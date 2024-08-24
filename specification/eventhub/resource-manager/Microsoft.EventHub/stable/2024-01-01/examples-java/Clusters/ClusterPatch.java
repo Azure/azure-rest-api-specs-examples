@@ -13,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: ClusterPatch.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void clusterPatch(com.azure.resourcemanager.AzureResourceManager azure) {

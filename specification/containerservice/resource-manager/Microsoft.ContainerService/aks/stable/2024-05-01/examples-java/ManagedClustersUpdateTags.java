@@ -14,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Update Managed Cluster Tags.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateManagedClusterTags(com.azure.resourcemanager.AzureResourceManager azure) {

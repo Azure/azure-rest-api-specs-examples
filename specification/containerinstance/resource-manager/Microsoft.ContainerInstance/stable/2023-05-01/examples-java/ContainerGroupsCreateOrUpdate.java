@@ -30,7 +30,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ContainerGroups CreateOrUpdate. */
+/**
+ * Samples for ContainerGroups CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -39,7 +41,7 @@ public final class Main {
      */
     /**
      * Sample code: ContainerGroupsCreateOrUpdate.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void containerGroupsCreateOrUpdate(com.azure.resourcemanager.AzureResourceManager azure)
@@ -79,9 +81,8 @@ public final class Main {
                     .withLogType(LogAnalyticsLogType.CONTAINER_INSIGHTS)
                     .withMetadata(mapOf("test-key", "fakeTokenPlaceholder")).withWorkspaceResourceId(
                         "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg/providers/microsoft.operationalinsights/workspaces/workspace")))
-                .withSubnetIds(Arrays.asList(
-                    new ContainerGroupSubnetId().withId("[resourceId('Microsoft.Network/virtualNetworks/subnets',"
-                        + " parameters('vnetName'), parameters('subnetName'))]")))
+                .withSubnetIds(Arrays.asList(new ContainerGroupSubnetId().withId(
+                    "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('subnetName'))]")))
                 .withDnsConfig(new DnsConfiguration().withNameServers(Arrays.asList("1.1.1.1"))
                     .withSearchDomains("cluster.local svc.cluster.local").withOptions("ndots:2")),
             com.azure.core.util.Context.NONE);

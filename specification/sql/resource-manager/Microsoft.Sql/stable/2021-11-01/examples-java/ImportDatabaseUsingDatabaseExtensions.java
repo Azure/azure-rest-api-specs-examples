@@ -1,10 +1,11 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.DatabaseExtensions;
 import com.azure.resourcemanager.sql.models.OperationMode;
 import com.azure.resourcemanager.sql.models.StorageKeyType;
 
-/** Samples for DatabaseExtensionsOperation CreateOrUpdate. */
+/**
+ * Samples for DatabaseExtensionsOperation CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -13,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Import database using database extension.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void importDatabaseUsingDatabaseExtension(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -25,6 +26,6 @@ public final class Main {
                 .withStorageUri("https://teststorage.blob.core.windows.net/testcontainer/Manifest.xml")
                 .withAdministratorLogin("login").withAdministratorLoginPassword("fakeTokenPlaceholder")
                 .withAuthenticationType("Sql"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

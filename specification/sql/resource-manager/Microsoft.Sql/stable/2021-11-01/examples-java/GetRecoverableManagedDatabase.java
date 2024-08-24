@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for RecoverableManagedDatabases Get. */
+/**
+ * Samples for RecoverableManagedDatabases Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: Gets a recoverable databases by managed instances.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         getsARecoverableDatabasesByManagedInstances(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getRecoverableManagedDatabases().getWithResponse("Test1",
-            "managedInstance", "testdb", Context.NONE);
+            "managedInstance", "testdb", com.azure.core.util.Context.NONE);
     }
 }

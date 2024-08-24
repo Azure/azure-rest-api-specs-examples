@@ -1,11 +1,12 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.ManagedDatabaseSecurityAlertPolicyInner;
 import com.azure.resourcemanager.sql.models.SecurityAlertPolicyName;
 import com.azure.resourcemanager.sql.models.SecurityAlertPolicyState;
 import java.util.Arrays;
 
-/** Samples for ManagedDatabaseSecurityAlertPolicies CreateOrUpdate. */
+/**
+ * Samples for ManagedDatabaseSecurityAlertPolicies CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +15,7 @@ public final class Main {
      */
     /**
      * Sample code: Update a database's threat detection policy with all parameters.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
@@ -27,6 +28,6 @@ public final class Main {
                     .withEmailAddresses(Arrays.asList("test@contoso.com", "user@contoso.com"))
                     .withEmailAccountAdmins(true).withStorageEndpoint("https://mystorage.blob.core.windows.net")
                     .withStorageAccountAccessKey("fakeTokenPlaceholder").withRetentionDays(6),
-                Context.NONE);
+                com.azure.core.util.Context.NONE);
     }
 }

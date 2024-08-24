@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for JobExecutions ListByJob. */
+/**
+ * Samples for JobExecutions ListByJob.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List a job's executions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listAJobSExecutions(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getJobExecutions().listByJob("group1", "server1", "agent1", "job1",
-            null, null, null, null, null, null, null, Context.NONE);
+            null, null, null, null, null, null, null, com.azure.core.util.Context.NONE);
     }
 }

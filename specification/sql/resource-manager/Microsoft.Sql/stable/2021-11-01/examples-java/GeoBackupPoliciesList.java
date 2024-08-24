@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for GeoBackupPolicies List. */
+/**
+ * Samples for GeoBackupPolicies List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: List Geo backup policies for the given database resource.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void
         listGeoBackupPoliciesForTheGivenDatabaseResource(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getGeoBackupPolicies().list("sqlcrudtest-4799", "sqlcrudtest-5961",
-            "testdw", Context.NONE);
+            "testdw", com.azure.core.util.Context.NONE);
     }
 }

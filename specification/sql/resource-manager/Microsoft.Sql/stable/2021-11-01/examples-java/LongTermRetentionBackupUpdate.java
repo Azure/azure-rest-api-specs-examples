@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.BackupStorageRedundancy;
 import com.azure.resourcemanager.sql.models.UpdateLongTermRetentionBackupParameters;
 
-/** Samples for LongTermRetentionBackups Update. */
+/**
+ * Samples for LongTermRetentionBackups Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,14 +12,14 @@ public final class Main {
      */
     /**
      * Sample code: Update the long term retention backup.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateTheLongTermRetentionBackup(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getLongTermRetentionBackups().update("japaneast", "testserver",
-            "testDatabase", "55555555-6666-7777-8888-999999999999;131637960820000000",
-            new UpdateLongTermRetentionBackupParameters()
-                .withRequestedBackupStorageRedundancy(BackupStorageRedundancy.GEO),
-            Context.NONE);
+        azure.sqlServers().manager().serviceClient().getLongTermRetentionBackups()
+            .update("japaneast", "testserver", "testDatabase",
+                "55555555-6666-7777-8888-999999999999;131637960820000000", new UpdateLongTermRetentionBackupParameters()
+                    .withRequestedBackupStorageRedundancy(BackupStorageRedundancy.GEO),
+                com.azure.core.util.Context.NONE);
     }
 }

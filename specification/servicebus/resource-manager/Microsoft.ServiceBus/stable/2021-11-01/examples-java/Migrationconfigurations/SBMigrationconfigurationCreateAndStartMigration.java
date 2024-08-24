@@ -1,9 +1,10 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.servicebus.fluent.models.MigrationConfigPropertiesInner;
 import com.azure.resourcemanager.servicebus.models.MigrationConfigurationName;
 
-/** Samples for MigrationConfigs CreateAndStartMigration. */
+/**
+ * Samples for MigrationConfigs CreateAndStartMigration.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: MigrationConfigurationsStartMigration.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void migrationConfigurationsStartMigration(com.azure.resourcemanager.AzureResourceManager azure) {
@@ -21,6 +22,6 @@ public final class Main {
             new MigrationConfigPropertiesInner().withTargetNamespace(
                 "/subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/sdk-Namespace-4028")
                 .withPostMigrationName("sdk-PostMigration-5919"),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

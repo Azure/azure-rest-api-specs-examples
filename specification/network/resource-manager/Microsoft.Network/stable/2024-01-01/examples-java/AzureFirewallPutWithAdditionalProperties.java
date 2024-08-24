@@ -33,7 +33,7 @@ public final class Main {
      */
     /**
      * Sample code: Create Azure Firewall With Additional Properties.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void

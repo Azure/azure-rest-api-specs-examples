@@ -1,8 +1,9 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.models.QueryTimeGrainType;
 
-/** Samples for ManagedDatabaseQueries ListByQuery. */
+/**
+ * Samples for ManagedDatabaseQueries ListByQuery.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,13 +12,13 @@ public final class Main {
      */
     /**
      * Sample code: Obtain query execution statistics. Example with all request parameters.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void obtainQueryExecutionStatisticsExampleWithAllRequestParameters(
         com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabaseQueries().listByQuery("sqlcrudtest-7398",
             "sqlcrudtest-4645", "database_1", "42", "03/01/2020 16:23:09", "03/11/2020 14:00:00",
-            QueryTimeGrainType.P1D, Context.NONE);
+            QueryTimeGrainType.P1D, com.azure.core.util.Context.NONE);
     }
 }

@@ -1,5 +1,7 @@
 
-/** Samples for VirtualNetworkLinks List. */
+/**
+ * Samples for VirtualNetworkLinks List.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Get Private DNS Zone Virtual Network Links.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getPrivateDNSZoneVirtualNetworkLinks(com.azure.resourcemanager.AzureResourceManager azure) {

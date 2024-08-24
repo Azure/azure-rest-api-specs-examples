@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseExtensionsOperation ListByDatabase. */
+/**
+ * Samples for DatabaseExtensionsOperation ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,12 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: List database extensions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listDatabaseExtensions(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseExtensionsOperations().listByDatabase(
             "rg_4007c5a9-b3b0-41e1-bd46-9eef38768a4a", "srv_3b67ec2a-519b-43a7-8533-fb62dce3431e",
-            "719d8fa4-bf0f-48fc-8cd3-ef40fe6ba1fe", Context.NONE);
+            "719d8fa4-bf0f-48fc-8cd3-ef40fe6ba1fe", com.azure.core.util.Context.NONE);
     }
 }

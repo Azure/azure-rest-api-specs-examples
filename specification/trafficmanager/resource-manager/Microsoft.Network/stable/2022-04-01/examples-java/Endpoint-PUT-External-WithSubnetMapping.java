@@ -5,7 +5,9 @@ import com.azure.resourcemanager.trafficmanager.models.EndpointStatus;
 import com.azure.resourcemanager.trafficmanager.models.EndpointTypes;
 import java.util.Arrays;
 
-/** Samples for Endpoints CreateOrUpdate. */
+/**
+ * Samples for Endpoints CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -14,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Endpoint-PUT-External-WithSubnetMapping.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void endpointPUTExternalWithSubnetMapping(com.azure.resourcemanager.AzureResourceManager azure) {

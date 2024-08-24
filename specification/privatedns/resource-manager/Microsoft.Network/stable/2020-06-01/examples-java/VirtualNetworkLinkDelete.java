@@ -1,5 +1,7 @@
 
-/** Samples for VirtualNetworkLinks Delete. */
+/**
+ * Samples for VirtualNetworkLinks Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: DELETE Private DNS Zone Virtual Network Link.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void dELETEPrivateDNSZoneVirtualNetworkLink(com.azure.resourcemanager.AzureResourceManager azure) {

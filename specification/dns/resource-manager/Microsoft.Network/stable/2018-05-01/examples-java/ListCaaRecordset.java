@@ -1,7 +1,9 @@
 
 import com.azure.resourcemanager.dns.models.RecordType;
 
-/** Samples for RecordSets ListByType. */
+/**
+ * Samples for RecordSets ListByType.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,7 +11,7 @@ public final class Main {
      */
     /**
      * Sample code: List CAA recordsets.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listCAARecordsets(com.azure.resourcemanager.AzureResourceManager azure) {

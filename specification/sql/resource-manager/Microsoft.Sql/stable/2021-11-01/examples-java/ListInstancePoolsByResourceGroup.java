@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for InstancePools ListByResourceGroup. */
+/**
+ * Samples for InstancePools ListByResourceGroup.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,10 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List instance pools by resource group.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listInstancePoolsByResourceGroup(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.sqlServers().manager().serviceClient().getInstancePools().listByResourceGroup("group1", Context.NONE);
+        azure.sqlServers().manager().serviceClient().getInstancePools().listByResourceGroup("group1",
+            com.azure.core.util.Context.NONE);
     }
 }

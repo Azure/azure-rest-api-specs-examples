@@ -1,5 +1,4 @@
 
-import com.azure.core.util.Context;
 import com.azure.resourcemanager.sql.fluent.models.SensitivityLabelInner;
 import com.azure.resourcemanager.sql.fluent.models.SensitivityLabelUpdateInner;
 import com.azure.resourcemanager.sql.models.SensitivityLabelRank;
@@ -7,7 +6,9 @@ import com.azure.resourcemanager.sql.models.SensitivityLabelUpdateKind;
 import com.azure.resourcemanager.sql.models.SensitivityLabelUpdateList;
 import java.util.Arrays;
 
-/** Samples for SensitivityLabels Update. */
+/**
+ * Samples for SensitivityLabels Update.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -15,7 +16,7 @@ public final class Main {
      */
     /**
      * Sample code: Update sensitivity labels of a given database using an operations batch.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void updateSensitivityLabelsOfAGivenDatabaseUsingAnOperationsBatch(
@@ -35,6 +36,6 @@ public final class Main {
                         .withRank(SensitivityLabelRank.CRITICAL)),
                 new SensitivityLabelUpdateInner().withOp(SensitivityLabelUpdateKind.REMOVE).withSchema("dbo")
                     .withTable("Table1").withColumn("Column3"))),
-            Context.NONE);
+            com.azure.core.util.Context.NONE);
     }
 }

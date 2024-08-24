@@ -3,7 +3,9 @@ import com.azure.resourcemanager.trafficmanager.fluent.models.EndpointInner;
 import com.azure.resourcemanager.trafficmanager.models.EndpointStatus;
 import com.azure.resourcemanager.trafficmanager.models.EndpointTypes;
 
-/** Samples for Endpoints CreateOrUpdate. */
+/**
+ * Samples for Endpoints CreateOrUpdate.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -12,7 +14,7 @@ public final class Main {
      */
     /**
      * Sample code: Endpoint-PUT-External-WithLocation.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void endpointPUTExternalWithLocation(com.azure.resourcemanager.AzureResourceManager azure) {

@@ -1,5 +1,7 @@
 
-/** Samples for RoleManagementPolicies Delete. */
+/**
+ * Samples for RoleManagementPolicies Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: DeleteRoleManagementPolicy.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void deleteRoleManagementPolicy(com.azure.resourcemanager.AzureResourceManager azure) {

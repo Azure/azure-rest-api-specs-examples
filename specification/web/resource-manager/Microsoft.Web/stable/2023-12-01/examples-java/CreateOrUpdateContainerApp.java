@@ -22,7 +22,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or Update Container App.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateContainerApp(com.azure.resourcemanager.AzureResourceManager azure) {

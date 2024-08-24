@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedServerDnsAliases ListByManagedInstance. */
+/**
+ * Samples for ManagedServerDnsAliases ListByManagedInstance.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: List managed server DNS aliases.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listManagedServerDNSAliases(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedServerDnsAliases().listByManagedInstance("Default",
-            "dns-mi", Context.NONE);
+            "dns-mi", com.azure.core.util.Context.NONE);
     }
 }

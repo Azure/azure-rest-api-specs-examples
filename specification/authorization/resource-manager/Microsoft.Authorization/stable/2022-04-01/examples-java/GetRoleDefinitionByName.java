@@ -1,5 +1,7 @@
 
-/** Samples for RoleDefinitions Get. */
+/**
+ * Samples for RoleDefinitions Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -8,7 +10,7 @@ public final class Main {
      */
     /**
      * Sample code: Get role definition by name.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getRoleDefinitionByName(com.azure.resourcemanager.AzureResourceManager azure) {

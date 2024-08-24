@@ -1,5 +1,7 @@
 
-/** Samples for PrivateZones Delete. */
+/**
+ * Samples for PrivateZones Delete.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -7,7 +9,7 @@ public final class Main {
      */
     /**
      * Sample code: DELETE Private DNS Zone.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void dELETEPrivateDNSZone(com.azure.resourcemanager.AzureResourceManager azure) {

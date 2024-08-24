@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseRecommendedActions ListByDatabaseAdvisor. */
+/**
+ * Samples for DatabaseRecommendedActions ListByDatabaseAdvisor.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,12 @@ public final class Main {
      */
     /**
      * Sample code: List of database recommended actions.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listOfDatabaseRecommendedActions(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseRecommendedActions().listByDatabaseAdvisorWithResponse(
-            "workloadinsight-demos", "misosisvr", "IndexAdvisor_test_3", "CreateIndex", Context.NONE);
+            "workloadinsight-demos", "misosisvr", "IndexAdvisor_test_3", "CreateIndex",
+            com.azure.core.util.Context.NONE);
     }
 }

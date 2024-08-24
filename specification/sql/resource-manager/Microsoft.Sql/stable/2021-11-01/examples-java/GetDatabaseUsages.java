@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for DatabaseUsages ListByDatabase. */
+/**
+ * Samples for DatabaseUsages ListByDatabase.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Gets database usages.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getsDatabaseUsages(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getDatabaseUsages().listByDatabase("Default-SQL-SouthEastAsia",
-            "testsvr", "testdb", Context.NONE);
+            "testsvr", "testdb", com.azure.core.util.Context.NONE);
     }
 }

@@ -2,7 +2,9 @@
 import com.azure.resourcemanager.authorization.models.PrincipalType;
 import com.azure.resourcemanager.authorization.models.RoleAssignmentCreateParameters;
 
-/** Samples for RoleAssignments CreateById. */
+/**
+ * Samples for RoleAssignments CreateById.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -11,7 +13,7 @@ public final class Main {
      */
     /**
      * Sample code: Create or update role assignment by ID.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateRoleAssignmentByID(com.azure.resourcemanager.AzureResourceManager azure) {

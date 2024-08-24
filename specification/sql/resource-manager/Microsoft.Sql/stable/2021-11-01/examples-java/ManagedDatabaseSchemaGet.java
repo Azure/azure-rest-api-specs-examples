@@ -1,7 +1,7 @@
 
-import com.azure.core.util.Context;
-
-/** Samples for ManagedDatabaseSchemas Get. */
+/**
+ * Samples for ManagedDatabaseSchemas Get.
+ */
 public final class Main {
     /*
      * x-ms-original-file:
@@ -9,11 +9,11 @@ public final class Main {
      */
     /**
      * Sample code: Get managed database schema.
-     *
+     * 
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getManagedDatabaseSchema(com.azure.resourcemanager.AzureResourceManager azure) {
         azure.sqlServers().manager().serviceClient().getManagedDatabaseSchemas().getWithResponse("myRG",
-            "myManagedInstanceName", "myDatabase", "dbo", Context.NONE);
+            "myManagedInstanceName", "myDatabase", "dbo", com.azure.core.util.Context.NONE);
     }
 }

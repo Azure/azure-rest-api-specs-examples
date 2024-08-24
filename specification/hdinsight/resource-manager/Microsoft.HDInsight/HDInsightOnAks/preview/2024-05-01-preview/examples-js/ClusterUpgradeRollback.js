@@ -1,0 +1,31 @@
+const { HDInsightContainersManagementClient } = require("@azure/arm-hdinsightcontainers");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to Manual rollback upgrade for a cluster.
+ *
+ * @summary Manual rollback upgrade for a cluster.
+ * x-ms-original-file: specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/preview/2024-05-01-preview/examples/ClusterUpgradeRollback.json
+ */
+async function clusterUpgradeRollback() {
+  const subscriptionId =
+    process.env["HDINSIGHT_SUBSCRIPTION_ID"] || "10e32bab-26da-4cc4-a441-52b318f824e6";
+  const resourceGroupName = process.env["HDINSIGHT_RESOURCE_GROUP"] || "hiloResourcegroup";
+  const clusterPoolName = "clusterpool1";
+  const clusterName = "cluster1";
+  const clusterRollbackUpgradeRequest = {
+    properties: {
+      upgradeHistory:
+        "/subscriptions/10e32bab-26da-4cc4-a441-52b318f824e6/resourceGroups/hiloResourcegroup/providers/Microsoft.HDInsight/clusterpools/clusterpool1/clusters/cluster1/upgradeHistories/01_11_2024_02_35_03_AM-HotfixUpgrade",
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new HDInsightContainersManagementClient(credential, subscriptionId);
+  const result = await client.clusters.beginUpgradeManualRollbackAndWait(
+    resourceGroupName,
+    clusterPoolName,
+    clusterName,
+    clusterRollbackUpgradeRequest,
+  );
+  console.log(result);
+}

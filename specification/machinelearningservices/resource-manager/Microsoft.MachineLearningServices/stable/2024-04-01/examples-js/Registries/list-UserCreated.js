@@ -1,0 +1,21 @@
+const { AzureMachineLearningServicesManagementClient } = require("@azure/arm-machinelearning");
+const { DefaultAzureCredential } = require("@azure/identity");
+
+/**
+ * This sample demonstrates how to List registries
+ *
+ * @summary List registries
+ * x-ms-original-file: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/Registries/list-UserCreated.json
+ */
+async function listRegistriesWithUserCreatedAccounts() {
+  const subscriptionId =
+    process.env["MACHINELEARNING_SUBSCRIPTION_ID"] || "00000000-1111-2222-3333-444444444444";
+  const resourceGroupName = process.env["MACHINELEARNING_RESOURCE_GROUP"] || "test-rg";
+  const credential = new DefaultAzureCredential();
+  const client = new AzureMachineLearningServicesManagementClient(credential, subscriptionId);
+  const resArray = new Array();
+  for await (let item of client.registries.list(resourceGroupName)) {
+    resArray.push(item);
+  }
+  console.log(resArray);
+}

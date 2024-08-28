@@ -4468,3 +4468,6 @@ id,name,language,tag,package,version,date_epoch,date
 4467,com.azure.resourcemanager:azure-resourcemanager-azurestackhci:1.0.0-beta.5,java,azure-resourcemanager-azurestackhci_1.0.0-beta.5,azure-resourcemanager-azurestackhci,1.0.0-beta.5,1724664887,08/26/2024
 4468,azure-mgmt-azurestackhci@8.0.0b4,python,azure-mgmt-azurestackhci_8.0.0b4,azure-mgmt-azurestackhci,8.0.0b4,1724667011,08/26/2024
 4469,azure-mgmt-hdinsightcontainers@1.0.0b3,python,azure-mgmt-hdinsightcontainers_1.0.0b3,azure-mgmt-hdinsightcontainers,1.0.0b3,1724657225,08/26/2024
+4470,"Azure.ResourceManager.Compute,1.6.0",dotnet,Azure.ResourceManager.Compute_1.6.0,Azure.ResourceManager.Compute,1.6.0,1724740628,08/27/2024
+4471,azure-mgmt-postgresqlflexibleservers@1.0.0b1,python,azure-mgmt-postgresqlflexibleservers_1.0.0b1,azure-mgmt-postgresqlflexibleservers,1.0.0b1,1724752667,08/27/2024
+4472,azure-mgmt-mysqlflexibleservers@1.0.0b1,python,azure-mgmt-mysqlflexibleservers_1.0.0b1,azure-mgmt-mysqlflexibleservers,1.0.0b1,1724752403,08/27/2024

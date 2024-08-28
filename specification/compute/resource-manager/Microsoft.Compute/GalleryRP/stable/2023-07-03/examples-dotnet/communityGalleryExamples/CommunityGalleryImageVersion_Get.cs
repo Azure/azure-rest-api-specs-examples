@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CommunityGalleryImageVersionResource created on azure
-// for more information of creating CommunityGalleryImageVersionResource, please refer to the document of CommunityGalleryImageVersionResource
+// this example assumes you already have this CommunityGalleryImageResource created on azure
+// for more information of creating CommunityGalleryImageResource, please refer to the document of CommunityGalleryImageResource
 string subscriptionId = "{subscription-id}";
 AzureLocation location = new AzureLocation("myLocation");
 string publicGalleryName = "publicGalleryName";
 string galleryImageName = "myGalleryImageName";
-string galleryImageVersionName = "myGalleryImageVersionName";
-ResourceIdentifier communityGalleryImageVersionResourceId = CommunityGalleryImageVersionResource.CreateResourceIdentifier(subscriptionId, location, publicGalleryName, galleryImageName, galleryImageVersionName);
-CommunityGalleryImageVersionResource communityGalleryImageVersion = client.GetCommunityGalleryImageVersionResource(communityGalleryImageVersionResourceId);
+ResourceIdentifier communityGalleryImageResourceId = CommunityGalleryImageResource.CreateResourceIdentifier(subscriptionId, location, publicGalleryName, galleryImageName);
+CommunityGalleryImageResource communityGalleryImage = client.GetCommunityGalleryImageResource(communityGalleryImageResourceId);
+
+// get the collection of this CommunityGalleryImageVersionResource
+CommunityGalleryImageVersionCollection collection = communityGalleryImage.GetCommunityGalleryImageVersions();
 
 // invoke the operation
-CommunityGalleryImageVersionResource result = await communityGalleryImageVersion.GetAsync();
+string galleryImageVersionName = "myGalleryImageVersionName";
+NullableResponse<CommunityGalleryImageVersionResource> response = await collection.GetIfExistsAsync(galleryImageVersionName);
+CommunityGalleryImageVersionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CommunityGalleryImageVersionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CommunityGalleryImageVersionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

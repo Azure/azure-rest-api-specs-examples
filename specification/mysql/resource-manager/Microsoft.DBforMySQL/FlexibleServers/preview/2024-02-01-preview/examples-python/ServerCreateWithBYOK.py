@@ -1,13 +1,11 @@
-from typing import Any, IO, Union
-
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.rdbms.mysql_flexibleservers import MySQLManagementClient
+from azure.mgmt.mysqlflexibleservers import MySQLManagementClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-rdbms
+    pip install azure-mgmt-mysqlflexibleservers
 # USAGE
     python server_create_with_byok.py
 

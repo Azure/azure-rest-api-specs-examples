@@ -1,16 +1,11 @@
-from typing import Any, IO, TYPE_CHECKING, Union
-
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.rdbms.postgresql_flexibleservers import PostgreSQLManagementClient
+from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
-if TYPE_CHECKING:
-    # pylint: disable=unused-import,ungrouped-imports
-    from .. import models as _models
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-rdbms
+    pip install azure-mgmt-postgresqlflexibleservers
 # USAGE
     python server_threat_protection_settings_create_or_update.py
 

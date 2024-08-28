@@ -1,13 +1,11 @@
-from typing import Any, IO, Union
-
 from azure.identity import DefaultAzureCredential
 
-from azure.mgmt.rdbms.postgresql_flexibleservers import PostgreSQLManagementClient
+from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
 """
 # PREREQUISITES
     pip install azure-identity
-    pip install azure-mgmt-rdbms
+    pip install azure-mgmt-postgresqlflexibleservers
 # USAGE
     python promote_replica_as_planned_standalone_server.py
 

@@ -14,19 +14,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ManagementGroupSubscriptionResource created on azure
-// for more information of creating ManagementGroupSubscriptionResource, please refer to the document of ManagementGroupSubscriptionResource
+// this example assumes you already have this ManagementGroupResource created on azure
+// for more information of creating ManagementGroupResource, please refer to the document of ManagementGroupResource
 string groupId = "Group";
-string subscriptionId = "728bcbe4-8d56-4510-86c2-4921b8beefbc";
-ResourceIdentifier managementGroupSubscriptionResourceId = ManagementGroupSubscriptionResource.CreateResourceIdentifier(groupId, subscriptionId);
-ManagementGroupSubscriptionResource managementGroupSubscription = client.GetManagementGroupSubscriptionResource(managementGroupSubscriptionResourceId);
+ResourceIdentifier managementGroupResourceId = ManagementGroupResource.CreateResourceIdentifier(groupId);
+ManagementGroupResource managementGroup = client.GetManagementGroupResource(managementGroupResourceId);
+
+// get the collection of this ManagementGroupSubscriptionResource
+ManagementGroupSubscriptionCollection collection = managementGroup.GetManagementGroupSubscriptions();
 
 // invoke the operation
+string subscriptionId = "728bcbe4-8d56-4510-86c2-4921b8beefbc";
 string cacheControl = "no-cache";
-ManagementGroupSubscriptionResource result = await managementGroupSubscription.GetAsync(cacheControl: cacheControl);
+NullableResponse<ManagementGroupSubscriptionResource> response = await collection.GetIfExistsAsync(subscriptionId, cacheControl: cacheControl);
+ManagementGroupSubscriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ManagementGroupSubscriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ManagementGroupSubscriptionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

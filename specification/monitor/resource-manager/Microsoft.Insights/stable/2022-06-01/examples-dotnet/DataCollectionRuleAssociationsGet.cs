@@ -14,18 +14,28 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataCollectionRuleAssociationResource created on azure
-// for more information of creating DataCollectionRuleAssociationResource, please refer to the document of DataCollectionRuleAssociationResource
+// this example assumes you already have this ArmResource created on azure
+// for more information of creating ArmResource, please refer to the document of ArmResource
+
+// get the collection of this DataCollectionRuleAssociationResource
 string resourceUri = "subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm";
-string associationName = "myAssociation";
-ResourceIdentifier dataCollectionRuleAssociationResourceId = DataCollectionRuleAssociationResource.CreateResourceIdentifier(resourceUri, associationName);
-DataCollectionRuleAssociationResource dataCollectionRuleAssociation = client.GetDataCollectionRuleAssociationResource(dataCollectionRuleAssociationResourceId);
+ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
+DataCollectionRuleAssociationCollection collection = client.GetDataCollectionRuleAssociations(scopeId);
 
 // invoke the operation
-DataCollectionRuleAssociationResource result = await dataCollectionRuleAssociation.GetAsync();
+string associationName = "myAssociation";
+NullableResponse<DataCollectionRuleAssociationResource> response = await collection.GetIfExistsAsync(associationName);
+DataCollectionRuleAssociationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DataCollectionRuleAssociationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DataCollectionRuleAssociationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -4476,3 +4476,4 @@ id,name,language,tag,package,version,date_epoch,date
 4475,"Azure.ResourceManager.ComputeFleet,1.0.0-beta.1",dotnet,Azure.ResourceManager.ComputeFleet_1.0.0-beta.1,Azure.ResourceManager.ComputeFleet,1.0.0-beta.1,1725004955,08/30/2024
 4476,"Azure.ResourceManager.Monitor,1.4.0-beta.1",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.1,Azure.ResourceManager.Monitor,1.4.0-beta.1,1725004623,08/30/2024
 4477,"Azure.ResourceManager,1.13.0",dotnet,Azure.ResourceManager_1.13.0,Azure.ResourceManager,1.13.0,1725003065,08/30/2024
+4478,azure-mgmt-eventhub@11.1.0,python,azure-mgmt-eventhub_11.1.0,azure-mgmt-eventhub,11.1.0,1725421995,09/04/2024

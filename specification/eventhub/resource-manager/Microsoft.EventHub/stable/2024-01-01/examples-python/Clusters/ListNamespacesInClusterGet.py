@@ -1,0 +1,34 @@
+from azure.identity import DefaultAzureCredential
+
+from azure.mgmt.eventhub import EventHubManagementClient
+
+"""
+# PREREQUISITES
+    pip install azure-identity
+    pip install azure-mgmt-eventhub
+# USAGE
+    python list_namespaces_in_cluster_get.py
+
+    Before run the sample, please set the values of the client ID, tenant ID and client secret
+    of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
+    AZURE_CLIENT_SECRET. For more info about how to get the value, please see:
+    https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+"""
+
+
+def main():
+    client = EventHubManagementClient(
+        credential=DefaultAzureCredential(),
+        subscription_id="5f750a97-50d9-4e36-8081-c9ee4c0210d4",
+    )
+
+    response = client.clusters.list_namespaces(
+        resource_group_name="myResourceGroup",
+        cluster_name="testCluster",
+    )
+    print(response)
+
+
+# x-ms-original-file: specification/eventhub/resource-manager/Microsoft.EventHub/stable/2024-01-01/examples/Clusters/ListNamespacesInClusterGet.json
+if __name__ == "__main__":
+    main()

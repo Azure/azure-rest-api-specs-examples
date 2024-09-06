@@ -4480,3 +4480,4 @@ id,name,language,tag,package,version,date_epoch,date
 4479,azure-mgmt-billing@7.0.0,python,azure-mgmt-billing_7.0.0,azure-mgmt-billing,7.0.0,1725522213,09/05/2024
 4480,azure-mgmt-qumulo@2.0.0,python,azure-mgmt-qumulo_2.0.0,azure-mgmt-qumulo,2.0.0,1725506193,09/05/2024
 4481,@azure/arm-billing@5.0.0,js,@azure/arm-billing_5.0.0,@azure/arm-billing,5.0.0,1725597967,09/06/2024
+4482,@azure/arm-eventhub@5.2.0,js,@azure/arm-eventhub_5.2.0,@azure/arm-eventhub,5.2.0,1725597867,09/06/2024

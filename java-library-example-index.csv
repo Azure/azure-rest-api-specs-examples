@@ -4477,3 +4477,5 @@ id,name,language,tag,package,version,date_epoch,date
 4476,"Azure.ResourceManager.Monitor,1.4.0-beta.1",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.1,Azure.ResourceManager.Monitor,1.4.0-beta.1,1725004623,08/30/2024
 4477,"Azure.ResourceManager,1.13.0",dotnet,Azure.ResourceManager_1.13.0,Azure.ResourceManager,1.13.0,1725003065,08/30/2024
 4478,azure-mgmt-eventhub@11.1.0,python,azure-mgmt-eventhub_11.1.0,azure-mgmt-eventhub,11.1.0,1725421995,09/04/2024
+4479,azure-mgmt-billing@7.0.0,python,azure-mgmt-billing_7.0.0,azure-mgmt-billing,7.0.0,1725522213,09/05/2024
+4480,azure-mgmt-qumulo@2.0.0,python,azure-mgmt-qumulo_2.0.0,azure-mgmt-qumulo,2.0.0,1725506193,09/05/2024

@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.billing.models.CheckAccessRequest;
+import java.util.Arrays;
+
+/**
+ * Samples for BillingPermissions CheckAccessByDepartment.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/checkAccessByDepartment.json
+     */
+    /**
+     * Sample code: CheckAccessByDepartment.
+     * 
+     * @param manager Entry point to BillingManager.
+     */
+    public static void checkAccessByDepartment(com.azure.resourcemanager.billing.BillingManager manager) {
+        manager.billingPermissions().checkAccessByDepartmentWithResponse(
+            "10000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31", "12345",
+            new CheckAccessRequest().withActions(
+                Arrays.asList("Microsoft.Billing/billingAccounts/read", "Microsoft.Subscription/subscriptions/write")),
+            com.azure.core.util.Context.NONE);
+    }
+}

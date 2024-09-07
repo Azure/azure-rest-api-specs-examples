@@ -1,0 +1,45 @@
+
+import com.azure.resourcemanager.billing.fluent.models.BillingProfileInner;
+import com.azure.resourcemanager.billing.models.AzurePlan;
+import com.azure.resourcemanager.billing.models.BillingProfileProperties;
+import com.azure.resourcemanager.billing.models.BillingProfilePropertiesBillTo;
+import com.azure.resourcemanager.billing.models.BillingProfilePropertiesShipTo;
+import java.util.Arrays;
+
+/**
+ * Samples for BillingProfiles CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/billingProfilesCreateOrUpdate
+     * .json
+     */
+    /**
+     * Sample code: BillingProfilesCreateOrUpdate.
+     * 
+     * @param manager Entry point to BillingManager.
+     */
+    public static void billingProfilesCreateOrUpdate(com.azure.resourcemanager.billing.BillingManager manager) {
+        manager.billingProfiles()
+            .createOrUpdate("00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31",
+                "xxxx-xxxx-xxx-xxx",
+                new BillingProfileInner()
+                    .withProperties(new BillingProfileProperties()
+                        .withBillTo(new BillingProfilePropertiesBillTo().withAddressLine1("Test Address1")
+                            .withAddressLine2("Test Address2").withAddressLine3("Test Address3").withCity("City")
+                            .withCompanyName("Contoso").withCountry("US").withEmail("abc@contoso.com")
+                            .withFirstName("Test").withLastName("User").withPhoneNumber("000-000-0000")
+                            .withPostalCode("fakeTokenPlaceholder").withRegion("WA").withIsValidAddress(true))
+                        .withDisplayName("Billing Profile 1")
+                        .withEnabledAzurePlans(
+                            Arrays.asList(new AzurePlan().withSkuId("0001"), new AzurePlan().withSkuId("0002")))
+                        .withInvoiceEmailOptIn(true).withPoNumber("ABC12345")
+                        .withShipTo(new BillingProfilePropertiesShipTo().withAddressLine1("Test Address1")
+                            .withAddressLine2("Test Address2").withAddressLine3("Test Address3").withCity("City")
+                            .withCompanyName("Contoso").withCountry("US").withEmail("abc@contoso.com")
+                            .withFirstName("Test").withLastName("User").withPhoneNumber("000-000-0000")
+                            .withPostalCode("fakeTokenPlaceholder").withRegion("WA").withIsValidAddress(true))),
+                com.azure.core.util.Context.NONE);
+    }
+}

@@ -1,0 +1,33 @@
+
+import com.azure.resourcemanager.billing.fluent.models.BillingProfilePolicyInner;
+import com.azure.resourcemanager.billing.models.BillingProfilePolicyProperties;
+import com.azure.resourcemanager.billing.models.InvoiceSectionLabelManagementPolicy;
+import com.azure.resourcemanager.billing.models.MarketplacePurchasesPolicy;
+import com.azure.resourcemanager.billing.models.ReservationPurchasesPolicy;
+import com.azure.resourcemanager.billing.models.SavingsPlanPurchasesPolicy;
+
+/**
+ * Samples for Policies CreateOrUpdateByBillingProfile.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/policiesPutByBillingProfile.
+     * json
+     */
+    /**
+     * Sample code: PoliciesPutByBillingProfile.
+     * 
+     * @param manager Entry point to BillingManager.
+     */
+    public static void policiesPutByBillingProfile(com.azure.resourcemanager.billing.BillingManager manager) {
+        manager.policies().createOrUpdateByBillingProfile(
+            "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31", "xxxx-xxxx-xxx-xxx",
+            new BillingProfilePolicyInner().withProperties(new BillingProfilePolicyProperties()
+                .withInvoiceSectionLabelManagement(InvoiceSectionLabelManagementPolicy.ALLOWED)
+                .withMarketplacePurchases(MarketplacePurchasesPolicy.ALL_ALLOWED)
+                .withReservationPurchases(ReservationPurchasesPolicy.ALLOWED)
+                .withSavingsPlanPurchases(SavingsPlanPurchasesPolicy.ALLOWED)),
+            com.azure.core.util.Context.NONE);
+    }
+}

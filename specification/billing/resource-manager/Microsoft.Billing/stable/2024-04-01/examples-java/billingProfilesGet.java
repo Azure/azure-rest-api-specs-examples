@@ -1,0 +1,20 @@
+
+/**
+ * Samples for BillingProfiles Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/billingProfilesGet.json
+     */
+    /**
+     * Sample code: BillingProfilesGet.
+     * 
+     * @param manager Entry point to BillingManager.
+     */
+    public static void billingProfilesGet(com.azure.resourcemanager.billing.BillingManager manager) {
+        manager.billingProfiles().getWithResponse(
+            "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31", "xxxx-xxxx-xxx-xxx",
+            com.azure.core.util.Context.NONE);
+    }
+}

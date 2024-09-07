@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppResource created on azure
-// for more information of creating ContainerAppResource, please refer to the document of ContainerAppResource
+// this example assumes you already have this ContainerAppSourceControlResource created on azure
+// for more information of creating ContainerAppSourceControlResource, please refer to the document of ContainerAppSourceControlResource
 string subscriptionId = "651f8027-33e8-4ec4-97b4-f6e9f3dc8744";
 string resourceGroupName = "workerapps-rg-xj";
 string containerAppName = "testcanadacentral";
-ResourceIdentifier containerAppResourceId = ContainerAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName);
-ContainerAppResource containerApp = client.GetContainerAppResource(containerAppResourceId);
-
-// get the collection of this ContainerAppSourceControlResource
-ContainerAppSourceControlCollection collection = containerApp.GetContainerAppSourceControls();
+string sourceControlName = "current";
+ResourceIdentifier containerAppSourceControlResourceId = ContainerAppSourceControlResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName, sourceControlName);
+ContainerAppSourceControlResource containerAppSourceControl = client.GetContainerAppSourceControlResource(containerAppSourceControlResourceId);
 
 // invoke the operation
-string sourceControlName = "current";
-NullableResponse<ContainerAppSourceControlResource> response = await collection.GetIfExistsAsync(sourceControlName);
-ContainerAppSourceControlResource result = response.HasValue ? response.Value : null;
+ContainerAppSourceControlResource result = await containerAppSourceControl.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerAppSourceControlData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppSourceControlData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

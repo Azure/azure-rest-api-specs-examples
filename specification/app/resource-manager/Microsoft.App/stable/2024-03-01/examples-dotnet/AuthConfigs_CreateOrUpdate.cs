@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppAuthConfigResource created on azure
-// for more information of creating ContainerAppAuthConfigResource, please refer to the document of ContainerAppAuthConfigResource
+// this example assumes you already have this ContainerAppResource created on azure
+// for more information of creating ContainerAppResource, please refer to the document of ContainerAppResource
 string subscriptionId = "651f8027-33e8-4ec4-97b4-f6e9f3dc8744";
 string resourceGroupName = "workerapps-rg-xj";
 string containerAppName = "testcanadacentral";
-string authConfigName = "current";
-ResourceIdentifier containerAppAuthConfigResourceId = ContainerAppAuthConfigResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName, authConfigName);
-ContainerAppAuthConfigResource containerAppAuthConfig = client.GetContainerAppAuthConfigResource(containerAppAuthConfigResourceId);
+ResourceIdentifier containerAppResourceId = ContainerAppResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, containerAppName);
+ContainerAppResource containerApp = client.GetContainerAppResource(containerAppResourceId);
+
+// get the collection of this ContainerAppAuthConfigResource
+ContainerAppAuthConfigCollection collection = containerApp.GetContainerAppAuthConfigs();
 
 // invoke the operation
+string authConfigName = "current";
 ContainerAppAuthConfigData data = new ContainerAppAuthConfigData()
 {
     Platform = new ContainerAppAuthPlatform()
@@ -52,7 +55,7 @@ ContainerAppAuthConfigData data = new ContainerAppAuthConfigData()
         ContainerAppAuthSigningSecretName = "testSigningSecretName",
     },
 };
-ArmOperation<ContainerAppAuthConfigResource> lro = await containerAppAuthConfig.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ContainerAppAuthConfigResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authConfigName, data);
 ContainerAppAuthConfigResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

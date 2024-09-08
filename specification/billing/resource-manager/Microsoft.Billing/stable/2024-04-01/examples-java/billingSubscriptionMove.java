@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.billing.models.MoveBillingSubscriptionRequest;
+
+/**
+ * Samples for BillingSubscriptions Move.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/billingSubscriptionMove.json
+     */
+    /**
+     * Sample code: BillingSubscriptionMove.
+     * 
+     * @param manager Entry point to BillingManager.
+     */
+    public static void billingSubscriptionMove(com.azure.resourcemanager.billing.BillingManager manager) {
+        manager.billingSubscriptions().move(
+            "a1a9c77e-4cec-4a6c-a089-867d973a6074:a80d3b1f-c626-4e5e-82ed-1173bd91c838_2019-05-31",
+            "6b96d3f2-9008-4a9d-912f-f87744185aa3",
+            new MoveBillingSubscriptionRequest().withDestinationInvoiceSectionId(
+                "/providers/Microsoft.Billing/billingAccounts/a1a9c77e-4cec-4a6c-a089-867d973a6074:a80d3b1f-c626-4e5e-82ed-1173bd91c838_2019-05-31/billingProfiles/ea36e548-1505-41db-bebc-46fff3d37998/invoiceSections/Q7GV-UUVA-PJA-TGB"),
+            com.azure.core.util.Context.NONE);
+    }
+}

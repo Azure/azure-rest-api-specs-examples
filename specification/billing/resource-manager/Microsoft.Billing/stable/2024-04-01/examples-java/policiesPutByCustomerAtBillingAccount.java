@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.billing.fluent.models.CustomerPolicyInner;
+import com.azure.resourcemanager.billing.models.CustomerPolicyProperties;
+import com.azure.resourcemanager.billing.models.ViewChargesPolicy;
+
+/**
+ * Samples for Policies CreateOrUpdateByCustomerAtBillingAccount.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/
+     * policiesPutByCustomerAtBillingAccount.json
+     */
+    /**
+     * Sample code: PoliciesPutByCustomerAtBillingAccount.
+     * 
+     * @param manager Entry point to BillingManager.
+     */
+    public static void policiesPutByCustomerAtBillingAccount(com.azure.resourcemanager.billing.BillingManager manager) {
+        manager.policies().createOrUpdateByCustomerAtBillingAccount(
+            "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31",
+            "11111111-1111-1111-1111-111111111111",
+            new CustomerPolicyInner()
+                .withProperties(new CustomerPolicyProperties().withViewCharges(ViewChargesPolicy.ALLOWED)),
+            com.azure.core.util.Context.NONE);
+    }
+}

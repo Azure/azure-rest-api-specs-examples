@@ -4486,3 +4486,4 @@ id,name,language,tag,package,version,date_epoch,date
 4485,"Azure.ResourceManager.MachineLearning,1.2.0",dotnet,Azure.ResourceManager.MachineLearning_1.2.0,Azure.ResourceManager.MachineLearning,1.2.0,1725631404,09/06/2024
 4486,"Azure.ResourceManager.AppContainers,1.3.0",dotnet,Azure.ResourceManager.AppContainers_1.3.0,Azure.ResourceManager.AppContainers,1.3.0,1725873910,09/09/2024
 4487,"Azure.ResourceManager.HDInsight,1.2.0-beta.3",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.3,Azure.ResourceManager.HDInsight,1.2.0-beta.3,1725872012,09/09/2024
+4488,"Azure.ResourceManager.SecurityInsights,1.2.0-beta.1",dotnet,Azure.ResourceManager.SecurityInsights_1.2.0-beta.1,Azure.ResourceManager.SecurityInsights,1.2.0-beta.1,1725871995,09/09/2024

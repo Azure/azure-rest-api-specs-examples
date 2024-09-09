@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppManagedEnvironmentResource created on azure
-// for more information of creating ContainerAppManagedEnvironmentResource, please refer to the document of ContainerAppManagedEnvironmentResource
+// this example assumes you already have this ContainerAppManagedEnvironmentDetectorResource created on azure
+// for more information of creating ContainerAppManagedEnvironmentDetectorResource, please refer to the document of ContainerAppManagedEnvironmentDetectorResource
 string subscriptionId = "f07f3711-b45e-40fe-a941-4e6d93f851e6";
 string resourceGroupName = "mikono-workerapp-test-rg";
 string environmentName = "mikonokubeenv";
-ResourceIdentifier containerAppManagedEnvironmentResourceId = ContainerAppManagedEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName);
-ContainerAppManagedEnvironmentResource containerAppManagedEnvironment = client.GetContainerAppManagedEnvironmentResource(containerAppManagedEnvironmentResourceId);
-
-// get the collection of this ContainerAppManagedEnvironmentDetectorResource
-ContainerAppManagedEnvironmentDetectorCollection collection = containerAppManagedEnvironment.GetContainerAppManagedEnvironmentDetectors();
+string detectorName = "ManagedEnvAvailabilityMetrics";
+ResourceIdentifier containerAppManagedEnvironmentDetectorResourceId = ContainerAppManagedEnvironmentDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, environmentName, detectorName);
+ContainerAppManagedEnvironmentDetectorResource containerAppManagedEnvironmentDetector = client.GetContainerAppManagedEnvironmentDetectorResource(containerAppManagedEnvironmentDetectorResourceId);
 
 // invoke the operation
-string detectorName = "ManagedEnvAvailabilityMetrics";
-NullableResponse<ContainerAppManagedEnvironmentDetectorResource> response = await collection.GetIfExistsAsync(detectorName);
-ContainerAppManagedEnvironmentDetectorResource result = response.HasValue ? response.Value : null;
+ContainerAppManagedEnvironmentDetectorResource result = await containerAppManagedEnvironmentDetector.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerAppDiagnosticData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerAppDiagnosticData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

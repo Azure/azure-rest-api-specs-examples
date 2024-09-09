@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerAppJobDetectorPropertyResource created on azure
-// for more information of creating ContainerAppJobDetectorPropertyResource, please refer to the document of ContainerAppJobDetectorPropertyResource
+// this example assumes you already have this ContainerAppJobResource created on azure
+// for more information of creating ContainerAppJobResource, please refer to the document of ContainerAppJobResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string jobName = "testcontainerappsjob0";
-string apiName = "rootApi";
-ResourceIdentifier containerAppJobDetectorPropertyResourceId = ContainerAppJobDetectorPropertyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, jobName, apiName);
-ContainerAppJobDetectorPropertyResource containerAppJobDetectorProperty = client.GetContainerAppJobDetectorPropertyResource(containerAppJobDetectorPropertyResourceId);
+ResourceIdentifier containerAppJobResourceId = ContainerAppJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, jobName);
+ContainerAppJobResource containerAppJob = client.GetContainerAppJobResource(containerAppJobResourceId);
+
+// get the collection of this ContainerAppJobDetectorPropertyResource
+ContainerAppJobDetectorPropertyCollection collection = containerAppJob.GetContainerAppJobDetectorProperties();
 
 // invoke the operation
-ContainerAppJobDetectorPropertyResource result = await containerAppJobDetectorProperty.GetAsync();
+string apiName = "rootApi";
+NullableResponse<ContainerAppJobDetectorPropertyResource> response = await collection.GetIfExistsAsync(apiName);
+ContainerAppJobDetectorPropertyResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ContainerAppJobData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ContainerAppJobData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

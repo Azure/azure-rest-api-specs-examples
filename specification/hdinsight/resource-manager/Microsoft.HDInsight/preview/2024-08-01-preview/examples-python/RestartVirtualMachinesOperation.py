@@ -1,5 +1,3 @@
-from typing import IO, List, Union
-
 from azure.identity import DefaultAzureCredential
 
 from azure.mgmt.hdinsight import HDInsightManagementClient

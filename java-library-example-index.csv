@@ -4488,3 +4488,4 @@ id,name,language,tag,package,version,date_epoch,date
 4487,"Azure.ResourceManager.HDInsight,1.2.0-beta.3",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.3,Azure.ResourceManager.HDInsight,1.2.0-beta.3,1725872012,09/09/2024
 4488,"Azure.ResourceManager.SecurityInsights,1.2.0-beta.1",dotnet,Azure.ResourceManager.SecurityInsights_1.2.0-beta.1,Azure.ResourceManager.SecurityInsights,1.2.0-beta.1,1725871995,09/09/2024
 4489,azure-mgmt-sql@4.0.0b19,python,azure-mgmt-sql_4.0.0b19,azure-mgmt-sql,4.0.0b19,1725861349,09/09/2024
+4490,"Azure.ResourceManager.DataFactory,1.4.0",dotnet,Azure.ResourceManager.DataFactory_1.4.0,Azure.ResourceManager.DataFactory,1.4.0,1725956860,09/10/2024

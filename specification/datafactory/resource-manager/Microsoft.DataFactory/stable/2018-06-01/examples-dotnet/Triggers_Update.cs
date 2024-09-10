@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryResource created on azure
-// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
+// this example assumes you already have this DataFactoryTriggerResource created on azure
+// for more information of creating DataFactoryTriggerResource, please refer to the document of DataFactoryTriggerResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
-DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
-
-// get the collection of this DataFactoryTriggerResource
-DataFactoryTriggerCollection collection = dataFactory.GetDataFactoryTriggers();
+string triggerName = "exampleTrigger";
+ResourceIdentifier dataFactoryTriggerResourceId = DataFactoryTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, triggerName);
+DataFactoryTriggerResource dataFactoryTrigger = client.GetDataFactoryTriggerResource(dataFactoryTriggerResourceId);
 
 // invoke the operation
-string triggerName = "exampleTrigger";
 DataFactoryTriggerData data = new DataFactoryTriggerData(new DataFactoryScheduleTrigger(new ScheduleTriggerRecurrence()
 {
     Frequency = DataFactoryRecurrenceFrequency.Minute,
@@ -50,7 +47,7 @@ DataFactoryTriggerData data = new DataFactoryTriggerData(new DataFactorySchedule
     },
     Description = "Example description",
 });
-ArmOperation<DataFactoryTriggerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, triggerName, data);
+ArmOperation<DataFactoryTriggerResource> lro = await dataFactoryTrigger.UpdateAsync(WaitUntil.Completed, data);
 DataFactoryTriggerResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -4493,3 +4493,4 @@ id,name,language,tag,package,version,date_epoch,date
 4492,"Azure.ResourceManager.HardwareSecurityModules,1.0.0-beta.3",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.0.0-beta.3,Azure.ResourceManager.HardwareSecurityModules,1.0.0-beta.3,1725893793,09/09/2024
 4493,azure-mgmt-hdinsight@9.1.0b1,python,azure-mgmt-hdinsight_9.1.0b1,azure-mgmt-hdinsight,9.1.0b1,1725956881,09/10/2024
 4494,com.azure.resourcemanager:azure-resourcemanager-avs:1.2.0,java,azure-resourcemanager-avs_1.2.0,azure-resourcemanager-avs,1.2.0,1726031509,09/11/2024
+4495,com.azure.resourcemanager:azure-resourcemanager-qumulo:1.1.0,java,azure-resourcemanager-qumulo_1.1.0,azure-resourcemanager-qumulo,1.1.0,1726024369,09/11/2024

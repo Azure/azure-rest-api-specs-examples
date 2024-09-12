@@ -1,0 +1,52 @@
+
+import com.azure.resourcemanager.qumulo.models.FileSystemResource;
+import com.azure.resourcemanager.qumulo.models.FileSystemResourceUpdateProperties;
+import com.azure.resourcemanager.qumulo.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.qumulo.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.qumulo.models.MarketplaceDetails;
+import com.azure.resourcemanager.qumulo.models.UserAssignedIdentity;
+import com.azure.resourcemanager.qumulo.models.UserDetails;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for FileSystems Update.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/liftrqumulo/resource-manager/Qumulo.Storage/stable/2024-06-19/examples/
+     * FileSystems_Update_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: FileSystems_Update.
+     * 
+     * @param manager Entry point to QumuloManager.
+     */
+    public static void fileSystemsUpdate(com.azure.resourcemanager.qumulo.QumuloManager manager) {
+        FileSystemResource resource = manager.fileSystems()
+            .getByResourceGroupWithResponse("rgQumulo", "ahpixnvykleksjlr", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("key357", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key7679", new UserAssignedIdentity())))
+            .withProperties(new FileSystemResourceUpdateProperties()
+                .withMarketplaceDetails(
+                    new MarketplaceDetails().withMarketplaceSubscriptionId("xaqtkloiyovmexqhn").withPlanId("fwtpz")
+                        .withOfferId("s").withPublisherId("czxcfrwodazyaft").withTermUnit("cfwwczmygsimcyvoclcw"))
+                .withUserDetails(new UserDetails().withEmail("aqsnzyroo"))
+                .withDelegatedSubnetId("bqaryqsjlackxphpmzffgoqsvm"))
+            .apply();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

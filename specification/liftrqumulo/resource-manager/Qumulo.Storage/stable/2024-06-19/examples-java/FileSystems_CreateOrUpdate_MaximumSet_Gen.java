@@ -1,0 +1,49 @@
+
+import com.azure.resourcemanager.qumulo.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.qumulo.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.qumulo.models.MarketplaceDetails;
+import com.azure.resourcemanager.qumulo.models.UserAssignedIdentity;
+import com.azure.resourcemanager.qumulo.models.UserDetails;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Samples for FileSystems CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/liftrqumulo/resource-manager/Qumulo.Storage/stable/2024-06-19/examples/
+     * FileSystems_CreateOrUpdate_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: FileSystems_CreateOrUpdate.
+     * 
+     * @param manager Entry point to QumuloManager.
+     */
+    public static void fileSystemsCreateOrUpdate(com.azure.resourcemanager.qumulo.QumuloManager manager) {
+        manager.fileSystems().define("hfcmtgaes").withRegion("pnb").withExistingResourceGroup("rgQumulo")
+            .withTags(mapOf("key7090", "fakeTokenPlaceholder"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
+                .withUserAssignedIdentities(mapOf("key7679", new UserAssignedIdentity())))
+            .withMarketplaceDetails(
+                new MarketplaceDetails().withMarketplaceSubscriptionId("xaqtkloiyovmexqhn").withPlanId("fwtpz")
+                    .withOfferId("s").withPublisherId("czxcfrwodazyaft").withTermUnit("cfwwczmygsimcyvoclcw"))
+            .withStorageSku("yhyzby").withUserDetails(new UserDetails().withEmail("aqsnzyroo"))
+            .withDelegatedSubnetId("jykmxrf").withClusterLoginUrl("ykaynsjvhihdthkkvvodjrgc")
+            .withPrivateIPs(Arrays.asList("gzken")).withAdminPassword("fakeTestSecretPlaceholder")
+            .withAvailabilityZone("eqdvbdiuwmhhzqzmksmwllpddqquwt").create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

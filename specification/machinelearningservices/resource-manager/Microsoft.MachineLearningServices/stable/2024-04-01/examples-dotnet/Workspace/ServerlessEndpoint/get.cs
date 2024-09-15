@@ -1,11 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MachineLearning.Models;
-using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MachineLearning;
 
 // Generated from example definition: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/Workspace/ServerlessEndpoint/get.json
@@ -16,31 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningServerlessEndpointResource created on azure
+// for more information of creating MachineLearningServerlessEndpointResource, please refer to the document of MachineLearningServerlessEndpointResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningServerlessEndpointResource
-MachineLearningServerlessEndpointCollection collection = machineLearningWorkspace.GetMachineLearningServerlessEndpoints();
+string name = "string";
+ResourceIdentifier machineLearningServerlessEndpointResourceId = MachineLearningServerlessEndpointResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, name);
+MachineLearningServerlessEndpointResource machineLearningServerlessEndpoint = client.GetMachineLearningServerlessEndpointResource(machineLearningServerlessEndpointResourceId);
 
 // invoke the operation
-string name = "string";
-NullableResponse<MachineLearningServerlessEndpointResource> response = await collection.GetIfExistsAsync(name);
-MachineLearningServerlessEndpointResource result = response.HasValue ? response.Value : null;
+MachineLearningServerlessEndpointResource result = await machineLearningServerlessEndpoint.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MachineLearningServerlessEndpointData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MachineLearningServerlessEndpointData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -15,26 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningWorkspaceResource created on azure
-// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
+// this example assumes you already have this MachineLearningOutboundRuleBasicResource created on azure
+// for more information of creating MachineLearningOutboundRuleBasicResource, please refer to the document of MachineLearningOutboundRuleBasicResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "aml-workspace-name";
-ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
-
-// get the collection of this MachineLearningOutboundRuleBasicResource
-MachineLearningOutboundRuleBasicCollection collection = machineLearningWorkspace.GetMachineLearningOutboundRuleBasics();
+string ruleName = "rule_name_1";
+ResourceIdentifier machineLearningOutboundRuleBasicResourceId = MachineLearningOutboundRuleBasicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, ruleName);
+MachineLearningOutboundRuleBasicResource machineLearningOutboundRuleBasic = client.GetMachineLearningOutboundRuleBasicResource(machineLearningOutboundRuleBasicResourceId);
 
 // invoke the operation
-string ruleName = "rule_name_1";
 MachineLearningOutboundRuleBasicData data = new MachineLearningOutboundRuleBasicData(new FqdnOutboundRule()
 {
     Destination = "destination_endpoint",
     Category = OutboundRuleCategory.UserDefined,
     Status = OutboundRuleStatus.Active,
 });
-ArmOperation<MachineLearningOutboundRuleBasicResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
+ArmOperation<MachineLearningOutboundRuleBasicResource> lro = await machineLearningOutboundRuleBasic.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningOutboundRuleBasicResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

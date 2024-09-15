@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningRegistryModelContainerResource created on azure
-// for more information of creating MachineLearningRegistryModelContainerResource, please refer to the document of MachineLearningRegistryModelContainerResource
+// this example assumes you already have this MachineLearningRegistryModelVersionResource created on azure
+// for more information of creating MachineLearningRegistryModelVersionResource, please refer to the document of MachineLearningRegistryModelVersionResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string registryName = "my-aml-registry";
 string modelName = "string";
-ResourceIdentifier machineLearningRegistryModelContainerResourceId = MachineLearningRegistryModelContainerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, modelName);
-MachineLearningRegistryModelContainerResource machineLearningRegistryModelContainer = client.GetMachineLearningRegistryModelContainerResource(machineLearningRegistryModelContainerResourceId);
-
-// get the collection of this MachineLearningRegistryModelVersionResource
-MachineLearningRegistryModelVersionCollection collection = machineLearningRegistryModelContainer.GetMachineLearningRegistryModelVersions();
+string version = "string";
+ResourceIdentifier machineLearningRegistryModelVersionResourceId = MachineLearningRegistryModelVersionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, registryName, modelName, version);
+MachineLearningRegistryModelVersionResource machineLearningRegistryModelVersion = client.GetMachineLearningRegistryModelVersionResource(machineLearningRegistryModelVersionResourceId);
 
 // invoke the operation
-string version = "string";
 MachineLearningModelVersionData data = new MachineLearningModelVersionData(new MachineLearningModelVersionProperties()
 {
     Flavors =
@@ -54,7 +51,7 @@ MachineLearningModelVersionData data = new MachineLearningModelVersionData(new M
     ["string"] = "string",
     },
 });
-ArmOperation<MachineLearningRegistryModelVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);
+ArmOperation<MachineLearningRegistryModelVersionResource> lro = await machineLearningRegistryModelVersion.UpdateAsync(WaitUntil.Completed, data);
 MachineLearningRegistryModelVersionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

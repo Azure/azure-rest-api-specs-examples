@@ -4499,3 +4499,4 @@ id,name,language,tag,package,version,date_epoch,date
 4498,"Azure.ResourceManager.Network,1.9.0",dotnet,Azure.ResourceManager.Network_1.9.0,Azure.ResourceManager.Network,1.9.0,1726130484,09/12/2024
 4499,"Azure.ResourceManager.Billing,1.2.0",dotnet,Azure.ResourceManager.Billing_1.2.0,Azure.ResourceManager.Billing,1.2.0,1726206251,09/13/2024
 4500,azure-mgmt-containerservice@32.0.0,python,azure-mgmt-containerservice_32.0.0,azure-mgmt-containerservice,32.0.0,1726199119,09/13/2024
+4501,"Azure.ResourceManager.Batch,1.5.0",dotnet,Azure.ResourceManager.Batch_1.5.0,Azure.ResourceManager.Batch,1.5.0,1726328200,09/14/2024

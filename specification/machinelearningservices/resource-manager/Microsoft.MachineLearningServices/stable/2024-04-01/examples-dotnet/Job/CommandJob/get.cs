@@ -17,20 +17,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MachineLearningJobResource created on azure
-// for more information of creating MachineLearningJobResource, please refer to the document of MachineLearningJobResource
+// this example assumes you already have this MachineLearningWorkspaceResource created on azure
+// for more information of creating MachineLearningWorkspaceResource, please refer to the document of MachineLearningWorkspaceResource
 string subscriptionId = "00000000-1111-2222-3333-444444444444";
 string resourceGroupName = "test-rg";
 string workspaceName = "my-aml-workspace";
-string id = "string";
-ResourceIdentifier machineLearningJobResourceId = MachineLearningJobResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, id);
-MachineLearningJobResource machineLearningJob = client.GetMachineLearningJobResource(machineLearningJobResourceId);
+ResourceIdentifier machineLearningWorkspaceResourceId = MachineLearningWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
+MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLearningWorkspaceResource(machineLearningWorkspaceResourceId);
+
+// get the collection of this MachineLearningJobResource
+MachineLearningJobCollection collection = machineLearningWorkspace.GetMachineLearningJobs();
 
 // invoke the operation
-MachineLearningJobResource result = await machineLearningJob.GetAsync();
+string id = "string";
+NullableResponse<MachineLearningJobResource> response = await collection.GetIfExistsAsync(id);
+MachineLearningJobResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-MachineLearningJobData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    MachineLearningJobData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

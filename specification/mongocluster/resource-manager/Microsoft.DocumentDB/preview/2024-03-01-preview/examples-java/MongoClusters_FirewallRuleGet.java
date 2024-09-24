@@ -4,8 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/mongocluster/DocumentDB.MongoCluster.Management/examples/2024-03-01-preview/
-     * MongoClusters_FirewallRuleGet.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_FirewallRuleGet.json
      */
     /**
      * Sample code: Gets a firewall rule on a Mongo Cluster resource.

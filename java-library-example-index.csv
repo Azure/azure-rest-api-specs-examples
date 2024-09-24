@@ -4511,3 +4511,4 @@ id,name,language,tag,package,version,date_epoch,date
 4510,azure-mgmt-avs@9.0.0,python,azure-mgmt-avs_9.0.0,azure-mgmt-avs,9.0.0,1727171532,09/24/2024
 4511,azure-mgmt-fabric@1.0.0b1,python,azure-mgmt-fabric_1.0.0b1,azure-mgmt-fabric,1.0.0b1,1727170565,09/24/2024
 4512,azure-mgmt-webpubsub@2.0.0,python,azure-mgmt-webpubsub_2.0.0,azure-mgmt-webpubsub,2.0.0,1727170558,09/24/2024
+4513,azure-mgmt-mongocluster@1.0.0b2,python,azure-mgmt-mongocluster_1.0.0b2,azure-mgmt-mongocluster,1.0.0b2,1727169732,09/24/2024

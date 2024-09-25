@@ -4516,3 +4516,4 @@ id,name,language,tag,package,version,date_epoch,date
 4515,com.azure.resourcemanager:azure-resourcemanager-desktopvirtualization:1.2.0,java,azure-resourcemanager-desktopvirtualization_1.2.0,azure-resourcemanager-desktopvirtualization,1.2.0,1727253554,09/25/2024
 4516,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.1.0,java,azure-resourcemanager-elasticsan_1.1.0,azure-resourcemanager-elasticsan,1.1.0,1727247085,09/25/2024
 4517,com.azure.resourcemanager:azure-resourcemanager-computeschedule:1.0.0-beta.1,java,azure-resourcemanager-computeschedule_1.0.0-beta.1,azure-resourcemanager-computeschedule,1.0.0-beta.1,1727240174,09/25/2024
+4518,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub@v1.3.0,go,sdk/resourcemanager/eventhub/armeventhub/v1.3.0,sdk/resourcemanager/eventhub/armeventhub,v1.3.0,1727259042,09/25/2024

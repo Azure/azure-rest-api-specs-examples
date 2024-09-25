@@ -16,17 +16,14 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this ArmDeploymentResource created on azure
+// for more information of creating ArmDeploymentResource, please refer to the document of ArmDeploymentResource
 string scope = "providers/Microsoft.Management/managementGroups/my-management-group-id";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(scope);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this ArmDeploymentResource
-ArmDeploymentCollection collection = subscriptionResource.GetArmDeployments();
+string deploymentName = "my-deployment";
+ResourceIdentifier armDeploymentResourceId = ArmDeploymentResource.CreateResourceIdentifier(scope, deploymentName);
+ArmDeploymentResource armDeployment = client.GetArmDeploymentResource(armDeploymentResourceId);
 
 // invoke the operation
-string deploymentName = "my-deployment";
 ArmDeploymentContent content = new ArmDeploymentContent(new ArmDeploymentProperties(ArmDeploymentMode.Incremental)
 {
     TemplateLink = new ArmDeploymentTemplateLink()
@@ -45,7 +42,7 @@ ArmDeploymentContent content = new ArmDeploymentContent(new ArmDeploymentPropert
     ["tagKey2"] = "tag-value-2",
     },
 };
-ArmOperation<ArmDeploymentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deploymentName, content);
+ArmOperation<ArmDeploymentResource> lro = await armDeployment.UpdateAsync(WaitUntil.Completed, content);
 ArmDeploymentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

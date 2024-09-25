@@ -4520,3 +4520,4 @@ id,name,language,tag,package,version,date_epoch,date
 4519,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan@v1.1.0,go,sdk/resourcemanager/elasticsan/armelasticsan/v1.1.0,sdk/resourcemanager/elasticsan/armelasticsan,v1.1.0,1727255685,09/25/2024
 4520,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/v2@v2.3.0,go,sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/v2.3.0,sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization,v2.3.0,1727253419,09/25/2024
 4521,"Azure.ResourceManager.ElasticSan,1.1.0",dotnet,Azure.ResourceManager.ElasticSan_1.1.0,Azure.ResourceManager.ElasticSan,1.1.0,1727253526,09/25/2024
+4522,"Azure.ResourceManager.Elastic,1.0.0-beta.5",dotnet,Azure.ResourceManager.Elastic_1.0.0-beta.5,Azure.ResourceManager.Elastic,1.0.0-beta.5,1727252957,09/25/2024

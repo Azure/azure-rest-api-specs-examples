@@ -6,8 +6,7 @@ import com.azure.resourcemanager.mongocluster.models.CheckNameAvailabilityReques
  */
 public final class Main {
     /*
-     * x-ms-original-file: specification/mongocluster/DocumentDB.MongoCluster.Management/examples/2024-03-01-preview/
-     * MongoClusters_NameAvailability.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_NameAvailability.json
      */
     /**
      * Sample code: Checks and confirms the Mongo Cluster name is availability for use.

@@ -4524,3 +4524,4 @@ id,name,language,tag,package,version,date_epoch,date
 4523,"Azure.ResourceManager.RedisEnterprise,1.2.0-beta.1",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.0-beta.1,Azure.ResourceManager.RedisEnterprise,1.2.0-beta.1,1727252875,09/25/2024
 4524,"Azure.ResourceManager.Resources,1.9.0",dotnet,Azure.ResourceManager.Resources_1.9.0,Azure.ResourceManager.Resources,1.9.0,1727222657,09/25/2024
 4525,azure-mgmt-network@27.0.0,python,azure-mgmt-network_27.0.0,azure-mgmt-network,27.0.0,1727255255,09/25/2024
+4526,azure-mgmt-batch@18.0.0,python,azure-mgmt-batch_18.0.0,azure-mgmt-batch,18.0.0,1727243577,09/25/2024

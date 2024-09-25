@@ -4513,3 +4513,4 @@ id,name,language,tag,package,version,date_epoch,date
 4512,azure-mgmt-webpubsub@2.0.0,python,azure-mgmt-webpubsub_2.0.0,azure-mgmt-webpubsub,2.0.0,1727170558,09/24/2024
 4513,azure-mgmt-mongocluster@1.0.0b2,python,azure-mgmt-mongocluster_1.0.0b2,azure-mgmt-mongocluster,1.0.0b2,1727169732,09/24/2024
 4514,azure-mgmt-desktopvirtualization@2.0.0,python,azure-mgmt-desktopvirtualization_2.0.0,azure-mgmt-desktopvirtualization,2.0.0,1727169263,09/24/2024
+4515,com.azure.resourcemanager:azure-resourcemanager-desktopvirtualization:1.2.0,java,azure-resourcemanager-desktopvirtualization_1.2.0,azure-resourcemanager-desktopvirtualization,1.2.0,1727253554,09/25/2024

@@ -19,7 +19,7 @@ from azure.mgmt.standbypool import StandbyPoolMgmtClient
 def main():
     client = StandbyPoolMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="8CC31D61-82D7-4B2B-B9DC-6B924DE7D229",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.standby_virtual_machines.list_by_standby_virtual_machine_pool_resource(
@@ -30,6 +30,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/standbypool/resource-manager/Microsoft.StandbyPool/preview/2023-12-01-preview/examples/StandbyVirtualMachines_ListByStandbyVirtualMachinePoolResource.json
+# x-ms-original-file: 2024-03-01/StandbyVirtualMachines_ListByStandbyVirtualMachinePoolResource.json
 if __name__ == "__main__":
     main()

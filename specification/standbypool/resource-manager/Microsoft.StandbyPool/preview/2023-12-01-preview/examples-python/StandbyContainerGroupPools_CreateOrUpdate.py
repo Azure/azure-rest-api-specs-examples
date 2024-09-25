@@ -1,5 +1,3 @@
-from typing import Any, IO, Union
-
 from azure.identity import DefaultAzureCredential
 
 from azure.mgmt.standbypool import StandbyPoolMgmtClient
@@ -21,7 +19,7 @@ from azure.mgmt.standbypool import StandbyPoolMgmtClient
 def main():
     client = StandbyPoolMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="8CC31D61-82D7-4B2B-B9DC-6B924DE7D229",
+        subscription_id="SUBSCRIPTION_ID",
     )
 
     response = client.standby_container_group_pools.begin_create_or_update(
@@ -32,12 +30,12 @@ def main():
             "properties": {
                 "containerGroupProperties": {
                     "containerGroupProfile": {
-                        "id": "/subscriptions/8CC31D61-82D7-4B2B-B9DC-6B924DE7D229/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile",
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/cgProfile",
                         "revision": 1,
                     },
                     "subnetIds": [
                         {
-                            "id": "/subscriptions/8cf6c1b6-c80f-437c-87ad-45fbaff54f73/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet"
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000009/resourceGroups/rgstandbypool/providers/Microsoft.Network/virtualNetworks/cgSubnet/subnets/cgSubnet"
                         }
                     ],
                 },
@@ -49,6 +47,6 @@ def main():
     print(response)
 
 
-# x-ms-original-file: specification/standbypool/resource-manager/Microsoft.StandbyPool/preview/2023-12-01-preview/examples/StandbyContainerGroupPools_CreateOrUpdate.json
+# x-ms-original-file: 2024-03-01/StandbyContainerGroupPools_CreateOrUpdate.json
 if __name__ == "__main__":
     main()

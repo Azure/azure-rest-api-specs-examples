@@ -4526,3 +4526,4 @@ id,name,language,tag,package,version,date_epoch,date
 4525,azure-mgmt-network@27.0.0,python,azure-mgmt-network_27.0.0,azure-mgmt-network,27.0.0,1727255255,09/25/2024
 4526,azure-mgmt-batch@18.0.0,python,azure-mgmt-batch_18.0.0,azure-mgmt-batch,18.0.0,1727243577,09/25/2024
 4527,azure-mgmt-standbypool@1.0.0,python,azure-mgmt-standbypool_1.0.0,azure-mgmt-standbypool,1.0.0,1727243551,09/25/2024
+4528,azure-mgmt-cosmosdb@10.0.0b4,python,azure-mgmt-cosmosdb_10.0.0b4,azure-mgmt-cosmosdb,10.0.0b4,1727243523,09/25/2024

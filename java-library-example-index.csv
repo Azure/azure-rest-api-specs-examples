@@ -4529,3 +4529,4 @@ id,name,language,tag,package,version,date_epoch,date
 4528,azure-mgmt-cosmosdb@10.0.0b4,python,azure-mgmt-cosmosdb_10.0.0b4,azure-mgmt-cosmosdb,10.0.0b4,1727243523,09/25/2024
 4529,com.azure.resourcemanager:azure-resourcemanager-batch:2.0.0,java,azure-resourcemanager-batch_2.0.0,azure-resourcemanager-batch,2.0.0,1727344243,09/26/2024
 4530,com.azure.resourcemanager:azure-resourcemanager-webpubsub:1.1.0,java,azure-resourcemanager-webpubsub_1.1.0,azure-resourcemanager-webpubsub,1.1.0,1727337687,09/26/2024
+4531,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.0.0,java,azure-resourcemanager-mongocluster_1.0.0,azure-resourcemanager-mongocluster,1.0.0,1727318095,09/26/2024

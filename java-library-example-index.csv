@@ -4527,3 +4527,4 @@ id,name,language,tag,package,version,date_epoch,date
 4526,azure-mgmt-batch@18.0.0,python,azure-mgmt-batch_18.0.0,azure-mgmt-batch,18.0.0,1727243577,09/25/2024
 4527,azure-mgmt-standbypool@1.0.0,python,azure-mgmt-standbypool_1.0.0,azure-mgmt-standbypool,1.0.0,1727243551,09/25/2024
 4528,azure-mgmt-cosmosdb@10.0.0b4,python,azure-mgmt-cosmosdb_10.0.0b4,azure-mgmt-cosmosdb,10.0.0b4,1727243523,09/25/2024
+4529,com.azure.resourcemanager:azure-resourcemanager-batch:2.0.0,java,azure-resourcemanager-batch_2.0.0,azure-resourcemanager-batch,2.0.0,1727344243,09/26/2024

@@ -4543,3 +4543,4 @@ id,name,language,tag,package,version,date_epoch,date
 4542,@azure/arm-privatedns@3.3.0,js,@azure/arm-privatedns_3.3.0,@azure/arm-privatedns,3.3.0,1727337720,09/26/2024
 4543,@azure/arm-sql@11.0.0-beta.2,js,@azure/arm-sql_11.0.0-beta.2,@azure/arm-sql,11.0.0-beta.2,1727328500,09/26/2024
 4544,@azure/arm-elasticsan@1.1.0,js,@azure/arm-elasticsan_1.1.0,@azure/arm-elasticsan,1.1.0,1727323338,09/26/2024
+4545,azure-mgmt-computeschedule@1.0.0b1,python,azure-mgmt-computeschedule_1.0.0b1,azure-mgmt-computeschedule,1.0.0b1,1727345536,09/26/2024

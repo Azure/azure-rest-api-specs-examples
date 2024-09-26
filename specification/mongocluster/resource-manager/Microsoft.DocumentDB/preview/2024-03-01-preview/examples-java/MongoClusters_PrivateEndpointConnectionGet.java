@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_PrivateEndpointConnectionGet.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_PrivateEndpointConnectionGet.json
      */
     /**
      * Sample code: Get a private endpoint connection on a Mongo Cluster resource.

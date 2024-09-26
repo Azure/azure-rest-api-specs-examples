@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/Operations_List.json
+     * x-ms-original-file: 2024-07-01/Operations_List.json
      */
     /**
      * Sample code: Operations_List.

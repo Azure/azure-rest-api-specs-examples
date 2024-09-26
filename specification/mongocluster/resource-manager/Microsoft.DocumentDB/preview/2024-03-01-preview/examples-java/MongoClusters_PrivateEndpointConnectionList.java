@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_PrivateEndpointConnectionList.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_PrivateEndpointConnectionList.json
      */
     /**
      * Sample code: Lists the private endpoint connection resources on a Mongo Cluster resource.

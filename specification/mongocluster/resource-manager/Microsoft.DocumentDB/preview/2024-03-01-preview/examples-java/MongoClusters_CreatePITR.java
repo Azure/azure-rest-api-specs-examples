@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_CreatePITR.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_CreatePITR.json
      */
     /**
      * Sample code: Creates a Mongo Cluster resource from a point in time restore.

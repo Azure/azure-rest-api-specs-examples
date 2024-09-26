@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_ReplicaList.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_ReplicaList.json
      */
     /**
      * Sample code: List the replicas linked to a Mongo Cluster resource.

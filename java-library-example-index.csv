@@ -4531,3 +4531,4 @@ id,name,language,tag,package,version,date_epoch,date
 4530,com.azure.resourcemanager:azure-resourcemanager-webpubsub:1.1.0,java,azure-resourcemanager-webpubsub_1.1.0,azure-resourcemanager-webpubsub,1.1.0,1727337687,09/26/2024
 4531,com.azure.resourcemanager:azure-resourcemanager-mongocluster:1.0.0,java,azure-resourcemanager-mongocluster_1.0.0,azure-resourcemanager-mongocluster,1.0.0,1727318095,09/26/2024
 4532,com.azure.resourcemanager:azure-resourcemanager-standbypool:1.0.0,java,azure-resourcemanager-standbypool_1.0.0,azure-resourcemanager-standbypool,1.0.0,1727264370,09/25/2024
+4533,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.1.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.1.0,sdk/resourcemanager/cosmos/armcosmos,v3.1.0,1727347623,09/26/2024

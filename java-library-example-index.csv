@@ -4540,3 +4540,4 @@ id,name,language,tag,package,version,date_epoch,date
 4539,@azure/arm-batch@10.0.0,js,@azure/arm-batch_10.0.0,@azure/arm-batch,10.0.0,1727343916,09/26/2024
 4540,@azure/arm-containerservice@21.1.0,js,@azure/arm-containerservice_21.1.0,@azure/arm-containerservice,21.1.0,1727343746,09/26/2024
 4541,@azure/arm-standbypool@1.0.0,js,@azure/arm-standbypool_1.0.0,@azure/arm-standbypool,1.0.0,1727342493,09/26/2024
+4542,@azure/arm-privatedns@3.3.0,js,@azure/arm-privatedns_3.3.0,@azure/arm-privatedns,3.3.0,1727337720,09/26/2024

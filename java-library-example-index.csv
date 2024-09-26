@@ -4513,3 +4513,17 @@ id,name,language,tag,package,version,date_epoch,date
 4512,azure-mgmt-webpubsub@2.0.0,python,azure-mgmt-webpubsub_2.0.0,azure-mgmt-webpubsub,2.0.0,1727170558,09/24/2024
 4513,azure-mgmt-mongocluster@1.0.0b2,python,azure-mgmt-mongocluster_1.0.0b2,azure-mgmt-mongocluster,1.0.0b2,1727169732,09/24/2024
 4514,azure-mgmt-desktopvirtualization@2.0.0,python,azure-mgmt-desktopvirtualization_2.0.0,azure-mgmt-desktopvirtualization,2.0.0,1727169263,09/24/2024
+4515,com.azure.resourcemanager:azure-resourcemanager-desktopvirtualization:1.2.0,java,azure-resourcemanager-desktopvirtualization_1.2.0,azure-resourcemanager-desktopvirtualization,1.2.0,1727253554,09/25/2024
+4516,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.1.0,java,azure-resourcemanager-elasticsan_1.1.0,azure-resourcemanager-elasticsan,1.1.0,1727247085,09/25/2024
+4517,com.azure.resourcemanager:azure-resourcemanager-computeschedule:1.0.0-beta.1,java,azure-resourcemanager-computeschedule_1.0.0-beta.1,azure-resourcemanager-computeschedule,1.0.0-beta.1,1727240174,09/25/2024
+4518,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub@v1.3.0,go,sdk/resourcemanager/eventhub/armeventhub/v1.3.0,sdk/resourcemanager/eventhub/armeventhub,v1.3.0,1727259042,09/25/2024
+4519,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan@v1.1.0,go,sdk/resourcemanager/elasticsan/armelasticsan/v1.1.0,sdk/resourcemanager/elasticsan/armelasticsan,v1.1.0,1727255685,09/25/2024
+4520,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/v2@v2.3.0,go,sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization/v2.3.0,sdk/resourcemanager/desktopvirtualization/armdesktopvirtualization,v2.3.0,1727253419,09/25/2024
+4521,"Azure.ResourceManager.ElasticSan,1.1.0",dotnet,Azure.ResourceManager.ElasticSan_1.1.0,Azure.ResourceManager.ElasticSan,1.1.0,1727253526,09/25/2024
+4522,"Azure.ResourceManager.Elastic,1.0.0-beta.5",dotnet,Azure.ResourceManager.Elastic_1.0.0-beta.5,Azure.ResourceManager.Elastic,1.0.0-beta.5,1727252957,09/25/2024
+4523,"Azure.ResourceManager.RedisEnterprise,1.2.0-beta.1",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.0-beta.1,Azure.ResourceManager.RedisEnterprise,1.2.0-beta.1,1727252875,09/25/2024
+4524,"Azure.ResourceManager.Resources,1.9.0",dotnet,Azure.ResourceManager.Resources_1.9.0,Azure.ResourceManager.Resources,1.9.0,1727222657,09/25/2024
+4525,azure-mgmt-network@27.0.0,python,azure-mgmt-network_27.0.0,azure-mgmt-network,27.0.0,1727255255,09/25/2024
+4526,azure-mgmt-batch@18.0.0,python,azure-mgmt-batch_18.0.0,azure-mgmt-batch,18.0.0,1727243577,09/25/2024
+4527,azure-mgmt-standbypool@1.0.0,python,azure-mgmt-standbypool_1.0.0,azure-mgmt-standbypool,1.0.0,1727243551,09/25/2024
+4528,azure-mgmt-cosmosdb@10.0.0b4,python,azure-mgmt-cosmosdb_10.0.0b4,azure-mgmt-cosmosdb,10.0.0b4,1727243523,09/25/2024

@@ -1,0 +1,26 @@
+
+import com.azure.resourcemanager.webpubsub.fluent.models.SharedPrivateLinkResourceInner;
+
+/**
+ * Samples for WebPubSubReplicaSharedPrivateLinkResources CreateOrUpdate.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/webpubsub/resource-manager/Microsoft.SignalRService/stable/2024-03-01/examples/
+     * WebPubSubReplicaSharedPrivateLinkResources_CreateOrUpdate.json
+     */
+    /**
+     * Sample code: WebPubSubReplicaSharedPrivateLinkResources_CreateOrUpdate.
+     * 
+     * @param manager Entry point to WebPubSubManager.
+     */
+    public static void webPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate(
+        com.azure.resourcemanager.webpubsub.WebPubSubManager manager) {
+        manager.webPubSubReplicaSharedPrivateLinkResources().createOrUpdate("myResourceGroup", "myWebPubSubService",
+            "myWebPubSubService-eastus", "upstream",
+            new SharedPrivateLinkResourceInner().withGroupId("sites").withPrivateLinkResourceId(
+                "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp")
+                .withRequestMessage("Please approve"),
+            com.azure.core.util.Context.NONE);
+    }
+}

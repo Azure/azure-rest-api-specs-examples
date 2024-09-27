@@ -4552,3 +4552,4 @@ id,name,language,tag,package,version,date_epoch,date
 4551,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/webpubsub/armwebpubsub@v1.3.0,go,sdk/resourcemanager/webpubsub/armwebpubsub/v1.3.0,sdk/resourcemanager/webpubsub/armwebpubsub,v1.3.0,1727354374,09/26/2024
 4552,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatedns/armprivatedns@v1.3.0,go,sdk/resourcemanager/privatedns/armprivatedns/v1.3.0,sdk/resourcemanager/privatedns/armprivatedns,v1.3.0,1727350084,09/26/2024
 4553,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devhub/armdevhub@v0.6.0,go,sdk/resourcemanager/devhub/armdevhub/v0.6.0,sdk/resourcemanager/devhub/armdevhub,v0.6.0,1727349909,09/26/2024
+4554,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.1.0,go,sdk/resourcemanager/network/armnetwork/v6.1.0,sdk/resourcemanager/network/armnetwork,v6.1.0,1727348933,09/26/2024

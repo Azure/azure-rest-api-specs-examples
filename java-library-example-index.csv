@@ -4548,3 +4548,4 @@ id,name,language,tag,package,version,date_epoch,date
 4547,com.azure.resourcemanager:azure-resourcemanager-trustedsigning:1.0.0-beta.1,java,azure-resourcemanager-trustedsigning_1.0.0-beta.1,azure-resourcemanager-trustedsigning,1.0.0-beta.1,1727433192,09/27/2024
 4548,com.azure.resourcemanager:azure-resourcemanager:2.43.0,java,azure-resourcemanager_2.43.0,azure-resourcemanager,2.43.0,1727422823,09/27/2024
 4549,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.0.0,go,sdk/resourcemanager/avs/armavs/v2.0.0,sdk/resourcemanager/avs/armavs,v2.0.0,1727415252,09/27/2024
+4550,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/standbypool/armstandbypool@v1.0.0,go,sdk/resourcemanager/standbypool/armstandbypool/v1.0.0,sdk/resourcemanager/standbypool/armstandbypool,v1.0.0,1727404838,09/27/2024

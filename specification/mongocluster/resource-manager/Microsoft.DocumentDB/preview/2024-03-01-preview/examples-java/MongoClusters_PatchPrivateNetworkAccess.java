@@ -8,7 +8,7 @@ import com.azure.resourcemanager.mongocluster.models.PublicNetworkAccess;
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_PatchPrivateNetworkAccess.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_PatchPrivateNetworkAccess.json
      */
     /**
      * Sample code: Disables public network access on a Mongo Cluster resource with a private endpoint connection.

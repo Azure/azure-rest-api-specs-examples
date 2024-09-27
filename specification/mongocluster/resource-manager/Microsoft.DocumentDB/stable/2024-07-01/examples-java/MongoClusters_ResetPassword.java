@@ -1,4 +1,5 @@
 
+import com.azure.resourcemanager.mongocluster.models.AdministratorProperties;
 import com.azure.resourcemanager.mongocluster.models.MongoCluster;
 import com.azure.resourcemanager.mongocluster.models.MongoClusterUpdateProperties;
 
@@ -7,7 +8,7 @@ import com.azure.resourcemanager.mongocluster.models.MongoClusterUpdatePropertie
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_ResetPassword.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_ResetPassword.json
      */
     /**
      * Sample code: Resets the administrator login password.
@@ -19,7 +20,7 @@ public final class Main {
         MongoCluster resource = manager.mongoClusters()
             .getByResourceGroupWithResponse("TestResourceGroup", "myMongoCluster", com.azure.core.util.Context.NONE)
             .getValue();
-        resource.update().withProperties(new MongoClusterUpdateProperties().withAdministratorLogin("mongoAdmin")
-            .withAdministratorLoginPassword("fakeTokenPlaceholder")).apply();
+        resource.update().withProperties(new MongoClusterUpdateProperties().withAdministrator(
+            new AdministratorProperties().withUserName("mongoAdmin").withPassword("fakeTokenPlaceholder"))).apply();
     }
 }

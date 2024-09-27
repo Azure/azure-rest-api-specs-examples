@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-06-01-preview/MongoClusters_FirewallRuleList.json
+     * x-ms-original-file: 2024-07-01/MongoClusters_FirewallRuleList.json
      */
     /**
      * Sample code: List the firewall rules on a Mongo Cluster resource.

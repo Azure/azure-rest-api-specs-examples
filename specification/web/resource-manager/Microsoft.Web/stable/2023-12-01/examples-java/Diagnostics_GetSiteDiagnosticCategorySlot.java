@@ -1,6 +1,6 @@
 
 /**
- * Samples for Diagnostics GetSiteDiagnosticCategory.
+ * Samples for Diagnostics GetSiteDiagnosticCategorySlot.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAppSlotDiagnosticCategory(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getDiagnostics().getSiteDiagnosticCategoryWithResponse(
-            "Sample-WestUSResourceGroup", "SampleApp", "availability", com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getDiagnostics().getSiteDiagnosticCategorySlotWithResponse(
+            "Sample-WestUSResourceGroup", "SampleApp", "availability", "staging", com.azure.core.util.Context.NONE);
     }
 }

@@ -4557,3 +4557,4 @@ id,name,language,tag,package,version,date_epoch,date
 4556,azure-mgmt-mongocluster@1.0.0,python,azure-mgmt-mongocluster_1.0.0,azure-mgmt-mongocluster,1.0.0,1727425367,09/27/2024
 4557,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.1,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.1,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.1,1727447360,09/27/2024
 4558,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.1.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.1.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.1.0,1727447145,09/27/2024
+4559,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch/v3@v3.0.0,go,sdk/resourcemanager/batch/armbatch/v3.0.0,sdk/resourcemanager/batch/armbatch,v3.0.0,1727446773,09/27/2024

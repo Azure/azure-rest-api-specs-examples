@@ -4555,3 +4555,4 @@ id,name,language,tag,package,version,date_epoch,date
 4554,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.1.0,go,sdk/resourcemanager/network/armnetwork/v6.1.0,sdk/resourcemanager/network/armnetwork,v6.1.0,1727348933,09/26/2024
 4555,"Azure.ResourceManager.ComputeSchedule,1.0.0-beta.1",dotnet,Azure.ResourceManager.ComputeSchedule_1.0.0-beta.1,Azure.ResourceManager.ComputeSchedule,1.0.0-beta.1,1727420807,09/27/2024
 4556,azure-mgmt-mongocluster@1.0.0,python,azure-mgmt-mongocluster_1.0.0,azure-mgmt-mongocluster,1.0.0,1727425367,09/27/2024
+4557,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.1,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.1,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.1,1727447360,09/27/2024

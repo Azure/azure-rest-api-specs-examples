@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.appservice.fluent.models.WorkerPoolResourceInner;
 
 /**
- * Samples for AppServiceEnvironments CreateOrUpdateMultiRolePool.
+ * Samples for AppServiceEnvironments UpdateMultiRolePool.
  */
 public final class Main {
     /*
@@ -15,7 +15,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void createOrUpdateAMultiRolePool(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getAppServiceEnvironments().createOrUpdateMultiRolePool("test-rg",
+        azure.webApps().manager().serviceClient().getAppServiceEnvironments().updateMultiRolePoolWithResponse("test-rg",
             "test-ase", new WorkerPoolResourceInner().withWorkerSize("Medium").withWorkerCount(3),
             com.azure.core.util.Context.NONE);
     }

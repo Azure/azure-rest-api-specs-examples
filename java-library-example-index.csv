@@ -4545,3 +4545,13 @@ id,name,language,tag,package,version,date_epoch,date
 4544,@azure/arm-elasticsan@1.1.0,js,@azure/arm-elasticsan_1.1.0,@azure/arm-elasticsan,1.1.0,1727323338,09/26/2024
 4545,azure-mgmt-computeschedule@1.0.0b1,python,azure-mgmt-computeschedule_1.0.0b1,azure-mgmt-computeschedule,1.0.0b1,1727345536,09/26/2024
 4546,azure-mgmt-mysqlflexibleservers@1.0.0b2,python,azure-mgmt-mysqlflexibleservers_1.0.0b2,azure-mgmt-mysqlflexibleservers,1.0.0b2,1727330544,09/26/2024
+4547,com.azure.resourcemanager:azure-resourcemanager-trustedsigning:1.0.0-beta.1,java,azure-resourcemanager-trustedsigning_1.0.0-beta.1,azure-resourcemanager-trustedsigning,1.0.0-beta.1,1727433192,09/27/2024
+4548,com.azure.resourcemanager:azure-resourcemanager:2.43.0,java,azure-resourcemanager_2.43.0,azure-resourcemanager,2.43.0,1727422823,09/27/2024
+4549,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/avs/armavs/v2@v2.0.0,go,sdk/resourcemanager/avs/armavs/v2.0.0,sdk/resourcemanager/avs/armavs,v2.0.0,1727415252,09/27/2024
+4550,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/standbypool/armstandbypool@v1.0.0,go,sdk/resourcemanager/standbypool/armstandbypool/v1.0.0,sdk/resourcemanager/standbypool/armstandbypool,v1.0.0,1727404838,09/27/2024
+4551,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/webpubsub/armwebpubsub@v1.3.0,go,sdk/resourcemanager/webpubsub/armwebpubsub/v1.3.0,sdk/resourcemanager/webpubsub/armwebpubsub,v1.3.0,1727354374,09/26/2024
+4552,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/privatedns/armprivatedns@v1.3.0,go,sdk/resourcemanager/privatedns/armprivatedns/v1.3.0,sdk/resourcemanager/privatedns/armprivatedns,v1.3.0,1727350084,09/26/2024
+4553,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devhub/armdevhub@v0.6.0,go,sdk/resourcemanager/devhub/armdevhub/v0.6.0,sdk/resourcemanager/devhub/armdevhub,v0.6.0,1727349909,09/26/2024
+4554,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.1.0,go,sdk/resourcemanager/network/armnetwork/v6.1.0,sdk/resourcemanager/network/armnetwork,v6.1.0,1727348933,09/26/2024
+4555,"Azure.ResourceManager.ComputeSchedule,1.0.0-beta.1",dotnet,Azure.ResourceManager.ComputeSchedule_1.0.0-beta.1,Azure.ResourceManager.ComputeSchedule,1.0.0-beta.1,1727420807,09/27/2024
+4556,azure-mgmt-mongocluster@1.0.0,python,azure-mgmt-mongocluster_1.0.0,azure-mgmt-mongocluster,1.0.0,1727425367,09/27/2024

@@ -4561,3 +4561,4 @@ id,name,language,tag,package,version,date_epoch,date
 4560,@azure/arm-fabric@1.0.0-beta.1,js,@azure/arm-fabric_1.0.0-beta.1,@azure/arm-fabric,1.0.0-beta.1,1727438511,09/27/2024
 4561,@azure/arm-computeschedule@1.0.0-beta.1,js,@azure/arm-computeschedule_1.0.0-beta.1,@azure/arm-computeschedule,1.0.0-beta.1,1727438377,09/27/2024
 4562,@azure/arm-avs@6.0.0,js,@azure/arm-avs_6.0.0,@azure/arm-avs,6.0.0,1727437718,09/27/2024
+4563,@azure/arm-containerservice@21.2.0-beta.1,js,@azure/arm-containerservice_21.2.0-beta.1,@azure/arm-containerservice,21.2.0-beta.1,1727437606,09/27/2024

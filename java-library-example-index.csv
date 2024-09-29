@@ -4555,3 +4555,12 @@ id,name,language,tag,package,version,date_epoch,date
 4554,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.1.0,go,sdk/resourcemanager/network/armnetwork/v6.1.0,sdk/resourcemanager/network/armnetwork,v6.1.0,1727348933,09/26/2024
 4555,"Azure.ResourceManager.ComputeSchedule,1.0.0-beta.1",dotnet,Azure.ResourceManager.ComputeSchedule_1.0.0-beta.1,Azure.ResourceManager.ComputeSchedule,1.0.0-beta.1,1727420807,09/27/2024
 4556,azure-mgmt-mongocluster@1.0.0,python,azure-mgmt-mongocluster_1.0.0,azure-mgmt-mongocluster,1.0.0,1727425367,09/27/2024
+4557,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.1,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.1,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.1,1727447360,09/27/2024
+4558,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.1.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.1.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.1.0,1727447145,09/27/2024
+4559,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/batch/armbatch/v3@v3.0.0,go,sdk/resourcemanager/batch/armbatch/v3.0.0,sdk/resourcemanager/batch/armbatch,v3.0.0,1727446773,09/27/2024
+4560,@azure/arm-fabric@1.0.0-beta.1,js,@azure/arm-fabric_1.0.0-beta.1,@azure/arm-fabric,1.0.0-beta.1,1727438511,09/27/2024
+4561,@azure/arm-computeschedule@1.0.0-beta.1,js,@azure/arm-computeschedule_1.0.0-beta.1,@azure/arm-computeschedule,1.0.0-beta.1,1727438377,09/27/2024
+4562,@azure/arm-avs@6.0.0,js,@azure/arm-avs_6.0.0,@azure/arm-avs,6.0.0,1727437718,09/27/2024
+4563,@azure/arm-containerservice@21.2.0-beta.1,js,@azure/arm-containerservice_21.2.0-beta.1,@azure/arm-containerservice,21.2.0-beta.1,1727437606,09/27/2024
+4564,@azure/arm-network@33.4.0,js,@azure/arm-network_33.4.0,@azure/arm-network,33.4.0,1727437551,09/27/2024
+4565,@azure/arm-desktopvirtualization@1.2.0,js,@azure/arm-desktopvirtualization_1.2.0,@azure/arm-desktopvirtualization,1.2.0,1727437501,09/27/2024

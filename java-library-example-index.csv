@@ -4566,3 +4566,4 @@ id,name,language,tag,package,version,date_epoch,date
 4565,@azure/arm-desktopvirtualization@1.2.0,js,@azure/arm-desktopvirtualization_1.2.0,@azure/arm-desktopvirtualization,1.2.0,1727437501,09/27/2024
 4566,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning@v0.1.0,go,sdk/resourcemanager/trustedsigning/armtrustedsigning/v0.1.0,sdk/resourcemanager/trustedsigning/armtrustedsigning,v0.1.0,1727606347,09/29/2024
 4567,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computeschedule/armcomputeschedule@v0.1.0,go,sdk/resourcemanager/computeschedule/armcomputeschedule/v0.1.0,sdk/resourcemanager/computeschedule/armcomputeschedule,v0.1.0,1727605447,09/29/2024
+4568,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.2.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.2.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v6.2.0-beta.1,1727601260,09/29/2024

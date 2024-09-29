@@ -4564,3 +4564,4 @@ id,name,language,tag,package,version,date_epoch,date
 4563,@azure/arm-containerservice@21.2.0-beta.1,js,@azure/arm-containerservice_21.2.0-beta.1,@azure/arm-containerservice,21.2.0-beta.1,1727437606,09/27/2024
 4564,@azure/arm-network@33.4.0,js,@azure/arm-network_33.4.0,@azure/arm-network,33.4.0,1727437551,09/27/2024
 4565,@azure/arm-desktopvirtualization@1.2.0,js,@azure/arm-desktopvirtualization_1.2.0,@azure/arm-desktopvirtualization,1.2.0,1727437501,09/27/2024
+4566,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/trustedsigning/armtrustedsigning@v0.1.0,go,sdk/resourcemanager/trustedsigning/armtrustedsigning/v0.1.0,sdk/resourcemanager/trustedsigning/armtrustedsigning,v0.1.0,1727606347,09/29/2024

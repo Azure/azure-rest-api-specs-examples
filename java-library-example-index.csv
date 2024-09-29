@@ -4569,3 +4569,4 @@ id,name,language,tag,package,version,date_epoch,date
 4568,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.2.0-beta.1,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.2.0-beta.1,sdk/resourcemanager/containerservice/armcontainerservice,v6.2.0-beta.1,1727601260,09/29/2024
 4569,@azure/arm-servicenetworking@1.1.0-beta.1,js,@azure/arm-servicenetworking_1.1.0-beta.1,@azure/arm-servicenetworking,1.1.0-beta.1,1727601218,09/29/2024
 4570,azure-mgmt-servicenetworking@1.1.0b1,python,azure-mgmt-servicenetworking_1.1.0b1,azure-mgmt-servicenetworking,1.1.0b1,1727600439,09/29/2024
+4571,azure-mgmt-trustedsigning@1.0.0b1,python,azure-mgmt-trustedsigning_1.0.0b1,azure-mgmt-trustedsigning,1.0.0b1,1727580276,09/29/2024

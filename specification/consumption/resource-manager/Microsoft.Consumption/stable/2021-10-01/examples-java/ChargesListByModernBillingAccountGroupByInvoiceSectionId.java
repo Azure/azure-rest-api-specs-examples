@@ -1,25 +1,21 @@
-import com.azure.core.util.Context;
 
-/** Samples for Charges List. */
+/**
+ * Samples for Charges List.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/ChargesListByModernBillingAccountGroupByInvoiceSectionId.json
+     * x-ms-original-file: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/
+     * ChargesListByModernBillingAccountGroupByInvoiceSectionId.json
      */
     /**
      * Sample code: ChargesListByBillingAccountGroupByInvoiceSectionId-Modern.
-     *
+     * 
      * @param manager Entry point to ConsumptionManager.
      */
     public static void chargesListByBillingAccountGroupByInvoiceSectionIdModern(
         com.azure.resourcemanager.consumption.ConsumptionManager manager) {
-        manager
-            .charges()
-            .listWithResponse(
-                "providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425",
-                "2019-09-01",
-                "2019-09-30",
-                null,
-                "groupby((properties/invoiceSectionId))",
-                Context.NONE);
+        manager.charges().listWithResponse(
+            "providers/Microsoft.Billing/billingAccounts/1234:56789/billingProfiles/42425", "2019-09-01", "2019-09-30",
+            null, "groupby((properties/invoiceSectionId))", com.azure.core.util.Context.NONE);
     }
 }

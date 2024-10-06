@@ -1,4 +1,4 @@
-import com.azure.core.util.Context;
+
 import com.azure.resourcemanager.edgeorder.models.FilterableProperty;
 import com.azure.resourcemanager.edgeorder.models.ProductFamiliesRequest;
 import com.azure.resourcemanager.edgeorder.models.SupportedFilterTypes;
@@ -6,34 +6,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ResourceProvider ListProductFamilies. */
+/**
+ * Samples for ResourceProvider ListProductFamilies.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListProductFamilies.json
+     * x-ms-original-file:
+     * specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ListProductFamilies.json
      */
     /**
      * Sample code: ListProductFamilies.
-     *
+     * 
      * @param manager Entry point to EdgeOrderManager.
      */
     public static void listProductFamilies(com.azure.resourcemanager.edgeorder.EdgeOrderManager manager) {
-        manager
-            .resourceProviders()
-            .listProductFamilies(
-                new ProductFamiliesRequest()
-                    .withFilterableProperties(
-                        mapOf(
-                            "azurestackedge",
-                            Arrays
-                                .asList(
-                                    new FilterableProperty()
-                                        .withType(SupportedFilterTypes.SHIP_TO_COUNTRIES)
-                                        .withSupportedValues(Arrays.asList("US"))))),
-                null,
-                null,
-                Context.NONE);
+        manager.resourceProviders().listProductFamilies(
+            new ProductFamiliesRequest().withFilterableProperties(mapOf("azurestackedge",
+                Arrays.asList(new FilterableProperty().withType(SupportedFilterTypes.SHIP_TO_COUNTRIES)
+                    .withSupportedValues(Arrays.asList("US"))))),
+            "configurations", null, com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

@@ -4574,3 +4574,4 @@ id,name,language,tag,package,version,date_epoch,date
 4573,@azure/arm-webpubsub@1.2.0,js,@azure/arm-webpubsub_1.2.0,@azure/arm-webpubsub,1.2.0,1727679696,09/30/2024
 4574,@azure/arm-trustedsigning@1.0.0-beta.1,js,@azure/arm-trustedsigning_1.0.0-beta.1,@azure/arm-trustedsigning,1.0.0-beta.1,1727676385,09/30/2024
 4575,com.azure.resourcemanager:azure-resourcemanager-consumption:1.0.0-beta.4,java,azure-resourcemanager-consumption_1.0.0-beta.4,azure-resourcemanager-consumption,1.0.0-beta.4,1728035140,10/04/2024
+4576,com.azure.resourcemanager:azure-resourcemanager-edgeorder:1.0.0-beta.2,java,azure-resourcemanager-edgeorder_1.0.0-beta.2,azure-resourcemanager-edgeorder,1.0.0-beta.2,1728208868,10/06/2024

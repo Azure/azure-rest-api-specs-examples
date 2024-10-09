@@ -4575,3 +4575,7 @@ id,name,language,tag,package,version,date_epoch,date
 4574,@azure/arm-trustedsigning@1.0.0-beta.1,js,@azure/arm-trustedsigning_1.0.0-beta.1,@azure/arm-trustedsigning,1.0.0-beta.1,1727676385,09/30/2024
 4575,com.azure.resourcemanager:azure-resourcemanager-consumption:1.0.0-beta.4,java,azure-resourcemanager-consumption_1.0.0-beta.4,azure-resourcemanager-consumption,1.0.0-beta.4,1728035140,10/04/2024
 4576,com.azure.resourcemanager:azure-resourcemanager-edgeorder:1.0.0-beta.2,java,azure-resourcemanager-edgeorder_1.0.0-beta.2,azure-resourcemanager-edgeorder,1.0.0-beta.2,1728208868,10/06/2024
+4577,com.azure.resourcemanager:azure-resourcemanager-servicelinker:1.0.0-beta.3,java,azure-resourcemanager-servicelinker_1.0.0-beta.3,azure-resourcemanager-servicelinker,1.0.0-beta.3,1728453179,10/09/2024
+4578,com.azure.resourcemanager:azure-resourcemanager-iotcentral:1.1.0-beta.2,java,azure-resourcemanager-iotcentral_1.1.0-beta.2,azure-resourcemanager-iotcentral,1.1.0-beta.2,1728451299,10/09/2024
+4579,com.azure.resourcemanager:azure-resourcemanager-oep:1.0.0-beta.2,java,azure-resourcemanager-oep_1.0.0-beta.2,azure-resourcemanager-oep,1.0.0-beta.2,1728451257,10/09/2024
+4580,com.azure.resourcemanager:azure-resourcemanager-fluidrelay:1.1.0,java,azure-resourcemanager-fluidrelay_1.1.0,azure-resourcemanager-fluidrelay,1.1.0,1728445834,10/09/2024

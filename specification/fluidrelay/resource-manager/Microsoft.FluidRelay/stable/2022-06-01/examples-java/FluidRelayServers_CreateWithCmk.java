@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.fluidrelay.models.CmkIdentityType;
 import com.azure.resourcemanager.fluidrelay.models.CustomerManagedKeyEncryptionProperties;
 import com.azure.resourcemanager.fluidrelay.models.CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity;
@@ -9,44 +10,35 @@ import com.azure.resourcemanager.fluidrelay.models.UserAssignedIdentitiesValue;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for FluidRelayServers CreateOrUpdate. */
+/**
+ * Samples for FluidRelayServers CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/FluidRelayServers_CreateWithCmk.json
+     * x-ms-original-file: specification/fluidrelay/resource-manager/Microsoft.FluidRelay/stable/2022-06-01/examples/
+     * FluidRelayServers_CreateWithCmk.json
      */
     /**
      * Sample code: Create a Fluid Relay server with CMK.
-     *
+     * 
      * @param manager Entry point to FluidRelayManager.
      */
     public static void createAFluidRelayServerWithCMK(com.azure.resourcemanager.fluidrelay.FluidRelayManager manager) {
-        manager
-            .fluidRelayServers()
-            .define("myFluidRelayServer")
-            .withRegion("west-us")
-            .withExistingResourceGroup("myResourceGroup")
-            .withTags(mapOf("Category", "sales"))
-            .withIdentity(
-                new Identity()
-                    .withType(ResourceIdentityType.USER_ASSIGNED)
-                    .withUserAssignedIdentities(
-                        mapOf(
-                            "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityForCMK",
-                            new UserAssignedIdentitiesValue())))
+        manager.fluidRelayServers().define("myFluidRelayServer").withRegion("west-us")
+            .withExistingResourceGroup("myResourceGroup").withTags(mapOf("Category", "sales"))
+            .withIdentity(new Identity().withType(ResourceIdentityType.USER_ASSIGNED).withUserAssignedIdentities(mapOf(
+                "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityForCMK",
+                new UserAssignedIdentitiesValue())))
             .withEncryption(
-                new EncryptionProperties()
-                    .withCustomerManagedKeyEncryption(
-                        new CustomerManagedKeyEncryptionProperties()
-                            .withKeyEncryptionKeyIdentity(
-                                new CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity()
-                                    .withIdentityType(CmkIdentityType.USER_ASSIGNED)
-                                    .withUserAssignedIdentityResourceId(
-                                        "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityForCMK"))
-                            .withKeyEncryptionKeyUrl("https://contosovault.vault.azure.net/keys/contosokek")))
-            .withStoragesku(StorageSku.BASIC)
-            .create();
+                new EncryptionProperties().withCustomerManagedKeyEncryption(new CustomerManagedKeyEncryptionProperties()
+                    .withKeyEncryptionKeyIdentity(new CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity()
+                        .withIdentityType(CmkIdentityType.USER_ASSIGNED).withUserAssignedIdentityResourceId(
+                            "/subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityForCMK"))
+                    .withKeyEncryptionKeyUrl("fakeTokenPlaceholder")))
+            .withStoragesku(StorageSku.BASIC).create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

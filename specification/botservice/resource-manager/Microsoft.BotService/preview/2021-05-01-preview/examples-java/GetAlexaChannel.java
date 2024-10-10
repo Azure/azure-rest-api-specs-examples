@@ -1,16 +1,20 @@
-import com.azure.core.util.Context;
 
-/** Samples for Channels Get. */
+/**
+ * Samples for Channels Get.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/botservice/resource-manager/Microsoft.BotService/preview/2021-05-01-preview/examples/GetAlexaChannel.json
+     * x-ms-original-file:
+     * specification/botservice/resource-manager/Microsoft.BotService/preview/2021-05-01-preview/examples/
+     * GetAlexaChannel.json
      */
     /**
-     * Sample code: Get Alexa Bot.
-     *
+     * Sample code: Get Alexa Channel.
+     * 
      * @param manager Entry point to BotServiceManager.
      */
-    public static void getAlexaBot(com.azure.resourcemanager.botservice.BotServiceManager manager) {
-        manager.channels().getWithResponse("OneResourceGroupName", "samplebotname", "AlexaChannel", Context.NONE);
+    public static void getAlexaChannel(com.azure.resourcemanager.botservice.BotServiceManager manager) {
+        manager.channels().getWithResponse("OneResourceGroupName", "samplebotname", "AlexaChannel",
+            com.azure.core.util.Context.NONE);
     }
 }

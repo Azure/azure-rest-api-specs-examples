@@ -4585,3 +4585,4 @@ id,name,language,tag,package,version,date_epoch,date
 4584,com.azure.resourcemanager:azure-resourcemanager-automation:1.0.0-beta.3,java,azure-resourcemanager-automation_1.0.0-beta.3,azure-resourcemanager-automation,1.0.0-beta.3,1728530830,10/10/2024
 4585,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.0.0-beta.3,java,azure-resourcemanager-healthbot_1.0.0-beta.3,azure-resourcemanager-healthbot,1.0.0-beta.3,1728530730,10/10/2024
 4586,com.azure.resourcemanager:azure-resourcemanager-alertsmanagement:1.0.0-beta.2,java,azure-resourcemanager-alertsmanagement_1.0.0-beta.2,azure-resourcemanager-alertsmanagement,1.0.0-beta.2,1728530717,10/10/2024
+4587,com.azure.resourcemanager:azure-resourcemanager-labservices:1.0.0-beta.4,java,azure-resourcemanager-labservices_1.0.0-beta.4,azure-resourcemanager-labservices,1.0.0-beta.4,1728530715,10/10/2024

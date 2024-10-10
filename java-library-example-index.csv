@@ -4581,3 +4581,4 @@ id,name,language,tag,package,version,date_epoch,date
 4580,com.azure.resourcemanager:azure-resourcemanager-fluidrelay:1.1.0,java,azure-resourcemanager-fluidrelay_1.1.0,azure-resourcemanager-fluidrelay,1.1.0,1728445834,10/09/2024
 4581,com.azure.resourcemanager:azure-resourcemanager-marketplaceordering:1.0.0-beta.3,java,azure-resourcemanager-marketplaceordering_1.0.0-beta.3,azure-resourcemanager-marketplaceordering,1.0.0-beta.3,1728463049,10/09/2024
 4582,com.azure.resourcemanager:azure-resourcemanager-automanage:1.0.0-beta.2,java,azure-resourcemanager-automanage_1.0.0-beta.2,azure-resourcemanager-automanage,1.0.0-beta.2,1728531774,10/10/2024
+4583,com.azure.resourcemanager:azure-resourcemanager-extendedlocation:1.0.0-beta.3,java,azure-resourcemanager-extendedlocation_1.0.0-beta.3,azure-resourcemanager-extendedlocation,1.0.0-beta.3,1728530845,10/10/2024

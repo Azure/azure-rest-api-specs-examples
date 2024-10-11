@@ -4589,3 +4589,4 @@ id,name,language,tag,package,version,date_epoch,date
 4588,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.0.0-beta.3,java,azure-resourcemanager-dnsresolver_1.0.0-beta.3,azure-resourcemanager-dnsresolver,1.0.0-beta.3,1728530694,10/10/2024
 4589,com.azure.resourcemanager:azure-resourcemanager-servicelinker:1.0.0-beta.4,java,azure-resourcemanager-servicelinker_1.0.0-beta.4,azure-resourcemanager-servicelinker,1.0.0-beta.4,1728481134,10/09/2024
 4590,com.azure.resourcemanager:azure-resourcemanager-botservice:1.0.0-beta.6,java,azure-resourcemanager-botservice_1.0.0-beta.6,azure-resourcemanager-botservice,1.0.0-beta.6,1728471426,10/09/2024
+4591,com.azure.resourcemanager:azure-resourcemanager-relay:1.0.0-beta.3,java,azure-resourcemanager-relay_1.0.0-beta.3,azure-resourcemanager-relay,1.0.0-beta.3,1728636733,10/11/2024

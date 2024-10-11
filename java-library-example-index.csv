@@ -4593,3 +4593,4 @@ id,name,language,tag,package,version,date_epoch,date
 4592,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0,java,azure-resourcemanager-hybridcompute_1.0.0,azure-resourcemanager-hybridcompute,1.0.0,1728631900,10/11/2024
 4593,azure-mgmt-postgresqlflexibleservers@1.0.0,python,azure-mgmt-postgresqlflexibleservers_1.0.0,azure-mgmt-postgresqlflexibleservers,1.0.0,1728637150,10/11/2024
 4594,azure-mgmt-rdbms@10.2.0b18,python,azure-mgmt-rdbms_10.2.0b18,azure-mgmt-rdbms,10.2.0b18,1728626006,10/11/2024
+4595,azure-mgmt-servicelinker@1.2.0b3,python,azure-mgmt-servicelinker_1.2.0b3,azure-mgmt-servicelinker,1.2.0b3,1728626005,10/11/2024

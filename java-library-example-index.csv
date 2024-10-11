@@ -4591,3 +4591,4 @@ id,name,language,tag,package,version,date_epoch,date
 4590,com.azure.resourcemanager:azure-resourcemanager-botservice:1.0.0-beta.6,java,azure-resourcemanager-botservice_1.0.0-beta.6,azure-resourcemanager-botservice,1.0.0-beta.6,1728471426,10/09/2024
 4591,com.azure.resourcemanager:azure-resourcemanager-relay:1.0.0-beta.3,java,azure-resourcemanager-relay_1.0.0-beta.3,azure-resourcemanager-relay,1.0.0-beta.3,1728636733,10/11/2024
 4592,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.0.0,java,azure-resourcemanager-hybridcompute_1.0.0,azure-resourcemanager-hybridcompute,1.0.0,1728631900,10/11/2024
+4593,azure-mgmt-postgresqlflexibleservers@1.0.0,python,azure-mgmt-postgresqlflexibleservers_1.0.0,azure-mgmt-postgresqlflexibleservers,1.0.0,1728637150,10/11/2024

@@ -4580,3 +4580,12 @@ id,name,language,tag,package,version,date_epoch,date
 4579,com.azure.resourcemanager:azure-resourcemanager-oep:1.0.0-beta.2,java,azure-resourcemanager-oep_1.0.0-beta.2,azure-resourcemanager-oep,1.0.0-beta.2,1728451257,10/09/2024
 4580,com.azure.resourcemanager:azure-resourcemanager-fluidrelay:1.1.0,java,azure-resourcemanager-fluidrelay_1.1.0,azure-resourcemanager-fluidrelay,1.1.0,1728445834,10/09/2024
 4581,com.azure.resourcemanager:azure-resourcemanager-marketplaceordering:1.0.0-beta.3,java,azure-resourcemanager-marketplaceordering_1.0.0-beta.3,azure-resourcemanager-marketplaceordering,1.0.0-beta.3,1728463049,10/09/2024
+4582,com.azure.resourcemanager:azure-resourcemanager-automanage:1.0.0-beta.2,java,azure-resourcemanager-automanage_1.0.0-beta.2,azure-resourcemanager-automanage,1.0.0-beta.2,1728531774,10/10/2024
+4583,com.azure.resourcemanager:azure-resourcemanager-extendedlocation:1.0.0-beta.3,java,azure-resourcemanager-extendedlocation_1.0.0-beta.3,azure-resourcemanager-extendedlocation,1.0.0-beta.3,1728530845,10/10/2024
+4584,com.azure.resourcemanager:azure-resourcemanager-automation:1.0.0-beta.3,java,azure-resourcemanager-automation_1.0.0-beta.3,azure-resourcemanager-automation,1.0.0-beta.3,1728530830,10/10/2024
+4585,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.0.0-beta.3,java,azure-resourcemanager-healthbot_1.0.0-beta.3,azure-resourcemanager-healthbot,1.0.0-beta.3,1728530730,10/10/2024
+4586,com.azure.resourcemanager:azure-resourcemanager-alertsmanagement:1.0.0-beta.2,java,azure-resourcemanager-alertsmanagement_1.0.0-beta.2,azure-resourcemanager-alertsmanagement,1.0.0-beta.2,1728530717,10/10/2024
+4587,com.azure.resourcemanager:azure-resourcemanager-labservices:1.0.0-beta.4,java,azure-resourcemanager-labservices_1.0.0-beta.4,azure-resourcemanager-labservices,1.0.0-beta.4,1728530715,10/10/2024
+4588,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.0.0-beta.3,java,azure-resourcemanager-dnsresolver_1.0.0-beta.3,azure-resourcemanager-dnsresolver,1.0.0-beta.3,1728530694,10/10/2024
+4589,com.azure.resourcemanager:azure-resourcemanager-servicelinker:1.0.0-beta.4,java,azure-resourcemanager-servicelinker_1.0.0-beta.4,azure-resourcemanager-servicelinker,1.0.0-beta.4,1728481134,10/09/2024
+4590,com.azure.resourcemanager:azure-resourcemanager-botservice:1.0.0-beta.6,java,azure-resourcemanager-botservice_1.0.0-beta.6,azure-resourcemanager-botservice,1.0.0-beta.6,1728471426,10/09/2024

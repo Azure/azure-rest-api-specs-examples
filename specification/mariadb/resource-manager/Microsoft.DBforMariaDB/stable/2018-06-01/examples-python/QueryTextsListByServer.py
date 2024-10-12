@@ -1,4 +1,7 @@
+from typing import List
+
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.rdbms.mariadb import MariaDBManagementClient
 
 """

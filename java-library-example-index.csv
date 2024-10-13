@@ -4595,3 +4595,4 @@ id,name,language,tag,package,version,date_epoch,date
 4594,azure-mgmt-rdbms@10.2.0b18,python,azure-mgmt-rdbms_10.2.0b18,azure-mgmt-rdbms,10.2.0b18,1728626006,10/11/2024
 4595,azure-mgmt-servicelinker@1.2.0b3,python,azure-mgmt-servicelinker_1.2.0b3,azure-mgmt-servicelinker,1.2.0b3,1728626005,10/11/2024
 4596,azure-mgmt-containerservice@32.1.0,python,azure-mgmt-containerservice_32.1.0,azure-mgmt-containerservice,32.1.0,1728625976,10/11/2024
+4597,@azure/arm-hybridcompute@4.0.0,js,@azure/arm-hybridcompute_4.0.0,@azure/arm-hybridcompute,4.0.0,1728726706,10/12/2024

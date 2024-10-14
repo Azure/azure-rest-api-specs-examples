@@ -4605,3 +4605,4 @@ id,name,language,tag,package,version,date_epoch,date
 4604,com.azure.resourcemanager:azure-resourcemanager-networkfunction:1.0.0-beta.3,java,azure-resourcemanager-networkfunction_1.0.0-beta.3,azure-resourcemanager-networkfunction,1.0.0-beta.3,1728885341,10/14/2024
 4605,com.azure.resourcemanager:azure-resourcemanager-policyinsights:1.0.0-beta.4,java,azure-resourcemanager-policyinsights_1.0.0-beta.4,azure-resourcemanager-policyinsights,1.0.0-beta.4,1728885256,10/14/2024
 4606,"Azure.ResourceManager.AppService,1.3.0-beta.1",dotnet,Azure.ResourceManager.AppService_1.3.0-beta.1,Azure.ResourceManager.AppService,1.3.0-beta.1,1728887755,10/14/2024
+4607,"Azure.ResourceManager.WebPubSub,1.2.0-beta.2",dotnet,Azure.ResourceManager.WebPubSub_1.2.0-beta.2,Azure.ResourceManager.WebPubSub,1.2.0-beta.2,1728887732,10/14/2024

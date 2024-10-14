@@ -4603,3 +4603,4 @@ id,name,language,tag,package,version,date_epoch,date
 4602,com.azure.resourcemanager:azure-resourcemanager-attestation:1.0.0-beta.3,java,azure-resourcemanager-attestation_1.0.0-beta.3,azure-resourcemanager-attestation,1.0.0-beta.3,1728885379,10/14/2024
 4603,com.azure.resourcemanager:azure-resourcemanager-advisor:1.0.0-beta.3,java,azure-resourcemanager-advisor_1.0.0-beta.3,azure-resourcemanager-advisor,1.0.0-beta.3,1728885354,10/14/2024
 4604,com.azure.resourcemanager:azure-resourcemanager-networkfunction:1.0.0-beta.3,java,azure-resourcemanager-networkfunction_1.0.0-beta.3,azure-resourcemanager-networkfunction,1.0.0-beta.3,1728885341,10/14/2024
+4605,com.azure.resourcemanager:azure-resourcemanager-policyinsights:1.0.0-beta.4,java,azure-resourcemanager-policyinsights_1.0.0-beta.4,azure-resourcemanager-policyinsights,1.0.0-beta.4,1728885256,10/14/2024

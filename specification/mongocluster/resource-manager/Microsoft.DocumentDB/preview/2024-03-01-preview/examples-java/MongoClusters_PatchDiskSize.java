@@ -1,14 +1,16 @@
 
 import com.azure.resourcemanager.mongocluster.models.MongoCluster;
 import com.azure.resourcemanager.mongocluster.models.MongoClusterUpdateProperties;
-import com.azure.resourcemanager.mongocluster.models.StorageProperties;
+import com.azure.resourcemanager.mongocluster.models.NodeGroupSpec;
+import com.azure.resourcemanager.mongocluster.models.NodeKind;
+import java.util.Arrays;
 
 /**
  * Samples for MongoClusters Update.
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-07-01/MongoClusters_PatchDiskSize.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_PatchDiskSize.json
      */
     /**
      * Sample code: Updates the disk size on a Mongo Cluster resource.
@@ -21,7 +23,8 @@ public final class Main {
             .getByResourceGroupWithResponse("TestResourceGroup", "myMongoCluster", com.azure.core.util.Context.NONE)
             .getValue();
         resource.update()
-            .withProperties(new MongoClusterUpdateProperties().withStorage(new StorageProperties().withSizeGb(256L)))
+            .withProperties(new MongoClusterUpdateProperties()
+                .withNodeGroupSpecs(Arrays.asList(new NodeGroupSpec().withDiskSizeGB(256L).withKind(NodeKind.SHARD))))
             .apply();
     }
 }

@@ -6,7 +6,7 @@ import com.azure.resourcemanager.mongocluster.models.CheckNameAvailabilityReques
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-07-01/MongoClusters_NameAvailability_AlreadyExists.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_NameAvailability_AlreadyExists.json
      */
     /**
      * Sample code: Checks and returns that the Mongo Cluster name is already in-use.

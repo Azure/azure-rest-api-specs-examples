@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-07-01/MongoClusters_Delete.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_Delete.json
      */
     /**
      * Sample code: Deletes a Mongo Cluster resource.

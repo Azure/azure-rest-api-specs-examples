@@ -4,7 +4,7 @@
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-07-01/MongoClusters_List.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_List.json
      */
     /**
      * Sample code: Lists the Mongo Cluster resources in a subscription.

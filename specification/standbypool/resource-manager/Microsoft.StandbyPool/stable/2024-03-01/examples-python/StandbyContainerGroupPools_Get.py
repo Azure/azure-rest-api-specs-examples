@@ -7,7 +7,7 @@ from azure.mgmt.standbypool import StandbyPoolMgmtClient
     pip install azure-identity
     pip install azure-mgmt-standbypool
 # USAGE
-    python operations_list.py
+    python standby_container_group_pools_get.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,11 +22,13 @@ def main():
         subscription_id="SUBSCRIPTION_ID",
     )
 
-    response = client.operations.list()
-    for item in response:
-        print(item)
+    response = client.standby_container_group_pools.get(
+        resource_group_name="rgstandbypool",
+        standby_container_group_pool_name="pool",
+    )
+    print(response)
 
 
-# x-ms-original-file: specification/standbypool/resource-manager/Microsoft.StandbyPool/preview/2023-12-01-preview/examples/Operations_List.json
+# x-ms-original-file: 2024-03-01/StandbyContainerGroupPools_Get.json
 if __name__ == "__main__":
     main()

@@ -19,7 +19,7 @@ from azure.mgmt.standbypool import StandbyPoolMgmtClient
 def main():
     client = StandbyPoolMgmtClient(
         credential=DefaultAzureCredential(),
-        subscription_id="SUBSCRIPTION_ID",
+        subscription_id="8CC31D61-82D7-4B2B-B9DC-6B924DE7D229",
     )
 
     response = client.standby_container_group_pools.list_by_subscription()
@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: 2024-03-01/StandbyContainerGroupPools_ListBySubscription.json
+# x-ms-original-file: specification/standbypool/resource-manager/Microsoft.StandbyPool/preview/2023-12-01-preview/examples/StandbyContainerGroupPools_ListBySubscription.json
 if __name__ == "__main__":
     main()

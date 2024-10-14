@@ -27,6 +27,6 @@ def main():
         print(item)
 
 
-# x-ms-original-file: specification/standbypool/resource-manager/Microsoft.StandbyPool/preview/2023-12-01-preview/examples/Operations_List.json
+# x-ms-original-file: 2024-03-01/Operations_List.json
 if __name__ == "__main__":
     main()

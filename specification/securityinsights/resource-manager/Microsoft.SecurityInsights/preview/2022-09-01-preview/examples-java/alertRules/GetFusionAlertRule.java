@@ -1,16 +1,20 @@
-import com.azure.core.util.Context;
 
-/** Samples for AlertRules Get. */
+/**
+ * Samples for AlertRules Get.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/alertRules/GetFusionAlertRule.json
+     * x-ms-original-file:
+     * specification/securityinsights/resource-manager/Microsoft.SecurityInsights/preview/2022-09-01-preview/examples/
+     * alertRules/GetFusionAlertRule.json
      */
     /**
      * Sample code: Get a Fusion alert rule.
-     *
+     * 
      * @param manager Entry point to SecurityInsightsManager.
      */
     public static void getAFusionAlertRule(com.azure.resourcemanager.securityinsights.SecurityInsightsManager manager) {
-        manager.alertRules().getWithResponse("myRg", "myWorkspace", "myFirstFusionRule", Context.NONE);
+        manager.alertRules().getWithResponse("myRg", "myWorkspace", "myFirstFusionRule",
+            com.azure.core.util.Context.NONE);
     }
 }

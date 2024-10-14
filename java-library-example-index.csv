@@ -4600,3 +4600,4 @@ id,name,language,tag,package,version,date_epoch,date
 4599,com.azure.resourcemanager:azure-resourcemanager-education:1.0.0-beta.4,java,azure-resourcemanager-education_1.0.0-beta.4,azure-resourcemanager-education,1.0.0-beta.4,1728885936,10/14/2024
 4600,com.azure.resourcemanager:azure-resourcemanager-billingbenefits:1.0.0-beta.2,java,azure-resourcemanager-billingbenefits_1.0.0-beta.2,azure-resourcemanager-billingbenefits,1.0.0-beta.2,1728885795,10/14/2024
 4601,com.azure.resourcemanager:azure-resourcemanager-azurearcdata:1.0.0-beta.4,java,azure-resourcemanager-azurearcdata_1.0.0-beta.4,azure-resourcemanager-azurearcdata,1.0.0-beta.4,1728885575,10/14/2024
+4602,com.azure.resourcemanager:azure-resourcemanager-attestation:1.0.0-beta.3,java,azure-resourcemanager-attestation_1.0.0-beta.3,azure-resourcemanager-attestation,1.0.0-beta.3,1728885379,10/14/2024

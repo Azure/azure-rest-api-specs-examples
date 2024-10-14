@@ -8,7 +8,7 @@ import com.azure.resourcemanager.mongocluster.models.MongoClusterReplicaParamete
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-07-01/MongoClusters_CreateGeoReplica.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_CreateGeoReplica.json
      */
     /**
      * Sample code: Creates a replica Mongo Cluster resource from a source resource.

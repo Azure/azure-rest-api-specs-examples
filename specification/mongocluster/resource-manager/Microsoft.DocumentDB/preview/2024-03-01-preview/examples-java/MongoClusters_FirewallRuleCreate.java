@@ -6,7 +6,7 @@ import com.azure.resourcemanager.mongocluster.models.FirewallRuleProperties;
  */
 public final class Main {
     /*
-     * x-ms-original-file: 2024-07-01/MongoClusters_FirewallRuleCreate.json
+     * x-ms-original-file: 2024-06-01-preview/MongoClusters_FirewallRuleCreate.json
      */
     /**
      * Sample code: Creates a firewall rule on a Mongo Cluster resource.

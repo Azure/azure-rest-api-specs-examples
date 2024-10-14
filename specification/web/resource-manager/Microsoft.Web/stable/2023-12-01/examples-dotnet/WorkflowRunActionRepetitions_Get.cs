@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/WorkflowRunActionRepetitions_Get.json
@@ -14,34 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkflowRunActionResource created on azure
-// for more information of creating WorkflowRunActionResource, please refer to the document of WorkflowRunActionResource
+// this example assumes you already have this WorkflowRunActionRepetitionResource created on azure
+// for more information of creating WorkflowRunActionRepetitionResource, please refer to the document of WorkflowRunActionRepetitionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string name = "test-name";
 string workflowName = "testFlow";
 string runName = "08586776228332053161046300351";
 string actionName = "testAction";
-ResourceIdentifier workflowRunActionResourceId = WorkflowRunActionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, runName, actionName);
-WorkflowRunActionResource workflowRunAction = client.GetWorkflowRunActionResource(workflowRunActionResourceId);
-
-// get the collection of this WorkflowRunActionRepetitionResource
-WorkflowRunActionRepetitionCollection collection = workflowRunAction.GetWorkflowRunActionRepetitions();
+string repetitionName = "000001";
+ResourceIdentifier workflowRunActionRepetitionResourceId = WorkflowRunActionRepetitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, runName, actionName, repetitionName);
+WorkflowRunActionRepetitionResource workflowRunActionRepetition = client.GetWorkflowRunActionRepetitionResource(workflowRunActionRepetitionResourceId);
 
 // invoke the operation
-string repetitionName = "000001";
-NullableResponse<WorkflowRunActionRepetitionResource> response = await collection.GetIfExistsAsync(repetitionName);
-WorkflowRunActionRepetitionResource result = response.HasValue ? response.Value : null;
+WorkflowRunActionRepetitionResource result = await workflowRunActionRepetition.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    WorkflowRunActionRepetitionDefinitionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WorkflowRunActionRepetitionDefinitionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

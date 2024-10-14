@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteResource created on azure
-// for more information of creating StaticSiteResource, please refer to the document of StaticSiteResource
+// this example assumes you already have this StaticSiteBasicAuthPropertyResource created on azure
+// for more information of creating StaticSiteBasicAuthPropertyResource, please refer to the document of StaticSiteBasicAuthPropertyResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
-ResourceIdentifier staticSiteResourceId = StaticSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-StaticSiteResource staticSite = client.GetStaticSiteResource(staticSiteResourceId);
-
-// get the collection of this StaticSiteBasicAuthPropertyResource
-StaticSiteBasicAuthPropertyCollection collection = staticSite.GetStaticSiteBasicAuthProperties();
+StaticSiteBasicAuthName basicAuthName = StaticSiteBasicAuthName.Default;
+ResourceIdentifier staticSiteBasicAuthPropertyResourceId = StaticSiteBasicAuthPropertyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, basicAuthName);
+StaticSiteBasicAuthPropertyResource staticSiteBasicAuthProperty = client.GetStaticSiteBasicAuthPropertyResource(staticSiteBasicAuthPropertyResourceId);
 
 // invoke the operation
-StaticSiteBasicAuthName basicAuthName = StaticSiteBasicAuthName.Default;
 StaticSiteBasicAuthPropertyData data = new StaticSiteBasicAuthPropertyData()
 {
     Password = "**********************",
@@ -37,7 +34,7 @@ StaticSiteBasicAuthPropertyData data = new StaticSiteBasicAuthPropertyData()
     {
     },
 };
-ArmOperation<StaticSiteBasicAuthPropertyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, basicAuthName, data);
+ArmOperation<StaticSiteBasicAuthPropertyResource> lro = await staticSiteBasicAuthProperty.UpdateAsync(WaitUntil.Completed, data);
 StaticSiteBasicAuthPropertyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

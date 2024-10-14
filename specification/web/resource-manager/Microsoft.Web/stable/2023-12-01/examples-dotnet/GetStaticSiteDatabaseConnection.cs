@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/GetStaticSiteDatabaseConnection.json
@@ -14,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteResource created on azure
-// for more information of creating StaticSiteResource, please refer to the document of StaticSiteResource
+// this example assumes you already have this StaticSiteDatabaseConnectionResource created on azure
+// for more information of creating StaticSiteDatabaseConnectionResource, please refer to the document of StaticSiteDatabaseConnectionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
-ResourceIdentifier staticSiteResourceId = StaticSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
-StaticSiteResource staticSite = client.GetStaticSiteResource(staticSiteResourceId);
-
-// get the collection of this StaticSiteDatabaseConnectionResource
-StaticSiteDatabaseConnectionCollection collection = staticSite.GetStaticSiteDatabaseConnections();
+string databaseConnectionName = "default";
+ResourceIdentifier staticSiteDatabaseConnectionResourceId = StaticSiteDatabaseConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, databaseConnectionName);
+StaticSiteDatabaseConnectionResource staticSiteDatabaseConnection = client.GetStaticSiteDatabaseConnectionResource(staticSiteDatabaseConnectionResourceId);
 
 // invoke the operation
-string databaseConnectionName = "default";
-NullableResponse<StaticSiteDatabaseConnectionResource> response = await collection.GetIfExistsAsync(databaseConnectionName);
-StaticSiteDatabaseConnectionResource result = response.HasValue ? response.Value : null;
+StaticSiteDatabaseConnectionResource result = await staticSiteDatabaseConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    StaticSiteDatabaseConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+StaticSiteDatabaseConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

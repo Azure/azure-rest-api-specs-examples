@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.AppService.Models;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.DomainRegistration/stable/2023-12-01/examples/GetTopLevelDomain.json
@@ -15,29 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this TopLevelDomainResource created on azure
+// for more information of creating TopLevelDomainResource, please refer to the document of TopLevelDomainResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this TopLevelDomainResource
-TopLevelDomainCollection collection = subscriptionResource.GetTopLevelDomains();
+string name = "com";
+ResourceIdentifier topLevelDomainResourceId = TopLevelDomainResource.CreateResourceIdentifier(subscriptionId, name);
+TopLevelDomainResource topLevelDomain = client.GetTopLevelDomainResource(topLevelDomainResourceId);
 
 // invoke the operation
-string name = "com";
-NullableResponse<TopLevelDomainResource> response = await collection.GetIfExistsAsync(name);
-TopLevelDomainResource result = response.HasValue ? response.Value : null;
+TopLevelDomainResource result = await topLevelDomain.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    TopLevelDomainData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+TopLevelDomainData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -7,28 +7,38 @@ using Azure.Identity;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/Diagnostics_GetSiteDetectorResponse.json
-// this example is just showing the usage of "Diagnostics_GetSiteDetectorResponseSlot" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "Diagnostics_GetSiteDetectorResponse" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteSlotDetectorResource created on azure
-// for more information of creating SiteSlotDetectorResource, please refer to the document of SiteSlotDetectorResource
+// this example assumes you already have this WebSiteResource created on azure
+// for more information of creating WebSiteResource, please refer to the document of WebSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string siteName = "SampleApp";
-string slot = "staging";
-string detectorName = "runtimeavailability";
-ResourceIdentifier siteSlotDetectorResourceId = SiteSlotDetectorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, slot, detectorName);
-SiteSlotDetectorResource siteSlotDetector = client.GetSiteSlotDetectorResource(siteSlotDetectorResourceId);
+ResourceIdentifier webSiteResourceId = WebSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName);
+WebSiteResource webSite = client.GetWebSiteResource(webSiteResourceId);
+
+// get the collection of this SiteDetectorResource
+SiteDetectorCollection collection = webSite.GetSiteDetectors();
 
 // invoke the operation
-SiteSlotDetectorResource result = await siteSlotDetector.GetAsync();
+string detectorName = "runtimeavailability";
+NullableResponse<SiteDetectorResource> response = await collection.GetIfExistsAsync(detectorName);
+SiteDetectorResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppServiceDetectorData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppServiceDetectorData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

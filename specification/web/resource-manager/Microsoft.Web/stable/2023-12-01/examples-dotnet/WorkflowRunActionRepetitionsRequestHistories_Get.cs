@@ -14,8 +14,8 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebAppRequestHistoryResource created on azure
-// for more information of creating WebAppRequestHistoryResource, please refer to the document of WebAppRequestHistoryResource
+// this example assumes you already have this WorkflowRunActionRepetitionResource created on azure
+// for more information of creating WorkflowRunActionRepetitionResource, please refer to the document of WorkflowRunActionRepetitionResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string name = "test-name";
@@ -23,15 +23,26 @@ string workflowName = "test-workflow";
 string runName = "08586776228332053161046300351";
 string actionName = "HTTP_Webhook";
 string repetitionName = "000001";
-string requestHistoryName = "08586611142732800686";
-ResourceIdentifier webAppRequestHistoryResourceId = WebAppRequestHistoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, runName, actionName, repetitionName, requestHistoryName);
-WebAppRequestHistoryResource webAppRequestHistory = client.GetWebAppRequestHistoryResource(webAppRequestHistoryResourceId);
+ResourceIdentifier workflowRunActionRepetitionResourceId = WorkflowRunActionRepetitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName, runName, actionName, repetitionName);
+WorkflowRunActionRepetitionResource workflowRunActionRepetition = client.GetWorkflowRunActionRepetitionResource(workflowRunActionRepetitionResourceId);
+
+// get the collection of this WebAppRequestHistoryResource
+WebAppRequestHistoryCollection collection = workflowRunActionRepetition.GetWebAppRequestHistories();
 
 // invoke the operation
-WebAppRequestHistoryResource result = await webAppRequestHistory.GetAsync();
+string requestHistoryName = "08586611142732800686";
+NullableResponse<WebAppRequestHistoryResource> response = await collection.GetIfExistsAsync(requestHistoryName);
+WebAppRequestHistoryResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-WebAppRequestHistoryData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    WebAppRequestHistoryData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

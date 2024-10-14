@@ -1,11 +1,15 @@
-/** Samples for PrivateEndpointConnections List. */
+
+/**
+ * Samples for PrivateEndpointConnections List.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/examples/AttestationProviderListPrivateEndpointConnections.json
+     * x-ms-original-file: specification/attestation/resource-manager/Microsoft.Attestation/stable/2020-10-01/examples/
+     * AttestationProviderListPrivateEndpointConnections.json
      */
     /**
      * Sample code: AttestationProviderListPrivateEndpointConnections.
-     *
+     * 
      * @param manager Entry point to AttestationManager.
      */
     public static void attestationProviderListPrivateEndpointConnections(

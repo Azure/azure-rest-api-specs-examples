@@ -4597,3 +4597,4 @@ id,name,language,tag,package,version,date_epoch,date
 4596,azure-mgmt-containerservice@32.1.0,python,azure-mgmt-containerservice_32.1.0,azure-mgmt-containerservice,32.1.0,1728625976,10/11/2024
 4597,@azure/arm-hybridcompute@4.0.0,js,@azure/arm-hybridcompute_4.0.0,@azure/arm-hybridcompute,4.0.0,1728726706,10/12/2024
 4598,com.azure.resourcemanager:azure-resourcemanager-securityinsights:1.0.0-beta.5,java,azure-resourcemanager-securityinsights_1.0.0-beta.5,azure-resourcemanager-securityinsights,1.0.0-beta.5,1728886089,10/14/2024
+4599,com.azure.resourcemanager:azure-resourcemanager-education:1.0.0-beta.4,java,azure-resourcemanager-education_1.0.0-beta.4,azure-resourcemanager-education,1.0.0-beta.4,1728885936,10/14/2024

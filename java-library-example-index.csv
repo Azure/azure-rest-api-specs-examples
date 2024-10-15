@@ -4596,3 +4596,14 @@ id,name,language,tag,package,version,date_epoch,date
 4595,azure-mgmt-servicelinker@1.2.0b3,python,azure-mgmt-servicelinker_1.2.0b3,azure-mgmt-servicelinker,1.2.0b3,1728626005,10/11/2024
 4596,azure-mgmt-containerservice@32.1.0,python,azure-mgmt-containerservice_32.1.0,azure-mgmt-containerservice,32.1.0,1728625976,10/11/2024
 4597,@azure/arm-hybridcompute@4.0.0,js,@azure/arm-hybridcompute_4.0.0,@azure/arm-hybridcompute,4.0.0,1728726706,10/12/2024
+4598,com.azure.resourcemanager:azure-resourcemanager-securityinsights:1.0.0-beta.5,java,azure-resourcemanager-securityinsights_1.0.0-beta.5,azure-resourcemanager-securityinsights,1.0.0-beta.5,1728886089,10/14/2024
+4599,com.azure.resourcemanager:azure-resourcemanager-education:1.0.0-beta.4,java,azure-resourcemanager-education_1.0.0-beta.4,azure-resourcemanager-education,1.0.0-beta.4,1728885936,10/14/2024
+4600,com.azure.resourcemanager:azure-resourcemanager-billingbenefits:1.0.0-beta.2,java,azure-resourcemanager-billingbenefits_1.0.0-beta.2,azure-resourcemanager-billingbenefits,1.0.0-beta.2,1728885795,10/14/2024
+4601,com.azure.resourcemanager:azure-resourcemanager-azurearcdata:1.0.0-beta.4,java,azure-resourcemanager-azurearcdata_1.0.0-beta.4,azure-resourcemanager-azurearcdata,1.0.0-beta.4,1728885575,10/14/2024
+4602,com.azure.resourcemanager:azure-resourcemanager-attestation:1.0.0-beta.3,java,azure-resourcemanager-attestation_1.0.0-beta.3,azure-resourcemanager-attestation,1.0.0-beta.3,1728885379,10/14/2024
+4603,com.azure.resourcemanager:azure-resourcemanager-advisor:1.0.0-beta.3,java,azure-resourcemanager-advisor_1.0.0-beta.3,azure-resourcemanager-advisor,1.0.0-beta.3,1728885354,10/14/2024
+4604,com.azure.resourcemanager:azure-resourcemanager-networkfunction:1.0.0-beta.3,java,azure-resourcemanager-networkfunction_1.0.0-beta.3,azure-resourcemanager-networkfunction,1.0.0-beta.3,1728885341,10/14/2024
+4605,com.azure.resourcemanager:azure-resourcemanager-policyinsights:1.0.0-beta.4,java,azure-resourcemanager-policyinsights_1.0.0-beta.4,azure-resourcemanager-policyinsights,1.0.0-beta.4,1728885256,10/14/2024
+4606,"Azure.ResourceManager.AppService,1.3.0-beta.1",dotnet,Azure.ResourceManager.AppService_1.3.0-beta.1,Azure.ResourceManager.AppService,1.3.0-beta.1,1728887755,10/14/2024
+4607,"Azure.ResourceManager.WebPubSub,1.2.0-beta.2",dotnet,Azure.ResourceManager.WebPubSub_1.2.0-beta.2,Azure.ResourceManager.WebPubSub,1.2.0-beta.2,1728887732,10/14/2024
+4608,azure-mgmt-hybridcompute@9.0.0,python,azure-mgmt-hybridcompute_9.0.0,azure-mgmt-hybridcompute,9.0.0,1728887801,10/14/2024

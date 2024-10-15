@@ -4610,3 +4610,4 @@ id,name,language,tag,package,version,date_epoch,date
 4609,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.0.0,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.0.0,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.0.0,1728960239,10/15/2024
 4610,"Azure.ResourceManager.ContainerRegistry,1.3.0-beta.1",dotnet,Azure.ResourceManager.ContainerRegistry_1.3.0-beta.1,Azure.ResourceManager.ContainerRegistry,1.3.0-beta.1,1728982590,10/15/2024
 4611,"Azure.ResourceManager.Compute,1.7.0-beta.1",dotnet,Azure.ResourceManager.Compute_1.7.0-beta.1,Azure.ResourceManager.Compute,1.7.0-beta.1,1728982540,10/15/2024
+4612,"Azure.ResourceManager.ManagedServiceIdentities,1.3.0-beta.1",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.3.0-beta.1,Azure.ResourceManager.ManagedServiceIdentities,1.3.0-beta.1,1728976314,10/15/2024

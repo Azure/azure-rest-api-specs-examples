@@ -37,8 +37,8 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
     },
     CreationData = new DiskCreationData(DiskCreateOption.Empty),
     DiskSizeGB = 200,
-    DiskIopsReadWrite = 125,
-    DiskMBpsReadWrite = 3000,
+    DiskIopsReadWrite = 125L,
+    DiskMBpsReadWrite = 3000L,
 };
 ArmOperation<ManagedDiskResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, diskName, data);
 ManagedDiskResource result = lro.Value;

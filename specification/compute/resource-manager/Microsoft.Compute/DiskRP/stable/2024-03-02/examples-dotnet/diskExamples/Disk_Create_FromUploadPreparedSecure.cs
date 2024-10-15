@@ -34,7 +34,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
     OSType = SupportedOperatingSystemType.Windows,
     CreationData = new DiskCreationData(DiskCreateOption.UploadPreparedSecure)
     {
-        UploadSizeBytes = 10737418752,
+        UploadSizeBytes = 10737418752L,
     },
     SecurityProfile = new DiskSecurityProfile()
     {

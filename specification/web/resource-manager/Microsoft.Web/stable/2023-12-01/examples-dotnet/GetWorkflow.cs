@@ -7,39 +7,27 @@ using Azure.Identity;
 using Azure.ResourceManager.AppService;
 
 // Generated from example definition: specification/web/resource-manager/Microsoft.Web/stable/2023-12-01/examples/GetWorkflow.json
-// this example is just showing the usage of "WebApps_GetInstanceWorkflowSlot" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "WebApps_GetWorkflow" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WebSiteSlotResource created on azure
-// for more information of creating WebSiteSlotResource, please refer to the document of WebSiteSlotResource
+// this example assumes you already have this SiteWorkflowResource created on azure
+// for more information of creating SiteWorkflowResource, please refer to the document of SiteWorkflowResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testrg123";
 string name = "testsite2";
-string slot = "staging";
-ResourceIdentifier webSiteSlotResourceId = WebSiteSlotResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, slot);
-WebSiteSlotResource webSiteSlot = client.GetWebSiteSlotResource(webSiteSlotResourceId);
-
-// get the collection of this SiteSlotWorkflowResource
-SiteSlotWorkflowCollection collection = webSiteSlot.GetSiteSlotWorkflows();
+string workflowName = "stateful1";
+ResourceIdentifier siteWorkflowResourceId = SiteWorkflowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, workflowName);
+SiteWorkflowResource siteWorkflow = client.GetSiteWorkflowResource(siteWorkflowResourceId);
 
 // invoke the operation
-string workflowName = "stateful1";
-NullableResponse<SiteSlotWorkflowResource> response = await collection.GetIfExistsAsync(workflowName);
-SiteSlotWorkflowResource result = response.HasValue ? response.Value : null;
+SiteWorkflowResource result = await siteWorkflow.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    WorkflowEnvelopeData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+WorkflowEnvelopeData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

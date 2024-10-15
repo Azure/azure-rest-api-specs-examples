@@ -4608,3 +4608,4 @@ id,name,language,tag,package,version,date_epoch,date
 4607,"Azure.ResourceManager.WebPubSub,1.2.0-beta.2",dotnet,Azure.ResourceManager.WebPubSub_1.2.0-beta.2,Azure.ResourceManager.WebPubSub,1.2.0-beta.2,1728887732,10/14/2024
 4608,azure-mgmt-hybridcompute@9.0.0,python,azure-mgmt-hybridcompute_9.0.0,azure-mgmt-hybridcompute,9.0.0,1728887801,10/14/2024
 4609,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.0.0,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.0.0,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.0.0,1728960239,10/15/2024
+4610,"Azure.ResourceManager.ContainerRegistry,1.3.0-beta.1",dotnet,Azure.ResourceManager.ContainerRegistry_1.3.0-beta.1,Azure.ResourceManager.ContainerRegistry,1.3.0-beta.1,1728982590,10/15/2024

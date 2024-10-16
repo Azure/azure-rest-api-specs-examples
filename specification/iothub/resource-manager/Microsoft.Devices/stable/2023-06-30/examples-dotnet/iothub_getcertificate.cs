@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotHub;
 using Azure.ResourceManager.IotHub.Models;
+using Azure.ResourceManager.IotHub;
 
 // Generated from example definition: specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_getcertificate.json
 // this example is just showing the usage of "Certificates_Get" operation, for the dependent resources, they will have to be created separately.
@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IotHubCertificateDescriptionResource created on azure
-// for more information of creating IotHubCertificateDescriptionResource, please refer to the document of IotHubCertificateDescriptionResource
+// this example assumes you already have this IotHubDescriptionResource created on azure
+// for more information of creating IotHubDescriptionResource, please refer to the document of IotHubDescriptionResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "testhub";
-string certificateName = "cert";
-ResourceIdentifier iotHubCertificateDescriptionResourceId = IotHubCertificateDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, certificateName);
-IotHubCertificateDescriptionResource iotHubCertificateDescription = client.GetIotHubCertificateDescriptionResource(iotHubCertificateDescriptionResourceId);
+ResourceIdentifier iotHubDescriptionResourceId = IotHubDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+IotHubDescriptionResource iotHubDescription = client.GetIotHubDescriptionResource(iotHubDescriptionResourceId);
+
+// get the collection of this IotHubCertificateDescriptionResource
+IotHubCertificateDescriptionCollection collection = iotHubDescription.GetIotHubCertificateDescriptions();
 
 // invoke the operation
-IotHubCertificateDescriptionResource result = await iotHubCertificateDescription.GetAsync();
+string certificateName = "cert";
+NullableResponse<IotHubCertificateDescriptionResource> response = await collection.GetIfExistsAsync(certificateName);
+IotHubCertificateDescriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-IotHubCertificateDescriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    IotHubCertificateDescriptionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

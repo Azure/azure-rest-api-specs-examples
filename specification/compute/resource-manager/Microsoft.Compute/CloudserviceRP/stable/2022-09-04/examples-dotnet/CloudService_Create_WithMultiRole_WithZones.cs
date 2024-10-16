@@ -46,7 +46,7 @@ CloudServiceData data = new CloudServiceData(new AzureLocation("westus"))
     {
     Name = "Standard_D1_v2",
     Tier = "Standard",
-    Capacity = 1,
+    Capacity = 1L,
     },
     },new CloudServiceRoleProfileProperties()
     {
@@ -55,7 +55,7 @@ CloudServiceData data = new CloudServiceData(new AzureLocation("westus"))
     {
     Name = "Standard_D1_v2",
     Tier = "Standard",
-    Capacity = 1,
+    Capacity = 1L,
     },
     }
     },

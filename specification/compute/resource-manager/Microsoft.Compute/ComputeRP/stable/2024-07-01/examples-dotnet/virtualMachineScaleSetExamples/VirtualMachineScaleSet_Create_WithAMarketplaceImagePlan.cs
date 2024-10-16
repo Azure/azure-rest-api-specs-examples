@@ -36,7 +36,7 @@ VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocati
     {
         Name = "Standard_D1_v2",
         Tier = "Standard",
-        Capacity = 3,
+        Capacity = 3L,
     },
     Plan = new ComputePlan()
     {

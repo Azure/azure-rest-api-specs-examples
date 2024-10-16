@@ -36,7 +36,7 @@ VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocati
     {
         Name = "Standard_A8m_v2",
         Tier = "Standard",
-        Capacity = 10,
+        Capacity = 10L,
     },
     VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
     {

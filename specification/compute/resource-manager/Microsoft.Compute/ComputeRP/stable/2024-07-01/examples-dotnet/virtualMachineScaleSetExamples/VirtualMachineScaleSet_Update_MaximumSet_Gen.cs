@@ -34,7 +34,7 @@ VirtualMachineScaleSetPatch patch = new VirtualMachineScaleSetPatch()
     {
         Name = "DSv3-Type1",
         Tier = "aaa",
-        Capacity = 7,
+        Capacity = 7L,
     },
     Plan = new ComputePlan()
     {
@@ -198,8 +198,8 @@ VirtualMachineScaleSetPatch patch = new VirtualMachineScaleSetPatch()
             StorageAccountType = StorageAccountType.StandardLrs,
             DiskEncryptionSetId = new ResourceIdentifier("aaaaaaaaaaaa"),
             },
-            DiskIopsReadWrite = 28,
-            DiskMBpsReadWrite = 15,
+            DiskIopsReadWrite = 28L,
+            DiskMBpsReadWrite = 15L,
             }
             },
         },

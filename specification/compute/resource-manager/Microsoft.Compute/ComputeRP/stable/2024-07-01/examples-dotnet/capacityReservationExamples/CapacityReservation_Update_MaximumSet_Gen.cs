@@ -31,7 +31,7 @@ CapacityReservationPatch patch = new CapacityReservationPatch()
     {
         Name = "Standard_DS1_v2",
         Tier = "aaa",
-        Capacity = 7,
+        Capacity = 7L,
     },
     Tags =
     {

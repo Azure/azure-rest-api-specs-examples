@@ -40,8 +40,8 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
         LogicalSectorSize = 4096,
     },
     DiskSizeGB = 200,
-    DiskIopsReadWrite = 125,
-    DiskMBpsReadWrite = 3000,
+    DiskIopsReadWrite = 125L,
+    DiskMBpsReadWrite = 3000L,
     Encryption = new DiskEncryption()
     {
         EncryptionType = ComputeEncryptionType.EncryptionAtRestWithPlatformKey,

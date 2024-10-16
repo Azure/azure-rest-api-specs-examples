@@ -33,7 +33,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
 {
     CreationData = new DiskCreationData(DiskCreateOption.Upload)
     {
-        UploadSizeBytes = 10737418752,
+        UploadSizeBytes = 10737418752L,
     },
 };
 ArmOperation<ManagedDiskResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, diskName, data);

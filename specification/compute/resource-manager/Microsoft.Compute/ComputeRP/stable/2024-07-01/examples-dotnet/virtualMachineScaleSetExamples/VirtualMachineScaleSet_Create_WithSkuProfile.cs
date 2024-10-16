@@ -35,7 +35,7 @@ VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocati
     Sku = new ComputeSku()
     {
         Name = "Mix",
-        Capacity = 10,
+        Capacity = 10L,
     },
     VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
     {

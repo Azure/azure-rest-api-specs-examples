@@ -36,7 +36,7 @@ VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocati
     {
         Name = "Standard_A1",
         Tier = "Standard",
-        Capacity = 3,
+        Capacity = 3L,
     },
     UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy()
     {

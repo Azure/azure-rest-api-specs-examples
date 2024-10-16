@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this UserAssignedIdentityResource created on azure
-// for more information of creating UserAssignedIdentityResource, please refer to the document of UserAssignedIdentityResource
+// this example assumes you already have this FederatedIdentityCredentialResource created on azure
+// for more information of creating FederatedIdentityCredentialResource, please refer to the document of FederatedIdentityCredentialResource
 string subscriptionId = "c267c0e7-0a73-4789-9e17-d26aeb0904e5";
 string resourceGroupName = "rgName";
 string resourceName = "resourceName";
-ResourceIdentifier userAssignedIdentityResourceId = UserAssignedIdentityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-UserAssignedIdentityResource userAssignedIdentity = client.GetUserAssignedIdentityResource(userAssignedIdentityResourceId);
-
-// get the collection of this FederatedIdentityCredentialResource
-FederatedIdentityCredentialCollection collection = userAssignedIdentity.GetFederatedIdentityCredentials();
+string federatedIdentityCredentialResourceName = "ficResourceName";
+ResourceIdentifier federatedIdentityCredentialResourceId = FederatedIdentityCredentialResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, federatedIdentityCredentialResourceName);
+FederatedIdentityCredentialResource federatedIdentityCredential = client.GetFederatedIdentityCredentialResource(federatedIdentityCredentialResourceId);
 
 // invoke the operation
-string federatedIdentityCredentialResourceName = "ficResourceName";
-NullableResponse<FederatedIdentityCredentialResource> response = await collection.GetIfExistsAsync(federatedIdentityCredentialResourceName);
-FederatedIdentityCredentialResource result = response.HasValue ? response.Value : null;
+FederatedIdentityCredentialResource result = await federatedIdentityCredential.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    FederatedIdentityCredentialData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+FederatedIdentityCredentialData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

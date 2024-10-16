@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Logic;
 using Azure.ResourceManager.Logic.Models;
+using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowVersionTriggers_ListCallbackUrl.json
 // this example is just showing the usage of "WorkflowVersionTriggers_ListCallbackUrl" operation, for the dependent resources, they will have to be created separately.

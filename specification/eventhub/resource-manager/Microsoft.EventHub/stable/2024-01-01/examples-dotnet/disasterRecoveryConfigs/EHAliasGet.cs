@@ -14,31 +14,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubsNamespaceResource created on azure
-// for more information of creating EventHubsNamespaceResource, please refer to the document of EventHubsNamespaceResource
+// this example assumes you already have this EventHubsDisasterRecoveryResource created on azure
+// for more information of creating EventHubsDisasterRecoveryResource, please refer to the document of EventHubsDisasterRecoveryResource
 string subscriptionId = "exampleSubscriptionId";
 string resourceGroupName = "exampleResourceGroup";
 string namespaceName = "sdk-Namespace-8859";
-ResourceIdentifier eventHubsNamespaceResourceId = EventHubsNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventHubsNamespaceResource eventHubsNamespace = client.GetEventHubsNamespaceResource(eventHubsNamespaceResourceId);
-
-// get the collection of this EventHubsDisasterRecoveryResource
-EventHubsDisasterRecoveryCollection collection = eventHubsNamespace.GetEventHubsDisasterRecoveries();
+string @alias = "sdk-DisasterRecovery-3814";
+ResourceIdentifier eventHubsDisasterRecoveryResourceId = EventHubsDisasterRecoveryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, @alias);
+EventHubsDisasterRecoveryResource eventHubsDisasterRecovery = client.GetEventHubsDisasterRecoveryResource(eventHubsDisasterRecoveryResourceId);
 
 // invoke the operation
-string @alias = "sdk-DisasterRecovery-3814";
-NullableResponse<EventHubsDisasterRecoveryResource> response = await collection.GetIfExistsAsync(@alias);
-EventHubsDisasterRecoveryResource result = response.HasValue ? response.Value : null;
+EventHubsDisasterRecoveryResource result = await eventHubsDisasterRecovery.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    EventHubsDisasterRecoveryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventHubsDisasterRecoveryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

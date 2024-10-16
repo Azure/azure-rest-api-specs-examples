@@ -4615,3 +4615,4 @@ id,name,language,tag,package,version,date_epoch,date
 4614,"Azure.ResourceManager.ContainerServiceFleet,1.1.0-beta.1",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.1.0-beta.1,Azure.ResourceManager.ContainerServiceFleet,1.1.0-beta.1,1728962092,10/15/2024
 4615,@azure/arm-redisenterprisecache@3.1.0-beta.2,js,@azure/arm-redisenterprisecache_3.1.0-beta.2,@azure/arm-redisenterprisecache,3.1.0-beta.2,1729071680,10/16/2024
 4616,"Azure.ResourceManager.Logic,1.2.0-beta.1",dotnet,Azure.ResourceManager.Logic_1.2.0-beta.1,Azure.ResourceManager.Logic,1.2.0-beta.1,1729060342,10/16/2024
+4617,"Azure.ResourceManager.RecoveryServices,1.2.0-beta.1",dotnet,Azure.ResourceManager.RecoveryServices_1.2.0-beta.1,Azure.ResourceManager.RecoveryServices,1.2.0-beta.1,1729060315,10/16/2024

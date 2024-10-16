@@ -15,30 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this OperationalInsightsWorkspaceResource created on azure
-// for more information of creating OperationalInsightsWorkspaceResource, please refer to the document of OperationalInsightsWorkspaceResource
+// this example assumes you already have this OperationalInsightsSavedSearchResource created on azure
+// for more information of creating OperationalInsightsSavedSearchResource, please refer to the document of OperationalInsightsSavedSearchResource
 string subscriptionId = "00000000-0000-0000-0000-00000000000";
 string resourceGroupName = "TestRG";
 string workspaceName = "TestWS";
-ResourceIdentifier operationalInsightsWorkspaceResourceId = OperationalInsightsWorkspaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName);
-OperationalInsightsWorkspaceResource operationalInsightsWorkspace = client.GetOperationalInsightsWorkspaceResource(operationalInsightsWorkspaceResourceId);
-
-// get the collection of this OperationalInsightsSavedSearchResource
-OperationalInsightsSavedSearchCollection collection = operationalInsightsWorkspace.GetOperationalInsightsSavedSearches();
+string savedSearchId = "00000000-0000-0000-0000-00000000000";
+ResourceIdentifier operationalInsightsSavedSearchResourceId = OperationalInsightsSavedSearchResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workspaceName, savedSearchId);
+OperationalInsightsSavedSearchResource operationalInsightsSavedSearch = client.GetOperationalInsightsSavedSearchResource(operationalInsightsSavedSearchResourceId);
 
 // invoke the operation
-string savedSearchId = "00000000-0000-0000-0000-00000000000";
 OperationalInsightsSavedSearchData data = new OperationalInsightsSavedSearchData("Saved Search Test Category", "Create or Update Saved Search Test", "Heartbeat | summarize Count() by Computer | take a")
 {
     FunctionAlias = "heartbeat_func",
     FunctionParameters = "a:int=1",
-    Version = 2,
+    Version = 2L,
     Tags =
     {
     new OperationalInsightsTag("Group","Computer")
     },
 };
-ArmOperation<OperationalInsightsSavedSearchResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, savedSearchId, data);
+ArmOperation<OperationalInsightsSavedSearchResource> lro = await operationalInsightsSavedSearch.UpdateAsync(WaitUntil.Completed, data);
 OperationalInsightsSavedSearchResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -42,7 +42,7 @@ LogAnalyticsQuerySearchProperties querySearchProperties = new LogAnalyticsQueryS
     },
     },
 };
-long? top = 3;
+long? top = 3L;
 bool? includeBody = true;
 await foreach (LogAnalyticsQueryResource item in logAnalyticsQueryPack.SearchQueriesAsync(querySearchProperties, top: top, includeBody: includeBody))
 {

@@ -4613,3 +4613,4 @@ id,name,language,tag,package,version,date_epoch,date
 4612,"Azure.ResourceManager.ManagedServiceIdentities,1.3.0-beta.1",dotnet,Azure.ResourceManager.ManagedServiceIdentities_1.3.0-beta.1,Azure.ResourceManager.ManagedServiceIdentities,1.3.0-beta.1,1728976314,10/15/2024
 4613,"Azure.ResourceManager.EventHubs,1.2.0-beta.1",dotnet,Azure.ResourceManager.EventHubs_1.2.0-beta.1,Azure.ResourceManager.EventHubs,1.2.0-beta.1,1728976263,10/15/2024
 4614,"Azure.ResourceManager.ContainerServiceFleet,1.1.0-beta.1",dotnet,Azure.ResourceManager.ContainerServiceFleet_1.1.0-beta.1,Azure.ResourceManager.ContainerServiceFleet,1.1.0-beta.1,1728962092,10/15/2024
+4615,@azure/arm-redisenterprisecache@3.1.0-beta.2,js,@azure/arm-redisenterprisecache_3.1.0-beta.2,@azure/arm-redisenterprisecache,3.1.0-beta.2,1729071680,10/16/2024

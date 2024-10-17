@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowTriggerHistories_Get.json
@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowTriggerResource created on azure
-// for more information of creating LogicWorkflowTriggerResource, please refer to the document of LogicWorkflowTriggerResource
+// this example assumes you already have this LogicWorkflowTriggerHistoryResource created on azure
+// for more information of creating LogicWorkflowTriggerHistoryResource, please refer to the document of LogicWorkflowTriggerHistoryResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "testResourceGroup";
 string workflowName = "testWorkflowName";
 string triggerName = "testTriggerName";
-ResourceIdentifier logicWorkflowTriggerResourceId = LogicWorkflowTriggerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, triggerName);
-LogicWorkflowTriggerResource logicWorkflowTrigger = client.GetLogicWorkflowTriggerResource(logicWorkflowTriggerResourceId);
-
-// get the collection of this LogicWorkflowTriggerHistoryResource
-LogicWorkflowTriggerHistoryCollection collection = logicWorkflowTrigger.GetLogicWorkflowTriggerHistories();
+string historyName = "08586676746934337772206998657CU22";
+ResourceIdentifier logicWorkflowTriggerHistoryResourceId = LogicWorkflowTriggerHistoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, triggerName, historyName);
+LogicWorkflowTriggerHistoryResource logicWorkflowTriggerHistory = client.GetLogicWorkflowTriggerHistoryResource(logicWorkflowTriggerHistoryResourceId);
 
 // invoke the operation
-string historyName = "08586676746934337772206998657CU22";
-NullableResponse<LogicWorkflowTriggerHistoryResource> response = await collection.GetIfExistsAsync(historyName);
-LogicWorkflowTriggerHistoryResource result = response.HasValue ? response.Value : null;
+LogicWorkflowTriggerHistoryResource result = await logicWorkflowTriggerHistory.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    LogicWorkflowTriggerHistoryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LogicWorkflowTriggerHistoryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -1,8 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowRuns_Get.json
@@ -13,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowRunResource created on azure
-// for more information of creating LogicWorkflowRunResource, please refer to the document of LogicWorkflowRunResource
+// this example assumes you already have this LogicWorkflowResource created on azure
+// for more information of creating LogicWorkflowResource, please refer to the document of LogicWorkflowResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string workflowName = "test-workflow";
-string runName = "08586676746934337772206998657CU22";
-ResourceIdentifier logicWorkflowRunResourceId = LogicWorkflowRunResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName);
-LogicWorkflowRunResource logicWorkflowRun = client.GetLogicWorkflowRunResource(logicWorkflowRunResourceId);
+ResourceIdentifier logicWorkflowResourceId = LogicWorkflowResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName);
+LogicWorkflowResource logicWorkflow = client.GetLogicWorkflowResource(logicWorkflowResourceId);
+
+// get the collection of this LogicWorkflowRunResource
+LogicWorkflowRunCollection collection = logicWorkflow.GetLogicWorkflowRuns();
 
 // invoke the operation
-LogicWorkflowRunResource result = await logicWorkflowRun.GetAsync();
+string runName = "08586676746934337772206998657CU22";
+NullableResponse<LogicWorkflowRunResource> response = await collection.GetIfExistsAsync(runName);
+LogicWorkflowRunResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-LogicWorkflowRunData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    LogicWorkflowRunData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

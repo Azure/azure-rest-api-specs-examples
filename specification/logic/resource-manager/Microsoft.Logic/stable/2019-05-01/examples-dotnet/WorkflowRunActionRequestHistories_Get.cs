@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/WorkflowRunActionRequestHistories_Get.json
@@ -14,33 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this LogicWorkflowRunActionResource created on azure
-// for more information of creating LogicWorkflowRunActionResource, please refer to the document of LogicWorkflowRunActionResource
+// this example assumes you already have this LogicWorkflowRunActionRequestHistoryResource created on azure
+// for more information of creating LogicWorkflowRunActionRequestHistoryResource, please refer to the document of LogicWorkflowRunActionRequestHistoryResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-resource-group";
 string workflowName = "test-workflow";
 string runName = "08586776228332053161046300351";
 string actionName = "HTTP_Webhook";
-ResourceIdentifier logicWorkflowRunActionResourceId = LogicWorkflowRunActionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, actionName);
-LogicWorkflowRunActionResource logicWorkflowRunAction = client.GetLogicWorkflowRunActionResource(logicWorkflowRunActionResourceId);
-
-// get the collection of this LogicWorkflowRunActionRequestHistoryResource
-LogicWorkflowRunActionRequestHistoryCollection collection = logicWorkflowRunAction.GetLogicWorkflowRunActionRequestHistories();
+string requestHistoryName = "08586611142732800686";
+ResourceIdentifier logicWorkflowRunActionRequestHistoryResourceId = LogicWorkflowRunActionRequestHistoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, workflowName, runName, actionName, requestHistoryName);
+LogicWorkflowRunActionRequestHistoryResource logicWorkflowRunActionRequestHistory = client.GetLogicWorkflowRunActionRequestHistoryResource(logicWorkflowRunActionRequestHistoryResourceId);
 
 // invoke the operation
-string requestHistoryName = "08586611142732800686";
-NullableResponse<LogicWorkflowRunActionRequestHistoryResource> response = await collection.GetIfExistsAsync(requestHistoryName);
-LogicWorkflowRunActionRequestHistoryResource result = response.HasValue ? response.Value : null;
+LogicWorkflowRunActionRequestHistoryResource result = await logicWorkflowRunActionRequestHistory.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    LogicWorkflowRequestHistoryData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+LogicWorkflowRequestHistoryData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

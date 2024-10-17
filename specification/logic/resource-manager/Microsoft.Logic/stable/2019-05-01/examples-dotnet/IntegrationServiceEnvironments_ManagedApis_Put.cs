@@ -1,9 +1,10 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
+using Azure.ResourceManager.Logic.Models;
 using Azure.ResourceManager.Logic;
 
 // Generated from example definition: specification/logic/resource-manager/Microsoft.Logic/stable/2019-05-01/examples/IntegrationServiceEnvironments_ManagedApis_Put.json
@@ -14,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this IntegrationServiceEnvironmentResource created on azure
-// for more information of creating IntegrationServiceEnvironmentResource, please refer to the document of IntegrationServiceEnvironmentResource
+// this example assumes you already have this IntegrationServiceEnvironmentManagedApiResource created on azure
+// for more information of creating IntegrationServiceEnvironmentManagedApiResource, please refer to the document of IntegrationServiceEnvironmentManagedApiResource
 string subscriptionId = "f34b22a3-2202-4fb1-b040-1332bd928c84";
 string resourceGroup = "testResourceGroup";
 string integrationServiceEnvironmentName = "testIntegrationServiceEnvironment";
-ResourceIdentifier integrationServiceEnvironmentResourceId = IntegrationServiceEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroup, integrationServiceEnvironmentName);
-IntegrationServiceEnvironmentResource integrationServiceEnvironment = client.GetIntegrationServiceEnvironmentResource(integrationServiceEnvironmentResourceId);
-
-// get the collection of this IntegrationServiceEnvironmentManagedApiResource
-IntegrationServiceEnvironmentManagedApiCollection collection = integrationServiceEnvironment.GetIntegrationServiceEnvironmentManagedApis();
+string apiName = "servicebus";
+ResourceIdentifier integrationServiceEnvironmentManagedApiResourceId = IntegrationServiceEnvironmentManagedApiResource.CreateResourceIdentifier(subscriptionId, resourceGroup, integrationServiceEnvironmentName, apiName);
+IntegrationServiceEnvironmentManagedApiResource integrationServiceEnvironmentManagedApi = client.GetIntegrationServiceEnvironmentManagedApiResource(integrationServiceEnvironmentManagedApiResourceId);
 
 // invoke the operation
-string apiName = "servicebus";
 IntegrationServiceEnvironmentManagedApiData data = new IntegrationServiceEnvironmentManagedApiData(new AzureLocation("brazilsouth"));
-ArmOperation<IntegrationServiceEnvironmentManagedApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiName, data);
+ArmOperation<IntegrationServiceEnvironmentManagedApiResource> lro = await integrationServiceEnvironmentManagedApi.UpdateAsync(WaitUntil.Completed, data);
 IntegrationServiceEnvironmentManagedApiResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

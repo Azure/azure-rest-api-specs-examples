@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.powerbidedicated.models.CapacitySku;
 import com.azure.resourcemanager.powerbidedicated.models.CapacitySkuTier;
 import com.azure.resourcemanager.powerbidedicated.models.DedicatedCapacity;
@@ -6,33 +7,32 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Capacities Update. */
+/**
+ * Samples for Capacities Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/updateCapacity.json
+     * x-ms-original-file:
+     * specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/
+     * updateCapacity.json
      */
     /**
      * Sample code: Update capacity parameters.
-     *
+     * 
      * @param manager Entry point to PowerBIDedicatedManager.
      */
-    public static void updateCapacityParameters(
-        com.azure.resourcemanager.powerbidedicated.PowerBIDedicatedManager manager) {
-        DedicatedCapacity resource =
-            manager
-                .capacities()
-                .getByResourceGroupWithResponse("TestRG", "azsdktest", com.azure.core.util.Context.NONE)
-                .getValue();
-        resource
-            .update()
-            .withTags(mapOf("testKey", "testValue"))
+    public static void
+        updateCapacityParameters(com.azure.resourcemanager.powerbidedicated.PowerBIDedicatedManager manager) {
+        DedicatedCapacity resource = manager.capacities()
+            .getByResourceGroupWithResponse("TestRG", "azsdktest", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withTags(mapOf("testKey", "fakeTokenPlaceholder"))
             .withSku(new CapacitySku().withName("A1").withTier(CapacitySkuTier.PBIE_AZURE))
-            .withAdministration(
-                new DedicatedCapacityAdministrators()
-                    .withMembers(Arrays.asList("azsdktest@microsoft.com", "azsdktest2@microsoft.com")))
+            .withAdministration(new DedicatedCapacityAdministrators()
+                .withMembers(Arrays.asList("azsdktest@microsoft.com", "azsdktest2@microsoft.com")))
             .apply();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

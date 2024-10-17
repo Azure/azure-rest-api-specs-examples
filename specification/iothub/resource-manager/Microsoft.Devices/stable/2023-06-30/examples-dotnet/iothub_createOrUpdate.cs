@@ -1,13 +1,13 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotHub;
 using Azure.ResourceManager.IotHub.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.IotHub;
 
 // Generated from example definition: specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_createOrUpdate.json
 // this example is just showing the usage of "IotHubResource_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,7 +31,7 @@ IotHubDescriptionCollection collection = resourceGroupResource.GetIotHubDescript
 string resourceName = "testHub";
 IotHubDescriptionData data = new IotHubDescriptionData(new AzureLocation("centraluseuap"), new IotHubSkuInfo(IotHubSku.S1)
 {
-    Capacity = 1,
+    Capacity = 1L,
 })
 {
     ETag = new ETag("AAAAAAFD6M4="),
@@ -58,7 +58,7 @@ Action = IotHubNetworkRuleIPAction.Allow,
         {
         ["events"] = new EventHubCompatibleEndpointProperties()
         {
-        RetentionTimeInDays = 1,
+        RetentionTimeInDays = 1L,
         PartitionCount = 2,
         },
         },

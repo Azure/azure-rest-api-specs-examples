@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotHub;
 using Azure.ResourceManager.IotHub.Models;
+using Azure.ResourceManager.IotHub;
 
 // Generated from example definition: specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_getconsumergroup.json
 // this example is just showing the usage of "IotHubResource_GetEventHubConsumerGroup" operation, for the dependent resources, they will have to be created separately.
@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventHubConsumerGroupInfoResource created on azure
-// for more information of creating EventHubConsumerGroupInfoResource, please refer to the document of EventHubConsumerGroupInfoResource
+// this example assumes you already have this IotHubDescriptionResource created on azure
+// for more information of creating IotHubDescriptionResource, please refer to the document of IotHubDescriptionResource
 string subscriptionId = "91d12660-3dec-467a-be2a-213b5544ddc0";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "testHub";
+ResourceIdentifier iotHubDescriptionResourceId = IotHubDescriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+IotHubDescriptionResource iotHubDescription = client.GetIotHubDescriptionResource(iotHubDescriptionResourceId);
+
+// get the collection of this EventHubConsumerGroupInfoResource
 string eventHubEndpointName = "events";
-string name = "test";
-ResourceIdentifier eventHubConsumerGroupInfoResourceId = EventHubConsumerGroupInfoResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, eventHubEndpointName, name);
-EventHubConsumerGroupInfoResource eventHubConsumerGroupInfo = client.GetEventHubConsumerGroupInfoResource(eventHubConsumerGroupInfoResourceId);
+EventHubConsumerGroupInfoCollection collection = iotHubDescription.GetEventHubConsumerGroupInfos(eventHubEndpointName);
 
 // invoke the operation
-EventHubConsumerGroupInfoResource result = await eventHubConsumerGroupInfo.GetAsync();
+string name = "test";
+NullableResponse<EventHubConsumerGroupInfoResource> response = await collection.GetIfExistsAsync(name);
+EventHubConsumerGroupInfoResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-EventHubConsumerGroupInfoData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    EventHubConsumerGroupInfoData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

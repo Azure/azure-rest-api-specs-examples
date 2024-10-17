@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotHub;
 using Azure.ResourceManager.IotHub.Models;
+using Azure.ResourceManager.IotHub;
 
 // Generated from example definition: specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_generateverificationcode.json
 // this example is just showing the usage of "Certificates_GenerateVerificationCode" operation, for the dependent resources, they will have to be created separately.

@@ -1,11 +1,16 @@
-/** Samples for Peerings ListByResourceGroup. */
+
+/**
+ * Samples for Peerings ListByResourceGroup.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/peering/resource-manager/Microsoft.Peering/stable/2021-01-01/examples/ListPeeringsByResourceGroup.json
+     * x-ms-original-file:
+     * specification/peering/resource-manager/Microsoft.Peering/stable/2021-01-01/examples/ListPeeringsByResourceGroup.
+     * json
      */
     /**
      * Sample code: List peerings in a resource group.
-     *
+     * 
      * @param manager Entry point to PeeringManager.
      */
     public static void listPeeringsInAResourceGroup(com.azure.resourcemanager.peering.PeeringManager manager) {

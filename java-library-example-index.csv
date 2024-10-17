@@ -4629,3 +4629,4 @@ id,name,language,tag,package,version,date_epoch,date
 4628,com.azure.resourcemanager:azure-resourcemanager-vmwarecloudsimple:1.0.0-beta.3,java,azure-resourcemanager-vmwarecloudsimple_1.0.0-beta.3,azure-resourcemanager-vmwarecloudsimple,1.0.0-beta.3,1729148385,10/17/2024
 4629,com.azure.resourcemanager:azure-resourcemanager-mixedreality:1.0.0-beta.3,java,azure-resourcemanager-mixedreality_1.0.0-beta.3,azure-resourcemanager-mixedreality,1.0.0-beta.3,1729148107,10/17/2024
 4630,com.azure.resourcemanager:azure-resourcemanager-subscription:1.0.0-beta.3,java,azure-resourcemanager-subscription_1.0.0-beta.3,azure-resourcemanager-subscription,1.0.0-beta.3,1729147823,10/17/2024
+4631,com.azure.resourcemanager:azure-resourcemanager-peering:1.0.0-beta.3,java,azure-resourcemanager-peering_1.0.0-beta.3,azure-resourcemanager-peering,1.0.0-beta.3,1729147734,10/17/2024

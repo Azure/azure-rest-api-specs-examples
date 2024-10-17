@@ -4623,3 +4623,4 @@ id,name,language,tag,package,version,date_epoch,date
 4622,com.azure.resourcemanager:azure-resourcemanager-logic:1.0.0-beta.3,java,azure-resourcemanager-logic_1.0.0-beta.3,azure-resourcemanager-logic,1.0.0-beta.3,1729156275,10/17/2024
 4623,com.azure.resourcemanager:azure-resourcemanager-purview:1.0.0-beta.3,java,azure-resourcemanager-purview_1.0.0-beta.3,azure-resourcemanager-purview,1.0.0-beta.3,1729154530,10/17/2024
 4624,com.azure.resourcemanager:azure-resourcemanager-customerinsights:1.0.0-beta.3,java,azure-resourcemanager-customerinsights_1.0.0-beta.3,azure-resourcemanager-customerinsights,1.0.0-beta.3,1729153294,10/17/2024
+4625,com.azure.resourcemanager:azure-resourcemanager-fabric:1.0.0,java,azure-resourcemanager-fabric_1.0.0,azure-resourcemanager-fabric,1.0.0,1729151696,10/17/2024

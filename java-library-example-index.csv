@@ -4639,3 +4639,4 @@ id,name,language,tag,package,version,date_epoch,date
 4638,com.azure.resourcemanager:azure-resourcemanager-delegatednetwork:1.0.0-beta.3,java,azure-resourcemanager-delegatednetwork_1.0.0-beta.3,azure-resourcemanager-delegatednetwork,1.0.0-beta.3,1729140353,10/17/2024
 4639,com.azure.resourcemanager:azure-resourcemanager-mariadb:1.0.0-beta.3,java,azure-resourcemanager-mariadb_1.0.0-beta.3,azure-resourcemanager-mariadb,1.0.0-beta.3,1729140055,10/17/2024
 4640,com.azure.resourcemanager:azure-resourcemanager-powerbidedicated:1.0.0-beta.3,java,azure-resourcemanager-powerbidedicated_1.0.0-beta.3,azure-resourcemanager-powerbidedicated,1.0.0-beta.3,1729139896,10/17/2024
+4641,@azure/arm-mongocluster@1.0.1,js,@azure/arm-mongocluster_1.0.1,@azure/arm-mongocluster,1.0.1,1729133906,10/17/2024

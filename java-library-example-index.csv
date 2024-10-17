@@ -4619,3 +4619,4 @@ id,name,language,tag,package,version,date_epoch,date
 4618,"Azure.ResourceManager.OperationalInsights,1.3.0-beta.1",dotnet,Azure.ResourceManager.OperationalInsights_1.3.0-beta.1,Azure.ResourceManager.OperationalInsights,1.3.0-beta.1,1729060299,10/16/2024
 4619,"Azure.ResourceManager.IotHub,1.2.0-beta.1",dotnet,Azure.ResourceManager.IotHub_1.2.0-beta.1,Azure.ResourceManager.IotHub,1.2.0-beta.1,1729060296,10/16/2024
 4620,azure-mgmt-redisenterprise@3.1.0b2,python,azure-mgmt-redisenterprise_3.1.0b2,azure-mgmt-redisenterprise,3.1.0b2,1729069877,10/16/2024
+4621,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.2.0-beta.1,java,azure-resourcemanager-containerservicefleet_1.2.0-beta.1,azure-resourcemanager-containerservicefleet,1.2.0-beta.1,1729159232,10/17/2024

@@ -4634,3 +4634,4 @@ id,name,language,tag,package,version,date_epoch,date
 4633,com.azure.resourcemanager:azure-resourcemanager-azurestack:1.0.0-beta.3,java,azure-resourcemanager-azurestack_1.0.0-beta.3,azure-resourcemanager-azurestack,1.0.0-beta.3,1729147603,10/17/2024
 4634,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.0.0-beta.3,java,azure-resourcemanager-datamigration_1.0.0-beta.3,azure-resourcemanager-datamigration,1.0.0-beta.3,1729147556,10/17/2024
 4635,com.azure.resourcemanager:azure-resourcemanager-hanaonazure:1.0.0-beta.3,java,azure-resourcemanager-hanaonazure_1.0.0-beta.3,azure-resourcemanager-hanaonazure,1.0.0-beta.3,1729147448,10/17/2024
+4636,com.azure.resourcemanager:azure-resourcemanager-logz:1.0.0-beta.3,java,azure-resourcemanager-logz_1.0.0-beta.3,azure-resourcemanager-logz,1.0.0-beta.3,1729147246,10/17/2024

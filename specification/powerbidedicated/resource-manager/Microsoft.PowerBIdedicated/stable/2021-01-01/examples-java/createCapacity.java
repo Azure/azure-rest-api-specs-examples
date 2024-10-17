@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.powerbidedicated.models.CapacitySku;
 import com.azure.resourcemanager.powerbidedicated.models.CapacitySkuTier;
 import com.azure.resourcemanager.powerbidedicated.models.DedicatedCapacityAdministrators;
@@ -5,30 +6,29 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Capacities Create. */
+/**
+ * Samples for Capacities Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/createCapacity.json
+     * x-ms-original-file:
+     * specification/powerbidedicated/resource-manager/Microsoft.PowerBIdedicated/stable/2021-01-01/examples/
+     * createCapacity.json
      */
     /**
      * Sample code: Create capacity.
-     *
+     * 
      * @param manager Entry point to PowerBIDedicatedManager.
      */
     public static void createCapacity(com.azure.resourcemanager.powerbidedicated.PowerBIDedicatedManager manager) {
-        manager
-            .capacities()
-            .define("azsdktest")
-            .withRegion("West US")
-            .withExistingResourceGroup("TestRG")
+        manager.capacities().define("azsdktest").withRegion("West US").withExistingResourceGroup("TestRG")
             .withSku(new CapacitySku().withName("A1").withTier(CapacitySkuTier.PBIE_AZURE))
-            .withTags(mapOf("testKey", "testValue"))
-            .withAdministration(
-                new DedicatedCapacityAdministrators()
-                    .withMembers(Arrays.asList("azsdktest@microsoft.com", "azsdktest2@microsoft.com")))
+            .withTags(mapOf("testKey", "fakeTokenPlaceholder")).withAdministration(new DedicatedCapacityAdministrators()
+                .withMembers(Arrays.asList("azsdktest@microsoft.com", "azsdktest2@microsoft.com")))
             .create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

@@ -1,11 +1,15 @@
-/** Samples for MonitorOperation ListVMHosts. */
+
+/**
+ * Samples for MonitorOperation ListVMHosts.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/examples/MainAccount_VMHosts_List.json
+     * x-ms-original-file:
+     * specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/examples/MainAccount_VMHosts_List.json
      */
     /**
      * Sample code: MainAccount_VMHosts_List.
-     *
+     * 
      * @param manager Entry point to LogzManager.
      */
     public static void mainAccountVMHostsList(com.azure.resourcemanager.logz.LogzManager manager) {

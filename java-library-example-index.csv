@@ -4621,3 +4621,4 @@ id,name,language,tag,package,version,date_epoch,date
 4620,azure-mgmt-redisenterprise@3.1.0b2,python,azure-mgmt-redisenterprise_3.1.0b2,azure-mgmt-redisenterprise,3.1.0b2,1729069877,10/16/2024
 4621,com.azure.resourcemanager:azure-resourcemanager-containerservicefleet:1.2.0-beta.1,java,azure-resourcemanager-containerservicefleet_1.2.0-beta.1,azure-resourcemanager-containerservicefleet,1.2.0-beta.1,1729159232,10/17/2024
 4622,com.azure.resourcemanager:azure-resourcemanager-logic:1.0.0-beta.3,java,azure-resourcemanager-logic_1.0.0-beta.3,azure-resourcemanager-logic,1.0.0-beta.3,1729156275,10/17/2024
+4623,com.azure.resourcemanager:azure-resourcemanager-purview:1.0.0-beta.3,java,azure-resourcemanager-purview_1.0.0-beta.3,azure-resourcemanager-purview,1.0.0-beta.3,1729154530,10/17/2024

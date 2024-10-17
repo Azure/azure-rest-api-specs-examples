@@ -4625,3 +4625,4 @@ id,name,language,tag,package,version,date_epoch,date
 4624,com.azure.resourcemanager:azure-resourcemanager-customerinsights:1.0.0-beta.3,java,azure-resourcemanager-customerinsights_1.0.0-beta.3,azure-resourcemanager-customerinsights,1.0.0-beta.3,1729153294,10/17/2024
 4625,com.azure.resourcemanager:azure-resourcemanager-fabric:1.0.0,java,azure-resourcemanager-fabric_1.0.0,azure-resourcemanager-fabric,1.0.0,1729151696,10/17/2024
 4626,com.azure.resourcemanager:azure-resourcemanager-appcontainers:1.1.0-beta.1,java,azure-resourcemanager-appcontainers_1.1.0-beta.1,azure-resourcemanager-appcontainers,1.1.0-beta.1,1729148923,10/17/2024
+4627,com.azure.resourcemanager:azure-resourcemanager-devspaces:1.0.0-beta.3,java,azure-resourcemanager-devspaces_1.0.0-beta.3,azure-resourcemanager-devspaces,1.0.0-beta.3,1729148651,10/17/2024

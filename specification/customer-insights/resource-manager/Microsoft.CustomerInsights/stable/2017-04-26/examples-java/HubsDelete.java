@@ -1,11 +1,16 @@
-/** Samples for Hubs Delete. */
+
+/**
+ * Samples for Hubs Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/HubsDelete.json
+     * x-ms-original-file:
+     * specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/HubsDelete
+     * .json
      */
     /**
      * Sample code: Hubs_Delete.
-     *
+     * 
      * @param manager Entry point to CustomerInsightsManager.
      */
     public static void hubsDelete(com.azure.resourcemanager.customerinsights.CustomerInsightsManager manager) {

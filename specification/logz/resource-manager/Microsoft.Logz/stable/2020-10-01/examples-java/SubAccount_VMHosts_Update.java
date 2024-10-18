@@ -1,16 +1,19 @@
-/** Samples for SubAccount ListVmHostUpdate. */
+
+/**
+ * Samples for SubAccount ListVmHostUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/examples/SubAccount_VMHosts_Update.json
+     * x-ms-original-file:
+     * specification/logz/resource-manager/Microsoft.Logz/stable/2020-10-01/examples/SubAccount_VMHosts_Update.json
      */
     /**
      * Sample code: SubAccount_VMHosts_Update.
-     *
+     * 
      * @param manager Entry point to LogzManager.
      */
     public static void subAccountVMHostsUpdate(com.azure.resourcemanager.logz.LogzManager manager) {
-        manager
-            .subAccounts()
-            .listVmHostUpdate("myResourceGroup", "myMonitor", "SubAccount1", null, com.azure.core.util.Context.NONE);
+        manager.subAccounts().listVmHostUpdate("myResourceGroup", "myMonitor", "SubAccount1", null,
+            com.azure.core.util.Context.NONE);
     }
 }

@@ -4644,3 +4644,4 @@ id,name,language,tag,package,version,date_epoch,date
 4643,com.azure.resourcemanager:azure-resourcemanager-datalakeanalytics:1.0.0-beta.3,java,azure-resourcemanager-datalakeanalytics_1.0.0-beta.3,azure-resourcemanager-datalakeanalytics,1.0.0-beta.3,1729163938,10/17/2024
 4644,com.azure.resourcemanager:azure-resourcemanager-databoxedge:1.0.0-beta.3,java,azure-resourcemanager-databoxedge_1.0.0-beta.3,azure-resourcemanager-databoxedge,1.0.0-beta.3,1729162961,10/17/2024
 4645,com.azure.resourcemanager:azure-resourcemanager-storagepool:1.0.0-beta.3,java,azure-resourcemanager-storagepool_1.0.0-beta.3,azure-resourcemanager-storagepool,1.0.0-beta.3,1729162665,10/17/2024
+4646,com.azure.resourcemanager:azure-resourcemanager-datalakestore:1.0.0-beta.3,java,azure-resourcemanager-datalakestore_1.0.0-beta.3,azure-resourcemanager-datalakestore,1.0.0-beta.3,1729162643,10/17/2024

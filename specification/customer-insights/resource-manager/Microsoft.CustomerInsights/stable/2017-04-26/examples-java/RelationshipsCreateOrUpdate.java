@@ -1,33 +1,32 @@
+
 import com.azure.resourcemanager.customerinsights.models.CardinalityTypes;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Relationships CreateOrUpdate. */
+/**
+ * Samples for Relationships CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/RelationshipsCreateOrUpdate.json
+     * x-ms-original-file:
+     * specification/customer-insights/resource-manager/Microsoft.CustomerInsights/stable/2017-04-26/examples/
+     * RelationshipsCreateOrUpdate.json
      */
     /**
      * Sample code: Relationships_CreateOrUpdate.
-     *
+     * 
      * @param manager Entry point to CustomerInsightsManager.
      */
-    public static void relationshipsCreateOrUpdate(
-        com.azure.resourcemanager.customerinsights.CustomerInsightsManager manager) {
-        manager
-            .relationships()
-            .define("SomeRelationship")
-            .withExistingHub("TestHubRG", "sdkTestHub")
-            .withCardinality(CardinalityTypes.ONE_TO_ONE)
-            .withDisplayName(mapOf("en-us", "Relationship DisplayName"))
-            .withDescription(mapOf("en-us", "Relationship Description"))
-            .withFields(Arrays.asList())
-            .withProfileType("testProfile2326994")
-            .withRelatedProfileType("testProfile2326994")
-            .create();
+    public static void
+        relationshipsCreateOrUpdate(com.azure.resourcemanager.customerinsights.CustomerInsightsManager manager) {
+        manager.relationships().define("SomeRelationship").withExistingHub("TestHubRG", "sdkTestHub")
+            .withCardinality(CardinalityTypes.ONE_TO_ONE).withDisplayName(mapOf("en-us", "Relationship DisplayName"))
+            .withDescription(mapOf("en-us", "Relationship Description")).withFields(Arrays.asList())
+            .withProfileType("testProfile2326994").withRelatedProfileType("testProfile2326994").create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

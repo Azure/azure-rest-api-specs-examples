@@ -1,0 +1,61 @@
+
+import com.azure.resourcemanager.datalakeanalytics.models.AadObjectType;
+import com.azure.resourcemanager.datalakeanalytics.models.AddDataLakeStoreWithAccountParameters;
+import com.azure.resourcemanager.datalakeanalytics.models.AddStorageAccountWithAccountParameters;
+import com.azure.resourcemanager.datalakeanalytics.models.CreateComputePolicyWithAccountParameters;
+import com.azure.resourcemanager.datalakeanalytics.models.CreateFirewallRuleWithAccountParameters;
+import com.azure.resourcemanager.datalakeanalytics.models.FirewallAllowAzureIpsState;
+import com.azure.resourcemanager.datalakeanalytics.models.FirewallState;
+import com.azure.resourcemanager.datalakeanalytics.models.TierType;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * Samples for Accounts Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/
+     * Accounts_Create.json
+     */
+    /**
+     * Sample code: Creates the specified Data Lake Analytics account. This supplies the user with computation services
+     * for Data Lake Analytics workloads.
+     * 
+     * @param manager Entry point to DataLakeAnalyticsManager.
+     */
+    public static void
+        createsTheSpecifiedDataLakeAnalyticsAccountThisSuppliesTheUserWithComputationServicesForDataLakeAnalyticsWorkloads(
+            com.azure.resourcemanager.datalakeanalytics.DataLakeAnalyticsManager manager) {
+        manager.accounts().define("contosoadla").withRegion("eastus2").withExistingResourceGroup("contosorg")
+            .withDefaultDataLakeStoreAccount("test_adls")
+            .withDataLakeStoreAccounts(Arrays
+                .asList(new AddDataLakeStoreWithAccountParameters().withName("test_adls").withSuffix("test_suffix")))
+            .withTags(mapOf("test_key", "fakeTokenPlaceholder"))
+            .withStorageAccounts(Arrays.asList(new AddStorageAccountWithAccountParameters().withName("test_storage")
+                .withAccessKey("fakeTokenPlaceholder").withSuffix("test_suffix")))
+            .withComputePolicies(Arrays.asList(new CreateComputePolicyWithAccountParameters().withName("test_policy")
+                .withObjectId(UUID.fromString("34adfa4f-cedf-4dc0-ba29-b6d1a69ab345"))
+                .withObjectType(AadObjectType.USER).withMaxDegreeOfParallelismPerJob(1).withMinPriorityPerJob(1)))
+            .withFirewallRules(Arrays.asList(new CreateFirewallRuleWithAccountParameters().withName("test_rule")
+                .withStartIpAddress("1.1.1.1").withEndIpAddress("2.2.2.2")))
+            .withFirewallState(FirewallState.ENABLED).withFirewallAllowAzureIps(FirewallAllowAzureIpsState.ENABLED)
+            .withNewTier(TierType.CONSUMPTION).withMaxJobCount(3).withMaxDegreeOfParallelism(30)
+            .withMaxDegreeOfParallelismPerJob(1).withMinPriorityPerJob(1).withQueryStoreRetention(30).create();
+    }
+
+    // Use "Map.of" if available
+    @SuppressWarnings("unchecked")
+    private static <T> Map<String, T> mapOf(Object... inputs) {
+        Map<String, T> map = new HashMap<>();
+        for (int i = 0; i < inputs.length; i += 2) {
+            String key = (String) inputs[i];
+            T value = (T) inputs[i + 1];
+            map.put(key, value);
+        }
+        return map;
+    }
+}

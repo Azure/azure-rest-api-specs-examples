@@ -1,11 +1,16 @@
-/** Samples for Accounts GetByResourceGroup. */
+
+/**
+ * Samples for Accounts GetByResourceGroup.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/Accounts_Get.json
+     * x-ms-original-file:
+     * specification/datalake-analytics/resource-manager/Microsoft.DataLakeAnalytics/stable/2016-11-01/examples/
+     * Accounts_Get.json
      */
     /**
      * Sample code: Gets details of the specified Data Lake Analytics account.
-     *
+     * 
      * @param manager Entry point to DataLakeAnalyticsManager.
      */
     public static void getsDetailsOfTheSpecifiedDataLakeAnalyticsAccount(

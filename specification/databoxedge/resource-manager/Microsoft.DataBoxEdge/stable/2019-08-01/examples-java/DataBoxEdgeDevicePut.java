@@ -1,30 +1,31 @@
+
 import com.azure.resourcemanager.databoxedge.models.Sku;
 import com.azure.resourcemanager.databoxedge.models.SkuName;
 import com.azure.resourcemanager.databoxedge.models.SkuTier;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Devices CreateOrUpdate. */
+/**
+ * Samples for Devices CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2019-08-01/examples/DataBoxEdgeDevicePut.json
+     * x-ms-original-file:
+     * specification/databoxedge/resource-manager/Microsoft.DataBoxEdge/stable/2019-08-01/examples/DataBoxEdgeDevicePut.
+     * json
      */
     /**
      * Sample code: DataBoxEdgeDevicePut.
-     *
+     * 
      * @param manager Entry point to DataBoxEdgeManager.
      */
     public static void dataBoxEdgeDevicePut(com.azure.resourcemanager.databoxedge.DataBoxEdgeManager manager) {
-        manager
-            .devices()
-            .define("testedgedevice")
-            .withRegion("eastus")
-            .withExistingResourceGroup("GroupForEdgeAutomation")
-            .withTags(mapOf())
-            .withSku(new Sku().withName(SkuName.EDGE).withTier(SkuTier.STANDARD))
-            .create();
+        manager.devices().define("testedgedevice").withRegion("eastus")
+            .withExistingResourceGroup("GroupForEdgeAutomation").withTags(mapOf())
+            .withSku(new Sku().withName(SkuName.EDGE).withTier(SkuTier.STANDARD)).create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

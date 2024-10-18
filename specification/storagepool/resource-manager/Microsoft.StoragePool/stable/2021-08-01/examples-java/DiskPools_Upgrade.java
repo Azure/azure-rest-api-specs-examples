@@ -1,11 +1,16 @@
-/** Samples for DiskPools Upgrade. */
+
+/**
+ * Samples for DiskPools Upgrade.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/DiskPools_Upgrade.json
+     * x-ms-original-file:
+     * specification/storagepool/resource-manager/Microsoft.StoragePool/stable/2021-08-01/examples/DiskPools_Upgrade.
+     * json
      */
     /**
      * Sample code: Upgrade Disk Pool.
-     *
+     * 
      * @param manager Entry point to StoragePoolManager.
      */
     public static void upgradeDiskPool(com.azure.resourcemanager.storagepool.StoragePoolManager manager) {

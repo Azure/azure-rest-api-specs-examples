@@ -4647,3 +4647,4 @@ id,name,language,tag,package,version,date_epoch,date
 4646,com.azure.resourcemanager:azure-resourcemanager-datalakestore:1.0.0-beta.3,java,azure-resourcemanager-datalakestore_1.0.0-beta.3,azure-resourcemanager-datalakestore,1.0.0-beta.3,1729162643,10/17/2024
 4647,com.azure.resourcemanager:azure-resourcemanager-operationsmanagement:1.0.0-beta.3,java,azure-resourcemanager-operationsmanagement_1.0.0-beta.3,azure-resourcemanager-operationsmanagement,1.0.0-beta.3,1729162612,10/17/2024
 4648,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v2@v2.1.0-beta.2,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v2.1.0-beta.2,sdk/resourcemanager/redisenterprise/armredisenterprise,v2.1.0-beta.2,1729259830,10/18/2024
+4649,"Azure.ResourceManager.HybridCompute,1.0.0",dotnet,Azure.ResourceManager.HybridCompute_1.0.0,Azure.ResourceManager.HybridCompute,1.0.0,1729258555,10/18/2024

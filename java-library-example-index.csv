@@ -4655,3 +4655,4 @@ id,name,language,tag,package,version,date_epoch,date
 4654,com.azure.resourcemanager:azure-resourcemanager-netapp:1.5.0,java,azure-resourcemanager-netapp_1.5.0,azure-resourcemanager-netapp,1.5.0,1729486083,10/21/2024
 4655,azure-mgmt-containerinstance@10.2.0b1,python,azure-mgmt-containerinstance_10.2.0b1,azure-mgmt-containerinstance,10.2.0b1,1729494191,10/21/2024
 4656,azure-mgmt-elasticsan@1.2.0b1,python,azure-mgmt-elasticsan_1.2.0b1,azure-mgmt-elasticsan,1.2.0b1,1729492473,10/21/2024
+4657,azure-mgmt-servicefabricmanagedclusters@2.1.0b1,python,azure-mgmt-servicefabricmanagedclusters_2.1.0b1,azure-mgmt-servicefabricmanagedclusters,2.1.0b1,1729491213,10/21/2024

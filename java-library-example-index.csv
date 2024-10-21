@@ -4652,3 +4652,4 @@ id,name,language,tag,package,version,date_epoch,date
 4651,com.azure.resourcemanager:azure-resourcemanager-elastic:1.0.0,java,azure-resourcemanager-elastic_1.0.0,azure-resourcemanager-elastic,1.0.0,1729495030,10/21/2024
 4652,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.1.0-beta.2,java,azure-resourcemanager-redisenterprise_2.1.0-beta.2,azure-resourcemanager-redisenterprise,2.1.0-beta.2,1729494266,10/21/2024
 4653,com.azure.resourcemanager:azure-resourcemanager-iotoperations:1.0.0-beta.1,java,azure-resourcemanager-iotoperations_1.0.0-beta.1,azure-resourcemanager-iotoperations,1.0.0-beta.1,1729489646,10/21/2024
+4654,com.azure.resourcemanager:azure-resourcemanager-netapp:1.5.0,java,azure-resourcemanager-netapp_1.5.0,azure-resourcemanager-netapp,1.5.0,1729486083,10/21/2024

@@ -4657,3 +4657,4 @@ id,name,language,tag,package,version,date_epoch,date
 4656,azure-mgmt-elasticsan@1.2.0b1,python,azure-mgmt-elasticsan_1.2.0b1,azure-mgmt-elasticsan,1.2.0b1,1729492473,10/21/2024
 4657,azure-mgmt-servicefabricmanagedclusters@2.1.0b1,python,azure-mgmt-servicefabricmanagedclusters_2.1.0b1,azure-mgmt-servicefabricmanagedclusters,2.1.0b1,1729491213,10/21/2024
 4658,azure-mgmt-appconfiguration@3.1.0,python,azure-mgmt-appconfiguration_3.1.0,azure-mgmt-appconfiguration,3.1.0,1729491198,10/21/2024
+4659,azure-mgmt-containerservicefleet@2.1.0,python,azure-mgmt-containerservicefleet_2.1.0,azure-mgmt-containerservicefleet,2.1.0,1729491196,10/21/2024

@@ -4649,3 +4649,13 @@ id,name,language,tag,package,version,date_epoch,date
 4648,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redisenterprise/armredisenterprise/v2@v2.1.0-beta.2,go,sdk/resourcemanager/redisenterprise/armredisenterprise/v2.1.0-beta.2,sdk/resourcemanager/redisenterprise/armredisenterprise,v2.1.0-beta.2,1729259830,10/18/2024
 4649,"Azure.ResourceManager.HybridCompute,1.0.0",dotnet,Azure.ResourceManager.HybridCompute_1.0.0,Azure.ResourceManager.HybridCompute,1.0.0,1729258555,10/18/2024
 4650,"Azure.ResourceManager.ContainerOrchestratorRuntime,1.0.0-beta.1",dotnet,Azure.ResourceManager.ContainerOrchestratorRuntime_1.0.0-beta.1,Azure.ResourceManager.ContainerOrchestratorRuntime,1.0.0-beta.1,1729255772,10/18/2024
+4651,com.azure.resourcemanager:azure-resourcemanager-elastic:1.0.0,java,azure-resourcemanager-elastic_1.0.0,azure-resourcemanager-elastic,1.0.0,1729495030,10/21/2024
+4652,com.azure.resourcemanager:azure-resourcemanager-redisenterprise:2.1.0-beta.2,java,azure-resourcemanager-redisenterprise_2.1.0-beta.2,azure-resourcemanager-redisenterprise,2.1.0-beta.2,1729494266,10/21/2024
+4653,com.azure.resourcemanager:azure-resourcemanager-iotoperations:1.0.0-beta.1,java,azure-resourcemanager-iotoperations_1.0.0-beta.1,azure-resourcemanager-iotoperations,1.0.0-beta.1,1729489646,10/21/2024
+4654,com.azure.resourcemanager:azure-resourcemanager-netapp:1.5.0,java,azure-resourcemanager-netapp_1.5.0,azure-resourcemanager-netapp,1.5.0,1729486083,10/21/2024
+4655,azure-mgmt-containerinstance@10.2.0b1,python,azure-mgmt-containerinstance_10.2.0b1,azure-mgmt-containerinstance,10.2.0b1,1729494191,10/21/2024
+4656,azure-mgmt-elasticsan@1.2.0b1,python,azure-mgmt-elasticsan_1.2.0b1,azure-mgmt-elasticsan,1.2.0b1,1729492473,10/21/2024
+4657,azure-mgmt-servicefabricmanagedclusters@2.1.0b1,python,azure-mgmt-servicefabricmanagedclusters_2.1.0b1,azure-mgmt-servicefabricmanagedclusters,2.1.0b1,1729491213,10/21/2024
+4658,azure-mgmt-appconfiguration@3.1.0,python,azure-mgmt-appconfiguration_3.1.0,azure-mgmt-appconfiguration,3.1.0,1729491198,10/21/2024
+4659,azure-mgmt-containerservicefleet@2.1.0,python,azure-mgmt-containerservicefleet_2.1.0,azure-mgmt-containerservicefleet,2.1.0,1729491196,10/21/2024
+4660,azure-mgmt-dns@8.2.0,python,azure-mgmt-dns_8.2.0,azure-mgmt-dns,8.2.0,1729491173,10/21/2024

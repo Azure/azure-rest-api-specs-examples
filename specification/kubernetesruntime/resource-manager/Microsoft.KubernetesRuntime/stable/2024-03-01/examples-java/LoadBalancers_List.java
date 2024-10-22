@@ -1,0 +1,20 @@
+
+/**
+ * Samples for LoadBalancers List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2024-03-01/LoadBalancers_List.json
+     */
+    /**
+     * Sample code: LoadBalancers_List.
+     * 
+     * @param manager Entry point to ContainerOrchestratorRuntimeManager.
+     */
+    public static void loadBalancersList(
+        com.azure.resourcemanager.containerorchestratorruntime.ContainerOrchestratorRuntimeManager manager) {
+        manager.loadBalancers().list(
+            "subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/example/providers/Microsoft.Kubernetes/connectedClusters/cluster1",
+            com.azure.core.util.Context.NONE);
+    }
+}

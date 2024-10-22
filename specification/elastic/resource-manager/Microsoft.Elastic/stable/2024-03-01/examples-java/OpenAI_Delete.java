@@ -1,0 +1,19 @@
+
+/**
+ * Samples for OpenAI Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/elastic/resource-manager/Microsoft.Elastic/stable/2024-03-01/examples/OpenAI_Delete.json
+     */
+    /**
+     * Sample code: OpenAI_Delete.
+     * 
+     * @param manager Entry point to ElasticManager.
+     */
+    public static void openAIDelete(com.azure.resourcemanager.elastic.ElasticManager manager) {
+        manager.openAIs().deleteWithResponse("myResourceGroup", "myMonitor", "default",
+            com.azure.core.util.Context.NONE);
+    }
+}

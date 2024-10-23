@@ -1,0 +1,20 @@
+
+/**
+ * Samples for DnsResolvers Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/dnsresolver/resource-manager/Microsoft.Network/preview/2023-07-01-preview/examples/
+     * DnsResolver_Delete.json
+     */
+    /**
+     * Sample code: Delete DNS resolver.
+     * 
+     * @param manager Entry point to DnsResolverManager.
+     */
+    public static void deleteDNSResolver(com.azure.resourcemanager.dnsresolver.DnsResolverManager manager) {
+        manager.dnsResolvers().delete("sampleResourceGroup", "sampleDnsResolver", null,
+            com.azure.core.util.Context.NONE);
+    }
+}

@@ -4659,3 +4659,11 @@ id,name,language,tag,package,version,date_epoch,date
 4658,azure-mgmt-appconfiguration@3.1.0,python,azure-mgmt-appconfiguration_3.1.0,azure-mgmt-appconfiguration,3.1.0,1729491198,10/21/2024
 4659,azure-mgmt-containerservicefleet@2.1.0,python,azure-mgmt-containerservicefleet_2.1.0,azure-mgmt-containerservicefleet,2.1.0,1729491196,10/21/2024
 4660,azure-mgmt-dns@8.2.0,python,azure-mgmt-dns_8.2.0,azure-mgmt-dns,8.2.0,1729491173,10/21/2024
+4661,com.azure.resourcemanager:azure-resourcemanager-computefleet:1.0.0,java,azure-resourcemanager-computefleet_1.0.0,azure-resourcemanager-computefleet,1.0.0,1729575615,10/22/2024
+4662,com.azure.resourcemanager:azure-resourcemanager-containerorchestratorruntime:1.0.0-beta.1,java,azure-resourcemanager-containerorchestratorruntime_1.0.0-beta.1,azure-resourcemanager-containerorchestratorruntime,1.0.0-beta.1,1729566517,10/22/2024
+4663,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computefleet/armcomputefleet@v1.0.0,go,sdk/resourcemanager/computefleet/armcomputefleet/v1.0.0,sdk/resourcemanager/computefleet/armcomputefleet,v1.0.0,1729585140,10/22/2024
+4664,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/fabric/armfabric@v1.0.0,go,sdk/resourcemanager/fabric/armfabric/v1.0.0,sdk/resourcemanager/fabric/armfabric,v1.0.0,1729585116,10/22/2024
+4665,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databoundaries/armdataboundaries@v0.1.0,go,sdk/resourcemanager/databoundaries/armdataboundaries/v0.1.0,sdk/resourcemanager/databoundaries/armdataboundaries,v0.1.0,1729585105,10/22/2024
+4666,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicelinker/armservicelinker/v2@v2.0.0-beta.2,go,sdk/resourcemanager/servicelinker/armservicelinker/v2.0.0-beta.2,sdk/resourcemanager/servicelinker/armservicelinker,v2.0.0-beta.2,1729581832,10/22/2024
+4667,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.0.1,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.0.1,sdk/resourcemanager/mongocluster/armmongocluster,v1.0.1,1729581823,10/22/2024
+4668,"Azure.ResourceManager.ComputeFleet,1.0.0",dotnet,Azure.ResourceManager.ComputeFleet_1.0.0,Azure.ResourceManager.ComputeFleet,1.0.0,1729566744,10/22/2024

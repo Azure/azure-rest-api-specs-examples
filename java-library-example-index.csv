@@ -4670,3 +4670,4 @@ id,name,language,tag,package,version,date_epoch,date
 4669,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.2.0-beta.1,java,azure-resourcemanager-elasticsan_1.2.0-beta.1,azure-resourcemanager-elasticsan,1.2.0-beta.1,1729665020,10/23/2024
 4670,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.0.0-beta.4,java,azure-resourcemanager-dnsresolver_1.0.0-beta.4,azure-resourcemanager-dnsresolver,1.0.0-beta.4,1729656066,10/23/2024
 4671,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dns/armdns@v1.3.0-beta.1,go,sdk/resourcemanager/dns/armdns/v1.3.0-beta.1,sdk/resourcemanager/dns/armdns,v1.3.0-beta.1,1729667390,10/23/2024
+4672,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.2.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.2.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.2.0,1729667368,10/23/2024

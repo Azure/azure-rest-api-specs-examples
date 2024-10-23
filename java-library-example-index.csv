@@ -4667,3 +4667,4 @@ id,name,language,tag,package,version,date_epoch,date
 4666,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicelinker/armservicelinker/v2@v2.0.0-beta.2,go,sdk/resourcemanager/servicelinker/armservicelinker/v2.0.0-beta.2,sdk/resourcemanager/servicelinker/armservicelinker,v2.0.0-beta.2,1729581832,10/22/2024
 4667,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/mongocluster/armmongocluster@v1.0.1,go,sdk/resourcemanager/mongocluster/armmongocluster/v1.0.1,sdk/resourcemanager/mongocluster/armmongocluster,v1.0.1,1729581823,10/22/2024
 4668,"Azure.ResourceManager.ComputeFleet,1.0.0",dotnet,Azure.ResourceManager.ComputeFleet_1.0.0,Azure.ResourceManager.ComputeFleet,1.0.0,1729566744,10/22/2024
+4669,com.azure.resourcemanager:azure-resourcemanager-elasticsan:1.2.0-beta.1,java,azure-resourcemanager-elasticsan_1.2.0-beta.1,azure-resourcemanager-elasticsan,1.2.0-beta.1,1729665020,10/23/2024

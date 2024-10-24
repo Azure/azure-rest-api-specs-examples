@@ -4679,3 +4679,4 @@ id,name,language,tag,package,version,date_epoch,date
 4678,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appcontainers/armappcontainers/v3@v3.1.0-beta.1,go,sdk/resourcemanager/appcontainers/armappcontainers/v3.1.0-beta.1,sdk/resourcemanager/appcontainers/armappcontainers,v3.1.0-beta.1,1729750790,10/24/2024
 4679,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.3.0,go,sdk/resourcemanager/netapp/armnetapp/v7.3.0,sdk/resourcemanager/netapp/armnetapp,v7.3.0,1729688427,10/23/2024
 4680,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/elasticsan/armelasticsan@v1.2.0-beta.1,go,sdk/resourcemanager/elasticsan/armelasticsan/v1.2.0-beta.1,sdk/resourcemanager/elasticsan/armelasticsan,v1.2.0-beta.1,1729688398,10/23/2024
+4681,@azure/arm-computefleet@1.0.0,js,@azure/arm-computefleet_1.0.0,@azure/arm-computefleet,1.0.0,1729760487,10/24/2024

@@ -4684,3 +4684,4 @@ id,name,language,tag,package,version,date_epoch,date
 4683,"Azure.ResourceManager.Avs,1.4.0",dotnet,Azure.ResourceManager.Avs_1.4.0,Azure.ResourceManager.Avs,1.4.0,1729761460,10/24/2024
 4684,"Azure.ResourceManager.ContainerInstance,1.3.0-beta.1",dotnet,Azure.ResourceManager.ContainerInstance_1.3.0-beta.1,Azure.ResourceManager.ContainerInstance,1.3.0-beta.1,1729761460,10/24/2024
 4685,"Azure.ResourceManager.DataFactory,1.5.0",dotnet,Azure.ResourceManager.DataFactory_1.5.0,Azure.ResourceManager.DataFactory,1.5.0,1729747097,10/24/2024
+4686,azure-mgmt-netapp@13.3.0,python,azure-mgmt-netapp_13.3.0,azure-mgmt-netapp,13.3.0,1729747199,10/24/2024

@@ -4689,3 +4689,4 @@ id,name,language,tag,package,version,date_epoch,date
 4688,azure-mgmt-containerorchestratorruntime@1.0.0b1,python,azure-mgmt-containerorchestratorruntime_1.0.0b1,azure-mgmt-containerorchestratorruntime,1.0.0b1,1729742324,10/24/2024
 4689,azure-mgmt-iotoperations@1.0.0b1,python,azure-mgmt-iotoperations_1.0.0b1,azure-mgmt-iotoperations,1.0.0b1,1729740938,10/24/2024
 4690,azure-mgmt-dnsresolver@1.1.0b2,python,azure-mgmt-dnsresolver_1.1.0b2,azure-mgmt-dnsresolver,1.1.0b2,1729740926,10/24/2024
+4691,azure-mgmt-elastic@1.1.0b4,python,azure-mgmt-elastic_1.1.0b4,azure-mgmt-elastic,1.1.0b4,1729740925,10/24/2024

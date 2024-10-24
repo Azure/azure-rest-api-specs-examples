@@ -4687,3 +4687,4 @@ id,name,language,tag,package,version,date_epoch,date
 4686,azure-mgmt-netapp@13.3.0,python,azure-mgmt-netapp_13.3.0,azure-mgmt-netapp,13.3.0,1729747199,10/24/2024
 4687,azure-mgmt-resource@23.2.0,python,azure-mgmt-resource_23.2.0,azure-mgmt-resource,23.2.0,1729742726,10/24/2024
 4688,azure-mgmt-containerorchestratorruntime@1.0.0b1,python,azure-mgmt-containerorchestratorruntime_1.0.0b1,azure-mgmt-containerorchestratorruntime,1.0.0b1,1729742324,10/24/2024
+4689,azure-mgmt-iotoperations@1.0.0b1,python,azure-mgmt-iotoperations_1.0.0b1,azure-mgmt-iotoperations,1.0.0b1,1729740938,10/24/2024

@@ -16,21 +16,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DataFactoryLinkedServiceResource created on azure
-// for more information of creating DataFactoryLinkedServiceResource, please refer to the document of DataFactoryLinkedServiceResource
+// this example assumes you already have this DataFactoryResource created on azure
+// for more information of creating DataFactoryResource, please refer to the document of DataFactoryResource
 string subscriptionId = "12345678-1234-1234-1234-12345678abc";
 string resourceGroupName = "exampleResourceGroup";
 string factoryName = "exampleFactoryName";
-string linkedServiceName = "exampleLinkedService";
-ResourceIdentifier dataFactoryLinkedServiceResourceId = DataFactoryLinkedServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName, linkedServiceName);
-DataFactoryLinkedServiceResource dataFactoryLinkedService = client.GetDataFactoryLinkedServiceResource(dataFactoryLinkedServiceResourceId);
+ResourceIdentifier dataFactoryResourceId = DataFactoryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, factoryName);
+DataFactoryResource dataFactory = client.GetDataFactoryResource(dataFactoryResourceId);
+
+// get the collection of this DataFactoryLinkedServiceResource
+DataFactoryLinkedServiceCollection collection = dataFactory.GetDataFactoryLinkedServices();
 
 // invoke the operation
+string linkedServiceName = "exampleLinkedService";
 DataFactoryLinkedServiceData data = new DataFactoryLinkedServiceData(new AzureStorageLinkedService()
 {
     ConnectionString = DataFactoryElement<string>.FromSecretString("DefaultEndpointsProtocol=https;AccountName=examplestorageaccount;AccountKey=<storage key>"),
 });
-ArmOperation<DataFactoryLinkedServiceResource> lro = await dataFactoryLinkedService.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<DataFactoryLinkedServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkedServiceName, data);
 DataFactoryLinkedServiceResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

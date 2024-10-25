@@ -4691,3 +4691,5 @@ id,name,language,tag,package,version,date_epoch,date
 4690,azure-mgmt-dnsresolver@1.1.0b2,python,azure-mgmt-dnsresolver_1.1.0b2,azure-mgmt-dnsresolver,1.1.0b2,1729740926,10/24/2024
 4691,azure-mgmt-elastic@1.1.0b4,python,azure-mgmt-elastic_1.1.0b4,azure-mgmt-elastic,1.1.0b4,1729740925,10/24/2024
 4692,azure-mgmt-fabric@1.0.0,python,azure-mgmt-fabric_1.0.0,azure-mgmt-fabric,1.0.0,1729740904,10/24/2024
+4693,com.azure.resourcemanager:azure-resourcemanager-netapp:1.5.1,java,azure-resourcemanager-netapp_1.5.1,azure-resourcemanager-netapp,1.5.1,1729827764,10/25/2024
+4694,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/dnsresolver/armdnsresolver@v1.3.0-beta.1,go,sdk/resourcemanager/dnsresolver/armdnsresolver/v1.3.0-beta.1,sdk/resourcemanager/dnsresolver/armdnsresolver,v1.3.0-beta.1,1729780101,10/24/2024

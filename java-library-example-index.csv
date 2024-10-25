@@ -4697,3 +4697,4 @@ id,name,language,tag,package,version,date_epoch,date
 4696,@azure/arm-fabric@1.0.0,js,@azure/arm-fabric_1.0.0,@azure/arm-fabric,1.0.0,1729851395,10/25/2024
 4697,@azure/arm-cosmosdb@16.1.0,js,@azure/arm-cosmosdb_16.1.0,@azure/arm-cosmosdb,16.1.0,1729851356,10/25/2024
 4698,@azure/arm-containerservicefleet@1.2.0-beta.1,js,@azure/arm-containerservicefleet_1.2.0-beta.1,@azure/arm-containerservicefleet,1.2.0-beta.1,1729851189,10/25/2024
+4699,@azure/arm-servicelinker@2.2.0-beta.1,js,@azure/arm-servicelinker_2.2.0-beta.1,@azure/arm-servicelinker,2.2.0-beta.1,1729851177,10/25/2024

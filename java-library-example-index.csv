@@ -4705,3 +4705,4 @@ id,name,language,tag,package,version,date_epoch,date
 4704,@azure/arm-elastic@1.0.0,js,@azure/arm-elastic_1.0.0,@azure/arm-elastic,1.0.0,1729849359,10/25/2024
 4705,@azure/arm-netapp@21.3.0,js,@azure/arm-netapp_21.3.0,@azure/arm-netapp,21.3.0,1729847159,10/25/2024
 4706,@azure/arm-elasticsan@1.2.0-beta.1,js,@azure/arm-elasticsan_1.2.0-beta.1,@azure/arm-elasticsan,1.2.0-beta.1,1729847151,10/25/2024
+4707,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.2,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.2,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.2,1729843507,10/25/2024

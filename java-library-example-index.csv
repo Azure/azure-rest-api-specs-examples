@@ -4699,3 +4699,4 @@ id,name,language,tag,package,version,date_epoch,date
 4698,@azure/arm-containerservicefleet@1.2.0-beta.1,js,@azure/arm-containerservicefleet_1.2.0-beta.1,@azure/arm-containerservicefleet,1.2.0-beta.1,1729851189,10/25/2024
 4699,@azure/arm-servicelinker@2.2.0-beta.1,js,@azure/arm-servicelinker_2.2.0-beta.1,@azure/arm-servicelinker,2.2.0-beta.1,1729851177,10/25/2024
 4700,@azure/arm-containerservice@21.2.0,js,@azure/arm-containerservice_21.2.0,@azure/arm-containerservice,21.2.0,1729851166,10/25/2024
+4701,@azure/arm-iotoperations@1.0.0-beta.1,js,@azure/arm-iotoperations_1.0.0-beta.1,@azure/arm-iotoperations,1.0.0-beta.1,1729851083,10/25/2024

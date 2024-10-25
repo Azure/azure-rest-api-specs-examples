@@ -3,7 +3,7 @@ import com.azure.resourcemanager.appservice.fluent.models.RemotePrivateEndpointC
 import com.azure.resourcemanager.appservice.models.PrivateLinkConnectionState;
 
 /**
- * Samples for StaticSites ApproveOrRejectPrivateEndpointConnection.
+ * Samples for WebApps ApproveOrRejectPrivateEndpointConnection.
  */
 public final class Main {
     /*
@@ -17,7 +17,7 @@ public final class Main {
      */
     public static void
         approvesOrRejectsAPrivateEndpointConnectionForASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getStaticSites().approveOrRejectPrivateEndpointConnection("rg",
+        azure.webApps().manager().serviceClient().getWebApps().approveOrRejectPrivateEndpointConnection("rg",
             "testSite", "connection",
             new RemotePrivateEndpointConnectionArmResourceInner()
                 .withPrivateLinkServiceConnectionState(new PrivateLinkConnectionState().withStatus("Approved")

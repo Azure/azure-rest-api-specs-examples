@@ -1,6 +1,6 @@
 
 /**
- * Samples for Diagnostics GetSiteAnalysis.
+ * Samples for Diagnostics GetSiteAnalysisSlot.
  */
 public final class Main {
     /*
@@ -13,7 +13,8 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAppAnalysis(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getDiagnostics().getSiteAnalysisWithResponse(
-            "Sample-WestUSResourceGroup", "SampleApp", "availability", "appanalysis", com.azure.core.util.Context.NONE);
+        azure.webApps().manager().serviceClient().getDiagnostics().getSiteAnalysisSlotWithResponse(
+            "Sample-WestUSResourceGroup", "SampleApp", "availability", "appanalysis", "Production",
+            com.azure.core.util.Context.NONE);
     }
 }

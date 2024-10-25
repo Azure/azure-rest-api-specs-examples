@@ -1,6 +1,6 @@
 
 /**
- * Samples for Accounts ListByResourceGroup.
+ * Samples for Accounts List.
  */
 public final class Main {
     /*
@@ -13,6 +13,6 @@ public final class Main {
      * @param manager Entry point to NetAppFilesManager.
      */
     public static void accountsList(com.azure.resourcemanager.netapp.NetAppFilesManager manager) {
-        manager.accounts().listByResourceGroup("myRG", com.azure.core.util.Context.NONE);
+        manager.accounts().list(com.azure.core.util.Context.NONE);
     }
 }

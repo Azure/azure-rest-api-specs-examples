@@ -11,6 +11,5 @@ async function deleteACapacity() {
   const credential = new DefaultAzureCredential();
   const subscriptionId = "548B7FB7-3B2A-4F46-BB02-66473F1FC22C";
   const client = new FabricClient(credential, subscriptionId);
-  const result = await client.fabricCapacities.delete("TestRG", "azsdktest");
-  console.log(result);
+  await client.fabricCapacities.delete("TestRG", "azsdktest");
 }

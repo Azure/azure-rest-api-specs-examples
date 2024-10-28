@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.SignalR;
 
@@ -15,21 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SignalRCustomDomainResource created on azure
-// for more information of creating SignalRCustomDomainResource, please refer to the document of SignalRCustomDomainResource
+// this example assumes you already have this SignalRResource created on azure
+// for more information of creating SignalRResource, please refer to the document of SignalRResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "mySignalRService";
-string name = "myDomain";
-ResourceIdentifier signalRCustomDomainResourceId = SignalRCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, name);
-SignalRCustomDomainResource signalRCustomDomain = client.GetSignalRCustomDomainResource(signalRCustomDomainResourceId);
+ResourceIdentifier signalRResourceId = SignalRResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+SignalRResource signalR = client.GetSignalRResource(signalRResourceId);
+
+// get the collection of this SignalRCustomDomainResource
+SignalRCustomDomainCollection collection = signalR.GetSignalRCustomDomains();
 
 // invoke the operation
+string name = "myDomain";
 SignalRCustomDomainData data = new SignalRCustomDomainData("example.com", new WritableSubResource()
 {
     Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/providers/Microsoft.SignalRService/SignalR/mySignalRService/customCertificates/myCert"),
 });
-ArmOperation<SignalRCustomDomainResource> lro = await signalRCustomDomain.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<SignalRCustomDomainResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);
 SignalRCustomDomainResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

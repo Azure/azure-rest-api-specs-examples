@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.SignalR;
 
@@ -15,20 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SignalRCustomDomainResource created on azure
-// for more information of creating SignalRCustomDomainResource, please refer to the document of SignalRCustomDomainResource
+// this example assumes you already have this SignalRResource created on azure
+// for more information of creating SignalRResource, please refer to the document of SignalRResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string resourceName = "mySignalRService";
-string name = "example";
-ResourceIdentifier signalRCustomDomainResourceId = SignalRCustomDomainResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, name);
-SignalRCustomDomainResource signalRCustomDomain = client.GetSignalRCustomDomainResource(signalRCustomDomainResourceId);
+ResourceIdentifier signalRResourceId = SignalRResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
+SignalRResource signalR = client.GetSignalRResource(signalRResourceId);
+
+// get the collection of this SignalRCustomDomainResource
+SignalRCustomDomainCollection collection = signalR.GetSignalRCustomDomains();
 
 // invoke the operation
-SignalRCustomDomainResource result = await signalRCustomDomain.GetAsync();
+string name = "example";
+bool result = await collection.ExistsAsync(name);
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SignalRCustomDomainData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+Console.WriteLine($"Succeeded: {result}");

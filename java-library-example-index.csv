@@ -4714,3 +4714,4 @@ id,name,language,tag,package,version,date_epoch,date
 4713,@azure/arm-databoundaries@1.0.0-beta.1,js,@azure/arm-databoundaries_1.0.0-beta.1,@azure/arm-databoundaries,1.0.0-beta.1,1730093491,10/28/2024
 4714,@azure/arm-containerorchestratorruntime@1.0.0-beta.1,js,@azure/arm-containerorchestratorruntime_1.0.0-beta.1,@azure/arm-containerorchestratorruntime,1.0.0-beta.1,1730091316,10/28/2024
 4715,"Azure.ResourceManager.SignalR,1.1.3",dotnet,Azure.ResourceManager.SignalR_1.1.3,Azure.ResourceManager.SignalR,1.1.3,1730099935,10/28/2024
+4716,"Azure.ResourceManager.CognitiveServices,1.3.4",dotnet,Azure.ResourceManager.CognitiveServices_1.3.4,Azure.ResourceManager.CognitiveServices,1.3.4,1730099915,10/28/2024

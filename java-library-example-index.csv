@@ -4709,3 +4709,4 @@ id,name,language,tag,package,version,date_epoch,date
 4708,@azure/arm-containerinstance@9.2.0-beta.1,js,@azure/arm-containerinstance_9.2.0-beta.1,@azure/arm-containerinstance,9.2.0-beta.1,1729841318,10/25/2024
 4709,com.azure.resourcemanager:azure-resourcemanager-servicefabric:1.0.0-beta.5,java,azure-resourcemanager-servicefabric_1.0.0-beta.5,azure-resourcemanager-servicefabric,1.0.0-beta.5,1730099935,10/28/2024
 4710,com.azure.resourcemanager:azure-resourcemanager-databricks:1.0.0-beta.5,java,azure-resourcemanager-databricks_1.0.0-beta.5,azure-resourcemanager-databricks,1.0.0-beta.5,1730099542,10/28/2024
+4711,com.azure.resourcemanager:azure-resourcemanager-managementgroups:1.0.0-beta.2,java,azure-resourcemanager-managementgroups_1.0.0-beta.2,azure-resourcemanager-managementgroups,1.0.0-beta.2,1730099458,10/28/2024

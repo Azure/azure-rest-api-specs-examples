@@ -4719,3 +4719,4 @@ id,name,language,tag,package,version,date_epoch,date
 4718,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerorchestratorruntime/armcontainerorchestratorruntime@v0.1.0,go,sdk/resourcemanager/containerorchestratorruntime/armcontainerorchestratorruntime/v0.1.0,sdk/resourcemanager/containerorchestratorruntime/armcontainerorchestratorruntime,v0.1.0,1730181162,10/29/2024
 4719,@azure/arm-cosmosdb@17.0.0-beta.1,js,@azure/arm-cosmosdb_17.0.0-beta.1,@azure/arm-cosmosdb,17.0.0-beta.1,1730194983,10/29/2024
 4720,@azure/arm-appcontainers@2.2.0-beta.1,js,@azure/arm-appcontainers_2.2.0-beta.1,@azure/arm-appcontainers,2.2.0-beta.1,1730174175,10/29/2024
+4721,"Azure.ResourceManager.NetApp,1.8.0",dotnet,Azure.ResourceManager.NetApp_1.8.0,Azure.ResourceManager.NetApp,1.8.0,1730191967,10/29/2024

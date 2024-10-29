@@ -4707,3 +4707,12 @@ id,name,language,tag,package,version,date_epoch,date
 4706,@azure/arm-elasticsan@1.2.0-beta.1,js,@azure/arm-elasticsan_1.2.0-beta.1,@azure/arm-elasticsan,1.2.0-beta.1,1729847151,10/25/2024
 4707,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.2,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.2,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.2,1729843507,10/25/2024
 4708,@azure/arm-containerinstance@9.2.0-beta.1,js,@azure/arm-containerinstance_9.2.0-beta.1,@azure/arm-containerinstance,9.2.0-beta.1,1729841318,10/25/2024
+4709,com.azure.resourcemanager:azure-resourcemanager-servicefabric:1.0.0-beta.5,java,azure-resourcemanager-servicefabric_1.0.0-beta.5,azure-resourcemanager-servicefabric,1.0.0-beta.5,1730099935,10/28/2024
+4710,com.azure.resourcemanager:azure-resourcemanager-databricks:1.0.0-beta.5,java,azure-resourcemanager-databricks_1.0.0-beta.5,azure-resourcemanager-databricks,1.0.0-beta.5,1730099542,10/28/2024
+4711,com.azure.resourcemanager:azure-resourcemanager-managementgroups:1.0.0-beta.2,java,azure-resourcemanager-managementgroups_1.0.0-beta.2,azure-resourcemanager-managementgroups,1.0.0-beta.2,1730099458,10/28/2024
+4712,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotoperations/armiotoperations@v0.1.0,go,sdk/resourcemanager/iotoperations/armiotoperations/v0.1.0,sdk/resourcemanager/iotoperations/armiotoperations,v0.1.0,1730043914,10/27/2024
+4713,@azure/arm-databoundaries@1.0.0-beta.1,js,@azure/arm-databoundaries_1.0.0-beta.1,@azure/arm-databoundaries,1.0.0-beta.1,1730093491,10/28/2024
+4714,@azure/arm-containerorchestratorruntime@1.0.0-beta.1,js,@azure/arm-containerorchestratorruntime_1.0.0-beta.1,@azure/arm-containerorchestratorruntime,1.0.0-beta.1,1730091316,10/28/2024
+4715,"Azure.ResourceManager.SignalR,1.1.3",dotnet,Azure.ResourceManager.SignalR_1.1.3,Azure.ResourceManager.SignalR,1.1.3,1730099935,10/28/2024
+4716,"Azure.ResourceManager.CognitiveServices,1.3.4",dotnet,Azure.ResourceManager.CognitiveServices_1.3.4,Azure.ResourceManager.CognitiveServices,1.3.4,1730099915,10/28/2024
+4717,azure-mgmt-appcontainers@3.2.0b1,python,azure-mgmt-appcontainers_3.2.0b1,azure-mgmt-appcontainers,3.2.0b1,1730095635,10/28/2024

@@ -4720,3 +4720,4 @@ id,name,language,tag,package,version,date_epoch,date
 4719,@azure/arm-cosmosdb@17.0.0-beta.1,js,@azure/arm-cosmosdb_17.0.0-beta.1,@azure/arm-cosmosdb,17.0.0-beta.1,1730194983,10/29/2024
 4720,@azure/arm-appcontainers@2.2.0-beta.1,js,@azure/arm-appcontainers_2.2.0-beta.1,@azure/arm-appcontainers,2.2.0-beta.1,1730174175,10/29/2024
 4721,"Azure.ResourceManager.NetApp,1.8.0",dotnet,Azure.ResourceManager.NetApp_1.8.0,Azure.ResourceManager.NetApp,1.8.0,1730191967,10/29/2024
+4722,azure-mgmt-appplatform@10.0.0,python,azure-mgmt-appplatform_10.0.0,azure-mgmt-appplatform,10.0.0,1730180842,10/29/2024

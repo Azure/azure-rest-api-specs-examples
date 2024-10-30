@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.edgeorder import EdgeOrderManagementClient
 
 """
@@ -21,11 +22,10 @@ def main():
         subscription_id="YourSubscriptionId",
     )
 
-    response = client.begin_delete_order_item_by_name(
+    client.begin_delete_order_item_by_name(
         order_item_name="TestOrderItemName3",
         resource_group_name="YourResourceGroupName",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/DeleteOrderItemByName.json

@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.edgeorder import EdgeOrderManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="YourSubscriptionId",
     )
 
-    response = client.begin_return_order_item(
+    client.begin_return_order_item(
         order_item_name="TestOrderName4",
         resource_group_name="YourResourceGroupName",
         return_order_item_details={"returnReason": "Order returned"},
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/ReturnOrderItem.json

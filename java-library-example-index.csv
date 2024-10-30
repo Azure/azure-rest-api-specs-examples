@@ -4724,3 +4724,4 @@ id,name,language,tag,package,version,date_epoch,date
 4723,azure-mgmt-extendedlocation@2.0.0,python,azure-mgmt-extendedlocation_2.0.0,azure-mgmt-extendedlocation,2.0.0,1730279352,10/30/2024
 4724,azure-mgmt-digitaltwins@7.0.0,python,azure-mgmt-digitaltwins_7.0.0,azure-mgmt-digitaltwins,7.0.0,1730279331,10/30/2024
 4725,azure-mgmt-appconfiguration@4.0.0,python,azure-mgmt-appconfiguration_4.0.0,azure-mgmt-appconfiguration,4.0.0,1730276954,10/30/2024
+4726,azure-mgmt-edgeorder@2.0.0,python,azure-mgmt-edgeorder_2.0.0,azure-mgmt-edgeorder,2.0.0,1730276584,10/30/2024

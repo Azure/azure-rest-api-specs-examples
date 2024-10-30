@@ -4726,3 +4726,4 @@ id,name,language,tag,package,version,date_epoch,date
 4725,azure-mgmt-appconfiguration@4.0.0,python,azure-mgmt-appconfiguration_4.0.0,azure-mgmt-appconfiguration,4.0.0,1730276954,10/30/2024
 4726,azure-mgmt-edgeorder@2.0.0,python,azure-mgmt-edgeorder_2.0.0,azure-mgmt-edgeorder,2.0.0,1730276584,10/30/2024
 4727,azure-mgmt-resourcehealth@1.0.0b6,python,azure-mgmt-resourcehealth_1.0.0b6,azure-mgmt-resourcehealth,1.0.0b6,1730276544,10/30/2024
+4728,azure-mgmt-databox@3.0.0,python,azure-mgmt-databox_3.0.0,azure-mgmt-databox,3.0.0,1730276539,10/30/2024

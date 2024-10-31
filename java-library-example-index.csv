@@ -4729,3 +4729,4 @@ id,name,language,tag,package,version,date_epoch,date
 4728,azure-mgmt-databox@3.0.0,python,azure-mgmt-databox_3.0.0,azure-mgmt-databox,3.0.0,1730276539,10/30/2024
 4729,azure-mgmt-redhatopenshift@2.0.0,python,azure-mgmt-redhatopenshift_2.0.0,azure-mgmt-redhatopenshift,2.0.0,1730271876,10/30/2024
 4730,com.azure.resourcemanager:azure-resourcemanager-synapse:1.0.0-beta.8,java,azure-resourcemanager-synapse_1.0.0-beta.8,azure-resourcemanager-synapse,1.0.0-beta.8,1730360308,10/31/2024
+4731,"Azure.ResourceManager.Terraform,1.0.0-beta.1",dotnet,Azure.ResourceManager.Terraform_1.0.0-beta.1,Azure.ResourceManager.Terraform,1.0.0-beta.1,1730357453,10/31/2024

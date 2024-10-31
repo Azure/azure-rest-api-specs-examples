@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.synapse.models.AutoPauseProperties;
 import com.azure.resourcemanager.synapse.models.AutoScaleProperties;
 import com.azure.resourcemanager.synapse.models.LibraryRequirements;
@@ -6,36 +7,32 @@ import com.azure.resourcemanager.synapse.models.NodeSizeFamily;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for BigDataPools CreateOrUpdate. */
+/**
+ * Samples for BigDataPools CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/CreateOrUpdateBigDataPool.json
+     * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/
+     * CreateOrUpdateBigDataPool.json
      */
     /**
      * Sample code: Create or update a Big Data pool.
-     *
+     * 
      * @param manager Entry point to SynapseManager.
      */
     public static void createOrUpdateABigDataPool(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager
-            .bigDataPools()
-            .define("ExamplePool")
-            .withRegion("West US 2")
+        manager.bigDataPools().define("ExamplePool").withRegion("West US 2")
             .withExistingWorkspace("ExampleResourceGroup", "ExampleWorkspace")
-            .withTags(mapOf("key", "value"))
+            .withTags(mapOf("key", "fakeTokenPlaceholder"))
             .withAutoScale(new AutoScaleProperties().withMinNodeCount(3).withEnabled(true).withMaxNodeCount(50))
             .withAutoPause(new AutoPauseProperties().withDelayInMinutes(15).withEnabled(true))
-            .withIsAutotuneEnabled(false)
-            .withSparkEventsFolder("/events")
-            .withNodeCount(4)
+            .withIsAutotuneEnabled(false).withSparkEventsFolder("/events").withNodeCount(4)
             .withLibraryRequirements(new LibraryRequirements().withContent("").withFilename("requirements.txt"))
-            .withSparkVersion("3.3")
-            .withDefaultSparkLogFolder("/logs")
-            .withNodeSize(NodeSize.MEDIUM)
-            .withNodeSizeFamily(NodeSizeFamily.MEMORY_OPTIMIZED)
-            .create();
+            .withSparkVersion("3.3").withDefaultSparkLogFolder("/logs").withNodeSize(NodeSize.MEDIUM)
+            .withNodeSizeFamily(NodeSizeFamily.MEMORY_OPTIMIZED).create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

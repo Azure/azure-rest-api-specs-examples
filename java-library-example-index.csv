@@ -4721,3 +4721,10 @@ id,name,language,tag,package,version,date_epoch,date
 4720,@azure/arm-appcontainers@2.2.0-beta.1,js,@azure/arm-appcontainers_2.2.0-beta.1,@azure/arm-appcontainers,2.2.0-beta.1,1730174175,10/29/2024
 4721,"Azure.ResourceManager.NetApp,1.8.0",dotnet,Azure.ResourceManager.NetApp_1.8.0,Azure.ResourceManager.NetApp,1.8.0,1730191967,10/29/2024
 4722,azure-mgmt-appplatform@10.0.0,python,azure-mgmt-appplatform_10.0.0,azure-mgmt-appplatform,10.0.0,1730180842,10/29/2024
+4723,azure-mgmt-extendedlocation@2.0.0,python,azure-mgmt-extendedlocation_2.0.0,azure-mgmt-extendedlocation,2.0.0,1730279352,10/30/2024
+4724,azure-mgmt-digitaltwins@7.0.0,python,azure-mgmt-digitaltwins_7.0.0,azure-mgmt-digitaltwins,7.0.0,1730279331,10/30/2024
+4725,azure-mgmt-appconfiguration@4.0.0,python,azure-mgmt-appconfiguration_4.0.0,azure-mgmt-appconfiguration,4.0.0,1730276954,10/30/2024
+4726,azure-mgmt-edgeorder@2.0.0,python,azure-mgmt-edgeorder_2.0.0,azure-mgmt-edgeorder,2.0.0,1730276584,10/30/2024
+4727,azure-mgmt-resourcehealth@1.0.0b6,python,azure-mgmt-resourcehealth_1.0.0b6,azure-mgmt-resourcehealth,1.0.0b6,1730276544,10/30/2024
+4728,azure-mgmt-databox@3.0.0,python,azure-mgmt-databox_3.0.0,azure-mgmt-databox,3.0.0,1730276539,10/30/2024
+4729,azure-mgmt-redhatopenshift@2.0.0,python,azure-mgmt-redhatopenshift_2.0.0,azure-mgmt-redhatopenshift,2.0.0,1730271876,10/30/2024

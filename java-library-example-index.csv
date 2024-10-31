@@ -4731,3 +4731,4 @@ id,name,language,tag,package,version,date_epoch,date
 4730,com.azure.resourcemanager:azure-resourcemanager-synapse:1.0.0-beta.8,java,azure-resourcemanager-synapse_1.0.0-beta.8,azure-resourcemanager-synapse,1.0.0-beta.8,1730360308,10/31/2024
 4731,"Azure.ResourceManager.Terraform,1.0.0-beta.1",dotnet,Azure.ResourceManager.Terraform_1.0.0-beta.1,Azure.ResourceManager.Terraform,1.0.0-beta.1,1730357453,10/31/2024
 4732,"Azure.ResourceManager.Nginx,1.1.0-beta.2",dotnet,Azure.ResourceManager.Nginx_1.1.0-beta.2,Azure.ResourceManager.Nginx,1.1.0-beta.2,1730353484,10/31/2024
+4733,azure-mgmt-containerservicefleet@3.0.0,python,azure-mgmt-containerservicefleet_3.0.0,azure-mgmt-containerservicefleet,3.0.0,1730368253,10/31/2024

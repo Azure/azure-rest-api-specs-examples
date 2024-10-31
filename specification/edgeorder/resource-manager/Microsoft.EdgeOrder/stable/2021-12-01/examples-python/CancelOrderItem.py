@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.edgeorder import EdgeOrderManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="YourSubscriptionId",
     )
 
-    response = client.cancel_order_item(
+    client.cancel_order_item(
         order_item_name="TestOrderItemName3",
         resource_group_name="YourResourceGroupName",
         cancellation_reason={"reason": "Order cancelled"},
     )
-    print(response)
 
 
 # x-ms-original-file: specification/edgeorder/resource-manager/Microsoft.EdgeOrder/stable/2021-12-01/examples/CancelOrderItem.json

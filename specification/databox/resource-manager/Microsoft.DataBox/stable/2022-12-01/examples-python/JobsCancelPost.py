@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.databox import DataBoxManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="YourSubscriptionId",
     )
 
-    response = client.jobs.cancel(
+    client.jobs.cancel(
         resource_group_name="YourResourceGroupName",
         job_name="TestJobName1",
         cancellation_reason={"reason": "CancelTest"},
     )
-    print(response)
 
 
 # x-ms-original-file: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsCancelPost.json

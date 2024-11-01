@@ -4743,3 +4743,4 @@ id,name,language,tag,package,version,date_epoch,date
 4742,com.azure.resourcemanager:azure-resourcemanager-databox:1.0.0-beta.4,java,azure-resourcemanager-databox_1.0.0-beta.4,azure-resourcemanager-databox,1.0.0-beta.4,1730378401,10/31/2024
 4743,com.azure.resourcemanager:azure-resourcemanager-mediaservices:2.4.0-beta.2,java,azure-resourcemanager-mediaservices_2.4.0-beta.2,azure-resourcemanager-mediaservices,2.4.0-beta.2,1730378400,10/31/2024
 4744,com.azure.resourcemanager:azure-resourcemanager-managedapplications:1.0.0-beta.4,java,azure-resourcemanager-managedapplications_1.0.0-beta.4,azure-resourcemanager-managedapplications,1.0.0-beta.4,1730378368,10/31/2024
+4745,com.azure.resourcemanager:azure-resourcemanager-defendereasm:1.0.0-beta.2,java,azure-resourcemanager-defendereasm_1.0.0-beta.2,azure-resourcemanager-defendereasm,1.0.0-beta.2,1730378368,10/31/2024

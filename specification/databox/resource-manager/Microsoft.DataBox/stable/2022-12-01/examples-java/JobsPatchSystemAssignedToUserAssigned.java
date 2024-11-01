@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.databox.models.IdentityProperties;
 import com.azure.resourcemanager.databox.models.JobResource;
 import com.azure.resourcemanager.databox.models.KekType;
@@ -9,50 +10,37 @@ import com.azure.resourcemanager.databox.models.UserAssignedProperties;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Jobs Update. */
+/**
+ * Samples for Jobs Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsPatchSystemAssignedToUserAssigned.json
+     * x-ms-original-file: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/
+     * JobsPatchSystemAssignedToUserAssigned.json
      */
     /**
      * Sample code: JobsPatchSystemAssignedToUserAssigned.
-     *
+     * 
      * @param manager Entry point to DataBoxManager.
      */
     public static void jobsPatchSystemAssignedToUserAssigned(com.azure.resourcemanager.databox.DataBoxManager manager) {
-        JobResource resource =
-            manager
-                .jobs()
-                .getByResourceGroupWithResponse(
-                    "YourResourceGroupName", "TestJobName1", null, com.azure.core.util.Context.NONE)
-                .getValue();
-        resource
-            .update()
-            .withIdentity(
-                new ResourceIdentity()
-                    .withType("SystemAssigned,UserAssigned")
-                    .withUserAssignedIdentities(
-                        mapOf(
-                            "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity",
-                            new UserAssignedIdentity())))
-            .withDetails(
-                new UpdateJobDetails()
-                    .withKeyEncryptionKey(
-                        new KeyEncryptionKey()
-                            .withKekType(KekType.CUSTOMER_MANAGED)
-                            .withIdentityProperties(
-                                new IdentityProperties()
-                                    .withType("UserAssigned")
-                                    .withUserAssigned(
-                                        new UserAssignedProperties()
-                                            .withResourceId(
-                                                "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity")))
-                            .withKekUrl("https://xxx.xxx.xx")
-                            .withKekVaultResourceId(
-                                "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.KeyVault/vaults/YourKeyVaultName")))
+        JobResource resource = manager.jobs().getByResourceGroupWithResponse("YourResourceGroupName", "TestJobName1",
+            null, com.azure.core.util.Context.NONE).getValue();
+        resource.update().withIdentity(new ResourceIdentity().withType("SystemAssigned,UserAssigned")
+            .withUserAssignedIdentities(mapOf(
+                "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity",
+                new UserAssignedIdentity())))
+            .withDetails(new UpdateJobDetails().withKeyEncryptionKey(new KeyEncryptionKey()
+                .withKekType(KekType.CUSTOMER_MANAGED)
+                .withIdentityProperties(new IdentityProperties().withType("UserAssigned")
+                    .withUserAssigned(new UserAssignedProperties().withResourceId(
+                        "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testIdentity")))
+                .withKekUrl("https://xxx.xxx.xx").withKekVaultResourceId(
+                    "/subscriptions/YourSubscriptionId/resourceGroups/YourResourceGroupName/providers/Microsoft.KeyVault/vaults/YourKeyVaultName")))
             .apply();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.databox.models.AddressType;
 import com.azure.resourcemanager.databox.models.ContactDetails;
 import com.azure.resourcemanager.databox.models.DataBoxJobDetails;
@@ -14,57 +15,39 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Jobs Create. */
+/**
+ * Samples for Jobs Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsCreateDoubleEncryption.json
+     * x-ms-original-file:
+     * specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/examples/JobsCreateDoubleEncryption.
+     * json
      */
     /**
      * Sample code: JobsCreateDoubleEncryption.
-     *
+     * 
      * @param manager Entry point to DataBoxManager.
      */
     public static void jobsCreateDoubleEncryption(com.azure.resourcemanager.databox.DataBoxManager manager) {
-        manager
-            .jobs()
-            .define("TestJobName1")
-            .withRegion("westus")
-            .withExistingResourceGroup("YourResourceGroupName")
-            .withSku(new Sku().withName(SkuName.DATA_BOX))
-            .withTransferType(TransferType.IMPORT_TO_AZURE)
-            .withDetails(
-                new DataBoxJobDetails()
-                    .withContactDetails(
-                        new ContactDetails()
-                            .withContactName("XXXX XXXX")
-                            .withPhone("0000000000")
-                            .withPhoneExtension("")
-                            .withEmailList(Arrays.asList("xxxx@xxxx.xxx")))
-                    .withShippingAddress(
-                        new ShippingAddress()
-                            .withStreetAddress1("XXXX XXXX")
-                            .withStreetAddress2("XXXX XXXX")
-                            .withCity("XXXX XXXX")
-                            .withStateOrProvince("XX")
-                            .withCountry("XX")
-                            .withPostalCode("fakeTokenPlaceholder")
-                            .withCompanyName("XXXX XXXX")
-                            .withAddressType(AddressType.COMMERCIAL))
-                    .withDataImportDetails(
-                        Arrays
-                            .asList(
-                                new DataImportDetails()
-                                    .withAccountDetails(
-                                        new StorageAccountDetails()
-                                            .withStorageAccountId(
-                                                "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"))))
-                    .withPreferences(
-                        new Preferences()
-                            .withEncryptionPreferences(
-                                new EncryptionPreferences().withDoubleEncryption(DoubleEncryption.ENABLED))))
+        manager.jobs().define("TestJobName1").withRegion("westus").withExistingResourceGroup("YourResourceGroupName")
+            .withSku(new Sku().withName(SkuName.DATA_BOX)).withTransferType(TransferType.IMPORT_TO_AZURE)
+            .withDetails(new DataBoxJobDetails()
+                .withContactDetails(new ContactDetails().withContactName("XXXX XXXX").withPhone("0000000000")
+                    .withPhoneExtension("").withEmailList(Arrays.asList("xxxx@xxxx.xxx")))
+                .withShippingAddress(new ShippingAddress().withStreetAddress1("XXXX XXXX")
+                    .withStreetAddress2("XXXX XXXX").withCity("XXXX XXXX").withStateOrProvince("XX").withCountry("XX")
+                    .withPostalCode("fakeTokenPlaceholder").withCompanyName("XXXX XXXX")
+                    .withAddressType(AddressType.COMMERCIAL))
+                .withDataImportDetails(Arrays
+                    .asList(new DataImportDetails().withAccountDetails(new StorageAccountDetails().withStorageAccountId(
+                        "/subscriptions/YourSubscriptionId/resourcegroups/YourResourceGroupName/providers/Microsoft.Storage/storageAccounts/YourStorageAccountName"))))
+                .withPreferences(new Preferences().withEncryptionPreferences(
+                    new EncryptionPreferences().withDoubleEncryption(DoubleEncryption.ENABLED))))
             .create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

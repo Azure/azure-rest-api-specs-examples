@@ -1,0 +1,20 @@
+
+/**
+ * Samples for Outputs Get.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/
+     * Output_Get_AzureDataLakeStore_JSON.json
+     */
+    /**
+     * Sample code: Get an Azure Data Lake Store output with JSON serialization.
+     * 
+     * @param manager Entry point to StreamAnalyticsManager.
+     */
+    public static void getAnAzureDataLakeStoreOutputWithJSONSerialization(
+        com.azure.resourcemanager.streamanalytics.StreamAnalyticsManager manager) {
+        manager.outputs().getWithResponse("sjrg6912", "sj3310", "output5195", com.azure.core.util.Context.NONE);
+    }
+}

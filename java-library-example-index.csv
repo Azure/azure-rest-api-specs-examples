@@ -4735,3 +4735,4 @@ id,name,language,tag,package,version,date_epoch,date
 4734,com.azure.resourcemanager:azure-resourcemanager-costmanagement:1.0.0-beta.7,java,azure-resourcemanager-costmanagement_1.0.0-beta.7,azure-resourcemanager-costmanagement,1.0.0-beta.7,1730378687,10/31/2024
 4735,com.azure.resourcemanager:azure-resourcemanager-streamanalytics:1.0.0-beta.4,java,azure-resourcemanager-streamanalytics_1.0.0-beta.4,azure-resourcemanager-streamanalytics,1.0.0-beta.4,1730378645,10/31/2024
 4736,com.azure.resourcemanager:azure-resourcemanager-reservations:1.0.0-beta.3,java,azure-resourcemanager-reservations_1.0.0-beta.3,azure-resourcemanager-reservations,1.0.0-beta.3,1730378474,10/31/2024
+4737,com.azure.resourcemanager:azure-resourcemanager-timeseriesinsights:1.0.0-beta.3,java,azure-resourcemanager-timeseriesinsights_1.0.0-beta.3,azure-resourcemanager-timeseriesinsights,1.0.0-beta.3,1730378432,10/31/2024

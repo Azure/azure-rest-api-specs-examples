@@ -1,19 +1,22 @@
-/** Samples for Applications DeleteById. */
+
+/**
+ * Samples for Applications DeleteById.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/deleteApplicationById.json
+     * x-ms-original-file:
+     * specification/solutions/resource-manager/Microsoft.Solutions/stable/2021-07-01/examples/deleteApplicationById.
+     * json
      */
     /**
      * Sample code: Deletes the managed application.
-     *
+     * 
      * @param manager Entry point to ApplicationManager.
      */
-    public static void deletesTheManagedApplication(
-        com.azure.resourcemanager.managedapplications.ApplicationManager manager) {
-        manager
-            .applications()
-            .deleteById(
-                "subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applications/myManagedApplication",
-                com.azure.core.util.Context.NONE);
+    public static void
+        deletesTheManagedApplication(com.azure.resourcemanager.managedapplications.ApplicationManager manager) {
+        manager.applications().deleteById(
+            "subscriptions/subid/resourceGroups/rg/providers/Microsoft.Solutions/applications/myManagedApplication",
+            com.azure.core.util.Context.NONE);
     }
 }

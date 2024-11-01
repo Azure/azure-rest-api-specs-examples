@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.costmanagement.models.ExportType;
 import com.azure.resourcemanager.costmanagement.models.FunctionType;
 import com.azure.resourcemanager.costmanagement.models.GranularityType;
@@ -11,41 +12,34 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Query Usage. */
+/**
+ * Samples for Query Usage.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-10-01/examples/MCABillingProfileQueryGrouping.json
+     * x-ms-original-file:
+     * specification/cost-management/resource-manager/Microsoft.CostManagement/stable/2022-10-01/examples/
+     * MCABillingProfileQueryGrouping.json
      */
     /**
      * Sample code: BillingProfileQueryGrouping-MCA.
-     *
+     * 
      * @param manager Entry point to CostManagementManager.
      */
-    public static void billingProfileQueryGroupingMCA(
-        com.azure.resourcemanager.costmanagement.CostManagementManager manager) {
-        manager
-            .queries()
-            .usageWithResponse(
-                "providers/Microsoft.Billing/billingAccounts/12345:6789/billingProfiles/13579",
-                new QueryDefinition()
-                    .withType(ExportType.USAGE)
-                    .withTimeframe(TimeframeType.THE_LAST_MONTH)
-                    .withDataset(
-                        new QueryDataset()
-                            .withGranularity(GranularityType.fromString("None"))
-                            .withAggregation(
-                                mapOf(
-                                    "totalCost",
-                                    new QueryAggregation().withName("PreTaxCost").withFunction(FunctionType.SUM)))
-                            .withGrouping(
-                                Arrays
-                                    .asList(
-                                        new QueryGrouping()
-                                            .withType(QueryColumnType.DIMENSION)
-                                            .withName("ResourceGroup")))),
-                com.azure.core.util.Context.NONE);
+    public static void
+        billingProfileQueryGroupingMCA(com.azure.resourcemanager.costmanagement.CostManagementManager manager) {
+        manager.queries().usageWithResponse(
+            "providers/Microsoft.Billing/billingAccounts/12345:6789/billingProfiles/13579",
+            new QueryDefinition().withType(ExportType.USAGE).withTimeframe(TimeframeType.THE_LAST_MONTH)
+                .withDataset(new QueryDataset().withGranularity(GranularityType.fromString("None"))
+                    .withAggregation(mapOf("totalCost",
+                        new QueryAggregation().withName("PreTaxCost").withFunction(FunctionType.SUM)))
+                    .withGrouping(Arrays
+                        .asList(new QueryGrouping().withType(QueryColumnType.DIMENSION).withName("ResourceGroup")))),
+            com.azure.core.util.Context.NONE);
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

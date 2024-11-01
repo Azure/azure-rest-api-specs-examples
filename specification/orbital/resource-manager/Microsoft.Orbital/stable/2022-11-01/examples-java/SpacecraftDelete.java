@@ -1,11 +1,15 @@
-/** Samples for Spacecrafts Delete. */
+
+/**
+ * Samples for Spacecrafts Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/examples/SpacecraftDelete.json
+     * x-ms-original-file:
+     * specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/examples/SpacecraftDelete.json
      */
     /**
      * Sample code: Delete Spacecraft.
-     *
+     * 
      * @param manager Entry point to OrbitalManager.
      */
     public static void deleteSpacecraft(com.azure.resourcemanager.orbital.OrbitalManager manager) {

@@ -1,11 +1,15 @@
-/** Samples for ContactProfiles Delete. */
+
+/**
+ * Samples for ContactProfiles Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/examples/ContactProfileDelete.json
+     * x-ms-original-file:
+     * specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/examples/ContactProfileDelete.json
      */
     /**
      * Sample code: Delete Contact Profile.
-     *
+     * 
      * @param manager Entry point to OrbitalManager.
      */
     public static void deleteContactProfile(com.azure.resourcemanager.orbital.OrbitalManager manager) {

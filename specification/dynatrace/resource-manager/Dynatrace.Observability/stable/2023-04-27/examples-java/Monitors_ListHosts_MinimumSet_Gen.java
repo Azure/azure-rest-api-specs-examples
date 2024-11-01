@@ -1,11 +1,15 @@
-/** Samples for Monitors ListHosts. */
+
+/**
+ * Samples for Monitors ListHosts.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2023-04-27/examples/Monitors_ListHosts_MinimumSet_Gen.json
+     * x-ms-original-file: specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2023-04-27/examples/
+     * Monitors_ListHosts_MinimumSet_Gen.json
      */
     /**
      * Sample code: Monitors_ListHosts_MinimumSet_Gen.
-     *
+     * 
      * @param manager Entry point to DynatraceManager.
      */
     public static void monitorsListHostsMinimumSetGen(com.azure.resourcemanager.dynatrace.DynatraceManager manager) {

@@ -1,11 +1,15 @@
-/** Samples for WorkspaceSqlAadAdmins Delete. */
+
+/**
+ * Samples for WorkspaceSqlAadAdmins Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteWorkspaceAadAdmin.json
+     * x-ms-original-file:
+     * specification/synapse/resource-manager/Microsoft.Synapse/stable/2021-06-01/examples/DeleteWorkspaceAadAdmin.json
      */
     /**
      * Sample code: Delete workspace active directory admin.
-     *
+     * 
      * @param manager Entry point to SynapseManager.
      */
     public static void deleteWorkspaceActiveDirectoryAdmin(com.azure.resourcemanager.synapse.SynapseManager manager) {

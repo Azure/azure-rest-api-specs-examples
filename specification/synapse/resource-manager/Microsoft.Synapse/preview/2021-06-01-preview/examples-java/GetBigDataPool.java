@@ -1,17 +1,19 @@
-/** Samples for BigDataPools Get. */
+
+/**
+ * Samples for BigDataPools Get.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/GetBigDataPool.json
+     * x-ms-original-file:
+     * specification/synapse/resource-manager/Microsoft.Synapse/preview/2021-06-01-preview/examples/GetBigDataPool.json
      */
     /**
      * Sample code: Get a Big Data pool.
-     *
+     * 
      * @param manager Entry point to SynapseManager.
      */
     public static void getABigDataPool(com.azure.resourcemanager.synapse.SynapseManager manager) {
-        manager
-            .bigDataPools()
-            .getWithResponse(
-                "ExampleResourceGroup", "ExampleWorkspace", "ExamplePool", com.azure.core.util.Context.NONE);
+        manager.bigDataPools().getWithResponse("ExampleResourceGroup", "ExampleWorkspace", "ExamplePool",
+            com.azure.core.util.Context.NONE);
     }
 }

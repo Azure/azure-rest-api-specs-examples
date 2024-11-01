@@ -4740,3 +4740,4 @@ id,name,language,tag,package,version,date_epoch,date
 4739,com.azure.resourcemanager:azure-resourcemanager-signalr:1.0.0-beta.9,java,azure-resourcemanager-signalr_1.0.0-beta.9,azure-resourcemanager-signalr,1.0.0-beta.9,1730378418,10/31/2024
 4740,com.azure.resourcemanager:azure-resourcemanager-baremetalinfrastructure:1.0.0-beta.4,java,azure-resourcemanager-baremetalinfrastructure_1.0.0-beta.4,azure-resourcemanager-baremetalinfrastructure,1.0.0-beta.4,1730378412,10/31/2024
 4741,com.azure.resourcemanager:azure-resourcemanager-dynatrace:1.0.0-beta.4,java,azure-resourcemanager-dynatrace_1.0.0-beta.4,azure-resourcemanager-dynatrace,1.0.0-beta.4,1730378401,10/31/2024
+4742,com.azure.resourcemanager:azure-resourcemanager-databox:1.0.0-beta.4,java,azure-resourcemanager-databox_1.0.0-beta.4,azure-resourcemanager-databox,1.0.0-beta.4,1730378401,10/31/2024

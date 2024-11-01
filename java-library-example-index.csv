@@ -4737,3 +4737,4 @@ id,name,language,tag,package,version,date_epoch,date
 4736,com.azure.resourcemanager:azure-resourcemanager-reservations:1.0.0-beta.3,java,azure-resourcemanager-reservations_1.0.0-beta.3,azure-resourcemanager-reservations,1.0.0-beta.3,1730378474,10/31/2024
 4737,com.azure.resourcemanager:azure-resourcemanager-timeseriesinsights:1.0.0-beta.3,java,azure-resourcemanager-timeseriesinsights_1.0.0-beta.3,azure-resourcemanager-timeseriesinsights,1.0.0-beta.3,1730378432,10/31/2024
 4738,com.azure.resourcemanager:azure-resourcemanager-orbital:1.0.0-beta.3,java,azure-resourcemanager-orbital_1.0.0-beta.3,azure-resourcemanager-orbital,1.0.0-beta.3,1730378426,10/31/2024
+4739,com.azure.resourcemanager:azure-resourcemanager-signalr:1.0.0-beta.9,java,azure-resourcemanager-signalr_1.0.0-beta.9,azure-resourcemanager-signalr,1.0.0-beta.9,1730378418,10/31/2024

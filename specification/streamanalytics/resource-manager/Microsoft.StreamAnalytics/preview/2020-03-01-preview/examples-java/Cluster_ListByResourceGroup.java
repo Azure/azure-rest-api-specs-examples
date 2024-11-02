@@ -1,0 +1,20 @@
+
+/**
+ * Samples for Clusters ListByResourceGroup.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2020-03-01-preview/examples/
+     * Cluster_ListByResourceGroup.json
+     */
+    /**
+     * Sample code: List clusters in resource group.
+     * 
+     * @param manager Entry point to StreamAnalyticsManager.
+     */
+    public static void
+        listClustersInResourceGroup(com.azure.resourcemanager.streamanalytics.StreamAnalyticsManager manager) {
+        manager.clusters().listByResourceGroup("sjrg", com.azure.core.util.Context.NONE);
+    }
+}

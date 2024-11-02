@@ -1,0 +1,39 @@
+
+import com.azure.resourcemanager.streamanalytics.fluent.models.InputInner;
+import com.azure.resourcemanager.streamanalytics.fluent.models.SampleInputInner;
+import com.azure.resourcemanager.streamanalytics.models.BlobStreamInputDataSource;
+import com.azure.resourcemanager.streamanalytics.models.CsvSerialization;
+import com.azure.resourcemanager.streamanalytics.models.Encoding;
+import com.azure.resourcemanager.streamanalytics.models.StorageAccount;
+import com.azure.resourcemanager.streamanalytics.models.StreamInputProperties;
+import java.util.Arrays;
+
+/**
+ * Samples for Subscriptions SampleInput.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/streamanalytics/resource-manager/Microsoft.StreamAnalytics/preview/2021-10-01-preview/examples/
+     * Subscription_SampleInput.json
+     */
+    /**
+     * Sample code: Sample the Stream Analytics input data.
+     * 
+     * @param manager Entry point to StreamAnalyticsManager.
+     */
+    public static void
+        sampleTheStreamAnalyticsInputData(com.azure.resourcemanager.streamanalytics.StreamAnalyticsManager manager) {
+        manager.subscriptions().sampleInput("West US",
+            new SampleInputInner()
+                .withInput(new InputInner().withProperties(new StreamInputProperties()
+                    .withSerialization(new CsvSerialization().withFieldDelimiter(",").withEncoding(Encoding.UTF8))
+                    .withDatasource(new BlobStreamInputDataSource().withSourcePartitionCount(16)
+                        .withStorageAccounts(Arrays.asList(new StorageAccount().withAccountName("someAccountName")
+                            .withAccountKey("fakeTokenPlaceholder")))
+                        .withContainer("state").withPathPattern("{date}/{time}").withDateFormat("yyyy/MM/dd")
+                        .withTimeFormat("HH"))))
+                .withCompatibilityLevel("1.2").withEventsUri("http://myoutput.com").withDataLocale("en-US"),
+            com.azure.core.util.Context.NONE);
+    }
+}

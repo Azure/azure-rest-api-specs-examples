@@ -4750,3 +4750,4 @@ id,name,language,tag,package,version,date_epoch,date
 4749,com.azure.resourcemanager:azure-resourcemanager-springappdiscovery:1.0.0-beta.2,java,azure-resourcemanager-springappdiscovery_1.0.0-beta.2,azure-resourcemanager-springappdiscovery,1.0.0-beta.2,1730366691,10/31/2024
 4750,azure-mgmt-network@28.0.0,python,azure-mgmt-network_28.0.0,azure-mgmt-network,28.0.0,1730446765,11/01/2024
 4751,"Azure.ResourceManager.CosmosDB,1.4.0-beta.11",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.11,Azure.ResourceManager.CosmosDB,1.4.0-beta.11,1730478160,11/01/2024
+4752,"Azure.ResourceManager.PostgreSql,1.2.0",dotnet,Azure.ResourceManager.PostgreSql_1.2.0,Azure.ResourceManager.PostgreSql,1.2.0,1730713518,11/04/2024

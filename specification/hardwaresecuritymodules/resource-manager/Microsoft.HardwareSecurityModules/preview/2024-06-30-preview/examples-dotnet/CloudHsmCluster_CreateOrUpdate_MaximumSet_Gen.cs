@@ -33,7 +33,6 @@ CloudHsmClusterData data = new CloudHsmClusterData(new AzureLocation("eastus2"))
 {
     Properties = new CloudHsmClusterProperties()
     {
-        FipsApprovedMode = false,
         PublicNetworkAccess = CloudHsmClusterPublicNetworkAccess.Disabled,
     },
     Identity = new ManagedServiceIdentity("UserAssigned")

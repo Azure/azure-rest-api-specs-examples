@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PostgreSqlServerResource created on azure
-// for more information of creating PostgreSqlServerResource, please refer to the document of PostgreSqlServerResource
+// this example assumes you already have this PostgreSqlConfigurationResource created on azure
+// for more information of creating PostgreSqlConfigurationResource, please refer to the document of PostgreSqlConfigurationResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-ResourceIdentifier postgreSqlServerResourceId = PostgreSqlServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-PostgreSqlServerResource postgreSqlServer = client.GetPostgreSqlServerResource(postgreSqlServerResourceId);
-
-// get the collection of this PostgreSqlConfigurationResource
-PostgreSqlConfigurationCollection collection = postgreSqlServer.GetPostgreSqlConfigurations();
+string configurationName = "array_nulls";
+ResourceIdentifier postgreSqlConfigurationResourceId = PostgreSqlConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, configurationName);
+PostgreSqlConfigurationResource postgreSqlConfiguration = client.GetPostgreSqlConfigurationResource(postgreSqlConfigurationResourceId);
 
 // invoke the operation
-string configurationName = "array_nulls";
 PostgreSqlConfigurationData data = new PostgreSqlConfigurationData()
 {
     Value = "off",
     Source = "user-override",
 };
-ArmOperation<PostgreSqlConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
+ArmOperation<PostgreSqlConfigurationResource> lro = await postgreSqlConfiguration.UpdateAsync(WaitUntil.Completed, data);
 PostgreSqlConfigurationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

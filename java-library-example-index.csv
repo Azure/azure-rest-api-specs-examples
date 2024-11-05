@@ -4750,3 +4750,8 @@ id,name,language,tag,package,version,date_epoch,date
 4749,com.azure.resourcemanager:azure-resourcemanager-springappdiscovery:1.0.0-beta.2,java,azure-resourcemanager-springappdiscovery_1.0.0-beta.2,azure-resourcemanager-springappdiscovery,1.0.0-beta.2,1730366691,10/31/2024
 4750,azure-mgmt-network@28.0.0,python,azure-mgmt-network_28.0.0,azure-mgmt-network,28.0.0,1730446765,11/01/2024
 4751,"Azure.ResourceManager.CosmosDB,1.4.0-beta.11",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.11,Azure.ResourceManager.CosmosDB,1.4.0-beta.11,1730478160,11/01/2024
+4752,"Azure.ResourceManager.PostgreSql,1.2.0",dotnet,Azure.ResourceManager.PostgreSql_1.2.0,Azure.ResourceManager.PostgreSql,1.2.0,1730713518,11/04/2024
+4753,"Azure.ResourceManager.HardwareSecurityModules,1.0.0-beta.4",dotnet,Azure.ResourceManager.HardwareSecurityModules_1.0.0-beta.4,Azure.ResourceManager.HardwareSecurityModules,1.0.0-beta.4,1730712655,11/04/2024
+4754,azure-mgmt-sql@4.0.0b20,python,azure-mgmt-sql_4.0.0b20,azure-mgmt-sql,4.0.0b20,1730712281,11/04/2024
+4755,azure-mgmt-devtestlabs@10.0.0b2,python,azure-mgmt-devtestlabs_10.0.0b2,azure-mgmt-devtestlabs,10.0.0b2,1730708226,11/04/2024
+4756,azure-mgmt-postgresqlflexibleservers@1.1.0b1,python,azure-mgmt-postgresqlflexibleservers_1.1.0b1,azure-mgmt-postgresqlflexibleservers,1.1.0b1,1730698622,11/04/2024

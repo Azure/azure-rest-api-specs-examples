@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.servicebus import ServiceBusManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="5f750a97-50d9-4e36-8081-c9ee4c0210d4",
     )
 
-    response = client.disaster_recovery_configs.delete(
+    client.disaster_recovery_configs.delete(
         resource_group_name="SouthCentralUS",
         namespace_name="sdk-Namespace-8860",
         alias="sdk-DisasterRecovery-3814",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/disasterRecoveryConfigs/SBAliasDelete.json

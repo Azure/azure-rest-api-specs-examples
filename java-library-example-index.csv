@@ -4757,3 +4757,4 @@ id,name,language,tag,package,version,date_epoch,date
 4756,azure-mgmt-postgresqlflexibleservers@1.1.0b1,python,azure-mgmt-postgresqlflexibleservers_1.1.0b1,azure-mgmt-postgresqlflexibleservers,1.1.0b1,1730698622,11/04/2024
 4757,azure-mgmt-servicebus@8.2.1,python,azure-mgmt-servicebus_8.2.1,azure-mgmt-servicebus,8.2.1,1730788143,11/05/2024
 4758,azure-mgmt-marketplaceordering@1.2.0b2,python,azure-mgmt-marketplaceordering_1.2.0b2,azure-mgmt-marketplaceordering,1.2.0b2,1730787786,11/05/2024
+4759,azure-mgmt-managedservices@7.0.0b2,python,azure-mgmt-managedservices_7.0.0b2,azure-mgmt-managedservices,7.0.0b2,1730787605,11/05/2024

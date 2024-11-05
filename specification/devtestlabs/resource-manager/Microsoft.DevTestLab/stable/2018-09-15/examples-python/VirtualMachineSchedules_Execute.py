@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.devtestlabs import DevTestLabsClient
 
 """
@@ -21,13 +22,12 @@ def main():
         subscription_id="{subscriptionId}",
     )
 
-    response = client.virtual_machine_schedules.begin_execute(
+    client.virtual_machine_schedules.begin_execute(
         resource_group_name="resourceGroupName",
         lab_name="{labName}",
         virtual_machine_name="{vmName}",
         name="LabVmsShutdown",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/VirtualMachineSchedules_Execute.json

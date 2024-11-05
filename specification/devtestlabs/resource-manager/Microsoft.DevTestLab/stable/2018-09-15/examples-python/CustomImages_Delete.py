@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.devtestlabs import DevTestLabsClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="{subscriptionId}",
     )
 
-    response = client.custom_images.begin_delete(
+    client.custom_images.begin_delete(
         resource_group_name="resourceGroupName",
         lab_name="{labName}",
         name="{customImageName}",
     ).result()
-    print(response)
 
 
 # x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/CustomImages_Delete.json

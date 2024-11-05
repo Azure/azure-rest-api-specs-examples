@@ -4760,3 +4760,4 @@ id,name,language,tag,package,version,date_epoch,date
 4759,azure-mgmt-managedservices@7.0.0b2,python,azure-mgmt-managedservices_7.0.0b2,azure-mgmt-managedservices,7.0.0b2,1730787605,11/05/2024
 4760,azure-mgmt-managementgroups@1.1.0b2,python,azure-mgmt-managementgroups_1.1.0b2,azure-mgmt-managementgroups,1.1.0b2,1730787579,11/05/2024
 4761,azure-mgmt-loganalytics@13.0.0b7,python,azure-mgmt-loganalytics_13.0.0b7,azure-mgmt-loganalytics,13.0.0b7,1730775724,11/05/2024
+4762,azure-mgmt-automation@1.1.0b4,python,azure-mgmt-automation_1.1.0b4,azure-mgmt-automation,1.1.0b4,1730774246,11/05/2024

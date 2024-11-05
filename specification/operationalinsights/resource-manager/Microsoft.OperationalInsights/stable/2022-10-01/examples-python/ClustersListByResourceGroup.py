@@ -7,7 +7,7 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
     pip install azure-identity
     pip install azure-mgmt-loganalytics
 # USAGE
-    python tables_list.py
+    python clusters_list_by_resource_group.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -19,17 +19,16 @@ from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 def main():
     client = LogAnalyticsManagementClient(
         credential=DefaultAzureCredential(),
-        subscription_id="00000000-0000-0000-0000-00000000000",
+        subscription_id="53bc36c5-91e1-4d09-92c9-63b89e571926",
     )
 
-    response = client.tables.list_by_workspace(
+    response = client.clusters.list_by_resource_group(
         resource_group_name="oiautorest6685",
-        workspace_name="oiautorest6685",
     )
     for item in response:
         print(item)
 
 
-# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/TablesList.json
+# x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/ClustersListByResourceGroup.json
 if __name__ == "__main__":
     main()

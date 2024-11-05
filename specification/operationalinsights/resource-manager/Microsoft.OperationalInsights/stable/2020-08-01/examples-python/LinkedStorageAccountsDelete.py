@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="00000000-0000-0000-0000-00000000000",
     )
 
-    response = client.linked_storage_accounts.delete(
+    client.linked_storage_accounts.delete(
         resource_group_name="mms-eus",
         workspace_name="testLinkStorageAccountsWS",
         data_source_type="CustomLogs",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/LinkedStorageAccountsDelete.json

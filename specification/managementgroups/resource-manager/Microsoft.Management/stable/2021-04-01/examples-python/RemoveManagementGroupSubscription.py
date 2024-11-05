@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.managementgroups import ManagementGroupsAPI
 
 """
@@ -6,7 +7,7 @@ from azure.mgmt.managementgroups import ManagementGroupsAPI
     pip install azure-identity
     pip install azure-mgmt-managementgroups
 # USAGE
-    python delete_subscription_from_management_group.py
+    python remove_management_group_subscription.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -20,11 +21,10 @@ def main():
         credential=DefaultAzureCredential(),
     )
 
-    response = client.management_group_subscriptions.delete(
+    client.management_group_subscriptions.delete(
         group_id="Group",
         subscription_id="728bcbe4-8d56-4510-86c2-4921b8beefbc",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/managementgroups/resource-manager/Microsoft.Management/stable/2021-04-01/examples/RemoveManagementGroupSubscription.json

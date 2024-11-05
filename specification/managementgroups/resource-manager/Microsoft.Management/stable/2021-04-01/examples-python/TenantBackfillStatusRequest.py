@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.managementgroups import ManagementGroupsAPI
 
 """
@@ -6,7 +7,7 @@ from azure.mgmt.managementgroups import ManagementGroupsAPI
     pip install azure-identity
     pip install azure-mgmt-managementgroups
 # USAGE
-    python tenant_backfill_status.py
+    python tenant_backfill_status_request.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

@@ -4755,3 +4755,4 @@ id,name,language,tag,package,version,date_epoch,date
 4754,azure-mgmt-sql@4.0.0b20,python,azure-mgmt-sql_4.0.0b20,azure-mgmt-sql,4.0.0b20,1730712281,11/04/2024
 4755,azure-mgmt-devtestlabs@10.0.0b2,python,azure-mgmt-devtestlabs_10.0.0b2,azure-mgmt-devtestlabs,10.0.0b2,1730708226,11/04/2024
 4756,azure-mgmt-postgresqlflexibleservers@1.1.0b1,python,azure-mgmt-postgresqlflexibleservers_1.1.0b1,azure-mgmt-postgresqlflexibleservers,1.1.0b1,1730698622,11/04/2024
+4757,azure-mgmt-servicebus@8.2.1,python,azure-mgmt-servicebus_8.2.1,azure-mgmt-servicebus,8.2.1,1730788143,11/05/2024

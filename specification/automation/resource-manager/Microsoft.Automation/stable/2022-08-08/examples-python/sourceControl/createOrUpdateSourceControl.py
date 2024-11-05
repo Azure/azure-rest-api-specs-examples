@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -33,10 +34,7 @@ def main():
                 "folderPath": "/folderOne/folderTwo",
                 "publishRunbook": True,
                 "repoUrl": "https://sampleUser.visualstudio.com/myProject/_git/myRepository",
-                "securityToken": {
-                    "accessToken": "3a326f7a0dcd343ea58fee21f2fd5fb4c1234567",
-                    "tokenType": "PersonalAccessToken",
-                },
+                "securityToken": {"accessToken": "******", "tokenType": "PersonalAccessToken"},
                 "sourceType": "VsoGit",
             }
         },

@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="51766542-3ed7-4a72-a187-0c8ab644ddab",
     )
 
-    response = client.software_update_configurations.delete(
+    client.software_update_configurations.delete(
         resource_group_name="mygroup",
         automation_account_name="myaccount",
         software_update_configuration_name="mypatch",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/automation/resource-manager/Microsoft.Automation/stable/2019-06-01/examples/softwareUpdateConfiguration/deleteSoftwareUpdateConfiguration.json

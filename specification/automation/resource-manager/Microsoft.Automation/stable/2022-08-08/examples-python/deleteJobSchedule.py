@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.job_schedule.delete(
+    client.job_schedule.delete(
         resource_group_name="rg",
         automation_account_name="ContoseAutomationAccount",
         job_schedule_id="0fa462ba-3aa2-4138-83ca-9ebc3bc55cdc",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/examples/deleteJobSchedule.json

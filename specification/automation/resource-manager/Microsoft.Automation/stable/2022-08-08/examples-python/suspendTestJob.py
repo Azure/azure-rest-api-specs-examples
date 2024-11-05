@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="51766542-3ed7-4a72-a187-0c8ab644ddab",
     )
 
-    response = client.test_job.suspend(
+    client.test_job.suspend(
         resource_group_name="mygroup",
         automation_account_name="ContoseAutomationAccount",
         runbook_name="Get-AzureVMTutorial",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/examples/suspendTestJob.json

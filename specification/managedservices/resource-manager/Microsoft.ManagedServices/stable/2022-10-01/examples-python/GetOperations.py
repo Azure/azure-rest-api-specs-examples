@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.managedservices import ManagedServicesClient
 
 """
@@ -6,7 +7,7 @@ from azure.mgmt.managedservices import ManagedServicesClient
     pip install azure-identity
     pip install azure-mgmt-managedservices
 # USAGE
-    python get_registration_operations.py
+    python get_operations.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,

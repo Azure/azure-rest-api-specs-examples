@@ -7,7 +7,7 @@ from azure.mgmt.marketplaceordering import MarketplaceOrderingAgreements
     pip install azure-identity
     pip install azure-mgmt-marketplaceordering
 # USAGE
-    python list_marketplace_terms.py
+    python get_agreement_marketplace_terms.py
 
     Before run the sample, please set the values of the client ID, tenant ID and client secret
     of the AAD application as environment variables: AZURE_CLIENT_ID, AZURE_TENANT_ID,
@@ -22,10 +22,14 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.marketplace_agreements.list()
+    response = client.marketplace_agreements.get_agreement(
+        publisher_id="pubid",
+        offer_id="offid",
+        plan_id="planid",
+    )
     print(response)
 
 
-# x-ms-original-file: specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/examples/ListMarketplaceTerms.json
+# x-ms-original-file: specification/marketplaceordering/resource-manager/Microsoft.MarketplaceOrdering/stable/2021-01-01/examples/GetAgreementMarketplaceTerms.json
 if __name__ == "__main__":
     main()

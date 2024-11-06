@@ -4763,3 +4763,4 @@ id,name,language,tag,package,version,date_epoch,date
 4762,azure-mgmt-automation@1.1.0b4,python,azure-mgmt-automation_1.1.0b4,azure-mgmt-automation,1.1.0b4,1730774246,11/05/2024
 4763,@azure/arm-trustedsigning@1.0.0-beta.2,js,@azure/arm-trustedsigning_1.0.0-beta.2,@azure/arm-trustedsigning,1.0.0-beta.2,1730892143,11/06/2024
 4764,@azure/arm-computeschedule@1.0.0-beta.2,js,@azure/arm-computeschedule_1.0.0-beta.2,@azure/arm-computeschedule,1.0.0-beta.2,1730892057,11/06/2024
+4765,@azure/arm-standbypool@1.0.1,js,@azure/arm-standbypool_1.0.1,@azure/arm-standbypool,1.0.1,1730892027,11/06/2024

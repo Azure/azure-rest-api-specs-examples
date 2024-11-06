@@ -4755,3 +4755,9 @@ id,name,language,tag,package,version,date_epoch,date
 4754,azure-mgmt-sql@4.0.0b20,python,azure-mgmt-sql_4.0.0b20,azure-mgmt-sql,4.0.0b20,1730712281,11/04/2024
 4755,azure-mgmt-devtestlabs@10.0.0b2,python,azure-mgmt-devtestlabs_10.0.0b2,azure-mgmt-devtestlabs,10.0.0b2,1730708226,11/04/2024
 4756,azure-mgmt-postgresqlflexibleservers@1.1.0b1,python,azure-mgmt-postgresqlflexibleservers_1.1.0b1,azure-mgmt-postgresqlflexibleservers,1.1.0b1,1730698622,11/04/2024
+4757,azure-mgmt-servicebus@8.2.1,python,azure-mgmt-servicebus_8.2.1,azure-mgmt-servicebus,8.2.1,1730788143,11/05/2024
+4758,azure-mgmt-marketplaceordering@1.2.0b2,python,azure-mgmt-marketplaceordering_1.2.0b2,azure-mgmt-marketplaceordering,1.2.0b2,1730787786,11/05/2024
+4759,azure-mgmt-managedservices@7.0.0b2,python,azure-mgmt-managedservices_7.0.0b2,azure-mgmt-managedservices,7.0.0b2,1730787605,11/05/2024
+4760,azure-mgmt-managementgroups@1.1.0b2,python,azure-mgmt-managementgroups_1.1.0b2,azure-mgmt-managementgroups,1.1.0b2,1730787579,11/05/2024
+4761,azure-mgmt-loganalytics@13.0.0b7,python,azure-mgmt-loganalytics_13.0.0b7,azure-mgmt-loganalytics,13.0.0b7,1730775724,11/05/2024
+4762,azure-mgmt-automation@1.1.0b4,python,azure-mgmt-automation_1.1.0b4,azure-mgmt-automation,1.1.0b4,1730774246,11/05/2024

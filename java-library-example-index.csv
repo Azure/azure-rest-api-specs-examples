@@ -4762,3 +4762,4 @@ id,name,language,tag,package,version,date_epoch,date
 4761,azure-mgmt-loganalytics@13.0.0b7,python,azure-mgmt-loganalytics_13.0.0b7,azure-mgmt-loganalytics,13.0.0b7,1730775724,11/05/2024
 4762,azure-mgmt-automation@1.1.0b4,python,azure-mgmt-automation_1.1.0b4,azure-mgmt-automation,1.1.0b4,1730774246,11/05/2024
 4763,@azure/arm-trustedsigning@1.0.0-beta.2,js,@azure/arm-trustedsigning_1.0.0-beta.2,@azure/arm-trustedsigning,1.0.0-beta.2,1730892143,11/06/2024
+4764,@azure/arm-computeschedule@1.0.0-beta.2,js,@azure/arm-computeschedule_1.0.0-beta.2,@azure/arm-computeschedule,1.0.0-beta.2,1730892057,11/06/2024

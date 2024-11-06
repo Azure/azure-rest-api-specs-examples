@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.loganalytics import LogAnalyticsManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="00000000-0000-0000-0000-00000000000",
     )
 
-    response = client.storage_insight_configs.delete(
+    client.storage_insight_configs.delete(
         resource_group_name="OIAutoRest5123",
         workspace_name="aztest5048",
         storage_insight_name="AzTestSI1110",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/StorageInsightsDelete.json

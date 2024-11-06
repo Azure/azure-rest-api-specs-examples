@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.servicebus import ServiceBusManagementClient
 
 """
@@ -21,13 +22,12 @@ def main():
         subscription_id="subscriptionId",
     )
 
-    response = client.subscriptions.delete(
+    client.subscriptions.delete(
         resource_group_name="ResourceGroup",
         namespace_name="sdk-Namespace-5882",
         topic_name="sdk-Topics-1804",
         subscription_name="sdk-Subscriptions-3670",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/Subscriptions/SBSubscriptionDelete.json

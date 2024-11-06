@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.servicebus import ServiceBusManagementClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="SubscriptionId",
     )
 
-    response = client.migration_configs.delete(
+    client.migration_configs.delete(
         resource_group_name="ResourceGroup",
         namespace_name="sdk-Namespace-41",
         config_name="$default",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/Migrationconfigurations/SBMigrationconfigurationDelete.json

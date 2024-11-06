@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.servicebus import ServiceBusManagementClient
 
 """
@@ -21,13 +22,12 @@ def main():
         subscription_id="5f750a97-50d9-4e36-8081-c9ee4c0210d4",
     )
 
-    response = client.topics.delete_authorization_rule(
+    client.topics.delete_authorization_rule(
         resource_group_name="ArunMonocle",
         namespace_name="sdk-Namespace-6261",
         topic_name="sdk-Topics-1984",
         authorization_rule_name="sdk-AuthRules-4310",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/servicebus/resource-manager/Microsoft.ServiceBus/stable/2021-11-01/examples/Topics/SBTopicAuthorizationRuleDelete.json

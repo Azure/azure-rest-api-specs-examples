@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -32,10 +33,7 @@ def main():
                 "description": "my description",
                 "folderPath": "/folderOne/folderTwo",
                 "publishRunbook": True,
-                "securityToken": {
-                    "accessToken": "3a326f7a0dcd343ea58fee21f2fd5fb4c1234567",
-                    "tokenType": "PersonalAccessToken",
-                },
+                "securityToken": {"accessToken": "******", "tokenType": "PersonalAccessToken"},
             }
         },
     )

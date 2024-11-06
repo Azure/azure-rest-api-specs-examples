@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="51766542-3ed7-4a72-a187-0c8ab644ddab",
     )
 
-    response = client.job.resume(
+    client.job.resume(
         resource_group_name="mygroup",
         automation_account_name="ContoseAutomationAccount",
         job_name="foo",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/examples/job/resumeJob.json

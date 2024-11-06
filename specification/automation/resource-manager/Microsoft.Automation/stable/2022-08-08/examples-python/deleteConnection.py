@@ -1,4 +1,5 @@
 from azure.identity import DefaultAzureCredential
+
 from azure.mgmt.automation import AutomationClient
 
 """
@@ -21,12 +22,11 @@ def main():
         subscription_id="subid",
     )
 
-    response = client.connection.delete(
+    client.connection.delete(
         resource_group_name="rg",
         automation_account_name="myAutomationAccount28",
         connection_name="myConnection",
     )
-    print(response)
 
 
 # x-ms-original-file: specification/automation/resource-manager/Microsoft.Automation/stable/2022-08-08/examples/deleteConnection.json

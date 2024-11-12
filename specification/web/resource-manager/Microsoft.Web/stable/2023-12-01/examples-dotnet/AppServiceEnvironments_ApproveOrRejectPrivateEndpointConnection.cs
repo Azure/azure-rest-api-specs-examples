@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HostingEnvironmentPrivateEndpointConnectionResource created on azure
-// for more information of creating HostingEnvironmentPrivateEndpointConnectionResource, please refer to the document of HostingEnvironmentPrivateEndpointConnectionResource
+// this example assumes you already have this AppServiceEnvironmentResource created on azure
+// for more information of creating AppServiceEnvironmentResource, please refer to the document of AppServiceEnvironmentResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "test-rg";
 string name = "test-ase";
-string privateEndpointConnectionName = "fa38656c-034e-43d8-adce-fe06ce039c98";
-ResourceIdentifier hostingEnvironmentPrivateEndpointConnectionResourceId = HostingEnvironmentPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, privateEndpointConnectionName);
-HostingEnvironmentPrivateEndpointConnectionResource hostingEnvironmentPrivateEndpointConnection = client.GetHostingEnvironmentPrivateEndpointConnectionResource(hostingEnvironmentPrivateEndpointConnectionResourceId);
+ResourceIdentifier appServiceEnvironmentResourceId = AppServiceEnvironmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+AppServiceEnvironmentResource appServiceEnvironment = client.GetAppServiceEnvironmentResource(appServiceEnvironmentResourceId);
+
+// get the collection of this HostingEnvironmentPrivateEndpointConnectionResource
+HostingEnvironmentPrivateEndpointConnectionCollection collection = appServiceEnvironment.GetHostingEnvironmentPrivateEndpointConnections();
 
 // invoke the operation
+string privateEndpointConnectionName = "fa38656c-034e-43d8-adce-fe06ce039c98";
 RemotePrivateEndpointConnectionARMResourceData data = new RemotePrivateEndpointConnectionARMResourceData()
 {
     PrivateLinkServiceConnectionState = new PrivateLinkConnectionState()
@@ -33,7 +36,7 @@ RemotePrivateEndpointConnectionARMResourceData data = new RemotePrivateEndpointC
         Description = "Approved by johndoe@company.com",
     },
 };
-ArmOperation<HostingEnvironmentPrivateEndpointConnectionResource> lro = await hostingEnvironmentPrivateEndpointConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HostingEnvironmentPrivateEndpointConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, privateEndpointConnectionName, data);
 HostingEnvironmentPrivateEndpointConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

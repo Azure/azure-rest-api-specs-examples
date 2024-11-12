@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SiteDiagnosticResource created on azure
-// for more information of creating SiteDiagnosticResource, please refer to the document of SiteDiagnosticResource
+// this example assumes you already have this WebSiteResource created on azure
+// for more information of creating WebSiteResource, please refer to the document of WebSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "Sample-WestUSResourceGroup";
 string siteName = "SampleApp";
-string diagnosticCategory = "availability";
-ResourceIdentifier siteDiagnosticResourceId = SiteDiagnosticResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName, diagnosticCategory);
-SiteDiagnosticResource siteDiagnostic = client.GetSiteDiagnosticResource(siteDiagnosticResourceId);
+ResourceIdentifier webSiteResourceId = WebSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, siteName);
+WebSiteResource webSite = client.GetWebSiteResource(webSiteResourceId);
+
+// get the collection of this SiteDiagnosticResource
+SiteDiagnosticCollection collection = webSite.GetSiteDiagnostics();
 
 // invoke the operation
-SiteDiagnosticResource result = await siteDiagnostic.GetAsync();
+string diagnosticCategory = "availability";
+NullableResponse<SiteDiagnosticResource> response = await collection.GetIfExistsAsync(diagnosticCategory);
+SiteDiagnosticResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DiagnosticCategoryData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine($"Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DiagnosticCategoryData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

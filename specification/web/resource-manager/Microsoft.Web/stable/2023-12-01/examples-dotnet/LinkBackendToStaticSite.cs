@@ -14,22 +14,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this StaticSiteLinkedBackendResource created on azure
-// for more information of creating StaticSiteLinkedBackendResource, please refer to the document of StaticSiteLinkedBackendResource
+// this example assumes you already have this StaticSiteResource created on azure
+// for more information of creating StaticSiteResource, please refer to the document of StaticSiteResource
 string subscriptionId = "34adfa4f-cedf-4dc0-ba29-b6d1a69ab345";
 string resourceGroupName = "rg";
 string name = "testStaticSite0";
-string linkedBackendName = "testBackend";
-ResourceIdentifier staticSiteLinkedBackendResourceId = StaticSiteLinkedBackendResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name, linkedBackendName);
-StaticSiteLinkedBackendResource staticSiteLinkedBackend = client.GetStaticSiteLinkedBackendResource(staticSiteLinkedBackendResourceId);
+ResourceIdentifier staticSiteResourceId = StaticSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, name);
+StaticSiteResource staticSite = client.GetStaticSiteResource(staticSiteResourceId);
+
+// get the collection of this StaticSiteLinkedBackendResource
+StaticSiteLinkedBackendCollection collection = staticSite.GetStaticSiteLinkedBackends();
 
 // invoke the operation
+string linkedBackendName = "testBackend";
 StaticSiteLinkedBackendData data = new StaticSiteLinkedBackendData()
 {
     BackendResourceId = new ResourceIdentifier("/subscription/34adfa4f-cedf-4dc0-ba29-b6d1a69ab345/resourceGroups/backendRg/providers/Microsoft.Web/sites/testBackend"),
     Region = "West US 2",
 };
-ArmOperation<StaticSiteLinkedBackendResource> lro = await staticSiteLinkedBackend.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<StaticSiteLinkedBackendResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, linkedBackendName, data);
 StaticSiteLinkedBackendResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

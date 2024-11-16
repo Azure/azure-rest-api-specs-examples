@@ -4769,3 +4769,7 @@ id,name,language,tag,package,version,date_epoch,date
 4768,"Azure.ResourceManager.AppService,1.3.0-beta.2",dotnet,Azure.ResourceManager.AppService_1.3.0-beta.2,Azure.ResourceManager.AppService,1.3.0-beta.2,1731389921,11/12/2024
 4769,com.azure.resourcemanager:azure-resourcemanager-hybridcompute:1.1.0-beta.1,java,azure-resourcemanager-hybridcompute_1.1.0-beta.1,azure-resourcemanager-hybridcompute,1.1.0-beta.1,1731575685,11/14/2024
 4770,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridcompute/armhybridcompute/v2@v2.1.0-beta.1,go,sdk/resourcemanager/hybridcompute/armhybridcompute/v2.1.0-beta.1,sdk/resourcemanager/hybridcompute/armhybridcompute,v2.1.0-beta.1,1731577257,11/14/2024
+4771,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud@v1.2.0-beta.1,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v1.2.0-beta.1,sdk/resourcemanager/networkcloud/armnetworkcloud,v1.2.0-beta.1,1731656475,11/15/2024
+4772,@azure/arm-hybridcompute@4.1.0-beta.1,js,@azure/arm-hybridcompute_4.1.0-beta.1,@azure/arm-hybridcompute,4.1.0-beta.1,1731641832,11/15/2024
+4773,"Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.1",dotnet,Azure.ResourceManager.ServiceFabricManagedClusters_1.3.0-beta.1,Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.1,1731642649,11/15/2024
+4774,azure-mgmt-hybridcompute@9.1.0b1,python,azure-mgmt-hybridcompute_9.1.0b1,azure-mgmt-hybridcompute,9.1.0b1,1731639608,11/15/2024

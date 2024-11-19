@@ -4777,3 +4777,4 @@ id,name,language,tag,package,version,date_epoch,date
 4776,azure-mgmt-netapp@13.4.0b1,python,azure-mgmt-netapp_13.4.0b1,azure-mgmt-netapp,13.4.0b1,1731910471,11/18/2024
 4777,azure-mgmt-mysqlflexibleservers@1.0.0b3,python,azure-mgmt-mysqlflexibleservers_1.0.0b3,azure-mgmt-mysqlflexibleservers,1.0.0b3,1731909998,11/18/2024
 4778,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/netapp/armnetapp/v7@v7.4.0-beta.1,go,sdk/resourcemanager/netapp/armnetapp/v7.4.0-beta.1,sdk/resourcemanager/netapp/armnetapp,v7.4.0-beta.1,1731988871,11/19/2024
+4779,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2@v2.0.0-beta.2,go,sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules/v2.0.0-beta.2,sdk/resourcemanager/hardwaresecuritymodules/armhardwaresecuritymodules,v2.0.0-beta.2,1731987561,11/19/2024

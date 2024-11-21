@@ -4790,3 +4790,4 @@ id,name,language,tag,package,version,date_epoch,date
 4789,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration/v2@v2.2.0,go,sdk/resourcemanager/appconfiguration/armappconfiguration/v2.2.0,sdk/resourcemanager/appconfiguration/armappconfiguration,v2.2.0,1732091145,11/20/2024
 4790,com.azure.resourcemanager:azure-resourcemanager-devopsinfrastructure:1.0.0,java,azure-resourcemanager-devopsinfrastructure_1.0.0,azure-resourcemanager-devopsinfrastructure,1.0.0,1732186505,11/21/2024
 4791,com.azure.resourcemanager:azure-resourcemanager-networkcloud:1.1.0-beta.1,java,azure-resourcemanager-networkcloud_1.1.0-beta.1,azure-resourcemanager-networkcloud,1.1.0-beta.1,1732177840,11/21/2024
+4792,com.azure.resourcemanager:azure-resourcemanager-healthdataaiservices:1.0.0,java,azure-resourcemanager-healthdataaiservices_1.0.0,azure-resourcemanager-healthdataaiservices,1.0.0,1732169372,11/21/2024

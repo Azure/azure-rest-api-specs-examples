@@ -4793,3 +4793,4 @@ id,name,language,tag,package,version,date_epoch,date
 4792,com.azure.resourcemanager:azure-resourcemanager-healthdataaiservices:1.0.0,java,azure-resourcemanager-healthdataaiservices_1.0.0,azure-resourcemanager-healthdataaiservices,1.0.0,1732169372,11/21/2024
 4793,com.azure.resourcemanager:azure-resourcemanager-connectedcache:1.0.0-beta.1,java,azure-resourcemanager-connectedcache_1.0.0-beta.1,azure-resourcemanager-connectedcache,1.0.0-beta.1,1732169074,11/21/2024
 4794,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/terraform/armterraform@v0.1.0,go,sdk/resourcemanager/terraform/armterraform/v0.1.0,sdk/resourcemanager/terraform/armterraform,v0.1.0,1732181855,11/21/2024
+4795,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/connectedcache/armconnectedcache@v0.1.0,go,sdk/resourcemanager/connectedcache/armconnectedcache/v0.1.0,sdk/resourcemanager/connectedcache/armconnectedcache,v0.1.0,1732181855,11/21/2024

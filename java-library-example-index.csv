@@ -4794,3 +4794,4 @@ id,name,language,tag,package,version,date_epoch,date
 4793,com.azure.resourcemanager:azure-resourcemanager-connectedcache:1.0.0-beta.1,java,azure-resourcemanager-connectedcache_1.0.0-beta.1,azure-resourcemanager-connectedcache,1.0.0-beta.1,1732169074,11/21/2024
 4794,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/terraform/armterraform@v0.1.0,go,sdk/resourcemanager/terraform/armterraform/v0.1.0,sdk/resourcemanager/terraform/armterraform,v0.1.0,1732181855,11/21/2024
 4795,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/connectedcache/armconnectedcache@v0.1.0,go,sdk/resourcemanager/connectedcache/armconnectedcache/v0.1.0,sdk/resourcemanager/connectedcache/armconnectedcache,v0.1.0,1732181855,11/21/2024
+4796,@azure/arm-netapp@21.4.0-beta.1,js,@azure/arm-netapp_21.4.0-beta.1,@azure/arm-netapp,21.4.0-beta.1,1732182998,11/21/2024

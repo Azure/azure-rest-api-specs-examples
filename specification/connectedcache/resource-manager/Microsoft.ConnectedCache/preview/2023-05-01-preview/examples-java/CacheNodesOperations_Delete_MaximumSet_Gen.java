@@ -1,0 +1,20 @@
+
+/**
+ * Samples for CacheNodesOperations Delete.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: 2023-05-01-preview/CacheNodesOperations_Delete_MaximumSet_Gen.json
+     */
+    /**
+     * Sample code: CacheNodesOperations_Delete.
+     * 
+     * @param manager Entry point to ConnectedCacheManager.
+     */
+    public static void
+        cacheNodesOperationsDelete(com.azure.resourcemanager.connectedcache.ConnectedCacheManager manager) {
+        manager.cacheNodesOperations().deleteByResourceGroupWithResponse("rgConnectedCache",
+            "otvtvhmovthjwzjzbsqkbnmpcmmeianpqxmmaspvdczmrenquxigrtuarmlcmvsnaclhcbw",
+            com.azure.core.util.Context.NONE);
+    }
+}

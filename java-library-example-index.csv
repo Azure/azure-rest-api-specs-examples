@@ -4796,3 +4796,4 @@ id,name,language,tag,package,version,date_epoch,date
 4795,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/connectedcache/armconnectedcache@v0.1.0,go,sdk/resourcemanager/connectedcache/armconnectedcache/v0.1.0,sdk/resourcemanager/connectedcache/armconnectedcache,v0.1.0,1732181855,11/21/2024
 4796,@azure/arm-netapp@21.4.0-beta.1,js,@azure/arm-netapp_21.4.0-beta.1,@azure/arm-netapp,21.4.0-beta.1,1732182998,11/21/2024
 4797,@azure/arm-containerservice@21.3.0,js,@azure/arm-containerservice_21.3.0,@azure/arm-containerservice,21.3.0,1732182986,11/21/2024
+4798,@azure/arm-appconfiguration@4.1.0,js,@azure/arm-appconfiguration_4.1.0,@azure/arm-appconfiguration,4.1.0,1732155972,11/21/2024

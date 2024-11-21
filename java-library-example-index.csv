@@ -4800,3 +4800,4 @@ id,name,language,tag,package,version,date_epoch,date
 4799,"Azure.ResourceManager.HealthDataAIServices,1.0.0",dotnet,Azure.ResourceManager.HealthDataAIServices_1.0.0,Azure.ResourceManager.HealthDataAIServices,1.0.0,1732178860,11/21/2024
 4800,azure-mgmt-networkcloud@2.0.0b1,python,azure-mgmt-networkcloud_2.0.0b1,azure-mgmt-networkcloud,2.0.0b1,1732172412,11/21/2024
 4801,azure-mgmt-healthdataaiservices@1.0.0,python,azure-mgmt-healthdataaiservices_1.0.0,azure-mgmt-healthdataaiservices,1.0.0,1732172404,11/21/2024
+4802,azure-mgmt-devopsinfrastructure@1.0.0,python,azure-mgmt-devopsinfrastructure_1.0.0,azure-mgmt-devopsinfrastructure,1.0.0,1732172364,11/21/2024

@@ -4788,3 +4788,16 @@ id,name,language,tag,package,version,date_epoch,date
 4787,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure@v1.0.0,go,sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure/v1.0.0,sdk/resourcemanager/devopsinfrastructure/armdevopsinfrastructure,v1.0.0,1732091808,11/20/2024
 4788,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/healthdataaiservices/armhealthdataaiservices@v1.0.0,go,sdk/resourcemanager/healthdataaiservices/armhealthdataaiservices/v1.0.0,sdk/resourcemanager/healthdataaiservices/armhealthdataaiservices,v1.0.0,1732091415,11/20/2024
 4789,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/appconfiguration/armappconfiguration/v2@v2.2.0,go,sdk/resourcemanager/appconfiguration/armappconfiguration/v2.2.0,sdk/resourcemanager/appconfiguration/armappconfiguration,v2.2.0,1732091145,11/20/2024
+4790,com.azure.resourcemanager:azure-resourcemanager-devopsinfrastructure:1.0.0,java,azure-resourcemanager-devopsinfrastructure_1.0.0,azure-resourcemanager-devopsinfrastructure,1.0.0,1732186505,11/21/2024
+4791,com.azure.resourcemanager:azure-resourcemanager-networkcloud:1.1.0-beta.1,java,azure-resourcemanager-networkcloud_1.1.0-beta.1,azure-resourcemanager-networkcloud,1.1.0-beta.1,1732177840,11/21/2024
+4792,com.azure.resourcemanager:azure-resourcemanager-healthdataaiservices:1.0.0,java,azure-resourcemanager-healthdataaiservices_1.0.0,azure-resourcemanager-healthdataaiservices,1.0.0,1732169372,11/21/2024
+4793,com.azure.resourcemanager:azure-resourcemanager-connectedcache:1.0.0-beta.1,java,azure-resourcemanager-connectedcache_1.0.0-beta.1,azure-resourcemanager-connectedcache,1.0.0-beta.1,1732169074,11/21/2024
+4794,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/terraform/armterraform@v0.1.0,go,sdk/resourcemanager/terraform/armterraform/v0.1.0,sdk/resourcemanager/terraform/armterraform,v0.1.0,1732181855,11/21/2024
+4795,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/connectedcache/armconnectedcache@v0.1.0,go,sdk/resourcemanager/connectedcache/armconnectedcache/v0.1.0,sdk/resourcemanager/connectedcache/armconnectedcache,v0.1.0,1732181855,11/21/2024
+4796,@azure/arm-netapp@21.4.0-beta.1,js,@azure/arm-netapp_21.4.0-beta.1,@azure/arm-netapp,21.4.0-beta.1,1732182998,11/21/2024
+4797,@azure/arm-containerservice@21.3.0,js,@azure/arm-containerservice_21.3.0,@azure/arm-containerservice,21.3.0,1732182986,11/21/2024
+4798,@azure/arm-appconfiguration@4.1.0,js,@azure/arm-appconfiguration_4.1.0,@azure/arm-appconfiguration,4.1.0,1732155972,11/21/2024
+4799,"Azure.ResourceManager.HealthDataAIServices,1.0.0",dotnet,Azure.ResourceManager.HealthDataAIServices_1.0.0,Azure.ResourceManager.HealthDataAIServices,1.0.0,1732178860,11/21/2024
+4800,azure-mgmt-networkcloud@2.0.0b1,python,azure-mgmt-networkcloud_2.0.0b1,azure-mgmt-networkcloud,2.0.0b1,1732172412,11/21/2024
+4801,azure-mgmt-healthdataaiservices@1.0.0,python,azure-mgmt-healthdataaiservices_1.0.0,azure-mgmt-healthdataaiservices,1.0.0,1732172404,11/21/2024
+4802,azure-mgmt-devopsinfrastructure@1.0.0,python,azure-mgmt-devopsinfrastructure_1.0.0,azure-mgmt-devopsinfrastructure,1.0.0,1732172364,11/21/2024

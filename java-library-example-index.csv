@@ -4802,3 +4802,4 @@ id,name,language,tag,package,version,date_epoch,date
 4801,azure-mgmt-healthdataaiservices@1.0.0,python,azure-mgmt-healthdataaiservices_1.0.0,azure-mgmt-healthdataaiservices,1.0.0,1732172404,11/21/2024
 4802,azure-mgmt-devopsinfrastructure@1.0.0,python,azure-mgmt-devopsinfrastructure_1.0.0,azure-mgmt-devopsinfrastructure,1.0.0,1732172364,11/21/2024
 4803,com.azure.resourcemanager:azure-resourcemanager-cognitiveservices:1.1.0,java,azure-resourcemanager-cognitiveservices_1.1.0,azure-resourcemanager-cognitiveservices,1.1.0,1732261121,11/22/2024
+4804,@azure/arm-hardwaresecuritymodules@2.0.0-beta.2,js,@azure/arm-hardwaresecuritymodules_2.0.0-beta.2,@azure/arm-hardwaresecuritymodules,2.0.0-beta.2,1732260231,11/22/2024

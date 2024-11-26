@@ -4808,3 +4808,4 @@ id,name,language,tag,package,version,date_epoch,date
 4807,@azure/arm-apimanagement@9.2.0,js,@azure/arm-apimanagement_9.2.0,@azure/arm-apimanagement,9.2.0,1732608147,11/26/2024
 4808,"Azure.ResourceManager.HybridConnectivity,1.0.0",dotnet,Azure.ResourceManager.HybridConnectivity_1.0.0,Azure.ResourceManager.HybridConnectivity,1.0.0,1732603734,11/26/2024
 4809,"Azure.ResourceManager.Maps,1.1.0",dotnet,Azure.ResourceManager.Maps_1.1.0,Azure.ResourceManager.Maps,1.1.0,1732603723,11/26/2024
+4810,azure-mgmt-terraform@1.0.0b1,python,azure-mgmt-terraform_1.0.0b1,azure-mgmt-terraform,1.0.0b1,1732591115,11/26/2024

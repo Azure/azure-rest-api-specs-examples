@@ -4805,3 +4805,4 @@ id,name,language,tag,package,version,date_epoch,date
 4804,@azure/arm-hardwaresecuritymodules@2.0.0-beta.2,js,@azure/arm-hardwaresecuritymodules_2.0.0-beta.2,@azure/arm-hardwaresecuritymodules,2.0.0-beta.2,1732260231,11/22/2024
 4805,"Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.2",dotnet,Azure.ResourceManager.ServiceFabricManagedClusters_1.3.0-beta.2,Azure.ResourceManager.ServiceFabricManagedClusters,1.3.0-beta.2,1732260436,11/22/2024
 4806,@azure/arm-networkcloud@2.0.0-beta.1,js,@azure/arm-networkcloud_2.0.0-beta.1,@azure/arm-networkcloud,2.0.0-beta.1,1732608206,11/26/2024
+4807,@azure/arm-apimanagement@9.2.0,js,@azure/arm-apimanagement_9.2.0,@azure/arm-apimanagement,9.2.0,1732608147,11/26/2024

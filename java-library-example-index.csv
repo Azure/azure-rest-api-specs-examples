@@ -4811,3 +4811,6 @@ id,name,language,tag,package,version,date_epoch,date
 4810,azure-mgmt-terraform@1.0.0b1,python,azure-mgmt-terraform_1.0.0b1,azure-mgmt-terraform,1.0.0b1,1732591115,11/26/2024
 4811,azure-mgmt-connectedcache@1.0.0b1,python,azure-mgmt-connectedcache_1.0.0b1,azure-mgmt-connectedcache,1.0.0b1,1732591108,11/26/2024
 4812,com.azure.resourcemanager:azure-resourcemanager-hardwaresecuritymodules:1.0.0-beta.3,java,azure-resourcemanager-hardwaresecuritymodules_1.0.0-beta.3,azure-resourcemanager-hardwaresecuritymodules,1.0.0-beta.3,1732698410,11/27/2024
+4813,com.azure.resourcemanager:azure-resourcemanager:2.45.0,java,azure-resourcemanager_2.45.0,azure-resourcemanager,2.45.0,1732769428,11/28/2024
+4814,@azure/arm-terraform@1.0.0-beta.1,js,@azure/arm-terraform_1.0.0-beta.1,@azure/arm-terraform,1.0.0-beta.1,1732777224,11/28/2024
+4815,@azure/arm-connectedcache@1.0.0-beta.1,js,@azure/arm-connectedcache_1.0.0-beta.1,@azure/arm-connectedcache,1.0.0-beta.1,1732775399,11/28/2024

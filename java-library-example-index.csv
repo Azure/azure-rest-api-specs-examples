@@ -4816,3 +4816,4 @@ id,name,language,tag,package,version,date_epoch,date
 4815,@azure/arm-connectedcache@1.0.0-beta.1,js,@azure/arm-connectedcache_1.0.0-beta.1,@azure/arm-connectedcache,1.0.0-beta.1,1732775399,11/28/2024
 4816,@azure/arm-devopsinfrastructure@1.0.0,js,@azure/arm-devopsinfrastructure_1.0.0,@azure/arm-devopsinfrastructure,1.0.0,1732871278,11/29/2024
 4817,"Azure.ResourceManager.ServiceBus,1.1.0",dotnet,Azure.ResourceManager.ServiceBus_1.1.0,Azure.ResourceManager.ServiceBus,1.1.0,1732871969,11/29/2024
+4818,"Azure.ResourceManager.HybridCompute,1.1.0-beta.1",dotnet,Azure.ResourceManager.HybridCompute_1.1.0-beta.1,Azure.ResourceManager.HybridCompute,1.1.0-beta.1,1733122872,12/02/2024

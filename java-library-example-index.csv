@@ -4820,3 +4820,4 @@ id,name,language,tag,package,version,date_epoch,date
 4819,com.azure.resourcemanager:azure-resourcemanager-cosmosdbforpostgresql:1.1.0-beta.2,java,azure-resourcemanager-cosmosdbforpostgresql_1.1.0-beta.2,azure-resourcemanager-cosmosdbforpostgresql,1.1.0-beta.2,1733216508,12/03/2024
 4820,com.azure.resourcemanager:azure-resourcemanager-neonpostgres:1.0.0-beta.1,java,azure-resourcemanager-neonpostgres_1.0.0-beta.1,azure-resourcemanager-neonpostgres,1.0.0-beta.1,1733215397,12/03/2024
 4821,com.azure.resourcemanager:azure-resourcemanager-quantum:1.0.0-beta.3,java,azure-resourcemanager-quantum_1.0.0-beta.3,azure-resourcemanager-quantum,1.0.0-beta.3,1733212277,12/03/2024
+4822,com.azure.resourcemanager:azure-resourcemanager-notificationhubs:1.0.0-beta.5,java,azure-resourcemanager-notificationhubs_1.0.0-beta.5,azure-resourcemanager-notificationhubs,1.0.0-beta.5,1733208487,12/03/2024

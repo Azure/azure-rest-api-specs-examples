@@ -1,6 +1,8 @@
 
 import com.azure.resourcemanager.storageactions.models.ElseCondition;
 import com.azure.resourcemanager.storageactions.models.IfCondition;
+import com.azure.resourcemanager.storageactions.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.storageactions.models.ManagedServiceIdentityType;
 import com.azure.resourcemanager.storageactions.models.OnFailure;
 import com.azure.resourcemanager.storageactions.models.OnSuccess;
 import com.azure.resourcemanager.storageactions.models.StorageTaskAction;
@@ -27,6 +29,7 @@ public final class Main {
      */
     public static void putStorageTask(com.azure.resourcemanager.storageactions.StorageActionsManager manager) {
         manager.storageTasks().define("mytask1").withRegion("westus").withExistingResourceGroup("res4228")
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.SYSTEM_ASSIGNED))
             .withProperties(new StorageTaskProperties().withEnabled(true).withDescription("My Storage task")
                 .withAction(new StorageTaskAction()
                     .withIfProperty(new IfCondition().withCondition("[[equals(AccessTier, 'Cool')]]")

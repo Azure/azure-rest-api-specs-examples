@@ -4826,3 +4826,4 @@ id,name,language,tag,package,version,date_epoch,date
 4825,com.azure.resourcemanager:azure-resourcemanager-playwrighttesting:1.0.0-beta.3,java,azure-resourcemanager-playwrighttesting_1.0.0-beta.3,azure-resourcemanager-playwrighttesting,1.0.0-beta.3,1733208079,12/03/2024
 4826,com.azure.resourcemanager:azure-resourcemanager-astro:1.0.0-beta.2,java,azure-resourcemanager-astro_1.0.0-beta.2,azure-resourcemanager-astro,1.0.0-beta.2,1733208049,12/03/2024
 4827,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/neonpostgres/armneonpostgres@v0.1.0,go,sdk/resourcemanager/neonpostgres/armneonpostgres/v0.1.0,sdk/resourcemanager/neonpostgres/armneonpostgres,v0.1.0,1733193572,12/03/2024
+4828,@azure/arm-neonpostgres@1.0.0-beta.1,js,@azure/arm-neonpostgres_1.0.0-beta.1,@azure/arm-neonpostgres,1.0.0-beta.1,1733220272,12/03/2024

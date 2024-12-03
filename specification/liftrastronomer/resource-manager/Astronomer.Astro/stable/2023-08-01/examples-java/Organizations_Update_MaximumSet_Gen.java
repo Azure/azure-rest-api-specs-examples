@@ -1,9 +1,12 @@
 
 import com.azure.resourcemanager.astro.models.LiftrBaseDataPartnerOrganizationPropertiesUpdate;
+import com.azure.resourcemanager.astro.models.LiftrBaseMarketplaceDetailsUpdate;
+import com.azure.resourcemanager.astro.models.LiftrBaseOfferDetailsUpdate;
 import com.azure.resourcemanager.astro.models.LiftrBaseSingleSignOnProperties;
 import com.azure.resourcemanager.astro.models.LiftrBaseUserDetailsUpdate;
 import com.azure.resourcemanager.astro.models.ManagedServiceIdentity;
 import com.azure.resourcemanager.astro.models.ManagedServiceIdentityType;
+import com.azure.resourcemanager.astro.models.MarketplaceSubscriptionStatus;
 import com.azure.resourcemanager.astro.models.OrganizationResource;
 import com.azure.resourcemanager.astro.models.OrganizationResourceUpdateProperties;
 import com.azure.resourcemanager.astro.models.SingleSignOnStates;
@@ -31,15 +34,20 @@ public final class Main {
             .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)
                 .withUserAssignedIdentities(mapOf()))
             .withProperties(new OrganizationResourceUpdateProperties()
-                .withUser(new LiftrBaseUserDetailsUpdate().withFirstName("qeuofehzypzljgcuysugefbgxde")
-                    .withLastName("g").withEmailAddress(".K_@e7N-g1.xjqnbPs").withUpn("uwtprzdfpsqmktx")
-                    .withPhoneNumber("aqpyxznvqpgkzohevynofrjdfgoo"))
+                .withMarketplace(new LiftrBaseMarketplaceDetailsUpdate().withSubscriptionId("bpoiahcvraqjhwpqcyvmxl")
+                    .withSubscriptionStatus(MarketplaceSubscriptionStatus.PENDING_FULFILLMENT_START)
+                    .withOfferDetails(new LiftrBaseOfferDetailsUpdate().withPublisherId("zhnlxf").withOfferId("rh")
+                        .withPlanId("uqlecfuht").withPlanName("secxe").withTermUnit("skbmivxsechzkyuxvd")
+                        .withTermId("qvnaspsilt")))
+                .withUser(new LiftrBaseUserDetailsUpdate().withFirstName("pantcaqwknzxnjs").withLastName("loytwkjq")
+                    .withEmailAddress(".K_@e7N-g1.xjqnbPs").withUpn("sbfjcucbtwvnnhyzpfycykerzqjvo")
+                    .withPhoneNumber("smwcipwxoxdmzgj"))
                 .withPartnerOrganizationProperties(new LiftrBaseDataPartnerOrganizationPropertiesUpdate()
-                    .withOrganizationId("lrtmbkvyvvoszhjevohkmyjhfyty").withWorkspaceId("xsepuskdhejaadusyxq")
-                    .withOrganizationName("U2P_").withWorkspaceName("L.-y_--:")
+                    .withOrganizationId("ugyxg").withWorkspaceId("jbpphzsonkhnaxbwlpmgrwuklcx")
+                    .withOrganizationName("6.").withWorkspaceName("L.-y_--:")
                     .withSingleSignOnProperties(new LiftrBaseSingleSignOnProperties()
-                        .withSingleSignOnState(SingleSignOnStates.INITIAL).withEnterpriseAppId("mklfypyujwumgwdzae")
-                        .withSingleSignOnUrl("ymmtzkyghvinvhgnqlzwrr").withAadDomains(Arrays.asList("kfbleh")))))
+                        .withSingleSignOnState(SingleSignOnStates.INITIAL).withEnterpriseAppId("hkqosvz")
+                        .withSingleSignOnUrl("mgr").withAadDomains(Arrays.asList("ynmjdshvcxpusrtv")))))
             .apply();
     }
 

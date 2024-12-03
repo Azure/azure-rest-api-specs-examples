@@ -4818,3 +4818,4 @@ id,name,language,tag,package,version,date_epoch,date
 4817,"Azure.ResourceManager.ServiceBus,1.1.0",dotnet,Azure.ResourceManager.ServiceBus_1.1.0,Azure.ResourceManager.ServiceBus,1.1.0,1732871969,11/29/2024
 4818,"Azure.ResourceManager.HybridCompute,1.1.0-beta.1",dotnet,Azure.ResourceManager.HybridCompute_1.1.0-beta.1,Azure.ResourceManager.HybridCompute,1.1.0-beta.1,1733122872,12/02/2024
 4819,com.azure.resourcemanager:azure-resourcemanager-cosmosdbforpostgresql:1.1.0-beta.2,java,azure-resourcemanager-cosmosdbforpostgresql_1.1.0-beta.2,azure-resourcemanager-cosmosdbforpostgresql,1.1.0-beta.2,1733216508,12/03/2024
+4820,com.azure.resourcemanager:azure-resourcemanager-neonpostgres:1.0.0-beta.1,java,azure-resourcemanager-neonpostgres_1.0.0-beta.1,azure-resourcemanager-neonpostgres,1.0.0-beta.1,1733215397,12/03/2024

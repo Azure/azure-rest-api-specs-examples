@@ -4824,3 +4824,4 @@ id,name,language,tag,package,version,date_epoch,date
 4823,com.azure.resourcemanager:azure-resourcemanager-largeinstance:1.0.0-beta.2,java,azure-resourcemanager-largeinstance_1.0.0-beta.2,azure-resourcemanager-largeinstance,1.0.0-beta.2,1733208389,12/03/2024
 4824,com.azure.resourcemanager:azure-resourcemanager-storageactions:1.0.0-beta.2,java,azure-resourcemanager-storageactions_1.0.0-beta.2,azure-resourcemanager-storageactions,1.0.0-beta.2,1733208157,12/03/2024
 4825,com.azure.resourcemanager:azure-resourcemanager-playwrighttesting:1.0.0-beta.3,java,azure-resourcemanager-playwrighttesting_1.0.0-beta.3,azure-resourcemanager-playwrighttesting,1.0.0-beta.3,1733208079,12/03/2024
+4826,com.azure.resourcemanager:azure-resourcemanager-astro:1.0.0-beta.2,java,azure-resourcemanager-astro_1.0.0-beta.2,azure-resourcemanager-astro,1.0.0-beta.2,1733208049,12/03/2024

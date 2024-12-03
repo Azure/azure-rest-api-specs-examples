@@ -1,5 +1,6 @@
 
 import com.azure.resourcemanager.quantum.models.Provider;
+import com.azure.resourcemanager.quantum.models.WorkspaceResourceProperties;
 import java.util.Arrays;
 
 /**
@@ -19,11 +20,13 @@ public final class Main {
     public static void quantumWorkspacesPut(com.azure.resourcemanager.quantum.AzureQuantumManager manager) {
         manager.workspaces().define("quantumworkspace1").withRegion("West US")
             .withExistingResourceGroup("quantumResourcegroup")
-            .withProviders(Arrays.asList(new Provider().withProviderId("Honeywell").withProviderSku("Basic"),
-                new Provider().withProviderId("IonQ").withProviderSku("Basic"),
-                new Provider().withProviderId("OneQBit").withProviderSku("Basic")))
-            .withStorageAccount(
-                "/subscriptions/1C4B2828-7D49-494F-933D-061373BE28C2/resourceGroups/quantumResourcegroup/providers/Microsoft.Storage/storageAccounts/testStorageAccount")
+            .withProperties(new WorkspaceResourceProperties()
+                .withProviders(Arrays
+                    .asList(new Provider().withProviderId("Honeywell").withProviderSku("Basic"), new Provider()
+                        .withProviderId("IonQ").withProviderSku("Basic"),
+                        new Provider().withProviderId("OneQBit").withProviderSku("Basic")))
+                .withStorageAccount(
+                    "/subscriptions/1C4B2828-7D49-494F-933D-061373BE28C2/resourceGroups/quantumResourcegroup/providers/Microsoft.Storage/storageAccounts/testStorageAccount"))
             .create();
     }
 }

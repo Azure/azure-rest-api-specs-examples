@@ -1,41 +1,33 @@
+
 import com.azure.resourcemanager.apimanagement.models.AuthorizationProviderOAuth2GrantTypes;
 import com.azure.resourcemanager.apimanagement.models.AuthorizationProviderOAuth2Settings;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for AuthorizationProvider CreateOrUpdate. */
+/**
+ * Samples for AuthorizationProvider CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementCreateAuthorizationProviderAADAuthCode.json
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/
+     * ApiManagementCreateAuthorizationProviderAADAuthCode.json
      */
     /**
      * Sample code: ApiManagementCreateAuthorizationProviderAADAuthCode.
-     *
+     * 
      * @param manager Entry point to ApiManagementManager.
      */
     public static void apiManagementCreateAuthorizationProviderAADAuthCode(
         com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
-        manager
-            .authorizationProviders()
-            .define("aadwithauthcode")
-            .withExistingService("rg1", "apimService1")
-            .withDisplayName("aadwithauthcode")
-            .withIdentityProvider("aad")
+        manager.authorizationProviders().define("aadwithauthcode").withExistingService("rg1", "apimService1")
+            .withDisplayName("aadwithauthcode").withIdentityProvider("aad")
             .withOauth2(
                 new AuthorizationProviderOAuth2Settings()
                     .withRedirectUrl("https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1")
-                    .withGrantTypes(
-                        new AuthorizationProviderOAuth2GrantTypes()
-                            .withAuthorizationCode(
-                                mapOf(
-                                    "clientId",
-                                    "59790825-fdd3-4b10-bc7a-4c3aaf25801d",
-                                    "clientSecret",
-                                    "fakeTokenPlaceholder",
-                                    "resourceUri",
-                                    "https://graph.microsoft.com",
-                                    "scopes",
-                                    "User.Read.All Group.Read.All"))))
+                    .withGrantTypes(new AuthorizationProviderOAuth2GrantTypes().withAuthorizationCode(mapOf("clientId",
+                        "59790825-fdd3-4b10-bc7a-4c3aaf25801d", "clientSecret", "fakeTokenPlaceholder", "resourceUri",
+                        "https://graph.microsoft.com", "scopes", "User.Read.All Group.Read.All"))))
             .create();
     }
 

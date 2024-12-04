@@ -1,24 +1,26 @@
+
 import com.azure.resourcemanager.apimanagement.models.ApiManagementServiceResource;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ApiManagementService Update. */
+/**
+ * Samples for ApiManagementService Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementUpdateServicePublisherDetails.json
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/
+     * ApiManagementUpdateServicePublisherDetails.json
      */
     /**
      * Sample code: ApiManagementUpdateServicePublisherDetails.
-     *
+     * 
      * @param manager Entry point to ApiManagementManager.
      */
     public static void apiManagementUpdateServicePublisherDetails(
         com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
-        ApiManagementServiceResource resource =
-            manager
-                .apiManagementServices()
-                .getByResourceGroupWithResponse("rg1", "apimService1", com.azure.core.util.Context.NONE)
-                .getValue();
+        ApiManagementServiceResource resource = manager.apiManagementServices()
+            .getByResourceGroupWithResponse("rg1", "apimService1", com.azure.core.util.Context.NONE).getValue();
         resource.update().withPublisherEmail("foobar@live.com").withPublisherName("Contoso Vnext").apply();
     }
 

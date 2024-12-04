@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.apimanagement.models.AdditionalLocation;
 import com.azure.resourcemanager.apimanagement.models.ApiManagementServiceResource;
 import com.azure.resourcemanager.apimanagement.models.ApiManagementServiceSkuProperties;
@@ -8,48 +9,38 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for ApiManagementService Update. */
+/**
+ * Samples for ApiManagementService Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementUpdateServiceToNewVnetAndAZs.json
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/
+     * ApiManagementUpdateServiceToNewVnetAndAZs.json
      */
     /**
      * Sample code: ApiManagementUpdateServiceToNewVnetAndAvailabilityZones.
-     *
+     * 
      * @param manager Entry point to ApiManagementManager.
      */
     public static void apiManagementUpdateServiceToNewVnetAndAvailabilityZones(
         com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
-        ApiManagementServiceResource resource =
-            manager
-                .apiManagementServices()
-                .getByResourceGroupWithResponse("rg1", "apimService1", com.azure.core.util.Context.NONE)
-                .getValue();
-        resource
-            .update()
-            .withSku(new ApiManagementServiceSkuProperties().withName(SkuType.PREMIUM).withCapacity(3))
+        ApiManagementServiceResource resource = manager.apiManagementServices()
+            .getByResourceGroupWithResponse("rg1", "apimService1", com.azure.core.util.Context.NONE).getValue();
+        resource.update().withSku(new ApiManagementServiceSkuProperties().withName(SkuType.PREMIUM).withCapacity(3))
             .withZones(Arrays.asList("1", "2", "3"))
             .withPublicIpAddressId(
                 "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/publicip-apim-japan-east")
-            .withVirtualNetworkConfiguration(
-                new VirtualNetworkConfiguration()
-                    .withSubnetResourceId(
-                        "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-apim-japaneast/subnets/apim2"))
-            .withAdditionalLocations(
-                Arrays
-                    .asList(
-                        new AdditionalLocation()
-                            .withLocation("Australia East")
-                            .withSku(new ApiManagementServiceSkuProperties().withName(SkuType.PREMIUM).withCapacity(3))
-                            .withZones(Arrays.asList("1", "2", "3"))
-                            .withPublicIpAddressId(
-                                "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/apim-australia-east-publicip")
-                            .withVirtualNetworkConfiguration(
-                                new VirtualNetworkConfiguration()
-                                    .withSubnetResourceId(
-                                        "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/apimaeavnet/subnets/default"))))
-            .withVirtualNetworkType(VirtualNetworkType.EXTERNAL)
-            .apply();
+            .withVirtualNetworkConfiguration(new VirtualNetworkConfiguration().withSubnetResourceId(
+                "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-apim-japaneast/subnets/apim2"))
+            .withAdditionalLocations(Arrays.asList(new AdditionalLocation().withLocation("Australia East")
+                .withSku(new ApiManagementServiceSkuProperties().withName(SkuType.PREMIUM).withCapacity(3))
+                .withZones(Arrays.asList("1", "2", "3"))
+                .withPublicIpAddressId(
+                    "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/apim-australia-east-publicip")
+                .withVirtualNetworkConfiguration(new VirtualNetworkConfiguration().withSubnetResourceId(
+                    "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/apimaeavnet/subnets/default"))))
+            .withVirtualNetworkType(VirtualNetworkType.EXTERNAL).apply();
     }
 
     // Use "Map.of" if available

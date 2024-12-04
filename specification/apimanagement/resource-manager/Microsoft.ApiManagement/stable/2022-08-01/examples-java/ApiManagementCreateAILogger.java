@@ -1,27 +1,27 @@
+
 import com.azure.resourcemanager.apimanagement.models.LoggerType;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Logger CreateOrUpdate. */
+/**
+ * Samples for Logger CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/ApiManagementCreateAILogger.json
+     * x-ms-original-file:
+     * specification/apimanagement/resource-manager/Microsoft.ApiManagement/stable/2022-08-01/examples/
+     * ApiManagementCreateAILogger.json
      */
     /**
      * Sample code: ApiManagementCreateAILogger.
-     *
+     * 
      * @param manager Entry point to ApiManagementManager.
      */
-    public static void apiManagementCreateAILogger(
-        com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
-        manager
-            .loggers()
-            .define("loggerId")
-            .withExistingService("rg1", "apimService1")
-            .withLoggerType(LoggerType.APPLICATION_INSIGHTS)
-            .withDescription("adding a new logger")
-            .withCredentials(mapOf("instrumentationKey", "fakeTokenPlaceholder"))
-            .create();
+    public static void
+        apiManagementCreateAILogger(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
+        manager.loggers().define("loggerId").withExistingService("rg1", "apimService1")
+            .withLoggerType(LoggerType.APPLICATION_INSIGHTS).withDescription("adding a new logger")
+            .withCredentials(mapOf("instrumentationKey", "fakeTokenPlaceholder")).create();
     }
 
     // Use "Map.of" if available

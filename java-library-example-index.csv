@@ -4834,3 +4834,4 @@ id,name,language,tag,package,version,date_epoch,date
 4833,com.azure.resourcemanager:azure-resourcemanager-devcenter:1.0.0-beta.8,java,azure-resourcemanager-devcenter_1.0.0-beta.8,azure-resourcemanager-devcenter,1.0.0-beta.8,1733304643,12/04/2024
 4834,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.2,java,azure-resourcemanager-edgezones_1.0.0-beta.2,azure-resourcemanager-edgezones,1.0.0-beta.2,1733304466,12/04/2024
 4835,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.0.0-beta.5,java,azure-resourcemanager-confidentialledger_1.0.0-beta.5,azure-resourcemanager-confidentialledger,1.0.0-beta.5,1733304434,12/04/2024
+4836,com.azure.resourcemanager:azure-resourcemanager-maintenance:1.1.0-beta.2,java,azure-resourcemanager-maintenance_1.1.0-beta.2,azure-resourcemanager-maintenance,1.1.0-beta.2,1733304412,12/04/2024

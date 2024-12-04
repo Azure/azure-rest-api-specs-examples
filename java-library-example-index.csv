@@ -4832,3 +4832,4 @@ id,name,language,tag,package,version,date_epoch,date
 4831,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0-beta.6,java,azure-resourcemanager-mysqlflexibleserver_1.0.0-beta.6,azure-resourcemanager-mysqlflexibleserver,1.0.0-beta.6,1733308132,12/04/2024
 4832,com.azure.resourcemanager:azure-resourcemanager-apimanagement:1.0.0-beta.5,java,azure-resourcemanager-apimanagement_1.0.0-beta.5,azure-resourcemanager-apimanagement,1.0.0-beta.5,1733305430,12/04/2024
 4833,com.azure.resourcemanager:azure-resourcemanager-devcenter:1.0.0-beta.8,java,azure-resourcemanager-devcenter_1.0.0-beta.8,azure-resourcemanager-devcenter,1.0.0-beta.8,1733304643,12/04/2024
+4834,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.2,java,azure-resourcemanager-edgezones_1.0.0-beta.2,azure-resourcemanager-edgezones,1.0.0-beta.2,1733304466,12/04/2024

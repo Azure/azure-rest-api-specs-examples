@@ -4838,3 +4838,4 @@ id,name,language,tag,package,version,date_epoch,date
 4837,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.0.0-beta.12,java,azure-resourcemanager-storagecache_1.0.0-beta.12,azure-resourcemanager-storagecache,1.0.0-beta.12,1733304376,12/04/2024
 4838,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.2,java,azure-resourcemanager-quota_1.1.0-beta.2,azure-resourcemanager-quota,1.1.0-beta.2,1733304293,12/04/2024
 4839,com.azure.resourcemanager:azure-resourcemanager-eventgrid:1.2.0-beta.7,java,azure-resourcemanager-eventgrid_1.2.0-beta.7,azure-resourcemanager-eventgrid,1.2.0-beta.7,1733304288,12/04/2024
+4840,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.2,java,azure-resourcemanager-nginx_1.1.0-beta.2,azure-resourcemanager-nginx,1.1.0-beta.2,1733304282,12/04/2024

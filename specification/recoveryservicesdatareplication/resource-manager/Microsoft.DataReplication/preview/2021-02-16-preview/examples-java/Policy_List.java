@@ -1,11 +1,16 @@
-/** Samples for Policy List. */
+
+/**
+ * Samples for Policy List.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/Policy_List.json
+     * x-ms-original-file:
+     * specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-
+     * preview/examples/Policy_List.json
      */
     /**
      * Sample code: Policy_List.
-     *
+     * 
      * @param manager Entry point to RecoveryServicesDataReplicationManager.
      */
     public static void policyList(

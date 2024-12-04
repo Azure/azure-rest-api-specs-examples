@@ -10,14 +10,15 @@ public final class Main {
     /*
      * x-ms-original-file:
      * specification/quota/resource-manager/Microsoft.Quota/preview/2023-06-01-preview/examples/GroupQuotasEnforcement/
-     * PutGroupQuotaEnforcement.json
+     * PutGroupQuotaEnforcementFailed.json
      */
     /**
-     * Sample code: GroupQuotaLocationSettings_CreateOrUpdate.
+     * Sample code: GroupQuotaLocationSettings_CreateOrUpdate_Failed.
      * 
      * @param manager Entry point to QuotaManager.
      */
-    public static void groupQuotaLocationSettingsCreateOrUpdate(com.azure.resourcemanager.quota.QuotaManager manager) {
+    public static void
+        groupQuotaLocationSettingsCreateOrUpdateFailed(com.azure.resourcemanager.quota.QuotaManager manager) {
         manager.groupQuotaLocationSettings().createOrUpdate("E7EC67B3-7657-4966-BFFC-41EFD36BAA09", "groupquota1",
             "Microsoft.Compute", "eastus",
             new GroupQuotasEnforcementResponseInner().withProperties(

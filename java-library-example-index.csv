@@ -4829,3 +4829,4 @@ id,name,language,tag,package,version,date_epoch,date
 4828,@azure/arm-neonpostgres@1.0.0-beta.1,js,@azure/arm-neonpostgres_1.0.0-beta.1,@azure/arm-neonpostgres,1.0.0-beta.1,1733220272,12/03/2024
 4829,"Azure.ResourceManager.NetworkCloud,1.1.0-beta.1",dotnet,Azure.ResourceManager.NetworkCloud_1.1.0-beta.1,Azure.ResourceManager.NetworkCloud,1.1.0-beta.1,1733217137,12/03/2024
 4830,azure-mgmt-neonpostgres@1.0.0b1,python,azure-mgmt-neonpostgres_1.0.0b1,azure-mgmt-neonpostgres,1.0.0b1,1733207822,12/03/2024
+4831,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0-beta.6,java,azure-resourcemanager-mysqlflexibleserver_1.0.0-beta.6,azure-resourcemanager-mysqlflexibleserver,1.0.0-beta.6,1733308132,12/04/2024

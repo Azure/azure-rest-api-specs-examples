@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.mysqlflexibleserver.models.NameAvailabilityRequest;
 
 /**
- * Samples for CheckNameAvailability Execute.
+ * Samples for CheckNameAvailabilityWithoutLocation Execute.
  */
 public final class Main {
     /*
@@ -16,7 +16,7 @@ public final class Main {
      * @param manager Entry point to MySqlManager.
      */
     public static void checkNameAvailability(com.azure.resourcemanager.mysqlflexibleserver.MySqlManager manager) {
-        manager.checkNameAvailabilities().executeWithResponse("SouthEastAsia",
+        manager.checkNameAvailabilityWithoutLocations().executeWithResponse(
             new NameAvailabilityRequest().withName("name1").withType("Microsoft.DBforMySQL/flexibleServers"),
             com.azure.core.util.Context.NONE);
     }

@@ -4829,3 +4829,15 @@ id,name,language,tag,package,version,date_epoch,date
 4828,@azure/arm-neonpostgres@1.0.0-beta.1,js,@azure/arm-neonpostgres_1.0.0-beta.1,@azure/arm-neonpostgres,1.0.0-beta.1,1733220272,12/03/2024
 4829,"Azure.ResourceManager.NetworkCloud,1.1.0-beta.1",dotnet,Azure.ResourceManager.NetworkCloud_1.1.0-beta.1,Azure.ResourceManager.NetworkCloud,1.1.0-beta.1,1733217137,12/03/2024
 4830,azure-mgmt-neonpostgres@1.0.0b1,python,azure-mgmt-neonpostgres_1.0.0b1,azure-mgmt-neonpostgres,1.0.0b1,1733207822,12/03/2024
+4831,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0-beta.6,java,azure-resourcemanager-mysqlflexibleserver_1.0.0-beta.6,azure-resourcemanager-mysqlflexibleserver,1.0.0-beta.6,1733308132,12/04/2024
+4832,com.azure.resourcemanager:azure-resourcemanager-apimanagement:1.0.0-beta.5,java,azure-resourcemanager-apimanagement_1.0.0-beta.5,azure-resourcemanager-apimanagement,1.0.0-beta.5,1733305430,12/04/2024
+4833,com.azure.resourcemanager:azure-resourcemanager-devcenter:1.0.0-beta.8,java,azure-resourcemanager-devcenter_1.0.0-beta.8,azure-resourcemanager-devcenter,1.0.0-beta.8,1733304643,12/04/2024
+4834,com.azure.resourcemanager:azure-resourcemanager-edgezones:1.0.0-beta.2,java,azure-resourcemanager-edgezones_1.0.0-beta.2,azure-resourcemanager-edgezones,1.0.0-beta.2,1733304466,12/04/2024
+4835,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.0.0-beta.5,java,azure-resourcemanager-confidentialledger_1.0.0-beta.5,azure-resourcemanager-confidentialledger,1.0.0-beta.5,1733304434,12/04/2024
+4836,com.azure.resourcemanager:azure-resourcemanager-maintenance:1.1.0-beta.2,java,azure-resourcemanager-maintenance_1.1.0-beta.2,azure-resourcemanager-maintenance,1.1.0-beta.2,1733304412,12/04/2024
+4837,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.0.0-beta.12,java,azure-resourcemanager-storagecache_1.0.0-beta.12,azure-resourcemanager-storagecache,1.0.0-beta.12,1733304376,12/04/2024
+4838,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.2,java,azure-resourcemanager-quota_1.1.0-beta.2,azure-resourcemanager-quota,1.1.0-beta.2,1733304293,12/04/2024
+4839,com.azure.resourcemanager:azure-resourcemanager-eventgrid:1.2.0-beta.7,java,azure-resourcemanager-eventgrid_1.2.0-beta.7,azure-resourcemanager-eventgrid,1.2.0-beta.7,1733304288,12/04/2024
+4840,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.2,java,azure-resourcemanager-nginx_1.1.0-beta.2,azure-resourcemanager-nginx,1.1.0-beta.2,1733304282,12/04/2024
+4841,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesdatareplication:1.0.0-beta.2,java,azure-resourcemanager-recoveryservicesdatareplication_1.0.0-beta.2,azure-resourcemanager-recoveryservicesdatareplication,1.0.0-beta.2,1733304108,12/04/2024
+4842,@azure/arm-healthdataaiservices@1.0.0,js,@azure/arm-healthdataaiservices_1.0.0,@azure/arm-healthdataaiservices,1.0.0,1733280200,12/04/2024

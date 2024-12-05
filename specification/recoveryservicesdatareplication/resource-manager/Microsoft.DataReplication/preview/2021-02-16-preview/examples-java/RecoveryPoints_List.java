@@ -1,11 +1,16 @@
-/** Samples for RecoveryPoints List. */
+
+/**
+ * Samples for RecoveryPoints List.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/examples/RecoveryPoints_List.json
+     * x-ms-original-file:
+     * specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-
+     * preview/examples/RecoveryPoints_List.json
      */
     /**
      * Sample code: RecoveryPoints_List.
-     *
+     * 
      * @param manager Entry point to RecoveryServicesDataReplicationManager.
      */
     public static void recoveryPointsList(

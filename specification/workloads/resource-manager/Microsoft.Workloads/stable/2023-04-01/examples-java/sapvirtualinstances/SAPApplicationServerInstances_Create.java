@@ -1,27 +1,28 @@
+
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for SapApplicationServerInstances Create. */
+/**
+ * Samples for SapApplicationServerInstances Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPApplicationServerInstances_Create.json
+     * x-ms-original-file:
+     * specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/
+     * SAPApplicationServerInstances_Create.json
      */
     /**
      * Sample code: SAPApplicationServerInstances_Create.
-     *
+     * 
      * @param manager Entry point to WorkloadsManager.
      */
-    public static void sAPApplicationServerInstancesCreate(
-        com.azure.resourcemanager.workloads.WorkloadsManager manager) {
-        manager
-            .sapApplicationServerInstances()
-            .define("app01")
-            .withRegion("westcentralus")
-            .withExistingSapVirtualInstance("test-rg", "X00")
-            .withTags(mapOf())
-            .create();
+    public static void
+        sAPApplicationServerInstancesCreate(com.azure.resourcemanager.workloads.WorkloadsManager manager) {
+        manager.sapApplicationServerInstances().define("app01").withRegion("westcentralus")
+            .withExistingSapVirtualInstance("test-rg", "X00").withTags(mapOf()).create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

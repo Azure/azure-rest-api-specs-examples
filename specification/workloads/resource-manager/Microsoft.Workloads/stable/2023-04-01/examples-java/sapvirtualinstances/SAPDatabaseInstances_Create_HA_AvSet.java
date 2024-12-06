@@ -1,27 +1,28 @@
+
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for SapDatabaseInstances Create. */
+/**
+ * Samples for SapDatabaseInstances Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPDatabaseInstances_Create_HA_AvSet.json
+     * x-ms-original-file:
+     * specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/
+     * SAPDatabaseInstances_Create_HA_AvSet.json
      */
     /**
      * Sample code: Create SAP Database Instances for HA System with Availability Set.
-     *
+     * 
      * @param manager Entry point to WorkloadsManager.
      */
     public static void createSAPDatabaseInstancesForHASystemWithAvailabilitySet(
         com.azure.resourcemanager.workloads.WorkloadsManager manager) {
-        manager
-            .sapDatabaseInstances()
-            .define("databaseServer")
-            .withRegion("westcentralus")
-            .withExistingSapVirtualInstance("test-rg", "X00")
-            .withTags(mapOf())
-            .create();
+        manager.sapDatabaseInstances().define("databaseServer").withRegion("westcentralus")
+            .withExistingSapVirtualInstance("test-rg", "X00").withTags(mapOf()).create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

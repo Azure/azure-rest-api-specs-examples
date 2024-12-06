@@ -4851,3 +4851,4 @@ id,name,language,tag,package,version,date_epoch,date
 4850,com.azure.resourcemanager:azure-resourcemanager-voiceservices:1.1.0,java,azure-resourcemanager-voiceservices_1.1.0,azure-resourcemanager-voiceservices,1.1.0,1733468277,12/06/2024
 4851,com.azure.resourcemanager:azure-resourcemanager-resourcehealth:1.1.0-beta.3,java,azure-resourcemanager-resourcehealth_1.1.0-beta.3,azure-resourcemanager-resourcehealth,1.1.0-beta.3,1733456865,12/06/2024
 4852,com.azure.resourcemanager:azure-resourcemanager-migrationdiscoverysap:1.0.0-beta.2,java,azure-resourcemanager-migrationdiscoverysap_1.0.0-beta.2,azure-resourcemanager-migrationdiscoverysap,1.0.0-beta.2,1733456140,12/06/2024
+4853,com.azure.resourcemanager:azure-resourcemanager-agrifood:1.0.0-beta.2,java,azure-resourcemanager-agrifood_1.0.0-beta.2,azure-resourcemanager-agrifood,1.0.0-beta.2,1733455822,12/06/2024

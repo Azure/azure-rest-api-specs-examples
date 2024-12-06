@@ -1,0 +1,19 @@
+
+/**
+ * Samples for GraphQuery List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2021-03-01/examples/GraphQueryList.
+     * json
+     */
+    /**
+     * Sample code: Get a list of Graph Queries.
+     * 
+     * @param manager Entry point to ResourceGraphManager.
+     */
+    public static void getAListOfGraphQueries(com.azure.resourcemanager.resourcegraph.ResourceGraphManager manager) {
+        manager.graphQueries().list("024e2271-06fa-46b6-9079-f1ed3c7b070e", com.azure.core.util.Context.NONE);
+    }
+}

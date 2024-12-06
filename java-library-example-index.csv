@@ -4841,3 +4841,4 @@ id,name,language,tag,package,version,date_epoch,date
 4840,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.2,java,azure-resourcemanager-nginx_1.1.0-beta.2,azure-resourcemanager-nginx,1.1.0-beta.2,1733304282,12/04/2024
 4841,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesdatareplication:1.0.0-beta.2,java,azure-resourcemanager-recoveryservicesdatareplication_1.0.0-beta.2,azure-resourcemanager-recoveryservicesdatareplication,1.0.0-beta.2,1733304108,12/04/2024
 4842,@azure/arm-healthdataaiservices@1.0.0,js,@azure/arm-healthdataaiservices_1.0.0,@azure/arm-healthdataaiservices,1.0.0,1733280200,12/04/2024
+4843,com.azure.resourcemanager:azure-resourcemanager-changeanalysis:1.1.0,java,azure-resourcemanager-changeanalysis_1.1.0,azure-resourcemanager-changeanalysis,1.1.0,1733476776,12/06/2024

@@ -4848,3 +4848,4 @@ id,name,language,tag,package,version,date_epoch,date
 4847,com.azure.resourcemanager:azure-resourcemanager-providerhub:1.1.0,java,azure-resourcemanager-providerhub_1.1.0,azure-resourcemanager-providerhub,1.1.0,1733473044,12/06/2024
 4848,com.azure.resourcemanager:azure-resourcemanager-workloads:1.1.0,java,azure-resourcemanager-workloads_1.1.0,azure-resourcemanager-workloads,1.1.0,1733472951,12/06/2024
 4849,com.azure.resourcemanager:azure-resourcemanager-resourcegraph:1.1.0,java,azure-resourcemanager-resourcegraph_1.1.0,azure-resourcemanager-resourcegraph,1.1.0,1733472854,12/06/2024
+4850,com.azure.resourcemanager:azure-resourcemanager-voiceservices:1.1.0,java,azure-resourcemanager-voiceservices_1.1.0,azure-resourcemanager-voiceservices,1.1.0,1733468277,12/06/2024

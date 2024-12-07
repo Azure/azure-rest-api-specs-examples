@@ -1,20 +1,20 @@
 
 /**
- * Samples for Extensions Get.
+ * Samples for Solutions Delete.
  */
 public final class Main {
     /*
      * x-ms-original-file:
      * specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/
-     * Extensions_Get.json
+     * Solutions_Delete.json
      */
     /**
-     * Sample code: Extensions_Get.
+     * Sample code: Solutions_Delete.
      * 
      * @param manager Entry point to AgriFoodManager.
      */
-    public static void extensionsGet(com.azure.resourcemanager.agrifood.AgriFoodManager manager) {
-        manager.extensions().getWithResponse("examples-rg", "examples-farmbeatsResourceName", "provider.extension",
+    public static void solutionsDelete(com.azure.resourcemanager.agrifood.AgriFoodManager manager) {
+        manager.solutions().deleteWithResponse("examples-rg", "examples-farmbeatsResourceName", "provider.solution",
             com.azure.core.util.Context.NONE);
     }
 }

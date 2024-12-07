@@ -1,0 +1,20 @@
+
+/**
+ * Samples for Solutions List.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/agrifood/resource-manager/Microsoft.AgFoodPlatform/preview/2021-09-01-preview/examples/
+     * Solutions_List.json
+     */
+    /**
+     * Sample code: Solutions_List.
+     * 
+     * @param manager Entry point to AgriFoodManager.
+     */
+    public static void solutionsList(com.azure.resourcemanager.agrifood.AgriFoodManager manager) {
+        manager.solutions().list("examples-rg", "examples-farmbeatsResourceName", null, null, null, null, null, null,
+            null, null, null, null, null, com.azure.core.util.Context.NONE);
+    }
+}

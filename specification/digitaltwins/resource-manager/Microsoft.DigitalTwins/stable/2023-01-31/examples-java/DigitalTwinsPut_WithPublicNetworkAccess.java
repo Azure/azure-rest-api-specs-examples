@@ -1,28 +1,29 @@
+
 import com.azure.resourcemanager.digitaltwins.models.PublicNetworkAccess;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for DigitalTwins CreateOrUpdate. */
+/**
+ * Samples for DigitalTwins CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/DigitalTwinsPut_WithPublicNetworkAccess.json
+     * x-ms-original-file:
+     * specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable/2023-01-31/examples/
+     * DigitalTwinsPut_WithPublicNetworkAccess.json
      */
     /**
      * Sample code: Put a DigitalTwinsInstance resource with publicNetworkAccess property.
-     *
+     * 
      * @param manager Entry point to AzureDigitalTwinsManager.
      */
     public static void putADigitalTwinsInstanceResourceWithPublicNetworkAccessProperty(
         com.azure.resourcemanager.digitaltwins.AzureDigitalTwinsManager manager) {
-        manager
-            .digitalTwins()
-            .define("myDigitalTwinsService")
-            .withRegion("WestUS2")
-            .withExistingResourceGroup("resRg")
-            .withPublicNetworkAccess(PublicNetworkAccess.ENABLED)
-            .create();
+        manager.digitalTwins().define("myDigitalTwinsService").withRegion("WestUS2").withExistingResourceGroup("resRg")
+            .withPublicNetworkAccess(PublicNetworkAccess.ENABLED).create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

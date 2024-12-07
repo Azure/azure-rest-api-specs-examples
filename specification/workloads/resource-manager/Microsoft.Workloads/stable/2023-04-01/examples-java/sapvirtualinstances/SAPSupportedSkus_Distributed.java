@@ -1,14 +1,29 @@
-/** Samples for ResourceProvider SapSupportedSku. */
+
+import com.azure.resourcemanager.workloads.models.SapDatabaseType;
+import com.azure.resourcemanager.workloads.models.SapDeploymentType;
+import com.azure.resourcemanager.workloads.models.SapEnvironmentType;
+import com.azure.resourcemanager.workloads.models.SapProductType;
+import com.azure.resourcemanager.workloads.models.SapSupportedSkusRequest;
+
+/**
+ * Samples for ResourceProvider SapSupportedSku.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/SAPSupportedSkus_Distributed.json
+     * x-ms-original-file:
+     * specification/workloads/resource-manager/Microsoft.Workloads/stable/2023-04-01/examples/sapvirtualinstances/
+     * SAPSupportedSkus_Distributed.json
      */
     /**
      * Sample code: SAPSupportedSkus_Distributed.
-     *
+     * 
      * @param manager Entry point to WorkloadsManager.
      */
     public static void sAPSupportedSkusDistributed(com.azure.resourcemanager.workloads.WorkloadsManager manager) {
-        manager.resourceProviders().sapSupportedSkuWithResponse("centralus", null, com.azure.core.util.Context.NONE);
+        manager.resourceProviders().sapSupportedSkuWithResponse("centralus",
+            new SapSupportedSkusRequest().withAppLocation("eastus").withEnvironment(SapEnvironmentType.PROD)
+                .withSapProduct(SapProductType.S4HANA).withDeploymentType(SapDeploymentType.THREE_TIER)
+                .withDatabaseType(SapDatabaseType.HANA),
+            com.azure.core.util.Context.NONE);
     }
 }

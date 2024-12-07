@@ -4841,3 +4841,14 @@ id,name,language,tag,package,version,date_epoch,date
 4840,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.2,java,azure-resourcemanager-nginx_1.1.0-beta.2,azure-resourcemanager-nginx,1.1.0-beta.2,1733304282,12/04/2024
 4841,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesdatareplication:1.0.0-beta.2,java,azure-resourcemanager-recoveryservicesdatareplication_1.0.0-beta.2,azure-resourcemanager-recoveryservicesdatareplication,1.0.0-beta.2,1733304108,12/04/2024
 4842,@azure/arm-healthdataaiservices@1.0.0,js,@azure/arm-healthdataaiservices_1.0.0,@azure/arm-healthdataaiservices,1.0.0,1733280200,12/04/2024
+4843,com.azure.resourcemanager:azure-resourcemanager-changeanalysis:1.1.0,java,azure-resourcemanager-changeanalysis_1.1.0,azure-resourcemanager-changeanalysis,1.1.0,1733476776,12/06/2024
+4844,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.1.0-beta.4,java,azure-resourcemanager-postgresqlflexibleserver_1.1.0-beta.4,azure-resourcemanager-postgresqlflexibleserver,1.1.0-beta.4,1733476670,12/06/2024
+4845,com.azure.resourcemanager:azure-resourcemanager-digitaltwins:1.3.0,java,azure-resourcemanager-digitaltwins_1.3.0,azure-resourcemanager-digitaltwins,1.3.0,1733475358,12/06/2024
+4846,com.azure.resourcemanager:azure-resourcemanager-graphservices:1.1.0,java,azure-resourcemanager-graphservices_1.1.0,azure-resourcemanager-graphservices,1.1.0,1733473641,12/06/2024
+4847,com.azure.resourcemanager:azure-resourcemanager-providerhub:1.1.0,java,azure-resourcemanager-providerhub_1.1.0,azure-resourcemanager-providerhub,1.1.0,1733473044,12/06/2024
+4848,com.azure.resourcemanager:azure-resourcemanager-workloads:1.1.0,java,azure-resourcemanager-workloads_1.1.0,azure-resourcemanager-workloads,1.1.0,1733472951,12/06/2024
+4849,com.azure.resourcemanager:azure-resourcemanager-resourcegraph:1.1.0,java,azure-resourcemanager-resourcegraph_1.1.0,azure-resourcemanager-resourcegraph,1.1.0,1733472854,12/06/2024
+4850,com.azure.resourcemanager:azure-resourcemanager-voiceservices:1.1.0,java,azure-resourcemanager-voiceservices_1.1.0,azure-resourcemanager-voiceservices,1.1.0,1733468277,12/06/2024
+4851,com.azure.resourcemanager:azure-resourcemanager-resourcehealth:1.1.0-beta.3,java,azure-resourcemanager-resourcehealth_1.1.0-beta.3,azure-resourcemanager-resourcehealth,1.1.0-beta.3,1733456865,12/06/2024
+4852,com.azure.resourcemanager:azure-resourcemanager-migrationdiscoverysap:1.0.0-beta.2,java,azure-resourcemanager-migrationdiscoverysap_1.0.0-beta.2,azure-resourcemanager-migrationdiscoverysap,1.0.0-beta.2,1733456140,12/06/2024
+4853,com.azure.resourcemanager:azure-resourcemanager-agrifood:1.0.0-beta.2,java,azure-resourcemanager-agrifood_1.0.0-beta.2,azure-resourcemanager-agrifood,1.0.0-beta.2,1733455822,12/06/2024

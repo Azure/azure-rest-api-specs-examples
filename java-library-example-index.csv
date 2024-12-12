@@ -4853,3 +4853,4 @@ id,name,language,tag,package,version,date_epoch,date
 4852,com.azure.resourcemanager:azure-resourcemanager-migrationdiscoverysap:1.0.0-beta.2,java,azure-resourcemanager-migrationdiscoverysap_1.0.0-beta.2,azure-resourcemanager-migrationdiscoverysap,1.0.0-beta.2,1733456140,12/06/2024
 4853,com.azure.resourcemanager:azure-resourcemanager-agrifood:1.0.0-beta.2,java,azure-resourcemanager-agrifood_1.0.0-beta.2,azure-resourcemanager-agrifood,1.0.0-beta.2,1733455822,12/06/2024
 4854,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v3@v3.2.0,go,sdk/resourcemanager/cosmos/armcosmos/v3.2.0,sdk/resourcemanager/cosmos/armcosmos,v3.2.0,1733906089,12/11/2024
+4855,com.azure.resourcemanager:azure-resourcemanager-loadtesting:1.1.0,java,azure-resourcemanager-loadtesting_1.1.0,azure-resourcemanager-loadtesting,1.1.0,1733992900,12/12/2024

@@ -4858,3 +4858,4 @@ id,name,language,tag,package,version,date_epoch,date
 4857,com.azure.resourcemanager:azure-resourcemanager-hybridconnectivity:1.1.0,java,azure-resourcemanager-hybridconnectivity_1.1.0,azure-resourcemanager-hybridconnectivity,1.1.0,1733914056,12/11/2024
 4858,com.azure.resourcemanager:azure-resourcemanager-datadog:1.1.0,java,azure-resourcemanager-datadog_1.1.0,azure-resourcemanager-datadog,1.1.0,1733914046,12/11/2024
 4859,com.azure.resourcemanager:azure-resourcemanager-resourcemover:1.2.0,java,azure-resourcemanager-resourcemover_1.2.0,azure-resourcemanager-resourcemover,1.2.0,1733914044,12/11/2024
+4860,com.azure.resourcemanager:azure-resourcemanager-kusto:1.1.0,java,azure-resourcemanager-kusto_1.1.0,azure-resourcemanager-kusto,1.1.0,1733914043,12/11/2024

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2023-07-03/examples/galleryExamples/Gallery_Update.json
@@ -25,7 +24,7 @@ ResourceIdentifier galleryResourceId = GalleryResource.CreateResourceIdentifier(
 GalleryResource gallery = client.GetGalleryResource(galleryResourceId);
 
 // invoke the operation
-GalleryPatch patch = new GalleryPatch()
+GalleryPatch patch = new GalleryPatch
 {
     Description = "This is the gallery description.",
 };

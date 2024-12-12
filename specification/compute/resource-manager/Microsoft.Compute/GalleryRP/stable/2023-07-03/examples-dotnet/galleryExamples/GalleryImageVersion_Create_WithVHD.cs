@@ -31,61 +31,52 @@ GalleryImageVersionCollection collection = galleryImage.GetGalleryImageVersions(
 string galleryImageVersionName = "1.0.0";
 GalleryImageVersionData data = new GalleryImageVersionData(new AzureLocation("West US"))
 {
-    PublishingProfile = new GalleryImageVersionPublishingProfile()
+    PublishingProfile = new GalleryImageVersionPublishingProfile
     {
-        TargetRegions =
-        {
-        new TargetRegion("West US")
+        TargetRegions = {new TargetRegion("West US")
         {
         RegionalReplicaCount = 1,
-        Encryption = new EncryptionImages()
+        Encryption = new EncryptionImages
         {
-        OSDiskImage = new OSDiskImageEncryption()
+        OSDiskImage = new OSDiskImageEncryption
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myDiskEncryptionSet"),
         },
-        DataDiskImages =
-        {
-        new DataDiskImageEncryption(1)
+        DataDiskImages = {new DataDiskImageEncryption(1)
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherDiskEncryptionSet"),
-        }
-        },
+        }},
         },
         IsExcludedFromLatest = false,
-        },new TargetRegion("East US")
+        }, new TargetRegion("East US")
         {
         RegionalReplicaCount = 2,
         StorageAccountType = ImageStorageAccountType.StandardZrs,
         IsExcludedFromLatest = false,
-        }
-        },
+        }},
     },
-    StorageProfile = new GalleryImageVersionStorageProfile()
+    StorageProfile = new GalleryImageVersionStorageProfile
     {
-        OSDiskImage = new GalleryOSDiskImage()
+        OSDiskImage = new GalleryOSDiskImage
         {
             HostCaching = HostCaching.ReadOnly,
-            GallerySource = new GalleryDiskImageSource()
+            GallerySource = new GalleryDiskImageSource
             {
                 Uri = new Uri("https://gallerysourcencus.blob.core.windows.net/myvhds/Windows-Server-2012-R2-20171216-en.us-128GB.vhd"),
                 StorageAccountId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/{storageAccount}"),
             },
         },
-        DataDiskImages =
-        {
-        new GalleryDataDiskImage(1)
+        DataDiskImages = {new GalleryDataDiskImage(1)
         {
         HostCaching = HostCaching.None,
-        GallerySource = new GalleryDiskImageSource()
+        GallerySource = new GalleryDiskImageSource
         {
         Uri = new Uri("https://gallerysourcencus.blob.core.windows.net/myvhds/Windows-Server-2012-R2-20171216-en.us-128GB.vhd"),
         StorageAccountId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/{storageAccount}"),
         },
-        }
-        },
+        }},
     },
-    SafetyProfile = new GalleryImageVersionSafetyProfile()
+    SafetyProfile = new GalleryImageVersionSafetyProfile
     {
         AllowDeletionOfReplicatedLocations = false,
     },

@@ -27,4 +27,4 @@ DedicatedHostResource dedicatedHost = client.GetDedicatedHostResource(dedicatedH
 // invoke the operation
 await dedicatedHost.RedeployAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

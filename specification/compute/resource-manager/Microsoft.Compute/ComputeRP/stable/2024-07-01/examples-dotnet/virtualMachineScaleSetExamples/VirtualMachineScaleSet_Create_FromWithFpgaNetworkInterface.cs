@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -32,74 +31,68 @@ VirtualMachineScaleSetCollection collection = resourceGroupResource.GetVirtualMa
 string virtualMachineScaleSetName = "{vmss-name}";
 VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocation("westus"))
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "Standard_D1_v2",
         Tier = "Standard",
         Capacity = 3L,
     },
-    UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy()
+    Properties = new VirtualMachineScaleSetProperties
     {
-        Mode = VirtualMachineScaleSetUpgradeMode.Manual,
-    },
-    VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
-    {
-        OSProfile = new VirtualMachineScaleSetOSProfile()
+        UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy
         {
-            ComputerNamePrefix = "{vmss-name}",
-            AdminUsername = "{your-username}",
-            AdminPassword = "{your-password}",
+            Mode = VirtualMachineScaleSetUpgradeMode.Manual,
         },
-        StorageProfile = new VirtualMachineScaleSetStorageProfile()
+        VirtualMachineProfile = new VirtualMachineScaleSetVmProfile
         {
-            ImageReference = new ImageReference()
+            OSProfile = new VirtualMachineScaleSetOSProfile
             {
-                Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"),
+                ComputerNamePrefix = "{vmss-name}",
+                AdminUsername = "{your-username}",
+                AdminPassword = "{your-password}",
             },
-            OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+            StorageProfile = new VirtualMachineScaleSetStorageProfile
             {
-                Caching = CachingType.ReadWrite,
-                ManagedDisk = new VirtualMachineScaleSetManagedDisk()
+                ImageReference = new ImageReference
                 {
-                    StorageAccountType = StorageAccountType.StandardLrs,
+                    Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/{existing-custom-image-name}"),
+                },
+                OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+                {
+                    Caching = CachingType.ReadWrite,
+                    ManagedDisk = new VirtualMachineScaleSetManagedDisk
+                    {
+                        StorageAccountType = StorageAccountType.StandardLrs,
+                    },
                 },
             },
-        },
-        NetworkProfile = new VirtualMachineScaleSetNetworkProfile()
-        {
-            NetworkInterfaceConfigurations =
+            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
             {
-            new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
-            {
-            Primary = true,
-            IPConfigurations =
-            {
-            new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
-            {
-            SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
-            }
-            },
-            EnableIPForwarding = true,
-            },new VirtualMachineScaleSetNetworkConfiguration("{fpgaNic-Name}")
-            {
-            Primary = false,
-            EnableAcceleratedNetworking = false,
-            EnableFpga = true,
-            IPConfigurations =
-            {
-            new VirtualMachineScaleSetIPConfiguration("{fpgaNic-Name}")
-            {
-            SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name}"),
-            Primary = true,
-            PrivateIPAddressVersion = IPVersion.IPv4,
-            }
-            },
-            EnableIPForwarding = false,
-            }
+                NetworkInterfaceConfigurations = {new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
+                {
+                Primary = true,
+                IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
+                {
+                SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
+                }},
+                EnableIPForwarding = true,
+                }, new VirtualMachineScaleSetNetworkConfiguration("{fpgaNic-Name}")
+                {
+                Primary = false,
+                EnableAcceleratedNetworking = false,
+                EnableFpga = true,
+                IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("{fpgaNic-Name}")
+                {
+                SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-fpga-subnet-name}"),
+                Primary = true,
+                PrivateIPAddressVersion = IPVersion.IPv4,
+                }},
+                EnableIPForwarding = false,
+                }},
             },
         },
+        Overprovision = true,
     },
-    Overprovision = true,
 };
 ArmOperation<VirtualMachineScaleSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualMachineScaleSetName, data);
 VirtualMachineScaleSetResource result = lro.Value;

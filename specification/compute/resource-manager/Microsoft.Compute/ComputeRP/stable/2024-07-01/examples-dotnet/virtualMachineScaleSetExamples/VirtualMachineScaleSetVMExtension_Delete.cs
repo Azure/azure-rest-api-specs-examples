@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -29,4 +28,4 @@ VirtualMachineScaleSetVmExtensionResource virtualMachineScaleSetVmExtension = cl
 // invoke the operation
 await virtualMachineScaleSetVmExtension.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

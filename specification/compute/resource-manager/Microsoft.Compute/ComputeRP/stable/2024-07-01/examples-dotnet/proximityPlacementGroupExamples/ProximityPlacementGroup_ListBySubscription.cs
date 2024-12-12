@@ -32,4 +32,4 @@ await foreach (ProximityPlacementGroupResource item in subscriptionResource.GetP
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

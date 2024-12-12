@@ -30,19 +30,16 @@ DiskImageCollection collection = resourceGroupResource.GetDiskImages();
 string imageName = "myImage";
 DiskImageData data = new DiskImageData(new AzureLocation("West US"))
 {
-    StorageProfile = new ImageStorageProfile()
+    StorageProfile = new ImageStorageProfile
     {
         OSDisk = new ImageOSDisk(SupportedOperatingSystemType.Linux, OperatingSystemStateType.Generalized)
         {
             ManagedDiskId = new ResourceIdentifier("subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk"),
         },
-        DataDisks =
-        {
-        new ImageDataDisk(1)
+        DataDisks = {new ImageDataDisk(1)
         {
         ManagedDiskId = new ResourceIdentifier("subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/myManagedDisk2"),
-        }
-        },
+        }},
         ZoneResilient = false,
     },
 };

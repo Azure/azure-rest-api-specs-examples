@@ -31,13 +31,13 @@ VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines()
 string vmName = "{vm-name}";
 VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD1V2,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -48,30 +48,27 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         {
             Name = "vmOSdisk",
             Caching = CachingType.ReadWrite,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardLrs,
             },
         },
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "{vm-name}",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
-    BootDiagnostics = new BootDiagnostics()
+    BootDiagnostics = new BootDiagnostics
     {
         Enabled = true,
         StorageUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net"),

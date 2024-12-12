@@ -32,4 +32,4 @@ await foreach (DiskImageResource item in subscriptionResource.GetDiskImagesAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

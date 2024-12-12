@@ -34,7 +34,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
     OSType = SupportedOperatingSystemType.Windows,
     CreationData = new DiskCreationData(DiskCreateOption.FromImage)
     {
-        GalleryImageReference = new ImageDiskReference()
+        GalleryImageReference = new ImageDiskReference
         {
             Id = new ResourceIdentifier("/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Providers/Microsoft.Compute/Galleries/{galleryName}/Images/{imageName}/Versions/1.0.0"),
         },

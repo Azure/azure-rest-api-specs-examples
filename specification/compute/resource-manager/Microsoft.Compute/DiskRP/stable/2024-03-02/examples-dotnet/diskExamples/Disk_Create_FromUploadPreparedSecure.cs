@@ -36,7 +36,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
     {
         UploadSizeBytes = 10737418752L,
     },
-    SecurityProfile = new DiskSecurityProfile()
+    SecurityProfile = new DiskSecurityProfile
     {
         SecurityType = DiskSecurityType.TrustedLaunch,
     },

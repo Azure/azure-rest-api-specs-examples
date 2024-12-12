@@ -32,4 +32,4 @@ await foreach (DedicatedHostGroupResource item in subscriptionResource.GetDedica
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

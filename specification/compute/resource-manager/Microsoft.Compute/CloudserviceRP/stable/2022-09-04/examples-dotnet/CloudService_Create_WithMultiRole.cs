@@ -33,40 +33,34 @@ CloudServiceData data = new CloudServiceData(new AzureLocation("westus"))
     PackageUri = new Uri("{PackageUrl}"),
     Configuration = "{ServiceConfiguration}",
     UpgradeMode = CloudServiceUpgradeMode.Auto,
-    Roles =
-    {
-    new CloudServiceRoleProfileProperties()
+    Roles = {new CloudServiceRoleProfileProperties
     {
     Name = "ContosoFrontend",
-    Sku = new CloudServiceRoleSku()
+    Sku = new CloudServiceRoleSku
     {
     Name = "Standard_D1_v2",
     Tier = "Standard",
     Capacity = 1L,
     },
-    },new CloudServiceRoleProfileProperties()
+    }, new CloudServiceRoleProfileProperties
     {
     Name = "ContosoBackend",
-    Sku = new CloudServiceRoleSku()
+    Sku = new CloudServiceRoleSku
     {
     Name = "Standard_D1_v2",
     Tier = "Standard",
     Capacity = 1L,
     },
-    }
-    },
-    NetworkProfile = new CloudServiceNetworkProfile()
+    }},
+    NetworkProfile = new CloudServiceNetworkProfile
     {
-        LoadBalancerConfigurations =
-        {
-        new CloudServiceLoadBalancerConfiguration("contosolb",new LoadBalancerFrontendIPConfiguration[]
+        LoadBalancerConfigurations = {new CloudServiceLoadBalancerConfiguration("contosolb", new LoadBalancerFrontendIPConfiguration[]
         {
         new LoadBalancerFrontendIPConfiguration("contosofe")
         {
         PublicIPAddressId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/ConstosoRG/providers/Microsoft.Network/publicIPAddresses/contosopublicip"),
         }
-        })
-        },
+        })},
     },
 };
 ArmOperation<CloudServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, cloudServiceName, data);

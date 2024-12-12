@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -27,15 +26,15 @@ ResourceIdentifier virtualMachineScaleSetVmExtensionResourceId = VirtualMachineS
 VirtualMachineScaleSetVmExtensionResource virtualMachineScaleSetVmExtension = client.GetVirtualMachineScaleSetVmExtensionResource(virtualMachineScaleSetVmExtensionResourceId);
 
 // invoke the operation
-VirtualMachineScaleSetVmExtensionPatch patch = new VirtualMachineScaleSetVmExtensionPatch()
+VirtualMachineScaleSetVmExtensionPatch patch = new VirtualMachineScaleSetVmExtensionPatch
 {
     Publisher = "extPublisher",
     ExtensionType = "extType",
     TypeHandlerVersion = "1.2",
     AutoUpgradeMinorVersion = true,
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Settings = BinaryData.FromObjectAsJson(new
     {
-        ["UserName"] = "xyz@microsoft.com"
+        UserName = "xyz@microsoft.com",
     }),
 };
 ArmOperation<VirtualMachineScaleSetVmExtensionResource> lro = await virtualMachineScaleSetVmExtension.UpdateAsync(WaitUntil.Completed, patch);

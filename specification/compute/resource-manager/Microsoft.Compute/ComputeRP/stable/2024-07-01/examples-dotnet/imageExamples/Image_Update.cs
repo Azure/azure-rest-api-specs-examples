@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/imageExamples/Image_Update.json
@@ -25,13 +24,13 @@ ResourceIdentifier diskImageResourceId = DiskImageResource.CreateResourceIdentif
 DiskImageResource diskImage = client.GetDiskImageResource(diskImageResourceId);
 
 // invoke the operation
-DiskImagePatch patch = new DiskImagePatch()
+DiskImagePatch patch = new DiskImagePatch
 {
     SourceVirtualMachineId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
     HyperVGeneration = HyperVGeneration.V1,
     Tags =
     {
-    ["department"] = "HR",
+    ["department"] = "HR"
     },
 };
 ArmOperation<DiskImageResource> lro = await diskImage.UpdateAsync(WaitUntil.Completed, patch);

@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Compute;
 
@@ -28,11 +26,8 @@ ResourceIdentifier virtualMachineScaleSetResourceId = VirtualMachineScaleSetReso
 VirtualMachineScaleSetResource virtualMachineScaleSet = client.GetVirtualMachineScaleSetResource(virtualMachineScaleSetResourceId);
 
 // invoke the operation
-VirtualMachineScaleSetVmInstanceRequiredIds vmInstanceIds = new VirtualMachineScaleSetVmInstanceRequiredIds(new string[]
-{
-"aaaaaaaaaaaaaaaaaaaaaaaaa"
-});
+VirtualMachineScaleSetVmInstanceRequiredIds vmInstanceIds = new VirtualMachineScaleSetVmInstanceRequiredIds(new string[] { "aaaaaaaaaaaaaaaaaaaaaaaaa" });
 bool? forceDeletion = true;
 await virtualMachineScaleSet.DeleteInstancesAsync(WaitUntil.Completed, vmInstanceIds, forceDeletion: forceDeletion);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

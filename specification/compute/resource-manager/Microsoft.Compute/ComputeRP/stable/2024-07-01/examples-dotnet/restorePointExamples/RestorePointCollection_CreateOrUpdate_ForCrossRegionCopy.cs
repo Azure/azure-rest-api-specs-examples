@@ -30,13 +30,13 @@ RestorePointGroupCollection collection = resourceGroupResource.GetRestorePointGr
 string restorePointGroupName = "myRpc";
 RestorePointGroupData data = new RestorePointGroupData(new AzureLocation("norwayeast"))
 {
-    Source = new RestorePointGroupSource()
+    Source = new RestorePointGroupSource
     {
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/sourceRpcName"),
     },
     Tags =
     {
-    ["myTag1"] = "tagValue1",
+    ["myTag1"] = "tagValue1"
     },
 };
 ArmOperation<RestorePointGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, restorePointGroupName, data);

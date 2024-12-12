@@ -31,25 +31,22 @@ VirtualMachineScaleSetVmRunCommandCollection collection = virtualMachineScaleSet
 string runCommandName = "myRunCommand";
 VirtualMachineRunCommandData data = new VirtualMachineRunCommandData(new AzureLocation("West US"))
 {
-    Source = new VirtualMachineRunCommandScriptSource()
+    Source = new VirtualMachineRunCommandScriptSource
     {
         ScriptUri = new Uri("https://mystorageaccount.blob.core.windows.net/scriptcontainer/MyScript.ps1"),
-        ScriptUriManagedIdentity = new RunCommandManagedIdentity()
+        ScriptUriManagedIdentity = new RunCommandManagedIdentity
         {
             ObjectId = "4231e4d2-33e4-4e23-96b2-17888afa6072",
         },
     },
-    Parameters =
-    {
-    new RunCommandInputParameter("param1","value1"),new RunCommandInputParameter("param2","value2")
-    },
+    Parameters = { new RunCommandInputParameter("param1", "value1"), new RunCommandInputParameter("param2", "value2") },
     AsyncExecution = false,
     RunAsUser = "user1",
     RunAsPassword = "<runAsPassword>",
     TimeoutInSeconds = 3600,
     OutputBlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/myscriptoutputcontainer/MyScriptoutput.txt"),
     ErrorBlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt"),
-    OutputBlobManagedIdentity = new RunCommandManagedIdentity()
+    OutputBlobManagedIdentity = new RunCommandManagedIdentity
     {
         ClientId = "22d35efb-0c99-4041-8c5b-6d24db33a69a",
     },

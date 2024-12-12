@@ -31,13 +31,13 @@ VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines()
 string vmName = "myVM";
 VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD2V2,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -48,44 +48,38 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         {
             Name = "myVMosdisk",
             Caching = CachingType.ReadWrite,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardLrs,
             },
         },
-        DataDisks =
-        {
-        new VirtualMachineDataDisk(0,DiskCreateOptionType.Copy)
+        DataDisks = {new VirtualMachineDataDisk(0, DiskCreateOptionType.Copy)
         {
         DiskSizeGB = 1023,
         SourceResourceId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/{existing-snapshot-name}"),
-        },new VirtualMachineDataDisk(1,DiskCreateOptionType.Copy)
+        }, new VirtualMachineDataDisk(1, DiskCreateOptionType.Copy)
         {
         DiskSizeGB = 1023,
         SourceResourceId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/{existing-disk-name}"),
-        },new VirtualMachineDataDisk(2,DiskCreateOptionType.Restore)
+        }, new VirtualMachineDataDisk(2, DiskCreateOptionType.Restore)
         {
         DiskSizeGB = 1023,
         SourceResourceId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/restorePointCollections/{existing-rpc-name}/restorePoints/{existing-rp-name}/diskRestorePoints/{existing-disk-restore-point-name}"),
-        }
-        },
+        }},
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
 };
 ArmOperation<VirtualMachineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmName, data);

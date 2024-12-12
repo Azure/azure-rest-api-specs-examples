@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/sshPublicKeyExamples/SshPublicKey_Update_MaximumSet_Gen.json
@@ -25,12 +24,12 @@ ResourceIdentifier sshPublicKeyResourceId = SshPublicKeyResource.CreateResourceI
 SshPublicKeyResource sshPublicKey = client.GetSshPublicKeyResource(sshPublicKeyResourceId);
 
 // invoke the operation
-SshPublicKeyPatch patch = new SshPublicKeyPatch()
+SshPublicKeyPatch patch = new SshPublicKeyPatch
 {
     PublicKey = "{ssh-rsa public key}",
     Tags =
     {
-    ["key2854"] = "a",
+    ["key2854"] = "a"
     },
 };
 SshPublicKeyResource result = await sshPublicKey.UpdateAsync(patch);

@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineExamples/VirtualMachine_Deallocate_MaximumSet_Gen.json
@@ -29,4 +28,4 @@ VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtual
 bool? hibernate = true;
 await virtualMachine.DeallocateAsync(WaitUntil.Completed, hibernate: hibernate);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

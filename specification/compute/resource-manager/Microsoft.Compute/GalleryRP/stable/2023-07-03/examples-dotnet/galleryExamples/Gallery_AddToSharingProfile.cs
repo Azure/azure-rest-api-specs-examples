@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/GalleryRP/stable/2023-07-03/examples/galleryExamples/Gallery_AddToSharingProfile.json
@@ -27,24 +26,15 @@ GalleryResource gallery = client.GetGalleryResource(galleryResourceId);
 // invoke the operation
 SharingUpdate sharingUpdate = new SharingUpdate(SharingUpdateOperationType.Add)
 {
-    Groups =
-    {
-    new SharingProfileGroup()
+    Groups = {new SharingProfileGroup
     {
     GroupType = SharingProfileGroupType.Subscriptions,
-    Ids =
-    {
-    "34a4ab42-0d72-47d9-bd1a-aed207386dac","380fd389-260b-41aa-bad9-0a83108c370b"
-    },
-    },new SharingProfileGroup()
+    Ids = {"34a4ab42-0d72-47d9-bd1a-aed207386dac", "380fd389-260b-41aa-bad9-0a83108c370b"},
+    }, new SharingProfileGroup
     {
     GroupType = SharingProfileGroupType.AADTenants,
-    Ids =
-    {
-    "c24c76aa-8897-4027-9b03-8f7928b54ff6"
-    },
-    }
-    },
+    Ids = {"c24c76aa-8897-4027-9b03-8f7928b54ff6"},
+    }},
 };
 ArmOperation<SharingUpdate> lro = await gallery.UpdateSharingProfileAsync(WaitUntil.Completed, sharingUpdate);
 SharingUpdate result = lro.Value;

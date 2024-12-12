@@ -31,22 +31,22 @@ VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines()
 string vmName = "myVM";
 VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD4V3,
     },
-    ScheduledEventsPolicy = new ScheduledEventsPolicy()
+    ScheduledEventsPolicy = new ScheduledEventsPolicy
     {
-        UserInitiatedRedeploy = new UserInitiatedRedeploy()
+        UserInitiatedRedeploy = new UserInitiatedRedeploy
         {
             AutomaticallyApprove = true,
         },
         AutomaticallyApprove = true,
         Enable = true,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -57,31 +57,28 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         {
             Name = "myVMosdisk",
             Caching = CachingType.ReadWrite,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardLrs,
             },
         },
         DiskControllerType = DiskControllerType.NVMe,
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
-    BootDiagnostics = new BootDiagnostics()
+    BootDiagnostics = new BootDiagnostics
     {
         Enabled = true,
         StorageUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net"),

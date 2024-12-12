@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -32,73 +31,67 @@ VirtualMachineScaleSetCollection collection = resourceGroupResource.GetVirtualMa
 string virtualMachineScaleSetName = "{vmss-name}";
 VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocation("westus"))
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "Standard_D1_v2",
         Tier = "Standard",
         Capacity = 3L,
     },
-    UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy()
+    Properties = new VirtualMachineScaleSetProperties
     {
-        Mode = VirtualMachineScaleSetUpgradeMode.Manual,
-    },
-    VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
-    {
-        OSProfile = new VirtualMachineScaleSetOSProfile()
+        UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy
         {
-            ComputerNamePrefix = "{vmss-name}",
-            AdminUsername = "{your-username}",
-            AdminPassword = "{your-password}",
+            Mode = VirtualMachineScaleSetUpgradeMode.Manual,
         },
-        StorageProfile = new VirtualMachineScaleSetStorageProfile()
+        VirtualMachineProfile = new VirtualMachineScaleSetVmProfile
         {
-            ImageReference = new ImageReference()
+            OSProfile = new VirtualMachineScaleSetOSProfile
             {
-                Publisher = "MicrosoftWindowsServer",
-                Offer = "WindowsServer",
-                Sku = "2016-Datacenter",
-                Version = "latest",
+                ComputerNamePrefix = "{vmss-name}",
+                AdminUsername = "{your-username}",
+                AdminPassword = "{your-password}",
             },
-            OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+            StorageProfile = new VirtualMachineScaleSetStorageProfile
             {
-                Caching = CachingType.ReadWrite,
-                ManagedDisk = new VirtualMachineScaleSetManagedDisk()
+                ImageReference = new ImageReference
                 {
-                    StorageAccountType = StorageAccountType.StandardLrs,
+                    Publisher = "MicrosoftWindowsServer",
+                    Offer = "WindowsServer",
+                    Sku = "2016-Datacenter",
+                    Version = "latest",
+                },
+                OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+                {
+                    Caching = CachingType.ReadWrite,
+                    ManagedDisk = new VirtualMachineScaleSetManagedDisk
+                    {
+                        StorageAccountType = StorageAccountType.StandardLrs,
+                    },
                 },
             },
-        },
-        NetworkProfile = new VirtualMachineScaleSetNetworkProfile()
-        {
-            NetworkInterfaceConfigurations =
+            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
             {
-            new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
-            {
-            Primary = true,
-            IPConfigurations =
-            {
-            new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
-            {
-            SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
-            }
+                NetworkInterfaceConfigurations = {new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
+                {
+                Primary = true,
+                IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
+                {
+                SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
+                }},
+                EnableIPForwarding = true,
+                }},
             },
-            EnableIPForwarding = true,
-            }
-            },
+            GalleryApplications = {new VirtualMachineGalleryApplication("/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0")
+            {
+            Tags = "myTag1",
+            Order = 1,
+            ConfigurationReference = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config",
+            TreatFailureAsDeploymentFailure = true,
+            EnableAutomaticUpgrade = false,
+            }, new VirtualMachineGalleryApplication("/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1")},
         },
-        GalleryApplications =
-        {
-        new VirtualMachineGalleryApplication("/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdb/resourceGroups/myresourceGroupName2/providers/Microsoft.Compute/galleries/myGallery1/applications/MyApplication1/versions/1.0")
-        {
-        Tags = "myTag1",
-        Order = 1,
-        ConfigurationReference = "https://mystorageaccount.blob.core.windows.net/configurations/settings.config",
-        TreatFailureAsDeploymentFailure = true,
-        EnableAutomaticUpgrade = false,
-        },new VirtualMachineGalleryApplication("/subscriptions/32c17a9e-aa7b-4ba5-a45b-e324116b6fdg/resourceGroups/myresourceGroupName3/providers/Microsoft.Compute/galleries/myGallery2/applications/MyApplication2/versions/1.1")
-        },
+        Overprovision = true,
     },
-    Overprovision = true,
 };
 ArmOperation<VirtualMachineScaleSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualMachineScaleSetName, data);
 VirtualMachineScaleSetResource result = lro.Value;

@@ -25,30 +25,24 @@ ResourceIdentifier galleryApplicationResourceId = GalleryApplicationResource.Cre
 GalleryApplicationResource galleryApplication = client.GetGalleryApplicationResource(galleryApplicationResourceId);
 
 // invoke the operation
-GalleryApplicationPatch patch = new GalleryApplicationPatch()
+GalleryApplicationPatch patch = new GalleryApplicationPatch
 {
     Description = "This is the gallery application description.",
     Eula = "This is the gallery application EULA.",
     PrivacyStatementUri = new Uri("myPrivacyStatementUri}"),
     ReleaseNoteUri = new Uri("myReleaseNoteUri"),
     SupportedOSType = SupportedOperatingSystemType.Windows,
-    CustomActions =
-    {
-    new GalleryApplicationCustomAction("myCustomAction","myCustomActionScript")
+    CustomActions = {new GalleryApplicationCustomAction("myCustomAction", "myCustomActionScript")
     {
     Description = "This is the custom action description.",
-    Parameters =
-    {
-    new GalleryApplicationCustomActionParameter("myCustomActionParameter")
+    Parameters = {new GalleryApplicationCustomActionParameter("myCustomActionParameter")
     {
     IsRequired = false,
     ParameterType = GalleryApplicationCustomActionParameterType.String,
     DefaultValue = "default value of parameter.",
     Description = "This is the description of the parameter",
-    }
-    },
-    }
-    },
+    }},
+    }},
 };
 ArmOperation<GalleryApplicationResource> lro = await galleryApplication.UpdateAsync(WaitUntil.Completed, patch);
 GalleryApplicationResource result = lro.Value;

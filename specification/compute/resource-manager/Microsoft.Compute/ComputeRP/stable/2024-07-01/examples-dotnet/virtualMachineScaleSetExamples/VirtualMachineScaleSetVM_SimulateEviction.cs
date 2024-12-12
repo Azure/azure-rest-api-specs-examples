@@ -28,4 +28,4 @@ VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMac
 // invoke the operation
 await virtualMachineScaleSetVm.SimulateEvictionAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

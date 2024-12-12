@@ -31,7 +31,7 @@ ManagedDiskCollection collection = resourceGroupResource.GetManagedDisks();
 string diskName = "myDisk";
 ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
 {
-    ExtendedLocation = new ExtendedLocation()
+    ExtendedLocation = new ExtendedLocation
     {
         Name = "{edge-zone-id}",
     },

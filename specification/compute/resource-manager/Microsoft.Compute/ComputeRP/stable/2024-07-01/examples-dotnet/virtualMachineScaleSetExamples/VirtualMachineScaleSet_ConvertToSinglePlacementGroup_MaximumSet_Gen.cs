@@ -1,13 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Compute;
 
@@ -28,10 +26,10 @@ ResourceIdentifier virtualMachineScaleSetResourceId = VirtualMachineScaleSetReso
 VirtualMachineScaleSetResource virtualMachineScaleSet = client.GetVirtualMachineScaleSetResource(virtualMachineScaleSetResourceId);
 
 // invoke the operation
-VirtualMachineScaleSetConvertToSinglePlacementGroupContent content = new VirtualMachineScaleSetConvertToSinglePlacementGroupContent()
+VirtualMachineScaleSetConvertToSinglePlacementGroupContent content = new VirtualMachineScaleSetConvertToSinglePlacementGroupContent
 {
     ActivePlacementGroupId = "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
 };
 await virtualMachineScaleSet.ConvertToSinglePlacementGroupAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

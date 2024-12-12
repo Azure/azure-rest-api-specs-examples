@@ -31,26 +31,23 @@ GalleryImageVersionCollection collection = galleryImage.GetGalleryImageVersions(
 string galleryImageVersionName = "1.0.0";
 GalleryImageVersionData data = new GalleryImageVersionData(new AzureLocation("West US"))
 {
-    PublishingProfile = new GalleryImageVersionPublishingProfile()
+    PublishingProfile = new GalleryImageVersionPublishingProfile
     {
-        TargetRegions =
-        {
-        new TargetRegion("West US")
+        TargetRegions = {new TargetRegion("West US")
         {
         RegionalReplicaCount = 1,
         IsExcludedFromLatest = false,
-        }
-        },
+        }},
         ReplicationMode = GalleryReplicationMode.Shallow,
     },
-    StorageProfile = new GalleryImageVersionStorageProfile()
+    StorageProfile = new GalleryImageVersionStorageProfile
     {
-        GallerySource = new GalleryArtifactVersionFullSource()
+        GallerySource = new GalleryArtifactVersionFullSource
         {
             Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"),
         },
     },
-    SafetyProfile = new GalleryImageVersionSafetyProfile()
+    SafetyProfile = new GalleryImageVersionSafetyProfile
     {
         AllowDeletionOfReplicatedLocations = false,
     },

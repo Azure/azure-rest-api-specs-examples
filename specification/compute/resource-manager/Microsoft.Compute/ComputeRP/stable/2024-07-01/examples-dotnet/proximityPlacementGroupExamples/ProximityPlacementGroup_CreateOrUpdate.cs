@@ -30,15 +30,9 @@ ProximityPlacementGroupCollection collection = resourceGroupResource.GetProximit
 string proximityPlacementGroupName = "myProximityPlacementGroup";
 ProximityPlacementGroupData data = new ProximityPlacementGroupData(new AzureLocation("westus"))
 {
-    Zones =
-    {
-    "1"
-    },
+    Zones = { "1" },
     ProximityPlacementGroupType = ProximityPlacementGroupType.Standard,
-    IntentVmSizes =
-    {
-    "Basic_A0","Basic_A2"
-    },
+    IntentVmSizes = { "Basic_A0", "Basic_A2" },
 };
 ArmOperation<ProximityPlacementGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, proximityPlacementGroupName, data);
 ProximityPlacementGroupResource result = lro.Value;

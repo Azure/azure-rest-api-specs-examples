@@ -31,64 +31,55 @@ GalleryImageVersionCollection collection = galleryImage.GetGalleryImageVersions(
 string galleryImageVersionName = "1.0.0";
 GalleryImageVersionData data = new GalleryImageVersionData(new AzureLocation("West US"))
 {
-    PublishingProfile = new GalleryImageVersionPublishingProfile()
+    PublishingProfile = new GalleryImageVersionPublishingProfile
     {
-        TargetRegions =
-        {
-        new TargetRegion("West US")
+        TargetRegions = {new TargetRegion("West US")
         {
         RegionalReplicaCount = 1,
-        Encryption = new EncryptionImages()
+        Encryption = new EncryptionImages
         {
-        OSDiskImage = new OSDiskImageEncryption()
+        OSDiskImage = new OSDiskImageEncryption
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"),
         },
-        DataDiskImages =
-        {
-        new DataDiskImageEncryption(0)
+        DataDiskImages = {new DataDiskImageEncryption(0)
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherWestUSDiskEncryptionSet"),
-        },new DataDiskImageEncryption(1)
+        }, new DataDiskImageEncryption(1)
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myWestUSDiskEncryptionSet"),
-        }
-        },
+        }},
         },
         IsExcludedFromLatest = false,
-        },new TargetRegion("East US")
+        }, new TargetRegion("East US")
         {
         RegionalReplicaCount = 2,
         StorageAccountType = ImageStorageAccountType.StandardZrs,
-        Encryption = new EncryptionImages()
+        Encryption = new EncryptionImages
         {
-        OSDiskImage = new OSDiskImageEncryption()
+        OSDiskImage = new OSDiskImageEncryption
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"),
         },
-        DataDiskImages =
-        {
-        new DataDiskImageEncryption(0)
+        DataDiskImages = {new DataDiskImageEncryption(0)
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myOtherEastUSDiskEncryptionSet"),
-        },new DataDiskImageEncryption(1)
+        }, new DataDiskImageEncryption(1)
         {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSet/myEastUSDiskEncryptionSet"),
-        }
-        },
+        }},
         },
         IsExcludedFromLatest = false,
-        }
-        },
+        }},
     },
-    StorageProfile = new GalleryImageVersionStorageProfile()
+    StorageProfile = new GalleryImageVersionStorageProfile
     {
-        GallerySource = new GalleryArtifactVersionFullSource()
+        GallerySource = new GalleryArtifactVersionFullSource
         {
             Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageDefinitionName}/versions/{versionName}"),
         },
     },
-    SafetyProfile = new GalleryImageVersionSafetyProfile()
+    SafetyProfile = new GalleryImageVersionSafetyProfile
     {
         AllowDeletionOfReplicatedLocations = false,
     },

@@ -28,25 +28,25 @@ VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMac
 // invoke the operation
 VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLocation("westus"))
 {
-    Plan = new ComputePlan()
+    Plan = new ComputePlan
     {
         Name = "aaaaaaaaaa",
         Publisher = "aaaaaaaaaaaaaaaaaaaaaa",
         Product = "aaaaaaaaaaaaaaaaaaaa",
         PromotionCode = "aaaaaaaaaaaaaaaaaaaa",
     },
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.BasicA0,
-        VmSizeProperties = new VirtualMachineSizeProperties()
+        VmSizeProperties = new VirtualMachineSizeProperties
         {
             VCpusAvailable = 9,
             VCpusPerCore = 12,
         },
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -58,13 +58,13 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
         OSDisk = new VirtualMachineOSDisk(DiskCreateOptionType.FromImage)
         {
             OSType = SupportedOperatingSystemType.Windows,
-            EncryptionSettings = new DiskEncryptionSettings()
+            EncryptionSettings = new DiskEncryptionSettings
             {
-                DiskEncryptionKey = new KeyVaultSecretReference(new Uri("aaaaaaaa"), new WritableSubResource()
+                DiskEncryptionKey = new KeyVaultSecretReference(new Uri("aaaaaaaa"), new WritableSubResource
                 {
                     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
                 }),
-                KeyEncryptionKey = new KeyVaultKeyReference(new Uri("aaaaaaaaaaaaaa"), new WritableSubResource()
+                KeyEncryptionKey = new KeyVaultKeyReference(new Uri("aaaaaaaaaaaaaa"), new WritableSubResource
                 {
                     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
                 }),
@@ -75,13 +75,13 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
             ImageUri = new Uri("https://{storageAccountName}.blob.core.windows.net/{containerName}/{vhdName}.vhd"),
             Caching = CachingType.None,
             WriteAcceleratorEnabled = true,
-            DiffDiskSettings = new DiffDiskSettings()
+            DiffDiskSettings = new DiffDiskSettings
             {
                 Option = DiffDiskOption.Local,
                 Placement = DiffDiskPlacement.CacheDisk,
             },
             DiskSizeGB = 127,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardLrs,
                 DiskEncryptionSetId = new ResourceIdentifier("aaaaaaaaaaaa"),
@@ -89,9 +89,7 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
             },
             DeleteOption = DiskDeleteOptionType.Delete,
         },
-        DataDisks =
-        {
-        new VirtualMachineDataDisk(1,DiskCreateOptionType.Empty)
+        DataDisks = {new VirtualMachineDataDisk(1, DiskCreateOptionType.Empty)
         {
         Name = "vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d",
         VhdUri = new Uri("https://{storageAccountName}.blob.core.windows.net/{containerName}/{vhdName}.vhd"),
@@ -99,7 +97,7 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
         Caching = CachingType.None,
         WriteAcceleratorEnabled = true,
         DiskSizeGB = 128,
-        ManagedDisk = new VirtualMachineManagedDisk()
+        ManagedDisk = new VirtualMachineManagedDisk
         {
         StorageAccountType = StorageAccountType.StandardLrs,
         DiskEncryptionSetId = new ResourceIdentifier("aaaaaaaaaaaa"),
@@ -108,77 +106,65 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
         ToBeDetached = true,
         DetachOption = DiskDetachOptionType.ForceDetach,
         DeleteOption = DiskDeleteOptionType.Delete,
-        }
-        },
+        }},
     },
-    AdditionalCapabilities = new AdditionalCapabilities()
+    AdditionalCapabilities = new AdditionalCapabilities
     {
         UltraSsdEnabled = true,
         HibernationEnabled = true,
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "test000000",
         AdminUsername = "Foo12",
         AdminPassword = "aaaaaaaaaaaaaaaa",
         CustomData = "aaaa",
-        WindowsConfiguration = new WindowsConfiguration()
+        WindowsConfiguration = new WindowsConfiguration
         {
             ProvisionVmAgent = true,
             IsAutomaticUpdatesEnabled = true,
             TimeZone = "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            AdditionalUnattendContent =
-            {
-            new AdditionalUnattendContent()
+            AdditionalUnattendContent = {new AdditionalUnattendContent
             {
             PassName = PassName.OobeSystem,
             ComponentName = ComponentName.MicrosoftWindowsShellSetup,
             SettingName = SettingName.AutoLogon,
             Content = "aaaaaaaaaaaaaaaaaaaa",
-            }
-            },
-            PatchSettings = new PatchSettings()
+            }},
+            PatchSettings = new PatchSettings
             {
                 PatchMode = WindowsVmGuestPatchMode.Manual,
                 EnableHotpatching = true,
                 AssessmentMode = WindowsPatchAssessmentMode.ImageDefault,
             },
-            WinRMListeners =
-            {
-            new WinRMListener()
+            WinRMListeners = {new WinRMListener
             {
             Protocol = WinRMListenerProtocolType.Http,
             CertificateUri = new Uri("aaaaaaaaaaaaaaaaaaaaaa"),
-            }
-            },
+            }},
         },
-        LinuxConfiguration = new LinuxConfiguration()
+        LinuxConfiguration = new LinuxConfiguration
         {
             IsPasswordAuthenticationDisabled = true,
-            SshPublicKeys =
-            {
-            new SshPublicKeyConfiguration()
+            SshPublicKeys = {new SshPublicKeyConfiguration
             {
             Path = "aaa",
             KeyData = "aaaaaa",
-            }
-            },
+            }},
             ProvisionVmAgent = true,
-            PatchSettings = new LinuxPatchSettings()
+            PatchSettings = new LinuxPatchSettings
             {
                 PatchMode = LinuxVmGuestPatchMode.ImageDefault,
                 AssessmentMode = LinuxPatchAssessmentMode.ImageDefault,
             },
         },
-        Secrets =
-        {
-        },
+        Secrets = { },
         AllowExtensionOperations = true,
         RequireGuestProvisionSignal = true,
     },
-    SecurityProfile = new SecurityProfile()
+    SecurityProfile = new SecurityProfile
     {
-        UefiSettings = new UefiSettings()
+        UefiSettings = new UefiSettings
         {
             IsSecureBootEnabled = true,
             IsVirtualTpmEnabled = true,
@@ -186,21 +172,16 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
         EncryptionAtHost = true,
         SecurityType = SecurityType.TrustedLaunch,
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         DeleteOption = ComputeDeleteOption.Delete,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/{vmss-name}/virtualMachines/0/networkInterfaces/vmsstestnetconfig5415"),
-        }
-        },
+        }},
         NetworkApiVersion = NetworkApiVersion.TwoThousandTwenty1101,
-        NetworkInterfaceConfigurations =
-        {
-        new VirtualMachineNetworkInterfaceConfiguration("aaaaaaaaaaa")
+        NetworkInterfaceConfigurations = {new VirtualMachineNetworkInterfaceConfiguration("aaaaaaaaaaa")
         {
         Primary = true,
         DeleteOption = ComputeDeleteOption.Delete,
@@ -208,19 +189,14 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
         EnableFpga = true,
         EnableIPForwarding = true,
         NetworkSecurityGroupId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-        DnsServers =
-        {
-        "aaaaaa"
-        },
-        IPConfigurations =
-        {
-        new VirtualMachineNetworkInterfaceIPConfiguration("aa")
+        DnsServers = {"aaaaaa"},
+        IPConfigurations = {new VirtualMachineNetworkInterfaceIPConfiguration("aa")
         {
         SubnetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
         Primary = true,
         PublicIPAddressConfiguration = new VirtualMachinePublicIPAddressConfiguration("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
         {
-        Sku = new ComputePublicIPAddressSku()
+        Sku = new ComputePublicIPAddressSku
         {
         Name = ComputePublicIPAddressSkuName.Basic,
         Tier = ComputePublicIPAddressSkuTier.Regional,
@@ -228,135 +204,96 @@ VirtualMachineScaleSetVmData data = new VirtualMachineScaleSetVmData(new AzureLo
         IdleTimeoutInMinutes = 2,
         DeleteOption = ComputeDeleteOption.Delete,
         DnsSettings = new VirtualMachinePublicIPAddressDnsSettingsConfiguration("aaaaaaaaaaaaaaaaaaaaaaaaa"),
-        IPTags =
-        {
-        new VirtualMachineIPTag()
+        IPTags = {new VirtualMachineIPTag
         {
         IPTagType = "aaaaaaaaaaaaaaaaaaaaaaaaa",
         Tag = "aaaaaaaaaaaaaaaaaaaa",
-        }
-        },
+        }},
         PublicIPPrefixId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
         PublicIPAddressVersion = IPVersion.IPv4,
         PublicIPAllocationMethod = PublicIPAllocationMethod.Dynamic,
         },
         PrivateIPAddressVersion = IPVersion.IPv4,
-        ApplicationSecurityGroups =
-        {
-        new WritableSubResource()
+        ApplicationSecurityGroups = {new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-        }
-        },
-        ApplicationGatewayBackendAddressPools =
-        {
-        new WritableSubResource()
+        }},
+        ApplicationGatewayBackendAddressPools = {new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-        }
-        },
-        LoadBalancerBackendAddressPools =
-        {
-        new WritableSubResource()
+        }},
+        LoadBalancerBackendAddressPools = {new WritableSubResource
         {
         Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-        }
-        },
-        }
-        },
+        }},
+        }},
         DscpConfigurationId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-        }
-        },
+        }},
     },
-    NetworkInterfaceConfigurations =
-    {
-    new VirtualMachineScaleSetNetworkConfiguration("vmsstestnetconfig5415")
+    NetworkInterfaceConfigurations = {new VirtualMachineScaleSetNetworkConfiguration("vmsstestnetconfig5415")
     {
     Primary = true,
     EnableAcceleratedNetworking = true,
     EnableFpga = true,
     NetworkSecurityGroupId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-    DnsServers =
-    {
-    },
-    IPConfigurations =
-    {
-    new VirtualMachineScaleSetIPConfiguration("vmsstestnetconfig9693")
+    DnsServers = {},
+    IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("vmsstestnetconfig9693")
     {
     SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/vn4071/subnets/sn5503"),
     Primary = true,
     PublicIPAddressConfiguration = new VirtualMachineScaleSetPublicIPAddressConfiguration("aaaaaaaaaaaaaaaaaa")
     {
-    Sku = new ComputePublicIPAddressSku()
+    Sku = new ComputePublicIPAddressSku
     {
     Name = ComputePublicIPAddressSkuName.Basic,
     Tier = ComputePublicIPAddressSkuTier.Regional,
     },
     IdleTimeoutInMinutes = 18,
     DnsSettings = new VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings("aaaaaaaaaaaaaaaaaa"),
-    IPTags =
-    {
-    new VirtualMachineScaleSetIPTag()
+    IPTags = {new VirtualMachineScaleSetIPTag
     {
     IPTagType = "aaaaaaa",
     Tag = "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    }
-    },
+    }},
     PublicIPPrefixId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
     PublicIPAddressVersion = IPVersion.IPv4,
     DeleteOption = ComputeDeleteOption.Delete,
     },
     PrivateIPAddressVersion = IPVersion.IPv4,
-    ApplicationGatewayBackendAddressPools =
-    {
-    new WritableSubResource()
+    ApplicationGatewayBackendAddressPools = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-    }
-    },
-    ApplicationSecurityGroups =
-    {
-    new WritableSubResource()
+    }},
+    ApplicationSecurityGroups = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-    }
-    },
-    LoadBalancerBackendAddressPools =
-    {
-    new WritableSubResource()
+    }},
+    LoadBalancerBackendAddressPools = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-    }
-    },
-    LoadBalancerInboundNatPools =
-    {
-    new WritableSubResource()
+    }},
+    LoadBalancerInboundNatPools = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-    }
-    },
-    }
-    },
+    }},
+    }},
     EnableIPForwarding = true,
     DeleteOption = ComputeDeleteOption.Delete,
-    }
-    },
-    BootDiagnostics = new BootDiagnostics()
+    }},
+    BootDiagnostics = new BootDiagnostics
     {
         Enabled = true,
         StorageUri = new Uri("aaaaaaaaaaaaa"),
     },
     AvailabilitySetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
     LicenseType = "aaaaaaaaaa",
-    ProtectionPolicy = new VirtualMachineScaleSetVmProtectionPolicy()
+    ProtectionPolicy = new VirtualMachineScaleSetVmProtectionPolicy
     {
         ProtectFromScaleIn = true,
         ProtectFromScaleSetActions = true,
     },
     UserData = "RXhhbXBsZSBVc2VyRGF0YQ==",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<VirtualMachineScaleSetVmResource> lro = await virtualMachineScaleSetVm.UpdateAsync(WaitUntil.Completed, data);
 VirtualMachineScaleSetVmResource result = lro.Value;

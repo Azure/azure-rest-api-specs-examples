@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -27,18 +26,18 @@ ResourceIdentifier virtualMachineExtensionResourceId = VirtualMachineExtensionRe
 VirtualMachineExtensionResource virtualMachineExtension = client.GetVirtualMachineExtensionResource(virtualMachineExtensionResourceId);
 
 // invoke the operation
-VirtualMachineExtensionPatch patch = new VirtualMachineExtensionPatch()
+VirtualMachineExtensionPatch patch = new VirtualMachineExtensionPatch
 {
     Publisher = "extPublisher",
     ExtensionType = "extType",
     TypeHandlerVersion = "1.2",
     AutoUpgradeMinorVersion = true,
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Settings = BinaryData.FromObjectAsJson(new
     {
-        ["UserName"] = "xyz@microsoft.com"
+        UserName = "xyz@microsoft.com",
     }),
     SuppressFailures = true,
-    KeyVaultProtectedSettings = new KeyVaultSecretReference(new Uri("https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"), new WritableSubResource()
+    KeyVaultProtectedSettings = new KeyVaultSecretReference(new Uri("https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"), new WritableSubResource
     {
         Id = new ResourceIdentifier("/subscriptions/a53f7094-a16c-47af-abe4-b05c05d0d79a/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/kvName"),
     }),

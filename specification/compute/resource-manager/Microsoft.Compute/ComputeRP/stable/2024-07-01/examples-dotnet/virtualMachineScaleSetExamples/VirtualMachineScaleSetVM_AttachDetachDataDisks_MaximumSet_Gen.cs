@@ -26,34 +26,28 @@ ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVm
 VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
 
 // invoke the operation
-AttachDetachDataDisksRequest attachDetachDataDisksRequest = new AttachDetachDataDisksRequest()
+AttachDetachDataDisksRequest attachDetachDataDisksRequest = new AttachDetachDataDisksRequest
 {
-    DataDisksToAttach =
-    {
-    new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d")
+    DataDisksToAttach = {new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d")
     {
     Lun = 1,
     Caching = CachingType.ReadOnly,
     DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"),
     WriteAcceleratorEnabled = true,
-    },new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_2_disk3_7d5e664bdafa49baa780eb2d128ff38e")
+    }, new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_2_disk3_7d5e664bdafa49baa780eb2d128ff38e")
     {
     Lun = 2,
     Caching = CachingType.ReadWrite,
     DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"),
     WriteAcceleratorEnabled = false,
-    }
-    },
-    DataDisksToDetach =
-    {
-    new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_1_disk1_1a4e784bdafa49baa780eb2d128ff65x")
+    }},
+    DataDisksToDetach = {new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_1_disk1_1a4e784bdafa49baa780eb2d128ff65x")
     {
     DetachOption = DiskDetachOptionType.ForceDetach,
-    },new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_4_disk4_4d4e784bdafa49baa780eb2d256ff41z")
+    }, new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_4_disk4_4d4e784bdafa49baa780eb2d256ff41z")
     {
     DetachOption = DiskDetachOptionType.ForceDetach,
-    }
-    },
+    }},
 };
 ArmOperation<VirtualMachineStorageProfile> lro = await virtualMachineScaleSetVm.AttachDetachDataDisksAsync(WaitUntil.Completed, attachDetachDataDisksRequest);
 VirtualMachineStorageProfile result = lro.Value;

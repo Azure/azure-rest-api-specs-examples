@@ -26,20 +26,17 @@ ResourceIdentifier galleryApplicationVersionResourceId = GalleryApplicationVersi
 GalleryApplicationVersionResource galleryApplicationVersion = client.GetGalleryApplicationVersionResource(galleryApplicationVersionResourceId);
 
 // invoke the operation
-GalleryApplicationVersionPatch patch = new GalleryApplicationVersionPatch()
+GalleryApplicationVersionPatch patch = new GalleryApplicationVersionPatch
 {
     PublishingProfile = new GalleryApplicationVersionPublishingProfile(new UserArtifactSource("https://mystorageaccount.blob.core.windows.net/mycontainer/package.zip?{sasKey}"))
     {
         ManageActions = new UserArtifactManagement("powershell -command \"Expand-Archive -Path package.zip -DestinationPath C:\\package\"", "del C:\\package "),
-        TargetRegions =
-        {
-        new TargetRegion("West US")
+        TargetRegions = {new TargetRegion("West US")
         {
         RegionalReplicaCount = 1,
         StorageAccountType = ImageStorageAccountType.StandardLrs,
         IsExcludedFromLatest = false,
-        }
-        },
+        }},
         ReplicaCount = 1,
         EndOfLifeOn = DateTimeOffset.Parse("2019-07-01T07:00:00Z"),
         StorageAccountType = ImageStorageAccountType.StandardLrs,

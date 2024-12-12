@@ -30,7 +30,7 @@ DiskImageCollection collection = resourceGroupResource.GetDiskImages();
 string imageName = "myImage";
 DiskImageData data = new DiskImageData(new AzureLocation("West US"))
 {
-    StorageProfile = new ImageStorageProfile()
+    StorageProfile = new ImageStorageProfile
     {
         OSDisk = new ImageOSDisk(SupportedOperatingSystemType.Linux, OperatingSystemStateType.Generalized)
         {

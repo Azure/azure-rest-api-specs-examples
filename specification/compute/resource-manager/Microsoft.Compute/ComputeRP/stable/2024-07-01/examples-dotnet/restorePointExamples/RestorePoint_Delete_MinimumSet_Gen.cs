@@ -27,4 +27,4 @@ RestorePointResource restorePoint = client.GetRestorePointResource(restorePointR
 // invoke the operation
 await restorePoint.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -32,87 +31,79 @@ VirtualMachineScaleSetCollection collection = resourceGroupResource.GetVirtualMa
 string virtualMachineScaleSetName = "{vmss-name}";
 VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocation("westus"))
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "Standard_D1_v2",
         Tier = "Standard",
         Capacity = 3L,
     },
-    UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy()
+    Properties = new VirtualMachineScaleSetProperties
     {
-        Mode = VirtualMachineScaleSetUpgradeMode.Manual,
-    },
-    VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
-    {
-        OSProfile = new VirtualMachineScaleSetOSProfile()
+        UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy
         {
-            ComputerNamePrefix = "{vmss-name}",
-            AdminUsername = "{your-username}",
-            AdminPassword = "{your-password}",
+            Mode = VirtualMachineScaleSetUpgradeMode.Manual,
         },
-        StorageProfile = new VirtualMachineScaleSetStorageProfile()
+        VirtualMachineProfile = new VirtualMachineScaleSetVmProfile
         {
-            ImageReference = new ImageReference()
+            OSProfile = new VirtualMachineScaleSetOSProfile
             {
-                Publisher = "MicrosoftWindowsServer",
-                Offer = "WindowsServer",
-                Sku = "2016-Datacenter",
-                Version = "latest",
+                ComputerNamePrefix = "{vmss-name}",
+                AdminUsername = "{your-username}",
+                AdminPassword = "{your-password}",
             },
-            OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+            StorageProfile = new VirtualMachineScaleSetStorageProfile
             {
-                Caching = CachingType.ReadWrite,
-                ManagedDisk = new VirtualMachineScaleSetManagedDisk()
+                ImageReference = new ImageReference
                 {
-                    StorageAccountType = StorageAccountType.StandardLrs,
+                    Publisher = "MicrosoftWindowsServer",
+                    Offer = "WindowsServer",
+                    Sku = "2016-Datacenter",
+                    Version = "latest",
+                },
+                OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+                {
+                    Caching = CachingType.ReadWrite,
+                    ManagedDisk = new VirtualMachineScaleSetManagedDisk
+                    {
+                        StorageAccountType = StorageAccountType.StandardLrs,
+                    },
                 },
             },
-        },
-        NetworkProfile = new VirtualMachineScaleSetNetworkProfile()
-        {
-            NetworkInterfaceConfigurations =
+            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
             {
-            new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
-            {
-            Primary = true,
-            IPConfigurations =
-            {
-            new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
-            {
-            SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
-            }
+                NetworkInterfaceConfigurations = {new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
+                {
+                Primary = true,
+                IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
+                {
+                SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
+                }},
+                EnableIPForwarding = true,
+                }},
             },
-            EnableIPForwarding = true,
-            }
+            BootDiagnostics = new BootDiagnostics
+            {
+                Enabled = true,
+                StorageUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net"),
             },
-        },
-        BootDiagnostics = new BootDiagnostics()
-        {
-            Enabled = true,
-            StorageUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net"),
-        },
-        ExtensionProfile = new VirtualMachineScaleSetExtensionProfile()
-        {
-            Extensions =
+            ExtensionProfile = new VirtualMachineScaleSetExtensionProfile
             {
-            new VirtualMachineScaleSetExtensionData()
-            {
-            Publisher = "{extension-Publisher}",
-            ExtensionType = "{extension-Type}",
-            TypeHandlerVersion = "{handler-version}",
-            AutoUpgradeMinorVersion = false,
-            Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-            {
-            }),
-            KeyVaultProtectedSettings = new KeyVaultSecretReference(new Uri("https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"),new WritableSubResource()
-            {
-            Id = new ResourceIdentifier("/subscriptions/a53f7094-a16c-47af-abe4-b05c05d0d79a/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/kvName"),
-            }),
-            }
+                Extensions = {new VirtualMachineScaleSetExtensionData
+                {
+                Publisher = "{extension-Publisher}",
+                ExtensionType = "{extension-Type}",
+                TypeHandlerVersion = "{handler-version}",
+                AutoUpgradeMinorVersion = false,
+                Settings = BinaryData.FromObjectAsJson(new object()),
+                KeyVaultProtectedSettings = new KeyVaultSecretReference(new Uri("https://kvName.vault.azure.net/secrets/secretName/79b88b3a6f5440ffb2e73e44a0db712e"), new WritableSubResource
+                {
+                Id = new ResourceIdentifier("/subscriptions/a53f7094-a16c-47af-abe4-b05c05d0d79a/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/kvName"),
+                }),
+                }},
             },
         },
+        Overprovision = true,
     },
-    Overprovision = true,
 };
 ArmOperation<VirtualMachineScaleSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualMachineScaleSetName, data);
 VirtualMachineScaleSetResource result = lro.Value;

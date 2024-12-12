@@ -31,13 +31,13 @@ VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines()
 string vmName = "myVM";
 VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD1V2,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -48,35 +48,31 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         {
             Name = "myVMosdisk",
             Caching = CachingType.ReadWrite,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardLrs,
             },
         },
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
         NetworkApiVersion = NetworkApiVersion.TwoThousandTwenty1101,
-        NetworkInterfaceConfigurations =
-        {
-        new VirtualMachineNetworkInterfaceConfiguration("{nic-config-name}")
+        NetworkInterfaceConfigurations = {new VirtualMachineNetworkInterfaceConfiguration("{nic-config-name}")
         {
         Primary = true,
         DeleteOption = ComputeDeleteOption.Delete,
-        IPConfigurations =
-        {
-        new VirtualMachineNetworkInterfaceIPConfiguration("{ip-config-name}")
+        IPConfigurations = {new VirtualMachineNetworkInterfaceIPConfiguration("{ip-config-name}")
         {
         Primary = true,
         PublicIPAddressConfiguration = new VirtualMachinePublicIPAddressConfiguration("{publicIP-config-name}")
         {
-        Sku = new ComputePublicIPAddressSku()
+        Sku = new ComputePublicIPAddressSku
         {
         Name = ComputePublicIPAddressSkuName.Basic,
         Tier = ComputePublicIPAddressSkuTier.Global,
@@ -84,10 +80,8 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         DeleteOption = ComputeDeleteOption.Detach,
         PublicIPAllocationMethod = PublicIPAllocationMethod.Static,
         },
-        }
-        },
-        }
-        },
+        }},
+        }},
     },
 };
 ArmOperation<VirtualMachineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmName, data);

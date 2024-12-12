@@ -31,7 +31,7 @@ ManagedDiskCollection collection = resourceGroupResource.GetManagedDisks();
 string diskName = "myUltraReadOnlyDisk";
 ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
 {
-    Sku = new DiskSku()
+    Sku = new DiskSku
     {
         Name = DiskStorageAccountType.UltraSsdLrs,
     },
@@ -42,7 +42,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
     DiskSizeGB = 200,
     DiskIopsReadWrite = 125L,
     DiskMBpsReadWrite = 3000L,
-    Encryption = new DiskEncryption()
+    Encryption = new DiskEncryption
     {
         EncryptionType = ComputeEncryptionType.EncryptionAtRestWithPlatformKey,
     },

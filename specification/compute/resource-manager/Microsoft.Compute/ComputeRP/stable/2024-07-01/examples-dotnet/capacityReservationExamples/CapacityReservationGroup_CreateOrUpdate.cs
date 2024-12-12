@@ -31,23 +31,17 @@ CapacityReservationGroupCollection collection = resourceGroupResource.GetCapacit
 string capacityReservationGroupName = "myCapacityReservationGroup";
 CapacityReservationGroupData data = new CapacityReservationGroupData(new AzureLocation("westus"))
 {
-    Zones =
-    {
-    "1","2"
-    },
-    SharingSubscriptionIds =
-    {
-    new WritableSubResource()
+    Zones = { "1", "2" },
+    SharingSubscriptionIds = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscription-id1}"),
-    },new WritableSubResource()
+    }, new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscription-id2}"),
-    }
-    },
+    }},
     Tags =
     {
-    ["department"] = "finance",
+    ["department"] = "finance"
     },
 };
 ArmOperation<CapacityReservationGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, capacityReservationGroupName, data);

@@ -35,16 +35,16 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity")] = new UserAssignedIdentity()
         },
     },
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD2SV3,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -55,30 +55,27 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         {
             Name = "myVMosdisk",
             Caching = CachingType.ReadOnly,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardSsdLrs,
             },
         },
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
-    SecurityProfile = new SecurityProfile()
+    SecurityProfile = new SecurityProfile
     {
         UserAssignedIdentityResourceId = "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myIdentity",
     },

@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineExamples/VirtualMachine_Update_DetachDataDiskUsingToBeDetachedProperty.json
@@ -26,15 +25,15 @@ ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResou
 VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
 
 // invoke the operation
-VirtualMachinePatch patch = new VirtualMachinePatch()
+VirtualMachinePatch patch = new VirtualMachinePatch
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD2V2,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -45,40 +44,34 @@ VirtualMachinePatch patch = new VirtualMachinePatch()
         {
             Name = "myVMosdisk",
             Caching = CachingType.ReadWrite,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.StandardLrs,
             },
         },
-        DataDisks =
-        {
-        new VirtualMachineDataDisk(0,DiskCreateOptionType.Empty)
+        DataDisks = {new VirtualMachineDataDisk(0, DiskCreateOptionType.Empty)
         {
         DiskSizeGB = 1023,
         ToBeDetached = true,
-        },new VirtualMachineDataDisk(1,DiskCreateOptionType.Empty)
+        }, new VirtualMachineDataDisk(1, DiskCreateOptionType.Empty)
         {
         DiskSizeGB = 1023,
         ToBeDetached = false,
-        }
-        },
+        }},
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
 };
 ArmOperation<VirtualMachineResource> lro = await virtualMachine.UpdateAsync(WaitUntil.Completed, patch);

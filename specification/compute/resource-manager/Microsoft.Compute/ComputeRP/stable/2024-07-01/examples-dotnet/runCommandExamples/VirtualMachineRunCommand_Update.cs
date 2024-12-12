@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/runCommandExamples/VirtualMachineRunCommand_Update.json
@@ -26,23 +25,20 @@ ResourceIdentifier virtualMachineRunCommandResourceId = VirtualMachineRunCommand
 VirtualMachineRunCommandResource virtualMachineRunCommand = client.GetVirtualMachineRunCommandResource(virtualMachineRunCommandResourceId);
 
 // invoke the operation
-VirtualMachineRunCommandUpdate runCommand = new VirtualMachineRunCommandUpdate()
+VirtualMachineRunCommandUpdate runCommand = new VirtualMachineRunCommandUpdate
 {
-    Source = new VirtualMachineRunCommandScriptSource()
+    Source = new VirtualMachineRunCommandScriptSource
     {
         Script = "Write-Host Hello World! ; Remove-Item C:\test\testFile.txt",
     },
-    Parameters =
-    {
-    new RunCommandInputParameter("param1","value1"),new RunCommandInputParameter("param2","value2")
-    },
+    Parameters = { new RunCommandInputParameter("param1", "value1"), new RunCommandInputParameter("param2", "value2") },
     AsyncExecution = false,
     RunAsUser = "user1",
     RunAsPassword = "<runAsPassword>",
     TimeoutInSeconds = 3600,
     OutputBlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/myscriptoutputcontainer/outputUri"),
     ErrorBlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/mycontainer/MyScriptError.txt"),
-    ErrorBlobManagedIdentity = new RunCommandManagedIdentity()
+    ErrorBlobManagedIdentity = new RunCommandManagedIdentity
     {
         ObjectId = "4231e4d2-33e4-4e23-96b2-17888afa6072",
     },

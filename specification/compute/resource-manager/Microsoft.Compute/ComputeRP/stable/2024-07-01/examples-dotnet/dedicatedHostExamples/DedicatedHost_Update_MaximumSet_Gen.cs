@@ -25,14 +25,14 @@ ResourceIdentifier dedicatedHostResourceId = DedicatedHostResource.CreateResourc
 DedicatedHostResource dedicatedHost = client.GetDedicatedHostResource(dedicatedHostResourceId);
 
 // invoke the operation
-DedicatedHostPatch patch = new DedicatedHostPatch()
+DedicatedHostPatch patch = new DedicatedHostPatch
 {
     PlatformFaultDomain = 1,
     AutoReplaceOnFailure = true,
     LicenseType = DedicatedHostLicenseType.WindowsServerHybrid,
     Tags =
     {
-    ["key8813"] = "aaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    ["key8813"] = "aaaaaaaaaaaaaaaaaaaaaaaaaaa"
     },
 };
 ArmOperation<DedicatedHostResource> lro = await dedicatedHost.UpdateAsync(WaitUntil.Completed, patch);

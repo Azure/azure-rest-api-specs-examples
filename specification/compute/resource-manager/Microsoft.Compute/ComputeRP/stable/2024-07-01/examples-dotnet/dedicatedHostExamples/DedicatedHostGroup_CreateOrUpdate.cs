@@ -29,15 +29,12 @@ DedicatedHostGroupCollection collection = resourceGroupResource.GetDedicatedHost
 string hostGroupName = "myDedicatedHostGroup";
 DedicatedHostGroupData data = new DedicatedHostGroupData(new AzureLocation("westus"))
 {
-    Zones =
-    {
-    "1"
-    },
+    Zones = { "1" },
     PlatformFaultDomainCount = 3,
     SupportAutomaticPlacement = true,
     Tags =
     {
-    ["department"] = "finance",
+    ["department"] = "finance"
     },
 };
 ArmOperation<DedicatedHostGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, hostGroupName, data);

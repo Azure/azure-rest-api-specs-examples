@@ -28,7 +28,7 @@ DedicatedHostCollection collection = dedicatedHostGroup.GetDedicatedHosts();
 
 // invoke the operation
 string hostName = "myDedicatedHost";
-DedicatedHostData data = new DedicatedHostData(new AzureLocation("westus"), new ComputeSku()
+DedicatedHostData data = new DedicatedHostData(new AzureLocation("westus"), new ComputeSku
 {
     Name = "DSv3-Type1",
 })
@@ -36,7 +36,7 @@ DedicatedHostData data = new DedicatedHostData(new AzureLocation("westus"), new 
     PlatformFaultDomain = 1,
     Tags =
     {
-    ["department"] = "HR",
+    ["department"] = "HR"
     },
 };
 ArmOperation<DedicatedHostResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, hostName, data);

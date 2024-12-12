@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/dedicatedHostExamples/DedicatedHostGroup_Update_MaximumSet_Gen.json
@@ -25,17 +24,14 @@ ResourceIdentifier dedicatedHostGroupResourceId = DedicatedHostGroupResource.Cre
 DedicatedHostGroupResource dedicatedHostGroup = client.GetDedicatedHostGroupResource(dedicatedHostGroupResourceId);
 
 // invoke the operation
-DedicatedHostGroupPatch patch = new DedicatedHostGroupPatch()
+DedicatedHostGroupPatch patch = new DedicatedHostGroupPatch
 {
-    Zones =
-    {
-    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    },
+    Zones = { "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa" },
     PlatformFaultDomainCount = 3,
     SupportAutomaticPlacement = true,
     Tags =
     {
-    ["key9921"] = "aaaaaaaaaa",
+    ["key9921"] = "aaaaaaaaaa"
     },
 };
 DedicatedHostGroupResource result = await dedicatedHostGroup.UpdateAsync(patch);

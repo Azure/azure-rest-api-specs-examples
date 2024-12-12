@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/examples/diskEncryptionSetExamples/DiskEncryptionSet_Update_WithRotationToLatestKeyVersionEnabledInProgress.json
@@ -26,7 +25,7 @@ ResourceIdentifier diskEncryptionSetResourceId = DiskEncryptionSetResource.Creat
 DiskEncryptionSetResource diskEncryptionSet = client.GetDiskEncryptionSetResource(diskEncryptionSetResourceId);
 
 // invoke the operation
-DiskEncryptionSetPatch patch = new DiskEncryptionSetPatch()
+DiskEncryptionSetPatch patch = new DiskEncryptionSetPatch
 {
     Identity = new ManagedServiceIdentity("SystemAssigned"),
     EncryptionType = DiskEncryptionSetType.EncryptionAtRestWithCustomerKey,

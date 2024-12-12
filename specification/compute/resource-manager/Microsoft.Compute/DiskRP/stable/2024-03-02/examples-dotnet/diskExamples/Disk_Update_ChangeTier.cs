@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/examples/diskExamples/Disk_Update_ChangeTier.json
@@ -25,7 +24,7 @@ ResourceIdentifier managedDiskResourceId = ManagedDiskResource.CreateResourceIde
 ManagedDiskResource managedDisk = client.GetManagedDiskResource(managedDiskResourceId);
 
 // invoke the operation
-ManagedDiskPatch patch = new ManagedDiskPatch()
+ManagedDiskPatch patch = new ManagedDiskPatch
 {
     Tier = "P30",
 };

@@ -28,4 +28,4 @@ await foreach (ComputeResourceSku item in subscriptionResource.GetComputeResourc
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

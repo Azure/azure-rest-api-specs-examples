@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineExamples/VirtualMachine_InstallPatches.json
@@ -29,12 +28,9 @@ VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtual
 VirtualMachineInstallPatchesContent content = new VirtualMachineInstallPatchesContent(VmGuestPatchRebootSetting.IfRequired)
 {
     MaximumDuration = XmlConvert.ToTimeSpan("PT4H"),
-    WindowsParameters = new WindowsParameters()
+    WindowsParameters = new WindowsParameters
     {
-        ClassificationsToInclude =
-        {
-        VmGuestPatchClassificationForWindows.Critical,VmGuestPatchClassificationForWindows.Security
-        },
+        ClassificationsToInclude = { VmGuestPatchClassificationForWindows.Critical, VmGuestPatchClassificationForWindows.Security },
         MaxPatchPublishOn = DateTimeOffset.Parse("2020-11-19T02:36:43.0539904+00:00"),
     },
 };

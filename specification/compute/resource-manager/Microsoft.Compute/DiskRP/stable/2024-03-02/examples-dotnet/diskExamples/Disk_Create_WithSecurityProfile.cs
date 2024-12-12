@@ -34,12 +34,12 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("North Central US")
     OSType = SupportedOperatingSystemType.Windows,
     CreationData = new DiskCreationData(DiskCreateOption.FromImage)
     {
-        ImageReference = new ImageDiskReference()
+        ImageReference = new ImageDiskReference
         {
             Id = new ResourceIdentifier("/Subscriptions/{subscriptionId}/Providers/Microsoft.Compute/Locations/uswest/Publishers/Microsoft/ArtifactTypes/VMImage/Offers/{offer}"),
         },
     },
-    SecurityProfile = new DiskSecurityProfile()
+    SecurityProfile = new DiskSecurityProfile
     {
         SecurityType = DiskSecurityType.TrustedLaunch,
     },

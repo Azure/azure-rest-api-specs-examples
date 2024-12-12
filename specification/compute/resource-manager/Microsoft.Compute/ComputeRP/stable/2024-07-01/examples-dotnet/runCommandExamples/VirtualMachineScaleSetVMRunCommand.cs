@@ -28,10 +28,7 @@ VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMac
 // invoke the operation
 RunCommandInput input = new RunCommandInput("RunPowerShellScript")
 {
-    Script =
-    {
-    "Write-Host Hello World!"
-    },
+    Script = { "Write-Host Hello World!" },
 };
 ArmOperation<VirtualMachineRunCommandResult> lro = await virtualMachineScaleSetVm.RunCommandAsync(WaitUntil.Completed, input);
 VirtualMachineRunCommandResult result = lro.Value;

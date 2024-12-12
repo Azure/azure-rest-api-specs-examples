@@ -32,4 +32,4 @@ await foreach (DiskAccessResource item in subscriptionResource.GetDiskAccessesAs
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -38,7 +38,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
         SourceUri = new Uri("https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"),
         SecurityDataUri = new Uri("https://mystorageaccount.blob.core.windows.net/osimages/vmgs.vhd"),
     },
-    SecurityProfile = new DiskSecurityProfile()
+    SecurityProfile = new DiskSecurityProfile
     {
         SecurityType = DiskSecurityType.ConfidentialVmGuestStateOnlyEncryptedWithPlatformKey,
     },

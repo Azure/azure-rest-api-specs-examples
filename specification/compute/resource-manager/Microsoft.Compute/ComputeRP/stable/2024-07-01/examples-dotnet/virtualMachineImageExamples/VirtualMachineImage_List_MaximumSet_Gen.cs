@@ -23,10 +23,14 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-SubscriptionResourceGetVirtualMachineImagesOptions options = new SubscriptionResourceGetVirtualMachineImagesOptions(location: new AzureLocation("aaaaaaaaaaaaaaa"), publisherName: "aaaaaa", offer: "aaaaaaaaaaaaaaaa", skus: "aaaaaaaaaaaaaaaaaaaaaaa") { Expand = "aaaaaaaaaaaaaaaaaaaaaaaa", Top = 18, Orderby = "aa" };
+AzureLocation location = new AzureLocation("aaaaaaaaaaaaaaa");
+string publisherName = "aaaaaa";
+string offer = "aaaaaaaaaaaaaaaa";
+string skus = "aaaaaaaaaaaaaaaaaaaaaaa";
+SubscriptionResourceGetVirtualMachineImagesOptions options = new SubscriptionResourceGetVirtualMachineImagesOptions(location, publisherName, offer, skus) { Expand = "aaaaaaaaaaaaaaaaaaaaaaaa", Top = 18, Orderby = "aa" };
 await foreach (VirtualMachineImageBase item in subscriptionResource.GetVirtualMachineImagesAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

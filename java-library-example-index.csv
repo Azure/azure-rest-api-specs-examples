@@ -4863,3 +4863,4 @@ id,name,language,tag,package,version,date_epoch,date
 4862,com.azure.resourcemanager:azure-resourcemanager-managednetworkfabric:1.1.0,java,azure-resourcemanager-managednetworkfabric_1.1.0,azure-resourcemanager-managednetworkfabric,1.1.0,1733913865,12/11/2024
 4863,com.azure.resourcemanager:azure-resourcemanager-resourceconnector:1.1.0,java,azure-resourcemanager-resourceconnector_1.1.0,azure-resourcemanager-resourceconnector,1.1.0,1733913790,12/11/2024
 4864,com.azure.resourcemanager:azure-resourcemanager-maps:1.1.0,java,azure-resourcemanager-maps_1.1.0,azure-resourcemanager-maps,1.1.0,1733903681,12/11/2024
+4865,"Azure.ResourceManager.Compute,1.7.0-beta.2",dotnet,Azure.ResourceManager.Compute_1.7.0-beta.2,Azure.ResourceManager.Compute,1.7.0-beta.2,1733978749,12/12/2024

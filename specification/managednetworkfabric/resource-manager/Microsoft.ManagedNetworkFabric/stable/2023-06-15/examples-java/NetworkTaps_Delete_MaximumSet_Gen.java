@@ -1,11 +1,16 @@
-/** Samples for NetworkTaps Delete. */
+
+/**
+ * Samples for NetworkTaps Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkTaps_Delete_MaximumSet_Gen.json
+     * x-ms-original-file:
+     * specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/
+     * NetworkTaps_Delete_MaximumSet_Gen.json
      */
     /**
      * Sample code: NetworkTaps_Delete_MaximumSet_Gen.
-     *
+     * 
      * @param manager Entry point to ManagedNetworkFabricManager.
      */
     public static void networkTapsDeleteMaximumSetGen(

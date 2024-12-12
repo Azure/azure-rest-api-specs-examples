@@ -1,11 +1,16 @@
-/** Samples for RoutePolicies List. */
+
+/**
+ * Samples for RoutePolicies List.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/RoutePolicies_ListBySubscription_MaximumSet_Gen.json
+     * x-ms-original-file:
+     * specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/
+     * RoutePolicies_ListBySubscription_MaximumSet_Gen.json
      */
     /**
      * Sample code: RoutePolicies_ListBySubscription_MaximumSet_Gen.
-     *
+     * 
      * @param manager Entry point to ManagedNetworkFabricManager.
      */
     public static void routePoliciesListBySubscriptionMaximumSetGen(

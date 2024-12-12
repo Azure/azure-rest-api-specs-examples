@@ -1,31 +1,30 @@
+
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for NetworkDevices Create. */
+/**
+ * Samples for NetworkDevices Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkDevices_Create_MaximumSet_Gen.json
+     * x-ms-original-file:
+     * specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/
+     * NetworkDevices_Create_MaximumSet_Gen.json
      */
     /**
      * Sample code: NetworkDevices_Create_MaximumSet_Gen.
-     *
+     * 
      * @param manager Entry point to ManagedNetworkFabricManager.
      */
     public static void networkDevicesCreateMaximumSetGen(
         com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
-        manager
-            .networkDevices()
-            .define("example-device")
-            .withRegion("eastuseuap")
-            .withExistingResourceGroup("example-rg")
-            .withTags(mapOf("keyID", "fakeTokenPlaceholder"))
-            .withNetworkDeviceSku("DeviceSku")
-            .withHostname("NFA-Device")
-            .withSerialNumber("Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX")
-            .withAnnotation("annotation")
-            .create();
+        manager.networkDevices().define("example-device").withRegion("eastuseuap")
+            .withExistingResourceGroup("example-rg").withTags(mapOf("keyID", "fakeTokenPlaceholder"))
+            .withNetworkDeviceSku("DeviceSku").withHostname("NFA-Device")
+            .withSerialNumber("Vendor;DCS-7280XXX-24;12.05;JPE2111XXXX").withAnnotation("annotation").create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/IpGroupsUpdateTags.json
@@ -25,12 +24,12 @@ ResourceIdentifier ipGroupResourceId = IPGroupResource.CreateResourceIdentifier(
 IPGroupResource ipGroup = client.GetIPGroupResource(ipGroupResourceId);
 
 // invoke the operation
-NetworkTagsObject networkTagsObject = new NetworkTagsObject()
+NetworkTagsObject networkTagsObject = new NetworkTagsObject
 {
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 IPGroupResource result = await ipGroup.UpdateAsync(networkTagsObject);

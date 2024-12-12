@@ -25,49 +25,31 @@ ResourceIdentifier firewallPolicyRuleCollectionGroupResourceId = FirewallPolicyR
 FirewallPolicyRuleCollectionGroupResource firewallPolicyRuleCollectionGroup = client.GetFirewallPolicyRuleCollectionGroupResource(firewallPolicyRuleCollectionGroupResourceId);
 
 // invoke the operation
-FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData()
+FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData
 {
     Priority = 110,
-    RuleCollections =
-    {
-    new FirewallPolicyFilterRuleCollectionInfo()
+    RuleCollections = {new FirewallPolicyFilterRuleCollectionInfo
     {
     ActionType = FirewallPolicyFilterRuleCollectionActionType.Allow,
-    Rules =
+    Rules = {new ApplicationRule
     {
-    new ApplicationRule()
-    {
-    SourceAddresses =
-    {
-    "216.58.216.164","10.0.0.0/24"
-    },
-    Protocols =
-    {
-    new FirewallPolicyRuleApplicationProtocol()
+    SourceAddresses = {"216.58.216.164", "10.0.0.0/24"},
+    Protocols = {new FirewallPolicyRuleApplicationProtocol
     {
     ProtocolType = FirewallPolicyRuleApplicationProtocolType.Http,
     Port = 80,
-    }
-    },
-    FqdnTags =
-    {
-    "WindowsVirtualDesktop"
-    },
-    HttpHeadersToInsert =
-    {
-    new FirewallPolicyHttpHeaderToInsert()
+    }},
+    FqdnTags = {"WindowsVirtualDesktop"},
+    HttpHeadersToInsert = {new FirewallPolicyHttpHeaderToInsert
     {
     HeaderName = "Restrict-Access-To-Tenants",
     HeaderValue = "contoso.com,fabrikam.onmicrosoft.com",
-    }
-    },
+    }},
     Name = "rule1",
     Description = "Insert trusted tenants header",
-    }
-    },
+    }},
     Name = "Example-Filter-Rule-Collection",
-    }
-    },
+    }},
 };
 ArmOperation<FirewallPolicyRuleCollectionGroupResource> lro = await firewallPolicyRuleCollectionGroup.UpdateAsync(WaitUntil.Completed, data);
 FirewallPolicyRuleCollectionGroupResource result = lro.Value;

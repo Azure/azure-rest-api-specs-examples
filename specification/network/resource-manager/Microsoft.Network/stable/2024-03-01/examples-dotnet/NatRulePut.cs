@@ -25,24 +25,18 @@ ResourceIdentifier vpnGatewayNatRuleResourceId = VpnGatewayNatRuleResource.Creat
 VpnGatewayNatRuleResource vpnGatewayNatRule = client.GetVpnGatewayNatRuleResource(vpnGatewayNatRuleResourceId);
 
 // invoke the operation
-VpnGatewayNatRuleData data = new VpnGatewayNatRuleData()
+VpnGatewayNatRuleData data = new VpnGatewayNatRuleData
 {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.EgressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "10.4.0.0/24",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "192.168.21.0/24",
-    }
-    },
+    }},
     IPConfigurationId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/cloudnet1-VNG/ipConfigurations/default",
 };
 ArmOperation<VpnGatewayNatRuleResource> lro = await vpnGatewayNatRule.UpdateAsync(WaitUntil.Completed, data);

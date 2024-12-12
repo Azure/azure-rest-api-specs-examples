@@ -26,4 +26,4 @@ FirewallPolicyDraftResource firewallPolicyDraft = client.GetFirewallPolicyDraftR
 // invoke the operation
 await firewallPolicyDraft.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

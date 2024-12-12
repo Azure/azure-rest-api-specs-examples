@@ -25,7 +25,7 @@ ResourceIdentifier routeResourceId = RouteResource.CreateResourceIdentifier(subs
 RouteResource route = client.GetRouteResource(routeResourceId);
 
 // invoke the operation
-RouteData data = new RouteData()
+RouteData data = new RouteData
 {
     AddressPrefix = "10.0.3.0/24",
     NextHopType = RouteNextHopType.VirtualNetworkGateway,

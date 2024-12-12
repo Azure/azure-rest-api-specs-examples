@@ -32,4 +32,4 @@ await foreach (AzureFirewallResource item in subscriptionResource.GetAzureFirewa
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

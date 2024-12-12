@@ -27,4 +27,4 @@ VpnGatewayNatRuleResource vpnGatewayNatRule = client.GetVpnGatewayNatRuleResourc
 // invoke the operation
 await vpnGatewayNatRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

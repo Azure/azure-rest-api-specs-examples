@@ -26,9 +26,9 @@ ResourceIdentifier vpnLinkConnectionSharedKeyResourceId = VpnLinkConnectionShare
 VpnLinkConnectionSharedKeyResource vpnLinkConnectionSharedKey = client.GetVpnLinkConnectionSharedKeyResource(vpnLinkConnectionSharedKeyResourceId);
 
 // invoke the operation
-VpnLinkConnectionSharedKeyData data = new VpnLinkConnectionSharedKeyData()
+VpnLinkConnectionSharedKeyData data = new VpnLinkConnectionSharedKeyData
 {
-    Properties = new VpnLinkConnectionSharedKeyProperties()
+    Properties = new VpnLinkConnectionSharedKeyProperties
     {
         SharedKey = "ABCDEF123456",
     },

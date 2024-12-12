@@ -25,7 +25,7 @@ ResourceIdentifier networkGroupResourceId = NetworkGroupResource.CreateResourceI
 NetworkGroupResource networkGroup = client.GetNetworkGroupResource(networkGroupResourceId);
 
 // invoke the operation
-NetworkGroupData data = new NetworkGroupData()
+NetworkGroupData data = new NetworkGroupData
 {
     Description = "A sample group",
     MemberType = NetworkGroupMemberType.VirtualNetwork,

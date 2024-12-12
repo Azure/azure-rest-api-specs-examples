@@ -28,4 +28,4 @@ NetworkGroupResource networkGroup = client.GetNetworkGroupResource(networkGroupR
 bool? force = false;
 await networkGroup.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

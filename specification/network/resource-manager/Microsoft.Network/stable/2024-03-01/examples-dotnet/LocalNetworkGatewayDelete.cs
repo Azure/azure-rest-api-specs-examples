@@ -26,4 +26,4 @@ LocalNetworkGatewayResource localNetworkGateway = client.GetLocalNetworkGatewayR
 // invoke the operation
 await localNetworkGateway.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

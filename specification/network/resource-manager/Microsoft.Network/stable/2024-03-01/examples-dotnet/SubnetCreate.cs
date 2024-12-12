@@ -28,7 +28,7 @@ SubnetCollection collection = virtualNetwork.GetSubnets();
 
 // invoke the operation
 string subnetName = "subnet1";
-SubnetData data = new SubnetData()
+SubnetData data = new SubnetData
 {
     AddressPrefix = "10.0.0.0/16",
 };

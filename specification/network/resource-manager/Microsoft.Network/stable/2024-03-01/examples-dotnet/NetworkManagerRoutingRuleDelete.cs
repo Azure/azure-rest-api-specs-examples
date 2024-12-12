@@ -30,4 +30,4 @@ NetworkManagerRoutingRuleResource networkManagerRoutingRule = client.GetNetworkM
 bool? force = false;
 await networkManagerRoutingRule.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkWatcherIpFlowVerify.json
@@ -26,7 +25,14 @@ ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResou
 NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
 
 // invoke the operation
-VerificationIPFlowContent content = new VerificationIPFlowContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"), NetworkTrafficDirection.Outbound, IPFlowProtocol.Tcp, "80", "80", "10.2.0.4", "121.10.1.1");
+VerificationIPFlowContent content = new VerificationIPFlowContent(
+    new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"),
+    NetworkTrafficDirection.Outbound,
+    IPFlowProtocol.Tcp,
+    "80",
+    "80",
+    "10.2.0.4",
+    "121.10.1.1");
 ArmOperation<VerificationIPFlowResult> lro = await networkWatcher.VerifyIPFlowAsync(WaitUntil.Completed, content);
 VerificationIPFlowResult result = lro.Value;
 

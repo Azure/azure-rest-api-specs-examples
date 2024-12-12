@@ -29,13 +29,10 @@ AdminRuleGroupCollection collection = securityAdminConfiguration.GetAdminRuleGro
 
 // invoke the operation
 string ruleCollectionName = "testRuleCollection";
-AdminRuleGroupData data = new AdminRuleGroupData()
+AdminRuleGroupData data = new AdminRuleGroupData
 {
     Description = "A sample policy",
-    AppliesToGroups =
-    {
-    new NetworkManagerSecurityGroupItem(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup"))
-    },
+    AppliesToGroups = { new NetworkManagerSecurityGroupItem(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup")) },
 };
 ArmOperation<AdminRuleGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleCollectionName, data);
 AdminRuleGroupResource result = lro.Value;

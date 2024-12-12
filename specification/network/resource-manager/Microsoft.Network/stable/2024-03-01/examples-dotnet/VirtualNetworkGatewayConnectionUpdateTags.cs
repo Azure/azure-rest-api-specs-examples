@@ -24,12 +24,12 @@ ResourceIdentifier virtualNetworkGatewayConnectionResourceId = VirtualNetworkGat
 VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client.GetVirtualNetworkGatewayConnectionResource(virtualNetworkGatewayConnectionResourceId);
 
 // invoke the operation
-NetworkTagsObject networkTagsObject = new NetworkTagsObject()
+NetworkTagsObject networkTagsObject = new NetworkTagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<VirtualNetworkGatewayConnectionResource> lro = await virtualNetworkGatewayConnection.UpdateAsync(WaitUntil.Completed, networkTagsObject);

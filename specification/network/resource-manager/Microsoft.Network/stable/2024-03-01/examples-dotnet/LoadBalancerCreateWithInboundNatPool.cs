@@ -29,59 +29,40 @@ LoadBalancerCollection collection = resourceGroupResource.GetLoadBalancers();
 
 // invoke the operation
 string loadBalancerName = "lb";
-LoadBalancerData data = new LoadBalancerData()
+LoadBalancerData data = new LoadBalancerData
 {
-    Sku = new LoadBalancerSku()
+    Sku = new LoadBalancerSku
     {
         Name = LoadBalancerSkuName.Standard,
     },
-    FrontendIPConfigurations =
+    FrontendIPConfigurations = {new FrontendIPConfigurationData
     {
-    new FrontendIPConfigurationData()
-    {
-    Zones =
-    {
-    },
+    Zones = {},
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Dynamic,
-    Subnet = new SubnetData()
+    Subnet = new SubnetData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/lbvnet/subnets/lbsubnet"),
     },
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test"),
     Name = "test",
-    }
-    },
-    BackendAddressPools =
+    }},
+    BackendAddressPools = { },
+    LoadBalancingRules = { },
+    Probes = { },
+    InboundNatRules = { },
+    InboundNatPools = {new LoadBalancerInboundNatPool
     {
-    },
-    LoadBalancingRules =
-    {
-    },
-    Probes =
-    {
-    },
-    InboundNatRules =
-    {
-    },
-    InboundNatPools =
-    {
-    new LoadBalancerInboundNatPool()
+    Properties = new LoadBalancerInboundNatPoolProperties(LoadBalancingTransportProtocol.Tcp, 8080, 8085, 8888)
     {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/test"),
-    Protocol = LoadBalancingTransportProtocol.Tcp,
-    FrontendPortRangeStart = 8080,
-    FrontendPortRangeEnd = 8085,
-    BackendPort = 8888,
     IdleTimeoutInMinutes = 10,
     EnableFloatingIP = true,
     EnableTcpReset = true,
+    },
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/inboundNatPools/test"),
     Name = "test",
-    }
-    },
-    OutboundRules =
-    {
-    },
+    }},
+    OutboundRules = { },
     Location = new AzureLocation("eastus"),
 };
 ArmOperation<LoadBalancerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadBalancerName, data);

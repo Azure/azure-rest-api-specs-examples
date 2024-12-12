@@ -30,4 +30,4 @@ await foreach (ResourceNavigationLink item in subnet.GetResourceNavigationLinksA
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

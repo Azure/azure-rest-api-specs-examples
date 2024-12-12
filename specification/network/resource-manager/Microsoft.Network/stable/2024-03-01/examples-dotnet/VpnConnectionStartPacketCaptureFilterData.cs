@@ -26,13 +26,10 @@ ResourceIdentifier vpnConnectionResourceId = VpnConnectionResource.CreateResourc
 VpnConnectionResource vpnConnection = client.GetVpnConnectionResource(vpnConnectionResourceId);
 
 // invoke the operation
-VpnConnectionPacketCaptureStartContent content = new VpnConnectionPacketCaptureStartContent()
+VpnConnectionPacketCaptureStartContent content = new VpnConnectionPacketCaptureStartContent
 {
     FilterData = "{'TracingFlags': 11,'MaxPacketBufferSize': 120,'MaxFileSize': 200,'Filters': [{'SourceSubnets': ['20.1.1.0/24'],'DestinationSubnets': ['10.1.1.0/24'],'SourcePort': [500],'DestinationPort': [4500],'Protocol': 6,'TcpFlags': 16,'CaptureSingleDirectionTrafficOnly': true}]}",
-    LinkConnectionNames =
-    {
-    "siteLink1","siteLink2"
-    },
+    LinkConnectionNames = { "siteLink1", "siteLink2" },
 };
 ArmOperation<string> lro = await vpnConnection.StartPacketCaptureAsync(WaitUntil.Completed, content: content);
 string result = lro.Value;

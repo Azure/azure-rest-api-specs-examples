@@ -24,7 +24,7 @@ ResourceIdentifier virtualNetworkGatewayConnectionResourceId = VirtualNetworkGat
 VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client.GetVirtualNetworkGatewayConnectionResource(virtualNetworkGatewayConnectionResourceId);
 
 // invoke the operation
-VpnDeviceScriptContent content = new VpnDeviceScriptContent()
+VpnDeviceScriptContent content = new VpnDeviceScriptContent
 {
     Vendor = "Cisco",
     DeviceFamily = "ISR",

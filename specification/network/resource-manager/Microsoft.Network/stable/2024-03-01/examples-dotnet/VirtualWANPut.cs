@@ -27,14 +27,14 @@ VirtualWanCollection collection = resourceGroupResource.GetVirtualWans();
 
 // invoke the operation
 string virtualWanName = "wan1";
-VirtualWanData data = new VirtualWanData()
+VirtualWanData data = new VirtualWanData
 {
     DisableVpnEncryption = false,
     VirtualWanType = "Basic",
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<VirtualWanResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualWanName, data);

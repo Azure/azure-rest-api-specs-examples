@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/P2SVpnGatewayUpdateTags.json
@@ -25,12 +24,12 @@ ResourceIdentifier p2sVpnGatewayResourceId = P2SVpnGatewayResource.CreateResourc
 P2SVpnGatewayResource p2sVpnGateway = client.GetP2SVpnGatewayResource(p2sVpnGatewayResourceId);
 
 // invoke the operation
-NetworkTagsObject p2sVpnGatewayParameters = new NetworkTagsObject()
+NetworkTagsObject p2sVpnGatewayParameters = new NetworkTagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<P2SVpnGatewayResource> lro = await p2sVpnGateway.UpdateAsync(WaitUntil.Completed, p2sVpnGatewayParameters);

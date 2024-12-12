@@ -28,14 +28,11 @@ RouteFilterRuleCollection collection = routeFilter.GetRouteFilterRules();
 
 // invoke the operation
 string ruleName = "ruleName";
-RouteFilterRuleData data = new RouteFilterRuleData()
+RouteFilterRuleData data = new RouteFilterRuleData
 {
     Access = NetworkAccess.Allow,
     RouteFilterRuleType = RouteFilterRuleType.Community,
-    Communities =
-    {
-    "12076:5030","12076:5040"
-    },
+    Communities = { "12076:5030", "12076:5040" },
 };
 ArmOperation<RouteFilterRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 RouteFilterRuleResource result = lro.Value;

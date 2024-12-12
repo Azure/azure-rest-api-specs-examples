@@ -26,32 +26,23 @@ ResourceIdentifier networkVirtualApplianceConnectionResourceId = NetworkVirtualA
 NetworkVirtualApplianceConnectionResource networkVirtualApplianceConnection = client.GetNetworkVirtualApplianceConnectionResource(networkVirtualApplianceConnectionResourceId);
 
 // invoke the operation
-NetworkVirtualApplianceConnectionData data = new NetworkVirtualApplianceConnectionData()
+NetworkVirtualApplianceConnectionData data = new NetworkVirtualApplianceConnectionData
 {
     NamePropertiesName = "connection1",
-    Asn = 64512,
-    TunnelIdentifier = 0,
-    BgpPeerAddress =
-    {
-    "169.254.16.13","169.254.16.14"
-    },
+    Asn = 64512L,
+    TunnelIdentifier = 0L,
+    BgpPeerAddress = { "169.254.16.13", "169.254.16.14" },
     EnableInternetSecurity = false,
-    ConnectionRoutingConfiguration = new RoutingConfiguration()
+    ConnectionRoutingConfiguration = new RoutingConfiguration
     {
         AssociatedRouteTableId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
-        PropagatedRouteTables = new PropagatedRouteTable()
+        PropagatedRouteTables = new PropagatedRouteTable
         {
-            Labels =
-            {
-            "label1"
-            },
-            Ids =
-            {
-            new WritableSubResource()
+            Labels = { "label1" },
+            Ids = {new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
-            }
-            },
+            }},
         },
         InboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"),
         OutboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),

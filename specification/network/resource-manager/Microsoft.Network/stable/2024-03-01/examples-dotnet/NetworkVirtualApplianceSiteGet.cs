@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkVirtualApplianceResource created on azure
-// for more information of creating NetworkVirtualApplianceResource, please refer to the document of NetworkVirtualApplianceResource
+// this example assumes you already have this VirtualApplianceSiteResource created on azure
+// for more information of creating VirtualApplianceSiteResource, please refer to the document of VirtualApplianceSiteResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkVirtualApplianceName = "nva";
-ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName);
-NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
-
-// get the collection of this VirtualApplianceSiteResource
-VirtualApplianceSiteCollection collection = networkVirtualAppliance.GetVirtualApplianceSites();
+string siteName = "site1";
+ResourceIdentifier virtualApplianceSiteResourceId = VirtualApplianceSiteResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName, siteName);
+VirtualApplianceSiteResource virtualApplianceSite = client.GetVirtualApplianceSiteResource(virtualApplianceSiteResourceId);
 
 // invoke the operation
-string siteName = "site1";
-NullableResponse<VirtualApplianceSiteResource> response = await collection.GetIfExistsAsync(siteName);
-VirtualApplianceSiteResource result = response.HasValue ? response.Value : null;
+VirtualApplianceSiteResource result = await virtualApplianceSite.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    VirtualApplianceSiteData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VirtualApplianceSiteData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

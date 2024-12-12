@@ -27,4 +27,4 @@ PacketCaptureResource packetCapture = client.GetPacketCaptureResource(packetCapt
 // invoke the operation
 await packetCapture.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

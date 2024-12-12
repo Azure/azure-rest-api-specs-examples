@@ -24,4 +24,4 @@ ManagementGroupNetworkManagerConnectionResource managementGroupNetworkManagerCon
 // invoke the operation
 await managementGroupNetworkManagerConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

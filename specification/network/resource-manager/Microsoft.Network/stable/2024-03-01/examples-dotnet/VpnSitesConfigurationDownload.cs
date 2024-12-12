@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/VpnSitesConfigurationDownload.json
@@ -27,11 +26,8 @@ VirtualWanResource virtualWan = client.GetVirtualWanResource(virtualWanResourceI
 // invoke the operation
 GetVpnSitesConfigurationContent content = new GetVpnSitesConfigurationContent(new Uri("https://blobcortextesturl.blob.core.windows.net/folderforconfig/vpnFile?sp=rw&se=2018-01-10T03%3A42%3A04Z&sv=2017-04-17&sig=WvXrT5bDmDFfgHs%2Brz%2BjAu123eRCNE9BO0eQYcPDT7pY%3D&sr=b"))
 {
-    VpnSites =
-    {
-    "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/abc"
-    },
+    VpnSites = { "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/abc" },
 };
 await virtualWan.DownloadVpnSitesConfigurationAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,70 +28,47 @@ ConnectionMonitorCollection collection = networkWatcher.GetConnectionMonitors();
 
 // invoke the operation
 string connectionMonitorName = "cm1";
-ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUpdateContent()
+ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUpdateContent
 {
-    Endpoints =
-    {
-    new ConnectionMonitorEndpoint("vm1")
+    Endpoints = {new ConnectionMonitorEndpoint("vm1")
     {
     EndpointType = ConnectionMonitorEndpointType.AzureVm,
     ResourceId = new ResourceIdentifier("/subscriptions/9cece3e3-0f7d-47ca-af0e-9772773f90b7/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/TESTVM"),
-    },new ConnectionMonitorEndpoint("bing")
+    }, new ConnectionMonitorEndpoint("bing")
     {
     EndpointType = ConnectionMonitorEndpointType.ExternalAddress,
     Address = "bing.com",
-    },new ConnectionMonitorEndpoint("google")
+    }, new ConnectionMonitorEndpoint("google")
     {
     EndpointType = ConnectionMonitorEndpointType.ExternalAddress,
     Address = "google.com",
-    },new ConnectionMonitorEndpoint("ArcBasedNetwork")
+    }, new ConnectionMonitorEndpoint("ArcBasedNetwork")
     {
     EndpointType = ConnectionMonitorEndpointType.AzureArcNetwork,
-    Scope = new ConnectionMonitorEndpointScope()
+    Scope = new ConnectionMonitorEndpointScope
     {
-    Include =
-    {
-    new ConnectionMonitorEndpointScopeItem()
+    Include = {new ConnectionMonitorEndpointScopeItem
     {
     Address = "172.21.128.0/20",
-    }
-    },
+    }},
     },
     LocationDetailsRegion = "eastus",
     SubscriptionId = Guid.Parse("9cece3e3-0f7d-47ca-af0e-9772773f90b7"),
-    }
-    },
-    TestConfigurations =
-    {
-    new ConnectionMonitorTestConfiguration("testConfig1",ConnectionMonitorTestConfigurationProtocol.Tcp)
+    }},
+    TestConfigurations = {new ConnectionMonitorTestConfiguration("testConfig1", ConnectionMonitorTestConfigurationProtocol.Tcp)
     {
     TestFrequencySec = 60,
-    TcpConfiguration = new ConnectionMonitorTcpConfiguration()
+    TcpConfiguration = new ConnectionMonitorTcpConfiguration
     {
     Port = 80,
     DisableTraceRoute = false,
     },
-    }
-    },
-    TestGroups =
-    {
-    new ConnectionMonitorTestGroup("test1",new string[]
-    {
-    "testConfig1"
-    },new string[]
-    {
-    "vm1","ArcBasedNetwork"
-    },new string[]
-    {
-    "bing","google"
-    })
+    }},
+    TestGroups = {new ConnectionMonitorTestGroup("test1", new string[]{"testConfig1"}, new string[]{"vm1", "ArcBasedNetwork"}, new string[]{"bing", "google"})
     {
     Disable = false,
-    }
-    },
-    Outputs =
-    {
-    },
+    }},
+    Outputs = { },
 };
 ArmOperation<ConnectionMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionMonitorName, content);
 ConnectionMonitorResource result = lro.Value;

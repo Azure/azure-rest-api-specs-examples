@@ -24,4 +24,4 @@ SubscriptionNetworkManagerConnectionResource subscriptionNetworkManagerConnectio
 // invoke the operation
 await subscriptionNetworkManagerConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

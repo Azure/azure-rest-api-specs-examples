@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkResource created on azure
-// for more information of creating VirtualNetworkResource, please refer to the document of VirtualNetworkResource
+// this example assumes you already have this VirtualNetworkPeeringResource created on azure
+// for more information of creating VirtualNetworkPeeringResource, please refer to the document of VirtualNetworkPeeringResource
 string subscriptionId = "subid";
 string resourceGroupName = "peerTest";
 string virtualNetworkName = "vnet1";
-ResourceIdentifier virtualNetworkResourceId = VirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName);
-VirtualNetworkResource virtualNetwork = client.GetVirtualNetworkResource(virtualNetworkResourceId);
-
-// get the collection of this VirtualNetworkPeeringResource
-VirtualNetworkPeeringCollection collection = virtualNetwork.GetVirtualNetworkPeerings();
+string virtualNetworkPeeringName = "peer";
+ResourceIdentifier virtualNetworkPeeringResourceId = VirtualNetworkPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName);
+VirtualNetworkPeeringResource virtualNetworkPeering = client.GetVirtualNetworkPeeringResource(virtualNetworkPeeringResourceId);
 
 // invoke the operation
-string virtualNetworkPeeringName = "peer";
-VirtualNetworkPeeringData data = new VirtualNetworkPeeringData()
+VirtualNetworkPeeringData data = new VirtualNetworkPeeringData
 {
     AllowVirtualNetworkAccess = true,
     AllowForwardedTraffic = true,
@@ -37,16 +34,10 @@ VirtualNetworkPeeringData data = new VirtualNetworkPeeringData()
     RemoteVirtualNetworkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/peerTest/providers/Microsoft.Network/virtualNetworks/vnet2"),
     AreCompleteVnetsPeered = false,
     EnableOnlyIPv6Peering = false,
-    LocalSubnetNames =
-    {
-    "Subnet1","Subnet4"
-    },
-    RemoteSubnetNames =
-    {
-    "Subnet2"
-    },
+    LocalSubnetNames = { "Subnet1", "Subnet4" },
+    RemoteSubnetNames = { "Subnet2" },
 };
-ArmOperation<VirtualNetworkPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkPeeringName, data);
+ArmOperation<VirtualNetworkPeeringResource> lro = await virtualNetworkPeering.UpdateAsync(WaitUntil.Completed, data);
 VirtualNetworkPeeringResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

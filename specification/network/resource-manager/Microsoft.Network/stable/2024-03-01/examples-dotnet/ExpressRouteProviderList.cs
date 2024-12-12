@@ -28,4 +28,4 @@ await foreach (ExpressRouteServiceProvider item in subscriptionResource.GetExpre
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

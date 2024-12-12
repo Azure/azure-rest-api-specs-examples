@@ -27,4 +27,4 @@ ExpressRouteCircuitPeeringResource expressRouteCircuitPeering = client.GetExpres
 // invoke the operation
 await expressRouteCircuitPeering.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

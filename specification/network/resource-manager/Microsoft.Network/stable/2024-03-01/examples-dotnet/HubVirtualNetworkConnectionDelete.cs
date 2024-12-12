@@ -28,4 +28,4 @@ HubVirtualNetworkConnectionResource hubVirtualNetworkConnection = client.GetHubV
 // invoke the operation
 await hubVirtualNetworkConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

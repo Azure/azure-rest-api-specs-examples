@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerSecurityUserConfigurationResource created on azure
-// for more information of creating NetworkManagerSecurityUserConfigurationResource, please refer to the document of NetworkManagerSecurityUserConfigurationResource
+// this example assumes you already have this NetworkManagerSecurityUserRulesResource created on azure
+// for more information of creating NetworkManagerSecurityUserRulesResource, please refer to the document of NetworkManagerSecurityUserRulesResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string configurationName = "myTestSecurityConfig";
-ResourceIdentifier networkManagerSecurityUserConfigurationResourceId = NetworkManagerSecurityUserConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName);
-NetworkManagerSecurityUserConfigurationResource networkManagerSecurityUserConfiguration = client.GetNetworkManagerSecurityUserConfigurationResource(networkManagerSecurityUserConfigurationResourceId);
-
-// get the collection of this NetworkManagerSecurityUserRulesResource
-NetworkManagerSecurityUserRulesCollection collection = networkManagerSecurityUserConfiguration.GetAllNetworkManagerSecurityUserRules();
+string ruleCollectionName = "testRuleCollection";
+ResourceIdentifier networkManagerSecurityUserRulesResourceId = NetworkManagerSecurityUserRulesResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName);
+NetworkManagerSecurityUserRulesResource networkManagerSecurityUserRules = client.GetNetworkManagerSecurityUserRulesResource(networkManagerSecurityUserRulesResourceId);
 
 // invoke the operation
-string ruleCollectionName = "testRuleCollection";
-NullableResponse<NetworkManagerSecurityUserRulesResource> response = await collection.GetIfExistsAsync(ruleCollectionName);
-NetworkManagerSecurityUserRulesResource result = response.HasValue ? response.Value : null;
+NetworkManagerSecurityUserRulesResource result = await networkManagerSecurityUserRules.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    NetworkManagerSecurityUserRulesData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+NetworkManagerSecurityUserRulesData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

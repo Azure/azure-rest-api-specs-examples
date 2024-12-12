@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/PrivateEndpointCreateWithASG.json
@@ -26,31 +25,22 @@ ResourceIdentifier privateEndpointResourceId = PrivateEndpointResource.CreateRes
 PrivateEndpointResource privateEndpoint = client.GetPrivateEndpointResource(privateEndpointResourceId);
 
 // invoke the operation
-PrivateEndpointData data = new PrivateEndpointData()
+PrivateEndpointData data = new PrivateEndpointData
 {
-    Subnet = new SubnetData()
+    Subnet = new SubnetData
     {
         Id = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"),
     },
-    PrivateLinkServiceConnections =
-    {
-    new NetworkPrivateLinkServiceConnection()
+    PrivateLinkServiceConnections = {new NetworkPrivateLinkServiceConnection
     {
     PrivateLinkServiceId = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateLinkServices/testPls"),
-    GroupIds =
-    {
-    "groupIdFromResource"
-    },
+    GroupIds = {"groupIdFromResource"},
     RequestMessage = "Please approve my connection.",
-    }
-    },
-    ApplicationSecurityGroups =
-    {
-    new ApplicationSecurityGroupData()
+    }},
+    ApplicationSecurityGroups = {new ApplicationSecurityGroupData
     {
     Id = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg1/provders/Microsoft.Network/applicationSecurityGroup/asg1"),
-    }
-    },
+    }},
     Location = new AzureLocation("eastus2euap"),
 };
 ArmOperation<PrivateEndpointResource> lro = await privateEndpoint.UpdateAsync(WaitUntil.Completed, data);

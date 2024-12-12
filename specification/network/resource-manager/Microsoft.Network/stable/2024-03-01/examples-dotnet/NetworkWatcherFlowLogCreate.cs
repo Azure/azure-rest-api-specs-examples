@@ -29,20 +29,20 @@ FlowLogCollection collection = networkWatcher.GetFlowLogs();
 
 // invoke the operation
 string flowLogName = "fl";
-FlowLogData data = new FlowLogData()
+FlowLogData data = new FlowLogData
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity()
         },
     },
     TargetResourceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkSecurityGroups/desmondcentral-nsg"),
     StorageId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/nwtest1mgvbfmqsigdxe"),
     EnabledFilteringCriteria = "srcIP=158.255.7.8 || dstPort=56891",
     Enabled = true,
-    Format = new FlowLogProperties()
+    Format = new FlowLogProperties
     {
         FormatType = FlowLogFormatType.Json,
         Version = 1,

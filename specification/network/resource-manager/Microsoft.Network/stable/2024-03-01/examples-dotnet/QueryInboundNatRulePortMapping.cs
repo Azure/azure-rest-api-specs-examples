@@ -25,7 +25,7 @@ ResourceIdentifier backendAddressPoolResourceId = BackendAddressPoolResource.Cre
 BackendAddressPoolResource backendAddressPool = client.GetBackendAddressPoolResource(backendAddressPoolResourceId);
 
 // invoke the operation
-QueryInboundNatRulePortMappingContent content = new QueryInboundNatRulePortMappingContent()
+QueryInboundNatRulePortMappingContent content = new QueryInboundNatRulePortMappingContent
 {
     IPAddress = "10.0.0.4",
 };

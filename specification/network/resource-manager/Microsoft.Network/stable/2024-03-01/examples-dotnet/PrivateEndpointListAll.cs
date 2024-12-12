@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Net;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -33,4 +32,4 @@ await foreach (PrivateEndpointResource item in subscriptionResource.GetPrivateEn
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,4 +28,4 @@ SecurityAdminConfigurationResource securityAdminConfiguration = client.GetSecuri
 bool? force = false;
 await securityAdminConfiguration.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

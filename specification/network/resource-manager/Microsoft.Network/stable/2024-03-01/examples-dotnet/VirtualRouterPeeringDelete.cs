@@ -26,4 +26,4 @@ VirtualRouterPeeringResource virtualRouterPeering = client.GetVirtualRouterPeeri
 // invoke the operation
 await virtualRouterPeering.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

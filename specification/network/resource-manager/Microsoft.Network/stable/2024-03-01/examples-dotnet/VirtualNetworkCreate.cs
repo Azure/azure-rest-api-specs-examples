@@ -28,12 +28,9 @@ VirtualNetworkCollection collection = resourceGroupResource.GetVirtualNetworks()
 
 // invoke the operation
 string virtualNetworkName = "test-vnet";
-VirtualNetworkData data = new VirtualNetworkData()
+VirtualNetworkData data = new VirtualNetworkData
 {
-    AddressPrefixes =
-    {
-    "10.0.0.0/16"
-    },
+    AddressPrefixes = { "10.0.0.0/16" },
     FlowTimeoutInMinutes = 10,
     Location = new AzureLocation("eastus"),
 };

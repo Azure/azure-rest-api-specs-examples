@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/VirtualWANUpdateTags.json
@@ -25,12 +24,12 @@ ResourceIdentifier virtualWanResourceId = VirtualWanResource.CreateResourceIdent
 VirtualWanResource virtualWan = client.GetVirtualWanResource(virtualWanResourceId);
 
 // invoke the operation
-NetworkTagsObject wanParameters = new NetworkTagsObject()
+NetworkTagsObject wanParameters = new NetworkTagsObject
 {
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 VirtualWanResource result = await virtualWan.UpdateAsync(wanParameters);

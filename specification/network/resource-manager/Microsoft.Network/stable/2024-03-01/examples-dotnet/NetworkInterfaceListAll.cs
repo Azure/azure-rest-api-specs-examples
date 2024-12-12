@@ -32,4 +32,4 @@ await foreach (NetworkInterfaceResource item in subscriptionResource.GetNetworkI
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

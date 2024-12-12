@@ -29,4 +29,4 @@ await foreach (EndpointServiceResult item in subscriptionResource.GetAvailableEn
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

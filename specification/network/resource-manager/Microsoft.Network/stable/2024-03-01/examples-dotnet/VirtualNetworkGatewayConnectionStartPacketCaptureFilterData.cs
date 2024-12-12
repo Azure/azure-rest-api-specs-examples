@@ -24,7 +24,7 @@ ResourceIdentifier virtualNetworkGatewayConnectionResourceId = VirtualNetworkGat
 VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client.GetVirtualNetworkGatewayConnectionResource(virtualNetworkGatewayConnectionResourceId);
 
 // invoke the operation
-VpnPacketCaptureStartContent content = new VpnPacketCaptureStartContent()
+VpnPacketCaptureStartContent content = new VpnPacketCaptureStartContent
 {
     FilterData = "{'TracingFlags': 11,'MaxPacketBufferSize': 120,'MaxFileSize': 200,'Filters': [{'SourceSubnets': ['20.1.1.0/24'],'DestinationSubnets': ['10.1.1.0/24'],'SourcePort': [500],'DestinationPort': [4500],'Protocol': 6,'TcpFlags': 16,'CaptureSingleDirectionTrafficOnly': true}]}",
 };

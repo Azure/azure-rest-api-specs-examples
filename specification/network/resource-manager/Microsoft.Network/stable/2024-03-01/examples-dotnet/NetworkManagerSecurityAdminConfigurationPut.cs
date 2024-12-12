@@ -28,13 +28,10 @@ SecurityAdminConfigurationCollection collection = networkManager.GetSecurityAdmi
 
 // invoke the operation
 string configurationName = "myTestSecurityConfig";
-SecurityAdminConfigurationData data = new SecurityAdminConfigurationData()
+SecurityAdminConfigurationData data = new SecurityAdminConfigurationData
 {
     Description = "A sample policy",
-    ApplyOnNetworkIntentPolicyBasedServices =
-    {
-    NetworkIntentPolicyBasedService.None
-    },
+    ApplyOnNetworkIntentPolicyBasedServices = { NetworkIntentPolicyBasedService.None },
 };
 ArmOperation<SecurityAdminConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationName, data);
 SecurityAdminConfigurationResource result = lro.Value;

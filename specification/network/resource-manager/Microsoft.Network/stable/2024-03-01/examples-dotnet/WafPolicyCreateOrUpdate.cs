@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/WafPolicyCreateOrUpdate.json
@@ -25,30 +24,25 @@ ResourceIdentifier webApplicationFirewallPolicyResourceId = WebApplicationFirewa
 WebApplicationFirewallPolicyResource webApplicationFirewallPolicy = client.GetWebApplicationFirewallPolicyResource(webApplicationFirewallPolicyResourceId);
 
 // invoke the operation
-WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData()
+WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData
 {
-    PolicySettings = new PolicySettings()
+    PolicySettings = new PolicySettings
     {
-        LogScrubbing = new PolicySettingsLogScrubbing()
+        LogScrubbing = new PolicySettingsLogScrubbing
         {
             State = WebApplicationFirewallScrubbingState.Enabled,
-            ScrubbingRules =
-            {
-            new WebApplicationFirewallScrubbingRules(ScrubbingRuleEntryMatchVariable.RequestArgNames,ScrubbingRuleEntryMatchOperator.EqualsValue)
+            ScrubbingRules = {new WebApplicationFirewallScrubbingRules(ScrubbingRuleEntryMatchVariable.RequestArgNames, ScrubbingRuleEntryMatchOperator.EqualsValue)
             {
             Selector = "test",
             State = ScrubbingRuleEntryState.Enabled,
-            },new WebApplicationFirewallScrubbingRules(ScrubbingRuleEntryMatchVariable.RequestIPAddress,ScrubbingRuleEntryMatchOperator.EqualsAny)
+            }, new WebApplicationFirewallScrubbingRules(ScrubbingRuleEntryMatchVariable.RequestIPAddress, ScrubbingRuleEntryMatchOperator.EqualsAny)
             {
             State = ScrubbingRuleEntryState.Enabled,
-            }
-            },
+            }},
         },
         JsChallengeCookieExpirationInMins = 100,
     },
-    CustomRules =
-    {
-    new WebApplicationFirewallCustomRule(1,WebApplicationFirewallRuleType.MatchRule,new MatchCondition[]
+    CustomRules = {new WebApplicationFirewallCustomRule(1, WebApplicationFirewallRuleType.MatchRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
     {
@@ -56,14 +50,11 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData()
     {
     Selector = null,
     }
-    },WebApplicationFirewallOperator.IPMatch,new string[]
-    {
-    "192.168.1.0/24","10.0.0.0/24"
-    })
-    },WebApplicationFirewallAction.Block)
+    }, WebApplicationFirewallOperator.IPMatch, new string[]{"192.168.1.0/24", "10.0.0.0/24"})
+    }, WebApplicationFirewallAction.Block)
     {
     Name = "Rule1",
-    },new WebApplicationFirewallCustomRule(2,WebApplicationFirewallRuleType.MatchRule,new MatchCondition[]
+    }, new WebApplicationFirewallCustomRule(2, WebApplicationFirewallRuleType.MatchRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
     {
@@ -71,23 +62,18 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData()
     {
     Selector = null,
     }
-    },WebApplicationFirewallOperator.IPMatch,new string[]
-    {
-    "192.168.1.0/24"
-    }),new MatchCondition(new MatchVariable[]
+    }, WebApplicationFirewallOperator.IPMatch, new string[]{"192.168.1.0/24"}),
+    new MatchCondition(new MatchVariable[]
     {
     new MatchVariable(WebApplicationFirewallMatchVariable.RequestHeaders)
     {
     Selector = "UserAgent",
     }
-    },WebApplicationFirewallOperator.Contains,new string[]
-    {
-    "Windows"
-    })
-    },WebApplicationFirewallAction.Block)
+    }, WebApplicationFirewallOperator.Contains, new string[]{"Windows"})
+    }, WebApplicationFirewallAction.Block)
     {
     Name = "Rule2",
-    },new WebApplicationFirewallCustomRule(3,WebApplicationFirewallRuleType.RateLimitRule,new MatchCondition[]
+    }, new WebApplicationFirewallCustomRule(3, WebApplicationFirewallRuleType.RateLimitRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
     {
@@ -95,26 +81,20 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData()
     {
     Selector = null,
     }
-    },WebApplicationFirewallOperator.IPMatch,new string[]
-    {
-    "192.168.1.0/24","10.0.0.0/24"
-    })
+    }, WebApplicationFirewallOperator.IPMatch, new string[]{"192.168.1.0/24", "10.0.0.0/24"})
     {
     NegationConditon = true,
     }
-    },WebApplicationFirewallAction.Block)
+    }, WebApplicationFirewallAction.Block)
     {
     Name = "RateLimitRule3",
     RateLimitDuration = ApplicationGatewayFirewallRateLimitDuration.OneMin,
     RateLimitThreshold = 10,
-    GroupByUserSession =
-    {
-    new GroupByUserSession(new GroupByVariable[]
+    GroupByUserSession = {new GroupByUserSession(new GroupByVariable[]
     {
     new GroupByVariable(ApplicationGatewayFirewallUserSessionVariable.ClientAddr)
-    })
-    },
-    },new WebApplicationFirewallCustomRule(4,WebApplicationFirewallRuleType.MatchRule,new MatchCondition[]
+    })},
+    }, new WebApplicationFirewallCustomRule(4, WebApplicationFirewallRuleType.MatchRule, new MatchCondition[]
     {
     new MatchCondition(new MatchVariable[]
     {
@@ -122,169 +102,100 @@ WebApplicationFirewallPolicyData data = new WebApplicationFirewallPolicyData()
     {
     Selector = null,
     }
-    },WebApplicationFirewallOperator.IPMatch,new string[]
-    {
-    "192.168.1.0/24"
-    }),new MatchCondition(new MatchVariable[]
+    }, WebApplicationFirewallOperator.IPMatch, new string[]{"192.168.1.0/24"}),
+    new MatchCondition(new MatchVariable[]
     {
     new MatchVariable(WebApplicationFirewallMatchVariable.RequestHeaders)
     {
     Selector = "UserAgent",
     }
-    },WebApplicationFirewallOperator.Contains,new string[]
-    {
-    "Bot"
-    })
-    },WebApplicationFirewallAction.JSChallenge)
+    }, WebApplicationFirewallOperator.Contains, new string[]{"Bot"})
+    }, WebApplicationFirewallAction.JSChallenge)
     {
     Name = "Rule4",
-    }
-    },
+    }},
     ManagedRules = new ManagedRulesDefinition(new ManagedRuleSet[]
 {
-new ManagedRuleSet("OWASP","3.2")
+new ManagedRuleSet("OWASP", "3.2")
 {
-RuleGroupOverrides =
+RuleGroupOverrides = {new ManagedRuleGroupOverride("REQUEST-931-APPLICATION-ATTACK-RFI")
 {
-new ManagedRuleGroupOverride("REQUEST-931-APPLICATION-ATTACK-RFI")
-{
-Rules =
-{
-new ManagedRuleOverride("931120")
+Rules = {new ManagedRuleOverride("931120")
 {
 State = ManagedRuleEnabledState.Enabled,
 Action = RuleMatchActionType.Log,
-},new ManagedRuleOverride("931130")
+}, new ManagedRuleOverride("931130")
 {
 State = ManagedRuleEnabledState.Disabled,
 Action = RuleMatchActionType.AnomalyScoring,
-}
+}},
+}},
 },
-}
-},
-},new ManagedRuleSet("Microsoft_BotManagerRuleSet","1.0")
+new ManagedRuleSet("Microsoft_BotManagerRuleSet", "1.0")
 {
-RuleGroupOverrides =
+RuleGroupOverrides = {new ManagedRuleGroupOverride("UnknownBots")
 {
-new ManagedRuleGroupOverride("UnknownBots")
-{
-Rules =
-{
-new ManagedRuleOverride("300700")
+Rules = {new ManagedRuleOverride("300700")
 {
 State = ManagedRuleEnabledState.Enabled,
 Action = RuleMatchActionType.JSChallenge,
-}
+}},
+}},
 },
-}
-},
-},new ManagedRuleSet("Microsoft_HTTPDDoSRuleSet","1.0")
+new ManagedRuleSet("Microsoft_HTTPDDoSRuleSet", "1.0")
 {
-RuleGroupOverrides =
+RuleGroupOverrides = {new ManagedRuleGroupOverride("ExcessiveRequests")
 {
-new ManagedRuleGroupOverride("ExcessiveRequests")
-{
-Rules =
-{
-new ManagedRuleOverride("500100")
+Rules = {new ManagedRuleOverride("500100")
 {
 State = ManagedRuleEnabledState.Enabled,
 Action = RuleMatchActionType.Block,
 Sensitivity = ManagedRuleSensitivityType.High,
-}
-},
-}
-},
+}},
+}},
 }
 })
     {
-        Exceptions =
+        Exceptions = {new ExceptionEntry(ExceptionEntryMatchVariable.RequestUri, ExceptionEntryValueMatchOperator.Contains)
         {
-        new ExceptionEntry(ExceptionEntryMatchVariable.RequestUri,ExceptionEntryValueMatchOperator.Contains)
+        Values = {"health", "account/images", "default.aspx"},
+        ExceptionManagedRuleSets = {new ExclusionManagedRuleSet("OWASP", "3.2")},
+        }, new ExceptionEntry(ExceptionEntryMatchVariable.RequestHeader, ExceptionEntryValueMatchOperator.Contains)
         {
-        Values =
-        {
-        "health","account/images","default.aspx"
-        },
-        ExceptionManagedRuleSets =
-        {
-        new ExclusionManagedRuleSet("OWASP","3.2")
-        },
-        },new ExceptionEntry(ExceptionEntryMatchVariable.RequestHeader,ExceptionEntryValueMatchOperator.Contains)
-        {
-        Values =
-        {
-        "Mozilla/5.0","Chrome/122.0.0.0"
-        },
+        Values = {"Mozilla/5.0", "Chrome/122.0.0.0"},
         SelectorMatchOperator = ExceptionEntrySelectorMatchOperator.StartsWith,
         Selector = "User-Agent",
-        ExceptionManagedRuleSets =
+        ExceptionManagedRuleSets = {new ExclusionManagedRuleSet("OWASP", "3.2")
         {
-        new ExclusionManagedRuleSet("OWASP","3.2")
+        RuleGroups = {new ExclusionManagedRuleGroup("REQUEST-932-APPLICATION-ATTACK-RCE")},
+        }},
+        }, new ExceptionEntry(ExceptionEntryMatchVariable.RemoteAddr, ExceptionEntryValueMatchOperator.IPMatch)
         {
-        RuleGroups =
+        Values = {"1.2.3.4", "10.0.0.1/6"},
+        ExceptionManagedRuleSets = {new ExclusionManagedRuleSet("Microsoft_BotManagerRuleSet", "1.0")
         {
-        new ExclusionManagedRuleGroup("REQUEST-932-APPLICATION-ATTACK-RCE")
-        },
-        }
-        },
-        },new ExceptionEntry(ExceptionEntryMatchVariable.RemoteAddr,ExceptionEntryValueMatchOperator.IPMatch)
+        RuleGroups = {new ExclusionManagedRuleGroup("BadBots")
         {
-        Values =
+        Rules = {new ExclusionManagedRule("100100")},
+        }},
+        }},
+        }},
+        Exclusions = {new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgNames, OwaspCrsExclusionEntrySelectorMatchOperator.StartsWith, "hello")
         {
-        "1.2.3.4","10.0.0.1/6"
-        },
-        ExceptionManagedRuleSets =
+        ExclusionManagedRuleSets = {new ExclusionManagedRuleSet("OWASP", "3.2")
         {
-        new ExclusionManagedRuleSet("Microsoft_BotManagerRuleSet","1.0")
+        RuleGroups = {new ExclusionManagedRuleGroup("REQUEST-930-APPLICATION-ATTACK-LFI")
         {
-        RuleGroups =
+        Rules = {new ExclusionManagedRule("930120")},
+        }, new ExclusionManagedRuleGroup("REQUEST-932-APPLICATION-ATTACK-RCE")},
+        }},
+        }, new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgNames, OwaspCrsExclusionEntrySelectorMatchOperator.EndsWith, "hello")
         {
-        new ExclusionManagedRuleGroup("BadBots")
+        ExclusionManagedRuleSets = {new ExclusionManagedRuleSet("OWASP", "3.1")
         {
-        Rules =
-        {
-        new ExclusionManagedRule("100100")
-        },
-        }
-        },
-        }
-        },
-        }
-        },
-        Exclusions =
-        {
-        new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgNames,OwaspCrsExclusionEntrySelectorMatchOperator.StartsWith,"hello")
-        {
-        ExclusionManagedRuleSets =
-        {
-        new ExclusionManagedRuleSet("OWASP","3.2")
-        {
-        RuleGroups =
-        {
-        new ExclusionManagedRuleGroup("REQUEST-930-APPLICATION-ATTACK-LFI")
-        {
-        Rules =
-        {
-        new ExclusionManagedRule("930120")
-        },
-        },new ExclusionManagedRuleGroup("REQUEST-932-APPLICATION-ATTACK-RCE")
-        },
-        }
-        },
-        },new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgNames,OwaspCrsExclusionEntrySelectorMatchOperator.EndsWith,"hello")
-        {
-        ExclusionManagedRuleSets =
-        {
-        new ExclusionManagedRuleSet("OWASP","3.1")
-        {
-        RuleGroups =
-        {
-        },
-        }
-        },
-        },new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgNames,OwaspCrsExclusionEntrySelectorMatchOperator.StartsWith,"test"),new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgValues,OwaspCrsExclusionEntrySelectorMatchOperator.StartsWith,"test")
-        },
+        RuleGroups = {},
+        }},
+        }, new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgNames, OwaspCrsExclusionEntrySelectorMatchOperator.StartsWith, "test"), new OwaspCrsExclusionEntry(OwaspCrsExclusionEntryMatchVariable.RequestArgValues, OwaspCrsExclusionEntrySelectorMatchOperator.StartsWith, "test")},
     },
     Location = new AzureLocation("WestUs"),
 };

@@ -28,19 +28,16 @@ ExpressRoutePortCollection collection = resourceGroupResource.GetExpressRoutePor
 
 // invoke the operation
 string expressRoutePortName = "portName";
-ExpressRoutePortData data = new ExpressRoutePortData()
+ExpressRoutePortData data = new ExpressRoutePortData
 {
     PeeringLocation = "peeringLocationName",
     BandwidthInGbps = 100,
     Encapsulation = ExpressRoutePortsEncapsulation.QinQ,
-    Links =
-    {
-    new ExpressRouteLinkData()
+    Links = {new ExpressRouteLinkData
     {
     AdminState = ExpressRouteLinkAdminState.Enabled,
     Name = "link1",
-    }
-    },
+    }},
     BillingType = ExpressRoutePortsBillingType.UnlimitedData,
     Location = new AzureLocation("westus"),
 };

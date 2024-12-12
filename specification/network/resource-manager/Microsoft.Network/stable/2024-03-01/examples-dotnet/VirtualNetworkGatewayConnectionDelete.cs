@@ -26,4 +26,4 @@ VirtualNetworkGatewayConnectionResource virtualNetworkGatewayConnection = client
 // invoke the operation
 await virtualNetworkGatewayConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

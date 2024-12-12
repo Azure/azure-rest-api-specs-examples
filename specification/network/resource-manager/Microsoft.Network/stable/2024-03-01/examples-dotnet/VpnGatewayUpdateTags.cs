@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/VpnGatewayUpdateTags.json
@@ -25,12 +24,12 @@ ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdent
 VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
 
 // invoke the operation
-NetworkTagsObject vpnGatewayParameters = new NetworkTagsObject()
+NetworkTagsObject vpnGatewayParameters = new NetworkTagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<VpnGatewayResource> lro = await vpnGateway.UpdateAsync(WaitUntil.Completed, vpnGatewayParameters);

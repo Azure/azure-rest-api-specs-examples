@@ -28,174 +28,94 @@ AzureFirewallCollection collection = resourceGroupResource.GetAzureFirewalls();
 
 // invoke the operation
 string azureFirewallName = "azurefirewall";
-AzureFirewallData data = new AzureFirewallData()
+AzureFirewallData data = new AzureFirewallData
 {
-    Zones =
-    {
-    },
-    ApplicationRuleCollections =
-    {
-    new AzureFirewallApplicationRuleCollectionData()
+    Zones = { },
+    ApplicationRuleCollections = {new AzureFirewallApplicationRuleCollectionData
     {
     Priority = 110,
     ActionType = AzureFirewallRCActionType.Deny,
-    Rules =
-    {
-    new AzureFirewallApplicationRule()
+    Rules = {new AzureFirewallApplicationRule
     {
     Name = "rule1",
     Description = "Deny inbound rule",
-    SourceAddresses =
-    {
-    "216.58.216.164","10.0.0.0/24"
-    },
-    Protocols =
-    {
-    new AzureFirewallApplicationRuleProtocol()
+    SourceAddresses = {"216.58.216.164", "10.0.0.0/24"},
+    Protocols = {new AzureFirewallApplicationRuleProtocol
     {
     ProtocolType = AzureFirewallApplicationRuleProtocolType.Https,
     Port = 443,
-    }
-    },
-    TargetFqdns =
-    {
-    "www.test.com"
-    },
-    }
-    },
+    }},
+    TargetFqdns = {"www.test.com"},
+    }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/applicationRuleCollections/apprulecoll"),
     Name = "apprulecoll",
-    }
-    },
-    NatRuleCollections =
-    {
-    new AzureFirewallNatRuleCollectionData()
+    }},
+    NatRuleCollections = {new AzureFirewallNatRuleCollectionData
     {
     Priority = 112,
     ActionType = AzureFirewallNatRCActionType.Dnat,
-    Rules =
-    {
-    new AzureFirewallNatRule()
+    Rules = {new AzureFirewallNatRule
     {
     Name = "DNAT-HTTPS-traffic",
     Description = "D-NAT all outbound web traffic for inspection",
-    SourceAddresses =
-    {
-    "*"
-    },
-    DestinationAddresses =
-    {
-    "1.2.3.4"
-    },
-    DestinationPorts =
-    {
-    "443"
-    },
-    Protocols =
-    {
-    AzureFirewallNetworkRuleProtocol.Tcp
-    },
+    SourceAddresses = {"*"},
+    DestinationAddresses = {"1.2.3.4"},
+    DestinationPorts = {"443"},
+    Protocols = {AzureFirewallNetworkRuleProtocol.Tcp},
     TranslatedAddress = "1.2.3.5",
     TranslatedPort = "8443",
-    },new AzureFirewallNatRule()
+    }, new AzureFirewallNatRule
     {
     Name = "DNAT-HTTP-traffic-With-FQDN",
     Description = "D-NAT all inbound web traffic for inspection",
-    SourceAddresses =
-    {
-    "*"
-    },
-    DestinationAddresses =
-    {
-    "1.2.3.4"
-    },
-    DestinationPorts =
-    {
-    "80"
-    },
-    Protocols =
-    {
-    AzureFirewallNetworkRuleProtocol.Tcp
-    },
+    SourceAddresses = {"*"},
+    DestinationAddresses = {"1.2.3.4"},
+    DestinationPorts = {"80"},
+    Protocols = {AzureFirewallNetworkRuleProtocol.Tcp},
     TranslatedPort = "880",
     TranslatedFqdn = "internalhttpserver",
-    }
-    },
+    }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/natRuleCollections/natrulecoll"),
     Name = "natrulecoll",
-    }
-    },
-    NetworkRuleCollections =
-    {
-    new AzureFirewallNetworkRuleCollectionData()
+    }},
+    NetworkRuleCollections = {new AzureFirewallNetworkRuleCollectionData
     {
     Priority = 112,
     ActionType = AzureFirewallRCActionType.Deny,
-    Rules =
-    {
-    new AzureFirewallNetworkRule()
+    Rules = {new AzureFirewallNetworkRule
     {
     Name = "L4-traffic",
     Description = "Block traffic based on source IPs and ports",
-    Protocols =
-    {
-    AzureFirewallNetworkRuleProtocol.Tcp
-    },
-    SourceAddresses =
-    {
-    "192.168.1.1-192.168.1.12","10.1.4.12-10.1.4.255"
-    },
-    DestinationAddresses =
-    {
-    "*"
-    },
-    DestinationPorts =
-    {
-    "443-444","8443"
-    },
-    },new AzureFirewallNetworkRule()
+    Protocols = {AzureFirewallNetworkRuleProtocol.Tcp},
+    SourceAddresses = {"192.168.1.1-192.168.1.12", "10.1.4.12-10.1.4.255"},
+    DestinationAddresses = {"*"},
+    DestinationPorts = {"443-444", "8443"},
+    }, new AzureFirewallNetworkRule
     {
     Name = "L4-traffic-with-FQDN",
     Description = "Block traffic based on source IPs and ports to amazon",
-    Protocols =
-    {
-    AzureFirewallNetworkRuleProtocol.Tcp
-    },
-    SourceAddresses =
-    {
-    "10.2.4.12-10.2.4.255"
-    },
-    DestinationPorts =
-    {
-    "443-444","8443"
-    },
-    DestinationFqdns =
-    {
-    "www.amazon.com"
-    },
-    }
-    },
+    Protocols = {AzureFirewallNetworkRuleProtocol.Tcp},
+    SourceAddresses = {"10.2.4.12-10.2.4.255"},
+    DestinationPorts = {"443-444", "8443"},
+    DestinationFqdns = {"www.amazon.com"},
+    }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azurefirewall/networkRuleCollections/netrulecoll"),
     Name = "netrulecoll",
-    }
-    },
-    IPConfigurations =
-    {
-    new AzureFirewallIPConfiguration()
+    }},
+    IPConfigurations = {new AzureFirewallIPConfiguration
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallSubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pipName"),
     Name = "azureFirewallIpConfiguration",
-    }
-    },
-    ManagementIPConfiguration = new AzureFirewallIPConfiguration()
+    }},
+    ManagementIPConfiguration = new AzureFirewallIPConfiguration
     {
         SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/AzureFirewallManagementSubnet"),
         PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/managementPipName"),
         Name = "azureFirewallMgmtIpConfiguration",
     },
     ThreatIntelMode = AzureFirewallThreatIntelMode.Alert,
-    Sku = new AzureFirewallSku()
+    Sku = new AzureFirewallSku
     {
         Name = AzureFirewallSkuName.AzfwVnet,
         Tier = AzureFirewallSkuTier.Standard,
@@ -203,7 +123,7 @@ AzureFirewallData data = new AzureFirewallData()
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<AzureFirewallResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, azureFirewallName, data);

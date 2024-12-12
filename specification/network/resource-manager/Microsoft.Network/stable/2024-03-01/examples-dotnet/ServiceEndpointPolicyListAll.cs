@@ -32,4 +32,4 @@ await foreach (ServiceEndpointPolicyResource item in subscriptionResource.GetSer
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

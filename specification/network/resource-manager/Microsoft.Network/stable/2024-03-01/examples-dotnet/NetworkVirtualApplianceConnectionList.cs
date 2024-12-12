@@ -37,4 +37,4 @@ await foreach (NetworkVirtualApplianceConnectionResource item in collection.GetA
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

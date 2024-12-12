@@ -32,4 +32,4 @@ await foreach (VirtualWanResource item in subscriptionResource.GetVirtualWansAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

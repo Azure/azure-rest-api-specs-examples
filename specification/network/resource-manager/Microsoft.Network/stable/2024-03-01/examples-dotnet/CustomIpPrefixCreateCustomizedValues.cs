@@ -27,7 +27,7 @@ CustomIPPrefixCollection collection = resourceGroupResource.GetCustomIPPrefixes(
 
 // invoke the operation
 string customIPPrefixName = "test-customipprefix";
-CustomIPPrefixData data = new CustomIPPrefixData()
+CustomIPPrefixData data = new CustomIPPrefixData
 {
     Cidr = "0.0.0.0/24",
     Location = new AzureLocation("westus"),

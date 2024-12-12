@@ -27,7 +27,7 @@ DdosCustomPolicyCollection collection = resourceGroupResource.GetDdosCustomPolic
 
 // invoke the operation
 string ddosCustomPolicyName = "test-ddos-custom-policy";
-DdosCustomPolicyData data = new DdosCustomPolicyData()
+DdosCustomPolicyData data = new DdosCustomPolicyData
 {
     Location = new AzureLocation("centraluseuap"),
 };

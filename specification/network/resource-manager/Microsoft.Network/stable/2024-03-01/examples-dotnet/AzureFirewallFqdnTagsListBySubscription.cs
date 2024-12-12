@@ -28,4 +28,4 @@ await foreach (AzureFirewallFqdnTag item in subscriptionResource.GetAzureFirewal
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

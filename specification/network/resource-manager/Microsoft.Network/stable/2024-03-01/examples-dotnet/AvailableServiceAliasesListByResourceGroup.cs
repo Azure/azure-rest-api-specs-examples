@@ -30,4 +30,4 @@ await foreach (AvailableServiceAlias item in resourceGroupResource.GetAvailableS
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,9 +28,9 @@ PublicIPAddressCollection collection = resourceGroupResource.GetPublicIPAddresse
 
 // invoke the operation
 string publicIPAddressName = "test-ip";
-PublicIPAddressData data = new PublicIPAddressData()
+PublicIPAddressData data = new PublicIPAddressData
 {
-    DnsSettings = new PublicIPAddressDnsSettings()
+    DnsSettings = new PublicIPAddressDnsSettings
     {
         DomainNameLabel = "dnslbl",
         DomainNameLabelScope = PublicIPAddressDnsSettingsDomainNameLabelScope.TenantReuse,

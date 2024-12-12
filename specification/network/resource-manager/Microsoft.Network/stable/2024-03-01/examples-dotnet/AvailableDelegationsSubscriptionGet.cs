@@ -29,4 +29,4 @@ await foreach (AvailableDelegation item in subscriptionResource.GetAvailableDele
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

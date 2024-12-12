@@ -33,7 +33,7 @@ PeerExpressRouteCircuitConnectionResource result = response.HasValue ? response.
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

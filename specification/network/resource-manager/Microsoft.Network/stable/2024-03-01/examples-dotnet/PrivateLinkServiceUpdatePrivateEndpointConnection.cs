@@ -28,9 +28,9 @@ NetworkPrivateEndpointConnectionCollection collection = privateLinkService.GetNe
 
 // invoke the operation
 string peConnectionName = "testPlePeConnection";
-NetworkPrivateEndpointConnectionData data = new NetworkPrivateEndpointConnectionData()
+NetworkPrivateEndpointConnectionData data = new NetworkPrivateEndpointConnectionData
 {
-    ConnectionState = new NetworkPrivateLinkServiceConnectionState()
+    ConnectionState = new NetworkPrivateLinkServiceConnectionState
     {
         Status = "Approved",
         Description = "approved it for some reason.",

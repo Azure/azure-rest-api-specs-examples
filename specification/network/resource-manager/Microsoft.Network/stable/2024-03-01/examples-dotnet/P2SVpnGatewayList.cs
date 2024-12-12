@@ -32,4 +32,4 @@ await foreach (P2SVpnGatewayResource item in subscriptionResource.GetP2SVpnGatew
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

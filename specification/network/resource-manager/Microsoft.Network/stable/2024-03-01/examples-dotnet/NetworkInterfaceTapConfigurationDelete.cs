@@ -26,4 +26,4 @@ NetworkInterfaceTapConfigurationResource networkInterfaceTapConfiguration = clie
 // invoke the operation
 await networkInterfaceTapConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

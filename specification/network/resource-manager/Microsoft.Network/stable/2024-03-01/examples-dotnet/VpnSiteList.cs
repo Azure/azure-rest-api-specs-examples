@@ -32,4 +32,4 @@ await foreach (VpnSiteResource item in subscriptionResource.GetVpnSitesAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

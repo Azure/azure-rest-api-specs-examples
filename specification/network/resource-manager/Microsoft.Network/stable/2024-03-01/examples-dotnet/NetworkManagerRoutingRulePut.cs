@@ -15,28 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerRoutingRulesResource created on azure
-// for more information of creating NetworkManagerRoutingRulesResource, please refer to the document of NetworkManagerRoutingRulesResource
+// this example assumes you already have this NetworkManagerRoutingRuleResource created on azure
+// for more information of creating NetworkManagerRoutingRuleResource, please refer to the document of NetworkManagerRoutingRuleResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string configurationName = "myTestRoutingConfig";
 string ruleCollectionName = "testRuleCollection";
-ResourceIdentifier networkManagerRoutingRulesResourceId = NetworkManagerRoutingRulesResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName);
-NetworkManagerRoutingRulesResource networkManagerRoutingRules = client.GetNetworkManagerRoutingRulesResource(networkManagerRoutingRulesResourceId);
-
-// get the collection of this NetworkManagerRoutingRuleResource
-NetworkManagerRoutingRuleCollection collection = networkManagerRoutingRules.GetNetworkManagerRoutingRules();
+string ruleName = "SampleRoutingRule";
+ResourceIdentifier networkManagerRoutingRuleResourceId = NetworkManagerRoutingRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName);
+NetworkManagerRoutingRuleResource networkManagerRoutingRule = client.GetNetworkManagerRoutingRuleResource(networkManagerRoutingRuleResourceId);
 
 // invoke the operation
-string ruleName = "SampleRoutingRule";
-NetworkManagerRoutingRuleData data = new NetworkManagerRoutingRuleData()
+NetworkManagerRoutingRuleData data = new NetworkManagerRoutingRuleData
 {
     Description = "This is Sample Routing Rule",
     Destination = new RoutingRuleRouteDestination(RoutingRuleDestinationType.AddressPrefix, "10.0.0.0/16"),
     NextHop = new RoutingRuleNextHop(RoutingRuleNextHopType.VirtualNetworkGateway),
 };
-ArmOperation<NetworkManagerRoutingRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
+ArmOperation<NetworkManagerRoutingRuleResource> lro = await networkManagerRoutingRule.UpdateAsync(WaitUntil.Completed, data);
 NetworkManagerRoutingRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

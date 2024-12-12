@@ -15,29 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteCircuitConnectionResource created on azure
-// for more information of creating ExpressRouteCircuitConnectionResource, please refer to the document of ExpressRouteCircuitConnectionResource
+// this example assumes you already have this ExpressRouteCircuitPeeringResource created on azure
+// for more information of creating ExpressRouteCircuitPeeringResource, please refer to the document of ExpressRouteCircuitPeeringResource
 string subscriptionId = "subid1";
 string resourceGroupName = "rg1";
 string circuitName = "ExpressRouteARMCircuitA";
 string peeringName = "AzurePrivatePeering";
-string connectionName = "circuitConnectionUSAUS";
-ResourceIdentifier expressRouteCircuitConnectionResourceId = ExpressRouteCircuitConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName, peeringName, connectionName);
-ExpressRouteCircuitConnectionResource expressRouteCircuitConnection = client.GetExpressRouteCircuitConnectionResource(expressRouteCircuitConnectionResourceId);
+ResourceIdentifier expressRouteCircuitPeeringResourceId = ExpressRouteCircuitPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, circuitName, peeringName);
+ExpressRouteCircuitPeeringResource expressRouteCircuitPeering = client.GetExpressRouteCircuitPeeringResource(expressRouteCircuitPeeringResourceId);
+
+// get the collection of this ExpressRouteCircuitConnectionResource
+ExpressRouteCircuitConnectionCollection collection = expressRouteCircuitPeering.GetExpressRouteCircuitConnections();
 
 // invoke the operation
-ExpressRouteCircuitConnectionData data = new ExpressRouteCircuitConnectionData()
+string connectionName = "circuitConnectionUSAUS";
+ExpressRouteCircuitConnectionData data = new ExpressRouteCircuitConnectionData
 {
     ExpressRouteCircuitPeeringId = new ResourceIdentifier("/subscriptions/subid1/resourceGroups/dedharcktinit/providers/Microsoft.Network/expressRouteCircuits/dedharcktlocal/peerings/AzurePrivatePeering"),
     PeerExpressRouteCircuitPeeringId = new ResourceIdentifier("/subscriptions/subid2/resourceGroups/dedharcktpeer/providers/Microsoft.Network/expressRouteCircuits/dedharcktremote/peerings/AzurePrivatePeering"),
     AddressPrefix = "10.0.0.0/29",
     AuthorizationKey = "946a1918-b7a2-4917-b43c-8c4cdaee006a",
-    IPv6CircuitConnectionConfig = new IPv6CircuitConnectionConfig()
+    IPv6CircuitConnectionConfig = new IPv6CircuitConnectionConfig
     {
         AddressPrefix = "aa:bb::/125",
     },
 };
-ArmOperation<ExpressRouteCircuitConnectionResource> lro = await expressRouteCircuitConnection.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExpressRouteCircuitConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionName, data);
 ExpressRouteCircuitConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

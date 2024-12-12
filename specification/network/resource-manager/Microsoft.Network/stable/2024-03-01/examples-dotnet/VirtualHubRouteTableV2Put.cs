@@ -25,40 +25,22 @@ ResourceIdentifier virtualHubRouteTableV2ResourceId = VirtualHubRouteTableV2Reso
 VirtualHubRouteTableV2Resource virtualHubRouteTableV2 = client.GetVirtualHubRouteTableV2Resource(virtualHubRouteTableV2ResourceId);
 
 // invoke the operation
-VirtualHubRouteTableV2Data data = new VirtualHubRouteTableV2Data()
+VirtualHubRouteTableV2Data data = new VirtualHubRouteTableV2Data
 {
-    Routes =
-    {
-    new VirtualHubRouteV2()
+    Routes = {new VirtualHubRouteV2
     {
     DestinationType = "CIDR",
-    Destinations =
-    {
-    "20.10.0.0/16","20.20.0.0/16"
-    },
+    Destinations = {"20.10.0.0/16", "20.20.0.0/16"},
     NextHopType = "IPAddress",
-    NextHops =
-    {
-    "10.0.0.68"
-    },
-    },new VirtualHubRouteV2()
+    NextHops = {"10.0.0.68"},
+    }, new VirtualHubRouteV2
     {
     DestinationType = "CIDR",
-    Destinations =
-    {
-    "0.0.0.0/0"
-    },
+    Destinations = {"0.0.0.0/0"},
     NextHopType = "IPAddress",
-    NextHops =
-    {
-    "10.0.0.68"
-    },
-    }
-    },
-    AttachedConnections =
-    {
-    "All_Vnets"
-    },
+    NextHops = {"10.0.0.68"},
+    }},
+    AttachedConnections = { "All_Vnets" },
 };
 ArmOperation<VirtualHubRouteTableV2Resource> lro = await virtualHubRouteTableV2.UpdateAsync(WaitUntil.Completed, data);
 VirtualHubRouteTableV2Resource result = lro.Value;

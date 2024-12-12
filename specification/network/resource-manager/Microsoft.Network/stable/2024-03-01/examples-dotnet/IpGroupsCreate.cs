@@ -27,16 +27,13 @@ IPGroupCollection collection = resourceGroupResource.GetIPGroups();
 
 // invoke the operation
 string ipGroupsName = "ipGroups1";
-IPGroupData data = new IPGroupData()
+IPGroupData data = new IPGroupData
 {
-    IPAddresses =
-    {
-    "13.64.39.16/32","40.74.146.80/31","40.74.147.32/28"
-    },
+    IPAddresses = { "13.64.39.16/32", "40.74.146.80/31", "40.74.147.32/28" },
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<IPGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ipGroupsName, data);

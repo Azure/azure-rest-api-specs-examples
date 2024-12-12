@@ -28,4 +28,4 @@ BgpConnectionResource bgpConnection = client.GetBgpConnectionResource(bgpConnect
 // invoke the operation
 await bgpConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

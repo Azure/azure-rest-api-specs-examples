@@ -26,4 +26,4 @@ ServiceEndpointPolicyDefinitionResource serviceEndpointPolicyDefinition = client
 // invoke the operation
 await serviceEndpointPolicyDefinition.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

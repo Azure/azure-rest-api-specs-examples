@@ -28,24 +28,15 @@ NetworkManagerCollection collection = resourceGroupResource.GetNetworkManagers()
 
 // invoke the operation
 string networkManagerName = "TestNetworkManager";
-NetworkManagerData data = new NetworkManagerData()
+NetworkManagerData data = new NetworkManagerData
 {
     Description = "My Test Network Manager",
-    NetworkManagerScopes = new NetworkManagerPropertiesNetworkManagerScopes()
+    NetworkManagerScopes = new NetworkManagerPropertiesNetworkManagerScopes
     {
-        ManagementGroups =
-        {
-        "/Microsoft.Management/testmg"
-        },
-        Subscriptions =
-        {
-        "/subscriptions/00000000-0000-0000-0000-000000000000"
-        },
+        ManagementGroups = { "/Microsoft.Management/testmg" },
+        Subscriptions = { "/subscriptions/00000000-0000-0000-0000-000000000000" },
     },
-    NetworkManagerScopeAccesses =
-    {
-    NetworkConfigurationDeploymentType.Connectivity
-    },
+    NetworkManagerScopeAccesses = { NetworkConfigurationDeploymentType.Connectivity },
 };
 ArmOperation<NetworkManagerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkManagerName, data);
 NetworkManagerResource result = lro.Value;

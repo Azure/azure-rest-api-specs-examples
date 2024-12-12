@@ -28,20 +28,14 @@ VirtualNetworkCollection collection = resourceGroupResource.GetVirtualNetworks()
 
 // invoke the operation
 string virtualNetworkName = "test-vnet";
-VirtualNetworkData data = new VirtualNetworkData()
+VirtualNetworkData data = new VirtualNetworkData
 {
-    AddressPrefixes =
-    {
-    "10.0.0.0/16"
-    },
-    Subnets =
-    {
-    new SubnetData()
+    AddressPrefixes = { "10.0.0.0/16" },
+    Subnets = {new SubnetData
     {
     AddressPrefix = "10.0.0.0/24",
     Name = "test-1",
-    }
-    },
+    }},
     Encryption = new VirtualNetworkEncryption(true)
     {
         Enforcement = VirtualNetworkEncryptionEnforcement.AllowUnencrypted,

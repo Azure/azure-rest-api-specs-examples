@@ -28,4 +28,4 @@ ExpressRouteCircuitConnectionResource expressRouteCircuitConnection = client.Get
 // invoke the operation
 await expressRouteCircuitConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

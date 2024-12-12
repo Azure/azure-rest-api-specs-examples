@@ -29,50 +29,40 @@ LoadBalancerCollection collection = resourceGroupResource.GetLoadBalancers();
 
 // invoke the operation
 string loadBalancerName = "lb";
-LoadBalancerData data = new LoadBalancerData()
+LoadBalancerData data = new LoadBalancerData
 {
-    Sku = new LoadBalancerSku()
+    Sku = new LoadBalancerSku
     {
         Name = LoadBalancerSkuName.Standard,
     },
-    FrontendIPConfigurations =
+    FrontendIPConfigurations = {new FrontendIPConfigurationData
     {
-    new FrontendIPConfigurationData()
-    {
-    PublicIPAddress = new PublicIPAddressData()
+    PublicIPAddress = new PublicIPAddressData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip"),
     },
     Name = "fe-lb",
-    }
-    },
-    BackendAddressPools =
-    {
-    new BackendAddressPoolData()
+    }},
+    BackendAddressPools = {new BackendAddressPoolData
     {
     Name = "be-lb",
-    }
-    },
-    LoadBalancingRules =
+    }},
+    LoadBalancingRules = {new LoadBalancingRuleData
     {
-    new LoadBalancingRuleData()
+    Properties = new LoadBalancingRuleProperties(LoadBalancingTransportProtocol.Tcp, 80)
     {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"),
     BackendAddressPoolId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"),
     ProbeId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/probes/probe-lb"),
-    Protocol = LoadBalancingTransportProtocol.Tcp,
     LoadDistribution = LoadDistribution.Default,
-    FrontendPort = 80,
     BackendPort = 80,
     IdleTimeoutInMinutes = 15,
     EnableFloatingIP = true,
     DisableOutboundSnat = true,
-    Name = "rulelb",
-    }
     },
-    Probes =
-    {
-    new ProbeData()
+    Name = "rulelb",
+    }},
+    Probes = {new ProbeData
     {
     Protocol = ProbeProtocol.Http,
     Port = 80,
@@ -81,11 +71,8 @@ LoadBalancerData data = new LoadBalancerData()
     ProbeThreshold = 1,
     RequestPath = "healthcheck.aspx",
     Name = "probe-lb",
-    }
-    },
-    InboundNatRules =
-    {
-    new InboundNatRuleData()
+    }},
+    InboundNatRules = {new InboundNatRuleData
     {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"),
     Protocol = LoadBalancingTransportProtocol.Tcp,
@@ -94,27 +81,18 @@ LoadBalancerData data = new LoadBalancerData()
     IdleTimeoutInMinutes = 15,
     EnableFloatingIP = true,
     Name = "in-nat-rule",
-    }
-    },
-    InboundNatPools =
+    }},
+    InboundNatPools = { },
+    OutboundRules = {new OutboundRuleData
     {
-    },
-    OutboundRules =
-    {
-    new OutboundRuleData()
-    {
-    FrontendIPConfigurations =
-    {
-    new WritableSubResource()
+    FrontendIPConfigurations = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"),
-    }
-    },
+    }},
     BackendAddressPoolId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/be-lb"),
     Protocol = LoadBalancerOutboundRuleProtocol.All,
     Name = "rule1",
-    }
-    },
+    }},
     Location = new AzureLocation("eastus"),
 };
 ArmOperation<LoadBalancerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loadBalancerName, data);

@@ -28,106 +28,75 @@ VirtualNetworkGatewayCollection collection = resourceGroupResource.GetVirtualNet
 
 // invoke the operation
 string virtualNetworkGatewayName = "vpngw";
-VirtualNetworkGatewayData data = new VirtualNetworkGatewayData()
+VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
 {
-    IPConfigurations =
-    {
-    new VirtualNetworkGatewayIPConfiguration()
+    IPConfigurations = {new VirtualNetworkGatewayIPConfiguration
     {
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Dynamic,
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"),
     Name = "gwipconfig1",
-    }
-    },
+    }},
     GatewayType = VirtualNetworkGatewayType.Vpn,
     VpnType = VpnType.RouteBased,
     EnableBgp = false,
     Active = false,
     DisableIPSecReplayProtection = false,
-    Sku = new VirtualNetworkGatewaySku()
+    Sku = new VirtualNetworkGatewaySku
     {
         Name = VirtualNetworkGatewaySkuName.VpnGw1,
         Tier = VirtualNetworkGatewaySkuTier.VpnGw1,
     },
-    VpnClientConfiguration = new VpnClientConfiguration()
+    VpnClientConfiguration = new VpnClientConfiguration
     {
-        VpnClientRootCertificates =
+        VpnClientRootCertificates = { },
+        VpnClientRevokedCertificates = { },
+        VpnClientProtocols = { VpnClientProtocol.OpenVpn },
+        RadiusServers = {new RadiusServer("10.2.0.0")
         {
-        },
-        VpnClientRevokedCertificates =
-        {
-        },
-        VpnClientProtocols =
-        {
-        VpnClientProtocol.OpenVpn
-        },
-        RadiusServers =
-        {
-        new RadiusServer("10.2.0.0")
-        {
-        RadiusServerScore = 20,
+        RadiusServerScore = 20L,
         RadiusServerSecret = "radiusServerSecret",
-        }
-        },
+        }},
     },
-    BgpSettings = new BgpSettings()
+    BgpSettings = new BgpSettings
     {
-        Asn = 65515,
+        Asn = 65515L,
         BgpPeeringAddress = "10.0.1.30",
         PeerWeight = 0,
     },
-    CustomRoutesAddressPrefixes =
-    {
-    "101.168.0.6/32"
-    },
+    CustomRoutesAddressPrefixes = { "101.168.0.6/32" },
     EnableDnsForwarding = true,
-    NatRules =
-    {
-    new VirtualNetworkGatewayNatRuleData()
+    NatRules = {new VirtualNetworkGatewayNatRuleData
     {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.EgressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "10.10.0.0/24",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "50.0.0.0/24",
-    }
-    },
+    }},
     IPConfigurationId = "",
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1"),
     Name = "natRule1",
-    },new VirtualNetworkGatewayNatRuleData()
+    }, new VirtualNetworkGatewayNatRuleData
     {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.IngressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "20.10.0.0/24",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "30.0.0.0/24",
-    }
-    },
+    }},
     IPConfigurationId = "",
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule2"),
     Name = "natRule2",
-    }
-    },
+    }},
     EnableBgpRouteTranslationForNat = false,
     AllowVirtualWanTraffic = false,
     AllowRemoteVnetTraffic = false,

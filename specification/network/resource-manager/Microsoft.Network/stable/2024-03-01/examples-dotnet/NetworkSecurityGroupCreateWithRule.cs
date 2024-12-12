@@ -28,11 +28,9 @@ NetworkSecurityGroupCollection collection = resourceGroupResource.GetNetworkSecu
 
 // invoke the operation
 string networkSecurityGroupName = "testnsg";
-NetworkSecurityGroupData data = new NetworkSecurityGroupData()
+NetworkSecurityGroupData data = new NetworkSecurityGroupData
 {
-    SecurityRules =
-    {
-    new SecurityRuleData()
+    SecurityRules = {new SecurityRuleData
     {
     Protocol = SecurityRuleProtocol.Asterisk,
     SourcePortRange = "*",
@@ -43,8 +41,7 @@ NetworkSecurityGroupData data = new NetworkSecurityGroupData()
     Priority = 130,
     Direction = SecurityRuleDirection.Inbound,
     Name = "rule1",
-    }
-    },
+    }},
     Location = new AzureLocation("eastus"),
 };
 ArmOperation<NetworkSecurityGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkSecurityGroupName, data);

@@ -24,7 +24,15 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-VpnClientIPsecParameters vpnclientIPsecParams = new VpnClientIPsecParameters(86473, 429497, IPsecEncryption.Aes256, IPsecIntegrity.Sha256, IkeEncryption.Aes256, IkeIntegrity.Sha384, DHGroup.DHGroup2, PfsGroup.Pfs2);
+VpnClientIPsecParameters vpnclientIPsecParams = new VpnClientIPsecParameters(
+    86473,
+    429497,
+    IPsecEncryption.Aes256,
+    IPsecIntegrity.Sha256,
+    IkeEncryption.Aes256,
+    IkeIntegrity.Sha384,
+    DHGroup.DHGroup2,
+    PfsGroup.Pfs2);
 ArmOperation<VpnClientIPsecParameters> lro = await virtualNetworkGateway.SetVpnclientIPsecParametersAsync(WaitUntil.Completed, vpnclientIPsecParams);
 VpnClientIPsecParameters result = lro.Value;
 

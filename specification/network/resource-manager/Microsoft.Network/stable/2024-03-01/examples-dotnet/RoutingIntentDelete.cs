@@ -27,4 +27,4 @@ RoutingIntentResource routingIntent = client.GetRoutingIntentResource(routingInt
 // invoke the operation
 await routingIntent.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

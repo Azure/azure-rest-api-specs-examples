@@ -27,4 +27,4 @@ InboundNatRuleResource inboundNatRule = client.GetInboundNatRuleResource(inbound
 // invoke the operation
 await inboundNatRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

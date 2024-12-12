@@ -28,67 +28,44 @@ ConnectionMonitorCollection collection = networkWatcher.GetConnectionMonitors();
 
 // invoke the operation
 string connectionMonitorName = "cm1";
-ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUpdateContent()
+ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUpdateContent
 {
-    Endpoints =
-    {
-    new ConnectionMonitorEndpoint("vm1")
+    Endpoints = {new ConnectionMonitorEndpoint("vm1")
     {
     ResourceId = new ResourceIdentifier("/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/NwRgIrinaCentralUSEUAP/providers/Microsoft.Compute/virtualMachines/vm1"),
-    },new ConnectionMonitorEndpoint("CanaryWorkspaceVamshi")
+    }, new ConnectionMonitorEndpoint("CanaryWorkspaceVamshi")
     {
     ResourceId = new ResourceIdentifier("/subscriptions/96e68903-0a56-4819-9987-8d08ad6a1f99/resourceGroups/vasamudrRG/providers/Microsoft.OperationalInsights/workspaces/vasamudrWorkspace"),
-    Filter = new ConnectionMonitorEndpointFilter()
+    Filter = new ConnectionMonitorEndpointFilter
     {
     FilterType = ConnectionMonitorEndpointFilterType.Include,
-    Items =
-    {
-    new ConnectionMonitorEndpointFilterItem()
+    Items = {new ConnectionMonitorEndpointFilterItem
     {
     ItemType = ConnectionMonitorEndpointFilterItemType.AgentAddress,
     Address = "npmuser",
-    }
+    }},
     },
-    },
-    },new ConnectionMonitorEndpoint("bing")
+    }, new ConnectionMonitorEndpoint("bing")
     {
     Address = "bing.com",
-    },new ConnectionMonitorEndpoint("google")
+    }, new ConnectionMonitorEndpoint("google")
     {
     Address = "google.com",
-    }
-    },
-    TestConfigurations =
-    {
-    new ConnectionMonitorTestConfiguration("testConfig1",ConnectionMonitorTestConfigurationProtocol.Tcp)
+    }},
+    TestConfigurations = {new ConnectionMonitorTestConfiguration("testConfig1", ConnectionMonitorTestConfigurationProtocol.Tcp)
     {
     TestFrequencySec = 60,
-    TcpConfiguration = new ConnectionMonitorTcpConfiguration()
+    TcpConfiguration = new ConnectionMonitorTcpConfiguration
     {
     Port = 80,
     DisableTraceRoute = false,
     },
-    }
-    },
-    TestGroups =
-    {
-    new ConnectionMonitorTestGroup("test1",new string[]
-    {
-    "testConfig1"
-    },new string[]
-    {
-    "vm1","CanaryWorkspaceVamshi"
-    },new string[]
-    {
-    "bing","google"
-    })
+    }},
+    TestGroups = {new ConnectionMonitorTestGroup("test1", new string[]{"testConfig1"}, new string[]{"vm1", "CanaryWorkspaceVamshi"}, new string[]{"bing", "google"})
     {
     Disable = false,
-    }
-    },
-    Outputs =
-    {
-    },
+    }},
+    Outputs = { },
 };
 ArmOperation<ConnectionMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionMonitorName, content);
 ConnectionMonitorResource result = lro.Value;

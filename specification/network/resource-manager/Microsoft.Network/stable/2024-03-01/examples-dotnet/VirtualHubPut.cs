@@ -27,7 +27,7 @@ VirtualHubCollection collection = resourceGroupResource.GetVirtualHubs();
 
 // invoke the operation
 string virtualHubName = "virtualHub2";
-VirtualHubData data = new VirtualHubData()
+VirtualHubData data = new VirtualHubData
 {
     VirtualWanId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualWans/virtualWan1"),
     AddressPrefix = "10.168.0.0/24",
@@ -35,7 +35,7 @@ VirtualHubData data = new VirtualHubData()
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<VirtualHubResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualHubName, data);

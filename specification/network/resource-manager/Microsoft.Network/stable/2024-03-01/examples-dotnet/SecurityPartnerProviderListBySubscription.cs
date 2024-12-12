@@ -32,4 +32,4 @@ await foreach (SecurityPartnerProviderResource item in subscriptionResource.GetS
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

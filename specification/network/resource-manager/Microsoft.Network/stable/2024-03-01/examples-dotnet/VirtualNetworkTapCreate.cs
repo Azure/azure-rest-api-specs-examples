@@ -27,9 +27,9 @@ VirtualNetworkTapCollection collection = resourceGroupResource.GetVirtualNetwork
 
 // invoke the operation
 string tapName = "test-vtap";
-VirtualNetworkTapData data = new VirtualNetworkTapData()
+VirtualNetworkTapData data = new VirtualNetworkTapData
 {
-    DestinationNetworkInterfaceIPConfiguration = new NetworkInterfaceIPConfigurationData()
+    DestinationNetworkInterfaceIPConfiguration = new NetworkInterfaceIPConfigurationData
     {
         Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkInterfaces/testNetworkInterface/ipConfigurations/ipconfig1"),
     },

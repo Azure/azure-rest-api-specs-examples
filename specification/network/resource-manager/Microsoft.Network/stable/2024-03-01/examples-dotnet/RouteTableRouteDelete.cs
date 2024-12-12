@@ -27,4 +27,4 @@ RouteResource route = client.GetRouteResource(routeResourceId);
 // invoke the operation
 await route.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

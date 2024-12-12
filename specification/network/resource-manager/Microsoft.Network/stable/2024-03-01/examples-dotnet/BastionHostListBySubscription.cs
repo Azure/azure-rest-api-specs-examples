@@ -32,4 +32,4 @@ await foreach (BastionHostResource item in subscriptionResource.GetBastionHostsA
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

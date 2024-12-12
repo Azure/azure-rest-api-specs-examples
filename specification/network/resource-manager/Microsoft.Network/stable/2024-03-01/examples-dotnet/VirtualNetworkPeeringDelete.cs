@@ -27,4 +27,4 @@ VirtualNetworkPeeringResource virtualNetworkPeering = client.GetVirtualNetworkPe
 // invoke the operation
 await virtualNetworkPeering.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

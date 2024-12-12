@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/VpnGatewayStopPacketCapture.json
@@ -25,7 +24,7 @@ ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdent
 VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
 
 // invoke the operation
-VpnGatewayPacketCaptureStopContent content = new VpnGatewayPacketCaptureStopContent()
+VpnGatewayPacketCaptureStopContent content = new VpnGatewayPacketCaptureStopContent
 {
     SasUri = new Uri("https://teststorage.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-09-13T07:44:05Z&st=2019-09-06T23:44:05Z&spr=https&sig=V1h9D1riltvZMI69d6ihENnFo%2FrCvTqGgjO2lf%2FVBhE%3D"),
 };

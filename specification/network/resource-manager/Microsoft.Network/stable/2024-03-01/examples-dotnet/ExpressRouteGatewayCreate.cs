@@ -28,9 +28,9 @@ ExpressRouteGatewayCollection collection = resourceGroupResource.GetExpressRoute
 
 // invoke the operation
 string expressRouteGatewayName = "gateway-2";
-ExpressRouteGatewayData data = new ExpressRouteGatewayData()
+ExpressRouteGatewayData data = new ExpressRouteGatewayData
 {
-    AutoScaleBounds = new ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds()
+    AutoScaleBounds = new ExpressRouteGatewayPropertiesAutoScaleConfigurationBounds
     {
         Min = 3,
     },

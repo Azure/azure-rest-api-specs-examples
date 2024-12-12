@@ -26,4 +26,4 @@ NetworkManagerRoutingConfigurationResource networkManagerRoutingConfiguration = 
 // invoke the operation
 await networkManagerRoutingConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

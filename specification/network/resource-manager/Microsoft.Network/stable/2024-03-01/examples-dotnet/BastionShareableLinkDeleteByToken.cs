@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/BastionShareableLinkDeleteByToken.json
@@ -25,13 +24,10 @@ ResourceIdentifier bastionHostResourceId = BastionHostResource.CreateResourceIde
 BastionHostResource bastionHost = client.GetBastionHostResource(bastionHostResourceId);
 
 // invoke the operation
-BastionShareableLinkTokenListContent content = new BastionShareableLinkTokenListContent()
+BastionShareableLinkTokenListContent content = new BastionShareableLinkTokenListContent
 {
-    Tokens =
-    {
-    "abcd1234-efgh-hijk-5678-abcdefgh1234","dcba4321-hgfe-kjih-8765-hgfedcba4321"
-    },
+    Tokens = { "abcd1234-efgh-hijk-5678-abcdefgh1234", "dcba4321-hgfe-kjih-8765-hgfedcba4321" },
 };
 await bastionHost.DeleteBastionShareableLinkByTokenAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

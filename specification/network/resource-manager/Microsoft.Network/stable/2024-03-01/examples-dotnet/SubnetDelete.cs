@@ -27,4 +27,4 @@ SubnetResource subnet = client.GetSubnetResource(subnetResourceId);
 // invoke the operation
 await subnet.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

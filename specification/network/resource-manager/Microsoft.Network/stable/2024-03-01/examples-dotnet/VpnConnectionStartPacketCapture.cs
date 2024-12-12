@@ -26,12 +26,9 @@ ResourceIdentifier vpnConnectionResourceId = VpnConnectionResource.CreateResourc
 VpnConnectionResource vpnConnection = client.GetVpnConnectionResource(vpnConnectionResourceId);
 
 // invoke the operation
-VpnConnectionPacketCaptureStartContent content = new VpnConnectionPacketCaptureStartContent()
+VpnConnectionPacketCaptureStartContent content = new VpnConnectionPacketCaptureStartContent
 {
-    LinkConnectionNames =
-    {
-    "siteLink1","siteLink2"
-    },
+    LinkConnectionNames = { "siteLink1", "siteLink2" },
 };
 ArmOperation<string> lro = await vpnConnection.StartPacketCaptureAsync(WaitUntil.Completed, content: content);
 string result = lro.Value;

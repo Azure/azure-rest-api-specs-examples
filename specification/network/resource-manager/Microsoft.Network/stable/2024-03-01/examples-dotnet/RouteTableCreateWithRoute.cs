@@ -28,17 +28,14 @@ RouteTableCollection collection = resourceGroupResource.GetRouteTables();
 
 // invoke the operation
 string routeTableName = "testrt";
-RouteTableData data = new RouteTableData()
+RouteTableData data = new RouteTableData
 {
-    Routes =
-    {
-    new RouteData()
+    Routes = {new RouteData
     {
     AddressPrefix = "10.0.3.0/24",
     NextHopType = RouteNextHopType.VirtualNetworkGateway,
     Name = "route1",
-    }
-    },
+    }},
     DisableBgpRoutePropagation = true,
     Location = new AzureLocation("westus"),
 };

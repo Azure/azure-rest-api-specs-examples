@@ -32,4 +32,4 @@ await foreach (RouteTableResource item in subscriptionResource.GetRouteTablesAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

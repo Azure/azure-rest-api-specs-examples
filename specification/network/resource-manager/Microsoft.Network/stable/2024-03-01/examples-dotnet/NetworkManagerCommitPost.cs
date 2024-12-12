@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkManagerCommitPost.json
@@ -25,15 +24,9 @@ ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResou
 NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
 
 // invoke the operation
-NetworkManagerCommit networkManagerCommit = new NetworkManagerCommit(new string[]
+NetworkManagerCommit networkManagerCommit = new NetworkManagerCommit(new string[] { "useast" }, NetworkConfigurationDeploymentType.SecurityAdmin)
 {
-"useast"
-}, NetworkConfigurationDeploymentType.SecurityAdmin)
-{
-    ConfigurationIds =
-    {
-    "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resoureGroupSample/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/SampleSecurityAdminConfig"
-    },
+    ConfigurationIds = { "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resoureGroupSample/providers/Microsoft.Network/networkManagers/testNetworkManager/securityAdminConfigurations/SampleSecurityAdminConfig" },
 };
 ArmOperation<NetworkManagerCommit> lro = await networkManager.PostNetworkManagerCommitAsync(WaitUntil.Completed, networkManagerCommit);
 NetworkManagerCommit result = lro.Value;

@@ -29,15 +29,11 @@ VpnConnectionCollection collection = vpnGateway.GetVpnConnections();
 
 // invoke the operation
 string connectionName = "vpnConnection1";
-VpnConnectionData data = new VpnConnectionData()
+VpnConnectionData data = new VpnConnectionData
 {
     RemoteVpnSiteId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"),
-    TrafficSelectorPolicies =
-    {
-    },
-    VpnLinkConnections =
-    {
-    new VpnSiteLinkConnectionData()
+    TrafficSelectorPolicies = { },
+    VpnLinkConnections = {new VpnSiteLinkConnectionData
     {
     VpnSiteLinkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1/vpnSiteLinks/siteLink1"),
     VpnLinkConnectionMode = VpnLinkConnectionMode.Default,
@@ -46,30 +42,23 @@ VpnConnectionData data = new VpnConnectionData()
     SharedKey = "key",
     UsePolicyBasedTrafficSelectors = false,
     Name = "Connection-Link1",
-    }
-    },
-    RoutingConfiguration = new RoutingConfiguration()
+    }},
+    RoutingConfiguration = new RoutingConfiguration
     {
         AssociatedRouteTableId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"),
-        PropagatedRouteTables = new PropagatedRouteTable()
+        PropagatedRouteTables = new PropagatedRouteTable
         {
-            Labels =
-            {
-            "label1","label2"
-            },
-            Ids =
-            {
-            new WritableSubResource()
+            Labels = { "label1", "label2" },
+            Ids = {new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"),
-            },new WritableSubResource()
+            }, new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"),
-            },new WritableSubResource()
+            }, new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"),
-            }
-            },
+            }},
         },
         InboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"),
         OutboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),

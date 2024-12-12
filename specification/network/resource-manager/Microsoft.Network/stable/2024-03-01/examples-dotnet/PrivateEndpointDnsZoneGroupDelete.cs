@@ -27,4 +27,4 @@ PrivateDnsZoneGroupResource privateDnsZoneGroup = client.GetPrivateDnsZoneGroupR
 // invoke the operation
 await privateDnsZoneGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

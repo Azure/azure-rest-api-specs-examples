@@ -30,127 +30,95 @@ ApplicationGatewayCollection collection = resourceGroupResource.GetApplicationGa
 
 // invoke the operation
 string applicationGatewayName = "appgw";
-ApplicationGatewayData data = new ApplicationGatewayData()
+ApplicationGatewayData data = new ApplicationGatewayData
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity()
         },
     },
-    Sku = new ApplicationGatewaySku()
+    Sku = new ApplicationGatewaySku
     {
         Name = ApplicationGatewaySkuName.StandardV2,
         Tier = ApplicationGatewayTier.StandardV2,
         Capacity = 3,
     },
-    GatewayIPConfigurations =
-    {
-    new ApplicationGatewayIPConfiguration()
+    GatewayIPConfigurations = {new ApplicationGatewayIPConfiguration
     {
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet/subnets/appgwsubnet"),
     Name = "appgwipc",
-    }
-    },
-    TrustedRootCertificates =
+    }},
+    TrustedRootCertificates = {new ApplicationGatewayTrustedRootCertificate
     {
-    new ApplicationGatewayTrustedRootCertificate()
-    {
-    Data = BinaryData.FromString("\"****\""),
+    Data = BinaryData.FromObjectAsJson("****"),
     Name = "rootcert",
-    },new ApplicationGatewayTrustedRootCertificate()
+    }, new ApplicationGatewayTrustedRootCertificate
     {
     KeyVaultSecretId = "https://kv/secret",
     Name = "rootcert1",
-    }
-    },
-    TrustedClientCertificates =
+    }},
+    TrustedClientCertificates = {new ApplicationGatewayTrustedClientCertificate
     {
-    new ApplicationGatewayTrustedClientCertificate()
-    {
-    Data = BinaryData.FromString("\"****\""),
+    Data = BinaryData.FromObjectAsJson("****"),
     Name = "clientcert",
-    }
-    },
-    SslCertificates =
+    }},
+    SslCertificates = {new ApplicationGatewaySslCertificate
     {
-    new ApplicationGatewaySslCertificate()
-    {
-    Data = BinaryData.FromString("\"****\""),
+    Data = BinaryData.FromObjectAsJson("****"),
     Password = "****",
     Name = "sslcert",
-    },new ApplicationGatewaySslCertificate()
+    }, new ApplicationGatewaySslCertificate
     {
     KeyVaultSecretId = "https://kv/secret",
     Name = "sslcert2",
-    }
-    },
-    FrontendIPConfigurations =
-    {
-    new ApplicationGatewayFrontendIPConfiguration()
+    }},
+    FrontendIPConfigurations = {new ApplicationGatewayFrontendIPConfiguration
     {
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/appgwpip"),
     Name = "appgwfip",
-    }
-    },
-    FrontendPorts =
-    {
-    new ApplicationGatewayFrontendPort()
+    }},
+    FrontendPorts = {new ApplicationGatewayFrontendPort
     {
     Port = 443,
     Name = "appgwfp",
-    },new ApplicationGatewayFrontendPort()
+    }, new ApplicationGatewayFrontendPort
     {
     Port = 80,
     Name = "appgwfp80",
-    }
-    },
-    BackendAddressPools =
+    }},
+    BackendAddressPools = {new ApplicationGatewayBackendAddressPool
     {
-    new ApplicationGatewayBackendAddressPool()
-    {
-    BackendAddresses =
-    {
-    new ApplicationGatewayBackendAddress()
+    BackendAddresses = {new ApplicationGatewayBackendAddress
     {
     IPAddress = "10.0.1.1",
-    },new ApplicationGatewayBackendAddress()
+    }, new ApplicationGatewayBackendAddress
     {
     IPAddress = "10.0.1.2",
-    }
-    },
+    }},
     Name = "appgwpool",
-    },new ApplicationGatewayBackendAddressPool()
+    }, new ApplicationGatewayBackendAddressPool
     {
-    BackendAddresses =
-    {
-    new ApplicationGatewayBackendAddress()
+    BackendAddresses = {new ApplicationGatewayBackendAddress
     {
     IPAddress = "10.0.0.1",
-    },new ApplicationGatewayBackendAddress()
+    }, new ApplicationGatewayBackendAddress
     {
     IPAddress = "10.0.0.2",
-    }
-    },
+    }},
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appgwpool1"),
     Name = "appgwpool1",
-    }
-    },
-    BackendHttpSettingsCollection =
-    {
-    new ApplicationGatewayBackendHttpSettings()
+    }},
+    BackendHttpSettingsCollection = {new ApplicationGatewayBackendHttpSettings
     {
     Port = 80,
     Protocol = ApplicationGatewayProtocol.Http,
     CookieBasedAffinity = ApplicationGatewayCookieBasedAffinity.Disabled,
     RequestTimeoutInSeconds = 30,
     Name = "appgwbhs",
-    }
-    },
-    HttpListeners =
-    {
-    new ApplicationGatewayHttpListener()
+    }},
+    HttpListeners = {new ApplicationGatewayHttpListener
     {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip"),
     FrontendPortId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp"),
@@ -159,44 +127,32 @@ ApplicationGatewayData data = new ApplicationGatewayData()
     SslProfileId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/sslProfiles/sslProfile1"),
     RequireServerNameIndication = false,
     Name = "appgwhl",
-    },new ApplicationGatewayHttpListener()
+    }, new ApplicationGatewayHttpListener
     {
     FrontendIPConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/appgwfip"),
     FrontendPortId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/appgwfp80"),
     Protocol = ApplicationGatewayProtocol.Http,
     Name = "appgwhttplistener",
-    }
-    },
-    SslProfiles =
+    }},
+    SslProfiles = {new ApplicationGatewaySslProfile
     {
-    new ApplicationGatewaySslProfile()
-    {
-    TrustedClientCertificates =
-    {
-    new WritableSubResource()
+    TrustedClientCertificates = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/trustedClientCertificates/clientcert"),
-    }
-    },
-    SslPolicy = new ApplicationGatewaySslPolicy()
+    }},
+    SslPolicy = new ApplicationGatewaySslPolicy
     {
     PolicyType = ApplicationGatewaySslPolicyType.Custom,
-    CipherSuites =
-    {
-    ApplicationGatewaySslCipherSuite.TlsECDiffieHellmanRsaWithAes128CbcSha256
-    },
+    CipherSuites = {ApplicationGatewaySslCipherSuite.TlsECDiffieHellmanRsaWithAes128CbcSha256},
     MinProtocolVersion = ApplicationGatewaySslProtocol.Tls1_1,
     },
-    ClientAuthConfiguration = new ApplicationGatewayClientAuthConfiguration()
+    ClientAuthConfiguration = new ApplicationGatewayClientAuthConfiguration
     {
     VerifyClientCertIssuerDN = true,
     },
     Name = "sslProfile1",
-    }
-    },
-    RequestRoutingRules =
-    {
-    new ApplicationGatewayRequestRoutingRule()
+    }},
+    RequestRoutingRules = {new ApplicationGatewayRequestRoutingRule
     {
     RuleType = ApplicationGatewayRequestRoutingRuleType.Basic,
     Priority = 10,
@@ -205,57 +161,41 @@ ApplicationGatewayData data = new ApplicationGatewayData()
     HttpListenerId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/appgwhl"),
     RewriteRuleSetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/applicationGateways/appgw/rewriteRuleSets/rewriteRuleSet1"),
     Name = "appgwrule",
-    }
-    },
-    RewriteRuleSets =
+    }},
+    RewriteRuleSets = {new ApplicationGatewayRewriteRuleSet
     {
-    new ApplicationGatewayRewriteRuleSet()
-    {
-    RewriteRules =
-    {
-    new ApplicationGatewayRewriteRule()
+    RewriteRules = {new ApplicationGatewayRewriteRule
     {
     Name = "Set X-Forwarded-For",
     RuleSequence = 102,
-    Conditions =
-    {
-    new ApplicationGatewayRewriteRuleCondition()
+    Conditions = {new ApplicationGatewayRewriteRuleCondition
     {
     Variable = "http_req_Authorization",
     Pattern = "^Bearer",
     IgnoreCase = true,
     Negate = false,
-    }
-    },
-    ActionSet = new ApplicationGatewayRewriteRuleActionSet()
+    }},
+    ActionSet = new ApplicationGatewayRewriteRuleActionSet
     {
-    RequestHeaderConfigurations =
-    {
-    new ApplicationGatewayHeaderConfiguration()
+    RequestHeaderConfigurations = {new ApplicationGatewayHeaderConfiguration
     {
     HeaderName = "X-Forwarded-For",
     HeaderValue = "{var_add_x_forwarded_for_proxy}",
-    }
-    },
-    ResponseHeaderConfigurations =
-    {
-    new ApplicationGatewayHeaderConfiguration()
+    }},
+    ResponseHeaderConfigurations = {new ApplicationGatewayHeaderConfiguration
     {
     HeaderName = "Strict-Transport-Security",
     HeaderValue = "max-age=31536000",
-    }
-    },
-    UrlConfiguration = new ApplicationGatewayUrlConfiguration()
+    }},
+    UrlConfiguration = new ApplicationGatewayUrlConfiguration
     {
     ModifiedPath = "/abc",
     },
     },
-    }
-    },
+    }},
     Name = "rewriteRuleSet1",
-    }
-    },
-    GlobalConfiguration = new ApplicationGatewayGlobalConfiguration()
+    }},
+    GlobalConfiguration = new ApplicationGatewayGlobalConfiguration
     {
         EnableRequestBuffering = true,
         EnableResponseBuffering = true,

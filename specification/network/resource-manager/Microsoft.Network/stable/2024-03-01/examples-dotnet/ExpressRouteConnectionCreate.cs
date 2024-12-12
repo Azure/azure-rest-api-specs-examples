@@ -29,33 +29,27 @@ ExpressRouteConnectionCollection collection = expressRouteGateway.GetExpressRout
 
 // invoke the operation
 string connectionName = "connectionName";
-ExpressRouteConnectionData data = new ExpressRouteConnectionData()
+ExpressRouteConnectionData data = new ExpressRouteConnectionData
 {
     ExpressRouteCircuitPeeringId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/expressRouteCircuits/circuitName/peerings/AzurePrivatePeering"),
     AuthorizationKey = "authorizationKey",
     RoutingWeight = 2,
-    RoutingConfiguration = new RoutingConfiguration()
+    RoutingConfiguration = new RoutingConfiguration
     {
         AssociatedRouteTableId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"),
-        PropagatedRouteTables = new PropagatedRouteTable()
+        PropagatedRouteTables = new PropagatedRouteTable
         {
-            Labels =
-            {
-            "label1","label2"
-            },
-            Ids =
-            {
-            new WritableSubResource()
+            Labels = { "label1", "label2" },
+            Ids = {new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable1"),
-            },new WritableSubResource()
+            }, new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable2"),
-            },new WritableSubResource()
+            }, new WritableSubResource
             {
             Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/resourceGroupName/providers/Microsoft.Network/virtualHubs/hub1/hubRouteTables/hubRouteTable3"),
-            }
-            },
+            }},
         },
         InboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap1"),
         OutboundRouteMapId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/routeMaps/routeMap2"),

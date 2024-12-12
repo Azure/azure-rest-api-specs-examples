@@ -27,4 +27,4 @@ VirtualApplianceSiteResource virtualApplianceSite = client.GetVirtualApplianceSi
 // invoke the operation
 await virtualApplianceSite.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/PrivateLinkServiceCreate.json
@@ -25,41 +24,26 @@ ResourceIdentifier privateLinkServiceResourceId = PrivateLinkServiceResource.Cre
 PrivateLinkServiceResource privateLinkService = client.GetPrivateLinkServiceResource(privateLinkServiceResourceId);
 
 // invoke the operation
-PrivateLinkServiceData data = new PrivateLinkServiceData()
+PrivateLinkServiceData data = new PrivateLinkServiceData
 {
-    LoadBalancerFrontendIPConfigurations =
-    {
-    new FrontendIPConfigurationData()
+    LoadBalancerFrontendIPConfigurations = {new FrontendIPConfigurationData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb"),
-    }
-    },
-    IPConfigurations =
-    {
-    new PrivateLinkServiceIPConfiguration()
+    }},
+    IPConfigurations = {new PrivateLinkServiceIPConfiguration
     {
     PrivateIPAddress = "10.0.1.4",
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Static,
-    Subnet = new SubnetData()
+    Subnet = new SubnetData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnetlb/subnets/subnetlb"),
     },
     PrivateIPAddressVersion = NetworkIPVersion.IPv4,
     Name = "fe-lb",
-    }
-    },
-    VisibilitySubscriptions =
-    {
-    "subscription1","subscription2","subscription3"
-    },
-    AutoApprovalSubscriptions =
-    {
-    "subscription1","subscription2"
-    },
-    Fqdns =
-    {
-    "fqdn1","fqdn2","fqdn3"
-    },
+    }},
+    VisibilitySubscriptions = { "subscription1", "subscription2", "subscription3" },
+    AutoApprovalSubscriptions = { "subscription1", "subscription2" },
+    Fqdns = { "fqdn1", "fqdn2", "fqdn3" },
     Location = new AzureLocation("eastus"),
 };
 ArmOperation<PrivateLinkServiceResource> lro = await privateLinkService.UpdateAsync(WaitUntil.Completed, data);

@@ -29,23 +29,17 @@ NatGatewayCollection collection = resourceGroupResource.GetNatGateways();
 
 // invoke the operation
 string natGatewayName = "test-natgateway";
-NatGatewayData data = new NatGatewayData()
+NatGatewayData data = new NatGatewayData
 {
     SkuName = NatGatewaySkuName.Standard,
-    PublicIPAddresses =
-    {
-    new WritableSubResource()
+    PublicIPAddresses = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/PublicIpAddress1"),
-    }
-    },
-    PublicIPPrefixes =
-    {
-    new WritableSubResource()
+    }},
+    PublicIPPrefixes = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPPrefixes/PublicIpPrefix1"),
-    }
-    },
+    }},
     Location = new AzureLocation("westus"),
 };
 ArmOperation<NatGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, natGatewayName, data);

@@ -30,84 +30,63 @@ NetworkVirtualApplianceCollection collection = resourceGroupResource.GetNetworkV
 
 // invoke the operation
 string networkVirtualApplianceName = "nva";
-NetworkVirtualApplianceData data = new NetworkVirtualApplianceData()
+NetworkVirtualApplianceData data = new NetworkVirtualApplianceData
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity()
         },
     },
-    NvaSku = new VirtualApplianceSkuProperties()
+    NvaSku = new VirtualApplianceSkuProperties
     {
         Vendor = "Cisco SDWAN",
         BundledScaleUnit = "1",
         MarketPlaceVersion = "12.1",
     },
-    BootStrapConfigurationBlobs =
-    {
-    "https://csrncvhdstorage1.blob.core.windows.net/csrncvhdstoragecont/csrbootstrapconfig"
-    },
+    BootStrapConfigurationBlobs = { "https://csrncvhdstorage1.blob.core.windows.net/csrncvhdstoragecont/csrbootstrapconfig" },
     VirtualHubId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"),
-    CloudInitConfigurationBlobs =
-    {
-    "https://csrncvhdstorage1.blob.core.windows.net/csrncvhdstoragecont/csrcloudinitconfig"
-    },
-    VirtualApplianceAsn = 10000,
-    NetworkInterfaceConfigurations =
-    {
-    new VirtualApplianceNetworkInterfaceConfiguration()
+    CloudInitConfigurationBlobs = { "https://csrncvhdstorage1.blob.core.windows.net/csrncvhdstoragecont/csrcloudinitconfig" },
+    VirtualApplianceAsn = 10000L,
+    NetworkInterfaceConfigurations = {new VirtualApplianceNetworkInterfaceConfiguration
     {
     NicType = NicTypeInRequest.PublicNic,
-    VirtualApplianceNetworkInterfaceIPConfigurations =
-    {
-    new VirtualApplianceIPConfiguration()
+    VirtualApplianceNetworkInterfaceIPConfigurations = {new VirtualApplianceIPConfiguration
     {
     Name = "publicnicipconfig",
     IsPrimary = true,
-    },new VirtualApplianceIPConfiguration()
+    }, new VirtualApplianceIPConfiguration
     {
     Name = "publicnicipconfig-2",
     IsPrimary = false,
-    }
-    },
-    },new VirtualApplianceNetworkInterfaceConfiguration()
+    }},
+    }, new VirtualApplianceNetworkInterfaceConfiguration
     {
     NicType = NicTypeInRequest.PrivateNic,
-    VirtualApplianceNetworkInterfaceIPConfigurations =
-    {
-    new VirtualApplianceIPConfiguration()
+    VirtualApplianceNetworkInterfaceIPConfigurations = {new VirtualApplianceIPConfiguration
     {
     Name = "privatenicipconfig",
     IsPrimary = true,
-    },new VirtualApplianceIPConfiguration()
+    }, new VirtualApplianceIPConfiguration
     {
     Name = "privatenicipconfig-2",
     IsPrimary = false,
-    }
-    },
-    }
-    },
-    AdditionalNics =
-    {
-    new VirtualApplianceAdditionalNicProperties()
+    }},
+    }},
+    AdditionalNics = {new VirtualApplianceAdditionalNicProperties
     {
     Name = "exrsdwan",
     HasPublicIP = true,
-    }
-    },
-    InternetIngressPublicIPs =
-    {
-    new WritableSubResource()
+    }},
+    InternetIngressPublicIPs = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{{subscriptionId}}/resourceGroups/{{rg}}/providers/Microsoft.Network/publicIPAddresses/slbip"),
-    }
-    },
+    }},
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<NetworkVirtualApplianceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkVirtualApplianceName, data);

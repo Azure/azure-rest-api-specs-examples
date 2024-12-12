@@ -25,63 +25,32 @@ ResourceIdentifier routeMapResourceId = RouteMapResource.CreateResourceIdentifie
 RouteMapResource routeMap = client.GetRouteMapResource(routeMapResourceId);
 
 // invoke the operation
-RouteMapData data = new RouteMapData()
+RouteMapData data = new RouteMapData
 {
-    AssociatedInboundConnections =
-    {
-    "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1"
-    },
-    AssociatedOutboundConnections =
-    {
-    },
-    Rules =
-    {
-    new RouteMapRule()
+    AssociatedInboundConnections = { "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGateway1/expressRouteConnections/exrConn1" },
+    AssociatedOutboundConnections = { },
+    Rules = {new RouteMapRule
     {
     Name = "rule1",
-    MatchCriteria =
+    MatchCriteria = {new RouteCriterion
     {
-    new RouteCriterion()
-    {
-    RoutePrefix =
-    {
-    "10.0.0.0/8"
-    },
-    Community =
-    {
-    },
-    AsPath =
-    {
-    },
+    RoutePrefix = {"10.0.0.0/8"},
+    Community = {},
+    AsPath = {},
     MatchCondition = RouteMapMatchCondition.Contains,
-    }
-    },
-    Actions =
-    {
-    new RouteMapAction()
+    }},
+    Actions = {new RouteMapAction
     {
     ActionType = RouteMapActionType.Add,
-    Parameters =
+    Parameters = {new RouteMapActionParameter
     {
-    new RouteMapActionParameter()
-    {
-    RoutePrefix =
-    {
-    },
-    Community =
-    {
-    },
-    AsPath =
-    {
-    "22334"
-    },
-    }
-    },
-    }
-    },
+    RoutePrefix = {},
+    Community = {},
+    AsPath = {"22334"},
+    }},
+    }},
     NextStepIfMatched = RouteMapNextStepBehavior.Continue,
-    }
-    },
+    }},
 };
 ArmOperation<RouteMapResource> lro = await routeMap.UpdateAsync(WaitUntil.Completed, data);
 RouteMapResource result = lro.Value;

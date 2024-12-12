@@ -27,34 +27,22 @@ ResourceIdentifier networkManagerSecurityUserRuleResourceId = NetworkManagerSecu
 NetworkManagerSecurityUserRuleResource networkManagerSecurityUserRule = client.GetNetworkManagerSecurityUserRuleResource(networkManagerSecurityUserRuleResourceId);
 
 // invoke the operation
-NetworkManagerSecurityUserRuleData data = new NetworkManagerSecurityUserRuleData()
+NetworkManagerSecurityUserRuleData data = new NetworkManagerSecurityUserRuleData
 {
     Description = "Sample User Rule",
     Protocol = SecurityConfigurationRuleProtocol.Tcp,
-    Sources =
-    {
-    new AddressPrefixItem()
+    Sources = {new AddressPrefixItem
     {
     AddressPrefix = "*",
     AddressPrefixType = AddressPrefixType.IPPrefix,
-    }
-    },
-    Destinations =
-    {
-    new AddressPrefixItem()
+    }},
+    Destinations = {new AddressPrefixItem
     {
     AddressPrefix = "*",
     AddressPrefixType = AddressPrefixType.IPPrefix,
-    }
-    },
-    SourcePortRanges =
-    {
-    "0-65535"
-    },
-    DestinationPortRanges =
-    {
-    "22"
-    },
+    }},
+    SourcePortRanges = { "0-65535" },
+    DestinationPortRanges = { "22" },
     Direction = SecurityConfigurationRuleDirection.Inbound,
 };
 ArmOperation<NetworkManagerSecurityUserRuleResource> lro = await networkManagerSecurityUserRule.UpdateAsync(WaitUntil.Completed, data);

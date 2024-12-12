@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkWatcherAzureReachabilityReportGet.json
@@ -31,14 +30,8 @@ AzureReachabilityReportContent content = new AzureReachabilityReportContent(new 
     State = "washington",
 }, DateTimeOffset.Parse("2017-09-07T00:00:00Z"), DateTimeOffset.Parse("2017-09-10T00:00:00Z"))
 {
-    Providers =
-    {
-    "Frontier Communications of America, Inc. - ASN 5650"
-    },
-    AzureLocations =
-    {
-    new AzureLocation("West US")
-    },
+    Providers = { "Frontier Communications of America, Inc. - ASN 5650" },
+    AzureLocations = { new AzureLocation("West US") },
 };
 ArmOperation<AzureReachabilityReport> lro = await networkWatcher.GetAzureReachabilityReportAsync(WaitUntil.Completed, content);
 AzureReachabilityReport result = lro.Value;

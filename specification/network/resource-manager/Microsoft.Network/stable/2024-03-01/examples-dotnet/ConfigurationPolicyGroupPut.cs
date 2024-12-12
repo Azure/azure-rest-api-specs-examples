@@ -15,39 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnServerConfigurationResource created on azure
-// for more information of creating VpnServerConfigurationResource, please refer to the document of VpnServerConfigurationResource
+// this example assumes you already have this VpnServerConfigurationPolicyGroupResource created on azure
+// for more information of creating VpnServerConfigurationPolicyGroupResource, please refer to the document of VpnServerConfigurationPolicyGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string vpnServerConfigurationName = "vpnServerConfiguration1";
-ResourceIdentifier vpnServerConfigurationResourceId = VpnServerConfigurationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vpnServerConfigurationName);
-VpnServerConfigurationResource vpnServerConfiguration = client.GetVpnServerConfigurationResource(vpnServerConfigurationResourceId);
-
-// get the collection of this VpnServerConfigurationPolicyGroupResource
-VpnServerConfigurationPolicyGroupCollection collection = vpnServerConfiguration.GetVpnServerConfigurationPolicyGroups();
+string configurationPolicyGroupName = "policyGroup1";
+ResourceIdentifier vpnServerConfigurationPolicyGroupResourceId = VpnServerConfigurationPolicyGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vpnServerConfigurationName, configurationPolicyGroupName);
+VpnServerConfigurationPolicyGroupResource vpnServerConfigurationPolicyGroup = client.GetVpnServerConfigurationPolicyGroupResource(vpnServerConfigurationPolicyGroupResourceId);
 
 // invoke the operation
-string configurationPolicyGroupName = "policyGroup1";
-VpnServerConfigurationPolicyGroupData data = new VpnServerConfigurationPolicyGroupData()
+VpnServerConfigurationPolicyGroupData data = new VpnServerConfigurationPolicyGroupData
 {
     IsDefault = true,
     Priority = 0,
-    PolicyMembers =
-    {
-    new VpnServerConfigurationPolicyGroupMember()
+    PolicyMembers = {new VpnServerConfigurationPolicyGroupMember
     {
     Name = "policy1",
     AttributeType = VpnPolicyMemberAttributeType.RadiusAzureGroupId,
     AttributeValue = "6ad1bd08",
-    },new VpnServerConfigurationPolicyGroupMember()
+    }, new VpnServerConfigurationPolicyGroupMember
     {
     Name = "policy2",
     AttributeType = VpnPolicyMemberAttributeType.CertificateGroupId,
     AttributeValue = "red.com",
-    }
-    },
+    }},
 };
-ArmOperation<VpnServerConfigurationPolicyGroupResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configurationPolicyGroupName, data);
+ArmOperation<VpnServerConfigurationPolicyGroupResource> lro = await vpnServerConfigurationPolicyGroup.UpdateAsync(WaitUntil.Completed, data);
 VpnServerConfigurationPolicyGroupResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

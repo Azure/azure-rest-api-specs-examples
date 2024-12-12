@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/P2SVpnGatewayGetConnectionHealthDetailed.json
@@ -25,12 +24,9 @@ ResourceIdentifier p2sVpnGatewayResourceId = P2SVpnGatewayResource.CreateResourc
 P2SVpnGatewayResource p2sVpnGateway = client.GetP2SVpnGatewayResource(p2sVpnGatewayResourceId);
 
 // invoke the operation
-P2SVpnConnectionHealthContent content = new P2SVpnConnectionHealthContent()
+P2SVpnConnectionHealthContent content = new P2SVpnConnectionHealthContent
 {
-    VpnUserNamesFilter =
-    {
-    "vpnUser1","vpnUser2"
-    },
+    VpnUserNamesFilter = { "vpnUser1", "vpnUser2" },
     OutputBlobSasUri = new Uri("https://blobcortextesturl.blob.core.windows.net/folderforconfig/p2sconnectionhealths?sp=rw&se=2018-01-10T03%3A42%3A04Z&sv=2017-04-17&sig=WvXrT5bDmDFfgHs%2Brz%2BjAu123eRCNE9BO0eQYcPDT7pY%3D&sr=b"),
 };
 ArmOperation<P2SVpnConnectionHealth> lro = await p2sVpnGateway.GetP2SVpnConnectionHealthDetailedAsync(WaitUntil.Completed, content);

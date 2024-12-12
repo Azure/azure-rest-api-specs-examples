@@ -14,26 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceEndpointPolicyDefinitionResource created on azure
-// for more information of creating ServiceEndpointPolicyDefinitionResource, please refer to the document of ServiceEndpointPolicyDefinitionResource
+// this example assumes you already have this ServiceEndpointPolicyResource created on azure
+// for more information of creating ServiceEndpointPolicyResource, please refer to the document of ServiceEndpointPolicyResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string serviceEndpointPolicyName = "testPolicy";
-string serviceEndpointPolicyDefinitionName = "testDefinition";
-ResourceIdentifier serviceEndpointPolicyDefinitionResourceId = ServiceEndpointPolicyDefinitionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceEndpointPolicyName, serviceEndpointPolicyDefinitionName);
-ServiceEndpointPolicyDefinitionResource serviceEndpointPolicyDefinition = client.GetServiceEndpointPolicyDefinitionResource(serviceEndpointPolicyDefinitionResourceId);
+ResourceIdentifier serviceEndpointPolicyResourceId = ServiceEndpointPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceEndpointPolicyName);
+ServiceEndpointPolicyResource serviceEndpointPolicy = client.GetServiceEndpointPolicyResource(serviceEndpointPolicyResourceId);
+
+// get the collection of this ServiceEndpointPolicyDefinitionResource
+ServiceEndpointPolicyDefinitionCollection collection = serviceEndpointPolicy.GetServiceEndpointPolicyDefinitions();
 
 // invoke the operation
-ServiceEndpointPolicyDefinitionData data = new ServiceEndpointPolicyDefinitionData()
+string serviceEndpointPolicyDefinitionName = "testDefinition";
+ServiceEndpointPolicyDefinitionData data = new ServiceEndpointPolicyDefinitionData
 {
     Description = "Storage Service EndpointPolicy Definition",
     Service = "Microsoft.Storage",
-    ServiceResources =
-    {
-    new ResourceIdentifier("/subscriptions/subid1"),new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg"),new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount")
-    },
+    ServiceResources = { new ResourceIdentifier("/subscriptions/subid1"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount") },
 };
-ArmOperation<ServiceEndpointPolicyDefinitionResource> lro = await serviceEndpointPolicyDefinition.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceEndpointPolicyDefinitionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceEndpointPolicyDefinitionName, data);
 ServiceEndpointPolicyDefinitionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

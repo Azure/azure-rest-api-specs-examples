@@ -28,25 +28,19 @@ RouteFilterCollection collection = resourceGroupResource.GetRouteFilters();
 
 // invoke the operation
 string routeFilterName = "filterName";
-RouteFilterData data = new RouteFilterData()
+RouteFilterData data = new RouteFilterData
 {
-    Rules =
-    {
-    new RouteFilterRuleData()
+    Rules = {new RouteFilterRuleData
     {
     Access = NetworkAccess.Allow,
     RouteFilterRuleType = RouteFilterRuleType.Community,
-    Communities =
-    {
-    "12076:5030","12076:5040"
-    },
+    Communities = {"12076:5030", "12076:5040"},
     Name = "ruleName",
-    }
-    },
+    }},
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<RouteFilterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeFilterName, data);

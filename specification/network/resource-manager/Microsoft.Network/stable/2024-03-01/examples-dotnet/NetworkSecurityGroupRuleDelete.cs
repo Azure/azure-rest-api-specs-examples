@@ -27,4 +27,4 @@ SecurityRuleResource securityRule = client.GetSecurityRuleResource(securityRuleR
 // invoke the operation
 await securityRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

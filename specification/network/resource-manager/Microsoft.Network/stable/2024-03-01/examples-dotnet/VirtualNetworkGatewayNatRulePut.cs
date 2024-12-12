@@ -15,39 +15,36 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkGatewayNatRuleResource created on azure
-// for more information of creating VirtualNetworkGatewayNatRuleResource, please refer to the document of VirtualNetworkGatewayNatRuleResource
+// this example assumes you already have this VirtualNetworkGatewayResource created on azure
+// for more information of creating VirtualNetworkGatewayResource, please refer to the document of VirtualNetworkGatewayResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualNetworkGatewayName = "gateway1";
-string natRuleName = "natRule1";
-ResourceIdentifier virtualNetworkGatewayNatRuleResourceId = VirtualNetworkGatewayNatRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkGatewayName, natRuleName);
-VirtualNetworkGatewayNatRuleResource virtualNetworkGatewayNatRule = client.GetVirtualNetworkGatewayNatRuleResource(virtualNetworkGatewayNatRuleResourceId);
+ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkGatewayName);
+VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
+
+// get the collection of this VirtualNetworkGatewayNatRuleResource
+VirtualNetworkGatewayNatRuleCollection collection = virtualNetworkGateway.GetVirtualNetworkGatewayNatRules();
 
 // invoke the operation
-VirtualNetworkGatewayNatRuleData data = new VirtualNetworkGatewayNatRuleData()
+string natRuleName = "natRule1";
+VirtualNetworkGatewayNatRuleData data = new VirtualNetworkGatewayNatRuleData
 {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.EgressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "10.4.0.0/24",
     PortRange = "200-300",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "192.168.21.0/24",
     PortRange = "300-400",
-    }
-    },
+    }},
     IPConfigurationId = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/gateway1/ipConfigurations/default",
 };
-ArmOperation<VirtualNetworkGatewayNatRuleResource> lro = await virtualNetworkGatewayNatRule.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<VirtualNetworkGatewayNatRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, natRuleName, data);
 VirtualNetworkGatewayNatRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

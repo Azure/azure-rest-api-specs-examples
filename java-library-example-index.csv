@@ -4856,3 +4856,4 @@ id,name,language,tag,package,version,date_epoch,date
 4855,com.azure.resourcemanager:azure-resourcemanager-loadtesting:1.1.0,java,azure-resourcemanager-loadtesting_1.1.0,azure-resourcemanager-loadtesting,1.1.0,1733992900,12/12/2024
 4856,com.azure.resourcemanager:azure-resourcemanager-kubernetesconfiguration:1.1.0,java,azure-resourcemanager-kubernetesconfiguration_1.1.0,azure-resourcemanager-kubernetesconfiguration,1.1.0,1733922557,12/11/2024
 4857,com.azure.resourcemanager:azure-resourcemanager-hybridconnectivity:1.1.0,java,azure-resourcemanager-hybridconnectivity_1.1.0,azure-resourcemanager-hybridconnectivity,1.1.0,1733914056,12/11/2024
+4858,com.azure.resourcemanager:azure-resourcemanager-datadog:1.1.0,java,azure-resourcemanager-datadog_1.1.0,azure-resourcemanager-datadog,1.1.0,1733914046,12/11/2024

@@ -4862,3 +4862,4 @@ id,name,language,tag,package,version,date_epoch,date
 4861,com.azure.resourcemanager:azure-resourcemanager-iothub:1.3.0,java,azure-resourcemanager-iothub_1.3.0,azure-resourcemanager-iothub,1.3.0,1733913974,12/11/2024
 4862,com.azure.resourcemanager:azure-resourcemanager-managednetworkfabric:1.1.0,java,azure-resourcemanager-managednetworkfabric_1.1.0,azure-resourcemanager-managednetworkfabric,1.1.0,1733913865,12/11/2024
 4863,com.azure.resourcemanager:azure-resourcemanager-resourceconnector:1.1.0,java,azure-resourcemanager-resourceconnector_1.1.0,azure-resourcemanager-resourceconnector,1.1.0,1733913790,12/11/2024
+4864,com.azure.resourcemanager:azure-resourcemanager-maps:1.1.0,java,azure-resourcemanager-maps_1.1.0,azure-resourcemanager-maps,1.1.0,1733903681,12/11/2024

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.maps.fluent.models.MapsAccountProperties;
 import com.azure.resourcemanager.maps.models.CorsRule;
 import com.azure.resourcemanager.maps.models.CorsRules;
@@ -8,36 +9,25 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Accounts CreateOrUpdate. */
+/**
+ * Samples for Accounts CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/maps/resource-manager/Microsoft.Maps/stable/2023-06-01/examples/CreateAccount.json
+     * x-ms-original-file:
+     * specification/maps/resource-manager/Microsoft.Maps/stable/2023-06-01/examples/CreateAccount.json
      */
     /**
      * Sample code: Create Gen1 Account.
-     *
+     * 
      * @param manager Entry point to AzureMapsManager.
      */
     public static void createGen1Account(com.azure.resourcemanager.maps.AzureMapsManager manager) {
-        manager
-            .accounts()
-            .define("myMapsAccount")
-            .withRegion("eastus")
-            .withExistingResourceGroup("myResourceGroup")
-            .withSku(new Sku().withName(Name.S0))
-            .withTags(mapOf("test", "true"))
-            .withKind(Kind.GEN1)
-            .withProperties(
-                new MapsAccountProperties()
-                    .withDisableLocalAuth(false)
-                    .withCors(
-                        new CorsRules()
-                            .withCorsRules(
-                                Arrays
-                                    .asList(
-                                        new CorsRule()
-                                            .withAllowedOrigins(
-                                                Arrays.asList("http://www.contoso.com", "http://www.fabrikam.com"))))))
+        manager.accounts().define("myMapsAccount").withRegion("eastus").withExistingResourceGroup("myResourceGroup")
+            .withSku(new Sku().withName(Name.S0)).withTags(mapOf("test", "true")).withKind(Kind.GEN1)
+            .withProperties(new MapsAccountProperties().withDisableLocalAuth(false)
+                .withCors(new CorsRules().withCorsRules(Arrays.asList(new CorsRule()
+                    .withAllowedOrigins(Arrays.asList("http://www.contoso.com", "http://www.fabrikam.com"))))))
             .create();
     }
 

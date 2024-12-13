@@ -1,38 +1,30 @@
+
 import com.azure.resourcemanager.applicationinsights.models.ApplicationInsightsComponent;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Components UpdateTags. */
+/**
+ * Samples for Components UpdateTags.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsUpdateTagsOnly.json
+     * x-ms-original-file:
+     * specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/
+     * ComponentsUpdateTagsOnly.json
      */
     /**
      * Sample code: ComponentUpdateTagsOnly.
-     *
+     * 
      * @param manager Entry point to ApplicationInsightsManager.
      */
-    public static void componentUpdateTagsOnly(
-        com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
-        ApplicationInsightsComponent resource =
-            manager
-                .components()
-                .getByResourceGroupWithResponse("my-resource-group", "my-component", com.azure.core.util.Context.NONE)
-                .getValue();
+    public static void
+        componentUpdateTagsOnly(com.azure.resourcemanager.applicationinsights.ApplicationInsightsManager manager) {
+        ApplicationInsightsComponent resource = manager.components()
+            .getByResourceGroupWithResponse("my-resource-group", "my-component", com.azure.core.util.Context.NONE)
+            .getValue();
         resource
-            .update()
-            .withTags(
-                mapOf(
-                    "ApplicationGatewayType",
-                    "Internal-Only",
-                    "BillingEntity",
-                    "Self",
-                    "Color",
-                    "AzureBlue",
-                    "CustomField_01",
-                    "Custom text in some random field named randomly",
-                    "NodeType",
-                    "Edge"))
+            .update().withTags(mapOf("ApplicationGatewayType", "Internal-Only", "BillingEntity", "Self", "Color",
+                "AzureBlue", "CustomField_01", "Custom text in some random field named randomly", "NodeType", "Edge"))
             .apply();
     }
 

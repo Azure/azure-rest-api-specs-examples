@@ -4868,3 +4868,4 @@ id,name,language,tag,package,version,date_epoch,date
 4867,com.azure.resourcemanager:azure-resourcemanager-hybridnetwork:1.1.0,java,azure-resourcemanager-hybridnetwork_1.1.0,azure-resourcemanager-hybridnetwork,1.1.0,1734083958,12/13/2024
 4868,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.1.0,java,azure-resourcemanager-dashboard_1.1.0,azure-resourcemanager-dashboard,1.1.0,1734083858,12/13/2024
 4869,com.azure.resourcemanager:azure-resourcemanager-deviceupdate:1.1.0,java,azure-resourcemanager-deviceupdate_1.1.0,azure-resourcemanager-deviceupdate,1.1.0,1734083827,12/13/2024
+4870,com.azure.resourcemanager:azure-resourcemanager-devtestlabs:1.1.0,java,azure-resourcemanager-devtestlabs_1.1.0,azure-resourcemanager-devtestlabs,1.1.0,1734083695,12/13/2024

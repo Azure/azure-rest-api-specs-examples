@@ -4865,3 +4865,4 @@ id,name,language,tag,package,version,date_epoch,date
 4864,com.azure.resourcemanager:azure-resourcemanager-maps:1.1.0,java,azure-resourcemanager-maps_1.1.0,azure-resourcemanager-maps,1.1.0,1733903681,12/11/2024
 4865,"Azure.ResourceManager.Compute,1.7.0-beta.2",dotnet,Azure.ResourceManager.Compute_1.7.0-beta.2,Azure.ResourceManager.Compute,1.7.0-beta.2,1733978749,12/12/2024
 4866,"Azure.ResourceManager.Network,1.10.0-beta.1",dotnet,Azure.ResourceManager.Network_1.10.0-beta.1,Azure.ResourceManager.Network,1.10.0-beta.1,1733978727,12/12/2024
+4867,com.azure.resourcemanager:azure-resourcemanager-hybridnetwork:1.1.0,java,azure-resourcemanager-hybridnetwork_1.1.0,azure-resourcemanager-hybridnetwork,1.1.0,1734083958,12/13/2024

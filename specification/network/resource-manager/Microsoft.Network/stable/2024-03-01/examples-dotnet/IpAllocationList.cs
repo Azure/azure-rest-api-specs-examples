@@ -32,4 +32,4 @@ await foreach (IPAllocationResource item in subscriptionResource.GetIPAllocation
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

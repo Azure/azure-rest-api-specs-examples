@@ -27,4 +27,4 @@ FirewallPolicyRuleCollectionGroupDraftResource firewallPolicyRuleCollectionGroup
 // invoke the operation
 await firewallPolicyRuleCollectionGroupDraft.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

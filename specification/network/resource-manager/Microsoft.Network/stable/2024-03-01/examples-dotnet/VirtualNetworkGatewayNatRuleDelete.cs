@@ -27,4 +27,4 @@ VirtualNetworkGatewayNatRuleResource virtualNetworkGatewayNatRule = client.GetVi
 // invoke the operation
 await virtualNetworkGatewayNatRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

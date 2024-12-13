@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkManagerEffectiveConnectivityConfigurationsList.json
@@ -25,7 +24,7 @@ ResourceIdentifier virtualNetworkResourceId = VirtualNetworkResource.CreateResou
 VirtualNetworkResource virtualNetwork = client.GetVirtualNetworkResource(virtualNetworkResourceId);
 
 // invoke the operation and iterate over the result
-NetworkManagementQueryContent content = new NetworkManagementQueryContent()
+NetworkManagementQueryContent content = new NetworkManagementQueryContent
 {
     SkipToken = "FakeSkipTokenCode",
 };
@@ -34,4 +33,4 @@ await foreach (EffectiveConnectivityConfiguration item in virtualNetwork.GetNetw
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

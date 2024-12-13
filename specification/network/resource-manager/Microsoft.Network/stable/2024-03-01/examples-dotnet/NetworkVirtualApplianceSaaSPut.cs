@@ -30,17 +30,17 @@ NetworkVirtualApplianceCollection collection = resourceGroupResource.GetNetworkV
 
 // invoke the operation
 string networkVirtualApplianceName = "nva";
-NetworkVirtualApplianceData data = new NetworkVirtualApplianceData()
+NetworkVirtualApplianceData data = new NetworkVirtualApplianceData
 {
     VirtualHubId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"),
-    Delegation = new VirtualApplianceDelegationProperties()
+    Delegation = new VirtualApplianceDelegationProperties
     {
         ServiceName = "PaloAltoNetworks.Cloudngfw/firewalls",
     },
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<NetworkVirtualApplianceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkVirtualApplianceName, data);

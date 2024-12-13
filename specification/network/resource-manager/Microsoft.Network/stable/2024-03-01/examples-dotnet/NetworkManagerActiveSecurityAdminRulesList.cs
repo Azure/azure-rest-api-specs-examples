@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkManagerActiveSecurityAdminRulesList.json
@@ -25,12 +24,9 @@ ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResou
 NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
 
 // invoke the operation and iterate over the result
-ActiveConfigurationContent content = new ActiveConfigurationContent()
+ActiveConfigurationContent content = new ActiveConfigurationContent
 {
-    Regions =
-    {
-    new AzureLocation("westus")
-    },
+    Regions = { new AzureLocation("westus") },
     SkipToken = "fakeSkipTokenCode",
 };
 await foreach (ActiveBaseSecurityAdminRule item in networkManager.GetActiveSecurityAdminRulesAsync(content))
@@ -38,4 +34,4 @@ await foreach (ActiveBaseSecurityAdminRule item in networkManager.GetActiveSecur
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -30,4 +30,4 @@ await foreach (AvailablePrivateEndpointType item in resourceGroupResource.GetAva
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

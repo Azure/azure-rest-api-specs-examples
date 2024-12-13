@@ -28,4 +28,4 @@ NetworkManagerRoutingRulesResource networkManagerRoutingRules = client.GetNetwor
 // invoke the operation
 await networkManagerRoutingRules.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

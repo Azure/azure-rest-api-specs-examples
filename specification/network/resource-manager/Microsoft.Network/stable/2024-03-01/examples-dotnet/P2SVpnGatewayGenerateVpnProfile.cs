@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/P2SVpnGatewayGenerateVpnProfile.json
@@ -25,7 +24,7 @@ ResourceIdentifier p2sVpnGatewayResourceId = P2SVpnGatewayResource.CreateResourc
 P2SVpnGatewayResource p2sVpnGateway = client.GetP2SVpnGatewayResource(p2sVpnGatewayResourceId);
 
 // invoke the operation
-P2SVpnProfileContent content = new P2SVpnProfileContent()
+P2SVpnProfileContent content = new P2SVpnProfileContent
 {
     AuthenticationMethod = NetworkAuthenticationMethod.Eaptls,
 };

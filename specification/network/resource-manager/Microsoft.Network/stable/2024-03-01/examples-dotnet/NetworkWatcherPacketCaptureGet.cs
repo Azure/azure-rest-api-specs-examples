@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkWatcherResource created on azure
-// for more information of creating NetworkWatcherResource, please refer to the document of NetworkWatcherResource
+// this example assumes you already have this PacketCaptureResource created on azure
+// for more information of creating PacketCaptureResource, please refer to the document of PacketCaptureResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkWatcherName = "nw1";
-ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName);
-NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
-
-// get the collection of this PacketCaptureResource
-PacketCaptureCollection collection = networkWatcher.GetPacketCaptures();
+string packetCaptureName = "pc1";
+ResourceIdentifier packetCaptureResourceId = PacketCaptureResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkWatcherName, packetCaptureName);
+PacketCaptureResource packetCapture = client.GetPacketCaptureResource(packetCaptureResourceId);
 
 // invoke the operation
-string packetCaptureName = "pc1";
-NullableResponse<PacketCaptureResource> response = await collection.GetIfExistsAsync(packetCaptureName);
-PacketCaptureResource result = response.HasValue ? response.Value : null;
+PacketCaptureResource result = await packetCapture.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    PacketCaptureData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+PacketCaptureData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

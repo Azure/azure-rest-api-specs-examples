@@ -28,26 +28,20 @@ NetworkProfileCollection collection = resourceGroupResource.GetNetworkProfiles()
 
 // invoke the operation
 string networkProfileName = "networkProfile1";
-NetworkProfileData data = new NetworkProfileData()
+NetworkProfileData data = new NetworkProfileData
 {
-    ContainerNetworkInterfaceConfigurations =
+    ContainerNetworkInterfaceConfigurations = {new ContainerNetworkInterfaceConfiguration
     {
-    new ContainerNetworkInterfaceConfiguration()
+    IPConfigurations = {new NetworkIPConfigurationProfile
     {
-    IPConfigurations =
-    {
-    new NetworkIPConfigurationProfile()
-    {
-    Subnet = new SubnetData()
+    Subnet = new SubnetData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/networkProfileVnet/subnets/networkProfileSubnet1"),
     },
     Name = "ipconfig1",
-    }
-    },
+    }},
     Name = "eth1",
-    }
-    },
+    }},
     Location = new AzureLocation("westus"),
 };
 ArmOperation<NetworkProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, networkProfileName, data);

@@ -29,62 +29,45 @@ P2SVpnGatewayCollection collection = resourceGroupResource.GetP2SVpnGateways();
 
 // invoke the operation
 string gatewayName = "p2sVpnGateway1";
-P2SVpnGatewayData data = new P2SVpnGatewayData()
+P2SVpnGatewayData data = new P2SVpnGatewayData
 {
     VirtualHubId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"),
-    P2SConnectionConfigurations =
+    P2SConnectionConfigurations = {new P2SConnectionConfiguration
     {
-    new P2SConnectionConfiguration()
-    {
-    VpnClientAddressPrefixes =
-    {
-    "101.3.0.0/16"
-    },
-    RoutingConfiguration = new RoutingConfiguration()
+    VpnClientAddressPrefixes = {"101.3.0.0/16"},
+    RoutingConfiguration = new RoutingConfiguration
     {
     AssociatedRouteTableId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
-    PropagatedRouteTables = new PropagatedRouteTable()
+    PropagatedRouteTables = new PropagatedRouteTable
     {
-    Labels =
-    {
-    "label1","label2"
-    },
-    Ids =
-    {
-    new WritableSubResource()
+    Labels = {"label1", "label2"},
+    Ids = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable1"),
-    },new WritableSubResource()
+    }, new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable2"),
-    },new WritableSubResource()
+    }, new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1/hubRouteTables/hubRouteTable3"),
-    }
+    }},
     },
-    },
-    VnetRoutes = new VnetRoute()
+    VnetRoutes = new VnetRoute
     {
-    StaticRoutes =
-    {
-    },
+    StaticRoutes = {},
     },
     },
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/p2sVpnGateways/p2sVpnGateway1/p2sConnectionConfigurations/P2SConnectionConfig1"),
     Name = "P2SConnectionConfig1",
-    }
-    },
+    }},
     VpnGatewayScaleUnit = 1,
     VpnServerConfigurationId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnServerConfiguration1"),
-    CustomDnsServers =
-    {
-    "1.1.1.1","2.2.2.2"
-    },
+    CustomDnsServers = { "1.1.1.1", "2.2.2.2" },
     IsRoutingPreferenceInternet = false,
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<P2SVpnGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, gatewayName, data);

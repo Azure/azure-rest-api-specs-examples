@@ -27,4 +27,4 @@ RouteFilterRuleResource routeFilterRule = client.GetRouteFilterRuleResource(rout
 // invoke the operation
 await routeFilterRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

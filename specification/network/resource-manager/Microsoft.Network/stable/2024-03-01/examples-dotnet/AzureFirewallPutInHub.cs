@@ -28,25 +28,21 @@ AzureFirewallCollection collection = resourceGroupResource.GetAzureFirewalls();
 
 // invoke the operation
 string azureFirewallName = "azurefirewall";
-AzureFirewallData data = new AzureFirewallData()
+AzureFirewallData data = new AzureFirewallData
 {
-    Zones =
-    {
-    },
+    Zones = { },
     ThreatIntelMode = AzureFirewallThreatIntelMode.Alert,
     VirtualHubId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"),
     FirewallPolicyId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/firewallPolicies/policy1"),
-    HubIPAddresses = new HubIPAddresses()
+    HubIPAddresses = new HubIPAddresses
     {
-        PublicIPs = new HubPublicIPAddresses()
+        PublicIPs = new HubPublicIPAddresses
         {
-            Addresses =
-            {
-            },
+            Addresses = { },
             Count = 1,
         },
     },
-    Sku = new AzureFirewallSku()
+    Sku = new AzureFirewallSku
     {
         Name = AzureFirewallSkuName.AzfwHub,
         Tier = AzureFirewallSkuTier.Standard,
@@ -54,7 +50,7 @@ AzureFirewallData data = new AzureFirewallData()
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<AzureFirewallResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, azureFirewallName, data);

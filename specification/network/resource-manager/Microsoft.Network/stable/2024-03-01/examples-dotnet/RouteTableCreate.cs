@@ -28,7 +28,7 @@ RouteTableCollection collection = resourceGroupResource.GetRouteTables();
 
 // invoke the operation
 string routeTableName = "testrt";
-RouteTableData data = new RouteTableData()
+RouteTableData data = new RouteTableData
 {
     Location = new AzureLocation("westus"),
 };

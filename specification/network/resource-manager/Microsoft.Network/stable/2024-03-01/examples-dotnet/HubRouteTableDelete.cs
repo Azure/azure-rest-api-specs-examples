@@ -27,4 +27,4 @@ HubRouteTableResource hubRouteTable = client.GetHubRouteTableResource(hubRouteTa
 // invoke the operation
 await hubRouteTable.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

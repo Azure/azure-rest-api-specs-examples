@@ -25,46 +25,26 @@ ResourceIdentifier firewallPolicyRuleCollectionGroupResourceId = FirewallPolicyR
 FirewallPolicyRuleCollectionGroupResource firewallPolicyRuleCollectionGroup = client.GetFirewallPolicyRuleCollectionGroupResource(firewallPolicyRuleCollectionGroupResourceId);
 
 // invoke the operation
-FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData()
+FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData
 {
     Priority = 100,
-    RuleCollections =
-    {
-    new FirewallPolicyNatRuleCollectionInfo()
+    RuleCollections = {new FirewallPolicyNatRuleCollectionInfo
     {
     ActionType = FirewallPolicyNatRuleCollectionActionType.Dnat,
-    Rules =
+    Rules = {new NatRule
     {
-    new NatRule()
-    {
-    IPProtocols =
-    {
-    FirewallPolicyRuleNetworkProtocol.Tcp,FirewallPolicyRuleNetworkProtocol.Udp
-    },
-    SourceAddresses =
-    {
-    "2.2.2.2"
-    },
-    DestinationAddresses =
-    {
-    "152.23.32.23"
-    },
-    DestinationPorts =
-    {
-    "8080"
-    },
+    IPProtocols = {FirewallPolicyRuleNetworkProtocol.Tcp, FirewallPolicyRuleNetworkProtocol.Udp},
+    SourceAddresses = {"2.2.2.2"},
+    DestinationAddresses = {"152.23.32.23"},
+    DestinationPorts = {"8080"},
     TranslatedPort = "8080",
-    SourceIPGroups =
-    {
-    },
+    SourceIPGroups = {},
     TranslatedFqdn = "internalhttp.server.net",
     Name = "nat-rule1",
-    }
-    },
+    }},
     Name = "Example-Nat-Rule-Collection",
     Priority = 100,
-    }
-    },
+    }},
 };
 ArmOperation<FirewallPolicyRuleCollectionGroupResource> lro = await firewallPolicyRuleCollectionGroup.UpdateAsync(WaitUntil.Completed, data);
 FirewallPolicyRuleCollectionGroupResource result = lro.Value;

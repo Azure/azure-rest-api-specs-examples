@@ -27,7 +27,7 @@ NetworkWatcherCollection collection = resourceGroupResource.GetNetworkWatchers()
 
 // invoke the operation
 string networkWatcherName = "nw1";
-NetworkWatcherData data = new NetworkWatcherData()
+NetworkWatcherData data = new NetworkWatcherData
 {
     Location = new AzureLocation("eastus"),
 };

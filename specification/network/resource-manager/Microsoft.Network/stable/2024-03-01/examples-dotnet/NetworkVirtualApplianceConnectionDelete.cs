@@ -28,4 +28,4 @@ NetworkVirtualApplianceConnectionResource networkVirtualApplianceConnection = cl
 // invoke the operation
 await networkVirtualApplianceConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

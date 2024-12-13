@@ -27,4 +27,4 @@ FlowLogResource flowLog = client.GetFlowLogResource(flowLogResourceId);
 // invoke the operation
 await flowLog.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

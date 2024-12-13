@@ -27,21 +27,15 @@ ServiceEndpointPolicyCollection collection = resourceGroupResource.GetServiceEnd
 
 // invoke the operation
 string serviceEndpointPolicyName = "testPolicy";
-ServiceEndpointPolicyData data = new ServiceEndpointPolicyData()
+ServiceEndpointPolicyData data = new ServiceEndpointPolicyData
 {
-    ServiceEndpointPolicyDefinitions =
-    {
-    new ServiceEndpointPolicyDefinitionData()
+    ServiceEndpointPolicyDefinitions = {new ServiceEndpointPolicyDefinitionData
     {
     Description = "Storage Service EndpointPolicy Definition",
     Service = "Microsoft.Storage",
-    ServiceResources =
-    {
-    new ResourceIdentifier("/subscriptions/subid1"),new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg"),new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount")
-    },
+    ServiceResources = {new ResourceIdentifier("/subscriptions/subid1"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg"), new ResourceIdentifier("/subscriptions/subid1/resourceGroups/storageRg/providers/Microsoft.Storage/storageAccounts/stAccount")},
     Name = "StorageServiceEndpointPolicyDefinition",
-    }
-    },
+    }},
     Location = new AzureLocation("westus"),
 };
 ArmOperation<ServiceEndpointPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceEndpointPolicyName, data);

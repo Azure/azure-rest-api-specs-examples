@@ -24,21 +24,18 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("westus");
-LoadBalancerVipSwapContent content = new LoadBalancerVipSwapContent()
+LoadBalancerVipSwapContent content = new LoadBalancerVipSwapContent
 {
-    FrontendIPConfigurations =
-    {
-    new LoadBalancerVipSwapRequestFrontendIPConfiguration()
+    FrontendIPConfigurations = {new LoadBalancerVipSwapRequestFrontendIPConfiguration
     {
     Id = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/lbfe1",
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/publicIPAddresses/pip2"),
-    },new LoadBalancerVipSwapRequestFrontendIPConfiguration()
+    }, new LoadBalancerVipSwapRequestFrontendIPConfiguration
     {
     Id = "/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/loadBalancers/lb2/frontendIPConfigurations/lbfe2",
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/pip1"),
-    }
-    },
+    }},
 };
 await subscriptionResource.SwapPublicIPAddressesLoadBalancerAsync(WaitUntil.Completed, location, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

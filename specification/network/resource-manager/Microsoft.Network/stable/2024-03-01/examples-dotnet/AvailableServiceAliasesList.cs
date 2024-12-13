@@ -29,4 +29,4 @@ await foreach (AvailableServiceAlias item in subscriptionResource.GetAvailableSe
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

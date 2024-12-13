@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/RouteFilterUpdateTags.json
@@ -25,11 +24,11 @@ ResourceIdentifier routeFilterResourceId = RouteFilterResource.CreateResourceIde
 RouteFilterResource routeFilter = client.GetRouteFilterResource(routeFilterResourceId);
 
 // invoke the operation
-NetworkTagsObject networkTagsObject = new NetworkTagsObject()
+NetworkTagsObject networkTagsObject = new NetworkTagsObject
 {
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 RouteFilterResource result = await routeFilter.UpdateAsync(networkTagsObject);

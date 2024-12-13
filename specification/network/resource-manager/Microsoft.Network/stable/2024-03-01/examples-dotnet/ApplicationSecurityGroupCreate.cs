@@ -27,7 +27,7 @@ ApplicationSecurityGroupCollection collection = resourceGroupResource.GetApplica
 
 // invoke the operation
 string applicationSecurityGroupName = "test-asg";
-ApplicationSecurityGroupData data = new ApplicationSecurityGroupData()
+ApplicationSecurityGroupData data = new ApplicationSecurityGroupData
 {
     Location = new AzureLocation("westus"),
 };

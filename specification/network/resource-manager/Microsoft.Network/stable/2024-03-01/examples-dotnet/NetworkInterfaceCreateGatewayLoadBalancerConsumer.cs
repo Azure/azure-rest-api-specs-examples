@@ -27,24 +27,21 @@ NetworkInterfaceCollection collection = resourceGroupResource.GetNetworkInterfac
 
 // invoke the operation
 string networkInterfaceName = "test-nic";
-NetworkInterfaceData data = new NetworkInterfaceData()
+NetworkInterfaceData data = new NetworkInterfaceData
 {
-    IPConfigurations =
-    {
-    new NetworkInterfaceIPConfigurationData()
+    IPConfigurations = {new NetworkInterfaceIPConfigurationData
     {
     GatewayLoadBalancerId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb/frontendIPConfigurations/fe-lb-provider"),
-    Subnet = new SubnetData()
+    Subnet = new SubnetData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/rg1-vnet/subnets/default"),
     },
-    PublicIPAddress = new PublicIPAddressData()
+    PublicIPAddress = new PublicIPAddressData
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/test-ip"),
     },
     Name = "ipconfig1",
-    }
-    },
+    }},
     EnableAcceleratedNetworking = true,
     Location = new AzureLocation("eastus"),
 };

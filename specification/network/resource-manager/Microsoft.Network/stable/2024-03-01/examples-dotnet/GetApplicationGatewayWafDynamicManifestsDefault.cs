@@ -31,7 +31,7 @@ ApplicationGatewayWafDynamicManifestResource result = response.HasValue ? respon
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkManagerResource created on azure
-// for more information of creating NetworkManagerResource, please refer to the document of NetworkManagerResource
+// this example assumes you already have this ScopeConnectionResource created on azure
+// for more information of creating ScopeConnectionResource, please refer to the document of ScopeConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
-ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName);
-NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
-
-// get the collection of this ScopeConnectionResource
-ScopeConnectionCollection collection = networkManager.GetScopeConnections();
+string scopeConnectionName = "TestScopeConnection";
+ResourceIdentifier scopeConnectionResourceId = ScopeConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, scopeConnectionName);
+ScopeConnectionResource scopeConnection = client.GetScopeConnectionResource(scopeConnectionResourceId);
 
 // invoke the operation
-string scopeConnectionName = "TestScopeConnection";
-ScopeConnectionData data = new ScopeConnectionData()
+ScopeConnectionData data = new ScopeConnectionData
 {
     TenantId = Guid.Parse("6babcaad-604b-40ac-a9d7-9fd97c0b779f"),
     ResourceId = new ResourceIdentifier("subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b"),
     Description = "This is a scope connection to a cross tenant subscription.",
 };
-ArmOperation<ScopeConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scopeConnectionName, data);
+ArmOperation<ScopeConnectionResource> lro = await scopeConnection.UpdateAsync(WaitUntil.Completed, data);
 ScopeConnectionResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

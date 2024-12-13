@@ -26,4 +26,4 @@ ExpressRoutePortAuthorizationResource expressRoutePortAuthorization = client.Get
 // invoke the operation
 await expressRoutePortAuthorization.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

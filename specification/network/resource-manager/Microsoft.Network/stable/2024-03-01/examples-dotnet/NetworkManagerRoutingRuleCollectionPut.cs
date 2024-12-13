@@ -29,13 +29,10 @@ NetworkManagerRoutingRulesCollection collection = networkManagerRoutingConfigura
 
 // invoke the operation
 string ruleCollectionName = "testRuleCollection";
-NetworkManagerRoutingRulesData data = new NetworkManagerRoutingRulesData()
+NetworkManagerRoutingRulesData data = new NetworkManagerRoutingRulesData
 {
     Description = "A sample policy",
-    AppliesTo =
-    {
-    new NetworkManagerRoutingGroupItem("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup")
-    },
+    AppliesTo = { new NetworkManagerRoutingGroupItem("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/networkManagers/testNetworkManager/networkGroups/testGroup") },
 };
 ArmOperation<NetworkManagerRoutingRulesResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleCollectionName, data);
 NetworkManagerRoutingRulesResource result = lro.Value;

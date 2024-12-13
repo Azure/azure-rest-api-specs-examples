@@ -32,4 +32,4 @@ await foreach (VirtualHubResource item in subscriptionResource.GetVirtualHubsAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ExpressRouteCrossConnectionCollection collection = resourceGroupResource.GetExpr
 
 // invoke the operation
 string crossConnectionName = "<circuitServiceKey>";
-ExpressRouteCrossConnectionData data = new ExpressRouteCrossConnectionData()
+ExpressRouteCrossConnectionData data = new ExpressRouteCrossConnectionData
 {
     ServiceProviderProvisioningState = ServiceProviderProvisioningState.NotProvisioned,
 };

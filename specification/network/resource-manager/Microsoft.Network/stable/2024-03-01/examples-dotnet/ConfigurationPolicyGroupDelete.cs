@@ -27,4 +27,4 @@ VpnServerConfigurationPolicyGroupResource vpnServerConfigurationPolicyGroup = cl
 // invoke the operation
 await vpnServerConfigurationPolicyGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

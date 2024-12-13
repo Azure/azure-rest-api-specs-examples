@@ -27,4 +27,4 @@ ExpressRouteCrossConnectionPeeringResource expressRouteCrossConnectionPeering = 
 // invoke the operation
 await expressRouteCrossConnectionPeering.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

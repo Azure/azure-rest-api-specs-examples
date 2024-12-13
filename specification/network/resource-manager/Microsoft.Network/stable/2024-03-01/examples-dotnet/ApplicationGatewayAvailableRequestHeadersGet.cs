@@ -28,4 +28,4 @@ await foreach (string item in subscriptionResource.GetAvailableRequestHeadersApp
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,7 +27,7 @@ ServiceEndpointPolicyCollection collection = resourceGroupResource.GetServiceEnd
 
 // invoke the operation
 string serviceEndpointPolicyName = "testPolicy";
-ServiceEndpointPolicyData data = new ServiceEndpointPolicyData()
+ServiceEndpointPolicyData data = new ServiceEndpointPolicyData
 {
     Location = new AzureLocation("westus"),
 };

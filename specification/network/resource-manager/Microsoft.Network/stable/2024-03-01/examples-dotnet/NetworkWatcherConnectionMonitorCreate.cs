@@ -28,43 +28,25 @@ ConnectionMonitorCollection collection = networkWatcher.GetConnectionMonitors();
 
 // invoke the operation
 string connectionMonitorName = "cm1";
-ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUpdateContent()
+ConnectionMonitorCreateOrUpdateContent content = new ConnectionMonitorCreateOrUpdateContent
 {
     Location = new AzureLocation("eastus"),
-    Endpoints =
-    {
-    new ConnectionMonitorEndpoint("source")
+    Endpoints = {new ConnectionMonitorEndpoint("source")
     {
     ResourceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/ct1"),
-    },new ConnectionMonitorEndpoint("destination")
+    }, new ConnectionMonitorEndpoint("destination")
     {
     Address = "bing.com",
-    }
-    },
-    TestConfigurations =
-    {
-    new ConnectionMonitorTestConfiguration("tcp",ConnectionMonitorTestConfigurationProtocol.Tcp)
+    }},
+    TestConfigurations = {new ConnectionMonitorTestConfiguration("tcp", ConnectionMonitorTestConfigurationProtocol.Tcp)
     {
     TestFrequencySec = 60,
-    TcpConfiguration = new ConnectionMonitorTcpConfiguration()
+    TcpConfiguration = new ConnectionMonitorTcpConfiguration
     {
     Port = 80,
     },
-    }
-    },
-    TestGroups =
-    {
-    new ConnectionMonitorTestGroup("tg",new string[]
-    {
-    "tcp"
-    },new string[]
-    {
-    "source"
-    },new string[]
-    {
-    "destination"
-    })
-    },
+    }},
+    TestGroups = { new ConnectionMonitorTestGroup("tg", new string[] { "tcp" }, new string[] { "source" }, new string[] { "destination" }) },
 };
 ArmOperation<ConnectionMonitorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, connectionMonitorName, content);
 ConnectionMonitorResource result = lro.Value;

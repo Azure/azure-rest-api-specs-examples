@@ -30,4 +30,4 @@ await foreach (AutoApprovedPrivateLinkService item in resourceGroupResource.GetA
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

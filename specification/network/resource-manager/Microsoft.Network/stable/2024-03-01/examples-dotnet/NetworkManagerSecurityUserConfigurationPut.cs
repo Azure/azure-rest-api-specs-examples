@@ -27,7 +27,7 @@ NetworkManagerSecurityUserConfigurationCollection collection = networkManager.Ge
 
 // invoke the operation
 string configurationName = "myTestSecurityConfig";
-NetworkManagerSecurityUserConfigurationData data = new NetworkManagerSecurityUserConfigurationData()
+NetworkManagerSecurityUserConfigurationData data = new NetworkManagerSecurityUserConfigurationData
 {
     Description = "A sample policy",
 };

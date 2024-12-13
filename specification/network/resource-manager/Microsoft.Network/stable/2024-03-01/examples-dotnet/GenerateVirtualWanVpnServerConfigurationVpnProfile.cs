@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/GenerateVirtualWanVpnServerConfigurationVpnProfile.json
@@ -25,7 +24,7 @@ ResourceIdentifier virtualWanResourceId = VirtualWanResource.CreateResourceIdent
 VirtualWanResource virtualWan = client.GetVirtualWanResource(virtualWanResourceId);
 
 // invoke the operation
-VirtualWanVpnProfileContent content = new VirtualWanVpnProfileContent()
+VirtualWanVpnProfileContent content = new VirtualWanVpnProfileContent
 {
     VpnServerConfigurationResourceId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnServerConfigurations/vpnconfig1"),
     AuthenticationMethod = NetworkAuthenticationMethod.Eaptls,

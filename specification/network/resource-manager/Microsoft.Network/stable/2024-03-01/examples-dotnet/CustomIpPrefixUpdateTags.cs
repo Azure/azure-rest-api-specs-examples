@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/CustomIpPrefixUpdateTags.json
@@ -25,12 +24,12 @@ ResourceIdentifier customIPPrefixResourceId = CustomIPPrefixResource.CreateResou
 CustomIPPrefixResource customIPPrefix = client.GetCustomIPPrefixResource(customIPPrefixResourceId);
 
 // invoke the operation
-NetworkTagsObject networkTagsObject = new NetworkTagsObject()
+NetworkTagsObject networkTagsObject = new NetworkTagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 CustomIPPrefixResource result = await customIPPrefix.UpdateAsync(networkTagsObject);

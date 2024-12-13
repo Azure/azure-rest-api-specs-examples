@@ -25,7 +25,7 @@ ResourceIdentifier securityRuleResourceId = SecurityRuleResource.CreateResourceI
 SecurityRuleResource securityRule = client.GetSecurityRuleResource(securityRuleResourceId);
 
 // invoke the operation
-SecurityRuleData data = new SecurityRuleData()
+SecurityRuleData data = new SecurityRuleData
 {
     Protocol = SecurityRuleProtocol.Asterisk,
     SourcePortRange = "*",

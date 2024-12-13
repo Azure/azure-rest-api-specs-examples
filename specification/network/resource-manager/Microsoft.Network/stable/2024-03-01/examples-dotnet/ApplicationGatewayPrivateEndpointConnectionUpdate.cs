@@ -25,9 +25,9 @@ ResourceIdentifier applicationGatewayPrivateEndpointConnectionResourceId = Appli
 ApplicationGatewayPrivateEndpointConnectionResource applicationGatewayPrivateEndpointConnection = client.GetApplicationGatewayPrivateEndpointConnectionResource(applicationGatewayPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-ApplicationGatewayPrivateEndpointConnectionData data = new ApplicationGatewayPrivateEndpointConnectionData()
+ApplicationGatewayPrivateEndpointConnectionData data = new ApplicationGatewayPrivateEndpointConnectionData
 {
-    ConnectionState = new NetworkPrivateLinkServiceConnectionState()
+    ConnectionState = new NetworkPrivateLinkServiceConnectionState
     {
         Status = "Approved",
         Description = "approved it for some reason.",

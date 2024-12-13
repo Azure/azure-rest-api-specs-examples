@@ -24,13 +24,10 @@ ResourceIdentifier virtualNetworkGatewayResourceId = VirtualNetworkGatewayResour
 VirtualNetworkGatewayResource virtualNetworkGateway = client.GetVirtualNetworkGatewayResource(virtualNetworkGatewayResourceId);
 
 // invoke the operation
-P2SVpnConnectionRequest request = new P2SVpnConnectionRequest()
+P2SVpnConnectionRequest request = new P2SVpnConnectionRequest
 {
-    VpnConnectionIds =
-    {
-    "vpnconnId1","vpnconnId2"
-    },
+    VpnConnectionIds = { "vpnconnId1", "vpnconnId2" },
 };
 await virtualNetworkGateway.DisconnectVirtualNetworkGatewayVpnConnectionsAsync(WaitUntil.Completed, request);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

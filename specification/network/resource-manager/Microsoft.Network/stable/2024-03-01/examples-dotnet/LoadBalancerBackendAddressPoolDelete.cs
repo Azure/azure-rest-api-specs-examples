@@ -27,4 +27,4 @@ BackendAddressPoolResource backendAddressPool = client.GetBackendAddressPoolReso
 // invoke the operation
 await backendAddressPool.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

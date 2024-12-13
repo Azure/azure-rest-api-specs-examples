@@ -25,12 +25,12 @@ ResourceIdentifier flowLogResourceId = FlowLogResource.CreateResourceIdentifier(
 FlowLogResource flowLog = client.GetFlowLogResource(flowLogResourceId);
 
 // invoke the operation
-NetworkTagsObject networkTagsObject = new NetworkTagsObject()
+NetworkTagsObject networkTagsObject = new NetworkTagsObject
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 FlowLogResource result = await flowLog.UpdateAsync(networkTagsObject);

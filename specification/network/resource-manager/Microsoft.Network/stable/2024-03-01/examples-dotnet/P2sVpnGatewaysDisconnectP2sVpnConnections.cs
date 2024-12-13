@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/P2sVpnGatewaysDisconnectP2sVpnConnections.json
@@ -25,13 +24,10 @@ ResourceIdentifier p2sVpnGatewayResourceId = P2SVpnGatewayResource.CreateResourc
 P2SVpnGatewayResource p2sVpnGateway = client.GetP2SVpnGatewayResource(p2sVpnGatewayResourceId);
 
 // invoke the operation
-P2SVpnConnectionRequest request = new P2SVpnConnectionRequest()
+P2SVpnConnectionRequest request = new P2SVpnConnectionRequest
 {
-    VpnConnectionIds =
-    {
-    "vpnconnId1","vpnconnId2"
-    },
+    VpnConnectionIds = { "vpnconnId1", "vpnconnId2" },
 };
 await p2sVpnGateway.DisconnectP2SVpnConnectionsAsync(WaitUntil.Completed, request);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

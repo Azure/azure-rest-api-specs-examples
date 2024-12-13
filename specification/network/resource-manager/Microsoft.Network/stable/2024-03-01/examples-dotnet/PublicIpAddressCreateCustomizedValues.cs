@@ -28,9 +28,9 @@ PublicIPAddressCollection collection = resourceGroupResource.GetPublicIPAddresse
 
 // invoke the operation
 string publicIPAddressName = "test-ip";
-PublicIPAddressData data = new PublicIPAddressData()
+PublicIPAddressData data = new PublicIPAddressData
 {
-    Sku = new PublicIPAddressSku()
+    Sku = new PublicIPAddressSku
     {
         Name = PublicIPAddressSkuName.Standard,
         Tier = PublicIPAddressSkuTier.Global,

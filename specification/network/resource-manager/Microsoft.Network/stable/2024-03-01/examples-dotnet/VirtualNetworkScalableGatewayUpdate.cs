@@ -28,76 +28,58 @@ VirtualNetworkGatewayCollection collection = resourceGroupResource.GetVirtualNet
 
 // invoke the operation
 string virtualNetworkGatewayName = "ergw";
-VirtualNetworkGatewayData data = new VirtualNetworkGatewayData()
+VirtualNetworkGatewayData data = new VirtualNetworkGatewayData
 {
-    IPConfigurations =
-    {
-    new VirtualNetworkGatewayIPConfiguration()
+    IPConfigurations = {new VirtualNetworkGatewayIPConfiguration
     {
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Static,
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"),
     Name = "gwipconfig1",
-    }
-    },
+    }},
     GatewayType = VirtualNetworkGatewayType.ExpressRoute,
     VpnType = VpnType.PolicyBased,
     EnableBgp = false,
     Active = false,
     DisableIPSecReplayProtection = false,
-    Sku = new VirtualNetworkGatewaySku()
+    Sku = new VirtualNetworkGatewaySku
     {
         Name = VirtualNetworkGatewaySkuName.ErGwScale,
         Tier = VirtualNetworkGatewaySkuTier.ErGwScale,
     },
-    VpnClientConfiguration = null,
-    BgpSettings = null,
-    NatRules =
-    {
-    new VirtualNetworkGatewayNatRuleData()
+    VpnClientConfiguration = default,
+    BgpSettings = default,
+    NatRules = {new VirtualNetworkGatewayNatRuleData
     {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.EgressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "10.10.0.0/24",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "50.0.0.0/24",
-    }
-    },
+    }},
     IPConfigurationId = "",
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/ergw/natRules/natRule1"),
     Name = "natRule1",
-    },new VirtualNetworkGatewayNatRuleData()
+    }, new VirtualNetworkGatewayNatRuleData
     {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.IngressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "20.10.0.0/24",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "30.0.0.0/24",
-    }
-    },
+    }},
     IPConfigurationId = "",
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/ergw/natRules/natRule2"),
     Name = "natRule2",
-    }
-    },
+    }},
     EnableBgpRouteTranslationForNat = false,
     AllowVirtualWanTraffic = false,
     AllowRemoteVnetTraffic = false,

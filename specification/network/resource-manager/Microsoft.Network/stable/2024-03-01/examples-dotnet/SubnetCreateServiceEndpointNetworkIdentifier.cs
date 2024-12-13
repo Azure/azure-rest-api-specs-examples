@@ -28,17 +28,14 @@ SubnetCollection collection = virtualNetwork.GetSubnets();
 
 // invoke the operation
 string subnetName = "subnet1";
-SubnetData data = new SubnetData()
+SubnetData data = new SubnetData
 {
     AddressPrefix = "10.0.0.0/16",
-    ServiceEndpoints =
-    {
-    new ServiceEndpointProperties()
+    ServiceEndpoints = {new ServiceEndpointProperties
     {
     Service = "Microsoft.Storage",
     NetworkIdentifierId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/subnet-test/providers/Microsoft.Network/publicIPAddresses/test-ip"),
-    }
-    },
+    }},
 };
 ArmOperation<SubnetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, subnetName, data);
 SubnetResource result = lro.Value;

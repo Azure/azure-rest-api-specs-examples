@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VpnSiteLinkConnectionResource created on azure
-// for more information of creating VpnSiteLinkConnectionResource, please refer to the document of VpnSiteLinkConnectionResource
+// this example assumes you already have this VpnConnectionResource created on azure
+// for more information of creating VpnConnectionResource, please refer to the document of VpnConnectionResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string gatewayName = "gateway1";
 string connectionName = "vpnConnection1";
-string linkConnectionName = "Connection-Link1";
-ResourceIdentifier vpnSiteLinkConnectionResourceId = VpnSiteLinkConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, connectionName, linkConnectionName);
-VpnSiteLinkConnectionResource vpnSiteLinkConnection = client.GetVpnSiteLinkConnectionResource(vpnSiteLinkConnectionResourceId);
+ResourceIdentifier vpnConnectionResourceId = VpnConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, gatewayName, connectionName);
+VpnConnectionResource vpnConnection = client.GetVpnConnectionResource(vpnConnectionResourceId);
+
+// get the collection of this VpnSiteLinkConnectionResource
+VpnSiteLinkConnectionCollection collection = vpnConnection.GetVpnSiteLinkConnections();
 
 // invoke the operation
-VpnSiteLinkConnectionResource result = await vpnSiteLinkConnection.GetAsync();
+string linkConnectionName = "Connection-Link1";
+NullableResponse<VpnSiteLinkConnectionResource> response = await collection.GetIfExistsAsync(linkConnectionName);
+VpnSiteLinkConnectionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-VpnSiteLinkConnectionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    VpnSiteLinkConnectionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

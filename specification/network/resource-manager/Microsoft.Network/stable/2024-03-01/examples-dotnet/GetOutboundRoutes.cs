@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/GetOutboundRoutes.json
@@ -25,7 +24,7 @@ ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdent
 VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
 
 // invoke the operation
-VirtualHubOutboundRoutesContent content = new VirtualHubOutboundRoutesContent()
+VirtualHubOutboundRoutesContent content = new VirtualHubOutboundRoutesContent
 {
     ResourceUri = new Uri("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteGateways/exrGw1/expressRouteConnections/exrConn1"),
     ConnectionType = "ExpressRouteConnection",

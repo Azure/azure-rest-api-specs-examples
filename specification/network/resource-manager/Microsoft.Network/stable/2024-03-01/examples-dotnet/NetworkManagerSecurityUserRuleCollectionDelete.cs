@@ -29,4 +29,4 @@ NetworkManagerSecurityUserRulesResource networkManagerSecurityUserRules = client
 bool? force = false;
 await networkManagerSecurityUserRules.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

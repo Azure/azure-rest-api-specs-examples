@@ -27,9 +27,9 @@ HubIPConfigurationCollection collection = virtualHub.GetHubIPConfigurations();
 
 // invoke the operation
 string ipConfigName = "ipconfig1";
-HubIPConfigurationData data = new HubIPConfigurationData()
+HubIPConfigurationData data = new HubIPConfigurationData
 {
-    Subnet = new SubnetData()
+    Subnet = new SubnetData
     {
         Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"),
     },

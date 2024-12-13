@@ -27,4 +27,4 @@ ConnectionMonitorResource connectionMonitor = client.GetConnectionMonitorResourc
 // invoke the operation
 await connectionMonitor.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

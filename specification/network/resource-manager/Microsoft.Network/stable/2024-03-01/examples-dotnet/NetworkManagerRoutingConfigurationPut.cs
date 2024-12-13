@@ -24,7 +24,7 @@ ResourceIdentifier networkManagerRoutingConfigurationResourceId = NetworkManager
 NetworkManagerRoutingConfigurationResource networkManagerRoutingConfiguration = client.GetNetworkManagerRoutingConfigurationResource(networkManagerRoutingConfigurationResourceId);
 
 // invoke the operation
-NetworkManagerRoutingConfigurationData data = new NetworkManagerRoutingConfigurationData()
+NetworkManagerRoutingConfigurationData data = new NetworkManagerRoutingConfigurationData
 {
     Description = "A sample policy",
 };

@@ -28,27 +28,18 @@ VirtualNetworkCollection collection = resourceGroupResource.GetVirtualNetworks()
 
 // invoke the operation
 string virtualNetworkName = "vnet1";
-VirtualNetworkData data = new VirtualNetworkData()
+VirtualNetworkData data = new VirtualNetworkData
 {
-    AddressPrefixes =
-    {
-    "10.0.0.0/16"
-    },
-    Subnets =
-    {
-    new SubnetData()
+    AddressPrefixes = { "10.0.0.0/16" },
+    Subnets = {new SubnetData
     {
     AddressPrefix = "10.0.0.0/16",
-    ServiceEndpoints =
-    {
-    new ServiceEndpointProperties()
+    ServiceEndpoints = {new ServiceEndpointProperties
     {
     Service = "Microsoft.Storage",
-    }
-    },
+    }},
     Name = "test-1",
-    }
-    },
+    }},
     Location = new AzureLocation("eastus"),
 };
 ArmOperation<VirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkName, data);

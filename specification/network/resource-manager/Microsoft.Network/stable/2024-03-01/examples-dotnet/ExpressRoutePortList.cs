@@ -32,4 +32,4 @@ await foreach (ExpressRoutePortResource item in subscriptionResource.GetExpressR
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

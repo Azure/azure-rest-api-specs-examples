@@ -30,4 +30,4 @@ await foreach (ServiceTagInformation item in subscriptionResource.GetAllServiceT
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

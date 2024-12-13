@@ -32,4 +32,4 @@ await foreach (NetworkVirtualApplianceResource item in subscriptionResource.GetN
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,14 +28,14 @@ SecurityPartnerProviderCollection collection = resourceGroupResource.GetSecurity
 
 // invoke the operation
 string securityPartnerProviderName = "securityPartnerProvider";
-SecurityPartnerProviderData data = new SecurityPartnerProviderData()
+SecurityPartnerProviderData data = new SecurityPartnerProviderData
 {
     SecurityProviderName = SecurityProviderName.ZScaler,
     VirtualHubId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/hub1"),
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<SecurityPartnerProviderResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, securityPartnerProviderName, data);

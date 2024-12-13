@@ -32,4 +32,4 @@ await foreach (ExpressRouteCircuitResource item in subscriptionResource.GetExpre
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

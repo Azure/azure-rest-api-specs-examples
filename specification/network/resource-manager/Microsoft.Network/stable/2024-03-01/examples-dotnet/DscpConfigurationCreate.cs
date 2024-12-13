@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/DscpConfigurationCreate.json
@@ -25,94 +24,61 @@ ResourceIdentifier dscpConfigurationResourceId = DscpConfigurationResource.Creat
 DscpConfigurationResource dscpConfiguration = client.GetDscpConfigurationResource(dscpConfigurationResourceId);
 
 // invoke the operation
-DscpConfigurationData data = new DscpConfigurationData()
+DscpConfigurationData data = new DscpConfigurationData
 {
-    QosDefinitionCollection =
+    QosDefinitionCollection = {new DscpQosDefinition
     {
-    new DscpQosDefinition()
-    {
-    Markings =
-    {
-    1
-    },
-    SourceIPRanges =
-    {
-    new QosIPRange()
+    Markings = {1},
+    SourceIPRanges = {new QosIPRange
     {
     StartIP = "127.0.0.1",
     EndIP = "127.0.0.2",
-    }
-    },
-    DestinationIPRanges =
-    {
-    new QosIPRange()
+    }},
+    DestinationIPRanges = {new QosIPRange
     {
     StartIP = "127.0.10.1",
     EndIP = "127.0.10.2",
-    }
-    },
-    SourcePortRanges =
-    {
-    new QosPortRange()
+    }},
+    SourcePortRanges = {new QosPortRange
     {
     Start = 10,
     End = 11,
-    },new QosPortRange()
+    }, new QosPortRange
     {
     Start = 20,
     End = 21,
-    }
-    },
-    DestinationPortRanges =
-    {
-    new QosPortRange()
+    }},
+    DestinationPortRanges = {new QosPortRange
     {
     Start = 15,
     End = 15,
-    }
-    },
+    }},
     Protocol = ProtocolType.Tcp,
-    },new DscpQosDefinition()
+    }, new DscpQosDefinition
     {
-    Markings =
-    {
-    2
-    },
-    SourceIPRanges =
-    {
-    new QosIPRange()
+    Markings = {2},
+    SourceIPRanges = {new QosIPRange
     {
     StartIP = "12.0.0.1",
     EndIP = "12.0.0.2",
-    }
-    },
-    DestinationIPRanges =
-    {
-    new QosIPRange()
+    }},
+    DestinationIPRanges = {new QosIPRange
     {
     StartIP = "12.0.10.1",
     EndIP = "12.0.10.2",
-    }
-    },
-    SourcePortRanges =
-    {
-    new QosPortRange()
+    }},
+    SourcePortRanges = {new QosPortRange
     {
     Start = 11,
     End = 12,
-    }
-    },
-    DestinationPortRanges =
-    {
-    new QosPortRange()
+    }},
+    DestinationPortRanges = {new QosPortRange
     {
     Start = 51,
     End = 52,
-    }
-    },
+    }},
     Protocol = ProtocolType.Udp,
-    }
-    },
+    }},
     Location = new AzureLocation("eastus"),
 };
 ArmOperation<DscpConfigurationResource> lro = await dscpConfiguration.UpdateAsync(WaitUntil.Completed, data);

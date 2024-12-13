@@ -28,34 +28,28 @@ VpnSiteCollection collection = resourceGroupResource.GetVpnSites();
 
 // invoke the operation
 string vpnSiteName = "vpnSite1";
-VpnSiteData data = new VpnSiteData()
+VpnSiteData data = new VpnSiteData
 {
     VirtualWanId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualWANs/wan1"),
-    AddressPrefixes =
-    {
-    "10.0.0.0/16"
-    },
+    AddressPrefixes = { "10.0.0.0/16" },
     IsSecuritySite = false,
-    VpnSiteLinks =
+    VpnSiteLinks = {new VpnSiteLinkData
     {
-    new VpnSiteLinkData()
-    {
-    LinkProperties = new VpnLinkProviderProperties()
+    LinkProperties = new VpnLinkProviderProperties
     {
     LinkProviderName = "vendor1",
     LinkSpeedInMbps = 0,
     },
     IPAddress = "50.50.50.56",
     Fqdn = "link1.vpnsite1.contoso.com",
-    BgpProperties = new VpnLinkBgpSettings()
+    BgpProperties = new VpnLinkBgpSettings
     {
-    Asn = 1234,
+    Asn = 1234L,
     BgpPeeringAddress = "192.168.0.0",
     },
     Name = "vpnSiteLink1",
-    }
-    },
-    O365BreakOutCategories = new O365BreakOutCategoryPolicies()
+    }},
+    O365BreakOutCategories = new O365BreakOutCategoryPolicies
     {
         Allow = true,
         Optimize = true,
@@ -64,7 +58,7 @@ VpnSiteData data = new VpnSiteData()
     Location = new AzureLocation("West US"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<VpnSiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vpnSiteName, data);

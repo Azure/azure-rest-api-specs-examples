@@ -29,4 +29,4 @@ await foreach (AvailablePrivateEndpointType item in subscriptionResource.GetAvai
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

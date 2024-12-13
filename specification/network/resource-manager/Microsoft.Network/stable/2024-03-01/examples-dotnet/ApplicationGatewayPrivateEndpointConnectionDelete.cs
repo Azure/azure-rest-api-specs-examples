@@ -27,4 +27,4 @@ ApplicationGatewayPrivateEndpointConnectionResource applicationGatewayPrivateEnd
 // invoke the operation
 await applicationGatewayPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

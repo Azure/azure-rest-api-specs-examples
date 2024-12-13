@@ -29,4 +29,4 @@ await foreach (AutoApprovedPrivateLinkService item in subscriptionResource.GetAu
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

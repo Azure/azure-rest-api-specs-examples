@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkWatcherTopologyGet.json
@@ -26,7 +25,7 @@ ResourceIdentifier networkWatcherResourceId = NetworkWatcherResource.CreateResou
 NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(networkWatcherResourceId);
 
 // invoke the operation
-TopologyContent content = new TopologyContent()
+TopologyContent content = new TopologyContent
 {
     TargetResourceGroupName = "rg2",
 };

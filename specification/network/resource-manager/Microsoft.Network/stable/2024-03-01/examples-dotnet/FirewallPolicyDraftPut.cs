@@ -24,59 +24,44 @@ ResourceIdentifier firewallPolicyDraftResourceId = FirewallPolicyDraftResource.C
 FirewallPolicyDraftResource firewallPolicyDraft = client.GetFirewallPolicyDraftResource(firewallPolicyDraftResourceId);
 
 // invoke the operation
-FirewallPolicyDraftData data = new FirewallPolicyDraftData()
+FirewallPolicyDraftData data = new FirewallPolicyDraftData
 {
     ThreatIntelMode = AzureFirewallThreatIntelMode.Alert,
-    ThreatIntelWhitelist = new FirewallPolicyThreatIntelWhitelist()
+    ThreatIntelWhitelist = new FirewallPolicyThreatIntelWhitelist
     {
-        IPAddresses =
-        {
-        "20.3.4.5"
-        },
-        Fqdns =
-        {
-        "*.microsoft.com"
-        },
+        IPAddresses = { "20.3.4.5" },
+        Fqdns = { "*.microsoft.com" },
     },
-    Insights = new FirewallPolicyInsights()
+    Insights = new FirewallPolicyInsights
     {
         IsEnabled = true,
         RetentionDays = 100,
-        LogAnalyticsResources = new FirewallPolicyLogAnalyticsResources()
+        LogAnalyticsResources = new FirewallPolicyLogAnalyticsResources
         {
-            Workspaces =
-            {
-            new FirewallPolicyLogAnalyticsWorkspace()
+            Workspaces = {new FirewallPolicyLogAnalyticsWorkspace
             {
             Region = "westus",
             WorkspaceIdId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace1"),
-            },new FirewallPolicyLogAnalyticsWorkspace()
+            }, new FirewallPolicyLogAnalyticsWorkspace
             {
             Region = "eastus",
             WorkspaceIdId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/workspace2"),
-            }
-            },
+            }},
             DefaultWorkspaceIdId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/microsoft.operationalinsights/workspaces/defaultWorkspace"),
         },
     },
-    Snat = new FirewallPolicySnat()
+    Snat = new FirewallPolicySnat
     {
-        PrivateRanges =
-        {
-        "IANAPrivateRanges"
-        },
+        PrivateRanges = { "IANAPrivateRanges" },
     },
     AllowSqlRedirect = true,
-    DnsSettings = new DnsSettings()
+    DnsSettings = new DnsSettings
     {
-        Servers =
-        {
-        "30.3.4.5"
-        },
+        Servers = { "30.3.4.5" },
         EnableProxy = true,
         RequireProxyForNetworkRules = false,
     },
-    ExplicitProxy = new FirewallPolicyExplicitProxy()
+    ExplicitProxy = new FirewallPolicyExplicitProxy
     {
         EnableExplicitProxy = true,
         HttpPort = 8087,
@@ -85,41 +70,26 @@ FirewallPolicyDraftData data = new FirewallPolicyDraftData()
         PacFilePort = 8087,
         PacFile = "https://tinawstorage.file.core.windows.net/?sv=2020-02-10&ss=bfqt&srt=sco&sp=rwdlacuptfx&se=2021-06-04T07:01:12Z&st=2021-06-03T23:01:12Z&sip=68.65.171.11&spr=https&sig=Plsa0RRVpGbY0IETZZOT6znOHcSro71LLTTbzquYPgs%3D",
     },
-    IntrusionDetection = new FirewallPolicyIntrusionDetection()
+    IntrusionDetection = new FirewallPolicyIntrusionDetection
     {
         Mode = FirewallPolicyIntrusionDetectionStateType.Alert,
         Profile = new FirewallPolicyIntrusionDetectionProfileType("Balanced"),
-        Configuration = new FirewallPolicyIntrusionDetectionConfiguration()
+        Configuration = new FirewallPolicyIntrusionDetectionConfiguration
         {
-            SignatureOverrides =
-            {
-            new FirewallPolicyIntrusionDetectionSignatureSpecification()
+            SignatureOverrides = {new FirewallPolicyIntrusionDetectionSignatureSpecification
             {
             Id = "2525004",
             Mode = FirewallPolicyIntrusionDetectionStateType.Deny,
-            }
-            },
-            BypassTrafficSettings =
-            {
-            new FirewallPolicyIntrusionDetectionBypassTrafficSpecifications()
+            }},
+            BypassTrafficSettings = {new FirewallPolicyIntrusionDetectionBypassTrafficSpecifications
             {
             Name = "bypassRule1",
             Description = "Rule 1",
             Protocol = FirewallPolicyIntrusionDetectionProtocol.Tcp,
-            SourceAddresses =
-            {
-            "1.2.3.4"
-            },
-            DestinationAddresses =
-            {
-            "5.6.7.8"
-            },
-            DestinationPorts =
-            {
-            "*"
-            },
-            }
-            },
+            SourceAddresses = {"1.2.3.4"},
+            DestinationAddresses = {"5.6.7.8"},
+            DestinationPorts = {"*"},
+            }},
         },
     },
 };

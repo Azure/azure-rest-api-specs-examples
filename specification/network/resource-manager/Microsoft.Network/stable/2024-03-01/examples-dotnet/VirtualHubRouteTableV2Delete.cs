@@ -27,4 +27,4 @@ VirtualHubRouteTableV2Resource virtualHubRouteTableV2 = client.GetVirtualHubRout
 // invoke the operation
 await virtualHubRouteTableV2.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

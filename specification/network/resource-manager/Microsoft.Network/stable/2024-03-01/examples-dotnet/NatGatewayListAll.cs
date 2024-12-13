@@ -32,4 +32,4 @@ await foreach (NatGatewayResource item in subscriptionResource.GetNatGatewaysAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

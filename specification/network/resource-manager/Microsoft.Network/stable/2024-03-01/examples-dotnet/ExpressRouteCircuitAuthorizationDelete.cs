@@ -26,4 +26,4 @@ ExpressRouteCircuitAuthorizationResource expressRouteCircuitAuthorization = clie
 // invoke the operation
 await expressRouteCircuitAuthorization.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

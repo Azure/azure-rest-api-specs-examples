@@ -28,13 +28,13 @@ IPAllocationCollection collection = resourceGroupResource.GetIPAllocations();
 
 // invoke the operation
 string ipAllocationName = "test-ipallocation";
-IPAllocationData data = new IPAllocationData()
+IPAllocationData data = new IPAllocationData
 {
     IPAllocationType = NetworkIPAllocationType.Hypernet,
     Prefix = "3.2.5.0/24",
     AllocationTags =
     {
-    ["VNetID"] = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/HypernetVnet1",
+    ["VNetID"] = "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/HypernetVnet1"
     },
     Location = new AzureLocation("centraluseuap"),
 };

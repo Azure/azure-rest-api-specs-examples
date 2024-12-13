@@ -26,4 +26,4 @@ HubIPConfigurationResource hubIPConfiguration = client.GetHubIPConfigurationReso
 // invoke the operation
 await hubIPConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

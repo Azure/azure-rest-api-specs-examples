@@ -25,13 +25,13 @@ ResourceIdentifier expressRouteCrossConnectionPeeringResourceId = ExpressRouteCr
 ExpressRouteCrossConnectionPeeringResource expressRouteCrossConnectionPeering = client.GetExpressRouteCrossConnectionPeeringResource(expressRouteCrossConnectionPeeringResourceId);
 
 // invoke the operation
-ExpressRouteCrossConnectionPeeringData data = new ExpressRouteCrossConnectionPeeringData()
+ExpressRouteCrossConnectionPeeringData data = new ExpressRouteCrossConnectionPeeringData
 {
-    PeerASN = 200,
+    PeerASN = 200L,
     PrimaryPeerAddressPrefix = "192.168.16.252/30",
     SecondaryPeerAddressPrefix = "192.168.18.252/30",
     VlanId = 200,
-    IPv6PeeringConfig = new IPv6ExpressRouteCircuitPeeringConfig()
+    IPv6PeeringConfig = new IPv6ExpressRouteCircuitPeeringConfig
     {
         PrimaryPeerAddressPrefix = "3FFE:FFFF:0:CD30::/126",
         SecondaryPeerAddressPrefix = "3FFE:FFFF:0:CD30::4/126",

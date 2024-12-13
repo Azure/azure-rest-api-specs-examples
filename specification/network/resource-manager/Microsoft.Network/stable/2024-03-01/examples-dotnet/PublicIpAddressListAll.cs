@@ -32,4 +32,4 @@ await foreach (PublicIPAddressResource item in subscriptionResource.GetPublicIPA
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

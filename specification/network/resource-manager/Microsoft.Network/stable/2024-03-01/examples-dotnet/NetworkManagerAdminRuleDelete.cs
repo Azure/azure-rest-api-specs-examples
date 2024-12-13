@@ -30,4 +30,4 @@ BaseAdminRuleResource baseAdminRule = client.GetBaseAdminRuleResource(baseAdminR
 bool? force = false;
 await baseAdminRule.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

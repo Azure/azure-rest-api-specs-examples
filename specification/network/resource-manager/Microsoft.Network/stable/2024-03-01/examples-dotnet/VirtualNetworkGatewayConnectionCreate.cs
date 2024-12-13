@@ -29,85 +29,62 @@ VirtualNetworkGatewayConnectionCollection collection = resourceGroupResource.Get
 
 // invoke the operation
 string virtualNetworkGatewayConnectionName = "connS2S";
-VirtualNetworkGatewayConnectionData data = new VirtualNetworkGatewayConnectionData(new VirtualNetworkGatewayData()
+VirtualNetworkGatewayConnectionData data = new VirtualNetworkGatewayConnectionData(new VirtualNetworkGatewayData
 {
-    IPConfigurations =
-    {
-    new VirtualNetworkGatewayIPConfiguration()
+    IPConfigurations = {new VirtualNetworkGatewayIPConfiguration
     {
     PrivateIPAllocationMethod = NetworkIPAllocationMethod.Dynamic,
     SubnetId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet"),
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/gwpip"),
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/gwipconfig1"),
     Name = "gwipconfig1",
-    }
-    },
+    }},
     GatewayType = VirtualNetworkGatewayType.Vpn,
     VpnType = VpnType.RouteBased,
     EnableBgp = false,
     Active = false,
-    Sku = new VirtualNetworkGatewaySku()
+    Sku = new VirtualNetworkGatewaySku
     {
         Name = VirtualNetworkGatewaySkuName.VpnGw1,
         Tier = VirtualNetworkGatewaySkuTier.VpnGw1,
     },
-    BgpSettings = new BgpSettings()
+    BgpSettings = new BgpSettings
     {
-        Asn = 65514,
+        Asn = 65514L,
         BgpPeeringAddress = "10.0.1.30",
         PeerWeight = 0,
     },
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw"),
     Location = new AzureLocation("centralus"),
-    Tags =
-    {
-    },
+    Tags = { },
 }, VirtualNetworkGatewayConnectionType.IPsec)
 {
-    LocalNetworkGateway2 = new LocalNetworkGatewayData()
+    LocalNetworkGateway2 = new LocalNetworkGatewayData
     {
-        LocalNetworkAddressPrefixes =
-        {
-        "10.1.0.0/16"
-        },
+        LocalNetworkAddressPrefixes = { "10.1.0.0/16" },
         GatewayIPAddress = "x.x.x.x",
         Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/localNetworkGateways/localgw"),
         Location = new AzureLocation("centralus"),
-        Tags =
-        {
-        },
+        Tags = { },
     },
-    IngressNatRules =
-    {
-    new WritableSubResource()
+    IngressNatRules = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule1"),
-    }
-    },
-    EgressNatRules =
-    {
-    new WritableSubResource()
+    }},
+    EgressNatRules = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/natRules/natRule2"),
-    }
-    },
+    }},
     ConnectionProtocol = VirtualNetworkGatewayConnectionProtocol.IkeV2,
     RoutingWeight = 0,
     DpdTimeoutSeconds = 30,
     ConnectionMode = VirtualNetworkGatewayConnectionMode.Default,
     SharedKey = "Abc123",
     EnableBgp = false,
-    GatewayCustomBgpIPAddresses =
-    {
-    new GatewayCustomBgpIPAddressIPConfiguration("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/default","169.254.21.1"),new GatewayCustomBgpIPAddressIPConfiguration("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/ActiveActive","169.254.21.3")
-    },
+    GatewayCustomBgpIPAddresses = { new GatewayCustomBgpIPAddressIPConfiguration("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/default", "169.254.21.1"), new GatewayCustomBgpIPAddressIPConfiguration("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworkGateways/vpngw/ipConfigurations/ActiveActive", "169.254.21.3") },
     UsePolicyBasedTrafficSelectors = false,
-    IPsecPolicies =
-    {
-    },
-    TrafficSelectorPolicies =
-    {
-    },
+    IPsecPolicies = { },
+    TrafficSelectorPolicies = { },
     Location = new AzureLocation("centralus"),
 };
 ArmOperation<VirtualNetworkGatewayConnectionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkGatewayConnectionName, data);

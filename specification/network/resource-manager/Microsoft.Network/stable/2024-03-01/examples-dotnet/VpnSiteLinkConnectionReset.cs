@@ -27,4 +27,4 @@ VpnSiteLinkConnectionResource vpnSiteLinkConnection = client.GetVpnSiteLinkConne
 // invoke the operation
 await vpnSiteLinkConnection.ResetConnectionVpnLinkConnectionAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

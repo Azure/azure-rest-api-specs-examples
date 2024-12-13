@@ -28,22 +28,18 @@ ExpressRouteCircuitCollection collection = resourceGroupResource.GetExpressRoute
 
 // invoke the operation
 string circuitName = "circuitName";
-ExpressRouteCircuitData data = new ExpressRouteCircuitData()
+ExpressRouteCircuitData data = new ExpressRouteCircuitData
 {
-    Sku = new ExpressRouteCircuitSku()
+    Sku = new ExpressRouteCircuitSku
     {
         Name = "Standard_MeteredData",
         Tier = ExpressRouteCircuitSkuTier.Standard,
         Family = ExpressRouteCircuitSkuFamily.MeteredData,
     },
     AllowClassicOperations = false,
-    Authorizations =
-    {
-    },
-    Peerings =
-    {
-    },
-    ServiceProviderProperties = new ExpressRouteCircuitServiceProviderProperties()
+    Authorizations = { },
+    Peerings = { },
+    ServiceProviderProperties = new ExpressRouteCircuitServiceProviderProperties
     {
         ServiceProviderName = "Equinix",
         PeeringLocation = "Silicon Valley",

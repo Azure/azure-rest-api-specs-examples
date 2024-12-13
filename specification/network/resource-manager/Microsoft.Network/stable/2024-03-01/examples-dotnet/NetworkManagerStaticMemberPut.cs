@@ -25,7 +25,7 @@ ResourceIdentifier networkGroupStaticMemberResourceId = NetworkGroupStaticMember
 NetworkGroupStaticMemberResource networkGroupStaticMember = client.GetNetworkGroupStaticMemberResource(networkGroupStaticMemberResourceId);
 
 // invoke the operation
-NetworkGroupStaticMemberData data = new NetworkGroupStaticMemberData()
+NetworkGroupStaticMemberData data = new NetworkGroupStaticMemberData
 {
     ResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroup/rg1/providers/Microsoft.Network/virtualnetworks/vnet1"),
 };

@@ -25,18 +25,9 @@ ResourceIdentifier routingIntentResourceId = RoutingIntentResource.CreateResourc
 RoutingIntentResource routingIntent = client.GetRoutingIntentResource(routingIntentResourceId);
 
 // invoke the operation
-RoutingIntentData data = new RoutingIntentData()
+RoutingIntentData data = new RoutingIntentData
 {
-    RoutingPolicies =
-    {
-    new RoutingPolicy("InternetTraffic",new string[]
-    {
-    "Internet"
-    },"/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1"),new RoutingPolicy("PrivateTrafficPolicy",new string[]
-    {
-    "PrivateTraffic"
-    },"/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1")
-    },
+    RoutingPolicies = { new RoutingPolicy("InternetTraffic", new string[] { "Internet" }, "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1"), new RoutingPolicy("PrivateTrafficPolicy", new string[] { "PrivateTraffic" }, "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/azureFirewalls/azfw1") },
 };
 ArmOperation<RoutingIntentResource> lro = await routingIntent.UpdateAsync(WaitUntil.Completed, data);
 RoutingIntentResource result = lro.Value;

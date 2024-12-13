@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/EffectiveRoutesListForVirtualHub.json
@@ -25,7 +24,7 @@ ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdent
 VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
 
 // invoke the operation
-EffectiveRoutesContent content = null;
+EffectiveRoutesContent content = default;
 ArmOperation<VirtualHubEffectiveRouteList> lro = await virtualHub.GetVirtualHubEffectiveRoutesAsync(WaitUntil.Completed, content: content);
 VirtualHubEffectiveRouteList result = lro.Value;
 

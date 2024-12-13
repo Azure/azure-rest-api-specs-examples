@@ -26,4 +26,4 @@ DdosCustomPolicyResource ddosCustomPolicy = client.GetDdosCustomPolicyResource(d
 // invoke the operation
 await ddosCustomPolicy.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,9 +28,9 @@ PublicIPPrefixCollection collection = resourceGroupResource.GetPublicIPPrefixes(
 
 // invoke the operation
 string publicIPPrefixName = "test-ipprefix";
-PublicIPPrefixData data = new PublicIPPrefixData()
+PublicIPPrefixData data = new PublicIPPrefixData
 {
-    Sku = new PublicIPPrefixSku()
+    Sku = new PublicIPPrefixSku
     {
         Name = PublicIPPrefixSkuName.Standard,
         Tier = PublicIPPrefixSkuTier.Regional,

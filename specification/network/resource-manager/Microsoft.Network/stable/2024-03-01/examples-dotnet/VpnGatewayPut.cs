@@ -29,88 +29,61 @@ VpnGatewayCollection collection = resourceGroupResource.GetVpnGateways();
 
 // invoke the operation
 string gatewayName = "gateway1";
-VpnGatewayData data = new VpnGatewayData()
+VpnGatewayData data = new VpnGatewayData
 {
     VirtualHubId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualHubs/virtualHub1"),
-    Connections =
-    {
-    new VpnConnectionData()
+    Connections = {new VpnConnectionData
     {
     RemoteVpnSiteId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1"),
-    VpnLinkConnections =
-    {
-    new VpnSiteLinkConnectionData()
+    VpnLinkConnections = {new VpnSiteLinkConnectionData
     {
     VpnSiteLinkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnSites/vpnSite1/vpnSiteLinks/siteLink1"),
     VpnConnectionProtocolType = VirtualNetworkGatewayConnectionProtocol.IkeV2,
     ConnectionBandwidth = 200,
     SharedKey = "key",
-    EgressNatRules =
-    {
-    new WritableSubResource()
+    EgressNatRules = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/vpnGateways/gateway1/natRules/nat03"),
-    }
-    },
+    }},
     Name = "Connection-Link1",
-    }
-    },
+    }},
     Name = "vpnConnection1",
-    }
-    },
-    BgpSettings = new BgpSettings()
+    }},
+    BgpSettings = new BgpSettings
     {
-        Asn = 65515,
+        Asn = 65515L,
         PeerWeight = 0,
-        BgpPeeringAddresses =
-        {
-        new NetworkIPConfigurationBgpPeeringAddress()
+        BgpPeeringAddresses = {new NetworkIPConfigurationBgpPeeringAddress
         {
         IPConfigurationId = "Instance0",
-        CustomBgpIPAddresses =
-        {
-        "169.254.21.5"
-        },
-        },new NetworkIPConfigurationBgpPeeringAddress()
+        CustomBgpIPAddresses = {"169.254.21.5"},
+        }, new NetworkIPConfigurationBgpPeeringAddress
         {
         IPConfigurationId = "Instance1",
-        CustomBgpIPAddresses =
-        {
-        "169.254.21.10"
-        },
-        }
-        },
+        CustomBgpIPAddresses = {"169.254.21.10"},
+        }},
     },
     EnableBgpRouteTranslationForNat = false,
     IsRoutingPreferenceInternet = false,
-    NatRules =
-    {
-    new VpnGatewayNatRuleData()
+    NatRules = {new VpnGatewayNatRuleData
     {
     VpnNatRuleType = VpnNatRuleType.Static,
     Mode = VpnNatRuleMode.EgressSnat,
-    InternalMappings =
-    {
-    new VpnNatRuleMapping()
+    InternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "0.0.0.0/26",
-    }
-    },
-    ExternalMappings =
-    {
-    new VpnNatRuleMapping()
+    }},
+    ExternalMappings = {new VpnNatRuleMapping
     {
     AddressSpace = "192.168.0.0/26",
-    }
-    },
+    }},
     IPConfigurationId = "",
     Name = "nat03",
-    }
-    },
+    }},
     Location = new AzureLocation("westcentralus"),
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<VpnGatewayResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, gatewayName, data);

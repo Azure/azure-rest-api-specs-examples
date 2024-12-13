@@ -27,4 +27,4 @@ NetworkPrivateEndpointConnectionResource networkPrivateEndpointConnection = clie
 // invoke the operation
 await networkPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

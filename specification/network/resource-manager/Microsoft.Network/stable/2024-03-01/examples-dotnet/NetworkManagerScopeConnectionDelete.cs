@@ -26,4 +26,4 @@ ScopeConnectionResource scopeConnection = client.GetScopeConnectionResource(scop
 // invoke the operation
 await scopeConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

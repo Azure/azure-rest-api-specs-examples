@@ -25,15 +25,12 @@ ResourceIdentifier privateDnsZoneGroupResourceId = PrivateDnsZoneGroupResource.C
 PrivateDnsZoneGroupResource privateDnsZoneGroup = client.GetPrivateDnsZoneGroupResource(privateDnsZoneGroupResourceId);
 
 // invoke the operation
-PrivateDnsZoneGroupData data = new PrivateDnsZoneGroupData()
+PrivateDnsZoneGroupData data = new PrivateDnsZoneGroupData
 {
-    PrivateDnsZoneConfigs =
-    {
-    new PrivateDnsZoneConfig()
+    PrivateDnsZoneConfigs = {new PrivateDnsZoneConfig
     {
     PrivateDnsZoneId = "/subscriptions/subId/resourceGroups/rg1/providers/Microsoft.Network/privateDnsZones/zone1.com",
-    }
-    },
+    }},
 };
 ArmOperation<PrivateDnsZoneGroupResource> lro = await privateDnsZoneGroup.UpdateAsync(WaitUntil.Completed, data);
 PrivateDnsZoneGroupResource result = lro.Value;

@@ -28,9 +28,9 @@ ExpressRouteCircuitCollection collection = resourceGroupResource.GetExpressRoute
 
 // invoke the operation
 string circuitName = "expressRouteCircuit1";
-ExpressRouteCircuitData data = new ExpressRouteCircuitData()
+ExpressRouteCircuitData data = new ExpressRouteCircuitData
 {
-    Sku = new ExpressRouteCircuitSku()
+    Sku = new ExpressRouteCircuitSku
     {
         Name = "Premium_MeteredData",
         Tier = ExpressRouteCircuitSkuTier.Premium,

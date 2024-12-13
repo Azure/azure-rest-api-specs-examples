@@ -30,4 +30,4 @@ await foreach (ServiceAssociationLink item in subnet.GetServiceAssociationLinksA
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

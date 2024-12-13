@@ -28,7 +28,7 @@ NetworkSecurityGroupCollection collection = resourceGroupResource.GetNetworkSecu
 
 // invoke the operation
 string networkSecurityGroupName = "testnsg";
-NetworkSecurityGroupData data = new NetworkSecurityGroupData()
+NetworkSecurityGroupData data = new NetworkSecurityGroupData
 {
     Location = new AzureLocation("eastus"),
 };

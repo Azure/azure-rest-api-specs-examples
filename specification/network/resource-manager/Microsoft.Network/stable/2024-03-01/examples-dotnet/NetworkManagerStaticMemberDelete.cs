@@ -27,4 +27,4 @@ NetworkGroupStaticMemberResource networkGroupStaticMember = client.GetNetworkGro
 // invoke the operation
 await networkGroupStaticMember.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

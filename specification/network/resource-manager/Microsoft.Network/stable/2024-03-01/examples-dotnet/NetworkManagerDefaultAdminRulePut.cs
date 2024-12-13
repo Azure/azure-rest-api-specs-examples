@@ -15,26 +15,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AdminRuleGroupResource created on azure
-// for more information of creating AdminRuleGroupResource, please refer to the document of AdminRuleGroupResource
+// this example assumes you already have this BaseAdminRuleResource created on azure
+// for more information of creating BaseAdminRuleResource, please refer to the document of BaseAdminRuleResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string configurationName = "myTestSecurityConfig";
 string ruleCollectionName = "testRuleCollection";
-ResourceIdentifier adminRuleGroupResourceId = AdminRuleGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName);
-AdminRuleGroupResource adminRuleGroup = client.GetAdminRuleGroupResource(adminRuleGroupResourceId);
-
-// get the collection of this BaseAdminRuleResource
-BaseAdminRuleCollection collection = adminRuleGroup.GetBaseAdminRules();
+string ruleName = "SampleDefaultAdminRule";
+ResourceIdentifier baseAdminRuleResourceId = BaseAdminRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, configurationName, ruleCollectionName, ruleName);
+BaseAdminRuleResource baseAdminRule = client.GetBaseAdminRuleResource(baseAdminRuleResourceId);
 
 // invoke the operation
-string ruleName = "SampleDefaultAdminRule";
-BaseAdminRuleData data = new NetworkDefaultAdminRule()
+BaseAdminRuleData data = new NetworkDefaultAdminRule
 {
     Flag = "AllowVnetInbound",
 };
-ArmOperation<BaseAdminRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
+ArmOperation<BaseAdminRuleResource> lro = await baseAdminRule.UpdateAsync(WaitUntil.Completed, data);
 BaseAdminRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

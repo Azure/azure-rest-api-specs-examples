@@ -25,40 +25,22 @@ ResourceIdentifier firewallPolicyRuleCollectionGroupResourceId = FirewallPolicyR
 FirewallPolicyRuleCollectionGroupResource firewallPolicyRuleCollectionGroup = client.GetFirewallPolicyRuleCollectionGroupResource(firewallPolicyRuleCollectionGroupResourceId);
 
 // invoke the operation
-FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData()
+FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData
 {
     Priority = 110,
-    RuleCollections =
-    {
-    new FirewallPolicyFilterRuleCollectionInfo()
+    RuleCollections = {new FirewallPolicyFilterRuleCollectionInfo
     {
     ActionType = FirewallPolicyFilterRuleCollectionActionType.Deny,
-    Rules =
+    Rules = {new NetworkRule
     {
-    new NetworkRule()
-    {
-    IPProtocols =
-    {
-    FirewallPolicyRuleNetworkProtocol.Tcp
-    },
-    DestinationPorts =
-    {
-    "*"
-    },
-    SourceIPGroups =
-    {
-    "/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1"
-    },
-    DestinationIPGroups =
-    {
-    "/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2"
-    },
+    IPProtocols = {FirewallPolicyRuleNetworkProtocol.Tcp},
+    DestinationPorts = {"*"},
+    SourceIPGroups = {"/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups1"},
+    DestinationIPGroups = {"/subscriptions/subid/providers/Microsoft.Network/resourceGroup/rg1/ipGroups/ipGroups2"},
     Name = "network-1",
-    }
-    },
+    }},
     Name = "Example-Filter-Rule-Collection",
-    }
-    },
+    }},
 };
 ArmOperation<FirewallPolicyRuleCollectionGroupResource> lro = await firewallPolicyRuleCollectionGroup.UpdateAsync(WaitUntil.Completed, data);
 FirewallPolicyRuleCollectionGroupResource result = lro.Value;

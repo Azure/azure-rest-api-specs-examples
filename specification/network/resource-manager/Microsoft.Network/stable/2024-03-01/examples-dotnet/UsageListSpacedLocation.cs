@@ -29,4 +29,4 @@ await foreach (NetworkUsage item in subscriptionResource.GetUsagesAsync(location
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

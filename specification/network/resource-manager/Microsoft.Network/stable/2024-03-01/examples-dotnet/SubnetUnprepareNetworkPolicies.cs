@@ -25,10 +25,10 @@ ResourceIdentifier subnetResourceId = SubnetResource.CreateResourceIdentifier(su
 SubnetResource subnet = client.GetSubnetResource(subnetResourceId);
 
 // invoke the operation
-UnprepareNetworkPoliciesContent content = new UnprepareNetworkPoliciesContent()
+UnprepareNetworkPoliciesContent content = new UnprepareNetworkPoliciesContent
 {
     ServiceName = "Microsoft.Sql/managedInstances",
 };
 await subnet.UnprepareNetworkPoliciesAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

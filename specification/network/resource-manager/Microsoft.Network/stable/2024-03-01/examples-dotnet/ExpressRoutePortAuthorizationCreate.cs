@@ -14,18 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRoutePortAuthorizationResource created on azure
-// for more information of creating ExpressRoutePortAuthorizationResource, please refer to the document of ExpressRoutePortAuthorizationResource
+// this example assumes you already have this ExpressRoutePortResource created on azure
+// for more information of creating ExpressRoutePortResource, please refer to the document of ExpressRoutePortResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string expressRoutePortName = "expressRoutePortName";
-string authorizationName = "authorizatinName";
-ResourceIdentifier expressRoutePortAuthorizationResourceId = ExpressRoutePortAuthorizationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRoutePortName, authorizationName);
-ExpressRoutePortAuthorizationResource expressRoutePortAuthorization = client.GetExpressRoutePortAuthorizationResource(expressRoutePortAuthorizationResourceId);
+ResourceIdentifier expressRoutePortResourceId = ExpressRoutePortResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, expressRoutePortName);
+ExpressRoutePortResource expressRoutePort = client.GetExpressRoutePortResource(expressRoutePortResourceId);
+
+// get the collection of this ExpressRoutePortAuthorizationResource
+ExpressRoutePortAuthorizationCollection collection = expressRoutePort.GetExpressRoutePortAuthorizations();
 
 // invoke the operation
+string authorizationName = "authorizatinName";
 ExpressRoutePortAuthorizationData data = new ExpressRoutePortAuthorizationData();
-ArmOperation<ExpressRoutePortAuthorizationResource> lro = await expressRoutePortAuthorization.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ExpressRoutePortAuthorizationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationName, data);
 ExpressRoutePortAuthorizationResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

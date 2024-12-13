@@ -27,4 +27,4 @@ NetworkManagerSecurityUserConfigurationResource networkManagerSecurityUserConfig
 bool? force = false;
 await networkManagerSecurityUserConfiguration.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

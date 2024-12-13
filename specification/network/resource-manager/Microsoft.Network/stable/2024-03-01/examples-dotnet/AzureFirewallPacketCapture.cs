@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/AzureFirewallPacketCapture.json
@@ -25,56 +24,32 @@ ResourceIdentifier azureFirewallResourceId = AzureFirewallResource.CreateResourc
 AzureFirewallResource azureFirewall = client.GetAzureFirewallResource(azureFirewallResourceId);
 
 // invoke the operation
-FirewallPacketCaptureRequestContent content = new FirewallPacketCaptureRequestContent()
+FirewallPacketCaptureRequestContent content = new FirewallPacketCaptureRequestContent
 {
     DurationInSeconds = 300,
     NumberOfPacketsToCapture = 5000,
     SasUri = new Uri("someSASURL"),
     FileName = "azureFirewallPacketCapture",
     Protocol = AzureFirewallNetworkRuleProtocol.Any,
-    Flags =
-    {
-    new AzureFirewallPacketCaptureFlags()
+    Flags = {new AzureFirewallPacketCaptureFlags
     {
     FlagsType = AzureFirewallPacketCaptureFlagsType.Syn,
-    },new AzureFirewallPacketCaptureFlags()
+    }, new AzureFirewallPacketCaptureFlags
     {
     FlagsType = AzureFirewallPacketCaptureFlagsType.Fin,
-    }
-    },
-    Filters =
+    }},
+    Filters = {new AzureFirewallPacketCaptureRule
     {
-    new AzureFirewallPacketCaptureRule()
+    Sources = {"20.1.1.0"},
+    Destinations = {"20.1.2.0"},
+    DestinationPorts = {"4500"},
+    }, new AzureFirewallPacketCaptureRule
     {
-    Sources =
-    {
-    "20.1.1.0"
-    },
-    Destinations =
-    {
-    "20.1.2.0"
-    },
-    DestinationPorts =
-    {
-    "4500"
-    },
-    },new AzureFirewallPacketCaptureRule()
-    {
-    Sources =
-    {
-    "10.1.1.0","10.1.1.1"
-    },
-    Destinations =
-    {
-    "10.1.2.0"
-    },
-    DestinationPorts =
-    {
-    "123","80"
-    },
-    }
-    },
+    Sources = {"10.1.1.0", "10.1.1.1"},
+    Destinations = {"10.1.2.0"},
+    DestinationPorts = {"123", "80"},
+    }},
 };
 await azureFirewall.PacketCaptureAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

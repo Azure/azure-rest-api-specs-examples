@@ -27,12 +27,9 @@ LocalNetworkGatewayCollection collection = resourceGroupResource.GetLocalNetwork
 
 // invoke the operation
 string localNetworkGatewayName = "localgw";
-LocalNetworkGatewayData data = new LocalNetworkGatewayData()
+LocalNetworkGatewayData data = new LocalNetworkGatewayData
 {
-    LocalNetworkAddressPrefixes =
-    {
-    "10.1.0.0/16"
-    },
+    LocalNetworkAddressPrefixes = { "10.1.0.0/16" },
     GatewayIPAddress = "11.12.13.14",
     Fqdn = "site1.contoso.com",
     Location = new AzureLocation("Central US"),

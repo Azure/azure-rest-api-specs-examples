@@ -25,41 +25,23 @@ ResourceIdentifier firewallPolicyRuleCollectionGroupDraftResourceId = FirewallPo
 FirewallPolicyRuleCollectionGroupDraftResource firewallPolicyRuleCollectionGroupDraft = client.GetFirewallPolicyRuleCollectionGroupDraftResource(firewallPolicyRuleCollectionGroupDraftResourceId);
 
 // invoke the operation
-FirewallPolicyRuleCollectionGroupDraftData data = new FirewallPolicyRuleCollectionGroupDraftData()
+FirewallPolicyRuleCollectionGroupDraftData data = new FirewallPolicyRuleCollectionGroupDraftData
 {
     Priority = 100,
-    RuleCollections =
-    {
-    new FirewallPolicyFilterRuleCollectionInfo()
+    RuleCollections = {new FirewallPolicyFilterRuleCollectionInfo
     {
     ActionType = FirewallPolicyFilterRuleCollectionActionType.Deny,
-    Rules =
+    Rules = {new NetworkRule
     {
-    new NetworkRule()
-    {
-    IPProtocols =
-    {
-    FirewallPolicyRuleNetworkProtocol.Tcp
-    },
-    SourceAddresses =
-    {
-    "10.1.25.0/24"
-    },
-    DestinationAddresses =
-    {
-    "*"
-    },
-    DestinationPorts =
-    {
-    "*"
-    },
+    IPProtocols = {FirewallPolicyRuleNetworkProtocol.Tcp},
+    SourceAddresses = {"10.1.25.0/24"},
+    DestinationAddresses = {"*"},
+    DestinationPorts = {"*"},
     Name = "network-rule1",
-    }
-    },
+    }},
     Name = "Example-Filter-Rule-Collection",
     Priority = 100,
-    }
-    },
+    }},
 };
 ArmOperation<FirewallPolicyRuleCollectionGroupDraftResource> lro = await firewallPolicyRuleCollectionGroupDraft.CreateOrUpdateAsync(WaitUntil.Completed, data);
 FirewallPolicyRuleCollectionGroupDraftResource result = lro.Value;

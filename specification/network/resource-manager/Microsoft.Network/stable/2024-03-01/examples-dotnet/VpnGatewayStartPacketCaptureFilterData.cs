@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/VpnGatewayStartPacketCaptureFilterData.json
@@ -25,7 +24,7 @@ ResourceIdentifier vpnGatewayResourceId = VpnGatewayResource.CreateResourceIdent
 VpnGatewayResource vpnGateway = client.GetVpnGatewayResource(vpnGatewayResourceId);
 
 // invoke the operation
-VpnGatewayPacketCaptureStartContent content = new VpnGatewayPacketCaptureStartContent()
+VpnGatewayPacketCaptureStartContent content = new VpnGatewayPacketCaptureStartContent
 {
     FilterData = "{'TracingFlags': 11,'MaxPacketBufferSize': 120,'MaxFileSize': 200,'Filters': [{'SourceSubnets': ['20.1.1.0/24'],'DestinationSubnets': ['10.1.1.0/24'],'SourcePort': [500],'DestinationPort': [4500],'Protocol': 6,'TcpFlags': 16,'CaptureSingleDirectionTrafficOnly': true}]}",
 };

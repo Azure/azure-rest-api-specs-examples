@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkWatcherNetworkConfigurationDiagnostic.json
@@ -28,7 +27,7 @@ NetworkWatcherResource networkWatcher = client.GetNetworkWatcherResource(network
 // invoke the operation
 NetworkConfigurationDiagnosticContent content = new NetworkConfigurationDiagnosticContent(new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Compute/virtualMachines/vm1"), new NetworkConfigurationDiagnosticProfile[]
 {
-new NetworkConfigurationDiagnosticProfile(NetworkTrafficDirection.Inbound,"TCP","10.1.0.4","12.11.12.14","12100")
+new NetworkConfigurationDiagnosticProfile(NetworkTrafficDirection.Inbound, "TCP", "10.1.0.4", "12.11.12.14", "12100")
 });
 ArmOperation<NetworkConfigurationDiagnosticResponse> lro = await networkWatcher.GetNetworkConfigurationDiagnosticAsync(WaitUntil.Completed, content);
 NetworkConfigurationDiagnosticResponse result = lro.Value;

@@ -28,19 +28,14 @@ BastionHostCollection collection = resourceGroupResource.GetBastionHosts();
 
 // invoke the operation
 string bastionHostName = "bastionhostdeveloper";
-BastionHostData data = new BastionHostData()
+BastionHostData data = new BastionHostData
 {
-    IPConfigurations =
-    {
-    },
+    IPConfigurations = { },
     VirtualNetworkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg2/providers/Microsoft.Network/virtualNetworks/vnet2"),
-    NetworkAclsIPRules =
-    {
-    new BastionHostIPRule()
+    NetworkAclsIPRules = {new BastionHostIPRule
     {
     AddressPrefix = "1.1.1.1/16",
-    }
-    },
+    }},
 };
 ArmOperation<BastionHostResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, bastionHostName, data);
 BastionHostResource result = lro.Value;

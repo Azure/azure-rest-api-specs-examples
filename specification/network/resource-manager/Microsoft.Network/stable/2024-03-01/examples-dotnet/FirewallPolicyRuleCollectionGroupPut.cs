@@ -25,41 +25,23 @@ ResourceIdentifier firewallPolicyRuleCollectionGroupResourceId = FirewallPolicyR
 FirewallPolicyRuleCollectionGroupResource firewallPolicyRuleCollectionGroup = client.GetFirewallPolicyRuleCollectionGroupResource(firewallPolicyRuleCollectionGroupResourceId);
 
 // invoke the operation
-FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData()
+FirewallPolicyRuleCollectionGroupData data = new FirewallPolicyRuleCollectionGroupData
 {
     Priority = 100,
-    RuleCollections =
-    {
-    new FirewallPolicyFilterRuleCollectionInfo()
+    RuleCollections = {new FirewallPolicyFilterRuleCollectionInfo
     {
     ActionType = FirewallPolicyFilterRuleCollectionActionType.Deny,
-    Rules =
+    Rules = {new NetworkRule
     {
-    new NetworkRule()
-    {
-    IPProtocols =
-    {
-    FirewallPolicyRuleNetworkProtocol.Tcp
-    },
-    SourceAddresses =
-    {
-    "10.1.25.0/24"
-    },
-    DestinationAddresses =
-    {
-    "*"
-    },
-    DestinationPorts =
-    {
-    "*"
-    },
+    IPProtocols = {FirewallPolicyRuleNetworkProtocol.Tcp},
+    SourceAddresses = {"10.1.25.0/24"},
+    DestinationAddresses = {"*"},
+    DestinationPorts = {"*"},
     Name = "network-rule1",
-    }
-    },
+    }},
     Name = "Example-Filter-Rule-Collection",
     Priority = 100,
-    }
-    },
+    }},
 };
 ArmOperation<FirewallPolicyRuleCollectionGroupResource> lro = await firewallPolicyRuleCollectionGroup.UpdateAsync(WaitUntil.Completed, data);
 FirewallPolicyRuleCollectionGroupResource result = lro.Value;

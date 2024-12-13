@@ -28,4 +28,4 @@ VpnConnectionResource vpnConnection = client.GetVpnConnectionResource(vpnConnect
 // invoke the operation
 await vpnConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

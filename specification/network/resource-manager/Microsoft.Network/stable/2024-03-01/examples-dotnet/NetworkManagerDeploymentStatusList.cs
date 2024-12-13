@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Network.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-03-01/examples/NetworkManagerDeploymentStatusList.json
@@ -25,16 +24,10 @@ ResourceIdentifier networkManagerResourceId = NetworkManagerResource.CreateResou
 NetworkManagerResource networkManager = client.GetNetworkManagerResource(networkManagerResourceId);
 
 // invoke the operation and iterate over the result
-NetworkManagerDeploymentStatusContent content = new NetworkManagerDeploymentStatusContent()
+NetworkManagerDeploymentStatusContent content = new NetworkManagerDeploymentStatusContent
 {
-    Regions =
-    {
-    "eastus","westus"
-    },
-    DeploymentTypes =
-    {
-    NetworkConfigurationDeploymentType.Connectivity,new NetworkConfigurationDeploymentType("AdminPolicy")
-    },
+    Regions = { "eastus", "westus" },
+    DeploymentTypes = { NetworkConfigurationDeploymentType.Connectivity, new NetworkConfigurationDeploymentType("AdminPolicy") },
     SkipToken = "FakeSkipTokenCode",
 };
 await foreach (NetworkManagerDeploymentStatus item in networkManager.GetNetworkManagerDeploymentStatusAsync(content))
@@ -42,4 +35,4 @@ await foreach (NetworkManagerDeploymentStatus item in networkManager.GetNetworkM
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

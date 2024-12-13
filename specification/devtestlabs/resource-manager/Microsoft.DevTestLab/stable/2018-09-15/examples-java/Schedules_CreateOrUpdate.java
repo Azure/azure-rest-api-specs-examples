@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.devtestlabs.fluent.models.ScheduleInner;
 import com.azure.resourcemanager.devtestlabs.models.DayDetails;
 import com.azure.resourcemanager.devtestlabs.models.EnableStatus;
@@ -8,45 +9,33 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Schedules CreateOrUpdate. */
+/**
+ * Samples for Schedules CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Schedules_CreateOrUpdate.json
+     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/
+     * Schedules_CreateOrUpdate.json
      */
     /**
      * Sample code: Schedules_CreateOrUpdate.
-     *
+     * 
      * @param manager Entry point to DevTestLabsManager.
      */
     public static void schedulesCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
-        manager
-            .schedules()
-            .createOrUpdateWithResponse(
-                "resourceGroupName",
-                "{labName}",
-                "{scheduleName}",
-                new ScheduleInner()
-                    .withLocation("{location}")
-                    .withTags(mapOf("tagName1", "tagValue1"))
-                    .withStatus(EnableStatus.fromString("{Enabled|Disabled}"))
-                    .withTaskType("{myLabVmTaskType}")
-                    .withWeeklyRecurrence(
-                        new WeekDetails()
-                            .withWeekdays(Arrays.asList("Monday", "Wednesday", "Friday"))
-                            .withTime("{timeOfTheDayTheScheduleWillOccurOnThoseDays}"))
-                    .withDailyRecurrence(new DayDetails().withTime("{timeOfTheDayTheScheduleWillOccurEveryDay}"))
-                    .withHourlyRecurrence(new HourDetails().withMinute(30))
-                    .withTimeZoneId("Pacific Standard Time")
-                    .withNotificationSettings(
-                        new NotificationSettings()
-                            .withStatus(EnableStatus.fromString("{Enabled|Disabled}"))
-                            .withTimeInMinutes(15)
-                            .withWebhookUrl("{webhookUrl}")
-                            .withEmailRecipient("{email}")
-                            .withNotificationLocale("EN"))
-                    .withTargetResourceId(
-                        "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}"),
-                com.azure.core.util.Context.NONE);
+        manager.schedules().createOrUpdateWithResponse("resourceGroupName", "{labName}", "{scheduleName}",
+            new ScheduleInner().withLocation("{location}").withTags(mapOf("tagName1", "tagValue1"))
+                .withStatus(EnableStatus.fromString("{Enabled|Disabled}")).withTaskType("{myLabVmTaskType}")
+                .withWeeklyRecurrence(new WeekDetails().withWeekdays(Arrays.asList("Monday", "Wednesday", "Friday"))
+                    .withTime("{timeOfTheDayTheScheduleWillOccurOnThoseDays}"))
+                .withDailyRecurrence(new DayDetails().withTime("{timeOfTheDayTheScheduleWillOccurEveryDay}"))
+                .withHourlyRecurrence(new HourDetails().withMinute(30)).withTimeZoneId("Pacific Standard Time")
+                .withNotificationSettings(new NotificationSettings()
+                    .withStatus(EnableStatus.fromString("{Enabled|Disabled}")).withTimeInMinutes(15)
+                    .withWebhookUrl("{webhookUrl}").withEmailRecipient("{email}").withNotificationLocale("EN"))
+                .withTargetResourceId(
+                    "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}"),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

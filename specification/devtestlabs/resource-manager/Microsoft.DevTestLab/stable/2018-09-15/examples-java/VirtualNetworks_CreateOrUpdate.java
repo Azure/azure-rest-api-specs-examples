@@ -1,24 +1,23 @@
+
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for VirtualNetworks CreateOrUpdate. */
+/**
+ * Samples for VirtualNetworks CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/VirtualNetworks_CreateOrUpdate.json
+     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/
+     * VirtualNetworks_CreateOrUpdate.json
      */
     /**
      * Sample code: VirtualNetworks_CreateOrUpdate.
-     *
+     * 
      * @param manager Entry point to DevTestLabsManager.
      */
     public static void virtualNetworksCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
-        manager
-            .virtualNetworks()
-            .define("{virtualNetworkName}")
-            .withRegion("{location}")
-            .withExistingLab("resourceGroupName", "{labName}")
-            .withTags(mapOf("tagName1", "tagValue1"))
-            .create();
+        manager.virtualNetworks().define("{virtualNetworkName}").withRegion("{location}")
+            .withExistingLab("resourceGroupName", "{labName}").withTags(mapOf("tagName1", "tagValue1")).create();
     }
 
     // Use "Map.of" if available

@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.devtestlabs.fluent.models.ScheduleInner;
 import com.azure.resourcemanager.devtestlabs.models.DayDetails;
 import com.azure.resourcemanager.devtestlabs.models.EnableStatus;
@@ -8,42 +9,32 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for VirtualMachineSchedules CreateOrUpdate. */
+/**
+ * Samples for VirtualMachineSchedules CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/VirtualMachineSchedules_CreateOrUpdate.json
+     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/
+     * VirtualMachineSchedules_CreateOrUpdate.json
      */
     /**
      * Sample code: VirtualMachineSchedules_CreateOrUpdate.
-     *
+     * 
      * @param manager Entry point to DevTestLabsManager.
      */
-    public static void virtualMachineSchedulesCreateOrUpdate(
-        com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
-        manager
-            .virtualMachineSchedules()
-            .createOrUpdateWithResponse(
-                "resourceGroupName",
-                "{labName}",
-                "{vmName}",
-                "LabVmsShutdown",
-                new ScheduleInner()
-                    .withLocation("{location}")
-                    .withTags(mapOf("tagName1", "tagValue1"))
-                    .withStatus(EnableStatus.ENABLED)
-                    .withTaskType("LabVmsShutdownTask")
+    public static void
+        virtualMachineSchedulesCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
+        manager.virtualMachineSchedules()
+            .createOrUpdateWithResponse("resourceGroupName", "{labName}", "{vmName}", "LabVmsShutdown",
+                new ScheduleInner().withLocation("{location}").withTags(mapOf("tagName1", "tagValue1"))
+                    .withStatus(EnableStatus.ENABLED).withTaskType("LabVmsShutdownTask")
                     .withWeeklyRecurrence(
                         new WeekDetails().withWeekdays(Arrays.asList("Friday", "Saturday", "Sunday")).withTime("1700"))
                     .withDailyRecurrence(new DayDetails().withTime("1900"))
-                    .withHourlyRecurrence(new HourDetails().withMinute(30))
-                    .withTimeZoneId("Pacific Standard Time")
-                    .withNotificationSettings(
-                        new NotificationSettings()
-                            .withStatus(EnableStatus.ENABLED)
-                            .withTimeInMinutes(30)
-                            .withWebhookUrl("{webhookUrl}")
-                            .withEmailRecipient("{email}")
-                            .withNotificationLocale("EN"))
+                    .withHourlyRecurrence(new HourDetails().withMinute(30)).withTimeZoneId("Pacific Standard Time")
+                    .withNotificationSettings(new NotificationSettings()
+                        .withStatus(EnableStatus.ENABLED).withTimeInMinutes(30).withWebhookUrl("{webhookUrl}")
+                        .withEmailRecipient("{email}").withNotificationLocale("EN"))
                     .withTargetResourceId(
                         "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualMachines/{vmName}"),
                 com.azure.core.util.Context.NONE);

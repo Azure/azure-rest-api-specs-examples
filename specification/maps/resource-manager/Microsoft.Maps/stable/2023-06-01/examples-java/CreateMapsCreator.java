@@ -1,26 +1,25 @@
+
 import com.azure.resourcemanager.maps.fluent.models.CreatorProperties;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Creators CreateOrUpdate. */
+/**
+ * Samples for Creators CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/maps/resource-manager/Microsoft.Maps/stable/2023-06-01/examples/CreateMapsCreator.json
+     * x-ms-original-file:
+     * specification/maps/resource-manager/Microsoft.Maps/stable/2023-06-01/examples/CreateMapsCreator.json
      */
     /**
      * Sample code: Create Creator Resource.
-     *
+     * 
      * @param manager Entry point to AzureMapsManager.
      */
     public static void createCreatorResource(com.azure.resourcemanager.maps.AzureMapsManager manager) {
-        manager
-            .creators()
-            .define("myCreator")
-            .withRegion("eastus2")
+        manager.creators().define("myCreator").withRegion("eastus2")
             .withExistingAccount("myResourceGroup", "myMapsAccount")
-            .withProperties(new CreatorProperties().withStorageUnits(5))
-            .withTags(mapOf("test", "true"))
-            .create();
+            .withProperties(new CreatorProperties().withStorageUnits(5)).withTags(mapOf("test", "true")).create();
     }
 
     // Use "Map.of" if available

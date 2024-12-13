@@ -4867,3 +4867,4 @@ id,name,language,tag,package,version,date_epoch,date
 4866,"Azure.ResourceManager.Network,1.10.0-beta.1",dotnet,Azure.ResourceManager.Network_1.10.0-beta.1,Azure.ResourceManager.Network,1.10.0-beta.1,1733978727,12/12/2024
 4867,com.azure.resourcemanager:azure-resourcemanager-hybridnetwork:1.1.0,java,azure-resourcemanager-hybridnetwork_1.1.0,azure-resourcemanager-hybridnetwork,1.1.0,1734083958,12/13/2024
 4868,com.azure.resourcemanager:azure-resourcemanager-dashboard:1.1.0,java,azure-resourcemanager-dashboard_1.1.0,azure-resourcemanager-dashboard,1.1.0,1734083858,12/13/2024
+4869,com.azure.resourcemanager:azure-resourcemanager-deviceupdate:1.1.0,java,azure-resourcemanager-deviceupdate_1.1.0,azure-resourcemanager-deviceupdate,1.1.0,1734083827,12/13/2024

@@ -25,9 +25,9 @@ ResourceIdentifier dedicatedHostResourceId = DedicatedHostResource.CreateResourc
 DedicatedHostResource dedicatedHost = client.GetDedicatedHostResource(dedicatedHostResourceId);
 
 // invoke the operation
-DedicatedHostPatch patch = new DedicatedHostPatch()
+DedicatedHostPatch patch = new DedicatedHostPatch
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "DSv3-Type1",
     },

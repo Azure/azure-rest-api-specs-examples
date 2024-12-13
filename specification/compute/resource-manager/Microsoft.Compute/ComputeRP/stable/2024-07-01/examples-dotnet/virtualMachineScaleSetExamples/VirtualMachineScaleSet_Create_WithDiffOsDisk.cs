@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -32,72 +31,69 @@ VirtualMachineScaleSetCollection collection = resourceGroupResource.GetVirtualMa
 string virtualMachineScaleSetName = "{vmss-name}";
 VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocation("westus"))
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "Standard_DS1_v2",
         Tier = "Standard",
         Capacity = 3L,
     },
-    Plan = new ComputePlan()
+    Plan = new ComputePlan
     {
         Name = "windows2016",
         Publisher = "microsoft-ads",
         Product = "windows-data-science-vm",
     },
-    UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy()
+    Properties = new VirtualMachineScaleSetProperties
     {
-        Mode = VirtualMachineScaleSetUpgradeMode.Manual,
-    },
-    VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
-    {
-        OSProfile = new VirtualMachineScaleSetOSProfile()
+        UpgradePolicy = new VirtualMachineScaleSetUpgradePolicy
         {
-            ComputerNamePrefix = "{vmss-name}",
-            AdminUsername = "{your-username}",
-            AdminPassword = "{your-password}",
+            Mode = VirtualMachineScaleSetUpgradeMode.Manual,
         },
-        StorageProfile = new VirtualMachineScaleSetStorageProfile()
+        VirtualMachineProfile = new VirtualMachineScaleSetVmProfile
         {
-            ImageReference = new ImageReference()
+            OSProfile = new VirtualMachineScaleSetOSProfile
             {
-                Publisher = "microsoft-ads",
-                Offer = "windows-data-science-vm",
-                Sku = "windows2016",
-                Version = "latest",
+                ComputerNamePrefix = "{vmss-name}",
+                AdminUsername = "{your-username}",
+                AdminPassword = "{your-password}",
             },
-            OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+            StorageProfile = new VirtualMachineScaleSetStorageProfile
             {
-                Caching = CachingType.ReadOnly,
-                DiffDiskSettings = new DiffDiskSettings()
+                ImageReference = new ImageReference
                 {
-                    Option = DiffDiskOption.Local,
+                    Publisher = "microsoft-ads",
+                    Offer = "windows-data-science-vm",
+                    Sku = "windows2016",
+                    Version = "latest",
                 },
-                ManagedDisk = new VirtualMachineScaleSetManagedDisk()
+                OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
                 {
-                    StorageAccountType = StorageAccountType.StandardLrs,
+                    Caching = CachingType.ReadOnly,
+                    DiffDiskSettings = new DiffDiskSettings
+                    {
+                        Option = DiffDiskOption.Local,
+                    },
+                    ManagedDisk = new VirtualMachineScaleSetManagedDisk
+                    {
+                        StorageAccountType = StorageAccountType.StandardLrs,
+                    },
                 },
             },
-        },
-        NetworkProfile = new VirtualMachineScaleSetNetworkProfile()
-        {
-            NetworkInterfaceConfigurations =
+            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
             {
-            new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
-            {
-            Primary = true,
-            IPConfigurations =
-            {
-            new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
-            {
-            SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
-            }
-            },
-            EnableIPForwarding = true,
-            }
+                NetworkInterfaceConfigurations = {new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
+                {
+                Primary = true,
+                IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
+                {
+                SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
+                }},
+                EnableIPForwarding = true,
+                }},
             },
         },
+        Overprovision = true,
     },
-    Overprovision = true,
 };
 ArmOperation<VirtualMachineScaleSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualMachineScaleSetName, data);
 VirtualMachineScaleSetResource result = lro.Value;

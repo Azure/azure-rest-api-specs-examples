@@ -34,12 +34,12 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
     OSType = SupportedOperatingSystemType.Windows,
     CreationData = new DiskCreationData(DiskCreateOption.FromImage)
     {
-        ImageReference = new ImageDiskReference()
+        ImageReference = new ImageDiskReference
         {
             Id = new ResourceIdentifier("/Subscriptions/{subscriptionId}/Providers/Microsoft.Compute/Locations/westus/Publishers/{publisher}/ArtifactTypes/VMImage/Offers/{offer}/Skus/{sku}/Versions/1.0.0"),
         },
     },
-    SecurityProfile = new DiskSecurityProfile()
+    SecurityProfile = new DiskSecurityProfile
     {
         SecurityType = DiskSecurityType.ConfidentialVmDiskEncryptedWithCustomerKey,
         SecureVmDiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}"),

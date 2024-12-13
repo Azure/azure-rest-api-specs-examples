@@ -40,4 +40,4 @@ await foreach (VirtualMachineScaleSetVmResource item in collection.GetAllAsync(f
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

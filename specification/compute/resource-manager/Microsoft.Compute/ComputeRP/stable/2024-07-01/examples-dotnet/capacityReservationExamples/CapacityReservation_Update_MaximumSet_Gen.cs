@@ -25,9 +25,9 @@ ResourceIdentifier capacityReservationResourceId = CapacityReservationResource.C
 CapacityReservationResource capacityReservation = client.GetCapacityReservationResource(capacityReservationResourceId);
 
 // invoke the operation
-CapacityReservationPatch patch = new CapacityReservationPatch()
+CapacityReservationPatch patch = new CapacityReservationPatch
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "Standard_DS1_v2",
         Tier = "aaa",
@@ -35,7 +35,7 @@ CapacityReservationPatch patch = new CapacityReservationPatch()
     },
     Tags =
     {
-    ["key4974"] = "aaaaaaaaaaaaaaaa",
+    ["key4974"] = "aaaaaaaaaaaaaaaa"
     },
 };
 ArmOperation<CapacityReservationResource> lro = await capacityReservation.UpdateAsync(WaitUntil.Completed, patch);

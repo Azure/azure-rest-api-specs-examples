@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/examples/diskAccessExamples/DiskAccess_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier diskAccessResourceId = DiskAccessResource.CreateResourceIdent
 DiskAccessResource diskAccess = client.GetDiskAccessResource(diskAccessResourceId);
 
 // invoke the operation
-DiskAccessPatch patch = new DiskAccessPatch()
+DiskAccessPatch patch = new DiskAccessPatch
 {
     Tags =
     {
     ["department"] = "Development",
-    ["project"] = "PrivateEndpoints",
+    ["project"] = "PrivateEndpoints"
     },
 };
 ArmOperation<DiskAccessResource> lro = await diskAccess.UpdateAsync(WaitUntil.Completed, patch);

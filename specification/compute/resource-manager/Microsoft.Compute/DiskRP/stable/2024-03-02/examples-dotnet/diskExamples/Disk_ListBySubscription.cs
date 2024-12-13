@@ -32,4 +32,4 @@ await foreach (ManagedDiskResource item in subscriptionResource.GetManagedDisksA
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

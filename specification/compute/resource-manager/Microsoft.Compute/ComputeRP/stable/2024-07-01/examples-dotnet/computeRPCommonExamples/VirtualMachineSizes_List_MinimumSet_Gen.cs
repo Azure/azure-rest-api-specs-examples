@@ -29,4 +29,4 @@ await foreach (VirtualMachineSize item in subscriptionResource.GetVirtualMachine
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

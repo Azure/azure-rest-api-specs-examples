@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -28,7 +27,7 @@ VirtualMachineScaleSetExtensionCollection collection = virtualMachineScaleSet.Ge
 
 // invoke the operation
 string vmssExtensionName = "aaaaaaaaaaaaaaaaaaaaa";
-VirtualMachineScaleSetExtensionData data = new VirtualMachineScaleSetExtensionData()
+VirtualMachineScaleSetExtensionData data = new VirtualMachineScaleSetExtensionData
 {
     ForceUpdateTag = "aaaaaaaaa",
     Publisher = "{extension-Publisher}",
@@ -36,16 +35,9 @@ VirtualMachineScaleSetExtensionData data = new VirtualMachineScaleSetExtensionDa
     TypeHandlerVersion = "{handler-version}",
     AutoUpgradeMinorVersion = true,
     EnableAutomaticUpgrade = true,
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    ProtectedSettings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    ProvisionAfterExtensions =
-    {
-    "aa"
-    },
+    Settings = BinaryData.FromObjectAsJson(new object()),
+    ProtectedSettings = BinaryData.FromObjectAsJson(new object()),
+    ProvisionAfterExtensions = { "aa" },
     SuppressFailures = true,
 };
 ArmOperation<VirtualMachineScaleSetExtensionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmssExtensionName, data);

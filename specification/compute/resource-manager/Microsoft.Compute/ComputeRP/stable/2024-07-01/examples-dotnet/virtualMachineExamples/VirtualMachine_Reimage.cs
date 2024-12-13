@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineExamples/VirtualMachine_Reimage.json
@@ -26,10 +25,10 @@ ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResou
 VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
 
 // invoke the operation
-VirtualMachineReimageContent content = new VirtualMachineReimageContent()
+VirtualMachineReimageContent content = new VirtualMachineReimageContent
 {
     TempDisk = true,
 };
 await virtualMachine.ReimageAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

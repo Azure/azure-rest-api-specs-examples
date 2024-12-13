@@ -33,7 +33,7 @@ ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
 {
     CreationData = new DiskCreationData(DiskCreateOption.Empty),
     DiskSizeGB = 200,
-    Encryption = new DiskEncryption()
+    Encryption = new DiskEncryption
     {
         DiskEncryptionSetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/diskEncryptionSets/{existing-diskEncryptionSet-name}"),
     },

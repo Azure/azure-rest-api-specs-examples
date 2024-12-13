@@ -32,4 +32,4 @@ await foreach (GalleryResource item in subscriptionResource.GetGalleriesAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

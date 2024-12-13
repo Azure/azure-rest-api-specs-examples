@@ -28,19 +28,16 @@ CapacityReservationCollection collection = capacityReservationGroup.GetCapacityR
 
 // invoke the operation
 string capacityReservationName = "myCapacityReservation";
-CapacityReservationData data = new CapacityReservationData(new AzureLocation("westus"), new ComputeSku()
+CapacityReservationData data = new CapacityReservationData(new AzureLocation("westus"), new ComputeSku
 {
     Name = "Standard_DS1_v2",
     Capacity = 4L,
 })
 {
-    Zones =
-    {
-    "1"
-    },
+    Zones = { "1" },
     Tags =
     {
-    ["department"] = "HR",
+    ["department"] = "HR"
     },
 };
 ArmOperation<CapacityReservationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, capacityReservationName, data);

@@ -29,4 +29,4 @@ await foreach (RunCommandDocumentBase item in subscriptionResource.GetVirtualMac
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

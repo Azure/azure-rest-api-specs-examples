@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -37,44 +36,34 @@ VirtualMachineExtensionData data = new VirtualMachineExtensionData(new AzureLoca
     TypeHandlerVersion = "1.2",
     AutoUpgradeMinorVersion = true,
     EnableAutomaticUpgrade = true,
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    ProtectedSettings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    InstanceView = new VirtualMachineExtensionInstanceView()
+    Settings = BinaryData.FromObjectAsJson(new object()),
+    ProtectedSettings = BinaryData.FromObjectAsJson(new object()),
+    InstanceView = new VirtualMachineExtensionInstanceView
     {
         Name = "aaaaaaaaaaaaaaaaa",
         VirtualMachineExtensionInstanceViewType = "aaaaaaaaa",
         TypeHandlerVersion = "aaaaaaaaaaaaaaaaaaaaaaaaaa",
-        Substatuses =
-        {
-        new InstanceViewStatus()
+        Substatuses = {new InstanceViewStatus
         {
         Code = "aaaaaaaaaaaaaaaaaaaaaaa",
         Level = ComputeStatusLevelType.Info,
         DisplayStatus = "aaaaaa",
         Message = "a",
         Time = DateTimeOffset.Parse("2021-11-30T12:58:26.522Z"),
-        }
-        },
-        Statuses =
-        {
-        new InstanceViewStatus()
+        }},
+        Statuses = {new InstanceViewStatus
         {
         Code = "aaaaaaaaaaaaaaaaaaaaaaa",
         Level = ComputeStatusLevelType.Info,
         DisplayStatus = "aaaaaa",
         Message = "a",
         Time = DateTimeOffset.Parse("2021-11-30T12:58:26.522Z"),
-        }
-        },
+        }},
     },
     SuppressFailures = true,
     Tags =
     {
-    ["key9183"] = "aa",
+    ["key9183"] = "aa"
     },
 };
 ArmOperation<VirtualMachineExtensionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmExtensionName, data);

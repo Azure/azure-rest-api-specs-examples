@@ -31,13 +31,13 @@ VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines()
 string vmName = "{vm-name}";
 VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD2V2,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "MicrosoftWindowsServer",
             Offer = "WindowsServer",
@@ -50,35 +50,29 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
             VhdUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk.vhd"),
             Caching = CachingType.ReadWrite,
         },
-        DataDisks =
-        {
-        new VirtualMachineDataDisk(0,DiskCreateOptionType.Empty)
+        DataDisks = {new VirtualMachineDataDisk(0, DiskCreateOptionType.Empty)
         {
         VhdUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk0.vhd"),
         DiskSizeGB = 1023,
-        },new VirtualMachineDataDisk(1,DiskCreateOptionType.Empty)
+        }, new VirtualMachineDataDisk(1, DiskCreateOptionType.Empty)
         {
         VhdUri = new Uri("http://{existing-storage-account-name}.blob.core.windows.net/{existing-container-name}/myDisk1.vhd"),
         DiskSizeGB = 1023,
-        }
-        },
+        }},
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
 };
 ArmOperation<VirtualMachineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmName, data);

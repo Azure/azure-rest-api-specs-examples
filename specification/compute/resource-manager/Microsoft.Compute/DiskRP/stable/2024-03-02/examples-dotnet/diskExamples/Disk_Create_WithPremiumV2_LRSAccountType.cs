@@ -31,7 +31,7 @@ ManagedDiskCollection collection = resourceGroupResource.GetManagedDisks();
 string diskName = "myPremiumV2Disk";
 ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
 {
-    Sku = new DiskSku()
+    Sku = new DiskSku
     {
         Name = DiskStorageAccountType.PremiumV2Lrs,
     },

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/restorePointExamples/RestorePointCollection_Update_MaximumSet_Gen.json
@@ -25,15 +24,15 @@ ResourceIdentifier restorePointGroupResourceId = RestorePointGroupResource.Creat
 RestorePointGroupResource restorePointGroup = client.GetRestorePointGroupResource(restorePointGroupResourceId);
 
 // invoke the operation
-RestorePointGroupPatch patch = new RestorePointGroupPatch()
+RestorePointGroupPatch patch = new RestorePointGroupPatch
 {
-    Source = new RestorePointGroupSource()
+    Source = new RestorePointGroupSource
     {
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"),
     },
     Tags =
     {
-    ["key8536"] = "aaaaaaaaaaaaaaaaaaa",
+    ["key8536"] = "aaaaaaaaaaaaaaaaaaa"
     },
 };
 RestorePointGroupResource result = await restorePointGroup.UpdateAsync(patch);

@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineExamples/VirtualMachine_AttachDetachDataDisks_MinimumSet_Gen.json
@@ -26,16 +25,10 @@ ResourceIdentifier virtualMachineResourceId = VirtualMachineResource.CreateResou
 VirtualMachineResource virtualMachine = client.GetVirtualMachineResource(virtualMachineResourceId);
 
 // invoke the operation
-AttachDetachDataDisksRequest attachDetachDataDisksRequest = new AttachDetachDataDisksRequest()
+AttachDetachDataDisksRequest attachDetachDataDisksRequest = new AttachDetachDataDisksRequest
 {
-    DataDisksToAttach =
-    {
-    new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d")
-    },
-    DataDisksToDetach =
-    {
-    new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_1_disk1_1a4e784bdafa49baa780eb2d128ff65x")
-    },
+    DataDisksToAttach = { new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d") },
+    DataDisksToDetach = { new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_1_disk1_1a4e784bdafa49baa780eb2d128ff65x") },
 };
 ArmOperation<VirtualMachineStorageProfile> lro = await virtualMachine.AttachDetachDataDisksAsync(WaitUntil.Completed, attachDetachDataDisksRequest);
 VirtualMachineStorageProfile result = lro.Value;

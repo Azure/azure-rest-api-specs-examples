@@ -28,4 +28,4 @@ VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMac
 // invoke the operation
 await virtualMachineScaleSetVm.RestartAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,4 +28,4 @@ DiskRestorePointResource diskRestorePoint = client.GetDiskRestorePointResource(d
 // invoke the operation
 await diskRestorePoint.RevokeAccessAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

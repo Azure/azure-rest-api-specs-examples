@@ -31,4 +31,4 @@ await foreach (VirtualMachineImageBase item in subscriptionResource.GetVirtualMa
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

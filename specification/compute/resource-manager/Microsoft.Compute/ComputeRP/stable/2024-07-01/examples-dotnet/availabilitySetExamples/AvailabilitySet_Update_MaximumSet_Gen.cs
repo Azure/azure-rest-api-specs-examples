@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Compute;
 
@@ -26,9 +25,9 @@ ResourceIdentifier availabilitySetResourceId = AvailabilitySetResource.CreateRes
 AvailabilitySetResource availabilitySet = client.GetAvailabilitySetResource(availabilitySetResourceId);
 
 // invoke the operation
-AvailabilitySetPatch patch = new AvailabilitySetPatch()
+AvailabilitySetPatch patch = new AvailabilitySetPatch
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "DSv3-Type1",
         Tier = "aaa",
@@ -36,17 +35,14 @@ AvailabilitySetPatch patch = new AvailabilitySetPatch()
     },
     PlatformUpdateDomainCount = 20,
     PlatformFaultDomainCount = 2,
-    VirtualMachines =
-    {
-    new WritableSubResource()
+    VirtualMachines = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
-    }
-    },
+    }},
     ProximityPlacementGroupId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}"),
     Tags =
     {
-    ["key2574"] = "aaaaaaaa",
+    ["key2574"] = "aaaaaaaa"
     },
 };
 AvailabilitySetResource result = await availabilitySet.UpdateAsync(patch);

@@ -28,4 +28,4 @@ VirtualMachineScaleSetVmRunCommandResource virtualMachineScaleSetVmRunCommand = 
 // invoke the operation
 await virtualMachineScaleSetVmRunCommand.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

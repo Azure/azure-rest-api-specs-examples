@@ -34,32 +34,23 @@ GalleryApplicationVersionData data = new GalleryApplicationVersionData(new Azure
     PublishingProfile = new GalleryApplicationVersionPublishingProfile(new UserArtifactSource("https://mystorageaccount.blob.core.windows.net/mycontainer/package.zip?{sasKey}"))
     {
         ManageActions = new UserArtifactManagement("powershell -command \"Expand-Archive -Path package.zip -DestinationPath C:\\package\"", "del C:\\package "),
-        CustomActions =
-        {
-        new GalleryApplicationCustomAction("myCustomAction","myCustomActionScript")
+        CustomActions = {new GalleryApplicationCustomAction("myCustomAction", "myCustomActionScript")
         {
         Description = "This is the custom action description.",
-        Parameters =
-        {
-        new GalleryApplicationCustomActionParameter("myCustomActionParameter")
+        Parameters = {new GalleryApplicationCustomActionParameter("myCustomActionParameter")
         {
         IsRequired = false,
         ParameterType = GalleryApplicationCustomActionParameterType.String,
         DefaultValue = "default value of parameter.",
         Description = "This is the description of the parameter",
-        }
-        },
-        }
-        },
-        TargetRegions =
-        {
-        new TargetRegion("West US")
+        }},
+        }},
+        TargetRegions = {new TargetRegion("West US")
         {
         RegionalReplicaCount = 1,
         StorageAccountType = ImageStorageAccountType.StandardLrs,
         IsExcludedFromLatest = false,
-        }
-        },
+        }},
         ReplicaCount = 1,
         EndOfLifeOn = DateTimeOffset.Parse("2019-07-01T07:00:00Z"),
         StorageAccountType = ImageStorageAccountType.StandardLrs,

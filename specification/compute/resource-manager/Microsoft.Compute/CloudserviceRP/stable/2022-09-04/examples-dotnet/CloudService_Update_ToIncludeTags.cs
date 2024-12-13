@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/CloudService_Update_ToIncludeTags.json
@@ -25,11 +24,11 @@ ResourceIdentifier cloudServiceResourceId = CloudServiceResource.CreateResourceI
 CloudServiceResource cloudService = client.GetCloudServiceResource(cloudServiceResourceId);
 
 // invoke the operation
-CloudServicePatch patch = new CloudServicePatch()
+CloudServicePatch patch = new CloudServicePatch
 {
     Tags =
     {
-    ["Documentation"] = "RestAPI",
+    ["Documentation"] = "RestAPI"
     },
 };
 ArmOperation<CloudServiceResource> lro = await cloudService.UpdateAsync(WaitUntil.Completed, patch);

@@ -23,7 +23,19 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-SubscriptionResourceGetVirtualMachineImagesEdgeZoneOptions options = new SubscriptionResourceGetVirtualMachineImagesEdgeZoneOptions(location: new AzureLocation("aaaaaaaaaaaaaaaaaaaaaaa"), edgeZone: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", publisherName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa", offer: "aaaaaaaaaaa", skus: "aaaaaaaaaaaaaaaaaa", version: "aa") { };
+AzureLocation location = new AzureLocation("aaaaaaaaaaaaaaaaaaaaaaa");
+string edgeZone = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+string publisherName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+string offer = "aaaaaaaaaaa";
+string skus = "aaaaaaaaaaaaaaaaaa";
+string version = "aa";
+SubscriptionResourceGetVirtualMachineImagesEdgeZoneOptions options = new SubscriptionResourceGetVirtualMachineImagesEdgeZoneOptions(
+    location,
+    edgeZone,
+    publisherName,
+    offer,
+    skus,
+    version);
 VirtualMachineImage result = await subscriptionResource.GetVirtualMachineImagesEdgeZoneAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/proximityPlacementGroupExamples/ProximityPlacementGroup_Patch.json
@@ -25,11 +24,11 @@ ResourceIdentifier proximityPlacementGroupResourceId = ProximityPlacementGroupRe
 ProximityPlacementGroupResource proximityPlacementGroup = client.GetProximityPlacementGroupResource(proximityPlacementGroupResourceId);
 
 // invoke the operation
-ProximityPlacementGroupPatch patch = new ProximityPlacementGroupPatch()
+ProximityPlacementGroupPatch patch = new ProximityPlacementGroupPatch
 {
     Tags =
     {
-    ["additionalProp1"] = "string",
+    ["additionalProp1"] = "string"
     },
 };
 ProximityPlacementGroupResource result = await proximityPlacementGroup.UpdateAsync(patch);

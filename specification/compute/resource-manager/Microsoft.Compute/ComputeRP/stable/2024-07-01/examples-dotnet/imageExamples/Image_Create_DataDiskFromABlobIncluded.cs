@@ -30,19 +30,16 @@ DiskImageCollection collection = resourceGroupResource.GetDiskImages();
 string imageName = "myImage";
 DiskImageData data = new DiskImageData(new AzureLocation("West US"))
 {
-    StorageProfile = new ImageStorageProfile()
+    StorageProfile = new ImageStorageProfile
     {
         OSDisk = new ImageOSDisk(SupportedOperatingSystemType.Linux, OperatingSystemStateType.Generalized)
         {
             BlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/osimages/osimage.vhd"),
         },
-        DataDisks =
-        {
-        new ImageDataDisk(1)
+        DataDisks = {new ImageDataDisk(1)
         {
         BlobUri = new Uri("https://mystorageaccount.blob.core.windows.net/dataimages/dataimage.vhd"),
-        }
-        },
+        }},
         ZoneResilient = false,
     },
 };

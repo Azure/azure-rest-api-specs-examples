@@ -27,4 +27,4 @@ CapacityReservationResource capacityReservation = client.GetCapacityReservationR
 // invoke the operation
 await capacityReservation.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

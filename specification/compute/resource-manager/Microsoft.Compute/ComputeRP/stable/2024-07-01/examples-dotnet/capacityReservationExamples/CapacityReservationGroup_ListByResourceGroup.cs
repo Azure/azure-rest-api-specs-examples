@@ -38,4 +38,4 @@ await foreach (CapacityReservationGroupResource item in collection.GetAllAsync(e
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

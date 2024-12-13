@@ -25,7 +25,7 @@ ResourceIdentifier galleryImageResourceId = GalleryImageResource.CreateResourceI
 GalleryImageResource galleryImage = client.GetGalleryImageResource(galleryImageResourceId);
 
 // invoke the operation
-GalleryImagePatch patch = new GalleryImagePatch()
+GalleryImagePatch patch = new GalleryImagePatch
 {
     OSType = SupportedOperatingSystemType.Windows,
     OSState = OperatingSystemStateType.Generalized,

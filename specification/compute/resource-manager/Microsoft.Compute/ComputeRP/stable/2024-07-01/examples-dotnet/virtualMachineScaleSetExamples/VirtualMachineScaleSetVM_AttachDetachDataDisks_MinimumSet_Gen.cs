@@ -26,16 +26,10 @@ ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVm
 VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
 
 // invoke the operation
-AttachDetachDataDisksRequest attachDetachDataDisksRequest = new AttachDetachDataDisksRequest()
+AttachDetachDataDisksRequest attachDetachDataDisksRequest = new AttachDetachDataDisksRequest
 {
-    DataDisksToAttach =
-    {
-    new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d")
-    },
-    DataDisksToDetach =
-    {
-    new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_1_disk1_1a4e784bdafa49baa780eb2d128ff65x")
-    },
+    DataDisksToAttach = { new DataDisksToAttach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_0_disk2_6c4f554bdafa49baa780eb2d128ff39d") },
+    DataDisksToDetach = { new DataDisksToDetach("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/disks/vmss3176_vmss3176_1_disk1_1a4e784bdafa49baa780eb2d128ff65x") },
 };
 ArmOperation<VirtualMachineStorageProfile> lro = await virtualMachineScaleSetVm.AttachDetachDataDisksAsync(WaitUntil.Completed, attachDetachDataDisksRequest);
 VirtualMachineStorageProfile result = lro.Value;

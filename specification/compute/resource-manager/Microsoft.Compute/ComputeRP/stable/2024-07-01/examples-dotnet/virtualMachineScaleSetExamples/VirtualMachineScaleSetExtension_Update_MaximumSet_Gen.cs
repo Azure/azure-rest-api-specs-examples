@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,7 +25,7 @@ ResourceIdentifier virtualMachineScaleSetExtensionResourceId = VirtualMachineSca
 VirtualMachineScaleSetExtensionResource virtualMachineScaleSetExtension = client.GetVirtualMachineScaleSetExtensionResource(virtualMachineScaleSetExtensionResourceId);
 
 // invoke the operation
-VirtualMachineScaleSetExtensionPatch patch = new VirtualMachineScaleSetExtensionPatch()
+VirtualMachineScaleSetExtensionPatch patch = new VirtualMachineScaleSetExtensionPatch
 {
     ForceUpdateTag = "aaaaaaaaa",
     Publisher = "{extension-Publisher}",
@@ -34,16 +33,9 @@ VirtualMachineScaleSetExtensionPatch patch = new VirtualMachineScaleSetExtension
     TypeHandlerVersion = "{handler-version}",
     AutoUpgradeMinorVersion = true,
     EnableAutomaticUpgrade = true,
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    ProtectedSettings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-    {
-    }),
-    ProvisionAfterExtensions =
-    {
-    "aa"
-    },
+    Settings = BinaryData.FromObjectAsJson(new object()),
+    ProtectedSettings = BinaryData.FromObjectAsJson(new object()),
+    ProvisionAfterExtensions = { "aa" },
     SuppressFailures = true,
 };
 ArmOperation<VirtualMachineScaleSetExtensionResource> lro = await virtualMachineScaleSetExtension.UpdateAsync(WaitUntil.Completed, patch);

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2024-03-02/examples/snapshotExamples/Snapshot_Update_WithAcceleratedNetwork.json
@@ -25,15 +24,15 @@ ResourceIdentifier snapshotResourceId = SnapshotResource.CreateResourceIdentifie
 SnapshotResource snapshot = client.GetSnapshotResource(snapshotResourceId);
 
 // invoke the operation
-SnapshotPatch patch = new SnapshotPatch()
+SnapshotPatch patch = new SnapshotPatch
 {
     Tags =
     {
     ["department"] = "Development",
-    ["project"] = "UpdateSnapshots",
+    ["project"] = "UpdateSnapshots"
     },
     DiskSizeGB = 20,
-    SupportedCapabilities = new SupportedCapabilities()
+    SupportedCapabilities = new SupportedCapabilities
     {
         AcceleratedNetwork = false,
     },

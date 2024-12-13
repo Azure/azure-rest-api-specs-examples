@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/capacityReservationExamples/CapacityReservationGroup_Update_MaximumSet_Gen.json
@@ -25,11 +24,11 @@ ResourceIdentifier capacityReservationGroupResourceId = CapacityReservationGroup
 CapacityReservationGroupResource capacityReservationGroup = client.GetCapacityReservationGroupResource(capacityReservationGroupResourceId);
 
 // invoke the operation
-CapacityReservationGroupPatch patch = new CapacityReservationGroupPatch()
+CapacityReservationGroupPatch patch = new CapacityReservationGroupPatch
 {
     Tags =
     {
-    ["key5355"] = "aaa",
+    ["key5355"] = "aaa"
     },
 };
 CapacityReservationGroupResource result = await capacityReservationGroup.UpdateAsync(patch);

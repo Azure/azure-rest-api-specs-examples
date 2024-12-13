@@ -2,7 +2,6 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
@@ -34,4 +33,4 @@ await foreach (VirtualMachineResource item in subscriptionResource.GetVirtualMac
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

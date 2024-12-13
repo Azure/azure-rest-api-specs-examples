@@ -28,4 +28,4 @@ CloudServiceRoleInstanceResource cloudServiceRoleInstance = client.GetCloudServi
 // invoke the operation
 await cloudServiceRoleInstance.ReimageAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -25,9 +25,9 @@ ResourceIdentifier computePrivateEndpointConnectionResourceId = ComputePrivateEn
 ComputePrivateEndpointConnectionResource computePrivateEndpointConnection = client.GetComputePrivateEndpointConnectionResource(computePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-ComputePrivateEndpointConnectionData data = new ComputePrivateEndpointConnectionData()
+ComputePrivateEndpointConnectionData data = new ComputePrivateEndpointConnectionData
 {
-    ConnectionState = new ComputePrivateLinkServiceConnectionState()
+    ConnectionState = new ComputePrivateLinkServiceConnectionState
     {
         Status = ComputePrivateEndpointServiceConnectionStatus.Approved,
         Description = "Approving myPrivateEndpointConnection",

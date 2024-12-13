@@ -26,11 +26,11 @@ ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVm
 VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
 
 // invoke the operation
-VirtualMachineScaleSetVmReimageContent content = new VirtualMachineScaleSetVmReimageContent()
+VirtualMachineScaleSetVmReimageContent content = new VirtualMachineScaleSetVmReimageContent
 {
     ForceUpdateOSDiskForEphemeral = true,
     TempDisk = true,
 };
 await virtualMachineScaleSetVm.ReimageAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

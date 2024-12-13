@@ -29,4 +29,4 @@ VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMac
 bool? forceDeletion = true;
 await virtualMachineScaleSetVm.DeleteAsync(WaitUntil.Completed, forceDeletion: forceDeletion);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

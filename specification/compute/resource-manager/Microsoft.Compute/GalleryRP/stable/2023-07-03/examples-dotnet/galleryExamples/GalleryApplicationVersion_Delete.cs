@@ -28,4 +28,4 @@ GalleryApplicationVersionResource galleryApplicationVersion = client.GetGalleryA
 // invoke the operation
 await galleryApplicationVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

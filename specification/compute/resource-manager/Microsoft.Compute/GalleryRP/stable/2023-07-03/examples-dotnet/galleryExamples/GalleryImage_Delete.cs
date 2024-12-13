@@ -27,4 +27,4 @@ GalleryImageResource galleryImage = client.GetGalleryImageResource(galleryImageR
 // invoke the operation
 await galleryImage.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

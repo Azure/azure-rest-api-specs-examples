@@ -26,12 +26,12 @@ ResourceIdentifier virtualMachineScaleSetVmRunCommandResourceId = VirtualMachine
 VirtualMachineScaleSetVmRunCommandResource virtualMachineScaleSetVmRunCommand = client.GetVirtualMachineScaleSetVmRunCommandResource(virtualMachineScaleSetVmRunCommandResourceId);
 
 // invoke the operation
-VirtualMachineRunCommandUpdate runCommand = new VirtualMachineRunCommandUpdate()
+VirtualMachineRunCommandUpdate runCommand = new VirtualMachineRunCommandUpdate
 {
-    Source = new VirtualMachineRunCommandScriptSource()
+    Source = new VirtualMachineRunCommandScriptSource
     {
         ScriptUri = new Uri("https://mystorageaccount.blob.core.windows.net/scriptcontainer/MyScript.ps1"),
-        ScriptUriManagedIdentity = new RunCommandManagedIdentity()
+        ScriptUriManagedIdentity = new RunCommandManagedIdentity
         {
             ObjectId = "4231e4d2-33e4-4e23-96b2-17888afa6072",
         },

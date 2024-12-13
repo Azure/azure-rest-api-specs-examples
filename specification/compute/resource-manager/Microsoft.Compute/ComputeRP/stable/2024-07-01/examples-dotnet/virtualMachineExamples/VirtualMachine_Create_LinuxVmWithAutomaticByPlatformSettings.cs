@@ -31,13 +31,13 @@ VirtualMachineCollection collection = resourceGroupResource.GetVirtualMachines()
 string vmName = "myVM";
 VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
 {
-    HardwareProfile = new VirtualMachineHardwareProfile()
+    HardwareProfile = new VirtualMachineHardwareProfile
     {
         VmSize = VirtualMachineSizeType.StandardD2SV3,
     },
-    StorageProfile = new VirtualMachineStorageProfile()
+    StorageProfile = new VirtualMachineStorageProfile
     {
-        ImageReference = new ImageReference()
+        ImageReference = new ImageReference
         {
             Publisher = "Canonical",
             Offer = "UbuntuServer",
@@ -48,25 +48,25 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
         {
             Name = "myVMosdisk",
             Caching = CachingType.ReadWrite,
-            ManagedDisk = new VirtualMachineManagedDisk()
+            ManagedDisk = new VirtualMachineManagedDisk
             {
                 StorageAccountType = StorageAccountType.PremiumLrs,
             },
         },
     },
-    OSProfile = new VirtualMachineOSProfile()
+    OSProfile = new VirtualMachineOSProfile
     {
         ComputerName = "myVM",
         AdminUsername = "{your-username}",
         AdminPassword = "{your-password}",
-        LinuxConfiguration = new LinuxConfiguration()
+        LinuxConfiguration = new LinuxConfiguration
         {
             ProvisionVmAgent = true,
-            PatchSettings = new LinuxPatchSettings()
+            PatchSettings = new LinuxPatchSettings
             {
                 PatchMode = LinuxVmGuestPatchMode.AutomaticByPlatform,
                 AssessmentMode = LinuxPatchAssessmentMode.AutomaticByPlatform,
-                AutomaticByPlatformSettings = new LinuxVmGuestPatchAutomaticByPlatformSettings()
+                AutomaticByPlatformSettings = new LinuxVmGuestPatchAutomaticByPlatformSettings
                 {
                     RebootSetting = LinuxVmGuestPatchAutomaticByPlatformRebootSetting.Never,
                     BypassPlatformSafetyChecksOnUserSchedule = true,
@@ -74,16 +74,13 @@ VirtualMachineData data = new VirtualMachineData(new AzureLocation("westus"))
             },
         },
     },
-    NetworkProfile = new VirtualMachineNetworkProfile()
+    NetworkProfile = new VirtualMachineNetworkProfile
     {
-        NetworkInterfaces =
-        {
-        new VirtualMachineNetworkInterfaceReference()
+        NetworkInterfaces = {new VirtualMachineNetworkInterfaceReference
         {
         Primary = true,
         Id = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}"),
-        }
-        },
+        }},
     },
 };
 ArmOperation<VirtualMachineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmName, data);

@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -29,15 +28,15 @@ VirtualMachineScaleSetVmExtensionCollection collection = virtualMachineScaleSetV
 
 // invoke the operation
 string vmExtensionName = "myVMExtension";
-VirtualMachineScaleSetVmExtensionData data = new VirtualMachineScaleSetVmExtensionData()
+VirtualMachineScaleSetVmExtensionData data = new VirtualMachineScaleSetVmExtensionData
 {
     Publisher = "extPublisher",
     ExtensionType = "extType",
     TypeHandlerVersion = "1.2",
     AutoUpgradeMinorVersion = true,
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Settings = BinaryData.FromObjectAsJson(new
     {
-        ["UserName"] = "xyz@microsoft.com"
+        UserName = "xyz@microsoft.com",
     }),
 };
 ArmOperation<VirtualMachineScaleSetVmExtensionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vmExtensionName, data);

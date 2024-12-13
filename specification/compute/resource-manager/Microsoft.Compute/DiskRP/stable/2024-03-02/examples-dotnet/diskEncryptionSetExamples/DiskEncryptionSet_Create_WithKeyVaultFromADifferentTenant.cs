@@ -35,7 +35,7 @@ DiskEncryptionSetData data = new DiskEncryptionSetData(new AzureLocation("West U
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}")] = new UserAssignedIdentity()
         },
     },
     EncryptionType = DiskEncryptionSetType.EncryptionAtRestWithCustomerKey,

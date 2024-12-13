@@ -29,4 +29,4 @@ VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMac
 bool? skipShutdown = true;
 await virtualMachineScaleSetVm.PowerOffAsync(WaitUntil.Completed, skipShutdown: skipShutdown);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

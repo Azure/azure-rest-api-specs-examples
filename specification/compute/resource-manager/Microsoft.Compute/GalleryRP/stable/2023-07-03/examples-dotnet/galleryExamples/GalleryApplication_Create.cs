@@ -35,23 +35,17 @@ GalleryApplicationData data = new GalleryApplicationData(new AzureLocation("West
     PrivacyStatementUri = new Uri("myPrivacyStatementUri}"),
     ReleaseNoteUri = new Uri("myReleaseNoteUri"),
     SupportedOSType = SupportedOperatingSystemType.Windows,
-    CustomActions =
-    {
-    new GalleryApplicationCustomAction("myCustomAction","myCustomActionScript")
+    CustomActions = {new GalleryApplicationCustomAction("myCustomAction", "myCustomActionScript")
     {
     Description = "This is the custom action description.",
-    Parameters =
-    {
-    new GalleryApplicationCustomActionParameter("myCustomActionParameter")
+    Parameters = {new GalleryApplicationCustomActionParameter("myCustomActionParameter")
     {
     IsRequired = false,
     ParameterType = GalleryApplicationCustomActionParameterType.String,
     DefaultValue = "default value of parameter.",
     Description = "This is the description of the parameter",
-    }
-    },
-    }
-    },
+    }},
+    }},
 };
 ArmOperation<GalleryApplicationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, galleryApplicationName, data);
 GalleryApplicationResource result = lro.Value;

@@ -31,7 +31,7 @@ ManagedDiskCollection collection = resourceGroupResource.GetManagedDisks();
 string diskName = "myDisk";
 ManagedDiskData data = new ManagedDiskData(new AzureLocation("West US"))
 {
-    Sku = new DiskSku()
+    Sku = new DiskSku
     {
         Name = DiskStorageAccountType.UltraSsdLrs,
     },

@@ -38,4 +38,4 @@ await foreach (VirtualMachineResource item in collection.GetAllAsync(filter: fil
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

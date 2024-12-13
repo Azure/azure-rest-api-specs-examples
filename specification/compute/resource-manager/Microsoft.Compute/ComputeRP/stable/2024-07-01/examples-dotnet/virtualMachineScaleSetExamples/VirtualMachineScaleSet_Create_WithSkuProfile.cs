@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -32,82 +31,76 @@ VirtualMachineScaleSetCollection collection = resourceGroupResource.GetVirtualMa
 string virtualMachineScaleSetName = "{vmss-name}";
 VirtualMachineScaleSetData data = new VirtualMachineScaleSetData(new AzureLocation("westus"))
 {
-    Sku = new ComputeSku()
+    Sku = new ComputeSku
     {
         Name = "Mix",
         Capacity = 10L,
     },
-    VirtualMachineProfile = new VirtualMachineScaleSetVmProfile()
+    Properties = new VirtualMachineScaleSetProperties
     {
-        OSProfile = new VirtualMachineScaleSetOSProfile()
+        VirtualMachineProfile = new VirtualMachineScaleSetVmProfile
         {
-            ComputerNamePrefix = "{vmss-name}",
-            AdminUsername = "{your-username}",
-            AdminPassword = "{your-password}",
-        },
-        StorageProfile = new VirtualMachineScaleSetStorageProfile()
-        {
-            ImageReference = new ImageReference()
+            OSProfile = new VirtualMachineScaleSetOSProfile
             {
-                Publisher = "MicrosoftWindowsServer",
-                Offer = "WindowsServer",
-                Sku = "2016-Datacenter",
-                Version = "latest",
+                ComputerNamePrefix = "{vmss-name}",
+                AdminUsername = "{your-username}",
+                AdminPassword = "{your-password}",
             },
-            OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+            StorageProfile = new VirtualMachineScaleSetStorageProfile
             {
-                Caching = CachingType.ReadWrite,
-                ManagedDisk = new VirtualMachineScaleSetManagedDisk()
+                ImageReference = new ImageReference
                 {
-                    StorageAccountType = StorageAccountType.StandardLrs,
+                    Publisher = "MicrosoftWindowsServer",
+                    Offer = "WindowsServer",
+                    Sku = "2016-Datacenter",
+                    Version = "latest",
+                },
+                OSDisk = new VirtualMachineScaleSetOSDisk(DiskCreateOptionType.FromImage)
+                {
+                    Caching = CachingType.ReadWrite,
+                    ManagedDisk = new VirtualMachineScaleSetManagedDisk
+                    {
+                        StorageAccountType = StorageAccountType.StandardLrs,
+                    },
                 },
             },
-        },
-        NetworkProfile = new VirtualMachineScaleSetNetworkProfile()
-        {
-            NetworkInterfaceConfigurations =
+            NetworkProfile = new VirtualMachineScaleSetNetworkProfile
             {
-            new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
-            {
-            Primary = true,
-            IPConfigurations =
-            {
-            new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
-            {
-            SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
-            }
+                NetworkInterfaceConfigurations = {new VirtualMachineScaleSetNetworkConfiguration("{vmss-name}")
+                {
+                Primary = true,
+                IPConfigurations = {new VirtualMachineScaleSetIPConfiguration("{vmss-name}")
+                {
+                SubnetId = new ResourceIdentifier("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
+                }},
+                EnableIPForwarding = true,
+                }},
             },
-            EnableIPForwarding = true,
-            }
-            },
+            Priority = VirtualMachinePriorityType.Spot,
+            EvictionPolicy = VirtualMachineEvictionPolicyType.Deallocate,
+            BillingMaxPrice = -1,
         },
-        Priority = VirtualMachinePriorityType.Spot,
-        EvictionPolicy = VirtualMachineEvictionPolicyType.Deallocate,
-        BillingMaxPrice = -1,
-    },
-    SinglePlacementGroup = false,
-    OrchestrationMode = OrchestrationMode.Flexible,
-    PriorityMixPolicy = new VirtualMachineScaleSetPriorityMixPolicy()
-    {
-        BaseRegularPriorityCount = 4,
-        RegularPriorityPercentageAboveBase = 50,
-    },
-    SkuProfile = new ComputeSkuProfile()
-    {
-        VmSizes =
+        SinglePlacementGroup = false,
+        OrchestrationMode = OrchestrationMode.Flexible,
+        PriorityMixPolicy = new VirtualMachineScaleSetPriorityMixPolicy
         {
-        new ComputeSkuProfileVmSize()
-        {
-        Name = "Standard_D8s_v5",
-        },new ComputeSkuProfileVmSize()
-        {
-        Name = "Standard_E16s_v5",
-        },new ComputeSkuProfileVmSize()
-        {
-        Name = "Standard_D2s_v5",
-        }
+            BaseRegularPriorityCount = 4,
+            RegularPriorityPercentageAboveBase = 50,
         },
-        AllocationStrategy = ComputeAllocationStrategy.CapacityOptimized,
+        SkuProfile = new ComputeSkuProfile
+        {
+            VmSizes = {new ComputeSkuProfileVmSize
+            {
+            Name = "Standard_D8s_v5",
+            }, new ComputeSkuProfileVmSize
+            {
+            Name = "Standard_E16s_v5",
+            }, new ComputeSkuProfileVmSize
+            {
+            Name = "Standard_D2s_v5",
+            }},
+            AllocationStrategy = ComputeAllocationStrategy.CapacityOptimized,
+        },
     },
 };
 ArmOperation<VirtualMachineScaleSetResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualMachineScaleSetName, data);

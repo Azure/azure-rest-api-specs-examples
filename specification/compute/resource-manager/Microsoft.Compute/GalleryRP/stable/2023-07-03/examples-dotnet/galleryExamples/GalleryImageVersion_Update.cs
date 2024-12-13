@@ -26,25 +26,22 @@ ResourceIdentifier galleryImageVersionResourceId = GalleryImageVersionResource.C
 GalleryImageVersionResource galleryImageVersion = client.GetGalleryImageVersionResource(galleryImageVersionResourceId);
 
 // invoke the operation
-GalleryImageVersionPatch patch = new GalleryImageVersionPatch()
+GalleryImageVersionPatch patch = new GalleryImageVersionPatch
 {
-    PublishingProfile = new GalleryImageVersionPublishingProfile()
+    PublishingProfile = new GalleryImageVersionPublishingProfile
     {
-        TargetRegions =
-        {
-        new TargetRegion("West US")
+        TargetRegions = {new TargetRegion("West US")
         {
         RegionalReplicaCount = 1,
-        },new TargetRegion("East US")
+        }, new TargetRegion("East US")
         {
         RegionalReplicaCount = 2,
         StorageAccountType = ImageStorageAccountType.StandardZrs,
-        }
-        },
+        }},
     },
-    StorageProfile = new GalleryImageVersionStorageProfile()
+    StorageProfile = new GalleryImageVersionStorageProfile
     {
-        GallerySource = new GalleryArtifactVersionFullSource()
+        GallerySource = new GalleryArtifactVersionFullSource
         {
             Id = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/images/{imageName}"),
         },

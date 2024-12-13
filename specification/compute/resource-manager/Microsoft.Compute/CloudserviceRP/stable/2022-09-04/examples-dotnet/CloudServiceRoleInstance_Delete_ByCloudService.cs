@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Compute.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Compute;
 
 // Generated from example definition: specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/examples/CloudServiceRoleInstance_Delete_ByCloudService.json
@@ -25,10 +24,7 @@ ResourceIdentifier cloudServiceResourceId = CloudServiceResource.CreateResourceI
 CloudServiceResource cloudService = client.GetCloudServiceResource(cloudServiceResourceId);
 
 // invoke the operation
-RoleInstances roleInstances = new RoleInstances(new string[]
-{
-"ContosoFrontend_IN_0","ContosoBackend_IN_1"
-});
+RoleInstances roleInstances = new RoleInstances(new string[] { "ContosoFrontend_IN_0", "ContosoBackend_IN_1" });
 await cloudService.DeleteInstancesAsync(WaitUntil.Completed, roleInstances: roleInstances);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

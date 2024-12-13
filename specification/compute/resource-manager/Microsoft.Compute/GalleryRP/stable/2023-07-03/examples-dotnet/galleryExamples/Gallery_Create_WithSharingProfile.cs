@@ -31,7 +31,7 @@ string galleryName = "myGalleryName";
 GalleryData data = new GalleryData(new AzureLocation("West US"))
 {
     Description = "This is the gallery description.",
-    SharingProfile = new SharingProfile()
+    SharingProfile = new SharingProfile
     {
         Permission = GallerySharingPermissionType.Groups,
     },

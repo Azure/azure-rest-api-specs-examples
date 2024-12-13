@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.managednetworkfabric.models.CommunityActionTypes;
 import com.azure.resourcemanager.managednetworkfabric.models.Condition;
 import com.azure.resourcemanager.managednetworkfabric.models.IpPrefix;
@@ -6,39 +7,33 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for IpPrefixes Update. */
+/**
+ * Samples for IpPrefixes Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/IpPrefixes_Update_MaximumSet_Gen.json
+     * x-ms-original-file:
+     * specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/
+     * IpPrefixes_Update_MaximumSet_Gen.json
      */
     /**
      * Sample code: IpPrefixes_Update_MaximumSet_Gen.
-     *
+     * 
      * @param manager Entry point to ManagedNetworkFabricManager.
      */
     public static void ipPrefixesUpdateMaximumSetGen(
         com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
-        IpPrefix resource =
-            manager
-                .ipPrefixes()
-                .getByResourceGroupWithResponse("example-rg", "example-ipPrefix", com.azure.core.util.Context.NONE)
-                .getValue();
-        resource
-            .update()
-            .withTags(mapOf("keyID", "fakeTokenPlaceholder"))
-            .withIpPrefixRules(
-                Arrays
-                    .asList(
-                        new IpPrefixRule()
-                            .withAction(CommunityActionTypes.PERMIT)
-                            .withSequenceNumber(4155123341L)
-                            .withNetworkPrefix("10.10.10.10/30")
-                            .withCondition(Condition.GREATER_THAN_OR_EQUAL_TO)
-                            .withSubnetMaskLength("10")))
-            .withAnnotation("annotation")
-            .apply();
+        IpPrefix resource = manager.ipPrefixes()
+            .getByResourceGroupWithResponse("example-rg", "example-ipPrefix", com.azure.core.util.Context.NONE)
+            .getValue();
+        resource.update().withTags(mapOf("keyID", "fakeTokenPlaceholder"))
+            .withIpPrefixRules(Arrays.asList(new IpPrefixRule().withAction(CommunityActionTypes.PERMIT)
+                .withSequenceNumber(4155123341L).withNetworkPrefix("10.10.10.10/30")
+                .withCondition(Condition.GREATER_THAN_OR_EQUAL_TO).withSubnetMaskLength("10")))
+            .withAnnotation("annotation").apply();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

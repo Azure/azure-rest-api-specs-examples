@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.managednetworkfabric.models.BooleanEnumProperty;
 import com.azure.resourcemanager.managednetworkfabric.models.CommonDynamicMatchConfiguration;
 import com.azure.resourcemanager.managednetworkfabric.models.ConfigurationType;
@@ -22,97 +23,56 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for NetworkTapRules Create. */
+/**
+ * Samples for NetworkTapRules Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/NetworkTapRules_Create_MaximumSet_Gen.json
+     * x-ms-original-file:
+     * specification/managednetworkfabric/resource-manager/Microsoft.ManagedNetworkFabric/stable/2023-06-15/examples/
+     * NetworkTapRules_Create_MaximumSet_Gen.json
      */
     /**
      * Sample code: NetworkTapRules_Create_MaximumSet_Gen.
-     *
+     * 
      * @param manager Entry point to ManagedNetworkFabricManager.
      */
     public static void networkTapRulesCreateMaximumSetGen(
         com.azure.resourcemanager.managednetworkfabric.ManagedNetworkFabricManager manager) {
-        manager
-            .networkTapRules()
-            .define("example-tapRule")
-            .withRegion("eastus")
-            .withExistingResourceGroup("example-rg")
+        manager.networkTapRules().define("example-tapRule").withRegion("eastus").withExistingResourceGroup("example-rg")
             .withTags(mapOf("keyID", "fakeTokenPlaceholder"))
             .withPollingIntervalInSeconds(PollingIntervalInSeconds.THREE_ZERO)
-            .withConfigurationType(ConfigurationType.FILE)
-            .withTapRulesUrl("https://microsoft.com/a")
-            .withMatchConfigurations(
-                Arrays
-                    .asList(
-                        new NetworkTapRuleMatchConfiguration()
-                            .withMatchConfigurationName("config1")
-                            .withSequenceNumber(10L)
-                            .withIpAddressType(IpAddressType.IPV4)
-                            .withMatchConditions(
-                                Arrays
-                                    .asList(
-                                        new NetworkTapRuleMatchCondition()
-                                            .withProtocolTypes(Arrays.asList("TCP"))
-                                            .withVlanMatchCondition(
-                                                new VlanMatchCondition()
-                                                    .withVlans(Arrays.asList("10"))
-                                                    .withInnerVlans(Arrays.asList("11-20"))
-                                                    .withVlanGroupNames(Arrays.asList("exmaple-vlanGroup")))
-                                            .withIpCondition(
-                                                new IpMatchCondition()
-                                                    .withType(SourceDestinationType.SOURCE_IP)
-                                                    .withPrefixType(PrefixType.PREFIX)
-                                                    .withIpPrefixValues(Arrays.asList("10.10.10.10/20"))
-                                                    .withIpGroupNames(Arrays.asList("example-ipGroup")))
-                                            .withEncapsulationType(EncapsulationType.NONE)
-                                            .withPortCondition(
-                                                new PortCondition()
-                                                    .withPortType(PortType.SOURCE_PORT)
-                                                    .withLayer4Protocol(Layer4Protocol.TCP)
-                                                    .withPorts(Arrays.asList("100"))
-                                                    .withPortGroupNames(Arrays.asList("example-portGroup1")))))
-                            .withActions(
-                                Arrays
-                                    .asList(
-                                        new NetworkTapRuleAction()
-                                            .withType(TapRuleActionType.DROP)
-                                            .withTruncate("100")
-                                            .withIsTimestampEnabled(BooleanEnumProperty.TRUE)
-                                            .withDestinationId(
-                                                "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")
-                                            .withMatchConfigurationName("match1")))))
-            .withDynamicMatchConfigurations(
-                Arrays
-                    .asList(
-                        new CommonDynamicMatchConfiguration()
-                            .withIpGroups(
-                                Arrays
-                                    .asList(
-                                        new IpGroupProperties()
-                                            .withName("example-ipGroup1")
-                                            .withIpAddressType(IpAddressType.IPV4)
-                                            .withIpPrefixes(Arrays.asList("10.10.10.10/30"))))
-                            .withVlanGroups(
-                                Arrays
-                                    .asList(
-                                        new VlanGroupProperties()
-                                            .withName("exmaple-vlanGroup")
-                                            .withVlans(Arrays.asList("10", "100-200"))))
-                            .withPortGroups(
-                                Arrays
-                                    .asList(
-                                        new PortGroupProperties()
-                                            .withName("example-portGroup1")
-                                            .withPorts(Arrays.asList("100-200")),
-                                        new PortGroupProperties()
-                                            .withName("example-portGroup2")
-                                            .withPorts(Arrays.asList("900", "1000-2000"))))))
-            .withAnnotation("annotation")
-            .create();
+            .withConfigurationType(ConfigurationType.FILE).withTapRulesUrl("https://microsoft.com/a")
+            .withMatchConfigurations(Arrays.asList(new NetworkTapRuleMatchConfiguration()
+                .withMatchConfigurationName("config1").withSequenceNumber(10L).withIpAddressType(IpAddressType.IPV4)
+                .withMatchConditions(Arrays.asList(new NetworkTapRuleMatchCondition()
+                    .withProtocolTypes(Arrays.asList("TCP"))
+                    .withVlanMatchCondition(new VlanMatchCondition().withVlans(Arrays.asList("10"))
+                        .withInnerVlans(Arrays.asList("11-20")).withVlanGroupNames(Arrays.asList("exmaple-vlanGroup")))
+                    .withIpCondition(new IpMatchCondition().withType(SourceDestinationType.SOURCE_IP)
+                        .withPrefixType(PrefixType.PREFIX).withIpPrefixValues(Arrays.asList("10.10.10.10/20"))
+                        .withIpGroupNames(Arrays.asList("example-ipGroup")))
+                    .withEncapsulationType(EncapsulationType.NONE).withPortCondition(
+                        new PortCondition().withPortType(PortType.SOURCE_PORT).withLayer4Protocol(Layer4Protocol.TCP)
+                            .withPorts(Arrays.asList("100")).withPortGroupNames(Arrays.asList("example-portGroup1")))))
+                .withActions(Arrays.asList(new NetworkTapRuleAction().withType(TapRuleActionType.DROP)
+                    .withTruncate("100").withIsTimestampEnabled(BooleanEnumProperty.TRUE)
+                    .withDestinationId(
+                        "/subscriptions/1234ABCD-0A1B-1234-5678-123456ABCDEF/resourcegroups/example-rg/providers/Microsoft.ManagedNetworkFabric/neighborGroups/example-neighborGroup")
+                    .withMatchConfigurationName("match1")))))
+            .withDynamicMatchConfigurations(Arrays.asList(new CommonDynamicMatchConfiguration()
+                .withIpGroups(Arrays.asList(new IpGroupProperties().withName("example-ipGroup1")
+                    .withIpAddressType(IpAddressType.IPV4).withIpPrefixes(Arrays.asList("10.10.10.10/30"))))
+                .withVlanGroups(Arrays.asList(
+                    new VlanGroupProperties().withName("exmaple-vlanGroup").withVlans(Arrays.asList("10", "100-200"))))
+                .withPortGroups(Arrays.asList(
+                    new PortGroupProperties().withName("example-portGroup1").withPorts(Arrays.asList("100-200")),
+                    new PortGroupProperties().withName("example-portGroup2")
+                        .withPorts(Arrays.asList("900", "1000-2000"))))))
+            .withAnnotation("annotation").create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

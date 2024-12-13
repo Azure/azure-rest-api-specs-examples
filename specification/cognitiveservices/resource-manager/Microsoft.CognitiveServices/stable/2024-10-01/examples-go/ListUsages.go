@@ -1,0 +1,46 @@
+package armcognitiveservices_test
+
+import (
+	"context"
+	"log"
+
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cognitiveservices/armcognitiveservices"
+)
+
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/069a65e8a6d1a6c0c58d9a9d97610b7103b6e8a5/specification/cognitiveservices/resource-manager/Microsoft.CognitiveServices/stable/2024-10-01/examples/ListUsages.json
+func ExampleUsagesClient_NewListPager() {
+	cred, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		log.Fatalf("failed to obtain a credential: %v", err)
+	}
+	ctx := context.Background()
+	clientFactory, err := armcognitiveservices.NewClientFactory("<subscription-id>", cred, nil)
+	if err != nil {
+		log.Fatalf("failed to create client: %v", err)
+	}
+	pager := clientFactory.NewUsagesClient().NewListPager("WestUS", &armcognitiveservices.UsagesClientListOptions{Filter: nil})
+	for pager.More() {
+		page, err := pager.NextPage(ctx)
+		if err != nil {
+			log.Fatalf("failed to advance page: %v", err)
+		}
+		for _, v := range page.Value {
+			// You could use page here. We use blank identifier for just demo purposes.
+			_ = v
+		}
+		// If the HTTP response code is 200 as defined in example definition, your page structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
+		// page.UsageListResult = armcognitiveservices.UsageListResult{
+		// 	Value: []*armcognitiveservices.Usage{
+		// 		{
+		// 			Name: &armcognitiveservices.MetricName{
+		// 				LocalizedValue: to.Ptr("Cognitive Services total account limit"),
+		// 				Value: to.Ptr("AccountCount"),
+		// 			},
+		// 			CurrentValue: to.Ptr[float64](3),
+		// 			Limit: to.Ptr[float64](200),
+		// 			Unit: to.Ptr(armcognitiveservices.UnitTypeCount),
+		// 	}},
+		// }
+	}
+}

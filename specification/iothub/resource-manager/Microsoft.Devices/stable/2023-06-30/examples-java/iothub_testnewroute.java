@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.iothub.models.RouteProperties;
 import com.azure.resourcemanager.iothub.models.RoutingMessage;
 import com.azure.resourcemanager.iothub.models.RoutingSource;
@@ -6,35 +7,28 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for IotHubResource TestRoute. */
+/**
+ * Samples for IotHubResource TestRoute.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_testnewroute.json
+     * x-ms-original-file:
+     * specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_testnewroute.json
      */
     /**
      * Sample code: IotHubResource_TestRoute.
-     *
+     * 
      * @param manager Entry point to IotHubManager.
      */
     public static void iotHubResourceTestRoute(com.azure.resourcemanager.iothub.IotHubManager manager) {
-        manager
-            .iotHubResources()
-            .testRouteWithResponse(
-                "testHub",
-                "myResourceGroup",
-                new TestRouteInput()
-                    .withMessage(
-                        new RoutingMessage()
-                            .withBody("Body of message")
-                            .withAppProperties(mapOf("key1", "fakeTokenPlaceholder"))
-                            .withSystemProperties(mapOf("key1", "fakeTokenPlaceholder")))
-                    .withRoute(
-                        new RouteProperties()
-                            .withName("Routeid")
-                            .withSource(RoutingSource.DEVICE_MESSAGES)
-                            .withEndpointNames(Arrays.asList("id1"))
-                            .withIsEnabled(true)),
-                com.azure.core.util.Context.NONE);
+        manager.iotHubResources().testRouteWithResponse("testHub", "myResourceGroup",
+            new TestRouteInput()
+                .withMessage(new RoutingMessage().withBody("Body of message")
+                    .withAppProperties(mapOf("key1", "fakeTokenPlaceholder"))
+                    .withSystemProperties(mapOf("key1", "fakeTokenPlaceholder")))
+                .withRoute(new RouteProperties().withName("Routeid").withSource(RoutingSource.DEVICE_MESSAGES)
+                    .withEndpointNames(Arrays.asList("id1")).withIsEnabled(true)),
+            com.azure.core.util.Context.NONE);
     }
 
     // Use "Map.of" if available

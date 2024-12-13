@@ -1,3 +1,4 @@
+
 import com.azure.resourcemanager.iothub.models.Capabilities;
 import com.azure.resourcemanager.iothub.models.CloudToDeviceProperties;
 import com.azure.resourcemanager.iothub.models.DefaultAction;
@@ -20,88 +21,55 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for IotHubResource CreateOrUpdate. */
+/**
+ * Samples for IotHubResource CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_createOrUpdate.json
+     * x-ms-original-file:
+     * specification/iothub/resource-manager/Microsoft.Devices/stable/2023-06-30/examples/iothub_createOrUpdate.json
      */
     /**
      * Sample code: IotHubResource_CreateOrUpdate.
-     *
+     * 
      * @param manager Entry point to IotHubManager.
      */
     public static void iotHubResourceCreateOrUpdate(com.azure.resourcemanager.iothub.IotHubManager manager) {
-        manager
-            .iotHubResources()
-            .define("testHub")
-            .withRegion("centraluseuap")
+        manager.iotHubResources().define("testHub").withRegion("centraluseuap")
             .withExistingResourceGroup("myResourceGroup")
-            .withSku(new IotHubSkuInfo().withName(IotHubSku.S1).withCapacity(1L))
-            .withTags(mapOf())
+            .withSku(new IotHubSkuInfo().withName(IotHubSku.S1).withCapacity(1L)).withTags(
+                mapOf())
             .withEtag("AAAAAAFD6M4=")
-            .withProperties(
-                new IotHubProperties()
-                    .withIpFilterRules(Arrays.asList())
-                    .withNetworkRuleSets(
-                        new NetworkRuleSetProperties()
-                            .withDefaultAction(DefaultAction.DENY)
-                            .withApplyToBuiltInEventHubEndpoint(true)
-                            .withIpRules(
-                                Arrays
-                                    .asList(
-                                        new NetworkRuleSetIpRule()
-                                            .withFilterName("rule1")
-                                            .withAction(NetworkRuleIpAction.ALLOW)
-                                            .withIpMask("131.117.159.53"),
-                                        new NetworkRuleSetIpRule()
-                                            .withFilterName("rule2")
-                                            .withAction(NetworkRuleIpAction.ALLOW)
-                                            .withIpMask("157.55.59.128/25"))))
-                    .withMinTlsVersion("1.2")
-                    .withEventHubEndpoints(
-                        mapOf("events", new EventHubProperties().withRetentionTimeInDays(1L).withPartitionCount(2)))
-                    .withRouting(
-                        new RoutingProperties()
-                            .withEndpoints(
-                                new RoutingEndpoints()
-                                    .withServiceBusQueues(Arrays.asList())
-                                    .withServiceBusTopics(Arrays.asList())
-                                    .withEventHubs(Arrays.asList())
-                                    .withStorageContainers(Arrays.asList()))
-                            .withRoutes(Arrays.asList())
-                            .withFallbackRoute(
-                                new FallbackRouteProperties()
-                                    .withName("$fallback")
-                                    .withSource(RoutingSource.DEVICE_MESSAGES)
-                                    .withCondition("true")
-                                    .withEndpointNames(Arrays.asList("events"))
-                                    .withIsEnabled(true)))
-                    .withStorageEndpoints(
-                        mapOf(
-                            "$default",
-                            new StorageEndpointProperties()
-                                .withSasTtlAsIso8601(Duration.parse("PT1H"))
-                                .withConnectionString("")
-                                .withContainerName("")))
-                    .withMessagingEndpoints(
-                        mapOf(
-                            "fileNotifications",
-                            new MessagingEndpointProperties()
-                                .withLockDurationAsIso8601(Duration.parse("PT1M"))
-                                .withTtlAsIso8601(Duration.parse("PT1H"))
-                                .withMaxDeliveryCount(10)))
-                    .withEnableFileUploadNotifications(false)
-                    .withCloudToDevice(
-                        new CloudToDeviceProperties()
-                            .withMaxDeliveryCount(10)
-                            .withDefaultTtlAsIso8601(Duration.parse("PT1H"))
-                            .withFeedback(
-                                new FeedbackProperties()
-                                    .withLockDurationAsIso8601(Duration.parse("PT1M"))
-                                    .withTtlAsIso8601(Duration.parse("PT1H"))
-                                    .withMaxDeliveryCount(10)))
-                    .withFeatures(Capabilities.NONE)
-                    .withEnableDataResidency(false))
+            .withProperties(new IotHubProperties().withIpFilterRules(Arrays.asList())
+                .withNetworkRuleSets(new NetworkRuleSetProperties().withDefaultAction(DefaultAction.DENY)
+                    .withApplyToBuiltInEventHubEndpoint(true)
+                    .withIpRules(Arrays.asList(
+                        new NetworkRuleSetIpRule().withFilterName("rule1").withAction(NetworkRuleIpAction.ALLOW)
+                            .withIpMask("131.117.159.53"),
+                        new NetworkRuleSetIpRule().withFilterName("rule2").withAction(NetworkRuleIpAction.ALLOW)
+                            .withIpMask("157.55.59.128/25"))))
+                .withMinTlsVersion("1.2")
+                .withEventHubEndpoints(
+                    mapOf("events", new EventHubProperties().withRetentionTimeInDays(1L).withPartitionCount(2)))
+                .withRouting(new RoutingProperties()
+                    .withEndpoints(new RoutingEndpoints().withServiceBusQueues(Arrays.asList())
+                        .withServiceBusTopics(Arrays.asList()).withEventHubs(Arrays.asList())
+                        .withStorageContainers(Arrays.asList()))
+                    .withRoutes(Arrays.asList()).withFallbackRoute(
+                        new FallbackRouteProperties().withName("$fallback").withSource(RoutingSource.DEVICE_MESSAGES)
+                            .withCondition("true").withEndpointNames(Arrays.asList("events")).withIsEnabled(true)))
+                .withStorageEndpoints(mapOf("$default",
+                    new StorageEndpointProperties().withSasTtlAsIso8601(Duration.parse("PT1H")).withConnectionString("")
+                        .withContainerName("")))
+                .withMessagingEndpoints(mapOf("fileNotifications",
+                    new MessagingEndpointProperties().withLockDurationAsIso8601(Duration.parse("PT1M"))
+                        .withTtlAsIso8601(Duration.parse("PT1H")).withMaxDeliveryCount(10)))
+                .withEnableFileUploadNotifications(false)
+                .withCloudToDevice(new CloudToDeviceProperties().withMaxDeliveryCount(10)
+                    .withDefaultTtlAsIso8601(Duration.parse("PT1H"))
+                    .withFeedback(new FeedbackProperties().withLockDurationAsIso8601(Duration.parse("PT1M"))
+                        .withTtlAsIso8601(Duration.parse("PT1H")).withMaxDeliveryCount(10)))
+                .withFeatures(Capabilities.NONE).withEnableDataResidency(false))
             .create();
     }
 

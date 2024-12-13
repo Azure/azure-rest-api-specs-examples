@@ -9,7 +9,7 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/c7b98b36e4023331545051284d8500adf98f02fe/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_WithPriorityMixPolicy.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/069a65e8a6d1a6c0c58d9a9d97610b7103b6e8a5/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2024-07-01/examples/virtualMachineScaleSetExamples/VirtualMachineScaleSet_Create_WithPriorityMixPolicy.json
 func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWithPriorityMixPolicy() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -23,27 +23,34 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 	poller, err := clientFactory.NewVirtualMachineScaleSetsClient().BeginCreateOrUpdate(ctx, "myResourceGroup", "{vmss-name}", armcompute.VirtualMachineScaleSet{
 		Location: to.Ptr("westus"),
 		Properties: &armcompute.VirtualMachineScaleSetProperties{
-			OrchestrationMode: to.Ptr(armcompute.OrchestrationModeFlexible),
+			OrchestrationMode:        to.Ptr(armcompute.OrchestrationModeFlexible),
+			PlatformFaultDomainCount: to.Ptr[int32](1),
 			PriorityMixPolicy: &armcompute.PriorityMixPolicy{
-				BaseRegularPriorityCount:           to.Ptr[int32](4),
+				BaseRegularPriorityCount:           to.Ptr[int32](10),
 				RegularPriorityPercentageAboveBase: to.Ptr[int32](50),
 			},
-			SinglePlacementGroup: to.Ptr(false),
 			VirtualMachineProfile: &armcompute.VirtualMachineScaleSetVMProfile{
-				BillingProfile: &armcompute.BillingProfile{
-					MaxPrice: to.Ptr[float64](-1),
-				},
-				EvictionPolicy: to.Ptr(armcompute.VirtualMachineEvictionPolicyTypesDeallocate),
 				NetworkProfile: &armcompute.VirtualMachineScaleSetNetworkProfile{
+					NetworkAPIVersion: to.Ptr(armcompute.NetworkAPIVersionTwoThousandTwenty1101),
 					NetworkInterfaceConfigurations: []*armcompute.VirtualMachineScaleSetNetworkConfiguration{
 						{
 							Name: to.Ptr("{vmss-name}"),
 							Properties: &armcompute.VirtualMachineScaleSetNetworkConfigurationProperties{
-								EnableIPForwarding: to.Ptr(true),
+								EnableAcceleratedNetworking: to.Ptr(false),
+								EnableIPForwarding:          to.Ptr(true),
 								IPConfigurations: []*armcompute.VirtualMachineScaleSetIPConfiguration{
 									{
 										Name: to.Ptr("{vmss-name}"),
 										Properties: &armcompute.VirtualMachineScaleSetIPConfigurationProperties{
+											ApplicationGatewayBackendAddressPools: []*armcompute.SubResource{},
+											LoadBalancerBackendAddressPools:       []*armcompute.SubResource{},
+											Primary:                               to.Ptr(true),
+											PublicIPAddressConfiguration: &armcompute.VirtualMachineScaleSetPublicIPAddressConfiguration{
+												Name: to.Ptr("{vmss-name}"),
+												Properties: &armcompute.VirtualMachineScaleSetPublicIPAddressConfigurationProperties{
+													IdleTimeoutInMinutes: to.Ptr[int32](15),
+												},
+											},
 											Subnet: &armcompute.APIEntityReference{
 												ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
 											},
@@ -61,9 +68,9 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 				Priority: to.Ptr(armcompute.VirtualMachinePriorityTypesSpot),
 				StorageProfile: &armcompute.VirtualMachineScaleSetStorageProfile{
 					ImageReference: &armcompute.ImageReference{
-						Offer:     to.Ptr("WindowsServer"),
-						Publisher: to.Ptr("MicrosoftWindowsServer"),
-						SKU:       to.Ptr("2016-Datacenter"),
+						Offer:     to.Ptr("0001-com-ubuntu-server-focal"),
+						Publisher: to.Ptr("Canonical"),
+						SKU:       to.Ptr("20_04-lts-gen2"),
 						Version:   to.Ptr("latest"),
 					},
 					OSDisk: &armcompute.VirtualMachineScaleSetOSDisk{
@@ -78,7 +85,7 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 		},
 		SKU: &armcompute.SKU{
 			Name:     to.Ptr("Standard_A8m_v2"),
-			Capacity: to.Ptr[int64](10),
+			Capacity: to.Ptr[int64](2),
 			Tier:     to.Ptr("Standard"),
 		},
 	}, &armcompute.VirtualMachineScaleSetsClientBeginCreateOrUpdateOptions{IfMatch: nil,
@@ -101,36 +108,37 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 	// 	Location: to.Ptr("westus"),
 	// 	Properties: &armcompute.VirtualMachineScaleSetProperties{
 	// 		OrchestrationMode: to.Ptr(armcompute.OrchestrationModeFlexible),
+	// 		PlatformFaultDomainCount: to.Ptr[int32](1),
 	// 		PriorityMixPolicy: &armcompute.PriorityMixPolicy{
-	// 			BaseRegularPriorityCount: to.Ptr[int32](4),
+	// 			BaseRegularPriorityCount: to.Ptr[int32](10),
 	// 			RegularPriorityPercentageAboveBase: to.Ptr[int32](50),
 	// 		},
-	// 		ProvisioningState: to.Ptr("Succeeded"),
-	// 		SinglePlacementGroup: to.Ptr(false),
-	// 		UniqueID: to.Ptr("d053ec5a-8da6-495f-ab13-38216503c6d7"),
 	// 		VirtualMachineProfile: &armcompute.VirtualMachineScaleSetVMProfile{
-	// 			BillingProfile: &armcompute.BillingProfile{
-	// 				MaxPrice: to.Ptr[float64](-1),
-	// 			},
-	// 			EvictionPolicy: to.Ptr(armcompute.VirtualMachineEvictionPolicyTypesDeallocate),
 	// 			NetworkProfile: &armcompute.VirtualMachineScaleSetNetworkProfile{
+	// 				NetworkAPIVersion: to.Ptr(armcompute.NetworkAPIVersionTwoThousandTwenty1101),
 	// 				NetworkInterfaceConfigurations: []*armcompute.VirtualMachineScaleSetNetworkConfiguration{
 	// 					{
 	// 						Name: to.Ptr("{vmss-name}"),
 	// 						Properties: &armcompute.VirtualMachineScaleSetNetworkConfigurationProperties{
-	// 							DNSSettings: &armcompute.VirtualMachineScaleSetNetworkConfigurationDNSSettings{
-	// 								DNSServers: []*string{
-	// 								},
-	// 							},
 	// 							EnableAcceleratedNetworking: to.Ptr(false),
 	// 							EnableIPForwarding: to.Ptr(true),
 	// 							IPConfigurations: []*armcompute.VirtualMachineScaleSetIPConfiguration{
 	// 								{
 	// 									Name: to.Ptr("{vmss-name}"),
 	// 									Properties: &armcompute.VirtualMachineScaleSetIPConfigurationProperties{
-	// 										PrivateIPAddressVersion: to.Ptr(armcompute.IPVersionIPv4),
+	// 										ApplicationGatewayBackendAddressPools: []*armcompute.SubResource{
+	// 										},
+	// 										LoadBalancerBackendAddressPools: []*armcompute.SubResource{
+	// 										},
+	// 										Primary: to.Ptr(true),
+	// 										PublicIPAddressConfiguration: &armcompute.VirtualMachineScaleSetPublicIPAddressConfiguration{
+	// 											Name: to.Ptr("{vmss-name}"),
+	// 											Properties: &armcompute.VirtualMachineScaleSetPublicIPAddressConfigurationProperties{
+	// 												IdleTimeoutInMinutes: to.Ptr[int32](15),
+	// 											},
+	// 										},
 	// 										Subnet: &armcompute.APIEntityReference{
-	// 											ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/nsgExistingVnet/subnets/nsgExistingSubnet"),
+	// 											ID: to.Ptr("/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/{existing-virtual-network-name}/subnets/{existing-subnet-name}"),
 	// 										},
 	// 									},
 	// 							}},
@@ -139,21 +147,16 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 	// 				}},
 	// 			},
 	// 			OSProfile: &armcompute.VirtualMachineScaleSetOSProfile{
+	// 				AdminPassword: to.Ptr("{your-password}"),
 	// 				AdminUsername: to.Ptr("{your-username}"),
 	// 				ComputerNamePrefix: to.Ptr("{vmss-name}"),
-	// 				Secrets: []*armcompute.VaultSecretGroup{
-	// 				},
-	// 				WindowsConfiguration: &armcompute.WindowsConfiguration{
-	// 					EnableAutomaticUpdates: to.Ptr(true),
-	// 					ProvisionVMAgent: to.Ptr(true),
-	// 				},
 	// 			},
 	// 			Priority: to.Ptr(armcompute.VirtualMachinePriorityTypesSpot),
 	// 			StorageProfile: &armcompute.VirtualMachineScaleSetStorageProfile{
 	// 				ImageReference: &armcompute.ImageReference{
-	// 					Offer: to.Ptr("WindowsServer"),
-	// 					Publisher: to.Ptr("MicrosoftWindowsServer"),
-	// 					SKU: to.Ptr("2016-Datacenter"),
+	// 					Offer: to.Ptr("0001-com-ubuntu-server-focal"),
+	// 					Publisher: to.Ptr("Canonical"),
+	// 					SKU: to.Ptr("20_04-lts-gen2"),
 	// 					Version: to.Ptr("latest"),
 	// 				},
 	// 				OSDisk: &armcompute.VirtualMachineScaleSetOSDisk{
@@ -168,7 +171,7 @@ func ExampleVirtualMachineScaleSetsClient_BeginCreateOrUpdate_createAScaleSetWit
 	// 	},
 	// 	SKU: &armcompute.SKU{
 	// 		Name: to.Ptr("Standard_A8m_v2"),
-	// 		Capacity: to.Ptr[int64](10),
+	// 		Capacity: to.Ptr[int64](2),
 	// 		Tier: to.Ptr("Standard"),
 	// 	},
 	// }

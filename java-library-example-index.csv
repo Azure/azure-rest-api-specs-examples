@@ -4871,3 +4871,4 @@ id,name,language,tag,package,version,date_epoch,date
 4870,com.azure.resourcemanager:azure-resourcemanager-devtestlabs:1.1.0,java,azure-resourcemanager-devtestlabs_1.1.0,azure-resourcemanager-devtestlabs,1.1.0,1734083695,12/13/2024
 4871,com.azure.resourcemanager:azure-resourcemanager-applicationinsights:1.1.0,java,azure-resourcemanager-applicationinsights_1.1.0,azure-resourcemanager-applicationinsights,1.1.0,1734082003,12/13/2024
 4872,com.azure.resourcemanager:azure-resourcemanager-apicenter:1.1.0,java,azure-resourcemanager-apicenter_1.1.0,azure-resourcemanager-apicenter,1.1.0,1734081535,12/13/2024
+4873,com.azure.resourcemanager:azure-resourcemanager-hybridcontainerservice:1.1.0,java,azure-resourcemanager-hybridcontainerservice_1.1.0,azure-resourcemanager-hybridcontainerservice,1.1.0,1734081471,12/13/2024

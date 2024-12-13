@@ -1,0 +1,25 @@
+
+import com.azure.resourcemanager.hybridnetwork.fluent.models.NetworkServiceDesignVersionUpdateStateInner;
+import com.azure.resourcemanager.hybridnetwork.models.VersionState;
+
+/**
+ * Samples for NetworkServiceDesignVersions UpdateState.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/hybridnetwork/resource-manager/Microsoft.HybridNetwork/stable/2023-09-01/examples/
+     * NetworkServiceDesignVersionUpdateState.json
+     */
+    /**
+     * Sample code: Update network service design version state.
+     * 
+     * @param manager Entry point to HybridNetworkManager.
+     */
+    public static void
+        updateNetworkServiceDesignVersionState(com.azure.resourcemanager.hybridnetwork.HybridNetworkManager manager) {
+        manager.networkServiceDesignVersions().updateState("rg", "TestPublisher", "TestNetworkServiceDesignGroupName",
+            "1.0.0", new NetworkServiceDesignVersionUpdateStateInner().withVersionState(VersionState.ACTIVE),
+            com.azure.core.util.Context.NONE);
+    }
+}

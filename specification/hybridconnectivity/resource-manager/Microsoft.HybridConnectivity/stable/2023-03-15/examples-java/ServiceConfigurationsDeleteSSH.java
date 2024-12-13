@@ -1,21 +1,22 @@
-/** Samples for ServiceConfigurations Delete. */
+
+/**
+ * Samples for ServiceConfigurations Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2023-03-15/examples/ServiceConfigurationsDeleteSSH.json
+     * x-ms-original-file:
+     * specification/hybridconnectivity/resource-manager/Microsoft.HybridConnectivity/stable/2023-03-15/examples/
+     * ServiceConfigurationsDeleteSSH.json
      */
     /**
      * Sample code: ServiceConfigurationsDeleteSSH.
-     *
+     * 
      * @param manager Entry point to HybridConnectivityManager.
      */
-    public static void serviceConfigurationsDeleteSSH(
-        com.azure.resourcemanager.hybridconnectivity.HybridConnectivityManager manager) {
-        manager
-            .serviceConfigurations()
-            .deleteWithResponse(
-                "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default",
-                "default",
-                "SSH",
-                com.azure.core.util.Context.NONE);
+    public static void
+        serviceConfigurationsDeleteSSH(com.azure.resourcemanager.hybridconnectivity.HybridConnectivityManager manager) {
+        manager.serviceConfigurations().deleteWithResponse(
+            "subscriptions/f5bcc1d9-23af-4ae9-aca1-041d0f593a63/resourceGroups/hybridRG/providers/Microsoft.HybridCompute/machines/testMachine/providers/Microsoft.HybridConnectivity/endpoints/default",
+            "default", "SSH", com.azure.core.util.Context.NONE);
     }
 }

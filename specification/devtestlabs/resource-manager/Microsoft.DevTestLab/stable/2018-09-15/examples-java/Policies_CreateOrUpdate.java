@@ -1,33 +1,31 @@
+
 import com.azure.resourcemanager.devtestlabs.models.PolicyEvaluatorType;
 import com.azure.resourcemanager.devtestlabs.models.PolicyFactName;
 import com.azure.resourcemanager.devtestlabs.models.PolicyStatus;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Policies CreateOrUpdate. */
+/**
+ * Samples for Policies CreateOrUpdate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Policies_CreateOrUpdate.json
+     * x-ms-original-file: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/
+     * Policies_CreateOrUpdate.json
      */
     /**
      * Sample code: Policies_CreateOrUpdate.
-     *
+     * 
      * @param manager Entry point to DevTestLabsManager.
      */
     public static void policiesCreateOrUpdate(com.azure.resourcemanager.devtestlabs.DevTestLabsManager manager) {
-        manager
-            .policies()
-            .define("{policyName}")
-            .withRegion("{location}")
+        manager.policies().define("{policyName}").withRegion("{location}")
             .withExistingPolicyset("resourceGroupName", "{labName}", "{policySetName}")
-            .withTags(mapOf("tagName1", "tagValue1"))
-            .withDescription("{policyDescription}")
+            .withTags(mapOf("tagName1", "tagValue1")).withDescription("{policyDescription}")
             .withStatus(PolicyStatus.fromString("{policyStatus}"))
-            .withFactName(PolicyFactName.fromString("{policyFactName}"))
-            .withFactData("{policyFactData}")
+            .withFactName(PolicyFactName.fromString("{policyFactName}")).withFactData("{policyFactData}")
             .withThreshold("{policyThreshold}")
-            .withEvaluatorType(PolicyEvaluatorType.fromString("{policyEvaluatorType}"))
-            .create();
+            .withEvaluatorType(PolicyEvaluatorType.fromString("{policyEvaluatorType}")).create();
     }
 
     // Use "Map.of" if available

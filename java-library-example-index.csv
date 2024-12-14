@@ -4880,3 +4880,4 @@ id,name,language,tag,package,version,date_epoch,date
 4879,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/network/armnetwork/v6@v6.2.0,go,sdk/resourcemanager/network/armnetwork/v6.2.0,sdk/resourcemanager/network/armnetwork,v6.2.0,1734082856,12/13/2024
 4880,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6@v6.2.0,go,sdk/resourcemanager/compute/armcompute/v6.2.0,sdk/resourcemanager/compute/armcompute,v6.2.0,1734082817,12/13/2024
 4881,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/iotoperations/armiotoperations@v1.0.0,go,sdk/resourcemanager/iotoperations/armiotoperations/v1.0.0,sdk/resourcemanager/iotoperations/armiotoperations,v1.0.0,1734082388,12/13/2024
+4882,com.azure.resourcemanager:azure-resourcemanager-loganalytics:1.1.0,java,azure-resourcemanager-loganalytics_1.1.0,azure-resourcemanager-loganalytics,1.1.0,1734170248,12/14/2024

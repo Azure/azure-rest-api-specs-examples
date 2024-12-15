@@ -1,11 +1,16 @@
-/** Samples for Schema Get. */
+
+/**
+ * Samples for Schema Get.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/SavedSearchesGetSchema.json
+     * x-ms-original-file:
+     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2020-08-01/examples/
+     * SavedSearchesGetSchema.json
      */
     /**
      * Sample code: WorkspacesGetSchema.
-     *
+     * 
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void workspacesGetSchema(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {

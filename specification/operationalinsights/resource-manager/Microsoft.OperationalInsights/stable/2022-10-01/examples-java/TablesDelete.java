@@ -1,11 +1,16 @@
-/** Samples for Tables Delete. */
+
+/**
+ * Samples for Tables Delete.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/TablesDelete.json
+     * x-ms-original-file:
+     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/
+     * TablesDelete.json
      */
     /**
      * Sample code: TablesDelete.
-     *
+     * 
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void tablesDelete(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {

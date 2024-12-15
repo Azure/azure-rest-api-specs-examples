@@ -1,16 +1,20 @@
-/** Samples for Tables Migrate. */
+
+/**
+ * Samples for Tables Migrate.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/TablesMigrate.json
+     * x-ms-original-file:
+     * specification/operationalinsights/resource-manager/Microsoft.OperationalInsights/stable/2022-10-01/examples/
+     * TablesMigrate.json
      */
     /**
      * Sample code: TablesMigrate.
-     *
+     * 
      * @param manager Entry point to LogAnalyticsManager.
      */
     public static void tablesMigrate(com.azure.resourcemanager.loganalytics.LogAnalyticsManager manager) {
-        manager
-            .tables()
-            .migrateWithResponse("oiautorest6685", "oiautorest6685", "table1_CL", com.azure.core.util.Context.NONE);
+        manager.tables().migrateWithResponse("oiautorest6685", "oiautorest6685", "table1_CL",
+            com.azure.core.util.Context.NONE);
     }
 }

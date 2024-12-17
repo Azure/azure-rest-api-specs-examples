@@ -4890,3 +4890,4 @@ id,name,language,tag,package,version,date_epoch,date
 4889,azure-mgmt-compute@33.1.0,python,azure-mgmt-compute_33.1.0,azure-mgmt-compute,33.1.0,1734334831,12/16/2024
 4890,azure-mgmt-postgresqlflexibleservers@1.1.0b2,python,azure-mgmt-postgresqlflexibleservers_1.1.0b2,azure-mgmt-postgresqlflexibleservers,1.1.0b2,1734334789,12/16/2024
 4891,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0,java,azure-resourcemanager-datafactory_1.0.0,azure-resourcemanager-datafactory,1.0.0,1734406063,12/17/2024
+4892,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry@v1.3.0-beta.2,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v1.3.0-beta.2,sdk/resourcemanager/containerregistry/armcontainerregistry,v1.3.0-beta.2,1734422241,12/17/2024

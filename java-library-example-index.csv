@@ -4889,3 +4889,4 @@ id,name,language,tag,package,version,date_epoch,date
 4888,azure-mgmt-datafactory@9.1.0,python,azure-mgmt-datafactory_9.1.0,azure-mgmt-datafactory,9.1.0,1734334850,12/16/2024
 4889,azure-mgmt-compute@33.1.0,python,azure-mgmt-compute_33.1.0,azure-mgmt-compute,33.1.0,1734334831,12/16/2024
 4890,azure-mgmt-postgresqlflexibleservers@1.1.0b2,python,azure-mgmt-postgresqlflexibleservers_1.1.0b2,azure-mgmt-postgresqlflexibleservers,1.1.0b2,1734334789,12/16/2024
+4891,com.azure.resourcemanager:azure-resourcemanager-datafactory:1.0.0,java,azure-resourcemanager-datafactory_1.0.0,azure-resourcemanager-datafactory,1.0.0,1734406063,12/17/2024

@@ -4893,3 +4893,4 @@ id,name,language,tag,package,version,date_epoch,date
 4892,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerregistry/armcontainerregistry@v1.3.0-beta.2,go,sdk/resourcemanager/containerregistry/armcontainerregistry/v1.3.0-beta.2,sdk/resourcemanager/containerregistry/armcontainerregistry,v1.3.0-beta.2,1734422241,12/17/2024
 4893,@azure/arm-cosmosdb@16.2.0,js,@azure/arm-cosmosdb_16.2.0,@azure/arm-cosmosdb,16.2.0,1734511473,12/18/2024
 4894,azure-mgmt-servicefabricmanagedclusters@2.1.0b2,python,azure-mgmt-servicefabricmanagedclusters_2.1.0b2,azure-mgmt-servicefabricmanagedclusters,2.1.0b2,1734491248,12/18/2024
+4895,com.azure.resourcemanager:azure-resourcemanager-confluent:1.2.0,java,azure-resourcemanager-confluent_1.2.0,azure-resourcemanager-confluent,1.2.0,1734590508,12/19/2024

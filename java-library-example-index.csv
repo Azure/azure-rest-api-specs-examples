@@ -4907,3 +4907,4 @@ id,name,language,tag,package,version,date_epoch,date
 4906,@azure/arm-containerservice@21.4.0-beta.1,js,@azure/arm-containerservice_21.4.0-beta.1,@azure/arm-containerservice,21.4.0-beta.1,1734594337,12/19/2024
 4907,"Azure.ResourceManager.PlaywrightTesting,1.0.0",dotnet,Azure.ResourceManager.PlaywrightTesting_1.0.0,Azure.ResourceManager.PlaywrightTesting,1.0.0,1734569266,12/19/2024
 4908,azure-mgmt-iotoperations@1.0.0,python,azure-mgmt-iotoperations_1.0.0,azure-mgmt-iotoperations,1.0.0,1734586769,12/19/2024
+4909,azure-mgmt-cognitiveservices@13.6.0,python,azure-mgmt-cognitiveservices_13.6.0,azure-mgmt-cognitiveservices,13.6.0,1734586755,12/19/2024

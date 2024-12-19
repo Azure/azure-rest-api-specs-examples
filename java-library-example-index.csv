@@ -4903,3 +4903,4 @@ id,name,language,tag,package,version,date_epoch,date
 4902,com.azure.resourcemanager:azure-resourcemanager-communication:2.2.0,java,azure-resourcemanager-communication_2.2.0,azure-resourcemanager-communication,2.2.0,1734581857,12/19/2024
 4903,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.5.0,java,azure-resourcemanager-recoveryservicesbackup_1.5.0,azure-resourcemanager-recoveryservicesbackup,1.5.0,1734581150,12/19/2024
 4904,com.azure.resourcemanager:azure-resourcemanager-imagebuilder:1.2.0,java,azure-resourcemanager-imagebuilder_1.2.0,azure-resourcemanager-imagebuilder,1.2.0,1734580946,12/19/2024
+4905,@azure/arm-compute@22.2.0,js,@azure/arm-compute_22.2.0,@azure/arm-compute,22.2.0,1734595464,12/19/2024

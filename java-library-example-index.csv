@@ -4902,3 +4902,4 @@ id,name,language,tag,package,version,date_epoch,date
 4901,com.azure.resourcemanager:azure-resourcemanager-frontdoor:1.1.0,java,azure-resourcemanager-frontdoor_1.1.0,azure-resourcemanager-frontdoor,1.1.0,1734590259,12/19/2024
 4902,com.azure.resourcemanager:azure-resourcemanager-communication:2.2.0,java,azure-resourcemanager-communication_2.2.0,azure-resourcemanager-communication,2.2.0,1734581857,12/19/2024
 4903,com.azure.resourcemanager:azure-resourcemanager-recoveryservicesbackup:1.5.0,java,azure-resourcemanager-recoveryservicesbackup_1.5.0,azure-resourcemanager-recoveryservicesbackup,1.5.0,1734581150,12/19/2024
+4904,com.azure.resourcemanager:azure-resourcemanager-imagebuilder:1.2.0,java,azure-resourcemanager-imagebuilder_1.2.0,azure-resourcemanager-imagebuilder,1.2.0,1734580946,12/19/2024

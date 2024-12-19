@@ -4905,3 +4905,4 @@ id,name,language,tag,package,version,date_epoch,date
 4904,com.azure.resourcemanager:azure-resourcemanager-imagebuilder:1.2.0,java,azure-resourcemanager-imagebuilder_1.2.0,azure-resourcemanager-imagebuilder,1.2.0,1734580946,12/19/2024
 4905,@azure/arm-compute@22.2.0,js,@azure/arm-compute_22.2.0,@azure/arm-compute,22.2.0,1734595464,12/19/2024
 4906,@azure/arm-containerservice@21.4.0-beta.1,js,@azure/arm-containerservice_21.4.0-beta.1,@azure/arm-containerservice,21.4.0-beta.1,1734594337,12/19/2024
+4907,"Azure.ResourceManager.PlaywrightTesting,1.0.0",dotnet,Azure.ResourceManager.PlaywrightTesting_1.0.0,Azure.ResourceManager.PlaywrightTesting,1.0.0,1734569266,12/19/2024

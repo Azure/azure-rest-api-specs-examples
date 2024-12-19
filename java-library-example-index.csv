@@ -4896,3 +4896,4 @@ id,name,language,tag,package,version,date_epoch,date
 4895,com.azure.resourcemanager:azure-resourcemanager-confluent:1.2.0,java,azure-resourcemanager-confluent_1.2.0,azure-resourcemanager-confluent,1.2.0,1734590508,12/19/2024
 4896,com.azure.resourcemanager:azure-resourcemanager-sphere:1.1.0,java,azure-resourcemanager-sphere_1.1.0,azure-resourcemanager-sphere,1.1.0,1734590506,12/19/2024
 4897,com.azure.resourcemanager:azure-resourcemanager-support:1.1.0,java,azure-resourcemanager-support_1.1.0,azure-resourcemanager-support,1.1.0,1734590400,12/19/2024
+4898,com.azure.resourcemanager:azure-resourcemanager-newrelicobservability:1.2.0,java,azure-resourcemanager-newrelicobservability_1.2.0,azure-resourcemanager-newrelicobservability,1.2.0,1734590394,12/19/2024

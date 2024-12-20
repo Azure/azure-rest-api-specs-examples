@@ -4911,3 +4911,4 @@ id,name,language,tag,package,version,date_epoch,date
 4910,com.azure.resourcemanager:azure-resourcemanager-relay:1.0.0,java,azure-resourcemanager-relay_1.0.0,azure-resourcemanager-relay,1.0.0,1734671344,12/20/2024
 4911,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0,java,azure-resourcemanager-mysqlflexibleserver_1.0.0,azure-resourcemanager-mysqlflexibleserver,1.0.0,1734666428,12/20/2024
 4912,com.azure.resourcemanager:azure-resourcemanager-chaos:1.2.0,java,azure-resourcemanager-chaos_1.2.0,azure-resourcemanager-chaos,1.2.0,1734617589,12/19/2024
+4913,@azure/arm-cognitiveservices@7.6.0,js,@azure/arm-cognitiveservices_7.6.0,@azure/arm-cognitiveservices,7.6.0,1734686363,12/20/2024

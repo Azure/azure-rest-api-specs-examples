@@ -1,5 +1,7 @@
 
 import com.azure.resourcemanager.communication.models.CommunicationServiceResource;
+import com.azure.resourcemanager.communication.models.ManagedServiceIdentity;
+import com.azure.resourcemanager.communication.models.ManagedServiceIdentityType;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,18 +12,20 @@ public final class Main {
     /*
      * x-ms-original-file:
      * specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/
-     * communicationServices/update.json
+     * communicationServices/updateRemoveSystemIdentity.json
      */
     /**
-     * Sample code: Update resource.
+     * Sample code: Update resource to remove identity.
      * 
      * @param manager Entry point to CommunicationManager.
      */
-    public static void updateResource(com.azure.resourcemanager.communication.CommunicationManager manager) {
+    public static void
+        updateResourceToRemoveIdentity(com.azure.resourcemanager.communication.CommunicationManager manager) {
         CommunicationServiceResource resource
             = manager.communicationServices().getByResourceGroupWithResponse("MyResourceGroup",
                 "MyCommunicationResource", com.azure.core.util.Context.NONE).getValue();
-        resource.update().withTags(mapOf("newTag", "newVal")).apply();
+        resource.update().withTags(mapOf("newTag", "newVal"))
+            .withIdentity(new ManagedServiceIdentity().withType(ManagedServiceIdentityType.NONE)).apply();
     }
 
     // Use "Map.of" if available

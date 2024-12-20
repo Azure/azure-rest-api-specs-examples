@@ -1,29 +1,31 @@
+
 import com.azure.resourcemanager.mysqlflexibleserver.models.CreateMode;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Servers Create. */
+/**
+ * Samples for Servers Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreateReplica.json
+     * x-ms-original-file:
+     * specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2021-05-01/examples/ServerCreateReplica.
+     * json
      */
     /**
      * Sample code: Create a replica server.
-     *
+     * 
      * @param manager Entry point to MySqlManager.
      */
     public static void createAReplicaServer(com.azure.resourcemanager.mysqlflexibleserver.MySqlManager manager) {
-        manager
-            .servers()
-            .define("replica-server")
-            .withRegion("SoutheastAsia")
-            .withExistingResourceGroup("testgr")
+        manager.servers().define("replica-server").withRegion("SoutheastAsia").withExistingResourceGroup("testgr")
             .withCreateMode(CreateMode.REPLICA)
             .withSourceServerResourceId(
                 "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testgr/providers/Microsoft.DBforMySQL/flexibleServers/source-server")
             .create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

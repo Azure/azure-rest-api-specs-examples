@@ -4909,3 +4909,4 @@ id,name,language,tag,package,version,date_epoch,date
 4908,azure-mgmt-iotoperations@1.0.0,python,azure-mgmt-iotoperations_1.0.0,azure-mgmt-iotoperations,1.0.0,1734586769,12/19/2024
 4909,azure-mgmt-cognitiveservices@13.6.0,python,azure-mgmt-cognitiveservices_13.6.0,azure-mgmt-cognitiveservices,13.6.0,1734586755,12/19/2024
 4910,com.azure.resourcemanager:azure-resourcemanager-relay:1.0.0,java,azure-resourcemanager-relay_1.0.0,azure-resourcemanager-relay,1.0.0,1734671344,12/20/2024
+4911,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0,java,azure-resourcemanager-mysqlflexibleserver_1.0.0,azure-resourcemanager-mysqlflexibleserver,1.0.0,1734666428,12/20/2024

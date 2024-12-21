@@ -1,29 +1,32 @@
-import com.azure.core.util.Context;
+
 import com.azure.resourcemanager.mysqlflexibleserver.models.EnableStatusEnum;
 import com.azure.resourcemanager.mysqlflexibleserver.models.Server;
 import com.azure.resourcemanager.mysqlflexibleserver.models.Storage;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Servers Update. */
+/**
+ * Samples for Servers Update.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerUpdate.json
+     * x-ms-original-file:
+     * specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2021-05-01/examples/ServerUpdate.json
      */
     /**
      * Sample code: Update a server.
-     *
+     * 
      * @param manager Entry point to MySqlManager.
      */
     public static void updateAServer(com.azure.resourcemanager.mysqlflexibleserver.MySqlManager manager) {
-        Server resource =
-            manager.servers().getByResourceGroupWithResponse("testrg", "mysqltestserver", Context.NONE).getValue();
-        resource
-            .update()
+        Server resource = manager.servers()
+            .getByResourceGroupWithResponse("testrg", "mysqltestserver", com.azure.core.util.Context.NONE).getValue();
+        resource.update()
             .withStorage(new Storage().withStorageSizeGB(30).withIops(200).withAutoGrow(EnableStatusEnum.DISABLED))
             .apply();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

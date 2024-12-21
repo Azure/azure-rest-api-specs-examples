@@ -1,3 +1,4 @@
+
 import com.azure.core.management.serializer.SerializerFactory;
 import com.azure.core.util.serializer.SerializerEncoding;
 import com.azure.resourcemanager.mysqlflexibleserver.models.Backup;
@@ -17,48 +18,38 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-/** Samples for Servers Create. */
+/**
+ * Samples for Servers Create.
+ */
 public final class Main {
     /*
-     * x-ms-original-file: specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2021-05-01/examples/ServerCreateWithBYOK.json
+     * x-ms-original-file:
+     * specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2021-05-01/examples/ServerCreateWithBYOK.
+     * json
      */
     /**
      * Sample code: Create a server with byok.
-     *
+     * 
      * @param manager Entry point to MySqlManager.
      */
     public static void createAServerWithByok(com.azure.resourcemanager.mysqlflexibleserver.MySqlManager manager)
         throws IOException {
-        manager
-            .servers()
-            .define("mysqltestserver")
-            .withRegion("southeastasia")
-            .withExistingResourceGroup("testrg")
+        manager.servers().define("mysqltestserver").withRegion("southeastasia").withExistingResourceGroup("testrg")
             .withTags(mapOf("num", "1"))
-            .withIdentity(
-                new Identity()
-                    .withType(ManagedServiceIdentityType.USER_ASSIGNED)
-                    .withUserAssignedIdentities(
-                        mapOf(
-                            "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity",
-                            SerializerFactory
-                                .createDefaultManagementSerializerAdapter()
-                                .deserialize("{}", Object.class, SerializerEncoding.JSON))))
+            .withIdentity(new Identity().withType(ManagedServiceIdentityType.USER_ASSIGNED)
+                .withUserAssignedIdentities(mapOf(
+                    "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity",
+                    SerializerFactory.createDefaultManagementSerializerAdapter().deserialize("{}", Object.class,
+                        SerializerEncoding.JSON))))
             .withSku(new Sku().withName("Standard_D2ds_v4").withTier(SkuTier.GENERAL_PURPOSE))
-            .withAdministratorLogin("cloudsa")
-            .withAdministratorLoginPassword("your_password")
-            .withVersion(ServerVersion.FIVE_SEVEN)
-            .withAvailabilityZone("1")
-            .withCreateMode(CreateMode.DEFAULT)
-            .withDataEncryption(
-                new DataEncryption()
-                    .withPrimaryUserAssignedIdentityId(
-                        "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")
-                    .withPrimaryKeyUri("https://test.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a")
-                    .withGeoBackupUserAssignedIdentityId(
-                        "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-geo-identity")
-                    .withGeoBackupKeyUri("https://test-geo.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a")
-                    .withType(DataEncryptionType.AZURE_KEY_VAULT))
+            .withAdministratorLogin("cloudsa").withAdministratorLoginPassword("your_password")
+            .withVersion(ServerVersion.FIVE_SEVEN).withAvailabilityZone("1").withCreateMode(CreateMode.DEFAULT)
+            .withDataEncryption(new DataEncryption().withPrimaryUserAssignedIdentityId(
+                "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")
+                .withPrimaryKeyUri("fakeTokenPlaceholder")
+                .withGeoBackupUserAssignedIdentityId(
+                    "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-geo-identity")
+                .withGeoBackupKeyUri("fakeTokenPlaceholder").withType(DataEncryptionType.AZURE_KEY_VAULT))
             .withStorage(new Storage().withStorageSizeGB(100).withIops(600).withAutoGrow(EnableStatusEnum.DISABLED))
             .withBackup(new Backup().withBackupRetentionDays(7).withGeoRedundantBackup(EnableStatusEnum.DISABLED))
             .withHighAvailability(
@@ -66,6 +57,7 @@ public final class Main {
             .create();
     }
 
+    // Use "Map.of" if available
     @SuppressWarnings("unchecked")
     private static <T> Map<String, T> mapOf(Object... inputs) {
         Map<String, T> map = new HashMap<>();

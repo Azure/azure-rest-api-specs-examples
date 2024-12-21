@@ -4908,3 +4908,15 @@ id,name,language,tag,package,version,date_epoch,date
 4907,"Azure.ResourceManager.PlaywrightTesting,1.0.0",dotnet,Azure.ResourceManager.PlaywrightTesting_1.0.0,Azure.ResourceManager.PlaywrightTesting,1.0.0,1734569266,12/19/2024
 4908,azure-mgmt-iotoperations@1.0.0,python,azure-mgmt-iotoperations_1.0.0,azure-mgmt-iotoperations,1.0.0,1734586769,12/19/2024
 4909,azure-mgmt-cognitiveservices@13.6.0,python,azure-mgmt-cognitiveservices_13.6.0,azure-mgmt-cognitiveservices,13.6.0,1734586755,12/19/2024
+4910,com.azure.resourcemanager:azure-resourcemanager-relay:1.0.0,java,azure-resourcemanager-relay_1.0.0,azure-resourcemanager-relay,1.0.0,1734671344,12/20/2024
+4911,com.azure.resourcemanager:azure-resourcemanager-mysqlflexibleserver:1.0.0,java,azure-resourcemanager-mysqlflexibleserver_1.0.0,azure-resourcemanager-mysqlflexibleserver,1.0.0,1734666428,12/20/2024
+4912,com.azure.resourcemanager:azure-resourcemanager-chaos:1.2.0,java,azure-resourcemanager-chaos_1.2.0,azure-resourcemanager-chaos,1.2.0,1734617589,12/19/2024
+4913,@azure/arm-cognitiveservices@7.6.0,js,@azure/arm-cognitiveservices_7.6.0,@azure/arm-cognitiveservices,7.6.0,1734686363,12/20/2024
+4914,@azure/arm-playwrighttesting@1.0.0,js,@azure/arm-playwrighttesting_1.0.0,@azure/arm-playwrighttesting,1.0.0,1734675333,12/20/2024
+4915,@azure/arm-servicefabricmanagedclusters@1.0.0-beta.3,js,@azure/arm-servicefabricmanagedclusters_1.0.0-beta.3,@azure/arm-servicefabricmanagedclusters,1.0.0-beta.3,1734668539,12/20/2024
+4916,@azure/arm-network@33.5.0,js,@azure/arm-network_33.5.0,@azure/arm-network,33.5.0,1734668359,12/20/2024
+4917,@azure/arm-cosmosdb@16.3.0-beta.1,js,@azure/arm-cosmosdb_16.3.0-beta.1,@azure/arm-cosmosdb,16.3.0-beta.1,1734667862,12/20/2024
+4918,@azure/arm-datafactory@18.0.0,js,@azure/arm-datafactory_18.0.0,@azure/arm-datafactory,18.0.0,1734666678,12/20/2024
+4919,"Azure.ResourceManager.Redis,1.5.0",dotnet,Azure.ResourceManager.Redis_1.5.0,Azure.ResourceManager.Redis,1.5.0,1734661555,12/20/2024
+4920,azure-mgmt-network@28.1.0,python,azure-mgmt-network_28.1.0,azure-mgmt-network,28.1.0,1734673931,12/20/2024
+4921,azure-mgmt-playwrighttesting@1.0.0,python,azure-mgmt-playwrighttesting_1.0.0,azure-mgmt-playwrighttesting,1.0.0,1734659682,12/20/2024

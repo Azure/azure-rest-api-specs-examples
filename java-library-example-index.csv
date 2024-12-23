@@ -4921,3 +4921,4 @@ id,name,language,tag,package,version,date_epoch,date
 4920,azure-mgmt-network@28.1.0,python,azure-mgmt-network_28.1.0,azure-mgmt-network,28.1.0,1734673931,12/20/2024
 4921,azure-mgmt-playwrighttesting@1.0.0,python,azure-mgmt-playwrighttesting_1.0.0,azure-mgmt-playwrighttesting,1.0.0,1734659682,12/20/2024
 4922,com.azure.resourcemanager:azure-resourcemanager-postgresql:1.1.0,java,azure-resourcemanager-postgresql_1.1.0,azure-resourcemanager-postgresql,1.1.0,1734943786,12/23/2024
+4923,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0-beta.8,java,azure-resourcemanager-security_1.0.0-beta.8,azure-resourcemanager-security,1.0.0-beta.8,1734943725,12/23/2024

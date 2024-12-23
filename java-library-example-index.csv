@@ -4924,3 +4924,4 @@ id,name,language,tag,package,version,date_epoch,date
 4923,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0-beta.8,java,azure-resourcemanager-security_1.0.0-beta.8,azure-resourcemanager-security,1.0.0-beta.8,1734943725,12/23/2024
 4924,com.azure.resourcemanager:azure-resourcemanager-storagemover:1.3.0,java,azure-resourcemanager-storagemover_1.3.0,azure-resourcemanager-storagemover,1.3.0,1734941971,12/23/2024
 4925,com.azure.resourcemanager:azure-resourcemanager-recoveryservices:1.4.0,java,azure-resourcemanager-recoveryservices_1.4.0,azure-resourcemanager-recoveryservices,1.4.0,1734941965,12/23/2024
+4926,com.azure.resourcemanager:azure-resourcemanager-mobilenetwork:1.3.0,java,azure-resourcemanager-mobilenetwork_1.3.0,azure-resourcemanager-mobilenetwork,1.3.0,1734941792,12/23/2024

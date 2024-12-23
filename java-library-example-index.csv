@@ -4933,3 +4933,4 @@ id,name,language,tag,package,version,date_epoch,date
 4932,com.azure.resourcemanager:azure-resourcemanager-hybridkubernetes:1.0.0,java,azure-resourcemanager-hybridkubernetes_1.0.0,azure-resourcemanager-hybridkubernetes,1.0.0,1734932591,12/23/2024
 4933,com.azure.resourcemanager:azure-resourcemanager-apimanagement:1.0.0,java,azure-resourcemanager-apimanagement_1.0.0,azure-resourcemanager-apimanagement,1.0.0,1734928424,12/23/2024
 4934,com.azure.resourcemanager:azure-resourcemanager-storagecache:1.0.0,java,azure-resourcemanager-storagecache_1.0.0,azure-resourcemanager-storagecache,1.0.0,1734928414,12/23/2024
+4935,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.0.0,java,azure-resourcemanager-healthbot_1.0.0,azure-resourcemanager-healthbot,1.0.0,1734928412,12/23/2024

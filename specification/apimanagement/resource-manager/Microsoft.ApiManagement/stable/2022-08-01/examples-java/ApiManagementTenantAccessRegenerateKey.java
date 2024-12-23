@@ -2,7 +2,7 @@
 import com.azure.resourcemanager.apimanagement.models.AccessIdName;
 
 /**
- * Samples for TenantAccess RegenerateSecondaryKey.
+ * Samples for TenantAccessGit RegenerateSecondaryKey.
  */
 public final class Main {
     /*
@@ -17,7 +17,7 @@ public final class Main {
      */
     public static void
         apiManagementTenantAccessRegenerateKey(com.azure.resourcemanager.apimanagement.ApiManagementManager manager) {
-        manager.tenantAccess().regenerateSecondaryKeyWithResponse("rg1", "apimService1", AccessIdName.ACCESS,
+        manager.tenantAccessGits().regenerateSecondaryKeyWithResponse("rg1", "apimService1", AccessIdName.ACCESS,
             com.azure.core.util.Context.NONE);
     }
 }

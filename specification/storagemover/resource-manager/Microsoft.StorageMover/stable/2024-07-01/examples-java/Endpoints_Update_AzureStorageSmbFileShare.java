@@ -8,14 +8,15 @@ public final class Main {
     /*
      * x-ms-original-file:
      * specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2024-07-01/examples/
-     * Endpoints_Update_NfsMount.json
+     * Endpoints_Update_AzureStorageSmbFileShare.json
      */
     /**
-     * Sample code: Endpoints_Update_NfsMount.
+     * Sample code: Endpoints_Update_AzureStorageSmbFileShare.
      * 
      * @param manager Entry point to StorageMoverManager.
      */
-    public static void endpointsUpdateNfsMount(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
+    public static void
+        endpointsUpdateAzureStorageSmbFileShare(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
         Endpoint resource = manager.endpoints().getWithResponse("examples-rg", "examples-storageMoverName",
             "examples-endpointName", com.azure.core.util.Context.NONE).getValue();
         resource.update().apply();

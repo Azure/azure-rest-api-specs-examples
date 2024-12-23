@@ -4928,3 +4928,4 @@ id,name,language,tag,package,version,date_epoch,date
 4927,com.azure.resourcemanager:azure-resourcemanager-databoxedge:1.0.0,java,azure-resourcemanager-databoxedge_1.0.0,azure-resourcemanager-databoxedge,1.0.0,1734939628,12/23/2024
 4928,com.azure.resourcemanager:azure-resourcemanager:2.46.0,java,azure-resourcemanager_2.46.0,azure-resourcemanager,2.46.0,1734938758,12/23/2024
 4929,com.azure.resourcemanager:azure-resourcemanager-synapse:1.0.0,java,azure-resourcemanager-synapse_1.0.0,azure-resourcemanager-synapse,1.0.0,1734936937,12/23/2024
+4930,com.azure.resourcemanager:azure-resourcemanager-databricks:1.0.0,java,azure-resourcemanager-databricks_1.0.0,azure-resourcemanager-databricks,1.0.0,1734935964,12/23/2024

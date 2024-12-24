@@ -4949,3 +4949,4 @@ id,name,language,tag,package,version,date_epoch,date
 4948,com.azure.resourcemanager:azure-resourcemanager-automation:1.0.0,java,azure-resourcemanager-automation_1.0.0,azure-resourcemanager-automation,1.0.0,1734967121,12/23/2024
 4949,com.azure.resourcemanager:azure-resourcemanager-mixedreality:1.0.0,java,azure-resourcemanager-mixedreality_1.0.0,azure-resourcemanager-mixedreality,1.0.0,1734963394,12/23/2024
 4950,@azure/arm-deviceregistry@1.0.0-beta.2,js,@azure/arm-deviceregistry_1.0.0-beta.2,@azure/arm-deviceregistry,1.0.0-beta.2,1735008998,12/24/2024
+4951,"Azure.ResourceManager.Compute,1.7.0",dotnet,Azure.ResourceManager.Compute_1.7.0,Azure.ResourceManager.Compute,1.7.0,1735036348,12/24/2024

@@ -4940,3 +4940,4 @@ id,name,language,tag,package,version,date_epoch,date
 4939,com.azure.resourcemanager:azure-resourcemanager-servicefabric:1.0.0,java,azure-resourcemanager-servicefabric_1.0.0,azure-resourcemanager-servicefabric,1.0.0,1735024135,12/24/2024
 4940,com.azure.resourcemanager:azure-resourcemanager-logic:1.0.0,java,azure-resourcemanager-logic_1.0.0,azure-resourcemanager-logic,1.0.0,1735021483,12/24/2024
 4941,com.azure.resourcemanager:azure-resourcemanager-mariadb:1.0.0,java,azure-resourcemanager-mariadb_1.0.0,azure-resourcemanager-mariadb,1.0.0,1735020014,12/24/2024
+4942,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.0.0,java,azure-resourcemanager-datamigration_1.0.0,azure-resourcemanager-datamigration,1.0.0,1735015484,12/24/2024

@@ -1,6 +1,6 @@
 
 /**
- * Samples for Fields ListByType.
+ * Samples for ObjectDataTypes ListFieldsByModuleAndType.
  */
 public final class Main {
     /*
@@ -14,7 +14,7 @@ public final class Main {
      * @param manager Entry point to AutomationManager.
      */
     public static void getAListOfFieldsOfAGivenType(com.azure.resourcemanager.automation.AutomationManager manager) {
-        manager.fields().listByType("rg", "MyAutomationAccount", "MyModule", "MyCustomType",
+        manager.objectDataTypes().listFieldsByModuleAndType("rg", "MyAutomationAccount", "MyModule", "MyCustomType",
             com.azure.core.util.Context.NONE);
     }
 }

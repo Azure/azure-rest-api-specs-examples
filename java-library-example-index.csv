@@ -4947,3 +4947,4 @@ id,name,language,tag,package,version,date_epoch,date
 4946,com.azure.resourcemanager:azure-resourcemanager-azurestack:1.0.0,java,azure-resourcemanager-azurestack_1.0.0,azure-resourcemanager-azurestack,1.0.0,1734972468,12/23/2024
 4947,com.azure.resourcemanager:azure-resourcemanager-advisor:1.0.0,java,azure-resourcemanager-advisor_1.0.0,azure-resourcemanager-advisor,1.0.0,1734968123,12/23/2024
 4948,com.azure.resourcemanager:azure-resourcemanager-automation:1.0.0,java,azure-resourcemanager-automation_1.0.0,azure-resourcemanager-automation,1.0.0,1734967121,12/23/2024
+4949,com.azure.resourcemanager:azure-resourcemanager-mixedreality:1.0.0,java,azure-resourcemanager-mixedreality_1.0.0,azure-resourcemanager-mixedreality,1.0.0,1734963394,12/23/2024

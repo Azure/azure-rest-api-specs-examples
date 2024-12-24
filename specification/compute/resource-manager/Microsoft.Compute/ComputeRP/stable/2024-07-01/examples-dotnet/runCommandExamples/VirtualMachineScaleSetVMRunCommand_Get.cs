@@ -15,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualMachineScaleSetVmResource created on azure
-// for more information of creating VirtualMachineScaleSetVmResource, please refer to the document of VirtualMachineScaleSetVmResource
+// this example assumes you already have this VirtualMachineScaleSetVmRunCommandResource created on azure
+// for more information of creating VirtualMachineScaleSetVmRunCommandResource, please refer to the document of VirtualMachineScaleSetVmRunCommandResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string virtualMachineScaleSetName = "myvmScaleSet";
 string instanceId = "0";
-ResourceIdentifier virtualMachineScaleSetVmResourceId = VirtualMachineScaleSetVmResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName, instanceId);
-VirtualMachineScaleSetVmResource virtualMachineScaleSetVm = client.GetVirtualMachineScaleSetVmResource(virtualMachineScaleSetVmResourceId);
-
-// get the collection of this VirtualMachineScaleSetVmRunCommandResource
-VirtualMachineScaleSetVmRunCommandCollection collection = virtualMachineScaleSetVm.GetVirtualMachineScaleSetVmRunCommands();
+string runCommandName = "myRunCommand";
+ResourceIdentifier virtualMachineScaleSetVmRunCommandResourceId = VirtualMachineScaleSetVmRunCommandResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualMachineScaleSetName, instanceId, runCommandName);
+VirtualMachineScaleSetVmRunCommandResource virtualMachineScaleSetVmRunCommand = client.GetVirtualMachineScaleSetVmRunCommandResource(virtualMachineScaleSetVmRunCommandResourceId);
 
 // invoke the operation
-string runCommandName = "myRunCommand";
-NullableResponse<VirtualMachineScaleSetVmRunCommandResource> response = await collection.GetIfExistsAsync(runCommandName);
-VirtualMachineScaleSetVmRunCommandResource result = response.HasValue ? response.Value : null;
+VirtualMachineScaleSetVmRunCommandResource result = await virtualMachineScaleSetVmRunCommand.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    VirtualMachineRunCommandData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+VirtualMachineRunCommandData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

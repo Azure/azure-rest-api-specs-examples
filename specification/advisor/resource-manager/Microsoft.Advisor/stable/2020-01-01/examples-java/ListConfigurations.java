@@ -1,6 +1,6 @@
 
 /**
- * Samples for Configurations List.
+ * Samples for Configurations ListByResourceGroup.
  */
 public final class Main {
     /*
@@ -13,6 +13,6 @@ public final class Main {
      * @param manager Entry point to AdvisorManager.
      */
     public static void getConfigurations(com.azure.resourcemanager.advisor.AdvisorManager manager) {
-        manager.configurations().list(com.azure.core.util.Context.NONE);
+        manager.configurations().listByResourceGroup("resourceGroup", com.azure.core.util.Context.NONE);
     }
 }

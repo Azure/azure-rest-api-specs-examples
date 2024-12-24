@@ -4944,3 +4944,4 @@ id,name,language,tag,package,version,date_epoch,date
 4943,com.azure.resourcemanager:azure-resourcemanager-signalr:1.0.0,java,azure-resourcemanager-signalr_1.0.0,azure-resourcemanager-signalr,1.0.0,1735013229,12/24/2024
 4944,com.azure.resourcemanager:azure-resourcemanager-consumption:1.0.0,java,azure-resourcemanager-consumption_1.0.0,azure-resourcemanager-consumption,1.0.0,1735011617,12/24/2024
 4945,com.azure.resourcemanager:azure-resourcemanager-databox:1.0.0,java,azure-resourcemanager-databox_1.0.0,azure-resourcemanager-databox,1.0.0,1735006335,12/24/2024
+4946,com.azure.resourcemanager:azure-resourcemanager-azurestack:1.0.0,java,azure-resourcemanager-azurestack_1.0.0,azure-resourcemanager-azurestack,1.0.0,1734972468,12/23/2024

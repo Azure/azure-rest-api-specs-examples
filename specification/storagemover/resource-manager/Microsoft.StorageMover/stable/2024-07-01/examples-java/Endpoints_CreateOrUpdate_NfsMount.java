@@ -8,15 +8,15 @@ public final class Main {
     /*
      * x-ms-original-file:
      * specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2024-07-01/examples/
-     * Endpoints_CreateOrUpdate_AzureStorageBlobContainer.json
+     * Endpoints_CreateOrUpdate_NfsMount.json
      */
     /**
-     * Sample code: Endpoints_CreateOrUpdate_AzureStorageBlobContainer.
+     * Sample code: Endpoints_CreateOrUpdate_NfsMount.
      * 
      * @param manager Entry point to StorageMoverManager.
      */
-    public static void endpointsCreateOrUpdateAzureStorageBlobContainer(
-        com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
+    public static void
+        endpointsCreateOrUpdateNfsMount(com.azure.resourcemanager.storagemover.StorageMoverManager manager) {
         manager.endpoints().define("examples-endpointName")
             .withExistingStorageMover("examples-rg", "examples-storageMoverName")
             .withProperties((EndpointBaseProperties) null).create();

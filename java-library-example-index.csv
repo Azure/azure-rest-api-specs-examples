@@ -4939,3 +4939,4 @@ id,name,language,tag,package,version,date_epoch,date
 4938,com.azure.resourcemanager:azure-resourcemanager-costmanagement:1.0.0,java,azure-resourcemanager-costmanagement_1.0.0,azure-resourcemanager-costmanagement,1.0.0,1735025492,12/24/2024
 4939,com.azure.resourcemanager:azure-resourcemanager-servicefabric:1.0.0,java,azure-resourcemanager-servicefabric_1.0.0,azure-resourcemanager-servicefabric,1.0.0,1735024135,12/24/2024
 4940,com.azure.resourcemanager:azure-resourcemanager-logic:1.0.0,java,azure-resourcemanager-logic_1.0.0,azure-resourcemanager-logic,1.0.0,1735021483,12/24/2024
+4941,com.azure.resourcemanager:azure-resourcemanager-mariadb:1.0.0,java,azure-resourcemanager-mariadb_1.0.0,azure-resourcemanager-mariadb,1.0.0,1735020014,12/24/2024

@@ -4936,3 +4936,4 @@ id,name,language,tag,package,version,date_epoch,date
 4935,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.0.0,java,azure-resourcemanager-healthbot_1.0.0,azure-resourcemanager-healthbot,1.0.0,1734928412,12/23/2024
 4936,azure-mgmt-cosmosdb@10.0.0b5,python,azure-mgmt-cosmosdb_10.0.0b5,azure-mgmt-cosmosdb,10.0.0b5,1734932575,12/23/2024
 4937,azure-mgmt-deviceregistry@1.0.0b2,python,azure-mgmt-deviceregistry_1.0.0b2,azure-mgmt-deviceregistry,1.0.0b2,1734918305,12/23/2024
+4938,com.azure.resourcemanager:azure-resourcemanager-costmanagement:1.0.0,java,azure-resourcemanager-costmanagement_1.0.0,azure-resourcemanager-costmanagement,1.0.0,1735025492,12/24/2024

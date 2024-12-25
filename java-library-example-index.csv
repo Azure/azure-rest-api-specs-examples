@@ -4958,3 +4958,4 @@ id,name,language,tag,package,version,date_epoch,date
 4957,com.azure.resourcemanager:azure-resourcemanager-reservations:1.0.0,java,azure-resourcemanager-reservations_1.0.0,azure-resourcemanager-reservations,1.0.0,1735099505,12/25/2024
 4958,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.0.0,java,azure-resourcemanager-servicefabricmanagedclusters_1.0.0,azure-resourcemanager-servicefabricmanagedclusters,1.0.0,1735094371,12/25/2024
 4959,com.azure.resourcemanager:azure-resourcemanager-peering:1.0.0,java,azure-resourcemanager-peering_1.0.0,azure-resourcemanager-peering,1.0.0,1735094353,12/25/2024
+4960,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.2,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.2,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.2,1735096917,12/25/2024

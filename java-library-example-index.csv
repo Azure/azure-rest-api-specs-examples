@@ -4936,3 +4936,17 @@ id,name,language,tag,package,version,date_epoch,date
 4935,com.azure.resourcemanager:azure-resourcemanager-healthbot:1.0.0,java,azure-resourcemanager-healthbot_1.0.0,azure-resourcemanager-healthbot,1.0.0,1734928412,12/23/2024
 4936,azure-mgmt-cosmosdb@10.0.0b5,python,azure-mgmt-cosmosdb_10.0.0b5,azure-mgmt-cosmosdb,10.0.0b5,1734932575,12/23/2024
 4937,azure-mgmt-deviceregistry@1.0.0b2,python,azure-mgmt-deviceregistry_1.0.0b2,azure-mgmt-deviceregistry,1.0.0b2,1734918305,12/23/2024
+4938,com.azure.resourcemanager:azure-resourcemanager-costmanagement:1.0.0,java,azure-resourcemanager-costmanagement_1.0.0,azure-resourcemanager-costmanagement,1.0.0,1735025492,12/24/2024
+4939,com.azure.resourcemanager:azure-resourcemanager-servicefabric:1.0.0,java,azure-resourcemanager-servicefabric_1.0.0,azure-resourcemanager-servicefabric,1.0.0,1735024135,12/24/2024
+4940,com.azure.resourcemanager:azure-resourcemanager-logic:1.0.0,java,azure-resourcemanager-logic_1.0.0,azure-resourcemanager-logic,1.0.0,1735021483,12/24/2024
+4941,com.azure.resourcemanager:azure-resourcemanager-mariadb:1.0.0,java,azure-resourcemanager-mariadb_1.0.0,azure-resourcemanager-mariadb,1.0.0,1735020014,12/24/2024
+4942,com.azure.resourcemanager:azure-resourcemanager-datamigration:1.0.0,java,azure-resourcemanager-datamigration_1.0.0,azure-resourcemanager-datamigration,1.0.0,1735015484,12/24/2024
+4943,com.azure.resourcemanager:azure-resourcemanager-signalr:1.0.0,java,azure-resourcemanager-signalr_1.0.0,azure-resourcemanager-signalr,1.0.0,1735013229,12/24/2024
+4944,com.azure.resourcemanager:azure-resourcemanager-consumption:1.0.0,java,azure-resourcemanager-consumption_1.0.0,azure-resourcemanager-consumption,1.0.0,1735011617,12/24/2024
+4945,com.azure.resourcemanager:azure-resourcemanager-databox:1.0.0,java,azure-resourcemanager-databox_1.0.0,azure-resourcemanager-databox,1.0.0,1735006335,12/24/2024
+4946,com.azure.resourcemanager:azure-resourcemanager-azurestack:1.0.0,java,azure-resourcemanager-azurestack_1.0.0,azure-resourcemanager-azurestack,1.0.0,1734972468,12/23/2024
+4947,com.azure.resourcemanager:azure-resourcemanager-advisor:1.0.0,java,azure-resourcemanager-advisor_1.0.0,azure-resourcemanager-advisor,1.0.0,1734968123,12/23/2024
+4948,com.azure.resourcemanager:azure-resourcemanager-automation:1.0.0,java,azure-resourcemanager-automation_1.0.0,azure-resourcemanager-automation,1.0.0,1734967121,12/23/2024
+4949,com.azure.resourcemanager:azure-resourcemanager-mixedreality:1.0.0,java,azure-resourcemanager-mixedreality_1.0.0,azure-resourcemanager-mixedreality,1.0.0,1734963394,12/23/2024
+4950,@azure/arm-deviceregistry@1.0.0-beta.2,js,@azure/arm-deviceregistry_1.0.0-beta.2,@azure/arm-deviceregistry,1.0.0-beta.2,1735008998,12/24/2024
+4951,"Azure.ResourceManager.Compute,1.7.0",dotnet,Azure.ResourceManager.Compute_1.7.0,Azure.ResourceManager.Compute,1.7.0,1735036348,12/24/2024

@@ -4955,3 +4955,4 @@ id,name,language,tag,package,version,date_epoch,date
 4954,com.azure.resourcemanager:azure-resourcemanager-subscription:1.0.0,java,azure-resourcemanager-subscription_1.0.0,azure-resourcemanager-subscription,1.0.0,1735110323,12/25/2024
 4955,com.azure.resourcemanager:azure-resourcemanager-devcenter:1.0.0,java,azure-resourcemanager-devcenter_1.0.0,azure-resourcemanager-devcenter,1.0.0,1735108988,12/25/2024
 4956,com.azure.resourcemanager:azure-resourcemanager-policyinsights:1.0.0,java,azure-resourcemanager-policyinsights_1.0.0,azure-resourcemanager-policyinsights,1.0.0,1735106300,12/25/2024
+4957,com.azure.resourcemanager:azure-resourcemanager-reservations:1.0.0,java,azure-resourcemanager-reservations_1.0.0,azure-resourcemanager-reservations,1.0.0,1735099505,12/25/2024

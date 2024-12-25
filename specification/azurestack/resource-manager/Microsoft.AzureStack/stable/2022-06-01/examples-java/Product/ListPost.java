@@ -1,6 +1,6 @@
 
 /**
- * Samples for Products ListProducts.
+ * Samples for Products GetProducts.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param manager Entry point to AzureStackManager.
      */
     public static void returnsAListOfProducts(com.azure.resourcemanager.azurestack.AzureStackManager manager) {
-        manager.products().listProductsWithResponse("azurestack", "testregistration", "_all", null,
+        manager.products().getProductsWithResponse("azurestack", "testregistration", "_all", null,
             com.azure.core.util.Context.NONE);
     }
 }

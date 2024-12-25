@@ -4953,3 +4953,4 @@ id,name,language,tag,package,version,date_epoch,date
 4952,com.azure.resourcemanager:azure-resourcemanager-powerbidedicated:1.0.0,java,azure-resourcemanager-powerbidedicated_1.0.0,azure-resourcemanager-powerbidedicated,1.0.0,1735116888,12/25/2024
 4953,com.azure.resourcemanager:azure-resourcemanager-orbital:1.0.0,java,azure-resourcemanager-orbital_1.0.0,azure-resourcemanager-orbital,1.0.0,1735116868,12/25/2024
 4954,com.azure.resourcemanager:azure-resourcemanager-subscription:1.0.0,java,azure-resourcemanager-subscription_1.0.0,azure-resourcemanager-subscription,1.0.0,1735110323,12/25/2024
+4955,com.azure.resourcemanager:azure-resourcemanager-devcenter:1.0.0,java,azure-resourcemanager-devcenter_1.0.0,azure-resourcemanager-devcenter,1.0.0,1735108988,12/25/2024

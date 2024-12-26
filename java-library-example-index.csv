@@ -4960,3 +4960,4 @@ id,name,language,tag,package,version,date_epoch,date
 4959,com.azure.resourcemanager:azure-resourcemanager-peering:1.0.0,java,azure-resourcemanager-peering_1.0.0,azure-resourcemanager-peering,1.0.0,1735094353,12/25/2024
 4960,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.2,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.2,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.2,1735096917,12/25/2024
 4961,com.azure.resourcemanager:azure-resourcemanager-servicelinker:1.0.0,java,azure-resourcemanager-servicelinker_1.0.0,azure-resourcemanager-servicelinker,1.0.0,1735198773,12/26/2024
+4962,com.azure.resourcemanager:azure-resourcemanager-labservices:1.0.0,java,azure-resourcemanager-labservices_1.0.0,azure-resourcemanager-labservices,1.0.0,1735198224,12/26/2024

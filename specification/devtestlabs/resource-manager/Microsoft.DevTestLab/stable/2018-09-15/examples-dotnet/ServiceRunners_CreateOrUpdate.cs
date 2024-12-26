@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/ServiceRunners_CreateOrUpdate.json
 // this example is just showing the usage of "ServiceRunners_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,7 +30,7 @@ DevTestLabServiceRunnerCollection collection = devTestLab.GetDevTestLabServiceRu
 string name = "{servicerunnerName}";
 DevTestLabServiceRunnerData data = new DevTestLabServiceRunnerData(new AzureLocation("{location}"))
 {
-    Identity = new DevTestLabManagedIdentity()
+    Identity = new DevTestLabManagedIdentity
     {
         ManagedIdentityType = "{identityType}",
         PrincipalId = Guid.Parse("{identityPrincipalId}"),
@@ -39,7 +39,7 @@ DevTestLabServiceRunnerData data = new DevTestLabServiceRunnerData(new AzureLoca
     },
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabServiceRunnerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Users_CreateOrUpdate.json
 // this example is just showing the usage of "Users_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,7 +30,7 @@ DevTestLabUserCollection collection = devTestLab.GetDevTestLabUsers();
 string name = "{userName}";
 DevTestLabUserData data = new DevTestLabUserData(new AzureLocation("{location}"))
 {
-    Identity = new DevTestLabUserIdentity()
+    Identity = new DevTestLabUserIdentity
     {
         PrincipalName = "{principalName}",
         PrincipalId = "{principalId}",
@@ -38,14 +38,14 @@ DevTestLabUserData data = new DevTestLabUserData(new AzureLocation("{location}")
         ObjectId = "{objectId}",
         AppId = "{appId}",
     },
-    SecretStore = new DevTestLabUserSecretStore()
+    SecretStore = new DevTestLabUserSecretStore
     {
         KeyVaultUri = new Uri("{keyVaultUri}"),
         KeyVaultId = new ResourceIdentifier("{keyVaultId}"),
     },
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabUserResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

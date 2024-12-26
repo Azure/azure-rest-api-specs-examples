@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/NotificationChannels_Notify.json
 // this example is just showing the usage of "NotificationChannels_Notify" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,11 @@ ResourceIdentifier devTestLabNotificationChannelResourceId = DevTestLabNotificat
 DevTestLabNotificationChannelResource devTestLabNotificationChannel = client.GetDevTestLabNotificationChannelResource(devTestLabNotificationChannelResourceId);
 
 // invoke the operation
-DevTestLabNotificationChannelNotifyContent content = new DevTestLabNotificationChannelNotifyContent()
+DevTestLabNotificationChannelNotifyContent content = new DevTestLabNotificationChannelNotifyContent
 {
     EventName = DevTestLabNotificationChannelEventType.AutoShutdown,
     JsonPayload = "{\"eventType\":\"AutoShutdown\",\"subscriptionId\":\"{subscriptionId}\",\"resourceGroupName\":\"resourceGroupName\",\"labName\":\"{labName}\"}",
 };
 await devTestLabNotificationChannel.NotifyAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/ArtifactSources_CreateOrUpdate.json
 // this example is just showing the usage of "ArtifactSources_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +28,7 @@ DevTestLabArtifactSourceCollection collection = devTestLab.GetDevTestLabArtifact
 
 // invoke the operation
 string name = "{artifactSourceName}";
-DevTestLabArtifactSourceData data = new DevTestLabArtifactSourceData(new AzureLocation("placeholder"))
+DevTestLabArtifactSourceData data = new DevTestLabArtifactSourceData(default)
 {
     DisplayName = "{displayName}",
     Uri = new Uri("{artifactSourceUri}"),
@@ -40,7 +40,7 @@ DevTestLabArtifactSourceData data = new DevTestLabArtifactSourceData(new AzureLo
     Status = new DevTestLabEnableStatus("{Enabled|Disabled}"),
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabArtifactSourceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

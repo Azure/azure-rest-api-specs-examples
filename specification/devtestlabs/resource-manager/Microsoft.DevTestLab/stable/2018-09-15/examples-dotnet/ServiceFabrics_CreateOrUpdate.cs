@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/ServiceFabrics_CreateOrUpdate.json
@@ -34,7 +34,7 @@ DevTestLabServiceFabricData data = new DevTestLabServiceFabricData(new AzureLoca
     EnvironmentId = "{environmentId}",
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabServiceFabricResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

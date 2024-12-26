@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/CustomImages_Update.json
 // this example is just showing the usage of "CustomImages_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,11 @@ ResourceIdentifier devTestLabCustomImageResourceId = DevTestLabCustomImageResour
 DevTestLabCustomImageResource devTestLabCustomImage = client.GetDevTestLabCustomImageResource(devTestLabCustomImageResourceId);
 
 // invoke the operation
-DevTestLabCustomImagePatch patch = new DevTestLabCustomImagePatch()
+DevTestLabCustomImagePatch patch = new DevTestLabCustomImagePatch
 {
     Tags =
     {
-    ["tagName1"] = "tagValue2",
+    ["tagName1"] = "tagValue2"
     },
 };
 DevTestLabCustomImageResource result = await devTestLabCustomImage.UpdateAsync(patch);

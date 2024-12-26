@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/GlobalSchedules_Update.json
 // this example is just showing the usage of "GlobalSchedules_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier devTestLabGlobalScheduleResourceId = DevTestLabGlobalSchedule
 DevTestLabGlobalScheduleResource devTestLabGlobalSchedule = client.GetDevTestLabGlobalScheduleResource(devTestLabGlobalScheduleResourceId);
 
 // invoke the operation
-DevTestLabSchedulePatch patch = new DevTestLabSchedulePatch()
+DevTestLabSchedulePatch patch = new DevTestLabSchedulePatch
 {
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 DevTestLabGlobalScheduleResource result = await devTestLabGlobalSchedule.UpdateAsync(patch);

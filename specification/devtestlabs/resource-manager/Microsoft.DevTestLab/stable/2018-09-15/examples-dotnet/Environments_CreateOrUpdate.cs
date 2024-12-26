@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Environments_CreateOrUpdate.json
 // this example is just showing the usage of "Environments_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -29,14 +29,12 @@ DevTestLabEnvironmentCollection collection = devTestLabUser.GetDevTestLabEnviron
 
 // invoke the operation
 string name = "{environmentName}";
-DevTestLabEnvironmentData data = new DevTestLabEnvironmentData(new AzureLocation("placeholder"))
+DevTestLabEnvironmentData data = new DevTestLabEnvironmentData(default)
 {
-    DeploymentProperties = new DevTestLabEnvironmentDeployment()
+    DeploymentProperties = new DevTestLabEnvironmentDeployment
     {
         ArmTemplateId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.DevTestLab/labs/{labName}/artifactSources/{artifactSourceName}/armTemplates/{armTemplateName}"),
-        Parameters =
-        {
-        },
+        Parameters = { },
     },
 };
 ArmOperation<DevTestLabEnvironmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

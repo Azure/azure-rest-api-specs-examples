@@ -4962,3 +4962,4 @@ id,name,language,tag,package,version,date_epoch,date
 4961,com.azure.resourcemanager:azure-resourcemanager-servicelinker:1.0.0,java,azure-resourcemanager-servicelinker_1.0.0,azure-resourcemanager-servicelinker,1.0.0,1735198773,12/26/2024
 4962,com.azure.resourcemanager:azure-resourcemanager-labservices:1.0.0,java,azure-resourcemanager-labservices_1.0.0,azure-resourcemanager-labservices,1.0.0,1735198224,12/26/2024
 4963,com.azure.resourcemanager:azure-resourcemanager-hardwaresecuritymodules:1.0.0,java,azure-resourcemanager-hardwaresecuritymodules_1.0.0,azure-resourcemanager-hardwaresecuritymodules,1.0.0,1735195337,12/26/2024
+4964,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.0.0,java,azure-resourcemanager-confidentialledger_1.0.0,azure-resourcemanager-confidentialledger,1.0.0,1735193157,12/26/2024

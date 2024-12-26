@@ -4969,3 +4969,4 @@ id,name,language,tag,package,version,date_epoch,date
 4968,com.azure.resourcemanager:azure-resourcemanager-dynatrace:1.0.0,java,azure-resourcemanager-dynatrace_1.0.0,azure-resourcemanager-dynatrace,1.0.0,1735180778,12/26/2024
 4969,com.azure.resourcemanager:azure-resourcemanager-notificationhubs:1.0.0,java,azure-resourcemanager-notificationhubs_1.0.0,azure-resourcemanager-notificationhubs,1.0.0,1735180540,12/26/2024
 4970,"Azure.ResourceManager.CosmosDB,1.4.0-beta.12",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.12,Azure.ResourceManager.CosmosDB,1.4.0-beta.12,1735211348,12/26/2024
+4971,"Azure.ResourceManager.Elastic,1.0.0",dotnet,Azure.ResourceManager.Elastic_1.0.0,Azure.ResourceManager.Elastic,1.0.0,1735189418,12/26/2024

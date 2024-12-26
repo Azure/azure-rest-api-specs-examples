@@ -4964,3 +4964,4 @@ id,name,language,tag,package,version,date_epoch,date
 4963,com.azure.resourcemanager:azure-resourcemanager-hardwaresecuritymodules:1.0.0,java,azure-resourcemanager-hardwaresecuritymodules_1.0.0,azure-resourcemanager-hardwaresecuritymodules,1.0.0,1735195337,12/26/2024
 4964,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.0.0,java,azure-resourcemanager-confidentialledger_1.0.0,azure-resourcemanager-confidentialledger,1.0.0,1735193157,12/26/2024
 4965,com.azure.resourcemanager:azure-resourcemanager-timeseriesinsights:1.0.0,java,azure-resourcemanager-timeseriesinsights_1.0.0,azure-resourcemanager-timeseriesinsights,1.0.0,1735192695,12/26/2024
+4966,com.azure.resourcemanager:azure-resourcemanager-marketplaceordering:1.0.0,java,azure-resourcemanager-marketplaceordering_1.0.0,azure-resourcemanager-marketplaceordering,1.0.0,1735186118,12/26/2024

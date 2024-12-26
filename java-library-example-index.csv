@@ -4967,3 +4967,4 @@ id,name,language,tag,package,version,date_epoch,date
 4966,com.azure.resourcemanager:azure-resourcemanager-marketplaceordering:1.0.0,java,azure-resourcemanager-marketplaceordering_1.0.0,azure-resourcemanager-marketplaceordering,1.0.0,1735186118,12/26/2024
 4967,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0,java,azure-resourcemanager-security_1.0.0,azure-resourcemanager-security,1.0.0,1735184836,12/26/2024
 4968,com.azure.resourcemanager:azure-resourcemanager-dynatrace:1.0.0,java,azure-resourcemanager-dynatrace_1.0.0,azure-resourcemanager-dynatrace,1.0.0,1735180778,12/26/2024
+4969,com.azure.resourcemanager:azure-resourcemanager-notificationhubs:1.0.0,java,azure-resourcemanager-notificationhubs_1.0.0,azure-resourcemanager-notificationhubs,1.0.0,1735180540,12/26/2024

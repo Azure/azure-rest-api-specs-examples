@@ -4959,3 +4959,15 @@ id,name,language,tag,package,version,date_epoch,date
 4958,com.azure.resourcemanager:azure-resourcemanager-servicefabricmanagedclusters:1.0.0,java,azure-resourcemanager-servicefabricmanagedclusters_1.0.0,azure-resourcemanager-servicefabricmanagedclusters,1.0.0,1735094371,12/25/2024
 4959,com.azure.resourcemanager:azure-resourcemanager-peering:1.0.0,java,azure-resourcemanager-peering_1.0.0,azure-resourcemanager-peering,1.0.0,1735094353,12/25/2024
 4960,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos/v4@v4.0.0-beta.2,go,sdk/resourcemanager/cosmos/armcosmos/v4.0.0-beta.2,sdk/resourcemanager/cosmos/armcosmos,v4.0.0-beta.2,1735096917,12/25/2024
+4961,com.azure.resourcemanager:azure-resourcemanager-servicelinker:1.0.0,java,azure-resourcemanager-servicelinker_1.0.0,azure-resourcemanager-servicelinker,1.0.0,1735198773,12/26/2024
+4962,com.azure.resourcemanager:azure-resourcemanager-labservices:1.0.0,java,azure-resourcemanager-labservices_1.0.0,azure-resourcemanager-labservices,1.0.0,1735198224,12/26/2024
+4963,com.azure.resourcemanager:azure-resourcemanager-hardwaresecuritymodules:1.0.0,java,azure-resourcemanager-hardwaresecuritymodules_1.0.0,azure-resourcemanager-hardwaresecuritymodules,1.0.0,1735195337,12/26/2024
+4964,com.azure.resourcemanager:azure-resourcemanager-confidentialledger:1.0.0,java,azure-resourcemanager-confidentialledger_1.0.0,azure-resourcemanager-confidentialledger,1.0.0,1735193157,12/26/2024
+4965,com.azure.resourcemanager:azure-resourcemanager-timeseriesinsights:1.0.0,java,azure-resourcemanager-timeseriesinsights_1.0.0,azure-resourcemanager-timeseriesinsights,1.0.0,1735192695,12/26/2024
+4966,com.azure.resourcemanager:azure-resourcemanager-marketplaceordering:1.0.0,java,azure-resourcemanager-marketplaceordering_1.0.0,azure-resourcemanager-marketplaceordering,1.0.0,1735186118,12/26/2024
+4967,com.azure.resourcemanager:azure-resourcemanager-security:1.0.0,java,azure-resourcemanager-security_1.0.0,azure-resourcemanager-security,1.0.0,1735184836,12/26/2024
+4968,com.azure.resourcemanager:azure-resourcemanager-dynatrace:1.0.0,java,azure-resourcemanager-dynatrace_1.0.0,azure-resourcemanager-dynatrace,1.0.0,1735180778,12/26/2024
+4969,com.azure.resourcemanager:azure-resourcemanager-notificationhubs:1.0.0,java,azure-resourcemanager-notificationhubs_1.0.0,azure-resourcemanager-notificationhubs,1.0.0,1735180540,12/26/2024
+4970,"Azure.ResourceManager.CosmosDB,1.4.0-beta.12",dotnet,Azure.ResourceManager.CosmosDB_1.4.0-beta.12,Azure.ResourceManager.CosmosDB,1.4.0-beta.12,1735211348,12/26/2024
+4971,"Azure.ResourceManager.Elastic,1.0.0",dotnet,Azure.ResourceManager.Elastic_1.0.0,Azure.ResourceManager.Elastic,1.0.0,1735189418,12/26/2024
+4972,"Azure.ResourceManager.DevTestLabs,1.1.1",dotnet,Azure.ResourceManager.DevTestLabs_1.1.1,Azure.ResourceManager.DevTestLabs,1.1.1,1735180653,12/26/2024

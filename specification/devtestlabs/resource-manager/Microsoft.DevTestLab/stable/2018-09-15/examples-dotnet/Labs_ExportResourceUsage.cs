@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Labs_ExportResourceUsage.json
 // this example is just showing the usage of "Labs_ExportResourceUsage" operation, for the dependent resources, they will have to be created separately.
@@ -26,11 +25,11 @@ ResourceIdentifier devTestLabResourceId = DevTestLabResource.CreateResourceIdent
 DevTestLabResource devTestLab = client.GetDevTestLabResource(devTestLabResourceId);
 
 // invoke the operation
-DevTestLabExportResourceUsageContent content = new DevTestLabExportResourceUsageContent()
+DevTestLabExportResourceUsageContent content = new DevTestLabExportResourceUsageContent
 {
     BlobStorageAbsoluteSasUri = new Uri("https://invalid.blob.core.windows.net/export.blob?sv=2015-07-08&sig={sas}&sp=rcw"),
     UsageStartOn = DateTimeOffset.Parse("2020-12-01T00:00:00Z"),
 };
 await devTestLab.ExportResourceUsageAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

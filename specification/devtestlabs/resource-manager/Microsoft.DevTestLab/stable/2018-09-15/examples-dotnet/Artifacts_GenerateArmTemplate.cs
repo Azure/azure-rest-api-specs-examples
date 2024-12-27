@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Artifacts_GenerateArmTemplate.json
 // this example is just showing the usage of "Artifacts_GenerateArmTemplate" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +26,7 @@ ResourceIdentifier devTestLabArtifactResourceId = DevTestLabArtifactResource.Cre
 DevTestLabArtifactResource devTestLabArtifact = client.GetDevTestLabArtifactResource(devTestLabArtifactResourceId);
 
 // invoke the operation
-DevTestLabArtifactGenerateArmTemplateContent content = new DevTestLabArtifactGenerateArmTemplateContent()
+DevTestLabArtifactGenerateArmTemplateContent content = new DevTestLabArtifactGenerateArmTemplateContent
 {
     VmName = "{vmName}",
     Location = new AzureLocation("{location}"),

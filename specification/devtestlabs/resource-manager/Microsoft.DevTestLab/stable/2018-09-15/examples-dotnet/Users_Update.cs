@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Users_Update.json
 // this example is just showing the usage of "Users_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,11 @@ ResourceIdentifier devTestLabUserResourceId = DevTestLabUserResource.CreateResou
 DevTestLabUserResource devTestLabUser = client.GetDevTestLabUserResource(devTestLabUserResourceId);
 
 // invoke the operation
-DevTestLabUserPatch patch = new DevTestLabUserPatch()
+DevTestLabUserPatch patch = new DevTestLabUserPatch
 {
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 DevTestLabUserResource result = await devTestLabUser.UpdateAsync(patch);

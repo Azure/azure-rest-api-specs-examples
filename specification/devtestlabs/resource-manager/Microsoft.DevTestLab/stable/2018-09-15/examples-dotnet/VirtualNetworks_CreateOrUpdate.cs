@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/VirtualNetworks_CreateOrUpdate.json
@@ -31,7 +31,7 @@ DevTestLabVirtualNetworkData data = new DevTestLabVirtualNetworkData(new AzureLo
 {
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabVirtualNetworkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/ServiceFabrics_Update.json
 // this example is just showing the usage of "ServiceFabrics_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,11 +26,11 @@ ResourceIdentifier devTestLabServiceFabricResourceId = DevTestLabServiceFabricRe
 DevTestLabServiceFabricResource devTestLabServiceFabric = client.GetDevTestLabServiceFabricResource(devTestLabServiceFabricResourceId);
 
 // invoke the operation
-DevTestLabServiceFabricPatch patch = new DevTestLabServiceFabricPatch()
+DevTestLabServiceFabricPatch patch = new DevTestLabServiceFabricPatch
 {
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 DevTestLabServiceFabricResource result = await devTestLabServiceFabric.UpdateAsync(patch);

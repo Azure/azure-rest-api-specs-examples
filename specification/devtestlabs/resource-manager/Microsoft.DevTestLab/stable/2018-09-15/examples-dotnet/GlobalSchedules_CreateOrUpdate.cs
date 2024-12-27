@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/GlobalSchedules_CreateOrUpdate.json
 // this example is just showing the usage of "GlobalSchedules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,16 +28,13 @@ DevTestLabGlobalScheduleCollection collection = resourceGroupResource.GetDevTest
 
 // invoke the operation
 string name = "labvmautostart";
-DevTestLabScheduleData data = new DevTestLabScheduleData(new AzureLocation("placeholder"))
+DevTestLabScheduleData data = new DevTestLabScheduleData(default)
 {
     Status = DevTestLabEnableStatus.Enabled,
     TaskType = "LabVmsStartupTask",
-    WeeklyRecurrence = new DevTestLabWeekDetails()
+    WeeklyRecurrence = new DevTestLabWeekDetails
     {
-        Weekdays =
-        {
-        "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"
-        },
+        Weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" },
         Time = "0700",
     },
     TimeZoneId = "Hawaiian Standard Time",

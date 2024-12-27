@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/VirtualMachines_CreateOrUpdate.json
 // this example is just showing the usage of "VirtualMachines_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -36,7 +36,7 @@ DevTestLabVmData data = new DevTestLabVmData(new AzureLocation("{location}"))
     LabSubnetName = "{virtualNetworkName}Subnet",
     LabVirtualNetworkId = new ResourceIdentifier("/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}/virtualnetworks/{virtualNetworkName}"),
     DisallowPublicIPAddress = true,
-    GalleryImageReference = new DevTestLabGalleryImageReference()
+    GalleryImageReference = new DevTestLabGalleryImageReference
     {
         Offer = "UbuntuServer",
         Publisher = "Canonical",
@@ -48,7 +48,7 @@ DevTestLabVmData data = new DevTestLabVmData(new AzureLocation("{location}"))
     StorageType = "Standard",
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabVmResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

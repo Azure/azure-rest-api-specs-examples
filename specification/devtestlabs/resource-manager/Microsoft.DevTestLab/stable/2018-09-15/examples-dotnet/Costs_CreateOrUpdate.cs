@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Costs_CreateOrUpdate.json
 // this example is just showing the usage of "Costs_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -25,46 +25,43 @@ ResourceIdentifier devTestLabCostResourceId = DevTestLabCostResource.CreateResou
 DevTestLabCostResource devTestLabCost = client.GetDevTestLabCostResource(devTestLabCostResourceId);
 
 // invoke the operation
-DevTestLabCostData data = new DevTestLabCostData(new AzureLocation("placeholder"))
+DevTestLabCostData data = new DevTestLabCostData(default)
 {
-    TargetCost = new DevTestLabTargetCost()
+    TargetCost = new DevTestLabTargetCost
     {
         Status = DevTestLabTargetCostStatus.Enabled,
         Target = 100,
-        CostThresholds =
-        {
-        new DevTestLabCostThreshold()
+        CostThresholds = {new DevTestLabCostThreshold
         {
         ThresholdId = "00000000-0000-0000-0000-000000000001",
         ThresholdValue = 25,
         DisplayOnChart = DevTestLabCostThresholdStatus.Disabled,
         SendNotificationWhenExceeded = DevTestLabCostThresholdStatus.Disabled,
-        },new DevTestLabCostThreshold()
+        }, new DevTestLabCostThreshold
         {
         ThresholdId = "00000000-0000-0000-0000-000000000002",
         ThresholdValue = 50,
         DisplayOnChart = DevTestLabCostThresholdStatus.Enabled,
         SendNotificationWhenExceeded = DevTestLabCostThresholdStatus.Enabled,
-        },new DevTestLabCostThreshold()
+        }, new DevTestLabCostThreshold
         {
         ThresholdId = "00000000-0000-0000-0000-000000000003",
         ThresholdValue = 75,
         DisplayOnChart = DevTestLabCostThresholdStatus.Disabled,
         SendNotificationWhenExceeded = DevTestLabCostThresholdStatus.Disabled,
-        },new DevTestLabCostThreshold()
+        }, new DevTestLabCostThreshold
         {
         ThresholdId = "00000000-0000-0000-0000-000000000004",
         ThresholdValue = 100,
         DisplayOnChart = DevTestLabCostThresholdStatus.Disabled,
         SendNotificationWhenExceeded = DevTestLabCostThresholdStatus.Disabled,
-        },new DevTestLabCostThreshold()
+        }, new DevTestLabCostThreshold
         {
         ThresholdId = "00000000-0000-0000-0000-000000000005",
         ThresholdValue = 125,
         DisplayOnChart = DevTestLabCostThresholdStatus.Disabled,
         SendNotificationWhenExceeded = DevTestLabCostThresholdStatus.Disabled,
-        }
-        },
+        }},
         CycleStartOn = DateTimeOffset.Parse("2020-12-01T00:00:00.000Z"),
         CycleEndOn = DateTimeOffset.Parse("2020-12-31T00:00:00.000Z"),
         CycleType = DevTestLabReportingCycleType.CalendarMonth,

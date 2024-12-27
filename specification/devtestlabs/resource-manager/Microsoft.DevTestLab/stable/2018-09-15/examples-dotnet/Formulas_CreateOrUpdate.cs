@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Formulas_CreateOrUpdate.json
 // this example is just showing the usage of "Formulas_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -31,7 +31,7 @@ string name = "{formulaName}";
 DevTestLabFormulaData data = new DevTestLabFormulaData(new AzureLocation("{location}"))
 {
     Description = "Formula using a Linux base",
-    FormulaContent = new DevTestLabVmCreationContent()
+    FormulaContent = new DevTestLabVmCreationContent
     {
         Location = new AzureLocation("{location}"),
         Notes = "Ubuntu Server 20.10",
@@ -41,17 +41,12 @@ DevTestLabFormulaData data = new DevTestLabFormulaData(new AzureLocation("{locat
         LabSubnetName = "Dtl{labName}Subnet",
         LabVirtualNetworkId = new ResourceIdentifier("/virtualnetworks/dtl{labName}"),
         DisallowPublicIPAddress = true,
-        Artifacts =
-        {
-        new DevTestLabArtifactInstallInfo()
+        Artifacts = {new DevTestLabArtifactInstallInfo
         {
         ArtifactId = "/artifactsources/{artifactSourceName}/artifacts/linux-install-nodejs",
-        Parameters =
-        {
-        },
-        }
-        },
-        GalleryImageReference = new DevTestLabGalleryImageReference()
+        Parameters = {},
+        }},
+        GalleryImageReference = new DevTestLabGalleryImageReference
         {
             Offer = "0001-com-ubuntu-server-groovy",
             Publisher = "canonical",
@@ -59,16 +54,13 @@ DevTestLabFormulaData data = new DevTestLabFormulaData(new AzureLocation("{locat
             OSType = "Linux",
             Version = "latest",
         },
-        NetworkInterface = new DevTestLabNetworkInterface()
+        NetworkInterface = new DevTestLabNetworkInterface
         {
-            SharedPublicIPAddressInboundNatRules =
-            {
-            new DevTestLabInboundNatRule()
+            SharedPublicIPAddressInboundNatRules = {new DevTestLabInboundNatRule
             {
             TransportProtocol = DevTestLabTransportProtocol.Tcp,
             BackendPort = 22,
-            }
-            },
+            }},
         },
         AllowClaim = false,
         StorageType = "Standard",

@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/Schedules_CreateOrUpdate.json
 // this example is just showing the usage of "Schedules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,18 +32,15 @@ DevTestLabScheduleData data = new DevTestLabScheduleData(new AzureLocation("{loc
 {
     Status = new DevTestLabEnableStatus("{Enabled|Disabled}"),
     TaskType = "{myLabVmTaskType}",
-    WeeklyRecurrence = new DevTestLabWeekDetails()
+    WeeklyRecurrence = new DevTestLabWeekDetails
     {
-        Weekdays =
-        {
-        "Monday","Wednesday","Friday"
-        },
+        Weekdays = { "Monday", "Wednesday", "Friday" },
         Time = "{timeOfTheDayTheScheduleWillOccurOnThoseDays}",
     },
     DailyRecurrenceTime = "{timeOfTheDayTheScheduleWillOccurEveryDay}",
     HourlyRecurrenceMinute = 30,
     TimeZoneId = "Pacific Standard Time",
-    NotificationSettings = new DevTestLabNotificationSettings()
+    NotificationSettings = new DevTestLabNotificationSettings
     {
         Status = new DevTestLabEnableStatus("{Enabled|Disabled}"),
         TimeInMinutes = 15,
@@ -54,7 +51,7 @@ DevTestLabScheduleData data = new DevTestLabScheduleData(new AzureLocation("{loc
     TargetResourceId = "/subscriptions/{subscriptionId}/resourcegroups/resourceGroupName/providers/microsoft.devtestlab/labs/{labName}",
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

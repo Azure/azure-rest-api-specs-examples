@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DevTestLabs;
 using Azure.ResourceManager.DevTestLabs.Models;
+using Azure.ResourceManager.DevTestLabs;
 
 // Generated from example definition: specification/devtestlabs/resource-manager/Microsoft.DevTestLab/stable/2018-09-15/examples/ServiceFabricSchedules_CreateOrUpdate.json
 // this example is just showing the usage of "ServiceFabricSchedules_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -34,18 +34,15 @@ DevTestLabScheduleData data = new DevTestLabScheduleData(new AzureLocation("{loc
 {
     Status = new DevTestLabEnableStatus("{Enabled|Disabled}"),
     TaskType = "{Unknown|LabVmsShutdownTask|LabVmsStartupTask|LabVmReclamationTask|ComputeVmShutdownTask}",
-    WeeklyRecurrence = new DevTestLabWeekDetails()
+    WeeklyRecurrence = new DevTestLabWeekDetails
     {
-        Weekdays =
-        {
-        "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-        },
+        Weekdays = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" },
         Time = "19:00",
     },
     DailyRecurrenceTime = "19:00",
     HourlyRecurrenceMinute = 0,
     TimeZoneId = "Pacific Standard Time",
-    NotificationSettings = new DevTestLabNotificationSettings()
+    NotificationSettings = new DevTestLabNotificationSettings
     {
         Status = new DevTestLabEnableStatus("{Enabled|Disabled}"),
         TimeInMinutes = 15,
@@ -56,7 +53,7 @@ DevTestLabScheduleData data = new DevTestLabScheduleData(new AzureLocation("{loc
     TargetResourceId = "/subscriptions/{subscriptionId}/resourceGroups/resourceGroupName/providers/Microsoft.DevTestLab/labs/{labName}/users/{uniqueIdentifier}/servicefabrics/{serviceFrabicName}",
     Tags =
     {
-    ["tagName1"] = "tagValue1",
+    ["tagName1"] = "tagValue1"
     },
 };
 ArmOperation<DevTestLabServiceFabricScheduleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

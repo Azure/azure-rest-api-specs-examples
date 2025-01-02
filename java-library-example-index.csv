@@ -4972,3 +4972,4 @@ id,name,language,tag,package,version,date_epoch,date
 4971,"Azure.ResourceManager.Elastic,1.0.0",dotnet,Azure.ResourceManager.Elastic_1.0.0,Azure.ResourceManager.Elastic,1.0.0,1735189418,12/26/2024
 4972,"Azure.ResourceManager.DevTestLabs,1.1.1",dotnet,Azure.ResourceManager.DevTestLabs_1.1.1,Azure.ResourceManager.DevTestLabs,1.1.1,1735180653,12/26/2024
 4973,com.azure.resourcemanager:azure-resourcemanager-automanage:1.0.0,java,azure-resourcemanager-automanage_1.0.0,azure-resourcemanager-automanage,1.0.0,1735804870,01/02/2025
+4974,com.azure.resourcemanager:azure-resourcemanager-baremetalinfrastructure:1.0.0,java,azure-resourcemanager-baremetalinfrastructure_1.0.0,azure-resourcemanager-baremetalinfrastructure,1.0.0,1735804377,01/02/2025

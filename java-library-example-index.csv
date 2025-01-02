@@ -4977,3 +4977,4 @@ id,name,language,tag,package,version,date_epoch,date
 4976,com.azure.resourcemanager:azure-resourcemanager-azurearcdata:1.0.0,java,azure-resourcemanager-azurearcdata_1.0.0,azure-resourcemanager-azurearcdata,1.0.0,1735800180,01/02/2025
 4977,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.0.0,java,azure-resourcemanager-dnsresolver_1.0.0,azure-resourcemanager-dnsresolver,1.0.0,1735790649,01/02/2025
 4978,com.azure.resourcemanager:azure-resourcemanager-botservice:1.0.0,java,azure-resourcemanager-botservice_1.0.0,azure-resourcemanager-botservice,1.0.0,1735790576,01/02/2025
+4979,com.azure.resourcemanager:azure-resourcemanager-purview:1.0.0,java,azure-resourcemanager-purview_1.0.0,azure-resourcemanager-purview,1.0.0,1735787607,01/02/2025

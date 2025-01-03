@@ -4981,3 +4981,4 @@ id,name,language,tag,package,version,date_epoch,date
 4980,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.1.0,java,azure-resourcemanager-deviceprovisioningservices_1.1.0,azure-resourcemanager-deviceprovisioningservices,1.1.0,1735896436,01/03/2025
 4981,com.azure.resourcemanager:azure-resourcemanager-streamanalytics:1.0.0,java,azure-resourcemanager-streamanalytics_1.0.0,azure-resourcemanager-streamanalytics,1.0.0,1735893201,01/03/2025
 4982,com.azure.resourcemanager:azure-resourcemanager-securityinsights:1.0.0,java,azure-resourcemanager-securityinsights_1.0.0,azure-resourcemanager-securityinsights,1.0.0,1735887520,01/03/2025
+4983,com.azure.resourcemanager:azure-resourcemanager-managedapplications:1.0.0,java,azure-resourcemanager-managedapplications_1.0.0,azure-resourcemanager-managedapplications,1.0.0,1735886798,01/03/2025

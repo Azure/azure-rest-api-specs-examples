@@ -1,6 +1,6 @@
 
 /**
- * Samples for JitRequests ListByResourceGroup.
+ * Samples for JitRequests ListBySubscription.
  */
 public final class Main {
     /*
@@ -8,12 +8,12 @@ public final class Main {
      * listJitRequestsByResourceGroup.json
      */
     /**
-     * Sample code: Lists all JIT requests within the resource group.
+     * Sample code: Lists all JIT requests within the subscription.
      * 
      * @param manager Entry point to ApplicationManager.
      */
-    public static void listsAllJITRequestsWithinTheResourceGroup(
+    public static void listsAllJITRequestsWithinTheSubscription(
         com.azure.resourcemanager.managedapplications.ApplicationManager manager) {
-        manager.jitRequests().listByResourceGroupWithResponse("rg", com.azure.core.util.Context.NONE);
+        manager.jitRequests().listBySubscriptionWithResponse(com.azure.core.util.Context.NONE);
     }
 }

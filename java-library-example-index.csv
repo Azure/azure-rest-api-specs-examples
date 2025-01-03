@@ -4984,3 +4984,4 @@ id,name,language,tag,package,version,date_epoch,date
 4983,com.azure.resourcemanager:azure-resourcemanager-managedapplications:1.0.0,java,azure-resourcemanager-managedapplications_1.0.0,azure-resourcemanager-managedapplications,1.0.0,1735886798,01/03/2025
 4984,com.azure.resourcemanager:azure-resourcemanager-datalakestore:1.0.0,java,azure-resourcemanager-datalakestore_1.0.0,azure-resourcemanager-datalakestore,1.0.0,1735885440,01/03/2025
 4985,com.azure.resourcemanager:azure-resourcemanager-datalakeanalytics:1.0.0,java,azure-resourcemanager-datalakeanalytics_1.0.0,azure-resourcemanager-datalakeanalytics,1.0.0,1735881617,01/03/2025
+4986,com.azure.resourcemanager:azure-resourcemanager-storagepool:1.0.0,java,azure-resourcemanager-storagepool_1.0.0,azure-resourcemanager-storagepool,1.0.0,1735876751,01/03/2025

@@ -4979,3 +4979,4 @@ id,name,language,tag,package,version,date_epoch,date
 4978,com.azure.resourcemanager:azure-resourcemanager-botservice:1.0.0,java,azure-resourcemanager-botservice_1.0.0,azure-resourcemanager-botservice,1.0.0,1735790576,01/02/2025
 4979,com.azure.resourcemanager:azure-resourcemanager-purview:1.0.0,java,azure-resourcemanager-purview_1.0.0,azure-resourcemanager-purview,1.0.0,1735787607,01/02/2025
 4980,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.1.0,java,azure-resourcemanager-deviceprovisioningservices_1.1.0,azure-resourcemanager-deviceprovisioningservices,1.1.0,1735896436,01/03/2025
+4981,com.azure.resourcemanager:azure-resourcemanager-streamanalytics:1.0.0,java,azure-resourcemanager-streamanalytics_1.0.0,azure-resourcemanager-streamanalytics,1.0.0,1735893201,01/03/2025

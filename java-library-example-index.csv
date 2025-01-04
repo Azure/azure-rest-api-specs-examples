@@ -4978,3 +4978,11 @@ id,name,language,tag,package,version,date_epoch,date
 4977,com.azure.resourcemanager:azure-resourcemanager-dnsresolver:1.0.0,java,azure-resourcemanager-dnsresolver_1.0.0,azure-resourcemanager-dnsresolver,1.0.0,1735790649,01/02/2025
 4978,com.azure.resourcemanager:azure-resourcemanager-botservice:1.0.0,java,azure-resourcemanager-botservice_1.0.0,azure-resourcemanager-botservice,1.0.0,1735790576,01/02/2025
 4979,com.azure.resourcemanager:azure-resourcemanager-purview:1.0.0,java,azure-resourcemanager-purview_1.0.0,azure-resourcemanager-purview,1.0.0,1735787607,01/02/2025
+4980,com.azure.resourcemanager:azure-resourcemanager-deviceprovisioningservices:1.1.0,java,azure-resourcemanager-deviceprovisioningservices_1.1.0,azure-resourcemanager-deviceprovisioningservices,1.1.0,1735896436,01/03/2025
+4981,com.azure.resourcemanager:azure-resourcemanager-streamanalytics:1.0.0,java,azure-resourcemanager-streamanalytics_1.0.0,azure-resourcemanager-streamanalytics,1.0.0,1735893201,01/03/2025
+4982,com.azure.resourcemanager:azure-resourcemanager-securityinsights:1.0.0,java,azure-resourcemanager-securityinsights_1.0.0,azure-resourcemanager-securityinsights,1.0.0,1735887520,01/03/2025
+4983,com.azure.resourcemanager:azure-resourcemanager-managedapplications:1.0.0,java,azure-resourcemanager-managedapplications_1.0.0,azure-resourcemanager-managedapplications,1.0.0,1735886798,01/03/2025
+4984,com.azure.resourcemanager:azure-resourcemanager-datalakestore:1.0.0,java,azure-resourcemanager-datalakestore_1.0.0,azure-resourcemanager-datalakestore,1.0.0,1735885440,01/03/2025
+4985,com.azure.resourcemanager:azure-resourcemanager-datalakeanalytics:1.0.0,java,azure-resourcemanager-datalakeanalytics_1.0.0,azure-resourcemanager-datalakeanalytics,1.0.0,1735881617,01/03/2025
+4986,com.azure.resourcemanager:azure-resourcemanager-storagepool:1.0.0,java,azure-resourcemanager-storagepool_1.0.0,azure-resourcemanager-storagepool,1.0.0,1735876751,01/03/2025
+4987,com.azure.resourcemanager:azure-resourcemanager-extendedlocation:1.0.0,java,azure-resourcemanager-extendedlocation_1.0.0,azure-resourcemanager-extendedlocation,1.0.0,1735871828,01/03/2025

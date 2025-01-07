@@ -1,0 +1,24 @@
+
+import com.azure.resourcemanager.postgresqlflexibleserver.models.VirtualEndpointType;
+import java.util.Arrays;
+
+/**
+ * Samples for VirtualEndpoints Create.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file:
+     * specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/
+     * VirtualEndpointCreate.json
+     */
+    /**
+     * Sample code: Create a new virtual endpoint for a flexible server.
+     * 
+     * @param manager Entry point to PostgreSqlManager.
+     */
+    public static void createANewVirtualEndpointForAFlexibleServer(
+        com.azure.resourcemanager.postgresqlflexibleserver.PostgreSqlManager manager) {
+        manager.virtualEndpoints().define("pgVirtualEndpoint1").withExistingFlexibleServer("testrg", "pgtestsvc4")
+            .withEndpointType(VirtualEndpointType.READ_WRITE).withMembers(Arrays.asList("testPrimary1")).create();
+    }
+}

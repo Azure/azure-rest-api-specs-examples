@@ -4987,3 +4987,4 @@ id,name,language,tag,package,version,date_epoch,date
 4986,com.azure.resourcemanager:azure-resourcemanager-storagepool:1.0.0,java,azure-resourcemanager-storagepool_1.0.0,azure-resourcemanager-storagepool,1.0.0,1735876751,01/03/2025
 4987,com.azure.resourcemanager:azure-resourcemanager-extendedlocation:1.0.0,java,azure-resourcemanager-extendedlocation_1.0.0,azure-resourcemanager-extendedlocation,1.0.0,1735871828,01/03/2025
 4988,com.azure.resourcemanager:azure-resourcemanager-postgresqlflexibleserver:1.1.0,java,azure-resourcemanager-postgresqlflexibleserver_1.1.0,azure-resourcemanager-postgresqlflexibleserver,1.1.0,1736131056,01/06/2025
+4989,@azure/arm-postgresql-flexible@8.0.0,js,@azure/arm-postgresql-flexible_8.0.0,@azure/arm-postgresql-flexible,8.0.0,1736418570,01/09/2025

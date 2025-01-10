@@ -3,19 +3,20 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to Get quota usages at specified location in a given subscription.
+ * This sample demonstrates how to List all the configurations in a given server.
  *
- * @summary Get quota usages at specified location in a given subscription.
- * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/preview/2023-12-01-preview/examples/QuotaUsagesForFlexibleServers.json
+ * @summary List all the configurations in a given server.
+ * x-ms-original-file: specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2024-08-01/examples/ConfigurationListByServer.json
  */
-async function listOfQuotaUsagesForFlexibleServers() {
+async function configurationList() {
   const subscriptionId =
     process.env["POSTGRESQL_SUBSCRIPTION_ID"] || "ffffffff-ffff-ffff-ffff-ffffffffffff";
-  const locationName = "westus";
+  const resourceGroupName = process.env["POSTGRESQL_RESOURCE_GROUP"] || "testrg";
+  const serverName = "testserver";
   const credential = new DefaultAzureCredential();
   const client = new PostgreSQLManagementFlexibleServerClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.quotaUsages.list(locationName)) {
+  for await (let item of client.configurations.listByServer(resourceGroupName, serverName)) {
     resArray.push(item);
   }
   console.log(resArray);

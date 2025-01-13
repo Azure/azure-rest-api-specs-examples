@@ -1,5 +1,6 @@
 const { PolicyInsightsClient } = require("@azure/arm-policyinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Queries policy tracked resources under the resource group.
@@ -17,7 +18,7 @@ async function queryAtResourceGroupScope() {
   const resArray = new Array();
   for await (let item of client.policyTrackedResources.listQueryResultsForResourceGroup(
     resourceGroupName,
-    policyTrackedResourcesResource
+    policyTrackedResourcesResource,
   )) {
     resArray.push(item);
   }

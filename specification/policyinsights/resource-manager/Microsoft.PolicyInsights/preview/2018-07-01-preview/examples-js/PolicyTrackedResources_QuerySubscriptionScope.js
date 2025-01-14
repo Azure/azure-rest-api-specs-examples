@@ -1,5 +1,6 @@
 const { PolicyInsightsClient } = require("@azure/arm-policyinsights");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Queries policy tracked resources under the subscription.
@@ -15,7 +16,7 @@ async function queryAtSubscriptionScope() {
   const client = new PolicyInsightsClient(credential, subscriptionId);
   const resArray = new Array();
   for await (let item of client.policyTrackedResources.listQueryResultsForSubscription(
-    policyTrackedResourcesResource
+    policyTrackedResourcesResource,
   )) {
     resArray.push(item);
   }

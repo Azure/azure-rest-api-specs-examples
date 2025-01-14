@@ -1,5 +1,6 @@
 const { PolicyClient } = require("@azure/arm-policy");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to This operation creates or updates a policy set definition in the given subscription with the given name.
@@ -51,7 +52,7 @@ async function createOrUpdateAPolicySetDefinitionWithGroups() {
   const client = new PolicyClient(credential, subscriptionId);
   const result = await client.policySetDefinitions.createOrUpdate(
     policySetDefinitionName,
-    parameters
+    parameters,
   );
   console.log(result);
 }

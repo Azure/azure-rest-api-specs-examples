@@ -1,5 +1,6 @@
 const { PolicyClient } = require("@azure/arm-policy");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to This operation retrieves the policy set definition in the given management group with the given name.
@@ -16,7 +17,7 @@ async function retrieveAPolicySetDefinitionAtManagementGroupLevel() {
   const client = new PolicyClient(credential, subscriptionId);
   const result = await client.policySetDefinitions.getAtManagementGroup(
     policySetDefinitionName,
-    managementGroupId
+    managementGroupId,
   );
   console.log(result);
 }

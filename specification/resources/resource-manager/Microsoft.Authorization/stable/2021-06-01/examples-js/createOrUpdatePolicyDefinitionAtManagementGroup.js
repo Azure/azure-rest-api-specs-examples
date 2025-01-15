@@ -1,5 +1,6 @@
 const { PolicyClient } = require("@azure/arm-policy");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to This operation creates or updates a policy definition in the given management group with the given name.
@@ -42,7 +43,7 @@ async function createOrUpdateAPolicyDefinitionAtManagementGroupLevel() {
   const result = await client.policyDefinitions.createOrUpdateAtManagementGroup(
     policyDefinitionName,
     managementGroupId,
-    parameters
+    parameters,
   );
   console.log(result);
 }

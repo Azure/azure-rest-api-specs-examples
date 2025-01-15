@@ -1,5 +1,6 @@
 const { PolicyClient } = require("@azure/arm-policy");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to This operation creates or updates a policy definition in the given subscription with the given name.

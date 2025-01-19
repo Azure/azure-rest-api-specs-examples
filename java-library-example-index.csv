@@ -4991,3 +4991,4 @@ id,name,language,tag,package,version,date_epoch,date
 4990,"Azure.ResourceManager.Network,1.10.0",dotnet,Azure.ResourceManager.Network_1.10.0,Azure.ResourceManager.Network,1.10.0,1736436584,01/09/2025
 4991,@azure/arm-policyinsights@6.0.0,js,@azure/arm-policyinsights_6.0.0,@azure/arm-policyinsights,6.0.0,1736748196,01/13/2025
 4992,@azure/arm-policy@5.2.0-beta.1,js,@azure/arm-policy_5.2.0-beta.1,@azure/arm-policy,5.2.0-beta.1,1736835017,01/14/2025
+4993,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v4@v4.0.0,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v4.0.0,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v4.0.0,1737269266,01/19/2025

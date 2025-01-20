@@ -4994,3 +4994,4 @@ id,name,language,tag,package,version,date_epoch,date
 4993,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v4@v4.0.0,go,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v4.0.0,sdk/resourcemanager/postgresql/armpostgresqlflexibleservers,v4.0.0,1737269266,01/19/2025
 4994,"Azure.ResourceManager.Quota,1.1.0-beta.3",dotnet,Azure.ResourceManager.Quota_1.1.0-beta.3,Azure.ResourceManager.Quota,1.1.0-beta.3,1737364586,01/20/2025
 4995,azure-mgmt-redis@14.5.0,python,azure-mgmt-redis_14.5.0,azure-mgmt-redis,14.5.0,1737363935,01/20/2025
+4996,azure-mgmt-containerservice@34.0.0,python,azure-mgmt-containerservice_34.0.0,azure-mgmt-containerservice,34.0.0,1737360312,01/20/2025

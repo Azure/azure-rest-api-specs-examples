@@ -4998,3 +4998,4 @@ id,name,language,tag,package,version,date_epoch,date
 4997,azure-mgmt-compute@34.0.0,python,azure-mgmt-compute_34.0.0,azure-mgmt-compute,34.0.0,1737355389,01/20/2025
 4998,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computeschedule/armcomputeschedule@v1.0.0,go,sdk/resourcemanager/computeschedule/armcomputeschedule/v1.0.0,sdk/resourcemanager/computeschedule/armcomputeschedule,v1.0.0,1737450564,01/21/2025
 4999,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute/v6@v6.3.0,go,sdk/resourcemanager/compute/armcompute/v6.3.0,sdk/resourcemanager/compute/armcompute,v6.3.0,1737427541,01/21/2025
+5000,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis/v3@v3.3.0,go,sdk/resourcemanager/redis/armredis/v3.3.0,sdk/resourcemanager/redis/armredis,v3.3.0,1737427398,01/21/2025

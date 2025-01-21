@@ -4996,3 +4996,4 @@ id,name,language,tag,package,version,date_epoch,date
 4995,azure-mgmt-redis@14.5.0,python,azure-mgmt-redis_14.5.0,azure-mgmt-redis,14.5.0,1737363935,01/20/2025
 4996,azure-mgmt-containerservice@34.0.0,python,azure-mgmt-containerservice_34.0.0,azure-mgmt-containerservice,34.0.0,1737360312,01/20/2025
 4997,azure-mgmt-compute@34.0.0,python,azure-mgmt-compute_34.0.0,azure-mgmt-compute,34.0.0,1737355389,01/20/2025
+4998,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/computeschedule/armcomputeschedule@v1.0.0,go,sdk/resourcemanager/computeschedule/armcomputeschedule/v1.0.0,sdk/resourcemanager/computeschedule/armcomputeschedule,v1.0.0,1737450564,01/21/2025

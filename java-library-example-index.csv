@@ -5002,3 +5002,4 @@ id,name,language,tag,package,version,date_epoch,date
 5001,azure-mgmt-storage@22.0.0,python,azure-mgmt-storage_22.0.0,azure-mgmt-storage,22.0.0,1737443324,01/21/2025
 5002,azure-mgmt-eventhub@11.2.0,python,azure-mgmt-eventhub_11.2.0,azure-mgmt-eventhub,11.2.0,1737442847,01/21/2025
 5003,com.azure.resourcemanager:azure-resourcemanager-computeschedule:1.0.0,java,azure-resourcemanager-computeschedule_1.0.0,azure-resourcemanager-computeschedule,1.0.0,1737536151,01/22/2025
+5004,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.3,java,azure-resourcemanager-quota_1.1.0-beta.3,azure-resourcemanager-quota,1.1.0-beta.3,1737531795,01/22/2025

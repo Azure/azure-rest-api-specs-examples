@@ -5005,3 +5005,4 @@ id,name,language,tag,package,version,date_epoch,date
 5004,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.3,java,azure-resourcemanager-quota_1.1.0-beta.3,azure-resourcemanager-quota,1.1.0-beta.3,1737531795,01/22/2025
 5005,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota@v1.1.0-beta.2,go,sdk/resourcemanager/quota/armquota/v1.1.0-beta.2,sdk/resourcemanager/quota/armquota,v1.1.0-beta.2,1737535815,01/22/2025
 5006,"Azure.ResourceManager.Kusto,1.6.0",dotnet,Azure.ResourceManager.Kusto_1.6.0,Azure.ResourceManager.Kusto,1.6.0,1737506394,01/22/2025
+5007,azure-mgmt-quota@2.0.0b2,python,azure-mgmt-quota_2.0.0b2,azure-mgmt-quota,2.0.0b2,1737529781,01/22/2025

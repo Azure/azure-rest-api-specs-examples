@@ -5001,3 +5001,9 @@ id,name,language,tag,package,version,date_epoch,date
 5000,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/redis/armredis/v3@v3.3.0,go,sdk/resourcemanager/redis/armredis/v3.3.0,sdk/resourcemanager/redis/armredis,v3.3.0,1737427398,01/21/2025
 5001,azure-mgmt-storage@22.0.0,python,azure-mgmt-storage_22.0.0,azure-mgmt-storage,22.0.0,1737443324,01/21/2025
 5002,azure-mgmt-eventhub@11.2.0,python,azure-mgmt-eventhub_11.2.0,azure-mgmt-eventhub,11.2.0,1737442847,01/21/2025
+5003,com.azure.resourcemanager:azure-resourcemanager-computeschedule:1.0.0,java,azure-resourcemanager-computeschedule_1.0.0,azure-resourcemanager-computeschedule,1.0.0,1737536151,01/22/2025
+5004,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0-beta.3,java,azure-resourcemanager-quota_1.1.0-beta.3,azure-resourcemanager-quota,1.1.0-beta.3,1737531795,01/22/2025
+5005,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota@v1.1.0-beta.2,go,sdk/resourcemanager/quota/armquota/v1.1.0-beta.2,sdk/resourcemanager/quota/armquota,v1.1.0-beta.2,1737535815,01/22/2025
+5006,"Azure.ResourceManager.Kusto,1.6.0",dotnet,Azure.ResourceManager.Kusto_1.6.0,Azure.ResourceManager.Kusto,1.6.0,1737506394,01/22/2025
+5007,azure-mgmt-quota@2.0.0b2,python,azure-mgmt-quota_2.0.0b2,azure-mgmt-quota,2.0.0b2,1737529781,01/22/2025
+5008,azure-mgmt-computeschedule@1.0.0,python,azure-mgmt-computeschedule_1.0.0,azure-mgmt-computeschedule,1.0.0,1737529779,01/22/2025

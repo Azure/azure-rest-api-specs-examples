@@ -1,5 +1,6 @@
 const { ComputeManagementClient } = require("@azure/arm-compute");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Reapplies the Virtual Machine Scale Set Virtual Machine Profile to the Virtual Machine Instances

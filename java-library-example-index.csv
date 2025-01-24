@@ -5009,3 +5009,4 @@ id,name,language,tag,package,version,date_epoch,date
 5008,azure-mgmt-computeschedule@1.0.0,python,azure-mgmt-computeschedule_1.0.0,azure-mgmt-computeschedule,1.0.0,1737529779,01/22/2025
 5009,azure-mgmt-web@8.0.0,python,azure-mgmt-web_8.0.0,azure-mgmt-web,8.0.0,1737627524,01/23/2025
 5010,com.azure.resourcemanager:azure-resourcemanager-kusto:1.2.0,java,azure-resourcemanager-kusto_1.2.0,azure-resourcemanager-kusto,1.2.0,1737712229,01/24/2025
+5011,com.azure.resourcemanager:azure-resourcemanager:2.47.0,java,azure-resourcemanager_2.47.0,azure-resourcemanager,2.47.0,1737709470,01/24/2025

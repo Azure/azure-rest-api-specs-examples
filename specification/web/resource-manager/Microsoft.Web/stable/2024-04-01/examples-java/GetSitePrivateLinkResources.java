@@ -1,6 +1,6 @@
 
 /**
- * Samples for StaticSites GetPrivateLinkResources.
+ * Samples for WebApps GetPrivateLinkResources.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getPrivateLinkResourcesOfASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getStaticSites().getPrivateLinkResourcesWithResponse("rg", "testSite",
+        azure.webApps().manager().serviceClient().getWebApps().getPrivateLinkResourcesWithResponse("rg", "testSite",
             com.azure.core.util.Context.NONE);
     }
 }

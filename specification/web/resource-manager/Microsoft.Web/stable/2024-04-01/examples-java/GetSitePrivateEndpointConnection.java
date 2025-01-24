@@ -1,6 +1,6 @@
 
 /**
- * Samples for WebApps GetPrivateEndpointConnection.
+ * Samples for StaticSites GetPrivateEndpointConnection.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void getAPrivateEndpointConnectionForASite(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.webApps().manager().serviceClient().getWebApps().getPrivateEndpointConnectionWithResponse("rg",
+        azure.webApps().manager().serviceClient().getStaticSites().getPrivateEndpointConnectionWithResponse("rg",
             "testSite", "connection", com.azure.core.util.Context.NONE);
     }
 }

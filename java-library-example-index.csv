@@ -5007,3 +5007,4 @@ id,name,language,tag,package,version,date_epoch,date
 5006,"Azure.ResourceManager.Kusto,1.6.0",dotnet,Azure.ResourceManager.Kusto_1.6.0,Azure.ResourceManager.Kusto,1.6.0,1737506394,01/22/2025
 5007,azure-mgmt-quota@2.0.0b2,python,azure-mgmt-quota_2.0.0b2,azure-mgmt-quota,2.0.0b2,1737529781,01/22/2025
 5008,azure-mgmt-computeschedule@1.0.0,python,azure-mgmt-computeschedule_1.0.0,azure-mgmt-computeschedule,1.0.0,1737529779,01/22/2025
+5009,azure-mgmt-web@8.0.0,python,azure-mgmt-web_8.0.0,azure-mgmt-web,8.0.0,1737627524,01/23/2025

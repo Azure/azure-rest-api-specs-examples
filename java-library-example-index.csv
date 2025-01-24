@@ -5013,3 +5013,4 @@ id,name,language,tag,package,version,date_epoch,date
 5012,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub@v1.4.0-beta.1,go,sdk/resourcemanager/eventhub/armeventhub/v1.4.0-beta.1,sdk/resourcemanager/eventhub/armeventhub,v1.4.0-beta.1,1737681402,01/24/2025
 5013,@azure/arm-computeschedule@1.0.0,js,@azure/arm-computeschedule_1.0.0,@azure/arm-computeschedule,1.0.0,1737713012,01/24/2025
 5014,@azure/arm-rediscache@8.2.0,js,@azure/arm-rediscache_8.2.0,@azure/arm-rediscache,8.2.0,1737700525,01/24/2025
+5015,@azure/arm-compute@22.3.0,js,@azure/arm-compute_22.3.0,@azure/arm-compute,22.3.0,1737690194,01/24/2025

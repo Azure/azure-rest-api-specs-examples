@@ -5018,3 +5018,4 @@ id,name,language,tag,package,version,date_epoch,date
 5017,"Azure.ResourceManager.ComputeSchedule,1.0.0",dotnet,Azure.ResourceManager.ComputeSchedule_1.0.0,Azure.ResourceManager.ComputeSchedule,1.0.0,1737709879,01/24/2025
 5018,"Azure.ResourceManager.DeviceRegistry,1.0.0-beta.2",dotnet,Azure.ResourceManager.DeviceRegistry_1.0.0-beta.2,Azure.ResourceManager.DeviceRegistry,1.0.0-beta.2,1737707129,01/24/2025
 5019,"Azure.ResourceManager.IotOperations,1.0.0",dotnet,Azure.ResourceManager.IotOperations_1.0.0,Azure.ResourceManager.IotOperations,1.0.0,1737705561,01/24/2025
+5020,azure-mgmt-kusto@3.4.0,python,azure-mgmt-kusto_3.4.0,azure-mgmt-kusto,3.4.0,1737701547,01/24/2025

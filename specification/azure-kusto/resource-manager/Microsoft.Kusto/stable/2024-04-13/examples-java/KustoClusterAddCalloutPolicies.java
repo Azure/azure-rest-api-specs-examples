@@ -1,0 +1,27 @@
+
+import com.azure.resourcemanager.kusto.fluent.models.CalloutPolicyInner;
+import com.azure.resourcemanager.kusto.models.CalloutPoliciesList;
+import com.azure.resourcemanager.kusto.models.CalloutType;
+import com.azure.resourcemanager.kusto.models.OutboundAccess;
+import java.util.Arrays;
+
+/**
+ * Samples for Clusters AddCalloutPolicies.
+ */
+public final class Main {
+    /*
+     * x-ms-original-file: specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2024-04-13/examples/
+     * KustoClusterAddCalloutPolicies.json
+     */
+    /**
+     * Sample code: KustoClusterAddCalloutPolicy.
+     * 
+     * @param manager Entry point to KustoManager.
+     */
+    public static void kustoClusterAddCalloutPolicy(com.azure.resourcemanager.kusto.KustoManager manager) {
+        manager.clusters().addCalloutPolicies("kustorptest", "kustoCluster",
+            new CalloutPoliciesList().withValue(Arrays.asList(new CalloutPolicyInner().withCalloutUriRegex("*")
+                .withCalloutType(CalloutType.KUSTO).withOutboundAccess(OutboundAccess.ALLOW))),
+            com.azure.core.util.Context.NONE);
+    }
+}

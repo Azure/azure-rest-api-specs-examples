@@ -1,6 +1,6 @@
 
 /**
- * Samples for RecordSets ListByDnsZone.
+ * Samples for RecordSets ListAllByDnsZone.
  */
 public final class Main {
     /*
@@ -13,7 +13,7 @@ public final class Main {
      * @param azure The entry point for accessing resource management APIs in Azure.
      */
     public static void listRecordsetsByZone(com.azure.resourcemanager.AzureResourceManager azure) {
-        azure.dnsZones().manager().serviceClient().getRecordSets().listByDnsZone("rg1", "zone1", null, null,
+        azure.dnsZones().manager().serviceClient().getRecordSets().listAllByDnsZone("rg1", "zone1", null, null,
             com.azure.core.util.Context.NONE);
     }
 }

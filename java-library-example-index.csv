@@ -5008,3 +5008,14 @@ id,name,language,tag,package,version,date_epoch,date
 5007,azure-mgmt-quota@2.0.0b2,python,azure-mgmt-quota_2.0.0b2,azure-mgmt-quota,2.0.0b2,1737529781,01/22/2025
 5008,azure-mgmt-computeschedule@1.0.0,python,azure-mgmt-computeschedule_1.0.0,azure-mgmt-computeschedule,1.0.0,1737529779,01/22/2025
 5009,azure-mgmt-web@8.0.0,python,azure-mgmt-web_8.0.0,azure-mgmt-web,8.0.0,1737627524,01/23/2025
+5010,com.azure.resourcemanager:azure-resourcemanager-kusto:1.2.0,java,azure-resourcemanager-kusto_1.2.0,azure-resourcemanager-kusto,1.2.0,1737712229,01/24/2025
+5011,com.azure.resourcemanager:azure-resourcemanager:2.47.0,java,azure-resourcemanager_2.47.0,azure-resourcemanager,2.47.0,1737709470,01/24/2025
+5012,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/eventhub/armeventhub@v1.4.0-beta.1,go,sdk/resourcemanager/eventhub/armeventhub/v1.4.0-beta.1,sdk/resourcemanager/eventhub/armeventhub,v1.4.0-beta.1,1737681402,01/24/2025
+5013,@azure/arm-computeschedule@1.0.0,js,@azure/arm-computeschedule_1.0.0,@azure/arm-computeschedule,1.0.0,1737713012,01/24/2025
+5014,@azure/arm-rediscache@8.2.0,js,@azure/arm-rediscache_8.2.0,@azure/arm-rediscache,8.2.0,1737700525,01/24/2025
+5015,@azure/arm-compute@22.3.0,js,@azure/arm-compute_22.3.0,@azure/arm-compute,22.3.0,1737690194,01/24/2025
+5016,"Azure.ResourceManager.AppConfiguration,1.4.0",dotnet,Azure.ResourceManager.AppConfiguration_1.4.0,Azure.ResourceManager.AppConfiguration,1.4.0,1737710695,01/24/2025
+5017,"Azure.ResourceManager.ComputeSchedule,1.0.0",dotnet,Azure.ResourceManager.ComputeSchedule_1.0.0,Azure.ResourceManager.ComputeSchedule,1.0.0,1737709879,01/24/2025
+5018,"Azure.ResourceManager.DeviceRegistry,1.0.0-beta.2",dotnet,Azure.ResourceManager.DeviceRegistry_1.0.0-beta.2,Azure.ResourceManager.DeviceRegistry,1.0.0-beta.2,1737707129,01/24/2025
+5019,"Azure.ResourceManager.IotOperations,1.0.0",dotnet,Azure.ResourceManager.IotOperations_1.0.0,Azure.ResourceManager.IotOperations,1.0.0,1737705561,01/24/2025
+5020,azure-mgmt-kusto@3.4.0,python,azure-mgmt-kusto_3.4.0,azure-mgmt-kusto,3.4.0,1737701547,01/24/2025

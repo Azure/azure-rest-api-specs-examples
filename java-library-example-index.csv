@@ -5023,3 +5023,4 @@ id,name,language,tag,package,version,date_epoch,date
 5022,@azure/arm-kusto@8.2.0,js,@azure/arm-kusto_8.2.0,@azure/arm-kusto,8.2.0,1737874539,01/26/2025
 5023,@azure/arm-quota@1.1.0-beta.2,js,@azure/arm-quota_1.1.0-beta.2,@azure/arm-quota,1.1.0-beta.2,1737858907,01/26/2025
 5024,"Azure.ResourceManager.NetworkCloud,1.1.0",dotnet,Azure.ResourceManager.NetworkCloud_1.1.0,Azure.ResourceManager.NetworkCloud,1.1.0,1738593594,02/03/2025
+5025,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/servicenetworking/armservicenetworking@v1.1.0,go,sdk/resourcemanager/servicenetworking/armservicenetworking/v1.1.0,sdk/resourcemanager/servicenetworking/armservicenetworking,v1.1.0,1738725295,02/05/2025

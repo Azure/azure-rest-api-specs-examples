@@ -1,6 +1,6 @@
 # Azure SDK examples for azure-rest-api-specs
 
-This repository is the collection of Azure SDK examples corresponding to REST API examples from [Azure REST API Specifications](https://github.com/Azure/azure-rest-api-specs).
+This repository is the collection of Azure SDK examples corresponding to REST API examples from [Azure REST API Specifications](https://github.com/Azure/azure-rest-api-specs). SDK examples from this repository are integrated into the Azure REST API documentation pages on https://learn.microsoft.com/rest/api for the corresponding operations.
 
 Involved SDK repositories:
 - [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go)
@@ -22,7 +22,7 @@ Currently supported `language` includes:
 - `go` for Go
 - `java` for Java
 - `js` for JavaScript
-- `js-rlc` for JavaScript RLC
+- `js-rlc` for JavaScript RLC (not displayed in the REST API documentation)
 - `python` for Python
 - `dotnet` for .NET
 - `az` for Azure CLI
@@ -55,7 +55,7 @@ Code snippet is runnable code in SDK language, as the SDK example.
 Currently supported `language-ext` includes:
 - `go` for Go
 - `java` for Java
-- `js` for JavaScript (includes RLC)
+- `js` for JavaScript and JS-RLC (the latter is not displayed in the REST API documentation)
 - `py` for Python
 - `cs` for .NET
 - `az` for Azure CLI

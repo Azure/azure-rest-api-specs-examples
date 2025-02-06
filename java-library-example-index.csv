@@ -5030,3 +5030,4 @@ id,name,language,tag,package,version,date_epoch,date
 5029,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/pineconevectordb/armpineconevectordb@v0.1.0,go,sdk/resourcemanager/pineconevectordb/armpineconevectordb/v0.1.0,sdk/resourcemanager/pineconevectordb/armpineconevectordb,v0.1.0,1738812448,02/06/2025
 5030,"Azure.ResourceManager.ServiceNetworking,1.1.0-beta.1",dotnet,Azure.ResourceManager.ServiceNetworking_1.1.0-beta.1,Azure.ResourceManager.ServiceNetworking,1.1.0-beta.1,1738814267,02/06/2025
 5031,azure-mgmt-hardwaresecuritymodules@1.0.0b2,python,azure-mgmt-hardwaresecuritymodules_1.0.0b2,azure-mgmt-hardwaresecuritymodules,1.0.0b2,1738823880,02/06/2025
+5032,azure-mgmt-pineconevectordb@1.0.0b1,python,azure-mgmt-pineconevectordb_1.0.0b1,azure-mgmt-pineconevectordb,1.0.0b1,1738820538,02/06/2025

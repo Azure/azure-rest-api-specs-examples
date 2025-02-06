@@ -5027,3 +5027,4 @@ id,name,language,tag,package,version,date_epoch,date
 5026,azure-mgmt-servicenetworking@2.0.0,python,azure-mgmt-servicenetworking_2.0.0,azure-mgmt-servicenetworking,2.0.0,1738740747,02/05/2025
 5027,com.azure.resourcemanager:azure-resourcemanager-servicenetworking:1.1.0,java,azure-resourcemanager-servicenetworking_1.1.0,azure-resourcemanager-servicenetworking,1.1.0,1738832256,02/06/2025
 5028,com.azure.resourcemanager:azure-resourcemanager-pineconevectordb:1.0.0-beta.1,java,azure-resourcemanager-pineconevectordb_1.0.0-beta.1,azure-resourcemanager-pineconevectordb,1.0.0-beta.1,1738823156,02/06/2025
+5029,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/pineconevectordb/armpineconevectordb@v0.1.0,go,sdk/resourcemanager/pineconevectordb/armpineconevectordb/v0.1.0,sdk/resourcemanager/pineconevectordb/armpineconevectordb,v0.1.0,1738812448,02/06/2025

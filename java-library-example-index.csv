@@ -5031,3 +5031,5 @@ id,name,language,tag,package,version,date_epoch,date
 5030,"Azure.ResourceManager.ServiceNetworking,1.1.0-beta.1",dotnet,Azure.ResourceManager.ServiceNetworking_1.1.0-beta.1,Azure.ResourceManager.ServiceNetworking,1.1.0-beta.1,1738814267,02/06/2025
 5031,azure-mgmt-hardwaresecuritymodules@1.0.0b2,python,azure-mgmt-hardwaresecuritymodules_1.0.0b2,azure-mgmt-hardwaresecuritymodules,1.0.0b2,1738823880,02/06/2025
 5032,azure-mgmt-pineconevectordb@1.0.0b1,python,azure-mgmt-pineconevectordb_1.0.0b1,azure-mgmt-pineconevectordb,1.0.0b1,1738820538,02/06/2025
+5033,@azure/arm-pineconevectordb@1.0.0-beta.1,js,@azure/arm-pineconevectordb_1.0.0-beta.1,@azure/arm-pineconevectordb,1.0.0-beta.1,1738986471,02/08/2025
+5034,azure-mgmt-monitor@7.0.0b1,python,azure-mgmt-monitor_7.0.0b1,azure-mgmt-monitor,7.0.0b1,1739005438,02/08/2025

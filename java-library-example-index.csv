@@ -5033,3 +5033,4 @@ id,name,language,tag,package,version,date_epoch,date
 5032,azure-mgmt-pineconevectordb@1.0.0b1,python,azure-mgmt-pineconevectordb_1.0.0b1,azure-mgmt-pineconevectordb,1.0.0b1,1738820538,02/06/2025
 5033,@azure/arm-pineconevectordb@1.0.0-beta.1,js,@azure/arm-pineconevectordb_1.0.0-beta.1,@azure/arm-pineconevectordb,1.0.0-beta.1,1738986471,02/08/2025
 5034,azure-mgmt-monitor@7.0.0b1,python,azure-mgmt-monitor_7.0.0b1,azure-mgmt-monitor,7.0.0b1,1739005438,02/08/2025
+5035,azure-mgmt-logz@1.1.1,python,azure-mgmt-logz_1.1.1,azure-mgmt-logz,1.1.1,1739157250,02/10/2025

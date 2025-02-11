@@ -5037,3 +5037,4 @@ id,name,language,tag,package,version,date_epoch,date
 5036,@azure-rest/arm-compute@1.0.0-beta.2,js,@azure-rest/arm-compute_1.0.0-beta.2,@azure-rest/arm-compute,1.0.0-beta.2,1739273395,02/11/2025
 5037,@azure-rest/arm-servicefabric@1.0.0-beta.2,js,@azure-rest/arm-servicefabric_1.0.0-beta.2,@azure-rest/arm-servicefabric,1.0.0-beta.2,1739270051,02/11/2025
 5038,@azure-rest/arm-network@1.0.0-beta.2,js,@azure-rest/arm-network_1.0.0-beta.2,@azure-rest/arm-network,1.0.0-beta.2,1739269841,02/11/2025
+5039,@azure-rest/arm-containerservice@1.0.0-beta.2,js,@azure-rest/arm-containerservice_1.0.0-beta.2,@azure-rest/arm-containerservice,1.0.0-beta.2,1739269557,02/11/2025

@@ -28,7 +28,7 @@ ContainerRegistryTaskRunCollection collection = containerRegistry.GetContainerRe
 
 // invoke the operation
 string taskRunName = "myRun";
-ContainerRegistryTaskRunData data = new ContainerRegistryTaskRunData()
+ContainerRegistryTaskRunData data = new ContainerRegistryTaskRunData
 {
     RunRequest = new ContainerRegistryEncodedTaskRunContent("c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K", new ContainerRegistryPlatformProperties(ContainerRegistryOS.Linux)
     {
@@ -36,9 +36,7 @@ ContainerRegistryTaskRunData data = new ContainerRegistryTaskRunData()
     })
     {
         EncodedValuesContent = "Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg==",
-        Values =
-        {
-        },
+        Values = { },
         Credentials = new ContainerRegistryCredentials(),
     },
     ForceUpdateTag = "test",

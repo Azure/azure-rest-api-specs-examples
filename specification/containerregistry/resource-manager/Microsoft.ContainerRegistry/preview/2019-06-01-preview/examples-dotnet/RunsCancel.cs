@@ -27,4 +27,4 @@ ContainerRegistryRunResource containerRegistryRun = client.GetContainerRegistryR
 // invoke the operation
 await containerRegistryRun.CancelAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

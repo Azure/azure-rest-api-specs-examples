@@ -31,13 +31,13 @@ ContainerRegistryTaskCollection collection = containerRegistry.GetContainerRegis
 string taskName = "quicktask";
 ContainerRegistryTaskData data = new ContainerRegistryTaskData(new AzureLocation("eastus"))
 {
-    Identity = null,
+    Identity = default,
     Status = ContainerRegistryTaskStatus.Enabled,
     LogTemplate = "acr/tasks:{{.Run.OS}}",
     IsSystemTask = true,
     Tags =
     {
-    ["testkey"] = "value",
+    ["testkey"] = "value"
     },
 };
 ArmOperation<ContainerRegistryTaskResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, taskName, data);

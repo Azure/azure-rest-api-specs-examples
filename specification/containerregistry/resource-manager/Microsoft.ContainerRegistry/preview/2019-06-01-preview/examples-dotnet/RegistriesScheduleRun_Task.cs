@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_Task.json
@@ -27,30 +26,24 @@ ContainerRegistryResource containerRegistry = client.GetContainerRegistryResourc
 // invoke the operation
 ContainerRegistryRunContent content = new ContainerRegistryTaskRunContent(new ResourceIdentifier("myTask"))
 {
-    OverrideTaskStepProperties = new ContainerRegistryOverrideTaskStepProperties()
+    OverrideTaskStepProperties = new ContainerRegistryOverrideTaskStepProperties
     {
         File = "overriddenDockerfile",
-        Arguments =
-        {
-        new ContainerRegistryRunArgument("mytestargument","mytestvalue")
+        Arguments = {new ContainerRegistryRunArgument("mytestargument", "mytestvalue")
         {
         IsSecret = false,
-        },new ContainerRegistryRunArgument("mysecrettestargument","mysecrettestvalue")
+        }, new ContainerRegistryRunArgument("mysecrettestargument", "mysecrettestvalue")
         {
         IsSecret = true,
-        }
-        },
+        }},
         Target = "build",
-        Values =
-        {
-        new ContainerRegistryTaskOverridableValue("mytestname","mytestvalue")
+        Values = {new ContainerRegistryTaskOverridableValue("mytestname", "mytestvalue")
         {
         IsSecret = false,
-        },new ContainerRegistryTaskOverridableValue("mysecrettestname","mysecrettestvalue")
+        }, new ContainerRegistryTaskOverridableValue("mysecrettestname", "mysecrettestvalue")
         {
         IsSecret = true,
-        }
-        },
+        }},
         UpdateTriggerToken = "aGVsbG8gd29ybGQ=",
     },
 };

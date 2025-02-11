@@ -25,7 +25,7 @@ ResourceIdentifier containerRegistryRunResourceId = ContainerRegistryRunResource
 ContainerRegistryRunResource containerRegistryRun = client.GetContainerRegistryRunResource(containerRegistryRunResourceId);
 
 // invoke the operation
-ContainerRegistryRunPatch patch = new ContainerRegistryRunPatch()
+ContainerRegistryRunPatch patch = new ContainerRegistryRunPatch
 {
     IsArchiveEnabled = true,
 };

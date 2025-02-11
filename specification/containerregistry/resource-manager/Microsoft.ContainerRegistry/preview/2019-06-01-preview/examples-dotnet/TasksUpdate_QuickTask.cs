@@ -25,11 +25,11 @@ ResourceIdentifier containerRegistryTaskResourceId = ContainerRegistryTaskResour
 ContainerRegistryTaskResource containerRegistryTask = client.GetContainerRegistryTaskResource(containerRegistryTaskResourceId);
 
 // invoke the operation
-ContainerRegistryTaskPatch patch = new ContainerRegistryTaskPatch()
+ContainerRegistryTaskPatch patch = new ContainerRegistryTaskPatch
 {
     Tags =
     {
-    ["testkey"] = "value",
+    ["testkey"] = "value"
     },
     Status = ContainerRegistryTaskStatus.Enabled,
     LogTemplate = "acr/tasks:{{.Run.OS}}",

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_FileTaskRun.json
@@ -28,16 +27,13 @@ ContainerRegistryResource containerRegistry = client.GetContainerRegistryResourc
 ContainerRegistryRunContent content = new ContainerRegistryFileTaskRunContent("acb.yaml", new ContainerRegistryPlatformProperties(ContainerRegistryOS.Linux))
 {
     ValuesFilePath = "prod-values.yaml",
-    Values =
-    {
-    new ContainerRegistryTaskOverridableValue("mytestargument","mytestvalue")
+    Values = {new ContainerRegistryTaskOverridableValue("mytestargument", "mytestvalue")
     {
     IsSecret = false,
-    },new ContainerRegistryTaskOverridableValue("mysecrettestargument","mysecrettestvalue")
+    }, new ContainerRegistryTaskOverridableValue("mysecrettestargument", "mysecrettestvalue")
     {
     IsSecret = true,
-    }
-    },
+    }},
     AgentCpu = 2,
     SourceLocation = "https://myaccount.blob.core.windows.net/sascontainer/source.zip?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D",
 };

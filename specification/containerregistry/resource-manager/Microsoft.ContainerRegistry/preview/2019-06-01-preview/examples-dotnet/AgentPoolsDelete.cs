@@ -27,4 +27,4 @@ ContainerRegistryAgentPoolResource containerRegistryAgentPool = client.GetContai
 // invoke the operation
 await containerRegistryAgentPool.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

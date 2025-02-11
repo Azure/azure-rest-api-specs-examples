@@ -35,7 +35,7 @@ ContainerRegistryAgentPoolData data = new ContainerRegistryAgentPoolData(new Azu
     OS = ContainerRegistryOS.Linux,
     Tags =
     {
-    ["key"] = "value",
+    ["key"] = "value"
     },
 };
 ArmOperation<ContainerRegistryAgentPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, agentPoolName, data);

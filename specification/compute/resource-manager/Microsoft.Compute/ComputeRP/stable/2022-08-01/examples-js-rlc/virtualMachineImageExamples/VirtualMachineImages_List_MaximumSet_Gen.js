@@ -31,7 +31,7 @@ async function virtualMachineImagesListMaximumSetGen() {
       location,
       publisherName,
       offer,
-      skus
+      skus,
     )
     .get(options);
   console.log(result);

@@ -26,7 +26,7 @@ async function getASharedGalleryImageVersion() {
       location,
       galleryUniqueName,
       galleryImageName,
-      galleryImageVersionName
+      galleryImageVersionName,
     )
     .get(options);
   console.log(result);

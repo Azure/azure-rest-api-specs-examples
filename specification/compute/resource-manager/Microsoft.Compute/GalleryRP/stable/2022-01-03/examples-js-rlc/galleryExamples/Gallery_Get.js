@@ -22,7 +22,7 @@ async function getAGallery() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}",
       subscriptionId,
       resourceGroupName,
-      galleryName
+      galleryName,
     )
     .get(options);
   console.log(result);

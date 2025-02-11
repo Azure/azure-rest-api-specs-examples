@@ -29,7 +29,7 @@ async function virtualMachineExtensionImagesListVersionsMaximumSetGen() {
       subscriptionId,
       location,
       publisherName,
-      type
+      type,
     )
     .get(options);
   console.log(result);

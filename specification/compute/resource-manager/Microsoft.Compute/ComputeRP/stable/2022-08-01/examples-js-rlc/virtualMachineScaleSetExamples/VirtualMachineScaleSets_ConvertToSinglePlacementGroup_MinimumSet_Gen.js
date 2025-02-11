@@ -23,7 +23,7 @@ async function virtualMachineScaleSetsConvertToSinglePlacementGroupMinimumSetGen
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/convertToSinglePlacementGroup",
       subscriptionId,
       resourceGroupName,
-      vmScaleSetName
+      vmScaleSetName,
     )
     .post(options);
   console.log(result);

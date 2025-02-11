@@ -26,7 +26,7 @@ async function getAGalleryApplicationVersion() {
       resourceGroupName,
       galleryName,
       galleryApplicationName,
-      galleryApplicationVersionName
+      galleryApplicationVersionName,
     )
     .get(options);
   console.log(result);

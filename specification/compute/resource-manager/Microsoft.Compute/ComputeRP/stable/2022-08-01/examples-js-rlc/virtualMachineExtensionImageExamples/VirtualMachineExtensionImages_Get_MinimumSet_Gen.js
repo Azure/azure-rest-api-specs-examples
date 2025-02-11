@@ -26,7 +26,7 @@ async function virtualMachineExtensionImagesGetMinimumSetGen() {
       location,
       publisherName,
       type,
-      version
+      version,
     )
     .get(options);
   console.log(result);

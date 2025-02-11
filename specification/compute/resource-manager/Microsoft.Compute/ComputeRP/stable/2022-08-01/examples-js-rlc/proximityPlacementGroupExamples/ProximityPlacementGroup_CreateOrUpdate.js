@@ -30,7 +30,7 @@ async function createOrUpdateAProximityPlacementGroup() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}",
       subscriptionId,
       resourceGroupName,
-      proximityPlacementGroupName
+      proximityPlacementGroupName,
     )
     .put(options);
   console.log(result);

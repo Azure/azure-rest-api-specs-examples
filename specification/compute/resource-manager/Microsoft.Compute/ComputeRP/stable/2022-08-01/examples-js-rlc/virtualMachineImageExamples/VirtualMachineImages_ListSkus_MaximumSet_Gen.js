@@ -24,7 +24,7 @@ async function virtualMachineImagesListSkusMaximumSetGen() {
       subscriptionId,
       location,
       publisherName,
-      offer
+      offer,
     )
     .get(options);
   console.log(result);

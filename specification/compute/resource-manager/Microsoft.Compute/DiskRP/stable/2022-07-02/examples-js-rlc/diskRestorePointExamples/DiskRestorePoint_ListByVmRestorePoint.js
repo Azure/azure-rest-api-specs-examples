@@ -25,7 +25,7 @@ async function getAnIncrementalDiskRestorePointResource() {
       subscriptionId,
       resourceGroupName,
       restorePointCollectionName,
-      vmRestorePointName
+      vmRestorePointName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

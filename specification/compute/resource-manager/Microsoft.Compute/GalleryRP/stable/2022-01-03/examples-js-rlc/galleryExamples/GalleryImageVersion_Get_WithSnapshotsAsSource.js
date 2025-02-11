@@ -26,7 +26,7 @@ async function getAGalleryImageVersionWithSnapshotsAsASource() {
       resourceGroupName,
       galleryName,
       galleryImageName,
-      galleryImageVersionName
+      galleryImageVersionName,
     )
     .get(options);
   console.log(result);

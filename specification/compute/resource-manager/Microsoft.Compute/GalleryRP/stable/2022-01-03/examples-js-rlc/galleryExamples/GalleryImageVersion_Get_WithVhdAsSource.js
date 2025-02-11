@@ -26,7 +26,7 @@ async function getAGalleryImageVersionWithVhdAsASource() {
       resourceGroupName,
       galleryName,
       galleryImageName,
-      galleryImageVersionName
+      galleryImageVersionName,
     )
     .get(options);
   console.log(result);

@@ -24,7 +24,7 @@ async function virtualMachineScaleSetExtensionsGetMinimumSetGen() {
       subscriptionId,
       resourceGroupName,
       vmScaleSetName,
-      vmssExtensionName
+      vmssExtensionName,
     )
     .get(options);
   console.log(result);

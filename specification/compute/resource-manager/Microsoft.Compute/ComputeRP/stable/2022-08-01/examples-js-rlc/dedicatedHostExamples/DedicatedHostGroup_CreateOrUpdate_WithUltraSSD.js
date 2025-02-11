@@ -32,7 +32,7 @@ async function createOrUpdateADedicatedHostGroupWithUltraSsdSupport() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
       subscriptionId,
       resourceGroupName,
-      hostGroupName
+      hostGroupName,
     )
     .put(options);
   console.log(result);

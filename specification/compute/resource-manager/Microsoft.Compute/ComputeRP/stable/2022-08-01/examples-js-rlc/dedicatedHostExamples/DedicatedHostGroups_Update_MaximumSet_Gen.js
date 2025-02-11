@@ -17,24 +17,6 @@ async function dedicatedHostGroupsUpdateMaximumSetGen() {
   const options = {
     body: {
       properties: {
-        instanceView: {
-          hosts: [
-            {
-              availableCapacity: {
-                allocatableVMs: [{ count: 26, vmSize: "aaaaaaaaaaaaaaaaaaaa" }],
-              },
-              statuses: [
-                {
-                  code: "aaaaaaaaaaaaaaaaaaaaaaa",
-                  displayStatus: "aaaaaa",
-                  level: "Info",
-                  message: "a",
-                  time: new Date("2021-11-30T12:58:26.522Z"),
-                },
-              ],
-            },
-          ],
-        },
         platformFaultDomainCount: 3,
         supportAutomaticPlacement: true,
       },
@@ -48,7 +30,7 @@ async function dedicatedHostGroupsUpdateMaximumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}",
       subscriptionId,
       resourceGroupName,
-      hostGroupName
+      hostGroupName,
     )
     .patch(options);
   console.log(result);

@@ -22,12 +22,12 @@ async function getAVirtualMachineScaleSetPlacedOnADedicatedHostGroupThroughAutom
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}",
       subscriptionId,
       resourceGroupName,
-      vmScaleSetName
+      vmScaleSetName,
     )
     .get(options);
   console.log(result);
 }
 
 getAVirtualMachineScaleSetPlacedOnADedicatedHostGroupThroughAutomaticPlacement().catch(
-  console.error
+  console.error,
 );

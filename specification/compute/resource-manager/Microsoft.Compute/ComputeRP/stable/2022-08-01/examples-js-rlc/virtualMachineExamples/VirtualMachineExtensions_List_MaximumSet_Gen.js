@@ -25,7 +25,7 @@ async function virtualMachineExtensionsListMaximumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/extensions",
       subscriptionId,
       resourceGroupName,
-      vmName
+      vmName,
     )
     .get(options);
   console.log(result);

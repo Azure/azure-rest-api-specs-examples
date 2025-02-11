@@ -22,7 +22,7 @@ async function getInformationAboutASnapshot() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/snapshots/{snapshotName}",
       subscriptionId,
       resourceGroupName,
-      snapshotName
+      snapshotName,
     )
     .get(options);
   console.log(result);

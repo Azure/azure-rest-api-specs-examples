@@ -33,7 +33,7 @@ async function virtualMachineImagesEdgeZoneListMaximumSetGen() {
       edgeZone,
       publisherName,
       offer,
-      skus
+      skus,
     )
     .get(options);
   console.log(result);

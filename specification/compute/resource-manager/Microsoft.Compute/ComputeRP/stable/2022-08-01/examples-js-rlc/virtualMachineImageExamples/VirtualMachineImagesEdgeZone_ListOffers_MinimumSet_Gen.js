@@ -24,7 +24,7 @@ async function virtualMachineImagesEdgeZoneListOffersMinimumSetGen() {
       subscriptionId,
       location,
       edgeZone,
-      publisherName
+      publisherName,
     )
     .get(options);
   console.log(result);

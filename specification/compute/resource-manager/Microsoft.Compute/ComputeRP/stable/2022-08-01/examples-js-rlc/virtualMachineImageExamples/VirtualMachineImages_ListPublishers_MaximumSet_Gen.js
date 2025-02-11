@@ -20,7 +20,7 @@ async function virtualMachineImagesListPublishersMaximumSetGen() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers",
       subscriptionId,
-      location
+      location,
     )
     .get(options);
   console.log(result);

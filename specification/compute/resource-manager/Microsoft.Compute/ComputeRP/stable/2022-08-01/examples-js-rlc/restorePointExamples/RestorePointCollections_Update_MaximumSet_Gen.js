@@ -30,7 +30,7 @@ async function restorePointCollectionsUpdateMaximumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
       subscriptionId,
       resourceGroupName,
-      restorePointCollectionName
+      restorePointCollectionName,
     )
     .patch(options);
   console.log(result);

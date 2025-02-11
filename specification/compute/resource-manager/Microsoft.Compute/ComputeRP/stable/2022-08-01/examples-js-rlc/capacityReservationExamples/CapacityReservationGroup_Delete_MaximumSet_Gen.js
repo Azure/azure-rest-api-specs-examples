@@ -22,7 +22,7 @@ async function capacityReservationGroupsDeleteMaximumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
       subscriptionId,
       resourceGroupName,
-      capacityReservationGroupName
+      capacityReservationGroupName,
     )
     .delete(options);
   console.log(result);

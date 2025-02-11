@@ -21,7 +21,7 @@ async function virtualMachineSizesListMaximumSetGen() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
       subscriptionId,
-      location
+      location,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

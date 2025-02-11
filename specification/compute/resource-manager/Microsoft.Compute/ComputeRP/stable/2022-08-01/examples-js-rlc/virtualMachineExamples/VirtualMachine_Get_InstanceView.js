@@ -22,7 +22,7 @@ async function getVirtualMachineInstanceView() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
       subscriptionId,
       resourceGroupName,
-      vmName
+      vmName,
     )
     .get(options);
   console.log(result);

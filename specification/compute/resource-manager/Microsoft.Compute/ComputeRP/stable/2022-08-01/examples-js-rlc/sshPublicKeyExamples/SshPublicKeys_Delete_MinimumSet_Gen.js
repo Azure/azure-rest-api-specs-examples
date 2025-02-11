@@ -22,7 +22,7 @@ async function sshPublicKeysDeleteMinimumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}",
       subscriptionId,
       resourceGroupName,
-      sshPublicKeyName
+      sshPublicKeyName,
     )
     .delete(options);
   console.log(result);

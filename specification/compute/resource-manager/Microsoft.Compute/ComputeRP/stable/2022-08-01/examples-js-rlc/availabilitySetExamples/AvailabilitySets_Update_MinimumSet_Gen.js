@@ -23,7 +23,7 @@ async function availabilitySetsUpdateMinimumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}",
       subscriptionId,
       resourceGroupName,
-      availabilitySetName
+      availabilitySetName,
     )
     .patch(options);
   console.log(result);

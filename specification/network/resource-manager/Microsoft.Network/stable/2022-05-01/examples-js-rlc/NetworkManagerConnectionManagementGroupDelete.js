@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Delete specified pending connection created by this management group.
@@ -20,7 +20,7 @@ async function deleteManagementGroupNetworkManagerConnection() {
     .path(
       "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
       managementGroupId,
-      networkManagerConnectionName
+      networkManagerConnectionName,
     )
     .delete(options);
   console.log(result);

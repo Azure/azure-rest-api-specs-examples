@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates a route table tags.
@@ -23,7 +23,7 @@ async function updateRouteTableTags() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}",
       subscriptionId,
       resourceGroupName,
-      routeTableName
+      routeTableName,
     )
     .patch(options);
   console.log(result);

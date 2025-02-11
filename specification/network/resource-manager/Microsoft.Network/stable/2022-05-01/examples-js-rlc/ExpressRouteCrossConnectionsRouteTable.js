@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the currently advertised routes table associated with the express route cross connection in a resource group.
@@ -27,7 +27,7 @@ async function getExpressRouteCrossConnectionsRouteTable() {
       resourceGroupName,
       crossConnectionName,
       peeringName,
-      devicePath
+      devicePath,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

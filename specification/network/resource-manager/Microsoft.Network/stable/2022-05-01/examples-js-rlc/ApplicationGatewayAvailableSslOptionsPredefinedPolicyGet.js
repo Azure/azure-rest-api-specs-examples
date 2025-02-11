@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets Ssl predefined policy with the specified policy name.
@@ -20,7 +20,7 @@ async function getAvailableSslPredefinedPolicyByName() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies/{predefinedPolicyName}",
       subscriptionId,
-      predefinedPolicyName
+      predefinedPolicyName,
     )
     .get(options);
   console.log(result);

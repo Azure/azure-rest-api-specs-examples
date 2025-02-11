@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Retrieves the details of a virtual wan vpn gateway.
@@ -22,7 +22,7 @@ async function vpnGatewayGet() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
       subscriptionId,
       resourceGroupName,
-      gatewayName
+      gatewayName,
     )
     .get(options);
   console.log(result);

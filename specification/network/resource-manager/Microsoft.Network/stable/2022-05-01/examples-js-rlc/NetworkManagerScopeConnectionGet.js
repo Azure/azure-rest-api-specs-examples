@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get specified scope connection created by this Network Manager.
@@ -24,7 +24,7 @@ async function getNetworkManagerScopeConnection() {
       subscriptionId,
       resourceGroupName,
       networkManagerName,
-      scopeConnectionName
+      scopeConnectionName,
     )
     .get(options);
   console.log(result);

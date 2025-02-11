@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all default security rules in a network security group.
@@ -23,7 +23,7 @@ async function defaultSecurityRuleList() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules",
       subscriptionId,
       resourceGroupName,
-      networkSecurityGroupName
+      networkSecurityGroupName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

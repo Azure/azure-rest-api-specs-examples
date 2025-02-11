@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Create or update a flow log for the specified network security group.
@@ -36,7 +36,7 @@ async function createOrUpdateFlowLog() {
       subscriptionId,
       resourceGroupName,
       networkWatcherName,
-      flowLogName
+      flowLogName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);

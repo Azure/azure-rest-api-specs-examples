@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Create a network manager connection on this subscription.
@@ -26,7 +26,7 @@ async function createOrUpdateSubscriptionNetworkManagerConnection() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
       subscriptionId,
-      networkManagerConnectionName
+      networkManagerConnectionName,
     )
     .put(options);
   console.log(result);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates custom IP prefix tags.
@@ -23,7 +23,7 @@ async function updatePublicIPAddressTags() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/customIpPrefixes/{customIpPrefixName}",
       subscriptionId,
       resourceGroupName,
-      customIpPrefixName
+      customIpPrefixName,
     )
     .patch(options);
   console.log(result);

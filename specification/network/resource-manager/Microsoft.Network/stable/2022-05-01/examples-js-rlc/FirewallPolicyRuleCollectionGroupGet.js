@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the specified FirewallPolicyRuleCollectionGroup.
@@ -24,7 +24,7 @@ async function getFirewallPolicyRuleCollectionGroup() {
       subscriptionId,
       resourceGroupName,
       firewallPolicyName,
-      ruleCollectionGroupName
+      ruleCollectionGroupName,
     )
     .get(options);
   console.log(result);

@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates or updates an private endpoint in the specified resource group.
@@ -46,7 +46,7 @@ async function createPrivateEndpointWithApplicationSecurityGroups() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
       subscriptionId,
       resourceGroupName,
-      privateEndpointName
+      privateEndpointName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);

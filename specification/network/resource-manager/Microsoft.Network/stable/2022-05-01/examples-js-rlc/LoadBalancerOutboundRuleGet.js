@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the specified load balancer outbound rule.
@@ -24,7 +24,7 @@ async function loadBalancerOutboundRuleGet() {
       subscriptionId,
       resourceGroupName,
       loadBalancerName,
-      outboundRuleName
+      outboundRuleName,
     )
     .get(options);
   console.log(result);

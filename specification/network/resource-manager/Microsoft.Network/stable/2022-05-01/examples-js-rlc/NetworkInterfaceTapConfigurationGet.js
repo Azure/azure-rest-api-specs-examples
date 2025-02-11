@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get the specified tap configuration on a network interface.
@@ -24,7 +24,7 @@ async function getNetworkInterfaceTapConfigurations() {
       subscriptionId,
       resourceGroupName,
       networkInterfaceName,
-      tapConfigurationName
+      tapConfigurationName,
     )
     .get(options);
   console.log(result);

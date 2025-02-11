@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get the specified service endpoint policy definitions from service endpoint policy.
@@ -24,7 +24,7 @@ async function getServiceEndpointDefinitionInServiceEndpointPolicy() {
       subscriptionId,
       resourceGroupName,
       serviceEndpointPolicyName,
-      serviceEndpointPolicyDefinitionName
+      serviceEndpointPolicyDefinitionName,
     )
     .get(options);
   console.log(result);

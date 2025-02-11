@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the specified Azure Web Category.
@@ -20,7 +20,7 @@ async function getAzureWebCategoryByName() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/azureWebCategories/{name}",
       subscriptionId,
-      name
+      name,
     )
     .get(options);
   console.log(result);

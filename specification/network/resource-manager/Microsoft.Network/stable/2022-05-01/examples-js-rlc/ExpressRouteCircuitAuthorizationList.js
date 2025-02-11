@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all authorizations in an express route circuit.
@@ -23,7 +23,7 @@ async function listExpressRouteCircuitAuthorization() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations",
       subscriptionId,
       resourceGroupName,
-      circuitName
+      circuitName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

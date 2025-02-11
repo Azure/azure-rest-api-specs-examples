@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Get the specified default network security rule.
@@ -24,7 +24,7 @@ async function defaultSecurityRuleGet() {
       subscriptionId,
       resourceGroupName,
       networkSecurityGroupName,
-      defaultSecurityRuleName
+      defaultSecurityRuleName,
     )
     .get(options);
   console.log(result);

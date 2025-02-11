@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets load balancer probe.
@@ -24,7 +24,7 @@ async function loadBalancerProbeGet() {
       subscriptionId,
       resourceGroupName,
       loadBalancerName,
-      probeName
+      probeName,
     )
     .get(options);
   console.log(result);

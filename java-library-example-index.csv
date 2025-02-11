@@ -5035,3 +5035,4 @@ id,name,language,tag,package,version,date_epoch,date
 5034,azure-mgmt-monitor@7.0.0b1,python,azure-mgmt-monitor_7.0.0b1,azure-mgmt-monitor,7.0.0b1,1739005438,02/08/2025
 5035,azure-mgmt-logz@1.1.1,python,azure-mgmt-logz_1.1.1,azure-mgmt-logz,1.1.1,1739157250,02/10/2025
 5036,@azure-rest/arm-compute@1.0.0-beta.2,js,@azure-rest/arm-compute_1.0.0-beta.2,@azure-rest/arm-compute,1.0.0-beta.2,1739273395,02/11/2025
+5037,@azure-rest/arm-servicefabric@1.0.0-beta.2,js,@azure-rest/arm-servicefabric_1.0.0-beta.2,@azure-rest/arm-servicefabric,1.0.0-beta.2,1739270051,02/11/2025

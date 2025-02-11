@@ -69,10 +69,10 @@ async function createManagedClusterWithOssku() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
       subscriptionId,
       resourceGroupName,
-      resourceName
+      resourceName,
     )
     .put(parameters);
-  const poller = getLongRunningPoller(client, initalResponse);
+  const poller = await getLongRunningPoller(client, initalResponse);
   const result = await poller.pollUntilDone();
   console.log(result);
 }

@@ -2,9 +2,9 @@ const ContainerServiceManagementClient = require("@azure-rest/arm-containerservi
 const { DefaultAzureCredential } = require("@azure/identity");
 
 /**
- * This sample demonstrates how to Lists the admin credentials of a managed cluster.
+ * This sample demonstrates how to Lists the user credentials of a managed cluster.
  *
- * @summary Lists the admin credentials of a managed cluster.
+ * @summary Lists the user credentials of a managed cluster.
  * x-ms-original-file: specification/containerservice/resource-manager/Microsoft.ContainerService/preview/2022-05-02-preview/examples/ManagedClustersListClusterCredentialResult.json
  */
 async function getManagedCluster() {
@@ -15,10 +15,10 @@ async function getManagedCluster() {
   const client = ContainerServiceManagementClient(credential);
   const result = await client
     .path(
-      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterAdminCredential",
+      "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/listClusterUserCredential",
       subscriptionId,
       resourceGroupName,
-      resourceName
+      resourceName,
     )
     .post();
   console.log(result);

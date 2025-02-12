@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Retrieves the details of a RouteTable.
@@ -24,7 +24,7 @@ async function routeTableGet() {
       subscriptionId,
       resourceGroupName,
       virtualHubName,
-      routeTableName
+      routeTableName,
     )
     .get(options);
   console.log(result);

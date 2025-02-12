@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all available web application firewall rule sets.
@@ -18,7 +18,7 @@ async function getAvailableWafRuleSets() {
   const result = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   console.log(result);

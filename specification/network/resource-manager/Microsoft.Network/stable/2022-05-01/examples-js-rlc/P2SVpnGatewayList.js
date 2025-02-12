@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all the P2SVpnGateways in a subscription.
@@ -19,7 +19,7 @@ async function p2SVpnGatewayListBySubscription() {
   const initialResponse = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/p2svpnGateways",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

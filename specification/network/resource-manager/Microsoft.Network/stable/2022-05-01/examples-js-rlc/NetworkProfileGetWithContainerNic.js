@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the specified network profile in a specified resource group.
@@ -22,7 +22,7 @@ async function getNetworkProfileWithContainerNetworkInterfaces() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkProfiles/{networkProfileName}",
       subscriptionId,
       resourceGroupName,
-      networkProfileName
+      networkProfileName,
     )
     .get(options);
   console.log(result);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List all effective connectivity configurations applied on a virtual network.
@@ -23,7 +23,7 @@ async function listEffectiveConnectivityConfiguration() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listNetworkManagerEffectiveConnectivityConfigurations",
       subscriptionId,
       resourceGroupName,
-      virtualNetworkName
+      virtualNetworkName,
     )
     .post(options);
   console.log(result);

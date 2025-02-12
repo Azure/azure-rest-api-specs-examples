@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Retrieves a single ExpressRoutePort peering location, including the list of available bandwidths available at said peering location.
@@ -20,7 +20,7 @@ async function expressRoutePortsLocationGet() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/ExpressRoutePortsLocations/{locationName}",
       subscriptionId,
-      locationName
+      locationName,
     )
     .get(options);
   console.log(result);

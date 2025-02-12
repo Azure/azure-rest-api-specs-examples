@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates a network interface tags.
@@ -23,7 +23,7 @@ async function updateNetworkInterfaceTags() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}",
       subscriptionId,
       resourceGroupName,
-      networkInterfaceName
+      networkInterfaceName,
     )
     .patch(options);
   console.log(result);

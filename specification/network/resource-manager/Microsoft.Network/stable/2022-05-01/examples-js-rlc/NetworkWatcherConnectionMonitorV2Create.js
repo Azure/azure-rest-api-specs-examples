@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Create or update a connection monitor.
@@ -65,10 +65,10 @@ async function createConnectionMonitorV2() {
       subscriptionId,
       resourceGroupName,
       networkWatcherName,
-      connectionMonitorName
+      connectionMonitorName,
     )
     .put(options);
-  const poller = getLongRunningPoller(client, initialResponse);
+  const poller = await getLongRunningPoller(client, initialResponse);
   const result = await poller.pollUntilDone();
   console.log(result);
 }

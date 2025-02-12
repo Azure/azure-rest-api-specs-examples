@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates tags of a Security Partner Provider resource.
@@ -23,7 +23,7 @@ async function updateSecurityPartnerProviderTags() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/securityPartnerProviders/{securityPartnerProviderName}",
       subscriptionId,
       resourceGroupName,
-      securityPartnerProviderName
+      securityPartnerProviderName,
     )
     .patch(options);
   console.log(result);

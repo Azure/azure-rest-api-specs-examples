@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gives the sas-url to download the configurations for vpn-sites in a resource group.
@@ -30,7 +30,7 @@ async function vpnSitesConfigurationDownload() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualWans/{virtualWANName}/vpnConfiguration",
       subscriptionId,
       resourceGroupName,
-      virtualWANName
+      virtualWANName,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates or updates a load balancer backend address pool.
@@ -49,7 +49,7 @@ async function updateLoadBalancerBackendPoolWithBackendAddressesContainingVirtua
       subscriptionId,
       resourceGroupName,
       loadBalancerName,
-      backendAddressPoolName
+      backendAddressPoolName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);
@@ -58,5 +58,5 @@ async function updateLoadBalancerBackendPoolWithBackendAddressesContainingVirtua
 }
 
 updateLoadBalancerBackendPoolWithBackendAddressesContainingVirtualNetworkAndIPAddress().catch(
-  console.error
+  console.error,
 );

@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to The GetBgpPeerStatus operation retrieves the status of all BGP peers.
@@ -23,7 +23,7 @@ async function getVirtualNetworkGatewayBgpPeerStatus() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus",
       subscriptionId,
       resourceGroupName,
-      virtualNetworkGatewayName
+      virtualNetworkGatewayName,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

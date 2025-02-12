@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates a load balancer tags.
@@ -23,7 +23,7 @@ async function updateLoadBalancerTags() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
       subscriptionId,
       resourceGroupName,
-      loadBalancerName
+      loadBalancerName,
     )
     .patch(options);
   console.log(result);

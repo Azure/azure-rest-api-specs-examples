@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates or updates a network watcher in the specified resource group.
@@ -23,7 +23,7 @@ async function createNetworkWatcher() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}",
       subscriptionId,
       resourceGroupName,
-      networkWatcherName
+      networkWatcherName,
     )
     .put(options);
   console.log(result);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all available request headers.
@@ -18,7 +18,7 @@ async function getAvailableRequestHeaders() {
   const result = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   console.log(result);

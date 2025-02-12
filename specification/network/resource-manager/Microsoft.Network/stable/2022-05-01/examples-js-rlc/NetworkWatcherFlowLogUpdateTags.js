@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Update tags of the specified flow log.
@@ -25,7 +25,7 @@ async function updateFlowLogTags() {
       subscriptionId,
       resourceGroupName,
       networkWatcherName,
-      flowLogName
+      flowLogName,
     )
     .patch(options);
   console.log(result);

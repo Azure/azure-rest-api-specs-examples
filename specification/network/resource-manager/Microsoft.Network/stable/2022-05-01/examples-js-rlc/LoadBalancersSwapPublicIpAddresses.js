@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Swaps VIPs between two load balancers.
@@ -41,7 +41,7 @@ async function swapViPsBetweenTwoLoadBalancers() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses",
       subscriptionId,
-      location
+      location,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

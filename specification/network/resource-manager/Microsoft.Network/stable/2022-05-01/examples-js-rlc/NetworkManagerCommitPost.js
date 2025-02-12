@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Post a Network Manager Commit.
@@ -30,7 +30,7 @@ async function networkManageCommitPost() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/commit",
       subscriptionId,
       resourceGroupName,
-      networkManagerName
+      networkManagerName,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

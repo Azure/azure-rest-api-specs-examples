@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all global reach peer connections associated with a private peering in an express route circuit.
@@ -25,7 +25,7 @@ async function listPeerExpressRouteCircuitConnection() {
       subscriptionId,
       resourceGroupName,
       circuitName,
-      peeringName
+      peeringName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

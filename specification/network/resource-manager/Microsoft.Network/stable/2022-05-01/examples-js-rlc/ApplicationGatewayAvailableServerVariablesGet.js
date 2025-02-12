@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all available server variables.
@@ -18,7 +18,7 @@ async function getAvailableServerVariables() {
   const result = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableServerVariables",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   console.log(result);

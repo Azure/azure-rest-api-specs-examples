@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to List all network manager security configuration admin rules.
@@ -27,7 +27,7 @@ async function listSecurityAdminRules() {
       resourceGroupName,
       networkManagerName,
       configurationName,
-      ruleCollectionName
+      ruleCollectionName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

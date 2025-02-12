@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates a virtual wan vpn gateway if it doesn't exist else updates the existing gateway.
@@ -88,7 +88,7 @@ async function vpnGatewayPut() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}",
       subscriptionId,
       resourceGroupName,
-      gatewayName
+      gatewayName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);

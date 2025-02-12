@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates or updates an IpAllocation in the specified resource group.
@@ -34,7 +34,7 @@ async function createIPAllocation() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/IpAllocations/{ipAllocationName}",
       subscriptionId,
       resourceGroupName,
-      ipAllocationName
+      ipAllocationName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates or updates an admin rule.
@@ -42,7 +42,7 @@ async function createAnAdminRule() {
       networkManagerName,
       configurationName,
       ruleCollectionName,
-      ruleName
+      ruleName,
     )
     .put(options);
   console.log(result);

@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets all the load balancer backed address pools.
@@ -23,7 +23,7 @@ async function loadBalancerWithBackendAddressPoolContainingBackendAddresses() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools",
       subscriptionId,
       resourceGroupName,
-      loadBalancerName
+      loadBalancerName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the specified local network gateway in a resource group.
@@ -22,7 +22,7 @@ async function getLocalNetworkGateway() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}",
       subscriptionId,
       resourceGroupName,
-      localNetworkGatewayName
+      localNetworkGatewayName,
     )
     .get(options);
   console.log(result);

@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Retrieves a list of routes the virtual hub bgp connection is advertising to the specified peer.
@@ -25,7 +25,7 @@ async function virtualRouterPeerListAdvertisedRoutes() {
       subscriptionId,
       resourceGroupName,
       hubName,
-      connectionName
+      connectionName,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

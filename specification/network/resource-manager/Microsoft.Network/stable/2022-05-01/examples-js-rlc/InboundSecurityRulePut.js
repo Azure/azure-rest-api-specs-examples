@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates or updates the specified Network Virtual Appliance Inbound Security Rules.
@@ -36,7 +36,7 @@ async function createNetworkVirtualApplianceInboundSecurityRules() {
       subscriptionId,
       resourceGroupName,
       networkVirtualApplianceName,
-      ruleCollectionName
+      ruleCollectionName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);

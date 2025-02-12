@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Deletes a RoutingIntent.
@@ -25,7 +25,7 @@ async function routeTableDelete() {
       subscriptionId,
       resourceGroupName,
       virtualHubName,
-      routingIntentName
+      routingIntentName,
     )
     .delete(options);
   const poller = getLongRunningPoller(client, initialResponse);

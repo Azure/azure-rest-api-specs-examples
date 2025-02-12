@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates a RoutingIntent resource if it doesn't exist else updates the existing RoutingIntent.
@@ -43,7 +43,7 @@ async function routeTablePut() {
       subscriptionId,
       resourceGroupName,
       virtualHubName,
-      routingIntentName
+      routingIntentName,
     )
     .put(options);
   const poller = getLongRunningPoller(client, initialResponse);

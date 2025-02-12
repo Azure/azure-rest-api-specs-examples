@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the specified private endpoint by resource group.
@@ -22,7 +22,7 @@ async function getPrivateEndpointWithApplicationSecurityGroups() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}",
       subscriptionId,
       resourceGroupName,
-      privateEndpointName
+      privateEndpointName,
     )
     .get(options);
   console.log(result);

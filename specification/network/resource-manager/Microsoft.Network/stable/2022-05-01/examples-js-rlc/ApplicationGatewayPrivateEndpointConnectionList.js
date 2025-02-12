@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { paginate } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Lists all private endpoint connections on an application gateway.
@@ -23,7 +23,7 @@ async function listsAllPrivateEndpointConnectionsOnApplicationGateway() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections",
       subscriptionId,
       resourceGroupName,
-      applicationGatewayName
+      applicationGatewayName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

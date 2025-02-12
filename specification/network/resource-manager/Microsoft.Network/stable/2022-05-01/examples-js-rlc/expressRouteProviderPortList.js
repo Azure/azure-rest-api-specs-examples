@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Retrieves all the ExpressRouteProviderPorts in a subscription.
@@ -18,7 +18,7 @@ async function expressRouteProviderPortList() {
   const result = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/expressRouteProviderPorts",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   console.log(result);

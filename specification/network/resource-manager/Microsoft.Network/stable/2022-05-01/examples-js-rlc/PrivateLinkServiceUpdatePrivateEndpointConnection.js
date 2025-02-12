@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Approve or reject private end point connection for a private link service in a subscription.
@@ -36,7 +36,7 @@ async function approveOrRejectPrivateEndPointConnectionForAPrivateLinkService() 
       subscriptionId,
       resourceGroupName,
       serviceName,
-      peConnectionName
+      peConnectionName,
     )
     .put(options);
   console.log(result);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a list of service tag information resources.
@@ -20,7 +20,7 @@ async function getListOfServiceTags() {
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/serviceTags",
       subscriptionId,
-      location
+      location,
     )
     .get(options);
   console.log(result);

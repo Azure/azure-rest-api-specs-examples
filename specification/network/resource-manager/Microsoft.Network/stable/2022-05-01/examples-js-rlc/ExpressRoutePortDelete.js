@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Deletes the specified ExpressRoutePort resource.
@@ -23,7 +23,7 @@ async function expressRoutePortDelete() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ExpressRoutePorts/{expressRoutePortName}",
       subscriptionId,
       resourceGroupName,
-      expressRoutePortName
+      expressRoutePortName,
     )
     .delete(options);
   const poller = getLongRunningPoller(client, initialResponse);

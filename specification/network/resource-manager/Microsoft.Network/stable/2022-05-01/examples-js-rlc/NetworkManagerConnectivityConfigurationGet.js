@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
@@ -24,7 +24,7 @@ async function connectivityConfigurationsGet() {
       subscriptionId,
       resourceGroupName,
       networkManagerName,
-      configurationName
+      configurationName,
     )
     .get(options);
   console.log(result);

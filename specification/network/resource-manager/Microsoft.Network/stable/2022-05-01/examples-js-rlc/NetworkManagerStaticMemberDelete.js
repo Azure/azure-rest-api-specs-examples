@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Deletes a static member.
@@ -26,7 +26,7 @@ async function staticMembersDelete() {
       resourceGroupName,
       networkManagerName,
       networkGroupName,
-      staticMemberName
+      staticMemberName,
     )
     .delete(options);
   console.log(result);

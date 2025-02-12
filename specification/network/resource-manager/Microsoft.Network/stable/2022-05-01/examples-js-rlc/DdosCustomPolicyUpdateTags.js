@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Update a DDoS custom policy tags.
@@ -23,7 +23,7 @@ async function dDoSCustomPolicyUpdateTags() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/ddosCustomPolicies/{ddosCustomPolicyName}",
       subscriptionId,
       resourceGroupName,
-      ddosCustomPolicyName
+      ddosCustomPolicyName,
     )
     .patch(options);
   console.log(result);

@@ -1,6 +1,6 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default;
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets information about the specified application security group.
@@ -22,7 +22,7 @@ async function getApplicationSecurityGroup() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationSecurityGroups/{applicationSecurityGroupName}",
       subscriptionId,
       resourceGroupName,
-      applicationSecurityGroupName
+      applicationSecurityGroupName,
     )
     .get(options);
   console.log(result);

@@ -1,7 +1,7 @@
 const createNetworkManagementClient = require("@azure-rest/arm-network").default,
   { getLongRunningPoller } = require("@azure-rest/arm-network");
 const { DefaultAzureCredential } = require("@azure/identity");
-require("dotenv").config();
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the effective routes configured for the Virtual Hub resource or the specified resource .
@@ -24,7 +24,7 @@ async function effectiveRoutesForTheVirtualHub() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/effectiveRoutes",
       subscriptionId,
       resourceGroupName,
-      virtualHubName
+      virtualHubName,
     )
     .post(options);
   const poller = getLongRunningPoller(client, initialResponse);

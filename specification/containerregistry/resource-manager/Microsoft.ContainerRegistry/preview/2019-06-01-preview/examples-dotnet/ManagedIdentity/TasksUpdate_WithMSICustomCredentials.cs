@@ -25,51 +25,42 @@ ResourceIdentifier containerRegistryTaskResourceId = ContainerRegistryTaskResour
 ContainerRegistryTaskResource containerRegistryTask = client.GetContainerRegistryTaskResource(containerRegistryTaskResourceId);
 
 // invoke the operation
-ContainerRegistryTaskPatch patch = new ContainerRegistryTaskPatch()
+ContainerRegistryTaskPatch patch = new ContainerRegistryTaskPatch
 {
     Tags =
     {
-    ["testkey"] = "value",
+    ["testkey"] = "value"
     },
     Status = ContainerRegistryTaskStatus.Enabled,
     AgentCpu = 3,
-    Step = new ContainerRegistryDockerBuildStepUpdateContent()
+    Step = new ContainerRegistryDockerBuildStepUpdateContent
     {
-        ImageNames =
-        {
-        "azurerest:testtag1"
-        },
+        ImageNames = { "azurerest:testtag1" },
         DockerFilePath = "src/DockerFile",
     },
-    Trigger = new ContainerRegistryTriggerUpdateContent()
+    Trigger = new ContainerRegistryTriggerUpdateContent
     {
-        SourceTriggers =
+        SourceTriggers = {new ContainerRegistrySourceTriggerUpdateContent("mySourceTrigger")
         {
-        new ContainerRegistrySourceTriggerUpdateContent("mySourceTrigger")
+        SourceRepository = new SourceCodeRepoUpdateContent
         {
-        SourceRepository = new SourceCodeRepoUpdateContent()
-        {
-        SourceControlAuthProperties = new SourceCodeRepoAuthInfoUpdateContent()
+        SourceControlAuthProperties = new SourceCodeRepoAuthInfoUpdateContent
         {
         TokenType = SourceCodeRepoAuthTokenType.Pat,
         Token = "xxxxx",
         },
         },
-        SourceTriggerEvents =
-        {
-        ContainerRegistrySourceTriggerEvent.Commit
-        },
-        }
-        },
+        SourceTriggerEvents = {ContainerRegistrySourceTriggerEvent.Commit},
+        }},
     },
-    Credentials = new ContainerRegistryCredentials()
+    Credentials = new ContainerRegistryCredentials
     {
         CustomRegistries =
         {
-        ["myregistry.azurecr.io"] = new CustomRegistryCredentials()
+        ["myregistry.azurecr.io"] = new CustomRegistryCredentials
         {
         Identity = "[system]",
-        },
+        }
         },
     },
     LogTemplate = null,

@@ -40,48 +40,33 @@ ContainerRegistryTaskData data = new ContainerRegistryTaskData(new AzureLocation
     AgentCpu = 2,
     Step = new ContainerRegistryDockerBuildStep("src/DockerFile")
     {
-        ImageNames =
-        {
-        "azurerest:testtag"
-        },
+        ImageNames = { "azurerest:testtag" },
         IsPushEnabled = true,
         NoCache = false,
-        Arguments =
-        {
-        new ContainerRegistryRunArgument("mytestargument","mytestvalue")
+        Arguments = {new ContainerRegistryRunArgument("mytestargument", "mytestvalue")
         {
         IsSecret = false,
-        },new ContainerRegistryRunArgument("mysecrettestargument","mysecrettestvalue")
+        }, new ContainerRegistryRunArgument("mysecrettestargument", "mysecrettestvalue")
         {
         IsSecret = true,
-        }
-        },
+        }},
         ContextPath = "src",
     },
-    Trigger = new ContainerRegistryTriggerProperties()
+    Trigger = new ContainerRegistryTriggerProperties
     {
-        TimerTriggers =
-        {
-        new ContainerRegistryTimerTrigger("30 9 * * 1-5","myTimerTrigger")
-        },
-        SourceTriggers =
-        {
-        new ContainerRegistrySourceTrigger(new SourceCodeRepoProperties(SourceControlType.Github,new Uri("https://github.com/Azure/azure-rest-api-specs"))
+        TimerTriggers = { new ContainerRegistryTimerTrigger("30 9 * * 1-5", "myTimerTrigger") },
+        SourceTriggers = {new ContainerRegistrySourceTrigger(new SourceCodeRepoProperties(SourceControlType.Github, new Uri("https://github.com/Azure/azure-rest-api-specs"))
         {
         Branch = "master",
-        SourceControlAuthProperties = new SourceCodeRepoAuthInfo(SourceCodeRepoAuthTokenType.Pat,"xxxxx"),
-        },new ContainerRegistrySourceTriggerEvent[]
-        {
-        ContainerRegistrySourceTriggerEvent.Commit
-        },"mySourceTrigger")
-        },
+        SourceControlAuthProperties = new SourceCodeRepoAuthInfo(SourceCodeRepoAuthTokenType.Pat, "xxxxx"),
+        }, new ContainerRegistrySourceTriggerEvent[]{ContainerRegistrySourceTriggerEvent.Commit}, "mySourceTrigger")},
         BaseImageTrigger = new ContainerRegistryBaseImageTrigger(ContainerRegistryBaseImageTriggerType.Runtime, "myBaseImageTrigger"),
     },
     LogTemplate = null,
     IsSystemTask = false,
     Tags =
     {
-    ["testkey"] = "value",
+    ["testkey"] = "value"
     },
 };
 ArmOperation<ContainerRegistryTaskResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, taskName, data);

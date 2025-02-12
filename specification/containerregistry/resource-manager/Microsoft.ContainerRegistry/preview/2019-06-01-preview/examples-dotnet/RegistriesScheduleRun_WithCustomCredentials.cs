@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_WithCustomCredentials.json
@@ -30,56 +29,50 @@ ContainerRegistryRunContent content = new ContainerRegistryDockerBuildContent("D
     Architecture = ContainerRegistryOSArchitecture.Amd64,
 })
 {
-    ImageNames =
-    {
-    "azurerest:testtag"
-    },
+    ImageNames = { "azurerest:testtag" },
     IsPushEnabled = true,
     NoCache = true,
     Target = "stage1",
-    Arguments =
-    {
-    new ContainerRegistryRunArgument("mytestargument","mytestvalue")
+    Arguments = {new ContainerRegistryRunArgument("mytestargument", "mytestvalue")
     {
     IsSecret = false,
-    },new ContainerRegistryRunArgument("mysecrettestargument","mysecrettestvalue")
+    }, new ContainerRegistryRunArgument("mysecrettestargument", "mysecrettestvalue")
     {
     IsSecret = true,
-    }
-    },
+    }},
     AgentCpu = 2,
     SourceLocation = "https://myaccount.blob.core.windows.net/sascontainer/source.zip?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D",
-    Credentials = new ContainerRegistryCredentials()
+    Credentials = new ContainerRegistryCredentials
     {
         SourceRegistryLoginMode = SourceRegistryLoginMode.Default,
         CustomRegistries =
         {
-        ["myregistry.azurecr.io"] = new CustomRegistryCredentials()
+        ["myregistry.azurecr.io"] = new CustomRegistryCredentials
         {
-        UserName = new ContainerRegistrySecretObject()
+        UserName = new ContainerRegistrySecretObject
         {
         Value = "reg1",
         ObjectType = ContainerRegistrySecretObjectType.Opaque,
         },
-        Password = new ContainerRegistrySecretObject()
+        Password = new ContainerRegistrySecretObject
         {
         Value = "***",
         ObjectType = ContainerRegistrySecretObjectType.Opaque,
         },
         },
-        ["myregistry2.azurecr.io"] = new CustomRegistryCredentials()
+        ["myregistry2.azurecr.io"] = new CustomRegistryCredentials
         {
-        UserName = new ContainerRegistrySecretObject()
+        UserName = new ContainerRegistrySecretObject
         {
         Value = "reg2",
         ObjectType = ContainerRegistrySecretObjectType.Opaque,
         },
-        Password = new ContainerRegistrySecretObject()
+        Password = new ContainerRegistrySecretObject
         {
         Value = "***",
         ObjectType = ContainerRegistrySecretObjectType.Opaque,
         },
-        },
+        }
         },
     },
     IsArchiveEnabled = true,

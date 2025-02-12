@@ -27,4 +27,4 @@ ContainerRegistryTaskResource containerRegistryTask = client.GetContainerRegistr
 // invoke the operation
 await containerRegistryTask.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

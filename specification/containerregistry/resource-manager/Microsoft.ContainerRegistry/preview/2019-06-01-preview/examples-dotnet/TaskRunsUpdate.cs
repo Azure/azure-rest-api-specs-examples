@@ -25,7 +25,7 @@ ResourceIdentifier containerRegistryTaskRunResourceId = ContainerRegistryTaskRun
 ContainerRegistryTaskRunResource containerRegistryTaskRun = client.GetContainerRegistryTaskRunResource(containerRegistryTaskRunResourceId);
 
 // invoke the operation
-ContainerRegistryTaskRunPatch patch = new ContainerRegistryTaskRunPatch()
+ContainerRegistryTaskRunPatch patch = new ContainerRegistryTaskRunPatch
 {
     RunRequest = new ContainerRegistryEncodedTaskRunContent("c3RlcHM6IAogIC0gY21kOiB7eyAuVmFsdWVzLmNvbW1hbmQgfX0K", new ContainerRegistryPlatformProperties(ContainerRegistryOS.Linux)
     {
@@ -33,9 +33,7 @@ ContainerRegistryTaskRunPatch patch = new ContainerRegistryTaskRunPatch()
     })
     {
         EncodedValuesContent = "Y29tbWFuZDogYmFzaCBlY2hvIHt7LlJ1bi5SZWdpc3RyeX19Cg==",
-        Values =
-        {
-        },
+        Values = { },
         Credentials = new ContainerRegistryCredentials(),
         IsArchiveEnabled = true,
     },

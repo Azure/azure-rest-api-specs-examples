@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun.json
@@ -30,22 +29,16 @@ ContainerRegistryRunContent content = new ContainerRegistryDockerBuildContent("D
     Architecture = ContainerRegistryOSArchitecture.Amd64,
 })
 {
-    ImageNames =
-    {
-    "azurerest:testtag"
-    },
+    ImageNames = { "azurerest:testtag" },
     IsPushEnabled = true,
     NoCache = true,
-    Arguments =
-    {
-    new ContainerRegistryRunArgument("mytestargument","mytestvalue")
+    Arguments = {new ContainerRegistryRunArgument("mytestargument", "mytestvalue")
     {
     IsSecret = false,
-    },new ContainerRegistryRunArgument("mysecrettestargument","mysecrettestvalue")
+    }, new ContainerRegistryRunArgument("mysecrettestargument", "mysecrettestvalue")
     {
     IsSecret = true,
-    }
-    },
+    }},
     AgentCpu = 2,
     SourceLocation = "https://myaccount.blob.core.windows.net/sascontainer/source.zip?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D",
     IsArchiveEnabled = true,

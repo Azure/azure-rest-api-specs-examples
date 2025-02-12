@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_EncodedTaskRun.json
@@ -28,16 +27,13 @@ ContainerRegistryResource containerRegistry = client.GetContainerRegistryResourc
 ContainerRegistryRunContent content = new ContainerRegistryEncodedTaskRunContent("c3RlcHM6Cnt7IGlmIFZhbHVlcy5lbnZpcm9ubWVudCA9PSAncHJvZCcgfX0KICAtIHJ1bjogcHJvZCBzZXR1cAp7eyBlbHNlIGlmIFZhbHVlcy5lbnZpcm9ubWVudCA9PSAnc3RhZ2luZycgfX0KICAtIHJ1bjogc3RhZ2luZyBzZXR1cAp7eyBlbHNlIH19CiAgLSBydW46IGRlZmF1bHQgc2V0dXAKe3sgZW5kIH19CgogIC0gcnVuOiBidWlsZCAtdCBGYW5jeVRoaW5nOnt7LlZhbHVlcy5lbnZpcm9ubWVudH19LXt7LlZhbHVlcy52ZXJzaW9ufX0gLgoKcHVzaDogWydGYW5jeVRoaW5nOnt7LlZhbHVlcy5lbnZpcm9ubWVudH19LXt7LlZhbHVlcy52ZXJzaW9ufX0nXQ==", new ContainerRegistryPlatformProperties(ContainerRegistryOS.Linux))
 {
     EncodedValuesContent = "ZW52aXJvbm1lbnQ6IHByb2QKdmVyc2lvbjogMQ==",
-    Values =
-    {
-    new ContainerRegistryTaskOverridableValue("mytestargument","mytestvalue")
+    Values = {new ContainerRegistryTaskOverridableValue("mytestargument", "mytestvalue")
     {
     IsSecret = false,
-    },new ContainerRegistryTaskOverridableValue("mysecrettestargument","mysecrettestvalue")
+    }, new ContainerRegistryTaskOverridableValue("mysecrettestargument", "mysecrettestvalue")
     {
     IsSecret = true,
-    }
-    },
+    }},
     AgentCpu = 2,
 };
 ArmOperation<ContainerRegistryRunResource> lro = await containerRegistry.ScheduleRunAsync(WaitUntil.Completed, content);

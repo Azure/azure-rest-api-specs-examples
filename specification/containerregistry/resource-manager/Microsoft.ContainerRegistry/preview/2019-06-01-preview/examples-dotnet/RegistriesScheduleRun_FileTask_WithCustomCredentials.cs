@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerRegistry.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerRegistry;
 
 // Generated from example definition: specification/containerregistry/resource-manager/Microsoft.ContainerRegistry/preview/2019-06-01-preview/examples/RegistriesScheduleRun_FileTask_WithCustomCredentials.json
@@ -27,34 +26,31 @@ ContainerRegistryResource containerRegistry = client.GetContainerRegistryResourc
 // invoke the operation
 ContainerRegistryRunContent content = new ContainerRegistryFileTaskRunContent("acb.yaml", new ContainerRegistryPlatformProperties(ContainerRegistryOS.Linux))
 {
-    Values =
-    {
-    new ContainerRegistryTaskOverridableValue("mytestargument","mytestvalue")
+    Values = {new ContainerRegistryTaskOverridableValue("mytestargument", "mytestvalue")
     {
     IsSecret = false,
-    },new ContainerRegistryTaskOverridableValue("mysecrettestargument","mysecrettestvalue")
+    }, new ContainerRegistryTaskOverridableValue("mysecrettestargument", "mysecrettestvalue")
     {
     IsSecret = true,
-    }
-    },
-    Credentials = new ContainerRegistryCredentials()
+    }},
+    Credentials = new ContainerRegistryCredentials
     {
         SourceRegistryLoginMode = SourceRegistryLoginMode.Default,
         CustomRegistries =
         {
-        ["myregistry.azurecr.io"] = new CustomRegistryCredentials()
+        ["myregistry.azurecr.io"] = new CustomRegistryCredentials
         {
-        UserName = new ContainerRegistrySecretObject()
+        UserName = new ContainerRegistrySecretObject
         {
         Value = "reg1",
         ObjectType = ContainerRegistrySecretObjectType.Opaque,
         },
-        Password = new ContainerRegistrySecretObject()
+        Password = new ContainerRegistrySecretObject
         {
         Value = "***",
         ObjectType = ContainerRegistrySecretObjectType.Opaque,
         },
-        },
+        }
         },
     },
 };

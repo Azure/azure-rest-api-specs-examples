@@ -22,7 +22,7 @@ async function getInformationAboutADiskAccessResourceWithPrivateEndpoints() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskAccesses/{diskAccessName}",
       subscriptionId,
       resourceGroupName,
-      diskAccessName
+      diskAccessName,
     )
     .get(options);
   console.log(result);

@@ -24,7 +24,7 @@ async function virtualMachineExtensionsGetMaximumSetGen() {
       subscriptionId,
       resourceGroupName,
       vmName,
-      vmExtensionName
+      vmExtensionName,
     )
     .get(options);
   console.log(result);

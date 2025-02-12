@@ -22,12 +22,12 @@ async function getARestorePointCollectionButNotTheRestorePointsContainedInTheRes
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/restorePointCollections/{restorePointCollectionName}",
       subscriptionId,
       resourceGroupName,
-      restorePointCollectionName
+      restorePointCollectionName,
     )
     .get(options);
   console.log(result);
 }
 
 getARestorePointCollectionButNotTheRestorePointsContainedInTheRestorePointCollection().catch(
-  console.error
+  console.error,
 );

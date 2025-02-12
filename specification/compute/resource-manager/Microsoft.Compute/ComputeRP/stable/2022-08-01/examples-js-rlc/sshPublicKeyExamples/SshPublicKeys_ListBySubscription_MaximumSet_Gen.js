@@ -19,7 +19,7 @@ async function sshPublicKeysListBySubscriptionMaximumSetGen() {
   const initialResponse = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

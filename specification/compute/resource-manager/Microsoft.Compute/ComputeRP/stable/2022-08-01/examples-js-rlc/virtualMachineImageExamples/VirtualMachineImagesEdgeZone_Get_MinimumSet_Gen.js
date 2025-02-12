@@ -30,7 +30,7 @@ async function virtualMachineImagesEdgeZoneGetMinimumSetGen() {
       publisherName,
       offer,
       skus,
-      version
+      version,
     )
     .get(options);
   console.log(result);

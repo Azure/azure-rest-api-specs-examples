@@ -22,7 +22,7 @@ async function getAVirtualMachine() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}",
       subscriptionId,
       resourceGroupName,
-      vmName
+      vmName,
     )
     .get(options);
   console.log(result);

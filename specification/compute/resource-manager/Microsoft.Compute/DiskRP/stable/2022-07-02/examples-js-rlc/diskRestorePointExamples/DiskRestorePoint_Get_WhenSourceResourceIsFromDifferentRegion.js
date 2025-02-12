@@ -26,7 +26,7 @@ async function getAnIncrementalDiskRestorePointWhenSourceResourceIsFromADifferen
       resourceGroupName,
       restorePointCollectionName,
       vmRestorePointName,
-      diskRestorePointName
+      diskRestorePointName,
     )
     .get(options);
   console.log(result);

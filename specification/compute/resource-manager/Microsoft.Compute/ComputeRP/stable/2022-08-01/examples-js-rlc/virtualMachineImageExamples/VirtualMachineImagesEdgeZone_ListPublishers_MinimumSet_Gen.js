@@ -22,7 +22,7 @@ async function virtualMachineImagesEdgeZoneListPublishersMinimumSetGen() {
       "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/edgeZones/{edgeZone}/publishers",
       subscriptionId,
       location,
-      edgeZone
+      edgeZone,
     )
     .get(options);
   console.log(result);

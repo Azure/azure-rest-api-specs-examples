@@ -27,7 +27,7 @@ async function createOrUpdateACapacityReservationGroup() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
       subscriptionId,
       resourceGroupName,
-      capacityReservationGroupName
+      capacityReservationGroupName,
     )
     .put(options);
   console.log(result);

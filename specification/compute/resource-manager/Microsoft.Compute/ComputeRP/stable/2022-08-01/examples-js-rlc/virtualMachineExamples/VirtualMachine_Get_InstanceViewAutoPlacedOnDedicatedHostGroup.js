@@ -22,12 +22,12 @@ async function getInstanceViewOfAVirtualMachinePlacedOnADedicatedHostGroupThroug
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView",
       subscriptionId,
       resourceGroupName,
-      vmName
+      vmName,
     )
     .get(options);
   console.log(result);
 }
 
 getInstanceViewOfAVirtualMachinePlacedOnADedicatedHostGroupThroughAutomaticPlacement().catch(
-  console.error
+  console.error,
 );

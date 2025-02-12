@@ -22,7 +22,7 @@ async function getInformationAboutADiskEncryptionSet() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}",
       subscriptionId,
       resourceGroupName,
-      diskEncryptionSetName
+      diskEncryptionSetName,
     )
     .get(options);
   console.log(result);

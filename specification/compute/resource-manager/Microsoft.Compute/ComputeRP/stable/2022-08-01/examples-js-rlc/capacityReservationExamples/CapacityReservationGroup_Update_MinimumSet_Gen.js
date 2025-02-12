@@ -23,7 +23,7 @@ async function capacityReservationGroupsUpdateMinimumSetGen() {
       "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}",
       subscriptionId,
       resourceGroupName,
-      capacityReservationGroupName
+      capacityReservationGroupName,
     )
     .patch(options);
   console.log(result);

@@ -19,7 +19,7 @@ async function virtualMachinesListAllMinimumSetGen() {
   const initialResponse = await client
     .path(
       "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines",
-      subscriptionId
+      subscriptionId,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

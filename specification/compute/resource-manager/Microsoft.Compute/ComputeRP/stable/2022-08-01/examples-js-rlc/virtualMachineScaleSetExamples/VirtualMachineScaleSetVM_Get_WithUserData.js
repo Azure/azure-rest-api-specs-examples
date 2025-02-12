@@ -24,7 +24,7 @@ async function getVMScaleSetVMWithUserData() {
       subscriptionId,
       resourceGroupName,
       vmScaleSetName,
-      instanceId
+      instanceId,
     )
     .get(options);
   console.log(result);

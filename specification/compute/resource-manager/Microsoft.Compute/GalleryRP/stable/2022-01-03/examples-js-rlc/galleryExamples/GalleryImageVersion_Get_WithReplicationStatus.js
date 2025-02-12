@@ -29,7 +29,7 @@ async function getAGalleryImageVersionWithReplicationStatus() {
       resourceGroupName,
       galleryName,
       galleryImageName,
-      galleryImageVersionName
+      galleryImageVersionName,
     )
     .get(options);
   console.log(result);

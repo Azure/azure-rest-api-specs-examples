@@ -27,7 +27,7 @@ async function retrieveBootDiagnosticsDataOfAVirtualMachine() {
       subscriptionId,
       resourceGroupName,
       vmScaleSetName,
-      instanceId
+      instanceId,
     )
     .post(options);
   console.log(result);

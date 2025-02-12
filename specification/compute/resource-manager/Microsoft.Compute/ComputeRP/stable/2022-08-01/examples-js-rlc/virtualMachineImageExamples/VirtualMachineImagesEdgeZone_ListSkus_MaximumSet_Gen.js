@@ -26,7 +26,7 @@ async function virtualMachineImagesEdgeZoneListSkusMaximumSetGen() {
       location,
       edgeZone,
       publisherName,
-      offer
+      offer,
     )
     .get(options);
   console.log(result);

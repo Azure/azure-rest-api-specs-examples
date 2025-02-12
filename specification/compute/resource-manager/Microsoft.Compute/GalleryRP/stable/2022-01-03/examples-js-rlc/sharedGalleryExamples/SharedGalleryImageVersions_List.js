@@ -25,7 +25,7 @@ async function listSharedGalleryImageVersions() {
       subscriptionId,
       location,
       galleryUniqueName,
-      galleryImageName
+      galleryImageName,
     )
     .get(options);
   const pageData = paginate(client, initialResponse);

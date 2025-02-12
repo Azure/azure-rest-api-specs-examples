@@ -24,7 +24,7 @@ async function getRestorePointWithInstanceView() {
       subscriptionId,
       resourceGroupName,
       restorePointCollectionName,
-      restorePointName
+      restorePointName,
     )
     .get(options);
   console.log(result);

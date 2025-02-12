@@ -24,7 +24,7 @@ async function getCloudServiceRole() {
       subscriptionId,
       resourceGroupName,
       cloudServiceName,
-      roleName
+      roleName,
     )
     .get(options);
   console.log(result);

@@ -20,7 +20,7 @@ async function commandSucceedResult() {
       subscriptionId,
       resourceGroupName,
       resourceName,
-      commandId
+      commandId,
     )
     .get();
   console.log(result);

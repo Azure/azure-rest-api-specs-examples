@@ -17,7 +17,7 @@ async function getUpgradeProfileForManagedCluster() {
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/upgradeProfiles/default",
     subscriptionId,
     resourceGroupName,
-    resourceName
+    resourceName,
   );
   console.log(result);
 }

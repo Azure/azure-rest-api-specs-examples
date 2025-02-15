@@ -26,4 +26,4 @@ MonitorPrivateLinkScopedResource monitorPrivateLinkScopedResource = client.GetMo
 // invoke the operation
 await monitorPrivateLinkScopedResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

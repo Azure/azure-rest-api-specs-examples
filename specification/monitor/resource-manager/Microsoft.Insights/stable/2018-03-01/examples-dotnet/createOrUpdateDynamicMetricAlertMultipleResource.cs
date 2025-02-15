@@ -29,42 +29,42 @@ MetricAlertCollection collection = resourceGroupResource.GetMetricAlerts();
 
 // invoke the operation
 string ruleName = "MetricAlertOnMultipleResources";
-MetricAlertData data = new MetricAlertData(new AzureLocation("global"), 3, true, new string[]
-{
-"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme1","/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme2"
-}, XmlConvert.ToTimeSpan("PT1M"), XmlConvert.ToTimeSpan("PT15M"), new MetricAlertMultipleResourceMultipleMetricCriteria()
-{
-    AllOf =
-{
-new DynamicMetricCriteria("High_CPU_80","Percentage CPU",MetricCriteriaTimeAggregationType.Average,DynamicThresholdOperator.GreaterOrLessThan,DynamicThresholdSensitivity.Medium,new DynamicThresholdFailingPeriods(4,4))
-{
-MetricNamespace = "microsoft.compute/virtualmachines",
-Dimensions =
-{
-},
-}
-},
-})
+MetricAlertData data = new MetricAlertData(
+    new AzureLocation("global"),
+    3,
+    true,
+    new string[] { "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme1", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme2" },
+    XmlConvert.ToTimeSpan("PT1M"),
+    XmlConvert.ToTimeSpan("PT15M"),
+    new MetricAlertMultipleResourceMultipleMetricCriteria
+    {
+        AllOf = {new DynamicMetricCriteria(
+            "High_CPU_80",
+            "Percentage CPU",
+            MetricCriteriaTimeAggregationType.Average,
+            DynamicThresholdOperator.GreaterOrLessThan,
+            DynamicThresholdSensitivity.Medium,
+            new DynamicThresholdFailingPeriods(4, 4))
+        {
+        MetricNamespace = "microsoft.compute/virtualmachines",
+        Dimensions = {},
+        }},
+    })
 {
     Description = "This is the description of the rule1",
     TargetResourceType = new ResourceType("Microsoft.Compute/virtualMachines"),
     TargetResourceRegion = new AzureLocation("southcentralus"),
     IsAutoMitigateEnabled = true,
-    Actions =
-    {
-    new MetricAlertAction()
+    Actions = {new MetricAlertAction
     {
     ActionGroupId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
     WebHookProperties =
     {
     ["key11"] = "value11",
-    ["key12"] = "value12",
+    ["key12"] = "value12"
     },
-    }
-    },
-    Tags =
-    {
-    },
+    }},
+    Tags = { },
 };
 ArmOperation<MetricAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 MetricAlertResource result = lro.Value;

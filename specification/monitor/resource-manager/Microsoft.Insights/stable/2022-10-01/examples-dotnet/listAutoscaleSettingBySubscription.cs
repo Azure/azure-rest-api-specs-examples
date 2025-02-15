@@ -33,4 +33,4 @@ await foreach (AutoscaleSettingResource item in subscriptionResource.GetAutoscal
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -23,22 +23,16 @@ ResourceIdentifier logProfileResourceId = LogProfileResource.CreateResourceIdent
 LogProfileResource logProfile = client.GetLogProfileResource(logProfileResourceId);
 
 // invoke the operation
-LogProfilePatch patch = new LogProfilePatch()
+LogProfilePatch patch = new LogProfilePatch
 {
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
     StorageAccountId = new ResourceIdentifier("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8162"),
     ServiceBusRuleId = new ResourceIdentifier(""),
-    Locations =
-    {
-    new AzureLocation("global")
-    },
-    Categories =
-    {
-    "Write","Delete","Action"
-    },
+    Locations = { new AzureLocation("global") },
+    Categories = { "Write", "Delete", "Action" },
     RetentionPolicy = new RetentionPolicy(true, 3),
 };
 LogProfileResource result = await logProfile.UpdateAsync(patch);

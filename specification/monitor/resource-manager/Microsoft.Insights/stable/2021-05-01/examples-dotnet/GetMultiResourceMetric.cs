@@ -24,10 +24,11 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-SubscriptionResourceGetMonitorMetricsWithPostOptions options = new SubscriptionResourceGetMonitorMetricsWithPostOptions(region: "westus2") { Timespan = "2021-06-08T19:00:00Z/2021-06-12T01:00:00Z", Interval = XmlConvert.ToTimeSpan("PT6H"), Metricnames = "Data Disk Max Burst IOPS", Aggregation = "count", Top = 10, Orderby = "count desc", Filter = "LUN eq '0' and Microsoft.ResourceId eq '*'", Metricnamespace = "microsoft.compute/virtualmachines", AutoAdjustTimegrain = true, ValidateDimensions = false };
+string region = "westus2";
+SubscriptionResourceGetMonitorMetricsWithPostOptions options = new SubscriptionResourceGetMonitorMetricsWithPostOptions(region) { Timespan = "2021-06-08T19:00:00Z/2021-06-12T01:00:00Z", Interval = XmlConvert.ToTimeSpan("PT6H"), Metricnames = "Data Disk Max Burst IOPS", Aggregation = "count", Top = 10, Orderby = "count desc", Filter = "LUN eq '0' and Microsoft.ResourceId eq '*'", Metricnamespace = "microsoft.compute/virtualmachines", AutoAdjustTimegrain = true, ValidateDimensions = false };
 await foreach (SubscriptionMonitorMetric item in subscriptionResource.GetMonitorMetricsWithPostAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

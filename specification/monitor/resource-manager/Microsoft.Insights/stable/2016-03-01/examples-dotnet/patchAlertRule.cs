@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2016-03-01/examples/patchAlertRule.json
@@ -26,11 +25,11 @@ ResourceIdentifier alertRuleResourceId = AlertRuleResource.CreateResourceIdentif
 AlertRuleResource alertRule = client.GetAlertRuleResource(alertRuleResourceId);
 
 // invoke the operation
-AlertRulePatch patch = new AlertRulePatch()
+AlertRulePatch patch = new AlertRulePatch
 {
     Tags =
     {
-    ["$type"] = "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary",
+    ["$type"] = "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary"
     },
     Name = "chiricutin",
     Description = "Pura Vida",
@@ -39,15 +38,13 @@ AlertRulePatch patch = new AlertRulePatch()
     {
         WindowSize = XmlConvert.ToTimeSpan("PT5M"),
         TimeAggregation = ThresholdRuleConditionTimeAggregationType.Total,
-        DataSource = new RuleMetricDataSource()
+        DataSource = new RuleMetricDataSource
         {
             MetricName = "Requests",
             ResourceId = new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"),
         },
     },
-    Actions =
-    {
-    },
+    Actions = { },
 };
 AlertRuleResource result = await alertRule.UpdateAsync(patch);
 

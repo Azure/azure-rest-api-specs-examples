@@ -30,122 +30,59 @@ DataCollectionRuleCollection collection = resourceGroupResource.GetDataCollectio
 string dataCollectionRuleName = "myCollectionRule";
 DataCollectionRuleData data = new DataCollectionRuleData(new AzureLocation("eastus"))
 {
-    DataSources = new DataCollectionRuleDataSources()
+    DataSources = new DataCollectionRuleDataSources
     {
-        PerformanceCounters =
+        PerformanceCounters = {new PerfCounterDataSource
         {
-        new PerfCounterDataSource()
-        {
-        Streams =
-        {
-        PerfCounterDataSourceStream.MicrosoftPerf
-        },
+        Streams = {PerfCounterDataSourceStream.MicrosoftPerf},
         SamplingFrequencyInSeconds = 15,
-        CounterSpecifiers =
-        {
-        "\\Processor(_Total)\\% Processor Time","\\Memory\\Committed Bytes","\\LogicalDisk(_Total)\\Free Megabytes","\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"
-        },
+        CounterSpecifiers = {"\\Processor(_Total)\\% Processor Time", "\\Memory\\Committed Bytes", "\\LogicalDisk(_Total)\\Free Megabytes", "\\PhysicalDisk(_Total)\\Avg. Disk Queue Length"},
         Name = "cloudTeamCoreCounters",
-        },new PerfCounterDataSource()
+        }, new PerfCounterDataSource
         {
-        Streams =
-        {
-        PerfCounterDataSourceStream.MicrosoftPerf
-        },
+        Streams = {PerfCounterDataSourceStream.MicrosoftPerf},
         SamplingFrequencyInSeconds = 30,
-        CounterSpecifiers =
-        {
-        "\\Process(_Total)\\Thread Count"
-        },
+        CounterSpecifiers = {"\\Process(_Total)\\Thread Count"},
         Name = "appTeamExtraCounters",
-        }
-        },
-        WindowsEventLogs =
+        }},
+        WindowsEventLogs = {new WindowsEventLogDataSource
         {
-        new WindowsEventLogDataSource()
-        {
-        Streams =
-        {
-        WindowsEventLogDataSourceStream.MicrosoftWindowsEvent
-        },
-        XPathQueries =
-        {
-        "Security!"
-        },
+        Streams = {WindowsEventLogDataSourceStream.MicrosoftWindowsEvent},
+        XPathQueries = {"Security!"},
         Name = "cloudSecurityTeamEvents",
-        },new WindowsEventLogDataSource()
+        }, new WindowsEventLogDataSource
         {
-        Streams =
-        {
-        WindowsEventLogDataSourceStream.MicrosoftWindowsEvent
-        },
-        XPathQueries =
-        {
-        "System![System[(Level = 1 or Level = 2 or Level = 3)]]","Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]"
-        },
+        Streams = {WindowsEventLogDataSourceStream.MicrosoftWindowsEvent},
+        XPathQueries = {"System![System[(Level = 1 or Level = 2 or Level = 3)]]", "Application!*[System[(Level = 1 or Level = 2 or Level = 3)]]"},
         Name = "appTeam1AppEvents",
-        }
-        },
-        Syslog =
+        }},
+        Syslog = {new SyslogDataSource
         {
-        new SyslogDataSource()
-        {
-        Streams =
-        {
-        SyslogDataSourceStream.MicrosoftSyslog
-        },
-        FacilityNames =
-        {
-        SyslogDataSourceFacilityName.Cron
-        },
-        LogLevels =
-        {
-        SyslogDataSourceLogLevel.Debug,SyslogDataSourceLogLevel.Critical,SyslogDataSourceLogLevel.Emergency
-        },
+        Streams = {SyslogDataSourceStream.MicrosoftSyslog},
+        FacilityNames = {SyslogDataSourceFacilityName.Cron},
+        LogLevels = {SyslogDataSourceLogLevel.Debug, SyslogDataSourceLogLevel.Critical, SyslogDataSourceLogLevel.Emergency},
         Name = "cronSyslog",
-        },new SyslogDataSource()
+        }, new SyslogDataSource
         {
-        Streams =
-        {
-        SyslogDataSourceStream.MicrosoftSyslog
-        },
-        FacilityNames =
-        {
-        SyslogDataSourceFacilityName.Syslog
-        },
-        LogLevels =
-        {
-        SyslogDataSourceLogLevel.Alert,SyslogDataSourceLogLevel.Critical,SyslogDataSourceLogLevel.Emergency
-        },
+        Streams = {SyslogDataSourceStream.MicrosoftSyslog},
+        FacilityNames = {SyslogDataSourceFacilityName.Syslog},
+        LogLevels = {SyslogDataSourceLogLevel.Alert, SyslogDataSourceLogLevel.Critical, SyslogDataSourceLogLevel.Emergency},
         Name = "syslogBase",
-        }
-        },
+        }},
     },
-    Destinations = new DataCollectionRuleDestinations()
+    Destinations = new DataCollectionRuleDestinations
     {
-        LogAnalytics =
-        {
-        new LogAnalyticsDestination()
+        LogAnalytics = {new LogAnalyticsDestination
         {
         WorkspaceResourceId = new ResourceIdentifier("/subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.OperationalInsights/workspaces/centralTeamWorkspace"),
         Name = "centralWorkspace",
-        }
-        },
+        }},
     },
-    DataFlows =
+    DataFlows = {new DataFlow
     {
-    new DataFlow()
-    {
-    Streams =
-    {
-    DataFlowStream.MicrosoftPerf,DataFlowStream.MicrosoftSyslog,DataFlowStream.MicrosoftWindowsEvent
-    },
-    Destinations =
-    {
-    "centralWorkspace"
-    },
-    }
-    },
+    Streams = {DataFlowStream.MicrosoftPerf, DataFlowStream.MicrosoftSyslog, DataFlowStream.MicrosoftWindowsEvent},
+    Destinations = {"centralWorkspace"},
+    }},
 };
 ArmOperation<DataCollectionRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, dataCollectionRuleName, data);
 DataCollectionRuleResource result = lro.Value;

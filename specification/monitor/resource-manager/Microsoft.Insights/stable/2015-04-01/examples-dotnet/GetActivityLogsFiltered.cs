@@ -30,4 +30,4 @@ await foreach (EventDataInfo item in subscriptionResource.GetActivityLogsAsync(f
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

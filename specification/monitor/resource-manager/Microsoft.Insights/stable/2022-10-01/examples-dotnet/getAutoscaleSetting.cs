@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/getAutoscaleSetting.json
@@ -17,30 +16,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ResourceGroupResource created on azure
-// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
+// this example assumes you already have this AutoscaleSettingResource created on azure
+// for more information of creating AutoscaleSettingResource, please refer to the document of AutoscaleSettingResource
 string subscriptionId = "b67f7fec-69fc-4974-9099-a26bd6ffeda3";
 string resourceGroupName = "TestingMetricsScaleSet";
-ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
-
-// get the collection of this AutoscaleSettingResource
-AutoscaleSettingCollection collection = resourceGroupResource.GetAutoscaleSettings();
+string autoscaleSettingName = "MySetting";
+ResourceIdentifier autoscaleSettingResourceId = AutoscaleSettingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, autoscaleSettingName);
+AutoscaleSettingResource autoscaleSetting = client.GetAutoscaleSettingResource(autoscaleSettingResourceId);
 
 // invoke the operation
-string autoscaleSettingName = "MySetting";
-NullableResponse<AutoscaleSettingResource> response = await collection.GetIfExistsAsync(autoscaleSettingName);
-AutoscaleSettingResource result = response.HasValue ? response.Value : null;
+AutoscaleSettingResource result = await autoscaleSetting.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AutoscaleSettingData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AutoscaleSettingData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

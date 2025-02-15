@@ -15,18 +15,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this DiagnosticSettingResource created on azure
-// for more information of creating DiagnosticSettingResource, please refer to the document of DiagnosticSettingResource
+// get the collection of this DiagnosticSettingResource
 string resourceUri = "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6";
-string name = "mysetting";
-ResourceIdentifier diagnosticSettingResourceId = DiagnosticSettingResource.CreateResourceIdentifier(resourceUri, name);
-DiagnosticSettingResource diagnosticSetting = client.GetDiagnosticSettingResource(diagnosticSettingResourceId);
+DiagnosticSettingCollection collection = client.GetDiagnosticSettings(new ResourceIdentifier(resourceUri));
 
 // invoke the operation
-DiagnosticSettingResource result = await diagnosticSetting.GetAsync();
+string name = "mysetting";
+NullableResponse<DiagnosticSettingResource> response = await collection.GetIfExistsAsync(name);
+DiagnosticSettingResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-DiagnosticSettingData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    DiagnosticSettingData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

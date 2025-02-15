@@ -14,13 +14,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this DataCollectionRuleAssociationResource
 string resourceUri = "subscriptions/703362b3-f278-4e4b-9179-c76eaf41ffc2/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVm";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-DataCollectionRuleAssociationCollection collection = client.GetDataCollectionRuleAssociations(scopeId);
+DataCollectionRuleAssociationCollection collection = client.GetDataCollectionRuleAssociations(new ResourceIdentifier(resourceUri));
 
 // invoke the operation and iterate over the result
 await foreach (DataCollectionRuleAssociationResource item in collection.GetAllAsync())
@@ -32,4 +28,4 @@ await foreach (DataCollectionRuleAssociationResource item in collection.GetAllAs
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,39 +29,33 @@ MetricAlertCollection collection = resourceGroupResource.GetMetricAlerts();
 
 // invoke the operation
 string ruleName = "chiricutin";
-MetricAlertData data = new MetricAlertData(new AzureLocation("global"), 3, true, new string[]
-{
-"/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme"
-}, XmlConvert.ToTimeSpan("Pt1m"), XmlConvert.ToTimeSpan("Pt15m"), new MetricAlertSingleResourceMultipleMetricCriteria()
-{
-    AllOf =
-{
-new MetricCriteria("High_CPU_80","\\Processor(_Total)\\% Processor Time",MetricCriteriaTimeAggregationType.Average,MetricCriteriaOperator.GreaterThan,80.5)
-{
-Dimensions =
-{
-},
-}
-},
-})
+MetricAlertData data = new MetricAlertData(
+    new AzureLocation("global"),
+    3,
+    true,
+    new string[] { "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme" },
+    XmlConvert.ToTimeSpan("PT1M"),
+    XmlConvert.ToTimeSpan("PT15M"),
+    new MetricAlertSingleResourceMultipleMetricCriteria
+    {
+        AllOf = {new MetricCriteria("High_CPU_80", "\\Processor(_Total)\\% Processor Time", MetricCriteriaTimeAggregationType.Average, MetricCriteriaOperator.GreaterThan, 80.5)
+        {
+        Dimensions = {},
+        }},
+    })
 {
     Description = "This is the description of the rule1",
     IsAutoMitigateEnabled = true,
-    Actions =
-    {
-    new MetricAlertAction()
+    Actions = {new MetricAlertAction
     {
     ActionGroupId = new ResourceIdentifier("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
     WebHookProperties =
     {
     ["key11"] = "value11",
-    ["key12"] = "value12",
+    ["key12"] = "value12"
     },
-    }
-    },
-    Tags =
-    {
-    },
+    }},
+    Tags = { },
 };
 ArmOperation<MetricAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 MetricAlertResource result = lro.Value;

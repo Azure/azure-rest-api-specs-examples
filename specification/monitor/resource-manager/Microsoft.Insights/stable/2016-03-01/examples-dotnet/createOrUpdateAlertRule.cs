@@ -33,7 +33,7 @@ AlertRuleData data = new AlertRuleData(new AzureLocation("West US"), "chiricutin
 {
     WindowSize = XmlConvert.ToTimeSpan("PT5M"),
     TimeAggregation = ThresholdRuleConditionTimeAggregationType.Total,
-    DataSource = new RuleMetricDataSource()
+    DataSource = new RuleMetricDataSource
     {
         MetricName = "Requests",
         ResourceId = new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"),
@@ -41,12 +41,8 @@ AlertRuleData data = new AlertRuleData(new AzureLocation("West US"), "chiricutin
 })
 {
     Description = "Pura Vida",
-    Actions =
-    {
-    },
-    Tags =
-    {
-    },
+    Actions = { },
+    Tags = { },
 };
 ArmOperation<AlertRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 AlertRuleResource result = lro.Value;

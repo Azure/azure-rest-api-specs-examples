@@ -24,4 +24,4 @@ DataCollectionRuleAssociationResource dataCollectionRuleAssociation = client.Get
 // invoke the operation
 await dataCollectionRuleAssociation.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/preview/2021-07-01-preview/examples/PrivateLinkScopesUpdateTagsOnly.json
@@ -25,12 +24,12 @@ ResourceIdentifier monitorPrivateLinkScopeResourceId = MonitorPrivateLinkScopeRe
 MonitorPrivateLinkScopeResource monitorPrivateLinkScope = client.GetMonitorPrivateLinkScopeResource(monitorPrivateLinkScopeResourceId);
 
 // invoke the operation
-MonitorPrivateLinkScopePatch patch = new MonitorPrivateLinkScopePatch()
+MonitorPrivateLinkScopePatch patch = new MonitorPrivateLinkScopePatch
 {
     Tags =
     {
     ["Tag1"] = "Value1",
-    ["Tag2"] = "Value2",
+    ["Tag2"] = "Value2"
     },
 };
 MonitorPrivateLinkScopeResource result = await monitorPrivateLinkScope.UpdateAsync(patch);

@@ -30,40 +30,26 @@ ActivityLogAlertCollection collection = resourceGroupResource.GetActivityLogAler
 string activityLogAlertName = "SampleActivityLogAlertRuleWithContainsAny";
 ActivityLogAlertData data = new ActivityLogAlertData(new AzureLocation("Global"))
 {
-    Scopes =
-    {
-    "subscriptions/187f412d-1758-44d9-b052-169e2564721d"
-    },
-    ConditionAllOf =
-    {
-    new ActivityLogAlertAnyOfOrLeafCondition()
+    Scopes = { "subscriptions/187f412d-1758-44d9-b052-169e2564721d" },
+    ConditionAllOf = {new ActivityLogAlertAnyOfOrLeafCondition
     {
     Field = "category",
     EqualsValue = "ServiceHealth",
-    },new ActivityLogAlertAnyOfOrLeafCondition()
+    }, new ActivityLogAlertAnyOfOrLeafCondition
     {
     Field = "properties.impactedServices[*].ImpactedRegions[*].RegionName",
-    ContainsAny =
-    {
-    "North Europe","West Europe"
-    },
-    }
-    },
-    ActionsActionGroups =
-    {
-    new ActivityLogAlertActionGroup(new ResourceIdentifier("/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"))
+    ContainsAny = {"North Europe", "West Europe"},
+    }},
+    ActionsActionGroups = {new ActivityLogAlertActionGroup(new ResourceIdentifier("/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"))
     {
     WebhookProperties =
     {
-    ["sampleWebhookProperty"] = "SamplePropertyValue",
+    ["sampleWebhookProperty"] = "SamplePropertyValue"
     },
-    }
-    },
+    }},
     IsEnabled = true,
     Description = "Description of sample Activity Log Alert rule with 'containsAny'.",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ActivityLogAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, activityLogAlertName, data);
 ActivityLogAlertResource result = lro.Value;

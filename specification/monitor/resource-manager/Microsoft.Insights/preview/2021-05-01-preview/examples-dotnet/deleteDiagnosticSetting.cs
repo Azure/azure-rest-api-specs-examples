@@ -25,4 +25,4 @@ DiagnosticSettingResource diagnosticSetting = client.GetDiagnosticSettingResourc
 // invoke the operation
 await diagnosticSetting.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

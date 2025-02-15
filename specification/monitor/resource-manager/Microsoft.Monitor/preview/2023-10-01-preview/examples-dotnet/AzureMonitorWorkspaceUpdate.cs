@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Monitor/preview/2023-10-01-preview/examples/AzureMonitorWorkspaceUpdate.json
@@ -25,13 +24,13 @@ ResourceIdentifier monitorWorkspaceResourceId = MonitorWorkspaceResource.CreateR
 MonitorWorkspaceResource monitorWorkspaceResource = client.GetMonitorWorkspaceResource(monitorWorkspaceResourceId);
 
 // invoke the operation
-MonitorWorkspaceResourcePatch patch = new MonitorWorkspaceResourcePatch()
+MonitorWorkspaceResourcePatch patch = new MonitorWorkspaceResourcePatch
 {
     Tags =
     {
     ["tag1"] = "A",
     ["tag2"] = "B",
-    ["tag3"] = "C",
+    ["tag3"] = "C"
     },
 };
 MonitorWorkspaceResource result = await monitorWorkspaceResource.UpdateAsync(patch);

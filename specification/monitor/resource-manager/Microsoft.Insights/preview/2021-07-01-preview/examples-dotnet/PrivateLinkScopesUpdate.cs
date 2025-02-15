@@ -30,14 +30,12 @@ MonitorPrivateLinkScopeCollection collection = resourceGroupResource.GetMonitorP
 string scopeName = "my-privatelinkscope";
 MonitorPrivateLinkScopeData data = new MonitorPrivateLinkScopeData(new AzureLocation("Global"), new MonitorPrivateLinkAccessModeSettings(MonitorPrivateLinkAccessMode.Open, MonitorPrivateLinkAccessMode.Open)
 {
-    Exclusions =
-    {
-    },
+    Exclusions = { },
 })
 {
     Tags =
     {
-    ["Tag1"] = "Value1",
+    ["Tag1"] = "Value1"
     },
 };
 ArmOperation<MonitorPrivateLinkScopeResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scopeName, data);

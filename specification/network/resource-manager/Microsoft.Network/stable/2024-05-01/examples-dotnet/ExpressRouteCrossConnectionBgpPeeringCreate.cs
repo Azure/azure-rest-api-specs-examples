@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ExpressRouteCrossConnectionResource created on azure
-// for more information of creating ExpressRouteCrossConnectionResource, please refer to the document of ExpressRouteCrossConnectionResource
+// this example assumes you already have this ExpressRouteCrossConnectionPeeringResource created on azure
+// for more information of creating ExpressRouteCrossConnectionPeeringResource, please refer to the document of ExpressRouteCrossConnectionPeeringResource
 string subscriptionId = "subid";
 string resourceGroupName = "CrossConnection-SiliconValley";
 string crossConnectionName = "<circuitServiceKey>";
-ResourceIdentifier expressRouteCrossConnectionResourceId = ExpressRouteCrossConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, crossConnectionName);
-ExpressRouteCrossConnectionResource expressRouteCrossConnection = client.GetExpressRouteCrossConnectionResource(expressRouteCrossConnectionResourceId);
-
-// get the collection of this ExpressRouteCrossConnectionPeeringResource
-ExpressRouteCrossConnectionPeeringCollection collection = expressRouteCrossConnection.GetExpressRouteCrossConnectionPeerings();
+string peeringName = "AzurePrivatePeering";
+ResourceIdentifier expressRouteCrossConnectionPeeringResourceId = ExpressRouteCrossConnectionPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, crossConnectionName, peeringName);
+ExpressRouteCrossConnectionPeeringResource expressRouteCrossConnectionPeering = client.GetExpressRouteCrossConnectionPeeringResource(expressRouteCrossConnectionPeeringResourceId);
 
 // invoke the operation
-string peeringName = "AzurePrivatePeering";
 ExpressRouteCrossConnectionPeeringData data = new ExpressRouteCrossConnectionPeeringData
 {
     PeerASN = 200L,
@@ -40,7 +37,7 @@ ExpressRouteCrossConnectionPeeringData data = new ExpressRouteCrossConnectionPee
         SecondaryPeerAddressPrefix = "3FFE:FFFF:0:CD30::4/126",
     },
 };
-ArmOperation<ExpressRouteCrossConnectionPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, peeringName, data);
+ArmOperation<ExpressRouteCrossConnectionPeeringResource> lro = await expressRouteCrossConnectionPeering.UpdateAsync(WaitUntil.Completed, data);
 ExpressRouteCrossConnectionPeeringResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

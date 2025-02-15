@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkVirtualApplianceResource created on azure
-// for more information of creating NetworkVirtualApplianceResource, please refer to the document of NetworkVirtualApplianceResource
+// this example assumes you already have this InboundSecurityRuleResource created on azure
+// for more information of creating InboundSecurityRuleResource, please refer to the document of InboundSecurityRuleResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string networkVirtualApplianceName = "nva";
-ResourceIdentifier networkVirtualApplianceResourceId = NetworkVirtualApplianceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName);
-NetworkVirtualApplianceResource networkVirtualAppliance = client.GetNetworkVirtualApplianceResource(networkVirtualApplianceResourceId);
-
-// get the collection of this InboundSecurityRuleResource
-InboundSecurityRuleCollection collection = networkVirtualAppliance.GetInboundSecurityRules();
+string ruleCollectionName = "rule1";
+ResourceIdentifier inboundSecurityRuleResourceId = InboundSecurityRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkVirtualApplianceName, ruleCollectionName);
+InboundSecurityRuleResource inboundSecurityRule = client.GetInboundSecurityRuleResource(inboundSecurityRuleResourceId);
 
 // invoke the operation
-string ruleCollectionName = "rule1";
-NullableResponse<InboundSecurityRuleResource> response = await collection.GetIfExistsAsync(ruleCollectionName);
-InboundSecurityRuleResource result = response.HasValue ? response.Value : null;
+InboundSecurityRuleResource result = await inboundSecurityRule.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine("Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    InboundSecurityRuleData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+InboundSecurityRuleData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

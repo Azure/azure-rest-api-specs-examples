@@ -5043,3 +5043,5 @@ id,name,language,tag,package,version,date_epoch,date
 5042,@azure/arm-servicenetworking@2.0.0,js,@azure/arm-servicenetworking_2.0.0,@azure/arm-servicenetworking,2.0.0,1739349234,02/12/2025
 5043,@azure/arm-appservice@16.0.0,js,@azure/arm-appservice_16.0.0,@azure/arm-appservice,16.0.0,1739430257,02/13/2025
 5044,@azure/arm-eventhub@5.3.0-beta.1,js,@azure/arm-eventhub_5.3.0-beta.1,@azure/arm-eventhub,5.3.0-beta.1,1739428829,02/13/2025
+5045,com.azure.resourcemanager:azure-resourcemanager-logz:1.0.0-beta.4,java,azure-resourcemanager-logz_1.0.0-beta.4,azure-resourcemanager-logz,1.0.0-beta.4,1739503857,02/14/2025
+5046,"Azure.ResourceManager.Nginx,1.1.0-beta.3",dotnet,Azure.ResourceManager.Nginx_1.1.0-beta.3,Azure.ResourceManager.Nginx,1.1.0-beta.3,1739529382,02/14/2025

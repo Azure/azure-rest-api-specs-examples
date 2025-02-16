@@ -27,4 +27,4 @@ MonitorPrivateEndpointConnectionResource monitorPrivateEndpointConnection = clie
 // invoke the operation
 await monitorPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

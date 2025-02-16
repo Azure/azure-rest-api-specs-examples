@@ -2,6 +2,7 @@ using Azure;
 using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
+using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
@@ -32,4 +33,4 @@ await foreach (ActivityLogAlertResource item in subscriptionResource.GetActivity
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

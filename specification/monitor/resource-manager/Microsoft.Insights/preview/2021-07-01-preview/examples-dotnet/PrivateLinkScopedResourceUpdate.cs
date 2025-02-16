@@ -27,7 +27,7 @@ MonitorPrivateLinkScopedResourceCollection collection = monitorPrivateLinkScope.
 
 // invoke the operation
 string name = "scoped-resource-name";
-MonitorPrivateLinkScopedResourceData data = new MonitorPrivateLinkScopedResourceData()
+MonitorPrivateLinkScopedResourceData data = new MonitorPrivateLinkScopedResourceData
 {
     LinkedResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/components/my-component"),
 };

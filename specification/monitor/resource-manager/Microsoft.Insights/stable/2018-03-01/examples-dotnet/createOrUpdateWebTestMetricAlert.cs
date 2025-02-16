@@ -29,19 +29,21 @@ MetricAlertCollection collection = resourceGroupResource.GetMetricAlerts();
 
 // invoke the operation
 string ruleName = "webtest-name-example";
-MetricAlertData data = new MetricAlertData(new AzureLocation("global"), 4, true, new string[]
-{
-"/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example","/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"
-}, XmlConvert.ToTimeSpan("PT1M"), XmlConvert.ToTimeSpan("PT15M"), new WebtestLocationAvailabilityCriteria(new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"), new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"), 2))
+MetricAlertData data = new MetricAlertData(
+    new AzureLocation("global"),
+    4,
+    true,
+    new string[] { "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example", "/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example" },
+    XmlConvert.ToTimeSpan("PT1M"),
+    XmlConvert.ToTimeSpan("PT15M"),
+    new WebtestLocationAvailabilityCriteria(new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"), new ResourceIdentifier("/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"), 2))
 {
     Description = "Automatically created alert rule for availability test \"component-example\" a",
-    Actions =
-    {
-    },
+    Actions = { },
     Tags =
     {
     ["hidden-link:/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/components/webtest-name-example"] = "Resource",
-    ["hidden-link:/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"] = "Resource",
+    ["hidden-link:/subscriptions/12345678-1234-1234-1234-123456789101/resourcegroups/rg-example/providers/microsoft.insights/webtests/component-example"] = "Resource"
     },
 };
 ArmOperation<MetricAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);

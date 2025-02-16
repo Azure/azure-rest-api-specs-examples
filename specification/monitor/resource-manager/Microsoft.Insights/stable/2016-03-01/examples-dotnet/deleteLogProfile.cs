@@ -25,4 +25,4 @@ LogProfileResource logProfile = client.GetLogProfileResource(logProfileResourceI
 // invoke the operation
 await logProfile.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

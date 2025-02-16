@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/examples/ActivityLogAlertRule_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier activityLogAlertResourceId = ActivityLogAlertResource.CreateR
 ActivityLogAlertResource activityLogAlert = client.GetActivityLogAlertResource(activityLogAlertResourceId);
 
 // invoke the operation
-ActivityLogAlertPatch patch = new ActivityLogAlertPatch()
+ActivityLogAlertPatch patch = new ActivityLogAlertPatch
 {
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
     IsEnabled = false,
 };

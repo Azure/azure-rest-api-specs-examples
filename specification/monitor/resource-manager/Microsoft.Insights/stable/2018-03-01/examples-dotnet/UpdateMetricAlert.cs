@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2018-03-01/examples/UpdateMetricAlert.json
@@ -26,45 +25,32 @@ ResourceIdentifier metricAlertResourceId = MetricAlertResource.CreateResourceIde
 MetricAlertResource metricAlert = client.GetMetricAlertResource(metricAlertResourceId);
 
 // invoke the operation
-MetricAlertPatch patch = new MetricAlertPatch()
+MetricAlertPatch patch = new MetricAlertPatch
 {
-    Tags =
-    {
-    },
+    Tags = { },
     Description = "This is the description of the rule1",
     Severity = 3,
     IsEnabled = true,
-    Scopes =
+    Scopes = { "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme" },
+    EvaluationFrequency = XmlConvert.ToTimeSpan("PT1M"),
+    WindowSize = XmlConvert.ToTimeSpan("PT15M"),
+    Criteria = new MetricAlertSingleResourceMultipleMetricCriteria
     {
-    "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest/providers/Microsoft.Compute/virtualMachines/gigwadme"
-    },
-    EvaluationFrequency = XmlConvert.ToTimeSpan("Pt1m"),
-    WindowSize = XmlConvert.ToTimeSpan("Pt15m"),
-    Criteria = new MetricAlertSingleResourceMultipleMetricCriteria()
-    {
-        AllOf =
+        AllOf = {new MetricCriteria("High_CPU_80", "\\Processor(_Total)\\% Processor Time", MetricCriteriaTimeAggregationType.Average, MetricCriteriaOperator.GreaterThan, 80.5)
         {
-        new MetricCriteria("High_CPU_80","\\Processor(_Total)\\% Processor Time",MetricCriteriaTimeAggregationType.Average,MetricCriteriaOperator.GreaterThan,80.5)
-        {
-        Dimensions =
-        {
-        },
-        }
-        },
+        Dimensions = {},
+        }},
     },
     IsAutoMitigateEnabled = true,
-    Actions =
-    {
-    new MetricAlertAction()
+    Actions = {new MetricAlertAction
     {
     ActionGroupId = new ResourceIdentifier("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
     WebHookProperties =
     {
     ["key11"] = "value11",
-    ["key12"] = "value12",
+    ["key12"] = "value12"
     },
-    }
-    },
+    }},
 };
 MetricAlertResource result = await metricAlert.UpdateAsync(patch);
 

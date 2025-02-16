@@ -29,42 +29,36 @@ MetricAlertCollection collection = resourceGroupResource.GetMetricAlerts();
 
 // invoke the operation
 string ruleName = "MetricAlertAtResourceGroupLevel";
-MetricAlertData data = new MetricAlertData(new AzureLocation("global"), 3, true, new string[]
-{
-"/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest1","/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest2"
-}, XmlConvert.ToTimeSpan("PT1M"), XmlConvert.ToTimeSpan("PT15M"), new MetricAlertMultipleResourceMultipleMetricCriteria()
-{
-    AllOf =
-{
-new MetricCriteria("High_CPU_80","Percentage CPU",MetricCriteriaTimeAggregationType.Average,MetricCriteriaOperator.GreaterThan,80.5)
-{
-MetricNamespace = "microsoft.compute/virtualmachines",
-Dimensions =
-{
-},
-}
-},
-})
+MetricAlertData data = new MetricAlertData(
+    new AzureLocation("global"),
+    3,
+    true,
+    new string[] { "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest1", "/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourceGroups/gigtest2" },
+    XmlConvert.ToTimeSpan("PT1M"),
+    XmlConvert.ToTimeSpan("PT15M"),
+    new MetricAlertMultipleResourceMultipleMetricCriteria
+    {
+        AllOf = {new MetricCriteria("High_CPU_80", "Percentage CPU", MetricCriteriaTimeAggregationType.Average, MetricCriteriaOperator.GreaterThan, 80.5)
+        {
+        MetricNamespace = "microsoft.compute/virtualmachines",
+        Dimensions = {},
+        }},
+    })
 {
     Description = "This is the description of the rule1",
     TargetResourceType = new ResourceType("Microsoft.Compute/virtualMachines"),
     TargetResourceRegion = new AzureLocation("southcentralus"),
     IsAutoMitigateEnabled = true,
-    Actions =
-    {
-    new MetricAlertAction()
+    Actions = {new MetricAlertAction
     {
     ActionGroupId = new ResourceIdentifier("/subscriptions/14ddf0c5-77c5-4b53-84f6-e1fa43ad68f7/resourcegroups/gigtest/providers/microsoft.insights/actiongroups/group2"),
     WebHookProperties =
     {
     ["key11"] = "value11",
-    ["key12"] = "value12",
+    ["key12"] = "value12"
     },
-    }
-    },
-    Tags =
-    {
-    },
+    }},
+    Tags = { },
 };
 ArmOperation<MetricAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, ruleName, data);
 MetricAlertResource result = lro.Value;

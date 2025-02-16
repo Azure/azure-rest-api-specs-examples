@@ -14,13 +14,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this DiagnosticSettingsCategoryResource
 string resourceUri = "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/viruela1/providers/microsoft.logic/workflows/viruela6";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-DiagnosticSettingsCategoryCollection collection = client.GetDiagnosticSettingsCategories(scopeId);
+DiagnosticSettingsCategoryCollection collection = client.GetDiagnosticSettingsCategories(new ResourceIdentifier(resourceUri));
 
 // invoke the operation
 string name = "WorkflowRuntime";
@@ -29,7 +25,7 @@ DiagnosticSettingsCategoryResource result = response.HasValue ? response.Value :
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

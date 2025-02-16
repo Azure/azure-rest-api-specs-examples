@@ -27,19 +27,11 @@ LogProfileCollection collection = subscriptionResource.GetLogProfiles();
 
 // invoke the operation
 string logProfileName = "Rac46PostSwapRG";
-LogProfileData data = new LogProfileData(new AzureLocation(""), new AzureLocation[]
-{
-new AzureLocation("global")
-}, new string[]
-{
-"Write","Delete","Action"
-}, new RetentionPolicy(true, 3))
+LogProfileData data = new LogProfileData(new AzureLocation(""), new AzureLocation[] { new AzureLocation("global") }, new string[] { "Write", "Delete", "Action" }, new RetentionPolicy(true, 3))
 {
     StorageAccountId = new ResourceIdentifier("/subscriptions/df602c9c-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/JohnKemTest/providers/Microsoft.Storage/storageAccounts/johnkemtest8162"),
     ServiceBusRuleId = new ResourceIdentifier(""),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<LogProfileResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, logProfileName, data);
 LogProfileResource result = lro.Value;

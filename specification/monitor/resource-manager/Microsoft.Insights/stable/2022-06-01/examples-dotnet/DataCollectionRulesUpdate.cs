@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/examples/DataCollectionRulesUpdate.json
@@ -25,13 +24,13 @@ ResourceIdentifier dataCollectionRuleResourceId = DataCollectionRuleResource.Cre
 DataCollectionRuleResource dataCollectionRule = client.GetDataCollectionRuleResource(dataCollectionRuleResourceId);
 
 // invoke the operation
-ResourceForUpdate body = new ResourceForUpdate()
+ResourceForUpdate body = new ResourceForUpdate
 {
     Tags =
     {
     ["tag1"] = "A",
     ["tag2"] = "B",
-    ["tag3"] = "C",
+    ["tag3"] = "C"
     },
 };
 DataCollectionRuleResource result = await dataCollectionRule.UpdateAsync(body);

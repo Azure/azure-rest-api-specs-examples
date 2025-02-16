@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Monitor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Monitor;
 
 // Generated from example definition: specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/examples/patchAutoscaleSetting.json
@@ -26,89 +25,100 @@ ResourceIdentifier autoscaleSettingResourceId = AutoscaleSettingResource.CreateR
 AutoscaleSettingResource autoscaleSetting = client.GetAutoscaleSettingResource(autoscaleSettingResourceId);
 
 // invoke the operation
-AutoscaleSettingPatch patch = new AutoscaleSettingPatch()
+AutoscaleSettingPatch patch = new AutoscaleSettingPatch
 {
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
-    Profiles =
+    Profiles = {new AutoscaleProfile("adios", new MonitorScaleCapacity(1, 10, 1), new AutoscaleRule[]
     {
-    new AutoscaleProfile("adios",new MonitorScaleCapacity(1,10,1),new AutoscaleRule[]
-    {
-    new AutoscaleRule(new MetricTrigger("Percentage CPU",new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),XmlConvert.ToTimeSpan("PT1M"),MetricStatisticType.Average,XmlConvert.ToTimeSpan("PT5M"),MetricTriggerTimeAggregationType.Average,MetricTriggerComparisonOperation.GreaterThan,10)
+    new AutoscaleRule(new MetricTrigger(
+        "Percentage CPU",
+        new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),
+        XmlConvert.ToTimeSpan("PT1M"),
+        MetricStatisticType.Average,
+        XmlConvert.ToTimeSpan("PT5M"),
+        MetricTriggerTimeAggregationType.Average,
+        MetricTriggerComparisonOperation.GreaterThan,
+        10)
     {
     IsDividedPerInstance = false,
-    },new MonitorScaleAction(MonitorScaleDirection.Increase,MonitorScaleType.ChangeCount,XmlConvert.ToTimeSpan("PT5M"))
+    }, new MonitorScaleAction(MonitorScaleDirection.Increase, MonitorScaleType.ChangeCount, XmlConvert.ToTimeSpan("PT5M"))
     {
     Value = "1",
-    }),new AutoscaleRule(new MetricTrigger("Percentage CPU",new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),XmlConvert.ToTimeSpan("PT2M"),MetricStatisticType.Average,XmlConvert.ToTimeSpan("PT5M"),MetricTriggerTimeAggregationType.Average,MetricTriggerComparisonOperation.GreaterThan,15)
+    }),
+    new AutoscaleRule(new MetricTrigger(
+        "Percentage CPU",
+        new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),
+        XmlConvert.ToTimeSpan("PT2M"),
+        MetricStatisticType.Average,
+        XmlConvert.ToTimeSpan("PT5M"),
+        MetricTriggerTimeAggregationType.Average,
+        MetricTriggerComparisonOperation.GreaterThan,
+        15)
     {
     IsDividedPerInstance = false,
-    },new MonitorScaleAction(MonitorScaleDirection.Decrease,MonitorScaleType.ChangeCount,XmlConvert.ToTimeSpan("PT6M"))
+    }, new MonitorScaleAction(MonitorScaleDirection.Decrease, MonitorScaleType.ChangeCount, XmlConvert.ToTimeSpan("PT6M"))
     {
     Value = "2",
     })
     })
     {
-    FixedDate = new MonitorTimeWindow(DateTimeOffset.Parse("2015-03-05T14:00:00Z"),DateTimeOffset.Parse("2015-03-05T14:30:00Z"))
+    FixedDate = new MonitorTimeWindow(DateTimeOffset.Parse("2015-03-05T14:00:00Z"), DateTimeOffset.Parse("2015-03-05T14:30:00Z"))
     {
     TimeZone = "UTC",
     },
-    },new AutoscaleProfile("saludos",new MonitorScaleCapacity(1,10,1),new AutoscaleRule[]
+    }, new AutoscaleProfile("saludos", new MonitorScaleCapacity(1, 10, 1), new AutoscaleRule[]
     {
-    new AutoscaleRule(new MetricTrigger("Percentage CPU",new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),XmlConvert.ToTimeSpan("PT1M"),MetricStatisticType.Average,XmlConvert.ToTimeSpan("PT5M"),MetricTriggerTimeAggregationType.Average,MetricTriggerComparisonOperation.GreaterThan,10)
+    new AutoscaleRule(new MetricTrigger(
+        "Percentage CPU",
+        new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),
+        XmlConvert.ToTimeSpan("PT1M"),
+        MetricStatisticType.Average,
+        XmlConvert.ToTimeSpan("PT5M"),
+        MetricTriggerTimeAggregationType.Average,
+        MetricTriggerComparisonOperation.GreaterThan,
+        10)
     {
     IsDividedPerInstance = false,
-    },new MonitorScaleAction(MonitorScaleDirection.Increase,MonitorScaleType.ChangeCount,XmlConvert.ToTimeSpan("PT5M"))
+    }, new MonitorScaleAction(MonitorScaleDirection.Increase, MonitorScaleType.ChangeCount, XmlConvert.ToTimeSpan("PT5M"))
     {
     Value = "1",
-    }),new AutoscaleRule(new MetricTrigger("Percentage CPU",new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),XmlConvert.ToTimeSpan("PT2M"),MetricStatisticType.Average,XmlConvert.ToTimeSpan("PT5M"),MetricTriggerTimeAggregationType.Average,MetricTriggerComparisonOperation.GreaterThan,15)
+    }),
+    new AutoscaleRule(new MetricTrigger(
+        "Percentage CPU",
+        new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),
+        XmlConvert.ToTimeSpan("PT2M"),
+        MetricStatisticType.Average,
+        XmlConvert.ToTimeSpan("PT5M"),
+        MetricTriggerTimeAggregationType.Average,
+        MetricTriggerComparisonOperation.GreaterThan,
+        15)
     {
     IsDividedPerInstance = false,
-    },new MonitorScaleAction(MonitorScaleDirection.Decrease,MonitorScaleType.ChangeCount,XmlConvert.ToTimeSpan("PT6M"))
+    }, new MonitorScaleAction(MonitorScaleDirection.Decrease, MonitorScaleType.ChangeCount, XmlConvert.ToTimeSpan("PT6M"))
     {
     Value = "2",
     })
     })
     {
-    Recurrence = new MonitorRecurrence(RecurrenceFrequency.Week,new RecurrentSchedule("UTC",new MonitorDayOfWeek[]
+    Recurrence = new MonitorRecurrence(RecurrenceFrequency.Week, new RecurrentSchedule("UTC", new MonitorDayOfWeek[]{new MonitorDayOfWeek("1")}, new int[]{5}, new int[]{15})),
+    }},
+    Notifications = {new AutoscaleNotification
     {
-    new MonitorDayOfWeek("1")
-    },new int[]
-    {
-    5
-    },new int[]
-    {
-    15
-    })),
-    }
-    },
-    Notifications =
-    {
-    new AutoscaleNotification()
-    {
-    Email = new EmailNotification()
+    Email = new EmailNotification
     {
     SendToSubscriptionAdministrator = true,
     SendToSubscriptionCoAdministrators = true,
-    CustomEmails =
-    {
-    "gu@ms.com","ge@ns.net"
+    CustomEmails = {"gu@ms.com", "ge@ns.net"},
     },
-    },
-    Webhooks =
-    {
-    new WebhookNotification()
+    Webhooks = {new WebhookNotification
     {
     ServiceUri = new Uri("http://myservice.com"),
-    Properties =
-    {
-    },
-    }
-    },
-    }
-    },
+    Properties = {},
+    }},
+    }},
     IsEnabled = true,
     PredictiveAutoscalePolicy = new PredictiveAutoscalePolicy(PredictiveAutoscalePolicyScaleMode.Enabled),
     TargetResourceId = new ResourceIdentifier("/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/TestingMetricsScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/testingsc"),

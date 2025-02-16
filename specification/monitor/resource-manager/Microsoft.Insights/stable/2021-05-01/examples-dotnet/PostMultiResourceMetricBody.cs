@@ -24,11 +24,11 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation and iterate over the result
-SubscriptionResourceGetMonitorMetricsWithPostOptions options = new SubscriptionResourceGetMonitorMetricsWithPostOptions(region: "westus2")
+string region = "westus2";
+SubscriptionResourceGetMonitorMetricsWithPostOptions options = new SubscriptionResourceGetMonitorMetricsWithPostOptions(region)
 {
-    Content = new SubscriptionResourceGetMonitorMetricsWithPostContent()
+    Content = new SubscriptionResourceGetMonitorMetricsWithPostContent
     {
-        Timespan = TimeSpan.Parse("2021-06-08T19:00:00Z/2021-06-12T01:00:00Z"),
         Interval = XmlConvert.ToTimeSpan("PT6H"),
         MetricNames = "Data Disk Max Burst IOPS",
         Aggregation = "count",
@@ -46,4 +46,4 @@ await foreach (SubscriptionMonitorMetric item in subscriptionResource.GetMonitor
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

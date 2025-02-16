@@ -30,47 +30,33 @@ ActivityLogAlertCollection collection = resourceGroupResource.GetActivityLogAler
 string activityLogAlertName = "SampleActivityLogAlertRuleWithAnyOfCondition";
 ActivityLogAlertData data = new ActivityLogAlertData(new AzureLocation("Global"))
 {
-    Scopes =
-    {
-    "subscriptions/187f412d-1758-44d9-b052-169e2564721d"
-    },
-    ConditionAllOf =
-    {
-    new ActivityLogAlertAnyOfOrLeafCondition()
+    Scopes = { "subscriptions/187f412d-1758-44d9-b052-169e2564721d" },
+    ConditionAllOf = {new ActivityLogAlertAnyOfOrLeafCondition
     {
     Field = "category",
     EqualsValue = "ServiceHealth",
-    },new ActivityLogAlertAnyOfOrLeafCondition()
+    }, new ActivityLogAlertAnyOfOrLeafCondition
     {
-    AnyOf =
-    {
-    new AlertRuleLeafCondition()
+    AnyOf = {new AlertRuleLeafCondition
     {
     Field = "properties.incidentType",
     EqualsValue = "Incident",
-    },new AlertRuleLeafCondition()
+    }, new AlertRuleLeafCondition
     {
     Field = "properties.incidentType",
     EqualsValue = "Maintenance",
-    }
-    },
-    }
-    },
-    ActionsActionGroups =
-    {
-    new ActivityLogAlertActionGroup(new ResourceIdentifier("/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"))
+    }},
+    }},
+    ActionsActionGroups = {new ActivityLogAlertActionGroup(new ResourceIdentifier("/subscriptions/187f412d-1758-44d9-b052-169e2564721d/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/actionGroups/SampleActionGroup"))
     {
     WebhookProperties =
     {
-    ["sampleWebhookProperty"] = "SamplePropertyValue",
+    ["sampleWebhookProperty"] = "SamplePropertyValue"
     },
-    }
-    },
+    }},
     IsEnabled = true,
     Description = "Description of sample Activity Log Alert rule with 'anyOf' condition.",
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<ActivityLogAlertResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, activityLogAlertName, data);
 ActivityLogAlertResource result = lro.Value;

@@ -34,54 +34,33 @@ ScheduledQueryRuleData data = new ScheduledQueryRuleData(new AzureLocation("east
     Description = "Performance rule",
     Severity = AlertSeverity.Four,
     IsEnabled = true,
-    Scopes =
-    {
-    "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147"
-    },
+    Scopes = { "/subscriptions/aaf177ed-1330-a9f2-80ea-fd3d7783b147" },
     EvaluationFrequency = XmlConvert.ToTimeSpan("PT5M"),
     WindowSize = XmlConvert.ToTimeSpan("PT10M"),
-    TargetResourceTypes =
-    {
-    "Microsoft.Compute/virtualMachines"
-    },
-    CriteriaAllOf =
-    {
-    new ScheduledQueryRuleCondition()
+    TargetResourceTypes = { "Microsoft.Compute/virtualMachines" },
+    CriteriaAllOf = {new ScheduledQueryRuleCondition
     {
     Query = "Perf | where ObjectName == \"Processor\"",
     TimeAggregation = ScheduledQueryRuleTimeAggregationType.Average,
     MetricMeasureColumn = "% Processor Time",
     ResourceIdColumn = "resourceId",
-    Dimensions =
-    {
-    new MonitorDimension("ComputerIp",MonitorDimensionOperator.Exclude,new string[]
-    {
-    "192.168.1.1"
-    }),new MonitorDimension("OSType",MonitorDimensionOperator.Include,new string[]
-    {
-    "*"
-    })
-    },
+    Dimensions = {new MonitorDimension("ComputerIp", MonitorDimensionOperator.Exclude, new string[]{"192.168.1.1"}), new MonitorDimension("OSType", MonitorDimensionOperator.Include, new string[]{"*"})},
     Operator = MonitorConditionOperator.GreaterThan,
     Threshold = 70,
-    FailingPeriods = new ConditionFailingPeriods()
+    FailingPeriods = new ConditionFailingPeriods
     {
-    NumberOfEvaluationPeriods = 1,
-    MinFailingPeriodsToAlert = 1,
+    NumberOfEvaluationPeriods = 1L,
+    MinFailingPeriodsToAlert = 1L,
     },
-    }
-    },
+    }},
     MuteActionsDuration = XmlConvert.ToTimeSpan("PT30M"),
-    Actions = new ScheduledQueryRuleActions()
+    Actions = new ScheduledQueryRuleActions
     {
-        ActionGroups =
-        {
-        "/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup"
-        },
+        ActionGroups = { "/subscriptions/1cf177ed-1330-4692-80ea-fd3d7783b147/resourcegroups/sqrapi/providers/microsoft.insights/actiongroups/myactiongroup" },
         CustomProperties =
         {
         ["key11"] = "value11",
-        ["key12"] = "value12",
+        ["key12"] = "value12"
         },
     },
     CheckWorkspaceAlertsStorageConfigured = true,

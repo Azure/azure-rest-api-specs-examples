@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Network.Models;
+using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Network;
 
 // Generated from example definition: specification/network/resource-manager/Microsoft.Network/stable/2024-05-01/examples/CustomIpPrefixGet.json
@@ -15,19 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CustomIPPrefixResource created on azure
-// for more information of creating CustomIPPrefixResource, please refer to the document of CustomIPPrefixResource
+// this example assumes you already have this ResourceGroupResource created on azure
+// for more information of creating ResourceGroupResource, please refer to the document of ResourceGroupResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
-string customIPPrefixName = "test-customipprefix";
-ResourceIdentifier customIPPrefixResourceId = CustomIPPrefixResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, customIPPrefixName);
-CustomIPPrefixResource customIPPrefix = client.GetCustomIPPrefixResource(customIPPrefixResourceId);
+ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
+
+// get the collection of this CustomIPPrefixResource
+CustomIPPrefixCollection collection = resourceGroupResource.GetCustomIPPrefixes();
 
 // invoke the operation
-CustomIPPrefixResource result = await customIPPrefix.GetAsync();
+string customIPPrefixName = "test-customipprefix";
+NullableResponse<CustomIPPrefixResource> response = await collection.GetIfExistsAsync(customIPPrefixName);
+CustomIPPrefixResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CustomIPPrefixData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CustomIPPrefixData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

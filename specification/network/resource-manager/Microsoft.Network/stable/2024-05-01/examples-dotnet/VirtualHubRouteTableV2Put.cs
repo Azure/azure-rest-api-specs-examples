@@ -15,19 +15,16 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualHubResource created on azure
-// for more information of creating VirtualHubResource, please refer to the document of VirtualHubResource
+// this example assumes you already have this VirtualHubRouteTableV2Resource created on azure
+// for more information of creating VirtualHubRouteTableV2Resource, please refer to the document of VirtualHubRouteTableV2Resource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string virtualHubName = "virtualHub1";
-ResourceIdentifier virtualHubResourceId = VirtualHubResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName);
-VirtualHubResource virtualHub = client.GetVirtualHubResource(virtualHubResourceId);
-
-// get the collection of this VirtualHubRouteTableV2Resource
-VirtualHubRouteTableV2Collection collection = virtualHub.GetVirtualHubRouteTableV2s();
+string routeTableName = "virtualHubRouteTable1a";
+ResourceIdentifier virtualHubRouteTableV2ResourceId = VirtualHubRouteTableV2Resource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualHubName, routeTableName);
+VirtualHubRouteTableV2Resource virtualHubRouteTableV2 = client.GetVirtualHubRouteTableV2Resource(virtualHubRouteTableV2ResourceId);
 
 // invoke the operation
-string routeTableName = "virtualHubRouteTable1a";
 VirtualHubRouteTableV2Data data = new VirtualHubRouteTableV2Data
 {
     Routes = {new VirtualHubRouteV2
@@ -45,7 +42,7 @@ VirtualHubRouteTableV2Data data = new VirtualHubRouteTableV2Data
     }},
     AttachedConnections = { "All_Vnets" },
 };
-ArmOperation<VirtualHubRouteTableV2Resource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, routeTableName, data);
+ArmOperation<VirtualHubRouteTableV2Resource> lro = await virtualHubRouteTableV2.UpdateAsync(WaitUntil.Completed, data);
 VirtualHubRouteTableV2Resource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

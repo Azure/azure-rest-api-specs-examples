@@ -15,16 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VirtualNetworkPeeringResource created on azure
-// for more information of creating VirtualNetworkPeeringResource, please refer to the document of VirtualNetworkPeeringResource
+// this example assumes you already have this VirtualNetworkResource created on azure
+// for more information of creating VirtualNetworkResource, please refer to the document of VirtualNetworkResource
 string subscriptionId = "subid";
 string resourceGroupName = "peerTest";
 string virtualNetworkName = "vnet1";
-string virtualNetworkPeeringName = "peer";
-ResourceIdentifier virtualNetworkPeeringResourceId = VirtualNetworkPeeringResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName);
-VirtualNetworkPeeringResource virtualNetworkPeering = client.GetVirtualNetworkPeeringResource(virtualNetworkPeeringResourceId);
+ResourceIdentifier virtualNetworkResourceId = VirtualNetworkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, virtualNetworkName);
+VirtualNetworkResource virtualNetwork = client.GetVirtualNetworkResource(virtualNetworkResourceId);
+
+// get the collection of this VirtualNetworkPeeringResource
+VirtualNetworkPeeringCollection collection = virtualNetwork.GetVirtualNetworkPeerings();
 
 // invoke the operation
+string virtualNetworkPeeringName = "peer";
 VirtualNetworkPeeringData data = new VirtualNetworkPeeringData
 {
     AllowVirtualNetworkAccess = true,
@@ -36,7 +39,7 @@ VirtualNetworkPeeringData data = new VirtualNetworkPeeringData
     EnableOnlyIPv6Peering = true,
 };
 SyncRemoteAddressSpace? syncRemoteAddressSpace = SyncRemoteAddressSpace.True;
-ArmOperation<VirtualNetworkPeeringResource> lro = await virtualNetworkPeering.UpdateAsync(WaitUntil.Completed, data, syncRemoteAddressSpace: syncRemoteAddressSpace);
+ArmOperation<VirtualNetworkPeeringResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, virtualNetworkPeeringName, data, syncRemoteAddressSpace: syncRemoteAddressSpace);
 VirtualNetworkPeeringResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

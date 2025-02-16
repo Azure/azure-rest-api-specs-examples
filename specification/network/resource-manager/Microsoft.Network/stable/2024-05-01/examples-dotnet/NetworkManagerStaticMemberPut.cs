@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NetworkGroupResource created on azure
-// for more information of creating NetworkGroupResource, please refer to the document of NetworkGroupResource
+// this example assumes you already have this NetworkGroupStaticMemberResource created on azure
+// for more information of creating NetworkGroupStaticMemberResource, please refer to the document of NetworkGroupStaticMemberResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string networkManagerName = "testNetworkManager";
 string networkGroupName = "testNetworkGroup";
-ResourceIdentifier networkGroupResourceId = NetworkGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, networkGroupName);
-NetworkGroupResource networkGroup = client.GetNetworkGroupResource(networkGroupResourceId);
-
-// get the collection of this NetworkGroupStaticMemberResource
-NetworkGroupStaticMemberCollection collection = networkGroup.GetNetworkGroupStaticMembers();
+string staticMemberName = "testStaticMember";
+ResourceIdentifier networkGroupStaticMemberResourceId = NetworkGroupStaticMemberResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, networkManagerName, networkGroupName, staticMemberName);
+NetworkGroupStaticMemberResource networkGroupStaticMember = client.GetNetworkGroupStaticMemberResource(networkGroupStaticMemberResourceId);
 
 // invoke the operation
-string staticMemberName = "testStaticMember";
 NetworkGroupStaticMemberData data = new NetworkGroupStaticMemberData
 {
     ResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroup/rg1/providers/Microsoft.Network/virtualnetworks/vnet1"),
 };
-ArmOperation<NetworkGroupStaticMemberResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, staticMemberName, data);
+ArmOperation<NetworkGroupStaticMemberResource> lro = await networkGroupStaticMember.UpdateAsync(WaitUntil.Completed, data);
 NetworkGroupStaticMemberResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

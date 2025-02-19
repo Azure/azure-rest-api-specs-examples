@@ -5051,3 +5051,4 @@ id,name,language,tag,package,version,date_epoch,date
 5050,com.azure.resourcemanager:azure-resourcemanager-impactreporting:1.0.0-beta.1,java,azure-resourcemanager-impactreporting_1.0.0-beta.1,azure-resourcemanager-impactreporting,1.0.0-beta.1,1739938701,02/19/2025
 5051,azure-mgmt-storage@22.1.0,python,azure-mgmt-storage_22.1.0,azure-mgmt-storage,22.1.0,1739945245,02/19/2025
 5052,azure-mgmt-containerregistry@11.0.0,python,azure-mgmt-containerregistry_11.0.0,azure-mgmt-containerregistry,11.0.0,1739943844,02/19/2025
+5053,azure-mgmt-containerservice@34.1.0,python,azure-mgmt-containerservice_34.1.0,azure-mgmt-containerservice,34.1.0,1739937932,02/19/2025

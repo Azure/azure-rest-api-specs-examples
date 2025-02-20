@@ -5047,3 +5047,8 @@ id,name,language,tag,package,version,date_epoch,date
 5046,"Azure.ResourceManager.Nginx,1.1.0-beta.3",dotnet,Azure.ResourceManager.Nginx_1.1.0-beta.3,Azure.ResourceManager.Nginx,1.1.0-beta.3,1739529382,02/14/2025
 5047,"Azure.ResourceManager.Network,1.11.0-beta.1",dotnet,Azure.ResourceManager.Network_1.11.0-beta.1,Azure.ResourceManager.Network,1.11.0-beta.1,1739549951,02/14/2025
 5048,"Azure.ResourceManager.Monitor,1.4.0-beta.2",dotnet,Azure.ResourceManager.Monitor_1.4.0-beta.2,Azure.ResourceManager.Monitor,1.4.0-beta.2,1739548086,02/14/2025
+5049,com.azure.resourcemanager:azure-resourcemanager-applicationinsights:1.2.0-beta.1,java,azure-resourcemanager-applicationinsights_1.2.0-beta.1,azure-resourcemanager-applicationinsights,1.2.0-beta.1,1739947836,02/19/2025
+5050,com.azure.resourcemanager:azure-resourcemanager-impactreporting:1.0.0-beta.1,java,azure-resourcemanager-impactreporting_1.0.0-beta.1,azure-resourcemanager-impactreporting,1.0.0-beta.1,1739938701,02/19/2025
+5051,azure-mgmt-storage@22.1.0,python,azure-mgmt-storage_22.1.0,azure-mgmt-storage,22.1.0,1739945245,02/19/2025
+5052,azure-mgmt-containerregistry@11.0.0,python,azure-mgmt-containerregistry_11.0.0,azure-mgmt-containerregistry,11.0.0,1739943844,02/19/2025
+5053,azure-mgmt-containerservice@34.1.0,python,azure-mgmt-containerservice_34.1.0,azure-mgmt-containerservice,34.1.0,1739937932,02/19/2025

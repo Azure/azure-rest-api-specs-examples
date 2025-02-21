@@ -5055,3 +5055,4 @@ id,name,language,tag,package,version,date_epoch,date
 5054,azure-mgmt-databoxedge@2.0.0,python,azure-mgmt-databoxedge_2.0.0,azure-mgmt-databoxedge,2.0.0,1740032515,02/20/2025
 5055,com.azure.resourcemanager:azure-resourcemanager-quota:1.1.0,java,azure-resourcemanager-quota_1.1.0,azure-resourcemanager-quota,1.1.0,1740129367,02/21/2025
 5056,com.azure.resourcemanager:azure-resourcemanager-networkcloud:1.1.0,java,azure-resourcemanager-networkcloud_1.1.0,azure-resourcemanager-networkcloud,1.1.0,1740123760,02/21/2025
+5057,"Azure.ResourceManager.Compute,1.8.0",dotnet,Azure.ResourceManager.Compute_1.8.0,Azure.ResourceManager.Compute,1.8.0,1740124210,02/21/2025

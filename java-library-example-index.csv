@@ -5052,3 +5052,4 @@ id,name,language,tag,package,version,date_epoch,date
 5051,azure-mgmt-storage@22.1.0,python,azure-mgmt-storage_22.1.0,azure-mgmt-storage,22.1.0,1739945245,02/19/2025
 5052,azure-mgmt-containerregistry@11.0.0,python,azure-mgmt-containerregistry_11.0.0,azure-mgmt-containerregistry,11.0.0,1739943844,02/19/2025
 5053,azure-mgmt-containerservice@34.1.0,python,azure-mgmt-containerservice_34.1.0,azure-mgmt-containerservice,34.1.0,1739937932,02/19/2025
+5054,azure-mgmt-databoxedge@2.0.0,python,azure-mgmt-databoxedge_2.0.0,azure-mgmt-databoxedge,2.0.0,1740032515,02/20/2025

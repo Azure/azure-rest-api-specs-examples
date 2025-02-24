@@ -5061,3 +5061,4 @@ id,name,language,tag,package,version,date_epoch,date
 5060,com.azure.resourcemanager:azure-resourcemanager-deviceregistry:1.0.0,java,azure-resourcemanager-deviceregistry_1.0.0,azure-resourcemanager-deviceregistry,1.0.0,1740379138,02/24/2025
 5061,com.azure.resourcemanager:azure-resourcemanager-netapp:1.6.0,java,azure-resourcemanager-netapp_1.6.0,azure-resourcemanager-netapp,1.6.0,1740367893,02/24/2025
 5062,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/deviceregistry/armdeviceregistry@v1.0.0,go,sdk/resourcemanager/deviceregistry/armdeviceregistry/v1.0.0,sdk/resourcemanager/deviceregistry/armdeviceregistry,v1.0.0,1740379578,02/24/2025
+5063,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/networkcloud/armnetworkcloud@v1.2.0,go,sdk/resourcemanager/networkcloud/armnetworkcloud/v1.2.0,sdk/resourcemanager/networkcloud/armnetworkcloud,v1.2.0,1740372938,02/24/2025

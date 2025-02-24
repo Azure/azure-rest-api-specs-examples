@@ -5058,3 +5058,4 @@ id,name,language,tag,package,version,date_epoch,date
 5057,"Azure.ResourceManager.Compute,1.8.0",dotnet,Azure.ResourceManager.Compute_1.8.0,Azure.ResourceManager.Compute,1.8.0,1740124210,02/21/2025
 5058,"Azure.ResourceManager.NetApp,1.9.0",dotnet,Azure.ResourceManager.NetApp_1.9.0,Azure.ResourceManager.NetApp,1.9.0,1740147086,02/21/2025
 5059,com.azure.resourcemanager:azure-resourcemanager-networkanalytics:1.0.1,java,azure-resourcemanager-networkanalytics_1.0.1,azure-resourcemanager-networkanalytics,1.0.1,1740387650,02/24/2025
+5060,com.azure.resourcemanager:azure-resourcemanager-deviceregistry:1.0.0,java,azure-resourcemanager-deviceregistry_1.0.0,azure-resourcemanager-deviceregistry,1.0.0,1740379138,02/24/2025

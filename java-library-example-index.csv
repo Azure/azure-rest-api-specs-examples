@@ -5072,3 +5072,4 @@ id,name,language,tag,package,version,date_epoch,date
 5071,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/impactreporting/armimpactreporting@v0.1.0,go,sdk/resourcemanager/impactreporting/armimpactreporting/v0.1.0,sdk/resourcemanager/impactreporting/armimpactreporting,v0.1.0,1740548764,02/26/2025
 5072,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/quota/armquota@v1.1.0,go,sdk/resourcemanager/quota/armquota/v1.1.0,sdk/resourcemanager/quota/armquota,v1.1.0,1740547342,02/26/2025
 5073,azure-mgmt-quota@2.0.0,python,azure-mgmt-quota_2.0.0,azure-mgmt-quota,2.0.0,1740549349,02/26/2025
+5074,azure-mgmt-nginx@3.1.0b2,python,azure-mgmt-nginx_3.1.0b2,azure-mgmt-nginx,3.1.0b2,1740549334,02/26/2025

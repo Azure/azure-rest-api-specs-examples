@@ -5067,3 +5067,4 @@ id,name,language,tag,package,version,date_epoch,date
 5066,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/containerservice/armcontainerservice/v6@v6.4.0,go,sdk/resourcemanager/containerservice/armcontainerservice/v6.4.0,sdk/resourcemanager/containerservice/armcontainerservice,v6.4.0,1740471263,02/25/2025
 5067,"Azure.ResourceManager.Compute,1.9.0-beta.1",dotnet,Azure.ResourceManager.Compute_1.9.0-beta.1,Azure.ResourceManager.Compute,1.9.0-beta.1,1740474316,02/25/2025
 5068,com.azure.resourcemanager:azure-resourcemanager-hybridconnectivity:1.2.0-beta.1,java,azure-resourcemanager-hybridconnectivity_1.2.0-beta.1,azure-resourcemanager-hybridconnectivity,1.2.0-beta.1,1740554746,02/26/2025
+5069,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/nginx/armnginx/v3@v3.1.0-beta.2,go,sdk/resourcemanager/nginx/armnginx/v3.1.0-beta.2,sdk/resourcemanager/nginx/armnginx,v3.1.0-beta.2,1740561104,02/26/2025

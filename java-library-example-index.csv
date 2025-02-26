@@ -5074,3 +5074,4 @@ id,name,language,tag,package,version,date_epoch,date
 5073,azure-mgmt-quota@2.0.0,python,azure-mgmt-quota_2.0.0,azure-mgmt-quota,2.0.0,1740549349,02/26/2025
 5074,azure-mgmt-nginx@3.1.0b2,python,azure-mgmt-nginx_3.1.0b2,azure-mgmt-nginx,3.1.0b2,1740549334,02/26/2025
 5075,azure-mgmt-netapp@13.4.0,python,azure-mgmt-netapp_13.4.0,azure-mgmt-netapp,13.4.0,1740540587,02/26/2025
+5076,azure-mgmt-resource@23.3.0,python,azure-mgmt-resource_23.3.0,azure-mgmt-resource,23.3.0,1740539415,02/26/2025

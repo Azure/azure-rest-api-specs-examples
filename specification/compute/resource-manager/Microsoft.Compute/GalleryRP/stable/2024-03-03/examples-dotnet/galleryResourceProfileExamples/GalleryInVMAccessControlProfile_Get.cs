@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this GalleryInVmAccessControlProfileResource created on azure
-// for more information of creating GalleryInVmAccessControlProfileResource, please refer to the document of GalleryInVmAccessControlProfileResource
+// this example assumes you already have this GalleryResource created on azure
+// for more information of creating GalleryResource, please refer to the document of GalleryResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "myResourceGroup";
 string galleryName = "myGalleryName";
-string inVmAccessControlProfileName = "myInVMAccessControlProfileName";
-ResourceIdentifier galleryInVmAccessControlProfileResourceId = GalleryInVmAccessControlProfileResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, galleryName, inVmAccessControlProfileName);
-GalleryInVmAccessControlProfileResource galleryInVmAccessControlProfile = client.GetGalleryInVmAccessControlProfileResource(galleryInVmAccessControlProfileResourceId);
+ResourceIdentifier galleryResourceId = GalleryResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, galleryName);
+GalleryResource gallery = client.GetGalleryResource(galleryResourceId);
+
+// get the collection of this GalleryInVmAccessControlProfileResource
+GalleryInVmAccessControlProfileCollection collection = gallery.GetGalleryInVmAccessControlProfiles();
 
 // invoke the operation
-GalleryInVmAccessControlProfileResource result = await galleryInVmAccessControlProfile.GetAsync();
+string inVmAccessControlProfileName = "myInVMAccessControlProfileName";
+NullableResponse<GalleryInVmAccessControlProfileResource> response = await collection.GetIfExistsAsync(inVmAccessControlProfileName);
+GalleryInVmAccessControlProfileResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-GalleryInVmAccessControlProfileData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    GalleryInVmAccessControlProfileData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

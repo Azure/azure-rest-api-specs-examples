@@ -14,20 +14,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this CloudServiceRoleResource created on azure
-// for more information of creating CloudServiceRoleResource, please refer to the document of CloudServiceRoleResource
+// this example assumes you already have this CloudServiceResource created on azure
+// for more information of creating CloudServiceResource, please refer to the document of CloudServiceResource
 string subscriptionId = "{subscription-id}";
 string resourceGroupName = "ConstosoRG";
 string cloudServiceName = "{cs-name}";
-string roleName = "{role-name}";
-ResourceIdentifier cloudServiceRoleResourceId = CloudServiceRoleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cloudServiceName, roleName);
-CloudServiceRoleResource cloudServiceRole = client.GetCloudServiceRoleResource(cloudServiceRoleResourceId);
+ResourceIdentifier cloudServiceResourceId = CloudServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, cloudServiceName);
+CloudServiceResource cloudService = client.GetCloudServiceResource(cloudServiceResourceId);
+
+// get the collection of this CloudServiceRoleResource
+CloudServiceRoleCollection collection = cloudService.GetCloudServiceRoles();
 
 // invoke the operation
-CloudServiceRoleResource result = await cloudServiceRole.GetAsync();
+string roleName = "{role-name}";
+NullableResponse<CloudServiceRoleResource> response = await collection.GetIfExistsAsync(roleName);
+CloudServiceRoleResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-CloudServiceRoleData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    CloudServiceRoleData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

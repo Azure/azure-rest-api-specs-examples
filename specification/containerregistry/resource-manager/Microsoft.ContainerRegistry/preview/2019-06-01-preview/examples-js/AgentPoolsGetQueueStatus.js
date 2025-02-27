@@ -1,5 +1,6 @@
 const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Gets the count of queued runs for a given agent pool.
@@ -18,7 +19,7 @@ async function agentPoolsGetQueueStatus() {
   const result = await client.agentPools.getQueueStatus(
     resourceGroupName,
     registryName,
-    agentPoolName
+    agentPoolName,
   );
   console.log(result);
 }

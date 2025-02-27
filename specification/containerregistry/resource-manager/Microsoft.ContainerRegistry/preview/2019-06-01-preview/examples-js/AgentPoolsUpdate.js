@@ -1,5 +1,6 @@
 const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates an agent pool with the specified parameters.
@@ -20,7 +21,7 @@ async function agentPoolsUpdate() {
     resourceGroupName,
     registryName,
     agentPoolName,
-    updateParameters
+    updateParameters,
   );
   console.log(result);
 }

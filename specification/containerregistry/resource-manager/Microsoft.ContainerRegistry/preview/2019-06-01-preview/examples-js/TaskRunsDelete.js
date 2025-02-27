@@ -1,5 +1,6 @@
 const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Deletes a specified task run resource.
@@ -18,7 +19,7 @@ async function taskRunsDelete() {
   const result = await client.taskRuns.beginDeleteAndWait(
     resourceGroupName,
     registryName,
-    taskRunName
+    taskRunName,
   );
   console.log(result);
 }

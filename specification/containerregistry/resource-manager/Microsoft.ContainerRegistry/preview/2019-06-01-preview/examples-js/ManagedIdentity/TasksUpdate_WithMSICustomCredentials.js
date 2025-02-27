@@ -1,5 +1,6 @@
 const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Updates a task with the specified parameters.
@@ -44,7 +45,7 @@ async function tasksUpdateWithMsiCustomCredentials() {
     resourceGroupName,
     registryName,
     taskName,
-    taskUpdateParameters
+    taskUpdateParameters,
   );
   console.log(result);
 }

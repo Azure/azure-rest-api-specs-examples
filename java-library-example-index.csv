@@ -5082,3 +5082,4 @@ id,name,language,tag,package,version,date_epoch,date
 5081,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.7.0,go,sdk/resourcemanager/storage/armstorage/v1.7.0,sdk/resourcemanager/storage/armstorage,v1.7.0,1740634246,02/27/2025
 5082,@azure/arm-containerregistry@11.0.0-beta.4,js,@azure/arm-containerregistry_11.0.0-beta.4,@azure/arm-containerregistry,11.0.0-beta.4,1740649123,02/27/2025
 5083,@azure/arm-containerservice@21.4.0,js,@azure/arm-containerservice_21.4.0,@azure/arm-containerservice,21.4.0,1740642660,02/27/2025
+5084,azure-mgmt-impactreporting@1.0.0b1,python,azure-mgmt-impactreporting_1.0.0b1,azure-mgmt-impactreporting,1.0.0b1,1740618109,02/27/2025

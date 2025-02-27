@@ -5077,3 +5077,4 @@ id,name,language,tag,package,version,date_epoch,date
 5076,azure-mgmt-resource@23.3.0,python,azure-mgmt-resource_23.3.0,azure-mgmt-resource,23.3.0,1740539415,02/26/2025
 5077,azure-mgmt-networkcloud@2.0.0,python,azure-mgmt-networkcloud_2.0.0,azure-mgmt-networkcloud,2.0.0,1740539381,02/26/2025
 5078,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.3,java,azure-resourcemanager-nginx_1.1.0-beta.3,azure-resourcemanager-nginx,1.1.0-beta.3,1740638670,02/27/2025
+5079,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridconnectivity/armhybridconnectivity@v1.2.0-beta.1,go,sdk/resourcemanager/hybridconnectivity/armhybridconnectivity/v1.2.0-beta.1,sdk/resourcemanager/hybridconnectivity/armhybridconnectivity,v1.2.0-beta.1,1740641876,02/27/2025

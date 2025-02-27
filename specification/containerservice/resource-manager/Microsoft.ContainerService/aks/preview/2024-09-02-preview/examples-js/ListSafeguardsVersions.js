@@ -1,5 +1,6 @@
 const { ContainerServiceClient } = require("@azure/arm-containerservice");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Contains list of Safeguards version along with its support info and whether it is a default version.
@@ -14,7 +15,7 @@ async function listSafeguardsVersions() {
   const credential = new DefaultAzureCredential();
   const client = new ContainerServiceClient(credential, subscriptionId);
   const resArray = new Array();
-  for await (let item of client.managedClusters.listSafeguardsVersions(location)) {
+  for await (const item of client.managedClusters.listSafeguardsVersions(location)) {
     resArray.push(item);
   }
   console.log(resArray);

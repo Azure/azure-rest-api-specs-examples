@@ -5088,3 +5088,4 @@ id,name,language,tag,package,version,date_epoch,date
 5087,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databasewatcher/armdatabasewatcher@v0.1.0,go,sdk/resourcemanager/databasewatcher/armdatabasewatcher/v0.1.0,sdk/resourcemanager/databasewatcher/armdatabasewatcher,v0.1.0,1740725836,02/28/2025
 5088,@azure/arm-netapp@21.4.0,js,@azure/arm-netapp_21.4.0,@azure/arm-netapp,21.4.0,1740722565,02/28/2025
 5089,@azure/arm-quota@1.1.0,js,@azure/arm-quota_1.1.0,@azure/arm-quota,1.1.0,1740722480,02/28/2025
+5090,@azure/arm-resources@6.0.0,js,@azure/arm-resources_6.0.0,@azure/arm-resources,6.0.0,1740722155,02/28/2025

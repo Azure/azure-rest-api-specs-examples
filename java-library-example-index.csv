@@ -5085,3 +5085,4 @@ id,name,language,tag,package,version,date_epoch,date
 5084,azure-mgmt-impactreporting@1.0.0b1,python,azure-mgmt-impactreporting_1.0.0b1,azure-mgmt-impactreporting,1.0.0b1,1740618109,02/27/2025
 5085,com.azure.resourcemanager:azure-resourcemanager:2.48.0,java,azure-resourcemanager_2.48.0,azure-resourcemanager,2.48.0,1740735270,02/28/2025
 5086,com.azure.resourcemanager:azure-resourcemanager-databasewatcher:1.0.0-beta.1,java,azure-resourcemanager-databasewatcher_1.0.0-beta.1,azure-resourcemanager-databasewatcher,1.0.0-beta.1,1740730533,02/28/2025
+5087,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databasewatcher/armdatabasewatcher@v0.1.0,go,sdk/resourcemanager/databasewatcher/armdatabasewatcher/v0.1.0,sdk/resourcemanager/databasewatcher/armdatabasewatcher,v0.1.0,1740725836,02/28/2025

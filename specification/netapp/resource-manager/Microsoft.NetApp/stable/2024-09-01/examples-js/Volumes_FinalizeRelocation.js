@@ -3,12 +3,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to  Split operation to convert clone volume to an independent volume.
+ * This sample demonstrates how to Finalizes the relocation of the volume and cleans up the old volume.
  *
- * @summary  Split operation to convert clone volume to an independent volume.
- * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2024-07-01-preview/examples/Volumes_SplitClone.json
+ * @summary Finalizes the relocation of the volume and cleans up the old volume.
+ * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2024-09-01/examples/Volumes_FinalizeRelocation.json
  */
-async function volumesSplitClone() {
+async function volumesFinalizeRelocation() {
   const subscriptionId =
     process.env["NETAPP_SUBSCRIPTION_ID"] || "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
   const resourceGroupName = process.env["NETAPP_RESOURCE_GROUP"] || "myRG";
@@ -17,7 +17,7 @@ async function volumesSplitClone() {
   const volumeName = "volume1";
   const credential = new DefaultAzureCredential();
   const client = new NetAppManagementClient(credential, subscriptionId);
-  const result = await client.volumes.beginSplitCloneFromParentAndWait(
+  const result = await client.volumes.beginFinalizeRelocationAndWait(
     resourceGroupName,
     accountName,
     poolName,

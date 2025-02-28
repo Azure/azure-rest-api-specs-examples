@@ -3,12 +3,12 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to  Split operation to convert clone volume to an independent volume.
+ * This sample demonstrates how to List all replications for a specified volume
  *
- * @summary  Split operation to convert clone volume to an independent volume.
- * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2024-07-01-preview/examples/Volumes_SplitClone.json
+ * @summary List all replications for a specified volume
+ * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2024-09-01/examples/Volumes_ListReplications.json
  */
-async function volumesSplitClone() {
+async function volumesListReplications() {
   const subscriptionId =
     process.env["NETAPP_SUBSCRIPTION_ID"] || "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
   const resourceGroupName = process.env["NETAPP_RESOURCE_GROUP"] || "myRG";
@@ -17,11 +17,14 @@ async function volumesSplitClone() {
   const volumeName = "volume1";
   const credential = new DefaultAzureCredential();
   const client = new NetAppManagementClient(credential, subscriptionId);
-  const result = await client.volumes.beginSplitCloneFromParentAndWait(
+  const resArray = new Array();
+  for await (let item of client.volumes.listReplications(
     resourceGroupName,
     accountName,
     poolName,
     volumeName,
-  );
-  console.log(result);
+  )) {
+    resArray.push(item);
+  }
+  console.log(resArray);
 }

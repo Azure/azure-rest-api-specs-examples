@@ -1,5 +1,6 @@
 const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Creates a task for a container registry with the specified parameters.
@@ -66,7 +67,7 @@ async function tasksCreate() {
     resourceGroupName,
     registryName,
     taskName,
-    taskCreateParameters
+    taskCreateParameters,
   );
   console.log(result);
 }

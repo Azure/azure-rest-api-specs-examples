@@ -1,5 +1,6 @@
 const { ContainerRegistryManagementClient } = require("@azure/arm-containerregistry");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Schedules a new run based on the request parameters and add it to the run queue.
@@ -39,7 +40,7 @@ async function registriesScheduleRunTaskWithCustomCredentials() {
   const result = await client.registries.beginScheduleRunAndWait(
     resourceGroupName,
     registryName,
-    runRequest
+    runRequest,
   );
   console.log(result);
 }

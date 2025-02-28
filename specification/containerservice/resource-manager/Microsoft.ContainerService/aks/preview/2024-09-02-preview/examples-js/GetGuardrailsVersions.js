@@ -1,5 +1,6 @@
 const { ContainerServiceClient } = require("@azure/arm-containerservice");
 const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
 
 /**
  * This sample demonstrates how to Contains Guardrails version along with its support info and whether it is a default version.

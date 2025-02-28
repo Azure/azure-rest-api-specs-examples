@@ -5076,3 +5076,10 @@ id,name,language,tag,package,version,date_epoch,date
 5075,azure-mgmt-netapp@13.4.0,python,azure-mgmt-netapp_13.4.0,azure-mgmt-netapp,13.4.0,1740540587,02/26/2025
 5076,azure-mgmt-resource@23.3.0,python,azure-mgmt-resource_23.3.0,azure-mgmt-resource,23.3.0,1740539415,02/26/2025
 5077,azure-mgmt-networkcloud@2.0.0,python,azure-mgmt-networkcloud_2.0.0,azure-mgmt-networkcloud,2.0.0,1740539381,02/26/2025
+5078,com.azure.resourcemanager:azure-resourcemanager-nginx:1.1.0-beta.3,java,azure-resourcemanager-nginx_1.1.0-beta.3,azure-resourcemanager-nginx,1.1.0-beta.3,1740638670,02/27/2025
+5079,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/hybridconnectivity/armhybridconnectivity@v1.2.0-beta.1,go,sdk/resourcemanager/hybridconnectivity/armhybridconnectivity/v1.2.0-beta.1,sdk/resourcemanager/hybridconnectivity/armhybridconnectivity,v1.2.0-beta.1,1740641876,02/27/2025
+5080,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/resources/armresources/v2@v2.0.0,go,sdk/resourcemanager/resources/armresources/v2.0.0,sdk/resourcemanager/resources/armresources,v2.0.0,1740641313,02/27/2025
+5081,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/storage/armstorage@v1.7.0,go,sdk/resourcemanager/storage/armstorage/v1.7.0,sdk/resourcemanager/storage/armstorage,v1.7.0,1740634246,02/27/2025
+5082,@azure/arm-containerregistry@11.0.0-beta.4,js,@azure/arm-containerregistry_11.0.0-beta.4,@azure/arm-containerregistry,11.0.0-beta.4,1740649123,02/27/2025
+5083,@azure/arm-containerservice@21.4.0,js,@azure/arm-containerservice_21.4.0,@azure/arm-containerservice,21.4.0,1740642660,02/27/2025
+5084,azure-mgmt-impactreporting@1.0.0b1,python,azure-mgmt-impactreporting_1.0.0b1,azure-mgmt-impactreporting,1.0.0b1,1740618109,02/27/2025

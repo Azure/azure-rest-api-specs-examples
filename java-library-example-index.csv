@@ -5083,3 +5083,13 @@ id,name,language,tag,package,version,date_epoch,date
 5082,@azure/arm-containerregistry@11.0.0-beta.4,js,@azure/arm-containerregistry_11.0.0-beta.4,@azure/arm-containerregistry,11.0.0-beta.4,1740649123,02/27/2025
 5083,@azure/arm-containerservice@21.4.0,js,@azure/arm-containerservice_21.4.0,@azure/arm-containerservice,21.4.0,1740642660,02/27/2025
 5084,azure-mgmt-impactreporting@1.0.0b1,python,azure-mgmt-impactreporting_1.0.0b1,azure-mgmt-impactreporting,1.0.0b1,1740618109,02/27/2025
+5085,com.azure.resourcemanager:azure-resourcemanager:2.48.0,java,azure-resourcemanager_2.48.0,azure-resourcemanager,2.48.0,1740735270,02/28/2025
+5086,com.azure.resourcemanager:azure-resourcemanager-databasewatcher:1.0.0-beta.1,java,azure-resourcemanager-databasewatcher_1.0.0-beta.1,azure-resourcemanager-databasewatcher,1.0.0-beta.1,1740730533,02/28/2025
+5087,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/databasewatcher/armdatabasewatcher@v0.1.0,go,sdk/resourcemanager/databasewatcher/armdatabasewatcher/v0.1.0,sdk/resourcemanager/databasewatcher/armdatabasewatcher,v0.1.0,1740725836,02/28/2025
+5088,@azure/arm-netapp@21.4.0,js,@azure/arm-netapp_21.4.0,@azure/arm-netapp,21.4.0,1740722565,02/28/2025
+5089,@azure/arm-quota@1.1.0,js,@azure/arm-quota_1.1.0,@azure/arm-quota,1.1.0,1740722480,02/28/2025
+5090,@azure/arm-resources@6.0.0,js,@azure/arm-resources_6.0.0,@azure/arm-resources,6.0.0,1740722155,02/28/2025
+5091,@azure/arm-networkcloud@1.1.0,js,@azure/arm-networkcloud_1.1.0,@azure/arm-networkcloud,1.1.0,1740722154,02/28/2025
+5092,@azure/arm-impactreporting@1.0.0-beta.1,js,@azure/arm-impactreporting_1.0.0-beta.1,@azure/arm-impactreporting,1.0.0-beta.1,1740718082,02/28/2025
+5093,@azure/arm-deviceregistry@1.0.0,js,@azure/arm-deviceregistry_1.0.0,@azure/arm-deviceregistry,1.0.0,1740715022,02/28/2025
+5094,@azure/arm-nginx@4.0.0-beta.2,js,@azure/arm-nginx_4.0.0-beta.2,@azure/arm-nginx,4.0.0-beta.2,1740708637,02/28/2025

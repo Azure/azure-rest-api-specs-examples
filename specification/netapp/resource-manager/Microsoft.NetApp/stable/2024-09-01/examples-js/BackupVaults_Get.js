@@ -3,25 +3,19 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to Returns report of quotas for the volume
+ * This sample demonstrates how to Get the Backup Vault
  *
- * @summary Returns report of quotas for the volume
- * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2024-07-01-preview/examples/Volumes_ListQuotaReport.json
+ * @summary Get the Backup Vault
+ * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2024-09-01/examples/BackupVaults_Get.json
  */
-async function listQuotaReport() {
+async function backupVaultsGet() {
   const subscriptionId =
     process.env["NETAPP_SUBSCRIPTION_ID"] || "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
   const resourceGroupName = process.env["NETAPP_RESOURCE_GROUP"] || "myRG";
   const accountName = "account1";
-  const poolName = "pool1";
-  const volumeName = "volume1";
+  const backupVaultName = "backupVault1";
   const credential = new DefaultAzureCredential();
   const client = new NetAppManagementClient(credential, subscriptionId);
-  const result = await client.volumes.beginListQuotaReportAndWait(
-    resourceGroupName,
-    accountName,
-    poolName,
-    volumeName,
-  );
+  const result = await client.backupVaults.get(resourceGroupName, accountName, backupVaultName);
   console.log(result);
 }

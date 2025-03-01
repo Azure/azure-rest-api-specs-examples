@@ -3,25 +3,19 @@ const { DefaultAzureCredential } = require("@azure/identity");
 require("dotenv/config");
 
 /**
- * This sample demonstrates how to Returns report of quotas for the volume
+ * This sample demonstrates how to Patch the specified NetApp account
  *
- * @summary Returns report of quotas for the volume
- * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/preview/2024-07-01-preview/examples/Volumes_ListQuotaReport.json
+ * @summary Patch the specified NetApp account
+ * x-ms-original-file: specification/netapp/resource-manager/Microsoft.NetApp/stable/2024-09-01/examples/Accounts_Update.json
  */
-async function listQuotaReport() {
+async function accountsUpdate() {
   const subscriptionId =
     process.env["NETAPP_SUBSCRIPTION_ID"] || "D633CC2E-722B-4AE1-B636-BBD9E4C60ED9";
   const resourceGroupName = process.env["NETAPP_RESOURCE_GROUP"] || "myRG";
   const accountName = "account1";
-  const poolName = "pool1";
-  const volumeName = "volume1";
+  const body = { tags: { tag1: "Value1" } };
   const credential = new DefaultAzureCredential();
   const client = new NetAppManagementClient(credential, subscriptionId);
-  const result = await client.volumes.beginListQuotaReportAndWait(
-    resourceGroupName,
-    accountName,
-    poolName,
-    volumeName,
-  );
+  const result = await client.accounts.beginUpdateAndWait(resourceGroupName, accountName, body);
   console.log(result);
 }

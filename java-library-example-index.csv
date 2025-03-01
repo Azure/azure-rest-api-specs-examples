@@ -5094,3 +5094,4 @@ id,name,language,tag,package,version,date_epoch,date
 5093,@azure/arm-deviceregistry@1.0.0,js,@azure/arm-deviceregistry_1.0.0,@azure/arm-deviceregistry,1.0.0,1740715022,02/28/2025
 5094,@azure/arm-nginx@4.0.0-beta.2,js,@azure/arm-nginx_4.0.0-beta.2,@azure/arm-nginx,4.0.0-beta.2,1740708637,02/28/2025
 5095,azure-mgmt-storage@22.1.1,python,azure-mgmt-storage_22.1.1,azure-mgmt-storage,22.1.1,1740792599,03/01/2025
+5096,azure-mgmt-migrationassessment@1.0.0b1,python,azure-mgmt-migrationassessment_1.0.0b1,azure-mgmt-migrationassessment,1.0.0b1,1740792409,03/01/2025

@@ -1,0 +1,30 @@
+const { ResourceManagementClient } = require("@azure/arm-resources");
+const { DefaultAzureCredential } = require("@azure/identity");
+require("dotenv/config");
+
+/**
+ * This sample demonstrates how to Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+ *
+ * @summary Validates whether the specified template is syntactically correct and will be accepted by Azure Resource Manager..
+ * x-ms-original-file: specification/resources/resource-manager/Microsoft.Resources/stable/2024-11-01/examples/PostDeploymentValidateOnManagementGroup.json
+ */
+async function validatesATemplateAtManagementGroupScope() {
+  const groupId = "my-management-group-id";
+  const deploymentName = "my-deployment";
+  const parameters = {
+    location: "eastus",
+    properties: {
+      mode: "Incremental",
+      parameters: {},
+      templateLink: { uri: "https://example.com/exampleTemplate.json" },
+    },
+  };
+  const credential = new DefaultAzureCredential();
+  const client = new ResourceManagementClient(credential);
+  const result = await client.deployments.beginValidateAtManagementGroupScopeAndWait(
+    groupId,
+    deploymentName,
+    parameters,
+  );
+  console.log(result);
+}

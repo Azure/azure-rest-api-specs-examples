@@ -5096,3 +5096,4 @@ id,name,language,tag,package,version,date_epoch,date
 5095,azure-mgmt-storage@22.1.1,python,azure-mgmt-storage_22.1.1,azure-mgmt-storage,22.1.1,1740792599,03/01/2025
 5096,azure-mgmt-migrationassessment@1.0.0b1,python,azure-mgmt-migrationassessment_1.0.0b1,azure-mgmt-migrationassessment,1.0.0b1,1740792409,03/01/2025
 5097,azure-mgmt-databasewatcher@1.0.0b1,python,azure-mgmt-databasewatcher_1.0.0b1,azure-mgmt-databasewatcher,1.0.0b1,1740792402,03/01/2025
+5098,azure-mgmt-deviceregistry@1.0.0,python,azure-mgmt-deviceregistry_1.0.0,azure-mgmt-deviceregistry,1.0.0,1740792392,03/01/2025

@@ -7,24 +7,24 @@ using Azure.Identity;
 using Azure.ResourceManager.ServiceNetworking.Models;
 using Azure.ResourceManager.ServiceNetworking;
 
-// Generated from example definition: specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/stable/2025-01-01/examples/FrontendDelete.json
-// this example is just showing the usage of "FrontendsInterface_Delete" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: 2025-01-01/FrontendDelete.json
+// this example is just showing the usage of "Frontend_Delete" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontendResource created on azure
-// for more information of creating FrontendResource, please refer to the document of FrontendResource
+// this example assumes you already have this TrafficControllerFrontendResource created on azure
+// for more information of creating TrafficControllerFrontendResource, please refer to the document of TrafficControllerFrontendResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string trafficControllerName = "tc1";
 string frontendName = "fe1";
-ResourceIdentifier frontendResourceId = FrontendResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName, frontendName);
-FrontendResource frontend = client.GetFrontendResource(frontendResourceId);
+ResourceIdentifier trafficControllerFrontendResourceId = TrafficControllerFrontendResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName, frontendName);
+TrafficControllerFrontendResource trafficControllerFrontend = client.GetTrafficControllerFrontendResource(trafficControllerFrontendResourceId);
 
 // invoke the operation
-await frontend.DeleteAsync(WaitUntil.Completed);
+await trafficControllerFrontend.DeleteAsync(WaitUntil.Completed);
 
 Console.WriteLine("Succeeded");

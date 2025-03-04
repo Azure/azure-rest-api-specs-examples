@@ -5100,3 +5100,4 @@ id,name,language,tag,package,version,date_epoch,date
 5099,@azure/arm-databasewatcher@1.0.0-beta.1,js,@azure/arm-databasewatcher_1.0.0-beta.1,@azure/arm-databasewatcher,1.0.0-beta.1,1740994521,03/03/2025
 5100,@azure/arm-storage@18.4.0,js,@azure/arm-storage_18.4.0,@azure/arm-storage,18.4.0,1741071989,03/04/2025
 5101,"Azure.ResourceManager.ServiceNetworking,1.1.0",dotnet,Azure.ResourceManager.ServiceNetworking_1.1.0,Azure.ResourceManager.ServiceNetworking,1.1.0,1741075082,03/04/2025
+5102,"Azure.ResourceManager.Storage,1.4.0",dotnet,Azure.ResourceManager.Storage_1.4.0,Azure.ResourceManager.Storage,1.4.0,1740995198,03/03/2025

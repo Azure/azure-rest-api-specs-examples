@@ -5098,3 +5098,4 @@ id,name,language,tag,package,version,date_epoch,date
 5097,azure-mgmt-databasewatcher@1.0.0b1,python,azure-mgmt-databasewatcher_1.0.0b1,azure-mgmt-databasewatcher,1.0.0b1,1740792402,03/01/2025
 5098,azure-mgmt-deviceregistry@1.0.0,python,azure-mgmt-deviceregistry_1.0.0,azure-mgmt-deviceregistry,1.0.0,1740792392,03/01/2025
 5099,@azure/arm-databasewatcher@1.0.0-beta.1,js,@azure/arm-databasewatcher_1.0.0-beta.1,@azure/arm-databasewatcher,1.0.0-beta.1,1740994521,03/03/2025
+5100,@azure/arm-storage@18.4.0,js,@azure/arm-storage_18.4.0,@azure/arm-storage,18.4.0,1741071989,03/04/2025

@@ -6,8 +6,8 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ServiceNetworking;
 
-// Generated from example definition: specification/servicenetworking/resource-manager/Microsoft.ServiceNetworking/stable/2025-01-01/examples/FrontendPut.json
-// this example is just showing the usage of "FrontendsInterface_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
+// Generated from example definition: 2025-01-01/FrontendPut.json
+// this example is just showing the usage of "Frontend_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -22,17 +22,17 @@ string trafficControllerName = "tc1";
 ResourceIdentifier trafficControllerResourceId = TrafficControllerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, trafficControllerName);
 TrafficControllerResource trafficController = client.GetTrafficControllerResource(trafficControllerResourceId);
 
-// get the collection of this FrontendResource
-FrontendCollection collection = trafficController.GetFrontends();
+// get the collection of this TrafficControllerFrontendResource
+TrafficControllerFrontendCollection collection = trafficController.GetTrafficControllerFrontends();
 
 // invoke the operation
 string frontendName = "fe1";
-FrontendData data = new FrontendData(new AzureLocation("NorthCentralUS"));
-ArmOperation<FrontendResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, frontendName, data);
-FrontendResource result = lro.Value;
+TrafficControllerFrontendData data = new TrafficControllerFrontendData(new AzureLocation("NorthCentralUS"));
+ArmOperation<TrafficControllerFrontendResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, frontendName, data);
+TrafficControllerFrontendResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well
 // but just for demo, we get its data from this resource instance
-FrontendData resourceData = result.Data;
+TrafficControllerFrontendData resourceData = result.Data;
 // for demo we just print out the id
 Console.WriteLine($"Succeeded on id: {resourceData.Id}");

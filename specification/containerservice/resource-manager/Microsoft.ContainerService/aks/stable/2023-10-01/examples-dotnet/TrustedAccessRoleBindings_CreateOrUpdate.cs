@@ -14,24 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceManagedClusterResource created on azure
-// for more information of creating ContainerServiceManagedClusterResource, please refer to the document of ContainerServiceManagedClusterResource
+// this example assumes you already have this ContainerServiceTrustedAccessRoleBindingResource created on azure
+// for more information of creating ContainerServiceTrustedAccessRoleBindingResource, please refer to the document of ContainerServiceTrustedAccessRoleBindingResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
-ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceManagedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
-
-// get the collection of this ContainerServiceTrustedAccessRoleBindingResource
-ContainerServiceTrustedAccessRoleBindingCollection collection = containerServiceManagedCluster.GetContainerServiceTrustedAccessRoleBindings();
+string trustedAccessRoleBindingName = "binding1";
+ResourceIdentifier containerServiceTrustedAccessRoleBindingResourceId = ContainerServiceTrustedAccessRoleBindingResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, trustedAccessRoleBindingName);
+ContainerServiceTrustedAccessRoleBindingResource containerServiceTrustedAccessRoleBinding = client.GetContainerServiceTrustedAccessRoleBindingResource(containerServiceTrustedAccessRoleBindingResourceId);
 
 // invoke the operation
-string trustedAccessRoleBindingName = "binding1";
-ContainerServiceTrustedAccessRoleBindingData data = new ContainerServiceTrustedAccessRoleBindingData(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/b/providers/Microsoft.MachineLearningServices/workspaces/c"), new string[]
-{
-"Microsoft.MachineLearningServices/workspaces/reader","Microsoft.MachineLearningServices/workspaces/writer"
-});
-ArmOperation<ContainerServiceTrustedAccessRoleBindingResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, trustedAccessRoleBindingName, data);
+ContainerServiceTrustedAccessRoleBindingData data = new ContainerServiceTrustedAccessRoleBindingData(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/b/providers/Microsoft.MachineLearningServices/workspaces/c"), new string[] { "Microsoft.MachineLearningServices/workspaces/reader", "Microsoft.MachineLearningServices/workspaces/writer" });
+ArmOperation<ContainerServiceTrustedAccessRoleBindingResource> lro = await containerServiceTrustedAccessRoleBinding.UpdateAsync(WaitUntil.Completed, data);
 ContainerServiceTrustedAccessRoleBindingResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

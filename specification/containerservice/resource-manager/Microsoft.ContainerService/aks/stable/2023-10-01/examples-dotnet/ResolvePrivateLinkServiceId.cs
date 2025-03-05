@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerService.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerService;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-10-01/examples/ResolvePrivateLinkServiceId.json
@@ -25,7 +24,7 @@ ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceMa
 ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
 
 // invoke the operation
-ContainerServicePrivateLinkResourceData data = new ContainerServicePrivateLinkResourceData()
+ContainerServicePrivateLinkResourceData data = new ContainerServicePrivateLinkResourceData
 {
     Name = "management",
 };

@@ -27,4 +27,4 @@ ContainerServiceAgentPoolResource containerServiceAgentPool = client.GetContaine
 // invoke the operation
 await containerServiceAgentPool.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

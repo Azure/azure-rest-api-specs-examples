@@ -26,4 +26,4 @@ ContainerServiceTrustedAccessRoleBindingResource containerServiceTrustedAccessRo
 // invoke the operation
 await containerServiceTrustedAccessRoleBinding.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

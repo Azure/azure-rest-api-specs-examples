@@ -29,4 +29,4 @@ await foreach (ContainerServiceTrustedAccessRole item in subscriptionResource.Ge
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

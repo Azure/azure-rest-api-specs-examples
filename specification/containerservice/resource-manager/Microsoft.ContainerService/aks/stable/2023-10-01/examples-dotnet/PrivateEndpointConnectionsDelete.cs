@@ -27,4 +27,4 @@ ContainerServicePrivateEndpointConnectionResource containerServicePrivateEndpoin
 // invoke the operation
 await containerServicePrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ ContainerServiceMaintenanceConfigurationResource containerServiceMaintenanceConf
 // invoke the operation
 await containerServiceMaintenanceConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

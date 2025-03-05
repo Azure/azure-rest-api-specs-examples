@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceManagedClusterResource created on azure
-// for more information of creating ContainerServiceManagedClusterResource, please refer to the document of ContainerServiceManagedClusterResource
+// this example assumes you already have this ContainerServicePrivateEndpointConnectionResource created on azure
+// for more information of creating ContainerServicePrivateEndpointConnectionResource, please refer to the document of ContainerServicePrivateEndpointConnectionResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
-ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceManagedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
-
-// get the collection of this ContainerServicePrivateEndpointConnectionResource
-ContainerServicePrivateEndpointConnectionCollection collection = containerServiceManagedCluster.GetContainerServicePrivateEndpointConnections();
+string privateEndpointConnectionName = "privateendpointconnection1";
+ResourceIdentifier containerServicePrivateEndpointConnectionResourceId = ContainerServicePrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, privateEndpointConnectionName);
+ContainerServicePrivateEndpointConnectionResource containerServicePrivateEndpointConnection = client.GetContainerServicePrivateEndpointConnectionResource(containerServicePrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "privateendpointconnection1";
-NullableResponse<ContainerServicePrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
-ContainerServicePrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
+ContainerServicePrivateEndpointConnectionResource result = await containerServicePrivateEndpointConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ContainerServicePrivateEndpointConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ContainerServicePrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

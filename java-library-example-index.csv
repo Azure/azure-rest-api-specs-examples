@@ -5103,3 +5103,5 @@ id,name,language,tag,package,version,date_epoch,date
 5102,"Azure.ResourceManager.Storage,1.4.0",dotnet,Azure.ResourceManager.Storage_1.4.0,Azure.ResourceManager.Storage,1.4.0,1740995198,03/03/2025
 5103,"Azure.ResourceManager.DeviceRegistry,1.0.0",dotnet,Azure.ResourceManager.DeviceRegistry_1.0.0,Azure.ResourceManager.DeviceRegistry,1.0.0,1740993471,03/03/2025
 5104,"Azure.ResourceManager.Quota,1.1.0",dotnet,Azure.ResourceManager.Quota_1.1.0,Azure.ResourceManager.Quota,1.1.0,1740993462,03/03/2025
+5105,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/migrationassessment/armmigrationassessment@v0.1.0,go,sdk/resourcemanager/migrationassessment/armmigrationassessment/v0.1.0,sdk/resourcemanager/migrationassessment/armmigrationassessment,v0.1.0,1741152006,03/05/2025
+5106,"Azure.ResourceManager.ContainerService,1.2.3",dotnet,Azure.ResourceManager.ContainerService_1.2.3,Azure.ResourceManager.ContainerService,1.2.3,1741162848,03/05/2025

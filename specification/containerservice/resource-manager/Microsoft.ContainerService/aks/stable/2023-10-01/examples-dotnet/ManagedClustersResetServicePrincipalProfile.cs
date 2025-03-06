@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerService.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerService;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-10-01/examples/ManagedClustersResetServicePrincipalProfile.json
@@ -31,4 +30,4 @@ ManagedClusterServicePrincipalProfile managedClusterServicePrincipalProfile = ne
 };
 await containerServiceManagedCluster.ResetServicePrincipalProfileAsync(WaitUntil.Completed, managedClusterServicePrincipalProfile);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

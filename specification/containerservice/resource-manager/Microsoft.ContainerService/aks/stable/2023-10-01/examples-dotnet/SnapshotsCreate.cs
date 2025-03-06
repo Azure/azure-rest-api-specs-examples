@@ -33,7 +33,7 @@ AgentPoolSnapshotData data = new AgentPoolSnapshotData(new AzureLocation("westus
     Tags =
     {
     ["key1"] = "val1",
-    ["key2"] = "val2",
+    ["key2"] = "val2"
     },
 };
 ArmOperation<AgentPoolSnapshotResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerService.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerService;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-10-01/examples/ManagedClustersResetAADProfile.json
@@ -25,7 +24,7 @@ ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceMa
 ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
 
 // invoke the operation
-ManagedClusterAadProfile managedClusterAadProfile = new ManagedClusterAadProfile()
+ManagedClusterAadProfile managedClusterAadProfile = new ManagedClusterAadProfile
 {
     ClientAppId = Guid.Parse("clientappid"),
     ServerAppId = Guid.Parse("serverappid"),
@@ -34,4 +33,4 @@ ManagedClusterAadProfile managedClusterAadProfile = new ManagedClusterAadProfile
 };
 await containerServiceManagedCluster.ResetAadProfileAsync(WaitUntil.Completed, managedClusterAadProfile);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -15,20 +15,17 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ContainerServiceManagedClusterResource created on azure
-// for more information of creating ContainerServiceManagedClusterResource, please refer to the document of ContainerServiceManagedClusterResource
+// this example assumes you already have this ContainerServiceAgentPoolResource created on azure
+// for more information of creating ContainerServiceAgentPoolResource, please refer to the document of ContainerServiceAgentPoolResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string resourceName = "clustername1";
-ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceManagedClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName);
-ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
-
-// get the collection of this ContainerServiceAgentPoolResource
-ContainerServiceAgentPoolCollection collection = containerServiceManagedCluster.GetContainerServiceAgentPools();
+string agentPoolName = "agentpool1";
+ResourceIdentifier containerServiceAgentPoolResourceId = ContainerServiceAgentPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, resourceName, agentPoolName);
+ContainerServiceAgentPoolResource containerServiceAgentPool = client.GetContainerServiceAgentPoolResource(containerServiceAgentPoolResourceId);
 
 // invoke the operation
-string agentPoolName = "agentpool1";
-ContainerServiceAgentPoolData data = new ContainerServiceAgentPoolData()
+ContainerServiceAgentPoolData data = new ContainerServiceAgentPoolData
 {
     Count = 3,
     VmSize = "Standard_DS2_v2",
@@ -36,7 +33,7 @@ ContainerServiceAgentPoolData data = new ContainerServiceAgentPoolData()
     OrchestratorVersion = "",
     EnableUltraSsd = true,
 };
-ArmOperation<ContainerServiceAgentPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, agentPoolName, data);
+ArmOperation<ContainerServiceAgentPoolResource> lro = await containerServiceAgentPool.UpdateAsync(WaitUntil.Completed, data);
 ContainerServiceAgentPoolResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

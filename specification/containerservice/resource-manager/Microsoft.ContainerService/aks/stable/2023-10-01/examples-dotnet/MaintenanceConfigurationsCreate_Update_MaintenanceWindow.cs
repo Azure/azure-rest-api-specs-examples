@@ -28,19 +28,16 @@ ContainerServiceMaintenanceConfigurationCollection collection = containerService
 
 // invoke the operation
 string configName = "aksManagedAutoUpgradeSchedule";
-ContainerServiceMaintenanceConfigurationData data = new ContainerServiceMaintenanceConfigurationData()
+ContainerServiceMaintenanceConfigurationData data = new ContainerServiceMaintenanceConfigurationData
 {
-    MaintenanceWindow = new ContainerServiceMaintenanceWindow(new ContainerServiceMaintenanceSchedule()
+    MaintenanceWindow = new ContainerServiceMaintenanceWindow(new ContainerServiceMaintenanceSchedule
     {
         RelativeMonthly = new ContainerServiceMaintenanceRelativeMonthlySchedule(3, ContainerServiceMaintenanceRelativeMonthlyScheduleWeekIndex.First, ContainerServiceWeekDay.Monday),
     }, 10, "08:30")
     {
         UtcOffset = "+05:30",
         StartDate = "2023-01-01",
-        NotAllowedDates =
-        {
-        new ContainerServiceDateSpan(DateTimeOffset.Parse("2023-02-18"),DateTimeOffset.Parse("2023-02-25")),new ContainerServiceDateSpan(DateTimeOffset.Parse("2023-12-23"),DateTimeOffset.Parse("2024-01-05"))
-        },
+        NotAllowedDates = { new ContainerServiceDateSpan(DateTimeOffset.Parse("2023-02-18"), DateTimeOffset.Parse("2023-02-25")), new ContainerServiceDateSpan(DateTimeOffset.Parse("2023-12-23"), DateTimeOffset.Parse("2024-01-05")) },
     },
 };
 ArmOperation<ContainerServiceMaintenanceConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configName, data);

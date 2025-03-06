@@ -31,29 +31,23 @@ ContainerServiceManagedClusterCollection collection = resourceGroupResource.GetC
 string resourceName = "clustername1";
 ContainerServiceManagedClusterData data = new ContainerServiceManagedClusterData(new AzureLocation("location1"))
 {
-    Sku = new ManagedClusterSku()
+    Sku = new ManagedClusterSku
     {
         Name = new ManagedClusterSkuName("Basic"),
         Tier = ManagedClusterSkuTier.Free,
     },
     KubernetesVersion = "",
     DnsPrefix = "dnsprefix1",
-    AgentPoolProfiles =
-    {
-    new ManagedClusterAgentPoolProfile("nodepool1")
+    AgentPoolProfiles = {new ManagedClusterAgentPoolProfile("nodepool1")
     {
     Count = 3,
     VmSize = "Standard_DS1_v2",
     OSType = ContainerServiceOSType.Linux,
     AgentPoolType = AgentPoolType.VirtualMachineScaleSets,
     Mode = AgentPoolMode.System,
-    AvailabilityZones =
-    {
-    "1","2","3"
-    },
+    AvailabilityZones = {"1", "2", "3"},
     EnableNodePublicIP = true,
-    }
-    },
+    }},
     LinuxProfile = new ContainerServiceLinuxProfile("azureuser", new ContainerServiceSshConfiguration(new ContainerServiceSshPublicKey[]
 {
 new ContainerServiceSshPublicKey("keydata")
@@ -66,29 +60,27 @@ new ContainerServiceSshPublicKey("keydata")
     {
         Secret = "secret",
     },
-    AddonProfiles =
-    {
-    },
+    AddonProfiles = { },
     EnableRbac = true,
     EnablePodSecurityPolicy = true,
-    NetworkProfile = new ContainerServiceNetworkProfile()
+    NetworkProfile = new ContainerServiceNetworkProfile
     {
         OutboundType = ContainerServiceOutboundType.LoadBalancer,
         LoadBalancerSku = ContainerServiceLoadBalancerSku.Standard,
-        LoadBalancerProfile = new ManagedClusterLoadBalancerProfile()
+        LoadBalancerProfile = new ManagedClusterLoadBalancerProfile
         {
-            ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs()
+            ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs
             {
                 Count = 2,
             },
         },
     },
-    AadProfile = new ManagedClusterAadProfile()
+    AadProfile = new ManagedClusterAadProfile
     {
         IsManagedAadEnabled = true,
         IsAzureRbacEnabled = true,
     },
-    AutoScalerProfile = new ManagedClusterAutoScalerProfile()
+    AutoScalerProfile = new ManagedClusterAutoScalerProfile
     {
         ScanIntervalInSeconds = "20s",
         ScaleDownDelayAfterAdd = "15m",
@@ -97,7 +89,7 @@ new ContainerServiceSshPublicKey("keydata")
     Tags =
     {
     ["archv2"] = "",
-    ["tier"] = "production",
+    ["tier"] = "production"
     },
 };
 ArmOperation<ContainerServiceManagedClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);

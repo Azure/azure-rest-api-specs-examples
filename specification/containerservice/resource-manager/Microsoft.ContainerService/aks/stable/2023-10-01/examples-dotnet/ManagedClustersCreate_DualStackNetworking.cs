@@ -31,24 +31,22 @@ ContainerServiceManagedClusterCollection collection = resourceGroupResource.GetC
 string resourceName = "clustername1";
 ContainerServiceManagedClusterData data = new ContainerServiceManagedClusterData(new AzureLocation("location1"))
 {
-    Sku = new ManagedClusterSku()
+    Sku = new ManagedClusterSku
     {
         Name = new ManagedClusterSkuName("Basic"),
         Tier = ManagedClusterSkuTier.Free,
     },
-    ClusterIdentity = new ManagedClusterIdentity()
+    ClusterIdentity = new ManagedClusterIdentity
     {
         ResourceIdentityType = "UserAssigned",
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgName1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rgName1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity1")] = new UserAssignedIdentity()
         },
     },
     KubernetesVersion = "",
     DnsPrefix = "dnsprefix1",
-    AgentPoolProfiles =
-    {
-    new ManagedClusterAgentPoolProfile("nodepool1")
+    AgentPoolProfiles = {new ManagedClusterAgentPoolProfile("nodepool1")
     {
     Count = 3,
     VmSize = "Standard_DS1_v2",
@@ -56,13 +54,9 @@ ContainerServiceManagedClusterData data = new ContainerServiceManagedClusterData
     ScaleDownMode = ScaleDownMode.Deallocate,
     AgentPoolType = AgentPoolType.VirtualMachineScaleSets,
     Mode = AgentPoolMode.System,
-    AvailabilityZones =
-    {
-    "1","2","3"
-    },
+    AvailabilityZones = {"1", "2", "3"},
     EnableNodePublicIP = true,
-    }
-    },
+    }},
     LinuxProfile = new ContainerServiceLinuxProfile("azureuser", new ContainerServiceSshConfiguration(new ContainerServiceSshPublicKey[]
 {
 new ContainerServiceSshPublicKey("keydata")
@@ -75,28 +69,23 @@ new ContainerServiceSshPublicKey("keydata")
     {
         Secret = "secret",
     },
-    AddonProfiles =
-    {
-    },
+    AddonProfiles = { },
     EnableRbac = true,
     EnablePodSecurityPolicy = true,
-    NetworkProfile = new ContainerServiceNetworkProfile()
+    NetworkProfile = new ContainerServiceNetworkProfile
     {
         OutboundType = ContainerServiceOutboundType.LoadBalancer,
         LoadBalancerSku = ContainerServiceLoadBalancerSku.Standard,
-        LoadBalancerProfile = new ManagedClusterLoadBalancerProfile()
+        LoadBalancerProfile = new ManagedClusterLoadBalancerProfile
         {
-            ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs()
+            ManagedOutboundIPs = new ManagedClusterLoadBalancerProfileManagedOutboundIPs
             {
                 Count = 2,
             },
         },
-        IPFamilies =
-        {
-        IPFamily.IPv4,IPFamily.IPv6
-        },
+        IPFamilies = { IPFamily.IPv4, IPFamily.IPv6 },
     },
-    AutoScalerProfile = new ManagedClusterAutoScalerProfile()
+    AutoScalerProfile = new ManagedClusterAutoScalerProfile
     {
         BalanceSimilarNodeGroups = "true",
         Expander = AutoScaleExpander.Priority,
@@ -110,7 +99,7 @@ new ContainerServiceSshPublicKey("keydata")
     Tags =
     {
     ["archv2"] = "",
-    ["tier"] = "production",
+    ["tier"] = "production"
     },
 };
 ArmOperation<ContainerServiceManagedClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);

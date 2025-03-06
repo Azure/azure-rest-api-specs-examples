@@ -28,27 +28,18 @@ ContainerServiceMaintenanceConfigurationCollection collection = containerService
 
 // invoke the operation
 string configName = "default";
-ContainerServiceMaintenanceConfigurationData data = new ContainerServiceMaintenanceConfigurationData()
+ContainerServiceMaintenanceConfigurationData data = new ContainerServiceMaintenanceConfigurationData
 {
-    TimesInWeek =
-    {
-    new ContainerServiceTimeInWeek()
+    TimesInWeek = {new ContainerServiceTimeInWeek
     {
     Day = ContainerServiceWeekDay.Monday,
-    HourSlots =
-    {
-    1,2
-    },
-    }
-    },
-    NotAllowedTimes =
-    {
-    new ContainerServiceTimeSpan()
+    HourSlots = {1, 2},
+    }},
+    NotAllowedTimes = {new ContainerServiceTimeSpan
     {
     StartOn = DateTimeOffset.Parse("2020-11-26T03:00:00Z"),
     EndOn = DateTimeOffset.Parse("2020-11-30T12:00:00Z"),
-    }
-    },
+    }},
 };
 ArmOperation<ContainerServiceMaintenanceConfigurationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, configName, data);
 ContainerServiceMaintenanceConfigurationResource result = lro.Value;

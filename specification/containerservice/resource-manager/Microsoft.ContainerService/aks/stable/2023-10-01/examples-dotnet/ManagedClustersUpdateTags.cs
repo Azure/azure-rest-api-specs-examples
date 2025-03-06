@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ContainerService.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ContainerService;
 
 // Generated from example definition: specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-10-01/examples/ManagedClustersUpdateTags.json
@@ -25,12 +24,12 @@ ResourceIdentifier containerServiceManagedClusterResourceId = ContainerServiceMa
 ContainerServiceManagedClusterResource containerServiceManagedCluster = client.GetContainerServiceManagedClusterResource(containerServiceManagedClusterResourceId);
 
 // invoke the operation
-ContainerServiceTagsObject containerServiceTagsObject = new ContainerServiceTagsObject()
+ContainerServiceTagsObject containerServiceTagsObject = new ContainerServiceTagsObject
 {
     Tags =
     {
     ["archv3"] = "",
-    ["tier"] = "testing",
+    ["tier"] = "testing"
     },
 };
 ArmOperation<ContainerServiceManagedClusterResource> lro = await containerServiceManagedCluster.UpdateAsync(WaitUntil.Completed, containerServiceTagsObject);

@@ -6,10 +6,10 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2"
 )
 
-// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/08894fa8d66cb44dc62a73f7a09530f905985fa3/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ProactiveDetectionConfigurationUpdate.json
+// Generated from example definition: https://github.com/Azure/azure-rest-api-specs/blob/8a0168458930c86636a76bcd7acfdc9c81291bfc/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ProactiveDetectionConfigurationUpdate.json
 func ExampleProactiveDetectionConfigurationsClient_Update() {
 	cred, err := azidentity.NewDefaultAzureCredential(nil)
 	if err != nil {
@@ -21,11 +21,11 @@ func ExampleProactiveDetectionConfigurationsClient_Update() {
 		log.Fatalf("failed to create client: %v", err)
 	}
 	res, err := clientFactory.NewProactiveDetectionConfigurationsClient().Update(ctx, "my-resource-group", "my-component", "slowpageloadtime", armapplicationinsights.ComponentProactiveDetectionConfiguration{
+		Name: to.Ptr("slowpageloadtime"),
 		CustomEmails: []*string{
 			to.Ptr("foo@microsoft.com"),
 			to.Ptr("foo2@microsoft.com")},
 		Enabled: to.Ptr(true),
-		Name:    to.Ptr("slowpageloadtime"),
 		RuleDefinitions: &armapplicationinsights.ComponentProactiveDetectionConfigurationRuleDefinitions{
 			Description:                to.Ptr("Smart Detection rules notify you of performance anomaly issues."),
 			DisplayName:                to.Ptr("Slow page load time"),
@@ -45,11 +45,11 @@ func ExampleProactiveDetectionConfigurationsClient_Update() {
 	_ = res
 	// If the HTTP response code is 200 as defined in example definition, your response structure would look as follows. Please pay attention that all the values in the output are fake values for just demo purposes.
 	// res.ComponentProactiveDetectionConfiguration = armapplicationinsights.ComponentProactiveDetectionConfiguration{
+	// 	Name: to.Ptr("slowpageloadtime"),
 	// 	CustomEmails: []*string{
 	// 		to.Ptr("foo@microsoft.com"),
 	// 		to.Ptr("foo2@microsoft.com")},
 	// 		Enabled: to.Ptr(true),
-	// 		Name: to.Ptr("slowpageloadtime"),
 	// 		RuleDefinitions: &armapplicationinsights.ComponentProactiveDetectionConfigurationRuleDefinitions{
 	// 			Description: to.Ptr("Smart Detection rules notify you of performance anomaly issues."),
 	// 			DisplayName: to.Ptr("Slow page load time"),

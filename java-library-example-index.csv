@@ -5115,3 +5115,4 @@ id,name,language,tag,package,version,date_epoch,date
 5114,"Azure.ResourceManager.Chaos,1.1.0-beta.2",dotnet,Azure.ResourceManager.Chaos_1.1.0-beta.2,Azure.ResourceManager.Chaos,1.1.0-beta.2,1741687517,03/11/2025
 5115,"Azure.ResourceManager.ConnectedVMwarevSphere,1.1.1",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.1.1,Azure.ResourceManager.ConnectedVMwarevSphere,1.1.1,1741687495,03/11/2025
 5116,"Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.5",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0-beta.5,Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.5,1741686648,03/11/2025
+5117,"Azure.ResourceManager.ScVmm,1.0.0-beta.6",dotnet,Azure.ResourceManager.ScVmm_1.0.0-beta.6,Azure.ResourceManager.ScVmm,1.0.0-beta.6,1741686336,03/11/2025

@@ -25,4 +25,4 @@ AppComplianceReportWebhookResource appComplianceReportWebhook = client.GetAppCom
 // invoke the operation
 await appComplianceReportWebhook.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

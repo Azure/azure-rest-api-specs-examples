@@ -25,4 +25,4 @@ AppComplianceReportEvidenceResource appComplianceReportEvidence = client.GetAppC
 // invoke the operation
 await appComplianceReportEvidence.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

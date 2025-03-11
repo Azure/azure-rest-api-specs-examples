@@ -15,18 +15,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppComplianceReportEvidenceResource created on azure
-// for more information of creating AppComplianceReportEvidenceResource, please refer to the document of AppComplianceReportEvidenceResource
+// this example assumes you already have this AppComplianceReportResource created on azure
+// for more information of creating AppComplianceReportResource, please refer to the document of AppComplianceReportResource
 string reportName = "testReportName";
-string evidenceName = "evidence1";
-ResourceIdentifier appComplianceReportEvidenceResourceId = AppComplianceReportEvidenceResource.CreateResourceIdentifier(reportName, evidenceName);
-AppComplianceReportEvidenceResource appComplianceReportEvidence = client.GetAppComplianceReportEvidenceResource(appComplianceReportEvidenceResourceId);
+ResourceIdentifier appComplianceReportResourceId = AppComplianceReportResource.CreateResourceIdentifier(reportName);
+AppComplianceReportResource appComplianceReport = client.GetAppComplianceReportResource(appComplianceReportResourceId);
+
+// get the collection of this AppComplianceReportEvidenceResource
+AppComplianceReportEvidenceCollection collection = appComplianceReport.GetAppComplianceReportEvidences();
 
 // invoke the operation
-AppComplianceReportEvidenceResource result = await appComplianceReportEvidence.GetAsync();
+string evidenceName = "evidence1";
+NullableResponse<AppComplianceReportEvidenceResource> response = await collection.GetIfExistsAsync(evidenceName);
+AppComplianceReportEvidenceResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppComplianceReportEvidenceData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppComplianceReportEvidenceData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

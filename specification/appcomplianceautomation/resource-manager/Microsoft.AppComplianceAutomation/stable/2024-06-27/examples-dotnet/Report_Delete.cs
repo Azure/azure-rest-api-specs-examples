@@ -24,4 +24,4 @@ AppComplianceReportResource appComplianceReport = client.GetAppComplianceReportR
 // invoke the operation
 await appComplianceReport.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

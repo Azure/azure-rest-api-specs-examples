@@ -25,7 +25,7 @@ AppComplianceReportResource appComplianceReport = client.GetAppComplianceReportR
 AppComplianceReportWebhookCollection collection = appComplianceReport.GetAppComplianceReportWebhooks();
 
 // invoke the operation and iterate over the result
-AppComplianceReportWebhookCollectionGetAllOptions options = new AppComplianceReportWebhookCollectionGetAllOptions() { SkipToken = "1", Top = 100 };
+AppComplianceReportWebhookCollectionGetAllOptions options = new AppComplianceReportWebhookCollectionGetAllOptions { SkipToken = "1", Top = 100 };
 await foreach (AppComplianceReportWebhookResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -35,4 +35,4 @@ await foreach (AppComplianceReportWebhookResource item in collection.GetAllAsync
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

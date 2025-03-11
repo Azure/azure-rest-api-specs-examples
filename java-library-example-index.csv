@@ -5112,3 +5112,4 @@ id,name,language,tag,package,version,date_epoch,date
 5111,"Azure.ResourceManager.AppComplianceAutomation,1.0.1",dotnet,Azure.ResourceManager.AppComplianceAutomation_1.0.1,Azure.ResourceManager.AppComplianceAutomation,1.0.1,1741687844,03/11/2025
 5112,"Azure.ResourceManager.ApplicationInsights,1.0.1",dotnet,Azure.ResourceManager.ApplicationInsights_1.0.1,Azure.ResourceManager.ApplicationInsights,1.0.1,1741687706,03/11/2025
 5113,"Azure.ResourceManager.Confluent,1.2.1",dotnet,Azure.ResourceManager.Confluent_1.2.1,Azure.ResourceManager.Confluent,1.2.1,1741687547,03/11/2025
+5114,"Azure.ResourceManager.Chaos,1.1.0-beta.2",dotnet,Azure.ResourceManager.Chaos_1.1.0-beta.2,Azure.ResourceManager.Chaos,1.1.0-beta.2,1741687517,03/11/2025

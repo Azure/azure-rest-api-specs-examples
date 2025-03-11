@@ -1,15 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Confluent;
 using Azure.ResourceManager.Confluent.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Confluent;
 
 // Generated from example definition: specification/confluent/resource-manager/Microsoft.Confluent/stable/2024-02-13/examples/Organization_CreateClusterAPIKey.json
-// this example is just showing the usage of "Organization_CreateAPIKey" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "Organization_CreateApiKey" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -27,7 +26,7 @@ ConfluentOrganizationResource confluentOrganization = client.GetConfluentOrganiz
 // invoke the operation
 string environmentId = "env-12132";
 string clusterId = "clusterId-123";
-ConfluentApiKeyCreateContent content = new ConfluentApiKeyCreateContent()
+ConfluentApiKeyCreateContent content = new ConfluentApiKeyCreateContent
 {
     Name = "CI kafka access key",
     Description = "This API key provides kafka access to cluster x",

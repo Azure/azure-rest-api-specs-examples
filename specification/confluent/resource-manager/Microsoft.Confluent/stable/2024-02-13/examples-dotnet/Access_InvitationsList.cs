@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Confluent;
 using Azure.ResourceManager.Confluent.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Confluent;
 
 // Generated from example definition: specification/confluent/resource-manager/Microsoft.Confluent/stable/2024-02-13/examples/Access_InvitationsList.json
 // this example is just showing the usage of "Access_ListInvitations" operation, for the dependent resources, they will have to be created separately.
@@ -25,13 +24,13 @@ ResourceIdentifier confluentOrganizationResourceId = ConfluentOrganizationResour
 ConfluentOrganizationResource confluentOrganization = client.GetConfluentOrganizationResource(confluentOrganizationResourceId);
 
 // invoke the operation
-AccessListContent content = new AccessListContent()
+AccessListContent content = new AccessListContent
 {
     SearchFilters =
     {
     ["pageSize"] = "10",
     ["pageToken"] = "asc4fts4ft",
-    ["status"] = "INVITE_STATUS_SENT",
+    ["status"] = "INVITE_STATUS_SENT"
     },
 };
 AccessInvitationListResult result = await confluentOrganization.GetAccessInvitationsAsync(content);

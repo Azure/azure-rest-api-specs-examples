@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Confluent;
 using Azure.ResourceManager.Confluent.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Confluent;
 
 // Generated from example definition: specification/confluent/resource-manager/Microsoft.Confluent/stable/2024-02-13/examples/Organization_Update.json
 // this example is just showing the usage of "Organization_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,12 +24,12 @@ ResourceIdentifier confluentOrganizationResourceId = ConfluentOrganizationResour
 ConfluentOrganizationResource confluentOrganization = client.GetConfluentOrganizationResource(confluentOrganizationResourceId);
 
 // invoke the operation
-ConfluentOrganizationPatch patch = new ConfluentOrganizationPatch()
+ConfluentOrganizationPatch patch = new ConfluentOrganizationPatch
 {
     Tags =
     {
     ["client"] = "dev-client",
-    ["env"] = "dev",
+    ["env"] = "dev"
     },
 };
 ConfluentOrganizationResource result = await confluentOrganization.UpdateAsync(patch);

@@ -25,4 +25,4 @@ VMwareVmInstanceResource vMwareVmInstance = client.GetVMwareVmInstanceResource(v
 // invoke the operation
 await vMwareVmInstance.RestartAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

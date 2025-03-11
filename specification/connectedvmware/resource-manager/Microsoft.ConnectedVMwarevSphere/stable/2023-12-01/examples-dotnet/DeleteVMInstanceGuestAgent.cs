@@ -24,4 +24,4 @@ VmInstanceGuestAgentResource vmInstanceGuestAgent = client.GetVmInstanceGuestAge
 // invoke the operation
 await vmInstanceGuestAgent.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

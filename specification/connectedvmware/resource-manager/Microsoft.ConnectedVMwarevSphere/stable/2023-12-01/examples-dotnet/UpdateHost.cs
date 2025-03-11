@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ConnectedVMwarevSphere.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ConnectedVMwarevSphere;
 
 // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/UpdateHost.json
@@ -25,12 +24,12 @@ ResourceIdentifier vMwareHostResourceId = VMwareHostResource.CreateResourceIdent
 VMwareHostResource vMwareHost = client.GetVMwareHostResource(vMwareHostResourceId);
 
 // invoke the operation
-VMwareResourcePatchContent content = new VMwareResourcePatchContent()
+VMwareResourcePatchContent content = new VMwareResourcePatchContent
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 VMwareHostResource result = await vMwareHost.UpdateAsync(content);

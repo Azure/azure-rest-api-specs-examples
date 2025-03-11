@@ -22,9 +22,9 @@ ResourceIdentifier vmInstanceGuestAgentResourceId = VmInstanceGuestAgentResource
 VmInstanceGuestAgentResource vmInstanceGuestAgent = client.GetVmInstanceGuestAgentResource(vmInstanceGuestAgentResourceId);
 
 // invoke the operation
-VmInstanceGuestAgentData data = new VmInstanceGuestAgentData()
+VmInstanceGuestAgentData data = new VmInstanceGuestAgentData
 {
-    Credentials = new VmInstanceGuestCredential()
+    Credentials = new VmInstanceGuestCredential
     {
         Username = "tempuser",
         Password = "<password>",

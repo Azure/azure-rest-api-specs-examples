@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Astro.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Astro;
 
 // Generated from example definition: specification/liftrastronomer/resource-manager/Astronomer.Astro/stable/2023-08-01/examples/Organizations_Update_MaximumSet_Gen.json
@@ -26,21 +25,19 @@ ResourceIdentifier astroOrganizationResourceId = AstroOrganizationResource.Creat
 AstroOrganizationResource astroOrganization = client.GetAstroOrganizationResource(astroOrganizationResourceId);
 
 // invoke the operation
-AstroOrganizationPatch patch = new AstroOrganizationPatch()
+AstroOrganizationPatch patch = new AstroOrganizationPatch
 {
     Identity = new ManagedServiceIdentity("None")
     {
-        UserAssignedIdentities =
-        {
-        },
+        UserAssignedIdentities = { },
     },
     Tags =
     {
-    ["key1474"] = "bqqyipxnbbxryhznyaosmtpo",
+    ["key1474"] = "bqqyipxnbbxryhznyaosmtpo"
     },
-    Properties = new AstroOrganizationUpdateProperties()
+    Properties = new AstroOrganizationUpdateProperties
     {
-        User = new AstroUserUpdateDetails()
+        User = new AstroUserUpdateDetails
         {
             FirstName = "qeuofehzypzljgcuysugefbgxde",
             LastName = "g",
@@ -48,21 +45,18 @@ AstroOrganizationPatch patch = new AstroOrganizationPatch()
             Upn = "uwtprzdfpsqmktx",
             PhoneNumber = "aqpyxznvqpgkzohevynofrjdfgoo",
         },
-        PartnerOrganizationProperties = new AstroPartnerOrganizationUpdateProperties()
+        PartnerOrganizationProperties = new AstroPartnerOrganizationUpdateProperties
         {
             OrganizationId = "lrtmbkvyvvoszhjevohkmyjhfyty",
             WorkspaceId = "xsepuskdhejaadusyxq",
             OrganizationName = "U2P_",
             WorkspaceName = "L.-y_--:",
-            SingleSignOnProperties = new AstroSingleSignOnProperties()
+            SingleSignOnProperties = new AstroSingleSignOnProperties
             {
                 SingleSignOnState = AstroSingleSignOnState.Initial,
                 EnterpriseAppId = "mklfypyujwumgwdzae",
                 SingleSignOnUri = new Uri("ymmtzkyghvinvhgnqlzwrr"),
-                AadDomains =
-                {
-                "kfbleh"
-                },
+                AadDomains = { "kfbleh" },
             },
         },
     },

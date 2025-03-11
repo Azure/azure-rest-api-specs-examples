@@ -50,27 +50,20 @@ AstroOrganizationData data = new AstroOrganizationData(new AzureLocation("mhqthl
             OrganizationId = "lskgzdmziusgrsucv",
             WorkspaceId = "vcrupxwpaba",
             WorkspaceName = "9.:06",
-            SingleSignOnProperties = new AstroSingleSignOnProperties()
+            SingleSignOnProperties = new AstroSingleSignOnProperties
             {
                 SingleSignOnState = AstroSingleSignOnState.Initial,
                 EnterpriseAppId = "mklfypyujwumgwdzae",
                 SingleSignOnUri = new Uri("ymmtzkyghvinvhgnqlzwrr"),
-                AadDomains =
-                {
-                "kfbleh"
-                },
+                AadDomains = { "kfbleh" },
             },
         },
     },
     Identity = new ManagedServiceIdentity("None")
     {
-        UserAssignedIdentities =
-        {
-        },
+        UserAssignedIdentities = { },
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<AstroOrganizationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, organizationName, data);
 AstroOrganizationResource result = lro.Value;

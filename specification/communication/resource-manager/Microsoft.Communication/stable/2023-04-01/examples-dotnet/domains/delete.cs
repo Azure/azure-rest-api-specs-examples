@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Communication;
 using Azure.ResourceManager.Communication.Models;
+using Azure.ResourceManager.Communication;
 
 // Generated from example definition: specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/domains/delete.json
 // this example is just showing the usage of "Domains_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +27,4 @@ CommunicationDomainResource communicationDomainResource = client.GetCommunicatio
 // invoke the operation
 await communicationDomainResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

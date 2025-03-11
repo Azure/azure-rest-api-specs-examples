@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Communication;
 using Azure.ResourceManager.Communication.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Communication;
 
 // Generated from example definition: specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/emailServices/listBySubscription.json
 // this example is just showing the usage of "EmailServices_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -32,4 +32,4 @@ await foreach (EmailServiceResource item in subscriptionResource.GetEmailService
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ApiManagementGatewayCollection collection = apiManagementService.GetApiManagemen
 
 // invoke the operation
 string gatewayId = "gw1";
-ApiManagementGatewayData data = new ApiManagementGatewayData()
+ApiManagementGatewayData data = new ApiManagementGatewayData
 {
     LocationData = new ResourceLocationDataContract("my location"),
     Description = "my gateway 1",

@@ -31,12 +31,9 @@ ApiManagementServiceCollection collection = resourceGroupResource.GetApiManageme
 string serviceName = "apimService1";
 ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("East US 2 EUAP"), new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium, 2), "apim@autorestsdk.com", "autorestsdk")
 {
-    Zones =
-    {
-    "1","2"
-    },
+    Zones = { "1", "2" },
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.Network/publicIPAddresses/apimazvnet"),
-    VirtualNetworkConfiguration = new VirtualNetworkConfiguration()
+    VirtualNetworkConfiguration = new VirtualNetworkConfiguration
     {
         SubnetResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rgName/providers/Microsoft.Network/virtualNetworks/apimcus/subnets/tenant"),
     },
@@ -45,7 +42,7 @@ ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

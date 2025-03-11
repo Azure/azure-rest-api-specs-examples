@@ -27,4 +27,4 @@ ServiceTagProductLinkResource serviceTagProductLink = client.GetServiceTagProduc
 // invoke the operation
 await serviceTagProductLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

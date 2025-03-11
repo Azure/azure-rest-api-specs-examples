@@ -28,4 +28,4 @@ ApiManagementNamedValueResource apiManagementNamedValue = client.GetApiManagemen
 ETag ifMatch = new ETag("*");
 await apiManagementNamedValue.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

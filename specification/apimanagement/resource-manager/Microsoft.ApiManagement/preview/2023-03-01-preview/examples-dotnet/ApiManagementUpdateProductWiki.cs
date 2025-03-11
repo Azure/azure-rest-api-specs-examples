@@ -26,15 +26,12 @@ ServiceProductWikiResource serviceProductWiki = client.GetServiceProductWikiReso
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-WikiUpdateContract wikiUpdateContract = new WikiUpdateContract()
+WikiUpdateContract wikiUpdateContract = new WikiUpdateContract
 {
-    Documents =
-    {
-    new WikiDocumentationContract()
+    Documents = {new WikiDocumentationContract
     {
     DocumentationId = "docId1",
-    }
-    },
+    }},
 };
 ServiceProductWikiResource result = await serviceProductWiki.UpdateAsync(ifMatch, wikiUpdateContract);
 

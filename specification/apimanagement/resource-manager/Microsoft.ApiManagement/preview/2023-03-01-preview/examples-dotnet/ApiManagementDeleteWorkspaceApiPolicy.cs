@@ -30,4 +30,4 @@ ServiceWorkspaceApiPolicyResource serviceWorkspaceApiPolicy = client.GetServiceW
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceApiPolicy.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

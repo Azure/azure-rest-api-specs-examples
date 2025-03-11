@@ -30,4 +30,4 @@ ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatew
 ETag ifMatch = new ETag("*");
 await apiManagementGateway.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

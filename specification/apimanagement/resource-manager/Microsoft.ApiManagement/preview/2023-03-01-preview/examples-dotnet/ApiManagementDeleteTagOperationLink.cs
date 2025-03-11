@@ -27,4 +27,4 @@ ServiceTagOperationLinkResource serviceTagOperationLink = client.GetServiceTagOp
 // invoke the operation
 await serviceTagOperationLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

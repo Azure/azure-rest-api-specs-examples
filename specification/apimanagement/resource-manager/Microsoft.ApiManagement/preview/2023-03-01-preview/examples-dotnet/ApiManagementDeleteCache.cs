@@ -28,4 +28,4 @@ ApiManagementCacheResource apiManagementCache = client.GetApiManagementCacheReso
 ETag ifMatch = new ETag("*");
 await apiManagementCache.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

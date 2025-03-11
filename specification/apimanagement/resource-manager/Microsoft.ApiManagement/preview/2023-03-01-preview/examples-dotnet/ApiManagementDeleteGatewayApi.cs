@@ -30,4 +30,4 @@ ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatew
 string apiId = "echo-api";
 await apiManagementGateway.DeleteGatewayApiAsync(apiId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

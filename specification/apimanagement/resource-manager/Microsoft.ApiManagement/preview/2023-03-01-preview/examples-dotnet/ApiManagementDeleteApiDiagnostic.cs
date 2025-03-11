@@ -29,4 +29,4 @@ ApiDiagnosticResource apiDiagnostic = client.GetApiDiagnosticResource(apiDiagnos
 ETag ifMatch = new ETag("*");
 await apiDiagnostic.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

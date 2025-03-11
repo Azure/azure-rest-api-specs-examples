@@ -27,7 +27,7 @@ WorkspaceContractCollection collection = apiManagementService.GetWorkspaceContra
 
 // invoke the operation
 string workspaceId = "wks1";
-WorkspaceContractData data = new WorkspaceContractData()
+WorkspaceContractData data = new WorkspaceContractData
 {
     DisplayName = "my workspace",
     Description = "workspace 1",

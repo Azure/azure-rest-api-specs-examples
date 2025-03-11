@@ -28,4 +28,4 @@ ServiceProductWikiResource serviceProductWiki = client.GetServiceProductWikiReso
 ETag ifMatch = new ETag("*");
 await serviceProductWiki.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

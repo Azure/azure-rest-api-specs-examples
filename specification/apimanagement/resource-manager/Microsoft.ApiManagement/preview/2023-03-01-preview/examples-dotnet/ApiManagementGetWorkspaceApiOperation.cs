@@ -15,22 +15,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceApiOperationResource created on azure
-// for more information of creating ServiceWorkspaceApiOperationResource, please refer to the document of ServiceWorkspaceApiOperationResource
+// this example assumes you already have this ServiceWorkspaceApiResource created on azure
+// for more information of creating ServiceWorkspaceApiResource, please refer to the document of ServiceWorkspaceApiResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string apiId = "57d2ef278aa04f0888cba3f3";
-string operationId = "57d2ef278aa04f0ad01d6cdc";
-ResourceIdentifier serviceWorkspaceApiOperationResourceId = ServiceWorkspaceApiOperationResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, apiId, operationId);
-ServiceWorkspaceApiOperationResource serviceWorkspaceApiOperation = client.GetServiceWorkspaceApiOperationResource(serviceWorkspaceApiOperationResourceId);
+ResourceIdentifier serviceWorkspaceApiResourceId = ServiceWorkspaceApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, apiId);
+ServiceWorkspaceApiResource serviceWorkspaceApi = client.GetServiceWorkspaceApiResource(serviceWorkspaceApiResourceId);
+
+// get the collection of this ServiceWorkspaceApiOperationResource
+ServiceWorkspaceApiOperationCollection collection = serviceWorkspaceApi.GetServiceWorkspaceApiOperations();
 
 // invoke the operation
-ServiceWorkspaceApiOperationResource result = await serviceWorkspaceApiOperation.GetAsync();
+string operationId = "57d2ef278aa04f0ad01d6cdc";
+NullableResponse<ServiceWorkspaceApiOperationResource> response = await collection.GetIfExistsAsync(operationId);
+ServiceWorkspaceApiOperationResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiOperationData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiOperationData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

@@ -31,41 +31,35 @@ ApiManagementServiceCollection collection = resourceGroupResource.GetApiManageme
 string serviceName = "apimService1";
 ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("West US"), new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium, 1), "apim@autorestsdk.com", "autorestsdk")
 {
-    HostnameConfigurations =
-    {
-    new HostnameConfiguration(HostnameType.Proxy,"gateway1.msitesting.net")
+    HostnameConfigurations = {new HostnameConfiguration(HostnameType.Proxy, "gateway1.msitesting.net")
     {
     EncodedCertificate = "****** Base 64 Encoded Certificate ************",
     CertificatePassword = "Password",
     IsDefaultSslBindingEnabled = true,
-    },new HostnameConfiguration(HostnameType.Management,"mgmt.msitesting.net")
+    }, new HostnameConfiguration(HostnameType.Management, "mgmt.msitesting.net")
     {
     EncodedCertificate = "****** Base 64 Encoded Certificate ************",
     CertificatePassword = "Password",
-    },new HostnameConfiguration(HostnameType.Portal,"portal1.msitesting.net")
+    }, new HostnameConfiguration(HostnameType.Portal, "portal1.msitesting.net")
     {
     EncodedCertificate = "****** Base 64 Encoded Certificate ************",
     CertificatePassword = "Password",
-    },new HostnameConfiguration(HostnameType.ConfigurationApi,"configuration-api.msitesting.net")
+    }, new HostnameConfiguration(HostnameType.ConfigurationApi, "configuration-api.msitesting.net")
     {
     EncodedCertificate = "****** Base 64 Encoded Certificate ************",
     CertificatePassword = "Password",
-    }
-    },
-    AdditionalLocations =
-    {
-    new AdditionalLocation(new AzureLocation("East US"),new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium,1))
+    }},
+    AdditionalLocations = {new AdditionalLocation(new AzureLocation("East US"), new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium, 1))
     {
     DisableGateway = true,
-    }
-    },
+    }},
     VirtualNetworkType = VirtualNetworkType.None,
     MinApiVersion = "2019-01-01",
     Tags =
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

@@ -29,4 +29,4 @@ AuthorizationAccessPolicyContractResource authorizationAccessPolicyContract = cl
 ETag ifMatch = new ETag("*");
 await authorizationAccessPolicyContract.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,7 +29,7 @@ ServiceWorkspaceGroupCollection collection = workspaceContract.GetServiceWorkspa
 
 // invoke the operation
 string groupId = "aadGroup";
-ApiManagementGroupCreateOrUpdateContent content = new ApiManagementGroupCreateOrUpdateContent()
+ApiManagementGroupCreateOrUpdateContent content = new ApiManagementGroupCreateOrUpdateContent
 {
     DisplayName = "NewGroup (samiraad.onmicrosoft.com)",
     Description = "new group to test",

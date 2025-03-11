@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApiManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementUpdateQuotaCounterKey.json
@@ -27,7 +26,7 @@ ApiManagementServiceResource apiManagementService = client.GetApiManagementServi
 
 // invoke the operation and iterate over the result
 string quotaCounterKey = "ba";
-QuotaCounterValueUpdateContent content = new QuotaCounterValueUpdateContent()
+QuotaCounterValueUpdateContent content = new QuotaCounterValueUpdateContent
 {
     CallsCount = 0,
     KbTransferred = 2.5630078125,
@@ -37,4 +36,4 @@ await foreach (QuotaCounterContract item in apiManagementService.UpdateQuotaByCo
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

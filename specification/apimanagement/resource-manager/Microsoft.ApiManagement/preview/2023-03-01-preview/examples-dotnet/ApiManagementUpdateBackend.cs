@@ -27,10 +27,10 @@ ApiManagementBackendResource apiManagementBackend = client.GetApiManagementBacke
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementBackendPatch patch = new ApiManagementBackendPatch()
+ApiManagementBackendPatch patch = new ApiManagementBackendPatch
 {
     Description = "description5308",
-    Tls = new BackendTlsProperties()
+    Tls = new BackendTlsProperties
     {
         ShouldValidateCertificateChain = false,
         ShouldValidateCertificateName = true,

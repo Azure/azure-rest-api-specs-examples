@@ -27,4 +27,4 @@ ApiManagementProductTagResource apiManagementProductTag = client.GetApiManagemen
 // invoke the operation
 await apiManagementProductTag.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

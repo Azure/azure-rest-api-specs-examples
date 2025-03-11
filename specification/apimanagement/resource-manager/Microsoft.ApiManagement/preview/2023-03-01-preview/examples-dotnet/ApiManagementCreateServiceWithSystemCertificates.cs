@@ -31,19 +31,16 @@ ApiManagementServiceCollection collection = resourceGroupResource.GetApiManageme
 string serviceName = "apimService1";
 ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("Central US"), new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Basic, 1), "apim@autorestsdk.com", "autorestsdk")
 {
-    Certificates =
-    {
-    new CertificateConfiguration(CertificateConfigurationStoreName.CertificateAuthority)
+    Certificates = {new CertificateConfiguration(CertificateConfigurationStoreName.CertificateAuthority)
     {
     EncodedCertificate = "*******Base64 encoded Certificate******************",
     CertificatePassword = "Password",
-    }
-    },
+    }},
     Tags =
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

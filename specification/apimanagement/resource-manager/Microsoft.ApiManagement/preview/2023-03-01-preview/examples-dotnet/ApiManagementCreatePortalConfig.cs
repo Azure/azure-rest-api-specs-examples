@@ -29,37 +29,28 @@ PortalConfigContractCollection collection = apiManagementService.GetPortalConfig
 // invoke the operation
 string portalConfigId = "default";
 ETag ifMatch = new ETag("*");
-PortalConfigContractData data = new PortalConfigContractData()
+PortalConfigContractData data = new PortalConfigContractData
 {
     EnableBasicAuth = true,
     Require = false,
-    SignupTermsOfService = new PortalConfigTermsOfServiceProperties()
+    SignupTermsOfService = new PortalConfigTermsOfServiceProperties
     {
         Text = "I agree to the service terms and conditions.",
         RequireConsent = false,
     },
-    Delegation = new PortalConfigDelegationProperties()
+    Delegation = new PortalConfigDelegationProperties
     {
         DelegateRegistration = false,
         DelegateSubscription = false,
         DelegationUri = null,
         ValidationKey = null,
     },
-    CorsAllowedOrigins =
-    {
-    "https://contoso.com"
-    },
-    Csp = new PortalConfigCspProperties()
+    CorsAllowedOrigins = { "https://contoso.com" },
+    Csp = new PortalConfigCspProperties
     {
         Mode = PortalSettingsCspMode.ReportOnly,
-        ReportUri =
-        {
-        new Uri("https://report.contoso.com")
-        },
-        AllowedSources =
-        {
-        "*.contoso.com"
-        },
+        ReportUri = { new Uri("https://report.contoso.com") },
+        AllowedSources = { "*.contoso.com" },
     },
 };
 ArmOperation<PortalConfigContractResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, portalConfigId, ifMatch, data);

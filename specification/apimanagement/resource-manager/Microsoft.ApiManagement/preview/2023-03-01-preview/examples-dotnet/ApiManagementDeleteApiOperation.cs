@@ -29,4 +29,4 @@ ApiOperationResource apiOperation = client.GetApiOperationResource(apiOperationR
 ETag ifMatch = new ETag("*");
 await apiOperation.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

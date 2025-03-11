@@ -29,4 +29,4 @@ ServiceWorkspacePolicyFragmentResource serviceWorkspacePolicyFragment = client.G
 ETag ifMatch = new ETag("*");
 await serviceWorkspacePolicyFragment.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

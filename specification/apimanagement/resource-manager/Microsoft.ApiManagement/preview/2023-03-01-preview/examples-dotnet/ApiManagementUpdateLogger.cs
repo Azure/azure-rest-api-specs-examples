@@ -26,7 +26,7 @@ ApiManagementLoggerResource apiManagementLogger = client.GetApiManagementLoggerR
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementLoggerPatch patch = new ApiManagementLoggerPatch()
+ApiManagementLoggerPatch patch = new ApiManagementLoggerPatch
 {
     LoggerType = LoggerType.AzureEventHub,
     Description = "updating description",

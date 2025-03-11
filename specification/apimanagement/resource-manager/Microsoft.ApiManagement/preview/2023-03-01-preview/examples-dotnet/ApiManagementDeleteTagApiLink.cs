@@ -27,4 +27,4 @@ ServiceTagApiLinkResource serviceTagApiLink = client.GetServiceTagApiLinkResourc
 // invoke the operation
 await serviceTagApiLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

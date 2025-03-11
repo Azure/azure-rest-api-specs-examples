@@ -29,4 +29,4 @@ ApiTagDescriptionResource apiTagDescription = client.GetApiTagDescriptionResourc
 ETag ifMatch = new ETag("*");
 await apiTagDescription.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,14 +29,14 @@ AuthorizationContractCollection collection = authorizationProviderContract.GetAu
 
 // invoke the operation
 string authorizationId = "authz1";
-AuthorizationContractData data = new AuthorizationContractData()
+AuthorizationContractData data = new AuthorizationContractData
 {
     AuthorizationType = ApiManagementAuthorizationType.OAuth2,
     OAuth2GrantType = OAuth2GrantType.AuthorizationCode,
     Parameters =
     {
     ["clientId"] = "53790925-fdd3-4b80-bc7a-4c3aaf25801d",
-    ["clientSecret"] = "xxxxxxxxxxxxxxx~xxxxxxxxx",
+    ["clientSecret"] = "xxxxxxxxxxxxxxx~xxxxxxxxx"
     },
 };
 ArmOperation<AuthorizationContractResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, authorizationId, data);

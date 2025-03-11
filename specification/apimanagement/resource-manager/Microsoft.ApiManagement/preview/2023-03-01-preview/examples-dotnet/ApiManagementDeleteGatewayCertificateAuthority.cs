@@ -28,4 +28,4 @@ ApiManagementGatewayCertificateAuthorityResource apiManagementGatewayCertificate
 ETag ifMatch = new ETag("*");
 await apiManagementGatewayCertificateAuthority.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

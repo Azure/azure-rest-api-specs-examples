@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApiManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementPerformConnectivityCheckHttpConnect.json
@@ -26,20 +25,14 @@ ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource
 ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
 
 // invoke the operation
-ConnectivityCheckContent content = new ConnectivityCheckContent(new ConnectivityCheckRequestSource("northeurope"), new ConnectivityCheckRequestDestination("https://microsoft.com", 3306))
+ConnectivityCheckContent content = new ConnectivityCheckContent(new ConnectivityCheckRequestSource("northeurope"), new ConnectivityCheckRequestDestination("https://microsoft.com", 3306L))
 {
     Protocol = ConnectivityCheckProtocol.Https,
-    ProtocolHttpConfiguration = new ConnectivityCheckRequestHttpConfiguration()
+    ProtocolHttpConfiguration = new ConnectivityCheckRequestHttpConfiguration
     {
         Method = HttpMethodConfiguration.Get,
-        ValidStatusCodes =
-        {
-        200,204
-        },
-        Headers =
-        {
-        new HttpHeaderConfiguration("Authorization","Bearer myPreciousToken")
-        },
+        ValidStatusCodes = { 200L, 204L },
+        Headers = { new HttpHeaderConfiguration("Authorization", "Bearer myPreciousToken") },
     },
 };
 ArmOperation<ConnectivityCheckResult> lro = await apiManagementService.PerformConnectivityCheckAsyncAsync(WaitUntil.Completed, content);

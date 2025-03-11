@@ -27,4 +27,4 @@ WorkspaceContractResource workspaceContract = client.GetWorkspaceContractResourc
 ETag ifMatch = new ETag("*");
 await workspaceContract.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

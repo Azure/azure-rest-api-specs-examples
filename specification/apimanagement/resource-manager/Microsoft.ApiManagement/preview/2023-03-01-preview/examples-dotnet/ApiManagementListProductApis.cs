@@ -30,4 +30,4 @@ await foreach (ProductApiData item in apiManagementProduct.GetProductApisAsync()
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

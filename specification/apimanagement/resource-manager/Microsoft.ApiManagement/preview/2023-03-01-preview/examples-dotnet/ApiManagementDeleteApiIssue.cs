@@ -29,4 +29,4 @@ ApiIssueResource apiIssue = client.GetApiIssueResource(apiIssueResourceId);
 ETag ifMatch = new ETag("*");
 await apiIssue.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

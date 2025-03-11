@@ -31,4 +31,4 @@ await foreach (RecipientEmailContract item in serviceWorkspaceNotification.GetWo
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

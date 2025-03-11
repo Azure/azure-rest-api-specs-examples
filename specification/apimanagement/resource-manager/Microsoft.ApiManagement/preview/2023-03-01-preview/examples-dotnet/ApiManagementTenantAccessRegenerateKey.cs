@@ -27,4 +27,4 @@ TenantAccessInfoResource tenantAccessInfo = client.GetTenantAccessInfoResource(t
 // invoke the operation
 await tenantAccessInfo.RegenerateSecondaryKeyForGitAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

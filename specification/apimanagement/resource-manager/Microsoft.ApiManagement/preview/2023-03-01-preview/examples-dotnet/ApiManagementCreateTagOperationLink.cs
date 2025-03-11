@@ -28,7 +28,7 @@ ServiceTagOperationLinkCollection collection = apiManagementTag.GetServiceTagOpe
 
 // invoke the operation
 string operationLinkId = "link1";
-TagOperationLinkContractData data = new TagOperationLinkContractData()
+TagOperationLinkContractData data = new TagOperationLinkContractData
 {
     OperationId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api/operations/op1",
 };

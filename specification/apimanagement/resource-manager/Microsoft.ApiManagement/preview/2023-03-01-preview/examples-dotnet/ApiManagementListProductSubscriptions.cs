@@ -31,4 +31,4 @@ await foreach (SubscriptionContractData item in apiManagementProduct.GetAllProdu
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

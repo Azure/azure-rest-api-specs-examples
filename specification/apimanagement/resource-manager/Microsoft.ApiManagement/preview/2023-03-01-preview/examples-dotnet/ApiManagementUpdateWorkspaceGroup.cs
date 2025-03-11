@@ -27,7 +27,7 @@ ServiceWorkspaceGroupResource serviceWorkspaceGroup = client.GetServiceWorkspace
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementGroupPatch patch = new ApiManagementGroupPatch()
+ApiManagementGroupPatch patch = new ApiManagementGroupPatch
 {
     DisplayName = "temp group",
 };

@@ -14,32 +14,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementGatewayResource created on azure
-// for more information of creating ApiManagementGatewayResource, please refer to the document of ApiManagementGatewayResource
+// this example assumes you already have this ApiManagementGatewayCertificateAuthorityResource created on azure
+// for more information of creating ApiManagementGatewayCertificateAuthorityResource, please refer to the document of ApiManagementGatewayCertificateAuthorityResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string gatewayId = "gw1";
-ResourceIdentifier apiManagementGatewayResourceId = ApiManagementGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayId);
-ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatewayResource(apiManagementGatewayResourceId);
-
-// get the collection of this ApiManagementGatewayCertificateAuthorityResource
-ApiManagementGatewayCertificateAuthorityCollection collection = apiManagementGateway.GetApiManagementGatewayCertificateAuthorities();
+string certificateId = "cert1";
+ResourceIdentifier apiManagementGatewayCertificateAuthorityResourceId = ApiManagementGatewayCertificateAuthorityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayId, certificateId);
+ApiManagementGatewayCertificateAuthorityResource apiManagementGatewayCertificateAuthority = client.GetApiManagementGatewayCertificateAuthorityResource(apiManagementGatewayCertificateAuthorityResourceId);
 
 // invoke the operation
-string certificateId = "cert1";
-NullableResponse<ApiManagementGatewayCertificateAuthorityResource> response = await collection.GetIfExistsAsync(certificateId);
-ApiManagementGatewayCertificateAuthorityResource result = response.HasValue ? response.Value : null;
+ApiManagementGatewayCertificateAuthorityResource result = await apiManagementGatewayCertificateAuthority.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ApiManagementGatewayCertificateAuthorityData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiManagementGatewayCertificateAuthorityData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

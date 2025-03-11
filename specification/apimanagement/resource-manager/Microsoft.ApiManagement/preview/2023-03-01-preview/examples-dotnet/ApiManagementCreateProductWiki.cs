@@ -25,18 +25,15 @@ ResourceIdentifier serviceProductWikiResourceId = ServiceProductWikiResource.Cre
 ServiceProductWikiResource serviceProductWiki = client.GetServiceProductWikiResource(serviceProductWikiResourceId);
 
 // invoke the operation
-WikiContractData data = new WikiContractData()
+WikiContractData data = new WikiContractData
 {
-    Documents =
-    {
-    new WikiDocumentationContract()
+    Documents = {new WikiDocumentationContract
     {
     DocumentationId = "docId1",
-    },new WikiDocumentationContract()
+    }, new WikiDocumentationContract
     {
     DocumentationId = "docId2",
-    }
-    },
+    }},
 };
 ArmOperation<ServiceProductWikiResource> lro = await serviceProductWiki.CreateOrUpdateAsync(WaitUntil.Completed, data);
 ServiceProductWikiResource result = lro.Value;

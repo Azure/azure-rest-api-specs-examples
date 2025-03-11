@@ -14,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceTagApiLinkResource created on azure
-// for more information of creating ServiceWorkspaceTagApiLinkResource, please refer to the document of ServiceWorkspaceTagApiLinkResource
+// this example assumes you already have this ServiceWorkspaceTagResource created on azure
+// for more information of creating ServiceWorkspaceTagResource, please refer to the document of ServiceWorkspaceTagResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string tagId = "tag1";
-string apiLinkId = "link1";
-ResourceIdentifier serviceWorkspaceTagApiLinkResourceId = ServiceWorkspaceTagApiLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId, apiLinkId);
-ServiceWorkspaceTagApiLinkResource serviceWorkspaceTagApiLink = client.GetServiceWorkspaceTagApiLinkResource(serviceWorkspaceTagApiLinkResourceId);
+ResourceIdentifier serviceWorkspaceTagResourceId = ServiceWorkspaceTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId);
+ServiceWorkspaceTagResource serviceWorkspaceTag = client.GetServiceWorkspaceTagResource(serviceWorkspaceTagResourceId);
+
+// get the collection of this ServiceWorkspaceTagApiLinkResource
+ServiceWorkspaceTagApiLinkCollection collection = serviceWorkspaceTag.GetServiceWorkspaceTagApiLinks();
 
 // invoke the operation
-ServiceWorkspaceTagApiLinkResource result = await serviceWorkspaceTagApiLink.GetAsync();
+string apiLinkId = "link1";
+NullableResponse<ServiceWorkspaceTagApiLinkResource> response = await collection.GetIfExistsAsync(apiLinkId);
+ServiceWorkspaceTagApiLinkResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-TagApiLinkContractData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    TagApiLinkContractData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

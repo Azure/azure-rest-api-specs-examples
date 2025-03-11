@@ -26,7 +26,7 @@ ResourceIdentifier apiIssueCommentResourceId = ApiIssueCommentResource.CreateRes
 ApiIssueCommentResource apiIssueComment = client.GetApiIssueCommentResource(apiIssueCommentResourceId);
 
 // invoke the operation
-ApiIssueCommentData data = new ApiIssueCommentData()
+ApiIssueCommentData data = new ApiIssueCommentData
 {
     Text = "Issue comment.",
     CreatedOn = DateTimeOffset.Parse("2018-02-01T22:21:20.467Z"),

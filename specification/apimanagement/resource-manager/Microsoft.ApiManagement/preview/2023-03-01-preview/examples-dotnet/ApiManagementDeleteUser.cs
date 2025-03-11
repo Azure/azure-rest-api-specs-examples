@@ -28,4 +28,4 @@ ApiManagementUserResource apiManagementUser = client.GetApiManagementUserResourc
 ETag ifMatch = new ETag("*");
 await apiManagementUser.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

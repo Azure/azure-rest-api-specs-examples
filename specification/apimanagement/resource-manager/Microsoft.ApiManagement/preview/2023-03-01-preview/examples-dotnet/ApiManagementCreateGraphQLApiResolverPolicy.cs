@@ -30,7 +30,7 @@ ServiceApiResolverPolicyCollection collection = resolverContract.GetServiceApiRe
 
 // invoke the operation
 PolicyName policyId = PolicyName.Policy;
-PolicyContractData data = new PolicyContractData()
+PolicyContractData data = new PolicyContractData
 {
     Value = "<http-data-source><http-request><set-method>GET</set-method><set-backend-service base-url=\"https://some.service.com\" /><set-url>/api/users</set-url></http-request></http-data-source>",
     Format = PolicyContentFormat.Xml,

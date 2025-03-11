@@ -27,4 +27,4 @@ ApiManagementPrivateEndpointConnectionResource apiManagementPrivateEndpointConne
 // invoke the operation
 await apiManagementPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

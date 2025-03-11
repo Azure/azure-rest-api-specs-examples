@@ -28,4 +28,4 @@ ApiManagementProductResource apiManagementProduct = client.GetApiManagementProdu
 string apiId = "echo-api";
 await apiManagementProduct.DeleteProductApiAsync(apiId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

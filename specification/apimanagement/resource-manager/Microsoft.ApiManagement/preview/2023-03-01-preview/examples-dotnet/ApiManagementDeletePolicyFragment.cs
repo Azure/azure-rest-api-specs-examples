@@ -28,4 +28,4 @@ PolicyFragmentContractResource policyFragmentContract = client.GetPolicyFragment
 ETag ifMatch = new ETag("*");
 await policyFragmentContract.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

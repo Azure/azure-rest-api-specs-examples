@@ -28,17 +28,14 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "tempgroup";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "apidescription5200",
     ApiType = ApiType.WebSocket,
     DisplayName = "apiname1463",
     ServiceLink = "wss://echo.websocket.org",
     Path = "newapiPath",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Wss,ApiOperationInvokableProtocol.Ws
-    },
+    Protocols = { ApiOperationInvokableProtocol.Wss, ApiOperationInvokableProtocol.Ws },
 };
 ArmOperation<ApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiId, content);
 ApiResource result = lro.Value;

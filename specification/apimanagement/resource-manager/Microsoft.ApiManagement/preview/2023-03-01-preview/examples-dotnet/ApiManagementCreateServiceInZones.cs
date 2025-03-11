@@ -31,15 +31,12 @@ ApiManagementServiceCollection collection = resourceGroupResource.GetApiManageme
 string serviceName = "apimService1";
 ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("North europe"), new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium, 2), "apim@autorestsdk.com", "autorestsdk")
 {
-    Zones =
-    {
-    "1","2"
-    },
+    Zones = { "1", "2" },
     Tags =
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

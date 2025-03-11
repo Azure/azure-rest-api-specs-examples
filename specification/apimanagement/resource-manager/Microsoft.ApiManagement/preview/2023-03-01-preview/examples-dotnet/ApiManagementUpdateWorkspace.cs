@@ -25,7 +25,7 @@ WorkspaceContractResource workspaceContract = client.GetWorkspaceContractResourc
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-WorkspaceContractData data = new WorkspaceContractData()
+WorkspaceContractData data = new WorkspaceContractData
 {
     DisplayName = "my workspace",
     Description = "workspace 1",

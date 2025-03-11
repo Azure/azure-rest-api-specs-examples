@@ -28,4 +28,4 @@ ApiSchemaResource apiSchema = client.GetApiSchemaResource(apiSchemaResourceId);
 ETag ifMatch = new ETag("*");
 await apiSchema.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

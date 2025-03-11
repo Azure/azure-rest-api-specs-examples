@@ -29,4 +29,4 @@ ApiManagementBackendResource apiManagementBackend = client.GetApiManagementBacke
 ETag ifMatch = new ETag("*");
 await apiManagementBackend.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

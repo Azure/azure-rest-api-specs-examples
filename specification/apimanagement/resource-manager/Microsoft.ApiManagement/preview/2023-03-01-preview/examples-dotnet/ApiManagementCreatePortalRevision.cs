@@ -27,7 +27,7 @@ ApiManagementPortalRevisionCollection collection = apiManagementService.GetApiMa
 
 // invoke the operation
 string portalRevisionId = "20201112101010";
-ApiManagementPortalRevisionData data = new ApiManagementPortalRevisionData()
+ApiManagementPortalRevisionData data = new ApiManagementPortalRevisionData
 {
     Description = "portal revision 1",
     IsCurrent = true,

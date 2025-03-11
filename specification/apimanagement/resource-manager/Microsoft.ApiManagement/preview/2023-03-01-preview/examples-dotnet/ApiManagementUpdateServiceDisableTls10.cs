@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApiManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementUpdateServiceDisableTls10.json
@@ -26,11 +25,11 @@ ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource
 ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
 
 // invoke the operation
-ApiManagementServicePatch patch = new ApiManagementServicePatch()
+ApiManagementServicePatch patch = new ApiManagementServicePatch
 {
     CustomProperties =
     {
-    ["Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10"] = "false",
+    ["Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10"] = "false"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await apiManagementService.UpdateAsync(WaitUntil.Completed, patch);

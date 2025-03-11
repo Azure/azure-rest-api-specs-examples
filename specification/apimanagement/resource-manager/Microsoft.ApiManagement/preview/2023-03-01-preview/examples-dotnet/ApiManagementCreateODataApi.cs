@@ -28,17 +28,14 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "tempgroup";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "apidescription5200",
     ApiType = ApiType.Odata,
     DisplayName = "apiname1463",
     ServiceLink = "https://services.odata.org/TripPinWebApiService",
     Path = "odata-api",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Http,ApiOperationInvokableProtocol.Https
-    },
+    Protocols = { ApiOperationInvokableProtocol.Http, ApiOperationInvokableProtocol.Https },
     Value = "https://services.odata.org/TripPinWebApiService/$metadata",
     Format = ContentFormat.OdataLink,
 };

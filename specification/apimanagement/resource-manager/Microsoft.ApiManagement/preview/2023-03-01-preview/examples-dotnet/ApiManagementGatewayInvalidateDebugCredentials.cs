@@ -29,4 +29,4 @@ ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatew
 // invoke the operation
 await apiManagementGateway.InvalidateDebugCredentialsAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

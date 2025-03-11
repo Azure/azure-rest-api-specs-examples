@@ -26,7 +26,7 @@ ApiManagementSubscriptionResource apiManagementSubscription = client.GetApiManag
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementSubscriptionPatch patch = new ApiManagementSubscriptionPatch()
+ApiManagementSubscriptionPatch patch = new ApiManagementSubscriptionPatch
 {
     DisplayName = "testsub",
 };

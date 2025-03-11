@@ -30,4 +30,4 @@ ApiOperationPolicyResource apiOperationPolicy = client.GetApiOperationPolicyReso
 ETag ifMatch = new ETag("*");
 await apiOperationPolicy.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

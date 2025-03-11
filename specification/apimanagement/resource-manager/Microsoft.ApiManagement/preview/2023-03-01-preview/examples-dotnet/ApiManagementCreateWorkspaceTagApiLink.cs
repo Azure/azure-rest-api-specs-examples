@@ -14,23 +14,26 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceTagApiLinkResource created on azure
-// for more information of creating ServiceWorkspaceTagApiLinkResource, please refer to the document of ServiceWorkspaceTagApiLinkResource
+// this example assumes you already have this ServiceWorkspaceTagResource created on azure
+// for more information of creating ServiceWorkspaceTagResource, please refer to the document of ServiceWorkspaceTagResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string tagId = "tag1";
-string apiLinkId = "link1";
-ResourceIdentifier serviceWorkspaceTagApiLinkResourceId = ServiceWorkspaceTagApiLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId, apiLinkId);
-ServiceWorkspaceTagApiLinkResource serviceWorkspaceTagApiLink = client.GetServiceWorkspaceTagApiLinkResource(serviceWorkspaceTagApiLinkResourceId);
+ResourceIdentifier serviceWorkspaceTagResourceId = ServiceWorkspaceTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId);
+ServiceWorkspaceTagResource serviceWorkspaceTag = client.GetServiceWorkspaceTagResource(serviceWorkspaceTagResourceId);
+
+// get the collection of this ServiceWorkspaceTagApiLinkResource
+ServiceWorkspaceTagApiLinkCollection collection = serviceWorkspaceTag.GetServiceWorkspaceTagApiLinks();
 
 // invoke the operation
-TagApiLinkContractData data = new TagApiLinkContractData()
+string apiLinkId = "link1";
+TagApiLinkContractData data = new TagApiLinkContractData
 {
     ApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api",
 };
-ArmOperation<ServiceWorkspaceTagApiLinkResource> lro = await serviceWorkspaceTagApiLink.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceWorkspaceTagApiLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiLinkId, data);
 ServiceWorkspaceTagApiLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

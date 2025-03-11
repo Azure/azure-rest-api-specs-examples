@@ -27,7 +27,7 @@ ResourceIdentifier apiManagementGatewayResourceId = ApiManagementGatewayResource
 ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatewayResource(apiManagementGatewayResourceId);
 
 // invoke the operation
-GatewayListTraceContract gatewayListTraceContract = new GatewayListTraceContract()
+GatewayListTraceContract gatewayListTraceContract = new GatewayListTraceContract
 {
     TraceId = "CrDvXXXXXXXXXXXXXVU3ZA2-1",
 };

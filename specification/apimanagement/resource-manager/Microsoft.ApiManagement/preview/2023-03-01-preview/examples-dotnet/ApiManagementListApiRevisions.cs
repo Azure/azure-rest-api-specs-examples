@@ -30,4 +30,4 @@ await foreach (ApiRevisionContract item in api.GetApiRevisionsByServiceAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

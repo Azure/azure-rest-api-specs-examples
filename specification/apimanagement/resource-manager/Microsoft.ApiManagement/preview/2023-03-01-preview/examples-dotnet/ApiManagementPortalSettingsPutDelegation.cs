@@ -24,7 +24,7 @@ ResourceIdentifier apiManagementPortalDelegationSettingResourceId = ApiManagemen
 ApiManagementPortalDelegationSettingResource apiManagementPortalDelegationSetting = client.GetApiManagementPortalDelegationSettingResource(apiManagementPortalDelegationSettingResourceId);
 
 // invoke the operation
-ApiManagementPortalDelegationSettingData data = new ApiManagementPortalDelegationSettingData()
+ApiManagementPortalDelegationSettingData data = new ApiManagementPortalDelegationSettingData
 {
     Uri = new Uri("http://contoso.com/delegation"),
     ValidationKey = "<validationKey>",

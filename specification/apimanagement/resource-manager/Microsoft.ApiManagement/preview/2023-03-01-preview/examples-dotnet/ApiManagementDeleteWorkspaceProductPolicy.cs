@@ -30,4 +30,4 @@ ServiceWorkspaceProductPolicyResource serviceWorkspaceProductPolicy = client.Get
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceProductPolicy.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

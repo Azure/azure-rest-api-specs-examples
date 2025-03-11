@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceProductResource created on azure
-// for more information of creating ServiceWorkspaceProductResource, please refer to the document of ServiceWorkspaceProductResource
+// this example assumes you already have this ServiceWorkspaceProductGroupLinkResource created on azure
+// for more information of creating ServiceWorkspaceProductGroupLinkResource, please refer to the document of ServiceWorkspaceProductGroupLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string productId = "testproduct";
-ResourceIdentifier serviceWorkspaceProductResourceId = ServiceWorkspaceProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, productId);
-ServiceWorkspaceProductResource serviceWorkspaceProduct = client.GetServiceWorkspaceProductResource(serviceWorkspaceProductResourceId);
-
-// get the collection of this ServiceWorkspaceProductGroupLinkResource
-ServiceWorkspaceProductGroupLinkCollection collection = serviceWorkspaceProduct.GetServiceWorkspaceProductGroupLinks();
+string groupLinkId = "link1";
+ResourceIdentifier serviceWorkspaceProductGroupLinkResourceId = ServiceWorkspaceProductGroupLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, productId, groupLinkId);
+ServiceWorkspaceProductGroupLinkResource serviceWorkspaceProductGroupLink = client.GetServiceWorkspaceProductGroupLinkResource(serviceWorkspaceProductGroupLinkResourceId);
 
 // invoke the operation
-string groupLinkId = "link1";
-ProductGroupLinkContractData data = new ProductGroupLinkContractData()
+ProductGroupLinkContractData data = new ProductGroupLinkContractData
 {
     GroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/groups/group1",
 };
-ArmOperation<ServiceWorkspaceProductGroupLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, groupLinkId, data);
+ArmOperation<ServiceWorkspaceProductGroupLinkResource> lro = await serviceWorkspaceProductGroupLink.UpdateAsync(WaitUntil.Completed, data);
 ServiceWorkspaceProductGroupLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -29,4 +29,4 @@ ETag ifMatch = new ETag("*");
 bool? deleteSubscriptions = true;
 await apiManagementProduct.DeleteAsync(WaitUntil.Completed, ifMatch, deleteSubscriptions: deleteSubscriptions);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

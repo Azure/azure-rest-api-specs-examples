@@ -28,14 +28,14 @@ ApiManagementLoggerCollection collection = apiManagementService.GetApiManagement
 
 // invoke the operation
 string loggerId = "eh1";
-ApiManagementLoggerData data = new ApiManagementLoggerData()
+ApiManagementLoggerData data = new ApiManagementLoggerData
 {
     LoggerType = LoggerType.AzureEventHub,
     Description = "adding a new logger",
     Credentials =
     {
     ["name"] = "hydraeventhub",
-    ["connectionString"] = "Endpoint=sb://hydraeventhub-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=********=",
+    ["connectionString"] = "Endpoint=sb://hydraeventhub-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=********="
     },
 };
 ArmOperation<ApiManagementLoggerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loggerId, data);

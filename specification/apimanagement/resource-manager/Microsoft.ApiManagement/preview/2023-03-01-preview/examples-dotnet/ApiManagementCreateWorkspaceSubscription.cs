@@ -29,7 +29,7 @@ ServiceWorkspaceSubscriptionCollection collection = workspaceContract.GetService
 
 // invoke the operation
 string sid = "testsub";
-ApiManagementSubscriptionCreateOrUpdateContent content = new ApiManagementSubscriptionCreateOrUpdateContent()
+ApiManagementSubscriptionCreateOrUpdateContent content = new ApiManagementSubscriptionCreateOrUpdateContent
 {
     OwnerId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/users/57127d485157a511ace86ae7",
     Scope = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/5600b59475ff190048060002",

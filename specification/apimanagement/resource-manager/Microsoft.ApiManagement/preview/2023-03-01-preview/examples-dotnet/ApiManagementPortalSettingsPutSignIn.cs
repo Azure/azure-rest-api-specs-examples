@@ -23,7 +23,7 @@ ResourceIdentifier apiManagementPortalSignInSettingResourceId = ApiManagementPor
 ApiManagementPortalSignInSettingResource apiManagementPortalSignInSetting = client.GetApiManagementPortalSignInSettingResource(apiManagementPortalSignInSettingResourceId);
 
 // invoke the operation
-ApiManagementPortalSignInSettingData data = new ApiManagementPortalSignInSettingData()
+ApiManagementPortalSignInSettingData data = new ApiManagementPortalSignInSettingData
 {
     IsRedirectEnabled = true,
 };

@@ -28,7 +28,7 @@ ServiceWorkspaceProductCollection collection = workspaceContract.GetServiceWorks
 
 // invoke the operation
 string productId = "testproduct";
-ApiManagementProductData data = new ApiManagementProductData()
+ApiManagementProductData data = new ApiManagementProductData
 {
     DisplayName = "Test Template ProductName 4",
 };

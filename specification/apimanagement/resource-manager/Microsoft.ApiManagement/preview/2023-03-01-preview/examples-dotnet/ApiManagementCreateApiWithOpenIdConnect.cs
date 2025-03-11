@@ -28,21 +28,18 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "tempgroup";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
-    AuthenticationSettings = new AuthenticationSettingsContract()
+    AuthenticationSettings = new AuthenticationSettingsContract
     {
-        OpenId = new OpenIdAuthenticationSettingsContract()
+        OpenId = new OpenIdAuthenticationSettingsContract
         {
             OpenIdProviderId = "testopenid",
-            BearerTokenSendingMethods =
-            {
-            BearerTokenSendingMethod.AuthorizationHeader
-            },
+            BearerTokenSendingMethods = { BearerTokenSendingMethod.AuthorizationHeader },
         },
     },
-    SubscriptionKeyParameterNames = new SubscriptionKeyParameterNamesContract()
+    SubscriptionKeyParameterNames = new SubscriptionKeyParameterNamesContract
     {
         Header = "Ocp-Apim-Subscription-Key",
         Query = "subscription-key",
@@ -50,10 +47,7 @@ ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
     DisplayName = "Swagger Petstore",
     ServiceLink = "http://petstore.swagger.io/v2",
     Path = "petstore",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Https
-    },
+    Protocols = { ApiOperationInvokableProtocol.Https },
 };
 ArmOperation<ApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiId, content);
 ApiResource result = lro.Value;

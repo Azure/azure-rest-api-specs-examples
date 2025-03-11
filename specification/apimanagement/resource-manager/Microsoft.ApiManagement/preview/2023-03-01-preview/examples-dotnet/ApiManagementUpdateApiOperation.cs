@@ -27,49 +27,30 @@ ApiOperationResource apiOperation = client.GetApiOperationResource(apiOperationR
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiOperationPatch patch = new ApiOperationPatch()
+ApiOperationPatch patch = new ApiOperationPatch
 {
-    TemplateParameters =
+    TemplateParameters = { },
+    Request = new RequestContract
     {
-    },
-    Request = new RequestContract()
-    {
-        QueryParameters =
-        {
-        new ParameterContract("param1","string")
+        QueryParameters = {new ParameterContract("param1", "string")
         {
         Description = "A sample parameter that is required and has a default value of \"sample\".",
         DefaultValue = "sample",
         IsRequired = true,
-        Values =
-        {
-        "sample"
-        },
-        }
-        },
+        Values = {"sample"},
+        }},
     },
-    Responses =
-    {
-    new ResponseContract(200)
+    Responses = {new ResponseContract(200)
     {
     Description = "Returned in all cases.",
-    Representations =
-    {
-    },
-    Headers =
-    {
-    },
-    },new ResponseContract(500)
+    Representations = {},
+    Headers = {},
+    }, new ResponseContract(500)
     {
     Description = "Server Error.",
-    Representations =
-    {
-    },
-    Headers =
-    {
-    },
-    }
-    },
+    Representations = {},
+    Headers = {},
+    }},
     DisplayName = "Retrieve resource",
     Method = "GET",
     UriTemplate = "/resource",

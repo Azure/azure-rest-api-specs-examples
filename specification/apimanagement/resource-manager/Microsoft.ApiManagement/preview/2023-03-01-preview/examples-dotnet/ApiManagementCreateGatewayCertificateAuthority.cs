@@ -14,25 +14,22 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementGatewayResource created on azure
-// for more information of creating ApiManagementGatewayResource, please refer to the document of ApiManagementGatewayResource
+// this example assumes you already have this ApiManagementGatewayCertificateAuthorityResource created on azure
+// for more information of creating ApiManagementGatewayCertificateAuthorityResource, please refer to the document of ApiManagementGatewayCertificateAuthorityResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string gatewayId = "gw1";
-ResourceIdentifier apiManagementGatewayResourceId = ApiManagementGatewayResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayId);
-ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatewayResource(apiManagementGatewayResourceId);
-
-// get the collection of this ApiManagementGatewayCertificateAuthorityResource
-ApiManagementGatewayCertificateAuthorityCollection collection = apiManagementGateway.GetApiManagementGatewayCertificateAuthorities();
+string certificateId = "cert1";
+ResourceIdentifier apiManagementGatewayCertificateAuthorityResourceId = ApiManagementGatewayCertificateAuthorityResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, gatewayId, certificateId);
+ApiManagementGatewayCertificateAuthorityResource apiManagementGatewayCertificateAuthority = client.GetApiManagementGatewayCertificateAuthorityResource(apiManagementGatewayCertificateAuthorityResourceId);
 
 // invoke the operation
-string certificateId = "cert1";
-ApiManagementGatewayCertificateAuthorityData data = new ApiManagementGatewayCertificateAuthorityData()
+ApiManagementGatewayCertificateAuthorityData data = new ApiManagementGatewayCertificateAuthorityData
 {
     IsTrusted = false,
 };
-ArmOperation<ApiManagementGatewayCertificateAuthorityResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, certificateId, data);
+ArmOperation<ApiManagementGatewayCertificateAuthorityResource> lro = await apiManagementGatewayCertificateAuthority.UpdateAsync(WaitUntil.Completed, data);
 ApiManagementGatewayCertificateAuthorityResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

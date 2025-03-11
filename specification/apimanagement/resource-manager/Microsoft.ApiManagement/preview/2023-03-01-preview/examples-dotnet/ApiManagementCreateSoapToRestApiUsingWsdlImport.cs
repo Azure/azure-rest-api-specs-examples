@@ -28,12 +28,12 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "soapApi";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Path = "currency",
     Value = "http://www.webservicex.net/CurrencyConvertor.asmx?WSDL",
     Format = ContentFormat.WsdlLink,
-    WsdlSelector = new ApiCreateOrUpdatePropertiesWsdlSelector()
+    WsdlSelector = new ApiCreateOrUpdatePropertiesWsdlSelector
     {
         WsdlServiceName = "CurrencyConvertor",
         WsdlEndpointName = "CurrencyConvertorSoap",

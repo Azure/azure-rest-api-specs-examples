@@ -28,4 +28,4 @@ ServiceWorkspaceProductApiLinkResource serviceWorkspaceProductApiLink = client.G
 // invoke the operation
 await serviceWorkspaceProductApiLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ApiManagementIdentityProviderCollection collection = apiManagementService.GetApi
 
 // invoke the operation
 IdentityProviderType identityProviderName = IdentityProviderType.Facebook;
-ApiManagementIdentityProviderCreateOrUpdateContent content = new ApiManagementIdentityProviderCreateOrUpdateContent()
+ApiManagementIdentityProviderCreateOrUpdateContent content = new ApiManagementIdentityProviderCreateOrUpdateContent
 {
     ClientId = "facebookid",
     ClientSecret = "facebookapplicationsecret",

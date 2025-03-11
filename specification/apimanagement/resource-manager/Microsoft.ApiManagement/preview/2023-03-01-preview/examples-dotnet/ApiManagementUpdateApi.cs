@@ -26,7 +26,7 @@ ApiResource api = client.GetApiResource(apiResourceId);
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiPatch patch = new ApiPatch()
+ApiPatch patch = new ApiPatch
 {
     DisplayName = "Echo API New",
     ServiceLink = "http://echoapi.cloudapp.net/api2",

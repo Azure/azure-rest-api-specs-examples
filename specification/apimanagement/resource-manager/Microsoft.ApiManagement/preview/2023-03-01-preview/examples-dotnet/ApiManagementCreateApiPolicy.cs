@@ -29,7 +29,7 @@ ApiPolicyCollection collection = api.GetApiPolicies();
 
 // invoke the operation
 PolicyName policyId = PolicyName.Policy;
-PolicyContractData data = new PolicyContractData()
+PolicyContractData data = new PolicyContractData
 {
     Value = "<policies> <inbound /> <backend>    <forward-request />  </backend>  <outbound /></policies>",
     Format = PolicyContentFormat.Xml,

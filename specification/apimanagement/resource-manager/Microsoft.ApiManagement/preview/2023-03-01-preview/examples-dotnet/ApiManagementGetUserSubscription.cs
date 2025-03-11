@@ -14,21 +14,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementUserSubscriptionResource created on azure
-// for more information of creating ApiManagementUserSubscriptionResource, please refer to the document of ApiManagementUserSubscriptionResource
+// this example assumes you already have this ApiManagementUserResource created on azure
+// for more information of creating ApiManagementUserResource, please refer to the document of ApiManagementUserResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string userId = "1";
-string sid = "5fa9b096f3df14003c070001";
-ResourceIdentifier apiManagementUserSubscriptionResourceId = ApiManagementUserSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, userId, sid);
-ApiManagementUserSubscriptionResource apiManagementUserSubscription = client.GetApiManagementUserSubscriptionResource(apiManagementUserSubscriptionResourceId);
+ResourceIdentifier apiManagementUserResourceId = ApiManagementUserResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, userId);
+ApiManagementUserResource apiManagementUser = client.GetApiManagementUserResource(apiManagementUserResourceId);
+
+// get the collection of this ApiManagementUserSubscriptionResource
+ApiManagementUserSubscriptionCollection collection = apiManagementUser.GetApiManagementUserSubscriptions();
 
 // invoke the operation
-ApiManagementUserSubscriptionResource result = await apiManagementUserSubscription.GetAsync();
+string sid = "5fa9b096f3df14003c070001";
+NullableResponse<ApiManagementUserSubscriptionResource> response = await collection.GetIfExistsAsync(sid);
+ApiManagementUserSubscriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-SubscriptionContractData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    SubscriptionContractData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

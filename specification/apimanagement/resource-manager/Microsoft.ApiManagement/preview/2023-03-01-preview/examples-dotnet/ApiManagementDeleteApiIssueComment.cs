@@ -29,4 +29,4 @@ ApiIssueCommentResource apiIssueComment = client.GetApiIssueCommentResource(apiI
 ETag ifMatch = new ETag("*");
 await apiIssueComment.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,17 +28,14 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "tempgroup";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "apidescription5200",
     ApiType = ApiType.GraphQL,
     DisplayName = "apiname1463",
     ServiceLink = "https://api.spacex.land/graphql",
     Path = "graphql-api",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Http,ApiOperationInvokableProtocol.Https
-    },
+    Protocols = { ApiOperationInvokableProtocol.Http, ApiOperationInvokableProtocol.Https },
 };
 ArmOperation<ApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiId, content);
 ApiResource result = lro.Value;

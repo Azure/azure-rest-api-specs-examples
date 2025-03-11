@@ -26,10 +26,10 @@ ResourceIdentifier authorizationContractResourceId = AuthorizationContractResour
 AuthorizationContractResource authorizationContract = client.GetAuthorizationContractResource(authorizationContractResourceId);
 
 // invoke the operation
-AuthorizationConfirmConsentCodeContent content = new AuthorizationConfirmConsentCodeContent()
+AuthorizationConfirmConsentCodeContent content = new AuthorizationConfirmConsentCodeContent
 {
     ConsentCode = "theconsentcode",
 };
 await authorizationContract.ConfirmConsentCodeAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

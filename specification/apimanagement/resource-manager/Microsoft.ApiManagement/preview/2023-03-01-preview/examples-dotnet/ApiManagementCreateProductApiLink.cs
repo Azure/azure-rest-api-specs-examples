@@ -25,7 +25,7 @@ ResourceIdentifier serviceProductApiLinkResourceId = ServiceProductApiLinkResour
 ServiceProductApiLinkResource serviceProductApiLink = client.GetServiceProductApiLinkResource(serviceProductApiLinkResourceId);
 
 // invoke the operation
-ProductApiLinkContractData data = new ProductApiLinkContractData()
+ProductApiLinkContractData data = new ProductApiLinkContractData
 {
     ApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 };

@@ -29,4 +29,4 @@ ApiManagementProductPolicyResource apiManagementProductPolicy = client.GetApiMan
 ETag ifMatch = new ETag("*");
 await apiManagementProductPolicy.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

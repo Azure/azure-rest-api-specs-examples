@@ -15,24 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspacePolicyResource created on azure
-// for more information of creating ServiceWorkspacePolicyResource, please refer to the document of ServiceWorkspacePolicyResource
+// this example assumes you already have this WorkspaceContractResource created on azure
+// for more information of creating WorkspaceContractResource, please refer to the document of WorkspaceContractResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
-PolicyName policyId = PolicyName.Policy;
-ResourceIdentifier serviceWorkspacePolicyResourceId = ServiceWorkspacePolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, policyId);
-ServiceWorkspacePolicyResource serviceWorkspacePolicy = client.GetServiceWorkspacePolicyResource(serviceWorkspacePolicyResourceId);
+ResourceIdentifier workspaceContractResourceId = WorkspaceContractResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId);
+WorkspaceContractResource workspaceContract = client.GetWorkspaceContractResource(workspaceContractResourceId);
+
+// get the collection of this ServiceWorkspacePolicyResource
+ServiceWorkspacePolicyCollection collection = workspaceContract.GetServiceWorkspacePolicies();
 
 // invoke the operation
-PolicyContractData data = new PolicyContractData()
+PolicyName policyId = PolicyName.Policy;
+PolicyContractData data = new PolicyContractData
 {
     Value = "<policies> <inbound /> <backend>    <forward-request />  </backend>  <outbound /></policies>",
     Format = PolicyContentFormat.Xml,
 };
 ETag? ifMatch = new ETag("*");
-ArmOperation<ServiceWorkspacePolicyResource> lro = await serviceWorkspacePolicy.UpdateAsync(WaitUntil.Completed, data, ifMatch: ifMatch);
+ArmOperation<ServiceWorkspacePolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyId, data, ifMatch: ifMatch);
 ServiceWorkspacePolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

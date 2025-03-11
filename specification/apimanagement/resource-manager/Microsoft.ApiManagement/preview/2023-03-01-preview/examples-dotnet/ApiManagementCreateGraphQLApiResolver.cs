@@ -28,7 +28,7 @@ ResolverContractCollection collection = api.GetResolverContracts();
 
 // invoke the operation
 string resolverId = "newResolver";
-ResolverContractData data = new ResolverContractData()
+ResolverContractData data = new ResolverContractData
 {
     DisplayName = "Query Users",
     Path = "Query/users",

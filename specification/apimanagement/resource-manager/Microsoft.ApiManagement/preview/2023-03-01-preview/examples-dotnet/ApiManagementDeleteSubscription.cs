@@ -28,4 +28,4 @@ ApiManagementSubscriptionResource apiManagementSubscription = client.GetApiManag
 ETag ifMatch = new ETag("*");
 await apiManagementSubscription.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

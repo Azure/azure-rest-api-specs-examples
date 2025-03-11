@@ -29,4 +29,4 @@ ApiIssueAttachmentResource apiIssueAttachment = client.GetApiIssueAttachmentReso
 ETag ifMatch = new ETag("*");
 await apiIssueAttachment.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

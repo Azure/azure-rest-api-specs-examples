@@ -27,7 +27,7 @@ ResolverContractResource resolverContract = client.GetResolverContractResource(r
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ResolverContractPatch patch = new ResolverContractPatch()
+ResolverContractPatch patch = new ResolverContractPatch
 {
     DisplayName = "Query AdminUsers",
     Path = "Query/adminUsers",

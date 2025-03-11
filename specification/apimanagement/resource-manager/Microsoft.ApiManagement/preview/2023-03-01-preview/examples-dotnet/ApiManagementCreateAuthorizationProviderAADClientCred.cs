@@ -25,19 +25,19 @@ ResourceIdentifier authorizationProviderContractResourceId = AuthorizationProvid
 AuthorizationProviderContractResource authorizationProviderContract = client.GetAuthorizationProviderContractResource(authorizationProviderContractResourceId);
 
 // invoke the operation
-AuthorizationProviderContractData data = new AuthorizationProviderContractData()
+AuthorizationProviderContractData data = new AuthorizationProviderContractData
 {
     DisplayName = "aadwithclientcred",
     IdentityProvider = "aad",
-    Oauth2 = new AuthorizationProviderOAuth2Settings()
+    Oauth2 = new AuthorizationProviderOAuth2Settings
     {
         RedirectUri = new Uri("https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1"),
-        GrantTypes = new AuthorizationProviderOAuth2GrantTypes()
+        GrantTypes = new AuthorizationProviderOAuth2GrantTypes
         {
             AuthorizationCode =
             {
             ["resourceUri"] = "https://graph.microsoft.com",
-            ["scopes"] = "User.Read.All Group.Read.All",
+            ["scopes"] = "User.Read.All Group.Read.All"
             },
         },
     },

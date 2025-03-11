@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApiManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementUpdateServiceToNewVnetAndAZs.json
@@ -26,33 +25,24 @@ ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource
 ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
 
 // invoke the operation
-ApiManagementServicePatch patch = new ApiManagementServicePatch()
+ApiManagementServicePatch patch = new ApiManagementServicePatch
 {
     Sku = new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium, 3),
-    Zones =
-    {
-    "1","2","3"
-    },
+    Zones = { "1", "2", "3" },
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/publicip-apim-japan-east"),
-    VirtualNetworkConfiguration = new VirtualNetworkConfiguration()
+    VirtualNetworkConfiguration = new VirtualNetworkConfiguration
     {
         SubnetResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet-apim-japaneast/subnets/apim2"),
     },
-    AdditionalLocations =
+    AdditionalLocations = {new AdditionalLocation(new AzureLocation("Australia East"), new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium, 3))
     {
-    new AdditionalLocation(new AzureLocation("Australia East"),new ApiManagementServiceSkuProperties(ApiManagementServiceSkuType.Premium,3))
-    {
-    Zones =
-    {
-    "1","2","3"
-    },
+    Zones = {"1", "2", "3"},
     PublicIPAddressId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/publicIPAddresses/apim-australia-east-publicip"),
-    VirtualNetworkConfiguration = new VirtualNetworkConfiguration()
+    VirtualNetworkConfiguration = new VirtualNetworkConfiguration
     {
     SubnetResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/apimaeavnet/subnets/default"),
     },
-    }
-    },
+    }},
     VirtualNetworkType = VirtualNetworkType.External,
 };
 ArmOperation<ApiManagementServiceResource> lro = await apiManagementService.UpdateAsync(WaitUntil.Completed, patch);

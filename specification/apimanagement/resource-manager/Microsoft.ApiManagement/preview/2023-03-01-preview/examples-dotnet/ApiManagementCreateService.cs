@@ -34,7 +34,7 @@ ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("
     Tags =
     {
     ["Name"] = "Contoso",
-    ["Test"] = "User",
+    ["Test"] = "User"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

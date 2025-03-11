@@ -29,7 +29,7 @@ ApiIssueCollection collection = api.GetApiIssues();
 
 // invoke the operation
 string issueId = "57d2ef278aa04f0ad01d6cdc";
-IssueContractData data = new IssueContractData()
+IssueContractData data = new IssueContractData
 {
     CreatedOn = DateTimeOffset.Parse("2018-02-01T22:21:20.467Z"),
     State = IssueState.Open,

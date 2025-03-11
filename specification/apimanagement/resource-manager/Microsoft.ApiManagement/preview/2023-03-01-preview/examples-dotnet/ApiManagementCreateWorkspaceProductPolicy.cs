@@ -15,24 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceProductPolicyResource created on azure
-// for more information of creating ServiceWorkspaceProductPolicyResource, please refer to the document of ServiceWorkspaceProductPolicyResource
+// this example assumes you already have this ServiceWorkspaceProductResource created on azure
+// for more information of creating ServiceWorkspaceProductResource, please refer to the document of ServiceWorkspaceProductResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string productId = "5702e97e5157a50f48dce801";
-PolicyName policyId = PolicyName.Policy;
-ResourceIdentifier serviceWorkspaceProductPolicyResourceId = ServiceWorkspaceProductPolicyResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, productId, policyId);
-ServiceWorkspaceProductPolicyResource serviceWorkspaceProductPolicy = client.GetServiceWorkspaceProductPolicyResource(serviceWorkspaceProductPolicyResourceId);
+ResourceIdentifier serviceWorkspaceProductResourceId = ServiceWorkspaceProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, productId);
+ServiceWorkspaceProductResource serviceWorkspaceProduct = client.GetServiceWorkspaceProductResource(serviceWorkspaceProductResourceId);
+
+// get the collection of this ServiceWorkspaceProductPolicyResource
+ServiceWorkspaceProductPolicyCollection collection = serviceWorkspaceProduct.GetServiceWorkspaceProductPolicies();
 
 // invoke the operation
-PolicyContractData data = new PolicyContractData()
+PolicyName policyId = PolicyName.Policy;
+PolicyContractData data = new PolicyContractData
 {
     Value = "<policies>\r\n  <inbound>\r\n    <rate-limit calls=\"{{call-count}}\" renewal-period=\"15\"></rate-limit>\r\n    <log-to-eventhub logger-id=\"16\">\r\n                      @( string.Join(\",\", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name) ) \r\n                  </log-to-eventhub>\r\n    <quota-by-key calls=\"40\" counter-key=\"cc\" renewal-period=\"3600\" increment-count=\"@(context.Request.Method == &quot;POST&quot; ? 1:2)\" />\r\n    <base />\r\n  </inbound>\r\n  <backend>\r\n    <base />\r\n  </backend>\r\n  <outbound>\r\n    <base />\r\n  </outbound>\r\n</policies>",
     Format = PolicyContentFormat.Xml,
 };
-ArmOperation<ServiceWorkspaceProductPolicyResource> lro = await serviceWorkspaceProductPolicy.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceWorkspaceProductPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyId, data);
 ServiceWorkspaceProductPolicyResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

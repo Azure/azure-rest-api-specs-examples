@@ -28,7 +28,7 @@ ApiManagementEmailTemplateCollection collection = apiManagementService.GetApiMan
 
 // invoke the operation
 TemplateName templateName = TemplateName.NewIssueNotificationMessage;
-ApiManagementEmailTemplateCreateOrUpdateContent content = new ApiManagementEmailTemplateCreateOrUpdateContent()
+ApiManagementEmailTemplateCreateOrUpdateContent content = new ApiManagementEmailTemplateCreateOrUpdateContent
 {
     Subject = "Your request for $IssueName was successfully received.",
 };

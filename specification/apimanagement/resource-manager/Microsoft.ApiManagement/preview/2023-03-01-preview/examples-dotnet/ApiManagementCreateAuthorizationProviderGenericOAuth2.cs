@@ -25,14 +25,14 @@ ResourceIdentifier authorizationProviderContractResourceId = AuthorizationProvid
 AuthorizationProviderContractResource authorizationProviderContract = client.GetAuthorizationProviderContractResource(authorizationProviderContractResourceId);
 
 // invoke the operation
-AuthorizationProviderContractData data = new AuthorizationProviderContractData()
+AuthorizationProviderContractData data = new AuthorizationProviderContractData
 {
     DisplayName = "eventbrite",
     IdentityProvider = "oauth2",
-    Oauth2 = new AuthorizationProviderOAuth2Settings()
+    Oauth2 = new AuthorizationProviderOAuth2Settings
     {
         RedirectUri = new Uri("https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1"),
-        GrantTypes = new AuthorizationProviderOAuth2GrantTypes()
+        GrantTypes = new AuthorizationProviderOAuth2GrantTypes
         {
             AuthorizationCode =
             {
@@ -41,7 +41,7 @@ AuthorizationProviderContractData data = new AuthorizationProviderContractData()
             ["clientSecret"] = "xxxxxxxxxxxxxxxxxxxxxxxx",
             ["refreshUrl"] = "https://www.eventbrite.com/oauth/token",
             ["scopes"] = null,
-            ["tokenUrl"] = "https://www.eventbrite.com/oauth/token",
+            ["tokenUrl"] = "https://www.eventbrite.com/oauth/token"
             },
         },
     },

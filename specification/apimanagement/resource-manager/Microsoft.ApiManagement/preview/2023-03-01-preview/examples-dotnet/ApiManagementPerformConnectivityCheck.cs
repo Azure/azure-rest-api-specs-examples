@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApiManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementPerformConnectivityCheck.json
@@ -26,7 +25,7 @@ ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource
 ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
 
 // invoke the operation
-ConnectivityCheckContent content = new ConnectivityCheckContent(new ConnectivityCheckRequestSource("northeurope"), new ConnectivityCheckRequestDestination("8.8.8.8", 53))
+ConnectivityCheckContent content = new ConnectivityCheckContent(new ConnectivityCheckRequestSource("northeurope"), new ConnectivityCheckRequestDestination("8.8.8.8", 53L))
 {
     PreferredIPVersion = PreferredIPVersion.IPv4,
 };

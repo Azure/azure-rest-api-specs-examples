@@ -28,18 +28,18 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "tempgroup";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "apidescription5200",
-    AuthenticationSettings = new AuthenticationSettingsContract()
+    AuthenticationSettings = new AuthenticationSettingsContract
     {
-        OAuth2 = new OAuth2AuthenticationSettingsContract()
+        OAuth2 = new OAuth2AuthenticationSettingsContract
         {
             AuthorizationServerId = "authorizationServerId2283",
             Scope = "oauth2scope2580",
         },
     },
-    SubscriptionKeyParameterNames = new SubscriptionKeyParameterNamesContract()
+    SubscriptionKeyParameterNames = new SubscriptionKeyParameterNamesContract
     {
         Header = "header4520",
         Query = "query3037",
@@ -47,10 +47,7 @@ ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
     DisplayName = "apiname1463",
     ServiceLink = "http://newechoapi.cloudapp.net/api",
     Path = "newapiPath",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Https,ApiOperationInvokableProtocol.Http
-    },
+    Protocols = { ApiOperationInvokableProtocol.Https, ApiOperationInvokableProtocol.Http },
 };
 ArmOperation<ApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiId, content);
 ApiResource result = lro.Value;

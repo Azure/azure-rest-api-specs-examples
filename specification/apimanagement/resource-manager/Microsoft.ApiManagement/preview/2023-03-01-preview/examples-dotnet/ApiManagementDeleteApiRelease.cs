@@ -28,4 +28,4 @@ ApiReleaseResource apiRelease = client.GetApiReleaseResource(apiReleaseResourceI
 ETag ifMatch = new ETag("*");
 await apiRelease.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "echoapiv3";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "Create Echo API into a new Version using Existing Version Set and Copy all Operations.",
     ApiVersion = "v4",
@@ -39,10 +39,7 @@ ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
     DisplayName = "Echo API2",
     ServiceLink = "http://echoapi.cloudapp.net/api",
     Path = "echo2",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Http,ApiOperationInvokableProtocol.Https
-    },
+    Protocols = { ApiOperationInvokableProtocol.Http, ApiOperationInvokableProtocol.Https },
 };
 ArmOperation<ApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiId, content);
 ApiResource result = lro.Value;

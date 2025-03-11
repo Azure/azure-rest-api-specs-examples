@@ -27,4 +27,4 @@ ServiceProductApiLinkResource serviceProductApiLink = client.GetServiceProductAp
 // invoke the operation
 await serviceProductApiLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

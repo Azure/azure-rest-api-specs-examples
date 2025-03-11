@@ -28,24 +28,18 @@ ApiManagementBackendCollection collection = apiManagementService.GetApiManagemen
 
 // invoke the operation
 string backendId = "sfbackend";
-ApiManagementBackendData data = new ApiManagementBackendData()
+ApiManagementBackendData data = new ApiManagementBackendData
 {
     Description = "Service Fabric Test App 1",
-    BackendServiceFabricCluster = new BackendServiceFabricClusterProperties(new string[]
-{
-"https://somecluster.com"
-})
+    BackendServiceFabricCluster = new BackendServiceFabricClusterProperties(new string[] { "https://somecluster.com" })
     {
         ClientCertificateId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/cert1",
         MaxPartitionResolutionRetries = 5,
-        ServerX509Names =
-        {
-        new X509CertificateName()
+        ServerX509Names = {new X509CertificateName
         {
         Name = "ServerCommonName1",
         IssuerCertificateThumbprint = "IssuerCertificateThumbprint1",
-        }
-        },
+        }},
     },
     Uri = new Uri("fabric:/mytestapp/mytestservice"),
     Protocol = BackendProtocol.Http,

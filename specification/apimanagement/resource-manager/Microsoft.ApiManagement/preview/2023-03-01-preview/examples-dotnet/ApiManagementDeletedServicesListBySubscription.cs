@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.ApiManagement.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
@@ -31,4 +32,4 @@ await foreach (ApiManagementDeletedServiceResource item in subscriptionResource.
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

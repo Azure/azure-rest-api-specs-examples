@@ -29,7 +29,7 @@ TenantAccessInfoCollection collection = apiManagementService.GetTenantAccessInfo
 // invoke the operation
 AccessName accessName = AccessName.TenantAccess;
 ETag ifMatch = new ETag("*");
-TenantAccessInfoCreateOrUpdateContent content = new TenantAccessInfoCreateOrUpdateContent()
+TenantAccessInfoCreateOrUpdateContent content = new TenantAccessInfoCreateOrUpdateContent
 {
     IsDirectAccessEnabled = true,
 };

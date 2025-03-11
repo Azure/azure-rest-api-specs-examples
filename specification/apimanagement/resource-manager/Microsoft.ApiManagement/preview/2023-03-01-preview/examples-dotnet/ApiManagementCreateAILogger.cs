@@ -28,13 +28,13 @@ ApiManagementLoggerCollection collection = apiManagementService.GetApiManagement
 
 // invoke the operation
 string loggerId = "loggerId";
-ApiManagementLoggerData data = new ApiManagementLoggerData()
+ApiManagementLoggerData data = new ApiManagementLoggerData
 {
     LoggerType = LoggerType.ApplicationInsights,
     Description = "adding a new logger",
     Credentials =
     {
-    ["instrumentationKey"] = "11................a1",
+    ["instrumentationKey"] = "11................a1"
     },
 };
 ArmOperation<ApiManagementLoggerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, loggerId, data);

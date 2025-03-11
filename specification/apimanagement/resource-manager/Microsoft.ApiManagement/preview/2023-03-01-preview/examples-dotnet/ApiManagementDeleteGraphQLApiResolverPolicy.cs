@@ -30,4 +30,4 @@ ServiceApiResolverPolicyResource serviceApiResolverPolicy = client.GetServiceApi
 ETag ifMatch = new ETag("*");
 await serviceApiResolverPolicy.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

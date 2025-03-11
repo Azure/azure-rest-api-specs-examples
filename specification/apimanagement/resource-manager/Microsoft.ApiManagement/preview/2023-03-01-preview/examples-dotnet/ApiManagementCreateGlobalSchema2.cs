@@ -16,51 +16,48 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementServiceResource created on azure
-// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
+// this example assumes you already have this ApiManagementGlobalSchemaResource created on azure
+// for more information of creating ApiManagementGlobalSchemaResource, please refer to the document of ApiManagementGlobalSchemaResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
-
-// get the collection of this ApiManagementGlobalSchemaResource
-ApiManagementGlobalSchemaCollection collection = apiManagementService.GetApiManagementGlobalSchemas();
+string schemaId = "schema1";
+ResourceIdentifier apiManagementGlobalSchemaResourceId = ApiManagementGlobalSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, schemaId);
+ApiManagementGlobalSchemaResource apiManagementGlobalSchema = client.GetApiManagementGlobalSchemaResource(apiManagementGlobalSchemaResourceId);
 
 // invoke the operation
-string schemaId = "schema1";
-ApiManagementGlobalSchemaData data = new ApiManagementGlobalSchemaData()
+ApiManagementGlobalSchemaData data = new ApiManagementGlobalSchemaData
 {
     SchemaType = ApiSchemaType.Json,
     Description = "sample schema description",
-    Document = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Document = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["type"] = "object",
         ["$id"] = "https://example.com/person.schema.json",
         ["$schema"] = "https://json-schema.org/draft/2020-12/schema",
-        ["properties"] = new Dictionary<string, object>()
+        ["properties"] = new
         {
-            ["age"] = new Dictionary<string, object>()
+            age = new
             {
-                ["type"] = "integer",
-                ["description"] = "Age in years which must be equal to or greater than zero.",
-                ["minimum"] = "0"
+                type = "integer",
+                description = "Age in years which must be equal to or greater than zero.",
+                minimum = "0",
             },
-            ["firstName"] = new Dictionary<string, object>()
+            firstName = new
             {
-                ["type"] = "string",
-                ["description"] = "The person's first name."
+                type = "string",
+                description = "The person's first name.",
             },
-            ["lastName"] = new Dictionary<string, object>()
+            lastName = new
             {
-                ["type"] = "string",
-                ["description"] = "The person's last name."
-            }
+                type = "string",
+                description = "The person's last name.",
+            },
         },
         ["title"] = "Person"
     }),
 };
-ArmOperation<ApiManagementGlobalSchemaResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, schemaId, data);
+ArmOperation<ApiManagementGlobalSchemaResource> lro = await apiManagementGlobalSchema.UpdateAsync(WaitUntil.Completed, data);
 ApiManagementGlobalSchemaResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

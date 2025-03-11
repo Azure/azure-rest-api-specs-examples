@@ -23,7 +23,7 @@ ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceI
 SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
 
 // invoke the operation
-ConfidentialLedgerNameAvailabilityContent content = new ConfidentialLedgerNameAvailabilityContent()
+ConfidentialLedgerNameAvailabilityContent content = new ConfidentialLedgerNameAvailabilityContent
 {
     Name = "sample-name",
     ResourceType = new ResourceType("Microsoft.ConfidentialLedger/ledgers"),

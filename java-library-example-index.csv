@@ -5117,3 +5117,4 @@ id,name,language,tag,package,version,date_epoch,date
 5116,"Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.5",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0-beta.5,Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.5,1741686648,03/11/2025
 5117,"Azure.ResourceManager.ScVmm,1.0.0-beta.6",dotnet,Azure.ResourceManager.ScVmm_1.0.0-beta.6,Azure.ResourceManager.ScVmm,1.0.0-beta.6,1741686336,03/11/2025
 5118,"Azure.ResourceManager.Astro,1.0.0-beta.2",dotnet,Azure.ResourceManager.Astro_1.0.0-beta.2,Azure.ResourceManager.Astro,1.0.0-beta.2,1741686336,03/11/2025
+5119,"Azure.ResourceManager.ApiManagement,1.3.0-beta.2",dotnet,Azure.ResourceManager.ApiManagement_1.3.0-beta.2,Azure.ResourceManager.ApiManagement,1.3.0-beta.2,1741686218,03/11/2025

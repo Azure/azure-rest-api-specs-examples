@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ScVmm.Models;
 using Azure.ResourceManager.ScVmm;
 
@@ -27,4 +26,4 @@ ScVmmServerResource scVmmServer = client.GetScVmmServerResource(scVmmServerResou
 // invoke the operation
 await scVmmServer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

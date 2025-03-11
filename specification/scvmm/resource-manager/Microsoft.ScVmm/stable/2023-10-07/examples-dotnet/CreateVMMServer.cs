@@ -29,12 +29,12 @@ ScVmmServerCollection collection = resourceGroupResource.GetScVmmServers();
 
 // invoke the operation
 string vmmServerName = "ContosoVMMServer";
-ScVmmServerData data = new ScVmmServerData(new AzureLocation("East US"), new ExtendedLocation()
+ScVmmServerData data = new ScVmmServerData(new AzureLocation("East US"), new ExtendedLocation
 {
     Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso",
 }, "VMM.contoso.com")
 {
-    Credentials = new VmmCredential()
+    Credentials = new VmmCredential
     {
         Username = "testuser",
         Password = "password",

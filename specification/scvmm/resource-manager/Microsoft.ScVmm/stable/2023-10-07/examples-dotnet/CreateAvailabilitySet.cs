@@ -28,7 +28,7 @@ ScVmmAvailabilitySetCollection collection = resourceGroupResource.GetScVmmAvaila
 
 // invoke the operation
 string availabilitySetResourceName = "HRAvailabilitySet";
-ScVmmAvailabilitySetData data = new ScVmmAvailabilitySetData(new AzureLocation("East US"), new ExtendedLocation()
+ScVmmAvailabilitySetData data = new ScVmmAvailabilitySetData(new AzureLocation("East US"), new ExtendedLocation
 {
     Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso",
 })

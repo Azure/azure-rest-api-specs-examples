@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ScVmm.Models;
 using Azure.ResourceManager.ScVmm;
 
@@ -25,12 +24,12 @@ ResourceIdentifier scVmmVirtualNetworkResourceId = ScVmmVirtualNetworkResource.C
 ScVmmVirtualNetworkResource scVmmVirtualNetwork = client.GetScVmmVirtualNetworkResource(scVmmVirtualNetworkResourceId);
 
 // invoke the operation
-ScVmmResourcePatch patch = new ScVmmResourcePatch()
+ScVmmResourcePatch patch = new ScVmmResourcePatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<ScVmmVirtualNetworkResource> lro = await scVmmVirtualNetwork.UpdateAsync(WaitUntil.Completed, patch);

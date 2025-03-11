@@ -27,4 +27,4 @@ ScVmmInventoryItemResource scVmmInventoryItem = client.GetScVmmInventoryItemReso
 // invoke the operation
 await scVmmInventoryItem.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

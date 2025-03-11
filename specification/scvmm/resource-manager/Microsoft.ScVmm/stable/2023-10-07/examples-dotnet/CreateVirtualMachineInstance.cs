@@ -23,17 +23,17 @@ ResourceIdentifier scVmmVirtualMachineInstanceResourceId = ScVmmVirtualMachineIn
 ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVmmVirtualMachineInstanceResource(scVmmVirtualMachineInstanceResourceId);
 
 // invoke the operation
-ScVmmVirtualMachineInstanceData data = new ScVmmVirtualMachineInstanceData(new ExtendedLocation()
+ScVmmVirtualMachineInstanceData data = new ScVmmVirtualMachineInstanceData(new ExtendedLocation
 {
     Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso",
 })
 {
-    HardwareProfile = new ScVmmHardwareProfile()
+    HardwareProfile = new ScVmmHardwareProfile
     {
         MemoryMB = 4196,
         CpuCount = 4,
     },
-    InfrastructureProfile = new ScVmmInfrastructureProfile()
+    InfrastructureProfile = new ScVmmInfrastructureProfile
     {
         VmmServerId = new ResourceIdentifier("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/VMMServers/ContosoVMMServer"),
         CloudId = new ResourceIdentifier("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.SCVMM/Clouds/HRCloud"),

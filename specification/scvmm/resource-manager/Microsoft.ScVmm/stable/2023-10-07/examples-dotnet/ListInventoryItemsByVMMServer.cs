@@ -8,7 +8,7 @@ using Azure.ResourceManager.ScVmm.Models;
 using Azure.ResourceManager.ScVmm;
 
 // Generated from example definition: specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/examples/ListInventoryItemsByVMMServer.json
-// this example is just showing the usage of "InventoryItems_ListByVMMServer" operation, for the dependent resources, they will have to be created separately.
+// this example is just showing the usage of "InventoryItems_ListByVmmServer" operation, for the dependent resources, they will have to be created separately.
 
 // get your azure access token, for more details of how Azure SDK get your access token, please refer to https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication?tabs=command-line
 TokenCredential cred = new DefaultAzureCredential();
@@ -36,4 +36,4 @@ await foreach (ScVmmInventoryItemResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

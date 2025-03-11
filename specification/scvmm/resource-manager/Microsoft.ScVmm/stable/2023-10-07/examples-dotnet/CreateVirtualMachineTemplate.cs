@@ -28,7 +28,7 @@ ScVmmVirtualMachineTemplateCollection collection = resourceGroupResource.GetScVm
 
 // invoke the operation
 string virtualMachineTemplateName = "HRVirtualMachineTemplate";
-ScVmmVirtualMachineTemplateData data = new ScVmmVirtualMachineTemplateData(new AzureLocation("East US"), new ExtendedLocation()
+ScVmmVirtualMachineTemplateData data = new ScVmmVirtualMachineTemplateData(new AzureLocation("East US"), new ExtendedLocation
 {
     Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso",
 })

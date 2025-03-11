@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Resources;
-using Azure.ResourceManager.ScVmm.Models;
 using Azure.ResourceManager.ScVmm;
 
 // Generated from example definition: specification/scvmm/resource-manager/Microsoft.ScVmm/stable/2023-10-07/examples/ListCloudsBySubscription.json
@@ -32,4 +31,4 @@ await foreach (ScVmmCloudResource item in subscriptionResource.GetScVmmCloudsAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

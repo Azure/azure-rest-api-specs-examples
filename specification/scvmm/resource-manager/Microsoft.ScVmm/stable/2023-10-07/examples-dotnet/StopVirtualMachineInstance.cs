@@ -23,10 +23,10 @@ ResourceIdentifier scVmmVirtualMachineInstanceResourceId = ScVmmVirtualMachineIn
 ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVmmVirtualMachineInstanceResource(scVmmVirtualMachineInstanceResourceId);
 
 // invoke the operation
-StopVirtualMachineContent content = new StopVirtualMachineContent()
+StopVirtualMachineContent content = new StopVirtualMachineContent
 {
     SkipShutdown = SkipShutdown.True,
 };
 await scVmmVirtualMachineInstance.StopAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

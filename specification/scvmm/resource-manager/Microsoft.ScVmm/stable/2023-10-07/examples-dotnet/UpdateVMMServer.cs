@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ScVmm.Models;
 using Azure.ResourceManager.ScVmm;
 
@@ -25,12 +24,12 @@ ResourceIdentifier scVmmServerResourceId = ScVmmServerResource.CreateResourceIde
 ScVmmServerResource scVmmServer = client.GetScVmmServerResource(scVmmServerResourceId);
 
 // invoke the operation
-ScVmmResourcePatch patch = new ScVmmResourcePatch()
+ScVmmResourcePatch patch = new ScVmmResourcePatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<ScVmmServerResource> lro = await scVmmServer.UpdateAsync(WaitUntil.Completed, patch);

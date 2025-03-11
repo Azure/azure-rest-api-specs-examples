@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/FavoriteDelete.json
@@ -28,4 +27,4 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 string favoriteId = "deadb33f-5e0d-4064-8ebb-1a4ed0313eb2";
 await applicationInsightsComponent.DeleteFavoriteAsync(favoriteId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

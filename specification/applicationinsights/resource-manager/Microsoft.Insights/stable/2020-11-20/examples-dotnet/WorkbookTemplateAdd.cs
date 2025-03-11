@@ -33,46 +33,47 @@ ApplicationInsightsWorkbookTemplateData data = new ApplicationInsightsWorkbookTe
 {
     Priority = 1,
     Author = "Contoso",
-    TemplateData = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    TemplateData = BinaryData.FromObjectAsJson(new Dictionary<string, object>
     {
         ["$schema"] = "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
-        ["items"] = new object[] { new Dictionary<string, object>()
-        {
-        ["name"] = "text - 2",
-        ["type"] = "1",
-        ["content"] = new Dictionary<string, object>()
-        {
-        ["json"] = "## New workbook\n---\n\nWelcome to your new workbook.  This area will display text formatted as markdown.\n\n\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections."}}, new Dictionary<string, object>()
-        {
-        ["name"] = "query - 2",
-        ["type"] = "3",
-        ["content"] = new Dictionary<string, object>()
-        {
-        ["exportToExcelOptions"] = "visible",
-        ["query"] = "union withsource=TableName *\n| summarize Count=count() by TableName\n| render barchart",
-        ["queryType"] = "0",
-        ["resourceType"] = "microsoft.operationalinsights/workspaces",
-        ["size"] = "1",
-        ["version"] = "KqlItem/1.0"}} },
-        ["styleSettings"] = new Dictionary<string, object>()
-        {
-        },
+        ["items"] = new object[]
+{
+new
+{
+name = "text - 2",
+type = "1",
+content = new
+{
+json = "## New workbook\n---\n\nWelcome to your new workbook.  This area will display text formatted as markdown.\n\n\nWe've included a basic analytics query to get you started. Use the `Edit` button below each section to configure it or add more sections.",
+},
+},
+new
+{
+name = "query - 2",
+type = "3",
+content = new
+{
+exportToExcelOptions = "visible",
+query = "union withsource=TableName *\n| summarize Count=count() by TableName\n| render barchart",
+queryType = "0",
+resourceType = "microsoft.operationalinsights/workspaces",
+size = "1",
+version = "KqlItem/1.0",
+},
+}
+},
+        ["styleSettings"] = new object(),
         ["version"] = "Notebook/1.0"
     }),
-    Galleries =
-    {
-    new WorkbookTemplateGallery()
+    Galleries = {new WorkbookTemplateGallery
     {
     Name = "Simple Template",
     Category = "Failures",
     WorkbookType = "tsg",
     Order = 100,
     ResourceType = "microsoft.insights/components",
-    }
-    },
-    Tags =
-    {
-    },
+    }},
+    Tags = { },
 };
 ArmOperation<ApplicationInsightsWorkbookTemplateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);
 ApplicationInsightsWorkbookTemplateResource result = lro.Value;

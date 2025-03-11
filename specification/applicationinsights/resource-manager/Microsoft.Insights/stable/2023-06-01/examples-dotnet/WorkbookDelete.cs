@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2023-06-01/examples/WorkbookDelete.json
@@ -27,4 +26,4 @@ ApplicationInsightsWorkbookResource applicationInsightsWorkbook = client.GetAppl
 // invoke the operation
 await applicationInsightsWorkbook.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

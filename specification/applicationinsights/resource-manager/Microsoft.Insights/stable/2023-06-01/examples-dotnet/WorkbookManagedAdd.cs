@@ -41,7 +41,7 @@ ApplicationInsightsWorkbookData data = new ApplicationInsightsWorkbookData(new A
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myid")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myid")] = new UserAssignedIdentity()
         },
     },
     Kind = WorkbookSharedTypeKind.Shared,

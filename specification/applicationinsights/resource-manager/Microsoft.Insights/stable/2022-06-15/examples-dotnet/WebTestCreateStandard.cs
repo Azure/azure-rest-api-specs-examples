@@ -38,32 +38,26 @@ ApplicationInsightsWebTestData data = new ApplicationInsightsWebTestData(new Azu
     TimeoutInSeconds = 120,
     WebTestKind = WebTestKind.Standard,
     IsRetryEnabled = true,
-    Locations =
-    {
-    new WebTestGeolocation()
+    Locations = {new WebTestGeolocation
     {
     Location = new AzureLocation("us-fl-mia-edge"),
-    }
-    },
-    Request = new WebTestRequest()
+    }},
+    Request = new WebTestRequest
     {
         RequestUri = new Uri("https://bing.com"),
-        Headers =
-        {
-        new WebTestRequestHeaderField()
+        Headers = {new WebTestRequestHeaderField
         {
         HeaderFieldName = "Content-Language",
         HeaderFieldValue = "de-DE",
-        },new WebTestRequestHeaderField()
+        }, new WebTestRequestHeaderField
         {
         HeaderFieldName = "Accept-Language",
         HeaderFieldValue = "de-DE",
-        }
-        },
+        }},
         HttpVerb = "POST",
         RequestBody = "SGVsbG8gd29ybGQ=",
     },
-    ValidationRules = new WebTestValidationRules()
+    ValidationRules = new WebTestValidationRules
     {
         CheckSsl = true,
         SslCertRemainingLifetimeCheck = 100,

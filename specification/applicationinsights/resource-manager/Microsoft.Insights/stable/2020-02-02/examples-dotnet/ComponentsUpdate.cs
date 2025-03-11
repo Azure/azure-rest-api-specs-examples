@@ -33,7 +33,7 @@ ApplicationInsightsComponentData data = new ApplicationInsightsComponentData(new
     Tags =
     {
     ["ApplicationGatewayType"] = "Internal-Only",
-    ["BillingEntity"] = "Self",
+    ["BillingEntity"] = "Self"
     },
 };
 ArmOperation<ApplicationInsightsComponentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);

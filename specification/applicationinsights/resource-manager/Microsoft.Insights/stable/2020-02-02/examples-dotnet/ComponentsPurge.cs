@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsPurge.json
@@ -27,11 +26,11 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 // invoke the operation
 ComponentPurgeContent content = new ComponentPurgeContent("Heartbeat", new ComponentPurgeFilters[]
 {
-new ComponentPurgeFilters()
+new ComponentPurgeFilters
 {
 Column = "TimeGenerated",
 Operator = ">",
-Value = BinaryData.FromString("\"2017-09-01T00:00:00\""),
+Value = BinaryData.FromObjectAsJson("2017-09-01T00:00:00"),
 }
 });
 ComponentPurgeResult result = await applicationInsightsComponent.PurgeAsync(content);

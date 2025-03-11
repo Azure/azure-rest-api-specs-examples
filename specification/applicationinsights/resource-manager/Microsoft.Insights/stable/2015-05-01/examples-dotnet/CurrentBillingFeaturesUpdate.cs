@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/CurrentBillingFeaturesUpdate.json
@@ -25,17 +24,14 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation
-ApplicationInsightsComponentBillingFeatures billingFeaturesProperties = new ApplicationInsightsComponentBillingFeatures()
+ApplicationInsightsComponentBillingFeatures billingFeaturesProperties = new ApplicationInsightsComponentBillingFeatures
 {
-    DataVolumeCap = new ApplicationInsightsComponentDataVolumeCap()
+    DataVolumeCap = new ApplicationInsightsComponentDataVolumeCap
     {
         Cap = 100,
         IsStopSendNotificationWhenHitCap = true,
     },
-    CurrentBillingFeatures =
-    {
-    "Basic","Application Insights Enterprise"
-    },
+    CurrentBillingFeatures = { "Basic", "Application Insights Enterprise" },
 };
 ApplicationInsightsComponentBillingFeatures result = await applicationInsightsComponent.UpdateComponentCurrentBillingFeatureAsync(billingFeaturesProperties);
 

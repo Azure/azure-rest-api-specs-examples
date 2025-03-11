@@ -26,4 +26,4 @@ ApplicationInsightsWorkbookTemplateResource applicationInsightsWorkbookTemplate 
 // invoke the operation
 await applicationInsightsWorkbookTemplate.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

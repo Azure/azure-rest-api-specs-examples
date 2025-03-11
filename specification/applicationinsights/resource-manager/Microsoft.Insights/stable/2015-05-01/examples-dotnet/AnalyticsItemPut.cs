@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnalyticsItemPut.json
@@ -26,7 +25,7 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 
 // invoke the operation
 AnalyticsItemScopePath scopePath = AnalyticsItemScopePath.AnalyticsItems;
-ApplicationInsightsComponentAnalyticsItem itemProperties = new ApplicationInsightsComponentAnalyticsItem()
+ApplicationInsightsComponentAnalyticsItem itemProperties = new ApplicationInsightsComponentAnalyticsItem
 {
     Name = "Exceptions - New in the last 24 hours",
     Content = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n",

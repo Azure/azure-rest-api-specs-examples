@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/examples/ComponentsUpdateTagsOnly.json
@@ -25,7 +24,7 @@ ResourceIdentifier applicationInsightsComponentResourceId = ApplicationInsightsC
 ApplicationInsightsComponentResource applicationInsightsComponent = client.GetApplicationInsightsComponentResource(applicationInsightsComponentResourceId);
 
 // invoke the operation
-WebTestComponentTag componentTags = new WebTestComponentTag()
+WebTestComponentTag componentTags = new WebTestComponentTag
 {
     Tags =
     {
@@ -33,7 +32,7 @@ WebTestComponentTag componentTags = new WebTestComponentTag()
     ["BillingEntity"] = "Self",
     ["Color"] = "AzureBlue",
     ["CustomField_01"] = "Custom text in some random field named randomly",
-    ["NodeType"] = "Edge",
+    ["NodeType"] = "Edge"
     },
 };
 ApplicationInsightsComponentResource result = await applicationInsightsComponent.UpdateAsync(componentTags);

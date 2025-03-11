@@ -39,7 +39,7 @@ ApplicationInsightsWorkbookData data = new ApplicationInsightsWorkbookData(new A
     Tags =
     {
     ["TagSample01"] = "sample01",
-    ["TagSample02"] = "sample02",
+    ["TagSample02"] = "sample02"
     },
 };
 string sourceId = "/subscriptions/6b643656-33eb-422f-aee8-3ac145d124af/resourcegroups/my-resource-group";

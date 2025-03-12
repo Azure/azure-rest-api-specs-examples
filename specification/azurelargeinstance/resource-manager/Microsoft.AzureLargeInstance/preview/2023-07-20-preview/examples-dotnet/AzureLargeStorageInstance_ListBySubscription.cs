@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.LargeInstance;
-using Azure.ResourceManager.LargeInstance.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.LargeInstance;
 
 // Generated from example definition: specification/azurelargeinstance/resource-manager/Microsoft.AzureLargeInstance/preview/2023-07-20-preview/examples/AzureLargeStorageInstance_ListBySubscription.json
 // this example is just showing the usage of "AzureLargeStorageInstance_ListBySubscription" operation, for the dependent resources, they will have to be created separately.
@@ -31,4 +31,4 @@ await foreach (LargeStorageInstanceResource item in subscriptionResource.GetLarg
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

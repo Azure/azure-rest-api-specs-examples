@@ -25,7 +25,7 @@ ResourceIdentifier appPlatformApiPortalCustomDomainResourceId = AppPlatformApiPo
 AppPlatformApiPortalCustomDomainResource appPlatformApiPortalCustomDomain = client.GetAppPlatformApiPortalCustomDomainResource(appPlatformApiPortalCustomDomainResourceId);
 
 // invoke the operation
-AppPlatformApiPortalCustomDomainData data = new AppPlatformApiPortalCustomDomainData()
+AppPlatformApiPortalCustomDomainData data = new AppPlatformApiPortalCustomDomainData
 {
     ApiPortalCustomDomainThumbprint = "*",
 };

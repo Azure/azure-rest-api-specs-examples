@@ -27,29 +27,23 @@ ResourceIdentifier appPlatformBuilderResourceId = AppPlatformBuilderResource.Cre
 AppPlatformBuilderResource appPlatformBuilder = client.GetAppPlatformBuilderResource(appPlatformBuilderResourceId);
 
 // invoke the operation
-AppPlatformBuilderData data = new AppPlatformBuilderData()
+AppPlatformBuilderData data = new AppPlatformBuilderData
 {
-    Properties = new AppPlatformBuilderProperties()
+    Properties = new AppPlatformBuilderProperties
     {
-        Stack = new AppPlatformClusterStackProperties()
+        Stack = new AppPlatformClusterStackProperties
         {
             Id = "io.buildpacks.stacks.bionic",
             Version = "base",
         },
-        BuildpackGroups =
-        {
-        new BuildpacksGroupProperties()
+        BuildpackGroups = {new BuildpacksGroupProperties
         {
         Name = "mix",
-        Buildpacks =
-        {
-        new WritableSubResource()
+        Buildpacks = {new WritableSubResource
         {
         Id = new ResourceIdentifier("tanzu-buildpacks/java-azure"),
-        }
-        },
-        }
-        },
+        }},
+        }},
     },
 };
 ArmOperation<AppPlatformBuilderResource> lro = await appPlatformBuilder.UpdateAsync(WaitUntil.Completed, data);

@@ -31,14 +31,14 @@ string serviceName = "myservice";
 AppPlatformServiceData data = new AppPlatformServiceData(new AzureLocation("eastus"))
 {
     Properties = new AppPlatformServiceProperties(),
-    Sku = new AppPlatformSku()
+    Sku = new AppPlatformSku
     {
         Name = "E0",
         Tier = "Enterprise",
     },
     Tags =
     {
-    ["key1"] = "value1",
+    ["key1"] = "value1"
     },
 };
 ArmOperation<AppPlatformServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

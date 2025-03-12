@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.AppPlatform.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/Deployments_ListForCluster.json
@@ -34,4 +33,4 @@ await foreach (AppPlatformDeploymentResource item in appPlatformService.GetDeplo
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

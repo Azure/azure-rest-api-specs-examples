@@ -29,4 +29,4 @@ AppPlatformBuildpackBindingResource appPlatformBuildpackBinding = client.GetAppP
 // invoke the operation
 await appPlatformBuildpackBinding.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

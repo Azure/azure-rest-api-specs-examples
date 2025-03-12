@@ -28,4 +28,4 @@ AppPlatformDeploymentResource appPlatformDeployment = client.GetAppPlatformDeplo
 // invoke the operation
 await appPlatformDeployment.StopAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

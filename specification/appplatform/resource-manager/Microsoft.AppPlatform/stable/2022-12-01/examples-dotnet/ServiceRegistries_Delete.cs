@@ -26,4 +26,4 @@ AppPlatformServiceRegistryResource appPlatformServiceRegistry = client.GetAppPla
 // invoke the operation
 await appPlatformServiceRegistry.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

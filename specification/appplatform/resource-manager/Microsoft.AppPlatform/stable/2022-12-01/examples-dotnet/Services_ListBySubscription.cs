@@ -32,4 +32,4 @@ await foreach (AppPlatformServiceResource item in subscriptionResource.GetAppPla
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

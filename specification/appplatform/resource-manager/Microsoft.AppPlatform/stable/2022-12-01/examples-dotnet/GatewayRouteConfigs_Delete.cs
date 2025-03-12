@@ -28,4 +28,4 @@ AppPlatformGatewayRouteConfigResource appPlatformGatewayRouteConfig = client.Get
 // invoke the operation
 await appPlatformGatewayRouteConfig.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

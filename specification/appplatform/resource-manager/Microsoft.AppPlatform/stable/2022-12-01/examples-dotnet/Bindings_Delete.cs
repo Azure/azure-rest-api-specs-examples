@@ -28,4 +28,4 @@ AppPlatformBindingResource appPlatformBinding = client.GetAppPlatformBindingReso
 // invoke the operation
 await appPlatformBinding.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

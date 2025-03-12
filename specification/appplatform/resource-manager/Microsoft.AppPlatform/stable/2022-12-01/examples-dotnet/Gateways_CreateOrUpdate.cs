@@ -28,18 +28,18 @@ AppPlatformGatewayCollection collection = appPlatformService.GetAppPlatformGatew
 
 // invoke the operation
 string gatewayName = "default";
-AppPlatformGatewayData data = new AppPlatformGatewayData()
+AppPlatformGatewayData data = new AppPlatformGatewayData
 {
-    Properties = new AppPlatformGatewayProperties()
+    Properties = new AppPlatformGatewayProperties
     {
         IsPublic = true,
-        ResourceRequests = new AppPlatformGatewayResourceRequirements()
+        ResourceRequests = new AppPlatformGatewayResourceRequirements
         {
             Cpu = "1",
             Memory = "1G",
         },
     },
-    Sku = new AppPlatformSku()
+    Sku = new AppPlatformSku
     {
         Name = "E0",
         Tier = "Enterprise",

@@ -30,25 +30,19 @@ AppPlatformDeploymentCollection collection = appPlatformApp.GetAppPlatformDeploy
 
 // invoke the operation
 string deploymentName = "mydeployment";
-AppPlatformDeploymentData data = new AppPlatformDeploymentData()
+AppPlatformDeploymentData data = new AppPlatformDeploymentData
 {
-    Properties = new AppPlatformDeploymentProperties()
+    Properties = new AppPlatformDeploymentProperties
     {
-        Source = new AppPlatformCustomContainerUserSourceInfo()
+        Source = new AppPlatformCustomContainerUserSourceInfo
         {
-            CustomContainer = new AppPlatformCustomContainer()
+            CustomContainer = new AppPlatformCustomContainer
             {
                 Server = "myacr.azurecr.io",
                 ContainerImage = "myContainerImage:v1",
-                Command =
-                {
-                "/bin/sh"
-                },
-                Args =
-                {
-                "-c","while true; do echo hello; sleep 10;done"
-                },
-                ImageRegistryCredential = new AppPlatformImageRegistryCredential()
+                Command = { "/bin/sh" },
+                Args = { "-c", "while true; do echo hello; sleep 10;done" },
+                ImageRegistryCredential = new AppPlatformImageRegistryCredential
                 {
                     Username = "myUsername",
                     Password = "myPassword",
@@ -56,20 +50,20 @@ AppPlatformDeploymentData data = new AppPlatformDeploymentData()
                 LanguageFramework = "springboot",
             },
         },
-        DeploymentSettings = new AppPlatformDeploymentSettings()
+        DeploymentSettings = new AppPlatformDeploymentSettings
         {
-            ResourceRequests = new AppPlatformDeploymentResourceRequirements()
+            ResourceRequests = new AppPlatformDeploymentResourceRequirements
             {
                 Cpu = "1000m",
                 Memory = "3Gi",
             },
             EnvironmentVariables =
             {
-            ["env"] = "test",
+            ["env"] = "test"
             },
             LivenessProbe = new AppInstanceProbe(false)
             {
-                ProbeAction = new AppInstanceHttpGetAction()
+                ProbeAction = new AppInstanceHttpGetAction
                 {
                     Path = "/health",
                     Scheme = AppInstanceHttpSchemeType.Http,
@@ -80,7 +74,7 @@ AppPlatformDeploymentData data = new AppPlatformDeploymentData()
             },
             ReadinessProbe = new AppInstanceProbe(false)
             {
-                ProbeAction = new AppInstanceHttpGetAction()
+                ProbeAction = new AppInstanceHttpGetAction
                 {
                     Path = "/health",
                     Scheme = AppInstanceHttpSchemeType.Http,
@@ -89,7 +83,7 @@ AppPlatformDeploymentData data = new AppPlatformDeploymentData()
                 PeriodInSeconds = 10,
                 FailureThreshold = 3,
             },
-            StartupProbe = null,
+            StartupProbe = default,
             TerminationGracePeriodInSeconds = 30,
         },
     },

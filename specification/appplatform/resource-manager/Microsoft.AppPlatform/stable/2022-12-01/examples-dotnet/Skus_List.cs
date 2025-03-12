@@ -28,4 +28,4 @@ await foreach (AvailableAppPlatformSku item in subscriptionResource.GetSkusAsync
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

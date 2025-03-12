@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.AppPlatform.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/ConfigServers_Validate.json
@@ -25,15 +24,12 @@ ResourceIdentifier appPlatformServiceResourceId = AppPlatformServiceResource.Cre
 AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceResource(appPlatformServiceResourceId);
 
 // invoke the operation
-ConfigServerSettings settings = new ConfigServerSettings()
+ConfigServerSettings settings = new ConfigServerSettings
 {
     GitProperty = new AppPlatformConfigServerGitProperty(new Uri("https://github.com/fake-user/fake-repository.git"))
     {
         Label = "master",
-        SearchPaths =
-        {
-        "/"
-        },
+        SearchPaths = { "/" },
     },
 };
 ArmOperation<ConfigServerSettingsValidateResult> lro = await appPlatformService.ValidateConfigServerAsync(WaitUntil.Completed, settings);

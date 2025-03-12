@@ -15,28 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformBuildServiceAgentPoolResource created on azure
-// for more information of creating AppPlatformBuildServiceAgentPoolResource, please refer to the document of AppPlatformBuildServiceAgentPoolResource
+// this example assumes you already have this AppPlatformBuildServiceResource created on azure
+// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
-string agentPoolName = "default";
-ResourceIdentifier appPlatformBuildServiceAgentPoolResourceId = AppPlatformBuildServiceAgentPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, agentPoolName);
-AppPlatformBuildServiceAgentPoolResource appPlatformBuildServiceAgentPool = client.GetAppPlatformBuildServiceAgentPoolResource(appPlatformBuildServiceAgentPoolResourceId);
+ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
+AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
+
+// get the collection of this AppPlatformBuildServiceAgentPoolResource
+AppPlatformBuildServiceAgentPoolCollection collection = appPlatformBuildService.GetAppPlatformBuildServiceAgentPools();
 
 // invoke the operation
-AppPlatformBuildServiceAgentPoolData data = new AppPlatformBuildServiceAgentPoolData()
+string agentPoolName = "default";
+AppPlatformBuildServiceAgentPoolData data = new AppPlatformBuildServiceAgentPoolData
 {
-    Properties = new AppPlatformBuildServiceAgentPoolProperties()
+    Properties = new AppPlatformBuildServiceAgentPoolProperties
     {
-        PoolSize = new BuildServiceAgentPoolSizeProperties()
+        PoolSize = new BuildServiceAgentPoolSizeProperties
         {
             Name = "S3",
         },
     },
 };
-ArmOperation<AppPlatformBuildServiceAgentPoolResource> lro = await appPlatformBuildServiceAgentPool.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<AppPlatformBuildServiceAgentPoolResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, agentPoolName, data);
 AppPlatformBuildServiceAgentPoolResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

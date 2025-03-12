@@ -15,21 +15,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppPlatformBuildServiceAgentPoolResource created on azure
-// for more information of creating AppPlatformBuildServiceAgentPoolResource, please refer to the document of AppPlatformBuildServiceAgentPoolResource
+// this example assumes you already have this AppPlatformBuildServiceResource created on azure
+// for more information of creating AppPlatformBuildServiceResource, please refer to the document of AppPlatformBuildServiceResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "myResourceGroup";
 string serviceName = "myservice";
 string buildServiceName = "default";
-string agentPoolName = "default";
-ResourceIdentifier appPlatformBuildServiceAgentPoolResourceId = AppPlatformBuildServiceAgentPoolResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName, agentPoolName);
-AppPlatformBuildServiceAgentPoolResource appPlatformBuildServiceAgentPool = client.GetAppPlatformBuildServiceAgentPoolResource(appPlatformBuildServiceAgentPoolResourceId);
+ResourceIdentifier appPlatformBuildServiceResourceId = AppPlatformBuildServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, buildServiceName);
+AppPlatformBuildServiceResource appPlatformBuildService = client.GetAppPlatformBuildServiceResource(appPlatformBuildServiceResourceId);
+
+// get the collection of this AppPlatformBuildServiceAgentPoolResource
+AppPlatformBuildServiceAgentPoolCollection collection = appPlatformBuildService.GetAppPlatformBuildServiceAgentPools();
 
 // invoke the operation
-AppPlatformBuildServiceAgentPoolResource result = await appPlatformBuildServiceAgentPool.GetAsync();
+string agentPoolName = "default";
+NullableResponse<AppPlatformBuildServiceAgentPoolResource> response = await collection.GetIfExistsAsync(agentPoolName);
+AppPlatformBuildServiceAgentPoolResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppPlatformBuildServiceAgentPoolData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppPlatformBuildServiceAgentPoolData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

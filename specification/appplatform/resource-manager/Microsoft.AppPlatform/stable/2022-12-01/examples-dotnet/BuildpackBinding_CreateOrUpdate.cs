@@ -27,22 +27,22 @@ ResourceIdentifier appPlatformBuildpackBindingResourceId = AppPlatformBuildpackB
 AppPlatformBuildpackBindingResource appPlatformBuildpackBinding = client.GetAppPlatformBuildpackBindingResource(appPlatformBuildpackBindingResourceId);
 
 // invoke the operation
-AppPlatformBuildpackBindingData data = new AppPlatformBuildpackBindingData()
+AppPlatformBuildpackBindingData data = new AppPlatformBuildpackBindingData
 {
-    Properties = new AppPlatformBuildpackBindingProperties()
+    Properties = new AppPlatformBuildpackBindingProperties
     {
         BindingType = BuildpackBindingType.ApplicationInsights,
-        LaunchProperties = new BuildpackBindingLaunchProperties()
+        LaunchProperties = new BuildpackBindingLaunchProperties
         {
             Properties =
             {
             ["abc"] = "def",
             ["any-string"] = "any-string",
-            ["sampling-rate"] = "12.0",
+            ["sampling-rate"] = "12.0"
             },
             Secrets =
             {
-            ["connection-string"] = "XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXX;XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXXXXXXXX",
+            ["connection-string"] = "XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXX-XXXXXXXXXXXXXXXXXXX;XXXXXXXXXXXXXXXXX=XXXXXXXXXXXXXXXXXXX"
             },
         },
     },

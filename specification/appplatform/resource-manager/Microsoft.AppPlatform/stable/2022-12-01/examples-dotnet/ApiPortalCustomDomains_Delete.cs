@@ -27,4 +27,4 @@ AppPlatformApiPortalCustomDomainResource appPlatformApiPortalCustomDomain = clie
 // invoke the operation
 await appPlatformApiPortalCustomDomain.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

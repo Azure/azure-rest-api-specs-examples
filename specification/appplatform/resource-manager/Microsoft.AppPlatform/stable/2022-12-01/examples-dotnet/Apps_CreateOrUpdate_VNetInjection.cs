@@ -30,58 +30,49 @@ AppPlatformAppCollection collection = appPlatformService.GetAppPlatformApps();
 
 // invoke the operation
 string appName = "myapp";
-AppPlatformAppData data = new AppPlatformAppData()
+AppPlatformAppData data = new AppPlatformAppData
 {
-    Properties = new AppPlatformAppProperties()
+    Properties = new AppPlatformAppProperties
     {
         IsPublic = true,
         AddonConfigs =
         {
-        ["ApplicationConfigurationService"] = new Dictionary<string, BinaryData>()
+        ["ApplicationConfigurationService"] = new Dictionary<string, BinaryData>
         {
-        ["resourceId"] = BinaryData.FromString("\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/configurationServices/myacs\""),
+        ["resourceId"] = BinaryData.FromObjectAsJson("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/configurationServices/myacs")
         },
-        ["ServiceRegistry"] = new Dictionary<string, BinaryData>()
+        ["ServiceRegistry"] = new Dictionary<string, BinaryData>
         {
-        ["resourceId"] = BinaryData.FromString("\"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/serviceRegistries/myServiceRegistry\""),
-        },
+        ["resourceId"] = BinaryData.FromObjectAsJson("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/serviceRegistries/myServiceRegistry")
+        }
         },
         IsHttpsOnly = false,
-        TemporaryDisk = new AppTemporaryDisk()
+        TemporaryDisk = new AppTemporaryDisk
         {
             SizeInGB = 2,
             MountPath = "/mytemporarydisk",
         },
-        PersistentDisk = new AppPersistentDisk()
+        PersistentDisk = new AppPersistentDisk
         {
             SizeInGB = 2,
             MountPath = "/mypersistentdisk",
         },
-        CustomPersistentDisks =
+        CustomPersistentDisks = {new AppCustomPersistentDisk("myASCStorageID")
         {
-        new AppCustomPersistentDisk("myASCStorageID")
+        CustomPersistentDiskProperties = new AppPlatformAzureFileVolume("/mypath1/mypath2", "myFileShare")
         {
-        CustomPersistentDiskProperties = new AppPlatformAzureFileVolume("/mypath1/mypath2","myFileShare")
-        {
-        MountOptions =
-        {
-        "uid=0","gid=0","dir_mode=0777","file_mode=0777"
+        MountOptions = {"uid=0", "gid=0", "dir_mode=0777", "file_mode=0777"},
         },
-        },
-        }
-        },
+        }},
         IsEndToEndTlsEnabled = false,
-        LoadedCertificates =
-        {
-        new AppLoadedCertificate(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"))
+        LoadedCertificates = {new AppLoadedCertificate(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert1"))
         {
         LoadTrustStore = false,
-        },new AppLoadedCertificate(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"))
+        }, new AppLoadedCertificate(new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.AppPlatform/Spring/myservice/certificates/mycert2"))
         {
         LoadTrustStore = true,
-        }
-        },
-        VnetAddons = new AppVnetAddons()
+        }},
+        VnetAddons = new AppVnetAddons
         {
             IsPublicEndpoint = true,
         },
@@ -91,7 +82,7 @@ AppPlatformAppData data = new AppPlatformAppData()
         UserAssignedIdentities =
         {
         [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/samplegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity(),
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/samplegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/samplegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2")] = new UserAssignedIdentity()
         },
     },
     Location = new AzureLocation("eastus"),

@@ -29,4 +29,4 @@ AppPlatformBuilderResource appPlatformBuilder = client.GetAppPlatformBuilderReso
 // invoke the operation
 await appPlatformBuilder.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

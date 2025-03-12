@@ -25,7 +25,7 @@ ResourceIdentifier appPlatformStorageResourceId = AppPlatformStorageResource.Cre
 AppPlatformStorageResource appPlatformStorage = client.GetAppPlatformStorageResource(appPlatformStorageResourceId);
 
 // invoke the operation
-AppPlatformStorageData data = new AppPlatformStorageData()
+AppPlatformStorageData data = new AppPlatformStorageData
 {
     Properties = new AppPlatformStorageAccount("storage-account-name", "account-key-of-storage-account"),
 };

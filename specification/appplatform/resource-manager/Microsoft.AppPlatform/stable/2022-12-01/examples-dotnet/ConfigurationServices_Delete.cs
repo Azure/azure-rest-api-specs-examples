@@ -27,4 +27,4 @@ AppPlatformConfigurationServiceResource appPlatformConfigurationService = client
 // invoke the operation
 await appPlatformConfigurationService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

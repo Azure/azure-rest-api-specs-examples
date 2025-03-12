@@ -28,4 +28,4 @@ AppPlatformCustomDomainResource appPlatformCustomDomain = client.GetAppPlatformC
 // invoke the operation
 await appPlatformCustomDomain.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

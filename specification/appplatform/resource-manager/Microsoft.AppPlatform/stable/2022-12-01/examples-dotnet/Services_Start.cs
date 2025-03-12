@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.AppPlatform.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.AppPlatform;
 
 // Generated from example definition: specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-12-01/examples/Services_Start.json
@@ -27,4 +26,4 @@ AppPlatformServiceResource appPlatformService = client.GetAppPlatformServiceReso
 // invoke the operation
 await appPlatformService.StartAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

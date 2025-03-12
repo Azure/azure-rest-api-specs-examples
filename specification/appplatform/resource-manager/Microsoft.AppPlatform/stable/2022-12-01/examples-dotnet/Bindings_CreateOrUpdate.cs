@@ -29,16 +29,16 @@ AppPlatformBindingCollection collection = appPlatformApp.GetAppPlatformBindings(
 
 // invoke the operation
 string bindingName = "mybinding";
-AppPlatformBindingData data = new AppPlatformBindingData()
+AppPlatformBindingData data = new AppPlatformBindingData
 {
-    Properties = new AppPlatformBindingProperties()
+    Properties = new AppPlatformBindingProperties
     {
         ResourceId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DocumentDB/databaseAccounts/my-cosmosdb-1"),
         Key = "xxxx",
         BindingParameters =
         {
-        ["apiType"] = BinaryData.FromString("\"SQL\""),
-        ["databaseName"] = BinaryData.FromString("\"db1\""),
+        ["apiType"] = BinaryData.FromObjectAsJson("SQL"),
+        ["databaseName"] = BinaryData.FromObjectAsJson("db1")
         },
     },
 };

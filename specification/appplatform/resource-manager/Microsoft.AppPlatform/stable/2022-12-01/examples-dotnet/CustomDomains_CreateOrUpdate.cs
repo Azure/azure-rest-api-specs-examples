@@ -29,9 +29,9 @@ AppPlatformCustomDomainCollection collection = appPlatformApp.GetAppPlatformCust
 
 // invoke the operation
 string domainName = "mydomain.com";
-AppPlatformCustomDomainData data = new AppPlatformCustomDomainData()
+AppPlatformCustomDomainData data = new AppPlatformCustomDomainData
 {
-    Properties = new AppPlatformCustomDomainProperties()
+    Properties = new AppPlatformCustomDomainProperties
     {
         Thumbprint = "934367bf1c97033f877db0f15cb1b586957d3133",
         CertName = "mycert",

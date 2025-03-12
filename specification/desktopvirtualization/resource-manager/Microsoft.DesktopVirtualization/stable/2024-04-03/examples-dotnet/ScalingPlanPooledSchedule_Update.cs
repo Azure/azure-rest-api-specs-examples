@@ -25,12 +25,9 @@ ResourceIdentifier scalingPlanPooledScheduleResourceId = ScalingPlanPooledSchedu
 ScalingPlanPooledScheduleResource scalingPlanPooledSchedule = client.GetScalingPlanPooledScheduleResource(scalingPlanPooledScheduleResourceId);
 
 // invoke the operation
-ScalingPlanPooledSchedulePatch patch = new ScalingPlanPooledSchedulePatch()
+ScalingPlanPooledSchedulePatch patch = new ScalingPlanPooledSchedulePatch
 {
-    DaysOfWeek =
-    {
-    DesktopVirtualizationDayOfWeek.Monday,DesktopVirtualizationDayOfWeek.Tuesday,DesktopVirtualizationDayOfWeek.Wednesday,DesktopVirtualizationDayOfWeek.Thursday,DesktopVirtualizationDayOfWeek.Friday
-    },
+    DaysOfWeek = { DesktopVirtualizationDayOfWeek.Monday, DesktopVirtualizationDayOfWeek.Tuesday, DesktopVirtualizationDayOfWeek.Wednesday, DesktopVirtualizationDayOfWeek.Thursday, DesktopVirtualizationDayOfWeek.Friday },
     RampUpLoadBalancingAlgorithm = SessionHostLoadBalancingAlgorithm.DepthFirst,
     RampUpCapacityThresholdPct = 80,
     PeakStartTime = new ScalingActionTime(8, 0),

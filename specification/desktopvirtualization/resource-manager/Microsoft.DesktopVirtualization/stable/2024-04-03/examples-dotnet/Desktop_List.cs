@@ -38,4 +38,4 @@ await foreach (VirtualDesktopResource item in collection.GetAllAsync(pageSize: p
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

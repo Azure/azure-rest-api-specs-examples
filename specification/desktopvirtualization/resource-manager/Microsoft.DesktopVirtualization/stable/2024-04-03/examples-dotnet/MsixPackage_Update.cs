@@ -25,7 +25,7 @@ ResourceIdentifier msixPackageResourceId = MsixPackageResource.CreateResourceIde
 MsixPackageResource msixPackage = client.GetMsixPackageResource(msixPackageResourceId);
 
 // invoke the operation
-MsixPackagePatch patch = new MsixPackagePatch()
+MsixPackagePatch patch = new MsixPackagePatch
 {
     IsActive = true,
     IsRegularRegistration = false,

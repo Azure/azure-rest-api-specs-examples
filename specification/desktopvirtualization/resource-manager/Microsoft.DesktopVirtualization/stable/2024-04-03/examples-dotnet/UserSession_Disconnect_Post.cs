@@ -28,4 +28,4 @@ UserSessionResource userSession = client.GetUserSessionResource(userSessionResou
 // invoke the operation
 await userSession.DisconnectAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

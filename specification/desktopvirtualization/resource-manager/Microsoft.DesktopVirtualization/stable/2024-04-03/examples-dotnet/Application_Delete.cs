@@ -27,4 +27,4 @@ VirtualApplicationResource virtualApplication = client.GetVirtualApplicationReso
 // invoke the operation
 await virtualApplication.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

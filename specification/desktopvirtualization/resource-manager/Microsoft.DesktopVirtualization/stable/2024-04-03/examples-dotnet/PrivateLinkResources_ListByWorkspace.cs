@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/PrivateLinkResources_ListByWorkspace.json
@@ -30,4 +29,4 @@ await foreach (DesktopVirtualizationPrivateLinkResourceData item in virtualWorks
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

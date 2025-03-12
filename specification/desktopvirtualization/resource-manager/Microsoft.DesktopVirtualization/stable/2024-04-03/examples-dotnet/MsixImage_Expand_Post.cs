@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/MsixImage_Expand_Post.json
@@ -25,7 +24,7 @@ ResourceIdentifier hostPoolResourceId = HostPoolResource.CreateResourceIdentifie
 HostPoolResource hostPool = client.GetHostPoolResource(hostPoolResourceId);
 
 // invoke the operation and iterate over the result
-MsixImageUri msixImageUri = new MsixImageUri()
+MsixImageUri msixImageUri = new MsixImageUri
 {
     Uri = new Uri("imagepath"),
 };
@@ -34,4 +33,4 @@ await foreach (ExpandMsixImage item in hostPool.ExpandMsixImagesAsync(msixImageU
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

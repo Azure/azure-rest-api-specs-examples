@@ -25,7 +25,7 @@ ResourceIdentifier virtualDesktopResourceId = VirtualDesktopResource.CreateResou
 VirtualDesktopResource virtualDesktop = client.GetVirtualDesktopResource(virtualDesktopResourceId);
 
 // invoke the operation
-VirtualDesktopPatch patch = new VirtualDesktopPatch()
+VirtualDesktopPatch patch = new VirtualDesktopPatch
 {
     Description = "des1",
     FriendlyName = "friendly",

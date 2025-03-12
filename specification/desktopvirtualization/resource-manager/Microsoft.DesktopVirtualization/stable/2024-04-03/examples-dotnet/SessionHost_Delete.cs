@@ -28,4 +28,4 @@ SessionHostResource sessionHost = client.GetSessionHostResource(sessionHostResou
 bool? force = true;
 await sessionHost.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

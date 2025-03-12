@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.DesktopVirtualization.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
@@ -35,4 +34,4 @@ await foreach (HostPoolResource item in subscriptionResource.GetHostPoolsAsync(p
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

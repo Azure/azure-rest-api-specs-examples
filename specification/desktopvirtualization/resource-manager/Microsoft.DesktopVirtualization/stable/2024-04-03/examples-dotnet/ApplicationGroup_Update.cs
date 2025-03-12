@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/ApplicationGroup_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier virtualApplicationGroupResourceId = VirtualApplicationGroupRe
 VirtualApplicationGroupResource virtualApplicationGroup = client.GetVirtualApplicationGroupResource(virtualApplicationGroupResourceId);
 
 // invoke the operation
-VirtualApplicationGroupPatch patch = new VirtualApplicationGroupPatch()
+VirtualApplicationGroupPatch patch = new VirtualApplicationGroupPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
     Description = "des1",
     FriendlyName = "friendly",

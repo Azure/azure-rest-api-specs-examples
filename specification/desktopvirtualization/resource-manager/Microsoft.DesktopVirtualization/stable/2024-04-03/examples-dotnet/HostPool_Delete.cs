@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/HostPool_Delete.json
@@ -28,4 +27,4 @@ HostPoolResource hostPool = client.GetHostPoolResource(hostPoolResourceId);
 bool? force = true;
 await hostPool.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

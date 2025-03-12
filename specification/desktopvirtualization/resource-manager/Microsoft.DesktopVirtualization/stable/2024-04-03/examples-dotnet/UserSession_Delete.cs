@@ -29,4 +29,4 @@ UserSessionResource userSession = client.GetUserSessionResource(userSessionResou
 bool? force = true;
 await userSession.DeleteAsync(WaitUntil.Completed, force: force);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

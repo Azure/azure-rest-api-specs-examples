@@ -28,9 +28,9 @@ HostPoolPrivateEndpointConnectionCollection collection = hostPool.GetHostPoolPri
 
 // invoke the operation
 string privateEndpointConnectionName = "hostPool1.377103f1-5179-4bdf-8556-4cdd3207cc5b";
-DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualizationPrivateEndpointConnection()
+DesktopVirtualizationPrivateEndpointConnection connection = new DesktopVirtualizationPrivateEndpointConnection
 {
-    ConnectionState = new DesktopVirtualizationPrivateLinkServiceConnectionState()
+    ConnectionState = new DesktopVirtualizationPrivateLinkServiceConnectionState
     {
         Status = DesktopVirtualizationPrivateEndpointServiceConnectionStatus.Approved,
         Description = "Approved by admin@consoto.com",

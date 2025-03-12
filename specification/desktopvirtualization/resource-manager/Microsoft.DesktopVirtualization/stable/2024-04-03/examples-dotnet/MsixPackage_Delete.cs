@@ -27,4 +27,4 @@ MsixPackageResource msixPackage = client.GetMsixPackageResource(msixPackageResou
 // invoke the operation
 await msixPackage.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

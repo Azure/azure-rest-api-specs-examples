@@ -34,7 +34,7 @@ VirtualWorkspaceData data = new VirtualWorkspaceData(new AzureLocation("centralu
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<VirtualWorkspaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workspaceName, data);

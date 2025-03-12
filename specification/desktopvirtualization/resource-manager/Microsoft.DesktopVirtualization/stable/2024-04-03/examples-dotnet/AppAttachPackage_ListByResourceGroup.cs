@@ -37,4 +37,4 @@ await foreach (AppAttachPackageResource item in collection.GetAllAsync(filter: f
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

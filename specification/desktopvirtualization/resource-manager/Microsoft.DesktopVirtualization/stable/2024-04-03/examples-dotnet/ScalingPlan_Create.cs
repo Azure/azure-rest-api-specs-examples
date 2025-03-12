@@ -34,44 +34,35 @@ ScalingPlanData data = new ScalingPlanData(new AzureLocation("centralus"), "Cent
     FriendlyName = "Scaling Plan 1",
     ScalingHostPoolType = ScalingHostPoolType.Pooled,
     ExclusionTag = "value",
-    Schedules =
-    {
-    new ScalingSchedule()
+    Schedules = {new ScalingSchedule
     {
     Name = "schedule1",
-    DaysOfWeek =
-    {
-    ScalingScheduleDaysOfWeekItem.Monday,ScalingScheduleDaysOfWeekItem.Tuesday,ScalingScheduleDaysOfWeekItem.Wednesday,ScalingScheduleDaysOfWeekItem.Thursday,ScalingScheduleDaysOfWeekItem.Friday
-    },
-    RampUpStartTime = new ScalingActionTime(6,0),
+    DaysOfWeek = {ScalingScheduleDaysOfWeekItem.Monday, ScalingScheduleDaysOfWeekItem.Tuesday, ScalingScheduleDaysOfWeekItem.Wednesday, ScalingScheduleDaysOfWeekItem.Thursday, ScalingScheduleDaysOfWeekItem.Friday},
+    RampUpStartTime = new ScalingActionTime(6, 0),
     RampUpLoadBalancingAlgorithm = SessionHostLoadBalancingAlgorithm.DepthFirst,
     RampUpMinimumHostsPct = 20,
     RampUpCapacityThresholdPct = 80,
-    PeakStartTime = new ScalingActionTime(8,0),
+    PeakStartTime = new ScalingActionTime(8, 0),
     PeakLoadBalancingAlgorithm = SessionHostLoadBalancingAlgorithm.BreadthFirst,
-    RampDownStartTime = new ScalingActionTime(18,0),
+    RampDownStartTime = new ScalingActionTime(18, 0),
     RampDownLoadBalancingAlgorithm = SessionHostLoadBalancingAlgorithm.DepthFirst,
     RampDownMinimumHostsPct = 20,
     RampDownCapacityThresholdPct = 50,
     RampDownForceLogoffUsers = true,
     RampDownWaitTimeMinutes = 30,
     RampDownNotificationMessage = "message",
-    OffPeakStartTime = new ScalingActionTime(20,0),
+    OffPeakStartTime = new ScalingActionTime(20, 0),
     OffPeakLoadBalancingAlgorithm = SessionHostLoadBalancingAlgorithm.DepthFirst,
-    }
-    },
-    HostPoolReferences =
-    {
-    new ScalingHostPoolReference()
+    }},
+    HostPoolReferences = {new ScalingHostPoolReference
     {
     HostPoolId = new ResourceIdentifier("/subscriptions/daefabc0-95b4-48b3-b645-8a753a63c4fa/resourceGroups/resourceGroup1/providers/Microsoft.DesktopVirtualization/hostPools/hostPool1"),
     IsScalingPlanEnabled = true,
-    }
-    },
+    }},
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<ScalingPlanResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, scalingPlanName, data);

@@ -28,12 +28,9 @@ ScalingPlanPooledScheduleCollection collection = scalingPlan.GetScalingPlanPoole
 
 // invoke the operation
 string scalingPlanScheduleName = "scalingPlanScheduleWeekdays1";
-ScalingPlanPooledScheduleData data = new ScalingPlanPooledScheduleData()
+ScalingPlanPooledScheduleData data = new ScalingPlanPooledScheduleData
 {
-    DaysOfWeek =
-    {
-    DesktopVirtualizationDayOfWeek.Monday,DesktopVirtualizationDayOfWeek.Tuesday,DesktopVirtualizationDayOfWeek.Wednesday,DesktopVirtualizationDayOfWeek.Thursday,DesktopVirtualizationDayOfWeek.Friday
-    },
+    DaysOfWeek = { DesktopVirtualizationDayOfWeek.Monday, DesktopVirtualizationDayOfWeek.Tuesday, DesktopVirtualizationDayOfWeek.Wednesday, DesktopVirtualizationDayOfWeek.Thursday, DesktopVirtualizationDayOfWeek.Friday },
     RampUpStartTime = new ScalingActionTime(6, 0),
     RampUpLoadBalancingAlgorithm = SessionHostLoadBalancingAlgorithm.DepthFirst,
     RampUpMinimumHostsPct = 20,

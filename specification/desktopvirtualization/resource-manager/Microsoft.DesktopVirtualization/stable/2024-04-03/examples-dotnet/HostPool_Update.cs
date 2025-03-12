@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.DesktopVirtualization.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.DesktopVirtualization;
 
 // Generated from example definition: specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2024-04-03/examples/HostPool_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier hostPoolResourceId = HostPoolResource.CreateResourceIdentifie
 HostPoolResource hostPool = client.GetHostPoolResource(hostPoolResourceId);
 
 // invoke the operation
-HostPoolPatch patch = new HostPoolPatch()
+HostPoolPatch patch = new HostPoolPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
     FriendlyName = "friendly",
     Description = "des1",
@@ -38,7 +37,7 @@ HostPoolPatch patch = new HostPoolPatch()
     MaxSessionLimit = 999999,
     PersonalDesktopAssignmentType = PersonalDesktopAssignmentType.Automatic,
     LoadBalancerType = HostPoolLoadBalancerType.BreadthFirst,
-    RegistrationInfo = new HostPoolRegistrationInfoPatch()
+    RegistrationInfo = new HostPoolRegistrationInfoPatch
     {
         ExpireOn = DateTimeOffset.Parse("2020-10-01T15:01:54.9571247Z"),
         RegistrationTokenOperation = HostPoolRegistrationTokenOperation.Update,
@@ -49,23 +48,20 @@ HostPoolPatch patch = new HostPoolPatch()
     SsoClientSecretKeyVaultPath = "https://keyvault/secret",
     SsoSecretType = HostPoolSsoSecretType.SharedKey,
     StartVmOnConnect = false,
-    AgentUpdate = new SessionHostAgentUpdatePatchProperties()
+    AgentUpdate = new SessionHostAgentUpdatePatchProperties
     {
         UpdateType = SessionHostComponentUpdateType.Scheduled,
         DoesUseSessionHostLocalTime = false,
         MaintenanceWindowTimeZone = "Alaskan Standard Time",
-        MaintenanceWindows =
-        {
-        new MaintenanceWindowPatchProperties()
+        MaintenanceWindows = {new MaintenanceWindowPatchProperties
         {
         Hour = 7,
         DayOfWeek = DesktopVirtualizationDayOfWeek.Friday,
-        },new MaintenanceWindowPatchProperties()
+        }, new MaintenanceWindowPatchProperties
         {
         Hour = 8,
         DayOfWeek = DesktopVirtualizationDayOfWeek.Saturday,
-        }
-        },
+        }},
     },
 };
 HostPoolResource result = await hostPool.UpdateAsync(patch);

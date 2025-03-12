@@ -27,4 +27,4 @@ WorkspacePrivateEndpointConnectionResource workspacePrivateEndpointConnection = 
 // invoke the operation
 await workspacePrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

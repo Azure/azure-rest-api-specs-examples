@@ -30,4 +30,4 @@ CancelSubscriptionContent content = new CancelSubscriptionContent(CustomerSubscr
 };
 await billingSubscription.CancelAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

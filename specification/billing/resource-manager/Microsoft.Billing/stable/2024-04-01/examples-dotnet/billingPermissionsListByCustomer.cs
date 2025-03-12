@@ -29,4 +29,4 @@ await foreach (BillingPermission item in billingProfileCustomer.GetBillingPermis
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -14,30 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingProfileResource created on azure
-// for more information of creating BillingProfileResource, please refer to the document of BillingProfileResource
+// this example assumes you already have this BillingProfileRoleAssignmentResource created on azure
+// for more information of creating BillingProfileRoleAssignmentResource, please refer to the document of BillingProfileRoleAssignmentResource
 string billingAccountName = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2018-09-30";
 string billingProfileName = "xxxx-xxxx-xxx-xxx";
-ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResourceIdentifier(billingAccountName, billingProfileName);
-BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
-
-// get the collection of this BillingProfileRoleAssignmentResource
-BillingProfileRoleAssignmentCollection collection = billingProfile.GetBillingProfileRoleAssignments();
+string billingRoleAssignmentName = "10000000-aaaa-bbbb-cccc-100000000000_6fd330f6-7d26-4aff-b9cf-7bd699f965b9";
+ResourceIdentifier billingProfileRoleAssignmentResourceId = BillingProfileRoleAssignmentResource.CreateResourceIdentifier(billingAccountName, billingProfileName, billingRoleAssignmentName);
+BillingProfileRoleAssignmentResource billingProfileRoleAssignment = client.GetBillingProfileRoleAssignmentResource(billingProfileRoleAssignmentResourceId);
 
 // invoke the operation
-string billingRoleAssignmentName = "10000000-aaaa-bbbb-cccc-100000000000_6fd330f6-7d26-4aff-b9cf-7bd699f965b9";
-NullableResponse<BillingProfileRoleAssignmentResource> response = await collection.GetIfExistsAsync(billingRoleAssignmentName);
-BillingProfileRoleAssignmentResource result = response.HasValue ? response.Value : null;
+BillingProfileRoleAssignmentResource result = await billingProfileRoleAssignment.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BillingRoleAssignmentData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BillingRoleAssignmentData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

@@ -26,7 +26,7 @@ BillingDepartmentResource billingDepartment = client.GetBillingDepartmentResourc
 BillingDepartmentEnrollmentAccountCollection collection = billingDepartment.GetBillingDepartmentEnrollmentAccounts();
 
 // invoke the operation and iterate over the result
-BillingDepartmentEnrollmentAccountCollectionGetAllOptions options = new BillingDepartmentEnrollmentAccountCollectionGetAllOptions() { };
+BillingDepartmentEnrollmentAccountCollectionGetAllOptions options = new BillingDepartmentEnrollmentAccountCollectionGetAllOptions();
 await foreach (BillingDepartmentEnrollmentAccountResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -36,4 +36,4 @@ await foreach (BillingDepartmentEnrollmentAccountResource item in collection.Get
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

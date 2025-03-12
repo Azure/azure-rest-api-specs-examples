@@ -25,11 +25,12 @@ BillingAccountResource billingAccount = client.GetBillingAccountResource(billing
 // invoke the operation
 IEnumerable<BillingDocumentDownloadRequestContent> arrayOfDocumentDownloadRequest = new BillingDocumentDownloadRequestContent[]
 {
-new BillingDocumentDownloadRequestContent()
+new BillingDocumentDownloadRequestContent
 {
 DocumentName = "12345678",
 InvoiceName = "G123456789",
-},new BillingDocumentDownloadRequestContent()
+},
+new BillingDocumentDownloadRequestContent
 {
 DocumentName = "12345678",
 InvoiceName = "G987654321",

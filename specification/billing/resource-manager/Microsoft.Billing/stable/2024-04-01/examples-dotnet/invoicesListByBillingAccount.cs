@@ -25,7 +25,7 @@ BillingAccountResource billingAccount = client.GetBillingAccountResource(billing
 BillingInvoiceCollection collection = billingAccount.GetBillingInvoices();
 
 // invoke the operation and iterate over the result
-BillingInvoiceCollectionGetAllOptions options = new BillingInvoiceCollectionGetAllOptions() { PeriodStartDate = DateTimeOffset.Parse("2023-01-01"), PeriodEndDate = DateTimeOffset.Parse("2023-06-30") };
+BillingInvoiceCollectionGetAllOptions options = new BillingInvoiceCollectionGetAllOptions { PeriodStartDate = DateTimeOffset.Parse("2023-01-01"), PeriodEndDate = DateTimeOffset.Parse("2023-06-30") };
 await foreach (BillingInvoiceResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -35,4 +35,4 @@ await foreach (BillingInvoiceResource item in collection.GetAllAsync(options))
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

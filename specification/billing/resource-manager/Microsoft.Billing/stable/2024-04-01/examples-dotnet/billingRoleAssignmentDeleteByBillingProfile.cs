@@ -25,4 +25,4 @@ BillingProfileRoleAssignmentResource billingProfileRoleAssignment = client.GetBi
 // invoke the operation
 await billingProfileRoleAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -24,19 +24,19 @@ ResourceIdentifier billingSavingsPlanModelResourceId = BillingSavingsPlanModelRe
 BillingSavingsPlanModelResource billingSavingsPlanModel = client.GetBillingSavingsPlanModelResource(billingSavingsPlanModelResourceId);
 
 // invoke the operation
-BillingSavingsPlanModelPatch patch = new BillingSavingsPlanModelPatch()
+BillingSavingsPlanModelPatch patch = new BillingSavingsPlanModelPatch
 {
-    Properties = new SavingsPlanUpdateRequestProperties()
+    Properties = new SavingsPlanUpdateRequestProperties
     {
         DisplayName = "sp_newName",
         AppliedScopeType = BillingAppliedScopeType.ManagementGroup,
-        AppliedScopeProperties = new BillingAppliedScopeProperties()
+        AppliedScopeProperties = new BillingAppliedScopeProperties
         {
             TenantId = Guid.Parse("80000000-0000-0000-0000-000000000000"),
             ManagementGroupId = new ResourceIdentifier("/providers/Microsoft.Management/managementGroups/mg1"),
         },
         IsRenewed = true,
-        RenewPurchaseProperties = new BillingPurchaseProperties()
+        RenewPurchaseProperties = new BillingPurchaseProperties
         {
             SkuName = "Compute_Savings_Plan",
             DisplayName = "sp_newName_renewed",
@@ -44,13 +44,13 @@ BillingSavingsPlanModelPatch patch = new BillingSavingsPlanModelPatch()
             Term = BillingSavingsPlanTerm.P3Y,
             BillingPlan = BillingPlan.P1M,
             AppliedScopeType = BillingAppliedScopeType.ManagementGroup,
-            Commitment = new BillingBenefitCommitment()
+            Commitment = new BillingBenefitCommitment
             {
                 Grain = BillingBenefitCommitmentGrain.Hourly,
                 CurrencyCode = "USD",
                 Amount = 0.001,
             },
-            AppliedScopeProperties = new BillingAppliedScopeProperties()
+            AppliedScopeProperties = new BillingAppliedScopeProperties
             {
                 TenantId = Guid.Parse("80000000-0000-0000-0000-000000000000"),
                 ManagementGroupId = new ResourceIdentifier("/providers/Microsoft.Management/managementGroups/mg1"),

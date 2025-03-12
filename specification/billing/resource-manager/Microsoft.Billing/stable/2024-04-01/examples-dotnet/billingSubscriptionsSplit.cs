@@ -24,7 +24,7 @@ ResourceIdentifier billingSubscriptionResourceId = BillingSubscriptionResource.C
 BillingSubscriptionResource billingSubscription = client.GetBillingSubscriptionResource(billingSubscriptionResourceId);
 
 // invoke the operation
-BillingSubscriptionSplitContent content = new BillingSubscriptionSplitContent()
+BillingSubscriptionSplitContent content = new BillingSubscriptionSplitContent
 {
     TargetProductTypeId = "XYZ56789",
     TargetSkuId = "0001",

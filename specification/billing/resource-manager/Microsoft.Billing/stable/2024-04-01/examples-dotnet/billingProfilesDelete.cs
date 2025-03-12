@@ -25,4 +25,4 @@ BillingProfileResource billingProfile = client.GetBillingProfileResource(billing
 // invoke the operation
 await billingProfile.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

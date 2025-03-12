@@ -15,15 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingRoleAssignmentResource created on azure
-// for more information of creating BillingRoleAssignmentResource, please refer to the document of BillingRoleAssignmentResource
+// this example assumes you already have this BillingAccountResource created on azure
+// for more information of creating BillingAccountResource, please refer to the document of BillingAccountResource
 string billingAccountName = "7898901";
-string billingRoleAssignmentName = "9dfd08c2-62a3-4d47-85bd-1cdba1408402";
-ResourceIdentifier billingRoleAssignmentResourceId = BillingRoleAssignmentResource.CreateResourceIdentifier(billingAccountName, billingRoleAssignmentName);
-BillingRoleAssignmentResource billingRoleAssignment = client.GetBillingRoleAssignmentResource(billingRoleAssignmentResourceId);
+ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResourceIdentifier(billingAccountName);
+BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
+
+// get the collection of this BillingRoleAssignmentResource
+BillingRoleAssignmentCollection collection = billingAccount.GetBillingRoleAssignments();
 
 // invoke the operation
-BillingRoleAssignmentData data = new BillingRoleAssignmentData()
+string billingRoleAssignmentName = "9dfd08c2-62a3-4d47-85bd-1cdba1408402";
+BillingRoleAssignmentData data = new BillingRoleAssignmentData
 {
     Properties = new BillingRoleAssignmentProperties(new ResourceIdentifier("/providers/Microsoft.Billing/billingAccounts/7898901/billingRoleDefinitions/9f1983cb-2574-400c-87e9-34cf8e2280db"))
     {
@@ -32,7 +35,7 @@ BillingRoleAssignmentData data = new BillingRoleAssignmentData()
         UserEmailAddress = "john@contoso.com",
     },
 };
-ArmOperation<BillingRoleAssignmentResource> lro = await billingRoleAssignment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BillingRoleAssignmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, billingRoleAssignmentName, data);
 BillingRoleAssignmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

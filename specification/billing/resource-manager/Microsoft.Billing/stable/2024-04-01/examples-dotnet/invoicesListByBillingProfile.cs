@@ -23,11 +23,11 @@ ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResou
 BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
 
 // invoke the operation and iterate over the result
-BillingProfileResourceGetInvoicesOptions options = new BillingProfileResourceGetInvoicesOptions() { PeriodStartDate = DateTimeOffset.Parse("2023-01-01"), PeriodEndDate = DateTimeOffset.Parse("2023-06-30") };
+BillingProfileResourceGetInvoicesOptions options = new BillingProfileResourceGetInvoicesOptions { PeriodStartDate = DateTimeOffset.Parse("2023-01-01"), PeriodEndDate = DateTimeOffset.Parse("2023-06-30") };
 await foreach (BillingInvoiceData item in billingProfile.GetInvoicesAsync(options))
 {
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

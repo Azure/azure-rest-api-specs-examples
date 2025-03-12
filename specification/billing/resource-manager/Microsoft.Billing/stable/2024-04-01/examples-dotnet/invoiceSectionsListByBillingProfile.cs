@@ -26,7 +26,7 @@ BillingProfileResource billingProfile = client.GetBillingProfileResource(billing
 BillingInvoiceSectionCollection collection = billingProfile.GetBillingInvoiceSections();
 
 // invoke the operation and iterate over the result
-BillingInvoiceSectionCollectionGetAllOptions options = new BillingInvoiceSectionCollectionGetAllOptions() { IncludeDeleted = true };
+BillingInvoiceSectionCollectionGetAllOptions options = new BillingInvoiceSectionCollectionGetAllOptions { IncludeDeleted = true };
 await foreach (BillingInvoiceSectionResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -36,4 +36,4 @@ await foreach (BillingInvoiceSectionResource item in collection.GetAllAsync(opti
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

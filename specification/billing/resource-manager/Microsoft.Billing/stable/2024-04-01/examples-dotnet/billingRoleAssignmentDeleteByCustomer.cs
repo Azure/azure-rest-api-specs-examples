@@ -26,4 +26,4 @@ BillingCustomerRoleAssignmentResource billingCustomerRoleAssignment = client.Get
 // invoke the operation
 await billingCustomerRoleAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

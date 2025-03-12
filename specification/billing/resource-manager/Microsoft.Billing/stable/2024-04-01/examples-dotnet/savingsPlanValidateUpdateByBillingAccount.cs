@@ -24,19 +24,16 @@ ResourceIdentifier billingSavingsPlanModelResourceId = BillingSavingsPlanModelRe
 BillingSavingsPlanModelResource billingSavingsPlanModel = client.GetBillingSavingsPlanModelResource(billingSavingsPlanModelResourceId);
 
 // invoke the operation
-SavingsPlanUpdateValidateContent content = new SavingsPlanUpdateValidateContent()
+SavingsPlanUpdateValidateContent content = new SavingsPlanUpdateValidateContent
 {
-    Benefits =
-    {
-    new SavingsPlanUpdateRequestProperties()
+    Benefits = {new SavingsPlanUpdateRequestProperties
     {
     AppliedScopeType = BillingAppliedScopeType.Single,
-    AppliedScopeProperties = new BillingAppliedScopeProperties()
+    AppliedScopeProperties = new BillingAppliedScopeProperties
     {
     SubscriptionId = "/subscriptions/50000000-0000-0000-0000-000000000000",
     },
-    }
-    },
+    }},
 };
 SavingsPlanValidateResult result = await billingSavingsPlanModel.ValidateUpdateByBillingAccountAsync(content);
 

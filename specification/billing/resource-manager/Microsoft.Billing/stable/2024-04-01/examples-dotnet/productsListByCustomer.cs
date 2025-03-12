@@ -23,7 +23,7 @@ ResourceIdentifier billingCustomerResourceId = BillingCustomerResource.CreateRes
 BillingCustomerResource billingCustomer = client.GetBillingCustomerResource(billingCustomerResourceId);
 
 // invoke the operation and iterate over the result
-BillingCustomerResourceGetProductsOptions options = new BillingCustomerResourceGetProductsOptions() { };
+BillingCustomerResourceGetProductsOptions options = new BillingCustomerResourceGetProductsOptions();
 await foreach (BillingProductResource item in billingCustomer.GetProductsAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -33,4 +33,4 @@ await foreach (BillingProductResource item in billingCustomer.GetProductsAsync(o
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

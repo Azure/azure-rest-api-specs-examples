@@ -26,4 +26,4 @@ BillingSubscriptionResource billingSubscription = client.GetBillingSubscriptionR
 // invoke the operation
 await billingSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

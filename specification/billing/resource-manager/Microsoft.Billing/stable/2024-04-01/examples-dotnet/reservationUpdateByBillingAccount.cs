@@ -24,7 +24,7 @@ ResourceIdentifier billingReservationResourceId = BillingReservationResource.Cre
 BillingReservationResource billingReservation = client.GetBillingReservationResource(billingReservationResourceId);
 
 // invoke the operation
-BillingReservationPatch patch = new BillingReservationPatch()
+BillingReservationPatch patch = new BillingReservationPatch
 {
     DisplayName = "NewName",
 };

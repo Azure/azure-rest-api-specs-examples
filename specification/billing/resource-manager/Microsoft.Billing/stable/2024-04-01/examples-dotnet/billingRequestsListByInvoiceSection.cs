@@ -24,7 +24,7 @@ ResourceIdentifier billingInvoiceSectionResourceId = BillingInvoiceSectionResour
 BillingInvoiceSectionResource billingInvoiceSection = client.GetBillingInvoiceSectionResource(billingInvoiceSectionResourceId);
 
 // invoke the operation and iterate over the result
-BillingInvoiceSectionResourceGetBillingRequestsOptions options = new BillingInvoiceSectionResourceGetBillingRequestsOptions() { };
+BillingInvoiceSectionResourceGetBillingRequestsOptions options = new BillingInvoiceSectionResourceGetBillingRequestsOptions();
 await foreach (BillingRequestResource item in billingInvoiceSection.GetBillingRequestsAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -34,4 +34,4 @@ await foreach (BillingRequestResource item in billingInvoiceSection.GetBillingRe
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

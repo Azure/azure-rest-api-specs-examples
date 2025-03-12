@@ -24,7 +24,7 @@ ResourceIdentifier billingEnrollmentAccountRoleAssignmentResourceId = BillingEnr
 BillingEnrollmentAccountRoleAssignmentResource billingEnrollmentAccountRoleAssignment = client.GetBillingEnrollmentAccountRoleAssignmentResource(billingEnrollmentAccountRoleAssignmentResourceId);
 
 // invoke the operation
-BillingRoleAssignmentData data = new BillingRoleAssignmentData()
+BillingRoleAssignmentData data = new BillingRoleAssignmentData
 {
     Properties = new BillingRoleAssignmentProperties(new ResourceIdentifier("/providers/Microsoft.Billing/billingAccounts/7898901/enrollmentAccounts/123456/billingRoleDefinitions/9f1983cb-2574-400c-87e9-34cf8e2280db"))
     {

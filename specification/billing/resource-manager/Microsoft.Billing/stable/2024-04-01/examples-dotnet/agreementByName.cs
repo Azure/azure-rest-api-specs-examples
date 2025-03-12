@@ -14,18 +14,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingAgreementResource created on azure
-// for more information of creating BillingAgreementResource, please refer to the document of BillingAgreementResource
+// this example assumes you already have this BillingAccountResource created on azure
+// for more information of creating BillingAccountResource, please refer to the document of BillingAccountResource
 string billingAccountName = "10000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
-string agreementName = "ABC123";
-ResourceIdentifier billingAgreementResourceId = BillingAgreementResource.CreateResourceIdentifier(billingAccountName, agreementName);
-BillingAgreementResource billingAgreement = client.GetBillingAgreementResource(billingAgreementResourceId);
+ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResourceIdentifier(billingAccountName);
+BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
+
+// get the collection of this BillingAgreementResource
+BillingAgreementCollection collection = billingAccount.GetBillingAgreements();
 
 // invoke the operation
-BillingAgreementResource result = await billingAgreement.GetAsync();
+string agreementName = "ABC123";
+NullableResponse<BillingAgreementResource> response = await collection.GetIfExistsAsync(agreementName);
+BillingAgreementResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-BillingAgreementData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    BillingAgreementData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

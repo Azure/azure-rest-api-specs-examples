@@ -23,9 +23,9 @@ ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResou
 BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
 
 // invoke the operation
-BillingAccountPatch patch = new BillingAccountPatch()
+BillingAccountPatch patch = new BillingAccountPatch
 {
-    Properties = new BillingAccountProperties()
+    Properties = new BillingAccountProperties
     {
         DisplayName = "Test Account",
         SoldTo = new BillingAddressDetails("1 Microsoft Way", "US")

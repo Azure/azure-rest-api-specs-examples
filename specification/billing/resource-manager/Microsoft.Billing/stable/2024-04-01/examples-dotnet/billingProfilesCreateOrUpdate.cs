@@ -26,9 +26,9 @@ BillingProfileCollection collection = billingAccount.GetBillingProfiles();
 
 // invoke the operation
 string billingProfileName = "xxxx-xxxx-xxx-xxx";
-BillingProfileData data = new BillingProfileData()
+BillingProfileData data = new BillingProfileData
 {
-    Properties = new BillingProfileProperties()
+    Properties = new BillingProfileProperties
     {
         BillTo = new BillingAddressDetails("Test Address1", "US")
         {
@@ -45,16 +45,13 @@ BillingProfileData data = new BillingProfileData()
             IsValidAddress = true,
         },
         DisplayName = "Billing Profile 1",
-        EnabledAzurePlans =
-        {
-        new BillingAzurePlan()
+        EnabledAzurePlans = {new BillingAzurePlan
         {
         SkuId = "0001",
-        },new BillingAzurePlan()
+        }, new BillingAzurePlan
         {
         SkuId = "0002",
-        }
-        },
+        }},
         IsInvoiceEmailOptIn = true,
         PoNumber = "ABC12345",
         ShipTo = new BillingAddressDetails("Test Address1", "US")

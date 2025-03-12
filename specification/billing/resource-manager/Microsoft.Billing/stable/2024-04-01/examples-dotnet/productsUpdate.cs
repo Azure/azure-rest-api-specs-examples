@@ -23,9 +23,9 @@ ResourceIdentifier billingProductResourceId = BillingProductResource.CreateResou
 BillingProductResource billingProduct = client.GetBillingProductResource(billingProductResourceId);
 
 // invoke the operation
-BillingProductPatch patch = new BillingProductPatch()
+BillingProductPatch patch = new BillingProductPatch
 {
-    Properties = new BillingProductProperties()
+    Properties = new BillingProductProperties
     {
         AutoRenew = BillingSubscriptionAutoRenewState.On,
     },

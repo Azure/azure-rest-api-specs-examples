@@ -23,4 +23,4 @@ BillingPaymentMethodResource billingPaymentMethod = client.GetBillingPaymentMeth
 // invoke the operation
 await billingPaymentMethod.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

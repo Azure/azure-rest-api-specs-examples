@@ -23,11 +23,11 @@ ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResou
 BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
 
 // invoke the operation
-BillingAccountPatch patch = new BillingAccountPatch()
+BillingAccountPatch patch = new BillingAccountPatch
 {
-    Properties = new BillingAccountProperties()
+    Properties = new BillingAccountProperties
     {
-        EnrollmentDetails = new BillingAccountEnrollmentDetails()
+        EnrollmentDetails = new BillingAccountEnrollmentDetails
         {
             PoNumber = "poNumber123",
         },

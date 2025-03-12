@@ -26,4 +26,4 @@ BillingInvoiceSectionRoleAssignmentResource billingInvoiceSectionRoleAssignment 
 // invoke the operation
 await billingInvoiceSectionRoleAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

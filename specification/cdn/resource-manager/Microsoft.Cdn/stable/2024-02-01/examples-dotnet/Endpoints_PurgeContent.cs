@@ -25,10 +25,7 @@ ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIde
 CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
 
 // invoke the operation
-PurgeContent content = new PurgeContent(new string[]
-{
-"/folder1"
-});
+PurgeContent content = new PurgeContent(new string[] { "/folder1" });
 await cdnEndpoint.PurgeContentAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

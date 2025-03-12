@@ -28,4 +28,4 @@ CdnOriginResource cdnOrigin = client.GetCdnOriginResource(cdnOriginResourceId);
 // invoke the operation
 await cdnOrigin.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

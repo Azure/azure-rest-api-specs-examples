@@ -25,11 +25,11 @@ ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIde
 CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
 
 // invoke the operation
-CdnEndpointPatch patch = new CdnEndpointPatch()
+CdnEndpointPatch patch = new CdnEndpointPatch
 {
     Tags =
     {
-    ["additionalProperties"] = "Tag1",
+    ["additionalProperties"] = "Tag1"
     },
 };
 ArmOperation<CdnEndpointResource> lro = await cdnEndpoint.UpdateAsync(WaitUntil.Completed, patch);

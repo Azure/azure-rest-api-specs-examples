@@ -28,4 +28,4 @@ FrontDoorSecretResource frontDoorSecret = client.GetFrontDoorSecretResource(fron
 // invoke the operation
 await frontDoorSecret.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

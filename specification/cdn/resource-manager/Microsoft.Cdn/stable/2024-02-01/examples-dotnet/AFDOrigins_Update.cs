@@ -26,7 +26,7 @@ ResourceIdentifier frontDoorOriginResourceId = FrontDoorOriginResource.CreateRes
 FrontDoorOriginResource frontDoorOrigin = client.GetFrontDoorOriginResource(frontDoorOriginResourceId);
 
 // invoke the operation
-FrontDoorOriginPatch patch = new FrontDoorOriginPatch()
+FrontDoorOriginPatch patch = new FrontDoorOriginPatch
 {
     HostName = "host1.blob.core.windows.net",
     HttpPort = 80,

@@ -25,7 +25,7 @@ ResourceIdentifier frontDoorCustomDomainResourceId = FrontDoorCustomDomainResour
 FrontDoorCustomDomainResource frontDoorCustomDomain = client.GetFrontDoorCustomDomainResource(frontDoorCustomDomainResourceId);
 
 // invoke the operation
-FrontDoorCustomDomainPatch patch = new FrontDoorCustomDomainPatch()
+FrontDoorCustomDomainPatch patch = new FrontDoorCustomDomainPatch
 {
     TlsSettings = new FrontDoorCustomDomainHttpsContent(FrontDoorCertificateType.CustomerCertificate)
     {

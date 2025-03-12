@@ -30,23 +30,20 @@ CdnOriginGroupCollection collection = cdnEndpoint.GetCdnOriginGroups();
 
 // invoke the operation
 string originGroupName = "origingroup1";
-CdnOriginGroupData data = new CdnOriginGroupData()
+CdnOriginGroupData data = new CdnOriginGroupData
 {
-    HealthProbeSettings = new HealthProbeSettings()
+    HealthProbeSettings = new HealthProbeSettings
     {
         ProbePath = "/health.aspx",
         ProbeRequestType = HealthProbeRequestType.Get,
         ProbeProtocol = HealthProbeProtocol.Http,
         ProbeIntervalInSeconds = 120,
     },
-    Origins =
-    {
-    new WritableSubResource()
+    Origins = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/endpoints/endpoint1/origins/origin1"),
-    }
-    },
-    ResponseBasedOriginErrorDetectionSettings = new ResponseBasedOriginErrorDetectionSettings()
+    }},
+    ResponseBasedOriginErrorDetectionSettings = new ResponseBasedOriginErrorDetectionSettings
     {
         ResponseBasedDetectedErrorType = ResponseBasedDetectedErrorType.TcpErrorsOnly,
         ResponseBasedFailoverThresholdPercentage = 10,

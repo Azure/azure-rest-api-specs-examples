@@ -1,11 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Cdn;
 
@@ -28,7 +28,7 @@ ProfileResource profile = client.GetProfileResource(profileResourceId);
 // invoke the operation
 ProfileUpgradeContent content = new ProfileUpgradeContent(new ProfileChangeSkuWafMapping[]
 {
-new ProfileChangeSkuWafMapping("securityPolicy1",new WritableSubResource()
+new ProfileChangeSkuWafMapping("securityPolicy1", new WritableSubResource
 {
 Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/waf2"),
 })

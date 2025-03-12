@@ -1,11 +1,11 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Cdn;
 
@@ -26,14 +26,12 @@ ResourceIdentifier profileResourceId = ProfileResource.CreateResourceIdentifier(
 ProfileResource profile = client.GetProfileResource(profileResourceId);
 
 // invoke the operation
-ProfileResourceGetWafLogAnalyticsRankingsOptions options = new ProfileResourceGetWafLogAnalyticsRankingsOptions(metrics: new WafMetric[]
-{
-WafMetric.ClientRequestCount
-}, dateTimeBegin: DateTimeOffset.Parse("2020-11-04T06:49:27.554Z"), dateTimeEnd: DateTimeOffset.Parse("2020-11-04T09:49:27.554Z"), maxRanking: 5, rankings: new WafRankingType[]
-{
-WafRankingType.RuleId
-})
-{ };
+IEnumerable<WafMetric> metrics = new WafMetric[] { WafMetric.ClientRequestCount };
+DateTimeOffset dateTimeBegin = DateTimeOffset.Parse("2020-11-04T06:49:27.554Z");
+DateTimeOffset dateTimeEnd = DateTimeOffset.Parse("2020-11-04T09:49:27.554Z");
+int maxRanking = 5;
+IEnumerable<WafRankingType> rankings = new WafRankingType[] { WafRankingType.RuleId };
+ProfileResourceGetWafLogAnalyticsRankingsOptions options = new ProfileResourceGetWafLogAnalyticsRankingsOptions(metrics, dateTimeBegin, dateTimeEnd, maxRanking, rankings);
 WafRankingsResponse result = await profile.GetWafLogAnalyticsRankingsAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

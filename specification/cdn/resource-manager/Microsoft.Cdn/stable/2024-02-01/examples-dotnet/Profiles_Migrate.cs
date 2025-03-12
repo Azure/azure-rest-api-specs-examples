@@ -25,10 +25,10 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-MigrationContent content = new MigrationContent(new CdnSku()
+MigrationContent content = new MigrationContent(new CdnSku
 {
     Name = CdnSkuName.StandardAzureFrontDoor,
-}, new WritableSubResource()
+}, new WritableSubResource
 {
     Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoors/frontdoorname"),
 }, "profile1");

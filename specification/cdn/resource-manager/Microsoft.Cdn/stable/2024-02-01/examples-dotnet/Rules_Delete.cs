@@ -28,4 +28,4 @@ FrontDoorRuleResource frontDoorRule = client.GetFrontDoorRuleResource(frontDoorR
 // invoke the operation
 await frontDoorRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

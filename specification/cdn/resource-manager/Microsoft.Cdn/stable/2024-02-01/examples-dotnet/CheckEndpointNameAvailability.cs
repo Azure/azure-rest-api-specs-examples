@@ -6,6 +6,7 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Cdn.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.Cdn;
 
 // Generated from example definition: specification/cdn/resource-manager/Microsoft.Cdn/stable/2024-02-01/examples/CheckEndpointNameAvailability.json

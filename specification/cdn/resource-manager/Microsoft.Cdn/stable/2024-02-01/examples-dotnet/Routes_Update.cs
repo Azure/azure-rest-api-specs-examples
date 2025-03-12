@@ -27,41 +27,26 @@ ResourceIdentifier frontDoorRouteResourceId = FrontDoorRouteResource.CreateResou
 FrontDoorRouteResource frontDoorRoute = client.GetFrontDoorRouteResource(frontDoorRouteResourceId);
 
 // invoke the operation
-FrontDoorRoutePatch patch = new FrontDoorRoutePatch()
+FrontDoorRoutePatch patch = new FrontDoorRoutePatch
 {
-    CustomDomains =
-    {
-    new FrontDoorActivatedResourceInfo()
+    CustomDomains = {new FrontDoorActivatedResourceInfo
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/customDomains/domain1"),
-    }
-    },
+    }},
     OriginGroupId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/originGroups/originGroup1"),
     OriginPath = null,
-    RuleSets =
-    {
-    new WritableSubResource()
+    RuleSets = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/RG/providers/Microsoft.Cdn/profiles/profile1/ruleSets/ruleSet1"),
-    }
-    },
-    SupportedProtocols =
-    {
-    FrontDoorEndpointProtocol.Https,FrontDoorEndpointProtocol.Http
-    },
-    PatternsToMatch =
-    {
-    "/*"
-    },
-    CacheConfiguration = new FrontDoorRouteCacheConfiguration()
+    }},
+    SupportedProtocols = { FrontDoorEndpointProtocol.Https, FrontDoorEndpointProtocol.Http },
+    PatternsToMatch = { "/*" },
+    CacheConfiguration = new FrontDoorRouteCacheConfiguration
     {
         QueryStringCachingBehavior = FrontDoorQueryStringCachingBehavior.IgnoreQueryString,
-        CompressionSettings = new RouteCacheCompressionSettings()
+        CompressionSettings = new RouteCacheCompressionSettings
         {
-            ContentTypesToCompress =
-            {
-            "text/html","application/octet-stream"
-            },
+            ContentTypesToCompress = { "text/html", "application/octet-stream" },
             IsCompressionEnabled = true,
         },
     },

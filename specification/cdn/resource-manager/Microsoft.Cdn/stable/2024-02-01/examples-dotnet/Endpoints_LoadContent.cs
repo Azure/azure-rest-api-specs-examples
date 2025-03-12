@@ -25,10 +25,7 @@ ResourceIdentifier cdnEndpointResourceId = CdnEndpointResource.CreateResourceIde
 CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResourceId);
 
 // invoke the operation
-LoadContent content = new LoadContent(new string[]
-{
-"/folder1"
-});
+LoadContent content = new LoadContent(new string[] { "/folder1" });
 await cdnEndpoint.LoadContentAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

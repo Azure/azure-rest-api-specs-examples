@@ -25,31 +25,22 @@ ResourceIdentifier frontDoorSecurityPolicyResourceId = FrontDoorSecurityPolicyRe
 FrontDoorSecurityPolicyResource frontDoorSecurityPolicy = client.GetFrontDoorSecurityPolicyResource(frontDoorSecurityPolicyResourceId);
 
 // invoke the operation
-FrontDoorSecurityPolicyPatch patch = new FrontDoorSecurityPolicyPatch()
+FrontDoorSecurityPolicyPatch patch = new FrontDoorSecurityPolicyPatch
 {
-    Properties = new SecurityPolicyWebApplicationFirewall()
+    Properties = new SecurityPolicyWebApplicationFirewall
     {
         WafPolicyId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/wafTest"),
-        Associations =
+        Associations = {new SecurityPolicyWebApplicationFirewallAssociation
         {
-        new SecurityPolicyWebApplicationFirewallAssociation()
-        {
-        Domains =
-        {
-        new FrontDoorActivatedResourceInfo()
+        Domains = {new FrontDoorActivatedResourceInfo
         {
         Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain1"),
-        },new FrontDoorActivatedResourceInfo()
+        }, new FrontDoorActivatedResourceInfo
         {
         Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Cdn/profiles/profile1/customdomains/testdomain2"),
-        }
-        },
-        PatternsToMatch =
-        {
-        "/*"
-        },
-        }
-        },
+        }},
+        PatternsToMatch = {"/*"},
+        }},
     },
 };
 ArmOperation<FrontDoorSecurityPolicyResource> lro = await frontDoorSecurityPolicy.UpdateAsync(WaitUntil.Completed, patch);

@@ -25,7 +25,7 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-CanMigrateContent content = new CanMigrateContent(new WritableSubResource()
+CanMigrateContent content = new CanMigrateContent(new WritableSubResource
 {
     Id = new ResourceIdentifier("/subscriptions/subid/resourcegroups/RG/providers/Microsoft.Network/frontdoors/frontdoorname"),
 });

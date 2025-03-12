@@ -27,7 +27,7 @@ CdnEndpointCollection collection = profile.GetCdnEndpoints();
 
 // invoke the operation
 string endpointName = "endpoint1";
-CdnEndpointData data = new CdnEndpointData(new AzureLocation("placeholder"));
+CdnEndpointData data = new CdnEndpointData(default);
 ArmOperation<CdnEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 CdnEndpointResource result = lro.Value;
 

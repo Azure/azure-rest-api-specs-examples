@@ -24,11 +24,11 @@ ResourceIdentifier cdnWebApplicationFirewallPolicyResourceId = CdnWebApplication
 CdnWebApplicationFirewallPolicyResource cdnWebApplicationFirewallPolicy = client.GetCdnWebApplicationFirewallPolicyResource(cdnWebApplicationFirewallPolicyResourceId);
 
 // invoke the operation
-CdnWebApplicationFirewallPolicyPatch patch = new CdnWebApplicationFirewallPolicyPatch()
+CdnWebApplicationFirewallPolicyPatch patch = new CdnWebApplicationFirewallPolicyPatch
 {
     Tags =
     {
-    ["foo"] = "bar",
+    ["foo"] = "bar"
     },
 };
 ArmOperation<CdnWebApplicationFirewallPolicyResource> lro = await cdnWebApplicationFirewallPolicy.UpdateAsync(WaitUntil.Completed, patch);

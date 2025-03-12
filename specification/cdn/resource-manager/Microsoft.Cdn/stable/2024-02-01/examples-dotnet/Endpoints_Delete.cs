@@ -27,4 +27,4 @@ CdnEndpointResource cdnEndpoint = client.GetCdnEndpointResource(cdnEndpointResou
 // invoke the operation
 await cdnEndpoint.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

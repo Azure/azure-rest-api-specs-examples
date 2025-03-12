@@ -29,4 +29,4 @@ ServiceWorkspaceGroupResource serviceWorkspaceGroup = client.GetServiceWorkspace
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceGroup.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

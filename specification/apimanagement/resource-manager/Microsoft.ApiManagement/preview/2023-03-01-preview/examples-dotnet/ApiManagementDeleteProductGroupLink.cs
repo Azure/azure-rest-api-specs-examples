@@ -27,4 +27,4 @@ ServiceProductGroupLinkResource serviceProductGroupLink = client.GetServiceProdu
 // invoke the operation
 await serviceProductGroupLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

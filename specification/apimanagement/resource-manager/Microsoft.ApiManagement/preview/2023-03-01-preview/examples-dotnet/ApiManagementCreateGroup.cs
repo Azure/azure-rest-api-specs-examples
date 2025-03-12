@@ -28,7 +28,7 @@ ApiManagementGroupCollection collection = apiManagementService.GetApiManagementG
 
 // invoke the operation
 string groupId = "tempgroup";
-ApiManagementGroupCreateOrUpdateContent content = new ApiManagementGroupCreateOrUpdateContent()
+ApiManagementGroupCreateOrUpdateContent content = new ApiManagementGroupCreateOrUpdateContent
 {
     DisplayName = "temp group",
 };

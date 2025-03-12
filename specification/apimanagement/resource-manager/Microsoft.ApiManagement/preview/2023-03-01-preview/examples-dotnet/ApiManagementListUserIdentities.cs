@@ -30,4 +30,4 @@ await foreach (UserIdentityContract item in apiManagementUser.GetUserIdentitiesA
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

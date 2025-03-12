@@ -28,7 +28,7 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "petstore";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Path = "petstore",
     Value = "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml",

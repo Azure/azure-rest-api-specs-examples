@@ -28,4 +28,4 @@ ApiManagementProductResource apiManagementProduct = client.GetApiManagementProdu
 string groupId = "templateGroup";
 await apiManagementProduct.DeleteProductGroupAsync(groupId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,7 +29,7 @@ ServiceWorkspaceTagCollection collection = workspaceContract.GetServiceWorkspace
 
 // invoke the operation
 string tagId = "tagId1";
-ApiManagementTagCreateOrUpdateContent content = new ApiManagementTagCreateOrUpdateContent()
+ApiManagementTagCreateOrUpdateContent content = new ApiManagementTagCreateOrUpdateContent
 {
     DisplayName = "tag1",
 };

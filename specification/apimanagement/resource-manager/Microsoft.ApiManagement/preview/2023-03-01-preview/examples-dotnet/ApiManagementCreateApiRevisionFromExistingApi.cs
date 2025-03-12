@@ -28,7 +28,7 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "echo-api;rev=3";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     ApiRevisionDescription = "Creating a Revision of an existing API",
     SourceApiId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api"),

@@ -27,12 +27,9 @@ ServiceWorkspaceNamedValueResource serviceWorkspaceNamedValue = client.GetServic
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementNamedValuePatch patch = new ApiManagementNamedValuePatch()
+ApiManagementNamedValuePatch patch = new ApiManagementNamedValuePatch
 {
-    Tags =
-    {
-    "foo","bar2"
-    },
+    Tags = { "foo", "bar2" },
     IsSecret = false,
     DisplayName = "prop3name",
     Value = "propValue",

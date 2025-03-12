@@ -28,4 +28,4 @@ ServiceWorkspaceTagProductLinkResource serviceWorkspaceTagProductLink = client.G
 // invoke the operation
 await serviceWorkspaceTagProductLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

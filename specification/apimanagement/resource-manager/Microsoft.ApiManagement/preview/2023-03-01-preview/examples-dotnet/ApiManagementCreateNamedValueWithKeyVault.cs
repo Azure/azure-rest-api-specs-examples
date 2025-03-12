@@ -28,15 +28,12 @@ ApiManagementNamedValueCollection collection = apiManagementService.GetApiManage
 
 // invoke the operation
 string namedValueId = "testprop6";
-ApiManagementNamedValueCreateOrUpdateContent content = new ApiManagementNamedValueCreateOrUpdateContent()
+ApiManagementNamedValueCreateOrUpdateContent content = new ApiManagementNamedValueCreateOrUpdateContent
 {
-    Tags =
-    {
-    "foo","bar"
-    },
+    Tags = { "foo", "bar" },
     IsSecret = true,
     DisplayName = "prop6namekv",
-    KeyVault = new KeyVaultContractCreateProperties()
+    KeyVault = new KeyVaultContractCreateProperties
     {
         SecretIdentifier = "https://contoso.vault.azure.net/secrets/aadSecret",
         IdentityClientId = "ceaa6b06-c00f-43ef-99ac-f53d1fe876a0",

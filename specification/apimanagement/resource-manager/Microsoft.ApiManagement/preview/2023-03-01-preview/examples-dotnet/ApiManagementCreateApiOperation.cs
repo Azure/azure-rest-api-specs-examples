@@ -29,44 +29,27 @@ ApiOperationCollection collection = api.GetApiOperations();
 
 // invoke the operation
 string operationId = "newoperations";
-ApiOperationData data = new ApiOperationData()
+ApiOperationData data = new ApiOperationData
 {
-    TemplateParameters =
-    {
-    },
+    TemplateParameters = { },
     Description = "This can only be done by the logged in user.",
-    Request = new RequestContract()
+    Request = new RequestContract
     {
         Description = "Created user object",
-        QueryParameters =
-        {
-        },
-        Headers =
-        {
-        },
-        Representations =
-        {
-        new RepresentationContract("application/json")
+        QueryParameters = { },
+        Headers = { },
+        Representations = {new RepresentationContract("application/json")
         {
         SchemaId = "592f6c1d0af5840ca8897f0c",
         TypeName = "User",
-        }
-        },
+        }},
     },
-    Responses =
-    {
-    new ResponseContract(200)
+    Responses = {new ResponseContract(200)
     {
     Description = "successful operation",
-    Representations =
-    {
-    new RepresentationContract("application/xml"),new RepresentationContract("application/json")
-    },
-    Headers =
-    {
-    },
-    }
-    },
+    Representations = {new RepresentationContract("application/xml"), new RepresentationContract("application/json")},
+    Headers = {},
+    }},
     DisplayName = "createUser2",
     Method = "POST",
     UriTemplate = "/user1",

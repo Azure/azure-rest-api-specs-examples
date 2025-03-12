@@ -28,4 +28,4 @@ ApiManagementNotificationResource apiManagementNotification = client.GetApiManag
 string email = "contoso@live.com";
 await apiManagementNotification.DeleteNotificationRecipientEmailAsync(email);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

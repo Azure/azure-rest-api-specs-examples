@@ -26,7 +26,7 @@ ApiManagementGroupResource apiManagementGroup = client.GetApiManagementGroupReso
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementGroupPatch patch = new ApiManagementGroupPatch()
+ApiManagementGroupPatch patch = new ApiManagementGroupPatch
 {
     DisplayName = "temp group",
 };

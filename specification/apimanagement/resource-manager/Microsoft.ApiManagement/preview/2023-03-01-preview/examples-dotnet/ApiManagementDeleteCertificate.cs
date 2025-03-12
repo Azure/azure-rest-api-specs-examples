@@ -28,4 +28,4 @@ ApiManagementCertificateResource apiManagementCertificate = client.GetApiManagem
 ETag ifMatch = new ETag("*");
 await apiManagementCertificate.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

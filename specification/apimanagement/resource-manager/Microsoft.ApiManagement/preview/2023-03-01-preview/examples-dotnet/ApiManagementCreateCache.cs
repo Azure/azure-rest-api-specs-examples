@@ -27,7 +27,7 @@ ApiManagementCacheCollection collection = apiManagementService.GetApiManagementC
 
 // invoke the operation
 string cacheId = "c1";
-ApiManagementCacheData data = new ApiManagementCacheData()
+ApiManagementCacheData data = new ApiManagementCacheData
 {
     Description = "Redis cache instances in West India",
     ConnectionString = "apim.redis.cache.windows.net:6380,password=xc,ssl=True,abortConnect=False",

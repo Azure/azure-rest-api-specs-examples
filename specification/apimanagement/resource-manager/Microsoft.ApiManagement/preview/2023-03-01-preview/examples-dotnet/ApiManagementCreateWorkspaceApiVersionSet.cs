@@ -29,7 +29,7 @@ ServiceWorkspaceApiVersionSetCollection collection = workspaceContract.GetServic
 
 // invoke the operation
 string versionSetId = "api1";
-ApiVersionSetData data = new ApiVersionSetData()
+ApiVersionSetData data = new ApiVersionSetData
 {
     Description = "Version configuration",
     DisplayName = "api set 1",

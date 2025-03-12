@@ -25,7 +25,7 @@ ResourceIdentifier policyFragmentContractResourceId = PolicyFragmentContractReso
 PolicyFragmentContractResource policyFragmentContract = client.GetPolicyFragmentContractResource(policyFragmentContractResourceId);
 
 // invoke the operation
-PolicyFragmentContractData data = new PolicyFragmentContractData()
+PolicyFragmentContractData data = new PolicyFragmentContractData
 {
     Value = "<fragment><json-to-xml apply=\"always\" consider-accept-header=\"false\" /></fragment>",
     Description = "A policy fragment example",

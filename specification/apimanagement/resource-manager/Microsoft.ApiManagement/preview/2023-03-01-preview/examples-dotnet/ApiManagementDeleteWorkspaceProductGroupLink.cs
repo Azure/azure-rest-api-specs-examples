@@ -28,4 +28,4 @@ ServiceWorkspaceProductGroupLinkResource serviceWorkspaceProductGroupLink = clie
 // invoke the operation
 await serviceWorkspaceProductGroupLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

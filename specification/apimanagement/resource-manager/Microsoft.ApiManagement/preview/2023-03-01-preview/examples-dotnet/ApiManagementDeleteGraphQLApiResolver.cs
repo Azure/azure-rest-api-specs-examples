@@ -29,4 +29,4 @@ ResolverContractResource resolverContract = client.GetResolverContractResource(r
 ETag ifMatch = new ETag("*");
 await resolverContract.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

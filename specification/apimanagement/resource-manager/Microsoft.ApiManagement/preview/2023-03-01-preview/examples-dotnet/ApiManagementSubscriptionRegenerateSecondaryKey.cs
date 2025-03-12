@@ -27,4 +27,4 @@ ApiManagementSubscriptionResource apiManagementSubscription = client.GetApiManag
 // invoke the operation
 await apiManagementSubscription.RegenerateSecondaryKeyAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

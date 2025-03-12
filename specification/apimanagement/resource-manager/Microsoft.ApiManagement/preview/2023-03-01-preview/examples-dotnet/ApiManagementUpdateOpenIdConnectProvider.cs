@@ -26,7 +26,7 @@ ApiManagementOpenIdConnectProviderResource apiManagementOpenIdConnectProvider = 
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementOpenIdConnectProviderPatch patch = new ApiManagementOpenIdConnectProviderPatch()
+ApiManagementOpenIdConnectProviderPatch patch = new ApiManagementOpenIdConnectProviderPatch
 {
     ClientSecret = "updatedsecret",
     UseInTestConsole = false,

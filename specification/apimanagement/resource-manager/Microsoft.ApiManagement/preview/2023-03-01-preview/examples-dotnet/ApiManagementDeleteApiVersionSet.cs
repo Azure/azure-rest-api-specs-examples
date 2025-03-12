@@ -28,4 +28,4 @@ ApiVersionSetResource apiVersionSet = client.GetApiVersionSetResource(apiVersion
 ETag ifMatch = new ETag("*");
 await apiVersionSet.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,7 +27,7 @@ ServiceWorkspaceSubscriptionResource serviceWorkspaceSubscription = client.GetSe
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementSubscriptionPatch patch = new ApiManagementSubscriptionPatch()
+ApiManagementSubscriptionPatch patch = new ApiManagementSubscriptionPatch
 {
     DisplayName = "testsub",
 };

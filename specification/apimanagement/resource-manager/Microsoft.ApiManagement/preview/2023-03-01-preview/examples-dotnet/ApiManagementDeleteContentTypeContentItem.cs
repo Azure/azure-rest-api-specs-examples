@@ -6,7 +6,6 @@ using System.Xml;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApiManagement.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementDeleteContentTypeContentItem.json
@@ -31,4 +30,4 @@ string contentItemId = "4e3cf6a5-574a-ba08-1f23-2e7a38faa6d8";
 ETag ifMatch = new ETag("*");
 await apiManagementService.DeleteContentItemAsync(contentTypeId, contentItemId, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

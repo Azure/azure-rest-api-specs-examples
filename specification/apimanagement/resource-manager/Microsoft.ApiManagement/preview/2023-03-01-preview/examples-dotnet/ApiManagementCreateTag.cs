@@ -28,7 +28,7 @@ ApiManagementTagCollection collection = apiManagementService.GetApiManagementTag
 
 // invoke the operation
 string tagId = "tagId1";
-ApiManagementTagCreateOrUpdateContent content = new ApiManagementTagCreateOrUpdateContent()
+ApiManagementTagCreateOrUpdateContent content = new ApiManagementTagCreateOrUpdateContent
 {
     DisplayName = "tag1",
 };

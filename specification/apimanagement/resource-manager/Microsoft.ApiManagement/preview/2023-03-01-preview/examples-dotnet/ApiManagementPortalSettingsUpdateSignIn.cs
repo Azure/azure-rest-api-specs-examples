@@ -24,10 +24,10 @@ ApiManagementPortalSignInSettingResource apiManagementPortalSignInSetting = clie
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementPortalSignInSettingData data = new ApiManagementPortalSignInSettingData()
+ApiManagementPortalSignInSettingData data = new ApiManagementPortalSignInSettingData
 {
     IsRedirectEnabled = true,
 };
 await apiManagementPortalSignInSetting.UpdateAsync(ifMatch, data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

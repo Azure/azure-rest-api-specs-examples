@@ -25,10 +25,10 @@ ApiManagementPortalSignUpSettingResource apiManagementPortalSignUpSetting = clie
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementPortalSignUpSettingData data = new ApiManagementPortalSignUpSettingData()
+ApiManagementPortalSignUpSettingData data = new ApiManagementPortalSignUpSettingData
 {
     IsSignUpDeveloperPortalEnabled = true,
-    TermsOfService = new TermsOfServiceProperties()
+    TermsOfService = new TermsOfServiceProperties
     {
         Text = "Terms of service text.",
         IsDisplayEnabled = true,
@@ -37,4 +37,4 @@ ApiManagementPortalSignUpSettingData data = new ApiManagementPortalSignUpSetting
 };
 await apiManagementPortalSignUpSetting.UpdateAsync(ifMatch, data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

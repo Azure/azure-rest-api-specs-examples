@@ -28,4 +28,4 @@ ApiOperationTagResource apiOperationTag = client.GetApiOperationTagResource(apiO
 // invoke the operation
 await apiOperationTag.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

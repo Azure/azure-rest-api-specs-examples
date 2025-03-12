@@ -30,4 +30,4 @@ await foreach (ApiManagementGroupUserData item in apiManagementGroup.GetGroupUse
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

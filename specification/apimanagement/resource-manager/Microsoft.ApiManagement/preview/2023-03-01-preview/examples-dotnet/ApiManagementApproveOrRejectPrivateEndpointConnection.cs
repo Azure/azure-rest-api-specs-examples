@@ -25,10 +25,10 @@ ResourceIdentifier apiManagementPrivateEndpointConnectionResourceId = ApiManagem
 ApiManagementPrivateEndpointConnectionResource apiManagementPrivateEndpointConnection = client.GetApiManagementPrivateEndpointConnectionResource(apiManagementPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-ApiManagementPrivateEndpointConnectionCreateOrUpdateContent content = new ApiManagementPrivateEndpointConnectionCreateOrUpdateContent()
+ApiManagementPrivateEndpointConnectionCreateOrUpdateContent content = new ApiManagementPrivateEndpointConnectionCreateOrUpdateContent
 {
     Id = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/privateEndpointConnections/connectionName"),
-    PrivateLinkServiceConnectionState = new ApiManagementPrivateLinkServiceConnectionState()
+    PrivateLinkServiceConnectionState = new ApiManagementPrivateLinkServiceConnectionState
     {
         Status = ApiManagementPrivateEndpointServiceConnectionStatus.Approved,
         Description = "The Private Endpoint Connection is approved.",

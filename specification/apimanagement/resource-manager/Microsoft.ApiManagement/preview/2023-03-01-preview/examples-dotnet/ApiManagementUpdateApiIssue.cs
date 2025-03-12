@@ -27,7 +27,7 @@ ApiIssueResource apiIssue = client.GetApiIssueResource(apiIssueResourceId);
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiIssuePatch patch = new ApiIssuePatch()
+ApiIssuePatch patch = new ApiIssuePatch
 {
     State = IssueState.Closed,
 };

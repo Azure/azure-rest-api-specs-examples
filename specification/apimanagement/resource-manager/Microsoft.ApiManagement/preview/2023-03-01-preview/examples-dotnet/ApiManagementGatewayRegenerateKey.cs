@@ -30,4 +30,4 @@ ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatew
 GatewayKeyRegenerateContent content = new GatewayKeyRegenerateContent(GatewayRegenerateKeyType.Primary);
 await apiManagementGateway.RegenerateKeyAsync(content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

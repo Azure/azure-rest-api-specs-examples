@@ -25,7 +25,7 @@ ResourceIdentifier documentationContractResourceId = DocumentationContractResour
 DocumentationContractResource documentationContract = client.GetDocumentationContractResource(documentationContractResourceId);
 
 // invoke the operation
-ETag ifMatch = default /* Warning: No value is provided for ifMatch in example 'ApiManagementDeleteDocumentation'. Please consider adding a proper example value for it in swagger*/;
+ETag ifMatch = default;
 await documentationContract.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

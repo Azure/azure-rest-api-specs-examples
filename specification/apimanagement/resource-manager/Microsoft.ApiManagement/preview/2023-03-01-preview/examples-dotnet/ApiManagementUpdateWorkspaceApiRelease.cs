@@ -27,7 +27,7 @@ ServiceWorkspaceApiReleaseResource serviceWorkspaceApiRelease = client.GetServic
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiReleaseData data = new ApiReleaseData()
+ApiReleaseData data = new ApiReleaseData
 {
     ApiId = new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/a1"),
     Notes = "yahooagain",

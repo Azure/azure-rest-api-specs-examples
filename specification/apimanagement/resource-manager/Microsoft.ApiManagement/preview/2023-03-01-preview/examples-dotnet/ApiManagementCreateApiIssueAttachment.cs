@@ -26,7 +26,7 @@ ResourceIdentifier apiIssueAttachmentResourceId = ApiIssueAttachmentResource.Cre
 ApiIssueAttachmentResource apiIssueAttachment = client.GetApiIssueAttachmentResource(apiIssueAttachmentResourceId);
 
 // invoke the operation
-ApiIssueAttachmentData data = new ApiIssueAttachmentData()
+ApiIssueAttachmentData data = new ApiIssueAttachmentData
 {
     Title = "Issue attachment.",
     ContentFormat = "image/jpeg",

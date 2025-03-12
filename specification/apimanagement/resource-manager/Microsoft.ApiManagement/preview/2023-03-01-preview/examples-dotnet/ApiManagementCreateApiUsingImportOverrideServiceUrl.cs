@@ -28,7 +28,7 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "apidocs";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     ServiceLink = "http://petstore.swagger.wordnik.com/api",
     Path = "petstoreapi123",

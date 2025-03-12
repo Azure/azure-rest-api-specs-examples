@@ -25,7 +25,7 @@ ApiManagementPortalRevisionResource apiManagementPortalRevision = client.GetApiM
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementPortalRevisionData data = new ApiManagementPortalRevisionData()
+ApiManagementPortalRevisionData data = new ApiManagementPortalRevisionData
 {
     Description = "portal revision update",
     IsCurrent = true,

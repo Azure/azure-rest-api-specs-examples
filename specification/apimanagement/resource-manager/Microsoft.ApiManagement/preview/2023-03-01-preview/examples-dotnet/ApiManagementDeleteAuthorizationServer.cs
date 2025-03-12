@@ -28,4 +28,4 @@ ApiManagementAuthorizationServerResource apiManagementAuthorizationServer = clie
 ETag ifMatch = new ETag("*");
 await apiManagementAuthorizationServer.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

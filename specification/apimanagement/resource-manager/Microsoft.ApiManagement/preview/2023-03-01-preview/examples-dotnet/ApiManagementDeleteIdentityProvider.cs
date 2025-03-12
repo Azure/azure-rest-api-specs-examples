@@ -28,4 +28,4 @@ ApiManagementIdentityProviderResource apiManagementIdentityProvider = client.Get
 ETag ifMatch = new ETag("*");
 await apiManagementIdentityProvider.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,7 +27,7 @@ ApiManagementOpenIdConnectProviderCollection collection = apiManagementService.G
 
 // invoke the operation
 string openId = "templateOpenIdConnect3";
-ApiManagementOpenIdConnectProviderData data = new ApiManagementOpenIdConnectProviderData()
+ApiManagementOpenIdConnectProviderData data = new ApiManagementOpenIdConnectProviderData
 {
     DisplayName = "templateoidprovider3",
     MetadataEndpoint = "https://oidprovider-template3.net",

@@ -29,4 +29,4 @@ ServiceWorkspaceSubscriptionResource serviceWorkspaceSubscription = client.GetSe
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceSubscription.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

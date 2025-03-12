@@ -25,7 +25,7 @@ ResourceIdentifier apiManagementGatewayHostnameConfigurationResourceId = ApiMana
 ApiManagementGatewayHostnameConfigurationResource apiManagementGatewayHostnameConfiguration = client.GetApiManagementGatewayHostnameConfigurationResource(apiManagementGatewayHostnameConfigurationResourceId);
 
 // invoke the operation
-ApiManagementGatewayHostnameConfigurationData data = new ApiManagementGatewayHostnameConfigurationData()
+ApiManagementGatewayHostnameConfigurationData data = new ApiManagementGatewayHostnameConfigurationData
 {
     Hostname = "*",
     CertificateId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/certificates/cert1",

@@ -29,4 +29,4 @@ ServiceWorkspaceNotificationResource serviceWorkspaceNotification = client.GetSe
 string userId = "576823d0a40f7e74ec07d642";
 await serviceWorkspaceNotification.DeleteWorkspaceNotificationRecipientUserAsync(userId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

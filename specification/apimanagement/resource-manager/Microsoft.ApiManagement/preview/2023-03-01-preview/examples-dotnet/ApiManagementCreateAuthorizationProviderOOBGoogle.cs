@@ -25,20 +25,20 @@ ResourceIdentifier authorizationProviderContractResourceId = AuthorizationProvid
 AuthorizationProviderContractResource authorizationProviderContract = client.GetAuthorizationProviderContractResource(authorizationProviderContractResourceId);
 
 // invoke the operation
-AuthorizationProviderContractData data = new AuthorizationProviderContractData()
+AuthorizationProviderContractData data = new AuthorizationProviderContractData
 {
     DisplayName = "google",
     IdentityProvider = "google",
-    Oauth2 = new AuthorizationProviderOAuth2Settings()
+    Oauth2 = new AuthorizationProviderOAuth2Settings
     {
         RedirectUri = new Uri("https://authorization-manager.consent.azure-apim.net/redirect/apim/apimService1"),
-        GrantTypes = new AuthorizationProviderOAuth2GrantTypes()
+        GrantTypes = new AuthorizationProviderOAuth2GrantTypes
         {
             AuthorizationCode =
             {
             ["clientId"] = "99999999-xxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com",
             ["clientSecret"] = "XXXXXXXXXXXXXXXXXXXX",
-            ["scopes"] = "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+            ["scopes"] = "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
             },
         },
     },

@@ -27,7 +27,7 @@ ServiceWorkspaceProductResource serviceWorkspaceProduct = client.GetServiceWorks
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementProductPatch patch = new ApiManagementProductPatch()
+ApiManagementProductPatch patch = new ApiManagementProductPatch
 {
     DisplayName = "Test Template ProductName 4",
 };

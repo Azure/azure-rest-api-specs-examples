@@ -25,7 +25,7 @@ ResourceIdentifier serviceProductGroupLinkResourceId = ServiceProductGroupLinkRe
 ServiceProductGroupLinkResource serviceProductGroupLink = client.GetServiceProductGroupLinkResource(serviceProductGroupLinkResourceId);
 
 // invoke the operation
-ProductGroupLinkContractData data = new ProductGroupLinkContractData()
+ProductGroupLinkContractData data = new ProductGroupLinkContractData
 {
     GroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/groups/group1",
 };

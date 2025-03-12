@@ -16,31 +16,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ApiManagementServiceResource created on azure
-// for more information of creating ApiManagementServiceResource, please refer to the document of ApiManagementServiceResource
+// this example assumes you already have this ApiManagementGlobalSchemaResource created on azure
+// for more information of creating ApiManagementGlobalSchemaResource, please refer to the document of ApiManagementGlobalSchemaResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
-ResourceIdentifier apiManagementServiceResourceId = ApiManagementServiceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName);
-ApiManagementServiceResource apiManagementService = client.GetApiManagementServiceResource(apiManagementServiceResourceId);
-
-// get the collection of this ApiManagementGlobalSchemaResource
-ApiManagementGlobalSchemaCollection collection = apiManagementService.GetApiManagementGlobalSchemas();
+string schemaId = "schema2";
+ResourceIdentifier apiManagementGlobalSchemaResourceId = ApiManagementGlobalSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, schemaId);
+ApiManagementGlobalSchemaResource apiManagementGlobalSchema = client.GetApiManagementGlobalSchemaResource(apiManagementGlobalSchemaResourceId);
 
 // invoke the operation
-string schemaId = "schema2";
-NullableResponse<ApiManagementGlobalSchemaResource> response = await collection.GetIfExistsAsync(schemaId);
-ApiManagementGlobalSchemaResource result = response.HasValue ? response.Value : null;
+ApiManagementGlobalSchemaResource result = await apiManagementGlobalSchema.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ApiManagementGlobalSchemaData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiManagementGlobalSchemaData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

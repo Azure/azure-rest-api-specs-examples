@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
+using Azure.ResourceManager.ApiManagement.Models;
 using Azure.ResourceManager.ApiManagement;
 
 // Generated from example definition: specification/apimanagement/resource-manager/Microsoft.ApiManagement/preview/2023-03-01-preview/examples/ApiManagementGetWorkspaceProduct.json
@@ -14,32 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this WorkspaceContractResource created on azure
-// for more information of creating WorkspaceContractResource, please refer to the document of WorkspaceContractResource
+// this example assumes you already have this ServiceWorkspaceProductResource created on azure
+// for more information of creating ServiceWorkspaceProductResource, please refer to the document of ServiceWorkspaceProductResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
-ResourceIdentifier workspaceContractResourceId = WorkspaceContractResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId);
-WorkspaceContractResource workspaceContract = client.GetWorkspaceContractResource(workspaceContractResourceId);
-
-// get the collection of this ServiceWorkspaceProductResource
-ServiceWorkspaceProductCollection collection = workspaceContract.GetServiceWorkspaceProducts();
+string productId = "unlimited";
+ResourceIdentifier serviceWorkspaceProductResourceId = ServiceWorkspaceProductResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, productId);
+ServiceWorkspaceProductResource serviceWorkspaceProduct = client.GetServiceWorkspaceProductResource(serviceWorkspaceProductResourceId);
 
 // invoke the operation
-string productId = "unlimited";
-NullableResponse<ServiceWorkspaceProductResource> response = await collection.GetIfExistsAsync(productId);
-ServiceWorkspaceProductResource result = response.HasValue ? response.Value : null;
+ServiceWorkspaceProductResource result = await serviceWorkspaceProduct.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    ApiManagementProductData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+ApiManagementProductData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

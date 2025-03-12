@@ -27,7 +27,7 @@ ApiManagementProductCollection collection = apiManagementService.GetApiManagemen
 
 // invoke the operation
 string productId = "testproduct";
-ApiManagementProductData data = new ApiManagementProductData()
+ApiManagementProductData data = new ApiManagementProductData
 {
     DisplayName = "Test Template ProductName 4",
 };

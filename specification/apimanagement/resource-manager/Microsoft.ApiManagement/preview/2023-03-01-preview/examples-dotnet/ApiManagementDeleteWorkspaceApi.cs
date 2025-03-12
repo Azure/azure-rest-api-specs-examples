@@ -29,4 +29,4 @@ ServiceWorkspaceApiResource serviceWorkspaceApi = client.GetServiceWorkspaceApiR
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceApi.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

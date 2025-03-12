@@ -28,4 +28,4 @@ ApiManagementEmailTemplateResource apiManagementEmailTemplate = client.GetApiMan
 ETag ifMatch = new ETag("*");
 await apiManagementEmailTemplate.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

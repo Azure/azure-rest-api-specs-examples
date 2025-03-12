@@ -28,24 +28,18 @@ ApiManagementBackendCollection collection = apiManagementService.GetApiManagemen
 
 // invoke the operation
 string backendId = "proxybackend";
-ApiManagementBackendData data = new ApiManagementBackendData()
+ApiManagementBackendData data = new ApiManagementBackendData
 {
     Description = "description5308",
-    Credentials = new BackendCredentialsContract()
+    Credentials = new BackendCredentialsContract
     {
         Query =
         {
-        ["sv"] = new string[]
-        {
-        "xx","bb","cc"
-        },
+        ["sv"] = new string[]{"xx", "bb", "cc"}
         },
         Header =
         {
-        ["x-my-1"] = new string[]
-        {
-        "val1","val2"
-        },
+        ["x-my-1"] = new string[]{"val1", "val2"}
         },
         Authorization = new BackendAuthorizationHeaderCredentials("Basic", "opensesma"),
     },
@@ -54,7 +48,7 @@ ApiManagementBackendData data = new ApiManagementBackendData()
         Username = "Contoso\\admin",
         Password = "<password>",
     },
-    Tls = new BackendTlsProperties()
+    Tls = new BackendTlsProperties
     {
         ShouldValidateCertificateChain = true,
         ShouldValidateCertificateName = true,

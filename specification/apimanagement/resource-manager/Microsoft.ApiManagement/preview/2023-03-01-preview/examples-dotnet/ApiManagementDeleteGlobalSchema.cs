@@ -29,4 +29,4 @@ ApiManagementGlobalSchemaResource apiManagementGlobalSchema = client.GetApiManag
 ETag ifMatch = new ETag("*");
 await apiManagementGlobalSchema.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,4 +29,4 @@ ServiceWorkspaceNamedValueResource serviceWorkspaceNamedValue = client.GetServic
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceNamedValue.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

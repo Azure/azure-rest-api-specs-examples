@@ -28,4 +28,4 @@ ServiceWorkspaceTagApiLinkResource serviceWorkspaceTagApiLink = client.GetServic
 // invoke the operation
 await serviceWorkspaceTagApiLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

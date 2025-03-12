@@ -28,4 +28,4 @@ ServiceWorkspaceSubscriptionResource serviceWorkspaceSubscription = client.GetSe
 // invoke the operation
 await serviceWorkspaceSubscription.RegeneratePrimaryKeyAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

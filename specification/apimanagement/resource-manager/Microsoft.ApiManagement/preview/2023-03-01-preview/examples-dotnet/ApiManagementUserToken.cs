@@ -25,7 +25,7 @@ ResourceIdentifier apiManagementUserResourceId = ApiManagementUserResource.Creat
 ApiManagementUserResource apiManagementUser = client.GetApiManagementUserResource(apiManagementUserResourceId);
 
 // invoke the operation
-UserTokenContent content = new UserTokenContent()
+UserTokenContent content = new UserTokenContent
 {
     KeyType = TokenGenerationUsedKeyType.Primary,
     ExpireOn = DateTimeOffset.Parse("2019-04-21T00:44:24.2845269Z"),

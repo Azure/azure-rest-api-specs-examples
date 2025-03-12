@@ -28,4 +28,4 @@ ApiManagementGatewayHostnameConfigurationResource apiManagementGatewayHostnameCo
 ETag ifMatch = new ETag("*");
 await apiManagementGatewayHostnameConfiguration.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -38,4 +38,4 @@ await foreach (ServiceWorkspaceApiOperationResource item in collection.GetAllAsy
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

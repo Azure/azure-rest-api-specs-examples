@@ -27,7 +27,7 @@ ServiceWorkspaceApiVersionSetResource serviceWorkspaceApiVersionSet = client.Get
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiVersionSetPatch patch = new ApiVersionSetPatch()
+ApiVersionSetPatch patch = new ApiVersionSetPatch
 {
     Description = "Version configuration",
     DisplayName = "api set 1",

@@ -29,7 +29,7 @@ ApiTagDescriptionCollection collection = api.GetApiTagDescriptions();
 
 // invoke the operation
 string tagDescriptionId = "tagId1";
-ApiTagDescriptionCreateOrUpdateContent content = new ApiTagDescriptionCreateOrUpdateContent()
+ApiTagDescriptionCreateOrUpdateContent content = new ApiTagDescriptionCreateOrUpdateContent
 {
     Description = "Some description that will be displayed for operation's tag if the tag is assigned to operation of the API",
     ExternalDocsUri = new Uri("http://some.url/additionaldoc"),

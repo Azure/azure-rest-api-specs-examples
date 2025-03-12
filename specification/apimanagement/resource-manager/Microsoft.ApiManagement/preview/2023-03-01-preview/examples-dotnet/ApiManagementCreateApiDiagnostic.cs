@@ -29,50 +29,38 @@ ApiDiagnosticCollection collection = api.GetApiDiagnostics();
 
 // invoke the operation
 string diagnosticId = "applicationinsights";
-DiagnosticContractData data = new DiagnosticContractData()
+DiagnosticContractData data = new DiagnosticContractData
 {
     AlwaysLog = AlwaysLog.AllErrors,
     LoggerId = "/loggers/applicationinsights",
-    Sampling = new SamplingSettings()
+    Sampling = new SamplingSettings
     {
         SamplingType = SamplingType.Fixed,
         Percentage = 50,
     },
-    Frontend = new PipelineDiagnosticSettings()
+    Frontend = new PipelineDiagnosticSettings
     {
-        Request = new HttpMessageDiagnostic()
+        Request = new HttpMessageDiagnostic
         {
-            Headers =
-            {
-            "Content-type"
-            },
+            Headers = { "Content-type" },
             BodyBytes = 512,
         },
-        Response = new HttpMessageDiagnostic()
+        Response = new HttpMessageDiagnostic
         {
-            Headers =
-            {
-            "Content-type"
-            },
+            Headers = { "Content-type" },
             BodyBytes = 512,
         },
     },
-    Backend = new PipelineDiagnosticSettings()
+    Backend = new PipelineDiagnosticSettings
     {
-        Request = new HttpMessageDiagnostic()
+        Request = new HttpMessageDiagnostic
         {
-            Headers =
-            {
-            "Content-type"
-            },
+            Headers = { "Content-type" },
             BodyBytes = 512,
         },
-        Response = new HttpMessageDiagnostic()
+        Response = new HttpMessageDiagnostic
         {
-            Headers =
-            {
-            "Content-type"
-            },
+            Headers = { "Content-type" },
             BodyBytes = 512,
         },
     },

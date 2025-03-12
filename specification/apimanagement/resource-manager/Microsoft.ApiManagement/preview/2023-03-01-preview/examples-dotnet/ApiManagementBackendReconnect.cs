@@ -26,10 +26,10 @@ ResourceIdentifier apiManagementBackendResourceId = ApiManagementBackendResource
 ApiManagementBackendResource apiManagementBackend = client.GetApiManagementBackendResource(apiManagementBackendResourceId);
 
 // invoke the operation
-BackendReconnectContract backendReconnectContract = new BackendReconnectContract()
+BackendReconnectContract backendReconnectContract = new BackendReconnectContract
 {
     After = XmlConvert.ToTimeSpan("PT3S"),
 };
 await apiManagementBackend.ReconnectAsync(backendReconnectContract: backendReconnectContract);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

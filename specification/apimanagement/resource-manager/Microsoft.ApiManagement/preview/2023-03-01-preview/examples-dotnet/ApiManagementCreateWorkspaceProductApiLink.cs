@@ -29,7 +29,7 @@ ServiceWorkspaceProductApiLinkCollection collection = serviceWorkspaceProduct.Ge
 
 // invoke the operation
 string apiLinkId = "link1";
-ProductApiLinkContractData data = new ProductApiLinkContractData()
+ProductApiLinkContractData data = new ProductApiLinkContractData
 {
     ApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api",
 };

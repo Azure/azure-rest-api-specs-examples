@@ -30,4 +30,4 @@ await foreach (TagResourceContractDetails item in api.GetOperationsByTagsAsync()
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ApiManagementUserCollection collection = apiManagementService.GetApiManagementUs
 
 // invoke the operation
 string userId = "5931a75ae4bbd512288c680b";
-ApiManagementUserCreateOrUpdateContent content = new ApiManagementUserCreateOrUpdateContent()
+ApiManagementUserCreateOrUpdateContent content = new ApiManagementUserCreateOrUpdateContent
 {
     Email = "foobar@outlook.com",
     FirstName = "foo",

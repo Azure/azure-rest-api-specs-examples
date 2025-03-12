@@ -26,7 +26,7 @@ ApiManagementUserResource apiManagementUser = client.GetApiManagementUserResourc
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementUserPatch patch = new ApiManagementUserPatch()
+ApiManagementUserPatch patch = new ApiManagementUserPatch
 {
     Email = "foobar@outlook.com",
     FirstName = "foo",

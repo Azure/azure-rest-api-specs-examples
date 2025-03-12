@@ -35,37 +35,34 @@ ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id1")] = new UserAssignedIdentity()
         },
     },
-    HostnameConfigurations =
-    {
-    new HostnameConfiguration(HostnameType.Proxy,"gateway1.msitesting.net")
+    HostnameConfigurations = {new HostnameConfiguration(HostnameType.Proxy, "gateway1.msitesting.net")
     {
     KeyVaultSecretUri = new Uri("https://rpbvtkeyvaultintegration.vault.azure.net/secrets/msitestingCert"),
     IdentityClientId = "329419bc-adec-4dce-9568-25a6d486e468",
     IsDefaultSslBindingEnabled = true,
-    },new HostnameConfiguration(HostnameType.Management,"mgmt.msitesting.net")
+    }, new HostnameConfiguration(HostnameType.Management, "mgmt.msitesting.net")
     {
     KeyVaultSecretUri = new Uri("https://rpbvtkeyvaultintegration.vault.azure.net/secrets/msitestingCert"),
     IdentityClientId = "329419bc-adec-4dce-9568-25a6d486e468",
-    },new HostnameConfiguration(HostnameType.Portal,"portal1.msitesting.net")
+    }, new HostnameConfiguration(HostnameType.Portal, "portal1.msitesting.net")
     {
     KeyVaultSecretUri = new Uri("https://rpbvtkeyvaultintegration.vault.azure.net/secrets/msitestingCert"),
     IdentityClientId = "329419bc-adec-4dce-9568-25a6d486e468",
-    },new HostnameConfiguration(HostnameType.ConfigurationApi,"configuration-api.msitesting.net")
+    }, new HostnameConfiguration(HostnameType.ConfigurationApi, "configuration-api.msitesting.net")
     {
     EncodedCertificate = "****** Base 64 Encoded Certificate ************",
     CertificatePassword = "Password",
-    }
-    },
+    }},
     VirtualNetworkType = VirtualNetworkType.None,
     MinApiVersion = "2019-01-01",
     Tags =
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

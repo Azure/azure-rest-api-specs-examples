@@ -29,4 +29,4 @@ AuthorizationContractResource authorizationContract = client.GetAuthorizationCon
 ETag ifMatch = new ETag("*");
 await authorizationContract.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

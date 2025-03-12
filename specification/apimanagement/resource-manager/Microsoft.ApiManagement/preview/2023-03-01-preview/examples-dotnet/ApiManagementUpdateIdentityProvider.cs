@@ -26,7 +26,7 @@ ApiManagementIdentityProviderResource apiManagementIdentityProvider = client.Get
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementIdentityProviderPatch patch = new ApiManagementIdentityProviderPatch()
+ApiManagementIdentityProviderPatch patch = new ApiManagementIdentityProviderPatch
 {
     ClientId = "updatedfacebookid",
     ClientSecret = "updatedfacebooksecret",

@@ -25,7 +25,7 @@ ApiManagementPortalDelegationSettingResource apiManagementPortalDelegationSettin
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementPortalDelegationSettingData data = new ApiManagementPortalDelegationSettingData()
+ApiManagementPortalDelegationSettingData data = new ApiManagementPortalDelegationSettingData
 {
     Uri = new Uri("http://contoso.com/delegation"),
     ValidationKey = "<validationKey>",
@@ -34,4 +34,4 @@ ApiManagementPortalDelegationSettingData data = new ApiManagementPortalDelegatio
 };
 await apiManagementPortalDelegationSetting.UpdateAsync(ifMatch, data);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

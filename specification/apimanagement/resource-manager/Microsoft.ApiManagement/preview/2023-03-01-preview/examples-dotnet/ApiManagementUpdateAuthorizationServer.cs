@@ -26,7 +26,7 @@ ApiManagementAuthorizationServerResource apiManagementAuthorizationServer = clie
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementAuthorizationServerPatch patch = new ApiManagementAuthorizationServerPatch()
+ApiManagementAuthorizationServerPatch patch = new ApiManagementAuthorizationServerPatch
 {
     UseInTestConsole = false,
     UseInApiDocumentation = true,

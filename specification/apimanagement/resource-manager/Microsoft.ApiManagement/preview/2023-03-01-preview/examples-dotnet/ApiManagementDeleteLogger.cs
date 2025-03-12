@@ -28,4 +28,4 @@ ApiManagementLoggerResource apiManagementLogger = client.GetApiManagementLoggerR
 ETag ifMatch = new ETag("*");
 await apiManagementLogger.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

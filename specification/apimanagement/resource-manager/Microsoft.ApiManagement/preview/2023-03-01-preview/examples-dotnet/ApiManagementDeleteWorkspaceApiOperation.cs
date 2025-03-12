@@ -30,4 +30,4 @@ ServiceWorkspaceApiOperationResource serviceWorkspaceApiOperation = client.GetSe
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceApiOperation.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

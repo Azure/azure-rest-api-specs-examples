@@ -14,22 +14,33 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceApiSchemaResource created on azure
-// for more information of creating ServiceWorkspaceApiSchemaResource, please refer to the document of ServiceWorkspaceApiSchemaResource
+// this example assumes you already have this ServiceWorkspaceApiResource created on azure
+// for more information of creating ServiceWorkspaceApiResource, please refer to the document of ServiceWorkspaceApiResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string apiId = "59d6bb8f1f7fab13dc67ec9b";
-string schemaId = "ec12520d-9d48-4e7b-8f39-698ca2ac63f1";
-ResourceIdentifier serviceWorkspaceApiSchemaResourceId = ServiceWorkspaceApiSchemaResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, apiId, schemaId);
-ServiceWorkspaceApiSchemaResource serviceWorkspaceApiSchema = client.GetServiceWorkspaceApiSchemaResource(serviceWorkspaceApiSchemaResourceId);
+ResourceIdentifier serviceWorkspaceApiResourceId = ServiceWorkspaceApiResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, apiId);
+ServiceWorkspaceApiResource serviceWorkspaceApi = client.GetServiceWorkspaceApiResource(serviceWorkspaceApiResourceId);
+
+// get the collection of this ServiceWorkspaceApiSchemaResource
+ServiceWorkspaceApiSchemaCollection collection = serviceWorkspaceApi.GetServiceWorkspaceApiSchemas();
 
 // invoke the operation
-ServiceWorkspaceApiSchemaResource result = await serviceWorkspaceApiSchema.GetAsync();
+string schemaId = "ec12520d-9d48-4e7b-8f39-698ca2ac63f1";
+NullableResponse<ServiceWorkspaceApiSchemaResource> response = await collection.GetIfExistsAsync(schemaId);
+ServiceWorkspaceApiSchemaResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ApiSchemaData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ApiSchemaData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

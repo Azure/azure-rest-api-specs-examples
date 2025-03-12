@@ -31,4 +31,4 @@ await foreach (ResourceCollectionValueItem item in serviceWorkspacePolicyFragmen
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -29,7 +29,7 @@ AuthorizationContractCollection collection = authorizationProviderContract.GetAu
 
 // invoke the operation
 string authorizationId = "authz2";
-AuthorizationContractData data = new AuthorizationContractData()
+AuthorizationContractData data = new AuthorizationContractData
 {
     AuthorizationType = ApiManagementAuthorizationType.OAuth2,
     OAuth2GrantType = OAuth2GrantType.AuthorizationCode,

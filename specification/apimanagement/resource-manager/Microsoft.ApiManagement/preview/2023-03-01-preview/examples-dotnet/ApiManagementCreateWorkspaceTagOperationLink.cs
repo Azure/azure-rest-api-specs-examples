@@ -14,26 +14,23 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspaceTagResource created on azure
-// for more information of creating ServiceWorkspaceTagResource, please refer to the document of ServiceWorkspaceTagResource
+// this example assumes you already have this ServiceWorkspaceTagOperationLinkResource created on azure
+// for more information of creating ServiceWorkspaceTagOperationLinkResource, please refer to the document of ServiceWorkspaceTagOperationLinkResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
 string tagId = "tag1";
-ResourceIdentifier serviceWorkspaceTagResourceId = ServiceWorkspaceTagResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId);
-ServiceWorkspaceTagResource serviceWorkspaceTag = client.GetServiceWorkspaceTagResource(serviceWorkspaceTagResourceId);
-
-// get the collection of this ServiceWorkspaceTagOperationLinkResource
-ServiceWorkspaceTagOperationLinkCollection collection = serviceWorkspaceTag.GetServiceWorkspaceTagOperationLinks();
+string operationLinkId = "link1";
+ResourceIdentifier serviceWorkspaceTagOperationLinkResourceId = ServiceWorkspaceTagOperationLinkResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, tagId, operationLinkId);
+ServiceWorkspaceTagOperationLinkResource serviceWorkspaceTagOperationLink = client.GetServiceWorkspaceTagOperationLinkResource(serviceWorkspaceTagOperationLinkResourceId);
 
 // invoke the operation
-string operationLinkId = "link1";
-TagOperationLinkContractData data = new TagOperationLinkContractData()
+TagOperationLinkContractData data = new TagOperationLinkContractData
 {
     OperationId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/apis/echo-api/operations/op1",
 };
-ArmOperation<ServiceWorkspaceTagOperationLinkResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, operationLinkId, data);
+ArmOperation<ServiceWorkspaceTagOperationLinkResource> lro = await serviceWorkspaceTagOperationLink.UpdateAsync(WaitUntil.Completed, data);
 ServiceWorkspaceTagOperationLinkResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

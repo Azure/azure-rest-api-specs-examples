@@ -29,4 +29,4 @@ ServiceWorkspaceApiReleaseResource serviceWorkspaceApiRelease = client.GetServic
 ETag ifMatch = new ETag("*");
 await serviceWorkspaceApiRelease.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

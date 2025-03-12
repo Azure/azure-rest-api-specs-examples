@@ -35,14 +35,14 @@ ApiManagementServiceData data = new ApiManagementServiceData(new AzureLocation("
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/apimService1")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/apimService1")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
     ["tag1"] = "value1",
     ["tag2"] = "value2",
-    ["tag3"] = "value3",
+    ["tag3"] = "value3"
     },
 };
 ArmOperation<ApiManagementServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serviceName, data);

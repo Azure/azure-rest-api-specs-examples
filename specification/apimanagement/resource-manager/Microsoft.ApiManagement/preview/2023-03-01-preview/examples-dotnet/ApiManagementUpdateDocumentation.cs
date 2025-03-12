@@ -25,8 +25,8 @@ ResourceIdentifier documentationContractResourceId = DocumentationContractResour
 DocumentationContractResource documentationContract = client.GetDocumentationContractResource(documentationContractResourceId);
 
 // invoke the operation
-ETag ifMatch = default /* Warning: No value is provided for ifMatch in example 'ApiManagementUpdateDocumentation'. Please consider adding a proper example value for it in swagger*/;
-DocumentationContractPatch patch = new DocumentationContractPatch()
+ETag ifMatch = default;
+DocumentationContractPatch patch = new DocumentationContractPatch
 {
     Title = "Title updated",
     Content = "content updated",

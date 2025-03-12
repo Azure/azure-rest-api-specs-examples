@@ -28,7 +28,7 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "echo-api2";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Description = "Copy of Existing Echo Api including Operations.",
     IsCurrent = true,
@@ -37,10 +37,7 @@ ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
     DisplayName = "Echo API2",
     ServiceLink = "http://echoapi.cloudapp.net/api",
     Path = "echo2",
-    Protocols =
-    {
-    ApiOperationInvokableProtocol.Http,ApiOperationInvokableProtocol.Https
-    },
+    Protocols = { ApiOperationInvokableProtocol.Http, ApiOperationInvokableProtocol.Https },
 };
 ArmOperation<ApiResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, apiId, content);
 ApiResource result = lro.Value;

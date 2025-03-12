@@ -28,7 +28,7 @@ ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatew
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementGatewayData data = new ApiManagementGatewayData()
+ApiManagementGatewayData data = new ApiManagementGatewayData
 {
     LocationData = new ResourceLocationDataContract("my location"),
     Description = "my gateway 1",

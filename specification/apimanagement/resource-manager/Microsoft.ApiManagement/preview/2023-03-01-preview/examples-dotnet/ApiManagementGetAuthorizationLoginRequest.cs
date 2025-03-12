@@ -26,7 +26,7 @@ ResourceIdentifier authorizationContractResourceId = AuthorizationContractResour
 AuthorizationContractResource authorizationContract = client.GetAuthorizationContractResource(authorizationContractResourceId);
 
 // invoke the operation
-AuthorizationLoginContent content = new AuthorizationLoginContent()
+AuthorizationLoginContent content = new AuthorizationLoginContent
 {
     PostLoginRedirectUri = new Uri("https://www.bing.com/"),
 };

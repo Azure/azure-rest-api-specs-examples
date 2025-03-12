@@ -25,7 +25,7 @@ ResourceIdentifier serviceTagApiLinkResourceId = ServiceTagApiLinkResource.Creat
 ServiceTagApiLinkResource serviceTagApiLink = client.GetServiceTagApiLinkResource(serviceTagApiLinkResourceId);
 
 // invoke the operation
-TagApiLinkContractData data = new TagApiLinkContractData()
+TagApiLinkContractData data = new TagApiLinkContractData
 {
     ApiId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/echo-api",
 };

@@ -28,4 +28,4 @@ ServiceWorkspaceTagOperationLinkResource serviceWorkspaceTagOperationLink = clie
 // invoke the operation
 await serviceWorkspaceTagOperationLink.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatew
 
 // invoke the operation
 string apiId = "echo-api";
-AssociationContract associationContract = new AssociationContract()
+AssociationContract associationContract = new AssociationContract
 {
     ProvisioningState = AssociationEntityProvisioningState.Created,
 };

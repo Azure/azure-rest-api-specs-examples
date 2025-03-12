@@ -27,7 +27,7 @@ DocumentationContractCollection collection = apiManagementService.GetDocumentati
 
 // invoke the operation
 string documentationId = "57d1f7558aa04f15146d9d8a";
-DocumentationContractData data = new DocumentationContractData()
+DocumentationContractData data = new DocumentationContractData
 {
     Title = "Title",
     Content = "content",

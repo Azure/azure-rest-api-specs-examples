@@ -28,4 +28,4 @@ ServiceApiWikiResource serviceApiWiki = client.GetServiceApiWikiResource(service
 ETag ifMatch = new ETag("*");
 await serviceApiWiki.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

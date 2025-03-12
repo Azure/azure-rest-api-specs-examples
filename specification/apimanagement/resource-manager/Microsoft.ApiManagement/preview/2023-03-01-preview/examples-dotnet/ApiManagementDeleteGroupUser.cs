@@ -28,4 +28,4 @@ ApiManagementGroupResource apiManagementGroup = client.GetApiManagementGroupReso
 string userId = "59307d350af58404d8a26300";
 await apiManagementGroup.DeleteGroupUserAsync(userId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

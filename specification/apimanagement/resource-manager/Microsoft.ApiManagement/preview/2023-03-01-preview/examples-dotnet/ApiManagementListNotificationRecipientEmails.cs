@@ -30,4 +30,4 @@ await foreach (RecipientEmailContract item in apiManagementNotification.GetNotif
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

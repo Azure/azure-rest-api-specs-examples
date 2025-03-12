@@ -27,10 +27,7 @@ ResourceIdentifier apiManagementGatewayResourceId = ApiManagementGatewayResource
 ApiManagementGatewayResource apiManagementGateway = client.GetApiManagementGatewayResource(apiManagementGatewayResourceId);
 
 // invoke the operation
-GatewayListDebugCredentialsContract gatewayListDebugCredentialsContract = new GatewayListDebugCredentialsContract(new GatewayListDebugCredentialsContractPurpose[]
-{
-GatewayListDebugCredentialsContractPurpose.Tracing
-}, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1"))
+GatewayListDebugCredentialsContract gatewayListDebugCredentialsContract = new GatewayListDebugCredentialsContract(new GatewayListDebugCredentialsContractPurpose[] { GatewayListDebugCredentialsContractPurpose.Tracing }, new ResourceIdentifier("/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/apis/a1"))
 {
     CredentialsExpireAfter = XmlConvert.ToTimeSpan("PT1H"),
 };

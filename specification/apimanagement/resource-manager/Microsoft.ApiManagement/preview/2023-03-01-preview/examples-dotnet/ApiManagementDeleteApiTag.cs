@@ -27,4 +27,4 @@ ApiTagResource apiTag = client.GetApiTagResource(apiTagResourceId);
 // invoke the operation
 await apiTag.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

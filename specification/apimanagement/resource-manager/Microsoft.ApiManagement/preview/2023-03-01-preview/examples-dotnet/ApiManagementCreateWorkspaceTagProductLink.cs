@@ -29,7 +29,7 @@ ServiceWorkspaceTagProductLinkCollection collection = serviceWorkspaceTag.GetSer
 
 // invoke the operation
 string productLinkId = "link1";
-TagProductLinkContractData data = new TagProductLinkContractData()
+TagProductLinkContractData data = new TagProductLinkContractData
 {
     ProductId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ApiManagement/service/apimService1/workspaces/wks1/products/product1",
 };

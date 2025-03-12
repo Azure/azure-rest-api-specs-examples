@@ -30,4 +30,4 @@ await foreach (ProductGroupData item in apiManagementProduct.GetProductGroupsAsy
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

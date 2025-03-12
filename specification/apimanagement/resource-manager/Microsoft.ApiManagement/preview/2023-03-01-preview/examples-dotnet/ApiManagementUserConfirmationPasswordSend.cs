@@ -27,4 +27,4 @@ ApiManagementUserResource apiManagementUser = client.GetApiManagementUserResourc
 // invoke the operation
 await apiManagementUser.SendUserConfirmationPasswordAsync();
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

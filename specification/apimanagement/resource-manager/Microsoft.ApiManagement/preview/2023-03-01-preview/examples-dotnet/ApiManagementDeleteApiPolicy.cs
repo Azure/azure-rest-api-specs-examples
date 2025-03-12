@@ -29,4 +29,4 @@ ApiPolicyResource apiPolicy = client.GetApiPolicyResource(apiPolicyResourceId);
 ETag ifMatch = new ETag("*");
 await apiPolicy.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -24,10 +24,10 @@ ResourceIdentifier apiManagementPortalSignUpSettingResourceId = ApiManagementPor
 ApiManagementPortalSignUpSettingResource apiManagementPortalSignUpSetting = client.GetApiManagementPortalSignUpSettingResource(apiManagementPortalSignUpSettingResourceId);
 
 // invoke the operation
-ApiManagementPortalSignUpSettingData data = new ApiManagementPortalSignUpSettingData()
+ApiManagementPortalSignUpSettingData data = new ApiManagementPortalSignUpSettingData
 {
     IsSignUpDeveloperPortalEnabled = true,
-    TermsOfService = new TermsOfServiceProperties()
+    TermsOfService = new TermsOfServiceProperties
     {
         Text = "Terms of service text.",
         IsDisplayEnabled = true,

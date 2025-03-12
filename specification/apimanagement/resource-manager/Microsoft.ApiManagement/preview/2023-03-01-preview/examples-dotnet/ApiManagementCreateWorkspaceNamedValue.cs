@@ -29,12 +29,9 @@ ServiceWorkspaceNamedValueCollection collection = workspaceContract.GetServiceWo
 
 // invoke the operation
 string namedValueId = "testprop2";
-ApiManagementNamedValueCreateOrUpdateContent content = new ApiManagementNamedValueCreateOrUpdateContent()
+ApiManagementNamedValueCreateOrUpdateContent content = new ApiManagementNamedValueCreateOrUpdateContent
 {
-    Tags =
-    {
-    "foo","bar"
-    },
+    Tags = { "foo", "bar" },
     IsSecret = false,
     DisplayName = "prop3name",
     Value = "propValue",

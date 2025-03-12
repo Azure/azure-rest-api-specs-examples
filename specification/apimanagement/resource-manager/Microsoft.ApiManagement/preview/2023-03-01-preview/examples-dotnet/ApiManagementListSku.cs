@@ -28,4 +28,4 @@ await foreach (ApiManagementSku item in subscriptionResource.GetApiManagementSku
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

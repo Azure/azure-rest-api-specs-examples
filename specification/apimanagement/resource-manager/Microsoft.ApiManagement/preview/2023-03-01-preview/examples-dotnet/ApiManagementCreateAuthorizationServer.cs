@@ -28,20 +28,14 @@ ApiManagementAuthorizationServerCollection collection = apiManagementService.Get
 
 // invoke the operation
 string authsid = "newauthServer";
-ApiManagementAuthorizationServerData data = new ApiManagementAuthorizationServerData()
+ApiManagementAuthorizationServerData data = new ApiManagementAuthorizationServerData
 {
     Description = "test server",
-    AuthorizationMethods =
-    {
-    AuthorizationMethod.Get
-    },
+    AuthorizationMethods = { AuthorizationMethod.Get },
     TokenEndpoint = "https://www.contoso.com/oauth2/token",
     DoesSupportState = true,
     DefaultScope = "read write",
-    BearerTokenSendingMethods =
-    {
-    BearerTokenSendingMethod.AuthorizationHeader
-    },
+    BearerTokenSendingMethods = { BearerTokenSendingMethod.AuthorizationHeader },
     ResourceOwnerUsername = "un",
     ResourceOwnerPassword = "pwd",
     DisplayName = "test2",
@@ -49,10 +43,7 @@ ApiManagementAuthorizationServerData data = new ApiManagementAuthorizationServer
     UseInApiDocumentation = true,
     ClientRegistrationEndpoint = "https://www.contoso.com/apps",
     AuthorizationEndpoint = "https://www.contoso.com/oauth2/auth",
-    GrantTypes =
-    {
-    GrantType.AuthorizationCode,GrantType.Implicit
-    },
+    GrantTypes = { GrantType.AuthorizationCode, GrantType.Implicit },
     ClientId = "1",
     ClientSecret = "2",
 };

@@ -26,7 +26,7 @@ ApiManagementCacheResource apiManagementCache = client.GetApiManagementCacheReso
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementCachePatch patch = new ApiManagementCachePatch()
+ApiManagementCachePatch patch = new ApiManagementCachePatch
 {
     UseFromLocation = "westindia",
 };

@@ -28,4 +28,4 @@ ApiManagementDiagnosticResource apiManagementDiagnostic = client.GetApiManagemen
 ETag ifMatch = new ETag("*");
 await apiManagementDiagnostic.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

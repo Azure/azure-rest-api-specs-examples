@@ -15,24 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ServiceWorkspacePolicyFragmentResource created on azure
-// for more information of creating ServiceWorkspacePolicyFragmentResource, please refer to the document of ServiceWorkspacePolicyFragmentResource
+// this example assumes you already have this WorkspaceContractResource created on azure
+// for more information of creating WorkspaceContractResource, please refer to the document of WorkspaceContractResource
 string subscriptionId = "00000000-0000-0000-0000-000000000000";
 string resourceGroupName = "rg1";
 string serviceName = "apimService1";
 string workspaceId = "wks1";
-string id = "policyFragment1";
-ResourceIdentifier serviceWorkspacePolicyFragmentResourceId = ServiceWorkspacePolicyFragmentResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId, id);
-ServiceWorkspacePolicyFragmentResource serviceWorkspacePolicyFragment = client.GetServiceWorkspacePolicyFragmentResource(serviceWorkspacePolicyFragmentResourceId);
+ResourceIdentifier workspaceContractResourceId = WorkspaceContractResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serviceName, workspaceId);
+WorkspaceContractResource workspaceContract = client.GetWorkspaceContractResource(workspaceContractResourceId);
+
+// get the collection of this ServiceWorkspacePolicyFragmentResource
+ServiceWorkspacePolicyFragmentCollection collection = workspaceContract.GetServiceWorkspacePolicyFragments();
 
 // invoke the operation
-PolicyFragmentContractData data = new PolicyFragmentContractData()
+string id = "policyFragment1";
+PolicyFragmentContractData data = new PolicyFragmentContractData
 {
     Value = "<fragment><json-to-xml apply=\"always\" consider-accept-header=\"false\" /></fragment>",
     Description = "A policy fragment example",
     Format = PolicyFragmentContentFormat.Xml,
 };
-ArmOperation<ServiceWorkspacePolicyFragmentResource> lro = await serviceWorkspacePolicyFragment.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<ServiceWorkspacePolicyFragmentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, id, data);
 ServiceWorkspacePolicyFragmentResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

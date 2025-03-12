@@ -28,4 +28,4 @@ ApiManagementOpenIdConnectProviderResource apiManagementOpenIdConnectProvider = 
 ETag ifMatch = new ETag("*");
 await apiManagementOpenIdConnectProvider.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

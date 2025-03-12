@@ -29,4 +29,4 @@ ServiceWorkspaceNotificationResource serviceWorkspaceNotification = client.GetSe
 string email = "contoso@live.com";
 await serviceWorkspaceNotification.DeleteWorkspaceNotificationRecipientEmailAsync(email);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

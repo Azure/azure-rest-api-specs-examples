@@ -28,7 +28,7 @@ ApiCollection collection = apiManagementService.GetApis();
 
 // invoke the operation
 string apiId = "petstore";
-ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent()
+ApiCreateOrUpdateContent content = new ApiCreateOrUpdateContent
 {
     Path = "collector",
     Value = "https://developer.cisco.com/media/wae-release-6-2-api-reference/wae-collector-rest-api/application.wadl",

@@ -28,4 +28,4 @@ ApiManagementGroupResource apiManagementGroup = client.GetApiManagementGroupReso
 ETag ifMatch = new ETag("*");
 await apiManagementGroup.DeleteAsync(WaitUntil.Completed, ifMatch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

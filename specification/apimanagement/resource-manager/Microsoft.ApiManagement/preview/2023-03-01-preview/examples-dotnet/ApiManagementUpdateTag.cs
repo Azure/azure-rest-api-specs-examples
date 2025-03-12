@@ -26,7 +26,7 @@ ApiManagementTagResource apiManagementTag = client.GetApiManagementTagResource(a
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-ApiManagementTagCreateOrUpdateContent content = new ApiManagementTagCreateOrUpdateContent()
+ApiManagementTagCreateOrUpdateContent content = new ApiManagementTagCreateOrUpdateContent
 {
     DisplayName = "temp tag",
 };

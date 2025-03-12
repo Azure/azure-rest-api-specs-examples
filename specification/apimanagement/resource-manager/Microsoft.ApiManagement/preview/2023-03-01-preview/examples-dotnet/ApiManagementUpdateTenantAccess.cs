@@ -26,7 +26,7 @@ TenantAccessInfoResource tenantAccessInfo = client.GetTenantAccessInfoResource(t
 
 // invoke the operation
 ETag ifMatch = new ETag("*");
-TenantAccessInfoPatch patch = new TenantAccessInfoPatch()
+TenantAccessInfoPatch patch = new TenantAccessInfoPatch
 {
     IsDirectAccessEnabled = true,
 };

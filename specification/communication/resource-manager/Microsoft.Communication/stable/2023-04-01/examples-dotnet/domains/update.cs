@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Communication;
 using Azure.ResourceManager.Communication.Models;
+using Azure.ResourceManager.Communication;
 
 // Generated from example definition: specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/domains/update.json
 // this example is just showing the usage of "Domains_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,7 @@ ResourceIdentifier communicationDomainResourceId = CommunicationDomainResource.C
 CommunicationDomainResource communicationDomainResource = client.GetCommunicationDomainResource(communicationDomainResourceId);
 
 // invoke the operation
-CommunicationDomainResourcePatch patch = new CommunicationDomainResourcePatch()
+CommunicationDomainResourcePatch patch = new CommunicationDomainResourcePatch
 {
     UserEngagementTracking = UserEngagementTracking.Enabled,
 };

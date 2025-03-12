@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Communication;
 
 // Generated from example definition: specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/senderUsernames/createOrUpdate.json
@@ -28,7 +28,7 @@ SenderUsernameResourceCollection collection = communicationDomainResource.GetSen
 
 // invoke the operation
 string senderUsername = "contosoNewsAlerts";
-SenderUsernameResourceData data = new SenderUsernameResourceData()
+SenderUsernameResourceData data = new SenderUsernameResourceData
 {
     Username = "contosoNewsAlerts",
     DisplayName = "Contoso News Alerts",

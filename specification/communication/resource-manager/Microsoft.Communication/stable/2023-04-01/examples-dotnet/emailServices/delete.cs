@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Communication;
 using Azure.ResourceManager.Communication.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Communication;
 
 // Generated from example definition: specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/emailServices/delete.json
 // this example is just showing the usage of "EmailServices_Delete" operation, for the dependent resources, they will have to be created separately.
@@ -27,4 +26,4 @@ EmailServiceResource emailServiceResource = client.GetEmailServiceResource(email
 // invoke the operation
 await emailServiceResource.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

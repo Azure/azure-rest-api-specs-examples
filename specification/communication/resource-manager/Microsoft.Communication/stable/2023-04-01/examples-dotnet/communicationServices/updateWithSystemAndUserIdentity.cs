@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Communication;
 using Azure.ResourceManager.Communication.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Communication;
 
 // Generated from example definition: specification/communication/resource-manager/Microsoft.Communication/stable/2023-04-01/examples/communicationServices/updateWithSystemAndUserIdentity.json
 // this example is just showing the usage of "CommunicationServices_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,18 +25,18 @@ ResourceIdentifier communicationServiceResourceId = CommunicationServiceResource
 CommunicationServiceResource communicationServiceResource = client.GetCommunicationServiceResource(communicationServiceResourceId);
 
 // invoke the operation
-CommunicationServiceResourcePatch patch = new CommunicationServiceResourcePatch()
+CommunicationServiceResourcePatch patch = new CommunicationServiceResourcePatch
 {
     Identity = new ManagedServiceIdentity("SystemAssigned,UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/user/assigned/resource/id")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/user/assigned/resource/id")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
-    ["newTag"] = "newVal",
+    ["newTag"] = "newVal"
     },
 };
 CommunicationServiceResource result = await communicationServiceResource.UpdateAsync(patch);

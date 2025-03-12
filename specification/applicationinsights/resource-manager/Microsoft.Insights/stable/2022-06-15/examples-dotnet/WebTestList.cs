@@ -32,4 +32,4 @@ await foreach (ApplicationInsightsWebTestResource item in subscriptionResource.G
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

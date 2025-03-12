@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnalyticsItemDelete.json
@@ -29,4 +28,4 @@ AnalyticsItemScopePath scopePath = AnalyticsItemScopePath.AnalyticsItems;
 string id = "3466c160-4a10-4df8-afdf-0007f3f6dee5";
 await applicationInsightsComponent.DeleteAnalyticsItemAsync(scopePath, id: id);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

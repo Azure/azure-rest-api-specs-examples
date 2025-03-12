@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ProactiveDetectionConfigurationUpdate.json
@@ -26,17 +25,14 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 
 // invoke the operation
 string configurationId = "slowpageloadtime";
-ApplicationInsightsComponentProactiveDetectionConfiguration proactiveDetectionProperties = new ApplicationInsightsComponentProactiveDetectionConfiguration()
+ApplicationInsightsComponentProactiveDetectionConfiguration proactiveDetectionProperties = new ApplicationInsightsComponentProactiveDetectionConfiguration
 {
     Name = "slowpageloadtime",
     IsEnabled = true,
     SendEmailsToSubscriptionOwners = true,
-    CustomEmails =
-    {
-    "foo@microsoft.com","foo2@microsoft.com"
-    },
-    LastUpdatedOn = null,
-    RuleDefinitions = new ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions()
+    CustomEmails = { "foo@microsoft.com", "foo2@microsoft.com" },
+    LastUpdatedOn = default,
+    RuleDefinitions = new ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions
     {
         Name = "slowpageloadtime",
         DisplayName = "Slow page load time",

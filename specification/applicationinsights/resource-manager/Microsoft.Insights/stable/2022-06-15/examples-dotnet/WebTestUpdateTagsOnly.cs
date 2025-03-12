@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/examples/WebTestUpdateTagsOnly.json
@@ -25,14 +24,14 @@ ResourceIdentifier applicationInsightsWebTestResourceId = ApplicationInsightsWeb
 ApplicationInsightsWebTestResource applicationInsightsWebTest = client.GetApplicationInsightsWebTestResource(applicationInsightsWebTestResourceId);
 
 // invoke the operation
-WebTestComponentTag webTestTags = new WebTestComponentTag()
+WebTestComponentTag webTestTags = new WebTestComponentTag
 {
     Tags =
     {
     ["Color"] = "AzureBlue",
     ["CustomField-01"] = "This is a random value",
     ["SystemType"] = "A08",
-    ["hidden-link:/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.Insights/components/my-component"] = "Resource",
+    ["hidden-link:/subscriptions/subid/resourceGroups/my-resource-group/providers/Microsoft.Insights/components/my-component"] = "Resource"
     },
 };
 ApplicationInsightsWebTestResource result = await applicationInsightsWebTest.UpdateAsync(webTestTags);

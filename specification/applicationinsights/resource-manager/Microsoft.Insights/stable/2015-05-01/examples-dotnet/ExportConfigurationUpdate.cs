@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/ExportConfigurationUpdate.json
@@ -26,7 +25,7 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 
 // invoke the operation
 string exportId = "uGOoki0jQsyEs3IdQ83Q4QsNr4=";
-ApplicationInsightsComponentExportContent content = new ApplicationInsightsComponentExportContent()
+ApplicationInsightsComponentExportContent content = new ApplicationInsightsComponentExportContent
 {
     RecordTypes = "Requests, Event, Exceptions, Metrics, PageViews, PageViewPerformance, Rdd, PerformanceCounters, Availability",
     DestinationType = "Blob",

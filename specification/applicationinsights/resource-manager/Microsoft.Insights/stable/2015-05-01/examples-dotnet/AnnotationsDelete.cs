@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ApplicationInsights.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ApplicationInsights;
 
 // Generated from example definition: specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2015-05-01/examples/AnnotationsDelete.json
@@ -28,4 +27,4 @@ ApplicationInsightsComponentResource applicationInsightsComponent = client.GetAp
 string annotationId = "bb820f1b-3110-4a8b-ba2c-8c1129d7eb6a";
 await applicationInsightsComponent.DeleteAnnotationAsync(annotationId);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

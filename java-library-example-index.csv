@@ -5119,3 +5119,4 @@ id,name,language,tag,package,version,date_epoch,date
 5118,"Azure.ResourceManager.Astro,1.0.0-beta.2",dotnet,Azure.ResourceManager.Astro_1.0.0-beta.2,Azure.ResourceManager.Astro,1.0.0-beta.2,1741686336,03/11/2025
 5119,"Azure.ResourceManager.ApiManagement,1.3.0-beta.2",dotnet,Azure.ResourceManager.ApiManagement_1.3.0-beta.2,Azure.ResourceManager.ApiManagement,1.3.0-beta.2,1741686218,03/11/2025
 5120,"Azure.ResourceManager.ResourceGraph,1.1.0-beta.3",dotnet,Azure.ResourceManager.ResourceGraph_1.1.0-beta.3,Azure.ResourceManager.ResourceGraph,1.1.0-beta.3,1741670855,03/11/2025
+5121,"Azure.ResourceManager.DesktopVirtualization,1.3.1",dotnet,Azure.ResourceManager.DesktopVirtualization_1.3.1,Azure.ResourceManager.DesktopVirtualization,1.3.1,1741701546,03/11/2025

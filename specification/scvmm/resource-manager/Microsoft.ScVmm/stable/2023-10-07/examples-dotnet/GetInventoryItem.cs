@@ -15,20 +15,31 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ScVmmInventoryItemResource created on azure
-// for more information of creating ScVmmInventoryItemResource, please refer to the document of ScVmmInventoryItemResource
+// this example assumes you already have this ScVmmServerResource created on azure
+// for more information of creating ScVmmServerResource, please refer to the document of ScVmmServerResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string vmmServerName = "ContosoVMMServer";
-string inventoryItemResourceName = "12345678-1234-1234-1234-123456789abc";
-ResourceIdentifier scVmmInventoryItemResourceId = ScVmmInventoryItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmmServerName, inventoryItemResourceName);
-ScVmmInventoryItemResource scVmmInventoryItem = client.GetScVmmInventoryItemResource(scVmmInventoryItemResourceId);
+ResourceIdentifier scVmmServerResourceId = ScVmmServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vmmServerName);
+ScVmmServerResource scVmmServer = client.GetScVmmServerResource(scVmmServerResourceId);
+
+// get the collection of this ScVmmInventoryItemResource
+ScVmmInventoryItemCollection collection = scVmmServer.GetScVmmInventoryItems();
 
 // invoke the operation
-ScVmmInventoryItemResource result = await scVmmInventoryItem.GetAsync();
+string inventoryItemResourceName = "12345678-1234-1234-1234-123456789abc";
+NullableResponse<ScVmmInventoryItemResource> response = await collection.GetIfExistsAsync(inventoryItemResourceName);
+ScVmmInventoryItemResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-ScVmmInventoryItemData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    ScVmmInventoryItemData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

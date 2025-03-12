@@ -23,11 +23,11 @@ ResourceIdentifier scVmmVirtualMachineInstanceResourceId = ScVmmVirtualMachineIn
 ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVmmVirtualMachineInstanceResource(scVmmVirtualMachineInstanceResourceId);
 
 // invoke the operation
-VirtualMachineCreateCheckpointContent content = new VirtualMachineCreateCheckpointContent()
+VirtualMachineCreateCheckpointContent content = new VirtualMachineCreateCheckpointContent
 {
     Name = "Demo Checkpoint name",
     Description = "Demo Checkpoint description",
 };
 await scVmmVirtualMachineInstance.CreateCheckpointAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

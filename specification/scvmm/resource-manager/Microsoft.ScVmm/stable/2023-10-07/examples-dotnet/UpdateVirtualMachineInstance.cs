@@ -23,9 +23,9 @@ ResourceIdentifier scVmmVirtualMachineInstanceResourceId = ScVmmVirtualMachineIn
 ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVmmVirtualMachineInstanceResource(scVmmVirtualMachineInstanceResourceId);
 
 // invoke the operation
-ScVmmVirtualMachineInstancePatch patch = new ScVmmVirtualMachineInstancePatch()
+ScVmmVirtualMachineInstancePatch patch = new ScVmmVirtualMachineInstancePatch
 {
-    HardwareProfile = new ScVmmHardwareProfileUpdate()
+    HardwareProfile = new ScVmmHardwareProfileUpdate
     {
         MemoryMB = 4196,
         CpuCount = 4,

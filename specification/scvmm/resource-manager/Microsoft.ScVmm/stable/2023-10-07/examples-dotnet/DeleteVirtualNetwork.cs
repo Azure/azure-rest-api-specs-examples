@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ScVmm.Models;
 using Azure.ResourceManager.ScVmm;
 
@@ -27,4 +26,4 @@ ScVmmVirtualNetworkResource scVmmVirtualNetwork = client.GetScVmmVirtualNetworkR
 // invoke the operation
 await scVmmVirtualNetwork.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

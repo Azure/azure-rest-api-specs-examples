@@ -22,7 +22,7 @@ ResourceIdentifier scVmmGuestAgentResourceId = ScVmmGuestAgentResource.CreateRes
 ScVmmGuestAgentResource scVmmGuestAgent = client.GetScVmmGuestAgentResource(scVmmGuestAgentResourceId);
 
 // invoke the operation
-ScVmmGuestAgentData data = new ScVmmGuestAgentData()
+ScVmmGuestAgentData data = new ScVmmGuestAgentData
 {
     Credentials = new ScVmmGuestCredential("tempuser", "<password>"),
     HttpsProxy = "http://192.1.2.3:8080",

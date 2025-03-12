@@ -23,10 +23,10 @@ ResourceIdentifier scVmmVirtualMachineInstanceResourceId = ScVmmVirtualMachineIn
 ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVmmVirtualMachineInstanceResource(scVmmVirtualMachineInstanceResourceId);
 
 // invoke the operation
-VirtualMachineRestoreCheckpointContent content = new VirtualMachineRestoreCheckpointContent()
+VirtualMachineRestoreCheckpointContent content = new VirtualMachineRestoreCheckpointContent
 {
     Id = "Demo CheckpointID",
 };
 await scVmmVirtualMachineInstance.RestoreCheckpointAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

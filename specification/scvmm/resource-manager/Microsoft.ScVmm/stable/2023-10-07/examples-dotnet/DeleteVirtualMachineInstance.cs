@@ -25,4 +25,4 @@ ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVm
 // invoke the operation
 await scVmmVirtualMachineInstance.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

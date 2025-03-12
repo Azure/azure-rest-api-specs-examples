@@ -28,7 +28,7 @@ ScVmmCloudCollection collection = resourceGroupResource.GetScVmmClouds();
 
 // invoke the operation
 string cloudResourceName = "HRCloud";
-ScVmmCloudData data = new ScVmmCloudData(new AzureLocation("East US"), new ExtendedLocation()
+ScVmmCloudData data = new ScVmmCloudData(new AzureLocation("East US"), new ExtendedLocation
 {
     Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.Arc/customLocations/contoso",
 })

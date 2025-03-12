@@ -25,4 +25,4 @@ ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVm
 // invoke the operation
 await scVmmVirtualMachineInstance.RestartAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

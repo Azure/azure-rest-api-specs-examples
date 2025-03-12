@@ -24,4 +24,4 @@ ScVmmGuestAgentResource scVmmGuestAgent = client.GetScVmmGuestAgentResource(scVm
 // invoke the operation
 await scVmmGuestAgent.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

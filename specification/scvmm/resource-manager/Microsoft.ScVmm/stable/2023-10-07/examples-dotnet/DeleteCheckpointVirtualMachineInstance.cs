@@ -23,10 +23,10 @@ ResourceIdentifier scVmmVirtualMachineInstanceResourceId = ScVmmVirtualMachineIn
 ScVmmVirtualMachineInstanceResource scVmmVirtualMachineInstance = client.GetScVmmVirtualMachineInstanceResource(scVmmVirtualMachineInstanceResourceId);
 
 // invoke the operation
-VirtualMachineDeleteCheckpointContent content = new VirtualMachineDeleteCheckpointContent()
+VirtualMachineDeleteCheckpointContent content = new VirtualMachineDeleteCheckpointContent
 {
     Id = "Demo CheckpointID",
 };
 await scVmmVirtualMachineInstance.DeleteCheckpointAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

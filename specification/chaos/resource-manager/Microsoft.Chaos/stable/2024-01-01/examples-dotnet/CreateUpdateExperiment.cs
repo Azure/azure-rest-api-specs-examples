@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using System.Xml;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Chaos;
 using Azure.ResourceManager.Chaos.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Chaos;
 
 // Generated from example definition: specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/examples/CreateUpdateExperiment.json
 // this example is just showing the usage of "Experiments_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -32,21 +32,21 @@ ChaosExperimentCollection collection = resourceGroupResource.GetChaosExperiments
 string experimentName = "exampleExperiment";
 ChaosExperimentData data = new ChaosExperimentData(new AzureLocation("eastus2euap"), new ChaosExperimentStep[]
 {
-new ChaosExperimentStep("step1",new ChaosExperimentBranch[]
+new ChaosExperimentStep("step1", new ChaosExperimentBranch[]
 {
-new ChaosExperimentBranch("branch1",new ChaosExperimentAction[]
+new ChaosExperimentBranch("branch1", new ChaosExperimentAction[]
 {
-new ChaosContinuousAction("urn:csci:microsoft:virtualMachine:shutdown/1.0",XmlConvert.ToTimeSpan("PT10M"),new ChaosKeyValuePair[]
+new ChaosContinuousAction("urn:csci:microsoft:virtualMachine:shutdown/1.0", XmlConvert.ToTimeSpan("PT10M"), new ChaosKeyValuePair[]
 {
-new ChaosKeyValuePair("abruptShutdown","false")
-},"selector1")
+new ChaosKeyValuePair("abruptShutdown", "false")
+}, "selector1")
 })
 })
 }, new ChaosTargetSelector[]
 {
-new ChaosTargetListSelector("selector1",new ChaosTargetReference[]
+new ChaosTargetListSelector("selector1", new ChaosTargetReference[]
 {
-new ChaosTargetReference(ChaosTargetReferenceType.ChaosTarget,new ResourceIdentifier("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine"))
+new ChaosTargetReference(ChaosTargetReferenceType.ChaosTarget, new ResourceIdentifier("/subscriptions/6b052e15-03d3-4f17-b2e1-be7f07588291/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine"))
 })
 })
 {

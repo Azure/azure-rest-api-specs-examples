@@ -1,10 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Chaos;
 using Azure.ResourceManager.Chaos.Models;
+using Azure.ResourceManager.Chaos;
 
 // Generated from example definition: specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/examples/DetailsExperiment.json
 // this example is just showing the usage of "Experiments_ExecutionDetails" operation, for the dependent resources, they will have to be created separately.

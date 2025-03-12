@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Chaos;
 using Azure.ResourceManager.Chaos.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Chaos;
 
 // Generated from example definition: specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/examples/CancelExperiment.json
 // this example is just showing the usage of "Experiments_Cancel" operation, for the dependent resources, they will have to be created separately.
@@ -28,4 +27,4 @@ ChaosExperimentResource chaosExperiment = client.GetChaosExperimentResource(chao
 // invoke the operation
 await chaosExperiment.CancelAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5108,3 +5108,14 @@ id,name,language,tag,package,version,date_epoch,date
 5107,"Azure.ResourceManager.Search,1.3.0-beta.4",dotnet,Azure.ResourceManager.Search_1.3.0-beta.4,Azure.ResourceManager.Search,1.3.0-beta.4,1741248685,03/06/2025
 5108,azure-mgmt-applicationinsights@4.1.0,python,azure-mgmt-applicationinsights_4.1.0,azure-mgmt-applicationinsights,4.1.0,1741250844,03/06/2025
 5109,github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/applicationinsights/armapplicationinsights/v2@v2.0.0-beta.3,go,sdk/resourcemanager/applicationinsights/armapplicationinsights/v2.0.0-beta.3,sdk/resourcemanager/applicationinsights/armapplicationinsights,v2.0.0-beta.3,1741331242,03/07/2025
+5110,"Azure.ResourceManager.Communication,1.2.1",dotnet,Azure.ResourceManager.Communication_1.2.1,Azure.ResourceManager.Communication,1.2.1,1741687856,03/11/2025
+5111,"Azure.ResourceManager.AppComplianceAutomation,1.0.1",dotnet,Azure.ResourceManager.AppComplianceAutomation_1.0.1,Azure.ResourceManager.AppComplianceAutomation,1.0.1,1741687844,03/11/2025
+5112,"Azure.ResourceManager.ApplicationInsights,1.0.1",dotnet,Azure.ResourceManager.ApplicationInsights_1.0.1,Azure.ResourceManager.ApplicationInsights,1.0.1,1741687706,03/11/2025
+5113,"Azure.ResourceManager.Confluent,1.2.1",dotnet,Azure.ResourceManager.Confluent_1.2.1,Azure.ResourceManager.Confluent,1.2.1,1741687547,03/11/2025
+5114,"Azure.ResourceManager.Chaos,1.1.0-beta.2",dotnet,Azure.ResourceManager.Chaos_1.1.0-beta.2,Azure.ResourceManager.Chaos,1.1.0-beta.2,1741687517,03/11/2025
+5115,"Azure.ResourceManager.ConnectedVMwarevSphere,1.1.1",dotnet,Azure.ResourceManager.ConnectedVMwarevSphere_1.1.1,Azure.ResourceManager.ConnectedVMwarevSphere,1.1.1,1741687495,03/11/2025
+5116,"Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.5",dotnet,Azure.ResourceManager.ConfidentialLedger_1.1.0-beta.5,Azure.ResourceManager.ConfidentialLedger,1.1.0-beta.5,1741686648,03/11/2025
+5117,"Azure.ResourceManager.ScVmm,1.0.0-beta.6",dotnet,Azure.ResourceManager.ScVmm_1.0.0-beta.6,Azure.ResourceManager.ScVmm,1.0.0-beta.6,1741686336,03/11/2025
+5118,"Azure.ResourceManager.Astro,1.0.0-beta.2",dotnet,Azure.ResourceManager.Astro_1.0.0-beta.2,Azure.ResourceManager.Astro,1.0.0-beta.2,1741686336,03/11/2025
+5119,"Azure.ResourceManager.ApiManagement,1.3.0-beta.2",dotnet,Azure.ResourceManager.ApiManagement_1.3.0-beta.2,Azure.ResourceManager.ApiManagement,1.3.0-beta.2,1741686218,03/11/2025
+5120,"Azure.ResourceManager.ResourceGraph,1.1.0-beta.3",dotnet,Azure.ResourceManager.ResourceGraph_1.1.0-beta.3,Azure.ResourceManager.ResourceGraph,1.1.0-beta.3,1741670855,03/11/2025

@@ -32,4 +32,4 @@ await foreach (ConfidentialLedgerResource item in subscriptionResource.GetConfid
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

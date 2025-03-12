@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ConfidentialLedger.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ConfidentialLedger;
 
 // Generated from example definition: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2023-06-28-preview/examples/ManagedCCF_Update.json
@@ -27,9 +26,9 @@ ManagedCcfResource managedCcf = client.GetManagedCcfResource(managedCcfResourceI
 // invoke the operation
 ManagedCcfData data = new ManagedCcfData(new AzureLocation("EastUS"))
 {
-    Properties = new ManagedCcfProperties()
+    Properties = new ManagedCcfProperties
     {
-        DeploymentType = new ConfidentialLedgerDeploymentType()
+        DeploymentType = new ConfidentialLedgerDeploymentType
         {
             LanguageRuntime = ConfidentialLedgerLanguageRuntime.CPP,
             AppSourceUri = new Uri("https://myaccount.blob.core.windows.net/storage/mccfsource?sv=2022-02-11%st=2022-03-11"),
@@ -37,7 +36,7 @@ ManagedCcfData data = new ManagedCcfData(new AzureLocation("EastUS"))
     },
     Tags =
     {
-    ["additionalProps1"] = "additional properties",
+    ["additionalProps1"] = "additional properties"
     },
 };
 ArmOperation<ManagedCcfResource> lro = await managedCcf.UpdateAsync(WaitUntil.Completed, data);

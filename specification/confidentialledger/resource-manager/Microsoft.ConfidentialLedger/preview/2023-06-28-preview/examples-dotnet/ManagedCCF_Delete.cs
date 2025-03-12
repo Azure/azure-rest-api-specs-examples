@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ConfidentialLedger.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ConfidentialLedger;
 
 // Generated from example definition: specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/preview/2023-06-28-preview/examples/ManagedCCF_Delete.json
@@ -27,4 +26,4 @@ ManagedCcfResource managedCcf = client.GetManagedCcfResource(managedCcfResourceI
 // invoke the operation
 await managedCcf.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

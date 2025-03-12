@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -31,20 +30,18 @@ ManagedCcfCollection collection = resourceGroupResource.GetManagedCcfs();
 string appName = "DummyMccfAppName";
 ManagedCcfData data = new ManagedCcfData(new AzureLocation("EastUS"))
 {
-    Properties = new ManagedCcfProperties()
+    Properties = new ManagedCcfProperties
     {
-        MemberIdentityCertificates =
-        {
-        new ConfidentialLedgerMemberIdentityCertificate()
+        MemberIdentityCertificates = {new ConfidentialLedgerMemberIdentityCertificate
         {
         Certificate = "-----BEGIN CERTIFICATE-----MIIBsjCCATigAwIBAgIUZWIbyG79TniQLd2UxJuU74tqrKcwCgYIKoZIzj0EAwMwEDEOMAwGA1UEAwwFdXNlcjAwHhcNMjEwMzE2MTgwNjExWhcNMjIwMzE2MTgwNjExWjAQMQ4wDAYDVQQDDAV1c2VyMDB2MBAGByqGSM49AgEGBSuBBAAiA2IABBiWSo/j8EFit7aUMm5lF+lUmCu+IgfnpFD+7QMgLKtxRJ3aGSqgS/GpqcYVGddnODtSarNE/HyGKUFUolLPQ5ybHcouUk0kyfA7XMeSoUA4lBz63Wha8wmXo+NdBRo39qNTMFEwHQYDVR0OBBYEFPtuhrwgGjDFHeUUT4nGsXaZn69KMB8GA1UdIwQYMBaAFPtuhrwgGjDFHeUUT4nGsXaZn69KMA8GA1UdEwEB/wQFMAMBAf8wCgYIKoZIzj0EAwMDaAAwZQIxAOnozm2CyqRwSSQLls5r+mUHRGRyXHXwYtM4Dcst/VEZdmS9fqvHRCHbjUlO/+HNfgIwMWZ4FmsjD3wnPxONOm9YdVn/PRD7SsPRPbOjwBiE4EBGaHDsLjYAGDSGi7NJnSkA-----END CERTIFICATE-----",
         Encryptionkey = "ledgerencryptionkey",
-        Tags = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+        Tags = BinaryData.FromObjectAsJson(new
         {
-        ["additionalProps1"] = "additional properties"}),
-        }
-        },
-        DeploymentType = new ConfidentialLedgerDeploymentType()
+        additionalProps1 = "additional properties",
+        }),
+        }},
+        DeploymentType = new ConfidentialLedgerDeploymentType
         {
             LanguageRuntime = ConfidentialLedgerLanguageRuntime.CPP,
             AppSourceUri = new Uri("https://myaccount.blob.core.windows.net/storage/mccfsource?sv=2022-02-11%st=2022-03-11"),
@@ -53,7 +50,7 @@ ManagedCcfData data = new ManagedCcfData(new AzureLocation("EastUS"))
     },
     Tags =
     {
-    ["additionalProps1"] = "additional properties",
+    ["additionalProps1"] = "additional properties"
     },
 };
 ArmOperation<ManagedCcfResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, appName, data);

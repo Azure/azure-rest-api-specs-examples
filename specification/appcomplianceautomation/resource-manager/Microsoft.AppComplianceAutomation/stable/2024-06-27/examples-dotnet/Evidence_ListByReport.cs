@@ -25,7 +25,7 @@ AppComplianceReportResource appComplianceReport = client.GetAppComplianceReportR
 AppComplianceReportEvidenceCollection collection = appComplianceReport.GetAppComplianceReportEvidences();
 
 // invoke the operation and iterate over the result
-AppComplianceReportEvidenceCollectionGetAllOptions options = new AppComplianceReportEvidenceCollectionGetAllOptions() { };
+AppComplianceReportEvidenceCollectionGetAllOptions options = new AppComplianceReportEvidenceCollectionGetAllOptions();
 await foreach (AppComplianceReportEvidenceResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -35,4 +35,4 @@ await foreach (AppComplianceReportEvidenceResource item in collection.GetAllAsyn
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

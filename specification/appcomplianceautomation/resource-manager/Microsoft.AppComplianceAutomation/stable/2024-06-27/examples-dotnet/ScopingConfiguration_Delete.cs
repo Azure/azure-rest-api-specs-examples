@@ -24,4 +24,4 @@ AppComplianceReportScopingConfigurationResource appComplianceReportScopingConfig
 // invoke the operation
 await appComplianceReportScopingConfiguration.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -15,18 +15,29 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppComplianceReportWebhookResource created on azure
-// for more information of creating AppComplianceReportWebhookResource, please refer to the document of AppComplianceReportWebhookResource
+// this example assumes you already have this AppComplianceReportResource created on azure
+// for more information of creating AppComplianceReportResource, please refer to the document of AppComplianceReportResource
 string reportName = "testReportName";
-string webhookName = "testWebhookName";
-ResourceIdentifier appComplianceReportWebhookResourceId = AppComplianceReportWebhookResource.CreateResourceIdentifier(reportName, webhookName);
-AppComplianceReportWebhookResource appComplianceReportWebhook = client.GetAppComplianceReportWebhookResource(appComplianceReportWebhookResourceId);
+ResourceIdentifier appComplianceReportResourceId = AppComplianceReportResource.CreateResourceIdentifier(reportName);
+AppComplianceReportResource appComplianceReport = client.GetAppComplianceReportResource(appComplianceReportResourceId);
+
+// get the collection of this AppComplianceReportWebhookResource
+AppComplianceReportWebhookCollection collection = appComplianceReport.GetAppComplianceReportWebhooks();
 
 // invoke the operation
-AppComplianceReportWebhookResource result = await appComplianceReportWebhook.GetAsync();
+string webhookName = "testWebhookName";
+NullableResponse<AppComplianceReportWebhookResource> response = await collection.GetIfExistsAsync(webhookName);
+AppComplianceReportWebhookResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-AppComplianceReportWebhookData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    AppComplianceReportWebhookData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

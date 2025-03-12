@@ -14,29 +14,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this AppComplianceReportResource created on azure
-// for more information of creating AppComplianceReportResource, please refer to the document of AppComplianceReportResource
+// this example assumes you already have this AppComplianceReportScopingConfigurationResource created on azure
+// for more information of creating AppComplianceReportScopingConfigurationResource, please refer to the document of AppComplianceReportScopingConfigurationResource
 string reportName = "testReportName";
-ResourceIdentifier appComplianceReportResourceId = AppComplianceReportResource.CreateResourceIdentifier(reportName);
-AppComplianceReportResource appComplianceReport = client.GetAppComplianceReportResource(appComplianceReportResourceId);
-
-// get the collection of this AppComplianceReportScopingConfigurationResource
-AppComplianceReportScopingConfigurationCollection collection = appComplianceReport.GetAppComplianceReportScopingConfigurations();
+string scopingConfigurationName = "default";
+ResourceIdentifier appComplianceReportScopingConfigurationResourceId = AppComplianceReportScopingConfigurationResource.CreateResourceIdentifier(reportName, scopingConfigurationName);
+AppComplianceReportScopingConfigurationResource appComplianceReportScopingConfiguration = client.GetAppComplianceReportScopingConfigurationResource(appComplianceReportScopingConfigurationResourceId);
 
 // invoke the operation
-string scopingConfigurationName = "default";
-NullableResponse<AppComplianceReportScopingConfigurationResource> response = await collection.GetIfExistsAsync(scopingConfigurationName);
-AppComplianceReportScopingConfigurationResource result = response.HasValue ? response.Value : null;
+AppComplianceReportScopingConfigurationResource result = await appComplianceReportScopingConfiguration.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    AppComplianceReportScopingConfigurationData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+AppComplianceReportScopingConfigurationData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

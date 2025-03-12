@@ -5127,3 +5127,4 @@ id,name,language,tag,package,version,date_epoch,date
 5126,"Azure.ResourceManager.Hci,1.2.1",dotnet,Azure.ResourceManager.Hci_1.2.1,Azure.ResourceManager.Hci,1.2.1,1741701457,03/11/2025
 5127,"Azure.ResourceManager.AppPlatform,1.1.2",dotnet,Azure.ResourceManager.AppPlatform_1.1.2,Azure.ResourceManager.AppPlatform,1.1.2,1741701398,03/11/2025
 5128,"Azure.ResourceManager.DeviceProvisioningServices,1.2.1",dotnet,Azure.ResourceManager.DeviceProvisioningServices_1.2.1,Azure.ResourceManager.DeviceProvisioningServices,1.2.1,1741701371,03/11/2025
+5129,"Azure.ResourceManager.EventGrid,1.1.0-beta.6",dotnet,Azure.ResourceManager.EventGrid_1.1.0-beta.6,Azure.ResourceManager.EventGrid,1.1.0-beta.6,1741701323,03/11/2025

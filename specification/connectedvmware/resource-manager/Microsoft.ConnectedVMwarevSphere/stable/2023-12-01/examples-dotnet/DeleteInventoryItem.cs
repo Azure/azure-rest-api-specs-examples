@@ -27,4 +27,4 @@ VCenterInventoryItemResource vCenterInventoryItem = client.GetVCenterInventoryIt
 // invoke the operation
 await vCenterInventoryItem.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

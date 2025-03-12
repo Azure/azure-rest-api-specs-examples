@@ -23,22 +23,22 @@ ResourceIdentifier vMwareVmInstanceResourceId = VMwareVmInstanceResource.CreateR
 VMwareVmInstanceResource vMwareVmInstance = client.GetVMwareVmInstanceResource(vMwareVmInstanceResourceId);
 
 // invoke the operation
-VMwareVmInstanceData data = new VMwareVmInstanceData()
+VMwareVmInstanceData data = new VMwareVmInstanceData
 {
-    ExtendedLocation = new ExtendedLocation()
+    ExtendedLocation = new ExtendedLocation
     {
         Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso",
     },
-    PlacementProfile = new PlacementProfile()
+    PlacementProfile = new PlacementProfile
     {
         ResourcePoolId = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/ResourcePools/HRPool",
     },
-    HardwareProfile = new VmInstanceHardwareProfile()
+    HardwareProfile = new VmInstanceHardwareProfile
     {
         MemorySizeMB = 4196,
         NumCpus = 4,
     },
-    InfrastructureProfile = new VCenterInfrastructureProfile()
+    InfrastructureProfile = new VCenterInfrastructureProfile
     {
         TemplateId = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/VirtualMachineTemplates/WebFrontEndTemplate",
         VCenterId = "/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/testrg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/ContosoVCenter",

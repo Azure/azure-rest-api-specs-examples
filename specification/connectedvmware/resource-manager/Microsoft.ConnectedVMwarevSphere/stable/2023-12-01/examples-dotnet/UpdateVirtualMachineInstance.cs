@@ -23,9 +23,9 @@ ResourceIdentifier vMwareVmInstanceResourceId = VMwareVmInstanceResource.CreateR
 VMwareVmInstanceResource vMwareVmInstance = client.GetVMwareVmInstanceResource(vMwareVmInstanceResourceId);
 
 // invoke the operation
-VMwareVmInstancePatch patch = new VMwareVmInstancePatch()
+VMwareVmInstancePatch patch = new VMwareVmInstancePatch
 {
-    HardwareProfile = new VmInstanceHardwareProfile()
+    HardwareProfile = new VmInstanceHardwareProfile
     {
         MemorySizeMB = 4196,
         NumCpus = 4,

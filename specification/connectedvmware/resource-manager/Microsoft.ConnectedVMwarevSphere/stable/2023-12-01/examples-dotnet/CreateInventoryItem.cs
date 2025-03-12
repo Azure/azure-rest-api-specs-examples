@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this VMwareVCenterResource created on azure
-// for more information of creating VMwareVCenterResource, please refer to the document of VMwareVCenterResource
+// this example assumes you already have this VCenterInventoryItemResource created on azure
+// for more information of creating VCenterInventoryItemResource, please refer to the document of VCenterInventoryItemResource
 string subscriptionId = "fd3c3665-1729-4b7b-9a38-238e83b0f98b";
 string resourceGroupName = "testrg";
 string vcenterName = "ContosoVCenter";
-ResourceIdentifier vMwareVCenterResourceId = VMwareVCenterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vcenterName);
-VMwareVCenterResource vMwareVCenter = client.GetVMwareVCenterResource(vMwareVCenterResourceId);
-
-// get the collection of this VCenterInventoryItemResource
-VCenterInventoryItemCollection collection = vMwareVCenter.GetVCenterInventoryItems();
+string inventoryItemName = "testItem";
+ResourceIdentifier vCenterInventoryItemResourceId = VCenterInventoryItemResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, vcenterName, inventoryItemName);
+VCenterInventoryItemResource vCenterInventoryItem = client.GetVCenterInventoryItemResource(vCenterInventoryItemResourceId);
 
 // invoke the operation
-string inventoryItemName = "testItem";
 VCenterInventoryItemData data = new VCenterInventoryItemData(VCenterInventoryType.ResourcePool);
-ArmOperation<VCenterInventoryItemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, inventoryItemName, data);
+ArmOperation<VCenterInventoryItemResource> lro = await vCenterInventoryItem.UpdateAsync(WaitUntil.Completed, data);
 VCenterInventoryItemResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

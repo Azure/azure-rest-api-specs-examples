@@ -30,7 +30,7 @@ VMwareDatastoreCollection collection = resourceGroupResource.GetVMwareDatastores
 string datastoreName = "HRDatastore";
 VMwareDatastoreData data = new VMwareDatastoreData(new AzureLocation("East US"))
 {
-    ExtendedLocation = new ExtendedLocation()
+    ExtendedLocation = new ExtendedLocation
     {
         Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso",
     },

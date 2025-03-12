@@ -23,10 +23,10 @@ ResourceIdentifier vMwareVmInstanceResourceId = VMwareVmInstanceResource.CreateR
 VMwareVmInstanceResource vMwareVmInstance = client.GetVMwareVmInstanceResource(vMwareVmInstanceResourceId);
 
 // invoke the operation
-StopVirtualMachineContent content = new StopVirtualMachineContent()
+StopVirtualMachineContent content = new StopVirtualMachineContent
 {
     SkipShutdown = true,
 };
 await vMwareVmInstance.StopAsync(WaitUntil.Completed, content: content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

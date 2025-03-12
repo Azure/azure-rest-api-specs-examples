@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ConnectedVMwarevSphere.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ConnectedVMwarevSphere;
 
 // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/DeleteResourcePool.json
@@ -27,4 +26,4 @@ VMwareResourcePoolResource vMwareResourcePool = client.GetVMwareResourcePoolReso
 // invoke the operation
 await vMwareResourcePool.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

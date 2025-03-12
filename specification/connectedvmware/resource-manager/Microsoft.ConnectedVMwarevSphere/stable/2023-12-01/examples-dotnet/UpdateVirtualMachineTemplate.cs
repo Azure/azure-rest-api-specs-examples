@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.ConnectedVMwarevSphere.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.ConnectedVMwarevSphere;
 
 // Generated from example definition: specification/connectedvmware/resource-manager/Microsoft.ConnectedVMwarevSphere/stable/2023-12-01/examples/UpdateVirtualMachineTemplate.json
@@ -25,12 +24,12 @@ ResourceIdentifier vMwareVmTemplateResourceId = VMwareVmTemplateResource.CreateR
 VMwareVmTemplateResource vMwareVmTemplate = client.GetVMwareVmTemplateResource(vMwareVmTemplateResourceId);
 
 // invoke the operation
-VMwareResourcePatchContent content = new VMwareResourcePatchContent()
+VMwareResourcePatchContent content = new VMwareResourcePatchContent
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 VMwareVmTemplateResource result = await vMwareVmTemplate.UpdateAsync(content);

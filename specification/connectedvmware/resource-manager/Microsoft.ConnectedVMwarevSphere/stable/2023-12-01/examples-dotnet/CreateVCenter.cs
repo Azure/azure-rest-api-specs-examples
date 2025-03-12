@@ -31,12 +31,12 @@ VMwareVCenterCollection collection = resourceGroupResource.GetVMwareVCenters();
 string vcenterName = "ContosoVCenter";
 VMwareVCenterData data = new VMwareVCenterData(new AzureLocation("East US"), "ContosoVMware.contoso.com")
 {
-    ExtendedLocation = new ExtendedLocation()
+    ExtendedLocation = new ExtendedLocation
     {
         Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso",
     },
     Port = 1234,
-    Credentials = new VICredential()
+    Credentials = new VICredential
     {
         Username = "tempuser",
         Password = "<password>",

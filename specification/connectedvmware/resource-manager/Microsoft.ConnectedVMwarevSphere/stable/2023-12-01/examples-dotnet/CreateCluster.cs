@@ -30,7 +30,7 @@ VMwareClusterCollection collection = resourceGroupResource.GetVMwareClusters();
 string clusterName = "HRCluster";
 VMwareClusterData data = new VMwareClusterData(new AzureLocation("East US"))
 {
-    ExtendedLocation = new ExtendedLocation()
+    ExtendedLocation = new ExtendedLocation
     {
         Name = "/subscriptions/a5015e1c-867f-4533-8541-85cd470d0cfb/resourceGroups/demoRG/providers/Microsoft.ExtendedLocation/customLocations/contoso",
     },

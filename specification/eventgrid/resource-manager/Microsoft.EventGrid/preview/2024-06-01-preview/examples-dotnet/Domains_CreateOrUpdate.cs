@@ -31,22 +31,19 @@ string domainName = "exampledomain1";
 EventGridDomainData data = new EventGridDomainData(new AzureLocation("westus2"))
 {
     PublicNetworkAccess = EventGridPublicNetworkAccess.Enabled,
-    InboundIPRules =
-    {
-    new EventGridInboundIPRule()
+    InboundIPRules = {new EventGridInboundIPRule
     {
     IPMask = "12.18.30.15",
     Action = EventGridIPActionType.Allow,
-    },new EventGridInboundIPRule()
+    }, new EventGridInboundIPRule
     {
     IPMask = "12.18.176.1",
     Action = EventGridIPActionType.Allow,
-    }
-    },
+    }},
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<EventGridDomainResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, domainName, data);

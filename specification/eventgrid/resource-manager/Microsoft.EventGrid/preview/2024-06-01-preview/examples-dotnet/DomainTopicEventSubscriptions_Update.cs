@@ -26,22 +26,19 @@ ResourceIdentifier domainTopicEventSubscriptionResourceId = DomainTopicEventSubs
 DomainTopicEventSubscriptionResource domainTopicEventSubscription = client.GetDomainTopicEventSubscriptionResource(domainTopicEventSubscriptionResourceId);
 
 // invoke the operation
-EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch()
+EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch
 {
-    Destination = new WebHookEventSubscriptionDestination()
+    Destination = new WebHookEventSubscriptionDestination
     {
         Endpoint = new Uri("https://requestb.in/15ksip71"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "existingPrefix",
         SubjectEndsWith = "newSuffix",
         IsSubjectCaseSensitive = true,
     },
-    Labels =
-    {
-    "label1","label2"
-    },
+    Labels = { "label1", "label2" },
 };
 ArmOperation<DomainTopicEventSubscriptionResource> lro = await domainTopicEventSubscription.UpdateAsync(WaitUntil.Completed, patch);
 DomainTopicEventSubscriptionResource result = lro.Value;

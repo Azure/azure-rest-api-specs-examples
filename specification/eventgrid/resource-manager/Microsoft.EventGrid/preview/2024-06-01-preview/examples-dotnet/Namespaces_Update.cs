@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/Namespaces_Update.json
@@ -25,11 +24,11 @@ ResourceIdentifier eventGridNamespaceResourceId = EventGridNamespaceResource.Cre
 EventGridNamespaceResource eventGridNamespace = client.GetEventGridNamespaceResource(eventGridNamespaceResourceId);
 
 // invoke the operation
-EventGridNamespacePatch patch = new EventGridNamespacePatch()
+EventGridNamespacePatch patch = new EventGridNamespacePatch
 {
     Tags =
     {
-    ["tag1"] = "value1Updated",
+    ["tag1"] = "value1Updated"
     },
 };
 ArmOperation<EventGridNamespaceResource> lro = await eventGridNamespace.UpdateAsync(WaitUntil.Completed, patch);

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerDestinations_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier partnerDestinationResourceId = PartnerDestinationResource.Cre
 PartnerDestinationResource partnerDestination = client.GetPartnerDestinationResource(partnerDestinationResourceId);
 
 // invoke the operation
-PartnerDestinationPatch patch = new PartnerDestinationPatch()
+PartnerDestinationPatch patch = new PartnerDestinationPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<PartnerDestinationResource> lro = await partnerDestination.UpdateAsync(WaitUntil.Completed, patch);

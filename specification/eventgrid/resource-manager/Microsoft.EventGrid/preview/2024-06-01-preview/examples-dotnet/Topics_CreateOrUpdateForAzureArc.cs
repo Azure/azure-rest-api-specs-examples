@@ -32,7 +32,7 @@ string topicName = "exampletopic1";
 EventGridTopicData data = new EventGridTopicData(new AzureLocation("westus2"))
 {
     Kind = ResourceKind.AzureArc,
-    ExtendedLocation = new ExtendedLocation()
+    ExtendedLocation = new ExtendedLocation
     {
         Name = "/subscriptions/8f6b6269-84f2-4d09-9e31-1127efcd1e40/resourcegroups/examplerg/providers/Microsoft.ExtendedLocation/CustomLocations/exampleCustomLocation",
     },
@@ -40,7 +40,7 @@ EventGridTopicData data = new EventGridTopicData(new AzureLocation("westus2"))
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<EventGridTopicResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, topicName, data);

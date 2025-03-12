@@ -28,7 +28,7 @@ NamespaceTopicCollection collection = eventGridNamespace.GetNamespaceTopics();
 
 // invoke the operation
 string topicName = "examplenamespacetopic2";
-NamespaceTopicData data = new NamespaceTopicData()
+NamespaceTopicData data = new NamespaceTopicData
 {
     PublisherType = PublisherType.Custom,
     InputSchema = EventInputSchema.CloudEventSchemaV10,

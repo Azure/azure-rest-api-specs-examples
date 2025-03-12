@@ -27,4 +27,4 @@ SystemTopicEventSubscriptionResource systemTopicEventSubscription = client.GetSy
 // invoke the operation
 await systemTopicEventSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this PartnerNamespaceResource created on azure
-// for more information of creating PartnerNamespaceResource, please refer to the document of PartnerNamespaceResource
+// this example assumes you already have this EventGridTopicPrivateEndpointConnectionResource created on azure
+// for more information of creating EventGridTopicPrivateEndpointConnectionResource, please refer to the document of EventGridTopicPrivateEndpointConnectionResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string parentName = "exampletopic1";
-ResourceIdentifier partnerNamespaceResourceId = PartnerNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName);
-PartnerNamespaceResource partnerNamespace = client.GetPartnerNamespaceResource(partnerNamespaceResourceId);
-
-// get the collection of this EventGridPartnerNamespacePrivateEndpointConnectionResource
-EventGridPartnerNamespacePrivateEndpointConnectionCollection collection = partnerNamespace.GetEventGridPartnerNamespacePrivateEndpointConnections();
+string privateEndpointConnectionName = "BMTPE5.8A30D251-4C61-489D-A1AA-B37C4A329B8B";
+ResourceIdentifier eventGridTopicPrivateEndpointConnectionResourceId = EventGridTopicPrivateEndpointConnectionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, parentName, privateEndpointConnectionName);
+EventGridTopicPrivateEndpointConnectionResource eventGridTopicPrivateEndpointConnection = client.GetEventGridTopicPrivateEndpointConnectionResource(eventGridTopicPrivateEndpointConnectionResourceId);
 
 // invoke the operation
-string privateEndpointConnectionName = "BMTPE5.8A30D251-4C61-489D-A1AA-B37C4A329B8B";
-NullableResponse<EventGridPartnerNamespacePrivateEndpointConnectionResource> response = await collection.GetIfExistsAsync(privateEndpointConnectionName);
-EventGridPartnerNamespacePrivateEndpointConnectionResource result = response.HasValue ? response.Value : null;
+EventGridTopicPrivateEndpointConnectionResource result = await eventGridTopicPrivateEndpointConnection.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    EventGridPrivateEndpointConnectionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventGridPrivateEndpointConnectionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

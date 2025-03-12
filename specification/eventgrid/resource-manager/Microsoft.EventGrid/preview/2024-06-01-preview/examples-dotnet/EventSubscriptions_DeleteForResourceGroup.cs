@@ -25,4 +25,4 @@ EventSubscriptionResource eventSubscription = client.GetEventSubscriptionResourc
 // invoke the operation
 await eventSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ TopicEventSubscriptionResource topicEventSubscription = client.GetTopicEventSubs
 // invoke the operation
 await topicEventSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

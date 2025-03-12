@@ -28,13 +28,13 @@ SystemTopicEventSubscriptionCollection collection = systemTopic.GetSystemTopicEv
 
 // invoke the operation
 string eventSubscriptionName = "exampleEventSubscriptionName1";
-EventGridSubscriptionData data = new EventGridSubscriptionData()
+EventGridSubscriptionData data = new EventGridSubscriptionData
 {
-    Destination = new WebHookEventSubscriptionDestination()
+    Destination = new WebHookEventSubscriptionDestination
     {
         Endpoint = new Uri("https://requestb.in/15ksip71"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "ExamplePrefix",
         SubjectEndsWith = "ExampleSuffix",

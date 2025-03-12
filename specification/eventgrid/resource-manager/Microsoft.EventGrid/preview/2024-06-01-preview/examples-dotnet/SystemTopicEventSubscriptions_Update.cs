@@ -25,22 +25,19 @@ ResourceIdentifier systemTopicEventSubscriptionResourceId = SystemTopicEventSubs
 SystemTopicEventSubscriptionResource systemTopicEventSubscription = client.GetSystemTopicEventSubscriptionResource(systemTopicEventSubscriptionResourceId);
 
 // invoke the operation
-EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch()
+EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch
 {
-    Destination = new WebHookEventSubscriptionDestination()
+    Destination = new WebHookEventSubscriptionDestination
     {
         Endpoint = new Uri("https://requestb.in/15ksip71"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "existingPrefix",
         SubjectEndsWith = "newSuffix",
         IsSubjectCaseSensitive = true,
     },
-    Labels =
-    {
-    "label1","label2"
-    },
+    Labels = { "label1", "label2" },
 };
 ArmOperation<SystemTopicEventSubscriptionResource> lro = await systemTopicEventSubscription.UpdateAsync(WaitUntil.Completed, patch);
 SystemTopicEventSubscriptionResource result = lro.Value;

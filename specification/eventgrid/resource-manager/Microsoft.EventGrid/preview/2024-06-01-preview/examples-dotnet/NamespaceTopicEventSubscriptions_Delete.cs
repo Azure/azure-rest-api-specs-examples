@@ -29,4 +29,4 @@ NamespaceTopicEventSubscriptionResource namespaceTopicEventSubscription = client
 // invoke the operation
 await namespaceTopicEventSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

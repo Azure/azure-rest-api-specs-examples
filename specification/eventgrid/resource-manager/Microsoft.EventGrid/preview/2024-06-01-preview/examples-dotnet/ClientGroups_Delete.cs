@@ -26,4 +26,4 @@ EventGridNamespaceClientGroupResource eventGridNamespaceClientGroup = client.Get
 // invoke the operation
 await eventGridNamespaceClientGroup.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -30,4 +30,4 @@ await foreach (DeliveryAttributeMapping item in partnerTopicEventSubscription.Ge
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

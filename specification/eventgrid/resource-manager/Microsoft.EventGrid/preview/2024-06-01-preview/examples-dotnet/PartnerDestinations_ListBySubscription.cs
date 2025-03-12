@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.EventGrid.Models;
 using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
@@ -32,4 +31,4 @@ await foreach (PartnerDestinationResource item in subscriptionResource.GetPartne
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

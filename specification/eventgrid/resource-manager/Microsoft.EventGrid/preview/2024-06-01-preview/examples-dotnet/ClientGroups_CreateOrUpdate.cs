@@ -27,7 +27,7 @@ EventGridNamespaceClientGroupCollection collection = eventGridNamespace.GetEvent
 
 // invoke the operation
 string clientGroupName = "exampleClientGroupName1";
-EventGridNamespaceClientGroupData data = new EventGridNamespaceClientGroupData()
+EventGridNamespaceClientGroupData data = new EventGridNamespaceClientGroupData
 {
     Description = "This is a test client group",
     Query = "attributes.b IN ['a', 'b', 'c']",

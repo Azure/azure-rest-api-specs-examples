@@ -31,4 +31,4 @@ await foreach (DeliveryAttributeMapping item in domainTopicEventSubscription.Get
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

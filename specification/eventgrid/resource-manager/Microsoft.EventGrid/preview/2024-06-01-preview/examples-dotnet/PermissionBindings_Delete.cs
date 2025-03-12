@@ -27,4 +27,4 @@ EventGridNamespacePermissionBindingResource eventGridNamespacePermissionBinding 
 // invoke the operation
 await eventGridNamespacePermissionBinding.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

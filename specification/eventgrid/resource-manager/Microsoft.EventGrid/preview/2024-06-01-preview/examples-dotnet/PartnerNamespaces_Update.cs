@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerNamespaces_Update.json
@@ -25,13 +24,13 @@ ResourceIdentifier partnerNamespaceResourceId = PartnerNamespaceResource.CreateR
 PartnerNamespaceResource partnerNamespace = client.GetPartnerNamespaceResource(partnerNamespaceResourceId);
 
 // invoke the operation
-PartnerNamespacePatch patch = new PartnerNamespacePatch()
+PartnerNamespacePatch patch = new PartnerNamespacePatch
 {
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 await partnerNamespace.UpdateAsync(WaitUntil.Completed, patch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -15,29 +15,25 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this EventSubscriptionResource
 string scope = "subscriptions/8f6b6269-84f2-4d09-9e31-1127efcd1e40/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampletopic1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-EventSubscriptionCollection collection = client.GetEventSubscriptions(scopeId);
+EventSubscriptionCollection collection = client.GetEventSubscriptions(new ResourceIdentifier(scope));
 
 // invoke the operation
 string eventSubscriptionName = "examplesubscription1";
-EventGridSubscriptionData data = new EventGridSubscriptionData()
+EventGridSubscriptionData data = new EventGridSubscriptionData
 {
-    Destination = new HybridConnectionEventSubscriptionDestination()
+    Destination = new HybridConnectionEventSubscriptionDestination
     {
         ResourceId = new ResourceIdentifier("/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Relay/namespaces/ContosoNamespace/hybridConnections/HC1"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "ExamplePrefix",
         SubjectEndsWith = "ExampleSuffix",
         IsSubjectCaseSensitive = false,
     },
-    DeadLetterDestination = new StorageBlobDeadLetterDestination()
+    DeadLetterDestination = new StorageBlobDeadLetterDestination
     {
         ResourceId = new ResourceIdentifier("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"),
         BlobContainerName = "contosocontainer",

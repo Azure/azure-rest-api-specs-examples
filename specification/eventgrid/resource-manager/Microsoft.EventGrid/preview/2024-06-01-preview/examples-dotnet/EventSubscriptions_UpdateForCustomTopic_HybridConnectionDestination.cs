@@ -23,22 +23,19 @@ ResourceIdentifier eventSubscriptionResourceId = EventSubscriptionResource.Creat
 EventSubscriptionResource eventSubscription = client.GetEventSubscriptionResource(eventSubscriptionResourceId);
 
 // invoke the operation
-EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch()
+EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch
 {
-    Destination = new HybridConnectionEventSubscriptionDestination()
+    Destination = new HybridConnectionEventSubscriptionDestination
     {
         ResourceId = new ResourceIdentifier("/subscriptions/d33c5f7a-02ea-40f4-bf52-07f17e84d6a8/resourceGroups/TestRG/providers/Microsoft.Relay/namespaces/ContosoNamespace/hybridConnections/HC1"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "existingPrefix",
         SubjectEndsWith = "newSuffix",
         IsSubjectCaseSensitive = true,
     },
-    Labels =
-    {
-    "label1","label2"
-    },
+    Labels = { "label1", "label2" },
 };
 ArmOperation<EventSubscriptionResource> lro = await eventSubscription.UpdateAsync(WaitUntil.Completed, patch);
 EventSubscriptionResource result = lro.Value;

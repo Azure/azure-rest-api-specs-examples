@@ -26,4 +26,4 @@ CaCertificateResource caCertificate = client.GetCaCertificateResource(caCertific
 // invoke the operation
 await caCertificate.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

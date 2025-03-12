@@ -30,12 +30,12 @@ NamespaceTopicEventSubscriptionCollection collection = namespaceTopic.GetNamespa
 
 // invoke the operation
 string eventSubscriptionName = "examplenamespacetopicEventSub2";
-NamespaceTopicEventSubscriptionData data = new NamespaceTopicEventSubscriptionData()
+NamespaceTopicEventSubscriptionData data = new NamespaceTopicEventSubscriptionData
 {
-    DeliveryConfiguration = new DeliveryConfiguration()
+    DeliveryConfiguration = new DeliveryConfiguration
     {
         DeliveryMode = DeliveryMode.Queue,
-        Queue = new QueueInfo()
+        Queue = new QueueInfo
         {
             ReceiveLockDurationInSeconds = 60,
             MaxDeliveryCount = 4,

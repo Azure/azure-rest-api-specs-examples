@@ -16,21 +16,32 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this NamespaceTopicEventSubscriptionResource created on azure
-// for more information of creating NamespaceTopicEventSubscriptionResource, please refer to the document of NamespaceTopicEventSubscriptionResource
+// this example assumes you already have this NamespaceTopicResource created on azure
+// for more information of creating NamespaceTopicResource, please refer to the document of NamespaceTopicResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string namespaceName = "examplenamespace2";
 string topicName = "examplenamespacetopic2";
-string eventSubscriptionName = "examplenamespacetopicEventSub1";
-ResourceIdentifier namespaceTopicEventSubscriptionResourceId = NamespaceTopicEventSubscriptionResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName, eventSubscriptionName);
-NamespaceTopicEventSubscriptionResource namespaceTopicEventSubscription = client.GetNamespaceTopicEventSubscriptionResource(namespaceTopicEventSubscriptionResourceId);
+ResourceIdentifier namespaceTopicResourceId = NamespaceTopicResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, topicName);
+NamespaceTopicResource namespaceTopic = client.GetNamespaceTopicResource(namespaceTopicResourceId);
+
+// get the collection of this NamespaceTopicEventSubscriptionResource
+NamespaceTopicEventSubscriptionCollection collection = namespaceTopic.GetNamespaceTopicEventSubscriptions();
 
 // invoke the operation
-NamespaceTopicEventSubscriptionResource result = await namespaceTopicEventSubscription.GetAsync();
+string eventSubscriptionName = "examplenamespacetopicEventSub1";
+NullableResponse<NamespaceTopicEventSubscriptionResource> response = await collection.GetIfExistsAsync(eventSubscriptionName);
+NamespaceTopicEventSubscriptionResource result = response.HasValue ? response.Value : null;
 
-// the variable result is a resource, you could call other operations on this instance as well
-// but just for demo, we get its data from this resource instance
-NamespaceTopicEventSubscriptionData resourceData = result.Data;
-// for demo we just print out the id
-Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+if (result == null)
+{
+    Console.WriteLine("Succeeded with null as result");
+}
+else
+{
+    // the variable result is a resource, you could call other operations on this instance as well
+    // but just for demo, we get its data from this resource instance
+    NamespaceTopicEventSubscriptionData resourceData = result.Data;
+    // for demo we just print out the id
+    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
+}

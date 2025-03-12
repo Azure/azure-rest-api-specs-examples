@@ -30,7 +30,7 @@ EventGridNamespaceCollection collection = resourceGroupResource.GetEventGridName
 string namespaceName = "exampleNamespaceName1";
 EventGridNamespaceData data = new EventGridNamespaceData(new AzureLocation("westus"))
 {
-    TopicSpacesConfiguration = new TopicSpacesConfiguration()
+    TopicSpacesConfiguration = new TopicSpacesConfiguration
     {
         State = TopicSpacesConfigurationState.Enabled,
         RouteTopicResourceId = "/subscriptions/8f6b6269-84f2-4d09-9e31-1127efcd1e40/resourceGroups/examplerg/providers/Microsoft.EventGrid/topics/exampleTopic1",
@@ -38,7 +38,7 @@ EventGridNamespaceData data = new EventGridNamespaceData(new AzureLocation("west
     Tags =
     {
     ["tag1"] = "value11",
-    ["tag2"] = "value22",
+    ["tag2"] = "value22"
     },
 };
 ArmOperation<EventGridNamespaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, namespaceName, data);

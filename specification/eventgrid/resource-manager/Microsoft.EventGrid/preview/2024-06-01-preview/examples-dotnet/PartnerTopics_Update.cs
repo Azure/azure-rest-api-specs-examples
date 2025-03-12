@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerTopics_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier partnerTopicResourceId = PartnerTopicResource.CreateResourceI
 PartnerTopicResource partnerTopic = client.GetPartnerTopicResource(partnerTopicResourceId);
 
 // invoke the operation
-PartnerTopicPatch patch = new PartnerTopicPatch()
+PartnerTopicPatch patch = new PartnerTopicPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 PartnerTopicResource result = await partnerTopic.UpdateAsync(patch);

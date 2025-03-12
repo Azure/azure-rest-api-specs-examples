@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerTopics_Delete.json
@@ -27,4 +26,4 @@ PartnerTopicResource partnerTopic = client.GetPartnerTopicResource(partnerTopicR
 // invoke the operation
 await partnerTopic.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

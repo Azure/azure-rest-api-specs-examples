@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Confluent;
 using Azure.ResourceManager.Confluent.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Confluent;
 
 // Generated from example definition: specification/confluent/resource-manager/Microsoft.Confluent/stable/2024-02-13/examples/MarketplaceAgreements_Create.json
 // this example is just showing the usage of "MarketplaceAgreements_Create" operation, for the dependent resources, they will have to be created separately.

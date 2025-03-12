@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Confluent;
 using Azure.ResourceManager.Confluent.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Confluent;
 
 // Generated from example definition: specification/confluent/resource-manager/Microsoft.Confluent/stable/2024-02-13/examples/Organization_Create.json
 // this example is just showing the usage of "Organization_Create" operation, for the dependent resources, they will have to be created separately.
@@ -31,10 +31,7 @@ string organizationName = "myOrganization";
 ConfluentOrganizationData data = new ConfluentOrganizationData(new AzureLocation("West US"), new ConfluentOfferDetail("string", "string", "string", "string", "string")
 {
     PrivateOfferId = "string",
-    PrivateOfferIds =
-    {
-    "string"
-    },
+    PrivateOfferIds = { "string" },
 }, new ConfluentUserDetail("contoso@microsoft.com")
 {
     FirstName = "string",
@@ -46,7 +43,7 @@ ConfluentOrganizationData data = new ConfluentOrganizationData(new AzureLocation
     LinkOrganizationToken = "string",
     Tags =
     {
-    ["Environment"] = "Dev",
+    ["Environment"] = "Dev"
     },
 };
 ArmOperation<ConfluentOrganizationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, organizationName, data);

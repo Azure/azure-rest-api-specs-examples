@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/TriggerLogCollection.json
@@ -25,7 +24,7 @@ ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdent
 HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
 
 // invoke the operation
-LogCollectionContent content = new LogCollectionContent()
+LogCollectionContent content = new LogCollectionContent
 {
     Properties = new LogCollectionContentProperties(DateTimeOffset.Parse("2020-01-01T17:18:19.1234567Z"), DateTimeOffset.Parse("2021-01-01T17:18:19.1234567Z")),
 };

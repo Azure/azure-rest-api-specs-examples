@@ -26,4 +26,4 @@ HciClusterUpdateSummaryResource hciClusterUpdateSummary = client.GetHciClusterUp
 // invoke the operation
 await hciClusterUpdateSummary.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

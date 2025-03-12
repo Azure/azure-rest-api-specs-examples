@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -29,18 +28,18 @@ ArcExtensionCollection collection = arcSetting.GetArcExtensions();
 
 // invoke the operation
 string extensionName = "MicrosoftMonitoringAgent";
-ArcExtensionData data = new ArcExtensionData()
+ArcExtensionData data = new ArcExtensionData
 {
     Publisher = "Microsoft.Compute",
     ArcExtensionType = "MicrosoftMonitoringAgent",
     TypeHandlerVersion = "1.10",
-    Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    Settings = BinaryData.FromObjectAsJson(new
     {
-        ["workspaceId"] = "xx"
+        workspaceId = "xx",
     }),
-    ProtectedSettings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    ProtectedSettings = BinaryData.FromObjectAsJson(new
     {
-        ["workspaceKey"] = "xx"
+        workspaceKey = "xx",
     }),
     EnableAutomaticUpgrade = false,
 };

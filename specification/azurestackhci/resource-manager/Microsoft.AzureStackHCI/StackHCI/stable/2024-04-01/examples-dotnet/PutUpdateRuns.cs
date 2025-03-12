@@ -29,7 +29,7 @@ HciClusterUpdateRunCollection collection = hciClusterUpdate.GetHciClusterUpdateR
 
 // invoke the operation
 string updateRunName = "23b779ba-0d52-4a80-8571-45ca74664ec3";
-HciClusterUpdateRunData data = new HciClusterUpdateRunData()
+HciClusterUpdateRunData data = new HciClusterUpdateRunData
 {
     NamePropertiesProgressName = "Unnamed step",
     Description = "Update Azure Stack.",
@@ -38,9 +38,7 @@ HciClusterUpdateRunData data = new HciClusterUpdateRunData()
     StartOn = DateTimeOffset.Parse("2022-04-06T01:36:33.3876751+00:00"),
     EndOn = DateTimeOffset.Parse("2022-04-06T13:58:42.969006+00:00"),
     LastCompletedOn = DateTimeOffset.Parse("2022-04-06T13:58:42.969006+00:00"),
-    Steps =
-    {
-    new HciUpdateStep()
+    Steps = {new HciUpdateStep
     {
     Name = "PreUpdate Cloud",
     Description = "Prepare for SSU update",
@@ -49,11 +47,8 @@ HciClusterUpdateRunData data = new HciClusterUpdateRunData()
     StartOn = DateTimeOffset.Parse("2022-04-06T01:36:33.3876751+00:00"),
     EndOn = DateTimeOffset.Parse("2022-04-06T01:37:16.8728314+00:00"),
     LastUpdatedOn = DateTimeOffset.Parse("2022-04-06T01:37:16.8728314+00:00"),
-    Steps =
-    {
-    },
-    }
-    },
+    Steps = {},
+    }},
 };
 ArmOperation<HciClusterUpdateRunResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateRunName, data);
 HciClusterUpdateRunResource result = lro.Value;

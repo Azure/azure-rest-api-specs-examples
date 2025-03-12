@@ -15,13 +15,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this HciEdgeDeviceResource
 string resourceUri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-HciEdgeDeviceCollection collection = client.GetHciEdgeDevices(scopeId);
+HciEdgeDeviceCollection collection = client.GetHciEdgeDevices(new ResourceIdentifier(resourceUri));
 
 // invoke the operation and iterate over the result
 await foreach (HciEdgeDeviceResource item in collection.GetAllAsync())
@@ -33,4 +29,4 @@ await foreach (HciEdgeDeviceResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

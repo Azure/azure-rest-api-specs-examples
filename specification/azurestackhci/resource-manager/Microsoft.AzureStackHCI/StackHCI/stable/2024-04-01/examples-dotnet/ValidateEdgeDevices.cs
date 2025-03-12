@@ -23,10 +23,7 @@ ResourceIdentifier hciEdgeDeviceResourceId = HciEdgeDeviceResource.CreateResourc
 HciEdgeDeviceResource hciEdgeDevice = client.GetHciEdgeDeviceResource(hciEdgeDeviceResourceId);
 
 // invoke the operation
-HciEdgeDeviceValidateContent content = new HciEdgeDeviceValidateContent(new ResourceIdentifier[]
-{
-new ResourceIdentifier("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1/edgeDevices/default"),new ResourceIdentifier("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-2/edgeDevices/default")
-})
+HciEdgeDeviceValidateContent content = new HciEdgeDeviceValidateContent(new ResourceIdentifier[] { new ResourceIdentifier("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1/edgeDevices/default"), new ResourceIdentifier("/subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-2/edgeDevices/default") })
 {
     AdditionalInfo = "test",
 };

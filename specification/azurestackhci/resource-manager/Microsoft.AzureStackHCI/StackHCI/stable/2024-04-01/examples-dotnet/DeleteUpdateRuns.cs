@@ -28,4 +28,4 @@ HciClusterUpdateRunResource hciClusterUpdateRun = client.GetHciClusterUpdateRunR
 // invoke the operation
 await hciClusterUpdateRun.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

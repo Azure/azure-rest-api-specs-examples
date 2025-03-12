@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -27,19 +26,19 @@ ResourceIdentifier arcExtensionResourceId = ArcExtensionResource.CreateResourceI
 ArcExtensionResource arcExtension = client.GetArcExtensionResource(arcExtensionResourceId);
 
 // invoke the operation
-ArcExtensionPatch patch = new ArcExtensionPatch()
+ArcExtensionPatch patch = new ArcExtensionPatch
 {
-    ExtensionParameters = new ArcExtensionPatchContent()
+    ExtensionParameters = new ArcExtensionPatchContent
     {
         TypeHandlerVersion = "1.10",
         IsAutomaticUpgradeEnabled = false,
-        Settings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+        Settings = BinaryData.FromObjectAsJson(new
         {
-            ["workspaceId"] = "xx"
+            workspaceId = "xx",
         }),
-        ProtectedSettings = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+        ProtectedSettings = BinaryData.FromObjectAsJson(new
         {
-            ["workspaceKey"] = "xx"
+            workspaceKey = "xx",
         }),
     },
 };

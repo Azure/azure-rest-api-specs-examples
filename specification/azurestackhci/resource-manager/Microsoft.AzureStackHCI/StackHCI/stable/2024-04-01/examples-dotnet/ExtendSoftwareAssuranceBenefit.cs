@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/ExtendSoftwareAssuranceBenefit.json
@@ -25,7 +24,7 @@ ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdent
 HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
 
 // invoke the operation
-SoftwareAssuranceChangeContent content = new SoftwareAssuranceChangeContent()
+SoftwareAssuranceChangeContent content = new SoftwareAssuranceChangeContent
 {
     SoftwareAssuranceIntent = SoftwareAssuranceIntent.Enable,
 };

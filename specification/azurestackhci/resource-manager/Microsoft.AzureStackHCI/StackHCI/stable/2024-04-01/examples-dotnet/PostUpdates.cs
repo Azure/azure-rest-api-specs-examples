@@ -27,4 +27,4 @@ HciClusterUpdateResource hciClusterUpdate = client.GetHciClusterUpdateResource(h
 // invoke the operation
 await hciClusterUpdate.PostAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

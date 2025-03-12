@@ -15,30 +15,30 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this HciClusterUpdateResource created on azure
-// for more information of creating HciClusterUpdateResource, please refer to the document of HciClusterUpdateResource
+// this example assumes you already have this HciClusterResource created on azure
+// for more information of creating HciClusterResource, please refer to the document of HciClusterResource
 string subscriptionId = "b8d594e5-51f3-4c11-9c54-a7771b81c712";
 string resourceGroupName = "testrg";
 string clusterName = "testcluster";
-string updateName = "Microsoft4.2203.2.32";
-ResourceIdentifier hciClusterUpdateResourceId = HciClusterUpdateResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName, updateName);
-HciClusterUpdateResource hciClusterUpdate = client.GetHciClusterUpdateResource(hciClusterUpdateResourceId);
+ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, clusterName);
+HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
+
+// get the collection of this HciClusterUpdateResource
+HciClusterUpdateCollection collection = hciCluster.GetHciClusterUpdates();
 
 // invoke the operation
-HciClusterUpdateData data = new HciClusterUpdateData()
+string updateName = "Microsoft4.2203.2.32";
+HciClusterUpdateData data = new HciClusterUpdateData
 {
     InstalledOn = DateTimeOffset.Parse("2022-04-06T14:08:18.254Z"),
     Description = "AzS Update 4.2203.2.32",
     State = HciUpdateState.Installed,
-    Prerequisites =
-    {
-    new HciClusterUpdatePrerequisite()
+    Prerequisites = {new HciClusterUpdatePrerequisite
     {
     UpdateType = "update type",
     Version = "prerequisite version",
     PackageName = "update package name",
-    }
-    },
+    }},
     PackagePath = "\\\\SU1FileServer\\SU1_Infrastructure_2\\Updates\\Packages\\Microsoft4.2203.2.32",
     PackageSizeInMb = 18858,
     DisplayName = "AzS Update - 4.2203.2.32",
@@ -51,7 +51,7 @@ HciClusterUpdateData data = new HciClusterUpdateData()
     ProgressPercentage = 0,
     NotifyMessage = "Brief message with instructions for updates of AvailabilityType Notify",
 };
-ArmOperation<HciClusterUpdateResource> lro = await hciClusterUpdate.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<HciClusterUpdateResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, updateName, data);
 HciClusterUpdateResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

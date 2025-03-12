@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/UpdateCluster.json
@@ -25,15 +24,15 @@ ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdent
 HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
 
 // invoke the operation
-HciClusterPatch patch = new HciClusterPatch()
+HciClusterPatch patch = new HciClusterPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
     CloudManagementEndpoint = "https://98294836-31be-4668-aeae-698667faf99b.waconazure.com",
-    DesiredProperties = new HciClusterDesiredProperties()
+    DesiredProperties = new HciClusterDesiredProperties
     {
         WindowsServerSubscription = WindowsServerSubscription.Enabled,
         DiagnosticLevel = HciClusterDiagnosticLevel.Basic,

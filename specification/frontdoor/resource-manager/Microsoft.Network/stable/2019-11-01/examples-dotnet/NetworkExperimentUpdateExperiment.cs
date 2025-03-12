@@ -25,7 +25,7 @@ ResourceIdentifier frontDoorExperimentResourceId = FrontDoorExperimentResource.C
 FrontDoorExperimentResource frontDoorExperiment = client.GetFrontDoorExperimentResource(frontDoorExperimentResourceId);
 
 // invoke the operation
-FrontDoorExperimentPatch patch = new FrontDoorExperimentPatch()
+FrontDoorExperimentPatch patch = new FrontDoorExperimentPatch
 {
     Description = "string",
     EnabledState = FrontDoorExperimentState.Enabled,

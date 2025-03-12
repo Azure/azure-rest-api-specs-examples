@@ -27,4 +27,4 @@ FrontDoorExperimentResource frontDoorExperiment = client.GetFrontDoorExperimentR
 // invoke the operation
 await frontDoorExperiment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

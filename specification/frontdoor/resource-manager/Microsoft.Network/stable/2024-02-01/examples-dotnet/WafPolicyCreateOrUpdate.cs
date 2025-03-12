@@ -31,7 +31,7 @@ string policyName = "Policy1";
 FrontDoorWebApplicationFirewallPolicyData data = new FrontDoorWebApplicationFirewallPolicyData(new AzureLocation("WestUs"))
 {
     SkuName = FrontDoorSkuName.PremiumAzureFrontDoor,
-    PolicySettings = new FrontDoorWebApplicationFirewallPolicySettings()
+    PolicySettings = new FrontDoorWebApplicationFirewallPolicySettings
     {
         EnabledState = PolicyEnabledState.Enabled,
         Mode = FrontDoorWebApplicationFirewallPolicyMode.Prevention,
@@ -41,84 +41,49 @@ FrontDoorWebApplicationFirewallPolicyData data = new FrontDoorWebApplicationFire
         RequestBodyCheck = PolicyRequestBodyCheck.Disabled,
         JavascriptChallengeExpirationInMinutes = 30,
         State = WebApplicationFirewallScrubbingState.Enabled,
-        ScrubbingRules =
-        {
-        new WebApplicationFirewallScrubbingRules(ScrubbingRuleEntryMatchVariable.RequestIPAddress,ScrubbingRuleEntryMatchOperator.EqualsAny)
+        ScrubbingRules = {new WebApplicationFirewallScrubbingRules(ScrubbingRuleEntryMatchVariable.RequestIPAddress, ScrubbingRuleEntryMatchOperator.EqualsAny)
         {
         Selector = null,
         State = ScrubbingRuleEntryState.Enabled,
-        }
-        },
+        }},
     },
-    Rules =
+    Rules = {new WebApplicationCustomRule(1, WebApplicationRuleType.RateLimitRule, new WebApplicationRuleMatchCondition[]
     {
-    new WebApplicationCustomRule(1,WebApplicationRuleType.RateLimitRule,new WebApplicationRuleMatchCondition[]
-    {
-    new WebApplicationRuleMatchCondition(WebApplicationRuleMatchVariable.RemoteAddr,WebApplicationRuleMatchOperator.IPMatch,new string[]
-    {
-    "192.168.1.0/24","10.0.0.0/24"
-    })
-    },RuleMatchActionType.Block)
+    new WebApplicationRuleMatchCondition(WebApplicationRuleMatchVariable.RemoteAddr, WebApplicationRuleMatchOperator.IPMatch, new string[]{"192.168.1.0/24", "10.0.0.0/24"})
+    }, RuleMatchActionType.Block)
     {
     Name = "Rule1",
     RateLimitThreshold = 1000,
-    },new WebApplicationCustomRule(2,WebApplicationRuleType.MatchRule,new WebApplicationRuleMatchCondition[]
+    }, new WebApplicationCustomRule(2, WebApplicationRuleType.MatchRule, new WebApplicationRuleMatchCondition[]
     {
-    new WebApplicationRuleMatchCondition(WebApplicationRuleMatchVariable.RemoteAddr,WebApplicationRuleMatchOperator.GeoMatch,new string[]
-    {
-    "CH"
-    }),new WebApplicationRuleMatchCondition(WebApplicationRuleMatchVariable.RequestHeader,WebApplicationRuleMatchOperator.Contains,new string[]
-    {
-    "windows"
-    })
+    new WebApplicationRuleMatchCondition(WebApplicationRuleMatchVariable.RemoteAddr, WebApplicationRuleMatchOperator.GeoMatch, new string[]{"CH"}),
+    new WebApplicationRuleMatchCondition(WebApplicationRuleMatchVariable.RequestHeader, WebApplicationRuleMatchOperator.Contains, new string[]{"windows"})
     {
     Selector = "UserAgent",
-    Transforms =
-    {
-    WebApplicationRuleMatchTransformType.Lowercase
-    },
+    Transforms = {WebApplicationRuleMatchTransformType.Lowercase},
     }
-    },RuleMatchActionType.Block)
+    }, RuleMatchActionType.Block)
     {
     Name = "Rule2",
-    }
-    },
-    ManagedRuleSets =
-    {
-    new ManagedRuleSet("DefaultRuleSet","1.0")
+    }},
+    ManagedRuleSets = {new ManagedRuleSet("DefaultRuleSet", "1.0")
     {
     RuleSetAction = ManagedRuleSetActionType.Block,
-    Exclusions =
+    Exclusions = {new ManagedRuleExclusion(ManagedRuleExclusionMatchVariable.RequestHeaderNames, ManagedRuleExclusionSelectorMatchOperator.EqualsValue, "User-Agent")},
+    RuleGroupOverrides = {new ManagedRuleGroupOverride("SQLI")
     {
-    new ManagedRuleExclusion(ManagedRuleExclusionMatchVariable.RequestHeaderNames,ManagedRuleExclusionSelectorMatchOperator.EqualsValue,"User-Agent")
-    },
-    RuleGroupOverrides =
-    {
-    new ManagedRuleGroupOverride("SQLI")
-    {
-    Exclusions =
-    {
-    new ManagedRuleExclusion(ManagedRuleExclusionMatchVariable.RequestCookieNames,ManagedRuleExclusionSelectorMatchOperator.StartsWith,"token")
-    },
-    Rules =
-    {
-    new ManagedRuleOverride("942100")
+    Exclusions = {new ManagedRuleExclusion(ManagedRuleExclusionMatchVariable.RequestCookieNames, ManagedRuleExclusionSelectorMatchOperator.StartsWith, "token")},
+    Rules = {new ManagedRuleOverride("942100")
     {
     EnabledState = ManagedRuleEnabledState.Enabled,
     Action = RuleMatchActionType.Redirect,
-    Exclusions =
-    {
-    new ManagedRuleExclusion(ManagedRuleExclusionMatchVariable.QueryStringArgNames,ManagedRuleExclusionSelectorMatchOperator.EqualsValue,"query")
-    },
-    },new ManagedRuleOverride("942110")
+    Exclusions = {new ManagedRuleExclusion(ManagedRuleExclusionMatchVariable.QueryStringArgNames, ManagedRuleExclusionSelectorMatchOperator.EqualsValue, "query")},
+    }, new ManagedRuleOverride("942110")
     {
     EnabledState = ManagedRuleEnabledState.Disabled,
-    }
-    },
-    }
-    },
-    }
-    },
+    }},
+    }},
+    }},
 };
 ArmOperation<FrontDoorWebApplicationFirewallPolicyResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, policyName, data);
 FrontDoorWebApplicationFirewallPolicyResource result = lro.Value;

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.FrontDoor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.FrontDoor;
 
 // Generated from example definition: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentUpdateProfile.json
@@ -25,12 +24,12 @@ ResourceIdentifier frontDoorNetworkExperimentProfileResourceId = FrontDoorNetwor
 FrontDoorNetworkExperimentProfileResource frontDoorNetworkExperimentProfile = client.GetFrontDoorNetworkExperimentProfileResource(frontDoorNetworkExperimentProfileResourceId);
 
 // invoke the operation
-FrontDoorNetworkExperimentProfilePatch patch = new FrontDoorNetworkExperimentProfilePatch()
+FrontDoorNetworkExperimentProfilePatch patch = new FrontDoorNetworkExperimentProfilePatch
 {
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
     EnabledState = FrontDoorExperimentState.Enabled,
 };

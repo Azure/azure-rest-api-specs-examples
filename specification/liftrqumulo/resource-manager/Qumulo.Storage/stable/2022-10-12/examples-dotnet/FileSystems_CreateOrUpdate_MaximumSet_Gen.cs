@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Qumulo;
 using Azure.ResourceManager.Qumulo.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Qumulo;
 
 // Generated from example definition: specification/liftrqumulo/resource-manager/Qumulo.Storage/stable/2022-10-12/examples/FileSystems_CreateOrUpdate_MaximumSet_Gen.json
 // this example is just showing the usage of "FileSystems_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,30 +30,34 @@ QumuloFileSystemResourceCollection collection = resourceGroupResource.GetQumuloF
 
 // invoke the operation
 string fileSystemName = "nauwwbfoqehgbhdsmkewoboyxeqg";
-QumuloFileSystemResourceData data = new QumuloFileSystemResourceData(new AzureLocation("przdlsmlzsszphnixq"), new MarketplaceDetails("x", "eiyhbmpwgezcmzrrfoiskuxlcvwojf", "wfmokfdjbwpjhz")
-{
-    MarketplaceSubscriptionId = "ujrcqvxfnhxxheoth",
-}, StorageSku.Standard, new QumuloUserDetails()
-{
-    Email = "viptslwulnpaupfljvnjeq",
-}, "neqctctqdmjezfgt", "ekceujoecaashtjlsgcymnrdozk", 9)
+QumuloFileSystemResourceData data = new QumuloFileSystemResourceData(
+    new AzureLocation("przdlsmlzsszphnixq"),
+    new MarketplaceDetails("x", "eiyhbmpwgezcmzrrfoiskuxlcvwojf", "wfmokfdjbwpjhz")
+    {
+        MarketplaceSubscriptionId = "ujrcqvxfnhxxheoth",
+    },
+    StorageSku.Standard,
+    new QumuloUserDetails
+    {
+        Email = "viptslwulnpaupfljvnjeq",
+    },
+    "neqctctqdmjezfgt",
+    "ekceujoecaashtjlsgcymnrdozk",
+    9)
 {
     Identity = new ManagedServiceIdentity("None")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("key4522")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("key4522")] = new UserAssignedIdentity()
         },
     },
     ClusterLoginUri = new Uri("jjqhgevy"),
-    PrivateIPs =
-    {
-    IPAddress.Parse("kslguxrwbwkrj")
-    },
+    PrivateIPs = { IPAddress.Parse("kslguxrwbwkrj") },
     AvailabilityZone = "maseyqhlnhoiwbabcqabtedbjpip",
     Tags =
     {
-    ["key6565"] = "cgdhmupta",
+    ["key6565"] = "cgdhmupta"
     },
 };
 ArmOperation<QumuloFileSystemResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fileSystemName, data);

@@ -1,14 +1,14 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Qumulo;
 using Azure.ResourceManager.Qumulo.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Qumulo;
 
 // Generated from example definition: specification/liftrqumulo/resource-manager/Qumulo.Storage/stable/2022-10-12/examples/FileSystems_ListByResourceGroup_MinimumSet_Gen.json
 // this example is just showing the usage of "FileSystems_ListByResourceGroup" operation, for the dependent resources, they will have to be created separately.
@@ -38,4 +38,4 @@ await foreach (QumuloFileSystemResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

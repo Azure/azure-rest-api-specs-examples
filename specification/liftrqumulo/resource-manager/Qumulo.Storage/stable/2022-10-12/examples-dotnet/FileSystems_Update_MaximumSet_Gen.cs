@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Qumulo;
 using Azure.ResourceManager.Qumulo.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Qumulo;
 
 // Generated from example definition: specification/liftrqumulo/resource-manager/Qumulo.Storage/stable/2022-10-12/examples/FileSystems_Update_MaximumSet_Gen.json
 // this example is just showing the usage of "FileSystems_Update" operation, for the dependent resources, they will have to be created separately.
@@ -26,20 +25,20 @@ ResourceIdentifier qumuloFileSystemResourceId = QumuloFileSystemResource.CreateR
 QumuloFileSystemResource qumuloFileSystemResource = client.GetQumuloFileSystemResource(qumuloFileSystemResourceId);
 
 // invoke the operation
-QumuloFileSystemResourcePatch patch = new QumuloFileSystemResourcePatch()
+QumuloFileSystemResourcePatch patch = new QumuloFileSystemResourcePatch
 {
     Identity = new ManagedServiceIdentity("None")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("key4522")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("key4522")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
-    ["key7534"] = "jsgqvqbagquvxowbrkanyhzvo",
+    ["key7534"] = "jsgqvqbagquvxowbrkanyhzvo"
     },
-    Properties = new FileSystemResourceUpdateProperties()
+    Properties = new FileSystemResourceUpdateProperties
     {
         MarketplaceDetails = new MarketplaceDetails("x", "eiyhbmpwgezcmzrrfoiskuxlcvwojf", "wfmokfdjbwpjhz")
         {
@@ -48,10 +47,7 @@ QumuloFileSystemResourcePatch patch = new QumuloFileSystemResourcePatch()
         UserDetailsEmail = "aa",
         DelegatedSubnetId = new ResourceIdentifier("vjfirtaljehawmflyfianw"),
         ClusterLoginUri = new Uri("adabmuthwrbjshzfbo"),
-        PrivateIPs =
-        {
-        "eugjqbaoucgjsopzfrq"
-        },
+        PrivateIPs = { "eugjqbaoucgjsopzfrq" },
     },
 };
 QumuloFileSystemResource result = await qumuloFileSystemResource.UpdateAsync(patch);

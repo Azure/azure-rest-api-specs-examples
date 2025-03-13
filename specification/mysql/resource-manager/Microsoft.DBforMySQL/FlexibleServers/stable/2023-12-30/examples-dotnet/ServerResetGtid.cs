@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerResetGtid.json
@@ -26,10 +25,10 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-MySqlFlexibleServerGtidSetContent content = new MySqlFlexibleServerGtidSetContent()
+MySqlFlexibleServerGtidSetContent content = new MySqlFlexibleServerGtidSetContent
 {
     GtidSet = "4aff5b51-97ba-11ed-a955-002248036acc:1-16",
 };
 await mySqlFlexibleServer.ResetGtidAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -35,7 +35,7 @@ MySqlFlexibleServerData data = new MySqlFlexibleServerData(new AzureLocation("so
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")] = new UserAssignedIdentity()
         },
     },
     Sku = new MySqlFlexibleServerSku("Standard_D2ds_v4", MySqlFlexibleServerSkuTier.GeneralPurpose),
@@ -44,7 +44,7 @@ MySqlFlexibleServerData data = new MySqlFlexibleServerData(new AzureLocation("so
     Version = MySqlFlexibleServerVersion.Ver5_7,
     AvailabilityZone = "1",
     CreateMode = MySqlFlexibleServerCreateMode.Default,
-    DataEncryption = new MySqlFlexibleServerDataEncryption()
+    DataEncryption = new MySqlFlexibleServerDataEncryption
     {
         PrimaryUserAssignedIdentityId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity"),
         PrimaryKeyUri = new Uri("https://test.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),
@@ -52,26 +52,26 @@ MySqlFlexibleServerData data = new MySqlFlexibleServerData(new AzureLocation("so
         GeoBackupKeyUri = new Uri("https://test-geo.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),
         EncryptionType = MySqlFlexibleServerDataEncryptionType.AzureKeyVault,
     },
-    Storage = new MySqlFlexibleServerStorage()
+    Storage = new MySqlFlexibleServerStorage
     {
         StorageSizeInGB = 100,
         Iops = 600,
         AutoGrow = MySqlFlexibleServerEnableStatusEnum.Disabled,
     },
-    Backup = new MySqlFlexibleServerBackupProperties()
+    Backup = new MySqlFlexibleServerBackupProperties
     {
         BackupRetentionDays = 7,
         BackupIntervalHours = 24,
         GeoRedundantBackup = MySqlFlexibleServerEnableStatusEnum.Disabled,
     },
-    HighAvailability = new MySqlFlexibleServerHighAvailability()
+    HighAvailability = new MySqlFlexibleServerHighAvailability
     {
         Mode = MySqlFlexibleServerHighAvailabilityMode.ZoneRedundant,
         StandbyAvailabilityZone = "3",
     },
     Tags =
     {
-    ["num"] = "1",
+    ["num"] = "1"
     },
 };
 ArmOperation<MySqlFlexibleServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, data);

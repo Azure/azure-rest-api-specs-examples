@@ -37,26 +37,26 @@ MySqlFlexibleServerData data = new MySqlFlexibleServerData(new AzureLocation("so
     Version = MySqlFlexibleServerVersion.Ver5_7,
     AvailabilityZone = "1",
     CreateMode = MySqlFlexibleServerCreateMode.Default,
-    Storage = new MySqlFlexibleServerStorage()
+    Storage = new MySqlFlexibleServerStorage
     {
         StorageSizeInGB = 100,
         Iops = 600,
         AutoGrow = MySqlFlexibleServerEnableStatusEnum.Disabled,
     },
-    Backup = new MySqlFlexibleServerBackupProperties()
+    Backup = new MySqlFlexibleServerBackupProperties
     {
         BackupRetentionDays = 7,
         BackupIntervalHours = 24,
         GeoRedundantBackup = MySqlFlexibleServerEnableStatusEnum.Disabled,
     },
-    HighAvailability = new MySqlFlexibleServerHighAvailability()
+    HighAvailability = new MySqlFlexibleServerHighAvailability
     {
         Mode = MySqlFlexibleServerHighAvailabilityMode.ZoneRedundant,
         StandbyAvailabilityZone = "3",
     },
     Tags =
     {
-    ["num"] = "1",
+    ["num"] = "1"
     },
 };
 ArmOperation<MySqlFlexibleServerResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, serverName, data);

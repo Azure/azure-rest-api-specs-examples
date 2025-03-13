@@ -26,4 +26,4 @@ MySqlVirtualNetworkRuleResource mySqlVirtualNetworkRule = client.GetMySqlVirtual
 // invoke the operation
 await mySqlVirtualNetworkRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -28,7 +28,7 @@ MySqlFlexibleServerConfigurationCollection collection = mySqlFlexibleServer.GetM
 
 // invoke the operation
 string configurationName = "event_scheduler";
-MySqlFlexibleServerConfigurationData data = new MySqlFlexibleServerConfigurationData()
+MySqlFlexibleServerConfigurationData data = new MySqlFlexibleServerConfigurationData
 {
     Value = "off",
     Source = MySqlFlexibleServerConfigurationSource.UserOverride,

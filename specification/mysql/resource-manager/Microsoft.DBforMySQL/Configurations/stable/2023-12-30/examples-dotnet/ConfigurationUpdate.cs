@@ -25,7 +25,7 @@ ResourceIdentifier mySqlFlexibleServerConfigurationResourceId = MySqlFlexibleSer
 MySqlFlexibleServerConfigurationResource mySqlFlexibleServerConfiguration = client.GetMySqlFlexibleServerConfigurationResource(mySqlFlexibleServerConfigurationResourceId);
 
 // invoke the operation
-MySqlFlexibleServerConfigurationData data = new MySqlFlexibleServerConfigurationData()
+MySqlFlexibleServerConfigurationData data = new MySqlFlexibleServerConfigurationData
 {
     Value = "on",
     Source = MySqlFlexibleServerConfigurationSource.UserOverride,

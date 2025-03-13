@@ -27,4 +27,4 @@ MySqlPrivateEndpointConnectionResource mySqlPrivateEndpointConnection = client.G
 // invoke the operation
 await mySqlPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -25,7 +25,7 @@ ResourceIdentifier mySqlServerSecurityAlertPolicyResourceId = MySqlServerSecurit
 MySqlServerSecurityAlertPolicyResource mySqlServerSecurityAlertPolicy = client.GetMySqlServerSecurityAlertPolicyResource(mySqlServerSecurityAlertPolicyResourceId);
 
 // invoke the operation
-MySqlServerSecurityAlertPolicyData data = new MySqlServerSecurityAlertPolicyData()
+MySqlServerSecurityAlertPolicyData data = new MySqlServerSecurityAlertPolicyData
 {
     State = MySqlServerSecurityAlertPolicyState.Disabled,
     SendToEmailAccountAdmins = true,

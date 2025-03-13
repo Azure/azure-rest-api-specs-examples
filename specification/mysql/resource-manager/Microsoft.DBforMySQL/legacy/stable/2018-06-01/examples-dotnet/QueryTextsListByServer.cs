@@ -27,10 +27,7 @@ MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResou
 MySqlQueryTextCollection collection = mySqlServer.GetMySqlQueryTexts();
 
 // invoke the operation and iterate over the result
-IEnumerable<string> queryIds = new string[]
-{
-"1","2"
-};
+IEnumerable<string> queryIds = new string[] { "1", "2" };
 await foreach (MySqlQueryTextResource item in collection.GetAllAsync(queryIds))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -40,4 +37,4 @@ await foreach (MySqlQueryTextResource item in collection.GetAllAsync(queryIds))
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

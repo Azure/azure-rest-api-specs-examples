@@ -25,7 +25,7 @@ ResourceIdentifier advancedThreatProtectionResourceId = AdvancedThreatProtection
 AdvancedThreatProtectionResource advancedThreatProtection = client.GetAdvancedThreatProtectionResource(advancedThreatProtectionResourceId);
 
 // invoke the operation
-AdvancedThreatProtectionPatch patch = new AdvancedThreatProtectionPatch()
+AdvancedThreatProtectionPatch patch = new AdvancedThreatProtectionPatch
 {
     State = AdvancedThreatProtectionState.Enabled,
 };

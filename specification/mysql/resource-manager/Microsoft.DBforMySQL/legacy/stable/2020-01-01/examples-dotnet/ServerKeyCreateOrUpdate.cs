@@ -25,7 +25,7 @@ ResourceIdentifier mySqlServerKeyResourceId = MySqlServerKeyResource.CreateResou
 MySqlServerKeyResource mySqlServerKey = client.GetMySqlServerKeyResource(mySqlServerKeyResourceId);
 
 // invoke the operation
-MySqlServerKeyData data = new MySqlServerKeyData()
+MySqlServerKeyData data = new MySqlServerKeyData
 {
     ServerKeyType = MySqlServerKeyType.AzureKeyVault,
     Uri = new Uri("https://someVault.vault.azure.net/keys/someKey/01234567890123456789012345678901"),

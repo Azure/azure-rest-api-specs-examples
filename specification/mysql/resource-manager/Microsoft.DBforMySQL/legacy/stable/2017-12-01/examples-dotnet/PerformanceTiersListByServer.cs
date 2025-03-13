@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MySql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2017-12-01/examples/PerformanceTiersListByServer.json
@@ -30,4 +29,4 @@ await foreach (MySqlPerformanceTier item in mySqlServer.GetServerBasedPerformanc
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

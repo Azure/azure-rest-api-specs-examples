@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MySql.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/legacy/stable/2020-01-01/examples/ServerUpgrade.json
@@ -25,10 +24,10 @@ ResourceIdentifier mySqlServerResourceId = MySqlServerResource.CreateResourceIde
 MySqlServerResource mySqlServer = client.GetMySqlServerResource(mySqlServerResourceId);
 
 // invoke the operation
-MySqlServerUpgradeContent content = new MySqlServerUpgradeContent()
+MySqlServerUpgradeContent content = new MySqlServerUpgradeContent
 {
     TargetServerVersion = "5.7",
 };
 await mySqlServer.UpgradeAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

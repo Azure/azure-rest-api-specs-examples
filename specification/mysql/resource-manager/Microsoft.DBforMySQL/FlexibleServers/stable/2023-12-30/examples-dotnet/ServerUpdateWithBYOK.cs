@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.MySql.FlexibleServers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/FlexibleServers/stable/2023-12-30/examples/ServerUpdateWithBYOK.json
@@ -26,16 +25,16 @@ ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.C
 MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
 
 // invoke the operation
-MySqlFlexibleServerPatch patch = new MySqlFlexibleServerPatch()
+MySqlFlexibleServerPatch patch = new MySqlFlexibleServerPatch
 {
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity")] = new UserAssignedIdentity()
         },
     },
-    DataEncryption = new MySqlFlexibleServerDataEncryption()
+    DataEncryption = new MySqlFlexibleServerDataEncryption
     {
         PrimaryUserAssignedIdentityId = new ResourceIdentifier("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/testrg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-identity"),
         PrimaryKeyUri = new Uri("https://test.vault.azure.net/keys/key/c8a92236622244c0a4fdb892666f671a"),

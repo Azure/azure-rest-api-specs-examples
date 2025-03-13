@@ -15,21 +15,18 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this MySqlFlexibleServerResource created on azure
-// for more information of creating MySqlFlexibleServerResource, please refer to the document of MySqlFlexibleServerResource
+// this example assumes you already have this MySqlFlexibleServerFirewallRuleResource created on azure
+// for more information of creating MySqlFlexibleServerFirewallRuleResource, please refer to the document of MySqlFlexibleServerFirewallRuleResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 string resourceGroupName = "TestGroup";
 string serverName = "testserver";
-ResourceIdentifier mySqlFlexibleServerResourceId = MySqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-MySqlFlexibleServerResource mySqlFlexibleServer = client.GetMySqlFlexibleServerResource(mySqlFlexibleServerResourceId);
-
-// get the collection of this MySqlFlexibleServerFirewallRuleResource
-MySqlFlexibleServerFirewallRuleCollection collection = mySqlFlexibleServer.GetMySqlFlexibleServerFirewallRules();
+string firewallRuleName = "rule1";
+ResourceIdentifier mySqlFlexibleServerFirewallRuleResourceId = MySqlFlexibleServerFirewallRuleResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName, firewallRuleName);
+MySqlFlexibleServerFirewallRuleResource mySqlFlexibleServerFirewallRule = client.GetMySqlFlexibleServerFirewallRuleResource(mySqlFlexibleServerFirewallRuleResourceId);
 
 // invoke the operation
-string firewallRuleName = "rule1";
 MySqlFlexibleServerFirewallRuleData data = new MySqlFlexibleServerFirewallRuleData(IPAddress.Parse("0.0.0.0"), IPAddress.Parse("255.255.255.255"));
-ArmOperation<MySqlFlexibleServerFirewallRuleResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, firewallRuleName, data);
+ArmOperation<MySqlFlexibleServerFirewallRuleResource> lro = await mySqlFlexibleServerFirewallRule.UpdateAsync(WaitUntil.Completed, data);
 MySqlFlexibleServerFirewallRuleResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

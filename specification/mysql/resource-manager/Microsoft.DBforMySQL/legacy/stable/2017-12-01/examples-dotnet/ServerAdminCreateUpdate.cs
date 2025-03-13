@@ -24,7 +24,7 @@ ResourceIdentifier mySqlServerAdministratorResourceId = MySqlServerAdministrator
 MySqlServerAdministratorResource mySqlServerAdministrator = client.GetMySqlServerAdministratorResource(mySqlServerAdministratorResourceId);
 
 // invoke the operation
-MySqlServerAdministratorData data = new MySqlServerAdministratorData()
+MySqlServerAdministratorData data = new MySqlServerAdministratorData
 {
     AdministratorType = MySqlAdministratorType.ActiveDirectory,
     LoginAccountName = "bob@contoso.com",

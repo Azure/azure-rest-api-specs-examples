@@ -26,4 +26,4 @@ MySqlDatabaseResource mySqlDatabase = client.GetMySqlDatabaseResource(mySqlDatab
 // invoke the operation
 await mySqlDatabase.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

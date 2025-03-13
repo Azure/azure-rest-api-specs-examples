@@ -36,4 +36,4 @@ await foreach (MySqlFlexibleServerAadAdministratorResource item in collection.Ge
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

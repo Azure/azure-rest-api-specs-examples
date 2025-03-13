@@ -24,7 +24,7 @@ ResourceIdentifier mySqlDatabaseResourceId = MySqlDatabaseResource.CreateResourc
 MySqlDatabaseResource mySqlDatabase = client.GetMySqlDatabaseResource(mySqlDatabaseResourceId);
 
 // invoke the operation
-MySqlDatabaseData data = new MySqlDatabaseData()
+MySqlDatabaseData data = new MySqlDatabaseData
 {
     Charset = "utf8",
     Collation = "utf8_general_ci",

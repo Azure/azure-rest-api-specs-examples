@@ -27,4 +27,4 @@ MySqlFlexibleServerFirewallRuleResource mySqlFlexibleServerFirewallRule = client
 // invoke the operation
 await mySqlFlexibleServerFirewallRule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

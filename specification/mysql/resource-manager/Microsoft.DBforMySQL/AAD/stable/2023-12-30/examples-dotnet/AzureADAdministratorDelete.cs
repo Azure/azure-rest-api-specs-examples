@@ -27,4 +27,4 @@ MySqlFlexibleServerAadAdministratorResource mySqlFlexibleServerAadAdministrator 
 // invoke the operation
 await mySqlFlexibleServerAadAdministrator.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

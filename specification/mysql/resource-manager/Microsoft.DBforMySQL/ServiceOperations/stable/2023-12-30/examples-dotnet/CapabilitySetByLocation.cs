@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MySql.FlexibleServers;
 
 // Generated from example definition: specification/mysql/resource-manager/Microsoft.DBforMySQL/ServiceOperations/stable/2023-12-30/examples/CapabilitySetByLocation.json
@@ -15,30 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this SubscriptionResource created on azure
-// for more information of creating SubscriptionResource, please refer to the document of SubscriptionResource
+// this example assumes you already have this MySqlFlexibleServersCapabilityResource created on azure
+// for more information of creating MySqlFlexibleServersCapabilityResource, please refer to the document of MySqlFlexibleServersCapabilityResource
 string subscriptionId = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-ResourceIdentifier subscriptionResourceId = SubscriptionResource.CreateResourceIdentifier(subscriptionId);
-SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subscriptionResourceId);
-
-// get the collection of this MySqlFlexibleServersCapabilityResource
 AzureLocation locationName = new AzureLocation("WestUS");
-MySqlFlexibleServersCapabilityCollection collection = subscriptionResource.GetMySqlFlexibleServersCapabilities(locationName);
+string capabilitySetName = "default";
+ResourceIdentifier mySqlFlexibleServersCapabilityResourceId = MySqlFlexibleServersCapabilityResource.CreateResourceIdentifier(subscriptionId, locationName, capabilitySetName);
+MySqlFlexibleServersCapabilityResource mySqlFlexibleServersCapability = client.GetMySqlFlexibleServersCapabilityResource(mySqlFlexibleServersCapabilityResourceId);
 
 // invoke the operation
-string capabilitySetName = "default";
-NullableResponse<MySqlFlexibleServersCapabilityResource> response = await collection.GetIfExistsAsync(capabilitySetName);
-MySqlFlexibleServersCapabilityResource result = response.HasValue ? response.Value : null;
+MySqlFlexibleServersCapabilityResource result = await mySqlFlexibleServersCapability.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    MySqlFlexibleServersCapabilityData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+MySqlFlexibleServersCapabilityData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

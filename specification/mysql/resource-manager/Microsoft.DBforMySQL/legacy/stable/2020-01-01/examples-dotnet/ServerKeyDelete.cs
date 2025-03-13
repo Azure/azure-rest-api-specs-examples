@@ -27,4 +27,4 @@ MySqlServerKeyResource mySqlServerKey = client.GetMySqlServerKeyResource(mySqlSe
 // invoke the operation
 await mySqlServerKey.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -15,35 +15,37 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridNamespaceResource created on azure
-// for more information of creating EventGridNamespaceResource, please refer to the document of EventGridNamespaceResource
+// this example assumes you already have this EventGridNamespaceClientResource created on azure
+// for more information of creating EventGridNamespaceClientResource, please refer to the document of EventGridNamespaceClientResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string namespaceName = "exampleNamespaceName1";
-ResourceIdentifier eventGridNamespaceResourceId = EventGridNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventGridNamespaceResource eventGridNamespace = client.GetEventGridNamespaceResource(eventGridNamespaceResourceId);
-
-// get the collection of this EventGridNamespaceClientResource
-EventGridNamespaceClientCollection collection = eventGridNamespace.GetEventGridNamespaceClients();
+string clientName = "exampleClientName1";
+ResourceIdentifier eventGridNamespaceClientResourceId = EventGridNamespaceClientResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, clientName);
+EventGridNamespaceClientResource eventGridNamespaceClient = client.GetEventGridNamespaceClientResource(eventGridNamespaceClientResourceId);
 
 // invoke the operation
-string clientName = "exampleClientName1";
-EventGridNamespaceClientData data = new EventGridNamespaceClientData()
+EventGridNamespaceClientData data = new EventGridNamespaceClientData
 {
     Description = "This is a test client",
-    ClientCertificateAuthentication = new ClientCertificateAuthentication()
+    ClientCertificateAuthentication = new ClientCertificateAuthentication
     {
         ValidationScheme = ClientCertificateValidationScheme.SubjectMatchesAuthenticationName,
     },
     State = EventGridNamespaceClientState.Enabled,
     Attributes =
     {
-    ["deviceTypes"] = BinaryData.FromObjectAsJson(new object[] { "Fan", "Light", "AC" }),
-    ["floor"] = BinaryData.FromString("\"3\""),
-    ["room"] = BinaryData.FromString("\"345\""),
+    ["deviceTypes"] = BinaryData.FromObjectAsJson(new object[]
+    {
+    "Fan",
+    "Light",
+    "AC"
+    }),
+    ["floor"] = BinaryData.FromObjectAsJson("3"),
+    ["room"] = BinaryData.FromObjectAsJson("345")
     },
 };
-ArmOperation<EventGridNamespaceClientResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clientName, data);
+ArmOperation<EventGridNamespaceClientResource> lro = await eventGridNamespaceClient.UpdateAsync(WaitUntil.Completed, data);
 EventGridNamespaceClientResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

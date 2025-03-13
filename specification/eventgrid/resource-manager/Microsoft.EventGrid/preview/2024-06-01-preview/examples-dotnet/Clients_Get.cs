@@ -15,31 +15,20 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this EventGridNamespaceResource created on azure
-// for more information of creating EventGridNamespaceResource, please refer to the document of EventGridNamespaceResource
+// this example assumes you already have this EventGridNamespaceClientResource created on azure
+// for more information of creating EventGridNamespaceClientResource, please refer to the document of EventGridNamespaceClientResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
 string namespaceName = "exampleNamespaceName1";
-ResourceIdentifier eventGridNamespaceResourceId = EventGridNamespaceResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName);
-EventGridNamespaceResource eventGridNamespace = client.GetEventGridNamespaceResource(eventGridNamespaceResourceId);
-
-// get the collection of this EventGridNamespaceClientResource
-EventGridNamespaceClientCollection collection = eventGridNamespace.GetEventGridNamespaceClients();
+string clientName = "exampleClientName1";
+ResourceIdentifier eventGridNamespaceClientResourceId = EventGridNamespaceClientResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, namespaceName, clientName);
+EventGridNamespaceClientResource eventGridNamespaceClient = client.GetEventGridNamespaceClientResource(eventGridNamespaceClientResourceId);
 
 // invoke the operation
-string clientName = "exampleClientName1";
-NullableResponse<EventGridNamespaceClientResource> response = await collection.GetIfExistsAsync(clientName);
-EventGridNamespaceClientResource result = response.HasValue ? response.Value : null;
+EventGridNamespaceClientResource result = await eventGridNamespaceClient.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    EventGridNamespaceClientData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+EventGridNamespaceClientData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

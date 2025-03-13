@@ -32,4 +32,4 @@ await foreach (DeliveryAttributeMapping item in namespaceTopicEventSubscription.
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

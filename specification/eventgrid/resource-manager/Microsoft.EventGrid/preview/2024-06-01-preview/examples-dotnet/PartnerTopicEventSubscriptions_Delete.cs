@@ -27,4 +27,4 @@ PartnerTopicEventSubscriptionResource partnerTopicEventSubscription = client.Get
 // invoke the operation
 await partnerTopicEventSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

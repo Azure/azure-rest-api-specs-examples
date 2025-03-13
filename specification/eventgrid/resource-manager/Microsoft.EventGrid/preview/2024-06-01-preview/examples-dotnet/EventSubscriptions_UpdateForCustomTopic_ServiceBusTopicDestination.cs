@@ -23,22 +23,19 @@ ResourceIdentifier eventSubscriptionResourceId = EventSubscriptionResource.Creat
 EventSubscriptionResource eventSubscription = client.GetEventSubscriptionResource(eventSubscriptionResourceId);
 
 // invoke the operation
-EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch()
+EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch
 {
-    Destination = new ServiceBusTopicEventSubscriptionDestination()
+    Destination = new ServiceBusTopicEventSubscriptionDestination
     {
         ResourceId = new ResourceIdentifier("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/topics/SBT"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "existingPrefix",
         SubjectEndsWith = "newSuffix",
         IsSubjectCaseSensitive = true,
     },
-    Labels =
-    {
-    "label1","label2"
-    },
+    Labels = { "label1", "label2" },
 };
 ArmOperation<EventSubscriptionResource> lro = await eventSubscription.UpdateAsync(WaitUntil.Completed, patch);
 EventSubscriptionResource result = lro.Value;

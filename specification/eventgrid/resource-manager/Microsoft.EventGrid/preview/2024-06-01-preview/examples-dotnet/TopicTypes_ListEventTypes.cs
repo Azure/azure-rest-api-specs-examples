@@ -27,4 +27,4 @@ await foreach (EventTypeUnderTopic item in topicType.GetEventTypesAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -26,4 +26,4 @@ TopicSpaceResource topicSpace = client.GetTopicSpaceResource(topicSpaceResourceI
 // invoke the operation
 await topicSpace.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

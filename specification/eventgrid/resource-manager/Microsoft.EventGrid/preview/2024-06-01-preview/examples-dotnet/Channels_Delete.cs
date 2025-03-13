@@ -27,4 +27,4 @@ PartnerNamespaceChannelResource partnerNamespaceChannel = client.GetPartnerNames
 // invoke the operation
 await partnerNamespaceChannel.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

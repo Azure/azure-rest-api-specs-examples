@@ -24,12 +24,9 @@ ResourceIdentifier topicSpaceResourceId = TopicSpaceResource.CreateResourceIdent
 TopicSpaceResource topicSpace = client.GetTopicSpaceResource(topicSpaceResourceId);
 
 // invoke the operation
-TopicSpaceData data = new TopicSpaceData()
+TopicSpaceData data = new TopicSpaceData
 {
-    TopicTemplates =
-    {
-    "filter1","filter2"
-    },
+    TopicTemplates = { "filter1", "filter2" },
 };
 ArmOperation<TopicSpaceResource> lro = await topicSpace.UpdateAsync(WaitUntil.Completed, data);
 TopicSpaceResource result = lro.Value;

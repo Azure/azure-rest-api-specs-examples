@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerConfigurations_CreateOrUpdate.json
@@ -24,25 +23,22 @@ ResourceIdentifier partnerConfigurationResourceId = PartnerConfigurationResource
 PartnerConfigurationResource partnerConfiguration = client.GetPartnerConfigurationResource(partnerConfigurationResourceId);
 
 // invoke the operation
-PartnerConfigurationData data = new PartnerConfigurationData(new AzureLocation("placeholder"))
+PartnerConfigurationData data = new PartnerConfigurationData(default)
 {
-    PartnerAuthorization = new PartnerAuthorization()
+    PartnerAuthorization = new PartnerAuthorization
     {
         DefaultMaximumExpirationTimeInDays = 10,
-        AuthorizedPartnersList =
-        {
-        new EventGridPartnerContent()
+        AuthorizedPartnersList = {new EventGridPartnerContent
         {
         PartnerRegistrationImmutableId = Guid.Parse("941892bc-f5d0-4d1c-8fb5-477570fc2b71"),
         PartnerName = "Contoso.Finance",
         AuthorizationExpireOn = DateTimeOffset.Parse("2022-01-28T01:20:55.142Z"),
-        },new EventGridPartnerContent()
+        }, new EventGridPartnerContent
         {
         PartnerRegistrationImmutableId = Guid.Parse("5362bdb6-ce3e-4d0d-9a5b-3eb92c8aab38"),
         PartnerName = "fabrikam.HR",
         AuthorizationExpireOn = DateTimeOffset.Parse("2022-02-20T01:00:00.142Z"),
-        }
-        },
+        }},
     },
 };
 ArmOperation<PartnerConfigurationResource> lro = await partnerConfiguration.CreateOrUpdateAsync(WaitUntil.Completed, data);

@@ -28,4 +28,4 @@ await foreach (DeliveryAttributeMapping item in eventSubscription.GetDeliveryAtt
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

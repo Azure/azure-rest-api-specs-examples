@@ -27,7 +27,7 @@ CaCertificateCollection collection = eventGridNamespace.GetCaCertificates();
 
 // invoke the operation
 string caCertificateName = "exampleCACertificateName1";
-CaCertificateData data = new CaCertificateData()
+CaCertificateData data = new CaCertificateData
 {
     Description = "This is a test certificate",
     EncodedCertificate = "base64EncodePemFormattedCertificateString",

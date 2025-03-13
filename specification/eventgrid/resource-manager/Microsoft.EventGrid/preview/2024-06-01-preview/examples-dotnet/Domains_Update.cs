@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/Domains_Update.json
@@ -25,27 +24,24 @@ ResourceIdentifier eventGridDomainResourceId = EventGridDomainResource.CreateRes
 EventGridDomainResource eventGridDomain = client.GetEventGridDomainResource(eventGridDomainResourceId);
 
 // invoke the operation
-EventGridDomainPatch patch = new EventGridDomainPatch()
+EventGridDomainPatch patch = new EventGridDomainPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
     PublicNetworkAccess = EventGridPublicNetworkAccess.Enabled,
-    InboundIPRules =
-    {
-    new EventGridInboundIPRule()
+    InboundIPRules = {new EventGridInboundIPRule
     {
     IPMask = "12.18.30.15",
     Action = EventGridIPActionType.Allow,
-    },new EventGridInboundIPRule()
+    }, new EventGridInboundIPRule
     {
     IPMask = "12.18.176.1",
     Action = EventGridIPActionType.Allow,
-    }
-    },
+    }},
 };
 await eventGridDomain.UpdateAsync(WaitUntil.Completed, patch);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

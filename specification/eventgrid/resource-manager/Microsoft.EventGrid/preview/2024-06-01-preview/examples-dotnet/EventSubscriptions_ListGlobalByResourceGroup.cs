@@ -15,14 +15,11 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this EventSubscriptionResource
 string subscriptionId = "8f6b6269-84f2-4d09-9e31-1127efcd1e40";
 string resourceGroupName = "examplerg";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/subscriptions/{0}/resourceGroups/{1}", subscriptionId, resourceGroupName));
-EventSubscriptionCollection collection = client.GetEventSubscriptions(scopeId);
+string scope = $"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}";
+EventSubscriptionCollection collection = client.GetEventSubscriptions(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (EventSubscriptionResource item in collection.GetAllAsync())
@@ -34,4 +31,4 @@ await foreach (EventSubscriptionResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

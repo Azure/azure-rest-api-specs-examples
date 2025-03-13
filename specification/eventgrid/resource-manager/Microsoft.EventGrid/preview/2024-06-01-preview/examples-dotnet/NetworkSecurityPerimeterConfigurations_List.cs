@@ -32,4 +32,4 @@ await foreach (NetworkSecurityPerimeterConfigurationData item in collection.GetA
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

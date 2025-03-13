@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerConfigurations_Update.json
@@ -24,12 +23,12 @@ ResourceIdentifier partnerConfigurationResourceId = PartnerConfigurationResource
 PartnerConfigurationResource partnerConfiguration = client.GetPartnerConfigurationResource(partnerConfigurationResourceId);
 
 // invoke the operation
-PartnerConfigurationPatch patch = new PartnerConfigurationPatch()
+PartnerConfigurationPatch patch = new PartnerConfigurationPatch
 {
     Tags =
     {
     ["tag1"] = "value11",
-    ["tag2"] = "value22",
+    ["tag2"] = "value22"
     },
     DefaultMaximumExpirationTimeInDays = 100,
 };

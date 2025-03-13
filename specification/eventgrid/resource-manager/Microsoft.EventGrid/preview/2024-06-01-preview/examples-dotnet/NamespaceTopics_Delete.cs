@@ -27,4 +27,4 @@ NamespaceTopicResource namespaceTopic = client.GetNamespaceTopicResource(namespa
 // invoke the operation
 await namespaceTopic.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

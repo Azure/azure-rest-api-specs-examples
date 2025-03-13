@@ -26,4 +26,4 @@ DomainTopicResource domainTopic = client.GetDomainTopicResource(domainTopicResou
 // invoke the operation
 await domainTopic.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

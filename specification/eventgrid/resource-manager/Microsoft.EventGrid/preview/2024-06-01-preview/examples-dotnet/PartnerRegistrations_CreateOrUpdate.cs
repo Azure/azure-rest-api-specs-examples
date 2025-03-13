@@ -33,7 +33,7 @@ PartnerRegistrationData data = new PartnerRegistrationData(new AzureLocation("gl
     {
     ["key1"] = "value1",
     ["key2"] = "Value2",
-    ["key3"] = "Value3",
+    ["key3"] = "Value3"
     },
 };
 ArmOperation<PartnerRegistrationResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, partnerRegistrationName, data);

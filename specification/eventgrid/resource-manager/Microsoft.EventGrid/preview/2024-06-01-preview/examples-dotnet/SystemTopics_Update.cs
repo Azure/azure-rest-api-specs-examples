@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/SystemTopics_Update.json
@@ -25,12 +24,12 @@ ResourceIdentifier systemTopicResourceId = SystemTopicResource.CreateResourceIde
 SystemTopicResource systemTopic = client.GetSystemTopicResource(systemTopicResourceId);
 
 // invoke the operation
-SystemTopicPatch patch = new SystemTopicPatch()
+SystemTopicPatch patch = new SystemTopicPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<SystemTopicResource> lro = await systemTopic.UpdateAsync(WaitUntil.Completed, patch);

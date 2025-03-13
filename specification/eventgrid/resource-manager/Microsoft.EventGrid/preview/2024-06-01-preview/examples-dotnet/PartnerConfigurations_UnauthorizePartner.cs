@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.EventGrid.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.EventGrid;
 
 // Generated from example definition: specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2024-06-01-preview/examples/PartnerConfigurations_UnauthorizePartner.json
@@ -24,7 +23,7 @@ ResourceIdentifier partnerConfigurationResourceId = PartnerConfigurationResource
 PartnerConfigurationResource partnerConfiguration = client.GetPartnerConfigurationResource(partnerConfigurationResourceId);
 
 // invoke the operation
-EventGridPartnerContent content = new EventGridPartnerContent()
+EventGridPartnerContent content = new EventGridPartnerContent
 {
     PartnerRegistrationImmutableId = Guid.Parse("941892bc-f5d0-4d1c-8fb5-477570fc2b71"),
     PartnerName = "Contoso.Finance",

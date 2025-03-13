@@ -28,10 +28,10 @@ PartnerNamespaceChannelCollection collection = partnerNamespace.GetPartnerNamesp
 
 // invoke the operation
 string channelName = "exampleChannelName1";
-PartnerNamespaceChannelData data = new PartnerNamespaceChannelData()
+PartnerNamespaceChannelData data = new PartnerNamespaceChannelData
 {
     ChannelType = PartnerNamespaceChannelType.PartnerTopic,
-    PartnerTopicInfo = new PartnerTopicInfo()
+    PartnerTopicInfo = new PartnerTopicInfo
     {
         AzureSubscriptionId = Guid.Parse("8f6b6269-84f2-4d09-9e31-1127efcd1e40"),
         ResourceGroupName = "examplerg2",

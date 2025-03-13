@@ -27,4 +27,4 @@ DomainEventSubscriptionResource domainEventSubscription = client.GetDomainEventS
 // invoke the operation
 await domainEventSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

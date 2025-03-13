@@ -23,19 +23,19 @@ ResourceIdentifier eventSubscriptionResourceId = EventSubscriptionResource.Creat
 EventSubscriptionResource eventSubscription = client.GetEventSubscriptionResource(eventSubscriptionResourceId);
 
 // invoke the operation
-EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch()
+EventGridSubscriptionPatch patch = new EventGridSubscriptionPatch
 {
-    Destination = new ServiceBusQueueEventSubscriptionDestination()
+    Destination = new ServiceBusQueueEventSubscriptionDestination
     {
         ResourceId = new ResourceIdentifier("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ContosoNamespace/queues/SBQ"),
     },
-    Filter = new EventSubscriptionFilter()
+    Filter = new EventSubscriptionFilter
     {
         SubjectBeginsWith = "ExamplePrefix",
         SubjectEndsWith = "ExampleSuffix",
         IsSubjectCaseSensitive = false,
     },
-    DeadLetterDestination = new StorageBlobDeadLetterDestination()
+    DeadLetterDestination = new StorageBlobDeadLetterDestination
     {
         ResourceId = new ResourceIdentifier("/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/contosostg"),
         BlobContainerName = "contosocontainer",

@@ -25,7 +25,7 @@ ResourceIdentifier namespaceTopicResourceId = NamespaceTopicResource.CreateResou
 NamespaceTopicResource namespaceTopic = client.GetNamespaceTopicResource(namespaceTopicResourceId);
 
 // invoke the operation
-NamespaceTopicPatch patch = new NamespaceTopicPatch()
+NamespaceTopicPatch patch = new NamespaceTopicPatch
 {
     EventRetentionInDays = 1,
 };

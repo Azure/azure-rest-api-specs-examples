@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationProtectedItems_Update.json
 // this example is just showing the usage of "ReplicationProtectedItems_Update" operation, for the dependent resources, they will have to be created separately.
@@ -29,31 +28,25 @@ ResourceIdentifier replicationProtectedItemResourceId = ReplicationProtectedItem
 ReplicationProtectedItemResource replicationProtectedItem = client.GetReplicationProtectedItemResource(replicationProtectedItemResourceId);
 
 // invoke the operation
-ReplicationProtectedItemPatch patch = new ReplicationProtectedItemPatch()
+ReplicationProtectedItemPatch patch = new ReplicationProtectedItemPatch
 {
-    Properties = new UpdateReplicationProtectedItemProperties()
+    Properties = new UpdateReplicationProtectedItemProperties
     {
         RecoveryAzureVmName = "vm1",
         RecoveryAzureVmSize = "Basic_A0",
         SelectedRecoveryAzureNetworkId = new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai"),
-        VmNics =
-        {
-        new VmNicContentDetails()
+        VmNics = {new VmNicContentDetails
         {
         NicId = "TWljcm9zb2Z0OkY4NDkxRTRGLTgxN0EtNDBERC1BOTBDLUFGNzczOTc4Qzc1Qlw3NjAwMzMxRS03NDk4LTQ0QTQtQjdDNy0xQjY1NkJDREQ1MkQ=",
-        IPConfigs =
-        {
-        new HyperVFailoverIPConfigDetails()
+        IPConfigs = {new HyperVFailoverIPConfigDetails
         {
         IPConfigName = "ipconfig1",
         IsPrimary = true,
         RecoverySubnetName = "subnet1",
         RecoveryStaticIPAddress = IPAddress.Parse("10.0.2.46"),
-        }
-        },
+        }},
         SelectionType = "SelectedByUser",
-        }
-        },
+        }},
         LicenseType = SiteRecoveryLicenseType.WindowsServer,
         ProviderSpecificDetails = new HyperVReplicaAzureUpdateReplicationProtectedItemContent(),
     },

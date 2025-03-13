@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationProtectionContainers_SwitchProtection.json
 // this example is just showing the usage of "ReplicationProtectionContainers_SwitchProtection" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +27,9 @@ ResourceIdentifier siteRecoveryProtectionContainerResourceId = SiteRecoveryProte
 SiteRecoveryProtectionContainerResource siteRecoveryProtectionContainer = client.GetSiteRecoveryProtectionContainerResource(siteRecoveryProtectionContainerResourceId);
 
 // invoke the operation
-SwitchProtectionContent content = new SwitchProtectionContent()
+SwitchProtectionContent content = new SwitchProtectionContent
 {
-    Properties = new SwitchProtectionProperties()
+    Properties = new SwitchProtectionProperties
     {
         ReplicationProtectedItemName = "a2aSwapOsVm",
         ProviderSpecificDetails = new A2ASwitchProtectionContent(),

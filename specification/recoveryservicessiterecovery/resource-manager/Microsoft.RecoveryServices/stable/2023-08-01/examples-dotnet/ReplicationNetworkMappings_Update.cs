@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationNetworkMappings_Update.json
 // this example is just showing the usage of "ReplicationNetworkMappings_Update" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +27,9 @@ ResourceIdentifier siteRecoveryNetworkMappingResourceId = SiteRecoveryNetworkMap
 SiteRecoveryNetworkMappingResource siteRecoveryNetworkMapping = client.GetSiteRecoveryNetworkMappingResource(siteRecoveryNetworkMappingResourceId);
 
 // invoke the operation
-SiteRecoveryNetworkMappingPatch patch = new SiteRecoveryNetworkMappingPatch()
+SiteRecoveryNetworkMappingPatch patch = new SiteRecoveryNetworkMappingPatch
 {
-    Properties = new UpdateNetworkMappingProperties()
+    Properties = new UpdateNetworkMappingProperties
     {
         RecoveryFabricName = "Microsoft Azure",
         RecoveryNetworkId = new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/siterecoveryProd1/providers/Microsoft.Network/virtualNetworks/vnetavrai2"),

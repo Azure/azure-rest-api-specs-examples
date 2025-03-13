@@ -1,13 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationvCenters_Update.json
 // this example is just showing the usage of "ReplicationvCenters_Update" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +27,9 @@ ResourceIdentifier siteRecoveryVCenterResourceId = SiteRecoveryVCenterResource.C
 SiteRecoveryVCenterResource siteRecoveryVCenter = client.GetSiteRecoveryVCenterResource(siteRecoveryVCenterResourceId);
 
 // invoke the operation
-SiteRecoveryVCenterPatch patch = new SiteRecoveryVCenterPatch()
+SiteRecoveryVCenterPatch patch = new SiteRecoveryVCenterPatch
 {
-    Properties = new SiteRecoveryUpdateVCenterProperties()
+    Properties = new SiteRecoveryUpdateVCenterProperties
     {
         IPAddress = IPAddress.Parse("10.150.109.25"),
     },

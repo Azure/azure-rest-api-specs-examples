@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationMigrationItems_Update.json
 // this example is just showing the usage of "ReplicationMigrationItems_Update" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +27,7 @@ ResourceIdentifier siteRecoveryMigrationItemResourceId = SiteRecoveryMigrationIt
 SiteRecoveryMigrationItemResource siteRecoveryMigrationItem = client.GetSiteRecoveryMigrationItemResource(siteRecoveryMigrationItemResourceId);
 
 // invoke the operation
-SiteRecoveryMigrationItemPatch patch = new SiteRecoveryMigrationItemPatch()
+SiteRecoveryMigrationItemPatch patch = new SiteRecoveryMigrationItemPatch
 {
     UpdateMigrationItemProviderSpecificDetails = new VMwareCbtUpdateMigrationItemContent(),
 };

@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationStorageClassificationMappings_Create.json
 // this example is just showing the usage of "ReplicationStorageClassificationMappings_Create" operation, for the dependent resources, they will have to be created separately.
@@ -28,7 +27,7 @@ ResourceIdentifier storageClassificationMappingResourceId = StorageClassificatio
 StorageClassificationMappingResource storageClassificationMapping = client.GetStorageClassificationMappingResource(storageClassificationMappingResourceId);
 
 // invoke the operation
-StorageClassificationMappingCreateOrUpdateContent content = new StorageClassificationMappingCreateOrUpdateContent()
+StorageClassificationMappingCreateOrUpdateContent content = new StorageClassificationMappingCreateOrUpdateContent
 {
     TargetStorageClassificationId = new ResourceIdentifier("/Subscriptions/9112a37f-0f3e-46ec-9c00-060c6edca071/resourceGroups/resourceGroupPS1/providers/Microsoft.RecoveryServices/vaults/vault1/replicationFabrics/2a48e3770ac08aa2be8bfbd94fcfb1cbf2dcc487b78fb9d3bd778304441b06a0/replicationStorageClassifications/8891569e-aaef-4a46-a4a0-78c14f2d7b09"),
 };

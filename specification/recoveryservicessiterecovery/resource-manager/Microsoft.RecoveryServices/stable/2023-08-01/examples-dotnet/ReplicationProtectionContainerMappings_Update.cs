@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 using Azure.ResourceManager.RecoveryServicesSiteRecovery.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.RecoveryServicesSiteRecovery;
 
 // Generated from example definition: specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-08-01/examples/ReplicationProtectionContainerMappings_Update.json
 // this example is just showing the usage of "ReplicationProtectionContainerMappings_Update" operation, for the dependent resources, they will have to be created separately.
@@ -28,9 +27,9 @@ ResourceIdentifier protectionContainerMappingResourceId = ProtectionContainerMap
 ProtectionContainerMappingResource protectionContainerMapping = client.GetProtectionContainerMappingResource(protectionContainerMappingResourceId);
 
 // invoke the operation
-ProtectionContainerMappingPatch patch = new ProtectionContainerMappingPatch()
+ProtectionContainerMappingPatch patch = new ProtectionContainerMappingPatch
 {
-    ProviderSpecificContent = new A2AUpdateContainerMappingContent()
+    ProviderSpecificContent = new A2AUpdateContainerMappingContent
     {
         AgentAutoUpdateStatus = SiteRecoveryAgentAutoUpdateStatus.Enabled,
         AutomationAccountArmId = new ResourceIdentifier("/subscriptions/c183865e-6077-46f2-a3b1-deb0f4f4650a/resourceGroups/automationrg1/providers/Microsoft.Automation/automationAccounts/automationaccount1"),

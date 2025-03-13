@@ -32,7 +32,7 @@ SapInstanceData data = new SapInstanceData(new AzureLocation("eastus"))
     Tags =
     {
     ["property1"] = "value1",
-    ["property2"] = "value2",
+    ["property2"] = "value2"
     },
 };
 ArmOperation<SapInstanceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapInstanceName, data);

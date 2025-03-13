@@ -25,11 +25,11 @@ ResourceIdentifier sapInstanceResourceId = SapInstanceResource.CreateResourceIde
 SapInstanceResource sapInstance = client.GetSapInstanceResource(sapInstanceResourceId);
 
 // invoke the operation
-SapInstancePatch patch = new SapInstancePatch()
+SapInstancePatch patch = new SapInstancePatch
 {
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 SapInstanceResource result = await sapInstance.UpdateAsync(patch);

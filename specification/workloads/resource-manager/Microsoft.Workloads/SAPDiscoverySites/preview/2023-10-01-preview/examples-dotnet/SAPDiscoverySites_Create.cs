@@ -34,7 +34,7 @@ SapDiscoverySiteData data = new SapDiscoverySiteData(new AzureLocation("eastus")
     Tags =
     {
     ["property1"] = "value1",
-    ["property2"] = "value2",
+    ["property2"] = "value2"
     },
 };
 ArmOperation<SapDiscoverySiteResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, sapDiscoverySiteName, data);

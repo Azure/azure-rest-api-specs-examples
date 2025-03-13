@@ -33,4 +33,4 @@ await foreach (MaintenanceApplyUpdateResource item in resourceGroupResource.GetM
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

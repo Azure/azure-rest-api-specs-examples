@@ -25,31 +25,19 @@ ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(re
 
 // invoke the operation
 string configurationAssignmentName = "workervmConfiguration";
-MaintenanceConfigurationAssignmentData data = new MaintenanceConfigurationAssignmentData()
+MaintenanceConfigurationAssignmentData data = new MaintenanceConfigurationAssignmentData
 {
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/examplerg/providers/Microsoft.Maintenance/maintenanceConfigurations/configuration1"),
-    Filter = new MaintenanceConfigurationAssignmentFilter()
+    Filter = new MaintenanceConfigurationAssignmentFilter
     {
-        ResourceTypes =
-        {
-        new ResourceType("Microsoft.HybridCompute/machines"),new ResourceType("Microsoft.Compute/virtualMachines")
-        },
-        Locations =
-        {
-        new AzureLocation("Japan East"),new AzureLocation("UK South")
-        },
-        TagSettings = new VmTagSettings()
+        ResourceTypes = { new ResourceType("Microsoft.HybridCompute/machines"), new ResourceType("Microsoft.Compute/virtualMachines") },
+        Locations = { new AzureLocation("Japan East"), new AzureLocation("UK South") },
+        TagSettings = new VmTagSettings
         {
             Tags =
             {
-            ["tag1"] = new string[]
-            {
-            "tag1Value1","tag1Value2","tag1Value3"
-            },
-            ["tag2"] = new string[]
-            {
-            "tag2Value1","tag2Value2","tag2Value3"
-            },
+            ["tag1"] = new string[]{"tag1Value1", "tag1Value2", "tag1Value3"},
+            ["tag2"] = new string[]{"tag2Value1", "tag2Value2", "tag2Value3"}
             },
             FilterOperator = VmTagOperator.Any,
         },

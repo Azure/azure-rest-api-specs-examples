@@ -31,7 +31,7 @@ string providerName = "Microsoft.Maintenance";
 string resourceType = "maintenanceConfigurations";
 string resourceName = "maintenanceConfig1";
 string applyUpdateName = "20230901121200";
-MaintenanceApplyUpdateData data = new MaintenanceApplyUpdateData()
+MaintenanceApplyUpdateData data = new MaintenanceApplyUpdateData
 {
     Status = MaintenanceUpdateStatus.Cancel,
 };

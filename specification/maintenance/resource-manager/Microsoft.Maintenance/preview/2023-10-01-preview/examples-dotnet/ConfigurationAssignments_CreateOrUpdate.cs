@@ -28,7 +28,7 @@ string providerName = "Microsoft.Compute";
 string resourceType = "virtualMachineScaleSets";
 string resourceName = "smdtest1";
 string configurationAssignmentName = "workervmConfiguration";
-MaintenanceConfigurationAssignmentData data = new MaintenanceConfigurationAssignmentData()
+MaintenanceConfigurationAssignmentData data = new MaintenanceConfigurationAssignmentData
 {
     MaintenanceConfigurationId = new ResourceIdentifier("/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourcegroups/examplerg/providers/Microsoft.Maintenance/maintenanceConfigurations/configuration1"),
 };

@@ -24,7 +24,19 @@ ResourceIdentifier resourceGroupResourceId = ResourceGroupResource.CreateResourc
 ResourceGroupResource resourceGroupResource = client.GetResourceGroupResource(resourceGroupResourceId);
 
 // invoke the operation
-ResourceGroupResourceDeleteConfigurationAssignmentByParentOptions options = new ResourceGroupResourceDeleteConfigurationAssignmentByParentOptions(providerName: "Microsoft.Compute", resourceParentType: "virtualMachineScaleSets", resourceParentName: "smdtest1", resourceType: "virtualMachines", resourceName: "smdvm1", configurationAssignmentName: "workervmConfiguration") { };
+string providerName = "Microsoft.Compute";
+string resourceParentType = "virtualMachineScaleSets";
+string resourceParentName = "smdtest1";
+string resourceType = "virtualMachines";
+string resourceName = "smdvm1";
+string configurationAssignmentName = "workervmConfiguration";
+ResourceGroupResourceDeleteConfigurationAssignmentByParentOptions options = new ResourceGroupResourceDeleteConfigurationAssignmentByParentOptions(
+    providerName,
+    resourceParentType,
+    resourceParentName,
+    resourceType,
+    resourceName,
+    configurationAssignmentName);
 MaintenanceConfigurationAssignmentData result = await resourceGroupResource.DeleteConfigurationAssignmentByParentAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

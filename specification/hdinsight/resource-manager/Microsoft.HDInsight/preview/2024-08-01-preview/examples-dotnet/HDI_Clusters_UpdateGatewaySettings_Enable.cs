@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/HDI_Clusters_UpdateGatewaySettings_Enable.json
@@ -27,7 +26,7 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-HDInsightClusterUpdateGatewaySettingsContent content = new HDInsightClusterUpdateGatewaySettingsContent()
+HDInsightClusterUpdateGatewaySettingsContent content = new HDInsightClusterUpdateGatewaySettingsContent
 {
     IsCredentialEnabled = true,
     UserName = "hadoop",
@@ -35,4 +34,4 @@ HDInsightClusterUpdateGatewaySettingsContent content = new HDInsightClusterUpdat
 };
 await hdInsightCluster.UpdateGatewaySettingsAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

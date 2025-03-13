@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/CreateExtension.json
@@ -28,11 +27,11 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 
 // invoke the operation
 string extensionName = "clustermonitoring";
-HDInsightClusterCreateExtensionContent content = new HDInsightClusterCreateExtensionContent()
+HDInsightClusterCreateExtensionContent content = new HDInsightClusterCreateExtensionContent
 {
     WorkspaceId = "a2090ead-8c9f-4fba-b70e-533e3e003163",
     PrimaryKey = "**********",
 };
 await hdInsightCluster.CreateExtensionAsync(WaitUntil.Completed, extensionName, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

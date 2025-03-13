@@ -25,7 +25,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("westus");
-HDInsightNameAvailabilityContent content = new HDInsightNameAvailabilityContent()
+HDInsightNameAvailabilityContent content = new HDInsightNameAvailabilityContent
 {
     Name = "test123",
     ResourceType = new ResourceType("clusters"),

@@ -29,60 +29,57 @@ HDInsightClusterCollection collection = resourceGroupResource.GetHDInsightCluste
 
 // invoke the operation
 string clusterName = "cluster1";
-HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent()
+HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent
 {
-    Zones =
-    {
-    "1"
-    },
-    Properties = new HDInsightClusterCreateOrUpdateProperties()
+    Zones = { "1" },
+    Properties = new HDInsightClusterCreateOrUpdateProperties
     {
         ClusterVersion = "3.6",
         OSType = HDInsightOSType.Linux,
-        ClusterDefinition = new HDInsightClusterDefinition()
+        ClusterDefinition = new HDInsightClusterDefinition
         {
             Kind = "hadoop",
-            Configurations = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+            Configurations = BinaryData.FromObjectAsJson(new Dictionary<string, object>
             {
-                ["ambari-conf"] = new Dictionary<string, object>()
+                ["ambari-conf"] = new Dictionary<string, object>
                 {
                     ["database-name"] = "{ambari database name}",
                     ["database-server"] = "{sql server name}.database.windows.net",
                     ["database-user-name"] = "**********",
                     ["database-user-password"] = "**********"
                 },
-                ["gateway"] = new Dictionary<string, object>()
+                ["gateway"] = new Dictionary<string, object>
                 {
                     ["restAuthCredential.isEnabled"] = "true",
                     ["restAuthCredential.password"] = "**********",
                     ["restAuthCredential.username"] = "admin"
                 },
-                ["hive-env"] = new Dictionary<string, object>()
+                ["hive-env"] = new
                 {
-                    ["hive_database"] = "Existing MSSQL Server database with SQL authentication",
-                    ["hive_database_name"] = "{hive metastore name}",
-                    ["hive_database_type"] = "mssql",
-                    ["hive_existing_mssql_server_database"] = "{hive metastore name}",
-                    ["hive_existing_mssql_server_host"] = "{sql server name}.database.windows.net",
-                    ["hive_hostname"] = "{sql server name}.database.windows.net"
+                    hive_database = "Existing MSSQL Server database with SQL authentication",
+                    hive_database_name = "{hive metastore name}",
+                    hive_database_type = "mssql",
+                    hive_existing_mssql_server_database = "{hive metastore name}",
+                    hive_existing_mssql_server_host = "{sql server name}.database.windows.net",
+                    hive_hostname = "{sql server name}.database.windows.net",
                 },
-                ["hive-site"] = new Dictionary<string, object>()
+                ["hive-site"] = new Dictionary<string, object>
                 {
                     ["javax.jdo.option.ConnectionDriverName"] = "com.microsoft.sqlserver.jdbc.SQLServerDriver",
                     ["javax.jdo.option.ConnectionPassword"] = "**********!",
                     ["javax.jdo.option.ConnectionURL"] = "jdbc:sqlserver://{sql server name}.database.windows.net;database={hive metastore name};encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300;sendStringParametersAsUnicode=true;prepareSQL=0",
                     ["javax.jdo.option.ConnectionUserName"] = "**********"
                 },
-                ["oozie-env"] = new Dictionary<string, object>()
+                ["oozie-env"] = new
                 {
-                    ["oozie_database"] = "Existing MSSQL Server database with SQL authentication",
-                    ["oozie_database_name"] = "{oozie metastore name}",
-                    ["oozie_database_type"] = "mssql",
-                    ["oozie_existing_mssql_server_database"] = "{oozie metastore name}",
-                    ["oozie_existing_mssql_server_host"] = "{sql server name}.database.windows.net",
-                    ["oozie_hostname"] = "{sql server name}.database.windows.net"
+                    oozie_database = "Existing MSSQL Server database with SQL authentication",
+                    oozie_database_name = "{oozie metastore name}",
+                    oozie_database_type = "mssql",
+                    oozie_existing_mssql_server_database = "{oozie metastore name}",
+                    oozie_existing_mssql_server_host = "{sql server name}.database.windows.net",
+                    oozie_hostname = "{sql server name}.database.windows.net",
                 },
-                ["oozie-site"] = new Dictionary<string, object>()
+                ["oozie-site"] = new Dictionary<string, object>
                 {
                     ["oozie.db.schema.name"] = "oozie",
                     ["oozie.service.JPAService.jdbc.driver"] = "com.microsoft.sqlserver.jdbc.SQLServerDriver",
@@ -92,65 +89,53 @@ HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpda
                 }
             }),
         },
-        ComputeRoles =
-        {
-        new HDInsightClusterRole()
+        ComputeRoles = {new HDInsightClusterRole
         {
         Name = "headnode",
         TargetInstanceCount = 2,
         HardwareVmSize = "standard_d3",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
-        SshPublicKeys =
-        {
-        new HDInsightSshPublicKey()
+        SshPublicKeys = {new HDInsightSshPublicKey
         {
         CertificateData = "**********",
-        }
+        }},
         },
-        },
-        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile()
+        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile
         {
         Id = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"),
         Subnet = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet",
         },
-        },new HDInsightClusterRole()
+        }, new HDInsightClusterRole
         {
         Name = "workernode",
         TargetInstanceCount = 2,
         HardwareVmSize = "standard_d3",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
-        SshPublicKeys =
-        {
-        new HDInsightSshPublicKey()
+        SshPublicKeys = {new HDInsightSshPublicKey
         {
         CertificateData = "**********",
-        }
+        }},
         },
-        },
-        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile()
+        VirtualNetworkProfile = new HDInsightVirtualNetworkProfile
         {
         Id = new ResourceIdentifier("/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname"),
         Subnet = "/subscriptions/subId/resourceGroups/rg/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/vnetsubnet",
         },
-        }
-        },
-        StorageAccounts =
-        {
-        new HDInsightStorageAccountInfo()
+        }},
+        StorageAccounts = {new HDInsightStorageAccountInfo
         {
         Name = "mystorage",
         IsDefault = true,
         Container = "containername",
         Key = "storage account key",
         EnableSecureChannel = true,
-        }
-        },
+        }},
     },
 };
 ArmOperation<HDInsightClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, content);

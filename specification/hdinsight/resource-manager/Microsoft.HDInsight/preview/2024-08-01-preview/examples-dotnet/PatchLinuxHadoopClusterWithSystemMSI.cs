@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/PatchLinuxHadoopClusterWithSystemMSI.json
@@ -27,12 +26,12 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-HDInsightClusterPatch patch = new HDInsightClusterPatch()
+HDInsightClusterPatch patch = new HDInsightClusterPatch
 {
     Tags =
     {
     ["key1"] = "val1",
-    ["key2"] = "val2",
+    ["key2"] = "val2"
     },
     Identity = new ManagedServiceIdentity("SystemAssigned"),
 };

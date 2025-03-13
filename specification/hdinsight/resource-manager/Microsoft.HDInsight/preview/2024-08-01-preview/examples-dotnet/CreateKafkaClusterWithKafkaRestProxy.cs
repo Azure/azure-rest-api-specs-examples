@@ -29,100 +29,91 @@ HDInsightClusterCollection collection = resourceGroupResource.GetHDInsightCluste
 
 // invoke the operation
 string clusterName = "cluster1";
-HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent()
+HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent
 {
-    Properties = new HDInsightClusterCreateOrUpdateProperties()
+    Properties = new HDInsightClusterCreateOrUpdateProperties
     {
         ClusterVersion = "4.0",
         OSType = HDInsightOSType.Linux,
         Tier = HDInsightTier.Standard,
-        ClusterDefinition = new HDInsightClusterDefinition()
+        ClusterDefinition = new HDInsightClusterDefinition
         {
             Kind = "kafka",
             ComponentVersion =
             {
-            ["Kafka"] = "2.1",
+            ["Kafka"] = "2.1"
             },
-            Configurations = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+            Configurations = BinaryData.FromObjectAsJson(new
             {
-                ["gateway"] = new Dictionary<string, object>()
+                gateway = new Dictionary<string, object>
                 {
                     ["restAuthCredential.isEnabled"] = "true",
                     ["restAuthCredential.password"] = "**********",
                     ["restAuthCredential.username"] = "admin"
-                }
+                },
             }),
         },
-        KafkaRestProperties = new KafkaRestProperties()
+        KafkaRestProperties = new KafkaRestProperties
         {
-            ClientGroupInfo = new ClientGroupInfo()
+            ClientGroupInfo = new ClientGroupInfo
             {
                 GroupName = "Kafka security group name",
                 GroupId = "00000000-0000-0000-0000-111111111111",
             },
         },
-        ComputeRoles =
-        {
-        new HDInsightClusterRole()
+        ComputeRoles = {new HDInsightClusterRole
         {
         Name = "headnode",
         TargetInstanceCount = 2,
         HardwareVmSize = "Large",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        },new HDInsightClusterRole()
+        }, new HDInsightClusterRole
         {
         Name = "workernode",
         TargetInstanceCount = 3,
         HardwareVmSize = "Large",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        DataDisksGroups =
-        {
-        new HDInsightClusterDataDiskGroup()
+        DataDisksGroups = {new HDInsightClusterDataDiskGroup
         {
         DisksPerNode = 8,
-        }
-        },
-        },new HDInsightClusterRole()
+        }},
+        }, new HDInsightClusterRole
         {
         Name = "zookeepernode",
         TargetInstanceCount = 3,
         HardwareVmSize = "Small",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        },new HDInsightClusterRole()
+        }, new HDInsightClusterRole
         {
         Name = "kafkamanagementnode",
         TargetInstanceCount = 2,
         HardwareVmSize = "Standard_D4_v2",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "kafkauser",
         Password = "**********",
         },
-        }
-        },
-        StorageAccounts =
-        {
-        new HDInsightStorageAccountInfo()
+        }},
+        StorageAccounts = {new HDInsightStorageAccountInfo
         {
         Name = "mystorage.blob.core.windows.net",
         IsDefault = true,
         Container = "containername",
         Key = "storagekey",
         EnableSecureChannel = true,
-        }
-        },
+        }},
     },
 };
 ArmOperation<HDInsightClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, content);

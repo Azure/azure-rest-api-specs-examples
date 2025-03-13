@@ -27,4 +27,4 @@ HDInsightPrivateEndpointConnectionResource hdInsightPrivateEndpointConnection = 
 // invoke the operation
 await hdInsightPrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

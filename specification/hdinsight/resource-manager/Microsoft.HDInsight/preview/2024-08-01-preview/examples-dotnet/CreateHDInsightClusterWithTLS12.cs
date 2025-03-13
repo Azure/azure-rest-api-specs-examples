@@ -29,71 +29,65 @@ HDInsightClusterCollection collection = resourceGroupResource.GetHDInsightCluste
 
 // invoke the operation
 string clusterName = "cluster1";
-HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent()
+HDInsightClusterCreateOrUpdateContent content = new HDInsightClusterCreateOrUpdateContent
 {
-    Properties = new HDInsightClusterCreateOrUpdateProperties()
+    Properties = new HDInsightClusterCreateOrUpdateProperties
     {
         ClusterVersion = "3.6",
         OSType = HDInsightOSType.Linux,
         Tier = HDInsightTier.Standard,
-        ClusterDefinition = new HDInsightClusterDefinition()
+        ClusterDefinition = new HDInsightClusterDefinition
         {
             Kind = "Hadoop",
-            Configurations = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+            Configurations = BinaryData.FromObjectAsJson(new
             {
-                ["gateway"] = new Dictionary<string, object>()
+                gateway = new Dictionary<string, object>
                 {
                     ["restAuthCredential.isEnabled"] = "true",
                     ["restAuthCredential.password"] = "**********",
                     ["restAuthCredential.username"] = "admin"
-                }
+                },
             }),
         },
-        ComputeRoles =
-        {
-        new HDInsightClusterRole()
+        ComputeRoles = {new HDInsightClusterRole
         {
         Name = "headnode",
         TargetInstanceCount = 2,
         HardwareVmSize = "Large",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        },new HDInsightClusterRole()
+        }, new HDInsightClusterRole
         {
         Name = "workernode",
         TargetInstanceCount = 3,
         HardwareVmSize = "Large",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        },new HDInsightClusterRole()
+        }, new HDInsightClusterRole
         {
         Name = "zookeepernode",
         TargetInstanceCount = 3,
         HardwareVmSize = "Small",
-        OSLinuxProfile = new HDInsightLinuxOSProfile()
+        OSLinuxProfile = new HDInsightLinuxOSProfile
         {
         Username = "sshuser",
         Password = "**********",
         },
-        }
-        },
-        StorageAccounts =
-        {
-        new HDInsightStorageAccountInfo()
+        }},
+        StorageAccounts = {new HDInsightStorageAccountInfo
         {
         Name = "mystorage.blob.core.windows.net",
         IsDefault = true,
         Container = "default8525",
         Key = "storagekey",
         EnableSecureChannel = true,
-        }
-        },
+        }},
         MinSupportedTlsVersion = "1.2",
     },
 };

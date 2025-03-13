@@ -7,7 +7,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/preview/2024-08-01-preview/examples/PostExecuteScriptAction.json
@@ -29,17 +28,11 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 // invoke the operation
 ExecuteScriptActionContent content = new ExecuteScriptActionContent(false)
 {
-    ScriptActions =
-    {
-    new RuntimeScriptAction("Test",new Uri("http://testurl.com/install.ssh"),new string[]
-    {
-    "headnode","workernode"
-    })
+    ScriptActions = {new RuntimeScriptAction("Test", new Uri("http://testurl.com/install.ssh"), new string[]{"headnode", "workernode"})
     {
     Parameters = "",
-    }
-    },
+    }},
 };
 await hdInsightCluster.ExecuteScriptActionsAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

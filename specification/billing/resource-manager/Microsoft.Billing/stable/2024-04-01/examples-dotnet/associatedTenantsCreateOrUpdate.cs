@@ -15,24 +15,27 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingAssociatedTenantResource created on azure
-// for more information of creating BillingAssociatedTenantResource, please refer to the document of BillingAssociatedTenantResource
+// this example assumes you already have this BillingAccountResource created on azure
+// for more information of creating BillingAccountResource, please refer to the document of BillingAccountResource
 string billingAccountName = "00000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
-string associatedTenantName = "11111111-1111-1111-1111-111111111111";
-ResourceIdentifier billingAssociatedTenantResourceId = BillingAssociatedTenantResource.CreateResourceIdentifier(billingAccountName, associatedTenantName);
-BillingAssociatedTenantResource billingAssociatedTenant = client.GetBillingAssociatedTenantResource(billingAssociatedTenantResourceId);
+ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResourceIdentifier(billingAccountName);
+BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
+
+// get the collection of this BillingAssociatedTenantResource
+BillingAssociatedTenantCollection collection = billingAccount.GetBillingAssociatedTenants();
 
 // invoke the operation
-BillingAssociatedTenantData data = new BillingAssociatedTenantData()
+string associatedTenantName = "11111111-1111-1111-1111-111111111111";
+BillingAssociatedTenantData data = new BillingAssociatedTenantData
 {
-    Properties = new BillingAssociatedTenantProperties()
+    Properties = new BillingAssociatedTenantProperties
     {
         DisplayName = "Contoso Finance",
         BillingManagementState = BillingManagementTenantState.Active,
         ProvisioningManagementState = BillingProvisioningTenantState.Pending,
     },
 };
-ArmOperation<BillingAssociatedTenantResource> lro = await billingAssociatedTenant.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<BillingAssociatedTenantResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, associatedTenantName, data);
 BillingAssociatedTenantResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

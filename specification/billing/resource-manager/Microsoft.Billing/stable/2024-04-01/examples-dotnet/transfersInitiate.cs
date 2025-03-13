@@ -15,24 +15,21 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingInvoiceSectionResource created on azure
-// for more information of creating BillingInvoiceSectionResource, please refer to the document of BillingInvoiceSectionResource
+// this example assumes you already have this BillingTransferDetailResource created on azure
+// for more information of creating BillingTransferDetailResource, please refer to the document of BillingTransferDetailResource
 string billingAccountName = "10000000-0000-0000-0000-000000000000:00000000-0000-0000-0000-000000000000_2019-05-31";
 string billingProfileName = "xxxx-xxxx-xxx-xxx";
 string invoiceSectionName = "yyyy-yyyy-yyy-yyy";
-ResourceIdentifier billingInvoiceSectionResourceId = BillingInvoiceSectionResource.CreateResourceIdentifier(billingAccountName, billingProfileName, invoiceSectionName);
-BillingInvoiceSectionResource billingInvoiceSection = client.GetBillingInvoiceSectionResource(billingInvoiceSectionResourceId);
-
-// get the collection of this BillingTransferDetailResource
-BillingTransferDetailCollection collection = billingInvoiceSection.GetBillingTransferDetails();
+string transferName = "aabb123";
+ResourceIdentifier billingTransferDetailResourceId = BillingTransferDetailResource.CreateResourceIdentifier(billingAccountName, billingProfileName, invoiceSectionName, transferName);
+BillingTransferDetailResource billingTransferDetail = client.GetBillingTransferDetailResource(billingTransferDetailResourceId);
 
 // invoke the operation
-string transferName = "aabb123";
-BillingTransferDetailCreateOrUpdateContent content = new BillingTransferDetailCreateOrUpdateContent()
+BillingTransferDetailCreateOrUpdateContent content = new BillingTransferDetailCreateOrUpdateContent
 {
     RecipientEmailId = "user@contoso.com",
 };
-ArmOperation<BillingTransferDetailResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, transferName, content);
+ArmOperation<BillingTransferDetailResource> lro = await billingTransferDetail.UpdateAsync(WaitUntil.Completed, content);
 BillingTransferDetailResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

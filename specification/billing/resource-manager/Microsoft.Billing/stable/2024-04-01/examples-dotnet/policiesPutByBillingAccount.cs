@@ -22,11 +22,11 @@ ResourceIdentifier billingAccountPolicyResourceId = BillingAccountPolicyResource
 BillingAccountPolicyResource billingAccountPolicy = client.GetBillingAccountPolicyResource(billingAccountPolicyResourceId);
 
 // invoke the operation
-BillingAccountPolicyData data = new BillingAccountPolicyData()
+BillingAccountPolicyData data = new BillingAccountPolicyData
 {
-    Properties = new BillingAccountPolicyProperties()
+    Properties = new BillingAccountPolicyProperties
     {
-        EnterpriseAgreementPolicies = new EnterpriseAgreementPolicies()
+        EnterpriseAgreementPolicies = new EnterpriseAgreementPolicies
         {
             AuthenticationType = EnrollmentAuthLevelState.OrganizationalAccountOnly,
         },

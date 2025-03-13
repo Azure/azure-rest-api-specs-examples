@@ -24,7 +24,7 @@ ResourceIdentifier billingSubscriptionResourceId = BillingSubscriptionResource.C
 BillingSubscriptionResource billingSubscription = client.GetBillingSubscriptionResource(billingSubscriptionResourceId);
 
 // invoke the operation
-BillingSubscriptionPatch patch = new BillingSubscriptionPatch()
+BillingSubscriptionPatch patch = new BillingSubscriptionPatch
 {
     ConsumptionCostCenter = "ABC1234",
 };

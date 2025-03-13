@@ -28,4 +28,4 @@ await foreach (InvoiceSectionWithCreateSubPermission item in billingAccount.GetI
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

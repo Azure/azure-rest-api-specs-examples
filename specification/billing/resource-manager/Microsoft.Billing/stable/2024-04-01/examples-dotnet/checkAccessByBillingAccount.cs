@@ -23,16 +23,13 @@ ResourceIdentifier billingAccountResourceId = BillingAccountResource.CreateResou
 BillingAccountResource billingAccount = client.GetBillingAccountResource(billingAccountResourceId);
 
 // invoke the operation and iterate over the result
-BillingCheckAccessContent content = new BillingCheckAccessContent()
+BillingCheckAccessContent content = new BillingCheckAccessContent
 {
-    Actions =
-    {
-    "Microsoft.Billing/billingAccounts/read","Microsoft.Subscription/subscriptions/write"
-    },
+    Actions = { "Microsoft.Billing/billingAccounts/read", "Microsoft.Subscription/subscriptions/write" },
 };
 await foreach (BillingCheckAccessResult item in billingAccount.CheckAccessBillingPermissionsAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

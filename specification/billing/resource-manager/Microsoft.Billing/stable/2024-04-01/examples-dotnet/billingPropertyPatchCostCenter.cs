@@ -22,9 +22,9 @@ ResourceIdentifier billingPropertyResourceId = BillingPropertyResource.CreateRes
 BillingPropertyResource billingProperty = client.GetBillingPropertyResource(billingPropertyResourceId);
 
 // invoke the operation
-BillingPropertyData data = new BillingPropertyData()
+BillingPropertyData data = new BillingPropertyData
 {
-    Properties = new BillingPropertyProperties()
+    Properties = new BillingPropertyProperties
     {
         CostCenter = "1010",
     },

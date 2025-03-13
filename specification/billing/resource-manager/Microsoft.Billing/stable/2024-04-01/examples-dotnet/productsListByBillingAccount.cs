@@ -25,7 +25,7 @@ BillingAccountResource billingAccount = client.GetBillingAccountResource(billing
 BillingProductCollection collection = billingAccount.GetBillingProducts();
 
 // invoke the operation and iterate over the result
-BillingProductCollectionGetAllOptions options = new BillingProductCollectionGetAllOptions() { };
+BillingProductCollectionGetAllOptions options = new BillingProductCollectionGetAllOptions();
 await foreach (BillingProductResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -35,4 +35,4 @@ await foreach (BillingProductResource item in collection.GetAllAsync(options))
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

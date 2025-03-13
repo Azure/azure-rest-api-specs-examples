@@ -27,11 +27,11 @@ BillingSubscriptionAliasCollection collection = billingAccount.GetBillingSubscri
 
 // invoke the operation
 string aliasName = "c356b7c7-7545-4686-b843-c1a49cf853fc";
-BillingSubscriptionAliasData data = new BillingSubscriptionAliasData()
+BillingSubscriptionAliasData data = new BillingSubscriptionAliasData
 {
     BillingFrequency = "P1M",
     DisplayName = "Subscription 3",
-    Quantity = 1,
+    Quantity = 1L,
     SkuId = "0001",
     TermDuration = XmlConvert.ToTimeSpan("P1M"),
 };

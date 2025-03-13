@@ -25,4 +25,4 @@ BillingAssociatedTenantResource billingAssociatedTenant = client.GetBillingAssoc
 // invoke the operation
 await billingAssociatedTenant.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

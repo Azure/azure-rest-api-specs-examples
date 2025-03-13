@@ -23,10 +23,10 @@ ResourceIdentifier billingInvoiceResourceId = BillingInvoiceResource.CreateResou
 BillingInvoiceResource billingInvoice = client.GetBillingInvoiceResource(billingInvoiceResourceId);
 
 // invoke the operation and iterate over the result
-BillingInvoiceResourceGetTransactionsOptions options = new BillingInvoiceResourceGetTransactionsOptions() { };
+BillingInvoiceResourceGetTransactionsOptions options = new BillingInvoiceResourceGetTransactionsOptions();
 await foreach (BillingTransactionData item in billingInvoice.GetTransactionsAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

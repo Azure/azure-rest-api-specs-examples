@@ -23,11 +23,11 @@ ResourceIdentifier billingEnrollmentAccountResourceId = BillingEnrollmentAccount
 BillingEnrollmentAccountResource billingEnrollmentAccount = client.GetBillingEnrollmentAccountResource(billingEnrollmentAccountResourceId);
 
 // invoke the operation and iterate over the result
-BillingEnrollmentAccountResourceGetBillingSubscriptionsOptions options = new BillingEnrollmentAccountResourceGetBillingSubscriptionsOptions() { };
+BillingEnrollmentAccountResourceGetBillingSubscriptionsOptions options = new BillingEnrollmentAccountResourceGetBillingSubscriptionsOptions();
 await foreach (BillingSubscriptionData item in billingEnrollmentAccount.GetBillingSubscriptionsAsync(options))
 {
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

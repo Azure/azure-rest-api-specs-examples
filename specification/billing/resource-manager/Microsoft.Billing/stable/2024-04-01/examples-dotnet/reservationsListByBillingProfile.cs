@@ -23,7 +23,7 @@ ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResou
 BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
 
 // invoke the operation and iterate over the result
-BillingProfileResourceGetReservationsOptions options = new BillingProfileResourceGetReservationsOptions() { SelectedState = "Succeeded" };
+BillingProfileResourceGetReservationsOptions options = new BillingProfileResourceGetReservationsOptions { SelectedState = "Succeeded" };
 await foreach (BillingReservationResource item in billingProfile.GetReservationsAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -33,4 +33,4 @@ await foreach (BillingReservationResource item in billingProfile.GetReservations
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

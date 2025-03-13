@@ -25,7 +25,7 @@ BillingAccountResource billingAccount = client.GetBillingAccountResource(billing
 BillingSubscriptionCollection collection = billingAccount.GetBillingSubscriptions();
 
 // invoke the operation and iterate over the result
-BillingSubscriptionCollectionGetAllOptions options = new BillingSubscriptionCollectionGetAllOptions() { IncludeDeleted = false, IncludeTenantSubscriptions = false };
+BillingSubscriptionCollectionGetAllOptions options = new BillingSubscriptionCollectionGetAllOptions { IncludeDeleted = false, IncludeTenantSubscriptions = false };
 await foreach (BillingSubscriptionResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -35,4 +35,4 @@ await foreach (BillingSubscriptionResource item in collection.GetAllAsync(option
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

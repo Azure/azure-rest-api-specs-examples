@@ -26,4 +26,4 @@ BillingInvoiceSectionResource billingInvoiceSection = client.GetBillingInvoiceSe
 // invoke the operation
 await billingInvoiceSection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

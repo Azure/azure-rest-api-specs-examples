@@ -4,7 +4,6 @@ using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager.Billing.Models;
 using Azure.ResourceManager.Billing;
 
 // Generated from example definition: specification/billing/resource-manager/Microsoft.Billing/stable/2024-04-01/examples/billingSubscriptionGetByBillingProfile.json
@@ -15,30 +14,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this BillingProfileResource created on azure
-// for more information of creating BillingProfileResource, please refer to the document of BillingProfileResource
+// this example assumes you already have this BillingProfileSubscriptionResource created on azure
+// for more information of creating BillingProfileSubscriptionResource, please refer to the document of BillingProfileSubscriptionResource
 string billingAccountName = "pcn.94077792";
 string billingProfileName = "6478903";
-ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResourceIdentifier(billingAccountName, billingProfileName);
-BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
-
-// get the collection of this BillingProfileSubscriptionResource
-BillingProfileSubscriptionCollection collection = billingProfile.GetBillingProfileSubscriptions();
+string billingSubscriptionName = "6b96d3f2-9008-4a9d-912f-f87744185aa3";
+ResourceIdentifier billingProfileSubscriptionResourceId = BillingProfileSubscriptionResource.CreateResourceIdentifier(billingAccountName, billingProfileName, billingSubscriptionName);
+BillingProfileSubscriptionResource billingProfileSubscription = client.GetBillingProfileSubscriptionResource(billingProfileSubscriptionResourceId);
 
 // invoke the operation
-string billingSubscriptionName = "6b96d3f2-9008-4a9d-912f-f87744185aa3";
-NullableResponse<BillingProfileSubscriptionResource> response = await collection.GetIfExistsAsync(billingSubscriptionName);
-BillingProfileSubscriptionResource result = response.HasValue ? response.Value : null;
+BillingProfileSubscriptionResource result = await billingProfileSubscription.GetAsync();
 
-if (result == null)
-{
-    Console.WriteLine($"Succeeded with null as result");
-}
-else
-{
-    // the variable result is a resource, you could call other operations on this instance as well
-    // but just for demo, we get its data from this resource instance
-    BillingSubscriptionData resourceData = result.Data;
-    // for demo we just print out the id
-    Console.WriteLine($"Succeeded on id: {resourceData.Id}");
-}
+// the variable result is a resource, you could call other operations on this instance as well
+// but just for demo, we get its data from this resource instance
+BillingSubscriptionData resourceData = result.Data;
+// for demo we just print out the id
+Console.WriteLine($"Succeeded on id: {resourceData.Id}");

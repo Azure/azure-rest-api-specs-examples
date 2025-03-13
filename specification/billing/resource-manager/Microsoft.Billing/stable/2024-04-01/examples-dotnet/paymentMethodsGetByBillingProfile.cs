@@ -31,7 +31,7 @@ BillingPaymentMethodLinkResource result = response.HasValue ? response.Value : n
 
 if (result == null)
 {
-    Console.WriteLine($"Succeeded with null as result");
+    Console.WriteLine("Succeeded with null as result");
 }
 else
 {

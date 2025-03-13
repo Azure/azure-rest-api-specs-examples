@@ -23,9 +23,9 @@ ResourceIdentifier billingProfilePolicyResourceId = BillingProfilePolicyResource
 BillingProfilePolicyResource billingProfilePolicy = client.GetBillingProfilePolicyResource(billingProfilePolicyResourceId);
 
 // invoke the operation
-BillingProfilePolicyData data = new BillingProfilePolicyData()
+BillingProfilePolicyData data = new BillingProfilePolicyData
 {
-    Properties = new BillingProfilePolicyProperties()
+    Properties = new BillingProfilePolicyProperties
     {
         InvoiceSectionLabelManagement = InvoiceSectionLabelManagementPolicy.Allowed,
         MarketplacePurchases = MarketplacePurchasesPolicy.AllAllowed,

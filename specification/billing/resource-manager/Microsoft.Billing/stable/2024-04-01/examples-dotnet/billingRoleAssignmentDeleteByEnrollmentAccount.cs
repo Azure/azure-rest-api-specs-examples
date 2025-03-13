@@ -26,4 +26,4 @@ BillingEnrollmentAccountRoleAssignmentResource billingEnrollmentAccountRoleAssig
 // invoke the operation
 await billingEnrollmentAccountRoleAssignment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

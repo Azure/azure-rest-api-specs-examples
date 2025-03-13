@@ -24,7 +24,7 @@ ResourceIdentifier billingProfileCustomerResourceId = BillingProfileCustomerReso
 BillingProfileCustomerResource billingProfileCustomer = client.GetBillingProfileCustomerResource(billingProfileCustomerResourceId);
 
 // invoke the operation
-BillingCustomerPolicyData data = new BillingCustomerPolicyData()
+BillingCustomerPolicyData data = new BillingCustomerPolicyData
 {
     Properties = new BillingCustomerPolicyProperties(ViewChargesPolicy.Allowed),
 };

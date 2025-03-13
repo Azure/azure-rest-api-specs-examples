@@ -25,7 +25,7 @@ BillingAccountResource billingAccount = client.GetBillingAccountResource(billing
 // invoke the operation
 IEnumerable<BillingPaymentTerm> arrayOfPaymentTerm = new BillingPaymentTerm[]
 {
-new BillingPaymentTerm()
+new BillingPaymentTerm
 {
 Term = "net10",
 StartOn = DateTimeOffset.Parse("2023-02-05T22:39:34.2606750Z"),

@@ -24,11 +24,11 @@ ResourceIdentifier billingInvoiceSectionResourceId = BillingInvoiceSectionResour
 BillingInvoiceSectionResource billingInvoiceSection = client.GetBillingInvoiceSectionResource(billingInvoiceSectionResourceId);
 
 // invoke the operation and iterate over the result
-BillingInvoiceSectionResourceGetBillingSubscriptionsOptions options = new BillingInvoiceSectionResourceGetBillingSubscriptionsOptions() { };
+BillingInvoiceSectionResourceGetBillingSubscriptionsOptions options = new BillingInvoiceSectionResourceGetBillingSubscriptionsOptions();
 await foreach (BillingSubscriptionData item in billingInvoiceSection.GetBillingSubscriptionsAsync(options))
 {
     // for demo we just print out the id
     Console.WriteLine($"Succeeded on id: {item.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

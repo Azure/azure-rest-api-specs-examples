@@ -25,4 +25,4 @@ BillingInvoiceResource billingInvoice = client.GetBillingInvoiceResource(billing
 // invoke the operation
 await billingInvoice.AmendAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

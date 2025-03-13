@@ -24,15 +24,15 @@ ResourceIdentifier billingInvoiceSectionResourceId = BillingInvoiceSectionResour
 BillingInvoiceSectionResource billingInvoiceSection = client.GetBillingInvoiceSectionResource(billingInvoiceSectionResourceId);
 
 // invoke the operation
-BillingInvoiceSectionData data = new BillingInvoiceSectionData()
+BillingInvoiceSectionData data = new BillingInvoiceSectionData
 {
-    Properties = new BillingInvoiceSectionProperties()
+    Properties = new BillingInvoiceSectionProperties
     {
         DisplayName = "Invoice Section 1",
         Tags =
         {
         ["costCategory"] = "Support",
-        ["pcCode"] = "A123456",
+        ["pcCode"] = "A123456"
         },
     },
 };

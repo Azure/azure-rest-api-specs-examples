@@ -23,10 +23,13 @@ ResourceIdentifier billingProfileResourceId = BillingProfileResource.CreateResou
 BillingProfileResource billingProfile = client.GetBillingProfileResource(billingProfileResourceId);
 
 // invoke the operation and iterate over the result
-BillingProfileResourceGetTransactionsOptions options = new BillingProfileResourceGetTransactionsOptions(periodStartDate: DateTimeOffset.Parse("2024-04-01"), periodEndDate: DateTimeOffset.Parse("2023-05-30"), type: TransactionType.Billed) { Filter = "properties/date gt '2020-10-01'", Search = "storage" };
+DateTimeOffset periodStartDate = DateTimeOffset.Parse("2024-04-01");
+DateTimeOffset periodEndDate = DateTimeOffset.Parse("2023-05-30");
+TransactionType type = TransactionType.Billed;
+BillingProfileResourceGetTransactionsOptions options = new BillingProfileResourceGetTransactionsOptions(periodStartDate, periodEndDate, type) { Filter = "properties/date gt '2020-10-01'", Search = "storage" };
 await foreach (BillingTransactionData item in billingProfile.GetTransactionsAsync(options))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

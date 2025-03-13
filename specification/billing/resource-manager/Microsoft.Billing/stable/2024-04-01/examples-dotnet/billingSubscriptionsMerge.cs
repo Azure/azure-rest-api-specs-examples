@@ -24,7 +24,7 @@ ResourceIdentifier billingSubscriptionResourceId = BillingSubscriptionResource.C
 BillingSubscriptionResource billingSubscription = client.GetBillingSubscriptionResource(billingSubscriptionResourceId);
 
 // invoke the operation
-BillingSubscriptionMergeContent content = new BillingSubscriptionMergeContent()
+BillingSubscriptionMergeContent content = new BillingSubscriptionMergeContent
 {
     TargetBillingSubscriptionName = "22222222-2222-2222-2222-222222222222",
     Quantity = 1,

@@ -22,20 +22,17 @@ ResourceIdentifier recipientTransferDetailResourceId = RecipientTransferDetailRe
 RecipientTransferDetailResource recipientTransferDetail = client.GetRecipientTransferDetailResource(recipientTransferDetailResourceId);
 
 // invoke the operation
-AcceptTransferContent content = new AcceptTransferContent()
+AcceptTransferContent content = new AcceptTransferContent
 {
-    ProductDetails =
-    {
-    new BillingProductDetails()
+    ProductDetails = {new BillingProductDetails
     {
     ProductType = BillingProductType.AzureSubscription,
     ProductId = "subscriptionId",
-    },new BillingProductDetails()
+    }, new BillingProductDetails
     {
     ProductType = BillingProductType.AzureReservation,
     ProductId = "reservedInstanceId",
-    }
-    },
+    }},
 };
 RecipientTransferDetailResource result = await recipientTransferDetail.AcceptAsync(content);
 

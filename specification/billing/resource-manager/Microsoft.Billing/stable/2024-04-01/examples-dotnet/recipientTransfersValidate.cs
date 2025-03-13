@@ -22,24 +22,21 @@ ResourceIdentifier recipientTransferDetailResourceId = RecipientTransferDetailRe
 RecipientTransferDetailResource recipientTransferDetail = client.GetRecipientTransferDetailResource(recipientTransferDetailResourceId);
 
 // invoke the operation and iterate over the result
-AcceptTransferContent content = new AcceptTransferContent()
+AcceptTransferContent content = new AcceptTransferContent
 {
-    ProductDetails =
-    {
-    new BillingProductDetails()
+    ProductDetails = {new BillingProductDetails
     {
     ProductType = BillingProductType.AzureSubscription,
     ProductId = "subscriptionId",
-    },new BillingProductDetails()
+    }, new BillingProductDetails
     {
     ProductType = BillingProductType.AzureReservation,
     ProductId = "reservedInstanceId",
-    }
-    },
+    }},
 };
 await foreach (BillingTransferValidationResult item in recipientTransferDetail.ValidateAsync(content))
 {
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

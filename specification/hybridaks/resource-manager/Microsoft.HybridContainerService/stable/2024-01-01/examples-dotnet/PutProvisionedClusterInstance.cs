@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridContainerService;
 using Azure.ResourceManager.HybridContainerService.Models;
+using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/PutProvisionedClusterInstance.json
 // this example is just showing the usage of "provisionedClusterInstances_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -22,32 +22,27 @@ ResourceIdentifier provisionedClusterResourceId = ProvisionedClusterResource.Cre
 ProvisionedClusterResource provisionedCluster = client.GetProvisionedClusterResource(provisionedClusterResourceId);
 
 // invoke the operation
-ProvisionedClusterData data = new ProvisionedClusterData()
+ProvisionedClusterData data = new ProvisionedClusterData
 {
-    Properties = new ProvisionedClusterProperties()
+    Properties = new ProvisionedClusterProperties
     {
-        SshPublicKeys =
-        {
-        new LinuxSshPublicKey()
+        SshPublicKeys = {new LinuxSshPublicKey
         {
         KeyData = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCY.......",
-        }
-        },
-        ControlPlane = new ProvisionedClusterControlPlaneProfile()
+        }},
+        ControlPlane = new ProvisionedClusterControlPlaneProfile
         {
             Count = 1,
             VmSize = "Standard_A4_v2",
         },
         KubernetesVersion = "v1.20.5",
-        NetworkProfile = new ProvisionedClusterNetworkProfile()
+        NetworkProfile = new ProvisionedClusterNetworkProfile
         {
             NetworkPolicy = ProvisionedClusterNetworkPolicy.Calico,
             PodCidr = "10.244.0.0/16",
         },
         ClusterVmAccessAuthorizedIPRanges = "127.0.0.1,127.0.0.2",
-        AgentPoolProfiles =
-        {
-        new HybridContainerServiceNamedAgentPoolProfile()
+        AgentPoolProfiles = {new HybridContainerServiceNamedAgentPoolProfile
         {
         Count = 1,
         VmSize = "Standard_A4_v2",
@@ -56,21 +51,14 @@ ProvisionedClusterData data = new ProvisionedClusterData()
         NodeLabels =
         {
         ["env"] = "dev",
-        ["goal"] = "test",
+        ["goal"] = "test"
         },
-        NodeTaints =
-        {
-        "env=prod:NoSchedule","sku=gpu:NoSchedule"
-        },
-        }
-        },
-        InfraNetworkVnetSubnetIds =
-        {
-        new ResourceIdentifier("/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourceGroups/test-arcappliance-resgrp/providers/Microsoft.AzureStackHCI/logicalNetworks/test-vnet-static")
-        },
+        NodeTaints = {"env=prod:NoSchedule", "sku=gpu:NoSchedule"},
+        }},
+        InfraNetworkVnetSubnetIds = { new ResourceIdentifier("/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourceGroups/test-arcappliance-resgrp/providers/Microsoft.AzureStackHCI/logicalNetworks/test-vnet-static") },
         LicenseAzureHybridBenefit = ProvisionedClusterAzureHybridBenefit.NotApplicable,
     },
-    ExtendedLocation = new HybridContainerServiceExtendedLocation()
+    ExtendedLocation = new HybridContainerServiceExtendedLocation
     {
         ExtendedLocationType = HybridContainerServiceExtendedLocationType.CustomLocation,
         Name = "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation",

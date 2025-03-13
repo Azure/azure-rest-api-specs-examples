@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridContainerService;
 using Azure.ResourceManager.HybridContainerService.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/PutVirtualNetwork.json
 // this example is just showing the usage of "virtualNetworks_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,39 +30,30 @@ HybridContainerServiceVirtualNetworkCollection collection = resourceGroupResourc
 string virtualNetworkName = "test-vnet-static";
 HybridContainerServiceVirtualNetworkData data = new HybridContainerServiceVirtualNetworkData(new AzureLocation("westus"))
 {
-    Properties = new HybridContainerServiceVirtualNetworkProperties()
+    Properties = new HybridContainerServiceVirtualNetworkProperties
     {
-        InfraVnetHci = new HciInfraVnetProfile()
+        InfraVnetHci = new HciInfraVnetProfile
         {
             MocGroup = "target-group",
             MocLocation = "MocLocation",
             MocVnetName = "vnet1",
         },
-        VipPool =
-        {
-        new KubernetesVirtualIPItem()
+        VipPool = {new KubernetesVirtualIPItem
         {
         EndIP = "192.168.0.50",
         StartIP = "192.168.0.10",
-        }
-        },
-        VmipPool =
-        {
-        new VirtualMachineIPItem()
+        }},
+        VmipPool = {new VirtualMachineIPItem
         {
         EndIP = "192.168.0.130",
         StartIP = "192.168.0.110",
-        }
-        },
-        DnsServers =
-        {
-        "192.168.0.1"
-        },
+        }},
+        DnsServers = { "192.168.0.1" },
         Gateway = "192.168.0.1",
         IPAddressPrefix = "192.168.0.0/16",
         VlanId = 10,
     },
-    ExtendedLocation = new HybridContainerServiceExtendedLocation()
+    ExtendedLocation = new HybridContainerServiceExtendedLocation
     {
         ExtendedLocationType = HybridContainerServiceExtendedLocationType.CustomLocation,
         Name = "/subscriptions/a3e42606-29b1-4d7d-b1d9-9ff6b9d3c71b/resourcegroups/test-arcappliance-resgrp/providers/microsoft.extendedlocation/customlocations/testcustomlocation",

@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/CreateHybridIdentityMetadata.json
@@ -21,7 +21,7 @@ ResourceIdentifier hybridIdentityMetadataResourceId = HybridIdentityMetadataReso
 HybridIdentityMetadataResource hybridIdentityMetadata = client.GetHybridIdentityMetadataResource(hybridIdentityMetadataResourceId);
 
 // invoke the operation
-HybridIdentityMetadataData data = new HybridIdentityMetadataData()
+HybridIdentityMetadataData data = new HybridIdentityMetadataData
 {
     ResourceUid = "f8b82dff-38ef-4220-99ef-d3a3f86ddc6c",
     PublicKey = "8ec7d60c-9700-40b1-8e6e-e5b2f6f477f2",

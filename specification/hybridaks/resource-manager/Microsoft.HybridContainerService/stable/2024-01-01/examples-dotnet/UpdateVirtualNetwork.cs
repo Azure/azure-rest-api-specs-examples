@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.HybridContainerService;
 using Azure.ResourceManager.HybridContainerService.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.HybridContainerService;
 
 // Generated from example definition: specification/hybridaks/resource-manager/Microsoft.HybridContainerService/stable/2024-01-01/examples/UpdateVirtualNetwork.json
 // this example is just showing the usage of "virtualNetworks_Update" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +24,11 @@ ResourceIdentifier hybridContainerServiceVirtualNetworkResourceId = HybridContai
 HybridContainerServiceVirtualNetworkResource hybridContainerServiceVirtualNetwork = client.GetHybridContainerServiceVirtualNetworkResource(hybridContainerServiceVirtualNetworkResourceId);
 
 // invoke the operation
-HybridContainerServiceVirtualNetworkPatch patch = new HybridContainerServiceVirtualNetworkPatch()
+HybridContainerServiceVirtualNetworkPatch patch = new HybridContainerServiceVirtualNetworkPatch
 {
     Tags =
     {
-    ["additionalProperties"] = "sample",
+    ["additionalProperties"] = "sample"
     },
 };
 ArmOperation<HybridContainerServiceVirtualNetworkResource> lro = await hybridContainerServiceVirtualNetwork.UpdateAsync(WaitUntil.Completed, patch);

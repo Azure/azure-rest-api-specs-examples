@@ -5147,3 +5147,4 @@ id,name,language,tag,package,version,date_epoch,date
 5146,"Azure.ResourceManager.RedisEnterprise,1.2.0-beta.2",dotnet,Azure.ResourceManager.RedisEnterprise_1.2.0-beta.2,Azure.ResourceManager.RedisEnterprise,1.2.0-beta.2,1741833625,03/13/2025
 5147,"Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.5",dotnet,Azure.ResourceManager.HDInsight.Containers_1.0.0-beta.5,Azure.ResourceManager.HDInsight.Containers,1.0.0-beta.5,1741832603,03/13/2025
 5148,"Azure.ResourceManager.HDInsight,1.2.0-beta.4",dotnet,Azure.ResourceManager.HDInsight_1.2.0-beta.4,Azure.ResourceManager.HDInsight,1.2.0-beta.4,1741832558,03/13/2025
+5149,azure-mgmt-keyvault@11.0.0,python,azure-mgmt-keyvault_11.0.0,azure-mgmt-keyvault,11.0.0,1741839264,03/13/2025

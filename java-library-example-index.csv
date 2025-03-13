@@ -5133,3 +5133,4 @@ id,name,language,tag,package,version,date_epoch,date
 5132,"Azure.ResourceManager.IotFirmwareDefense,1.0.1",dotnet,Azure.ResourceManager.IotFirmwareDefense_1.0.1,Azure.ResourceManager.IotFirmwareDefense,1.0.1,1741858347,03/13/2025
 5133,"Azure.ResourceManager.MachineLearning,1.2.2",dotnet,Azure.ResourceManager.MachineLearning_1.2.2,Azure.ResourceManager.MachineLearning,1.2.2,1741858344,03/13/2025
 5134,"Azure.ResourceManager.RecoveryServicesSiteRecovery,1.2.1",dotnet,Azure.ResourceManager.RecoveryServicesSiteRecovery_1.2.1,Azure.ResourceManager.RecoveryServicesSiteRecovery,1.2.1,1741858340,03/13/2025
+5135,"Azure.ResourceManager.Quantum,1.0.0-beta.6",dotnet,Azure.ResourceManager.Quantum_1.0.0-beta.6,Azure.ResourceManager.Quantum,1.0.0-beta.6,1741858338,03/13/2025

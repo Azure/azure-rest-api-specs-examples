@@ -5138,3 +5138,4 @@ id,name,language,tag,package,version,date_epoch,date
 5137,"Azure.ResourceManager.MySql,1.1.1",dotnet,Azure.ResourceManager.MySql_1.1.1,Azure.ResourceManager.MySql,1.1.1,1741834871,03/13/2025
 5138,"Azure.ResourceManager.Qumulo,1.1.1",dotnet,Azure.ResourceManager.Qumulo_1.1.1,Azure.ResourceManager.Qumulo,1.1.1,1741834799,03/13/2025
 5139,"Azure.ResourceManager.OracleDatabase,1.0.1",dotnet,Azure.ResourceManager.OracleDatabase_1.0.1,Azure.ResourceManager.OracleDatabase,1.0.1,1741834758,03/13/2025
+5140,"Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.2",dotnet,Azure.ResourceManager.MigrationDiscoverySap_1.0.0-beta.2,Azure.ResourceManager.MigrationDiscoverySap,1.0.0-beta.2,1741833823,03/13/2025

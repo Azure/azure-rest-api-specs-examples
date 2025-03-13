@@ -28,4 +28,4 @@ HealthcareApisIotConnectorResource healthcareApisIotConnector = client.GetHealth
 // invoke the operation
 await healthcareApisIotConnector.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

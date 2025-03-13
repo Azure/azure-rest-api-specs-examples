@@ -32,4 +32,4 @@ await foreach (HealthcareApisWorkspaceResource item in subscriptionResource.GetH
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HealthcareApis.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HealthcareApis;
 
 // Generated from example definition: specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2024-03-31/examples/legacy/ServiceDelete.json
@@ -27,4 +26,4 @@ HealthcareApisServiceResource healthcareApisService = client.GetHealthcareApisSe
 // invoke the operation
 await healthcareApisService.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

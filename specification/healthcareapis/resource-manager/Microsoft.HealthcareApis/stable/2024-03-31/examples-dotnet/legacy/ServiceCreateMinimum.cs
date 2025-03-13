@@ -31,16 +31,11 @@ HealthcareApisServiceCollection collection = resourceGroupResource.GetHealthcare
 string resourceName = "service2";
 HealthcareApisServiceData data = new HealthcareApisServiceData(new AzureLocation("westus2"), HealthcareApisKind.FhirR4)
 {
-    Properties = new HealthcareApisServiceProperties()
+    Properties = new HealthcareApisServiceProperties
     {
-        AccessPolicies =
-        {
-        new HealthcareApisServiceAccessPolicyEntry("c487e7d1-3210-41a3-8ccc-e9372b78da47")
-        },
+        AccessPolicies = { new HealthcareApisServiceAccessPolicyEntry("c487e7d1-3210-41a3-8ccc-e9372b78da47") },
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<HealthcareApisServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);
 HealthcareApisServiceResource result = lro.Value;

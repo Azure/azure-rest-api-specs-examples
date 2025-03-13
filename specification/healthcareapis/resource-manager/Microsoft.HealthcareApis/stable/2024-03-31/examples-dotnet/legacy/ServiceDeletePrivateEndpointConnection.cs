@@ -27,4 +27,4 @@ HealthcareApisServicePrivateEndpointConnectionResource healthcareApisServicePriv
 // invoke the operation
 await healthcareApisServicePrivateEndpointConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

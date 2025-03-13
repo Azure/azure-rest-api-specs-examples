@@ -25,11 +25,11 @@ ResourceIdentifier dicomServiceResourceId = DicomServiceResource.CreateResourceI
 DicomServiceResource dicomService = client.GetDicomServiceResource(dicomServiceResourceId);
 
 // invoke the operation
-DicomServicePatch patch = new DicomServicePatch()
+DicomServicePatch patch = new DicomServicePatch
 {
     Tags =
     {
-    ["tagKey"] = "tagValue",
+    ["tagKey"] = "tagValue"
     },
 };
 ArmOperation<DicomServiceResource> lro = await dicomService.UpdateAsync(WaitUntil.Completed, patch);

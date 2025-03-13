@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -32,36 +31,45 @@ HealthcareApisIotConnectorCollection collection = healthcareApisWorkspace.GetHea
 string iotConnectorName = "blue";
 HealthcareApisIotConnectorData data = new HealthcareApisIotConnectorData(new AzureLocation("westus"))
 {
-    IngestionEndpointConfiguration = new HealthcareApisIotConnectorEventHubIngestionConfiguration()
+    IngestionEndpointConfiguration = new HealthcareApisIotConnectorEventHubIngestionConfiguration
     {
         EventHubName = "MyEventHubName",
         ConsumerGroup = "ConsumerGroupA",
         FullyQualifiedEventHubNamespace = "myeventhub.servicesbus.windows.net",
     },
-    DeviceMappingContent = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    DeviceMappingContent = BinaryData.FromObjectAsJson(new
     {
-        ["template"] = new object[] { new Dictionary<string, object>()
-        {
-        ["template"] = new Dictionary<string, object>()
-        {
-        ["deviceIdExpression"] = "$.deviceid",
-        ["timestampExpression"] = "$.measurementdatetime",
-        ["typeMatchExpression"] = "$..[?(@heartrate)]",
-        ["typeName"] = "heartrate",
-        ["values"] = new object[] { new Dictionary<string, object>()
-        {
-        ["required"] = "true",
-        ["valueExpression"] = "$.heartrate",
-        ["valueName"] = "hr"} }},
-        ["templateType"] = "JsonPathContent"} },
-        ["templateType"] = "CollectionContent"
+        template = new object[]
+{
+new
+{
+template = new
+{
+deviceIdExpression = "$.deviceid",
+timestampExpression = "$.measurementdatetime",
+typeMatchExpression = "$..[?(@heartrate)]",
+typeName = "heartrate",
+values = new object[]
+{
+new
+{
+required = "true",
+valueExpression = "$.heartrate",
+valueName = "hr",
+}
+},
+},
+templateType = "JsonPathContent",
+}
+},
+        templateType = "CollectionContent",
     }),
     Identity = new ManagedServiceIdentity("SystemAssigned"),
     Tags =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
 };
 ArmOperation<HealthcareApisIotConnectorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, iotConnectorName, data);

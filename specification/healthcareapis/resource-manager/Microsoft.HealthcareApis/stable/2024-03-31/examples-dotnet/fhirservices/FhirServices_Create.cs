@@ -32,57 +32,36 @@ string fhirServiceName = "fhirservice1";
 FhirServiceData data = new FhirServiceData(new AzureLocation("westus"))
 {
     Kind = FhirServiceKind.FhirR4,
-    AcrConfiguration = new FhirServiceAcrConfiguration()
+    AcrConfiguration = new FhirServiceAcrConfiguration
     {
-        LoginServers =
-        {
-        "test1.azurecr.io"
-        },
+        LoginServers = { "test1.azurecr.io" },
     },
-    AuthenticationConfiguration = new FhirServiceAuthenticationConfiguration()
+    AuthenticationConfiguration = new FhirServiceAuthenticationConfiguration
     {
         Authority = "https://login.microsoftonline.com/abfde7b2-df0f-47e6-aabf-2462b07508dc",
         Audience = "https://azurehealthcareapis.com",
         IsSmartProxyEnabled = true,
-        SmartIdentityProviders =
-        {
-        new SmartIdentityProviderConfiguration()
+        SmartIdentityProviders = {new SmartIdentityProviderConfiguration
         {
         Authority = "https://login.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0",
-        Applications =
-        {
-        new SmartIdentityProviderApplication()
+        Applications = {new SmartIdentityProviderApplication
         {
         ClientId = "22222222-2222-2222-2222-222222222222",
         Audience = "22222222-2222-2222-2222-222222222222",
-        AllowedDataActions =
-        {
-        SmartDataAction.Read
-        },
-        }
-        },
-        }
-        },
+        AllowedDataActions = {SmartDataAction.Read},
+        }},
+        }},
     },
-    CorsConfiguration = new FhirServiceCorsConfiguration()
+    CorsConfiguration = new FhirServiceCorsConfiguration
     {
-        Origins =
-        {
-        "*"
-        },
-        Headers =
-        {
-        "*"
-        },
-        Methods =
-        {
-        "DELETE","GET","OPTIONS","PATCH","POST","PUT"
-        },
+        Origins = { "*" },
+        Headers = { "*" },
+        Methods = { "DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT" },
         MaxAge = 1440,
         AllowCredentials = false,
     },
     ExportStorageAccountName = "existingStorageAccount",
-    ImportConfiguration = new FhirServiceImportConfiguration()
+    ImportConfiguration = new FhirServiceImportConfiguration
     {
         IntegrationDataStore = "existingStorageAccount",
         IsInitialImportMode = false,
@@ -94,14 +73,14 @@ FhirServiceData data = new FhirServiceData(new AzureLocation("westus"))
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/subid/resourcegroups/testRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-mi")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/subid/resourcegroups/testRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-mi")] = new UserAssignedIdentity()
         },
     },
     Tags =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
 };
 ArmOperation<FhirServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, fhirServiceName, data);

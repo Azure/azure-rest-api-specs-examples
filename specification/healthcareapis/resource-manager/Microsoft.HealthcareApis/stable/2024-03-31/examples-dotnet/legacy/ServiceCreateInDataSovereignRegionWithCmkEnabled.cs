@@ -31,51 +31,35 @@ HealthcareApisServiceCollection collection = resourceGroupResource.GetHealthcare
 string resourceName = "service1";
 HealthcareApisServiceData data = new HealthcareApisServiceData(new AzureLocation("Southeast Asia"), HealthcareApisKind.FhirR4)
 {
-    Properties = new HealthcareApisServiceProperties()
+    Properties = new HealthcareApisServiceProperties
     {
-        AccessPolicies =
-        {
-        new HealthcareApisServiceAccessPolicyEntry("c487e7d1-3210-41a3-8ccc-e9372b78da47"),new HealthcareApisServiceAccessPolicyEntry("5b307da8-43d4-492b-8b66-b0294ade872f")
-        },
-        CosmosDbConfiguration = new HealthcareApisServiceCosmosDbConfiguration()
+        AccessPolicies = { new HealthcareApisServiceAccessPolicyEntry("c487e7d1-3210-41a3-8ccc-e9372b78da47"), new HealthcareApisServiceAccessPolicyEntry("5b307da8-43d4-492b-8b66-b0294ade872f") },
+        CosmosDbConfiguration = new HealthcareApisServiceCosmosDbConfiguration
         {
             OfferThroughput = 1000,
             KeyVaultKeyUri = new Uri("https://my-vault.vault.azure.net/keys/my-key"),
             CrossTenantCmkApplicationId = Guid.Parse("de3fbeef-8c3a-428e-8b9f-4d229c8a85f4"),
         },
-        AuthenticationConfiguration = new HealthcareApisServiceAuthenticationConfiguration()
+        AuthenticationConfiguration = new HealthcareApisServiceAuthenticationConfiguration
         {
             Authority = "https://login.microsoftonline.com/abfde7b2-df0f-47e6-aabf-2462b07508dc",
             Audience = "https://azurehealthcareapis.com",
             IsSmartProxyEnabled = true,
         },
-        CorsConfiguration = new HealthcareApisServiceCorsConfiguration()
+        CorsConfiguration = new HealthcareApisServiceCorsConfiguration
         {
-            Origins =
-            {
-            "*"
-            },
-            Headers =
-            {
-            "*"
-            },
-            Methods =
-            {
-            "DELETE","GET","OPTIONS","PATCH","POST","PUT"
-            },
+            Origins = { "*" },
+            Headers = { "*" },
+            Methods = { "DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT" },
             MaxAge = 1440,
             AllowCredentials = false,
         },
         ExportStorageAccountName = "existingStorageAccount",
-        PrivateEndpointConnections =
-        {
-        },
+        PrivateEndpointConnections = { },
         PublicNetworkAccess = HealthcareApisPublicNetworkAccess.Disabled,
     },
     Identity = new ManagedServiceIdentity("SystemAssigned"),
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<HealthcareApisServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, resourceName, data);
 HealthcareApisServiceResource result = lro.Value;

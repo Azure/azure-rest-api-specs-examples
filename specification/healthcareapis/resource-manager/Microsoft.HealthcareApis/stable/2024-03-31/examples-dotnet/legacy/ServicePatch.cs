@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HealthcareApis.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HealthcareApis;
 
 // Generated from example definition: specification/healthcareapis/resource-manager/Microsoft.HealthcareApis/stable/2024-03-31/examples/legacy/ServicePatch.json
@@ -25,12 +24,12 @@ ResourceIdentifier healthcareApisServiceResourceId = HealthcareApisServiceResour
 HealthcareApisServiceResource healthcareApisService = client.GetHealthcareApisServiceResource(healthcareApisServiceResourceId);
 
 // invoke the operation
-HealthcareApisServicePatch patch = new HealthcareApisServicePatch()
+HealthcareApisServicePatch patch = new HealthcareApisServicePatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<HealthcareApisServiceResource> lro = await healthcareApisService.UpdateAsync(WaitUntil.Completed, patch);

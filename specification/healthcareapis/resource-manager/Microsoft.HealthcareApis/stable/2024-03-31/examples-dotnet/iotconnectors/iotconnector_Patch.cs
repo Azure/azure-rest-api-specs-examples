@@ -26,14 +26,14 @@ ResourceIdentifier healthcareApisIotConnectorResourceId = HealthcareApisIotConne
 HealthcareApisIotConnectorResource healthcareApisIotConnector = client.GetHealthcareApisIotConnectorResource(healthcareApisIotConnectorResourceId);
 
 // invoke the operation
-HealthcareApisIotConnectorPatch patch = new HealthcareApisIotConnectorPatch()
+HealthcareApisIotConnectorPatch patch = new HealthcareApisIotConnectorPatch
 {
     Identity = new ManagedServiceIdentity("SystemAssigned"),
     Tags =
     {
     ["additionalProp1"] = "string",
     ["additionalProp2"] = "string",
-    ["additionalProp3"] = "string",
+    ["additionalProp3"] = "string"
     },
 };
 ArmOperation<HealthcareApisIotConnectorResource> lro = await healthcareApisIotConnector.UpdateAsync(WaitUntil.Completed, patch);

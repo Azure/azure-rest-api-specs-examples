@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Quantum;
 using Azure.ResourceManager.Quantum.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Quantum;
 
 // Generated from example definition: specification/quantum/resource-manager/Microsoft.Quantum/preview/2023-11-13-preview/examples/quantumWorkspacesPut.json
 // this example is just showing the usage of "Workspaces_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -30,22 +30,19 @@ QuantumWorkspaceCollection collection = resourceGroupResource.GetQuantumWorkspac
 string workspaceName = "quantumworkspace1";
 QuantumWorkspaceData data = new QuantumWorkspaceData(new AzureLocation("West US"))
 {
-    Providers =
-    {
-    new QuantumProvider()
+    Providers = {new QuantumProvider
     {
     ProviderId = "Honeywell",
     ProviderSku = "Basic",
-    },new QuantumProvider()
+    }, new QuantumProvider
     {
     ProviderId = "IonQ",
     ProviderSku = "Basic",
-    },new QuantumProvider()
+    }, new QuantumProvider
     {
     ProviderId = "OneQBit",
     ProviderSku = "Basic",
-    }
-    },
+    }},
     StorageAccount = "/subscriptions/1C4B2828-7D49-494F-933D-061373BE28C2/resourceGroups/quantumResourcegroup/providers/Microsoft.Storage/storageAccounts/testStorageAccount",
 };
 ArmOperation<QuantumWorkspaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workspaceName, data);

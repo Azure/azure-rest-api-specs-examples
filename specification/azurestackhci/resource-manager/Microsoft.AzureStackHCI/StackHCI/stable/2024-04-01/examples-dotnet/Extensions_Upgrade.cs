@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -27,10 +26,10 @@ ResourceIdentifier arcExtensionResourceId = ArcExtensionResource.CreateResourceI
 ArcExtensionResource arcExtension = client.GetArcExtensionResource(arcExtensionResourceId);
 
 // invoke the operation
-ArcExtensionUpgradeContent content = new ArcExtensionUpgradeContent()
+ArcExtensionUpgradeContent content = new ArcExtensionUpgradeContent
 {
     TargetVersion = "1.0.18062.0",
 };
 await arcExtension.UpgradeAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ HciClusterDeploymentSettingResource hciClusterDeploymentSetting = client.GetHciC
 // invoke the operation
 await hciClusterDeploymentSetting.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

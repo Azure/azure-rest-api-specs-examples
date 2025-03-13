@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/ConfigureRemoteSupport.json
@@ -25,9 +24,9 @@ ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdent
 HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
 
 // invoke the operation
-RemoteSupportContent content = new RemoteSupportContent()
+RemoteSupportContent content = new RemoteSupportContent
 {
-    Properties = new RemoteSupportContentProperties()
+    Properties = new RemoteSupportContentProperties
     {
         ExpireOn = DateTimeOffset.Parse("2020-01-01T17:18:19.1234567Z"),
         RemoteSupportType = RemoteSupportType.Enable,

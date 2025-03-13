@@ -15,25 +15,19 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this HciEdgeDeviceResource
 string resourceUri = "subscriptions/fd3c3665-1729-4b7b-9a38-238e83b0f98b/resourceGroups/ArcInstance-rg/providers/Microsoft.HybridCompute/machines/Node-1";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", resourceUri));
-HciEdgeDeviceCollection collection = client.GetHciEdgeDevices(scopeId);
+HciEdgeDeviceCollection collection = client.GetHciEdgeDevices(new ResourceIdentifier(resourceUri));
 
 // invoke the operation
 string edgeDeviceName = "default";
-HciEdgeDeviceData data = new HciArcEnabledEdgeDevice()
+HciEdgeDeviceData data = new HciArcEnabledEdgeDevice
 {
-    Properties = new HciArcEnabledEdgeDeviceProperties()
+    Properties = new HciArcEnabledEdgeDeviceProperties
     {
-        DeviceConfiguration = new HciEdgeDeviceConfiguration()
+        DeviceConfiguration = new HciEdgeDeviceConfiguration
         {
-            NicDetails =
-            {
-            new HciEdgeDeviceNicDetail()
+            NicDetails = {new HciEdgeDeviceNicDetail
             {
             AdapterName = "ethernet",
             InterfaceDescription = "NDIS 6.70 ",
@@ -42,13 +36,9 @@ HciEdgeDeviceData data = new HciArcEnabledEdgeDevice()
             IPv4Address = "10.10.10.10",
             SubnetMask = "255.255.255.0",
             DefaultGateway = "10.10.10.1",
-            DnsServers =
-            {
-            "100.10.10.1"
-            },
+            DnsServers = {"100.10.10.1"},
             DefaultIsolationId = "0",
-            }
-            },
+            }},
             DeviceMetadata = "",
         },
     },

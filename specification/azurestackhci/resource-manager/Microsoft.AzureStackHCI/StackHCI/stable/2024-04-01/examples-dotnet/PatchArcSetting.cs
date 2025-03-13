@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,15 +25,19 @@ ResourceIdentifier arcSettingResourceId = ArcSettingResource.CreateResourceIdent
 ArcSettingResource arcSetting = client.GetArcSettingResource(arcSettingResourceId);
 
 // invoke the operation
-ArcSettingPatch patch = new ArcSettingPatch()
+ArcSettingPatch patch = new ArcSettingPatch
 {
-    ConnectivityProperties = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
+    ConnectivityProperties = BinaryData.FromObjectAsJson(new
     {
-        ["enabled"] = "true",
-        ["serviceConfigurations"] = new object[] { new Dictionary<string, object>()
-        {
-        ["port"] = "6516",
-        ["serviceName"] = "WAC"} }
+        enabled = "true",
+        serviceConfigurations = new object[]
+{
+new
+{
+port = "6516",
+serviceName = "WAC",
+}
+},
     }),
 };
 ArcSettingResource result = await arcSetting.UpdateAsync(patch);

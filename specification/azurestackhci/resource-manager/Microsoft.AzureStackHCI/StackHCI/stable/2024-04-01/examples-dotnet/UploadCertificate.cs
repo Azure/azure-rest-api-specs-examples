@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.Hci.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Hci;
 
 // Generated from example definition: specification/azurestackhci/resource-manager/Microsoft.AzureStackHCI/StackHCI/stable/2024-04-01/examples/UploadCertificate.json
@@ -25,13 +24,10 @@ ResourceIdentifier hciClusterResourceId = HciClusterResource.CreateResourceIdent
 HciClusterResource hciCluster = client.GetHciClusterResource(hciClusterResourceId);
 
 // invoke the operation
-HciClusterCertificateContent content = new HciClusterCertificateContent()
+HciClusterCertificateContent content = new HciClusterCertificateContent
 {
-    Certificates =
-    {
-    "base64cert","base64cert"
-    },
+    Certificates = { "base64cert", "base64cert" },
 };
 await hciCluster.UploadCertificateAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

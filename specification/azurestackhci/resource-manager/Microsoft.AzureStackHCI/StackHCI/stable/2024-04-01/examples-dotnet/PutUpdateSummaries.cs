@@ -24,7 +24,7 @@ ResourceIdentifier hciClusterUpdateSummaryResourceId = HciClusterUpdateSummaryRe
 HciClusterUpdateSummaryResource hciClusterUpdateSummary = client.GetHciClusterUpdateSummaryResource(hciClusterUpdateSummaryResourceId);
 
 // invoke the operation
-HciClusterUpdateSummaryData data = new HciClusterUpdateSummaryData()
+HciClusterUpdateSummaryData data = new HciClusterUpdateSummaryData
 {
     OemFamily = "DellEMC",
     HardwareModel = "PowerEdge R730xd",

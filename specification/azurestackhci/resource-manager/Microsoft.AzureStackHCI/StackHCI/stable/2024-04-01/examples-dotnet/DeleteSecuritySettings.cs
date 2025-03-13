@@ -27,4 +27,4 @@ HciClusterSecuritySettingResource hciClusterSecuritySetting = client.GetHciClust
 // invoke the operation
 await hciClusterSecuritySetting.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

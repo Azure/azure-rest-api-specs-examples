@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.IotFirmwareDefense;
 using Azure.ResourceManager.IotFirmwareDefense.Models;
+using Azure.ResourceManager.IotFirmwareDefense;
 
 // Generated from example definition: specification/fist/resource-manager/Microsoft.IoTFirmwareDefense/stable/2024-01-10/examples/Firmwares_ListByWorkspace_MinimumSet_Gen.json
 // this example is just showing the usage of "Firmwares_ListByWorkspace" operation, for the dependent resources, they will have to be created separately.
@@ -36,4 +36,4 @@ await foreach (IotFirmwareResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

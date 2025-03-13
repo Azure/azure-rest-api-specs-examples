@@ -33,4 +33,4 @@ CustomHttpsConfiguration customHttpsConfiguration = new CustomHttpsConfiguration
 };
 await frontendEndpoint.EnableHttpsAsync(WaitUntil.Completed, customHttpsConfiguration);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

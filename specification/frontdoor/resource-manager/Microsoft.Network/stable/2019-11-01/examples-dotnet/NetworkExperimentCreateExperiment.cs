@@ -28,15 +28,15 @@ FrontDoorExperimentCollection collection = frontDoorNetworkExperimentProfile.Get
 
 // invoke the operation
 string experimentName = "MyExperiment";
-FrontDoorExperimentData data = new FrontDoorExperimentData(new AzureLocation("placeholder"))
+FrontDoorExperimentData data = new FrontDoorExperimentData(default)
 {
     Description = "this is my first experiment!",
-    ExperimentEndpointA = new FrontDoorExperimentEndpointProperties()
+    ExperimentEndpointA = new FrontDoorExperimentEndpointProperties
     {
         Name = "endpoint A",
         Endpoint = "endpointA.net",
     },
-    ExperimentEndpointB = new FrontDoorExperimentEndpointProperties()
+    ExperimentEndpointB = new FrontDoorExperimentEndpointProperties
     {
         Name = "endpoint B",
         Endpoint = "endpointB.net",

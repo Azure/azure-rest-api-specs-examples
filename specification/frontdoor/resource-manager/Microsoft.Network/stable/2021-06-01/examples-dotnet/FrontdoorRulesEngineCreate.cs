@@ -16,23 +16,24 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this FrontDoorRulesEngineResource created on azure
-// for more information of creating FrontDoorRulesEngineResource, please refer to the document of FrontDoorRulesEngineResource
+// this example assumes you already have this FrontDoorResource created on azure
+// for more information of creating FrontDoorResource, please refer to the document of FrontDoorResource
 string subscriptionId = "subid";
 string resourceGroupName = "rg1";
 string frontDoorName = "frontDoor1";
-string rulesEngineName = "rulesEngine1";
-ResourceIdentifier frontDoorRulesEngineResourceId = FrontDoorRulesEngineResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, frontDoorName, rulesEngineName);
-FrontDoorRulesEngineResource frontDoorRulesEngine = client.GetFrontDoorRulesEngineResource(frontDoorRulesEngineResourceId);
+ResourceIdentifier frontDoorResourceId = FrontDoorResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, frontDoorName);
+FrontDoorResource frontDoor = client.GetFrontDoorResource(frontDoorResourceId);
+
+// get the collection of this FrontDoorRulesEngineResource
+FrontDoorRulesEngineCollection collection = frontDoor.GetFrontDoorRulesEngines();
 
 // invoke the operation
-FrontDoorRulesEngineData data = new FrontDoorRulesEngineData()
+string rulesEngineName = "rulesEngine1";
+FrontDoorRulesEngineData data = new FrontDoorRulesEngineData
 {
-    Rules =
+    Rules = {new RulesEngineRule("Rule1", 1, new RulesEngineAction
     {
-    new RulesEngineRule("Rule1",1,new RulesEngineAction()
-    {
-    RouteConfigurationOverride = new RedirectConfiguration()
+    RouteConfigurationOverride = new RedirectConfiguration
     {
     RedirectType = FrontDoorRedirectType.Moved,
     RedirectProtocol = FrontDoorRedirectProtocol.HttpsOnly,
@@ -43,45 +44,27 @@ FrontDoorRulesEngineData data = new FrontDoorRulesEngineData()
     },
     })
     {
-    MatchConditions =
-    {
-    new RulesEngineMatchCondition(RulesEngineMatchVariable.RemoteAddr,RulesEngineOperator.GeoMatch,new string[]
-    {
-    "CH"
-    })
-    },
+    MatchConditions = {new RulesEngineMatchCondition(RulesEngineMatchVariable.RemoteAddr, RulesEngineOperator.GeoMatch, new string[]{"CH"})},
     MatchProcessingBehavior = MatchProcessingBehavior.Stop,
-    },new RulesEngineRule("Rule2",2,new RulesEngineAction()
+    }, new RulesEngineRule("Rule2", 2, new RulesEngineAction
     {
-    ResponseHeaderActions =
-    {
-    new RulesEngineHeaderAction(RulesEngineHeaderActionType.Overwrite,"Cache-Control")
+    ResponseHeaderActions = {new RulesEngineHeaderAction(RulesEngineHeaderActionType.Overwrite, "Cache-Control")
     {
     Value = "public, max-age=31536000",
-    }
-    },
+    }},
     })
     {
-    MatchConditions =
+    MatchConditions = {new RulesEngineMatchCondition(RulesEngineMatchVariable.RequestFilenameExtension, RulesEngineOperator.Equal, new string[]{"jpg"})
     {
-    new RulesEngineMatchCondition(RulesEngineMatchVariable.RequestFilenameExtension,RulesEngineOperator.Equal,new string[]
+    Transforms = {RulesEngineMatchTransform.Lowercase},
+    }},
+    }, new RulesEngineRule("Rule3", 3, new RulesEngineAction
     {
-    "jpg"
-    })
-    {
-    Transforms =
-    {
-    RulesEngineMatchTransform.Lowercase
-    },
-    }
-    },
-    },new RulesEngineRule("Rule3",3,new RulesEngineAction()
-    {
-    RouteConfigurationOverride = new ForwardingConfiguration()
+    RouteConfigurationOverride = new ForwardingConfiguration
     {
     CustomForwardingPath = null,
     ForwardingProtocol = FrontDoorForwardingProtocol.HttpsOnly,
-    CacheConfiguration = new FrontDoorCacheConfiguration()
+    CacheConfiguration = new FrontDoorCacheConfiguration
     {
     QueryParameterStripDirective = FrontDoorQuery.StripOnly,
     QueryParameters = "a=b,p=q",
@@ -92,25 +75,15 @@ FrontDoorRulesEngineData data = new FrontDoorRulesEngineData()
     },
     })
     {
-    MatchConditions =
-    {
-    new RulesEngineMatchCondition(RulesEngineMatchVariable.RequestHeader,RulesEngineOperator.Equal,new string[]
-    {
-    "allowoverride"
-    })
+    MatchConditions = {new RulesEngineMatchCondition(RulesEngineMatchVariable.RequestHeader, RulesEngineOperator.Equal, new string[]{"allowoverride"})
     {
     Selector = "Rules-Engine-Route-Forward",
     IsNegateCondition = false,
-    Transforms =
-    {
-    RulesEngineMatchTransform.Lowercase
-    },
-    }
-    },
-    }
-    },
+    Transforms = {RulesEngineMatchTransform.Lowercase},
+    }},
+    }},
 };
-ArmOperation<FrontDoorRulesEngineResource> lro = await frontDoorRulesEngine.UpdateAsync(WaitUntil.Completed, data);
+ArmOperation<FrontDoorRulesEngineResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, rulesEngineName, data);
 FrontDoorRulesEngineResource result = lro.Value;
 
 // the variable result is a resource, you could call other operations on this instance as well

@@ -27,4 +27,4 @@ FrontendEndpointResource frontendEndpoint = client.GetFrontendEndpointResource(f
 // invoke the operation
 await frontendEndpoint.DisableHttpsAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -31,50 +31,33 @@ FrontDoorCollection collection = resourceGroupResource.GetFrontDoors();
 string frontDoorName = "frontDoor1";
 FrontDoorData data = new FrontDoorData(new AzureLocation("westus"))
 {
-    RoutingRules =
+    RoutingRules = {new RoutingRuleData
     {
-    new RoutingRuleData()
-    {
-    FrontendEndpoints =
-    {
-    new WritableSubResource()
+    FrontendEndpoints = {new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/frontendEndpoints/frontendEndpoint1"),
-    },new WritableSubResource()
+    }, new WritableSubResource
     {
     Id = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/frontendEndpoints/default"),
-    }
-    },
-    AcceptedProtocols =
-    {
-    FrontDoorProtocol.Http
-    },
-    PatternsToMatch =
-    {
-    "/*"
-    },
+    }},
+    AcceptedProtocols = {FrontDoorProtocol.Http},
+    PatternsToMatch = {"/*"},
     EnabledState = RoutingRuleEnabledState.Enabled,
-    RouteConfiguration = new ForwardingConfiguration()
+    RouteConfiguration = new ForwardingConfiguration
     {
     BackendPoolId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/backendPools/backendPool1"),
     },
     RulesEngineId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/rulesEngines/rulesEngine1"),
     WebApplicationFirewallPolicyLinkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/policy1"),
     Name = "routingRule1",
-    }
-    },
-    LoadBalancingSettings =
-    {
-    new FrontDoorLoadBalancingSettingsData()
+    }},
+    LoadBalancingSettings = {new FrontDoorLoadBalancingSettingsData
     {
     SampleSize = 4,
     SuccessfulSamplesRequired = 2,
     Name = "loadBalancingSettings1",
-    }
-    },
-    HealthProbeSettings =
-    {
-    new FrontDoorHealthProbeSettingsData()
+    }},
+    HealthProbeSettings = {new FrontDoorHealthProbeSettingsData
     {
     Path = "/",
     Protocol = FrontDoorProtocol.Http,
@@ -82,22 +65,17 @@ FrontDoorData data = new FrontDoorData(new AzureLocation("westus"))
     HealthProbeMethod = FrontDoorHealthProbeMethod.Head,
     EnabledState = HealthProbeEnabled.Enabled,
     Name = "healthProbeSettings1",
-    }
-    },
-    BackendPools =
+    }},
+    BackendPools = {new FrontDoorBackendPool
     {
-    new FrontDoorBackendPool()
-    {
-    Backends =
-    {
-    new FrontDoorBackend()
+    Backends = {new FrontDoorBackend
     {
     Address = "w3.contoso.com",
     HttpPort = 80,
     HttpsPort = 443,
     Priority = 2,
     Weight = 1,
-    },new FrontDoorBackend()
+    }, new FrontDoorBackend
     {
     Address = "contoso.com.website-us-west-2.othercloud.net",
     PrivateLinkResourceId = new ResourceIdentifier("/subscriptions/subid/resourcegroups/rg1/providers/Microsoft.Network/privateLinkServices/pls1"),
@@ -107,7 +85,7 @@ FrontDoorData data = new FrontDoorData(new AzureLocation("westus"))
     HttpsPort = 443,
     Priority = 1,
     Weight = 2,
-    },new FrontDoorBackend()
+    }, new FrontDoorBackend
     {
     Address = "10.0.1.5",
     PrivateLinkAlias = "APPSERVER.d84e61f0-0870-4d24-9746-7438fa0019d1.westus2.azure.privatelinkservice",
@@ -116,29 +94,24 @@ FrontDoorData data = new FrontDoorData(new AzureLocation("westus"))
     HttpsPort = 443,
     Priority = 1,
     Weight = 1,
-    }
-    },
+    }},
     LoadBalancingSettingsId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/loadBalancingSettings/loadBalancingSettings1"),
     HealthProbeSettingsId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoors/frontDoor1/healthProbeSettings/healthProbeSettings1"),
     Name = "backendPool1",
-    }
-    },
-    FrontendEndpoints =
-    {
-    new FrontendEndpointData()
+    }},
+    FrontendEndpoints = {new FrontendEndpointData
     {
     HostName = "www.contoso.com",
     SessionAffinityEnabledState = SessionAffinityEnabledState.Enabled,
     SessionAffinityTtlInSeconds = 60,
     WebApplicationFirewallPolicyLinkId = new ResourceIdentifier("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies/policy1"),
     Name = "frontendEndpoint1",
-    },new FrontendEndpointData()
+    }, new FrontendEndpointData
     {
     HostName = "frontDoor1.azurefd.net",
     Name = "default",
-    }
-    },
-    BackendPoolsSettings = new BackendPoolsSettings()
+    }},
+    BackendPoolsSettings = new BackendPoolsSettings
     {
         EnforceCertificateNameCheck = EnforceCertificateNameCheckEnabledState.Enabled,
         SendRecvTimeoutInSeconds = 60,
@@ -147,7 +120,7 @@ FrontDoorData data = new FrontDoorData(new AzureLocation("westus"))
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<FrontDoorResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, frontDoorName, data);

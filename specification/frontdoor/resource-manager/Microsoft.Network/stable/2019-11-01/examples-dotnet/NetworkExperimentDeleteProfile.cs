@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.FrontDoor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.FrontDoor;
 
 // Generated from example definition: specification/frontdoor/resource-manager/Microsoft.Network/stable/2019-11-01/examples/NetworkExperimentDeleteProfile.json
@@ -27,4 +26,4 @@ FrontDoorNetworkExperimentProfileResource frontDoorNetworkExperimentProfile = cl
 // invoke the operation
 await frontDoorNetworkExperimentProfile.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

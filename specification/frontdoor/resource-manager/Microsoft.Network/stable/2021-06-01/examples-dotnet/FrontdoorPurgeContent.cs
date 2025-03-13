@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.FrontDoor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.Resources.Models;
 using Azure.ResourceManager.FrontDoor;
 
@@ -26,10 +25,7 @@ ResourceIdentifier frontDoorResourceId = FrontDoorResource.CreateResourceIdentif
 FrontDoorResource frontDoor = client.GetFrontDoorResource(frontDoorResourceId);
 
 // invoke the operation
-FrontDoorEndpointPurgeContent content = new FrontDoorEndpointPurgeContent(new string[]
-{
-"/pictures.aspx","/pictures/*"
-});
+FrontDoorEndpointPurgeContent content = new FrontDoorEndpointPurgeContent(new string[] { "/pictures.aspx", "/pictures/*" });
 await frontDoor.PurgeContentAsync(WaitUntil.Completed, content);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

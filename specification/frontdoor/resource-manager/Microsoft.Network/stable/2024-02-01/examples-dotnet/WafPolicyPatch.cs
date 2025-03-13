@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.FrontDoor.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.FrontDoor;
 
 // Generated from example definition: specification/frontdoor/resource-manager/Microsoft.Network/stable/2024-02-01/examples/WafPolicyPatch.json
@@ -25,12 +24,12 @@ ResourceIdentifier frontDoorWebApplicationFirewallPolicyResourceId = FrontDoorWe
 FrontDoorWebApplicationFirewallPolicyResource frontDoorWebApplicationFirewallPolicy = client.GetFrontDoorWebApplicationFirewallPolicyResource(frontDoorWebApplicationFirewallPolicyResourceId);
 
 // invoke the operation
-FrontDoorWebApplicationFirewallPolicyPatch patch = new FrontDoorWebApplicationFirewallPolicyPatch()
+FrontDoorWebApplicationFirewallPolicyPatch patch = new FrontDoorWebApplicationFirewallPolicyPatch
 {
     Tags =
     {
     ["key1"] = "value1",
-    ["key2"] = "value2",
+    ["key2"] = "value2"
     },
 };
 ArmOperation<FrontDoorWebApplicationFirewallPolicyResource> lro = await frontDoorWebApplicationFirewallPolicy.UpdateAsync(WaitUntil.Completed, patch);

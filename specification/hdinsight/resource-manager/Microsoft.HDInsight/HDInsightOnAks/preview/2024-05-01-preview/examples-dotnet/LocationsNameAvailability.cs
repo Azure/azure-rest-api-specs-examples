@@ -24,7 +24,7 @@ SubscriptionResource subscriptionResource = client.GetSubscriptionResource(subsc
 
 // invoke the operation
 AzureLocation location = new AzureLocation("southeastasia");
-HDInsightNameAvailabilityContent content = new HDInsightNameAvailabilityContent()
+HDInsightNameAvailabilityContent content = new HDInsightNameAvailabilityContent
 {
     Name = "contosemember1",
     ResourceType = "Microsoft.HDInsight/clusterPools/clusters",

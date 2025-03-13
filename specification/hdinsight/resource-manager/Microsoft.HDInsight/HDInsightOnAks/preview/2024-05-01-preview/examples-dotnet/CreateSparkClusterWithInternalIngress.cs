@@ -32,42 +32,31 @@ HDInsightClusterData data = new HDInsightClusterData(new AzureLocation("West US 
 {
     Properties = new HDInsightClusterProperties("spark", new ClusterComputeProfile(new ClusterComputeNodeProfile[]
 {
-new ClusterComputeNodeProfile("worker","Standard_D3_v2",4)
+new ClusterComputeNodeProfile("worker", "Standard_D3_v2", 4)
 })
     {
-        AvailabilityZones =
-        {
-        "1","2","3"
-        },
-    }, new ClusterProfile("0.0.1", "2.2.3", new AuthorizationProfile()
+        AvailabilityZones = { "1", "2", "3" },
+    }, new ClusterProfile("0.0.1", "2.2.3", new AuthorizationProfile
     {
-        UserIds =
-        {
-        "testuser1","testuser2"
-        },
+        UserIds = { "testuser1", "testuser2" },
     })
     {
-        IdentityList =
+        IdentityList = { new HDInsightManagedIdentitySpec(HDInsightManagedIdentityType.Cluster, new ResourceIdentifier("/subscriptions/subid/resourceGroups/hiloResourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-msi"), "de91f1d8-767f-460a-ac11-3cf103f74b34", "40491351-c240-4042-91e0-f644a1d2b441") },
+        ServiceConfigsProfiles = {new ClusterServiceConfigsProfile("spark-service", new ClusterServiceConfig[]
         {
-        new HDInsightManagedIdentitySpec(HDInsightManagedIdentityType.Cluster,new ResourceIdentifier("/subscriptions/subid/resourceGroups/hiloResourcegroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-msi"),"de91f1d8-767f-460a-ac11-3cf103f74b34","40491351-c240-4042-91e0-f644a1d2b441")
-        },
-        ServiceConfigsProfiles =
-        {
-        new ClusterServiceConfigsProfile("spark-service",new ClusterServiceConfig[]
-        {
-        new ClusterServiceConfig("spark-config",new ClusterConfigFile[]
+        new ClusterServiceConfig("spark-config", new ClusterConfigFile[]
         {
         new ClusterConfigFile("spark-defaults.conf")
         {
         Values =
         {
-        ["spark.eventLog.enabled"] = "true",
+        ["spark.eventLog.enabled"] = "true"
         },
         }
         })
-        }),new ClusterServiceConfigsProfile("yarn-service",new ClusterServiceConfig[]
+        }), new ClusterServiceConfigsProfile("yarn-service", new ClusterServiceConfig[]
         {
-        new ClusterServiceConfig("yarn-config",new ClusterConfigFile[]
+        new ClusterServiceConfig("yarn-config", new ClusterConfigFile[]
         {
         new ClusterConfigFile("core-site.xml")
         {
@@ -77,18 +66,18 @@ new ClusterComputeNodeProfile("worker","Standard_D3_v2",4)
         ["storage.container"] = "testcontainer",
         ["storage.key"] = "test key",
         ["storage.name"] = "teststorage",
-        ["storage.protocol"] = "wasb",
+        ["storage.protocol"] = "wasb"
         },
-        },new ClusterConfigFile("yarn-site.xml")
+        },
+        new ClusterConfigFile("yarn-site.xml")
         {
         Values =
         {
-        ["yarn.webapp.ui2.enable"] = "false",
+        ["yarn.webapp.ui2.enable"] = "false"
         },
         }
         })
-        })
-        },
+        })},
         ClusterAccessProfile = new ClusterAccessProfile(true),
         SshProfile = new ClusterSshProfile(2)
         {

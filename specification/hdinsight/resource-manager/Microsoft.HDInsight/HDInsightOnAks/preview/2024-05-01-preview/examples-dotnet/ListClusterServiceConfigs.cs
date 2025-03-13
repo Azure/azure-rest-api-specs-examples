@@ -30,4 +30,4 @@ await foreach (ClusterServiceConfigResult item in hdInsightCluster.GetServiceCon
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

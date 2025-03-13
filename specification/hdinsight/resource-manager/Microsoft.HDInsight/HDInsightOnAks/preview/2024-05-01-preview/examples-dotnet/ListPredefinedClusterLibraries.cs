@@ -31,4 +31,4 @@ await foreach (ClusterLibrary item in hdInsightCluster.GetClusterLibrariesAsync(
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

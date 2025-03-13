@@ -30,4 +30,4 @@ await foreach (ClusterJob item in hdInsightCluster.GetClusterJobsAsync())
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

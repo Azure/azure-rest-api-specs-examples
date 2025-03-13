@@ -25,7 +25,7 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-ClusterUpgrade clusterUpgradeRequest = new ClusterUpgrade(new ClusterHotfixUpgradeProperties()
+ClusterUpgrade clusterUpgradeRequest = new ClusterUpgrade(new ClusterHotfixUpgradeProperties
 {
     TargetOssVersion = "1.16.0",
     TargetClusterVersion = "1.0.6",

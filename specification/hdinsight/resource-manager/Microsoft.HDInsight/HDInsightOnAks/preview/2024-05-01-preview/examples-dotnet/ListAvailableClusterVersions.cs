@@ -29,4 +29,4 @@ await foreach (HDInsightClusterVersion item in subscriptionResource.GetAvailable
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(h
 // invoke the operation
 await hdInsightCluster.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

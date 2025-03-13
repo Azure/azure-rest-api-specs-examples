@@ -25,60 +25,60 @@ ResourceIdentifier hdInsightClusterResourceId = HDInsightClusterResource.CreateR
 HDInsightClusterResource hdInsightCluster = client.GetHDInsightClusterResource(hdInsightClusterResourceId);
 
 // invoke the operation
-HDInsightClusterPatch patch = new HDInsightClusterPatch()
+HDInsightClusterPatch patch = new HDInsightClusterPatch
 {
-    ClusterProfile = new UpdatableClusterProfile()
+    ClusterProfile = new UpdatableClusterProfile
     {
-        ServiceConfigsProfiles =
+        ServiceConfigsProfiles = {new ClusterServiceConfigsProfile("TestService1", new ClusterServiceConfig[]
         {
-        new ClusterServiceConfigsProfile("TestService1",new ClusterServiceConfig[]
-        {
-        new ClusterServiceConfig("TestComp1",new ClusterConfigFile[]
+        new ClusterServiceConfig("TestComp1", new ClusterConfigFile[]
         {
         new ClusterConfigFile("TestFile1")
         {
         Values =
         {
         ["Test.config.1"] = "1",
-        ["Test.config.2"] = "2",
+        ["Test.config.2"] = "2"
         },
-        },new ClusterConfigFile("TestFile2")
+        },
+        new ClusterConfigFile("TestFile2")
         {
         Values =
         {
         ["Test.config.3"] = "3",
-        ["Test.config.4"] = "4",
+        ["Test.config.4"] = "4"
         },
         }
-        }),new ClusterServiceConfig("TestComp2",new ClusterConfigFile[]
+        }),
+        new ClusterServiceConfig("TestComp2", new ClusterConfigFile[]
         {
         new ClusterConfigFile("TestFile3")
         {
         Content = "TestContent",
         Path = "TestPath",
-        },new ClusterConfigFile("TestFile4")
+        },
+        new ClusterConfigFile("TestFile4")
         {
         Values =
         {
         ["Test.config.7"] = "7",
-        ["Test.config.8"] = "8",
+        ["Test.config.8"] = "8"
         },
         }
         })
-        }),new ClusterServiceConfigsProfile("TestService2",new ClusterServiceConfig[]
+        }), new ClusterServiceConfigsProfile("TestService2", new ClusterServiceConfig[]
         {
-        new ClusterServiceConfig("TestComp3",new ClusterConfigFile[]
+        new ClusterServiceConfig("TestComp3", new ClusterConfigFile[]
         {
         new ClusterConfigFile("TestFile5")
         {
         Values =
         {
-        ["Test.config.9"] = "9",
+        ["Test.config.9"] = "9"
         },
         }
         })
-        })
-        },
+        })},
         SshProfile = new ClusterSshProfile(2),
         AutoscaleProfile = new ClusterAutoscaleProfile(true)
         {
@@ -86,25 +86,17 @@ HDInsightClusterPatch patch = new HDInsightClusterPatch()
             AutoscaleType = ClusterAutoscaleType.ScheduleBased,
             ScheduleBasedConfig = new ScheduleBasedConfig("Cen. Australia Standard Time", 3, new AutoscaleSchedule[]
 {
-new AutoscaleSchedule("00:00","12:00",3,new AutoscaleScheduleDay[]
-{
-new AutoscaleScheduleDay("Monday, Tuesday, Wednesday")
-}),new AutoscaleSchedule("00:00","12:00",3,new AutoscaleScheduleDay[]
-{
-AutoscaleScheduleDay.Sunday
-})
+new AutoscaleSchedule("00:00", "12:00", 3, new AutoscaleScheduleDay[]{new AutoscaleScheduleDay("Monday, Tuesday, Wednesday")}),
+new AutoscaleSchedule("00:00", "12:00", 3, new AutoscaleScheduleDay[]{AutoscaleScheduleDay.Sunday})
 }),
         },
-        AuthorizationProfile = new AuthorizationProfile()
+        AuthorizationProfile = new AuthorizationProfile
         {
-            UserIds =
-            {
-            "Testuser1","Testuser2"
-            },
+            UserIds = { "Testuser1", "Testuser2" },
         },
         LogAnalyticsProfile = new ClusterLogAnalyticsProfile(true)
         {
-            ApplicationLogs = new ClusterLogAnalyticsApplicationLogs()
+            ApplicationLogs = new ClusterLogAnalyticsApplicationLogs
             {
                 IsStdOutEnabled = true,
                 IsStdErrorEnabled = true,

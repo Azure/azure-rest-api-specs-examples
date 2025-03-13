@@ -30,4 +30,4 @@ await foreach (ClusterUpgradeHistory item in hdInsightCluster.GetClusterUpgradeH
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

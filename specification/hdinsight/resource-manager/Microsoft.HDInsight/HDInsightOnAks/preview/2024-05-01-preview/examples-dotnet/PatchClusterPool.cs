@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Containers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight.Containers;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/preview/2024-05-01-preview/examples/PatchClusterPool.json
@@ -25,12 +24,12 @@ ResourceIdentifier hdInsightClusterPoolResourceId = HDInsightClusterPoolResource
 HDInsightClusterPoolResource hdInsightClusterPool = client.GetHDInsightClusterPoolResource(hdInsightClusterPoolResourceId);
 
 // invoke the operation
-HDInsightClusterPoolPatch patch = new HDInsightClusterPoolPatch()
+HDInsightClusterPoolPatch patch = new HDInsightClusterPoolPatch
 {
     Tags =
     {
     ["tag1"] = "value1",
-    ["tag2"] = "value2",
+    ["tag2"] = "value2"
     },
 };
 ArmOperation<HDInsightClusterPoolResource> lro = await hdInsightClusterPool.UpdateAsync(WaitUntil.Completed, patch);

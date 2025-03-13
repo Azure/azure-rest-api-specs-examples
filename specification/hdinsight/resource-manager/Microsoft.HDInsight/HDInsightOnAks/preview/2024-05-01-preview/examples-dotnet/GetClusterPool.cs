@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.HDInsight.Containers.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.HDInsight.Containers;
 
 // Generated from example definition: specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/preview/2024-05-01-preview/examples/GetClusterPool.json

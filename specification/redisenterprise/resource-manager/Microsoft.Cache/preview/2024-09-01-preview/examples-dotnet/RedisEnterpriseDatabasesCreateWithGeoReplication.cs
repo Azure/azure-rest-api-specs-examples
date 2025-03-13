@@ -28,25 +28,22 @@ RedisEnterpriseDatabaseCollection collection = redisEnterpriseCluster.GetRedisEn
 
 // invoke the operation
 string databaseName = "default";
-RedisEnterpriseDatabaseData data = new RedisEnterpriseDatabaseData()
+RedisEnterpriseDatabaseData data = new RedisEnterpriseDatabaseData
 {
     ClientProtocol = RedisEnterpriseClientProtocol.Encrypted,
     Port = 10000,
     ClusteringPolicy = RedisEnterpriseClusteringPolicy.EnterpriseCluster,
     EvictionPolicy = RedisEnterpriseEvictionPolicy.NoEviction,
-    GeoReplication = new RedisEnterpriseDatabaseGeoReplication()
+    GeoReplication = new RedisEnterpriseDatabaseGeoReplication
     {
         GroupNickname = "groupName",
-        LinkedDatabases =
-        {
-        new RedisEnterpriseLinkedDatabase()
+        LinkedDatabases = {new RedisEnterpriseLinkedDatabase
         {
         Id = new ResourceIdentifier("/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8f/resourceGroups/rg1/providers/Microsoft.Cache/redisEnterprise/cache1/databases/default"),
-        },new RedisEnterpriseLinkedDatabase()
+        }, new RedisEnterpriseLinkedDatabase
         {
         Id = new ResourceIdentifier("/subscriptions/e7b5a9d2-6b6a-4d2f-9143-20d9a10f5b8e/resourceGroups/rg2/providers/Microsoft.Cache/redisEnterprise/cache2/databases/default"),
-        }
-        },
+        }},
     },
     AccessKeysAuthentication = AccessKeysAuthentication.Enabled,
 };

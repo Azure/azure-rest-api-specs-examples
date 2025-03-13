@@ -25,11 +25,11 @@ ResourceIdentifier redisEnterpriseDatabaseResourceId = RedisEnterpriseDatabaseRe
 RedisEnterpriseDatabaseResource redisEnterpriseDatabase = client.GetRedisEnterpriseDatabaseResource(redisEnterpriseDatabaseResourceId);
 
 // invoke the operation
-RedisEnterpriseDatabasePatch patch = new RedisEnterpriseDatabasePatch()
+RedisEnterpriseDatabasePatch patch = new RedisEnterpriseDatabasePatch
 {
     ClientProtocol = RedisEnterpriseClientProtocol.Encrypted,
     EvictionPolicy = RedisEnterpriseEvictionPolicy.AllKeysLru,
-    Persistence = new RedisPersistenceSettings()
+    Persistence = new RedisPersistenceSettings
     {
         IsRdbEnabled = true,
         RdbFrequency = PersistenceSettingRdbFrequency.TwelveHours,

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.RedisEnterprise.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.RedisEnterprise;
 
 // Generated from example definition: specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2024-09-01-preview/examples/RedisEnterpriseUpdate.json
@@ -25,7 +24,7 @@ ResourceIdentifier redisEnterpriseClusterResourceId = RedisEnterpriseClusterReso
 RedisEnterpriseClusterResource redisEnterpriseCluster = client.GetRedisEnterpriseClusterResource(redisEnterpriseClusterResourceId);
 
 // invoke the operation
-RedisEnterpriseClusterPatch patch = new RedisEnterpriseClusterPatch()
+RedisEnterpriseClusterPatch patch = new RedisEnterpriseClusterPatch
 {
     Sku = new RedisEnterpriseSku(RedisEnterpriseSkuName.EnterpriseFlashF300)
     {
@@ -33,7 +32,7 @@ RedisEnterpriseClusterPatch patch = new RedisEnterpriseClusterPatch()
     },
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
     MinimumTlsVersion = RedisEnterpriseTlsVersion.Tls1_2,
 };

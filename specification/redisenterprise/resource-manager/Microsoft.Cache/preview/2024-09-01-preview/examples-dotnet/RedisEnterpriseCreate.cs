@@ -34,21 +34,18 @@ RedisEnterpriseClusterData data = new RedisEnterpriseClusterData(new AzureLocati
     Capacity = 3,
 })
 {
-    Zones =
-    {
-    "1","2","3"
-    },
+    Zones = { "1", "2", "3" },
     Identity = new ManagedServiceIdentity("UserAssigned")
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/your-subscription/resourceGroups/your-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/your-identity")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/your-subscription/resourceGroups/your-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/your-identity")] = new UserAssignedIdentity()
         },
     },
     MinimumTlsVersion = RedisEnterpriseTlsVersion.Tls1_2,
-    CustomerManagedKeyEncryption = new RedisEnterpriseCustomerManagedKeyEncryption()
+    CustomerManagedKeyEncryption = new RedisEnterpriseCustomerManagedKeyEncryption
     {
-        KeyEncryptionKeyIdentity = new RedisEnterpriseCustomerManagedKeyEncryptionKeyIdentity()
+        KeyEncryptionKeyIdentity = new RedisEnterpriseCustomerManagedKeyEncryptionKeyIdentity
         {
             UserAssignedIdentityResourceId = new ResourceIdentifier("/subscriptions/your-subscription/resourceGroups/your-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/your-identity"),
             IdentityType = RedisEnterpriseCustomerManagedKeyIdentityType.UserAssignedIdentity,
@@ -57,7 +54,7 @@ RedisEnterpriseClusterData data = new RedisEnterpriseClusterData(new AzureLocati
     },
     Tags =
     {
-    ["tag1"] = "value1",
+    ["tag1"] = "value1"
     },
 };
 ArmOperation<RedisEnterpriseClusterResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, clusterName, data);

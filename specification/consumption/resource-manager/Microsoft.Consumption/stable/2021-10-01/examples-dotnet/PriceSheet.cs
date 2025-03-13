@@ -1,11 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.Consumption;
 using Azure.ResourceManager.Consumption.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.Consumption;
 
 // Generated from example definition: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/PriceSheet.json
 // this example is just showing the usage of "PriceSheet_Get" operation, for the dependent resources, they will have to be created separately.

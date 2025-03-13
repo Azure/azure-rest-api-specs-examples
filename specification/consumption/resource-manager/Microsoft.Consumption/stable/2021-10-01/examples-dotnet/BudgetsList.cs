@@ -1,9 +1,9 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
 using Azure.ResourceManager.Consumption;
 
 // Generated from example definition: specification/consumption/resource-manager/Microsoft.Consumption/stable/2021-10-01/examples/BudgetsList.json
@@ -14,13 +14,9 @@ TokenCredential cred = new DefaultAzureCredential();
 // authenticate your client
 ArmClient client = new ArmClient(cred);
 
-// this example assumes you already have this ArmResource created on azure
-// for more information of creating ArmResource, please refer to the document of ArmResource
-
 // get the collection of this ConsumptionBudgetResource
 string scope = "subscriptions/00000000-0000-0000-0000-000000000000";
-ResourceIdentifier scopeId = new ResourceIdentifier(string.Format("/{0}", scope));
-ConsumptionBudgetCollection collection = client.GetConsumptionBudgets(scopeId);
+ConsumptionBudgetCollection collection = client.GetConsumptionBudgets(new ResourceIdentifier(scope));
 
 // invoke the operation and iterate over the result
 await foreach (ConsumptionBudgetResource item in collection.GetAllAsync())
@@ -32,4 +28,4 @@ await foreach (ConsumptionBudgetResource item in collection.GetAllAsync())
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

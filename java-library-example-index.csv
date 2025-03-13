@@ -5137,3 +5137,4 @@ id,name,language,tag,package,version,date_epoch,date
 5136,"Azure.ResourceManager.KeyVault,1.3.1",dotnet,Azure.ResourceManager.KeyVault_1.3.1,Azure.ResourceManager.KeyVault,1.3.1,1741836324,03/13/2025
 5137,"Azure.ResourceManager.MySql,1.1.1",dotnet,Azure.ResourceManager.MySql_1.1.1,Azure.ResourceManager.MySql,1.1.1,1741834871,03/13/2025
 5138,"Azure.ResourceManager.Qumulo,1.1.1",dotnet,Azure.ResourceManager.Qumulo_1.1.1,Azure.ResourceManager.Qumulo,1.1.1,1741834799,03/13/2025
+5139,"Azure.ResourceManager.OracleDatabase,1.0.1",dotnet,Azure.ResourceManager.OracleDatabase_1.0.1,Azure.ResourceManager.OracleDatabase,1.0.1,1741834758,03/13/2025

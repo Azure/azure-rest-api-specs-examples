@@ -1,12 +1,12 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceProvisioningServices;
 using Azure.ResourceManager.DeviceProvisioningServices.Models;
 using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DeviceProvisioningServices;
 
 // Generated from example definition: specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/examples/DPSCreate.json
 // this example is just showing the usage of "IotDpsResource_CreateOrUpdate" operation, for the dependent resources, they will have to be created separately.
@@ -28,18 +28,16 @@ DeviceProvisioningServiceCollection collection = resourceGroupResource.GetDevice
 
 // invoke the operation
 string provisioningServiceName = "myFirstProvisioningService";
-DeviceProvisioningServiceData data = new DeviceProvisioningServiceData(new AzureLocation("East US"), new DeviceProvisioningServiceProperties()
+DeviceProvisioningServiceData data = new DeviceProvisioningServiceData(new AzureLocation("East US"), new DeviceProvisioningServiceProperties
 {
     IsDataResidencyEnabled = false,
-}, new DeviceProvisioningServicesSkuInfo()
+}, new DeviceProvisioningServicesSkuInfo
 {
     Name = DeviceProvisioningServicesSku.S1,
-    Capacity = 1,
+    Capacity = 1L,
 })
 {
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<DeviceProvisioningServiceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, provisioningServiceName, data);
 DeviceProvisioningServiceResource result = lro.Value;

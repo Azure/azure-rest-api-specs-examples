@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceProvisioningServices;
 using Azure.ResourceManager.DeviceProvisioningServices.Models;
+using Azure.ResourceManager.DeviceProvisioningServices;
 
 // Generated from example definition: specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/examples/DPSGenerateVerificationCode.json
 // this example is just showing the usage of "DpsCertificate_GenerateVerificationCode" operation, for the dependent resources, they will have to be created separately.
@@ -25,7 +25,8 @@ ResourceIdentifier deviceProvisioningServicesCertificateResourceId = DeviceProvi
 DeviceProvisioningServicesCertificateResource deviceProvisioningServicesCertificate = client.GetDeviceProvisioningServicesCertificateResource(deviceProvisioningServicesCertificateResourceId);
 
 // invoke the operation
-DeviceProvisioningServicesCertificateResourceGenerateVerificationCodeOptions options = new DeviceProvisioningServicesCertificateResourceGenerateVerificationCodeOptions(ifMatch: "AAAAAAAADGk=") { };
+string ifMatch = "AAAAAAAADGk=";
+DeviceProvisioningServicesCertificateResourceGenerateVerificationCodeOptions options = new DeviceProvisioningServicesCertificateResourceGenerateVerificationCodeOptions(ifMatch);
 CertificateVerificationCodeResult result = await deviceProvisioningServicesCertificate.GenerateVerificationCodeAsync(options);
 
 Console.WriteLine($"Succeeded: {result}");

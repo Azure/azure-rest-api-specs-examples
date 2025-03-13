@@ -1,12 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceProvisioningServices;
 using Azure.ResourceManager.DeviceProvisioningServices.Models;
-using Azure.ResourceManager.Resources;
+using Azure.ResourceManager.DeviceProvisioningServices;
 
 // Generated from example definition: specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/examples/DPSListKeys.json
 // this example is just showing the usage of "IotDpsResource_ListKeys" operation, for the dependent resources, they will have to be created separately.
@@ -30,4 +29,4 @@ await foreach (DeviceProvisioningServicesSharedAccessKey item in deviceProvision
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

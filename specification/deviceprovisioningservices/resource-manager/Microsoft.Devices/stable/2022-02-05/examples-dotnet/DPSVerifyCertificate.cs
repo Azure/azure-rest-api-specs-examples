@@ -1,11 +1,11 @@
+using Azure;
+using Azure.ResourceManager;
 using System;
 using System.Threading.Tasks;
-using Azure;
 using Azure.Core;
 using Azure.Identity;
-using Azure.ResourceManager;
-using Azure.ResourceManager.DeviceProvisioningServices;
 using Azure.ResourceManager.DeviceProvisioningServices.Models;
+using Azure.ResourceManager.DeviceProvisioningServices;
 
 // Generated from example definition: specification/deviceprovisioningservices/resource-manager/Microsoft.Devices/stable/2022-02-05/examples/DPSVerifyCertificate.json
 // this example is just showing the usage of "DpsCertificate_VerifyCertificate" operation, for the dependent resources, they will have to be created separately.
@@ -25,11 +25,12 @@ ResourceIdentifier deviceProvisioningServicesCertificateResourceId = DeviceProvi
 DeviceProvisioningServicesCertificateResource deviceProvisioningServicesCertificate = client.GetDeviceProvisioningServicesCertificateResource(deviceProvisioningServicesCertificateResourceId);
 
 // invoke the operation
-DeviceProvisioningServicesCertificateResourceVerifyCertificateOptions options = new DeviceProvisioningServicesCertificateResourceVerifyCertificateOptions(ifMatch: "AAAAAAAADGk=", content: new CertificateVerificationCodeContent()
+string ifMatch = "AAAAAAAADGk=";
+CertificateVerificationCodeContent content = new CertificateVerificationCodeContent
 {
     Certificate = "#####################################",
-})
-{ };
+};
+DeviceProvisioningServicesCertificateResourceVerifyCertificateOptions options = new DeviceProvisioningServicesCertificateResourceVerifyCertificateOptions(ifMatch, content);
 DeviceProvisioningServicesCertificateResource result = await deviceProvisioningServicesCertificate.VerifyCertificateAsync(options);
 
 // the variable result is a resource, you could call other operations on this instance as well

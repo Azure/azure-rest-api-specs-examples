@@ -33,18 +33,12 @@ KeyVaultCreateOrUpdateContent content = new KeyVaultCreateOrUpdateContent(new Az
     EnabledForDeployment = true,
     EnabledForDiskEncryption = true,
     EnabledForTemplateDeployment = true,
-    NetworkRuleSet = new KeyVaultNetworkRuleSet()
+    NetworkRuleSet = new KeyVaultNetworkRuleSet
     {
         Bypass = KeyVaultNetworkRuleBypassOption.AzureServices,
         DefaultAction = KeyVaultNetworkRuleAction.Deny,
-        IPRules =
-        {
-        new KeyVaultIPRule("124.56.78.91"),new KeyVaultIPRule("'10.91.4.0/24'")
-        },
-        VirtualNetworkRules =
-        {
-        new KeyVaultVirtualNetworkRule("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1")
-        },
+        IPRules = { new KeyVaultIPRule("124.56.78.91"), new KeyVaultIPRule("'10.91.4.0/24'") },
+        VirtualNetworkRules = { new KeyVaultVirtualNetworkRule("/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1") },
     },
 });
 ArmOperation<KeyVaultResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, vaultName, content);

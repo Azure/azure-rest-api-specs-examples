@@ -33,4 +33,4 @@ await foreach (KeyVaultResource item in subscriptionResource.GetKeyVaultsAsync(t
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

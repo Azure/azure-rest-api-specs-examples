@@ -30,13 +30,10 @@ ManagedHsmCollection collection = resourceGroupResource.GetManagedHsms();
 string name = "hsm1";
 ManagedHsmData data = new ManagedHsmData(new AzureLocation("westus"))
 {
-    Properties = new ManagedHsmProperties()
+    Properties = new ManagedHsmProperties
     {
         TenantId = Guid.Parse("00000000-0000-0000-0000-000000000000"),
-        InitialAdminObjectIds =
-        {
-        "00000000-0000-0000-0000-000000000000"
-        },
+        InitialAdminObjectIds = { "00000000-0000-0000-0000-000000000000" },
         EnableSoftDelete = true,
         SoftDeleteRetentionInDays = 90,
         EnablePurgeProtection = false,
@@ -45,7 +42,7 @@ ManagedHsmData data = new ManagedHsmData(new AzureLocation("westus"))
     Tags =
     {
     ["Dept"] = "hsm",
-    ["Environment"] = "dogfood",
+    ["Environment"] = "dogfood"
     },
 };
 ArmOperation<ManagedHsmResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, name, data);

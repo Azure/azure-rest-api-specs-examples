@@ -25,4 +25,4 @@ DeletedKeyVaultResource deletedKeyVault = client.GetDeletedKeyVaultResource(dele
 // invoke the operation
 await deletedKeyVault.PurgeDeletedAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

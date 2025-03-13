@@ -25,4 +25,4 @@ DeletedManagedHsmResource deletedManagedHsm = client.GetDeletedManagedHsmResourc
 // invoke the operation
 await deletedManagedHsm.PurgeDeletedAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

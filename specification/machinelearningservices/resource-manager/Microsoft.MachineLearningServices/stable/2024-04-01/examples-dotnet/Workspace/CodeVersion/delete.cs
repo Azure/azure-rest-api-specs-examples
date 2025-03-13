@@ -28,4 +28,4 @@ MachineLearningCodeVersionResource machineLearningCodeVersion = client.GetMachin
 // invoke the operation
 await machineLearningCodeVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

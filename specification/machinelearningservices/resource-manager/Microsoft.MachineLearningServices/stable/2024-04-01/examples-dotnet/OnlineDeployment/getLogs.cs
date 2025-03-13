@@ -26,7 +26,7 @@ ResourceIdentifier machineLearningOnlineDeploymentResourceId = MachineLearningOn
 MachineLearningOnlineDeploymentResource machineLearningOnlineDeployment = client.GetMachineLearningOnlineDeploymentResource(machineLearningOnlineDeploymentResourceId);
 
 // invoke the operation
-MachineLearningDeploymentLogsContent content = new MachineLearningDeploymentLogsContent()
+MachineLearningDeploymentLogsContent content = new MachineLearningDeploymentLogsContent
 {
     ContainerType = MachineLearningContainerType.StorageInitializer,
     Tail = 0,

@@ -26,9 +26,9 @@ ResourceIdentifier machineLearningOnlineDeploymentResourceId = MachineLearningOn
 MachineLearningOnlineDeploymentResource machineLearningOnlineDeployment = client.GetMachineLearningOnlineDeploymentResource(machineLearningOnlineDeploymentResourceId);
 
 // invoke the operation
-MachineLearningOnlineDeploymentPatch patch = new MachineLearningOnlineDeploymentPatch()
+MachineLearningOnlineDeploymentPatch patch = new MachineLearningOnlineDeploymentPatch
 {
-    Sku = new MachineLearningSkuPatch()
+    Sku = new MachineLearningSkuPatch
     {
         Name = "string",
         Tier = MachineLearningSkuTier.Free,
@@ -36,9 +36,7 @@ MachineLearningOnlineDeploymentPatch patch = new MachineLearningOnlineDeployment
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningOnlineDeploymentResource> lro = await machineLearningOnlineDeployment.UpdateAsync(WaitUntil.Completed, patch);
 MachineLearningOnlineDeploymentResource result = lro.Value;

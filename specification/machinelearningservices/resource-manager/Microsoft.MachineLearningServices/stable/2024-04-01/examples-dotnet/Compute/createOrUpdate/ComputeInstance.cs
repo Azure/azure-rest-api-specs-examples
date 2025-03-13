@@ -31,61 +31,52 @@ MachineLearningComputeCollection collection = machineLearningWorkspace.GetMachin
 string computeName = "compute123";
 MachineLearningComputeData data = new MachineLearningComputeData(new AzureLocation("eastus"))
 {
-    Properties = new MachineLearningComputeInstance()
+    Properties = new MachineLearningComputeInstance
     {
-        Properties = new MachineLearningComputeInstanceProperties()
+        Properties = new MachineLearningComputeInstanceProperties
         {
             VmSize = "STANDARD_NC6",
             SubnetId = new ResourceIdentifier("test-subnet-resource-id"),
             ApplicationSharingPolicy = MachineLearningApplicationSharingPolicy.Personal,
-            SshSettings = new MachineLearningComputeInstanceSshSettings()
+            SshSettings = new MachineLearningComputeInstanceSshSettings
             {
                 SshPublicAccess = MachineLearningSshPublicAccess.Disabled,
             },
-            CustomServices =
-            {
-            new CustomService()
+            CustomServices = {new CustomService
             {
             Name = "rstudio",
-            Image = new ImageSetting()
+            Image = new ImageSetting
             {
             ImageType = ImageType.Docker,
             Reference = "ghcr.io/azure/rocker-rstudio-ml-verse:latest",
             },
             EnvironmentVariables =
             {
-            ["test_variable"] = new EnvironmentVariable()
+            ["test_variable"] = new EnvironmentVariable
             {
             VariableType = EnvironmentVariableType.Local,
             Value = "test_value",
+            }
             },
-            },
-            Docker = new DockerSetting()
+            Docker = new DockerSetting
             {
             Privileged = true,
             },
-            Endpoints =
-            {
-            new ContainerEndpoint()
+            Endpoints = {new ContainerEndpoint
             {
             Protocol = ContainerCommunicationProtocol.Http,
             Name = "connect",
             Target = 8787,
             Published = 8787,
-            }
-            },
-            Volumes =
-            {
-            new VolumeDefinition()
+            }},
+            Volumes = {new VolumeDefinition
             {
             DefinitionType = VolumeDefinitionType.Bind,
             ReadOnly = false,
             Source = "/home/azureuser/cloudfiles",
             Target = "/home/azureuser/cloudfiles",
-            }
-            },
-            }
-            },
+            }},
+            }},
             ComputeInstanceAuthorizationType = MachineLearningComputeInstanceAuthorizationType.Personal,
             PersonalComputeInstanceAssignedUser = new MachineLearningComputeInstanceAssignedUser("00000000-0000-0000-0000-000000000000", Guid.Parse("00000000-0000-0000-0000-000000000000")),
         },

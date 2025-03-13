@@ -31,4 +31,4 @@ await foreach (AmlComputeNodeInformation item in machineLearningCompute.GetNodes
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

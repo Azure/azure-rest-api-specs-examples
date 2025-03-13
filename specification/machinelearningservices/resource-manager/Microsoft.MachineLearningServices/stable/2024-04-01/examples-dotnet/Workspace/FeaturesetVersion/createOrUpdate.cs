@@ -26,67 +26,46 @@ ResourceIdentifier machineLearningFeatureSetVersionResourceId = MachineLearningF
 MachineLearningFeatureSetVersionResource machineLearningFeatureSetVersion = client.GetMachineLearningFeatureSetVersionResource(machineLearningFeatureSetVersionResourceId);
 
 // invoke the operation
-MachineLearningFeatureSetVersionData data = new MachineLearningFeatureSetVersionData(new MachineLearningFeatureSetVersionProperties()
+MachineLearningFeatureSetVersionData data = new MachineLearningFeatureSetVersionData(new MachineLearningFeatureSetVersionProperties
 {
     SpecificationPath = "string",
-    MaterializationSettings = new MaterializationSettings()
+    MaterializationSettings = new MaterializationSettings
     {
         StoreType = MaterializationStoreType.Online,
         Schedule = new MachineLearningRecurrenceTrigger(MachineLearningRecurrenceFrequency.Day, 1)
         {
-            Schedule = new MachineLearningRecurrenceSchedule(new int[]
-{
-1
-}, new int[]
-{
-1
-})
+            Schedule = new MachineLearningRecurrenceSchedule(new int[] { 1 }, new int[] { 1 })
             {
-                WeekDays =
-                {
-                MachineLearningDayOfWeek.Monday
-                },
-                MonthDays =
-                {
-                1
-                },
+                WeekDays = { MachineLearningDayOfWeek.Monday },
+                MonthDays = { 1 },
             },
             EndTime = "string",
             StartTime = "string",
             TimeZone = "string",
         },
-        Notification = new NotificationSetting()
+        Notification = new NotificationSetting
         {
-            Emails =
-            {
-            "string"
-            },
-            EmailOn =
-            {
-            EmailNotificationEnableType.JobFailed
-            },
+            Emails = { "string" },
+            EmailOn = { EmailNotificationEnableType.JobFailed },
         },
         ResourceInstanceType = "string",
         SparkConfiguration =
         {
-        ["string"] = "string",
+        ["string"] = "string"
         },
     },
     Stage = "string",
-    Entities =
-    {
-    "string"
-    },
+    Entities = { "string" },
     IsArchived = false,
     IsAnonymous = false,
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningFeatureSetVersionResource> lro = await machineLearningFeatureSetVersion.UpdateAsync(WaitUntil.Completed, data);

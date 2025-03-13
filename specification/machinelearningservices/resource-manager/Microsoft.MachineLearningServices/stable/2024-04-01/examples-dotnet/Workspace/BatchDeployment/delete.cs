@@ -28,4 +28,4 @@ MachineLearningBatchDeploymentResource machineLearningBatchDeployment = client.G
 // invoke the operation
 await machineLearningBatchDeployment.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

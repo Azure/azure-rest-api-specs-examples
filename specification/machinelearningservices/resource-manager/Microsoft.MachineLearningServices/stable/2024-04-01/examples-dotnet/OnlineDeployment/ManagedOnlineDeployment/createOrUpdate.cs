@@ -31,10 +31,10 @@ MachineLearningOnlineDeploymentCollection collection = machineLearningOnlineEndp
 
 // invoke the operation
 string deploymentName = "testDeploymentName";
-MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentData(new AzureLocation("string"), new MachineLearningManagedOnlineDeployment()
+MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentData(new AzureLocation("string"), new MachineLearningManagedOnlineDeployment
 {
     ScaleSettings = new MachineLearningDefaultScaleSettings(),
-    RequestSettings = new MachineLearningOnlineRequestSettings()
+    RequestSettings = new MachineLearningOnlineRequestSettings
     {
         MaxQueueWait = XmlConvert.ToTimeSpan("PT5M"),
         RequestTimeout = XmlConvert.ToTimeSpan("PT5M"),
@@ -42,7 +42,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     },
     ModelMountPath = "string",
     AppInsightsEnabled = false,
-    LivenessProbe = new MachineLearningProbeSettings()
+    LivenessProbe = new MachineLearningProbeSettings
     {
         FailureThreshold = 1,
         SuccessThreshold = 1,
@@ -50,7 +50,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
         Period = XmlConvert.ToTimeSpan("PT5M"),
         InitialDelay = XmlConvert.ToTimeSpan("PT5M"),
     },
-    ReadinessProbe = new MachineLearningProbeSettings()
+    ReadinessProbe = new MachineLearningProbeSettings
     {
         FailureThreshold = 30,
         SuccessThreshold = 1,
@@ -63,7 +63,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     Description = "string",
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     CodeConfiguration = new MachineLearningCodeConfiguration("string")
     {
@@ -72,7 +72,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     EnvironmentId = "string",
     EnvironmentVariables =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 })
 {
@@ -81,7 +81,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Sku = new MachineLearningSku("string")
@@ -91,9 +91,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningOnlineDeploymentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deploymentName, data);
 MachineLearningOnlineDeploymentResource result = lro.Value;

@@ -27,4 +27,4 @@ MachineLearningDatastoreResource machineLearningDatastore = client.GetMachineLea
 // invoke the operation
 await machineLearningDatastore.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

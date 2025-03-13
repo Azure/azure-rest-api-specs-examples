@@ -27,4 +27,4 @@ MachineLearninRegistryComponentContainerResource machineLearninRegistryComponent
 // invoke the operation
 await machineLearninRegistryComponentContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

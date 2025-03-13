@@ -32,4 +32,4 @@ await foreach (MachineLearningSkuDetail item in machineLearningOnlineDeployment.
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

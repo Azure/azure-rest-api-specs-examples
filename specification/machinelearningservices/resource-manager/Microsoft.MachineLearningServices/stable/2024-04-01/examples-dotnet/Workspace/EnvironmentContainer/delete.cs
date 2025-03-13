@@ -27,4 +27,4 @@ MachineLearningEnvironmentContainerResource machineLearningEnvironmentContainer 
 // invoke the operation
 await machineLearningEnvironmentContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

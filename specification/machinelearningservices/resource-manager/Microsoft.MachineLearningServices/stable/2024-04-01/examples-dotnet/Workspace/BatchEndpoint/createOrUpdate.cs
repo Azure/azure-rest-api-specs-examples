@@ -35,7 +35,7 @@ MachineLearningBatchEndpointData data = new MachineLearningBatchEndpointData(new
     Description = "string",
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 })
 {
@@ -44,7 +44,7 @@ MachineLearningBatchEndpointData data = new MachineLearningBatchEndpointData(new
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Sku = new MachineLearningSku("string")
@@ -54,9 +54,7 @@ MachineLearningBatchEndpointData data = new MachineLearningBatchEndpointData(new
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningBatchEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 MachineLearningBatchEndpointResource result = lro.Value;

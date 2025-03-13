@@ -27,4 +27,4 @@ MachineLearningMarketplaceSubscriptionResource machineLearningMarketplaceSubscri
 // invoke the operation
 await machineLearningMarketplaceSubscription.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

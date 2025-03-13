@@ -28,4 +28,4 @@ MachineLearningEnvironmentVersionResource machineLearningEnvironmentVersion = cl
 // invoke the operation
 await machineLearningEnvironmentVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

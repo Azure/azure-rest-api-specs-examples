@@ -1,7 +1,6 @@
 using Azure;
 using Azure.ResourceManager;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
@@ -26,9 +25,9 @@ ResourceIdentifier machineLearningServerlessEndpointResourceId = MachineLearning
 MachineLearningServerlessEndpointResource machineLearningServerlessEndpoint = client.GetMachineLearningServerlessEndpointResource(machineLearningServerlessEndpointResourceId);
 
 // invoke the operation
-MachineLearningServerlessEndpointPatch patch = new MachineLearningServerlessEndpointPatch()
+MachineLearningServerlessEndpointPatch patch = new MachineLearningServerlessEndpointPatch
 {
-    Sku = new MachineLearningSkuPatch()
+    Sku = new MachineLearningSkuPatch
     {
         Name = "string",
         Tier = MachineLearningSkuTier.Premium,
@@ -36,19 +35,15 @@ MachineLearningServerlessEndpointPatch patch = new MachineLearningServerlessEndp
         Family = "string",
         Capacity = 1,
     },
-    Identity = new MachineLearningPartialManagedServiceIdentity()
+    Identity = new MachineLearningPartialManagedServiceIdentity
     {
         ManagedServiceIdentityType = "None",
         UserAssignedIdentities =
         {
-        ["string"] = BinaryData.FromObjectAsJson(new Dictionary<string, object>()
-        {
-        }),
+        ["string"] = BinaryData.FromObjectAsJson(new object())
         },
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningServerlessEndpointResource> lro = await machineLearningServerlessEndpoint.UpdateAsync(WaitUntil.Completed, patch);
 MachineLearningServerlessEndpointResource result = lro.Value;

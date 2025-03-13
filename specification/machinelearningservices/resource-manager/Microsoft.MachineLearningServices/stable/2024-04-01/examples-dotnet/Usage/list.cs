@@ -29,4 +29,4 @@ await foreach (MachineLearningUsage item in subscriptionResource.GetMachineLearn
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

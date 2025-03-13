@@ -28,7 +28,7 @@ MachineLearningRegistryModelContainerResource machineLearningRegistryModelContai
 MachineLearningRegistryModelVersionCollection collection = machineLearningRegistryModelContainer.GetMachineLearningRegistryModelVersions();
 
 // invoke the operation and iterate over the result
-MachineLearningRegistryModelVersionCollectionGetAllOptions options = new MachineLearningRegistryModelVersionCollectionGetAllOptions() { OrderBy = "string", Top = 1, Version = "string", Description = "string", Tags = "string", Properties = "string" };
+MachineLearningRegistryModelVersionCollectionGetAllOptions options = new MachineLearningRegistryModelVersionCollectionGetAllOptions { OrderBy = "string", Top = 1, Version = "string", Description = "string", Tags = "string", Properties = "string" };
 await foreach (MachineLearningRegistryModelVersionResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -38,4 +38,4 @@ await foreach (MachineLearningRegistryModelVersionResource item in collection.Ge
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

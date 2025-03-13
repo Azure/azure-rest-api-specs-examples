@@ -31,17 +31,17 @@ MachineLearningOnlineDeploymentCollection collection = machineLearningOnlineEndp
 
 // invoke the operation
 string deploymentName = "testDeploymentName";
-MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentData(new AzureLocation("string"), new MachineLearningKubernetesOnlineDeployment()
+MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentData(new AzureLocation("string"), new MachineLearningKubernetesOnlineDeployment
 {
-    ContainerResourceRequirements = new MachineLearningContainerResourceRequirements()
+    ContainerResourceRequirements = new MachineLearningContainerResourceRequirements
     {
-        ContainerResourceRequests = new MachineLearningContainerResourceSettings()
+        ContainerResourceRequests = new MachineLearningContainerResourceSettings
         {
             Cpu = "\"1\"",
             Memory = "\"2Gi\"",
             Gpu = "\"1\"",
         },
-        ContainerResourceLimits = new MachineLearningContainerResourceSettings()
+        ContainerResourceLimits = new MachineLearningContainerResourceSettings
         {
             Cpu = "\"1\"",
             Memory = "\"2Gi\"",
@@ -49,7 +49,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
         },
     },
     ScaleSettings = new MachineLearningDefaultScaleSettings(),
-    RequestSettings = new MachineLearningOnlineRequestSettings()
+    RequestSettings = new MachineLearningOnlineRequestSettings
     {
         MaxQueueWait = XmlConvert.ToTimeSpan("PT5M"),
         RequestTimeout = XmlConvert.ToTimeSpan("PT5M"),
@@ -57,7 +57,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     },
     ModelMountPath = "string",
     AppInsightsEnabled = false,
-    LivenessProbe = new MachineLearningProbeSettings()
+    LivenessProbe = new MachineLearningProbeSettings
     {
         FailureThreshold = 1,
         SuccessThreshold = 1,
@@ -70,7 +70,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     Description = "string",
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     CodeConfiguration = new MachineLearningCodeConfiguration("string")
     {
@@ -79,7 +79,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     EnvironmentId = "string",
     EnvironmentVariables =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 })
 {
@@ -88,7 +88,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Sku = new MachineLearningSku("string")
@@ -98,9 +98,7 @@ MachineLearningOnlineDeploymentData data = new MachineLearningOnlineDeploymentDa
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningOnlineDeploymentResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, deploymentName, data);
 MachineLearningOnlineDeploymentResource result = lro.Value;

@@ -6,7 +6,6 @@ using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MachineLearning.Models;
 using Azure.ResourceManager.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MachineLearning;
 
 // Generated from example definition: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/DataReference/getBlobReferenceSAS.json
@@ -28,7 +27,7 @@ MachineLearningRegistryResource machineLearningRegistry = client.GetMachineLearn
 // invoke the operation
 string name = "string";
 string version = "string";
-BlobReferenceSasContent content = new BlobReferenceSasContent()
+BlobReferenceSasContent content = new BlobReferenceSasContent
 {
     AssetId = "string",
     BlobUri = new Uri("https://www.contoso.com/example"),

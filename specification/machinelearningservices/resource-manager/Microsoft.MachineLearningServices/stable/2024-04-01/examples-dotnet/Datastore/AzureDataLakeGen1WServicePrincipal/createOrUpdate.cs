@@ -25,7 +25,7 @@ ResourceIdentifier machineLearningDatastoreResourceId = MachineLearningDatastore
 MachineLearningDatastoreResource machineLearningDatastore = client.GetMachineLearningDatastoreResource(machineLearningDatastoreResourceId);
 
 // invoke the operation
-MachineLearningDatastoreData data = new MachineLearningDatastoreData(new MachineLearningAzureDataLakeGen1Datastore(new MachineLearningServicePrincipalDatastoreCredentials(Guid.Parse("00000000-1111-2222-3333-444444444444"), Guid.Parse("00000000-1111-2222-3333-444444444444"), new MachineLearningServicePrincipalDatastoreSecrets()
+MachineLearningDatastoreData data = new MachineLearningDatastoreData(new MachineLearningAzureDataLakeGen1Datastore(new MachineLearningServicePrincipalDatastoreCredentials(Guid.Parse("00000000-1111-2222-3333-444444444444"), Guid.Parse("00000000-1111-2222-3333-444444444444"), new MachineLearningServicePrincipalDatastoreSecrets
 {
     ClientSecret = "string",
 })
@@ -37,11 +37,9 @@ MachineLearningDatastoreData data = new MachineLearningDatastoreData(new Machine
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
-    Properties =
-    {
-    },
+    Properties = { },
 });
 bool? skipValidation = false;
 ArmOperation<MachineLearningDatastoreResource> lro = await machineLearningDatastore.UpdateAsync(WaitUntil.Completed, data, skipValidation: skipValidation);

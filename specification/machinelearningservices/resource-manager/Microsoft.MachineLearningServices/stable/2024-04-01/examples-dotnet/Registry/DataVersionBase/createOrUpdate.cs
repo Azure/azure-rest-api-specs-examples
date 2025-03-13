@@ -31,20 +31,17 @@ MachineLearningRegistryDataVersionCollection collection = machineLearningRegistr
 string version = "string";
 MachineLearningDataVersionData data = new MachineLearningDataVersionData(new MachineLearningTable(new Uri("string"))
 {
-    ReferencedUris =
-    {
-    new Uri("string")
-    },
+    ReferencedUris = { new Uri("string") },
     IsArchived = false,
     IsAnonymous = false,
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningRegistryDataVersionResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, version, data);

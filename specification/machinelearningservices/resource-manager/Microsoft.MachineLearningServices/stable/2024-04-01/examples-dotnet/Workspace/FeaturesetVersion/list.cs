@@ -28,7 +28,7 @@ MachineLearningFeatureSetContainerResource machineLearningFeatureSetContainer = 
 MachineLearningFeatureSetVersionCollection collection = machineLearningFeatureSetContainer.GetMachineLearningFeatureSetVersions();
 
 // invoke the operation and iterate over the result
-MachineLearningFeatureSetVersionCollectionGetAllOptions options = new MachineLearningFeatureSetVersionCollectionGetAllOptions() { Tags = "string", ListViewType = MachineLearningListViewType.All };
+MachineLearningFeatureSetVersionCollectionGetAllOptions options = new MachineLearningFeatureSetVersionCollectionGetAllOptions { Tags = "string", ListViewType = MachineLearningListViewType.All };
 await foreach (MachineLearningFeatureSetVersionResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -38,4 +38,4 @@ await foreach (MachineLearningFeatureSetVersionResource item in collection.GetAl
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -36,4 +36,4 @@ await foreach (MachineLearningPrivateEndpointConnectionResource item in collecti
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

@@ -27,4 +27,4 @@ MachineLearningFeatureStoreEntityContainerResource machineLearningFeatureStoreEn
 // invoke the operation
 await machineLearningFeatureStoreEntityContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

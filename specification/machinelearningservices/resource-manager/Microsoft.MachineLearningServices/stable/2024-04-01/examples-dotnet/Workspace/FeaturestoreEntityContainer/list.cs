@@ -27,7 +27,7 @@ MachineLearningWorkspaceResource machineLearningWorkspace = client.GetMachineLea
 MachineLearningFeatureStoreEntityContainerCollection collection = machineLearningWorkspace.GetMachineLearningFeatureStoreEntityContainers();
 
 // invoke the operation and iterate over the result
-MachineLearningFeatureStoreEntityContainerCollectionGetAllOptions options = new MachineLearningFeatureStoreEntityContainerCollectionGetAllOptions() { Tags = "string", ListViewType = MachineLearningListViewType.All };
+MachineLearningFeatureStoreEntityContainerCollectionGetAllOptions options = new MachineLearningFeatureStoreEntityContainerCollectionGetAllOptions { Tags = "string", ListViewType = MachineLearningListViewType.All };
 await foreach (MachineLearningFeatureStoreEntityContainerResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -37,4 +37,4 @@ await foreach (MachineLearningFeatureStoreEntityContainerResource item in collec
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

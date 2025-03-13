@@ -28,4 +28,4 @@ MachineLearningScheduleResource machineLearningSchedule = client.GetMachineLearn
 // invoke the operation
 await machineLearningSchedule.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

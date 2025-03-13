@@ -27,4 +27,4 @@ MachineLearningFeatureSetContainerResource machineLearningFeatureSetContainer = 
 // invoke the operation
 await machineLearningFeatureSetContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

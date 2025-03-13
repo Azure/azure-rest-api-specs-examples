@@ -28,4 +28,4 @@ MachineLearningFeaturestoreEntityVersionResource machineLearningFeaturestoreEnti
 // invoke the operation
 await machineLearningFeaturestoreEntityVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

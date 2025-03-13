@@ -29,4 +29,4 @@ MachineLearninRegistryComponentVersionResource machineLearninRegistryComponentVe
 // invoke the operation
 await machineLearninRegistryComponentVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

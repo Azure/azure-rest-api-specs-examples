@@ -35,7 +35,7 @@ MachineLearningRegistryData data = new MachineLearningRegistryData(new AzureLoca
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Kind = "string",
@@ -50,54 +50,37 @@ MachineLearningRegistryData data = new MachineLearningRegistryData(new AzureLoca
     IntellectualPropertyPublisher = "string",
     ManagedResourceId = new ResourceIdentifier("string"),
     MlFlowRegistryUri = new Uri("string"),
-    RegistryPrivateEndpointConnections =
-    {
-    new RegistryPrivateEndpointConnection()
+    RegistryPrivateEndpointConnections = {new RegistryPrivateEndpointConnection
     {
     Id = new ResourceIdentifier("string"),
     Location = new AzureLocation("string"),
-    GroupIds =
-    {
-    "string"
-    },
-    PrivateEndpoint = new RegistryPrivateEndpoint()
+    GroupIds = {"string"},
+    PrivateEndpoint = new RegistryPrivateEndpoint
     {
     SubnetArmId = new ResourceIdentifier("string"),
     },
-    RegistryPrivateLinkServiceConnectionState = new RegistryPrivateLinkServiceConnectionState()
+    RegistryPrivateLinkServiceConnectionState = new RegistryPrivateLinkServiceConnectionState
     {
     ActionsRequired = "string",
     Description = "string",
     Status = EndpointServiceConnectionStatus.Approved,
     },
     ProvisioningState = "string",
-    }
-    },
+    }},
     PublicNetworkAccess = "string",
-    RegionDetails =
+    RegionDetails = {new RegistryRegionArmDetails
     {
-    new RegistryRegionArmDetails()
-    {
-    AcrDetails =
-    {
-    new RegistryAcrDetails()
+    AcrDetails = {new RegistryAcrDetails
     {
     ArmResourceId = new ResourceIdentifier("string"),
-    }
-    },
+    }},
     Location = new AzureLocation("string"),
-    StorageAccountDetails =
-    {
-    new StorageAccountDetails()
+    StorageAccountDetails = {new StorageAccountDetails
     {
     ArmResourceId = new ResourceIdentifier("string"),
-    }
-    },
-    }
-    },
-    Tags =
-    {
-    },
+    }},
+    }},
+    Tags = { },
 };
 ArmOperation<MachineLearningRegistryResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, registryName, data);
 MachineLearningRegistryResource result = lro.Value;

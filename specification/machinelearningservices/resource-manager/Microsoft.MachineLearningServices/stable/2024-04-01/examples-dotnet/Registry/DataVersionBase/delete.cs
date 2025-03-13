@@ -28,4 +28,4 @@ MachineLearningRegistryDataVersionResource machineLearningRegistryDataVersion = 
 // invoke the operation
 await machineLearningRegistryDataVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

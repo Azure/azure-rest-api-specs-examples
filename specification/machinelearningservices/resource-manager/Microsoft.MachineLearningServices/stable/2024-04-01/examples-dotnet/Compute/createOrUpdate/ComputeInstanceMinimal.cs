@@ -31,9 +31,9 @@ MachineLearningComputeCollection collection = machineLearningWorkspace.GetMachin
 string computeName = "compute123";
 MachineLearningComputeData data = new MachineLearningComputeData(new AzureLocation("eastus"))
 {
-    Properties = new MachineLearningComputeInstance()
+    Properties = new MachineLearningComputeInstance
     {
-        Properties = new MachineLearningComputeInstanceProperties()
+        Properties = new MachineLearningComputeInstanceProperties
         {
             VmSize = "STANDARD_NC6",
         },

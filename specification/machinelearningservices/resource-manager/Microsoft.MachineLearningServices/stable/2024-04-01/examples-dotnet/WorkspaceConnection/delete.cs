@@ -27,4 +27,4 @@ MachineLearningWorkspaceConnectionResource machineLearningWorkspaceConnection = 
 // invoke the operation
 await machineLearningWorkspaceConnection.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

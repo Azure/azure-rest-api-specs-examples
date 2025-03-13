@@ -26,17 +26,17 @@ ResourceIdentifier machineLearningModelVersionResourceId = MachineLearningModelV
 MachineLearningModelVersionResource machineLearningModelVersion = client.GetMachineLearningModelVersionResource(machineLearningModelVersionResourceId);
 
 // invoke the operation
-MachineLearningModelVersionData data = new MachineLearningModelVersionData(new MachineLearningModelVersionProperties()
+MachineLearningModelVersionData data = new MachineLearningModelVersionData(new MachineLearningModelVersionProperties
 {
     Flavors =
     {
-    ["string"] = new MachineLearningFlavorData()
+    ["string"] = new MachineLearningFlavorData
     {
     Data =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
-    },
+    }
     },
     ModelType = "CustomModel",
     ModelUri = new Uri("string"),
@@ -44,11 +44,11 @@ MachineLearningModelVersionData data = new MachineLearningModelVersionData(new M
     Description = "string",
     Tags =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 });
 ArmOperation<MachineLearningModelVersionResource> lro = await machineLearningModelVersion.UpdateAsync(WaitUntil.Completed, data);

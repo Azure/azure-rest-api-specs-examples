@@ -34,12 +34,12 @@ MachineLearningOnlineEndpointData data = new MachineLearningOnlineEndpointData(n
     Compute = "string",
     Traffic =
     {
-    ["string"] = 1,
+    ["string"] = 1
     },
     Description = "string",
     Properties =
     {
-    ["string"] = "string",
+    ["string"] = "string"
     },
 })
 {
@@ -48,7 +48,7 @@ MachineLearningOnlineEndpointData data = new MachineLearningOnlineEndpointData(n
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("string")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("string")] = new UserAssignedIdentity()
         },
     },
     Sku = new MachineLearningSku("string")
@@ -58,9 +58,7 @@ MachineLearningOnlineEndpointData data = new MachineLearningOnlineEndpointData(n
         Family = "string",
         Capacity = 1,
     },
-    Tags =
-    {
-    },
+    Tags = { },
 };
 ArmOperation<MachineLearningOnlineEndpointResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, endpointName, data);
 MachineLearningOnlineEndpointResource result = lro.Value;

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Azure.Core;
 using Azure.Identity;
 using Azure.ResourceManager.MachineLearning.Models;
-using Azure.ResourceManager.Resources;
 using Azure.ResourceManager.MachineLearning;
 
 // Generated from example definition: specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2024-04-01/examples/ExternalFQDN/get.json
@@ -30,4 +29,4 @@ await foreach (MachineLearningFqdnEndpoints item in machineLearningWorkspace.Get
     Console.WriteLine($"Succeeded: {item}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

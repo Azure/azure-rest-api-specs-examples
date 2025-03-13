@@ -35,7 +35,7 @@ MachineLearningWorkspaceData data = new MachineLearningWorkspaceData(new AzureLo
     {
         UserAssignedIdentities =
         {
-        [new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai")] = new UserAssignedIdentity(),
+        [new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai")] = new UserAssignedIdentity()
         },
     },
     Description = "test description",
@@ -52,17 +52,14 @@ MachineLearningWorkspaceData data = new MachineLearningWorkspaceData(new AzureLo
         UserAssignedIdentity = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.ManagedIdentity/userAssignedIdentities/testuai"),
     },
     IsHbiWorkspace = false,
-    SharedPrivateLinkResources =
-    {
-    new MachineLearningSharedPrivateLinkResource()
+    SharedPrivateLinkResources = {new MachineLearningSharedPrivateLinkResource
     {
     Name = "testdbresource",
     PrivateLinkResourceId = new ResourceIdentifier("/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/workspace-1234/providers/Microsoft.DocumentDB/databaseAccounts/testdbresource/privateLinkResources/Sql"),
     GroupId = "Sql",
     RequestMessage = "Please approve",
     Status = MachineLearningPrivateEndpointServiceConnectionStatus.Approved,
-    }
-    },
+    }},
 };
 ArmOperation<MachineLearningWorkspaceResource> lro = await collection.CreateOrUpdateAsync(WaitUntil.Completed, workspaceName, data);
 MachineLearningWorkspaceResource result = lro.Value;

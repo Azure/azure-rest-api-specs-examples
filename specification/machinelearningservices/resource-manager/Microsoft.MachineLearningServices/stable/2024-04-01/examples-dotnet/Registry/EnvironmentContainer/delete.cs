@@ -27,4 +27,4 @@ MachineLearningRegistryEnvironmentContainerResource machineLearningRegistryEnvir
 // invoke the operation
 await machineLearningRegistryEnvironmentContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

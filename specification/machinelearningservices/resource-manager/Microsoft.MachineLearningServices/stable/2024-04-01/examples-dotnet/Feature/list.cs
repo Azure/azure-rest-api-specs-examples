@@ -29,7 +29,7 @@ MachineLearningFeatureSetVersionResource machineLearningFeatureSetVersion = clie
 MachineLearningFeatureCollection collection = machineLearningFeatureSetVersion.GetMachineLearningFeatures();
 
 // invoke the operation and iterate over the result
-MachineLearningFeatureCollectionGetAllOptions options = new MachineLearningFeatureCollectionGetAllOptions() { Tags = "string", FeatureName = "string", Description = "string" };
+MachineLearningFeatureCollectionGetAllOptions options = new MachineLearningFeatureCollectionGetAllOptions { Tags = "string", FeatureName = "string", Description = "string" };
 await foreach (MachineLearningFeatureResource item in collection.GetAllAsync(options))
 {
     // the variable item is a resource, you could call other operations on this instance as well
@@ -39,4 +39,4 @@ await foreach (MachineLearningFeatureResource item in collection.GetAllAsync(opt
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

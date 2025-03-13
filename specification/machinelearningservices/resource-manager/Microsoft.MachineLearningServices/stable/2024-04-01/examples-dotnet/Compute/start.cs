@@ -28,4 +28,4 @@ MachineLearningComputeResource machineLearningCompute = client.GetMachineLearnin
 // invoke the operation
 await machineLearningCompute.StartAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

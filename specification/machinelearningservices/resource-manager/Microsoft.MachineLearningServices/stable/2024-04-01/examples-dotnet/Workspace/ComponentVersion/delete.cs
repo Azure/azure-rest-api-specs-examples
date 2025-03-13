@@ -29,4 +29,4 @@ MachineLearningComponentVersionResource machineLearningComponentVersion = client
 // invoke the operation
 await machineLearningComponentVersion.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

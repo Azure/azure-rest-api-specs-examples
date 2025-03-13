@@ -27,4 +27,4 @@ MachineLearningModelContainerResource machineLearningModelContainer = client.Get
 // invoke the operation
 await machineLearningModelContainer.DeleteAsync(WaitUntil.Completed);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

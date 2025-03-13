@@ -26,7 +26,7 @@ ResourceIdentifier machineLearningRegistryCodeVersionResourceId = MachineLearnin
 MachineLearningRegistryCodeVersionResource machineLearningRegistryCodeVersion = client.GetMachineLearningRegistryCodeVersionResource(machineLearningRegistryCodeVersionResourceId);
 
 // invoke the operation
-PendingUploadRequestDto body = new PendingUploadRequestDto()
+PendingUploadRequestDto body = new PendingUploadRequestDto
 {
     PendingUploadId = "string",
     PendingUploadType = PendingUploadType.TemporaryBlobReference,

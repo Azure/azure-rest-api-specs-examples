@@ -37,4 +37,4 @@ await foreach (MachineLearningRegistryDataContainerResource item in collection.G
     Console.WriteLine($"Succeeded on id: {resourceData.Id}");
 }
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");

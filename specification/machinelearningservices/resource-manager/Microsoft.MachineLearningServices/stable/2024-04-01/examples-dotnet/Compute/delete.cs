@@ -29,4 +29,4 @@ MachineLearningComputeResource machineLearningCompute = client.GetMachineLearnin
 MachineLearningUnderlyingResourceAction underlyingResourceAction = MachineLearningUnderlyingResourceAction.Delete;
 await machineLearningCompute.DeleteAsync(WaitUntil.Completed, underlyingResourceAction);
 
-Console.WriteLine($"Succeeded");
+Console.WriteLine("Succeeded");
